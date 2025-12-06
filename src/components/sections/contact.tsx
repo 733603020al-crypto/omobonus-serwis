@@ -133,7 +133,7 @@ export function Contact() {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
         
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-8 drop-shadow-md font-serif italic pt-4 md:pt-6">
