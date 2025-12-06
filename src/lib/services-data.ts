@@ -545,7 +545,30 @@ const faqSection: PricingSection = {
 }
 
 // Funkcja dodająca FAQ do sekcji cennika
-const cloneSections = <T>(data: T): T => JSON.parse(JSON.stringify(data))
+// Безопасное клонирование без циклических ссылок
+const cloneSections = <T>(data: T): T => {
+  try {
+    // Используем structuredClone если доступен (Node.js 17+)
+    if (typeof structuredClone !== 'undefined') {
+      return structuredClone(data)
+    }
+    // Fallback: используем JSON с обработкой циклических ссылок
+    const seen = new WeakSet()
+    return JSON.parse(JSON.stringify(data, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) {
+          return undefined // Пропускаем циклические ссылки
+        }
+        seen.add(value)
+      }
+      return value
+    }))
+  } catch (error) {
+    // Если всё равно ошибка, возвращаем оригинал
+    console.warn('Ошибка клонирования данных:', error)
+    return data
+  }
+}
 
 const createDefaultPricingSections = (): PricingSection[] => cloneSections(defaultPricingSections)
 
