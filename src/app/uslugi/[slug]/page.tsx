@@ -45,7 +45,7 @@ export default async function ServicePage({
               </p>
             ) : (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")
+                Pełny wykaz usług i cen, bez ukrytych kosztów (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;)
               </p>
             )}
           </div>

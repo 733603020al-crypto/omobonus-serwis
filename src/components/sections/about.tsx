@@ -20,7 +20,7 @@ export function About() {
         {/* Nagłówek sekcji */}
         <div className="mb-6 text-center max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-cormorant font-bold text-[#bfa76a] leading-tight">
-            Święty Omobonus XII wieku (łac. „Dobry człowiek")
+            Święty Omobonus XII wieku (łac. &ldquo;Dobry człowiek&rdquo;)
           </h2>
           <p className="mt-[6px] text-lg md:text-xl text-[#bfa76a] font-cormorant italic">
             Patron biznesmenów i przemysłowców. Był uczciwym rzemieślnikiem, który część swoich dochodów przekazywał potrzebującym.
@@ -56,7 +56,7 @@ export function About() {
 
             <div className="space-y-1">
               <p className="text-2xl md:text-3xl font-serif font-semibold text-white">
-                „Szacunek do klienta i brak oszustwa"
+                &ldquo;Szacunek do klienta i brak oszustwa&rdquo;
               </p>
               <p className="text-xl md:text-2xl font-serif text-white">
                 to nasze podstawowe zasady pracy
@@ -69,7 +69,7 @@ export function About() {
               </p>
               <ul className="space-y-1.5">
                 {[
-                  'podajemy prawdziwe ceny, (nie „naprawa od 50 zł” lub „cena do uzgodnienia”), dlatego od razu wiesz, ile to kosztuje;',
+                  'podajemy prawdziwe ceny, (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;), dlatego od razu wiesz, ile to kosztuje;',
                   'działamy we Wrocławiu jako legalny serwis komputerów, laptopów i drukarek i nie podajemy cen netto, lecz wyłącznie ceny brutto;',
                   'podczas diagnozy otrzymujesz nie tylko suchą tabelkę z wyceną naprawy, ale też zdjęcia uszkodzeń;',
                   'jeśli naprawa się nie opłaca – powiemy to otwarcie;',

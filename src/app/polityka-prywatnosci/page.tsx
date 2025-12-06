@@ -17,7 +17,7 @@ export default function PolitykaPrywatnosci() {
         
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-4 md:mb-8 drop-shadow-md font-serif italic">
-          „Chcesz zapoznać się z naszą Polityką Prywatności? Przeczytaj poniżej."
+          &ldquo;Chcesz zapoznać się z naszą Polityką Prywatności? Przeczytaj poniżej.&rdquo;
         </p>
 
         {/* Karta formularza - масштабирована на 20% */}
@@ -217,3 +217,4 @@ export default function PolitykaPrywatnosci() {
     </section>
   )
 }
+

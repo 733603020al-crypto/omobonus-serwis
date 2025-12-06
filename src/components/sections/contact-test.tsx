@@ -164,7 +164,7 @@ export function ContactTest() {
         
         {/* Tekst nad formularzem */}
         <p className="text-[22px] text-[#fff8e7] font-cormorant italic font-semibold text-center mb-8 drop-shadow-2xl pt-4 md:pt-6">
-          „Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń"
+          &ldquo;Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń&rdquo;
         </p>
 
         {/* Karta formularza */}

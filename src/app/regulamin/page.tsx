@@ -17,7 +17,7 @@ export default function Regulamin() {
         
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-4 md:mb-8 drop-shadow-md font-serif italic">
-          „Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej."
+          &ldquo;Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.&rdquo;
         </p>
 
         {/* Karta formularza - масштабирована на 20% */}
@@ -37,7 +37,7 @@ export default function Regulamin() {
                 1. Postanowienia ogólne
               </h3>
               <p className="text-sm md:text-base font-sans leading-normal">
-                <strong>1.1.</strong> Niniejszy Regulamin (dalej "Regulamin") określa zasady i warunki świadczenia usług naprawy, diagnostyki, konserwacji, oraz innych usług związanych z komputerami, drukarkami, peryferiami i innym sprzętem IT przez firmę Omobonus Sp. z o.o. (dalej "Serwis").
+                <strong>1.1.</strong> Niniejszy Regulamin (dalej &ldquo;Regulamin&rdquo;) określa zasady i warunki świadczenia usług naprawy, diagnostyki, konserwacji, oraz innych usług związanych z komputerami, drukarkami, peryferiami i innym sprzętem IT przez firmę Omobonus Sp. z o.o. (dalej &ldquo;Serwis&rdquo;).
               </p>
               <p className="text-sm md:text-base font-sans leading-normal">
                 <strong>1.2.</strong> Usługi świadczone są przez Omobonus Sp. z o.o., z siedzibą pod adresem: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, kontakt e-mail: <a href="mailto:omobonus.pl@gmail.com" className="underline hover:text-[#3a2e24]/70">omobonus.pl@gmail.com</a>, telefon: <a href="tel:+48793759262" className="underline hover:text-[#3a2e24]/70">+48 793 759 262</a>.
@@ -254,3 +254,4 @@ export default function Regulamin() {
     </section>
   )
 }
+

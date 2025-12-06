@@ -137,7 +137,7 @@ export function Contact() {
         
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-8 drop-shadow-md font-serif italic pt-4 md:pt-6">
-          „Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń"
+          &ldquo;Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń&rdquo;
         </p>
 
         {/* Karta formularza - масштабирована на 20% */}
