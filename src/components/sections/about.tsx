@@ -1,6 +1,6 @@
 import { CheckCircle } from 'lucide-react'
 import Image from 'next/image'
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 
 export function About() {
   return (

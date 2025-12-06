@@ -1,4 +1,4 @@
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 
 export default function Regulamin() {
   return (

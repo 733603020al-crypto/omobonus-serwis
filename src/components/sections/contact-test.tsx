@@ -9,7 +9,7 @@ import 'react-phone-input-2/lib/style.css'
 import { toast, Toaster } from 'sonner'
 import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 import { CustomRadio } from '@/components/ui/custom-radio'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 

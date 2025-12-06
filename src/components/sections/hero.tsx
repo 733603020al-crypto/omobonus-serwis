@@ -1,6 +1,6 @@
 'use client'
 
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 
 export function Hero() {
   const scrollToSection = (id: string) => {

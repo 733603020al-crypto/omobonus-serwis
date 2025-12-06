@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'
 import Link from 'next/link'
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()

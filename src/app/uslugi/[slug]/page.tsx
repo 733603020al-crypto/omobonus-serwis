@@ -2,7 +2,7 @@
 import { services } from "@/lib/services-data"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import manifest from "@/config/KANONICZNY_MANIFEST.json"
+import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 
 export async function generateStaticParams() {

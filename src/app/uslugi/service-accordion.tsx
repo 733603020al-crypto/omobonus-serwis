@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import manifest from '@/config/KANONICZNY_MANIFEST.json'
+import manifest from '@/config/manifest'
 import { DEFAULT_PRICE_TOOLTIP } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
 import {
