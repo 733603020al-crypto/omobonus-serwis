@@ -1,4 +1,12 @@
 import manifest from '@/config/manifest'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Polityka Prywatności | Omobonus Serwis',
+  description: 'Polityka prywatności serwisu Omobonus - zasady przetwarzania i ochrony danych osobowych',
+}
+
+export const dynamic = 'force-static'
 
 export default function PolitykaPrywatnosci() {
   return (

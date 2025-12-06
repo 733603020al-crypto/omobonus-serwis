@@ -1,4 +1,12 @@
 import manifest from '@/config/manifest'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Regulamin | Omobonus Serwis',
+  description: 'Regulamin świadczenia usług serwisowych przez Omobonus',
+}
+
+export const dynamic = 'force-static'
 
 export default function Regulamin() {
   return (
