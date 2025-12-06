@@ -43,6 +43,10 @@ export default async function ServicePage({
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                 Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.
               </p>
+            ) : service.slug === 'drukarka-zastepcza' ? (
+              <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+                Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą
+              </p>
             ) : (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                 Pełny wykaz usług i cen, bez ukrytych kosztów (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;)

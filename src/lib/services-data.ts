@@ -2687,6 +2687,90 @@ const createWynajemPricingSections = (): PricingSection[] => {
   return sections
 }
 
+const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
+  // Используем только базовые секции без FAQ (FAQ добавим в конце)
+  const defaultSections = createDefaultPricingSections()
+  
+  // Удаляем ненужные секции для drukarka-zastepcza
+  const sections = defaultSections.filter(
+    section => 
+      section.id !== 'diagnoza' && 
+      section.id !== 'dojazd' && 
+      section.id !== 'konserwacja' && 
+      section.id !== 'naprawy'
+  )
+  
+  // Добавляем два аккордеона
+  sections.push({
+    id: 'akordeon-1',
+    title: 'Laserowe (format A4)',
+    items: [],
+    subcategories: [
+      {
+        id: 'drukarki-mono',
+        title: 'Drukarki A4 (mono)',
+        items: [],
+        price: '30 / 50 / 100',
+      },
+      {
+        id: 'drukarki-kolor',
+        title: 'Drukarki A4 (mono+kolor)',
+        items: [],
+        price: '50 / 100 / 150',
+      },
+      {
+        id: 'mfu-mono',
+        title: 'MFU A4 (mono)',
+        items: [],
+        price: '80 / 100 / 150',
+      },
+      {
+        id: 'mfu-kolor',
+        title: 'MFU A4 (mono+kolor)',
+        items: [],
+        price: '100 / 150 / 200',
+      },
+    ],
+  })
+
+  sections.push({
+    id: 'akordeon-2',
+    title: 'Laserowe (format A3/A4)',
+    items: [],
+    subcategories: [
+      {
+        id: 'a3-drukarki-mono',
+        title: 'Drukarki A3/A4 (mono)',
+        items: [],
+        price: '100 / 150 / 200',
+      },
+      {
+        id: 'a3-drukarki-kolor',
+        title: 'Drukarki A3/A4 (mono+kolor)',
+        items: [],
+        price: '200 / 250 / 300',
+      },
+      {
+        id: 'a3-mfu-mono',
+        title: 'MFU A3/A4 (mono)',
+        items: [],
+        price: '200 / 250 / 300',
+      },
+      {
+        id: 'a3-mfu-kolor',
+        title: 'MFU A3/A4 (mono+kolor)',
+        items: [],
+        price: '300 / 400 / 500',
+      },
+    ],
+  })
+
+  // Добавляем FAQ в конец
+  sections.push(createFaqSection())
+
+  return sections
+}
+
 export const services: ServiceData[] = [
   {
     slug: 'serwis-laptopow',
@@ -2772,22 +2856,6 @@ export const services: ServiceData[] = [
     pricingSections: createPricingSections(),
   },
   {
-    slug: 'serwis-ploterow',
-    title: 'Serwis Ploterów',
-    subtitle: 'Serwis i konserwacja ploterów wielkoformatowych',
-    icon: manifest['08_serwis_ploterow'],
-    description: 'Serwis i konserwacja ploterów wielkoformatowych.',
-    pricingSections: createPricingSections(),
-  },
-  {
-    slug: 'serwis-niszczarek',
-    title: 'Serwis Niszczarek',
-    subtitle: 'Naprawa i konserwacja niszczarek dokumentów',
-    icon: manifest['09_serwis_niszczarek'],
-    description: 'Naprawa i konserwacja niszczarek dokumentów.',
-    pricingSections: createPricingSections(),
-  },
-  {
     slug: 'wynajem-drukarek',
     title: 'Wynajem (Dzierżawa) Drukarek',
     subtitle: 'Dzierżawa urządzeń drukujących dla biur',
@@ -2801,22 +2869,6 @@ export const services: ServiceData[] = [
     subtitle: 'Urządzenie zastępcze na czas naprawy',
     icon: manifest['11_drukarka_zastepcza'],
     description: 'Oferujemy urządzenie zastępcze na czas naprawy.',
-    pricingSections: createPricingSections(),
-  },
-  {
-    slug: 'regeneracja-tonerow',
-    title: 'Wymiana tuszy, regeneracja tonerów',
-    subtitle: 'Wymiana tuszy i regeneracja tonerów',
-    icon: manifest['12_wymiana_tuszy_regeneracja_tonerow'],
-    description: 'Wymiana tuszy i profesjonalna regeneracja tonerów.',
-    pricingSections: createPricingSections(),
-  },
-  {
-    slug: 'odkup-komputerow',
-    title: 'Odkup Komputerów i Laptopów',
-    subtitle: 'Skup używanych laptopów i komputerów',
-    icon: manifest['13_odkup_komputerow_laptopow'],
-    description: 'Odkup używanych komputerów i laptopów.',
-    pricingSections: createPricingSections(),
+    pricingSections: createDrukarkaZastepczaPricingSections(),
   },
 ]

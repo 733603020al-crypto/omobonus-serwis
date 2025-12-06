@@ -91,7 +91,7 @@ export function About() {
                     className="rounded-lg flex-shrink-0"
                   />
                   <span className="text-[#bfa76a] italic text-sm leading-tight">
-                    🧡 honorujemy kartę Dużej Rodziny i kartę Seniora, oferując 10% zniżki na naprawę.
+                    honorujemy kartę Dużej Rodziny i kartę Seniora, oferując 10% zniżki na naprawę.
                   </span>
                 </li>
               </ul>
