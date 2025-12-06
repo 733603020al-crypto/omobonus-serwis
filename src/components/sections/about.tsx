@@ -75,13 +75,25 @@ export function About() {
                   'jeśli naprawa się nie opłaca – powiemy to otwarcie;',
                   'nie wymieniamy części bez potrzeby;',
                   'wymienione części i podzespoły zawsze zwracamy Klientowi;',
-                  'w razie potrzeby na czas naprawy zapewniamy usługę „Drukarka zastępcza”.',
+                  'w razie potrzeby na czas naprawy zapewniamy usługę „Drukarka zastępcza".',
                 ].map((text, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <span className="text-[#bfa76a] italic text-sm leading-tight">{text}</span>
                   </li>
                 ))}
+                <li className="flex items-center gap-2">
+                  <Image
+                    src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.jpg"
+                    alt="Karta Dużej Rodziny"
+                    width={32}
+                    height={32}
+                    className="rounded-lg flex-shrink-0"
+                  />
+                  <span className="text-[#bfa76a] italic text-sm leading-tight">
+                    🧡 Honorujemy Kartę Dużej Rodziny i Kartę Seniora, oferując 10% zniżki na naprawę.
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
