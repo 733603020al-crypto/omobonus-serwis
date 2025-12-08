@@ -374,7 +374,8 @@ const SECTION_SCROLL_OFFSET = 120
 // Компонент для таблицы wynajem с динамическим выравниванием
 const WynajemTable = ({ 
   subcategoryId, 
-  headerRefs 
+  headerRefs,
+  serviceSlug
 }: { 
   subcategoryId: string
   headerRefs: {
@@ -382,8 +383,22 @@ const WynajemTable = ({
     text: React.RefObject<HTMLDivElement | null>
     prices: React.RefObject<HTMLDivElement | null>[]
   }
+  serviceSlug?: string
 }) => {
-  const [columnWidths, setColumnWidths] = useState<{ icon: number; text: number; price1: number; price2: number; price3: number } | null>(null)
+  const isDrukarkaZastepcza = serviceSlug === 'drukarka-zastepcza'
+  // Для a3-drukarki-mono на странице "Drukarka Zastępcza" используем ту же структуру, что и для a3-drukarki-kolor
+  // На странице "Wynajem" используем subcategoryId напрямую для правильных данных tableDataA3Mono
+  const effectiveSubcategoryId = (subcategoryId === 'a3-drukarki-mono' && isDrukarkaZastepcza) ? 'a3-drukarki-kolor' : subcategoryId
+  const [columnWidths, setColumnWidths] = useState<{ icon: number; text: number; price1: number; price2: number; price3?: number } | null>(null)
+  const [a3ReferenceWidths, setA3ReferenceWidths] = useState<{ icon: number; text: number; price1: number; price2: number } | null>(null)
+  // Сохранение измерений верхнего блока для точного выравнивания нижнего блока
+  const [headerMeasurements, setHeaderMeasurements] = useState<{
+    iconWidth: number;
+    distanceIconToText: number;
+    textWidth: number;
+    distanceTextToPrice1: number;
+    leftPartWidth: number;
+  } | null>(null)
   
   // Фиксированный отступ слева для выравнивания нижней таблицы под верхним рядом
   // Примерно равен расстоянию от левого края контейнера до начала иконки (12px)
@@ -392,29 +407,49 @@ const WynajemTable = ({
 
   useEffect(() => {
     const validSubcategoryIds = ['drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor', 'a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor']
-    if (!validSubcategoryIds.includes(subcategoryId) || !headerRefs.prices[0]?.current) return
+    if (!validSubcategoryIds.includes(effectiveSubcategoryId) || !headerRefs.prices[0]?.current) return
 
     const measureColumns = () => {
       const iconEl = headerRefs.icon.current
       const textEl = headerRefs.text.current
       const price1El = headerRefs.prices[0]?.current
       const price2El = headerRefs.prices[1]?.current
-      const price3El = headerRefs.prices[2]?.current
+      const price3El = !isDrukarkaZastepcza ? headerRefs.prices[2]?.current : null
 
-      if (iconEl && textEl && price1El && price2El && price3El) {
+      if (iconEl && textEl && price1El && price2El) {
         const iconRect = iconEl.getBoundingClientRect()
         const textRect = textEl.getBoundingClientRect()
         const price1Rect = price1El.getBoundingClientRect()
         const price2Rect = price2El.getBoundingClientRect()
-        const price3Rect = price3El.getBoundingClientRect()
-
-        setColumnWidths({
+        
+        const baseWidths = {
           icon: iconRect.width,
           text: textRect.width,
           price1: price1Rect.width,
           price2: price2Rect.width,
-          price3: price3Rect.width,
-        })
+        }
+
+        if (isDrukarkaZastepcza) {
+          setColumnWidths(baseWidths)
+          // Для всех A3 подкатегорий используем одинаковую логику выравнивания
+          const a3SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor']
+          if (a3SubcategoryIds.includes(subcategoryId)) {
+            // Приоритет: если это a3-drukarki-kolor (или a3-drukarki-mono на странице Drukarka Zastępcza, который обрабатывается как kolor), всегда обновляем эталон
+            // Для MFU A3 подкатегорий: всегда используем a3-mfu-mono как эталон для синхронизации ширины между mono и mono+kolor
+            const isMfuMono = subcategoryId === 'a3-mfu-mono'
+            const isMfuKolor = subcategoryId === 'a3-mfu-kolor'
+            if (effectiveSubcategoryId === 'a3-drukarki-kolor' || isMfuMono || (!a3ReferenceWidths && !isMfuKolor)) {
+              setA3ReferenceWidths(baseWidths)
+            }
+            // Для a3-mfu-kolor не устанавливаем a3ReferenceWidths - используем значение от a3-mfu-mono для полной синхронизации
+          }
+        } else if (price3El) {
+          const price3Rect = price3El.getBoundingClientRect()
+          setColumnWidths({
+            ...baseWidths,
+            price3: price3Rect.width,
+          })
+        }
       }
     }
 
@@ -422,9 +457,45 @@ const WynajemTable = ({
     const timeoutId1 = setTimeout(measureColumns, 50)
     const timeoutId2 = setTimeout(measureColumns, 200)
     const timeoutId3 = setTimeout(measureColumns, 500)
+    
+    // Измерение структуры заголовка для всех A3/A4 подкатегорий на Drukarka Zastępcza
+    const measureHeader = () => {
+      const iconEl = headerRefs.icon.current
+      const textEl = headerRefs.text.current
+      const price1El = headerRefs.prices[0]?.current
+      
+      if (iconEl && textEl && price1El) {
+        const iconRect = iconEl.getBoundingClientRect()
+        const textRect = textEl.getBoundingClientRect()
+        const price1Rect = price1El.getBoundingClientRect()
+        
+        const distanceIconToText = textRect.left - iconRect.right
+        const distanceTextToPrice1 = price1Rect.left - textRect.right
+        const leftPartWidth = textRect.right - iconRect.left
+        
+        // Сохраняем измерения для использования в нижнем блоке
+        setHeaderMeasurements({
+          iconWidth: iconRect.width,
+          distanceIconToText: distanceIconToText,
+          textWidth: textRect.width,
+          distanceTextToPrice1: distanceTextToPrice1,
+          leftPartWidth: leftPartWidth
+        })
+      }
+    }
+    
+    // Измеряем заголовок для всех A3/A4 подкатегорий на Drukarka Zastępcza
+    const a3A4SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor']
+    if (isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)) {
+      setTimeout(measureHeader, 600)
+      setTimeout(measureHeader, 1000)
+    }
 
     const handleResize = () => {
       measureColumns()
+      if (isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)) {
+        measureHeader()
+      }
     }
 
     window.addEventListener('resize', handleResize)
@@ -435,10 +506,11 @@ const WynajemTable = ({
       clearTimeout(timeoutId2)
       clearTimeout(timeoutId3)
     }
-  }, [subcategoryId, headerRefs])
+  }, [subcategoryId, headerRefs, isDrukarkaZastepcza, effectiveSubcategoryId, a3ReferenceWidths])
 
   const validSubcategoryIds = ['drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor', 'a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor']
   if (!validSubcategoryIds.includes(subcategoryId)) return null
+
 
   // Данные для таблицы Drukarki mono
   const tableDataMono = [
@@ -448,6 +520,12 @@ const WynajemTable = ({
     { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '40', plan3: '60' },
   ]
 
+  // Данные для таблицы Drukarki mono (drukarka-zastepcza) - без строки "Cena wydruku A4 mono" и "Liczba stron A4"
+  const tableDataMonoDZ = [
+    { label: 'Duplex', plan1: '-' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+  ]
+
   // Данные для таблицы Drukarki kolor
   const tableDataKolor = [
     { label: 'Liczba stron A4 wliczonych w czynsz', plan1: '1 000 + 0', plan2: '1 000 + 200', plan3: '2 000 + 200' },
@@ -455,6 +533,12 @@ const WynajemTable = ({
     { label: 'Cena wydruku A4 kolor (powyżej limitu)', plan1: '0,25 zł', plan2: '0,20 zł', plan3: '0,20 zł' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
     { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '40', plan3: '60' },
+  ]
+
+  // Данные для таблицы Drukarki kolor (drukarka-zastepcza) - только один столбец (plan1) и без некоторых строк
+  const tableDataKolorDZ = [
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
   ]
 
   // Данные для таблицы MFU mono
@@ -476,12 +560,32 @@ const WynajemTable = ({
     { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '30', plan3: '40' },
   ]
 
+  // Данные для таблицы MFU mono (drukarka-zastepcza) - только один столбец и без некоторых строк
+  const tableDataMfuMonoDZ = [
+    { label: 'Skanowanie', plan1: 'gratis' },
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+  ]
+
+  // Данные для таблицы MFU kolor (drukarka-zastepcza) - только один столбец и без некоторых строк
+  const tableDataMfuKolorDZ = [
+    { label: 'Skanowanie', plan1: 'gratis' },
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+  ]
+
   // Данные для таблицы Drukarki A3/A4 mono
   const tableDataA3Mono = [
     { label: 'Liczba stron A4 wliczonych w czynsz', plan1: '2 500 str./mies.', plan2: '3 750 str./mies.', plan3: '5 000 str./mies.' },
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,04 zł', plan2: '0,04 zł', plan3: '0,03 zł' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
     { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+  ]
+
+  // Данные для таблицы Drukarki A3/A4 mono (drukarka-zastepcza) - только технические строки, один столбец
+  const tableDataA3MonoDZ = [
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
   ]
 
   // Данные для таблицы Drukarki A3/A4 kolor
@@ -493,6 +597,12 @@ const WynajemTable = ({
     { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
+  // Данные для таблицы Drukarki A3/A4 kolor (drukarka-zastepcza) - только технические строки, один столбец
+  const tableDataA3KolorDZ = [
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+  ]
+
   // Данные для таблицы MFU A3/A4 mono
   const tableDataA3MfuMono = [
     { label: 'Liczba stron A4 wliczonych w czynsz', plan1: '5 000 str./mies.', plan2: '7 000 str./mies.', plan3: '10 000 str./mies.' },
@@ -500,6 +610,13 @@ const WynajemTable = ({
     { label: 'Skanowanie', plan1: 'gratis', plan2: 'gratis', plan3: 'gratis' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
     { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+  ]
+
+  // Данные для таблицы MFU A3/A4 mono (drukarka-zastepcza) - только технические строки, без заголовка "Cena wydruku format A3", один столбец
+  const tableDataA3MfuMonoDZ = [
+    { label: 'Skanowanie', plan1: 'gratis' },
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
   ]
 
   // Данные для таблицы MFU A3/A4 kolor
@@ -512,16 +629,40 @@ const WynajemTable = ({
     { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
-  const tableData = 
-    subcategoryId === 'drukarki-mono' ? tableDataMono :
-    subcategoryId === 'a3-drukarki-mono' ? tableDataA3Mono :
-    subcategoryId === 'drukarki-kolor' ? tableDataKolor :
-    subcategoryId === 'a3-drukarki-kolor' ? tableDataA3Kolor :
-    subcategoryId === 'mfu-mono' ? tableDataMfuMono :
-    subcategoryId === 'a3-mfu-mono' ? tableDataA3MfuMono :
-    subcategoryId === 'mfu-kolor' ? tableDataMfuKolor :
-    subcategoryId === 'a3-mfu-kolor' ? tableDataA3MfuKolor :
+  // Данные для таблицы MFU A3/A4 kolor (drukarka-zastepcza) - только технические строки, без заголовка "Cena wydruku format A3"
+  // Только один столбец с данными (plan1) - второй столбец удален
+  const tableDataA3MfuKolorDZ = [
+    { label: 'Skanowanie', plan1: 'gratis' },
+    { label: 'Duplex', plan1: '+' },
+    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+  ]
+
+  let tableData = 
+    subcategoryId === 'drukarki-mono' ? (isDrukarkaZastepcza ? tableDataMonoDZ : tableDataMono) :
+    // Для a3-drukarki-mono на странице "Drukarka Zastępcza" используем те же данные, что и для a3-drukarki-kolor, чтобы структура была идентичной
+    subcategoryId === 'a3-drukarki-mono' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Mono) :
+    subcategoryId === 'drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataKolorDZ : tableDataKolor) :
+    subcategoryId === 'a3-drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Kolor) :
+    subcategoryId === 'mfu-mono' ? (isDrukarkaZastepcza ? tableDataMfuMonoDZ : tableDataMfuMono) :
+    subcategoryId === 'a3-mfu-mono' ? (isDrukarkaZastepcza ? tableDataA3MfuMonoDZ : tableDataA3MfuMono) :
+    subcategoryId === 'mfu-kolor' ? (isDrukarkaZastepcza ? tableDataMfuKolorDZ : tableDataMfuKolor) :
+    subcategoryId === 'a3-mfu-kolor' ? (isDrukarkaZastepcza ? tableDataA3MfuKolorDZ : tableDataA3MfuKolor) :
     []
+
+  // Для drukarka-zastepcza убираем plan3 из данных, строки "Liczba stron A4 wliczonych w czynsz", "Cena wydruku A4 mono (powyżej limitu)" и "Cena wydruku A4 kolor (powyżej limitu)" (кроме drukarki-mono, drukarki-kolor и всех A3 подкатегорий, где уже используются специальные таблицы)
+  const a3SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor']
+  if (isDrukarkaZastepcza && tableData.length > 0 && subcategoryId !== 'drukarki-mono' && subcategoryId !== 'drukarki-kolor' && !a3SubcategoryIds.includes(subcategoryId)) {
+    tableData = tableData
+      .filter(row => 
+        row.label !== 'Liczba stron A4 wliczonych w czynsz' && 
+        row.label !== 'Cena wydruku A4 mono (powyżej limitu)' &&
+        row.label !== 'Cena wydruku A4 kolor (powyżej limitu)'
+      )
+      .map(row => {
+        const { plan3, ...rest } = row as { label: string; plan1: string; plan2: string; plan3: string }
+        return rest
+      })
+  }
 
   // Функция для рендеринга label с переносами строк (для мобильной и десктопной версий)
   const renderLabel = (label: string, fontSize: string) => {
@@ -557,9 +698,9 @@ const WynajemTable = ({
   }
 
   // Функция для рендеринга значения с суффиксом "/mies.", "/min" или "zł"
-  const renderValueWithSuffix = (value: string, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string) => {
+  const renderValueWithSuffix = (value: string | undefined, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string) => {
+    if (!value) return null
     const isLimitRow = rowLabel === 'Liczba stron A4 wliczonych w czynsz'
-    
     // Для сложных значений типа "1 000 + 0" (без "str.") - разделяем на две строки
     if (value.includes(' + ') && !value.includes(' str.')) {
       const parts = value.split(' + ')
@@ -732,59 +873,171 @@ const WynajemTable = ({
       )
     }
     // Для остальных значений
+    // Для "gratis" и "+" на странице Drukarka Zastępcza используем стиль как у "(mono A4)"
+    if (isDrukarkaZastepcza && (value === 'gratis' || value === '+' || value === '-')) {
+      return (
+        <span 
+          className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]"
+          style={{ textShadow: supplementTextShadow }}
+        >
+          {value}
+        </span>
+      )
+    }
     return <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{value}</span>
   }
 
   return (
     <div 
-      className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+      className={cn(
+        "rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+      )}
     >
-      <div className="overflow-x-auto md:overflow-x-visible -mx-4 md:mx-0 px-4 md:px-0">
+      <div 
+        className="overflow-x-auto md:overflow-x-visible -mx-4 md:mx-0 px-4 md:px-0"
+        ref={(el) => {
+          // ВРЕМЕННО: измерение ширины родительского контейнера overflow-x-auto
+          if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
+            setTimeout(() => {
+              const overflowRect = el.getBoundingClientRect()
+              console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер overflow-x-auto:`, {
+                width: overflowRect.width
+              })
+            }, 150)
+          }
+        }}
+      >
         {/* Десктоп: flex с динамическими размерами из верхнего ряда */}
         <div 
           className="hidden md:block"
           style={{ marginLeft: `${leftOffset}px`, width: `calc(100% - ${leftOffset}px)` }}
+          ref={(el) => {
+            // ВРЕМЕННО: измерение ширины родительского контейнера md:block
+            if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
+              setTimeout(() => {
+                const mdBlockRect = el.getBoundingClientRect()
+                console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер md:block:`, {
+                  width: mdBlockRect.width,
+                  marginLeft: leftOffset,
+                  calculatedWidth: `calc(100% - ${leftOffset}px)`
+                })
+              }, 120)
+            }
+          }}
         >
           {tableData.map((row, idx) => {
-            const isSmallFontRow = row.label.includes('Skanowanie') || row.label.includes('Duplex') || row.label.includes('Prędkość druku')
-            const labelFontSize = isSmallFontRow ? 'text-[14px]' : 'text-[16px]'
-            const valueFontSize = isSmallFontRow ? 'text-[14px]' : (idx === 3 ? 'text-[14px]' : 'text-[16px]')
-            
-            return (
-              <div
-                key={idx}
-                className={`flex w-full items-center border-[#8b7a5a] ${idx === 0 ? 'border-t-2' : ''} border-b-2`}
-              >
+              if (!row || !(row as { label?: string }).label) return null
+              const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
+              const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
+              const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
+              const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[14px]' : 'text-[16px]')
+              const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
+              
+              return (
+                <div
+                  key={idx}
+                  data-subcategory={subcategoryId}
+                  className={cn(
+                    `flex w-full items-center border-[#8b7a5a] ${idx === 0 ? 'border-t-2' : ''} border-b-2`
+                  )}
+                >
                 {/* Пустая колонка для иконки */}
                 <div 
-                  style={columnWidths ? { width: `${columnWidths.icon}px`, marginRight: '8px' } : { width: '40px', marginRight: '8px' }}
+                  style={(() => {
+                    // Единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza
+                    const isA3A4OnDZ = isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)
+                    if (isA3A4OnDZ) {
+                      // Используем headerMeasurements если доступны (для точного выравнивания), иначе a3ReferenceWidths или columnWidths
+                      if (headerMeasurements) {
+                        return { 
+                          width: `${headerMeasurements.iconWidth}px`, 
+                          marginRight: `${headerMeasurements.distanceIconToText}px` 
+                        }
+                      }
+                      if (a3ReferenceWidths) {
+                        return { width: `${a3ReferenceWidths.icon}px`, marginRight: '8px' }
+                      }
+                      return columnWidths ? { width: `${columnWidths.icon}px`, marginRight: '8px' } : { width: '40px', marginRight: '8px' }
+                    }
+                    return columnWidths ? { width: `${columnWidths.icon}px`, marginRight: '8px' } : { width: '40px', marginRight: '8px' }
+                  })()}
                 ></div>
                 {/* Колонка с описанием */}
                 <div 
-                  className={`px-2 py-1 flex items-center leading-[1.4] font-table-main ${labelFontSize} text-[rgba(255,255,245,0.85)]`}
-                  style={columnWidths ? { width: `${columnWidths.text}px` } : undefined}
+                  className={cn(
+                    `px-2 flex items-center font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)]`,
+                    isDrukarkaZastepcza 
+                      ? (isSmallFontRow ? 'py-0' : 'py-[3px]')
+                      : (isSmallFontRow ? 'py-0.5' : 'py-1')
+                  )}
+                  style={(() => {
+                    // Единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza
+                    const isA3A4OnDZ = isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)
+                    if (isA3A4OnDZ) {
+                      // Используем headerMeasurements если доступны, иначе a3ReferenceWidths или columnWidths
+                      if (headerMeasurements) {
+                        return { width: `${headerMeasurements.textWidth}px` }
+                      }
+                      if (a3ReferenceWidths) {
+                        return { width: `${a3ReferenceWidths.text}px` }
+                      }
+                      return columnWidths ? { width: `${columnWidths.text}px` } : undefined
+                    }
+                    return columnWidths ? { width: `${columnWidths.text}px` } : undefined
+                  })()}
                 >
-                  {renderLabel(row.label, labelFontSize)}
+                  {renderLabel(typedRow.label, labelFontSize)}
                 </div>
-                {/* Три колонки с данными - используют точные размеры из верхнего ряда */}
-                <div 
-                  className="px-2 py-1 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
-                  style={columnWidths ? { width: `${columnWidths.price1}px`, marginLeft: '8px' } : undefined}
-                >
-                  {renderValueWithSuffix(row.plan1, valueFontSize, idx === 1 ? 0 : 0, row.label)}
-                </div>
-                <div 
-                  className="px-2 py-1 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
-                  style={columnWidths ? { width: `${columnWidths.price2}px` } : undefined}
-                >
-                  {renderValueWithSuffix(row.plan2, valueFontSize, idx === 1 ? 1 : 0, row.label)}
-                </div>
-                <div 
-                  className="px-2 py-1 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
-                  style={columnWidths ? { width: `${columnWidths.price3}px` } : undefined}
-                >
-                  {renderValueWithSuffix(row.plan3, valueFontSize, idx === 1 ? 2 : 0, row.label)}
-                </div>
+                {/* Колонка с данными - единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
+                {typedRow.plan1 && (
+                  <div 
+                    className={cn(
+                      "px-2 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]",
+                      isDrukarkaZastepcza 
+                        ? "py-[3px]"
+                        : "py-1"
+                    )}
+                    style={(() => {
+                      // Единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza
+                      const isA3A4OnDZ = isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)
+                      if (isA3A4OnDZ) {
+                        // Используем headerMeasurements если доступны для точного выравнивания
+                        if (headerMeasurements) {
+                          return { 
+                            width: '22.5%', 
+                            marginLeft: `${headerMeasurements.distanceTextToPrice1}px` 
+                          }
+                        }
+                        return { width: '22.5%', marginLeft: '8px' }
+                      }
+                      return columnWidths ? { width: `${columnWidths.price1}px`, marginLeft: '8px' } : undefined
+                    })()}
+                  >
+                    {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label)}
+                  </div>
+                )}
+                {/* Второй столбец удален для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
+                {typedRow.plan2 && !(isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)) && (
+                  <div 
+                    className={cn(
+                      "px-2 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]",
+                      isDrukarkaZastepcza 
+                        ? "py-[3px]"
+                        : "py-1"
+                    )}
+                    style={columnWidths ? { width: `${columnWidths.price2}px` } : undefined}
+                  >
+                    {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label)}
+                  </div>
+                )}
+                {!isDrukarkaZastepcza && typedRow.plan3 && (
+                  <div 
+                    className="px-2 py-1 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
+                    style={columnWidths ? { width: `${columnWidths.price3}px` } : undefined}
+                  >
+                    {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label)}
+                  </div>
+                )}
               </div>
             )
           })}
@@ -794,21 +1047,21 @@ const WynajemTable = ({
           <div className="overflow-x-auto scroll-smooth" style={{ WebkitOverflowScrolling: 'touch' }}>
             <Table className="border-separate" style={{ minWidth: '100%', width: '100%', borderSpacing: '2px 0', tableLayout: 'fixed' }}>
               <colgroup>
-                <col style={{ width: '48%', minWidth: '120px' }} />
-                <col style={{ width: '17.33%', minWidth: '45px' }} />
-                <col style={{ width: '17.33%', minWidth: '45px' }} />
-                <col style={{ width: '17.33%', minWidth: '45px' }} />
+                <col style={{ width: isDrukarkaZastepcza ? '55%' : '48%', minWidth: '120px' }} />
+                <col style={{ width: isDrukarkaZastepcza ? '22.5%' : '17.33%', minWidth: '45px' }} />
+                <col style={{ width: isDrukarkaZastepcza ? '22.5%' : '17.33%', minWidth: '45px' }} />
+                {!isDrukarkaZastepcza && <col style={{ width: '17.33%', minWidth: '45px' }} />}
               </colgroup>
               <TableHeader>
                 <TableRow className="border-[#8b7a5a] border-b-2 border-t-2">
                   <TableHead 
                     className="px-2 pr-3 align-middle text-left" 
-                    style={{ width: '48%', minWidth: '120px', maxWidth: '48%', boxSizing: 'border-box', whiteSpace: 'normal' }}
+                    style={{ width: isDrukarkaZastepcza ? '55%' : '48%', minWidth: '120px', maxWidth: isDrukarkaZastepcza ? '55%' : '48%', boxSizing: 'border-box', whiteSpace: 'normal' }}
                   ></TableHead>
                   <TableHead 
-                    colSpan={3} 
+                    colSpan={isDrukarkaZastepcza ? 1 : 3} 
                     className="pl-2 pr-2 align-middle text-center border-l-2 border-[#8b7a5a]" 
-                    style={{ width: '52%', maxWidth: '52%', boxSizing: 'border-box', overflow: 'hidden' }}
+                    style={{ width: isDrukarkaZastepcza ? '45%' : '52%', maxWidth: isDrukarkaZastepcza ? '45%' : '52%', boxSizing: 'border-box', overflow: 'hidden' }}
                   >
                     {/* Надпись "Czynsz wynajmu [zł/mies.]" убрана из таблицы - теперь она в шапке секции */}
                     <div className="hidden md:block text-lg font-cormorant font-semibold text-[#ffffff] leading-tight">
@@ -819,73 +1072,100 @@ const WynajemTable = ({
               </TableHeader>
               <TableBody>
                 {tableData.map((row, idx) => {
-                  const isSmallFontRow = row.label.includes('Skanowanie') || row.label.includes('Duplex') || row.label.includes('Prędkość druku')
-                  const labelFontSize = isSmallFontRow ? 'text-[14px]' : 'text-[16px]'
-                  const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[13px]' : 'text-[15px]')
-                  const isLastRow = idx === tableData.length - 1
-                  const borderBottomStyle = isLastRow ? 'none' : 'solid'
-                  const borderBottomColor = isLastRow ? 'transparent' : 'rgba(139, 122, 90, 0.75)'
-                  
-                  return (
-                    <TableRow
-                      key={idx}
-                      style={{ 
-                        borderBottomColor,
-                        borderBottomWidth: '1.5px',
-                        borderBottomStyle
-                      }}
-                    >
+                    if (!row || !(row as { label?: string }).label) return null
+                    const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
+                    const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
+                    const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
+                    const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[13px]' : 'text-[15px]')
+                    const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
+                    const isLastRow = idx === tableData.length - 1
+                    const borderBottomStyle = isLastRow ? 'none' : 'solid'
+                    const borderBottomColor = isLastRow ? 'transparent' : 'rgba(139, 122, 90, 0.75)'
+                    
+                    return (
+                      <TableRow
+                        key={idx}
+                        style={{ 
+                          borderBottomColor,
+                          borderBottomWidth: '1.5px',
+                          borderBottomStyle
+                        }}
+                      >
                       <TableCell 
-                        className={`px-2 pr-3 py-2.5 align-middle text-left leading-[1.4] font-table-main ${labelFontSize} text-[rgba(255,255,245,0.85)] break-words`} 
+                        className={cn(
+                          `px-2 pr-3 align-middle text-left font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)] break-words`,
+                          isDrukarkaZastepcza
+                            ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
+                            : (isSmallFontRow ? 'py-1' : 'py-2.5')
+                        )} 
                         style={{ 
                           wordBreak: 'break-word', 
                           overflowWrap: 'break-word', 
-                          width: '48%', 
+                          width: isDrukarkaZastepcza ? '55%' : '48%', 
                           minWidth: '120px',
-                          maxWidth: '48%',
+                          maxWidth: isDrukarkaZastepcza ? '55%' : '48%',
                           boxSizing: 'border-box',
                           whiteSpace: 'normal',
                           borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                         }}
                       >
-                        {renderLabel(row.label, labelFontSize)}
+                        {renderLabel(typedRow.label, labelFontSize)}
                       </TableCell>
-                      <TableCell 
-                        className="pl-2 pr-1 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]" 
-                        style={{ 
-                          width: '17.33%', 
-                          minWidth: '45px', 
-                          maxWidth: '17.33%', 
-                          boxSizing: 'border-box', 
-                          borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
-                        }}
-                      >
-                        {renderValueWithSuffix(row.plan1, valueFontSize, idx === 1 ? 0 : 0, row.label)}
-                      </TableCell>
-                      <TableCell 
-                        className="pl-1.5 pr-1 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]" 
-                        style={{ 
-                          width: '17.33%', 
-                          minWidth: '45px', 
-                          maxWidth: '17.33%', 
-                          boxSizing: 'border-box', 
-                          borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
-                        }}
-                      >
-                        {renderValueWithSuffix(row.plan2, valueFontSize, idx === 1 ? 1 : 0, row.label)}
-                      </TableCell>
-                      <TableCell 
-                        className="pl-1.5 pr-2 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]" 
-                        style={{ 
-                          width: '17.33%', 
-                          minWidth: '45px', 
-                          maxWidth: '17.33%', 
-                          boxSizing: 'border-box', 
-                          borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
-                        }}
-                      >
-                        {renderValueWithSuffix(row.plan3, valueFontSize, idx === 1 ? 2 : 0, row.label)}
-                      </TableCell>
+                      {typedRow.plan1 && (
+                        <TableCell 
+                          className={cn(
+                            "pl-2 pr-1 align-middle text-center border-l-2 border-[#8b7a5a]",
+                            lineHeight,
+                            isDrukarkaZastepcza
+                              ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
+                              : (isSmallFontRow ? 'py-1' : 'py-2.5')
+                          )} 
+                          style={{ 
+                            width: isDrukarkaZastepcza ? '45%' : '17.33%', 
+                            minWidth: '45px', 
+                            maxWidth: isDrukarkaZastepcza ? '45%' : '17.33%', 
+                            boxSizing: 'border-box', 
+                            borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
+                          }}
+                        >
+                          {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label)}
+                        </TableCell>
+                      )}
+                      {/* Второй столбец удален для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
+                      {typedRow.plan2 && !(isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)) && (
+                        <TableCell
+                          className={cn(
+                            `${isDrukarkaZastepcza ? 'pl-1.5 pr-2' : 'pl-1.5 pr-1'} align-middle text-center border-l-2 border-[#8b7a5a]`,
+                            lineHeight,
+                            isDrukarkaZastepcza
+                              ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
+                              : (isSmallFontRow ? 'py-1' : 'py-2.5')
+                          )}
+                          style={{ 
+                            width: isDrukarkaZastepcza ? '22.5%' : '17.33%', 
+                            minWidth: '45px', 
+                            maxWidth: isDrukarkaZastepcza ? '22.5%' : '17.33%', 
+                            boxSizing: 'border-box', 
+                            borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
+                          }}
+                        >
+                          {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label)}
+                        </TableCell>
+                      )}
+                      {!isDrukarkaZastepcza && typedRow.plan3 && (
+                        <TableCell 
+                          className="pl-1.5 pr-2 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]" 
+                          style={{ 
+                            width: '17.33%', 
+                            minWidth: '45px', 
+                            maxWidth: '17.33%', 
+                            boxSizing: 'border-box', 
+                            borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
+                          }}
+                        >
+                          {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label)}
+                        </TableCell>
+                      )}
                     </TableRow>
                   )
                 })}
@@ -1288,13 +1568,17 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             <AccordionItem
               key={section.id}
               value={section.id}
-              className="border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
+              className={cn(
+                "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
+              )}
               ref={node => {
                 sectionRefs.current[section.id] = node
               }}
             >
               <div 
-                className="group relative min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl group-data-[state=open]:border-b group-data-[state=open]:border-b-[rgba(191,167,106,0.2)] w-full bg-[rgba(5,5,5,0.85)]"
+                className={cn(
+                  "group relative min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl group-data-[state=open]:border-b group-data-[state=open]:border-b-[rgba(191,167,106,0.2)] w-full bg-[rgba(5,5,5,0.85)]"
+                )}
               >
                 <AccordionTrigger 
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0"
@@ -1351,12 +1635,26 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                   return section.title
                                 })()}
                               </h3>
-                              {/* "Czynsz wynajmu [zł/mies.]" над столбцами цен - мобильная версия, только когда аккордеон открыт */}
-                              {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
+                              {/* "Czynsz wynajmu [zł/mies.]" или "Cena wydruku format A4 [mono/kolor]" над столбцами цен - мобильная версия, только когда аккордеон открыт */}
+                              {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
                                   <span className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight whitespace-nowrap">
                                     Czynsz wynajmu [zł/mies.]
                                   </span>
+                                </div>
+                              )}
+                              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
+                                <div className="flex-shrink-0">
+                                  <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
+                                    <div>Cena wydruku</div>
+                                  </div>
+                                </div>
+                              )}
+                              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && isSectionOpen(section.id) && (
+                                <div className="flex-shrink-0">
+                                  <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
+                                    <div>Cena wydruku</div>
+                                  </div>
                                 </div>
                               )}
                             </div>
@@ -1428,19 +1726,19 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                       width: `${priceColumnsPosition1DZ.width}px`,
                                     }}
                                   >
-                                    <div className="text-center">
-                                      <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        Czynsz wynajmu [zł/mies.]
-                                      </span>
+                                    <div className="text-left" style={{ marginLeft: '50px' }}>
+                                      <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
+                                        <div>Cena wydruku</div>
+                                      </div>
                                     </div>
                                   </div>
                                 </>
                               ) : (
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                  <div className="text-center">
-                                    <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
-                                    </span>
+                                  <div className="text-left" style={{ marginLeft: '50px' }}>
+                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
+                                      <div>Cena wydruku</div>
+                                    </div>
                                   </div>
                                 </div>
                               )}
@@ -1457,18 +1755,18 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     width: `${priceColumnsPosition2DZ.width}px`,
                                   }}
                                 >
-                                  <div className="text-center">
-                                    <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
-                                    </span>
+                                    <div className="text-left" style={{ marginLeft: '50px' }}>
+                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
+                                      <div>Cena wydruku</div>
+                                    </div>
                                   </div>
                                 </div>
                               ) : (
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                  <div className="text-center">
-                                    <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
-                                    </span>
+                                    <div className="text-left" style={{ marginLeft: '50px' }}>
+                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
+                                      <div>Cena wydruku</div>
+                                    </div>
                                   </div>
                                 </div>
                               )}
@@ -1628,7 +1926,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               section.id === 'faq'
                                 ? 'py-1 px-2 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                ? service.slug === 'drukarka-zastepcza'
+                                  ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                  : 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
                                 : 'py-1.5 px-1.5 md:py-2 md:px-3',
                             )}
                           >
@@ -1643,7 +1943,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 {/* Grid контейнер занимает calc(100% - 40px) для учета стрелки справа */}
                                 {/* Пропорции колонок подобраны вручную для точного совпадения центров: */}
                                 {/* Иконка (40px) + Gap (16px) + Текст (2.15fr) + Цены (0.95fr каждая) */}
-                                <div className="hidden md:flex items-center" style={{ 
+                                <div className={cn(
+                                  "hidden md:flex items-center",
+                                  service.slug === 'drukarka-zastepcza' && "gap-[1px]"
+                                )} style={{ 
                                   width: 'calc(100% - 40px)' // Вычитаем место для стрелки справа (40px)
                                 }}>
                                   {(() => {
@@ -1663,27 +1966,41 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     }
                                     const headerRefs = headerRefsObj.current[subcategoryKey]
                                     
+                                    const isA3DrukarkiMonoHeader = subcategory.id === 'a3-drukarki-mono'
+                                    const isA3DrukarkiKolorHeader = subcategory.id === 'a3-drukarki-kolor'
+                                    
                                     return (
                                       <>
-                                        <div 
+                                        <div
                                           ref={headerRefs.icon}
-                                          className="w-[40px] h-[40px] flex-shrink-0 flex items-center justify-center mr-2"
+                                          className={cn(
+                                            "flex-shrink-0 flex items-center justify-center",
+                                            "h-[60px] w-[60px] md:h-[50px] md:w-[50px]"
+                                          )}
                                         >
                                           <Image
                                             src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
                                             alt={subcategory.title}
-                                            width={40}
-                                            height={40}
-                                            className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                                            width={100}
+                                            height={100}
+                                            className={cn(
+                                              "w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                              service.slug === 'drukarka-zastepcza' ? "object-cover" : "object-contain"
+                                            )}
                                             unoptimized
                                           />
                                         </div>
-                                        <div 
+                                        <div
                                           ref={headerRefs.text}
-                                          className="min-w-0" 
+                                          data-measure-text={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? 'true' : undefined}
+                                          className={cn(
+                                            "min-w-0"
+                                          )}
                                           style={{ width: 'calc((100% - 40px - 8px) * 0.4)' }}
                                         >
-                                          <h4 className="text-lg font-semibold text-[#ffffff] font-table-main leading-[1.3]">
+                                          <h4 className={cn(
+                                            "text-lg font-semibold text-[#ffffff] font-table-main leading-[1.3]"
+                                          )}>
                                             {(() => {
                                               const title = subcategory.title
                                               // Для wynajem-drukarek и drukarka-zastepcza подкатегорий части в скобках оформляем в том же стиле
@@ -1725,28 +2042,384 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                             <ArrowRight className="w-3 h-3 flex-shrink-0" />
                                           </div>
                                         </div>
-                                        {subcategory.price.split(' / ').map((price, idx) => (
-                                          <div 
-                                            key={idx}
-                                            ref={headerRefs.prices[idx]}
-                                            className="flex items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                            style={{ width: `calc((100% - 40px - 8px) * 0.2)`, marginLeft: idx === 0 ? '8px' : '0' }}
-                                          >
-                                            <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
-                                              <span className="inline-flex items-start">
-                                                <span>{price}</span>
-                                                {isSubcategoryOpen(section.id, subcategory.id) && (
-                                                  <span 
-                                                    className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                    style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
-                                                  >
-                                                    zł
-                                                  </span>
+                                        {(() => {
+                                        // Для drukarki-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
+                                        if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'drukarki-mono') {
+                                          return (
+                                            <>
+                                              <div 
+                                                ref={headerRefs.prices[0]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
                                                 )}
-                                              </span>
-                                            </div>
-                                          </div>
-                                        ))}
+                                                style={{ width: `22.5%`, marginLeft: '8px' }}
+                                              >
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                  <span className="inline-flex items-start">
+                                                    <span>0,05</span>
+                                                    <span 
+                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                    >
+                                                      zł
+                                                    </span>
+                                                    <span
+                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                      style={{ textShadow: supplementTextShadow }}
+                                                    >
+                                                      (mono)
+                                                    </span>
+                                                  </span>
+                                                </div>
+                                              </div>
+                                              <div 
+                                                ref={headerRefs.prices[1]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ width: `22.5%`, marginLeft: '0' }}
+                                              >
+                                                {/* Пустой столбец для выравнивания */}
+                                              </div>
+                                            </>
+                                          )
+                                        }
+                                        // Для mfu-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
+                                        if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'mfu-mono') {
+                                          return (
+                                            <>
+                                              <div 
+                                                ref={headerRefs.prices[0]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ width: `22.5%`, marginLeft: '8px' }}
+                                              >
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                  <span className="inline-flex items-start">
+                                                    <span>0,08</span>
+                                                    <span 
+                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                    >
+                                                      zł
+                                                    </span>
+                                                    <span
+                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                      style={{ textShadow: supplementTextShadow }}
+                                                    >
+                                                      (mono)
+                                                    </span>
+                                                  </span>
+                                                </div>
+                                              </div>
+                                              <div 
+                                                ref={headerRefs.prices[1]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ width: `22.5%`, marginLeft: '0' }}
+                                              >
+                                                {/* Пустой столбец для выравнивания */}
+                                              </div>
+                                            </>
+                                          )
+                                        }
+                                          // Для остальных - как было
+                                          return subcategory.price.split(' / ').map((price, idx) => {
+                                            // Определяем label для drukarka-zastepcza
+                                            const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                            const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
+                                            const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
+                                            const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                            const isMono = subcategory.title.includes('mono') && !isMonoKolor
+                                            
+                                            // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
+                                            const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
+                                            const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
+                                            const isA3MfuKolor = subcategory.id === 'a3-mfu-kolor'
+                                            let priceLabel = ''
+                                            let secondPriceLabel = ''
+                                            let secondPrice = '0'
+                                            
+                                            if (isDrukarkaZastepczaA4) {
+                                              if (isA3DrukarkiMono || isA3DrukarkiKolor) {
+                                                // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,10'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,53'
+                                                }
+                                              } else if (isA3MfuMono) {
+                                                // Для a3-mfu-mono: первый контейнер - "(mono A4)", второй - "(mono A3)"
+                                                priceLabel = '(mono A4)'
+                                                secondPriceLabel = '(mono A3)'
+                                                secondPrice = '0,14'
+                                              } else if (isA3MfuKolor) {
+                                                // Для a3-mfu-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,14'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,60'
+                                                }
+                                              } else if (isMonoKolor) {
+                                                priceLabel = idx === 0 ? '(mono)' : '(kolor)'
+                                                secondPriceLabel = priceLabel
+                                              } else if (isMono) {
+                                                priceLabel = '(mono)'
+                                                secondPriceLabel = priceLabel
+                                              }
+                                            }
+                                            
+                                            return (
+                                              <div 
+                                                key={idx}
+                                                ref={headerRefs.prices[idx]}
+                                                data-measure-price={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? `${idx}` : undefined}
+                                                data-price-value={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? price : undefined}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ 
+                                                  width: `22.5%`, 
+                                                  marginLeft: idx === 0 ? '8px' : '0'
+                                                }}
+                                              >
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                  <span className="inline-flex items-start">
+                                                    <span>{price}</span>
+                                                    {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                      <span 
+                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                    )}
+                                                    {priceLabel && (
+                                                      <span
+                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                        style={{ textShadow: supplementTextShadow }}
+                                                      >
+                                                        {priceLabel}
+                                                      </span>
+                                                    )}
+                                                  </span>
+                                                </div>
+                                                {/* Второй контейнер для akordeon-2 */}
+                                                {isDrukarkaZastepczaA3 && (isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor ? secondPriceLabel : priceLabel) && (
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
+                                                    <span className="inline-flex items-start">
+                                                      <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
+                                                      <span 
+                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                      <span
+                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                        style={{ textShadow: supplementTextShadow }}
+                                                      >
+                                                        {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
+                                                      </span>
+                                                    </span>
+                                                  </div>
+                                                )}
+                                              </div>
+                                            )
+                                          })
+                                          
+                                          // Если это drukarka-zastepcza и только одна цена (не mono+kolor и не A3 подкатегории), добавляем пустой столбец для выравнивания
+                                          if (!subcategory.price) return null
+                                          
+                                          const isA3DrukarkiMonoCheck = subcategory.id === 'a3-drukarki-mono'
+                                          const isA3DrukarkiKolorCheck = subcategory.id === 'a3-drukarki-kolor'
+                                          const isA3MfuMonoCheck = subcategory.id === 'a3-mfu-mono'
+                                          const isA3MfuKolorCheck = subcategory.id === 'a3-mfu-kolor'
+                                          
+                                          const prices = subcategory.price!.split(' / ')
+                                          const isSinglePrice = prices.length === 1
+                                          const isNotA3Subcategory = !isA3DrukarkiMonoCheck && !isA3DrukarkiKolorCheck && !isA3MfuMonoCheck && !isA3MfuKolorCheck
+                                          
+                                          if (service.slug === 'drukarka-zastepcza' && isSinglePrice && isNotA3Subcategory) {
+                                            const priceElements = subcategory.price!.split(' / ').map((price, idx) => {
+                                              const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                              const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                              const isMono = subcategory.title.includes('mono') && !isMonoKolor
+                                              let priceLabel = ''
+                                              
+                                              if (isDrukarkaZastepczaA4) {
+                                                if (isMono) {
+                                                  priceLabel = '(mono)'
+                                                }
+                                              }
+                                              
+                                              return (
+                                                <div 
+                                                  key={idx}
+                                                  ref={headerRefs.prices[idx]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                                >
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                    <span className="inline-flex items-start">
+                                                      <span>{price}</span>
+                                                      {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                        <span 
+                                                          className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                          style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                        >
+                                                          zł
+                                                        </span>
+                                                      )}
+                                                      {priceLabel && (
+                                                        <span
+                                                          className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                          style={{ textShadow: supplementTextShadow }}
+                                                        >
+                                                          {priceLabel}
+                                                        </span>
+                                                      )}
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              )
+                                            })
+                                            
+                                            return (
+                                              <>
+                                                {priceElements}
+                                                <div 
+                                                  ref={headerRefs.prices[1]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: '0' }}
+                                                >
+                                                  {/* Пустой столбец для выравнивания */}
+                                                </div>
+                                              </>
+                                            )
+                                          }
+                                          
+                                          return subcategory.price!.split(' / ').map((price, idx) => {
+                                            // Определяем label для drukarka-zastepcza
+                                            const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                            const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
+                                            const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
+                                            const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                            const isMono = subcategory.title.includes('mono') && !isMonoKolor
+                                            
+                                            // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
+                                            const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
+                                            const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
+                                            const isA3MfuKolor = subcategory.id === 'a3-mfu-kolor'
+                                            let priceLabel = ''
+                                            let secondPriceLabel = ''
+                                            let secondPrice = '0'
+                                            
+                                            if (isDrukarkaZastepczaA4) {
+                                              if (isA3DrukarkiMono || isA3DrukarkiKolor) {
+                                                // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,10'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,53'
+                                                }
+                                              } else if (isA3MfuMono) {
+                                                // Для a3-mfu-mono: первый контейнер - "(mono A4)", второй - "(mono A3)"
+                                                priceLabel = '(mono A4)'
+                                                secondPriceLabel = '(mono A3)'
+                                                secondPrice = '0,14'
+                                              } else if (isA3MfuKolor) {
+                                                // Для a3-mfu-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,14'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,60'
+                                                }
+                                              } else if (isMonoKolor) {
+                                                priceLabel = idx === 0 ? '(mono)' : '(kolor)'
+                                                secondPriceLabel = priceLabel
+                                              } else if (isMono) {
+                                                priceLabel = '(mono)'
+                                                secondPriceLabel = priceLabel
+                                              }
+                                            }
+                                            
+                                            return (
+                                              <div 
+                                                key={idx}
+                                                ref={headerRefs.prices[idx]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                              >
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                  <span className="inline-flex items-start">
+                                                    <span>{price}</span>
+                                                    {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                      <span 
+                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                    )}
+                                                    {priceLabel && (
+                                                      <span
+                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                        style={{ textShadow: supplementTextShadow }}
+                                                      >
+                                                        {priceLabel}
+                                                      </span>
+                                                    )}
+                                                  </span>
+                                                </div>
+                                                {/* Второй контейнер для akordeon-2 */}
+                                                {isDrukarkaZastepczaA3 && (isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor ? secondPriceLabel : priceLabel) && (
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
+                                                    <span className="inline-flex items-start">
+                                                      <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
+                                                      <span 
+                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                      <span
+                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                        style={{ textShadow: supplementTextShadow }}
+                                                      >
+                                                        {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
+                                                      </span>
+                                                    </span>
+                                                  </div>
+                                                )}
+                                              </div>
+                                            )
+                                          })
+                                        })()}
                                       </>
                                     )
                                   })()}
@@ -1758,18 +2431,24 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     : "gap-2"
                                 )}>
                                   <div className={cn(
-                                    "flex gap-2.5",
+                                    "flex gap-[1px]",
                                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) 
                                       ? "items-center" 
                                       : "items-start"
                                   )}>
-                                    <div className="w-[40px] h-[40px] flex-shrink-0 flex items-center justify-center">
+                                    <div className={cn(
+                                      "flex-shrink-0 flex items-center justify-center",
+                                      "h-[60px] w-[60px]"
+                                    )}>
                                       <Image
                                         src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
                                         alt={subcategory.title}
-                                        width={40}
-                                        height={40}
-                                        className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                                        width={100}
+                                        height={100}
+                                        className={cn(
+                                          "w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                          service.slug === 'drukarka-zastepcza' ? "object-cover" : "object-contain"
+                                        )}
                                         unoptimized
                                       />
                                     </div>
@@ -1815,29 +2494,168 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     {/* Цены справа - только на мобильных, выровнены с таблицей внутри аккордеона */}
                                     {/* Блок занимает 100% оставшегося места, внутри три равные колонки */}
                                     <div className="flex items-center flex-1">
-                                      {subcategory.price.split(' / ').map((price, idx) => (
-                                        <div 
-                                          key={idx}
-                                          className="flex items-center justify-center text-center border-l-2 border-[#8b7a5a] pl-2 pr-2 flex-1"
-                                          style={{ 
-                                            boxSizing: 'border-box'
-                                          }}
-                                        >
-                                          <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
-                                            <span className="inline-flex items-start">
-                                              <span>{price}</span>
-                                              {isSubcategoryOpen(section.id, subcategory.id) && (
-                                                <span 
-                                                  className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                  style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                      {(() => {
+                                        // Для drukarki-mono на drukarka-zastepcza показываем только одну цену "0,05 zł"
+                                        if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'drukarki-mono') {
+                                          return (
+                                            <div 
+                                              className="flex items-center justify-center text-center border-l-2 border-[#8b7a5a] pl-2 pr-2 flex-1"
+                                              style={{ 
+                                                boxSizing: 'border-box'
+                                              }}
+                                            >
+                                              <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                <span className="inline-flex items-start">
+                                                  <span>0,05</span>
+                                                  <span 
+                                                    className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                    style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                  >
+                                                    zł
+                                                  </span>
+                                                  <span
+                                                    className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                    style={{ textShadow: supplementTextShadow }}
+                                                  >
+                                                    (mono)
+                                                  </span>
+                                                </span>
+                                              </div>
+                                              </div>
+                                            )
+                                          }
+                                          // Для остальных - как было
+                                          const pricesArray = subcategory.price.split(' / ')
+                                          return pricesArray.map((price, idx) => {
+                                          // Определяем label для drukarka-zastepcza
+                                          const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                          const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
+                                          const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
+                                          const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                          const isMono = subcategory.title.includes('mono') && !isMonoKolor
+                                          
+                                          // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
+                                          const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
+                                          const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
+                                          const isA3MfuKolor = subcategory.id === 'a3-mfu-kolor'
+                                          let priceLabel = ''
+                                          let secondPriceLabel = ''
+                                          let secondPrice = '0'
+                                          
+                                          if (isDrukarkaZastepczaA4) {
+                                            if (isA3DrukarkiMono || isA3DrukarkiKolor) {
+                                              // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                              if (idx === 0) {
+                                                priceLabel = '(mono A4)'
+                                                secondPriceLabel = '(mono A3)'
+                                                secondPrice = '0,10'
+                                              } else {
+                                                priceLabel = '(kolor A4)'
+                                                secondPriceLabel = '(kolor A3)'
+                                                secondPrice = '0,53'
+                                              }
+                                            } else if (isA3MfuMono) {
+                                              // Для a3-mfu-mono: первый контейнер - "(mono A4)", второй - "(mono A3)"
+                                              priceLabel = '(mono A4)'
+                                              secondPriceLabel = '(mono A3)'
+                                              secondPrice = '0,14'
+                                            } else if (isA3MfuKolor) {
+                                              // Для a3-mfu-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                              if (idx === 0) {
+                                                priceLabel = '(mono A4)'
+                                                secondPriceLabel = '(mono A3)'
+                                                secondPrice = '0,14'
+                                              } else {
+                                                priceLabel = '(kolor A4)'
+                                                secondPriceLabel = '(kolor A3)'
+                                                secondPrice = '0,60'
+                                              }
+                                            } else if (isMonoKolor) {
+                                              priceLabel = idx === 0 ? '(mono)' : '(kolor)'
+                                              secondPriceLabel = priceLabel
+                                            } else if (isMono) {
+                                              priceLabel = '(mono)'
+                                              secondPriceLabel = priceLabel
+                                            }
+                                          }
+                                          
+                                          const hasTwoPrices = (subcategory.price?.split(' / ') || []).length === 2
+                                          // Для akordeon-2 метки всегда снизу на мобильных
+                                          const shouldShowLabelBelow = isDrukarkaZastepczaA3 || hasTwoPrices
+                                          
+                                          return (
+                                            <div 
+                                              key={idx}
+                                              className={cn(
+                                                "flex flex-col items-center justify-center text-center border-l-2 border-[#8b7a5a] pl-2 pr-2 flex-1"
+                                              )}
+                                              style={{ 
+                                                boxSizing: 'border-box'
+                                              }}
+                                            >
+                                              <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                <span className="inline-flex items-start">
+                                                  <span>{price}</span>
+                                                  {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                    <span 
+                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                    >
+                                                      zł
+                                                    </span>
+                                                  )}
+                                                  {priceLabel && !shouldShowLabelBelow && (
+                                                    <span
+                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                      style={{ textShadow: supplementTextShadow }}
+                                                    >
+                                                      {priceLabel}
+                                                    </span>
+                                                  )}
+                                                </span>
+                                              </div>
+                                              {priceLabel && shouldShowLabelBelow && (
+                                                <span
+                                                  className="font-table-sub text-[12px] text-[#ede0c4] leading-[1.3] mt-0.5"
+                                                  style={{ textShadow: supplementTextShadow }}
                                                 >
-                                                  zł
+                                                  {priceLabel}
                                                 </span>
                                               )}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      ))}
+                                              {/* Второй контейнер для akordeon-2 */}
+                                              {isDrukarkaZastepczaA3 && (isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor ? secondPriceLabel : priceLabel) && (
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
+                                                  <span className="inline-flex items-start">
+                                                    <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
+                                                    <span 
+                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
+                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                    >
+                                                      zł
+                                                    </span>
+                                                    {!shouldShowLabelBelow && (
+                                                      <span
+                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
+                                                        style={{ textShadow: supplementTextShadow }}
+                                                      >
+                                                        {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
+                                                      </span>
+                                                    )}
+                                                  </span>
+                                                  {shouldShowLabelBelow && (
+                                                    <span
+                                                      className="font-table-sub text-[12px] text-[#ede0c4] leading-[1.3] mt-0.5"
+                                                      style={{ textShadow: supplementTextShadow }}
+                                                    >
+                                                      {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
+                                                    </span>
+                                                  )}
+                                                </div>
+                                              )}
+                                            </div>
+                                          )
+                                        })
+                                      })()}
                                     </div>
                                   </div>
                                   <div className="pl-[52px] -mt-0.5">
@@ -1854,12 +2672,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             ) : (
                               <div className={`flex items-center w-full ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : 'gap-3'}`}>
                                 {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
-                                  <div className="mr-2 w-[40px] h-[40px] flex-shrink-0 flex items-center justify-center">
+                                  <div className="mr-2 h-[60px] w-[60px] md:h-[50px] md:w-[50px] flex-shrink-0 flex items-center justify-center">
                                     <Image
                                       src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
                                       alt={subcategory.title}
-                                      width={40}
-                                      height={40}
+                                      width={100}
+                                      height={100}
                                       className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
                                       unoptimized
                                     />
@@ -1956,7 +2774,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     ? wynajemHeaderRefs.current[subcategoryKey]
                                     : drukarkaZastepczaHeaderRefs.current[subcategoryKey]
                                   if (headerRefs) {
-                                    return <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} />
+                                    return <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} serviceSlug={service.slug} />
                                   }
                                   return null
                                 })()
