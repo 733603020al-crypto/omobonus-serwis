@@ -2774,7 +2774,7 @@ const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
 export const services: ServiceData[] = [
   {
     slug: 'serwis-laptopow',
-    title: 'Serwis Laptopów',
+    title: 'Serwis i Naprawa Laptopów',
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie „naprawa od 50 zł” lub „cena do uzgodnienia")',
     icon: manifest['01_serwis_laptopow'],
     description: 'Kompleksowa naprawa i konserwacja laptopów wszystkich marek.',

@@ -190,17 +190,15 @@ const parseServiceText = (text: string) => {
 
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
 
-// Общая функция для рендеринга второстепенного текста (стиль как у "do ceny")
+// Общая функция для рендеринга второстепенного текста (стиль как у SEO-текста)
 // Единый стиль для всех второстепенных описаний на страницах услуг
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
 const renderSecondaryText = (text: string, italic: boolean = false, key?: string | number) => (
   <div
     key={key ? `${text}-${key}` : undefined}
-    className={`font-table-sub text-[14px] leading-[1.3] ${italic ? 'italic' : ''}`}
+    className={`text-[12px] text-[#cbb27c] leading-relaxed ${italic ? 'italic' : ''}`}
     style={{ 
-      color: '#ede0c4',
       opacity: 1,
-      textShadow: supplementTextShadow,
       fontWeight: 'normal',
       fontStyle: italic ? 'italic' : 'normal'
     }}
@@ -299,13 +297,9 @@ export const renderDurationValue = (value: string) => (
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
 const renderParenthesesText = (text: string) => (
   <div
-    className="font-table-sub text-[14px] leading-[1.3]"
+    className="text-[14px] text-[#cbb27c] leading-relaxed"
     style={{ 
-      color: '#ede0c4',
-      opacity: 1,
-      textShadow: supplementTextShadow,
-      fontWeight: 'normal',
-      fontStyle: 'normal'
+      opacity: 1
     }}
   >
     ({text})
@@ -716,9 +710,8 @@ const WynajemTable = ({
               {/* Первая строка: "1 000 mono" */}
               <div className="flex items-baseline">
                 <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{firstPart}</span>
-                <span 
-                  className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1" 
-                  style={{ textShadow: supplementTextShadow }}
+                <span
+                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
                   mono
                 </span>
@@ -727,9 +720,8 @@ const WynajemTable = ({
               <div className="flex items-baseline">
                 <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
                 <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondPart}</span>
-                <span 
-                  className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1" 
-                  style={{ textShadow: supplementTextShadow }}
+                <span
+                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
                   kolor
                 </span>
@@ -740,9 +732,8 @@ const WynajemTable = ({
               {/* "1 000" */}
               <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{firstPart}</span>
               {/* "mono" */}
-              <span 
-                className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]" 
-                style={{ textShadow: supplementTextShadow }}
+              <span
+                className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
                 mono
               </span>
@@ -752,9 +743,8 @@ const WynajemTable = ({
                 <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondPart}</span>
               </div>
               {/* "kolor" */}
-              <span 
-                className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]" 
-                style={{ textShadow: supplementTextShadow }}
+              <span
+                className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
                 kolor
               </span>
@@ -791,8 +781,7 @@ const WynajemTable = ({
             <div className="flex items-baseline">
               <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
               <span 
-                className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1" 
-                style={{ textShadow: supplementTextShadow }}
+                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
               >
                 str.
               </span>
@@ -815,8 +804,7 @@ const WynajemTable = ({
             <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
             <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondNumber}</span>
             <span 
-              className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1" 
-              style={{ textShadow: supplementTextShadow }}
+                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
             >
               str.
             </span>
@@ -832,9 +820,8 @@ const WynajemTable = ({
       return (
         <div className="flex flex-col items-center">
           <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
-          <span 
-            className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]" 
-            style={{ textShadow: supplementTextShadow }}
+          <span
+            className="text-[14px] text-[#cbb27c] leading-relaxed"
           >
             str./mies.
           </span>
@@ -847,9 +834,8 @@ const WynajemTable = ({
       return (
         <span className="inline-flex items-baseline">
           <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
-          <span 
-            className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1" 
-            style={{ textShadow: supplementTextShadow }}
+          <span
+            className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
           >
             str./min
           </span>
@@ -863,9 +849,9 @@ const WynajemTable = ({
       return (
         <span className="inline-flex items-start">
           <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
-          <span 
-            className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-0.5" 
-            style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+          <span
+            className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5"
+            style={{ marginTop: '-3px' }}
           >
             zł
           </span>
@@ -876,9 +862,8 @@ const WynajemTable = ({
     // Для "gratis" и "+" на странице Drukarka Zastępcza используем стиль как у "(mono A4)"
     if (isDrukarkaZastepcza && (value === 'gratis' || value === '+' || value === '-')) {
       return (
-        <span 
-          className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]"
-          style={{ textShadow: supplementTextShadow }}
+        <span
+          className="text-[14px] text-[#cbb27c] leading-relaxed"
         >
           {value}
         </span>
@@ -1555,7 +1540,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 
 
   return (
-    <div className="container max-w-4xl mx-auto px-0 sm:px-4 md:px-6 pb-20 relative z-10">
+    <div className="container max-w-4xl mx-auto px-0 sm:px-4 md:px-6 pb-0 relative z-10">
       <div className="flex flex-col gap-4">
         <Accordion
           type="single"
@@ -1863,8 +1848,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               </div>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span
-                                  className="font-table-sub text-[14px] text-[#ede0c4] mt-0.5 leading-[1.3] hidden sm:block"
-                                  style={{ textShadow: supplementTextShadow }}
+                                  className="text-[14px] text-[#cbb27c] mt-0.5 leading-relaxed hidden sm:block"
                                 >
                                   (kategorie urządzeń)
                                 </span>
@@ -2020,11 +2004,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     </>
                                                   )
                                                 } else {
-                                                  // Для других секций - как было
+                                                  // Для других секций - унифицированный стиль как у SEO-текста
                                                   return (
                                                     <>
                                                       {mainPart}{' '}
-                                                      <span className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]" style={{ textShadow: supplementTextShadow }}>
+                                                      <span className="text-[14px] text-[#cbb27c] leading-relaxed">
                                                         ({bracketPart})
                                                       </span>
                                                     </>
@@ -2058,14 +2042,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <span className="inline-flex items-start">
                                                     <span>0,05</span>
                                                     <span 
-                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                     >
                                                       zł
                                                     </span>
                                                     <span
-                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                      style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                     >
                                                       (mono)
                                                     </span>
@@ -2099,14 +2082,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <span className="inline-flex items-start">
                                                     <span>0,08</span>
                                                     <span 
-                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                     >
                                                       zł
                                                     </span>
                                                     <span
-                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                      style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                     >
                                                       (mono)
                                                     </span>
@@ -2198,16 +2180,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     <span>{price}</span>
                                                     {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
                                                       <span 
-                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                     )}
                                                     {priceLabel && (
                                                       <span
-                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                        style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {priceLabel}
                                                       </span>
@@ -2220,14 +2201,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     <span className="inline-flex items-start">
                                                       <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
                                                       <span 
-                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                       <span
-                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                        style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                       </span>
@@ -2277,16 +2257,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                       <span>{price}</span>
                                                       {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
                                                         <span 
-                                                          className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                          style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                         >
                                                           zł
                                                         </span>
                                                       )}
                                                       {priceLabel && (
                                                         <span
-                                                          className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                          style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                         >
                                                           {priceLabel}
                                                         </span>
@@ -2380,16 +2359,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     <span>{price}</span>
                                                     {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
                                                       <span 
-                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                     )}
                                                     {priceLabel && (
                                                       <span
-                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                        style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {priceLabel}
                                                       </span>
@@ -2402,14 +2380,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     <span className="inline-flex items-start">
                                                       <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
                                                       <span 
-                                                        className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                        style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                       <span
-                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                        style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                       </span>
@@ -2476,11 +2453,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                 </>
                                               )
                                             } else {
-                                              // Для других секций - как было
+                                              // Для других секций - унифицированный стиль как у SEO-текста
                                               return (
                                                 <>
                                                   {mainPart}{' '}
-                                                  <span className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3]" style={{ textShadow: supplementTextShadow }}>
+                                                  <span className="text-[14px] text-[#cbb27c] leading-relaxed">
                                                     ({bracketPart})
                                                   </span>
                                                 </>
@@ -2508,14 +2485,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                 <span className="inline-flex items-start">
                                                   <span>0,05</span>
                                                   <span 
-                                                    className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                    style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                   >
                                                     zł
                                                   </span>
                                                   <span
-                                                    className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                    style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                   >
                                                     (mono)
                                                   </span>
@@ -2598,16 +2574,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <span>{price}</span>
                                                   {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
                                                     <span 
-                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                     >
                                                       zł
                                                     </span>
                                                   )}
                                                   {priceLabel && !shouldShowLabelBelow && (
                                                     <span
-                                                      className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                      style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                     >
                                                       {priceLabel}
                                                     </span>
@@ -2616,8 +2591,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                               </div>
                                               {priceLabel && shouldShowLabelBelow && (
                                                 <span
-                                                  className="font-table-sub text-[12px] text-[#ede0c4] leading-[1.3] mt-0.5"
-                                                  style={{ textShadow: supplementTextShadow }}
+                                                  className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5"
                                                 >
                                                   {priceLabel}
                                                 </span>
@@ -2628,15 +2602,14 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <span className="inline-flex items-start">
                                                     <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
                                                     <span 
-                                                      className="font-table-sub text-[16px] text-[#ede0c4] leading-[1.3] ml-0.5 inline-flex" 
-                                                      style={{ textShadow: supplementTextShadow, marginTop: '-3px' }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                      style={{ marginTop: '-3px' }}
                                                     >
                                                       zł
                                                     </span>
                                                     {!shouldShowLabelBelow && (
                                                       <span
-                                                        className="font-table-sub text-[14px] text-[#ede0c4] leading-[1.3] ml-1 inline-flex"
-                                                        style={{ textShadow: supplementTextShadow }}
+                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                       </span>
@@ -2644,8 +2617,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   </span>
                                                   {shouldShowLabelBelow && (
                                                     <span
-                                                      className="font-table-sub text-[12px] text-[#ede0c4] leading-[1.3] mt-0.5"
-                                                      style={{ textShadow: supplementTextShadow }}
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5"
                                                     >
                                                       {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                     </span>
