@@ -129,3 +129,5 @@ omobonus-serwis/
 
 - Email: omobonus.pl@gmail.com
 - Сайт: https://www.omobonus.com.pl
+
+Last sync test: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
