@@ -45,7 +45,7 @@ export default async function ServicePage({
               </p>
             ) : service.slug === 'drukarka-zastepcza' ? (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą
+                Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych
               </p>
             ) : (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
