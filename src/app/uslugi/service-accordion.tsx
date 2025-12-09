@@ -1213,7 +1213,22 @@ const DEVICE_CATEGORIES = [
 ]
 
 // Функция для получения пути к картинке принтера по названию категории
-const getPrinterImageForCategory = (categoryTitle: string): string => {
+const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
+  // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-atramentowych') {
+    switch (categoryTitle) {
+      case 'Drukarka domowa':
+        return '/images/Drukarka_domowa_atramentowa.png'
+      case 'Drukarka biurowa':
+        return '/images/Drukarka_biurowa_atramentowa.png'
+      case 'Drukarka biznesowa':
+        return '/images/Drukarka_biznesowa_atramentowa.png'
+      default:
+        return ''
+    }
+  }
+  
+  // Для всех остальных страниц используем старые изображения
   switch (categoryTitle) {
     case 'Drukarka domowa':
       return '/images/Drukarka_domowa.png'
@@ -1324,7 +1339,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                 {/* Добавление картинки принтера */}
                 <div className="flex justify-center items-center my-3">
                   <Image
-                    src={getPrinterImageForCategory(category.title)}
+                    src={getPrinterImageForCategory(category.title, service.slug)}
                     alt={category.title}
                     width={200}
                     height={150}
@@ -1804,21 +1819,21 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                       }}
                                     >
                                       <TooltipTrigger
-                                        className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex"
-                                        onClick={event => event.stopPropagation()}
-                                        onPointerDown={event => event.stopPropagation()}
-                                        onKeyDown={event => {
-                                          if (event.key === 'Enter' || event.key === ' ') {
-                                            event.preventDefault()
-                                            event.stopPropagation()
-                                          }
-                                        }}
+                                        asChild
                                       >
                                         <span
                                           role="button"
                                           tabIndex={0}
                                           aria-label="Informacja o cenach"
-                                          className="inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
+                                          className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
+                                          onClick={event => event.stopPropagation()}
+                                          onPointerDown={event => event.stopPropagation()}
+                                          onKeyDown={event => {
+                                            if (event.key === 'Enter' || event.key === ' ') {
+                                              event.preventDefault()
+                                              event.stopPropagation()
+                                            }
+                                          }}
                                         >
                                           <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                         </span>
