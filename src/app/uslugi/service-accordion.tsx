@@ -1214,6 +1214,20 @@ const DEVICE_CATEGORIES = [
 
 // Функция для получения пути к картинке принтера по названию категории
 const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
+  // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-termicznych') {
+    switch (categoryTitle) {
+      case 'Drukarka biurkowa':
+        return '/images/Mała_drukarka_etykiet.png'
+      case 'Drukarka półprzemysłowa':
+        return '/images/Srednia_drukarka_etykiet.png'
+      case 'Drukarka przemysłowa':
+        return '/images/Duża_drukarka_etykiet.png'
+      default:
+        return ''
+    }
+  }
+  
   // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
     switch (categoryTitle) {
