@@ -1237,16 +1237,58 @@ const THERMAL_DEVICE_CATEGORIES = [
   },
 ]
 
+// Категории для страницы "Serwis Drukarek Igłowych"
+const NEEDLE_DEVICE_CATEGORIES = [
+  {
+    title: 'Mała drukarka igłowa',
+    description:
+      'Urządzenie do użytku okazjonalnego drukowania. Małe modele',
+    features: ['małe wymiary', 'wolniejszy druk'],
+    examples: '',
+  },
+  {
+    title: 'Średnia drukarka igłowa',
+    description:
+      'Do pracy w małych i średnich biurach. Do częstszego drukowania.',
+    features: ['średni rozmiar', 'szybszy druk', 'wyższa trwałość'],
+    examples: '',
+  },
+  {
+    title: 'Duża drukarka igłowa',
+    description:
+      'Biznesowe urządzenie do intensywnej codziennej pracy i dużych wolumenów wydruku.',
+    features: ['do dużych nakładów z wysoką wytrzymałością'],
+    examples: '',
+  },
+]
+
 // Функция для получения категорий устройств в зависимости от страницы
 const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     return THERMAL_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-drukarek-iglowych') {
+    return NEEDLE_DEVICE_CATEGORIES
   }
   return DEVICE_CATEGORIES
 }
 
 // Функция для получения пути к картинке принтера по названию категории
 const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
+  // Для страницы "Serwis Drukarek Igłowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-iglowych') {
+    switch (categoryTitle) {
+      case 'Mała drukarka igłowa':
+        return '/images/Mała_drukarka_Igłowa.png'
+      case 'Średnia drukarka igłowa':
+        return '/images/Średnia_drukarka_Igłowa.png'
+      case 'Duża drukarka igłowa':
+        return '/images/Duża_drukarka_Igłowa.png'
+      default:
+        return ''
+    }
+  }
+  
   // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     switch (categoryTitle) {
@@ -1292,6 +1334,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
+  'serwis-drukarek-iglowych',
 ])
 
 const ServiceAccordion = ({ service }: { service: ServiceData }) => {
@@ -1359,7 +1402,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
               Kategorie urządzeń
             </h4>
             <p className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
-              W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej
+              {service.slug === 'serwis-drukarek-iglowych' 
+                ? 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej'
+                : service.slug === 'serwis-drukarek-termicznych'
+                ? 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej'
+                : 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej'}
             </p>
             <div className="mt-1 flex items-center justify-center gap-1">
               <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">(np.</span>
