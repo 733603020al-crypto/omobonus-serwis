@@ -1217,11 +1217,11 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
   // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     switch (categoryTitle) {
-      case 'Drukarka biurkowa':
+      case 'Drukarka domowa':
         return '/images/Mała_drukarka_etykiet.png'
-      case 'Drukarka półprzemysłowa':
+      case 'Drukarka biurowa':
         return '/images/Srednia_drukarka_etykiet.png'
-      case 'Drukarka przemysłowa':
+      case 'Drukarka biznesowa':
         return '/images/Duża_drukarka_etykiet.png'
       default:
         return ''
