@@ -1212,16 +1212,49 @@ const DEVICE_CATEGORIES = [
   },
 ]
 
+// Категории для страницы "Serwis Drukarek Termiczno-etykietowych"
+const THERMAL_DEVICE_CATEGORIES = [
+  {
+    title: 'Mała drukarka etykiet',
+    description:
+      'Urządzenie do użytku okazjonalnego drukowania. Małe modele',
+    features: ['małe wymiary', 'wolniejszy druk'],
+    examples: '',
+  },
+  {
+    title: 'Średnia drukarka etykiet',
+    description:
+      'Do pracy w małych i średnich biurach. Do częstszego drukowania.',
+    features: ['średni rozmiar', 'szybszy druk', 'wyższa trwałość'],
+    examples: '',
+  },
+  {
+    title: 'Duża drukarka etykiet',
+    description:
+      'Biznesowe urządzenie do intensywnej codziennej pracy i dużych wolumenów wydruku.',
+    features: ['do dużych nakładów z wysoką wytrzymałością'],
+    examples: '',
+  },
+]
+
+// Функция для получения категорий устройств в зависимости от страницы
+const getDeviceCategories = (serviceSlug?: string) => {
+  if (serviceSlug === 'serwis-drukarek-termicznych') {
+    return THERMAL_DEVICE_CATEGORIES
+  }
+  return DEVICE_CATEGORIES
+}
+
 // Функция для получения пути к картинке принтера по названию категории
 const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
   // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     switch (categoryTitle) {
-      case 'Drukarka domowa':
+      case 'Mała drukarka etykiet':
         return '/images/Mała_drukarka_etykiet.png'
-      case 'Drukarka biurowa':
+      case 'Średnia drukarka etykiet':
         return '/images/Srednia_drukarka_etykiet.png'
-      case 'Drukarka biznesowa':
+      case 'Duża drukarka etykiet':
         return '/images/Duża_drukarka_etykiet.png'
       default:
         return ''
@@ -1339,7 +1372,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {DEVICE_CATEGORIES.map(category => (
+            {getDeviceCategories(service.slug).map(category => (
               <div
                 key={category.title}
                 className="bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col h-full shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center"
