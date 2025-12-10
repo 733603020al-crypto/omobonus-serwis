@@ -24,9 +24,9 @@ export default function PolitykaPrywatnosci() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <section className="relative pb-0 pt-1 z-10">
+        <section className="relative pb-0 pt-0 z-10">
           {/* Tekst nad formularzem */}
-          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic">
+          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic pt-1">
             &ldquo;Chcesz zapoznać się z naszą Polityką Prywatności? Przeczytaj poniżej.&rdquo;
           </p>
 
