@@ -43,7 +43,7 @@ export function Services() {
                   width={50}
                   height={50}
                   className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                  unoptimized
+                  loading="lazy"
                 />
               </div>
 

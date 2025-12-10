@@ -59,6 +59,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${cormorant.variable} ${cormorantSC.variable} ${lora.variable} ${inter.variable} ${ebGaramond.variable} ${spectralSC.variable} ${cinzel.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/images/omobonus-hero.png" as="image" fetchPriority="high" />
+        <link rel="preload" href="/images/Logo_Omobonus.png" as="image" />
+      </head>
       <body className="font-sans antialiased scroll-smooth" suppressHydrationWarning>
         {children}
       </body>
