@@ -27,6 +27,11 @@ export default function Regulamin() {
         <section className="relative pb-0 pt-2 md:pt-3 min-h-0 z-10">
           <div className="container mx-auto px-2 md:px-4 flex flex-col items-center">
         
+        {/* Tekst nad formularzem */}
+        <p className="text-white/90 text-lg md:text-xl text-center mb-3 md:mb-4 drop-shadow-md font-serif italic">
+          &ldquo;Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.&rdquo;
+        </p>
+
         {/* Karta formularza - масштабирована на 20% */}
         <div className="w-full max-w-6xl bg-paper-texture shadow-2xl rounded-sm p-3 md:p-5 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[25%]">
           
