@@ -15,18 +15,17 @@ export default function PolitykaPrywatnosci() {
     <>
       <Header />
       <main className="min-h-screen pt-[65px] relative">
-        <section className="relative pb-0 pt-4 md:pt-6">
-      {/* Tło sekcji */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest.services_background}')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${manifest.services_background}')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
 
-      <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
+        <section className="relative pb-0 pt-4 md:pt-6 z-10">
+          <div className="container mx-auto px-2 md:px-4 flex flex-col items-center">
         
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-4 md:mb-8 drop-shadow-md font-serif italic">
@@ -226,8 +225,7 @@ export default function PolitykaPrywatnosci() {
 
           </div>
         </div>
-      </div>
-    </section>
+        </section>
       </main>
       <Footer />
     </>
