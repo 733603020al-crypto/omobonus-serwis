@@ -32,7 +32,7 @@ export function Footer() {
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <Link
-                    href="https://maps.app.goo.gl/K5VzK8uHkP8xJ5dD7"
+                    href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/@51.0775056,16.9784737,11z"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-primary transition-colors"
