@@ -115,7 +115,7 @@ export function Footer() {
           <div className="flex items-center justify-center">
             <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
               <iframe
-                src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=13&output=embed"
+                src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=12&output=embed"
                 width="100%"
                 height="100%"
                 style={{
