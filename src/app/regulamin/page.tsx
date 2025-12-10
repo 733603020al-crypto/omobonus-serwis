@@ -24,9 +24,9 @@ export default function Regulamin() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <section className="relative pb-0 pt-0 min-h-0 z-10">
+        <section className="relative pb-0 pt-1 min-h-0 z-10">
           {/* Tekst nad formularzem */}
-          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic pt-2">
+          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic">
             &ldquo;Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.&rdquo;
           </p>
 
