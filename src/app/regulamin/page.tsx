@@ -1,5 +1,7 @@
 import manifest from '@/config/manifest'
 import { Metadata } from 'next'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Regulamin | Omobonus Serwis',
@@ -10,7 +12,10 @@ export const dynamic = 'force-static'
 
 export default function Regulamin() {
   return (
-    <section className="relative pb-0 pt-4 md:pt-6 min-h-0">
+    <>
+      <Header />
+      <main className="min-h-screen pt-[65px] relative">
+        <section className="relative pb-0 pt-4 md:pt-6 min-h-0">
       {/* Tło sekcji */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -260,6 +265,9 @@ export default function Regulamin() {
         </div>
       </div>
     </section>
+      </main>
+      <Footer />
+    </>
   )
 }
 
