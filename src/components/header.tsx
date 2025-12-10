@@ -94,7 +94,7 @@ export function Header() {
               className="object-contain object-center p-[1px]"
               sizes="(max-width: 768px) 40px, 48px"
               priority
-              unoptimized
+              quality={90}
             />
           </div>
           <BrandWordmark />
