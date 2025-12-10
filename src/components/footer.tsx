@@ -115,7 +115,7 @@ export function Footer() {
           <div className="flex items-center justify-center">
             <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.1234567890123!2d17.12345678901234!3d51.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDA3JzI0LjQiTiAxN8KwMDcnMjQuNCJF!5e0!3m2!1spl!2spl!4v1234567890123!5m2!1spl!2spl"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.1234567890123!2d16.9784781!3d51.0774972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f17!3m3!1m2!1s0x470fc22ad0f0121b%3A0xc8ea7274a2368faa!2sMarcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1733779200000!5m2!1spl!2spl"
                 width="100%"
                 height="100%"
                 style={{
