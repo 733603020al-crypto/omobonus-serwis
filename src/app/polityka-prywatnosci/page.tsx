@@ -51,7 +51,7 @@ export default function PolitykaPrywatnosci() {
               <p className="text-sm md:text-base font-sans leading-normal">
                 Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych 
                 przekazanych przez Użytkowników w związku z korzystaniem przez nich z usług serwisu 
-                Omobonus Serwis dostępnego pod adresem internetowym <a href="https://www.omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">https://www.omobonus.com.pl</a>.
+                Omobonus Serwis dostępnego pod adresem internetowym <a href="https://serwis.omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">https://serwis.omobonus.com.pl</a>.
               </p>
             </div>
 
@@ -184,7 +184,7 @@ export default function PolitykaPrywatnosci() {
               <p className="text-sm md:text-base font-sans leading-normal">
                 W sprawach związanych z ochroną danych osobowych można kontaktować się z Administratorem 
                 danych osobowych poprzez formularz kontaktowy dostępny na stronie internetowej 
-                lub bezpośrednio pod adresem e-mail: <a href="mailto:omobonus.pl@gmail.com" className="underline hover:text-[#3a2e24]/70">omobonus.pl@gmail.com</a>.
+                lub bezpośrednio pod adresem e-mail: <a href="mailto:serwis@omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">serwis@omobonus.com.pl</a>.
               </p>
             </div>
 

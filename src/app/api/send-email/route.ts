@@ -6,11 +6,11 @@ import path from 'path'
 // Upewnij się, że w pliku .env.local ustawisz:
 // RESEND_API_KEY=your_resend_api_key
 // RESEND_FROM_EMAIL=Opcjonalne nadpisanie adresu nadawcy (np. "Omobonus Formularz <no-reply@twojadomena>")
-// RESEND_TO_EMAIL=adres docelowy (domyślnie omobonus.pl@gmail.com)
+// RESEND_TO_EMAIL=adres docelowy (domyślnie serwis@omobonus.com.pl)
 const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
 
-const DEFAULT_TO = 'omobonus.pl@gmail.com'
+const DEFAULT_TO = 'serwis@omobonus.com.pl'
 const DEFAULT_FROM = 'Omobonus Formularz <no-reply@resend.dev>'
 
 const mapDeviceType = (value: string) => {
@@ -119,8 +119,8 @@ export async function POST(request: NextRequest) {
     
     // Используем только внешние URL для изображений (безопасно для Vercel)
     // Это предотвращает проблемы со сборкой из-за чтения файлов через fs
-    const finalBackgroundUrl = 'https://www.omobonus.com.pl/images/zmiety%20arkusz%20papieru%202.png'
-    const finalLogoUrl = 'https://www.omobonus.com.pl/images/Logo_Omobonus.png'
+    const finalBackgroundUrl = 'https://serwis.omobonus.com.pl/images/zmiety%20arkusz%20papieru%202.png'
+    const finalLogoUrl = 'https://serwis.omobonus.com.pl/images/Logo_Omobonus.png'
     
     // HTML-шаблон письма
     const emailHtml = `

@@ -133,7 +133,7 @@ export function Header() {
             Kontakt
           </Link>
           <Link
-            href="https://omobonus.com.pl"
+            href="https://serwis.omobonus.com.pl"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
@@ -218,7 +218,7 @@ export function Header() {
                     Kontakt
                   </Link>
                   <Link
-                    href="https://omobonus.com.pl"
+                    href="https://serwis.omobonus.com.pl"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"

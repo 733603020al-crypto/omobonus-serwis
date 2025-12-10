@@ -39,7 +39,7 @@ cp .env.example .env.local
 ```env
 RESEND_API_KEY=your_resend_api_key_here
 RESEND_FROM_EMAIL=Omobonus Formularz <no-reply@yourdomain.com>
-RESEND_TO_EMAIL=omobonus.pl@gmail.com
+RESEND_TO_EMAIL=serwis@omobonus.com.pl
 ```
 
 ## 🏃 Запуск проекта
@@ -127,7 +127,7 @@ omobonus-serwis/
 
 ## 👥 Контакты
 
-- Email: omobonus.pl@gmail.com
-- Сайт: https://www.omobonus.com.pl
+- Email: serwis@omobonus.com.pl
+- Сайт: https://serwis.omobonus.com.pl
 
 Last sync test: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')

@@ -56,10 +56,10 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
                 <Link
-                  href="mailto:omobonus.pl@gmail.com"
+                  href="mailto:serwis@omobonus.com.pl"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  omobonus.pl@gmail.com
+                  serwis@omobonus.com.pl
                 </Link>
               </div>
 
