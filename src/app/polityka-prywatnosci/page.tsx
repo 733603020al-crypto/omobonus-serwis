@@ -225,6 +225,7 @@ export default function PolitykaPrywatnosci() {
 
           </div>
         </div>
+          </div>
         </section>
       </main>
       <Footer />
