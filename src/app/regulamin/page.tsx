@@ -262,6 +262,7 @@ export default function Regulamin() {
 
           </div>
         </div>
+          </div>
         </section>
       </main>
       <Footer />
