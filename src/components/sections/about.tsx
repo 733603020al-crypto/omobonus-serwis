@@ -71,7 +71,7 @@ export function About() {
               </p>
               <ul className="space-y-1.5">
                 {[
-                  'podajemy prawdziwe ceny, (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;), dlatego od razu wiesz, ile to kosztuje;',
+                  'podajemy prawdziwe ceny - nie "naprawa od 50 zł" lub "cena do uzgodnienia". Dzięki temu od razu znasz pełny koszt usługi.',
                   'działamy we Wrocławiu jako legalny serwis komputerów, laptopów i drukarek i nie podajemy cen netto, lecz wyłącznie ceny brutto;',
                   'podczas diagnozy otrzymujesz nie tylko suchą tabelkę z wyceną naprawy, ale też zdjęcia uszkodzeń;',
                   'jeśli naprawa się nie opłaca – powiemy to otwarcie;',

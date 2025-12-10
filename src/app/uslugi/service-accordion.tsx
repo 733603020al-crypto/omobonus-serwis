@@ -1903,57 +1903,72 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               >
                                 <span className="hidden sm:inline">Cena, zł</span>
                                 <span className="inline sm:hidden">Cena</span>
-                                {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
-                                  <TooltipProvider delayDuration={100}>
-                                    <Tooltip
-                                      onOpenChange={open => {
-                                        if (isSpecialTooltipService) {
-                                          setCategoryTooltipOpen(open)
-                                        }
-                                      }}
+                                <TooltipProvider delayDuration={100}>
+                                  <Tooltip
+                                    onOpenChange={open => {
+                                      if (isSpecialTooltipService) {
+                                        setCategoryTooltipOpen(open)
+                                      }
+                                    }}
+                                  >
+                                    <TooltipTrigger
+                                      asChild
                                     >
-                                      <TooltipTrigger
-                                        asChild
+                                      <span
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-label="Informacja o cenach"
+                                        className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
+                                        onClick={event => event.stopPropagation()}
+                                        onPointerDown={event => event.stopPropagation()}
+                                        onKeyDown={event => {
+                                          if (event.key === 'Enter' || event.key === ' ') {
+                                            event.preventDefault()
+                                            event.stopPropagation()
+                                          }
+                                        }}
                                       >
-                                        <span
-                                          role="button"
-                                          tabIndex={0}
-                                          aria-label="Informacja o cenach"
-                                          className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
-                                          onClick={event => event.stopPropagation()}
-                                          onPointerDown={event => event.stopPropagation()}
-                                          onKeyDown={event => {
-                                            if (event.key === 'Enter' || event.key === ' ') {
-                                              event.preventDefault()
-                                              event.stopPropagation()
-                                            }
-                                          }}
-                                        >
-                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                        </span>
-                                      </TooltipTrigger>
-                                      <TooltipContent
-                                        {...(isSpecialTooltipService
-                                          ? {
-                                              side: 'left' as const,
-                                              align: 'center' as const,
-                                              sideOffset: 16,
-                                              collisionPadding: 16,
-                                              className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
-                                            }
-                                          : { sideOffset: 4 })}
-                                      >
-                                        {isSpecialTooltipService ? (
-                                          renderPriceTooltipContent()
-                                        ) : (
-                                          <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                        <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                      {...(isSpecialTooltipService
+                                        ? {
+                                            side: 'left' as const,
+                                            align: 'center' as const,
+                                            sideOffset: 16,
+                                            collisionPadding: 16,
+                                            className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                          }
+                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
+                                        ? {
+                                            sideOffset: 4,
+                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                            style: {
+                                              backgroundImage: `url('${manifest.Background_1}')`,
+                                              backgroundSize: 'cover',
+                                              backgroundPosition: 'center',
+                                            },
+                                          }
+                                        : { sideOffset: 4 })}
+                                    >
+                                      {isSpecialTooltipService ? (
+                                        renderPriceTooltipContent()
+                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
+                                        <>
+                                          <div className="absolute inset-0 bg-black/50 z-0" />
+                                          <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
                                             cena z VAT (brutto)
                                           </p>
-                                        )}
-                                      </TooltipContent>
-                                    </Tooltip>
-                                  </TooltipProvider>
-                                )}
+                                        </>
+                                      ) : (
+                                        <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                          {priceTooltip}
+                                        </p>
+                                      )}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
                               </div>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span

@@ -119,9 +119,19 @@ const defaultPricingSections: PricingSection[] = [
     title: 'Czyszczenie i konserwacja (bez naprawy)',
     items: [
       {
-        service: 'Pełna konserwacja (Konserwacja całego mechanizmu uderzeniowego (smarowanie i regulacja igieł oraz prowadnic), pełne czyszczenie i regeneracja toru papieru, kontrola i kalibracja mechanizmu podawania, czyszczenie elektroniki z pyłu, test końcowy wydruku i reset liczników serwisowych)',
+        service: 'PODSTAWOWY (przegląd i profilaktyka) (czyszczenie zewnętrzne i wewnętrzne drukarki, czyszczenie i konserwacja karetek, sprawdzenie głowicy, czyszczenie rolek pobierania papieru, kontrola elementów mechanicznych, test jakości wydruku)',
+        price: '50 / 100 / 150',
+        duration: '1-3 dni',
+      },
+      {
+        service: 'STANDARD (standardowa konserwacja) (Zakres PODSTAWOWY + Czyszczenie czujników papieru, Czyszczenie stacji serwisowej)',
+        price: '100 / 150 / 200',
+        duration: '1-3 dni',
+      },
+      {
+        service: 'PREMIUM (pełna konserwacja) (Zakres STANDARD + Udrożnienie układu tuszu, Czyszczenie pompy/pochłaniacza tuszu, reset liczników serwisowych)',
         price: '150 / 200 / 250',
-        duration: '1–3 dni',
+        duration: '1-3 dni',
       },
     ],
   },
@@ -503,25 +513,25 @@ const createLaptopPricingSections = (): PricingSection[] => {
     cleaningSection.items = [
       {
         service:
-          'PODSTAWOWY do 30 min. (przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu) (czyszczenie zewnętrzne i wewnętrzne laptopa, czyszczenie wentylatora i radiatora, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
+          'PODSTAWOWY (przegląd i profilaktyka) (czyszczenie zewnętrzne i wewnętrzne laptopa, czyszczenie wentylatora i radiatora, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
         price: '120',
         duration: '1-3 dni',
       },
       {
         service:
-          'STANDARD do 1 godziny (standardowa konserwacja) (Zakres PODSTAWOWY + Wymiana / dopasowanie termopadów, Konserwacja portów, Krótki test pamięci RAM i dysku SMART)',
+          'STANDARD (standardowa konserwacja) (Zakres PODSTAWOWY + Wymiana / dopasowanie termopadów, Konserwacja portów, Krótki test pamięci RAM i dysku SMART)',
         price: '160',
         duration: '1-3 dni',
       },
       {
         service:
-          'PREMIUM do 2 godzin (pełna konserwacja) (Zakres STANDARD + Porządkowanie okablowania i kanałów powietrznych, Czyszczenie klawiatury i portów wewnętrznych, Aktualizacja BIOS/UEFI (jeśli wskazana), Długie testy obciążeniowe (CPU / GPU / RAM))',
+          'PREMIUM (pełna konserwacja) (Zakres STANDARD + Porządkowanie okablowania i kanałów powietrznych, Czyszczenie klawiatury i portów wewnętrznych, Aktualizacja BIOS/UEFI (jeśli wskazana), Długie testy obciążeniowe (CPU / GPU / RAM))',
         price: '200',
         duration: '1-3 dni',
       },
       {
         service:
-          'SPECIALNE do 2 godzin (po zalaniu laptopa)\n(Uwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu. Demontaż całego laptopa, identyfikacja obszarów zalania, czyszczenie lub naprawa niesprawnych elementów i zabezpieczenie antykorozyjne płyty głównej i podzespołów, czyszczenie klawiatury i portów wewnętrznych, testy diagnostyczne elektroniczne i programowe, montaż laptopa. Odkurzenie i oczyszczenie wnętrza laptopa oraz uzupełnienie brakujących śrub – gratis.)',
+          'SPECIALNE (po zalaniu laptopa)\n(Uwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu. Demontaż całego laptopa, identyfikacja obszarów zalania, czyszczenie lub naprawa niesprawnych elementów i zabezpieczenie antykorozyjne płyty głównej i podzespołów, czyszczenie klawiatury i portów wewnętrznych, testy diagnostyczne elektroniczne i programowe, montaż laptopa. Odkurzenie i oczyszczenie wnętrza laptopa oraz uzupełnienie brakujących śrub – gratis.)',
         price: '200\n+ części',
         duration: '1-3 dni',
       },
@@ -870,19 +880,19 @@ const applyDesktopCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min.\n(przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu – demontaż obudowy, czyszczenie wentylatorów i radiatorów, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
+        'PODSTAWOWY (przegląd i profilaktyka)\n(demontarz obudowy, czyszczenie wentylatorów i radiatorów, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
       price: '120',
       duration: '1-3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny (standardowa konserwacja)\n(Zakres PODSTAWOWY + wymiana / dopasowanie termopadów, konserwacja portów, krótki test pamięci RAM i dysku SMART)',
+        'STANDARD (standardowa konserwacja)\n(Zakres PODSTAWOWY + wymiana / dopasowanie termopadów, konserwacja portów, krótki test pamięci RAM i dysku SMART)',
       price: '160',
       duration: '1-3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin (pełna konserwacja)\n(Zakres STANDARD + porządkowanie okablowania i kanałów powietrznych, czyszczenie klawiatury i portów wewnętrznych, aktualizacja BIOS/UEFI (jeśli wskazana), długie testy obciążeniowe (CPU / GPU / RAM))',
+        'PREMIUM (pełna konserwacja)\n(Zakres STANDARD + porządkowanie okablowania i kanałów powietrznych, czyszczenie klawiatury i portów wewnętrznych, aktualizacja BIOS/UEFI (jeśli wskazana), długie testy obciążeniowe (CPU / GPU / RAM))',
       price: '200',
       duration: '1-3 dni',
     },
@@ -1206,19 +1216,19 @@ const applyLaserCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min. (przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu)\n• Czyszczenie wnętrza urządzenia (kurz, resztki tonera)\n• Kontrola i czyszczenie rolek poboru papieru (pickup roller) / separatora\n• Kontrola głównych elementów mechanicznych\n• Szybki przegląd sekcji obrazu i utrwalania (drum / transfer / fuser)\n• Test jakości wydruku',
+        'PODSTAWOWY (przegląd i profilaktyka)\n• Czyszczenie wnętrza urządzenia (kurz, resztki tonera)\n• Kontrola i czyszczenie rolek poboru papieru (pickup roller) / separatora\n• Kontrola głównych elementów mechanicznych\n• Szybki przegląd sekcji obrazu i utrwalania (drum / transfer / fuser)\n• Test jakości wydruku',
       price: '50 / 100 / 150',
       duration: '1-3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny (standardowa konserwacja)\nZakres PODSTAWOWY +\n• Czyszczenie czujników papieru\n• Czyszczenie elementów prowadzenia papieru\n• Smarowanie głównych elementów mechanicznych\n• Sprawdzenie modułu bębna i pasa transferowego',
+        'STANDARD (standardowa konserwacja)\nZakres PODSTAWOWY +\n• Czyszczenie czujników papieru\n• Czyszczenie elementów prowadzenia papieru\n• Smarowanie głównych elementów mechanicznych\n• Sprawdzenie modułu bębna i pasa transferowego',
       price: '100 / 150 / 200',
       duration: '1-3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin (pełna konserwacja)\nZakres STANDARD +\n• Czyszczenie optyki lasera\n• Konserwacja modułu bębna, pasa transferowego i fusera\n• Reset liczników serwisowych (jeśli możliwe)\n• Kontrola tonera i pojemnika na zużyty toner (ew. czyszczenie / wymiana)\n• Kalibracja kolorów i rejestracji',
+        'PREMIUM (pełna konserwacja)\nZakres STANDARD +\n• Czyszczenie optyki lasera\n• Konserwacja modułu bębna, pasa transferowego i fusera\n• Reset liczników serwisowych (jeśli możliwe)\n• Kontrola tonera i pojemnika na zużyty toner (ew. czyszczenie / wymiana)\n• Kalibracja kolorów i rejestracji',
       price: '150 / 200 / 250',
       duration: '1-3 dni',
     },
@@ -2050,19 +2060,19 @@ const applyThermalCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min\nprzegląd i profilaktyka: czyszczenie wnętrza drukarki, rolki dociskowej i podstawowych czujników oraz szybki test wydruku etykiet – zmniejsza ryzyko nagłej awarii\n• Czyszczenie wnętrza drukarki (pył z etykiet, resztki kleju, kurz)\n• Czyszczenie i kontrola rolki dociskowej (platen roller)\n• Czyszczenie podstawowych elementów prowadzenia etykiet (tor papieru)\n• Wstępna kontrola czujników nośnika / znacznika (gap / black mark)\n• Kontrola głównych elementów mechanicznych podajnika etykiet\n• Test jakości wydruku etykiet (kody kreskowe / tekst)',
+        'PODSTAWOWY (przegląd i profilaktyka)\n• Czyszczenie wnętrza drukarki (pył z etykiet, resztki kleju, kurz)\n• Czyszczenie i kontrola rolki dociskowej (platen roller)\n• Czyszczenie podstawowych elementów prowadzenia etykiet (tor papieru)\n• Wstępna kontrola czujników nośnika / znacznika (gap / black mark)\n• Kontrola głównych elementów mechanicznych podajnika etykiet\n• Test jakości wydruku etykiet (kody kreskowe / tekst)',
       price: '50 / 100 / 150',
       duration: '1–3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny\nstandardowa konserwacja drukarki etykiet: zakres PODSTAWOWY + dokładne czyszczenie głowicy drukującej, czujników i toru etykiet oraz podstawowa kalibracja czujników nośnika i parametrów drukowania\n• Dokładne czyszczenie głowicy drukującej (środkiem na bazie alkoholu izopropylowego)\n• Czyszczenie czujników papieru / etykiet i elementów wykrywających taśmę barwiącą\n• Czyszczenie elementów prowadzenia etykiet na całej ścieżce (rolki, prowadnice)\n• Smarowanie wybranych elementów mechanicznych (zgodnie z zaleceniami producenta)\n• Sprawdzenie i podstawowa kalibracja czujników nośnika (pozycja etykiety, odczyt znacznika)\n• Sprawdzenie ustawień mediów i parametrów drukowania (temperatura, prędkość, ciemność)',
+        'STANDARD (standardowa konserwacja)\nZakres PODSTAWOWY + dokładne czyszczenie głowicy drukującej, czujników i toru etykiet oraz podstawowa kalibracja czujników nośnika i parametrów drukowania\n• Dokładne czyszczenie głowicy drukującej (środkiem na bazie alkoholu izopropylowego)\n• Czyszczenie czujników papieru / etykiet i elementów wykrywających taśmę barwiącą\n• Czyszczenie elementów prowadzenia etykiet na całej ścieżce (rolki, prowadnice)\n• Smarowanie wybranych elementów mechanicznych (zgodnie z zaleceniami producenta)\n• Sprawdzenie i podstawowa kalibracja czujników nośnika (pozycja etykiety, odczyt znacznika)\n• Sprawdzenie ustawień mediów i parametrów drukowania (temperatura, prędkość, ciemność)',
       price: '100 / 150 / 200',
       duration: '1–3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin\npełna konserwacja drukarki etykiet: zakres STANDARD + konserwacja głowicy, rolki dociskowej i modułów dodatkowych drukarki (odklejak, nawijak, obcinarka), reset liczników serwisowych – gdy możliwe – oraz kalibracja jakości wydruku etykiet i kodów kreskowych\n• Zaawansowane czyszczenie i ocena stanu głowicy drukującej (raport zużycia)\n• Konserwacja i czyszczenie modułów dodatkowych: odklejak (peel-off), nawijak etykiet / taśmy (jeśli występują)\n• Czyszczenie i konserwacja obcinarki (cutter) – usuwanie resztek etykiet i kleju, test cięcia\n• Dokładne czyszczenie lub regeneracja rolki dociskowej (platen) – robocizna bez ceny części\n• Reset liczników serwisowych / konserwacyjnych (jeśli technicznie możliwe w danym modelu)\n• Kontrola stanu materiałów eksploatacyjnych (etykiety, taśma barwiąca / ribbon) – zalecenia wymiany\n• Kalibracja jakości wydruku (gęstość, kontrast kodów kreskowych, wyrównanie druku)',
+        'PREMIUM (pełna konserwacja)\nZakres STANDARD + konserwacja głowicy, rolki dociskowej i modułów dodatkowych drukarki (odklejak, nawijak, obcinarka), reset liczników serwisowych – gdy możliwe – oraz kalibracja jakości wydruku etykiet i kodów kreskowych\n• Zaawansowane czyszczenie i ocena stanu głowicy drukującej (raport zużycia)\n• Konserwacja i czyszczenie modułów dodatkowych: odklejak (peel-off), nawijak etykiet / taśmy (jeśli występują)\n• Czyszczenie i konserwacja obcinarki (cutter) – usuwanie resztek etykiet i kleju, test cięcia\n• Dokładne czyszczenie lub regeneracja rolki dociskowej (platen) – robocizna bez ceny części\n• Reset liczników serwisowych / konserwacyjnych (jeśli technicznie możliwe w danym modelu)\n• Kontrola stanu materiałów eksploatacyjnych (etykiety, taśma barwiąca / ribbon) – zalecenia wymiany\n• Kalibracja jakości wydruku (gęstość, kontrast kodów kreskowych, wyrównanie druku)',
       price: '150 / 200 / 250',
       duration: '1–3 dni',
     },
