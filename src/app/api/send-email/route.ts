@@ -566,7 +566,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
               </p>
               <p style="margin: 0; color: #3a2e24; font-size: 14px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
                 📞 <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
-                🌐 <a href="https://www.omobonus.com.pl" style="color: #3a2e24; text-decoration: none;">www.omobonus.com.pl</a>
+                🌐 <a href="https://serwis.omobonus.com.pl/" style="color: #3a2e24; text-decoration: none;">serwis.omobonus.com.pl</a>
               </p>
             </td>
           </tr>
@@ -621,7 +621,7 @@ Drukarka zastępcza: ${replacementPrinter}
 Pozdrawiamy serdecznie,
 Zespół Omobonus Serwis
 📞 ${CONTACT_INFO.phone}
-🌐 www.omobonus.com.pl
+🌐 https://serwis.omobonus.com.pl/
 
 Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
         `.trim()
