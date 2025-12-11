@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -75,66 +75,7 @@ export function Contact() {
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultFormValues,
-    shouldFocusError: true,
   })
-
-  // Прокрутка к первому полю с ошибкой
-  useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-      // Порядок полей в форме
-      const fieldOrder = ['name', 'phone', 'email', 'address', 'deviceType', 'problemDescription', 'agreements']
-      
-      // Находим первое поле с ошибкой
-      const firstErrorField = fieldOrder.find(field => errors[field as keyof typeof errors])
-      
-      if (firstErrorField) {
-        // Небольшая задержка для рендеринга ошибок
-        setTimeout(() => {
-          let element: HTMLElement | null = null
-          
-          // Ищем поле по имени или ID
-          if (firstErrorField === 'name') {
-            element = document.querySelector('input[name="name"]') as HTMLElement
-          } else if (firstErrorField === 'phone') {
-            // Для phone ищем контейнер CustomPhoneInput
-            const phoneInput = document.querySelector('input[type="tel"]') as HTMLElement
-            element = phoneInput?.closest('.space-y-2') as HTMLElement || phoneInput
-          } else if (firstErrorField === 'email') {
-            element = document.querySelector('input[name="email"]') as HTMLElement
-          } else if (firstErrorField === 'address') {
-            element = document.querySelector('input[name="address"]') as HTMLElement
-          } else if (firstErrorField === 'deviceType') {
-            // Для deviceType ищем контейнер с radio кнопками
-            const radioContainer = document.querySelector('[name="deviceType"]')?.closest('.space-y-2') as HTMLElement
-            element = radioContainer
-          } else if (firstErrorField === 'problemDescription') {
-            element = document.querySelector('textarea[name="problemDescription"]') as HTMLElement
-          } else if (firstErrorField === 'agreements') {
-            // Для agreements ищем контейнер с checkbox
-            const checkboxContainer = document.querySelector('#agreements')?.closest('.space-y-1') as HTMLElement
-            element = checkboxContainer
-          }
-          
-          if (element) {
-            // Прокрутка с центрированием
-            element.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'center',
-              inline: 'nearest'
-            })
-            
-            // Анимация shake
-            element.style.animation = 'shake 0.5s ease-in-out'
-            setTimeout(() => {
-              if (element) {
-                element.style.animation = ''
-              }
-            }, 500)
-          }
-        }, 150)
-      }
-    }
-  }, [errors])
 
   const onSubmit = async (data: FormValues) => {
     console.log('🚀 Formularz został przesłany. Dane:', data)

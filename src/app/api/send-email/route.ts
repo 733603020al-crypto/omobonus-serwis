@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
+import fs from 'fs'
+import path from 'path'
 
 // Upewnij się, że w pliku .env.local ustawisz:
-// SMTP_HOST=smtp.zenbox.pl
-// SMTP_PORT=587
-// SMTP_USER=serwis@omobonus.com.pl
-// SMTP_PASS=Ecoprint12345!
-// SMTP_FROM=serwis@omobonus.com.pl
-// SMTP_TO=serwis@omobonus.com.pl
+// RESEND_API_KEY=your_resend_api_key
+// RESEND_FROM_EMAIL=Opcjonalne nadpisanie adresu nadawcy (np. "Omobonus Formularz <no-reply@twojadomena>")
+// RESEND_TO_EMAIL=adres docelowy (domyślnie serwis@omobonus.com.pl)
+const resendApiKey = process.env.RESEND_API_KEY
+const resend = resendApiKey ? new Resend(resendApiKey) : null
+
+const DEFAULT_TO = 'serwis@omobonus.com.pl'
+const DEFAULT_FROM = 'Omobonus Formularz <no-reply@resend.dev>'
 
 const mapDeviceType = (value: string) => {
   if (value === 'printer') return 'Drukarka'
@@ -107,7 +111,7 @@ export async function POST(request: NextRequest) {
               content: Buffer.from(await file.arrayBuffer()),
             })),
           )
-        : []
+        : undefined
 
     const currentYear = new Date().getFullYear()
     const ticketNumber = generateTicketNumber()
@@ -305,64 +309,64 @@ Opis problemu: ${problemDescription}
 Potrzebuję drukarki zastępczej: ${replacementPrinter}
     `.trim()
 
-    // Проверка наличия SMTP переменных
-    const smtpHost = process.env.SMTP_HOST
-    const smtpPort = process.env.SMTP_PORT
-    const smtpUser = process.env.SMTP_USER
-    const smtpPass = process.env.SMTP_PASS
-    const smtpFrom = process.env.SMTP_FROM || smtpUser
-    const smtpTo = process.env.SMTP_TO || smtpUser
-
-    if (!smtpHost || !smtpPort || !smtpUser || !smtpPass) {
-      console.error('❌ SMTP переменные не настроены:', {
-        SMTP_HOST: !!smtpHost,
-        SMTP_PORT: !!smtpPort,
-        SMTP_USER: !!smtpUser,
-        SMTP_PASS: !!smtpPass,
+    if (!resend) {
+      console.log('RESEND_API_KEY nie jest ustawiony. Dane formularza:', {
+        name,
+        phone,
+        email,
+        address,
+        deviceType,
+        deviceModel,
+        problemDescription,
+        replacementPrinter,
+        attachments: attachmentFiles.map(file => ({ name: file.name, size: file.size })),
       })
+      return NextResponse.json({
+        success: true,
+        message: 'Form data logged locally because RESEND_API_KEY is missing',
+      })
+    }
+
+    console.log('📤 Wysyłanie e-maila przez Resend...')
+    console.log('📧 From:', process.env.RESEND_FROM_EMAIL || DEFAULT_FROM)
+    console.log('📧 To:', (process.env.RESEND_TO_EMAIL || DEFAULT_TO).split(',').map(value => value.trim()))
+    
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || DEFAULT_FROM,
+      to: (process.env.RESEND_TO_EMAIL || DEFAULT_TO).split(',').map(value => value.trim()),
+      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
+      html: emailHtml,
+      text: emailContent,
+      attachments,
+    })
+
+    if (error) {
+      console.error('❌ Resend error:', error)
       return NextResponse.json(
-        { error: 'SMTP конфигурация не настроена' },
+        { error: 'Nie udało się wysłać wiadomości' },
         { status: 500 },
       )
     }
 
-    console.log('📤 Wysyłanie e-maila przez SMTP Zenbox...')
-    console.log('📧 From:', smtpFrom)
-    console.log('📧 To:', smtpTo)
+    console.log('✅ Resend response:', data)
+    
+    // Логируем пример HTML-фрагмента с base64 изображениями
+    console.log('\n📄 Пример HTML-фрагмента с встроенными изображениями:')
+    console.log('---')
+    console.log('Фон (первые 150 символов):')
+    const backgroundSnippet = emailHtml.match(/background-image:\s*url\('([^']+)'\)/)?.[1] || ''
+    console.log(`background-image: url('${backgroundSnippet.substring(0, 150)}...')`)
+    console.log('\nЛоготип (первые 150 символов):')
+    const logoSnippet = emailHtml.match(/<img[^>]+src="([^"]+)"[^>]*>/)?.[1] || ''
+    console.log(`<img src="${logoSnippet.substring(0, 150)}..." />`)
+    console.log('\nVML для Outlook (первые 150 символов):')
+    const vmlSnippet = emailHtml.match(/<v:fill[^>]+src="([^"]+)"[^>]*>/)?.[1] || ''
+    console.log(`<v:fill type="frame" src="${vmlSnippet.substring(0, 150)}..." color="transparent"/>`)
+    console.log('---\n')
 
-    // Создание транспорта nodemailer
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: parseInt(smtpPort, 10),
-      secure: false, // true для 465, false для других портов
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    })
-
-    // Отправка письма
-    const mailOptions = {
-      from: smtpFrom,
-      to: smtpTo,
-      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
-      html: emailHtml,
-      text: emailContent,
-      attachments: attachments.length > 0 ? attachments : undefined,
-    }
-
-    const info = await transporter.sendMail(mailOptions)
-
-    console.log('✅ Email отправлен успешно:', info.messageId)
-    console.log('📧 Response:', info.response)
-
-    return NextResponse.json({ 
-      success: true, 
-      messageId: info.messageId,
-      response: info.response,
-    })
+    return NextResponse.json({ success: true, data })
   } catch (error) {
-    console.error('❌ Error sending email:', error)
+    console.error('Error sending email:', error)
     return NextResponse.json(
       { error: 'Wystąpił błąd podczas wysyłania wiadomości' },
       { status: 500 },
