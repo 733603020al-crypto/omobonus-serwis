@@ -1212,8 +1212,112 @@ const DEVICE_CATEGORIES = [
   },
 ]
 
+// Категории для страницы "Serwis Drukarek Termiczno-etykietowych"
+const THERMAL_DEVICE_CATEGORIES = [
+  {
+    title: 'Mała drukarka etykiet',
+    description:
+      'Urządzenie do użytku okazjonalnego drukowania. Małe modele',
+    features: ['małe wymiary', 'wolniejszy druk'],
+    examples: '',
+  },
+  {
+    title: 'Średnia drukarka etykiet',
+    description:
+      'Do pracy w małych i średnich biurach. Do częstszego drukowania.',
+    features: ['średni rozmiar', 'szybszy druk', 'wyższa trwałość'],
+    examples: '',
+  },
+  {
+    title: 'Duża drukarka etykiet',
+    description:
+      'Biznesowe urządzenie do intensywnej codziennej pracy i dużych wolumenów wydruku.',
+    features: ['do dużych nakładów z wysoką wytrzymałością'],
+    examples: '',
+  },
+]
+
+// Категории для страницы "Serwis Drukarek Igłowych"
+const NEEDLE_DEVICE_CATEGORIES = [
+  {
+    title: 'Mała drukarka igłowa',
+    description:
+      'Urządzenie do użytku okazjonalnego drukowania. Małe modele',
+    features: ['małe wymiary', 'wolniejszy druk'],
+    examples: '',
+  },
+  {
+    title: 'Średnia drukarka igłowa',
+    description:
+      'Do pracy w małych i średnich biurach. Do częstszego drukowania.',
+    features: ['średni rozmiar', 'szybszy druk', 'wyższa trwałość'],
+    examples: '',
+  },
+  {
+    title: 'Duża drukarka igłowa',
+    description:
+      'Biznesowe urządzenie do intensywnej codziennej pracy i dużych wolumenów wydruku.',
+    features: ['do dużych nakładów z wysoką wytrzymałością'],
+    examples: '',
+  },
+]
+
+// Функция для получения категорий устройств в зависимости от страницы
+const getDeviceCategories = (serviceSlug?: string) => {
+  if (serviceSlug === 'serwis-drukarek-termicznych') {
+    return THERMAL_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-drukarek-iglowych') {
+    return NEEDLE_DEVICE_CATEGORIES
+  }
+  return DEVICE_CATEGORIES
+}
+
 // Функция для получения пути к картинке принтера по названию категории
-const getPrinterImageForCategory = (categoryTitle: string): string => {
+const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
+  // Для страницы "Serwis Drukarek Igłowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-iglowych') {
+    switch (categoryTitle) {
+      case 'Mała drukarka igłowa':
+        return '/images/Mała_drukarka_Igłowa.png'
+      case 'Średnia drukarka igłowa':
+        return '/images/Średnia_drukarka_Igłowa.png'
+      case 'Duża drukarka igłowa':
+        return '/images/Duża_drukarka_Igłowa.png'
+      default:
+        return ''
+    }
+  }
+  
+  // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-termicznych') {
+    switch (categoryTitle) {
+      case 'Mała drukarka etykiet':
+        return '/images/Mała_drukarka_etykiet.png'
+      case 'Średnia drukarka etykiet':
+        return '/images/Srednia_drukarka_etykiet.png'
+      case 'Duża drukarka etykiet':
+        return '/images/Duża_drukarka_etykiet.png'
+      default:
+        return ''
+    }
+  }
+  
+  // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
+  if (serviceSlug === 'serwis-drukarek-atramentowych') {
+    switch (categoryTitle) {
+      case 'Drukarka domowa':
+        return '/images/Drukarka_domowa_atramentowa.png'
+      case 'Drukarka biurowa':
+        return '/images/Drukarka_biurowa_atramentowa.png'
+      case 'Drukarka biznesowa':
+        return '/images/Drukarka_biznesowa_atramentowa.png'
+      default:
+        return ''
+    }
+  }
+  
+  // Для всех остальных страниц используем старые изображения
   switch (categoryTitle) {
     case 'Drukarka domowa':
       return '/images/Drukarka_domowa.png'
@@ -1230,6 +1334,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
+  'serwis-drukarek-iglowych',
 ])
 
 const ServiceAccordion = ({ service }: { service: ServiceData }) => {
@@ -1297,7 +1402,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
               Kategorie urządzeń
             </h4>
             <p className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
-              W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej
+              {service.slug === 'serwis-drukarek-iglowych' 
+                ? 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej'
+                : service.slug === 'serwis-drukarek-termicznych'
+                ? 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej'
+                : 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej'}
             </p>
             <div className="mt-1 flex items-center justify-center gap-1">
               <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">(np.</span>
@@ -1310,7 +1419,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {DEVICE_CATEGORIES.map(category => (
+            {getDeviceCategories(service.slug).map(category => (
               <div
                 key={category.title}
                 className="bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col h-full shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center"
@@ -1324,7 +1433,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                 {/* Добавление картинки принтера */}
                 <div className="flex justify-center items-center my-3">
                   <Image
-                    src={getPrinterImageForCategory(category.title)}
+                    src={getPrinterImageForCategory(category.title, service.slug)}
                     alt={category.title}
                     width={200}
                     height={150}
@@ -1794,17 +1903,22 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               >
                                 <span className="hidden sm:inline">Cena, zł</span>
                                 <span className="inline sm:hidden">Cena</span>
-                                {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
-                                  <TooltipProvider delayDuration={100}>
-                                    <Tooltip
-                                      onOpenChange={open => {
-                                        if (isSpecialTooltipService) {
-                                          setCategoryTooltipOpen(open)
-                                        }
-                                      }}
+                                <TooltipProvider delayDuration={100}>
+                                  <Tooltip
+                                    onOpenChange={open => {
+                                      if (isSpecialTooltipService) {
+                                        setCategoryTooltipOpen(open)
+                                      }
+                                    }}
+                                  >
+                                    <TooltipTrigger
+                                      asChild
                                     >
-                                      <TooltipTrigger
-                                        className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex"
+                                      <span
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-label="Informacja o cenach"
+                                        className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
                                         onClick={event => event.stopPropagation()}
                                         onPointerDown={event => event.stopPropagation()}
                                         onKeyDown={event => {
@@ -1814,37 +1928,47 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                           }
                                         }}
                                       >
-                                        <span
-                                          role="button"
-                                          tabIndex={0}
-                                          aria-label="Informacja o cenach"
-                                          className="inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
-                                        >
-                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                        </span>
-                                      </TooltipTrigger>
-                                      <TooltipContent
-                                        {...(isSpecialTooltipService
-                                          ? {
-                                              side: 'left' as const,
-                                              align: 'center' as const,
-                                              sideOffset: 16,
-                                              collisionPadding: 16,
-                                              className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
-                                            }
-                                          : { sideOffset: 4 })}
-                                      >
-                                        {isSpecialTooltipService ? (
-                                          renderPriceTooltipContent()
-                                        ) : (
-                                          <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                        <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                      </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                      {...(isSpecialTooltipService
+                                        ? {
+                                            side: 'left' as const,
+                                            align: 'center' as const,
+                                            sideOffset: 16,
+                                            collisionPadding: 16,
+                                            className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                          }
+                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
+                                        ? {
+                                            sideOffset: 4,
+                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                            style: {
+                                              backgroundImage: `url('${manifest.Background_1}')`,
+                                              backgroundSize: 'cover',
+                                              backgroundPosition: 'center',
+                                            },
+                                          }
+                                        : { sideOffset: 4 })}
+                                    >
+                                      {isSpecialTooltipService ? (
+                                        renderPriceTooltipContent()
+                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
+                                        <>
+                                          <div className="absolute inset-0 bg-black/50 z-0" />
+                                          <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
                                             cena z VAT (brutto)
                                           </p>
-                                        )}
-                                      </TooltipContent>
-                                    </Tooltip>
-                                  </TooltipProvider>
-                                )}
+                                        </>
+                                      ) : (
+                                        <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                          {priceTooltip}
+                                        </p>
+                                      )}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
                               </div>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span

@@ -32,7 +32,7 @@ export function Footer() {
                 <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <Link
-                    href="https://maps.app.goo.gl/K5VzK8uHkP8xJ5dD7"
+                    href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/@51.0775056,16.9784737,11z"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-primary transition-colors"
@@ -56,10 +56,10 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
                 <Link
-                  href="mailto:omobonus.pl@gmail.com"
+                  href="mailto:serwis@omobonus.com.pl"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  omobonus.pl@gmail.com
+                  serwis@omobonus.com.pl
                 </Link>
               </div>
 
@@ -115,7 +115,7 @@ export function Footer() {
           <div className="flex items-center justify-center">
             <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.1234567890123!2d17.12345678901234!3d51.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDA3JzI0LjQiTiAxN8KwMDcnMjQuNCJF!5e0!3m2!1spl!2spl!4v1234567890123!5m2!1spl!2spl"
+                src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
                 width="100%"
                 height="100%"
                 style={{
