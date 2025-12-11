@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -159,15 +159,7 @@ export function Contact() {
       console.log('📦 Dane odpowiedzi:', responseData)
 
       if (!response.ok) {
-        const errorMessage = responseData?.error || 'Błąd podczas wysyłania formularza'
-        console.error('❌ Błąd serwera:', errorMessage)
-        throw new Error(errorMessage)
-      }
-
-      // Проверяем, что ответ действительно успешный
-      if (responseData?.error) {
-        console.error('❌ Błąd w odpowiedzi:', responseData.error)
-        throw new Error(responseData.error)
+        throw new Error('Błąd podczas wysyłania formularza')
       }
 
       console.log('✅ Formularz został wysłany pomyślnie!')
@@ -178,14 +170,7 @@ export function Contact() {
       setAttachmentError(null)
     } catch (error) {
       console.error('❌ Error submitting form:', error)
-      const errorMessage = error instanceof Error ? error.message : 'Wystąpił błąd podczas wysyłania formularza'
-      
-      // Более информативное сообщение об ошибке
-      if (errorMessage.includes('RESEND_API_KEY')) {
-        alert('Błąd konfiguracji serwera. Proszę skontaktować się z administratorem lub spróbować później.')
-      } else {
-        alert(`Błąd: ${errorMessage}\n\nProszę spróbować ponownie lub skontaktować się bezpośrednio: +48 793 759 262`)
-      }
+      alert('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.')
     } finally {
       setIsSubmitting(false)
     }
