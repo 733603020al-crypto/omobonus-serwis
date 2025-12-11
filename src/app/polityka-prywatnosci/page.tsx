@@ -1,15 +1,13 @@
 import manifest from '@/config/manifest'
 import { Metadata } from 'next'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Polityka Prywatności',
-  description: 'Polityka prywatności serwisu Omobonus Wrocław. Zasady przetwarzania danych osobowych, ochrona danych RODO, prawa użytkowników.',
+  title: 'Polityka Prywatności | Omobonus Serwis',
+  description: 'Polityka prywatności serwisu Omobonus Wrocław. Zasady przetwarzania danych osobowych, ochrona RODO.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 }
 
@@ -17,24 +15,26 @@ export const dynamic = 'force-static'
 
 export default function PolitykaPrywatnosci() {
   return (
-    <section className="relative pb-0 pt-4 md:pt-6">
-      {/* Tło sekcji */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest.services_background}')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+    <>
+      <Header />
+      <main className="min-h-screen pt-[65px] relative">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${manifest.services_background}')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
 
-      <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
+        <section className="relative pb-0 pt-0 z-10">
+          {/* Tekst nad formularzem */}
+          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic pt-1">
+            &ldquo;Chcesz zapoznać się z naszą Polityką Prywatności? Przeczytaj poniżej.&rdquo;
+          </p>
+
+          <div className="container mx-auto px-2 md:px-4 flex flex-col items-center">
         
-        {/* Tekst nad formularzem */}
-        <p className="text-white/90 text-lg md:text-xl text-center mb-4 md:mb-8 drop-shadow-md font-serif italic">
-          &ldquo;Chcesz zapoznać się z naszą Polityką Prywatności? Przeczytaj poniżej.&rdquo;
-        </p>
-
         {/* Karta formularza - масштабирована на 20% */}
         <div className="w-full max-w-6xl bg-paper-texture shadow-2xl rounded-sm p-3 md:p-5 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[15%]">
           
@@ -54,7 +54,7 @@ export default function PolitykaPrywatnosci() {
               <p className="text-sm md:text-base font-sans leading-normal">
                 Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych 
                 przekazanych przez Użytkowników w związku z korzystaniem przez nich z usług serwisu 
-                Omobonus Serwis dostępnego pod adresem internetowym <a href="https://www.omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">https://www.omobonus.com.pl</a>.
+                Omobonus Serwis dostępnego pod adresem internetowym <a href="https://serwis.omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">https://serwis.omobonus.com.pl</a>.
               </p>
             </div>
 
@@ -187,7 +187,7 @@ export default function PolitykaPrywatnosci() {
               <p className="text-sm md:text-base font-sans leading-normal">
                 W sprawach związanych z ochroną danych osobowych można kontaktować się z Administratorem 
                 danych osobowych poprzez formularz kontaktowy dostępny na stronie internetowej 
-                lub bezpośrednio pod adresem e-mail: <a href="mailto:omobonus.pl@gmail.com" className="underline hover:text-[#3a2e24]/70">omobonus.pl@gmail.com</a>.
+                lub bezpośrednio pod adresem e-mail: <a href="mailto:serwis@omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">serwis@omobonus.com.pl</a>.
               </p>
             </div>
 
@@ -228,8 +228,11 @@ export default function PolitykaPrywatnosci() {
 
           </div>
         </div>
-      </div>
-    </section>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   )
 }
 
