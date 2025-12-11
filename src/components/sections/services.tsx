@@ -39,7 +39,7 @@ export function Services() {
               <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                 <Image
                   src={service.icon}
-                  alt={service.title}
+                  alt={`${service.title} Wrocław - ikona usługi serwisowej`}
                   width={50}
                   height={50}
                   className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"

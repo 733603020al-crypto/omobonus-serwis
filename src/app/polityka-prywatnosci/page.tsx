@@ -2,8 +2,15 @@ import manifest from '@/config/manifest'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Polityka Prywatności | Omobonus Serwis',
-  description: 'Polityka prywatności serwisu Omobonus - zasady przetwarzania i ochrony danych osobowych',
+  title: 'Polityka Prywatności',
+  description: 'Polityka prywatności serwisu Omobonus Wrocław. Zasady przetwarzania danych osobowych, ochrona danych RODO, prawa użytkowników.',
+  alternates: {
+    canonical: 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export const dynamic = 'force-static'

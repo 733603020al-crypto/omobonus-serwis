@@ -7,9 +7,24 @@ import { Contact } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Omobonus – serwis komputerów, laptopów i drukarek Wrocław',
-  description:
-    'Profesjonalny serwis komputerów i drukarek we Wrocławiu — uczciwa wycena, brak ukrytych kosztów.',
+  title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+  description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, wymiana podzespołów, outsourcing IT. Uczciwe ceny brutto, dojazd gratis.',
+  alternates: {
+    canonical: 'https://serwis.omobonus.com.pl',
+  },
+  openGraph: {
+    title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, uczciwe ceny bez ukrytych kosztów.',
+    url: 'https://serwis.omobonus.com.pl',
+    images: [
+      {
+        url: '/images/omobonus-hero.png',
+        width: 1200,
+        height: 630,
+        alt: 'Omobonus - profesjonalny serwis komputerów i drukarek we Wrocławiu',
+      },
+    ],
+  },
 }
 
 export default function Home() {

@@ -46,14 +46,183 @@ const cinzel = Cinzel({
 })
 
 export const metadata: Metadata = {
-  title: 'Omobonus Serwis — Serwis drukarek i komputerów Wrocław',
-  description:
-    'Profesjonalny serwis komputerów i drukarek we Wrocławiu — uczciwa wycena, brak ukrytych kosztów.',
+  metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  title: {
+    default: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    template: '%s | Omobonus Serwis Wrocław',
+  },
+  description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów. Dojazd gratis.',
+  keywords: [
+    'serwis komputerów Wrocław',
+    'naprawa laptopów Wrocław',
+    'serwis drukarek Wrocław',
+    'naprawa komputerów Wrocław',
+    'serwis laptopów Wrocław',
+    'naprawa drukarek Wrocław',
+    'outsourcing IT Wrocław',
+    'serwis IT Wrocław',
+    'usługi informatyczne Wrocław',
+    'naprawa drukarki laserowej',
+    'serwis drukarek atramentowych',
+    'wymiana matrycy laptop',
+    'czyszczenie laptopa',
+    'wymiana dysku SSD',
+    'odzyskiwanie danych Wrocław',
+  ],
+  authors: [{ name: 'Omobonus Sp. z o.o.' }],
+  creator: 'Omobonus Sp. z o.o.',
+  publisher: 'Omobonus Sp. z o.o.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pl_PL',
+    url: 'https://serwis.omobonus.com.pl',
+    siteName: 'Omobonus Serwis',
+    title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów.',
+    images: [
+      {
+        url: '/images/omobonus-hero.png',
+        width: 1200,
+        height: 630,
+        alt: 'Omobonus - serwis komputerów i drukarek Wrocław',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Uczciwe ceny, dojazd gratis.',
+    images: ['/images/omobonus-hero.png'],
+  },
+  alternates: {
+    canonical: 'https://serwis.omobonus.com.pl',
+  },
+  verification: {
+    google: 'google-site-verification-code', // Замените на реальный код верификации
+  },
+  category: 'technology',
+  other: {
+    'geo.region': 'PL-DS',
+    'geo.placename': 'Wrocław',
+    'geo.position': '51.107883;17.038538',
+    'ICBM': '51.107883, 17.038538',
+  },
+}
+
+// Schema.org LocalBusiness structured data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://serwis.omobonus.com.pl/#organization',
+  name: 'Omobonus Serwis',
+  alternateName: 'Omobonus Sp. z o.o.',
+  description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu komputerowego, outsourcing IT dla firm, uczciwe ceny bez ukrytych kosztów.',
+  url: 'https://serwis.omobonus.com.pl',
+  logo: 'https://serwis.omobonus.com.pl/images/Logo_Omobonus.png',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.png',
+  telephone: '+48793759262',
+  email: 'serwis@omobonus.com.pl',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marcina Bukowskiego 174',
+    addressLocality: 'Wrocław',
+    addressRegion: 'Dolnośląskie',
+    postalCode: '52-418',
+    addressCountry: 'PL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.107883,
+    longitude: 17.038538,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  ],
+  priceRange: '$$',
+  currenciesAccepted: 'PLN',
+  paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+  areaServed: {
+    '@type': 'City',
+    name: 'Wrocław',
+    '@id': 'https://www.wikidata.org/wiki/Q1799',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Usługi serwisowe',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Naprawa laptopów',
+          description: 'Kompleksowy serwis i naprawa laptopów wszystkich marek: HP, Dell, Lenovo, Asus, Acer',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Serwis komputerów stacjonarnych',
+          description: 'Diagnostyka, naprawa i modernizacja komputerów PC',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Serwis drukarek',
+          description: 'Naprawa drukarek laserowych, atramentowych, termicznych i igłowych',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Outsourcing IT',
+          description: 'Kompleksowa obsługa informatyczna dla firm we Wrocławiu',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Wynajem drukarek',
+          description: 'Dzierżawa urządzeń drukujących dla biur z pełnym serwisem',
+        },
+      },
+    ],
+  },
+  sameAs: [
+    'https://wa.me/48793759262',
+    'https://t.me/+48793759262',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${cormorant.variable} ${cormorantSC.variable} ${lora.variable} ${inter.variable} ${ebGaramond.variable} ${spectralSC.variable} ${cinzel.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased scroll-smooth">
         {children}
       </body>

@@ -1,14 +1,102 @@
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
 import { services } from "@/lib/services-data"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 
+// SEO metadata for each service page
+const seoMetadata: Record<string, { title: string; description: string; keywords: string[] }> = {
+  'serwis-laptopow': {
+    title: 'Naprawa laptopów Wrocław – serwis laptopów HP, Dell, Lenovo, Asus',
+    description: 'Profesjonalna naprawa laptopów we Wrocławiu. Wymiana matrycy, dysku SSD, czyszczenie, instalacja systemu. Serwis laptopów wszystkich marek z dojazdem.',
+    keywords: ['naprawa laptopów Wrocław', 'serwis laptopów Wrocław', 'wymiana matrycy laptop', 'wymiana dysku SSD laptop', 'czyszczenie laptopa Wrocław', 'naprawa laptopa HP', 'serwis Dell Wrocław', 'naprawa Lenovo'],
+  },
+  'serwis-komputerow-stacjonarnych': {
+    title: 'Serwis komputerów Wrocław – naprawa PC, modernizacja, diagnoza',
+    description: 'Naprawa komputerów stacjonarnych we Wrocławiu. Diagnostyka usterek, wymiana podzespołów, modernizacja PC, instalacja Windows. Uczciwe ceny.',
+    keywords: ['serwis komputerów Wrocław', 'naprawa komputerów Wrocław', 'naprawa PC Wrocław', 'modernizacja komputera', 'wymiana karty graficznej', 'instalacja Windows Wrocław', 'diagnoza komputera'],
+  },
+  'outsourcing-it': {
+    title: 'Outsourcing IT Wrocław – obsługa informatyczna firm',
+    description: 'Outsourcing IT dla firm we Wrocławiu. Kompleksowa obsługa informatyczna, wsparcie techniczne, administracja serwerów i sieci. Stała opieka IT.',
+    keywords: ['outsourcing IT Wrocław', 'obsługa informatyczna firm', 'wsparcie IT Wrocław', 'usługi IT dla firm', 'administracja sieci', 'helpdesk IT Wrocław', 'opieka informatyczna'],
+  },
+  'serwis-drukarek-laserowych': {
+    title: 'Serwis drukarek laserowych Wrocław – naprawa HP, Brother, Canon',
+    description: 'Profesjonalny serwis drukarek laserowych i urządzeń MFU we Wrocławiu. Naprawa drukarek HP, Brother, Canon, Samsung. Wymiana tonerów, konserwacja.',
+    keywords: ['serwis drukarek laserowych Wrocław', 'naprawa drukarek Wrocław', 'serwis drukarek HP', 'naprawa drukarki Brother', 'serwis MFU', 'wymiana tonera', 'naprawa kserokopiarki'],
+  },
+  'serwis-drukarek-atramentowych': {
+    title: 'Serwis drukarek atramentowych Wrocław – naprawa Epson, Canon, HP',
+    description: 'Naprawa drukarek atramentowych we Wrocławiu. Udrażnianie głowic, wymiana tuszy, serwis drukarek Epson, Canon, HP. Szybka diagnoza i naprawa.',
+    keywords: ['serwis drukarek atramentowych Wrocław', 'naprawa drukarki atramentowej', 'udrażnianie głowicy drukarki', 'serwis Epson Wrocław', 'naprawa Canon', 'wymiana tuszu'],
+  },
+  'serwis-drukarek-termicznych': {
+    title: 'Serwis drukarek termicznych Wrocław – naprawa drukarek etykiet Zebra',
+    description: 'Naprawa drukarek termicznych i etykietowych we Wrocławiu. Serwis drukarek Zebra, Brother, Dymo. Wymiana głowicy, kalibracja, konserwacja.',
+    keywords: ['serwis drukarek termicznych Wrocław', 'naprawa drukarki etykiet', 'serwis Zebra', 'drukarka kodów kreskowych', 'naprawa drukarki etykietowej', 'wymiana głowicy termicznej'],
+  },
+  'serwis-drukarek-iglowych': {
+    title: 'Serwis drukarek igłowych Wrocław – naprawa Epson, OKI, Citizen',
+    description: 'Profesjonalny serwis drukarek igłowych we Wrocławiu. Naprawa drukarek Epson, OKI, Citizen. Wymiana taśmy barwiącej, konserwacja mechanizmu.',
+    keywords: ['serwis drukarek igłowych Wrocław', 'naprawa drukarki igłowej', 'serwis Epson LX', 'naprawa OKI', 'wymiana taśmy barwiącej', 'drukarka igłowa naprawa'],
+  },
+  'wynajem-drukarek': {
+    title: 'Wynajem drukarek Wrocław – dzierżawa drukarek dla firm',
+    description: 'Wynajem i dzierżawa drukarek dla firm we Wrocławiu. Drukarki z serwisem i tonerem w cenie. Bez ukrytych kosztów, elastyczne warunki.',
+    keywords: ['wynajem drukarek Wrocław', 'dzierżawa drukarek', 'leasing drukarek', 'wynajem drukarki dla firmy', 'drukarki na wynajem', 'dzierżawa urządzeń biurowych'],
+  },
+  'drukarka-zastepcza': {
+    title: 'Drukarka zastępcza Wrocław – urządzenie na czas naprawy',
+    description: 'Drukarka zastępcza na czas naprawy we Wrocławiu. Zapewniamy urządzenie zastępcze bez opłat abonamentowych. Szybkie podstawienie.',
+    keywords: ['drukarka zastępcza Wrocław', 'drukarka na czas naprawy', 'urządzenie zastępcze', 'wynajem drukarki tymczasowo', 'drukarka zamienna'],
+  },
+}
+
 export async function generateStaticParams() {
   return services.map(service => ({
     slug: service.slug,
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const service = services.find(s => s.slug === slug)
+  const seo = seoMetadata[slug]
+
+  if (!service || !seo) {
+    return {
+      title: 'Usługa nie znaleziona',
+    }
+  }
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+      images: [
+        {
+          url: service.icon,
+          width: 400,
+          height: 400,
+          alt: service.title,
+        },
+      ],
+    },
+  }
 }
 
 export default async function ServicePage({
@@ -23,8 +111,37 @@ export default async function ServicePage({
     notFound()
   }
 
+  // Schema.org Service structured data
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description: seoMetadata[slug]?.description || service.description,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Omobonus Serwis',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Marcina Bukowskiego 174',
+        addressLocality: 'Wrocław',
+        postalCode: '52-418',
+        addressCountry: 'PL',
+      },
+      telephone: '+48793759262',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Wrocław',
+    },
+    url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
       <Header />
       <main className="min-h-screen pt-[65px] relative">
         <div
@@ -91,7 +208,7 @@ export default async function ServicePage({
           </div>
         )}
 
-        {/* SEO tekst dla strony Serwis Drukarek Laserowych i MFU */}
+        {/* SEO tekст dla strony Serwis Drukarek Laserowych i MFU */}
         {service.slug === 'serwis-drukarek-laserowych' && (
           <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
             <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">

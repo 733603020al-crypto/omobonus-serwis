@@ -1,0 +1,22 @@
+# Robots.txt for serwis.omobonus.com.pl
+# Serwis komputerów, laptopów i drukarek Wrocław
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://serwis.omobonus.com.pl/sitemap.xml
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Block API routes from indexing
+Disallow: /api/
+

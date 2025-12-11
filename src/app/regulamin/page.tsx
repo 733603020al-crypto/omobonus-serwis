@@ -2,8 +2,15 @@ import manifest from '@/config/manifest'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Regulamin | Omobonus Serwis',
-  description: 'Regulamin świadczenia usług serwisowych przez Omobonus',
+  title: 'Regulamin świadczenia usług',
+  description: 'Regulamin serwisu Omobonus Wrocław. Zasady naprawy komputerów i drukarek, gwarancja, reklamacje, prawa klienta.',
+  alternates: {
+    canonical: 'https://serwis.omobonus.com.pl/regulamin',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export const dynamic = 'force-static'

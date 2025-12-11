@@ -33,7 +33,7 @@ export function About() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl">
               <Image
                 src={manifest.omobonus_hero}
-                alt="Święty Omobonus"
+                alt="Święty Omobonus - patron uczciwych przedsiębiorców i rzemieślników, symbol serwisu komputerów Wrocław"
                 width={400}
                 height={500}
                 className="object-contain rounded-lg w-full h-auto"
@@ -85,7 +85,7 @@ export function About() {
                 <li className="flex items-center gap-2">
                   <Image
                     src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.jpg"
-                    alt="Karta Dużej Rodziny"
+                    alt="Karta Dużej Rodziny - zniżka 10% na serwis komputerów i drukarek Wrocław"
                     width={64}
                     height={64}
                     className="rounded-lg flex-shrink-0"

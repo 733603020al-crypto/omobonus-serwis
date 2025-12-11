@@ -89,7 +89,7 @@ export function Header() {
           <div className="h-full w-[40px] md:w-[48px] relative flex items-center flex-shrink-0">
             <Image
               src="/images/Logo_Omobonus.png"
-              alt="Omobonus logo"
+              alt="Omobonus Serwis - profesjonalny serwis komputerów i drukarek Wrocław"
               fill
               className="object-contain object-center p-[1px]"
               sizes="(max-width: 768px) 40px, 48px"
