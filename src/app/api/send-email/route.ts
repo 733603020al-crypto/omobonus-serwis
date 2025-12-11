@@ -304,7 +304,7 @@ export async function POST(request: NextRequest) {
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomo┼Ť─ç wys┼éana automatycznie z formularza Omobonus Serwis ┬ę 2025 Omobonus Serwis
+                      Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -432,7 +432,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                   Szanowny Kliencie,
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                  potwierdzamy otrzymanie Twojego zg┼éoszenia serwisowego w <strong>Omobonus Serwis</strong>.
+                  potwierdzamy otrzymanie Twojego zgłoszenia serwisowego w <strong>Omobonus Serwis</strong>.
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.3; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
                   Zgłoszenie zostało zarejestrowane pod numerem: <span style="color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${ticketNumber}</span>.
@@ -447,7 +447,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
           <!-- đóđ░đ▒đ╗đŞĐćđ░ đ┤đ░đŻđŻĐőĐů -->
           <tr>
             <td style="padding: 0 40px 30px;">
-              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przes┼éane w formularzu:</p>
+              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przesłane w formularzu:</p>
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <!-- đśđ╝ĐĆ đŞ Đäđ░đ╝đŞđ╗đŞĐĆ -->
                 <tr>
@@ -565,8 +565,8 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                 <strong>Zespół Omobonus Serwis</strong>
               </p>
               <p style="margin: 0; color: #3a2e24; font-size: 14px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                ­čô× <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
-                ­čîÉ <a href="https://www.omobonus.com.pl" style="color: #3a2e24; text-decoration: none;">www.omobonus.com.pl</a>
+                📞 <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
+                🌐 <a href="https://www.omobonus.com.pl" style="color: #3a2e24; text-decoration: none;">www.omobonus.com.pl</a>
               </p>
             </td>
           </tr>
@@ -578,7 +578,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomo┼Ť─ç wys┼éana automatycznie z formularza Omobonus Serwis ┬ę 2025 Omobonus Serwis
+                      Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -605,9 +605,9 @@ Zgłoszenie zostało zarejestrowane pod numerem ${ticketNumber}.
 
 Nasz zespół wkrótce się z Tobą skontaktuje, aby ustalić dalsze kroki.
 
-Prosimy o zachowanie numeru zg┼éoszenia do przysz┼éej korespondencji.
+Prosimy o zachowanie numeru zgłoszenia do przyszłej korespondencji.
 
-Dane przes┼éane w formularzu:
+Dane przesłane w formularzu:
 
 Imię i nazwisko: ${name}
 Numer telefonu: ${formattedPhone}
@@ -620,10 +620,10 @@ Drukarka zastępcza: ${replacementPrinter}
 
 Pozdrawiamy serdecznie,
 Zespół Omobonus Serwis
-­čô× ${CONTACT_INFO.phone}
-­čîÉ www.omobonus.com.pl
+📞 ${CONTACT_INFO.phone}
+🌐 www.omobonus.com.pl
 
-Wiadomo┼Ť─ç wys┼éana automatycznie z formularza Omobonus Serwis ┬ę 2025 Omobonus Serwis
+Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
         `.trim()
 
         // đ×Đéđ┐ĐÇđ░đ▓đ║đ░ đ┐đŞĐüĐîđ╝đ░ đ║đ╗đŞđÁđŻĐéĐâ
