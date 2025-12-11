@@ -41,3 +41,5 @@ Write-Host "`n6. Последние 5 коммитов:" -ForegroundColor Yellow
 git log --oneline -5
 
 Write-Host "`n=== Проверка завершена ===" -ForegroundColor Cyan
+
+

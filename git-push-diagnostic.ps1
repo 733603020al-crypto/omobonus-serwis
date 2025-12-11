@@ -101,3 +101,5 @@ if ($unpushedAfter) {
 }
 
 Write-Host "`n=== Диагностика завершена ===" -ForegroundColor Cyan
+
+

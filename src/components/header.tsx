@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import manifest from '@/config/manifest'
+import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
@@ -94,7 +94,7 @@ export function Header() {
               className="object-contain object-center p-[1px]"
               sizes="(max-width: 768px) 40px, 48px"
               priority
-              quality={90}
+              unoptimized
             />
           </div>
           <BrandWordmark />
@@ -133,7 +133,7 @@ export function Header() {
             Kontakt
           </Link>
           <Link
-            href="https://serwis.omobonus.com.pl"
+            href="https://omobonus.com.pl"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
@@ -155,7 +155,7 @@ export function Header() {
         {/* Mobile Menu */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden z-10">
-            <Button variant="ghost" size="icon" className="text-white" aria-label="Otwórz menu nawigacyjne">
+            <Button variant="ghost" size="icon" className="text-white">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -218,7 +218,7 @@ export function Header() {
                     Kontakt
                   </Link>
                   <Link
-                    href="https://serwis.omobonus.com.pl"
+                    href="https://omobonus.com.pl"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"

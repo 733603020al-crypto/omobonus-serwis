@@ -1,7 +1,5 @@
 import manifest from '@/config/manifest'
 import { Metadata } from 'next'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Regulamin | Omobonus Serwis',
@@ -12,26 +10,24 @@ export const dynamic = 'force-static'
 
 export default function Regulamin() {
   return (
-    <>
-      <Header />
-      <main className="min-h-screen pt-[65px] relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${manifest.services_background}')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+    <section className="relative pb-0 pt-4 md:pt-6 min-h-0">
+      {/* Tło sekcji */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('${manifest.services_background}')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
 
-        <section className="relative pb-0 pt-0 min-h-0 z-10">
-          {/* Tekst nad formularzem */}
-          <p className="text-white/90 text-lg md:text-xl text-center mb-2 md:mb-3 drop-shadow-md font-serif italic pt-1">
-            &ldquo;Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.&rdquo;
-          </p>
-
-          <div className="container mx-auto px-2 md:px-4 flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
         
+        {/* Tekst nad formularzem */}
+        <p className="text-white/90 text-lg md:text-xl text-center mb-4 md:mb-8 drop-shadow-md font-serif italic">
+          &ldquo;Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.&rdquo;
+        </p>
+
         {/* Karta formularza - масштабирована на 20% */}
         <div className="w-full max-w-6xl bg-paper-texture shadow-2xl rounded-sm p-3 md:p-5 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[25%]">
           
@@ -52,7 +48,7 @@ export default function Regulamin() {
                 <strong>1.1.</strong> Niniejszy Regulamin (dalej &ldquo;Regulamin&rdquo;) określa zasady i warunki świadczenia usług naprawy, diagnostyki, konserwacji, oraz innych usług związanych z komputerami, drukarkami, peryferiami i innym sprzętem IT przez firmę Omobonus Sp. z o.o. (dalej &ldquo;Serwis&rdquo;).
               </p>
               <p className="text-sm md:text-base font-sans leading-normal">
-                <strong>1.2.</strong> Usługi świadczone są przez Omobonus Sp. z o.o., z siedzibą pod adresem: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, kontakt e-mail: <a href="mailto:serwis@omobonus.com.pl" className="underline hover:text-[#3a2e24]/70">serwis@omobonus.com.pl</a>, telefon: <a href="tel:+48793759262" className="underline hover:text-[#3a2e24]/70">+48 793 759 262</a>.
+                <strong>1.2.</strong> Usługi świadczone są przez Omobonus Sp. z o.o., z siedzibą pod adresem: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, kontakt e-mail: <a href="mailto:omobonus.pl@gmail.com" className="underline hover:text-[#3a2e24]/70">omobonus.pl@gmail.com</a>, telefon: <a href="tel:+48793759262" className="underline hover:text-[#3a2e24]/70">+48 793 759 262</a>.
               </p>
               <p className="text-sm md:text-base font-sans leading-normal">
                 <strong>1.3.</strong> Każdy Klient, który korzysta z usług Serwisu, zobowiązany jest do zapoznania się z niniejszym Regulaminem i jego zaakceptowania przed rozpoczęciem świadczenia usług.
@@ -262,11 +258,8 @@ export default function Regulamin() {
 
           </div>
         </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </section>
   )
 }
 

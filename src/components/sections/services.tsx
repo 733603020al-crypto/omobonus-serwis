@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { services } from '@/lib/services-data'
-import manifest from '@/config/manifest'
+import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import { ArrowRight } from 'lucide-react'
 
 export function Services() {
@@ -43,7 +43,7 @@ export function Services() {
                   width={50}
                   height={50}
                   className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                  loading="lazy"
+                  unoptimized
                 />
               </div>
 

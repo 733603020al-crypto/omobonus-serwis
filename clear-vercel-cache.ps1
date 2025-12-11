@@ -48,3 +48,5 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "3. Откройте последний деплой" -ForegroundColor Cyan
     Write-Host "4. Нажмите 'Redeploy' с опцией 'Use existing Build Cache' = OFF" -ForegroundColor Cyan
 }
+
+
