@@ -240,7 +240,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased scroll-smooth">
+      <body className="font-sans antialiased scroll-smooth bg-background text-foreground">
         {children}
       </body>
     </html>
