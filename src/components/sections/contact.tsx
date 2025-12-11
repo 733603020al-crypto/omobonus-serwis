@@ -157,7 +157,34 @@ export function Contact() {
       console.log('📦 Dane odpowiedzi:', responseData)
 
       if (!response.ok) {
-        throw new Error('Błąd podczas wysyłania formularza')
+        // Структурированная обработка ошибок
+        const errorType = responseData.errorType || 'UNKNOWN'
+        let errorMessage = 'Wystąpił błąd podczas wysyłania formularza.'
+
+        switch (errorType) {
+          case 'MISSING_CONFIG':
+            errorMessage = 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.'
+            break
+          case 'FILE_TOO_LARGE':
+            errorMessage = responseData.error || 'Jeden z plików jest za duży. Maksymalny rozmiar: 25 MB.'
+            if (responseData.details) {
+              errorMessage += ` ${responseData.details}`
+            }
+            break
+          case 'SMTP_ERROR':
+            errorMessage = 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.'
+            if (responseData.details && process.env.NODE_ENV === 'development') {
+              console.error('SMTP Error details:', responseData.details)
+            }
+            break
+          case 'INVALID_REQUEST':
+            errorMessage = responseData.error || 'Nieprawidłowe dane w formularzu.'
+            break
+          default:
+            errorMessage = responseData.error || 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.'
+        }
+
+        throw new Error(errorMessage)
       }
 
       console.log('✅ Formularz został wysłany pomyślnie!')
@@ -168,7 +195,13 @@ export function Contact() {
       setAttachmentError(null)
     } catch (error) {
       console.error('❌ Error submitting form:', error)
-      alert('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.')
+      
+      // Более информативное сообщение об ошибке
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.'
+      
+      alert(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
