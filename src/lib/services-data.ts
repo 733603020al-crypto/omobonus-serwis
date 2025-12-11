@@ -119,17 +119,17 @@ const defaultPricingSections: PricingSection[] = [
     title: 'Czyszczenie i konserwacja (bez naprawy)',
     items: [
       {
-        service: 'PODSTAWOWY do 30 min. (przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu) (czyszczenie zewnętrzne i wewnętrzne drukarki, czyszczenie i konserwacja karetek, sprawdzenie głowicy, czyszczenie rolek pobierania papieru, kontrola elementów mechanicznych, test jakości wydruku)',
+        service: 'PODSTAWOWY (przegląd i profilaktyka) (czyszczenie zewnętrzne i wewnętrzne drukarki, czyszczenie i konserwacja karetek, sprawdzenie głowicy, czyszczenie rolek pobierania papieru, kontrola elementów mechanicznych, test jakości wydruku)',
         price: '50 / 100 / 150',
         duration: '1-3 dni',
       },
       {
-        service: 'STANDARD do 1 godziny (standardowa konserwacja) (Zakres PODSTAWOWY + Czyszczenie czujników papieru, Czyszczenie stacji serwisowej)',
+        service: 'STANDARD (standardowa konserwacja) (Zakres PODSTAWOWY + Czyszczenie czujników papieru, Czyszczenie stacji serwisowej)',
         price: '100 / 150 / 200',
         duration: '1-3 dni',
       },
       {
-        service: 'PREMIUM do 2 godzin (pełna konserwacja) (Zakres STANDARD + Udrożnienie układu tuszu, Czyszczenie pompy/pochłaniacza tuszu, reset liczników serwisowych)',
+        service: 'PREMIUM (pełna konserwacja) (Zakres STANDARD + Udrożnienie układu tuszu, Czyszczenie pompy/pochłaniacza tuszu, reset liczników serwisowych)',
         price: '150 / 200 / 250',
         duration: '1-3 dni',
       },
@@ -144,86 +144,77 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Mechanizm poboru papieru, rolki, separatory',
         items: [
           {
-            service: 'Czyszczenie lub wymiana rolki pobierającej / separatora (Usuwa zaciągnięcia, "chwyta kilka kartek")',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
+            service: 'Naprawa mechanizmu podawania oraz poboru papieru',
+            price: '70 / 110 / 150 + części',
+            duration: '1–2 dni',
           },
           {
-            service: 'Czyszczenie czujników papieru (Usuwa fałszywe komunikaty "brak papieru")',
-            price: '80 / 130 / 170',
-            duration: '1-2 dni',
+            service: 'Czyszczenie mechanizmu podawania i uchwytów papieru',
+            price: '70 / 100 / 140',
+            duration: '1–2 dni',
           },
           {
-            service: 'Regulacja prowadnic i rolek rejestracji papieru (Wyrównuje tor papieru, zmniejsza zaciągnięcia)',
-            price: '90 / 140 / 180',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Naprawa mechanizmu poboru papieru (Usuwa poślizgi i blokady)',
-            price: '100 / 150 / 200',
-            duration: '1-3 dni',
+            service: 'Usunięcie zacięć papieru i regeneracja mechanizmu podawania',
+            price: '80 / 120 / 160 + części',
+            duration: '1–3 dni',
           },
         ],
       },
       {
         id: 'naprawy-karetka',
-        title: 'Karetka i napęd',
+        title: 'Mechanizm uderzeniowy i głowica drukująca (matryczna)',
         items: [
           {
-            service: 'Czyszczenie i smarowanie prowadnic karetki (Usuwa szarpanie i hałas)',
-            price: '80 / 130 / 170',
-            duration: '1-2 dni',
+            service: 'Wymiana głowicy drukującej (igłowej)',
+            price: '120 / 180 / 240 + części',
+            duration: '2–4 dni',
           },
           {
-            service: 'Wymiana paska napędowego karetki (Usuwa "zgrzytanie")',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Czyszczenie / wymiana taśmy enkodera (Usuwa przesunięcia i cienie)',
-            price: '100 / 150 / 200',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Naprawa silnika karetki / mechanizmu przesuwu (Drukarka nie przesuwa głowicy)',
-            price: '140 / 200 / 260',
-            duration: '1-5 dni',
+            service: 'Regulacja i czyszczenie mechanizmu igieł/ramienia uderzeniowego',
+            price: '90 / 140 / 190',
+            duration: '1–3 dni',
           },
         ],
       },
       {
         id: 'naprawy-glowica',
-        title: 'Głowica drukująca i układ tuszu',
+        title: 'Napęd i mechanika ruchu kartridża / wstęgi barwiącej',
         items: [
           {
-            service: 'Udrażnianie głowicy drukującej (Usuwa przerwy w druku)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
+            service: 'Wymiana lub regulacja paska/przekładni napędu kartridża',
+            price: '80 / 130 / 180 + części',
+            duration: '1–3 dni',
           },
           {
-            service: 'Płukanie i odpowietrzanie układu tuszu (Zapobiega bąbelkom)',
-            price: '130 / 180 / 230',
-            duration: '1-3 dni',
+            service: 'Czyszczenie i smarowanie prowadnic kartridża/ramienia',
+            price: '70 / 100 / 140',
+            duration: '1–2 dni',
           },
           {
-            service: 'Wymiana głowicy drukującej (Gdy udrażnianie nie pomaga)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
+            service: 'Wymiana lub naprawa mechanizmu wstęgi barwiącej',
+            price: '90 / 140 / 190 + części',
+            duration: '1–3 dni',
+          },
+        ],
+      },
+      {
+        id: 'naprawy-tasma',
+        title: 'Taśma barwiąca / mechanizm barwienia druku',
+        items: [
+          {
+            service: 'Wymiana taśmy barwiącej (ink‑ribbon)',
+            price: '50 / 80 / 110 + materiał',
+            duration: '1–2 dni',
           },
           {
-            service: 'Serwis stacji serwisowej (Czyści głowicę)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
+            service: 'Czyszczenie mechanizmu wstęgi i prowadnic',
+            price: '70 / 100 / 140',
+            duration: '1–2 dni',
           },
           {
-            service: 'Reset blokad serwisowych (Odblokowuje drukarkę)',
-            price: '80 / 120 / 160',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Czyszczenie/wymiana pochłaniacza tuszu ("Pampersy - gąbki")',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
+            service: 'Regeneracja mechanizmu wstęgi lub uchwytu wstęgi',
+            price: '90 / 130 / 180 + części',
+            duration: '1–3 dni',
           },
         ],
       },
@@ -232,119 +223,50 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Naprawy elektroniczne',
         items: [
           {
-            service: 'Naprawa lub wymiana gniazda USB / LAN (Drukarka niewidoczna)',
-            price: '90 / 130 / 170',
+            service:
+              'Naprawa lub wymiana złączki lub gniazda LAN/USB uszkodzone / poluzowane\n(usuwa brak wykrywania drukarki przez komputer / LAN)',
+            price: '90 / 130 / 170\n+ części',
             duration: '1-3 dni',
           },
           {
-            service: 'Wymiana panelu sterowania (Uszkodzony wyświetlacz)',
-            price: '140 / 200 / 260',
-            duration: '1-3 dni',
+            service:
+              'Naprawa lub wymiana zasilacza (PSU / płytka zasilająca)\n(po awarii po przepięciu / skoku napięcia)',
+            price: '150 / 200 / 250\n+ części',
+            duration: '1-5 dni',
           },
           {
-            service: 'Naprawa lub wymiana taśm sygnałowych (Brak komunikacji)',
-            price: '70 / 110 / 150',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Naprawa zasilacza (Drukarka się nie włącza)',
-            price: '150 / 200 / 250',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Naprawa płyty głównej (Błędy systemowe)',
-            price: '160 / 220 / 280',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Wymiana płyty głównej (Gdy naprawa nieopłacalna)',
-            price: '140 / 200 / 260',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Wymiana czujników (Drukarka nie widzi papieru)',
-            price: '100 / 150 / 200',
-            duration: '1-3 dni',
-          },
-        ],
-      },
-      {
-        id: 'naprawy-skaner',
-        title: 'Skaner / ADF',
-        items: [
-          {
-            service: 'Czyszczenie szyby skanera (Usuwa smugi)',
-            price: '70 / 110 / 150',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Kalibracja skanera (Poprawia ostrość)',
+            service:
+              'Diagnostyka płyty głównej / elektroniki sterującej\n(ustala źródło błędów, zwarć, braku komunikacji)',
             price: '60 / 90 / 120',
             duration: '1-2 dni',
           },
           {
-            service: 'Czyszczenie czujników skanera (Usuwa pasy)',
-            price: '70 / 110 / 150',
-            duration: '1-2 dni',
+            service:
+              'Naprawa lub wymiana płyty głównej (formatera) / interfejsów I/O / HVPS\n(błędy firmware, usuwa problemy z uruchamianiem drukarki, samoczynnym wyłączaniem)',
+            price: '160 / 220 / 280\n+ części',
+            duration: '1-5 dni',
           },
           {
-            service: 'Wymiana lampy skanera (Równomierne oświetlenie)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Wymiana przewodu skanera (Usuwa przerwy)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Naprawa zawiasów pokrywy (Stabilizuje docisk)',
-            price: '90 / 140 / 190',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Czyszczenie rolek ADF (Usuwa poślizgi)',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Wymiana rolek ADF (Zmniejsza zaciągnięcia)',
-            price: '120 / 170 / 220',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Czyszczenie toru ADF (Usuwa zaciągnięcia)',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Kalibracja ADF (Wyrównuje skos)',
-            price: '70 / 110 / 150',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Naprawa czujników ADF (Usuwa błędy)',
-            price: '90 / 140 / 190',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Wymiana paska ADF (Przywraca płynny ruch)',
-            price: '140 / 190 / 240',
-            duration: '1-3 dni',
-          },
-          {
-            service: 'Diagnostyka CIS/CCD (Weryfikacja modułu)',
-            price: '60 / 90 / 120',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Wymiana modułu CIS/CCD (Przywraca jakość)',
-            price: '220 / 290 / 360',
+            service:
+              'Odbudowa ścieżek / lutów po zalaniu lub przepięciu\n(przywraca ciągłość sygnałów płyty głównej)',
+            price: '140 / 210 / 300',
             duration: '2-5 dni',
           },
           {
-            service: 'Wymiana szkła skanera (Gdy pęknięte)',
-            price: '150 / 200 / 250',
+            service:
+              'Naprawa lub wymiana wentylatora / modułu chłodzenia\n(hałas, przegrzewanie, zabrudzenie)',
+            price: '90 / 130 / 170\n+ części',
+            duration: '1-3 dni',
+          },
+          {
+            service: 'Wymiana taśm sygnałowych / kabli wewnętrznych',
+            price: '70 / 110 / 150\n+ część',
+            duration: '1-2 dni',
+          },
+          {
+            service:
+              'Naprawa lub wymiana uszkodzonego panelu sterowania\n(przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD)',
+            price: '140 / 200 / 260\n+ część',
             duration: '2-5 dni',
           },
         ],
@@ -354,73 +276,57 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Oprogramowanie i konfiguracja',
         items: [
           {
-            service: 'Instalacja sterowników (Konfiguracja sieci)',
+            service:
+              'Instalacja sterowników i konfiguracja w sieci (router / Wi-Fi / LAN /) (zdalnie lub lokalnie)',
             price: '50 / 100 / 150',
             duration: '1-2 dni',
           },
           {
-            service: 'Instalacja aplikacji mobilnych (Drukowanie ze smartfona)',
+            service:
+              'Aktualizacja firmware / reset systemu drukarki (usuwa błędy i komunikaty serwisowe)',
+            price: '80 / 120 / 160',
+            duration: '1-2 dni',
+          },
+          {
+            service:
+              'Reset liczników serwisowych bez ingerencji w moduły (odblokowanie funkcji po komunikacie o konserwacji)',
+            price: '60 / 90 / 120',
+            duration: '1 dzień',
+          },
+          {
+            service:
+              'Przywrócenie ustawień fabrycznych i ponowna konfiguracja (rozwiązuje problemy po błędnych zmianach ustawień)',
+            price: '60 / 90 / 120',
+            duration: '1 dzień',
+          },
+          {
+            service:
+              'Usunięcie komunikatów błędów systemowych (diagnostyka + reset) (drukarka wraca do pracy bez błędów)',
+            price: '80 / 120 / 160',
+            duration: '1-2 dni',
+          },
+          {
+            service:
+              'Usuwanie konfliktów sterowników (przywraca poprawną komunikację drukarka ↔ komputer)',
             price: '50 / 80 / 110',
             duration: '1 dzień',
           },
           {
-            service: 'Aktualizacja firmware (Usuwa błędy)',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Reset liczników serwisowych (Odblokowuje funkcje)',
-            price: '60 / 90 / 120',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Przywrócenie ustawień fabrycznych (Rozwiązuje problemy)',
-            price: '60 / 90 / 120',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Usunięcie błędów systemowych (Drukarka wraca do pracy)',
-            price: '80 / 120 / 160',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Usuwanie konfliktów sterowników (Przywraca komunikację)',
-            price: '50 / 80 / 110',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Konfiguracja skanowania do komputera (SMB/FTP)',
-            price: '70 / 110 / 150',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Konfiguracja skanowania do e-mail (SMTP/Cloud)',
-            price: '100 / 150 / 200',
-            duration: '1-2 dni',
-          },
-          {
-            service: 'Konfiguracja panelu webowego (Ustawienia sieci)',
-            price: '60 / 100 / 140',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Migracja drukarki (Nowy komputer)',
+            service:
+              'Migracja drukarki na nowy komputer / serwer (przeniesienie profili, skrótów, udziałów)',
             price: '80 / 120 / 160',
             duration: '1 dzień',
           },
           {
-            service: 'Zabezpieczenie dostępu (PIN/hasło)',
-            price: '60 / 90 / 120',
-            duration: '1 dzień',
-          },
-          {
-            service: 'Szkolenie użytkownika (Podstawowa obsługa)',
+            service:
+              'Szkolenie użytkownika (5-15 min) (pokazanie podstaw obsługi: skan, druk, wymiana tuszu/tonera)',
             price: '30 / 50 / 70',
-            duration: 'Na życzenie',
+            duration: 'od ręki',
           },
           {
-            service: 'Wsparcie zdalne (Konfiguracja/diagnostyka)',
-            price: '120 zł/godz',
+            service:
+              'Wsparcie zdalne - konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta)',
+            price: '120\n/ godzinę',
             duration: '1-2 dni',
           },
         ],
@@ -607,25 +513,25 @@ const createLaptopPricingSections = (): PricingSection[] => {
     cleaningSection.items = [
       {
         service:
-          'PODSTAWOWY do 30 min. (przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu) (czyszczenie zewnętrzne i wewnętrzne laptopa, czyszczenie wentylatora i radiatora, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
+          'PODSTAWOWY (przegląd i profilaktyka) (czyszczenie zewnętrzne i wewnętrzne laptopa, czyszczenie wentylatora i radiatora, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
         price: '120',
         duration: '1-3 dni',
       },
       {
         service:
-          'STANDARD do 1 godziny (standardowa konserwacja) (Zakres PODSTAWOWY + Wymiana / dopasowanie termopadów, Konserwacja portów, Krótki test pamięci RAM i dysku SMART)',
+          'STANDARD (standardowa konserwacja) (Zakres PODSTAWOWY + Wymiana / dopasowanie termopadów, Konserwacja portów, Krótki test pamięci RAM i dysku SMART)',
         price: '160',
         duration: '1-3 dni',
       },
       {
         service:
-          'PREMIUM do 2 godzin (pełna konserwacja) (Zakres STANDARD + Porządkowanie okablowania i kanałów powietrznych, Czyszczenie klawiatury i portów wewnętrznych, Aktualizacja BIOS/UEFI (jeśli wskazana), Długie testy obciążeniowe (CPU / GPU / RAM))',
+          'PREMIUM (pełna konserwacja) (Zakres STANDARD + Porządkowanie okablowania i kanałów powietrznych, Czyszczenie klawiatury i portów wewnętrznych, Aktualizacja BIOS/UEFI (jeśli wskazana), Długie testy obciążeniowe (CPU / GPU / RAM))',
         price: '200',
         duration: '1-3 dni',
       },
       {
         service:
-          'SPECIALNE do 2 godzin (po zalaniu laptopa)\n(Uwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu. Demontaż całego laptopa, identyfikacja obszarów zalania, czyszczenie lub naprawa niesprawnych elementów i zabezpieczenie antykorozyjne płyty głównej i podzespołów, czyszczenie klawiatury i portów wewnętrznych, testy diagnostyczne elektroniczne i programowe, montaż laptopa. Odkurzenie i oczyszczenie wnętrza laptopa oraz uzupełnienie brakujących śrub – gratis.)',
+          'SPECIALNE (po zalaniu laptopa)\n(Uwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu. Demontaż całego laptopa, identyfikacja obszarów zalania, czyszczenie lub naprawa niesprawnych elementów i zabezpieczenie antykorozyjne płyty głównej i podzespołów, czyszczenie klawiatury i portów wewnętrznych, testy diagnostyczne elektroniczne i programowe, montaż laptopa. Odkurzenie i oczyszczenie wnętrza laptopa oraz uzupełnienie brakujących śrub – gratis.)',
         price: '200\n+ części',
         duration: '1-3 dni',
       },
@@ -974,19 +880,19 @@ const applyDesktopCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min.\n(przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu – demontaż obudowy, czyszczenie wentylatorów i radiatorów, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
+        'PODSTAWOWY (przegląd i profilaktyka)\n(demontarz obudowy, czyszczenie wentylatorów i radiatorów, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
       price: '120',
       duration: '1-3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny (standardowa konserwacja)\n(Zakres PODSTAWOWY + wymiana / dopasowanie termopadów, konserwacja portów, krótki test pamięci RAM i dysku SMART)',
+        'STANDARD (standardowa konserwacja)\n(Zakres PODSTAWOWY + wymiana / dopasowanie termopadów, konserwacja portów, krótki test pamięci RAM i dysku SMART)',
       price: '160',
       duration: '1-3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin (pełna konserwacja)\n(Zakres STANDARD + porządkowanie okablowania i kanałów powietrznych, czyszczenie klawiatury i portów wewnętrznych, aktualizacja BIOS/UEFI (jeśli wskazana), długie testy obciążeniowe (CPU / GPU / RAM))',
+        'PREMIUM (pełna konserwacja)\n(Zakres STANDARD + porządkowanie okablowania i kanałów powietrznych, czyszczenie klawiatury i portów wewnętrznych, aktualizacja BIOS/UEFI (jeśli wskazana), długie testy obciążeniowe (CPU / GPU / RAM))',
       price: '200',
       duration: '1-3 dni',
     },
@@ -1310,19 +1216,19 @@ const applyLaserCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min. (przegląd i profilaktyka, zmniejsza ryzyko awarii i stresu)\n• Czyszczenie wnętrza urządzenia (kurz, resztki tonera)\n• Kontrola i czyszczenie rolek poboru papieru (pickup roller) / separatora\n• Kontrola głównych elementów mechanicznych\n• Szybki przegląd sekcji obrazu i utrwalania (drum / transfer / fuser)\n• Test jakości wydruku',
+        'PODSTAWOWY (przegląd i profilaktyka)\n• Czyszczenie wnętrza urządzenia (kurz, resztki tonera)\n• Kontrola i czyszczenie rolek poboru papieru (pickup roller) / separatora\n• Kontrola głównych elementów mechanicznych\n• Szybki przegląd sekcji obrazu i utrwalania (drum / transfer / fuser)\n• Test jakości wydruku',
       price: '50 / 100 / 150',
       duration: '1-3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny (standardowa konserwacja)\nZakres PODSTAWOWY +\n• Czyszczenie czujników papieru\n• Czyszczenie elementów prowadzenia papieru\n• Smarowanie głównych elementów mechanicznych\n• Sprawdzenie modułu bębna i pasa transferowego',
+        'STANDARD (standardowa konserwacja)\nZakres PODSTAWOWY +\n• Czyszczenie czujników papieru\n• Czyszczenie elementów prowadzenia papieru\n• Smarowanie głównych elementów mechanicznych\n• Sprawdzenie modułu bębna i pasa transferowego',
       price: '100 / 150 / 200',
       duration: '1-3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin (pełna konserwacja)\nZakres STANDARD +\n• Czyszczenie optyki lasera\n• Konserwacja modułu bębna, pasa transferowego i fusera\n• Reset liczników serwisowych (jeśli możliwe)\n• Kontrola tonera i pojemnika na zużyty toner (ew. czyszczenie / wymiana)\n• Kalibracja kolorów i rejestracji',
+        'PREMIUM (pełna konserwacja)\nZakres STANDARD +\n• Czyszczenie optyki lasera\n• Konserwacja modułu bębna, pasa transferowego i fusera\n• Reset liczników serwisowych (jeśli możliwe)\n• Kontrola tonera i pojemnika na zużyty toner (ew. czyszczenie / wymiana)\n• Kalibracja kolorów i rejestracji',
       price: '150 / 200 / 250',
       duration: '1-3 dni',
     },
@@ -2154,19 +2060,19 @@ const applyThermalCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY do 30 min\nprzegląd i profilaktyka: czyszczenie wnętrza drukarki, rolki dociskowej i podstawowych czujników oraz szybki test wydruku etykiet – zmniejsza ryzyko nagłej awarii\n• Czyszczenie wnętrza drukarki (pył z etykiet, resztki kleju, kurz)\n• Czyszczenie i kontrola rolki dociskowej (platen roller)\n• Czyszczenie podstawowych elementów prowadzenia etykiet (tor papieru)\n• Wstępna kontrola czujników nośnika / znacznika (gap / black mark)\n• Kontrola głównych elementów mechanicznych podajnika etykiet\n• Test jakości wydruku etykiet (kody kreskowe / tekst)',
+        'PODSTAWOWY (przegląd i profilaktyka)\n• Czyszczenie wnętrza drukarki (pył z etykiet, resztki kleju, kurz)\n• Czyszczenie i kontrola rolki dociskowej (platen roller)\n• Czyszczenie podstawowych elementów prowadzenia etykiet (tor papieru)\n• Wstępna kontrola czujników nośnika / znacznika (gap / black mark)\n• Kontrola głównych elementów mechanicznych podajnika etykiet\n• Test jakości wydruku etykiet (kody kreskowe / tekst)',
       price: '50 / 100 / 150',
       duration: '1–3 dni',
     },
     {
       service:
-        'STANDARD do 1 godziny\nstandardowa konserwacja drukarki etykiet: zakres PODSTAWOWY + dokładne czyszczenie głowicy drukującej, czujników i toru etykiet oraz podstawowa kalibracja czujników nośnika i parametrów drukowania\n• Dokładne czyszczenie głowicy drukującej (środkiem na bazie alkoholu izopropylowego)\n• Czyszczenie czujników papieru / etykiet i elementów wykrywających taśmę barwiącą\n• Czyszczenie elementów prowadzenia etykiet na całej ścieżce (rolki, prowadnice)\n• Smarowanie wybranych elementów mechanicznych (zgodnie z zaleceniami producenta)\n• Sprawdzenie i podstawowa kalibracja czujników nośnika (pozycja etykiety, odczyt znacznika)\n• Sprawdzenie ustawień mediów i parametrów drukowania (temperatura, prędkość, ciemność)',
+        'STANDARD (standardowa konserwacja)\nZakres PODSTAWOWY + dokładne czyszczenie głowicy drukującej, czujników i toru etykiet oraz podstawowa kalibracja czujników nośnika i parametrów drukowania\n• Dokładne czyszczenie głowicy drukującej (środkiem na bazie alkoholu izopropylowego)\n• Czyszczenie czujników papieru / etykiet i elementów wykrywających taśmę barwiącą\n• Czyszczenie elementów prowadzenia etykiet na całej ścieżce (rolki, prowadnice)\n• Smarowanie wybranych elementów mechanicznych (zgodnie z zaleceniami producenta)\n• Sprawdzenie i podstawowa kalibracja czujników nośnika (pozycja etykiety, odczyt znacznika)\n• Sprawdzenie ustawień mediów i parametrów drukowania (temperatura, prędkość, ciemność)',
       price: '100 / 150 / 200',
       duration: '1–3 dni',
     },
     {
       service:
-        'PREMIUM do 2 godzin\npełna konserwacja drukarki etykiet: zakres STANDARD + konserwacja głowicy, rolki dociskowej i modułów dodatkowych drukarki (odklejak, nawijak, obcinarka), reset liczników serwisowych – gdy możliwe – oraz kalibracja jakości wydruku etykiet i kodów kreskowych\n• Zaawansowane czyszczenie i ocena stanu głowicy drukującej (raport zużycia)\n• Konserwacja i czyszczenie modułów dodatkowych: odklejak (peel-off), nawijak etykiet / taśmy (jeśli występują)\n• Czyszczenie i konserwacja obcinarki (cutter) – usuwanie resztek etykiet i kleju, test cięcia\n• Dokładne czyszczenie lub regeneracja rolki dociskowej (platen) – robocizna bez ceny części\n• Reset liczników serwisowych / konserwacyjnych (jeśli technicznie możliwe w danym modelu)\n• Kontrola stanu materiałów eksploatacyjnych (etykiety, taśma barwiąca / ribbon) – zalecenia wymiany\n• Kalibracja jakości wydruku (gęstość, kontrast kodów kreskowych, wyrównanie druku)',
+        'PREMIUM (pełna konserwacja)\nZakres STANDARD + konserwacja głowicy, rolki dociskowej i modułów dodatkowych drukarki (odklejak, nawijak, obcinarka), reset liczników serwisowych – gdy możliwe – oraz kalibracja jakości wydruku etykiet i kodów kreskowych\n• Zaawansowane czyszczenie i ocena stanu głowicy drukującej (raport zużycia)\n• Konserwacja i czyszczenie modułów dodatkowych: odklejak (peel-off), nawijak etykiet / taśmy (jeśli występują)\n• Czyszczenie i konserwacja obcinarki (cutter) – usuwanie resztek etykiet i kleju, test cięcia\n• Dokładne czyszczenie lub regeneracja rolki dociskowej (platen) – robocizna bez ceny części\n• Reset liczników serwisowych / konserwacyjnych (jeśli technicznie możliwe w danym modelu)\n• Kontrola stanu materiałów eksploatacyjnych (etykiety, taśma barwiąca / ribbon) – zalecenia wymiany\n• Kalibracja jakości wydruku (gęstość, kontrast kodów kreskowych, wyrównanie druku)',
       price: '150 / 200 / 250',
       duration: '1–3 dni',
     },

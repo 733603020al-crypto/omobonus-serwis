@@ -10,6 +10,8 @@
     "start": "next start",
     "lint": "eslint",
     "export-services": "tsx export-services.ts",
+    "optimize-images": "node optimize-images.mjs",
+    "analyze-images": "node optimize-images.js",
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force .turbo -ErrorAction SilentlyContinue; Write-Host Кеш очищен\"",
     "kill-node": "powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-Host Node.js процессы остановлены\""
   },
@@ -22,7 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.554.0",
-    "next": "^14.2.33",
+    "next": "^15.5.7",
     "postcss-import": "^16.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,8 +43,9 @@
     "autoprefixer": "^10.4.22",
     "baseline-browser-mapping": "^2.8.32",
     "eslint": "8.57.1",
-    "eslint-config-next": "14.2.33",
+    "eslint-config-next": "15.5.7",
     "postcss": "^8.5.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.18",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.21.0",
@@ -50,6 +53,6 @@
     "typescript": "^5"
   },
   "overrides": {
-    "eslint-config-next": "14.2.33"
+    "eslint-config-next": "15.5.7"
   }
 }
