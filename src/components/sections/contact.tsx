@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -65,6 +65,8 @@ export function Contact() {
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [attachments, setAttachments] = useState<AttachmentPreview[]>([])
   const [attachmentError, setAttachmentError] = useState<string | null>(null)
+  const [shouldScrollToError, setShouldScrollToError] = useState(false)
+  const errorFieldsRef = useRef<Set<string>>(new Set())
 
   const {
     register,
@@ -76,6 +78,61 @@ export function Contact() {
     resolver: zodResolver(formSchema),
     defaultValues: defaultFormValues,
   })
+
+  // Прокрутка к первому полю с ошибкой
+  useEffect(() => {
+    if (!shouldScrollToError || Object.keys(errors).length === 0) return
+
+    // Находим первое поле с ошибкой
+    const errorFieldNames = Object.keys(errors) as Array<keyof typeof errors>
+    const firstErrorField = errorFieldNames[0]
+
+    if (firstErrorField) {
+      // Небольшая задержка для рендеринга сообщений об ошибках
+      setTimeout(() => {
+        const fieldElement = document.querySelector(`[data-field-name="${firstErrorField}"]`)
+        
+        if (fieldElement) {
+          // Добавляем класс shake для анимации
+          fieldElement.classList.add('shake-error')
+          
+          // Плавная прокрутка к полю с ошибкой
+          fieldElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          })
+
+          // Убираем класс shake через 1 секунду
+          setTimeout(() => {
+            fieldElement.classList.remove('shake-error')
+          }, 1000)
+
+          // Добавляем в отслеживаемые поля
+          errorFieldsRef.current.add(firstErrorField)
+        }
+      }, 100)
+    }
+
+    setShouldScrollToError(false)
+  }, [errors, shouldScrollToError])
+
+  // Отслеживание изменений в полях с ошибками для удаления класса shake
+  useEffect(() => {
+    Object.keys(errors).forEach(fieldName => {
+      if (!errorFieldsRef.current.has(fieldName)) {
+        errorFieldsRef.current.add(fieldName)
+      }
+    })
+
+    // Удаляем поля, которые больше не имеют ошибок
+    Object.keys(errors).forEach(fieldName => {
+      const fieldElement = document.querySelector(`[data-field-name="${fieldName}"]`)
+      if (fieldElement && !errors[fieldName as keyof typeof errors]) {
+        fieldElement.classList.remove('shake-error')
+        errorFieldsRef.current.delete(fieldName)
+      }
+    })
+  }, [errors])
 
   const onSubmit = async (data: FormValues) => {
     console.log('🚀 Formularz został przesłany. Dane:', data)
@@ -148,19 +205,25 @@ export function Contact() {
             Formularz zgłoszeniowy
           </h2>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 md:space-y-4">
+          <form 
+            onSubmit={handleSubmit(onSubmit, () => {
+              // При ошибках валидации запускаем прокрутку
+              setShouldScrollToError(true)
+            })} 
+            className="space-y-3 md:space-y-4"
+          >
             
             {/* Imię i Telefon - Grid */}
             <div className="grid grid-cols-1 gap-3 md:gap-4">
               {/* Imię i nazwisko */}
-              <div className="space-y-2">
+              <div className="space-y-2" data-field-name="name">
                 <label className="block text-black font-bold font-sans text-base md:text-lg">
                   Imię i nazwisko
                 </label>
                 <input
                   {...register('name')}
                   placeholder="Jan Kowalski"
-                  className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                  className={`w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 ${errors.name ? 'border-red-500 border-2' : ''}`}
                 />
                 {errors.name && (
                   <p className="text-red-600 text-sm">{errors.name.message}</p>
@@ -168,20 +231,22 @@ export function Contact() {
               </div>
 
               {/* Telefon */}
-              <div className="space-y-2">
+              <div className="space-y-2" data-field-name="phone">
                 <label className="block text-black font-bold font-sans text-base md:text-lg">
                   Numer telefonu
                 </label>
-                <Controller
-                  name="phone"
-                  control={control}
-                  render={({ field }) => (
-                    <CustomPhoneInput
-                      value={field.value || ''}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
+                <div className={errors.phone ? 'border-2 border-red-500 rounded-sm p-1' : ''}>
+                  <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                      <CustomPhoneInput
+                        value={field.value || ''}
+                        onChange={field.onChange}
+                      />
+                    )}
+                  />
+                </div>
                 {errors.phone && (
                   <p className="text-red-600 text-sm">{errors.phone.message}</p>
                 )}
@@ -189,7 +254,7 @@ export function Contact() {
             </div>
 
             {/* E-mail */}
-            <div className="space-y-2">
+            <div className="space-y-2" data-field-name="email">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 Adres e-mail
               </label>
@@ -197,7 +262,7 @@ export function Contact() {
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className={`w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 ${errors.email ? 'border-red-500 border-2' : ''}`}
               />
               {errors.email && (
                 <p className="text-red-600 text-sm">{errors.email.message}</p>
@@ -205,14 +270,14 @@ export function Contact() {
             </div>
 
             {/* Adres */}
-            <div className="space-y-2">
+            <div className="space-y-2" data-field-name="address">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 Adres
               </label>
               <input
                 {...register('address')}
                 placeholder="ul. Przykładowa 1, 50-001 Wrocław"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className={`w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 ${errors.address ? 'border-red-500 border-2' : ''}`}
               />
               {errors.address && (
                 <p className="text-red-600 text-sm">{errors.address.message}</p>
@@ -220,7 +285,7 @@ export function Contact() {
             </div>
 
             {/* Typ urządzenia */}
-            <div className="space-y-2">
+            <div className="space-y-2" data-field-name="deviceType">
               <label className="block text-black font-bold font-sans text-base md:text-lg mb-2">
                 Typ urządzenia
               </label>
@@ -276,7 +341,7 @@ export function Contact() {
             </div>
 
             {/* Opis problemu */}
-            <div className="space-y-2">
+            <div className="space-y-2" data-field-name="problemDescription">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 Opis problemu
               </label>
@@ -284,7 +349,7 @@ export function Contact() {
                 {...register('problemDescription')}
                 rows={4}
                 placeholder="Proszę opisać problem z urządzeniem..."
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 resize-y"
+                className={`w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 resize-y ${errors.problemDescription ? 'border-red-500 border-2' : ''}`}
               />
               {errors.problemDescription && (
                 <p className="text-red-600 text-sm">{errors.problemDescription.message}</p>
@@ -422,7 +487,7 @@ export function Contact() {
                 )}
               />
 
-              <div className="space-y-1">
+              <div className="space-y-1" data-field-name="agreements">
                 <Controller
                   name="agreements"
                   control={control}
