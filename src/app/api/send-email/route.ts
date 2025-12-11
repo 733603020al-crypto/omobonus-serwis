@@ -310,7 +310,8 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
     `.trim()
 
     if (!resend) {
-      console.log('RESEND_API_KEY nie jest ustawiony. Dane formularza:', {
+      console.error('❌ RESEND_API_KEY nie jest ustawiony w zmiennych środowiskowych!')
+      console.log('Dane formularza (NIE WYSŁANE):', {
         name,
         phone,
         email,
@@ -321,10 +322,12 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
         replacementPrinter,
         attachments: attachmentFiles.map(file => ({ name: file.name, size: file.size })),
       })
-      return NextResponse.json({
-        success: true,
-        message: 'Form data logged locally because RESEND_API_KEY is missing',
-      })
+      return NextResponse.json(
+        { 
+          error: 'Błąd konfiguracji: RESEND_API_KEY nie jest ustawiony. Skontaktuj się z administratorem.' 
+        },
+        { status: 500 }
+      )
     }
 
     console.log('📤 Wysyłanie e-maila przez Resend...')
@@ -342,8 +345,16 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
 
     if (error) {
       console.error('❌ Resend error:', error)
+      console.error('❌ Error details:', JSON.stringify(error, null, 2))
+      
+      // Более информативное сообщение об ошибке
+      let errorMessage = 'Nie udało się wysłać wiadomości'
+      if (error && typeof error === 'object' && 'message' in error) {
+        errorMessage = String(error.message)
+      }
+      
       return NextResponse.json(
-        { error: 'Nie udało się wysłać wiadomości' },
+        { error: errorMessage },
         { status: 500 },
       )
     }
