@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Cormorant_Garamond, Cormorant_SC, Lora, Inter, EB_Garamond, Spectral_SC, Cinzel } from 'next/font/google'
 import './globals.css'
 
@@ -218,6 +219,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl" className={`${cormorant.variable} ${cormorantSC.variable} ${lora.variable} ${inter.variable} ${ebGaramond.variable} ${spectralSC.variable} ${cinzel.variable}`}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BZTB7NX4BX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BZTB7NX4BX');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
