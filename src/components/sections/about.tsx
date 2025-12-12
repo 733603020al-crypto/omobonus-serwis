@@ -58,7 +58,7 @@ export function About() {
 
             <div className="space-y-1">
               <p className="text-2xl md:text-3xl font-serif font-semibold text-white">
-                &ldquo;Szacunek do klienta i brak oszustwa&rdquo;
+                &ldquo;Brak oszustwa i szacunek do klienta&rdquo;
               </p>
               <p className="text-xl md:text-2xl font-serif text-white">
                 to nasze podstawowe zasady pracy

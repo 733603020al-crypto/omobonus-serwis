@@ -26,7 +26,7 @@ export function Hero() {
           Profesjonalny serwis <br /> komputerów i drukarek we <br /> Wrocławiu
         </h1>
         <p className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
-          &quot;Brak oszustwa i szacunek do klienta&quot; to nasze podstawowe zasady pracy
+          &quot;Uczciwość (czyli brak oszustwa) i szacunek do klienta&quot; - to nasze podstawowe zasady pracy
         </p>
         <a
           href="#kontakt"
