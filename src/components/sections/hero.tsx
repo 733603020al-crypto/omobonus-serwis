@@ -14,7 +14,7 @@ export function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('${manifest.Логотип_картинка_на_сайт}')`,
+          backgroundImage: `url('${manifest['Логотип_картинка_на_сайт']}')`,
         }}
       >
         <div className="absolute inset-0 bg-black/50" />

@@ -1349,17 +1349,17 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   // Refs для колонок цен в шапке wynajem подменю
   const wynajemHeaderRefs = useRef<{ 
     [key: string]: { 
-      icon: React.RefObject<HTMLDivElement>
-      text: React.RefObject<HTMLDivElement>
-      prices: React.RefObject<HTMLDivElement>[]
+      icon: React.RefObject<HTMLDivElement | null>
+      text: React.RefObject<HTMLDivElement | null>
+      prices: React.RefObject<HTMLDivElement | null>[]
     } 
   }>({})
   // Refs для колонок цен в шапке drukarka-zastepcza подменю
   const drukarkaZastepczaHeaderRefs = useRef<{ 
     [key: string]: { 
-      icon: React.RefObject<HTMLDivElement>
-      text: React.RefObject<HTMLDivElement>
-      prices: React.RefObject<HTMLDivElement>[]
+      icon: React.RefObject<HTMLDivElement | null>
+      text: React.RefObject<HTMLDivElement | null>
+      prices: React.RefObject<HTMLDivElement | null>[]
     } 
   }>({})
   // Refs для контейнеров заголовков секций (для позиционирования "Czynsz wynajmu [zł/mies.]")

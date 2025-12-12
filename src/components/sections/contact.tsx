@@ -173,7 +173,7 @@ export function Contact() {
             break
           case 'SMTP_ERROR':
             errorMessage = 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.'
-            if (responseData.details && process.env.NODE_ENV === 'development') {
+            if (responseData.details) {
               console.error('SMTP Error details:', responseData.details)
             }
             break
