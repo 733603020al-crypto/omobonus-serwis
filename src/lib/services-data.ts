@@ -484,6 +484,38 @@ const createPricingSections = (): PricingSection[] => {
   return [...createDefaultPricingSections(), createFaqSection()]
 }
 
+const updateKonserwacjaForOutsourcing = (sections: PricingSection[]) => {
+  const konserwacjaSection = sections.find(section => section.id === 'konserwacja')
+  if (!konserwacjaSection) return
+  
+  konserwacjaSection.title = 'Obsługa firm (abonament miesięczny)'
+  konserwacjaSection.items = [
+    {
+      service: 'Pakiet START dla małych firm i biur (1–3 komputery)\n✓ Zdalne wsparcie użytkowników (rozwiązywanie problemów z programami, drukowaniem, pocztą - pomoc telefoniczna/chat) - do 4 h miesięcznie\n✓ Aktualizacje systemów i oprogramowania\n✓ Administracja systemami Windows / macOS (utrzymanie stabilności i aktualności)\n✓ Monitoring bezpieczeństwa (aktualizacje antywirusa, kontrola zapór i zagrożeń)\n✓ Zarządzanie kopiami zapasowymi (backup + test odtwarzania)',
+      price: '70 zł\n/ stanowisko',
+      duration: 'do 4 h',
+    },
+    {
+      service: 'Pakiet BIZNES dla rozwijających się firm (4–10 komputerów)\nZakres START +\n✓ Zdalne wsparcie użytkowników - pomoc telefoniczna/chat - do 10 h miesięcznie\n✓ Monitoring bezpieczeństwa (aktualizacje antywirusa, kontrola zapór i zagrożeń)\n✓ Zarządzanie kopiami zapasowymi (backup + test odtwarzania)\n✓ Administracja siecią LAN / Wi-Fi / Router\n✓ Konfiguracja drukarek i skanowania w sieci (SMB / e-mail)\n✓ Wizyta serwisanta na miejscu: 1× / miesiąc',
+      price: '55 zł\n/ stanowisko',
+      duration: 'do 2 h',
+    },
+    {
+      service: 'Pakiet PRO dla firm z rozbudowaną infrastrukturą (11+ komputerów)\nZakres BIZNES +\n✓ Zdalne wsparcie użytkowników - pomoc telefoniczna/chat – nielimitowane\n✓ Zarządzanie użytkownikami i uprawnieniami\n✓ Administracja serwerami i usługami sieciowymi\n✓ Wizyta serwisanta na miejscu: 2× / miesiąc\n✓ Audyt sprzętu i raport miesięczny\n✓ Priorytetowa obsługa (pomijanie kolejki)',
+      price: '40 zł\n/ stanowisko',
+      duration: 'do 1 h',
+    },
+  ]
+}
+
+const createOutsourcingItPricingSections = (): PricingSection[] => {
+  const sections = createPricingSections()
+  updateDiagnosisPrice(sections, '90')
+  updateDojazdReturnPrice(sections, '100')
+  updateKonserwacjaForOutsourcing(sections)
+  return sections
+}
+
 const updateDiagnosisPrice = (sections: PricingSection[], price: string) => {
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const targetItem = diagnosisSection?.items?.find(item =>
@@ -2700,7 +2732,7 @@ export const services: ServiceData[] = [
     subtitle: 'Obsługa informatyczna dla firm',
     icon: manifest['03_outsourcing_it'],
     description: 'Pełna obsługa informatyczna dla Twojej firmy.',
-    pricingSections: createPricingSections(),
+    pricingSections: createOutsourcingItPricingSections(),
   },
   {
     slug: 'serwis-drukarek-laserowych',

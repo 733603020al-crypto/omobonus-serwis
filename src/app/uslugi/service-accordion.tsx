@@ -256,6 +256,7 @@ const renderPriceLines = (price: string, link?: string) => {
     const isSupplement = lower.includes('stawka z cennika')
     const isPerMeasureSuffix = lower.startsWith('za ')
     const isDoCenySuffix = lower === 'do ceny'
+    const isSlashSuffix = trimmed.startsWith('/')
     if (isHourly) {
       const [val, suffix] = trimmed.split('/').map(part => part.trim())
       const suffixText = suffix ? `/ ${suffix}` : ''
@@ -280,7 +281,7 @@ const renderPriceLines = (price: string, link?: string) => {
       return renderValueLine(trimmed, `${trimmed}-${idx}`)
     }
 
-    if (isStandalonePlusSuffix || isSupplement || isPerMeasureSuffix || isDoCenySuffix) {
+    if (isStandalonePlusSuffix || isSupplement || isPerMeasureSuffix || isDoCenySuffix || isSlashSuffix) {
       return renderSuffixLine(trimmed, idx)
     }
     return renderValueLine(trimmed, `${trimmed}-${idx}`)
@@ -295,16 +296,37 @@ export const renderDurationValue = (value: string) => (
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string) => (
-  <div
-    className="text-[14px] text-[#cbb27c] leading-relaxed"
-    style={{ 
-      opacity: 1
-    }}
-  >
-    ({text})
-  </div>
-)
+const renderParenthesesText = (text: string) => {
+  // Если текст содержит переносы строк, разбиваем и рендерим каждую строку отдельно
+  if (text.includes('\n')) {
+    const lines = text.split('\n').filter(line => line.trim())
+    return (
+      <div
+        className="text-[14px] text-[#cbb27c] leading-relaxed mt-1"
+        style={{ 
+          opacity: 1
+        }}
+      >
+        {lines.map((line, idx) => (
+          <div key={idx} className="mt-0.5 first:mt-0">
+            {line.trim()}
+          </div>
+        ))}
+      </div>
+    )
+  }
+  
+  return (
+    <div
+      className="text-[14px] text-[#cbb27c] leading-relaxed"
+      style={{ 
+        opacity: 1
+      }}
+    >
+      ({text})
+    </div>
+  )
+}
 
 // Функция для рендеринга заголовка секции с возможностью переноса части в скобках
 const renderSectionTitleMobile = (title: string) => {
