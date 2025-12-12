@@ -1972,7 +1972,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               </div>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span
-                                  className="text-[14px] text-[#cbb27c] mt-0.5 leading-relaxed hidden sm:block"
+                                  className="text-[12px] text-[#cbb27c] leading-relaxed hidden sm:block"
+                                  style={{ 
+                                    opacity: 1,
+                                    fontWeight: 'normal',
+                                    fontStyle: 'normal'
+                                  }}
                                 >
                                   (kategorie urządzeń)
                                 </span>
