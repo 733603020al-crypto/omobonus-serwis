@@ -508,11 +508,155 @@ const updateKonserwacjaForOutsourcing = (sections: PricingSection[]) => {
   ]
 }
 
+const updateNaprawyKaretkaForOutsourcing = (sections: PricingSection[]) => {
+  const naprawySection = sections.find(section => section.id === 'naprawy')
+  const karetkaSubcategory = naprawySection?.subcategories?.find(
+    sub => sub.id === 'naprawy-karetka'
+  )
+  if (!karetkaSubcategory) return
+  
+  karetkaSubcategory.title = 'Naprawy sprzętu komputerowego (na miejscu u Klienta)'
+  karetkaSubcategory.items = [
+    {
+      service: 'Wymiana zasilacza / dysku / RAM u Klienta',
+      price: '150',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Czyszczenie wnętrza komputera i chłodzenia',
+      price: '180',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Wymiana wentylatora / chłodzenia CPU',
+      price: '160',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Wymiana past termoprzewodzących CPU / GPU',
+      price: '120',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Konserwacja stacji roboczej lub terminala',
+      price: '150',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Montaż nowego sprzętu (komputer, monitor, UPS)',
+      price: '100\n/ stanowisko',
+      duration: '1–3 dni',
+    },
+  ]
+}
+
+const updateNaprawyGlowicaForOutsourcing = (sections: PricingSection[]) => {
+  const naprawySection = sections.find(section => section.id === 'naprawy')
+  const glowicaSubcategory = naprawySection?.subcategories?.find(
+    sub => sub.id === 'naprawy-glowica'
+  )
+  if (!glowicaSubcategory) return
+  
+  glowicaSubcategory.title = 'Konfiguracja i sieć biurowa'
+  glowicaSubcategory.items = [
+    {
+      service: 'Diagnostyka i konfiguracja sieci LAN / Wi-Fi',
+      price: '150',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Konfiguracja routera, modemu, punktu dostępowego',
+      price: '120',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Konfiguracja lub ponowne uruchomienie urządzeń sieciowych (drukarka, skaner, router)',
+      price: '100',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Udostępnianie plików i drukarek w sieci',
+      price: '80',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Test prędkości i stabilności połączenia',
+      price: '50',
+      duration: 'do 24 h',
+    },
+    {
+      service: 'Podłączenie nowych stanowisk do sieci',
+      price: '70\n/ stanowisko',
+      duration: '1–3 dni',
+    },
+  ]
+}
+
+const updateNaprawyTasmaForOutsourcing = (sections: PricingSection[]) => {
+  const naprawySection = sections.find(section => section.id === 'naprawy')
+  const tasmaSubcategory = naprawySection?.subcategories?.find(
+    sub => sub.id === 'naprawy-tasma'
+  )
+  if (!tasmaSubcategory) return
+  
+  tasmaSubcategory.title = 'Bezpieczeństwo i kopie zapasowe'
+  tasmaSubcategory.items = [
+    {
+      service: 'Usuwanie wirusów, trojanów, adware',
+      price: '150',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Aktualizacja i konfiguracja antywirusa',
+      price: '80',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Konfiguracja zapory sieciowej (firewall)',
+      price: '100',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Wykonanie i test kopii zapasowej (backup + test odtwarzania)',
+      price: '150',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Odzyskiwanie danych z dysku lub pendrive\'a (prosty przypadek)',
+      price: '250',
+      duration: '1–5 dni',
+    },
+    {
+      service: 'Przywrócenie dostępu do systemu lub konta użytkownika\n(po błędzie lub infekcji)',
+      price: '200',
+      duration: '1–3 dni',
+    },
+  ]
+}
+
+const removeUnwantedSubcategoriesForOutsourcing = (sections: PricingSection[]) => {
+  const naprawySection = sections.find(section => section.id === 'naprawy')
+  if (!naprawySection?.subcategories) return
+  
+  // Удаляем три подкатегории: Naprawy elektroniczne, Oprogramowanie i konfiguracja, Usługi dodatkowe
+  naprawySection.subcategories = naprawySection.subcategories.filter(
+    sub => 
+      sub.id !== 'naprawy-elektronika' &&
+      sub.id !== 'naprawy-software' &&
+      sub.id !== 'naprawy-dodatkowe'
+  )
+}
+
 const createOutsourcingItPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   updateDiagnosisPrice(sections, '90')
   updateDojazdReturnPrice(sections, '100')
   updateKonserwacjaForOutsourcing(sections)
+  updateNaprawyMechanizmForOutsourcing(sections)
+  updateNaprawyKaretkaForOutsourcing(sections)
+  updateNaprawyGlowicaForOutsourcing(sections)
+  updateNaprawyTasmaForOutsourcing(sections)
+  removeUnwantedSubcategoriesForOutsourcing(sections)
   return sections
 }
 
@@ -534,6 +678,43 @@ const updateDojazdReturnPrice = (sections: PricingSection[], price: string) => {
   if (targetItem) {
     targetItem.price = price
   }
+}
+
+const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
+  const naprawySection = sections.find(section => section.id === 'naprawy')
+  const mechanizmSubcategory = naprawySection?.subcategories?.find(
+    sub => sub.id === 'naprawy-mechanizm'
+  )
+  if (!mechanizmSubcategory) return
+  
+  mechanizmSubcategory.title = 'Serwis ogólny (praca serwisanta u Klienta)'
+  mechanizmSubcategory.items = [
+    {
+      service: 'Wizyta serwisanta u Klienta (pierwsza godzina pracy)',
+      price: '150\n/ godzinę',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Każda kolejna rozpoczęta godzina pracy serwisanta',
+      price: '100\n/ godzinę',
+      duration: '—',
+    },
+    {
+      service: 'Pomoc zdalna (diagnostyka / konfiguracja)',
+      price: '120\n/ godzinę',
+      duration: 'do 24 h',
+    },
+    {
+      service: 'Pilna interwencja (do 4 h)',
+      price: '+50%\ndo ceny',
+      duration: 'do 4 h',
+    },
+    {
+      service: 'Usługi poza godzinami pracy / weekendy / święta',
+      price: '+100%\ndo ceny',
+      duration: 'do 4 h',
+    },
+  ]
 }
 
 const createLaptopPricingSections = (): PricingSection[] => {
@@ -593,7 +774,7 @@ const createLaptopPricingSections = (): PricingSection[] => {
       {
         service:
           'Instalacja i konfiguracja oprogramowania (pakietów biurowych/multimedialnych) / sterowników',
-        price: '120 / godzinę',
+        price: '120\n/ godzinę',
         duration: '1-2 dni',
       },
       {
@@ -662,12 +843,12 @@ const createLaptopPricingSections = (): PricingSection[] => {
       },
       {
         service: 'Indywidualna konfiguracja/naprawa systemu Windows',
-        price: '120 / godzinę',
+        price: '120\n/ godzinę',
         duration: '-',
       },
       {
         service: 'Zdalna pomoc informatyka',
-        price: '120 / godzinę',
+        price: '120\n/ godzinę',
         duration: '-',
       },
     ]
@@ -956,7 +1137,7 @@ const applyDesktopSoftwareSubcategory = (sections: PricingSection[]) => {
     {
       service:
         'Instalacja i konfiguracja oprogramowania\n(pakietów biurowych/multimedialnych) / sterowników',
-      price: '120 / godzinę',
+      price: '120\n/ godzinę',
       duration: '1-2 dni',
     },
     {
@@ -1127,7 +1308,7 @@ const applyDesktopHardwareSubcategory = (sections: PricingSection[]) => {
     {
       service:
         'Montaż komputera stacjonarnego\n(możemy zamontować z części dostarczonych przez Klienta, lub zakupionych przez nas)',
-      price: '120 / godzinę',
+      price: '120\n/ godzinę',
       duration: '1-3 dni',
     },
   ]
@@ -2008,7 +2189,7 @@ const applyInkjetSoftwareSubcategory = (sections: PricingSection[]) => {
     {
       service:
         'Wsparcie zdalne – konfiguracja / sterowniki / diagnostyka\n(pomoc bez wizyty serwisanta)',
-      price: '120 / godzinę',
+      price: '120\n/ godzinę',
       duration: '1-2 dni',
     },
   ]

@@ -255,7 +255,7 @@ const renderPriceLines = (price: string, link?: string) => {
     const isStandaloneNumericPlus = isStandalonePlusSuffix && /^\+\s*\d/.test(trimmed)
     const isSupplement = lower.includes('stawka z cennika')
     const isPerMeasureSuffix = lower.startsWith('za ')
-    const isDoCenySuffix = lower === 'do ceny'
+    const isDoCenySuffix = lower === 'do ceny' || lower.startsWith('do ceny ')
     const isSlashSuffix = trimmed.startsWith('/')
     if (isHourly) {
       const [val, suffix] = trimmed.split('/').map(part => part.trim())
