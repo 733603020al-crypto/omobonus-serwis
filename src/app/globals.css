@@ -172,12 +172,6 @@
      ВАЖНО: Применение к родительскому AccordionContent может нарушить внутренний скролл,
      поэтому используем более специфичные селекторы для элементов внутри него. */
   
-  /* AccordionContent секции naprawy (родительский контейнер) - отключаем Scroll Anchoring
-     только для элементов внутри, но не для самого контейнера, чтобы не сломать внутренний скролл */
-  [data-naprawy-section="true"] {
-    /* overflow-anchor: none применяется только к дочерним элементам через селекторы ниже */
-  }
-  
   /* Accordion для подкатегорий в секции naprawy */
   [data-naprawy-section="true"] [data-slot="accordion"][data-naprawy-accordion="true"] {
     overflow-anchor: none !important;
@@ -206,8 +200,48 @@
     overflow-anchor: none !important;
   }
   
-  /* Все дочерние элементы внутри AccordionItem подкатегорий в секции naprawy */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] * {
+  /* AccordionHeader (обертка вокруг AccordionTrigger) */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] header {
+    overflow-anchor: none !important;
+  }
+  
+  /* КРИТИЧЕСКИ ВАЖНО: AccordionItem самой секции naprawy (верхний уровень)
+     Браузер использует этот элемент как якорь при изменении высоты AccordionContent секции
+     При закрытии подкатегории высота AccordionContent уменьшается, и браузер пытается
+     сохранить видимость AccordionItem секции, прокручивая страницу вверх */
+  [data-slot="accordion-item"][data-naprawy-main-section="true"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* AccordionContent секции naprawy - отключаем Scroll Anchoring
+     для предотвращения автоматической компенсации скролла viewport при изменении высоты содержимого
+     ВАЖНО: Это не влияет на внутренний скролл контейнера (overflow-y-auto), 
+     а только на Scroll Anchoring на уровне viewport */
+  [data-naprawy-section="true"] [data-slot="accordion-content"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* РАДИКАЛЬНОЕ РЕШЕНИЕ: Отключаем Scroll Anchoring для ВСЕХ элементов внутри AccordionItem секции naprawy
+     Используем универсальный селектор, чтобы покрыть все возможные элементы, которые браузер может использовать как якорь */
+  [data-slot="accordion-item"][data-naprawy-main-section="true"],
+  [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
+    overflow-anchor: none !important;
+  }
+  
+  /* Также отключаем для родительского Accordion, если браузер использует его как якорь */
+  [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"],
+  [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
+    overflow-anchor: none !important;
+  }
+  
+  /* КРИТИЧЕСКИ ВАЖНО: Отключаем Scroll Anchoring для самого AccordionTrigger секции naprawy
+     Браузер может использовать заголовок секции как якорный элемент */
+  [data-slot="accordion-item"][data-naprawy-main-section="true"] [data-slot="accordion-trigger"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* Отключаем для всех div внутри AccordionItem секции naprawy */
+  [data-slot="accordion-item"][data-naprawy-main-section="true"] div {
     overflow-anchor: none !important;
   }
   

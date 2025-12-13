@@ -1587,8 +1587,43 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   const handleSubcategoryChange = (sectionId: string, value: string | null) => {
     if (sectionId !== 'naprawy') return
     
-    // Просто изменяем состояние - при закрытии браузер естественно обработает изменение высоты
-    setOpenSubcategory(prev => (prev === value ? null : value))
+    const isClosing = openSubcategory !== null && value === null
+    
+    if (isClosing) {
+      // ЛОГИКА "ИДЕМ ВПЕРЕД": фиксируем ТЕКУЩУЮ позицию (после прокрутки при открытии)
+      // и принудительно её сохраняем при закрытии, чтобы браузер НЕ возвращался к старой позиции
+      const currentScrollY = window.scrollY
+      
+      // Изменяем состояние (закрываем подкатегорию)
+      setOpenSubcategory(null)
+      
+      // Агрессивно фиксируем текущую позицию: многократно устанавливаем её
+      // чтобы перекрыть любые попытки браузера вернуться к старой позиции
+      const lockScroll = () => {
+        window.scrollTo({ top: currentScrollY, behavior: 'auto' })
+      }
+      
+      // Фиксируем позицию сразу
+      lockScroll()
+      
+      // И в следующем кадре анимации
+      requestAnimationFrame(() => {
+        lockScroll()
+        requestAnimationFrame(() => {
+          lockScroll()
+          // И еще раз после небольшой задержки (когда браузер попытается применить Scroll Anchoring)
+          setTimeout(() => {
+            lockScroll()
+            setTimeout(() => {
+              lockScroll()
+            }, 100)
+          }, 50)
+        })
+      })
+    } else {
+      // При открытии просто изменяем состояние (прокрутка происходит в useEffect)
+      setOpenSubcategory(prev => (prev === value ? null : value))
+    }
   }
 
   const isSectionOpen = (sectionId: string) =>
@@ -1642,6 +1677,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
     // Прокручиваем подкатегорию к верху внутри контейнера
     scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
   }, [openSubcategory, openSection])
+
 
   // Измерение позиции столбцов цен для позиционирования "Czynsz wynajmu [zł/mies.]"
   useEffect(() => {
@@ -1784,11 +1820,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
           value={openSection ?? undefined}
           onValueChange={handleSectionChange}
           className="w-full"
+          data-main-accordion="true"
         >
           {service.pricingSections.map((section) => (
             <AccordionItem
               key={section.id}
               value={section.id}
+              data-naprawy-main-section={section.id === 'naprawy' ? 'true' : undefined}
               className={cn(
                 "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
               )}
