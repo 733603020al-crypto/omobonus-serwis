@@ -1729,28 +1729,43 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               "md:hidden flex justify-between w-full gap-2",
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
-                              <h3 className={cn(
-                                "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight flex-1 min-w-0 pr-2",
-                                (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
-                              )}>
-                                {(() => {
-                                  if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                    // Если аккордеон открыт, переносим заголовок на две строки для экономии места
-                                    if (isSectionOpen(section.id)) {
-                                      return renderSectionTitleMobile(section.title)
+                              <div className="flex-1 min-w-0 pr-2">
+                                <h3 className={cn(
+                                  "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
+                                  (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
+                                )}>
+                                  {(() => {
+                                    if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
+                                      // Если аккордеон открыт, переносим заголовок на две строки для экономии места
+                                      if (isSectionOpen(section.id)) {
+                                        return renderSectionTitleMobile(section.title)
+                                      }
+                                      // Если закрыт - показываем обычный заголовок
+                                      return section.title
                                     }
-                                    // Если закрыт - показываем обычный заголовок
+                                    if (section.id === 'konserwacja') {
+                                      return 'Czyszczenie i konserwacja'
+                                    }
+                                    if (section.id === 'naprawy') {
+                                      return 'Naprawy i usługi serwisowe'
+                                    }
                                     return section.title
-                                  }
-                                  if (section.id === 'konserwacja') {
-                                    return 'Czyszczenie i konserwacja'
-                                  }
-                                  if (section.id === 'naprawy') {
-                                    return 'Naprawy i usługi serwisowe'
-                                  }
-                                  return section.title
-                                })()}
-                              </h3>
+                                  })()}
+                                </h3>
+                                {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
+                                {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
+                                  <span
+                                    className="text-[12px] text-[#cbb27c] leading-relaxed block mt-0.5"
+                                    style={{ 
+                                      opacity: 1,
+                                      fontWeight: 'normal',
+                                      fontStyle: 'normal'
+                                    }}
+                                  >
+                                    ({section.footer})
+                                  </span>
+                                )}
+                              </div>
                               {/* "Czynsz wynajmu [zł/mies.]" или "Cena wydruku format A4 [mono/kolor]" над столбцами цен - мобильная версия, только когда аккордеон открыт */}
                               {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
@@ -1775,9 +1790,24 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               )}
                             </div>
                             {/* Десктопная версия: обычный заголовок */}
-                            <h3 className="hidden md:block text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                              {section.title}
-                            </h3>
+                            <div className="hidden md:block">
+                              <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                                {section.title}
+                              </h3>
+                              {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
+                              {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
+                                <span
+                                  className="text-[12px] text-[#cbb27c] leading-relaxed block"
+                                  style={{ 
+                                    opacity: 1,
+                                    fontWeight: 'normal',
+                                    fontStyle: 'normal'
+                                  }}
+                                >
+                                  ({section.footer})
+                                </span>
+                              )}
+                            </div>
                           </div>
                           {/* "Czynsz wynajmu [zł/mies.]" над столбцами цен - десктопная версия */}
                           {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
