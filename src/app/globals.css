@@ -157,6 +157,60 @@
     box-shadow: none !important;
   }
   
+  /* Отключаем Scroll Anchoring для подкатегорий в секции naprawy
+     Это предотвращает автоматическую прокрутку страницы вверх при закрытии подкатегории.
+     Браузер не будет пытаться сохранить видимость якорного элемента при изменении высоты.
+     
+     При закрытии подкатегории:
+     - AccordionItem и AccordionContent подкатегории уменьшаются в высоте через CSS анимацию animate-accordion-up
+     - Без overflow-anchor: none браузер автоматически прокручивает страницу вверх (Scroll Anchoring)
+     - С overflow-anchor: none позиция скролла остается на месте, заголовок подкатегории остается под заголовком секции
+     
+     КРИТИЧЕСКИ ВАЖНО: Применяем overflow-anchor: none ко ВСЕМ уровням контейнеров,
+     так как браузер может использовать любой из них как якорный элемент при Scroll Anchoring.
+     
+     ВАЖНО: Применение к родительскому AccordionContent может нарушить внутренний скролл,
+     поэтому используем более специфичные селекторы для элементов внутри него. */
+  
+  /* AccordionContent секции naprawy (родительский контейнер) - отключаем Scroll Anchoring
+     только для элементов внутри, но не для самого контейнера, чтобы не сломать внутренний скролл */
+  [data-naprawy-section="true"] {
+    /* overflow-anchor: none применяется только к дочерним элементам через селекторы ниже */
+  }
+  
+  /* Accordion для подкатегорий в секции naprawy */
+  [data-naprawy-section="true"] [data-slot="accordion"][data-naprawy-accordion="true"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* AccordionItem (контейнер подкатегории) - это ключевой элемент для отключения Scroll Anchoring
+     data-naprawy-subcategory="true" добавляется на AccordionItem подкатегорий в секции naprawy */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* AccordionContent (внешний контейнер Radix UI) для подкатегорий внутри секции naprawy
+     Этот элемент также меняет высоту при закрытии */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* Внутренний div с overflow-y-auto для подкатегорий в секции naprawy
+     Этот div находится внутри AccordionContent подкатегории и содержит контент с таблицами */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"] > div {
+    overflow-anchor: none !important;
+  }
+  
+  /* AccordionTrigger (заголовок подкатегории) также может быть якорем */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-trigger"] {
+    overflow-anchor: none !important;
+  }
+  
+  /* Все дочерние элементы внутри AccordionItem подкатегорий в секции naprawy */
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] * {
+    overflow-anchor: none !important;
+  }
+  
   /* Обеспечиваем видимость надписи "Zobacz cennik" в подкатегориях */
   [data-subcategory-link] {
     display: flex !important;

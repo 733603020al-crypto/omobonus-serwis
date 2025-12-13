@@ -1207,6 +1207,108 @@ const scrollIntoViewIfNeeded = (
   })
 }
 
+// Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent
+const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElement | null => {
+  const children = Array.from(accordionContentElement.children) as HTMLElement[]
+  
+  // Проверяем дочерние элементы
+  for (const child of children) {
+    const styles = window.getComputedStyle(child)
+    if (styles.overflowY === 'auto' || styles.overflowY === 'scroll' || 
+        (styles.maxHeight !== 'none' && styles.maxHeight !== '0px')) {
+      return child
+    }
+  }
+  
+  // Проверяем сам AccordionContent
+  const styles = window.getComputedStyle(accordionContentElement)
+  if (styles.overflowY === 'auto' || styles.overflowY === 'scroll') {
+    return accordionContentElement
+  }
+  
+  // Fallback: первый дочерний div или сам AccordionContent
+  return children.find(el => el.tagName === 'DIV') || accordionContentElement
+}
+
+// Функция для прокрутки подкатегории внутри контейнера с overflow
+const scrollSubcategoryToTop = (
+  sectionRef: HTMLDivElement | null,
+  subcategoryRef: HTMLDivElement | null,
+  sectionOffset = SECTION_SCROLL_OFFSET,
+) => {
+  if (!sectionRef || !subcategoryRef) return
+
+  // subcategoryRef указывает на AccordionItem, нам нужно найти AccordionTrigger внутри него
+  // для прокрутки к заголовку подкатегории
+  const subcategoryTrigger = subcategoryRef.querySelector<HTMLElement>(
+    '[data-slot="accordion-trigger"]'
+  ) || subcategoryRef
+
+  // Ждем завершения анимации раскрытия аккордеона Radix UI
+  // Radix UI Accordion использует CSS анимации ~200-300ms
+  // Используем двойной RAF + задержку для гарантии завершения анимации
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        // 1. Сначала проверяем и прокручиваем страницу, чтобы заголовок секции был виден
+        // Проверяем, находится ли заголовок секции в нужной позиции (с отступом sectionOffset)
+        const sectionRect = sectionRef.getBoundingClientRect()
+        const targetSectionTop = sectionOffset
+        const currentSectionTop = sectionRect.top
+        const needsPageScroll = Math.abs(currentSectionTop - targetSectionTop) > 20 // Порог для прокрутки
+        
+        if (needsPageScroll) {
+          const sectionTop = sectionRect.top + window.scrollY - sectionOffset
+          window.scrollTo({ top: Math.max(0, sectionTop), behavior: 'smooth' })
+        }
+
+        // 2. Находим контейнер с overflow-y-auto внутри AccordionContent
+        // AccordionContent имеет data-slot="accordion-content"
+        // Внутри него есть div с overflow-y-auto (className применяется к внутреннему div)
+        const accordionContentElement = sectionRef.querySelector<HTMLElement>(
+          '[data-slot="accordion-content"]'
+        )
+
+        if (!accordionContentElement) return
+
+        // Ищем scrollable контейнер
+        const scrollableContainer = findScrollableContainer(accordionContentElement)
+
+        // Функция для выполнения прокрутки контейнера
+        const performContainerScroll = () => {
+          // Получаем актуальные позиции после возможной прокрутки страницы
+          // Используем trigger для прокрутки к заголовку подкатегории
+          const subcategoryTriggerRect = subcategoryTrigger.getBoundingClientRect()
+          const containerRect = scrollableContainer!.getBoundingClientRect()
+          
+          // Вычисляем относительную позицию заголовка подкатегории внутри контейнера
+          const relativeTop = subcategoryTriggerRect.top - containerRect.top
+          
+          // Вычисляем, насколько нужно прокрутить контейнер
+          // Чтобы заголовок подкатегории был в самом верху контейнера (с небольшим отступом)
+          const currentScrollTop = scrollableContainer!.scrollTop
+          const targetScrollTop = currentScrollTop + relativeTop - 10 // Небольшой отступ сверху для визуального комфорта
+          
+          // Прокручиваем контейнер плавно
+          scrollableContainer!.scrollTo({
+            top: Math.max(0, targetScrollTop),
+            behavior: 'smooth'
+          })
+        }
+
+        // Если была прокрутка страницы, ждем её начала перед прокруткой контейнера
+        // Это нужно для корректного расчета позиций элементов
+        if (needsPageScroll) {
+          setTimeout(performContainerScroll, 200) // Даем время на начало прокрутки страницы
+        } else {
+          // Если страница не прокручивается, выполняем прокрутку контейнера сразу
+          performContainerScroll()
+        }
+      }, 100) // Задержка для завершения анимации раскрытия Radix UI Accordion
+    })
+  })
+}
+
 const DEVICE_CATEGORIES = [
   {
     title: 'Drukarka domowa',
@@ -1484,6 +1586,8 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 
   const handleSubcategoryChange = (sectionId: string, value: string | null) => {
     if (sectionId !== 'naprawy') return
+    
+    // Просто изменяем состояние - при закрытии браузер естественно обработает изменение высоты
     setOpenSubcategory(prev => (prev === value ? null : value))
   }
 
@@ -1523,16 +1627,20 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   }, [openSection, openFaq])
 
   useEffect(() => {
-    if (!openSubcategory || openSection !== 'naprawy') return
-    const parentRef = sectionRefs.current['naprawy']
-    if (!parentRef) return
-
-    const rect = parentRef.getBoundingClientRect()
-    if (rect.bottom > 70) {
+    // Прокрутка только при открытии подкатегории
+    if (!openSubcategory || openSection !== 'naprawy') {
+      return
+    }
+    
+    const sectionRef = sectionRefs.current['naprawy']
+    const subcategoryRef = subcategoryRefs.current[openSubcategory]
+    
+    if (!sectionRef || !subcategoryRef) {
       return
     }
 
-    scrollIntoViewIfNeeded(parentRef, SECTION_SCROLL_OFFSET, true)
+    // Прокручиваем подкатегорию к верху внутри контейнера
+    scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
   }, [openSubcategory, openSection])
 
   // Измерение позиции столбцов цен для позиционирования "Czynsz wynajmu [zł/mies.]"
@@ -2055,6 +2163,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                 </AccordionTrigger>
 
                 <AccordionContent 
+                  data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
                   className={cn(
                     "pb-3 max-h-[70vh] overflow-y-auto scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) 
@@ -2070,6 +2179,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                         <AccordionItem
                           key={subcategory.id}
                           value={subcategory.id}
+                          data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group scroll-mt-[100px]",
                               section.id === 'faq'
@@ -3019,6 +3129,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             value={getSubcategoryValue(section.id)}
                             onValueChange={value => handleSubcategoryChange(section.id, value)}
                             className="w-full"
+                            data-naprawy-accordion="true"
                           >
                             {subcategoryItems}
                           </Accordion>
