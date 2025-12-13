@@ -55,6 +55,16 @@
     word-break: break-word;
     overflow-wrap: anywhere;
   }
+
+  /* Изоляция стилей для текста в скобках - предотвращает наследование от родительских контейнеров */
+  .parentheses-text-isolated {
+    color: #cbb27c !important;
+    line-height: 1.625 !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    letter-spacing: normal !important;
+    font-family: inherit !important;
+  }
   
   /* Ręcznie rysowane checkboxy */
   .checkbox-tick-wrapper {

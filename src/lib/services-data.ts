@@ -145,17 +145,17 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Mechanizm poboru papieru, rolki, separatory',
         items: [
           {
-            service: 'Naprawa mechanizmu podawania oraz poboru papieru',
+            service: 'Naprawa mechanizmu podawania oraz poboru papieru\n(usunięcie problemów z wciąganiem kartek, nieregularnym podawaniem papieru lub zatrzymywaniem się rolki)',
             price: '70 / 110 / 150 + części',
             duration: '1–2 dni',
           },
           {
-            service: 'Czyszczenie mechanizmu podawania i uchwytów papieru',
+            service: 'Czyszczenie mechanizmu podawania i uchwytów papieru\n(usunięcie zabrudzeń z rolek i separatorów – poprawa przyczepności i płynności podawania papieru)',
             price: '70 / 100 / 140',
             duration: '1–2 dni',
           },
           {
-            service: 'Usunięcie zacięć papieru i regeneracja mechanizmu podawania',
+            service: 'Usunięcie zacięć papieru i regeneracja mechanizmu podawania\n(eliminacja blokad papieru, wymiana zużytych rolek i elementów prowadzących, regeneracja sprężyn i separatorów)',
             price: '80 / 120 / 160 + części',
             duration: '1–3 dni',
           },
@@ -166,12 +166,12 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Mechanizm uderzeniowy i głowica drukująca (matryczna)',
         items: [
           {
-            service: 'Wymiana głowicy drukującej (igłowej)',
+            service: 'Wymiana głowicy drukującej (igłowej)\n(przywraca prawidłowy wydruk — rozwiązuje problem z brakiem znaków, przerywanymi liniami lub nierówną intensywnością druku)',
             price: '120 / 180 / 240 + części',
             duration: '2–4 dni',
           },
           {
-            service: 'Regulacja i czyszczenie mechanizmu igieł/ramienia uderzeniowego',
+            service: 'Regulacja i czyszczenie mechanizmu igieł / ramienia uderzeniowego\n(czyszczenie i kalibracja mechanizmu uderzeniowego – usuwa zacięcia igieł, poprawia jakość i precyzję druku)',
             price: '90 / 140 / 190',
             duration: '1–3 dni',
           },
@@ -182,17 +182,17 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Napęd i mechanika ruchu kartridża / wstęgi barwiącej',
         items: [
           {
-            service: 'Wymiana lub regulacja paska/przekładni napędu kartridża',
+            service: 'Wymiana lub regulacja paska / przekładni napędu kartridża\n(naprawa napędu przesuwu głowicy – usuwa hałas, drgania i zatrzymania karetki podczas drukowania)',
             price: '80 / 130 / 180 + części',
             duration: '1–3 dni',
           },
           {
-            service: 'Czyszczenie i smarowanie prowadnic kartridża/ramienia',
+            service: 'Czyszczenie i smarowanie prowadnic kartridża / ramienia\n(czyszczenie i konserwacja elementów prowadzących – poprawia płynność ruchu karetki i dokładność wydruku)',
             price: '70 / 100 / 140',
             duration: '1–2 dni',
           },
           {
-            service: 'Wymiana lub naprawa mechanizmu wstęgi barwiącej',
+            service: 'Wymiana lub naprawa mechanizmu wstęgi barwiącej\n(przywraca równomierne nanoszenie tuszu na papier, eliminuje problemy z przerywanym lub bladym drukiem)',
             price: '90 / 140 / 190 + części',
             duration: '1–3 dni',
           },
@@ -203,17 +203,17 @@ const defaultPricingSections: PricingSection[] = [
         title: 'Taśma barwiąca / mechanizm barwienia druku',
         items: [
           {
-            service: 'Wymiana taśmy barwiącej (ink‑ribbon)',
+            service: 'Wymiana taśmy barwiącej (ink-ribbon)\n(przywraca prawidłową intensywność i kontrast wydruku – usuwa efekt bladych lub przerywanych linii)',
             price: '50 / 80 / 110 + materiał',
             duration: '1–2 dni',
           },
           {
-            service: 'Czyszczenie mechanizmu wstęgi i prowadnic',
+            service: 'Czyszczenie mechanizmu wstęgi i prowadnic\n(usunięcie zabrudzeń i resztek tuszu z elementów prowadzących – poprawia równomierne przesuwanie taśmy i jakość druku)',
             price: '70 / 100 / 140',
             duration: '1–2 dni',
           },
           {
-            service: 'Regeneracja mechanizmu wstęgi lub uchwytu wstęgi',
+            service: 'Regeneracja mechanizmu wstęgi lub uchwytu wstęgi\n(naprawa lub wymiana zużytych elementów napędu taśmy – eliminuje zacięcia i problemy z podawaniem taśmy barwiącej)',
             price: '90 / 130 / 180 + części',
             duration: '1–3 dni',
           },
@@ -350,6 +350,7 @@ const defaultPricingSections: PricingSection[] = [
             service: 'Drukarka zastępcza (Na czas naprawy)',
             price: 'Link',
             duration: '-',
+            link: '/uslugi/drukarka-zastepcza',
           },
           {
             service: 'Odnowienie obudowy (Bielenie UV)',
@@ -2299,6 +2300,24 @@ const applyInkjetAdditionalSubcategory = (sections: PricingSection[]) => {
   ]
 }
 
+const applyNeedleCleaningSection = (sections: PricingSection[]) => {
+  const cleaningSection = sections.find(section => section.id === 'konserwacja')
+  if (!cleaningSection) return
+  cleaningSection.items = [
+    {
+      service: 'PREMIUM (pełna konserwacja)\n(Konserwacja całego mechanizmu uderzeniowego (smarowanie i regulacja igieł oraz prowadnic), pełne czyszczenie i regeneracja toru papieru, kontrola i kalibracja mechanizmu podawania, czyszczenie elektroniki z pyłu, test końcowy wydruku i reset liczników serwisowych)',
+      price: '150 / 200 / 250',
+      duration: '1–3 dni',
+    },
+  ]
+}
+
+const createNeedlePricingSections = (): PricingSection[] => {
+  const sections = createPricingSections()
+  applyNeedleCleaningSection(sections)
+  return sections
+}
+
 const createLaserPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   applyLaserCleaningSection(sections)
@@ -3030,7 +3049,7 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createPricingSections(),
+    pricingSections: createNeedlePricingSections(),
   },
   {
     slug: 'wynajem-drukarek',

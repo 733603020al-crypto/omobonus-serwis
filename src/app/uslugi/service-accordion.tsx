@@ -94,6 +94,8 @@ const PROPER_NOUN_PREFIXES = [
   'lexmark',
   'apple',
   'android',
+  'wrocław',
+  'wroclaw',
 ]
 
 const hasOuterParens = (value: string) => {
@@ -196,9 +198,10 @@ const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237
 const renderSecondaryText = (text: string, italic: boolean = false, key?: string | number) => (
   <div
     key={key ? `${text}-${key}` : undefined}
-    className={`text-[12px] text-[#cbb27c] leading-relaxed ${italic ? 'italic' : ''}`}
+    className={`parentheses-text-isolated text-[12px] text-[#cbb27c] leading-relaxed ${italic ? 'italic' : ''}`}
     style={{ 
       opacity: 1,
+      fontSize: '12px',
       fontWeight: 'normal',
       fontStyle: italic ? 'italic' : 'normal'
     }}
@@ -296,20 +299,17 @@ export const renderDurationValue = (value: string) => (
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string) => {
+const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px') => {
   // Если текст содержит переносы строк, разбиваем и рендерим каждую строку отдельно
   if (text.includes('\n')) {
     const lines = text.split('\n').filter(line => line.trim())
     return (
       <div
         className="text-[14px] text-[#cbb27c] leading-relaxed mt-1"
-        style={{ 
-          opacity: 1
-        }}
       >
         {lines.map((line, idx) => (
-          <div key={idx} className="mt-0.5 first:mt-0">
-            {line.trim()}
+          <div key={idx} className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
+            ({line.trim()})
           </div>
         ))}
       </div>
@@ -319,9 +319,6 @@ const renderParenthesesText = (text: string) => {
   return (
     <div
       className="text-[14px] text-[#cbb27c] leading-relaxed"
-      style={{ 
-        opacity: 1
-      }}
     >
       ({text})
     </div>
@@ -366,7 +363,7 @@ const renderMobileServiceRow = (
         <div className="font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
-        {parsed.parentheses && renderParenthesesText(parsed.parentheses)}
+        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
       </div>
       {/* Правая колонка - цена */}
       <div
@@ -2868,12 +2865,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                       })()}
                                     </h4>
                                     {subcategory.subtitle && section.id !== 'faq' && (
-                                      <div
-                                        className="font-table-sub text-[13px] md:text-[14px] text-[#f0dfbd] leading-tight italic mt-0.5"
-                                        style={{ textShadow: supplementTextShadow }}
-                                      >
-                                        ({subcategory.subtitle})
-                                      </div>
+                                      renderParenthesesText(subcategory.subtitle, '12px')
                                     )}
                                   </div>
                                   {section.id !== 'faq' && (
@@ -2984,7 +2976,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                                     {parsed.main}
                                                   </div>
-                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses)}
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
                                                 </div>
                                               )
                                             })()}
@@ -3106,7 +3098,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                           {parsed.main}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses)}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
                                       </div>
                                     )
                                   })()}
