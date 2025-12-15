@@ -86,7 +86,7 @@ export function About() {
                 ))}
                 <li className="flex items-center gap-2">
                   <Image
-                    src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.jpg"
+                    src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
                     alt="Karta Dużej Rodziny"
                     width={64}
                     height={64}

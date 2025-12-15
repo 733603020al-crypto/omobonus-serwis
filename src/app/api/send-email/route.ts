@@ -13,7 +13,7 @@ const DEFAULT_TO = 'serwis@omobonus.com.pl'
 const DEFAULT_FROM = 'serwis@omobonus.com.pl'
 
 // Типы ошибок для структурированной обработки
-type ErrorType = 
+type ErrorType =
   | 'MISSING_CONFIG'
   | 'SMTP_ERROR'
   | 'FILE_TOO_LARGE'
@@ -31,13 +31,13 @@ interface ApiError {
 const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
   const missing: string[] = []
-  
+
   for (const key of required) {
     if (!process.env[key] || process.env[key]?.trim() === '') {
       missing.push(key)
     }
   }
-  
+
   return {
     valid: missing.length === 0,
     missing,
@@ -47,7 +47,7 @@ const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
 // Создание transporter SMTP
 const createTransporter = (): nodemailer.Transporter | null => {
   const config = validateSmtpConfig()
-  
+
   if (!config.valid) {
     console.error('❌ SMTP конфигурация неполная. Отсутствуют:', config.missing.join(', '))
     return null
@@ -149,12 +149,12 @@ const generateTicketNumber = (): string => {
 // Безопасное чтение логотипа
 const getLogoBase64 = (): string => {
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'images', 'Logo_Omobonus_favicon.png')
+    const logoPath = path.join(process.cwd(), 'public', 'images', 'Logo_Omobonus_favicon.webp')
     if (fs.existsSync(logoPath)) {
       const logoBuffer = fs.readFileSync(logoPath)
       const base64 = logoBuffer.toString('base64')
       console.log('✅ Логотип успешно загружен')
-      return `data:image/png;base64,${base64}`
+      return `data:image/webp;base64,${base64}`
     } else {
       console.warn('⚠️ Логотип не найден по пути:', logoPath)
       return ''
@@ -199,7 +199,7 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
 
 export async function POST(request: NextRequest) {
   console.log('📩 Форма вызвала /api/send-email')
-  
+
   try {
     // Проверка конфигурации SMTP в начале
     const configCheck = validateSmtpConfig()
@@ -209,9 +209,9 @@ export async function POST(request: NextRequest) {
         message: 'SMTP конфигурация неполная',
         details: `Отсутствуют переменные окружения: ${configCheck.missing.join(', ')}`,
       }
-      
+
       console.error('❌', error.message, error.details)
-      
+
       return NextResponse.json(
         {
           success: false,
@@ -271,11 +271,11 @@ export async function POST(request: NextRequest) {
     const attachments =
       attachmentFiles.length > 0
         ? await Promise.all(
-            attachmentFiles.map(async file => ({
-              filename: file.name || 'attachment',
-              content: Buffer.from(await file.arrayBuffer()),
-            })),
-          )
+          attachmentFiles.map(async file => ({
+            filename: file.name || 'attachment',
+            content: Buffer.from(await file.arrayBuffer()),
+          })),
+        )
         : undefined
 
     const currentYear = new Date().getFullYear()
@@ -431,16 +431,16 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
 
     // Создание transporter SMTP
     const transporter = createTransporter()
-    
+
     if (!transporter) {
       const error: ApiError = {
         type: 'MISSING_CONFIG',
         message: 'Не удалось создать SMTP transporter',
         details: 'Проверьте конфигурацию SMTP',
       }
-      
+
       console.error('❌', error.message)
-      
+
       return NextResponse.json(
         {
           success: false,
@@ -463,9 +463,9 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
     // Подготовка вложений для nodemailer
     const nodemailerAttachments = attachments
       ? attachments.map(att => ({
-          filename: att.filename,
-          content: att.content,
-        }))
+        filename: att.filename,
+        content: att.content,
+      }))
       : []
 
     // Отправка письма сервису
@@ -715,7 +715,7 @@ Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus
     )
   } catch (error: any) {
     console.error('❌ Ошибка при отправке письма через SMTP Zenbox:', error)
-    
+
     const errorDetails: ApiError = {
       type: 'SMTP_ERROR',
       message: 'Не удалось отправить письмо',

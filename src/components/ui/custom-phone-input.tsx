@@ -75,10 +75,10 @@ export function CustomPhoneInput({ value, onChange, className = '' }: CustomPhon
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = e.target.value
-    
+
     // Удаляем все нецифровые символы
     const digits = inputValue.replace(/\D/g, '')
-    
+
     // Если выбрана страна "other", просто сохраняем как есть
     if (selectedCountry.code === 'other') {
       setPhoneNumber(inputValue)
@@ -115,8 +115,8 @@ export function CustomPhoneInput({ value, onChange, className = '' }: CustomPhon
     return 'xxx xxx xxx' // fallback
   }
 
-  const displayName = selectedCountry.name.length > 12 
-    ? selectedCountry.shortName 
+  const displayName = selectedCountry.name.length > 12
+    ? selectedCountry.shortName
     : selectedCountry.name
 
   return (
@@ -188,7 +188,7 @@ export function CustomPhoneInput({ value, onChange, className = '' }: CustomPhon
           ref={dropdownRef}
           className="absolute top-full left-0 mt-1 z-50 border border-black/20 rounded-lg shadow-lg max-h-64 overflow-y-auto custom-dropdown country-dropdown"
           style={{
-            backgroundImage: 'linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)), url(/images/zmiety arkusz papieru 2.png)',
+            backgroundImage: 'linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)), url(/images/zmiety arkusz papieru 2.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

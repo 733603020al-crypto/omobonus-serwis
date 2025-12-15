@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów.',
     images: [
       {
-        url: '/images/omobonus-hero.png',
+        url: '/images/omobonus-hero.webp',
         width: 1200,
         height: 630,
         alt: 'Omobonus - serwis komputerów i drukarek Wrocław',
@@ -104,7 +104,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
     description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Uczciwe ceny, dojazd gratis.',
-    images: ['/images/omobonus-hero.png'],
+    images: ['/images/omobonus-hero.webp'],
   },
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
@@ -130,8 +130,8 @@ const jsonLd = {
   alternateName: 'Omobonus Sp. z o.o.',
   description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu komputerowego, outsourcing IT dla firm, uczciwe ceny bez ukrytych kosztów.',
   url: 'https://serwis.omobonus.com.pl',
-  logo: 'https://serwis.omobonus.com.pl/images/Logo_Omobonus.png',
-  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.png',
+  logo: 'https://serwis.omobonus.com.pl/images/Logo_Omobonus.webp',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.webp',
   telephone: '+48793759262',
   email: 'serwis@omobonus.com.pl',
   address: {
@@ -217,7 +217,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const fontClasses = `${cormorant.variable} ${cormorantSC.variable} ${lora.variable} ${inter.variable} ${ebGaramond.variable} ${spectralSC.variable} ${cinzel.variable}`
-  
+
   return (
     <html lang="pl" className={fontClasses} suppressHydrationWarning>
       <body className="font-sans antialiased scroll-smooth">

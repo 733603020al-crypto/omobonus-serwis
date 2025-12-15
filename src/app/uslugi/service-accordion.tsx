@@ -42,9 +42,9 @@ const getIconForSection = (sectionId: string) => {
     case 'faq':
       return manifest.P5_FAQ_pytania_i_odpowiedzi
     case 'akordeon-1':
-      return '/images/A4.png'
+      return '/images/A4.webp'
     case 'akordeon-2':
-      return '/images/A3.png'
+      return '/images/A3.webp'
     default:
       return manifest.P5_FAQ_pytania_i_odpowiedzi
   }
@@ -53,21 +53,21 @@ const getIconForSection = (sectionId: string) => {
 const getIconForSubcategory = (subcategoryId: string) => {
   switch (subcategoryId) {
     case 'drukarki-mono':
-      return '/images/A4_Drukarki_mono.png'
+      return '/images/A4_Drukarki_mono.webp'
     case 'drukarki-kolor':
-      return '/images/A4_Drukarki_kolor.png'
+      return '/images/A4_Drukarki_kolor.webp'
     case 'mfu-mono':
-      return '/images/A4_MFU_mono.png'
+      return '/images/A4_MFU_mono.webp'
     case 'mfu-kolor':
-      return '/images/A4_MFU_kolor.png'
+      return '/images/A4_MFU_kolor.webp'
     case 'a3-drukarki-mono':
-      return '/images/Drukarki_A3_A4_mono.png'
+      return '/images/Drukarki_A3_A4_mono.webp'
     case 'a3-drukarki-kolor':
-      return '/images/Drukarki_A3_A4_mono_kolor.png'
+      return '/images/Drukarki_A3_A4_mono_kolor.webp'
     case 'a3-mfu-mono':
-      return '/images/MFU_A3_A4_mono.png'
+      return '/images/MFU_A3_A4_mono.webp'
     case 'a3-mfu-kolor':
-      return '/images/MFU_A3_A4_mono_kolor.png'
+      return '/images/MFU_A3_A4_mono_kolor.webp'
     default:
       return null
   }
