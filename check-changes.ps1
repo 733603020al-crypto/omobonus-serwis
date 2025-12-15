@@ -43,3 +43,5 @@ git log --oneline -5
 Write-Host "`n=== Проверка завершена ===" -ForegroundColor Cyan
 
 
+
+

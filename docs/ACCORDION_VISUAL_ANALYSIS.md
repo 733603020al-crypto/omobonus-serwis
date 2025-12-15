@@ -641,3 +641,5 @@ className="transition-colors transition-opacity duration-200"
    - Анимации `animate-accordion-up/down` (стандартные для shadcn/ui)
    - Логику скролла в `service-accordion.tsx`
 
+
+

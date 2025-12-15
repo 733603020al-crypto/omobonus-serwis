@@ -61,13 +61,13 @@ const getIconForSubcategory = (subcategoryId: string) => {
     case 'mfu-kolor':
       return '/images/A4_MFU_kolor.png'
     case 'a3-drukarki-mono':
-      return '/images/DrukarkiA3A4 (mono).png'
+      return '/images/Drukarki_A3_A4_mono.png'
     case 'a3-drukarki-kolor':
-      return '/images/Drukarki A3A4 (mono+kolor).png'
+      return '/images/Drukarki_A3_A4_mono_kolor.png'
     case 'a3-mfu-mono':
-      return '/images/MFU A3A4 (mono).png'
+      return '/images/MFU_A3_A4_mono.png'
     case 'a3-mfu-kolor':
-      return '/images/MFU A3A4 (mono+kolor).png'
+      return '/images/MFU_A3_A4_mono_kolor.png'
     default:
       return null
   }
@@ -199,7 +199,7 @@ const renderSecondaryText = (text: string, italic: boolean = false, key?: string
   <div
     key={key ? `${text}-${key}` : undefined}
     className={`parentheses-text-isolated text-[12px] text-[#cbb27c] leading-relaxed ${italic ? 'italic' : ''}`}
-    style={{ 
+    style={{
       opacity: 1,
       fontSize: '12px',
       fontWeight: 'normal',
@@ -315,7 +315,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
       </div>
     )
   }
-  
+
   return (
     <div
       className="text-[14px] text-[#cbb27c] leading-relaxed"
@@ -354,9 +354,8 @@ const renderMobileServiceRow = (
   return (
     <div
       key={`mobile-${idx}`}
-      className={`flex items-start w-full gap-0.5 border-white/20 border-b border-white/30 ${
-        isFirst ? 'border-t border-white/30' : ''
-      } ${isLast ? '' : ''} py-1`}
+      className={`flex items-start w-full gap-0.5 border-white/20 border-b border-white/30 ${isFirst ? 'border-t border-white/30' : ''
+        } ${isLast ? '' : ''} py-1`}
     >
       {/* Левая колонка - описание */}
       <div className="flex-1 min-w-0 pl-0.5">
@@ -385,11 +384,11 @@ type ScrollRefs = Record<string, HTMLDivElement | null>
 const SECTION_SCROLL_OFFSET = 120
 
 // Компонент для таблицы wynajem с динамическим выравниванием
-const WynajemTable = ({ 
-  subcategoryId, 
+const WynajemTable = ({
+  subcategoryId,
   headerRefs,
   serviceSlug
-}: { 
+}: {
   subcategoryId: string
   headerRefs: {
     icon: React.RefObject<HTMLDivElement | null>
@@ -412,7 +411,7 @@ const WynajemTable = ({
     distanceTextToPrice1: number;
     leftPartWidth: number;
   } | null>(null)
-  
+
   // Фиксированный отступ слева для выравнивания нижней таблицы под верхним рядом
   // Примерно равен расстоянию от левого края контейнера до начала иконки (12px)
   // Скорректировано визуально для идеального совпадения
@@ -434,7 +433,7 @@ const WynajemTable = ({
         const textRect = textEl.getBoundingClientRect()
         const price1Rect = price1El.getBoundingClientRect()
         const price2Rect = price2El.getBoundingClientRect()
-        
+
         const baseWidths = {
           icon: iconRect.width,
           text: textRect.width,
@@ -470,22 +469,22 @@ const WynajemTable = ({
     const timeoutId1 = setTimeout(measureColumns, 50)
     const timeoutId2 = setTimeout(measureColumns, 200)
     const timeoutId3 = setTimeout(measureColumns, 500)
-    
+
     // Измерение структуры заголовка для всех A3/A4 подкатегорий на Drukarka Zastępcza
     const measureHeader = () => {
       const iconEl = headerRefs.icon.current
       const textEl = headerRefs.text.current
       const price1El = headerRefs.prices[0]?.current
-      
+
       if (iconEl && textEl && price1El) {
         const iconRect = iconEl.getBoundingClientRect()
         const textRect = textEl.getBoundingClientRect()
         const price1Rect = price1El.getBoundingClientRect()
-        
+
         const distanceIconToText = textRect.left - iconRect.right
         const distanceTextToPrice1 = price1Rect.left - textRect.right
         const leftPartWidth = textRect.right - iconRect.left
-        
+
         // Сохраняем измерения для использования в нижнем блоке
         setHeaderMeasurements({
           iconWidth: iconRect.width,
@@ -496,7 +495,7 @@ const WynajemTable = ({
         })
       }
     }
-    
+
     // Измеряем заголовок для всех A3/A4 подкатегорий на Drukarka Zastępcza
     const a3A4SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor']
     if (isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)) {
@@ -650,24 +649,24 @@ const WynajemTable = ({
     { label: 'Prędkość druku do: (str./min)', plan1: '50' },
   ]
 
-  let tableData = 
+  let tableData =
     subcategoryId === 'drukarki-mono' ? (isDrukarkaZastepcza ? tableDataMonoDZ : tableDataMono) :
-    // Для a3-drukarki-mono на странице "Drukarka Zastępcza" используем те же данные, что и для a3-drukarki-kolor, чтобы структура была идентичной
-    subcategoryId === 'a3-drukarki-mono' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Mono) :
-    subcategoryId === 'drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataKolorDZ : tableDataKolor) :
-    subcategoryId === 'a3-drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Kolor) :
-    subcategoryId === 'mfu-mono' ? (isDrukarkaZastepcza ? tableDataMfuMonoDZ : tableDataMfuMono) :
-    subcategoryId === 'a3-mfu-mono' ? (isDrukarkaZastepcza ? tableDataA3MfuMonoDZ : tableDataA3MfuMono) :
-    subcategoryId === 'mfu-kolor' ? (isDrukarkaZastepcza ? tableDataMfuKolorDZ : tableDataMfuKolor) :
-    subcategoryId === 'a3-mfu-kolor' ? (isDrukarkaZastepcza ? tableDataA3MfuKolorDZ : tableDataA3MfuKolor) :
-    []
+      // Для a3-drukarki-mono на странице "Drukarka Zastępcza" используем те же данные, что и для a3-drukarki-kolor, чтобы структура была идентичной
+      subcategoryId === 'a3-drukarki-mono' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Mono) :
+        subcategoryId === 'drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataKolorDZ : tableDataKolor) :
+          subcategoryId === 'a3-drukarki-kolor' ? (isDrukarkaZastepcza ? tableDataA3KolorDZ : tableDataA3Kolor) :
+            subcategoryId === 'mfu-mono' ? (isDrukarkaZastepcza ? tableDataMfuMonoDZ : tableDataMfuMono) :
+              subcategoryId === 'a3-mfu-mono' ? (isDrukarkaZastepcza ? tableDataA3MfuMonoDZ : tableDataA3MfuMono) :
+                subcategoryId === 'mfu-kolor' ? (isDrukarkaZastepcza ? tableDataMfuKolorDZ : tableDataMfuKolor) :
+                  subcategoryId === 'a3-mfu-kolor' ? (isDrukarkaZastepcza ? tableDataA3MfuKolorDZ : tableDataA3MfuKolor) :
+                    []
 
   // Для drukarka-zastepcza убираем plan3 из данных, строки "Liczba stron A4 wliczonych w czynsz", "Cena wydruku A4 mono (powyżej limitu)" и "Cena wydruku A4 kolor (powyżej limitu)" (кроме drukarki-mono, drukarki-kolor и всех A3 подкатегорий, где уже используются специальные таблицы)
   const a3SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor']
   if (isDrukarkaZastepcza && tableData.length > 0 && subcategoryId !== 'drukarki-mono' && subcategoryId !== 'drukarki-kolor' && !a3SubcategoryIds.includes(subcategoryId)) {
     tableData = tableData
-      .filter(row => 
-        row.label !== 'Liczba stron A4 wliczonych w czynsz' && 
+      .filter(row =>
+        row.label !== 'Liczba stron A4 wliczonych w czynsz' &&
         row.label !== 'Cena wydruku A4 mono (powyżej limitu)' &&
         row.label !== 'Cena wydruku A4 kolor (powyżej limitu)'
       )
@@ -719,7 +718,7 @@ const WynajemTable = ({
       const parts = value.split(' + ')
       const firstPart = parts[0].trim() // "1 000"
       const secondPart = parts[1].trim() // "0"
-      
+
       // Если это строка с лимитом, добавляем подписи "mono" и "kolor"
       if (isLimitRow) {
         return (
@@ -771,7 +770,7 @@ const WynajemTable = ({
           </div>
         )
       }
-      
+
       // Обычная обработка (без подписей mono/kolor)
       return (
         <div className="flex flex-col items-center">
@@ -785,13 +784,13 @@ const WynajemTable = ({
         </div>
       )
     }
-    
+
     // Для сложных значений типа "1 000 str. + 0 str." - разделяем на две строки
     if (value.includes(' + ') && value.includes(' str.')) {
       const parts = value.split(' + ')
       const firstPart = parts[0].trim() // "1 000 str."
       const secondPart = parts[1].trim() // "0 str."
-      
+
       const renderStrPart = (strPart: string) => {
         const strMatch = strPart.match(/^(.+?)\s*str\.$/)
         if (strMatch) {
@@ -799,8 +798,8 @@ const WynajemTable = ({
           return (
             <div className="flex items-baseline">
               <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
-              <span 
-                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+              <span
+                className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
               >
                 str.
               </span>
@@ -809,11 +808,11 @@ const WynajemTable = ({
         }
         return <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{strPart}</span>
       }
-      
+
       // Парсим вторую часть отдельно
       const secondMatch = secondPart.match(/^(.+?)\s*str\.$/)
       const secondNumber = secondMatch ? secondMatch[1].trim() : secondPart
-      
+
       return (
         <div className="flex flex-col items-center">
           {/* Первая строка: "1 000 str." */}
@@ -822,8 +821,8 @@ const WynajemTable = ({
           <div className="flex items-baseline">
             <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
             <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondNumber}</span>
-            <span 
-                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+            <span
+              className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
             >
               str.
             </span>
@@ -831,7 +830,7 @@ const WynajemTable = ({
         </div>
       )
     }
-    
+
     // Для "500 str./mies." - разделить на две строки: число сверху, "str./mies." снизу
     if (value.includes('str./mies.')) {
       const parts = value.split('str./mies.')
@@ -892,12 +891,12 @@ const WynajemTable = ({
   }
 
   return (
-    <div 
+    <div
       className={cn(
         "rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
       )}
     >
-      <div 
+      <div
         className="overflow-x-auto md:overflow-x-visible -mx-4 md:mx-0 px-4 md:px-0"
         ref={(el) => {
           // ВРЕМЕННО: измерение ширины родительского контейнера overflow-x-auto
@@ -912,7 +911,7 @@ const WynajemTable = ({
         }}
       >
         {/* Десктоп: flex с динамическими размерами из верхнего ряда */}
-        <div 
+        <div
           className="hidden md:block"
           style={{ marginLeft: `${leftOffset}px`, width: `calc(100% - ${leftOffset}px)` }}
           ref={(el) => {
@@ -930,32 +929,32 @@ const WynajemTable = ({
           }}
         >
           {tableData.map((row, idx) => {
-              if (!row || !(row as { label?: string }).label) return null
-              const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
-              const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
-              const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
-              const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[14px]' : 'text-[16px]')
-              const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
-              
-              return (
-                <div
-                  key={idx}
-                  data-subcategory={subcategoryId}
-                  className={cn(
-                    `flex w-full items-center border-[#8b7a5a] ${idx === 0 ? 'border-t-2' : ''} border-b-2`
-                  )}
-                >
+            if (!row || !(row as { label?: string }).label) return null
+            const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
+            const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
+            const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
+            const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[14px]' : 'text-[16px]')
+            const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
+
+            return (
+              <div
+                key={idx}
+                data-subcategory={subcategoryId}
+                className={cn(
+                  `flex w-full items-center border-[#8b7a5a] ${idx === 0 ? 'border-t-2' : ''} border-b-2`
+                )}
+              >
                 {/* Пустая колонка для иконки */}
-                <div 
+                <div
                   style={(() => {
                     // Единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza
                     const isA3A4OnDZ = isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)
                     if (isA3A4OnDZ) {
                       // Используем headerMeasurements если доступны (для точного выравнивания), иначе a3ReferenceWidths или columnWidths
                       if (headerMeasurements) {
-                        return { 
-                          width: `${headerMeasurements.iconWidth}px`, 
-                          marginRight: `${headerMeasurements.distanceIconToText}px` 
+                        return {
+                          width: `${headerMeasurements.iconWidth}px`,
+                          marginRight: `${headerMeasurements.distanceIconToText}px`
                         }
                       }
                       if (a3ReferenceWidths) {
@@ -967,10 +966,10 @@ const WynajemTable = ({
                   })()}
                 ></div>
                 {/* Колонка с описанием */}
-                <div 
+                <div
                   className={cn(
                     `px-2 flex items-center font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)]`,
-                    isDrukarkaZastepcza 
+                    isDrukarkaZastepcza
                       ? (isSmallFontRow ? 'py-0' : 'py-[3px]')
                       : (isSmallFontRow ? 'py-0.5' : 'py-1')
                   )}
@@ -994,10 +993,10 @@ const WynajemTable = ({
                 </div>
                 {/* Колонка с данными - единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
                 {typedRow.plan1 && (
-                  <div 
+                  <div
                     className={cn(
                       "px-2 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]",
-                      isDrukarkaZastepcza 
+                      isDrukarkaZastepcza
                         ? "py-[3px]"
                         : "py-1"
                     )}
@@ -1007,9 +1006,9 @@ const WynajemTable = ({
                       if (isA3A4OnDZ) {
                         // Используем headerMeasurements если доступны для точного выравнивания
                         if (headerMeasurements) {
-                          return { 
-                            width: '22.5%', 
-                            marginLeft: `${headerMeasurements.distanceTextToPrice1}px` 
+                          return {
+                            width: '22.5%',
+                            marginLeft: `${headerMeasurements.distanceTextToPrice1}px`
                           }
                         }
                         return { width: '22.5%', marginLeft: '8px' }
@@ -1022,10 +1021,10 @@ const WynajemTable = ({
                 )}
                 {/* Второй столбец удален для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
                 {typedRow.plan2 && !(isDrukarkaZastepcza && ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor'].includes(subcategoryId)) && (
-                  <div 
+                  <div
                     className={cn(
                       "px-2 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]",
-                      isDrukarkaZastepcza 
+                      isDrukarkaZastepcza
                         ? "py-[3px]"
                         : "py-1"
                     )}
@@ -1035,7 +1034,7 @@ const WynajemTable = ({
                   </div>
                 )}
                 {!isDrukarkaZastepcza && typedRow.plan3 && (
-                  <div 
+                  <div
                     className="px-2 py-1 flex items-center justify-center text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
                     style={columnWidths ? { width: `${columnWidths.price3}px` } : undefined}
                   >
@@ -1058,13 +1057,13 @@ const WynajemTable = ({
               </colgroup>
               <TableHeader>
                 <TableRow className="border-[#8b7a5a] border-b-2 border-t-2">
-                  <TableHead 
-                    className="px-2 pr-3 align-middle text-left" 
+                  <TableHead
+                    className="px-2 pr-3 align-middle text-left"
                     style={{ width: isDrukarkaZastepcza ? '55%' : '48%', minWidth: '120px', maxWidth: isDrukarkaZastepcza ? '55%' : '48%', boxSizing: 'border-box', whiteSpace: 'normal' }}
                   ></TableHead>
-                  <TableHead 
-                    colSpan={isDrukarkaZastepcza ? 1 : 3} 
-                    className="pl-2 pr-2 align-middle text-center border-l-2 border-[#8b7a5a]" 
+                  <TableHead
+                    colSpan={isDrukarkaZastepcza ? 1 : 3}
+                    className="pl-2 pr-2 align-middle text-center border-l-2 border-[#8b7a5a]"
                     style={{ width: isDrukarkaZastepcza ? '45%' : '52%', maxWidth: isDrukarkaZastepcza ? '45%' : '52%', boxSizing: 'border-box', overflow: 'hidden' }}
                   >
                     {/* Надпись "Czynsz wynajmu [zł/mies.]" убрана из таблицы - теперь она в шапке секции */}
@@ -1076,36 +1075,36 @@ const WynajemTable = ({
               </TableHeader>
               <TableBody>
                 {tableData.map((row, idx) => {
-                    if (!row || !(row as { label?: string }).label) return null
-                    const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
-                    const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
-                    const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
-                    const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[13px]' : 'text-[15px]')
-                    const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
-                    const isLastRow = idx === tableData.length - 1
-                    const borderBottomStyle = isLastRow ? 'none' : 'solid'
-                    const borderBottomColor = isLastRow ? 'transparent' : 'rgba(139, 122, 90, 0.75)'
-                    
-                    return (
-                      <TableRow
-                        key={idx}
-                        style={{ 
-                          borderBottomColor,
-                          borderBottomWidth: '1.5px',
-                          borderBottomStyle
-                        }}
-                      >
-                      <TableCell 
+                  if (!row || !(row as { label?: string }).label) return null
+                  const typedRow = row as { label: string; plan1?: string; plan2?: string; plan3?: string }
+                  const isSmallFontRow = typedRow.label.includes('Skanowanie') || typedRow.label.includes('Duplex') || typedRow.label.includes('Prędkość druku')
+                  const labelFontSize = isSmallFontRow ? 'text-[13px]' : 'text-[16px]'
+                  const valueFontSize = isSmallFontRow ? 'text-[13px]' : (idx === 3 ? 'text-[13px]' : 'text-[15px]')
+                  const lineHeight = isSmallFontRow ? 'leading-[1.2]' : 'leading-[1.4]'
+                  const isLastRow = idx === tableData.length - 1
+                  const borderBottomStyle = isLastRow ? 'none' : 'solid'
+                  const borderBottomColor = isLastRow ? 'transparent' : 'rgba(139, 122, 90, 0.75)'
+
+                  return (
+                    <TableRow
+                      key={idx}
+                      style={{
+                        borderBottomColor,
+                        borderBottomWidth: '1.5px',
+                        borderBottomStyle
+                      }}
+                    >
+                      <TableCell
                         className={cn(
                           `px-2 pr-3 align-middle text-left font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)] break-words`,
                           isDrukarkaZastepcza
                             ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
                             : (isSmallFontRow ? 'py-1' : 'py-2.5')
-                        )} 
-                        style={{ 
-                          wordBreak: 'break-word', 
-                          overflowWrap: 'break-word', 
-                          width: isDrukarkaZastepcza ? '55%' : '48%', 
+                        )}
+                        style={{
+                          wordBreak: 'break-word',
+                          overflowWrap: 'break-word',
+                          width: isDrukarkaZastepcza ? '55%' : '48%',
                           minWidth: '120px',
                           maxWidth: isDrukarkaZastepcza ? '55%' : '48%',
                           boxSizing: 'border-box',
@@ -1116,19 +1115,19 @@ const WynajemTable = ({
                         {renderLabel(typedRow.label, labelFontSize)}
                       </TableCell>
                       {typedRow.plan1 && (
-                        <TableCell 
+                        <TableCell
                           className={cn(
                             "pl-2 pr-1 align-middle text-center border-l-2 border-[#8b7a5a]",
                             lineHeight,
                             isDrukarkaZastepcza
                               ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
                               : (isSmallFontRow ? 'py-1' : 'py-2.5')
-                          )} 
-                          style={{ 
-                            width: isDrukarkaZastepcza ? '45%' : '17.33%', 
-                            minWidth: '45px', 
-                            maxWidth: isDrukarkaZastepcza ? '45%' : '17.33%', 
-                            boxSizing: 'border-box', 
+                          )}
+                          style={{
+                            width: isDrukarkaZastepcza ? '45%' : '17.33%',
+                            minWidth: '45px',
+                            maxWidth: isDrukarkaZastepcza ? '45%' : '17.33%',
+                            boxSizing: 'border-box',
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
@@ -1145,11 +1144,11 @@ const WynajemTable = ({
                               ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
                               : (isSmallFontRow ? 'py-1' : 'py-2.5')
                           )}
-                          style={{ 
-                            width: isDrukarkaZastepcza ? '22.5%' : '17.33%', 
-                            minWidth: '45px', 
-                            maxWidth: isDrukarkaZastepcza ? '22.5%' : '17.33%', 
-                            boxSizing: 'border-box', 
+                          style={{
+                            width: isDrukarkaZastepcza ? '22.5%' : '17.33%',
+                            minWidth: '45px',
+                            maxWidth: isDrukarkaZastepcza ? '22.5%' : '17.33%',
+                            boxSizing: 'border-box',
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
@@ -1157,13 +1156,13 @@ const WynajemTable = ({
                         </TableCell>
                       )}
                       {!isDrukarkaZastepcza && typedRow.plan3 && (
-                        <TableCell 
-                          className="pl-1.5 pr-2 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]" 
-                          style={{ 
-                            width: '17.33%', 
-                            minWidth: '45px', 
-                            maxWidth: '17.33%', 
-                            boxSizing: 'border-box', 
+                        <TableCell
+                          className="pl-1.5 pr-2 py-2.5 align-middle text-center leading-[1.4] border-l-2 border-[#8b7a5a]"
+                          style={{
+                            width: '17.33%',
+                            minWidth: '45px',
+                            maxWidth: '17.33%',
+                            boxSizing: 'border-box',
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
@@ -1210,22 +1209,22 @@ const scrollIntoViewIfNeeded = (
 // Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent
 const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElement | null => {
   const children = Array.from(accordionContentElement.children) as HTMLElement[]
-  
+
   // Проверяем дочерние элементы
   for (const child of children) {
     const styles = window.getComputedStyle(child)
-    if (styles.overflowY === 'auto' || styles.overflowY === 'scroll' || 
-        (styles.maxHeight !== 'none' && styles.maxHeight !== '0px')) {
+    if (styles.overflowY === 'auto' || styles.overflowY === 'scroll' ||
+      (styles.maxHeight !== 'none' && styles.maxHeight !== '0px')) {
       return child
     }
   }
-  
+
   // Проверяем сам AccordionContent
   const styles = window.getComputedStyle(accordionContentElement)
   if (styles.overflowY === 'auto' || styles.overflowY === 'scroll') {
     return accordionContentElement
   }
-  
+
   // Fallback: первый дочерний div или сам AccordionContent
   return children.find(el => el.tagName === 'DIV') || accordionContentElement
 }
@@ -1256,7 +1255,7 @@ const scrollSubcategoryToTop = (
         const targetSectionTop = sectionOffset
         const currentSectionTop = sectionRect.top
         const needsPageScroll = Math.abs(currentSectionTop - targetSectionTop) > 20 // Порог для прокрутки
-        
+
         if (needsPageScroll) {
           const sectionTop = sectionRect.top + window.scrollY - sectionOffset
           window.scrollTo({ top: Math.max(0, sectionTop), behavior: 'smooth' })
@@ -1280,15 +1279,15 @@ const scrollSubcategoryToTop = (
           // Используем trigger для прокрутки к заголовку подкатегории
           const subcategoryTriggerRect = subcategoryTrigger.getBoundingClientRect()
           const containerRect = scrollableContainer!.getBoundingClientRect()
-          
+
           // Вычисляем относительную позицию заголовка подкатегории внутри контейнера
           const relativeTop = subcategoryTriggerRect.top - containerRect.top
-          
+
           // Вычисляем, насколько нужно прокрутить контейнер
           // Чтобы заголовок подкатегории был в самом верху контейнера (с небольшим отступом)
           const currentScrollTop = scrollableContainer!.scrollTop
           const targetScrollTop = currentScrollTop + relativeTop - 10 // Небольшой отступ сверху для визуального комфорта
-          
+
           // Прокручиваем контейнер плавно
           scrollableContainer!.scrollTo({
             top: Math.max(0, targetScrollTop),
@@ -1409,7 +1408,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
         return ''
     }
   }
-  
+
   // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     switch (categoryTitle) {
@@ -1423,7 +1422,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
         return ''
     }
   }
-  
+
   // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
     switch (categoryTitle) {
@@ -1437,7 +1436,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
         return ''
     }
   }
-  
+
   // Для всех остальных страниц используем старые изображения
   switch (categoryTitle) {
     case 'Drukarka domowa':
@@ -1468,20 +1467,20 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   const sectionRefs = useRef<ScrollRefs>({})
   const subcategoryRefs = useRef<ScrollRefs>({})
   // Refs для колонок цен в шапке wynajem подменю
-  const wynajemHeaderRefs = useRef<{ 
-    [key: string]: { 
+  const wynajemHeaderRefs = useRef<{
+    [key: string]: {
       icon: React.RefObject<HTMLDivElement | null>
       text: React.RefObject<HTMLDivElement | null>
       prices: React.RefObject<HTMLDivElement | null>[]
-    } 
+    }
   }>({})
   // Refs для колонок цен в шапке drukarka-zastepcza подменю
-  const drukarkaZastepczaHeaderRefs = useRef<{ 
-    [key: string]: { 
+  const drukarkaZastepczaHeaderRefs = useRef<{
+    [key: string]: {
       icon: React.RefObject<HTMLDivElement | null>
       text: React.RefObject<HTMLDivElement | null>
       prices: React.RefObject<HTMLDivElement | null>[]
-    } 
+    }
   }>({})
   // Refs для контейнеров заголовков секций (для позиционирования "Czynsz wynajmu [zł/mies.]")
   const sectionHeaderRef1 = useRef<HTMLDivElement | null>(null)
@@ -1497,7 +1496,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   const isLaserService = service.slug === 'serwis-drukarek-laserowych'
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
-  
+
   const renderPriceTooltipContent = () => {
     if (!isSpecialTooltipService) {
       return (
@@ -1523,11 +1522,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
               Kategorie urządzeń
             </h4>
             <p className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
-              {service.slug === 'serwis-drukarek-iglowych' 
+              {service.slug === 'serwis-drukarek-iglowych'
                 ? 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej'
                 : service.slug === 'serwis-drukarek-termicznych'
-                ? 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej'
-                : 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej'}
+                  ? 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej'
+                  : 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej'}
             </p>
             <div className="mt-1 flex items-center justify-center gap-1">
               <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">(np.</span>
@@ -1586,44 +1585,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 
   const handleSubcategoryChange = (sectionId: string, value: string | null) => {
     if (sectionId !== 'naprawy') return
-    
-    const isClosing = openSubcategory !== null && value === null
-    
-    if (isClosing) {
-      // ЛОГИКА "ИДЕМ ВПЕРЕД": фиксируем ТЕКУЩУЮ позицию (после прокрутки при открытии)
-      // и принудительно её сохраняем при закрытии, чтобы браузер НЕ возвращался к старой позиции
-      const currentScrollY = window.scrollY
-      
-      // Изменяем состояние (закрываем подкатегорию)
-      setOpenSubcategory(null)
-      
-      // Агрессивно фиксируем текущую позицию: многократно устанавливаем её
-      // чтобы перекрыть любые попытки браузера вернуться к старой позиции
-      const lockScroll = () => {
-        window.scrollTo({ top: currentScrollY, behavior: 'auto' })
-      }
-      
-      // Фиксируем позицию сразу
-      lockScroll()
-      
-      // И в следующем кадре анимации
-      requestAnimationFrame(() => {
-        lockScroll()
-        requestAnimationFrame(() => {
-          lockScroll()
-          // И еще раз после небольшой задержки (когда браузер попытается применить Scroll Anchoring)
-          setTimeout(() => {
-            lockScroll()
-            setTimeout(() => {
-              lockScroll()
-            }, 100)
-          }, 50)
-        })
-      })
-    } else {
-      // При открытии просто изменяем состояние (прокрутка происходит в useEffect)
-      setOpenSubcategory(prev => (prev === value ? null : value))
-    }
+
+    // Fix: Restore toggle logic to allow single-click open/close
+    setOpenSubcategory(prev => (prev === value ? null : value))
   }
 
   const isSectionOpen = (sectionId: string) =>
@@ -1666,16 +1630,32 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
     if (!openSubcategory || openSection !== 'naprawy') {
       return
     }
-    
+
     const sectionRef = sectionRefs.current['naprawy']
     const subcategoryRef = subcategoryRefs.current[openSubcategory]
-    
+
     if (!sectionRef || !subcategoryRef) {
       return
     }
 
     // Прокручиваем подкатегорию к верху внутри контейнера
-    scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
+    // Fix: Change order - first ensure content appears (state changed), 
+    // then wait for DOM to likely settle (RAF + timeout), THEN scroll.
+    // This helps the browser accept the "open" state as the new baseline.
+    const rafId = requestAnimationFrame(() => {
+      const timerId = setTimeout(() => {
+        // Double-check: if user closed it during the delay, DO NOT scroll.
+        if (subcategoryRef.dataset.state !== 'open') return
+        scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
+      }, 100)
+
+      // Cleanup inside the RAF closure isn't possible directly via useEffect return, 
+      // but we can't easily cancel internal logic from outside.
+      // However, the `dataset.state` check acts as a logical gate.
+    })
+
+    // Basic cleanup to prevent memory leaks if component unmounts
+    return () => cancelAnimationFrame(rafId)
   }, [openSubcategory, openSection])
 
 
@@ -1688,94 +1668,35 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
       setPriceColumnsPosition2DZ(null)
       return
     }
-    
+
     if (service.slug === 'wynajem-drukarek') {
-    
-    const measurePriceColumns = (sectionId: 'akordeon-1' | 'akordeon-2', sectionHeaderRef: React.RefObject<HTMLDivElement | null>, setPosition: (pos: { left: number; width: number } | null) => void) => {
-      if (openSection !== sectionId) {
-        setPosition(null)
-        return
-      }
-      
-      // Проверяем, что контейнер заголовка существует
-      if (!sectionHeaderRef.current) return
-      
-      // Ищем первую подкатегорию в секции
-      const firstSubcategoryKey = sectionId === 'akordeon-1' ? 'akordeon-1-drukarki-mono' : 'akordeon-2-a3-drukarki-mono'
-      const headerRefs = wynajemHeaderRefs.current[firstSubcategoryKey]
-      
-      if (headerRefs && headerRefs.prices[0]?.current && headerRefs.prices[2]?.current) {
-        const firstColumn = headerRefs.prices[0].current
-        const thirdColumn = headerRefs.prices[2].current
-        const firstRect = firstColumn.getBoundingClientRect()
-        const thirdRect = thirdColumn.getBoundingClientRect()
-        const headerRect = sectionHeaderRef.current.getBoundingClientRect()
-        
-        // Вычисляем относительную позицию первого столбца относительно контейнера заголовка
-        const left = firstRect.left - headerRect.left
-        
-        // Ширина = позиция правого края третьего столбца - позиция левого края первого столбца
-        const totalWidth = (thirdRect.right - headerRect.left) - left
-        
-        if (totalWidth > 0 && left > 0) {
-          setPosition({ left, width: totalWidth })
-        }
-      } else {
-        setPosition(null)
-      }
-    }
-    
-    const measureAll = () => {
-      measurePriceColumns('akordeon-1', sectionHeaderRef1, setPriceColumnsPosition1)
-      measurePriceColumns('akordeon-2', sectionHeaderRef2, setPriceColumnsPosition2)
-    }
-    
-    // Задержка для обеспечения рендеринга
-    const timeoutId1 = setTimeout(measureAll, 100)
-    const timeoutId2 = setTimeout(measureAll, 300)
-    const timeoutId3 = setTimeout(measureAll, 500)
-    
-    const handleResize = () => {
-      measureAll()
-    }
-    
-    window.addEventListener('resize', handleResize)
-    
-      return () => {
-        window.removeEventListener('resize', handleResize)
-        clearTimeout(timeoutId1)
-        clearTimeout(timeoutId2)
-        clearTimeout(timeoutId3)
-      }
-    }
-    
-    if (service.slug === 'drukarka-zastepcza') {
-      const measurePriceColumnsDZ = (sectionId: 'akordeon-1' | 'akordeon-2', sectionHeaderRef: React.RefObject<HTMLDivElement | null>, setPosition: (pos: { left: number; width: number } | null) => void) => {
+
+      const measurePriceColumns = (sectionId: 'akordeon-1' | 'akordeon-2', sectionHeaderRef: React.RefObject<HTMLDivElement | null>, setPosition: (pos: { left: number; width: number } | null) => void) => {
         if (openSection !== sectionId) {
           setPosition(null)
           return
         }
-        
+
         // Проверяем, что контейнер заголовка существует
         if (!sectionHeaderRef.current) return
-        
+
         // Ищем первую подкатегорию в секции
         const firstSubcategoryKey = sectionId === 'akordeon-1' ? 'akordeon-1-drukarki-mono' : 'akordeon-2-a3-drukarki-mono'
-        const headerRefs = drukarkaZastepczaHeaderRefs.current[firstSubcategoryKey]
-        
+        const headerRefs = wynajemHeaderRefs.current[firstSubcategoryKey]
+
         if (headerRefs && headerRefs.prices[0]?.current && headerRefs.prices[2]?.current) {
           const firstColumn = headerRefs.prices[0].current
           const thirdColumn = headerRefs.prices[2].current
           const firstRect = firstColumn.getBoundingClientRect()
           const thirdRect = thirdColumn.getBoundingClientRect()
           const headerRect = sectionHeaderRef.current.getBoundingClientRect()
-          
+
           // Вычисляем относительную позицию первого столбца относительно контейнера заголовка
           const left = firstRect.left - headerRect.left
-          
+
           // Ширина = позиция правого края третьего столбца - позиция левого края первого столбца
           const totalWidth = (thirdRect.right - headerRect.left) - left
-          
+
           if (totalWidth > 0 && left > 0) {
             setPosition({ left, width: totalWidth })
           }
@@ -1783,23 +1704,82 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
           setPosition(null)
         }
       }
-      
+
+      const measureAll = () => {
+        measurePriceColumns('akordeon-1', sectionHeaderRef1, setPriceColumnsPosition1)
+        measurePriceColumns('akordeon-2', sectionHeaderRef2, setPriceColumnsPosition2)
+      }
+
+      // Задержка для обеспечения рендеринга
+      const timeoutId1 = setTimeout(measureAll, 100)
+      const timeoutId2 = setTimeout(measureAll, 300)
+      const timeoutId3 = setTimeout(measureAll, 500)
+
+      const handleResize = () => {
+        measureAll()
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        clearTimeout(timeoutId1)
+        clearTimeout(timeoutId2)
+        clearTimeout(timeoutId3)
+      }
+    }
+
+    if (service.slug === 'drukarka-zastepcza') {
+      const measurePriceColumnsDZ = (sectionId: 'akordeon-1' | 'akordeon-2', sectionHeaderRef: React.RefObject<HTMLDivElement | null>, setPosition: (pos: { left: number; width: number } | null) => void) => {
+        if (openSection !== sectionId) {
+          setPosition(null)
+          return
+        }
+
+        // Проверяем, что контейнер заголовка существует
+        if (!sectionHeaderRef.current) return
+
+        // Ищем первую подкатегорию в секции
+        const firstSubcategoryKey = sectionId === 'akordeon-1' ? 'akordeon-1-drukarki-mono' : 'akordeon-2-a3-drukarki-mono'
+        const headerRefs = drukarkaZastepczaHeaderRefs.current[firstSubcategoryKey]
+
+        if (headerRefs && headerRefs.prices[0]?.current && headerRefs.prices[2]?.current) {
+          const firstColumn = headerRefs.prices[0].current
+          const thirdColumn = headerRefs.prices[2].current
+          const firstRect = firstColumn.getBoundingClientRect()
+          const thirdRect = thirdColumn.getBoundingClientRect()
+          const headerRect = sectionHeaderRef.current.getBoundingClientRect()
+
+          // Вычисляем относительную позицию первого столбца относительно контейнера заголовка
+          const left = firstRect.left - headerRect.left
+
+          // Ширина = позиция правого края третьего столбца - позиция левого края первого столбца
+          const totalWidth = (thirdRect.right - headerRect.left) - left
+
+          if (totalWidth > 0 && left > 0) {
+            setPosition({ left, width: totalWidth })
+          }
+        } else {
+          setPosition(null)
+        }
+      }
+
       const measureAllDZ = () => {
         measurePriceColumnsDZ('akordeon-1', sectionHeaderRef1DZ, setPriceColumnsPosition1DZ)
         measurePriceColumnsDZ('akordeon-2', sectionHeaderRef2DZ, setPriceColumnsPosition2DZ)
       }
-      
+
       // Задержка для обеспечения рендеринга
       const timeoutId1DZ = setTimeout(measureAllDZ, 100)
       const timeoutId2DZ = setTimeout(measureAllDZ, 300)
       const timeoutId3DZ = setTimeout(measureAllDZ, 500)
-      
+
       const handleResizeDZ = () => {
         measureAllDZ()
       }
-      
+
       window.addEventListener('resize', handleResizeDZ)
-      
+
       return () => {
         window.removeEventListener('resize', handleResizeDZ)
         clearTimeout(timeoutId1DZ)
@@ -1834,12 +1814,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                 sectionRefs.current[section.id] = node
               }}
             >
-              <div 
+              <div
                 className={cn(
                   "group relative min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl group-data-[state=open]:border-b group-data-[state=open]:border-b-[rgba(191,167,106,0.2)] w-full bg-[rgba(5,5,5,0.85)]"
                 )}
               >
-                <AccordionTrigger 
+                <AccordionTrigger
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0"
                 >
                   <div className="flex items-center w-full text-left">
@@ -1855,13 +1835,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                         />
                       </div>
 
-                      <div 
+                      <div
                         ref={
                           service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' ? sectionHeaderRef1 :
-                          service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' ? sectionHeaderRef2 :
-                          service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' ? sectionHeaderRef1DZ :
-                          service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' ? sectionHeaderRef2DZ :
-                          null
+                            service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' ? sectionHeaderRef2 :
+                              service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' ? sectionHeaderRef1DZ :
+                                service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' ? sectionHeaderRef2DZ :
+                                  null
                         }
                         className="flex-1 relative"
                       >
@@ -1899,7 +1879,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
                                     className="text-[12px] text-[#cbb27c] leading-relaxed block mt-0.5"
-                                    style={{ 
+                                    style={{
                                       opacity: 1,
                                       fontWeight: 'normal',
                                       fontStyle: 'normal'
@@ -1941,7 +1921,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed block"
-                                  style={{ 
+                                  style={{
                                     opacity: 1,
                                     fontWeight: 'normal',
                                     fontStyle: 'normal'
@@ -1958,7 +1938,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               {priceColumnsPosition1 ? (
                                 <>
                                   {/* Десктопная версия с вычисленной позицией */}
-                                  <div 
+                                  <div
                                     className="hidden md:block absolute top-0"
                                     style={{
                                       left: `${priceColumnsPosition1.left}px`,
@@ -1979,7 +1959,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             <>
                               {/* Десктопная версия */}
                               {priceColumnsPosition2 ? (
-                                <div 
+                                <div
                                   className="hidden md:block absolute top-0"
                                   style={{
                                     left: `${priceColumnsPosition2.left}px`,
@@ -2008,7 +1988,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               {priceColumnsPosition1DZ ? (
                                 <>
                                   {/* Десктопная версия с вычисленной позицией */}
-                                  <div 
+                                  <div
                                     className="hidden md:block absolute top-0"
                                     style={{
                                       left: `${priceColumnsPosition1DZ.left}px`,
@@ -2037,14 +2017,14 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             <>
                               {/* Десктопная версия */}
                               {priceColumnsPosition2DZ ? (
-                                <div 
+                                <div
                                   className="hidden md:block absolute top-0"
                                   style={{
                                     left: `${priceColumnsPosition2DZ.left}px`,
                                     width: `${priceColumnsPosition2DZ.width}px`,
                                   }}
                                 >
-                                    <div className="text-left" style={{ marginLeft: '50px' }}>
+                                  <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
                                       <div>Cena wydruku</div>
                                     </div>
@@ -2052,7 +2032,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 </div>
                               ) : (
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                    <div className="text-left" style={{ marginLeft: '50px' }}>
+                                  <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
                                       <div>Cena wydruku</div>
                                     </div>
@@ -2085,7 +2065,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 GRATIS
                               </span>
                             )}
-                            <div 
+                            <div
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
                               <div
@@ -2129,14 +2109,14 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     <TooltipContent
                                       {...(isSpecialTooltipService
                                         ? {
-                                            side: 'left' as const,
-                                            align: 'center' as const,
-                                            sideOffset: 16,
-                                            collisionPadding: 16,
-                                            className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
-                                          }
+                                          side: 'left' as const,
+                                          align: 'center' as const,
+                                          sideOffset: 16,
+                                          collisionPadding: 16,
+                                          className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                        }
                                         : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
-                                        ? {
+                                          ? {
                                             sideOffset: 4,
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
@@ -2145,7 +2125,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                               backgroundPosition: 'center',
                                             },
                                           }
-                                        : { sideOffset: 4 })}
+                                          : { sideOffset: 4 })}
                                     >
                                       {isSpecialTooltipService ? (
                                         renderPriceTooltipContent()
@@ -2168,7 +2148,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed hidden sm:block"
-                                  style={{ 
+                                  style={{
                                     opacity: 1,
                                     fontWeight: 'normal',
                                     fontStyle: 'normal'
@@ -2200,11 +2180,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                   </div>
                 </AccordionTrigger>
 
-                <AccordionContent 
+                <AccordionContent
                   data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
                   className={cn(
                     "pb-3 max-h-[70vh] overflow-y-auto scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
-                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) 
+                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
                       : "pt-3"
                   )}
@@ -2220,11 +2200,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                           data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group scroll-mt-[100px]",
-                              section.id === 'faq'
-                                ? `border-b border-[#bfa76a]/30 mb-0.5 pb-0.5 ${index === 0 ? 'border-t border-[#bfa76a]/30 pt-0.5' : ''}`
+                            section.id === 'faq'
+                              ? `border-b border-[#bfa76a]/30 mb-0.5 pb-0.5 ${index === 0 ? 'border-t border-[#bfa76a]/30 pt-0.5' : ''}`
                               : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                              ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
-                              : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
+                                ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
+                                : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
                           )}
                           ref={node => {
                             subcategoryRefs.current[subcategory.id] = node
@@ -2236,10 +2216,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               section.id === 'faq'
                                 ? 'py-1 px-2 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? service.slug === 'drukarka-zastepcza'
-                                  ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
-                                  : 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
-                                : 'py-1.5 px-1.5 md:py-2 md:px-3',
+                                  ? service.slug === 'drukarka-zastepcza'
+                                    ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                    : 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                  : 'py-1.5 px-1.5 md:py-2 md:px-3',
                             )}
                           >
                             {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
@@ -2256,7 +2236,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 <div className={cn(
                                   "hidden md:flex items-center",
                                   service.slug === 'drukarka-zastepcza' && "gap-[1px]"
-                                )} style={{ 
+                                )} style={{
                                   width: 'calc(100% - 40px)' // Вычитаем место для стрелки справа (40px)
                                 }}>
                                   {(() => {
@@ -2275,10 +2255,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                       }
                                     }
                                     const headerRefs = headerRefsObj.current[subcategoryKey]
-                                    
+
                                     const isA3DrukarkiMonoHeader = subcategory.id === 'a3-drukarki-mono'
                                     const isA3DrukarkiKolorHeader = subcategory.id === 'a3-drukarki-kolor'
-                                    
+
                                     return (
                                       <>
                                         <div
@@ -2353,259 +2333,35 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                           </div>
                                         </div>
                                         {(() => {
-                                        // Для drukarki-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
-                                        if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'drukarki-mono') {
-                                          return (
-                                            <>
-                                              <div 
-                                                ref={headerRefs.prices[0]}
-                                                className={cn(
-                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                                )}
-                                                style={{ width: `22.5%`, marginLeft: '8px' }}
-                                              >
-                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
-                                                  <span className="inline-flex items-start">
-                                                    <span>0,05</span>
-                                                    <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
-                                                    >
-                                                      zł
-                                                    </span>
-                                                    <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
-                                                    >
-                                                      (mono)
-                                                    </span>
-                                                  </span>
-                                                </div>
-                                              </div>
-                                              <div 
-                                                ref={headerRefs.prices[1]}
-                                                className={cn(
-                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                                )}
-                                                style={{ width: `22.5%`, marginLeft: '0' }}
-                                              >
-                                                {/* Пустой столбец для выравнивания */}
-                                              </div>
-                                            </>
-                                          )
-                                        }
-                                        // Для mfu-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
-                                        if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'mfu-mono') {
-                                          return (
-                                            <>
-                                              <div 
-                                                ref={headerRefs.prices[0]}
-                                                className={cn(
-                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                                )}
-                                                style={{ width: `22.5%`, marginLeft: '8px' }}
-                                              >
-                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
-                                                  <span className="inline-flex items-start">
-                                                    <span>0,08</span>
-                                                    <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
-                                                    >
-                                                      zł
-                                                    </span>
-                                                    <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
-                                                    >
-                                                      (mono)
-                                                    </span>
-                                                  </span>
-                                                </div>
-                                              </div>
-                                              <div 
-                                                ref={headerRefs.prices[1]}
-                                                className={cn(
-                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                                )}
-                                                style={{ width: `22.5%`, marginLeft: '0' }}
-                                              >
-                                                {/* Пустой столбец для выравнивания */}
-                                              </div>
-                                            </>
-                                          )
-                                        }
-                                          // Для остальных - как было
-                                          return subcategory.price.split(' / ').map((price, idx) => {
-                                            // Определяем label для drukarka-zastepcza
-                                            const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                            const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
-                                            const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
-                                            const isMonoKolor = subcategory.title.includes('mono+kolor')
-                                            const isMono = subcategory.title.includes('mono') && !isMonoKolor
-                                            
-                                            // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
-                                            const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
-                                            const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
-                                            const isA3MfuKolor = subcategory.id === 'a3-mfu-kolor'
-                                            let priceLabel = ''
-                                            let secondPriceLabel = ''
-                                            let secondPrice = '0'
-                                            
-                                            if (isDrukarkaZastepczaA4) {
-                                              if (isA3DrukarkiMono || isA3DrukarkiKolor) {
-                                                // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
-                                                if (idx === 0) {
-                                                  priceLabel = '(mono A4)'
-                                                  secondPriceLabel = '(mono A3)'
-                                                  secondPrice = '0,10'
-                                                } else {
-                                                  priceLabel = '(kolor A4)'
-                                                  secondPriceLabel = '(kolor A3)'
-                                                  secondPrice = '0,53'
-                                                }
-                                              } else if (isA3MfuMono) {
-                                                // Для a3-mfu-mono: первый контейнер - "(mono A4)", второй - "(mono A3)"
-                                                priceLabel = '(mono A4)'
-                                                secondPriceLabel = '(mono A3)'
-                                                secondPrice = '0,14'
-                                              } else if (isA3MfuKolor) {
-                                                // Для a3-mfu-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
-                                                if (idx === 0) {
-                                                  priceLabel = '(mono A4)'
-                                                  secondPriceLabel = '(mono A3)'
-                                                  secondPrice = '0,14'
-                                                } else {
-                                                  priceLabel = '(kolor A4)'
-                                                  secondPriceLabel = '(kolor A3)'
-                                                  secondPrice = '0,60'
-                                                }
-                                              } else if (isMonoKolor) {
-                                                priceLabel = idx === 0 ? '(mono)' : '(kolor)'
-                                                secondPriceLabel = priceLabel
-                                              } else if (isMono) {
-                                                priceLabel = '(mono)'
-                                                secondPriceLabel = priceLabel
-                                              }
-                                            }
-                                            
+                                          // Для drukarki-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
+                                          if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'drukarki-mono') {
                                             return (
-                                              <div 
-                                                key={idx}
-                                                ref={headerRefs.prices[idx]}
-                                                data-measure-price={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? `${idx}` : undefined}
-                                                data-price-value={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? price : undefined}
-                                                className={cn(
-                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
-                                                )}
-                                                style={{ 
-                                                  width: `22.5%`, 
-                                                  marginLeft: idx === 0 ? '8px' : '0'
-                                                }}
-                                              >
-                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
-                                                  <span className="inline-flex items-start">
-                                                    <span>{price}</span>
-                                                    {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
-                                                      <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
-                                                      >
-                                                        zł
-                                                      </span>
-                                                    )}
-                                                    {priceLabel && (
-                                                      <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
-                                                      >
-                                                        {priceLabel}
-                                                      </span>
-                                                    )}
-                                                  </span>
-                                                </div>
-                                                {/* Второй контейнер для akordeon-2 */}
-                                                {isDrukarkaZastepczaA3 && (isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor ? secondPriceLabel : priceLabel) && (
-                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
-                                                    <span className="inline-flex items-start">
-                                                      <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
-                                                      <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
-                                                      >
-                                                        zł
-                                                      </span>
-                                                      <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
-                                                      >
-                                                        {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
-                                                      </span>
-                                                    </span>
-                                                  </div>
-                                                )}
-                                              </div>
-                                            )
-                                          })
-                                          
-                                          // Если это drukarka-zastepcza и только одна цена (не mono+kolor и не A3 подкатегории), добавляем пустой столбец для выравнивания
-                                          if (!subcategory.price) return null
-                                          
-                                          const isA3DrukarkiMonoCheck = subcategory.id === 'a3-drukarki-mono'
-                                          const isA3DrukarkiKolorCheck = subcategory.id === 'a3-drukarki-kolor'
-                                          const isA3MfuMonoCheck = subcategory.id === 'a3-mfu-mono'
-                                          const isA3MfuKolorCheck = subcategory.id === 'a3-mfu-kolor'
-                                          
-                                          const prices = subcategory.price!.split(' / ')
-                                          const isSinglePrice = prices.length === 1
-                                          const isNotA3Subcategory = !isA3DrukarkiMonoCheck && !isA3DrukarkiKolorCheck && !isA3MfuMonoCheck && !isA3MfuKolorCheck
-                                          
-                                          if (service.slug === 'drukarka-zastepcza' && isSinglePrice && isNotA3Subcategory) {
-                                            const priceElements = subcategory.price!.split(' / ').map((price, idx) => {
-                                              const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                              const isMonoKolor = subcategory.title.includes('mono+kolor')
-                                              const isMono = subcategory.title.includes('mono') && !isMonoKolor
-                                              let priceLabel = ''
-                                              
-                                              if (isDrukarkaZastepczaA4) {
-                                                if (isMono) {
-                                                  priceLabel = '(mono)'
-                                                }
-                                              }
-                                              
-                                              return (
-                                                <div 
-                                                  key={idx}
-                                                  ref={headerRefs.prices[idx]}
+                                              <>
+                                                <div
+                                                  ref={headerRefs.prices[0]}
                                                   className={cn(
                                                     "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
                                                   )}
-                                                  style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                                  style={{ width: `22.5%`, marginLeft: '8px' }}
                                                 >
                                                   <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
                                                     <span className="inline-flex items-start">
-                                                      <span>{price}</span>
-                                                      {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
-                                                        <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
-                                                        >
-                                                          zł
-                                                        </span>
-                                                      )}
-                                                      {priceLabel && (
-                                                        <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
-                                                        >
-                                                          {priceLabel}
-                                                        </span>
-                                                      )}
+                                                      <span>0,05</span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                      >
+                                                        (mono)
+                                                      </span>
                                                     </span>
                                                   </div>
                                                 </div>
-                                              )
-                                            })
-                                            
-                                            return (
-                                              <>
-                                                {priceElements}
-                                                <div 
+                                                <div
                                                   ref={headerRefs.prices[1]}
                                                   className={cn(
                                                     "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
@@ -2617,15 +2373,55 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                               </>
                                             )
                                           }
-                                          
-                                          return subcategory.price!.split(' / ').map((price, idx) => {
+                                          // Для mfu-mono на drukarka-zastepcza показываем две цены (одну с данными, вторую пустую) для выравнивания с mono+kolor
+                                          if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'mfu-mono') {
+                                            return (
+                                              <>
+                                                <div
+                                                  ref={headerRefs.prices[0]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: '8px' }}
+                                                >
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                    <span className="inline-flex items-start">
+                                                      <span>0,08</span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                      >
+                                                        (mono)
+                                                      </span>
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                                <div
+                                                  ref={headerRefs.prices[1]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: '0' }}
+                                                >
+                                                  {/* Пустой столбец для выравнивания */}
+                                                </div>
+                                              </>
+                                            )
+                                          }
+                                          // Для остальных - как было
+                                          return subcategory.price.split(' / ').map((price, idx) => {
                                             // Определяем label для drukarka-zastepcza
                                             const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                             const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
                                             const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
                                             const isMonoKolor = subcategory.title.includes('mono+kolor')
                                             const isMono = subcategory.title.includes('mono') && !isMonoKolor
-                                            
+
                                             // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
                                             const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
                                             const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
@@ -2633,7 +2429,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                             let priceLabel = ''
                                             let secondPriceLabel = ''
                                             let secondPrice = '0'
-                                            
+
                                             if (isDrukarkaZastepczaA4) {
                                               if (isA3DrukarkiMono || isA3DrukarkiKolor) {
                                                 // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
@@ -2670,30 +2466,35 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                 secondPriceLabel = priceLabel
                                               }
                                             }
-                                            
+
                                             return (
-                                              <div 
+                                              <div
                                                 key={idx}
                                                 ref={headerRefs.prices[idx]}
+                                                data-measure-price={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? `${idx}` : undefined}
+                                                data-price-value={subcategory.id === 'a3-mfu-kolor' && service.slug === 'drukarka-zastepcza' ? price : undefined}
                                                 className={cn(
                                                   "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
                                                 )}
-                                                style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                                style={{
+                                                  width: `22.5%`,
+                                                  marginLeft: idx === 0 ? '8px' : '0'
+                                                }}
                                               >
                                                 <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
                                                   <span className="inline-flex items-start">
                                                     <span>{price}</span>
                                                     {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
-                                                      <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                     )}
                                                     {priceLabel && (
                                                       <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {priceLabel}
                                                       </span>
@@ -2705,14 +2506,193 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
                                                     <span className="inline-flex items-start">
                                                       <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
-                                                      <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
                                                       >
                                                         zł
                                                       </span>
                                                       <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                      >
+                                                        {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
+                                                      </span>
+                                                    </span>
+                                                  </div>
+                                                )}
+                                              </div>
+                                            )
+                                          })
+
+                                          // Если это drukarka-zastepcza и только одна цена (не mono+kolor и не A3 подкатегории), добавляем пустой столбец для выравнивания
+                                          if (!subcategory.price) return null
+
+                                          const isA3DrukarkiMonoCheck = subcategory.id === 'a3-drukarki-mono'
+                                          const isA3DrukarkiKolorCheck = subcategory.id === 'a3-drukarki-kolor'
+                                          const isA3MfuMonoCheck = subcategory.id === 'a3-mfu-mono'
+                                          const isA3MfuKolorCheck = subcategory.id === 'a3-mfu-kolor'
+
+                                          const prices = subcategory.price!.split(' / ')
+                                          const isSinglePrice = prices.length === 1
+                                          const isNotA3Subcategory = !isA3DrukarkiMonoCheck && !isA3DrukarkiKolorCheck && !isA3MfuMonoCheck && !isA3MfuKolorCheck
+
+                                          if (service.slug === 'drukarka-zastepcza' && isSinglePrice && isNotA3Subcategory) {
+                                            const priceElements = subcategory.price!.split(' / ').map((price, idx) => {
+                                              const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                              const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                              const isMono = subcategory.title.includes('mono') && !isMonoKolor
+                                              let priceLabel = ''
+
+                                              if (isDrukarkaZastepczaA4) {
+                                                if (isMono) {
+                                                  priceLabel = '(mono)'
+                                                }
+                                              }
+
+                                              return (
+                                                <div
+                                                  key={idx}
+                                                  ref={headerRefs.prices[idx]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                                >
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                    <span className="inline-flex items-start">
+                                                      <span>{price}</span>
+                                                      {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                        <span
+                                                          className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                          style={{ marginTop: '-3px' }}
+                                                        >
+                                                          zł
+                                                        </span>
+                                                      )}
+                                                      {priceLabel && (
+                                                        <span
+                                                          className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                        >
+                                                          {priceLabel}
+                                                        </span>
+                                                      )}
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              )
+                                            })
+
+                                            return (
+                                              <>
+                                                {priceElements}
+                                                <div
+                                                  ref={headerRefs.prices[1]}
+                                                  className={cn(
+                                                    "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                  )}
+                                                  style={{ width: `22.5%`, marginLeft: '0' }}
+                                                >
+                                                  {/* Пустой столбец для выравнивания */}
+                                                </div>
+                                              </>
+                                            )
+                                          }
+
+                                          return subcategory.price!.split(' / ').map((price, idx) => {
+                                            // Определяем label для drukarka-zastepcza
+                                            const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                            const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
+                                            const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
+                                            const isMonoKolor = subcategory.title.includes('mono+kolor')
+                                            const isMono = subcategory.title.includes('mono') && !isMonoKolor
+
+                                            // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
+                                            const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
+                                            const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
+                                            const isA3MfuKolor = subcategory.id === 'a3-mfu-kolor'
+                                            let priceLabel = ''
+                                            let secondPriceLabel = ''
+                                            let secondPrice = '0'
+
+                                            if (isDrukarkaZastepczaA4) {
+                                              if (isA3DrukarkiMono || isA3DrukarkiKolor) {
+                                                // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,10'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,53'
+                                                }
+                                              } else if (isA3MfuMono) {
+                                                // Для a3-mfu-mono: первый контейнер - "(mono A4)", второй - "(mono A3)"
+                                                priceLabel = '(mono A4)'
+                                                secondPriceLabel = '(mono A3)'
+                                                secondPrice = '0,14'
+                                              } else if (isA3MfuKolor) {
+                                                // Для a3-mfu-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
+                                                if (idx === 0) {
+                                                  priceLabel = '(mono A4)'
+                                                  secondPriceLabel = '(mono A3)'
+                                                  secondPrice = '0,14'
+                                                } else {
+                                                  priceLabel = '(kolor A4)'
+                                                  secondPriceLabel = '(kolor A3)'
+                                                  secondPrice = '0,60'
+                                                }
+                                              } else if (isMonoKolor) {
+                                                priceLabel = idx === 0 ? '(mono)' : '(kolor)'
+                                                secondPriceLabel = priceLabel
+                                              } else if (isMono) {
+                                                priceLabel = '(mono)'
+                                                secondPriceLabel = priceLabel
+                                              }
+                                            }
+
+                                            return (
+                                              <div
+                                                key={idx}
+                                                ref={headerRefs.prices[idx]}
+                                                className={cn(
+                                                  "flex flex-col items-center justify-center text-center px-2 border-l-2 border-[#8b7a5a]"
+                                                )}
+                                                style={{ width: `22.5%`, marginLeft: idx === 0 ? '8px' : '0' }}
+                                              >
+                                                <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
+                                                  <span className="inline-flex items-start">
+                                                    <span>{price}</span>
+                                                    {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                    )}
+                                                    {priceLabel && (
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                      >
+                                                        {priceLabel}
+                                                      </span>
+                                                    )}
+                                                  </span>
+                                                </div>
+                                                {/* Второй контейнер для akordeon-2 */}
+                                                {isDrukarkaZastepczaA3 && (isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor ? secondPriceLabel : priceLabel) && (
+                                                  <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
+                                                    <span className="inline-flex items-start">
+                                                      <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                        style={{ marginTop: '-3px' }}
+                                                      >
+                                                        zł
+                                                      </span>
+                                                      <span
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                       </span>
@@ -2729,14 +2709,14 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 </div>
                                 <div className={cn(
                                   "md:hidden flex flex-col w-full",
-                                  (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) 
-                                    ? "gap-0.5" 
+                                  (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
+                                    ? "gap-0.5"
                                     : "gap-2"
                                 )}>
                                   <div className={cn(
                                     "flex gap-[1px]",
-                                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) 
-                                      ? "items-center" 
+                                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
+                                      ? "items-center"
                                       : "items-start"
                                   )}>
                                     <div className={cn(
@@ -2801,41 +2781,41 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         // Для drukarki-mono на drukarka-zastepcza показываем только одну цену "0,05 zł"
                                         if (service.slug === 'drukarka-zastepcza' && subcategory.id === 'drukarki-mono') {
                                           return (
-                                            <div 
+                                            <div
                                               className="flex items-center justify-center text-center border-l-2 border-[#8b7a5a] pl-2 pr-2 flex-1"
-                                              style={{ 
+                                              style={{
                                                 boxSizing: 'border-box'
                                               }}
                                             >
                                               <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3]">
                                                 <span className="inline-flex items-start">
                                                   <span>0,05</span>
-                                                  <span 
-                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
-                                                      style={{ marginTop: '-3px' }}
+                                                  <span
+                                                    className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
+                                                    style={{ marginTop: '-3px' }}
                                                   >
                                                     zł
                                                   </span>
                                                   <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                    className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                   >
                                                     (mono)
                                                   </span>
                                                 </span>
                                               </div>
-                                              </div>
-                                            )
-                                          }
-                                          // Для остальных - как было
-                                          const pricesArray = subcategory.price.split(' / ')
-                                          return pricesArray.map((price, idx) => {
+                                            </div>
+                                          )
+                                        }
+                                        // Для остальных - как было
+                                        const pricesArray = subcategory.price.split(' / ')
+                                        return pricesArray.map((price, idx) => {
                                           // Определяем label для drukarka-zastepcza
                                           const isDrukarkaZastepczaA4 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                           const isDrukarkaZastepczaA3 = service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2'
                                           const isA3DrukarkiMono = subcategory.id === 'a3-drukarki-mono'
                                           const isMonoKolor = subcategory.title.includes('mono+kolor')
                                           const isMono = subcategory.title.includes('mono') && !isMonoKolor
-                                          
+
                                           // Для a3-drukarki-mono, a3-drukarki-kolor, a3-mfu-mono, a3-mfu-kolor: первый контейнер с "A4", второй с "A3"
                                           const isA3DrukarkiKolor = subcategory.id === 'a3-drukarki-kolor'
                                           const isA3MfuMono = subcategory.id === 'a3-mfu-mono'
@@ -2843,7 +2823,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                           let priceLabel = ''
                                           let secondPriceLabel = ''
                                           let secondPrice = '0'
-                                          
+
                                           if (isDrukarkaZastepczaA4) {
                                             if (isA3DrukarkiMono || isA3DrukarkiKolor) {
                                               // Для a3-drukarki-mono и a3-drukarki-kolor: первый контейнер - "(mono A4)" или "(kolor A4)", второй - "(mono A3)" или "(kolor A3)"
@@ -2880,18 +2860,18 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                               secondPriceLabel = priceLabel
                                             }
                                           }
-                                          
+
                                           const hasTwoPrices = (subcategory.price?.split(' / ') || []).length === 2
                                           // Для akordeon-2 метки всегда снизу на мобильных
                                           const shouldShowLabelBelow = isDrukarkaZastepczaA3 || hasTwoPrices
-                                          
+
                                           return (
-                                            <div 
+                                            <div
                                               key={idx}
                                               className={cn(
                                                 "flex flex-col items-center justify-center text-center border-l-2 border-[#8b7a5a] pl-2 pr-2 flex-1"
                                               )}
-                                              style={{ 
+                                              style={{
                                                 boxSizing: 'border-box'
                                               }}
                                             >
@@ -2899,7 +2879,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                 <span className="inline-flex items-start">
                                                   <span>{price}</span>
                                                   {(service.slug === 'drukarka-zastepcza' || isSubcategoryOpen(section.id, subcategory.id)) && (
-                                                    <span 
+                                                    <span
                                                       className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
                                                       style={{ marginTop: '-3px' }}
                                                     >
@@ -2908,7 +2888,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                   )}
                                                   {priceLabel && !shouldShowLabelBelow && (
                                                     <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                     >
                                                       {priceLabel}
                                                     </span>
@@ -2927,7 +2907,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                 <div className="text-lg font-normal text-[#ffffff] font-inter leading-[1.3] mt-1">
                                                   <span className="inline-flex items-start">
                                                     <span>{(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPrice : '0'}</span>
-                                                    <span 
+                                                    <span
                                                       className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5 inline-flex"
                                                       style={{ marginTop: '-3px' }}
                                                     >
@@ -2935,7 +2915,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                                     </span>
                                                     {!shouldShowLabelBelow && (
                                                       <span
-                      className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
+                                                        className="text-[14px] text-[#cbb27c] leading-relaxed ml-1 inline-flex"
                                                       >
                                                         {(isA3DrukarkiMono || isA3DrukarkiKolor || isA3MfuMono || isA3MfuKolor) ? secondPriceLabel : priceLabel}
                                                       </span>
@@ -2984,11 +2964,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 <div className="flex-1 w-full min-w-0">
                                   <div>
                                     <h4
-                                      className={`font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${
-                                        section.id === 'faq'
-                                          ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
-                                          : 'text-lg font-semibold text-[#ffffff]'
-                                      }`}
+                                      className={`font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                        ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
+                                        : 'text-lg font-semibold text-[#ffffff]'
+                                        }`}
                                     >
                                       {(() => {
                                         const title = subcategory.title
@@ -3053,9 +3032,8 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                           )}>
                             {subcategory.answer ? (
                               <div
-                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${
-                                  section.id === 'faq' ? 'pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
-                                }`}
+                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${section.id === 'faq' ? 'pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                  }`}
                               >
                                 {subcategory.answer}
                               </div>
@@ -3063,7 +3041,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
                                 (() => {
                                   const subcategoryKey = `${section.id}-${subcategory.id}`
-                                  const headerRefs = service.slug === 'wynajem-drukarek' 
+                                  const headerRefs = service.slug === 'wynajem-drukarek'
                                     ? wynajemHeaderRefs.current[subcategoryKey]
                                     : drukarkaZastepczaHeaderRefs.current[subcategoryKey]
                                   if (headerRefs) {
@@ -3190,20 +3168,20 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 
                       const isWynajemSection = service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                       const isDrukarkaZastepczaSection = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                      
+
                       return (
-                        <Accordion 
-                          type="multiple" 
+                        <Accordion
+                          type="multiple"
                           className="w-full"
                           value={
                             isWynajemSection ? openWynajemSubcategories :
-                            isDrukarkaZastepczaSection ? openDrukarkaZastepczaSubcategories :
-                            undefined
+                              isDrukarkaZastepczaSection ? openDrukarkaZastepczaSubcategories :
+                                undefined
                           }
                           onValueChange={
                             isWynajemSection ? handleWynajemSubcategoryChange :
-                            isDrukarkaZastepczaSection ? handleDrukarkaZastepczaSubcategoryChange :
-                            undefined
+                              isDrukarkaZastepczaSection ? handleDrukarkaZastepczaSubcategoryChange :
+                                undefined
                           }
                         >
                           {subcategoryItems}
