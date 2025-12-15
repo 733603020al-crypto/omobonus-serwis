@@ -10,47 +10,47 @@ import ServiceAccordion from "../service-accordion"
 const seoMetadata: Record<string, { title: string; description: string; keywords: string[] }> = {
   'serwis-laptopow': {
     title: 'Naprawa laptopów Wrocław | Omobonus serwis komputerowy',
-    description: 'Profesjonalna naprawa laptopów we Wrocławiu. Wymiana matrycy, dysku SSD, czyszczenie, instalacja systemu. Serwis laptopów wszystkich marek z dojazdem.',
+    description: 'Naprawa laptopów Wrocław – serwis laptopów wszystkich marek: HP, Dell, Lenovo, Asus, Acer. Wymiana matrycy, dysku SSD, instalacja Windows, odzyskiwanie danych.',
     keywords: ['naprawa laptopów Wrocław', 'serwis laptopów Wrocław', 'wymiana matrycy laptop', 'wymiana dysku SSD laptop', 'czyszczenie laptopa Wrocław', 'naprawa laptopa HP', 'serwis Dell Wrocław', 'naprawa Lenovo'],
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Serwis komputerów Wrocław | Omobonus naprawa PC',
-    description: 'Naprawa komputerów stacjonarnych we Wrocławiu. Diagnostyka usterek, wymiana podzespołów, modernizacja PC, instalacja Windows. Uczciwe ceny.',
+    description: 'Serwis komputerów Wrocław – naprawa PC, diagnostyka, modernizacja, wymiana podzespołów, instalacja Windows, konfiguracja sprzętu.',
     keywords: ['serwis komputerów Wrocław', 'naprawa komputerów Wrocław', 'naprawa PC Wrocław', 'modernizacja komputera', 'wymiana karty graficznej', 'instalacja Windows Wrocław', 'diagnoza komputera'],
   },
   'outsourcing-it': {
     title: 'Outsourcing IT Wrocław | Omobonus obsługa informatyczna',
-    description: 'Outsourcing IT dla firm we Wrocławiu. Kompleksowa obsługa informatyczna, wsparcie techniczne, administracja serwerów i sieci. Stała opieka IT.',
+    description: 'Outsourcing IT Wrocław – obsługa informatyczna firm, wsparcie IT, helpdesk, administracja sieci i serwerów, stała opieka techniczna dla firm.',
     keywords: ['outsourcing IT Wrocław', 'obsługa informatyczna firm', 'wsparcie IT Wrocław', 'usługi IT dla firm', 'administracja sieci', 'helpdesk IT Wrocław', 'opieka informatyczna'],
   },
   'serwis-drukarek-laserowych': {
     title: 'Serwis drukarek laserowych Wrocław | Omobonus naprawa drukarek',
-    description: 'Profesjonalny serwis drukarek laserowych i urządzeń MFU we Wrocławiu. Naprawa drukarek HP, Brother, Canon, Samsung. Wymiana tonerów, konserwacja.',
+    description: 'Serwis drukarek laserowych Wrocław – naprawa drukarek HP, Brother, Canon, Samsung, wymiana tonerów, konserwacja MFU, serwis urządzeń biurowych.',
     keywords: ['serwis drukarek laserowych Wrocław', 'naprawa drukarek Wrocław', 'serwis drukarek HP', 'naprawa drukarki Brother', 'serwis MFU', 'wymiana tonera', 'naprawa kserokopiarki'],
   },
   'serwis-drukarek-atramentowych': {
     title: 'Serwis drukarek atramentowych Wrocław | Omobonus serwis drukarek',
-    description: 'Naprawa drukarek atramentowych we Wrocławiu. Udrażnianie głowic, wymiana tuszy, serwis drukarek Epson, Canon, HP. Szybka diagnoza i naprawa.',
+    description: 'Serwis drukarek atramentowych Wrocław – naprawa drukarek Epson, Canon, HP, czyszczenie głowic, wymiana tuszy, usuwanie usterek i konserwacja.',
     keywords: ['serwis drukarek atramentowych Wrocław', 'naprawa drukarki atramentowej', 'udrażnianie głowicy drukarki', 'serwis Epson Wrocław', 'naprawa Canon', 'wymiana tuszu'],
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis drukarek termicznych Wrocław | Omobonus naprawa drukarek etykiet',
-    description: 'Naprawa drukarek termicznych i etykietowych we Wrocławiu. Serwis drukarek Zebra, Brother, Dymo. Wymiana głowicy, kalibracja, konserwacja.',
+    description: 'Serwis drukarek termicznych Wrocław – naprawa drukarek Zebra, Brother, Dymo, wymiana głowicy termicznej, konserwacja i kalibracja urządzeń.',
     keywords: ['serwis drukarek termicznych Wrocław', 'naprawa drukarki etykiet', 'serwis Zebra', 'drukarka kodów kreskowych', 'naprawa drukarki etykietowej', 'wymiana głowicy termicznej'],
   },
   'serwis-drukarek-iglowych': {
     title: 'Serwis drukarek igłowych Wrocław | Omobonus naprawa drukarek',
-    description: 'Profesjonalny serwis drukarek igłowych we Wrocławiu. Naprawa drukarek Epson, OKI, Citizen. Wymiana taśmy barwiącej, konserwacja mechanizmu.',
+    description: 'Serwis drukarek igłowych Wrocław – naprawa Epson, OKI, Citizen, wymiana taśmy barwiącej, konserwacja mechanizmu, usuwanie usterek.',
     keywords: ['serwis drukarek igłowych Wrocław', 'naprawa drukarki igłowej', 'serwis Epson LX', 'naprawa OKI', 'wymiana taśmy barwiącej', 'drukarka igłowa naprawa'],
   },
   'wynajem-drukarek': {
     title: 'Wynajem drukarek Wrocław | Omobonus dzierżawa urządzeń',
-    description: 'Wynajem i dzierżawa drukarek dla firm we Wrocławiu. Drukarki z serwisem i tonerem w cenie. Bez ukrytych kosztów, elastyczne warunki.',
+    description: 'Wynajem drukarek Wrocław – dzierżawa drukarek dla firm, urządzenia z serwisem i tonerami, elastyczne warunki, wsparcie techniczne.',
     keywords: ['wynajem drukarek Wrocław', 'dzierżawa drukarek', 'leasing drukarek', 'wynajem drukarki dla firmy', 'drukarki na wynajem', 'dzierżawa urządzeń biurowych'],
   },
   'drukarka-zastepcza': {
     title: 'Drukarka zastępcza Wrocław | Omobonus serwis',
-    description: 'Drukarka zastępcza na czas naprawy we Wrocławiu. Zapewniamy urządzenie zastępcze bez opłat abonamentowych. Szybkie podstawienie.',
+    description: 'Drukarka zastępcza Wrocław – urządzenie na czas naprawy, drukarka zastępcza dla firm, wynajem tymczasowy, serwis i wsparcie techniczne.',
     keywords: ['drukarka zastępcza Wrocław', 'drukarka na czas naprawy', 'urządzenie zastępcze', 'wynajem drukarki tymczasowo', 'drukarka zamienna'],
   },
 }
