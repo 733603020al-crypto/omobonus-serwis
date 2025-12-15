@@ -1399,11 +1399,11 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
   if (serviceSlug === 'serwis-drukarek-iglowych') {
     switch (categoryTitle) {
       case 'Mała drukarka igłowa':
-        return '/images/Mała_drukarka_Igłowa.png'
+        return '/images/Mała_drukarka_Igłowa.webp'
       case 'Średnia drukarka igłowa':
-        return '/images/Średnia_drukarka_Igłowa.png'
+        return '/images/Średnia_drukarka_Igłowa.webp'
       case 'Duża drukarka igłowa':
-        return '/images/Duża_drukarka_Igłowa.png'
+        return '/images/Duża_drukarka_Igłowa.webp'
       default:
         return ''
     }
@@ -1413,9 +1413,9 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
   if (serviceSlug === 'serwis-drukarek-termicznych') {
     switch (categoryTitle) {
       case 'Mała drukarka etykiet':
-        return '/images/Mała_drukarka_etykiet.png'
+        return '/images/Mała_drukarka_etykiet.webp'
       case 'Średnia drukarka etykiet':
-        return '/images/Srednia_drukarka_etykiet.png'
+        return '/images/Srednia_drukarka_etykiet.webp'
       case 'Duża drukarka etykiet':
         return '/images/Duża_drukarka_etykiet.png'
       default:
@@ -1440,11 +1440,11 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
   // Для всех остальных страниц используем старые изображения
   switch (categoryTitle) {
     case 'Drukarka domowa':
-      return '/images/Drukarka_domowa.png'
+      return '/images/Drukarka_domowa.webp'
     case 'Drukarka biurowa':
-      return '/images/A4_MFU_kolor.png'
+      return '/images/A4_MFU_kolor.webp'
     case 'Drukarka biznesowa':
-      return '/images/MFU A3A4 (mono).png'
+      return '/images/MFU A3A4 (mono).webp'
     default:
       return ''
   }
@@ -1510,7 +1510,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
       <div
         className="relative pointer-events-auto w-[min(calc(100vw-64px),900px)] max-h-[88vh] overflow-y-auto rounded-2xl border border-[rgba(200,169,107,0.45)] shadow-[0_22px_45px_rgba(0,0,0,0.5)] text-[#f8eacd]"
         style={{
-          backgroundImage: "url('/images/services-background.png')",
+          backgroundImage: "url('/images/services-background.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

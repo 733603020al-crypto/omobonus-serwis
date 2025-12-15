@@ -220,6 +220,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <html lang="pl" className={fontClasses} suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/images/omobonus-hero.webp" as="image" />
+        <link rel="preload" href="/images/Background_1.webp" as="image" />
+        <link rel="preload" href="/images/Logo_Omobonus.webp" as="image" />
+      </head>
       <body className="font-sans antialiased scroll-smooth">
         {children}
         <script

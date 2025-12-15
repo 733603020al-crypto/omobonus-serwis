@@ -808,7 +808,7 @@
         rgba(58, 43, 23, 0.48) 0%,
         rgba(52, 36, 20, 0.82) 100%
       ),
-      url('/images/services-background.png') !important;
+      url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
@@ -828,7 +828,7 @@
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%
       ),
-      url('/images/services-background.png') !important;
+      url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
@@ -847,7 +847,7 @@
         rgba(60, 45, 25, 0.50) 0%,
         rgba(55, 38, 20, 0.85) 100%
       ),
-      url('/images/services-background.png') !important;
+      url('/images/services-background.webp') !important;
     box-shadow: 
       0 6px 16px rgba(0, 0, 0, 0.5),
       0 3px 8px rgba(0, 0, 0, 0.4),
@@ -862,7 +862,7 @@
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%
       ),
-      url('/images/services-background.png');
+      url('/images/services-background.webp');
     background-color: transparent;
     background-size: cover;
     background-position: center;
@@ -881,7 +881,7 @@
         rgba(58, 43, 23, 0.48) 0%,
         rgba(52, 36, 20, 0.82) 100%
       ),
-      url('/images/services-background.png');
+      url('/images/services-background.webp');
     background-color: transparent;
     background-size: cover;
     background-position: center;
