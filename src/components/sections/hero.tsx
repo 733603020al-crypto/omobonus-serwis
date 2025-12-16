@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+
 import manifest from '@/config/manifest'
 
 export function Hero() {
@@ -11,14 +11,7 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center">
-      <Image
-        src={manifest['Логотип_картинка_на_сайт']}
-        alt="Profesjonalny serwis komputerów i drukarek we Wrocławiu"
-        fill
-        priority
-        sizes="100vw"
-        className="absolute inset-0 object-cover -z-10"
-      />
+
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
