@@ -18,7 +18,7 @@ const formSchema = z.object({
   phone: z.string().min(9, { message: 'Numer telefonu jest za krótki' }),
   email: z.string().email({ message: 'Niepoprawny adres e-mail' }),
   address: z.string().min(5, { message: 'Adres musi mieć min. 5 znaków' }),
-  deviceType: z.enum(['printer', 'computer', 'other'], { message: 'Wybierz typ urządzenia' }),
+  deviceType: z.enum(['printer', 'computer', 'other']).optional(),
   deviceModel: z.string().optional(),
   problemDescription: z.string().min(10, { message: 'Opis problemu musi mieć min. 10 znaków' }),
   replacementPrinter: z.boolean().optional(),
@@ -91,11 +91,11 @@ export function Contact() {
       // Небольшая задержка для рендеринга сообщений об ошибках
       setTimeout(() => {
         const fieldElement = document.querySelector(`[data-field-name="${firstErrorField}"]`)
-        
+
         if (fieldElement) {
           // Добавляем класс shake для анимации
           fieldElement.classList.add('shake-error')
-          
+
           // Плавная прокрутка к полю с ошибкой
           fieldElement.scrollIntoView({
             behavior: 'smooth',
@@ -140,7 +140,9 @@ export function Contact() {
     try {
       const formData = new FormData()
       Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value as string | Blob)
+        if (value !== undefined && value !== null) {
+          formData.append(key, value as string | Blob)
+        }
       })
       attachments.forEach(preview => {
         formData.append('attachments', preview.file)
@@ -195,12 +197,12 @@ export function Contact() {
       setAttachmentError(null)
     } catch (error) {
       console.error('❌ Error submitting form:', error)
-      
+
       // Более информативное сообщение об ошибке
-      const errorMessage = error instanceof Error 
-        ? error.message 
+      const errorMessage = error instanceof Error
+        ? error.message
         : 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.'
-      
+
       alert(errorMessage)
     } finally {
       setIsSubmitting(false)
@@ -212,19 +214,20 @@ export function Contact() {
   }
 
   return (
-    <section id="kontakt" className="relative pb-6 md:pb-10 pt-0">
+    <section id="kontakt" className="relative pb-6 md:pb-10 pt-0" >
       {/* Tło sekcji */}
-      <div
+      < div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('${manifest.services_background}')`,
+          backgroundImage: `url('${manifest.services_background
+            }')`,
         }}
       >
         <div className="absolute inset-0 bg-black/50" />
-      </div>
+      </div >
 
       <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
-        
+
         {/* Tekst nad formularzem */}
         <p className="text-white/90 text-lg md:text-xl text-center mb-8 drop-shadow-md font-serif italic pt-4 md:pt-6">
           &ldquo;Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń&rdquo;
@@ -232,20 +235,20 @@ export function Contact() {
 
         {/* Karta formularza - масштабирована на 20% */}
         <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[15%]">
-          
+
           {/* Nagłówek formularza */}
-          <h2 className="text-[#3a2e24] text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5">
+          <h2 className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
             Formularz zgłoszeniowy
           </h2>
 
-          <form 
+          <form
             onSubmit={handleSubmit(onSubmit, () => {
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
-            })} 
+            })}
             className="space-y-3 md:space-y-4"
           >
-            
+
             {/* Imię i Telefon - Grid */}
             <div className="grid grid-cols-1 gap-3 md:gap-4">
               {/* Imię i nazwisko */}
@@ -256,7 +259,7 @@ export function Contact() {
                 <input
                   {...register('name')}
                   placeholder="Jan Kowalski"
-                  className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                  className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
                 />
                 {errors.name && (
                   <p className="text-red-600 text-sm">{errors.name.message}</p>
@@ -295,7 +298,7 @@ export function Contact() {
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
               />
               {errors.email && (
                 <p className="text-red-600 text-sm">{errors.email.message}</p>
@@ -310,7 +313,7 @@ export function Contact() {
               <input
                 {...register('address')}
                 placeholder="ul. Przykładowa 1, 50-001 Wrocław"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
               />
               {errors.address && (
                 <p className="text-red-600 text-sm">{errors.address.message}</p>
@@ -369,7 +372,7 @@ export function Contact() {
               <input
                 {...register('deviceModel')}
                 placeholder="np. HP LaserJet Pro M404dn"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
               />
             </div>
 
@@ -382,7 +385,7 @@ export function Contact() {
                 {...register('problemDescription')}
                 rows={4}
                 placeholder="Proszę opisać problem z urządzeniem..."
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:text-black/60 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 resize-y"
+                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250 resize-y"
               />
               {errors.problemDescription && (
                 <p className="text-red-600 text-sm">{errors.problemDescription.message}</p>
@@ -403,7 +406,7 @@ export function Contact() {
                   Dodaj
                 </label>
               </div>
-              <p className="text-[#3a2e24] text-sm italic font-sans">
+              <p className="text-black text-sm italic font-sans">
                 Załączone materiały pomogą nam szybciej i dokładniej zidentyfikować problem oraz
                 przygotować wycenę naprawy
               </p>
@@ -437,8 +440,8 @@ export function Contact() {
                     const kind = file.type.startsWith('image/')
                       ? 'image'
                       : file.type.startsWith('video/')
-                      ? 'video'
-                      : 'file'
+                        ? 'video'
+                        : 'file'
 
                     nextPreviews.push({
                       id: `${file.name}-${file.size}-${Date.now()}-${Math.random()}`,
@@ -572,6 +575,6 @@ export function Contact() {
 
       {/* Success Modal */}
       <SuccessModal isOpen={showSuccessModal} onClose={onCloseSuccessModal} />
-    </section>
+    </section >
   )
 }

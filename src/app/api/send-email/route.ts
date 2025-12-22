@@ -88,7 +88,8 @@ const createTransporter = (): nodemailer.Transporter | null => {
 const mapDeviceType = (value: string) => {
   if (value === 'printer') return 'Drukarka'
   if (value === 'computer') return 'Komputer / Laptop'
-  return 'Inne urządzenie'
+  if (value === 'other') return 'Inne urządzenie'
+  return 'Nie podano'
 }
 
 const boolToText = (value: string | null) =>
