@@ -47,20 +47,41 @@ export function Header() {
   }, [isOpen])
 
   const scrollToSection = (id: string) => {
-    if (pathname !== '/') {
-      window.location.href = `/#${id}`
-    } else {
-      const element = document.getElementById(id)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+    // Funkcja pomocnicza do wykonania skrolowania
+    const performScroll = () => {
+      if (pathname !== '/') {
+        window.location.href = `/#${id}`
+      } else {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
       }
     }
-    setIsOpen(false)
+
+    if (isOpen) {
+      setIsOpen(false)
+      // Czekamy aż menu się zamknie i odblokuje scroll (animacja trwa ok 300ms)
+      setTimeout(() => {
+        performScroll()
+      }, 350)
+    } else {
+      performScroll()
+      setIsOpen(false)
+    }
   }
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-    setIsOpen(false)
+    if (isOpen) {
+      setIsOpen(false)
+      // Czekamy aż menu się zamknie
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 350)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setIsOpen(false)
+    }
   }
 
   return (
@@ -180,8 +201,9 @@ export function Header() {
                     if (pathname === '/') {
                       e.preventDefault()
                       scrollToTop()
+                    } else {
+                      setIsOpen(false)
                     }
-                    setIsOpen(false)
                   }}
                 >
                   <BrandWordmark />
