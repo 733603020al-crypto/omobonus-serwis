@@ -489,7 +489,7 @@ const createPricingSections = (): PricingSection[] => {
 const updateKonserwacjaForOutsourcing = (sections: PricingSection[]) => {
   const konserwacjaSection = sections.find(section => section.id === 'konserwacja')
   if (!konserwacjaSection) return
-  
+
   konserwacjaSection.title = 'Obsługa firm (abonament miesięczny)'
   konserwacjaSection.items = [
     {
@@ -516,7 +516,7 @@ const updateNaprawyKaretkaForOutsourcing = (sections: PricingSection[]) => {
     sub => sub.id === 'naprawy-karetka'
   )
   if (!karetkaSubcategory) return
-  
+
   karetkaSubcategory.title = 'Naprawy sprzętu komputerowego (na miejscu u Klienta)'
   karetkaSubcategory.items = [
     {
@@ -558,7 +558,7 @@ const updateNaprawyGlowicaForOutsourcing = (sections: PricingSection[]) => {
     sub => sub.id === 'naprawy-glowica'
   )
   if (!glowicaSubcategory) return
-  
+
   glowicaSubcategory.title = 'Konfiguracja i sieć biurowa'
   glowicaSubcategory.items = [
     {
@@ -600,7 +600,7 @@ const updateNaprawyTasmaForOutsourcing = (sections: PricingSection[]) => {
     sub => sub.id === 'naprawy-tasma'
   )
   if (!tasmaSubcategory) return
-  
+
   tasmaSubcategory.title = 'Bezpieczeństwo i kopie zapasowe'
   tasmaSubcategory.items = [
     {
@@ -639,15 +639,15 @@ const updateNaprawyTasmaForOutsourcing = (sections: PricingSection[]) => {
 const removeUnwantedSubcategoriesForOutsourcing = (sections: PricingSection[]) => {
   const naprawySection = sections.find(section => section.id === 'naprawy')
   if (!naprawySection?.subcategories) return
-  
+
   // Удаляем три подкатегории: Naprawy elektroniczne, Oprogramowanie i konfiguracja, Usługi dodatkowe
   naprawySection.subcategories = naprawySection.subcategories.filter(
-    sub => 
+    sub =>
       sub.id !== 'naprawy-elektronika' &&
       sub.id !== 'naprawy-software' &&
       sub.id !== 'naprawy-dodatkowe'
   )
-  
+
   // Добавляем footer для секции naprawy на странице Outsourcing IT
   naprawySection.footer = '"Pogotowie komputerowe" - interwencje serwisowe poza abonamentem'
 }
@@ -655,14 +655,14 @@ const removeUnwantedSubcategoriesForOutsourcing = (sections: PricingSection[]) =
 const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
   const naprawySection = sections.find(section => section.id === 'naprawy')
   if (!naprawySection?.subcategories) return
-  
+
   // Проверяем, не существует ли уже эта подкатегория
   const existingAudyt = naprawySection.subcategories.find(sub => sub.id === 'naprawy-audyt')
   if (existingAudyt) return
-  
+
   // Находим индекс подкатегории "naprawy-tasma" (Bezpieczeństwo i kopie zapasowe)
   const tasmaIndex = naprawySection.subcategories.findIndex(sub => sub.id === 'naprawy-tasma')
-  
+
   // Создаем новую подкатегорию
   const audytSubcategory: PricingSubcategory = {
     id: 'naprawy-audyt',
@@ -695,7 +695,7 @@ const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
       },
     ],
   }
-  
+
   // Вставляем новую подкатегорию после "naprawy-tasma"
   if (tasmaIndex !== -1) {
     naprawySection.subcategories.splice(tasmaIndex + 1, 0, audytSubcategory)
@@ -745,7 +745,7 @@ const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
     sub => sub.id === 'naprawy-mechanizm'
   )
   if (!mechanizmSubcategory) return
-  
+
   mechanizmSubcategory.title = 'Serwis ogólny (praca serwisanta u Klienta)'
   mechanizmSubcategory.items = [
     {
@@ -785,19 +785,19 @@ const createLaptopPricingSections = (): PricingSection[] => {
     cleaningSection.items = [
       {
         service:
-          'PODSTAWOWY (przegląd i profilaktyka) (czyszczenie zewnętrzne i wewnętrzne laptopa, czyszczenie wentylatora i radiatora, wymiana past termoprzewodzących CPU/GPU, usunięcie kurzu i zanieczyszczeń, testy obciążeniowe + test temperatur)',
+          'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wewnętrzne laptopa – usunięcie kurzu i zanieczyszczeń,\n• czyszczenie wentylatora oraz radiatora,\n• wymianę past termoprzewodzących CPU / GPU,\n• testy obciążeniowe oraz test temperatur,\n• czyszczenie zewnętrzne obudowy i klawiatury.',
         price: '120',
         duration: '1-3 dni',
       },
       {
         service:
-          'STANDARD (standardowa konserwacja) (Zakres PODSTAWOWY + Wymiana / dopasowanie termopadów, Konserwacja portów, Krótki test pamięci RAM i dysku SMART)',
+          'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• wymiana / dopasowanie termopadów,\n• konserwacja portów,\n• krótki test pamięci RAM i dysku SMART.',
         price: '160',
         duration: '1-3 dni',
       },
       {
         service:
-          'PREMIUM (pełna konserwacja) (Zakres STANDARD + Porządkowanie okablowania i kanałów powietrznych, Czyszczenie klawiatury i portów wewnętrznych, Aktualizacja BIOS/UEFI (jeśli wskazana), Długie testy obciążeniowe (CPU / GPU / RAM))',
+          'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• porządkowanie okablowania i kanałów powietrznych,\n• czyszczenie klawiatury i portów wewnętrznych sprężonym powietrzem bez rozkręcania,\n• aktualizacja BIOS/UEFI (jeśli wskazana),\n• długie testy obciążeniowe (CPU / GPU / RAM).',
         price: '200',
         duration: '1-3 dni',
       },
@@ -1112,12 +1112,22 @@ const createLaptopPricingSections = (): PricingSection[] => {
     keyboardSubcategory.title = 'Klawiatura / touchpad'
     keyboardSubcategory.items = [
       {
-        service: 'Czyszczenie klawiatury + dezynfekcja (bez rozbierania)',
+        service: 'Czyszczenie klawiatury + dezynfekcja (bez rozkręcania / rozbierania)',
         price: '40',
         duration: 'od ręki',
       },
       {
-        service: 'Wymiana pojedynczego klawisza (keycap / stabilizator, jeśli możliwe)',
+        service: 'Czyszczenie klawiatury przykręcanej po zalaniu',
+        price: '120',
+        duration: '1-3 dni',
+      },
+      {
+        service: 'Czyszczenie klawiatury zintegrowanej z obudową po zalaniu',
+        price: '150',
+        duration: '1-3 dni',
+      },
+      {
+        service: 'Czyszczenie lub wymiana pojedynczego klawisza (keycap / stabilizator, jeśli możliwe)',
         price: '20-40 + część',
         duration: '1-3 dni',
       },
@@ -2802,16 +2812,16 @@ const createDesktopPricingSections = (): PricingSection[] => {
 const createWynajemPricingSections = (): PricingSection[] => {
   // Используем только базовые секции без FAQ (FAQ добавим в конце)
   const defaultSections = createDefaultPricingSections()
-  
+
   // Удаляем ненужные секции для wynajem-drukarek
   const sections = defaultSections.filter(
-    section => 
-      section.id !== 'diagnoza' && 
-      section.id !== 'dojazd' && 
-      section.id !== 'konserwacja' && 
+    section =>
+      section.id !== 'diagnoza' &&
+      section.id !== 'dojazd' &&
+      section.id !== 'konserwacja' &&
       section.id !== 'naprawy'
   )
-  
+
   // Добавляем два аккордеона
   sections.push({
     id: 'akordeon-1',
@@ -2886,16 +2896,16 @@ const createWynajemPricingSections = (): PricingSection[] => {
 const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
   // Используем только базовые секции без FAQ (FAQ добавим в конце)
   const defaultSections = createDefaultPricingSections()
-  
+
   // Удаляем ненужные секции для drukarka-zastepcza
   const sections = defaultSections.filter(
-    section => 
-      section.id !== 'diagnoza' && 
-      section.id !== 'dojazd' && 
-      section.id !== 'konserwacja' && 
+    section =>
+      section.id !== 'diagnoza' &&
+      section.id !== 'dojazd' &&
+      section.id !== 'konserwacja' &&
       section.id !== 'naprawy'
   )
-  
+
   // Добавляем два аккордеона
   sections.push({
     id: 'akordeon-1',

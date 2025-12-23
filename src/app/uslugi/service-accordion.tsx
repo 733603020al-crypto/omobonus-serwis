@@ -300,27 +300,67 @@ export const renderDurationValue = (value: string) => (
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
 const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px') => {
-  // Если текст содержит переносы строк, разбиваем и рендерим каждую строку отдельно
+  if (!text) return null
+
+  // Jeśli tekst zawiera переносы строк, разбиваем и рендерим каждую строку отдельно
   if (text.includes('\n')) {
     const lines = text.split('\n').filter(line => line.trim())
     return (
-      <div
-        className="text-[14px] text-[#cbb27c] leading-relaxed mt-1"
-      >
-        {lines.map((line, idx) => (
-          <div key={idx} className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
-            ({line.trim()})
-          </div>
-        ))}
+      <div className="text-[14px] text-[#cbb27c] leading-relaxed mt-1">
+        {lines.map((line, idx) => {
+          const trimmed = line.trim()
+          const lower = trimmed.toLowerCase()
+
+          // Special handling for "zakres usługi obejmuje:", "zakres PODSTAWOWY +" and "zakres STANDARD +" - white text, no parens
+          if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +')) {
+            return (
+              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
+                {trimmed}
+              </div>
+            )
+          }
+
+          // Special handling for bullet points - no parens, tighter spacing
+          if (trimmed.startsWith('•')) {
+            return (
+              <div key={idx} className="text-[14px] text-[#cbb27c] leading-[1.35] mt-[1px] pl-1">
+                {trimmed}
+              </div>
+            )
+          }
+
+          return (
+            <div key={idx} className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
+              ({trimmed})
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  const trimmed = text.trim()
+  const lower = trimmed.toLowerCase()
+
+  if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +')) {
+    return (
+      <div className="text-[14px] text-white leading-relaxed">
+        {trimmed}
+      </div>
+    )
+  }
+
+  if (trimmed.startsWith('•')) {
+    return (
+      <div className="text-[14px] text-[#cbb27c] leading-relaxed pl-1">
+        {trimmed}
       </div>
     )
   }
 
   return (
-    <div
-      className="text-[14px] text-[#cbb27c] leading-relaxed"
-    >
-      ({text})
+    <div className="text-[14px] text-[#cbb27c] leading-relaxed">
+      ({trimmed})
     </div>
   )
 }
