@@ -221,11 +221,32 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl" className={fontClasses} suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5XQXX5KL');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <link rel="preload" href="/images/omobonus-hero.webp" as="image" />
         <link rel="preload" href="/images/Background_1.webp" as="image" />
         <link rel="preload" href="/images/Logo_Omobonus.webp" as="image" />
       </head>
       <body className="font-sans antialiased scroll-smooth">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5XQXX5KL"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         {children}
         <script
           type="application/ld+json"

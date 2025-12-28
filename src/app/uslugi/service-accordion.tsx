@@ -1457,7 +1457,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
       case 'Średnia drukarka etykiet':
         return '/images/Srednia_drukarka_etykiet.webp'
       case 'Duża drukarka etykiet':
-        return '/images/Duża_drukarka_etykiet.png'
+        return '/images/Duża_drukarka_etykiet.webp'
       default:
         return ''
     }
@@ -1467,11 +1467,11 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
     switch (categoryTitle) {
       case 'Drukarka domowa':
-        return '/images/Drukarka_domowa_atramentowa.png'
+        return '/images/Drukarka_domowa_atramentowa.webp'
       case 'Drukarka biurowa':
-        return '/images/Drukarka_biurowa_atramentowa.png'
+        return '/images/Drukarka_biurowa_atramentowa.webp'
       case 'Drukarka biznesowa':
-        return '/images/Drukarka_biznesowa_atramentowa.png'
+        return '/images/Drukarka_biznesowa_atramentowa.webp'
       default:
         return ''
     }
