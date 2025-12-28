@@ -311,8 +311,17 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           const trimmed = line.trim()
           const lower = trimmed.toLowerCase()
 
-          // Special handling for "zakres usługi obejmuje:", "zakres PODSTAWOWY +" and "zakres STANDARD +" - white text, no parens
-          if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +')) {
+          // Special handling for "zakres usługi obejmuje:", "zakres paketu obejmuje:", "zakres PODSTAWOWY +", "zakres STANDARD +", "zakres START +", "zakres BIZNES +" - white text, no parens
+          if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
+            return (
+              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
+                {trimmed}
+              </div>
+            )
+          }
+
+          // Special handling for "Uwaga!!!" - white text, no parens
+          if (trimmed.startsWith('Uwaga!!!')) {
             return (
               <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
                 {trimmed}
@@ -342,7 +351,16 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
   const trimmed = text.trim()
   const lower = trimmed.toLowerCase()
 
-  if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +')) {
+  if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
+    return (
+      <div className="text-[14px] text-white leading-relaxed">
+        {trimmed}
+      </div>
+    )
+  }
+
+  // Special handling for "Uwaga!!!" - white text, no parens
+  if (trimmed.startsWith('Uwaga!!!')) {
     return (
       <div className="text-[14px] text-white leading-relaxed">
         {trimmed}
