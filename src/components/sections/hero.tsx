@@ -31,10 +31,10 @@ export function Hero() {
           &quot;Uczciwość (brak oszustwa) i szacunek do klienta&quot; - to nasze podstawowe zasady pracy
         </p>
         <a
-          href="#kontakt"
+          href="#formularz"
           onClick={(e) => {
             e.preventDefault()
-            scrollToSection('kontakt')
+            scrollToSection('formularz')
           }}
           className="inline-flex items-center justify-center border border-[#bfa76a]/80 text-[15px] text-[#bfa76a] py-[8px] px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors mt-[24px]"
         >

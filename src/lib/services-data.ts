@@ -3004,7 +3004,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-laserowych',
-    title: 'Serwis Drukarek Laserowych i MFU',
+    title: 'Serwis Drukarek Laserowych i Kserokopiarek',
     subtitle: 'Profesjonalna naprawa drukarek laserowych i urządzeń wielofunkcyjnych',
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Profesjonalna naprawa i serwis drukarek laserowych.',

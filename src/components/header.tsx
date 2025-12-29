@@ -50,11 +50,21 @@ export function Header() {
     // Funkcja pomocnicza do wykonania skrolowania
     const performScroll = () => {
       if (pathname !== '/') {
+        // Jeśli jesteśmy na innej stronie, przejdź na główną z kotwicą
         window.location.href = `/#${id}`
       } else {
+        // Jeśli jesteśmy na głównej, znajdź element i przewiń do niego
         const element = document.getElementById(id)
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+          // Jeśli element nie został jeszcze załadowany, spróbuj ponownie po krótkim czasie
+          setTimeout(() => {
+            const retryElement = document.getElementById(id)
+            if (retryElement) {
+              retryElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+          }, 100)
         }
       }
     }
@@ -166,7 +176,7 @@ export function Header() {
             className="text-[18px] text-[#bfa76a] font-cormorant px-4 py-1.5 rounded-full bg-transparent border-[#bfa76a]/80 hover:bg-[#bfa76a]/10 transition-colors"
             onClick={(e) => {
               e.preventDefault()
-              scrollToSection('kontakt')
+              scrollToSection('formularz')
             }}
           >
             Wyślij zgłoszenie
@@ -253,7 +263,7 @@ export function Header() {
                   className="w-full border-[#bfa76a]/80 text-white text-[18px] font-cormorant rounded-full bg-transparent hover:bg-[#bfa76a]/15"
                   onClick={(e) => {
                     e.preventDefault()
-                    scrollToSection('kontakt')
+                    scrollToSection('formularz')
                   }}
                 >
                   Wyślij zgłoszenie

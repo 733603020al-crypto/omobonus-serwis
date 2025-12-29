@@ -7,7 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white">
+    <footer id="kontakt" className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white">
       {/* Tło */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -22,76 +22,88 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold tracking-wide text-[#bfa76a]">
+          <div className="space-y-3">
+            <h3 className="text-2xl font-semibold tracking-wide text-[#bfa76a] mb-3">
               Kontakt
             </h3>
 
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <Link
-                    href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/@51.0775056,16.9784737,11z"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-primary transition-colors"
-                  >
-                    <div>Marcina Bukowskiego 174</div>
-                    <div>52-418 Wrocław</div>
-                  </Link>
+            <div className="space-y-2.5">
+              <div>
+                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <span>Adres</span>
                 </div>
+                <Link
+                  href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/@51.0775056,16.9784737,11z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-primary transition-colors block text-sm leading-tight"
+                >
+                  <div>Marcina Bukowskiego 174</div>
+                  <div>52-418 Wrocław</div>
+                </Link>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+              <div>
+                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <span>Telefon</span>
+                </div>
                 <Link
                   href="tel:+48793759262"
-                  className="text-white hover:text-primary transition-colors"
+                  className="text-white hover:text-primary transition-colors block text-sm"
                 >
                   +48 793 759 262
                 </Link>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+              <div>
+                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <span>E-mail</span>
+                </div>
                 <Link
                   href="mailto:serwis@omobonus.com.pl"
-                  className="text-white hover:text-primary transition-colors"
+                  className="text-white hover:text-primary transition-colors block text-sm"
                 >
                   serwis@omobonus.com.pl
                 </Link>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-primary flex-shrink-0" />
-                <span className="text-white">
-                  Godziny otwarcia: pon–pt — 9:00–17:00
+              <div>
+                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <span>Godziny otwarcia</span>
+                </div>
+                <span className="text-white block text-sm">
+                  Pon–Pt: 8–18
                 </span>
               </div>
 
-              <div className="flex items-center gap-3">
-                <FaWhatsapp className="h-5 w-5 text-primary flex-shrink-0" />
-                <Link
-                  href="https://wa.me/48793759262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-primary transition-colors"
-                >
-                  WhatsApp
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <FaTelegramPlane className="h-5 w-5 text-primary flex-shrink-0" />
-                <Link
-                  href="https://t.me/+48793759262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-primary transition-colors"
-                >
-                  Telegram
-                </Link>
+              <div>
+                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                  <FaWhatsapp className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <span>Komunikatory</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                  <Link
+                    href="https://wa.me/48793759262"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary transition-colors"
+                  >
+                    WhatsApp
+                  </Link>
+                  <span className="text-white/60">·</span>
+                  <Link
+                    href="https://t.me/+48793759262"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary transition-colors"
+                  >
+                    Telegram
+                  </Link>
+                </div>
               </div>
 
               <div className="pt-4 space-y-2">
@@ -132,11 +144,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[#3a2e24]/30 text-center space-y-2">
-          <p className="text-white/80 text-sm">
+        <div className="mt-12 pt-6 border-t border-[#3a2e24]/30 text-center space-y-1">
+          <p className="text-[#bfa76a] text-sm">
             Omobonus Sp. z o.o. – legalny serwis komputerów, laptopów i drukarek we Wrocławiu.
           </p>
-          <p className="text-white/80 text-sm">
+          <p className="text-[#bfa76a] text-sm">
             © {currentYear} Wszelkie prawa zastrzeżone.
           </p>
         </div>

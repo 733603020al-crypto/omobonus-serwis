@@ -208,7 +208,7 @@ export default async function ServicePage({
           </div>
         )}
 
-        {/* SEO tekст dla strony Serwis Drukarek Laserowych i MFU */}
+        {/* SEO tekst dla strony Serwis Drukarek Laserowych i Kserokopiarek */}
         {service.slug === 'serwis-drukarek-laserowych' && (
           <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
             <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
