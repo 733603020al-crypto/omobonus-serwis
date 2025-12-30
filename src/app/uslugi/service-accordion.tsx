@@ -27,7 +27,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Info, ArrowRight } from 'lucide-react'
+import { Info, ArrowRight, X } from 'lucide-react'
 
 const getIconForSection = (sectionId: string) => {
   switch (sectionId) {
@@ -1520,6 +1520,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
   const [isCategoryTooltipOpen, setCategoryTooltipOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [openSmallTooltips, setOpenSmallTooltips] = useState<Set<string>>(new Set())
+  const tooltipContentRef = useRef<HTMLDivElement | null>(null)
+  const swipeStartY = useRef<number | null>(null)
   const [openWynajemSubcategories, setOpenWynajemSubcategories] = useState<string[]>([])
   const [openDrukarkaZastepczaSubcategories, setOpenDrukarkaZastepczaSubcategories] = useState<string[]>([])
   const sectionRefs = useRef<ScrollRefs>({})
@@ -1555,6 +1559,97 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
+  // Определение размера экрана
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Закрытие маленьких tooltip при клике вне их области на мобильных
+  useEffect(() => {
+    if (openSmallTooltips.size === 0 || !isMobile) return
+
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement
+      // Проверяем, что клик не внутри tooltip или его триггера
+      const tooltipContent = target.closest('[data-slot="tooltip-content"]')
+      const tooltipTrigger = target.closest('[data-slot="tooltip-trigger"]')
+      if (!tooltipContent && !tooltipTrigger) {
+        setOpenSmallTooltips(new Set())
+      }
+    }
+
+    // Используем небольшую задержку, чтобы не перехватывать событие открытия
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside, true)
+      document.addEventListener('touchstart', handleClickOutside, true)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('touchstart', handleClickOutside, true)
+    }
+  }, [openSmallTooltips, isMobile])
+
+  // Обработчик swipe down для закрытия большого окна и затемнение фона (только для больших окон)
+  useEffect(() => {
+    if (!isCategoryTooltipOpen || !isMobile || !isSpecialTooltipService) return
+
+    // Добавляем затемнение фона
+    const backdrop = document.createElement('div')
+    backdrop.className = 'fixed inset-0 bg-black/50 z-40'
+    backdrop.style.display = 'block'
+    document.body.appendChild(backdrop)
+    document.body.style.overflow = 'hidden'
+
+    // Обработчик клика вне окна для закрытия
+    const handleBackdropClick = (e: MouseEvent) => {
+      if (e.target === backdrop) {
+        setCategoryTooltipOpen(false)
+      }
+    }
+    backdrop.addEventListener('click', handleBackdropClick)
+
+    // Обработчик swipe down
+    const handleTouchStart = (e: TouchEvent) => {
+      if (tooltipContentRef.current && tooltipContentRef.current.contains(e.target as Node)) {
+        swipeStartY.current = e.touches[0].clientY
+      }
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (swipeStartY.current === null || !tooltipContentRef.current) return
+      if (!tooltipContentRef.current.contains(e.target as Node)) return
+      
+      const currentY = e.touches[0].clientY
+      const diff = currentY - swipeStartY.current
+
+      // Если свайп вниз больше 50px, закрываем окно
+      if (diff > 50) {
+        setCategoryTooltipOpen(false)
+        swipeStartY.current = null
+      }
+    }
+
+    document.addEventListener('touchstart', handleTouchStart)
+    document.addEventListener('touchmove', handleTouchMove)
+
+    return () => {
+      if (document.body.contains(backdrop)) {
+        document.body.removeChild(backdrop)
+      }
+      document.body.style.overflow = ''
+      backdrop.removeEventListener('click', handleBackdropClick)
+      document.removeEventListener('touchstart', handleTouchStart)
+      document.removeEventListener('touchmove', handleTouchMove)
+    }
+  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
+
   const renderPriceTooltipContent = () => {
     if (!isSpecialTooltipService) {
       return (
@@ -1566,7 +1661,8 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 
     return (
       <div
-        className="relative pointer-events-auto w-[min(calc(100vw-64px),900px)] max-h-[88vh] overflow-y-auto rounded-2xl border border-[rgba(200,169,107,0.45)] shadow-[0_22px_45px_rgba(0,0,0,0.5)] text-[#f8eacd]"
+        ref={tooltipContentRef}
+        className="relative pointer-events-auto w-[min(calc(100vw-32px),900px)] md:w-[min(calc(100vw-64px),900px)] max-h-[90vh] md:max-h-[88vh] rounded-2xl border border-[rgba(200,169,107,0.45)] shadow-[0_22px_45px_rgba(0,0,0,0.5)] text-[#f8eacd] overflow-hidden"
         style={{
           backgroundImage: "url('/images/services-background.webp')",
           backgroundSize: 'cover',
@@ -1574,7 +1670,17 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
         }}
       >
         <div className="absolute inset-0 rounded-2xl bg-[rgba(0,0,0,0.5)] pointer-events-none" />
-        <div className="relative p-6 md:p-7 space-y-6">
+        {/* Кнопка закрытия X - фиксированная вверху на мобильных */}
+        {isMobile && (
+          <button
+            onClick={() => setCategoryTooltipOpen(false)}
+            className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 active:bg-black/90 text-white transition-colors touch-manipulation shadow-lg"
+            aria-label="Zamknij"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+        <div className="relative p-6 md:p-7 pb-8 md:pb-7 space-y-6 max-h-[90vh] md:max-h-[88vh] overflow-y-auto">
           <div className="text-center space-y-2">
             <h4 className="text-[22px] md:text-[26px] font-cormorant font-semibold text-white tracking-wide">
               Kategorie urządzeń
@@ -1596,11 +1702,11 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
               <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
             {getDeviceCategories(service.slug).map(category => (
               <div
                 key={category.title}
-                className="bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col h-full shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center"
+                className="bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center"
               >
                 <div>
                   <div className="text-xl font-cormorant font-semibold text-white">{category.title}</div>
@@ -2126,55 +2232,108 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             <div
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
-                              <div
-                                className={cn(
-                                  'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                  section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                    ? 'justify-center'
-                                    : 'justify-end'
-                                )}
-                              >
-                                <span className="hidden sm:inline">Cena, zł</span>
-                                <span className="inline sm:hidden">Cena</span>
                                 <TooltipProvider delayDuration={100}>
                                   <Tooltip
+                                  open={isMobile && !isSpecialTooltipService ? openSmallTooltips.has(section.id) : undefined}
                                     onOpenChange={open => {
                                       if (isSpecialTooltipService) {
                                         setCategoryTooltipOpen(open)
+                                    } else if (isMobile) {
+                                      const newSet = new Set(openSmallTooltips)
+                                      if (open) {
+                                        newSet.add(section.id)
+                                      } else {
+                                        newSet.delete(section.id)
+                                      }
+                                      setOpenSmallTooltips(newSet)
                                       }
                                     }}
                                   >
                                     <TooltipTrigger
                                       asChild
                                     >
-                                      <span
+                                    <div
+                                      className={cn(
+                                        'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
+                                        section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                          ? 'justify-center'
+                                          : 'justify-end',
+                                        'md:cursor-default cursor-pointer'
+                                      )}
                                         role="button"
                                         tabIndex={0}
                                         aria-label="Informacja o cenach"
-                                        className="ml-1 -mr-2 sm:mr-0 hidden md:inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 cursor-pointer"
-                                        onClick={event => event.stopPropagation()}
-                                        onPointerDown={event => event.stopPropagation()}
-                                        onKeyDown={event => {
-                                          if (event.key === 'Enter' || event.key === ' ') {
-                                            event.preventDefault()
-                                            event.stopPropagation()
+                                      onPointerDown={(e) => {
+                                        // На мобильных обрабатываем touch события
+                                        if (isMobile && !isSpecialTooltipService) {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          const newSet = new Set(openSmallTooltips)
+                                          if (newSet.has(section.id)) {
+                                            newSet.delete(section.id)
+                                          } else {
+                                            // Закрываем все остальные tooltip и открываем только этот
+                                            newSet.clear()
+                                            newSet.add(section.id)
+                                          }
+                                          setOpenSmallTooltips(newSet)
+                                        }
+                                      }}
+                                      onClick={(e) => {
+                                        // На мобильных также обрабатываем клик (для совместимости)
+                                        if (isMobile && !isSpecialTooltipService) {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          const newSet = new Set(openSmallTooltips)
+                                          if (newSet.has(section.id)) {
+                                            newSet.delete(section.id)
+                                          } else {
+                                            // Закрываем все остальные tooltip и открываем только этот
+                                            newSet.clear()
+                                            newSet.add(section.id)
+                                          }
+                                          setOpenSmallTooltips(newSet)
+                                        }
+                                      }}
+                                      onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                        }
+                                      }}
+                                    >
+                                      <span className="hidden sm:inline">Cena, zł</span>
+                                      <span className="inline sm:hidden">Cena</span>
+                                      <span
+                                        className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer"
+                                        onClick={(e) => {
+                                          // На десктопе клик работает только на иконке
+                                          if (!isMobile) {
+                                            e.stopPropagation()
+                                          }
+                                        }}
+                                        onPointerDown={(e) => {
+                                          if (!isMobile) {
+                                            e.stopPropagation()
                                           }
                                         }}
                                       >
                                         <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                       </span>
+                                    </div>
                                     </TooltipTrigger>
                                     <TooltipContent
                                       {...(isSpecialTooltipService
                                         ? {
-                                          side: 'left' as const,
+                                          side: (isMobile ? 'bottom' : 'left') as const,
                                           align: 'center' as const,
-                                          sideOffset: 16,
+                                          sideOffset: isMobile ? 8 : 16,
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
                                         : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
                                           ? {
+                                            side: (isMobile ? 'bottom' : 'top') as const,
                                             sideOffset: 4,
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
@@ -2183,7 +2342,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                               backgroundPosition: 'center',
                                             },
                                           }
-                                          : { sideOffset: 4 })}
+                                          : { 
+                                            side: (isMobile ? 'bottom' : 'top') as const,
+                                            sideOffset: 4 
+                                          })}
                                     >
                                       {isSpecialTooltipService ? (
                                         renderPriceTooltipContent()
@@ -2202,10 +2364,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     </TooltipContent>
                                   </Tooltip>
                                 </TooltipProvider>
-                              </div>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span
-                                  className="text-[12px] text-[#cbb27c] leading-relaxed hidden sm:block"
+                                  className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
                                   style={{
                                     opacity: 1,
                                     fontWeight: 'normal',
