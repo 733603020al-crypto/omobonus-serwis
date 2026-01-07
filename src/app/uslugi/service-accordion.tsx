@@ -27,6 +27,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { Info, ArrowRight, X } from 'lucide-react'
 
 const getIconForSection = (sectionId: string) => {
@@ -2233,166 +2238,167 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
                               <TooltipProvider delayDuration={100}>
-                                <Tooltip
-                                  open={isMobile && !isSpecialTooltipService ? openSmallTooltips.has(section.id) : undefined}
-                                  onOpenChange={open => {
-                                    if (isSpecialTooltipService) {
-                                      setCategoryTooltipOpen(open)
-                                    } else if (isMobile) {
-                                      const newSet = new Set(openSmallTooltips)
-                                      if (open) {
-                                        newSet.add(section.id)
-                                      } else {
-                                        newSet.delete(section.id)
-                                      }
-                                      setOpenSmallTooltips(newSet)
-                                    }
-                                  }}
-                                >
-                                  <TooltipTrigger
-                                    asChild
-                                  >
-                                    <div
-                                      className={cn(
-                                        'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                        section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                          ? 'justify-center'
-                                          : 'justify-end',
-                                        'md:cursor-default cursor-pointer'
-                                      )}
-                                      role="button"
-                                      tabIndex={0}
-                                      aria-label="Informacja o cenach"
-                                      onPointerDown={(e) => {
-                                        // На мобильных обрабатываем touch события
-                                        if (isMobile && !isSpecialTooltipService) {
-                                          e.preventDefault()
-                                          e.stopPropagation()
-                                          const newSet = new Set(openSmallTooltips)
-                                          if (newSet.has(section.id)) {
-                                            newSet.delete(section.id)
-                                          } else {
-                                            // Закрываем все остальные tooltip и открываем только этот
-                                            newSet.clear()
-                                            newSet.add(section.id)
-                                          }
-                                          setOpenSmallTooltips(newSet)
+                                {(isMobile && !isSpecialTooltipService) ? (
+                                  <Popover
+                                    open={isMobile && !isSpecialTooltipService ? openSmallTooltips.has(section.id) : undefined}
+                                    onOpenChange={open => {
+                                      if (isSpecialTooltipService) {
+                                        setCategoryTooltipOpen(open)
+                                      } else if (isMobile) {
+                                        const newSet = new Set(openSmallTooltips)
+                                        if (open) {
+                                          newSet.add(section.id)
+                                        } else {
+                                          newSet.delete(section.id)
                                         }
-                                      }}
-                                      onClick={(e) => {
-                                        // На мобильных также обрабатываем клик (для совместимости)
-                                        if (isMobile && !isSpecialTooltipService) {
-                                          e.preventDefault()
-                                          e.stopPropagation()
-                                        }
+                                        setOpenSmallTooltips(newSet)
                                       }
-                                      >
-                                      <span className="inline sm:hidden">Cena</span>
-                                      <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
-                                        <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                      </span>
-                                    </div>
-                                  </PopoverTrigger>
-                                  <PopoverContent
-                                    side="bottom"
-                                    sideOffset={8}
-                                    className={cn(
-                                      "w-fit max-w-[280px]",
-                                      service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
-                                        ? 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center'
-                                        : 'border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
-                                    )}
-                                    style={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? {
-                                      backgroundImage: `url('${manifest.Background_1}')`,
-                                    } : {}}
+                                    }}
                                   >
-                                    {service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
-                                      <>
-                                        <div className="absolute inset-0 bg-black/50 z-0" />
-                                        <p className="relative z-10 text-sm leading-snug text-white font-medium">
-                                          cena z VAT (brutto)
-                                        </p>
-                                      </>
-                                    ) : (
-                                      <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
-                                        {priceTooltip}
-                                      </p>
-                                    )}
-                                  </PopoverContent>
-                                </Popover>
-                                ) : (
-                                <Tooltip
-                                  onOpenChange={open => {
-                                    if (isSpecialTooltipService) {
-                                      setCategoryTooltipOpen(open)
-                                    }
-                                  }}
-                                >
-                                  <TooltipTrigger
-                                    asChild
-                                  >
-                                    <div
-                                      className={cn(
-                                        'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                        section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                          ? 'justify-center'
-                                          : 'justify-end',
-                                        'md:cursor-default'
-                                      )}
-                                      role="button"
-                                      tabIndex={0}
-                                      aria-label="Informacja o cenach"
+                                    <PopoverTrigger
+                                      asChild
                                     >
-                                      <span className="hidden sm:inline">Cena, zł</span>
-                                      <span className="inline sm:hidden">Cena</span>
-                                      <span
-                                        className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer"
+                                      <div
+                                        className={cn(
+                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
+                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                            ? 'justify-center'
+                                            : 'justify-end',
+                                          'md:cursor-default cursor-pointer'
+                                        )}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-label="Informacja o cenach"
+                                        onPointerDown={(e) => {
+                                          // На мобильных обрабатываем touch события
+                                          if (isMobile && !isSpecialTooltipService) {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            const newSet = new Set(openSmallTooltips)
+                                            if (newSet.has(section.id)) {
+                                              newSet.delete(section.id)
+                                            } else {
+                                              // Закрываем все остальные tooltip и открываем только этот
+                                              newSet.clear()
+                                              newSet.add(section.id)
+                                            }
+                                            setOpenSmallTooltips(newSet)
+                                          }
+                                        }}
+                                        onClick={(e) => {
+                                          // На мобильных также обрабатываем клик (для совместимости)
+                                          if (isMobile && !isSpecialTooltipService) {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                          }
+                                        }}
                                       >
-                                        <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                      </span>
-                                    </div>
-                                  </TooltipTrigger>
-                                  <TooltipContent
-                                    {...(isSpecialTooltipService
-                                      ? {
-                                        side: 'left',
-                                        align: 'center',
-                                        sideOffset: 16,
-                                        collisionPadding: 16,
-                                        className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
-                                      }
-                                      : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
-                                        ? {
-                                          side: 'top',
-                                          sideOffset: 4,
-                                          className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
-                                          style: {
-                                            backgroundImage: `url('${manifest.Background_1}')`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                          },
-                                        }
-                                        : {
-                                          side: 'top',
-                                          sideOffset: 4
-                                        })}
-                                  >
-                                    {isSpecialTooltipService ? (
-                                      renderPriceTooltipContent()
-                                    ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
-                                      <>
-                                        <div className="absolute inset-0 bg-black/50 z-0" />
-                                        <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                          cena z VAT (brutto)
+                                        <span className="inline sm:hidden">Cena</span>
+                                        <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                        </span>
+                                      </div>
+                                    </PopoverTrigger>
+                                    <PopoverContent
+                                      side="bottom"
+                                      sideOffset={8}
+                                      className={cn(
+                                        "w-fit max-w-[280px]",
+                                        service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
+                                          ? 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center'
+                                          : 'border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
+                                      )}
+                                      style={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? {
+                                        backgroundImage: `url('${manifest.Background_1}')`,
+                                      } : {}}
+                                    >
+                                      {service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
+                                        <>
+                                          <div className="absolute inset-0 bg-black/50 z-0" />
+                                          <p className="relative z-10 text-sm leading-snug text-white font-medium">
+                                            cena z VAT (brutto)
+                                          </p>
+                                        </>
+                                      ) : (
+                                        <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                          {priceTooltip}
                                         </p>
-                                      </>
-                                    ) : (
-                                      <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
-                                        {priceTooltip}
-                                      </p>
-                                    )}
-                                  </TooltipContent>
-                                </Tooltip>
+                                      )}
+                                    </PopoverContent>
+                                  </Popover>
+                                ) : (
+                                  <Tooltip
+                                    onOpenChange={open => {
+                                      if (isSpecialTooltipService) {
+                                        setCategoryTooltipOpen(open)
+                                      }
+                                    }}
+                                  >
+                                    <TooltipTrigger
+                                      asChild
+                                    >
+                                      <div
+                                        className={cn(
+                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
+                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                            ? 'justify-center'
+                                            : 'justify-end',
+                                          'md:cursor-default'
+                                        )}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-label="Informacja o cenach"
+                                      >
+                                        <span className="hidden sm:inline">Cena, zł</span>
+                                        <span className="inline sm:hidden">Cena</span>
+                                        <span
+                                          className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer"
+                                        >
+                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                        </span>
+                                      </div>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                      {...(isSpecialTooltipService
+                                        ? {
+                                          side: 'left',
+                                          align: 'center',
+                                          sideOffset: 16,
+                                          collisionPadding: 16,
+                                          className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                        }
+                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
+                                          ? {
+                                            side: 'top',
+                                            sideOffset: 4,
+                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                            style: {
+                                              backgroundImage: `url('${manifest.Background_1}')`,
+                                              backgroundSize: 'cover',
+                                              backgroundPosition: 'center',
+                                            },
+                                          }
+                                          : {
+                                            side: 'top',
+                                            sideOffset: 4
+                                          })}
+                                    >
+                                      {isSpecialTooltipService ? (
+                                        renderPriceTooltipContent()
+                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
+                                        <>
+                                          <div className="absolute inset-0 bg-black/50 z-0" />
+                                          <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                            cena z VAT (brutto)
+                                          </p>
+                                        </>
+                                      ) : (
+                                        <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                          {priceTooltip}
+                                        </p>
+                                      )}
+                                    </TooltipContent>
+                                  </Tooltip>
                                 )}
                               </TooltipProvider>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
