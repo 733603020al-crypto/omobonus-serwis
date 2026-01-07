@@ -1601,57 +1601,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
     }
   }, [openSmallTooltips, isMobile])
 
-  // Обработчик swipe down для закрытия большого окна и затемнение фона (только для больших окон)
+  // Управление прокруткой body при открытом модальном окне
   useEffect(() => {
-    if (!isCategoryTooltipOpen || !isMobile || !isSpecialTooltipService) return
-
-    // Добавляем затемнение фона
-    const backdrop = document.createElement('div')
-    backdrop.className = 'fixed inset-0 bg-black/50 z-40'
-    backdrop.style.display = 'block'
-    document.body.appendChild(backdrop)
-    document.body.style.overflow = 'hidden'
-
-    // Обработчик клика вне окна для закрытия
-    const handleBackdropClick = (e: MouseEvent) => {
-      if (e.target === backdrop) {
-        setCategoryTooltipOpen(false)
-      }
-    }
-    backdrop.addEventListener('click', handleBackdropClick)
-
-    // Обработчик swipe down
-    const handleTouchStart = (e: TouchEvent) => {
-      if (tooltipContentRef.current && tooltipContentRef.current.contains(e.target as Node)) {
-        swipeStartY.current = e.touches[0].clientY
-      }
-    }
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (swipeStartY.current === null || !tooltipContentRef.current) return
-      if (!tooltipContentRef.current.contains(e.target as Node)) return
-
-      const currentY = e.touches[0].clientY
-      const diff = currentY - swipeStartY.current
-
-      // Если свайп вниз больше 50px, закрываем окно
-      if (diff > 50) {
-        setCategoryTooltipOpen(false)
-        swipeStartY.current = null
-      }
-    }
-
-    document.addEventListener('touchstart', handleTouchStart)
-    document.addEventListener('touchmove', handleTouchMove)
-
-    return () => {
-      if (document.body.contains(backdrop)) {
-        document.body.removeChild(backdrop)
-      }
+    if (isCategoryTooltipOpen && isMobile && isSpecialTooltipService) {
+      document.body.style.overflow = 'hidden'
+    } else {
       document.body.style.overflow = ''
-      backdrop.removeEventListener('click', handleBackdropClick)
-      document.removeEventListener('touchstart', handleTouchStart)
-      document.removeEventListener('touchmove', handleTouchMove)
+    }
+    return () => {
+      document.body.style.overflow = ''
     }
   }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
 
@@ -1667,7 +1625,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
     return (
       <div
         ref={tooltipContentRef}
-        className="relative pointer-events-auto w-[min(calc(100vw-32px),900px)] md:w-[min(calc(100vw-64px),900px)] max-h-[90vh] md:max-h-[88vh] rounded-2xl border border-[rgba(200,169,107,0.45)] shadow-[0_22px_45px_rgba(0,0,0,0.5)] text-[#f8eacd] overflow-hidden"
+        className={cn(
+          "relative pointer-events-auto rounded-2xl border border-[rgba(200,169,107,0.45)] shadow-[0_22px_45px_rgba(0,0,0,0.5)] text-[#f8eacd] overflow-hidden",
+          isMobile ? "w-full min-h-fit" : "w-[min(calc(100vw-32px),900px)] md:w-[min(calc(100vw-64px),900px)] max-h-[90vh] md:max-h-[88vh]"
+        )}
         style={{
           backgroundImage: "url('/images/services-background.webp')",
           backgroundSize: 'cover',
@@ -1677,15 +1638,33 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
         <div className="absolute inset-0 rounded-2xl bg-[rgba(0,0,0,0.5)] pointer-events-none" />
         {/* Кнопка закрытия X - фиксированная вверху на мобильных */}
         {isMobile && (
-          <button
-            onClick={() => setCategoryTooltipOpen(false)}
-            className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 active:bg-black/90 text-white transition-colors touch-manipulation shadow-lg"
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              setCategoryTooltipOpen(false)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                e.stopPropagation()
+                setCategoryTooltipOpen(false)
+              }
+            }}
+            className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 active:bg-black/90 text-white transition-colors touch-manipulation shadow-lg cursor-pointer"
             aria-label="Zamknij"
           >
             <X className="w-5 h-5" />
-          </button>
+          </div>
         )}
-        <div className="relative p-6 md:p-7 pb-8 md:pb-7 space-y-6 max-h-[90vh] md:max-h-[88vh] overflow-y-auto">
+        <div
+          className={cn(
+            "relative p-6 md:p-7 pb-8 md:pb-7 space-y-6",
+            !isMobile && "max-h-[90vh] md:max-h-[88vh] overflow-y-auto"
+          )}
+        >
           <div className="text-center space-y-2">
             <h4 className="text-[22px] md:text-[26px] font-cormorant font-semibold text-white tracking-wide">
               Kategorie urządzeń
@@ -2326,6 +2305,25 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                       )}
                                     </PopoverContent>
                                   </Popover>
+                                ) : isMobile && isSpecialTooltipService ? (
+                                  <div
+                                    className={cn(
+                                      'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer'
+                                    )}
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label="Informacja o kategoriach"
+                                    onClick={(e) => {
+                                      e.preventDefault()
+                                      e.stopPropagation()
+                                      setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                    }}
+                                  >
+                                    <span className="inline sm:hidden">Cena</span>
+                                    <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                    </span>
+                                  </div>
                                 ) : (
                                   <Tooltip
                                     onOpenChange={open => {
@@ -3505,6 +3503,31 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
           ))}
         </Accordion>
       </div>
+
+      {/* БОЛЬШАЯ ПОДСКАЗКА (МОДАЛЬНОЕ ОКНО) ДЛЯ МОБИЛЬНЫХ */}
+      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm">
+          <div
+            className="absolute left-0 right-0 bottom-0 top-0 overflow-y-auto"
+            style={{
+              paddingTop: 'calc(65px + env(safe-area-inset-top) + 16px)',
+              paddingBottom: 'calc(env(safe-area-inset-bottom) + 32px)',
+              WebkitOverflowScrolling: 'touch',
+            }}
+            onClick={(e) => {
+              // Закрываем по клику на область вокруг контента (backdrop)
+              if (e.target === e.currentTarget) {
+                setCategoryTooltipOpen(false)
+              }
+            }}
+          >
+            {/* Контент модального окна */}
+            <div className="mx-auto w-[calc(100vw-32px)] md:w-[min(calc(100vw-64px),900px)]">
+              {renderPriceTooltipContent()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
