@@ -1625,7 +1625,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
     const handleTouchMove = (e: TouchEvent) => {
       if (swipeStartY.current === null || !tooltipContentRef.current) return
       if (!tooltipContentRef.current.contains(e.target as Node)) return
-      
+
       const currentY = e.touches[0].clientY
       const diff = currentY - swipeStartY.current
 
@@ -2232,12 +2232,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             <div
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
-                                <TooltipProvider delayDuration={100}>
-                                  <Tooltip
+                              <TooltipProvider delayDuration={100}>
+                                <Tooltip
                                   open={isMobile && !isSpecialTooltipService ? openSmallTooltips.has(section.id) : undefined}
-                                    onOpenChange={open => {
-                                      if (isSpecialTooltipService) {
-                                        setCategoryTooltipOpen(open)
+                                  onOpenChange={open => {
+                                    if (isSpecialTooltipService) {
+                                      setCategoryTooltipOpen(open)
                                     } else if (isMobile) {
                                       const newSet = new Set(openSmallTooltips)
                                       if (open) {
@@ -2246,12 +2246,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         newSet.delete(section.id)
                                       }
                                       setOpenSmallTooltips(newSet)
-                                      }
-                                    }}
+                                    }
+                                  }}
+                                >
+                                  <TooltipTrigger
+                                    asChild
                                   >
-                                    <TooltipTrigger
-                                      asChild
-                                    >
                                     <div
                                       className={cn(
                                         'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
@@ -2260,9 +2260,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                           : 'justify-end',
                                         'md:cursor-default cursor-pointer'
                                       )}
-                                        role="button"
-                                        tabIndex={0}
-                                        aria-label="Informacja o cenach"
+                                      role="button"
+                                      tabIndex={0}
+                                      aria-label="Informacja o cenach"
                                       onPointerDown={(e) => {
                                         // На мобильных обрабатываем touch события
                                         if (isMobile && !isSpecialTooltipService) {
@@ -2321,49 +2321,49 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                       </span>
                                     </div>
-                                    </TooltipTrigger>
-                                    <TooltipContent
-                                      {...(isSpecialTooltipService
+                                  </TooltipTrigger>
+                                  <TooltipContent
+                                    {...(isSpecialTooltipService
+                                      ? {
+                                        side: isMobile ? 'bottom' : 'left',
+                                        align: 'center',
+                                        sideOffset: isMobile ? 8 : 16,
+                                        collisionPadding: 16,
+                                        className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                      }
+                                      : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
                                         ? {
-                                          side: (isMobile ? 'bottom' : 'left') as const,
-                                          align: 'center' as const,
-                                          sideOffset: isMobile ? 8 : 16,
-                                          collisionPadding: 16,
-                                          className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                          side: isMobile ? 'bottom' : 'top',
+                                          sideOffset: 4,
+                                          className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                          style: {
+                                            backgroundImage: `url('${manifest.Background_1}')`,
+                                            backgroundSize: 'cover',
+                                            backgroundPosition: 'center',
+                                          },
                                         }
-                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
-                                          ? {
-                                            side: (isMobile ? 'bottom' : 'top') as const,
-                                            sideOffset: 4,
-                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
-                                            style: {
-                                              backgroundImage: `url('${manifest.Background_1}')`,
-                                              backgroundSize: 'cover',
-                                              backgroundPosition: 'center',
-                                            },
-                                          }
-                                          : { 
-                                            side: (isMobile ? 'bottom' : 'top') as const,
-                                            sideOffset: 4 
-                                          })}
-                                    >
-                                      {isSpecialTooltipService ? (
-                                        renderPriceTooltipContent()
-                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
-                                        <>
-                                          <div className="absolute inset-0 bg-black/50 z-0" />
-                                          <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                            cena z VAT (brutto)
-                                          </p>
-                                        </>
-                                      ) : (
-                                        <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
-                                          {priceTooltip}
+                                        : {
+                                          side: isMobile ? 'bottom' : 'top',
+                                          sideOffset: 4
+                                        })}
+                                  >
+                                    {isSpecialTooltipService ? (
+                                      renderPriceTooltipContent()
+                                    ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' ? (
+                                      <>
+                                        <div className="absolute inset-0 bg-black/50 z-0" />
+                                        <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                          cena z VAT (brutto)
                                         </p>
-                                      )}
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
+                                      </>
+                                    ) : (
+                                      <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
+                                        {priceTooltip}
+                                      </p>
+                                    )}
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
                               {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
