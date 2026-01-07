@@ -2325,15 +2325,15 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     <TooltipContent
                                       {...(isSpecialTooltipService
                                         ? {
-                                          side: 'left' as const,
-                                          align: 'center' as const,
+                                          side: 'left',
+                                          align: 'center',
                                           sideOffset: 16,
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
                                         : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych'
                                           ? {
-                                            side: 'top' as const,
+                                            side: 'top',
                                             sideOffset: 4,
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
@@ -2343,7 +2343,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                             },
                                           }
                                           : {
-                                            side: 'top' as const,
+                                            side: 'top',
                                             sideOffset: 4
                                           })}
                                     >
