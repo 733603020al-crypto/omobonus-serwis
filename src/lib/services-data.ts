@@ -1964,6 +1964,7 @@ const applyInkjetCarriageSubcategory = (sections: PricingSection[]) => {
     )
 
   if (!carriageSubcategory) return
+  carriageSubcategory.title = 'Karetka i napęd (pasek, enkoder)'
 
   carriageSubcategory.items = [
     {
@@ -2001,6 +2002,7 @@ const applyInkjetHeadSubcategory = (sections: PricingSection[]) => {
     )
 
   if (!headSubcategory) return
+  headSubcategory.title = 'Głowica drukująca i układ tuszu'
 
   headSubcategory.items = [
     {
@@ -2341,6 +2343,15 @@ const createLaserPricingSections = (): PricingSection[] => {
   return sections
 }
 
+const removeUnwantedSubcategoriesForInkjet = (sections: PricingSection[]) => {
+  const repairsSection = sections.find(section => section.id === 'naprawy')
+  if (!repairsSection?.subcategories) return
+
+  repairsSection.subcategories = repairsSection.subcategories.filter(
+    sub => sub.id !== 'naprawy-tasma'
+  )
+}
+
 const createInkjetPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   applyInkjetPaperFeedSubcategory(sections)
@@ -2350,6 +2361,7 @@ const createInkjetPricingSections = (): PricingSection[] => {
   applyInkjetScannerSubcategory(sections)
   applyInkjetSoftwareSubcategory(sections)
   applyInkjetAdditionalSubcategory(sections)
+  removeUnwantedSubcategoriesForInkjet(sections)
   return sections
 }
 
