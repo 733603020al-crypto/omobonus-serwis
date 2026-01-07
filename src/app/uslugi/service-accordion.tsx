@@ -3473,4 +3473,3 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
 }
 
 export default ServiceAccordion
-
