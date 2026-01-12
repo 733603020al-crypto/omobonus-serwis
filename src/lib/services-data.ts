@@ -1517,6 +1517,201 @@ const applyLaserCleaningSection = (sections: PricingSection[]) => {
   ]
 }
 
+const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
+  const cleaningSection = sections.find(section => section.id === 'konserwacja')
+  if (!cleaningSection) return
+  cleaningSection.items = [
+    {
+      service:
+        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wszelkich prowadnic, śrub i osi (kurz, filament, zanieczyszczenia)\n• kontrola i czyszczenie ekstrudera oraz hotendu\n• sprawdzenie i czyszczenie stołu roboczego oraz układu podawania filamentu\n• szybki przegląd układu elektronicznego i złączy\n• test kalibracji podstawowej (osi X / Y / Z)',
+      price: '150',
+      duration: '1–3 dni',
+    },
+    {
+      service:
+        'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie napinaczy pasów i kontrola przesunięć osi\n• smarowanie prowadnic liniowych i śrub\n• regulacja naciągu pasków i prowadzeń\n• kontrola i czyszczenie czujników oraz krańcówek',
+      price: '200',
+      duration: '1–3 dni',
+    },
+    {
+      service:
+        'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• precyzyjna kalibracja stołu (auto-bed leveling / mesh)\n• pełne czyszczenie ekstrudera + wymiana tulei PTFE\n• kontrola i optymalizacja chłodzenia (wentylatory, kanały)\n• reset i aktualizacja firmware (jeśli możliwe)\n• test jakości wydruku i korekta parametrów',
+      price: '250',
+      duration: '1–3 dni',
+    },
+  ]
+}
+
+const apply3DPrinterMechanicsSubcategory = (sections: PricingSection[]) => {
+  const serviceSection = sections.find(section => section.id === 'naprawy')
+  const mechanicsSubcategory = serviceSection?.subcategories?.[0]
+  if (!mechanicsSubcategory) return
+  mechanicsSubcategory.title = 'Mechanika i układ ruchu (osie, paski, ekstruder)'
+  mechanicsSubcategory.items = [
+    {
+      service: 'Regulacja i kalibracja osi X / Y / Z\n(nierówne warstwy, przesunięcia, stuki podczas ruchu)',
+      price: '150 zł',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Regulacja lub wymiana pasków i napinaczy\n(luzy, przeskakiwanie, utrata dokładności druku)',
+      price: '180 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Serwis ekstrudera i hotendu\n(zatykanie, brak podawania filamentu, wycieki)',
+      price: '200 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Czyszczenie i naprawa układu podawania filamentu\n(ślizganie filamentu, nieregularne podawanie)',
+      price: '150 zł',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Naprawa systemu chłodzenia (wentylatory, kanały)\n(przegrzewanie, deformacje wydruku)',
+      price: '150 zł + części',
+      duration: '1–2 dni',
+    },
+  ]
+}
+
+const apply3DPrinterElectronicsSubcategory = (sections: PricingSection[]) => {
+  const serviceSection = sections.find(section => section.id === 'naprawy')
+  const electronicsSubcategory = serviceSection?.subcategories?.[1]
+  if (!electronicsSubcategory) return
+  electronicsSubcategory.title = 'Elektronika i sterowanie (płyta główna, czujniki, okablowanie)'
+  electronicsSubcategory.items = [
+    {
+      service: 'Diagnostyka i naprawa płyty głównej\n(błędy systemowe, brak reakcji, resetowanie się drukarki)',
+      price: '200 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Wymiana lub naprawa czujników (endstop, BL-Touch, termistory)\n(błędy osi, problemy z poziomowaniem, błędy temperatury)',
+      price: '150 zł + części',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Naprawa lub wymiana okablowania i złączy\n(przerywanie pracy, zaniki sygnału, niestabilność)',
+      price: '150 zł + części',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Naprawa układów zasilania (zasilacz, przewody)\n(brak zasilania, wyłączanie się drukarki)',
+      price: '180 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Wgrywanie, reset i konfiguracja firmware\n(błędy oprogramowania, nieprawidłowe działanie po aktualizacji)',
+      price: '120 zł',
+      duration: '1 dzień',
+    },
+  ]
+}
+
+const apply3DPrinterCalibrationSubcategory = (sections: PricingSection[]) => {
+  const serviceSection = sections.find(section => section.id === 'naprawy')
+  const calibrationSubcategory = serviceSection?.subcategories?.[2]
+  if (!calibrationSubcategory) return
+  calibrationSubcategory.title = 'Kalibracja i jakość druku'
+  calibrationSubcategory.items = [
+    {
+      service: 'Precyzyjna kalibracja poziomowania stołu (manual / auto-bed leveling)\n(problemy z pierwszą warstwą, słaba przyczepność)',
+      price: '150 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Kalibracja ekstrudera (E-steps, flow, retrakcja)\n(nitkowanie, niedolewanie, przelewanie filamentu)',
+      price: '150 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Kalibracja osi i geometrii drukarki\n(przekoszenia, nierówne ściany, przesunięcia warstw)',
+      price: '180 zł',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Testy jakości wydruku i korekta profilu materiału\n(PLA, PETG, ABS, TPU)',
+      price: '150 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Optymalizacja parametrów pod konkretny model / detal\n(druk techniczny, dokładność wymiarowa)',
+      price: '200 zł',
+      duration: '1–2 dni',
+    },
+  ]
+}
+
+const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
+  const serviceSection = sections.find(section => section.id === 'naprawy')
+  const softwareSubcategory = serviceSection?.subcategories?.[3]
+  if (!softwareSubcategory) return
+  softwareSubcategory.title = 'Oprogramowanie i konfiguracja'
+  softwareSubcategory.items = [
+    {
+      service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
+      price: '150 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Konfiguracja slicera i profili materiałów\n(Cura, PrusaSlicer, Bambu Studio itp.)',
+      price: '120 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Integracja z siecią i zdalne sterowanie (OctoPrint, Klipper UI)\n(zdalny monitoring, sterowanie z telefonu/PC)',
+      price: '150 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Backup i przywracanie ustawień drukarki\n(po awarii, aktualizacji, wymianie elektroniki)',
+      price: '100 zł',
+      duration: '1 dzień',
+    },
+    {
+      service: 'Szkolenie z obsługi i konfiguracji drukarki\n(dla nowych użytkowników lub firm)',
+      price: '150 zł / godz.',
+      duration: 'wg ustaleń',
+    },
+  ]
+}
+
+const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
+  const serviceSection = sections.find(section => section.id === 'naprawy')
+  const additionalSubcategory = serviceSection?.subcategories?.[4]
+  if (!additionalSubcategory) return
+  additionalSubcategory.title = 'Dodatkowe usługi (tuning i modyfikacje)'
+  additionalSubcategory.items = [
+    {
+      service: 'Montaż i konfiguracja auto-levelingu (BL-Touch, CR-Touch itp.)',
+      price: '200 zł + części',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Upgrade ekstrudera (direct drive, all-metal hotend)',
+      price: '250 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Modyfikacje pod materiały techniczne (ABS, nylon, CF)\n(komora, chłodzenie, ustawienia)',
+      price: '200 zł + części',
+      duration: '1–3 dni',
+    },
+    {
+      service: 'Usuwanie poważnych zatorów i regeneracja hotendu\n(cold pull, czyszczenie chemiczne, wymiana elementów)',
+      price: '180 zł + części',
+      duration: '1–2 dni',
+    },
+    {
+      service: 'Indywidualne modyfikacje na zamówienie\nwycena indywidualna wg ustaleń',
+      price: '—',
+      duration: '—',
+    },
+  ]
+}
+
 const applyLaserPaperFeedSubcategory = (sections: PricingSection[]) => {
   const serviceSection = sections.find(section => section.id === 'naprawy')
   const paperSubcategory = serviceSection?.subcategories?.[0]
@@ -2343,6 +2538,31 @@ const createLaserPricingSections = (): PricingSection[] => {
   return sections
 }
 
+const create3DPrinterPricingSections = (): PricingSection[] => {
+  const sections = createPricingSections()
+  apply3DPrinterCleaningSection(sections)
+
+  const repairsSection = sections.find(s => s.id === 'naprawy')
+  if (repairsSection) {
+    // Resetuj podkategorie, aby nie pokazywały się te od laserówek
+    repairsSection.subcategories = [
+      { id: '3d-mechanics', title: '', items: [] },
+      { id: '3d-electronics', title: '', items: [] },
+      { id: '3d-calibration', title: '', items: [] },
+      { id: '3d-software', title: '', items: [] },
+      { id: '3d-additional', title: '', items: [] },
+    ]
+  }
+
+  apply3DPrinterMechanicsSubcategory(sections)
+  apply3DPrinterElectronicsSubcategory(sections)
+  apply3DPrinterCalibrationSubcategory(sections)
+  apply3DPrinterSoftwareSubcategory(sections)
+  apply3DPrinterAdditionalSubcategory(sections)
+
+  return sections
+}
+
 const removeUnwantedSubcategoriesForInkjet = (sections: PricingSection[]) => {
   const repairsSection = sections.find(section => section.id === 'naprawy')
   if (!repairsSection?.subcategories) return
@@ -3054,6 +3274,14 @@ export const services: ServiceData[] = [
     icon: manifest['05_serwis_drukarek_atramentowych'],
     description: 'Naprawa, udrażnianie głowic i konserwacja drukarek atramentowych.',
     pricingSections: createInkjetPricingSections(),
+  },
+  {
+    slug: 'serwis-drukarek-3d',
+    title: 'Serwis i Naprawa Drukarek 3D',
+    subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
+    icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+    description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
+    pricingSections: create3DPrinterPricingSections(),
   },
   {
     slug: 'serwis-drukarek-termicznych',

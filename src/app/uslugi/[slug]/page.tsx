@@ -226,6 +226,15 @@ export default async function ServicePage({
           </div>
         )}
 
+        {/* SEO tekst dla strony Serwis i Naprawa Drukarek 3D */}
+        {service.slug === 'serwis-drukarek-3d' && (
+          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
+            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
+              Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.
+            </p>
+          </div>
+        )}
+
         {/* SEO tekst dla strony Serwis Drukarek Termiczno-etykietowych */}
         {service.slug === 'serwis-drukarek-termicznych' && (
           <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
