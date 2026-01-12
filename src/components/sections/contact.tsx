@@ -379,7 +379,7 @@ export function Contact() {
             {/* Opis problemu */}
             <div className="space-y-2" data-field-name="problemDescription">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
-                Opis problemu
+                Opis problemu (usterki)
               </label>
               <textarea
                 {...register('problemDescription')}
@@ -406,9 +406,9 @@ export function Contact() {
                   Dodaj
                 </label>
               </div>
-              <p className="text-black text-sm italic font-sans">
-                Załączone materiały pomogą nam szybciej i dokładniej zidentyfikować problem oraz
-                przygotować wycenę naprawy
+              <p className="text-red-600 text-sm italic font-sans">
+                Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz
+                przygotować wycenę naprawy.
               </p>
               <input
                 id="attachments"
