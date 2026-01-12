@@ -53,6 +53,11 @@ const seoMetadata: Record<string, { title: string; description: string; keywords
     description: 'Drukarka zastępcza Wrocław – urządzenie na czas naprawy, drukarka zastępcza dla firm, wynajem tymczasowy, serwis i wsparcie techniczne.',
     keywords: ['drukarka zastępcza Wrocław', 'drukarka na czas naprawy', 'urządzenie zastępcze', 'wynajem drukarki tymczasowo', 'drukarka zamienna'],
   },
+  'serwis-plotterow': {
+    title: 'Serwis i naprawa ploterów Wrocław – HP DesignJet, Canon, Epson | Omobonus',
+    description: 'Serwis ploterów HP DesignJet, Canon i Epson we Wrocławiu. Naprawa, czyszczenie głowic, kalibracja jakości wydruku, konserwacja i konfiguracja urządzeń szerokoformatowych dla firm i studiów.',
+    keywords: ['serwis ploterów Wrocław', 'naprawa ploterów HP DesignJet', 'naprawa ploterów Canon', 'naprawa ploterów Epson', 'serwis ploterów HP DesignJet Wrocław', 'naprawa ploterów Wrocław'],
+  },
 }
 
 export async function generateStaticParams() {
@@ -154,7 +159,7 @@ export default async function ServicePage({
         <div className="relative">
           <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
             <h1 className="text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-              {service.title}
+              {service.slug === 'serwis-plotterow' ? 'Serwis i Naprawa Ploterów – Wrocław' : service.title}
             </h1>
             {service.slug === 'wynajem-drukarek' ? (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
@@ -231,6 +236,15 @@ export default async function ServicePage({
           <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
             <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
               Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.
+            </p>
+          </div>
+        )}
+
+        {/* SEO tekst dla strony Serwis i Naprawa Ploterów */}
+        {service.slug === 'serwis-plotterow' && (
+          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
+            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
+              Serwis ploterów we Wrocławiu obejmuje naprawę i konserwację urządzeń szerokoformatowych HP DesignJet, Canon i Epson. Wykonujemy czyszczenie głowic, serwis układu atramentowego, regulację toru przesuwu mediów oraz kalibrację jakości wydruku. Zajmujemy się także diagnostyką elektroniki, konfiguracją oprogramowania i приwracaniem sprawności po błędach systemowych. Serwis ploterów dla firm, drukarni i studiów graficznych, z przygotowaniem urządzeń do pracy z różnymi typami papieru i materiałów.
             </p>
           </div>
         )}
