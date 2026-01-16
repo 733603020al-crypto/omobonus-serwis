@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import Script from 'next/script'
+import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Cormorant_SC, Lora, Inter, EB_Garamond, Spectral_SC, Cinzel } from 'next/font/google'
 import './globals.css'
 
@@ -221,22 +223,43 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl" className={fontClasses} suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5XQXX5KL');`,
-          }}
+        {/* GTM Consent Mode Default State */}
+        <Script id="gtm-consent" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied',
+              'personalization_storage': 'denied',
+              'functionality_storage': 'denied',
+              'security_storage': 'granted'
+            });
+          `}
+        </Script>
+
+        {/* CookieYes Script */}
+        <Script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
+          strategy="beforeInteractive"
         />
-        {/* End Google Tag Manager */}
+
+        {/* Google Tag Manager */}
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5XQXX5KL');`}
+        </Script>
+
         <link rel="preload" href="/images/omobonus-hero.webp" as="image" />
         <link rel="preload" href="/images/Background_1.webp" as="image" />
         <link rel="preload" href="/images/Logo_Omobonus.webp" as="image" />
       </head>
       <body className="font-sans antialiased scroll-smooth">
+        <ConsentManager />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -248,7 +271,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {children}
-        <script
+        <Script
+          id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
