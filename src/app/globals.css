@@ -5,7 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 65px; /* wysokość headera */
+    scroll-padding-top: 65px;
+    /* wysokość headera */
   }
 
   body {
@@ -50,7 +51,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  
+
   .service-description-text {
     word-break: break-word;
     overflow-wrap: anywhere;
@@ -65,7 +66,7 @@
     letter-spacing: normal !important;
     font-family: inherit !important;
   }
-  
+
   /* Ręcznie rysowane checkboxy */
   .checkbox-tick-wrapper {
     position: absolute;
@@ -108,10 +109,12 @@
       opacity: 0;
       transform: scale(0.6);
     }
+
     60% {
       opacity: 0.5;
       transform: scale(1.05);
     }
+
     100% {
       opacity: 0;
       transform: scale(1.12);
@@ -122,41 +125,42 @@
     0% {
       stroke-dashoffset: 230;
     }
+
     100% {
       stroke-dashoffset: 0;
     }
   }
 
-  
+
   /* Ограничение ширины первой колонки таблицы через max-width */
   table[data-slot="table"] tbody tr td:first-child {
     max-width: 850px;
   }
-  
+
   /* Фиксированное выравнивание колонки с ценами */
   table[data-slot="table"] tbody tr td:nth-child(2) {
     text-align: center !important;
     vertical-align: middle !important;
   }
-  
+
   /* На десктопе фиксируем ширину колонки с ценами */
   @media (min-width: 768px) {
     table[data-slot="table"] {
       table-layout: fixed;
     }
-    
+
     table[data-slot="table"] tbody tr td:nth-child(2) {
       width: 16.5% !important;
       min-width: 120px;
     }
   }
-  
+
   /* Убираем синюю рамку для подкатегорий в секции naprawy */
   [data-slot="accordion"] [data-slot="accordion-item"] [data-slot="accordion-trigger"]:focus-visible {
     outline: none !important;
     box-shadow: none !important;
   }
-  
+
   /* Отключаем Scroll Anchoring для подкатегорий в секции naprawy
      Это предотвращает автоматическую прокрутку страницы вверх при закрытии подкатегории.
      Браузер не будет пытаться сохранить видимость якорного элемента при изменении высоты.
@@ -171,40 +175,40 @@
      
      ВАЖНО: Применение к родительскому AccordionContent может нарушить внутренний скролл,
      поэтому используем более специфичные селекторы для элементов внутри него. */
-  
+
   /* Accordion для подкатегорий в секции naprawy */
   [data-naprawy-section="true"] [data-slot="accordion"][data-naprawy-accordion="true"] {
     overflow-anchor: none !important;
   }
-  
+
   /* AccordionItem (контейнер подкатегории) - это ключевой элемент для отключения Scroll Anchoring
      data-naprawy-subcategory="true" добавляется на AccordionItem подкатегорий в секции naprawy */
   [data-slot="accordion-item"][data-naprawy-subcategory="true"] {
     overflow-anchor: none !important;
   }
-  
+
   /* AccordionContent (внешний контейнер Radix UI) для подкатегорий внутри секции naprawy
      Этот элемент также меняет высоту при закрытии */
   [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"] {
     overflow-anchor: none !important;
   }
-  
+
   /* Внутренний div с overflow-y-auto для подкатегорий в секции naprawy
      Этот div находится внутри AccordionContent подкатегории и содержит контент с таблицами */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"] > div {
+  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"]>div {
     overflow-anchor: none !important;
   }
-  
+
   /* AccordionTrigger (заголовок подкатегории) также может быть якорем */
   [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-trigger"] {
     overflow-anchor: none !important;
   }
-  
+
   /* AccordionHeader (обертка вокруг AccordionTrigger) */
   [data-slot="accordion-item"][data-naprawy-subcategory="true"] header {
     overflow-anchor: none !important;
   }
-  
+
   /* КРИТИЧЕСКИ ВАЖНО: AccordionItem самой секции naprawy (верхний уровень)
      Браузер использует этот элемент как якорь при изменении высоты AccordionContent секции
      При закрытии подкатегории высота AccordionContent уменьшается, и браузер пытается
@@ -212,7 +216,7 @@
   [data-slot="accordion-item"][data-naprawy-main-section="true"] {
     overflow-anchor: none !important;
   }
-  
+
   /* AccordionContent секции naprawy - отключаем Scroll Anchoring
      для предотвращения автоматической компенсации скролла viewport при изменении высоты содержимого
      ВАЖНО: Это не влияет на внутренний скролл контейнера (overflow-y-auto), 
@@ -220,65 +224,67 @@
   [data-naprawy-section="true"] [data-slot="accordion-content"] {
     overflow-anchor: none !important;
   }
-  
+
   /* РАДИКАЛЬНОЕ РЕШЕНИЕ: Отключаем Scroll Anchoring для ВСЕХ элементов внутри AccordionItem секции naprawy
      Используем универсальный селектор, чтобы покрыть все возможные элементы, которые браузер может использовать как якорь */
   [data-slot="accordion-item"][data-naprawy-main-section="true"],
   [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
     overflow-anchor: none !important;
   }
-  
+
   /* Также отключаем для родительского Accordion, если браузер использует его как якорь */
   [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"],
   [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
     overflow-anchor: none !important;
   }
-  
+
   /* КРИТИЧЕСКИ ВАЖНО: Отключаем Scroll Anchoring для самого AccordionTrigger секции naprawy
      Браузер может использовать заголовок секции как якорный элемент */
   [data-slot="accordion-item"][data-naprawy-main-section="true"] [data-slot="accordion-trigger"] {
     overflow-anchor: none !important;
   }
-  
+
   /* Отключаем для всех div внутри AccordionItem секции naprawy */
   [data-slot="accordion-item"][data-naprawy-main-section="true"] div {
     overflow-anchor: none !important;
   }
-  
+
   /* Обеспечиваем видимость надписи "Zobacz cennik" в подкатегориях */
   [data-subcategory-link] {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
-  
+
   /* Скрываем надпись когда подкатегория открыта */
   [data-slot="accordion-trigger"][data-state="open"] [data-subcategory-link] {
     display: none !important;
   }
-  
+
   /* Анимация при открытии FAQ ответа */
   [data-slot="accordion-content"] {
     animation: fadeIn 0.3s ease-in-out;
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(-5px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   /* Анимация появления модального окна */
   @keyframes modalAppear {
     from {
       opacity: 0;
       transform: scale(0.9) translateY(-10px);
     }
+
     to {
       opacity: 1;
       transform: scale(1) translateY(0);
@@ -293,11 +299,11 @@
   .arrow-icon path {
     transition: fill 0.2s ease;
   }
-  
+
   .group:hover .arrow-icon path {
     fill: #000000;
   }
-  
+
   /* Прозрачный фон для PhoneInput dropdown и кнопки с флагом */
   .flag-dropdown,
   .flag-dropdown.open,
@@ -308,13 +314,13 @@
     background: transparent !important;
     background-color: transparent !important;
   }
-  
+
   /* Фон выпадающего меню с текстурой бумаги */
   .country-list,
   .flag-dropdown .country-list,
   .react-tel-input .country-list,
   div.country-list {
-    background-image: 
+    background-image:
       linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
       url('/images/zmiety arkusz papieru 2.webp') !important;
     background-size: cover !important;
@@ -323,9 +329,9 @@
     border: 1px solid rgba(58, 46, 36, 0.2) !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   }
-  
+
   /* Скроллбар - убрали, оставляем по умолчанию */
-  
+
   /* Прозрачный фон для всех полей ввода в форме - включая autocomplete/autofill */
   input,
   textarea,
@@ -358,7 +364,7 @@
     box-shadow: 0 0 0 1000px transparent inset !important;
     -moz-text-fill-color: #3a2e24 !important;
   }
-  
+
   input:focus,
   input:active,
   input:hover,
@@ -370,7 +376,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   /* Для PhoneInput */
   .react-tel-input input,
   .react-tel-input input:focus,
@@ -393,7 +399,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   /* Для Firefox */
   .country-list,
   .flag-dropdown .country-list,
@@ -402,20 +408,20 @@
     scrollbar-width: thin !important;
     scrollbar-color: rgba(58, 46, 36, 0.4) transparent !important;
   }
-  
+
   .country-list .country {
     background: transparent !important;
   }
-  
+
   .country-list .country:hover,
   .country-list .country.highlight {
     background: rgba(58, 46, 36, 0.1) !important;
   }
-  
+
   /* Дополнительный класс для применения через dropdownClass */
   .paper-dropdown-bg .country-list,
   .paper-dropdown-bg.country-list {
-    background-image: 
+    background-image:
       linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
       url('/images/zmiety arkusz papieru 2.webp') !important;
     background-size: cover !important;
@@ -432,17 +438,17 @@
       width: 100%;
       max-width: 100%;
     }
-    
+
     table[data-slot="table"] colgroup {
       display: none;
     }
-    
+
     table[data-slot="table"] tbody tr td:first-child {
       max-width: none;
       width: 80%;
       padding-right: 0.5rem;
     }
-    
+
     table[data-slot="table"] tbody tr td:nth-child(2) {
       min-width: 70px;
       width: 20% !important;
@@ -452,20 +458,20 @@
       text-align: center !important;
       vertical-align: middle !important;
     }
-    
+
     /* Контейнер таблицы на мобильных - убираем горизонтальную прокрутку */
     div[data-slot="table-container"] {
       overflow-x: visible !important;
       width: 100%;
     }
-    
+
     /* Ограничиваем ширину таблицы на мобильных */
     div[data-slot="table-container"] table {
       width: 100% !important;
       max-width: 100% !important;
     }
   }
-  
+
   /* КРИТИЧЕСКИ ВАЖНО: Прозрачный фон для input - в конце файла с максимальным приоритетом */
   input[type="text"],
   input[type="email"],
@@ -476,7 +482,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   input[type="text"]:-webkit-autofill,
   input[type="text"]:-webkit-autofill:hover,
   input[type="text"]:-webkit-autofill:focus,
@@ -496,7 +502,7 @@
     -webkit-text-fill-color: #3a2e24 !important;
     color: #3a2e24 !important;
   }
-  
+
   input[type="text"]:focus,
   input[type="text"]:active,
   input[type="text"]:hover,
@@ -511,7 +517,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   /* Специальные правила для тестовой страницы kontakt-test (из 25.11) */
   #kontakt-test input[type="text"],
   #kontakt-test input[type="email"],
@@ -521,7 +527,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   #kontakt-test input[type="text"]:-webkit-autofill,
   #kontakt-test input[type="text"]:-webkit-autofill:hover,
   #kontakt-test input[type="text"]:-webkit-autofill:focus,
@@ -542,7 +548,7 @@
     color: #000000 !important;
     transition: background-color 5000s ease-in-out 0s !important;
   }
-  
+
   #kontakt-test input[type="text"]:focus,
   #kontakt-test input[type="text"]:active,
   #kontakt-test input[type="text"]:hover,
@@ -557,28 +563,28 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
-  
+
+
   /* Прозрачный фон для radio и checkbox на тестовой странице */
   #kontakt-test input[type="radio"],
   #kontakt-test input[type="checkbox"] {
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   #kontakt-test input[type="radio"]:checked,
   #kontakt-test input[type="checkbox"]:checked {
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   /* Контейнеры для radio и checkbox */
   #kontakt-test label:has(input[type="radio"]),
   #kontakt-test label:has(input[type="checkbox"]) {
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   /* Специальные правила для основной формы kontakt (из 25.11) */
   #kontakt input[type="text"],
   #kontakt input[type="email"],
@@ -593,7 +599,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   #kontakt input[type="text"]:-webkit-autofill,
   #kontakt input[type="text"]:-webkit-autofill:hover,
   #kontakt input[type="text"]:-webkit-autofill:focus,
@@ -634,7 +640,7 @@
     color: #000000 !important;
     transition: background-color 5000s ease-in-out 0s !important;
   }
-  
+
   #kontakt input[type="text"]:focus,
   #kontakt input[type="text"]:active,
   #kontakt input[type="text"]:hover,
@@ -664,7 +670,7 @@
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
   }
-  
+
   /* Прозрачный фон для radio и checkbox на основной форме */
   #kontakt input[type="radio"],
   #kontakt input[type="checkbox"],
@@ -673,7 +679,7 @@
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   #kontakt input[type="radio"]:checked,
   #kontakt input[type="checkbox"]:checked,
   section#kontakt input[type="radio"]:checked,
@@ -681,7 +687,7 @@
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   /* Контейнеры для radio и checkbox */
   #kontakt label:has(input[type="radio"]),
   #kontakt label:has(input[type="checkbox"]),
@@ -690,10 +696,10 @@
     background-color: transparent !important;
     background: transparent !important;
   }
-  
+
   /* Выпадающий список стран - подложка из смятого листа */
   .custom-dropdown {
-    background-image: 
+    background-image:
       linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
       url('/images/zmiety arkusz papieru 2.webp') !important;
     background-size: cover !important;
@@ -707,7 +713,7 @@
   }
 
   .custom-dropdown::-webkit-scrollbar-track {
-    background-image: 
+    background-image:
       linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
       url('/images/zmiety arkusz papieru 2.webp') !important;
     background-size: cover !important;
@@ -759,21 +765,19 @@
   /* Приглушенный медный оттенок для создания эффекта старого матового золота */
   /* Мягкий вертикальный градиент: разница между верхом и низом 5-7% */
   /* Мягкая внутренняя тень в нижней части создает эффект утопленности */
-  
+
   /* Закрытые блоки - затемнение 80% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-item"] > div {
-    background-image: 
-      linear-gradient(
-        to bottom,
+  [data-slot="accordion-item"]>div {
+    background-image:
+      linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
-        rgba(55, 38, 20, 0.80) 100%
-      ),
+        rgba(55, 38, 20, 0.80) 100%),
       url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    box-shadow: 
+    box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.4),
       0 2px 6px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 245, 200, 0.1),
@@ -781,19 +785,17 @@
   }
 
   /* Шапка открытого блока - затемнение 85% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-item"][data-state="open"] > div {
-    background-image: 
-      linear-gradient(
-        to bottom,
+  [data-slot="accordion-item"][data-state="open"]>div {
+    background-image:
+      linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%
-      ),
+        rgba(52, 36, 20, 0.85) 100%),
       url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    box-shadow: 
+    box-shadow:
       0 6px 16px rgba(0, 0, 0, 0.5),
       0 3px 8px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 245, 200, 0.15),
@@ -801,19 +803,17 @@
   }
 
   /* Тело открытого блока - затемнение 82% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-content"][data-state="open"] > div {
-    background-image: 
-      linear-gradient(
-        to bottom,
+  [data-slot="accordion-content"][data-state="open"]>div {
+    background-image:
+      linear-gradient(to bottom,
         rgba(58, 43, 23, 0.48) 0%,
-        rgba(52, 36, 20, 0.82) 100%
-      ),
+        rgba(52, 36, 20, 0.82) 100%),
       url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    box-shadow: 
+    box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.4),
       0 2px 6px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 245, 200, 0.12),
@@ -822,18 +822,16 @@
 
   /* Блоки услуг на главной странице "Nasze Usługi" - такое же оформление как закрытые блоки аккордеона */
   .services-card-bg {
-    background-image: 
-      linear-gradient(
-        to bottom,
+    background-image:
+      linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
-        rgba(55, 38, 20, 0.80) 100%
-      ),
+        rgba(55, 38, 20, 0.80) 100%),
       url('/images/services-background.webp') !important;
     background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    box-shadow: 
+    box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.4),
       0 2px 6px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 245, 200, 0.1),
@@ -841,14 +839,12 @@
   }
 
   .services-card-bg:hover {
-    background-image: 
-      linear-gradient(
-        to bottom,
+    background-image:
+      linear-gradient(to bottom,
         rgba(60, 45, 25, 0.50) 0%,
-        rgba(55, 38, 20, 0.85) 100%
-      ),
+        rgba(55, 38, 20, 0.85) 100%),
       url('/images/services-background.webp') !important;
-    box-shadow: 
+    box-shadow:
       0 6px 16px rgba(0, 0, 0, 0.5),
       0 3px 8px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 245, 200, 0.15),
@@ -856,18 +852,16 @@
   }
 
   .modal-card-outer {
-    background-image: 
-      linear-gradient(
-        to bottom,
+    background-image:
+      linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%
-      ),
+        rgba(52, 36, 20, 0.85) 100%),
       url('/images/services-background.webp');
     background-color: transparent;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 
+    box-shadow:
       0 6px 16px rgba(0, 0, 0, 0.5),
       0 3px 8px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 245, 200, 0.15),
@@ -875,18 +869,16 @@
   }
 
   .modal-card-inner {
-    background-image: 
-      linear-gradient(
-        to bottom,
+    background-image:
+      linear-gradient(to bottom,
         rgba(58, 43, 23, 0.48) 0%,
-        rgba(52, 36, 20, 0.82) 100%
-      ),
+        rgba(52, 36, 20, 0.82) 100%),
       url('/images/services-background.webp');
     background-color: transparent;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 
+    box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.4),
       0 2px 6px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 245, 200, 0.12),
@@ -900,13 +892,24 @@
 
   /* Анимация shake для полей с ошибками валидации */
   @keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateX(0);
     }
-    10%, 30%, 50%, 70%, 90% {
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
       transform: translateX(-8px);
     }
-    20%, 40%, 60%, 80% {
+
+    20%,
+    40%,
+    60%,
+    80% {
       transform: translateX(8px);
     }
   }
@@ -926,4 +929,18 @@
     border-width: 2px !important;
   }
 
+}
+
+.page-serwis-drukarek-termicznych .h1-sub {
+  font-size: 0.85em !important;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .page-serwis-drukarek-termicznych .h1-sub {
+    display: block !important;
+    font-size: 0.72em !important;
+    line-height: 1.2 !important;
+    margin-top: 0.25em !important;
+  }
 }

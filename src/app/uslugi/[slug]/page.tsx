@@ -34,7 +34,7 @@ const seoMetadata: Record<string, { title: string; description: string; keywords
     keywords: ['serwis drukarek atramentowych Wrocław', 'naprawa drukarki atramentowej', 'udrażnianie głowicy drukarki', 'serwis Epson Wrocław', 'naprawa Canon', 'wymiana tuszu'],
   },
   'serwis-drukarek-termicznych': {
-    title: 'Serwis drukarek termicznych Wrocław | Omobonus naprawa drukarek etykiet',
+    title: 'Naprawa i serwis drukarek etykiet we Wrocławiu (Zebra, Dymo, Godex, Sato, Brother, ...)',
     description: 'Serwis drukarek termicznych Wrocław – naprawa drukarek Zebra, Brother, Dymo, wymiana głowicy termicznej, konserwacja i kalibracja urządzeń.',
     keywords: ['serwis drukarek termicznych Wrocław', 'naprawa drukarki etykiet', 'serwis Zebra', 'drukarka kodów kreskowych', 'naprawa drukarki etykietowej', 'wymiana głowicy termicznej'],
   },
@@ -148,7 +148,7 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <main className="min-h-screen pt-[65px] relative">
+      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : ''}`}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${manifest.services_background}')` }}
@@ -159,7 +159,17 @@ export default async function ServicePage({
         <div className="relative">
           <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
             <h1 className="text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-              {service.slug === 'serwis-plotterow' ? 'Serwis i Naprawa Ploterów – Wrocław' : service.title}
+              {service.slug === 'serwis-plotterow' ? (
+                'Serwis i Naprawa Ploterów – Wrocław'
+              ) : service.slug === 'serwis-drukarek-termicznych' ? (
+                <>
+                  Naprawa i serwis drukarek etykiet we Wrocławiu
+                  <br />
+                  <span className="h1-sub">(Zebra, Dymo, Godex, Sato, Brother, ...)</span>
+                </>
+              ) : (
+                service.title
+              )}
             </h1>
             {service.slug === 'wynajem-drukarek' ? (
               <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
