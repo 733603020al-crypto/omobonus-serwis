@@ -149,7 +149,7 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : ''}`}>
+      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${manifest.services_background}')` }}
@@ -158,7 +158,7 @@ export default async function ServicePage({
         </div>
 
         <div className="relative">
-          {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'wynajem-drukarek' ? (
+          {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza' ? (
             <>
               {/* HERO container */}
               <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1 -mt-[40px]">
@@ -185,7 +185,9 @@ export default async function ServicePage({
                                           ? "/images/08_serwis-ploterow.webp"
                                           : slug === 'serwis-drukarek-iglowych'
                                             ? "/images/07_serwis-drukarek-iglowych.webp"
-                                            : "/images/10_wynajem-drukarek.webp"
+                                            : slug === 'wynajem-drukarek'
+                                              ? "/images/10_wynajem-drukarek.webp"
+                                              : "/images/11_drukarka-zastepcza.webp"
                         }
                         alt={
                           slug === 'serwis-drukarek-termicznych'
@@ -206,7 +208,9 @@ export default async function ServicePage({
                                           ? "Serwis i Naprawa Ploterów"
                                           : slug === 'serwis-drukarek-iglowych'
                                             ? "Serwis Drukarek Igłowych"
-                                            : "Wynajem Drukarek"
+                                            : slug === 'wynajem-drukarek'
+                                              ? "Wynajem Drukarek"
+                                              : "Drukarka Zastępcza"
                         }
                         width={420}
                         height={420}
@@ -243,8 +247,10 @@ export default async function ServicePage({
                         'Serwis i Naprawa Ploterów'
                       ) : slug === 'serwis-drukarek-iglowych' ? (
                         'Serwis Drukarek Igłowych'
-                      ) : (
+                      ) : slug === 'wynajem-drukarek' ? (
                         'Wynajem (Dzierżawa) Drukarek'
+                      ) : (
+                        'Drukarka Zastępcza'
                       )}
                     </h1>
                   </div>
@@ -253,7 +259,11 @@ export default async function ServicePage({
               {/* INFO container */}
               <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-10">
                 <p className="text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                  Pełny wykaz usług i cen, bez ukrytych kosztów (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;)
+                  {slug === 'drukarka-zastepcza'
+                    ? 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych'
+                    : slug === 'wynajem-drukarek'
+                      ? 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.'
+                      : 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")'}
                 </p>
               </div>
             </>
@@ -276,7 +286,7 @@ export default async function ServicePage({
                 </p>
               ) : (
                 <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                  Pełny wykaz usług i cen, bez ukrytych kosztów (nie &ldquo;naprawa od 50 zł&rdquo; lub &ldquo;cena do uzgodnienia&rdquo;)
+                  Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")
                 </p>
               )}
             </div>
