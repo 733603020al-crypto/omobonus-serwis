@@ -50,7 +50,7 @@ export function Services() {
               {/* Treść */}
               <div className="flex-1">
                 <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                  {service.title}
+                  {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.title}
                 </h3>
                 <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
                   <span>Zobacz cennik</span>

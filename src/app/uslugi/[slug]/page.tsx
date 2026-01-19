@@ -36,7 +36,7 @@ const seoMetadata: Record<string, { title: string; description: string; keywords
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo | Omobonus Wrocław',
-    description: 'Serwis drukarek termicznych Wrocław – naprawa drukarek Zebra, Brother, Dymo, wymiana głowicy termicznej, konserwacja i kalibracja urządzeń.',
+    description: 'Bezpłatna diagnoza i wycena w 15 min. Jasny cennik bez ukrytych kosztów. Drukarka zastępcza na czas naprawy. Umów serwis.',
     keywords: ['serwis drukarek termicznych Wrocław', 'naprawa drukarki etykiet', 'serwis Zebra', 'drukarka kodów kreskowych', 'naprawa drukarki etykietowej', 'wymiana głowicy termicznej'],
   },
   'serwis-drukarek-iglowych': {
@@ -223,9 +223,9 @@ export default async function ServicePage({
                     <h1 className="text-[32px] md:text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
                       {slug === 'serwis-drukarek-termicznych' ? (
                         <>
-                          Naprawa i serwis drukarek etykiet we Wrocławiu
+                          Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu
                           <br />
-                          <span className="h1-sub text-[14px] md:text-[16px] opacity-80">(Zebra, Dymo, Godex, Sato, Brother, ...)</span>
+                          <span className="h1-sub text-[14px] md:text-[16px] opacity-80">(Zebra, Dymo, Godex, Sato, Brother i inne)</span>
                         </>
                       ) : slug === 'serwis-laptopow' ? (
                         <>
@@ -367,9 +367,18 @@ export default async function ServicePage({
 
         {/* SEO tekst dla strony Serwis Drukarek Termiczno-etykietowych */}
         {service.slug === 'serwis-drukarek-termicznych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis drukarek termicznych i etykietowych we Wrocławiu – naprawa drukarek etykiet Zebra, Brother, Dymo, Epson i innych. Oferujemy czyszczenie, konserwację, kalibrację oraz wymianę głowicy drukującej. Jeśli szukasz <strong>serwis drukarek termicznych Wrocław</strong> lub <strong>naprawa drukarki etykietowej Wrocław</strong>, zapewniamy szybką diagnozę i naprawę urządzeń etykietujących.
+          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px] text-[#cbb27c]">
+            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Serwis drukarek Zebra we Wrocławiu – drukarki i drukarka Zebra serwis.
+            </h2>
+            <p className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Serwis drukarek termicznych i etykietowych we Wrocławiu obejmuje naprawę drukarek etykiet Zebra, Brother, Dymo, Epson i innych oraz prace takie jak czyszczenie, konserwacja, kalibracja i wymiana głowicy drukującej.
+            </p>
+            <h3 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Dymo serwis – serwis drukarek Dymo i naprawa drukarki.
+            </h3>
+            <p className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Jeśli potrzebny jest serwis Dymo lub serwis drukarek etykiet, dotyczy to zarówno pojedynczej drukarki, jak i większej liczby drukarek używanych w drukowaniu etykiet.
             </p>
           </div>
         )}
