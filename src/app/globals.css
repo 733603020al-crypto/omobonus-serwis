@@ -936,10 +936,22 @@
   opacity: 0.9;
 }
 
+.page-serwis-laptopow .h1-sub {
+  font-size: 0.75em !important;
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .page-serwis-drukarek-termicznych .h1-sub {
     display: block !important;
     font-size: 0.72em !important;
+    line-height: 1.2 !important;
+    margin-top: 0.25em !important;
+  }
+
+  .page-serwis-laptopow .h1-sub {
+    display: block !important;
+    font-size: 0.65em !important;
     line-height: 1.2 !important;
     margin-top: 0.25em !important;
   }
