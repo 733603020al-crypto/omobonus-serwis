@@ -38,7 +38,31 @@ export function Services() {
               {/* Ikona */}
               <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                 <Image
-                  src={service.icon}
+                  src={
+                    service.slug === 'serwis-komputerow-stacjonarnych'
+                      ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
+                      : service.slug === 'serwis-laptopow'
+                        ? '/images/01_serwis-laptopow-icon.webp'
+                        : service.slug === 'outsourcing-it'
+                          ? '/images/03_outsourcing-it-icon.webp'
+                          : service.slug === 'serwis-drukarek-laserowych'
+                            ? '/images/04_serwis-drukarek-laserowych-icon.webp'
+                            : service.slug === 'serwis-drukarek-atramentowych'
+                              ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
+                              : service.slug === 'serwis-drukarek-3d'
+                                ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
+                                : service.slug === 'serwis-plotterow'
+                                  ? '/images/08_serwis-ploterow-icon.webp'
+                                  : service.slug === 'serwis-drukarek-termicznych'
+                                    ? '/images/06_serwis-drukarek-termicznych-icon.webp'
+                                    : service.slug === 'serwis-drukarek-iglowych'
+                                      ? '/images/07_serwis-drukarek-iglowych-icon.webp'
+                                      : service.slug === 'wynajem-drukarek'
+                                        ? '/images/10_wynajem-drukarek-icon.webp'
+                                        : service.slug === 'drukarka-zastepcza'
+                                          ? '/images/11_drukarka-zastepcza-icon.webp'
+                                          : service.icon
+                  }
                   alt={`${service.title} Wrocław - ikona usługi serwisowej`}
                   width={50}
                   height={50}
