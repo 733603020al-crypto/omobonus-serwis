@@ -61,7 +61,9 @@ export function Services() {
                                         ? '/images/10_wynajem-drukarek-icon.webp'
                                         : service.slug === 'drukarka-zastepcza'
                                           ? '/images/11_drukarka-zastepcza-icon.webp'
-                                          : service.icon
+                                          : service.slug === 'naprawa-drukarek'
+                                            ? '/images/Serwis_Drukarek-icon.webp'
+                                            : service.icon
                   }
                   alt={`${service.title} Wrocław - ikona usługi serwisowej`}
                   width={50}

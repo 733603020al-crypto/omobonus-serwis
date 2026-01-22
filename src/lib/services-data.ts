@@ -3517,6 +3517,14 @@ export const services: ServiceData[] = [
     pricingSections: createNeedlePricingSections(),
   },
   {
+    slug: 'naprawa-drukarek',
+    title: 'Naprawa Drukarek i Kserokopiarek',
+    subtitle: 'Naprawa specjalistycznych drukarek igłowych',
+    icon: manifest['07_serwis_drukarek_iglowych'],
+    description: 'Naprawa specjalistycznych drukarek igłowych.',
+    pricingSections: createNeedlePricingSections(),
+  },
+  {
     slug: 'wynajem-drukarek',
     title: 'Wynajem (Dzierżawa) Drukarek',
     subtitle: 'Dzierżawa urządzeń drukujących dla biur',

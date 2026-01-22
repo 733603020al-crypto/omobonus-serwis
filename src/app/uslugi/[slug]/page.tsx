@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { Metadata } from "next"
 import { services } from "@/lib/services-data"
@@ -7,57 +9,63 @@ import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 
+
 // SEO metadata for each service page
-const seoMetadata: Record<string, { title: string; description: string; keywords: string[] }> = {
+const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
     title: 'Naprawa laptopów Wrocław | Omobonus serwis komputerowy',
     description: 'Naprawa laptopów Wrocław – serwis laptopów wszystkich marek: HP, Dell, Lenovo, Asus, Acer. Wymiana matrycy, dysku SSD, instalacja Windows, odzyskiwanie danych.',
-    keywords: ['naprawa laptopów Wrocław', 'serwis laptopów Wrocław', 'wymiana matrycy laptop', 'wymiana dysku SSD laptop', 'czyszczenie laptopa Wrocław', 'naprawa laptopa HP', 'serwis Dell Wrocław', 'naprawa Lenovo'],
+
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Serwis komputerów Wrocław | Omobonus naprawa PC',
     description: 'Serwis komputerów Wrocław – naprawa PC, diagnostyka, modernizacja, wymiana podzespołów, instalacja Windows, konfiguracja sprzętu.',
-    keywords: ['serwis komputerów Wrocław', 'naprawa komputerów Wrocław', 'naprawa PC Wrocław', 'modernizacja komputera', 'wymiana karty graficznej', 'instalacja Windows Wrocław', 'diagnoza komputera'],
+
   },
   'outsourcing-it': {
     title: 'Outsourcing IT Wrocław | Omobonus obsługa informatyczna',
     description: 'Outsourcing IT Wrocław – obsługa informatyczna firm, wsparcie IT, helpdesk, administracja sieci i serwerów, stała opieka techniczna dla firm.',
-    keywords: ['outsourcing IT Wrocław', 'obsługa informatyczna firm', 'wsparcie IT Wrocław', 'usługi IT dla firm', 'administracja sieci', 'helpdesk IT Wrocław', 'opieka informatyczna'],
+
   },
   'serwis-drukarek-laserowych': {
     title: 'Serwis drukarek laserowych Wrocław | Omobonus naprawa drukarek',
     description: 'Serwis drukarek laserowych Wrocław – naprawa drukarek HP, Brother, Canon, Samsung, wymiana tonerów, konserwacja MFU, serwis urządzeń biurowych.',
-    keywords: ['serwis drukarek laserowych Wrocław', 'naprawa drukarek Wrocław', 'serwis drukarek HP', 'naprawa drukarki Brother', 'serwis MFU', 'wymiana tonera', 'naprawa kserokopiarki'],
+
   },
   'serwis-drukarek-atramentowych': {
     title: 'Serwis drukarek atramentowych Wrocław | Omobonus serwis drukarek',
     description: 'Serwis drukarek atramentowych Wrocław – naprawa drukarek Epson, Canon, HP, czyszczenie głowic, wymiana tuszy, usuwanie usterek i konserwacja.',
-    keywords: ['serwis drukarek atramentowych Wrocław', 'naprawa drukarki atramentowej', 'udrażnianie głowicy drukarki', 'serwis Epson Wrocław', 'naprawa Canon', 'wymiana tuszu'],
+
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo | Omobonus Wrocław',
     description: 'Bezpłatna diagnoza i wycena w 15 min. Jasny cennik bez ukrytych kosztów. Drukarka zastępcza na czas naprawy. Umów serwis.',
-    keywords: ['serwis drukarek termicznych Wrocław', 'naprawa drukarki etykiet', 'serwis Zebra', 'drukarka kodów kreskowych', 'naprawa drukarki etykietowej', 'wymiana głowicy termicznej'],
+
   },
   'serwis-drukarek-iglowych': {
     title: 'Serwis drukarek igłowych Wrocław | Omobonus naprawa drukarek',
     description: 'Serwis drukarek igłowych Wrocław – naprawa Epson, OKI, Citizen, wymiana taśmy barwiącej, konserwacja mechanizmu, usuwanie usterek.',
-    keywords: ['serwis drukarek igłowych Wrocław', 'naprawa drukarki igłowej', 'serwis Epson LX', 'naprawa OKI', 'wymiana taśmy barwiącej', 'drukarka igłowa naprawa'],
+
+  },
+  'naprawa-drukarek': {
+    title: 'Naprawa Drukarek i Kserokopiarek',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+
   },
   'wynajem-drukarek': {
     title: 'Wynajem drukarek Wrocław | Omobonus dzierżawa urządzeń',
     description: 'Wynajem drukarek Wrocław – dzierżawa drukarek dla firm, urządzenia z serwisem i tonerami, elastyczne warunki, wsparcie techniczne.',
-    keywords: ['wynajem drukarek Wrocław', 'dzierżawa drukarek', 'leasing drukarek', 'wynajem drukarki dla firmy', 'drukarki na wynajem', 'dzierżawa urządzeń biurowych'],
+
   },
   'drukarka-zastepcza': {
     title: 'Drukarka zastępcza Wrocław | Omobonus serwis',
     description: 'Drukarka zastępcza Wrocław – urządzenie na czas naprawy, drukarka zastępcza dla firm, wynajem tymczasowy, serwis i wsparcie techniczne.',
-    keywords: ['drukarka zastępcza Wrocław', 'drukarka na czas naprawy', 'urządzenie zastępcze', 'wynajem drukarki tymczasowo', 'drukarka zamienna'],
+
   },
   'serwis-plotterow': {
     title: 'Serwis i naprawa ploterów Wrocław – HP DesignJet, Canon, Epson | Omobonus',
     description: 'Serwis ploterów HP DesignJet, Canon i Epson we Wrocławiu. Naprawa, czyszczenie głowic, kalibracja jakości wydruku, konserwacja i konfiguracja urządzeń szerokoformatowych dla firm i studiów.',
-    keywords: ['serwis ploterów Wrocław', 'naprawa ploterów HP DesignJet', 'naprawa ploterów Canon', 'naprawa ploterów Epson', 'serwis ploterów HP DesignJet Wrocław', 'naprawa ploterów Wrocław'],
+
   },
 }
 
@@ -85,7 +93,7 @@ export async function generateMetadata({
   return {
     title: seo.title,
     description: seo.description,
-    keywords: seo.keywords,
+
     alternates: {
       canonical: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
     },
@@ -95,7 +103,7 @@ export async function generateMetadata({
       url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       images: [
         {
-          url: service.icon,
+          url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
           width: 400,
           height: 400,
           alt: service.title,
@@ -149,16 +157,16 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
+      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.services_background}')` }}
+          style={{ backgroundImage: `url('/images/omobonus-hero2.webp')` }}
         >
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
         <div className="relative">
-          {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza' ? (
+          {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'naprawa-drukarek' || slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza' ? (
             <>
               {/* HERO container */}
               <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1 -mt-[40px]">
@@ -185,9 +193,11 @@ export default async function ServicePage({
                                           ? "/images/08_serwis-ploterow.webp"
                                           : slug === 'serwis-drukarek-iglowych'
                                             ? "/images/07_serwis-drukarek-iglowych.webp"
-                                            : slug === 'wynajem-drukarek'
-                                              ? "/images/10_wynajem-drukarek.webp"
-                                              : "/images/11_drukarka-zastepcza.webp"
+                                            : slug === 'naprawa-drukarek'
+                                              ? "/images/Serwis_Drukarek.webp"
+                                              : slug === 'wynajem-drukarek'
+                                                ? "/images/10_wynajem-drukarek.webp"
+                                                : "/images/11_drukarka-zastepcza.webp"
                         }
                         alt={
                           slug === 'serwis-drukarek-termicznych'
@@ -208,9 +218,11 @@ export default async function ServicePage({
                                           ? "Serwis i Naprawa Ploterów"
                                           : slug === 'serwis-drukarek-iglowych'
                                             ? "Serwis Drukarek Igłowych"
-                                            : slug === 'wynajem-drukarek'
-                                              ? "Wynajem Drukarek"
-                                              : "Drukarka Zastępcza"
+                                            : slug === 'naprawa-drukarek'
+                                              ? "Serwis Drukarek Igłowych"
+                                              : slug === 'wynajem-drukarek'
+                                                ? "Wynajem Drukarek"
+                                                : "Drukarka Zastępcza"
                         }
                         width={420}
                         height={420}
@@ -246,13 +258,41 @@ export default async function ServicePage({
                       ) : slug === 'serwis-plotterow' ? (
                         'Serwis i Naprawa Ploterów'
                       ) : slug === 'serwis-drukarek-iglowych' ? (
-                        'Serwis Drukarek Igłowych'
+                        'Serwis Drukarek Igłowych (matrycowych)'
+                      ) : slug === 'naprawa-drukarek' ? (
+                        <>
+                          Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu
+                          <br />
+                          <span className="h1-sub text-[14px] md:text-[16px] opacity-80">(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)</span>
+                        </>
                       ) : slug === 'wynajem-drukarek' ? (
                         'Wynajem (Dzierżawa) Drukarek'
                       ) : (
                         'Drukarka Zastępcza'
                       )}
                     </h1>
+                    {slug === 'serwis-drukarek-iglowych' && (
+                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1]">
+                        (Epson, OKI, Bixolon, Citizen, Star Micronics, ...)
+                      </h2>
+                    )}
+
+                    {(slug === 'naprawa-drukarek' || slug === 'serwis-drukarek-iglowych') && (
+                      <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
+                        <a
+                          href="tel:+48793759262"
+                          className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                        >
+                          📞 Zadzwoń teraz
+                        </a>
+                        <a
+                          href="/#formularz"
+                          className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                        >
+                          Wyślij zgłoszenie
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -285,7 +325,7 @@ export default async function ServicePage({
                   Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych
                 </p>
               ) : (
-                <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+                <p className={`mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl ${slug === 'serwis-drukarek-iglowych' ? 'hidden md:block' : ''}`}>
                   {'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")'}
                 </p>
               )}
@@ -293,7 +333,90 @@ export default async function ServicePage({
           )}
         </div>
 
-        <ServiceAccordion service={service} />
+        {slug === 'naprawa-drukarek' ? (
+          <section id="uslugi" className="relative pt-8 md:pt-12 pb-16 md:pb-24 text-center text-white bg-[#1e1b16]">
+            {/* Tło */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url('${manifest.services_background}')`,
+              }}
+            >
+              <div className="absolute inset-0 bg-black/50" />
+            </div>
+
+            {/* Zawartość */}
+            <div className="relative max-w-7xl mx-auto px-4 md:px-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                {services
+                  .filter(s => ![
+                    'serwis-laptopow',
+                    'serwis-komputerow-stacjonarnych',
+                    'outsourcing-it',
+                    'naprawa-drukarek',
+                    'wynajem-drukarek',
+                    'drukarka-zastepcza'
+                  ].includes(s.slug))
+                  .map((service) => (
+                    <Link
+                      key={service.slug}
+                      href={`/uslugi/${service.slug}`}
+                      className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl flex items-center text-left w-full services-card-bg"
+                    >
+                      {/* Ikona */}
+                      <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                        <Image
+                          src={
+                            service.slug === 'serwis-komputerow-stacjonarnych'
+                              ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
+                              : service.slug === 'serwis-laptopow'
+                                ? '/images/01_serwis-laptopow-icon.webp'
+                                : service.slug === 'outsourcing-it'
+                                  ? '/images/03_outsourcing-it-icon.webp'
+                                  : service.slug === 'serwis-drukarek-laserowych'
+                                    ? '/images/04_serwis-drukarek-laserowych-icon.webp'
+                                    : service.slug === 'serwis-drukarek-atramentowych'
+                                      ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
+                                      : service.slug === 'serwis-drukarek-3d'
+                                        ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
+                                        : service.slug === 'serwis-plotterow'
+                                          ? '/images/08_serwis-ploterow-icon.webp'
+                                          : service.slug === 'serwis-drukarek-termicznych'
+                                            ? '/images/06_serwis-drukarek-termicznych-icon.webp'
+                                            : service.slug === 'serwis-drukarek-iglowych'
+                                              ? '/images/07_serwis-drukarek-iglowych-icon.webp'
+                                              : service.slug === 'wynajem-drukarek'
+                                                ? '/images/10_wynajem-drukarek-icon.webp'
+                                                : service.slug === 'drukarka-zastepcza'
+                                                  ? '/images/11_drukarka-zastepcza-icon.webp'
+                                                  : service.icon
+                          }
+                          alt={`${service.title} Wrocław - ikona usługi serwisowej`}
+                          width={50}
+                          height={50}
+                          className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                          unoptimized
+                        />
+                      </div>
+
+                      {/* Treść */}
+                      <div className="flex-1">
+                        <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                          {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.slug === 'serwis-drukarek-laserowych' ? 'Serwis Drukarek Laserowych' : service.title}
+                        </h3>
+                        <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
+                          <span>Zobacz cennik</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          </section>
+        ) : (
+          <ServiceAccordion service={service} />
+        )}
 
         {/* SEO текст для страницы Serwis Laptopów */}
         {service.slug === 'serwis-laptopow' && (
@@ -389,6 +512,24 @@ export default async function ServicePage({
             <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
               Serwis drukarek igłowych we Wrocławiu – naprawa i konserwacja drukarek igłowych Epson, OKI, Citizen i innych marek. Wymiana taśmy barwiącej, czyszczenie mechanizmu drukującego oraz serwis drukarek używanych w firmach i urzędach. Jeśli szukasz <strong>serwis drukarek igłowych Wrocław</strong> lub <strong>naprawa drukarki igłowej Wrocław</strong>, wykonujemy szybkie i solidne naprawy na miejscu.
             </p>
+          </div>
+        )}
+
+        {/* SEO tekst dla strony Naprawa Drukarek */}
+        {service.slug === 'naprawa-drukarek' && (
+          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px] text-[#cbb27c]">
+            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.
+            </h2>
+            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.
+            </h2>
+            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki).
+            </h2>
+            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
+              Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) oraz w okolicach.
+            </h2>
           </div>
         )}
 
