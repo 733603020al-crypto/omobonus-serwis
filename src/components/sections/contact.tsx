@@ -214,7 +214,10 @@ export function Contact() {
   }
 
   return (
-    <section id="formularz" className="relative pb-6 md:pb-10 pt-0" >
+    <section
+      id="formularz"
+      className="relative pb-6 md:pb-10 pt-0"
+    >
       {/* Tło sekcji */}
       < div
         className="absolute inset-0 bg-cover bg-center"

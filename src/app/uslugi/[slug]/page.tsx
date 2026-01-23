@@ -160,7 +160,7 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
+      <main className={`min-h-[calc(100vh-65px)] pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/omobonus-hero2.webp')" }}
@@ -175,7 +175,7 @@ export default async function ServicePage({
               <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 md:gap-10 items-center">
                   <div className="flex justify-center md:justify-start">
-                    <div className="relative w-full max-w-[160px] md:max-w-[240px]">
+                    <div className="relative w-full">
                       <Image
                         src={
                           slug === 'serwis-drukarek-termicznych'
@@ -280,22 +280,25 @@ export default async function ServicePage({
                         (HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)
                       </h2>
                     )}
-                    {(slug === 'naprawa-drukarek' || slug === 'serwis-drukarek-iglowych') && (
-                      <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
-                        <a
-                          href="tel:+48793759262"
-                          className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
-                        >
-                          📞 Zadzwoń teraz
-                        </a>
-                        <a
-                          href="/#formularz"
-                          className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
-                        >
-                          Wyślij zgłoszenie
-                        </a>
-                      </div>
-                    )}
+                    <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
+                      <a
+                        href="tel:+48793759262"
+                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                      >
+                        <img
+                          src="/images/telefon.png"
+                          alt="Telefon"
+                          className="w-6 h-6 mr-2 object-contain"
+                        /> Zadzwoń teraz
+                      </a>
+
+                      <a
+                        href="/#formularz"
+                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                      >
+                        Wyślij zgłoszenie
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -358,6 +361,9 @@ export default async function ServicePage({
                     'serwis-komputerow-stacjonarnych',
                     'outsourcing-it',
                     'naprawa-drukarek',
+                    'serwis-drukarek-3d',
+                    'serwis-drukarek-termicznych',
+                    'serwis-plotterow',
                     'wynajem-drukarek',
                     'drukarka-zastepcza'
                   ].includes(s.slug))

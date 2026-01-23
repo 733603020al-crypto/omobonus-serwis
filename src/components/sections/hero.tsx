@@ -1,17 +1,22 @@
 'use client'
 
-
 import manifest from '@/config/manifest'
 
 export function Hero() {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    if (!el) return
+
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
   }
 
-  return (
-    <section className="relative min-h-screen flex items-center justify-center">
 
+
+  return (
+    <section className="relative min-h-[calc(100svh-64px)] flex items-center justify-center">
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -27,19 +32,58 @@ export function Hero() {
         <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           Profesjonalny serwis <br /> komputerów i drukarek we <br /> Wrocławiu
         </h1>
+
         <p className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
           &quot;Uczciwość (brak oszustwa) i szacunek do klienta&quot; - to nasze podstawowe zasady pracy
         </p>
-        <a
-          href="#formularz"
-          onClick={(e) => {
-            e.preventDefault()
-            scrollToSection('formularz')
-          }}
-          className="inline-flex items-center justify-center border border-[#bfa76a]/80 text-[15px] text-[#bfa76a] py-[8px] px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors mt-[24px]"
-        >
-          Wyślij zgłoszenie
-        </a>
+
+        {/* BUTTONS */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
+          <a
+            href="tel:+48793759262"
+            className="
+              w-[80%] md:w-auto
+              inline-flex items-center justify-center
+              border border-[#bfa76a]/80
+              text-[16px] md:text-[15px]
+              font-semibold
+              text-[#bfa76a]
+              py-[14px] md:py-[8px]
+              px-[24px]
+              rounded-full
+              hover:bg-[#bfa76a]/10
+              transition-colors
+              md:min-w-[200px]
+            "
+          >
+            <img
+              src="/images/telefon.png"
+              alt="Telefon"
+              className="w-6 h-6 mr-2 object-contain"
+            />
+            Zadzwoń teraz
+          </a>
+
+          <a
+            href="#formularz"
+            className="
+    w-[80%] md:w-auto
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px] md:text-[15px]
+    font-semibold
+    text-[#bfa76a]
+    py-[14px] md:py-[8px]
+    px-[24px]
+    rounded-full
+    hover:bg-[#bfa76a]/10
+    transition-colors
+    md:min-w-[200px]
+  "
+          >
+            Wyślij zgłoszenie
+          </a>
+        </div>
       </div>
     </section>
   )
