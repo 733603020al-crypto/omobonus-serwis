@@ -28,23 +28,26 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'serwis-drukarek-laserowych': {
-    title: 'Serwis drukarek laserowych Wrocław | Omobonus naprawa drukarek',
-    description: 'Serwis drukarek laserowych Wrocław – naprawa drukarek HP, Brother, Canon, Samsung, wymiana tonerów, konserwacja MFU, serwis urządzeń biurowych.',
+    title: 'Naprawa Drukarek Laserowych',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
 
   },
   'serwis-drukarek-atramentowych': {
-    title: 'Serwis drukarek atramentowych Wrocław | Omobonus serwis drukarek',
-    description: 'Serwis drukarek atramentowych Wrocław – naprawa drukarek Epson, Canon, HP, czyszczenie głowic, wymiana tuszy, usuwanie usterek i konserwacja.',
-
+    title: 'Naprawa Drukarek Atramentowych',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+  },
+  'serwis-drukarek-3d': {
+    title: 'Serwis i Naprawa Drukarek 3D',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
   },
   'serwis-drukarek-termicznych': {
-    title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo | Omobonus Wrocław',
-    description: 'Bezpłatna diagnoza i wycena w 15 min. Jasny cennik bez ukrytych kosztów. Drukarka zastępcza na czas naprawy. Umów serwis.',
+    title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
 
   },
   'serwis-drukarek-iglowych': {
-    title: 'Serwis drukarek igłowych Wrocław | Omobonus naprawa drukarek',
-    description: 'Serwis drukarek igłowych Wrocław – naprawa Epson, OKI, Citizen, wymiana taśmy barwiącej, konserwacja mechanizmu, usuwanie usterek.',
+    title: 'Naprawa Drukarek Igłowych',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
 
   },
   'naprawa-drukarek': {
@@ -63,8 +66,8 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'serwis-plotterow': {
-    title: 'Serwis i naprawa ploterów Wrocław – HP DesignJet, Canon, Epson | Omobonus',
-    description: 'Serwis ploterów HP DesignJet, Canon i Epson we Wrocławiu. Naprawa, czyszczenie głowic, kalibracja jakości wydruku, konserwacja i konfiguracja urządzeń szerokoformatowych dla firm i studiów.',
+    title: 'Serwis i Naprawa Ploterów',
+    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
 
   },
 }
@@ -160,16 +163,16 @@ export default async function ServicePage({
       <main className={`min-h-screen pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('/images/omobonus-hero2.webp')` }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+          style={{ backgroundImage: "url('/images/omobonus-hero2.webp')" }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+
 
         <div className="relative">
           {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'naprawa-drukarek' || slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza' ? (
             <>
               {/* HERO container */}
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1 -mt-[40px]">
+              <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 md:gap-10 items-center">
                   <div className="flex justify-center md:justify-start">
                     <div className="relative w-full max-w-[160px] md:max-w-[240px]">
@@ -260,11 +263,7 @@ export default async function ServicePage({
                       ) : slug === 'serwis-drukarek-iglowych' ? (
                         'Serwis Drukarek Igłowych (matrycowych)'
                       ) : slug === 'naprawa-drukarek' ? (
-                        <>
-                          Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu
-                          <br />
-                          <span className="h1-sub text-[14px] md:text-[16px] opacity-80">(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)</span>
-                        </>
+                        'Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu'
                       ) : slug === 'wynajem-drukarek' ? (
                         'Wynajem (Dzierżawa) Drukarek'
                       ) : (
@@ -276,7 +275,11 @@ export default async function ServicePage({
                         (Epson, OKI, Bixolon, Citizen, Star Micronics, ...)
                       </h2>
                     )}
-
+                    {slug === 'naprawa-drukarek' && (
+                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1]">
+                        (HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)
+                      </h2>
+                    )}
                     {(slug === 'naprawa-drukarek' || slug === 'serwis-drukarek-iglowych') && (
                       <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
                         <a
@@ -297,7 +300,7 @@ export default async function ServicePage({
                 </div>
               </div>
               {/* INFO container */}
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-10">
+              <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
                 <p className="text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                   {slug === 'drukarka-zastepcza'
                     ? 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych'
@@ -334,16 +337,17 @@ export default async function ServicePage({
         </div>
 
         {slug === 'naprawa-drukarek' ? (
-          <section id="uslugi" className="relative pt-8 md:pt-12 pb-16 md:pb-24 text-center text-white bg-[#1e1b16]">
+          <section
+            id="uslugi"
+            className={`relative text-center
+    ${slug === 'naprawa-drukarek'
+                ? 'pt-0 pb-2'
+                : 'pt-2 md:pt-4 pb-16 md:pb-24'
+              }
+  `}
+          >
             {/* Tło */}
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('${manifest.services_background}')`,
-              }}
-            >
-              <div className="absolute inset-0 bg-black/50" />
-            </div>
+
 
             {/* Zawartość */}
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
@@ -517,19 +521,27 @@ export default async function ServicePage({
 
         {/* SEO tekst dla strony Naprawa Drukarek */}
         {service.slug === 'naprawa-drukarek' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px] text-[#cbb27c]">
-            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.
-            </h2>
-            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.
-            </h2>
-            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki).
-            </h2>
-            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) oraz w okolicach.
-            </h2>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-0 pb-0 text-[#cbb27c]">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
+
+              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
+                Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.
+              </h2>
+
+              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
+                Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.
+              </h2>
+
+              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
+                Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki).
+              </h2>
+
+              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
+                Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) i okolice.
+              </h2>
+
+            </div>
           </div>
         )}
 
