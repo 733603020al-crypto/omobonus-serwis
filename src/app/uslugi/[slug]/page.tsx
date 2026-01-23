@@ -292,12 +292,12 @@ export default async function ServicePage({
                         /> Zadzwoń teraz
                       </a>
 
-                      <a
+                      <Link
                         href="/#formularz"
                         className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
                       >
                         Wyślij zgłoszenie
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
