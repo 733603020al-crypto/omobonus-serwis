@@ -88,7 +88,7 @@ const createTransporter = (): nodemailer.Transporter | null => {
 const mapDeviceType = (value: string) => {
   if (value === 'printer') return 'Drukarka'
   if (value === 'computer') return 'Komputer / Laptop'
-  if (value === 'other') return 'Inne urz¹dzenie'
+  if (value === 'other') return 'Inne urzï¿½dzenie'
   return 'Nie podano'
 }
 
@@ -275,7 +275,7 @@ export async function POST(request: NextRequest) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Nowe zg³oszenie serwisowe ${ticketNumber}</title>
+  <title>Nowe zgï¿½oszenie serwisowe ${ticketNumber}</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; background-color: #f8f5f0;">
@@ -286,7 +286,7 @@ export async function POST(request: NextRequest) {
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
               <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
-              <h1 style="margin: 0; color: #3a2e24; font-size: 26px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Zg³oszenie ?: ${ticketNumber}</h1>
+              <h1 style="margin: 0; color: #3a2e24; font-size: 26px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Zgï¿½oszenie ?: ${ticketNumber}</h1>
             </td>
           </tr>
           <tr>
@@ -296,7 +296,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imiê i nazwisko:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imiï¿½ i nazwisko:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(name) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -336,7 +336,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urz¹dzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urzï¿½dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceType) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -346,7 +346,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urz¹dzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urzï¿½dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceModel) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -366,7 +366,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Potrzebujê drukarki zastêpczej:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Potrzebujï¿½ drukarki zastï¿½pczej:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
                       </tr>
                     </table>
@@ -381,7 +381,7 @@ export async function POST(request: NextRequest) {
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomoœæ wys³ana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+                      Wiadomoï¿½ï¿½ wysï¿½ana automatycznie z formularza Omobonus Serwis ï¿½ 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -398,17 +398,17 @@ export async function POST(request: NextRequest) {
 
     // ????????? ?????? ??? ?????????????
     const emailContent = `
-Nowe zg³oszenie serwisowe
-Numer zg³oszenia: ${ticketNumber}
+Nowe zgï¿½oszenie serwisowe
+Numer zgï¿½oszenia: ${ticketNumber}
 
-Imiê i nazwisko: ${name}
+Imiï¿½ i nazwisko: ${name}
 Numer telefonu: ${formattedPhone}
 Adres e-mail: ${email}
 Adres: ${address}
-Typ urz¹dzenia: ${deviceType}
-Model urz¹dzenia: ${deviceModel}
+Typ urzï¿½dzenia: ${deviceType}
+Model urzï¿½dzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Potrzebujê drukarki zastêpczej: ${replacementPrinter}
+Potrzebujï¿½ drukarki zastï¿½pczej: ${replacementPrinter}
     `.trim()
 
     // ???????? transporter SMTP
@@ -440,7 +440,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
     console.log('?? ???????? ?????? ????? SMTP Zenbox...')
     console.log('?? From:', fromEmail)
     console.log('?? To:', toEmail)
-    console.log('?? Subject:', `[${ticketNumber}] Nowe zg³oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
+    console.log('?? Subject:', `[${ticketNumber}] Nowe zgï¿½oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
 
     // ?????????? ???????? ??? nodemailer
     const nodemailerAttachments = attachments
@@ -454,7 +454,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
     const info = await transporter.sendMail({
       from: fromEmail,
       to: toEmail,
-      subject: `[${ticketNumber}] Nowe zg³oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
+      subject: `[${ticketNumber}] Nowe zgï¿½oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
       html: emailHtml,
       text: emailContent,
       attachments: nodemailerAttachments,
@@ -474,7 +474,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dziêkujemy za zg³oszenie serwisowe ${ticketNumber}</title>
+  <title>Dziï¿½kujemy za zgï¿½oszenie serwisowe ${ticketNumber}</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; background-color: #f8f5f0;">
@@ -485,7 +485,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
               <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
-              <h1 style="margin: 0 0 20px 0; color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Dziêkujemy za zg³oszenie serwisowe i za zaufanie!</h1>
+              <h1 style="margin: 0 0 20px 0; color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Dziï¿½kujemy za zgï¿½oszenie serwisowe i za zaufanie!</h1>
             </td>
           </tr>
           <tr>
@@ -495,26 +495,26 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                   Szanowny Kliencie,
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                  potwierdzamy otrzymanie Twojego zg³oszenia serwisowego w <strong>Omobonus Serwis</strong>.
+                  potwierdzamy otrzymanie Twojego zgï¿½oszenia serwisowego w <strong>Omobonus Serwis</strong>.
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.3; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                  Zg³oszenie zosta³o zarejestrowane pod numerem: <span style="color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${ticketNumber}</span>.
+                  Zgï¿½oszenie zostaï¿½o zarejestrowane pod numerem: <span style="color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${ticketNumber}</span>.
                 </p>
                 <p style="margin: 0 0 0 0; color: #3b2a1a; font-size: 15px; line-height: 1.2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic;">
-                  Nasz zespó³ wkrótce siê z Tob¹ skontaktuje, aby ustaliæ dalsze kroki.
+                  Nasz zespï¿½ wkrï¿½tce siï¿½ z Tobï¿½ skontaktuje, aby ustaliï¿½ dalsze kroki.
                 </p>
               </div>
             </td>
           </tr>
           <tr>
             <td style="padding: 0 40px 30px;">
-              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przes³ane w formularzu:</p>
+              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przesï¿½ane w formularzu:</p>
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imiê i nazwisko:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imiï¿½ i nazwisko:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(name) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -554,7 +554,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urz¹dzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urzï¿½dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceType) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -564,7 +564,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urz¹dzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urzï¿½dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceModel) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -584,7 +584,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Drukarka zastêpcza:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Drukarka zastï¿½pcza:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
                       </tr>
                     </table>
@@ -593,7 +593,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                 <tr>
                   <td style="padding: 12px 0 0;">
                     <p style="margin: 0; color: #7a6a50; font-size: 13px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic; text-align: left;">
-                      Jeœli zauwa¿y³eœ b³¹d w danych, odpowiedz na ten e-mail – poprawimy zg³oszenie.
+                      Jeï¿½li zauwaï¿½yï¿½eï¿½ bï¿½ï¿½d w danych, odpowiedz na ten e-mail ï¿½ poprawimy zgï¿½oszenie.
                     </p>
                   </td>
                 </tr>
@@ -604,7 +604,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
             <td style="padding: 0 40px 30px;">
               <p style="margin: 0 0 20px 0; color: #3a2e24; font-size: 16px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
                 Pozdrawiamy serdecznie,<br />
-                <strong>Zespó³ Omobonus Serwis</strong>
+                <strong>Zespï¿½ Omobonus Serwis</strong>
               </p>
               <p style="margin: 0; color: #3a2e24; font-size: 14px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
                 ?? <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
@@ -618,7 +618,7 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomoœæ wys³ana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+                      Wiadomoï¿½ï¿½ wysï¿½ana automatycznie z formularza Omobonus Serwis ï¿½ 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -634,41 +634,41 @@ Potrzebujê drukarki zastêpczej: ${replacementPrinter}
         `.trim()
 
         const clientEmailContent = `
-Dziêkujemy za zg³oszenie serwisowe i za zaufanie!
+Dziï¿½kujemy za zgï¿½oszenie serwisowe i za zaufanie!
 
 Szanowny Kliencie,
 
-potwierdzamy otrzymanie Twojego zg³oszenia serwisowego w Omobonus Serwis.
+potwierdzamy otrzymanie Twojego zgï¿½oszenia serwisowego w Omobonus Serwis.
 
-Zg³oszenie zosta³o zarejestrowane pod numerem ${ticketNumber}.
+Zgï¿½oszenie zostaï¿½o zarejestrowane pod numerem ${ticketNumber}.
 
-Nasz zespó³ wkrótce siê z Tob¹ skontaktuje, aby ustaliæ dalsze kroki.
+Nasz zespï¿½ wkrï¿½tce siï¿½ z Tobï¿½ skontaktuje, aby ustaliï¿½ dalsze kroki.
 
-Prosimy o zachowanie numeru zg³oszenia do przysz³ej korespondencji.
+Prosimy o zachowanie numeru zgï¿½oszenia do przyszï¿½ej korespondencji.
 
-Dane przes³ane w formularzu:
+Dane przesï¿½ane w formularzu:
 
-Imiê i nazwisko: ${name}
+Imiï¿½ i nazwisko: ${name}
 Numer telefonu: ${formattedPhone}
 Adres e-mail: ${email}
 Adres: ${address}
-Typ urz¹dzenia: ${deviceType}
-Model urz¹dzenia: ${deviceModel}
+Typ urzï¿½dzenia: ${deviceType}
+Model urzï¿½dzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Drukarka zastêpcza: ${replacementPrinter}
+Drukarka zastï¿½pcza: ${replacementPrinter}
 
 Pozdrawiamy serdecznie,
-Zespó³ Omobonus Serwis
+Zespï¿½ Omobonus Serwis
 ?? ${CONTACT_INFO.phone}
 ?? https://serwis.omobonus.com.pl/
 
-Wiadomoœæ wys³ana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+Wiadomoï¿½ï¿½ wysï¿½ana automatycznie z formularza Omobonus Serwis ï¿½ 2025 Omobonus Serwis
         `.trim()
 
         await transporter.sendMail({
           from: fromEmail,
           to: email.trim(),
-          subject: `Dziêkujemy za zg³oszenie serwisowe [${ticketNumber}]`,
+          subject: `Dziï¿½kujemy za zgï¿½oszenie serwisowe [${ticketNumber}]`,
           html: clientEmailHtml,
           text: clientEmailContent,
         })
