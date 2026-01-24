@@ -29,62 +29,71 @@ export function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-          {services.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/uslugi/${service.slug}`}
-              className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl flex items-center text-left w-full services-card-bg"
-            >
-              {/* Ikona */}
-              <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
-                <Image
-                  src={
-                    service.slug === 'serwis-komputerow-stacjonarnych'
-                      ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
-                      : service.slug === 'serwis-laptopow'
-                        ? '/images/01_serwis-laptopow-icon.webp'
-                        : service.slug === 'outsourcing-it'
-                          ? '/images/03_outsourcing-it-icon.webp'
-                          : service.slug === 'serwis-drukarek-laserowych'
-                            ? '/images/04_serwis-drukarek-laserowych-icon.webp'
-                            : service.slug === 'serwis-drukarek-atramentowych'
-                              ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
-                              : service.slug === 'serwis-drukarek-3d'
-                                ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
-                                : service.slug === 'serwis-plotterow'
-                                  ? '/images/08_serwis-ploterow-icon.webp'
-                                  : service.slug === 'serwis-drukarek-termicznych'
-                                    ? '/images/06_serwis-drukarek-termicznych-icon.webp'
-                                    : service.slug === 'serwis-drukarek-iglowych'
-                                      ? '/images/07_serwis-drukarek-iglowych-icon.webp'
-                                      : service.slug === 'wynajem-drukarek'
-                                        ? '/images/10_wynajem-drukarek-icon.webp'
-                                        : service.slug === 'drukarka-zastepcza'
-                                          ? '/images/11_drukarka-zastepcza-icon.webp'
-                                          : service.slug === 'naprawa-drukarek'
-                                            ? '/images/Serwis_Drukarek-icon.webp'
-                                            : service.icon
-                  }
-                  alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                  width={50}
-                  height={50}
-                  className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                  unoptimized
-                />
-              </div>
-
-              {/* Treść */}
-              <div className="flex-1">
-                <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                  {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.title}
-                </h3>
-                <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
-                  <span>Zobacz cennik</span>
-                  <ArrowRight className="w-3 h-3" />
+          {services
+            .filter(
+              (service) =>
+                ![
+                  'serwis-drukarek-laserowych',
+                  'serwis-drukarek-atramentowych',
+                  'serwis-drukarek-iglowych',
+                ].includes(service.slug)
+            )
+            .map((service) => (
+              <Link
+                key={service.slug}
+                href={`/uslugi/${service.slug}`}
+                className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl flex items-center text-left w-full services-card-bg"
+              >
+                {/* Ikona */}
+                <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                  <Image
+                    src={
+                      service.slug === 'serwis-komputerow-stacjonarnych'
+                        ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
+                        : service.slug === 'serwis-laptopow'
+                          ? '/images/01_serwis-laptopow-icon.webp'
+                          : service.slug === 'outsourcing-it'
+                            ? '/images/03_outsourcing-it-icon.webp'
+                            : service.slug === 'serwis-drukarek-laserowych'
+                              ? '/images/04_serwis-drukarek-laserowych-icon.webp'
+                              : service.slug === 'serwis-drukarek-atramentowych'
+                                ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
+                                : service.slug === 'serwis-drukarek-3d'
+                                  ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
+                                  : service.slug === 'serwis-plotterow'
+                                    ? '/images/08_serwis-ploterow-icon.webp'
+                                    : service.slug === 'serwis-drukarek-termicznych'
+                                      ? '/images/06_serwis-drukarek-termicznych-icon.webp'
+                                      : service.slug === 'serwis-drukarek-iglowych'
+                                        ? '/images/07_serwis-drukarek-iglowych-icon.webp'
+                                        : service.slug === 'wynajem-drukarek'
+                                          ? '/images/10_wynajem-drukarek-icon.webp'
+                                          : service.slug === 'drukarka-zastepcza'
+                                            ? '/images/11_drukarka-zastepcza-icon.webp'
+                                            : service.slug === 'naprawa-drukarek'
+                                              ? '/images/Serwis_Drukarek-icon.webp'
+                                              : service.icon
+                    }
+                    alt={`${service.title} Wrocław - ikona usługi serwisowej`}
+                    width={50}
+                    height={50}
+                    className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                    unoptimized
+                  />
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                {/* Treść */}
+                <div className="flex-1">
+                  <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                    {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
+                    <span>Zobacz cennik</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </div>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </section>

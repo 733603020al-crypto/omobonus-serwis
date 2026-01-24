@@ -3442,6 +3442,14 @@ export const services: ServiceData[] = [
     pricingSections: createOutsourcingItPricingSections(),
   },
   {
+    slug: 'naprawa-drukarek',
+    title: 'Naprawa Drukarek i Kserokopiarek',
+    subtitle: 'Naprawa specjalistycznych drukarek igłowych',
+    icon: manifest['07_serwis_drukarek_iglowych'],
+    description: 'Naprawa specjalistycznych drukarek igłowych.',
+    pricingSections: createNeedlePricingSections(),
+  },
+  {
     slug: 'serwis-drukarek-laserowych',
     title: 'Serwis Drukarek Laserowych i Kserokopiarek',
     subtitle: 'Profesjonalna naprawa drukarek laserowych i urządzeń wielofunkcyjnych',
@@ -3482,14 +3490,7 @@ export const services: ServiceData[] = [
     description: 'Naprawa, udrażnianie głowic i konserwacja drukarek atramentowych.',
     pricingSections: createInkjetPricingSections(),
   },
-  {
-    slug: 'serwis-drukarek-3d',
-    title: 'Serwis i Naprawa Drukarek 3D',
-    subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
-    icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-    description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
-    pricingSections: create3DPrinterPricingSections(),
-  },
+
   {
     slug: 'serwis-plotterow',
     title: 'Serwis i Naprawa Ploterów',
@@ -3517,12 +3518,12 @@ export const services: ServiceData[] = [
     pricingSections: createNeedlePricingSections(),
   },
   {
-    slug: 'naprawa-drukarek',
-    title: 'Naprawa Drukarek i Kserokopiarek',
-    subtitle: 'Naprawa specjalistycznych drukarek igłowych',
-    icon: manifest['07_serwis_drukarek_iglowych'],
-    description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createNeedlePricingSections(),
+    slug: 'serwis-drukarek-3d',
+    title: 'Serwis i Naprawa Drukarek 3D',
+    subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
+    icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+    description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
+    pricingSections: create3DPrinterPricingSections(),
   },
   {
     slug: 'wynajem-drukarek',

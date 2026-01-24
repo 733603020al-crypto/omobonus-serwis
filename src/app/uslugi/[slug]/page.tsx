@@ -280,25 +280,53 @@ export default async function ServicePage({
                         (HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)
                       </h2>
                     )}
-                    <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
                       <a
                         href="tel:+48793759262"
-                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                        className="
+      w-[80%] md:w-auto
+      inline-flex items-center justify-center
+      border border-[#bfa76a]/80
+      text-[16px] md:text-[15px]
+      font-semibold
+      text-[#bfa76a]
+      py-[14px] md:py-[8px]
+      px-[24px]
+      rounded-full
+      hover:bg-[#bfa76a]/10
+      transition-colors
+      md:min-w-[200px]
+    "
                       >
                         <img
                           src="/images/telefon.png"
                           alt="Telefon"
                           className="w-6 h-6 mr-2 object-contain"
-                        /> Zadzwoń teraz
+                        />
+                        Zadzwoń teraz
                       </a>
 
                       <Link
                         href="/#formularz"
-                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
+                        className="
+      w-[80%] md:w-auto
+      inline-flex items-center justify-center
+      border border-[#bfa76a]/80
+      text-[16px] md:text-[15px]
+      font-semibold
+      text-[#bfa76a]
+      py-[14px] md:py-[8px]
+      px-[24px]
+      rounded-full
+      hover:bg-[#bfa76a]/10
+      transition-colors
+      md:min-w-[200px]
+    "
                       >
                         Wyślij zgłoszenie
                       </Link>
                     </div>
+
                   </div>
                 </div>
               </div>
