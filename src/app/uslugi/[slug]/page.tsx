@@ -9,6 +9,123 @@ import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 
+const headings: Record<string, { h1: string; h2?: string }> = {
+  'serwis-drukarek-termicznych': {
+    h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
+    h2: '(Zebra, Dymo, Godex, Sato, Brother i inne)',
+  },
+
+  'serwis-laptopow': {
+    h1: 'Serwis i naprawa laptopów we Wrocławiu',
+    h2: '(HP, Dell, Lenovo, Asus, Acer, Apple, MSI...)',
+  },
+
+  'naprawa-drukarek': {
+    h1: 'Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, ...)',
+  },
+
+  'serwis-komputerow-stacjonarnych': {
+    h1: 'Serwis i naprawa komputerów stacjonarnych we Wrocławiu',
+  },
+
+  'outsourcing-it': {
+    h1: 'Outsourcing IT i obsługa informatyczna firm',
+  },
+
+  'serwis-drukarek-laserowych': {
+    h1: 'Serwis i Naprawa Drukarek Laserowych',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, ...)',
+  },
+
+  'serwis-drukarek-atramentowych': {
+    h1: 'Serwis drukarek atramentowych',
+  },
+
+  'serwis-drukarek-3d': {
+    h1: 'Serwis c naprawa drukarek 3D',
+  },
+
+  'serwis-plotterow': {
+    h1: 'Serwis i naprawa ploterów',
+  },
+
+  'serwis-drukarek-iglowych': {
+    h1: 'Serwis drukarek igłowych (matrycowych)',
+    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
+  },
+
+  'wynajem-drukarek': {
+    h1: 'Wynajem (dzierżawa) drukarek',
+  },
+
+  'drukarka-zastepcza': {
+    h1: 'Drukarka zastępcza',
+  },
+};
+
+type SeoBlock = {
+  items: string[]
+}
+
+const seoBlocks: Record<string, SeoBlock> = {
+  'naprawa-drukarek': {
+    items: [
+      'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
+      'Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.',
+      'Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki).',
+      'Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) i okolice.',
+    ],
+  },
+
+  'serwis-drukarek-termicznych': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-laptopow': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-komputerow-stacjonarnych': {
+    items: [' ',
+      ' ',]
+  },
+  'outsourcing-it': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-drukarek-laserowych': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-drukarek-atramentowych': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-drukarek-3d': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-plotterow': {
+    items: [' ',
+      ' ',]
+  },
+  'serwis-drukarek-iglowych': {
+    items: [' ',
+      ' ',]
+  },
+  'wynajem-drukarek': {
+    items: [' ',
+      ' ',]
+  },
+  'drukarka-zastepcza': {
+    items: [' ',
+      ' ',]
+  },
+}
+
+
+
 
 // SEO metadata for each service page
 const seoMetadata: Record<string, { title: string; description: string }> = {
@@ -236,97 +353,33 @@ export default async function ServicePage({
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">
                     <h1 className="text-[32px] md:text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                      {slug === 'serwis-drukarek-termicznych' ? (
-                        <>
-                          Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu
-                          <br />
-                          <span className="h1-sub text-[14px] md:text-[16px] opacity-80">(Zebra, Dymo, Godex, Sato, Brother i inne)</span>
-                        </>
-                      ) : slug === 'serwis-laptopow' ? (
-                        <>
-                          Serwis i naprawa laptopów we Wrocławiu
-                          <br />
-                          <span className="h1-sub text-[10px] md:text-[12px] opacity-70">(HP, Dell, Lenovo, Asus, Acer, Apple, MSI, ...)</span>
-                        </>
-                      ) : slug === 'serwis-komputerow-stacjonarnych' ? (
-                        'Serwis i naprawa komputerów stacjonarnych'
-                      ) : slug === 'outsourcing-it' ? (
-                        'Outsourcing IT i obsługa informatyczna firm'
-                      ) : slug === 'serwis-drukarek-laserowych' ? (
-                        'Serwis drukarek laserowych i kserokopiarek'
-                      ) : slug === 'serwis-drukarek-atramentowych' ? (
-                        'Serwis drukarek atramentowych'
-                      ) : slug === 'serwis-drukarek-3d' ? (
-                        'Serwis i naprawa drukarek 3D'
-                      ) : slug === 'serwis-plotterow' ? (
-                        'Serwis i Naprawa Ploterów'
-                      ) : slug === 'serwis-drukarek-iglowych' ? (
-                        'Serwis Drukarek Igłowych (matrycowych)'
-                      ) : slug === 'naprawa-drukarek' ? (
-                        'Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu'
-                      ) : slug === 'wynajem-drukarek' ? (
-                        'Wynajem (Dzierżawa) Drukarek'
-                      ) : (
-                        'Drukarka Zastępcza'
-                      )}
+                      {headings[slug]?.h1 || service.title}
                     </h1>
-                    {slug === 'serwis-drukarek-iglowych' && (
-                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                        (Epson, OKI, Bixolon, Citizen, Star Micronics, ...)
+
+                    {headings[slug]?.h2 && (
+                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
+                        {headings[slug].h2}
                       </h2>
                     )}
-                    {slug === 'naprawa-drukarek' && (
-                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                        (HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera i inne marki)
-                      </h2>
-                    )}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
+                    <div className="flex flex-row gap-3 md:gap-6 mt-6 items-center justify-center w-full">
                       <a
                         href="tel:+48793759262"
-                        className="
-      w-[80%] md:w-auto
-      inline-flex items-center justify-center
-      border border-[#bfa76a]/80
-      text-[16px] md:text-[15px]
-      font-semibold
-      text-[#bfa76a]
-      py-[14px] md:py-[8px]
-      px-[24px]
-      rounded-full
-      hover:bg-[#bfa76a]/10
-      transition-colors
-      md:min-w-[200px]
-    "
+                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
                       >
                         <img
                           src="/images/telefon.png"
                           alt="Telefon"
                           className="w-6 h-6 mr-2 object-contain"
-                        />
-                        Zadzwoń teraz
+                        /> Zadzwoń teraz
                       </a>
 
                       <Link
                         href="/#formularz"
-                        className="
-      w-[80%] md:w-auto
-      inline-flex items-center justify-center
-      border border-[#bfa76a]/80
-      text-[16px] md:text-[15px]
-      font-semibold
-      text-[#bfa76a]
-      py-[14px] md:py-[8px]
-      px-[24px]
-      rounded-full
-      hover:bg-[#bfa76a]/10
-      transition-colors
-      md:min-w-[200px]
-    "
+                        className="flex-1 md:flex-none inline-flex items-center justify-center border border-[#bfa76a]/80 text-[12px] sm:text-[13px] md:text-[15px] text-[#bfa76a] py-2 md:py-[8px] px-1 md:px-[24px] rounded-full hover:bg-[#bfa76a]/10 transition-colors md:min-w-[200px]"
                       >
                         Wyślij zgłoszenie
                       </Link>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -341,30 +394,7 @@ export default async function ServicePage({
                 </p>
               </div>
             </>
-          ) : (
-            <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
-              <h1 className="text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                {service.slug === 'serwis-plotterow' ? (
-                  'Serwis i Naprawa Ploterów'
-                ) : (
-                  service.title
-                )}
-              </h1>
-              {service.slug === 'wynajem-drukarek' ? (
-                <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                  Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.
-                </p>
-              ) : service.slug === 'drukarka-zastepcza' ? (
-                <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                  Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych
-                </p>
-              ) : (
-                <p className={`mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl ${slug === 'serwis-drukarek-iglowych' ? 'hidden md:block' : ''}`}>
-                  {'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")'}
-                </p>
-              )}
-            </div>
-          )}
+          ) : null}
         </div>
 
         {slug === 'naprawa-drukarek' ? (
@@ -376,6 +406,7 @@ export default async function ServicePage({
                 : 'pt-2 md:pt-4 pb-16 md:pb-24'
               }
   `}
+
           >
             {/* Tło */}
 
@@ -451,133 +482,48 @@ export default async function ServicePage({
                   ))}
               </div>
             </div>
+            {seoBlocks[slug]?.items.length > 0 && (
+              <div className="pt-6 pb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
+                  {seoBlocks[slug].items.map((text, index) => (
+                    <h2
+                      key={index}
+                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? "text-right md:pr-2" : "text-left md:pl-2"
+                        }`}
+                    >
+                      {text}
+                    </h2>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </section>
+
         ) : (
-          <ServiceAccordion service={service} />
+
+          <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
+            <ServiceAccordion service={service} />
+
+            {seoBlocks[slug]?.items.length > 0 && (
+              <div className="pt-6 pb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
+                  {seoBlocks[slug].items.map((text, index) => (
+                    <h2
+                      key={index}
+                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? "text-right md:pr-2" : "text-left md:pl-2"
+                        }`}
+                    >
+                      {text}
+                    </h2>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
         )}
 
-        {/* SEO текст для страницы Serwis Laptopów */}
-        {service.slug === 'serwis-laptopow' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[11px] md:text-[12px] text-[#bfa76a]/70 leading-relaxed text-center max-w-4xl mx-auto">
-              We Wrocławiu oferujemy kompleksowy serwis i naprawę laptopów –
-              czyszczenie, wymianę matrycy, dysku SSD oraz naprawę klawiatury.
-              Zajmujemy się również instalacją systemu Windows i diagnozą usterek.
-              Szybka naprawa laptopów wszystkich marek: HP, Dell, Lenovo, Asus, Acer i innych.
-            </p>
-          </div>
-        )}
 
-        {/* SEO tekst dla strony Serwis Komputerów Stacjonarnych */}
-        {service.slug === 'serwis-komputerow-stacjonarnych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[11px] md:text-[12px] text-[#bfa76a]/70 leading-relaxed text-center max-w-4xl mx-auto">
-              Oferujemy serwis i naprawę komputerów we Wrocławiu – zarówno PC, jak i komputery stacjonarne.
-              Zajmujemy się czyszczeniem komputerów, wymianą dysków, instalacją systemu Windows
-              oraz odzyskiwaniem danych. Modernizacja komputera i diagnoza usterek dostępna od ręki.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Outsourcing IT */}
-        {service.slug === 'outsourcing-it' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[11px] md:text-[12px] text-[#bfa76a]/70 leading-relaxed text-center max-w-4xl mx-auto">
-              Oferujemy outsourcing IT we Wrocławiu dla firm i osób prywatnych.
-              Zapewniamy serwis komputerów, wsparcie IT, obsługę firm, konserwację sprzętu, helpdesk i szybkie naprawy.
-              Idealne rozwiązanie: outsourcing IT Wrocław, usługi IT dla firm Wrocław, serwis komputerów Wrocław, wsparcie IT Wrocław.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis Drukarek Laserowych i Kserokopiarek */}
-        {service.slug === 'serwis-drukarek-laserowych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis drukarek laserowych i urządzeń wielofunkcyjnych (MFU) we Wrocławiu – naprawa drukarek laserowych, serwis drukarek HP i Brother, konserwacja drukarek oraz serwis kserokopiarek dla firm. Jeśli szukasz <strong>serwis drukarek Wrocław</strong> lub <strong>naprawa drukarek Wrocław</strong> z dojazdem, zajmujemy się także serwisem urządzeń wielofunkcyjnych i naprawą drukarki na miejscu.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis Drukarek Atramentowych */}
-        {service.slug === 'serwis-drukarek-atramentowych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis drukarek atramentowych we Wrocławiu – naprawa drukarek atramentowych wszystkich marek, w tym Epson, Canon i HP. Oferujemy serwis urządzeń atramentowych, czyszczenie głowic drukujących, wymianę tuszy oraz naprawę drukarki, która nie drukuje. Jeśli szukasz <strong>serwis drukarek atramentowych Wrocław</strong> lub <strong>naprawa drukarki atramentowej Wrocław</strong>, zapraszamy do kontaktu.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis i Naprawa Drukarek 3D */}
-        {service.slug === 'serwis-drukarek-3d' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis i Naprawa Ploterów */}
-        {service.slug === 'serwis-plotterow' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis ploterów we Wrocławiu obejmuje naprawę i konserwację urządzeń szerokoformatowych HP DesignJet, Canon i Epson. Wykonujemy czyszczenie głowic, serwis układu atramentowego, regulację toru przesuwu mediów oraz kalibrację jakości wydruku. Zajmujemy się także diagnostyką elektroniki, konfiguracją oprogramowania i приwracaniem sprawności po błędach systemowych. Serwis ploterów dla firm, drukarni i studiów graficznych, z przygotowaniem urządzeń do pracy z różnymi typami papieru i materiałów.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis Drukarek Termiczno-etykietowych */}
-        {service.slug === 'serwis-drukarek-termicznych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px] text-[#cbb27c]">
-            <h2 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Serwis drukarek Zebra we Wrocławiu – drukarki i drukarka Zebra serwis.
-            </h2>
-            <p className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Serwis drukarek termicznych i etykietowych we Wrocławiu obejmuje naprawę drukarek etykiet Zebra, Brother, Dymo, Epson i innych oraz prace takie jak czyszczenie, konserwacja, kalibracja i wymiana głowicy drukującej.
-            </p>
-            <h3 className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Dymo serwis – serwis drukarek Dymo i naprawa drukarki.
-            </h3>
-            <p className="text-[12px] font-normal leading-[1.2] m-0 p-0">
-              Jeśli potrzebny jest serwis Dymo lub serwis drukarek etykiet, dotyczy to zarówno pojedynczej drukarki, jak i większej liczby drukarek używanych w drukowaniu etykiet.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Serwis Drukarek Igłowych */}
-        {service.slug === 'serwis-drukarek-iglowych' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Serwis drukarek igłowych we Wrocławiu – naprawa i konserwacja drukarek igłowych Epson, OKI, Citizen i innych marek. Wymiana taśmy barwiącej, czyszczenie mechanizmu drukującego oraz serwis drukarek używanych w firmach i urzędach. Jeśli szukasz <strong>serwis drukarek igłowych Wrocław</strong> lub <strong>naprawa drukarki igłowej Wrocław</strong>, wykonujemy szybkie i solidne naprawy na miejscu.
-            </p>
-          </div>
-        )}
-
-        {/* SEO tekst dla strony Naprawa Drukarek */}
-        {service.slug === 'naprawa-drukarek' && (
-          <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-0 pb-0 text-[#cbb27c]">
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
-
-              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
-                Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.
-              </h2>
-
-              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
-                Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.
-              </h2>
-
-              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
-                Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki).
-              </h2>
-
-              <h2 className="text-[12px] font-normal leading-[1.1] m-0 p-0">
-                Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) i okolice.
-              </h2>
-
-            </div>
-          </div>
-        )}
 
         {/* SEO tekst dla strony Drukarka Zastępcza */}
         {service.slug === 'drukarka-zastepcza' && (
