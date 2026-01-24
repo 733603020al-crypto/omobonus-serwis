@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer id="kontakt" className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white">
       {/* Tło */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url('${manifest.Background_1}')`,
@@ -23,9 +23,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-3">
-            <h3 className="text-2xl font-semibold tracking-wide text-[#bfa76a] mb-3">
+            <div className="text-2xl font-semibold tracking-wide text-[#bfa76a] mb-3">
               Kontakt
-            </h3>
+            </div>
 
             <div className="space-y-2.5">
               <div>

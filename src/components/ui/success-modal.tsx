@@ -83,25 +83,23 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
     >
       {/* Background overlay */}
       <div
-        className={`absolute inset-0 bg-black transition-opacity duration-[220ms] ease-out ${
-          isVisible ? 'opacity-40' : 'opacity-0'
-        }`}
+        className={`absolute inset-0 bg-black transition-opacity duration-[220ms] ease-out ${isVisible ? 'opacity-40' : 'opacity-0'
+          }`}
       />
 
       {/* Modal content */}
       <div
-        className={`relative z-10 w-full max-w-5xl sm:max-w-[600px] md:max-w-[740px] lg:max-w-[720px] xl:max-w-[680px] px-2 transition-[opacity,transform] duration-[220ms] ease-out ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.96]'
-        }`}
+        className={`relative z-10 w-full max-w-5xl sm:max-w-[600px] md:max-w-[740px] lg:max-w-[720px] xl:max-w-[680px] px-2 transition-[opacity,transform] duration-[220ms] ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.96]'
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden modal-card-outer">
           <div className="relative px-4 py-6 md:px-8 md:py-8 text-center space-y-3">
             <div className="border-b border-white/10 pb-1.5">
               <div className="py-0.5">
-                <h3 className="text-white text-[32px] md:text-[36px] font-cormorant font-bold leading-tight drop-shadow-[0_0_8px_rgba(0,0,0,0.45)]">
+                <div className="text-white text-[32px] md:text-[36px] font-cormorant font-bold leading-tight drop-shadow-[0_0_8px_rgba(0,0,0,0.45)]">
                   Dziękujemy za zgłoszenie!
-                </h3>
+                </div>
               </div>
             </div>
 

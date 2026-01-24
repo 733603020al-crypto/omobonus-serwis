@@ -2001,7 +2001,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
                               <div className="flex-1 min-w-0 pr-2">
-                                <h3 className={cn(
+                                <div className={cn(
                                   "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
                                   (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
                                 )}>
@@ -2022,7 +2022,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                     }
                                     return section.title
                                   })()}
-                                </h3>
+                                </div>
                                 {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
@@ -2062,9 +2062,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             </div>
                             {/* Десктопная версия: обычный заголовок */}
                             <div className="hidden md:block">
-                              <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                              <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
                                 {section.title}
-                              </h3>
+                              </div>
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span

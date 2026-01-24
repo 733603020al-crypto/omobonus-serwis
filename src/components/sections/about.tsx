@@ -47,9 +47,9 @@ export function About() {
           {/* Prawa kolumna - tekst */}
           <div className="space-y-6 text-white">
             <div>
-              <h3 className="text-2xl md:text-3xl font-serif font-semibold mb-3 text-white">
+              <div className="text-2xl md:text-3xl font-serif font-semibold mb-3 text-white">
                 O nas:
-              </h3>
+              </div>
               <p className="text-[15px] md:text-[16px] text-[rgba(255,255,245,0.85)] leading-[1.3] tracking-tight">
                 Jesteśmy zespołem, który wierzy, że praca może być również pomocą i służbą innym ludziom. Zysk jest potrzebny, ale nie jest naszym idolem ani bożkiem. Nie chcemy się bogacić za wszelką cenę.
               </p>

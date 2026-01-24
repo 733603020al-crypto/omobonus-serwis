@@ -95,8 +95,8 @@ const seoBlocks: Record<string, SeoBlock> = {
       ' ',]
   },
   'serwis-drukarek-laserowych': {
-    items: [' ',
-      ' ',]
+    items: ['Świadczymy również usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
+      'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',]
   },
   'serwis-drukarek-atramentowych': {
     items: [' ',
@@ -470,9 +470,9 @@ export default async function ServicePage({
 
                       {/* Treść */}
                       <div className="flex-1">
-                        <h3 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                        <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
                           {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.slug === 'serwis-drukarek-laserowych' ? 'Serwis Drukarek Laserowych' : service.title}
-                        </h3>
+                        </div>
                         <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
                           <span>Zobacz cennik</span>
                           <ArrowRight className="w-3 h-3" />

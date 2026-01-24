@@ -1,17 +1,17 @@
-﻿import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 import { CONTACT_INFO } from '@/config/contacts'
 
-// Константы для валидации
+// ????????? ??? ?????????
 const MAX_FILE_SIZE_MB = 25
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024 // 25 MB
-const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024 // 50 MB общий размер всех файлов
+const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024 // 50 MB ????? ?????? ???? ??????
 
 const DEFAULT_TO = 'serwis@omobonus.com.pl'
 const DEFAULT_FROM = 'serwis@omobonus.com.pl'
 
-// Типы ошибок для структурированной обработки
+// ???? ?????? ??? ????????????????? ?????????
 type ErrorType =
   | 'MISSING_CONFIG'
   | 'SMTP_ERROR'
@@ -26,7 +26,7 @@ interface ApiError {
   code?: string
 }
 
-// Проверка конфигурации SMTP
+// ???????? ???????????? SMTP
 const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
   const missing: string[] = []
@@ -43,12 +43,12 @@ const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   }
 }
 
-// Создание transporter SMTP
+// ???????? transporter SMTP
 const createTransporter = (): nodemailer.Transporter | null => {
   const config = validateSmtpConfig()
 
   if (!config.valid) {
-    console.error('❌ SMTP конфигурация неполная. Отсутствуют:', config.missing.join(', '))
+    console.error('? SMTP ???????????? ????????. ???????????:', config.missing.join(', '))
     return null
   }
 
@@ -58,7 +58,7 @@ const createTransporter = (): nodemailer.Transporter | null => {
   const smtpPass = process.env.SMTP_PASS!
 
   if (isNaN(smtpPort) || smtpPort <= 0) {
-    console.error('❌ Неверный SMTP_PORT:', process.env.SMTP_PORT)
+    console.error('? ???????? SMTP_PORT:', process.env.SMTP_PORT)
     return null
   }
 
@@ -66,21 +66,21 @@ const createTransporter = (): nodemailer.Transporter | null => {
     return nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // true для порта 465, false для других (используем STARTTLS)
-      requireTLS: smtpPort !== 465, // Включаем STARTTLS для портов кроме 465
+      secure: smtpPort === 465, // true ??? ????? 465, false ??? ?????? (?????????? STARTTLS)
+      requireTLS: smtpPort !== 465, // ???????? STARTTLS ??? ?????? ????? 465
       auth: {
         user: smtpUser,
         pass: smtpPass,
       },
       tls: {
-        // Не требуем проверку сертификата для Zenbox
+        // ?? ??????? ???????? ??????????? ??? Zenbox
         rejectUnauthorized: false,
       },
-      connectionTimeout: 10000, // 10 секунд таймаут подключения
-      greetingTimeout: 10000, // 10 секунд таймаут приветствия
+      connectionTimeout: 10000, // 10 ?????? ??????? ???????????
+      greetingTimeout: 10000, // 10 ?????? ??????? ???????????
     })
   } catch (error) {
-    console.error('❌ Ошибка создания SMTP transporter:', error)
+    console.error('? ?????? ???????? SMTP transporter:', error)
     return null
   }
 }
@@ -88,14 +88,14 @@ const createTransporter = (): nodemailer.Transporter | null => {
 const mapDeviceType = (value: string) => {
   if (value === 'printer') return 'Drukarka'
   if (value === 'computer') return 'Komputer / Laptop'
-  if (value === 'other') return 'Inne urządzenie'
+  if (value === 'other') return 'Inne urz�dzenie'
   return 'Nie podano'
 }
 
 const boolToText = (value: string | null) =>
   value === 'true' || value === 'on' ? 'Tak' : 'Nie'
 
-// Функция для безопасного экранирования HTML
+// ??????? ??? ??????????? ????????????? HTML
 const escapeHtml = (text: string | null | undefined): string => {
   if (!text) return ''
   return String(text)
@@ -106,13 +106,13 @@ const escapeHtml = (text: string | null | undefined): string => {
     .replace(/'/g, '&#039;')
 }
 
-// Функция для форматирования телефона (+48 778 786 796)
+// ??????? ??? ?????????????? ???????? (+48 778 786 796)
 const formatPhone = (phone: string | null | undefined): string => {
   if (!phone) return 'Nie podano'
-  // Убираем все нецифровые символы кроме +
+  // ??????? ??? ?????????? ??????? ????? +
   let cleaned = phone.replace(/[^\d+]/g, '')
 
-  // Если начинается с +48, форматируем как +48 XXX XXX XXX
+  // ???? ?????????? ? +48, ??????????? ??? +48 XXX XXX XXX
   if (cleaned.startsWith('+48')) {
     const digits = cleaned.substring(3).replace(/\D/g, '')
     if (digits.length === 9) {
@@ -121,7 +121,7 @@ const formatPhone = (phone: string | null | undefined): string => {
     return phone
   }
 
-  // Если начинается с 48, добавляем +
+  // ???? ?????????? ? 48, ????????? +
   if (cleaned.startsWith('48')) {
     const digits = cleaned.substring(2).replace(/\D/g, '')
     if (digits.length === 9) {
@@ -132,14 +132,14 @@ const formatPhone = (phone: string | null | undefined): string => {
   return phone
 }
 
-// Генерация номера заявки DDMMYY-XXX
+// ????????? ?????? ?????? DDMMYY-XXX
 const generateTicketNumber = (): string => {
   const now = new Date()
   const day = String(now.getDate()).padStart(2, '0')
   const month = String(now.getMonth() + 1).padStart(2, '0')
   const year = String(now.getFullYear()).slice(-2)
 
-  // Используем последние 3 цифры timestamp для уникальности
+  // ?????????? ????????? 3 ????? timestamp ??? ????????????
   const timestamp = Date.now()
   const sequence = String(timestamp).slice(-3)
 
@@ -148,7 +148,7 @@ const generateTicketNumber = (): string => {
 
 
 
-// Валидация размера файлов
+// ????????? ??????? ??????
 const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError } => {
   let totalSize = 0
 
@@ -158,8 +158,8 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
         valid: false,
         error: {
           type: 'FILE_TOO_LARGE',
-          message: `Файл "${file.name}" слишком большой. Максимальный размер: ${MAX_FILE_SIZE_MB} MB`,
-          details: `Размер файла: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
+          message: `???? "${file.name}" ??????? ???????. ???????????? ??????: ${MAX_FILE_SIZE_MB} MB`,
+          details: `?????? ?????: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
         },
       }
     }
@@ -171,8 +171,8 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
       valid: false,
       error: {
         type: 'FILE_TOO_LARGE',
-        message: 'Общий размер всех файлов превышает лимит',
-        details: `Общий размер: ${(totalSize / 1024 / 1024).toFixed(2)} MB, лимит: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
+        message: '????? ?????? ???? ?????? ????????? ?????',
+        details: `????? ??????: ${(totalSize / 1024 / 1024).toFixed(2)} MB, ?????: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
       },
     }
   }
@@ -181,26 +181,26 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
 }
 
 export async function POST(request: NextRequest) {
-  console.log('📩 Форма вызвала /api/send-email')
+  console.log('?? ????? ??????? /api/send-email')
 
   try {
-    // Проверка конфигурации SMTP в начале
+    // ???????? ???????????? SMTP ? ??????
     const configCheck = validateSmtpConfig()
     if (!configCheck.valid) {
       const error: ApiError = {
         type: 'MISSING_CONFIG',
-        message: 'SMTP конфигурация неполная',
-        details: `Отсутствуют переменные окружения: ${configCheck.missing.join(', ')}`,
+        message: 'SMTP ???????????? ????????',
+        details: `??????????? ?????????? ?????????: ${configCheck.missing.join(', ')}`,
       }
 
-      console.error('❌', error.message, error.details)
+      console.error('?', error.message, error.details)
 
       return NextResponse.json(
         {
           success: false,
           error: error.message,
           errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : 'Проверьте настройки сервера',
+          details: process.env.NODE_ENV === 'development' ? error.details : '????????? ????????? ???????',
         },
         { status: 500 },
       )
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
 
     const formData = await request.formData()
 
-    // Логирование данных формы (без чувствительных данных)
+    // ??????????? ?????? ????? (??? ?????????????? ??????)
     const formEntries: Record<string, any> = {}
     for (const [key, value] of formData.entries()) {
       if (value instanceof File) {
@@ -217,7 +217,7 @@ export async function POST(request: NextRequest) {
         formEntries[key] = value
       }
     }
-    console.log('📋 Данные формы:', formEntries)
+    console.log('?? ?????? ?????:', formEntries)
 
     const name = (formData.get('name') as string) ?? ''
     const phone = (formData.get('phone') as string) ?? ''
@@ -228,16 +228,16 @@ export async function POST(request: NextRequest) {
     const problemDescription = (formData.get('problemDescription') as string) ?? ''
     const replacementPrinter = boolToText(formData.get('replacementPrinter') as string | null)
 
-    // Получение и валидация файлов
+    // ????????? ? ????????? ??????
     const attachmentFiles = formData
       .getAll('attachments')
       .filter(item => item instanceof File) as File[]
 
-    // Валидация размера файлов
+    // ????????? ??????? ??????
     if (attachmentFiles.length > 0) {
       const validation = validateAttachments(attachmentFiles)
       if (!validation.valid && validation.error) {
-        console.error('❌ Ошибка валидации файлов:', validation.error)
+        console.error('? ?????? ????????? ??????:', validation.error)
         return NextResponse.json(
           {
             success: false,
@@ -250,7 +250,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Конвертация файлов в буферы
+    // ??????????? ?????? ? ??????
     const attachments =
       attachmentFiles.length > 0
         ? await Promise.all(
@@ -267,7 +267,7 @@ export async function POST(request: NextRequest) {
 
 
 
-    // HTML-шаблон письма для сервиса
+    // HTML-?????? ?????? ??? ???????
     const emailHtml = `
 <!DOCTYPE html>
 <html lang="pl">
@@ -275,7 +275,7 @@ export async function POST(request: NextRequest) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Nowe zgłoszenie serwisowe ${ticketNumber}</title>
+  <title>Nowe zg�oszenie serwisowe ${ticketNumber}</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; background-color: #f8f5f0;">
@@ -286,7 +286,7 @@ export async function POST(request: NextRequest) {
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
               <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
-              <h1 style="margin: 0; color: #3a2e24; font-size: 26px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Zgłoszenie №: ${ticketNumber}</h1>
+              <h1 style="margin: 0; color: #3a2e24; font-size: 26px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Zg�oszenie ?: ${ticketNumber}</h1>
             </td>
           </tr>
           <tr>
@@ -296,7 +296,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imię i nazwisko:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imi� i nazwisko:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(name) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -336,7 +336,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urządzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urz�dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceType) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -346,7 +346,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urządzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urz�dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceModel) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -366,7 +366,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Potrzebuję drukarki zastępczej:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Potrzebuj� drukarki zast�pczej:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
                       </tr>
                     </table>
@@ -381,7 +381,7 @@ export async function POST(request: NextRequest) {
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+                      Wiadomo�� wys�ana automatycznie z formularza Omobonus Serwis � 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -396,39 +396,39 @@ export async function POST(request: NextRequest) {
 </html>
     `.trim()
 
-    // Текстовая версия для совместимости
+    // ????????? ?????? ??? ?????????????
     const emailContent = `
-Nowe zgłoszenie serwisowe
-Numer zgłoszenia: ${ticketNumber}
+Nowe zg�oszenie serwisowe
+Numer zg�oszenia: ${ticketNumber}
 
-Imię i nazwisko: ${name}
+Imi� i nazwisko: ${name}
 Numer telefonu: ${formattedPhone}
 Adres e-mail: ${email}
 Adres: ${address}
-Typ urządzenia: ${deviceType}
-Model urządzenia: ${deviceModel}
+Typ urz�dzenia: ${deviceType}
+Model urz�dzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Potrzebuję drukarki zastępczej: ${replacementPrinter}
+Potrzebuj� drukarki zast�pczej: ${replacementPrinter}
     `.trim()
 
-    // Создание transporter SMTP
+    // ???????? transporter SMTP
     const transporter = createTransporter()
 
     if (!transporter) {
       const error: ApiError = {
         type: 'MISSING_CONFIG',
-        message: 'Не удалось создать SMTP transporter',
-        details: 'Проверьте конфигурацию SMTP',
+        message: '?? ??????? ??????? SMTP transporter',
+        details: '????????? ???????????? SMTP',
       }
 
-      console.error('❌', error.message)
+      console.error('?', error.message)
 
       return NextResponse.json(
         {
           success: false,
           error: error.message,
           errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : 'Обратитесь к администратору',
+          details: process.env.NODE_ENV === 'development' ? error.details : '?????????? ? ??????????????',
         },
         { status: 500 },
       )
@@ -437,12 +437,12 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
     const fromEmail = process.env.SMTP_FROM || DEFAULT_FROM
     const toEmail = (process.env.SMTP_TO || DEFAULT_TO).split(',').map(value => value.trim())
 
-    console.log('📤 Отправка письма через SMTP Zenbox...')
-    console.log('📧 From:', fromEmail)
-    console.log('📧 To:', toEmail)
-    console.log('📧 Subject:', `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
+    console.log('?? ???????? ?????? ????? SMTP Zenbox...')
+    console.log('?? From:', fromEmail)
+    console.log('?? To:', toEmail)
+    console.log('?? Subject:', `[${ticketNumber}] Nowe zg�oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
 
-    // Подготовка вложений для nodemailer
+    // ?????????? ???????? ??? nodemailer
     const nodemailerAttachments = attachments
       ? attachments.map(att => ({
         filename: att.filename,
@@ -450,21 +450,21 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
       }))
       : []
 
-    // Отправка письма сервису
+    // ???????? ?????? ???????
     const info = await transporter.sendMail({
       from: fromEmail,
       to: toEmail,
-      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
+      subject: `[${ticketNumber}] Nowe zg�oszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
       html: emailHtml,
       text: emailContent,
       attachments: nodemailerAttachments,
     })
 
-    console.log('✅ Письмо сервису отправлено успешно!')
-    console.log('📧 Message ID:', info.messageId)
-    console.log('📧 Response:', info.response)
+    console.log('? ?????? ??????? ?????????? ???????!')
+    console.log('?? Message ID:', info.messageId)
+    console.log('?? Response:', info.response)
 
-    // Отправка письма клиенту (если email указан)
+    // ???????? ?????? ??????? (???? email ??????)
     if (email && email.trim()) {
       try {
         const clientEmailHtml = `
@@ -474,7 +474,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dziękujemy za zgłoszenie serwisowe ${ticketNumber}</title>
+  <title>Dzi�kujemy za zg�oszenie serwisowe ${ticketNumber}</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; background-color: #f8f5f0;">
@@ -485,7 +485,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
               <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
-              <h1 style="margin: 0 0 20px 0; color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Dziękujemy za zgłoszenie serwisowe i za zaufanie!</h1>
+              <h1 style="margin: 0 0 20px 0; color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Dzi�kujemy za zg�oszenie serwisowe i za zaufanie!</h1>
             </td>
           </tr>
           <tr>
@@ -495,26 +495,26 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                   Szanowny Kliencie,
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                  potwierdzamy otrzymanie Twojego zgłoszenia serwisowego w <strong>Omobonus Serwis</strong>.
+                  potwierdzamy otrzymanie Twojego zg�oszenia serwisowego w <strong>Omobonus Serwis</strong>.
                 </p>
                 <p style="margin: 0 0 5px 0; color: #3b2a1a; font-size: 15px; line-height: 1.3; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                  Zgłoszenie zostało zarejestrowane pod numerem: <span style="color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${ticketNumber}</span>.
+                  Zg�oszenie zosta�o zarejestrowane pod numerem: <span style="color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${ticketNumber}</span>.
                 </p>
                 <p style="margin: 0 0 0 0; color: #3b2a1a; font-size: 15px; line-height: 1.2; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic;">
-                  Nasz zespół wkrótce się z Tobą skontaktuje, aby ustalić dalsze kroki.
+                  Nasz zesp� wkr�tce si� z Tob� skontaktuje, aby ustali� dalsze kroki.
                 </p>
               </div>
             </td>
           </tr>
           <tr>
             <td style="padding: 0 40px 30px;">
-              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przesłane w formularzu:</p>
+              <p style="margin: 0 0 15px 0; color: #3a2e24; font-size: 16px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">Dane przes�ane w formularzu:</p>
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imię i nazwisko:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Imi� i nazwisko:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(name) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -554,7 +554,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urządzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Typ urz�dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceType) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -564,7 +564,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urządzenia:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Model urz�dzenia:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(deviceModel) || 'Nie podano'}</td>
                       </tr>
                     </table>
@@ -584,7 +584,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                   <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                       <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Drukarka zastępcza:</td>
+                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Drukarka zast�pcza:</td>
                         <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
                       </tr>
                     </table>
@@ -593,7 +593,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                 <tr>
                   <td style="padding: 12px 0 0;">
                     <p style="margin: 0; color: #7a6a50; font-size: 13px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic; text-align: left;">
-                      Jeśli zauważyłeś błąd w danych, odpowiedz na ten e-mail – poprawimy zgłoszenie.
+                      Je�li zauwa�y�e� b��d w danych, odpowiedz na ten e-mail � poprawimy zg�oszenie.
                     </p>
                   </td>
                 </tr>
@@ -604,11 +604,11 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
             <td style="padding: 0 40px 30px;">
               <p style="margin: 0 0 20px 0; color: #3a2e24; font-size: 16px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
                 Pozdrawiamy serdecznie,<br />
-                <strong>Zespół Omobonus Serwis</strong>
+                <strong>Zesp� Omobonus Serwis</strong>
               </p>
               <p style="margin: 0; color: #3a2e24; font-size: 14px; line-height: 1.6; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                📞 <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
-                🌐 <a href="https://serwis.omobonus.com.pl/" style="color: #3a2e24; text-decoration: none;">serwis.omobonus.com.pl</a>
+                ?? <a href="${CONTACT_INFO.phoneHref}" style="color: #3a2e24; text-decoration: none;">${CONTACT_INFO.phone}</a><br />
+                ?? <a href="https://serwis.omobonus.com.pl/" style="color: #3a2e24; text-decoration: none;">serwis.omobonus.com.pl</a>
               </p>
             </td>
           </tr>
@@ -618,7 +618,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                 <tr>
                   <td style="border-top: 1px solid #bfa76a; padding-top: 20px;">
                     <p style="margin: 0; color: #7a6a50; font-size: 12px; text-align: center; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">
-                      Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+                      Wiadomo�� wys�ana automatycznie z formularza Omobonus Serwis � 2025 Omobonus Serwis
                     </p>
                   </td>
                 </tr>
@@ -634,57 +634,57 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
         `.trim()
 
         const clientEmailContent = `
-Dziękujemy za zgłoszenie serwisowe i za zaufanie!
+Dzi�kujemy za zg�oszenie serwisowe i za zaufanie!
 
 Szanowny Kliencie,
 
-potwierdzamy otrzymanie Twojego zgłoszenia serwisowego w Omobonus Serwis.
+potwierdzamy otrzymanie Twojego zg�oszenia serwisowego w Omobonus Serwis.
 
-Zgłoszenie zostało zarejestrowane pod numerem ${ticketNumber}.
+Zg�oszenie zosta�o zarejestrowane pod numerem ${ticketNumber}.
 
-Nasz zespół wkrótce się z Tobą skontaktuje, aby ustalić dalsze kroki.
+Nasz zesp� wkr�tce si� z Tob� skontaktuje, aby ustali� dalsze kroki.
 
-Prosimy o zachowanie numeru zgłoszenia do przyszłej korespondencji.
+Prosimy o zachowanie numeru zg�oszenia do przysz�ej korespondencji.
 
-Dane przesłane w formularzu:
+Dane przes�ane w formularzu:
 
-Imię i nazwisko: ${name}
+Imi� i nazwisko: ${name}
 Numer telefonu: ${formattedPhone}
 Adres e-mail: ${email}
 Adres: ${address}
-Typ urządzenia: ${deviceType}
-Model urządzenia: ${deviceModel}
+Typ urz�dzenia: ${deviceType}
+Model urz�dzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Drukarka zastępcza: ${replacementPrinter}
+Drukarka zast�pcza: ${replacementPrinter}
 
 Pozdrawiamy serdecznie,
-Zespół Omobonus Serwis
-📞 ${CONTACT_INFO.phone}
-🌐 https://serwis.omobonus.com.pl/
+Zesp� Omobonus Serwis
+?? ${CONTACT_INFO.phone}
+?? https://serwis.omobonus.com.pl/
 
-Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus Serwis
+Wiadomo�� wys�ana automatycznie z formularza Omobonus Serwis � 2025 Omobonus Serwis
         `.trim()
 
         await transporter.sendMail({
           from: fromEmail,
           to: email.trim(),
-          subject: `Dziękujemy za zgłoszenie serwisowe [${ticketNumber}]`,
+          subject: `Dzi�kujemy za zg�oszenie serwisowe [${ticketNumber}]`,
           html: clientEmailHtml,
           text: clientEmailContent,
         })
 
-        console.log('✅ Письмо клиенту отправлено успешно!')
-        console.log('📧 Клиент email:', email.trim())
+        console.log('? ?????? ??????? ?????????? ???????!')
+        console.log('?? ?????? email:', email.trim())
       } catch (clientError: any) {
-        // Не прерываем основную отправку при ошибке отправки клиенту
-        console.error('⚠️ Ошибка при отправке письма клиенту (не прерываем основную отправку):', clientError)
-        console.error('⚠️ Детали ошибки клиента:', {
+        // ?? ????????? ???????? ???????? ??? ?????? ???????? ???????
+        console.error('?? ?????? ??? ???????? ?????? ??????? (?? ????????? ???????? ????????):', clientError)
+        console.error('?? ?????? ?????? ???????:', {
           message: clientError?.message,
           code: clientError?.code,
         })
       }
     } else {
-      console.log('ℹ️ Email клиента не указан, пропускаем отправку подтверждения')
+      console.log('?? Email ??????? ?? ??????, ?????????? ???????? ?????????????')
     }
 
     return NextResponse.json(
@@ -696,31 +696,31 @@ Wiadomość wysłana automatycznie z formularza Omobonus Serwis © 2025 Omobonus
       { status: 200 },
     )
   } catch (error: any) {
-    console.error('❌ Ошибка при отправке письма через SMTP Zenbox:', error)
+    console.error('? ?????? ??? ???????? ?????? ????? SMTP Zenbox:', error)
 
     const errorDetails: ApiError = {
       type: 'SMTP_ERROR',
-      message: 'Не удалось отправить письмо',
+      message: '?? ??????? ????????? ??????',
       code: error?.code,
       details: error?.message,
     }
 
-    // Дополнительная диагностика для SMTP ошибок
+    // ?????????????? ??????????? ??? SMTP ??????
     if (error?.response) {
-      console.error('❌ SMTP Response:', error.response)
+      console.error('? SMTP Response:', error.response)
       errorDetails.details = error.response
     }
     if (error?.command) {
-      console.error('❌ SMTP Command:', error.command)
+      console.error('? SMTP Command:', error.command)
     }
 
-    // Определение типа ошибки
+    // ??????????? ???? ??????
     if (error?.code === 'ETIMEDOUT' || error?.code === 'ECONNREFUSED') {
       errorDetails.type = 'SMTP_ERROR'
-      errorDetails.message = 'Не удалось подключиться к SMTP серверу'
+      errorDetails.message = '?? ??????? ???????????? ? SMTP ???????'
     } else if (error?.code === 'EAUTH') {
       errorDetails.type = 'SMTP_ERROR'
-      errorDetails.message = 'Ошибка аутентификации SMTP'
+      errorDetails.message = '?????? ?????????????? SMTP'
     }
 
     return NextResponse.json(
