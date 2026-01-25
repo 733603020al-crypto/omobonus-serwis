@@ -63,7 +63,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'drukarka-zastepcza': {
-    h1: 'Drukarka zastępcza',
+    h1: 'Drukarka zastępcza (na czas naprawy)',
   },
 };
 
@@ -186,8 +186,8 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'drukarka-zastepcza': {
-    title: 'Drukarka zastępcza Wrocław | Omobonus serwis',
-    description: 'Drukarka zastępcza Wrocław – urządzenie na czas naprawy, drukarka zastępcza dla firm, wynajem tymczasowy, serwis i wsparcie techniczne.',
+    title: 'Drukarka zastępcza (na czas naprawy)',
+    description: '✔ Potrzebna drukarka na czas naprawy? Nawet w 24h ✔ Bez opłat abonamentowych ✔ Sprzęt od ręki ✔ Zadzwoń i zamów!',
 
   },
   'serwis-plotterow': {
