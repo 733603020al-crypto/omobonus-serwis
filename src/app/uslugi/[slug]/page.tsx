@@ -401,25 +401,25 @@ export default async function ServicePage({
                         Zadzwoń teraz
                       </a>
 
-                      <a
+                      <Link
                         href="/#formularz"
                         className="
-      w-[80%] md:w-auto
-      inline-flex items-center justify-center
-      border border-[#bfa76a]/80
-      text-[16px] md:text-[15px]
-      font-semibold
-      text-[#bfa76a]
-      py-[14px] md:py-[8px]
-      px-[24px]
-      rounded-full
-      hover:bg-[#bfa76a]/10
-      transition-colors
-      md:min-w-[200px]
-    "
+    w-[80%] md:w-auto
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px] md:text-[15px]
+    font-semibold
+    text-[#bfa76a]
+    py-[14px] md:py-[8px]
+    px-[24px]
+    rounded-full
+    hover:bg-[#bfa76a]/10
+    transition-colors
+    md:min-w-[200px]
+  "
                       >
                         Wyślij zgłoszenie
-                      </a>
+                      </Link>
                     </div>
 
                   </div>
