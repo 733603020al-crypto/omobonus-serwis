@@ -19,7 +19,7 @@ export function Services() {
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div className="mb-6 text-center">
+        <div className="mb-6 text-center hidden md:block">
 
           <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-5xl mx-auto font-semibold drop-shadow-2xl">
             Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu
