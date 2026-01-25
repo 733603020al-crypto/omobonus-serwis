@@ -19,9 +19,10 @@ export function About() {
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         {/* Nagłówek sekcji */}
         <div className="mb-6 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-cormorant font-bold text-[#bfa76a] leading-tight">
+          <div className="text-3xl md:text-4xl font-cormorant font-bold text-[#bfa76a] leading-tight">
             Święty Omobonus XII wieku (łac. &ldquo;Dobry człowiek&rdquo;)
-          </h2>
+          </div>
+
           <p className="mt-[6px] text-lg md:text-xl text-[#bfa76a] font-cormorant italic">
             Patron biznesmenów i przemysłowców. Był uczciwym rzemieślnikiem, który część swoich dochodów przekazywał potrzebującym.
           </p>

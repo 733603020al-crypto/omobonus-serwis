@@ -16,8 +16,8 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-laptopow': {
-    h1: 'Serwis i naprawa laptopów we Wrocławiu',
-    h2: '(HP, Dell, Lenovo, Asus, Acer, Apple, MSI...)',
+    h1: 'Serwis i Naprawa Laptopów we Wrocławiu',
+    h2: '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
   },
 
   'naprawa-drukarek': {
@@ -26,7 +26,8 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-komputerow-stacjonarnych': {
-    h1: 'Serwis i naprawa komputerów stacjonarnych we Wrocławiu',
+    h1: 'Serwis i Naprawa Komputerów Stacjonarnych',
+    h2: '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
   },
 
   'outsourcing-it': {
@@ -87,12 +88,16 @@ const seoBlocks: Record<string, SeoBlock> = {
       'Drukarki termiczne (etykietowe) – nasza specjalizacja',]
   },
   'serwis-laptopow': {
-    items: [' ',
-      ' ',]
+    items: ['Diagnostyka, czyszczenie i konserwacja laptopa po zalaniu, instalacja oprogramowania.',
+      'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
+      'Wymiana plyty glownej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania).',
+      'baterii, zasilacza, matrycy (ekranu), obudowy, zawiasów, klawiatury (klawisza), ...',]
   },
   'serwis-komputerow-stacjonarnych': {
-    items: [' ',
-      ' ',]
+    items: ['Diagnostyka, czyszczenie i konserwacja komputera, instalacja oprogramowania.',
+      'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
+      'Wymiana plyty glownej, karty sieciowejю dysku, pamięci ram, pasty termoprzewodzącej, ',
+      'wentylatora, portu usb (zasilania), zasilacza, obudowy, ...',]
   },
   'outsourcing-it': {
     items: [' ',
@@ -138,13 +143,13 @@ const seoBlocks: Record<string, SeoBlock> = {
 // SEO metadata for each service page
 const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
-    title: 'Naprawa laptopów Wrocław | Omobonus serwis komputerowy',
-    description: 'Naprawa laptopów Wrocław – serwis laptopów wszystkich marek: HP, Dell, Lenovo, Asus, Acer. Wymiana matrycy, dysku SSD, instalacja Windows, odzyskiwanie danych.',
+    title: 'Serwis i Naprawa Laptopów',
+    description: '✔ Kompleksowa obsługa ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
 
   },
   'serwis-komputerow-stacjonarnych': {
-    title: 'Serwis komputerów Wrocław | Omobonus naprawa PC',
-    description: 'Serwis komputerów Wrocław – naprawa PC, diagnostyka, modernizacja, wymiana podzespołów, instalacja Windows, konfiguracja sprzętu.',
+    title: 'Serwis i Naprawa Komputerów Stacjonarnych',
+    description: '✔ Kompleksowa obsługa ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
 
   },
   'outsourcing-it': {

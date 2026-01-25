@@ -7,8 +7,8 @@ import { Contact } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
-  description: 'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, wymiana podzespołów, outsourcing IT. Uczciwe ceny brutto, dojazd gratis.',
+  title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
+  description: '✔ Kompleksowa obsługa ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
   },

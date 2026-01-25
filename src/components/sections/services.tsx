@@ -20,9 +20,7 @@ export function Services() {
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="mb-6 text-center">
-          <h2 className="text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-            Nasze Usługi
-          </h2>
+
           <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-5xl mx-auto font-semibold drop-shadow-2xl">
             Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu
           </p>
@@ -84,13 +82,11 @@ export function Services() {
 
                 {/* Treść */}
                 <div className="flex-1">
-                  <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                    {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.title}
-                  </div>
-                  <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
-                    <span>Zobacz cennik</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </div>
+                  <h2 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                    {service.slug === 'serwis-drukarek-termicznych'
+                      ? 'Serwis i naprawa drukarek etykiet'
+                      : service.title}
+                  </h2>
                 </div>
               </Link>
             ))}

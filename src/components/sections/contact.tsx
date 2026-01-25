@@ -240,9 +240,10 @@ export function Contact() {
         <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[15%]">
 
           {/* Nagłówek formularza */}
-          <h2 className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
+          <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
             Formularz zgłoszeniowy
-          </h2>
+          </div>
+
 
           <form
             onSubmit={handleSubmit(onSubmit, () => {
