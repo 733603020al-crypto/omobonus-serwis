@@ -96,7 +96,7 @@ const seoBlocks: Record<string, SeoBlock> = {
   },
   'serwis-drukarek-laserowych': {
     items: ['Świadczymy również usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
-      'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',]
+      'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',]
   },
   'serwis-drukarek-atramentowych': {
     items: [' ',
@@ -488,11 +488,14 @@ export default async function ServicePage({
                   {seoBlocks[slug].items.map((text, index) => (
                     <h2
                       key={index}
-                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? "text-right md:pr-2" : "text-left md:pl-2"
+                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 text-left ${index % 2 === 0
+                        ? "md:text-right md:pr-2"
+                        : "md:text-left md:pl-2"
                         }`}
                     >
                       {text}
                     </h2>
+
                   ))}
                 </div>
               </div>
@@ -511,7 +514,9 @@ export default async function ServicePage({
                   {seoBlocks[slug].items.map((text, index) => (
                     <h2
                       key={index}
-                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? "text-right md:pr-2" : "text-left md:pl-2"
+                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0
+                        ? "text-left md:text-right md:pr-2"
+                        : "text-left md:pl-2"
                         }`}
                     >
                       {text}
