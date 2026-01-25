@@ -43,20 +43,23 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-drukarek-3d': {
-    h1: 'Serwis c naprawa drukarek 3D',
+    h1: 'Serwis i Naprawa Drukarek 3D we Wrocławiu',
+    h2: '(Bambulab, Creality, Anycubic, Flashforge, Prusa, Formlabs, ...)',
   },
 
   'serwis-plotterow': {
-    h1: 'Serwis i naprawa ploterów',
+    h1: 'Serwis i Naprawa Ploterów Drukujących we Wrocławiu',
+    h2: '(plotery HP, Canon, Epson i inne)',
   },
 
   'serwis-drukarek-iglowych': {
-    h1: 'Serwis drukarek igłowych (matrycowych)',
+    h1: 'Serwis Drukarek Igłowych (Matrycowych)',
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
   },
 
   'wynajem-drukarek': {
-    h1: 'Wynajem (dzierżawa) drukarek',
+    h1: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, ...)',
   },
 
   'drukarka-zastepcza': {
@@ -79,8 +82,9 @@ const seoBlocks: Record<string, SeoBlock> = {
   },
 
   'serwis-drukarek-termicznych': {
-    items: [' ',
-      ' ',]
+    items: ['Usługi konserwacja, przegląd, naprawa (wymiana) głowicy, ...drukarki termicznej (termiczno etykietowych)',
+      'Twoja drukarka termiczna (termotransferowa) - podamy koszt naprawy w 15 min.',
+      'Drukarki termiczne (etykietowe) – nasza specjalizacja',]
   },
   'serwis-laptopow': {
     items: [' ',
@@ -95,28 +99,32 @@ const seoBlocks: Record<string, SeoBlock> = {
       ' ',]
   },
   'serwis-drukarek-laserowych': {
-    items: ['Świadczymy również usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
+    items: ['Świadczymy usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
       'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',]
   },
   'serwis-drukarek-atramentowych': {
-    items: [' ',
-      ' ',]
+    items: ['Świadczymy usługi czyszczenie, regeneracja, naprawa głowicy, konserwacja, ...',
+      'Twoja drukarka atramentowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',]
   },
   'serwis-drukarek-3d': {
-    items: [' ',
-      ' ',]
+    items: ['Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ',
+      'dla klientów biznesowych i indywidualnych.',]
   },
   'serwis-plotterow': {
     items: [' ',
       ' ',]
   },
   'serwis-drukarek-iglowych': {
-    items: [' ',
-      ' ',]
+    items: [
+      'Świadczymy usługi czyszczenie, regeneracja, konserwacja,',
+      'naprawa (wymiana) głowicy, ... drukarki igłowej (matrycowej)',
+      'Twoja drukarka igłowa - podamy koszt naprawy w 15 min',
+      'wykonamy naprawę nawet w tym dniu.'
+    ]
   },
   'wynajem-drukarek': {
-    items: [' ',
-      ' ',]
+    items: ['Potrzebujesz kserokopiarki i nie ma na to teraz pieniędzy? Kserokopiarka będzie.',
+      'Wynajem kopiarek (urządzeń wielofunkcyjnych) - to jest wyjście z tej sytuacji.',]
   },
   'drukarka-zastepcza': {
     items: [' ',
@@ -173,8 +181,8 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'wynajem-drukarek': {
-    title: 'Wynajem drukarek Wrocław | Omobonus dzierżawa urządzeń',
-    description: 'Wynajem drukarek Wrocław – dzierżawa drukarek dla firm, urządzenia z serwisem i tonerami, elastyczne warunki, wsparcie techniczne.',
+    title: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
+    description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ Zadzwoń – dostępność od ręki!',
 
   },
   'drukarka-zastepcza': {
@@ -184,7 +192,7 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
   },
   'serwis-plotterow': {
     title: 'Serwis i Naprawa Ploterów',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Kompleksowa obsługa ploterów ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
 
   },
 }
