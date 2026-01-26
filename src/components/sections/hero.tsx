@@ -1,6 +1,7 @@
 'use client'
 
 import manifest from '@/config/manifest'
+import Image from "next/image"
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -18,14 +19,19 @@ export function Hero() {
   return (
     <section className="relative min-h-[calc(100svh-64px)] flex items-center justify-center">
       {/* Tło */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest['Логотип_картинка_на_сайт']}')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/omobonus-hero.webp"
+          alt="Omobonus serwis"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
       </div>
+
+      <div className="absolute inset-0 bg-black/50" />
+
 
       {/* Zawartość */}
       <div className="relative z-10 w-full px-[1.4%] text-center flex flex-col items-center">
