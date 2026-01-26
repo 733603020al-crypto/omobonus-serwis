@@ -226,7 +226,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Script
           id="cookieyes"
           src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
 
         {/* Google Tag Manager */}
