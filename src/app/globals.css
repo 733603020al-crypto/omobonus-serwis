@@ -155,116 +155,7 @@
     }
   }
 
-  /* Убираем синюю рамку для подкатегорий в секции naprawy */
-  [data-slot="accordion"] [data-slot="accordion-item"] [data-slot="accordion-trigger"]:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-  }
 
-  /* Отключаем Scroll Anchoring для подкатегорий в секции naprawy
-     Это предотвращает автоматическую прокрутку страницы вверх при закрытии подкатегории.
-     Браузер не будет пытаться сохранить видимость якорного элемента при изменении высоты.
-     
-     При закрытии подкатегории:
-     - AccordionItem и AccordionContent подкатегории уменьшаются в высоте через CSS анимацию animate-accordion-up
-     - Без overflow-anchor: none браузер автоматически прокручивает страницу вверх (Scroll Anchoring)
-     - С overflow-anchor: none позиция скролла остается на месте, заголовок подкатегории остается под заголовком секции
-     
-     КРИТИЧЕСКИ ВАЖНО: Применяем overflow-anchor: none ко ВСЕМ уровням контейнеров,
-     так как браузер может использовать любой из них как якорный элемент при Scroll Anchoring.
-     
-     ВАЖНО: Применение к родительскому AccordionContent может нарушить внутренний скролл,
-     поэтому используем более специфичные селекторы для элементов внутри него. */
-
-  /* Accordion для подкатегорий в секции naprawy */
-  [data-naprawy-section="true"] [data-slot="accordion"][data-naprawy-accordion="true"] {
-    overflow-anchor: none !important;
-  }
-
-  /* AccordionItem (контейнер подкатегории) - это ключевой элемент для отключения Scroll Anchoring
-     data-naprawy-subcategory="true" добавляется на AccordionItem подкатегорий в секции naprawy */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] {
-    overflow-anchor: none !important;
-  }
-
-  /* AccordionContent (внешний контейнер Radix UI) для подкатегорий внутри секции naprawy
-     Этот элемент также меняет высоту при закрытии */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"] {
-    overflow-anchor: none !important;
-  }
-
-  /* Внутренний div с overflow-y-auto для подкатегорий в секции naprawy
-     Этот div находится внутри AccordionContent подкатегории и содержит контент с таблицами */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-content"]>div {
-    overflow-anchor: none !important;
-  }
-
-  /* AccordionTrigger (заголовок подкатегории) также может быть якорем */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] [data-slot="accordion-trigger"] {
-    overflow-anchor: none !important;
-  }
-
-  /* AccordionHeader (обертка вокруг AccordionTrigger) */
-  [data-slot="accordion-item"][data-naprawy-subcategory="true"] header {
-    overflow-anchor: none !important;
-  }
-
-  /* КРИТИЧЕСКИ ВАЖНО: AccordionItem самой секции naprawy (верхний уровень)
-     Браузер использует этот элемент как якорь при изменении высоты AccordionContent секции
-     При закрытии подкатегории высота AccordionContent уменьшается, и браузер пытается
-     сохранить видимость AccordionItem секции, прокручивая страницу вверх */
-  [data-slot="accordion-item"][data-naprawy-main-section="true"] {
-    overflow-anchor: none !important;
-  }
-
-  /* AccordionContent секции naprawy - отключаем Scroll Anchoring
-     для предотвращения автоматической компенсации скролла viewport при изменении высоты содержимого
-     ВАЖНО: Это не влияет на внутренний скролл контейнера (overflow-y-auto), 
-     а только на Scroll Anchoring на уровне viewport */
-  [data-naprawy-section="true"] [data-slot="accordion-content"] {
-    overflow-anchor: none !important;
-  }
-
-  /* РАДИКАЛЬНОЕ РЕШЕНИЕ: Отключаем Scroll Anchoring для ВСЕХ элементов внутри AccordionItem секции naprawy
-     Используем универсальный селектор, чтобы покрыть все возможные элементы, которые браузер может использовать как якорь */
-  [data-slot="accordion-item"][data-naprawy-main-section="true"],
-  [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
-    overflow-anchor: none !important;
-  }
-
-  /* Также отключаем для родительского Accordion, если браузер использует его как якорь */
-  [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"],
-  [data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"] * {
-    overflow-anchor: none !important;
-  }
-
-  /* КРИТИЧЕСКИ ВАЖНО: Отключаем Scroll Anchoring для самого AccordionTrigger секции naprawy
-     Браузер может использовать заголовок секции как якорный элемент */
-  [data-slot="accordion-item"][data-naprawy-main-section="true"] [data-slot="accordion-trigger"] {
-    overflow-anchor: none !important;
-  }
-
-  /* Отключаем для всех div внутри AccordionItem секции naprawy */
-  [data-slot="accordion-item"][data-naprawy-main-section="true"] div {
-    overflow-anchor: none !important;
-  }
-
-  /* Обеспечиваем видимость надписи "Zobacz cennik" в подкатегориях */
-  [data-subcategory-link] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Скрываем надпись когда подкатегория открыта */
-  [data-slot="accordion-trigger"][data-state="open"] [data-subcategory-link] {
-    display: none !important;
-  }
-
-  /* Анимация при открытии FAQ ответа */
-  [data-slot="accordion-content"] {
-    animation: fadeIn 0.3s ease-in-out;
-  }
 
   @keyframes fadeIn {
     from {
@@ -767,7 +658,7 @@
   /* Мягкая внутренняя тень в нижней части создает эффект утопленности */
 
   /* Закрытые блоки - затемнение 80% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-item"]>div {
+  [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     background-image:
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
@@ -785,7 +676,7 @@
   }
 
   /* Шапка открытого блока - затемнение 85% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-item"][data-state="open"]>div {
+  [data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
     background-image:
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
@@ -802,23 +693,7 @@
       inset 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
   }
 
-  /* Тело открытого блока - затемнение 82% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-slot="accordion-content"][data-state="open"]>div {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.48) 0%,
-        rgba(52, 36, 20, 0.82) 100%),
-      url('/images/services-background.webp') !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.4),
-      0 2px 6px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 245, 200, 0.12),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.22) !important;
-  }
+
 
   /* Блоки услуг на главной странице "Nasze Usługi" - такое же оформление как закрытые блоки аккордеона */
   .services-card-bg {

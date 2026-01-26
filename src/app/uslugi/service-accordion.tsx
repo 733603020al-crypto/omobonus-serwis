@@ -1964,7 +1964,10 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             >
               <div
                 className={cn(
-                  "group relative min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl group-data-[state=open]:border-b group-data-[state=open]:border-b-[rgba(191,167,106,0.2)] w-full bg-[rgba(5,5,5,0.85)]"
+                  "group relative w-full transition-all duration-300",
+                  section.id === "faq"
+                    ? "bg-transparent border-0 rounded-none shadow-none"
+                    : "min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-xl bg-[rgba(5,5,5,0.85)]"
                 )}
               >
                 <AccordionTrigger
@@ -2452,6 +2455,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                           key={subcategory.id}
                           value={subcategory.id}
                           data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
+                          data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group scroll-mt-[100px]",
                             section.id === 'faq'

@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Cormorant_SC, Lora, Inter, EB_Garamond, Spectral_SC, Cinzel } from 'next/font/google'
 import './globals.css'
+import './styles/accordion.css'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
