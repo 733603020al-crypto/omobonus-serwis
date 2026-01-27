@@ -14,8 +14,6 @@ export function Hero() {
     })
   }
 
-
-
   return (
     <section className="relative min-h-[calc(100svh-64px)] flex items-center justify-center">
       {/* Tło */}
@@ -23,18 +21,15 @@ export function Hero() {
         <Image
           src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
-          fill
+          width={640}
+          height={960}
           priority
-          sizes="100vw"
-          className="object-cover object-center"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
-
-
-
+      {/* Затемнение */}
       <div className="absolute inset-0 bg-black/50" />
-
 
       {/* Zawartość */}
       <div className="relative z-10 w-full px-[1.4%] text-center flex flex-col items-center">
@@ -76,19 +71,19 @@ export function Hero() {
           <a
             href="#formularz"
             className="
-    w-[80%] md:w-auto
-    inline-flex items-center justify-center
-    border border-[#bfa76a]/80
-    text-[16px] md:text-[15px]
-    font-semibold
-    text-[#bfa76a]
-    py-[14px] md:py-[8px]
-    px-[24px]
-    rounded-full
-    hover:bg-[#bfa76a]/10
-    transition-colors
-    md:min-w-[200px]
-  "
+              w-[80%] md:w-auto
+              inline-flex items-center justify-center
+              border border-[#bfa76a]/80
+              text-[16px] md:text-[15px]
+              font-semibold
+              text-[#bfa76a]
+              py-[14px] md:py-[8px]
+              px-[24px]
+              rounded-full
+              hover:bg-[#bfa76a]/10
+              transition-colors
+              md:min-w-[200px]
+            "
           >
             Wyślij zgłoszenie
           </a>
