@@ -21,7 +21,7 @@ export function Hero() {
       {/* Tło */}
       <div className="absolute inset-0">
         <Image
-          src="/images/omobonus-hero.webp"
+          src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
           fill
           priority
@@ -29,6 +29,9 @@ export function Hero() {
           className="object-cover object-center"
         />
       </div>
+
+
+
 
       <div className="absolute inset-0 bg-black/50" />
 
