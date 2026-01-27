@@ -465,16 +465,18 @@ export default async function ServicePage({
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
                 {services
-                  .filter(s => ![
-                    'serwis-laptopow',
-                    'serwis-komputerow-stacjonarnych',
-                    'outsourcing-it',
-                    'naprawa-drukarek',
-                    'serwis-drukarek-3d',
-                    'serwis-drukarek-termicznych',
+                  .filter(s => [
+                    // старые (должны остаться)
+                    'serwis-drukarek-laserowych',
+                    'serwis-drukarek-atramentowych',
+                    'serwis-drukarek-iglowych',
+
+                    // новые
                     'serwis-plotterow',
+                    'serwis-drukarek-termicznych',
+                    'serwis-drukarek-3d',
                     'wynajem-drukarek',
-                    'drukarka-zastepcza'
+                    'drukarka-zastepcza',
                   ].includes(s.slug))
                   .map((service) => (
                     <Link

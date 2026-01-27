@@ -21,11 +21,12 @@ export function Hero() {
         <Image
           src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
-          width={640}
-          height={960}
+          fill
           priority
-          className="w-full h-full object-cover object-center"
+          sizes="100vw"
+          className="object-cover object-center"
         />
+
       </div>
 
       {/* Затемнение */}
