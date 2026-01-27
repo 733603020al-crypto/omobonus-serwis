@@ -311,7 +311,12 @@ export default async function ServicePage({
             <>
               {/* HERO container */}
               <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
-                <div className="grid grid-cols-1 md:grid-cols-[25%_75%] gap-4 md:gap-10 items-center">
+                <div
+                  className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
+                      ? 'md:grid-cols-[40%_60%]'
+                      : 'md:grid-cols-[25%_75%]'
+                    }`}
+                >
                   <div className="flex justify-center md:justify-start">
                     <div className="relative w-full">
                       <Image
