@@ -216,10 +216,11 @@ export function Contact() {
   return (
     <section
       id="formularz"
-      className="relative pb-6 md:pb-10 pt-0"
+      className="relative pb-6 md:pb-10 pt-24 md:pt-20"
     >
+
       {/* Tło sekcji */}
-      < div
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url('${manifest.services_background
@@ -231,10 +232,7 @@ export function Contact() {
 
       <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
 
-        {/* Tekst nad formularzem */}
-        <p className="text-white/90 text-lg md:text-xl text-center mb-8 drop-shadow-md font-serif italic pt-4 md:pt-6">
-          &ldquo;Chcesz zamówić serwis lub potrzebujesz wsparcia? Napisz lub zadzwoń&rdquo;
-        </p>
+
 
         {/* Karta formularza - масштабирована на 20% */}
         <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top -mb-[15%]">

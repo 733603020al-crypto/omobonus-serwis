@@ -5,6 +5,7 @@ import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
 import { Contact } from '@/components/sections/contact'
 import { Footer } from '@/components/footer'
+import GoogleReviews from "@/components/google-reviews"
 
 export const metadata: Metadata = {
   title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
@@ -33,8 +34,17 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
+
+      {/* Święty Omobonus */}
       <About />
+
+      <div style={{ marginTop: "-40px" }}>
+
+      </div>
+
       <Contact />
+
+
       <Footer />
     </>
   )

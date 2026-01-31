@@ -11,9 +11,7 @@ export function Footer() {
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest.Background_1}')`,
-        }}
+        style={{ backgroundImage: `url('${manifest.Background_1}')` }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -30,7 +28,7 @@ export function Footer() {
             <div className="space-y-2.5">
               <div>
                 <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <MapPin className="h-4 w-4" />
                   <span>Adres</span>
                 </div>
                 <Link
@@ -46,7 +44,7 @@ export function Footer() {
 
               <div>
                 <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <Phone className="h-4 w-4" />
                   <span>Telefon</span>
                 </div>
                 <Link
@@ -59,7 +57,7 @@ export function Footer() {
 
               <div>
                 <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
-                  <Mail className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <Mail className="h-4 w-4" />
                   <span>E-mail</span>
                 </div>
                 <Link
@@ -72,7 +70,7 @@ export function Footer() {
 
               <div>
                 <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <Clock className="h-4 w-4" />
                   <span>Godziny otwarcia</span>
                 </div>
                 <span className="text-white block text-sm">
@@ -82,7 +80,7 @@ export function Footer() {
 
               <div>
                 <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
-                  <FaWhatsapp className="h-4 w-4 text-[#bfa76a] flex-shrink-0" />
+                  <FaWhatsapp className="h-4 w-4" />
                   <span>Komunikatory</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
@@ -105,21 +103,6 @@ export function Footer() {
                   </Link>
                 </div>
               </div>
-
-              <div className="pt-4 space-y-2">
-                <Link
-                  href="/polityka-prywatnosci"
-                  className="block text-[#b8a894] hover:text-primary transition-colors text-sm"
-                >
-                  Polityka Prywatności
-                </Link>
-                <Link
-                  href="/regulamin"
-                  className="block text-[#b8a894] hover:text-primary transition-colors text-sm"
-                >
-                  Regulamin
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -132,10 +115,8 @@ export function Footer() {
                 height="100%"
                 style={{
                   border: 0,
-                  filter:
-                    'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
+                  filter: 'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
                 }}
-                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lokalizacja Omobonus serwis"
@@ -144,14 +125,24 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[#3a2e24]/30 text-center space-y-1">
-          <p className="text-[#bfa76a] text-sm">
-            Omobonus Sp. z o.o. – legalny serwis komputerów, laptopów i drukarek we Wrocławiu.
+        {/* DOLNY PASEK */}
+        <div className="mt-6 pt-4 border-t border-[#3a2e24]/30 text-center space-y-1">
+          <div className="text-sm text-[#b8a894]">
+            <Link href="/polityka-prywatnosci" className="hover:text-primary transition-colors">
+              Polityka Prywatności
+            </Link>
+            <span className="mx-2 opacity-40">|</span>
+            <Link href="/regulamin" className="hover:text-primary transition-colors">
+              Regulamin
+            </Link>
+          </div>
+
+          <p className="text-xs text-[#bfa76a]">
+            © {currentYear} Omobonus Sp. z o.o. Wszelkie prawa zastrzeżone.
           </p>
-          <p className="text-[#bfa76a] text-sm">
-            © {currentYear} Wszelkie prawa zastrzeżone.
-          </p>
+
         </div>
+
       </div>
     </footer>
   )

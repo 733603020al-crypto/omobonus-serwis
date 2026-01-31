@@ -1,10 +1,11 @@
 import { CheckCircle } from 'lucide-react'
 import Image from 'next/image'
 import manifest from '@/config/manifest'
+import GoogleReviews from '@/components/google-reviews'
 
 export function About() {
   return (
-    <section id="o-nas" className="relative pt-8 md:pt-12 pb-16 md:pb-24">
+    <section id="o-nas" className="relative pt-8 md:pt-12 pb-24">
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -39,8 +40,6 @@ export function About() {
                 height={500}
                 className="object-contain rounded-lg w-full h-auto"
                 quality={85}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
           </div>
@@ -81,9 +80,12 @@ export function About() {
                 ].map((text, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-[#bfa76a] italic text-sm leading-tight">{text}</span>
+                    <span className="text-[#bfa76a] italic text-sm leading-tight">
+                      {text}
+                    </span>
                   </li>
                 ))}
+
                 <li className="flex items-center gap-2">
                   <Image
                     src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
@@ -101,6 +103,11 @@ export function About() {
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* ✅ ОТЗЫВЫ ВНИЗУ БЛОКА */}
+        <div className="mt-20">
+          <GoogleReviews />
         </div>
       </div>
     </section>

@@ -40,8 +40,27 @@ export function Services() {
               <Link
                 key={service.slug}
                 href={`/uslugi/${service.slug}`}
-                className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl flex items-center text-left w-full services-card-bg"
+                className="
+    group
+    relative
+    min-h-[70px]
+    rounded-lg
+    py-2 px-3
+    border-2 border-[rgba(200,169,107,0.5)]
+    hover:border-[rgba(200,169,107,0.85)]
+    transition-all
+    duration-300
+    ease-out
+    hover:-translate-y-1
+    hover:shadow-xl
+    flex
+    items-center
+    text-left
+    w-full
+    services-card-bg
+  "
               >
+
                 {/* Ikona */}
                 <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                   <Image

@@ -47,20 +47,26 @@ export function Hero() {
           <a
             href="tel:+48793759262"
             className="
-              w-[80%] md:w-auto
-              inline-flex items-center justify-center
-              border border-[#bfa76a]/80
-              text-[16px] md:text-[15px]
-              font-semibold
-              text-[#bfa76a]
-              py-[14px] md:py-[8px]
-              px-[24px]
-              rounded-full
-              hover:bg-[#bfa76a]/10
-              transition-colors
-              md:min-w-[200px]
-            "
+    w-[80%] md:w-auto
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px] md:text-[15px]
+    font-semibold
+    text-[#bfa76a]
+    py-[14px] md:py-[8px]
+    px-[24px]
+    rounded-full
+    hover:bg-[#bfa76a]/10
+
+    transition-all duration-300 ease-out
+hover:-translate-y-1
+hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]
+
+
+    md:min-w-[200px]
+  "
           >
+
             <img
               src="/images/telefon.png"
               alt="Telefon"
@@ -72,20 +78,24 @@ export function Hero() {
           <a
             href="#formularz"
             className="
-              w-[80%] md:w-auto
-              inline-flex items-center justify-center
-              border border-[#bfa76a]/80
-              text-[16px] md:text-[15px]
-              font-semibold
-              text-[#bfa76a]
-              py-[14px] md:py-[8px]
-              px-[24px]
-              rounded-full
-              hover:bg-[#bfa76a]/10
-              transition-colors
-              md:min-w-[200px]
-            "
+    w-[80%] md:w-auto
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px] md:text-[15px]
+    font-semibold
+    text-[#bfa76a]
+    py-[14px] md:py-[8px]
+    px-[24px]
+    rounded-full
+    hover:bg-[#bfa76a]/10
+
+    transition-all duration-300 ease-out
+    hover:-translate-y-1
+
+    md:min-w-[200px]
+  "
           >
+
             Wyślij zgłoszenie
           </a>
         </div>

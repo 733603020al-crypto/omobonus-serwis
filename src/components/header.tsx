@@ -171,16 +171,33 @@ export function Header() {
           >
             Sklep
           </Link>
-          <Button
-            variant="outline"
-            className="text-[18px] text-[#bfa76a] font-cormorant px-4 py-1.5 rounded-full bg-transparent border-[#bfa76a]/80 hover:bg-[#bfa76a]/10 transition-colors"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('formularz')
-            }}
+          <a
+            href="tel:+48793759262"
+            className="
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px]
+    font-cormorant font-semibold
+    text-[#bfa76a]
+    py-[4px]
+    px-[16px]
+    rounded-full
+    hover:bg-[#bfa76a]/10
+
+    transition-all duration-300 ease-out
+    hover:-translate-y-1
+    hover:shadow-[0_8px_20px_rgba(0,0,0,0.3)]
+  "
           >
-            Wyślij zgłoszenie
-          </Button>
+            <img
+              src="/images/telefon.png"
+              alt="Telefon"
+              className="w-4 h-4 mr-2 object-contain"
+            />
+            Zadzwoń teraz
+          </a>
+
+
         </nav>
 
         {/* Mobile Menu */}

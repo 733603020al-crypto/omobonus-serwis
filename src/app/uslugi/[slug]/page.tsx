@@ -8,6 +8,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
+import GoogleReviews from "@/components/google-reviews"
 
 const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -313,8 +314,8 @@ export default async function ServicePage({
               <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div
                   className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
-                      ? 'md:grid-cols-[40%_60%]'
-                      : 'md:grid-cols-[25%_75%]'
+                    ? 'md:grid-cols-[40%_60%]'
+                    : 'md:grid-cols-[25%_75%]'
                     }`}
                 >
                   <div className="flex justify-center md:justify-start">
@@ -392,20 +393,26 @@ export default async function ServicePage({
                       <a
                         href="tel:+48793759262"
                         className="
-      w-[80%] md:w-auto
-      inline-flex items-center justify-center
-      border border-[#bfa76a]/80
-      text-[16px] md:text-[15px]
-      font-semibold
-      text-[#bfa76a]
-      py-[14px] md:py-[8px]
-      px-[24px]
-      rounded-full
-      hover:bg-[#bfa76a]/10
-      transition-colors
-      md:min-w-[200px]
-    "
+    group
+    w-[80%] md:w-auto
+    inline-flex items-center justify-center
+    border border-[#bfa76a]/80
+    text-[16px] md:text-[15px]
+    font-semibold
+    text-[#bfa76a]
+    py-[14px] md:py-[8px]
+    px-[24px]
+    rounded-full
+    md:min-w-[200px]
+
+    transition-all duration-300 ease-out
+    hover:bg-[#bfa76a]/10
+    hover:border-[#bfa76a]
+    hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]
+    hover:-translate-y-[1px]
+  "
                       >
+
                         <img
                           src="/images/telefon.png"
                           alt="Telefon"
@@ -417,6 +424,7 @@ export default async function ServicePage({
                       <Link
                         href="/#formularz"
                         className="
+    group
     w-[80%] md:w-auto
     inline-flex items-center justify-center
     border border-[#bfa76a]/80
@@ -426,11 +434,16 @@ export default async function ServicePage({
     py-[14px] md:py-[8px]
     px-[24px]
     rounded-full
-    hover:bg-[#bfa76a]/10
-    transition-colors
     md:min-w-[200px]
+
+    transition-all duration-300 ease-out
+    hover:bg-[#bfa76a]/10
+    hover:border-[#bfa76a]
+    hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]
+    hover:-translate-y-[1px]
   "
                       >
+
                         Wyślij zgłoszenie
                       </Link>
                     </div>
@@ -487,8 +500,22 @@ export default async function ServicePage({
                     <Link
                       key={service.slug}
                       href={`/uslugi/${service.slug}`}
-                      className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] transition-all duration-300 hover:shadow-xl flex items-center text-left w-full services-card-bg"
+                      className="
+    group relative
+    min-h-[70px]
+    rounded-lg
+    py-2 px-3
+    border-2 border-[rgba(200,169,107,0.5)]
+    flex items-center text-left w-full
+    services-card-bg
+
+    transition-all duration-300 ease-out
+    hover:border-[rgba(200,169,107,0.85)]
+    hover:-translate-y-[2px]
+    hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]
+  "
                     >
+
                       {/* Ikona */}
                       <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                         <Image
@@ -595,6 +622,10 @@ export default async function ServicePage({
             </p>
           </div>
         )}
+        <div className="relative mt-12">
+          <GoogleReviews />
+        </div>
+
       </main>
       <Footer />
     </>
