@@ -89,7 +89,14 @@ export default function GoogleReviews() {
         )
     }
 
-    if (!reviews.length) return null
+    if (!reviews.length) {
+        return (
+            <section className="py-6 text-center text-red-500">
+                Brak opinii (API nie zwróciło danych)
+            </section>
+        )
+    }
+
 
     return (
         <section className="relative z-10 w-full py-6 overflow-visible -mt-24 -mb-20">
