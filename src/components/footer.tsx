@@ -7,7 +7,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer id="kontakt" className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white">
+    <footer
+      id="kontakt"
+      className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white"
+    >
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -20,84 +23,89 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
-          <div className="space-y-3">
-            <div className="text-2xl font-semibold tracking-wide text-[#bfa76a] mb-3">
+          <div className="space-y-4">
+            <div className="text-2xl font-cormorant tracking-wide text-[#bfa76a] mb-4">
               Kontakt
             </div>
 
-            <div className="space-y-2.5">
+            <div className="space-y-3 font-inter text-sm leading-snug">
+              {/* Adres */}
               <div>
-                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <MapPin className="h-4 w-4" />
                   <span>Adres</span>
                 </div>
                 <Link
-                  href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/@51.0775056,16.9784737,11z"
+                  href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-primary transition-colors block text-sm leading-tight"
+                  className="block text-white hover:text-primary transition-colors"
                 >
                   <div>Marcina Bukowskiego 174</div>
                   <div>52-418 Wrocław</div>
                 </Link>
               </div>
 
+              {/* Telefon */}
               <div>
-                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <Phone className="h-4 w-4" />
                   <span>Telefon</span>
                 </div>
                 <Link
                   href="tel:+48793759262"
-                  className="text-white hover:text-primary transition-colors block text-sm"
+                  className="text-white hover:text-primary transition-colors"
                 >
                   +48 793 759 262
                 </Link>
               </div>
 
+              {/* E-mail */}
               <div>
-                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <Mail className="h-4 w-4" />
                   <span>E-mail</span>
                 </div>
                 <Link
                   href="mailto:serwis@omobonus.com.pl"
-                  className="text-white hover:text-primary transition-colors block text-sm"
+                  className="text-white hover:text-primary transition-colors"
                 >
                   serwis@omobonus.com.pl
                 </Link>
               </div>
 
+              {/* Godziny */}
               <div>
-                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <Clock className="h-4 w-4" />
                   <span>Godziny otwarcia</span>
                 </div>
-                <span className="text-white block text-sm">
+                <span className="text-white">
                   Pon–Pt: 8–18
                 </span>
               </div>
 
+              {/* Komunikatory */}
               <div>
-                <div className="text-[#bfa76a] font-semibold text-base mb-1 flex items-center gap-2">
+                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <FaWhatsapp className="h-4 w-4" />
                   <span>Komunikatory</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2">
                   <Link
                     href="https://wa.me/48793759262"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-primary transition-colors"
+                    className="hover:text-primary transition-colors"
                   >
                     WhatsApp
                   </Link>
-                  <span className="text-white/60">·</span>
+                  <span className="opacity-50">·</span>
                   <Link
                     href="https://t.me/+48793759262"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-primary transition-colors"
+                    className="hover:text-primary transition-colors"
                   >
                     Telegram
                   </Link>
@@ -115,7 +123,8 @@ export function Footer() {
                 height="100%"
                 style={{
                   border: 0,
-                  filter: 'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
+                  filter:
+                    'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
                 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -125,14 +134,20 @@ export function Footer() {
           </div>
         </div>
 
-        {/* DOLNY PASEK */}
-        <div className="mt-6 pt-4 border-t border-[#3a2e24]/30 text-center space-y-1">
+        {/* Dolny pasek */}
+        <div className="mt-8 pt-4 border-t border-[#3a2e24]/30 text-center space-y-1 font-inter">
           <div className="text-sm text-[#b8a894]">
-            <Link href="/polityka-prywatnosci" className="hover:text-primary transition-colors">
+            <Link
+              href="/polityka-prywatnosci"
+              className="hover:text-primary transition-colors"
+            >
               Polityka Prywatności
             </Link>
             <span className="mx-2 opacity-40">|</span>
-            <Link href="/regulamin" className="hover:text-primary transition-colors">
+            <Link
+              href="/regulamin"
+              className="hover:text-primary transition-colors"
+            >
               Regulamin
             </Link>
           </div>
@@ -140,9 +155,7 @@ export function Footer() {
           <p className="text-xs text-[#bfa76a]">
             © {currentYear} Omobonus Sp. z o.o. Wszelkie prawa zastrzeżone.
           </p>
-
         </div>
-
       </div>
     </footer>
   )

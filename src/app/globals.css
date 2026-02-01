@@ -6,40 +6,45 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
-    /* wysokość headera */
   }
 
   body {
     @apply bg-background text-foreground;
   }
 
-  /* Inter для таблиц */
-  .font-sans {
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  }
+  /* =========================
+     GLOBAL FONTS (FINAL)
+     ========================= */
 
+  .font-sans,
   .font-inter {
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 
-  /* Винтажные шрифты для таблиц */
+  .font-serif,
+  .font-cormorant {
+    font-family: var(--font-cormorant), serif;
+  }
+
+  /* Таблицы — используем ТОЛЬКО Cormorant */
   .font-table-main {
     font-family: var(--font-cormorant), serif;
     font-weight: 500;
   }
 
   .font-table-sub {
-    font-family: var(--font-eb-garamond), serif;
-    font-style: normal;
+    font-family: var(--font-cormorant), serif;
+    font-weight: 400;
   }
 
   .font-table-header {
-    font-family: var(--font-spectral-sc), serif;
+    font-family: var(--font-cormorant), serif;
     font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .font-table-accent {
-    font-family: var(--font-cormorant-sc), serif;
+    font-family: var(--font-cormorant), serif;
     font-weight: 700;
   }
 }
@@ -57,652 +62,24 @@
     overflow-wrap: anywhere;
   }
 
-  /* Изоляция стилей для текста в скобках - предотвращает наследование от родительских контейнеров */
   .parentheses-text-isolated {
     color: #cbb27c !important;
     line-height: 1.625 !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    letter-spacing: normal !important;
     font-family: inherit !important;
   }
 
-  /* Ręcznie rysowane checkboxy */
-  .checkbox-tick-wrapper {
-    position: absolute;
-    left: -6px;
-    bottom: 0;
-    width: calc(100% + 12px);
-    height: calc(100% + 6px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    pointer-events: none;
-  }
-
-  .checkbox-ink-effect {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
-    background: rgba(191, 167, 106, 0.35);
-    filter: blur(0.8px);
-    opacity: 0;
-    animation: checkboxInk 0.55s ease forwards;
-    pointer-events: none;
-  }
-
-  .checkbox-tick {
-    position: relative;
-    width: 40px;
-    height: 38px;
-    color: #020202;
-    transform: translate(4px, -8px);
-    stroke-dasharray: 230;
-    stroke-dashoffset: 230;
-    animation: checkboxDraw 0.5s ease forwards;
-    overflow: visible;
-    pointer-events: none;
-  }
-
-  @keyframes checkboxInk {
-    0% {
-      opacity: 0;
-      transform: scale(0.6);
-    }
-
-    60% {
-      opacity: 0.5;
-      transform: scale(1.05);
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(1.12);
-    }
-  }
-
-  @keyframes checkboxDraw {
-    0% {
-      stroke-dashoffset: 230;
-    }
-
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-
-  /* Ограничение ширины первой колонки таблицы через max-width */
-  table[data-slot="table"] tbody tr td:first-child {
-    max-width: 850px;
-  }
-
-  /* Фиксированное выравнивание колонки с ценами */
-  table[data-slot="table"] tbody tr td:nth-child(2) {
-    text-align: center !important;
-    vertical-align: middle !important;
-  }
-
-  /* На десктопе фиксируем ширину колонки с ценами */
-  @media (min-width: 768px) {
-    table[data-slot="table"] {
-      table-layout: fixed;
-    }
-
-    table[data-slot="table"] tbody tr td:nth-child(2) {
-      width: 16.5% !important;
-      min-width: 120px;
-    }
-  }
-
-
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Анимация появления модального окна */
-  @keyframes modalAppear {
-    from {
-      opacity: 0;
-      transform: scale(0.9) translateY(-10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
-  .animate-modal-appear {
-    animation: modalAppear 0.3s ease-out;
-  }
-
-  /* Стрелка в селекторе страны */
-  .arrow-icon path {
-    transition: fill 0.2s ease;
-  }
-
-  .group:hover .arrow-icon path {
-    fill: #000000;
-  }
-
-  /* Прозрачный фон для PhoneInput dropdown и кнопки с флагом */
-  .flag-dropdown,
-  .flag-dropdown.open,
-  .selected-flag,
-  .selected-flag:focus,
-  .selected-flag:hover,
-  .selected-flag:active {
-    background: transparent !important;
-    background-color: transparent !important;
-  }
-
-  /* Фон выпадающего меню с текстурой бумаги */
-  .country-list,
-  .flag-dropdown .country-list,
-  .react-tel-input .country-list,
-  div.country-list {
-    background-image:
-      linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
-      url('/images/zmiety arkusz papieru 2.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 1px solid rgba(58, 46, 36, 0.2) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Скроллбар - убрали, оставляем по умолчанию */
-
-  /* Прозрачный фон для всех полей ввода в форме - включая autocomplete/autofill */
-  input,
-  textarea,
-  select,
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  textarea:-webkit-autofill:active,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus,
-  select:-webkit-autofill:active {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-    -webkit-text-fill-color: #3a2e24 !important;
-    transition: background-color 9999s ease-out;
-  }
-
-  input:-moz-autofill,
-  textarea:-moz-autofill,
-  select:-moz-autofill {
-    background-color: transparent !important;
-    background: transparent !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-    -moz-text-fill-color: #3a2e24 !important;
-  }
-
-  input:focus,
-  input:active,
-  input:hover,
-  textarea:focus,
-  textarea:active,
-  textarea:hover {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  /* Для PhoneInput */
-  .react-tel-input input,
-  .react-tel-input input:focus,
-  .react-tel-input input:active,
-  .react-tel-input input:hover,
-  .react-tel-input input:-webkit-autofill,
-  .react-tel-input input:-webkit-autofill:hover,
-  .react-tel-input input:-webkit-autofill:focus,
-  .react-tel-input input:-webkit-autofill:active,
-  input[type="tel"],
-  input[type="tel"]:focus,
-  input[type="tel"]:active,
-  input[type="tel"]:hover,
-  input[type="tel"]:-webkit-autofill,
-  input[type="tel"]:-webkit-autofill:hover,
-  input[type="tel"]:-webkit-autofill:focus,
-  input[type="tel"]:-webkit-autofill:active {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  /* Для Firefox */
-  .country-list,
-  .flag-dropdown .country-list,
-  .react-tel-input .country-list,
-  div.country-list {
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(58, 46, 36, 0.4) transparent !important;
-  }
-
-  .country-list .country {
-    background: transparent !important;
-  }
-
-  .country-list .country:hover,
-  .country-list .country.highlight {
-    background: rgba(58, 46, 36, 0.1) !important;
-  }
-
-  /* Дополнительный класс для применения через dropdownClass */
-  .paper-dropdown-bg .country-list,
-  .paper-dropdown-bg.country-list {
-    background-image:
-      linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
-      url('/images/zmiety arkusz papieru 2.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border: 1px solid rgba(58, 46, 36, 0.2) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Адаптивные стили для мобильных устройств */
-  @media (max-width: 768px) {
-    table[data-slot="table"] {
-      table-layout: fixed;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    table[data-slot="table"] colgroup {
-      display: none;
-    }
-
-    table[data-slot="table"] tbody tr td:first-child {
-      max-width: none;
-      width: 80%;
-      padding-right: 0.5rem;
-    }
-
-    table[data-slot="table"] tbody tr td:nth-child(2) {
-      min-width: 70px;
-      width: 20% !important;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      white-space: nowrap;
-      text-align: center !important;
-      vertical-align: middle !important;
-    }
-
-    /* Контейнер таблицы на мобильных - убираем горизонтальную прокрутку */
-    div[data-slot="table-container"] {
-      overflow-x: visible !important;
-      width: 100%;
-    }
-
-    /* Ограничиваем ширину таблицы на мобильных */
-    div[data-slot="table-container"] table {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-  }
-
-  /* КРИТИЧЕСКИ ВАЖНО: Прозрачный фон для input - в конце файла с максимальным приоритетом */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="hidden"]) {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  input[type="text"]:-webkit-autofill,
-  input[type="text"]:-webkit-autofill:hover,
-  input[type="text"]:-webkit-autofill:focus,
-  input[type="text"]:-webkit-autofill:active,
-  input[type="email"]:-webkit-autofill,
-  input[type="email"]:-webkit-autofill:hover,
-  input[type="email"]:-webkit-autofill:focus,
-  input[type="email"]:-webkit-autofill:active,
-  input[type="tel"]:-webkit-autofill,
-  input[type="tel"]:-webkit-autofill:hover,
-  input[type="tel"]:-webkit-autofill:focus,
-  input[type="tel"]:-webkit-autofill:active {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-    -webkit-text-fill-color: #3a2e24 !important;
-    color: #3a2e24 !important;
-  }
-
-  input[type="text"]:focus,
-  input[type="text"]:active,
-  input[type="text"]:hover,
-  input[type="email"]:focus,
-  input[type="email"]:active,
-  input[type="email"]:hover,
-  input[type="tel"]:focus,
-  input[type="tel"]:active,
-  input[type="tel"]:hover {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  /* Специальные правила для тестовой страницы kontakt-test (из 25.11) */
-  #kontakt-test input[type="text"],
-  #kontakt-test input[type="email"],
-  #kontakt-test input[type="tel"] {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  #kontakt-test input[type="text"]:-webkit-autofill,
-  #kontakt-test input[type="text"]:-webkit-autofill:hover,
-  #kontakt-test input[type="text"]:-webkit-autofill:focus,
-  #kontakt-test input[type="text"]:-webkit-autofill:active,
-  #kontakt-test input[type="email"]:-webkit-autofill,
-  #kontakt-test input[type="email"]:-webkit-autofill:hover,
-  #kontakt-test input[type="email"]:-webkit-autofill:focus,
-  #kontakt-test input[type="email"]:-webkit-autofill:active,
-  #kontakt-test input[type="tel"]:-webkit-autofill,
-  #kontakt-test input[type="tel"]:-webkit-autofill:hover,
-  #kontakt-test input[type="tel"]:-webkit-autofill:focus,
-  #kontakt-test input[type="tel"]:-webkit-autofill:active {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-    -webkit-text-fill-color: #000000 !important;
-    color: #000000 !important;
-    transition: background-color 5000s ease-in-out 0s !important;
-  }
-
-  #kontakt-test input[type="text"]:focus,
-  #kontakt-test input[type="text"]:active,
-  #kontakt-test input[type="text"]:hover,
-  #kontakt-test input[type="email"]:focus,
-  #kontakt-test input[type="email"]:active,
-  #kontakt-test input[type="email"]:hover,
-  #kontakt-test input[type="tel"]:focus,
-  #kontakt-test input[type="tel"]:active,
-  #kontakt-test input[type="tel"]:hover {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-
-  /* Прозрачный фон для radio и checkbox на тестовой странице */
-  #kontakt-test input[type="radio"],
-  #kontakt-test input[type="checkbox"] {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  #kontakt-test input[type="radio"]:checked,
-  #kontakt-test input[type="checkbox"]:checked {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  /* Контейнеры для radio и checkbox */
-  #kontakt-test label:has(input[type="radio"]),
-  #kontakt-test label:has(input[type="checkbox"]) {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  /* Специальные правила для основной формы kontakt (из 25.11) */
-  #kontakt input[type="text"],
-  #kontakt input[type="email"],
-  #kontakt input[type="tel"],
-  #kontakt textarea,
-  section#kontakt input[type="text"],
-  section#kontakt input[type="email"],
-  section#kontakt input[type="tel"],
-  section#kontakt textarea {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  #kontakt input[type="text"]:-webkit-autofill,
-  #kontakt input[type="text"]:-webkit-autofill:hover,
-  #kontakt input[type="text"]:-webkit-autofill:focus,
-  #kontakt input[type="text"]:-webkit-autofill:active,
-  #kontakt input[type="email"]:-webkit-autofill,
-  #kontakt input[type="email"]:-webkit-autofill:hover,
-  #kontakt input[type="email"]:-webkit-autofill:focus,
-  #kontakt input[type="email"]:-webkit-autofill:active,
-  #kontakt input[type="tel"]:-webkit-autofill,
-  #kontakt input[type="tel"]:-webkit-autofill:hover,
-  #kontakt input[type="tel"]:-webkit-autofill:focus,
-  #kontakt input[type="tel"]:-webkit-autofill:active,
-  #kontakt textarea:-webkit-autofill,
-  #kontakt textarea:-webkit-autofill:hover,
-  #kontakt textarea:-webkit-autofill:focus,
-  #kontakt textarea:-webkit-autofill:active,
-  section#kontakt input[type="text"]:-webkit-autofill,
-  section#kontakt input[type="text"]:-webkit-autofill:hover,
-  section#kontakt input[type="text"]:-webkit-autofill:focus,
-  section#kontakt input[type="text"]:-webkit-autofill:active,
-  section#kontakt input[type="email"]:-webkit-autofill,
-  section#kontakt input[type="email"]:-webkit-autofill:hover,
-  section#kontakt input[type="email"]:-webkit-autofill:focus,
-  section#kontakt input[type="email"]:-webkit-autofill:active,
-  section#kontakt input[type="tel"]:-webkit-autofill,
-  section#kontakt input[type="tel"]:-webkit-autofill:hover,
-  section#kontakt input[type="tel"]:-webkit-autofill:focus,
-  section#kontakt input[type="tel"]:-webkit-autofill:active,
-  section#kontakt textarea:-webkit-autofill,
-  section#kontakt textarea:-webkit-autofill:hover,
-  section#kontakt textarea:-webkit-autofill:focus,
-  section#kontakt textarea:-webkit-autofill:active {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-    -webkit-text-fill-color: #000000 !important;
-    color: #000000 !important;
-    transition: background-color 5000s ease-in-out 0s !important;
-  }
-
-  #kontakt input[type="text"]:focus,
-  #kontakt input[type="text"]:active,
-  #kontakt input[type="text"]:hover,
-  #kontakt input[type="email"]:focus,
-  #kontakt input[type="email"]:active,
-  #kontakt input[type="email"]:hover,
-  #kontakt input[type="tel"]:focus,
-  #kontakt input[type="tel"]:active,
-  #kontakt input[type="tel"]:hover,
-  #kontakt textarea:focus,
-  #kontakt textarea:active,
-  #kontakt textarea:hover,
-  section#kontakt input[type="text"]:focus,
-  section#kontakt input[type="text"]:active,
-  section#kontakt input[type="text"]:hover,
-  section#kontakt input[type="email"]:focus,
-  section#kontakt input[type="email"]:active,
-  section#kontakt input[type="email"]:hover,
-  section#kontakt input[type="tel"]:focus,
-  section#kontakt input[type="tel"]:active,
-  section#kontakt input[type="tel"]:hover,
-  section#kontakt textarea:focus,
-  section#kontakt textarea:active,
-  section#kontakt textarea:hover {
-    background-color: transparent !important;
-    background: transparent !important;
-    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-    box-shadow: 0 0 0 1000px transparent inset !important;
-  }
-
-  /* Прозрачный фон для radio и checkbox на основной форме */
-  #kontakt input[type="radio"],
-  #kontakt input[type="checkbox"],
-  section#kontakt input[type="radio"],
-  section#kontakt input[type="checkbox"] {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  #kontakt input[type="radio"]:checked,
-  #kontakt input[type="checkbox"]:checked,
-  section#kontakt input[type="radio"]:checked,
-  section#kontakt input[type="checkbox"]:checked {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  /* Контейнеры для radio и checkbox */
-  #kontakt label:has(input[type="radio"]),
-  #kontakt label:has(input[type="checkbox"]),
-  section#kontakt label:has(input[type="radio"]),
-  section#kontakt label:has(input[type="checkbox"]) {
-    background-color: transparent !important;
-    background: transparent !important;
-  }
-
-  /* Выпадающий список стран - подложка из смятого листа */
-  .custom-dropdown {
-    background-image:
-      linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
-      url('/images/zmiety arkusz papieru 2.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-  }
-
-  /* Скроллбар для выпадающего списка стран */
-  .custom-dropdown::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .custom-dropdown::-webkit-scrollbar-track {
-    background-image:
-      linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)),
-      url('/images/zmiety arkusz papieru 2.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    border-radius: 4px;
-  }
-
-  .custom-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(58, 46, 36, 0.3) !important;
-    border-radius: 4px;
-  }
-
-  .custom-dropdown::-webkit-scrollbar-thumb:hover {
-    background: rgba(58, 46, 36, 0.5) !important;
-  }
-
-  /* Для Firefox */
-  .custom-dropdown {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(58, 46, 36, 0.3) transparent;
-  }
-
-  /* Прозрачный скроллбар для AccordionContent */
-  .accordion-scroll::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .accordion-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .accordion-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-  }
-
-  .accordion-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  /* Для Firefox - прозрачный скроллбар */
-  .accordion-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-  }
-
-  /* Фон аккордеона - services-background.webp с матовым антикварным затемнением */
-  /* Приглушенный медный оттенок для создания эффекта старого матового золота */
-  /* Мягкий вертикальный градиент: разница между верхом и низом 5-7% */
-  /* Мягкая внутренняя тень в нижней части создает эффект утопленности */
-
-  /* Закрытые блоки - затемнение 80% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(60, 45, 25, 0.45) 0%,
-        rgba(55, 38, 20, 0.80) 100%),
-      url('/images/services-background.webp') !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.4),
-      0 2px 6px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 245, 200, 0.1),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
-  }
-
-  /* Шапка открытого блока - затемнение 85% с эффектом выпуклости, видимой текстурой и красноватым оттенком */
-  [data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%),
-      url('/images/services-background.webp') !important;
-    background-color: transparent !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    box-shadow:
-      0 6px 16px rgba(0, 0, 0, 0.5),
-      0 3px 8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 245, 200, 0.15),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
-  }
-
-
-
-  /* Блоки услуг на главной странице "Nasze Usługi" - такое же оформление как закрытые блоки аккордеона */
+  /* =========================
+     SERVICES CARDS — FINAL
+     ========================= */
   .services-card-bg {
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
     background-image:
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%),
       url('/images/services-background.webp') !important;
-    background-color: transparent !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -726,85 +103,49 @@
       inset 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
   }
 
-  .modal-card-outer {
+  /* =========================
+     ACCORDION
+     ========================= */
+  [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+    background-image:
+      linear-gradient(to bottom,
+        rgba(60, 45, 25, 0.45) 0%,
+        rgba(55, 38, 20, 0.80) 100%),
+      url('/images/services-background.webp') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 245, 200, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+
+  [data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
     background-image:
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%),
-      url('/images/services-background.webp');
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow:
-      0 6px 16px rgba(0, 0, 0, 0.5),
-      0 3px 8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 245, 200, 0.15),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+      url('/images/services-background.webp') !important;
   }
 
-  .modal-card-inner {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.48) 0%,
-        rgba(52, 36, 20, 0.82) 100%),
-      url('/images/services-background.webp');
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.4),
-      0 2px 6px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 245, 200, 0.12),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  /* =========================
+     FORM
+     ========================= */
+  input,
+  textarea,
+  select {
+    background: transparent !important;
   }
-
-  /* Благородный золотой цвет для подзаголовка - как на странице "Nasze Usługi" */
-  .golden-glow-text {
-    color: #bfa76a;
-  }
-
-  /* Анимация shake для полей с ошибками валидации */
-  @keyframes shake {
-
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      transform: translateX(-8px);
-    }
-
-    20%,
-    40%,
-    60%,
-    80% {
-      transform: translateX(8px);
-    }
-  }
-
-  .shake-error {
-    animation: shake 0.6s ease-in-out;
-    border-color: #ef4444 !important;
-    border-width: 2px !important;
-  }
-
-  /* Подсветка полей с ошибками */
-  [data-field-name] input:invalid,
-  [data-field-name] textarea:invalid,
-  [data-field-name].shake-error input,
-  [data-field-name].shake-error textarea {
-    border-color: #ef4444 !important;
-    border-width: 2px !important;
-  }
-
 }
+
+/* =========================
+   PAGE-SPECIFIC TYPO
+   ========================= */
 
 .page-serwis-drukarek-termicznych .h1-sub {
   font-size: 0.85em !important;
@@ -818,16 +159,10 @@
 
 @media (max-width: 768px) {
   .page-serwis-drukarek-termicznych .h1-sub {
-    display: block !important;
     font-size: 0.72em !important;
-    line-height: 1.2 !important;
-    margin-top: 0.25em !important;
   }
 
   .page-serwis-laptopow .h1-sub {
-    display: block !important;
     font-size: 0.65em !important;
-    line-height: 1.2 !important;
-    margin-top: 0.25em !important;
   }
 }

@@ -1,43 +1,58 @@
 'use client'
 
 import Link from 'next/link'
-import manifest from '@/config/manifest'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { Menu } from 'lucide-react'
+
+import manifest from '@/config/manifest'
+import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 
+/* =========================
+   Brand
+   ========================= */
+
 const BrandWordmark = ({ className }: { className?: string }) => (
-  <div className={cn('text-base md:text-[22px] font-cormorant tracking-wide flex gap-2', className)}>
+  <div
+    className={cn(
+      'flex gap-2 tracking-wide font-cormorant text-base md:text-[22px]',
+      className
+    )}
+  >
     <span className="text-white">Omobonus</span>
     <span className="text-[#bfa76a]">serwis</span>
   </div>
 )
+
+/* =========================
+   Header
+   ========================= */
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
+  /* lock body scroll on mobile menu */
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
   }, [isOpen])
 
+  /* close on outside click */
   useEffect(() => {
     if (!isOpen) return
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false)
       }
     }
@@ -46,57 +61,55 @@ export function Header() {
     return () => document.removeEventListener('pointerdown', handlePointerDown)
   }, [isOpen])
 
+  /* =========================
+     Scroll helpers
+     ========================= */
+
   const scrollToSection = (id: string) => {
-    // Funkcja pomocnicza do wykonania skrolowania
     const performScroll = () => {
       if (pathname !== '/') {
-        // Jeśli jesteśmy na innej stronie, przejdź na główną z kotwicą
         window.location.href = `/#${id}`
+        return
+      }
+
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       } else {
-        // Jeśli jesteśmy na głównej, znajdź element i przewiń do niego
-        const element = document.getElementById(id)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        } else {
-          // Jeśli element nie został jeszcze załadowany, spróbuj ponownie po krótkim czasie
-          setTimeout(() => {
-            const retryElement = document.getElementById(id)
-            if (retryElement) {
-              retryElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }
-          }, 100)
-        }
+        setTimeout(() => {
+          document
+            .getElementById(id)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 100)
       }
     }
 
     if (isOpen) {
       setIsOpen(false)
-      // Czekamy aż menu się zamknie i odblokuje scroll (animacja trwa ok 300ms)
-      setTimeout(() => {
-        performScroll()
-      }, 350)
+      setTimeout(performScroll, 350)
     } else {
       performScroll()
-      setIsOpen(false)
     }
   }
 
   const scrollToTop = () => {
     if (isOpen) {
       setIsOpen(false)
-      // Czekamy aż menu się zamknie
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }, 350)
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      setIsOpen(false)
     }
   }
 
+  /* =========================
+     Render
+     ========================= */
+
   return (
-    <header className="sticky top-0 z-50 w-full h-[65px] border-b border-border">
-      {/* Tło */}
+    <header className="sticky top-0 z-50 h-[65px] w-full border-b border-border">
+      {/* background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url('${manifest.Background_1}')` }}
@@ -104,126 +117,108 @@ export function Header() {
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* Zawartość */}
-      <div className="relative w-full h-full flex items-stretch justify-between px-4 md:px-8">
-        {/* Logo */}
+      <div className="relative flex h-full w-full items-stretch justify-between px-4 md:px-8">
+        {/* logo */}
         <Link
           href="/"
+          className="z-10 flex h-full items-center gap-2"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault()
               scrollToTop()
             }
           }}
-          className="flex items-center gap-2 z-10 h-full"
         >
-          <div className="h-full w-[40px] md:w-[48px] relative flex items-center flex-shrink-0">
+          <div className="relative flex h-full w-[40px] items-center md:w-[48px]">
             <Image
               src="/images/Logo_Omobonus.webp"
-              alt="Omobonus Serwis - profesjonalny serwis komputerów i drukarek Wrocław"
+              alt="Omobonus Serwis – serwis komputerów i drukarek Wrocław"
               fill
-              className="object-contain object-center p-[1px]"
-              sizes="(max-width: 768px) 40px, 48px"
               priority
               unoptimized
+              sizes="(max-width: 768px) 40px, 48px"
+              className="object-contain p-[1px]"
             />
           </div>
           <BrandWordmark />
         </Link>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-[28px] z-10 ml-[35px]">
-          <Link
-            href="/#uslugi"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('uslugi')
-            }}
-            className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
-          >
-            Usługi
-          </Link>
-          <Link
-            href="/#o-nas"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('o-nas')
-            }}
-            className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
-          >
-            O nas
-          </Link>
-          <Link
-            href="/#kontakt"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('kontakt')
-            }}
-            className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
-          >
-            Kontakt
-          </Link>
+        {/* desktop nav */}
+        <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
+          {[
+            { id: 'uslugi', label: 'Usługi' },
+            { id: 'o-nas', label: 'O nas' },
+            { id: 'kontakt', label: 'Kontakt' },
+          ].map((item) => (
+            <Link
+              key={item.id}
+              href={`/#${item.id}`}
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection(item.id)
+              }}
+              className="font-cormorant text-[18px] text-[#bfa76a]"
+            >
+              {item.label}
+            </Link>
+          ))}
+
           <Link
             href="https://omobonus.com.pl"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[18px] text-[#bfa76a] font-cormorant hover:text-[#bfa76a] transition-colors"
+            className="font-cormorant text-[18px] text-[#bfa76a]"
           >
             Sklep
           </Link>
+
+          {/* call button – Inter only here */}
           <a
             href="tel:+48793759262"
             className="
-    inline-flex items-center justify-center
-    border border-[#bfa76a]/80
-    text-[16px]
-    font-cormorant font-semibold
-    text-[#bfa76a]
-    py-[4px]
-    px-[16px]
-    rounded-full
-    hover:bg-[#bfa76a]/10
-
-    transition-all duration-300 ease-out
-    hover:-translate-y-1
-    hover:shadow-[0_8px_20px_rgba(0,0,0,0.3)]
-  "
+              inline-flex items-center justify-center
+              rounded-full border border-[#bfa76a]/80
+              px-[16px] py-[4px]
+              text-[16px] font-inter font-semibold text-[#bfa76a]
+              transition-all duration-300 ease-out
+              hover:-translate-y-1 hover:bg-[#bfa76a]/10
+              hover:shadow-[0_8px_20px_rgba(0,0,0,0.3)]
+            "
           >
             <img
               src="/images/telefon.png"
               alt="Telefon"
-              className="w-4 h-4 mr-2 object-contain"
+              className="mr-2 h-4 w-4 object-contain"
             />
             Zadzwoń teraz
           </a>
-
-
         </nav>
 
-        {/* Mobile Menu */}
+        {/* mobile menu */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden z-10">
+          <SheetTrigger asChild className="z-10 md:hidden">
             <Button variant="ghost" size="icon" className="text-white">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
+
           <SheetContent
             side="right"
-            className="bg-transparent p-0 w-[78vw] max-w-[360px] sm:max-w-[420px] border-l-0"
+            className="w-[78vw] max-w-[360px] border-l-0 bg-transparent p-0 sm:max-w-[420px]"
           >
             <div
               ref={mobileMenuRef}
-              className="relative rounded-l-lg border border-[#bfa76a]/30 overflow-hidden"
+              className="relative overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url('${manifest.Background_1}')` }}
               />
               <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 flex flex-col px-6 py-8 gap-6 text-left font-cormorant text-[20px] text-white">
+
+              <div className="relative z-10 flex flex-col gap-6 px-6 py-8 font-cormorant text-[20px] text-white">
                 <Link
                   href="/"
-                  className="inline-flex"
                   onClick={(e) => {
                     if (pathname === '/') {
                       e.preventDefault()
@@ -235,49 +230,37 @@ export function Header() {
                 >
                   <BrandWordmark />
                 </Link>
+
                 <nav className="flex flex-col gap-4">
-                  <Link
-                    href="/#uslugi"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection('uslugi')
-                    }}
-                    className="hover:text-white transition-colors"
-                  >
-                    Usługi
-                  </Link>
-                  <Link
-                    href="/#o-nas"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection('o-nas')
-                    }}
-                    className="hover:text-white transition-colors"
-                  >
-                    O nas
-                  </Link>
-                  <Link
-                    href="/#kontakt"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection('kontakt')
-                    }}
-                    className="hover:text-white transition-colors"
-                  >
-                    Kontakt
-                  </Link>
+                  {[
+                    { id: 'uslugi', label: 'Usługi' },
+                    { id: 'o-nas', label: 'O nas' },
+                    { id: 'kontakt', label: 'Kontakt' },
+                  ].map((item) => (
+                    <Link
+                      key={item.id}
+                      href={`/#${item.id}`}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(item.id)
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+
                   <Link
                     href="https://omobonus.com.pl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
                   >
                     Sklep
                   </Link>
                 </nav>
+
                 <Button
                   variant="outline"
-                  className="w-full border-[#bfa76a]/80 text-white text-[18px] font-cormorant rounded-full bg-transparent hover:bg-[#bfa76a]/15"
+                  className="w-full rounded-full border-[#bfa76a]/80 bg-transparent text-[18px] font-cormorant text-white hover:bg-[#bfa76a]/15"
                   onClick={(e) => {
                     e.preventDefault()
                     scrollToSection('formularz')

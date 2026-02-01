@@ -6,23 +6,29 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+
   theme: {
     extend: {
       colors: {
-        background: 'hsl(45 25% 15%)',      // #1e1b16 - ciemny brąz
-        foreground: 'hsl(45 25% 95%)',      // Jasny tekst
-        card: 'hsl(45 25% 20%)',            // Tło kart
-        cardForeground: 'hsl(45 25% 95%)',  // Tekst na kartach
-        border: 'hsl(45 20% 35%)',          // Obramowania
-        primary: 'hsl(45 50% 70%)',         // #bfa76a - złoty
+        background: 'hsl(45 25% 15%)',      // ciemny brąz
+        foreground: 'hsl(45 25% 95%)',      // jasny tekst
+        card: 'hsl(45 25% 20%)',            // tło kart
+        cardForeground: 'hsl(45 25% 95%)',  // tekst na kartach
+        border: 'hsl(45 20% 35%)',          // obramowania
+        primary: 'hsl(45 50% 70%)',         // złoty
       },
+
       fontFamily: {
+        /* GŁÓWNE FONTY PROJEKTU */
         serif: ['var(--font-cormorant)', 'serif'],
-        sans: ['var(--font-lora)', 'sans-serif'],
         cormorant: ['var(--font-cormorant)', 'serif'],
+
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
     },
   },
+
   plugins: [],
 }
 
