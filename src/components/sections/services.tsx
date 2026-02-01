@@ -2,18 +2,19 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { services } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
-import { ArrowRight } from 'lucide-react'
 
 export function Services() {
   return (
     <section id="uslugi" className="relative pt-8 md:pt-12 pb-16 md:pb-24 text-center text-white bg-[#1e1b16]">
       {/* Tło */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest.services_background}')`,
-        }}
-      >
+      <div className="absolute inset-0">
+        <Image
+          src={manifest.services_background}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-black/50" />
       </div>
 

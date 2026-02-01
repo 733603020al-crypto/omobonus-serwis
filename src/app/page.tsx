@@ -3,9 +3,11 @@ import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
-import { Contact } from '@/components/sections/contact'
+import dynamic from 'next/dynamic'
+
+const Contact = dynamic(() => import('@/components/sections/contact').then((mod) => mod.Contact))
 import { Footer } from '@/components/footer'
-import GoogleReviews from "@/components/google-reviews"
+
 
 export const metadata: Metadata = {
   title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
