@@ -50,8 +50,8 @@ export function Hero() {
     w-[80%] md:w-auto
     inline-flex items-center justify-center
     border border-[#bfa76a]/80
-    text-[16px] md:text-[15px]
-    font-semibold
+    text-[18px] md:text-[20px]
+    font-cormorant font-semibold
     text-[#bfa76a]
     py-[14px] md:py-[8px]
     px-[24px]
@@ -81,8 +81,8 @@ hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]
     w-[80%] md:w-auto
     inline-flex items-center justify-center
     border border-[#bfa76a]/80
-    text-[16px] md:text-[15px]
-    font-semibold
+    text-[18px] md:text-[20px]
+    font-cormorant font-semibold
     text-[#bfa76a]
     py-[14px] md:py-[8px]
     px-[24px]

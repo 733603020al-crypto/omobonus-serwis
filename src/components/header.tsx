@@ -179,7 +179,7 @@ export function Header() {
               inline-flex items-center justify-center
               rounded-full border border-[#bfa76a]/80
               px-[16px] py-[4px]
-              text-[16px] font-inter font-semibold text-[#bfa76a]
+              text-[16px] font-cormorant font-semibold text-[#bfa76a]
               transition-all duration-300 ease-out
               hover:-translate-y-1 hover:bg-[#bfa76a]/10
               hover:shadow-[0_8px_20px_rgba(0,0,0,0.3)]
