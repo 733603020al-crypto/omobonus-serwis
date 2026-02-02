@@ -292,7 +292,8 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Header />
-      <main className={`min-h-[calc(100vh-65px)] pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
+      <main className={`min-h-[calc(100svh-65px)] pt-[65px] relative ${slug === 'serwis-drukarek-termicznych' ? 'page-serwis-drukarek-termicznych' : slug === 'serwis-laptopow' ? 'page-serwis-laptopow' : slug === 'serwis-komputerow-stacjonarnych' ? 'page-serwis-komputerow-stacjonarnych' : slug === 'outsourcing-it' ? 'page-outsourcing-it' : slug === 'serwis-drukarek-laserowych' ? 'page-serwis-drukarek-laserowych' : slug === 'serwis-drukarek-atramentowych' ? 'page-serwis-drukarek-atramentowych' : slug === 'serwis-drukarek-3d' ? 'page-serwis-drukarek-3d' : slug === 'serwis-plotterow' ? 'page-serwis-plotterow' : slug === 'serwis-drukarek-iglowych' ? 'page-serwis-drukarek-iglowych' : slug === 'naprawa-drukarek' ? 'page-naprawa-drukarek' : slug === 'wynajem-drukarek' ? 'page-wynajem-drukarek' : slug === 'drukarka-zastepcza' ? 'page-drukarka-zastepcza' : ''}`}>
+
         <div className="absolute inset-0">
           <Image
             src="/images/omobonus-hero2.webp"
@@ -367,7 +368,7 @@ export default async function ServicePage({
                                           : slug === 'serwis-drukarek-iglowych'
                                             ? "Serwis Drukarek Igłowych"
                                             : slug === 'naprawa-drukarek'
-                                              ? "Serwis Drukarek Igłowych"
+                                              ? "Serwis Drukarek i Urządzeń Wielofunkcyjnych"
                                               : slug === 'wynajem-drukarek'
                                                 ? "Wynajem Drukarek"
                                                 : "Drukarka Zastępcza"
@@ -583,9 +584,10 @@ export default async function ServicePage({
             </p>
           </div>
         )}
-        <div className="relative mt-12">
+        <div className="relative mt-6 md:mt-12">
           <GoogleReviews />
         </div>
+
 
       </main>
       <Footer />
