@@ -62,14 +62,14 @@ const defaultPricingSections: PricingSection[] = [
     status: 'GRATIS',
     items: [
       {
-        service: 'Wstępna diagnoza i wycena online (Opis problemu przez WhatsApp/stronę internetową/telefon - pomożemy ustalić, czy naprawa się opłaca)',
+        service: 'Wstępna diagnoza i wycena online (Opis problemu przez WhatsApp/stronę internetową/telefon)',
         price: 'GRATIS',
         duration: '15 min',
       },
       {
-        service: 'Diagnoza i wycena naprawy (przy dostawie do serwisu) (również w razie rezygnacji z naprawy)',
+        service: 'Wstępna diagnoza i wycena naprawy (przy dostawie do serwisu) (również w razie rezygnacji z naprawy)',
         price: 'GRATIS',
-        duration: '24 h',
+        duration: '15 min',
       },
       {
         service: 'Diagnoza i wycena w formie pisemnej (bez naprawy, np. dla ubezpieczyciela)',
@@ -89,22 +89,22 @@ const defaultPricingSections: PricingSection[] = [
     status: 'GRATIS',
     items: [
       {
-        service: 'Dojazd (przy zleceniu naprawy) (Wrocław do 10 km, w tym diagnoza)',
+        service: 'Dojazd (przy zleceniu naprawy) (Wrocław do 5 km, w tym diagnoza)',
         price: 'GRATIS',
         duration: '1-3 dni',
       },
       {
-        service: 'Dojazd (przy rezygnacji z naprawy) (Wrocław do 10 km, diagnoza + naprawy do 15 min)',
+        service: 'Dojazd (przy rezygnacji z naprawy) (Wrocław do 5 km, diagnoza + naprawy do 15 min)',
         price: '50 / 80 / 100',
         duration: '1-3 dni',
       },
       {
-        service: 'Dojazd (powyżej 10 km) (liczony w obie strony)',
-        price: '1,5 zł/km',
+        service: 'Dostarczenie naprawionego urządzenia (Wrocław do 5 km)',
+        price: '20 zł',
         duration: '1-3 dni',
       },
       {
-        service: 'Dostarczenie naprawionego urządzenia (Wrocław do 10 km, obie strony)',
+        service: 'Dojazd lub gostawa (powyżej 5 km) (liczony w obie strony)',
         price: '1,5 zł/km',
         duration: '1-3 dni',
       },
