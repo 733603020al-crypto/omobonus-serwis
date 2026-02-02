@@ -2,6 +2,7 @@
 
 import manifest from '@/config/manifest'
 import Image from 'next/image'
+import { CallButton } from '@/components/ui/CallButton'
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -44,54 +45,23 @@ export function Hero() {
 
         {/* BUTTONS */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-          <a
+          <CallButton
+            variant="primary"
             href="tel:+48793759262"
-            className="
-              w-[80%] md:w-auto
-              inline-flex items-center justify-center
-              border border-[#bfa76a]/80
-              text-[18px] md:text-[20px]
-              font-cormorant font-semibold
-              text-[#bfa76a]
-              py-[14px] md:py-[8px]
-              px-[24px]
-              rounded-full
-              hover:bg-[#bfa76a]/10
-              transition-all duration-300 ease-out
-              hover:-translate-y-1
-              hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]
-              md:min-w-[200px]
-            "
+            className="w-[80%] md:w-auto"
           >
-            <img
-              src="/images/telefon.png"
-              alt="Telefon"
-              className="w-6 h-6 mr-2 object-contain"
-            />
             Zadzwoń teraz
-          </a>
+          </CallButton>
 
-          <a
+          <CallButton
+            variant="secondary"
             href="#formularz"
-            className="
-              w-[80%] md:w-auto
-              inline-flex items-center justify-center
-              border border-[#bfa76a]/80
-              text-[18px] md:text-[20px]
-              font-cormorant font-semibold
-              text-[#bfa76a]
-              py-[14px] md:py-[8px]
-              px-[24px]
-              rounded-full
-              hover:bg-[#bfa76a]/10
-              transition-all duration-300 ease-out
-              hover:-translate-y-1
-              md:min-w-[200px]
-            "
+            className="w-[80%] md:w-auto"
           >
             Wyślij zgłoszenie
-          </a>
+          </CallButton>
         </div>
+
       </div>
     </section>
   )

@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 import GoogleReviews from "@/components/google-reviews"
+import { CallButton } from "@/components/ui/CallButton"
 
 const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -390,63 +391,23 @@ export default async function ServicePage({
                     )}
                     {/* BUTTONS */}
                     <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-                      <a
+                      <CallButton
+                        variant="primary"
                         href="tel:+48793759262"
-                        className="
-    group
-    w-[80%] md:w-auto
-    inline-flex items-center justify-center
-    border border-[#bfa76a]/80
-    text-[16px] md:text-[15px]
-    font-semibold
-    text-[#bfa76a]
-    py-[14px] md:py-[8px]
-    px-[24px]
-    rounded-full
-    md:min-w-[200px]
-
-    transition-all duration-300 ease-out
-    hover:bg-[#bfa76a]/10
-    hover:border-[#bfa76a]
-    hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]
-    hover:-translate-y-[1px]
-  "
+                        className="w-[80%] md:w-auto"
                       >
-
-                        <img
-                          src="/images/telefon.png"
-                          alt="Telefon"
-                          className="w-6 h-6 mr-2 object-contain"
-                        />
                         Zadzwoń teraz
-                      </a>
+                      </CallButton>
 
-                      <Link
+                      <CallButton
+                        variant="secondary"
                         href="/#formularz"
-                        className="
-    group
-    w-[80%] md:w-auto
-    inline-flex items-center justify-center
-    border border-[#bfa76a]/80
-    text-[16px] md:text-[15px]
-    font-semibold
-    text-[#bfa76a]
-    py-[14px] md:py-[8px]
-    px-[24px]
-    rounded-full
-    md:min-w-[200px]
-
-    transition-all duration-300 ease-out
-    hover:bg-[#bfa76a]/10
-    hover:border-[#bfa76a]
-    hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]
-    hover:-translate-y-[1px]
-  "
+                        className="w-[80%] md:w-auto"
                       >
-
                         Wyślij zgłoszenie
-                      </Link>
+                      </CallButton>
                     </div>
+
 
                   </div>
                 </div>
