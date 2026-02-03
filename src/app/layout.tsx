@@ -5,6 +5,7 @@ import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 import './styles/accordion.css'
+import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 
 /* =========================
    Fonts (STRICT: 2 only)
@@ -152,6 +153,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </noscript>
 
         {children}
+
+        {/* 🔵 Floating call button – ONLY mobile */}
+        <FloatingCallButton />
 
         <Script
           id="json-ld"
