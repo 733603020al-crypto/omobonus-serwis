@@ -22,7 +22,7 @@ export function CallButton({
     inline-flex items-center justify-center gap-2
     min-w-[200px]
     rounded-full
-    px-8 py-[10px]
+    px-8 py-[14px] md:py-[10px]
     font-sans font-semibold text-[16px]
     transition-all duration-300 ease-out
     hover:-translate-y-1
