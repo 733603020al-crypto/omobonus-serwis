@@ -417,7 +417,8 @@ export default async function ServicePage({
               </div>
               {/* INFO container */}
               <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
-                <p className="text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+                <p className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+
                   {slug === 'drukarka-zastepcza'
                     ? 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych'
                     : slug === 'wynajem-drukarek'
