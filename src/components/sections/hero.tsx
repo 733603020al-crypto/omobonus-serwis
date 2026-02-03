@@ -50,7 +50,8 @@ export function Hero() {
             href="tel:+48793759262"
             className="w-[80%] md:w-auto"
           >
-            Zadzwoń teraz
+            <span className="md:hidden">Zadzwoń teraz</span>
+            <span className="hidden md:inline">793 759 262</span>
           </CallButton>
 
           <CallButton

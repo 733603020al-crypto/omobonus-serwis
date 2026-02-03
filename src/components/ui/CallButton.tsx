@@ -18,14 +18,12 @@ export function CallButton({
     className,
     children,
 }: CallButtonProps) {
-    const base =
-        `
+    const base = `
     inline-flex items-center justify-center gap-2
     min-w-[200px]
     rounded-full
     px-8 py-[10px]
-    font-cormorant font-semibold text-[16px]
-
+    font-sans font-semibold text-[16px]
     transition-all duration-300 ease-out
     hover:-translate-y-1
   `
@@ -47,15 +45,35 @@ export function CallButton({
     `,
     }
 
+    // 👉 содержимое кнопки — без изменений
+    const content = (
+        <>
+            {variant === 'primary' && (
+                <Phone className="w-4 h-4 shrink-0" />
+            )}
+            <span>{children}</span>
+        </>
+    )
+
+    // ✅ tel: → обычный <a>
+    if (href.startsWith('tel:')) {
+        return (
+            <a
+                href={href}
+                className={cn(base, variants[variant], className)}
+            >
+                {content}
+            </a>
+        )
+    }
+
+    // ✅ все остальные ссылки → Link
     return (
         <Link
             href={href}
             className={cn(base, variants[variant], className)}
         >
-            {variant === 'primary' && (
-                <Phone className="w-4 h-4 shrink-0" />
-            )}
-            <span>{children}</span>
+            {content}
         </Link>
     )
 }
