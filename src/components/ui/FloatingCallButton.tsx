@@ -9,8 +9,8 @@ export function FloatingCallButton() {
             aria-label="Zadzwoń"
             className="
         fixed
-        bottom-5
         right-5
+        bottom-[calc(1.25rem+env(safe-area-inset-bottom))]
         z-[9999]
         flex
         items-center
@@ -21,9 +21,10 @@ export function FloatingCallButton() {
         bg-[#1c6e43]
         text-white
         shadow-[0_8px_24px_rgba(28,110,67,0.45)]
-        transition-transform
+        transition-transform duration-300 ease-out
         hover:scale-105
         active:scale-95
+        pointer-events-auto
         md:hidden
       "
         >
