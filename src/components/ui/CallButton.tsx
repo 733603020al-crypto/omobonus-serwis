@@ -1,6 +1,6 @@
 'use client'
 
-import { Phone } from 'lucide-react'
+import { Phone, Mail } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
@@ -51,9 +51,13 @@ export function CallButton({
             {variant === 'primary' && (
                 <Phone className="w-4 h-4 shrink-0" />
             )}
+            {variant === 'secondary' && (
+                <Mail className="w-4 h-4 shrink-0" />
+            )}
             <span>{children}</span>
         </>
     )
+
 
     // ✅ tel: → обычный <a>
     if (href.startsWith('tel:')) {
