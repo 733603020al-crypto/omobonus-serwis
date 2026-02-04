@@ -219,6 +219,8 @@ export function Contact() {
       className="relative pb-6 md:pb-10 pt-24 md:pt-20"
     >
 
+
+
       {/* Tło sekcji */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -235,7 +237,8 @@ export function Contact() {
 
 
         {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top mb-0 md:-mb-[15%]">
+        <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top mb-0 -mb-24 md:-mb-[15%]">
+
 
           {/* Nagłówek formularza */}
           <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
