@@ -1,9 +1,19 @@
 'use client'
 
 import { Phone } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 export function FloatingCallButton() {
-    return (
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) return null
+
+    return createPortal(
         <a
             href="tel:+48793759262"
             aria-label="Zadzwoń"
@@ -29,6 +39,7 @@ export function FloatingCallButton() {
       "
         >
             <Phone className="w-6 h-6" />
-        </a>
+        </a>,
+        document.body
     )
 }

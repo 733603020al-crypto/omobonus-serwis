@@ -588,13 +588,14 @@ export default async function ServicePage({
             </p>
           </div>
         )}
-        <div className="relative mt-6 md:mt-12 overflow-visible">
+
+
+        <div className="relative z-10 mt-6 md:mt-12 overflow-visible">
           <GoogleReviews />
         </div>
 
-
-
       </main>
+
       <Footer />
     </>
   )
