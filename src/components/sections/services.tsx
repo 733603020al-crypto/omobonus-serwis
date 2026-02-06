@@ -5,7 +5,11 @@ import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 export function Services() {
   return (
-    <section id="uslugi" className="relative pt-8 md:pt-12 pb-16 md:pb-24 text-center text-white bg-[#1e1b16]">
+    <section
+      id="uslugi"
+      className="relative pt-24 pb-24 md:pt-32 md:pb-32 text-center text-white overflow-hidden"
+    >
+
       {/* Tło */}
       <div className="absolute inset-0">
         <Image

@@ -5,7 +5,10 @@ import GoogleReviews from '@/components/google-reviews'
 
 export function About() {
   return (
-    <section id="o-nas" className="relative pt-8 md:pt-12 pb-24">
+    <section
+      id="o-nas"
+      className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden"
+    >
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"

@@ -16,7 +16,8 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-[calc(100svh-64px)] flex items-center justify-center">
+    <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 flex items-center justify-center overflow-hidden">
+
       {/* Tło */}
       <div className="absolute inset-0">
         <Image
