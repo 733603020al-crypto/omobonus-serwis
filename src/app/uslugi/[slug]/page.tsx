@@ -618,7 +618,7 @@ export default async function ServicePage({
         )}
 
 
-        <div className="relative z-10 mt-0 md:mt-2 -mb-[80px] overflow-visible">
+        <div className="relative z-10 mt-0 md:mt-2 -mb-[40px] overflow-visible">
           <GoogleReviews />
         </div>
 
