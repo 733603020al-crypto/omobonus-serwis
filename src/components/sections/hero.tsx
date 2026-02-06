@@ -16,8 +16,16 @@ export function Hero() {
   }
 
   return (
-    <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 flex items-center justify-center overflow-hidden">
-
+    <section
+      className="
+        relative
+        min-h-[calc(100svh-65px)]
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+      "
+    >
       {/* Tło */}
       <div className="absolute inset-0">
         <Image
@@ -35,7 +43,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
-      <div className="relative z-10 w-full px-[1.4%] text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center">
+
         <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           Profesjonalny serwis <br /> komputerów i drukarek we <br /> Wrocławiu
         </h1>
@@ -63,7 +72,6 @@ export function Hero() {
             Wyślij zgłoszenie
           </CallButton>
         </div>
-
       </div>
     </section>
   )

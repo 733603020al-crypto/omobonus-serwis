@@ -293,7 +293,8 @@ export default async function ServicePage({
       />
       <Header />
       <main
-        className={`min-h-[calc(100svh-65px)] pt-[65px] pb-[80px] relative overflow-hidden ${slug === 'serwis-drukarek-termicznych'
+        className={`min-h-[calc(100svh-65px)] pt-[40px] pb-[40px] relative overflow-hidden ${slug === 'serwis-drukarek-termicznych'
+
           ? 'page-serwis-drukarek-termicznych'
           : slug === 'serwis-laptopow'
             ? 'page-serwis-laptopow'
@@ -617,9 +618,13 @@ export default async function ServicePage({
         )}
 
 
-        <div className="relative z-10 mt-6 md:mt-12 overflow-visible">
+        <div className="relative z-10 mt-0 md:mt-2 -mb-[80px] overflow-visible">
           <GoogleReviews />
         </div>
+
+
+
+
 
       </main>
 

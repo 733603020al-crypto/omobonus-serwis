@@ -7,8 +7,9 @@ export function About() {
   return (
     <section
       id="o-nas"
-      className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden"
+      className="relative pt-12 pb-8 md:pt-16 md:pb-12 overflow-hidden"
     >
+
       {/* Tło */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -20,7 +21,9 @@ export function About() {
       </div>
 
       {/* Zawartość */}
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6">
+      <div className="relative w-full px-0">
+
+
         {/* Nagłówek sekcji */}
         <div className="mb-6 text-center max-w-3xl mx-auto">
           <div className="text-3xl md:text-4xl font-cormorant font-bold text-[#bfa76a] leading-tight">
@@ -109,7 +112,7 @@ export function About() {
         </div>
 
         {/* ✅ ОТЗЫВЫ ВНИЗУ БЛОКА */}
-        <div className="mt-20">
+        <div className="mt-0">
           <GoogleReviews />
         </div>
       </div>

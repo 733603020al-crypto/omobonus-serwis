@@ -99,18 +99,12 @@ export default function GoogleReviews() {
 
 
     return (
-        <section className="relative w-full py-24 overflow-hidden">
-            {/* Tło */}
-            <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/Background_1.webp')",
-                }}
-            />
-            <div className="absolute inset-0 bg-black/60" />
+        <section className="relative w-full py-0 h-[320px] overflow-hidden">
+
 
             {/* Zawartość */}
             <div className="relative z-10">
+
                 <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8">
                     <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-start">
 

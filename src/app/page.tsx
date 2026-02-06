@@ -40,11 +40,9 @@ export default function Home() {
       {/* Święty Omobonus */}
       <About />
 
-      <div style={{ marginTop: "-40px" }}>
-
+      <div style={{ marginTop: "-160px" }}>
+        <Contact />
       </div>
-
-      <Contact />
 
 
       <Footer />

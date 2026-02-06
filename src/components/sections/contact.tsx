@@ -237,7 +237,8 @@ export function Contact() {
 
 
         {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top mb-0 -mb-24 md:-mb-[15%]">
+        <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top mb-0 -mb-12 md:-mb-[15%]">
+
 
 
           {/* Nagłówek formularza */}
