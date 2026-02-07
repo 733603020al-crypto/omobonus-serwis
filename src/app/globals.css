@@ -258,6 +258,28 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   }
 
+  /* Для Firefox */
+  .country-list,
+  .flag-dropdown .country-list,
+  .react-tel-input .country-list,
+  div.country-list {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(58, 46, 36, 0.4) transparent !important;
+  }
+
+  .country-list .country {
+    background: transparent !important;
+  }
+
+  .country-list .country:hover,
+  .country-list .country.highlight {
+    background: rgba(58, 46, 36, 0.1) !important;
+  }
+
+
+
+
+
 }
 
 /* =========================

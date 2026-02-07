@@ -186,16 +186,13 @@ export function CustomPhoneInput({ value, onChange, className = '' }: CustomPhon
       {isDropdownOpen && (
         <div
           ref={dropdownRef}
-          className="absolute top-full left-0 mt-1 z-50 border border-black/20 rounded-lg shadow-lg max-h-64 overflow-y-auto custom-dropdown country-dropdown"
+          className="absolute top-full left-0 mt-1 z-50 border border-black/20 rounded-lg shadow-lg max-h-64 overflow-y-auto country-list"
           style={{
-            backgroundImage: 'linear-gradient(rgba(58, 46, 36, 0.08), rgba(58, 46, 36, 0.08)), url(/images/zmiety arkusz papieru 2.webp)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
             width: `${fixedDropdownWidth}px`,
             minWidth: `${fixedDropdownWidth}px`,
           }}
         >
+
           {countries.map((country) => (
             <button
               key={country.code}
