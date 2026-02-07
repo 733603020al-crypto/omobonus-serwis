@@ -68,6 +68,70 @@
     font-family: inherit !important;
   }
 
+  /* Ręcznie rysowane checkboxy */
+  .checkbox-tick-wrapper {
+    position: absolute;
+    left: -6px;
+    bottom: 0;
+    width: calc(100% + 12px);
+    height: calc(100% + 6px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+  .checkbox-ink-effect {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(191, 167, 106, 0.35);
+    filter: blur(0.8px);
+    opacity: 0;
+    animation: checkboxInk 0.55s ease forwards;
+    pointer-events: none;
+  }
+
+  .checkbox-tick {
+    position: relative;
+    width: 40px;
+    height: 38px;
+    color: #020202;
+    transform: translate(4px, -8px);
+    stroke-dasharray: 230;
+    stroke-dashoffset: 230;
+    animation: checkboxDraw 0.5s ease forwards;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  @keyframes checkboxInk {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+
+    60% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.12);
+    }
+  }
+
+  @keyframes checkboxDraw {
+    0% {
+      stroke-dashoffset: 230;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
   /* =========================
      SERVICES CARDS — FINAL
      ========================= */
