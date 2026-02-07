@@ -1,6 +1,5 @@
 'use client'
 
-import manifest from '@/config/manifest'
 import Image from 'next/image'
 import { CallButton } from '@/components/ui/CallButton'
 

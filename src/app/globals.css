@@ -305,3 +305,17 @@
     font-size: 0.65em !important;
   }
 }
+
+/* ===== FORM PLACEHOLDERS (GLOBAL) ===== */
+input::placeholder,
+textarea::placeholder {
+  font-size: 0.875rem;
+  /* text-sm */
+  color: rgba(0, 0, 0, 0.35);
+  font-weight: 400;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
