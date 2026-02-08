@@ -55,7 +55,7 @@ export function CustomCheckbox({ id, name, checked, onChange, label }: CustomChe
           </div>
         </div>
       </div>
-      <span className="text-black font-sans font-medium text-base leading-tight flex-1">
+      <span className="text-black font-sans font-normal text-base leading-tight flex-1">
         {label}
       </span>
     </label>

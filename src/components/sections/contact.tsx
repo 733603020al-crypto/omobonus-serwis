@@ -333,7 +333,7 @@ export function Contact() {
               <textarea
                 {...register('problemDescription')}
                 rows={4}
-                placeholder="Model urządzenia + opis problemu (np. HP M404dn – drukarka nie pobiera papieru)"
+                placeholder="(np. HP M404dn – drukarka nie pobiera papieru)"
                 className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
 
               />
@@ -356,10 +356,11 @@ export function Contact() {
                   Dodaj
                 </label>
               </div>
-              <p className="text-red-600 text-sm italic font-sans">
+              <p className="text-black text-sm italic font-sans">
                 Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz
                 przygotować wycenę naprawy.
               </p>
+
               <input
                 id="attachments"
                 type="file"
@@ -487,8 +488,11 @@ export function Contact() {
                   )}
                 />
                 {errors.agreements && (
-                  <p className="text-red-600 text-sm ml-8">{errors.agreements.message}</p>
+                  <p className="text-red-600 text-sm ml-8 shake-error">
+                    {errors.agreements.message}
+                  </p>
                 )}
+
               </div>
             </div>
 

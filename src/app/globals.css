@@ -223,6 +223,22 @@
     transition: background-color 9999s ease-out;
   }
 
+  /* =========================
+   PLACEHOLDER — subdued style
+   ========================= */
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 0.85em;
+    color: rgba(58, 46, 36, 0.55);
+    font-weight: 400;
+  }
+
+  input:focus::placeholder,
+  textarea:focus::placeholder {
+    color: rgba(58, 46, 36, 0.35);
+  }
+
+
   input:-moz-autofill,
   textarea:-moz-autofill,
   select:-moz-autofill {
@@ -276,7 +292,87 @@
     background: rgba(58, 46, 36, 0.1) !important;
   }
 
+  .modal-card-outer {
+    background-image:
+      linear-gradient(to bottom,
+        rgba(58, 43, 23, 0.50) 0%,
+        rgba(52, 36, 20, 0.85) 100%),
+      url('/images/services-background.webp');
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.5),
+      0 3px 8px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 245, 200, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
 
+  .modal-card-inner {
+    background-image:
+      linear-gradient(to bottom,
+        rgba(58, 43, 23, 0.48) 0%,
+        rgba(52, 36, 20, 0.82) 100%),
+      url('/images/services-background.webp');
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 245, 200, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+
+    10% {
+      transform: translateX(-10px);
+    }
+
+    20% {
+      transform: translateX(10px);
+    }
+
+    30% {
+      transform: translateX(-10px);
+    }
+
+    40% {
+      transform: translateX(10px);
+    }
+
+    50% {
+      transform: translateX(-6px);
+    }
+
+    60% {
+      transform: translateX(6px);
+    }
+
+    70% {
+      transform: translateX(-4px);
+    }
+
+    80% {
+      transform: translateX(4px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .shake-error {
+    animation: shake 1.2s ease-in-out;
+    border: 2px solid #ef4444 !important;
+    background-color: rgba(239, 68, 68, 0.08) !important;
+  }
 
 
 
@@ -304,18 +400,4 @@
   .page-serwis-laptopow .h1-sub {
     font-size: 0.65em !important;
   }
-}
-
-/* ===== FORM PLACEHOLDERS (GLOBAL) ===== */
-input::placeholder,
-textarea::placeholder {
-  font-size: 0.875rem;
-  /* text-sm */
-  color: rgba(0, 0, 0, 0.35);
-  font-weight: 400;
-}
-
-input:focus::placeholder,
-textarea:focus::placeholder {
-  color: rgba(0, 0, 0, 0.2);
 }
