@@ -210,7 +210,8 @@ export function Contact() {
   return (
     <section
       id="formularz"
-      className="relative pb-6 md:pb-10 pt-24 md:pt-20"
+      className="relative pb-6 md:pb-16 pt-24 md:pt-20"
+
     >
 
 
