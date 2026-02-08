@@ -2211,11 +2211,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                 : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
-                            {(section.id === 'diagnoza' || section.id === 'dojazd') && (
+                            {section.id === 'diagnoza' && (
                               <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
                                 GRATIS
                               </span>
                             )}
+
+
                             <div
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >

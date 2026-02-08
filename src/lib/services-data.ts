@@ -86,20 +86,17 @@ const defaultPricingSections: PricingSection[] = [
   {
     id: 'dojazd',
     title: 'Dojazd',
-    status: 'GRATIS',
+    status: '20 zł',
     items: [
       {
-        service: 'Dojazd (przy zleceniu naprawy) (Wrocław do 5 km, w tym diagnoza)',
-        price: 'GRATIS',
+        service: 'Odbiór urządzenia od Klienta (Wrocław do 5 km)',
+        price: '20 zł',
         duration: '1-3 dni',
       },
+
+
       {
-        service: 'Dojazd (przy rezygnacji z naprawy) (Wrocław do 5 km, diagnoza + naprawy do 15 min)',
-        price: '50 / 80 / 100',
-        duration: '1-3 dni',
-      },
-      {
-        service: 'Dostarczenie naprawionego urządzenia (Wrocław do 5 km)',
+        service: 'Dostarczenie naprawionego urządzenia do Klienta(Wrocław do 5 km)',
         price: '20 zł',
         duration: '1-3 dni',
       },
