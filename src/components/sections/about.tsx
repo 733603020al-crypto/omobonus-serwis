@@ -7,8 +7,10 @@ export function About() {
   return (
     <section
       id="o-nas"
-      className="relative pt-12 pb-8 md:pt-16 md:pb-12 overflow-hidden"
+      className="relative pt-12 pb-4 md:pt-16 md:pb-12 overflow-hidden"
+
     >
+
 
       {/* Tło */}
       <div
