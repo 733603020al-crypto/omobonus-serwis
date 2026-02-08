@@ -111,11 +111,12 @@ export default function GoogleReviews() {
                     <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-start">
 
                         <a
-                            href="https://www.google.com/search?sca_esv=2e645401c35289e6&sxsrf=ANbL-n4lHBH2k4FnOY0MzfsfZ2bAtB5v3w:1769877145074&q=Omobonus+-+Profesjonalny+serwis+komputer%C3%B3w+i+drukarek+we+Wroc%C5%82awiu+%D0%9E%D1%82%D0%B7%D1%8B%D0%B2%D1%8B&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MjY0NjO3MDExNDa2MLcwMDMz3sDI-Iox0D83Pyk_r7RYQVchoCg_LbU4Kz8vMSevUqE4tag8s1ghOz-3oLQktejw5nKFTIWUotLsxKLUbIXyVIXwovzko02J5ZmlChfmXWy6sP1i94VNF7sXsVLfTAB1M-fvwgAAAA&rldimm=2313678441338780663&tbm=lcl&hl=ru-PL#lkt=LocalPoiReviews"
+                            href="https://g.page/omobonus-serwis/review"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block transition-all duration-300 ease-out hover:-translate-y-1"
                         >
+
                             <div className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
                                 Opinie klientów z Google
                             </div>
@@ -126,11 +127,12 @@ export default function GoogleReviews() {
 
                         {rating !== null && (
                             <a
-                                href="https://www.google.com/search?sca_esv=2e645401c35289e6&sxsrf=ANbL-n4lHBH2k4FnOY0MzfsfZ2bAtB5v3w:1769877145074&q=Omobonus+-+Profesjonalny+serwis+komputer%C3%B3w+i+drukarek+we+Wroc%C5%82awiu+%D0%9E%D1%82%D0%B7%D1%8B%D0%B2%D1%8B&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MjY0NjO3MDExNDa2MLcwMDMz3sDI-Iox0D83Pyk_r7RYQVchoCg_LbU4Kz8vMSevUqE4tag8s1ghOz-3oLQktejw5nKFTIWUotLsxKLUbIXyVIXwovzko02J5ZmlChfmXWy6sP1i94VNF7sXsVLfTAB1M-fvwgAAAA&rldimm=2313678441338780663&tbm=lcl&hl=ru-PL#lkt=LocalPoiReviews"
+                                href="https://g.page/omobonus-serwis/review"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 px-5 py-3 rounded-lg bg-[#f5f5f5] border border-[#e0e0e0] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
                             >
+
                                 <svg width="36" height="36" viewBox="0 0 48 48">
                                     <path fill="#EA4335" d="M24 9.5c3.54 0 6.36 1.46 8.28 3.27l6.15-6.15C34.66 3.07 29.7 1 24 1 14.61 1 6.51 6.62 2.56 14.8l7.32 5.68C11.5 14.17 17.27 9.5 24 9.5z" />
                                     <path fill="#4285F4" d="M46.5 24.5c0-1.64-.15-3.21-.43-4.73H24v9.02h12.7c-.55 2.97-2.19 5.49-4.66 7.18l7.21 5.6c4.22-3.89 6.65-9.61 6.65-17.07z" />
