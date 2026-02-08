@@ -9,7 +9,8 @@ export function Footer() {
   return (
     <footer
       id="kontakt"
-      className="relative w-full py-16 px-6 border-t border-[#3a2e24] text-white"
+      className="relative w-full pt-[88px] pb-[64px] px-6 border-t border-[#3a2e24] text-white"
+
     >
       {/* Tło */}
       <div
