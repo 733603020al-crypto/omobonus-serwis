@@ -2193,6 +2193,13 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                             </>
                           )}
                         </div>
+                        {section.id === 'dojazd' && isSectionOpen(section.id) && (
+                          <div className="mt-1 text-[12px] leading-snug text-[#cbb27c] max-w-[420px]">
+                            <div>Nie mówimy, że dojazd lub odbiór są „za darmo”,</div>
+                            <div>a następnie doliczamy ten koszt do ceny naprawy.</div>
+                          </div>
+                        )}
+
                         <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden">
                           <span>{section.id === 'faq' ? 'Zobacz' : 'Zobacz cennik'}</span>
                           <ArrowRight className="w-3 h-3" />

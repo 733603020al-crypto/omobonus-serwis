@@ -87,21 +87,21 @@ const defaultPricingSections: PricingSection[] = [
     id: 'dojazd',
     title: 'Dojazd',
     status: '20 zł',
+    footer:
+      'Nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy.',
     items: [
       {
         service: 'Odbiór urządzenia od Klienta (Wrocław do 5 km)',
         price: '20 zł',
         duration: '1-3 dni',
       },
-
-
       {
-        service: 'Dostarczenie naprawionego urządzenia do Klienta(Wrocław do 5 km)',
+        service: 'Dostarczenie naprawionego urządzenia do Klienta (Wrocław do 5 km)',
         price: '20 zł',
         duration: '1-3 dni',
       },
       {
-        service: 'Dojazd lub gostawa (powyżej 5 km) (liczony w obie strony)',
+        service: 'Dojazd lub dostawa (powyżej 5 km) (liczony w obie strony)',
         price: '1,5 zł/km',
         duration: '1-3 dni',
       },
@@ -112,6 +112,7 @@ const defaultPricingSections: PricingSection[] = [
       },
     ],
   },
+
   {
     id: 'konserwacja',
     title: 'Czyszczenie i konserwacja (bez naprawy)',
