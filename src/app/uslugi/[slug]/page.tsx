@@ -293,7 +293,8 @@ export default async function ServicePage({
       />
       <Header />
       <main
-        className={`min-h-[calc(100svh-65px)] pt-[40px] pb-[40px] relative overflow-hidden ${slug === 'serwis-drukarek-termicznych'
+        className={`min-h-[calc(100svh-65px)] pt-[40px] pb-[0px] md:pb-[40px] relative overflow-hidden ${slug === 'serwis-drukarek-termicznych'
+
 
           ? 'page-serwis-drukarek-termicznych'
           : slug === 'serwis-laptopow'
