@@ -564,7 +564,7 @@ export default async function ServicePage({
               </div>
             </div>
             {seoBlocks[slug]?.items.length > 0 && (
-              <div className="pt-6 pb-24">
+              <div className="pt-2 pb-6 md:pb-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
                   {seoBlocks[slug].items.map((text, index) => (
                     <h2
@@ -621,9 +621,10 @@ export default async function ServicePage({
         )}
 
 
-        <div className="relative z-10 mt-0 md:mt-0 -mb-[80px] overflow-visible">
+        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
           <GoogleReviews />
         </div>
+
 
 
 
