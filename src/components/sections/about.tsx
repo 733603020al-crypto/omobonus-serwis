@@ -37,9 +37,10 @@ export function About() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
           {/* Lewa kolumna - obraz */}
-          <div className="max-w-sm md:max-w-md mx-auto md:mx-0">
+          <div className="max-w-sm md:max-w-md mx-auto flex justify-center">
+
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl">
               <Image
                 src={manifest.omobonus_hero}
@@ -53,7 +54,7 @@ export function About() {
           </div>
 
           {/* Prawa kolumna - tekst */}
-          <div className="space-y-6 text-white">
+          <div className="space-y-6 text-white max-w-[520px] max-md:max-w-[92%] mx-auto md:mx-0">
             <div>
               <div className="text-2xl md:text-3xl font-serif font-semibold mb-3 text-white">
                 O nas:

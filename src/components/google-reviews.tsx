@@ -99,7 +99,8 @@ export default function GoogleReviews() {
 
 
     return (
-        <section className="relative w-full mt-6 md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+        <section className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+
 
 
 
