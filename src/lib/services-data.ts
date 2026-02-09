@@ -62,20 +62,21 @@ const defaultPricingSections: PricingSection[] = [
     status: 'GRATIS',
     items: [
       {
-        service: 'Wstępna diagnoza i wycena online (Opis problemu przez WhatsApp/stronę internetową/telefon)',
+        service: 'Wstępna diagnoza online 15 min.(Opis problemu przez WhatsApp / stronę internetową/telefon)',
         price: 'GRATIS',
         duration: '15 min',
       },
       {
-        service: 'Wstępna diagnoza i wycena naprawy (przy dostawie do serwisu) (również w razie rezygnacji z naprawy)',
+        service: 'Wstępna diagnoza przy dostawie do serwisu 15 min. (również w razie rezygnacji z naprawy)',
         price: 'GRATIS',
         duration: '15 min',
       },
       {
-        service: 'Diagnoza i wycena w formie pisemnej (bez naprawy, np. dla ubezpieczyciela)',
-        price: '50 / 70 / 90',
+        service: 'Wycena naprawy (bez naprawy)',
+        price: '',
         duration: '1-3 dni',
       },
+
       {
         service: 'Usługi w trybie ekspresowym (do 24 godzin, stawka z cennika)',
         price: '+ 100%\ndo ceny',
@@ -705,7 +706,15 @@ const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
 
 const createOutsourcingItPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
-  updateDiagnosisPrice(sections, '90')
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '90'
+  }
+
+
   updateDojazdReturnPrice(sections, '100')
   updateKonserwacjaForOutsourcing(sections)
   updateNaprawyMechanizmForOutsourcing(sections)
@@ -717,15 +726,6 @@ const createOutsourcingItPricingSections = (): PricingSection[] => {
   return sections
 }
 
-const updateDiagnosisPrice = (sections: PricingSection[], price: string) => {
-  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
-  const targetItem = diagnosisSection?.items?.find(item =>
-    item.service.startsWith('Diagnoza i wycena w formie pisemnej (bez naprawy')
-  )
-  if (targetItem) {
-    targetItem.price = price
-  }
-}
 
 const updateDojazdReturnPrice = (sections: PricingSection[], price: string) => {
   const transportSection = sections.find(section => section.id === 'dojazd')
@@ -776,7 +776,15 @@ const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
 
 const createLaptopPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
-  updateDiagnosisPrice(sections, '90')
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '90'
+  }
+
+
   updateDojazdReturnPrice(sections, '100')
   const cleaningSection = sections.find(section => section.id === 'konserwacja')
   if (cleaningSection) {
@@ -2700,12 +2708,31 @@ const applyNeedleCleaningSection = (sections: PricingSection[]) => {
 
 const createNeedlePricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '80 / 100 / 150'
+  }
+
   applyNeedleCleaningSection(sections)
   return sections
 }
 
+
 const createLaserPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '70 / 100 / 150'
+  }
+
+
   applyLaserCleaningSection(sections)
   applyLaserPaperFeedSubcategory(sections)
   applyLaserOpticsSubcategory(sections)
@@ -2719,6 +2746,15 @@ const createLaserPricingSections = (): PricingSection[] => {
 
 const create3DPrinterPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '150'
+  }
+
   apply3DPrinterCleaningSection(sections)
 
   const repairsSection = sections.find(s => s.id === 'naprawy')
@@ -2743,8 +2779,18 @@ const create3DPrinterPricingSections = (): PricingSection[] => {
 }
 
 
+
 const createPlotterPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '150'
+  }
+
+
   applyPlotterCleaningSection(sections)
 
   const repairsSection = sections.find(s => s.id === 'naprawy')
@@ -2768,6 +2814,7 @@ const createPlotterPricingSections = (): PricingSection[] => {
   return sections
 }
 
+
 const removeUnwantedSubcategoriesForInkjet = (sections: PricingSection[]) => {
   const repairsSection = sections.find(section => section.id === 'naprawy')
   if (!repairsSection?.subcategories) return
@@ -2779,6 +2826,15 @@ const removeUnwantedSubcategoriesForInkjet = (sections: PricingSection[]) => {
 
 const createInkjetPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '50 / 70 / 90'
+  }
+
+
   applyInkjetPaperFeedSubcategory(sections)
   applyInkjetCarriageSubcategory(sections)
   applyInkjetHeadSubcategory(sections)
@@ -3220,6 +3276,15 @@ const addThermalExtraServicesSubcategory = (sections: PricingSection[]) => {
 
 const createThermalPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
+
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+
+  if (diagnosisItem) {
+    diagnosisItem.price = '100 / 150 / 200'
+  }
   applyThermalCleaningSection(sections)
   applyThermalMechanismSubcategory(sections)
   applyThermalHeadSubcategory(sections)
@@ -3234,7 +3299,15 @@ const createThermalPricingSections = (): PricingSection[] => {
 
 const createDesktopPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
-  updateDiagnosisPrice(sections, '90')
+  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
+  const diagnosisItem = diagnosisSection?.items.find(
+    item => item.service === 'Wycena naprawy (bez naprawy)'
+  )
+  if (diagnosisItem) {
+    diagnosisItem.price = '90'
+  }
+
+
   updateDojazdReturnPrice(sections, '100')
   applyDesktopCleaningSection(sections)
   applyDesktopSoftwareSubcategory(sections)
