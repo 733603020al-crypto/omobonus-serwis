@@ -146,12 +146,12 @@ const seoBlocks: Record<string, SeoBlock> = {
 const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
     title: 'Serwis i Naprawa Laptopów',
-    description: '✔ Kompleksowa obsługa ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Serwis i Naprawa Komputerów Stacjonarnych',
-    description: '✔ Kompleksowa obsługa ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'outsourcing-it': {
@@ -161,45 +161,45 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
   },
   'serwis-drukarek-laserowych': {
     title: 'Naprawa Drukarek Laserowych',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'serwis-drukarek-atramentowych': {
     title: 'Naprawa Drukarek Atramentowych',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
     title: 'Serwis i Naprawa Drukarek 3D',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'serwis-drukarek-iglowych': {
     title: 'Naprawa Drukarek Igłowych',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'naprawa-drukarek': {
     title: 'Naprawa Drukarek i Kserokopiarek',
-    description: '✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Drukarka zastępcza na czas naprawy ✔ Umów serwis już dziś!',
+    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'wynajem-drukarek': {
     title: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
-    description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ Zadzwoń – dostępność od ręki!',
+    description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ dostępność od ręki! ✔ Zadzwoń i zamów! ☎ 793 759 262',
 
   },
   'drukarka-zastepcza': {
     title: 'Drukarka zastępcza (na czas naprawy)',
-    description: '✔ Potrzebna drukarka na czas naprawy? Nawet w 24h ✔ Bez opłat abonamentowych ✔ Sprzęt od ręki ✔ Zadzwoń i zamów!',
+    description: '✔ Potrzebna drukarka na czas naprawy? Nawet w 24h ✔ Bez opłat abonamentowych ✔ Sprzęt od ręki ✔ Zadzwoń i zamów! ☎ 793 759 262',
 
   },
   'serwis-plotterow': {
     title: 'Serwis i Naprawa Ploterów',
-    description: '✔ Kompleksowa obsługa ploterów ✔ Bezpłatna diagnoza i wycena w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!',
+    description: '✔ Kompleksowa obsługa ploterów ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
 }
