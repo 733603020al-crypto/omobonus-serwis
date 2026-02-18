@@ -7,7 +7,7 @@ import React from 'react'
 
 interface CallButtonProps {
     variant?: 'primary' | 'secondary'
-    href: string
+    href?: string
     className?: string
     children: React.ReactNode
 }
@@ -45,7 +45,6 @@ export function CallButton({
     `,
     }
 
-    // 👉 содержимое кнопки — без изменений
     const content = (
         <>
             {variant === 'primary' && (
@@ -58,9 +57,20 @@ export function CallButton({
         </>
     )
 
+    // tel: ссылка
+    if (href && href.startsWith('tel:')) {
+        const isMobile =
+            typeof window !== 'undefined' &&
+            /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
 
-    // ✅ tel: → обычный <a>
-    if (href.startsWith('tel:')) {
+        if (!isMobile) {
+            return (
+                <div className={cn(base, variants[variant], className)}>
+                    {content}
+                </div>
+            )
+        }
+
         return (
             <a
                 href={href}
@@ -71,7 +81,16 @@ export function CallButton({
         )
     }
 
-    // ✅ все остальные ссылки → Link
+    // если href не передан
+    if (!href) {
+        return (
+            <div className={cn(base, variants[variant], className)}>
+                {content}
+            </div>
+        )
+    }
+
+    // обычные ссылки
     return (
         <Link
             href={href}

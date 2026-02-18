@@ -12133,7 +12133,7 @@ export default async function ServicePage({
                                         <Info className="w-4 h-4 opacity-70" />
                                       </TooltipTrigger>
                                       <TooltipContent>
-                                        <p>Ceny brutto (zawierajÄ… VAT)</p>
+                                        <p>Ceny netto</p>
                                       </TooltipContent>
                                     </Tooltip>
                                   </TooltipProvider>

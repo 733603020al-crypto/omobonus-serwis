@@ -51,7 +51,7 @@ export interface ServiceData {
   priceTooltipRich?: PriceTooltipRichContent
 }
 
-export const DEFAULT_PRICE_TOOLTIP = 'Ceny brutto (zawierają VAT)'
+export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
@@ -391,7 +391,7 @@ const faqSection: PricingSection = {
       title: 'Czy oferujecie dojazd do Klienta? Czy mogę samodzielnie dostarczyć urządzenie do naprawy?',
       items: [],
       answer:
-        'Tak, świadczymy usługi serwisowe we Wrocławiu i okolicach.\n\nDojazd serwisanta i diagnoza są GRATIS, jeśli Klient akceptuje zaproponowany koszt naprawy. W przypadku prostych usterek możemy naprawić urządzenie na miejscu, a jeśli zajdzie taka potrzeba – zabierzemy je do naszego serwisu.\n\nW przypadku rezygnacji z naprawy koszt wizyty wynosi 50 zł brutto (czas + dojazd serwisanta).\n\nOczywiście mogą Państwo również samodzielnie dostarczyć urządzenie do naszej siedziby we Wrocławiu. Na miejscu zapewniamy kompleksową, szybką i bezpłatną diagnostykę w obecności Klienta, miłe przywitanie oraz darmową kawę lub herbatę.',
+        'Tak, świadczymy usługi serwisowe we Wrocławiu i okolicach.\n\nDojazd serwisanta i diagnoza są GRATIS, jeśli Klient akceptuje zaproponowany koszt naprawy. W przypadku prostych usterek możemy naprawić urządzenie na miejscu, a jeśli zajdzie taka potrzeba – zabierzemy je do naszego serwisu.\n\nW przypadku rezygnacji z naprawy koszt wizyty wynosi 50 zł netto (czas + dojazd serwisanta).\n\nOczywiście mogą Państwo również samodzielnie dostarczyć urządzenie do naszej siedziby we Wrocławiu. Na miejscu zapewniamy kompleksową, szybką i bezpłatną diagnostykę w obecności Klienta, miłe przywitanie oraz darmową kawę lub herbatę.',
     },
     {
       id: 'faq-5',
@@ -445,7 +445,7 @@ const faqSection: PricingSection = {
       id: 'faq-13',
       title: 'To ceny brutto czy netto?',
       items: [],
-      answer: 'Wszystkie podane ceny są **brutto (z VAT)**.',
+      answer: 'Wszystkie podane ceny są netto**.',
     },
   ],
   items: [], // Pusta tablica, bo używamy subcategories
@@ -3578,7 +3578,7 @@ export const services: ServiceData[] = [
     description: 'Serwis drukarek etykiet i kodów kreskowych.',
     pricingSections: createThermalPricingSections(),
     priceTooltip:
-      'Ceny brutto osobno dla drukarek: biurkowych / półprzemysłowych / przemysłowych (robocizna, bez materiałów eksploatacyjnych)',
+      'Ceny netto osobno dla drukarek: biurkowych / półprzemysłowych / przemysłowych (robocizna, bez materiałów eksploatacyjnych)',
   },
   {
     slug: 'serwis-drukarek-iglowych',

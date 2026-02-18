@@ -2307,7 +2307,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 text-sm leading-snug text-white font-medium">
-                                            cena z VAT (brutto)
+                                            cena netto
                                           </p>
                                         </>
                                       ) : (
@@ -2399,7 +2399,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                            cena z VAT (brutto)
+                                            cena netto
                                           </p>
                                         </>
                                       ) : (
