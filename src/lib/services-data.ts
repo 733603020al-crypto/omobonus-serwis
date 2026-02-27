@@ -72,7 +72,12 @@ const defaultPricingSections: PricingSection[] = [
         duration: '15 min',
       },
       {
-        service: 'Wycena naprawy (bez naprawy)',
+        service: 'Diagnoza i wycena naprawy\n(w przypadku realizacji naprawy)',
+        price: 'GRATIS',
+        duration: '1-3 dni',
+      },
+      {
+        service: 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)',
         price: '',
         duration: '1-3 dni',
       },
@@ -708,7 +713,7 @@ const createOutsourcingItPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '90'
@@ -778,7 +783,7 @@ const createLaptopPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '90'
@@ -2711,7 +2716,7 @@ const createNeedlePricingSections = (): PricingSection[] => {
 
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '80 / 100 / 150'
@@ -2726,7 +2731,7 @@ const createLaserPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '70 / 100 / 150'
@@ -2749,7 +2754,7 @@ const create3DPrinterPricingSections = (): PricingSection[] => {
 
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '150'
@@ -2784,7 +2789,7 @@ const createPlotterPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '150'
@@ -2828,7 +2833,7 @@ const createInkjetPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '50 / 70 / 90'
@@ -3279,7 +3284,7 @@ const createThermalPricingSections = (): PricingSection[] => {
 
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
 
   if (diagnosisItem) {
@@ -3301,7 +3306,7 @@ const createDesktopPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Wycena naprawy (bez naprawy)'
+    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
   )
   if (diagnosisItem) {
     diagnosisItem.price = '90'

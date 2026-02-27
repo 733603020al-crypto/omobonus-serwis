@@ -6,7 +6,7 @@ export interface ServiceBasePrices {
 
 // ШАБЛОН блока diagnoza — БЕЗ ЦЕНЫ
 export const DIAGNOSIS_TEMPLATE = {
-    service: 'Wycena naprawy (bez naprawy)',
+    service: 'Diagnoza i wycena naprawy',
     duration: '1–3 dni',
 }
 
