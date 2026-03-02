@@ -82,7 +82,8 @@ export function Footer() {
                   <span>Godziny otwarcia</span>
                 </div>
                 <span className="text-white">
-                  Pon–Pt: 7–21
+                  poniedziałek–piątek od 7:00 do 21:00.<br />
+                  W sobotę i niedzielę jesteśmy nieczynni
                 </span>
               </div>
 
