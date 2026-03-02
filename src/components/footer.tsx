@@ -82,7 +82,7 @@ export function Footer() {
                   <span>Godziny otwarcia</span>
                 </div>
                 <span className="text-white">
-                  Pon–Pt: 8–18
+                  Pon–Pt: 7–21
                 </span>
               </div>
 
