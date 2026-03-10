@@ -75,15 +75,25 @@ export function Footer() {
                 </Link>
               </div>
 
-              {/* Godziny */}
+              {/* Godziny pracy serwisu */}
               <div>
-                <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
+                <div className="flex items-center gap-2 text-[#bfa76a]">
                   <Clock className="h-4 w-4" />
-                  <span>Godziny otwarcia</span>
+                  <span>Godziny pracy serwisu</span>
                 </div>
                 <span className="text-white">
-                  poniedziałek–piątek od 7:00 do 21:00.
+                  poniedziałek–piątek: 8:00–18:00
+                </span>
+              </div>
 
+              {/* Kontakt z serwisem */}
+              <div>
+                <div className="flex items-center gap-2 text-[#bfa76a]">
+                  <Clock className="h-4 w-4" />
+                  <span>Kontakt z serwisem</span>
+                </div>
+                <span className="text-white">
+                  poniedziałek–sobota: 7:00–21:00
                 </span>
               </div>
 
