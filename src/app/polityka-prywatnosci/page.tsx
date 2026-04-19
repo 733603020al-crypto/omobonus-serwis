@@ -210,8 +210,7 @@ export default function PolitykaPrywatnosci() {
                   <p className="text-sm md:text-base font-sans leading-normal">
                     Na naszej stronie używamy plików cookies w celu zbierania informacji o preferencjach użytkowników,
                     poprawy jakości usług oraz w celach analitycznych i marketingowych. Użytkownik może zarządzać
-                    ustawieniami cookies poprzez swoją przeglądarkę internetową. Więcej informacji znajduje się
-                    w naszej <a href="/polityka-cookies" className="underline hover:text-[#3a2e24]/70">Polityce Cookies</a>.
+                    ustawieniami cookies poprzez swoją przeglądarkę internetową.
                   </p>
                 </div>
 
