@@ -199,18 +199,25 @@ export default function GoogleReviews() {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 text-[#bfa76a] text-sm mb-2">
+                                <div className="flex items-center gap-2 text-yellow-400 text-lg mb-2">
                                     <div className="flex gap-1">
                                         {Array.from({ length: 5 }).map((_, star) => (
-                                            <span key={star}>
-                                                {star < Math.round(review.rating) ? "★" : "☆"}
+                                            <span
+                                                key={star}
+                                                className={
+                                                    star < Math.floor(review.rating)
+                                                        ? "text-yellow-300 text-[18px] drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]"
+                                                        : "text-yellow-300/30 text-[18px]"
+                                                }
+                                            >
+                                                {"★"}
                                             </span>
                                         ))}
                                     </div>
 
                                     {review.relative_time_description && (
-                                        <span className="text-xs text-[#bfa76a]">
-                                            {review.relative_time_description}
+                                        <span className="text-[12px] text-white/50 ml-1">
+                                            • {review.relative_time_description}
                                         </span>
                                     )}
                                 </div>

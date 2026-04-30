@@ -12,7 +12,7 @@ type Review = {
 function Stars({ value }: { value: number }) {
     const full = Math.round(value)
     return (
-        <span className="text-yellow-500">
+        <span className="text-yellow-400 text-2xl tracking-wide">
             {'★'.repeat(full)}
             {'☆'.repeat(5 - full)}
         </span>

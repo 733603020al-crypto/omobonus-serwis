@@ -114,7 +114,7 @@ export function Footer() {
                   </Link>
                   <span className="opacity-50">·</span>
                   <Link
-                    href="https://t.me/+48793759262"
+                    href="https://t.me/48793759262"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary transition-colors"
