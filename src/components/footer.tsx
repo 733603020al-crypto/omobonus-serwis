@@ -53,12 +53,12 @@ export function Footer() {
                   <Phone className="h-4 w-4" />
                   <span>Telefon</span>
                 </div>
-                <Link
+                <a
                   href="tel:+48793759262"
-                  className="text-white hover:text-primary transition-colors"
+                  className="text-white md:pointer-events-none md:cursor-default"
                 >
                   +48 793 759 262
-                </Link>
+                </a>
               </div>
 
               {/* E-mail */}
