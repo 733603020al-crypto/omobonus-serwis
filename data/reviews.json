@@ -1,0 +1,67 @@
+{
+  "rating": 1.1,
+  "total": 85,
+  "reviews": [
+    {
+      "author_name": "Daniel Bacherek",
+      "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
+      "language": "en-US",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
+      "rating": 5,
+      "relative_time_description": "3 months ago",
+      "text": "I highly recommend this service! My HP laser printer was leaving ugly streaks on the pages, and I was convinced I was in for an expensive repair. Thanks to the service's expert diagnosis, it turned out that a simple toner replacement was enough. I wouldn't have thought of that myself, and thanks to their honesty, I was able to fix the device quickly and affordably. A big plus for their professionalism and the fact that they didn't overcharge!",
+      "time": 1768238411,
+      "translated": true
+    },
+    {
+      "author_name": "Oleksandr Brovenko",
+      "author_url": "https://www.google.com/maps/contrib/117905345241642935807/reviews",
+      "language": "en-US",
+      "original_language": "ru",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWcZ8nTCKyQys2T5ySAMzeEJ-Hbh5zDO-Ty8mZs7-ujW1ySy3I=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "3 months ago",
+      "text": "The professionalism and quality of service are top-notch. I was pleasantly surprised by the price and turnaround time for the printer repair. I had previously serviced my office equipment at another service center. The significant difference is that here you don't have to wait for parts to be delivered when replacements are needed. Thanks to a solid technical base and an impressive selection of components, equipment repairs and setup are extremely quick and the service is high-quality. I highly recommend!!!\nExcellent practical and professional service. Highly recommended. Highly recommended service center.",
+      "time": 1769189477,
+      "translated": true
+    },
+    {
+      "author_name": "Karyna Yakymova",
+      "author_url": "https://www.google.com/maps/contrib/102750037595458377267/reviews",
+      "language": "en-US",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjVpNiRVSPUrsXJf52uX4IG_yb4mB9WT5uGE3Fh3NuvYiAUCJ83j9A=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "3 months ago",
+      "text": "I'd like to express my gratitude to the computer repair company for their excellent service! I contacted them with a problem—my computer wouldn't turn on—and received prompt assistance. They quickly diagnosed the problem, explained everything thoroughly, and offered the optimal solution at a reasonable price. The repair was completed in a timely manner, and the computer is working perfectly. The staff was very polite and professional—I recommend them!",
+      "time": 1768818706,
+      "translated": true
+    },
+    {
+      "author_name": "Katarzyna Kijanka",
+      "author_url": "https://www.google.com/maps/contrib/101163259963516698521/reviews",
+      "language": "en-US",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUQ3gIg6pPiAv7pFWFpIQ1TESXtmzwJ-z5suJ2XZnkCgAUpYJhl=s128-c0x00000000-cc-rp-mo-ba2",
+      "rating": 5,
+      "relative_time_description": "3 months ago",
+      "text": "Fantastic printer and computer service! Quick diagnosis, expert repair, and complete professionalism. The equipment was repaired efficiently and at a very reasonable price. The service was friendly, competent, and happy to explain each step of the repair. It's clear the people working here are passionate and knowledgeable. I highly recommend them to anyone looking for honest and reliable service!",
+      "time": 1768926023,
+      "translated": true
+    },
+    {
+      "author_name": "Piotr Lemiszko",
+      "author_url": "https://www.google.com/maps/contrib/103093017084235593028/reviews",
+      "language": "en-US",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKpMeG4LLvrgvdofn7BPWG4cMXMb-O3Fd_isn34_r_uM768Cw=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "2 months ago",
+      "text": "Quick and professional diagnosis and repair of my HP color multifunction device. I highly recommend this company's services.",
+      "time": 1771333898,
+      "translated": true
+    }
+  ],
+  "updatedAt": "2026-05-02T11:27:43.593Z"
+}
