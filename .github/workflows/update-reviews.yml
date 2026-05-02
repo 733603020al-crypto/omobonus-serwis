@@ -2,8 +2,8 @@ name: Update Google Reviews
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # каждые 6 часов
-  workflow_dispatch:       # кнопка "Run manually"
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
 
 jobs:
   update:
@@ -23,6 +23,9 @@ jobs:
 
       - name: Fetch reviews
         run: node scripts/fetch-reviews.js
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
 
       - name: Commit changes
         run: |
