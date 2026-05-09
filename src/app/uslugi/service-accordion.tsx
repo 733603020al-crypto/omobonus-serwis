@@ -2373,7 +2373,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                                         ? {
                                           side: 'left',
                                           align: 'center',
-                                          sideOffset: 16,
+                                          sideOffset: -80,
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
