@@ -94,7 +94,7 @@ const defaultPricingSections: PricingSection[] = [
     title: 'Dojazd',
     status: '20 zł',
     footer:
-      'Nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy.',
+      'Nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy',
     items: [
       {
         service: 'Odbiór urządzenia od Klienta (do 5 km łącznie w obie strony)',

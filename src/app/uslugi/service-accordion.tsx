@@ -2194,9 +2194,9 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
                           )}
                         </div>
                         {section.id === 'dojazd' && isSectionOpen(section.id) && (
-                          <div className="mt-1 text-[12px] leading-snug text-[#cbb27c] max-w-[420px]">
+                          <div className="mt-1 text-[12px] leading-snug text-[#f5f0df] max-w-[420px]">
                             <div>Nie mówimy, że dojazd lub odbiór są „za darmo”,</div>
-                            <div>a następnie doliczamy ten koszt do ceny naprawy.</div>
+                            <div>a następnie doliczamy ten koszt do ceny naprawy</div>
                           </div>
                         )}
 
