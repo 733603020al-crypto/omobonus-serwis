@@ -97,12 +97,12 @@ const defaultPricingSections: PricingSection[] = [
       'Nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy.',
     items: [
       {
-        service: 'Odbiór urządzenia od Klienta (Wrocław do 5 km)',
+        service: 'Odbiór urządzenia od Klienta (do 5 km łącznie w obie strony)',
         price: '20 zł',
         duration: '1-3 dni',
       },
       {
-        service: 'Dostarczenie naprawionego urządzenia do Klienta (Wrocław do 5 km)',
+        service: 'Dostarczenie naprawionego urządzenia do Klienta (do 5 km łącznie w obie strony)',
         price: '20 zł',
         duration: '1-3 dni',
       },
