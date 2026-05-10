@@ -29,7 +29,6 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-komputerow-stacjonarnych': {
     h1: 'Serwis i Naprawa Komputerów Stacjonarnych',
-    h2: '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
   },
 
   'outsourcing-it': {
