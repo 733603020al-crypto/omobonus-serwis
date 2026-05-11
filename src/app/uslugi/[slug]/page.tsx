@@ -24,7 +24,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'naprawa-drukarek': {
     h1: 'Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
 
   'serwis-komputerow-stacjonarnych': {
@@ -37,7 +37,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-laserowych': {
     h1: 'Serwis i Naprawa Drukarek Laserowych',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, ...)',
   },
 
   'serwis-drukarek-atramentowych': {
@@ -61,7 +61,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'wynajem-drukarek': {
     h1: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
 
   'drukarka-zastepcza': {
