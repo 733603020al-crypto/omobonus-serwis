@@ -1964,10 +1964,7 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             >
               <div
                 className={cn(
-                  "group relative w-full transition-all duration-300",
-                  section.id === "faq"
-                    ? "bg-transparent border-0 rounded-none shadow-none"
-                    : "min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-xl bg-[rgba(5,5,5,0.85)]"
+                  "group relative w-full transition-all duration-300 min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-xl bg-[rgba(5,5,5,0.85)]"
                 )}
               >
                 <AccordionTrigger
