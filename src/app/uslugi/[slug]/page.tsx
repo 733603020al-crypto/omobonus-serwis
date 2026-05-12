@@ -19,7 +19,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-laptopow': {
     h1: 'Serwis i Naprawa Laptopów we Wrocławiu',
-    h2: '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
+    h2: '', // '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
   },
 
   'naprawa-drukarek': {
