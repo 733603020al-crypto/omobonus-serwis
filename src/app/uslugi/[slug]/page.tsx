@@ -37,7 +37,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-laserowych': {
     h1: 'Serwis i Naprawa Drukarek Laserowych',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
   },
 
   'serwis-drukarek-atramentowych': {
