@@ -930,6 +930,11 @@
     opacity: 0.28;
   }
 
+  .service-hero-image-wrap {
+    animation: none;
+    transform: none;
+  }
+
   .service-hero-image-wrap::after {
     display: none;
   }
