@@ -923,6 +923,28 @@
   }
 }
 
+@keyframes serviceHeroImageMobileFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(-4px) scale(1.012);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.018);
+  }
+
+  75% {
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 768px) {
   .service-hero-label {
     font-size: 16px;
@@ -933,6 +955,12 @@
   .service-hero-image-wrap {
     animation: none;
     transform: none;
+  }
+
+  .service-hero-image {
+    animation:
+      serviceHeroImageMobileFloat 7s ease-in-out infinite,
+      serviceHeroGlow 7s ease-in-out infinite;
   }
 
   .service-hero-image-wrap::after {
