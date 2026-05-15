@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { Metadata } from "next"
 import { services } from "@/lib/services-data"
+import { serviceHeroLabels } from "@/lib/service-hero-labels"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
@@ -218,6 +219,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const service = services.find(s => s.slug === slug)
+
   const seo = seoMetadata[slug]
 
   if (!service || !seo) {
@@ -256,6 +258,7 @@ export default async function ServicePage({
 }) {
   const { slug } = await params
   const service = services.find(s => s.slug === slug)
+  const heroLabels = serviceHeroLabels[slug] || []
 
   if (!service) {
     notFound()
@@ -355,6 +358,15 @@ export default async function ServicePage({
                 >
                   <div className="flex justify-center md:justify-start">
                     <div className="service-hero-image-wrap relative w-full">
+                      {heroLabels.map((label, index) => (
+                        <span
+                          key={label}
+                          className={`service-hero-label service-hero-label-${index + 1}`}
+                        >
+                          {label}
+                        </span>
+                      ))}
+
                       <Image
                         src={
                           slug === 'serwis-drukarek-termicznych'

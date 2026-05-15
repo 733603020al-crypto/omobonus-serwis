@@ -449,6 +449,73 @@
   mix-blend-mode: screen;
 }
 
+.service-hero-label {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  white-space: nowrap;
+
+  font-family: var(--font-cormorant), serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.035em;
+
+  color: rgba(230, 204, 130, 0.82);
+  opacity: 0.28;
+
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(191, 167, 106, 0.24),
+    0 0 18px rgba(191, 167, 106, 0.12);
+
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.service-hero-label-1 {
+  top: 2%;
+  left: 8%;
+  transform: translate(-10%, -100%);
+  animation: serviceHeroLabelOne 28s ease-in-out infinite;
+}
+
+.service-hero-label-2 {
+  top: 38%;
+  left: -14%;
+  transform: translate(-8%, -50%);
+  animation: serviceHeroLabelTwo 28s ease-in-out infinite;
+}
+
+.service-hero-label-3 {
+  top: 36%;
+  right: -22%;
+  transform: translate(8%, -50%);
+  animation: serviceHeroLabelThree 28s ease-in-out infinite;
+}
+
+.service-hero-label-4 {
+  bottom: 18%;
+  right: -10%;
+  transform: translate(8%, 0);
+  animation: serviceHeroLabelFour 28s ease-in-out infinite;
+}
+
+.service-hero-label,
+.service-hero-label-1,
+.service-hero-label-2,
+.service-hero-label-3,
+.service-hero-label-4 {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 @keyframes serviceHeroFloat {
   0% {
     transform: translateY(0) scale(1);
@@ -508,6 +575,288 @@
   }
 }
 
+@keyframes serviceHeroLabelOne {
+  0% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  10.71% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  25% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  35.71% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  100% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+}
+
+@keyframes serviceHeroLabelTwo {
+  0% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  25% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  35.71% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  50% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  60.71% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  100% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+}
+
+@keyframes serviceHeroLabelThree {
+  0% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  50% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  60.71% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  75% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  85.71% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  100% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+}
+
+@keyframes serviceHeroLabelFour {
+  0% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  10.71% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  75% {
+    opacity: 0.28;
+    color: rgba(230, 204, 130, 0.78);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(191, 167, 106, 0.20),
+      0 0 18px rgba(191, 167, 106, 0.08);
+    box-shadow: none;
+  }
+
+  85.71% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+
+  100% {
+    opacity: 1;
+    color: rgba(255, 234, 176, 1);
+    border-color: transparent;
+    background: transparent;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.95),
+      0 0 10px rgba(255, 234, 176, 0.72),
+      0 0 24px rgba(191, 167, 106, 0.48),
+      0 0 44px rgba(191, 167, 106, 0.28);
+    box-shadow: none;
+  }
+}
+
+
 @keyframes serviceHeroGlow {
   0% {
     filter:
@@ -545,6 +894,38 @@
   }
 }
 
+@media (max-width: 768px) {
+  .service-hero-label {
+    font-size: 14px;
+    padding: 0;
+    opacity: 0.24;
+  }
+
+  .service-hero-label-1 {
+    top: 3%;
+    left: 14%;
+    transform: translate(-10%, -95%);
+  }
+
+  .service-hero-label-2 {
+    top: 34%;
+    left: -4%;
+    transform: translate(-4%, -50%);
+  }
+
+  .service-hero-label-3 {
+    top: 34%;
+    right: -8%;
+    transform: translate(4%, -50%);
+  }
+
+  .service-hero-label-4 {
+    bottom: 16%;
+    right: 2%;
+    transform: translate(4%, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .service-hero-image-wrap {
     animation: none;
@@ -558,5 +939,10 @@
   .service-hero-image {
     animation: none;
     transition: none;
+  }
+
+  .service-hero-label {
+    animation: none;
+    opacity: 0.35;
   }
 }
