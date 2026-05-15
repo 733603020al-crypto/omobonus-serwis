@@ -410,7 +410,6 @@
   position: relative;
   isolation: isolate;
   animation: serviceHeroFloat 7s ease-in-out infinite;
-  will-change: transform;
 }
 
 .service-hero-image {
@@ -929,6 +928,10 @@
     font-size: 16px;
     padding: 0;
     opacity: 0.28;
+  }
+
+  .service-hero-image-wrap::after {
+    display: none;
   }
 
   .service-hero-label-1 {
