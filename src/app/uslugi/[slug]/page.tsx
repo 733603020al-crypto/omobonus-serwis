@@ -354,7 +354,7 @@ export default async function ServicePage({
                     }`}
                 >
                   <div className="flex justify-center md:justify-start">
-                    <div className="relative w-full">
+                    <div className="service-hero-image-wrap relative w-full">
                       <Image
                         src={
                           slug === 'serwis-drukarek-termicznych'
@@ -408,7 +408,7 @@ export default async function ServicePage({
                         }
                         width={420}
                         height={420}
-                        className="object-contain w-full h-auto drop-shadow-2xl"
+                        className="service-hero-image object-contain w-full h-auto"
                         priority
                       />
                     </div>
