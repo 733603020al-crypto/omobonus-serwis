@@ -926,9 +926,9 @@
 
 @media (max-width: 768px) {
   .service-hero-label {
-    font-size: 14px;
+    font-size: 16px;
     padding: 0;
-    opacity: 0.24;
+    opacity: 0.28;
   }
 
   .service-hero-label-1 {
