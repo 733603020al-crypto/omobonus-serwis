@@ -137,7 +137,7 @@
      ========================= */
   .services-card-bg {
     position: relative;
-    isolation: isolate;
+
     z-index: 1;
     background-image:
       linear-gradient(to bottom,
