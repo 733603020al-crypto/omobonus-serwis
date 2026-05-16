@@ -6,10 +6,12 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
   }
 
   /* =========================
@@ -410,7 +412,7 @@
   position: relative;
   isolation: isolate;
   animation: serviceHeroFloat 7s ease-in-out infinite;
-  overflow: hidden;
+
 }
 
 .service-hero-image {
