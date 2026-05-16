@@ -410,6 +410,7 @@
   position: relative;
   isolation: isolate;
   animation: serviceHeroFloat 7s ease-in-out infinite;
+  overflow: hidden;
 }
 
 .service-hero-image {
