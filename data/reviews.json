@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 119,
+  "total": 121,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -45,7 +45,7 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKpMeG4LLvrgvdofn7BPWG4cMXMb-O3Fd_isn34_r_uM768Cw=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "2 miesiące temu",
+      "relative_time_description": "3 miesiące temu",
       "text": "Szybka i fachowa diagnoza i naprawa kolorowego urządzenia wielofunkcyjnego hp. Polecam usługi tej firmy.",
       "time": 1771333898,
       "translated": false
@@ -63,5 +63,5 @@
       "translated": false
     }
   ],
-  "updatedAt": "2026-05-18T09:53:09.393Z"
+  "updatedAt": "2026-05-18T15:19:53.719Z"
 }
