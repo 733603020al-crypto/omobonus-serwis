@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 126,
+  "total": 131,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -33,7 +33,7 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUQ3gIg6pPiAv7pFWFpIQ1TESXtmzwJ-z5suJ2XZnkCgAUpYJhl=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
-      "relative_time_description": "3 miesiące temu",
+      "relative_time_description": "4 miesiące temu",
       "text": "Rewelacyjny serwis drukarek i komputerów! Szybka diagnoza, fachowa naprawa i pełen profesjonalizm. Sprzęt został naprawiony sprawnie i w bardzo rozsądnej cenie. Obsługa miła, kompetentna i chętnie tłumaczy każdy etap naprawy. Widać, że pracują tu ludzie z pasją i ogromną wiedzą. Zdecydowanie polecam każdemu, kto szuka uczciwego i solidnego serwisu!",
       "time": 1768926023,
       "translated": false
@@ -57,11 +57,11 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLN934xsVVcjlnQcnHHWrSswWoVG0qVlRU_gll_z4inewJm=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 miesiące temu",
+      "relative_time_description": "4 miesiące temu",
       "text": "Dobry serwis. Dobre ceny. Pracują profesjonaliści. Brak oszustwa i uczciwość na każdym kroku.",
       "time": 1768935192,
       "translated": false
     }
   ],
-  "updatedAt": "2026-05-20T14:53:37.431Z"
+  "updatedAt": "2026-05-20T20:09:18.758Z"
 }
