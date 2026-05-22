@@ -59,7 +59,7 @@ export function Services() {
     duration-300
     ease-out
     hover:-translate-y-1
-    hover:shadow-xl
+    hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]
     flex
     items-center
     text-left
@@ -67,9 +67,10 @@ export function Services() {
     services-card-bg
   "
               >
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 {/* Ikona */}
-                <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
@@ -107,8 +108,8 @@ export function Services() {
                 </div>
 
                 {/* Treść */}
-                <div className="flex-1">
-                  <h2 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                <div className="relative z-10 flex-1">
+                  <h2 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-[#f3df9a] group-hover:[text-shadow:0_0_10px_rgba(191,167,106,0.5)] transition-all duration-300 mb-1 leading-tight">
                     {service.slug === 'serwis-drukarek-termicznych'
                       ? 'Serwis i naprawa drukarek etykiet'
                       : service.title}

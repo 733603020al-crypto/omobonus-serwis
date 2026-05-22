@@ -1964,11 +1964,12 @@ const ServiceAccordion = ({ service }: { service: ServiceData }) => {
             >
               <div
                 className={cn(
-                  "group relative w-full transition-all duration-300 min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-xl bg-[rgba(5,5,5,0.85)]"
+                  "group relative w-full transition-all duration-300 min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-[0_0_24px_rgba(191,167,106,0.35)] bg-[rgba(5,5,5,0.85)]"
                 )}
               >
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
                 <AccordionTrigger
-                  className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0"
+                  className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0 relative z-10"
                 >
                   <div className="flex items-center w-full text-left">
                     <div className="flex items-center flex-1 min-w-0">

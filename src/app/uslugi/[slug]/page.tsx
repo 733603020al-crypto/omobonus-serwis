@@ -522,12 +522,13 @@ export default async function ServicePage({
     transition-all duration-300 ease-out
     hover:border-[rgba(200,169,107,0.85)]
     hover:-translate-y-[2px]
-    hover:shadow-[0_10px_25px_rgba(0,0,0,0.35)]
+    hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]
   "
                     >
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/40 via-[#bfa76a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
 
                       {/* Ikona */}
-                      <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                      <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                         <Image
                           src={
                             service.slug === 'serwis-komputerow-stacjonarnych'
@@ -563,7 +564,7 @@ export default async function ServicePage({
                       </div>
 
                       {/* Treść */}
-                      <div className="flex-1">
+                      <div className="relative z-10 flex-1">
                         <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
                           {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.slug === 'serwis-drukarek-laserowych' ? 'Serwis Drukarek Laserowych' : service.title}
                         </div>
