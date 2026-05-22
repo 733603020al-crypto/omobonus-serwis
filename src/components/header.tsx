@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu } from 'lucide-react'
+import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
 
 import manifest from '@/config/manifest'
@@ -22,10 +22,36 @@ const BrandWordmark = ({ className }: { className?: string }) => (
       className
     )}
   >
-    <span className="text-white">Omobonus</span>
-    <span className="text-[#bfa76a]">serwis</span>
+    <span className="text-white transition-all duration-300 group-hover:[text-shadow:0_0_8px_rgba(191,167,106,0.35)]">Omobonus</span>
+    <span className="text-[#bfa76a] transition-all duration-300 group-hover:[text-shadow:0_0_8px_rgba(191,167,106,0.35)]">serwis</span>
   </div>
 )
+
+/* =========================
+   Mega menu data
+   ========================= */
+
+const MEGA_MENU = [
+  {
+    items: [
+      { label: 'Laptopów', href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: 'Komputerów Stacjonarnych', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: 'Outsourcing IT', href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+    ],
+  },
+  {
+    items: [
+      { label: 'Drukarek laserowych', href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
+      { label: 'Drukarek atramentowych', href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
+      { label: 'Drukarek igłowych', href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
+      { label: 'Drukarek etykiet termicznych', href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
+      { label: 'Drukarek 3D', href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: 'Ploterów', href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
+      { label: 'Wynajem (Dzierżawa) Drukarek', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: 'Drukarka Zastępcza', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+    ],
+  },
+]
 
 /* =========================
    Header
@@ -33,6 +59,7 @@ const BrandWordmark = ({ className }: { className?: string }) => (
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
@@ -117,7 +144,7 @@ export function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="z-10 flex h-full items-center gap-2"
+          className="group z-10 flex h-full items-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(191,167,106,0.30)]"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault()
@@ -141,20 +168,68 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
-          <Link
-            href="/#uslugi"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('uslugi')
-            }}
-            className="font-cormorant text-[18px] text-[#bfa76a]"
+          <div
+            className="relative h-full flex items-center"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
           >
-            Usługi
-          </Link>
-          <Link href="/o-nas" className="font-cormorant text-[18px] text-[#bfa76a]">
+            <Link
+              href="/#uslugi"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('uslugi')
+              }}
+              className="flex items-center gap-1 font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
+              style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
+            >
+              Usługi
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+            </Link>
+
+            {/* Mega menu panel */}
+            {isServicesOpen && (
+              <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-b-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+                <Image src={manifest.Background_1} alt="" fill sizes="600px" className="object-cover object-center" />
+                <div className="absolute inset-0 bg-black/75" />
+                <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
+                  <div className="col-span-2 mb-3">
+                    <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+                      SERWIS I NAPRAWA
+                    </p>
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
+                  </div>
+                {MEGA_MENU.map((col, i) => (
+                  <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
+                    <div className="flex flex-col divide-y divide-[#bfa76a]/25">
+                      {col.items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                        >
+                          <Image
+                            src={item.icon}
+                            alt=""
+                            width={22}
+                            height={22}
+                            sizes="22px"
+                            className="flex-shrink-0 object-contain opacity-90"
+                            unoptimized
+                          />
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <Link href="/o-nas" className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
             O nas
           </Link>
-          <Link href="/kontakt" className="font-cormorant text-[18px] text-[#bfa76a]">
+          <Link href="/kontakt" className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
             Kontakt
           </Link>
 
@@ -162,13 +237,13 @@ export function Header() {
             href="https://omobonus.com.pl"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-cormorant text-[18px] text-[#bfa76a]"
+            className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
           >
             Sklep
           </Link>
 
           {/* ✅ КНОПКА ЗВОНКА — ТОЛЬКО ЗДЕСЬ ИЗМЕНЕНА */}
-          <CallButton variant="primary" href="tel:+48793759262">
+          <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]">
             <span className="md:hidden">Zadzwoń teraz</span>
             <span className="hidden md:inline">793 759 262</span>
           </CallButton>
