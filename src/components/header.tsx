@@ -141,23 +141,22 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
-          {[
-            { id: 'uslugi', label: 'Usługi' },
-            { id: 'o-nas', label: 'O nas' },
-            { id: 'kontakt', label: 'Kontakt' },
-          ].map((item) => (
-            <Link
-              key={item.id}
-              href={`/#${item.id}`}
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection(item.id)
-              }}
-              className="font-cormorant text-[18px] text-[#bfa76a]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/#uslugi"
+            onClick={(e) => {
+              e.preventDefault()
+              scrollToSection('uslugi')
+            }}
+            className="font-cormorant text-[18px] text-[#bfa76a]"
+          >
+            Usługi
+          </Link>
+          <Link href="/o-nas" className="font-cormorant text-[18px] text-[#bfa76a]">
+            O nas
+          </Link>
+          <Link href="/kontakt" className="font-cormorant text-[18px] text-[#bfa76a]">
+            Kontakt
+          </Link>
 
           <Link
             href="https://omobonus.com.pl"
@@ -219,22 +218,21 @@ export function Header() {
                 </Link>
 
                 <nav className="flex flex-col gap-4">
-                  {[
-                    { id: 'uslugi', label: 'Usługi' },
-                    { id: 'o-nas', label: 'O nas' },
-                    { id: 'kontakt', label: 'Kontakt' },
-                  ].map((item) => (
-                    <Link
-                      key={item.id}
-                      href={`/#${item.id}`}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        scrollToSection(item.id)
-                      }}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+                  <Link
+                    href="/#uslugi"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      scrollToSection('uslugi')
+                    }}
+                  >
+                    Usługi
+                  </Link>
+                  <Link href="/o-nas" onClick={() => setIsOpen(false)}>
+                    O nas
+                  </Link>
+                  <Link href="/kontakt" onClick={() => setIsOpen(false)}>
+                    Kontakt
+                  </Link>
 
                   <Link
                     href="https://omobonus.com.pl"
