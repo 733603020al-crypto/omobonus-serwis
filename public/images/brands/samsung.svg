@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" role="img" aria-label="Samsung logo">
+  <title>Samsung</title>
+
+  <ellipse cx="280" cy="95" rx="250" ry="68" transform="rotate(-10 280 95)" fill="#0B5FC6"></ellipse>
+
+  <text x="280" y="114" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="4" textLength="330" lengthAdjust="spacingAndGlyphs" fill="#FFFFFF">
+    SAMSUNG
+  </text>
+</svg>

@@ -3,6 +3,7 @@ import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
+import BrandTicker from '@/components/brand-ticker'
 import dynamic from 'next/dynamic'
 
 const Contact = dynamic(() => import('@/components/sections/contact').then((mod) => mod.Contact))
@@ -35,6 +36,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
+      <BrandTicker />
       <Services />
 
       {/* Święty Omobonus */}

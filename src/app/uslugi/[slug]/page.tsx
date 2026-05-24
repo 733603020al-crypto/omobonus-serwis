@@ -11,6 +11,7 @@ import manifest from "@/config/manifest"
 import ServiceAccordion from "../service-accordion"
 import GoogleReviews from "@/components/google-reviews"
 import { CallButton } from "@/components/ui/CallButton"
+import BrandTicker from "@/components/brand-ticker"
 
 const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -145,6 +146,21 @@ const seoBlocks: Record<string, SeoBlock> = {
 
 
 // SEO metadata for each service page
+const slugBrands: Record<string, string[]> = {
+  'serwis-laptopow': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba'],
+  'serwis-komputerow-stacjonarnych': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung'],
+  'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
+  'naprawa-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'olivetti', 'oki', 'samsung'],
+  'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh'],
+  'serwis-drukarek-termicznych': ['brother', 'zebra', 'dymo', 'godex', 'bixolon', 'oki'],
+  'wynajem-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
+  'drukarka-zastepcza': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
+  'serwis-drukarek-laserowych': ['hp', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'samsung', 'oki', 'toshiba'],
+  'serwis-drukarek-atramentowych': ['hp', 'canon', 'epson', 'brother'],
+  'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon'],
+  'serwis-drukarek-3d': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
+}
+
 const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
     title: 'Serwis i Naprawa Laptopów',
@@ -460,8 +476,13 @@ export default async function ServicePage({
                   </div>
                 </div>
               </div>
+              {slugBrands[slug] && (
+                <div className="mt-[40px]">
+                  <BrandTicker brandNames={slugBrands[slug]} />
+                </div>
+              )}
               {/* INFO container */}
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6">
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands[slug] ? ' mt-[44px]' : ''}`}>
                 <p className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
 
                   {slug === 'drukarka-zastepcza'
