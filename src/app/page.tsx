@@ -37,7 +37,7 @@ export default function Home() {
       <Header />
       <div>
         <Hero>
-          <div className="absolute bottom-[24px] left-0 w-full z-10 md:bottom-[48px]">
+          <div className="absolute bottom-[40px] left-0 w-full z-10 md:bottom-[48px]">
             <BrandTicker compact />
           </div>
         </Hero>
