@@ -35,9 +35,11 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <div className="mt-[24px] md:mt-0">
-        <BrandTicker />
+      <div className="relative">
+        <Hero />
+        <div className="mt-[24px] md:absolute md:bottom-[48px] md:left-0 md:w-full md:z-10">
+          <BrandTicker />
+        </div>
       </div>
       <Services />
 
