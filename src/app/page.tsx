@@ -36,7 +36,9 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <BrandTicker />
+      <div className="mt-[24px] md:mt-0">
+        <BrandTicker />
+      </div>
       <Services />
 
       {/* Święty Omobonus */}
