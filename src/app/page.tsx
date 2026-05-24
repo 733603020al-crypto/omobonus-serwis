@@ -4,10 +4,10 @@ import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
 import BrandTicker from '@/components/brand-ticker'
+import { Footer } from '@/components/footer'
 import dynamic from 'next/dynamic'
 
 const Contact = dynamic(() => import('@/components/sections/contact').then((mod) => mod.Contact))
-import { Footer } from '@/components/footer'
 
 
 export const metadata: Metadata = {
@@ -35,11 +35,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="relative">
-        <Hero />
-        <div className="mt-[24px] md:absolute md:bottom-[48px] md:left-0 md:w-full md:z-10">
-          <BrandTicker />
-        </div>
+      <div>
+        <Hero>
+          <div className="absolute bottom-[24px] left-0 w-full z-10 md:bottom-[48px]">
+            <BrandTicker compact />
+          </div>
+        </Hero>
       </div>
       <Services />
 

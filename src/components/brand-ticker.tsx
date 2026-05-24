@@ -51,7 +51,7 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
 const gap = 48
 const speed = 0.4
 
-export default function BrandTicker({ brandNames }: { brandNames?: string[] } = {}) {
+export default function BrandTicker({ brandNames, compact }: { brandNames?: string[]; compact?: boolean } = {}) {
   const displayBrands = brandNames
     ? brands.filter(b => brandNames.includes(b.name))
     : brands
@@ -102,7 +102,7 @@ export default function BrandTicker({ brandNames }: { brandNames?: string[] } = 
   }, [])
 
   return (
-    <section className="relative w-full h-[68px] -mt-[34px] -mb-[34px] z-10 overflow-hidden">
+    <section className={`relative w-full h-[68px] -mt-[34px] -mb-[34px] z-10 overflow-hidden${compact ? ' md:h-[56px]' : ''}`}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
@@ -120,7 +120,7 @@ export default function BrandTicker({ brandNames }: { brandNames?: string[] } = 
           {Array.from({ length: copies }, () => displayBrands).flat().map((brand, i) => (
             <div
               key={i}
-              className="inline-flex shrink-0 items-center h-[68px] transition-opacity duration-300"
+              className={`inline-flex shrink-0 items-center h-[68px] transition-opacity duration-300${compact ? ' md:h-[56px]' : ''}`}
             >
               {brand.label ? (
                 <span
@@ -138,7 +138,7 @@ export default function BrandTicker({ brandNames }: { brandNames?: string[] } = 
                 <img
                   src={brand.src ?? `/images/brands/${brand.name}.svg`}
                   alt={brand.name}
-                  className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}`}
+                  className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
                   style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
                   draggable={false}
                 />

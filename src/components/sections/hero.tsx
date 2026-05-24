@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { CallButton } from '@/components/ui/CallButton'
 
-export function Hero() {
+export function Hero({ children }: { children?: React.ReactNode } = {}) {
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
     if (!el) return
@@ -22,11 +22,10 @@ export function Hero() {
         flex
         items-center
         justify-center
-        overflow-hidden
       "
     >
       {/* Tło */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <Image
           src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
@@ -49,7 +48,7 @@ export function Hero() {
         </h1>
 
         <p className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
-          &quot;Uczciwość (brak oszustwa) i szacunek do klienta&quot; – to nasze podstawowe zasady pracy
+          &quot;Uczciwość i szacunek do klienta&quot; – to nasze podstawowe zasady pracy
         </p>
 
         {/* BUTTONS */}
@@ -72,6 +71,7 @@ export function Hero() {
           </CallButton>
         </div>
       </div>
+      {children}
     </section>
   )
 }
