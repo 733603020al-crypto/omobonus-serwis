@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description: 'Regulamin serwisu Omobonus Wrocław. Zasady naprawy komputerów i drukarek, gwarancja, reklamacje.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/regulamin',
+    languages: {
+      'pl': 'https://serwis.omobonus.com.pl/regulamin',
+      'x-default': 'https://serwis.omobonus.com.pl/regulamin',
+    },
   },
 }
 

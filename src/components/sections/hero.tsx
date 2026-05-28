@@ -3,7 +3,29 @@
 import Image from 'next/image'
 import { CallButton } from '@/components/ui/CallButton'
 
-export function Hero({ children }: { children?: React.ReactNode } = {}) {
+interface HeroT {
+  h1Line1: string
+  h1Line2: string
+  h1Line3: string
+  tagline: string
+  callMobile: string
+  callDesktop: string
+  submitForm: string
+}
+
+const PL: HeroT = {
+  h1Line1: 'Profesjonalny serwis',
+  h1Line2: 'komputerów i drukarek we',
+  h1Line3: 'Wrocławiu',
+  tagline: '"Uczciwość i szacunek do klienta" – to nasze podstawowe zasady pracy',
+  callMobile: 'Zadzwoń teraz',
+  callDesktop: '793 759 262',
+  submitForm: 'Wyślij zgłoszenie',
+}
+
+export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } = {}) {
+  const d = t ?? PL
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
     if (!el) return
@@ -44,11 +66,11 @@ export function Hero({ children }: { children?: React.ReactNode } = {}) {
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center">
 
         <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
-          Profesjonalny serwis <br /> komputerów i drukarek we <br /> Wrocławiu
+          {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
         </h1>
 
         <p className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
-          &quot;Uczciwość i szacunek do klienta&quot; – to nasze podstawowe zasady pracy
+          {d.tagline}
         </p>
 
         {/* BUTTONS */}
@@ -58,8 +80,8 @@ export function Hero({ children }: { children?: React.ReactNode } = {}) {
             href="tel:+48793759262"
             className="w-[80%] md:w-auto"
           >
-            <span className="md:hidden">Zadzwoń teraz</span>
-            <span className="hidden md:inline">793 759 262</span>
+            <span className="md:hidden">{d.callMobile}</span>
+            <span className="hidden md:inline">{d.callDesktop}</span>
           </CallButton>
 
           <CallButton
@@ -67,7 +89,7 @@ export function Hero({ children }: { children?: React.ReactNode } = {}) {
             href="#formularz"
             className="w-[80%] md:w-auto"
           >
-            Wyślij zgłoszenie
+            {d.submitForm}
           </CallButton>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 import manifest from '@/config/manifest'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -34,21 +35,21 @@ const BrandWordmark = ({ className }: { className?: string }) => (
 const MEGA_MENU = [
   {
     items: [
-      { label: 'Laptopów', href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: 'Komputerów Stacjonarnych', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: 'Outsourcing IT', href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: 'Laptopów', labelUk: 'Ноутбуків', href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: 'Komputerów Stacjonarnych', labelUk: 'Стаціонарних Комп\'ютерів', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: 'Outsourcing IT', labelUk: 'Аутсорсинг IT', href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
     ],
   },
   {
     items: [
-      { label: 'Drukarek laserowych', href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
-      { label: 'Drukarek atramentowych', href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
-      { label: 'Drukarek igłowych', href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
-      { label: 'Drukarek etykiet termicznych', href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
-      { label: 'Drukarek 3D', href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: 'Ploterów', href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
-      { label: 'Wynajem (Dzierżawa) Drukarek', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: 'Drukarka Zastępcza', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+      { label: 'Drukarek laserowych', labelUk: 'Лазерних принтерів', href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
+      { label: 'Drukarek atramentowych', labelUk: 'Струменевих принтерів', href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
+      { label: 'Drukarek igłowych', labelUk: 'Матричних принтерів', href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
+      { label: 'Drukarek etykiet termicznych', labelUk: 'Термотрансферних принтерів', href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
+      { label: 'Drukarek 3D', labelUk: 'Принтерів 3D', href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: 'Ploterów', labelUk: 'Плотерів', href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
+      { label: 'Wynajem (Dzierżawa) Drukarek', labelUk: 'Оренда Принтерів', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: 'Drukarka Zastępcza', labelUk: 'Принтер на заміну', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
 ]
@@ -62,6 +63,18 @@ export function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const isUk = pathname.startsWith('/uk')
+  const homeHref = isUk ? '/uk' : '/'
+  const aboutHref = isUk ? '/uk/o-nas' : '/o-nas'
+  const contactHref = isUk ? '/uk/kontakt' : '/kontakt'
+  const navServices = isUk ? 'Послуги' : 'Usługi'
+  const navAbout = isUk ? 'Про нас' : 'O nas'
+  const navContact = isUk ? 'Контакт' : 'Kontakt'
+  const navShop = isUk ? 'Магазин' : 'Sklep'
+  const navCall = isUk ? 'Зателефонувати' : 'Zadzwoń teraz'
+  const navSendForm = isUk ? 'Надіслати заявку' : 'Wyślij zgłoszenie'
+  const megaMenuHeader = isUk ? 'СЕРВІС І РЕМОНТ' : 'SERWIS I NAPRAWA'
+  const homeSectionHref = isUk ? '/uk#uslugi' : '/#uslugi'
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -89,8 +102,9 @@ export function Header() {
 
   const scrollToSection = (id: string) => {
     const performScroll = () => {
-      if (pathname !== '/') {
-        window.location.href = `/#${id}`
+      const isHome = isUk ? pathname === '/uk' : pathname === '/'
+      if (!isHome) {
+        window.location.href = isUk ? `/uk#${id}` : `/#${id}`
         return
       }
 
@@ -143,10 +157,10 @@ export function Header() {
       <div className="relative flex h-full w-full items-stretch justify-between px-4 md:px-8">
         {/* Logo */}
         <Link
-          href="/"
+          href={homeHref}
           className="group z-10 flex h-full items-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(191,167,106,0.30)]"
           onClick={(e) => {
-            if (pathname === '/') {
+            if (pathname === homeHref) {
               e.preventDefault()
               scrollToTop()
             }
@@ -174,7 +188,7 @@ export function Header() {
             onMouseLeave={() => setIsServicesOpen(false)}
           >
             <Link
-              href="/#uslugi"
+              href={homeSectionHref}
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection('uslugi')
@@ -182,7 +196,7 @@ export function Header() {
               className="flex items-center gap-1 font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
               style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
             >
-              Usługi
+              {navServices}
               <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </Link>
 
@@ -194,7 +208,7 @@ export function Header() {
                 <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
                   <div className="col-span-2 mb-3">
                     <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
-                      SERWIS I NAPRAWA
+                      {megaMenuHeader}
                     </p>
                     <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                   </div>
@@ -204,7 +218,7 @@ export function Header() {
                       {col.items.map((item) => (
                         <Link
                           key={item.href}
-                          href={item.href}
+                          href={isUk ? `/uk${item.href}` : item.href}
                           className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                         >
                           <Image
@@ -216,7 +230,7 @@ export function Header() {
                             className="flex-shrink-0 object-contain opacity-90"
                             unoptimized
                           />
-                          {item.label}
+                          {isUk ? item.labelUk : item.label}
                         </Link>
                       ))}
                     </div>
@@ -226,11 +240,11 @@ export function Header() {
               </div>
             )}
           </div>
-          <Link href="/o-nas" className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-            O nas
+          <Link href={aboutHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+            {navAbout}
           </Link>
-          <Link href="/kontakt" className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-            Kontakt
+          <Link href={contactHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+            {navContact}
           </Link>
 
           <Link
@@ -239,12 +253,13 @@ export function Header() {
             rel="noopener noreferrer"
             className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
           >
-            Sklep
+            {navShop}
           </Link>
 
-          {/* ✅ КНОПКА ЗВОНКА — ТОЛЬКО ЗДЕСЬ ИЗМЕНЕНА */}
+          <LanguageSwitcher />
+
           <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]">
-            <span className="md:hidden">Zadzwoń teraz</span>
+            <span className="md:hidden">{navCall}</span>
             <span className="hidden md:inline">793 759 262</span>
           </CallButton>
         </nav>
@@ -279,9 +294,9 @@ export function Header() {
 
               <div className="relative z-10 flex flex-col gap-6 px-6 py-8 font-cormorant text-[20px] text-white">
                 <Link
-                  href="/"
+                  href={homeHref}
                   onClick={(e) => {
-                    if (pathname === '/') {
+                    if (pathname === homeHref) {
                       e.preventDefault()
                       scrollToTop()
                     } else {
@@ -294,19 +309,19 @@ export function Header() {
 
                 <nav className="flex flex-col gap-4">
                   <Link
-                    href="/#uslugi"
+                    href={homeSectionHref}
                     onClick={(e) => {
                       e.preventDefault()
                       scrollToSection('uslugi')
                     }}
                   >
-                    Usługi
+                    {navServices}
                   </Link>
-                  <Link href="/o-nas" onClick={() => setIsOpen(false)}>
-                    O nas
+                  <Link href={aboutHref} onClick={() => setIsOpen(false)}>
+                    {navAbout}
                   </Link>
-                  <Link href="/kontakt" onClick={() => setIsOpen(false)}>
-                    Kontakt
+                  <Link href={contactHref} onClick={() => setIsOpen(false)}>
+                    {navContact}
                   </Link>
 
                   <Link
@@ -314,8 +329,9 @@ export function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Sklep
+                    {navShop}
                   </Link>
+                  <LanguageSwitcher />
                 </nav>
 
                 <CallButton
@@ -323,7 +339,7 @@ export function Header() {
                   href="#formularz"
                   className="w-full"
                 >
-                  Wyślij zgłoszenie
+                  {navSendForm}
                 </CallButton>
               </div>
             </div>

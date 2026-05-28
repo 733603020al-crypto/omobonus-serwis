@@ -1,9 +1,30 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { services } from '@/lib/services-data'
+import { services as defaultServices } from '@/lib/services-data'
+import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
-export function Services() {
+interface ServicesT {
+  tagline: string
+  serwis_drukarek_termicznych: string
+}
+
+const PL: ServicesT = {
+  tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
+  serwis_drukarek_termicznych: 'Serwis i naprawa drukarek etykiet',
+}
+
+export function Services({
+  servicesData,
+  basePath = '/uslugi',
+  t,
+}: {
+  servicesData?: ServiceData[]
+  basePath?: string
+  t?: ServicesT
+} = {}) {
+  const services = servicesData ?? defaultServices
+  const d = t ?? PL
   return (
     <section
       id="uslugi"
@@ -29,7 +50,7 @@ export function Services() {
         <div className="mb-6 text-center hidden md:block">
 
           <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-5xl mx-auto font-semibold drop-shadow-2xl">
-            Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu
+            {d.tagline}
           </p>
         </div>
 
@@ -46,7 +67,7 @@ export function Services() {
             .map((service) => (
               <Link
                 key={service.slug}
-                href={`/uslugi/${service.slug}`}
+                href={`${basePath}/${service.slug}`}
                 className="
     group
     relative
@@ -111,7 +132,7 @@ export function Services() {
                 <div className="relative z-10 flex-1">
                   <h2 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-[#f3df9a] group-hover:[text-shadow:0_0_10px_rgba(191,167,106,0.5)] transition-all duration-300 mb-1 leading-tight">
                     {service.slug === 'serwis-drukarek-termicznych'
-                      ? 'Serwis i naprawa drukarek etykiet'
+                      ? d.serwis_drukarek_termicznych
                       : service.title}
                   </h2>
                 </div>

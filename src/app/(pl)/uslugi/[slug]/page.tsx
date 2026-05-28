@@ -8,7 +8,7 @@ import { serviceHeroLabels } from "@/lib/service-hero-labels"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import manifest from "@/config/manifest"
-import ServiceAccordion from "../service-accordion"
+import ServiceAccordion from "@/components/service-accordion"
 import GoogleReviews from "@/components/google-reviews"
 import { CallButton } from "@/components/ui/CallButton"
 import BrandTicker from "@/components/brand-ticker"
@@ -250,6 +250,11 @@ export async function generateMetadata({
 
     alternates: {
       canonical: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+      languages: {
+        'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+        'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+      },
     },
     openGraph: {
       title: seo.title,

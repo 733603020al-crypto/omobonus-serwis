@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { usePathname } from "next/navigation"
 
 type Review = {
     author_name: string
@@ -15,6 +16,8 @@ export default function GoogleReviews() {
     const [rating, setRating] = useState<number | null>(null)
     const [totalReviews, setTotalReviews] = useState<number | null>(null)
     const [loading, setLoading] = useState(true)
+    const pathname = usePathname()
+    const isUk = pathname?.startsWith('/uk') ?? false
 
     const trackRef = useRef<HTMLDivElement | null>(null)
     const offsetRef = useRef(0)
@@ -119,10 +122,10 @@ export default function GoogleReviews() {
                         >
 
                             <div className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
-                                Opinie klientów z Google
+                                {isUk ? 'Відгуки клієнтів з Google' : 'Opinie klientów z Google'}
                             </div>
                             <div className="text-[#bfa76a] underline text-xs">
-                                Zobacz wszystkie opinie w Google →
+                                {isUk ? 'Переглянути всі відгуки в Google →' : 'Zobacz wszystkie opinie w Google →'}
                             </div>
                         </a>
 
@@ -153,7 +156,7 @@ export default function GoogleReviews() {
                                     </div>
                                     {totalReviews !== null && (
                                         <div className="text-xs text-gray-600">
-                                            Na podstawie {totalReviews} opinii
+                                            {isUk ? `На основі ${totalReviews} відгуків` : `Na podstawie ${totalReviews} opinii`}
                                         </div>
                                     )}
                                 </div>

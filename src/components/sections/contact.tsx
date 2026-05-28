@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -11,17 +11,80 @@ import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { SuccessModal } from '@/components/ui/success-modal'
 
-// Schemat walidacji Zod
-const formSchema = z.object({
-  name: z.string().optional(),
-  phone: z.string().min(9, { message: 'Numer telefonu jest za krótki' }),
-  email: z.string().optional(),
-  address: z.string().optional(),
-  problemDescription: z.string().optional(),
-  agreements: z.literal(true, { message: 'Musisz zaakceptować regulamin' }),
-})
+interface ContactT {
+  formTitle: string
+  nameLabel: string
+  namePlaceholder: string
+  phoneLabel: string
+  emailLabel: string
+  addressLabel: string
+  addressPlaceholder: string
+  problemLabel: string
+  problemPlaceholder: string
+  attachLabel: string
+  attachAdd: string
+  attachHint: string
+  agreementConfirm: string
+  privacyLink: string
+  privacyHref: string
+  termsLink: string
+  termsHref: string
+  agreementEnd: string
+  submitButton: string
+  submitting: string
+  phoneError: string
+  agreementError: string
+  agreementConnector: string
+  fileTypeError: string
+  fileSizeError: (name: string, max: number) => string
+  successModal?: {
+    title: string
+    line1: string
+    line2: string
+    line3: string
+  }
+}
 
-type FormValues = z.infer<typeof formSchema>
+const PL: ContactT = {
+  formTitle: 'Formularz zgłoszeniowy',
+  nameLabel: 'Imię i nazwisko',
+  namePlaceholder: 'Jan Kowalski',
+  phoneLabel: 'Numer telefonu',
+  emailLabel: 'Adres e-mail',
+  addressLabel: 'Adres',
+  addressPlaceholder: 'ul. Przykładowa 1, 50-001 Wrocław',
+  problemLabel: 'Opis problemu (usterki)',
+  problemPlaceholder: '(np. HP M404dn – drukarka nie pobiera papieru)',
+  attachLabel: 'Załącz zdjęcia / filmy (opcjonalnie)',
+  attachAdd: 'Dodaj',
+  attachHint: 'Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz przygotować wycenę naprawy.',
+  agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
+  privacyLink: 'Polityką Prywatności',
+  privacyHref: '/polityka-prywatnosci',
+  termsLink: 'Regulaminem',
+  termsHref: '/regulamin',
+  agreementEnd: 'i akceptuję ich postanowienia.',
+  submitButton: 'Wyślij zgłoszenie',
+  submitting: 'Wysyłanie...',
+  phoneError: 'Numer telefonu jest za krótki',
+  agreementError: 'Musisz zaakceptować regulamin',
+  agreementConnector: 'oraz',
+  fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
+  fileSizeError: (name, max) => `Plik ${name} jest zbyt duży (maks. ${max} MB).`,
+}
+
+function buildFormSchema(phoneError: string, agreementError: string) {
+  return z.object({
+    name: z.string().optional(),
+    phone: z.string().min(9, { message: phoneError }),
+    email: z.string().optional(),
+    address: z.string().optional(),
+    problemDescription: z.string().optional(),
+    agreements: z.literal(true, { message: agreementError }),
+  })
+}
+
+type FormValues = z.infer<ReturnType<typeof buildFormSchema>>
 
 const defaultFormValues: Partial<FormValues> = {
   name: '',
@@ -54,7 +117,13 @@ type AttachmentPreview = {
   kind: 'image' | 'video' | 'file'
 }
 
-export function Contact() {
+export function Contact({ t }: { t?: ContactT } = {}) {
+  const d = t ?? PL
+  const formSchema = useMemo(
+    () => buildFormSchema(d.phoneError, d.agreementError),
+    [d.phoneError, d.agreementError]
+  )
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [attachments, setAttachments] = useState<AttachmentPreview[]>([])
@@ -238,7 +307,7 @@ export function Contact() {
 
           {/* Nagłówek formularza */}
           <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
-            Formularz zgłoszeniowy
+            {d.formTitle}
           </div>
 
 
@@ -255,11 +324,11 @@ export function Contact() {
               {/* Imię i nazwisko */}
               <div className="space-y-2" data-field-name="name">
                 <label className="block text-black font-bold font-sans text-base md:text-lg">
-                  Imię i nazwisko
+                  {d.nameLabel}
                 </label>
                 <input
                   {...register('name')}
-                  placeholder="Jan Kowalski"
+                  placeholder={d.namePlaceholder}
                   className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
 
                 />
@@ -271,7 +340,7 @@ export function Contact() {
               {/* Telefon */}
               <div className="space-y-2" data-field-name="phone">
                 <label className="block text-black font-bold font-sans text-base md:text-lg">
-                  Numer telefonu
+                  {d.phoneLabel}
                 </label>
                 <div>
                   <Controller
@@ -294,7 +363,7 @@ export function Contact() {
             {/* E-mail */}
             <div className="space-y-2" data-field-name="email">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
-                Adres e-mail
+                {d.emailLabel}
               </label>
               <input
                 {...register('email')}
@@ -311,11 +380,11 @@ export function Contact() {
             {/* Adres */}
             <div className="space-y-2" data-field-name="address">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
-                Adres
+                {d.addressLabel}
               </label>
               <input
                 {...register('address')}
-                placeholder="ul. Przykładowa 1, 50-001 Wrocław"
+                placeholder={d.addressPlaceholder}
                 className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
 
               />
@@ -329,12 +398,12 @@ export function Contact() {
             {/* Opis problemu */}
             <div className="space-y-2" data-field-name="problemDescription">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
-                Opis problemu (usterki)
+                {d.problemLabel}
               </label>
               <textarea
                 {...register('problemDescription')}
                 rows={4}
-                placeholder="(np. HP M404dn – drukarka nie pobiera papieru)"
+                placeholder={d.problemPlaceholder}
                 className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
 
               />
@@ -347,19 +416,18 @@ export function Contact() {
             <div className="space-y-2">
               <div className="flex items-center gap-2 flex-wrap">
                 <label className="text-black font-bold font-sans text-base md:text-lg">
-                  Załącz zdjęcia / filmy (opcjonalnie)
+                  {d.attachLabel}
                 </label>
                 <label
                   htmlFor="attachments"
                   className="inline-flex items-center gap-1 text-[#3a2e24] text-sm font-semibold cursor-pointer border border-[#3a2e24]/40 rounded-full px-3 py-1 hover:bg-[#3a2e24]/10 transition-colors"
                 >
                   <Paperclip className="w-4 h-4" />
-                  Dodaj
+                  {d.attachAdd}
                 </label>
               </div>
               <p className="text-black text-sm italic font-sans">
-                Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz
-                przygotować wycenę naprawy.
+                {d.attachHint}
               </p>
 
               <input
@@ -380,12 +448,12 @@ export function Contact() {
                     const sizeValid = file.size <= MAX_FILE_SIZE_MB * 1024 * 1024
 
                     if (!typeValid) {
-                      error = 'Możesz przesłać tylko zdjęcia lub wideo.'
+                      error = d.fileTypeError
                       return
                     }
 
                     if (!sizeValid) {
-                      error = `Plik ${file.name} jest zbyt duży (maks. ${MAX_FILE_SIZE_MB} MB).`
+                      error = d.fileSizeError(file.name, MAX_FILE_SIZE_MB)
                       return
                     }
 
@@ -474,15 +542,15 @@ export function Contact() {
                       onChange={(e) => field.onChange(e.target.checked)}
                       label={
                         <>
-                          Potwierdzam, że zapoznałem/am się z{' '}
-                          <Link href="/polityka-prywatnosci" className="underline hover:text-black/70">
-                            Polityką Prywatności
+                          {d.agreementConfirm}{' '}
+                          <Link href={d.privacyHref} className="underline hover:text-black/70">
+                            {d.privacyLink}
                           </Link>{' '}
-                          oraz{' '}
-                          <Link href="/regulamin" className="underline hover:text-black/70">
-                            Regulaminem
+                          {d.agreementConnector}{' '}
+                          <Link href={d.termsHref} className="underline hover:text-black/70">
+                            {d.termsLink}
                           </Link>{' '}
-                          i akceptuję ich postanowienia.
+                          {d.agreementEnd}
                         </>
                       }
                     />
@@ -506,7 +574,7 @@ export function Contact() {
               >
                 <span className="font-cormorant font-bold text-2xl text-black tracking-wide group-hover:text-black/80 flex items-center gap-2">
                   {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
-                  Wyślij zgłoszenie
+                  {isSubmitting ? d.submitting : d.submitButton}
                 </span>
               </button>
             </div>
@@ -516,7 +584,7 @@ export function Contact() {
       </div>
 
       {/* Success Modal */}
-      <SuccessModal isOpen={showSuccessModal} onClose={onCloseSuccessModal} />
+      <SuccessModal isOpen={showSuccessModal} onClose={onCloseSuccessModal} t={d.successModal} />
     </section >
   )
 }

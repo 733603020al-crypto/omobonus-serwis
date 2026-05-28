@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description: 'Polityka prywatności serwisu Omobonus Wrocław. Zasady przetwarzania danych osobowych, ochrona RODO.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
+    languages: {
+      'pl': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
+      'x-default': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
+    },
   },
 }
 

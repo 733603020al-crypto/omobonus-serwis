@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ ✔ Umów serwis już dziś!  ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
+    languages: {
+      'pl': 'https://serwis.omobonus.com.pl',
+      'uk': 'https://serwis.omobonus.com.pl/uk',
+      'x-default': 'https://serwis.omobonus.com.pl',
+    },
   },
   openGraph: {
     title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',

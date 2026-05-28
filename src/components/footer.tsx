@@ -3,7 +3,42 @@ import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'
 import Link from 'next/link'
 import manifest from '@/config/manifest'
 
-export function Footer() {
+interface FooterT {
+  contact: string
+  address: string
+  phone: string
+  email: string
+  workingHours: string
+  workingHoursValue: string
+  contactHours: string
+  contactHoursValue: string
+  messengers: string
+  privacyPolicy: string
+  terms: string
+  allRights: string
+  privacyHref: string
+  regulaminHref: string
+}
+
+const PL: FooterT = {
+  contact: 'Kontakt',
+  address: 'Adres',
+  phone: 'Telefon',
+  email: 'E-mail',
+  workingHours: 'Godziny pracy serwisu',
+  workingHoursValue: 'poniedziałek–piątek: 8:00–18:00',
+  contactHours: 'Kontakt z serwisem',
+  contactHoursValue: 'poniedziałek–sobota: 7:00–21:00',
+  messengers: 'Komunikatory',
+  privacyPolicy: 'Polityka Prywatności',
+  terms: 'Regulamin',
+  allRights: 'Wszelkie prawa zastrzeżone.',
+  privacyHref: '/polityka-prywatnosci',
+  regulaminHref: '/regulamin',
+}
+
+export function Footer({ t }: { t?: FooterT } = {}) {
+  const d = t ?? PL
   const currentYear = new Date().getFullYear()
 
   return (
@@ -26,7 +61,7 @@ export function Footer() {
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">
             <div className="text-2xl font-cormorant tracking-wide text-[#bfa76a] mb-4">
-              Kontakt
+              {d.contact}
             </div>
 
             <div className="space-y-3 font-inter text-sm leading-snug">
@@ -34,7 +69,7 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <MapPin className="h-4 w-4" />
-                  <span>Adres</span>
+                  <span>{d.address}</span>
                 </div>
                 <Link
                   href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wrocław/"
@@ -51,7 +86,7 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <Phone className="h-4 w-4" />
-                  <span>Telefon</span>
+                  <span>{d.phone}</span>
                 </div>
                 <a
                   href="tel:+48793759262"
@@ -65,7 +100,7 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <Mail className="h-4 w-4" />
-                  <span>E-mail</span>
+                  <span>{d.email}</span>
                 </div>
                 <Link
                   href="mailto:serwis@omobonus.com.pl"
@@ -79,10 +114,10 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a]">
                   <Clock className="h-4 w-4" />
-                  <span>Godziny pracy serwisu</span>
+                  <span>{d.workingHours}</span>
                 </div>
                 <span className="text-white">
-                  poniedziałek–piątek: 8:00–18:00
+                  {d.workingHoursValue}
                 </span>
               </div>
 
@@ -90,10 +125,10 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a]">
                   <Clock className="h-4 w-4" />
-                  <span>Kontakt z serwisem</span>
+                  <span>{d.contactHours}</span>
                 </div>
                 <span className="text-white">
-                  poniedziałek–sobota: 7:00–21:00
+                  {d.contactHoursValue}
                 </span>
               </div>
 
@@ -101,7 +136,7 @@ export function Footer() {
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
                   <FaWhatsapp className="h-4 w-4" />
-                  <span>Komunikatory</span>
+                  <span>{d.messengers}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Link
@@ -150,22 +185,22 @@ export function Footer() {
         <div className="mt-8 pt-4 border-t border-[#3a2e24]/30 text-center space-y-1 font-inter">
           <div className="text-sm text-[#b8a894]">
             <Link
-              href="/polityka-prywatnosci"
+              href={d.privacyHref}
               className="hover:text-primary transition-colors"
             >
-              Polityka Prywatności
+              {d.privacyPolicy}
             </Link>
             <span className="mx-2 opacity-40">|</span>
             <Link
-              href="/regulamin"
+              href={d.regulaminHref}
               className="hover:text-primary transition-colors"
             >
-              Regulamin
+              {d.terms}
             </Link>
           </div>
 
           <p className="text-xs text-[#bfa76a]">
-            © {currentYear} Omobonus Sp. z o.o. Wszelkie prawa zastrzeżone.
+            © {currentYear} Omobonus Sp. z o.o. {d.allRights}
           </p>
         </div>
       </div>

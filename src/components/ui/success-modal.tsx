@@ -2,14 +2,30 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+interface SuccessModalT {
+  title: string
+  line1: string
+  line2: string
+  line3: string
+}
+
+const PL: SuccessModalT = {
+  title: 'Dziękujemy za zgłoszenie!',
+  line1: 'Twoja wiadomość została pomyślnie wysłana.',
+  line2: 'Skontaktujemy się z Tobą w najbliższym czasie, aby potwierdzić szczegóły.',
+  line3: 'Prosimy o cierpliwość — Twoje zgłoszenie jest już w dobrych rękach.',
+}
+
 interface SuccessModalProps {
   isOpen: boolean
   onClose: () => void
+  t?: SuccessModalT
 }
 
 const ANIMATION_DURATION = 220
 
-export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
+export function SuccessModal({ isOpen, onClose, t }: SuccessModalProps) {
+  const d = t ?? PL
   const okButtonRef = useRef<HTMLButtonElement>(null)
   const openRafRef = useRef<number | null>(null)
   const [shouldRender, setShouldRender] = useState(isOpen)
@@ -98,16 +114,16 @@ export function SuccessModal({ isOpen, onClose }: SuccessModalProps) {
             <div className="border-b border-white/10 pb-1.5">
               <div className="py-0.5">
                 <div className="text-white text-[32px] md:text-[36px] font-cormorant font-bold leading-tight drop-shadow-[0_0_8px_rgba(0,0,0,0.45)]">
-                  Dziękujemy za zgłoszenie!
+                  {d.title}
                 </div>
               </div>
             </div>
 
             <div className="rounded-lg border border-[#bfa76a]/10 px-5 pt-4 pb-3.5 md:px-7 md:pt-6 md:pb-4 space-y-4 modal-card-inner">
               <div className="space-y-2 font-table-main text-[rgba(255,255,245,0.9)] text-[15px] md:text-[16px] leading-relaxed max-w-2xl mx-auto">
-                <p>Twoja wiadomość została pomyślnie wysłana.</p>
-                <p>Skontaktujemy się z Tobą w najbliższym czasie, aby potwierdzić szczegóły.</p>
-                <p>Prosimy o cierpliwość — Twoje zgłoszenie jest już w dobrych rękach.</p>
+                <p>{d.line1}</p>
+                <p>{d.line2}</p>
+                <p>{d.line3}</p>
               </div>
 
               <div className="pt-2 flex justify-center">

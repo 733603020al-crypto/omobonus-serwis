@@ -3,8 +3,8 @@ import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
-import './globals.css'
-import './styles/accordion.css'
+import '../globals.css'
+import '../styles/accordion.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 
 /* =========================
