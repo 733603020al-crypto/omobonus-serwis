@@ -30,7 +30,7 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "oki",            heightClass: "h-[27px] md:h-[34px]", maxWidthClass: "max-w-[117px] md:max-w-[153px]" },
   { name: "bixolon",       heightClass: "h-[34px] md:h-[45px]", maxWidthClass: "max-w-[153px] md:max-w-[198px]" },
   { name: "dymo",           heightClass: "h-[30px] md:h-[38px]", maxWidthClass: "max-w-[130px] md:max-w-[170px]" },
-  { name: "zebra",          heightClass: "h-[180px] md:h-[260px]", maxWidthClass: "max-w-[1040px] md:max-w-[1520px]" },
+  { name: "zebra",          heightClass: "h-[30px] md:h-[38px]", maxWidthClass: "max-w-[130px] md:max-w-[170px]" },
   { name: "godex",          heightClass: "h-[27px] md:h-[34px]", maxWidthClass: "max-w-[144px] md:max-w-[189px]" },
   { name: "apc", src: "/images/brands/apc.svg?v=2", heightClass: "h-[30px] md:h-[38px]", maxWidthClass: "max-w-[130px] md:max-w-[170px]" },
   // drukarki 3D
