@@ -13,6 +13,7 @@ import ServiceAccordion from '@/components/service-accordion'
 import GoogleReviews from '@/components/google-reviews'
 import { CallButton } from '@/components/ui/CallButton'
 import BrandTicker from '@/components/brand-ticker'
+import { FadeSlideText } from '@/components/ui/FadeSlideText'
 
 const headingsUk: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -433,13 +434,13 @@ export default async function UkServicePage({
                 </div>
               )}
               <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands[slug] ? ' mt-[44px]' : ''}`}>
-                <p className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+                <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                   {slug === 'drukarka-zastepcza'
                     ? 'Поломка? Без стресу – на час ремонту надаємо принтер на заміну без абонентської плати'
                     : slug === 'wynajem-drukarek'
                       ? 'Принтер із сервісом і тонером у вартості — ви дбаєте лише про папір і електроенергію.'
                       : 'Повний прайс-лист послуг, без прихованих витрат (не "ремонт від 50 зл" або "ціна до узгодження")'}
-                </p>
+                </FadeSlideText>
               </div>
             </>
           ) : null}

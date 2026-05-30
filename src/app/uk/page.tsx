@@ -10,26 +10,25 @@ import { uk } from '@/lib/i18n/uk'
 import { ContactUk } from '@/components/sections/contact-uk'
 
 export const metadata: Metadata = {
-  title: 'Сервіс і ремонт комп\'ютерів, ноутбуків і принтерів | Omobonus Вроцлав',
-  description: '✔ Професійний сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ✔ Запишіться на сервіс! ☎ 793 759 262',
+  title: "Сервіс і ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
+  description: "Професійний сервіс комп'ютерів, ноутбуків і принтерів у Вроцлаві. Діагностика за 15 хв. Повний прайс-лист на сайті.",
   alternates: {
-    canonical: 'https://serwis.omobonus.com.pl/uk',
+    canonical: "https://serwis.omobonus.com.pl/uk",
     languages: {
-      'pl': 'https://serwis.omobonus.com.pl',
-      'uk': 'https://serwis.omobonus.com.pl/uk',
-      'x-default': 'https://serwis.omobonus.com.pl',
+      pl: "https://serwis.omobonus.com.pl",
+      uk: "https://serwis.omobonus.com.pl/uk",
+      "x-default": "https://serwis.omobonus.com.pl",
     },
   },
   openGraph: {
-    title: 'Сервіс комп\'ютерів, ноутбуків і принтерів Вроцлав | Omobonus',
-    description: 'Професійний сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві. Ремонт обладнання, чесні ціни без прихованих витрат.',
-    url: 'https://serwis.omobonus.com.pl/uk',
+    title: "Сервіс комп'ютерів, ноутбуків і принтерів Вроцлав | Omobonus",
+    description: "Професійний сервіс комп'ютерів, ноутбуків і принтерів у Вроцлаві.",
+    url: "https://serwis.omobonus.com.pl/uk",
     images: [
       {
-        url: '/images/omobonus-hero.webp',
+        url: "/images/omobonus-hero.webp",
         width: 1200,
         height: 630,
-        alt: 'Omobonus - професійний сервіс комп\'ютерів і принтерів у Вроцлаві',
       },
     ],
   },

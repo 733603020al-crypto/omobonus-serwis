@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: '/images/omobonus-hero.webp',
         width: 1200,
         height: 630,
-        alt: 'Omobonus - profesjonalny serwis komputerów i drukarek we Wrocławiu',
+        alt: 'Omobonus - profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu',
       },
     ],
   },

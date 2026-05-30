@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useRef, useEffect } from 'react'
 import { CallButton } from '@/components/ui/CallButton'
 
 interface HeroT {
@@ -25,6 +26,24 @@ const PL: HeroT = {
 
 export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } = {}) {
   const d = t ?? PL
+  const taglineRef = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    const el = taglineRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.remove('fade-slide-init')
+          el.classList.add('fade-slide-animate')
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
@@ -69,7 +88,7 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
         </h1>
 
-        <p className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
+        <p ref={taglineRef} className="fade-slide-init mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
           {d.tagline}
         </p>
 

@@ -12,6 +12,7 @@ import ServiceAccordion from "@/components/service-accordion"
 import GoogleReviews from "@/components/google-reviews"
 import { CallButton } from "@/components/ui/CallButton"
 import BrandTicker from "@/components/brand-ticker"
+import { FadeSlideText } from "@/components/ui/FadeSlideText"
 
 const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -488,14 +489,13 @@ export default async function ServicePage({
               )}
               {/* INFO container */}
               <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands[slug] ? ' mt-[44px]' : ''}`}>
-                <p className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-
+                <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                   {slug === 'drukarka-zastepcza'
                     ? 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych'
                     : slug === 'wynajem-drukarek'
                       ? 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.'
                       : 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")'}
-                </p>
+                </FadeSlideText>
               </div>
             </>
           ) : null}
