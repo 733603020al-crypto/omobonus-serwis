@@ -4,14 +4,14 @@
 
 | № | Название кнопки | Текущий URL | Содержит "serwis"? | Рекомендация | Статус |
 |---|----------------|-------------|-------------------|--------------|--------|
-| 1 | Serwis Laptopów | `/uslugi/serwis-laptopow` | ✅ Да | ✅ OK | ✅ **OK** |
-| 2 | Serwis Komputerów Stacjonarnych | `/uslugi/serwis-komputerow-stacjonarnych` | ✅ Да | ✅ OK | ✅ **OK** |
+| 1 | Serwis laptopów | `/uslugi/serwis-laptopow` | ✅ Да | ✅ OK | ✅ **OK** |
+| 2 | Serwis komputerów stacjonarnych | `/uslugi/serwis-komputerow-stacjonarnych` | ✅ Да | ✅ OK | ✅ **OK** |
 | 3 | Outsourcing IT | `/uslugi/outsourcing-it` | ❌ Нет | ⚠️ Не требует "serwis" (это не сервис устройства) | ✅ **OK** |
-| 4 | Serwis Drukarek Laserowych i MFU | `/uslugi/serwis-drukarek-laserowych` | ✅ Да | ✅ OK | ✅ **OK** |
-| 5 | Serwis Drukarek Atramentowych | `/uslugi/serwis-drukarek-atramentowych` | ✅ Да | ✅ OK | ✅ **OK** |
+| 4 | Serwis drukarek laserowych i MFU | `/uslugi/serwis-drukarek-laserowych` | ✅ Да | ✅ OK | ✅ **OK** |
+| 5 | Serwis drukarek atramentowych | `/uslugi/serwis-drukarek-atramentowych` | ✅ Да | ✅ OK | ✅ **OK** |
 | 6 | Serwis Drukarek Termiczno-etykietowych | `/uslugi/serwis-drukarek-termicznych` | ✅ Да | ✅ OK | ✅ **OK** |
-| 7 | Serwis Drukarek Igłowych | `/uslugi/serwis-drukarek-iglowych` | ✅ Да | ✅ OK | ✅ **OK** |
-| 8 | Serwis Ploterów | `/uslugi/serwis-ploterow` | ✅ Да | ✅ OK | ✅ **OK** |
+| 7 | Serwis drukarek igłowych | `/uslugi/serwis-drukarek-iglowych` | ✅ Да | ✅ OK | ✅ **OK** |
+| 8 | Serwis ploterów | `/uslugi/serwis-ploterow` | ✅ Да | ✅ OK | ✅ **OK** |
 | 9 | Serwis Niszczarek | `/uslugi/serwis-niszczarek` | ✅ Да | ✅ OK | ✅ **OK** |
 | 10 | Wynajem (Dzierżawa) Drukarek | `/uslugi/wynajem-drukarek` | ❌ Нет | ⚠️ Не требует "serwis" (это аренда, не сервис) | ✅ **OK** |
 | 11 | Drukarka Zastępcza | `/uslugi/drukarka-zastepcza` | ❌ Нет | ⚠️ Не требует "serwis" (это услуга, не сервис устройства) | ✅ **OK** |

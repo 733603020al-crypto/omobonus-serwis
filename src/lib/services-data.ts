@@ -3495,7 +3495,7 @@ const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
 export const services: ServiceData[] = [
   {
     slug: 'serwis-laptopow',
-    title: 'Serwis i Naprawa Laptopów',
+    title: 'Serwis i naprawa laptopów',
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie „naprawa od 50 zł” lub „cena do uzgodnienia")',
     icon: manifest['01_serwis_laptopow'],
     description: 'Kompleksowa naprawa i konserwacja laptopów wszystkich marek.',
@@ -3519,7 +3519,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'naprawa-drukarek',
-    title: 'Naprawa Drukarek i Kserokopiarek',
+    title: 'Naprawa drukarek i kserokopiarek',
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
@@ -3527,7 +3527,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-laserowych',
-    title: 'Serwis Drukarek Laserowych i Kserokopiarek',
+    title: 'Serwis drukarek laserowych i kserokopiarek',
     subtitle: 'Profesjonalna naprawa drukarek laserowych i urządzeń wielofunkcyjnych',
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Profesjonalna naprawa i serwis drukarek laserowych.',
@@ -3569,7 +3569,7 @@ export const services: ServiceData[] = [
 
   {
     slug: 'serwis-plotterow',
-    title: 'Serwis i Naprawa Ploterów',
+    title: 'Serwis i naprawa ploterów',
     subtitle: 'Serwis ploterów wielkoformatowych HP, Epson i Canon',
     icon: manifest['08_serwis_ploterow'],
     description: 'Serwis i naprawa ploterów wielkoformatowych.',
@@ -3595,7 +3595,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-3d',
-    title: 'Serwis i Naprawa Drukarek 3D',
+    title: 'Serwis i naprawa drukarek 3D',
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
@@ -3603,7 +3603,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'wynajem-drukarek',
-    title: 'Wynajem (Dzierżawa) Drukarek',
+    title: 'Wynajem (dzierżawa) drukarek',
     subtitle: 'Dzierżawa urządzeń drukujących dla biur',
     icon: manifest['10_wynajem_drukarek'],
     description: 'Dzierżawa urządzeń drukujących dla biur i firm.',
@@ -3611,7 +3611,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'drukarka-zastepcza',
-    title: 'Drukarka Zastępcza',
+    title: 'Drukarka zastępcza',
     subtitle: 'Urządzenie zastępcze na czas naprawy',
     icon: manifest['11_drukarka_zastepcza'],
     description: 'Oferujemy urządzenie zastępcze na czas naprawy.',

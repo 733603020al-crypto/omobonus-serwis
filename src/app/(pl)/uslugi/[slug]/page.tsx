@@ -21,17 +21,17 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-laptopow': {
-    h1: 'Serwis i Naprawa Laptopów we Wrocławiu',
+    h1: 'Serwis i naprawa laptopów we Wrocławiu',
     h2: '', // '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
   },
 
   'naprawa-drukarek': {
-    h1: 'Serwis Drukarek i Urządzeń Wielofunkcyjnych we Wrocławiu',
+    h1: 'Serwis drukarek i urządzeń wielofunkcyjnych we Wrocławiu',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
 
   'serwis-komputerow-stacjonarnych': {
-    h1: 'Serwis i Naprawa Komputerów Stacjonarnych',
+    h1: 'Serwis i naprawa komputerów stacjonarnych',
   },
 
   'outsourcing-it': {
@@ -39,7 +39,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-drukarek-laserowych': {
-    h1: 'Serwis i Naprawa Drukarek Laserowych',
+    h1: 'Serwis i naprawa drukarek laserowych',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
   },
 
@@ -49,22 +49,22 @@ const headings: Record<string, { h1: string; h2?: string }> = {
   },
 
   'serwis-drukarek-3d': {
-    h1: 'Serwis i Naprawa Drukarek 3D we Wrocławiu',
+    h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
     h2: '(Bambulab, Creality, Anycubic, Flashforge, Prusa, Formlabs, ...)',
   },
 
   'serwis-plotterow': {
-    h1: 'Serwis i Naprawa Ploterów Drukujących we Wrocławiu',
+    h1: 'Serwis i naprawa ploterów drukujących we Wrocławiu',
     h2: '(plotery HP, Canon, Epson i inne)',
   },
 
   'serwis-drukarek-iglowych': {
-    h1: 'Serwis Drukarek Igłowych (Matrycowych)',
+    h1: 'Serwis drukarek igłowych (Matrycowych)',
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
   },
 
   'wynajem-drukarek': {
-    h1: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
+    h1: 'Wynajem (dzierżawa) drukarek i kserokopiarek',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
 
@@ -164,12 +164,12 @@ const slugBrands: Record<string, string[]> = {
 
 const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
-    title: 'Serwis i Naprawa Laptopów',
+    title: 'Serwis i naprawa laptopów',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'serwis-komputerow-stacjonarnych': {
-    title: 'Serwis i Naprawa Komputerów Stacjonarnych',
+    title: 'Serwis i naprawa komputerów stacjonarnych',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
@@ -179,16 +179,16 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'serwis-drukarek-laserowych': {
-    title: 'Naprawa Drukarek Laserowych',
+    title: 'Naprawa drukarek laserowych',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'serwis-drukarek-atramentowych': {
-    title: 'Naprawa Drukarek Atramentowych',
+    title: 'Naprawa drukarek atramentowych',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
-    title: 'Serwis i Naprawa Drukarek 3D',
+    title: 'Serwis i naprawa drukarek 3D',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
@@ -197,17 +197,17 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'serwis-drukarek-iglowych': {
-    title: 'Naprawa Drukarek Igłowych',
+    title: 'Naprawa drukarek igłowych',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'naprawa-drukarek': {
-    title: 'Naprawa Drukarek i Kserokopiarek',
+    title: 'Naprawa drukarek i kserokopiarek',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
   'wynajem-drukarek': {
-    title: 'Wynajem (Dzierżawa) Drukarek i Kserokopiarek',
+    title: 'Wynajem (dzierżawa) drukarek i kerokopiarek',
     description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ dostępność od ręki! ✔ Zadzwoń i zamów! ☎ 793 759 262',
 
   },
@@ -217,7 +217,7 @@ const seoMetadata: Record<string, { title: string; description: string }> = {
 
   },
   'serwis-plotterow': {
-    title: 'Serwis i Naprawa Ploterów',
+    title: 'Serwis i naprawa ploterów',
     description: '✔ Kompleksowa obsługa ploterów ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
 
   },
@@ -431,14 +431,14 @@ export default async function ServicePage({
                                       : slug === 'serwis-drukarek-3d'
                                         ? "Serwis i naprawa drukarek 3D"
                                         : slug === 'serwis-plotterow'
-                                          ? "Serwis i Naprawa Ploterów"
+                                          ? "Serwis i naprawa ploterów"
                                           : slug === 'serwis-drukarek-iglowych'
-                                            ? "Serwis Drukarek Igłowych"
+                                            ? "Serwis drukarek igłowych"
                                             : slug === 'naprawa-drukarek'
-                                              ? "Serwis Drukarek i Urządzeń Wielofunkcyjnych"
+                                              ? "Serwis drukarek i urządzeń wielofunkcyjnych"
                                               : slug === 'wynajem-drukarek'
-                                                ? "Wynajem Drukarek"
-                                                : "Drukarka Zastępcza"
+                                                ? "Wynajem drukarek"
+                                                : "Drukarka zastępcza"
                         }
                         width={420}
                         height={420}
