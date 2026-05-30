@@ -1382,7 +1382,7 @@ const zastepczaAkordeon2: PricingSection = {
 export const servicesUk: ServiceData[] = [
   {
     slug: 'serwis-laptopow',
-    title: 'Сервіс і Ремонт Ноутбуків',
+    title: 'Сервіс і ремонт ноутбуків',
     subtitle: 'Повний перелік послуг і цін, без прихованих витрат (не «ремонт від 50 злотих» або «ціна за домовленістю»)',
     icon: manifest['01_serwis_laptopow'],
     description: 'Комплексний ремонт та обслуговування ноутбуків усіх марок.',
@@ -1396,7 +1396,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-komputerow-stacjonarnych',
-    title: 'Сервіс Стаціонарних Комп\'ютерів',
+    title: 'Сервіс стаціонарних комп\'ютерів',
     subtitle: 'Повний перелік послуг і цін, без прихованих витрат',
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Діагностика, ремонт та модернізація системних блоків.',
@@ -1424,7 +1424,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'naprawa-drukarek',
-    title: 'Ремонт Принтерів і Копіювальних Апаратів',
+    title: 'Ремонт принтерів і копіювальних Апаратів',
     subtitle: 'Ремонт спеціалізованих матричних принтерів',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
@@ -1438,7 +1438,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-laserowych',
-    title: 'Сервіс Лазерних Принтерів і Копіювальних Апаратів',
+    title: 'Сервіс лазерних принтерів і копіювальних апаратів',
     subtitle: 'Професійний ремонт лазерних принтерів та багатофункціональних пристроїв',
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Професійний ремонт та обслуговування лазерних принтерів.',
@@ -1491,7 +1491,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-plotterow',
-    title: 'Сервіс і Ремонт Плотерів',
+    title: 'Сервіс і ремонт плотерів',
     subtitle: 'Сервіс широкоформатних плотерів HP, Epson та Canon',
     icon: manifest['08_serwis_ploterow'],
     description: 'Сервіс та ремонт широкоформатних плотерів.',
@@ -1505,7 +1505,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-termicznych',
-    title: 'Сервіс Термотрансферних Принтерів Етикеток',
+    title: 'Сервіс термотрансферних принтерів єтикеток',
     subtitle: 'Ремонт принтерів етикеток і штрих-кодів',
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервіс принтерів етикеток і штрих-кодів.',
@@ -1520,7 +1520,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-iglowych',
-    title: 'Сервіс Матричних Принтерів',
+    title: 'Сервіс матричних принтерів',
     subtitle: 'Ремонт спеціалізованих матричних принтерів',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
@@ -1534,7 +1534,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-3d',
-    title: 'Сервіс і Ремонт Принтерів 3D',
+    title: 'Сервіс і ремонт принтерів 3D',
     subtitle: 'Повний перелік послуг і цін, без прихованих витрат',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Сервіс 3D-принтерів у Вроцлаві – ремонт 3D-принтера, калібрування столу, регулювання осей та покращення якості друку. Ремонт 3D-принтерів FDM та SLA, чищення екструдера та хотенду, заміна деталей та налаштування параметрів друку. Сервіс 3D-принтерів для компаній та майстерень, налаштування прошивки та підготовка до матеріалів ABS, PETG та nylon.',
@@ -1548,7 +1548,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'wynajem-drukarek',
-    title: 'Оренда (Лізинг) Принтерів',
+    title: 'Оренда (лізинг) принтерів',
     subtitle: 'Лізинг друкувальних пристроїв для офісів',
     icon: manifest['10_wynajem_drukarek'],
     description: 'Лізинг друкувальних пристроїв для офісів і компаній.',
@@ -1560,7 +1560,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'drukarka-zastepcza',
-    title: 'Принтер на Заміну',
+    title: 'Принтер на заміну',
     subtitle: 'Замінний пристрій на час ремонту',
     icon: manifest['11_drukarka_zastepcza'],
     description: 'Пропонуємо замінний пристрій на час ремонту.',
