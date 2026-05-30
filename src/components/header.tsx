@@ -169,7 +169,7 @@ export function Header() {
           <div className="relative flex h-full w-[40px] items-center md:w-[48px]">
             <Image
               src="/images/Logo_Omobonus.webp"
-              alt="Omobonus Serwis – serwis komputerów i drukarek Wrocław"
+              alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
               fill
               priority
               unoptimized
@@ -212,30 +212,30 @@ export function Header() {
                     </p>
                     <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                   </div>
-                {MEGA_MENU.map((col, i) => (
-                  <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
-                    <div className="flex flex-col divide-y divide-[#bfa76a]/25">
-                      {col.items.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={isUk ? `/uk${item.href}` : item.href}
-                          className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
-                        >
-                          <Image
-                            src={item.icon}
-                            alt=""
-                            width={22}
-                            height={22}
-                            sizes="22px"
-                            className="flex-shrink-0 object-contain opacity-90"
-                            unoptimized
-                          />
-                          {isUk ? item.labelUk : item.label}
-                        </Link>
-                      ))}
+                  {MEGA_MENU.map((col, i) => (
+                    <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
+                      <div className="flex flex-col divide-y divide-[#bfa76a]/25">
+                        {col.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={isUk ? `/uk${item.href}` : item.href}
+                            className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                          >
+                            <Image
+                              src={item.icon}
+                              alt=""
+                              width={22}
+                              height={22}
+                              sizes="22px"
+                              className="flex-shrink-0 object-contain opacity-90"
+                              unoptimized
+                            />
+                            {isUk ? item.labelUk : item.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 </div>
               </div>
             )}

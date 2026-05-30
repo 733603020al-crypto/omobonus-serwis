@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Regulamin | Omobonus Serwis',
-  description: 'Regulamin serwisu Omobonus Wrocław. Zasady naprawy komputerów i drukarek, gwarancja, reklamacje.',
+  description: 'Regulamin serwisu Omobonus Wrocław. Zasady naprawy komputerów, laptopów i drukarek, gwarancja, reklamacje.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/regulamin',
     languages: {
