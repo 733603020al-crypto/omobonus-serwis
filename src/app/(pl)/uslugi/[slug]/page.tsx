@@ -50,7 +50,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-3d': {
     h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
-    h2: '(Bambulab, Creality, Anycubic, Flashforge, Prusa, Formlabs, ...)',
+    h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
   },
 
   'serwis-plotterow': {

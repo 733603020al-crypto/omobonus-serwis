@@ -18,12 +18,12 @@
 | 4 | **Serwis Laptopów** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Instalacja i konfiguracja oprogramowania (pakietów biurowych/multimedialnych) / sterowników | 120\n/ godzinę | W biurze/zdalnie | 634 |
 | 5 | **Serwis Laptopów** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Indywidualna konfiguracja/naprawa systemu Windows | 120\n/ godzinę | W biurze/zdalnie | 703 |
 | 6 | **Serwis Laptopów** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Zdalna pomoc informatyka | 120\n/ godzinę | **ZDALNIE** | 708 |
-| 7 | **Serwis Komputerów Stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Instalacja i konfiguracja oprogramowania (pakietów biurowych/multimedialnych) / sterowników | 120\n/ godzinę | W biurze/zdalnie | 997 |
-| 8 | **Serwis Komputerów Stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Indywidualna konfiguracja/naprawa systemu Windows | 120\n/ godzinę | W biurze/zdalnie | 1072 |
-| 9 | **Serwis Komputerów Stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Zdalna pomoc informatyka | 120\n/ godzinę | **ZDALNIE** | 1077 |
-| 10 | **Serwis Komputerów Stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Naprawy sprzętu | Montaż komputera stacjonarnego | 120\n/ godzinę | W biurze | 1168 |
-| 11 | **Serwis Drukarek Laserowych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Wsparcie zdalne - konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta) | 120\n/ godzinę | **ZDALNIE** | 1651 |
-| 12 | **Serwis Drukarek Atramentowych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Wsparcie zdalne – konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta) | 120\n/ godzinę | **ZDALNIE** | 2049 |
+| 7 | **Serwis komputerów stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Instalacja i konfiguracja oprogramowania (pakietów biurowych/multimedialnych) / sterowników | 120\n/ godzinę | W biurze/zdalnie | 997 |
+| 8 | **Serwis komputerów stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Indywidualna konfiguracja/naprawa systemu Windows | 120\n/ godzinę | W biurze/zdalnie | 1072 |
+| 9 | **Serwis komputerów stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Zdalna pomoc informatyka | 120\n/ godzinę | **ZDALNIE** | 1077 |
+| 10 | **Serwis komputerów stacjonarnych** | Naprawy i usługi serwisowe (opcjonalne) | Naprawy sprzętu | Montaż komputera stacjonarnego | 120\n/ godzinę | W biurze | 1168 |
+| 11 | **Serwis drukarek laserowych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Wsparcie zdalne - konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta) | 120\n/ godzinę | **ZDALNIE** | 1651 |
+| 12 | **Serwis drukarek atramentowych** | Naprawy i usługi serwisowe (opcjonalne) | Oprogramowanie i konfiguracja | Wsparcie zdalne – konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta) | 120\n/ godzinę | **ZDALNIE** | 2049 |
 
 ---
 

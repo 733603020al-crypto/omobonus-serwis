@@ -6619,7 +6619,7 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-primary flex-shrink-0" />
                 <span className="text-white">
-                  Godziny otwarcia: ponâ€“pt â€” 9:00â€“17:00
+                  Godziny otwarcia: ponâ€“pt â€” 7:00â€“17:00
                 </span>
               </div>
 

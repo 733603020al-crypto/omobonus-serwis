@@ -1486,7 +1486,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
-  // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
+  // Для страницы "serwis drukarek atramentowych" используем специальные изображения
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
     switch (categoryTitle) {
       case 'Drukarka domowa':
