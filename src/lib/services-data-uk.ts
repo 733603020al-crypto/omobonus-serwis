@@ -298,7 +298,7 @@ const laptopNaprawy: PricingSection = {
 }
 
 // -------------------------------------------------------
-// Сервіс стаціонарних комп'ютерів
+// Сервіс стаціонарних комп\'ютерів
 // -------------------------------------------------------
 const desktopKonserwacja: PricingSection = {
   id: 'konserwacja',
@@ -1424,7 +1424,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'naprawa-drukarek',
-    title: 'Ремонт принтерів і копіювальних Апаратів',
+    title: 'Ремонт принтерів і копіювальних апаратів',
     subtitle: 'Ремонт спеціалізованих матричних принтерів',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
