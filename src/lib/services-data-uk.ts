@@ -1477,7 +1477,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-atramentowych',
-    title: 'Сервіс Струменевих Принтерів',
+    title: 'Сервіс струменевих принтерів',
     subtitle: 'Спеціалізований ремонт струменевих принтерів',
     icon: manifest['05_serwis_drukarek_atramentowych'],
     description: 'Ремонт, прочищення головок та обслуговування струменевих принтерів.',
