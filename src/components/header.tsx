@@ -36,7 +36,7 @@ const MEGA_MENU = [
   {
     items: [
       { label: 'Laptopów', labelUk: 'Ноутбуків', href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: 'Komputerów Stacjonarnych', labelUk: 'Стаціонарних Комп\'ютерів', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: 'Komputerów stacjonarnych', labelUk: 'Стаціонарних комп\'ютерів', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
       { label: 'Outsourcing IT', labelUk: 'Аутсорсинг IT', href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
     ],
   },
@@ -48,8 +48,8 @@ const MEGA_MENU = [
       { label: 'Drukarek etykiet termicznych', labelUk: 'Термотрансферних принтерів', href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
       { label: 'Drukarek 3D', labelUk: 'Принтерів 3D', href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: 'Ploterów', labelUk: 'Плотерів', href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
-      { label: 'Wynajem (Dzierżawa) Drukarek', labelUk: 'Оренда Принтерів', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: 'Drukarka Zastępcza', labelUk: 'Принтер на заміну', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+      { label: 'Wynajem (dzierżawa) drukarek', labelUk: 'Оренда принтерів', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: 'Drukarka zastępcza', labelUk: 'Принтер на заміну', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
 ]
