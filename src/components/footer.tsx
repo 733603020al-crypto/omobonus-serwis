@@ -37,7 +37,7 @@ const PL: FooterT = {
   regulaminHref: '/regulamin',
 }
 
-export function Footer({ t }: { t?: FooterT } = {}) {
+export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
 
@@ -47,13 +47,15 @@ export function Footer({ t }: { t?: FooterT } = {}) {
       className="relative w-full pt-[88px] pb-[64px] px-6 border-t border-[#3a2e24] text-white"
 
     >
-      {/* Tło */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
+      {/* Tło — pomijane, gdy stroną zarządza wspólne tło (prop `bare`) */}
+      {!bare && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+      )}
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto">
