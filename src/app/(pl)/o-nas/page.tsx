@@ -25,19 +25,23 @@ export default function ONasPage() {
   return (
     <>
       <Header />
-      <div className="relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-        >
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+      <ONasHero />
+      <div
+        className="relative isolate overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="relative z-10">
-          <ONasHero />
           <Advantages />
-          <About bare showReviews={false} />
+          <About bare compact showReviews={false} />
           <Team />
-          <GoogleReviews />
+          <div className="pt-10 md:pt-16 pb-10 md:pb-16">
+            <GoogleReviews />
+          </div>
           <Footer bare />
         </div>
       </div>

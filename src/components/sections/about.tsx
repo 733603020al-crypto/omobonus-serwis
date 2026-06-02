@@ -32,16 +32,18 @@ export function About({
   t,
   bare = false,
   showReviews = true,
+  compact = false,
 }: {
   t?: AboutT
   bare?: boolean
   showReviews?: boolean
+  compact?: boolean
 } = {}) {
   const d = t ?? PL
   return (
     <section
       id="o-nas"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className={`relative ${bare ? 'pt-10 md:pt-16' : 'py-16 md:py-24'}`}
     >
       {!bare && (
         <div
@@ -100,12 +102,13 @@ export function About({
           </div>
         </div>
 
-        {showReviews && (
-          <div className="mt-12">
-            <GoogleReviews />
-          </div>
-        )}
       </div>
+
+      {showReviews && (
+        <div className="mt-12">
+          <GoogleReviews />
+        </div>
+      )}
     </section>
   )
 }

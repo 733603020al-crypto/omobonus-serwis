@@ -1,159 +1,187 @@
-# ПАКЕТ ПЕРЕДАЧИ → Claude (Antigravity)
-## Задача: страница "O nas" — единый сквозной фон
+# ПАКЕТ ПЕРЕДАЧИ v2 → Claude (Antigravity)
+## Задача: пересобрать страницу "O nas" (PL + UK) по дизайну
 
 ---
 
-## 1. Цель изменения
-Страница "O nas" (PL + UK) должна использовать **одно общее сквозное фоновое изображение** под всем контентом (About + Footer), а не отдельный фон у каждой секции. Сейчас `About` и `Footer` рисуют фон каждый сам по себе → на стыке виден "шов". Нужно: один фон-обёртка, секции прозрачные. Header не трогать (у него свой фон — так и оставить).
+## 1. Цель
+Привести живые страницы `/o-nas` (PL) и `/uk/o-nas` (UK) к виду дизайна-эталона **`O nas v2.html`** (лежит в Designer-проекте).
+Страница = **5 контентных секций + существующий футер**. Данные — только реальные из проекта, ничего не выдумывать.
 
-Визуальный референс: режим "PO ZMIANIE" в `podglad-o-nas.html` (только как картинка-эталон, НЕ вставлять).
+**Визуальный референс (не для вставки, только как образец вида/стилей):**
+- `O nas v2.html` — разметка и порядок секций;
+- `assets/omobonus.css` — классы и стили карточек/типографики (`.hero`, `.stat`, `.adv-grid`, `.h-section`, `.eyebrow`, `.lead-italic`, `.team-grid`, `.member`, `.avatar`, `.quote-block`).
+Реализовать средствами проекта (React + Tailwind + токены проекта), НЕ копировать HTML напрямую.
 
-## 2. Секции страницы "O nas" (порядок сохранить)
-1. `<Header />` — без изменений.
-2. `<About />` — Święty Omobonus, "O nas:", цитата, чеклист, KDR, Google-отзывы.
-3. `<Footer />` — Kontakt: адрес, телефon, e-mail, godziny, komunikatory, mapa.
+## 2. Секции страницы (порядок строго такой)
+| # | Секция | Источник реализации |
+|---|--------|---------------------|
+| 1 | **Hero** + 4 плитки-статистики | НОВЫЙ компонент |
+| 2 | **Dlaczego my** — 6 карточек-преимуществ | НОВЫЙ компонент |
+| 3 | **Historia nazwy** — Святой + «O nas:» + цитата | адаптировать существующий `About` ИЛИ новый компонент |
+| 4 | **Zespół** — 3 человека | НОВЫЙ компонент |
+| 5 | **Opinie Google** — отзывы | ПЕРЕИСПОЛЬЗОВАТЬ существующий `<GoogleReviews/>` |
+| — | **Stopka** | ПЕРЕИСПОЛЬЗОВАТЬ существующий `<Footer/>` |
+| — | **Header** | ПЕРЕИСПОЛЬЗОВАТЬ существующий `<Header/>` (не менять) |
 
-## 3. Данные — только из проекта (НЕ выдумывать, НЕ менять смысл)
-- Тексты PL: дефолты в `src/components/sections/about.tsx` (объект `PL`) и `src/components/footer.tsx` (объект `PL`).
-- Тексты UK: `src/lib/i18n/uk.ts` (`uk.about`, `uk.footer`).
-- Телефон/адрес/e-mail/godziny/mapa: уже зашиты в `src/components/footer.tsx`.
-- Отзывы: `src/components/google-reviews.tsx`.
-- Фон/портрет: `src/config/manifest.ts` → `Background_1`, `omobonus_hero`.
-- SEO/meta: `export const metadata` в обоих `page.tsx` — оставить как есть.
-- Шрифты/цвета/типографика: Tailwind + `src/app/globals.css` — не менять.
+Удалено по решению владельца: секция «Zniżka −10%» и «Formularz zgłoszeniowy» — НЕ добавлять.
 
-## 4. Файлы к изменению (4 шт.)
-1. `src/app/(pl)/o-nas/page.tsx`
-2. `src/app/uk/o-nas/page.tsx`
-3. `src/components/sections/about.tsx`
-4. `src/components/footer.tsx`
+## 3. Подтверждённые данные (владелец подтвердил — реальные)
+- Плитки Hero: **10+ lat doświadczenia**, **do 2h przyjazd we Wrocławiu**, **15 min wstępna diagnoza**, **do 48h większość napraw**.
+- Команда (реальные люди): **Maksym** — Diagnostyka i naprawa sprzętu; **Paweł** — Serwis drukarek i ploterów; **Andrzej** — Kontakt z klientem i wyceny.
+- Отзывы: НЕ хардкодить — выводить существующим компонентом `<GoogleReviews/>` (тянет реальные Google-отзывы, уже используется на других страницах).
 
-## 5. Что сделать
-Добавить в `About` и `Footer` необязательный проп `bare?: boolean` (default `false`), который **отключает их собственный фон**. По умолчанию поведение не меняется → другие страницы (главная, и т.д.) остаются идентичны. На страницах "O nas" обернуть `<About bare/>` + `<Footer bare/>` в один общий фон-контейнер.
+---
 
-## 6. Ограничения
+## 4. КОНТЕНТ — POLSKI (точные тексты из дизайна)
+
+### Секция 1 — Hero
+- H1: `Nie bogacimy się na Twoim problemie`
+- Подзаголовок: `Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu`
+- Плитки (число + подпись):
+  - `10+` / `lat doświadczenia`
+  - `do 2h` / `przyjazd we Wrocławiu`
+  - `15 min` / `wstępna diagnoza`
+  - `do 48h` / `większość napraw`
+
+### Секция 2 — Dlaczego my
+- Eyebrow: `Dlaczego Omobonus`
+- H2: `Uczciwość i szacunek do klienta`
+- Lead: `To nie hasło reklamowe, tylko sposób, w jaki naprawdę pracujemy każdego dnia.`
+- 6 карточек (заголовок / текст):
+  1. `Uczciwe ceny` / `Podajemy prawdziwe ceny — nie „naprawa od 50 zł" ani „cena do uzgodnienia". Pełny koszt usługi znasz od razu.`
+  2. `Zdjęcia uszkodzeń` / `Podczas diagnozy otrzymujesz nie suchą tabelkę z wyceną, ale też zdjęcia rzeczywistych uszkodzeń sprzętu.`
+  3. `Uczciwa ocena` / `Jeśli naprawa się nie opłaca — powiemy to otwarcie. Nie wymieniamy części bez potrzeby, a wymienione zawsze oddajemy.`
+  4. `Drukarka zastępcza` / `Na czas naprawy zapewniamy usługę „Drukarka zastępcza" — Twoja praca w domu i biurze nie staje w miejscu.`
+  5. `Diagnoza w 15 minut` / `Wstępną diagnozę usterki wykonujemy zwykle w kwadrans. Szybko wiesz, co się dzieje i ile to potrwa.`
+  6. `−10% zniżka` / `Honorujemy Kartę Dużej Rodziny i Kartę Seniora, oferując 10% zniżki na naprawę.` (иконки: `kdr.jpg` + `senior.png`)
+
+### Секция 3 — Historia nazwy
+- Eyebrow: `Skąd nazwa`
+- H2 (золотой, курсив): `Święty Omobonus XII wieku`
+- Lead: `(łac. „Homobonus" — Dobry człowiek). Patron biznesmenów i przemysłowców. Był uczciwym rzemieślnikiem, który część swoich dochodów przekazywał potrzebującym.`
+- H2: `O nas:`
+- Текст: `Jesteśmy zespołem, który wierzy, że praca może być również pomocą i służbą innym ludziom. Zysk jest potrzebny, ale nie jest naszym idolem ani bożkiem. Nie chcemy się bogacić za wszelką cenę.`
+- Цитата: `„Brak oszustwa i szacunek do klienta"` / `to nasze podstawowe zasady pracy.`
+- Картинка: портрет Святого = `manifest.omobonus_hero` (или `/images/omobonus-hero.webp`).
+
+### Секция 4 — Zespół
+- Eyebrow: `Zespół`
+- H2: `Poznaj ludzi, nie infolinię`
+- 3 карточки (инициал-аватар / имя / роль):
+  - `M` / `Maksym` / `Diagnostyka i naprawa sprzętu`
+  - `P` / `Paweł` / `Serwis drukarek i ploterów`
+  - `A` / `Andrzej` / `Kontakt z klientem i wyceny`
+- Подпись: `„Nas jest trzech. Znasz nas z imienia. Odbieramy telefon osobiście."`
+
+---
+
+## 5. КОНТЕНТ — УКРАЇНСЬКА (перевод, добавить в `src/lib/i18n/uk.ts`)
+> Перевод живой, не машинный. Имена команды в UK — на украинский лад (решение владельца): **Максим, Павло, Андрій**.
+
+### Hero (UK)
+- H1: `Ми не наживаємось на вашій проблемі`
+- Підзаголовок: `Понад 10 років ремонтуємо комп'ютери, ноутбуки та принтери у Вроцлаві`
+- Плитки: `10+` / `років досвіду` · `до 2 год` / `приїзд у Вроцлаві` · `15 хв` / `попередня діагностика` · `до 48 год` / `більшість ремонтів`
+
+### Dlaczego my (UK) → "Чому ми"
+- Eyebrow: `Чому Omobonus`
+- H2: `Чесність і повага до клієнта`
+- Lead: `Це не рекламне гасло, а спосіб, у який ми справді працюємо щодня.`
+- Картки:
+  1. `Чесні ціни` / `Ми вказуємо реальні ціни — без «ремонт від 50 zł» чи «ціна за домовленістю». Повну вартість послуги ви знаєте одразу.`
+  2. `Фото пошкоджень` / `Під час діагностики ви отримуєте не лише кошторис, а й фотографії реальних пошкоджень техніки.`
+  3. `Чесна оцінка` / `Якщо ремонт невигідний — скажемо про це відверто. Не замінюємо деталі без потреби, а замінені завжди повертаємо.`
+  4. `Принтер на заміну` / `На час ремонту надаємо послугу «Принтер на заміну» — ваша робота вдома й в офісі не зупиняється.`
+  5. `Діагностика за 15 хвилин` / `Попередню діагностику несправності зазвичай робимо за чверть години. Ви швидко дізнаєтесь, що сталося і скільки це триватиме.`
+  6. `−10% знижка` / `Приймаємо Карту великої родини та Карту сеньйора, надаючи 10% знижки на ремонт.`
+
+### Historia nazwy (UK) → "Звідки назва"
+- Eyebrow: `Звідки назва`
+- H2: `Святий Омобонус XII століття`
+- Lead: `(лат. «Homobonus» — Добра людина). Покровитель підприємців і промисловців. Був чесним ремісником, який частину своїх доходів віддавав нужденним.`
+- H2: `Про нас:`
+- Текст: `Ми — команда, яка вірить, що праця може бути також допомогою і служінням іншим людям. Прибуток потрібен, але він не є нашим ідолом. Ми не хочемо збагачуватися за будь-яку ціну.`
+- Цитата: `«Без обману та з повагою до клієнта»` / `— це наші основні принципи роботи.`
+> Прим.: ключи частично уже есть в `uk.about` — переиспользовать/дополнить, не дублировать.
+
+### Zespół (UK) → "Команда"
+- Eyebrow: `Команда`
+- H2: `Знайомтесь — люди, а не call-центр`
+- Імена (за рішенням власника — на український лад): `Максим` · `Павло` · `Андрій`
+- Аватар-ініціали: `М` · `П` · `А`
+- Ролі: `Діагностика та ремонт техніки` · `Сервіс принтерів і плотерів` · `Зв'язок з клієнтом і кошториси`
+- Підпис: `«Нас троє. Ви знаєте нас на ім'я. Ми особисто відповідаємо на дзвінки.»`
+
+---
+
+## 6. Файлы (вероятно)
+**Создать (новые секции):**
+- `src/components/sections/onas-hero.tsx`
+- `src/components/sections/advantages.tsx`
+- `src/components/sections/team.tsx`
+(каждый принимает проп `t` для PL/UK, по образцу существующего `About`)
+
+**Изменить:**
+- `src/app/(pl)/o-nas/page.tsx` — собрать: `Header → OnasHero → Advantages → NameHistory(About) → Team → GoogleReviews → Footer`.
+- `src/app/uk/o-nas/page.tsx` — то же с `t={uk...}`.
+- `src/lib/i18n/uk.ts` — добавить ключи `onasHero`, `advantages`, `team` (+ при необходимости дополнить `about`).
+
+**Переиспользовать как есть (НЕ менять):** `Header`, `Footer`, `GoogleReviews`, `manifest.ts`, `globals.css`.
+
+**Изображения:** уже в `public/images/` — `omobonus-hero.webp` (Святой), `KDR_*` ; карты `kdr.jpg`/`senior.png` при необходимости добавить в `public/images/`.
+
+## 7. Стиль / визуал
+
+### 7.1. ФОН — 3 слоя (критично; сейчас на live фон растянут/замылен)
+ПРОБЛЕМА сейчас: каждая секция рисует свой `Background_1.webp` через `bg-cover` → при разной высоте секций картинка масштабируется по-разному → растягивание, замыливание, швы.
+
+ЦЕЛЬ (как в эталоне `O nas v2.html` / `assets/omobonus.css`): **один общий фон на всю страницу + фото Святого только на Hero**. Реализовать ровно три слоя:
+
+**Слой 1 — общая «земля» на всю страницу, закреплённая за экраном (не растягивается).**
+Один фикс-слой во всю высоту экрана позади всего контента o-nas (рендерится ТОЛЬКО внутри страницы o-nas, не глобально):
+```jsx
+{/* фон-земля: один на всю страницу, не per-section */}
+<div className="fixed inset-0 -z-20 bg-[url('/images/Background_1.webp')] bg-cover bg-center" />
+{/* слой 2 — общая затемняющая вуаль */}
+<div className="fixed inset-0 -z-10 bg-black/60" />
+```
+> Использовать фикс-слой `position:fixed; inset:0` (НЕ `background-attachment:fixed` на body — на iOS дёргается). Фикс-слой покрывает один экран → текстура всегда чёткая, без растягивания и швов. На мобильном проверить отдельно.
+
+**Слой 3 — все секции прозрачные.** Новые компоненты (Hero/Advantages/Team) и переиспользуемые НЕ должны рисовать собственный фон (`bg-transparent`). Это и есть «как у тебя».
+
+**Hero (ТОЛЬКО первый блок) — поверх земли фото Святого:**
+```jsx
+<section className="relative overflow-hidden">
+  {/* фото Святого — только в Hero */}
+  <div className="absolute inset-0 z-0 bg-[url('/images/omobonus-hero.webp')] bg-cover bg-center" />
+  <div className="absolute inset-0 z-0 bg-black/50" />
+  <div className="relative z-10">{/* h1, подзаголовок, плитки */}</div>
+</section>
+```
+Ниже Hero фото Святого НЕ повторять — там видна только общая земля.
+
+**Header** — оставить его собственный фон без изменений.
+
+Карта изображений: «земля» = `manifest.Background_1` (`/images/Background_1.webp`); фото Святого = `manifest.omobonus_hero` (`/images/omobonus-hero.webp`).
+
+### 7.2. Цвета / шрифты / карточки
+- Цвета/шрифты — токены проекта: золото `#bfa76a` / `#e6cc82`, зелёный `#1c6e43`, шрифты Cormorant Garamond (заголовки) + Inter (текст). Новых цветов/шрифтов не вводить.
+- Карточки (stat / adv / member) — стиль из `assets/omobonus.css` как образец: тёмная карточка, золотой акцент, мягкая тень, скругление.
+
+## 8. Ограничения
 - Ветка: **только `test`**.
-- Только страница "O nas" (PL + UK) и общие компоненты `About`/`Footer` — но изменения в компонентах **обратно совместимы** (`bare` по умолчанию выключен).
-- Главную, kontakt, uslugi, regulamin, polityka и пр. — **не трогать**. Проверить, что без пропа `bare` они рендерятся как раньше.
-- Header — не менять.
-- Метаданные/SEO — не менять.
+- Менять только: страницы `/o-nas` (PL+UK), новые секц-компоненты, `uk.ts`. 
+- **НЕ трогать:** главную, kontakt, uslugi, regulamin, polityka, Header, Footer, GoogleReviews (кроме переиспользования).
+- ⚠️ Существующий `About` используется на ГЛАВНОЙ. Если адаптируешь его под секцию 3 — делай обратносовместимо (проп с дефолтом), чтобы главная не изменилась. Безопаснее — отдельный компонент для o-nas.
+- SEO/`metadata` в обоих `page.tsx` — сохранить как есть.
+- PL и UK — идентичная вёрстка, отличается только текст (Правило 9 владельца).
+- Без выдуманных данных. Отзывы — только через `<GoogleReviews/>`.
 
----
-
-## 7. ТОЧНЫЙ DIFF
-
-### Файл: `src/components/sections/about.tsx`
-```diff
-- export function About({ t }: { t?: AboutT } = {}) {
-+ export function About({ t, bare = false }: { t?: AboutT; bare?: boolean } = {}) {
-    const d = t ?? PL
-```
-```diff
--      {/* Tło */}
--      <div
--        className="absolute inset-0 bg-cover bg-center"
--        style={{
--          backgroundImage: `url('${manifest.Background_1}')`,
--        }}
--      >
--        <div className="absolute inset-0 bg-black/60" />
--      </div>
-+      {/* Tło — pomijane, gdy stroną zarządza wspólne tło (prop `bare`) */}
-+      {!bare && (
-+        <div
-+          className="absolute inset-0 bg-cover bg-center"
-+          style={{
-+            backgroundImage: `url('${manifest.Background_1}')`,
-+          }}
-+        >
-+          <div className="absolute inset-0 bg-black/60" />
-+        </div>
-+      )}
-```
-
-### Файл: `src/components/footer.tsx`
-```diff
-- export function Footer({ t }: { t?: FooterT } = {}) {
-+ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
-    const d = t ?? PL
-```
-```diff
--      {/* Tło */}
--      <div
--        className="absolute inset-0 bg-cover bg-center"
--        style={{ backgroundImage: `url('${manifest.Background_1}')` }}
--      >
--        <div className="absolute inset-0 bg-black/60" />
--      </div>
-+      {/* Tło — pomijane, gdy stroną zarządza wspólne tło (prop `bare`) */}
-+      {!bare && (
-+        <div
-+          className="absolute inset-0 bg-cover bg-center"
-+          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-+        >
-+          <div className="absolute inset-0 bg-black/60" />
-+        </div>
-+      )}
-```
-
-### Файл: `src/app/(pl)/o-nas/page.tsx`
-```diff
-  import { Footer } from '@/components/footer'
-+ import manifest from '@/config/manifest'
-```
-```diff
-      <>
-        <Header />
--       <About />
--       <Footer />
-+       {/* Jedno ciągłe, wspólne tło dla całej strony „O nas" */}
-+       <div className="relative">
-+         <div
-+           className="absolute inset-0 bg-cover bg-center"
-+           style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-+         >
-+           <div className="absolute inset-0 bg-black/60" />
-+         </div>
-+         <div className="relative z-10">
-+           <About bare />
-+           <Footer bare />
-+         </div>
-+       </div>
-      </>
-```
-
-### Файл: `src/app/uk/o-nas/page.tsx`
-```diff
-  import { Footer } from '@/components/footer'
-+ import manifest from '@/config/manifest'
-  import { uk } from '@/lib/i18n/uk'
-```
-```diff
-      <>
-        <Header />
--       <About t={uk.about} />
--       <Footer t={uk.footer} />
-+       {/* Одне суцільне, спільне тло для всієї сторінки «Про нас» */}
-+       <div className="relative">
-+         <div
-+           className="absolute inset-0 bg-cover bg-center"
-+           style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-+         >
-+           <div className="absolute inset-0 bg-black/60" />
-+         </div>
-+         <div className="relative z-10">
-+           <About t={uk.about} bare />
-+           <Footer t={uk.footer} bare />
-+         </div>
-+       </div>
-      </>
-```
-
----
-
-## 8. Проверка после применения
-- [ ] `/o-nas` и `/uk/o-nas`: один сквозной фон, нет "шва" между About и Footer.
-- [ ] Header сохранил свой фон.
-- [ ] `/` (главная) и др. страницы — визуально без изменений.
-- [ ] Тексты/телефон/адрес/e-mail/отзывы/meta — не изменены.
-- [ ] Сборка проходит (lint/tsc без ошибок: `bare?: boolean` типизирован).
+## 9. Проверка после применения
+- [ ] `/o-nas` и `/uk/o-nas`: 5 секций в порядке Hero→Dlaczego my→Historia→Zespół→Opinie + Footer.
+- [ ] Нет секций «Zniżka» и «Formularz».
+- [ ] Один общий фон-«земля» на всю страницу (фикс-слой), **не растянут, без швов**; фото Святого **только** на Hero; Header со своим фоном.
+- [ ] Отзывы рендерятся реальным компонентом.
+- [ ] Главная и др. страницы не изменились.
+- [ ] UK = точный перевод PL, та же вёрстка.
+- [ ] Сборка/lint/tsc без ошибок.

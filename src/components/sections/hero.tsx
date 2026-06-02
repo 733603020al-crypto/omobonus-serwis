@@ -16,8 +16,8 @@ interface HeroT {
 
 const PL: HeroT = {
   h1Line1: 'Profesjonalny serwis',
-  h1Line2: 'komputerów, laptopów i drukarek we',
-  h1Line3: 'Wrocławiu',
+  h1Line2: 'komputerów, laptopów i drukarek',
+  h1Line3: 'we Wrocławiu',
   tagline: '"Uczciwość i szacunek do klienta" – to nasze podstawowe zasady pracy',
   callMobile: 'Zadzwoń teraz',
   callDesktop: '793 759 262',

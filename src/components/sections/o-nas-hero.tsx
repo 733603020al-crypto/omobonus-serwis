@@ -1,3 +1,5 @@
+import manifest from '@/config/manifest'
+
 interface StatItem {
   num: string
   pre?: string
@@ -5,15 +7,17 @@ interface StatItem {
   label: string
 }
 
-interface ONasHeroT {
-  h1: string
+export interface ONasHeroT {
+  h1Line1: string
+  h1Line2: string
   sub: string
-  stats: StatItem[]
+  stats: readonly StatItem[]
 }
 
 const PL: ONasHeroT = {
-  h1: 'Nie bogacimy się na Twoim problemie',
-  sub: 'Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu.',
+  h1Line1: 'Nie bogacimy się na',
+  h1Line2: 'Twoim problemie',
+  sub: 'Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu',
   stats: [
     { num: '10', unit: '+', label: 'lat doświadczenia' },
     { num: '2', pre: 'do', unit: 'h', label: 'przyjazd we Wrocławiu' },
@@ -25,28 +29,36 @@ const PL: ONasHeroT = {
 export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
   const d = t ?? PL
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant font-bold text-white leading-tight mb-6">
-          {d.h1}
+    <section className="relative min-h-[calc(100svh-65px)] flex items-center justify-center overflow-hidden">
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: `url('${manifest.omobonus_hero}')` }}
+      />
+      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
+        <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto mb-[30px]">
+          {d.h1Line1} <br /> {d.h1Line2}
         </h1>
-        <p className="text-lg md:text-xl font-cormorant italic text-[rgba(255,255,245,0.8)] mb-12 max-w-2xl mx-auto">
+        <p
+          className="font-cormorant italic font-normal text-[#cbb27c] leading-[1.55] max-w-[60ch] mx-auto mb-10 md:whitespace-nowrap md:max-w-none"
+          style={{ fontSize: 'clamp(18px,2.1vw,24px)' }}
+        >
           {d.sub}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {d.stats.map((s, i) => (
             <div
               key={i}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-5 text-center"
+              className="services-card-bg border border-[hsl(45_20%_35%)] rounded-[10px] overflow-hidden py-8 px-5 text-center transition-transform duration-[180ms] hover:-translate-y-1"
             >
-              <div className="font-cormorant font-bold text-[#bfa76a] leading-none mb-1">
+              <div className="font-cormorant font-bold text-[#e6cc82] leading-none mb-1">
                 {s.pre && (
-                  <span className="text-lg mr-1 font-normal">{s.pre}</span>
+                  <span className="text-[hsl(45_50%_70%)] text-lg mr-1 font-normal">{s.pre}</span>
                 )}
-                <span className="text-4xl md:text-5xl">{s.num}</span>
+                <span style={{ fontSize: 'clamp(40px,5vw,60px)' }}>{s.num}</span>
                 <small className="text-xl">{s.unit}</small>
               </div>
-              <div className="text-xs md:text-sm text-[rgba(255,255,245,0.7)] font-inter mt-1">
+              <div className="text-base text-[hsl(45_18%_82%)] font-inter mt-3">
                 {s.label}
               </div>
             </div>

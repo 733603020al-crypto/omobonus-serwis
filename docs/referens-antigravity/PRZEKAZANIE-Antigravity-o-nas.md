@@ -36,7 +36,7 @@
 
 ### Секция 1 — Hero
 - H1: `Nie bogacimy się na Twoim problemie`
-- Подзаголовок: `Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu.`
+- Подзаголовок: `Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu`
 - Плитки (число + подпись):
   - `10+` / `lat doświadczenia`
   - `do 2h` / `przyjazd we Wrocławiu`
@@ -80,7 +80,7 @@
 
 ### Hero (UK)
 - H1: `Ми не наживаємось на вашій проблемі`
-- Підзаголовок: `Понад 10 років ремонтуємо комп'ютери, ноутбуки та принтери у Вроцлаві.`
+- Підзаголовок: `Понад 10 років ремонтуємо комп'ютери, ноутбуки та принтери у Вроцлаві`
 - Плитки: `10+` / `років досвіду` · `до 2 год` / `приїзд у Вроцлаві` · `15 хв` / `попередня діагностика` · `до 48 год` / `більшість ремонтів`
 
 ### Dlaczego my (UK) → "Чому ми"

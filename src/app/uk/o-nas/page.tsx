@@ -26,19 +26,23 @@ export default function UkONasPage() {
   return (
     <>
       <Header />
-      <div className="relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
-        >
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+      <ONasHero t={uk.onasHero} />
+      <div
+        className="relative isolate overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="relative z-10">
-          <ONasHero />
-          <Advantages />
-          <About t={uk.about} bare showReviews={false} />
-          <Team />
-          <GoogleReviews />
+          <Advantages t={uk.advantages} />
+          <About t={uk.aboutOnas} bare compact showReviews={false} />
+          <Team t={uk.team} />
+          <div className="pt-10 md:pt-16 pb-10 md:pb-16">
+            <GoogleReviews />
+          </div>
           <Footer t={uk.footer} bare />
         </div>
       </div>
