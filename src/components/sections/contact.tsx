@@ -117,7 +117,7 @@ type AttachmentPreview = {
   kind: 'image' | 'video' | 'file'
 }
 
-export function Contact({ t }: { t?: ContactT } = {}) {
+export function Contact({ t, bare = false }: { t?: ContactT; bare?: boolean } = {}) {
   const d = t ?? PL
   const formSchema = useMemo(
     () => buildFormSchema(d.phoneError, d.agreementError),
@@ -279,22 +279,23 @@ export function Contact({ t }: { t?: ContactT } = {}) {
   return (
     <section
       id="formularz"
-      className="relative pb-6 md:pb-16 pt-24 md:pt-20"
+      className={`relative pb-6 md:pb-16 ${bare ? 'pt-4 md:pt-6' : 'pt-24 md:pt-20'}`}
 
     >
 
 
 
       {/* Tło sekcji */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('${manifest.services_background
-            }')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div >
+      {!bare && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${manifest.services_background}')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+      )}
 
       <div className="relative z-10 container mx-auto px-2 md:px-4 flex flex-col items-center">
 

@@ -38,6 +38,6 @@ const ukT = {
   },
 }
 
-export function ContactUk() {
-  return <Contact t={ukT} />
+export function ContactUk({ bare = false }: { bare?: boolean } = {}) {
+  return <Contact t={ukT} bare={bare} />
 }

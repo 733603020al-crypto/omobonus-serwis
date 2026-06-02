@@ -18,10 +18,12 @@ export function Services({
   servicesData,
   basePath = '/uslugi',
   t,
+  bare = false,
 }: {
   servicesData?: ServiceData[]
   basePath?: string
   t?: ServicesT
+  bare?: boolean
 } = {}) {
   const services = servicesData ?? defaultServices
   const d = t ?? PL
@@ -29,21 +31,21 @@ export function Services({
     <section
       id="uslugi"
       className="relative pt-6 pb-12 md:pt-10 md:pb-16 text-center text-white overflow-hidden"
-
-
     >
 
       {/* Tło */}
-      <div className="absolute inset-0">
-        <Image
-          src={manifest.services_background}
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
+      {!bare && (
+        <div className="absolute inset-0">
+          <Image
+            src={manifest.services_background}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+      )}
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">

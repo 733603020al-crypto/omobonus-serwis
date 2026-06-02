@@ -8,6 +8,7 @@ import { Footer } from '@/components/footer'
 import { servicesUk } from '@/lib/services-data-uk'
 import { uk } from '@/lib/i18n/uk'
 import { ContactUk } from '@/components/sections/contact-uk'
+import manifest from '@/config/manifest'
 
 export const metadata: Metadata = {
   title: "Сервіс і ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
@@ -45,15 +46,27 @@ export default function UkHome() {
           </div>
         </Hero>
       </div>
-      <Services servicesData={servicesUk} basePath="/uk/uslugi" t={uk.services} />
+      <div
+        className="relative isolate overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="relative z-10">
+          <Services servicesData={servicesUk} basePath="/uk/uslugi" t={uk.services} bare />
 
-      <About t={uk.about} />
+          <About t={uk.about} bare />
 
-      <div style={{ marginTop: "-80px" }}>
-        <ContactUk />
+          <div className="mt-4 md:mt-6">
+            <ContactUk bare />
+          </div>
+
+          <Footer t={uk.footer} bare />
+        </div>
       </div>
-
-      <Footer t={uk.footer} />
     </>
   )
 }

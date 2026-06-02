@@ -5,6 +5,7 @@ import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
 import BrandTicker from '@/components/brand-ticker'
 import { Footer } from '@/components/footer'
+import manifest from '@/config/manifest'
 import dynamic from 'next/dynamic'
 
 const Contact = dynamic(() => import('@/components/sections/contact').then((mod) => mod.Contact))
@@ -47,17 +48,28 @@ export default function Home() {
           </div>
         </Hero>
       </div>
-      <Services />
+      <div
+        className="relative isolate overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="relative z-10">
+          <Services bare />
 
-      {/* Święty Omobonus */}
-      <About />
+          {/* Święty Omobonus */}
+          <About bare />
 
-      <div style={{ marginTop: "-80px" }}>
-        <Contact />
+          <div className="mt-4 md:mt-6">
+            <Contact bare />
+          </div>
+
+          <Footer bare />
+        </div>
       </div>
-
-
-      <Footer />
     </>
   )
 }
