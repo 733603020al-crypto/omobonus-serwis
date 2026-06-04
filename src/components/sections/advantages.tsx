@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
 import { Tag, Camera, ShieldCheck, Printer, Clock } from 'lucide-react'
 import Image from 'next/image'
 
@@ -55,6 +58,20 @@ const PL_KDR: CardText = {
 
 export function Advantages({ t }: { t?: AdvantagesT } = {}) {
   const eyebrow = t?.eyebrow ?? PL_HEADER.eyebrow
+  const eyebrowRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    const el = eyebrowRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   const h2 = t?.h2 ?? PL_HEADER.h2
   const lead = t?.lead ?? PL_HEADER.lead
   const kdr = t?.kdr ?? PL_KDR
@@ -63,7 +80,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
     <section className="pt-10 md:pt-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
-          <p className="text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
+          <p ref={eyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
             {eyebrow}
           </p>
           <h2
@@ -80,7 +97,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
             return (
               <article
                 key={title}
-                className="services-card-bg border border-[hsl(45_20%_35%)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1"
+                className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1"
               >
                 <div className="flex items-center gap-[14px] mb-[18px]">
                   <Icon className="w-10 h-10 shrink-0 text-[hsl(45_50%_70%)]" />
@@ -95,7 +112,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
             )
           })}
 
-          <article className="services-card-bg border border-[hsl(45_20%_35%)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1">
+          <article className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1">
             <div className="flex items-center gap-[14px] mb-[18px]">
               <Image
                 src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
