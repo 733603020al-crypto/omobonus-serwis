@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 177,
+  "total": 179,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -27,18 +27,6 @@
       "translated": false
     },
     {
-      "author_name": "Katarzyna Kijanka",
-      "author_url": "https://www.google.com/maps/contrib/101163259963516698521/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUQ3gIg6pPiAv7pFWFpIQ1TESXtmzwJ-z5suJ2XZnkCgAUpYJhl=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "4 miesiące temu",
-      "text": "Rewelacyjny serwis drukarek i komputerów! Szybka diagnoza, fachowa naprawa i pełen profesjonalizm. Sprzęt został naprawiony sprawnie i w bardzo rozsądnej cenie. Obsługa miła, kompetentna i chętnie tłumaczy każdy etap naprawy. Widać, że pracują tu ludzie z pasją i ogromną wiedzą. Zdecydowanie polecam każdemu, kto szuka uczciwego i solidnego serwisu!",
-      "time": 1768926023,
-      "translated": false
-    },
-    {
       "author_name": "Piotr Lemiszko",
       "author_url": "https://www.google.com/maps/contrib/103093017084235593028/reviews",
       "language": "pl",
@@ -61,7 +49,19 @@
       "text": "Dobry serwis. Dobre ceny. Pracują profesjonaliści. Brak oszustwa i uczciwość na każdym kroku.",
       "time": 1768935192,
       "translated": false
+    },
+    {
+      "author_name": "Jarek Jarek",
+      "author_url": "https://www.google.com/maps/contrib/106083944796616942780/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocILcRaO1232aFP-dUVlputidmLxRtR7VUqIzvYV7nOcpvbhuw=s128-c0x00000000-cc-rp-mo-ba3",
+      "rating": 5,
+      "relative_time_description": "3 miesiące temu",
+      "text": "Super profesjonalna obsługa. Naprawa drukarki kolorowej brother. Polecam bardzo!",
+      "time": 1771496425,
+      "translated": false
     }
   ],
-  "updatedAt": "2026-06-04T09:50:15.671Z"
+  "updatedAt": "2026-06-04T14:48:41.575Z"
 }
