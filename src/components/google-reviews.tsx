@@ -20,6 +20,8 @@ export default function GoogleReviews() {
     const isUk = pathname?.startsWith('/uk') ?? false
 
     const trackRef = useRef<HTMLDivElement | null>(null)
+    const allOpinionsRef = useRef<HTMLDivElement | null>(null)
+    const opinieTitleRef = useRef<HTMLDivElement | null>(null)
     const offsetRef = useRef(0)
     const rafRef = useRef<number | null>(null)
     const isRunningRef = useRef(true)
@@ -28,6 +30,36 @@ export default function GoogleReviews() {
     const cardWidth = 320
     const gap = 24
     const speed = 0.35
+
+    useEffect(() => {
+        if (loading) return
+        const el = opinieTitleRef.current
+        if (!el) return
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                el.classList.remove('fade-slide-init')
+                el.classList.add('fade-slide-animate')
+                observer.disconnect()
+            }
+        }, { threshold: 0.1 })
+        observer.observe(el)
+        return () => observer.disconnect()
+    }, [loading])
+
+    useEffect(() => {
+        if (loading) return
+        const el = allOpinionsRef.current
+        if (!el) return
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                el.classList.remove('fade-slide-init')
+                el.classList.add('fade-slide-animate')
+                observer.disconnect()
+            }
+        }, { threshold: 0.1 })
+        observer.observe(el)
+        return () => observer.disconnect()
+    }, [loading])
 
     useEffect(() => {
         fetch("/api/google-reviews")
@@ -121,10 +153,10 @@ export default function GoogleReviews() {
                             className="inline-block transition-all duration-300 ease-out hover:-translate-y-1"
                         >
 
-                            <div className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
+                            <div ref={opinieTitleRef} className="fade-slide-init text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
                                 {isUk ? 'Відгуки клієнтів з Google' : 'Opinie klientów z Google'}
                             </div>
-                            <div className="text-[#bfa76a] underline text-xs">
+                            <div ref={allOpinionsRef} className="fade-slide-init brush-underline text-[#bfa76a] underline text-xs">
                                 {isUk ? 'Переглянути всі відгуки в Google →' : 'Zobacz wszystkie opinie w Google →'}
                             </div>
                         </a>

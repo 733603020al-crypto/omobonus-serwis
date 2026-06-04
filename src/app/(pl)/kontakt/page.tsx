@@ -3,8 +3,8 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Omobonus Wrocław',
-  description: 'Kontakt z serwisem Omobonus we Wrocławiu: adres, telefon, e-mail, godziny pracy i mapa dojazdu.',
+  title: 'Kontakt|Serwis komputerów, laptopów i drukarek',
+  description: '✔ Serwis komputerów, laptopów, drukarek, ploterów, ... we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ✔  ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/kontakt',
     languages: {

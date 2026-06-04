@@ -27,7 +27,7 @@ const headings: Record<string, { h1: string; h2?: string }> = {
 
   'naprawa-drukarek': {
     h1: 'Serwis drukarek i urządzeń wielofunkcyjnych we Wrocławiu',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
 
   'serwis-komputerow-stacjonarnych': {

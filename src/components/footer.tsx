@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'
 import Link from 'next/link'
@@ -40,11 +43,25 @@ const PL: FooterT = {
 export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
+  const kontaktRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = kontaktRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <footer
       id="kontakt"
-      className="relative w-full pt-[88px] pb-[64px] px-6 border-t border-[#3a2e24] text-white"
+      className={`relative w-full pt-[88px] pb-[64px] px-6 text-white ${bare ? '' : 'border-t border-[#3a2e24]'}`}
 
     >
       {/* Tło — pomijane, gdy stroną zarządza wspólne tło (prop `bare`) */}
@@ -62,7 +79,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">
-            <div className="text-2xl font-cormorant tracking-wide text-[#bfa76a] mb-4">
+            <div ref={kontaktRef} className="fade-slide-init brush-underline text-2xl font-cormorant tracking-wide text-[#bfa76a] mb-4">
               {d.contact}
             </div>
 

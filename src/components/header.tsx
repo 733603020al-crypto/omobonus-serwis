@@ -67,6 +67,10 @@ export function Header() {
   const homeHref = isUk ? '/uk' : '/'
   const aboutHref = isUk ? '/uk/o-nas' : '/o-nas'
   const contactHref = isUk ? '/uk/kontakt' : '/kontakt'
+  const isServicesActive = pathname.startsWith(isUk ? '/uk/uslugi' : '/uslugi')
+  const isAboutActive = pathname === aboutHref
+  const isContactActive = pathname === contactHref
+
   const navServices = isUk ? 'Послуги' : 'Usługi'
   const navAbout = isUk ? 'Про нас' : 'O nas'
   const navContact = isUk ? 'Контакт' : 'Kontakt'
@@ -196,7 +200,7 @@ export function Header() {
               className="flex items-center gap-1 font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
               style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
             >
-              {navServices}
+              <span className={isServicesActive ? 'nav-active-underline' : ''}>{navServices}</span>
               <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </Link>
 
@@ -241,10 +245,10 @@ export function Header() {
             )}
           </div>
           <Link href={aboutHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-            {navAbout}
+            <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
           </Link>
           <Link href={contactHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-            {navContact}
+            <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
           </Link>
 
           <Link

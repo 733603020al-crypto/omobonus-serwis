@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
 import manifest from '@/config/manifest'
 
 interface StatItem {
@@ -28,6 +31,22 @@ const PL: ONasHeroT = {
 
 export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
   const d = t ?? PL
+  const subRef = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    const el = subRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative min-h-[calc(100svh-65px)] flex items-center justify-center overflow-hidden">
       <div
@@ -40,7 +59,8 @@ export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
           {d.h1Line1} <br /> {d.h1Line2}
         </h1>
         <p
-          className="font-cormorant italic font-normal text-[#cbb27c] leading-[1.55] max-w-[60ch] mx-auto mb-10 md:whitespace-nowrap md:max-w-none"
+          ref={subRef}
+          className="fade-slide-init font-cormorant italic font-normal text-[#cbb27c] leading-[1.55] max-w-[60ch] mx-auto mb-10 md:whitespace-nowrap md:max-w-none"
           style={{ fontSize: 'clamp(18px,2.1vw,24px)' }}
         >
           {d.sub}
@@ -49,7 +69,7 @@ export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
           {d.stats.map((s, i) => (
             <div
               key={i}
-              className="services-card-bg border border-[hsl(45_20%_35%)] rounded-[10px] overflow-hidden py-8 px-5 text-center transition-transform duration-[180ms] hover:-translate-y-1"
+              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden py-8 px-5 text-center transition-transform duration-[180ms] hover:-translate-y-1"
             >
               <div className="font-cormorant font-bold text-[#e6cc82] leading-none mb-1">
                 {s.pre && (

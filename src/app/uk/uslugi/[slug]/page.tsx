@@ -26,7 +26,7 @@ const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'naprawa-drukarek': {
     h1: 'Сервіс принтерів і багатофункціональних пристроїв у Вроцлаві',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'serwis-komputerow-stacjonarnych': {
     h1: 'Сервіс і ремонт стаціонарних комп\'ютерів',
@@ -56,7 +56,7 @@ const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'wynajem-drukarek': {
     h1: 'Оренда (лізинг) принтерів і копіювальних апаратів',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'drukarka-zastepcza': {
     h1: 'Принтер на заміну (на час ремонту)',

@@ -13,7 +13,7 @@ const Contact = dynamic(() => import('@/components/sections/contact').then((mod)
 
 export const metadata: Metadata = {
   title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
-  description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ ✔ Umów serwis już dziś!  ☎ 793 759 262',
+  description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ✔ ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
     languages: {

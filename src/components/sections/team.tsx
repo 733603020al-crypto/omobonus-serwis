@@ -1,3 +1,7 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
+
 interface TeamMember {
   initial: string
   name: string
@@ -31,12 +35,26 @@ const PL = {
 
 export function Team({ t }: { t?: TeamT } = {}) {
   const eyebrow = t?.eyebrow ?? PL.eyebrow
+  const eyebrowRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    const el = eyebrowRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   const members = t?.members ?? PL_MEMBERS
 
   return (
     <section className="pt-10 md:pt-16">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-8">
+        <p ref={eyebrowRef} className="fade-slide-init brush-underline text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-8">
           {eyebrow}
         </p>
 
@@ -44,7 +62,7 @@ export function Team({ t }: { t?: TeamT } = {}) {
           {members.map((m, i) => (
             <article
               key={m.name}
-              className="services-card-bg border border-[hsl(45_20%_35%)] rounded-[10px] overflow-hidden py-10 px-7 text-center"
+              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden py-10 px-7 text-center"
             >
               <div
                 className="w-[110px] h-[110px] rounded-full flex items-center justify-center text-white font-cormorant text-5xl font-bold mx-auto mb-[22px] border-2 border-[rgba(201,162,75,0.5)]"

@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import manifest from '@/config/manifest'
 import GoogleReviews from '@/components/google-reviews'
@@ -40,6 +43,20 @@ export function About({
   compact?: boolean
 } = {}) {
   const d = t ?? PL
+  const eyebrowRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    const el = eyebrowRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   return (
     <section
       id="o-nas"
@@ -73,7 +90,7 @@ export function About({
           {/* Text */}
           <div className="text-white space-y-6">
             {d.eyebrow && (
-              <p className="text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+              <p ref={eyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
                 {d.eyebrow}
               </p>
             )}

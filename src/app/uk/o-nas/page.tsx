@@ -5,6 +5,8 @@ import { Advantages } from '@/components/sections/advantages'
 import { About } from '@/components/sections/about'
 import { Team } from '@/components/sections/team'
 import GoogleReviews from '@/components/google-reviews'
+import BrandTicker from '@/components/brand-ticker'
+import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
 import { Footer } from '@/components/footer'
 import manifest from '@/config/manifest'
 import { uk } from '@/lib/i18n/uk'
@@ -40,7 +42,13 @@ export default function UkONasPage() {
           <Advantages t={uk.advantages} />
           <About t={uk.aboutOnas} bare compact showReviews={false} />
           <Team t={uk.team} />
-          <div className="pt-10 md:pt-16 pb-10 md:pb-16">
+          <div className="relative z-10 mt-14 md:mt-20 mb-8 md:mb-10 text-center">
+            <BrandSectionCaption text="Ремонтуємо техніку популярних брендів" />
+            <div className="mt-8">
+              <BrandTicker compact />
+            </div>
+          </div>
+          <div className="pt-10 md:pt-16">
             <GoogleReviews />
           </div>
           <Footer t={uk.footer} bare />
