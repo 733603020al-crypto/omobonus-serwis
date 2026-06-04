@@ -22,9 +22,9 @@ const GRADIENTS = [
 ] as const
 
 const PL_MEMBERS: readonly TeamMember[] = [
-  { initial: 'M', name: 'Maksym', role: 'Diagnostyka i naprawa sprzętu' },
-  { initial: 'P', name: 'Paweł', role: 'Serwis drukarek i ploterów' },
-  { initial: 'A', name: 'Andrzej', role: 'Kontakt z klientem i wyceny' },
+  { initial: 'M', name: 'Maksym', role: 'Obsługa klienta i naprawa sprzętu' },
+  { initial: 'P', name: 'Paweł', role: 'Serwis sprzętu biurowego' },
+  { initial: 'A', name: 'Andrzej', role: 'Wyceny i obsługa klienta' },
 ]
 
 const PL = {
