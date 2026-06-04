@@ -82,7 +82,7 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-0">
 
         <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
