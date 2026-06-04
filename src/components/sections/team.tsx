@@ -1,11 +1,13 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 
 interface TeamMember {
   initial: string
   name: string
   role: string
+  avatar?: string
 }
 
 export interface TeamT {
@@ -24,7 +26,7 @@ const GRADIENTS = [
 const PL_MEMBERS: readonly TeamMember[] = [
   { initial: 'M', name: 'Maksym', role: 'Obsługa klienta i naprawa sprzętu' },
   { initial: 'P', name: 'Paweł', role: 'Serwis sprzętu biurowego' },
-  { initial: 'A', name: 'Andrzej', role: 'Wyceny i obsługa klienta' },
+  { initial: 'A', name: 'Andrzej', role: 'Wyceny i obsługa klienta', avatar: '/images/andrzey_avatar_400.webp' },
 ]
 
 const PL = {
@@ -62,18 +64,20 @@ export function Team({ t }: { t?: TeamT } = {}) {
           {members.map((m, i) => (
             <article
               key={m.name}
-              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden py-10 px-7 text-center"
+              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-5 pb-3 px-7 text-center"
             >
               <div
-                className="w-[110px] h-[110px] rounded-full flex items-center justify-center text-white font-cormorant text-5xl font-bold mx-auto mb-[22px] border-2 border-[rgba(201,162,75,0.5)]"
+                className="w-[168px] h-[168px] rounded-full flex items-center justify-center text-white font-cormorant text-5xl font-bold mx-auto mb-[12px] border-2 border-[rgba(201,162,75,0.5)] overflow-hidden"
                 style={{
-                  background: GRADIENTS[i],
+                  background: m.avatar ? 'transparent' : GRADIENTS[i],
                   boxShadow: '0 0 0 6px rgba(201,162,75,0.1), 0 14px 30px rgba(0,0,0,0.4)',
                 }}
               >
-                {m.initial}
+                {m.avatar ? (
+                  <Image src={m.avatar} alt={m.name} width={168} height={168} className="w-full h-full object-cover" />
+                ) : m.initial}
               </div>
-              <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[6px]">{m.name}</h3>
+              <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">{m.name}</h3>
               <p className="text-base text-[#cbb27c] font-cormorant italic">{m.role}</p>
             </article>
           ))}

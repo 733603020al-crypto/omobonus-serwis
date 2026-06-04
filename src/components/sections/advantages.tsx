@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { Tag, Camera, ShieldCheck, Printer, Clock } from 'lucide-react'
+import { Tag, Camera, ShieldCheck, RotateCcw, Printer } from 'lucide-react'
 import Image from 'next/image'
 
 interface CardText {
@@ -40,14 +40,14 @@ const PL_CARDS = [
     text: 'Jeśli naprawa się nie opłaca — powiemy to otwarcie. Nie wymieniamy części bez potrzeby, a wymienione zawsze oddajemy.',
   },
   {
+    Icon: RotateCcw,
+    title: 'Zwrot części po naprawie',
+    text: 'Wymienione części i podzespoły oddajemy klientowi. Dzięki temu masz pewność, co zostało naprawdę wymienione.',
+  },
+  {
     Icon: Printer,
     title: 'Drukarka zastępcza',
     text: 'Na czas naprawy zapewniamy usługę „Drukarka zastępcza" — Twoja praca w domu i biurze nie staje w miejscu.',
-  },
-  {
-    Icon: Clock,
-    title: 'Diagnoza w 15 minut',
-    text: 'Wstępną diagnozę usterki wykonujemy zwykle w kwadrans. Szybko wiesz, co się dzieje i ile to potrwa.',
   },
 ] as const
 
