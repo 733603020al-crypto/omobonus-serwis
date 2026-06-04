@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { PawPrint } from 'lucide-react'
 
 interface TeamMember {
   initial: string
@@ -15,6 +16,7 @@ export interface TeamT {
   h2?: string
   members?: readonly TeamMember[]
   quote?: string
+  umka?: { name?: string; role: string; phrase: string }
 }
 
 const GRADIENTS = [
@@ -52,6 +54,8 @@ export function Team({ t }: { t?: TeamT } = {}) {
     return () => observer.disconnect()
   }, [])
   const members = t?.members ?? PL_MEMBERS
+  const showUmka = true
+  const umka = t?.umka ?? { name: 'Umka', role: 'Nasz mały pomocnik', phrase: 'Wita klientów i dba o dobrą atmosferę' }
 
   return (
     <section className="pt-10 md:pt-16">
@@ -82,6 +86,25 @@ export function Team({ t }: { t?: TeamT } = {}) {
             </article>
           ))}
         </div>
+
+        {showUmka && (
+          <div className="mt-6 services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden px-7 py-[10px] flex flex-col md:flex-row items-center gap-4">
+            <div
+              className="w-[88px] h-[88px] md:w-[100px] md:h-[100px] rounded-full flex-shrink-0 overflow-hidden border-2 border-[rgba(201,162,75,0.5)]"
+              style={{ boxShadow: '0 0 0 6px rgba(201,162,75,0.1), 0 14px 30px rgba(0,0,0,0.4)' }}
+            >
+              <Image src="/images/Umka_site_400x400.webp" alt="Umka" width={100} height={100} className="w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">{umka.name ?? 'Umka'}</h3>
+              <div className="flex items-center flex-wrap justify-center md:justify-start gap-x-2 gap-y-0 text-base text-[#cbb27c] font-cormorant italic">
+                <span className="whitespace-nowrap">{umka.role} ·</span>
+                <PawPrint size={18} color="#bfa76a" strokeWidth={1.6} className="flex-shrink-0" />
+                <span>{umka.phrase}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
