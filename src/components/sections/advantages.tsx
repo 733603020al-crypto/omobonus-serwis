@@ -100,7 +100,17 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
                 className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1"
               >
                 <div className="flex items-center gap-[14px] mb-[18px]">
-                  <Icon className="w-10 h-10 shrink-0 text-[hsl(45_50%_70%)]" />
+                  <span
+                    className="shrink-0 flex items-center justify-center rounded-full"
+                    style={{
+                      width: 58, height: 58,
+                      background: 'transparent',
+                      border: '1.5px solid rgba(201,162,75,.7)',
+                      boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
+                    }}
+                  >
+                    <Icon className="w-[30px] h-[30px] text-[#e6cc82]" />
+                  </span>
                   <h3 className="m-0 text-[19px] font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.18]">
                     {override?.title ?? title}
                   </h3>
@@ -114,15 +124,46 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
 
           <article className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1">
             <div className="flex items-center gap-[14px] mb-[18px]">
-              <Image
-                src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
-                alt="Karta Dużej Rodziny"
-                width={40}
-                height={40}
-                className="rounded-[7px] shrink-0"
-                loading="lazy"
-                quality={75}
-              />
+              <span
+                className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
+                style={{
+                  width: 58, height: 58,
+                  border: '1.5px solid rgba(201,162,75,.7)',
+                  boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
+                }}
+              >
+                <span style={{ width: 48, height: 34, background: 'rgb(227,231,240)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Image
+                    src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
+                    alt="Karta Dużej Rodziny"
+                    width={48}
+                    height={34}
+                    className="object-contain w-full h-full"
+                    loading="lazy"
+                    quality={75}
+                  />
+                </span>
+              </span>
+              <span
+                className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
+                style={{
+                  width: 58, height: 58,
+                  border: '1.5px solid rgba(201,162,75,.7)',
+                  boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
+                }}
+              >
+                <span style={{ width: 48, height: 34, background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Image
+                    src="/images/Karta-Seniora.webp"
+                    alt="Karta Seniora"
+                    width={48}
+                    height={34}
+                    className="object-contain w-full h-full"
+                    loading="lazy"
+                    quality={75}
+                  />
+                </span>
+              </span>
               <h3 className="m-0 text-[19px] font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.18]">{kdr.title}</h3>
             </div>
             <p className="text-[14px] text-[hsl(45_18%_82%)] font-inter leading-[1.45] m-0">
