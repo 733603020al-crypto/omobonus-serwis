@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { useRef, useEffect } from 'react'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'
@@ -44,6 +45,14 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
+
+  const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      e.preventDefault()
+      const rect = e.currentTarget.getBoundingClientRect()
+      window.dispatchEvent(new CustomEvent('phone-hint-trigger', { detail: { sourceRect: rect, showArrow: false } }))
+    }
+  }
   useEffect(() => {
     const el = kontaktRef.current
     if (!el) return
@@ -61,7 +70,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
   return (
     <footer
       id="kontakt"
-      className={`relative w-full pt-[88px] pb-[64px] px-6 text-white ${bare ? '' : 'border-t border-[#3a2e24]'}`}
+      className={`relative w-full pb-[64px] px-6 text-white ${bare ? 'pt-[44px]' : 'pt-[88px] border-t border-[#3a2e24]'}`}
 
     >
       {/* Tło — pomijane, gdy stroną zarządza wspólne tło (prop `bare`) */}
@@ -109,7 +118,8 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
                 </div>
                 <a
                   href="tel:+48793759262"
-                  className="text-white md:pointer-events-none md:cursor-default"
+                  onClick={handlePhoneClick}
+                  className="text-white hover:text-[#f3df9a] transition-colors md:cursor-pointer"
                 >
                   +48 793 759 262
                 </a>

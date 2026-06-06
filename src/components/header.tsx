@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -79,6 +80,11 @@ export function Header() {
   const navSendForm = isUk ? 'Надіслати заявку' : 'Wyślij zgłoszenie'
   const megaMenuHeader = isUk ? 'СЕРВІС І РЕМОНТ' : 'SERWIS I NAPRAWA'
   const homeSectionHref = isUk ? '/uk#uslugi' : '/#uslugi'
+
+  const handlePhoneClick = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    window.dispatchEvent(new CustomEvent('phone-hint-trigger', { detail: { sourceRect: rect, showArrow: false } }))
+  }
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -206,9 +212,9 @@ export function Header() {
 
             {/* Mega menu panel */}
             {isServicesOpen && (
-              <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-b-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+              <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
                 <Image src={manifest.Background_1} alt="" fill sizes="600px" className="object-cover object-center" />
-                <div className="absolute inset-0 bg-black/75" />
+                <div className="absolute inset-0 bg-black/55" />
                 <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
                   <div className="col-span-2 mb-3">
                     <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
@@ -262,7 +268,7 @@ export function Header() {
 
           <LanguageSwitcher />
 
-          <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]">
+          <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]" onClick={handlePhoneClick}>
             <span className="md:hidden">{navCall}</span>
             <span className="hidden md:inline">793 759 262</span>
           </CallButton>

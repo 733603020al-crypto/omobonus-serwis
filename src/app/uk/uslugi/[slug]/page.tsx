@@ -65,7 +65,7 @@ const headingsUk: Record<string, { h1: string; h2?: string }> = {
 
 const seoMetadataUk: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
-    title: 'Сервіс і ремонт ноутбуків',
+    title: 'Сервіс і ремонт ноутбуків у Вроцлаві',
     description: '✔ Професійний сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс- лист на сайті ✔ Запишіться на сервіс! ☎ 793 759 262',
   },
   'serwis-komputerow-stacjonarnych': {
