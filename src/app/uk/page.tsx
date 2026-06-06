@@ -11,8 +11,8 @@ import { ContactUk } from '@/components/sections/contact-uk'
 import manifest from '@/config/manifest'
 
 export const metadata: Metadata = {
-  title: "Сервіс і ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
-  description: "Професійний сервіс комп'ютерів, ноутбуків і принтерів у Вроцлаві. Діагностика за 15 хв. Повний прайс-лист на сайті.",
+  title: "Ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
+  description: "✔ Професійний ремонт і сервіс комп’ютерів, ноутбуків, принтерів та МФУ у Вроцлаві ✔ Діагностика за 15 хв ✔ Ціни на сайті ✔ Телефонуйте: 793 759 262",
   alternates: {
     canonical: "https://serwis.omobonus.com.pl/uk",
     languages: {
