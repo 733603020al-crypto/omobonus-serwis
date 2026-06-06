@@ -45,6 +45,34 @@ interface ContactT {
   }
 }
 
+const UK: ContactT = {
+  formTitle: 'Форма заявки',
+  nameLabel: 'Ім\'я та прізвище',
+  namePlaceholder: 'Іван Іваненко',
+  phoneLabel: 'Номер телефону',
+  emailLabel: 'Адреса e-mail',
+  addressLabel: 'Адреса',
+  addressPlaceholder: 'вул. Прикладна 1, 50-001 Вроцлав',
+  problemLabel: 'Опис проблеми (несправності)',
+  problemPlaceholder: '(напр. HP M404dn – принтер не захоплює папір)',
+  attachLabel: 'Додати фото / відео (опціонально)',
+  attachAdd: 'Додати',
+  attachHint: 'Прикріплені файли допоможуть нам швидше та точніше визначити проблему та підготувати кошторис ремонту.',
+  agreementConfirm: 'Підтверджую, що ознайомився/лась з',
+  privacyLink: 'Політикою Конфіденційності',
+  privacyHref: '/polityka-prywatnosci',
+  termsLink: 'Регламентом',
+  termsHref: '/regulamin',
+  agreementEnd: 'і приймаю їх умови.',
+  submitButton: 'Надіслати заявку',
+  submitting: 'Надсилання...',
+  phoneError: 'Номер телефону занадто короткий',
+  agreementError: 'Необхідно прийняти регламент',
+  agreementConnector: 'та',
+  fileTypeError: 'Можна надіслати лише фото або відео.',
+  fileSizeError: (name, max) => `Файл ${name} занадто великий (макс. ${max} МБ).`,
+}
+
 const PL: ContactT = {
   formTitle: 'Formularz zgłoszeniowy',
   nameLabel: 'Imię i nazwisko',
@@ -117,8 +145,8 @@ type AttachmentPreview = {
   kind: 'image' | 'video' | 'file'
 }
 
-export function Contact({ t, bare = false }: { t?: ContactT; bare?: boolean } = {}) {
-  const d = t ?? PL
+export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: boolean; locale?: string } = {}) {
+  const d = t ?? (locale === 'uk' ? UK : PL)
   const formSchema = useMemo(
     () => buildFormSchema(d.phoneError, d.agreementError),
     [d.phoneError, d.agreementError]

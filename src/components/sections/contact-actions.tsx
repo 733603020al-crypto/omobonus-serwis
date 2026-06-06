@@ -59,7 +59,34 @@ function SectionHeader({ title }: { title: string }) {
 }
 
 
-export function ContactActionsSection() {
+interface ContactActionsT {
+  quickContactTitle: string
+  callbackTitle: string
+  navigateLabel: string
+  callbackButton: string
+  callbackSubmitting: string
+  callbackHint: string
+  phoneError: string
+  callbackError: string
+  successTitle: string
+  successText: string
+}
+
+const PL_ACTIONS: ContactActionsT = {
+  quickContactTitle: 'Szybki kontakt',
+  callbackTitle: 'Zostaw numer — oddzwonimy',
+  navigateLabel: 'Wyznacz trasę',
+  callbackButton: 'Proszę o telefon',
+  callbackSubmitting: 'Wysyłanie...',
+  callbackHint: 'Oddzwaniamy: pon.–sob. 7:00–21:00',
+  phoneError: 'Numer telefonu jest za krótki',
+  callbackError: 'Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.',
+  successTitle: 'Dziękujemy!',
+  successText: 'Skontaktujemy się z Państwem jak najszybciej',
+}
+
+export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
+  const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
   const [countryName, setCountryName] = useState('Polska')
   const [countryDialCode, setCountryDialCode] = useState('+48')
@@ -162,7 +189,7 @@ export function ContactActionsSection() {
         <div className={cardClass}>
           <CardBg />
           <div className="relative z-10 p-4 md:p-6">
-            <SectionHeader title="Szybki kontakt" />
+            <SectionHeader title={d.quickContactTitle} />
 
             <div className="flex flex-col divide-y divide-[#bfa76a]/20">
               {/* Zadzwoń */}
@@ -197,7 +224,7 @@ export function ContactActionsSection() {
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
               >
                 <Navigation className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
-                <span>Wyznacz trasę</span>
+                <span>{d.navigateLabel}</span>
               </a>
 
               {/* WhatsApp — link: https://wa.me/48793759262 */}
@@ -246,7 +273,7 @@ export function ContactActionsSection() {
         >
           <CardBg />
           <div className="relative z-10 flex flex-col p-4 md:p-6">
-            <SectionHeader title="Zostaw numer — oddzwonimy" />
+            <SectionHeader title={d.callbackTitle} />
 
             <form ref={formRef} onSubmit={handleCallback} className="space-y-3 mt-4">
                 <div ref={phoneBlockRef}>
@@ -264,12 +291,12 @@ export function ContactActionsSection() {
                 </div>
                 {phoneError && (
                   <p className="text-red-600 text-sm font-sans">
-                    Numer telefonu jest za krótki
+                    {d.phoneError}
                   </p>
                 )}
                 {callbackError && !phoneError && (
                   <p className="text-red-600 text-sm">
-                    Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.
+                    {d.callbackError}
                   </p>
                 )}
                 <button
@@ -277,10 +304,10 @@ export function ContactActionsSection() {
                   disabled={isSubmitting}
                   className="w-full rounded-full border border-transparent bg-[#1c6e43] px-8 py-[14px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Wysyłanie...' : 'Proszę o telefon'}
+                  {isSubmitting ? d.callbackSubmitting : d.callbackButton}
                 </button>
                 <p className="text-center font-inter text-[12px] text-white/45">
-                  Oddzwaniamy: pon.–sob. 7:00–21:00
+                  {d.callbackHint}
                 </p>
               </form>
           </div>
@@ -292,8 +319,8 @@ export function ContactActionsSection() {
       <CompactSuccessModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="Dziękujemy!"
-        text="Skontaktujemy się z Państwem jak najszybciej"
+        title={d.successTitle}
+        text={d.successText}
       />
 
       <PhoneHintArrow

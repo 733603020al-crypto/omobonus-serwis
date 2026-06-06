@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { PawPrint } from 'lucide-react'
 
 interface TeamMember {
   initial: string
@@ -18,6 +17,7 @@ export interface TeamT {
   quote?: string
   umka?: { name?: string; role: string; phrase: string }
 }
+
 
 const GRADIENTS = [
   'radial-gradient(circle at 38% 30%, #2c9461, #14613c)',
@@ -96,12 +96,14 @@ export function Team({ t }: { t?: TeamT } = {}) {
               <Image src="/images/Umka_site_400x400.webp" alt="Umka" width={100} height={100} className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">{umka.name ?? 'Umka'}</h3>
-              <div className="flex items-center flex-wrap justify-center md:justify-start gap-x-2 gap-y-0 text-base text-[#cbb27c] font-cormorant italic">
-                <span className="whitespace-nowrap">{umka.role} ·</span>
-                <PawPrint size={18} color="#bfa76a" strokeWidth={1.6} className="flex-shrink-0" />
-                <span>{umka.phrase}</span>
-              </div>
+              <h3 className="flex items-end gap-2.5 text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/umka_paw_dark.webp" alt="" className="umka-paw-img" aria-hidden="true" style={{ transform: 'translateY(-14px)' }} />
+                {umka.name ?? 'Umka'}
+              </h3>
+              <p className="text-base text-[#cbb27c] font-cormorant italic">
+                {umka.role}. {umka.phrase}
+              </p>
             </div>
           </div>
         )}
