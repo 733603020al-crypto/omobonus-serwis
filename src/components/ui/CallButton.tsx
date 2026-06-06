@@ -10,6 +10,7 @@ interface CallButtonProps {
     href?: string
     className?: string
     children: React.ReactNode
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 export function CallButton({
@@ -17,6 +18,7 @@ export function CallButton({
     href,
     className,
     children,
+    onClick,
 }: CallButtonProps) {
     const base = `
     inline-flex items-center justify-center gap-2
@@ -65,7 +67,10 @@ export function CallButton({
 
         if (!isMobile) {
             return (
-                <div className={cn(base, variants[variant], className)}>
+                <div
+                    className={cn(base, variants[variant], className, 'cursor-pointer')}
+                    onClick={onClick}
+                >
                     {content}
                 </div>
             )

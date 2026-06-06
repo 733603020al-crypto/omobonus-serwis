@@ -1,12 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Phone, Mail, Navigation } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import manifest from '@/config/manifest'
+import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
+import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 
 const cardClass =
+  'relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+
+const cardClassOpen =
   'relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
 
 const linkClass =
@@ -22,46 +28,133 @@ function CardBg() {
         sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-black/55" />
     </div>
   )
 }
 
 function SectionHeader({ title }: { title: string }) {
+  const ref = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   return (
-    <>
-      <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
-        {title}
-      </p>
-      <div className="mb-3 h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
-    </>
+    <p
+      ref={ref}
+      className="fade-slide-init brush-underline mb-4 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]"
+    >
+      {title}
+    </p>
   )
 }
 
+
 export function ContactActionsSection() {
   const [phone, setPhone] = useState('')
+  const [countryName, setCountryName] = useState('Polska')
+  const [countryDialCode, setCountryDialCode] = useState('+48')
+  const [countryPhoneLength, setCountryPhoneLength] = useState<number | undefined>(9)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [sent, setSent] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [callbackError, setCallbackError] = useState(false)
+  const [phoneError, setPhoneError] = useState(false)
+  const [hintActive, setHintActive] = useState(false)
+  const [glowActive, setGlowActive] = useState(false)
+  const [hintSourceRect, setHintSourceRect] = useState<DOMRect | null>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const phoneBlockRef = useRef<HTMLDivElement>(null)
+  const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
+  const glowTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Populate phoneInputWrapperRef after mount (input's parent div, not the country button)
+  useEffect(() => {
+    const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
+    phoneInputWrapperRef.current = input?.parentElement ?? null
+  }, [])
+
+  const applyGoldenShake = () => {
+    const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
+    const wrapper = input?.parentElement
+    if (!wrapper) return
+    wrapper.classList.add('golden-shake')
+    setTimeout(() => wrapper.classList.remove('golden-shake'), 1300)
+  }
+
+  const triggerHint = (sourceRect: DOMRect | null, withArrow: boolean) => {
+    if (glowTimer.current) clearTimeout(glowTimer.current)
+    setGlowActive(true)
+    if (withArrow && sourceRect) {
+      setHintSourceRect(sourceRect)
+      setHintActive(true)
+    }
+    const delay = withArrow ? 380 : 140
+    setTimeout(() => {
+      formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')?.focus()
+    }, delay)
+    setTimeout(() => applyGoldenShake(), delay + 80)
+    if (!withArrow) {
+      glowTimer.current = setTimeout(() => setGlowActive(false), 2600)
+    }
+  }
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ sourceRect: DOMRect; showArrow?: boolean }>).detail
+      triggerHint(detail.sourceRect, detail.showArrow ?? false)
+    }
+    window.addEventListener('phone-hint-trigger', handler)
+    return () => window.removeEventListener('phone-hint-trigger', handler)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const triggerPhoneError = () => {
+    setPhoneError(true)
+    const input = formRef.current?.querySelector('input.dark-phone-input')
+    const el = input?.parentElement
+    if (!el) return
+    el.classList.add('shake-error')
+    setTimeout(() => el.classList.remove('shake-error'), 1000)
+  }
 
   const handleCallback = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (phone.replace(/\D/g, '').length < 9) return
+    const digits = phone.replace(/\D/g, '')
+    const dialDigits = countryDialCode.replace(/\D/g, '').length
+    const nationalDigits = digits.length - dialDigits
+
+    if (nationalDigits <= 0 || (countryPhoneLength !== undefined && nationalDigits < countryPhoneLength)) {
+      triggerPhoneError()
+      return
+    }
+    setPhoneError(false)
     setIsSubmitting(true)
+    setCallbackError(false)
     try {
       const formData = new FormData()
       formData.append('phone', phone)
-      formData.append('problemDescription', 'Prośba o telefon zwrotny ze strony Kontakt')
-      await fetch('/api/send-email', { method: 'POST', body: formData })
-      setSent(true)
-      setPhone('')
+      formData.append('country', countryName)
+      const res = await fetch('/api/callback-request', { method: 'POST', body: formData })
+      if (!res.ok) throw new Error('send failed')
+      setShowModal(true)
     } catch {
-      // silent — użytkownik może zadzwonić bezpośrednio
+      setCallbackError(true)
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
+    <>
     <section className="max-w-3xl mx-auto px-4 pt-8 pb-4 md:pt-12 md:pb-6">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 
@@ -75,10 +168,36 @@ export function ContactActionsSection() {
               {/* Zadzwoń */}
               <a
                 href="tel:+48793759262"
+                onClick={(e) => {
+                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                    e.preventDefault()
+                    triggerHint(e.currentTarget.getBoundingClientRect(), true)
+                  }
+                }}
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
               >
                 <Phone className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
                 <span>793 759 262</span>
+              </a>
+
+              {/* E-mail — link: mailto:serwis@omobonus.com.pl */}
+              <a
+                href="mailto:serwis@omobonus.com.pl"
+                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+              >
+                <Mail className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
+                <span>serwis@omobonus.com.pl</span>
+              </a>
+
+              {/* Wyznacz trasę — link: Google Maps, Marcina Bukowskiego 174 */}
+              <a
+                href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wroc%C5%82aw/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+              >
+                <Navigation className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
+                <span>Wyznacz trasę</span>
               </a>
 
               {/* WhatsApp — link: https://wa.me/48793759262 */}
@@ -103,7 +222,7 @@ export function ContactActionsSection() {
                 <span>Telegram</span>
               </a>
 
-              {/* Viber — TODO: замени href на реальную ссылку Viber для +48793759262 */}
+              {/* Viber */}
               <a
                 href="viber://chat?number=%2B48793759262"
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(115,96,242,0.25)]`}
@@ -111,65 +230,78 @@ export function ContactActionsSection() {
                 <FaViber className="h-[18px] w-[18px] shrink-0 text-[#7360f2]" />
                 <span>Viber</span>
               </a>
-
-              {/* E-mail — link: mailto:serwis@omobonus.com.pl */}
-              <a
-                href="mailto:serwis@omobonus.com.pl"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-              >
-                <Mail className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
-                <span>serwis@omobonus.com.pl</span>
-              </a>
-
-              {/* Wyznacz trasę — link: Google Maps, Marcina Bukowskiego 174 */}
-              <a
-                href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wroc%C5%82aw/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-              >
-                <Navigation className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
-                <span>Wyznacz trasę</span>
-              </a>
             </div>
           </div>
         </div>
 
         {/* RIGHT — Oddzwonimy do Ciebie */}
-        <div className={cardClass}>
+        <div
+          className={cardClassOpen}
+          style={{
+            transition: 'box-shadow 500ms ease-in-out',
+            boxShadow: glowActive
+              ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
+              : '0 8px 32px rgba(0,0,0,0.5)',
+          }}
+        >
           <CardBg />
           <div className="relative z-10 flex flex-col p-4 md:p-6">
             <SectionHeader title="Zostaw numer — oddzwonimy" />
 
-            {sent ? (
-              <p className="py-4 text-center font-cormorant text-[18px] text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.55)]">
-                Dziękujemy! Oddzwonimy wkrótce.
-              </p>
-            ) : (
-              <form onSubmit={handleCallback} className="space-y-3">
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value)}
-                  placeholder="+48 xxx xxx xxx"
-                  className="w-full rounded-sm border border-[#bfa76a]/40 bg-transparent px-4 py-2 font-inter text-base text-white placeholder:text-white/35 transition-all duration-250 hover:border-[#bfa76a]/60 focus:border-[#bfa76a]/80 focus:shadow-[0_0_8px_rgba(191,167,106,0.3)] focus:outline-none"
-                />
+            <form ref={formRef} onSubmit={handleCallback} className="space-y-3 mt-4">
+                <div ref={phoneBlockRef}>
+                  <CustomPhoneInput
+                      value={phone}
+                      onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
+                      onCountryChange={({ name, dialCode, phoneLength }) => {
+                        setCountryName(name)
+                        setCountryDialCode(dialCode)
+                        setCountryPhoneLength(phoneLength)
+                      }}
+                      variant="dark"
+                      className="!flex-col"
+                  />
+                </div>
+                {phoneError && (
+                  <p className="text-red-600 text-sm font-sans">
+                    Numer telefonu jest za krótki
+                  </p>
+                )}
+                {callbackError && !phoneError && (
+                  <p className="text-red-600 text-sm">
+                    Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.
+                  </p>
+                )}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full rounded-sm border border-[#bfa76a]/60 bg-gradient-to-r from-[#bfa76a]/20 via-[#bfa76a]/10 to-transparent px-6 py-2.5 font-cormorant text-[17px] font-semibold tracking-wide text-[#f3df9a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/90 hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/25 hover:to-transparent hover:shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="w-full rounded-full border border-transparent bg-[#1c6e43] px-8 py-[14px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Wysyłanie...' : 'Poproś o telefon'}
+                  {isSubmitting ? 'Wysyłanie...' : 'Proszę o telefon'}
                 </button>
                 <p className="text-center font-inter text-[12px] text-white/45">
                   Oddzwaniamy: pon.–sob. 7:00–21:00
                 </p>
               </form>
-            )}
           </div>
         </div>
 
       </div>
     </section>
+
+      <CompactSuccessModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="Dziękujemy!"
+        text="Skontaktujemy się z Państwem jak najszybciej"
+      />
+
+      <PhoneHintArrow
+        active={hintActive}
+        sourceRect={hintSourceRect}
+        targetRef={phoneInputWrapperRef}
+        onDone={() => { setHintActive(false); setGlowActive(false) }}
+      />
+    </>
   )
 }

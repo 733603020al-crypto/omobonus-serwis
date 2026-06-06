@@ -9,7 +9,7 @@ import Link from 'next/link'
 import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
-import { SuccessModal } from '@/components/ui/success-modal'
+import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 
 interface ContactT {
   formTitle: string
@@ -279,7 +279,7 @@ export function Contact({ t, bare = false }: { t?: ContactT; bare?: boolean } = 
   return (
     <section
       id="formularz"
-      className={`relative pb-6 md:pb-16 ${bare ? 'pt-4 md:pt-6' : 'pt-24 md:pt-20'}`}
+      className={`relative ${bare ? 'pt-4 md:pt-6 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
 
     >
 
@@ -585,7 +585,12 @@ export function Contact({ t, bare = false }: { t?: ContactT; bare?: boolean } = 
       </div>
 
       {/* Success Modal */}
-      <SuccessModal isOpen={showSuccessModal} onClose={onCloseSuccessModal} t={d.successModal} />
+      <CompactSuccessModal
+        isOpen={showSuccessModal}
+        onClose={onCloseSuccessModal}
+        title="Dziękujemy!"
+        text="Zgłoszenie zostało wysłane."
+      />
     </section >
   )
 }

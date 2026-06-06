@@ -225,6 +225,22 @@
     transition: background-color 9999s ease-out;
   }
 
+  /* Dark phone input — override global #3a2e24 fill color */
+  input.dark-phone-input,
+  input.dark-phone-input:-webkit-autofill,
+  input.dark-phone-input:-webkit-autofill:hover,
+  input.dark-phone-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    caret-color: #ffffff !important;
+  }
+
+  input.dark-phone-input::placeholder {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.3) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    font-size: 1em;
+  }
+
   /* =========================
    PLACEHOLDER — subdued style
    ========================= */
@@ -374,6 +390,13 @@
     animation: shake 1.2s ease-in-out;
     border: 2px solid #ef4444 !important;
     background-color: rgba(239, 68, 68, 0.08) !important;
+  }
+
+  .golden-shake {
+    animation: shake 1.2s ease-in-out;
+    border: 1px solid rgba(191,167,106,0.72) !important;
+    background-color: rgba(191,167,106,0.07) !important;
+    box-shadow: 0 0 14px 4px rgba(191,167,106,0.32) !important;
   }
 
 

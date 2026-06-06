@@ -27,7 +27,7 @@ export default function KontaktPage() {
     <>
       <Header />
       <main
-        className="relative isolate overflow-hidden"
+        className="relative overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
           backgroundAttachment: 'fixed',
@@ -38,9 +38,9 @@ export default function KontaktPage() {
         <div className="relative z-10">
           <ContactActionsSection />
           <Contact bare={true} />
+          <Footer bare />
         </div>
       </main>
-      <Footer />
     </>
   )
 }
