@@ -62,6 +62,7 @@ const MEGA_MENU = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const isUk = pathname.startsWith('/uk')
@@ -85,6 +86,10 @@ export function Header() {
     const rect = e.currentTarget.getBoundingClientRect()
     window.dispatchEvent(new CustomEvent('phone-hint-trigger', { detail: { sourceRect: rect, showArrow: false } }))
   }
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : ''
@@ -274,7 +279,16 @@ export function Header() {
           </CallButton>
         </nav>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
+        {!mounted ? (
+          <button
+            type="button"
+            className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        ) : (
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="z-10 md:hidden">
             <button
@@ -355,6 +369,7 @@ export function Header() {
             </div>
           </SheetContent>
         </Sheet>
+        )}
       </div>
     </header>
   )
