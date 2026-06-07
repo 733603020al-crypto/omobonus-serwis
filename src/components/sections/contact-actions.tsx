@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { Phone, Mail, Navigation } from 'lucide-react'
+import { Phone, AtSign } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
+import { MdDirections } from 'react-icons/md'
 import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
@@ -212,18 +213,18 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
                 href="mailto:serwis@omobonus.com.pl"
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
               >
-                <Mail className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
+                <AtSign className="h-[18px] w-[18px] shrink-0 text-[#c8a95a]" />
                 <span>serwis@omobonus.com.pl</span>
               </a>
 
-              {/* Wyznacz trasę — link: Google Maps, Marcina Bukowskiego 174 */}
+              {/* Wyznacz trasę — link: Google Maps directions to Omobonus coordinates */}
               <a
-                href="https://www.google.com/maps/place/Marcina+Bukowskiego+174,+52-418+Wroc%C5%82aw/"
+                href="https://www.google.com/maps/dir/?api=1&destination=51.0774973,16.9784781&travelmode=driving"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
               >
-                <Navigation className="h-[18px] w-[18px] shrink-0 text-[#bfa76a]" />
+                <MdDirections className="h-[18px] w-[18px] shrink-0 text-[#1a73e8]" />
                 <span>{d.navigateLabel}</span>
               </a>
 
@@ -238,9 +239,9 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
                 <span>WhatsApp</span>
               </a>
 
-              {/* Telegram — link: https://t.me/48793759262 */}
+              {/* Telegram — link: https://t.me/+48793759262 */}
               <a
-                href="https://t.me/48793759262"
+                href="https://t.me/+48793759262"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${linkClass} hover:shadow-[0_0_20px_rgba(42,171,238,0.25)]`}

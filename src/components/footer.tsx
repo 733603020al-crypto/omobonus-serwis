@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useRef, useEffect } from 'react'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'
+import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
+import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
 import manifest from '@/config/manifest'
 
@@ -164,7 +164,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
               {/* Komunikatory */}
               <div>
                 <div className="flex items-center gap-2 text-[#bfa76a] font-semibold mb-1">
-                  <FaWhatsapp className="h-4 w-4" />
+                  <MessageCircle className="h-4 w-4" />
                   <span>{d.messengers}</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -172,18 +172,28 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
                     href="https://wa.me/48793759262"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
+                    className="flex items-center gap-1.5 hover:text-primary transition-colors"
                   >
+                    <FaWhatsapp className="h-3.5 w-3.5" />
                     WhatsApp
                   </Link>
                   <span className="opacity-50">·</span>
                   <Link
-                    href="https://t.me/48793759262"
+                    href="https://t.me/+48793759262"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-primary transition-colors"
+                    className="flex items-center gap-1.5 hover:text-primary transition-colors"
                   >
+                    <FaTelegramPlane className="h-3.5 w-3.5" />
                     Telegram
+                  </Link>
+                  <span className="opacity-50">·</span>
+                  <Link
+                    href="viber://chat?number=%2B48793759262"
+                    className="flex items-center gap-1.5 hover:text-primary transition-colors"
+                  >
+                    <FaViber className="h-3.5 w-3.5" />
+                    Viber
                   </Link>
                 </div>
               </div>
