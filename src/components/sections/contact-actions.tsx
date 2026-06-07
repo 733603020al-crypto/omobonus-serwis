@@ -142,7 +142,7 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
     }
     window.addEventListener('phone-hint-trigger', handler)
     return () => window.removeEventListener('phone-hint-trigger', handler)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const triggerPhoneError = () => {
@@ -183,111 +183,111 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
 
   return (
     <>
-    <section className="max-w-3xl mx-auto px-4 pt-8 pb-4 md:pt-12 md:pb-6">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <section className="max-w-3xl mx-auto px-4 pt-8 pb-4 md:pt-12 md:pb-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 
-        {/* LEFT — Szybki kontakt */}
-        <div className={cardClass}>
-          <CardBg />
-          <div className="relative z-10 p-4 md:p-6">
-            <SectionHeader title={d.quickContactTitle} />
+          {/* LEFT — Szybki kontakt */}
+          <div className={cardClass}>
+            <CardBg />
+            <div className="relative z-10 p-4 md:p-6">
+              <SectionHeader title={d.quickContactTitle} />
 
-            <div className="flex flex-col divide-y divide-[#bfa76a]/20">
-              {/* Zadzwoń */}
-              <a
-                href="tel:+48793759262"
-                onClick={(e) => {
-                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-                    e.preventDefault()
-                    triggerHint(e.currentTarget.getBoundingClientRect(), true)
-                  }
-                }}
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-              >
-                <Phone className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
-                <span>793 759 262</span>
-              </a>
+              <div className="flex flex-col divide-y divide-[#bfa76a]/20">
+                {/* Zadzwoń */}
+                <a
+                  href="tel:+48793759262"
+                  onClick={(e) => {
+                    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                      e.preventDefault()
+                      triggerHint(e.currentTarget.getBoundingClientRect(), true)
+                    }
+                  }}
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+                >
+                  <Phone className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
+                  <span>793 759 262</span>
+                </a>
 
-              {/* E-mail — link: mailto:serwis@omobonus.com.pl */}
-              <a
-                href="mailto:serwis@omobonus.com.pl"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-              >
-                <AtSign className="h-[18px] w-[18px] shrink-0 text-[#c8a95a]" />
-                <span>serwis@omobonus.com.pl</span>
-              </a>
+                {/* E-mail — link: mailto:serwis@omobonus.com.pl */}
+                <a
+                  href="mailto:serwis@omobonus.com.pl"
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+                >
+                  <AtSign className="h-[18px] w-[18px] shrink-0 text-[#c8a95a]" />
+                  <span>serwis@omobonus.com.pl</span>
+                </a>
 
-              {/* Wyznacz trasę — link: Google Maps directions to Omobonus coordinates */}
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=51.0774973,16.9784781&travelmode=driving"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-              >
-                <MdDirections className="h-[18px] w-[18px] shrink-0 text-[#1a73e8]" />
-                <span>{d.navigateLabel}</span>
-              </a>
+                {/* Wyznacz trasę — link: Google Maps directions to Omobonus coordinates */}
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=51.0774973,16.9784781&travelmode=driving"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+                >
+                  <MdDirections className="h-[18px] w-[18px] shrink-0 text-[#1a73e8]" />
+                  <span>{d.navigateLabel}</span>
+                </a>
 
-              {/* WhatsApp — link: https://wa.me/48793759262 */}
-              <a
-                href="https://wa.me/48793759262"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(37,211,102,0.25)]`}
-              >
-                <FaWhatsapp className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
-                <span>WhatsApp</span>
-              </a>
+                {/* WhatsApp — link: https://wa.me/48793759262 */}
+                <a
+                  href="https://wa.me/48793759262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(37,211,102,0.25)]`}
+                >
+                  <FaWhatsapp className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
+                  <span>WhatsApp</span>
+                </a>
 
-              {/* Telegram — link: https://t.me/+48793759262 */}
-              <a
-                href="https://t.me/+48793759262"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(42,171,238,0.25)]`}
-              >
-                <FaTelegramPlane className="h-[18px] w-[18px] shrink-0 text-[#2AABEE]" />
-                <span>Telegram</span>
-              </a>
+                {/* Telegram — link: https://t.me/+48793759262 */}
+                <a
+                  href="https://t.me/+48793759262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(42,171,238,0.25)]`}
+                >
+                  <FaTelegramPlane className="h-[18px] w-[18px] shrink-0 text-[#2AABEE]" />
+                  <span>Telegram</span>
+                </a>
 
-              {/* Viber */}
-              <a
-                href="viber://chat?number=%2B48793759262"
-                className={`${linkClass} hover:shadow-[0_0_20px_rgba(115,96,242,0.25)]`}
-              >
-                <FaViber className="h-[18px] w-[18px] shrink-0 text-[#7360f2]" />
-                <span>Viber</span>
-              </a>
+                {/* Viber */}
+                <a
+                  href="viber://chat?number=%2B48793759262"
+                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(115,96,242,0.25)]`}
+                >
+                  <FaViber className="h-[18px] w-[18px] shrink-0 text-[#7360f2]" />
+                  <span>Viber</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT — Oddzwonimy do Ciebie */}
-        <div
-          className={cardClassOpen}
-          style={{
-            transition: 'box-shadow 500ms ease-in-out',
-            boxShadow: glowActive
-              ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
-              : '0 8px 32px rgba(0,0,0,0.5)',
-          }}
-        >
-          <CardBg />
-          <div className="relative z-10 flex flex-col p-4 md:p-6">
-            <SectionHeader title={d.callbackTitle} />
+          {/* RIGHT — Oddzwonimy do Ciebie */}
+          <div
+            className={cardClassOpen}
+            style={{
+              transition: 'box-shadow 500ms ease-in-out',
+              boxShadow: glowActive
+                ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
+                : '0 8px 32px rgba(0,0,0,0.5)',
+            }}
+          >
+            <CardBg />
+            <div className="relative z-10 flex flex-col p-4 md:p-6">
+              <SectionHeader title={d.callbackTitle} />
 
-            <form ref={formRef} onSubmit={handleCallback} className="space-y-3 mt-4">
+              <form ref={formRef} onSubmit={handleCallback} className="space-y-3 mt-4">
                 <div ref={phoneBlockRef}>
                   <CustomPhoneInput
-                      value={phone}
-                      onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
-                      onCountryChange={({ name, dialCode, phoneLength }) => {
-                        setCountryName(name)
-                        setCountryDialCode(dialCode)
-                        setCountryPhoneLength(phoneLength)
-                      }}
-                      variant="dark"
-                      className="!flex-col"
+                    value={phone}
+                    onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
+                    onCountryChange={({ name, dialCode, phoneLength }) => {
+                      setCountryName(name)
+                      setCountryDialCode(dialCode)
+                      setCountryPhoneLength(phoneLength)
+                    }}
+                    variant="dark"
+                    className="!flex-col"
                   />
                 </div>
                 {phoneError && (
@@ -311,11 +311,11 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
                   {d.callbackHint}
                 </p>
               </form>
+            </div>
           </div>
-        </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
 
       <CompactSuccessModal
         isOpen={showModal}
