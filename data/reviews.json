@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 181,
+  "total": 182,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -12,6 +12,18 @@
       "relative_time_description": "4 miesiące temu",
       "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
       "time": 1768238411,
+      "translated": false
+    },
+    {
+      "author_name": "Aleksandra Świderska",
+      "author_url": "https://www.google.com/maps/contrib/104760570921069876841/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJ6LRFam8FtPqFzCIHrTOXPizduhVzRKRLCr-dLbWRqeuE7EA=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "tydzień temu",
+      "text": "Kilkukrotnie korzystałam z serwisu naprawy komputerów i z całego serca mogę polecić to miejsce. Dopiero tutaj panowie rozwiązali problem, który miałam z matrycą. Oddawałam do naprawy zarówno laptop jak i drukarkę i wszystko było zrobione bardzo sprawnie, starannie i szybko. Bardzo miła obsługa i przyjacielski piesek Umka.",
+      "time": 1780073987,
       "translated": false
     },
     {
@@ -49,19 +61,7 @@
       "text": "Dobry serwis. Dobre ceny. Pracują profesjonaliści. Brak oszustwa i uczciwość na każdym kroku.",
       "time": 1768935192,
       "translated": false
-    },
-    {
-      "author_name": "Jarek Jarek",
-      "author_url": "https://www.google.com/maps/contrib/106083944796616942780/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocILcRaO1232aFP-dUVlputidmLxRtR7VUqIzvYV7nOcpvbhuw=s128-c0x00000000-cc-rp-mo-ba3",
-      "rating": 5,
-      "relative_time_description": "3 miesiące temu",
-      "text": "Super profesjonalna obsługa. Naprawa drukarki kolorowej brother. Polecam bardzo!",
-      "time": 1771496425,
-      "translated": false
     }
   ],
-  "updatedAt": "2026-06-07T19:15:22.369Z"
+  "updatedAt": "2026-06-08T03:30:58.516Z"
 }
