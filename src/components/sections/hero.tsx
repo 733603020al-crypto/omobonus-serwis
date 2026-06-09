@@ -2,8 +2,14 @@
 
 import Image from 'next/image'
 import { useRef, useEffect } from 'react'
-import { CallButton } from '@/components/ui/CallButton'
 import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
+
+const HERO_STATS = [
+  { num: '10', unit: '+', label: 'lat doświadczenia' },
+  { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
+  { num: '15', unit: 'min', label: 'wstępna diagnoza' },
+  { num: '12', pre: 'do', unit: ' mies.', label: 'gwarancja' },
+] as const
 
 interface HeroT {
   h1Line1: string
@@ -46,16 +52,6 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
     return () => observer.disconnect()
   }, [])
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (!el) return
-
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
-
   return (
     <section
       className="
@@ -83,7 +79,7 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-[110px]">
 
         <h1 className="hidden md:block text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
@@ -96,28 +92,29 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
           {d.tagline}
         </p>
 
-        {/* BUTTONS */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-          <CallButton
-            variant="primary"
-            href="tel:+48793759262"
-            className="w-[80%] md:w-auto"
-          >
-            <span className="md:hidden">{d.callMobile}</span>
-            <span className="hidden md:inline">{d.callDesktop}</span>
-          </CallButton>
+        {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
+        <div className="flex gap-3 items-center mt-[16px] justify-center">
+          <GoogleRatingBadge className="w-[234px] h-[134px]" />
 
-          <CallButton
-            variant="secondary"
-            href="#formularz"
-            className="w-[80%] md:w-auto"
-          >
-            {d.submitForm}
-          </CallButton>
-        </div>
-
-        <div className="mt-[16px]">
-          <GoogleRatingBadge />
+          <div className="hidden md:grid grid-cols-2 gap-3 w-[260px]">
+            {HERO_STATS.map((s, i) => (
+              <div
+                key={i}
+                className="bg-black/45 backdrop-blur-[2px] border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-lg py-3 px-3 text-center transition-all duration-[180ms] hover:-translate-y-1"
+              >
+                <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
+                  {'pre' in s && (
+                    <span className="text-[hsl(45_50%_70%)] text-[11px] mr-0.5 font-normal">{s.pre}</span>
+                  )}
+                  <span className="text-[32px]">{s.num}</span>
+                  <small className="text-[17px]">{s.unit}</small>
+                </div>
+                <div className="text-[11px] text-[hsl(45_18%_82%)] font-inter mt-1 leading-tight">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {children}
