@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 184,
+  "total": 188,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -45,7 +45,7 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUHN3bEsTmFWWqs-axdmDVLl5gDXXq1GaaOK8C7S6e1aMcFi0Y=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 tygodnie temu",
+      "relative_time_description": "4 tygodnie temu",
       "text": "Naprawa drukarki szybka i sprawna a do tego niedroga. Udało się uratować głowicę, co jest jednoznaczne z tym, że uratowano moją drukarkę. Bardzo uprzejmi ludzie. Dodatkowo bardzo mi pomogli z samochodem, który niedaleko ich siedziby odmówił mi posłuszeństwa. Bardzo bardzo dziękuję. Jestem ogromnie Wdzięczna i polecam wszystkim!!!",
       "time": 1778581083,
       "translated": false
@@ -63,5 +63,5 @@
       "translated": false
     }
   ],
-  "updatedAt": "2026-06-09T09:33:38.023Z"
+  "updatedAt": "2026-06-09T14:39:26.456Z"
 }
