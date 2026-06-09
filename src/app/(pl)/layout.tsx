@@ -77,6 +77,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
+    languages: {
+      'pl': 'https://serwis.omobonus.com.pl',
+      'uk': 'https://serwis.omobonus.com.pl/uk',
+      'x-default': 'https://serwis.omobonus.com.pl',
+    },
   },
   category: 'technology',
 }

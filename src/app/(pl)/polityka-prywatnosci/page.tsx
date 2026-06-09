@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
     languages: {
       'pl': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
+      'uk': 'https://serwis.omobonus.com.pl/uk/polityka-prywatnosci',
       'x-default': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
     },
   },

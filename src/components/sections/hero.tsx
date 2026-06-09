@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useRef, useEffect } from 'react'
 import { CallButton } from '@/components/ui/CallButton'
+import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
 
 interface HeroT {
   h1Line1: string
@@ -84,8 +85,11 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
       {/* Zawartość */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-0">
 
-        <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
+        <h1 className="hidden md:block text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
+        </h1>
+        <h1 className="md:hidden text-[28px] font-cormorant font-bold leading-[1.2] text-[#ffffff] max-w-[320px]">
+          Serwis komputerów, laptopów i drukarek we Wrocławiu
         </h1>
 
         <p ref={taglineRef} className="fade-slide-init mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
@@ -110,6 +114,10 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
           >
             {d.submitForm}
           </CallButton>
+        </div>
+
+        <div className="mt-[16px]">
+          <GoogleRatingBadge />
         </div>
       </div>
       {children}

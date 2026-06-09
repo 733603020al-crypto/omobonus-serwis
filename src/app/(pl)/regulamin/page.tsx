@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     canonical: 'https://serwis.omobonus.com.pl/regulamin',
     languages: {
       'pl': 'https://serwis.omobonus.com.pl/regulamin',
+      'uk': 'https://serwis.omobonus.com.pl/uk/regulamin',
       'x-default': 'https://serwis.omobonus.com.pl/regulamin',
     },
   },
