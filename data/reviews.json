@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 183,
+  "total": 184,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -39,6 +39,18 @@
       "translated": false
     },
     {
+      "author_name": "Jola Wychowska",
+      "author_url": "https://www.google.com/maps/contrib/117175651621755297151/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUHN3bEsTmFWWqs-axdmDVLl5gDXXq1GaaOK8C7S6e1aMcFi0Y=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "3 tygodnie temu",
+      "text": "Naprawa drukarki szybka i sprawna a do tego niedroga. Udało się uratować głowicę, co jest jednoznaczne z tym, że uratowano moją drukarkę. Bardzo uprzejmi ludzie. Dodatkowo bardzo mi pomogli z samochodem, który niedaleko ich siedziby odmówił mi posłuszeństwa. Bardzo bardzo dziękuję. Jestem ogromnie Wdzięczna i polecam wszystkim!!!",
+      "time": 1778581083,
+      "translated": false
+    },
+    {
       "author_name": "Karyna Yakymova",
       "author_url": "https://www.google.com/maps/contrib/102750037595458377267/reviews",
       "language": "pl",
@@ -49,19 +61,7 @@
       "text": "Chciałabym wyrazić wdzięczność firmie zajmującej się naprawą komputerów za doskonałą obsługę! Zgłosiłam się z problemem — komputer nie chciał się włączyć — i szybko otrzymałam pomoc: sprawnie zdiagnozowano usterkę, wszystko dokładnie wyjaśniono i zaproponowano optymalne rozwiązanie w rozsądnej cenie. Naprawa została wykonana terminowo, sprzęt działa świetnie. Bardzo uprzejmy i profesjonalny personel — polecam!",
       "time": 1768818706,
       "translated": false
-    },
-    {
-      "author_name": "Mariusz Zimmer",
-      "author_url": "https://www.google.com/maps/contrib/101005190135928467249/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocK4mDm3D3Xxt8Vghn0l2lgs0WSHW3ZykHy3Yb3yzKWaNsY7zA=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Wreszcie znalazłem bardzo solidny serwis drukarek - miałem dwie Xerox i Canon - tak stary, że myślałem, że nic z niego nie będzie- a komputery wszystkie były skonfigurowane z tym wielofunkcyjnym urządzeniem. A okazało się , że za małe pieniądze naprawione , wyczyszczone- i działa. Wspaniała obsługa - zaimponował mi stół do testowania- natychmiast wiedzą serwisanci co zrobić- gratuluję. Jestem pod wrażeniem. Macie stałego klienta! I polecam . Zimmed",
-      "time": 1776365344,
-      "translated": false
     }
   ],
-  "updatedAt": "2026-06-09T02:41:29.406Z"
+  "updatedAt": "2026-06-09T09:33:38.023Z"
 }
