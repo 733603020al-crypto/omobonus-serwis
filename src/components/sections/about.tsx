@@ -2,6 +2,8 @@
 
 import { useRef, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import manifest from '@/config/manifest'
 import GoogleReviews from '@/components/google-reviews'
 
@@ -36,11 +38,13 @@ export function About({
   bare = false,
   showReviews = true,
   compact = false,
+  showMoreLink = false,
 }: {
   t?: AboutT
   bare?: boolean
   showReviews?: boolean
   compact?: boolean
+  showMoreLink?: boolean
 } = {}) {
   const d = t ?? PL
   const eyebrowRef = useRef<HTMLParagraphElement>(null)
@@ -116,6 +120,17 @@ export function About({
                 {d.quoteSubtitle}
               </p>
             </div>
+            {showMoreLink && (
+              <div className="pl-5 mt-6">
+                <Link
+                  href="/o-nas"
+                  className="inline-flex items-center justify-center gap-2 min-w-[200px] rounded-full px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+                >
+                  Więcej o nas
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 

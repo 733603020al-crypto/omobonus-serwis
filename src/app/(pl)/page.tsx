@@ -61,7 +61,7 @@ export default function Home() {
           <Services bare />
 
           {/* Święty Omobonus */}
-          <About bare />
+          <About bare showMoreLink />
 
           <div className="mt-4 md:mt-6">
             <Contact bare />

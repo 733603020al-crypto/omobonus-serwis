@@ -94,13 +94,13 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
 
         {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
         <div className="flex gap-3 items-center mt-[16px] justify-center">
-          <GoogleRatingBadge className="w-[234px] h-[134px]" />
+          <GoogleRatingBadge className="w-[222px] h-[103px]" />
 
           <div className="hidden md:grid grid-cols-2 gap-3 w-[260px]">
             {HERO_STATS.map((s, i) => (
               <div
                 key={i}
-                className="bg-black/45 backdrop-blur-[2px] border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-lg py-3 px-3 text-center transition-all duration-[180ms] hover:-translate-y-1"
+                className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-[180ms] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
                 <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
                   {'pre' in s && (
