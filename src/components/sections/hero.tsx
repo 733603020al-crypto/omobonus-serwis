@@ -84,7 +84,7 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
         <h1 className="hidden md:block text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
         </h1>
-        <h1 className="md:hidden text-[28px] font-cormorant font-bold leading-[1.2] text-[#ffffff] max-w-[320px]">
+        <h1 className="md:hidden text-[38px] font-cormorant font-bold leading-[1.15] text-[#ffffff] max-w-[320px]">
           Serwis komputerów, laptopów i drukarek we Wrocławiu
         </h1>
 
@@ -94,13 +94,13 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
 
         {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
         <div className="flex gap-3 items-center mt-[16px] justify-center">
-          <GoogleRatingBadge className="w-[222px] h-[103px]" />
+          <GoogleRatingBadge className="w-[197px] h-[89px] md:w-[222px] md:h-[103px]" />
 
           <div className="hidden md:grid grid-cols-2 gap-3 w-[260px]">
             {HERO_STATS.map((s, i) => (
               <div
                 key={i}
-                className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-[180ms] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+                className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
                 <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
                   {'pre' in s && (

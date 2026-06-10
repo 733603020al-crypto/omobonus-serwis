@@ -84,8 +84,8 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
             {eyebrow}
           </p>
           <h2
-            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] whitespace-nowrap"
-            style={{ fontSize: 'clamp(32px,3.2vw,48px)', letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
+            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,8vw,48px)] md:whitespace-nowrap md:max-w-none md:text-[clamp(32px,3.2vw,48px)]"
+            style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
             {h2}
           </h2>
