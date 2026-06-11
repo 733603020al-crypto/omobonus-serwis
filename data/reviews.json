@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 189,
+  "total": 190,
   "reviews": [
     {
       "author_name": "Daniel Bacherek",
@@ -9,9 +9,21 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
-      "relative_time_description": "4 miesiące temu",
+      "relative_time_description": "5 miesięcy temu",
       "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
       "time": 1768238411,
+      "translated": false
+    },
+    {
+      "author_name": "Olena Golikova",
+      "author_url": "https://www.google.com/maps/contrib/111549386925395367368/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIIvMvQSiND4D190Ur1K1yuIwQeeWgo0PPeDp5iMfPTxcSACQ=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "tydzień temu",
+      "text": "Świetny serwis! Wszystko jest wykonywane profesjonalnie, szybko i na wysokim poziomie. Współpracujemy od dawna i jesteśmy bardzo zadowoleni. Cieszymy się, że znaleźliśmy ludzi, którzy zawsze doskonale serwisują nasze drukarki. Firmie można zaufać i zawsze można na nich liczyć — nie zawodzą. Polecam!",
+      "time": 1780588238,
       "translated": false
     },
     {
@@ -49,19 +61,7 @@
       "text": "Naprawa drukarki szybka i sprawna a do tego niedroga. Udało się uratować głowicę, co jest jednoznaczne z tym, że uratowano moją drukarkę. Bardzo uprzejmi ludzie. Dodatkowo bardzo mi pomogli z samochodem, który niedaleko ich siedziby odmówił mi posłuszeństwa. Bardzo bardzo dziękuję. Jestem ogromnie Wdzięczna i polecam wszystkim!!!",
       "time": 1778581083,
       "translated": false
-    },
-    {
-      "author_name": "gg",
-      "author_url": "https://www.google.com/maps/contrib/111428529099160674656/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJ-jq4wmZ_2Lj3E1Em6EuSeWMG0fCUBKzE-l1vzhJHNSYkYYw=s128-c0x00000000-cc-rp-mo-ba3",
-      "rating": 5,
-      "relative_time_description": "tydzień temu",
-      "text": "Firma znaleziona na internecie, od samego początku pełen profesjonalizm i dobry kontakt👍 serwis drukarki Epson praktycznie od ręki - pełne zaufanie - faktura po wykonaniu usługi na przelew😀 Polecam👌👍",
-      "time": 1780403334,
-      "translated": false
     }
   ],
-  "updatedAt": "2026-06-11T15:49:45.383Z"
+  "updatedAt": "2026-06-11T20:14:39.554Z"
 }
