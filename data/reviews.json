@@ -3,18 +3,6 @@
   "total": 190,
   "reviews": [
     {
-      "author_name": "Daniel Bacherek",
-      "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "5 miesięcy temu",
-      "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
-      "time": 1768238411,
-      "translated": false
-    },
-    {
       "author_name": "Olena Golikova",
       "author_url": "https://www.google.com/maps/contrib/111549386925395367368/reviews",
       "language": "pl",
@@ -36,6 +24,18 @@
       "relative_time_description": "tydzień temu",
       "text": "Kilkukrotnie korzystałam z serwisu naprawy komputerów i z całego serca mogę polecić to miejsce. Dopiero tutaj panowie rozwiązali problem, który miałam z matrycą. Oddawałam do naprawy zarówno laptop jak i drukarkę i wszystko było zrobione bardzo sprawnie, starannie i szybko. Bardzo miła obsługa i przyjacielski piesek Umka.",
       "time": 1780073987,
+      "translated": false
+    },
+    {
+      "author_name": "Daniel Bacherek",
+      "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
+      "rating": 5,
+      "relative_time_description": "5 miesięcy temu",
+      "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
+      "time": 1768238411,
       "translated": false
     },
     {
@@ -63,5 +63,5 @@
       "translated": false
     }
   ],
-  "updatedAt": "2026-06-11T20:14:39.554Z"
+  "updatedAt": "2026-06-12T03:28:48.038Z"
 }
