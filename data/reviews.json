@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 190,
+  "total": 191,
   "reviews": [
     {
       "author_name": "Olena Golikova",
@@ -39,6 +39,18 @@
       "translated": false
     },
     {
+      "author_name": "Grażyna Kaczmarek",
+      "author_url": "https://www.google.com/maps/contrib/117834517504780079698/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJQhQOfstHIeGvC6_mYc8WBPZUVpNi2NbNo0JYa-1XnQrxTZw=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "tydzień temu",
+      "text": "Serdecznie polecam! Szybka diagnoza problemu z laptopem i natychmiastowa naprawa. Dodam, że laptop był wcześniej kilkukrotnie w naprawie w innym miejscu, gdzie ściągnięto tylko kasę, a problem pozostał. Świetna robota i 2 miesiące gwarancji. Jestem mega zadowolona!",
+      "time": 1780487638,
+      "translated": false
+    },
+    {
       "author_name": "Lyhun Oleksandr",
       "author_url": "https://www.google.com/maps/contrib/111728020883963041785/reviews",
       "language": "pl",
@@ -49,19 +61,7 @@
       "text": "Oddałem komputer do naprawy i jestem bardzo zadowolony. Szybka diagnoza, uczciwe podejście i profesjonalna obsługa. Wszystko zostało naprawione sprawnie, a dodatkowo dostałem kilka przydatnych wskazówek na przyszłość. Zdecydowanie polecam!",
       "time": 1780342269,
       "translated": false
-    },
-    {
-      "author_name": "Jola Wychowska",
-      "author_url": "https://www.google.com/maps/contrib/117175651621755297151/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjUHN3bEsTmFWWqs-axdmDVLl5gDXXq1GaaOK8C7S6e1aMcFi0Y=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Naprawa drukarki szybka i sprawna a do tego niedroga. Udało się uratować głowicę, co jest jednoznaczne z tym, że uratowano moją drukarkę. Bardzo uprzejmi ludzie. Dodatkowo bardzo mi pomogli z samochodem, który niedaleko ich siedziby odmówił mi posłuszeństwa. Bardzo bardzo dziękuję. Jestem ogromnie Wdzięczna i polecam wszystkim!!!",
-      "time": 1778581083,
-      "translated": false
     }
   ],
-  "updatedAt": "2026-06-12T03:28:48.038Z"
+  "updatedAt": "2026-06-12T10:03:31.338Z"
 }
