@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesUk } from '@/lib/services-data-uk'
 import { uk } from '@/lib/i18n/uk'
-import { ContactUk } from '@/components/sections/contact-uk'
 
 export const metadata: Metadata = {
   title: "Ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
@@ -44,11 +43,7 @@ export default function UkHome() {
         button: uk.homeCta.button,
         href: '/uk/kontakt',
       }}
-      contactSection={
-        <div className="mt-4 md:mt-6">
-          <ContactUk bare />
-        </div>
-      }
+      locale="uk"
     />
   )
 }

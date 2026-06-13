@@ -3,6 +3,7 @@ import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import { Services } from '@/components/sections/services'
+import { HomeContactForm } from '@/components/sections/home-contact-form'
 import BrandTicker from '@/components/brand-ticker'
 import { Footer } from '@/components/footer'
 import { HomeCta } from '@/components/home-cta'
@@ -21,7 +22,7 @@ interface HomePageTemplateProps {
     button: ReactNode
     href: string
   }
-  contactSection?: ReactNode
+  locale?: 'pl' | 'uk'
 }
 
 export function HomePageTemplate({
@@ -32,7 +33,7 @@ export function HomePageTemplate({
   aboutT,
   footerT,
   cta,
-  contactSection,
+  locale = 'pl',
 }: HomePageTemplateProps) {
   return (
     <>
@@ -60,7 +61,9 @@ export function HomePageTemplate({
 
           <HomeCta {...cta} />
 
-          {contactSection}
+          <div className="mt-4 md:mt-6">
+            <HomeContactForm locale={locale} bare />
+          </div>
 
           <Footer t={footerT} bare />
         </div>
