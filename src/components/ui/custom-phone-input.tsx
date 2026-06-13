@@ -169,7 +169,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
         height={18}
         className="object-contain flex-shrink-0"
       />
-      <span className={`flex-1 font-sans font-medium text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'text-black text-base'}`}>
+      <span className={`flex-1 font-sans font-normal text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'text-black text-base'}`}>
         {getCountryLabel(country)}
       </span>
       {country.dialCode && (
