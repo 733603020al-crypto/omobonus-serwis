@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 }
 
 const ukActions = {
-  quickContactTitle: 'Швидкий контакт',
+  quickContactTitle: 'Зв\'яжіться з нами',
   callbackTitle: 'Залиште номер — ми передзвонимо',
   navigateLabel: 'Прокласти маршрут',
   callbackButton: 'Прошу зателефонувати',
