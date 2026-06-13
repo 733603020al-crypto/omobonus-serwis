@@ -36,6 +36,7 @@ export default function KontaktPage() {
         }}
       >
         <div className="relative z-10">
+          <h1 className="sr-only">Kontakt z serwisem komputerów, laptopów i drukarek we Wrocławiu</h1>
           <ContactActionsSection />
           <Contact bare={true} />
           <Footer bare />

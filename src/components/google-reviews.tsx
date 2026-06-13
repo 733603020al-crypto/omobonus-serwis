@@ -119,7 +119,7 @@ export default function GoogleReviews() {
     if (loading) {
         return (
             <section className="py-4 text-center text-sm text-gray-400">
-                Ładowanie opinii klientów…
+                {isUk ? 'Завантаження відгуків клієнтів…' : 'Ładowanie opinii klientów…'}
             </section>
         )
     }
@@ -127,7 +127,7 @@ export default function GoogleReviews() {
     if (!reviews.length) {
         return (
             <section className="py-6 text-center text-red-500">
-                Brak opinii (API nie zwróciło danych)
+                {isUk ? 'Немає відгуків (API не повернув дані)' : 'Brak opinii (API nie zwróciło danych)'}
             </section>
         )
     }
@@ -166,8 +166,24 @@ export default function GoogleReviews() {
                                 href="https://g.page/omobonus-serwis/review"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-4 px-5 py-3 rounded-lg bg-[#f5f5f5] border border-[#e0e0e0] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
+                                className="relative group flex items-center gap-4 px-5 py-3 rounded-lg bg-[#f5f5f5] border border-[#e0e0e0] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)] self-center w-fit max-w-[320px] md:self-auto md:max-w-none"
                             >
+                                <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="absolute top-2 right-2 text-gray-600 opacity-70 group-hover:opacity-100 transition-opacity"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
 
                                 <svg width="36" height="36" viewBox="0 0 48 48">
                                     <path fill="#EA4335" d="M24 9.5c3.54 0 6.36 1.46 8.28 3.27l6.15-6.15C34.66 3.07 29.7 1 24 1 14.61 1 6.51 6.62 2.56 14.8l7.32 5.68C11.5 14.17 17.27 9.5 24 9.5z" />
@@ -177,7 +193,7 @@ export default function GoogleReviews() {
                                 </svg>
 
                                 <div className="text-left">
-                                    <div className="text-xs text-gray-600">Google Rating</div>
+                                    <div className="text-xs text-gray-600">{isUk ? 'Рейтинг Google' : 'Google Rating'}</div>
                                     <div className="flex items-center gap-2">
                                         <div className="text-xl font-bold text-gray-900">
                                             {rating.toFixed(1)}

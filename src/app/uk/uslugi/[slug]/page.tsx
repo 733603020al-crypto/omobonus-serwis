@@ -475,7 +475,7 @@ export default async function UkServicePage({
                       <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                         <Image
                           src={serviceIconSrc[svc.slug] || svc.icon}
-                          alt={`${svc.title} Wrocław - ikona usługi serwisowej`}
+                          alt={`${svc.title} Вроцлав - іконка сервісної послуги`}
                           width={50}
                           height={50}
                           className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"

@@ -1533,12 +1533,18 @@ const UK_CATEGORY_TRANSLATIONS: Record<string, { title: string; description: str
   'Duża drukarka igłowa': { title: 'Великий матричний принтер', description: 'Бізнес-пристрій для інтенсивної щоденної роботи та великих обсягів друку.', features: ['для великих обсягів із високою витривалістю'] },
 }
 
+const detailsInPreparationText: Record<string, string> = {
+  pl: 'Szczegóły w przygotowaniu',
+  uk: 'Опис послуги готується',
+}
+
 const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' }) => {
   const priceHeaderFull = locale === 'uk' ? 'Ціна, zł' : 'Cena, zł'
   const priceHeaderShort = locale === 'uk' ? 'Ціна' : 'Cena'
   const timeHeader = locale === 'uk' ? 'Час' : 'Czas'
   const viewPriceList = locale === 'uk' ? 'Переглянути прайс-лист' : 'Zobacz cennik'
   const viewDetails = locale === 'uk' ? 'Докладніше' : 'Zobacz szczegóły'
+  const detailsInPreparation = detailsInPreparationText[locale] ?? detailsInPreparationText.pl
   const [openSection, setOpenSection] = useState<string | null>(null)
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
@@ -3353,7 +3359,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden min-h-[100px] p-4">
                                   {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
                                     <div className="text-center text-[rgba(255,255,245,0.85)] font-cormorant text-base">
-                                      Szczegóły w przygotowaniu
+                                      {detailsInPreparation}
                                     </div>
                                   ) : null}
                                 </div>

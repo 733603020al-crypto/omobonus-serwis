@@ -1314,7 +1314,7 @@ const plotterNaprawy: PricingSection = {
         { service: 'Оновлення прошивки\n(системні помилки)', price: '120 zł', duration: 'до 1 дня' },
         { service: 'Налаштування драйверів / RIP\n(проблеми з форматом)', price: '180 zł', duration: 'до 1 дня' },
         { service: 'Мережеве налаштування\n(відсутність підключення)', price: '150 zł', duration: 'до 1 дня' },
-        { service: 'Повна рекофігурація після збою\n(скидання + калібрування)', price: '220 zł', duration: '1–2 дні' },
+        { service: 'Повна реконфігурація після збою\n(скидання + калібрування)', price: '220 zł', duration: '1–2 дні' },
       ],
     },
   ],
@@ -1505,7 +1505,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-termicznych',
-    title: 'Сервіс термотрансферних принтерів єтикеток',
+    title: 'Сервіс термотрансферних принтерів етикеток',
     subtitle: 'Ремонт принтерів етикеток і штрих-кодів',
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервіс принтерів етикеток і штрих-кодів.',

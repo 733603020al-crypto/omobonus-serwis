@@ -50,6 +50,7 @@ export default function UkKontaktPage() {
         }}
       >
         <div className="relative z-10">
+          <h1 className="sr-only">Контакт із сервісом комп&apos;ютерів, ноутбуків і принтерів у Вроцлаві</h1>
           <ContactActionsSection t={ukActions} />
           <Contact locale="uk" bare={true} />
           <Footer bare />

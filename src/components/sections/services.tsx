@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { services as defaultServices } from '@/lib/services-data'
@@ -5,11 +8,13 @@ import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 interface ServicesT {
+  sectionLabel: string
   tagline: string
   serwis_drukarek_termicznych: string
 }
 
 const PL: ServicesT = {
+  sectionLabel: 'ZAKRES USŁUG',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   serwis_drukarek_termicznych: 'Serwis i naprawa drukarek etykiet',
 }
@@ -27,6 +32,20 @@ export function Services({
 } = {}) {
   const services = servicesData ?? defaultServices
   const d = t ?? PL
+  const eyebrowRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    const el = eyebrowRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   return (
     <section
       id="uslugi"
@@ -49,10 +68,10 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div className="mb-6 text-center hidden md:block">
+        <div className="mb-6 text-center">
 
-          <p className="mt-[6px] text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-5xl mx-auto font-semibold drop-shadow-2xl">
-            {d.tagline}
+          <p ref={eyebrowRef} className="fade-slide-init brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+            {d.sectionLabel}
           </p>
         </div>
 

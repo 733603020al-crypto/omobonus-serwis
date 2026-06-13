@@ -2,26 +2,47 @@
 
 import Image from 'next/image'
 import { useRef, useEffect } from 'react'
-import { CallButton } from '@/components/ui/CallButton'
+import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
+
+interface HeroStat {
+  num: string
+  pre?: string
+  unit: string
+  label: string
+}
 
 interface HeroT {
   h1Line1: string
   h1Line2: string
   h1Line3: string
+  mobileH1: string
   tagline: string
   callMobile: string
   callDesktop: string
   submitForm: string
+  stats: readonly HeroStat[]
+  googleRatingLabel: string
+  trustLabel: string
+  googleReviewsAriaLabel?: string
 }
 
 const PL: HeroT = {
   h1Line1: 'Profesjonalny serwis',
   h1Line2: 'komputerów, laptopów i drukarek',
   h1Line3: 'we Wrocławiu',
+  mobileH1: 'Serwis komputerów, laptopów i drukarek we Wrocławiu',
   tagline: '"Uczciwość i szacunek do klienta" – to nasze podstawowe zasady pracy',
   callMobile: 'Zadzwoń teraz',
   callDesktop: '793 759 262',
   submitForm: 'Wyślij zgłoszenie',
+  stats: [
+    { num: '10', unit: '+', label: 'lat doświadczenia' },
+    { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
+    { num: '15', unit: 'min', label: 'wstępna diagnoza' },
+    { num: '12', pre: 'do', unit: ' mies.', label: 'gwarancja' },
+  ],
+  googleRatingLabel: 'Google Rating',
+  trustLabel: 'Zaufanie klientów',
 }
 
 export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } = {}) {
@@ -44,16 +65,6 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id)
-    if (!el) return
-
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
 
   return (
     <section
@@ -82,34 +93,47 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-[110px]">
 
-        <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
+        <h1 className="hidden md:block text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
+        </h1>
+        <h1 className="md:hidden text-[38px] font-cormorant font-bold leading-[1.15] text-[#ffffff] max-w-[320px]">
+          {d.mobileH1}
         </h1>
 
         <p ref={taglineRef} className="fade-slide-init mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
           {d.tagline}
         </p>
 
-        {/* BUTTONS */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-          <CallButton
-            variant="primary"
-            href="tel:+48793759262"
-            className="w-[80%] md:w-auto"
-          >
-            <span className="md:hidden">{d.callMobile}</span>
-            <span className="hidden md:inline">{d.callDesktop}</span>
-          </CallButton>
+        {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
+        <div className="flex gap-3 items-center mt-[16px] justify-center">
+          <GoogleRatingBadge
+            className="w-[197px] h-[89px] md:w-[222px] md:h-[103px]"
+            ratingLabel={d.googleRatingLabel}
+            trustLabel={d.trustLabel}
+            ariaLabel={d.googleReviewsAriaLabel}
+          />
 
-          <CallButton
-            variant="secondary"
-            href="#formularz"
-            className="w-[80%] md:w-auto"
-          >
-            {d.submitForm}
-          </CallButton>
+          <div className="hidden md:grid grid-cols-2 gap-3 w-[260px]">
+            {d.stats.map((s, i) => (
+              <div
+                key={i}
+                className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+              >
+                <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
+                  {'pre' in s && (
+                    <span className="text-[hsl(45_50%_70%)] text-[11px] mr-0.5 font-normal">{s.pre}</span>
+                  )}
+                  <span className="text-[32px]">{s.num}</span>
+                  <small className="text-[17px]">{s.unit}</small>
+                </div>
+                <div className="text-[11px] text-[hsl(45_18%_82%)] font-inter mt-1 leading-tight">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {children}
