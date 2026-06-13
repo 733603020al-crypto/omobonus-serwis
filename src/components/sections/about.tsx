@@ -15,6 +15,8 @@ interface AboutT {
   description: readonly string[]
   quote: string
   quoteSubtitle: string
+  moreAboutLink?: string
+  moreAboutHref?: string
   // legacy fields — kept for type-compat with existing translations
   kdkText?: string
   whyUs?: string
@@ -31,6 +33,8 @@ const PL: AboutT = {
   ],
   quote: 'Brak oszustwa i szacunek do klienta',
   quoteSubtitle: 'to nasze podstawowe zasady pracy',
+  moreAboutLink: 'Więcej o nas',
+  moreAboutHref: '/o-nas',
 }
 
 export function About({
@@ -127,10 +131,10 @@ export function About({
           {showMoreLink && (
             <div className="flex justify-center">
               <Link
-                href="/o-nas"
+                href={d.moreAboutHref ?? '/o-nas'}
                 className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
-                Więcej o nas
+                {d.moreAboutLink ?? 'Więcej o nas'}
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
@@ -187,10 +191,10 @@ export function About({
             {showMoreLink && (
               <div className="pl-5 mt-6">
                 <Link
-                  href="/o-nas"
+                  href={d.moreAboutHref ?? '/o-nas'}
                   className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
                 >
-                  Więcej o nas
+                  {d.moreAboutLink ?? 'Więcej o nas'}
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>

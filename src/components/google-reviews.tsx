@@ -119,7 +119,7 @@ export default function GoogleReviews() {
     if (loading) {
         return (
             <section className="py-4 text-center text-sm text-gray-400">
-                Ładowanie opinii klientów…
+                {isUk ? 'Завантаження відгуків клієнтів…' : 'Ładowanie opinii klientów…'}
             </section>
         )
     }
@@ -127,7 +127,7 @@ export default function GoogleReviews() {
     if (!reviews.length) {
         return (
             <section className="py-6 text-center text-red-500">
-                Brak opinii (API nie zwróciło danych)
+                {isUk ? 'Немає відгуків (API не повернув дані)' : 'Brak opinii (API nie zwróciło danych)'}
             </section>
         )
     }
@@ -193,7 +193,7 @@ export default function GoogleReviews() {
                                 </svg>
 
                                 <div className="text-left">
-                                    <div className="text-xs text-gray-600">Google Rating</div>
+                                    <div className="text-xs text-gray-600">{isUk ? 'Рейтинг Google' : 'Google Rating'}</div>
                                     <div className="flex items-center gap-2">
                                         <div className="text-xl font-bold text-gray-900">
                                             {rating.toFixed(1)}

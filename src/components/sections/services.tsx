@@ -8,11 +8,13 @@ import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 interface ServicesT {
+  sectionLabel: string
   tagline: string
   serwis_drukarek_termicznych: string
 }
 
 const PL: ServicesT = {
+  sectionLabel: 'ZAKRES USŁUG',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   serwis_drukarek_termicznych: 'Serwis i naprawa drukarek etykiet',
 }
@@ -69,7 +71,7 @@ export function Services({
         <div className="mb-6 text-center">
 
           <p ref={eyebrowRef} className="fade-slide-init brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
-            ZAKRES USŁUG
+            {d.sectionLabel}
           </p>
         </div>
 

@@ -30,6 +30,8 @@ const ukT = {
   agreementError: 'Необхідно прийняти умови',
   fileTypeError: 'Непідтримуваний тип файлу.',
   fileSizeError: (name: string, max: number) => `Файл ${name} занадто великий (макс. ${max} МБ).`,
+  successTitle: 'Дякуємо!',
+  successText: 'Заявку надіслано.',
   successModal: {
     title: 'Дякуємо за заявку!',
     line1: 'Ваше повідомлення успішно надіслано.',

@@ -37,6 +37,8 @@ interface ContactT {
   agreementConnector: string
   fileTypeError: string
   fileSizeError: (name: string, max: number) => string
+  successTitle: string
+  successText: string
   successModal?: {
     title: string
     line1: string
@@ -60,9 +62,9 @@ const UK: ContactT = {
   attachHint: 'Прикріплені файли допоможуть нам швидше та точніше визначити проблему та підготувати кошторис ремонту.',
   agreementConfirm: 'Підтверджую, що ознайомився/лась з',
   privacyLink: 'Політикою Конфіденційності',
-  privacyHref: '/polityka-prywatnosci',
+  privacyHref: '/uk/polityka-prywatnosci',
   termsLink: 'Регламентом',
-  termsHref: '/regulamin',
+  termsHref: '/uk/regulamin',
   agreementEnd: 'і приймаю їх умови.',
   submitButton: 'Надіслати заявку',
   submitting: 'Надсилання...',
@@ -71,6 +73,8 @@ const UK: ContactT = {
   agreementConnector: 'та',
   fileTypeError: 'Можна надіслати лише фото або відео.',
   fileSizeError: (name, max) => `Файл ${name} занадто великий (макс. ${max} МБ).`,
+  successTitle: 'Дякуємо!',
+  successText: 'Заявку надіслано.',
 }
 
 const PL: ContactT = {
@@ -99,6 +103,8 @@ const PL: ContactT = {
   agreementConnector: 'oraz',
   fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
   fileSizeError: (name, max) => `Plik ${name} jest zbyt duży (maks. ${max} MB).`,
+  successTitle: 'Dziękujemy!',
+  successText: 'Zgłoszenie zostało wysłane.',
 }
 
 function buildFormSchema(phoneError: string, agreementError: string) {
@@ -616,8 +622,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
       <CompactSuccessModal
         isOpen={showSuccessModal}
         onClose={onCloseSuccessModal}
-        title="Dziękujemy!"
-        text="Zgłoszenie zostało wysłane."
+        title={d.successTitle}
+        text={d.successText}
       />
     </section >
   )

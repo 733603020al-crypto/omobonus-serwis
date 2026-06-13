@@ -2,7 +2,17 @@
 
 import { useEffect, useState } from 'react'
 
-export function GoogleRatingBadge({ className = '' }: { className?: string } = {}) {
+export function GoogleRatingBadge({
+  className = '',
+  ratingLabel = 'Google Rating',
+  trustLabel = 'Zaufanie klientów',
+  ariaLabel = 'Zobacz wszystkie opinie Omobonus w Google',
+}: {
+  className?: string
+  ratingLabel?: string
+  trustLabel?: string
+  ariaLabel?: string
+} = {}) {
   const [rating, setRating] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -38,7 +48,7 @@ export function GoogleRatingBadge({ className = '' }: { className?: string } = {
       href="https://g.page/omobonus-serwis/review"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Zobacz wszystkie opinie Omobonus w Google"
+      aria-label={ariaLabel}
       className={shell}
     >
       <svg
@@ -67,7 +77,7 @@ export function GoogleRatingBadge({ className = '' }: { className?: string } = {
 
       <div className="flex flex-col leading-none text-left">
         <span className="text-[11px] md:text-[12px] text-[#bfa76a] font-sans font-normal tracking-normal">
-          Google Rating
+          {ratingLabel}
         </span>
         <div className="flex items-center gap-1 mt-1 md:mt-1.5">
           <span className="font-sans text-[20px] md:text-[24px] font-bold text-[#bfa76a]">
@@ -78,7 +88,7 @@ export function GoogleRatingBadge({ className = '' }: { className?: string } = {
           </span>
         </div>
         <span className="mt-1 md:mt-1.5 text-[11px] md:text-[12px] text-white/75 font-sans tracking-wide">
-          Zaufanie klientów
+          {trustLabel}
         </span>
       </div>
     </a>
