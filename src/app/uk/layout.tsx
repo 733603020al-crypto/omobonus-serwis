@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import '../styles/accordion.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
+import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -144,6 +145,7 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         {children}
 
         <FloatingCallButton />
+        <FloatingContactButton />
 
         <Script
           id="json-ld"

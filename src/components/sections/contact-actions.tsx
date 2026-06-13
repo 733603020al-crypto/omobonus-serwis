@@ -74,7 +74,7 @@ interface ContactActionsT {
 }
 
 const PL_ACTIONS: ContactActionsT = {
-  quickContactTitle: 'Szybki kontakt',
+  quickContactTitle: 'Skontaktuj się z nami',
   callbackTitle: 'Zostaw numer — oddzwonimy',
   navigateLabel: 'Wyznacz trasę',
   callbackButton: 'Proszę o telefon',

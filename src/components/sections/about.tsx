@@ -30,7 +30,7 @@ const PL: AboutT = {
     'Jesteśmy zespołem, który wierzy, że praca może być również pomocą i służbą innym ludziom. Zysk jest potrzebny, ale nie jest naszym idolem ani bożkiem. Nie chcemy się bogacić za wszelką cenę.',
   ],
   quote: 'Brak oszustwa i szacunek do klienta',
-  quoteSubtitle: 'to nasze podstawowe zasady pracy.',
+  quoteSubtitle: 'to nasze podstawowe zasady pracy',
 }
 
 export function About({
@@ -84,15 +84,15 @@ export function About({
         {/* Mobile-only: logiczna kolejność treści */}
         <div className="md:hidden text-white space-y-6">
           {d.eyebrow && (
-            <p ref={mobileEyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+            <p ref={mobileEyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
               {d.eyebrow}
             </p>
           )}
           <div className="space-y-2">
-            <h2 className="text-3xl font-cormorant italic font-bold text-[#bfa76a] leading-tight">
+            <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
               {d.heading}
             </h2>
-            <p className="font-cormorant italic text-base text-[rgba(255,255,245,0.85)] leading-relaxed">
+            <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
               {d.subheading}
             </p>
           </div>
@@ -109,18 +109,18 @@ export function About({
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-serif font-semibold mb-2 text-white">
+            <h3 className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
               {d.ourCompany}
             </h3>
             <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
               {d.description[0]}
             </p>
           </div>
-          <div className="border-l-2 border-[#bfa76a] pl-5 space-y-1">
-            <p className="text-xl font-serif font-semibold text-white">
+          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
+            <p className="text-xl md:text-2xl font-serif font-semibold text-white">
               &ldquo;{d.quote}&rdquo;
             </p>
-            <p className="text-lg font-serif text-[#bfa76a]">
+            <p className="text-base md:text-lg font-serif font-normal italic text-[#bfa76a]">
               {d.quoteSubtitle}
             </p>
           </div>
@@ -161,26 +161,26 @@ export function About({
               </p>
             )}
             <div className="space-y-2">
-              <h2 className="text-3xl md:text-4xl font-cormorant italic font-bold text-[#bfa76a] leading-tight">
+              <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
                 {d.heading}
               </h2>
-              <p className="font-cormorant italic text-base md:text-lg text-[rgba(255,255,245,0.85)] leading-relaxed">
+              <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
                 {d.subheading}
               </p>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-serif font-semibold mb-2 text-white">
+              <h3 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
                 {d.ourCompany}
               </h3>
               <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
                 {d.description[0]}
               </p>
             </div>
-            <div className="border-l-2 border-[#bfa76a] pl-5 space-y-1">
+            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
               <p className="text-xl md:text-2xl font-serif font-semibold text-white">
                 &ldquo;{d.quote}&rdquo;
               </p>
-              <p className="text-lg font-serif text-[#bfa76a]">
+              <p className="text-base md:text-lg font-serif font-normal italic text-[#bfa76a]">
                 {d.quoteSubtitle}
               </p>
             </div>

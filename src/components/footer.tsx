@@ -88,7 +88,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">
-            <div ref={kontaktRef} className="fade-slide-init brush-underline text-2xl font-cormorant tracking-wide text-[#bfa76a] mb-4">
+            <div ref={kontaktRef} className="fade-slide-init brush-underline text-2xl md:text-3xl font-cormorant font-bold leading-tight tracking-wide text-[#bfa76a] mb-4">
               {d.contact}
             </div>
 

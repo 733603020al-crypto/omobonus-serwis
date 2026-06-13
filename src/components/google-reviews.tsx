@@ -166,7 +166,7 @@ export default function GoogleReviews() {
                                 href="https://g.page/omobonus-serwis/review"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="relative group flex items-center gap-4 px-5 py-3 rounded-lg bg-[#f5f5f5] border border-[#e0e0e0] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)]"
+                                className="relative group flex items-center gap-4 px-5 py-3 rounded-lg bg-[#f5f5f5] border border-[#e0e0e0] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.25)] self-center w-fit max-w-[320px] md:self-auto md:max-w-none"
                             >
                                 <svg
                                     width="15"

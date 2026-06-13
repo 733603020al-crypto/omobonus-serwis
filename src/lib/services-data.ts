@@ -3503,7 +3503,7 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'serwis-komputerow-stacjonarnych',
-    title: 'Serwis Komputerów Stacjonarnych',
+    title: 'Serwis komputerów stacjonarnych',
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Diagnostyka, naprawa i modernizacja jednostek centralnych.',

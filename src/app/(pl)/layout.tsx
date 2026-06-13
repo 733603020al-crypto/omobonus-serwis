@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import '../styles/accordion.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
+import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 
 /* =========================
    Fonts (STRICT: 2 only)
@@ -161,6 +162,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         {/* 🔵 Floating call button – ONLY mobile */}
         <FloatingCallButton />
+        <FloatingContactButton />
 
         <Script
           id="json-ld"
