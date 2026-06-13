@@ -47,7 +47,7 @@ interface HomeContactFormProps {
 
 export function HomeContactForm({ locale = 'pl', bare = false }: HomeContactFormProps = {}) {
   if (locale === 'uk') {
-    return <Contact t={ukT} bare={bare} />
+    return <Contact t={ukT} bare={bare} locale="uk" />
   }
 
   return <Contact bare={bare} />
