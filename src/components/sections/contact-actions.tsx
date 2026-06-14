@@ -86,7 +86,7 @@ const PL_ACTIONS: ContactActionsT = {
   successText: 'Skontaktujemy się z Państwem jak najszybciej',
 }
 
-export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
+export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' } = {}) {
   const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
   const [countryName, setCountryName] = useState('Polska')
@@ -288,6 +288,7 @@ export function ContactActionsSection({ t }: { t?: ContactActionsT } = {}) {
                       }}
                       variant="dark"
                       className="!flex-col"
+                      locale={locale}
                   />
                 </div>
                 {phoneError && (

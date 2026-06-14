@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { ContactActionsSection } from '@/components/sections/contact-actions'
+import { uk } from '@/lib/i18n/uk'
 import manifest from '@/config/manifest'
 
 const Contact = dynamic(() =>
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 }
 
 const ukActions = {
-  quickContactTitle: 'Швидкий контакт',
+  quickContactTitle: 'Зв\'яжіться з нами',
   callbackTitle: 'Залиште номер — ми передзвонимо',
   navigateLabel: 'Прокласти маршрут',
   callbackButton: 'Прошу зателефонувати',
@@ -51,9 +52,9 @@ export default function UkKontaktPage() {
       >
         <div className="relative z-10">
           <h1 className="sr-only">Контакт із сервісом комп&apos;ютерів, ноутбуків і принтерів у Вроцлаві</h1>
-          <ContactActionsSection t={ukActions} />
+          <ContactActionsSection t={ukActions} locale="uk" />
           <Contact locale="uk" bare={true} />
-          <Footer bare />
+          <Footer t={uk.footer} bare />
         </div>
       </main>
     </>

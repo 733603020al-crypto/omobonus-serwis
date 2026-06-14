@@ -12,11 +12,12 @@ interface CustomPhoneInputProps {
   onCountryChange?: (data: { name: string; dialCode: string; phoneLength?: number }) => void
   className?: string
   variant?: 'light' | 'dark'
+  locale?: 'pl' | 'uk'
 }
 
 const DEFAULT_COUNTRY = countries[1]
 
-export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light' }: CustomPhoneInputProps) {
+export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl' }: CustomPhoneInputProps) {
   const dark = variant === 'dark'
   const [selectedCountry, setSelectedCountry] = useState<Country>(DEFAULT_COUNTRY) // По умолчанию Польша
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -140,9 +141,13 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     return 'xxx xxx xxx' // fallback
   }
 
-  const displayName = selectedCountry.name.length > 12
+  const getCountryLabel = (country: Country) =>
+    locale === 'uk' && country.nameUk ? country.nameUk : country.name
+
+  const selectedLabel = getCountryLabel(selectedCountry)
+  const displayName = selectedLabel.length > 12 && locale !== 'uk'
     ? selectedCountry.shortName
-    : selectedCountry.name
+    : selectedLabel
 
   // Список стран — общий для обоих вариантов
   const countryListItems = countries.map((country) => (
@@ -150,7 +155,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
       key={country.code}
       type="button"
       onClick={() => handleCountrySelect(country)}
-      aria-label={`Wybierz ${country.name}`}
+      aria-label={`Wybierz ${getCountryLabel(country)}`}
       className={
         dark
           ? 'group flex items-center gap-3 px-3 py-2 transition-all duration-300 ease-out text-left whitespace-nowrap w-full border border-transparent hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)]'
@@ -159,13 +164,13 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     >
       <Image
         src={country.flagImage}
-        alt={country.name}
+        alt={getCountryLabel(country)}
         width={24}
         height={18}
         className="object-contain flex-shrink-0"
       />
-      <span className={`flex-1 font-sans font-medium text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'text-black text-base'}`}>
-        {country.name}
+      <span className={`flex-1 font-sans font-light text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'text-black text-base'}`}>
+        {getCountryLabel(country)}
       </span>
       {country.dialCode && (
         <span className={`font-sans text-sm whitespace-nowrap ${dark ? 'text-[#bfa76a] group-hover:text-white transition-colors duration-200' : 'text-black opacity-70'}`}>
@@ -197,7 +202,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
               }
               setIsDropdownOpen(!isDropdownOpen)
             }}
-            aria-label={`Wybierz kraj, aktualnie wybrano: ${selectedCountry.name}`}
+            aria-label={`Wybierz kraj, aktualnie wybrano: ${selectedLabel}`}
             aria-expanded={isDropdownOpen}
             aria-haspopup="listbox"
             className={dark
@@ -208,14 +213,14 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           >
             <Image
               src={selectedCountry.flagImage}
-              alt={selectedCountry.name}
+              alt={selectedLabel}
               width={20}
               height={15}
               className="object-contain flex-shrink-0 pointer-events-none"
               style={{ width: '20px', height: '15px' }}
             />
             <span className={`${dark ? 'text-white text-sm' : 'text-black text-base'} font-sans font-medium leading-tight whitespace-nowrap pointer-events-none min-w-0`}>
-              {displayName || selectedCountry.name}
+              {displayName || selectedLabel}
             </span>
             {selectedCountry.dialCode ? (
               <span className={`${dark ? 'text-white text-sm' : 'text-black text-base'} font-sans font-medium whitespace-nowrap flex-shrink-0 pointer-events-none ml-auto`}>

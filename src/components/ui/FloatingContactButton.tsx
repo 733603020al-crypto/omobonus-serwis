@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail } from 'lucide-react'
+import { SquarePen } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
@@ -38,19 +38,15 @@ export function FloatingContactButton() {
                     justify-center
                     w-14
                     h-14
-                    rounded-full
-                    backdrop-blur-[2px]
-                    text-[#bfa76a]
-                    border border-[#bfa76a]/80
-                    bg-[#bfa76a]/10
-                    shadow-[0_0_20px_rgba(191,167,106,0.35)]
+                    rounded-2xl
+                    bg-white
+                    shadow-[0_4px_16px_rgba(0,0,0,0.25)]
                     transition-all duration-300 ease-out
                     hover:-translate-y-1
-                    hover:bg-[#bfa76a]/20
-                    hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]
+                    hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]
                 "
             >
-                <Mail className="w-6 h-6" />
+                <SquarePen className="w-6 h-6 text-[#0B1F3A]" />
             </Link>
         </div>,
         document.body

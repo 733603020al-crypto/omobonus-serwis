@@ -385,6 +385,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       <CustomPhoneInput
                         value={field.value || ''}
                         onChange={field.onChange}
+                        locale={locale === 'uk' ? 'uk' : 'pl'}
                       />
                     )}
                   />

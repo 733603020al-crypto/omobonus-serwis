@@ -40,6 +40,15 @@ const ukT = {
   },
 }
 
-export function ContactUk({ bare = false }: { bare?: boolean } = {}) {
-  return <Contact t={ukT} bare={bare} />
+interface HomeContactFormProps {
+  locale?: 'pl' | 'uk'
+  bare?: boolean
+}
+
+export function HomeContactForm({ locale = 'pl', bare = false }: HomeContactFormProps = {}) {
+  if (locale === 'uk') {
+    return <Contact t={ukT} bare={bare} locale="uk" />
+  }
+
+  return <Contact bare={bare} />
 }

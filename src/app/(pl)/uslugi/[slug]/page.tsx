@@ -1,18 +1,8 @@
 import { notFound } from "next/navigation"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
 import { Metadata } from "next"
 import { services } from "@/lib/services-data"
 import { serviceHeroLabels } from "@/lib/service-hero-labels"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import manifest from "@/config/manifest"
-import ServiceAccordion from "@/components/service-accordion"
-import GoogleReviews from "@/components/google-reviews"
-import { CallButton } from "@/components/ui/CallButton"
-import BrandTicker from "@/components/brand-ticker"
-import { FadeSlideText } from "@/components/ui/FadeSlideText"
+import { ServicePageTemplate, type RelatedService, type ServicePageLabels } from "@/components/service-page-template"
 
 const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
@@ -143,8 +133,84 @@ const seoBlocks: Record<string, SeoBlock> = {
   },
 }
 
+// Obraz hero i jego opis alternatywny dla każdej usługi
+const serviceImageSrc: Record<string, string> = {
+  'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych.webp',
+  'serwis-laptopow': '/images/01_serwis-laptopow.webp',
+  'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
+  'outsourcing-it': '/images/03_outsourcing-it.webp',
+  'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych.webp',
+  'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych.webp',
+  'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+  'serwis-plotterow': '/images/08_serwis-ploterow.webp',
+  'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych.webp',
+  'naprawa-drukarek': '/images/Serwis_Drukarek.webp',
+  'wynajem-drukarek': '/images/10_wynajem-drukarek.webp',
+  'drukarka-zastepcza': '/images/11_drukarka-zastepcza.webp',
+}
 
+const imageAlt: Record<string, string> = {
+  'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
+  'serwis-laptopow': 'Naprawa laptopów',
+  'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
+  'outsourcing-it': 'Outsourcing IT',
+  'serwis-drukarek-laserowych': 'Serwis drukarek laserowych',
+  'serwis-drukarek-atramentowych': 'Serwis drukarek atramentowych',
+  'serwis-drukarek-3d': 'Serwis i naprawa drukarek 3D',
+  'serwis-plotterow': 'Serwis i naprawa ploterów',
+  'serwis-drukarek-iglowych': 'Serwis drukarek igłowych',
+  'naprawa-drukarek': 'Serwis drukarek i urządzeń wielofunkcyjnych',
+  'wynajem-drukarek': 'Wynajem drukarek',
+  'drukarka-zastepcza': 'Drukarka zastępcza',
+}
 
+// Ikony dla kafelków usług powiązanych (sekcja "naprawa-drukarek")
+const serviceIconSrc: Record<string, string> = {
+  'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych-icon.webp',
+  'serwis-laptopow': '/images/01_serwis-laptopow-icon.webp',
+  'outsourcing-it': '/images/03_outsourcing-it-icon.webp',
+  'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych-icon.webp',
+  'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych-icon.webp',
+  'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp',
+  'serwis-plotterow': '/images/08_serwis-ploterow-icon.webp',
+  'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych-icon.webp',
+  'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych-icon.webp',
+  'wynajem-drukarek': '/images/10_wynajem-drukarek-icon.webp',
+  'drukarka-zastepcza': '/images/11_drukarka-zastepcza-icon.webp',
+}
+
+// Nadpisania tytułów na kafelkach usług powiązanych
+const subServiceTitles: Record<string, string> = {
+  'serwis-drukarek-termicznych': 'Serwis i naprawa drukarek etykiet',
+  'serwis-drukarek-laserowych': 'Serwis Drukarek Laserowych',
+}
+
+const relatedServiceSlugs = [
+  'serwis-drukarek-laserowych',
+  'serwis-drukarek-atramentowych',
+  'serwis-drukarek-iglowych',
+  'serwis-plotterow',
+  'serwis-drukarek-termicznych',
+  'serwis-drukarek-3d',
+  'wynajem-drukarek',
+  'drukarka-zastepcza',
+]
+
+const labels: ServicePageLabels = {
+  callNow: 'Zadzwoń teraz',
+  sendRequest: 'Wyślij zgłoszenie',
+  formHref: '/#formularz',
+  fadeSlideDefault: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")',
+  fadeSlideDrukarkaZastepcza: 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych',
+  fadeSlideWynajem: 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.',
+  relatedCta: 'Zobacz cennik',
+  relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
+  drukarkaZastepczaNote: (
+    <>
+      Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego. Oferujemy <strong>drukarki zastępcze Wrocław</strong> dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową.
+    </>
+  ),
+}
 
 // SEO metadata for each service page
 const slugBrands: Record<string, string[]> = {
@@ -311,372 +377,30 @@ export default async function ServicePage({
     url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
   }
 
+  const relatedServices: RelatedService[] = services
+    .filter(s => relatedServiceSlugs.includes(s.slug))
+    .map(s => ({
+      slug: s.slug,
+      title: s.title,
+      displayTitle: subServiceTitles[s.slug] || s.title,
+      iconSrc: serviceIconSrc[s.slug] || s.icon,
+    }))
+
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      <Header />
-      <main
-        className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${slug === 'serwis-drukarek-termicznych'
-
-
-
-
-          ? 'page-serwis-drukarek-termicznych'
-          : slug === 'serwis-laptopow'
-            ? 'page-serwis-laptopow'
-            : slug === 'serwis-komputerow-stacjonarnych'
-              ? 'page-serwis-komputerow-stacjonarnych'
-              : slug === 'outsourcing-it'
-                ? 'page-outsourcing-it'
-                : slug === 'serwis-drukarek-laserowych'
-                  ? 'page-serwis-drukarek-laserowych'
-                  : slug === 'serwis-drukarek-atramentowych'
-                    ? 'page-serwis-drukarek-atramentowych'
-                    : slug === 'serwis-drukarek-3d'
-                      ? 'page-serwis-drukarek-3d'
-                      : slug === 'serwis-plotterow'
-                        ? 'page-serwis-plotterow'
-                        : slug === 'serwis-drukarek-iglowych'
-                          ? 'page-serwis-drukarek-iglowych'
-                          : slug === 'naprawa-drukarek'
-                            ? 'page-naprawa-drukarek'
-                            : slug === 'wynajem-drukarek'
-                              ? 'page-wynajem-drukarek'
-                              : slug === 'drukarka-zastepcza'
-                                ? 'page-drukarka-zastepcza'
-                                : ''}`}
-      >
-
-
-
-        <div className="absolute inset-0">
-          <Image
-            src="/images/omobonus-hero2.webp"
-            alt="Omobonus serwis"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-
-        <div className="absolute inset-0 bg-black/50" />
-
-
-
-        <div className="relative">
-          {slug === 'serwis-drukarek-termicznych' || slug === 'serwis-laptopow' || slug === 'serwis-komputerow-stacjonarnych' || slug === 'outsourcing-it' || slug === 'serwis-drukarek-laserowych' || slug === 'serwis-drukarek-atramentowych' || slug === 'serwis-drukarek-3d' || slug === 'serwis-plotterow' || slug === 'serwis-drukarek-iglowych' || slug === 'naprawa-drukarek' || slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza' ? (
-            <>
-              {/* HERO container */}
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
-                <div
-                  className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
-                    ? 'md:grid-cols-[40%_60%]'
-                    : 'md:grid-cols-[25%_75%]'
-                    }`}
-                >
-                  <div className="flex justify-center md:justify-start">
-                    <div className="service-hero-image-wrap relative w-full">
-                      {heroLabels.map((label, index) => (
-                        <span
-                          key={label}
-                          className={`service-hero-label service-hero-label-${index + 1}`}
-                        >
-                          {label}
-                        </span>
-                      ))}
-
-                      <Image
-                        src={
-                          slug === 'serwis-drukarek-termicznych'
-                            ? "/images/06_serwis-drukarek-termicznych.webp"
-                            : slug === 'serwis-laptopow'
-                              ? "/images/01_serwis-laptopow.webp"
-                              : slug === 'serwis-komputerow-stacjonarnych'
-                                ? "/images/02_serwis-komputerow-stacjonarnych.webp"
-                                : slug === 'outsourcing-it'
-                                  ? "/images/03_outsourcing-it.webp"
-                                  : slug === 'serwis-drukarek-laserowych'
-                                    ? "/images/04_serwis-drukarek-laserowych.webp"
-                                    : slug === 'serwis-drukarek-atramentowych'
-                                      ? "/images/05_serwis-drukarek-atramentowych.webp"
-                                      : slug === 'serwis-drukarek-3d'
-                                        ? "/images/Serwis_i_Naprawa_Drukarek_3D.webp"
-                                        : slug === 'serwis-plotterow'
-                                          ? "/images/08_serwis-ploterow.webp"
-                                          : slug === 'serwis-drukarek-iglowych'
-                                            ? "/images/07_serwis-drukarek-iglowych.webp"
-                                            : slug === 'naprawa-drukarek'
-                                              ? "/images/Serwis_Drukarek.webp"
-                                              : slug === 'wynajem-drukarek'
-                                                ? "/images/10_wynajem-drukarek.webp"
-                                                : "/images/11_drukarka-zastepcza.webp"
-                        }
-                        alt={
-                          slug === 'serwis-drukarek-termicznych'
-                            ? "Drukarka etykiet termicznych"
-                            : slug === 'serwis-laptopow'
-                              ? "Naprawa laptopów"
-                              : slug === 'serwis-komputerow-stacjonarnych'
-                                ? "Serwis komputerów stacjonarnych"
-                                : slug === 'outsourcing-it'
-                                  ? "Outsourcing IT"
-                                  : slug === 'serwis-drukarek-laserowych'
-                                    ? "Serwis drukarek laserowych"
-                                    : slug === 'serwis-drukarek-atramentowych'
-                                      ? "Serwis drukarek atramentowych"
-                                      : slug === 'serwis-drukarek-3d'
-                                        ? "Serwis i naprawa drukarek 3D"
-                                        : slug === 'serwis-plotterow'
-                                          ? "Serwis i naprawa ploterów"
-                                          : slug === 'serwis-drukarek-iglowych'
-                                            ? "Serwis drukarek igłowych"
-                                            : slug === 'naprawa-drukarek'
-                                              ? "Serwis drukarek i urządzeń wielofunkcyjnych"
-                                              : slug === 'wynajem-drukarek'
-                                                ? "Wynajem drukarek"
-                                                : "Drukarka zastępcza"
-                        }
-                        width={420}
-                        height={420}
-                        className="service-hero-image object-contain w-full h-auto"
-                        priority
-                      />
-                    </div>
-                  </div>
-                  <div className="text-center flex flex-col items-center justify-center">
-                    <h1 className="text-[32px] md:text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                      {headings[slug]?.h1 || service.title}
-                    </h1>
-
-                    {headings[slug]?.h2 && (
-                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
-                        {headings[slug].h2}
-                      </h2>
-                    )}
-                    {/* BUTTONS */}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-                      <CallButton
-                        variant="primary"
-                        href="tel:+48793759262"
-                        className="w-[80%] md:w-auto"
-                      >
-                        <span className="md:hidden">Zadzwoń teraz</span>
-                        <span className="hidden md:inline">793 759 262</span>
-                      </CallButton>
-
-
-                      <CallButton
-                        variant="secondary"
-                        href="/#formularz"
-                        className="w-[80%] md:w-auto"
-                      >
-                        Wyślij zgłoszenie
-                      </CallButton>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-              {slugBrands[slug] && (
-                <div className="mt-[40px]">
-                  <BrandTicker brandNames={slugBrands[slug]} />
-                </div>
-              )}
-              {/* INFO container */}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands[slug] ? ' mt-[44px]' : ''}`}>
-                <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
-                  {slug === 'drukarka-zastepcza'
-                    ? 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych'
-                    : slug === 'wynajem-drukarek'
-                      ? 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.'
-                      : 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")'}
-                </FadeSlideText>
-              </div>
-            </>
-          ) : null}
-        </div>
-
-        {slug === 'naprawa-drukarek' ? (
-          <section
-            id="uslugi"
-            className={`relative text-center
-    ${slug === 'naprawa-drukarek'
-                ? 'pt-0 pb-2'
-                : 'pt-2 md:pt-4 pb-16 md:pb-24'
-              }
-  `}
-
-          >
-            {/* Tło */}
-
-
-            {/* Zawartość */}
-            <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {services
-                  .filter(s => [
-                    // старые (должны остаться)
-                    'serwis-drukarek-laserowych',
-                    'serwis-drukarek-atramentowych',
-                    'serwis-drukarek-iglowych',
-
-                    // новые
-                    'serwis-plotterow',
-                    'serwis-drukarek-termicznych',
-                    'serwis-drukarek-3d',
-                    'wynajem-drukarek',
-                    'drukarka-zastepcza',
-                  ].includes(s.slug))
-                  .map((service) => (
-                    <Link
-                      key={service.slug}
-                      href={`/uslugi/${service.slug}`}
-                      className="
-    group relative
-    min-h-[70px]
-    rounded-lg
-    py-2 px-3
-    border-2 border-[rgba(200,169,107,0.5)]
-    flex items-center text-left w-full
-    services-card-bg
-
-    transition-all duration-300 ease-out
-    hover:border-[rgba(200,169,107,0.85)]
-    hover:-translate-y-[2px]
-    hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]
-  "
-                    >
-                      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/40 via-[#bfa76a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
-
-                      {/* Ikona */}
-                      <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
-                        <Image
-                          src={
-                            service.slug === 'serwis-komputerow-stacjonarnych'
-                              ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
-                              : service.slug === 'serwis-laptopow'
-                                ? '/images/01_serwis-laptopow-icon.webp'
-                                : service.slug === 'outsourcing-it'
-                                  ? '/images/03_outsourcing-it-icon.webp'
-                                  : service.slug === 'serwis-drukarek-laserowych'
-                                    ? '/images/04_serwis-drukarek-laserowych-icon.webp'
-                                    : service.slug === 'serwis-drukarek-atramentowych'
-                                      ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
-                                      : service.slug === 'serwis-drukarek-3d'
-                                        ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
-                                        : service.slug === 'serwis-plotterow'
-                                          ? '/images/08_serwis-ploterow-icon.webp'
-                                          : service.slug === 'serwis-drukarek-termicznych'
-                                            ? '/images/06_serwis-drukarek-termicznych-icon.webp'
-                                            : service.slug === 'serwis-drukarek-iglowych'
-                                              ? '/images/07_serwis-drukarek-iglowych-icon.webp'
-                                              : service.slug === 'wynajem-drukarek'
-                                                ? '/images/10_wynajem-drukarek-icon.webp'
-                                                : service.slug === 'drukarka-zastepcza'
-                                                  ? '/images/11_drukarka-zastepcza-icon.webp'
-                                                  : service.icon
-                          }
-                          alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                          width={50}
-                          height={50}
-                          className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                          unoptimized
-                        />
-                      </div>
-
-                      {/* Treść */}
-                      <div className="relative z-10 flex-1">
-                        <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                          {service.slug === 'serwis-drukarek-termicznych' ? 'Serwis i naprawa drukarek etykiet' : service.slug === 'serwis-drukarek-laserowych' ? 'Serwis Drukarek Laserowych' : service.title}
-                        </div>
-                        <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
-                          <span>Zobacz cennik</span>
-                          <ArrowRight className="w-3 h-3" />
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-              </div>
-            </div>
-            {seoBlocks[slug]?.items.length > 0 && (
-              <div className="pt-2 pb-6 md:pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
-                  {seoBlocks[slug].items.map((text, index) => (
-                    <h2
-                      key={index}
-                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 text-left ${index % 2 === 0
-                        ? "md:text-right md:pr-2"
-                        : "md:text-left md:pl-2"
-                        }`}
-                    >
-                      {text}
-                    </h2>
-
-                  ))}
-                </div>
-              </div>
-            )}
-
-          </section>
-
-        ) : (
-
-          <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
-            <ServiceAccordion service={service} />
-
-            {seoBlocks[slug]?.items.length > 0 && (
-              <div className="pt-6 pb-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
-                  {seoBlocks[slug].items.map((text, index) => (
-                    <h2
-                      key={index}
-                      className={`text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0
-                        ? "text-left md:text-right md:pr-2"
-                        : "text-left md:pl-2"
-                        }`}
-                    >
-                      {text}
-                    </h2>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
-        )}
-
-
-
-        {/* SEO tekst dla strony Drukarka Zastępcza */}
-        {service.slug === 'drukarka-zastepcza' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego. Oferujemy <strong>drukarki zastępcze Wrocław</strong> dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową.
-            </p>
-          </div>
-        )}
-
-
-        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
-          <GoogleReviews />
-        </div>
-
-
-
-
-
-
-
-
-
-
-      </main>
-
-      <Footer />
-    </>
+    <ServicePageTemplate
+      locale="pl"
+      slug={slug}
+      service={service}
+      heroLabels={heroLabels}
+      headings={headings[slug] ?? { h1: service.title }}
+      seoBlocks={seoBlocks[slug]}
+      slugBrands={slugBrands[slug]}
+      imageSrc={serviceImageSrc[slug] || service.icon}
+      imageAlt={imageAlt[slug] || service.title}
+      basePath="/uslugi"
+      labels={labels}
+      relatedServices={relatedServices}
+      jsonLd={serviceJsonLd}
+    />
   )
 }
