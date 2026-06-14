@@ -16,6 +16,9 @@ interface HeroT {
   h1Line2: string
   h1Line3: string
   mobileH1: string
+  mobileH1Line1?: string
+  mobileH1Line2?: string
+  mobileH1Line3?: string
   tagline: string
   callMobile: string
   callDesktop: string
@@ -31,6 +34,9 @@ const PL: HeroT = {
   h1Line2: 'komputerów, laptopów i drukarek',
   h1Line3: 'we Wrocławiu',
   mobileH1: 'Serwis komputerów, laptopów i drukarek we Wrocławiu',
+  mobileH1Line1: 'Serwis komputerów,',
+  mobileH1Line2: 'laptopów i drukarek',
+  mobileH1Line3: 'we Wrocławiu',
   tagline: '"Uczciwość i szacunek do klienta" – to nasze podstawowe zasady pracy',
   callMobile: 'Zadzwoń teraz',
   callDesktop: '793 759 262',
@@ -98,8 +104,21 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
         <h1 className="hidden md:block text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
           {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
         </h1>
-        <h1 className="md:hidden text-[38px] font-cormorant font-bold leading-[1.15] text-[#ffffff] max-w-[320px]">
-          {d.mobileH1}
+        <h1
+          className="md:hidden font-cormorant font-bold text-[#ffffff] max-w-[92vw]"
+          style={{ fontSize: 'clamp(38px, 10.5vw, 48px)', lineHeight: 1.05 }}
+        >
+          {d.mobileH1Line1 ? (
+            <>
+              {d.mobileH1Line1}
+              <br />
+              {d.mobileH1Line2}
+              <br />
+              {d.mobileH1Line3}
+            </>
+          ) : (
+            d.mobileH1
+          )}
         </h1>
 
         <p ref={taglineRef} className="fade-slide-init mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
