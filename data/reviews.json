@@ -3,6 +3,18 @@
   "total": 191,
   "reviews": [
     {
+      "author_name": "Valery S",
+      "author_url": "https://www.google.com/maps/contrib/111457558858800203494/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU531dSqUUWQ8UQfEoqmema-0HiHO82AkrPeUPOOG1QnXjuqSxW=s128-c0x00000000-cc-rp-mo-ba3",
+      "rating": 5,
+      "relative_time_description": "2 tygodnie temu",
+      "text": "Niesamowita obsługa! Gorąco polecam. Coś się stało z moim laptopem, a ja miałem ważne dokumenty i pracę do wykonania. Przywiozłem laptopa wieczorem, kiedy warsztat był już prawie zamknięty, ale pracownik Max, biorąc pod uwagę pilność sprawy, został i szybko wszystko naprawił, co mnie uratowało, bardzo dziękuję! Bardzo dobra robota i przyjazny personel, który pomoże w każdym problemie. Jeszcze raz bardzo dziękuję!\n\nAmazing service! Highly recommended. Something happened to my laptop, and there were important documents and work that I had to complete. I brought my laptop in the evening, when the workshop was almost closing, but the employee Max, given the urgency of the matter, stayed and fixed everything quickly, which saved me, thank you very much! Very good work and friendly staff who will help with any problem. Thank you very much again!",
+      "time": 1779910506,
+      "translated": false
+    },
+    {
       "author_name": "Olena Golikova",
       "author_url": "https://www.google.com/maps/contrib/111549386925395367368/reviews",
       "language": "pl",
@@ -39,29 +51,17 @@
       "translated": false
     },
     {
-      "author_name": "Lyhun Oleksandr",
-      "author_url": "https://www.google.com/maps/contrib/111728020883963041785/reviews",
+      "author_name": "Peter Mishchuk",
+      "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
       "language": "pl",
       "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLKyvdOOlIsxgZ72Q1f8_lE4W1u4GI-49v-pACNKNGePZ33CA=s128-c0x00000000-cc-rp-mo",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWRYgTQO15FjcLPJgdpZqNp9JBiz0MQ90JEwYAy_GTliq-a-FE_=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "tydzień temu",
-      "text": "Oddałem komputer do naprawy i jestem bardzo zadowolony. Szybka diagnoza, uczciwe podejście i profesjonalna obsługa. Wszystko zostało naprawione sprawnie, a dodatkowo dostałem kilka przydatnych wskazówek na przyszłość. Zdecydowanie polecam!",
-      "time": 1780342269,
-      "translated": false
-    },
-    {
-      "author_name": "Anna Semenets",
-      "author_url": "https://www.google.com/maps/contrib/114445197211353387142/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWku0UKv2NLhxWVaLf8mHkP6HPB_gwagKESlupPO6VRExZfIpo=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "4 tygodnie temu",
-      "text": "Świetny serwis, uratowali moją pracę!\nOgromne podziękowania dla chłopaków za szybką i sprawną naprawę mojego printera, który zaciął papier w samym środku gorącego okresu w pracy. Diagnostykę zrobiono na moich oczach, od razu podano uczciwą cenę bez ukrytych kosztów, a sprawnie działający sprzęt odebrałam już następnego dnia. Zdecydowanie polecam to miejsce za pełen profesjonalizm, ekspresowe tempo i przemiłą obsługę!",
-      "time": 1778916190,
+      "relative_time_description": "3 tygodnie temu",
+      "text": "Dziękuję za szybką i profesjonalną naprawę drukarki oraz zmianę języka z niemieckiego na polski. Polecam ten serwis i Pana Andrzeja.",
+      "time": 1779523024,
       "translated": false
     }
   ],
-  "updatedAt": "2026-06-14T03:32:13.135Z"
+  "updatedAt": "2026-06-14T09:26:53.940Z"
 }
