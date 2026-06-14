@@ -744,33 +744,22 @@ const WynajemTable = ({
   }
 
   // Функция для рендеринга label с переносами строк (для мобильной и десктопной версий)
-  const renderLabel = (label: string, fontSize: string, loc: string = 'pl') => {
+  const renderLabel = (label: string, fontSize: string) => {
     if (label === 'Liczba stron A4 wliczonych w czynsz') {
-      return loc === 'uk' ? (
-        <>Кількість сторінок A4<br />включених у ренту</>
-      ) : (
-        <>Liczba stron A4<br />wliczonych w czynsz</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.pagesIncluded
+      return <>{line1}<br />{line2}</>
     }
     else if (label === 'Cena wydruku A4 mono (powyżej limitu)') {
-      return loc === 'uk' ? (
-        <>Ціна друку A4 моно<br />(понад ліміт)</>
-      ) : (
-        <>Cena wydruku A4 mono<br />(powyżej limitu)</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.printPriceMono
+      return <>{line1}<br />{line2}</>
     }
     else if (label === 'Cena wydruku A4 kolor (powyżej limitu)') {
-      return loc === 'uk' ? (
-        <>Ціна друку A4 колір<br />(понад ліміт)</>
-      ) : (
-        <>Cena wydruku A4 kolor<br />(powyżej limitu)</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.printPriceColor
+      return <>{line1}<br />{line2}</>
     }
-    else if (loc === 'uk') {
-      if (label === 'Skanowanie') return 'Сканування'
-      if (label === 'Duplex') return 'Duplex'
-      if (label.startsWith('Prędkość druku do:')) return label.replace('Prędkość druku do:', 'Швидкість друку до:')
-    }
+    else if (label === 'Skanowanie') return t.wynajemTableLabels.scanning
+    else if (label === 'Duplex') return t.wynajemTableLabels.duplex
+    else if (label.startsWith('Prędkość druku do:')) return label.replace('Prędkość druku do:', t.wynajemTableLabels.printSpeedPrefix)
     return label
   }
 
@@ -796,7 +785,7 @@ const WynajemTable = ({
                 <span
                   className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
-                  mono
+                  {t.wynajemUnits.mono}
                 </span>
               </div>
               {/* Вторая строка: "+ 0 kolor" */}
@@ -806,7 +795,7 @@ const WynajemTable = ({
                 <span
                   className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
-                  kolor
+                  {t.wynajemUnits.kolor}
                 </span>
               </div>
             </div>
@@ -818,7 +807,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
-                mono
+                {t.wynajemUnits.mono}
               </span>
               {/* "+ 0" */}
               <div className="flex items-baseline">
@@ -829,7 +818,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
-                kolor
+                {t.wynajemUnits.kolor}
               </span>
             </div>
           </div>
@@ -866,7 +855,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
               >
-                str.
+                {t.wynajemUnits.str}
               </span>
             </div>
           )
@@ -889,7 +878,7 @@ const WynajemTable = ({
             <span
               className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
             >
-              str.
+              {t.wynajemUnits.str}
             </span>
           </div>
         </div>
@@ -906,7 +895,7 @@ const WynajemTable = ({
           <span
             className="text-[14px] text-[#cbb27c] leading-relaxed"
           >
-            str./mies.
+            {t.wynajemUnits.strPerMonth}
           </span>
         </div>
       )
@@ -920,7 +909,7 @@ const WynajemTable = ({
           <span
             className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
           >
-            str./min
+            {t.wynajemUnits.strPerMin}
           </span>
         </span>
       )
@@ -936,7 +925,7 @@ const WynajemTable = ({
             className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5"
             style={{ marginTop: '-3px' }}
           >
-            zł
+            {t.wynajemUnits.currency}
           </span>
         </span>
       )
@@ -1055,7 +1044,7 @@ const WynajemTable = ({
                     return columnWidths ? { width: `${columnWidths.text}px` } : undefined
                   })()}
                 >
-                  {renderLabel(typedRow.label, labelFontSize, locale)}
+                  {renderLabel(typedRow.label, labelFontSize)}
                 </div>
                 {/* Колонка с данными - единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
                 {typedRow.plan1 && (
@@ -1178,7 +1167,7 @@ const WynajemTable = ({
                           borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                         }}
                       >
-                        {renderLabel(typedRow.label, labelFontSize, locale)}
+                        {renderLabel(typedRow.label, labelFontSize)}
                       </TableCell>
                       {typedRow.plan1 && (
                         <TableCell

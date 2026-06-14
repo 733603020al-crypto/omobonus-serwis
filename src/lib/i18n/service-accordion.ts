@@ -27,6 +27,24 @@ export interface ServiceAccordionDict {
     serwisDrukarekIglowych: string
     serwisDrukarekTermicznych: string
   }
+  /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
+  wynajemTableLabels: {
+    pagesIncluded: readonly [string, string]
+    printPriceMono: readonly [string, string]
+    printPriceColor: readonly [string, string]
+    scanning: string
+    duplex: string
+    printSpeedPrefix: string
+  }
+  /** Единицы измерения, отображаемые в таблице wynajem рядом со значениями (renderValueWithSuffix) */
+  wynajemUnits: {
+    mono: string
+    kolor: string
+    str: string
+    strPerMonth: string
+    strPerMin: string
+    currency: string
+  }
   /** Перевод названия/описания/особенностей категорий устройств, ключ — польский title из DEVICE_CATEGORIES/THERMAL_DEVICE_CATEGORIES/NEEDLE_DEVICE_CATEGORIES */
   categoryTranslations: Record<string, ServiceAccordionCategoryTranslation>
 }
@@ -59,6 +77,22 @@ export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
       serwisDrukarekTermicznych: 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej',
     },
     categoryTranslations: {},
+    wynajemTableLabels: {
+      pagesIncluded: ['Liczba stron A4', 'wliczonych w czynsz'],
+      printPriceMono: ['Cena wydruku A4 mono', '(powyżej limitu)'],
+      printPriceColor: ['Cena wydruku A4 kolor', '(powyżej limitu)'],
+      scanning: 'Skanowanie',
+      duplex: 'Duplex',
+      printSpeedPrefix: 'Prędkość druku do:',
+    },
+    wynajemUnits: {
+      mono: 'mono',
+      kolor: 'kolor',
+      str: 'str.',
+      strPerMonth: 'str./mies.',
+      strPerMin: 'str./min',
+      currency: 'zł',
+    },
   },
   uk: {
     priceHeaderFull: 'Ціна, zł',
@@ -86,6 +120,22 @@ export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
       serwisDrukarekTermicznych: 'У прайсі перша ціна стосується малого принтера етикеток, друга — середнього, третя — великого',
+    },
+    wynajemTableLabels: {
+      pagesIncluded: ['Кількість сторінок A4', 'включених у ренту'],
+      printPriceMono: ['Ціна друку A4 моно', '(понад ліміт)'],
+      printPriceColor: ['Ціна друку A4 колір', '(понад ліміт)'],
+      scanning: 'Сканування',
+      duplex: 'Duplex',
+      printSpeedPrefix: 'Швидкість друку до:',
+    },
+    wynajemUnits: {
+      mono: 'mono',
+      kolor: 'kolor',
+      str: 'str.',
+      strPerMonth: 'str./mies.',
+      strPerMin: 'str./min',
+      currency: 'zł',
     },
     categoryTranslations: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Пристрій для домашнього (нечастого) друку. Невеликі моделі A4', features: ['малі розміри', 'повільніший друк'] },
