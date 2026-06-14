@@ -2129,7 +2129,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 >
                                   <div className="text-center">
                                     <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
+                                      {t.rentPriceHeader}
                                     </span>
                                   </div>
                                 </div>
@@ -2137,7 +2137,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-center">
                                     <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
+                                      {t.rentPriceHeader}
                                     </span>
                                   </div>
                                 </div>
@@ -2167,7 +2167,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -2187,7 +2187,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 >
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -2195,7 +2195,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
