@@ -19,8 +19,11 @@ export interface ServiceAccordionDict {
   exampleLabel: string
   rentPriceHeader: string
   printPriceHeader: string
-  konserwacjaTitle: string
-  naprawyTitle: string
+  /** Заголовки секций konserwacja/naprawy для мобильного аккордеона. null — использовать section.title из данных */
+  mobileAccordionTitles: {
+    konserwacja: string | null
+    naprawy: string | null
+  }
   dojazdNote: readonly [string, string]
   deviceCategoriesDescription: {
     default: string
@@ -65,8 +68,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
     exampleLabel: '(np.',
     rentPriceHeader: 'Czynsz wynajmu [zł/mies.]',
     printPriceHeader: 'Cena wydruku',
-    konserwacjaTitle: 'Czyszczenie i konserwacja',
-    naprawyTitle: 'Naprawy i usługi serwisowe',
+    mobileAccordionTitles: {
+      konserwacja: 'Czyszczenie i konserwacja',
+      naprawy: 'Naprawy i usługi serwisowe',
+    },
     dojazdNote: [
       'Nie mówimy, że dojazd lub odbiór są „za darmo”,',
       'a następnie doliczamy ten koszt do ceny naprawy',
@@ -109,9 +114,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
     exampleLabel: '(напр.',
     rentPriceHeader: 'Орендна плата [zł/міс.]',
     printPriceHeader: 'Ціна друку',
-    // не используется напрямую — для секций konserwacja/naprawy на uk берётся section.title из данных
-    konserwacjaTitle: 'Czyszczenie i konserwacja',
-    naprawyTitle: 'Naprawy i usługi serwisowe',
+    // null — для секций konserwacja/naprawy на uk берётся section.title из данных (заголовки уже короткие и различаются по сервисам)
+    mobileAccordionTitles: {
+      konserwacja: null,
+      naprawy: null,
+    },
     dojazdNote: [
       'Ми не кажемо, що виїзд або прийом «безкоштовні»,',
       'а потім додаємо цю вартість до ціни ремонту',

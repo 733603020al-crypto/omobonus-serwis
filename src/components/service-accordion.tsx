@@ -2017,10 +2017,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       return section.title
                                     }
                                     if (section.id === 'konserwacja') {
-                                      return locale === 'uk' ? section.title : t.konserwacjaTitle
+                                      return t.mobileAccordionTitles.konserwacja ?? section.title
                                     }
                                     if (section.id === 'naprawy') {
-                                      return locale === 'uk' ? section.title : t.naprawyTitle
+                                      return t.mobileAccordionTitles.naprawy ?? section.title
                                     }
                                     return section.title
                                   })()}
