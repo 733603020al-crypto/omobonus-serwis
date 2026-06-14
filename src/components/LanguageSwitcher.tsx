@@ -7,14 +7,53 @@ import { useState, useRef, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import manifest from '@/config/manifest'
 
+interface LocaleOption {
+  code: 'pl' | 'uk'
+  /** Префикс маршрута локали, '' для корневой (pl) локали */
+  prefix: string
+  /** Короткая подпись в самой кнопке переключателя */
+  shortLabel: string
+  /** Полное название языка в выпадающем списке */
+  fullLabel: string
+  flagSrc: string
+}
+
+// Видимые сейчас локали. Чтобы добавить язык (например ru), достаточно
+// добавить новый элемент сюда — JSX переключателя менять не нужно.
+const SUPPORTED_LOCALES: LocaleOption[] = [
+  { code: 'pl', prefix: '', shortLabel: 'PL', fullLabel: 'Polski', flagSrc: '/images/pl.webp' },
+  { code: 'uk', prefix: '/uk', shortLabel: 'Ukr', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
+]
+
+function matchesLocale(pathname: string, locale: LocaleOption): boolean {
+  if (!locale.prefix) return true
+  return pathname === locale.prefix || pathname.startsWith(locale.prefix + '/')
+}
+
+function getCurrentLocale(pathname: string): LocaleOption {
+  return SUPPORTED_LOCALES.find(locale => locale.prefix && matchesLocale(pathname, locale)) ?? SUPPORTED_LOCALES[0]
+}
+
+/** Путь страницы без префикса текущей локали (т.е. "польский" вид пути) */
+function getBasePath(pathname: string, currentLocale: LocaleOption): string {
+  if (!currentLocale.prefix) return pathname
+  const rest = pathname.slice(currentLocale.prefix.length)
+  return rest || '/'
+}
+
+function buildLocaleHref(basePath: string, targetLocale: LocaleOption): string {
+  if (!targetLocale.prefix) return basePath
+  return basePath === '/' ? targetLocale.prefix : targetLocale.prefix + basePath
+}
+
 export function LanguageSwitcher() {
-  const pathname = usePathname()
+  const pathname = usePathname() ?? '/'
   const [isOpen, setIsOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
-  const isUk = pathname?.startsWith('/uk') ?? false
 
-  const plHref = isUk ? pathname.replace(/^\/uk/, '') || '/' : pathname
-  const ukHref = isUk ? pathname : '/uk' + (pathname === '/' ? '' : pathname)
+  const currentLocale = getCurrentLocale(pathname)
+  const isUk = currentLocale.code === 'uk'
+  const basePath = getBasePath(pathname, currentLocale)
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -48,14 +87,14 @@ export function LanguageSwitcher() {
         aria-label="Wybierz język / Вибрати мову"
       >
         <Image
-          src={isUk ? '/images/ua.webp' : '/images/pl.webp'}
+          src={currentLocale.flagSrc}
           alt=""
           width={18}
           height={13}
           className="rounded-[2px] object-cover flex-shrink-0"
           unoptimized
         />
-        {isUk ? 'Ukr' : 'PL'}
+        {currentLocale.shortLabel}
         <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -64,14 +103,17 @@ export function LanguageSwitcher() {
           <Image src={manifest.Background_1} alt="" fill sizes="155px" className="object-cover object-center" />
           <div className="absolute inset-0 bg-black/75" />
           <div className="relative z-10 p-2 flex flex-col divide-y divide-[#bfa76a]/25">
-            <Link href={plHref} onClick={() => setIsOpen(false)} className={dropdownItemClass(!isUk)}>
-              <Image src="/images/pl.webp" alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
-              Polski
-            </Link>
-            <Link href={ukHref} onClick={() => setIsOpen(false)} className={dropdownItemClass(isUk)}>
-              <Image src="/images/ua.webp" alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
-              Українська
-            </Link>
+            {SUPPORTED_LOCALES.map(locale => (
+              <Link
+                key={locale.code}
+                href={buildLocaleHref(basePath, locale)}
+                onClick={() => setIsOpen(false)}
+                className={dropdownItemClass(locale.code === currentLocale.code)}
+              >
+                <Image src={locale.flagSrc} alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
+                {locale.fullLabel}
+              </Link>
+            ))}
           </div>
         </div>
       )}
