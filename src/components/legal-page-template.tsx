@@ -48,7 +48,7 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
 
                 <div className="pt-3 border-t border-[#3a2e24]/20 mt-4">
                   <p className="text-sm md:text-base font-sans text-[#3a2e24]/70 italic">
-                    {`${content.lastUpdatedLabel}: ${new Date().toLocaleDateString('pl-PL', {
+                    {`${content.lastUpdatedLabel}: ${new Date().toLocaleDateString(content.dateLocale, {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',

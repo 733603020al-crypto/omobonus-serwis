@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { LegalPageTemplate } from '@/components/legal-page-template'
-import { regulaminContent } from '@/lib/legal/legal-pages'
+import { regulaminContentUk } from '@/lib/legal/legal-pages'
 import { uk } from '@/lib/i18n/uk'
 
 export const metadata: Metadata = {
@@ -19,5 +19,5 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default function UkRegulamin() {
-  return <LegalPageTemplate content={regulaminContent} footerT={uk.footer} cardMarginBottomClass="-mb-[25%]" minHeightZero />
+  return <LegalPageTemplate content={regulaminContentUk} footerT={uk.footer} cardMarginBottomClass="-mb-[25%]" minHeightZero />
 }

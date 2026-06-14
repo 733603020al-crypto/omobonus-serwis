@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { LegalPageTemplate } from '@/components/legal-page-template'
-import { politykaPrywatnosciContent } from '@/lib/legal/legal-pages'
+import { politykaPrywatnosciContentUk } from '@/lib/legal/legal-pages'
 import { uk } from '@/lib/i18n/uk'
 
 export const metadata: Metadata = {
@@ -19,5 +19,5 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default function UkPolitykaPrywatnosci() {
-  return <LegalPageTemplate content={politykaPrywatnosciContent} footerT={uk.footer} cardMarginBottomClass="-mb-[15%]" />
+  return <LegalPageTemplate content={politykaPrywatnosciContentUk} footerT={uk.footer} cardMarginBottomClass="-mb-[15%]" />
 }
