@@ -23,20 +23,6 @@ export const metadata: Metadata = {
   },
 }
 
-const ukActions = {
-  quickContactTitle: 'Зв\'яжіться з нами',
-  callbackTitle: 'Залиште номер — ми передзвонимо',
-  navigateLabel: 'Прокласти маршрут',
-  callbackButton: 'Прошу зателефонувати',
-  callbackSubmitting: 'Надсилання...',
-  callbackHint: 'Передзвонюємо: пн.–сб. 7:00–21:00',
-  phoneError: 'Номер телефону занадто короткий',
-  callbackError: 'Не вдалося надіслати запит. Спробуйте ще раз або зателефонуйте.',
-  successTitle: 'Дякуємо!',
-  successText: 'Ми зв\'яжемося з вами якнайшвидше',
-}
-
-
 export default function UkKontaktPage() {
   return (
     <>
@@ -52,7 +38,7 @@ export default function UkKontaktPage() {
       >
         <div className="relative z-10">
           <h1 className="sr-only">Контакт із сервісом комп&apos;ютерів, ноутбуків і принтерів у Вроцлаві</h1>
-          <ContactActionsSection t={ukActions} locale="uk" />
+          <ContactActionsSection t={uk.contactActions} locale="uk" />
           <Contact locale="uk" bare={true} />
           <Footer t={uk.footer} bare />
         </div>
