@@ -177,8 +177,8 @@
     eyebrow: 'Команда',
     h2: 'Знайомтесь — люди, а не call-центр',
     members: [
-      { initial: 'М', name: 'Максим', role: 'Діагностика та ремонт техніки', avatar: '/images/maksym_portret_400x400.webp' },
-      { initial: 'П', name: 'Павло', role: 'Сервіс принтерів і плотерів', avatar: '/images/pawel_portret_400x400.webp' },
+      { initial: 'М', name: 'Максим', role: 'Обслуговування клієнтів і ремонт техніки', avatar: '/images/maksym_portret_400x400.webp' },
+      { initial: 'П', name: 'Павло', role: 'Сервіс офісної техніки', avatar: '/images/pawel_portret_400x400.webp' },
       { initial: 'А', name: 'Андрій', role: 'Зв\'язок з клієнтом і кошториси', avatar: '/images/andrzey_avatar_400.webp' },
     ],
     quote: 'Нас троє. Ви знаєте нас на ім\'я. Ми особисто відповідаємо на дзвінки.',

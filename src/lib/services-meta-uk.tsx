@@ -2,7 +2,7 @@ import type { ServicePageLabels } from '@/components/service-page-template'
 
 export const headingsUk: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
-    h1: 'Сервіс і ремонт термотрансферних принтерів етикеток у Вроцлаві',
+    h1: 'Сервіс і ремонт термо- та термотрансферних принтерів етикеток у Вроцлаві',
     h2: '(Zebra, Dymo, Godex, Sato, Brother та інші)',
   },
   'serwis-laptopow': {
@@ -41,7 +41,7 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'wynajem-drukarek': {
     h1: 'Оренда (лізинг) принтерів і копіювальних апаратів',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
   'drukarka-zastepcza': {
     h1: 'Принтер на заміну (на час ремонту)',
@@ -196,10 +196,10 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
 }
 
 export const labelsUk: ServicePageLabels = {
-  callNow: 'Зателефонувати',
+  callNow: 'Зателефонувати зараз',
   sendRequest: 'Надіслати заявку',
   formHref: '/uk#formularz',
-  fadeSlideDefault: 'Повний прайс-лист послуг, без прихованих витрат (не "ремонт від 50 зл" або "ціна до узгодження")',
+  fadeSlideDefault: 'Повний прайс-лист послуг, без прихованих витрат (не "ремонт від 50 zł" або "ціна до узгодження")',
   fadeSlideDrukarkaZastepcza: 'Поломка? Без стресу – на час ремонту надаємо принтер на заміну без абонентської плати',
   fadeSlideWynajem: 'Принтер із сервісом і тонером у вартості — ви дбаєте лише про папір і електроенергію.',
   relatedCta: 'Переглянути прайс-лист',

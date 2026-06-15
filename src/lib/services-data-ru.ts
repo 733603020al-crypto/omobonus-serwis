@@ -222,7 +222,7 @@ const laptopNaprawy: PricingSection = {
         { service: 'Замена батарейки CMOS (BIOS) на материнской плате', price: '50-150', duration: '1-3 дня' },
         { service: 'Ремонт схемы зарядки (charge controller / MOSFET / BQ / ISL)', price: '180-260 + детали', duration: '2-7 дней' },
         { service: 'Замена микросхем питания (PU, PD, KBC/EC)', price: '220-360 + детали', duration: '3-7 дней' },
-        { service: 'Замена кабеля (внешний кабель) / разъёма зарядного устройства', price: '50 + деталь', duration: '1 день' },
+        { service: 'Замена шнура питания (внешнего кабеля) / разъёма блока питания', price: '50 + деталь', duration: '1 день' },
         { service: 'Замена / расширение памяти RAM + тест стабильности', price: '70 + деталь', duration: '1-2 дня' },
         { service: 'Ремонт проблем с сетевой картой (драйверы / службы / сброс)', price: '60-120', duration: '1 день' },
         { service: 'Замена карты Wi-Fi (M.2 / miniPCIe) + настройка', price: '90 + деталь', duration: '1-2 дня' },
@@ -341,11 +341,11 @@ const desktopNaprawy: PricingSection = {
         { service: 'Удаление вирусов, троянов, spyware, malware, adware, ransomware и другого вредоносного ПО', price: '100', duration: '1-2 дня' },
         { service: 'Удаление паролей системы, защиты операционной системы, диска или BIOS (если легально и возможно)', price: '100', duration: '1-2 дня' },
         { service: 'Восстановление паролей пользователя (если легально)', price: '100', duration: '1-2 дня' },
-        { service: 'Обновление BIOS (без повреждения микросхемы и извлечения)', price: '50', duration: '1-2 дня' },
+        { service: 'Обновление BIOS (без повреждения микросхемы и выпаивания)', price: '50', duration: '1-2 дня' },
         { service: 'Сброс / ремонт / восстановление настроек UEFI/BIOS', price: '80-120', duration: '1-2 дня' },
         { service: 'Сброс/восстановление BIOS/UEFI (после неудачного flash / update)', price: '100', duration: '1-2 дня' },
         { service: 'Программирование BIOS (чтение / перезапись / flash из файла)', price: '100', duration: '1-2 дня' },
-        { service: 'Программирование BIOS после извлечения в программаторе', price: '150', duration: '1-2 дня' },
+        { service: 'Программирование BIOS после выпаивания в программаторе', price: '150', duration: '1-2 дня' },
         { service: 'Настройка RAID (0/1/5/10)', price: '180', duration: '1-3 дня' },
         { service: 'Индивидуальная настройка/ремонт системы Windows', price: '120 / час', duration: '-' },
         { service: 'Удалённая помощь компьютерного специалиста', price: '120 / час', duration: '-' },
@@ -439,7 +439,7 @@ const outsourcingNaprawy: PricingSection = {
   subcategories: [
     {
       id: 'naprawy-mechanizm',
-      title: 'Разовый сервис (работа специалиста у Клиента)',
+      title: 'Общий сервис (работа специалиста у Клиента)',
       items: [
         { service: 'Выезд специалиста к Клиенту\n(первый час работы — диагностика и устранение мелких неисправностей непосредственно в офисе Клиента)', price: '150 zł\n/ час', duration: '1–3 дня' },
         { service: 'Каждый следующий начатый час работы специалиста\n(продолжение ремонта, настройки или внедрения после первого часа)', price: '100 zł\n/ час', duration: '—' },
@@ -1480,7 +1480,7 @@ export const servicesRu: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-termicznych',
-    title: 'Сервис термотрансферных принтеров этикеток',
+    title: 'Сервис термоэтикеточных и термотрансферных принтеров',
     subtitle: 'Ремонт принтеров этикеток и штрихкодов',
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервис принтеров этикеток и штрихкодов.',

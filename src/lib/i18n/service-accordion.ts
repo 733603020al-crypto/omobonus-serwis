@@ -129,7 +129,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekTermicznych: 'У прайсі перша ціна стосується малого принтера етикеток, друга — середнього, третя — великого',
     },
     wynajemTableLabels: {
-      pagesIncluded: ['Кількість сторінок A4', 'включених у ренту'],
+      pagesIncluded: ['Кількість сторінок A4', 'включених в оренду'],
       printPriceMono: ['Ціна друку A4 моно', '(понад ліміт)'],
       printPriceColor: ['Ціна друку A4 колір', '(понад ліміт)'],
       scanning: 'Сканування',
@@ -137,11 +137,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       printSpeedPrefix: 'Швидкість друку до:',
     },
     wynajemUnits: {
-      mono: 'mono',
-      kolor: 'kolor',
-      str: 'str.',
-      strPerMonth: 'str./mies.',
-      strPerMin: 'str./min',
+      mono: 'моно',
+      kolor: 'колір',
+      str: 'стор.',
+      strPerMonth: 'стор./міс.',
+      strPerMin: 'стор./хв',
       currency: 'zł',
     },
     categoryTranslations: {
@@ -193,11 +193,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       printSpeedPrefix: 'Скорость печати до:',
     },
     wynajemUnits: {
-      mono: 'mono',
-      kolor: 'kolor',
-      str: 'str.',
-      strPerMonth: 'str./mies.',
-      strPerMin: 'str./min',
+      mono: 'моно',
+      kolor: 'цвет',
+      str: 'стр.',
+      strPerMonth: 'стр./мес.',
+      strPerMin: 'стр./мин',
       currency: 'zł',
     },
     categoryTranslations: {

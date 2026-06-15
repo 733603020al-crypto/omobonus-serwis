@@ -40,7 +40,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
   },
   'wynajem-drukarek': {
-    h1: 'Аренда принтеров и копировальных аппаратов',
+    h1: 'Аренда (лизинг) принтеров и копировальных аппаратов',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
   'drukarka-zastepcza': {
