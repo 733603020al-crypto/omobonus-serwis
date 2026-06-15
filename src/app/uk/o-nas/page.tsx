@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     languages: {
       'pl': 'https://serwis.omobonus.com.pl/o-nas',
       'uk': 'https://serwis.omobonus.com.pl/uk/o-nas',
+      'ru': 'https://serwis.omobonus.com.pl/ru/o-nas',
       'x-default': 'https://serwis.omobonus.com.pl/o-nas',
     },
   },

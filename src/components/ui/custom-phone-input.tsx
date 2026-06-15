@@ -12,8 +12,13 @@ interface CustomPhoneInputProps {
   onCountryChange?: (data: { name: string; dialCode: string; phoneLength?: number }) => void
   className?: string
   variant?: 'light' | 'dark'
-  locale?: 'pl' | 'uk'
+  locale?: 'pl' | 'uk' | 'ru'
 }
+
+const LOCALIZED_COUNTRY_NAME_KEYS = {
+  uk: 'nameUk',
+  ru: 'nameRu',
+} as const
 
 const DEFAULT_COUNTRY = countries[1]
 
@@ -141,11 +146,13 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     return 'xxx xxx xxx' // fallback
   }
 
-  const getCountryLabel = (country: Country) =>
-    locale === 'uk' && country.nameUk ? country.nameUk : country.name
+  const getCountryLabel = (country: Country) => {
+    const key = LOCALIZED_COUNTRY_NAME_KEYS[locale as 'uk' | 'ru']
+    return (key && country[key]) || country.name
+  }
 
   const selectedLabel = getCountryLabel(selectedCountry)
-  const displayName = selectedLabel.length > 12 && locale !== 'uk'
+  const displayName = selectedLabel.length > 12 && locale === 'pl'
     ? selectedCountry.shortName
     : selectedLabel
 

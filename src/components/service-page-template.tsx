@@ -77,7 +77,7 @@ function SeoBlocksGrid({ items, variant }: SeoBlocksGridProps) {
 }
 
 interface ServicePageTemplateProps {
-  locale: 'pl' | 'uk'
+  locale: 'pl' | 'uk' | 'ru'
   slug: string
   service: ServiceData
   heroLabels: string[]

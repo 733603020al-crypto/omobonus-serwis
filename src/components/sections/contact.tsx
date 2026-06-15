@@ -11,8 +11,9 @@ import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { uk } from '@/lib/i18n/uk'
+import { ru } from '@/lib/i18n/ru'
 
-export type Locale = 'pl' | 'uk'
+export type Locale = 'pl' | 'uk' | 'ru'
 
 export interface ContactT {
   formTitle: string
@@ -83,6 +84,7 @@ const PL: ContactT = {
 const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
   pl: PL,
   uk: uk.contactForm,
+  ru: ru.contactForm,
 }
 
 function buildFormSchema(phoneError: string, agreementError: string) {

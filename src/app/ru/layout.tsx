@@ -8,36 +8,28 @@ import '../styles/accordion.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 
-/* =========================
-   Fonts (STRICT: 2 only)
-   ========================= */
-
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-cormorant',
 })
 
 const inter = Inter({
   weight: ['400', '500', '600'],
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-inter',
 })
 
-/* =========================
-   Metadata
-   ========================= */
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
   title: {
-    default: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
-    template: '%s | Omobonus Wrocław',
+    default: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
+    template: '%s | Omobonus Вроцлав',
   },
   description:
-    'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów. Dojazd gratis.',
+    'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве. Ремонт оборудования, аутсорсинг IT, честные цены без скрытых затрат. Выезд бесплатно.',
   authors: [{ name: 'Omobonus Sp. z o.o.' }],
   creator: 'Omobonus Sp. z o.o.',
   publisher: 'Omobonus Sp. z o.o.',
@@ -54,30 +46,30 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'pl_PL',
-    url: 'https://serwis.omobonus.com.pl',
+    locale: 'ru_RU',
+    url: 'https://serwis.omobonus.com.pl/ru',
     siteName: 'Omobonus Serwis',
-    title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    title: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
     description:
-      'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów.',
+      'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве. Ремонт оборудования, аутсорсинг IT, честные цены без скрытых затрат.',
     images: [
       {
         url: '/images/omobonus-hero.webp',
         width: 1200,
         height: 630,
-        alt: 'Omobonus - serwis komputerów, laptopów i drukarek Wrocław',
+        alt: 'Omobonus - сервис компьютеров и принтеров Вроцлав',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
+    title: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
     description:
-      'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Uczciwe ceny, dojazd gratis.',
+      'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве. Честные цены, выезд бесплатно.',
     images: ['/images/omobonus-hero.webp'],
   },
   alternates: {
-    canonical: 'https://serwis.omobonus.com.pl',
+    canonical: 'https://serwis.omobonus.com.pl/ru',
     languages: {
       'pl': 'https://serwis.omobonus.com.pl',
       'uk': 'https://serwis.omobonus.com.pl/uk',
@@ -87,10 +79,6 @@ export const metadata: Metadata = {
   },
   category: 'technology',
 }
-
-/* =========================
-   Schema.org JSON-LD
-   ========================= */
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -102,14 +90,10 @@ const jsonLd = {
   telephone: '+48793759262',
 }
 
-/* =========================
-   Root Layout
-   ========================= */
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RuRootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang="pl"
+      lang="ru"
       className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
@@ -161,7 +145,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         {children}
 
-        {/* 🔵 Floating call button – ONLY mobile */}
         <FloatingCallButton />
         <FloatingContactButton />
 

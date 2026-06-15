@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react'
 import manifest from '@/config/manifest'
 
 interface LocaleOption {
-  code: 'pl' | 'uk'
+  code: 'pl' | 'uk' | 'ru'
   /** Префикс маршрута локали, '' для корневой (pl) локали */
   prefix: string
   /** Короткая подпись в самой кнопке переключателя */
@@ -23,6 +23,7 @@ interface LocaleOption {
 const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: 'pl', prefix: '', shortLabel: 'PL', fullLabel: 'Polski', flagSrc: '/images/pl.webp' },
   { code: 'uk', prefix: '/uk', shortLabel: 'Ukr', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
+  { code: 'ru', prefix: '/ru', shortLabel: 'Рус', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
 ]
 
 function matchesLocale(pathname: string, locale: LocaleOption): boolean {

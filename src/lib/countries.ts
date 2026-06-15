@@ -2,6 +2,7 @@ export interface Country {
   code: string
   name: string
   nameUk?: string // украинское название для UK locale (только отображение)
+  nameRu?: string // русское название для RU locale (только отображение)
   shortName: string // для случаев, когда полное не помещается
   dialCode: string
   flagImage: string // путь к изображению из /images/
@@ -17,7 +18,7 @@ export const countries: Country[] = [
   { code: 'sk', name: 'Słowacja', nameUk: 'Словаччина', shortName: 'Słowacja', dialCode: '+421', flagImage: '/images/sk.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9 },
   { code: 'lt', name: 'Litwa', nameUk: 'Литва', shortName: 'Litwa', dialCode: '+370', flagImage: '/images/lt.webp', phoneFormat: 'xxx xxxxx', phoneLength: 8 },
   { code: 'gb', name: 'Wielka Brytania', nameUk: 'Велика Британія', shortName: 'Wielka Brytania', dialCode: '+44', flagImage: '/images/gb.webp', phoneFormat: 'xxxx xxxxxx', phoneLength: 10 },
-  { code: 'other', name: 'Inny kraj', nameUk: 'Інша країна', shortName: 'Inny kraj', dialCode: '', flagImage: '/images/other.webp' },
+  { code: 'other', name: 'Inny kraj', nameUk: 'Інша країна', nameRu: 'Другая страна', shortName: 'Inny kraj', dialCode: '', flagImage: '/images/other.webp' },
 ]
 
 export function formatPhoneNumber(phone: string, format?: string): string {

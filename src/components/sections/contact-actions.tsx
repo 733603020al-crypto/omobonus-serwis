@@ -86,7 +86,7 @@ const PL_ACTIONS: ContactActionsT = {
   successText: 'Skontaktujemy się z Państwem jak najszybciej',
 }
 
-export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' } = {}) {
+export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
   const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
   const [countryName, setCountryName] = useState('Polska')

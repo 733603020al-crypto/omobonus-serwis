@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     languages: {
       'pl': 'https://serwis.omobonus.com.pl/kontakt',
       'uk': 'https://serwis.omobonus.com.pl/uk/kontakt',
+      'ru': 'https://serwis.omobonus.com.pl/ru/kontakt',
       'x-default': 'https://serwis.omobonus.com.pl/kontakt',
     },
   },

@@ -52,7 +52,7 @@ export interface ServiceAccordionDict {
   categoryTranslations: Record<string, ServiceAccordionCategoryTranslation>
 }
 
-export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
+export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDict> = {
   pl: {
     priceHeaderFull: 'Cena, zł',
     priceHeaderShort: 'Cena',
@@ -154,6 +154,62 @@ export const serviceAccordionI18n: Record<'pl' | 'uk', ServiceAccordionDict> = {
       'Mała drukarka igłowa': { title: 'Малий матричний принтер', description: 'Пристрій для нечастого друку. Невеликі моделі.', features: ['малі розміри', 'повільніший друк'] },
       'Średnia drukarka igłowa': { title: 'Середній матричний принтер', description: 'Для роботи в малих і середніх офісах. Для частішого друку.', features: ['середній розмір', 'швидший друк', 'вища надійність'] },
       'Duża drukarka igłowa': { title: 'Великий матричний принтер', description: 'Бізнес-пристрій для інтенсивної щоденної роботи та великих обсягів друку.', features: ['для великих обсягів із високою витривалістю'] },
+    },
+  },
+  ru: {
+    priceHeaderFull: 'Цена, zł',
+    priceHeaderShort: 'Цена',
+    timeHeader: 'Срок',
+    timeHeaderLine2: 'выполнения',
+    viewPriceList: 'Смотреть прайс-лист',
+    viewDetails: 'Подробнее',
+    detailsInPreparation: 'Описание услуги готовится',
+    gratisLower: 'бесплатно',
+    gratisUpper: 'БЕСПЛАТНО',
+    deviceCategoriesTitle: 'Категории устройств',
+    deviceCategoriesCaption: '(категории устройств)',
+    exampleLabel: '(напр.',
+    rentPriceHeader: 'Аренда [zł/мес.]',
+    printPriceHeader: 'Цена печати',
+    mobileAccordionTitles: {
+      konserwacja: 'Чистка и обслуживание',
+      naprawy: 'Ремонт и сервисное обслуживание',
+    },
+    dojazdNote: [
+      'Мы не говорим, что выезд или приём «бесплатные»,',
+      'а затем добавляем эту стоимость к цене ремонта',
+    ],
+    deviceCategoriesDescription: {
+      default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
+      serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',
+      serwisDrukarekTermicznych: 'В прайсе первая цена относится к малому принтеру этикеток, вторая — к среднему, третья — к большому',
+    },
+    wynajemTableLabels: {
+      pagesIncluded: ['Количество страниц A4', 'включённых в аренду'],
+      printPriceMono: ['Цена печати A4 моно', '(сверх лимита)'],
+      printPriceColor: ['Цена печати A4 цвет', '(сверх лимита)'],
+      scanning: 'Сканирование',
+      duplex: 'Duplex',
+      printSpeedPrefix: 'Скорость печати до:',
+    },
+    wynajemUnits: {
+      mono: 'mono',
+      kolor: 'kolor',
+      str: 'str.',
+      strPerMonth: 'str./mies.',
+      strPerMin: 'str./min',
+      currency: 'zł',
+    },
+    categoryTranslations: {
+      'Drukarka domowa': { title: 'Домашний принтер', description: 'Устройство для домашней (нечастой) печати. Небольшие модели A4', features: ['компактные размеры', 'более медленная печать'] },
+      'Drukarka biurowa': { title: 'Офисный принтер', description: 'Для работы в малых и средних офисах. Для более частой печати.', features: ['средний размер', 'быстрая печать', 'высокая надёжность'] },
+      'Drukarka biznesowa': { title: 'Бизнес-принтер', description: 'Крупные устройства A4/A3 для интенсивной ежедневной работы и больших объёмов печати.', features: ['для больших объёмов с высокой выносливостью'] },
+      'Mała drukarka etykiet': { title: 'Малый принтер этикеток', description: 'Устройство для нечастой печати. Небольшие модели.', features: ['компактные размеры', 'более медленная печать'] },
+      'Średnia drukarka etykiet': { title: 'Средний принтер этикеток', description: 'Для работы в малых и средних офисах. Для более частой печати.', features: ['средний размер', 'быстрая печать', 'высокая надёжность'] },
+      'Duża drukarka etykiet': { title: 'Большой принтер этикеток', description: 'Бизнес-устройство для интенсивной ежедневной работы и больших объёмов печати.', features: ['для больших объёмов с высокой выносливостью'] },
+      'Mała drukarka igłowa': { title: 'Малый матричный принтер', description: 'Устройство для нечастой печати. Небольшие модели.', features: ['компактные размеры', 'более медленная печать'] },
+      'Średnia drukarka igłowa': { title: 'Средний матричный принтер', description: 'Для работы в малых и средних офисах. Для более частой печати.', features: ['средний размер', 'быстрая печать', 'высокая надёжность'] },
+      'Duża drukarka igłowa': { title: 'Большой матричный принтер', description: 'Бизнес-устройство для интенсивной ежедневной работы и больших объёмов печати.', features: ['для больших объёмов с высокой выносливостью'] },
     },
   },
 } as const

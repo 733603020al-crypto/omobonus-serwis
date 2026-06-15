@@ -33,7 +33,7 @@ const BrandWordmark = ({ className }: { className?: string }) => (
    Locale-aware navigation data
    ========================= */
 
-type Locale = 'pl' | 'uk'
+type Locale = 'pl' | 'uk' | 'ru'
 
 const LOCALE_NAV: Record<Locale, {
   prefix: string
@@ -77,6 +77,20 @@ const LOCALE_NAV: Record<Locale, {
       megaMenuHeader: 'СЕРВІС І РЕМОНТ',
     },
   },
+  ru: {
+    prefix: '/ru',
+    homeHref: '/ru',
+    homeSectionHref: (id) => `/ru#${id}`,
+    labels: {
+      services: 'Услуги',
+      about: 'О нас',
+      contact: 'Контакт',
+      shop: 'Магазин',
+      call: 'Позвонить',
+      sendForm: 'Отправить заявку',
+      megaMenuHeader: 'СЕРВИС И РЕМОНТ',
+    },
+  },
 }
 
 /* =========================
@@ -86,21 +100,21 @@ const LOCALE_NAV: Record<Locale, {
 const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string }[] }[] = [
   {
     items: [
-      { label: { pl: 'Laptopów', uk: 'Ноутбуків' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: { pl: 'Outsourcing IT', uk: 'Аутсорсинг IT' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: { pl: 'Outsourcing IT', uk: 'Аутсорсинг IT', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
     ],
   },
   {
     items: [
-      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
-      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
-      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
-      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термотрансферних принтерів' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
-      { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Ploterów', uk: 'Плотерів' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
-      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
+      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
+      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
+      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термотрансферних принтерів', ru: 'Термотрансферных принтеров' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
+      { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
+      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
 ]
@@ -115,7 +129,7 @@ export function Header() {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const locale: Locale = pathname.startsWith('/uk') ? 'uk' : 'pl'
+  const locale: Locale = pathname.startsWith('/uk') ? 'uk' : pathname.startsWith('/ru') ? 'ru' : 'pl'
   const nav = LOCALE_NAV[locale]
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`

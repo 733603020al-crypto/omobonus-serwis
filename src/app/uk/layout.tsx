@@ -73,6 +73,7 @@ export const metadata: Metadata = {
     languages: {
       'pl': 'https://serwis.omobonus.com.pl',
       'uk': 'https://serwis.omobonus.com.pl/uk',
+      'ru': 'https://serwis.omobonus.com.pl/ru',
       'x-default': 'https://serwis.omobonus.com.pl',
     },
   },

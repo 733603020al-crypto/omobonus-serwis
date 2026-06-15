@@ -461,7 +461,7 @@ const WynajemTable = ({
     prices: React.RefObject<HTMLDivElement | null>[]
   }
   serviceSlug?: string
-  locale?: 'pl' | 'uk'
+  locale?: 'pl' | 'uk' | 'ru'
 }) => {
   const t = serviceAccordionI18n[locale]
   const isDrukarkaZastepcza = serviceSlug === 'drukarka-zastepcza'
@@ -1512,7 +1512,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-iglowych',
 ])
 
-const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' }) => {
+const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
   const t = serviceAccordionI18n[locale]
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
