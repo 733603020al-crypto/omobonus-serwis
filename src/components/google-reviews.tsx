@@ -196,7 +196,7 @@ export default function GoogleReviews() {
                                 </svg>
 
                                 <div className="text-left">
-                                    <div className="text-xs text-gray-600">{isUk ? 'Рейтинг Google' : 'Google Rating'}</div>
+                                    <div className="text-xs text-gray-600">{reviewsT.ratingLabel}</div>
                                     <div className="flex items-center gap-2">
                                         <div className="text-xl font-bold text-gray-900">
                                             {rating.toFixed(1)}
@@ -207,7 +207,7 @@ export default function GoogleReviews() {
                                     </div>
                                     {totalReviews !== null && (
                                         <div className="text-xs text-gray-600">
-                                            {isUk ? `На основі ${totalReviews} відгуків` : `Na podstawie ${totalReviews} opinii`}
+                                            {reviewsT.basedOnReviews(totalReviews)}
                                         </div>
                                     )}
                                 </div>
