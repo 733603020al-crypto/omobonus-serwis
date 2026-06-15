@@ -135,11 +135,11 @@ export const ru = {
   },
   contactActions: {
     quickContactTitle: 'Свяжитесь с нами',
-    callbackTitle: 'Оставьте номер — мы позвоним',
+    callbackTitle: 'Оставьте номер — мы перезвоним',
     navigateLabel: 'Построить маршрут',
     callbackButton: 'Прошу позвонить',
     callbackSubmitting: 'Отправка...',
-    callbackHint: 'Мы звоним: пн.–сб. 7:00–21:00',
+    callbackHint: 'Перезваниваем: пн.–сб. 7:00–21:00',
     phoneError: 'Номер телефона слишком короткий',
     callbackError: 'Не удалось отправить запрос. Попробуйте снова или позвоните.',
     successTitle: 'Спасибо!',
