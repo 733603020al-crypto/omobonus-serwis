@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react'
 import manifest from '@/config/manifest'
 import GoogleReviews from '@/components/google-reviews'
 
-interface AboutT {
+export interface AboutT {
   eyebrow?: string
   heading: string
   subheading: string

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
+import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
 
 type Review = {
     author_name: string
@@ -18,6 +19,8 @@ export default function GoogleReviews() {
     const [loading, setLoading] = useState(true)
     const pathname = usePathname()
     const isUk = pathname?.startsWith('/uk') ?? false
+    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
+    const reviewsT = googleReviewsI18n[locale]
 
     const trackRef = useRef<HTMLDivElement | null>(null)
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
@@ -154,10 +157,10 @@ export default function GoogleReviews() {
                         >
 
                             <div ref={opinieTitleRef} className="fade-slide-init text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
-                                {isUk ? 'Відгуки клієнтів з Google' : 'Opinie klientów z Google'}
+                                {reviewsT.title}
                             </div>
                             <div ref={allOpinionsRef} className="fade-slide-init brush-underline text-[#bfa76a] underline text-xs">
-                                {isUk ? 'Переглянути всі відгуки в Google →' : 'Zobacz wszystkie opinie w Google →'}
+                                {reviewsT.link}
                             </div>
                         </a>
 
@@ -193,7 +196,7 @@ export default function GoogleReviews() {
                                 </svg>
 
                                 <div className="text-left">
-                                    <div className="text-xs text-gray-600">{isUk ? 'Рейтинг Google' : 'Google Rating'}</div>
+                                    <div className="text-xs text-gray-600">{reviewsT.ratingLabel}</div>
                                     <div className="flex items-center gap-2">
                                         <div className="text-xl font-bold text-gray-900">
                                             {rating.toFixed(1)}
@@ -204,7 +207,7 @@ export default function GoogleReviews() {
                                     </div>
                                     {totalReviews !== null && (
                                         <div className="text-xs text-gray-600">
-                                            {isUk ? `На основі ${totalReviews} відгуків` : `Na podstawie ${totalReviews} opinii`}
+                                            {reviewsT.basedOnReviews(totalReviews)}
                                         </div>
                                     )}
                                 </div>

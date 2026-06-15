@@ -22,7 +22,7 @@ interface HomePageTemplateProps {
     button: ReactNode
     href: string
   }
-  locale?: 'pl' | 'uk'
+  locale?: 'pl' | 'uk' | 'ru'
 }
 
 export function HomePageTemplate({

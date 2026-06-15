@@ -7,6 +7,7 @@ import Link from 'next/link'
 import manifest from '@/config/manifest'
 import { DEFAULT_PRICE_TOOLTIP } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
+import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import {
   Accordion,
   AccordionContent,
@@ -460,8 +461,9 @@ const WynajemTable = ({
     prices: React.RefObject<HTMLDivElement | null>[]
   }
   serviceSlug?: string
-  locale?: 'pl' | 'uk'
+  locale?: 'pl' | 'uk' | 'ru'
 }) => {
+  const t = serviceAccordionI18n[locale]
   const isDrukarkaZastepcza = serviceSlug === 'drukarka-zastepcza'
   // Для a3-drukarki-mono на странице "Drukarka Zastępcza" используем ту же структуру, что и для a3-drukarki-kolor
   // На странице "Wynajem" используем subcategoryId напрямую для правильных данных tableDataA3Mono
@@ -742,33 +744,22 @@ const WynajemTable = ({
   }
 
   // Функция для рендеринга label с переносами строк (для мобильной и десктопной версий)
-  const renderLabel = (label: string, fontSize: string, loc: string = 'pl') => {
+  const renderLabel = (label: string, fontSize: string) => {
     if (label === 'Liczba stron A4 wliczonych w czynsz') {
-      return loc === 'uk' ? (
-        <>Кількість сторінок A4<br />включених у ренту</>
-      ) : (
-        <>Liczba stron A4<br />wliczonych w czynsz</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.pagesIncluded
+      return <>{line1}<br />{line2}</>
     }
     else if (label === 'Cena wydruku A4 mono (powyżej limitu)') {
-      return loc === 'uk' ? (
-        <>Ціна друку A4 моно<br />(понад ліміт)</>
-      ) : (
-        <>Cena wydruku A4 mono<br />(powyżej limitu)</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.printPriceMono
+      return <>{line1}<br />{line2}</>
     }
     else if (label === 'Cena wydruku A4 kolor (powyżej limitu)') {
-      return loc === 'uk' ? (
-        <>Ціна друку A4 колір<br />(понад ліміт)</>
-      ) : (
-        <>Cena wydruku A4 kolor<br />(powyżej limitu)</>
-      )
+      const [line1, line2] = t.wynajemTableLabels.printPriceColor
+      return <>{line1}<br />{line2}</>
     }
-    else if (loc === 'uk') {
-      if (label === 'Skanowanie') return 'Сканування'
-      if (label === 'Duplex') return 'Duplex'
-      if (label.startsWith('Prędkość druku do:')) return label.replace('Prędkość druku do:', 'Швидкість друку до:')
-    }
+    else if (label === 'Skanowanie') return t.wynajemTableLabels.scanning
+    else if (label === 'Duplex') return t.wynajemTableLabels.duplex
+    else if (label.startsWith('Prędkość druku do:')) return label.replace('Prędkość druku do:', t.wynajemTableLabels.printSpeedPrefix)
     return label
   }
 
@@ -794,7 +785,7 @@ const WynajemTable = ({
                 <span
                   className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
-                  mono
+                  {t.wynajemUnits.mono}
                 </span>
               </div>
               {/* Вторая строка: "+ 0 kolor" */}
@@ -804,7 +795,7 @@ const WynajemTable = ({
                 <span
                   className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
                 >
-                  kolor
+                  {t.wynajemUnits.kolor}
                 </span>
               </div>
             </div>
@@ -816,7 +807,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
-                mono
+                {t.wynajemUnits.mono}
               </span>
               {/* "+ 0" */}
               <div className="flex items-baseline">
@@ -827,7 +818,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed"
               >
-                kolor
+                {t.wynajemUnits.kolor}
               </span>
             </div>
           </div>
@@ -864,7 +855,7 @@ const WynajemTable = ({
               <span
                 className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
               >
-                str.
+                {t.wynajemUnits.str}
               </span>
             </div>
           )
@@ -887,7 +878,7 @@ const WynajemTable = ({
             <span
               className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
             >
-              str.
+              {t.wynajemUnits.str}
             </span>
           </div>
         </div>
@@ -904,7 +895,7 @@ const WynajemTable = ({
           <span
             className="text-[14px] text-[#cbb27c] leading-relaxed"
           >
-            str./mies.
+            {t.wynajemUnits.strPerMonth}
           </span>
         </div>
       )
@@ -918,7 +909,7 @@ const WynajemTable = ({
           <span
             className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
           >
-            str./min
+            {t.wynajemUnits.strPerMin}
           </span>
         </span>
       )
@@ -934,7 +925,7 @@ const WynajemTable = ({
             className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5"
             style={{ marginTop: '-3px' }}
           >
-            zł
+            {t.wynajemUnits.currency}
           </span>
         </span>
       )
@@ -946,11 +937,11 @@ const WynajemTable = ({
         <span
           className="text-[14px] text-[#cbb27c] leading-relaxed"
         >
-          {value === 'gratis' && locale === 'uk' ? 'безкоштовно' : value}
+          {value === 'gratis' ? t.gratisLower : value}
         </span>
       )
     }
-    const displayValue = value === 'gratis' && locale === 'uk' ? 'безкоштовно' : value
+    const displayValue = value === 'gratis' ? t.gratisLower : value
     return <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{displayValue}</span>
   }
 
@@ -1053,7 +1044,7 @@ const WynajemTable = ({
                     return columnWidths ? { width: `${columnWidths.text}px` } : undefined
                   })()}
                 >
-                  {renderLabel(typedRow.label, labelFontSize, locale)}
+                  {renderLabel(typedRow.label, labelFontSize)}
                 </div>
                 {/* Колонка с данными - единый шаблон для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
                 {typedRow.plan1 && (
@@ -1132,7 +1123,7 @@ const WynajemTable = ({
                   >
                     {/* Надпись "Czynsz wynajmu [zł/mies.]" убрана из таблицы - теперь она в шапке секции */}
                     <div className="hidden md:block text-lg font-cormorant font-semibold text-[#ffffff] leading-tight">
-                      {locale === 'uk' ? 'Орендна плата [zł/міс.]' : 'Czynsz wynajmu [zł/mies.]'}
+                      {t.rentPriceHeader}
                     </div>
                   </TableHead>
                 </TableRow>
@@ -1176,7 +1167,7 @@ const WynajemTable = ({
                           borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                         }}
                       >
-                        {renderLabel(typedRow.label, labelFontSize, locale)}
+                        {renderLabel(typedRow.label, labelFontSize)}
                       </TableCell>
                       {typedRow.plan1 && (
                         <TableCell
@@ -1521,30 +1512,14 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-iglowych',
 ])
 
-const UK_CATEGORY_TRANSLATIONS: Record<string, { title: string; description: string; features: string[] }> = {
-  'Drukarka domowa': { title: 'Домашній принтер', description: 'Пристрій для домашнього (нечастого) друку. Невеликі моделі A4', features: ['малі розміри', 'повільніший друк'] },
-  'Drukarka biurowa': { title: 'Офісний принтер', description: 'Для роботи в малих і середніх офісах. Для частішого друку.', features: ['середній розмір', 'швидший друк', 'вища надійність'] },
-  'Drukarka biznesowa': { title: 'Бізнес-принтер', description: 'Великі пристрої A4/A3 для інтенсивної щоденної роботи та великих обсягів друку.', features: ['для великих обсягів із високою витривалістю'] },
-  'Mała drukarka etykiet': { title: 'Малий принтер етикеток', description: 'Пристрій для нечастого друку. Невеликі моделі.', features: ['малі розміри', 'повільніший друк'] },
-  'Średnia drukarka etykiet': { title: 'Середній принтер етикеток', description: 'Для роботи в малих і середніх офісах. Для частішого друку.', features: ['середній розмір', 'швидший друк', 'вища надійність'] },
-  'Duża drukarka etykiet': { title: 'Великий принтер етикеток', description: 'Бізнес-пристрій для інтенсивної щоденної роботи та великих обсягів друку.', features: ['для великих обсягів із високою витривалістю'] },
-  'Mała drukarka igłowa': { title: 'Малий матричний принтер', description: 'Пристрій для нечастого друку. Невеликі моделі.', features: ['малі розміри', 'повільніший друк'] },
-  'Średnia drukarka igłowa': { title: 'Середній матричний принтер', description: 'Для роботи в малих і середніх офісах. Для частішого друку.', features: ['середній розмір', 'швидший друк', 'вища надійність'] },
-  'Duża drukarka igłowa': { title: 'Великий матричний принтер', description: 'Бізнес-пристрій для інтенсивної щоденної роботи та великих обсягів друку.', features: ['для великих обсягів із високою витривалістю'] },
-}
-
-const detailsInPreparationText: Record<string, string> = {
-  pl: 'Szczegóły w przygotowaniu',
-  uk: 'Опис послуги готується',
-}
-
-const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' }) => {
-  const priceHeaderFull = locale === 'uk' ? 'Ціна, zł' : 'Cena, zł'
-  const priceHeaderShort = locale === 'uk' ? 'Ціна' : 'Cena'
-  const timeHeader = locale === 'uk' ? 'Час' : 'Czas'
-  const viewPriceList = locale === 'uk' ? 'Переглянути прайс-лист' : 'Zobacz cennik'
-  const viewDetails = locale === 'uk' ? 'Докладніше' : 'Zobacz szczegóły'
-  const detailsInPreparation = detailsInPreparationText[locale] ?? detailsInPreparationText.pl
+const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
+  const t = serviceAccordionI18n[locale]
+  const priceHeaderFull = t.priceHeaderFull
+  const priceHeaderShort = t.priceHeaderShort
+  const timeHeader = t.timeHeader
+  const viewPriceList = t.viewPriceList
+  const viewDetails = t.viewDetails
+  const detailsInPreparation = t.detailsInPreparation
   const [openSection, setOpenSection] = useState<string | null>(null)
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
@@ -1691,23 +1666,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         >
           <div className="text-center space-y-2">
             <h4 className="text-[22px] md:text-[26px] font-cormorant font-semibold text-white tracking-wide">
-              {locale === 'uk' ? 'Категорії пристроїв' : 'Kategorie urządzeń'}
+              {t.deviceCategoriesTitle}
             </h4>
             <p className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
-              {locale === 'uk'
-                ? service.slug === 'serwis-drukarek-iglowych'
-                  ? 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого'
-                  : service.slug === 'serwis-drukarek-termicznych'
-                    ? 'У прайсі перша ціна стосується малого принтера етикеток, друга — середнього, третя — великого'
-                    : 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового'
-                : service.slug === 'serwis-drukarek-iglowych'
-                  ? 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej'
-                  : service.slug === 'serwis-drukarek-termicznych'
-                    ? 'W cenniku pierwsza cena dotyczy małej drukarki etykiet, druga – średniej, trzecia – dużej'
-                    : 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej'}
+              {service.slug === 'serwis-drukarek-iglowych'
+                ? t.deviceCategoriesDescription.serwisDrukarekIglowych
+                : service.slug === 'serwis-drukarek-termicznych'
+                  ? t.deviceCategoriesDescription.serwisDrukarekTermicznych
+                  : t.deviceCategoriesDescription.default}
             </p>
             <div className="mt-1 flex items-center justify-center gap-1">
-              <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{locale === 'uk' ? '(напр.' : '(np.'}</span>
+              <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
               <div className="flex items-center">
                 <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
                   {renderPriceLines('50 / 100 / 150')}
@@ -1718,7 +1687,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
             {getDeviceCategories(service.slug).map(category => {
-              const ukCat = locale === 'uk' ? (UK_CATEGORY_TRANSLATIONS[category.title] ?? null) : null
+              const ukCat = t.categoryTranslations[category.title] ?? null
               return (
               <div
                 key={category.title}
@@ -2048,10 +2017,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       return section.title
                                     }
                                     if (section.id === 'konserwacja') {
-                                      return locale === 'uk' ? section.title : 'Czyszczenie i konserwacja'
+                                      return t.mobileAccordionTitles.konserwacja ?? section.title
                                     }
                                     if (section.id === 'naprawy') {
-                                      return locale === 'uk' ? section.title : 'Naprawy i usługi serwisowe'
+                                      return t.mobileAccordionTitles.naprawy ?? section.title
                                     }
                                     return section.title
                                   })()}
@@ -2074,21 +2043,21 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
                                   <span className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight whitespace-nowrap">
-                                    {locale === 'uk' ? 'Орендна плата [zł/міс.]' : 'Czynsz wynajmu [zł/mies.]'}
+                                    {t.rentPriceHeader}
                                   </span>
                                 </div>
                               )}
                               {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
                                   <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
-                                    <div>{locale === 'uk' ? 'Ціна друку' : 'Cena wydruku'}</div>
+                                    <div>{t.printPriceHeader}</div>
                                   </div>
                                 </div>
                               )}
                               {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
                                   <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
-                                    <div>{locale === 'uk' ? 'Ціна друку' : 'Cena wydruku'}</div>
+                                    <div>{t.printPriceHeader}</div>
                                   </div>
                                 </div>
                               )}
@@ -2128,7 +2097,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   >
                                     <div className="text-center">
                                       <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        {locale === 'uk' ? 'Орендна плата [zł/міс.]' : 'Czynsz wynajmu [zł/mies.]'}
+                                        {t.rentPriceHeader}
                                       </span>
                                     </div>
                                   </div>
@@ -2149,7 +2118,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 >
                                   <div className="text-center">
                                     <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
+                                      {t.rentPriceHeader}
                                     </span>
                                   </div>
                                 </div>
@@ -2157,7 +2126,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-center">
                                     <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      Czynsz wynajmu [zł/mies.]
+                                      {t.rentPriceHeader}
                                     </span>
                                   </div>
                                 </div>
@@ -2178,7 +2147,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   >
                                     <div className="text-left" style={{ marginLeft: '50px' }}>
                                       <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        <div>{locale === 'uk' ? 'Ціна друку' : 'Cena wydruku'}</div>
+                                        <div>{t.printPriceHeader}</div>
                                       </div>
                                     </div>
                                   </div>
@@ -2187,7 +2156,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -2207,7 +2176,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 >
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -2215,7 +2184,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
                                   <div className="text-left" style={{ marginLeft: '50px' }}>
                                     <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>Cena wydruku</div>
+                                      <div>{t.printPriceHeader}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -2225,17 +2194,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         </div>
                         {section.id === 'dojazd' && isSectionOpen(section.id) && (
                           <div className="mt-1 text-[12px] leading-snug text-[#f5f0df] max-w-[420px]">
-                            {locale === 'uk' ? (
-                              <>
-                                <div>Ми не кажемо, що виїзд або прийом «безкоштовні»,</div>
-                                <div>а потім додаємо цю вартість до ціни ремонту</div>
-                              </>
-                            ) : (
-                              <>
-                                <div>Nie mówimy, że dojazd lub odbiór są „za darmo&rdquo;,</div>
-                                <div>a następnie doliczamy ten koszt do ceny naprawy</div>
-                              </>
-                            )}
+                            <div>{t.dojazdNote[0]}</div>
+                            <div>{t.dojazdNote[1]}</div>
                           </div>
                         )}
 
@@ -2259,7 +2219,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           >
                             {section.id === 'diagnoza' && (
                               <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
-                                {locale === 'uk' ? 'БЕЗКОШТОВНО' : 'GRATIS'}
+                                {t.gratisUpper}
                               </span>
                             )}
 
@@ -2459,7 +2419,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     fontStyle: 'normal'
                                   }}
                                 >
-                                  {locale === 'uk' ? '(категорії пристроїв)' : '(kategorie urządzeń)'}
+                                  {t.deviceCategoriesCaption}
                                 </span>
                               )}
                             </div>
@@ -2475,7 +2435,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           >
                             <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
                               <div className="leading-[1.05]">{timeHeader}</div>
-                              <div className="leading-[1.05]">{locale === 'uk' ? 'виконання' : 'realizacji'}</div>
+                              <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
                             </div>
                           </div>
                         </div>

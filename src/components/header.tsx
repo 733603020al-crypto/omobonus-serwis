@@ -30,27 +30,91 @@ const BrandWordmark = ({ className }: { className?: string }) => (
 )
 
 /* =========================
+   Locale-aware navigation data
+   ========================= */
+
+type Locale = 'pl' | 'uk' | 'ru'
+
+const LOCALE_NAV: Record<Locale, {
+  prefix: string
+  homeHref: string
+  homeSectionHref: (id: string) => string
+  labels: {
+    services: string
+    about: string
+    contact: string
+    shop: string
+    call: string
+    sendForm: string
+    megaMenuHeader: string
+  }
+}> = {
+  pl: {
+    prefix: '',
+    homeHref: '/',
+    homeSectionHref: (id) => `/#${id}`,
+    labels: {
+      services: 'Usługi',
+      about: 'O nas',
+      contact: 'Kontakt',
+      shop: 'Sklep',
+      call: 'Zadzwoń teraz',
+      sendForm: 'Wyślij zgłoszenie',
+      megaMenuHeader: 'SERWIS I NAPRAWA',
+    },
+  },
+  uk: {
+    prefix: '/uk',
+    homeHref: '/uk',
+    homeSectionHref: (id) => `/uk#${id}`,
+    labels: {
+      services: 'Послуги',
+      about: 'Про нас',
+      contact: 'Контакт',
+      shop: 'Магазин',
+      call: 'Зателефонувати',
+      sendForm: 'Надіслати заявку',
+      megaMenuHeader: 'СЕРВІС І РЕМОНТ',
+    },
+  },
+  ru: {
+    prefix: '/ru',
+    homeHref: '/ru',
+    homeSectionHref: (id) => `/ru#${id}`,
+    labels: {
+      services: 'Услуги',
+      about: 'О нас',
+      contact: 'Контакт',
+      shop: 'Магазин',
+      call: 'Позвонить',
+      sendForm: 'Отправить заявку',
+      megaMenuHeader: 'СЕРВИС И РЕМОНТ',
+    },
+  },
+}
+
+/* =========================
    Mega menu data
    ========================= */
 
-const MEGA_MENU = [
+const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string }[] }[] = [
   {
     items: [
-      { label: 'Laptopów', labelUk: 'Ноутбуків', href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: 'Komputerów stacjonarnych', labelUk: 'Стаціонарних комп\'ютерів', href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: 'Outsourcing IT', labelUk: 'Аутсорсинг IT', href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: { pl: 'Outsourcing IT', uk: 'Аутсорсинг IT', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
     ],
   },
   {
     items: [
-      { label: 'Drukarek laserowych', labelUk: 'Лазерних принтерів', href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
-      { label: 'Drukarek atramentowych', labelUk: 'Струменевих принтерів', href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
-      { label: 'Drukarek igłowych', labelUk: 'Матричних принтерів', href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
-      { label: 'Drukarek etykiet termicznych', labelUk: 'Термотрансферних принтерів', href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
-      { label: 'Drukarek 3D', labelUk: 'Принтерів 3D', href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: 'Ploterów', labelUk: 'Плотерів', href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
-      { label: 'Wynajem (dzierżawa) drukarek', labelUk: 'Оренда принтерів', href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: 'Drukarka zastępcza', labelUk: 'Принтер на заміну', href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
+      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
+      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
+      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
+      { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
+      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
 ]
@@ -65,22 +129,23 @@ export function Header() {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const isUk = pathname.startsWith('/uk')
-  const homeHref = isUk ? '/uk' : '/'
-  const aboutHref = isUk ? '/uk/o-nas' : '/o-nas'
-  const contactHref = isUk ? '/uk/kontakt' : '/kontakt'
-  const isServicesActive = pathname.startsWith(isUk ? '/uk/uslugi' : '/uslugi')
+  const locale: Locale = pathname.startsWith('/uk') ? 'uk' : pathname.startsWith('/ru') ? 'ru' : 'pl'
+  const nav = LOCALE_NAV[locale]
+  const homeHref = nav.homeHref
+  const aboutHref = `${nav.prefix}/o-nas`
+  const contactHref = `${nav.prefix}/kontakt`
+  const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`)
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
 
-  const navServices = isUk ? 'Послуги' : 'Usługi'
-  const navAbout = isUk ? 'Про нас' : 'O nas'
-  const navContact = isUk ? 'Контакт' : 'Kontakt'
-  const navShop = isUk ? 'Магазин' : 'Sklep'
-  const navCall = isUk ? 'Зателефонувати' : 'Zadzwoń teraz'
-  const navSendForm = isUk ? 'Надіслати заявку' : 'Wyślij zgłoszenie'
-  const megaMenuHeader = isUk ? 'СЕРВІС І РЕМОНТ' : 'SERWIS I NAPRAWA'
-  const homeSectionHref = isUk ? '/uk#uslugi' : '/#uslugi'
+  const navServices = nav.labels.services
+  const navAbout = nav.labels.about
+  const navContact = nav.labels.contact
+  const navShop = nav.labels.shop
+  const navCall = nav.labels.call
+  const navSendForm = nav.labels.sendForm
+  const megaMenuHeader = nav.labels.megaMenuHeader
+  const homeSectionHref = nav.homeSectionHref('uslugi')
 
   const handlePhoneClick = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -117,9 +182,9 @@ export function Header() {
 
   const scrollToSection = (id: string) => {
     const performScroll = () => {
-      const isHome = isUk ? pathname === '/uk' : pathname === '/'
+      const isHome = pathname === nav.homeHref
       if (!isHome) {
-        window.location.href = isUk ? `/uk#${id}` : `/#${id}`
+        window.location.href = nav.homeSectionHref(id)
         return
       }
 
@@ -233,7 +298,7 @@ export function Header() {
                         {col.items.map((item) => (
                           <Link
                             key={item.href}
-                            href={isUk ? `/uk${item.href}` : item.href}
+                            href={`${nav.prefix}${item.href}`}
                             className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                           >
                             <Image
@@ -245,7 +310,7 @@ export function Header() {
                               className="flex-shrink-0 object-contain opacity-90"
                               unoptimized
                             />
-                            {isUk ? item.labelUk : item.label}
+                            {item.label[locale]}
                           </Link>
                         ))}
                       </div>

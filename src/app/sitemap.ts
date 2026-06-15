@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { services } from '@/lib/services-data'
 import { servicesUk } from '@/lib/services-data-uk'
+import { servicesRu } from '@/lib/services-data-ru'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://serwis.omobonus.com.pl'
@@ -85,5 +86,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...mainPages, ...servicePages, ...ukMainPages, ...ukServicePages]
+  const ruMainPages = [
+    {
+      url: `${baseUrl}/ru`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ru/o-nas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/ru/kontakt`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/ru/polityka-prywatnosci`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/ru/regulamin`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+  ]
+
+  const ruServicePages = servicesRu.map((service) => ({
+    url: `${baseUrl}/ru/uslugi/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }))
+
+  return [...mainPages, ...servicePages, ...ukMainPages, ...ukServicePages, ...ruMainPages, ...ruServicePages]
 }

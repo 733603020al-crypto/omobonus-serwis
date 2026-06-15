@@ -10,8 +10,12 @@ import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { uk } from '@/lib/i18n/uk'
+import { ru } from '@/lib/i18n/ru'
 
-interface ContactT {
+export type Locale = 'pl' | 'uk' | 'ru'
+
+export interface ContactT {
   formTitle: string
   nameLabel: string
   namePlaceholder: string
@@ -47,36 +51,6 @@ interface ContactT {
   }
 }
 
-const UK: ContactT = {
-  formTitle: 'Форма заявки',
-  nameLabel: 'Ім\'я та прізвище',
-  namePlaceholder: 'Іван Іваненко',
-  phoneLabel: 'Номер телефону',
-  emailLabel: 'Адреса e-mail',
-  addressLabel: 'Адреса',
-  addressPlaceholder: 'вул. Прикладна 1, 50-001 Вроцлав',
-  problemLabel: 'Опис проблеми (несправності)',
-  problemPlaceholder: '(напр. HP M404dn – принтер не захоплює папір)',
-  attachLabel: 'Додати фото / відео (опціонально)',
-  attachAdd: 'Додати',
-  attachHint: 'Прикріплені файли допоможуть нам швидше та точніше визначити проблему та підготувати кошторис ремонту.',
-  agreementConfirm: 'Підтверджую, що ознайомився/лась з',
-  privacyLink: 'Політикою Конфіденційності',
-  privacyHref: '/uk/polityka-prywatnosci',
-  termsLink: 'Регламентом',
-  termsHref: '/uk/regulamin',
-  agreementEnd: 'і приймаю їх умови.',
-  submitButton: 'Надіслати заявку',
-  submitting: 'Надсилання...',
-  phoneError: 'Номер телефону занадто короткий',
-  agreementError: 'Необхідно прийняти регламент',
-  agreementConnector: 'та',
-  fileTypeError: 'Можна надіслати лише фото або відео.',
-  fileSizeError: (name, max) => `Файл ${name} занадто великий (макс. ${max} МБ).`,
-  successTitle: 'Дякуємо!',
-  successText: 'Заявку надіслано.',
-}
-
 const PL: ContactT = {
   formTitle: 'Formularz zgłoszeniowy',
   nameLabel: 'Imię i nazwisko',
@@ -105,6 +79,12 @@ const PL: ContactT = {
   fileSizeError: (name, max) => `Plik ${name} jest zbyt duży (maks. ${max} MB).`,
   successTitle: 'Dziękujemy!',
   successText: 'Zgłoszenie zostało wysłane.',
+}
+
+const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
+  pl: PL,
+  uk: uk.contactForm,
+  ru: ru.contactForm,
 }
 
 function buildFormSchema(phoneError: string, agreementError: string) {
@@ -151,8 +131,9 @@ type AttachmentPreview = {
   kind: 'image' | 'video' | 'file'
 }
 
-export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: boolean; locale?: string } = {}) {
-  const d = t ?? (locale === 'uk' ? UK : PL)
+export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: boolean; locale?: Locale } = {}) {
+  const resolvedLocale: Locale = locale ?? 'pl'
+  const d = t ?? CONTACT_DEFAULTS[resolvedLocale]
   const formSchema = useMemo(
     () => buildFormSchema(d.phoneError, d.agreementError),
     [d.phoneError, d.agreementError]
@@ -385,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       <CustomPhoneInput
                         value={field.value || ''}
                         onChange={field.onChange}
-                        locale={locale === 'uk' ? 'uk' : 'pl'}
+                        locale={resolvedLocale}
                       />
                     )}
                   />

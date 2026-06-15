@@ -7,7 +7,7 @@ import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
 import manifest from '@/config/manifest'
 
-interface FooterT {
+export interface FooterT {
   contact: string
   address: string
   phone: string
