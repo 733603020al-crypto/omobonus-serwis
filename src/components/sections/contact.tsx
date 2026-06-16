@@ -13,6 +13,37 @@ import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
 
+type DataLayerFormId = 'quick_form' | 'long_form'
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>
+  }
+}
+
+const normalizePhoneNumberForDataLayer = (phoneNumber: string): string => {
+  const value = String(phoneNumber || '').trim()
+  const hasPlus = value.startsWith('+')
+  const digitsOnly = value.replace(/\D/g, '')
+
+  return hasPlus ? `+${digitsOnly}` : digitsOnly
+}
+
+const pushFormSubmitToDataLayer = (
+  formId: DataLayerFormId,
+  phoneNumber: string
+): void => {
+  if (typeof window === 'undefined') return
+
+  window.dataLayer = window.dataLayer || []
+
+  window.dataLayer.push({
+    event: 'form_submit',
+    form_id: formId,
+    phone_number: normalizePhoneNumberForDataLayer(phoneNumber),
+  })
+}
+
 export type Locale = 'pl' | 'uk' | 'ru'
 
 export interface ContactT {
@@ -268,6 +299,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
       }
 
       console.log('✅ Formularz został wysłany pomyślnie!')
+
+      pushFormSubmitToDataLayer('long_form', data.phone)
       setShowSuccessModal(true)
       reset(defaultFormValues)
       attachments.forEach(preview => URL.revokeObjectURL(preview.url))
