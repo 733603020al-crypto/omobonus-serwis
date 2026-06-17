@@ -107,6 +107,7 @@ export function About({
                 alt="Święty Omobonus"
                 width={400}
                 height={500}
+                sizes="(max-width: 768px) 85vw, 400px"
                 className="object-contain rounded-lg w-full h-auto"
                 quality={85}
               />
@@ -151,6 +152,7 @@ export function About({
                 alt="Święty Omobonus"
                 width={400}
                 height={500}
+                sizes="(max-width: 768px) 85vw, 400px"
                 className="object-contain rounded-lg w-full h-auto"
                 quality={85}
               />

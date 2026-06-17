@@ -159,6 +159,7 @@ export function ServicePageTemplate({
                         alt={imageAlt}
                         width={420}
                         height={420}
+                        sizes="(max-width: 768px) 85vw, 420px"
                         className="service-hero-image object-contain w-full h-auto"
                         priority
                       />
