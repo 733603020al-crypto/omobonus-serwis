@@ -128,6 +128,10 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
 
         <link rel="preload" href="/images/Background_1.webp" as="image" />
         <link rel="preload" href="/images/Logo_Omobonus.webp" as="image" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://cdn-cookieyes.com" />
+        <link rel="preconnect" href="https://log.cookieyes.com" />
+        <link rel="preconnect" href="https://lh3.googleusercontent.com" crossOrigin="anonymous" />
       </head>
 
       <body className="antialiased scroll-smooth">
