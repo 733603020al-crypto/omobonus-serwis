@@ -232,8 +232,8 @@ export function ServicePageTemplate({
                         alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
                         width={50}
                         height={50}
+                        sizes="50px"
                         className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                        unoptimized
                       />
                     </div>
 

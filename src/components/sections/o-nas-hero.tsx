@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 import manifest from '@/config/manifest'
 
 interface StatItem {
@@ -49,11 +50,15 @@ export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
 
   return (
     <section className="relative min-h-[calc(100svh-65px)] flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('${manifest.omobonus_hero}')` }}
+      <Image
+        src={manifest.omobonus_hero}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center z-0"
       />
-      <div className="absolute inset-0 z-0 bg-black/50" />
+      <div className="absolute inset-0 z-[1] bg-black/50" />
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
         <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto mb-[30px]">
           {d.h1Line1} <br /> {d.h1Line2}

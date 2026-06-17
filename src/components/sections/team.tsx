@@ -78,7 +78,7 @@ export function Team({ t }: { t?: TeamT } = {}) {
                 }}
               >
                 {m.avatar ? (
-                  <Image src={m.avatar} alt={m.name} width={168} height={168} className="w-full h-full object-cover" />
+                  <Image src={m.avatar} alt={m.name} width={168} height={168} sizes="168px" className="w-full h-full object-cover" />
                 ) : m.initial}
               </div>
               <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">{m.name}</h3>
@@ -93,7 +93,7 @@ export function Team({ t }: { t?: TeamT } = {}) {
               className="w-[88px] h-[88px] md:w-[100px] md:h-[100px] rounded-full flex-shrink-0 overflow-hidden border-2 border-[rgba(201,162,75,0.5)]"
               style={{ boxShadow: '0 0 0 6px rgba(201,162,75,0.1), 0 14px 30px rgba(0,0,0,0.4)' }}
             >
-              <Image src="/images/Umka_site_400x400.webp" alt="Umka" width={100} height={100} className="w-full h-full object-cover" />
+              <Image src="/images/Umka_site_400x400.webp" alt="Umka" width={100} height={100} sizes="100px" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col items-center md:items-start">
               <h3 className="flex items-end gap-2.5 text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">
