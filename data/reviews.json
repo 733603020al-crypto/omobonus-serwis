@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 194,
+  "total": 196,
   "reviews": [
     {
       "author_name": "Valery S",
@@ -9,7 +9,7 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU531dSqUUWQ8UQfEoqmema-0HiHO82AkrPeUPOOG1QnXjuqSxW=s128-c0x00000000-cc-rp-mo-ba3",
       "rating": 5,
-      "relative_time_description": "2 tygodnie temu",
+      "relative_time_description": "3 tygodnie temu",
       "text": "Niesamowita obsługa! Gorąco polecam. Coś się stało z moim laptopem, a ja miałem ważne dokumenty i pracę do wykonania. Przywiozłem laptopa wieczorem, kiedy warsztat był już prawie zamknięty, ale pracownik Max, biorąc pod uwagę pilność sprawy, został i szybko wszystko naprawił, co mnie uratowało, bardzo dziękuję! Bardzo dobra robota i przyjazny personel, który pomoże w każdym problemie. Jeszcze raz bardzo dziękuję!\n\nAmazing service! Highly recommended. Something happened to my laptop, and there were important documents and work that I had to complete. I brought my laptop in the evening, when the workshop was almost closing, but the employee Max, given the urgency of the matter, stayed and fixed everything quickly, which saved me, thank you very much! Very good work and friendly staff who will help with any problem. Thank you very much again!",
       "time": 1779910506,
       "translated": false
@@ -63,5 +63,5 @@
       "translated": false
     }
   ],
-  "updatedAt": "2026-06-17T15:15:29.301Z"
+  "updatedAt": "2026-06-17T20:07:23.804Z"
 }
