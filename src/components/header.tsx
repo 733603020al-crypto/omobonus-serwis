@@ -223,13 +223,9 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[65px] w-full border-b border-border">
       {/* Background */}
       <div className="absolute inset-0">
-        <Image
-          src={manifest.Background_1}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -282,8 +278,10 @@ export function Header() {
 
             {/* Mega menu panel */}
             {isServicesOpen && (
-              <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-                <Image src={manifest.Background_1} alt="" fill sizes="600px" className="object-cover object-center" />
+              <div
+                className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
+                style={{ backgroundImage: `url('${manifest.Background_1}')` }}
+              >
                 <div className="absolute inset-0 bg-black/55" />
                 <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
                   <div className="col-span-2 mb-3">
