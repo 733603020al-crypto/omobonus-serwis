@@ -144,8 +144,8 @@ export function Services({
                     alt={`${service.title} Wrocław - ikona usługi serwisowej`}
                     width={50}
                     height={50}
+                    sizes="50px"
                     className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                    unoptimized
                   />
                 </div>
 

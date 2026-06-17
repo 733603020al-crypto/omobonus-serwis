@@ -238,8 +238,10 @@ export default function GoogleReviews() {
                                 <div className="flex items-center gap-3 mb-1">
                                     {review.profile_photo_url ? (
                                         <img
-                                            src={review.profile_photo_url}
+                                            src={review.profile_photo_url.replace(/=s\d+/, '=s72')}
                                             alt={review.author_name}
+                                            width={36}
+                                            height={36}
                                             className="w-9 h-9 rounded-full object-cover shrink-0"
                                         />
                                     ) : (

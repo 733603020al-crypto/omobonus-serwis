@@ -138,6 +138,8 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
                 <img
                   src={brand.src ?? `/images/brands/${brand.name}.svg`}
                   alt={brand.name}
+                  width={240}
+                  height={62}
                   className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
                   style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
                   draggable={false}
