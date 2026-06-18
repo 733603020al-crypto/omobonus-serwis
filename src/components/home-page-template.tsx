@@ -1,13 +1,17 @@
 import type { ComponentProps, ReactNode } from 'react'
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
-import { About } from '@/components/sections/about'
-import { Services } from '@/components/sections/services'
-import { HomeContactForm } from '@/components/sections/home-contact-form'
 import BrandTicker from '@/components/brand-ticker'
-import { Footer } from '@/components/footer'
-import { HomeCta } from '@/components/home-cta'
 import manifest from '@/config/manifest'
+
+// Below-fold components: split into separate chunks so the initial JS
+// bundle only contains Header + Hero code, allowing LCP to paint sooner
+const Services = dynamic(() => import('@/components/sections/services').then(m => ({ default: m.Services })))
+const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
+const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
+const HomeContactForm = dynamic(() => import('@/components/sections/home-contact-form').then(m => ({ default: m.HomeContactForm })))
+const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 interface HomePageTemplateProps {
   heroT?: NonNullable<ComponentProps<typeof Hero>>['t']
