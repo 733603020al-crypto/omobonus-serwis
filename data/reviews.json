@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 198,
+  "total": 199,
   "reviews": [
     {
       "author_name": "Valery S",
@@ -39,6 +39,18 @@
       "translated": false
     },
     {
+      "author_name": "Pan.Marchewka",
+      "author_url": "https://www.google.com/maps/contrib/112297281163590463878/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWIXZlOxDo3YCumYYMoioTDNQ3o88MQwyGL8otSXdO8QCHmNdM=s128-c0x00000000-cc-rp-mo-ba6",
+      "rating": 3,
+      "relative_time_description": "tydzień temu",
+      "text": "Serwis wykonał usługę poprawnie, jednak czas realizacji był nieco dłuższy, niż się spodziewałem. Kontakt z obsługą był w porządku, ale brakowało bardziej szczegółowych informacji o postępach naprawy. Drukarka działa, choć mam wrażenie, że całość mogła zostać wykonana sprawniej. Ogólnie przeciętnie – bez większych zastrzeżeń, ale też bez efektu „wow”.",
+      "time": 1781080156,
+      "translated": false
+    },
+    {
       "author_name": "Grażyna Kaczmarek",
       "author_url": "https://www.google.com/maps/contrib/117834517504780079698/reviews",
       "language": "pl",
@@ -49,19 +61,7 @@
       "text": "Serdecznie polecam! Szybka diagnoza problemu z laptopem i natychmiastowa naprawa. Dodam, że laptop był wcześniej kilkukrotnie w naprawie w innym miejscu, gdzie ściągnięto tylko kasę, a problem pozostał. Świetna robota i 2 miesiące gwarancji. Jestem mega zadowolona!",
       "time": 1780487638,
       "translated": false
-    },
-    {
-      "author_name": "Peter Mishchuk",
-      "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWRYgTQO15FjcLPJgdpZqNp9JBiz0MQ90JEwYAy_GTliq-a-FE_=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "3 tygodnie temu",
-      "text": "Dziękuję za szybką i profesjonalną naprawę drukarki oraz zmianę języka z niemieckiego na polski. Polecam ten serwis i Pana Andrzeja.",
-      "time": 1779523024,
-      "translated": false
     }
   ],
-  "updatedAt": "2026-06-19T14:54:11.525Z"
+  "updatedAt": "2026-06-19T19:43:08.999Z"
 }
