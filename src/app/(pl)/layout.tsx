@@ -143,7 +143,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Script>
 
         <link rel="preload" href="/images/Background_1.webp" as="image" />
-        <link rel="preload" href="/images/Logo_Omobonus.webp" as="image" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="preconnect" href="https://log.cookieyes.com" />
