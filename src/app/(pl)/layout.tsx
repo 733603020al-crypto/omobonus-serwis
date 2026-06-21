@@ -142,7 +142,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           })(window,document,'script','dataLayer','GTM-5XQXX5KL');`}
         </Script>
 
-        <link rel="preload" href="/images/Background_1.webp" as="image" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="preconnect" href="https://log.cookieyes.com" />
