@@ -13,262 +13,259 @@ const DEFAULT_FROM = 'serwis@omobonus.com.pl'
 
 // ???? ?????? ??? ????????????????? ?????????
 type ErrorType =
-    | 'MISSING_CONFIG'
-    | 'SMTP_ERROR'
-    | 'FILE_TOO_LARGE'
-    | 'INVALID_REQUEST'
-    | 'INTERNAL_ERROR'
+  | 'MISSING_CONFIG'
+  | 'SMTP_ERROR'
+  | 'FILE_TOO_LARGE'
+  | 'INVALID_REQUEST'
+  | 'INTERNAL_ERROR'
 
 interface ApiError {
-    type: ErrorType
-    message: string
-    details?: string
-    code?: string
+  type: ErrorType
+  message: string
+  details?: string
+  code?: string
 }
 
 // ???????? ???????????? SMTP
 const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
-    const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
-    const missing: string[] = []
+  const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
+  const missing: string[] = []
 
-    for (const key of required) {
-        if (!process.env[key] || process.env[key]?.trim() === '') {
-            missing.push(key)
-        }
+  for (const key of required) {
+    if (!process.env[key] || process.env[key]?.trim() === '') {
+      missing.push(key)
     }
+  }
 
-    return {
-        valid: missing.length === 0,
-        missing,
-    }
+  return {
+    valid: missing.length === 0,
+    missing,
+  }
 }
 
 // ???????? transporter SMTP
 const createTransporter = (): nodemailer.Transporter | null => {
-    const config = validateSmtpConfig()
+  const config = validateSmtpConfig()
 
-    if (!config.valid) {
-        console.error('? SMTP ???????????? ????????. ???????????:', config.missing.join(', '))
-        return null
-    }
+  if (!config.valid) {
+    console.error('? SMTP ???????????? ????????. ???????????:', config.missing.join(', '))
+    return null
+  }
 
-    const smtpHost = process.env.SMTP_HOST!
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10)
-    const smtpUser = process.env.SMTP_USER!
-    const smtpPass = process.env.SMTP_PASS!
+  const smtpHost = process.env.SMTP_HOST!
+  const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10)
+  const smtpUser = process.env.SMTP_USER!
+  const smtpPass = process.env.SMTP_PASS!
 
-    if (isNaN(smtpPort) || smtpPort <= 0) {
-        console.error('? ???????? SMTP_PORT:', process.env.SMTP_PORT)
-        return null
-    }
+  if (isNaN(smtpPort) || smtpPort <= 0) {
+    console.error('? ???????? SMTP_PORT:', process.env.SMTP_PORT)
+    return null
+  }
 
-    try {
-        return nodemailer.createTransport({
-            host: smtpHost,
-            port: smtpPort,
-            secure: smtpPort === 465, // true ??? ????? 465, false ??? ?????? (?????????? STARTTLS)
-            requireTLS: smtpPort !== 465, // ???????? STARTTLS ??? ?????? ????? 465
-            auth: {
-                user: smtpUser,
-                pass: smtpPass,
-            },
-            tls: {
-                // ?? ??????? ???????? ??????????? ??? Zenbox
-                rejectUnauthorized: false,
-            },
-            connectionTimeout: 10000, // 10 ?????? ??????? ???????????
-            greetingTimeout: 10000, // 10 ?????? ??????? ???????????
-        })
-    } catch (error) {
-        console.error('? ?????? ???????? SMTP transporter:', error)
-        return null
-    }
+  try {
+    return nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465, // true ??? ????? 465, false ??? ?????? (?????????? STARTTLS)
+      requireTLS: smtpPort !== 465, // ???????? STARTTLS ??? ?????? ????? 465
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+      tls: {
+        // ?? ??????? ???????? ??????????? ??? Zenbox
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 10000, // 10 ?????? ??????? ???????????
+      greetingTimeout: 10000, // 10 ?????? ??????? ???????????
+    })
+  } catch (error) {
+    console.error('? ?????? ???????? SMTP transporter:', error)
+    return null
+  }
 }
 
 const mapDeviceType = (value: string) => {
-    if (value === 'printer') return 'Drukarka'
-    if (value === 'computer') return 'Komputer / Laptop'
-    if (value === 'other') return 'Inne urządzenie'
-    return 'Nie podano'
+  if (value === 'printer') return 'Drukarka'
+  if (value === 'computer') return 'Komputer / Laptop'
+  if (value === 'other') return 'Inne urządzenie'
+  return 'Nie podano'
 }
-
-const boolToText = (value: string | null) =>
-    value === 'true' || value === 'on' ? 'Tak' : 'Nie'
 
 // ??????? ??? ??????????? ????????????? HTML
 const escapeHtml = (text: string | null | undefined): string => {
-    if (!text) return ''
-    return String(text)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;')
+  if (!text) return ''
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
 }
 
 // ??????? ??? ?????????????? ???????? (+48 778 786 796)
 const formatPhone = (phone: string | null | undefined): string => {
-    if (!phone) return 'Nie podano'
-    // ??????? ??? ?????????? ??????? ????? +
-    let cleaned = phone.replace(/[^\d+]/g, '')
+  if (!phone) return 'Nie podano'
+  // ??????? ??? ?????????? ??????? ????? +
+  let cleaned = phone.replace(/[^\d+]/g, '')
 
-    // ???? ?????????? ? +48, ??????????? ??? +48 XXX XXX XXX
-    if (cleaned.startsWith('+48')) {
-        const digits = cleaned.substring(3).replace(/\D/g, '')
-        if (digits.length === 9) {
-            return `+48 ${digits.substring(0, 3)} ${digits.substring(3, 6)} ${digits.substring(6)}`
-        }
-        return phone
+  // ???? ?????????? ? +48, ??????????? ??? +48 XXX XXX XXX
+  if (cleaned.startsWith('+48')) {
+    const digits = cleaned.substring(3).replace(/\D/g, '')
+    if (digits.length === 9) {
+      return `+48 ${digits.substring(0, 3)} ${digits.substring(3, 6)} ${digits.substring(6)}`
     }
-
-    // ???? ?????????? ? 48, ????????? +
-    if (cleaned.startsWith('48')) {
-        const digits = cleaned.substring(2).replace(/\D/g, '')
-        if (digits.length === 9) {
-            return `+48 ${digits.substring(0, 3)} ${digits.substring(3, 6)} ${digits.substring(6)}`
-        }
-    }
-
     return phone
+  }
+
+  // ???? ?????????? ? 48, ????????? +
+  if (cleaned.startsWith('48')) {
+    const digits = cleaned.substring(2).replace(/\D/g, '')
+    if (digits.length === 9) {
+      return `+48 ${digits.substring(0, 3)} ${digits.substring(3, 6)} ${digits.substring(6)}`
+    }
+  }
+
+  return phone
 }
 
 // ????????? ?????? ?????? DDMMYY-XXX
 const generateTicketNumber = (): string => {
-    const now = new Date()
-    const day = String(now.getDate()).padStart(2, '0')
-    const month = String(now.getMonth() + 1).padStart(2, '0')
-    const year = String(now.getFullYear()).slice(-2)
+  const now = new Date()
+  const day = String(now.getDate()).padStart(2, '0')
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const year = String(now.getFullYear()).slice(-2)
 
-    // ?????????? ????????? 3 ????? timestamp ??? ????????????
-    const timestamp = Date.now()
-    const sequence = String(timestamp).slice(-3)
+  // ?????????? ????????? 3 ????? timestamp ??? ????????????
+  const timestamp = Date.now()
+  const sequence = String(timestamp).slice(-3)
 
-    return `${day}${month}${year}-${sequence}`
+  return `${day}${month}${year}-${sequence}`
 }
 
 
 
 // ????????? ??????? ??????
 const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError } => {
-    let totalSize = 0
+  let totalSize = 0
 
-    for (const file of files) {
-        if (file.size > MAX_FILE_SIZE_BYTES) {
-            return {
-                valid: false,
-                error: {
-                    type: 'FILE_TOO_LARGE',
-                    message: `???? "${file.name}" ??????? ???????. ???????????? ??????: ${MAX_FILE_SIZE_MB} MB`,
-                    details: `?????? ?????: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
-                },
-            }
-        }
-        totalSize += file.size
+  for (const file of files) {
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      return {
+        valid: false,
+        error: {
+          type: 'FILE_TOO_LARGE',
+          message: `???? "${file.name}" ??????? ???????. ???????????? ??????: ${MAX_FILE_SIZE_MB} MB`,
+          details: `?????? ?????: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
+        },
+      }
     }
+    totalSize += file.size
+  }
 
-    if (totalSize > MAX_TOTAL_SIZE_BYTES) {
-        return {
-            valid: false,
-            error: {
-                type: 'FILE_TOO_LARGE',
-                message: '????? ?????? ???? ?????? ????????? ?????',
-                details: `????? ??????: ${(totalSize / 1024 / 1024).toFixed(2)} MB, ?????: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
-            },
-        }
+  if (totalSize > MAX_TOTAL_SIZE_BYTES) {
+    return {
+      valid: false,
+      error: {
+        type: 'FILE_TOO_LARGE',
+        message: '????? ?????? ???? ?????? ????????? ?????',
+        details: `????? ??????: ${(totalSize / 1024 / 1024).toFixed(2)} MB, ?????: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
+      },
     }
+  }
 
-    return { valid: true }
+  return { valid: true }
 }
 
 export async function POST(request: NextRequest) {
-    console.log('?? ????? ??????? /api/send-email')
+  console.log('?? ????? ??????? /api/send-email')
 
-    try {
-        // ???????? ???????????? SMTP ? ??????
-        const configCheck = validateSmtpConfig()
-        if (!configCheck.valid) {
-            const error: ApiError = {
-                type: 'MISSING_CONFIG',
-                message: 'SMTP ???????????? ????????',
-                details: `??????????? ?????????? ?????????: ${configCheck.missing.join(', ')}`,
-            }
+  try {
+    // ???????? ???????????? SMTP ? ??????
+    const configCheck = validateSmtpConfig()
+    if (!configCheck.valid) {
+      const error: ApiError = {
+        type: 'MISSING_CONFIG',
+        message: 'SMTP ???????????? ????????',
+        details: `??????????? ?????????? ?????????: ${configCheck.missing.join(', ')}`,
+      }
 
-            console.error('?', error.message, error.details)
+      console.error('?', error.message, error.details)
 
-            return NextResponse.json(
-                {
-                    success: false,
-                    error: error.message,
-                    errorType: error.type,
-                    details: process.env.NODE_ENV === 'development' ? error.details : '????????? ????????? ???????',
-                },
-                { status: 500 },
-            )
-        }
+      return NextResponse.json(
+        {
+          success: false,
+          error: error.message,
+          errorType: error.type,
+          details: process.env.NODE_ENV === 'development' ? error.details : '????????? ????????? ???????',
+        },
+        { status: 500 },
+      )
+    }
 
-        const formData = await request.formData()
+    const formData = await request.formData()
 
-        // ??????????? ?????? ????? (??? ?????????????? ??????)
-        const formEntries: Record<string, any> = {}
-        for (const [key, value] of formData.entries()) {
-            if (value instanceof File) {
-                formEntries[key] = { name: value.name, size: value.size, type: value.type }
-            } else {
-                formEntries[key] = value
-            }
-        }
-        console.log('?? ?????? ?????:', formEntries)
+    // ??????????? ?????? ????? (??? ?????????????? ??????)
+    const formEntries: Record<string, any> = {}
+    for (const [key, value] of formData.entries()) {
+      if (value instanceof File) {
+        formEntries[key] = { name: value.name, size: value.size, type: value.type }
+      } else {
+        formEntries[key] = value
+      }
+    }
+    console.log('?? ?????? ?????:', formEntries)
 
-        const name = (formData.get('name') as string) ?? ''
-        const phone = (formData.get('phone') as string) ?? ''
-        const email = (formData.get('email') as string) ?? ''
-        const address = (formData.get('address') as string) ?? ''
-        const deviceType = mapDeviceType((formData.get('deviceType') as string) ?? '')
-        const deviceModel = (formData.get('deviceModel') as string) || 'Nie podano'
-        const problemDescription = (formData.get('problemDescription') as string) ?? ''
-        const replacementPrinter = boolToText(formData.get('replacementPrinter') as string | null)
-
-        // ????????? ? ????????? ??????
-        const attachmentFiles = formData
-            .getAll('attachments')
-            .filter(item => item instanceof File) as File[]
-
-        // ????????? ??????? ??????
-        if (attachmentFiles.length > 0) {
-            const validation = validateAttachments(attachmentFiles)
-            if (!validation.valid && validation.error) {
-                console.error('? ?????? ????????? ??????:', validation.error)
-                return NextResponse.json(
-                    {
-                        success: false,
-                        error: validation.error.message,
-                        errorType: validation.error.type,
-                        details: validation.error.details,
-                    },
-                    { status: 400 },
-                )
-            }
-        }
-
-        // ??????????? ?????? ? ??????
-        const attachments =
-            attachmentFiles.length > 0
-                ? await Promise.all(
-                    attachmentFiles.map(async file => ({
-                        filename: file.name || 'attachment',
-                        content: Buffer.from(await file.arrayBuffer()),
-                    })),
-                )
-                : undefined
-
-        const currentYear = new Date().getFullYear()
-        const ticketNumber = generateTicketNumber()
-        const formattedPhone = formatPhone(phone)
+    const name = (formData.get('name') as string) ?? ''
+    const phone = (formData.get('phone') as string) ?? ''
+    const email = (formData.get('email') as string) ?? ''
+    const address = (formData.get('address') as string) ?? ''
+    const deviceType = mapDeviceType((formData.get('deviceType') as string) ?? '')
+    const deviceModel = (formData.get('deviceModel') as string) || 'Nie podano'
+    const problemDescription = (formData.get('problemDescription') as string) ?? ''
 
 
+    // ????????? ? ????????? ??????
+    const attachmentFiles = formData
+      .getAll('attachments')
+      .filter(item => item instanceof File) as File[]
 
-        // HTML-?????? ?????? ??? ???????
-        const emailHtml = `
+    // ????????? ??????? ??????
+    if (attachmentFiles.length > 0) {
+      const validation = validateAttachments(attachmentFiles)
+      if (!validation.valid && validation.error) {
+        console.error('? ?????? ????????? ??????:', validation.error)
+        return NextResponse.json(
+          {
+            success: false,
+            error: validation.error.message,
+            errorType: validation.error.type,
+            details: validation.error.details,
+          },
+          { status: 400 },
+        )
+      }
+    }
+
+    // ??????????? ?????? ? ??????
+    const attachments =
+      attachmentFiles.length > 0
+        ? await Promise.all(
+          attachmentFiles.map(async file => ({
+            filename: file.name || 'attachment',
+            content: Buffer.from(await file.arrayBuffer()),
+          })),
+        )
+        : undefined
+
+    const currentYear = new Date().getFullYear()
+    const ticketNumber = generateTicketNumber()
+    const formattedPhone = formatPhone(phone)
+
+
+
+    // HTML-?????? ?????? ??? ???????
+    const emailHtml = `
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -362,16 +359,7 @@ export async function POST(request: NextRequest) {
                     </table>
                   </td>
                 </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Potrzebuję drukarki zastępczej:</td>
-                        <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
+                
               </table>
             </td>
           </tr>
@@ -396,8 +384,8 @@ export async function POST(request: NextRequest) {
 </html>
     `.trim()
 
-        // ????????? ?????? ??? ?????????????
-        const emailContent = `
+    // ????????? ?????? ??? ?????????????
+    const emailContent = `
 Nowe zgłoszenie serwisowe
 Numer zgłoszenia: ${ticketNumber}
 
@@ -408,66 +396,65 @@ Adres: ${address}
 Typ urządzenia: ${deviceType}
 Model urządzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Potrzebuję drukarki zastępczej: ${replacementPrinter}
     `.trim()
 
-        // ???????? transporter SMTP
-        const transporter = createTransporter()
+    // ???????? transporter SMTP
+    const transporter = createTransporter()
 
-        if (!transporter) {
-            const error: ApiError = {
-                type: 'MISSING_CONFIG',
-                message: '❌ Nie można utworzyć SMTP transportera',
-                details: 'Sprawdź konfigurację SMTP',
-            }
+    if (!transporter) {
+      const error: ApiError = {
+        type: 'MISSING_CONFIG',
+        message: '❌ Nie można utworzyć SMTP transportera',
+        details: 'Sprawdź konfigurację SMTP',
+      }
 
-            console.error('?', error.message)
+      console.error('?', error.message)
 
-            return NextResponse.json(
-                {
-                    success: false,
-                    error: error.message,
-                    errorType: error.type,
-                    details: process.env.NODE_ENV === 'development' ? error.details : 'Błąd konfiguracji',
-                },
-                { status: 500 },
-            )
-        }
+      return NextResponse.json(
+        {
+          success: false,
+          error: error.message,
+          errorType: error.type,
+          details: process.env.NODE_ENV === 'development' ? error.details : 'Błąd konfiguracji',
+        },
+        { status: 500 },
+      )
+    }
 
-        const fromEmail = process.env.SMTP_FROM || DEFAULT_FROM
-        const toEmail = (process.env.SMTP_TO || DEFAULT_TO).split(',').map(value => value.trim())
+    const fromEmail = process.env.SMTP_FROM || DEFAULT_FROM
+    const toEmail = (process.env.SMTP_TO || DEFAULT_TO).split(',').map(value => value.trim())
 
-        console.log('?? ???????? ?????? ????? SMTP Zenbox...')
-        console.log('?? From:', fromEmail)
-        console.log('?? To:', toEmail)
-        console.log('?? Subject:', `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
+    console.log('?? ???????? ?????? ????? SMTP Zenbox...')
+    console.log('?? From:', fromEmail)
+    console.log('?? To:', toEmail)
+    console.log('?? Subject:', `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`)
 
-        // ?????????? ???????? ??? nodemailer
-        const nodemailerAttachments = attachments
-            ? attachments.map(att => ({
-                filename: att.filename,
-                content: att.content,
-            }))
-            : []
+    // ?????????? ???????? ??? nodemailer
+    const nodemailerAttachments = attachments
+      ? attachments.map(att => ({
+        filename: att.filename,
+        content: att.content,
+      }))
+      : []
 
-        // ???????? ?????? ???????
-        const info = await transporter.sendMail({
-            from: fromEmail,
-            to: toEmail,
-            subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
-            html: emailHtml,
-            text: emailContent,
-            attachments: nodemailerAttachments,
-        })
+    // ???????? ?????? ???????
+    const info = await transporter.sendMail({
+      from: fromEmail,
+      to: toEmail,
+      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
+      html: emailHtml,
+      text: emailContent,
+      attachments: nodemailerAttachments,
+    })
 
-        console.log('? ?????? ??????? ?????????? ???????!')
-        console.log('?? Message ID:', info.messageId)
-        console.log('?? Response:', info.response)
+    console.log('? ?????? ??????? ?????????? ???????!')
+    console.log('?? Message ID:', info.messageId)
+    console.log('?? Response:', info.response)
 
-        // ???????? ?????? ??????? (???? email ??????)
-        if (email && email.trim()) {
-            try {
-                const clientEmailHtml = `
+    // ???????? ?????? ??????? (???? email ??????)
+    if (email && email.trim()) {
+      try {
+        const clientEmailHtml = `
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -580,16 +567,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
                     </table>
                   </td>
                 </tr>
-                <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #e0d6b5;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td width="180" style="color: #3a2e24; font-weight: bold; font-size: 14px; vertical-align: top; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; padding-left: 10px;">Drukarka zastępcza:</td>
-                        <td style="color: #3a2e24; font-size: 14px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;">${escapeHtml(replacementPrinter) || 'Nie'}</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
+                
                 <tr>
                   <td style="padding: 12px 0 0;">
                     <p style="margin: 0; color: #7a6a50; font-size: 13px; line-height: 1.5; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; font-style: italic; text-align: left;">
@@ -633,7 +611,7 @@ Potrzebuję drukarki zastępczej: ${replacementPrinter}
 </html>
         `.trim()
 
-                const clientEmailContent = `
+        const clientEmailContent = `
 Dziękujemy za zgłoszenie serwisowe i za zaufanie!
 
 Szanowny Kliencie,
@@ -655,7 +633,6 @@ Adres: ${address}
 Typ urządzenia: ${deviceType}
 Model urządzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
-Drukarka zastępcza: ${replacementPrinter}
 
 Pozdrawiamy serdecznie,
 Zespół Omobonus Serwis
@@ -665,73 +642,73 @@ Zespół Omobonus Serwis
 Wiadomość wysłana automatycznie z formularza Omobonus Serwis © ${currentYear} Omobonus Serwis
         `.trim()
 
-                await transporter.sendMail({
-                    from: fromEmail,
-                    to: email.trim(),
-                    subject: `Dziękujemy za zgłoszenie serwisowe [${ticketNumber}]`,
-                    html: clientEmailHtml,
-                    text: clientEmailContent,
-                })
+        await transporter.sendMail({
+          from: fromEmail,
+          to: email.trim(),
+          subject: `Dziękujemy za zgłoszenie serwisowe [${ticketNumber}]`,
+          html: clientEmailHtml,
+          text: clientEmailContent,
+        })
 
-                console.log('? ?????? ??????? ?????????? ???????!')
-                console.log('?? ?????? email:', email.trim())
-            } catch (clientError: any) {
-                // ?? ????????? ???????? ???????? ??? ?????? ???????? ???????
-                console.error('?? ?????? ??? ???????? ?????? ??????? (?? ????????? ???????? ????????):', clientError)
-                console.error('?? ?????? ?????? ???????:', {
-                    message: clientError?.message,
-                    code: clientError?.code,
-                })
-            }
-        } else {
-            console.log('?? Email ??????? ?? ??????, ?????????? ???????? ?????????????')
-        }
-
-        return NextResponse.json(
-            {
-                success: true,
-                messageId: info.messageId,
-                response: info.response,
-            },
-            { status: 200 },
-        )
-    } catch (error: any) {
-        console.error('? ?????? ??? ???????? ?????? ????? SMTP Zenbox:', error)
-
-        const errorDetails: ApiError = {
-            type: 'SMTP_ERROR',
-            message: '?? ??????? ????????? ??????',
-            code: error?.code,
-            details: error?.message,
-        }
-
-        // ?????????????? ??????????? ??? SMTP ??????
-        if (error?.response) {
-            console.error('? SMTP Response:', error.response)
-            errorDetails.details = error.response
-        }
-        if (error?.command) {
-            console.error('? SMTP Command:', error.command)
-        }
-
-        // ??????????? ???? ??????
-        if (error?.code === 'ETIMEDOUT' || error?.code === 'ECONNREFUSED') {
-            errorDetails.type = 'SMTP_ERROR'
-            errorDetails.message = '?? ??????? ???????????? ? SMTP ???????'
-        } else if (error?.code === 'EAUTH') {
-            errorDetails.type = 'SMTP_ERROR'
-            errorDetails.message = '?????? ?????????????? SMTP'
-        }
-
-        return NextResponse.json(
-            {
-                success: false,
-                error: errorDetails.message,
-                errorType: errorDetails.type,
-                details: process.env.NODE_ENV === 'development' ? errorDetails.details : undefined,
-                code: errorDetails.code,
-            },
-            { status: 500 },
-        )
+        console.log('? ?????? ??????? ?????????? ???????!')
+        console.log('?? ?????? email:', email.trim())
+      } catch (clientError: any) {
+        // ?? ????????? ???????? ???????? ??? ?????? ???????? ???????
+        console.error('?? ?????? ??? ???????? ?????? ??????? (?? ????????? ???????? ????????):', clientError)
+        console.error('?? ?????? ?????? ???????:', {
+          message: clientError?.message,
+          code: clientError?.code,
+        })
+      }
+    } else {
+      console.log('?? Email ??????? ?? ??????, ?????????? ???????? ?????????????')
     }
+
+    return NextResponse.json(
+      {
+        success: true,
+        messageId: info.messageId,
+        response: info.response,
+      },
+      { status: 200 },
+    )
+  } catch (error: any) {
+    console.error('? ?????? ??? ???????? ?????? ????? SMTP Zenbox:', error)
+
+    const errorDetails: ApiError = {
+      type: 'SMTP_ERROR',
+      message: '?? ??????? ????????? ??????',
+      code: error?.code,
+      details: error?.message,
+    }
+
+    // ?????????????? ??????????? ??? SMTP ??????
+    if (error?.response) {
+      console.error('? SMTP Response:', error.response)
+      errorDetails.details = error.response
+    }
+    if (error?.command) {
+      console.error('? SMTP Command:', error.command)
+    }
+
+    // ??????????? ???? ??????
+    if (error?.code === 'ETIMEDOUT' || error?.code === 'ECONNREFUSED') {
+      errorDetails.type = 'SMTP_ERROR'
+      errorDetails.message = '?? ??????? ???????????? ? SMTP ???????'
+    } else if (error?.code === 'EAUTH') {
+      errorDetails.type = 'SMTP_ERROR'
+      errorDetails.message = '?????? ?????????????? SMTP'
+    }
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: errorDetails.message,
+        errorType: errorDetails.type,
+        details: process.env.NODE_ENV === 'development' ? errorDetails.details : undefined,
+        code: errorDetails.code,
+      },
+      { status: 500 },
+    )
+  }
 }

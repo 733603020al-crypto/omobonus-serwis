@@ -1,8 +1,7 @@
-'use client'
-
+import type { ReactNode } from 'react'
 import Image from 'next/image'
-import { useRef, useEffect } from 'react'
 import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 interface HeroStat {
   num: string
@@ -51,26 +50,8 @@ const PL: HeroT = {
   trustLabel: 'Zaufanie klientów',
 }
 
-export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } = {}) {
+export function Hero({ children, t }: { children?: ReactNode; t?: HeroT } = {}) {
   const d = t ?? PL
-  const taglineRef = useRef<HTMLParagraphElement>(null)
-
-  useEffect(() => {
-    const el = taglineRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.remove('fade-slide-init')
-          el.classList.add('fade-slide-animate')
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section
@@ -121,9 +102,9 @@ export function Hero({ children, t }: { children?: React.ReactNode; t?: HeroT } 
           )}
         </h1>
 
-        <p ref={taglineRef} className="fade-slide-init mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
+        <FadeSlideP className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
           {d.tagline}
-        </p>
+        </FadeSlideP>
 
         {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
         <div className="flex gap-3 items-center mt-[16px] justify-center">

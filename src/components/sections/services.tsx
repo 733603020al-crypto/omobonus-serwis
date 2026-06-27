@@ -1,7 +1,5 @@
-'use client'
-
-import { useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
 import { services as defaultServices } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
@@ -32,20 +30,6 @@ export function Services({
 } = {}) {
   const services = servicesData ?? defaultServices
   const d = t ?? PL
-  const eyebrowRef = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const el = eyebrowRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
   return (
     <section
       id="uslugi"
@@ -70,9 +54,9 @@ export function Services({
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="mb-6 text-center">
 
-          <p ref={eyebrowRef} className="fade-slide-init brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+          <FadeSlideP className="brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
-          </p>
+          </FadeSlideP>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">

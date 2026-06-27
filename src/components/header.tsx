@@ -223,9 +223,13 @@ export function Header() {
     <header className="sticky top-0 z-50 h-[65px] w-full border-b border-border">
       {/* Background */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
+        <Image
+          src={manifest.Background_1}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>
