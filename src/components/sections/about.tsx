@@ -109,7 +109,7 @@ export function About({
                 height={500}
                 sizes="(max-width: 768px) 85vw, 400px"
                 className="object-contain rounded-lg w-full h-auto"
-                quality={75}
+                quality={60}
               />
             </div>
           </div>
@@ -154,7 +154,7 @@ export function About({
                 height={500}
                 sizes="(max-width: 768px) 85vw, 400px"
                 className="object-contain rounded-lg w-full h-auto"
-                quality={75}
+                quality={60}
               />
             </div>
           </div>

@@ -227,8 +227,8 @@ export function Header() {
           src={manifest.Background_1}
           alt=""
           fill
-          priority
           sizes="100vw"
+          quality={40}
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/60" />
@@ -252,7 +252,6 @@ export function Header() {
               alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
               fill
               priority
-              unoptimized
               sizes="(max-width: 768px) 40px, 48px"
               className="object-contain p-[1px]"
             />

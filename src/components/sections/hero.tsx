@@ -71,6 +71,7 @@ export function Hero({ children, t }: { children?: ReactNode; t?: HeroT } = {}) 
           priority
           fetchPriority="high"
           sizes="100vw"
+          quality={60}
           className="object-cover object-center"
         />
       </div>
