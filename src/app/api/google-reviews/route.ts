@@ -9,10 +9,14 @@ export async function GET() {
         const file = fs.readFileSync(filePath, "utf-8")
         const data = JSON.parse(file)
 
+        const reviews = (data.reviews ?? []).filter(
+            (r: { rating: number }) => r.rating === 5
+        )
+
         return NextResponse.json({
             rating: data.rating,
             totalReviews: data.total,
-            reviews: data.reviews
+            reviews,
         })
     } catch (error) {
         return NextResponse.json(
