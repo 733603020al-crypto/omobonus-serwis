@@ -26,7 +26,7 @@ async function fetchReviews() {
             return
         }
 
-        // Берём только оригинальные польские отзывы
+        // Берём только оригинальные польские отзывы (без фильтра по рейтингу — фильтрация только при отображении)
         const reviews = (data.result?.reviews ?? []).filter(
             (r) => r.original_language === 'pl'
         )
