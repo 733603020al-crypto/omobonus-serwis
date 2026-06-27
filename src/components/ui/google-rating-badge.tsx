@@ -1,6 +1,15 @@
-'use client'
+import fs from 'fs'
+import path from 'path'
 
-import { useEffect, useState } from 'react'
+function getRating(): number | null {
+  try {
+    const filePath = path.join(process.cwd(), 'data', 'reviews.json')
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+    return typeof data.rating === 'number' ? data.rating : null
+  } catch {
+    return null
+  }
+}
 
 export function GoogleRatingBadge({
   className = '',
@@ -13,35 +22,11 @@ export function GoogleRatingBadge({
   trustLabel?: string
   ariaLabel?: string
 } = {}) {
-  const [rating, setRating] = useState<number | null>(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch('/api/google-reviews')
-      .then((res) => res.json())
-      .then((data) => {
-        if (typeof data?.rating === 'number') setRating(data.rating)
-      })
-      .finally(() => setLoading(false))
-  }, [])
+  const rating = getRating()
+  if (rating === null) return null
 
   const shell =
     `relative group flex items-center gap-2 md:gap-3 rounded-lg border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-[2px] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] cursor-pointer ${className}`
-
-  if (loading) {
-    return (
-      <div className={`${shell} animate-pulse`} aria-hidden="true">
-        <div className="h-[40px] w-[40px] rounded-full bg-white/10 shrink-0" />
-        <div className="flex flex-col gap-1.5">
-          <div className="h-[10px] w-[70px] rounded-full bg-white/10" />
-          <div className="h-[18px] w-[80px] rounded-full bg-white/10" />
-          <div className="h-[10px] w-[150px] rounded-full bg-white/10" />
-        </div>
-      </div>
-    )
-  }
-
-  if (rating === null) return null
 
   return (
     <a

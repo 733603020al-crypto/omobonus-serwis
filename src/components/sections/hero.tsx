@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
-import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 interface HeroStat {
   num: string
@@ -102,9 +101,9 @@ export function Hero({ children, t }: { children?: ReactNode; t?: HeroT } = {}) 
           )}
         </h1>
 
-        <FadeSlideP className="mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
+        <p className="hero-tagline-animate mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
           {d.tagline}
-        </FadeSlideP>
+        </p>
 
         {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
         <div className="flex gap-3 items-center mt-[16px] justify-center">
