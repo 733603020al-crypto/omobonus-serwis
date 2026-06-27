@@ -8,8 +8,12 @@ type Review = {
     author_name: string
     rating: number
     text: string
+    text_uk?: string | null
+    text_ru?: string | null
     profile_photo_url?: string
     relative_time_description?: string
+    relative_time_uk?: string | null
+    relative_time_ru?: string | null
 }
 
 export default function GoogleReviews() {
@@ -18,7 +22,6 @@ export default function GoogleReviews() {
     const [totalReviews, setTotalReviews] = useState<number | null>(null)
     const [loading, setLoading] = useState(true)
     const pathname = usePathname()
-    const isUk = pathname?.startsWith('/uk') ?? false
     const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
     const reviewsT = googleReviewsI18n[locale]
 
@@ -122,7 +125,7 @@ export default function GoogleReviews() {
     if (loading) {
         return (
             <section className="py-4 text-center text-sm text-gray-400">
-                {isUk ? 'Завантаження відгуків клієнтів…' : 'Ładowanie opinii klientów…'}
+                {reviewsT.loading}
             </section>
         )
     }
@@ -130,7 +133,7 @@ export default function GoogleReviews() {
     if (!reviews.length) {
         return (
             <section className="py-6 text-center text-red-500">
-                {isUk ? 'Немає відгуків (API не повернув дані)' : 'Brak opinii (API nie zwróciło danych)'}
+                {reviewsT.empty}
             </section>
         )
     }
@@ -229,7 +232,17 @@ export default function GoogleReviews() {
                             willChange: "transform",
                         }}
                     >
-                        {[...reviews, ...reviews].map((review, i) => (
+                        {[...reviews, ...reviews].map((review, i) => {
+                            const localizedText =
+                                locale === 'uk' ? (review.text_uk || review.text) :
+                                locale === 'ru' ? (review.text_ru || review.text) :
+                                review.text
+                            const localizedTime =
+                                locale === 'uk' ? (review.relative_time_uk || review.relative_time_description) :
+                                locale === 'ru' ? (review.relative_time_ru || review.relative_time_description) :
+                                review.relative_time_description
+
+                            return (
                             <div
                                 key={i}
                                 style={{ width: `${cardWidth}px` }}
@@ -271,18 +284,19 @@ export default function GoogleReviews() {
                                         ))}
                                     </div>
 
-                                    {review.relative_time_description && (
+                                    {localizedTime && (
                                         <span className="text-[12px] text-white/50 ml-1">
-                                            • {review.relative_time_description}
+                                            • {localizedTime}
                                         </span>
                                     )}
                                 </div>
 
                                 <p className="text-[12px] leading-[1.6] text-[#f1ead6] tracking-[0.015em] line-clamp-5">
-                                    {review.text}
+                                    {localizedText}
                                 </p>
                             </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
             </div>

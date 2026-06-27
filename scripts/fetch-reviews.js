@@ -14,26 +14,58 @@ if (!API_KEY || !PLACE_ID) {
     process.exit(1)
 }
 
+async function fetchReviewsForLang(lang) {
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews,rating,user_ratings_total&language=${lang}&key=${API_KEY}`
+    const res = await fetch(url)
+    const data = await res.json()
+    if (data.status !== 'OK') {
+        console.error(`❌ Google API error (language=${lang}):`, data.status)
+        return null
+    }
+    return data.result
+}
+
 async function fetchReviews() {
     try {
-        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews,rating,user_ratings_total&language=pl&key=${API_KEY}`
+        const [resultPl, resultUk, resultRu] = await Promise.all([
+            fetchReviewsForLang('pl'),
+            fetchReviewsForLang('uk'),
+            fetchReviewsForLang('ru'),
+        ])
 
-        const res = await fetch(url)
-        const data = await res.json()
-
-        if (data.status !== 'OK') {
-            console.error('❌ Google API error:', data)
+        if (!resultPl) {
+            console.error('❌ Не удалось получить польские отзывы')
             return
         }
 
-        // Берём только оригинальные польские отзывы (без фильтра по рейтингу — фильтрация только при отображении)
-        const reviews = (data.result?.reviews ?? []).filter(
+        // Берём только оригинальные польские отзывы как основу
+        const plReviews = (resultPl.reviews ?? []).filter(
             (r) => r.original_language === 'pl'
         )
 
+        // Индексируем UK и RU версии по timestamp для матчинга
+        const ukByTime = Object.fromEntries(
+            (resultUk?.reviews ?? []).map((r) => [r.time, r])
+        )
+        const ruByTime = Object.fromEntries(
+            (resultRu?.reviews ?? []).map((r) => [r.time, r])
+        )
+
+        const reviews = plReviews.map((r) => {
+            const ukReview = ukByTime[r.time]
+            const ruReview = ruByTime[r.time]
+            return {
+                ...r,
+                text_uk: ukReview?.text ?? null,
+                text_ru: ruReview?.text ?? null,
+                relative_time_uk: ukReview?.relative_time_description ?? null,
+                relative_time_ru: ruReview?.relative_time_description ?? null,
+            }
+        })
+
         const result = {
-            rating: data.result?.rating ?? null,
-            total: data.result?.user_ratings_total ?? null,
+            rating: resultPl.rating ?? null,
+            total: resultPl.user_ratings_total ?? null,
             reviews,
             updatedAt: new Date().toISOString(),
         }
@@ -42,6 +74,10 @@ async function fetchReviews() {
 
         console.log('✅ reviews.json обновлён')
         console.log(`📊 Отзывов сохранено: ${reviews.length}`)
+        const withUk = reviews.filter((r) => r.text_uk).length
+        const withRu = reviews.filter((r) => r.text_ru).length
+        console.log(`🇺🇦 С UK переводом: ${withUk}/${reviews.length}`)
+        console.log(`🇷🇺 С RU переводом: ${withRu}/${reviews.length}`)
     } catch (err) {
         console.error('❌ Ошибка:', err)
     }
