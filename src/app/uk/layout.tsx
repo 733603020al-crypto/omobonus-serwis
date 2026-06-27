@@ -128,8 +128,8 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
 
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
-        <link rel="preconnect" href="https://log.cookieyes.com" />
-        <link rel="preconnect" href="https://lh3.googleusercontent.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://log.cookieyes.com" />
+        <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
       </head>
 
       <body className="antialiased scroll-smooth">
