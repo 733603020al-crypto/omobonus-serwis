@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 194,
+  "total": 207,
   "reviews": [
     {
       "author_name": "Valery S",
@@ -9,8 +9,12 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU531dSqUUWQ8UQfEoqmema-0HiHO82AkrPeUPOOG1QnXjuqSxW=s128-c0x00000000-cc-rp-mo-ba3",
       "rating": 5,
-      "relative_time_description": "2 tygodnie temu",
+      "relative_time_description": "miesiąc temu",
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад",
       "text": "Niesamowita obsługa! Gorąco polecam. Coś się stało z moim laptopem, a ja miałem ważne dokumenty i pracę do wykonania. Przywiozłem laptopa wieczorem, kiedy warsztat był już prawie zamknięty, ale pracownik Max, biorąc pod uwagę pilność sprawy, został i szybko wszystko naprawił, co mnie uratowało, bardzo dziękuję! Bardzo dobra robota i przyjazny personel, który pomoże w każdym problemie. Jeszcze raz bardzo dziękuję!\n\nAmazing service! Highly recommended. Something happened to my laptop, and there were important documents and work that I had to complete. I brought my laptop in the evening, when the workshop was almost closing, but the employee Max, given the urgency of the matter, stayed and fixed everything quickly, which saved me, thank you very much! Very good work and friendly staff who will help with any problem. Thank you very much again!",
+      "text_uk": "Неймовірне обслуговування! Гаряче рекомендую. Щось сталося з моїм ноутбуком, а у мене були важливі документи та робота. Привіз ноутбук увечері, коли майстерня вже майже закривалась, але працівник Макс, враховуючи терміновість, залишився і швидко все полагодив — це мене врятувало, дуже дякую! Чудова робота і привітний персонал, який допоможе з будь-якою проблемою. Ще раз дуже дякую!",
+      "text_ru": "Невероятное обслуживание! Горячо рекомендую. Что-то случилось с моим ноутбуком, а у меня были важные документы и работа. Привёз ноутбук вечером, когда мастерская уже почти закрывалась, но сотрудник Макс, учитывая срочность, остался и быстро всё починил — это меня спасло, большое спасибо! Очень хорошая работа и дружелюбный персонал, который поможет с любой проблемой. Ещё раз большое спасибо!",
       "time": 1779910506,
       "translated": false
     },
@@ -21,21 +25,13 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIIvMvQSiND4D190Ur1K1yuIwQeeWgo0PPeDp5iMfPTxcSACQ=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "tydzień temu",
+      "relative_time_description": "3 tygodnie temu",
+      "relative_time_uk": "3 тижні тому",
+      "relative_time_ru": "3 недели назад",
       "text": "Świetny serwis! Wszystko jest wykonywane profesjonalnie, szybko i na wysokim poziomie. Współpracujemy od dawna i jesteśmy bardzo zadowoleni. Cieszymy się, że znaleźliśmy ludzi, którzy zawsze doskonale serwisują nasze drukarki. Firmie można zaufać i zawsze można na nich liczyć — nie zawodzą. Polecam!",
+      "text_uk": "Чудовий сервіс! Все виконується професійно, швидко і на високому рівні. Співпрацюємо вже давно і дуже задоволені. Раді, що знайшли людей, які завжди відмінно обслуговують наші принтери. Компанії можна довіряти і на неї завжди можна покластися — не підводять. Рекомендую!",
+      "text_ru": "Отличный сервис! Всё выполняется профессионально, быстро и на высоком уровне. Сотрудничаем уже давно и очень довольны. Рады, что нашли людей, которые всегда отлично обслуживают наши принтеры. Компании можна доверять, на неё всегда можно положиться — не подводят. Рекомендую!",
       "time": 1780588238,
-      "translated": false
-    },
-    {
-      "author_name": "Aleksandra Świderska",
-      "author_url": "https://www.google.com/maps/contrib/104760570921069876841/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJ6LRFam8FtPqFzCIHrTOXPizduhVzRKRLCr-dLbWRqeuE7EA=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "2 tygodnie temu",
-      "text": "Kilkukrotnie korzystałam z serwisu naprawy komputerów i z całego serca mogę polecić to miejsce. Dopiero tutaj panowie rozwiązali problem, który miałam z matrycą. Oddawałam do naprawy zarówno laptop jak i drukarkę i wszystko było zrobione bardzo sprawnie, starannie i szybko. Bardzo miła obsługa i przyjacielski piesek Umka.",
-      "time": 1780073987,
       "translated": false
     },
     {
@@ -46,8 +42,28 @@
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
       "rating": 5,
       "relative_time_description": "5 miesięcy temu",
+      "relative_time_uk": "5 місяців тому",
+      "relative_time_ru": "5 месяцев назад",
       "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
+      "text_uk": "Дуже рекомендую цей сервіс! Мій лазерний принтер HP залишав некрасиві смуги на сторінках, і я був переконаний, що мене чекає дорогий ремонт. Завдяки фаховій діагностиці виявилось, що достатньо було простої заміни картриджів. Сам би я до цього не здогадався, а завдяки чесності майстрів відремонтував техніку дешево і швидко. Великий плюс за професіоналізм і за те, що не нав'язують зайвих витрат!",
+      "text_ru": "Очень рекомендую этот сервис! Мой лазерный принтер HP оставлял некрасивые полосы на листах, и я был уверен, что меня ждёт дорогой ремонт. Благодаря профессиональной диагностике оказалось, что достаточно было простой замены картриджей. Сам бы я до этого не додумался, а благодаря честности мастеров отремонтировал технику дёшево и быстро. Большой плюс за профессионализм и за то, что не навязывают лишних трат!",
       "time": 1768238411,
+      "translated": false
+    },
+    {
+      "author_name": "Pan.Marchewka",
+      "author_url": "https://www.google.com/maps/contrib/112297281163590463878/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWIXZlOxDo3YCumYYMoioTDNQ3o88MQwyGL8otSXdO8QCHmNdM=s128-c0x00000000-cc-rp-mo-ba6",
+      "rating": 3,
+      "relative_time_description": "2 tygodnie temu",
+      "relative_time_uk": "2 тижні тому",
+      "relative_time_ru": "2 недели назад",
+      "text": "Serwis wykonał usługę poprawnie, jednak czas realizacji był nieco dłuższy, niż się spodziewałem. Kontakt z obsługą był w porządku, ale brakowało bardziej szczegółowych informacji o postępach naprawy. Drukarka działa, choć mam wrażenie, że całość mogła zostać wykonana sprawniej. Ogólnie przeciętnie – bez większych zastrzeżeń, ale też bez efektu „wow".",
+      "text_uk": "Сервіс виконав роботу правильно, однак час виконання виявився дещо довшим, ніж я очікував. Зв'язок із персоналом був нормальним, але бракувало детальнішої інформації про хід ремонту. Принтер працює, хоча мені здається, що все могло бути зроблено швидше. Загалом — посередньо: без серйозних претензій, але й без ефекту «вау».",
+      "text_ru": "Сервис выполнил услугу корректно, однако время выполнения оказалось несколько дольше, чем я ожидал. Общение с персоналом было нормальным, но не хватало более подробной информации о ходе ремонта. Принтер работает, хотя у меня ощущение, что всё могло быть сделано быстрее. В целом — средне: без особых претензий, но и без эффекта «вау».",
+      "time": 1781080156,
       "translated": false
     },
     {
@@ -57,11 +73,15 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJQhQOfstHIeGvC6_mYc8WBPZUVpNi2NbNo0JYa-1XnQrxTZw=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "tydzień temu",
+      "relative_time_description": "3 tygodnie temu",
+      "relative_time_uk": "3 тижні тому",
+      "relative_time_ru": "3 недели назад",
       "text": "Serdecznie polecam! Szybka diagnoza problemu z laptopem i natychmiastowa naprawa. Dodam, że laptop był wcześniej kilkukrotnie w naprawie w innym miejscu, gdzie ściągnięto tylko kasę, a problem pozostał. Świetna robota i 2 miesiące gwarancji. Jestem mega zadowolona!",
+      "text_uk": "Щиро рекомендую! Швидка діагностика проблеми з ноутбуком і негайний ремонт. Додам, що ноутбук раніше кілька разів здавали в ремонт в інше місце, де тільки брали гроші, а проблема залишалась. Чудова робота і 2 місяці гарантії. Я дуже задоволена!",
+      "text_ru": "Искренне рекомендую! Быстрая диагностика проблемы с ноутбуком и немедленный ремонт. Добавлю, что ноутбук ранее несколько раз сдавали в ремонт в другое место, где только брали деньги, а проблема оставалась. Отличная работа и 2 месяца гарантии. Я очень довольна!",
       "time": 1780487638,
       "translated": false
     }
   ],
-  "updatedAt": "2026-06-15T17:09:53.955Z"
+  "updatedAt": "2026-06-28T00:00:00.000Z"
 }
