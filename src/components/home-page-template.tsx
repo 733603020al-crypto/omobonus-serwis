@@ -49,7 +49,7 @@ export function HomePageTemplate({
           </div>
         </Hero>
       </div>
-      <div className="relative isolate overflow-hidden">
+      <div className="relative overflow-hidden">
         <div
           aria-hidden="true"
           className="fixed inset-0 -z-10"
