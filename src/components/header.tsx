@@ -227,6 +227,7 @@ export function Header() {
           src={manifest.Background_1}
           alt=""
           fill
+          priority
           sizes="100vw"
           quality={40}
           className="object-cover object-center"
