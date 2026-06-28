@@ -4,7 +4,6 @@ import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
-import '../styles/accordion.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 
@@ -127,7 +126,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         </Script>
 
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://cdn-cookieyes.com" />
+        <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
         <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
       </head>
