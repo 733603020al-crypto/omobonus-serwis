@@ -50,9 +50,11 @@ export function HomePageTemplate({
         </Hero>
       </div>
       <div
-        className="relative isolate overflow-hidden [background-attachment:scroll] md:[background-attachment:fixed] [background-size:100%_auto] md:[background-size:cover] [background-repeat:repeat-y] md:[background-repeat:no-repeat] md:[background-position:center]"
+        className="relative isolate overflow-hidden [background-attachment:scroll] md:[background-attachment:fixed]"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <div className="relative z-10">
