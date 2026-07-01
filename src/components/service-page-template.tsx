@@ -129,6 +129,7 @@ export function ServicePageTemplate({
             fill
             priority
             sizes="100vw"
+            quality={60}
             className="object-cover object-center"
           />
         </div>
