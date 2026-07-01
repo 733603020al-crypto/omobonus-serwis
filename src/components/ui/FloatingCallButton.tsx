@@ -6,19 +6,9 @@ import { createPortal } from 'react-dom'
 
 export function FloatingCallButton() {
     const [mounted, setMounted] = useState(false)
-    const [shake, setShake] = useState(false)
 
     useEffect(() => {
         setMounted(true)
-    }, [])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setShake(true)
-            setTimeout(() => setShake(false), 600)
-        }, 5000)
-
-        return () => clearInterval(interval)
     }, [])
 
     if (!mounted) return null
@@ -37,13 +27,14 @@ export function FloatingCallButton() {
                     }
                 }
 
-                @keyframes shake {
-                    0% { transform: rotate(0deg); }
-                    20% { transform: rotate(-12deg); }
-                    40% { transform: rotate(12deg); }
-                    60% { transform: rotate(-12deg); }
-                    80% { transform: rotate(12deg); }
-                    100% { transform: rotate(0deg); }
+                @keyframes shake-periodic {
+                    0%     { transform: rotate(0deg); }
+                    2.14%  { transform: rotate(-12deg); }
+                    4.29%  { transform: rotate(12deg); }
+                    6.43%  { transform: rotate(-12deg); }
+                    8.57%  { transform: rotate(12deg); }
+                    10.71% { transform: rotate(0deg); }
+                    100%   { transform: rotate(0deg); }
                 }
 
                 .ripple {
@@ -59,8 +50,8 @@ export function FloatingCallButton() {
                     animation-delay: 1s;
                 }
 
-                .call-icon.shake {
-                    animation: shake 0.6s ease-in-out;
+                .call-icon {
+                    animation: shake-periodic 5.6s ease-in-out infinite;
                 }
             `}</style>
 
@@ -98,7 +89,7 @@ export function FloatingCallButton() {
                             pointer-events-auto
                         "
                     >
-                        <Phone className={`w-6 h-6 call-icon ${shake ? 'shake' : ''}`} />
+                        <Phone className="w-6 h-6 call-icon" />
                     </a>
 
                 </div>
