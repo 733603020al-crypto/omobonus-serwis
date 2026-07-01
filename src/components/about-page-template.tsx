@@ -1,3 +1,4 @@
+import '@/app/styles/umka-paw.css'
 import { Header } from '@/components/header'
 import { ONasHero, type ONasHeroT } from '@/components/sections/o-nas-hero'
 import { Advantages, type AdvantagesT } from '@/components/sections/advantages'
