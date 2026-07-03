@@ -250,7 +250,7 @@
   },
   contactActions: {
     quickContactTitle: 'Зв\'яжіться з нами',
-    callbackTitle: 'Залиште номер — ми передзвонимо',
+    callbackTitle: 'або залиш номер — ми передзвонимо',
     navigateLabel: 'Прокласти маршрут',
     callbackButton: 'Прошу зателефонувати',
     callbackSubmitting: 'Надсилання...',
@@ -259,6 +259,7 @@
     callbackError: 'Не вдалося надіслати запит. Спробуйте ще раз або зателефонуйте.',
     successTitle: 'Дякуємо!',
     successText: 'Ми зв\'яжемося з вами якнайшвидше',
+    orFormLabel: 'або відправте заявку на обслуговування',
   },
 } as const
 

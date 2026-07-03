@@ -327,7 +327,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   return (
     <section
       id="formularz"
-      className={`relative ${bare ? 'pt-4 md:pt-6 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
+      className={`relative ${bare ? 'pt-2 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
 
     >
 
@@ -350,7 +350,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
         {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-3xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top mb-0 -mb-12 md:-mb-[15%]">
+        <div className="w-full max-w-xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20">
 
 
 

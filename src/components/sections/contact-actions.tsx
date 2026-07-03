@@ -19,7 +19,6 @@ const normalizePhoneNumberForDataLayer = (phoneNumber: string): string => {
   const value = String(phoneNumber || '').trim()
   const hasPlus = value.startsWith('+')
   const digitsOnly = value.replace(/\D/g, '')
-
   return hasPlus ? `+${digitsOnly}` : digitsOnly
 }
 
@@ -28,21 +27,13 @@ const pushFormSubmitToDataLayer = (
   phoneNumber: string
 ): void => {
   if (typeof window === 'undefined') return
-
   window.dataLayer = window.dataLayer || []
-
   window.dataLayer.push({
     event: 'form_submit',
     form_id: formId,
     phone_number: normalizePhoneNumberForDataLayer(phoneNumber),
   })
 }
-
-const cardClass =
-  'relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-
-const cardClassOpen =
-  'relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
 
 function CardBg() {
   return (
@@ -51,7 +42,7 @@ function CardBg() {
         src={manifest.Background_1}
         alt=""
         fill
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 100vw, 560px"
         className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/55" />
@@ -77,13 +68,12 @@ function SectionHeader({ title }: { title: string }) {
   return (
     <p
       ref={ref}
-      className="fade-slide-init brush-underline mb-4 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]"
+      className="fade-slide-init brush-underline mb-5 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]"
     >
       {title}
     </p>
   )
 }
-
 
 interface ContactActionsT {
   quickContactTitle: string
@@ -95,11 +85,12 @@ interface ContactActionsT {
   callbackError: string
   successTitle: string
   successText: string
+  orFormLabel?: string
 }
 
 const PL_ACTIONS: ContactActionsT = {
   quickContactTitle: 'Skontaktuj się z nami',
-  callbackTitle: 'Zostaw numer — oddzwonimy',
+  callbackTitle: 'lub zostaw numer — oddzwonimy',
   callbackButton: 'Proszę o telefon',
   callbackSubmitting: 'Wysyłanie...',
   callbackHint: 'Oddzwaniamy: pon.–sob. 7:00–21:00',
@@ -107,6 +98,7 @@ const PL_ACTIONS: ContactActionsT = {
   callbackError: 'Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.',
   successTitle: 'Dziękujemy!',
   successText: 'Skontaktujemy się z Państwem jak najszybciej',
+  orFormLabel: 'lub wyślij zgłoszenie serwisowe',
 }
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
@@ -127,7 +119,6 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
   const glowTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Populate phoneInputWrapperRef after mount (input's parent div, not the country button)
   useEffect(() => {
     const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
     phoneInputWrapperRef.current = input?.parentElement ?? null
@@ -208,103 +199,111 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
   return (
     <>
-      <section className="max-w-3xl mx-auto px-4 pt-8 pb-4 md:pt-12 md:pb-6">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <section className="mx-auto max-w-xl px-4 pt-8 pb-4 md:pt-10 md:pb-4">
+        <div
+          className="relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)]"
+          style={{
+            transition: 'box-shadow 500ms ease-in-out',
+            boxShadow: glowActive
+              ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
+              : '0 8px 32px rgba(0,0,0,0.5)',
+          }}
+        >
+          <CardBg />
+          <div className="relative z-10 p-5 md:p-8">
 
-          {/* LEFT — Szybki kontakt */}
-          <div className={cardClass}>
-            <CardBg />
-            <div className="relative z-10 p-4 md:p-6">
-              <SectionHeader title={d.quickContactTitle} />
+            <SectionHeader title={d.quickContactTitle} />
 
-              <div className="flex flex-row items-center justify-center gap-4 py-2">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Wyznacz trasę"
-                >
-                  <Image src="/images/google-maps.png" alt="Google Maps" width={52} height={52} />
-                </a>
-                <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
-                  <Image src="/images/email.png" alt="E-mail" width={52} height={52} />
-                </a>
-                <a
-                  href="https://wa.me/48793759262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                >
-                  <Image src="/images/whatsapp.png" alt="WhatsApp" width={52} height={52} />
-                </a>
-                <a
-                  href="https://t.me/+48793759262"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Telegram"
-                >
-                  <Image src="/images/telegram.png" alt="Telegram" width={52} height={52} />
-                </a>
-                <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
-                  <Image src="/images/viber.png" alt="Viber" width={52} height={52} />
-                </a>
+            {/* Icons row */}
+            <div className="flex flex-row items-center justify-center gap-4 md:gap-5 mb-5">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Wyznacz trasę"
+              >
+                <Image src="/images/google-maps.png" alt="Google Maps" width={52} height={52} />
+              </a>
+              <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
+                <Image src="/images/email.png" alt="E-mail" width={52} height={52} />
+              </a>
+              <a
+                href="https://wa.me/48793759262"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
+                <Image src="/images/whatsapp.png" alt="WhatsApp" width={52} height={52} />
+              </a>
+              <a
+                href="https://t.me/+48793759262"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegram"
+              >
+                <Image src="/images/telegram.png" alt="Telegram" width={52} height={52} />
+              </a>
+              <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
+                <Image src="/images/viber.png" alt="Viber" width={52} height={52} />
+              </a>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/40 to-transparent mb-5" />
+
+            {/* Callback label */}
+            <p className="mb-3 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/80">
+              {d.callbackTitle}
+            </p>
+
+            {/* Phone form */}
+            <form ref={formRef} onSubmit={handleCallback} className="space-y-3">
+              <div ref={phoneBlockRef}>
+                <CustomPhoneInput
+                  value={phone}
+                  onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
+                  onCountryChange={({ name, dialCode, phoneLength }) => {
+                    setCountryName(name)
+                    setCountryDialCode(dialCode)
+                    setCountryPhoneLength(phoneLength)
+                  }}
+                  variant="dark"
+                  locale={locale}
+                />
               </div>
-            </div>
-          </div>
-
-          {/* RIGHT — Oddzwonimy do Ciebie */}
-          <div
-            className={cardClassOpen}
-            style={{
-              transition: 'box-shadow 500ms ease-in-out',
-              boxShadow: glowActive
-                ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
-                : '0 8px 32px rgba(0,0,0,0.5)',
-            }}
-          >
-            <CardBg />
-            <div className="relative z-10 flex flex-col p-4 md:p-6">
-              <SectionHeader title={d.callbackTitle} />
-
-              <form ref={formRef} onSubmit={handleCallback} className="space-y-3 mt-4">
-                <div ref={phoneBlockRef}>
-                  <CustomPhoneInput
-                    value={phone}
-                    onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
-                    onCountryChange={({ name, dialCode, phoneLength }) => {
-                      setCountryName(name)
-                      setCountryDialCode(dialCode)
-                      setCountryPhoneLength(phoneLength)
-                    }}
-                    variant="dark"
-                    className="!flex-col"
-                    locale={locale}
-                  />
-                </div>
-                {phoneError && (
-                  <p className="text-red-600 text-sm font-sans">
-                    {d.phoneError}
-                  </p>
-                )}
-                {callbackError && !phoneError && (
-                  <p className="text-red-600 text-sm">
-                    {d.callbackError}
-                  </p>
-                )}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full rounded-full border border-transparent bg-[#1c6e43] px-8 py-[14px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting ? d.callbackSubmitting : d.callbackButton}
-                </button>
-                <p className="text-center font-inter text-[12px] text-white/45">
-                  {d.callbackHint}
+              {phoneError && (
+                <p className="text-red-400 text-sm font-sans">
+                  {d.phoneError}
                 </p>
-              </form>
-            </div>
-          </div>
+              )}
+              {callbackError && !phoneError && (
+                <p className="text-red-400 text-sm">
+                  {d.callbackError}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full rounded-full border border-transparent bg-[#1c6e43] px-8 py-[14px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isSubmitting ? d.callbackSubmitting : d.callbackButton}
+              </button>
+              <p className="text-center font-inter text-[12px] text-white/45">
+                {d.callbackHint}
+              </p>
+            </form>
 
+            {/* Link to form */}
+            {d.orFormLabel && (
+              <>
+                <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/30 to-transparent" />
+                <p className="mt-4 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/60">
+                  {d.orFormLabel}
+                </p>
+              </>
+            )}
+
+          </div>
         </div>
       </section>
 
