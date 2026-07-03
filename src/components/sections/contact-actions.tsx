@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
@@ -22,10 +21,7 @@ const normalizePhoneNumberForDataLayer = (phoneNumber: string): string => {
   return hasPlus ? `+${digitsOnly}` : digitsOnly
 }
 
-const pushFormSubmitToDataLayer = (
-  formId: DataLayerFormId,
-  phoneNumber: string
-): void => {
+const pushFormSubmitToDataLayer = (formId: DataLayerFormId, phoneNumber: string): void => {
   if (typeof window === 'undefined') return
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
@@ -35,43 +31,15 @@ const pushFormSubmitToDataLayer = (
   })
 }
 
-function CardBg() {
+function Divider({ label }: { label: string }) {
   return (
-    <div className="absolute inset-0">
-      <Image
-        src={manifest.Background_1}
-        alt=""
-        fill
-        sizes="(max-width: 768px) 100vw, 560px"
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-black/55" />
+    <div className="flex items-center gap-3">
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#bfa76a]/45" />
+      <span className="whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/75">
+        {label}
+      </span>
+      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#bfa76a]/45" />
     </div>
-  )
-}
-
-function SectionHeader({ title }: { title: string }) {
-  const ref = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-  return (
-    <p
-      ref={ref}
-      className="fade-slide-init brush-underline mb-5 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]"
-    >
-      {title}
-    </p>
   )
 }
 
@@ -112,12 +80,9 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [callbackError, setCallbackError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
   const [hintActive, setHintActive] = useState(false)
-  const [glowActive, setGlowActive] = useState(false)
   const [hintSourceRect, setHintSourceRect] = useState<DOMRect | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
-  const phoneBlockRef = useRef<HTMLDivElement>(null)
   const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
-  const glowTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
@@ -133,8 +98,6 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   }
 
   const triggerHint = (sourceRect: DOMRect | null, withArrow: boolean) => {
-    if (glowTimer.current) clearTimeout(glowTimer.current)
-    setGlowActive(true)
     if (withArrow && sourceRect) {
       setHintSourceRect(sourceRect)
       setHintActive(true)
@@ -144,9 +107,6 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')?.focus()
     }, delay)
     setTimeout(() => applyGoldenShake(), delay + 80)
-    if (!withArrow) {
-      glowTimer.current = setTimeout(() => setGlowActive(false), 2600)
-    }
   }
 
   useEffect(() => {
@@ -187,7 +147,6 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       formData.append('country', countryName)
       const res = await fetch('/api/callback-request', { method: 'POST', body: formData })
       if (!res.ok) throw new Error('send failed')
-
       pushFormSubmitToDataLayer('quick_form', phone)
       setShowModal(true)
     } catch {
@@ -199,112 +158,82 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
   return (
     <>
-      <section className="mx-auto max-w-xl px-4 pt-8 pb-4 md:pt-10 md:pb-4">
-        <div
-          className="relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)]"
-          style={{
-            transition: 'box-shadow 500ms ease-in-out',
-            boxShadow: glowActive
-              ? '0 0 0 2px rgba(191,167,106,0.55), 0 0 28px 8px rgba(191,167,106,0.28), 0 8px 32px rgba(0,0,0,0.5)'
-              : '0 8px 32px rgba(0,0,0,0.5)',
-          }}
-        >
-          <CardBg />
-          <div className="relative z-10 p-5 md:p-8">
+      <section className="mx-auto max-w-2xl px-4 pt-8 pb-4 md:pt-10 md:pb-6">
 
-            <SectionHeader title={d.quickContactTitle} />
-
-            {/* Icons row */}
-            <div className="flex flex-row items-center justify-center gap-4 md:gap-5 mb-5">
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Wyznacz trasę"
-              >
-                <Image src="/images/google-maps.png" alt="Google Maps" width={52} height={52} />
-              </a>
-              <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
-                <Image src="/images/email.png" alt="E-mail" width={52} height={52} />
-              </a>
-              <a
-                href="https://wa.me/48793759262"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-              >
-                <Image src="/images/whatsapp.png" alt="WhatsApp" width={52} height={52} />
-              </a>
-              <a
-                href="https://t.me/+48793759262"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Telegram"
-              >
-                <Image src="/images/telegram.png" alt="Telegram" width={52} height={52} />
-              </a>
-              <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
-                <Image src="/images/viber.png" alt="Viber" width={52} height={52} />
-              </a>
-            </div>
-
-            {/* Divider */}
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/40 to-transparent mb-5" />
-
-            {/* Callback label */}
-            <p className="mb-3 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/80">
-              {d.callbackTitle}
-            </p>
-
-            {/* Phone form */}
-            <form ref={formRef} onSubmit={handleCallback} className="space-y-3">
-              <div ref={phoneBlockRef}>
-                <CustomPhoneInput
-                  value={phone}
-                  onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
-                  onCountryChange={({ name, dialCode, phoneLength }) => {
-                    setCountryName(name)
-                    setCountryDialCode(dialCode)
-                    setCountryPhoneLength(phoneLength)
-                  }}
-                  variant="dark"
-                  locale={locale}
-                />
-              </div>
-              {phoneError && (
-                <p className="text-red-400 text-sm font-sans">
-                  {d.phoneError}
-                </p>
-              )}
-              {callbackError && !phoneError && (
-                <p className="text-red-400 text-sm">
-                  {d.callbackError}
-                </p>
-              )}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full rounded-full border border-transparent bg-[#1c6e43] px-8 py-[14px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {isSubmitting ? d.callbackSubmitting : d.callbackButton}
-              </button>
-              <p className="text-center font-inter text-[12px] text-white/45">
-                {d.callbackHint}
-              </p>
-            </form>
-
-            {/* Link to form */}
-            {d.orFormLabel && (
-              <>
-                <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/30 to-transparent" />
-                <p className="mt-4 text-center font-cormorant text-[13px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/60">
-                  {d.orFormLabel}
-                </p>
-              </>
-            )}
-
-          </div>
+        {/* Level 1: icons */}
+        <div className="mb-6 flex flex-row items-center justify-center gap-4 md:gap-6 md:mb-8">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Wyznacz trasę"
+          >
+            <Image src="/images/google-maps.png" alt="Google Maps" width={56} height={56} />
+          </a>
+          <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
+            <Image src="/images/email.png" alt="E-mail" width={56} height={56} />
+          </a>
+          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <Image src="/images/whatsapp.png" alt="WhatsApp" width={56} height={56} />
+          </a>
+          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <Image src="/images/telegram.png" alt="Telegram" width={56} height={56} />
+          </a>
+          <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
+            <Image src="/images/viber.png" alt="Viber" width={56} height={56} />
+          </a>
         </div>
+
+        {/* Divider 1 */}
+        <div className="mb-4">
+          <Divider label={d.callbackTitle} />
+        </div>
+
+        {/* Level 2: phone + button row */}
+        <form ref={formRef} onSubmit={handleCallback}>
+          <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-3">
+            <div className="flex-1 min-w-0">
+              <CustomPhoneInput
+                value={phone}
+                onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
+                onCountryChange={({ name, dialCode, phoneLength }) => {
+                  setCountryName(name)
+                  setCountryDialCode(dialCode)
+                  setCountryPhoneLength(phoneLength)
+                }}
+                variant="dark"
+                locale={locale}
+                alwaysRow
+                selectorWidth="140px"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[200px] md:py-0"
+            >
+              {isSubmitting ? d.callbackSubmitting : d.callbackButton}
+            </button>
+          </div>
+
+          {phoneError && (
+            <p className="mt-1.5 text-sm font-sans text-red-400">{d.phoneError}</p>
+          )}
+          {callbackError && !phoneError && (
+            <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>
+          )}
+          <p className="mt-2 text-center font-inter text-[12px] text-white/45">
+            {d.callbackHint}
+          </p>
+        </form>
+
+        {/* Divider 2 */}
+        {d.orFormLabel && (
+          <div className="mt-6">
+            <Divider label={d.orFormLabel} />
+          </div>
+        )}
+
       </section>
 
       <CompactSuccessModal
@@ -318,7 +247,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
         active={hintActive}
         sourceRect={hintSourceRect}
         targetRef={phoneInputWrapperRef}
-        onDone={() => { setHintActive(false); setGlowActive(false) }}
+        onDone={() => setHintActive(false)}
       />
     </>
   )
