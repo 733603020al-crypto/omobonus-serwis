@@ -168,19 +168,19 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             rel="noopener noreferrer"
             aria-label="Wyznacz trasę"
           >
-            <Image src="/images/google-maps.png" alt="Google Maps" width={56} height={56} />
+            <Image src="/images/google-maps.png" alt="Google Maps" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
           </a>
           <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
-            <Image src="/images/email.png" alt="E-mail" width={56} height={56} />
+            <Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
           </a>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <Image src="/images/whatsapp.png" alt="WhatsApp" width={56} height={56} />
+            <Image src="/images/whatsapp.png" alt="WhatsApp" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
           </a>
           <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <Image src="/images/telegram.png" alt="Telegram" width={56} height={56} />
+            <Image src="/images/telegram.png" alt="Telegram" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
           </a>
           <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
-            <Image src="/images/viber.png" alt="Viber" width={56} height={56} />
+            <Image src="/images/viber.png" alt="Viber" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
           </a>
         </div>
 
@@ -204,13 +204,13 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
                 variant="dark"
                 locale={locale}
                 alwaysRow
-                selectorWidth="140px"
+                selectorWidth="185px"
               />
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[200px] md:py-0"
+              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[230px] md:py-0"
             >
               {isSubmitting ? d.callbackSubmitting : d.callbackButton}
             </button>
