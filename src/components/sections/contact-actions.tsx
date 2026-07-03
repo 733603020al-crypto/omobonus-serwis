@@ -2,9 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { Phone, AtSign } from 'lucide-react'
-import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
-import { MdDirections } from 'react-icons/md'
 import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
@@ -46,9 +43,6 @@ const cardClass =
 
 const cardClassOpen =
   'relative overflow-hidden rounded-lg border-2 border-[rgba(200,169,107,0.5)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-
-const linkClass =
-  'flex items-center gap-2.5 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[16px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)]'
 
 function CardBg() {
   return (
@@ -94,7 +88,6 @@ function SectionHeader({ title }: { title: string }) {
 interface ContactActionsT {
   quickContactTitle: string
   callbackTitle: string
-  navigateLabel: string
   callbackButton: string
   callbackSubmitting: string
   callbackHint: string
@@ -107,7 +100,6 @@ interface ContactActionsT {
 const PL_ACTIONS: ContactActionsT = {
   quickContactTitle: 'Skontaktuj się z nami',
   callbackTitle: 'Zostaw numer — oddzwonimy',
-  navigateLabel: 'Wyznacz trasę',
   callbackButton: 'Proszę o telefon',
   callbackSubmitting: 'Wysyłanie...',
   callbackHint: 'Oddzwaniamy: pon.–sob. 7:00–21:00',
@@ -225,71 +217,36 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             <div className="relative z-10 p-4 md:p-6">
               <SectionHeader title={d.quickContactTitle} />
 
-              <div className="flex flex-col divide-y divide-[#bfa76a]/20">
-                {/* Zadzwoń */}
-                <a
-                  href="tel:+48793759262"
-                  onClick={(e) => {
-                    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-                      e.preventDefault()
-                      triggerHint(e.currentTarget.getBoundingClientRect(), true)
-                    }
-                  }}
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-                >
-                  <Phone className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
-                  <span>793 759 262</span>
-                </a>
-
-                {/* E-mail — link: mailto:serwis@omobonus.com.pl */}
-                <a
-                  href="mailto:serwis@omobonus.com.pl"
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
-                >
-                  <AtSign className="h-[18px] w-[18px] shrink-0 text-[#c8a95a]" />
-                  <span>serwis@omobonus.com.pl</span>
-                </a>
-
-                {/* Wyznacz trasę — link: Google Maps, Marcina Bukowskiego 174 */}
+              <div className="flex flex-row items-center justify-center gap-4 py-2">
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(191,167,106,0.35)]`}
+                  aria-label="Wyznacz trasę"
                 >
-                  <MdDirections className="h-[18px] w-[18px] shrink-0 text-[#1a73e8]" />
-                  <span>{d.navigateLabel}</span>
+                  <Image src="/images/google-maps.png" alt="Google Maps" width={52} height={52} />
                 </a>
-
-                {/* WhatsApp — link: https://wa.me/48793759262 */}
+                <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
+                  <Image src="/images/email.png" alt="E-mail" width={52} height={52} />
+                </a>
                 <a
                   href="https://wa.me/48793759262"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(37,211,102,0.25)]`}
+                  aria-label="WhatsApp"
                 >
-                  <FaWhatsapp className="h-[18px] w-[18px] shrink-0 text-[#25D366]" />
-                  <span>WhatsApp</span>
+                  <Image src="/images/whatsapp.png" alt="WhatsApp" width={52} height={52} />
                 </a>
-
-                {/* Telegram — link: https://t.me/+48793759262 */}
                 <a
                   href="https://t.me/+48793759262"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(42,171,238,0.25)]`}
+                  aria-label="Telegram"
                 >
-                  <FaTelegramPlane className="h-[18px] w-[18px] shrink-0 text-[#2AABEE]" />
-                  <span>Telegram</span>
+                  <Image src="/images/telegram.png" alt="Telegram" width={52} height={52} />
                 </a>
-
-                {/* Viber */}
-                <a
-                  href="viber://chat?number=%2B48793759262"
-                  className={`${linkClass} hover:shadow-[0_0_20px_rgba(115,96,242,0.25)]`}
-                >
-                  <FaViber className="h-[18px] w-[18px] shrink-0 text-[#7360f2]" />
-                  <span>Viber</span>
+                <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
+                  <Image src="/images/viber.png" alt="Viber" width={52} height={52} />
                 </a>
               </div>
             </div>
