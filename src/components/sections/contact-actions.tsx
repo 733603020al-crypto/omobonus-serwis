@@ -161,26 +161,31 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       <section className="mx-auto max-w-2xl px-4 pt-8 pb-4 md:pt-10 md:pb-6">
 
         {/* Level 1: icons */}
-        <div className="mb-6 flex flex-row items-center justify-center gap-4 md:gap-6 md:mb-8">
+        <div className="mb-6 flex flex-row items-start justify-center gap-5 md:gap-7 md:mb-8">
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Wyznacz trasę"
+            className="flex flex-col items-center gap-1.5 md:gap-2"
           >
             <Image src="/images/google-maps.png" alt="Google Maps" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-[#f3df9a]/75">Mapa</span>
           </a>
-          <a href="mailto:serwis@omobonus.com.pl" aria-label="E-mail">
+          <a href="mailto:serwis@omobonus.com.pl" className="flex flex-col items-center gap-1.5 md:gap-2">
             <Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-[#f3df9a]/75">E-mail</span>
           </a>
-          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 md:gap-2">
             <Image src="/images/whatsapp.png" alt="WhatsApp" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-[#f3df9a]/75">WhatsApp</span>
           </a>
-          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 md:gap-2">
             <Image src="/images/telegram.png" alt="Telegram" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-[#f3df9a]/75">Telegram</span>
           </a>
-          <a href="viber://chat?number=%2B48793759262" aria-label="Viber">
+          <a href="viber://chat?number=%2B48793759262" className="flex flex-col items-center gap-1.5 md:gap-2">
             <Image src="/images/viber.png" alt="Viber" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-[#f3df9a]/75">Viber</span>
           </a>
         </div>
 
