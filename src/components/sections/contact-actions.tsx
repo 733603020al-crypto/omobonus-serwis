@@ -231,6 +231,10 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
                 selectorWidth="220px"
               />
             </div>
+            {/* Mobile only: error between phone row and button */}
+            {phoneError && (
+              <p className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+            )}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -240,8 +244,9 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             </button>
           </div>
 
+          {/* Desktop only: error below the row */}
           {phoneError && (
-            <p className="mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+            <p className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
           )}
           {callbackError && !phoneError && (
             <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>
