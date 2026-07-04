@@ -195,11 +195,11 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     <>
       <div
         ref={containerRef}
-        className={`w-full flex ${alwaysRow ? 'flex-row items-center gap-2 sm:gap-3' : 'flex-col sm:flex-row sm:items-start gap-2 sm:gap-3'} ${className}`}
+        className={`w-full flex ${alwaysRow ? 'flex-row items-center gap-[6px] sm:gap-3' : 'flex-col sm:flex-row sm:items-start gap-2 sm:gap-3'} ${className}`}
       >
         {/* Обёртка кнопки — relative, чтобы light-dropdown позиционировался под ней */}
         <div
-          className={`relative ${selectorWidth ? 'flex-shrink-0' : (dark ? 'w-full' : alwaysRow ? 'flex-shrink-0 w-[55%] sm:w-[280px] sm:min-w-[280px]' : 'w-full sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0')}`}
+          className={`relative ${selectorWidth ? 'flex-shrink-0' : (dark ? 'w-full' : alwaysRow ? 'flex-shrink-0 w-[48%] sm:w-[280px] sm:min-w-[280px]' : 'w-full sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0')}`}
           style={selectorWidth ? { width: selectorWidth, minWidth: selectorWidth } : undefined}
         >
           <button
