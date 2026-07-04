@@ -51,7 +51,7 @@ function Divider({ label }: { label: string }) {
         className="divider-line divider-line-left h-px flex-1"
         style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
       />
-      <span className="whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/80">
+      <span className="whitespace-nowrap font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5ead2]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
         {label}
       </span>
       <div
