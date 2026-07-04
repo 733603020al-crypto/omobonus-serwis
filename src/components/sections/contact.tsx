@@ -400,12 +400,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                         value={field.value || ''}
                         onChange={field.onChange}
                         locale={resolvedLocale}
+                        alwaysRow
                       />
                     )}
                   />
                 </div>
                 {errors.phone && (
-                  <p className="text-red-600 text-sm sm:ml-[292px]">{errors.phone.message}</p>
+                  <p className="text-red-600 text-sm ml-[calc(55%+8px)] sm:ml-[292px]">{errors.phone.message}</p>
                 )}
               </div>
             </div>
