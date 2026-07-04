@@ -47,8 +47,8 @@ function Divider({ label }: { label: string }) {
     return () => observer.disconnect()
   }, [])
   return (
-    <div ref={ref} className="fade-slide-init brush-underline text-center pb-2">
-      <span className="whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/75">
+    <div ref={ref} className="fade-slide-init brush-divider relative flex items-center justify-center py-1">
+      <span className="relative z-10 px-3 whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/75">
         {label}
       </span>
     </div>
