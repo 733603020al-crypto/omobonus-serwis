@@ -191,7 +191,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">Mapa</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
+            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[32px] h-[32px] md:w-[48px] md:h-[48px]" style={{ clipPath: 'inset(0 round 20%)' }} /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">E-mail</span>
           </a>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
