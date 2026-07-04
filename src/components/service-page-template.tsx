@@ -192,6 +192,7 @@ export function ServicePageTemplate({
                         variant="secondary"
                         href={labels.formHref}
                         className="w-[80%] md:w-auto"
+                        showIcon={false}
                       >
                         {labels.sendRequest}
                       </CallButton>

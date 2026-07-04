@@ -10,7 +10,6 @@ import manifest from '@/config/manifest'
 const Services = dynamic(() => import('@/components/sections/services').then(m => ({ default: m.Services })))
 const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
 const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
-const HomeContactForm = dynamic(() => import('@/components/sections/home-contact-form').then(m => ({ default: m.HomeContactForm })))
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 interface HomePageTemplateProps {
@@ -37,7 +36,6 @@ export function HomePageTemplate({
   aboutT,
   footerT,
   cta,
-  locale = 'pl',
 }: HomePageTemplateProps) {
   return (
     <>
@@ -65,10 +63,6 @@ export function HomePageTemplate({
           <About t={aboutT} bare showMoreLink />
 
           <HomeCta {...cta} />
-
-          <div className="mt-4 md:mt-6">
-            <HomeContactForm locale={locale} bare />
-          </div>
 
           <Footer t={footerT} bare />
         </div>

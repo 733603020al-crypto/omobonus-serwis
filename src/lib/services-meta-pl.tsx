@@ -214,8 +214,8 @@ export const seoMetadata: Record<string, { title: string; description: string }>
 
 export const labels: ServicePageLabels = {
   callNow: 'Zadzwoń teraz',
-  sendRequest: 'Wyślij zgłoszenie',
-  formHref: '/#formularz',
+  sendRequest: 'Szybki kontakt',
+  formHref: '/kontakt',
   fadeSlideDefault: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")',
   fadeSlideDrukarkaZastepcza: 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych',
   fadeSlideWynajem: 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.',
