@@ -11,6 +11,7 @@ interface CallButtonProps {
     className?: string
     children: React.ReactNode
     onClick?: (e: React.MouseEvent<HTMLElement>) => void
+    showIcon?: boolean
 }
 
 export function CallButton({
@@ -19,6 +20,7 @@ export function CallButton({
     className,
     children,
     onClick,
+    showIcon = true,
 }: CallButtonProps) {
     const base = `
     inline-flex items-center justify-center gap-2
@@ -49,10 +51,10 @@ export function CallButton({
 
     const content = (
         <>
-            {variant === 'primary' && (
+            {showIcon && variant === 'primary' && (
                 <Phone className="w-4 h-4 shrink-0" />
             )}
-            {variant === 'secondary' && (
+            {showIcon && variant === 'secondary' && (
                 <Mail className="w-4 h-4 shrink-0" />
             )}
             <span>{children}</span>
