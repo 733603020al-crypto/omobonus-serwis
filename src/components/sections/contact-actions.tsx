@@ -209,13 +209,13 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
                 variant="dark"
                 locale={locale}
                 alwaysRow
-                selectorWidth="185px"
+                selectorWidth="220px"
               />
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[230px] md:py-0"
+              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[240px] md:py-0"
             >
               {isSubmitting ? d.callbackSubmitting : d.callbackButton}
             </button>
