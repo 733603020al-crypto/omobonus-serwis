@@ -135,7 +135,7 @@ export const ru = {
   },
   contactActions: {
     quickContactTitle: 'Свяжитесь с нами',
-    callbackTitle: 'Оставьте номер — мы перезвоним',
+    callbackTitle: 'или оставьте номер — мы перезвоним',
     navigateLabel: 'Построить маршрут',
     callbackButton: 'Прошу позвонить',
     callbackSubmitting: 'Отправка...',
@@ -144,6 +144,7 @@ export const ru = {
     callbackError: 'Не удалось отправить запрос. Попробуйте снова или позвоните.',
     successTitle: 'Спасибо!',
     successText: 'Мы свяжемся с вами как можно скорее',
+    orFormLabel: 'или отправьте заявку на обслуживание',
   },
 } as const
 

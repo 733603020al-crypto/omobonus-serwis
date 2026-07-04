@@ -13,6 +13,10 @@ interface CustomPhoneInputProps {
   className?: string
   variant?: 'light' | 'dark'
   locale?: 'pl' | 'uk' | 'ru'
+  /** Fixed pixel width for the country selector (overrides w-full). Selector becomes flex-shrink-0. */
+  selectorWidth?: string
+  /** Force flex-row at all breakpoints (instead of flex-col → sm:flex-row). */
+  alwaysRow?: boolean
 }
 
 const LOCALIZED_COUNTRY_NAME_KEYS = {
@@ -22,7 +26,7 @@ const LOCALIZED_COUNTRY_NAME_KEYS = {
 
 const DEFAULT_COUNTRY = countries[1]
 
-export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl' }: CustomPhoneInputProps) {
+export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false }: CustomPhoneInputProps) {
   const dark = variant === 'dark'
   const [selectedCountry, setSelectedCountry] = useState<Country>(DEFAULT_COUNTRY) // По умолчанию Польша
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -191,10 +195,13 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     <>
       <div
         ref={containerRef}
-        className={`w-full flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-3 ${className}`}
+        className={`w-full flex ${alwaysRow ? 'flex-row items-center gap-2' : 'flex-col sm:flex-row sm:items-start gap-2 sm:gap-3'} ${className}`}
       >
         {/* Обёртка кнопки — relative, чтобы light-dropdown позиционировался под ней */}
-        <div className={`relative w-full ${dark ? '' : 'sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0'}`}>
+        <div
+          className={`relative ${selectorWidth ? 'flex-shrink-0' : (dark ? 'w-full' : 'w-full sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0')}`}
+          style={selectorWidth ? { width: selectorWidth, minWidth: selectorWidth } : undefined}
+        >
           <button
             type="button"
             ref={selectorRowRef}
@@ -299,7 +306,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
             position: 'fixed',
             top: dropdownPos.top,
             left: dropdownPos.left,
-            width: dropdownPos.width || fixedDropdownWidth,
+            width: Math.max(dropdownPos.width || 0, fixedDropdownWidth),
             zIndex: 99999,
             boxShadow: '0 8px 40px rgba(0,0,0,0.9), 0 2px 12px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,169,107,0.12)',
           }}
