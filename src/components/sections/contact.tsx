@@ -405,7 +405,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   />
                 </div>
                 {errors.phone && (
-                  <p className="text-red-600 text-sm">{errors.phone.message}</p>
+                  <p className="text-red-600 text-sm sm:ml-[292px]">{errors.phone.message}</p>
                 )}
               </div>
             </div>

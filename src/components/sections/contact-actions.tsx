@@ -241,7 +241,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
           </div>
 
           {phoneError && (
-            <p className="mt-1.5 text-sm font-sans text-red-400">{d.phoneError}</p>
+            <p className="mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
           )}
           {callbackError && !phoneError && (
             <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>
