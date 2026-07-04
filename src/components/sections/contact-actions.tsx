@@ -32,13 +32,25 @@ const pushFormSubmitToDataLayer = (formId: DataLayerFormId, phoneNumber: string)
 }
 
 function Divider({ label }: { label: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.remove('fade-slide-init')
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
   return (
-    <div className="flex items-center gap-3">
-      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#bfa76a]/45" />
+    <div ref={ref} className="fade-slide-init brush-underline text-center pb-2">
       <span className="whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/75">
         {label}
       </span>
-      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#bfa76a]/45" />
     </div>
   )
 }
