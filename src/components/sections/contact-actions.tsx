@@ -38,7 +38,6 @@ function Divider({ label }: { label: string }) {
     if (!el) return
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
         el.classList.add('fade-slide-animate')
         observer.disconnect()
       }
@@ -47,10 +46,18 @@ function Divider({ label }: { label: string }) {
     return () => observer.disconnect()
   }, [])
   return (
-    <div ref={ref} className="fade-slide-init brush-divider relative flex items-center justify-center py-1">
-      <span className="relative z-10 px-3 whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/75">
+    <div ref={ref} className="brush-divider-row flex items-center gap-3">
+      <div
+        className="divider-line divider-line-left h-px flex-1"
+        style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+      />
+      <span className="whitespace-nowrap font-cormorant text-[12px] font-semibold uppercase tracking-[0.2em] text-[#f3df9a]/80">
         {label}
       </span>
+      <div
+        className="divider-line divider-line-right h-px flex-1"
+        style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+      />
     </div>
   )
 }
