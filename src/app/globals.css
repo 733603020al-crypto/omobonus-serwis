@@ -1087,7 +1087,6 @@
 /* Floating icon: elliptical shadow under icon creates elevation effect */
 .icon-float {
   position: relative;
-  isolation: isolate;
 }
 .icon-float::after {
   content: '';
@@ -1101,7 +1100,7 @@
   background: rgba(0, 0, 0, 0.5);
   filter: blur(9px);
   opacity: 0.6;
-  z-index: -1;
+  pointer-events: none;
   transition: opacity 300ms ease-out, filter 300ms ease-out, width 300ms ease-out;
 }
 .contact-icon-link:hover .icon-float::after {
