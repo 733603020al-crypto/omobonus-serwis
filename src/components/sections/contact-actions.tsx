@@ -185,25 +185,25 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-1 transition-all duration-300 ease-out drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] hover:-translate-y-[6px] hover:scale-[1.03] hover:drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)]"
+            className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
-            <Image src="/images/google-maps.png" alt="Google Maps" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+            <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">Mapa</span>
           </a>
-          <a href="mailto:serwis@omobonus.com.pl" className="flex flex-col items-center gap-1 transition-all duration-300 ease-out drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] hover:-translate-y-[6px] hover:scale-[1.03] hover:drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)]">
-            <Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+          <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">E-mail</span>
           </a>
-          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 transition-all duration-300 ease-out drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] hover:-translate-y-[6px] hover:scale-[1.03] hover:drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)]">
-            <Image src="/images/whatsapp.png" alt="WhatsApp" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/whatsapp.png" alt="WhatsApp" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">WhatsApp</span>
           </a>
-          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 transition-all duration-300 ease-out drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] hover:-translate-y-[6px] hover:scale-[1.03] hover:drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)]">
-            <Image src="/images/telegram.png" alt="Telegram" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/telegram.png" alt="Telegram" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">Telegram</span>
           </a>
-          <a href="viber://chat?number=%2B48793759262" className="flex flex-col items-center gap-1 transition-all duration-300 ease-out drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] hover:-translate-y-[6px] hover:scale-[1.03] hover:drop-shadow-[0_10px_18px_rgba(0,0,0,0.65)]">
-            <Image src="/images/viber.png" alt="Viber" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" />
+          <a href="viber://chat?number=%2B48793759262" className="contact-icon-link flex flex-col items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/viber.png" alt="Viber" width={72} height={72} className="w-[46px] h-[46px] md:w-[68px] md:h-[68px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[12px] md:text-[14px] text-white/85">Viber</span>
           </a>
         </div>
