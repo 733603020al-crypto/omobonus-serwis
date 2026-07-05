@@ -429,6 +429,7 @@ export function Header() {
                     variant="secondary"
                     href={contactHref}
                     className="w-full"
+                    onClick={() => setIsOpen(false)}
                   >
                     {navSendForm}
                   </CallButton>
