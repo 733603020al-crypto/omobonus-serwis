@@ -197,8 +197,8 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
 
 export const labelsRu: ServicePageLabels = {
   callNow: 'Позвонить сейчас',
-  sendRequest: 'Отправить заявку',
-  formHref: '/ru#formularz',
+  sendRequest: 'Быстрый контакт',
+  formHref: '/ru/kontakt',
   fadeSlideDefault: 'Полный перечень услуг и цен, без скрытых платежей (не «ремонт от 50 zł» или «цена по договорённости»)',
   fadeSlideDrukarkaZastepcza: 'Поломка? Без стресса — на время ремонта предоставляем принтер на замену без абонентской платы',
   fadeSlideWynajem: 'Принтер с сервисом и тонером в стоимости — вы заботитесь только о бумаге и электричестве.',
