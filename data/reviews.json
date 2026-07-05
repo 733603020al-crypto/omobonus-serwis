@@ -1,6 +1,6 @@
 {
   "rating": 4.9,
-  "total": 207,
+  "total": 210,
   "reviews": [
     {
       "author_name": "Valery S",
@@ -25,14 +25,14 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIIvMvQSiND4D190Ur1K1yuIwQeeWgo0PPeDp5iMfPTxcSACQ=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 tygodnie temu",
+      "relative_time_description": "miesiąc temu",
       "text": "Świetny serwis! Wszystko jest wykonywane profesjonalnie, szybko i na wysokim poziomie. Współpracujemy od dawna i jesteśmy bardzo zadowoleni. Cieszymy się, że znaleźliśmy ludzi, którzy zawsze doskonale serwisują nasze drukarki. Firmie można zaufać i zawsze można na nich liczyć — nie zawodzą. Polecam!",
       "time": 1780588238,
       "translated": false,
       "text_uk": "Чудовий сервіс! Все виконується професійно, швидко і на високому рівні. Співпрацюємо вже давно і дуже задоволені. Раді, що знайшли людей, які завжди відмінно обслуговують наші принтери. Компанії можна довіряти і на неї завжди можна покластися — не підводять. Рекомендую!",
       "text_ru": "Отличный сервис! Всё выполняется профессионально, быстро и на высоком уровне. Сотрудничаем уже давно и очень довольны. Рады, что нашли людей, которые всегда отлично обслуживают наши принтеры. Компании можна доверять, на неё всегда можно положиться — не подводят. Рекомендую!",
-      "relative_time_uk": "3 тижні тому",
-      "relative_time_ru": "3 недели назад"
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад"
     },
     {
       "author_name": "Daniel Bacherek",
@@ -57,14 +57,14 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWIXZlOxDo3YCumYYMoioTDNQ3o88MQwyGL8otSXdO8QCHmNdM=s128-c0x00000000-cc-rp-mo-ba6",
       "rating": 3,
-      "relative_time_description": "2 tygodnie temu",
+      "relative_time_description": "3 tygodnie temu",
       "text": "Serwis wykonał usługę poprawnie, jednak czas realizacji był nieco dłuższy, niż się spodziewałem. Kontakt z obsługą był w porządku, ale brakowało bardziej szczegółowych informacji o postępach naprawy. Drukarka działa, choć mam wrażenie, że całość mogła zostać wykonana sprawniej. Ogólnie przeciętnie – bez większych zastrzeżeń, ale też bez efektu „wow”.",
       "time": 1781080156,
       "translated": false,
       "text_uk": "Сервіс виконав роботу правильно, однак час виконання виявився дещо довшим, ніж я очікував. Зв'язок із персоналом був нормальним, але бракувало детальнішої інформації про хід ремонту. Принтер працює, хоча мені здається, що все могло бути зроблено швидше. Загалом — посередньо: без серйозних претензій, але й без ефекту «вау».",
       "text_ru": "Сервис выполнил услугу корректно, однако время выполнения оказалось несколько дольше, чем я ожидал. Общение с персоналом было нормальным, но не хватало более подробной информации о ходе ремонта. Принтер работает, хотя у меня ощущение, что всё могло быть сделано быстрее. В целом — средне: без особых претензий, но и без эффекта «вау».",
-      "relative_time_uk": "2 тижні тому",
-      "relative_time_ru": "2 недели назад"
+      "relative_time_uk": "3 тижні тому",
+      "relative_time_ru": "3 недели назад"
     },
     {
       "author_name": "Grażyna Kaczmarek",
@@ -73,15 +73,15 @@
       "original_language": "pl",
       "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJQhQOfstHIeGvC6_mYc8WBPZUVpNi2NbNo0JYa-1XnQrxTZw=s128-c0x00000000-cc-rp-mo",
       "rating": 5,
-      "relative_time_description": "3 tygodnie temu",
+      "relative_time_description": "miesiąc temu",
       "text": "Serdecznie polecam! Szybka diagnoza problemu z laptopem i natychmiastowa naprawa. Dodam, że laptop był wcześniej kilkukrotnie w naprawie w innym miejscu, gdzie ściągnięto tylko kasę, a problem pozostał. Świetna robota i 2 miesiące gwarancji. Jestem mega zadowolona!",
       "time": 1780487638,
       "translated": false,
       "text_uk": "Щиро рекомендую! Швидка діагностика проблеми з ноутбуком і негайний ремонт. Додам, що ноутбук раніше кілька разів здавали в ремонт в інше місце, де тільки брали гроші, а проблема залишалась. Чудова робота і 2 місяці гарантії. Я дуже задоволена!",
       "text_ru": "Искренне рекомендую! Быстрая диагностика проблемы с ноутбуком и немедленный ремонт. Добавлю, что ноутбук ранее несколько раз сдавали в ремонт в другое место, где только брали деньги, а проблема оставалась. Отличная работа и 2 месяца гарантии. Я очень довольна!",
-      "relative_time_uk": "3 тижні тому",
-      "relative_time_ru": "3 недели назад"
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад"
     }
   ],
-  "updatedAt": "2026-06-29T15:38:06.361Z"
+  "updatedAt": "2026-07-05T02:37:44.330Z"
 }
