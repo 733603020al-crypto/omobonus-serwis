@@ -180,31 +180,31 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       <section className="mx-auto max-w-2xl px-4 pt-8 pb-4 md:pt-10 md:pb-6">
 
         {/* Level 1: icons */}
-        <div className="mb-6 flex flex-row items-start justify-center gap-[2px] md:gap-7 md:mb-8">
+        <div className="mb-6 -mx-4 md:mx-0 flex flex-row items-start justify-evenly md:justify-center md:gap-7 md:mb-8">
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
             target="_blank"
             rel="noopener noreferrer"
             className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
-            <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[64px] h-[64px] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">Mapa</span>
+            <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Mapa</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={96} height={96} className="w-[64px] h-[64px] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">E-mail</span>
+            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
           </a>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/whatsapp.png" alt="WhatsApp" width={96} height={96} className="w-[64px] h-[64px] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">WhatsApp</span>
+            <div className="icon-float"><Image src="/images/whatsapp.png" alt="WhatsApp" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
           </a>
           <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/telegram.png" alt="Telegram" width={96} height={96} className="w-[64px] h-[64px] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">Telegram</span>
+            <div className="icon-float"><Image src="/images/telegram.png" alt="Telegram" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
           </a>
           <a href="viber://chat?number=%2B48793759262" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/viber.png" alt="Viber" width={96} height={96} className="w-[64px] h-[64px] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">Viber</span>
+            <div className="icon-float"><Image src="/images/viber.png" alt="Viber" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
           </a>
         </div>
 
