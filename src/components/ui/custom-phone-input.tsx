@@ -291,13 +291,12 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
       {!dark && isDropdownOpen && mounted && createPortal(
         <div
           ref={dropdownRef}
-          className="rounded-lg border border-black/20 shadow-lg overflow-y-auto country-list"
+          className="rounded-lg border border-black/20 shadow-lg country-list"
           style={{
             position: 'fixed',
             top: dropdownPos.top,
             left: dropdownPos.left,
             width: Math.max(dropdownPos.width || 0, fixedDropdownWidth),
-            maxHeight: '256px',
             zIndex: 99999,
           }}
         >
