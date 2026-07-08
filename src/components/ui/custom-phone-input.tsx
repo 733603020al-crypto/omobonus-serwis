@@ -206,7 +206,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
             type="button"
             ref={selectorRowRef}
             onClick={() => {
-              if (dark && selectorRowRef.current) {
+              if (selectorRowRef.current) {
                 const rect = selectorRowRef.current.getBoundingClientRect()
                 setDropdownPos({
                   top: rect.bottom + 2,
@@ -260,16 +260,6 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
             </svg>
           </button>
 
-          {/* Light variant: inline absolute dropdown */}
-          {!dark && isDropdownOpen && (
-            <div
-              ref={dropdownRef}
-              className="absolute top-full left-0 mt-1 z-[9999] border border-black/20 rounded-lg shadow-lg max-h-64 overflow-y-auto country-list"
-              style={{ width: `${fixedDropdownWidth}px`, minWidth: `${fixedDropdownWidth}px` }}
-            >
-              {countryListItems}
-            </div>
-          )}
         </div>
 
         {/* Поле ввода номера */}
@@ -296,6 +286,25 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           />
         </div>
       </div>
+
+      {/* Light variant: Portal dropdown — рендерится в document.body, не обрезается overflow родителей */}
+      {!dark && isDropdownOpen && mounted && createPortal(
+        <div
+          ref={dropdownRef}
+          className="rounded-lg border border-black/20 shadow-lg overflow-y-auto country-list"
+          style={{
+            position: 'fixed',
+            top: dropdownPos.top,
+            left: dropdownPos.left,
+            width: Math.max(dropdownPos.width || 0, fixedDropdownWidth),
+            maxHeight: '256px',
+            zIndex: 99999,
+          }}
+        >
+          {countryListItems}
+        </div>,
+        document.body
+      )}
 
       {/* Dark variant: Portal dropdown — рендерится в document.body, вне всех stacking contexts */}
       {dark && isDropdownOpen && mounted && createPortal(
