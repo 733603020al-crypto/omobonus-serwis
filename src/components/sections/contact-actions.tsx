@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
+import { CallButton } from '@/components/ui/CallButton'
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
@@ -73,6 +74,8 @@ interface ContactActionsT {
   successTitle: string
   successText: string
   orFormLabel?: string
+  callNowButton?: string
+  callNowDividerLabel?: string
 }
 
 const PL_ACTIONS: ContactActionsT = {
@@ -86,6 +89,8 @@ const PL_ACTIONS: ContactActionsT = {
   successTitle: 'Dziękujemy!',
   successText: 'Skontaktujemy się z Państwem jak najszybciej',
   orFormLabel: 'lub wyślij zgłoszenie serwisowe',
+  callNowButton: 'Zadzwoń teraz',
+  callNowDividerLabel: 'lub napisz',
 }
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
@@ -178,6 +183,20 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   return (
     <>
       <section className="mx-auto max-w-2xl px-4 pt-8 pb-4 md:pt-10 md:pb-6">
+
+        {/* Mobile only: Zadzwoń teraz + divider before icons */}
+        {d.callNowButton && (
+          <div className="md:hidden mb-4 flex justify-center">
+            <CallButton variant="primary" href="tel:+48793759262" className="w-[80%]">
+              {d.callNowButton}
+            </CallButton>
+          </div>
+        )}
+        {d.callNowDividerLabel && (
+          <div className="md:hidden mb-4">
+            <Divider label={d.callNowDividerLabel} />
+          </div>
+        )}
 
         {/* Level 1: icons */}
         <div className="mb-6 -mx-4 md:mx-0 flex flex-row items-start justify-evenly md:justify-center md:gap-7 md:mb-8">

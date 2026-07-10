@@ -260,6 +260,8 @@
     successTitle: 'Дякуємо!',
     successText: 'Ми зв\'яжемося з вами якнайшвидше',
     orFormLabel: 'або відправте заявку на обслуговування',
+    callNowButton: 'Зателефонувати зараз',
+    callNowDividerLabel: 'або напишіть',
   },
 } as const
 
