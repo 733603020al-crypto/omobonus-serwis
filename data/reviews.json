@@ -19,22 +19,6 @@
       "relative_time_ru": "месяц назад"
     },
     {
-      "author_name": "Olena Golikova",
-      "author_url": "https://www.google.com/maps/contrib/111549386925395367368/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIIvMvQSiND4D190Ur1K1yuIwQeeWgo0PPeDp5iMfPTxcSACQ=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Świetny serwis! Wszystko jest wykonywane profesjonalnie, szybko i na wysokim poziomie. Współpracujemy od dawna i jesteśmy bardzo zadowoleni. Cieszymy się, że znaleźliśmy ludzi, którzy zawsze doskonale serwisują nasze drukarki. Firmie można zaufać i zawsze można na nich liczyć — nie zawodzą. Polecam!",
-      "time": 1780588238,
-      "translated": false,
-      "text_uk": "Чудовий сервіс! Все виконується професійно, швидко і на високому рівні. Співпрацюємо вже давно і дуже задоволені. Раді, що знайшли людей, які завжди відмінно обслуговують наші принтери. Компанії можна довіряти і на неї завжди можна покластися — не підводять. Рекомендую!",
-      "text_ru": "Отличный сервис! Всё выполняется профессионально, быстро и на высоком уровне. Сотрудничаем уже давно и очень довольны. Рады, что нашли людей, которые всегда отлично обслуживают наши принтеры. Компании можна доверять, на неё всегда можно положиться — не подводят. Рекомендую!",
-      "relative_time_uk": "місяць тому",
-      "relative_time_ru": "месяц назад"
-    },
-    {
       "author_name": "Daniel Bacherek",
       "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
       "language": "pl",
@@ -81,7 +65,23 @@
       "text_ru": "Искренне рекомендую! Быстрая диагностика проблемы с ноутбуком и немедленный ремонт. Добавлю, что ноутбук ранее несколько раз сдавали в ремонт в другое место, где только брали деньги, а проблема оставалась. Отличная работа и 2 месяца гарантии. Я очень довольна!",
       "relative_time_uk": "місяць тому",
       "relative_time_ru": "месяц назад"
+    },
+    {
+      "author_name": "Peter Mishchuk",
+      "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWRYgTQO15FjcLPJgdpZqNp9JBiz0MQ90JEwYAy_GTliq-a-FE_=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "miesiąc temu",
+      "text": "Dziękuję za szybką i profesjonalną naprawę drukarki oraz zmianę języka z niemieckiego na polski. Polecam ten serwis i Pana Andrzeja.",
+      "time": 1779523024,
+      "translated": false,
+      "text_uk": null,
+      "text_ru": null,
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад"
     }
   ],
-  "updatedAt": "2026-07-13T19:18:09.924Z"
+  "updatedAt": "2026-07-14T02:00:30.760Z"
 }
