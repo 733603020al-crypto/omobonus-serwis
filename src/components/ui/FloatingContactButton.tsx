@@ -52,13 +52,13 @@ export function FloatingContactButton() {
 
                 .contact-pen { animation: pen-write 11s ease-in-out infinite; }
 
-                /* Pen leads: descends to dot 1, shifts to dot 2, shifts to dot 3, then lifts back to rest */
+                /* Pen leads: rests at dot 1's level, settles onto dot 1, shifts to dot 2, shifts to dot 3, then returns to rest at dot 1 (no top-down descent) */
                 @keyframes pen-write {
-                    0%, 8%    { transform: translate(0px, 0px); }
+                    0%, 8%    { transform: translate(0px, 10px); }
                     16%, 20%  { transform: translate(0px, 12px); }
                     26%, 30%  { transform: translate(6px, 12px); }
                     36%, 40%  { transform: translate(12px, 12px); }
-                    48%, 100% { transform: translate(0px, 0px); }
+                    48%, 100% { transform: translate(0px, 10px); }
                 }
             `}</style>
 
