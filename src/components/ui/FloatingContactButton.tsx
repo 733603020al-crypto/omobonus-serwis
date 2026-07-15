@@ -23,27 +23,42 @@ export function FloatingContactButton() {
     return createPortal(
         <>
             <style>{`
-                @keyframes dot-typing {
-                    0%   { opacity: 0; transform: scale(0.4); }
-                    9%   { opacity: 0; transform: scale(0.4); }
-                    18%  { opacity: 1; transform: scale(1); }
-                    28%  { opacity: 1; transform: scale(1); }
-                    38%  { opacity: 0; transform: scale(0.4); }
-                    100% { opacity: 0; transform: scale(0.4); }
+                /* Dots stay hidden until the pen touches their spot, then hold together and reset only after the pen has left */
+                @keyframes dot1-appear {
+                    0%, 14%   { opacity: 0; transform: scale(0.4); }
+                    16%       { opacity: 1; transform: scale(1); }
+                    50%       { opacity: 1; transform: scale(1); }
+                    58%       { opacity: 0; transform: scale(0.4); }
+                    100%      { opacity: 0; transform: scale(0.4); }
+                }
+                @keyframes dot2-appear {
+                    0%, 24%   { opacity: 0; transform: scale(0.4); }
+                    26%       { opacity: 1; transform: scale(1); }
+                    50%       { opacity: 1; transform: scale(1); }
+                    58%       { opacity: 0; transform: scale(0.4); }
+                    100%      { opacity: 0; transform: scale(0.4); }
+                }
+                @keyframes dot3-appear {
+                    0%, 34%   { opacity: 0; transform: scale(0.4); }
+                    36%       { opacity: 1; transform: scale(1); }
+                    50%       { opacity: 1; transform: scale(1); }
+                    58%       { opacity: 0; transform: scale(0.4); }
+                    100%      { opacity: 0; transform: scale(0.4); }
                 }
 
-                .contact-dot-1 { animation: dot-typing 11s ease-in-out infinite; animation-delay: 0s; }
-                .contact-dot-2 { animation: dot-typing 11s ease-in-out infinite; animation-delay: 0.35s; }
-                .contact-dot-3 { animation: dot-typing 11s ease-in-out infinite; animation-delay: 0.7s; }
+                .contact-dot-1 { animation: dot1-appear 11s ease-in-out infinite; }
+                .contact-dot-2 { animation: dot2-appear 11s ease-in-out infinite; }
+                .contact-dot-3 { animation: dot3-appear 11s ease-in-out infinite; }
 
                 .contact-pen { animation: pen-write 11s ease-in-out infinite; }
 
+                /* Pen leads: descends to dot 1, shifts to dot 2, shifts to dot 3, then lifts back to rest */
                 @keyframes pen-write {
                     0%, 8%    { transform: translate(0px, 0px); }
-                    18%, 24%  { transform: translate(2px, 2px); }
-                    26%, 30%  { transform: translate(8px, 2px); }
-                    33%, 38%  { transform: translate(14px, 2px); }
-                    46%, 100% { transform: translate(0px, 0px); }
+                    16%, 20%  { transform: translate(0px, 12px); }
+                    26%, 30%  { transform: translate(6px, 12px); }
+                    36%, 40%  { transform: translate(12px, 12px); }
+                    48%, 100% { transform: translate(0px, 0px); }
                 }
             `}</style>
 
@@ -94,13 +109,15 @@ export function FloatingContactButton() {
                         <circle className="contact-dot-2" cx="28" cy="39" r="2.2" fill={GOLD} />
                         <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill={GOLD} />
 
-                        {/* Vintage quill — single raster asset, animated as one element; tip points at the dots */}
+                        {/* Vintage quill — same /icons/quill.webp asset, mirrored via transform (file untouched), animated as one element; tip points at the dots */}
                         <g className="contact-pen" style={{ transform: 'translate(0px,0px)', overflow: 'visible' }}>
-                            <image
-                                href="/icons/quill.webp"
-                                x="3.3" y="5" width="17.4" height="32"
-                                preserveAspectRatio="xMidYMid meet"
-                            />
+                            <g transform="translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
+                                <image
+                                    href="/icons/quill.webp"
+                                    x="20.64" y="-37" width="34.8" height="64"
+                                    preserveAspectRatio="xMidYMid meet"
+                                />
+                            </g>
                         </g>
                     </svg>
                 </Link>
