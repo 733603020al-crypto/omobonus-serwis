@@ -96,11 +96,12 @@ export function FloatingContactButton() {
                         xmlns="http://www.w3.org/2000/svg"
                         style={{ overflow: 'visible' }}
                     >
-                        {/* Chat cloud outline */}
-                        <rect
-                            x="14" y="25" width="28" height="28" rx="8"
+                        {/* Chat bubble outline: rounded rect + small tail bottom-left */}
+                        <path
+                            d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
                             stroke={NAVY}
                             strokeWidth="2.5"
+                            strokeLinejoin="round"
                             fill="none"
                         />
 
@@ -111,7 +112,7 @@ export function FloatingContactButton() {
 
                         {/* Vintage quill — same /icons/quill.webp asset, mirrored via transform (file untouched), animated as one element; tip points at the dots */}
                         <g className="contact-pen" style={{ transform: 'translate(0px,0px)', overflow: 'visible' }}>
-                            <g transform="translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
+                            <g transform="rotate(5,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
                                 <image
                                     href="/icons/quill.webp"
                                     x="20.64" y="-37" width="34.8" height="64"
