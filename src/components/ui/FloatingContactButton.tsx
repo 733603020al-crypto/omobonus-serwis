@@ -76,10 +76,11 @@ export function FloatingContactButton() {
                     "
                 >
                     <svg
-                        className="absolute left-0 -top-[10px] w-14 h-[66px] pointer-events-none"
+                        className="absolute left-0 -top-[10px] w-14 h-[66px] pointer-events-none overflow-visible"
                         viewBox="0 0 56 66"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        style={{ overflow: 'visible' }}
                     >
                         {/* Chat cloud outline */}
                         <rect
@@ -95,8 +96,8 @@ export function FloatingContactButton() {
                         <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill={GOLD} />
 
                         {/* Vintage quill — single feather; animated group moves the tip to each dot, plume pokes above the button edge */}
-                        <g className="contact-pen" style={{ transform: 'translate(42.61px,-1.12px)' }}>
-                            <g transform="rotate(32)">
+                        <g className="contact-pen" style={{ transform: 'translate(42.61px,-1.12px)', overflow: 'visible' }}>
+                            <g transform="rotate(32)" style={{ overflow: 'visible' }}>
                                 {/* Vane */}
                                 <path
                                     d="M7,58 C2,45 1,30 3,16 C4,8 6,3 9,1 C12,0 15,2 15,6 C15,12 13,20 12,28 C11,38 9,50 7,58 Z"
