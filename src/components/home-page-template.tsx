@@ -47,14 +47,16 @@ export function HomePageTemplate({
           </div>
         </Hero>
       </div>
-      <div
-        className="relative isolate overflow-hidden [background-attachment:scroll] md:[background-attachment:fixed]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <div className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 -z-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <div className="relative z-10">
           <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} bare />
 

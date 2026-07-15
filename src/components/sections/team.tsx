@@ -98,7 +98,7 @@ export function Team({ t }: { t?: TeamT } = {}) {
             <div className="flex flex-col items-center md:items-start">
               <h3 className="flex items-end gap-2.5 text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/umka_paw_dark.webp" alt="" className="umka-paw-img" aria-hidden="true" style={{ transform: 'translateY(-14px)' }} />
+                <img src="/images/umka_paw_dark.webp" alt="" className="umka-paw-img" aria-hidden="true" loading="lazy" style={{ transform: 'translateY(-14px)' }} />
                 {umka.name ?? 'Umka'}
               </h3>
               <p className="text-base text-[#cbb27c] font-cormorant italic">
