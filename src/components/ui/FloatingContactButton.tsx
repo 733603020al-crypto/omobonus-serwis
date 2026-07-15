@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 const NAVY = '#0B1F3A'
 const GOLD = '#bfa76a'
+const LIGHT_GOLD = '#eee0b4'
 
 export function FloatingContactButton() {
     const [mounted, setMounted] = useState(false)
@@ -40,9 +41,9 @@ export function FloatingContactButton() {
 
                 @keyframes pen-write {
                     0%, 8%    { transform: translate(42.61px, -1.12px); }
-                    18%, 24%  { transform: translate(53.05px, -18.24px); }
-                    26%, 30%  { transform: translate(59.05px, -18.24px); }
-                    33%, 38%  { transform: translate(65.05px, -18.24px); }
+                    18%, 24%  { transform: translate(46.80px, -13.90px); }
+                    26%, 30%  { transform: translate(52.80px, -13.90px); }
+                    33%, 38%  { transform: translate(58.80px, -13.90px); }
                     46%, 100% { transform: translate(42.61px, -1.12px); }
                 }
             `}</style>
@@ -93,27 +94,28 @@ export function FloatingContactButton() {
                         <circle className="contact-dot-2" cx="28" cy="39" r="2.2" fill={GOLD} />
                         <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill={GOLD} />
 
-                        {/* Fountain pen — single pen; animated group moves the nib to each dot, cap pokes above the button edge */}
+                        {/* Vintage quill — single feather; animated group moves the tip to each dot, plume pokes above the button edge */}
                         <g className="contact-pen" style={{ transform: 'translate(42.61px,-1.12px)' }}>
                             <g transform="rotate(32)">
-                                {/* Finial */}
-                                <circle cx="4" cy="3" r="2.3" fill={GOLD} />
+                                {/* Vane */}
+                                <path
+                                    d="M7,58 C2,45 1,30 3,16 C4,8 6,3 9,1 C12,0 15,2 15,6 C15,12 13,20 12,28 C11,38 9,50 7,58 Z"
+                                    fill={LIGHT_GOLD}
+                                    stroke={NAVY}
+                                    strokeWidth="1.1"
+                                />
 
-                                {/* Cap */}
-                                <rect x="1" y="0" width="6" height="8" rx="3" fill={NAVY} />
+                                {/* Shaft */}
+                                <path
+                                    d="M7,58 C6,45 6,30 7,16 C7,10 8,5 9,3"
+                                    fill="none"
+                                    stroke={NAVY}
+                                    strokeWidth="0.7"
+                                    strokeLinecap="round"
+                                />
 
-                                {/* Barrel */}
-                                <rect x="1.2" y="8" width="5.6" height="44" rx="2.8" fill={NAVY} />
-
-                                {/* Grip band */}
-                                <rect x="0.8" y="24.4" width="6.4" height="2.6" rx="1" fill={GOLD} />
-
-                                {/* Collar */}
-                                <rect x="0" y="52" width="8" height="3" rx="1" fill={GOLD} />
-
-                                {/* Nib */}
-                                <path d="M4,65 L7,55 Q4,52 1,55 Z" fill={GOLD} />
-                                <line x1="4" y1="62" x2="4" y2="55" stroke={NAVY} strokeWidth="0.6" strokeLinecap="round" />
+                                {/* Golden nib accent */}
+                                <line x1="5.8" y1="51.5" x2="8.2" y2="51.5" stroke={GOLD} strokeWidth="1.1" strokeLinecap="round" />
                             </g>
                         </g>
                     </svg>
