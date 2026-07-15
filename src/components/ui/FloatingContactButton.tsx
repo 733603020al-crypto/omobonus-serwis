@@ -112,7 +112,7 @@ export function FloatingContactButton() {
 
                         {/* Vintage quill — same /icons/quill.webp asset, mirrored via transform (file untouched), animated as one element; tip points at the dots */}
                         <g className="contact-pen" style={{ transform: 'translate(0px,0px)', overflow: 'visible' }}>
-                            <g transform="rotate(5,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
+                            <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
                                 <image
                                     href="/icons/quill.webp"
                                     x="20.64" y="-37" width="34.8" height="64"
