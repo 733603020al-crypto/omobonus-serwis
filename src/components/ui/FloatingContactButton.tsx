@@ -11,8 +11,8 @@ const GOLD = '#bfa76a'
 
 const LABELS = {
     pl: { write: 'Napisz', map: 'Mapa' },
-    uk: { write: 'Написати', map: 'Mapa' },
-    ru: { write: 'Написать', map: 'Mapa' },
+    uk: { write: 'Написати', map: 'Карта' },
+    ru: { write: 'Написать', map: 'Карта' },
 }
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
@@ -155,15 +155,11 @@ export function FloatingContactButton() {
                             justify-center
                             w-14
                             h-14
-                            rounded-2xl
-                            bg-white
-                            shadow-[0_4px_16px_rgba(0,0,0,0.25)]
-                            transition-all duration-300 ease-out
+                            transition-transform duration-300 ease-out
                             hover:-translate-y-1
-                            hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]
                         "
                     >
-                        <Image src="/images/google-maps.png" alt="Google Maps" width={40} height={40} className="w-7 h-7" />
+                        <Image src="/images/google-maps.png" alt="Google Maps" width={56} height={56} className="w-full h-full object-contain" />
                     </a>
                     <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
                 </div>
