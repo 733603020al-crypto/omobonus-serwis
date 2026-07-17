@@ -15,6 +15,11 @@ export function FloatingCallButton() {
     const [mounted, setMounted] = useState(false)
     const pathname = usePathname()
     const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
+    const isKontakt = pathname?.endsWith('/kontakt') ?? false
+    const captionClass = isKontakt
+        ? '-mt-1 whitespace-nowrap font-cormorant text-[13px] text-white/85'
+        : 'mt-0.5 whitespace-nowrap font-cormorant text-[13px] text-white'
+    const bottomStyle = { bottom: `calc(${isKontakt ? '1.25rem' : '0.5rem'} + env(safe-area-inset-bottom))` }
 
     useEffect(() => {
         setMounted(true)
@@ -68,13 +73,13 @@ export function FloatingCallButton() {
                 className="
                     fixed
                     right-5
-                    bottom-[calc(1.25rem+env(safe-area-inset-bottom))]
                     z-[9999]
                     md:hidden
                     flex
                     flex-col
                     items-center
                 "
+                style={bottomStyle}
             >
                 <div className="relative flex items-center justify-center overflow-visible">
 
@@ -106,7 +111,7 @@ export function FloatingCallButton() {
 
                 </div>
                 <span
-                    className="-mt-1 whitespace-nowrap font-cormorant text-[13px] text-white/85"
+                    className={captionClass}
                     style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}
                 >
                     {CALL_LABELS[locale]}
