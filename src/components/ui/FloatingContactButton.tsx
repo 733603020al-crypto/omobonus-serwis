@@ -17,7 +17,9 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
+const CAPTION_CLASS = 'mt-0.5 inline-block whitespace-nowrap rounded-full bg-black/55 px-2 py-0.5 font-cormorant text-[13px] text-white shadow-[0_1px_3px_rgba(0,0,0,0.4)]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.55)' } as const
+const BOTTOM_STYLE = { bottom: 'calc(0.5rem + env(safe-area-inset-bottom))' } as const
 
 export function FloatingContactButton() {
     const [mounted, setMounted] = useState(false)
@@ -25,11 +27,6 @@ export function FloatingContactButton() {
     const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
     const contactHref = locale === 'uk' ? '/uk/kontakt' : locale === 'ru' ? '/ru/kontakt' : '/kontakt'
     const labels = LABELS[locale]
-    const isKontakt = pathname?.endsWith('/kontakt') ?? false
-    const captionClass = isKontakt
-        ? '-mt-1 whitespace-nowrap font-cormorant text-[13px] text-white/85'
-        : 'mt-0.5 whitespace-nowrap font-cormorant text-[13px] text-white'
-    const bottomStyle = { bottom: `calc(${isKontakt ? '1.25rem' : '0.5rem'} + env(safe-area-inset-bottom))` }
 
     useEffect(() => {
         setMounted(true)
@@ -89,7 +86,7 @@ export function FloatingContactButton() {
                     items-end
                     gap-3
                 "
-                style={bottomStyle}
+                style={BOTTOM_STYLE}
             >
                 <div className="flex flex-col items-center">
                     <Link
@@ -143,7 +140,7 @@ export function FloatingContactButton() {
                             </g>
                         </svg>
                     </Link>
-                    <span className={captionClass} style={CAPTION_STYLE}>{labels.write}</span>
+                    <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
                 </div>
 
                 <div className="flex flex-col items-center">
@@ -167,7 +164,7 @@ export function FloatingContactButton() {
                     >
                         <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                     </a>
-                    <span className={captionClass} style={CAPTION_STYLE}>{labels.map}</span>
+                    <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
                 </div>
             </div>
         </>,
