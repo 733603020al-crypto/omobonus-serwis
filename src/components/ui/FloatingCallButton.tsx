@@ -3,9 +3,18 @@
 import { Phone } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { usePathname } from 'next/navigation'
+
+const CALL_LABELS = {
+    pl: 'Zadzwoń',
+    uk: 'Зателефонувати',
+    ru: 'Позвонить',
+}
 
 export function FloatingCallButton() {
     const [mounted, setMounted] = useState(false)
+    const pathname = usePathname()
+    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
 
     useEffect(() => {
         setMounted(true)
@@ -62,6 +71,9 @@ export function FloatingCallButton() {
                     bottom-[calc(1.25rem+env(safe-area-inset-bottom))]
                     z-[9999]
                     md:hidden
+                    flex
+                    flex-col
+                    items-center
                 "
             >
                 <div className="relative flex items-center justify-center overflow-visible">
@@ -93,6 +105,12 @@ export function FloatingCallButton() {
                     </a>
 
                 </div>
+                <span
+                    className="-mt-1 whitespace-nowrap font-cormorant text-[13px] text-white/85"
+                    style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}
+                >
+                    {CALL_LABELS[locale]}
+                </span>
             </div>
         </>,
         document.body
