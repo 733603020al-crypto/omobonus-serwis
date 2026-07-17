@@ -155,11 +155,13 @@ export function FloatingContactButton() {
                             justify-center
                             w-14
                             h-14
+                            rounded-2xl
+                            overflow-hidden
                             transition-transform duration-300 ease-out
                             hover:-translate-y-1
                         "
                     >
-                        <Image src="/images/google-maps.png" alt="Google Maps" width={80} height={80} className="w-20 h-20 object-contain" />
+                        <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-125" />
                     </a>
                     <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
                 </div>
