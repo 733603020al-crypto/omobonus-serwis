@@ -17,7 +17,7 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_CLASS = 'mt-0.5 whitespace-nowrap font-cormorant text-[13px] text-white'
+const CAPTION_CLASS = 'mt-0.5 inline-block whitespace-nowrap rounded-full bg-black/55 px-2 py-0.5 font-cormorant text-[13px] text-white shadow-[0_1px_3px_rgba(0,0,0,0.4)]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.55)' } as const
 const BOTTOM_STYLE = { bottom: 'calc(0.5rem + env(safe-area-inset-bottom))' } as const
 

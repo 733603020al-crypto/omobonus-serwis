@@ -11,7 +11,7 @@ const CALL_LABELS = {
     ru: 'Позвонить',
 }
 
-const CAPTION_CLASS = 'mt-0.5 whitespace-nowrap font-cormorant text-[13px] text-white'
+const CAPTION_CLASS = 'mt-0.5 inline-block whitespace-nowrap rounded-full bg-black/55 px-2 py-0.5 font-cormorant text-[13px] text-white shadow-[0_1px_3px_rgba(0,0,0,0.4)]'
 const BOTTOM_STYLE = { bottom: 'calc(0.5rem + env(safe-area-inset-bottom))' } as const
 
 export function FloatingCallButton() {
