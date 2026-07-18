@@ -5,7 +5,6 @@ import { useRef, useEffect, useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export interface FooterT {
   contact: string
@@ -22,7 +21,6 @@ export interface FooterT {
   allRights: string
   privacyHref: string
   regulaminHref: string
-  mapLoad?: string
 }
 
 const PL: FooterT = {
@@ -40,13 +38,13 @@ const PL: FooterT = {
   allRights: 'Wszelkie prawa zastrzeżone.',
   privacyHref: '/polityka-prywatnosci',
   regulaminHref: '/regulamin',
-  mapLoad: 'Kliknij, aby wczytać mapę',
 }
 
 export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
+  const mapContainerRef = useRef<HTMLDivElement>(null)
   const [mapLoaded, setMapLoaded] = useState(false)
 
   const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -66,6 +64,21 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
         observer.disconnect()
       }
     }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Load the map iframe only once the block is about to enter the viewport,
+  // so the heavy Google Maps JS API doesn't load on initial page load.
+  useEffect(() => {
+    const el = mapContainerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setMapLoaded(true)
+        observer.disconnect()
+      }
+    }, { rootMargin: '250px' })
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
@@ -205,8 +218,8 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
 
           {/* Prawa kolumna - Mapa */}
           <div className="flex items-center justify-center">
-            <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
-              {mapLoaded ? (
+            <div ref={mapContainerRef} className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
+              {mapLoaded && (
                 <iframe
                   src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
                   width="100%"
@@ -219,23 +232,6 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Lokalizacja Omobonus serwis"
                 />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setMapLoaded(true)}
-                  aria-label={d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
-                  className="group relative block w-full h-full"
-                >
-                  <Image
-                    src="/images/footer-map-preview.webp"
-                    alt="Mapa — lokalizacja Omobonus serwis"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ filter: 'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)' }}
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/0" />
-                </button>
               )}
             </div>
           </div>
