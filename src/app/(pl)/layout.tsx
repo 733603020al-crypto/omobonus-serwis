@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
+import { DeferredGtm } from '@/components/DeferredGtm'
 
 /* =========================
    Fonts (STRICT: 2 only)
@@ -133,14 +134,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="afterInteractive"
         />
 
-        <Script id="gtm" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5XQXX5KL');`}
-        </Script>
-
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
@@ -149,6 +142,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
       <body className="antialiased scroll-smooth">
         <ConsentManager />
+        <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
         <noscript>
           <iframe
