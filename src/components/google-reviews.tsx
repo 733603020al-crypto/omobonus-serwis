@@ -26,6 +26,7 @@ export default function GoogleReviews() {
     const reviewsT = googleReviewsI18n[locale]
 
     const trackRef = useRef<HTMLDivElement | null>(null)
+    const carouselContainerRef = useRef<HTMLDivElement | null>(null)
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
     const opinieTitleRef = useRef<HTMLDivElement | null>(null)
     const offsetRef = useRef(0)
@@ -85,29 +86,39 @@ export default function GoogleReviews() {
     }, [])
 
     useEffect(() => {
-        if (!trackRef.current || !reviews.length) return
+        if (!trackRef.current || !carouselContainerRef.current || !reviews.length) return
+        const track = trackRef.current
+        const container = carouselContainerRef.current
 
         const animate = () => {
-            if (!isRunningRef.current || isHoverRef.current) {
-                rafRef.current = requestAnimationFrame(animate)
-                return
+            if (isRunningRef.current && !isHoverRef.current) {
+                const totalWidth = (cardWidth + gap) * reviews.length
+                offsetRef.current += speed
+                if (offsetRef.current >= totalWidth) {
+                    offsetRef.current = 0
+                }
+                track.style.transform = `translateX(-${offsetRef.current}px)`
             }
-
-            const track = trackRef.current
-            if (!track) return
-
-            const totalWidth = (cardWidth + gap) * reviews.length
-
-            offsetRef.current += speed
-            if (offsetRef.current >= totalWidth) {
-                offsetRef.current = 0
-            }
-
-            track.style.transform = `translateX(-${offsetRef.current}px)`
             rafRef.current = requestAnimationFrame(animate)
         }
 
-        rafRef.current = requestAnimationFrame(animate)
+        const startAnimation = () => {
+            if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
+        }
+        const stopAnimation = () => {
+            if (rafRef.current !== null) {
+                cancelAnimationFrame(rafRef.current)
+                rafRef.current = null
+            }
+        }
+
+        // Only run the scroll loop while the carousel is actually visible on screen —
+        // avoids burning main-thread time on an animation nobody sees yet (e.g. during initial load).
+        const sectionObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) startAnimation()
+            else stopAnimation()
+        }, { threshold: 0 })
+        sectionObserver.observe(container)
 
         const handleVisibility = () => {
             isRunningRef.current = !document.hidden
@@ -117,8 +128,8 @@ export default function GoogleReviews() {
 
         return () => {
             document.removeEventListener("visibilitychange", handleVisibility)
-            if (rafRef.current) cancelAnimationFrame(rafRef.current)
-            rafRef.current = null
+            sectionObserver.disconnect()
+            stopAnimation()
         }
     }, [reviews])
 
@@ -220,6 +231,7 @@ export default function GoogleReviews() {
                 </div>
 
                 <div
+                    ref={carouselContainerRef}
                     className="relative w-screen -mx-[calc((100vw-100%)/2)] overflow-visible"
                     onMouseEnter={() => (isHoverRef.current = true)}
                     onMouseLeave={() => (isHoverRef.current = false)}
