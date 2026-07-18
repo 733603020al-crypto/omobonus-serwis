@@ -54,7 +54,6 @@ export const ru = {
     allRights: 'Все права защищены.',
     privacyHref: '/ru/polityka-prywatnosci',
     regulaminHref: '/ru/regulamin',
-    mapLoad: 'Нажмите, чтобы загрузить карту',
   },
   homeCta: {
     heading: 'Есть проблема с компьютером или принтером?',

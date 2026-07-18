@@ -121,7 +121,6 @@
     allRights: 'Усі права захищені.',
     privacyHref: '/uk/polityka-prywatnosci',
     regulaminHref: '/uk/regulamin',
-    mapLoad: 'Натисніть, щоб завантажити карту',
   },
   successModal: {
     title: 'Дякуємо за заявку!',
