@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
 import BrandTicker from '@/components/brand-ticker'
-import manifest from '@/config/manifest'
 
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner
@@ -52,7 +51,7 @@ export function HomePageTemplate({
           aria-hidden="true"
           className="fixed inset-0 -z-10"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

@@ -78,7 +78,7 @@ export function About({
       {!bare && (
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
+          style={{ backgroundImage: `var(--bg-parchment)` }}
         >
           <div className="absolute inset-0 bg-black/60" />
         </div>

@@ -1,17 +1,21 @@
 import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import ServiceAccordion from '@/components/service-accordion'
-import GoogleReviews from '@/components/google-reviews'
 import { CallButton } from '@/components/ui/CallButton'
 import BrandTicker from '@/components/brand-ticker'
 import { FadeSlideText } from '@/components/ui/FadeSlideText'
 import type { ServiceData } from '@/lib/services-data'
+
+// Below-fold: split into separate chunks, same pattern as HomePageTemplate.
+// No ssr:false — content still renders server-side, only the JS bundle is split.
+const GoogleReviews = dynamic(() => import('@/components/google-reviews'))
+const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',

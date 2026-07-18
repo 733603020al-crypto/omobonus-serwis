@@ -4,6 +4,7 @@
 export const manifest = {
   "Логотип_картинка_на_сайт": "/images/omobonus-hero.webp",
   "Background_1": "/images/Background_1.webp",
+  "Background_1_mobile": "/images/Background_1-mobile.webp",
   "services_background": "/images/services-background.webp",
   "omobonus_hero": "/images/omobonus-hero.webp",
   "01_serwis_laptopow": "/images/01_serwis-laptopow.webp",
