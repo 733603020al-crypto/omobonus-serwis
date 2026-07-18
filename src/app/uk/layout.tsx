@@ -7,6 +7,7 @@ import '../globals.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 import { DeferredGtm } from '@/components/DeferredGtm'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -125,6 +126,7 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
       </head>
 
       <body className="antialiased scroll-smooth">
+        <ScrollToTop />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
