@@ -234,13 +234,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
                     style={{ filter: 'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)' }}
                     className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/10" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                    <MapPin className="h-8 w-8 text-[#bfa76a] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:-translate-y-1" />
-                    <span className="rounded-full bg-black/55 px-3 py-1 font-cormorant text-sm text-[#e6d9b8]">
-                      {d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/0" />
                 </button>
               )}
             </div>
