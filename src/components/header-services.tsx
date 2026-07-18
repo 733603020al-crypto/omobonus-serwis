@@ -58,6 +58,7 @@ export function Header() {
                     alt=""
                     fill
                     priority
+                    fetchPriority="high"
                     sizes="100vw"
                     quality={40}
                     className="object-cover object-center"
@@ -76,6 +77,7 @@ export function Header() {
                             alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
                             fill
                             priority
+                            fetchPriority="high"
                             unoptimized
                             sizes="(max-width: 768px) 40px, 48px"
                             className="object-contain p-[1px]"
