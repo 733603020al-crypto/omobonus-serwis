@@ -7,6 +7,7 @@ import '../globals.css'
 import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
 import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
 import { DeferredGtm } from '@/components/DeferredGtm'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 /* =========================
    Fonts (STRICT: 2 only)
@@ -141,6 +142,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
 
       <body className="antialiased scroll-smooth">
+        <ScrollToTop />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
