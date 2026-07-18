@@ -2,14 +2,19 @@ import '@/app/styles/umka-paw.css'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { ONasHero, type ONasHeroT } from '@/components/sections/o-nas-hero'
-import { Advantages, type AdvantagesT } from '@/components/sections/advantages'
-import { About, type AboutT } from '@/components/sections/about'
-import { Team, type TeamT } from '@/components/sections/team'
+import type { AdvantagesT } from '@/components/sections/advantages'
+import type { AboutT } from '@/components/sections/about'
+import type { TeamT } from '@/components/sections/team'
 import BrandTicker from '@/components/brand-ticker'
 import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
 import type { FooterT } from '@/components/footer'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
+// No ssr:false anywhere here — content still renders server-side (SEO text stays
+// in the initial HTML), only the JS bundle is split into smaller, later-loaded chunks.
+const Advantages = dynamic(() => import('@/components/sections/advantages').then(m => ({ default: m.Advantages })))
+const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
+const Team = dynamic(() => import('@/components/sections/team').then(m => ({ default: m.Team })))
 const GoogleReviews = dynamic(() => import('@/components/google-reviews'))
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
