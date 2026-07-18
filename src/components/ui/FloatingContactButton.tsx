@@ -38,24 +38,24 @@ export function FloatingContactButton() {
     return createPortal(
         <>
             <style>{`
-                /* Dots stay hidden until the pen touches their spot, then hold together and reset only after the pen has left */
+                /* Dots appear the instant the pen taps their spot, hold together, then fade once the pen lifts away */
                 @keyframes dot1-appear {
-                    0%, 14%   { opacity: 0; transform: scale(0.4); }
-                    16%       { opacity: 1; transform: scale(1); }
+                    0%, 9%    { opacity: 0; transform: scale(0.4); }
+                    11%       { opacity: 1; transform: scale(1); }
                     50%       { opacity: 1; transform: scale(1); }
                     58%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
                 }
                 @keyframes dot2-appear {
-                    0%, 24%   { opacity: 0; transform: scale(0.4); }
-                    26%       { opacity: 1; transform: scale(1); }
+                    0%, 23%   { opacity: 0; transform: scale(0.4); }
+                    25%       { opacity: 1; transform: scale(1); }
                     50%       { opacity: 1; transform: scale(1); }
                     58%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
                 }
                 @keyframes dot3-appear {
-                    0%, 34%   { opacity: 0; transform: scale(0.4); }
-                    36%       { opacity: 1; transform: scale(1); }
+                    0%, 37%   { opacity: 0; transform: scale(0.4); }
+                    39%       { opacity: 1; transform: scale(1); }
                     50%       { opacity: 1; transform: scale(1); }
                     58%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
@@ -67,13 +67,28 @@ export function FloatingContactButton() {
 
                 .contact-pen { animation: pen-write 11s ease-in-out infinite; }
 
-                /* Pen leads: rests at dot 1's level, settles onto dot 1, shifts to dot 2, shifts to dot 3, then returns to rest at dot 1 (no top-down descent) */
+                /* Hand-held rhythm: dip toward each dot, tap it, lift, then swing on a soft arc to the next — never a straight slide */
                 @keyframes pen-write {
-                    0%, 8%    { transform: translate(0px, 10px); }
-                    16%, 20%  { transform: translate(0px, 12px); }
-                    26%, 30%  { transform: translate(6px, 12px); }
-                    36%, 40%  { transform: translate(12px, 12px); }
-                    48%, 100% { transform: translate(0px, 10px); }
+                    0%        { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+                    5%        { transform: translate(0px, 10px) rotate(0deg); animation-timing-function: ease-out; }
+                    9%        { transform: translate(0px, 12px) rotate(1deg); animation-timing-function: ease-in; }
+                    11%       { transform: translate(0px, 14px) rotate(2deg); animation-timing-function: ease-out; }
+                    13%       { transform: translate(1px, 10px) rotate(-1deg); animation-timing-function: ease-in-out; }
+                    15%       { transform: translate(3px, 8px) rotate(0deg); animation-timing-function: ease-in-out; }
+                    19%       { transform: translate(4.5px, 7px) rotate(1deg); animation-timing-function: ease-in; }
+                    23%       { transform: translate(6px, 11px) rotate(2deg); animation-timing-function: ease-out; }
+                    25%       { transform: translate(6px, 14px) rotate(3deg); animation-timing-function: ease-in-out; }
+                    27%       { transform: translate(7px, 10px) rotate(-1deg); animation-timing-function: ease-in-out; }
+                    29%       { transform: translate(9px, 8px) rotate(0deg); animation-timing-function: ease-in-out; }
+                    33%       { transform: translate(10.5px, 7px) rotate(2deg); animation-timing-function: ease-in; }
+                    37%       { transform: translate(12px, 11px) rotate(3deg); animation-timing-function: ease-out; }
+                    39%       { transform: translate(12px, 14px) rotate(4deg); animation-timing-function: ease-out; }
+                    41%       { transform: translate(12px, 9px) rotate(-2deg); animation-timing-function: ease-in-out; }
+                    50%       { transform: translate(12px, 9px) rotate(-2deg); animation-timing-function: ease-in-out; }
+                    58%       { transform: translate(9px, 6px) rotate(0deg); animation-timing-function: ease-in-out; }
+                    66%       { transform: translate(5px, 5px) rotate(-1deg); animation-timing-function: ease-in-out; }
+                    74%       { transform: translate(1px, 8px) rotate(0deg); animation-timing-function: ease-out; }
+                    80%, 100% { transform: translate(0px, 9px) rotate(-1deg); }
                 }
             `}</style>
 
@@ -131,7 +146,7 @@ export function FloatingContactButton() {
                             <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill={GOLD} />
 
                             {/* Vintage quill — same /icons/quill.webp asset, mirrored via transform (file untouched), animated as one element; tip points at the dots */}
-                            <g className="contact-pen" style={{ transform: 'translate(0px,0px)', overflow: 'visible' }}>
+                            <g className="contact-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
                                 <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
                                     <image
                                         href="/icons/quill.webp"
