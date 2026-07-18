@@ -60,33 +60,45 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
     ? Math.max(2, Math.ceil(4000 / (displayBrands.length * 200)) + 1)
     : 2
   const trackRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
   const offsetRef = useRef(0)
   const rafRef = useRef<number | null>(null)
   const isRunningRef = useRef(true)
   const isHoverRef = useRef(false)
 
   useEffect(() => {
+    const track = trackRef.current
+    const section = sectionRef.current
+    if (!track || !section) return
+
     const animate = () => {
-      if (!isRunningRef.current || isHoverRef.current) {
-        rafRef.current = requestAnimationFrame(animate)
-        return
+      if (isRunningRef.current && !isHoverRef.current) {
+        const totalWidth = track.scrollWidth / copies
+        offsetRef.current += speed
+        if (offsetRef.current >= totalWidth) {
+          offsetRef.current = 0
+        }
+        track.style.transform = `translateX(-${offsetRef.current}px)`
       }
-
-      const track = trackRef.current
-      if (!track) return
-
-      const totalWidth = track.scrollWidth / copies
-
-      offsetRef.current += speed
-      if (offsetRef.current >= totalWidth) {
-        offsetRef.current = 0
-      }
-
-      track.style.transform = `translateX(-${offsetRef.current}px)`
       rafRef.current = requestAnimationFrame(animate)
     }
 
-    rafRef.current = requestAnimationFrame(animate)
+    const startAnimation = () => {
+      if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
+    }
+    const stopAnimation = () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+    }
+
+    // Only run the scroll loop while the ticker is actually visible on screen.
+    const sectionObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) startAnimation()
+      else stopAnimation()
+    }, { threshold: 0 })
+    sectionObserver.observe(section)
 
     const handleVisibility = () => {
       isRunningRef.current = !document.hidden
@@ -96,13 +108,13 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
 
     return () => {
       document.removeEventListener("visibilitychange", handleVisibility)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
+      sectionObserver.disconnect()
+      stopAnimation()
     }
-  }, [])
+  }, [copies])
 
   return (
-    <section className={`relative w-full h-[68px] -mt-[34px] -mb-[34px] z-10 overflow-hidden${compact ? ' md:h-[56px]' : ''}`}>
+    <section ref={sectionRef} className={`relative w-full h-[68px] -mt-[34px] -mb-[34px] z-10 overflow-hidden${compact ? ' md:h-[56px]' : ''}`}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
