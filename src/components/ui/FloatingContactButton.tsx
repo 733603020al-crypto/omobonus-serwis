@@ -27,6 +27,7 @@ export function FloatingContactButton() {
     const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
     const contactHref = locale === 'uk' ? '/uk/kontakt' : locale === 'ru' ? '/ru/kontakt' : '/kontakt'
     const labels = LABELS[locale]
+    const isKontakt = pathname?.endsWith('/kontakt') ?? false
 
     useEffect(() => {
         setMounted(true)
@@ -88,6 +89,7 @@ export function FloatingContactButton() {
                 "
                 style={BOTTOM_STYLE}
             >
+                {!isKontakt && (
                 <div className="flex flex-col items-center">
                     <Link
                         href={contactHref}
@@ -142,6 +144,7 @@ export function FloatingContactButton() {
                     </Link>
                     <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
                 </div>
+                )}
 
                 <div className="flex flex-col items-center">
                     <a
