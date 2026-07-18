@@ -132,6 +132,7 @@ export function ServicePageTemplate({
             alt="Omobonus serwis"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             quality={60}
             className="object-cover object-center"
@@ -169,6 +170,7 @@ export function ServicePageTemplate({
                         sizes="(max-width: 768px) 85vw, 420px"
                         className="service-hero-image object-contain w-full h-auto"
                         priority
+                        fetchPriority="high"
                       />
                     </div>
                   </div>

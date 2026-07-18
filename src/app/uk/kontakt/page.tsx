@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 export default function UkKontaktPage() {
   return (
     <>
+      <link rel="preload" as="image" href="/images/Background_1.webp" fetchPriority="high" media="(min-width: 768px)" />
+      <link rel="preload" as="image" href="/images/Background_1-mobile.webp" fetchPriority="high" media="(max-width: 767px)" />
       <Header />
       <main
         className="relative overflow-hidden"

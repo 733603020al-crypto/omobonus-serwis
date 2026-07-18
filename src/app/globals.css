@@ -4,11 +4,15 @@
 
 :root {
   --bg-parchment: url('/images/Background_1.webp');
+  --bg-services-card: url('/images/services-background.webp');
+  --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
 }
 
 @media (max-width: 767px) {
   :root {
     --bg-parchment: url('/images/Background_1-mobile.webp');
+    --bg-services-card: url('/images/services-background-mobile.webp');
+    --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
   }
 }
 
@@ -63,7 +67,7 @@
 
 @layer utilities {
   .bg-paper-texture {
-    background-image: url('/images/zmiety arkusz papieru 2.webp');
+    background-image: var(--bg-paper-texture);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -155,7 +159,7 @@
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%),
-      url('/images/services-background.webp') !important;
+      var(--bg-services-card) !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -171,7 +175,7 @@
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.50) 0%,
         rgba(55, 38, 20, 0.85) 100%),
-      url('/images/services-background.webp') !important;
+      var(--bg-services-card) !important;
     box-shadow:
       0 6px 16px rgba(0, 0, 0, 0.5),
       0 3px 8px rgba(0, 0, 0, 0.4),
@@ -190,7 +194,7 @@
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%),
-      url('/images/services-background.webp') !important;
+      var(--bg-services-card) !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -206,7 +210,7 @@
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%),
-      url('/images/services-background.webp') !important;
+      var(--bg-services-card) !important;
   }
 
   /* =========================
@@ -325,7 +329,7 @@
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%),
-      url('/images/services-background.webp');
+      var(--bg-services-card);
     background-color: transparent;
     background-size: cover;
     background-position: center;
@@ -342,7 +346,7 @@
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.48) 0%,
         rgba(52, 36, 20, 0.82) 100%),
-      url('/images/services-background.webp');
+      var(--bg-services-card);
     background-color: transparent;
     background-size: cover;
     background-position: center;
