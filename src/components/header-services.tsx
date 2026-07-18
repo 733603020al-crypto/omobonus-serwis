@@ -134,7 +134,7 @@ export function Header() {
                             <div
                                 className="absolute inset-0 bg-cover bg-center"
                                 style={{
-                                    backgroundImage: `url('${manifest.Background_1}')`,
+                                    backgroundImage: `var(--bg-parchment)`,
                                 }}
                             />
                             <div className="absolute inset-0 bg-black/55" />

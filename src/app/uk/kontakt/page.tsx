@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import { ContactActionsSection } from '@/components/sections/contact-actions'
 import { uk } from '@/lib/i18n/uk'
-import manifest from '@/config/manifest'
 
 const Contact = dynamic(() =>
   import('@/components/sections/contact').then(mod => mod.Contact)
 )
+const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = {
   title: 'Контакт | Сервіс комп\'ютерів, ноутбуків і принтерів',
@@ -31,7 +30,7 @@ export default function UkKontaktPage() {
       <main
         className="relative overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',

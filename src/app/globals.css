@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-parchment: url('/images/Background_1.webp');
+}
+
+@media (max-width: 767px) {
+  :root {
+    --bg-parchment: url('/images/Background_1-mobile.webp');
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

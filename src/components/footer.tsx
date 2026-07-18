@@ -5,7 +5,6 @@ import { useRef, useEffect, useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
-import manifest from '@/config/manifest'
 
 export interface FooterT {
   contact: string
@@ -80,7 +79,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
       {!bare && (
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${manifest.Background_1}')` }}
+          style={{ backgroundImage: `var(--bg-parchment)` }}
         >
           <div className="absolute inset-0 bg-black/60" />
         </div>

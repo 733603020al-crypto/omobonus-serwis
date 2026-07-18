@@ -2299,7 +2299,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           : 'border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
                                       )}
                                       style={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? {
-                                        backgroundImage: `url('${manifest.Background_1}')`,
+                                        backgroundImage: `var(--bg-parchment)`,
                                       } : {}}
                                     >
                                       {service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (
@@ -2382,7 +2382,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             sideOffset: 4,
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
-                                              backgroundImage: `url('${manifest.Background_1}')`,
+                                              backgroundImage: `var(--bg-parchment)`,
                                               backgroundSize: 'cover',
                                               backgroundPosition: 'center',
                                             },

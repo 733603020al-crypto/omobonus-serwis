@@ -1,14 +1,17 @@
 import '@/app/styles/umka-paw.css'
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { ONasHero, type ONasHeroT } from '@/components/sections/o-nas-hero'
 import { Advantages, type AdvantagesT } from '@/components/sections/advantages'
 import { About, type AboutT } from '@/components/sections/about'
 import { Team, type TeamT } from '@/components/sections/team'
-import GoogleReviews from '@/components/google-reviews'
 import BrandTicker from '@/components/brand-ticker'
 import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
-import { Footer, type FooterT } from '@/components/footer'
-import manifest from '@/config/manifest'
+import type { FooterT } from '@/components/footer'
+
+// Below-fold: split into separate chunks, same pattern as HomePageTemplate.
+const GoogleReviews = dynamic(() => import('@/components/google-reviews'))
+const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 interface AboutPageTemplateProps {
   brandCaptionText: string
@@ -34,7 +37,7 @@ export function AboutPageTemplate({
       <div
         className="relative isolate overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${manifest.Background_1}')`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
