@@ -119,10 +119,11 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
           strategy="afterInteractive"
         />
 
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
         <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
+        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/48410f3df60da620-s.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/8e9860b6e62d6359-s.woff2" />
       </head>
 
       <body className="antialiased scroll-smooth">
