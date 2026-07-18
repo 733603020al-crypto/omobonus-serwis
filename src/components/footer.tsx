@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export interface FooterT {
   contact: string
@@ -223,12 +224,23 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
                   type="button"
                   onClick={() => setMapLoaded(true)}
                   aria-label={d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
-                  className="group relative w-full h-full flex flex-col items-center justify-center gap-3 bg-[#241b14] transition-colors duration-300 hover:bg-[#2c221a]"
+                  className="group relative block w-full h-full"
                 >
-                  <MapPin className="h-10 w-10 text-[#bfa76a] transition-transform duration-300 group-hover:-translate-y-1" />
-                  <span className="font-cormorant text-sm text-[#e6d9b8]">
-                    {d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
-                  </span>
+                  <Image
+                    src="/images/footer-map-preview.webp"
+                    alt="Mapa — lokalizacja Omobonus serwis"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ filter: 'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)' }}
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/10" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <MapPin className="h-8 w-8 text-[#bfa76a] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] transition-transform duration-300 group-hover:-translate-y-1" />
+                    <span className="rounded-full bg-black/55 px-3 py-1 font-cormorant text-sm text-[#e6d9b8]">
+                      {d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
+                    </span>
+                  </div>
                 </button>
               )}
             </div>
