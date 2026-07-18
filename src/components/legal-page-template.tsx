@@ -1,4 +1,3 @@
-import manifest from '@/config/manifest'
 import { Header } from '@/components/header'
 import { Footer, type FooterT } from '@/components/footer'
 import type { LegalPageContent } from '@/lib/legal/legal-pages'
@@ -18,7 +17,7 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${manifest.services_background}')`,
+            backgroundImage: `var(--bg-services-card)`,
           }}
         >
           <div className="absolute inset-0 bg-black/50" />

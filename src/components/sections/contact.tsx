@@ -6,7 +6,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Loader2, Paperclip, X } from 'lucide-react'
 import Link from 'next/link'
-import manifest from '@/config/manifest'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
@@ -338,7 +337,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('${manifest.services_background}')`,
+            backgroundImage: `var(--bg-services-card)`,
           }}
         >
           <div className="absolute inset-0 bg-black/50" />
