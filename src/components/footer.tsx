@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
@@ -22,6 +22,7 @@ export interface FooterT {
   allRights: string
   privacyHref: string
   regulaminHref: string
+  mapLoad?: string
 }
 
 const PL: FooterT = {
@@ -39,12 +40,14 @@ const PL: FooterT = {
   allRights: 'Wszelkie prawa zastrzeżone.',
   privacyHref: '/polityka-prywatnosci',
   regulaminHref: '/regulamin',
+  mapLoad: 'Kliknij, aby wczytać mapę',
 }
 
 export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
+  const [mapLoaded, setMapLoaded] = useState(false)
 
   const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (typeof window !== 'undefined' && window.innerWidth >= 768) {
@@ -203,19 +206,32 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
           {/* Prawa kolumna - Mapa */}
           <div className="flex items-center justify-center">
             <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
-              <iframe
-                src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
-                width="100%"
-                height="100%"
-                style={{
-                  border: 0,
-                  filter:
-                    'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
-                }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Lokalizacja Omobonus serwis"
-              />
+              {mapLoaded ? (
+                <iframe
+                  src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{
+                    border: 0,
+                    filter:
+                      'grayscale(0.3) sepia(0.2) brightness(0.9) contrast(1.1)',
+                  }}
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Lokalizacja Omobonus serwis"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setMapLoaded(true)}
+                  aria-label={d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
+                  className="group relative w-full h-full flex flex-col items-center justify-center gap-3 bg-[#241b14] transition-colors duration-300 hover:bg-[#2c221a]"
+                >
+                  <MapPin className="h-10 w-10 text-[#bfa76a] transition-transform duration-300 group-hover:-translate-y-1" />
+                  <span className="font-cormorant text-sm text-[#e6d9b8]">
+                    {d.mapLoad ?? 'Kliknij, aby wczytać mapę'}
+                  </span>
+                </button>
+              )}
             </div>
           </div>
         </div>
