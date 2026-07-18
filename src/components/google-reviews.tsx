@@ -267,6 +267,8 @@ export default function GoogleReviews() {
                                             alt={review.author_name}
                                             width={36}
                                             height={36}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-9 h-9 rounded-full object-cover shrink-0"
                                         />
                                     ) : (
