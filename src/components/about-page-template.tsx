@@ -28,6 +28,7 @@ interface AboutPageTemplateProps {
   aboutT?: AboutT
   teamT?: TeamT
   footerT?: FooterT
+  locale?: 'pl' | 'uk' | 'ru'
 }
 
 export function AboutPageTemplate({
@@ -37,10 +38,11 @@ export function AboutPageTemplate({
   aboutT,
   teamT,
   footerT,
+  locale = 'pl',
 }: AboutPageTemplateProps) {
   return (
     <>
-      <Header />
+      <Header locale={locale} />
       <ONasHero t={onasHeroT} />
       <div
         className="relative isolate overflow-hidden"

@@ -35,10 +35,11 @@ export function HomePageTemplate({
   aboutT,
   footerT,
   cta,
+  locale = 'pl',
 }: HomePageTemplateProps) {
   return (
     <>
-      <Header />
+      <Header locale={locale} />
       <div>
         <Hero t={heroT}>
           <div className="absolute bottom-[40px] left-0 w-full z-10 md:bottom-[48px]">

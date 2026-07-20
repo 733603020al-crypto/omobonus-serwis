@@ -16,5 +16,5 @@ export const metadata: Metadata = {
 }
 
 export default function ONasPage() {
-  return <AboutPageTemplate brandCaptionText="Naprawiamy sprzęt popularnych marek" />
+  return <AboutPageTemplate brandCaptionText="Naprawiamy sprzęt popularnych marek" locale="pl" />
 }

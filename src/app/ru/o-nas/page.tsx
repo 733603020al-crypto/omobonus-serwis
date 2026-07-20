@@ -25,6 +25,7 @@ export default function RuONasPage() {
       aboutT={ru.aboutOnas}
       teamT={ru.team}
       footerT={ru.footer}
+      locale="ru"
     />
   )
 }

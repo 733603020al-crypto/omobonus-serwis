@@ -20,5 +20,5 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default function RuRegulamin() {
-  return <LegalPageTemplate content={regulaminContentRu} footerT={ru.footer} cardMarginBottomClass="-mb-[25%]" minHeightZero />
+  return <LegalPageTemplate content={regulaminContentRu} footerT={ru.footer} cardMarginBottomClass="-mb-[25%]" minHeightZero locale="ru" />
 }

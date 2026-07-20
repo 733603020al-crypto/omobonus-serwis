@@ -126,7 +126,7 @@ export function ServicePageTemplate({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
+      <Header locale={locale} />
       <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass}`}>
 
         <div className="absolute inset-0">

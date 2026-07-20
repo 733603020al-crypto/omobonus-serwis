@@ -37,6 +37,7 @@ export default function Home() {
         button: 'Szybki kontakt',
         href: '/kontakt',
       }}
+      locale="pl"
     />
   )
 }

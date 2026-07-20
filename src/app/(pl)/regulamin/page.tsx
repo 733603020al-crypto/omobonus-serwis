@@ -19,5 +19,5 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default function Regulamin() {
-  return <LegalPageTemplate content={regulaminContent} cardMarginBottomClass="-mb-[25%]" minHeightZero />
+  return <LegalPageTemplate content={regulaminContent} cardMarginBottomClass="-mb-[25%]" minHeightZero locale="pl" />
 }
