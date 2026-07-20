@@ -115,7 +115,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         <Script
           id="cookieyes"
           src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
