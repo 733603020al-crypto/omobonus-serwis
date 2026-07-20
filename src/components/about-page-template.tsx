@@ -8,14 +8,17 @@ import type { TeamT } from '@/components/sections/team'
 import BrandTicker from '@/components/brand-ticker'
 import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
 import type { FooterT } from '@/components/footer'
+import GoogleReviews from '@/components/GoogleReviewsLazy'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false anywhere here — content still renders server-side (SEO text stays
 // in the initial HTML), only the JS bundle is split into smaller, later-loaded chunks.
+// Exception: GoogleReviews (imported above) is not SEO content, so it's deferred
+// with ssr:false inside its own client-component wrapper, to keep its hydration
+// off the critical path.
 const Advantages = dynamic(() => import('@/components/sections/advantages').then(m => ({ default: m.Advantages })))
 const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
 const Team = dynamic(() => import('@/components/sections/team').then(m => ({ default: m.Team })))
-const GoogleReviews = dynamic(() => import('@/components/google-reviews'))
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 interface AboutPageTemplateProps {

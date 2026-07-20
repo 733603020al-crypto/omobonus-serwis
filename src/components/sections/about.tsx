@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import manifest from '@/config/manifest'
-import GoogleReviews from '@/components/google-reviews'
+import GoogleReviews from '@/components/GoogleReviewsLazy'
 
 export interface AboutT {
   eyebrow?: string
