@@ -20,5 +20,5 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 
 export default function UkPolitykaPrywatnosci() {
-  return <LegalPageTemplate content={politykaPrywatnosciContentUk} footerT={uk.footer} cardMarginBottomClass="-mb-[15%]" />
+  return <LegalPageTemplate content={politykaPrywatnosciContentUk} footerT={uk.footer} cardMarginBottomClass="-mb-[15%]" locale="uk" />
 }

@@ -53,7 +53,7 @@ const BrandWordmark = ({ className }: { className?: string }) => (
    Locale-aware navigation data
    ========================= */
 
-type Locale = 'pl' | 'uk' | 'ru'
+export type Locale = 'pl' | 'uk' | 'ru'
 
 const LOCALE_NAV: Record<Locale, {
   prefix: string
@@ -143,13 +143,12 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
    Header
    ========================= */
 
-export function Header() {
+export function Header({ locale }: { locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const locale: Locale = pathname.startsWith('/uk') ? 'uk' : pathname.startsWith('/ru') ? 'ru' : 'pl'
   const nav = LOCALE_NAV[locale]
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`

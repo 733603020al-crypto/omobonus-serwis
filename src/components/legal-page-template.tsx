@@ -7,12 +7,13 @@ interface LegalPageTemplateProps {
   footerT?: FooterT
   cardMarginBottomClass: string
   minHeightZero?: boolean
+  locale?: 'pl' | 'uk' | 'ru'
 }
 
-export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, minHeightZero = false }: LegalPageTemplateProps) {
+export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, minHeightZero = false, locale = 'pl' }: LegalPageTemplateProps) {
   return (
     <>
-      <Header />
+      <Header locale={locale} />
       <main className="min-h-screen pt-[65px] relative">
         <div
           className="absolute inset-0 bg-cover bg-center"

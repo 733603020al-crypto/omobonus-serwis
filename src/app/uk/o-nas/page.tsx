@@ -25,6 +25,7 @@ export default function UkONasPage() {
       aboutT={uk.aboutOnas}
       teamT={uk.team}
       footerT={uk.footer}
+      locale="uk"
     />
   )
 }
