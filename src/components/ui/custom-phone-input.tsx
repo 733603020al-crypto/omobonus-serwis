@@ -199,14 +199,14 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
       >
         {/* Обёртка кнопки — relative, чтобы light-dropdown позиционировался под ней */}
         <div
-          className={`relative ${selectorWidth ? 'flex-shrink-0' : (dark ? 'w-full' : alwaysRow ? 'flex-shrink-0 w-[46%] sm:w-[280px] sm:min-w-[280px]' : 'w-full sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0')}`}
+          className={`relative ${selectorWidth ? 'flex-shrink-0' : (dark ? 'w-full' : alwaysRow ? 'flex-shrink-0 w-[58%] sm:w-[280px] sm:min-w-[280px]' : 'w-full sm:w-[280px] sm:min-w-[280px] sm:flex-shrink-0')}`}
           style={selectorWidth ? { width: selectorWidth, minWidth: selectorWidth } : undefined}
         >
           <button
             type="button"
             ref={selectorRowRef}
             onClick={() => {
-              if (dark && selectorRowRef.current) {
+              if (selectorRowRef.current) {
                 const rect = selectorRowRef.current.getBoundingClientRect()
                 setDropdownPos({
                   top: rect.bottom + 2,
@@ -260,16 +260,6 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
             </svg>
           </button>
 
-          {/* Light variant: inline absolute dropdown */}
-          {!dark && isDropdownOpen && (
-            <div
-              ref={dropdownRef}
-              className="absolute top-full left-0 mt-1 z-[9999] border border-black/20 rounded-lg shadow-lg max-h-64 overflow-y-auto country-list"
-              style={{ width: `${fixedDropdownWidth}px`, minWidth: `${fixedDropdownWidth}px` }}
-            >
-              {countryListItems}
-            </div>
-          )}
         </div>
 
         {/* Поле ввода номера */}
@@ -296,6 +286,24 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           />
         </div>
       </div>
+
+      {/* Light variant: Portal dropdown — рендерится в document.body, не обрезается overflow родителей */}
+      {!dark && isDropdownOpen && mounted && createPortal(
+        <div
+          ref={dropdownRef}
+          className="rounded-lg border border-black/20 shadow-lg country-list"
+          style={{
+            position: 'fixed',
+            top: dropdownPos.top,
+            left: dropdownPos.left,
+            width: Math.max(dropdownPos.width || 0, fixedDropdownWidth),
+            zIndex: 99999,
+          }}
+        >
+          {countryListItems}
+        </div>,
+        document.body
+      )}
 
       {/* Dark variant: Portal dropdown — рендерится в document.body, вне всех stacking contexts */}
       {dark && isDropdownOpen && mounted && createPortal(

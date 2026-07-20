@@ -145,6 +145,8 @@ export const ru = {
     successTitle: 'Спасибо!',
     successText: 'Мы свяжемся с вами как можно скорее',
     orFormLabel: 'или отправьте заявку на обслуживание',
+    callNowButton: 'Позвонить сейчас',
+    callNowDividerLabel: 'или напишите',
   },
 } as const
 

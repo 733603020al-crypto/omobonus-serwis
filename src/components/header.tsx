@@ -13,12 +13,24 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import manifest from '@/config/manifest'
 import { cn } from '@/lib/utils'
 
+// Same-looking static button shown for the brief window while MobileMenuSheet's
+// chunk is still loading, so the hamburger icon never disappears mid-transition.
+const MobileMenuLoadingButton = () => (
+  <button
+    type="button"
+    className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+    aria-label="Open menu"
+  >
+    <Menu className="h-6 w-6" />
+  </button>
+)
+
 // The mobile drawer (Radix Dialog under the hood) is never part of the SSR
 // output anyway (gated by `mounted` below) — dynamic+ssr:false just stops its
 // JS from being parsed as part of Header's own chunk on every page load.
 const MobileMenuSheet = dynamic(
   () => import('@/components/MobileMenuSheet').then(m => ({ default: m.MobileMenuSheet })),
-  { ssr: false }
+  { ssr: false, loading: MobileMenuLoadingButton }
 )
 
 /* =========================
