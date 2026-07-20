@@ -4,8 +4,7 @@ import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
-import { FloatingCallButton } from '@/components/ui/FloatingCallButton'
-import { FloatingContactButton } from '@/components/ui/FloatingContactButton'
+import { FloatingCallButton, FloatingContactButton } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
 
@@ -116,7 +115,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         <Script
           id="cookieyes"
           src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />

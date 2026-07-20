@@ -65,17 +65,27 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
   const rafRef = useRef<number | null>(null)
   const isRunningRef = useRef(true)
   const isHoverRef = useRef(false)
+  // Cached instead of read every animation frame — scrollWidth is a forced-layout
+  // read, and the track's width doesn't change frame-to-frame. Kept fresh via
+  // ResizeObserver (e.g. once brand logos finish loading, or on breakpoint change).
+  const totalWidthRef = useRef(0)
 
   useEffect(() => {
     const track = trackRef.current
     const section = sectionRef.current
     if (!track || !section) return
 
+    const updateTotalWidth = () => {
+      totalWidthRef.current = track.scrollWidth / copies
+    }
+    updateTotalWidth()
+    const resizeObserver = new ResizeObserver(updateTotalWidth)
+    resizeObserver.observe(track)
+
     const animate = () => {
       if (isRunningRef.current && !isHoverRef.current) {
-        const totalWidth = track.scrollWidth / copies
         offsetRef.current += speed
-        if (offsetRef.current >= totalWidth) {
+        if (offsetRef.current >= totalWidthRef.current) {
           offsetRef.current = 0
         }
         track.style.transform = `translateX(-${offsetRef.current}px)`
@@ -109,6 +119,7 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
     return () => {
       document.removeEventListener("visibilitychange", handleVisibility)
       sectionObserver.disconnect()
+      resizeObserver.disconnect()
       stopAnimation()
     }
   }, [copies])
