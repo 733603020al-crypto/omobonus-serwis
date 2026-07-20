@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
@@ -10,8 +11,15 @@ import { CallButton } from '@/components/ui/CallButton'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 import manifest from '@/config/manifest'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
+
+// The mobile drawer (Radix Dialog under the hood) is never part of the SSR
+// output anyway (gated by `mounted` below) — dynamic+ssr:false just stops its
+// JS from being parsed as part of Header's own chunk on every page load.
+const MobileMenuSheet = dynamic(
+  () => import('@/components/MobileMenuSheet').then(m => ({ default: m.MobileMenuSheet })),
+  { ssr: false }
+)
 
 /* =========================
    Brand
@@ -358,87 +366,33 @@ export function Header() {
             <Menu className="h-6 w-6" />
           </button>
         ) : (
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="z-10 md:hidden">
-              <button
-                type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white"
-                aria-label="Open menu"
-              >
-                <Menu className="h-6 w-6" />
-              </button>
-            </SheetTrigger>
-
-            <SheetContent
-              side="right"
-              className="w-[78vw] max-w-[360px] border-l-0 bg-transparent p-0 sm:max-w-[420px]"
-            >
-              <div
-                ref={mobileMenuRef}
-                className="relative overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
-              >
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `var(--bg-parchment)`,
-                  }}
-                />
-                <div className="absolute inset-0 bg-black/55" />
-
-                <div className="relative z-10 flex flex-col gap-6 px-6 py-8 font-cormorant text-[20px] text-white">
-                  <Link
-                    href={homeHref}
-                    onClick={(e) => {
-                      if (pathname === homeHref) {
-                        e.preventDefault()
-                        scrollToTop()
-                      } else {
-                        setIsOpen(false)
-                      }
-                    }}
-                  >
-                    <BrandWordmark />
-                  </Link>
-
-                  <nav className="flex flex-col gap-4">
-                    <Link
-                      href={homeSectionHref}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        scrollToSection('uslugi')
-                      }}
-                    >
-                      {navServices}
-                    </Link>
-                    <Link href={aboutHref} onClick={() => setIsOpen(false)}>
-                      {navAbout}
-                    </Link>
-                    <Link href={contactHref} onClick={() => setIsOpen(false)}>
-                      {navContact}
-                    </Link>
-
-                    <Link
-                      href="https://omobonus.com.pl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {navShop}
-                    </Link>
-                    <LanguageSwitcher />
-                  </nav>
-
-                  <CallButton
-                    variant="secondary"
-                    href={contactHref}
-                    className="w-full"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {navSendForm}
-                  </CallButton>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <MobileMenuSheet
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            mobileMenuRef={mobileMenuRef}
+            brandWordmark={<BrandWordmark />}
+            homeHref={homeHref}
+            onHomeLinkClick={(e) => {
+              if (pathname === homeHref) {
+                e.preventDefault()
+                scrollToTop()
+              } else {
+                setIsOpen(false)
+              }
+            }}
+            homeSectionHref={homeSectionHref}
+            onServicesClick={(e) => {
+              e.preventDefault()
+              scrollToSection('uslugi')
+            }}
+            navServices={navServices}
+            aboutHref={aboutHref}
+            navAbout={navAbout}
+            contactHref={contactHref}
+            navContact={navContact}
+            navShop={navShop}
+            navSendForm={navSendForm}
+          />
         )}
       </div>
     </header>
