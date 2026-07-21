@@ -1,11 +1,10 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, type ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import manifest from '@/config/manifest'
-import GoogleReviews from '@/components/GoogleReviewsLazy'
 
 export interface AboutT {
   eyebrow?: string
@@ -40,13 +39,16 @@ const PL: AboutT = {
 export function About({
   t,
   bare = false,
-  showReviews = true,
+  reviewsSlot,
   compact = false,
   showMoreLink = false,
 }: {
   t?: AboutT
   bare?: boolean
-  showReviews?: boolean
+  // Passed in from a Server Component parent (e.g. <GoogleReviews /> from
+  // '@/components/google-reviews') since this is a Client Component and
+  // can't import a Server Component module directly.
+  reviewsSlot?: ReactNode
   compact?: boolean
   showMoreLink?: boolean
 } = {}) {
@@ -206,9 +208,9 @@ export function About({
 
       </div>
 
-      {showReviews && (
+      {reviewsSlot && (
         <div className="mt-12">
-          <GoogleReviews />
+          {reviewsSlot}
         </div>
       )}
     </section>

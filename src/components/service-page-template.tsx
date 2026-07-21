@@ -11,13 +11,12 @@ import { CallButton } from '@/components/ui/CallButton'
 import BrandTicker from '@/components/brand-ticker'
 import { FadeSlideText } from '@/components/ui/FadeSlideText'
 import type { ServiceData } from '@/lib/services-data'
-import GoogleReviews from '@/components/GoogleReviewsLazy'
+import GoogleReviews from '@/components/google-reviews'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false — content still renders server-side, only the JS bundle is split.
-// Exception: GoogleReviews (imported above) is not SEO content, so it's deferred
-// with ssr:false inside its own client-component wrapper, to keep its hydration
-// off the critical path.
+// GoogleReviews (imported above) reads data/reviews.json directly on the server
+// and is rendered as a plain Server Component — no dynamic() needed.
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 const PAGE_CLASS_SLUGS = [

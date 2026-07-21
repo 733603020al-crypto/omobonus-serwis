@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
 import BrandTicker from '@/components/brand-ticker'
+import GoogleReviews from '@/components/google-reviews'
 
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner
@@ -60,7 +61,7 @@ export function HomePageTemplate({
         <div className="relative z-10">
           <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} bare />
 
-          <About t={aboutT} bare showMoreLink />
+          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
 
           <HomeCta {...cta} />
 
