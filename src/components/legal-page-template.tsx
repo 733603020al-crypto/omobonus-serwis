@@ -47,7 +47,10 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
                 ))}
 
                 <div className="pt-3 border-t border-[#3a2e24]/20 mt-4">
-                  <p className="text-sm md:text-base font-sans text-[#3a2e24]/70 italic">
+                  {/* This date can legitimately differ between server-render time
+                      (build) and hydration time (client) on any day after the last
+                      build — suppress just that expected, harmless mismatch. */}
+                  <p className="text-sm md:text-base font-sans text-[#3a2e24]/70 italic" suppressHydrationWarning>
                     {`${content.lastUpdatedLabel}: ${new Date().toLocaleDateString(content.dateLocale, {
                       year: 'numeric',
                       month: 'long',
