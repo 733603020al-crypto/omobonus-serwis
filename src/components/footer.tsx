@@ -255,7 +255,10 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
             </Link>
           </div>
 
-          <p className="text-xs text-[#bfa76a]">
+          {/* currentYear can legitimately differ between server-render time (build)
+              and hydration time (client) right at a year boundary — suppress just
+              that expected, harmless mismatch instead of letting it throw. */}
+          <p className="text-xs text-[#bfa76a]" suppressHydrationWarning>
             © {currentYear} Omobonus Sp. z o.o. {d.allRights}
           </p>
         </div>
