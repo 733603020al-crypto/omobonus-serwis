@@ -250,12 +250,13 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         }}
       >
         <div className="relative flex h-full w-[40px] items-center md:w-[48px]">
+          {/* Not the LCP element — loads eagerly but without priority/high
+              fetch priority, so it doesn't compete with Hero's LCP image. */}
           <Image
             src="/images/Logo_Omobonus.webp"
             alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
             fill
-            priority
-            fetchPriority="high"
+            loading="eager"
             sizes="(max-width: 768px) 40px, 48px"
             className="object-contain p-[1px]"
           />
