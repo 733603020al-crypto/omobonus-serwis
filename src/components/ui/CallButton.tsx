@@ -3,7 +3,7 @@
 import { Phone, Mail } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface CallButtonProps {
     variant?: 'primary' | 'secondary'
@@ -22,6 +22,14 @@ export function CallButton({
     onClick,
     showIcon = true,
 }: CallButtonProps) {
+    // Server has no navigator.userAgent, so this must stay false until mounted —
+    // otherwise the server (always "not mobile") and a real mobile client
+    // disagree on <a> vs <div> during hydration (React error #418).
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     const base = `
     inline-flex items-center justify-center gap-2
     min-w-[200px]
@@ -64,7 +72,7 @@ export function CallButton({
     // tel: ссылка
     if (href && href.startsWith('tel:')) {
         const isMobile =
-            typeof window !== 'undefined' &&
+            mounted &&
             /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
 
         if (!isMobile) {
