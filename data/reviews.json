@@ -1,7 +1,23 @@
 {
   "rating": 4.9,
-  "total": 221,
+  "total": 222,
   "reviews": [
+    {
+      "author_name": "Valery S",
+      "author_url": "https://www.google.com/maps/contrib/111457558858800203494/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU531dSqUUWQ8UQfEoqmema-0HiHO82AkrPeUPOOG1QnXjuqSxW=s128-c0x00000000-cc-rp-mo-ba3",
+      "rating": 5,
+      "relative_time_description": "miesiąc temu",
+      "text": "Niesamowita obsługa! Gorąco polecam. Coś się stało z moim laptopem, a ja miałem ważne dokumenty i pracę do wykonania. Przywiozłem laptopa wieczorem, kiedy warsztat był już prawie zamknięty, ale pracownik Max, biorąc pod uwagę pilność sprawy, został i szybko wszystko naprawił, co mnie uratowało, bardzo dziękuję! Bardzo dobra robota i przyjazny personel, który pomoże w każdym problemie. Jeszcze raz bardzo dziękuję!\n\nAmazing service! Highly recommended. Something happened to my laptop, and there were important documents and work that I had to complete. I brought my laptop in the evening, when the workshop was almost closing, but the employee Max, given the urgency of the matter, stayed and fixed everything quickly, which saved me, thank you very much! Very good work and friendly staff who will help with any problem. Thank you very much again!",
+      "time": 1779910506,
+      "translated": false,
+      "text_uk": "Неймовірне обслуговування! Гаряче рекомендую. Щось сталося з моїм ноутбуком, а у мене були важливі документи та робота. Привіз ноутбук увечері, коли майстерня вже майже закривалась, але працівник Макс, враховуючи терміновість, залишився і швидко все полагодив — це мене врятувало, дуже дякую! Чудова робота і привітний персонал, який допоможе з будь-якою проблемою. Ще раз дуже дякую!",
+      "text_ru": "Невероятное обслуживание! Горячо рекомендую. Что-то случилось с моим ноутбуком, а у меня были важные документы и работа. Привёз ноутбук вечером, когда мастерская уже почти закрывалась, но сотрудник Макс, учитывая срочность, остался и быстро всё починил — это меня спасло, большое спасибо! Очень хорошая работа и дружелюбный персонал, который поможет с любой проблемой. Ещё раз большое спасибо!",
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад"
+    },
     {
       "author_name": "Pan.Marchewka",
       "author_url": "https://www.google.com/maps/contrib/112297281163590463878/reviews",
@@ -65,23 +81,7 @@
       "text_ru": null,
       "relative_time_uk": "місяць тому",
       "relative_time_ru": "месяц назад"
-    },
-    {
-      "author_name": "Valery S",
-      "author_url": "https://www.google.com/maps/contrib/111457558858800203494/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU531dSqUUWQ8UQfEoqmema-0HiHO82AkrPeUPOOG1QnXjuqSxW=s128-c0x00000000-cc-rp-mo-ba3",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Niesamowita obsługa! Gorąco polecam. Coś się stało z moim laptopem, a ja miałem ważne dokumenty i pracę do wykonania. Przywiozłem laptopa wieczorem, kiedy warsztat był już prawie zamknięty, ale pracownik Max, biorąc pod uwagę pilność sprawy, został i szybko wszystko naprawił, co mnie uratowało, bardzo dziękuję! Bardzo dobra robota i przyjazny personel, który pomoże w każdym problemie. Jeszcze raz bardzo dziękuję!\n\nAmazing service! Highly recommended. Something happened to my laptop, and there were important documents and work that I had to complete. I brought my laptop in the evening, when the workshop was almost closing, but the employee Max, given the urgency of the matter, stayed and fixed everything quickly, which saved me, thank you very much! Very good work and friendly staff who will help with any problem. Thank you very much again!",
-      "time": 1779910506,
-      "translated": false,
-      "text_uk": "Неймовірне обслуговування! Гаряче рекомендую. Щось сталося з моїм ноутбуком, а у мене були важливі документи та робота. Привіз ноутбук увечері, коли майстерня вже майже закривалась, але працівник Макс, враховуючи терміновість, залишився і швидко все полагодив — це мене врятувало, дуже дякую! Чудова робота і привітний персонал, який допоможе з будь-якою проблемою. Ще раз дуже дякую!",
-      "text_ru": "Невероятное обслуживание! Горячо рекомендую. Что-то случилось с моим ноутбуком, а у меня были важные документы и работа. Привёз ноутбук вечером, когда мастерская уже почти закрывалась, но сотрудник Макс, учитывая срочность, остался и быстро всё починил — это меня спасло, большое спасибо! Очень хорошая работа и дружелюбный персонал, который поможет с любой проблемой. Ещё раз большое спасибо!",
-      "relative_time_uk": "місяць тому",
-      "relative_time_ru": "месяц назад"
     }
   ],
-  "updatedAt": "2026-07-22T08:19:22.742Z"
+  "updatedAt": "2026-07-22T13:39:49.392Z"
 }
