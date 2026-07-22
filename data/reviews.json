@@ -19,22 +19,6 @@
       "relative_time_ru": "месяц назад"
     },
     {
-      "author_name": "Daniel Bacherek",
-      "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "6 miesięcy temu",
-      "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
-      "time": 1768238411,
-      "translated": false,
-      "text_uk": "Дуже рекомендую цей сервіс! Мій лазерний принтер HP залишав некрасиві смуги на сторінках, і я був переконаний, що мене чекає дорогий ремонт. Завдяки фаховій діагностиці виявилось, що достатньо було простої заміни картриджів. Сам би я до цього не здогадався, а завдяки чесності майстрів відремонтував техніку дешево і швидко. Великий плюс за професіоналізм і за те, що не нав'язують зайвих витрат!",
-      "text_ru": "Очень рекомендую этот сервис! Мой лазерный принтер HP оставлял некрасивые полосы на листах, и я был уверен, что меня ждёт дорогой ремонт. Благодаря профессиональной диагностике оказалось, что достаточно было простой замены картриджей. Сам бы я до этого не додумался, а благодаря честности мастеров отремонтировал технику дёшево и быстро. Большой плюс за профессионализм и за то, что не навязывают лишних трат!",
-      "relative_time_uk": "6 місяців тому",
-      "relative_time_ru": "6 месяцев назад"
-    },
-    {
       "author_name": "Pan.Marchewka",
       "author_url": "https://www.google.com/maps/contrib/112297281163590463878/reviews",
       "language": "pl",
@@ -81,7 +65,23 @@
       "text_ru": null,
       "relative_time_uk": "місяць тому",
       "relative_time_ru": "месяц назад"
+    },
+    {
+      "author_name": "Lyhun Oleksandr",
+      "author_url": "https://www.google.com/maps/contrib/111728020883963041785/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLKyvdOOlIsxgZ72Q1f8_lE4W1u4GI-49v-pACNKNGePZ33CA=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "miesiąc temu",
+      "text": "Oddałem komputer do naprawy i jestem bardzo zadowolony. Szybka diagnoza, uczciwe podejście i profesjonalna obsługa. Wszystko zostało naprawione sprawnie, a dodatkowo dostałem kilka przydatnych wskazówek na przyszłość. Zdecydowanie polecam!",
+      "time": 1780342269,
+      "translated": false,
+      "text_uk": null,
+      "text_ru": null,
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад"
     }
   ],
-  "updatedAt": "2026-07-21T19:12:51.533Z"
+  "updatedAt": "2026-07-22T02:10:24.512Z"
 }
