@@ -207,7 +207,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'serwis-plotterow': {
     title: 'Serwis i naprawa ploterów',
-    description: '✔ Naprawa i serwis ploterów HP, Canon, Epson, … we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ☎ 793 759 262,
+    description: '✔ Naprawa i serwis ploterów HP, Canon, Epson, … we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ☎ 793 759 262',
 
   },
 }
