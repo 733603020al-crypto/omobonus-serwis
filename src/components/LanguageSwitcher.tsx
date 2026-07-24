@@ -22,7 +22,7 @@ interface LocaleOption {
 // добавить новый элемент сюда — JSX переключателя менять не нужно.
 const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: 'pl', prefix: '', shortLabel: 'PL', fullLabel: 'Polski', flagSrc: '/images/pl.webp' },
-  { code: 'uk', prefix: '/uk', shortLabel: 'Ukr', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
+  { code: 'uk', prefix: '/uk', shortLabel: 'UA', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
   { code: 'ru', prefix: '/ru', shortLabel: 'Рус', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
 ]
 
@@ -88,7 +88,9 @@ export function LanguageSwitcher() {
             key={locale.code}
             href={buildLocaleHref(basePath, locale)}
             onClick={() => setIsOpen(false)}
-            className="flex items-center gap-1 font-cormorant text-[15px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] select-none"
+            className={`!flex items-center gap-1 font-cormorant text-[15px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] select-none ${
+              locale.code === currentLocale.code ? 'nav-active-underline' : ''
+            }`}
           >
             <Image
               src={locale.flagSrc}
@@ -98,7 +100,7 @@ export function LanguageSwitcher() {
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
-            <span className={locale.code === currentLocale.code ? 'nav-active-underline' : ''}>{locale.shortLabel}</span>
+            <span>{locale.shortLabel}</span>
           </Link>
         ))}
         <button
