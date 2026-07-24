@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { CallButton } from '@/components/ui/CallButton'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 interface MobileMenuSheetProps {
     isOpen: boolean
@@ -93,7 +92,6 @@ export function MobileMenuSheet({
                             >
                                 {navShop}
                             </Link>
-                            <LanguageSwitcher />
                         </nav>
 
                         <CallButton
