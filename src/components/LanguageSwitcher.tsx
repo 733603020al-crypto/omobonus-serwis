@@ -78,7 +78,8 @@ export function LanguageSwitcher() {
   return (
     <div
       ref={ref}
-      className="relative h-full flex items-center"
+      translate="no"
+      className="notranslate relative h-full flex items-center"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
@@ -100,7 +101,7 @@ export function LanguageSwitcher() {
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
-            <span>{locale.shortLabel}</span>
+            <span translate="no" className="notranslate">{locale.shortLabel}</span>
           </Link>
         ))}
         <button
