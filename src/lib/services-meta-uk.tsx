@@ -11,7 +11,7 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'naprawa-drukarek': {
     h1: 'Сервіс принтерів і багатофункціональних пристроїв у Вроцлаві',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'serwis-komputerow-stacjonarnych': {
     h1: 'Сервіс і ремонт стаціонарних комп\'ютерів',
@@ -29,7 +29,7 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-3d': {
     h1: 'Сервіс і ремонт принтерів 3D у Вроцлаві',
-    h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
+    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
   },
   'serwis-plotterow': {
     h1: 'Сервіс і ремонт плотерів у Вроцлаві',

@@ -13,7 +13,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'naprawa-drukarek': {
     h1: 'Serwis drukarek i urządzeń wielofunkcyjnych we Wrocławiu',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
 
   'serwis-komputerow-stacjonarnych': {
@@ -36,7 +36,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-3d': {
     h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
-    h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
+    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
   },
 
   'serwis-plotterow': {
@@ -207,7 +207,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'serwis-plotterow': {
     title: 'Serwis i naprawa ploterów',
-    description: '✔ Kompleksowa obsługa ploterów ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Naprawa i serwis ploterów HP, Canon, Epson, … we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ☎ 793 759 262,
 
   },
 }
