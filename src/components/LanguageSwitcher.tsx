@@ -101,7 +101,12 @@ export function LanguageSwitcher() {
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
-            <span translate="no" className="notranslate">{locale.shortLabel}</span>
+            <span
+              translate="no"
+              className="language-short-label notranslate"
+              data-label={locale.shortLabel}
+              aria-label={locale.shortLabel}
+            />
           </Link>
         ))}
         <button
