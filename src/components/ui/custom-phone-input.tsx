@@ -320,11 +320,13 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           }}
         >
           {/* Текстура фона — тот же паттерн, что в CardBg */}
-          <img
+          <Image
             src={manifest.Background_1}
             alt=""
             aria-hidden="true"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            fill
+            sizes="280px"
+            className="object-cover object-center"
           />
           {/* Затемнение поверх текстуры */}
           <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.55)' }} />

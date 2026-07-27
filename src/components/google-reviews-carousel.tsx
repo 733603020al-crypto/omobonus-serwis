@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
 
@@ -236,13 +237,12 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             >
                                 <div className="flex items-center gap-3 mb-1">
                                     {review.profile_photo_url ? (
-                                        <img
+                                        <Image
                                             src={review.profile_photo_url.replace(/=s\d+/, '=s72')}
                                             alt={review.author_name}
                                             width={36}
                                             height={36}
                                             loading="lazy"
-                                            decoding="async"
                                             className="w-9 h-9 rounded-full object-cover shrink-0"
                                         />
                                     ) : (
