@@ -270,6 +270,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
             fill
             loading="eager"
+            quality={60}
             sizes="(max-width: 768px) 40px, 48px"
             className="object-contain p-[1px]"
           />
