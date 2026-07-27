@@ -50,6 +50,18 @@ const nextConfig = {
           },
         ],
       },
+
+      // favicon.ico и robots.txt редко меняются, но не хешируются как
+      // /_next/static, поэтому immutable не подходит — просто длинный TTL.
+      {
+        source: '/:path(favicon\\.ico|robots\\.txt)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000',
+          },
+        ],
+      },
     ];
   },
 

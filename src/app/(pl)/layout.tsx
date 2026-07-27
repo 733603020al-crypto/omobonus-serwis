@@ -134,6 +134,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           strategy="lazyOnload"
         />
 
+        <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
         <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
