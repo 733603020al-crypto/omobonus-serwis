@@ -11,19 +11,22 @@ interface LocaleOption {
   code: 'pl' | 'uk' | 'ru'
   /** Префикс маршрута локали, '' для корневой (pl) локали */
   prefix: string
-  /** Короткая подпись в самой кнопке переключателя */
-  shortLabel: string
   /** Полное название языка в выпадающем списке */
   fullLabel: string
   flagSrc: string
+  /** Изображение с коротким обозначением (PL/UA) для верхней строки —
+   *  не текстовый узел React, чтобы браузерные переводчики не могли его подменить. */
+  labelSrc?: string
+  labelWidth?: number
+  labelHeight?: number
 }
 
 // Видимые сейчас локали. Чтобы добавить язык (например ru), достаточно
 // добавить новый элемент сюда — JSX переключателя менять не нужно.
 const SUPPORTED_LOCALES: LocaleOption[] = [
-  { code: 'pl', prefix: '', shortLabel: 'PL', fullLabel: 'Polski', flagSrc: '/images/pl.webp' },
-  { code: 'uk', prefix: '/uk', shortLabel: 'UA', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
-  { code: 'ru', prefix: '/ru', shortLabel: 'Рус', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
+  { code: 'pl', prefix: '', fullLabel: 'Polski', flagSrc: '/images/pl.webp', labelSrc: '/images/lang-label-pl.svg', labelWidth: 16, labelHeight: 18 },
+  { code: 'uk', prefix: '/uk', fullLabel: 'Українська', flagSrc: '/images/ua.webp', labelSrc: '/images/lang-label-uk.svg', labelWidth: 20, labelHeight: 18 },
+  { code: 'ru', prefix: '/ru', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
 ]
 
 function matchesLocale(pathname: string, locale: LocaleOption): boolean {
@@ -89,7 +92,8 @@ export function LanguageSwitcher() {
             key={locale.code}
             href={buildLocaleHref(basePath, locale)}
             onClick={() => setIsOpen(false)}
-            className={`!flex items-center gap-1 font-cormorant text-[15px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] select-none ${
+            aria-label={locale.fullLabel}
+            className={`group !flex items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-0.5 select-none ${
               locale.code === currentLocale.code ? 'nav-active-underline' : ''
             }`}
           >
@@ -101,12 +105,16 @@ export function LanguageSwitcher() {
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
-            <span
-              translate="no"
-              className="language-short-label notranslate"
-              data-label={locale.shortLabel}
-              aria-label={locale.shortLabel}
-            />
+            {locale.labelSrc && (
+              <Image
+                src={locale.labelSrc}
+                alt=""
+                width={locale.labelWidth}
+                height={locale.labelHeight}
+                className="flex-shrink-0 transition-all duration-300 ease-out group-hover:brightness-125 group-hover:[filter:drop-shadow(0_0_6px_rgba(191,167,106,0.6))]"
+                unoptimized
+              />
+            )}
           </Link>
         ))}
         <button

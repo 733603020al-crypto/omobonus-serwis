@@ -618,9 +618,3 @@
     transform: scaleX(1);
   }
 }
-
-/* Language switcher short label (PL/UA) — rendered via ::before instead of a
-   real text node so browser translators have nothing to mutate in the DOM. */
-.language-short-label::before {
-  content: attr(data-label);
-}

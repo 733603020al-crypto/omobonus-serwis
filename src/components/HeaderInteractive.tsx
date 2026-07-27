@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { cn } from '@/lib/utils'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
@@ -29,6 +28,20 @@ const MobileMenuLoadingButton = () => (
 const MobileMenuSheet = dynamic(
   () => import('@/components/MobileMenuSheet').then(m => ({ default: m.MobileMenuSheet })),
   { ssr: false, loading: MobileMenuLoadingButton }
+)
+
+// Reserves the switcher's approximate width so the rest of the header doesn't
+// shift once it mounts. No PL/UA markup here — kept out of SSR entirely so a
+// browser translator has nothing to grab before React ever attaches.
+const LanguageSwitcherPlaceholder = () => (
+  <div className="h-full w-[122px] flex items-center" aria-hidden="true" />
+)
+
+// Rendered client-only: a page translator that mutates DOM text/attributes
+// before hydration can't touch a subtree that was never part of the SSR HTML.
+const LanguageSwitcher = dynamic(
+  () => import('@/components/LanguageSwitcher').then(m => ({ default: m.LanguageSwitcher })),
+  { ssr: false, loading: LanguageSwitcherPlaceholder }
 )
 
 /* =========================
