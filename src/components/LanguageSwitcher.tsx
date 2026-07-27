@@ -11,19 +11,22 @@ interface LocaleOption {
   code: 'pl' | 'uk' | 'ru'
   /** Префикс маршрута локали, '' для корневой (pl) локали */
   prefix: string
-  /** Короткая подпись в самой кнопке переключателя */
-  shortLabel: string
   /** Полное название языка в выпадающем списке */
   fullLabel: string
   flagSrc: string
+  /** Изображение с коротким обозначением (PL/UA) для верхней строки —
+   *  не текстовый узел React, чтобы браузерные переводчики не могли его подменить. */
+  labelSrc?: string
+  labelWidth?: number
+  labelHeight?: number
 }
 
 // Видимые сейчас локали. Чтобы добавить язык (например ru), достаточно
 // добавить новый элемент сюда — JSX переключателя менять не нужно.
 const SUPPORTED_LOCALES: LocaleOption[] = [
-  { code: 'pl', prefix: '', shortLabel: 'PL', fullLabel: 'Polski', flagSrc: '/images/pl.webp' },
-  { code: 'uk', prefix: '/uk', shortLabel: 'Ukr', fullLabel: 'Українська', flagSrc: '/images/ua.webp' },
-  { code: 'ru', prefix: '/ru', shortLabel: 'Рус', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
+  { code: 'pl', prefix: '', fullLabel: 'Polski', flagSrc: '/images/pl.webp', labelSrc: '/images/lang-label-pl.svg', labelWidth: 16, labelHeight: 18 },
+  { code: 'uk', prefix: '/uk', fullLabel: 'Українська', flagSrc: '/images/ua.webp', labelSrc: '/images/lang-label-uk.svg', labelWidth: 20, labelHeight: 18 },
+  { code: 'ru', prefix: '/ru', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
 ]
 
 function matchesLocale(pathname: string, locale: LocaleOption): boolean {
@@ -47,14 +50,18 @@ function buildLocaleHref(basePath: string, targetLocale: LocaleOption): string {
   return basePath === '/' ? targetLocale.prefix : targetLocale.prefix + basePath
 }
 
+// Локали, которые всегда видны в самой шапке (не только в выпадающем списке).
+// Остальные поддерживаемые локали (сейчас — ru) остаются доступны через стрелку.
+const ALWAYS_VISIBLE_CODES: LocaleOption['code'][] = ['pl', 'uk']
+
 export function LanguageSwitcher() {
   const pathname = usePathname() ?? '/'
   const [isOpen, setIsOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   const currentLocale = getCurrentLocale(pathname)
-  const isUk = currentLocale.code === 'uk'
   const basePath = getBasePath(pathname, currentLocale)
+  const visibleLocales = SUPPORTED_LOCALES.filter(locale => ALWAYS_VISIBLE_CODES.includes(locale.code))
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -74,30 +81,54 @@ export function LanguageSwitcher() {
   return (
     <div
       ref={ref}
-      className="relative h-full flex items-center"
+      translate="no"
+      className="notranslate relative h-full flex items-center"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button
-        type="button"
-        onClick={() => setIsOpen(o => !o)}
-        className="flex items-center gap-1 font-cormorant text-[15px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] select-none"
-        style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        aria-label="Wybierz język / Вибрати мову"
-      >
-        <Image
-          src={currentLocale.flagSrc}
-          alt=""
-          width={18}
-          height={13}
-          className="rounded-[2px] object-cover flex-shrink-0"
-          unoptimized
-        />
-        {currentLocale.shortLabel}
-        <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
+      <div className="flex items-center gap-2">
+        {visibleLocales.map(locale => (
+          <Link
+            key={locale.code}
+            href={buildLocaleHref(basePath, locale)}
+            onClick={() => setIsOpen(false)}
+            aria-label={locale.fullLabel}
+            className={`group !flex items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-0.5 select-none ${
+              locale.code === currentLocale.code ? 'nav-active-underline' : ''
+            }`}
+          >
+            <Image
+              src={locale.flagSrc}
+              alt=""
+              width={18}
+              height={13}
+              className="rounded-[2px] object-cover flex-shrink-0"
+              unoptimized
+            />
+            {locale.labelSrc && (
+              <Image
+                src={locale.labelSrc}
+                alt=""
+                width={locale.labelWidth}
+                height={locale.labelHeight}
+                className="flex-shrink-0 transition-all duration-300 ease-out group-hover:brightness-125 group-hover:[filter:drop-shadow(0_0_6px_rgba(191,167,106,0.6))]"
+                unoptimized
+              />
+            )}
+          </Link>
+        ))}
+        <button
+          type="button"
+          onClick={() => setIsOpen(o => !o)}
+          className="flex items-center text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)] select-none"
+          style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          aria-label="Wybierz język / Вибрати мову"
+        >
+          <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+      </div>
 
       {isOpen && (
         <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[155px] rounded-b-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">

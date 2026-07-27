@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { cn } from '@/lib/utils'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
@@ -29,6 +28,20 @@ const MobileMenuLoadingButton = () => (
 const MobileMenuSheet = dynamic(
   () => import('@/components/MobileMenuSheet').then(m => ({ default: m.MobileMenuSheet })),
   { ssr: false, loading: MobileMenuLoadingButton }
+)
+
+// Reserves the switcher's approximate width so the rest of the header doesn't
+// shift once it mounts. No PL/UA markup here — kept out of SSR entirely so a
+// browser translator has nothing to grab before React ever attaches.
+const LanguageSwitcherPlaceholder = () => (
+  <div className="h-full w-[122px] flex items-center" aria-hidden="true" />
+)
+
+// Rendered client-only: a page translator that mutates DOM text/attributes
+// before hydration can't touch a subtree that was never part of the SSR HTML.
+const LanguageSwitcher = dynamic(
+  () => import('@/components/LanguageSwitcher').then(m => ({ default: m.LanguageSwitcher })),
+  { ssr: false, loading: LanguageSwitcherPlaceholder }
 )
 
 /* =========================
@@ -350,44 +363,50 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         </CallButton>
       </nav>
 
-      {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
-      {!mounted ? (
-        <button
-          type="button"
-          className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
-          aria-label="Open menu"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
-      ) : (
-        <MobileMenuSheet
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          mobileMenuRef={mobileMenuRef}
-          brandWordmark={<BrandWordmark />}
-          homeHref={homeHref}
-          onHomeLinkClick={(e) => {
-            if (pathname === homeHref) {
+      {/* Mobile: language switcher stays permanently visible in the header bar
+          (not tucked inside the hamburger menu) — same component/logic as desktop. */}
+      <div className="flex items-center gap-3 md:hidden">
+        <LanguageSwitcher />
+
+        {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
+        {!mounted ? (
+          <button
+            type="button"
+            className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white"
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        ) : (
+          <MobileMenuSheet
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            mobileMenuRef={mobileMenuRef}
+            brandWordmark={<BrandWordmark />}
+            homeHref={homeHref}
+            onHomeLinkClick={(e) => {
+              if (pathname === homeHref) {
+                e.preventDefault()
+                scrollToTop()
+              } else {
+                setIsOpen(false)
+              }
+            }}
+            homeSectionHref={homeSectionHref}
+            onServicesClick={(e) => {
               e.preventDefault()
-              scrollToTop()
-            } else {
-              setIsOpen(false)
-            }
-          }}
-          homeSectionHref={homeSectionHref}
-          onServicesClick={(e) => {
-            e.preventDefault()
-            scrollToSection('uslugi')
-          }}
-          navServices={navServices}
-          aboutHref={aboutHref}
-          navAbout={navAbout}
-          contactHref={contactHref}
-          navContact={navContact}
-          navShop={navShop}
-          navSendForm={navSendForm}
-        />
-      )}
+              scrollToSection('uslugi')
+            }}
+            navServices={navServices}
+            aboutHref={aboutHref}
+            navAbout={navAbout}
+            contactHref={contactHref}
+            navContact={navContact}
+            navShop={navShop}
+            navSendForm={navSendForm}
+          />
+        )}
+      </div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 
 const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string }[] = [
   // компьютеры / ноутбуки
@@ -158,12 +159,13 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
                   {brand.label}
                 </span>
               ) : (
-                <img
+                <Image
                   src={brand.src ?? `/images/brands/${brand.name}.svg`}
                   alt={brand.name}
                   width={240}
                   height={62}
                   loading="lazy"
+                  unoptimized
                   className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
                   style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
                   draggable={false}
