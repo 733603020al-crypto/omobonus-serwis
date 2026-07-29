@@ -4,18 +4,33 @@ import GoogleReviewsCarousel, { type Review } from "@/components/google-reviews-
 
 type RawReview = Review & { [key: string]: unknown }
 
-// Server Component: reads the same data/reviews.json the auto-update workflow
-// writes to, directly at render/build time — no client-side fetch, so the
-// review text is present in the initial HTML. The auto-update workflow keeps
-// working unchanged: every "Auto update reviews" push triggers a fresh Vercel
-// build, which re-reads this file and bakes the new content in.
-function getReviews() {
+// Server Component: rating/total come from data/reviews.json (refreshed every
+// 6h by update-reviews.yml), review texts come from data/reviews-feed.json (a
+// FIFO pool of up to 10 five-star reviews with text, refreshed weekly by
+// update-reviews-weekly.yml with translations applied only to new entries).
+// Both are read directly at render/build time — no client-side fetch, so
+// review text is present in the initial HTML.
+function getRating() {
     try {
         const filePath = path.join(process.cwd(), "data", "reviews.json")
         const file = fs.readFileSync(filePath, "utf-8")
         const data = JSON.parse(file)
+        return {
+            rating: typeof data.rating === "number" ? data.rating : null,
+            totalReviews: typeof data.total === "number" ? data.total : null,
+        }
+    } catch {
+        return { rating: null, totalReviews: null }
+    }
+}
 
-        const reviews: Review[] = (data.reviews ?? [])
+function getReviews(): Review[] {
+    try {
+        const filePath = path.join(process.cwd(), "data", "reviews-feed.json")
+        const file = fs.readFileSync(filePath, "utf-8")
+        const data = JSON.parse(file)
+
+        return (data.reviews ?? [])
             .filter((r: RawReview) => r.rating === 5)
             .slice(0, 10)
             .map((r: RawReview) => ({
@@ -29,18 +44,13 @@ function getReviews() {
                 relative_time_uk: r.relative_time_uk ?? null,
                 relative_time_ru: r.relative_time_ru ?? null,
             }))
-
-        return {
-            rating: typeof data.rating === "number" ? data.rating : null,
-            totalReviews: typeof data.total === "number" ? data.total : null,
-            reviews,
-        }
     } catch {
-        return { rating: null, totalReviews: null, reviews: [] }
+        return []
     }
 }
 
 export default function GoogleReviews() {
-    const { reviews, rating, totalReviews } = getReviews()
+    const { rating, totalReviews } = getRating()
+    const reviews = getReviews()
     return <GoogleReviewsCarousel reviews={reviews} rating={rating} totalReviews={totalReviews} />
 }
