@@ -49,7 +49,7 @@ const PL: HeroT = {
   trustLabel: 'Zaufanie klientów',
 }
 
-export function Hero({ children, t }: { children?: ReactNode; t?: HeroT } = {}) {
+export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
   const d = t ?? PL
 
   return (
@@ -111,7 +111,7 @@ export function Hero({ children, t }: { children?: ReactNode; t?: HeroT } = {}) 
           <GoogleRatingBadge
             className="w-[197px] h-[89px] md:w-[222px] md:h-[103px]"
             ratingLabel={d.googleRatingLabel}
-            trustLabel={d.trustLabel}
+            locale={locale}
             ariaLabel={d.googleReviewsAriaLabel}
           />
 

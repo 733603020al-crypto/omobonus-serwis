@@ -42,7 +42,7 @@ export function HomePageTemplate({
     <>
       <Header locale={locale} />
       <div>
-        <Hero t={heroT}>
+        <Hero t={heroT} locale={locale}>
           <div className="absolute bottom-[40px] left-0 w-full z-10 md:bottom-[48px]">
             <BrandTicker compact />
           </div>

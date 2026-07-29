@@ -1,29 +1,35 @@
 import fs from 'fs'
 import path from 'path'
+import { googleReviewsI18n } from '@/lib/i18n/google-reviews'
 
-function getRating(): number | null {
+function getRatingData(): { rating: number | null; total: number | null } {
   try {
     const filePath = path.join(process.cwd(), 'data', 'reviews.json')
     const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-    return typeof data.rating === 'number' ? data.rating : null
+    return {
+      rating: typeof data.rating === 'number' ? data.rating : null,
+      total: typeof data.total === 'number' ? data.total : null,
+    }
   } catch {
-    return null
+    return { rating: null, total: null }
   }
 }
 
 export function GoogleRatingBadge({
   className = '',
   ratingLabel = 'Google Rating',
-  trustLabel = 'Zaufanie klientów',
+  locale = 'pl',
   ariaLabel = 'Zobacz wszystkie opinie Omobonus w Google',
 }: {
   className?: string
   ratingLabel?: string
-  trustLabel?: string
+  locale?: 'pl' | 'uk' | 'ru'
   ariaLabel?: string
 } = {}) {
-  const rating = getRating()
+  const { rating, total } = getRatingData()
   if (rating === null) return null
+
+  const trustLabel = total !== null ? googleReviewsI18n[locale].basedOnReviews(total) : ''
 
   const shell =
     `relative group flex items-center gap-2 md:gap-3 rounded-lg border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-[2px] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] cursor-pointer ${className}`
