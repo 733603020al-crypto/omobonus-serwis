@@ -37,27 +37,28 @@ export function FloatingContactButton() {
     return createPortal(
         <>
             <style>{`
-                /* Dots appear one after another once the pen has finished its stroke,
-                   hold together as if the message just got "typed", then fade as one */
+                /* Each dot appears right after its own pen stroke — stroke1 → dot1,
+                   stroke2 → dot2, stroke3 → dot3 — then all three hold together
+                   as if the message just got "typed", then fade as one */
                 @keyframes dot1-appear {
-                    0%, 24%   { opacity: 0; transform: scale(0.4); }
-                    27%       { opacity: 1; transform: scale(1); }
-                    65%       { opacity: 1; transform: scale(1); }
-                    72%       { opacity: 0; transform: scale(0.4); }
+                    0%, 6%    { opacity: 0; transform: scale(0.4); }
+                    9%        { opacity: 1; transform: scale(1); }
+                    78%       { opacity: 1; transform: scale(1); }
+                    85%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
                 }
                 @keyframes dot2-appear {
                     0%, 25%   { opacity: 0; transform: scale(0.4); }
-                    29%       { opacity: 1; transform: scale(1); }
-                    65%       { opacity: 1; transform: scale(1); }
-                    72%       { opacity: 0; transform: scale(0.4); }
+                    28%       { opacity: 1; transform: scale(1); }
+                    78%       { opacity: 1; transform: scale(1); }
+                    85%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
                 }
                 @keyframes dot3-appear {
-                    0%, 28%   { opacity: 0; transform: scale(0.4); }
-                    32%       { opacity: 1; transform: scale(1); }
-                    65%       { opacity: 1; transform: scale(1); }
-                    72%       { opacity: 0; transform: scale(0.4); }
+                    0%, 44%   { opacity: 0; transform: scale(0.4); }
+                    47%       { opacity: 1; transform: scale(1); }
+                    78%       { opacity: 1; transform: scale(1); }
+                    85%       { opacity: 0; transform: scale(0.4); }
                     100%      { opacity: 0; transform: scale(0.4); }
                 }
 
@@ -67,18 +68,19 @@ export function FloatingContactButton() {
 
                 .contact-pen { animation: pen-write 7.5s ease-in-out infinite; }
 
-                /* Held-in-the-hand feel: the tip stays in one small zone, motion comes
-                   from the wrist rotating the pen plus a few px of brush-like drift —
-                   one short calligraphic flourish in the first ~28% of the loop, then
-                   the pen eases back to rest and stays still for the remaining ~72% */
+                /* Held-in-the-hand feel: the tip stays in one small zone. Three short
+                   separate strokes (0-6%, 19-25%, 38-44%), each easing back to rest
+                   before the next begins — a stroke fires, then its dot appears,
+                   then the next stroke fires, and so on — followed by a still rest
+                   for the remainder of the loop while the dots hold and fade. */
                 @keyframes pen-write {
                     0%        { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
-                    5%        { transform: translate(1px, 10px) rotate(1deg); animation-timing-function: ease-in-out; }
-                    10%       { transform: translate(3px, 7px) rotate(-3deg); animation-timing-function: ease-in-out; }
-                    15%       { transform: translate(5px, 9px) rotate(3deg); animation-timing-function: ease-in-out; }
-                    20%       { transform: translate(6px, 6px) rotate(-3.5deg); animation-timing-function: ease-in-out; }
-                    24%       { transform: translate(4px, 8px) rotate(2deg); animation-timing-function: ease-in-out; }
-                    28%, 100% { transform: translate(0px, 9px) rotate(-1deg); }
+                    3%        { transform: translate(3px, 7px) rotate(-3deg); animation-timing-function: ease-in; }
+                    6%, 19%   { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
+                    22%       { transform: translate(5px, 9px) rotate(3deg); animation-timing-function: ease-in; }
+                    25%, 38%  { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
+                    41%       { transform: translate(6px, 6px) rotate(-3.5deg); animation-timing-function: ease-in; }
+                    44%, 100% { transform: translate(0px, 9px) rotate(-1deg); }
                 }
             `}</style>
 
