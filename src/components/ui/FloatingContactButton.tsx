@@ -68,19 +68,20 @@ export function FloatingContactButton() {
 
                 .contact-pen { animation: pen-write 7.5s ease-in-out infinite; }
 
-                /* Held-in-the-hand feel: the tip stays in one small zone. Three short
-                   separate strokes (0-6%, 19-25%, 38-44%), each easing back to rest
-                   before the next begins — a stroke fires, then its dot appears,
-                   then the next stroke fires, and so on — followed by a still rest
-                   for the remainder of the loop while the dots hold and fade. */
+                /* Tip lands exactly on each dot and stays there — it doesn't spring
+                   back to a fixed rest point. translateX 0/6/12 lines the tip up with
+                   dot1/dot2/dot3 (cx 22/28/34, 6px apart), same y throughout. A quick
+                   jerky overshoot precedes each landing; the tip holds at dot3's spot
+                   through the fade, then eases back to the start for the next loop. */
                 @keyframes pen-write {
-                    0%        { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
-                    3%        { transform: translate(3px, 7px) rotate(-3deg); animation-timing-function: ease-in; }
-                    6%, 19%   { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
-                    22%       { transform: translate(5px, 9px) rotate(3deg); animation-timing-function: ease-in; }
-                    25%, 38%  { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-out; }
-                    41%       { transform: translate(6px, 6px) rotate(-3.5deg); animation-timing-function: ease-in; }
-                    44%, 100% { transform: translate(0px, 9px) rotate(-1deg); }
+                    0%        { transform: translate(-2px, 11px) rotate(3deg); animation-timing-function: ease-in; }
+                    3%        { transform: translate(1px, 7px) rotate(-4deg); animation-timing-function: ease-out; }
+                    6%, 19%   { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+                    22%       { transform: translate(9px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+                    25%, 38%  { transform: translate(6px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+                    41%       { transform: translate(15px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+                    44%, 85%  { transform: translate(12px, 9px) rotate(-1deg); }
+                    100%      { transform: translate(-2px, 11px) rotate(3deg); }
                 }
             `}</style>
 
