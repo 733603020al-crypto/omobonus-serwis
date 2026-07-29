@@ -15,12 +15,13 @@ type RawReview = {
 
 export async function GET() {
     try {
-        const filePath = path.join(process.cwd(), "data", "reviews.json")
+        const ratingFile = fs.readFileSync(path.join(process.cwd(), "data", "reviews.json"), "utf-8")
+        const ratingData = JSON.parse(ratingFile)
 
-        const file = fs.readFileSync(filePath, "utf-8")
-        const data = JSON.parse(file)
+        const feedFile = fs.readFileSync(path.join(process.cwd(), "data", "reviews-feed.json"), "utf-8")
+        const feedData = JSON.parse(feedFile)
 
-        const reviews = (data.reviews ?? [])
+        const reviews = (feedData.reviews ?? [])
             .filter((r: RawReview) => r.rating === 5)
             .map((r: RawReview) => ({
                 author_name: r.author_name,
@@ -36,14 +37,14 @@ export async function GET() {
             }))
 
         return NextResponse.json({
-            rating: data.rating,
-            totalReviews: data.total,
+            rating: ratingData.rating,
+            totalReviews: ratingData.total,
             reviews,
         })
     } catch (error) {
         return NextResponse.json(
             {
-                error: "Failed to read reviews.json",
+                error: "Failed to read reviews data",
                 details: String(error),
             },
             { status: 500 }

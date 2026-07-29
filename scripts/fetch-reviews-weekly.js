@@ -7,6 +7,9 @@ const API_KEY = process.env.GOOGLE_MAPS_API_KEY
 const PLACE_ID = process.env.GOOGLE_PLACE_ID
 const TRANSLATE_KEY = process.env.GOOGLE_TRANSLATE_API_KEY
 
+const FEED_PATH = './data/reviews-feed.json'
+const MAX_REVIEWS = 10
+
 console.log('GOOGLE KEY:', API_KEY ? 'OK' : 'MISSING')
 console.log('PLACE ID:', PLACE_ID ? 'OK' : 'MISSING')
 console.log('GOOGLE TRANSLATE KEY:', TRANSLATE_KEY ? 'OK' : 'MISSING (тексты не будут переведены)')
@@ -116,26 +119,24 @@ async function translateTextsWithGoogle(texts, targetLang) {
     }
 }
 
-async function fetchReviews() {
+function reviewKey(r) {
+    return `${r.author_name}_${r.time}`
+}
+
+async function fetchWeeklyReviews() {
     try {
-        // Загружаем существующий кэш переводов
-        let existingCache = {}
-        const cachePath = './data/reviews.json'
-        if (fs.existsSync(cachePath)) {
+        // Накопленный фид за предыдущие недели
+        let feed = []
+        if (fs.existsSync(FEED_PATH)) {
             try {
-                const existing = JSON.parse(fs.readFileSync(cachePath, 'utf-8'))
-                for (const r of (existing.reviews ?? [])) {
-                    const key = `${r.author_name}_${r.time}`
-                    existingCache[key] = {
-                        text_uk: r.text_uk ?? null,
-                        text_ru: r.text_ru ?? null,
-                    }
-                }
+                const existing = JSON.parse(fs.readFileSync(FEED_PATH, 'utf-8'))
+                feed = Array.isArray(existing.reviews) ? existing.reviews : []
             } catch {}
         }
+        const existingKeys = new Set(feed.map(reviewKey))
 
-        // Фетчим отзывы от Google (только PL)
-        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews,rating,user_ratings_total&language=pl&key=${API_KEY}`
+        // Текущие отзывы от Google (только PL)
+        const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews&language=pl&key=${API_KEY}`
         const res = await fetch(url)
         const data = await res.json()
 
@@ -144,77 +145,62 @@ async function fetchReviews() {
             return
         }
 
-        const plReviews = (data.result?.reviews ?? []).filter(
-            (r) => r.original_language === 'pl'
+        // Фильтр: только 5★, только с непустым текстом, только польский оригинал, только новые (не в фиде)
+        const candidates = (data.result?.reviews ?? []).filter(
+            (r) =>
+                r.original_language === 'pl' &&
+                r.rating === 5 &&
+                typeof r.text === 'string' &&
+                r.text.trim().length > 0 &&
+                !existingKeys.has(reviewKey(r))
         )
 
-        // Определяем какие тексты нужно перевести (не в кэше или null)
-        const needUk = []
-        const needRu = []
-        const indices = []
-
-        for (let i = 0; i < plReviews.length; i++) {
-            const r = plReviews[i]
-            const key = `${r.author_name}_${r.time}`
-            const cached = existingCache[key] ?? {}
-            if (!cached.text_uk) { needUk.push(r.text); indices.push({ i, key, forUk: true }) }
-            if (!cached.text_ru) { needRu.push(r.text); indices.push({ i, key, forRu: true }) }
+        if (candidates.length === 0) {
+            console.log('ℹ️ Новых 5★ отзывов с текстом не найдено, фид не изменился')
+            console.log(`📊 В фиде сейчас: ${feed.length}`)
+            return
         }
 
-        // Переводим через Google Cloud Translation API (если ключ есть)
+        // Переводим только новые отзывы
+        const texts = candidates.map((r) => r.text)
         let translatedUk = null
         let translatedRu = null
 
         if (TRANSLATE_KEY) {
-            if (needUk.length > 0) {
-                console.log(`🔄 Переводим ${needUk.length} отзывов → UK...`)
-                translatedUk = await translateTextsWithGoogle(needUk, 'uk')
-            }
-            if (needRu.length > 0) {
-                console.log(`🔄 Переводим ${needRu.length} отзывов → RU...`)
-                translatedRu = await translateTextsWithGoogle(needRu, 'ru')
-            }
+            console.log(`🔄 Переводим ${texts.length} новых отзывов → UK...`)
+            translatedUk = await translateTextsWithGoogle(texts, 'uk')
+            console.log(`🔄 Переводим ${texts.length} новых отзывов → RU...`)
+            translatedRu = await translateTextsWithGoogle(texts, 'ru')
         }
 
-        // Строим карту переводов по индексу
-        const ukMap = {}
-        const ruMap = {}
-        let ukIdx = 0, ruIdx = 0
+        const newEntries = candidates.map((r, i) => ({
+            ...r,
+            text_uk: translatedUk ? translatedUk[i] : null,
+            text_ru: translatedRu ? translatedRu[i] : null,
+            relative_time_uk: translatePolishTime(r.relative_time_description, 'uk'),
+            relative_time_ru: translatePolishTime(r.relative_time_description, 'ru'),
+        }))
 
-        for (const { i, forUk, forRu } of indices) {
-            if (forUk) { if (translatedUk) ukMap[i] = translatedUk[ukIdx]; ukIdx++ }
-            if (forRu) { if (translatedRu) ruMap[i] = translatedRu[ruIdx]; ruIdx++ }
+        // FIFO: новые уходят в конец, старые вытесняются с начала при превышении лимита
+        let updatedFeed = [...feed, ...newEntries]
+        if (updatedFeed.length > MAX_REVIEWS) {
+            updatedFeed = updatedFeed.slice(updatedFeed.length - MAX_REVIEWS)
         }
-
-        // Собираем итоговый массив
-        const reviews = plReviews.map((r, i) => {
-            const key = `${r.author_name}_${r.time}`
-            const cached = existingCache[key] ?? {}
-            return {
-                ...r,
-                text_uk: ukMap[i] ?? cached.text_uk ?? null,
-                text_ru: ruMap[i] ?? cached.text_ru ?? null,
-                relative_time_uk: translatePolishTime(r.relative_time_description, 'uk'),
-                relative_time_ru: translatePolishTime(r.relative_time_description, 'ru'),
-            }
-        })
 
         const result = {
-            rating: data.result?.rating ?? null,
-            total: data.result?.user_ratings_total ?? null,
-            reviews,
+            reviews: updatedFeed,
             updatedAt: new Date().toISOString(),
         }
 
-        fs.writeFileSync(cachePath, JSON.stringify(result, null, 2))
+        fs.writeFileSync(FEED_PATH, JSON.stringify(result, null, 2))
 
-        console.log('✅ reviews.json обновлён')
-        console.log(`📊 Отзывов: ${reviews.length}`)
-        console.log(`🇺🇦 С UK переводом: ${reviews.filter((r) => r.text_uk).length}/${reviews.length}`)
-        console.log(`🇷🇺 С RU переводом: ${reviews.filter((r) => r.text_ru).length}/${reviews.length}`)
+        console.log(`✅ reviews-feed.json обновлён: +${newEntries.length} новых`)
+        console.log(`📊 В фиде сейчас: ${updatedFeed.length}/${MAX_REVIEWS}`)
+        console.log(`🇺🇦 С UK переводом: ${updatedFeed.filter((r) => r.text_uk).length}/${updatedFeed.length}`)
+        console.log(`🇷🇺 С RU переводом: ${updatedFeed.filter((r) => r.text_ru).length}/${updatedFeed.length}`)
     } catch (err) {
         console.error('❌ Ошибка:', err)
     }
 }
 
-fetchReviews()
+fetchWeeklyReviews()
