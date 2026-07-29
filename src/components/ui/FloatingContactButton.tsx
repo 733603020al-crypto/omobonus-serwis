@@ -7,7 +7,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const NAVY = '#0B1F3A'
-const GOLD = '#bfa76a'
 
 const LABELS = {
     pl: { write: 'Napisz', map: 'Mapa' },
@@ -132,9 +131,9 @@ export function FloatingContactButton() {
                             />
 
                             {/* Three typing dots */}
-                            <circle className="contact-dot-1" cx="22" cy="39" r="2.2" fill={GOLD} />
-                            <circle className="contact-dot-2" cx="28" cy="39" r="2.2" fill={GOLD} />
-                            <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill={GOLD} />
+                            <circle className="contact-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
+                            <circle className="contact-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
+                            <circle className="contact-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
 
                             {/* Vintage quill — same /icons/quill.webp asset, mirrored via transform (file untouched), animated as one element; tip points at the dots */}
                             <g className="contact-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
