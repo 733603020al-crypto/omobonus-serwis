@@ -26,6 +26,7 @@ jobs:
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+          GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
 
       - name: Commit changes
         run: |

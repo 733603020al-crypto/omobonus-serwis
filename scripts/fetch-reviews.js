@@ -5,11 +5,11 @@ dotenv.config({ path: '.env.local' })
 
 const API_KEY = process.env.GOOGLE_MAPS_API_KEY
 const PLACE_ID = process.env.GOOGLE_PLACE_ID
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
+const TRANSLATE_KEY = process.env.GOOGLE_TRANSLATE_API_KEY
 
 console.log('GOOGLE KEY:', API_KEY ? 'OK' : 'MISSING')
 console.log('PLACE ID:', PLACE_ID ? 'OK' : 'MISSING')
-console.log('ANTHROPIC KEY:', ANTHROPIC_KEY ? 'OK' : 'MISSING (тексты не будут переведены)')
+console.log('GOOGLE TRANSLATE KEY:', TRANSLATE_KEY ? 'OK' : 'MISSING (тексты не будут переведены)')
 
 if (!API_KEY || !PLACE_ID) {
     console.error('❌ Нет GOOGLE_MAPS_API_KEY или GOOGLE_PLACE_ID')
@@ -85,44 +85,33 @@ function translatePolishTime(str, lang) {
     return str
 }
 
-// Перевод текстов через Claude API (native fetch, без SDK)
-async function translateTextsWithClaude(texts, targetLang) {
-    if (!ANTHROPIC_KEY) return null
-    const langName = targetLang === 'uk' ? 'Ukrainian' : 'Russian'
+// Перевод текстов через Google Cloud Translation API v2 (бесплатный тариф 500k символов/месяц)
+async function translateTextsWithGoogle(texts, targetLang) {
+    if (!TRANSLATE_KEY) return null
 
     try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
+        const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${TRANSLATE_KEY}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': ANTHROPIC_KEY,
-                'anthropic-version': '2023-06-01',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                model: 'claude-haiku-4-5-20251001',
-                max_tokens: 4096,
-                messages: [{
-                    role: 'user',
-                    content: `Translate the following Polish Google review texts to ${langName}.
-Return ONLY a valid JSON array of translated strings in the same order. No explanations, no markdown.
-Preserve the original tone and meaning. Do not add facts not in the original.
-
-Texts to translate:
-${JSON.stringify(texts)}`,
-                }],
+                q: texts,
+                source: 'pl',
+                target: targetLang,
+                format: 'text',
             }),
         })
 
         if (!response.ok) {
-            console.error(`❌ Anthropic API error: ${response.status}`)
+            console.error(`❌ Google Translate API error: ${response.status}`)
             return null
         }
 
         const data = await response.json()
-        const raw = data.content?.[0]?.text?.trim()
-        return JSON.parse(raw)
+        const translations = data.data?.translations
+        if (!Array.isArray(translations)) return null
+        return translations.map((t) => t.translatedText)
     } catch (err) {
-        console.error('❌ Ошибка перевода через Claude:', err.message)
+        console.error('❌ Ошибка перевода через Google Translate:', err.message)
         return null
     }
 }
@@ -172,18 +161,18 @@ async function fetchReviews() {
             if (!cached.text_ru) { needRu.push(r.text); indices.push({ i, key, forRu: true }) }
         }
 
-        // Переводим через Claude API (если ключ есть)
+        // Переводим через Google Cloud Translation API (если ключ есть)
         let translatedUk = null
         let translatedRu = null
 
-        if (ANTHROPIC_KEY) {
+        if (TRANSLATE_KEY) {
             if (needUk.length > 0) {
                 console.log(`🔄 Переводим ${needUk.length} отзывов → UK...`)
-                translatedUk = await translateTextsWithClaude(needUk, 'uk')
+                translatedUk = await translateTextsWithGoogle(needUk, 'uk')
             }
             if (needRu.length > 0) {
                 console.log(`🔄 Переводим ${needRu.length} отзывов → RU...`)
-                translatedRu = await translateTextsWithClaude(needRu, 'ru')
+                translatedRu = await translateTextsWithGoogle(needRu, 'ru')
             }
         }
 
