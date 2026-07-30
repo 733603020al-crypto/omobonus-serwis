@@ -109,7 +109,7 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
         {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
         <div className="flex gap-3 items-center mt-[16px] justify-center">
           <GoogleRatingBadge
-            className="w-[224px] h-[89px] md:w-[248px] md:h-[103px]"
+            className="w-[206px] h-[89px] md:w-[230px] md:h-[103px]"
             ratingLabel={d.googleRatingLabel}
             locale={locale}
             ariaLabel={d.googleReviewsAriaLabel}
