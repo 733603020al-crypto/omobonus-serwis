@@ -107,9 +107,11 @@
 </g>
 <g transform="translate(70 223) rotate(-5)">
   <rect x="-15" y="-15" width="30" height="30" fill="#f0ddb0"/>
-  <g transform="translate(0 5) scale(1.5)">
-    <path d="M -9,-7 L -1,-7 L -1,3 L -4.5,5.5 L -9,9 Z" fill="#3a2a15"/>
-    <path d="M 1,-7 L 9,-7 L 9,9 L 4.5,5.5 L 1,3 Z" fill="#3a2a15"/>
+  <g transform="translate(-14.5 -18.9) scale(0.2148)" fill="#3a2a15">
+    <polygon points="71.11,153.19 117.59,153.19 117.59,89.8 71.11,71.5"/>
+    <polygon points="71.11,22.84 71.11,63.69 117.59,82 117.59,22.84"/>
+    <polygon points="17.42,22.84 17.42,104.53 63.89,86.23 63.89,22.84"/>
+    <polygon points="17.42,153.19 63.89,153.19 63.89,94.03 17.42,112.34"/>
   </g>
 </g>
 </svg>
