@@ -165,23 +165,30 @@ export function ServicePageTemplate({
                         </span>
                       ))}
 
-                      <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        width={420}
-                        height={420}
-                        sizes="(max-width: 768px) 85vw, 420px"
-                        className="service-hero-image object-contain w-full h-auto"
-                        priority
-                        fetchPriority="high"
-                      />
-
-                      {slug === 'druk-3d-na-zamowienie' && (
-                        <div className="service-print-fx" aria-hidden="true">
-                          <div className="service-print-fx-nozzle-glow" />
-                          <div className="service-print-fx-material-line" />
-                          <div className="service-print-fx-layer-sweep" />
-                        </div>
+                      {slug === 'druk-3d-na-zamowienie' ? (
+                        // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
+                        // next/image, so the optimizer doesn't rasterize it and kill
+                        // the animation.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={420}
+                          height={420}
+                          className="service-hero-image object-contain w-full h-auto"
+                          fetchPriority="high"
+                        />
+                      ) : (
+                        <Image
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={420}
+                          height={420}
+                          sizes="(max-width: 768px) 85vw, 420px"
+                          className="service-hero-image object-contain w-full h-auto"
+                          priority
+                          fetchPriority="high"
+                        />
                       )}
                     </div>
                   </div>

@@ -9,7 +9,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych.webp',
   'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych.webp',
   'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-  'druk-3d-na-zamowienie': '/images/Druk_3D_na_Zamowienie.webp',
+  'druk-3d-na-zamowienie': '/images/Druk_3D_animation.svg',
   'serwis-plotterow': '/images/08_serwis-ploterow.webp',
   'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych.webp',
   'naprawa-drukarek': '/images/Serwis_Drukarek.webp',
