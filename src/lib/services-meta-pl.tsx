@@ -192,7 +192,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
-    title: 'Druk 3D na zamówienie Wrocław – cennik | Omobonus',
+    title: 'Druk 3D na zamówienie Wrocław – cennik',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
