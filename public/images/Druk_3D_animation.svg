@@ -16,6 +16,13 @@
     <stop offset="0.85" stop-color="#ffffff" stop-opacity="1"/>
     <stop offset="1" stop-color="#fffef2" stop-opacity="1"/>
   </linearGradient>
+  <filter id="trailGlow" filterUnits="userSpaceOnUse" x="205" y="270" width="70" height="40">
+    <feGaussianBlur stdDeviation="2.4" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
   <path id="flexTube" d="M 236 62 C 238 69, 245 81, 245 94 C 244 103, 243 111, 243 118">
     <animate attributeName="d" dur="8s" repeatCount="indefinite"
       calcMode="spline" keyTimes="0;0.18;0.27;0.5;0.68;0.77;1"
@@ -40,8 +47,8 @@
       calcMode="spline" keyTimes="0;0.18;0.27;0.5;0.68;0.77;1"
       keySplines="0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1"
       values="0 0;34 0;34 0;0 0;-42 0;-42 0;0 0"/>
-    <line x1="231" y1="289" x2="249" y2="289" stroke="url(#layerTrail)" stroke-width="3.2" stroke-linecap="round" opacity="0.96"/>
-    <line x1="232" y1="288" x2="248" y2="288" stroke="#ffffff" stroke-opacity="0.9" stroke-width="0.95" stroke-linecap="round"/>
+    <line x1="231" y1="289" x2="249" y2="289" stroke="url(#layerTrail)" stroke-width="8" stroke-linecap="round" opacity="0.96" filter="url(#trailGlow)"/>
+    <line x1="232" y1="288" x2="248" y2="288" stroke="#ffffff" stroke-opacity="0.95" stroke-width="2.6" stroke-linecap="round"/>
   </g>
   <g transform="translate(0 4)">
     <g>
