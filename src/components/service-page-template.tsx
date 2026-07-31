@@ -175,6 +175,14 @@ export function ServicePageTemplate({
                         priority
                         fetchPriority="high"
                       />
+
+                      {slug === 'druk-3d-na-zamowienie' && (
+                        <div className="service-print-fx" aria-hidden="true">
+                          <div className="service-print-fx-nozzle-glow" />
+                          <div className="service-print-fx-material-line" />
+                          <div className="service-print-fx-layer-sweep" />
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">

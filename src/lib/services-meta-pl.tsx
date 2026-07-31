@@ -148,7 +148,7 @@ export const imageAlt: Record<string, string> = {
   'serwis-drukarek-laserowych': 'Serwis drukarek laserowych',
   'serwis-drukarek-atramentowych': 'Serwis drukarek atramentowych',
   'serwis-drukarek-3d': 'Serwis i naprawa drukarek 3D',
-  'druk-3d-na-zamowienie': 'Serwis i naprawa drukarek 3D',
+  'druk-3d-na-zamowienie': 'Druk 3D na zamówienie we Wrocławiu',
   'serwis-plotterow': 'Serwis i naprawa ploterów',
   'serwis-drukarek-iglowych': 'Serwis drukarek igłowych',
   'naprawa-drukarek': 'Serwis drukarek i urządzeń wielofunkcyjnych',

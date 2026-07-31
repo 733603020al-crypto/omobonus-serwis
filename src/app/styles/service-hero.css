@@ -635,3 +635,137 @@
     opacity: 0.35;
   }
 }
+
+/* =========================
+   "DRUK 3D NA ZAMÓWIENIE" — PRINT-IN-PROGRESS DECORATION
+   Purely decorative CSS layers on top of the flat hero illustration
+   (nozzle glow, feeding material line, printed-layer sweep). Desktop only —
+   hidden on mobile/tablet, same breakpoint as the rest of this file.
+   Coordinates are approximate percentages of the image container and may
+   need a small visual tweak once the real artwork is in place.
+   ========================= */
+
+.service-print-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  display: none;
+}
+
+.service-print-fx-nozzle-glow {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 14%;
+  height: 14%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(218, 174, 75, 0.75) 0%, rgba(218, 174, 75, 0.32) 45%, rgba(218, 174, 75, 0) 72%);
+  animation: servicePrintGlowPulse 2.2s ease-in-out infinite;
+}
+
+.service-print-fx-material-line {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 1.5px;
+  height: 7%;
+  background: linear-gradient(to bottom, rgba(218, 174, 75, 0.9), rgba(218, 174, 75, 0.15));
+  transform-origin: top;
+  animation: servicePrintMaterialFeed 2.3s ease-in-out infinite;
+}
+
+.service-print-fx-layer-sweep {
+  position: absolute;
+  left: 38%;
+  top: 59%;
+  width: 26%;
+  height: 3%;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.service-print-fx-layer-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(218, 174, 75, 0) 30%,
+      rgba(218, 174, 75, 0.55) 50%,
+      rgba(218, 174, 75, 0) 70%,
+      transparent 100%);
+  animation: servicePrintLayerSweep 3.5s ease-in-out infinite;
+}
+
+@keyframes servicePrintGlowPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes servicePrintMaterialFeed {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  35% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+
+  70% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+@keyframes servicePrintLayerSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  50% {
+    transform: translateX(120%);
+  }
+
+  100% {
+    transform: translateX(-120%);
+  }
+}
+
+@media (min-width: 769px) {
+  .service-print-fx {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-print-fx-nozzle-glow {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .service-print-fx-material-line {
+    animation: none;
+    opacity: 0;
+  }
+
+  .service-print-fx-layer-sweep::after {
+    animation: none;
+    opacity: 0;
+  }
+}
