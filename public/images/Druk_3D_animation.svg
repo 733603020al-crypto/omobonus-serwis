@@ -16,13 +16,6 @@
     <stop offset="0.85" stop-color="#f6d98d" stop-opacity="1"/>
     <stop offset="1" stop-color="#fff1c4" stop-opacity="0.95"/>
   </linearGradient>
-  <filter id="depositGlow" filterUnits="userSpaceOnUse" x="225" y="258" width="50" height="58">
-    <feGaussianBlur stdDeviation="2.2" result="blur"/>
-    <feMerge>
-      <feMergeNode in="blur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>
   <path id="flexTube" d="M 236 62 C 238 69, 245 81, 245 94 C 244 103, 243 111, 243 118">
     <animate attributeName="d" dur="8s" repeatCount="indefinite"
       calcMode="spline" keyTimes="0;0.18;0.27;0.5;0.68;0.77;1"
@@ -62,16 +55,6 @@
       </image>
       
     </g>
-  </g>
-  <g>
-    <animateTransform attributeName="transform" type="translate" dur="8s" repeatCount="indefinite"
-      calcMode="spline" keyTimes="0;0.18;0.27;0.5;0.68;0.77;1"
-      keySplines="0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1"
-      values="0 0;34 0;34 0;0 0;-42 0;-42 0;0 0"/>
-    <line x1="249" y1="267" x2="249" y2="301" stroke="#f6d98d" stroke-linecap="round" filter="url(#depositGlow)">
-      <animate attributeName="stroke-width" values="4;7;4" dur="1.7s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.55;0.95;0.68;0.95;0.55" dur="1.7s" repeatCount="indefinite"/>
-    </line>
   </g>
 </g>
 </svg>
