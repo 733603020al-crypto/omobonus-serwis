@@ -769,3 +769,25 @@
     opacity: 0;
   }
 }
+
+/* On "druk-3d-na-zamowienie" only: drop the generic hero float/glow/shine
+   effects (shared by every service page) — this page keeps only the
+   print-in-progress decoration above (.service-print-fx-*). Scoped via the
+   page-druk-3d-na-zamowienie class on <main>, so no other page is affected. */
+.page-druk-3d-na-zamowienie .service-hero-image-wrap {
+  animation: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image {
+  animation: none;
+  filter: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image-wrap:hover .service-hero-image {
+  transform: none;
+  filter: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image-wrap::after {
+  display: none;
+}

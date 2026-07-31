@@ -69,12 +69,7 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Zatkany hotend',
     ],
 
-    'druk-3d-na-zamowienie': [
-        'Nie podaje filamentu',
-        'Słaba jakość druku',
-        'Kalibracja stołu',
-        'Zatkany hotend',
-    ],
+    'druk-3d-na-zamowienie': [],
 
     'wynajem-drukarek': [
         'Drukarka dla firmy',
