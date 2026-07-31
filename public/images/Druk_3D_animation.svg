@@ -16,7 +16,7 @@
     <stop offset="0.85" stop-color="#ffffff" stop-opacity="1"/>
     <stop offset="1" stop-color="#fffef2" stop-opacity="1"/>
   </linearGradient>
-  <filter id="trailGlow" filterUnits="userSpaceOnUse" x="200" y="255" width="80" height="70">
+  <filter id="trailGlow" filterUnits="userSpaceOnUse" x="200" y="230" width="80" height="95">
     <feGaussianBlur stdDeviation="2.4" result="blur"/>
     <feMerge>
       <feMergeNode in="blur"/>
@@ -54,6 +54,14 @@
     <line x1="232" y1="288" x2="248" y2="288" stroke="#ffffff" stroke-linecap="round">
       <animate attributeName="stroke-width" values="5;8;5" dur="1.1s" repeatCount="indefinite"/>
       <animate attributeName="stroke-opacity" values="0.85;1;0.85" dur="1.1s" repeatCount="indefinite"/>
+    </line>
+    <line x1="247" y1="266" x2="247" y2="291" stroke="url(#layerTrail)" stroke-linecap="round" filter="url(#trailGlow)">
+      <animate attributeName="stroke-width" values="4;6;4" dur="1.1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="1.1s" repeatCount="indefinite"/>
+    </line>
+    <line x1="247" y1="267" x2="247" y2="290" stroke="#ffffff" stroke-linecap="round">
+      <animate attributeName="stroke-width" values="1.4;2.2;1.4" dur="1.1s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.9;1;0.9" dur="1.1s" repeatCount="indefinite"/>
     </line>
   </g>
   <g transform="translate(0 4)">
