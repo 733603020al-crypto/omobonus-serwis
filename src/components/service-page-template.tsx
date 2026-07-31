@@ -24,6 +24,7 @@ const PAGE_CLASS_SLUGS = [
   'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych',
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
+  'druk-3d-na-zamowienie',
 ]
 
 export interface ServicePageHeadings {

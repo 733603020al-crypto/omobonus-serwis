@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { services } from '@/lib/services-data'
 import { servicesUk } from '@/lib/services-data-uk'
 import { servicesRu } from '@/lib/services-data-ru'
+import { noindexSlugs } from '@/lib/services-meta-shared'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://serwis.omobonus.com.pl'
@@ -39,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const servicePages = services.map((service) => ({
+  const servicePages = services.filter((service) => !noindexSlugs.includes(service.slug)).map((service) => ({
     url: `${baseUrl}/uslugi/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

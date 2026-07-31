@@ -128,7 +128,7 @@ const LOCALE_NAV: Record<Locale, {
    Mega menu data
    ========================= */
 
-const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string }[] }[] = [
+const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
   {
     items: [
       { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
@@ -143,6 +143,7 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
       { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
       { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
       { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Druk 3D na zamówienie', uk: 'Druk 3D na zamówienie', ru: 'Druk 3D na zamówienie' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp', locales: ['pl'] },
       { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
       { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
       { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
@@ -315,7 +316,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                 {MEGA_MENU.map((col, i) => (
                   <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
                     <div className="flex flex-col divide-y divide-[#bfa76a]/25">
-                      {col.items.map((item) => (
+                      {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
                         <Link
                           key={item.href}
                           href={`${nav.prefix}${item.href}`}

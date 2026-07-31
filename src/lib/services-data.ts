@@ -3601,6 +3601,17 @@ export const services: ServiceData[] = [
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
     pricingSections: create3DPrinterPricingSections(),
   },
+  // Tymczasowa kopia strony 'serwis-drukarek-3d' pod nowym adresem/usługą
+  // "Druk 3D na zamówienie" — treść zostanie stopniowo przepisana później.
+  // Dane celowo zduplikowane (nie referencja), żeby obie strony były niezależne.
+  {
+    slug: 'druk-3d-na-zamowienie',
+    title: 'Serwis i naprawa drukarek 3D',
+    subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
+    icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+    description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
+    pricingSections: create3DPrinterPricingSections(),
+  },
   {
     slug: 'wynajem-drukarek',
     title: 'Wynajem (dzierżawa) drukarek',

@@ -4,7 +4,7 @@ import { services } from "@/lib/services-data"
 import { serviceHeroLabels } from "@/lib/service-hero-labels"
 import { ServicePageTemplate, type RelatedService } from "@/components/service-page-template"
 import { headings, seoBlocks, imageAlt, subServiceTitles, seoMetadata, labels } from "@/lib/services-meta-pl"
-import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs } from "@/lib/services-meta-shared"
+import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from "@/lib/services-meta-shared"
 
 export async function generateStaticParams() {
   return services.map(service => ({
@@ -31,10 +31,15 @@ export async function generateMetadata({
   return {
     title: seo.title,
     description: seo.description,
+    ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
 
     alternates: {
       canonical: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
-      languages: {
+      languages: noindexSlugs.includes(slug) ? {
+        // Tymczasowa strona bez odpowiedników /uk i /ru — nie dodawać hreflang na nieistniejące adresy
+        'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+      } : {
         'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
         'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
         'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
