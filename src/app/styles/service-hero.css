@@ -655,10 +655,10 @@
 
 .service-print-fx-nozzle-glow {
   position: absolute;
-  left: 50%;
-  top: 51%;
-  width: 14%;
-  height: 14%;
+  left: 49%;
+  top: 50%;
+  width: 13%;
+  height: 13%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(218, 174, 75, 0.75) 0%, rgba(218, 174, 75, 0.32) 45%, rgba(218, 174, 75, 0) 72%);
@@ -667,10 +667,10 @@
 
 .service-print-fx-material-line {
   position: absolute;
-  left: 50%;
-  top: 52%;
+  left: 49%;
+  top: 50.5%;
   width: 1.5px;
-  height: 7%;
+  height: 6.5%;
   background: linear-gradient(to bottom, rgba(218, 174, 75, 0.9), rgba(218, 174, 75, 0.15));
   transform-origin: top;
   animation: servicePrintMaterialFeed 2.3s ease-in-out infinite;
@@ -678,9 +678,9 @@
 
 .service-print-fx-layer-sweep {
   position: absolute;
-  left: 38%;
-  top: 59%;
-  width: 26%;
+  left: 37%;
+  top: 57%;
+  width: 27%;
   height: 3%;
   overflow: hidden;
   border-radius: 2px;
