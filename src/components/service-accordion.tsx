@@ -467,7 +467,7 @@ const renderTwoLinePrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
     <div className="flex flex-col items-center">
-      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3]">{main}</div>
+      <div className="font-table-main text-[16px] text-white leading-[1.3]">{main}</div>
       {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
     </div>
   )
