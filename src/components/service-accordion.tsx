@@ -406,6 +406,19 @@ const renderSectionTitleMobile = (title: string) => {
   return <>{title}</>
 }
 
+// Подсвietla jednostki "zł/g" i "zł/h" złotym kolorem wewnątrz jednolinijkowej ceny
+// (np. "0,30 zł/g + 8 zł/h") — reszta tekstu (liczby, "+") pozostaje biała.
+const renderPlainPriceWithUnits = (price: string) => {
+  const parts = price.split(/(zł\/g|zł\/h)/g)
+  return parts.map((part, i) =>
+    part === 'zł/g' || part === 'zł/h' ? (
+      <span key={i} className="text-[#cbb27c]">{part}</span>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  )
+}
+
 // Мобильная версия строки услуги (flex layout)
 const renderMobileServiceRow = (
   item: { service: string; price: string; duration: string; link?: string },
@@ -442,7 +455,7 @@ const renderMobileServiceRow = (
       >
         {plainPrice ? (
           <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
-            {item.price}
+            {renderPlainPriceWithUnits(item.price)}
           </div>
         ) : (
           renderPriceLines(item.price, item.link)
@@ -1778,7 +1791,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
                                   {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
                                     <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
-                                      {item.price}
+                                      {renderPlainPriceWithUnits(item.price)}
                                     </div>
                                   ) : (
                                     renderPriceLines(item.price, item.link)
