@@ -26,13 +26,11 @@ export interface PricingSection {
   footer?: string // Footer text (displayed below title when section is open)
   collapsedCaption?: string // Krótki podpis pod tytułem w stanie zwiniętym (zamiast domyślnego GRATIS)
   intro?: string // Tekst wprowadzający wyświetlany na początku otwartej sekcji, przed tabelą
-  priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą
+  priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą (biały, wyróżniony)
   example?: {
-    title: string
-    lines: string[]
-    calculation: string
-    price: string
-  } // Przykładowe wyliczenie ceny, wyświetlane pod priceFormula
+    text: string // np. "Przykład: Wydruk z PLA — 100 g materiału przy 5 godzinach druku = 95 zł"
+    calculation: string // np. "25 zł przygotowanie wydruku + ... = 95 zł" — wyświetlane w nawiasach
+  } // Dwie małe złote linie pod priceFormula
 }
 
 export interface PriceTooltipCategory {
@@ -2814,13 +2812,10 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
         { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', price: 'według cennika\nprzewoźnika', duration: 'do 24 h' },
       ],
-      priceFormula:
-        'Cena końcowa = 25 zł przygotowania + koszt zużytego materiału + czas pracy drukarki',
+      priceFormula: 'Cena końcowa = przygotowanie wydruku + materiał + czas druku',
       example: {
-        title: 'Przykład',
-        lines: ['Wydruk z PLA', '100 g materiału', '5 godzin druku'],
-        calculation: '25 zł + (100 × 0,30 zł) + (5 × 8 zł) = 95 zł',
-        price: '95 zł',
+        text: 'Przykład: Wydruk z PLA — 100 g materiału przy 5 godzinach druku = 95 zł',
+        calculation: '25 zł przygotowanie wydruku + 100 g materiału × 0,30 zł/g + 5 godz. druku × 8 zł/h = 95 zł',
       },
     }
   }

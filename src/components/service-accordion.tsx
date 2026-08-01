@@ -1897,19 +1897,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         </Table>
                       </div>
                       {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.priceFormula && (
-                        <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1.5">
-                          <p className="text-[13px] md:text-[14px] font-semibold text-[#e8d9b0] leading-snug">
+                        <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
+                          <p className="font-inter text-[14px] md:text-[15px] font-semibold text-white leading-snug">
                             {section.priceFormula}
                           </p>
                         </div>
                       )}
                       {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.example && (
-                        <div className="px-2 pt-0.5 pb-2">
-                          <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-snug">
-                            <span className="text-[#bfa76a] font-semibold">{section.example.title}:</span>{' '}
-                            {section.example.lines.join(', ')}.{' '}
-                            {section.example.calculation}{' '}
-                            <span className="text-white font-semibold">(Cena: {section.example.price})</span>
+                        <div className="px-2 pb-2">
+                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
+                            {section.example.text}
+                          </p>
+                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
+                            ({section.example.calculation})
                           </p>
                         </div>
                       )}
