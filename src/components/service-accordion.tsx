@@ -1898,7 +1898,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                       {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.priceFormula && (
                         <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
-                          <p className="font-inter text-[14px] md:text-[15px] font-semibold text-white leading-snug">
+                          <p className="font-table-main text-[16px] text-white leading-[1.3]">
                             {section.priceFormula}
                           </p>
                         </div>
@@ -1906,10 +1906,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.example && (
                         <div className="px-2 pb-2">
                           <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
-                            {section.example.text}
-                          </p>
-                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
-                            ({section.example.calculation})
+                            {section.example}
                           </p>
                         </div>
                       )}
