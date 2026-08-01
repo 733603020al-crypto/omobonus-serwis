@@ -406,12 +406,12 @@ const renderSectionTitleMobile = (title: string) => {
   return <>{title}</>
 }
 
-// Подсвietla jednostki "zł/gram" i "zł/h" złotym kolorem wewnątrz jednolinijkowej ceny
-// (np. "0,30 zł/gram + 8 zł/h") — reszta tekstu (liczby, "+") pozostaje biała.
+// Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
+// (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
 const renderPlainPriceWithUnits = (price: string) => {
-  const parts = price.split(/(zł\/gram|zł\/h)/g)
+  const parts = price.split(/(zł\/gram|zł\/godz\.)/g)
   return parts.map((part, i) =>
-    part === 'zł/gram' || part === 'zł/h' ? (
+    part === 'zł/gram' || part === 'zł/godz.' ? (
       <span key={i} className="text-[#cbb27c]">{part}</span>
     ) : (
       <span key={i}>{part}</span>
