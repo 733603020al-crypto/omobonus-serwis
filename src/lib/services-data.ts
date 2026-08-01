@@ -24,6 +24,15 @@ export interface PricingSection {
   items: PricingItem[]
   subcategories?: PricingSubcategory[] // Podkategorie (dla "naprawy" lub "faq")
   footer?: string // Footer text (displayed below title when section is open)
+  collapsedCaption?: string // Krótki podpis pod tytułem w stanie zwiniętym (zamiast domyślnego GRATIS)
+  intro?: string // Tekst wprowadzający wyświetlany na początku otwartej sekcji, przed tabelą
+  priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą
+  example?: {
+    title: string
+    lines: string[]
+    calculation: string
+    price: string
+  } // Przykładowe wyliczenie ceny, wyświetlane pod priceFormula
 }
 
 export interface PriceTooltipCategory {
@@ -2783,6 +2792,44 @@ const create3DPrinterPricingSections = (): PricingSection[] => {
   return sections
 }
 
+// Cennik dla 'druk-3d-na-zamowienie': te same sekcje co serwis-drukarek-3d,
+// ale pierwsza sekcja ("Diagnoza i wycena") zastąpiona cennikiem druku 3D
+// z gotowego projektu. Zmiana dotyczy WYŁĄCZNIE tej usługi — serwis-drukarek-3d
+// nadal korzysta z create3DPrinterPricingSections() bez zmian.
+const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
+  const sections = create3DPrinterPricingSections()
+
+  const diagnosisIndex = sections.findIndex(section => section.id === 'diagnoza')
+  if (diagnosisIndex !== -1) {
+    sections[diagnosisIndex] = {
+      id: 'diagnoza',
+      title: 'Druk 3D z gotowego projektu',
+      collapsedCaption: 'Cena zależna od materiału, masy i czasu druku',
+      intro:
+        'Masz gotowy model STL, STEP, 3MF lub OBJ?\nWyślij plik, a przygotujemy go do druku i wykonamy element na drukarce 3D.',
+      items: [
+        { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
+        { service: 'PLA', price: '0,30 zł/g + 8 zł/h druku', duration: '1–2 dni' },
+        { service: 'PETG', price: '0,35 zł/g + 9 zł/h druku', duration: '1–2 dni' },
+        { service: 'ABS / ASA', price: '0,45 zł/g + 12 zł/h druku', duration: '1–2 dni' },
+        { service: 'TPU', price: '0,60 zł/g + 12 zł/h druku', duration: '1–2 dni' },
+        { service: 'Realizacja ekspresowa', price: '+50%', duration: 'do 24 h' },
+        { service: 'Wysyłka', price: 'według cennika przewoźnika', duration: '—' },
+      ],
+      priceFormula:
+        'Cena końcowa = 25 zł przygotowania + koszt zużytego materiału + czas pracy drukarki',
+      example: {
+        title: 'Przykład',
+        lines: ['Wydruk z PLA', '100 g materiału', '5 godzin druku'],
+        calculation: '25 zł + (100 × 0,30 zł) + (5 × 8 zł) = 95 zł',
+        price: '95 zł',
+      },
+    }
+  }
+
+  return sections
+}
+
 
 
 const createPlotterPricingSections = (): PricingSection[] => {
@@ -3610,7 +3657,7 @@ export const services: ServiceData[] = [
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
-    pricingSections: create3DPrinterPricingSections(),
+    pricingSections: createDruk3DZamowieniePricingSections(),
   },
   {
     slug: 'wynajem-drukarek',

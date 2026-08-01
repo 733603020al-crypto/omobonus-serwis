@@ -1182,15 +1182,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                ? 'min-w-[96px] sm:min-w-[120px]'
-                                : 'min-w-0 sm:min-w-[120px]'
+                              service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                                ? 'min-w-[96px] max-w-[110px] sm:min-w-[130px] sm:max-w-[150px]'
+                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                  ? 'min-w-[96px] sm:min-w-[120px]'
+                                  : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
                             {section.id === 'diagnoza' && (
-                              <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
-                                {t.gratisUpper}
-                              </span>
+                              service.slug === 'druk-3d-na-zamowienie' ? (
+                                <span className="text-[11px] sm:text-xs font-serif text-[#bfa76a] leading-tight text-center whitespace-normal group-data-[state=open]:hidden">
+                                  {section.collapsedCaption}
+                                </span>
+                              ) : (
+                                <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
+                                  {t.gratisUpper}
+                                </span>
+                              )
                             )}
 
 
@@ -1703,6 +1711,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     })()
                   ) : (
                     <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.intro && (
+                        <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-[1.4] px-2 pt-2 pb-2 whitespace-pre-line">
+                          {section.intro}
+                        </p>
+                      )}
                       {/* Мобильная версия - flex layout */}
                       <div className="block md:hidden">
                         {section.items?.map((item, idx) =>
@@ -1720,9 +1733,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       <div className="hidden md:block">
                         <Table className="table-fixed border-collapse">
                           <colgroup>
-                            <col style={{ width: '67%' }} />
-                            <col style={{ width: '16.5%' }} />
-                            <col style={{ width: '16.5%' }} />
+                            {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                              <>
+                                <col style={{ width: '54%' }} />
+                                <col style={{ width: '28%' }} />
+                                <col style={{ width: '18%' }} />
+                              </>
+                            ) : (
+                              <>
+                                <col style={{ width: '67%' }} />
+                                <col style={{ width: '16.5%' }} />
+                                <col style={{ width: '16.5%' }} />
+                              </>
+                            )}
                           </colgroup>
                           <TableBody>
                             {section.items?.map((item, idx) => (
@@ -1754,6 +1777,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </TableBody>
                         </Table>
                       </div>
+                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.priceFormula && (
+                        <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1.5">
+                          <p className="text-[13px] md:text-[14px] font-semibold text-[#e8d9b0] leading-snug">
+                            {section.priceFormula}
+                          </p>
+                        </div>
+                      )}
+                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.example && (
+                        <div className="px-2 pt-0.5 pb-2">
+                          <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-snug">
+                            <span className="text-[#bfa76a] font-semibold">{section.example.title}:</span>{' '}
+                            {section.example.lines.join(', ')}.{' '}
+                            {section.example.calculation}{' '}
+                            <span className="text-white font-semibold">(Cena: {section.example.price})</span>
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </AccordionContent>
