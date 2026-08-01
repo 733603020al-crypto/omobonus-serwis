@@ -9,6 +9,7 @@ import { Header } from '@/components/header'
 import ServiceAccordion from '@/components/service-accordion'
 import { CallButton } from '@/components/ui/CallButton'
 import BrandTicker from '@/components/brand-ticker'
+import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import { FadeSlideText } from '@/components/ui/FadeSlideText'
 import type { ServiceData } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
@@ -224,7 +225,11 @@ export function ServicePageTemplate({
                   </div>
                 </div>
               </div>
-              {slugBrands && slugBrands.length > 0 && (
+              {slug === 'druk-3d-na-zamowienie' ? (
+                <div className="mt-[40px]">
+                  <PrintedPartsTicker />
+                </div>
+              ) : slugBrands && slugBrands.length > 0 && (
                 <div className="mt-[40px]">
                   <BrandTicker brandNames={slugBrands} />
                 </div>
