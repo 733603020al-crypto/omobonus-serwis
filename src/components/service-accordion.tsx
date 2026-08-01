@@ -414,6 +414,7 @@ const renderMobileServiceRow = (
   isLast: boolean,
   shouldHighlightPrices: boolean,
   parseServiceText: (text: string) => { main: string; parentheses: string | null },
+  plainPrice: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -432,13 +433,20 @@ const renderMobileServiceRow = (
       {/* Правая колонка - цена */}
       <div
         className={cn(
-          'flex-shrink-0 min-w-[80px] max-w-[90px] text-center leading-[1.3] pr-2',
+          'flex-shrink-0 text-center leading-[1.3] pr-2',
+          plainPrice ? 'min-w-[110px] max-w-[130px]' : 'min-w-[80px] max-w-[90px]',
           shouldHighlightPrices
             ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
             : ''
         )}
       >
-        {renderPriceLines(item.price, item.link)}
+        {plainPrice ? (
+          <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
+            {item.price}
+          </div>
+        ) : (
+          renderPriceLines(item.price, item.link)
+        )}
       </div>
     </div>
   )
@@ -1726,6 +1734,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             idx === (section.items?.length ?? 0) - 1,
                             false,
                             parseServiceText,
+                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza',
                           ),
                         )}
                       </div>
@@ -1767,7 +1776,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   })()}
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
-                                  {renderPriceLines(item.price, item.link)}
+                                  {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                                    <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
+                                      {item.price}
+                                    </div>
+                                  ) : (
+                                    renderPriceLines(item.price, item.link)
+                                  )}
                                 </TableCell>
                                 <TableCell className="text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4">
                                   {renderDurationValue(item.duration)}

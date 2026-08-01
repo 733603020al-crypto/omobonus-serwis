@@ -2805,14 +2805,12 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       id: 'diagnoza',
       title: 'Druk 3D z gotowego projektu',
       collapsedCaption: 'Cena zależna od materiału, masy i czasu druku',
-      intro:
-        'Masz gotowy model STL, STEP, 3MF lub OBJ?\nWyślij plik, a przygotujemy go do druku i wykonamy element na drukarce 3D.',
       items: [
         { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
-        { service: 'PLA', price: '0,30 zł/g + 8 zł/h druku', duration: '1–2 dni' },
-        { service: 'PETG', price: '0,35 zł/g + 9 zł/h druku', duration: '1–2 dni' },
-        { service: 'ABS / ASA', price: '0,45 zł/g + 12 zł/h druku', duration: '1–2 dni' },
-        { service: 'TPU', price: '0,60 zł/g + 12 zł/h druku', duration: '1–2 dni' },
+        { service: 'PLA', price: '0,30 zł/g + 8 zł/h', duration: '1–2 dni' },
+        { service: 'PETG', price: '0,35 zł/g + 9 zł/h', duration: '1–2 dni' },
+        { service: 'ABS / ASA', price: '0,45 zł/g + 12 zł/h', duration: '1–2 dni' },
+        { service: 'TPU', price: '0,60 zł/g + 12 zł/h', duration: '1–2 dni' },
         { service: 'Realizacja ekspresowa', price: '+50%', duration: 'do 24 h' },
         { service: 'Wysyłka', price: 'według cennika przewoźnika', duration: '—' },
       ],
