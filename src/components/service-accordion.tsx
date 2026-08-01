@@ -419,6 +419,39 @@ const renderPlainPriceWithUnits = (price: string) => {
   )
 }
 
+// Cena materiału (PLA/PETG/ABS-ASA/TPU) jako dwa bloki obok siebie:
+// góra wartości głównym białym stylem, pod spodem jednostka tym samym
+// małym złotym stylem co opisy materiałów (renderParenthesesText),
+// ale bez nawiasów.
+const renderMaterialPrice = (price: string) => {
+  const plusIdx = price.indexOf('+')
+  if (plusIdx === -1) return renderPlainPriceWithUnits(price)
+  const mainPart = price.slice(0, plusIdx).trim() // "0,30 zł/gram"
+  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/godz."
+
+  const splitValueUnit = (part: string) => {
+    const m = part.match(/^(.*zł)(\/.*)$/)
+    return m ? { value: m[1], unit: m[2] } : { value: part, unit: '' }
+  }
+
+  const main = splitValueUnit(mainPart)
+  const surcharge = splitValueUnit(surchargePart)
+
+  const block = (value: string, unit: string, key: string) => (
+    <div key={key} className="flex flex-col items-center">
+      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
+      {unit && <div className="text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+    </div>
+  )
+
+  return (
+    <div className="flex items-start justify-center gap-2">
+      {block(main.value, main.unit, 'main')}
+      {block(surcharge.value, surcharge.unit, 'surcharge')}
+    </div>
+  )
+}
+
 // Мобильная версия строки услуги (flex layout)
 const renderMobileServiceRow = (
   item: { service: string; price: string; duration: string; link?: string },
@@ -428,6 +461,7 @@ const renderMobileServiceRow = (
   shouldHighlightPrices: boolean,
   parseServiceText: (text: string) => { main: string; parentheses: string | null },
   plainPrice: boolean = false,
+  hideSubtitle: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -441,7 +475,7 @@ const renderMobileServiceRow = (
         <div className="font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
-        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
       </div>
       {/* Правая колонка - цена */}
       <div
@@ -454,9 +488,13 @@ const renderMobileServiceRow = (
         )}
       >
         {plainPrice ? (
-          <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
-            {renderPlainPriceWithUnits(item.price)}
-          </div>
+          item.price.includes('zł/gram') ? (
+            renderMaterialPrice(item.price)
+          ) : (
+            <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
+              {renderPlainPriceWithUnits(item.price)}
+            </div>
+          )
         ) : (
           renderPriceLines(item.price, item.link)
         )}
@@ -1767,6 +1805,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             false,
                             parseServiceText,
                             service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza',
+                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza',
                           ),
                         )}
                       </div>
@@ -1809,9 +1848,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
                                   {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
-                                    <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
-                                      {renderPlainPriceWithUnits(item.price)}
-                                    </div>
+                                    item.price.includes('zł/gram') ? (
+                                      renderMaterialPrice(item.price)
+                                    ) : (
+                                      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
+                                        {renderPlainPriceWithUnits(item.price)}
+                                      </div>
+                                    )
                                   ) : (
                                     renderPriceLines(item.price, item.link)
                                   )}
