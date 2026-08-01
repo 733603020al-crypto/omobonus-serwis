@@ -1199,12 +1199,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                     {section.id !== 'faq' && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                       <>
-                        <div className="flex items-center gap-3 ml-3 sm:gap-4 sm:ml-4 flex-shrink-0">
+                        <div
+                          className={cn(
+                            'flex items-center ml-3 sm:ml-4 flex-shrink-0',
+                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                              ? 'gap-0 md:w-[calc(46%-9.2px)] md:mr-[10px]'
+                              : 'gap-3 sm:gap-4'
+                          )}
+                        >
                           <div
                             className={cn(
                               'flex items-center justify-center',
                               service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
-                                ? 'min-w-[96px] max-w-[110px] sm:min-w-[130px] sm:max-w-[150px]'
+                                ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                   ? 'min-w-[96px] sm:min-w-[120px]'
                                   : 'min-w-0 sm:min-w-[120px]'
@@ -1347,10 +1354,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                            ? 'justify-center'
-                                            : 'justify-end',
+                                          'text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
+                                          service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                                            ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
+                                            : cn(
+                                                'flex items-center gap-2 pl-1 md:pl-0',
+                                                section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                                  ? 'justify-center'
+                                                  : 'justify-end'
+                                              ),
                                           'md:cursor-default'
                                         )}
                                         role="button"
@@ -1360,7 +1372,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <span className="hidden sm:inline">{priceHeaderFull}</span>
                                         <span className="inline sm:hidden">{priceHeaderShort}</span>
                                         <span
-                                          className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer"
+                                          className={cn(
+                                            'inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer',
+                                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                                              ? 'md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 ml-1 sm:ml-0'
+                                              : 'ml-1 -mr-2 sm:mr-0'
+                                          )}
                                         >
                                           <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                         </span>
@@ -1427,9 +1444,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                ? 'min-w-[120px]'
-                                : 'min-w-0'
+                              service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                                ? 'md:w-[39.1304%] md:pl-4 md:pr-2'
+                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                  ? 'min-w-[120px]'
+                                  : 'min-w-0'
                             )}
                           >
                             <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
