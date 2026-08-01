@@ -499,6 +499,8 @@ const renderMobileServiceRow = (
         {plainPrice ? (
           item.price.includes('zł/gram') ? (
             renderMaterialPrice(item.price)
+          ) : item.price.includes('\n') ? (
+            renderPriceLines(item.price, item.link)
           ) : (
             <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
               {renderPlainPriceWithUnits(item.price)}
@@ -1859,6 +1861,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
                                     item.price.includes('zł/gram') ? (
                                       renderMaterialPrice(item.price)
+                                    ) : item.price.includes('\n') ? (
+                                      renderPriceLines(item.price, item.link)
                                     ) : (
                                       <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
                                         {renderPlainPriceWithUnits(item.price)}

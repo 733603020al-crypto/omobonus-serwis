@@ -2811,7 +2811,7 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', price: '0,35 zł/gram + 9 zł/godz.', duration: '1–2 dni' },
         { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', price: '0,45 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
         { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', price: '0,60 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
-        { service: 'Realizacja ekspresowa', price: '+50%', duration: 'do 24 h' },
+        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
         { service: 'Wysyłka', price: 'według cennika przewoźnika', duration: '—' },
       ],
       priceFormula:
