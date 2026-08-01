@@ -437,17 +437,26 @@ const renderMaterialPrice = (price: string) => {
   const main = splitValueUnit(mainPart)
   const surcharge = splitValueUnit(surchargePart)
 
-  const block = (value: string, unit: string, key: string) => (
-    <div key={key} className="flex flex-col items-center">
-      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
-      {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+  const block = (value: string, unit: string, key: string, prefix?: string) => (
+    <div key={key} className="flex items-start">
+      {prefix && (
+        <span className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
+      )}
+      <div className="flex flex-col items-center">
+        <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
+        {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+      </div>
     </div>
   )
+
+  const surchargeMatch = surcharge.value.match(/^(\+)\s*(.*)$/)
+  const surchargePrefix = surchargeMatch ? surchargeMatch[1] : undefined
+  const surchargeValue = surchargeMatch ? surchargeMatch[2] : surcharge.value
 
   return (
     <div className="flex items-start justify-center gap-2">
       {block(main.value, main.unit, 'main')}
-      {block(surcharge.value, surcharge.unit, 'surcharge')}
+      {block(surchargeValue, surcharge.unit, 'surcharge', surchargePrefix)}
     </div>
   )
 }
