@@ -440,7 +440,7 @@ const renderMaterialPrice = (price: string) => {
   const block = (value: string, unit: string, key: string) => (
     <div key={key} className="flex flex-col items-center">
       <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
-      {unit && <div className="text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+      {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
     </div>
   )
 
