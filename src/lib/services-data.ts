@@ -2812,7 +2812,7 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', price: '0,45 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
         { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', price: '0,60 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
         { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
-        { service: 'Wysyłka', price: 'według cennika przewoźnika', duration: '—' },
+        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', price: 'według cennika\nprzewoźnika', duration: 'do 24 h' },
       ],
       priceFormula:
         'Cena końcowa = 25 zł przygotowania + koszt zużytego materiału + czas pracy drukarki',

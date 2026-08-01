@@ -461,6 +461,18 @@ const renderMaterialPrice = (price: string) => {
   )
 }
 
+// Dwuliniowa cena (np. "według cennika" / "przewoźnika"): góra głównym
+// białym stylem, dół tym samym małym złotym stylem co /gram, /godz.
+const renderTwoLinePrice = (price: string) => {
+  const [main, sub] = price.split('\n')
+  return (
+    <div className="flex flex-col items-center">
+      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3]">{main}</div>
+      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+    </div>
+  )
+}
+
 // Мобильная версия строки услуги (flex layout)
 const renderMobileServiceRow = (
   item: { service: string; price: string; duration: string; link?: string },
@@ -499,6 +511,8 @@ const renderMobileServiceRow = (
         {plainPrice ? (
           item.price.includes('zł/gram') ? (
             renderMaterialPrice(item.price)
+          ) : item.service.startsWith('Wysyłka') ? (
+            renderTwoLinePrice(item.price)
           ) : item.price.includes('\n') ? (
             renderPriceLines(item.price, item.link)
           ) : (
@@ -1861,6 +1875,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
                                     item.price.includes('zł/gram') ? (
                                       renderMaterialPrice(item.price)
+                                    ) : item.service.startsWith('Wysyłka') ? (
+                                      renderTwoLinePrice(item.price)
                                     ) : item.price.includes('\n') ? (
                                       renderPriceLines(item.price, item.link)
                                     ) : (
