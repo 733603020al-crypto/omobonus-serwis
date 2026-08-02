@@ -42,7 +42,7 @@ function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
 
 export default function PrintedPartsTicker() {
   return (
-    <section className="relative w-full h-24 -mt-12 -mb-12 md:h-[150px] md:-mt-[75px] md:-mb-[75px] z-10 overflow-hidden">
+    <section className="relative w-full h-24 -mt-12 -mb-12 md:h-[150px] md:-mt-[30px] md:-mb-[75px] z-10 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
