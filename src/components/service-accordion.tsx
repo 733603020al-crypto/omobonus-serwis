@@ -1444,18 +1444,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         tabIndex={0}
                                         aria-label="Informacja o cenach"
                                       >
-                                        <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                        <span
-                                          className={cn(
-                                            'inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer',
-                                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
-                                              ? 'md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 ml-1 sm:ml-0'
-                                              : 'ml-1 -mr-2 sm:mr-0'
-                                          )}
-                                        >
-                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                        </span>
+                                        {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                                          <span className="relative inline-block">
+                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                            <span className="md:absolute md:left-full md:top-1/2 md:-translate-y-1/2 md:ml-3 ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                            </span>
+                                          </span>
+                                        ) : (
+                                          <>
+                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                            <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                            </span>
+                                          </>
+                                        )}
                                       </div>
                                     </TooltipTrigger>
                                     <TooltipContent
@@ -1471,7 +1476,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           ? {
                                             side: 'top',
                                             sideOffset: 4,
-                                            ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: 51 } : {}),
+                                            ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
