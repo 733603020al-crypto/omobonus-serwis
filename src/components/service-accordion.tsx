@@ -473,6 +473,20 @@ const renderTwoLinePrice = (price: string) => {
   )
 }
 
+// Cena "Realizacja ekspresowa": górna linia ("+50%") pozostaje w oryginalnym
+// stylu renderPriceLines (nie zmieniamy jej), tylko dolna linia ("do ceny")
+// dostaje dokładnie taki sam styl jak tekst przykładu (font-table-main
+// text-[14px] text-[#cbb27c] leading-relaxed) zamiast domyślnego 12px.
+const renderExpressPrice = (price: string) => {
+  const [main, sub] = price.split('\n')
+  return (
+    <div className="flex flex-col items-center">
+      <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+    </div>
+  )
+}
+
 // Мобильная версия строки услуги (flex layout)
 const renderMobileServiceRow = (
   item: { service: string; price: string; duration: string; link?: string },
@@ -513,6 +527,8 @@ const renderMobileServiceRow = (
             renderMaterialPrice(item.price)
           ) : item.service.startsWith('Wysyłka') ? (
             renderTwoLinePrice(item.price)
+          ) : item.service.startsWith('Realizacja ekspresowa') ? (
+            renderExpressPrice(item.price)
           ) : item.price.includes('\n') ? (
             renderPriceLines(item.price, item.link)
           ) : (
@@ -1281,11 +1297,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           >
                             {section.id === 'diagnoza' && (
-                              service.slug === 'druk-3d-na-zamowienie' ? (
-                                <span className="text-[11px] sm:text-xs font-serif text-[#bfa76a] leading-tight text-center whitespace-normal group-data-[state=open]:hidden">
-                                  {section.collapsedCaption}
-                                </span>
-                              ) : (
+                              service.slug === 'druk-3d-na-zamowienie' ? null : (
                                 <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
                                   {t.gratisUpper}
                                 </span>
@@ -1455,10 +1467,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
-                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow'
+                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie'
                                           ? {
                                             side: 'top',
                                             sideOffset: 4,
+                                            ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: 51 } : {}),
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
@@ -1473,7 +1486,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       {isSpecialTooltipService ? (
                                         <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
-                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (
+                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie' ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
@@ -1489,7 +1502,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </Tooltip>
                                 )}
                               </TooltipProvider>
-                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && (
+                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && service.slug !== 'druk-3d-na-zamowienie' && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
                                   style={{
@@ -1877,6 +1890,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       renderMaterialPrice(item.price)
                                     ) : item.service.startsWith('Wysyłka') ? (
                                       renderTwoLinePrice(item.price)
+                                    ) : item.service.startsWith('Realizacja ekspresowa') ? (
+                                      renderExpressPrice(item.price)
                                     ) : item.price.includes('\n') ? (
                                       renderPriceLines(item.price, item.link)
                                     ) : (

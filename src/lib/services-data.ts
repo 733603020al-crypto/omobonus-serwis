@@ -24,7 +24,6 @@ export interface PricingSection {
   items: PricingItem[]
   subcategories?: PricingSubcategory[] // Podkategorie (dla "naprawy" lub "faq")
   footer?: string // Footer text (displayed below title when section is open)
-  collapsedCaption?: string // Krótki podpis pod tytułem w stanie zwiniętym (zamiast domyślnego GRATIS)
   intro?: string // Tekst wprowadzający wyświetlany na początku otwartej sekcji, przed tabelą
   priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą (biały, styl zwykłej pozycji)
   example?: string // Jedna mała złota linia z przykładem wyliczenia, pod priceFormula
@@ -2799,7 +2798,6 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
     sections[diagnosisIndex] = {
       id: 'diagnoza',
       title: 'Druk 3D z gotowego projektu',
-      collapsedCaption: 'Cena zależna od materiału, masy i czasu druku',
       items: [
         { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
         { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', price: '0,30 zł/gram + 8 zł/godz.', duration: '1–2 dni' },
