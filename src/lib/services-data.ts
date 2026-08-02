@@ -2829,7 +2829,9 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
     })
   }
 
-  return sections
+  // Na tej stronie nie pokazujemy sekcji Dojazd / Czyszczenie i konserwacja /
+  // Naprawy i usługi serwisowe — FAQ ma iść zaraz po "Projektowanie modeli 3D".
+  return sections.filter(section => !['dojazd', 'konserwacja', 'naprawy'].includes(section.id))
 }
 
 
