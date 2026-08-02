@@ -234,6 +234,7 @@ export const labels: ServicePageLabels = {
   fadeSlideDefault: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")',
   fadeSlideDrukarkaZastepcza: 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych',
   fadeSlideWynajem: 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.',
+  fadeSlideDruk3DZamowienie: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "cena od 50 zł" lub "cena do uzgodnienia")',
   relatedCta: 'Zobacz cennik',
   relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
   drukarkaZastepczaNote: (

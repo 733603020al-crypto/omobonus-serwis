@@ -53,6 +53,7 @@ export interface ServicePageLabels {
   fadeSlideDefault: string
   fadeSlideDrukarkaZastepcza: string
   fadeSlideWynajem: string
+  fadeSlideDruk3DZamowienie?: string
   relatedCta: string
   relatedIconAltSuffix: string
   drukarkaZastepczaNote: ReactNode
@@ -240,7 +241,9 @@ export function ServicePageTemplate({
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
                       ? labels.fadeSlideWynajem
-                      : labels.fadeSlideDefault}
+                      : slug === 'druk-3d-na-zamowienie'
+                        ? (labels.fadeSlideDruk3DZamowienie ?? labels.fadeSlideDefault)
+                        : labels.fadeSlideDefault}
                 </FadeSlideText>
               </div>
             </>
