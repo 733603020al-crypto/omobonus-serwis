@@ -2829,6 +2829,109 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
     })
   }
 
+  // Osobny FAQ tylko dla tej strony (dotyczący druku 3D na zamówienie,
+  // projektowania modeli, modyfikacji plików, materiałów, terminów, wysyłki
+  // i odtwarzania części) — nie nadpisuje wspólnej listy pytań, bo `faq`
+  // w `sections` jest już osobnym klonem (patrz createFaqSection/cloneSections).
+  const faqIndex = sections.findIndex(section => section.id === 'faq')
+  if (faqIndex !== -1) {
+    sections[faqIndex] = {
+      ...sections[faqIndex],
+      subcategories: [
+        {
+          id: 'faq-1',
+          title: 'Czy mogę zamówić druk 3D bez gotowego modelu?',
+          items: [],
+          answer: 'Tak. Możesz przesłać zdjęcia, szkic, dokładne wymiary lub dostarczyć istniejący element. Najpierw bezpłatnie ocenimy możliwość wykonania projektu, a następnie podamy koszt jego przygotowania.',
+        },
+        {
+          id: 'faq-2',
+          title: 'Jakie pliki mogę przesłać do druku 3D?',
+          items: [],
+          answer: 'Najlepiej przesłać gotowy model w formacie STL, STEP lub 3MF. Jeśli masz plik w innym formacie, prześlij go do wstępnej oceny — sprawdzimy, czy możemy go wykorzystać lub odpowiednio przygotować.',
+        },
+        {
+          id: 'faq-3',
+          title: 'Ile kosztuje druk 3D na zamówienie?',
+          items: [],
+          answer: 'Cena składa się z przygotowania wydruku, ilości użytego materiału oraz czasu pracy drukarki. Wszystkie stawki są podane w cenniku powyżej, dzięki czemu jeszcze przed realizacją można dokładnie określić koszt zamówienia.',
+        },
+        {
+          id: 'faq-4',
+          title: 'Ile kosztuje zaprojektowanie modelu 3D?',
+          items: [],
+          answer: 'Zależy to od zakresu projektu. Wstępna ocena projektu jest bezpłatna, a ceny prostych modyfikacji, modeli technicznych oraz odtwarzania części są podane w cenniku. Jeżeli projekt wymaga więcej pracy, dodatkowy czas rozliczamy zgodnie z podaną stawką.',
+        },
+        {
+          id: 'faq-5',
+          title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
+          items: [],
+          answer: 'Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
+        },
+        {
+          id: 'faq-6',
+          title: 'Czy mogę zamówić tylko jedną sztukę?',
+          items: [],
+          answer: 'Tak. Realizujemy zarówno pojedyncze wydruki, prototypy i części zamienne, jak również krótkie serie jednakowych elementów.',
+        },
+        {
+          id: 'faq-7',
+          title: 'Czy możecie odtworzyć uszkodzoną lub niedostępną część?',
+          items: [],
+          answer: 'Tak. Proste części możemy odtworzyć na podstawie dostarczonego wzoru, zdjęć i dokładnych wymiarów. Przy bardziej skomplikowanej geometrii możemy poprosić o dostarczenie oryginalnego elementu, aby dokładniej odwzorować jego kształt.',
+        },
+        {
+          id: 'faq-8',
+          title: 'Czy możecie poprawić lub zmodyfikować mój plik STL?',
+          items: [],
+          answer: 'Tak. Możemy wykonać drobne zmiany, takie jak korekta wymiarów, otworów, dopasowania lub innych prostych elementów modelu. Większe modyfikacje wyceniamy jako pracę projektową.',
+        },
+        {
+          id: 'faq-9',
+          title: 'Jak dokładny jest wydruk 3D?',
+          items: [],
+          answer: 'Dokładność zależy od geometrii modelu, materiału, orientacji wydruku i wymaganych pasowań. Jeżeli konkretny wymiar jest szczególnie ważny — na przykład otwór, średnica, zatrzask lub miejsce montażowe — zaznacz to przy składaniu zamówienia.',
+        },
+        {
+          id: 'faq-10',
+          title: 'Czy wydrukowana część będzie tak samo wytrzymała jak oryginał?',
+          items: [],
+          answer: 'Nie zawsze. Wytrzymałość zależy od materiału, konstrukcji elementu, kierunku warstw i warunków, w których część będzie pracowała. Jeśli uznamy, że druk 3D nie będzie odpowiednim rozwiązaniem do danego zastosowania, poinformujemy o tym przed realizacją.',
+        },
+        {
+          id: 'faq-11',
+          title: 'Ile trwa realizacja zamówienia?',
+          items: [],
+          answer: 'Standardowy czas realizacji wydruków wynosi zwykle 1–2 dni. Czas wykonania projektu zależy od jego złożoności. Dostępna jest również realizacja ekspresowa do 24 godzin, jeśli pozwala na to czas potrzebny na wykonanie wydruku.',
+        },
+        {
+          id: 'faq-12',
+          title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
+          items: [],
+          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
+        },
+        {
+          id: 'faq-13',
+          title: 'Jak wygląda realizacja zamówienia?',
+          items: [],
+          answer: 'Przesyłasz model 3D albo informacje potrzebne do jego zaprojektowania. Sprawdzamy projekt, ustalamy materiał, cenę i termin. Po akceptacji wykonujemy projekt lub wydruk, a gotowy element możesz odebrać we Wrocławiu albo zamówić wysyłkę.',
+        },
+        {
+          id: 'faq-14',
+          title: 'Czy wysyłacie gotowe wydruki?',
+          items: [],
+          answer: 'Tak. Gotowe zamówienie możemy wysłać kurierem lub do Paczkomatu. Koszt wysyłki naliczany jest według cennika przewoźnika.',
+        },
+        {
+          id: 'faq-15',
+          title: 'Czy podane ceny są netto czy brutto?',
+          items: [],
+          answer: 'Ceny w cenniku są cenami netto.',
+        },
+      ],
+    }
+  }
+
   // Na tej stronie nie pokazujemy sekcji Dojazd / Czyszczenie i konserwacja /
   // Naprawy i usługi serwisowe — FAQ ma iść zaraz po "Projektowanie modeli 3D".
   return sections.filter(section => !['dojazd', 'konserwacja', 'naprawy'].includes(section.id))
