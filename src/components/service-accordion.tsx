@@ -40,6 +40,8 @@ export const getIconForSection = (sectionId: string) => {
   switch (sectionId) {
     case 'diagnoza':
       return manifest.P1_Diagnoza_i_wycena
+    case 'projektowanie-modeli':
+      return manifest.P1_Diagnoza_i_wycena
     case 'dojazd':
       return manifest.P2_Dojazd
     case 'konserwacja':
@@ -405,6 +407,12 @@ const renderSectionTitleMobile = (title: string) => {
   }
   return <>{title}</>
 }
+
+// Sekcje strony druk-3d-na-zamowienie, które mają korzystać z tego samego
+// niestandardowego układu cennika co "Druk 3D z gotowego projektu" (id 'diagnoza').
+const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
+const isDruk3DCustomSection = (slug: string, sectionId: string) =>
+  slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
 
 // Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
 // (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
@@ -1281,7 +1289,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <div
                           className={cn(
                             'flex items-center ml-3 sm:ml-4 flex-shrink-0',
-                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                            isDruk3DCustomSection(service.slug, section.id)
                               ? 'gap-0 md:w-[calc(46%-9.2px)] md:mr-[10px]'
                               : 'gap-3 sm:gap-4'
                           )}
@@ -1289,7 +1297,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                              isDruk3DCustomSection(service.slug, section.id)
                                 ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                   ? 'min-w-[96px] sm:min-w-[120px]'
@@ -1430,7 +1438,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <div
                                         className={cn(
                                           'text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
-                                          service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                                          isDruk3DCustomSection(service.slug, section.id)
                                             ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
                                             : cn(
                                                 'flex items-center gap-2 pl-1 md:pl-0',
@@ -1444,7 +1452,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         tabIndex={0}
                                         aria-label="Informacja o cenach"
                                       >
-                                        {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                                        {isDruk3DCustomSection(service.slug, section.id) ? (
                                           <span className="relative inline-block">
                                             <span className="hidden sm:inline">{priceHeaderFull}</span>
                                             <span className="inline sm:hidden">{priceHeaderShort}</span>
@@ -1525,7 +1533,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza'
+                              isDruk3DCustomSection(service.slug, section.id)
                                 ? 'md:w-[39.1304%] md:pl-4 md:pr-2'
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                   ? 'min-w-[120px]'
@@ -1832,7 +1840,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     })()
                   ) : (
                     <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
-                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.intro && (
+                      {isDruk3DCustomSection(service.slug, section.id) && section.intro && (
                         <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-[1.4] px-2 pt-2 pb-2 whitespace-pre-line">
                           {section.intro}
                         </p>
@@ -1847,8 +1855,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             idx === (section.items?.length ?? 0) - 1,
                             false,
                             parseServiceText,
-                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza',
-                            service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza',
+                            isDruk3DCustomSection(service.slug, section.id),
+                            isDruk3DCustomSection(service.slug, section.id),
                           ),
                         )}
                       </div>
@@ -1856,7 +1864,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       <div className="hidden md:block">
                         <Table className="table-fixed border-collapse">
                           <colgroup>
-                            {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                            {isDruk3DCustomSection(service.slug, section.id) ? (
                               <>
                                 <col style={{ width: '54%' }} />
                                 <col style={{ width: '28%' }} />
@@ -1890,7 +1898,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   })()}
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
-                                  {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' ? (
+                                  {isDruk3DCustomSection(service.slug, section.id) ? (
                                     item.price.includes('zł/gram') ? (
                                       renderMaterialPrice(item.price)
                                     ) : item.service.startsWith('Wysyłka') ? (
@@ -1916,14 +1924,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </TableBody>
                         </Table>
                       </div>
-                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.priceFormula && (
+                      {isDruk3DCustomSection(service.slug, section.id) && section.priceFormula && (
                         <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
                           <p className="font-table-main text-[16px] text-white leading-[1.3]">
                             {section.priceFormula}
                           </p>
                         </div>
                       )}
-                      {service.slug === 'druk-3d-na-zamowienie' && section.id === 'diagnoza' && section.example && (
+                      {isDruk3DCustomSection(service.slug, section.id) && section.example && (
                         <div className="px-2 pb-2">
                           <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
                             {section.example}
