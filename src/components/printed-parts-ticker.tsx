@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 const parts: { name: string; src: string; alt: string; width: number; height: number }[] = [
@@ -15,6 +18,14 @@ const parts: { name: string; src: string; alt: string; width: number; height: nu
   { name: "power-supply-cream-green", src: "/images/parts-strip/power-supply-cream-green.avif", alt: "Obudowa zasilacza wydrukowana w 3D", width: 488, height: 300 },
   { name: "keychains", src: "/images/parts-strip/keychains.avif", alt: "Breloki wydrukowane w 3D", width: 406, height: 300 },
 ]
+
+// Docelowa prędkość ruchu — ta sama co w standardowym BrandTicker (0.4px/klatkę
+// przy 60fps ≈ 24px/s), tak aby wizualna prędkość była identyczna niezależnie
+// od tego, ile obrazów jest w pasku i jak są szerokie.
+const TARGET_SPEED_PX_PER_SEC = 24
+// Wartość używana tylko do pierwszego renderu, zanim JS zdąży zmierzyć realną
+// szerokość toru (przybliżenie dla obecnego zestawu 13 obrazów na desktopie).
+const FALLBACK_DURATION_SEC = 135
 
 function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
   return (
@@ -42,6 +53,29 @@ function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
 }
 
 export default function PrintedPartsTicker() {
+  const trackRef = useRef<HTMLDivElement | null>(null)
+  const [durationSec, setDurationSec] = useState(FALLBACK_DURATION_SEC)
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const updateDuration = () => {
+      // Tor zawiera 2 kopie grupy (animacja jedzie do -50%), więc dystans do
+      // przebycia w jednej pętli to szerokość jednej kopii.
+      const oneGroupWidth = track.scrollWidth / 2
+      if (oneGroupWidth > 0) {
+        setDurationSec(oneGroupWidth / TARGET_SPEED_PX_PER_SEC)
+      }
+    }
+
+    updateDuration()
+    const resizeObserver = new ResizeObserver(updateDuration)
+    resizeObserver.observe(track)
+
+    return () => resizeObserver.disconnect()
+  }, [])
+
   return (
     <section className="relative w-full h-24 -mt-12 -mb-12 md:h-[150px] md:-mt-[30px] md:-mb-[75px] z-10 overflow-hidden">
       <div
@@ -50,8 +84,9 @@ export default function PrintedPartsTicker() {
       />
       <div className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible">
         <div
+          ref={trackRef}
           className="flex items-center parts-ticker-track"
-          style={{ gap: "40px", width: "max-content" }}
+          style={{ gap: "40px", width: "max-content", animationDuration: `${durationSec}s` }}
         >
           <PartsGroup />
           <PartsGroup ariaHidden />
@@ -59,7 +94,9 @@ export default function PrintedPartsTicker() {
       </div>
       <style>{`
         .parts-ticker-track {
-          animation: parts-ticker-scroll 32s linear infinite;
+          animation-name: parts-ticker-scroll;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
         }
         @keyframes parts-ticker-scroll {
           from { transform: translateX(0); }
