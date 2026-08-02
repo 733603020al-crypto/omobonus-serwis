@@ -235,7 +235,7 @@ export function ServicePageTemplate({
                   <BrandTicker brandNames={slugBrands} />
                 </div>
               )}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slug === 'druk-3d-na-zamowienie' ? ' mt-[81px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
                 <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
