@@ -9,6 +9,7 @@ const parts: { name: string; src: string; alt: string; width: number; height: nu
   { name: "blue-wheel-hub", src: "/images/parts-strip/blue-wheel-hub.avif", alt: "Piasta koła wydrukowana w 3D", width: 293, height: 300 },
   { name: "orange-black-gearbox", src: "/images/parts-strip/orange-black-gearbox.avif", alt: "Przekładnia wydrukowana w 3D", width: 342, height: 300 },
   { name: "gearbox-extra", src: "/images/parts-strip/gearbox-extra.avif", alt: "Element mechaniczny wydrukowany w 3D", width: 468, height: 300 },
+  { name: "power-supply", src: "/images/parts-strip/power-supply.avif", alt: "Obudowa zasilacza wydrukowana w 3D", width: 333, height: 300 },
 ]
 
 function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
