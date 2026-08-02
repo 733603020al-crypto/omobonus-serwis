@@ -481,10 +481,11 @@ const renderTwoLinePrice = (price: string) => {
   )
 }
 
-// Cena "Realizacja ekspresowa": górna linia ("+50%") pozostaje w oryginalnym
-// stylu renderPriceLines (nie zmieniamy jej), tylko dolna linia ("do ceny")
-// dostaje dokładnie taki sam styl jak tekst przykładu (font-table-main
-// text-[14px] text-[#cbb27c] leading-relaxed) zamiast domyślnego 12px.
+// Domyślna cena dwuliniowa dla niestandardowych cenników druk-3d-na-zamowienie
+// (np. "Realizacja ekspresowa": "+50%\ndo ceny" lub "Wstępna ocena projektu":
+// "GRATIS\ndo 15 min konsultacji"): górna linia zachowuje oryginalny styl
+// renderPriceLines, dolna dostaje dokładnie taki sam styl jak tekst przykładu
+// (font-table-main text-[14px] text-[#cbb27c] leading-relaxed) zamiast domyślnego 12px.
 const renderExpressPrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
@@ -538,7 +539,7 @@ const renderMobileServiceRow = (
           ) : item.service.startsWith('Realizacja ekspresowa') ? (
             renderExpressPrice(item.price)
           ) : item.price.includes('\n') ? (
-            renderPriceLines(item.price, item.link)
+            renderExpressPrice(item.price)
           ) : (
             <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
               {renderPlainPriceWithUnits(item.price)}
@@ -1906,7 +1907,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     ) : item.service.startsWith('Realizacja ekspresowa') ? (
                                       renderExpressPrice(item.price)
                                     ) : item.price.includes('\n') ? (
-                                      renderPriceLines(item.price, item.link)
+                                      renderExpressPrice(item.price)
                                     ) : (
                                       <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
                                         {renderPlainPriceWithUnits(item.price)}

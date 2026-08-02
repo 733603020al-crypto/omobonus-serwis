@@ -2811,25 +2811,21 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       example: 'Przykład: Wydruk z PLA 100 g materiału przy 5 godzinach druku — 25 zł (przygotowanie wydruku) + 100 g materiału × 0,30 zł/gram + 5 godz. druku × 8 zł/h = 95 zł',
     }
 
-    // TYMCZASOWY fundament pod przyszły cennik projektowania modeli 3D —
-    // na razie 1:1 kopia sekcji "Druk 3D z gotowego projektu" (do zastąpienia
-    // realną treścią w kolejnym zadaniu). Musi używać dokładnie tego samego
-    // układu/komponentu, dlatego id jest dodany do DRUK3D_CUSTOM_SECTION_IDS
-    // w service-accordion.tsx.
+    // Cennik projektowania modeli 3D — używa dokładnie tego samego
+    // układu/komponentu co "Druk 3D z gotowego projektu", dlatego id jest
+    // dodany do DRUK3D_CUSTOM_SECTION_IDS w service-accordion.tsx.
     sections.splice(diagnosisIndex + 1, 0, {
       id: 'projektowanie-modeli',
       title: 'Projektowanie modeli 3D',
       items: [
-        { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
-        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', price: '0,30 zł/gram + 8 zł/godz.', duration: '1–2 dni' },
-        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', price: '0,35 zł/gram + 9 zł/godz.', duration: '1–2 dni' },
-        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', price: '0,45 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
-        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', price: '0,60 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
-        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
-        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', price: 'według cennika\nprzewoźnika', duration: 'do 24 h' },
+        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', price: 'GRATIS\ndo 15 min konsultacji', duration: 'do 24 h' },
+        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', price: '49 zł\ndo 15 min pracy', duration: 'do 24 h' },
+        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', price: '149 zł\ndo 60 min pracy', duration: '1–2 dni' },
+        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', price: '199 zł\ndo 90 min pracy', duration: '1–2 dni' },
+        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', price: '299 zł\ndo 2 godz. pracy', duration: '2–3 dni' },
+        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', price: '35 zł\nza każde dodatkowe 15 min pracy', duration: 'wg projektu' },
+        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', price: '70 zł\ndo 30 min pracy', duration: 'do 24 h' },
       ],
-      priceFormula: 'Cena końcowa = przygotowanie wydruku + materiał + czas druku',
-      example: 'Przykład: Wydruk z PLA 100 g materiału przy 5 godzinach druku — 25 zł (przygotowanie wydruku) + 100 g materiału × 0,30 zł/gram + 5 godz. druku × 8 zł/h = 95 zł',
     })
   }
 
