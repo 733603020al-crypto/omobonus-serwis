@@ -18,8 +18,8 @@ const parts: { name: string; src: string; alt: string; width: number; height: nu
   { name: "power-supply-cream-green", src: "/images/parts-strip/power-supply-cream-green.avif", alt: "Obudowa zasilacza wydrukowana w 3D", width: 488, height: 300 },
   { name: "keychains", src: "/images/parts-strip/keychains.avif", alt: "Breloki wydrukowane w 3D", width: 406, height: 300 },
   { name: "coffee-shop-sign", src: "/images/parts-strip/coffee-shop-sign.avif", alt: "Szyld reklamowy wydrukowany w 3D", width: 505, height: 300 },
-  { name: "power-meter-white", src: "/images/parts-strip/power-meter-white.avif", alt: "Obudowa miernika energii wydrukowana w 3D", width: 481, height: 300 },
-  { name: "power-meter-jumper-cables", src: "/images/parts-strip/power-meter-jumper-cables.avif", alt: "Obudowa zasilacza z kablami wydrukowana w 3D", width: 666, height: 300 },
+  { name: "power-meter-white", src: "/images/parts-strip/power-meter-white.avif", alt: "Obudowa miernika energii wydrukowana w 3D", width: 483, height: 300 },
+  { name: "power-meter-jumper-cables", src: "/images/parts-strip/power-meter-jumper-cables.avif", alt: "Obudowa zasilacza z kablami wydrukowana w 3D", width: 602, height: 300 },
 ]
 
 // Docelowa prędkość ruchu — ta sama co w standardowym BrandTicker (0.4px/klatkę
