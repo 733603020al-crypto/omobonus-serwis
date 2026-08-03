@@ -193,7 +193,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'druk-3d-na-zamowienie': {
     title: 'Drukowanie 3D na zamówienie',
-    description: '✔Wydruki 3D z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy … Uczciwe ceny! ✔ Pełny wykaz cen na stronie ✔ Nawet już dziś! ☎ 793 759 262',
+    description: '✔ Wydruki 3D z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy … Uczciwe ceny! ✔ Pełny wykaz cen na stronie ✔ Nawet już dziś! ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
