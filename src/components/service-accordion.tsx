@@ -416,7 +416,7 @@ const isDruk3DCustomSection = (slug: string, sectionId: string) =>
 
 // Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
 // (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
-const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16'])
+const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17'])
 const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
   slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
 

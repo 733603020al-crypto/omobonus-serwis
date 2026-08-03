@@ -2866,7 +2866,7 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           id: 'faq-5',
           title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
           items: [],
-          answer: 'Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
+          answer: 'Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU. Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
         },
         {
           id: 'faq-6',
@@ -2933,6 +2933,12 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           title: 'Drukowanie 3D online – jak zamówić wydruk 3D online?',
           items: [],
           answer: 'Wyślij nam plik z modelem, a sprawdzimy możliwość wykonania i przygotujemy wycenę. Po jej akceptacji wykonamy wydruk, który możesz odebrać osobiście lub zamówić z wysyłką.',
+        },
+        {
+          id: 'faq-17',
+          title: 'Drukowanie figurek 3D i drukowanie części samochodowych – czy wykonujemy też uszczelki 3D?',
+          items: [],
+          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału. Przed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
         },
       ],
     }
