@@ -202,7 +202,7 @@ export function ServicePageTemplate({
                     {headings.h2 && (
                       <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
                         {slug === 'druk-3d-na-zamowienie' ? (
-                          <>Drukujemy części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie.<br />Masz gotowy model? Wyślij go. Nie masz? Zaprojektujemy go dla Ciebie.</>
+                          'Wydruki 3D w technologii FDM z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie.'
                         ) : headings.h2}
                       </h2>
                     )}

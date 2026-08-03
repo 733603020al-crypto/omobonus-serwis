@@ -2797,7 +2797,7 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
   if (diagnosisIndex !== -1) {
     sections[diagnosisIndex] = {
       id: 'diagnoza',
-      title: 'Druk 3D z gotowego projektu',
+      title: 'Drukowanie 3D z gotowego projektu',
       items: [
         { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
         { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', price: '0,30 zł/gram + 8 zł/godz.', duration: '1–2 dni' },
@@ -2816,7 +2816,7 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
     // dodany do DRUK3D_CUSTOM_SECTION_IDS w service-accordion.tsx.
     sections.splice(diagnosisIndex + 1, 0, {
       id: 'projektowanie-modeli',
-      title: 'Projektowanie modeli 3D',
+      title: 'Projektowanie i modelowanie 3D CAD',
       items: [
         { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', price: 'GRATIS\ndo 15 min konsultacji', duration: 'do 24 h' },
         { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', price: '49 zł\ndo 15 min pracy', duration: 'do 24 h' },

@@ -1082,28 +1082,33 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
                               <div className="flex-1 min-w-0 pr-2">
-                                <div className={cn(
-                                  "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
-                                  (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
-                                )}>
-                                  {(() => {
-                                    if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                      // Если аккордеон открыт, переносим заголовок на две строки для экономии места
-                                      if (isSectionOpen(section.id)) {
-                                        return renderSectionTitleMobile(section.title)
-                                      }
-                                      // Если закрыт - показываем обычный заголовок
-                                      return section.title
-                                    }
-                                    if (section.id === 'konserwacja') {
-                                      return t.mobileAccordionTitles.konserwacja ?? section.title
-                                    }
-                                    if (section.id === 'naprawy') {
-                                      return t.mobileAccordionTitles.naprawy ?? section.title
-                                    }
-                                    return section.title
-                                  })()}
-                                </div>
+                                {(() => {
+                                  const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
+                                  return (
+                                    <TitleTag className={cn(
+                                      "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
+                                      (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
+                                    )}>
+                                      {(() => {
+                                        if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
+                                          // Если аккордеон открыт, переносим заголовок на две строки для экономии места
+                                          if (isSectionOpen(section.id)) {
+                                            return renderSectionTitleMobile(section.title)
+                                          }
+                                          // Если закрыт - показываем обычный заголовок
+                                          return section.title
+                                        }
+                                        if (section.id === 'konserwacja') {
+                                          return t.mobileAccordionTitles.konserwacja ?? section.title
+                                        }
+                                        if (section.id === 'naprawy') {
+                                          return t.mobileAccordionTitles.naprawy ?? section.title
+                                        }
+                                        return section.title
+                                      })()}
+                                    </TitleTag>
+                                  )
+                                })()}
                                 {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
@@ -1143,9 +1148,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             </div>
                             {/* Десктопная версия: обычный заголовок */}
                             <div className="hidden md:block">
-                              <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                                {section.title}
-                              </div>
+                              {(() => {
+                                const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
+                                return (
+                                  <TitleTag className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                                    {section.title}
+                                  </TitleTag>
+                                )
+                              })()}
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span
