@@ -1569,11 +1569,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                 <AccordionContent
                   data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
+                  // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
+                  // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
+                  // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
+                  // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
+                  // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
+                  forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
                   className={cn(
                     "pb-3 max-h-[70vh] overflow-y-auto scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
-                      : "pt-3"
+                      : "pt-3",
+                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && "data-[state=closed]:hidden"
                   )}
                 >
                   {section.subcategories ? (
