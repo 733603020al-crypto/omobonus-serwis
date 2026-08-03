@@ -1152,16 +1152,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </div>
                               )}
                             </div>
-                            {/* Десктопная версия: обычный заголовок */}
+                            {/* Десктопная версия: обычный заголовок.
+                                Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
+                                w wersji mobilnej (ten sam tekst, wspólny dla obu
+                                breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
                             <div className="hidden md:block">
-                              {(() => {
-                                const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
-                                return (
-                                  <TitleTag className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                                    {section.title}
-                                  </TitleTag>
-                                )
-                              })()}
+                              <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                                {section.title}
+                              </div>
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span
