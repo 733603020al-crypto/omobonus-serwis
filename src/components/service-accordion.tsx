@@ -414,6 +414,12 @@ const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
 const isDruk3DCustomSection = (slug: string, sectionId: string) =>
   slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
 
+// Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
+// (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
+const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16'])
+const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
+  slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
+
 // Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
 // (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
 const renderPlainPriceWithUnits = (price: string) => {
@@ -1624,34 +1630,38 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 )}
                                 <div className="flex-1 w-full min-w-0">
                                   <div>
-                                    <h4
-                                      className={`font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                    {(() => {
+                                      const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id) ? 'h2' : 'h4'
+                                      const titleClassName = `font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
                                         : 'text-lg font-semibold text-[#ffffff]'
-                                        }`}
-                                    >
-                                      {(() => {
-                                        const title = subcategory.title
-                                        // Применяем стиль для wynajem-drukarek и drukarka-zastepcza
-                                        if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                          const match = title.match(/^(.+?)\s*\((.+?)\)$/)
-                                          if (match) {
-                                            const mainPart = match[1].trim()
-                                            const bracketPart = match[2].trim()
-                                            // Для wynajem и drukarka-zastepcza - вся часть в скобках в том же стиле, что и основная часть
-                                            return (
-                                              <>
-                                                {mainPart}{' '}
-                                                <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
-                                                  ({bracketPart})
-                                                </span>
-                                              </>
-                                            )
-                                          }
-                                        }
-                                        return title
-                                      })()}
-                                    </h4>
+                                        }`
+                                      return (
+                                        <TitleTag className={titleClassName}>
+                                          {(() => {
+                                            const title = subcategory.title
+                                            // Применяем стиль для wynajem-drukarek и drukarka-zastepcza
+                                            if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
+                                              const match = title.match(/^(.+?)\s*\((.+?)\)$/)
+                                              if (match) {
+                                                const mainPart = match[1].trim()
+                                                const bracketPart = match[2].trim()
+                                                // Для wynajem и drukarka-zastepcza - вся часть в скобках в том же стиле, что и основная часть
+                                                return (
+                                                  <>
+                                                    {mainPart}{' '}
+                                                    <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
+                                                      ({bracketPart})
+                                                    </span>
+                                                  </>
+                                                )
+                                              }
+                                            }
+                                            return title
+                                          })()}
+                                        </TitleTag>
+                                      )
+                                    })()}
                                     {subcategory.subtitle && section.id !== 'faq' && (
                                       renderParenthesesText(subcategory.subtitle, '12px')
                                     )}

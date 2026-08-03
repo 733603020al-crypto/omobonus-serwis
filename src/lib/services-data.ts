@@ -2852,9 +2852,9 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         },
         {
           id: 'faq-3',
-          title: 'Ile kosztuje druk 3D na zamówienie?',
+          title: 'Cennik druku 3D – koszt i wycena wydruku 3D',
           items: [],
-          answer: 'Cena składa się z przygotowania wydruku, ilości użytego materiału oraz czasu pracy drukarki. Wszystkie stawki są podane w cenniku powyżej, dzięki czemu jeszcze przed realizacją można dokładnie określić koszt zamówienia.',
+          answer: 'Cena wydruku 3D zależy od materiału, jego zużycia oraz czasu pracy drukarki. Dokładną cenę podajemy przed rozpoczęciem realizacji, zgodnie z cennikiem znajdującym się na stronie.',
         },
         {
           id: 'faq-4',
@@ -2870,9 +2870,9 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         },
         {
           id: 'faq-6',
-          title: 'Czy mogę zamówić tylko jedną sztukę?',
+          title: 'Prototypowanie 3D i drukowanie modeli, części i elementów 3D – czy można zamówić jedną sztukę?',
           items: [],
-          answer: 'Tak. Realizujemy zarówno pojedyncze wydruki, prototypy i części zamienne, jak również krótkie serie jednakowych elementów.',
+          answer: 'Tak. Wykonujemy zarówno pojedyncze sztuki, jak i krótkie serie – zależnie od potrzeb klienta i rodzaju projektu.',
         },
         {
           id: 'faq-7',
@@ -2912,9 +2912,9 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
         },
         {
           id: 'faq-13',
-          title: 'Jak wygląda realizacja zamówienia?',
+          title: 'Usługi drukowania 3D na zlecenie – jak wygląda realizacja zamówienia?',
           items: [],
-          answer: 'Przesyłasz model 3D albo informacje potrzebne do jego zaprojektowania. Sprawdzamy projekt, ustalamy materiał, cenę i termin. Po akceptacji wykonujemy projekt lub wydruk, a gotowy element możesz odebrać we Wrocławiu albo zamówić wysyłkę.',
+          answer: 'Po otrzymaniu modelu sprawdzamy możliwość wykonania, przygotowujemy wycenę i po jej akceptacji rozpoczynamy realizację. Wykonujemy zarówno pojedyncze elementy, jak i krótkie serie.',
         },
         {
           id: 'faq-14',
@@ -2927,6 +2927,12 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           title: 'Czy podane ceny są netto czy brutto?',
           items: [],
           answer: 'Ceny w cenniku są cenami netto.',
+        },
+        {
+          id: 'faq-16',
+          title: 'Drukowanie 3D online – jak zamówić wydruk 3D online?',
+          items: [],
+          answer: 'Wyślij nam plik z modelem, a sprawdzimy możliwość wykonania i przygotujemy wycenę. Po jej akceptacji wykonamy wydruk, który możesz odebrać osobiście lub zamówić z wysyłką.',
         },
       ],
     }

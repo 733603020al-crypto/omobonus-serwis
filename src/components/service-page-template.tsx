@@ -62,16 +62,20 @@ export interface ServicePageLabels {
 interface SeoBlocksGridProps {
   items: string[]
   variant: 'related' | 'accordion'
+  slug?: string
 }
 
-function SeoBlocksGrid({ items, variant }: SeoBlocksGridProps) {
+function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   if (!items.length) return null
   const wrapperClass = variant === 'related' ? 'pt-2 pb-6 md:pb-8' : 'pt-6 pb-24'
+  // Na druk-3d-na-zamowienie ten tekst nie ma być semantycznym H2 (nie jest
+  // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
+  const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : 'h2'
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
         {items.map((text, index) => (
-          <h2
+          <Tag
             key={index}
             className={
               variant === 'related'
@@ -80,7 +84,7 @@ function SeoBlocksGrid({ items, variant }: SeoBlocksGridProps) {
             }
           >
             {text}
-          </h2>
+          </Tag>
         ))}
       </div>
     </div>
@@ -293,7 +297,7 @@ export function ServicePageTemplate({
         ) : (
           <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
             <ServiceAccordion service={service} locale={locale} />
-            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" />
+            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} />
           </section>
         )}
 
