@@ -2839,6 +2839,18 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       ...sections[faqIndex],
       subcategories: [
         {
+          id: 'faq-13',
+          title: 'Usługi drukowania 3D na zlecenie – jak wygląda realizacja zamówienia?',
+          items: [],
+          answer: 'Po otrzymaniu modelu sprawdzamy możliwość wykonania, przygotowujemy wycenę i po jej akceptacji rozpoczynamy realizację. Wykonujemy zarówno pojedyncze elementy, jak i krótkie serie.',
+        },
+        {
+          id: 'faq-16',
+          title: 'Drukowanie 3D online – jak zamówić wydruk 3D online?',
+          items: [],
+          answer: 'Wyślij nam plik z modelem, a sprawdzimy możliwość wykonania i przygotujemy wycenę. Po jej akceptacji wykonamy wydruk, który możesz odebrać osobiście lub zamówić z wysyłką.',
+        },
+        {
           id: 'faq-1',
           title: 'Czy mogę zamówić druk 3D bez gotowego modelu?',
           items: [],
@@ -2849,6 +2861,12 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           title: 'Jakie pliki mogę przesłać do druku 3D?',
           items: [],
           answer: 'Najlepiej przesłać gotowy model w formacie STL, STEP lub 3MF. Jeśli masz plik w innym formacie, prześlij go do wstępnej oceny — sprawdzimy, czy możemy go wykorzystać lub odpowiednio przygotować.',
+        },
+        {
+          id: 'faq-8',
+          title: 'Czy możecie poprawić lub zmodyfikować mój plik STL?',
+          items: [],
+          answer: 'Tak. Możemy wykonać drobne zmiany, takie jak korekta wymiarów, otworów, dopasowania lub innych prostych elementów modelu. Większe modyfikacje wyceniamy jako pracę projektową.',
         },
         {
           id: 'faq-3',
@@ -2863,10 +2881,10 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           answer: 'Zależy to od zakresu projektu. Wstępna ocena projektu jest bezpłatna, a ceny prostych modyfikacji, modeli technicznych oraz odtwarzania części są podane w cenniku. Jeżeli projekt wymaga więcej pracy, dodatkowy czas rozliczamy zgodnie z podaną stawką.',
         },
         {
-          id: 'faq-5',
-          title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
+          id: 'faq-15',
+          title: 'Czy podane ceny są netto czy brutto?',
           items: [],
-          answer: 'Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU. Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
+          answer: 'Ceny w cenniku są cenami netto.',
         },
         {
           id: 'faq-6',
@@ -2875,16 +2893,28 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           answer: 'Tak. Wykonujemy zarówno pojedyncze sztuki, jak i krótkie serie – zależnie od potrzeb klienta i rodzaju projektu.',
         },
         {
+          id: 'faq-12',
+          title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
+          items: [],
+          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
+        },
+        {
           id: 'faq-7',
           title: 'Czy możecie odtworzyć uszkodzoną lub niedostępną część?',
           items: [],
           answer: 'Tak. Proste części możemy odtworzyć na podstawie dostarczonego wzoru, zdjęć i dokładnych wymiarów. Przy bardziej skomplikowanej geometrii możemy poprosić o dostarczenie oryginalnego elementu, aby dokładniej odwzorować jego kształt.',
         },
         {
-          id: 'faq-8',
-          title: 'Czy możecie poprawić lub zmodyfikować mój plik STL?',
+          id: 'faq-17',
+          title: 'Drukowanie figurek 3D i drukowanie części samochodowych – czy wykonujemy też uszczelki 3D?',
           items: [],
-          answer: 'Tak. Możemy wykonać drobne zmiany, takie jak korekta wymiarów, otworów, dopasowania lub innych prostych elementów modelu. Większe modyfikacje wyceniamy jako pracę projektową.',
+          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału. Przed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
+        },
+        {
+          id: 'faq-5',
+          title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
+          items: [],
+          answer: 'Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU. Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
         },
         {
           id: 'faq-9',
@@ -2905,40 +2935,10 @@ const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           answer: 'Standardowy czas realizacji wydruków wynosi zwykle 1–2 dni. Czas wykonania projektu zależy od jego złożoności. Dostępna jest również realizacja ekspresowa do 24 godzin, jeśli pozwala na to czas potrzebny na wykonanie wydruku.',
         },
         {
-          id: 'faq-12',
-          title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
-          items: [],
-          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
-        },
-        {
-          id: 'faq-13',
-          title: 'Usługi drukowania 3D na zlecenie – jak wygląda realizacja zamówienia?',
-          items: [],
-          answer: 'Po otrzymaniu modelu sprawdzamy możliwość wykonania, przygotowujemy wycenę i po jej akceptacji rozpoczynamy realizację. Wykonujemy zarówno pojedyncze elementy, jak i krótkie serie.',
-        },
-        {
           id: 'faq-14',
           title: 'Czy wysyłacie gotowe wydruki?',
           items: [],
           answer: 'Tak. Gotowe zamówienie możemy wysłać kurierem lub do Paczkomatu. Koszt wysyłki naliczany jest według cennika przewoźnika.',
-        },
-        {
-          id: 'faq-15',
-          title: 'Czy podane ceny są netto czy brutto?',
-          items: [],
-          answer: 'Ceny w cenniku są cenami netto.',
-        },
-        {
-          id: 'faq-16',
-          title: 'Drukowanie 3D online – jak zamówić wydruk 3D online?',
-          items: [],
-          answer: 'Wyślij nam plik z modelem, a sprawdzimy możliwość wykonania i przygotujemy wycenę. Po jej akceptacji wykonamy wydruk, który możesz odebrać osobiście lub zamówić z wysyłką.',
-        },
-        {
-          id: 'faq-17',
-          title: 'Drukowanie figurek 3D i drukowanie części samochodowych – czy wykonujemy też uszczelki 3D?',
-          items: [],
-          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału. Przed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
         },
       ],
     }
