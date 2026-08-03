@@ -1636,7 +1636,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div className="flex-1 w-full min-w-0">
                                   <div>
                                     {(() => {
-                                      const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id) ? 'h2' : 'h4'
+                                      const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
+                                        ? 'h2'
+                                        : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
+                                          ? 'div'
+                                          : 'h4'
                                       const titleClassName = `font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
                                         : 'text-lg font-semibold text-[#ffffff]'
