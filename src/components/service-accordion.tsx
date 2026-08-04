@@ -1580,7 +1580,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
                       : "pt-3",
-                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && "data-[state=closed]:hidden"
+                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
                   )}
                 >
                   {section.subcategories ? (
