@@ -89,7 +89,7 @@ const PL: ContactT = {
   emailLabel: 'Adres e-mail',
   addressLabel: 'Adres',
   addressPlaceholder: 'ul. Przykładowa 1, 50-001 Wrocław',
-  problemLabel: 'Jak możemy pomóc?',
+  problemLabel: 'Opis zgłoszenia',
   problemPlaceholder: 'Np. opisz problem, usterkę lub napisz, czego dotyczy zgłoszenie',
   attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
