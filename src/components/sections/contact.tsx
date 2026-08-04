@@ -57,7 +57,7 @@ export interface ContactT {
   problemPlaceholder: string
   attachLabel: string
   attachAdd: string
-  attachHint: string
+  attachHint?: string
   agreementConfirm: string
   privacyLink: string
   privacyHref: string
@@ -89,11 +89,10 @@ const PL: ContactT = {
   emailLabel: 'Adres e-mail',
   addressLabel: 'Adres',
   addressPlaceholder: 'ul. Przykładowa 1, 50-001 Wrocław',
-  problemLabel: 'Opis problemu (usterki)',
-  problemPlaceholder: '(np. HP M404dn – drukarka nie pobiera papieru)',
-  attachLabel: 'Załącz zdjęcia / filmy',
+  problemLabel: 'Jak możemy pomóc?',
+  problemPlaceholder: 'Np. opisz problem, usterkę lub napisz, czego dotyczy zgłoszenie',
+  attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
-  attachHint: 'Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz przygotować wycenę naprawy.',
   agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
   privacyLink: 'Polityką Prywatności',
   privacyHref: '/polityka-prywatnosci',
@@ -476,9 +475,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   {d.attachAdd}
                 </label>
               </div>
-              <p className="text-black text-sm italic font-sans">
-                {d.attachHint}
-              </p>
+              {d.attachHint && (
+                <p className="text-black text-sm italic font-sans">
+                  {d.attachHint}
+                </p>
+              )}
 
               <input
                 id="attachments"

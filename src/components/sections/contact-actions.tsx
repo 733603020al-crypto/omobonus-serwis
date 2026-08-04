@@ -88,7 +88,7 @@ const PL_ACTIONS: ContactActionsT = {
   callbackError: 'Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.',
   successTitle: 'Dziękujemy!',
   successText: 'Skontaktujemy się z Państwem jak najszybciej',
-  orFormLabel: 'lub wyślij zgłoszenie serwisowe',
+  orFormLabel: 'lub wyślij zgłoszenie',
   callNowButton: 'Zadzwoń teraz',
   callNowDividerLabel: 'lub napisz',
 }
