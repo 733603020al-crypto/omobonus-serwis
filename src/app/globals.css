@@ -42,6 +42,11 @@
     font-family: var(--font-cormorant), serif;
   }
 
+  /* Tylko formularz kontaktowy (/kontakt): etykiety pól i tekst wpisywany */
+  .font-lora {
+    font-family: var(--font-lora), Georgia, serif;
+  }
+
   /* Таблицы — используем ТОЛЬКО Cormorant */
   .font-table-main {
     font-family: var(--font-cormorant), serif;

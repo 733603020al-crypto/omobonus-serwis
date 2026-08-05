@@ -359,10 +359,10 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 py-8 md:px-12 md:py-11">
+          <div className="relative z-10 px-7 pt-8 pb-8 md:px-12 md:pt-11 md:pb-10">
 
           {/* Nagłówek formularza */}
-          <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
+          <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-7 md:mb-8 drop-shadow-sm">
             {d.formTitle}
           </div>
 
@@ -372,20 +372,20 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
             })}
-            className="space-y-3 md:space-y-4"
+            className="space-y-5 md:space-y-6"
           >
 
             {/* Imię i Telefon - Grid */}
-            <div className="grid grid-cols-1 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 gap-5 md:gap-6">
               {/* Imię i nazwisko */}
               <div className="space-y-2" data-field-name="name">
-                <label className="block text-black font-bold font-sans text-base md:text-lg">
+                <label className="block text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {d.nameLabel}
                 </label>
                 <input
                   {...register('name')}
                   placeholder={d.namePlaceholder}
-                  className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                  className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#2f2418] text-base md:text-lg font-lora font-normal leading-[1.4] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
                 />
                 {errors.name && (
@@ -395,7 +395,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
               {/* Telefon */}
               <div className="space-y-2" data-field-name="phone">
-                <label className="block text-black font-bold font-sans text-base md:text-lg">
+                <label className="block text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {d.phoneLabel}
                 </label>
                 <div>
@@ -427,7 +427,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#2f2418] text-base md:text-lg font-lora font-normal leading-[1.4] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.email && (
@@ -443,7 +443,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               <input
                 {...register('address')}
                 placeholder={d.addressPlaceholder}
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#2f2418] text-base md:text-lg font-lora font-normal leading-[1.4] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.address && (
@@ -462,7 +462,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 {...register('problemDescription')}
                 rows={4}
                 placeholder={d.problemPlaceholder}
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#2f2418] text-base md:text-lg font-lora font-normal leading-[1.4] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.problemDescription && (
@@ -473,7 +473,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             {/* Załączniki */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 flex-wrap">
-                <label className="text-black font-bold font-sans text-base md:text-lg">
+                <label className="text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {d.attachLabel}
                 </label>
                 <label
@@ -626,13 +626,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Przycisk Submit */}
-            <div className="pt-4 flex justify-center">
+            <div className="pt-5 md:pt-6 flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-white/10 hover:bg-white/20 border border-black/30 hover:border-2 hover:border-black/80 hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.1),0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:shadow-[inset_0_0_20px_rgba(0,0,0,0.1),0_0_4px_rgba(0,0,0,0.3)] rounded-full transition-all duration-250"
+                className="relative group px-10 py-3 bg-[#b08d5b]/20 hover:bg-[#8a6a3f]/30 border border-[rgba(70,45,25,0.45)] hover:border-2 hover:border-[rgba(70,45,25,0.7)] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
               >
-                <span className="font-cormorant font-bold text-2xl text-black tracking-wide group-hover:text-black/80 flex items-center gap-2">
+                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2f2418] tracking-wide group-hover:text-[#2f2418]/85 flex items-center gap-2">
                   {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
                   {isSubmitting ? d.submitting : d.submitButton}
                 </span>
