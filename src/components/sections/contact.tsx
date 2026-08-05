@@ -43,6 +43,13 @@ const pushFormSubmitToDataLayer = (
   })
 }
 
+// Wydziela nawiasowy dopisek etykiety (np. "(wymagane)") jako mniej wyróżniony fragment w tej samej linii
+function splitLabelNote(text: string): { main: string; note: string | null } {
+  const match = text.match(/^(.*?)\s*(\([^)]*\))\s*$/)
+  if (!match) return { main: text, note: null }
+  return { main: match[1], note: match[2] }
+}
+
 export type Locale = 'pl' | 'uk' | 'ru'
 
 export interface ContactT {
@@ -359,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-8 md:px-12 md:pt-11 md:pb-10">
+          <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[42px]">
 
           {/* Nagłówek formularza */}
           <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-7 md:mb-8 drop-shadow-sm">
@@ -396,7 +403,17 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               {/* Telefon */}
               <div className="space-y-2" data-field-name="phone">
                 <label className="block text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
-                  {d.phoneLabel}
+                  {(() => {
+                    const { main, note } = splitLabelNote(d.phoneLabel)
+                    return (
+                      <>
+                        {main}
+                        {note && (
+                          <span className="font-normal text-[13px] md:text-[15px] text-[#6b5940]"> {note}</span>
+                        )}
+                      </>
+                    )
+                  })()}
                 </label>
                 <div>
                   <Controller
@@ -626,11 +643,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Przycisk Submit */}
-            <div className="pt-5 md:pt-6 flex justify-center">
+            <div className="pt-6 md:pt-7 flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-[#b08d5b]/20 hover:bg-[#8a6a3f]/30 border border-[rgba(70,45,25,0.45)] hover:border-2 hover:border-[rgba(70,45,25,0.7)] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
+                className="relative group px-10 py-3 bg-[#e3d0a3]/50 hover:bg-[#d3bd85]/60 border border-[rgba(70,45,25,0.45)] hover:border-2 hover:border-[rgba(70,45,25,0.7)] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
               >
                 <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2f2418] tracking-wide group-hover:text-[#2f2418]/85 flex items-center gap-2">
                   {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
