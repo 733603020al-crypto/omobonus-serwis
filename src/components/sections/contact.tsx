@@ -643,7 +643,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Przycisk Submit */}
-            <div className="pt-[16px] md:pt-[20px] flex justify-center">
+            <div className="pt-[2px] md:pt-[3px] flex justify-center">
               {resolvedLocale === 'pl' ? (
                 // Pieczęć woskowa z wpisanym "Wyślij" — tylko PL (grafika ma wypalony polski tekst).
                 // Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
