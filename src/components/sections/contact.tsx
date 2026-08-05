@@ -366,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[24px]">
+          <div className="relative z-10 px-7 pt-8 pb-[16px] md:px-12 md:pt-11 md:pb-[7px]">
 
           {/* Nagłówek formularza */}
           <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
@@ -643,7 +643,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Przycisk Submit */}
-            <div className="pt-[2px] md:pt-[3px] flex justify-center">
+            <div className="mt-[-10px] md:mt-[-11px] flex justify-center">
               {resolvedLocale === 'pl' ? (
                 // Pieczęć woskowa z wpisanym "Wyślij" — tylko PL (grafika ma wypalony polski tekst).
                 // Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
@@ -654,7 +654,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   type="submit"
                   disabled={isSubmitting}
                   aria-label={d.submitButton}
-                  className="relative flex-shrink-0 ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-76px] md:mb-[-99px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
                   <picture>
                     <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
@@ -662,7 +662,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       src="/images/contact-form-seal.webp"
                       alt={d.submitButton}
                       draggable={false}
-                      className="w-[100px] md:w-[130px] h-auto select-none drop-shadow-[3px_8px_7px_rgba(40,20,10,0.35)]"
+                      className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
                     />
                   </picture>
                   {isSubmitting && (
