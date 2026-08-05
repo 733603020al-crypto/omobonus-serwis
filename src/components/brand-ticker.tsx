@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string }[] = [
@@ -50,80 +50,101 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
 ]
 
 const gap = 48
-const speed = 0.4
+// Docelowa prędkość ruchu identyczna z poprzednią implementacją JS (rAF):
+// 0.4px/klatkę przy ~60fps = 24px/s. Ta sama stała co w PrintedPartsTicker.
+const TARGET_SPEED_PX_PER_SEC = 24
+
+function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; ariaHidden?: boolean }) {
+  return (
+    <>
+      {displayBrands.map((brand, i) => (
+        <div
+          key={i}
+          className={`inline-flex shrink-0 items-center h-[68px] transition-opacity duration-300${compact ? ' md:h-[56px]' : ''}`}
+          aria-hidden={ariaHidden}
+        >
+          {brand.label ? (
+            <span
+              className="whitespace-nowrap text-white shrink-0"
+              style={{
+                fontFamily: "'Arial Black','Arial Bold',Arial,sans-serif",
+                fontWeight: 900,
+                fontSize: "25px",
+                filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))"
+              }}
+            >
+              {brand.label}
+            </span>
+          ) : (
+            <Image
+              src={brand.src ?? `/images/brands/${brand.name}.svg`}
+              alt={ariaHidden ? "" : brand.name}
+              width={240}
+              height={62}
+              loading="lazy"
+              unoptimized
+              className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
+              style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
+              draggable={false}
+            />
+          )}
+        </div>
+      ))}
+    </>
+  )
+}
 
 export default function BrandTicker({ brandNames, compact }: { brandNames?: string[]; compact?: boolean } = {}) {
   const displayBrands = brandNames
     ? brands.filter(b => brandNames.includes(b.name))
     : brands
-  // Enough copies so the full track always exceeds viewport width (seamless loop)
+  // Tyle kopii, żeby jedna "grupa" (100%/copies szerokości toru) zawsze
+  // przekraczała szerokość viewportu — pętla translateX(-100%/copies) zostaje
+  // wizualnie bezszwowa nawet przy krótkich listach marek (np. slugBrands).
   const copies = displayBrands.length > 0
     ? Math.max(2, Math.ceil(4000 / (displayBrands.length * 200)) + 1)
     : 2
   const trackRef = useRef<HTMLDivElement | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
-  const offsetRef = useRef(0)
-  const rafRef = useRef<number | null>(null)
-  const isRunningRef = useRef(true)
-  const isHoverRef = useRef(false)
-  // Cached instead of read every animation frame — scrollWidth is a forced-layout
-  // read, and the track's width doesn't change frame-to-frame. Kept fresh via
-  // ResizeObserver (e.g. once brand logos finish loading, or on breakpoint change).
-  const totalWidthRef = useRef(0)
+  const [durationSec, setDurationSec] = useState(0)
 
   useEffect(() => {
     const track = trackRef.current
     const section = sectionRef.current
     if (!track || !section) return
 
-    const updateTotalWidth = () => {
-      totalWidthRef.current = track.scrollWidth / copies
+    const updateDuration = () => {
+      const oneGroupWidth = track.scrollWidth / copies
+      if (oneGroupWidth > 0) setDurationSec(oneGroupWidth / TARGET_SPEED_PX_PER_SEC)
     }
-    updateTotalWidth()
-    const resizeObserver = new ResizeObserver(updateTotalWidth)
+    updateDuration()
+    const resizeObserver = new ResizeObserver(updateDuration)
     resizeObserver.observe(track)
 
-    const animate = () => {
-      if (isRunningRef.current && !isHoverRef.current) {
-        offsetRef.current += speed
-        if (offsetRef.current >= totalWidthRef.current) {
-          offsetRef.current = 0
-        }
-        track.style.transform = `translateX(-${offsetRef.current}px)`
-      }
-      rafRef.current = requestAnimationFrame(animate)
+    // Animacja CSS działa na compositorze bez JS na klatkę, ale pauzujemy ją,
+    // gdy pasek jest poza ekranem lub karta w tle — po co animować coś,
+    // czego i tak nikt nie widzi.
+    let isIntersecting = false
+    const applyPlayState = () => {
+      track.style.animationPlayState = isIntersecting && !document.hidden ? 'running' : 'paused'
     }
 
-    const startAnimation = () => {
-      if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
-    }
-    const stopAnimation = () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current)
-        rafRef.current = null
-      }
-    }
-
-    // Only run the scroll loop while the ticker is actually visible on screen.
     const sectionObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) startAnimation()
-      else stopAnimation()
+      isIntersecting = entry.isIntersecting
+      applyPlayState()
     }, { threshold: 0 })
     sectionObserver.observe(section)
 
-    const handleVisibility = () => {
-      isRunningRef.current = !document.hidden
-    }
-
-    document.addEventListener("visibilitychange", handleVisibility)
+    document.addEventListener("visibilitychange", applyPlayState)
 
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibility)
+      document.removeEventListener("visibilitychange", applyPlayState)
       sectionObserver.disconnect()
       resizeObserver.disconnect()
-      stopAnimation()
     }
   }, [copies])
+
+  const toPercent = 100 / copies
 
   return (
     <section ref={sectionRef} className={`relative w-full h-[68px] -mt-[34px] -mb-[34px] z-10 overflow-hidden${compact ? ' md:h-[56px]' : ''}`}>
@@ -131,50 +152,37 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
       />
-      <div
-        className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible"
-        onMouseEnter={() => (isHoverRef.current = true)}
-        onMouseLeave={() => (isHoverRef.current = false)}
-      >
+      <div className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible brand-ticker-hover-pause">
         <div
           ref={trackRef}
-          className="flex items-center"
-          style={{ gap: `${gap}px`, willChange: "transform" }}
+          className="flex items-center brand-ticker-track"
+          style={{ gap: `${gap}px`, willChange: "transform", animationDuration: `${durationSec}s` }}
         >
-          {Array.from({ length: copies }, () => displayBrands).flat().map((brand, i) => (
-            <div
-              key={i}
-              className={`inline-flex shrink-0 items-center h-[68px] transition-opacity duration-300${compact ? ' md:h-[56px]' : ''}`}
-            >
-              {brand.label ? (
-                <span
-                  className="whitespace-nowrap text-white shrink-0"
-                  style={{
-                    fontFamily: "'Arial Black','Arial Bold',Arial,sans-serif",
-                    fontWeight: 900,
-                    fontSize: "25px",
-                    filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))"
-                  }}
-                >
-                  {brand.label}
-                </span>
-              ) : (
-                <Image
-                  src={brand.src ?? `/images/brands/${brand.name}.svg`}
-                  alt={brand.name}
-                  width={240}
-                  height={62}
-                  loading="lazy"
-                  unoptimized
-                  className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
-                  style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
-                  draggable={false}
-                />
-              )}
-            </div>
+          {Array.from({ length: copies }).map((_, i) => (
+            <BrandGroup key={i} displayBrands={displayBrands} compact={compact} ariaHidden={i > 0} />
           ))}
         </div>
       </div>
+      <style>{`
+        .brand-ticker-track {
+          animation-name: brand-ticker-scroll;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-play-state: ${durationSec > 0 ? 'running' : 'paused'};
+        }
+        @keyframes brand-ticker-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-${toPercent}%); }
+        }
+        .brand-ticker-hover-pause:hover .brand-ticker-track {
+          animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .brand-ticker-track {
+            animation-play-state: paused;
+          }
+        }
+      `}</style>
     </section>
   )
 }
