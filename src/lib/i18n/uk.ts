@@ -252,7 +252,7 @@
     quickContactTitle: 'Зв\'яжіться з нами',
     callbackTitle: 'або залиш номер — ми передзвонимо',
     navigateLabel: 'Прокласти маршрут',
-    callbackButton: 'Прошу зателефонувати',
+    callbackButton: 'Замовити дзвінок',
     callbackSubmitting: 'Надсилання...',
     callbackHint: 'Передзвонюємо: пн.–сб. 7:00–21:00',
     phoneError: 'Номер телефону занадто короткий',

@@ -11,7 +11,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'naprawa-drukarek': {
     h1: 'Сервис принтеров и многофункциональных устройств во Вроцлаве',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
+    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'serwis-komputerow-stacjonarnych': {
     h1: 'Сервис и ремонт стационарных компьютеров',
@@ -30,6 +30,10 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-3d': {
     h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
     h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
+  },
+  'druk-3d-na-zamowienie': {
+    h1: '3D-печать на заказ во Вроцлаве',
+    h2: '3D-печать по технологии FDM из PLA, PETG, ASA и TPU – запасные части, прототипы, корпуса, технические детали и короткие серии.',
   },
   'serwis-plotterow': {
     h1: 'Сервис и ремонт плоттеров во Вроцлаве',
@@ -102,6 +106,12 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
       'для бизнес-клиентов и частных лиц.',
     ],
   },
+  'druk-3d-na-zamowienie': {
+    items: [
+      'Оказываем сервисные услуги — сервис 3D-принтера',
+      'для бизнес-клиентов и частных лиц.',
+    ],
+  },
   'serwis-plotterow': {
     items: [' ', ' '],
   },
@@ -132,6 +142,7 @@ export const imageAltRu: Record<string, string> = {
   'serwis-drukarek-laserowych': 'Сервис лазерных принтеров',
   'serwis-drukarek-atramentowych': 'Сервис струйных принтеров',
   'serwis-drukarek-3d': 'Сервис и ремонт 3D-принтеров',
+  'druk-3d-na-zamowienie': '3D-печать на заказ во Вроцлаве',
   'serwis-plotterow': 'Сервис и ремонт плоттеров',
   'serwis-drukarek-iglowych': 'Сервис игольчатых принтеров',
   'naprawa-drukarek': 'Сервис принтеров и многофункциональных устройств',
@@ -169,6 +180,10 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
     title: 'Сервис и ремонт 3D-принтеров',
     description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
   },
+  'druk-3d-na-zamowienie': {
+    title: '3D-печать на заказ',
+    description: '✔ 3D-печать из PLA, PETG, ASA и TPU – запасные части, прототипы, корпуса, детали… Честные цены! ✔ Полный прайс-лист на сайте ✔ Даже сегодня! ☎ 793 759 262',
+  },
   'serwis-drukarek-termicznych': {
     title: 'Сервис и ремонт принтеров этикеток Zebra, Dymo',
     description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
@@ -202,6 +217,7 @@ export const labelsRu: ServicePageLabels = {
   fadeSlideDefault: 'Полный перечень услуг и цен, без скрытых платежей (не «ремонт от 50 zł» или «цена по договорённости»)',
   fadeSlideDrukarkaZastepcza: 'Поломка? Без стресса — на время ремонта предоставляем принтер на замену без абонентской платы',
   fadeSlideWynajem: 'Принтер с сервисом и тонером в стоимости — вы заботитесь только о бумаге и электричестве.',
+  fadeSlideDruk3DZamowienie: 'Полный перечень услуг и цен, без скрытых платежей (не «цена от 50 zł» или «цена по договорённости»)',
   relatedCta: 'Смотреть прайс-лист',
   relatedIconAltSuffix: 'Вроцлав - иконка сервисной услуги',
   drukarkaZastepczaNote: (

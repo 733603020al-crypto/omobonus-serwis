@@ -61,6 +61,4 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs = [
-  'druk-3d-na-zamowienie',
-]
+export const noindexSlugs: string[] = []

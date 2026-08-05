@@ -137,7 +137,7 @@ export const ru = {
     quickContactTitle: 'Свяжитесь с нами',
     callbackTitle: 'или оставьте номер — мы перезвоним',
     navigateLabel: 'Построить маршрут',
-    callbackButton: 'Прошу позвонить',
+    callbackButton: 'Заказать звонок',
     callbackSubmitting: 'Отправка...',
     callbackHint: 'Перезваниваем: пн.–сб. 7:00–21:00',
     phoneError: 'Номер телефона слишком короткий',

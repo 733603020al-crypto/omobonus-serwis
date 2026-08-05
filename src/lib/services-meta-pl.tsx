@@ -42,7 +42,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
   // Tymczasowa kopia 'serwis-drukarek-3d' — jedyna świadomie inna wartość na tym etapie to H1
   'druk-3d-na-zamowienie': {
     h1: 'Druk 3D na zamówienie we Wrocławiu',
-    h2: 'Drukujemy części zamienne, prototypy, obudowy i pojedyncze elementy. Możesz przesłać gotowy model lub zlecić nam wykonanie projektu 3D',
+    h2: 'Wydruki 3D w technologii FDM z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie.',
   },
 
   'serwis-plotterow': {
