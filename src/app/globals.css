@@ -6,6 +6,10 @@
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
+  /* Tylko dla karty formularza zgłoszeniowego na /kontakt — osobny plik od
+     --bg-paper-texture (który jest też używany przez legal-page-template),
+     żeby zmiana wyglądu formularza nie wpłynęła na strony Regulamin/Polityka. */
+  --bg-contact-form-parchment: url('/images/contact-form-parchment.avif');
 }
 
 @media (max-width: 767px) {
@@ -13,6 +17,7 @@
     --bg-parchment: url('/images/Background_1-mobile.webp');
     --bg-services-card: url('/images/services-background-mobile.webp');
     --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
+    --bg-contact-form-parchment: url('/images/contact-form-parchment-mobile.avif');
   }
 }
 
@@ -71,6 +76,17 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  /* Karta formularza zgłoszeniowego (/kontakt) — postrzępiony pergamin
+     z przezroczystym tłem, cień dodawany przez drop-shadow (podąża za
+     nieregularnym konturem, w przeciwieństwie do zwykłego box-shadow). */
+  .bg-contact-form-parchment {
+    background-image: var(--bg-contact-form-parchment);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
   }
 
   .service-description-text {

@@ -348,7 +348,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
         {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-2xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20">
+        <div className="w-full max-w-2xl bg-contact-form-parchment p-4 md:p-6">
 
 
 
