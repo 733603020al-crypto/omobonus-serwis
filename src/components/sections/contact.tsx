@@ -366,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-[60px] md:px-12 md:pt-11 md:pb-[46px]">
+          <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[24px]">
 
           {/* Nagłówek formularza */}
           <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
@@ -654,7 +654,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   type="submit"
                   disabled={isSubmitting}
                   aria-label={d.submitButton}
-                  className="relative flex-shrink-0 ml-[10px] md:ml-[14px] mb-[-59px] md:mb-[-77px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  className="relative flex-shrink-0 ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
                   <picture>
                     <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
@@ -662,7 +662,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       src="/images/contact-form-seal.webp"
                       alt={d.submitButton}
                       draggable={false}
-                      className="w-[84px] md:w-[108px] h-auto select-none drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)]"
+                      className="w-[100px] md:w-[130px] h-auto select-none drop-shadow-[3px_8px_7px_rgba(40,20,10,0.35)]"
                     />
                   </picture>
                   {isSubmitting && (
