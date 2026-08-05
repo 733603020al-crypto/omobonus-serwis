@@ -172,7 +172,6 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const navServices = nav.labels.services
   const navAbout = nav.labels.about
   const navContact = nav.labels.contact
-  const navShop = nav.labels.shop
   const navCall = nav.labels.call
   const navSendForm = nav.labels.sendForm
   const megaMenuHeader = nav.labels.megaMenuHeader
@@ -348,15 +347,6 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
         </Link>
 
-        <Link
-          href="https://omobonus.com.pl"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
-        >
-          {navShop}
-        </Link>
-
         <LanguageSwitcher />
 
         <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]" onClick={handlePhoneClick}>
@@ -404,7 +394,6 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             navAbout={navAbout}
             contactHref={contactHref}
             navContact={navContact}
-            navShop={navShop}
             navSendForm={navSendForm}
           />
         )}
