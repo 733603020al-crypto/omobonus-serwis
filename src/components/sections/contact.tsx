@@ -347,10 +347,19 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
 
-        {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-2xl bg-contact-form-parchment p-4 md:p-6">
+        {/* Karta formularza — postrzępiony pergamin jako tło całego wrappera (rozciąga się pod pełną wysokość treści) */}
+        <div className="relative w-full max-w-2xl">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/contact-form-parchment-mobile.webp" />
+            <img
+              src="/images/contact-form-parchment.webp"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-fill contact-form-parchment-shadow pointer-events-none select-none"
+            />
+          </picture>
 
-
+          <div className="relative z-10 px-7 py-8 md:px-12 md:py-11">
 
           {/* Nagłówek formularza */}
           <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
@@ -631,6 +640,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
           </form>
+          </div>
         </div>
       </div>
 
