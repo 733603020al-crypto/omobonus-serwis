@@ -366,10 +366,10 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[42px]">
+          <div className="relative z-10 px-7 pt-8 pb-9 md:px-12 md:pt-11 md:pb-9">
 
           {/* Nagłówek formularza */}
-          <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-7 md:mb-8 drop-shadow-sm">
+          <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
             {d.formTitle}
           </div>
 
@@ -379,13 +379,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
             })}
-            className="space-y-5 md:space-y-6"
+            className="space-y-[17px] md:space-y-5"
           >
 
             {/* Imię i Telefon - Grid */}
-            <div className="grid grid-cols-1 gap-5 md:gap-6">
+            <div className="grid grid-cols-1 gap-[17px] md:gap-5">
               {/* Imię i nazwisko */}
-              <div className="space-y-2" data-field-name="name">
+              <div className="space-y-[7px]" data-field-name="name">
                 <label className="block text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {d.nameLabel}
                 </label>
@@ -401,7 +401,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
 
               {/* Telefon */}
-              <div className="space-y-2" data-field-name="phone">
+              <div className="space-y-[7px]" data-field-name="phone">
                 <label className="block text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {(() => {
                     const { main, note } = splitLabelNote(d.phoneLabel)
@@ -436,7 +436,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* E-mail */}
-            <div className="space-y-2" data-field-name="email">
+            <div className="space-y-[7px]" data-field-name="email">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 {d.emailLabel}
               </label>
@@ -453,7 +453,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Adres */}
-            <div className="space-y-2" data-field-name="address">
+            <div className="space-y-[7px]" data-field-name="address">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 {d.addressLabel}
               </label>
@@ -471,7 +471,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
             {/* Opis problemu */}
-            <div className="space-y-2" data-field-name="problemDescription">
+            <div className="space-y-[7px]" data-field-name="problemDescription">
               <label className="block text-black font-bold font-sans text-base md:text-lg">
                 {d.problemLabel}
               </label>
@@ -488,7 +488,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Załączniki */}
-            <div className="space-y-2">
+            <div className="space-y-[7px]">
               <div className="flex items-center gap-2 flex-wrap">
                 <label className="text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                   {d.attachLabel}
@@ -643,13 +643,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Przycisk Submit */}
-            <div className="pt-6 md:pt-7 flex justify-center">
+            <div className="pt-[16px] md:pt-[20px] flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-[#e3d0a3]/50 hover:bg-[#d3bd85]/60 border border-[rgba(70,45,25,0.45)] hover:border-2 hover:border-[rgba(70,45,25,0.7)] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
+                className="relative group px-10 py-3 bg-[#9A6A32] hover:bg-[#7F5329] border border-[#6F4724] hover:border-2 shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
               >
-                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2f2418] tracking-wide group-hover:text-[#2f2418]/85 flex items-center gap-2">
+                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#F6E5C3] tracking-wide flex items-center gap-2">
                   {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
                   {isSubmitting ? d.submitting : d.submitButton}
                 </span>
