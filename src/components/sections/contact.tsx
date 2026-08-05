@@ -389,7 +389,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             <div className="grid grid-cols-1 gap-[13px] md:gap-4">
               {/* Imię i nazwisko */}
               <div className="space-y-[5px]" data-field-name="name">
-                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[17px] md:text-[18px] leading-[1.3] tracking-[0.01em]">
+                <label className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                   {d.nameLabel}
                 </label>
                 <input
@@ -405,7 +405,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
               {/* Telefon */}
               <div className="space-y-[5px]" data-field-name="phone">
-                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[17px] md:text-[18px] leading-[1.3] tracking-[0.01em]">
+                <label className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                   {(() => {
                     const { main, note } = splitLabelNote(d.phoneLabel)
                     return (
@@ -440,7 +440,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* E-mail */}
             <div className="space-y-[5px]" data-field-name="email">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
+              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.emailLabel}
               </label>
               <input
@@ -457,7 +457,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Adres */}
             <div className="space-y-[5px]" data-field-name="address">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
+              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.addressLabel}
               </label>
               <input
@@ -475,7 +475,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Opis problemu */}
             <div className="space-y-[5px]" data-field-name="problemDescription">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
+              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.problemLabel}
               </label>
               <textarea
