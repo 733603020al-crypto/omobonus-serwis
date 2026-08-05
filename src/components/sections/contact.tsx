@@ -372,7 +372,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
           <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[24px]">
 
           {/* Nagłówek formularza */}
-          <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
+          <div className="text-[#2f2418] text-[30px] md:text-[40px] font-cormorant font-semibold text-center leading-[1.15] mb-[18px] md:mb-[20px] drop-shadow-sm">
             {d.formTitle}
           </div>
 
@@ -382,14 +382,14 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
             })}
-            className="space-y-[17px] md:space-y-5"
+            className="space-y-[13px] md:space-y-4"
           >
 
             {/* Imię i Telefon - Grid */}
-            <div className="grid grid-cols-1 gap-[17px] md:gap-5">
+            <div className="grid grid-cols-1 gap-[13px] md:gap-4">
               {/* Imię i nazwisko */}
-              <div className="space-y-[7px]" data-field-name="name">
-                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[19px] md:text-[20px] leading-[1.3] tracking-[0.01em]">
+              <div className="space-y-[5px]" data-field-name="name">
+                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[17px] md:text-[18px] leading-[1.3] tracking-[0.01em]">
                   {d.nameLabel}
                 </label>
                 <input
@@ -404,8 +404,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
 
               {/* Telefon */}
-              <div className="space-y-[7px]" data-field-name="phone">
-                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[19px] md:text-[20px] leading-[1.3] tracking-[0.01em]">
+              <div className="space-y-[5px]" data-field-name="phone">
+                <label className="block text-[#312b1f] font-cormorant font-semibold not-italic text-[17px] md:text-[18px] leading-[1.3] tracking-[0.01em]">
                   {(() => {
                     const { main, note } = splitLabelNote(d.phoneLabel)
                     return (
@@ -439,8 +439,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* E-mail */}
-            <div className="space-y-[7px]" data-field-name="email">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[19px] md:text-[20px] tracking-[0.01em]">
+            <div className="space-y-[5px]" data-field-name="email">
+              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
                 {d.emailLabel}
               </label>
               <input
@@ -456,8 +456,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Adres */}
-            <div className="space-y-[7px]" data-field-name="address">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[19px] md:text-[20px] tracking-[0.01em]">
+            <div className="space-y-[5px]" data-field-name="address">
+              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
                 {d.addressLabel}
               </label>
               <input
@@ -474,8 +474,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
             {/* Opis problemu */}
-            <div className="space-y-[7px]" data-field-name="problemDescription">
-              <label className="block text-black font-cormorant font-semibold not-italic text-[19px] md:text-[20px] tracking-[0.01em]">
+            <div className="space-y-[5px]" data-field-name="problemDescription">
+              <label className="block text-black font-cormorant font-semibold not-italic text-[17px] md:text-[18px] tracking-[0.01em]">
                 {d.problemLabel}
               </label>
               <textarea
