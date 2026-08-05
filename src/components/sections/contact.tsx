@@ -366,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-9 md:px-12 md:pt-11 md:pb-9">
+          <div className="relative z-10 px-7 pt-8 pb-[82px] md:px-12 md:pt-11 md:pb-[74px]">
 
           {/* Nagłówek formularza */}
           <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
@@ -647,9 +647,9 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-[#9A6A32] hover:bg-[#7F5329] border border-[#6F4724] hover:border-2 shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
+                className="relative group px-10 py-3 bg-[#C69556] hover:bg-[#B78345] border border-[#7A4E29] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
               >
-                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#F6E5C3] tracking-wide flex items-center gap-2">
+                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2F1E12] tracking-wide flex items-center gap-2">
                   {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
                   {isSubmitting ? d.submitting : d.submitButton}
                 </span>
