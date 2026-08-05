@@ -681,7 +681,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   </picture>
                   {!isSubmitting && (
                     <span
-                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-semibold text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[26px] md:text-[34px]' : 'text-[15px] md:text-[20px]'}`}
+                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
                       style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
                     >
                       {d.submitButtonSeal}
