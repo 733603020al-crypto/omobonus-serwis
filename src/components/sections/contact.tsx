@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { Loader2, Paperclip, X } from 'lucide-react'
+import { Loader2, X } from 'lucide-react'
 import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
@@ -72,6 +72,8 @@ export interface ContactT {
   termsHref: string
   agreementEnd: string
   submitButton: string
+  /** Krótkie słowo na pieczęci/przycisku wysyłki (np. "Wyślij") — osobne od submitButton (pełna fraza używana m.in. jako aria-label) */
+  submitButtonSeal: string
   submitting: string
   phoneError: string
   agreementError: string
@@ -107,6 +109,7 @@ const PL: ContactT = {
   termsHref: '/regulamin',
   agreementEnd: 'i akceptuję ich postanowienia.',
   submitButton: 'Wyślij zgłoszenie',
+  submitButtonSeal: 'Wyślij',
   submitting: 'Wysyłanie...',
   phoneError: 'Numer telefonu jest za krótki',
   agreementError: 'Musisz zaakceptować regulamin',
@@ -487,39 +490,30 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               )}
             </div>
 
-            {/* Załączniki */}
+            {/* Załączniki — plakietka pergaminowa wspólna dla PL/UK/RU (grafika bez wypalonego
+                tekstu, tylko spinacz), etykieta nakładana przez HTML/CSS z d.attachLabel. */}
             <div className="space-y-[7px]">
-              {resolvedLocale === 'pl' ? (
-                <div className="flex justify-start">
-                  <label
-                    htmlFor="attachments"
-                    className="group -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
+              <div className="flex justify-start">
+                <label
+                  htmlFor="attachments"
+                  className="group relative -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
+                >
+                  <picture>
+                    <source media="(max-width: 767px)" srcSet="/images/contact-form-attach-button-mobile.webp" />
+                    <img
+                      src="/images/contact-form-attach-button.webp"
+                      alt={d.attachLabel}
+                      draggable={false}
+                      className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
+                    />
+                  </picture>
+                  <span
+                    className="absolute left-[18%] right-[5%] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-lora font-semibold text-[13px] md:text-[17px] text-[#412612]"
                   >
-                    <picture>
-                      <source media="(max-width: 767px)" srcSet="/images/contact-form-attach-button-mobile.webp" />
-                      <img
-                        src="/images/contact-form-attach-button.webp"
-                        alt={d.attachLabel}
-                        draggable={false}
-                        className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
-                      />
-                    </picture>
-                  </label>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2 flex-wrap">
-                  <label className="text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
                     {d.attachLabel}
-                  </label>
-                  <label
-                    htmlFor="attachments"
-                    className="inline-flex items-center gap-1 text-[#3a2e24] text-sm font-semibold cursor-pointer border border-[#3a2e24]/40 rounded-full px-3 py-1 hover:bg-[#3a2e24]/10 transition-colors"
-                  >
-                    <Paperclip className="w-4 h-4" />
-                    {d.attachAdd}
-                  </label>
-                </div>
-              )}
+                  </span>
+                </label>
+              </div>
               {d.attachHint && (
                 <p className="text-black text-sm italic font-sans">
                   {d.attachHint}
@@ -661,49 +655,44 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
             </div>
 
-            {/* Przycisk Submit */}
+            {/* Przycisk Submit — pieczęć woskowa wspólna dla PL/UK/RU (grafika bez wypalonego
+                tekstu), słowo na pieczęci nakładane przez HTML/CSS z d.submitButtonSeal.
+                Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
+                przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
+                przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
+                tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem. */}
             <div className="!mt-[7px] flex justify-center">
-              {resolvedLocale === 'pl' ? (
-                // Pieczęć woskowa z wpisanym "Wyślij" — tylko PL (grafika ma wypalony polski tekst).
-                // Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
-                // przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
-                // przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
-                // tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem.
-                <div className="translate-x-1/4 flex">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    aria-label={d.submitButton}
-                    className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                  >
-                    <picture>
-                      <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
-                      <img
-                        src="/images/contact-form-seal.webp"
-                        alt={d.submitButton}
-                        draggable={false}
-                        className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
-                      />
-                    </picture>
-                    {isSubmitting && (
-                      <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
-                        <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
-                      </span>
-                    )}
-                  </button>
-                </div>
-              ) : (
+              <div className="translate-x-1/4 flex">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="relative group px-10 py-3 bg-[#C69556] hover:bg-[#B78345] border border-[#7A4E29] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
+                  aria-label={d.submitButton}
+                  className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
-                  <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2F1E12] tracking-wide flex items-center gap-2">
-                    {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
-                    {isSubmitting ? d.submitting : d.submitButton}
-                  </span>
+                  <picture>
+                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
+                    <img
+                      src="/images/contact-form-seal.webp"
+                      alt={d.submitButton}
+                      draggable={false}
+                      className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
+                    />
+                  </picture>
+                  {!isSubmitting && (
+                    <span
+                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-semibold text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[26px] md:text-[34px]' : 'text-[15px] md:text-[20px]'}`}
+                      style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
+                    >
+                      {d.submitButtonSeal}
+                    </span>
+                  )}
+                  {isSubmitting && (
+                    <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
+                      <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
+                    </span>
+                  )}
                 </button>
-              )}
+              </div>
             </div>
 
           </form>
