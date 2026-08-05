@@ -490,8 +490,9 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               )}
             </div>
 
-            {/* Załączniki — plakietka pergaminowa wspólna dla PL/UK/RU (grafika bez wypalonego
-                tekstu, tylko spinacz), etykieta nakładana przez HTML/CSS z d.attachLabel. */}
+            {/* Załączniki — plakietka pergaminowa wspólna dla PL/UK/RU (ten sam spinacz,
+                czcionka, kolor i styl), ale szerokość podłoża dobrana osobno pod długość
+                tekstu każdego języka, etykieta nakładana przez HTML/CSS z d.attachLabel. */}
             <div className="space-y-[7px]">
               <div className="flex justify-start">
                 <label
@@ -499,16 +500,16 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   className="group relative -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
                 >
                   <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/contact-form-attach-button-mobile.webp" />
+                    <source media="(max-width: 767px)" srcSet={`/images/contact-form-attach-button-${resolvedLocale}-mobile.webp`} />
                     <img
-                      src="/images/contact-form-attach-button.webp"
+                      src={`/images/contact-form-attach-button-${resolvedLocale}.webp`}
                       alt={d.attachLabel}
                       draggable={false}
                       className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
                     />
                   </picture>
                   <span
-                    className="absolute left-[18%] right-[5%] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-lora font-semibold text-[13px] md:text-[17px] text-[#412612]"
+                    className="absolute left-[40px] md:left-[47px] right-[16px] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-lora font-semibold text-[13px] md:text-[17px] text-[#412612]"
                   >
                     {d.attachLabel}
                   </span>
