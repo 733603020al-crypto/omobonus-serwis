@@ -366,7 +366,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             />
           </picture>
 
-          <div className="relative z-10 px-7 pt-8 pb-[82px] md:px-12 md:pt-11 md:pb-[74px]">
+          <div className="relative z-10 px-7 pt-8 pb-[60px] md:px-12 md:pt-11 md:pb-[46px]">
 
           {/* Nagłówek formularza */}
           <div className="text-[#2f2418] text-[34px] md:text-[46px] font-cormorant font-semibold text-center leading-[1.15] mb-[23px] md:mb-[26px] drop-shadow-sm">
@@ -644,16 +644,45 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Przycisk Submit */}
             <div className="pt-[16px] md:pt-[20px] flex justify-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-[#C69556] hover:bg-[#B78345] border border-[#7A4E29] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
-              >
-                <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2F1E12] tracking-wide flex items-center gap-2">
-                  {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
-                  {isSubmitting ? d.submitting : d.submitButton}
-                </span>
-              </button>
+              {resolvedLocale === 'pl' ? (
+                // Pieczęć woskowa z wpisanym "Wyślij" — tylko PL (grafika ma wypalony polski tekst).
+                // Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
+                // przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
+                // przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
+                // tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem.
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-label={d.submitButton}
+                  className="relative flex-shrink-0 ml-[10px] md:ml-[14px] mb-[-59px] md:mb-[-77px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                >
+                  <picture>
+                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
+                    <img
+                      src="/images/contact-form-seal.webp"
+                      alt={d.submitButton}
+                      draggable={false}
+                      className="w-[84px] md:w-[108px] h-auto select-none drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)]"
+                    />
+                  </picture>
+                  {isSubmitting && (
+                    <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
+                      <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
+                    </span>
+                  )}
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="relative group px-10 py-3 bg-[#C69556] hover:bg-[#B78345] border border-[#7A4E29] shadow-[0_1px_3px_rgba(0,0,0,0.15)] hover:shadow-[0_2px_6px_rgba(0,0,0,0.2)] rounded-full transition-all duration-250"
+                >
+                  <span className="font-cormorant font-semibold text-2xl md:text-[26px] text-[#2F1E12] tracking-wide flex items-center gap-2">
+                    {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
+                    {isSubmitting ? d.submitting : d.submitButton}
+                  </span>
+                </button>
+              )}
             </div>
 
           </form>
