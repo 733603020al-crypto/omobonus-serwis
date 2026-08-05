@@ -650,27 +650,29 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 // przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
                 // przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
                 // tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem.
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  aria-label={d.submitButton}
-                  className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                >
-                  <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
-                    <img
-                      src="/images/contact-form-seal.webp"
-                      alt={d.submitButton}
-                      draggable={false}
-                      className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
-                    />
-                  </picture>
-                  {isSubmitting && (
-                    <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
-                      <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
-                    </span>
-                  )}
-                </button>
+                <div className="translate-x-full">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-label={d.submitButton}
+                    className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  >
+                    <picture>
+                      <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
+                      <img
+                        src="/images/contact-form-seal.webp"
+                        alt={d.submitButton}
+                        draggable={false}
+                        className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
+                      />
+                    </picture>
+                    {isSubmitting && (
+                      <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
+                        <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
+                      </span>
+                    )}
+                  </button>
+                </div>
               ) : (
                 <button
                   type="submit"
