@@ -489,18 +489,37 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Załączniki */}
             <div className="space-y-[7px]">
-              <div className="flex items-center gap-2 flex-wrap">
-                <label className="text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
-                  {d.attachLabel}
-                </label>
-                <label
-                  htmlFor="attachments"
-                  className="inline-flex items-center gap-1 text-[#3a2e24] text-sm font-semibold cursor-pointer border border-[#3a2e24]/40 rounded-full px-3 py-1 hover:bg-[#3a2e24]/10 transition-colors"
-                >
-                  <Paperclip className="w-4 h-4" />
-                  {d.attachAdd}
-                </label>
-              </div>
+              {resolvedLocale === 'pl' ? (
+                <div className="flex justify-start">
+                  <label
+                    htmlFor="attachments"
+                    className="group -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
+                  >
+                    <picture>
+                      <source media="(max-width: 767px)" srcSet="/images/contact-form-attach-button-mobile.webp" />
+                      <img
+                        src="/images/contact-form-attach-button.webp"
+                        alt={d.attachLabel}
+                        draggable={false}
+                        className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
+                      />
+                    </picture>
+                  </label>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 flex-wrap">
+                  <label className="text-[#312b1f] font-lora font-semibold text-lg md:text-xl leading-[1.3]">
+                    {d.attachLabel}
+                  </label>
+                  <label
+                    htmlFor="attachments"
+                    className="inline-flex items-center gap-1 text-[#3a2e24] text-sm font-semibold cursor-pointer border border-[#3a2e24]/40 rounded-full px-3 py-1 hover:bg-[#3a2e24]/10 transition-colors"
+                  >
+                    <Paperclip className="w-4 h-4" />
+                    {d.attachAdd}
+                  </label>
+                </div>
+              )}
               {d.attachHint && (
                 <p className="text-black text-sm italic font-sans">
                   {d.attachHint}
