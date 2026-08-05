@@ -650,7 +650,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 // przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
                 // przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
                 // tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem.
-                <div className="translate-x-full">
+                <div className="translate-x-1/4 flex">
                   <button
                     type="submit"
                     disabled={isSubmitting}
