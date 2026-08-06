@@ -659,3 +659,14 @@
 .page-druk-3d-na-zamowienie .service-hero-image-wrap::after {
   display: none;
 }
+
+/* The SVG on this page keeps its own baked-in animation running (SMIL) for
+   as long as the page is open, which keeps costing Style/Layout/Rendering
+   work on the main thread even while scrolled out of view. content-visibility
+   tells the browser to skip that rendering work entirely while the element
+   is off-screen, and resume it automatically once it's back in the viewport
+   — same file, same animation, no JS, no visual difference when visible. */
+.page-druk-3d-na-zamowienie .service-hero-image {
+  content-visibility: auto;
+  contain-intrinsic-size: 420px 420px;
+}

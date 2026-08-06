@@ -6,11 +6,8 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
-import ServiceAccordion from '@/components/service-accordion'
 import { CallButton } from '@/components/ui/CallButton'
-import BrandTicker from '@/components/brand-ticker'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
-import { FadeSlideText } from '@/components/ui/FadeSlideText'
 import type { ServiceData } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
 
@@ -19,6 +16,9 @@ import GoogleReviews from '@/components/google-reviews'
 // GoogleReviews (imported above) reads data/reviews.json directly on the server
 // and is rendered as a plain Server Component — no dynamic() needed.
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
+const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
+const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
+const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',

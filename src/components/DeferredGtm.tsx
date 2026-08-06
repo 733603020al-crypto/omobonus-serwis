@@ -9,7 +9,7 @@ declare global {
 }
 
 const TRIGGER_EVENTS = ['pointerdown', 'touchstart', 'scroll', 'keydown'] as const
-const FALLBACK_DELAY_MS = 4000
+const FALLBACK_DELAY_MS = 7000
 
 export function DeferredGtm({ gtmId }: { gtmId: string }) {
     useEffect(() => {
