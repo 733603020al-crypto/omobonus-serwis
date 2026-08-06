@@ -156,7 +156,7 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
         <div
           ref={trackRef}
           className="flex items-center brand-ticker-track"
-          style={{ gap: `${gap}px`, willChange: "transform", animationDuration: `${durationSec}s` }}
+          style={{ gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s` }}
         >
           {Array.from({ length: copies }).map((_, i) => (
             <BrandGroup key={i} displayBrands={displayBrands} compact={compact} ariaHidden={i > 0} />
