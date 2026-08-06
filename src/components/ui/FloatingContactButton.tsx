@@ -101,6 +101,7 @@ export function FloatingContactButton() {
                 <div className="flex flex-col items-center">
                     <Link
                         href={contactHref}
+                        prefetch={false}
                         aria-label="Przejdź do kontaktu"
                         className="
                             relative

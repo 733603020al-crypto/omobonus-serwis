@@ -340,10 +340,10 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             </div>
           )}
         </div>
-        <Link href={aboutHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={aboutHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
         </Link>
-        <Link href={contactHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={contactHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
         </Link>
 

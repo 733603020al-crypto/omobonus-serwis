@@ -73,6 +73,7 @@ export function Services({
               <Link
                 key={service.slug}
                 href={`${basePath}/${service.slug}`}
+                prefetch={false}
                 className="
     group
     relative
