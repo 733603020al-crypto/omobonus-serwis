@@ -194,6 +194,7 @@ export function ServicePageTemplate({
                           className="service-hero-image object-contain w-full h-auto"
                           priority
                           fetchPriority="high"
+                          quality={60}
                         />
                       )}
                     </div>
