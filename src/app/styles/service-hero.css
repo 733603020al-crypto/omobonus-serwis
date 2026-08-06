@@ -18,6 +18,15 @@
   animation: serviceHeroGlow 7s ease-in-out infinite;
   filter:
     drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+  /* Every service page keeps this hero animating (float/glow, or the
+     druk-3d SMIL SVG) for as long as the page is open, which keeps costing
+     Style/Layout/Rendering work on the main thread even while scrolled out
+     of view. content-visibility skips that work entirely while off-screen
+     and resumes automatically once back in the viewport — same image, same
+     animation, no JS, no visual difference when visible. Same fixed
+     420x420 box on every service page (see service-page-template.tsx). */
+  content-visibility: auto;
+  contain-intrinsic-size: 420px 420px;
 }
 
 .service-hero-image-wrap:hover .service-hero-image {
@@ -658,15 +667,4 @@
 
 .page-druk-3d-na-zamowienie .service-hero-image-wrap::after {
   display: none;
-}
-
-/* The SVG on this page keeps its own baked-in animation running (SMIL) for
-   as long as the page is open, which keeps costing Style/Layout/Rendering
-   work on the main thread even while scrolled out of view. content-visibility
-   tells the browser to skip that rendering work entirely while the element
-   is off-screen, and resume it automatically once it's back in the viewport
-   — same file, same animation, no JS, no visual difference when visible. */
-.page-druk-3d-na-zamowienie .service-hero-image {
-  content-visibility: auto;
-  contain-intrinsic-size: 420px 420px;
 }

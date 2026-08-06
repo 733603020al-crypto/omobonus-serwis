@@ -57,6 +57,7 @@ function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
 
 export default function PrintedPartsTicker() {
   const trackRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
   const [durationSec, setDurationSec] = useState(FALLBACK_DURATION_SEC)
 
   useEffect(() => {
@@ -79,8 +80,35 @@ export default function PrintedPartsTicker() {
     return () => resizeObserver.disconnect()
   }, [])
 
+  useEffect(() => {
+    const track = trackRef.current
+    const section = sectionRef.current
+    if (!track || !section) return
+
+    // Same pause-when-not-visible pattern as BrandTicker — the CSS animation
+    // itself is compositor-only, but pausing it when off-screen or when the
+    // tab is backgrounded avoids animating something nobody can see.
+    let isIntersecting = false
+    const applyPlayState = () => {
+      track.style.animationPlayState = isIntersecting && !document.hidden ? 'running' : 'paused'
+    }
+
+    const sectionObserver = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting
+      applyPlayState()
+    }, { threshold: 0 })
+    sectionObserver.observe(section)
+
+    document.addEventListener("visibilitychange", applyPlayState)
+
+    return () => {
+      document.removeEventListener("visibilitychange", applyPlayState)
+      sectionObserver.disconnect()
+    }
+  }, [])
+
   return (
-    <section className="relative w-full h-24 -mt-12 -mb-12 md:h-[150px] md:-mt-[30px] md:-mb-[75px] z-10 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-24 -mt-12 -mb-12 md:h-[150px] md:-mt-[30px] md:-mb-[75px] z-10 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}

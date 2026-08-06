@@ -1,6 +1,10 @@
+import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
-import { Footer, type FooterT } from '@/components/footer'
+import type { FooterT } from '@/components/footer'
 import type { LegalPageContent } from '@/lib/legal/legal-pages'
+
+// Same below-fold split already used for Footer on every other template.
+const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 interface LegalPageTemplateProps {
   content: LegalPageContent
