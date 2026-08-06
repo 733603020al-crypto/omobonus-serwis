@@ -389,10 +389,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             <div className="grid grid-cols-1 gap-[13px] md:gap-4">
               {/* Imię i nazwisko */}
               <div className="space-y-[5px]" data-field-name="name">
-                <label className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
+                <label htmlFor="contact-name" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                   {d.nameLabel}
                 </label>
                 <input
+                  id="contact-name"
                   {...register('name')}
                   placeholder={d.namePlaceholder}
                   className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-lora font-normal leading-[1.4] placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
@@ -405,7 +406,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
               {/* Telefon */}
               <div className="space-y-[5px]" data-field-name="phone">
-                <label className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
+                <label htmlFor="contact-phone" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                   {(() => {
                     const { main, note } = splitLabelNote(d.phoneLabel)
                     return (
@@ -424,6 +425,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                     control={control}
                     render={({ field }) => (
                       <CustomPhoneInput
+                        id="contact-phone"
                         value={field.value || ''}
                         onChange={field.onChange}
                         locale={resolvedLocale}
@@ -440,10 +442,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* E-mail */}
             <div className="space-y-[5px]" data-field-name="email">
-              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-email" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.emailLabel}
               </label>
               <input
+                id="contact-email"
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
@@ -457,10 +460,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Adres */}
             <div className="space-y-[5px]" data-field-name="address">
-              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-address" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.addressLabel}
               </label>
               <input
+                id="contact-address"
                 {...register('address')}
                 placeholder={d.addressPlaceholder}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
@@ -475,10 +479,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Opis problemu */}
             <div className="space-y-[5px]" data-field-name="problemDescription">
-              <label className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-problem" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.problemLabel}
               </label>
               <textarea
+                id="contact-problem"
                 {...register('problemDescription')}
                 rows={4}
                 placeholder={d.problemPlaceholder}

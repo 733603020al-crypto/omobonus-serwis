@@ -57,7 +57,7 @@ export function MobileMenuSheet({
             >
                 <div
                     ref={mobileMenuRef}
-                    className="relative overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
+                    className="relative isolate overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
                 >
                     <div
                         className="absolute inset-0 bg-cover bg-center"

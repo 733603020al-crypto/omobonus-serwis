@@ -237,6 +237,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
           <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-3">
             <div className="flex-1 min-w-0">
               <CustomPhoneInput
+                aria-label={d.callbackTitle}
                 value={phone}
                 onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
                 onCountryChange={({ name, dialCode, phoneLength }) => {

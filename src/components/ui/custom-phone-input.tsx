@@ -17,6 +17,10 @@ interface CustomPhoneInputProps {
   selectorWidth?: string
   /** Force flex-row at all breakpoints (instead of flex-col → sm:flex-row). */
   alwaysRow?: boolean
+  /** id forwarded to the underlying number <input>, for label association. */
+  id?: string
+  /** aria-label forwarded to the underlying number <input>, for when no visible <label> targets it. */
+  'aria-label'?: string
 }
 
 const LOCALIZED_COUNTRY_NAME_KEYS = {
@@ -26,7 +30,7 @@ const LOCALIZED_COUNTRY_NAME_KEYS = {
 
 const DEFAULT_COUNTRY = countries[1]
 
-export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false }: CustomPhoneInputProps) {
+export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false, id, 'aria-label': ariaLabel }: CustomPhoneInputProps) {
   const dark = variant === 'dark'
   const [selectedCountry, setSelectedCountry] = useState<Country>(DEFAULT_COUNTRY) // По умолчанию Польша
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -265,6 +269,8 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
         {/* Поле ввода номера */}
         <div className="flex-1 w-full">
           <input
+            id={id}
+            aria-label={ariaLabel}
             type="tel"
             value={phoneNumber}
             onChange={handlePhoneChange}
