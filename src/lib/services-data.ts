@@ -3772,7 +3772,7 @@ export const services: ServiceData[] = [
   // Dane celowo zduplikowane (nie referencja), żeby obie strony były niezależne.
   {
     slug: 'druk-3d-na-zamowienie',
-    title: 'Serwis i naprawa drukarek 3D',
+    title: 'Druk 3D na zamówienie',
     subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
