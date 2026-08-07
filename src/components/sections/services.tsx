@@ -77,8 +77,8 @@ export function Services({
                 className={`
     group
     relative
-    min-h-[128px]
-    py-5 px-5
+    min-h-[152px]
+    py-4 px-6
     flex
     items-center
     text-left
@@ -88,7 +88,7 @@ export function Services({
   `}
               >
                 {/* Ikona */}
-                <div className="relative z-10 mr-4 w-[90px] h-[90px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
@@ -118,16 +118,16 @@ export function Services({
                                               : service.icon
                     }
                     alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                    width={80}
-                    height={80}
-                    sizes="80px"
+                    width={105}
+                    height={105}
+                    sizes="105px"
                     className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
 
                 {/* Treść */}
-                <div className="relative z-10 flex-1">
-                  <h2 className="text-[21px] font-cormorant font-semibold text-[#3A2817] leading-[1.3] line-clamp-2">
+                <div className="relative z-10 max-w-[195px]">
+                  <h2 className="text-[24px] font-cormorant font-semibold text-[#3A2817] leading-[1.25]">
                     {service.slug === 'serwis-drukarek-termicznych'
                       ? d.serwis_drukarek_termicznych
                       : service.title}
