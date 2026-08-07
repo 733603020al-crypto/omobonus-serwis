@@ -17,7 +17,7 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_CLASS = 'whitespace-nowrap font-cormorant text-[14px] leading-none text-[#f3df9a]'
+const CAPTION_CLASS = 'whitespace-nowrap font-cormorant text-[15px] leading-none text-[#f3df9a]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
 const DIVIDER_CLASS = 'h-8 w-px shrink-0 bg-[#bfa76a]/45'
 
@@ -117,16 +117,16 @@ export function MobileActionBar() {
                 >
                     {!isKontakt && (
                         <>
-                            <div className="flex flex-1 items-center justify-center">
+                            <div className="flex flex-1 items-center justify-center px-2">
                                 <Link
                                     href={contactHref}
                                     prefetch={false}
                                     aria-label="Przejdź do kontaktu"
-                                    className="flex items-center gap-1.5 active:opacity-80"
+                                    className="flex items-center gap-2 active:opacity-80"
                                 >
-                                    <span className="relative flex w-10 h-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                                    <span className="relative flex w-11 h-11 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                         <svg
-                                            className="absolute left-0 -top-[7px] w-10 h-[47px] pointer-events-none overflow-visible"
+                                            className="absolute left-0 -top-[8px] w-11 h-[51px] pointer-events-none overflow-visible"
                                             viewBox="0 0 56 66"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ export function MobileActionBar() {
                                                 <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
                                                     <image
                                                         href="/icons/quill.webp"
-                                                        x="20.64" y="-37" width="34.8" height="64"
+                                                        x="22.82" y="-33" width="30.45" height="56"
                                                         preserveAspectRatio="xMidYMid meet"
                                                     />
                                                 </g>
@@ -160,15 +160,15 @@ export function MobileActionBar() {
                         </>
                     )}
 
-                    <div className="flex flex-1 items-center justify-center">
+                    <div className="flex flex-1 items-center justify-center px-2">
                         <a
                             href={MAPS_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Mapa"
-                            className="flex items-center gap-1.5 active:opacity-80"
+                            className="flex items-center gap-2 active:opacity-80"
                         >
-                            <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                            <span className="relative flex w-11 h-11 shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                 <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                             </span>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
@@ -177,11 +177,11 @@ export function MobileActionBar() {
 
                     <span className={DIVIDER_CLASS} aria-hidden="true" />
 
-                    <div className="flex flex-1 items-center justify-center">
+                    <div className="flex flex-1 items-center justify-center px-2">
                         <a
                             href="tel:+48793759262"
                             aria-label="Zadzwoń"
-                            className="flex items-center gap-1.5 active:opacity-80"
+                            className="flex items-center gap-2 active:opacity-80"
                         >
                             <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-visible">
                                 <span className="bar-ripple pointer-events-none"></span>
