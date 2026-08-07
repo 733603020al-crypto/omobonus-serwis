@@ -20,7 +20,6 @@ interface MobileMenuSheetProps {
     navAbout: string
     contactHref: string
     navContact: string
-    navShop: string
     navSendForm: string
 }
 
@@ -38,7 +37,6 @@ export function MobileMenuSheet({
     navAbout,
     contactHref,
     navContact,
-    navShop,
     navSendForm,
 }: MobileMenuSheetProps) {
     return (
@@ -59,7 +57,7 @@ export function MobileMenuSheet({
             >
                 <div
                     ref={mobileMenuRef}
-                    className="relative overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
+                    className="relative isolate overflow-hidden rounded-l-lg border border-[#bfa76a]/30"
                 >
                     <div
                         className="absolute inset-0 bg-cover bg-center"
@@ -83,14 +81,6 @@ export function MobileMenuSheet({
                             </Link>
                             <Link href={contactHref} onClick={() => setIsOpen(false)}>
                                 {navContact}
-                            </Link>
-
-                            <Link
-                                href="https://omobonus.com.pl"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {navShop}
                             </Link>
                         </nav>
 

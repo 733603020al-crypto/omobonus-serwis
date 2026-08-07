@@ -17,6 +17,10 @@ interface CustomPhoneInputProps {
   selectorWidth?: string
   /** Force flex-row at all breakpoints (instead of flex-col → sm:flex-row). */
   alwaysRow?: boolean
+  /** id forwarded to the underlying number <input>, for label association. */
+  id?: string
+  /** aria-label forwarded to the underlying number <input>, for when no visible <label> targets it. */
+  'aria-label'?: string
 }
 
 const LOCALIZED_COUNTRY_NAME_KEYS = {
@@ -26,7 +30,7 @@ const LOCALIZED_COUNTRY_NAME_KEYS = {
 
 const DEFAULT_COUNTRY = countries[1]
 
-export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false }: CustomPhoneInputProps) {
+export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false, id, 'aria-label': ariaLabel }: CustomPhoneInputProps) {
   const dark = variant === 'dark'
   const [selectedCountry, setSelectedCountry] = useState<Country>(DEFAULT_COUNTRY) // По умолчанию Польша
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -265,13 +269,15 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
         {/* Поле ввода номера */}
         <div className="flex-1 w-full">
           <input
+            id={id}
+            aria-label={ariaLabel}
             type="tel"
             value={phoneNumber}
             onChange={handlePhoneChange}
             placeholder={getPlaceholder()}
             className={dark
               ? 'dark-phone-input w-full border border-[#bfa76a]/40 rounded-sm px-4 py-2 text-base font-sans font-medium placeholder:font-normal placeholder:text-white/30 focus:outline-none transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:shadow-[0_0_20px_rgba(191,167,106,0.35)] focus:border-[#bfa76a]/80'
-              : `w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium placeholder:font-normal placeholder:text-black/15 focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250${alwaysRow ? '' : ' mt-2 sm:mt-0'}`
+              : `w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-[#312b1f] text-lg md:text-xl font-lora font-normal placeholder:font-sans placeholder:font-normal placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250${alwaysRow ? '' : ' mt-2 sm:mt-0'}`
             }
             style={dark ? {
               backgroundColor: 'rgb(10, 8, 5)',

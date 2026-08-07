@@ -6,10 +6,8 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
-import ServiceAccordion from '@/components/service-accordion'
 import { CallButton } from '@/components/ui/CallButton'
-import BrandTicker from '@/components/brand-ticker'
-import { FadeSlideText } from '@/components/ui/FadeSlideText'
+import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
 
@@ -18,12 +16,16 @@ import GoogleReviews from '@/components/google-reviews'
 // GoogleReviews (imported above) reads data/reviews.json directly on the server
 // and is rendered as a plain Server Component — no dynamic() needed.
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
+const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
+const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
+const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
   'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych',
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
+  'druk-3d-na-zamowienie',
 ]
 
 export interface ServicePageHeadings {
@@ -51,6 +53,7 @@ export interface ServicePageLabels {
   fadeSlideDefault: string
   fadeSlideDrukarkaZastepcza: string
   fadeSlideWynajem: string
+  fadeSlideDruk3DZamowienie?: string
   relatedCta: string
   relatedIconAltSuffix: string
   drukarkaZastepczaNote: ReactNode
@@ -59,16 +62,20 @@ export interface ServicePageLabels {
 interface SeoBlocksGridProps {
   items: string[]
   variant: 'related' | 'accordion'
+  slug?: string
 }
 
-function SeoBlocksGrid({ items, variant }: SeoBlocksGridProps) {
+function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   if (!items.length) return null
   const wrapperClass = variant === 'related' ? 'pt-2 pb-6 md:pb-8' : 'pt-6 pb-24'
+  // Na druk-3d-na-zamowienie ten tekst nie ma być semantycznym H2 (nie jest
+  // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
+  const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : 'h2'
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
         {items.map((text, index) => (
-          <h2
+          <Tag
             key={index}
             className={
               variant === 'related'
@@ -77,7 +84,7 @@ function SeoBlocksGrid({ items, variant }: SeoBlocksGridProps) {
             }
           >
             {text}
-          </h2>
+          </Tag>
         ))}
       </div>
     </div>
@@ -164,16 +171,32 @@ export function ServicePageTemplate({
                         </span>
                       ))}
 
-                      <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        width={420}
-                        height={420}
-                        sizes="(max-width: 768px) 85vw, 420px"
-                        className="service-hero-image object-contain w-full h-auto"
-                        priority
-                        fetchPriority="high"
-                      />
+                      {slug === 'druk-3d-na-zamowienie' ? (
+                        // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
+                        // next/image, so the optimizer doesn't rasterize it and kill
+                        // the animation.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={420}
+                          height={420}
+                          className="service-hero-image object-contain w-full h-auto"
+                          fetchPriority="high"
+                        />
+                      ) : (
+                        <Image
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={420}
+                          height={420}
+                          sizes="(max-width: 768px) 85vw, 420px"
+                          className="service-hero-image object-contain w-full h-auto"
+                          priority
+                          fetchPriority="high"
+                          quality={60}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">
@@ -208,18 +231,24 @@ export function ServicePageTemplate({
                   </div>
                 </div>
               </div>
-              {slugBrands && slugBrands.length > 0 && (
+              {slug === 'druk-3d-na-zamowienie' ? (
+                <div className="mt-[40px]">
+                  <PrintedPartsTicker />
+                </div>
+              ) : slugBrands && slugBrands.length > 0 && (
                 <div className="mt-[40px]">
                   <BrandTicker brandNames={slugBrands} />
                 </div>
               )}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
                 <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
                       ? labels.fadeSlideWynajem
-                      : labels.fadeSlideDefault}
+                      : slug === 'druk-3d-na-zamowienie'
+                        ? (labels.fadeSlideDruk3DZamowienie ?? labels.fadeSlideDefault)
+                        : labels.fadeSlideDefault}
                 </FadeSlideText>
               </div>
             </>
@@ -267,7 +296,7 @@ export function ServicePageTemplate({
         ) : (
           <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
             <ServiceAccordion service={service} locale={locale} />
-            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" />
+            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} />
           </section>
         )}
 

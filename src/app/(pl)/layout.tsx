@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
 import '../globals.css'
 import { FloatingCallButton, FloatingContactButton } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
 
 /* =========================
-   Fonts (STRICT: 2 only)
+   Fonts
    ========================= */
 
 const cormorant = Cormorant_Garamond({
@@ -24,6 +24,14 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+})
+
+/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
+const lora = Lora({
+  weight: ['400', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lora',
 })
 
 /* =========================
@@ -110,7 +118,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pl"
-      className={`${cormorant.variable} ${inter.variable}`}
+      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
       suppressHydrationWarning
     >
       <head>

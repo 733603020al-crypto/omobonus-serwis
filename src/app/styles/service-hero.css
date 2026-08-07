@@ -18,6 +18,15 @@
   animation: serviceHeroGlow 7s ease-in-out infinite;
   filter:
     drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+  /* Every service page keeps this hero animating (float/glow, or the
+     druk-3d SMIL SVG) for as long as the page is open, which keeps costing
+     Style/Layout/Rendering work on the main thread even while scrolled out
+     of view. content-visibility skips that work entirely while off-screen
+     and resumes automatically once back in the viewport — same image, same
+     animation, no JS, no visual difference when visible. Same fixed
+     420x420 box on every service page (see service-page-template.tsx). */
+  content-visibility: auto;
+  contain-intrinsic-size: 420px 420px;
 }
 
 .service-hero-image-wrap:hover .service-hero-image {
@@ -634,4 +643,28 @@
     animation: none;
     opacity: 0.35;
   }
+}
+
+/* On "druk-3d-na-zamowienie" only: drop the generic hero float/glow/shine
+   effects (shared by every service page) — the hero illustration on this
+   page is a self-animated SVG (Druk_3D_animation.svg, movement/jet/glow all
+   baked into the file itself), so it doesn't need any of the template's own
+   motion on top. Scoped via the page-druk-3d-na-zamowienie class on <main>,
+   so no other page is affected. */
+.page-druk-3d-na-zamowienie .service-hero-image-wrap {
+  animation: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image {
+  animation: none;
+  filter: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image-wrap:hover .service-hero-image {
+  transform: none;
+  filter: none;
+}
+
+.page-druk-3d-na-zamowienie .service-hero-image-wrap::after {
+  display: none;
 }

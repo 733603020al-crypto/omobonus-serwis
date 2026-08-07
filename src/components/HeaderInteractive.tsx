@@ -128,7 +128,7 @@ const LOCALE_NAV: Record<Locale, {
    Mega menu data
    ========================= */
 
-const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string }[] }[] = [
+const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
   {
     items: [
       { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
@@ -143,6 +143,7 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
       { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
       { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
       { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
       { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
       { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
@@ -160,6 +161,33 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Small grace period before closing the mega menu: the panel sits a few px
+  // below the trigger, so a real mouse move from "Usługi" to a link inside it
+  // briefly leaves both hit areas. Without this delay the menu unmounts before
+  // the cursor arrives.
+  const openServices = () => {
+    if (servicesCloseTimer.current) {
+      clearTimeout(servicesCloseTimer.current)
+      servicesCloseTimer.current = null
+    }
+    setIsServicesOpen(true)
+  }
+
+  const scheduleCloseServices = () => {
+    if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current)
+    servicesCloseTimer.current = setTimeout(() => {
+      setIsServicesOpen(false)
+      servicesCloseTimer.current = null
+    }, 200)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current)
+    }
+  }, [])
   const nav = LOCALE_NAV[locale]
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
@@ -171,7 +199,6 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const navServices = nav.labels.services
   const navAbout = nav.labels.about
   const navContact = nav.labels.contact
-  const navShop = nav.labels.shop
   const navCall = nav.labels.call
   const navSendForm = nav.labels.sendForm
   const megaMenuHeader = nav.labels.megaMenuHeader
@@ -282,8 +309,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
         <div
           className="relative h-full flex items-center"
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
+          onMouseEnter={openServices}
+          onMouseLeave={scheduleCloseServices}
         >
           <Link
             href={homeSectionHref}
@@ -315,7 +342,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                 {MEGA_MENU.map((col, i) => (
                   <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
                     <div className="flex flex-col divide-y divide-[#bfa76a]/25">
-                      {col.items.map((item) => (
+                      {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
                         <Link
                           key={item.href}
                           href={`${nav.prefix}${item.href}`}
@@ -340,20 +367,11 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             </div>
           )}
         </div>
-        <Link href={aboutHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={aboutHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
         </Link>
-        <Link href={contactHref} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={contactHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
-        </Link>
-
-        <Link
-          href="https://omobonus.com.pl"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
-        >
-          {navShop}
         </Link>
 
         <LanguageSwitcher />
@@ -403,7 +421,6 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             navAbout={navAbout}
             contactHref={contactHref}
             navContact={navContact}
-            navShop={navShop}
             navSendForm={navSendForm}
           />
         )}

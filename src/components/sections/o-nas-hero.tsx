@@ -57,6 +57,7 @@ export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
         priority
         fetchPriority="high"
         sizes="100vw"
+        quality={60}
         className="object-cover object-center z-0"
       />
       <div className="absolute inset-0 z-[1] bg-black/50" />

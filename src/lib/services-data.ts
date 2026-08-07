@@ -24,6 +24,9 @@ export interface PricingSection {
   items: PricingItem[]
   subcategories?: PricingSubcategory[] // Podkategorie (dla "naprawy" lub "faq")
   footer?: string // Footer text (displayed below title when section is open)
+  intro?: string // Tekst wprowadzający wyświetlany na początku otwartej sekcji, przed tabelą
+  priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą (biały, styl zwykłej pozycji)
+  example?: string // Jedna mała złota linia z przykładem wyliczenia, pod priceFormula
 }
 
 export interface PriceTooltipCategory {
@@ -2783,6 +2786,169 @@ const create3DPrinterPricingSections = (): PricingSection[] => {
   return sections
 }
 
+// Cennik dla 'druk-3d-na-zamowienie': te same sekcje co serwis-drukarek-3d,
+// ale pierwsza sekcja ("Diagnoza i wycena") zastąpiona cennikiem druku 3D
+// z gotowego projektu. Zmiana dotyczy WYŁĄCZNIE tej usługi — serwis-drukarek-3d
+// nadal korzysta z create3DPrinterPricingSections() bez zmian.
+const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
+  const sections = create3DPrinterPricingSections()
+
+  const diagnosisIndex = sections.findIndex(section => section.id === 'diagnoza')
+  if (diagnosisIndex !== -1) {
+    sections[diagnosisIndex] = {
+      id: 'diagnoza',
+      title: 'Drukowanie 3D z gotowego projektu',
+      items: [
+        { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
+        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', price: '0,30 zł/gram + 8 zł/godz.', duration: '1–2 dni' },
+        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', price: '0,35 zł/gram + 9 zł/godz.', duration: '1–2 dni' },
+        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', price: '0,45 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
+        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', price: '0,60 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
+        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
+        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', price: 'według cennika\nprzewoźnika', duration: 'do 24 h' },
+      ],
+      priceFormula: 'Cena końcowa = przygotowanie wydruku + materiał + czas druku',
+      example: 'Przykład: Wydruk z PLA 100 g materiału przy 5 godzinach druku — 25 zł (przygotowanie wydruku) + 100 g materiału × 0,30 zł/gram + 5 godz. druku × 8 zł/h = 95 zł',
+    }
+
+    // Cennik projektowania modeli 3D — używa dokładnie tego samego
+    // układu/komponentu co "Druk 3D z gotowego projektu", dlatego id jest
+    // dodany do DRUK3D_CUSTOM_SECTION_IDS w service-accordion.tsx.
+    sections.splice(diagnosisIndex + 1, 0, {
+      id: 'projektowanie-modeli',
+      title: 'Projektowanie i modelowanie 3D CAD',
+      items: [
+        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', price: 'GRATIS\ndo 15 min konsultacji', duration: 'do 24 h' },
+        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', price: '49 zł\ndo 15 min pracy', duration: 'do 24 h' },
+        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', price: '149 zł\ndo 60 min pracy', duration: '1–2 dni' },
+        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', price: '199 zł\ndo 90 min pracy', duration: '1–2 dni' },
+        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', price: '299 zł\ndo 2 godz. pracy', duration: '2–3 dni' },
+        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', price: '35 zł\nza każde dodatkowe 15 min pracy', duration: 'wg projektu' },
+        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', price: '70 zł\ndo 30 min pracy', duration: 'do 24 h' },
+      ],
+    })
+  }
+
+  // Osobny FAQ tylko dla tej strony (dotyczący druku 3D na zamówienie,
+  // projektowania modeli, modyfikacji plików, materiałów, terminów, wysyłki
+  // i odtwarzania części) — nie nadpisuje wspólnej listy pytań, bo `faq`
+  // w `sections` jest już osobnym klonem (patrz createFaqSection/cloneSections).
+  const faqIndex = sections.findIndex(section => section.id === 'faq')
+  if (faqIndex !== -1) {
+    sections[faqIndex] = {
+      ...sections[faqIndex],
+      subcategories: [
+        {
+          id: 'faq-13',
+          title: 'Usługi drukowania 3D na zlecenie – jak wygląda realizacja zamówienia?',
+          items: [],
+          answer: 'Po otrzymaniu modelu sprawdzamy możliwość wykonania, przygotowujemy wycenę i po jej akceptacji rozpoczynamy realizację. Wykonujemy zarówno pojedyncze elementy, jak i krótkie serie.',
+        },
+        {
+          id: 'faq-16',
+          title: 'Drukowanie 3D online – jak zamówić wydruk 3D online?',
+          items: [],
+          answer: 'Wyślij nam plik z modelem, a sprawdzimy możliwość wykonania i przygotujemy wycenę. Po jej akceptacji wykonamy wydruk, który możesz odebrać osobiście lub zamówić z wysyłką.',
+        },
+        {
+          id: 'faq-1',
+          title: 'Czy mogę zamówić druk 3D bez gotowego modelu?',
+          items: [],
+          answer: 'Tak. Możesz przesłać zdjęcia, szkic, dokładne wymiary lub dostarczyć istniejący element. Najpierw bezpłatnie ocenimy możliwość wykonania projektu, a następnie podamy koszt jego przygotowania.',
+        },
+        {
+          id: 'faq-2',
+          title: 'Jakie pliki mogę przesłać do druku 3D?',
+          items: [],
+          answer: 'Najlepiej przesłać gotowy model w formacie STL, STEP lub 3MF. Jeśli masz plik w innym formacie, prześlij go do wstępnej oceny — sprawdzimy, czy możemy go wykorzystać lub odpowiednio przygotować.',
+        },
+        {
+          id: 'faq-8',
+          title: 'Czy możecie poprawić lub zmodyfikować mój plik STL?',
+          items: [],
+          answer: 'Tak. Możemy wykonać drobne zmiany, takie jak korekta wymiarów, otworów, dopasowania lub innych prostych elementów modelu. Większe modyfikacje wyceniamy jako pracę projektową.',
+        },
+        {
+          id: 'faq-3',
+          title: 'Cennik druku 3D – koszt i wycena wydruku 3D',
+          items: [],
+          answer: 'Cena wydruku 3D zależy od materiału, jego zużycia oraz czasu pracy drukarki. Dokładną cenę podajemy przed rozpoczęciem realizacji, zgodnie z cennikiem znajdującym się na stronie.',
+        },
+        {
+          id: 'faq-4',
+          title: 'Ile kosztuje zaprojektowanie modelu 3D?',
+          items: [],
+          answer: 'Zależy to od zakresu projektu. Wstępna ocena projektu jest bezpłatna, a ceny prostych modyfikacji, modeli technicznych oraz odtwarzania części są podane w cenniku. Jeżeli projekt wymaga więcej pracy, dodatkowy czas rozliczamy zgodnie z podaną stawką.',
+        },
+        {
+          id: 'faq-15',
+          title: 'Czy podane ceny są netto czy brutto?',
+          items: [],
+          answer: 'Ceny w cenniku są cenami netto.',
+        },
+        {
+          id: 'faq-6',
+          title: 'Prototypowanie 3D i drukowanie modeli, części i elementów 3D – czy można zamówić jedną sztukę?',
+          items: [],
+          answer: 'Tak. Wykonujemy zarówno pojedyncze sztuki, jak i krótkie serie – zależnie od potrzeb klienta i rodzaju projektu.',
+        },
+        {
+          id: 'faq-12',
+          title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
+          items: [],
+          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
+        },
+        {
+          id: 'faq-7',
+          title: 'Czy możecie odtworzyć uszkodzoną lub niedostępną część?',
+          items: [],
+          answer: 'Tak. Proste części możemy odtworzyć na podstawie dostarczonego wzoru, zdjęć i dokładnych wymiarów. Przy bardziej skomplikowanej geometrii możemy poprosić o dostarczenie oryginalnego elementu, aby dokładniej odwzorować jego kształt.',
+        },
+        {
+          id: 'faq-17',
+          title: 'Drukowanie figurek 3D i drukowanie części samochodowych – czy wykonujemy też uszczelki 3D?',
+          items: [],
+          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału. Przed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
+        },
+        {
+          id: 'faq-5',
+          title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
+          items: [],
+          answer: 'Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU. Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
+        },
+        {
+          id: 'faq-9',
+          title: 'Jak dokładny jest wydruk 3D?',
+          items: [],
+          answer: 'Dokładność zależy od geometrii modelu, materiału, orientacji wydruku i wymaganych pasowań. Jeżeli konkretny wymiar jest szczególnie ważny — na przykład otwór, średnica, zatrzask lub miejsce montażowe — zaznacz to przy składaniu zamówienia.',
+        },
+        {
+          id: 'faq-10',
+          title: 'Czy wydrukowana część będzie tak samo wytrzymała jak oryginał?',
+          items: [],
+          answer: 'Nie zawsze. Wytrzymałość zależy od materiału, konstrukcji elementu, kierunku warstw i warunków, w których część będzie pracowała. Jeśli uznamy, że druk 3D nie będzie odpowiednim rozwiązaniem do danego zastosowania, poinformujemy o tym przed realizacją.',
+        },
+        {
+          id: 'faq-11',
+          title: 'Ile trwa realizacja zamówienia?',
+          items: [],
+          answer: 'Standardowy czas realizacji wydruków wynosi zwykle 1–2 dni. Czas wykonania projektu zależy od jego złożoności. Dostępna jest również realizacja ekspresowa do 24 godzin, jeśli pozwala na to czas potrzebny na wykonanie wydruku.',
+        },
+        {
+          id: 'faq-14',
+          title: 'Czy wysyłacie gotowe wydruki?',
+          items: [],
+          answer: 'Tak. Gotowe zamówienie możemy wysłać kurierem lub do Paczkomatu. Koszt wysyłki naliczany jest według cennika przewoźnika.',
+        },
+      ],
+    }
+  }
+
+  // Na tej stronie nie pokazujemy sekcji Dojazd / Czyszczenie i konserwacja /
+  // Naprawy i usługi serwisowe — FAQ ma iść zaraz po "Projektowanie modeli 3D".
+  return sections.filter(section => !['dojazd', 'konserwacja', 'naprawy'].includes(section.id))
+}
+
 
 
 const createPlotterPricingSections = (): PricingSection[] => {
@@ -3600,6 +3766,17 @@ export const services: ServiceData[] = [
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
     pricingSections: create3DPrinterPricingSections(),
+  },
+  // Tymczasowa kopia strony 'serwis-drukarek-3d' pod nowym adresem/usługą
+  // "Druk 3D na zamówienie" — treść zostanie stopniowo przepisana później.
+  // Dane celowo zduplikowane (nie referencja), żeby obie strony były niezależne.
+  {
+    slug: 'druk-3d-na-zamowienie',
+    title: 'Druk 3D na zamówienie',
+    subtitle: 'Pełny wykaz usług i cen, bez ukrytych kosztów',
+    icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+    description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
+    pricingSections: createDruk3DZamowieniePricingSections(),
   },
   {
     slug: 'wynajem-drukarek',

@@ -40,6 +40,8 @@ export const getIconForSection = (sectionId: string) => {
   switch (sectionId) {
     case 'diagnoza':
       return manifest.P1_Diagnoza_i_wycena
+    case 'projektowanie-modeli':
+      return manifest.P1_Diagnoza_i_wycena
     case 'dojazd':
       return manifest.P2_Dojazd
     case 'konserwacja':
@@ -406,6 +408,100 @@ const renderSectionTitleMobile = (title: string) => {
   return <>{title}</>
 }
 
+// Sekcje strony druk-3d-na-zamowienie, które mają korzystać z tego samego
+// niestandardowego układu cennika co "Druk 3D z gotowego projektu" (id 'diagnoza').
+const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
+const isDruk3DCustomSection = (slug: string, sectionId: string) =>
+  slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
+
+// Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
+// (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
+const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17'])
+const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
+  slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
+
+// Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
+// (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
+const renderPlainPriceWithUnits = (price: string) => {
+  const parts = price.split(/(zł\/gram|zł\/godz\.)/g)
+  return parts.map((part, i) =>
+    part === 'zł/gram' || part === 'zł/godz.' ? (
+      <span key={i} className="text-[#cbb27c]">{part}</span>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  )
+}
+
+// Cena materiału (PLA/PETG/ABS-ASA/TPU) jako dwa bloki obok siebie:
+// góra wartości głównym białym stylem, pod spodem jednostka tym samym
+// małym złotym stylem co opisy materiałów (renderParenthesesText),
+// ale bez nawiasów.
+const renderMaterialPrice = (price: string) => {
+  const plusIdx = price.indexOf('+')
+  if (plusIdx === -1) return renderPlainPriceWithUnits(price)
+  const mainPart = price.slice(0, plusIdx).trim() // "0,30 zł/gram"
+  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/godz."
+
+  const splitValueUnit = (part: string) => {
+    const m = part.match(/^(.*zł)(\/.*)$/)
+    return m ? { value: m[1], unit: m[2] } : { value: part, unit: '' }
+  }
+
+  const main = splitValueUnit(mainPart)
+  const surcharge = splitValueUnit(surchargePart)
+
+  const block = (value: string, unit: string, key: string, prefix?: string) => (
+    <div key={key} className="flex items-start">
+      {prefix && (
+        <span className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
+      )}
+      <div className="flex flex-col items-center">
+        <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
+        {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+      </div>
+    </div>
+  )
+
+  const surchargeMatch = surcharge.value.match(/^(\+)\s*(.*)$/)
+  const surchargePrefix = surchargeMatch ? surchargeMatch[1] : undefined
+  const surchargeValue = surchargeMatch ? surchargeMatch[2] : surcharge.value
+
+  return (
+    <div className="flex items-start justify-center gap-2">
+      {block(main.value, main.unit, 'main')}
+      {block(surchargeValue, surcharge.unit, 'surcharge', surchargePrefix)}
+    </div>
+  )
+}
+
+// Dwuliniowa cena (np. "według cennika" / "przewoźnika"): góra głównym
+// białym stylem, dół tym samym małym złotym stylem co /gram, /godz.
+const renderTwoLinePrice = (price: string) => {
+  const [main, sub] = price.split('\n')
+  return (
+    <div className="flex flex-col items-center">
+      <div className="font-table-main text-[16px] text-white leading-[1.3]">{main}</div>
+      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+    </div>
+  )
+}
+
+// Domyślna cena dwuliniowa dla niestandardowych cenników druk-3d-na-zamowienie
+// (np. "Realizacja ekspresowa": "+50%\ndo ceny" lub "Wstępna ocena projektu":
+// "GRATIS\ndo 15 min konsultacji"): górna linia zachowuje oryginalny styl
+// renderPriceLines, dolna dostaje dokładnie taki sam styl jak tekst przykładu
+// (font-table-main text-[14px] text-[#cbb27c] leading-relaxed) zamiast domyślnego 12px.
+const renderExpressPrice = (price: string) => {
+  const [main, sub] = price.split('\n')
+  return (
+    <div className="flex flex-col items-center">
+      <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+    </div>
+  )
+}
+
 // Мобильная версия строки услуги (flex layout)
 const renderMobileServiceRow = (
   item: { service: string; price: string; duration: string; link?: string },
@@ -414,6 +510,8 @@ const renderMobileServiceRow = (
   isLast: boolean,
   shouldHighlightPrices: boolean,
   parseServiceText: (text: string) => { main: string; parentheses: string | null },
+  plainPrice: boolean = false,
+  hideSubtitle: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -427,18 +525,35 @@ const renderMobileServiceRow = (
         <div className="font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
-        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
       </div>
       {/* Правая колонка - цена */}
       <div
         className={cn(
-          'flex-shrink-0 min-w-[80px] max-w-[90px] text-center leading-[1.3] pr-2',
+          'flex-shrink-0 text-center leading-[1.3] pr-2',
+          plainPrice ? 'min-w-[110px] max-w-[130px]' : 'min-w-[80px] max-w-[90px]',
           shouldHighlightPrices
             ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
             : ''
         )}
       >
-        {renderPriceLines(item.price, item.link)}
+        {plainPrice ? (
+          item.price.includes('zł/gram') ? (
+            renderMaterialPrice(item.price)
+          ) : item.service.startsWith('Wysyłka') ? (
+            renderTwoLinePrice(item.price)
+          ) : item.service.startsWith('Realizacja ekspresowa') ? (
+            renderExpressPrice(item.price)
+          ) : item.price.includes('\n') ? (
+            renderExpressPrice(item.price)
+          ) : (
+            <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
+              {renderPlainPriceWithUnits(item.price)}
+            </div>
+          )
+        ) : (
+          renderPriceLines(item.price, item.link)
+        )}
       </div>
     </div>
   )
@@ -973,28 +1088,33 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
                               <div className="flex-1 min-w-0 pr-2">
-                                <div className={cn(
-                                  "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
-                                  (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
-                                )}>
-                                  {(() => {
-                                    if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                      // Если аккордеон открыт, переносим заголовок на две строки для экономии места
-                                      if (isSectionOpen(section.id)) {
-                                        return renderSectionTitleMobile(section.title)
-                                      }
-                                      // Если закрыт - показываем обычный заголовок
-                                      return section.title
-                                    }
-                                    if (section.id === 'konserwacja') {
-                                      return t.mobileAccordionTitles.konserwacja ?? section.title
-                                    }
-                                    if (section.id === 'naprawy') {
-                                      return t.mobileAccordionTitles.naprawy ?? section.title
-                                    }
-                                    return section.title
-                                  })()}
-                                </div>
+                                {(() => {
+                                  const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
+                                  return (
+                                    <TitleTag className={cn(
+                                      "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
+                                      (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
+                                    )}>
+                                      {(() => {
+                                        if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
+                                          // Если аккордеон открыт, переносим заголовок на две строки для экономии места
+                                          if (isSectionOpen(section.id)) {
+                                            return renderSectionTitleMobile(section.title)
+                                          }
+                                          // Если закрыт - показываем обычный заголовок
+                                          return section.title
+                                        }
+                                        if (section.id === 'konserwacja') {
+                                          return t.mobileAccordionTitles.konserwacja ?? section.title
+                                        }
+                                        if (section.id === 'naprawy') {
+                                          return t.mobileAccordionTitles.naprawy ?? section.title
+                                        }
+                                        return section.title
+                                      })()}
+                                    </TitleTag>
+                                  )
+                                })()}
                                 {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
@@ -1032,7 +1152,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </div>
                               )}
                             </div>
-                            {/* Десктопная версия: обычный заголовок */}
+                            {/* Десктопная версия: обычный заголовок.
+                                Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
+                                w wersji mobilnej (ten sam tekst, wspólny dla obu
+                                breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
                             <div className="hidden md:block">
                               <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
                                 {section.title}
@@ -1178,19 +1301,30 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                     {section.id !== 'faq' && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                       <>
-                        <div className="flex items-center gap-3 ml-3 sm:gap-4 sm:ml-4 flex-shrink-0">
+                        <div
+                          className={cn(
+                            'flex items-center ml-3 sm:ml-4 flex-shrink-0',
+                            isDruk3DCustomSection(service.slug, section.id)
+                              ? 'gap-0 md:w-[calc(46%-9.2px)] md:mr-[10px]'
+                              : 'gap-3 sm:gap-4'
+                          )}
+                        >
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                ? 'min-w-[96px] sm:min-w-[120px]'
-                                : 'min-w-0 sm:min-w-[120px]'
+                              isDruk3DCustomSection(service.slug, section.id)
+                                ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
+                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                  ? 'min-w-[96px] sm:min-w-[120px]'
+                                  : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
                             {section.id === 'diagnoza' && (
-                              <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
-                                {t.gratisUpper}
-                              </span>
+                              service.slug === 'druk-3d-na-zamowienie' ? null : (
+                                <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
+                                  {t.gratisUpper}
+                                </span>
+                              )
                             )}
 
 
@@ -1318,23 +1452,38 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                            ? 'justify-center'
-                                            : 'justify-end',
+                                          'text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
+                                          isDruk3DCustomSection(service.slug, section.id)
+                                            ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
+                                            : cn(
+                                                'flex items-center gap-2 pl-1 md:pl-0',
+                                                section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                                  ? 'justify-center'
+                                                  : 'justify-end'
+                                              ),
                                           'md:cursor-default'
                                         )}
                                         role="button"
                                         tabIndex={0}
                                         aria-label="Informacja o cenach"
                                       >
-                                        <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                        <span
-                                          className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer"
-                                        >
-                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                        </span>
+                                        {isDruk3DCustomSection(service.slug, section.id) ? (
+                                          <span className="relative inline-block">
+                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                            <span className="md:absolute md:left-full md:top-1/2 md:-translate-y-1/2 md:ml-3 ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                            </span>
+                                          </span>
+                                        ) : (
+                                          <>
+                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                            <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                            </span>
+                                          </>
+                                        )}
                                       </div>
                                     </TooltipTrigger>
                                     <TooltipContent
@@ -1346,10 +1495,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
-                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow'
+                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie'
                                           ? {
                                             side: 'top',
                                             sideOffset: 4,
+                                            ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
                                             className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
@@ -1364,7 +1514,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       {isSpecialTooltipService ? (
                                         <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
-                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (
+                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie' ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
@@ -1380,7 +1530,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </Tooltip>
                                 )}
                               </TooltipProvider>
-                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && (
+                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && service.slug !== 'druk-3d-na-zamowienie' && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
                                   style={{
@@ -1398,9 +1548,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                ? 'min-w-[120px]'
-                                : 'min-w-0'
+                              isDruk3DCustomSection(service.slug, section.id)
+                                ? 'md:w-[39.1304%] md:pl-4 md:pr-2'
+                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                  ? 'min-w-[120px]'
+                                  : 'min-w-0'
                             )}
                           >
                             <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
@@ -1417,11 +1569,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                 <AccordionContent
                   data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
+                  // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
+                  // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
+                  // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
+                  // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
+                  // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
+                  forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
                   className={cn(
                     "pb-3 max-h-[70vh] overflow-y-auto scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
-                      : "pt-3"
+                      : "pt-3",
+                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
                   )}
                 >
                   {section.subcategories ? (
@@ -1476,34 +1635,42 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 )}
                                 <div className="flex-1 w-full min-w-0">
                                   <div>
-                                    <h4
-                                      className={`font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                    {(() => {
+                                      const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
+                                        ? 'h2'
+                                        : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
+                                          ? 'div'
+                                          : 'h4'
+                                      const titleClassName = `font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
                                         : 'text-lg font-semibold text-[#ffffff]'
-                                        }`}
-                                    >
-                                      {(() => {
-                                        const title = subcategory.title
-                                        // Применяем стиль для wynajem-drukarek и drukarka-zastepcza
-                                        if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                          const match = title.match(/^(.+?)\s*\((.+?)\)$/)
-                                          if (match) {
-                                            const mainPart = match[1].trim()
-                                            const bracketPart = match[2].trim()
-                                            // Для wynajem и drukarka-zastepcza - вся часть в скобках в том же стиле, что и основная часть
-                                            return (
-                                              <>
-                                                {mainPart}{' '}
-                                                <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
-                                                  ({bracketPart})
-                                                </span>
-                                              </>
-                                            )
-                                          }
-                                        }
-                                        return title
-                                      })()}
-                                    </h4>
+                                        }`
+                                      return (
+                                        <TitleTag className={titleClassName}>
+                                          {(() => {
+                                            const title = subcategory.title
+                                            // Применяем стиль для wynajem-drukarek и drukarka-zastepcza
+                                            if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
+                                              const match = title.match(/^(.+?)\s*\((.+?)\)$/)
+                                              if (match) {
+                                                const mainPart = match[1].trim()
+                                                const bracketPart = match[2].trim()
+                                                // Для wynajem и drukarka-zastepcza - вся часть в скобках в том же стиле, что и основная часть
+                                                return (
+                                                  <>
+                                                    {mainPart}{' '}
+                                                    <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
+                                                      ({bracketPart})
+                                                    </span>
+                                                  </>
+                                                )
+                                              }
+                                            }
+                                            return title
+                                          })()}
+                                        </TitleTag>
+                                      )
+                                    })()}
                                     {subcategory.subtitle && section.id !== 'faq' && (
                                       renderParenthesesText(subcategory.subtitle, '12px')
                                     )}
@@ -1703,6 +1870,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     })()
                   ) : (
                     <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                      {isDruk3DCustomSection(service.slug, section.id) && section.intro && (
+                        <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-[1.4] px-2 pt-2 pb-2 whitespace-pre-line">
+                          {section.intro}
+                        </p>
+                      )}
                       {/* Мобильная версия - flex layout */}
                       <div className="block md:hidden">
                         {section.items?.map((item, idx) =>
@@ -1713,6 +1885,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             idx === (section.items?.length ?? 0) - 1,
                             false,
                             parseServiceText,
+                            isDruk3DCustomSection(service.slug, section.id),
+                            isDruk3DCustomSection(service.slug, section.id),
                           ),
                         )}
                       </div>
@@ -1720,9 +1894,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       <div className="hidden md:block">
                         <Table className="table-fixed border-collapse">
                           <colgroup>
-                            <col style={{ width: '67%' }} />
-                            <col style={{ width: '16.5%' }} />
-                            <col style={{ width: '16.5%' }} />
+                            {isDruk3DCustomSection(service.slug, section.id) ? (
+                              <>
+                                <col style={{ width: '54%' }} />
+                                <col style={{ width: '28%' }} />
+                                <col style={{ width: '18%' }} />
+                              </>
+                            ) : (
+                              <>
+                                <col style={{ width: '67%' }} />
+                                <col style={{ width: '16.5%' }} />
+                                <col style={{ width: '16.5%' }} />
+                              </>
+                            )}
                           </colgroup>
                           <TableBody>
                             {section.items?.map((item, idx) => (
@@ -1744,7 +1928,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   })()}
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
-                                  {renderPriceLines(item.price, item.link)}
+                                  {isDruk3DCustomSection(service.slug, section.id) ? (
+                                    item.price.includes('zł/gram') ? (
+                                      renderMaterialPrice(item.price)
+                                    ) : item.service.startsWith('Wysyłka') ? (
+                                      renderTwoLinePrice(item.price)
+                                    ) : item.service.startsWith('Realizacja ekspresowa') ? (
+                                      renderExpressPrice(item.price)
+                                    ) : item.price.includes('\n') ? (
+                                      renderExpressPrice(item.price)
+                                    ) : (
+                                      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
+                                        {renderPlainPriceWithUnits(item.price)}
+                                      </div>
+                                    )
+                                  ) : (
+                                    renderPriceLines(item.price, item.link)
+                                  )}
                                 </TableCell>
                                 <TableCell className="text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4">
                                   {renderDurationValue(item.duration)}
@@ -1754,6 +1954,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </TableBody>
                         </Table>
                       </div>
+                      {isDruk3DCustomSection(service.slug, section.id) && section.priceFormula && (
+                        <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
+                          <p className="font-table-main text-[16px] text-white leading-[1.3]">
+                            {section.priceFormula}
+                          </p>
+                        </div>
+                      )}
+                      {isDruk3DCustomSection(service.slug, section.id) && section.example && (
+                        <div className="px-2 pb-2">
+                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
+                            {section.example}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </AccordionContent>

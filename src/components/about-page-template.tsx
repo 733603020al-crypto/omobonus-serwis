@@ -5,7 +5,6 @@ import { ONasHero, type ONasHeroT } from '@/components/sections/o-nas-hero'
 import type { AdvantagesT } from '@/components/sections/advantages'
 import type { AboutT } from '@/components/sections/about'
 import type { TeamT } from '@/components/sections/team'
-import BrandTicker from '@/components/brand-ticker'
 import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
 import type { FooterT } from '@/components/footer'
 import GoogleReviews from '@/components/google-reviews'
@@ -18,6 +17,7 @@ import GoogleReviews from '@/components/google-reviews'
 const Advantages = dynamic(() => import('@/components/sections/advantages').then(m => ({ default: m.Advantages })))
 const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
 const Team = dynamic(() => import('@/components/sections/team').then(m => ({ default: m.Team })))
+const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 interface AboutPageTemplateProps {

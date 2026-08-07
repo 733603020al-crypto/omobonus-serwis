@@ -9,6 +9,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych.webp',
   'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych.webp',
   'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+  'druk-3d-na-zamowienie': '/images/Druk_3D_animation.svg?v=15',
   'serwis-plotterow': '/images/08_serwis-ploterow.webp',
   'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych.webp',
   'naprawa-drukarek': '/images/Serwis_Drukarek.webp',
@@ -23,6 +24,7 @@ export const serviceIconSrc: Record<string, string> = {
   'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych-icon.webp',
   'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych-icon.webp',
   'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp',
+  'druk-3d-na-zamowienie': '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp',
   'serwis-plotterow': '/images/08_serwis-ploterow-icon.webp',
   'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych-icon.webp',
   'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych-icon.webp',
@@ -43,6 +45,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-drukarek-atramentowych': ['hp', 'canon', 'epson', 'brother'],
   'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon'],
   'serwis-drukarek-3d': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
+  'druk-3d-na-zamowienie': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
 }
 
 export const relatedServiceSlugs = [
@@ -55,3 +58,7 @@ export const relatedServiceSlugs = [
   'wynajem-drukarek',
   'drukarka-zastepcza',
 ]
+
+// Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
+// Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
+export const noindexSlugs: string[] = []

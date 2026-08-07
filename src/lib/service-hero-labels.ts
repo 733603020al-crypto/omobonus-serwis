@@ -69,6 +69,8 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Zatkany hotend',
     ],
 
+    'druk-3d-na-zamowienie': [],
+
     'wynajem-drukarek': [
         'Drukarka dla firmy',
         'Serwis w cenie',

@@ -1,6 +1,13 @@
 import fs from "fs"
 import path from "path"
-import GoogleReviewsCarousel, { type Review } from "@/components/google-reviews-carousel"
+import dynamic from "next/dynamic"
+import type { Review } from "@/components/google-reviews-carousel"
+
+// Below-fold on every page that renders it (Home, O nas, all service pages)
+// — same dynamic() split already used for Footer/Services/etc. so its JS
+// doesn't compete with the first screen's hydration. No ssr:false: review
+// text still renders server-side, only the client bundle is deferred.
+const GoogleReviewsCarousel = dynamic(() => import("@/components/google-reviews-carousel"))
 
 type RawReview = Review & { [key: string]: unknown }
 

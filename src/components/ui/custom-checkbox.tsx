@@ -19,7 +19,7 @@ export function CustomCheckbox({ id, name, checked, onChange, label }: CustomChe
     : 'border-black/60 group-hover:border-black/80 group-hover:bg-[rgba(0,0,0,0.04)] group-hover:shadow-[0_0_6px_rgba(0,0,0,0.25)]'
 
   return (
-    <label htmlFor={id} className="flex items-start gap-4 cursor-pointer group">
+    <label htmlFor={id} className="flex items-start gap-5 cursor-pointer group">
       <div
         className="flex-shrink-0 relative mt-0.5 overflow-visible"
         style={{ width: 40, height: 40, padding: 4, margin: -4 }}
@@ -55,7 +55,7 @@ export function CustomCheckbox({ id, name, checked, onChange, label }: CustomChe
           </div>
         </div>
       </div>
-      <span className="text-black font-sans font-normal text-base leading-tight flex-1">
+      <span className="text-[#2f2418] font-lora font-normal text-[14px] md:text-[15px] leading-[1.45] flex-1">
         {label}
       </span>
     </label>

@@ -39,6 +39,12 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
     h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
   },
 
+  // Tymczasowa kopia 'serwis-drukarek-3d' — jedyna świadomie inna wartość na tym etapie to H1
+  'druk-3d-na-zamowienie': {
+    h1: 'Druk 3D na zamówienie we Wrocławiu',
+    h2: 'Wydruki 3D w technologii FDM z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie.',
+  },
+
   'serwis-plotterow': {
     h1: 'Serwis i naprawa ploterów drukujących we Wrocławiu',
     h2: '(plotery HP, Canon, Epson i inne)',
@@ -107,6 +113,10 @@ export const seoBlocks: Record<string, SeoBlock> = {
     items: ['Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ',
       'dla klientów biznesowych i indywidualnych.',]
   },
+  'druk-3d-na-zamowienie': {
+    items: ['Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ',
+      'dla klientów biznesowych i indywidualnych.',]
+  },
   'serwis-plotterow': {
     items: [' ',
       ' ',]
@@ -138,6 +148,7 @@ export const imageAlt: Record<string, string> = {
   'serwis-drukarek-laserowych': 'Serwis drukarek laserowych',
   'serwis-drukarek-atramentowych': 'Serwis drukarek atramentowych',
   'serwis-drukarek-3d': 'Serwis i naprawa drukarek 3D',
+  'druk-3d-na-zamowienie': 'Druk 3D na zamówienie we Wrocławiu',
   'serwis-plotterow': 'Serwis i naprawa ploterów',
   'serwis-drukarek-iglowych': 'Serwis drukarek igłowych',
   'naprawa-drukarek': 'Serwis drukarek i urządzeń wielofunkcyjnych',
@@ -180,6 +191,10 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     title: 'Serwis i naprawa drukarek 3D',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
   },
+  'druk-3d-na-zamowienie': {
+    title: 'Drukowanie 3D na zamówienie',
+    description: '✔ Wydruki 3D z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy … Uczciwe ceny! ✔ Pełny wykaz cen na stronie ✔ Nawet już dziś! ☎ 793 759 262',
+  },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
     description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
@@ -219,6 +234,7 @@ export const labels: ServicePageLabels = {
   fadeSlideDefault: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "naprawa od 50 zł" lub "cena do uzgodnienia")',
   fadeSlideDrukarkaZastepcza: 'Awaria? Bez stresu – na czas naprawy zapewniamy drukarkę zastępczą bez opłat abonamentowych',
   fadeSlideWynajem: 'Drukarka z serwisem i tonerem w cenie — Ty dbasz tylko o papier i prąd.',
+  fadeSlideDruk3DZamowienie: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "cena od 50 zł" lub "cena do uzgodnienia")',
   relatedCta: 'Zobacz cennik',
   relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
   drukarkaZastepczaNote: (

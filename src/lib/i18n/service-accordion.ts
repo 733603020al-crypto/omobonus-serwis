@@ -120,7 +120,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       naprawy: null,
     },
     dojazdNote: [
-      'Ми не кажемо, що виїзд або прийом «безкоштовні»,',
+      'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
       'а потім додаємо цю вартість до ціни ремонту',
     ],
     deviceCategoriesDescription: {
@@ -176,7 +176,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       naprawy: 'Ремонт и сервисное обслуживание',
     },
     dojazdNote: [
-      'Мы не говорим, что выезд или приём «бесплатные»,',
+      'Мы не говорим, что выезд или получение устройства «бесплатны»,',
       'а затем добавляем эту стоимость к цене ремонта',
     ],
     deviceCategoriesDescription: {

@@ -42,6 +42,11 @@
     font-family: var(--font-cormorant), serif;
   }
 
+  /* Tylko formularz kontaktowy (/kontakt): etykiety pól i tekst wpisywany */
+  .font-lora {
+    font-family: var(--font-lora), Georgia, serif;
+  }
+
   /* Таблицы — используем ТОЛЬКО Cormorant */
   .font-table-main {
     font-family: var(--font-cormorant), serif;
@@ -71,6 +76,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  /* Karta formularza zgłoszeniowego (/kontakt) — miękki cień podążający za
+     nieregularnym (postrzępionym) konturem pergaminu, mocniej widoczny od
+     dołu, żeby kartka sprawiała wrażenie uniesionej nad tłem. Celowo nie
+     używamy zwykłego box-shadow, bo miałby prostokątny kształt. */
+  .contact-form-parchment-shadow {
+    filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
   }
 
   .service-description-text {

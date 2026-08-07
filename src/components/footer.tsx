@@ -242,6 +242,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
           <div className="text-sm text-[#b8a894]">
             <Link
               href={d.privacyHref}
+              prefetch={false}
               className="hover:text-primary transition-colors"
             >
               {d.privacyPolicy}
@@ -249,6 +250,7 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
             <span className="mx-2 opacity-40">|</span>
             <Link
               href={d.regulaminHref}
+              prefetch={false}
               className="hover:text-primary transition-colors"
             >
               {d.terms}

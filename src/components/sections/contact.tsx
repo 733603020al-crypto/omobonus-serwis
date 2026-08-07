@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { Loader2, Paperclip, X } from 'lucide-react'
+import { Loader2, X } from 'lucide-react'
 import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
@@ -43,6 +43,13 @@ const pushFormSubmitToDataLayer = (
   })
 }
 
+// Wydziela nawiasowy dopisek etykiety (np. "(wymagane)") jako mniej wyróżniony fragment w tej samej linii
+function splitLabelNote(text: string): { main: string; note: string | null } {
+  const match = text.match(/^(.*?)\s*(\([^)]*\))\s*$/)
+  if (!match) return { main: text, note: null }
+  return { main: match[1], note: match[2] }
+}
+
 export type Locale = 'pl' | 'uk' | 'ru'
 
 export interface ContactT {
@@ -57,7 +64,7 @@ export interface ContactT {
   problemPlaceholder: string
   attachLabel: string
   attachAdd: string
-  attachHint: string
+  attachHint?: string
   agreementConfirm: string
   privacyLink: string
   privacyHref: string
@@ -65,6 +72,8 @@ export interface ContactT {
   termsHref: string
   agreementEnd: string
   submitButton: string
+  /** Krótkie słowo na pieczęci/przycisku wysyłki (np. "Wyślij") — osobne od submitButton (pełna fraza używana m.in. jako aria-label) */
+  submitButtonSeal: string
   submitting: string
   phoneError: string
   agreementError: string
@@ -89,11 +98,10 @@ const PL: ContactT = {
   emailLabel: 'Adres e-mail',
   addressLabel: 'Adres',
   addressPlaceholder: 'ul. Przykładowa 1, 50-001 Wrocław',
-  problemLabel: 'Opis problemu (usterki)',
-  problemPlaceholder: '(np. HP M404dn – drukarka nie pobiera papieru)',
-  attachLabel: 'Załącz zdjęcia / filmy',
+  problemLabel: 'Opis zgłoszenia',
+  problemPlaceholder: 'Np. opisz problem, usterkę lub napisz, czego dotyczy zgłoszenie',
+  attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
-  attachHint: 'Załączone pliki pomogą nam szybciej i dokładniej zidentyfikować problem oraz przygotować wycenę naprawy.',
   agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
   privacyLink: 'Polityką Prywatności',
   privacyHref: '/polityka-prywatnosci',
@@ -101,6 +109,7 @@ const PL: ContactT = {
   termsHref: '/regulamin',
   agreementEnd: 'i akceptuję ich postanowienia.',
   submitButton: 'Wyślij zgłoszenie',
+  submitButtonSeal: 'Wyślij',
   submitting: 'Wysyłanie...',
   phoneError: 'Numer telefonu jest za krótki',
   agreementError: 'Musisz zaakceptować regulamin',
@@ -348,13 +357,22 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
 
-        {/* Karta formularza - масштабирована на 20% */}
-        <div className="w-full max-w-2xl bg-paper-texture shadow-2xl rounded-sm p-4 md:p-6 border border-[#3a2e24]/20">
+        {/* Karta formularza — postrzępiony pergamin jako tło całego wrappera (rozciąga się pod pełną wysokość treści) */}
+        <div className="relative w-full max-w-2xl">
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/contact-form-parchment-mobile.webp" />
+            <img
+              src="/images/contact-form-parchment.webp"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-fill contact-form-parchment-shadow pointer-events-none select-none"
+            />
+          </picture>
 
-
+          <div className="relative z-10 px-7 pt-8 pb-[34px] md:px-12 md:pt-11 md:pb-[24px]">
 
           {/* Nagłówek formularza */}
-          <div className="text-black text-3xl md:text-4xl font-cormorant font-bold text-center mb-4 md:mb-5 drop-shadow-sm">
+          <div className="text-[#2f2418] text-[30px] md:text-[40px] font-cormorant font-semibold text-center leading-[1.15] mb-[18px] md:mb-[20px] drop-shadow-sm">
             {d.formTitle}
           </div>
 
@@ -364,20 +382,21 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
             })}
-            className="space-y-3 md:space-y-4"
+            className="space-y-[13px] md:space-y-4"
           >
 
             {/* Imię i Telefon - Grid */}
-            <div className="grid grid-cols-1 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 gap-[13px] md:gap-4">
               {/* Imię i nazwisko */}
-              <div className="space-y-2" data-field-name="name">
-                <label className="block text-black font-bold font-sans text-base md:text-lg">
+              <div className="space-y-[5px]" data-field-name="name">
+                <label htmlFor="contact-name" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                   {d.nameLabel}
                 </label>
                 <input
+                  id="contact-name"
                   {...register('name')}
                   placeholder={d.namePlaceholder}
-                  className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                  className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-lora font-normal leading-[1.4] placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
                 />
                 {errors.name && (
@@ -386,9 +405,19 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
 
               {/* Telefon */}
-              <div className="space-y-2" data-field-name="phone">
-                <label className="block text-black font-bold font-sans text-base md:text-lg">
-                  {d.phoneLabel}
+              <div className="space-y-[5px]" data-field-name="phone">
+                <label htmlFor="contact-phone" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
+                  {(() => {
+                    const { main, note } = splitLabelNote(d.phoneLabel)
+                    return (
+                      <>
+                        {main}
+                        {note && (
+                          <span className="font-lora font-normal text-[13px] md:text-[15px] text-[#6b5940]"> {note}</span>
+                        )}
+                      </>
+                    )
+                  })()}
                 </label>
                 <div>
                   <Controller
@@ -396,6 +425,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                     control={control}
                     render={({ field }) => (
                       <CustomPhoneInput
+                        id="contact-phone"
                         value={field.value || ''}
                         onChange={field.onChange}
                         locale={resolvedLocale}
@@ -411,15 +441,16 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* E-mail */}
-            <div className="space-y-2" data-field-name="email">
-              <label className="block text-black font-bold font-sans text-base md:text-lg">
+            <div className="space-y-[5px]" data-field-name="email">
+              <label htmlFor="contact-email" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.emailLabel}
               </label>
               <input
+                id="contact-email"
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.email && (
@@ -428,14 +459,15 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             </div>
 
             {/* Adres */}
-            <div className="space-y-2" data-field-name="address">
-              <label className="block text-black font-bold font-sans text-base md:text-lg">
+            <div className="space-y-[5px]" data-field-name="address">
+              <label htmlFor="contact-address" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.addressLabel}
               </label>
               <input
+                id="contact-address"
                 {...register('address')}
                 placeholder={d.addressPlaceholder}
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.address && (
@@ -446,15 +478,16 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
             {/* Opis problemu */}
-            <div className="space-y-2" data-field-name="problemDescription">
-              <label className="block text-black font-bold font-sans text-base md:text-lg">
+            <div className="space-y-[5px]" data-field-name="problemDescription">
+              <label htmlFor="contact-problem" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
                 {d.problemLabel}
               </label>
               <textarea
+                id="contact-problem"
                 {...register('problemDescription')}
                 rows={4}
                 placeholder={d.problemPlaceholder}
-                className="w-full !bg-transparent border border-black/60 rounded-sm px-4 py-2 text-black text-lg md:text-xl font-sans font-medium focus:outline-none hover:border-2 hover:border-black/80 hover:bg-[rgba(0,0,0,0.05)] hover:shadow-[0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:bg-[rgba(0,0,0,0.05)] focus:shadow-[0_0_4px_rgba(0,0,0,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.problemDescription && (
@@ -462,23 +495,36 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               )}
             </div>
 
-            {/* Załączniki */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 flex-wrap">
-                <label className="text-black font-bold font-sans text-base md:text-lg">
-                  {d.attachLabel}
-                </label>
+            {/* Załączniki — plakietka pergaminowa wspólna dla PL/UK/RU (ten sam spinacz,
+                czcionka, kolor i styl), ale szerokość podłoża dobrana osobno pod długość
+                tekstu każdego języka, etykieta nakładana przez HTML/CSS z d.attachLabel. */}
+            <div className="space-y-[7px]">
+              <div className="flex justify-start">
                 <label
                   htmlFor="attachments"
-                  className="inline-flex items-center gap-1 text-[#3a2e24] text-sm font-semibold cursor-pointer border border-[#3a2e24]/40 rounded-full px-3 py-1 hover:bg-[#3a2e24]/10 transition-colors"
+                  className="group relative -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
                 >
-                  <Paperclip className="w-4 h-4" />
-                  {d.attachAdd}
+                  <picture>
+                    <source media="(max-width: 767px)" srcSet={`/images/contact-form-attach-button-${resolvedLocale}-mobile.webp`} />
+                    <img
+                      src={`/images/contact-form-attach-button-${resolvedLocale}.webp`}
+                      alt={d.attachLabel}
+                      draggable={false}
+                      className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
+                    />
+                  </picture>
+                  <span
+                    className="absolute left-[40px] md:left-[47px] right-[16px] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-lora font-semibold text-[13px] md:text-[17px] text-[#412612]"
+                  >
+                    {d.attachLabel}
+                  </span>
                 </label>
               </div>
-              <p className="text-black text-sm italic font-sans">
-                {d.attachHint}
-              </p>
+              {d.attachHint && (
+                <p className="text-black text-sm italic font-sans">
+                  {d.attachHint}
+                </p>
+              )}
 
               <input
                 id="attachments"
@@ -615,21 +661,48 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
             </div>
 
-            {/* Przycisk Submit */}
-            <div className="pt-4 flex justify-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="relative group px-10 py-3 bg-white/10 hover:bg-white/20 border border-black/30 hover:border-2 hover:border-black/80 hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.1),0_0_4px_rgba(0,0,0,0.3)] focus:border-2 focus:border-black/80 focus:shadow-[inset_0_0_20px_rgba(0,0,0,0.1),0_0_4px_rgba(0,0,0,0.3)] rounded-full transition-all duration-250"
-              >
-                <span className="font-cormorant font-bold text-2xl text-black tracking-wide group-hover:text-black/80 flex items-center gap-2">
-                  {isSubmitting && <Loader2 className="animate-spin h-5 w-5" />}
-                  {isSubmitting ? d.submitting : d.submitButton}
-                </span>
-              </button>
+            {/* Przycisk Submit — pieczęć woskowa wspólna dla PL/UK/RU (grafika bez wypalonego
+                tekstu), słowo na pieczęci nakładane przez HTML/CSS z d.submitButtonSeal.
+                Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
+                przepływie, ale ujemny margines dolny odcina "sznurkową" część z wysokości
+                przepływu, więc pergamin (który dopasowuje się do wysokości treści) kończy się
+                tuż pod pieczęcią, a sznurki wizualnie zwisają nad ciemnym tłem. */}
+            <div className="!mt-[7px] flex justify-center">
+              <div className="translate-x-1/4 flex">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-label={d.submitButton}
+                  className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                >
+                  <picture>
+                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
+                    <img
+                      src="/images/contact-form-seal.webp"
+                      alt={d.submitButton}
+                      draggable={false}
+                      className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
+                    />
+                  </picture>
+                  {!isSubmitting && (
+                    <span
+                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
+                      style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
+                    >
+                      {d.submitButtonSeal}
+                    </span>
+                  )}
+                  {isSubmitting && (
+                    <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
+                      <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
+                    </span>
+                  )}
+                </button>
+              </div>
             </div>
 
           </form>
+          </div>
         </div>
       </div>
 

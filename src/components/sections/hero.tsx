@@ -91,11 +91,7 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
         >
           {d.mobileH1Line1 ? (
             <>
-              {d.mobileH1Line1}
-              <br />
-              {d.mobileH1Line2}
-              <br />
-              {d.mobileH1Line3}
+              {d.mobileH1Line1} <br /> {d.mobileH1Line2} <br /> {d.mobileH1Line3}
             </>
           ) : (
             d.mobileH1

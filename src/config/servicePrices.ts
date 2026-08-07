@@ -57,6 +57,12 @@ export const servicePrices: Record<string, ServiceBasePrices> = {
         expressMultiplier: '+100%',
     },
 
+    'druk-3d-na-zamowienie': {
+        diagnosisTime: '1–3 dni',
+        dojazdReturn: '100',
+        expressMultiplier: '+100%',
+    },
+
     'serwis-plotterow': {
         diagnosisTime: '2–5 dni',
         dojazdReturn: '100',
