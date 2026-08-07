@@ -17,10 +17,9 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_BASE = 'mt-0.5 inline-block whitespace-nowrap font-cormorant text-[11px] leading-none'
-const CAPTION_GOLD = `${CAPTION_BASE} text-[#f3df9a]`
-const CAPTION_LIGHT = `${CAPTION_BASE} text-white`
+const CAPTION_CLASS = 'whitespace-nowrap font-cormorant text-[14px] leading-none text-[#f3df9a]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
+const DIVIDER_CLASS = 'h-8 w-px shrink-0 bg-[#bfa76a]/45'
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
@@ -96,8 +95,8 @@ export function MobileActionBar() {
                 }
                 .bar-ripple {
                     position: absolute;
-                    width: 46px;
-                    height: 46px;
+                    width: 42px;
+                    height: 42px;
                     border-radius: 9999px;
                     background: rgba(28,110,67,0.4);
                     animation: bar-ripple 2s infinite;
@@ -107,37 +106,24 @@ export function MobileActionBar() {
             `}</style>
 
             <div
-                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden border-t border-border bg-cover bg-center"
+                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden border-t border-[#bfa76a] bg-cover bg-center"
                 style={{ backgroundImage: 'var(--bg-parchment)' }}
             >
                 <div className="absolute inset-0 bg-black/60" />
 
                 <div
-                    className="relative grid grid-cols-3 justify-items-center px-4 pt-2"
-                    style={{ paddingBottom: 'calc(0.375rem + env(safe-area-inset-bottom))' }}
+                    className="relative flex items-center justify-center gap-3 px-4 pt-2"
+                    style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
                 >
-                    <div className="flex flex-col items-center">
                     {!isKontakt && (
                         <>
-                            <div className="flex h-11 items-center justify-center">
-                                <Link
-                                    href={contactHref}
-                                    prefetch={false}
-                                    aria-label="Przejdź do kontaktu"
-                                    className="
-                                        relative
-                                        flex
-                                        items-center
-                                        justify-center
-                                        w-[34px]
-                                        h-[34px]
-                                        rounded-xl
-                                        bg-white
-                                        shadow-[0_2px_8px_rgba(0,0,0,0.3)]
-                                        transition-all duration-300 ease-out
-                                        active:scale-95
-                                    "
-                                >
+                            <Link
+                                href={contactHref}
+                                prefetch={false}
+                                aria-label="Przejdź do kontaktu"
+                                className="flex items-center gap-1.5 active:opacity-80"
+                            >
+                                <span className="relative flex w-[34px] h-[34px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                     <svg
                                         className="absolute left-0 -top-[6px] w-[34px] h-[40px] pointer-events-none overflow-visible"
                                         viewBox="0 0 56 66"
@@ -165,71 +151,42 @@ export function MobileActionBar() {
                                             </g>
                                         </g>
                                     </svg>
-                                </Link>
-                            </div>
-                            <span className={CAPTION_GOLD} style={CAPTION_STYLE}>{labels.write}</span>
+                                </span>
+                                <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
+                            </Link>
+                            <span className={DIVIDER_CLASS} aria-hidden="true" />
                         </>
                     )}
-                    </div>
 
-                    <div className="flex flex-col items-center">
-                        <div className="flex h-11 items-center justify-center">
-                            <a
-                                href={MAPS_HREF}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Mapa"
-                                className="
-                                    relative
-                                    flex
-                                    items-center
-                                    justify-center
-                                    w-[34px]
-                                    h-[34px]
-                                    rounded-xl
-                                    overflow-hidden
-                                    shadow-[0_2px_8px_rgba(0,0,0,0.3)]
-                                    transition-transform duration-300 ease-out
-                                    active:scale-95
-                                "
-                            >
-                                <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
-                            </a>
-                        </div>
-                        <span className={CAPTION_GOLD} style={CAPTION_STYLE}>{labels.map}</span>
-                    </div>
+                    <a
+                        href={MAPS_HREF}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Mapa"
+                        className="flex items-center gap-1.5 active:opacity-80"
+                    >
+                        <span className="relative flex w-[34px] h-[34px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                            <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
+                        </span>
+                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
+                    </a>
 
-                    <div className="flex flex-col items-center">
-                        <div className="relative flex h-11 items-center justify-center">
-                            <div className="relative flex items-center justify-center overflow-visible w-11 h-11">
-                                <span className="bar-ripple pointer-events-none"></span>
-                                <span className="bar-ripple delay pointer-events-none"></span>
+                    <span className={DIVIDER_CLASS} aria-hidden="true" />
 
-                                <a
-                                    href="tel:+48793759262"
-                                    aria-label="Zadzwoń"
-                                    className="
-                                        relative
-                                        flex
-                                        items-center
-                                        justify-center
-                                        w-11
-                                        h-11
-                                        rounded-full
-                                        bg-[#1c6e43]
-                                        text-white
-                                        shadow-[0_4px_14px_rgba(28,110,67,0.45)]
-                                        transition-transform duration-300 ease-out
-                                        active:scale-95
-                                        pointer-events-auto
-                                    "
-                                >
-                                    <Phone className="w-5 h-5 bar-call-icon" />
-                                </a>
-                            </div>
-                        </div>
-                        <span className={CAPTION_LIGHT} style={CAPTION_STYLE}>{labels.call}</span>
-                    </div>
+                    <a
+                        href="tel:+48793759262"
+                        aria-label="Zadzwoń"
+                        className="flex items-center gap-1.5 active:opacity-80"
+                    >
+                        <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-visible">
+                            <span className="bar-ripple pointer-events-none"></span>
+                            <span className="bar-ripple delay pointer-events-none"></span>
+                            <span className="relative flex w-10 h-10 items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
+                                <Phone className="w-5 h-5 bar-call-icon" />
+                            </span>
+                        </span>
+                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
+                    </a>
                 </div>
             </div>
         </>,
