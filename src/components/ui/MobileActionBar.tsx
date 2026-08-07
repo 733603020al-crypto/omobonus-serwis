@@ -19,6 +19,9 @@ const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20
 
 const CAPTION_CLASS = 'whitespace-nowrap font-cormorant font-semibold text-[17px] leading-none text-[#F0D27A]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.75), 0 0 6px rgba(214,174,82,0.2)' } as const
+// Fixed, identical width for all 3 buttons so each is a same-sized block centered
+// in its own grid third — not just auto-sized to its own (different-length) caption.
+const BUTTON_CONTAINER_CLASS = 'flex w-[114px] items-center justify-center gap-[10px] active:opacity-80'
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
@@ -94,8 +97,8 @@ export function MobileActionBar() {
                 }
                 .bar-ripple {
                     position: absolute;
-                    width: 42px;
-                    height: 42px;
+                    width: 44px;
+                    height: 44px;
                     border-radius: 9999px;
                     background: rgba(28,110,67,0.4);
                     animation: bar-ripple 2s infinite;
@@ -124,16 +127,16 @@ export function MobileActionBar() {
 
                     {!isKontakt && (
                         <>
-                            <div className="flex items-center justify-center px-2">
+                            <div className="flex items-center justify-center">
                                 <Link
                                     href={contactHref}
                                     prefetch={false}
                                     aria-label="Przejdź do kontaktu"
-                                    className="flex items-center gap-[10px] active:opacity-80"
+                                    className={BUTTON_CONTAINER_CLASS}
                                 >
-                                    <span className="relative flex w-10 h-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                                    <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                         <svg
-                                            className="absolute left-0 -top-[7px] w-10 h-[47px] pointer-events-none overflow-visible"
+                                            className="absolute left-0 -top-[8px] w-[42px] h-[50px] pointer-events-none overflow-visible"
                                             viewBox="0 0 56 66"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -166,32 +169,32 @@ export function MobileActionBar() {
                         </>
                     )}
 
-                    <div className="flex items-center justify-center px-2">
+                    <div className="flex items-center justify-center">
                         <a
                             href={MAPS_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Mapa"
-                            className="flex items-center gap-[10px] active:opacity-80"
+                            className={BUTTON_CONTAINER_CLASS}
                         >
-                            <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                            <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                 <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                             </span>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
                         </a>
                     </div>
 
-                    <div className="flex items-center justify-center px-2">
+                    <div className="flex items-center justify-center">
                         <a
                             href="tel:+48793759262"
                             aria-label="Zadzwoń"
-                            className="flex items-center gap-[10px] active:opacity-80"
+                            className={BUTTON_CONTAINER_CLASS}
                         >
-                            <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-visible">
+                            <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center overflow-visible">
                                 <span className="bar-ripple pointer-events-none"></span>
                                 <span className="bar-ripple delay pointer-events-none"></span>
-                                <span className="relative flex w-10 h-10 items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
-                                    <Phone className="w-5 h-5 bar-call-icon" />
+                                <span className="relative flex w-[42px] h-[42px] items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
+                                    <Phone className="w-[21px] h-[21px] bar-call-icon" />
                                 </span>
                             </span>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
