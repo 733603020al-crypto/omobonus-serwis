@@ -152,6 +152,8 @@ export function MobileActionBar() {
                                             <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
                                             <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
                                             <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
+                                            {/* Quill temporarily disabled for the mobile bottom bar — dot animation stays.
+                                                Uncomment to restore the writing-pen effect.
                                             <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
                                                 <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
                                                     <image
@@ -161,6 +163,7 @@ export function MobileActionBar() {
                                                     />
                                                 </g>
                                             </g>
+                                            */}
                                         </svg>
                                     </span>
                                     <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
