@@ -21,7 +21,7 @@ const CAPTION_CLASS = 'whitespace-nowrap font-cormorant font-semibold text-[17px
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.75), 0 0 6px rgba(214,174,82,0.2)' } as const
 // Fixed, identical width for all 3 buttons so each is a same-sized block centered
 // in its own grid third — not just auto-sized to its own (different-length) caption.
-const BUTTON_CONTAINER_CLASS = 'flex w-[114px] items-center justify-center gap-[10px] active:opacity-80'
+const BUTTON_CONTAINER_CLASS = 'flex w-[116px] items-center justify-center gap-[10px] active:opacity-80'
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
@@ -97,8 +97,8 @@ export function MobileActionBar() {
                 }
                 .bar-ripple {
                     position: absolute;
-                    width: 44px;
-                    height: 44px;
+                    width: 46px;
+                    height: 46px;
                     border-radius: 9999px;
                     background: rgba(28,110,67,0.4);
                     animation: bar-ripple 2s infinite;
@@ -113,7 +113,7 @@ export function MobileActionBar() {
             >
                 <div className="absolute inset-0 bg-black/60" />
 
-                <div className="px-4 pt-2" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
+                <div className="pt-2" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
                 <div
                     className={`relative grid w-full ${isKontakt ? 'grid-cols-2' : 'grid-cols-3'}`}
                 >
@@ -134,9 +134,9 @@ export function MobileActionBar() {
                                     aria-label="Przejdź do kontaktu"
                                     className={BUTTON_CONTAINER_CLASS}
                                 >
-                                    <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                                    <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                         <svg
-                                            className="absolute left-0 -top-[8px] w-[42px] h-[50px] pointer-events-none overflow-visible"
+                                            className="absolute left-0 -top-[8px] w-[44px] h-[51px] pointer-events-none overflow-visible"
                                             viewBox="0 0 56 66"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ export function MobileActionBar() {
                             aria-label="Mapa"
                             className={BUTTON_CONTAINER_CLASS}
                         >
-                            <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                            <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                 <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                             </span>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
@@ -190,11 +190,11 @@ export function MobileActionBar() {
                             aria-label="Zadzwoń"
                             className={BUTTON_CONTAINER_CLASS}
                         >
-                            <span className="relative flex w-[42px] h-[42px] shrink-0 items-center justify-center overflow-visible">
+                            <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-visible">
                                 <span className="bar-ripple pointer-events-none"></span>
                                 <span className="bar-ripple delay pointer-events-none"></span>
-                                <span className="relative flex w-[42px] h-[42px] items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
-                                    <Phone className="w-[21px] h-[21px] bar-call-icon" />
+                                <span className="relative flex w-[44px] h-[44px] items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
+                                    <Phone className="w-[22px] h-[22px] bar-call-icon" />
                                 </span>
                             </span>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
