@@ -202,9 +202,8 @@
      ========================= */
   .zakres-paper-card {
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
-    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.3));
+    transition: transform 0.25s ease-out, filter 0.25s ease-out;
   }
   .zakres-paper-card::before {
     content: '';
@@ -217,33 +216,24 @@
   }
   .zakres-paper-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
-  /* 6 deterministic variants (no JS randomness). Each gets its own
-     clip-path silhouette (a different corner "dog-ear" fold + different
-     edge raggedness) so the outline is visibly different card-to-card even
-     with icons/text hidden — flipping the single texture alone wasn't
-     enough, since background-size:100% 100% always fills the same box.
-     The ::before transform still varies too, so the texture's own baked-in
-     curl/crease detail lands somewhere different inside each silhouette.
-     Grid box size is untouched — only this decorative silhouette + its
-     background layer are clipped/transformed, never the icon/text. */
-  .zakres-paper-v1 { clip-path: polygon(0% 3%, 40% 0%, 88% 0%, 100% 10%, 100% 100%, 0% 100%); }
+  .zakres-paper-v1 { clip-path: polygon(0% 0%, 75% 0%, 100% 20%, 100% 100%, 0% 100%); }
   .zakres-paper-v1::before { transform: none; }
 
-  .zakres-paper-v2 { clip-path: polygon(3% 0%, 100% 0%, 100% 100%, 78% 95%, 65% 100%, 50% 94%, 35% 100%, 18% 95%, 0% 100%, 0% 4%); }
+  .zakres-paper-v2 { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 80% 85%, 65% 100%, 50% 82%, 35% 100%, 20% 85%, 0% 100%); }
   .zakres-paper-v2::before { transform: scaleX(-1); }
 
-  .zakres-paper-v3 { clip-path: polygon(0% 0%, 100% 0%, 96% 30%, 100% 60%, 97% 100%, 15% 100%, 0% 88%); }
+  .zakres-paper-v3 { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 75%); }
   .zakres-paper-v3::before { transform: scaleY(-1); }
 
-  .zakres-paper-v4 { clip-path: polygon(0% 2%, 30% 0%, 65% 3%, 100% 0%, 100% 85%, 85% 100%, 0% 100%); }
+  .zakres-paper-v4 { clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%); }
   .zakres-paper-v4::before { transform: scale(-1, -1); }
 
-  .zakres-paper-v5 { clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 65% 100%, 72% 93%, 55% 100%, 0% 100%, 0% 12%); }
+  .zakres-paper-v5 { clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 60% 100%, 70% 85%, 45% 100%, 0% 100%, 0% 25%); }
   .zakres-paper-v5::before { transform: scaleX(-1) rotate(1deg); }
 
-  .zakres-paper-v6 { clip-path: polygon(0% 2%, 20% 0%, 55% 1.5%, 85% 0%, 100% 3%, 100% 97%, 0% 100%); }
+  .zakres-paper-v6 { clip-path: polygon(0% 15%, 15% 0%, 30% 12%, 45% 0%, 60% 15%, 75% 0%, 90% 12%, 100% 0%, 100% 100%, 0% 100%); }
   .zakres-paper-v6::before { transform: rotate(-1deg); }
 
   /* =========================

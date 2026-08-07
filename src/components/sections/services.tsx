@@ -5,6 +5,20 @@ import { services as defaultServices } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
+// Written out as literal strings (not built via template interpolation) so
+// Tailwind's static content scanner can actually find them — a class name
+// assembled as `zakres-paper-v${i}` is invisible to that scanner and the
+// whole custom @layer utilities rule gets silently purged from the CSS
+// build even though the DOM ends up with the right class name.
+const PAPER_VARIANTS = [
+  'zakres-paper-v1',
+  'zakres-paper-v2',
+  'zakres-paper-v3',
+  'zakres-paper-v4',
+  'zakres-paper-v5',
+  'zakres-paper-v6',
+]
+
 interface ServicesT {
   sectionLabel: string
   tagline: string
@@ -84,11 +98,11 @@ export function Services({
     text-left
     w-full
     zakres-paper-card
-    zakres-paper-v${(i % 6) + 1}
+    ${PAPER_VARIANTS[i % 6]}
   `}
               >
                 {/* Ikona */}
-                <div className="relative z-10 ml-3 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 ml-8 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
