@@ -4,7 +4,7 @@ import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
 import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
 import '../globals.css'
-import { FloatingCallButton, FloatingContactButton } from '@/components/ui/FloatingButtonsLazy'
+import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
 
@@ -134,7 +134,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/8e9860b6e62d6359-s.woff2" />
       </head>
 
-      <body className="antialiased scroll-smooth">
+      <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
         <ScrollToTop />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
@@ -150,8 +150,8 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
 
         {children}
 
-        <FloatingCallButton />
-        <FloatingContactButton />
+        {/* Mobile-only bottom quick-action bar */}
+        <MobileActionBar />
 
         <Script
           id="json-ld"
