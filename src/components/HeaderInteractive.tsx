@@ -161,6 +161,33 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Small grace period before closing the mega menu: the panel sits a few px
+  // below the trigger, so a real mouse move from "Usługi" to a link inside it
+  // briefly leaves both hit areas. Without this delay the menu unmounts before
+  // the cursor arrives.
+  const openServices = () => {
+    if (servicesCloseTimer.current) {
+      clearTimeout(servicesCloseTimer.current)
+      servicesCloseTimer.current = null
+    }
+    setIsServicesOpen(true)
+  }
+
+  const scheduleCloseServices = () => {
+    if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current)
+    servicesCloseTimer.current = setTimeout(() => {
+      setIsServicesOpen(false)
+      servicesCloseTimer.current = null
+    }, 200)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (servicesCloseTimer.current) clearTimeout(servicesCloseTimer.current)
+    }
+  }, [])
   const nav = LOCALE_NAV[locale]
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
@@ -282,8 +309,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
         <div
           className="relative h-full flex items-center"
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
+          onMouseEnter={openServices}
+          onMouseLeave={scheduleCloseServices}
         >
           <Link
             href={homeSectionHref}
