@@ -19,7 +19,6 @@ const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20
 
 const CAPTION_CLASS = 'whitespace-nowrap font-cormorant text-[16px] leading-none text-[#f3df9a]'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
-const DIVIDER_CLASS = 'h-8 w-px shrink-0 bg-[#bfa76a]/45'
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
@@ -106,18 +105,26 @@ export function MobileActionBar() {
             `}</style>
 
             <div
-                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden border-t border-[#bfa76a] bg-cover bg-center"
+                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center"
                 style={{ backgroundImage: 'var(--bg-parchment)' }}
             >
                 <div className="absolute inset-0 bg-black/60" />
 
+                <div className="px-4 pt-2" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
                 <div
-                    className="relative flex items-stretch justify-center px-4 pt-2"
-                    style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+                    className={`relative grid w-full ${isKontakt ? 'grid-cols-2' : 'grid-cols-3'}`}
                 >
                     {!isKontakt && (
+                        <span className="pointer-events-none absolute left-1/3 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45" aria-hidden="true" />
+                    )}
+                    <span
+                        className={`pointer-events-none absolute top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45 ${isKontakt ? 'left-1/2' : 'left-2/3'}`}
+                        aria-hidden="true"
+                    />
+
+                    {!isKontakt && (
                         <>
-                            <div className="flex flex-1 items-center justify-center px-2">
+                            <div className="flex items-center justify-center px-2">
                                 <Link
                                     href={contactHref}
                                     prefetch={false}
@@ -156,11 +163,10 @@ export function MobileActionBar() {
                                     <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
                                 </Link>
                             </div>
-                            <span className={DIVIDER_CLASS} aria-hidden="true" />
                         </>
                     )}
 
-                    <div className="flex flex-1 items-center justify-center px-2">
+                    <div className="flex items-center justify-center px-2">
                         <a
                             href={MAPS_HREF}
                             target="_blank"
@@ -175,9 +181,7 @@ export function MobileActionBar() {
                         </a>
                     </div>
 
-                    <span className={DIVIDER_CLASS} aria-hidden="true" />
-
-                    <div className="flex flex-1 items-center justify-center px-2">
+                    <div className="flex items-center justify-center px-2">
                         <a
                             href="tel:+48793759262"
                             aria-label="Zadzwoń"
@@ -193,6 +197,7 @@ export function MobileActionBar() {
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
                         </a>
                     </div>
+                </div>
                 </div>
             </div>
         </>,
