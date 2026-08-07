@@ -106,14 +106,14 @@ export function MobileActionBar() {
             `}</style>
 
             <div
-                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden border-t border-[#bfa76a] bg-cover bg-center"
+                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center"
                 style={{ backgroundImage: 'var(--bg-parchment)' }}
             >
                 <div className="absolute inset-0 bg-black/60" />
 
                 <div
                     className="relative flex items-stretch justify-center px-4 pt-2"
-                    style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+                    style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
                 >
                     {!isKontakt && (
                         <>
