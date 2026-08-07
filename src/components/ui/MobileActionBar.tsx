@@ -112,81 +112,87 @@ export function MobileActionBar() {
                 <div className="absolute inset-0 bg-black/60" />
 
                 <div
-                    className="relative flex items-center justify-center gap-3 px-4 pt-2"
+                    className="relative flex items-stretch justify-center px-4 pt-2"
                     style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
                 >
                     {!isKontakt && (
                         <>
-                            <Link
-                                href={contactHref}
-                                prefetch={false}
-                                aria-label="Przejdź do kontaktu"
-                                className="flex items-center gap-1.5 active:opacity-80"
-                            >
-                                <span className="relative flex w-[34px] h-[34px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                                    <svg
-                                        className="absolute left-0 -top-[6px] w-[34px] h-[40px] pointer-events-none overflow-visible"
-                                        viewBox="0 0 56 66"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        style={{ overflow: 'visible' }}
-                                    >
-                                        <path
-                                            d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
-                                            stroke={NAVY}
-                                            strokeWidth="2.5"
-                                            strokeLinejoin="round"
+                            <div className="flex flex-1 items-center justify-center">
+                                <Link
+                                    href={contactHref}
+                                    prefetch={false}
+                                    aria-label="Przejdź do kontaktu"
+                                    className="flex items-center gap-1.5 active:opacity-80"
+                                >
+                                    <span className="relative flex w-10 h-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                                        <svg
+                                            className="absolute left-0 -top-[7px] w-10 h-[47px] pointer-events-none overflow-visible"
+                                            viewBox="0 0 56 66"
                                             fill="none"
-                                        />
-                                        <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
-                                        <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
-                                        <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
-                                        <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
-                                            <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
-                                                <image
-                                                    href="/icons/quill.webp"
-                                                    x="20.64" y="-37" width="34.8" height="64"
-                                                    preserveAspectRatio="xMidYMid meet"
-                                                />
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            style={{ overflow: 'visible' }}
+                                        >
+                                            <path
+                                                d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
+                                                stroke={NAVY}
+                                                strokeWidth="2.5"
+                                                strokeLinejoin="round"
+                                                fill="none"
+                                            />
+                                            <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
+                                            <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
+                                            <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
+                                            <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
+                                                <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
+                                                    <image
+                                                        href="/icons/quill.webp"
+                                                        x="20.64" y="-37" width="34.8" height="64"
+                                                        preserveAspectRatio="xMidYMid meet"
+                                                    />
+                                                </g>
                                             </g>
-                                        </g>
-                                    </svg>
-                                </span>
-                                <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
-                            </Link>
+                                        </svg>
+                                    </span>
+                                    <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
+                                </Link>
+                            </div>
                             <span className={DIVIDER_CLASS} aria-hidden="true" />
                         </>
                     )}
 
-                    <a
-                        href={MAPS_HREF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Mapa"
-                        className="flex items-center gap-1.5 active:opacity-80"
-                    >
-                        <span className="relative flex w-[34px] h-[34px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                            <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
-                        </span>
-                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
-                    </a>
+                    <div className="flex flex-1 items-center justify-center">
+                        <a
+                            href={MAPS_HREF}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Mapa"
+                            className="flex items-center gap-1.5 active:opacity-80"
+                        >
+                            <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                                <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
+                            </span>
+                            <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
+                        </a>
+                    </div>
 
                     <span className={DIVIDER_CLASS} aria-hidden="true" />
 
-                    <a
-                        href="tel:+48793759262"
-                        aria-label="Zadzwoń"
-                        className="flex items-center gap-1.5 active:opacity-80"
-                    >
-                        <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-visible">
-                            <span className="bar-ripple pointer-events-none"></span>
-                            <span className="bar-ripple delay pointer-events-none"></span>
-                            <span className="relative flex w-10 h-10 items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
-                                <Phone className="w-5 h-5 bar-call-icon" />
+                    <div className="flex flex-1 items-center justify-center">
+                        <a
+                            href="tel:+48793759262"
+                            aria-label="Zadzwoń"
+                            className="flex items-center gap-1.5 active:opacity-80"
+                        >
+                            <span className="relative flex w-10 h-10 shrink-0 items-center justify-center overflow-visible">
+                                <span className="bar-ripple pointer-events-none"></span>
+                                <span className="bar-ripple delay pointer-events-none"></span>
+                                <span className="relative flex w-10 h-10 items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
+                                    <Phone className="w-5 h-5 bar-call-icon" />
+                                </span>
                             </span>
-                        </span>
-                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
-                    </a>
+                            <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </>,
