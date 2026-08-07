@@ -17,7 +17,9 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_CLASS = '-mt-1.5 inline-block whitespace-nowrap font-cormorant text-[11px] leading-none text-white'
+const CAPTION_BASE = 'mt-0.5 inline-block whitespace-nowrap font-cormorant text-[11px] leading-none'
+const CAPTION_GOLD = `${CAPTION_BASE} text-[#f3df9a]`
+const CAPTION_LIGHT = `${CAPTION_BASE} text-white`
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
@@ -111,116 +113,122 @@ export function MobileActionBar() {
                 <div className="absolute inset-0 bg-black/60" />
 
                 <div
-                    className="relative grid grid-cols-3 items-start justify-items-center px-4 pt-1"
-                    style={{ paddingBottom: 'calc(0.25rem + env(safe-area-inset-bottom))' }}
+                    className="relative grid grid-cols-3 justify-items-center px-4 pt-2"
+                    style={{ paddingBottom: 'calc(0.375rem + env(safe-area-inset-bottom))' }}
                 >
                     <div className="flex flex-col items-center">
                     {!isKontakt && (
                         <>
-                            <Link
-                                href={contactHref}
-                                prefetch={false}
-                                aria-label="Przejdź do kontaktu"
-                                className="
-                                    relative
-                                    flex
-                                    items-center
-                                    justify-center
-                                    w-11
-                                    h-11
-                                    rounded-2xl
-                                    bg-white
-                                    shadow-[0_2px_10px_rgba(0,0,0,0.3)]
-                                    transition-all duration-300 ease-out
-                                    active:scale-95
-                                "
-                            >
-                                <svg
-                                    className="absolute left-0 -top-[8px] w-11 h-[51px] pointer-events-none overflow-visible"
-                                    viewBox="0 0 56 66"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    style={{ overflow: 'visible' }}
+                            <div className="flex h-11 items-center justify-center">
+                                <Link
+                                    href={contactHref}
+                                    prefetch={false}
+                                    aria-label="Przejdź do kontaktu"
+                                    className="
+                                        relative
+                                        flex
+                                        items-center
+                                        justify-center
+                                        w-[34px]
+                                        h-[34px]
+                                        rounded-xl
+                                        bg-white
+                                        shadow-[0_2px_8px_rgba(0,0,0,0.3)]
+                                        transition-all duration-300 ease-out
+                                        active:scale-95
+                                    "
                                 >
-                                    <path
-                                        d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
-                                        stroke={NAVY}
-                                        strokeWidth="2.5"
-                                        strokeLinejoin="round"
+                                    <svg
+                                        className="absolute left-0 -top-[6px] w-[34px] h-[40px] pointer-events-none overflow-visible"
+                                        viewBox="0 0 56 66"
                                         fill="none"
-                                    />
-                                    <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
-                                    <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
-                                    <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
-                                    <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
-                                        <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
-                                            <image
-                                                href="/icons/quill.webp"
-                                                x="20.64" y="-37" width="34.8" height="64"
-                                                preserveAspectRatio="xMidYMid meet"
-                                            />
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        style={{ overflow: 'visible' }}
+                                    >
+                                        <path
+                                            d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
+                                            stroke={NAVY}
+                                            strokeWidth="2.5"
+                                            strokeLinejoin="round"
+                                            fill="none"
+                                        />
+                                        <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
+                                        <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
+                                        <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
+                                        <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
+                                            <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
+                                                <image
+                                                    href="/icons/quill.webp"
+                                                    x="20.64" y="-37" width="34.8" height="64"
+                                                    preserveAspectRatio="xMidYMid meet"
+                                                />
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </Link>
-                            <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
+                                    </svg>
+                                </Link>
+                            </div>
+                            <span className={CAPTION_GOLD} style={CAPTION_STYLE}>{labels.write}</span>
                         </>
                     )}
                     </div>
 
                     <div className="flex flex-col items-center">
-                        <a
-                            href={MAPS_HREF}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Mapa"
-                            className="
-                                relative
-                                flex
-                                items-center
-                                justify-center
-                                w-11
-                                h-11
-                                rounded-2xl
-                                overflow-hidden
-                                shadow-[0_2px_10px_rgba(0,0,0,0.3)]
-                                transition-transform duration-300 ease-out
-                                active:scale-95
-                            "
-                        >
-                            <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
-                        </a>
-                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
-                    </div>
-
-                    <div className="flex flex-col items-center">
-                        <div className="relative flex items-center justify-center overflow-visible w-11 h-11">
-                            <span className="bar-ripple pointer-events-none"></span>
-                            <span className="bar-ripple delay pointer-events-none"></span>
-
+                        <div className="flex h-11 items-center justify-center">
                             <a
-                                href="tel:+48793759262"
-                                aria-label="Zadzwoń"
+                                href={MAPS_HREF}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Mapa"
                                 className="
                                     relative
                                     flex
                                     items-center
                                     justify-center
-                                    w-11
-                                    h-11
-                                    rounded-full
-                                    bg-[#1c6e43]
-                                    text-white
-                                    shadow-[0_4px_14px_rgba(28,110,67,0.45)]
+                                    w-[34px]
+                                    h-[34px]
+                                    rounded-xl
+                                    overflow-hidden
+                                    shadow-[0_2px_8px_rgba(0,0,0,0.3)]
                                     transition-transform duration-300 ease-out
                                     active:scale-95
-                                    pointer-events-auto
                                 "
                             >
-                                <Phone className="w-5 h-5 bar-call-icon" />
+                                <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                             </a>
                         </div>
-                        <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
+                        <span className={CAPTION_GOLD} style={CAPTION_STYLE}>{labels.map}</span>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <div className="relative flex h-11 items-center justify-center">
+                            <div className="relative flex items-center justify-center overflow-visible w-11 h-11">
+                                <span className="bar-ripple pointer-events-none"></span>
+                                <span className="bar-ripple delay pointer-events-none"></span>
+
+                                <a
+                                    href="tel:+48793759262"
+                                    aria-label="Zadzwoń"
+                                    className="
+                                        relative
+                                        flex
+                                        items-center
+                                        justify-center
+                                        w-11
+                                        h-11
+                                        rounded-full
+                                        bg-[#1c6e43]
+                                        text-white
+                                        shadow-[0_4px_14px_rgba(28,110,67,0.45)]
+                                        transition-transform duration-300 ease-out
+                                        active:scale-95
+                                        pointer-events-auto
+                                    "
+                                >
+                                    <Phone className="w-5 h-5 bar-call-icon" />
+                                </a>
+                            </div>
+                        </div>
+                        <span className={CAPTION_LIGHT} style={CAPTION_STYLE}>{labels.call}</span>
                     </div>
                 </div>
             </div>
