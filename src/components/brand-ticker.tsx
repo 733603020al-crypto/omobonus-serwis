@@ -106,11 +106,13 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
     : 2
   const trackRef = useRef<HTMLDivElement | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
+  const hoverRef = useRef<HTMLDivElement | null>(null)
   const [durationSec, setDurationSec] = useState(0)
 
   useEffect(() => {
     const track = trackRef.current
     const section = sectionRef.current
+    const hoverEl = hoverRef.current
     if (!track || !section) return
 
     const updateDuration = () => {
@@ -122,11 +124,15 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
     resizeObserver.observe(track)
 
     // Animacja CSS działa na compositorze bez JS na klatkę, ale pauzujemy ją,
-    // gdy pasek jest poza ekranem lub karta w tle — po co animować coś,
-    // czego i tak nikt nie widzi.
+    // gdy pasek jest poza ekranem, karta w tle, lub kursor nad paskiem — po co
+    // animować coś, czego i tak nikt nie widzi (albo co ktoś chce obejrzeć).
+    // Hover jest tu, a nie w CSS :hover, bo ten sam inline style ustawiają też
+    // IntersectionObserver/visibilitychange — jeden wspólny "właściciel" stanu
+    // zamiast dwóch reguł nadpisujących się nawzajem.
     let isIntersecting = false
+    let isHovered = false
     const applyPlayState = () => {
-      track.style.animationPlayState = isIntersecting && !document.hidden ? 'running' : 'paused'
+      track.style.animationPlayState = isIntersecting && !document.hidden && !isHovered ? 'running' : 'paused'
     }
 
     const sectionObserver = new IntersectionObserver(([entry]) => {
@@ -137,8 +143,15 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
 
     document.addEventListener("visibilitychange", applyPlayState)
 
+    const handleMouseEnter = () => { isHovered = true; applyPlayState() }
+    const handleMouseLeave = () => { isHovered = false; applyPlayState() }
+    hoverEl?.addEventListener("mouseenter", handleMouseEnter)
+    hoverEl?.addEventListener("mouseleave", handleMouseLeave)
+
     return () => {
       document.removeEventListener("visibilitychange", applyPlayState)
+      hoverEl?.removeEventListener("mouseenter", handleMouseEnter)
+      hoverEl?.removeEventListener("mouseleave", handleMouseLeave)
       sectionObserver.disconnect()
       resizeObserver.disconnect()
     }
@@ -152,7 +165,7 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
       />
-      <div className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible brand-ticker-hover-pause">
+      <div ref={hoverRef} className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible brand-ticker-hover-pause">
         <div
           ref={trackRef}
           className="flex items-center brand-ticker-track"
@@ -173,9 +186,6 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
         @keyframes brand-ticker-scroll {
           from { transform: translateX(0); }
           to { transform: translateX(-${toPercent}%); }
-        }
-        .brand-ticker-hover-pause:hover .brand-ticker-track {
-          animation-play-state: paused;
         }
         @media (prefers-reduced-motion: reduce) {
           .brand-ticker-track {
