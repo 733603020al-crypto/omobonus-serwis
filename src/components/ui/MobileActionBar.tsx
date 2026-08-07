@@ -17,8 +17,8 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_CLASS = 'whitespace-nowrap font-cormorant text-[16px] leading-none text-[#f3df9a]'
-const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
+const CAPTION_CLASS = 'whitespace-nowrap font-cormorant font-semibold text-[17px] leading-none text-[#F0D27A]'
+const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.75), 0 0 6px rgba(214,174,82,0.2)' } as const
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
