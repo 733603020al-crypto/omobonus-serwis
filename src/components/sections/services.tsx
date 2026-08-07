@@ -88,7 +88,7 @@ export function Services({
   `}
               >
                 {/* Ikona */}
-                <div className="relative z-10 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 ml-3 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
