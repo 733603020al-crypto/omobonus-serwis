@@ -17,7 +17,7 @@ const LABELS = {
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
 
-const CAPTION_CLASS = '-mt-1 inline-block whitespace-nowrap font-cormorant text-[12px] text-white'
+const CAPTION_CLASS = '-mt-1.5 inline-block whitespace-nowrap font-cormorant text-[11px] leading-none text-white'
 const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.6)' } as const
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
@@ -111,11 +111,12 @@ export function MobileActionBar() {
                 <div className="absolute inset-0 bg-black/60" />
 
                 <div
-                    className="relative flex items-center justify-center gap-8 px-4 pt-2"
-                    style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+                    className="relative grid grid-cols-3 items-start justify-items-center px-4 pt-1"
+                    style={{ paddingBottom: 'calc(0.25rem + env(safe-area-inset-bottom))' }}
                 >
+                    <div className="flex flex-col items-center">
                     {!isKontakt && (
-                        <div className="flex flex-col items-center">
+                        <>
                             <Link
                                 href={contactHref}
                                 prefetch={false}
@@ -163,8 +164,9 @@ export function MobileActionBar() {
                                 </svg>
                             </Link>
                             <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
-                        </div>
+                        </>
                     )}
+                    </div>
 
                     <div className="flex flex-col items-center">
                         <a
