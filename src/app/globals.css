@@ -197,6 +197,39 @@
   }
 
   /* =========================
+     ZAKRES USŁUG — torn-paper cards (scoped to Services section only,
+     does not touch .services-card-bg used elsewhere on the site)
+     ========================= */
+  .zakres-paper-card {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  }
+  .zakres-paper-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/images/services-card-parchment.webp');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .zakres-paper-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  /* 6 deterministic variants (no JS randomness) — reuse the single texture,
+     flipped/rotated so its own baked-in torn edges & curled corners land in
+     different places on each card instead of every card looking identical. */
+  .zakres-paper-v1::before { transform: none; }
+  .zakres-paper-v2::before { transform: scaleX(-1); }
+  .zakres-paper-v3::before { transform: scaleY(-1); }
+  .zakres-paper-v4::before { transform: scale(-1, -1); }
+  .zakres-paper-v5::before { transform: scaleX(-1) rotate(1deg); }
+  .zakres-paper-v6::before { transform: rotate(-1deg); }
+
+  /* =========================
      ACCORDION
      ========================= */
   [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {

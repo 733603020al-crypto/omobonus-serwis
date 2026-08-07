@@ -69,35 +69,26 @@ export function Services({
                   'serwis-drukarek-iglowych',
                 ].includes(service.slug)
             )
-            .map((service) => (
+            .map((service, i) => (
               <Link
                 key={service.slug}
                 href={`${basePath}/${service.slug}`}
                 prefetch={false}
-                className="
+                className={`
     group
     relative
-    min-h-[70px]
-    rounded-lg
-    py-2 px-3
-    border-2 border-[rgba(200,169,107,0.5)]
-    hover:border-[rgba(200,169,107,0.85)]
-    transition-all
-    duration-300
-    ease-out
-    hover:-translate-y-1
-    hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]
+    min-h-[128px]
+    py-5 px-5
     flex
     items-center
     text-left
     w-full
-    services-card-bg
-  "
+    zakres-paper-card
+    zakres-paper-v${(i % 6) + 1}
+  `}
               >
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
                 {/* Ikona */}
-                <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 mr-4 w-[90px] h-[90px] flex-shrink-0 flex items-center justify-center">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
@@ -127,16 +118,16 @@ export function Services({
                                               : service.icon
                     }
                     alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                    width={50}
-                    height={50}
-                    sizes="50px"
+                    width={80}
+                    height={80}
+                    sizes="80px"
                     className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
 
                 {/* Treść */}
                 <div className="relative z-10 flex-1">
-                  <h2 className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-[#f3df9a] group-hover:[text-shadow:0_0_10px_rgba(191,167,106,0.5)] transition-all duration-300 mb-1 leading-tight">
+                  <h2 className="text-[21px] font-cormorant font-semibold text-[#3A2817] leading-[1.3] line-clamp-2">
                     {service.slug === 'serwis-drukarek-termicznych'
                       ? d.serwis_drukarek_termicznych
                       : service.title}
