@@ -211,7 +211,7 @@
     inset: 0;
     z-index: 0;
     background-image: url('/images/services-card-parchment.webp');
-    background-size: 140% 140%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
   }
   .zakres-paper-card:hover {
@@ -219,38 +219,29 @@
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
 
-  /* SHAPE system — silhouette only (clip-path on the card itself). Small,
-     paper-scale imperfections (2-8px nicks, one ~10px corner fold each) —
-     never more than a few px, so the card stays a rectangle at a glance. */
-  .zakres-shape-a {
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 55% 100%, 50% calc(100% - 3px), 45% 100%, 0 100%);
-  }
-  .zakres-shape-b {
-    clip-path: polygon(0 0, 40% 0, 43% 5px, 54% 5px, 57% 0, 100% 0, 100% 100%, 73% 100%, 70% calc(100% - 3px), 67% 100%, 0 100%);
-  }
-  .zakres-shape-c {
-    clip-path: polygon(0 0, 100% 0, 100% 45%, calc(100% - 6px) 50%, 100% 55%, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  }
-  .zakres-shape-d {
-    clip-path: polygon(0 0, 28% 0, 31% 3px, 34% 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-  }
-  .zakres-shape-e {
-    clip-path: polygon(10px 0, 100% 0, 100% 100%, 60% 100%, 57% calc(100% - 3px), 54% 100%, 30% 100%, 27% calc(100% - 3px), 24% 100%, 0 100%, 0 10px);
-  }
-  .zakres-shape-f {
-    clip-path: polygon(0 0, 35% 0, 38% 4px, 41% 0, 100% 0, 100% 60%, calc(100% - 4px) 63%, 100% 66%, 100% 100%, 0 100%);
-  }
+  /* No clip-path here on purpose: the card's visible silhouette comes from
+     the source WebP's own alpha channel (its real torn/curled edge),
+     stretched to fill the box. Cutting a polygon on top of that replaced
+     the real edge with straight CSS lines, which read as "scissors", not
+     paper — so variety is built two other ways instead: */
 
-  /* TEXTURE system — independent of shape. background-size:140% on ::before
-     (above) gives room for background-position to actually pan to a
-     different crop of the same photo; combined with a mirror/rotate of
-     that same decorative layer, the grain/crease detail lands somewhere
-     different per card even when two cards share a shape. Text/icons are
-     separate layers (z-10) and are never touched by this. */
-  .zakres-texture-1::before { background-position: center center; transform: none; }
-  .zakres-texture-2::before { background-position: left center; transform: scaleX(-1); }
-  .zakres-texture-3::before { background-position: right center; transform: rotate(180deg); }
-  .zakres-texture-4::before { background-position: center top; transform: scaleY(-1); }
+  /* 1) ORIENTATION — flip/rotate the whole decorative layer so its real
+     creases and curled corners land on a different side per card, without
+     touching the alpha edge itself. */
+  .zakres-orient-normal::before   { transform: none; }
+  .zakres-orient-flipx::before    { transform: scaleX(-1); }
+  .zakres-orient-flipy::before    { transform: scaleY(-1); }
+  .zakres-orient-rotate180::before { transform: rotate(180deg); }
+
+  /* 2) MICRO — one small, soft, ROUNDED bite (radial-gradient mask, not a
+     polygon) at a fixed spot per variant. ~4px fully-removed core with a
+     ~2-3px soft falloff to full opacity by 7px out, so it reads as a worn
+     nick, not a cut corner. Masks the same ::before layer only. */
+  .zakres-micro-a::before { -webkit-mask-image: radial-gradient(circle 7px at calc(100% - 6px) 6px, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at calc(100% - 6px) 6px, transparent 0 4px, black 7px, black 100%); }
+  .zakres-micro-b::before { -webkit-mask-image: radial-gradient(circle 7px at 30% 100%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 30% 100%, transparent 0 4px, black 7px, black 100%); }
+  .zakres-micro-c::before { -webkit-mask-image: radial-gradient(circle 7px at 0% 50%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 0% 50%, transparent 0 4px, black 7px, black 100%); }
+  .zakres-micro-d::before { -webkit-mask-image: radial-gradient(circle 7px at 6px calc(100% - 6px), transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 6px calc(100% - 6px), transparent 0 4px, black 7px, black 100%); }
+  .zakres-micro-e::before { -webkit-mask-image: radial-gradient(circle 7px at 65% 0%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 65% 0%, transparent 0 4px, black 7px, black 100%); }
 
   /* =========================
      ACCORDION

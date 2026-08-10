@@ -7,39 +7,37 @@ import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 // Written out as literal strings (not built via template interpolation) so
 // Tailwind's static content scanner can actually find them — a class name
-// assembled as `zakres-shape-${x}` is invisible to that scanner and the
+// assembled as `zakres-orient-${x}` is invisible to that scanner and the
 // whole custom @layer utilities rule gets silently purged from the CSS
 // build even though the DOM ends up with the right class name.
-const SHAPE_CLASSES = [
-  'zakres-shape-a',
-  'zakres-shape-b',
-  'zakres-shape-c',
-  'zakres-shape-d',
-  'zakres-shape-e',
-  'zakres-shape-f',
+const ORIENT_CLASSES = [
+  'zakres-orient-normal',
+  'zakres-orient-flipx',
+  'zakres-orient-flipy',
+  'zakres-orient-rotate180',
 ]
-const TEXTURE_CLASSES = [
-  'zakres-texture-1',
-  'zakres-texture-2',
-  'zakres-texture-3',
-  'zakres-texture-4',
+const MICRO_CLASSES = [
+  'zakres-micro-a',
+  'zakres-micro-b',
+  'zakres-micro-c',
+  'zakres-micro-d',
+  'zakres-micro-e',
 ]
-// Fixed (non-random) shape+texture assignment for the 10 cards, indexed by
-// position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9). Chosen so that
-// neither the shape nor the texture repeats between horizontally or
-// vertically adjacent cards, and no (shape, texture) pair repeats anywhere
-// in the block — see the shapeIdx/textureIdx table below for the mapping.
-const CARD_STYLE: { shapeIdx: number; textureIdx: number }[] = [
-  { shapeIdx: 0, textureIdx: 0 }, // 0: a + 1
-  { shapeIdx: 1, textureIdx: 1 }, // 1: b + 2
-  { shapeIdx: 2, textureIdx: 2 }, // 2: c + 3
-  { shapeIdx: 3, textureIdx: 1 }, // 3: d + 2
-  { shapeIdx: 4, textureIdx: 3 }, // 4: e + 4
-  { shapeIdx: 5, textureIdx: 0 }, // 5: f + 1
-  { shapeIdx: 1, textureIdx: 2 }, // 6: b + 3
-  { shapeIdx: 2, textureIdx: 0 }, // 7: c + 1
-  { shapeIdx: 0, textureIdx: 3 }, // 8: a + 4
-  { shapeIdx: 3, textureIdx: 3 }, // 9: d + 4
+// Fixed (non-random) orientation+micro assignment for the 10 cards, indexed
+// by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9). No two
+// horizontally-adjacent cards share an orientation, and no (orientation,
+// micro) pair repeats anywhere in the block.
+const CARD_STYLE: { orientIdx: number; microIdx: number }[] = [
+  { orientIdx: 0, microIdx: 0 }, // 0: normal   + micro-a
+  { orientIdx: 1, microIdx: 1 }, // 1: flipX    + micro-b
+  { orientIdx: 3, microIdx: 2 }, // 2: rotate180 + micro-c
+  { orientIdx: 2, microIdx: 3 }, // 3: flipY    + micro-d
+  { orientIdx: 0, microIdx: 4 }, // 4: normal   + micro-e
+  { orientIdx: 1, microIdx: 2 }, // 5: flipX    + micro-c
+  { orientIdx: 3, microIdx: 0 }, // 6: rotate180 + micro-a
+  { orientIdx: 2, microIdx: 1 }, // 7: flipY    + micro-b
+  { orientIdx: 0, microIdx: 3 }, // 8: normal   + micro-d
+  { orientIdx: 1, microIdx: 4 }, // 9: flipX    + micro-e
 ]
 
 interface ServicesT {
@@ -123,8 +121,8 @@ export function Services({
     text-left
     w-full
     zakres-paper-card
-    ${SHAPE_CLASSES[style.shapeIdx]}
-    ${TEXTURE_CLASSES[style.textureIdx]}
+    ${ORIENT_CLASSES[style.orientIdx]}
+    ${MICRO_CLASSES[style.microIdx]}
   `}
               >
                 {/* Ikona */}
