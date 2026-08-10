@@ -35,7 +35,7 @@ export const ru = {
     moreAboutHref: '/ru/o-nas',
   },
   services: {
-    sectionLabel: 'СПЕКТР УСЛУГ',
+    sectionLabel: 'ОСНОВНЫЕ УСЛУГИ',
     tagline: 'Предлагаем сервис компьютеров, ноутбуков и принтеров, а также техническую поддержку для дома и офиса во Вроцлаве',
     serwis_drukarek_termicznych: 'Сервис и ремонт принтеров этикеток',
   },

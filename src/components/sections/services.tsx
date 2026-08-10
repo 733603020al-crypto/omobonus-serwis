@@ -61,7 +61,7 @@ interface ServicesT {
 }
 
 const PL: ServicesT = {
-  sectionLabel: 'ZAKRES USŁUG',
+  sectionLabel: 'GŁÓWNE USŁUGI',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   serwis_drukarek_termicznych: 'Serwis i naprawa drukarek etykiet',
 }
@@ -116,6 +116,9 @@ export function Services({
                   'serwis-drukarek-laserowych',
                   'serwis-drukarek-atramentowych',
                   'serwis-drukarek-iglowych',
+                  'outsourcing-it',
+                  'wynajem-drukarek',
+                  'drukarka-zastepcza',
                 ].includes(service.slug)
             )
             .map((service, i) => {
