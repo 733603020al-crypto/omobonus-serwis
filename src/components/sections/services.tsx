@@ -171,6 +171,8 @@ export function Services({
                                             ? '/images/11_drukarka-zastepcza-icon.webp'
                                             : service.slug === 'naprawa-drukarek'
                                               ? '/images/Serwis_Drukarek-icon.webp'
+                                              : service.slug === 'druk-3d-na-zamowienie'
+                                                ? '/images/09_druk-3d-na-zamowienie-icon.webp'
                                               : service.icon
                     }
                     alt={`${service.title} Wrocław - ikona usługi serwisowej`}
