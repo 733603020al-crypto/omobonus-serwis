@@ -162,7 +162,7 @@ export function Services({
                                   : service.slug === 'serwis-plotterow'
                                     ? '/images/08_serwis-ploterow-icon.webp'
                                     : service.slug === 'serwis-drukarek-termicznych'
-                                      ? '/images/06_serwis-drukarek-termicznych-icon.webp'
+                                      ? '/images/06_serwis-drukarek-termicznych-home-icon.webp'
                                       : service.slug === 'serwis-drukarek-iglowych'
                                         ? '/images/07_serwis-drukarek-iglowych-icon.webp'
                                         : service.slug === 'wynajem-drukarek'
