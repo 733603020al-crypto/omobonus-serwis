@@ -211,46 +211,46 @@
     inset: 0;
     z-index: 0;
     background-image: url('/images/services-card-parchment.webp');
-    background-size: 100% 100%;
+    background-size: 140% 140%;
     background-repeat: no-repeat;
   }
   .zakres-paper-card:hover {
     transform: translateY(-2px);
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
-  /* Small, paper-scale imperfections only (2-8px nicks, one modest ~10px
-     corner fold per variant) — never more than a few px of the card's own
-     size, so the silhouette stays a rectangle at a glance and only reveals
-     itself as "not quite identical" up close, like real card stock. */
-  .zakres-paper-v1 {
+
+  /* SHAPE system — silhouette only (clip-path on the card itself). Small,
+     paper-scale imperfections (2-8px nicks, one ~10px corner fold each) —
+     never more than a few px, so the card stays a rectangle at a glance. */
+  .zakres-shape-a {
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 55% 100%, 50% calc(100% - 3px), 45% 100%, 0 100%);
   }
-  .zakres-paper-v1::before { transform: none; }
-
-  .zakres-paper-v2 {
+  .zakres-shape-b {
     clip-path: polygon(0 0, 40% 0, 43% 5px, 54% 5px, 57% 0, 100% 0, 100% 100%, 73% 100%, 70% calc(100% - 3px), 67% 100%, 0 100%);
   }
-  .zakres-paper-v2::before { transform: scaleX(-1); }
-
-  .zakres-paper-v3 {
+  .zakres-shape-c {
     clip-path: polygon(0 0, 100% 0, 100% 45%, calc(100% - 6px) 50%, 100% 55%, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   }
-  .zakres-paper-v3::before { transform: scaleY(-1); }
-
-  .zakres-paper-v4 {
+  .zakres-shape-d {
     clip-path: polygon(0 0, 28% 0, 31% 3px, 34% 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
   }
-  .zakres-paper-v4::before { transform: scale(-1, -1); }
-
-  .zakres-paper-v5 {
+  .zakres-shape-e {
     clip-path: polygon(10px 0, 100% 0, 100% 100%, 60% 100%, 57% calc(100% - 3px), 54% 100%, 30% 100%, 27% calc(100% - 3px), 24% 100%, 0 100%, 0 10px);
   }
-  .zakres-paper-v5::before { transform: scaleX(-1) rotate(1deg); }
-
-  .zakres-paper-v6 {
+  .zakres-shape-f {
     clip-path: polygon(0 0, 35% 0, 38% 4px, 41% 0, 100% 0, 100% 60%, calc(100% - 4px) 63%, 100% 66%, 100% 100%, 0 100%);
   }
-  .zakres-paper-v6::before { transform: rotate(-1deg); }
+
+  /* TEXTURE system — independent of shape. background-size:140% on ::before
+     (above) gives room for background-position to actually pan to a
+     different crop of the same photo; combined with a mirror/rotate of
+     that same decorative layer, the grain/crease detail lands somewhere
+     different per card even when two cards share a shape. Text/icons are
+     separate layers (z-10) and are never touched by this. */
+  .zakres-texture-1::before { background-position: center center; transform: none; }
+  .zakres-texture-2::before { background-position: left center; transform: scaleX(-1); }
+  .zakres-texture-3::before { background-position: right center; transform: rotate(180deg); }
+  .zakres-texture-4::before { background-position: center top; transform: scaleY(-1); }
 
   /* =========================
      ACCORDION
