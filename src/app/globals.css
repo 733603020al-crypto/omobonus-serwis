@@ -219,29 +219,69 @@
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
 
-  /* No clip-path here on purpose: the card's visible silhouette comes from
-     the source WebP's own alpha channel (its real torn/curled edge),
-     stretched to fill the box. Cutting a polygon on top of that replaced
-     the real edge with straight CSS lines, which read as "scissors", not
-     paper — so variety is built two other ways instead: */
+  /* No clip-path polygon here on purpose: the card's visible silhouette
+     comes from (a) the source WebP's own real alpha edge, plus (b) a soft
+     bezier-curve SVG mask below — never straight/geometric lines. */
 
   /* 1) ORIENTATION — flip/rotate the whole decorative layer so its real
      creases and curled corners land on a different side per card, without
      touching the alpha edge itself. */
-  .zakres-orient-normal::before   { transform: none; }
-  .zakres-orient-flipx::before    { transform: scaleX(-1); }
-  .zakres-orient-flipy::before    { transform: scaleY(-1); }
+  .zakres-orient-normal::before    { transform: none; }
+  .zakres-orient-flipx::before     { transform: scaleX(-1); }
+  .zakres-orient-flipy::before     { transform: scaleY(-1); }
   .zakres-orient-rotate180::before { transform: rotate(180deg); }
 
-  /* 2) MICRO — one small, soft, ROUNDED bite (radial-gradient mask, not a
-     polygon) at a fixed spot per variant. ~4px fully-removed core with a
-     ~2-3px soft falloff to full opacity by 7px out, so it reads as a worn
-     nick, not a cut corner. Masks the same ::before layer only. */
-  .zakres-micro-a::before { -webkit-mask-image: radial-gradient(circle 7px at calc(100% - 6px) 6px, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at calc(100% - 6px) 6px, transparent 0 4px, black 7px, black 100%); }
-  .zakres-micro-b::before { -webkit-mask-image: radial-gradient(circle 7px at 30% 100%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 30% 100%, transparent 0 4px, black 7px, black 100%); }
-  .zakres-micro-c::before { -webkit-mask-image: radial-gradient(circle 7px at 0% 50%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 0% 50%, transparent 0 4px, black 7px, black 100%); }
-  .zakres-micro-d::before { -webkit-mask-image: radial-gradient(circle 7px at 6px calc(100% - 6px), transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 6px calc(100% - 6px), transparent 0 4px, black 7px, black 100%); }
-  .zakres-micro-e::before { -webkit-mask-image: radial-gradient(circle 7px at 65% 0%, transparent 0 4px, black 7px, black 100%); mask-image: radial-gradient(circle 7px at 65% 0%, transparent 0 4px, black 7px, black 100%); }
+  /* 2) EDGE — 8 fixed silhouettes. Each is an inline (data-URI, no network
+     request) SVG mask: a single closed path built from smooth cubic-bezier
+     curves (never straight polygon segments), deviating only ~1.5-5px from
+     a plain rectangle on a ~400x150 reference box, mostly along the long
+     top/bottom edges. Masks the same ::before layer the orientation
+     transform above already applies to, so texture + edge combine freely. */
+  .zakres-edge-a::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0%20L400%2C0%20L400%2C150%20C310%2C152%20290%2C148.5%20230%2C150%20C170%2C151.5%20130%2C148%200%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0%20L400%2C0%20L400%2C150%20C310%2C152%20290%2C148.5%20230%2C150%20C170%2C151.5%20130%2C148%200%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-b::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C1.5%20C80%2C-1%20140%2C2.5%20220%2C0.5%20C300%2C-1.5%20350%2C2%20400%2C0%20L400%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C1.5%20C80%2C-1%20140%2C2.5%20220%2C0.5%20C300%2C-1.5%20350%2C2%20400%2C0%20L400%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-c::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C2%20C100%2C-1.5%20180%2C2.5%20260%2C0%20C330%2C-2%20370%2C1.5%20400%2C0%20L400%2C150%20C300%2C148%20220%2C151.5%20140%2C149%20C90%2C147.5%2040%2C151%200%2C148%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C2%20C100%2C-1.5%20180%2C2.5%20260%2C0%20C330%2C-2%20370%2C1.5%20400%2C0%20L400%2C150%20C300%2C148%20220%2C151.5%20140%2C149%20C90%2C147.5%2040%2C151%200%2C148%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-d::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0.5%20L400%2C0%20L400%2C150%20C320%2C148%20300%2C153.5%20280%2C150.5%20C260%2C147.5%20250%2C151%20230%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0.5%20L400%2C0%20L400%2C150%20C320%2C148%20300%2C153.5%20280%2C150.5%20C260%2C147.5%20250%2C151%20230%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-e::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C2.5%20C90%2C-2%20160%2C3.5%20240%2C0.5%20C310%2C-2.5%20360%2C2.5%20400%2C0%20L400%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C2.5%20C90%2C-2%20160%2C3.5%20240%2C0.5%20C310%2C-2.5%20360%2C2.5%20400%2C0%20L400%2C150%20L0%2C150%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-f::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C1.5%20C100%2C-1%20200%2C2%20300%2C0.5%20C350%2C-0.5%20380%2C1.5%20400%2C1%20L400%2C150%20C300%2C148.5%20250%2C151.5%20180%2C149.5%20C130%2C148%2080%2C150.5%200%2C149%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C1.5%20C100%2C-1%20200%2C2%20300%2C0.5%20C350%2C-0.5%20380%2C1.5%20400%2C1%20L400%2C150%20C300%2C148.5%20250%2C151.5%20180%2C149.5%20C130%2C148%2080%2C150.5%200%2C149%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-g::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0%20L400%2C0.5%20L400%2C150%20L0%2C150%20C2%2C135%20-2%2C120%200%2C105%20C2%2C90%20-2%2C75%200%2C60%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0%20L400%2C0.5%20L400%2C150%20L0%2C150%20C2%2C135%20-2%2C120%200%2C105%20C2%2C90%20-2%2C75%200%2C60%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+  .zakres-edge-h::before { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0.8%20L400%2C0.3%20L400%2C150%20C260%2C149.3%20140%2C150.7%200%2C149.5%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2C0.8%20L400%2C0.3%20L400%2C150%20C260%2C149.3%20140%2C150.7%200%2C149.5%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+
+  /* 3) CORNER — a rare, separate accent layer (::after), never part of the
+     edge mask above. A small triangular fold with light/dark shading to
+     read as a lifted paper corner. corner-none = no ::after at all.
+     Default size ~18px; the "-lg" modifier (used on at most 2 cards) bumps
+     it to ~24px for a slightly more noticeable fold. */
+  .zakres-corner-tl::after, .zakres-corner-tr::after,
+  .zakres-corner-bl::after, .zakres-corner-br::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+  }
+  .zakres-corner-tl::after {
+    top: 0; left: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.18) 48%, rgba(255,250,235,0.35) 52%, transparent 65%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .zakres-corner-tr::after {
+    top: 0; right: 0;
+    background: linear-gradient(225deg, rgba(0,0,0,0.18) 48%, rgba(255,250,235,0.35) 52%, transparent 65%);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+  }
+  .zakres-corner-bl::after {
+    bottom: 0; left: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.18) 48%, rgba(255,250,235,0.35) 52%, transparent 65%);
+    clip-path: polygon(0 100%, 100% 100%, 0 0);
+  }
+  .zakres-corner-br::after {
+    bottom: 0; right: 0;
+    background: linear-gradient(315deg, rgba(0,0,0,0.18) 48%, rgba(255,250,235,0.35) 52%, transparent 65%);
+    clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  }
+  .zakres-corner-lg::after { width: 24px; height: 24px; }
+
 
   /* =========================
      ACCORDION

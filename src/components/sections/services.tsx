@@ -7,7 +7,7 @@ import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 // Written out as literal strings (not built via template interpolation) so
 // Tailwind's static content scanner can actually find them — a class name
-// assembled as `zakres-orient-${x}` is invisible to that scanner and the
+// assembled as `zakres-edge-${x}` is invisible to that scanner and the
 // whole custom @layer utilities rule gets silently purged from the CSS
 // build even though the DOM ends up with the right class name.
 const ORIENT_CLASSES = [
@@ -16,28 +16,42 @@ const ORIENT_CLASSES = [
   'zakres-orient-flipy',
   'zakres-orient-rotate180',
 ]
-const MICRO_CLASSES = [
-  'zakres-micro-a',
-  'zakres-micro-b',
-  'zakres-micro-c',
-  'zakres-micro-d',
-  'zakres-micro-e',
+const EDGE_CLASSES = [
+  'zakres-edge-a',
+  'zakres-edge-b',
+  'zakres-edge-c',
+  'zakres-edge-d',
+  'zakres-edge-e',
+  'zakres-edge-f',
+  'zakres-edge-g',
+  'zakres-edge-h',
 ]
-// Fixed (non-random) orientation+micro assignment for the 10 cards, indexed
-// by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9). No two
-// horizontally-adjacent cards share an orientation, and no (orientation,
-// micro) pair repeats anywhere in the block.
-const CARD_STYLE: { orientIdx: number; microIdx: number }[] = [
-  { orientIdx: 0, microIdx: 0 }, // 0: normal   + micro-a
-  { orientIdx: 1, microIdx: 1 }, // 1: flipX    + micro-b
-  { orientIdx: 3, microIdx: 2 }, // 2: rotate180 + micro-c
-  { orientIdx: 2, microIdx: 3 }, // 3: flipY    + micro-d
-  { orientIdx: 0, microIdx: 4 }, // 4: normal   + micro-e
-  { orientIdx: 1, microIdx: 2 }, // 5: flipX    + micro-c
-  { orientIdx: 3, microIdx: 0 }, // 6: rotate180 + micro-a
-  { orientIdx: 2, microIdx: 1 }, // 7: flipY    + micro-b
-  { orientIdx: 0, microIdx: 3 }, // 8: normal   + micro-d
-  { orientIdx: 1, microIdx: 4 }, // 9: flipX    + micro-e
+// '' = corner-none (no ::after at all — 4 of the 10 cards use this)
+const CORNER_CLASSES = [
+  '',
+  'zakres-corner-tl',
+  'zakres-corner-tr',
+  'zakres-corner-bl',
+  'zakres-corner-br',
+]
+// Fixed (non-random) edge+orientation+corner assignment for the 10 cards,
+// indexed by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9).
+// Rules satisfied: no (edge, orientation, corner) triple repeats anywhere;
+// no two horizontally- or vertically-adjacent cards share an edge; no two
+// horizontally- or vertically-adjacent cards share a real (non-"none")
+// corner direction; no corner direction used more than twice; exactly 4
+// cards use corner-none.
+const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = [
+  { edgeIdx: 0, orientIdx: 0, cornerIdx: 3 }, // 0 laptopów:   edge-a + normal    + corner-bl
+  { edgeIdx: 1, orientIdx: 1, cornerIdx: 0 }, // 1 komputery:  edge-b + flipX     + none
+  { edgeIdx: 2, orientIdx: 3, cornerIdx: 2 }, // 2 outsourcing: edge-c + rotate180 + corner-tr
+  { edgeIdx: 3, orientIdx: 2, cornerIdx: 1 }, // 3 naprawa:    edge-d + flipY     + corner-tl
+  { edgeIdx: 4, orientIdx: 0, cornerIdx: 0 }, // 4 plotery:    edge-e + normal    + none
+  { edgeIdx: 5, orientIdx: 1, cornerIdx: 4 }, // 5 etykiety:   edge-f + flipX     + corner-br
+  { edgeIdx: 6, orientIdx: 3, cornerIdx: 0 }, // 6 drukarki3D: edge-g + rotate180 + none
+  { edgeIdx: 7, orientIdx: 2, cornerIdx: 3 }, // 7 druk3D:     edge-h + flipY     + corner-bl
+  { edgeIdx: 2, orientIdx: 1, cornerIdx: 2 }, // 8 wynajem:    edge-c + flipX     + corner-tr
+  { edgeIdx: 5, orientIdx: 3, cornerIdx: 0 }, // 9 zastępcza:  edge-f + rotate180 + none
 ]
 
 interface ServicesT {
@@ -121,8 +135,9 @@ export function Services({
     text-left
     w-full
     zakres-paper-card
+    ${EDGE_CLASSES[style.edgeIdx]}
     ${ORIENT_CLASSES[style.orientIdx]}
-    ${MICRO_CLASSES[style.microIdx]}
+    ${CORNER_CLASSES[style.cornerIdx]}
   `}
               >
                 {/* Ikona */}
