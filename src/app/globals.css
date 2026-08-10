@@ -218,22 +218,38 @@
     transform: translateY(-2px);
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
-  .zakres-paper-v1 { clip-path: polygon(0% 0%, 75% 0%, 100% 20%, 100% 100%, 0% 100%); }
+  /* Small, paper-scale imperfections only (2-8px nicks, one modest ~10px
+     corner fold per variant) — never more than a few px of the card's own
+     size, so the silhouette stays a rectangle at a glance and only reveals
+     itself as "not quite identical" up close, like real card stock. */
+  .zakres-paper-v1 {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 55% 100%, 50% calc(100% - 3px), 45% 100%, 0 100%);
+  }
   .zakres-paper-v1::before { transform: none; }
 
-  .zakres-paper-v2 { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 80% 85%, 65% 100%, 50% 82%, 35% 100%, 20% 85%, 0% 100%); }
+  .zakres-paper-v2 {
+    clip-path: polygon(0 0, 40% 0, 43% 5px, 54% 5px, 57% 0, 100% 0, 100% 100%, 73% 100%, 70% calc(100% - 3px), 67% 100%, 0 100%);
+  }
   .zakres-paper-v2::before { transform: scaleX(-1); }
 
-  .zakres-paper-v3 { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 75%); }
+  .zakres-paper-v3 {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, calc(100% - 6px) 50%, 100% 55%, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
   .zakres-paper-v3::before { transform: scaleY(-1); }
 
-  .zakres-paper-v4 { clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%); }
+  .zakres-paper-v4 {
+    clip-path: polygon(0 0, 28% 0, 31% 3px, 34% 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  }
   .zakres-paper-v4::before { transform: scale(-1, -1); }
 
-  .zakres-paper-v5 { clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 60% 100%, 70% 85%, 45% 100%, 0% 100%, 0% 25%); }
+  .zakres-paper-v5 {
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 60% 100%, 57% calc(100% - 3px), 54% 100%, 30% 100%, 27% calc(100% - 3px), 24% 100%, 0 100%, 0 10px);
+  }
   .zakres-paper-v5::before { transform: scaleX(-1) rotate(1deg); }
 
-  .zakres-paper-v6 { clip-path: polygon(0% 15%, 15% 0%, 30% 12%, 45% 0%, 60% 15%, 75% 0%, 90% 12%, 100% 0%, 100% 100%, 0% 100%); }
+  .zakres-paper-v6 {
+    clip-path: polygon(0 0, 35% 0, 38% 4px, 41% 0, 100% 0, 100% 60%, calc(100% - 4px) 63%, 100% 66%, 100% 100%, 0 100%);
+  }
   .zakres-paper-v6::before { transform: rotate(-1deg); }
 
   /* =========================
