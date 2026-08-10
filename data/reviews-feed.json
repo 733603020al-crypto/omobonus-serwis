@@ -1,22 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "Grażyna Kaczmarek",
-      "author_url": "https://www.google.com/maps/contrib/117834517504780079698/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJQhQOfstHIeGvC6_mYc8WBPZUVpNi2NbNo0JYa-1XnQrxTZw=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Serdecznie polecam! Szybka diagnoza problemu z laptopem i natychmiastowa naprawa. Dodam, że laptop był wcześniej kilkukrotnie w naprawie w innym miejscu, gdzie ściągnięto tylko kasę, a problem pozostał. Świetna robota i 2 miesiące gwarancji. Jestem mega zadowolona!",
-      "time": 1780487638,
-      "translated": false,
-      "text_uk": "Щиро рекомендую! Швидка діагностика проблеми з ноутбуком і негайний ремонт. Додам, що ноутбук раніше кілька разів здавали в ремонт в інше місце, де тільки брали гроші, а проблема залишалась. Чудова робота і 2 місяці гарантії. Я дуже задоволена!",
-      "text_ru": "Искренне рекомендую! Быстрая диагностика проблемы с ноутбуком и немедленный ремонт. Добавлю, что ноутбук ранее несколько раз сдавали в ремонт в другое место, где только брали деньги, а проблема оставалась. Отличная работа и 2 месяца гарантии. Я очень довольна!",
-      "relative_time_uk": "місяць тому",
-      "relative_time_ru": "месяц назад"
-    },
-    {
       "author_name": "Peter Mishchuk",
       "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
       "language": "pl",
@@ -159,7 +143,23 @@
       "text_ru": "Ремонт принтера был быстрым, эффективным и недорогим. Им удалось спасти печатающую головку, а значит, и мой принтер. Очень добрые люди. Они также очень помогли мне с машиной, которая сломалась недалеко от их офиса. Большое спасибо. Я невероятно благодарен и рекомендую их всем!",
       "relative_time_uk": "місяць тому",
       "relative_time_ru": "месяц назад"
+    },
+    {
+      "author_name": "Adam Ziaja",
+      "author_url": "https://www.google.com/maps/contrib/101268518920926309302/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX03Wl98djBAtKuNPEevSI8lTz2VUN7CFOpZ1bykbrdHWQaRd0=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "3 tygodnie temu",
+      "text": "Polecam ten zakład naprawy drukarek. Bardzo sprawnie pracują i drukarka atramentowa działa jak nowa",
+      "time": 1784308146,
+      "translated": false,
+      "text_uk": "Рекомендую цю майстерню з ремонту принтерів. Вони працюють дуже ефективно, а струменевий принтер працює як новий.",
+      "text_ru": "Я рекомендую эту мастерскую по ремонту принтеров. Они работают очень эффективно, и струйный принтер работает как новый.",
+      "relative_time_uk": "3 тижні тому",
+      "relative_time_ru": "3 недели назад"
     }
   ],
-  "updatedAt": "2026-07-29T19:01:28.694Z"
+  "updatedAt": "2026-08-10T04:21:00.132Z"
 }
