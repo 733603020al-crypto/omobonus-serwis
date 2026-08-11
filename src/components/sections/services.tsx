@@ -158,6 +158,7 @@ export function Services({
     py-4 px-6
     flex
     items-center
+    gap-4
     text-left
     w-full
     zakres-paper-card
@@ -167,13 +168,13 @@ export function Services({
   `}
               >
                 {/* Ikona */}
-                <div className="relative z-10 ml-8 mr-5 w-[120px] h-[120px] flex-shrink-0 flex items-center justify-center">
+                <div className="relative z-10 w-[calc(44%-8px)] h-[120px] flex-shrink-0">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
-                        ? '/images/02_serwis-komputerow-stacjonarnych-icon.webp'
+                        ? '/images/02_serwis-komputerow-stacjonarnych-home-icon.webp'
                         : service.slug === 'serwis-laptopow'
-                          ? '/images/01_serwis-laptopow-icon.webp'
+                          ? '/images/01_serwis-laptopow-home-icon.webp'
                           : service.slug === 'outsourcing-it'
                             ? '/images/03_outsourcing-it-icon.webp'
                             : service.slug === 'serwis-drukarek-laserowych'
@@ -183,7 +184,7 @@ export function Services({
                                 : service.slug === 'serwis-drukarek-3d'
                                   ? '/images/Serwis_i_Naprawa_Drukarek_3D-home-icon.webp'
                                   : service.slug === 'serwis-plotterow'
-                                    ? '/images/08_serwis-ploterow-icon.webp'
+                                    ? '/images/08_serwis-ploterow-home-icon.webp'
                                     : service.slug === 'serwis-drukarek-termicznych'
                                       ? '/images/06_serwis-drukarek-termicznych-home-icon.webp'
                                       : service.slug === 'serwis-drukarek-iglowych'
@@ -193,21 +194,20 @@ export function Services({
                                           : service.slug === 'drukarka-zastepcza'
                                             ? '/images/11_drukarka-zastepcza-icon.webp'
                                             : service.slug === 'naprawa-drukarek'
-                                              ? '/images/Serwis_Drukarek-icon.webp'
+                                              ? '/images/Serwis_Drukarek-home-icon.webp'
                                               : service.slug === 'druk-3d-na-zamowienie'
                                                 ? '/images/09_druk-3d-na-zamowienie-icon.webp'
                                               : service.icon
                     }
                     alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                    width={105}
-                    height={105}
-                    sizes="105px"
-                    className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                    fill
+                    sizes="(max-width: 768px) 35vw, 180px"
+                    className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                   />
                 </div>
 
                 {/* Treść */}
-                <div className="relative z-10 max-w-[195px]">
+                <div className="relative z-10 w-[calc(56%-8px)] h-[120px] flex items-center">
                   <h2 className="text-[24px] font-cormorant font-semibold text-[#3A2817] leading-[1.25]">
                     {d.cardLabels[service.slug] ?? service.title}
                   </h2>
