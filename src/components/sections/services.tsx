@@ -146,6 +146,7 @@ export function Services({
             .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
             .map((service, i) => {
               const style = CARD_STYLE[i % CARD_STYLE.length]
+              const isPlotter = service.slug === 'serwis-plotterow'
               return (
               <Link
                 key={service.slug}
@@ -158,7 +159,6 @@ export function Services({
     py-4 px-6
     flex
     items-center
-    gap-4
     text-left
     w-full
     zakres-paper-card
@@ -167,8 +167,9 @@ export function Services({
     ${CORNER_CLASSES[style.cornerIdx]}
   `}
               >
-                {/* Ikona */}
-                <div className="relative z-10 w-[calc(44%-8px)] h-[120px] flex-shrink-0">
+                {/* Ikona — centered within its own zone (no left/right push). */}
+                <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter ? 'w-[60%]' : 'w-[50%]'}`}>
+                  <div className="relative w-full h-full">
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
@@ -204,10 +205,12 @@ export function Services({
                     sizes="(max-width: 768px) 35vw, 180px"
                     className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                   />
+                  </div>
                 </div>
 
-                {/* Treść */}
-                <div className="relative z-10 w-[calc(56%-8px)] h-[120px] flex items-center">
+                {/* Treść — text pulled toward the left edge of its own zone
+                    (close to the image), not centered in the half. */}
+                <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter ? 'w-[40%]' : 'w-[50%]'}`}>
                   <h2 className="text-[24px] font-cormorant font-semibold text-[#3A2817] leading-[1.25]">
                     {d.cardLabels[service.slug] ?? service.title}
                   </h2>
