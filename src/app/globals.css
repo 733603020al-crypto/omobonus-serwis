@@ -282,28 +282,23 @@
   }
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
-  /* SERWIS I NAPRAWA heading — decorative connector lines either side,
-     weaker at the outer edge, brighter near the text (never a hard cut). */
-  .services-heading-line-left {
-    background-image: linear-gradient(
-      to right,
-      rgba(191, 167, 106, 0.22),
-      rgba(191, 167, 106, 0.55) 50%,
-      rgba(191, 167, 106, 0.95)
-    );
-  }
-  .services-heading-line-right {
-    background-image: linear-gradient(
-      to right,
-      rgba(191, 167, 106, 0.95),
-      rgba(191, 167, 106, 0.55) 50%,
-      rgba(191, 167, 106, 0.22)
-    );
-  }
-  /* Very soft brightening toward the middle of the text — not a glow,
-     same base gold as "Święty Omobonus XII wieku" at both ends. */
+  /* SERWIS I NAPRAWA heading — the two connector lines reuse the exact
+     .divider-line-left/-right + .brush-divider-row light-sweep effect
+     already used elsewhere on the site (contact-actions.tsx), via the
+     BrushDividerRow wrapper. Gold edges warming to a soft ivory center,
+     same base gold as "Święty Omobonus XII wieku" at both ends — the
+     lightest ~25% of the width sits in the middle, not a single point. */
   .services-heading-text {
-    background-image: linear-gradient(to right, #bfa76a 0%, #c9b480 50%, #bfa76a 100%);
+    background-image: linear-gradient(
+      to right,
+      #bfa76a 0%,
+      #bfa76a 32%,
+      #ddc99a 42%,
+      #f6e9c9 50%,
+      #ddc99a 58%,
+      #bfa76a 68%,
+      #bfa76a 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
