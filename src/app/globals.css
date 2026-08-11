@@ -282,25 +282,15 @@
   }
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
-  /* SERWIS I NAPRAWA heading text — gold edges warming to a bright warm
-     ivory center (never pure white), same base gold as "Święty Omobonus
-     XII wieku" at both ends — the lightest ~30% of the width sits in the
-     middle, not a single point, plus a very soft warm glow for contrast. */
+  /* SERWIS I NAPRAWA heading text — flat warm ivory (the same lightest
+     tint the previous gradient peaked at), no gradient/glow. Soft dark
+     drop shadow only, same principle as the parchment-lift shadow on the
+     contact form, to read as slightly raised off the background. */
   .services-heading-text {
-    background-image: linear-gradient(
-      to right,
-      #bfa76a 0%,
-      #bfa76a 28%,
-      #e6d3a4 40%,
-      #fbf0d9 50%,
-      #e6d3a4 60%,
-      #bfa76a 72%,
-      #bfa76a 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 14px rgba(246, 233, 201, 0.3);
+    color: #fbf0d9;
+    text-shadow:
+      0 2px 2px rgba(0, 0, 0, 0.55),
+      0 5px 8px rgba(0, 0, 0, 0.28);
   }
 
 
