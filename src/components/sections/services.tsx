@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
-import { BrushDividerRow } from '@/components/ui/brush-divider-row'
 import Image from 'next/image'
 import { services as defaultServices } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
@@ -121,25 +120,13 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div className="text-center">
-          <FadeSlideP className="brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+        <div className="text-center mb-[20px]">
+          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[36px]">
+            {d.subheading}
+          </h2>
+          <FadeSlideP className="brush-underline mt-[8px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
           </FadeSlideP>
-          <BrushDividerRow className="mt-[8px] md:mt-[10px] lg:mt-[12px] mb-[14px] md:mb-[16px] lg:mb-[18px] flex items-center gap-[10px] md:gap-[14px] lg:gap-[18px]">
-            <span
-              className="divider-line divider-line-left h-px flex-1"
-              style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
-              aria-hidden="true"
-            />
-            <h2 className="services-heading-text flex-none whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[36px]">
-              {d.subheading}
-            </h2>
-            <span
-              className="divider-line divider-line-right h-px flex-1"
-              style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
-              aria-hidden="true"
-            />
-          </BrushDividerRow>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">

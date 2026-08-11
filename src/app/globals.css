@@ -282,12 +282,9 @@
   }
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
-  /* SERWIS I NAPRAWA heading — the two connector lines reuse the exact
-     .divider-line-left/-right + .brush-divider-row light-sweep effect
-     already used elsewhere on the site (contact-actions.tsx), via the
-     BrushDividerRow wrapper. Gold edges warming to a soft ivory center,
-     same base gold as "Święty Omobonus XII wieku" at both ends — the
-     lightest ~25% of the width sits in the middle, not a single point. */
+  /* SERWIS I NAPRAWA heading text — gold edges warming to a soft ivory
+     center, same base gold as "Święty Omobonus XII wieku" at both ends —
+     the lightest ~25% of the width sits in the middle, not a single point. */
   .services-heading-text {
     background-image: linear-gradient(
       to right,
