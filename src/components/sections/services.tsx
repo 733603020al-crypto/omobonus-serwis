@@ -66,14 +66,23 @@ const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = 
 
 interface ServicesT {
   sectionLabel: string
+  subheading: string
   tagline: string
-  serwis_drukarek_termicznych: string
+  cardLabels: Record<string, string>
 }
 
 const PL: ServicesT = {
   sectionLabel: 'GŁÓWNE USŁUGI',
+  subheading: 'Serwis i naprawa',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
-  serwis_drukarek_termicznych: 'Serwis i naprawa drukarek etykiet',
+  cardLabels: {
+    'serwis-laptopow': 'Laptopów',
+    'serwis-komputerow-stacjonarnych': 'Komputerów stacjonarnych',
+    'naprawa-drukarek': 'Drukarek i kserokopiarek',
+    'serwis-drukarek-3d': 'Drukarek 3D',
+    'serwis-drukarek-termicznych': 'Drukarek etykiet',
+    'serwis-plotterow': 'Ploterów',
+  },
 }
 
 export function Services({
@@ -111,11 +120,13 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div className="mb-6 text-center">
-
+        <div className="text-center">
           <FadeSlideP className="brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
           </FadeSlideP>
+          <p className="mt-[10px] md:mt-[12px] mb-[18px] md:mb-[24px] font-cormorant font-bold leading-[1.15] text-[26px] md:text-[32px] lg:text-[36px] text-[#bfa76a]">
+            {d.subheading}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
@@ -198,9 +209,7 @@ export function Services({
                 {/* Treść */}
                 <div className="relative z-10 max-w-[195px]">
                   <h2 className="text-[24px] font-cormorant font-semibold text-[#3A2817] leading-[1.25]">
-                    {service.slug === 'serwis-drukarek-termicznych'
-                      ? d.serwis_drukarek_termicznych
-                      : service.title}
+                    {d.cardLabels[service.slug] ?? service.title}
                   </h2>
                 </div>
               </Link>

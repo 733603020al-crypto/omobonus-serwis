@@ -36,8 +36,16 @@ export const ru = {
   },
   services: {
     sectionLabel: 'ОСНОВНЫЕ УСЛУГИ',
+    subheading: 'Сервис и ремонт',
     tagline: 'Предлагаем сервис компьютеров, ноутбуков и принтеров, а также техническую поддержку для дома и офиса во Вроцлаве',
-    serwis_drukarek_termicznych: 'Сервис и ремонт принтеров этикеток',
+    cardLabels: {
+      'serwis-laptopow': 'Ноутбуков',
+      'serwis-komputerow-stacjonarnych': 'Стационарных компьютеров',
+      'naprawa-drukarek': 'Принтеров и ксероксов',
+      'serwis-drukarek-3d': '3D-принтеров',
+      'serwis-drukarek-termicznych': 'Принтеров этикеток',
+      'serwis-plotterow': 'Плоттеров',
+    },
   },
   footer: {
     contact: 'Контакты',

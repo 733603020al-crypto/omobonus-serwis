@@ -75,8 +75,16 @@
   },
   services: {
     sectionLabel: 'ОСНОВНІ ПОСЛУГИ',
+    subheading: 'Сервіс і ремонт',
     tagline: 'Пропонуємо сервіс комп\'ютерів, ноутбуків і принтерів та технічну підтримку для дому та офісу у Вроцлаві',
-    serwis_drukarek_termicznych: 'Сервіс і ремонт принтерів етикеток',
+    cardLabels: {
+      'serwis-laptopow': 'Ноутбуків',
+      'serwis-komputerow-stacjonarnych': 'Стаціонарних комп\'ютерів',
+      'naprawa-drukarek': 'Принтерів і ксероксів',
+      'serwis-drukarek-3d': '3D-принтерів',
+      'serwis-drukarek-termicznych': 'Принтерів етикеток',
+      'serwis-plotterow': 'Плотерів',
+    },
   },
   contact: {
     formTitle: 'Форма заявки',
