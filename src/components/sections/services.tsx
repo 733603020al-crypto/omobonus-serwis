@@ -121,10 +121,10 @@ export function Services({
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-[20px]">
-          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[36px]">
+          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[38px]">
             {d.subheading}
           </h2>
-          <FadeSlideP className="brush-underline mt-[8px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+          <FadeSlideP className="brush-underline mt-[4px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
           </FadeSlideP>
         </div>
