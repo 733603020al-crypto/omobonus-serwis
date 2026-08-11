@@ -158,7 +158,7 @@ export function Services({
                               : service.slug === 'serwis-drukarek-atramentowych'
                                 ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
                                 : service.slug === 'serwis-drukarek-3d'
-                                  ? '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp'
+                                  ? '/images/Serwis_i_Naprawa_Drukarek_3D-home-icon.webp'
                                   : service.slug === 'serwis-plotterow'
                                     ? '/images/08_serwis-ploterow-icon.webp'
                                     : service.slug === 'serwis-drukarek-termicznych'
