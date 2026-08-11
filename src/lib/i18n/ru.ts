@@ -36,7 +36,7 @@ export const ru = {
   },
   services: {
     sectionLabel: 'ОСНОВНЫЕ УСЛУГИ',
-    subheading: 'Сервис и ремонт',
+    subheading: 'СЕРВИС И РЕМОНТ',
     tagline: 'Предлагаем сервис компьютеров, ноутбуков и принтеров, а также техническую поддержку для дома и офиса во Вроцлаве',
     cardLabels: {
       'serwis-laptopow': 'Ноутбуков',

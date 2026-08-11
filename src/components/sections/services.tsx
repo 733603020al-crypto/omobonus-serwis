@@ -73,7 +73,7 @@ interface ServicesT {
 
 const PL: ServicesT = {
   sectionLabel: 'GŁÓWNE USŁUGI',
-  subheading: 'Serwis i naprawa',
+  subheading: 'SERWIS I NAPRAWA',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   cardLabels: {
     'serwis-laptopow': 'Laptopów',
@@ -124,7 +124,7 @@ export function Services({
           <FadeSlideP className="brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
           </FadeSlideP>
-          <p className="mt-[10px] md:mt-[12px] mb-[18px] md:mb-[24px] font-cormorant font-bold leading-[1.15] text-[26px] md:text-[32px] lg:text-[36px] text-[#bfa76a]">
+          <p className="mt-[10px] md:mt-[12px] mb-[18px] md:mb-[24px] font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[27px] md:text-[34px] lg:text-[42px] text-[#bfa76a]">
             {d.subheading}
           </p>
         </div>
