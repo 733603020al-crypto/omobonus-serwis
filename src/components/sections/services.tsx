@@ -40,10 +40,9 @@ const HOME_ORDER = [
   'serwis-laptopow',
   'serwis-komputerow-stacjonarnych',
   'naprawa-drukarek',
-  'serwis-plotterow',
   'serwis-drukarek-3d',
   'serwis-drukarek-termicznych',
-  'druk-3d-na-zamowienie',
+  'serwis-plotterow',
 ]
 // Fixed (non-random) edge+orientation+corner assignment for the 10 cards,
 // indexed by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9).
@@ -130,6 +129,7 @@ export function Services({
                   'outsourcing-it',
                   'wynajem-drukarek',
                   'drukarka-zastepcza',
+                  'druk-3d-na-zamowienie',
                 ].includes(service.slug)
             )
             .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
