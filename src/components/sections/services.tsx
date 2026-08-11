@@ -34,6 +34,17 @@ const CORNER_CLASSES = [
   'zakres-corner-bl',
   'zakres-corner-br',
 ]
+// Homepage-only display order (doesn't touch services-data.ts, so sitemap,
+// header dropdown and the related-services widget keep their own order).
+const HOME_ORDER = [
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'naprawa-drukarek',
+  'serwis-plotterow',
+  'serwis-drukarek-3d',
+  'serwis-drukarek-termicznych',
+  'druk-3d-na-zamowienie',
+]
 // Fixed (non-random) edge+orientation+corner assignment for the 10 cards,
 // indexed by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9).
 // Rules satisfied: no (edge, orientation, corner) triple repeats anywhere;
@@ -121,6 +132,7 @@ export function Services({
                   'drukarka-zastepcza',
                 ].includes(service.slug)
             )
+            .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
             .map((service, i) => {
               const style = CARD_STYLE[i % CARD_STYLE.length]
               return (
