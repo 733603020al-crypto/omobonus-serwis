@@ -283,11 +283,15 @@
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
   /* SERWIS I NAPRAWA heading text — flat plain white, no gradient/center
-     brightening/gold tint. Soft dark drop shadow only, same principle as
-     the parchment-lift shadow on the contact form, to read as slightly
-     raised off the background. */
+     brightening/gold tint, no darkening. Soft dark drop shadow only, same
+     principle as the parchment-lift shadow on the contact form, to read
+     as slightly raised off the background. Explicit stacking context
+     (position:relative + z-index:1) so the vignette behind it (below,
+     via z-index:-1) can never visually dull the letters themselves —
+     no opacity/filter is ever applied to this element. */
   .services-heading-text {
     position: relative;
+    z-index: 1;
     color: #ffffff;
     text-shadow:
       0 2px 2px rgba(0, 0, 0, 0.55),
@@ -296,16 +300,14 @@
   /* Soft local vignette behind just this heading (not the whole block) —
      an ellipse that fades to fully transparent well inside its own box,
      so there's no visible rectangular edge, just a gentle lift off the
-     textured background. Extended further up than down (GŁÓWNE USŁUGI
-     sits close underneath and must stay on the plain background); the
-     gradient center is biased toward the bottom of its own box so the
-     darkest point still sits at the text, not above it. */
+     textured background. Symmetric top/bottom extension, centered. */
   .services-heading-text::before {
     content: '';
     position: absolute;
-    inset: -42px -48px -10px -48px;
+    z-index: -1;
+    inset: -26px -48px;
     background: radial-gradient(
-      ellipse at 50% 65%,
+      ellipse at center,
       rgba(0, 0, 0, 0.32) 0%,
       rgba(0, 0, 0, 0.16) 40%,
       rgba(0, 0, 0, 0) 72%
