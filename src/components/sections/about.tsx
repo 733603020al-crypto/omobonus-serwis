@@ -136,7 +136,7 @@ export function About({
               <Link
                 href={d.moreAboutHref ?? '/o-nas'}
                 prefetch={false}
-                className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#bfa76a] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
+                className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
               >
                 <span className="relative z-10 inline-flex items-center gap-1">
                   {d.moreAboutLink ?? 'Więcej o nas'}
@@ -200,7 +200,7 @@ export function About({
                 <Link
                   href={d.moreAboutHref ?? '/o-nas'}
                   prefetch={false}
-                  className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] text-[#bfa76a] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
+                  className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
                 >
                   <span className="relative z-10 inline-flex items-center gap-1">
                     {d.moreAboutLink ?? 'Więcej o nas'}

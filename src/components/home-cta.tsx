@@ -23,7 +23,7 @@ export function HomeCta({ heading, text, button, href }: HomeCtaProps) {
           <Link
             href={href}
             prefetch={false}
-            className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#bfa76a] zakres-paper-card zakres-edge-e zakres-orient-normal zakres-corner-bl"
+            className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-e zakres-orient-normal zakres-corner-bl"
           >
             <span className="relative z-10 inline-flex items-center gap-1">
               {button}
