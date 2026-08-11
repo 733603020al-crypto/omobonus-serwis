@@ -124,9 +124,13 @@ export function Services({
           <FadeSlideP className="brush-underline mt-[6px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
             {d.sectionLabel}
           </FadeSlideP>
-          <p className="mt-[10px] md:mt-[12px] mb-[18px] md:mb-[24px] font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[27px] md:text-[34px] lg:text-[42px] text-[#bfa76a]">
-            {d.subheading}
-          </p>
+          <div className="mt-[8px] md:mt-[10px] lg:mt-[12px] mb-[14px] md:mb-[16px] lg:mb-[18px] flex items-center gap-[10px] md:gap-[14px] lg:gap-[18px]">
+            <span className="services-heading-line-left h-px flex-1" aria-hidden="true" />
+            <h2 className="services-heading-text flex-none whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[36px]">
+              {d.subheading}
+            </h2>
+            <span className="services-heading-line-right h-px flex-1" aria-hidden="true" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">

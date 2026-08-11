@@ -282,6 +282,33 @@
   }
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
+  /* SERWIS I NAPRAWA heading — decorative connector lines either side,
+     weaker at the outer edge, brighter near the text (never a hard cut). */
+  .services-heading-line-left {
+    background-image: linear-gradient(
+      to right,
+      rgba(191, 167, 106, 0.22),
+      rgba(191, 167, 106, 0.55) 50%,
+      rgba(191, 167, 106, 0.95)
+    );
+  }
+  .services-heading-line-right {
+    background-image: linear-gradient(
+      to right,
+      rgba(191, 167, 106, 0.95),
+      rgba(191, 167, 106, 0.55) 50%,
+      rgba(191, 167, 106, 0.22)
+    );
+  }
+  /* Very soft brightening toward the middle of the text — not a glow,
+     same base gold as "Święty Omobonus XII wieku" at both ends. */
+  .services-heading-text {
+    background-image: linear-gradient(to right, #bfa76a 0%, #c9b480 50%, #bfa76a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
 
   /* =========================
      ACCORDION
