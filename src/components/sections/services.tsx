@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
@@ -93,7 +93,7 @@ const PL: ServicesT = {
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
-  viewAllLabel: 'ZOBACZ WSZYSTKIE USŁUGI ↓',
+  viewAllLabel: 'Zobacz wszystkie usługi ↓',
 }
 
 export function Services({
@@ -112,6 +112,19 @@ export function Services({
   const services = servicesData ?? defaultServices
   const d = t ?? PL
   const [expanded, setExpanded] = useState(false)
+  const dividerRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = dividerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const mainServices = services
     .filter(
@@ -140,6 +153,10 @@ export function Services({
     const isDrukarki3D = service.slug === 'serwis-drukarek-3d'
     const isLaptopy = service.slug === 'serwis-laptopow'
     const isKomputery = service.slug === 'serwis-komputerow-stacjonarnych'
+    const isLaserowych = service.slug === 'serwis-drukarek-laserowych'
+    const isDruk3DZamowienie = service.slug === 'druk-3d-na-zamowienie'
+    const isWynajem = service.slug === 'wynajem-drukarek'
+    const isZastepcza = service.slug === 'drukarka-zastepcza'
     return (
       <Link
         key={service.slug}
@@ -161,10 +178,18 @@ export function Services({
   `}
       >
         {/* Ikona — centered within its own zone (no left/right push). */}
-        <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[60%]' : 'w-[50%]'}`}>
+        <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy || isLaserowych || isWynajem || isZastepcza ? 'w-[60%]' : 'w-[50%]'}`}>
           <div
-            className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isKomputery ? 'origin-center' : ''}`}
-            style={isDrukarki3D ? { transform: 'scale(1.067)' } : isKomputery ? { transform: 'scale(1.05)' } : undefined}
+            className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isKomputery || isLaserowych || isDruk3DZamowienie || isWynajem || isZastepcza ? 'origin-center' : ''}`}
+            style={
+              isDrukarki3D ? { transform: 'scale(1.067)' }
+                : isKomputery ? { transform: 'scale(1.05)' }
+                : isLaserowych ? { transform: 'scale(1.17)' }
+                : isDruk3DZamowienie ? { transform: 'scale(0.89)' }
+                : isWynajem ? { transform: 'scale(1.06)' }
+                : isZastepcza ? { transform: 'scale(1.45)' }
+                : undefined
+            }
           >
           <Image
             src={
@@ -206,7 +231,7 @@ export function Services({
 
         {/* Treść — text pulled toward the left edge of its own zone
             (close to the image), not centered in the half. */}
-        <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[40%]' : 'w-[50%]'}`}>
+        <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D || isLaptopy || isLaserowych || isWynajem || isZastepcza ? 'w-[40%]' : 'w-[50%]'}`}>
           <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
@@ -248,17 +273,44 @@ export function Services({
         </div>
 
         {canExpand && !expanded && (
-          <div className="text-center mt-8 md:mt-10">
-            <button
-              type="button"
-              onClick={() => setExpanded(true)}
-              className="inline-block bg-transparent border-0 p-0 m-0 cursor-pointer"
-            >
-              <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
-                {d.viewAllLabel}
+          <>
+            {/* Previous line-based CTA — hidden, not removed (kept for possible future use) */}
+            <div className="hidden text-center mt-8 md:mt-10">
+              <FadeSlideP className="brush-underline brush-underline-center-glow block w-full text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+                <button
+                  type="button"
+                  onClick={() => setExpanded(true)}
+                  className="bg-transparent border-0 p-0 m-0 cursor-pointer"
+                >
+                  {d.viewAllLabel}
+                </button>
+                <span aria-hidden="true" className="brush-underline-spark" />
               </FadeSlideP>
-            </button>
-          </div>
+            </div>
+
+            {/* Golden line in two segments (existing .brush-divider-row / .divider-line
+                pattern, reused 1:1 from contact-actions.tsx), broken by a gap on each
+                side of the parchment button — matches "Więcej o nas" (about.tsx) 1:1. */}
+            <div ref={dividerRef} className="brush-divider-row flex items-center gap-6 mt-5">
+              <div
+                className="divider-line divider-line-left h-px flex-1"
+                style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+              />
+              <button
+                type="button"
+                onClick={() => setExpanded(true)}
+                className="relative z-10 inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
+              >
+                <span className="relative z-10 inline-flex items-center gap-1">
+                  {d.viewAllLabel}
+                </span>
+              </button>
+              <div
+                className="divider-line divider-line-right h-px flex-1"
+                style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+              />
+            </div>
+          </>
         )}
 
         {canExpand && expanded && (
