@@ -172,6 +172,7 @@ export function Services({
     text-left
     w-full
     zakres-paper-card
+    services-card-hover
     ${EDGE_CLASSES[style.edgeIdx]}
     ${ORIENT_CLASSES[style.orientIdx]}
     ${CORNER_CLASSES[style.cornerIdx]}

@@ -219,6 +219,28 @@
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.35));
   }
 
+  /* Service cards only (services.tsx) — hover effect ported 1:1 from the
+     "Wyślij" wax-seal button (contact.tsx): scale instead of translateY,
+     box-shadow instead of filter:drop-shadow (safe here since the card's
+     mask silhouette deviates only ~1.5-5px from a rectangle, per the edge
+     mask comment above — imperceptible as a box-shadow). Hover-only
+     devices so it never sticks on touch. */
+  .zakres-paper-card.services-card-hover {
+    filter: none;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .zakres-paper-card.services-card-hover {
+      transform-origin: center;
+      transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .zakres-paper-card.services-card-hover:hover {
+      filter: none;
+      transform: scale(1.03);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+    }
+  }
+
   /* No clip-path polygon here on purpose: the card's visible silhouette
      comes from (a) the source WebP's own real alpha edge, plus (b) a soft
      bezier-curve SVG mask below — never straight/geometric lines. */
