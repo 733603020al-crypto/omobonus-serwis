@@ -148,6 +148,7 @@ export function Services({
               const style = CARD_STYLE[i % CARD_STYLE.length]
               const isPlotter = service.slug === 'serwis-plotterow'
               const isEtykiety = service.slug === 'serwis-drukarek-termicznych'
+              const isDrukarki3D = service.slug === 'serwis-drukarek-3d'
               return (
               <Link
                 key={service.slug}
@@ -169,7 +170,7 @@ export function Services({
   `}
               >
                 {/* Ikona — centered within its own zone (no left/right push). */}
-                <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter ? 'w-[60%]' : 'w-[50%]'}`}>
+                <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D ? 'w-[60%]' : 'w-[50%]'}`}>
                   <div className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : ''}`}>
                   <Image
                     src={
@@ -211,7 +212,7 @@ export function Services({
 
                 {/* Treść — text pulled toward the left edge of its own zone
                     (close to the image), not centered in the half. */}
-                <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter ? 'w-[40%]' : 'w-[50%]'}`}>
+                <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D ? 'w-[40%]' : 'w-[50%]'}`}>
                   <h2 className="text-[24px] font-cormorant font-semibold text-[#3A2817] leading-[1.25]">
                     {d.cardLabels[service.slug] ?? service.title}
                   </h2>
