@@ -329,7 +329,7 @@
     inset: -26px -100px;
     background: radial-gradient(
       ellipse at center,
-      rgba(0, 0, 0, 0.32) 0%,
+      rgba(0, 0, 0, 0.50) 0%,
       rgba(0, 0, 0, 0.16) 40%,
       rgba(0, 0, 0, 0) 72%
     );
