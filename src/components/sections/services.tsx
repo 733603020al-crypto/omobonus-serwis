@@ -147,6 +147,7 @@ export function Services({
             .map((service, i) => {
               const style = CARD_STYLE[i % CARD_STYLE.length]
               const isPlotter = service.slug === 'serwis-plotterow'
+              const isEtykiety = service.slug === 'serwis-drukarek-termicznych'
               return (
               <Link
                 key={service.slug}
@@ -169,7 +170,7 @@ export function Services({
               >
                 {/* Ikona — centered within its own zone (no left/right push). */}
                 <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter ? 'w-[60%]' : 'w-[50%]'}`}>
-                  <div className="relative w-full h-full">
+                  <div className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : ''}`}>
                   <Image
                     src={
                       service.slug === 'serwis-komputerow-stacjonarnych'
