@@ -299,7 +299,7 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="bg-transparent border-0 p-0 m-0 cursor-pointer text-sm font-inter font-semibold uppercase text-[#bfa76a] text-center whitespace-nowrap"
+                className="services-cta-vignette bg-transparent border-0 p-0 m-0 cursor-pointer text-sm font-inter font-semibold uppercase text-[#bfa76a] text-center whitespace-nowrap"
                 style={{ letterSpacing: '0.06em', textShadow: '0 2px 2px rgba(0, 0, 0, 0.55), 0 5px 8px rgba(0, 0, 0, 0.28)' }}
               >
                 {d.viewAllLabel}

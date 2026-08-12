@@ -315,6 +315,27 @@
     pointer-events: none;
   }
 
+  /* Same vignette-darkening effect as .services-heading-text::before
+     (SERWIS I NAPRAWA), transferred 1:1 — only the horizontal inset is
+     adapted to this element's narrower text. */
+  .services-cta-vignette {
+    position: relative;
+    z-index: 1;
+  }
+  .services-cta-vignette::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: -26px -20px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.32) 0%,
+      rgba(0, 0, 0, 0.16) 40%,
+      rgba(0, 0, 0, 0) 72%
+    );
+    pointer-events: none;
+  }
+
 
   /* =========================
      ACCORDION
