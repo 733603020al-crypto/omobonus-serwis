@@ -173,8 +173,8 @@ export function Services({
                 {/* Ikona — centered within its own zone (no left/right push). */}
                 <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[60%]' : 'w-[50%]'}`}>
                   <div
-                    className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isLaptopy ? 'origin-center' : ''}`}
-                    style={isDrukarki3D || isLaptopy ? { transform: 'scale(1.067)' } : undefined}
+                    className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D ? 'origin-center' : ''}`}
+                    style={isDrukarki3D ? { transform: 'scale(1.067)' } : undefined}
                   >
                   <Image
                     src={
