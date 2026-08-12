@@ -317,7 +317,7 @@
 
   /* Same vignette-darkening effect as .services-heading-text::before
      (SERWIS I NAPRAWA), transferred 1:1 — only the horizontal inset is
-     adapted to this element's narrower text. */
+     adapted so it also softly bleeds ~100px into the flanking lines. */
   .services-cta-vignette {
     position: relative;
     z-index: 1;
@@ -326,7 +326,7 @@
     content: '';
     position: absolute;
     z-index: -1;
-    inset: -26px -20px;
+    inset: -26px -100px;
     background: radial-gradient(
       ellipse at center,
       rgba(0, 0, 0, 0.32) 0%,
