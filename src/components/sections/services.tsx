@@ -187,7 +187,7 @@ export function Services({
                 : isLaserowych ? { transform: 'scale(1.17)' }
                 : isDruk3DZamowienie ? { transform: 'scale(0.89)' }
                 : isWynajem ? { transform: 'scale(1.06)' }
-                : isZastepcza ? { transform: 'scale(1.45)' }
+                : isZastepcza ? { transform: 'translateX(-8px) scale(1.33)' }
                 : undefined
             }
           >
