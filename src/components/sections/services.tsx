@@ -293,8 +293,8 @@ export function Services({
                 side of the parchment button — matches "Więcej o nas" (about.tsx) 1:1. */}
             <div ref={dividerRef} className="brush-divider-row flex items-center gap-6 mt-5">
               <div
-                className="divider-line divider-line-left h-px flex-1"
-                style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+                className="divider-line divider-line-left flex-1"
+                style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
               />
               <button
                 type="button"
@@ -306,8 +306,8 @@ export function Services({
                 </span>
               </button>
               <div
-                className="divider-line divider-line-right h-px flex-1"
-                style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
+                className="divider-line divider-line-right flex-1"
+                style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
               />
             </div>
           </>
