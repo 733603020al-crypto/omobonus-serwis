@@ -17,6 +17,7 @@ interface HomePageTemplateProps {
   servicesData?: NonNullable<ComponentProps<typeof Services>>['servicesData']
   servicesBasePath?: NonNullable<ComponentProps<typeof Services>>['basePath']
   servicesT?: NonNullable<ComponentProps<typeof Services>>['t']
+  servicesExtra?: NonNullable<ComponentProps<typeof Services>>['extraServices']
   aboutT?: NonNullable<ComponentProps<typeof About>>['t']
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
   cta: {
@@ -33,6 +34,7 @@ export function HomePageTemplate({
   servicesData,
   servicesBasePath,
   servicesT,
+  servicesExtra,
   aboutT,
   footerT,
   cta,
@@ -59,7 +61,7 @@ export function HomePageTemplate({
           }}
         />
         <div className="relative z-10">
-          <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} bare />
+          <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
 
           <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
 

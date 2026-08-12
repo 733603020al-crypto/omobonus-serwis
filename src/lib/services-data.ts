@@ -3795,3 +3795,15 @@ export const services: ServiceData[] = [
     pricingSections: createDrukarkaZastepczaPricingSections(),
   },
 ]
+
+// Homepage "SERWIS I NAPRAWA" block: slugs revealed after clicking
+// "ZOBACZ WSZYSTKIE USŁUGI" — centralized here so services can be
+// added/removed without touching the Services component itself.
+export const HOME_EXTRA_SERVICES = [
+  'serwis-drukarek-laserowych',
+  'serwis-drukarek-atramentowych',
+  'serwis-drukarek-iglowych',
+  'druk-3d-na-zamowienie',
+  'wynajem-drukarek',
+  'drukarka-zastepcza',
+]

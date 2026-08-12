@@ -1,7 +1,10 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
-import { services as defaultServices } from '@/lib/services-data'
+import { services as defaultServices, HOME_EXTRA_SERVICES } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
@@ -69,6 +72,7 @@ interface ServicesT {
   subheading: string
   tagline: string
   cardLabels: Record<string, string>
+  viewAllLabel?: string
 }
 
 const PL: ServicesT = {
@@ -82,7 +86,14 @@ const PL: ServicesT = {
     'serwis-drukarek-3d': 'Drukarek 3D',
     'serwis-drukarek-termicznych': 'Drukarek etykiet',
     'serwis-plotterow': 'Ploterów',
+    'serwis-drukarek-laserowych': 'Drukarek laserowych',
+    'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
+    'serwis-drukarek-iglowych': 'Drukarek igłowych',
+    'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
+    'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
+    'drukarka-zastepcza': 'Drukarka zastępcza',
   },
+  viewAllLabel: 'ZOBACZ WSZYSTKIE USŁUGI ↓',
 }
 
 export function Services({
@@ -90,14 +101,120 @@ export function Services({
   basePath = '/uslugi',
   t,
   bare = false,
+  extraServices,
 }: {
   servicesData?: ServiceData[]
   basePath?: string
   t?: ServicesT
   bare?: boolean
+  extraServices?: string[]
 } = {}) {
   const services = servicesData ?? defaultServices
   const d = t ?? PL
+  const [expanded, setExpanded] = useState(false)
+
+  const mainServices = services
+    .filter(
+      (service) =>
+        ![
+          'serwis-drukarek-laserowych',
+          'serwis-drukarek-atramentowych',
+          'serwis-drukarek-iglowych',
+          'outsourcing-it',
+          'wynajem-drukarek',
+          'drukarka-zastepcza',
+          'druk-3d-na-zamowienie',
+        ].includes(service.slug)
+    )
+    .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
+
+  const extraList = (extraServices ?? [])
+    .map((slug) => services.find((service) => service.slug === slug))
+    .filter((service): service is ServiceData => Boolean(service))
+
+  const canExpand = extraList.length > 0 && Boolean(d.viewAllLabel)
+
+  const renderCard = (service: ServiceData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
+    const isPlotter = service.slug === 'serwis-plotterow'
+    const isEtykiety = service.slug === 'serwis-drukarek-termicznych'
+    const isDrukarki3D = service.slug === 'serwis-drukarek-3d'
+    const isLaptopy = service.slug === 'serwis-laptopow'
+    const isKomputery = service.slug === 'serwis-komputerow-stacjonarnych'
+    return (
+      <Link
+        key={service.slug}
+        href={`${basePath}/${service.slug}`}
+        prefetch={false}
+        className={`
+    group
+    relative
+    min-h-[152px]
+    py-4 px-6
+    flex
+    items-center
+    text-left
+    w-full
+    zakres-paper-card
+    ${EDGE_CLASSES[style.edgeIdx]}
+    ${ORIENT_CLASSES[style.orientIdx]}
+    ${CORNER_CLASSES[style.cornerIdx]}
+  `}
+      >
+        {/* Ikona — centered within its own zone (no left/right push). */}
+        <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[60%]' : 'w-[50%]'}`}>
+          <div
+            className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isKomputery ? 'origin-center' : ''}`}
+            style={isDrukarki3D ? { transform: 'scale(1.067)' } : isKomputery ? { transform: 'scale(1.05)' } : undefined}
+          >
+          <Image
+            src={
+              service.slug === 'serwis-komputerow-stacjonarnych'
+                ? '/images/02_serwis-komputerow-stacjonarnych-home-icon.webp'
+                : service.slug === 'serwis-laptopow'
+                  ? '/images/01_serwis-laptopow-home-icon.webp'
+                  : service.slug === 'outsourcing-it'
+                    ? '/images/03_outsourcing-it-icon.webp'
+                    : service.slug === 'serwis-drukarek-laserowych'
+                      ? '/images/04_serwis-drukarek-laserowych-icon.webp'
+                      : service.slug === 'serwis-drukarek-atramentowych'
+                        ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
+                        : service.slug === 'serwis-drukarek-3d'
+                          ? '/images/Serwis_i_Naprawa_Drukarek_3D-home-icon.webp'
+                          : service.slug === 'serwis-plotterow'
+                            ? '/images/08_serwis-ploterow-home-icon.webp'
+                            : service.slug === 'serwis-drukarek-termicznych'
+                              ? '/images/06_serwis-drukarek-termicznych-home-icon.webp'
+                              : service.slug === 'serwis-drukarek-iglowych'
+                                ? '/images/07_serwis-drukarek-iglowych-icon.webp'
+                                : service.slug === 'wynajem-drukarek'
+                                  ? '/images/10_wynajem-drukarek-icon.webp'
+                                  : service.slug === 'drukarka-zastepcza'
+                                    ? '/images/11_drukarka-zastepcza-icon.webp'
+                                    : service.slug === 'naprawa-drukarek'
+                                      ? '/images/Serwis_Drukarek-home-icon.webp'
+                                      : service.slug === 'druk-3d-na-zamowienie'
+                                        ? '/images/09_druk-3d-na-zamowienie-icon.webp'
+                                      : service.icon
+            }
+            alt={`${service.title} Wrocław - ikona usługi serwisowej`}
+            fill
+            sizes="(max-width: 768px) 35vw, 180px"
+            className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+          />
+          </div>
+        </div>
+
+        {/* Treść — text pulled toward the left edge of its own zone
+            (close to the image), not centered in the half. */}
+        <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[40%]' : 'w-[50%]'}`}>
+          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
+            {d.cardLabels[service.slug] ?? service.title}
+          </h2>
+        </div>
+      </Link>
+    )
+  }
+
   return (
     <section
       id="uslugi"
@@ -124,108 +241,31 @@ export function Services({
           <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[38px]">
             {d.subheading}
           </h2>
-          <FadeSlideP className="brush-underline mt-[4px] text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
-            {d.sectionLabel}
-          </FadeSlideP>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-          {services
-            .filter(
-              (service) =>
-                ![
-                  'serwis-drukarek-laserowych',
-                  'serwis-drukarek-atramentowych',
-                  'serwis-drukarek-iglowych',
-                  'outsourcing-it',
-                  'wynajem-drukarek',
-                  'drukarka-zastepcza',
-                  'druk-3d-na-zamowienie',
-                ].includes(service.slug)
-            )
-            .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
-            .map((service, i) => {
-              const style = CARD_STYLE[i % CARD_STYLE.length]
-              const isPlotter = service.slug === 'serwis-plotterow'
-              const isEtykiety = service.slug === 'serwis-drukarek-termicznych'
-              const isDrukarki3D = service.slug === 'serwis-drukarek-3d'
-              const isLaptopy = service.slug === 'serwis-laptopow'
-              const isKomputery = service.slug === 'serwis-komputerow-stacjonarnych'
-              return (
-              <Link
-                key={service.slug}
-                href={`${basePath}/${service.slug}`}
-                prefetch={false}
-                className={`
-    group
-    relative
-    min-h-[152px]
-    py-4 px-6
-    flex
-    items-center
-    text-left
-    w-full
-    zakres-paper-card
-    ${EDGE_CLASSES[style.edgeIdx]}
-    ${ORIENT_CLASSES[style.orientIdx]}
-    ${CORNER_CLASSES[style.cornerIdx]}
-  `}
-              >
-                {/* Ikona — centered within its own zone (no left/right push). */}
-                <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[60%]' : 'w-[50%]'}`}>
-                  <div
-                    className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isKomputery ? 'origin-center' : ''}`}
-                    style={isDrukarki3D ? { transform: 'scale(1.067)' } : isKomputery ? { transform: 'scale(1.05)' } : undefined}
-                  >
-                  <Image
-                    src={
-                      service.slug === 'serwis-komputerow-stacjonarnych'
-                        ? '/images/02_serwis-komputerow-stacjonarnych-home-icon.webp'
-                        : service.slug === 'serwis-laptopow'
-                          ? '/images/01_serwis-laptopow-home-icon.webp'
-                          : service.slug === 'outsourcing-it'
-                            ? '/images/03_outsourcing-it-icon.webp'
-                            : service.slug === 'serwis-drukarek-laserowych'
-                              ? '/images/04_serwis-drukarek-laserowych-icon.webp'
-                              : service.slug === 'serwis-drukarek-atramentowych'
-                                ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
-                                : service.slug === 'serwis-drukarek-3d'
-                                  ? '/images/Serwis_i_Naprawa_Drukarek_3D-home-icon.webp'
-                                  : service.slug === 'serwis-plotterow'
-                                    ? '/images/08_serwis-ploterow-home-icon.webp'
-                                    : service.slug === 'serwis-drukarek-termicznych'
-                                      ? '/images/06_serwis-drukarek-termicznych-home-icon.webp'
-                                      : service.slug === 'serwis-drukarek-iglowych'
-                                        ? '/images/07_serwis-drukarek-iglowych-icon.webp'
-                                        : service.slug === 'wynajem-drukarek'
-                                          ? '/images/10_wynajem-drukarek-icon.webp'
-                                          : service.slug === 'drukarka-zastepcza'
-                                            ? '/images/11_drukarka-zastepcza-icon.webp'
-                                            : service.slug === 'naprawa-drukarek'
-                                              ? '/images/Serwis_Drukarek-home-icon.webp'
-                                              : service.slug === 'druk-3d-na-zamowienie'
-                                                ? '/images/09_druk-3d-na-zamowienie-icon.webp'
-                                              : service.icon
-                    }
-                    alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-                    fill
-                    sizes="(max-width: 768px) 35vw, 180px"
-                    className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                  />
-                  </div>
-                </div>
-
-                {/* Treść — text pulled toward the left edge of its own zone
-                    (close to the image), not centered in the half. */}
-                <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D || isLaptopy ? 'w-[40%]' : 'w-[50%]'}`}>
-                  <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
-                    {d.cardLabels[service.slug] ?? service.title}
-                  </h2>
-                </div>
-              </Link>
-              )
-            })}
+          {mainServices.map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
         </div>
+
+        {canExpand && !expanded && (
+          <div className="text-center mt-8 md:mt-10">
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className="inline-block bg-transparent border-0 p-0 m-0 cursor-pointer"
+            >
+              <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+                {d.viewAllLabel}
+              </FadeSlideP>
+            </button>
+          </div>
+        )}
+
+        {canExpand && expanded && (
+          <div className="fade-slide-animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start mt-8 md:mt-10">
+            {extraList.map((service, i) => renderCard(service, CARD_STYLE[(mainServices.length + i) % CARD_STYLE.length]))}
+          </div>
+        )}
       </div>
     </section>
   )
