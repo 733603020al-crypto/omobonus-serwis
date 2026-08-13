@@ -304,6 +304,13 @@
   }
   .zakres-corner-lg::after { width: 24px; height: 24px; }
 
+  /* Google review cards reuse the whole zakres-paper-card torn-edge system
+     above, but with the contact form's own parchment texture instead of
+     the services-card one (same file as Formularz zgłoszenia). */
+  .zakres-paper-card.review-parchment::before {
+    background-image: url('/images/contact-form-parchment.webp');
+  }
+
   /* SERWIS I NAPRAWA heading text — flat plain white, no gradient/center
      brightening/gold tint, no darkening. Soft dark drop shadow only, same
      principle as the parchment-lift shadow on the contact form, to read

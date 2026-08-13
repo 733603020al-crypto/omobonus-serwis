@@ -5,6 +5,46 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
 
+// Same edge/orientation/corner variability system as services.tsx's
+// zakres-paper-card cards (literal strings, not template-built, so
+// Tailwind's content scanner keeps them) — reused verbatim per the
+// "don't invent a new algorithm" instruction, cycled per review card.
+const ORIENT_CLASSES = [
+    'zakres-orient-normal',
+    'zakres-orient-flipx',
+    'zakres-orient-flipy',
+    'zakres-orient-rotate180',
+]
+const EDGE_CLASSES = [
+    'zakres-edge-a',
+    'zakres-edge-b',
+    'zakres-edge-c',
+    'zakres-edge-d',
+    'zakres-edge-e',
+    'zakres-edge-f',
+    'zakres-edge-g',
+    'zakres-edge-h',
+]
+const CORNER_CLASSES = [
+    '',
+    'zakres-corner-tl',
+    'zakres-corner-tr',
+    'zakres-corner-bl',
+    'zakres-corner-br',
+]
+const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = [
+    { edgeIdx: 0, orientIdx: 0, cornerIdx: 3 },
+    { edgeIdx: 1, orientIdx: 1, cornerIdx: 0 },
+    { edgeIdx: 2, orientIdx: 3, cornerIdx: 2 },
+    { edgeIdx: 3, orientIdx: 2, cornerIdx: 1 },
+    { edgeIdx: 4, orientIdx: 0, cornerIdx: 0 },
+    { edgeIdx: 5, orientIdx: 1, cornerIdx: 4 },
+    { edgeIdx: 6, orientIdx: 3, cornerIdx: 0 },
+    { edgeIdx: 7, orientIdx: 2, cornerIdx: 3 },
+    { edgeIdx: 2, orientIdx: 1, cornerIdx: 2 },
+    { edgeIdx: 5, orientIdx: 3, cornerIdx: 0 },
+]
+
 export type Review = {
     author_name: string
     rating: number
@@ -228,12 +268,13 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                 locale === 'uk' ? (review.relative_time_uk || review.relative_time_description) :
                                 locale === 'ru' ? (review.relative_time_ru || review.relative_time_description) :
                                 review.relative_time_description
+                            const cardStyle = CARD_STYLE[i % CARD_STYLE.length]
 
                             return (
                             <div
                                 key={i}
                                 style={{ width: `${cardWidth}px` }}
-                                className="zakres-paper-card zakres-edge-a zakres-orient-normal shrink-0 p-3 flex flex-col"
+                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 p-2.5 flex flex-col`}
                             >
                                 <div className="relative z-10 flex items-center gap-3 mb-1">
                                     {review.profile_photo_url ? (
@@ -256,7 +297,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     </div>
                                 </div>
 
-                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-2">
+                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-1.5">
                                     <div className="flex gap-1">
                                         {Array.from({ length: 5 }).map((_, star) => (
                                             <span
@@ -279,7 +320,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     )}
                                 </div>
 
-                                <p className="relative z-10 text-[12px] leading-[1.6] text-[#3A2817] tracking-[0.015em] line-clamp-5">
+                                <p className="relative z-10 text-[12px] leading-[1.42] text-[#3A2817] tracking-[0.015em] line-clamp-6">
                                     {localizedText}
                                 </p>
                             </div>
