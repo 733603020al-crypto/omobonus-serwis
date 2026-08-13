@@ -1,6 +1,5 @@
-import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
 import type { ReactNode } from 'react'
+import { CallButton } from '@/components/ui/CallButton'
 
 interface HomeCtaProps {
   heading: ReactNode
@@ -20,16 +19,9 @@ export function HomeCta({ heading, text, button, href }: HomeCtaProps) {
           {text}
         </p>
         <div className="flex justify-center">
-          <Link
-            href={href}
-            prefetch={false}
-            className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-e zakres-orient-normal zakres-corner-bl"
-          >
-            <span className="relative z-10 inline-flex items-center gap-1">
-              {button}
-              <ChevronRight className="w-4 h-4" />
-            </span>
-          </Link>
+          <CallButton variant="secondary" href={href} showIcon={false}>
+            {button}
+          </CallButton>
         </div>
       </div>
     </section>
