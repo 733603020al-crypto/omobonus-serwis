@@ -2,9 +2,11 @@
 
 import React from 'react'
 import { useRef, useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
 import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
 import Link from 'next/link'
+import { HomeCta } from '@/components/home-cta'
 
 export interface FooterT {
   contact: string
@@ -40,7 +42,14 @@ const PL: FooterT = {
   regulaminHref: '/regulamin',
 }
 
-export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
+interface FooterCta {
+  heading: ReactNode
+  text: ReactNode
+  button: ReactNode
+  href: string
+}
+
+export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; cta?: FooterCta } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
@@ -101,6 +110,10 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto">
+        {cta && (
+          <HomeCta heading={cta.heading} text={cta.text} button={cta.button} href={cta.href} />
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">

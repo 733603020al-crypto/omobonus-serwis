@@ -18,7 +18,6 @@ const Footer = dynamic(() => import('@/components/footer').then(m => ({ default:
 const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
 const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
-const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
@@ -324,20 +323,21 @@ export function ServicePageTemplate({
           </div>
         )}
 
-        <div className="relative z-10 -mt-6 md:-mt-10 overflow-visible">
+        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
           <GoogleReviews />
         </div>
 
-        <HomeCta
-          heading={labels.ctaHeading}
-          text={labels.ctaText}
-          button={labels.ctaButton}
-          href={labels.ctaHref}
-        />
-
       </main>
 
-      <Footer t={footerT} />
+      <Footer
+        t={footerT}
+        cta={{
+          heading: labels.ctaHeading,
+          text: labels.ctaText,
+          button: labels.ctaButton,
+          href: labels.ctaHref,
+        }}
+      />
     </>
   )
 }
