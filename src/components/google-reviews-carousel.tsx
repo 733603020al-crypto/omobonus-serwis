@@ -274,7 +274,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             <div
                                 key={i}
                                 style={{ width: `${cardWidth}px` }}
-                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[8px] pl-[22px] pr-[22px] flex flex-col`}
+                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >
                                 <div className="relative z-10 flex items-center gap-3 mb-0.5">
                                     {review.profile_photo_url ? (
