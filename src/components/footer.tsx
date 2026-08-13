@@ -111,10 +111,12 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto">
         {cta && (
-          <HomeCta heading={cta.heading} text={cta.text} button={cta.button} href={cta.href} />
+          <div className="-mt-[26px]">
+            <HomeCta heading={cta.heading} text={cta.text} button={cta.button} href={cta.href} />
+          </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ${cta ? 'mt-[44px]' : ''}`}>
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">
             <div ref={kontaktRef} className="fade-slide-init brush-underline text-2xl md:text-3xl font-cormorant font-bold leading-tight tracking-wide text-[#bfa76a] mb-4">
