@@ -218,7 +218,7 @@ export function ServicePageTemplate({
                     </div>
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] ${slug === 'serwis-laptopow' && locale === 'pl' ? 'text-[40px] md:text-[52px] leading-[1.05]' : 'text-[32px] md:text-[40px] leading-[1.1]'}`}>
+                    <h1 className={`font-cormorant font-bold text-[#ffffff] ${slug === 'serwis-laptopow' && locale === 'pl' ? 'md:w-[390px] text-[40px] md:text-[52px] leading-[1.05]' : 'text-[32px] md:text-[40px] leading-[1.1]'}`}>
                       {slug === 'serwis-laptopow' && locale === 'pl' ? (
                         <>
                           Serwis i naprawa<br />
