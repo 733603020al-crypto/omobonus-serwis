@@ -9,15 +9,6 @@ interface HeroStat {
   label: string
 }
 
-// Same torn-edge/corner-fold system as services.tsx / google-reviews-carousel.tsx,
-// reused (not reinvented) per block — literal strings so Tailwind's scanner keeps them.
-const STAT_CARD_CLASSES = [
-  'zakres-edge-c zakres-orient-flipx zakres-corner-br',
-  'zakres-edge-e zakres-orient-rotate180 zakres-corner-tr',
-  'zakres-edge-g zakres-orient-flipy zakres-corner-bl',
-  'zakres-edge-b zakres-orient-normal',
-]
-
 interface HeroT {
   h1Line1: string
   h1Line2: string
@@ -124,16 +115,16 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
             {d.stats.map((s, i) => (
               <div
                 key={i}
-                className={`relative zakres-paper-card ${STAT_CARD_CLASSES[i % STAT_CARD_CLASSES.length]} py-3 px-3 text-center`}
+                className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
-                <div className="relative z-10 font-cormorant font-bold text-[#e6cc82] leading-none">
+                <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
                   {'pre' in s && (
                     <span className="text-[hsl(45_50%_70%)] text-[11px] mr-0.5 font-normal">{s.pre}</span>
                   )}
                   <span className="text-[32px]">{s.num}</span>
                   <small className="text-[17px]">{s.unit}</small>
                 </div>
-                <div className="relative z-10 text-[11px] text-[#3A2817] font-inter mt-1 leading-tight">
+                <div className="text-[11px] text-[hsl(45_18%_82%)] font-inter mt-1 leading-tight">
                   {s.label}
                 </div>
               </div>
