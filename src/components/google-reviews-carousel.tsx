@@ -304,8 +304,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                                 key={star}
                                                 className={
                                                     star < Math.floor(review.rating)
-                                                        ? "text-[#B06A00] text-[18px] drop-shadow-[0_0_7px_rgba(176,106,0,0.9)]"
-                                                        : "text-[#B06A00]/25 text-[18px]"
+                                                        ? "text-[#E3B23C] text-[18px] [text-shadow:0_1px_0_rgba(90,60,10,0.28),0_0_3px_rgba(255,220,120,0.14)]"
+                                                        : "text-[#E3B23C]/25 text-[18px]"
                                                 }
                                             >
                                                 {"★"}
