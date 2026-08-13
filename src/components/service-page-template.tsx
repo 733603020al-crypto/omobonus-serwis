@@ -212,19 +212,19 @@ export function ServicePageTemplate({
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
-                        // Animated WebP (cooling-fan animation baked into the file) —
-                        // canvas/offsets/disposal/blend across all 16 frames must stay
-                        // byte-for-byte as authored (no crop/recode) or the composited
-                        // animation breaks. Desktop gets it directly via <picture><source>;
-                        // mobile starts on a static first-frame fallback and swaps in the
-                        // animated file after page load (see AnimatedHeroImage) to keep
-                        // mobile LCP fast.
+                        // Animated WebP (cooling-fan animation baked into the file, transparent
+                        // background, pre-cropped) — canvas/offsets/disposal/blend across all 16
+                        // frames must stay byte-for-byte as authored (no crop/recode) or the
+                        // composited animation breaks. Desktop gets it directly via
+                        // <picture><source>; mobile starts on a static first-frame fallback and
+                        // swaps in the animated file after page load (see AnimatedHeroImage) to
+                        // keep mobile LCP fast.
                         <AnimatedHeroImage
                           animatedSrc={imageSrc}
                           staticSrc="/images/02_serwis-komputerow-stacjonarnych-static.webp"
                           alt={imageAlt}
-                          width={760}
-                          height={1140}
+                          width={622}
+                          height={773}
                           className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
                         />
                       ) : (
