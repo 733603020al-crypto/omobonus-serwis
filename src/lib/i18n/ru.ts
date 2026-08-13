@@ -14,7 +14,7 @@ export const ru = {
     stats: [
       { num: '10', unit: '+', label: 'лет опыта' },
       { num: '2', pre: 'до', unit: ' ч', label: 'выезд' },
-      { num: '15', unit: ' мин', label: 'первичная диагностика' },
+      { num: '48', pre: 'до', unit: ' ч', label: 'большинство ремонтов' },
       { num: '12', pre: 'до', unit: ' мес.', label: 'гарантия' },
     ],
     googleRatingLabel: 'Рейтинг Google',

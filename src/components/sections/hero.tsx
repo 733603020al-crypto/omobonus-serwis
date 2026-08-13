@@ -42,7 +42,7 @@ const PL: HeroT = {
   stats: [
     { num: '10', unit: '+', label: 'lat doświadczenia' },
     { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
-    { num: '15', unit: 'min', label: 'wstępna diagnoza' },
+    { num: '48', pre: 'do', unit: 'h', label: 'większość napraw' },
     { num: '12', pre: 'do', unit: ' mies.', label: 'gwarancja' },
   ],
   googleRatingLabel: 'Google Rating',
