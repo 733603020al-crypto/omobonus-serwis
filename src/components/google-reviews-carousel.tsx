@@ -298,7 +298,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                 </div>
 
                                 <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-1">
-                                    <div className="flex gap-1">
+                                    <div className="flex gap-[2px]">
                                         {Array.from({ length: 5 }).map((_, star) => (
                                             <span
                                                 key={star}
