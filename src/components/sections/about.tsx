@@ -123,7 +123,7 @@ export function About({
               {d.description[0]}
             </p>
           </div>
-          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
+          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
             <p className="text-xl md:text-2xl font-serif font-semibold text-white">
               &ldquo;{d.quote}&rdquo;
             </p>
@@ -187,7 +187,7 @@ export function About({
                 {d.description[0]}
               </p>
             </div>
-            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
+            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
               <p className="text-xl md:text-2xl font-serif font-semibold text-white">
                 &ldquo;{d.quote}&rdquo;
               </p>
