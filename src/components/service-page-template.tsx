@@ -6,7 +6,6 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
-import { CallButton } from '@/components/ui/CallButton'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
@@ -19,6 +18,7 @@ const Footer = dynamic(() => import('@/components/footer').then(m => ({ default:
 const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
 const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
+const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
@@ -27,6 +27,27 @@ const PAGE_CLASS_SLUGS = [
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie',
 ]
+
+// PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
+// 3-line layout (matches the approved /uslugi/serwis-laptopow hero). Pages whose
+// meaning doesn't fit that template (outsourcing-it, druk-3d-na-zamowienie,
+// wynajem-drukarek, drukarka-zastepcza) are intentionally absent — they keep
+// headings.h1 as plain text, wrapped inside the same sized/centered box.
+// All 3 lines always share the same font size and horizontal center. The middle
+// line never shrinks and never wraps to a second line — if it's wider than the
+// 470px box, it overflows symmetrically (equal amounts left and right) around
+// that shared center.
+const HERO_LINES_PL: Record<string, { mid: string }> = {
+  'serwis-laptopow': { mid: 'laptopów' },
+  'naprawa-drukarek': { mid: 'drukarek' },
+  'serwis-komputerow-stacjonarnych': { mid: 'komputerów stacjonarnych' },
+  'serwis-drukarek-laserowych': { mid: 'drukarek laserowych' },
+  'serwis-drukarek-atramentowych': { mid: 'drukarek atramentowych' },
+  'serwis-drukarek-3d': { mid: 'drukarek 3D' },
+  'serwis-plotterow': { mid: 'ploterów drukujących' },
+  'serwis-drukarek-iglowych': { mid: 'drukarek igłowych' },
+  'serwis-drukarek-termicznych': { mid: 'drukarek etykiet' },
+}
 
 export interface ServicePageHeadings {
   h1: string
@@ -57,6 +78,10 @@ export interface ServicePageLabels {
   relatedCta: string
   relatedIconAltSuffix: string
   drukarkaZastepczaNote: ReactNode
+  ctaHeading: string
+  ctaText: string
+  ctaButton: string
+  ctaHref: string
 }
 
 interface SeoBlocksGridProps {
@@ -153,26 +178,10 @@ export function ServicePageTemplate({
         <div className="relative">
           {pageClass ? (
             <>
-              <div className={`container ${slug === 'serwis-laptopow' ? 'max-w-4xl' : 'max-w-5xl'} mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1`}>
-                <div
-                  className={`grid grid-cols-1 gap-4 md:gap-10 ${slug === 'serwis-laptopow' ? '' : 'items-center'} ${slug === 'naprawa-drukarek'
-                    ? 'md:grid-cols-[40%_60%]'
-                    : slug === 'serwis-laptopow'
-                      ? 'md:grid-cols-2'
-                      : 'md:grid-cols-[25%_75%]'
-                    }`}
-                >
-                  <div className={slug === 'serwis-laptopow' ? 'flex justify-center items-center' : 'flex justify-center md:justify-start'}>
-                    <div className="service-hero-image-wrap relative w-full">
-                      {heroLabels.map((label, index) => (
-                        <span
-                          key={label}
-                          className={`service-hero-label service-hero-label-${index + 1}`}
-                        >
-                          {label}
-                        </span>
-                      ))}
-
+              <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+                  <div className="flex justify-center items-center">
+                    <div className="service-hero-image-wrap relative w-full md:w-auto md:h-[270px]">
                       {slug === 'druk-3d-na-zamowienie' ? (
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
@@ -183,7 +192,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={420}
                           height={420}
-                          className="service-hero-image object-contain w-full h-auto"
+                          className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-laptopow' ? (
@@ -199,7 +208,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={760}
                           height={507}
-                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto mx-auto block"
+                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto md:w-auto md:h-full mx-auto block"
                           fetchPriority="high"
                         />
                       ) : (
@@ -208,8 +217,8 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={420}
                           height={420}
-                          sizes="(max-width: 768px) 85vw, 420px"
-                          className="service-hero-image object-contain w-full h-auto"
+                          sizes="(max-width: 768px) 85vw, 270px"
+                          className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
                           priority
                           fetchPriority="high"
                           quality={60}
@@ -218,12 +227,12 @@ export function ServicePageTemplate({
                     </div>
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] ${slug === 'serwis-laptopow' && locale === 'pl' ? 'md:w-[470px] md:self-end text-[40px] md:text-[52px] leading-[1.15]' : 'text-[32px] md:text-[40px] leading-[1.1]'}`}>
-                      {slug === 'serwis-laptopow' && locale === 'pl' ? (
+                    <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
+                      {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
-                          Serwis i naprawa<br />
-                          laptopów<br />
-                          we Wrocławiu
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
                         </>
                       ) : (
                         headings.h1 || service.title
@@ -234,27 +243,6 @@ export function ServicePageTemplate({
                       <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
                         {headings.h2}
                       </h2>
-                    )}
-                    {slug !== 'serwis-laptopow' && (
-                      <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-                        <CallButton
-                          variant="primary"
-                          href="tel:+48793759262"
-                          className="w-[80%] md:w-auto"
-                        >
-                          <span className="md:hidden">{labels.callNow}</span>
-                          <span className="hidden md:inline">793 759 262</span>
-                        </CallButton>
-
-                        <CallButton
-                          variant="secondary"
-                          href={labels.formHref}
-                          className="w-[80%] md:w-auto"
-                          showIcon={false}
-                        >
-                          {labels.sendRequest}
-                        </CallButton>
-                      </div>
                     )}
                   </div>
                 </div>
@@ -336,9 +324,16 @@ export function ServicePageTemplate({
           </div>
         )}
 
-        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
+        <div className="relative z-10 -mt-6 md:-mt-10 overflow-visible">
           <GoogleReviews />
         </div>
+
+        <HomeCta
+          heading={labels.ctaHeading}
+          text={labels.ctaText}
+          button={labels.ctaButton}
+          href={labels.ctaHref}
+        />
 
       </main>
 

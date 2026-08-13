@@ -10,7 +10,7 @@ interface HomeCtaProps {
 
 export function HomeCta({ heading, text, button, href }: HomeCtaProps) {
   return (
-    <section className="pt-12 pb-2 md:pt-16 md:pb-3">
+    <section className="relative z-10 pt-12 pb-2 md:pt-16 md:pb-3">
       <div className="max-w-3xl mx-auto px-6 text-center text-white space-y-2">
         <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
           {heading}

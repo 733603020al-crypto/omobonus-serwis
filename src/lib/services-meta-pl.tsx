@@ -237,6 +237,10 @@ export const labels: ServicePageLabels = {
   fadeSlideDruk3DZamowienie: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "cena od 50 zł" lub "cena do uzgodnienia")',
   relatedCta: 'Zobacz cennik',
   relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
+  ctaHeading: 'Masz problem z komputerem lub drukarką?',
+  ctaText: 'Napisz lub zadzwoń — podpowiemy, od czego zacząć',
+  ctaButton: 'Szybki kontakt',
+  ctaHref: '/kontakt',
   drukarkaZastepczaNote: (
     <>
       Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego. Oferujemy <strong>drukarki zastępcze Wrocław</strong> dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową.
