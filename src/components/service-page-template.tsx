@@ -153,12 +153,12 @@ export function ServicePageTemplate({
         <div className="relative">
           {pageClass ? (
             <>
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
+              <div className={`container ${slug === 'serwis-laptopow' ? 'max-w-4xl' : 'max-w-5xl'} mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1`}>
                 <div
                   className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
                     ? 'md:grid-cols-[40%_60%]'
                     : slug === 'serwis-laptopow'
-                      ? 'md:grid-cols-[50%_50%]'
+                      ? 'md:grid-cols-2'
                       : 'md:grid-cols-[25%_75%]'
                     }`}
                 >
