@@ -1,10 +1,5 @@
 export const serviceHeroLabels: Record<string, string[]> = {
-    'serwis-laptopow': [
-        'Wolna praca',
-        'Nie włącza się',
-        'Instalacja Windows',
-        'Wymiana matrycy',
-    ],
+    'serwis-laptopow': [],
 
     'serwis-komputerow-stacjonarnych': [
         'Wolna praca',

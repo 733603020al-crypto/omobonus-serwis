@@ -158,7 +158,7 @@ export function ServicePageTemplate({
                   className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
                     ? 'md:grid-cols-[40%_60%]'
                     : slug === 'serwis-laptopow'
-                      ? 'md:grid-cols-[40%_60%]'
+                      ? 'md:grid-cols-[50%_50%]'
                       : 'md:grid-cols-[25%_75%]'
                     }`}
                 >
@@ -199,7 +199,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={760}
                           height={507}
-                          className="service-hero-image service-hero-image-laptop object-contain w-[90%] h-auto mx-auto block"
+                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto mx-auto block"
                           fetchPriority="high"
                         />
                       ) : (
@@ -218,7 +218,7 @@ export function ServicePageTemplate({
                     </div>
                   </div>
                   <div className="text-center flex flex-col items-center justify-center">
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] ${slug === 'serwis-laptopow' && locale === 'pl' ? 'text-[36px] md:text-[45px] leading-[1.05]' : 'text-[32px] md:text-[40px] leading-[1.1]'}`}>
+                    <h1 className={`font-cormorant font-bold text-[#ffffff] ${slug === 'serwis-laptopow' && locale === 'pl' ? 'text-[40px] md:text-[52px] leading-[1.05]' : 'text-[32px] md:text-[40px] leading-[1.1]'}`}>
                       {slug === 'serwis-laptopow' && locale === 'pl' ? (
                         <>
                           Serwis i naprawa<br />
