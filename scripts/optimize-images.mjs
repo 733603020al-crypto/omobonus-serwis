@@ -24,7 +24,6 @@ const FILE_QUALITY = {
 
   // Service page main images (clearly visible, 512×512)
   '01_serwis-laptopow.webp': 72,
-  '02_serwis-komputerow-stacjonarnych.webp': 72,
   '03_outsourcing-it.webp': 72,
   '04_serwis-drukarek-laserowych.webp': 72,
   '05_serwis-drukarek-atramentowych.webp': 72,
@@ -100,6 +99,7 @@ const FILE_QUALITY = {
 const SKIP = new Set([
   'Logo_Omobonus.webp',         // 12K logo, critical visual quality
   'Logo_Omobonus_favicon.webp', // 12K favicon
+  '02_serwis-komputerow-stacjonarnych.webp', // animated hero — this script doesn't pass {animated:true} to sharp and would flatten it to a static first frame
   'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp', 'by.webp',
   'sk.webp', 'lv.webp', 'lt.webp', 'gb.webp', 'ee.webp',
   'umka_paw_brown.webp', 'umka_paw_cbb27c.webp', 'umka_paw_dark.webp',
