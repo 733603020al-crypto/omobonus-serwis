@@ -274,9 +274,9 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             <div
                                 key={i}
                                 style={{ width: `${cardWidth}px` }}
-                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 p-2.5 flex flex-col`}
+                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[8px] pl-[22px] pr-[22px] flex flex-col`}
                             >
-                                <div className="relative z-10 flex items-center gap-3 mb-1">
+                                <div className="relative z-10 flex items-center gap-3 mb-0.5">
                                     {review.profile_photo_url ? (
                                         <Image
                                             src={review.profile_photo_url.replace(/=s\d+/, '=s72')}
@@ -297,15 +297,15 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     </div>
                                 </div>
 
-                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-1.5">
+                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-1">
                                     <div className="flex gap-1">
                                         {Array.from({ length: 5 }).map((_, star) => (
                                             <span
                                                 key={star}
                                                 className={
                                                     star < Math.floor(review.rating)
-                                                        ? "text-yellow-300 text-[18px] drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]"
-                                                        : "text-yellow-300/30 text-[18px]"
+                                                        ? "text-[#FFC72C] text-[18px] drop-shadow-[0_0_7px_rgba(255,199,44,0.9)]"
+                                                        : "text-[#FFC72C]/25 text-[18px]"
                                                 }
                                             >
                                                 {"★"}
@@ -314,7 +314,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     </div>
 
                                     {localizedTime && (
-                                        <span className="text-[12px] text-[#3A2817]/55 ml-1">
+                                        <span className="text-[12px] text-[#8A6A2E] ml-1">
                                             • {localizedTime}
                                         </span>
                                     )}
