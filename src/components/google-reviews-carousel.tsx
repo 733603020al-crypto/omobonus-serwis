@@ -233,9 +233,9 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             <div
                                 key={i}
                                 style={{ width: `${cardWidth}px` }}
-                                className="services-card-bg shrink-0 rounded-lg p-3 flex flex-col transition-transform duration-300 hover:scale-[1.02] border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)]"
+                                className="zakres-paper-card zakres-edge-a zakres-orient-normal shrink-0 p-3 flex flex-col"
                             >
-                                <div className="flex items-center gap-3 mb-1">
+                                <div className="relative z-10 flex items-center gap-3 mb-1">
                                     {review.profile_photo_url ? (
                                         <Image
                                             src={review.profile_photo_url.replace(/=s\d+/, '=s72')}
@@ -251,12 +251,12 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                         </div>
                                     )}
 
-                                    <div className="font-semibold leading-tight text-sm text-white">
+                                    <div className="font-semibold leading-tight text-sm text-[#3A2817]">
                                         {review.author_name}
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 text-yellow-400 text-lg mb-2">
+                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-2">
                                     <div className="flex gap-1">
                                         {Array.from({ length: 5 }).map((_, star) => (
                                             <span
@@ -273,13 +273,13 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     </div>
 
                                     {localizedTime && (
-                                        <span className="text-[12px] text-white/50 ml-1">
+                                        <span className="text-[12px] text-[#3A2817]/55 ml-1">
                                             • {localizedTime}
                                         </span>
                                     )}
                                 </div>
 
-                                <p className="text-[12px] leading-[1.6] text-[#f1ead6] tracking-[0.015em] line-clamp-5">
+                                <p className="relative z-10 text-[12px] leading-[1.6] text-[#3A2817] tracking-[0.015em] line-clamp-5">
                                     {localizedText}
                                 </p>
                             </div>
