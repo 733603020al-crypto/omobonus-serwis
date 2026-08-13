@@ -304,8 +304,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                                 key={star}
                                                 className={
                                                     star < Math.floor(review.rating)
-                                                        ? "text-[#F6C344] text-[18px] [text-shadow:-0.5px_0_0_#A66A00,0.5px_0_0_#A66A00,0_-0.5px_0_#A66A00,0_0.5px_0_#A66A00,0_1px_1px_rgba(80,45,0,0.20)]"
-                                                        : "text-[#F6C344]/25 text-[18px]"
+                                                        ? "text-[#F4C542] text-[18px] [text-shadow:-0.75px_0_0_#7A4A00,0.75px_0_0_#7A4A00,0_-0.75px_0_#7A4A00,0_0.75px_0_#7A4A00,0_1px_0_rgba(255,255,255,0.18),0_1px_1px_rgba(70,40,0,0.22)]"
+                                                        : "text-[#F4C542]/25 text-[18px]"
                                                 }
                                             >
                                                 {"★"}
