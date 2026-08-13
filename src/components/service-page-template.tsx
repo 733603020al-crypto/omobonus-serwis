@@ -157,7 +157,9 @@ export function ServicePageTemplate({
                 <div
                   className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
                     ? 'md:grid-cols-[40%_60%]'
-                    : 'md:grid-cols-[25%_75%]'
+                    : slug === 'serwis-laptopow'
+                      ? 'md:grid-cols-[40%_60%]'
+                      : 'md:grid-cols-[25%_75%]'
                     }`}
                 >
                   <div className="flex justify-center md:justify-start">
@@ -197,7 +199,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={760}
                           height={507}
-                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto"
+                          className="service-hero-image service-hero-image-laptop object-contain w-[90%] h-auto mx-auto block"
                           fetchPriority="high"
                         />
                       ) : (
@@ -225,25 +227,27 @@ export function ServicePageTemplate({
                         {headings.h2}
                       </h2>
                     )}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-                      <CallButton
-                        variant="primary"
-                        href="tel:+48793759262"
-                        className="w-[80%] md:w-auto"
-                      >
-                        <span className="md:hidden">{labels.callNow}</span>
-                        <span className="hidden md:inline">793 759 262</span>
-                      </CallButton>
+                    {slug !== 'serwis-laptopow' && (
+                      <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
+                        <CallButton
+                          variant="primary"
+                          href="tel:+48793759262"
+                          className="w-[80%] md:w-auto"
+                        >
+                          <span className="md:hidden">{labels.callNow}</span>
+                          <span className="hidden md:inline">793 759 262</span>
+                        </CallButton>
 
-                      <CallButton
-                        variant="secondary"
-                        href={labels.formHref}
-                        className="w-[80%] md:w-auto"
-                        showIcon={false}
-                      >
-                        {labels.sendRequest}
-                      </CallButton>
-                    </div>
+                        <CallButton
+                          variant="secondary"
+                          href={labels.formHref}
+                          className="w-[80%] md:w-auto"
+                          showIcon={false}
+                        >
+                          {labels.sendRequest}
+                        </CallButton>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
