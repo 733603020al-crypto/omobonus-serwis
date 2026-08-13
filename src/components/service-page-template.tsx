@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
+import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
@@ -212,20 +213,19 @@ export function ServicePageTemplate({
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file) —
-                        // plain <img>, not next/image, so the optimizer doesn't
-                        // rasterize it and kill the animation. width/height match the
-                        // source's real 654x562 aspect ratio after cropping the
-                        // always-empty canvas margins (not the generic 420x420 square
-                        // used by other service pages) so h-auto doesn't cause a
-                        // layout jump once the image loads.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={imageSrc}
+                        // canvas/offsets/disposal/blend across all 16 frames must stay
+                        // byte-for-byte as authored (no crop/recode) or the composited
+                        // animation breaks. Desktop gets it directly via <picture><source>;
+                        // mobile starts on a static first-frame fallback and swaps in the
+                        // animated file after page load (see AnimatedHeroImage) to keep
+                        // mobile LCP fast.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/02_serwis-komputerow-stacjonarnych-static.webp"
                           alt={imageAlt}
-                          width={654}
-                          height={562}
+                          width={760}
+                          height={1140}
                           className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
-                          fetchPriority="high"
                         />
                       ) : (
                         <Image
