@@ -184,6 +184,22 @@ export function ServicePageTemplate({
                           className="service-hero-image object-contain w-full h-auto"
                           fetchPriority="high"
                         />
+                      ) : slug === 'serwis-laptopow' ? (
+                        // Animated WebP (screen animation baked into the file) — plain
+                        // <img>, not next/image, so the optimizer doesn't rasterize it
+                        // and kill the animation. width/height match the source's real
+                        // 760x507 aspect ratio (not the generic 420x420 square used by
+                        // other service pages) so h-auto doesn't cause a layout jump
+                        // once the image loads.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={760}
+                          height={507}
+                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto"
+                          fetchPriority="high"
+                        />
                       ) : (
                         <Image
                           src={imageSrc}

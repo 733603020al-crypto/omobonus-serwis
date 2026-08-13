@@ -645,6 +645,19 @@
   }
 }
 
+/* On "serwis-laptopow" only: the hero illustration (animated laptop-screen
+   WebP) reads small at the generic 420x420 hero size, so it's sized up on
+   desktop only — done via `width` (not `transform: scale`) so it doesn't
+   fight the transform-based float/hover/mobile-pulse animations already
+   applied to this same element tree. Mobile is left untouched: the column
+   is already full-width there, so growing it further risks horizontal
+   overflow. */
+@media (min-width: 768px) {
+  .page-serwis-laptopow .service-hero-image-wrap {
+    width: 148%;
+  }
+}
+
 /* On "druk-3d-na-zamowienie" only: drop the generic hero float/glow/shine
    effects (shared by every service page) — the hero illustration on this
    page is a self-animated SVG (Druk_3D_animation.svg, movement/jet/glow all

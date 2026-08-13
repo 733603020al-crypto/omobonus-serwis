@@ -3,7 +3,7 @@
 
 export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych.webp',
-  'serwis-laptopow': '/images/01_serwis-laptopow-home-icon.webp',
+  'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
   'outsourcing-it': '/images/03_outsourcing-it.webp',
   'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych.webp',
