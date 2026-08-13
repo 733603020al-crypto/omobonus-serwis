@@ -1035,6 +1035,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           onValueChange={handleSectionChange}
           className="w-full"
           data-main-accordion="true"
+          data-parchment-variant={service.slug === 'serwis-laptopow' ? 'soft' : undefined}
         >
           {service.pricingSections.map((section) => (
             <AccordionItem
