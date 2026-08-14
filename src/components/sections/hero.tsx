@@ -62,8 +62,17 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
         justify-center
       "
     >
-      {/* Tło */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Tło — przedłużone 130px w dół pod sekcję i zamaskowane do przezroczystości,
+          żeby to samo zdjęcie (ten sam plik, crop, object-position) płynnie
+          rozpuszczało się w tle drugiej sekcji zamiast urywać się na krawędzi. */}
+      <div
+        className="absolute inset-x-0 top-0 overflow-visible"
+        style={{
+          height: 'calc(100svh - 65px + 130px)',
+          maskImage: 'linear-gradient(to top, transparent 0, black 130px)',
+          WebkitMaskImage: 'linear-gradient(to top, transparent 0, black 130px)',
+        }}
+      >
         <Image
           src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
@@ -74,10 +83,9 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
           quality={60}
           className="object-cover object-center"
         />
+        {/* Затемнение */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
-
-      {/* Затемнение */}
-      <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-[110px]">

@@ -175,8 +175,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
             {/* Zawartość */}
             <div className="relative z-10">
 
-                <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8">
-                    <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-start">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 pt-2 mb-2">
+                    <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-center">
 
                         <a
                             href="https://g.page/omobonus-serwis/review"

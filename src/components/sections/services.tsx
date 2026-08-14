@@ -73,6 +73,7 @@ interface ServicesT {
   tagline: string
   cardLabels: Record<string, string>
   viewAllLabel?: string
+  collapseLabel?: string
 }
 
 const PL: ServicesT = {
@@ -94,6 +95,7 @@ const PL: ServicesT = {
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
   viewAllLabel: 'Zobacz wszystkie usługi ↓',
+  collapseLabel: 'Zwiń ↑',
 }
 
 export function Services({
@@ -124,7 +126,7 @@ export function Services({
     }, { threshold: 0.1 })
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [expanded])
 
   const mainServices = services
     .filter(
@@ -244,7 +246,7 @@ export function Services({
   return (
     <section
       id="uslugi"
-      className="relative pt-6 pb-12 md:pt-10 md:pb-16 text-center text-white overflow-hidden"
+      className="relative pt-7 pb-14 md:pt-12 md:pb-20 text-center text-white overflow-hidden"
     >
 
       {/* Tło */}
@@ -261,10 +263,14 @@ export function Services({
         </div>
       )}
 
+      {/* Ciemna winieta u samej góry sekcji — niezależna od tła (bare/nie-bare),
+          zawsze zaczyna się od górnej krawędzi sekcji. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 md:h-28 lg:h-32 bg-gradient-to-b from-black/50 via-black/30 to-transparent" />
+
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-[20px]">
-          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[26px] md:text-[32px] lg:text-[38px]">
+          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[29px] md:text-[36px] lg:text-[43px]">
             {d.subheading}
           </h2>
         </div>
@@ -292,7 +298,7 @@ export function Services({
             {/* Plain-text CTA (no parchment button) flanked by the golden line in two
                 segments (existing .brush-divider-row / .divider-line pattern, reused
                 1:1 from contact-actions.tsx / "Skąd nazwa" underline). */}
-            <div ref={dividerRef} className="services-cta-vignette brush-divider-row flex items-center gap-[18px] mt-[22px]">
+            <div ref={dividerRef} className="brush-divider-row flex items-center gap-[18px] mt-[22px]">
               <div
                 className="divider-line divider-line-left flex-1"
                 style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
@@ -300,10 +306,11 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="bg-transparent border-0 p-0 m-0 cursor-pointer text-sm font-inter font-semibold uppercase text-[#bfa76a] text-center whitespace-nowrap"
-                style={{ letterSpacing: '0.06em', textShadow: '0 2px 2px rgba(0, 0, 0, 0.55), 0 5px 8px rgba(0, 0, 0, 0.28)' }}
+                className="inline-flex items-center justify-center min-w-[165px] px-[27px] py-[13px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
               >
-                {d.viewAllLabel}
+                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '18px' }}>
+                  {d.viewAllLabel}
+                </span>
               </button>
               <div
                 className="divider-line divider-line-right flex-1"
@@ -314,9 +321,31 @@ export function Services({
         )}
 
         {canExpand && expanded && (
-          <div className="fade-slide-animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start mt-8 md:mt-10">
-            {extraList.map((service, i) => renderCard(service, CARD_STYLE[(mainServices.length + i) % CARD_STYLE.length]))}
-          </div>
+          <>
+            <div className="fade-slide-animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start mt-4">
+              {extraList.map((service, i) => renderCard(service, CARD_STYLE[(mainServices.length + i) % CARD_STYLE.length]))}
+            </div>
+
+            <div className="brush-divider-row flex items-center gap-[18px] mt-[22px]">
+              <div
+                className="divider-line divider-line-left flex-1"
+                style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
+              />
+              <button
+                type="button"
+                onClick={() => setExpanded(false)}
+                className="inline-flex items-center justify-center min-w-[165px] px-[27px] py-[13px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
+              >
+                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '18px' }}>
+                  {d.collapseLabel ?? 'Zwiń ↑'}
+                </span>
+              </button>
+              <div
+                className="divider-line divider-line-right flex-1"
+                style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
+              />
+            </div>
+          </>
         )}
       </div>
     </section>

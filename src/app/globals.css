@@ -401,49 +401,68 @@
 
   /* serwis-laptopow only — soft parchment card background + calm torn-paper
      edge, scoped via data-parchment-variant="soft" (set only on that page's
-     Accordion root). Real pill width/height measured via getBoundingClientRect:
-     closed pills are ~848×70 and ~791×55 (aspect ~12-14:1), open panels
-     ~848×580 (aspect ~1.5:1) — far more elongated than contact-form-parchment
-     .webp's own ~1.5:1 portrait aspect, so neither background-size: cover
-     (crops away the photo's top/bottom deckled edges entirely on the thin
-     closed pills, leaving a flat unrecognizable patch) nor 100% 100% stretch
-     (squashes it horizontally) can show the sheet's real torn-edge structure
-     at every pill height. Fix: serwis-laptopow-parchment-strip.webp is derived
-     from that exact same file via a lossless 90° rotation (turning its two
-     long portrait edges into a long deckled top edge + long deckled bottom
-     edge), then a straight crop of the left/right margins down to the fully
-     opaque rectangular interior (alpha-profiled column by column — the
-     rotated tile's own left/right ends carried the photo's curled-corner
-     deckle, which produced an ugly scalloped seam every time the tile
-     repeated). What remains has genuine deckled edges only on top/bottom and
-     plain straight cuts on left/right, so background-size: auto 100% +
-     repeat-x tiles it as a smooth continuous sheet: the tile's full native
-     height (both deckled edges) is always shown no matter how short the
-     pill is, it repeats sideways to fill any width, and on the tall open
-     panel it renders as ~1 untiled copy. No
-     gradient/overlay/opacity/filter/blend-mode is applied on top: color and
-     texture must visually match the source sheet exactly, same as the
-     kontakt "Formularz zgłoszeniowy" card (img with only a drop-shadow
-     filter, no recoloring). The rectangular gold border/hover-border from
-     the shared accordion pill (border-2 border-[rgba(200,169,107,0.5)] in
-     service-accordion.tsx) is removed here so the torn silhouette isn't
-     boxed in by a straight frame; the golden hover glow (box-shadow) stays.
-     The existing calmer-than-reviews all-sides SVG wobble mask (a 9th
-     zakres-edge-style path, unchanged from before) stays layered on top for
-     the left/right edge softness. Border-radius, box-shadow padding and
-     sizing are otherwise untouched. */
+     Accordion root). Closed and open states use two different ready-made
+     source photos (both provided directly by the user, no new derivative
+     for the open state), split via Radix's own data-state="open"/"closed"
+     on [data-slot="accordion-item"]:
+
+     Closed pill (~848×70 down to ~791×55, aspect ~12-14:1): uses
+     serwis-laptopow-pill-parchment.avif, a straight crop of a separate
+     landscape parchment-strip photo (source: omobonus-foto/100.png) down to
+     its fully opaque rectangular interior (alpha-profiled to exclude the
+     photo's own curled corner ends on the left/right). Deckled edges remain
+     only on top/bottom, so background-size: auto 100% + repeat-x tiles it
+     as one continuous sheet with no scalloped seam at any pill height.
+     Downscaled to 525×200 and encoded as AVIF q50 (~5.4KB) — far below the
+     pill's own display size, chosen only for weight, no visible texture/edge
+     loss at this size.
+
+     Open panel (~848×337 up to ~848×582, aspect ~1.46-2.52:1): uses the
+     exact same ready-made files as kontakt's "Formularz zgłoszeniowy" card —
+     contact-form-parchment.webp (desktop) / contact-form-parchment-mobile
+     .webp (mobile, same 767px breakpoint as contact.tsx's <picture>) —
+     applied directly with no crop/copy. background-size: 100% 100% mirrors
+     that card's object-fill: the whole sheet incl. all 4 deckled edges and
+     corner curls is always shown, non-uniformly stretched to fill the panel
+     (same tradeoff object-fill already makes on kontakt). auto 100% +
+     repeat-x was rejected here: this source has deckled edges on every
+     side (not just top/bottom), so tiling it sideways reproduces the exact
+     scalloped-seam bug this file's history was created to fix.
+
+     No gradient/overlay/opacity/filter/blend-mode on either state: color
+     and texture must visually match the source sheets exactly. The
+     rectangular gold border/hover-border from the shared accordion pill
+     (border-2 border-[rgba(200,169,107,0.5)] in service-accordion.tsx) is
+     removed here so the torn silhouette isn't boxed in by a straight frame;
+     the golden hover glow (box-shadow) stays. The existing calmer-than-
+     reviews all-sides SVG wobble mask (a 9th zakres-edge-style path) stays
+     layered on top of both states for the left/right edge softness.
+     Border-radius, box-shadow padding and sizing are otherwise untouched. */
   [data-parchment-variant="soft"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     border: none !important;
-    background-image: url('/images/serwis-laptopow-parchment-strip.webp') !important;
-    background-size: auto 100% !important;
-    background-position: left center !important;
-    background-repeat: repeat-x !important;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+  }
+  [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+    background-image: url('/images/serwis-laptopow-pill-parchment.avif') !important;
+    background-size: auto 100% !important;
+    background-position: left center !important;
+    background-repeat: repeat-x !important;
+  }
+  [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
+    background-image: url('/images/contact-form-parchment.webp') !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  @media (max-width: 767px) {
+    [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
+      background-image: url('/images/contact-form-parchment-mobile.webp') !important;
+    }
   }
 
   /* =========================

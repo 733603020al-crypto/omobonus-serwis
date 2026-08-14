@@ -98,7 +98,7 @@ export function About({
             <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
               {d.heading}
             </h2>
-            <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
+            <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
               {d.subheading}
             </p>
           </div>
@@ -119,7 +119,7 @@ export function About({
             <h3 className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
               {d.ourCompany}
             </h3>
-            <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
+            <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
               {d.description[0]}
             </p>
           </div>
@@ -132,16 +132,14 @@ export function About({
             </p>
           </div>
           {showMoreLink && (
-            <div className="flex justify-center">
+            <div className="flex justify-center !mt-1">
               <Link
                 href={d.moreAboutHref ?? '/o-nas'}
                 prefetch={false}
-                className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
+                className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
-                <span className="relative z-10 inline-flex items-center gap-1">
-                  {d.moreAboutLink ?? 'Więcej o nas'}
-                  <ChevronRight className="w-4 h-4" />
-                </span>
+                {d.moreAboutLink ?? 'Więcej o nas'}
+                <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
           )}
@@ -175,7 +173,7 @@ export function About({
               <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
                 {d.heading}
               </h2>
-              <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
+              <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
                 {d.subheading}
               </p>
             </div>
@@ -183,7 +181,7 @@ export function About({
               <h3 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
                 {d.ourCompany}
               </h3>
-              <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
+              <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
                 {d.description[0]}
               </p>
             </div>
@@ -196,16 +194,14 @@ export function About({
               </p>
             </div>
             {showMoreLink && (
-              <div className="pl-5 mt-6">
+              <div className="pl-5 !mt-1">
                 <Link
                   href={d.moreAboutHref ?? '/o-nas'}
                   prefetch={false}
-                  className="inline-flex items-center justify-center min-w-[200px] px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] text-[#3A2817] zakres-paper-card zakres-edge-b zakres-orient-flipx zakres-corner-tr"
+                  className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
                 >
-                  <span className="relative z-10 inline-flex items-center gap-1">
-                    {d.moreAboutLink ?? 'Więcej o nas'}
-                    <ChevronRight className="w-4 h-4" />
-                  </span>
+                  {d.moreAboutLink ?? 'Więcej o nas'}
+                  <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
             )}
