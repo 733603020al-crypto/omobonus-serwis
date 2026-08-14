@@ -401,35 +401,36 @@
 
   /* serwis-laptopow only — soft parchment card background + calm torn-paper
      edge, scoped via data-parchment-variant="soft" (set only on that page's
-     Accordion root). Texture reused 1:1 from the home "SERWIS I NAPRAWA"
-     cards (services-card-parchment.webp, same file/gradient recipe as
-     .zakres-paper-card::before), including background-size: 100% 100%
-     (stretch, matching that rule exactly) instead of the plain accordion's
-     "cover" — cover was cropping the texture unevenly depending on the
-     pill's wide/short aspect ratio, which read as a lopsided plain brown
-     rectangle. The rectangular gold border/hover-border from the shared
-     accordion pill (border-2 border-[rgba(200,169,107,0.5)] in
-     service-accordion.tsx) is removed here so the torn silhouette isn't
-     boxed in by a straight frame; the golden hover glow (box-shadow) stays.
-     Edge shape reuses the exact same technique as the torn-paper mask
-     system (google-reviews-carousel.tsx / services.tsx: one closed SVG
-     path of cubic-bezier curves on a 400x150 box, coordinates deviating a
-     few units from a plain rectangle) — none of the 8 fixed zakres-edge-*
-     silhouettes wobble on all 4 sides at once (each only varies 1-2 of
-     top/bottom/left/right), so this is a 9th path built the same way,
-     combining a top/bottom wobble in the style of zakres-edge-h with a
-     left/right wobble in the style of zakres-edge-g (the only edge with
-     side wobble), at roughly half that amplitude — calmer than the review
-     cards, but present on every side (fixes the old edge-h mask reading as
-     basically straight/rectangular). Border-radius, box-shadow padding and
-     sizing are otherwise untouched. */
+     Accordion root). Texture is a dedicated crop/downscale of the same
+     parchment photo family as services-card-parchment.webp, exported as
+     serwis-laptopow-parchment-soft.avif (600×900, ~14.4K, alpha preserved,
+     quality picked as the lightest AVIF with no visible banding/blocking
+     vs. the source), using background-size: 100% 100% (stretch) instead of
+     the plain accordion's "cover" — cover was cropping the texture unevenly
+     depending on the pill's wide/short aspect ratio, which read as a
+     lopsided plain brown rectangle. The rectangular gold border/hover-
+     border from the shared accordion pill (border-2
+     border-[rgba(200,169,107,0.5)] in service-accordion.tsx) is removed
+     here so the torn silhouette isn't boxed in by a straight frame; the
+     golden hover glow (box-shadow) stays. Edge shape reuses the exact same
+     technique as the torn-paper mask system (google-reviews-carousel.tsx /
+     services.tsx: one closed SVG path of cubic-bezier curves on a 400x150
+     box, coordinates deviating a few units from a plain rectangle) — none
+     of the 8 fixed zakres-edge-* silhouettes wobble on all 4 sides at once
+     (each only varies 1-2 of top/bottom/left/right), so this is a 9th path
+     built the same way, combining a top/bottom wobble in the style of
+     zakres-edge-h with a left/right wobble in the style of zakres-edge-g
+     (the only edge with side wobble), at roughly half that amplitude —
+     calmer than the review cards, but present on every side (fixes the old
+     edge-h mask reading as basically straight/rectangular). Border-radius,
+     box-shadow padding and sizing are otherwise untouched. */
   [data-parchment-variant="soft"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     border: none !important;
     background-image:
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%),
-      url('/images/services-card-parchment.webp') !important;
+      url('/images/serwis-laptopow-parchment-soft.avif') !important;
     background-size: 100% 100% !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -446,7 +447,7 @@
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%),
-      url('/images/services-card-parchment.webp') !important;
+      url('/images/serwis-laptopow-parchment-soft.avif') !important;
   }
 
   /* =========================
