@@ -100,6 +100,7 @@ const SKIP = new Set([
   'Logo_Omobonus.webp',         // 12K logo, critical visual quality
   'Logo_Omobonus_favicon.webp', // 12K favicon
   '02_serwis-komputerow-stacjonarnych.webp', // animated hero — this script doesn't pass {animated:true} to sharp and would flatten it to a static first frame
+  '03_outsourcing-it.webp', // animated hero — same reason
   'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp', 'by.webp',
   'sk.webp', 'lv.webp', 'lt.webp', 'gb.webp', 'ee.webp',
   'umka_paw_brown.webp', 'umka_paw_cbb27c.webp', 'umka_paw_dark.webp',

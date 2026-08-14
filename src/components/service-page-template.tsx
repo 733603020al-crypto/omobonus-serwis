@@ -227,6 +227,21 @@ export function ServicePageTemplate({
                           height={773}
                           className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
                         />
+                      ) : slug === 'outsourcing-it' ? (
+                        // Animated WebP (orbiting connection-dots animation baked into the
+                        // file, transparent background) — canvas/offsets/disposal/blend
+                        // across all 40 frames must stay intact or the composited animation
+                        // breaks. Desktop gets it directly via <picture><source>; mobile
+                        // starts on a static first-frame fallback and swaps in the animated
+                        // file after page load (see AnimatedHeroImage) to keep mobile LCP fast.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/03_outsourcing-it-static.webp"
+                          alt={imageAlt}
+                          width={700}
+                          height={446}
+                          className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
+                        />
                       ) : (
                         <Image
                           src={imageSrc}
