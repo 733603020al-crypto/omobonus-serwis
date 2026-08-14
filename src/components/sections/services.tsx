@@ -263,10 +263,6 @@ export function Services({
         </div>
       )}
 
-      {/* Ciemna winieta u samej góry sekcji — niezależna od tła (bare/nie-bare),
-          zawsze zaczyna się od górnej krawędzi sekcji. */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 md:h-28 lg:h-32 bg-gradient-to-b from-black/50 via-black/30 to-transparent" />
-
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mb-[20px]">
