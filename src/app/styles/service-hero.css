@@ -5,8 +5,6 @@
 .service-hero-image-wrap {
   position: relative;
   isolation: isolate;
-  animation: serviceHeroFloat 7s ease-in-out infinite;
-
 }
 
 .service-hero-image {
@@ -15,10 +13,9 @@
   transition:
     transform 300ms ease,
     filter 300ms ease;
-  animation: serviceHeroGlow 7s ease-in-out infinite;
   filter:
     drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  /* Every service page keeps this hero animating (float/glow, or the
+  /* Every service page keeps this hero's shine sweep animating (or the
      druk-3d SMIL SVG) for as long as the page is open, which keeps costing
      Style/Layout/Rendering work on the main thread even while scrolled out
      of view. content-visibility skips that work entirely while off-screen
@@ -122,40 +119,6 @@
   border-color: transparent !important;
   background: transparent !important;
   box-shadow: none !important;
-}
-
-@keyframes serviceHeroFloat {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-
-  12% {
-    transform: translateY(-3px) scale(1);
-  }
-
-  24% {
-    transform: translateY(-7px) scale(1.018);
-  }
-
-  32% {
-    transform: translateY(-8px) scale(1.025);
-  }
-
-  38% {
-    transform: translateY(-6px) scale(1.012);
-  }
-
-  50% {
-    transform: translateY(-8px) scale(1);
-  }
-
-  75% {
-    transform: translateY(-3px) scale(1);
-  }
-
-  100% {
-    transform: translateY(0) scale(1);
-  }
 }
 
 @keyframes serviceHeroShine {
@@ -491,43 +454,6 @@
   }
 }
 
-
-@keyframes serviceHeroGlow {
-  0% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  12% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  24% {
-    filter:
-      drop-shadow(0 20px 28px rgba(0, 0, 0, 0.52)) drop-shadow(0 0 26px rgba(191, 167, 106, 0.58)) drop-shadow(0 0 54px rgba(191, 167, 106, 0.36));
-  }
-
-  32% {
-    filter:
-      drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(191, 167, 106, 0.68)) drop-shadow(0 0 64px rgba(191, 167, 106, 0.42));
-  }
-
-  38% {
-    filter:
-      drop-shadow(0 20px 28px rgba(0, 0, 0, 0.52)) drop-shadow(0 0 24px rgba(191, 167, 106, 0.52)) drop-shadow(0 0 46px rgba(191, 167, 106, 0.30));
-  }
-
-  50% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  100% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-}
 
 @keyframes serviceHeroImageMobilePulse {
   0% {
