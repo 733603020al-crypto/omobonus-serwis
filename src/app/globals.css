@@ -401,14 +401,15 @@
 
   /* serwis-laptopow only — soft parchment card background + calm torn-paper
      edge, scoped via data-parchment-variant="soft" (set only on that page's
-     Accordion root). Texture is a dedicated crop/downscale of the same
-     parchment photo family as services-card-parchment.webp, exported as
-     serwis-laptopow-parchment-soft.avif (600×900, ~14.4K, alpha preserved,
-     quality picked as the lightest AVIF with no visible banding/blocking
-     vs. the source), using background-size: 100% 100% (stretch) instead of
-     the plain accordion's "cover" — cover was cropping the texture unevenly
-     depending on the pill's wide/short aspect ratio, which read as a
-     lopsided plain brown rectangle. The rectangular gold border/hover-
+     Accordion root). Texture is the SAME real file as the kontakt page's
+     "Formularz zgłoszeniowy" card and the Google review cards —
+     contact-form-parchment.webp — not a reinvented/re-cropped texture.
+     Uses background-size: cover (not stretch): the accordion pill is far
+     more wide/short than this portrait photo, so non-uniform 100% 100%
+     stretch squashed the texture horizontally; cover instead scales the
+     photo uniformly and crops, so the real crease/mottling detail this
+     photo has throughout (not just at its own edges) stays proportionally
+     correct at any pill aspect ratio. The rectangular gold border/hover-
      border from the shared accordion pill (border-2
      border-[rgba(200,169,107,0.5)] in service-accordion.tsx) is removed
      here so the torn silhouette isn't boxed in by a straight frame; the
@@ -422,7 +423,11 @@
      zakres-edge-h with a left/right wobble in the style of zakres-edge-g
      (the only edge with side wobble), at roughly half that amplitude —
      calmer than the review cards, but present on every side (fixes the old
-     edge-h mask reading as basically straight/rectangular). Border-radius,
+     edge-h mask reading as basically straight/rectangular). This mask
+     approach is deliberately kept instead of relying on the photo's own
+     baked-in deckled edge (unlike the review cards): the photo's edge only
+     reads correctly near its own ~1.5:1 aspect ratio, and would be cropped
+     away entirely by "cover" on a much more elongated pill. Border-radius,
      box-shadow padding and sizing are otherwise untouched. */
   [data-parchment-variant="soft"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     border: none !important;
@@ -430,8 +435,8 @@
       linear-gradient(to bottom,
         rgba(60, 45, 25, 0.45) 0%,
         rgba(55, 38, 20, 0.80) 100%),
-      url('/images/serwis-laptopow-parchment-soft.avif') !important;
-    background-size: 100% 100% !important;
+      url('/images/contact-form-parchment.webp') !important;
+    background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
@@ -447,7 +452,7 @@
       linear-gradient(to bottom,
         rgba(58, 43, 23, 0.50) 0%,
         rgba(52, 36, 20, 0.85) 100%),
-      url('/images/serwis-laptopow-parchment-soft.avif') !important;
+      url('/images/contact-form-parchment.webp') !important;
   }
 
   /* =========================
