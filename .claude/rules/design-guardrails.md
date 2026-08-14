@@ -27,12 +27,12 @@ If a change would affect a shared component used by other pages, say which pages
 After replacing a static asset under the same filename (icon, image), always hard-reload / bypass cache and confirm the browser is actually rendering the new file (byte size, `Last-Modified`, or a visible detail) before concluding it's stale and reprocessing the asset again.
 
 Service-page hero images/animations (the hero slot in `src/components/service-page-template.tsx`, files under `public/images/`):
+* The left image-zone has a fixed height, independent of the H1/H2 text in the right column: **400px desktop, 300px mobile**. Never let text length change the zone's size.
+* Never change the 50/50 width split or the zone's width.
 * Before inserting, reduce file weight as much as possible without visible quality loss.
 * Crop PNG/WebP to the real alpha bounding box — remove excess transparent padding — while preserving transparency and aspect ratio.
 * Animated WebP: preserve every frame, duration, loop count, and disposal/blend mode.
 * Downscale resolution to match the actual display size, not the original export size.
-* Size the object by its visible (trimmed) content, not the raw file canvas: scale up to fill up to 100% width × 80% height of the left hero zone (object-contain, aspect ratio preserved), stopping at whichever limit is hit first.
-* Never stretch or distort the object.
-* Never change the 50/50 hero container split.
+* Object fit: `object-contain` inside the fixed zone, capped at 100% width or 100% height (whichever limit is hit first), aspect ratio preserved, centered, never stretched/distorted.
 
-Goal: keep the visual scale of hero objects consistent across all service pages.
+Goal: identical hero-zone box on every service page, independent of content; only the object's own aspect ratio determines how much of that box it fills.

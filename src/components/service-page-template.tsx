@@ -180,8 +180,8 @@ export function ServicePageTemplate({
             <>
               <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-                  <div className="flex justify-center items-center">
-                    <div className="service-hero-image-wrap relative w-full md:w-full md:h-[80%]">
+                  <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
+                    <div className="service-hero-image-wrap relative w-full h-full">
                       {slug === 'druk-3d-na-zamowienie' ? (
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
@@ -192,7 +192,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={420}
                           height={420}
-                          className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
+                          className="service-hero-image object-contain w-full h-full"
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-laptopow' ? (
@@ -208,7 +208,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={578}
                           height={502}
-                          className="service-hero-image service-hero-image-laptop object-contain w-full h-auto md:w-full md:h-full mx-auto block"
+                          className="service-hero-image service-hero-image-laptop object-contain w-full h-full mx-auto block"
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
@@ -225,7 +225,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={622}
                           height={773}
-                          className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
+                          className="service-hero-image object-contain w-full h-full"
                         />
                       ) : slug === 'outsourcing-it' ? (
                         // Animated WebP (orbiting connection-dots animation baked into the
@@ -240,7 +240,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={699}
                           height={403}
-                          className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
+                          className="service-hero-image object-contain w-full h-full"
                         />
                       ) : slug === 'serwis-drukarek-3d' ? (
                         // Animated WebP (rotating wireframe-fullerene print animation baked
@@ -253,7 +253,7 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={492}
                           height={497}
-                          className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
+                          className="service-hero-image object-contain w-full h-full"
                           fetchPriority="high"
                         />
                       ) : (
@@ -263,7 +263,7 @@ export function ServicePageTemplate({
                           width={420}
                           height={420}
                           sizes="(max-width: 768px) 85vw, 420px"
-                          className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
+                          className="service-hero-image object-contain w-full h-full"
                           priority
                           fetchPriority="high"
                           quality={60}
