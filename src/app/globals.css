@@ -401,58 +401,49 @@
 
   /* serwis-laptopow only — soft parchment card background + calm torn-paper
      edge, scoped via data-parchment-variant="soft" (set only on that page's
-     Accordion root). Texture is the SAME real file as the kontakt page's
-     "Formularz zgłoszeniowy" card and the Google review cards —
-     contact-form-parchment.webp — not a reinvented/re-cropped texture.
-     Uses background-size: cover (not stretch): the accordion pill is far
-     more wide/short than this portrait photo, so non-uniform 100% 100%
-     stretch squashed the texture horizontally; cover instead scales the
-     photo uniformly and crops, so the real crease/mottling detail this
-     photo has throughout (not just at its own edges) stays proportionally
-     correct at any pill aspect ratio. The rectangular gold border/hover-
-     border from the shared accordion pill (border-2
-     border-[rgba(200,169,107,0.5)] in service-accordion.tsx) is removed
-     here so the torn silhouette isn't boxed in by a straight frame; the
-     golden hover glow (box-shadow) stays. Edge shape reuses the exact same
-     technique as the torn-paper mask system (google-reviews-carousel.tsx /
-     services.tsx: one closed SVG path of cubic-bezier curves on a 400x150
-     box, coordinates deviating a few units from a plain rectangle) — none
-     of the 8 fixed zakres-edge-* silhouettes wobble on all 4 sides at once
-     (each only varies 1-2 of top/bottom/left/right), so this is a 9th path
-     built the same way, combining a top/bottom wobble in the style of
-     zakres-edge-h with a left/right wobble in the style of zakres-edge-g
-     (the only edge with side wobble), at roughly half that amplitude —
-     calmer than the review cards, but present on every side (fixes the old
-     edge-h mask reading as basically straight/rectangular). This mask
-     approach is deliberately kept instead of relying on the photo's own
-     baked-in deckled edge (unlike the review cards): the photo's edge only
-     reads correctly near its own ~1.5:1 aspect ratio, and would be cropped
-     away entirely by "cover" on a much more elongated pill. Border-radius,
-     box-shadow padding and sizing are otherwise untouched. */
+     Accordion root). Real pill width/height measured via getBoundingClientRect:
+     closed pills are ~848×70 and ~791×55 (aspect ~12-14:1), open panels
+     ~848×580 (aspect ~1.5:1) — far more elongated than contact-form-parchment
+     .webp's own ~1.5:1 portrait aspect, so neither background-size: cover
+     (crops away the photo's top/bottom deckled edges entirely on the thin
+     closed pills, leaving a flat unrecognizable patch) nor 100% 100% stretch
+     (squashes it horizontally) can show the sheet's real torn-edge structure
+     at every pill height. Fix: serwis-laptopow-parchment-strip.webp is derived
+     from that exact same file via a lossless 90° rotation (turning its two
+     long portrait edges into a long deckled top edge + long deckled bottom
+     edge), then a straight crop of the left/right margins down to the fully
+     opaque rectangular interior (alpha-profiled column by column — the
+     rotated tile's own left/right ends carried the photo's curled-corner
+     deckle, which produced an ugly scalloped seam every time the tile
+     repeated). What remains has genuine deckled edges only on top/bottom and
+     plain straight cuts on left/right, so background-size: auto 100% +
+     repeat-x tiles it as a smooth continuous sheet: the tile's full native
+     height (both deckled edges) is always shown no matter how short the
+     pill is, it repeats sideways to fill any width, and on the tall open
+     panel it renders as ~1 untiled copy. No
+     gradient/overlay/opacity/filter/blend-mode is applied on top: color and
+     texture must visually match the source sheet exactly, same as the
+     kontakt "Formularz zgłoszeniowy" card (img with only a drop-shadow
+     filter, no recoloring). The rectangular gold border/hover-border from
+     the shared accordion pill (border-2 border-[rgba(200,169,107,0.5)] in
+     service-accordion.tsx) is removed here so the torn silhouette isn't
+     boxed in by a straight frame; the golden hover glow (box-shadow) stays.
+     The existing calmer-than-reviews all-sides SVG wobble mask (a 9th
+     zakres-edge-style path, unchanged from before) stays layered on top for
+     the left/right edge softness. Border-radius, box-shadow padding and
+     sizing are otherwise untouched. */
   [data-parchment-variant="soft"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     border: none !important;
-    background-image:
-      linear-gradient(to bottom,
-        rgba(60, 45, 25, 0.45) 0%,
-        rgba(55, 38, 20, 0.80) 100%),
-      url('/images/contact-form-parchment.webp') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    background-image: url('/images/serwis-laptopow-parchment-strip.webp') !important;
+    background-size: auto 100% !important;
+    background-position: left center !important;
+    background-repeat: repeat-x !important;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-  }
-
-  [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%),
-      url('/images/contact-form-parchment.webp') !important;
   }
 
   /* =========================
