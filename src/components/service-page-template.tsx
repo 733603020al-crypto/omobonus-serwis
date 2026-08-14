@@ -181,7 +181,7 @@ export function ServicePageTemplate({
               <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                   <div className="flex justify-center items-center">
-                    <div className="service-hero-image-wrap relative w-full md:w-full md:h-full">
+                    <div className="service-hero-image-wrap relative w-full md:w-full md:h-[80%]">
                       {slug === 'druk-3d-na-zamowienie' ? (
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
@@ -199,15 +199,15 @@ export function ServicePageTemplate({
                         // Animated WebP (screen animation baked into the file) — plain
                         // <img>, not next/image, so the optimizer doesn't rasterize it
                         // and kill the animation. width/height match the source's real
-                        // 760x507 aspect ratio (not the generic 420x420 square used by
-                        // other service pages) so h-auto doesn't cause a layout jump
-                        // once the image loads.
+                        // 578x502 aspect ratio (cropped to alpha bbox; not the generic
+                        // 420x420 square used by other service pages) so h-auto doesn't
+                        // cause a layout jump once the image loads.
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={imageSrc}
                           alt={imageAlt}
-                          width={760}
-                          height={507}
+                          width={578}
+                          height={502}
                           className="service-hero-image service-hero-image-laptop object-contain w-full h-auto md:w-full md:h-full mx-auto block"
                           fetchPriority="high"
                         />
@@ -238,8 +238,8 @@ export function ServicePageTemplate({
                           animatedSrc={imageSrc}
                           staticSrc="/images/03_outsourcing-it-static.webp"
                           alt={imageAlt}
-                          width={700}
-                          height={446}
+                          width={699}
+                          height={403}
                           className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
                         />
                       ) : slug === 'serwis-drukarek-3d' ? (
@@ -251,8 +251,8 @@ export function ServicePageTemplate({
                         <img
                           src={imageSrc}
                           alt={imageAlt}
-                          width={512}
-                          height={512}
+                          width={492}
+                          height={497}
                           className="service-hero-image object-contain w-full h-auto md:w-full md:h-full"
                           fetchPriority="high"
                         />
