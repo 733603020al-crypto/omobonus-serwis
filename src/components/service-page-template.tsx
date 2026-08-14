@@ -242,6 +242,20 @@ export function ServicePageTemplate({
                           height={446}
                           className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
                         />
+                      ) : slug === 'serwis-drukarek-3d' ? (
+                        // Animated WebP (rotating wireframe-fullerene print animation baked
+                        // into the file, transparent background) — plain <img>, not next/image,
+                        // so the optimizer doesn't rasterize it and kill the animation. 32
+                        // frames, disposal/blend must stay intact.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={512}
+                          height={512}
+                          className="service-hero-image object-contain w-full h-auto md:w-auto md:h-full"
+                          fetchPriority="high"
+                        />
                       ) : (
                         <Image
                           src={imageSrc}
