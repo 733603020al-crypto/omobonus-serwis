@@ -24,6 +24,7 @@ const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 const HERO_SCALE: Record<string, number> = {
   'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
+  'serwis-plotterow': 1.4,
 }
 const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
 
