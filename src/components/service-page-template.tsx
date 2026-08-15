@@ -28,6 +28,7 @@ const HERO_SCALE: Record<string, number> = {
   'drukarka-zastepcza': 1.3,
   'serwis-drukarek-termicznych': 1.2,
   'serwis-drukarek-iglowych': 1.2,
+  'serwis-drukarek-atramentowych': 1.2,
 }
 const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
 
