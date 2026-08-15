@@ -323,9 +323,9 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="inline-flex items-center justify-center min-w-[165px] px-[27px] py-[13px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
+                className="inline-flex items-center justify-center min-w-[148.5px] px-[24.3px] py-[11.7px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
               >
-                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '18px' }}>
+                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '17.1px' }}>
                   {d.viewAllLabel}
                 </span>
               </button>
@@ -351,9 +351,9 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(false)}
-                className="inline-flex items-center justify-center min-w-[165px] px-[27px] py-[13px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
+                className="inline-flex items-center justify-center min-w-[148.5px] px-[24.3px] py-[11.7px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
               >
-                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '18px' }}>
+                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '17.1px' }}>
                   {d.collapseLabel ?? 'Zwiń ↑'}
                 </span>
               </button>
