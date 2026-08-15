@@ -283,7 +283,7 @@ export function ServicePageTemplate({
                       )}
                     </div>
                   </div>
-                  <div className="text-center flex flex-col items-center justify-center relative z-10">
+                  <div className={`text-center flex flex-col items-center justify-center relative z-10 ${HERO_SCALE[slug] ? 'mt-14 md:mt-0' : ''}`}>
                     <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
                       {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
