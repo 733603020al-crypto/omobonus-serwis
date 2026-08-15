@@ -23,7 +23,7 @@ export function HomeCta({ heading, text, button, href }: HomeCtaProps) {
           <Link
             href={href}
             prefetch={false}
-            className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+            className="inline-flex items-center justify-center gap-1 min-w-[180px] rounded-full px-[28.8px] py-[14.4px] font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
           >
             {button}
             <ChevronRight className="w-4 h-4" />
