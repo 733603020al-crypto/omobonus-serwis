@@ -36,6 +36,28 @@ import {
 } from '@/components/ui/popover'
 import { Info, ArrowRight } from 'lucide-react'
 
+// Literal strings (not template-interpolated) so Tailwind's static content
+// scanner can find them — same reasoning as services.tsx's ORIENT/EDGE/
+// CORNER_CLASSES, which this deliberately mirrors for the accordion's own
+// torn-parchment edge variety (zero new image files, same CSS mechanism).
+const ACCORDION_EDGE_CLASSES = [
+  'zakres-edge-a',
+  'zakres-edge-c',
+  'zakres-edge-e',
+  'zakres-edge-g',
+]
+const ACCORDION_ORIENT_CLASSES = [
+  'zakres-orient-normal',
+  'zakres-orient-flipy',
+]
+// Mostly corner-none, so folds stay subtle across a whole page of sections.
+const ACCORDION_CORNER_CLASSES = [
+  '',
+  'zakres-corner-tr',
+  '',
+  'zakres-corner-bl',
+]
+
 export const getIconForSection = (sectionId: string) => {
   switch (sectionId) {
     case 'diagnoza':
@@ -1035,9 +1057,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           onValueChange={handleSectionChange}
           className="w-full"
           data-main-accordion="true"
-          data-parchment-variant={service.slug === 'serwis-laptopow' ? 'soft' : undefined}
         >
-          {service.pricingSections.map((section) => (
+          {service.pricingSections.map((section, sectionIdx) => (
             <AccordionItem
               key={section.id}
               value={section.id}
@@ -1051,7 +1072,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             >
               <div
                 className={cn(
-                  "group relative w-full transition-all duration-300 min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-[0_0_24px_rgba(191,167,106,0.35)] bg-[rgba(5,5,5,0.85)]"
+                  "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
+                  ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
+                  ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
+                  ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
                 )}
               >
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />

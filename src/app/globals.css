@@ -7,6 +7,7 @@
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
   --bg-zakres-parchment: url('/images/services-card-parchment.webp');
+  --bg-accordion-parchment: url('/images/accordion-parchment-tile-desktop.avif');
 }
 
 @media (max-width: 767px) {
@@ -15,6 +16,7 @@
     --bg-services-card: url('/images/services-background-mobile.webp');
     --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
     --bg-zakres-parchment: url('/images/services-card-parchment-mobile.avif');
+    --bg-accordion-parchment: url('/images/accordion-parchment-tile-mobile.avif');
   }
 }
 
@@ -374,98 +376,68 @@
 
 
   /* =========================
-     ACCORDION
-     ========================= */
+     ACCORDION — one parchment tile for every /uslugi/[slug] page, every
+     section, both closed and open. Radix only ever animates this box's
+     height (width is constant per breakpoint: 848px desktop / 358px
+     mobile — confirmed via measurement), and open height is a continuum
+     driven by each section's own content (roughly 300-600+px), not a
+     second fixed state. A single background-size: cover image can't
+     serve that: its apparent crop/scale recalculates with every height,
+     so grain scale silently drifts between a short and a tall section.
+
+     Fix: background-size is a FIXED px tile height (not %, not cover),
+     repeated vertically (repeat-y). background-position never changes
+     between closed/open/hover — nothing to recalculate, so the texture
+     never "swims". Closed (70px) is just the first slice of one tile;
+     open is the same pattern continuing for however many px it needs.
+     Tile pixel size (848x240 desktop, 358x180 mobile) matches this
+     column's own measured width 1:1, so background-size:100% renders it
+     at native scale with zero stretch on either axis.
+
+     Texture is on ::before (not the item's own background) so it can be
+     masked/oriented/corner-accented with the exact same zakres-edge,
+     zakres-orient and zakres-corner utilities the homepage service cards
+     use (see "ZAKRES USŁUG" above) — reused as-is via the ACCORDION_EDGE/
+     ORIENT/CORNER_CLASSES rotation in service-accordion.tsx, so no new
+     image files or CSS exist just for edge variety. No rectangular
+     border: the torn silhouette itself is the card's outline now. */
   [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     position: relative;
     isolation: isolate;
     z-index: 1;
-    background-image:
-      linear-gradient(to bottom,
-        rgba(60, 45, 25, 0.45) 0%,
-        rgba(55, 38, 20, 0.80) 100%),
-      var(--bg-services-card) !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
     box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.4),
       0 2px 6px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 245, 200, 0.1),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2) !important;
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
 
-  [data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
+  [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     background-image:
       linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%),
-      var(--bg-services-card) !important;
+        rgba(50, 36, 18, 0.58) 0%,
+        rgba(45, 30, 15, 0.72) 100%),
+      var(--bg-accordion-parchment);
+    background-repeat: repeat-y;
+    background-position: top center;
+    background-size: 100% 240px;
   }
 
-  /* serwis-laptopow only — soft parchment card background + calm torn-paper
-     edge, scoped via data-parchment-variant="soft" (set only on that page's
-     Accordion root). Closed and open states use two different ready-made
-     source photos (both provided directly by the user, no new derivative
-     for the open state), split via Radix's own data-state="open"/"closed"
-     on [data-slot="accordion-item"]:
-
-     Closed pill (~848×70 down to ~791×55, aspect ~12-14:1): uses
-     serwis-laptopow-pill-parchment.avif, a straight crop of a separate
-     landscape parchment-strip photo (source: omobonus-foto/100.png) down to
-     its fully opaque rectangular interior (alpha-profiled to exclude the
-     photo's own curled corner ends on the left/right). Deckled edges remain
-     only on top/bottom, so background-size: auto 100% + repeat-x tiles it
-     as one continuous sheet with no scalloped seam at any pill height.
-     Downscaled to 525×200 and encoded as AVIF q50 (~5.4KB) — far below the
-     pill's own display size, chosen only for weight, no visible texture/edge
-     loss at this size.
-
-     Open panel (~848×337 up to ~848×582, aspect ~1.46-2.52:1): uses the
-     exact same ready-made files as kontakt's "Formularz zgłoszeniowy" card —
-     contact-form-parchment.webp (desktop) / contact-form-parchment-mobile
-     .webp (mobile, same 767px breakpoint as contact.tsx's <picture>) —
-     applied directly with no crop/copy. background-size: 100% 100% mirrors
-     that card's object-fill: the whole sheet incl. all 4 deckled edges and
-     corner curls is always shown, non-uniformly stretched to fill the panel
-     (same tradeoff object-fill already makes on kontakt). auto 100% +
-     repeat-x was rejected here: this source has deckled edges on every
-     side (not just top/bottom), so tiling it sideways reproduces the exact
-     scalloped-seam bug this file's history was created to fix.
-
-     No gradient/overlay/opacity/filter/blend-mode on either state: color
-     and texture must visually match the source sheets exactly. The
-     rectangular gold border/hover-border from the shared accordion pill
-     (border-2 border-[rgba(200,169,107,0.5)] in service-accordion.tsx) is
-     removed here so the torn silhouette isn't boxed in by a straight frame;
-     the golden hover glow (box-shadow) stays. The existing calmer-than-
-     reviews all-sides SVG wobble mask (a 9th zakres-edge-style path) stays
-     layered on top of both states for the left/right edge softness.
-     Border-radius, box-shadow padding and sizing are otherwise untouched. */
-  [data-parchment-variant="soft"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
-    border: none !important;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20400%20150%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M1%2C1%20C90%2C-1.5%20250%2C2%20399%2C0.5%20C401%2C40%20397%2C100%20398.5%2C149%20C300%2C147.5%20120%2C151%200.5%2C149.5%20C-1.5%2C110%202%2C50%201%2C1%20Z%27%20fill%3D%27white%27%2F%3E%3C%2Fsvg%3E");
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+  [data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div::before {
+    background-image:
+      linear-gradient(to bottom,
+        rgba(50, 36, 18, 0.22) 0%,
+        rgba(45, 30, 15, 0.32) 100%),
+      var(--bg-accordion-parchment);
   }
-  [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
-    background-image: url('/images/serwis-laptopow-pill-parchment.avif') !important;
-    background-size: auto 100% !important;
-    background-position: left center !important;
-    background-repeat: repeat-x !important;
-  }
-  [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
-    background-image: url('/images/contact-form-parchment.webp') !important;
-    background-size: 100% 100% !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-  }
+
   @media (max-width: 767px) {
-    [data-parchment-variant="soft"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
-      background-image: url('/images/contact-form-parchment-mobile.webp') !important;
+    [data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div::before {
+      background-size: 100% 180px;
     }
   }
 
