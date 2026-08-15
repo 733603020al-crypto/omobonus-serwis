@@ -22,7 +22,7 @@ const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 // Per-service hero image scale relative to the fixed 400px/300px zone
 // (object-contain already caps at 100%; this intentionally overflows the zone).
 const HERO_SCALE: Record<string, number> = {
-  'serwis-laptopow': 1.4,
+  'serwis-laptopow': 1.5,
   'outsourcing-it': 1.4,
   'serwis-plotterow': 1.4,
   'drukarka-zastepcza': 1.3,
