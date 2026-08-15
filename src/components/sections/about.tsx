@@ -75,7 +75,7 @@ export function About({
   return (
     <section
       id="o-nas"
-      className={`relative ${bare ? 'pt-10 md:pt-16' : 'py-16 md:py-24'}`}
+      className={`relative ${bare ? 'pt-5 md:pt-8' : 'py-16 md:py-24'}`}
     >
       {!bare && (
         <div

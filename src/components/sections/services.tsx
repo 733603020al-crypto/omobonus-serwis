@@ -259,7 +259,7 @@ export function Services({
   return (
     <section
       id="uslugi"
-      className="relative pt-7 pb-14 md:pt-12 md:pb-20 text-center text-white overflow-hidden"
+      className="relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden"
     >
 
       {/* Tło */}
