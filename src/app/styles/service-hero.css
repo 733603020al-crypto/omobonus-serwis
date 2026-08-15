@@ -5,6 +5,7 @@
 .service-hero-image-wrap {
   position: relative;
   isolation: isolate;
+  z-index: 1;
 }
 
 .service-hero-image {

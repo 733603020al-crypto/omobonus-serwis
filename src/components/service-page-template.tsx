@@ -18,6 +18,13 @@ import GoogleReviews from '@/components/google-reviews'
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
 const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
+
+// Per-service hero image scale relative to the fixed 400px/300px zone
+// (object-contain already caps at 100%; this intentionally overflows the zone).
+const HERO_SCALE: Record<string, number> = {
+  'serwis-laptopow': 1.4,
+  'outsourcing-it': 1.4,
+}
 const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
 
 const PAGE_CLASS_SLUGS = [
@@ -181,7 +188,12 @@ export function ServicePageTemplate({
               <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                   <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
-                    <div className={`service-hero-image-wrap relative ${slug === 'serwis-laptopow' ? 'w-[119%] h-[119%] shrink-0' : 'w-full h-full'}`}>
+                    <div
+                      className={`service-hero-image-wrap relative ${
+                        HERO_SCALE[slug] ? 'shrink-0' : 'w-full h-full'
+                      }`}
+                      style={HERO_SCALE[slug] ? { width: `${HERO_SCALE[slug] * 100}%`, height: `${HERO_SCALE[slug] * 100}%` } : undefined}
+                    >
                       {slug === 'druk-3d-na-zamowienie' ? (
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
@@ -271,7 +283,7 @@ export function ServicePageTemplate({
                       )}
                     </div>
                   </div>
-                  <div className="text-center flex flex-col items-center justify-center">
+                  <div className="text-center flex flex-col items-center justify-center relative z-10">
                     <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
                       {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>

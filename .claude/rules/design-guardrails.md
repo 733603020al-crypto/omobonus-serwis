@@ -36,3 +36,9 @@ Service-page hero images/animations (the hero slot in `src/components/service-pa
 * Object fit: `object-contain` inside the fixed zone, capped at 100% width or 100% height (whichever limit is hit first), aspect ratio preserved, centered, never stretched/distorted.
 
 Goal: identical hero-zone box on every service page, independent of content; only the object's own aspect ratio determines how much of that box it fills.
+
+Per-page hero scale overrides (`HERO_SCALE` map in `service-page-template.tsx`) intentionally let a specific slug's image overflow past the fixed zone box. When using this:
+* Text always has priority over the image — on any intersection, the image goes under the text, never over it.
+* The text wrapper (`.text-center` column with H1/H2) must keep `position: relative` with a `z-index` higher than the image wrapper.
+* `.service-hero-image-wrap` and all its effects (shine sweep, glow, hover scale) must stay below that text z-index — keep the wrap's own `z-index` lower, never override it per-page.
+* Flexbox note: a scaled-up wrap also needs `shrink-0`, or the flex container silently clamps its width back to 100% while height still grows, breaking the aspect ratio.
