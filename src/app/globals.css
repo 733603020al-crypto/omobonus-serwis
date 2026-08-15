@@ -6,6 +6,7 @@
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
+  --bg-zakres-parchment: url('/images/services-card-parchment.webp');
 }
 
 @media (max-width: 767px) {
@@ -13,6 +14,7 @@
     --bg-parchment: url('/images/Background_1-mobile.webp');
     --bg-services-card: url('/images/services-background-mobile.webp');
     --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
+    --bg-zakres-parchment: url('/images/services-card-parchment-mobile.avif');
   }
 }
 
@@ -210,7 +212,7 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-image: url('/images/services-card-parchment.webp');
+    background-image: var(--bg-zakres-parchment);
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
