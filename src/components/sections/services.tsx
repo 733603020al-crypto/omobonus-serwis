@@ -115,6 +115,7 @@ export function Services({
   const d = t ?? PL
   const [expanded, setExpanded] = useState(false)
   const dividerRef = useRef<HTMLDivElement>(null)
+  const headingDividerRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const el = dividerRef.current
     if (!el) return
@@ -127,6 +128,18 @@ export function Services({
     observer.observe(el)
     return () => observer.disconnect()
   }, [expanded])
+  useEffect(() => {
+    const el = headingDividerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        el.classList.add('fade-slide-animate')
+        observer.disconnect()
+      }
+    }, { threshold: 0.1 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const mainServices = services
     .filter(
@@ -265,10 +278,18 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div className="text-center mb-[20px]">
-          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[29px] md:text-[36px] lg:text-[43px]">
+        <div ref={headingDividerRef} className="brush-divider-row flex items-center gap-[18px] mt-[10px] mb-[28px]">
+          <div
+            className="divider-line divider-line-left flex-1"
+            style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
+          />
+          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[34px] md:text-[42px] lg:text-[51px]">
             {d.subheading}
           </h2>
+          <div
+            className="divider-line divider-line-right flex-1"
+            style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
