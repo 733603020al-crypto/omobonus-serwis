@@ -58,6 +58,40 @@ const ACCORDION_CORNER_CLASSES = [
   'zakres-corner-bl',
 ]
 
+// Visual test: slugs opted into a lighter "warm parchment" look that mirrors
+// the homepage SERWIS I NAPRAWA cards (near-zero overlay, dark-brown header
+// text, full torn-edge variety) instead of the shared darker accordion
+// treatment every other /uslugi/[slug] page keeps. Add more slugs here to
+// extend the variant later — this never mutates the base ACCORDION_EDGE/
+// ORIENT/CORNER_CLASSES arrays above, which other pages still use as-is.
+const WARM_PARCHMENT_SLUGS = ['serwis-laptopow']
+
+// Full 8/4/5 variety, ported 1:1 from services.tsx's EDGE_CLASSES/
+// ORIENT_CLASSES/CORNER_CLASSES — only used for WARM_PARCHMENT_SLUGS pages.
+const ACCORDION_EDGE_CLASSES_FULL = [
+  'zakres-edge-a',
+  'zakres-edge-b',
+  'zakres-edge-c',
+  'zakres-edge-d',
+  'zakres-edge-e',
+  'zakres-edge-f',
+  'zakres-edge-g',
+  'zakres-edge-h',
+]
+const ACCORDION_ORIENT_CLASSES_FULL = [
+  'zakres-orient-normal',
+  'zakres-orient-flipx',
+  'zakres-orient-flipy',
+  'zakres-orient-rotate180',
+]
+const ACCORDION_CORNER_CLASSES_FULL = [
+  '',
+  'zakres-corner-tl',
+  'zakres-corner-tr',
+  'zakres-corner-bl',
+  'zakres-corner-br',
+]
+
 export const getIconForSection = (sectionId: string) => {
   switch (sectionId) {
     case 'diagnoza':
@@ -730,6 +764,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
 ])
 
 const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
+  const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const t = serviceAccordionI18n[locale]
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
@@ -1057,6 +1092,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           onValueChange={handleSectionChange}
           className="w-full"
           data-main-accordion="true"
+          data-parchment-variant={isWarmParchment ? 'warm' : undefined}
         >
           {service.pricingSections.map((section, sectionIdx) => (
             <AccordionItem
@@ -1073,9 +1109,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               <div
                 className={cn(
                   "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
-                  ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
-                  ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
-                  ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
+                  isWarmParchment
+                    ? ACCORDION_EDGE_CLASSES_FULL[sectionIdx % ACCORDION_EDGE_CLASSES_FULL.length]
+                    : ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
+                  isWarmParchment
+                    ? ACCORDION_ORIENT_CLASSES_FULL[sectionIdx % ACCORDION_ORIENT_CLASSES_FULL.length]
+                    : ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
+                  isWarmParchment
+                    ? ACCORDION_CORNER_CLASSES_FULL[sectionIdx % ACCORDION_CORNER_CLASSES_FULL.length]
+                    : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
                 )}
               >
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
@@ -1117,7 +1159,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
+                                      "text-lg font-cormorant font-semibold transition-colors leading-tight",
+                                      isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
                                     )}>
                                       {(() => {
@@ -1182,7 +1225,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 w wersji mobilnej (ten sam tekst, wspólny dla obu
                                 breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
                             <div className="hidden md:block">
-                              <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                              <div className={cn(
+                                "text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                                isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white"
+                              )}>
                                 {section.title}
                               </div>
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
