@@ -443,16 +443,18 @@
 
   /* WARM PARCHMENT variant — visual test, serwis-laptopow only (see
      WARM_PARCHMENT_SLUGS / isWarmParchment in service-accordion.tsx).
-     Literal port of .zakres-paper-card's own algorithm (home "SERWIS I
-     NAPRAWA" cards) onto this accordion's own texture files (still the
-     same accordion-parchment-tile-desktop/mobile.avif, still repeat-y —
-     neither the files nor the tiling are touched here): zero darkening
-     overlay, single drop-shadow that follows the torn-edge mask instead of
-     a rectangular box-shadow, plus a radial vignette + contrast bump on
-     the texture layer itself — same radial-gradient vignette technique
-     already used by .services-heading-text::before / .services-cta-vignette
-     above, just applied to the parchment layer instead of behind text. No
-     border/border-radius, matching the reference. Scoped strictly to
+     Literal, unmodified port of .zakres-paper-card's own base rule (home
+     "SERWIS I NAPRAWA" cards, lines ~207-220 above) — same filter:
+     drop-shadow value, zero overlay/vignette/contrast on the texture
+     layer, no invented values. Only 2 things differ from the home card,
+     both required by this component: (1) texture source stays this
+     accordion's own accordion-parchment-tile-desktop/mobile.avif via
+     var(--bg-accordion-parchment); (2) background-repeat/position/size
+     stay the repeat-y tiling set on the base accordion rule above
+     (untouched here) instead of the home's no-repeat/100% 100%, because
+     the accordion's open height is variable. Open/closed height logic is
+     not touched. Edge/orient/corner classes are the shared zakres-* rules
+     above, applied via service-accordion.tsx. Scoped strictly to
      [data-parchment-variant="warm"] so every other /uslugi/[slug] page
      keeps the base rules above pixel-identical. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
@@ -461,10 +463,7 @@
   }
 
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div::before {
-    background-image:
-      radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.18) 100%),
-      var(--bg-accordion-parchment);
-    filter: contrast(1.07);
+    background-image: var(--bg-accordion-parchment);
   }
 
   /* =========================
