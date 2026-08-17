@@ -466,6 +466,112 @@
     background-image: var(--bg-accordion-parchment);
   }
 
+  /* WARM PARCHMENT — CLOSED-state baked parchment (serwis-laptopow only).
+     Uses pre-baked accordion-card-parchment-closed-desktop/mobile.avif:
+     real torn edges, corner darkening and folds are already in the file
+     itself, so no mask/gradient/filter/tint is layered on top here —
+     this simply swaps the ::before's background-image + sizing for the
+     closed state and drops the repeat-y tiling from the base rule above.
+     Shown at native box size, no-repeat, whole image (no crop/cover).
+     Open state keeps var(--bg-accordion-parchment) from the rule above,
+     untouched. */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
+    background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
+    background-size: 896px 82px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
+      background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+      background-size: 378px 82px;
+    }
+  }
+
+  /* WARM PARCHMENT — CLOSED-state box grows +48x+12px desktop (896x82,
+     was 848x70) / +20x+12px mobile (378x82, was 358x70), so the box
+     itself is literally bigger (not just an oversized background image
+     over the old frame). Width grows via negative margin bleed into the
+     section's own side padding (24px+ available on every breakpoint —
+     see section/container px- chain in service-page-template.tsx /
+     service-accordion.tsx), matched by equal +padding so icon/title/
+     price keep their exact prior on-screen position — only the ambient
+     parchment margin around them grows, nothing shifts or reflows.
+     Height grows the same way via min-height + matching +padding-y.
+     Open state is untouched (own min-height/width/margin/padding,
+     [data-state="closed"] required here). */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+    min-height: 82px;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      margin-right: -10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  /* WARM PARCHMENT — CLOSED-state corner-fold variant, per card
+     (serwis-laptopow only). The shared zakres-corner-tl/tr/bl/br ::after
+     mechanism (see base definitions above) already varies per card via
+     ACCORDION_CORNER_CLASSES_FULL, but that array also governs the OPEN
+     state, which must stay untouched. So instead of changing the array,
+     this re-assigns the CLOSED-only fold per card by nth-child, fully
+     redeclaring the ::after (same position/gradient/clip-path values as
+     the base .zakres-corner-tr/-bl rules, nothing invented) so it wins
+     regardless of which class the item already carries for OPEN.
+     Distribution: 1=A(top-right), 2=C(none), 3=B(bottom-left),
+     4=A(top-right), 5=C(none) — avoids the same top-right fold repeating
+     on nearly every card. */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(1)[data-state="closed"]:not([data-faq-item="true"])>div::after,
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(4)[data-state="closed"]:not([data-faq-item="true"])>div::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    background: linear-gradient(225deg, rgba(0, 0, 0, 0.18) 48%, rgba(255, 250, 235, 0.35) 52%, transparent 65%);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+  }
+
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(3)[data-state="closed"]:not([data-faq-item="true"])>div::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    right: auto;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.18) 48%, rgba(255, 250, 235, 0.35) 52%, transparent 65%);
+    clip-path: polygon(0 100%, 100% 100%, 0 0);
+  }
+
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(2)[data-state="closed"]:not([data-faq-item="true"])>div::after,
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(5)[data-state="closed"]:not([data-faq-item="true"])>div::after {
+    content: none;
+  }
+
   /* =========================
      FORM
      ========================= */
