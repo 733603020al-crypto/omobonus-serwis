@@ -1395,7 +1395,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           >
                             {section.id === 'diagnoza' && (
                               service.slug === 'druk-3d-na-zamowienie' ? null : (
-                                <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
+                                <span className={cn(
+                                  "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
+                                  isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]"
+                                )}>
                                   {t.gratisUpper}
                                 </span>
                               )
