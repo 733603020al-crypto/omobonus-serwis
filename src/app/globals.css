@@ -618,11 +618,11 @@
 
   /* WARM PARCHMENT — CLOSED-state vertical gap between the section title
      and the "Zobacz cennik/szczegóły →" line: 4px (natural, no margin) ->
-     2px. margin-top: -2px shrinks the existing gap by exactly 2px rather
-     than inventing a new spacing value. Scoped to [data-state="closed"]
-     so OPEN keeps its original spacing untouched. */
+     0px. margin-top: -4px cancels the existing natural gap entirely.
+     Scoped to [data-state="closed"] so OPEN keeps its original spacing
+     untouched. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-cennik-link {
-    margin-top: -2px;
+    margin-top: -4px;
   }
 
   /* =========================
