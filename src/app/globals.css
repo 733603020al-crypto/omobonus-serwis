@@ -572,12 +572,12 @@
     content: none;
   }
 
-  /* WARM PARCHMENT — CLOSED-state vertical gap between cards is 14px
+  /* WARM PARCHMENT — CLOSED-state vertical gap between cards is 8px
      (was mb-4/16px, shared with every other /uslugi page). Only the
      closed item's own margin-bottom changes here — an open item keeps
      its original mb-4, so opening a card never touches this rule. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not(:last-child) {
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
 
   /* WARM PARCHMENT — CLOSED-state section title grows exactly +2px per
