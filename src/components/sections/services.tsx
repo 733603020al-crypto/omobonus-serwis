@@ -315,11 +315,7 @@ export function Services({
             {/* Plain-text CTA (no parchment button) flanked by the golden line in two
                 segments (existing .brush-divider-row / .divider-line pattern, reused
                 1:1 from contact-actions.tsx / "Skąd nazwa" underline). */}
-            <div ref={dividerRef} className="brush-divider-row flex items-center gap-[18px] mt-[22px]">
-              <div
-                className="divider-line divider-line-left flex-1"
-                style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-              />
+            <div ref={dividerRef} className="brush-divider-row flex items-center justify-center gap-[18px] mt-[22px]">
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
@@ -329,10 +325,6 @@ export function Services({
                   {d.viewAllLabel}
                 </span>
               </button>
-              <div
-                className="divider-line divider-line-right flex-1"
-                style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-              />
             </div>
           </>
         )}
