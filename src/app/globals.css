@@ -594,6 +594,37 @@
     }
   }
 
+  /* WARM PARCHMENT — CLOSED-state hover, ported 1:1 from
+     .zakres-paper-card.services-card-hover (home "SERWIS I NAPRAWA" cards,
+     lines ~232-246 above): same transform (translateY(-4px) scale(1.04)),
+     same box-shadow, same 180ms cubic-bezier(0.4,0,0.2,1) transition, same
+     hover-only media guard so it never sticks on touch. filter:none on
+     hover matches the source rule (cancels the resting drop-shadow so it
+     doesn't double up with the new box-shadow). This wins over the
+     pre-existing Tailwind hover:shadow-[...] utility on the same element
+     via selector specificity, same mechanism as every other override in
+     this block — no !important. Scoped to [data-state="closed"] only. */
+  @media (hover: hover) and (pointer: fine) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+      transform-origin: center;
+      transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div:hover {
+      filter: none;
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 12px 20px rgba(35, 18, 8, 0.50);
+    }
+  }
+
+  /* WARM PARCHMENT — CLOSED-state vertical gap between the section title
+     and the "Zobacz cennik/szczegóły →" line: 4px (natural, no margin) ->
+     2px. margin-top: -2px shrinks the existing gap by exactly 2px rather
+     than inventing a new spacing value. Scoped to [data-state="closed"]
+     so OPEN keeps its original spacing untouched. */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-cennik-link {
+    margin-top: -2px;
+  }
+
   /* =========================
      FORM
      ========================= */

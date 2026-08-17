@@ -1364,7 +1364,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         )}
 
                         <div className={cn(
-                          "flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden",
+                          "zakres-cennik-link flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden",
                           isWarmParchment ? "text-[#72502B]" : "text-[#bfa76a]"
                         )}>
                           <span>{section.id === 'faq' ? viewDetails : viewPriceList}</span>
