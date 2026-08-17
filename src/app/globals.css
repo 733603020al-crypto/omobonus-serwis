@@ -444,18 +444,27 @@
   /* WARM PARCHMENT variant — visual test, serwis-laptopow only (see
      WARM_PARCHMENT_SLUGS / isWarmParchment in service-accordion.tsx).
      Literal port of .zakres-paper-card's own algorithm (home "SERWIS I
-     NAPRAWA" cards) onto this accordion's own texture files: zero overlay
-     gradient in any state (closed or open — same as the home cards have
-     none), same flat box-shadow. No border/border-radius either, matching
-     the reference exactly. Scoped strictly to [data-parchment-variant="warm"]
-     so every other /uslugi/[slug] page keeps the base rules above
-     pixel-identical. */
+     NAPRAWA" cards) onto this accordion's own texture files (still the
+     same accordion-parchment-tile-desktop/mobile.avif, still repeat-y —
+     neither the files nor the tiling are touched here): zero darkening
+     overlay, single drop-shadow that follows the torn-edge mask instead of
+     a rectangular box-shadow, plus a radial vignette + contrast bump on
+     the texture layer itself — same radial-gradient vignette technique
+     already used by .services-heading-text::before / .services-cta-vignette
+     above, just applied to the parchment layer instead of behind text. No
+     border/border-radius, matching the reference. Scoped strictly to
+     [data-parchment-variant="warm"] so every other /uslugi/[slug] page
+     keeps the base rules above pixel-identical. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
+    filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.3));
   }
 
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div::before {
-    background-image: var(--bg-accordion-parchment);
+    background-image:
+      radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.18) 100%),
+      var(--bg-accordion-parchment);
+    filter: contrast(1.07);
   }
 
   /* =========================
