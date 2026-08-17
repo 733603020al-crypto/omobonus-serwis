@@ -443,29 +443,19 @@
 
   /* WARM PARCHMENT variant — visual test, serwis-laptopow only (see
      WARM_PARCHMENT_SLUGS / isWarmParchment in service-accordion.tsx).
-     Mirrors the home "SERWIS I NAPRAWA" cards (.zakres-paper-card.
-     services-card-hover above): flat parchment tile, no dark overlay when
-     closed, plain drop shadow, no inset highlight/shadow. The open state
-     keeps a much-lighter version of the shared overlay (not zero) only
-     because open sections still hold a lot of pre-existing white table/FAQ
-     text unrelated to this test — untouched here, so it needs a little
-     tone behind it to stay legible. Scoped strictly to
-     [data-parchment-variant="warm"] so every other /uslugi/[slug] page
-     keeps the base rules above pixel-identical. */
+     Literal port of .zakres-paper-card's own algorithm (home "SERWIS I
+     NAPRAWA" cards) onto this accordion's own texture files: zero overlay
+     gradient in any state (closed or open — same as the home cards have
+     none), same flat box-shadow. No border/border-radius either, matching
+     the reference exactly. Scoped strictly to [data-parchment-variant="warm"]
+     so every other /uslugi/[slug] page keeps the base rules above
+     pixel-identical. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   }
 
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div::before {
     background-image: var(--bg-accordion-parchment);
-  }
-
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div::before {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(50, 36, 18, 0.18) 0%,
-        rgba(45, 30, 15, 0.24) 100%),
-      var(--bg-accordion-parchment);
   }
 
   /* =========================
