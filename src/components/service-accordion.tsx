@@ -1159,7 +1159,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      "text-lg font-cormorant font-semibold transition-colors leading-tight",
+                                      "zakres-title-text text-lg font-cormorant font-semibold transition-colors leading-tight",
                                       isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
                                     )}>
@@ -1226,7 +1226,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
                             <div className="hidden md:block">
                               <div className={cn(
-                                "text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                                "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
                                 isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white"
                               )}>
                                 {section.title}
@@ -1363,7 +1363,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </div>
                         )}
 
-                        <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden">
+                        <div className={cn(
+                          "flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden",
+                          isWarmParchment ? "text-[#72502B]" : "text-[#bfa76a]"
+                        )}>
                           <span>{section.id === 'faq' ? viewDetails : viewPriceList}</span>
                           <ArrowRight className="w-3 h-3" />
                         </div>
