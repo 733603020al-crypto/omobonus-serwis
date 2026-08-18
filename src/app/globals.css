@@ -976,14 +976,12 @@
     [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
       content: '';
       position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
-      height: 0;
-      box-shadow: 0 8px 12px rgba(35, 22, 10, 0.45);
-      /* Visible shadow depth capped to 10px below the header — clip-path
-         (unlike overflow) clips the box-shadow itself, not just content. */
-      clip-path: inset(0px 0px -10px 0px);
+      bottom: -10px;
+      left: 12px;
+      right: 12px;
+      height: 10px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.45), transparent);
+      z-index: 2;
       pointer-events: none;
       animation: diagnoza-shadow-in 220ms ease;
     }
