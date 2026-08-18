@@ -675,6 +675,18 @@
       padding-bottom: 3px;
     }
 
+    /* TEST — Diagnoza i wycena only: OPEN header widens +12px per side
+       (24px wider than CLOSED total) via real width/margin, not a hover
+       transform:scale, which would only look bigger without moving the
+       actual box. Lifts ~2px. Height/padding/font stay on the shared rule
+       above — not redeclared here. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
+      width: calc(100% + 72px);
+      margin-left: -36px;
+      margin-right: -36px;
+      transform: translateY(-2px);
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
       font-size: 24px;
     }
@@ -809,6 +821,146 @@
     }
     [data-open-header-split-content="true"] .faq-answer-text {
       color: #72502B;
+    }
+
+    /* TEST — Diagnoza i wycena only: real parchment image (same asset as
+       /kontakt Formularz zgłoszeniowy) instead of the flat #efe3c8 fill
+       every other OPEN card still uses. Kept 8px narrower per side than
+       this card's own widened OPEN header above (32px overhang - 8px =
+       24px) so the sheet reads as slightly tucked under the header. The
+       10px top overlap lives on the <img> itself (see JSX), not here, so
+       it doesn't shift this box's own height/position. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] {
+      position: relative;
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      background: transparent;
+    }
+
+    /* TEST — Diagnoza i wycena only: inset the whole table block 24px from
+       each parchment edge (replaces the earlier first-cell padding-left
+       hack) so text, price/duration values and row lines all stay clear
+       of the torn edges. Overrides the shared AccordionContent inner
+       div's own md:mx-2 (8px) — that base margin is what every other
+       card still uses, untouched. Also gives the last row 14px of
+       breathing room from the parchment's torn bottom edge (was pb-3
+       =12px): this div has no fixed height, so growing its own box
+       pushes the whole OPEN block — and the height:100% parchment <img>
+       under it — taller automatically. Top offset/header and every row's
+       own position/height above stay untouched. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div {
+      margin-left: 24px;
+      margin-right: 24px;
+      padding-bottom: 48px;
+      border-left: none;
+      border-right: none;
+    }
+
+    /* TEST — Diagnoza i wycena only: kills the unified left/right/bottom
+       frame around the OPEN table. Two nested wrappers each drew part of
+       it: the AccordionContent inner div above (md:border-x, now removed)
+       and this deeper decorative box (md:border on all 4 sides, plus a
+       stray outline that md:outline-none wasn't actually clearing) —
+       shared markup used by every service table, so scoped strictly to
+       diagnoza. Top border on both wrappers is untouched (horizontal,
+       matches "не ломать верх"), as are the table's own row dividers. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div > div {
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      outline: none;
+    }
+
+    /* Row divider lines: same secondary ink tone as the parenthetical
+       caption text, thin 1px hairline — was a semi-transparent white
+       border meant for the old dark background. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"] {
+      border-color: #72502B;
+      border-bottom-width: 1px;
+    }
+
+    /* TEST — Diagnoza i wycena only: last row's divider stops ~28px short
+       of the right edge instead of running into the parchment's
+       bottom-right torn corner. Replaces the shared border-bottom above
+       with a gradient line that fades out at the same row width — every
+       other row keeps the plain full-width border-bottom untouched. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:last-child {
+      border-bottom: none;
+      background-image: linear-gradient(to right, #72502B 0, #72502B calc(100% - 56px), transparent calc(100% - 56px));
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% 1px;
+    }
+
+    /* TEST — Diagnoza i wycena only: parenthetical caption text (e.g. "(opis
+       problemu przez WhatsApp...)") matches the row's own main-text ink
+       tone instead of the shared secondary #72502B — only its color
+       changes, size stays as-is. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-caption-text {
+      color: #332314;
+      font-size: 15px;
+      transform: translateY(-2px);
+    }
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-text-isolated {
+      color: #332314 !important;
+      font-size: 13px !important;
+      transform: translateY(-2px);
+    }
+
+    /* TEST — Diagnoza i wycena only: row title text 2px larger than the
+       shared 18px every other OPEN card still uses. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #332314;
+    }
+
+    /* Diagnoza i wycena only, OPEN state: table rows switch from native
+       table-row layout to a 3-column CSS grid (67% / 16.5% / 16.5% — the
+       exact widths the <colgroup> already used) so the row cells sit on a
+       real shared grid instead of the browser's own table column-sizing.
+       align-items:center replaces the lost vertical-align:middle from
+       table-cell. Row border-color/last-row gradient divider above are
+       unaffected — tr keeps its own box, only its internal layout changes. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] table {
+      display: block;
+    }
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] table tbody {
+      display: block;
+    }
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"] {
+      display: grid;
+      grid-template-columns: 67% 16.5% 16.5%;
+      align-items: center;
+    }
+
+    /* First cell's own max-w-[67%] (Tailwind) used to resolve against the
+       whole table's width — now that the cell is a grid item, percentage
+       widths resolve against its own 67% column track instead, shrinking
+       it to 67% of 67% and wrapping the text early. The grid track already
+       constrains the width, so the extra cap is redundant; drop it. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-cell"]:first-child {
+      max-width: none;
+    }
+
+    /* Header row (icon+title | price+time), OPEN state only: same 67% /
+       16.5% / 16.5% grid as the table body above, so "Cena, zł" and "Czas
+       realizacji" land centered over their table columns. CLOSED state
+       keeps the original flex layout untouched — this only matches when
+       the trigger's own data-state is "open". .diagnoza-open-header-row is
+       a bare marker class (no default styles) added only for this one
+       card's header row in service-accordion.tsx. */
+    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+      display: grid;
+      grid-template-columns: 67% 33%;
+      align-items: center;
+    }
+    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-left: 0;
+      gap: 0;
     }
   }
 

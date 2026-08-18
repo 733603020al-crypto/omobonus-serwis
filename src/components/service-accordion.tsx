@@ -1122,7 +1122,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 <AccordionTrigger
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0 relative z-10"
                 >
-                  <div className="flex items-center w-full text-left">
+                  <div className={cn(
+                    "flex items-center w-full text-left",
+                    isOpenHeaderSplit && section.id === 'diagnoza' && 'diagnoza-open-header-row'
+                  )}>
                     <div className="flex items-center flex-1 min-w-0">
                       <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                         <Image
@@ -2075,8 +2078,26 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               >
                 {isOpenHeaderSplit ? (
                   <>
-                    <div className={headerWrapperClassName}>{triggerNode}</div>
-                    <section data-open-header-split-content="true" data-section-id={section.id}>{contentNode}</section>
+                    <div className={headerWrapperClassName} data-section-id={section.id}>{triggerNode}</div>
+                    <section data-open-header-split-content="true" data-section-id={section.id}>
+                      {section.id === 'diagnoza' ? (
+                        <>
+                          {/* TEST: same parchment asset/technique as /kontakt Formularz
+                              zgłoszeniowy — img sits behind contentNode, offset -12px at
+                              the top so it tucks under the CLOSED header without shifting
+                              the table's own position. */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                        </>
+                      ) : (
+                        contentNode
+                      )}
+                    </section>
                   </>
                 ) : (
                   <div className={headerWrapperClassName}>
