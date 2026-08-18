@@ -485,7 +485,7 @@
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-      background-size: 382px 82px;
+      background-size: 100% 82px;
     }
   }
 
@@ -514,9 +514,9 @@
 
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
-      width: calc(100% + 24px);
-      margin-left: -12px;
-      margin-right: -12px;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-right: -16px;
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 12px;
