@@ -23,6 +23,7 @@ export interface ServiceAccordionDict {
   mobileAccordionTitles: {
     konserwacja: string | null
     naprawy: string | null
+    faq: string | null
   }
   dojazdNote: readonly [string, string]
   deviceCategoriesDescription: {
@@ -71,6 +72,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     mobileAccordionTitles: {
       konserwacja: 'Czyszczenie i konserwacja',
       naprawy: 'Naprawy i usługi serwisowe',
+      faq: 'Pytania (FAQ)',
     },
     dojazdNote: [
       'Nie mówimy, że dojazd lub odbiór są „za darmo”,',
@@ -118,6 +120,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     mobileAccordionTitles: {
       konserwacja: null,
       naprawy: null,
+      faq: null,
     },
     dojazdNote: [
       'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
@@ -174,6 +177,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     mobileAccordionTitles: {
       konserwacja: 'Чистка и обслуживание',
       naprawy: 'Ремонт и сервисное обслуживание',
+      faq: null,
     },
     dojazdNote: [
       'Мы не говорим, что выезд или получение устройства «бесплатны»,',

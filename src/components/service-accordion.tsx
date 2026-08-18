@@ -1132,7 +1132,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     useSplitHeaderLayout && section.id === 'diagnoza' && 'diagnoza-open-header-row'
                   )}>
                     <div className="flex items-center flex-1 min-w-0">
-                      <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center group-data-[state=closed]:hidden md:group-data-[state=closed]:flex">
+                      <div className={cn(
+                        "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center",
+                        service.slug === 'serwis-laptopow' && "group-data-[state=closed]:w-[115px] group-data-[state=closed]:h-[58px] md:group-data-[state=closed]:w-[50px] md:group-data-[state=closed]:h-[50px]"
+                      )}>
                         <Image
                           src={
                             isWarmParchment && section.id === 'dojazd'
@@ -1195,6 +1198,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         }
                                         if (section.id === 'naprawy') {
                                           return t.mobileAccordionTitles.naprawy ?? section.title
+                                        }
+                                        if (section.id === 'faq' && service.slug === 'serwis-laptopow') {
+                                          return t.mobileAccordionTitles.faq ?? section.title
                                         }
                                         return section.title
                                       })()}
@@ -1407,7 +1413,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               isDruk3DCustomSection(service.slug, section.id)
                                 ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? 'min-w-[96px] sm:min-w-[120px] group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                  ? cn(
+                                      'min-w-[96px] sm:min-w-[120px]',
+                                      service.slug === 'serwis-laptopow' && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                    )
                                   : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
