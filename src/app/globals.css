@@ -485,7 +485,7 @@
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-      background-size: 378px 82px;
+      background-size: 382px 82px;
     }
   }
 
@@ -514,9 +514,9 @@
 
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
-      width: calc(100% + 20px);
-      margin-left: -10px;
-      margin-right: -10px;
+      width: calc(100% + 24px);
+      margin-left: -12px;
+      margin-right: -12px;
       padding-left: 10px;
       padding-right: 10px;
       padding-top: 12px;
@@ -1037,15 +1037,22 @@
      layout untouched. Mobile keeps its own flex-row item layout, not the
      desktop <table> — only card chrome changes here, never structure/columns. */
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-      background-size: 378px 82px;
+      background-size: 382px 82px;
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
       min-height: 82px;
-      width: calc(100% + 20px);
-      margin-left: -10px;
-      margin-right: -10px;
+      width: calc(100% + 24px);
+      margin-left: -12px;
+      margin-right: -12px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] .zakres-price-header-text {
@@ -1097,6 +1104,11 @@
     [data-open-header-split-content="true"][data-section-id="diagnoza"] .price-value-text,
     [data-open-header-split-content="true"][data-section-id="diagnoza"] .duration-value-text {
       color: #3A2817;
+    }
+
+    /* Service name 2px bigger than its parentheses caption text (14px) below it. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text {
+      font-size: 16px;
     }
 
     [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-caption-text {
