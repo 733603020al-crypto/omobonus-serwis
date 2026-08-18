@@ -976,11 +976,11 @@
     [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -14px;
       left: 12px;
       right: 12px;
-      height: 10px;
-      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.45), transparent);
+      height: 16px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
       z-index: 2;
       pointer-events: none;
       animation: diagnoza-shadow-in 220ms ease;
