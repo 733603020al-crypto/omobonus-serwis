@@ -685,6 +685,10 @@
       margin-left: -36px;
       margin-right: -36px;
       transform: translateY(-2px);
+      /* Above the OPEN content section's own parchment <img> (sibling,
+         extends -12px up into the header) so the header's own shadow
+         casts visibly on top of it instead of being painted underneath. */
+      z-index: 2 !important;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
@@ -976,7 +980,10 @@
       right: 0;
       top: 100%;
       height: 0;
-      box-shadow: 0 5px 12px rgba(35, 22, 10, 0.28);
+      box-shadow: 0 8px 12px rgba(35, 22, 10, 0.45);
+      /* Visible shadow depth capped to 10px below the header — clip-path
+         (unlike overflow) clips the box-shadow itself, not just content. */
+      clip-path: inset(0px 0px -10px 0px);
       pointer-events: none;
       animation: diagnoza-shadow-in 220ms ease;
     }
