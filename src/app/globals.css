@@ -1025,6 +1025,98 @@
     }
   }
 
+  /* WARM PARCHMENT — Diagnoza i wycena, MOBILE: same desktop MASTER OPEN-state
+     treatment above (real parchment card, dark-brown ink, entrance-animated
+     header shadow) ported to mobile width, scaled down proportionally to the
+     narrower mobile bleed (10px, same amount the CLOSED mobile card already
+     uses — see the max-width:767px rule near the top of this file) instead of
+     desktop's 24px. Scoped strictly to [data-section-id="diagnoza"], the only
+     card that also gets the header/content DOM split on mobile (see
+     isDiagnozaMobileSplit in service-accordion.tsx) — every other card on this
+     page, and every other /uslugi/[slug] page, keeps its original mobile
+     layout untouched. Mobile keeps its own flex-row item layout, not the
+     desktop <table> — only card chrome changes here, never structure/columns. */
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
+      background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+      background-size: 378px 82px;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 82px;
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] .zakres-price-header-text {
+      color: #3A2817;
+    }
+
+    /* Same soft shadow cast + entrance animation as desktop (diagnoza-shadow-in
+       keyframes defined above), insets/height scaled down for the narrower row. */
+    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+      position: relative;
+    }
+    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 8px;
+      right: 8px;
+      height: 12px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
+      z-index: 2;
+      pointer-events: none;
+      animation: diagnoza-shadow-in 220ms ease;
+    }
+
+    /* Open content: real parchment image + soft drop-shadow, same asset/
+       technique as desktop (see the <img> in service-accordion.tsx, which
+       renders regardless of viewport) — position:relative here just anchors
+       that <img> correctly. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] {
+      position: relative;
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      margin-right: -10px;
+      background: transparent;
+      color: #3A2817;
+    }
+
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div {
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-bottom: 24px;
+    }
+
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div > div {
+      outline: none;
+    }
+
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text,
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .price-value-text,
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .duration-value-text {
+      color: #3A2817;
+    }
+
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-caption-text {
+      color: #72502B;
+    }
+
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-text-isolated {
+      color: #72502B !important;
+    }
+
+    /* Row divider lines: same secondary ink tone as desktop, thin hairline —
+       was the semi-transparent white border meant for the old dark background
+       ([class*=...] avoids escaping the Tailwind border-white/20|30 utility
+       classes already on each mobile row in renderMobileServiceRow). */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [class*="border-white/20"],
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [class*="border-white/30"] {
+      border-color: #72502B;
+    }
+  }
+
   /* =========================
      FORM
      ========================= */

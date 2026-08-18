@@ -578,7 +578,7 @@ const renderMobileServiceRow = (
     >
       {/* Левая колонка - описание */}
       <div className="flex-1 min-w-0 pl-0.5">
-        <div className="font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
+        <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
         {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
@@ -1104,6 +1104,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             // since collapsed Content is 0px regardless of where it's parented.
             // Applies to every card on this page (not just diagnoza).
             const isOpenHeaderSplit = isWarmParchment && !isMobile
+            // Mobile: only "Diagnoza i wycena" reuses the same split (desktop MASTER
+            // parchment/shadow treatment for that one card only — every other card
+            // on this page keeps its original mobile layout untouched).
+            const isDiagnozaMobileSplit = isWarmParchment && isMobile && section.id === 'diagnoza'
+            const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
               "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
               isWarmParchment
@@ -1124,7 +1129,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 >
                   <div className={cn(
                     "flex items-center w-full text-left",
-                    isOpenHeaderSplit && section.id === 'diagnoza' && 'diagnoza-open-header-row'
+                    useSplitHeaderLayout && section.id === 'diagnoza' && 'diagnoza-open-header-row'
                   )}>
                     <div className="flex items-center flex-1 min-w-0">
                       <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
@@ -1444,7 +1449,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
+                                          'zakres-price-header-text flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
                                           section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                             ? 'justify-center'
                                             : 'justify-end',
@@ -2076,7 +2081,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   sectionRefs.current[section.id] = node
                 }}
               >
-                {isOpenHeaderSplit ? (
+                {useSplitHeaderLayout ? (
                   <>
                     <div className={headerWrapperClassName} data-section-id={section.id}>{triggerNode}</div>
                     <section data-open-header-split-content="true" data-section-id={section.id}>
