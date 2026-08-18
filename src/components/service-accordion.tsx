@@ -1588,9 +1588,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie'
                                           ? {
                                             side: 'top',
-                                            sideOffset: 4,
+                                            sideOffset: service.slug === 'serwis-laptopow' && section.id === 'diagnoza' ? 6 : 4,
                                             ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
-                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${service.slug === 'serwis-laptopow' && section.id === 'diagnoza' ? ' diagnoza-tooltip-content' : ''}`,
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
                                               backgroundSize: 'cover',

@@ -962,6 +962,27 @@
       margin-left: 0;
       gap: 0;
     }
+
+    /* "i" info icon next to "Cena, zł", OPEN Diagnoza header only: gap from
+       the text tightened to 5px (was 16px — parent flex gap-2 + the icon
+       span's own ml-1 margin + p-1 padding), nudged up 3px, and recolored
+       to match the label ink (#3A2817) — the default text-white/80 was
+       unreadable on the light parchment header background. */
+    .diagnoza-open-header-row .zakres-price-header-text > span:last-child {
+      margin-left: -7px;
+      position: relative;
+      top: -3px;
+      color: #3A2817;
+    }
+
+    /* Diagnoza price-header tooltip: Radix centers the popper on the whole
+       "Cena, zł" + icon row (its anchor), not the icon alone, and align/
+       alignOffset have no effect at align="center". Shift the whole content
+       box (arrow included, since it's a child) right by the fixed row-center
+       -> icon-center distance so it reads as centered on the icon instead. */
+    .diagnoza-tooltip-content {
+      transform: translateX(33px);
+    }
   }
 
   /* =========================
