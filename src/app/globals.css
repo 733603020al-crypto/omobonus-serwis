@@ -508,8 +508,8 @@
     margin-right: -24px;
     padding-left: 36px;
     padding-right: 36px;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 
   @media (max-width: 767px) {
@@ -586,11 +586,11 @@
      only font-size is touched here. Scoped to [data-state="closed"] so
      the OPEN title keeps its original size untouched. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-title-text {
-    font-size: 20px;
+    font-size: 22px;
   }
   @media (min-width: 768px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-title-text {
-      font-size: 22px;
+      font-size: 24px;
     }
   }
 
@@ -623,6 +623,193 @@
      untouched. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-cennik-link {
     margin-top: -4px;
+  }
+
+  /* WARM PARCHMENT — DESKTOP CLOSED-state only: image container 150px
+     wide, 76px tall (grown to fit the image with no top/bottom
+     protrusion — no overflow trick anymore). Image itself capped at
+     150x76, object-fit: contain (existing .object-contain class) so it
+     never distorts. Gap to text 16px -> 14px. Text block next to it:
+     flexible -> fixed 430px. Mobile and OPEN state untouched. */
+  @media (min-width: 768px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-img {
+      width: 150px;
+      height: 76px;
+      margin-right: 14px;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-img-media {
+      width: 150px;
+      height: 76px;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-header {
+      width: 430px;
+      flex: none;
+    }
+  }
+
+  /* WARM PARCHMENT — every card's OPEN header reuses the exact CLOSED
+     desktop visual 1:1: same baked torn-edge texture, same box
+     size/bleed/padding, same title size, same icon size/header width.
+     Every declaration below is a verbatim copy of the matching CLOSED
+     rule above (same file) — no new visual value is introduced, only the
+     selector is extended (via [data-state="open"]) so OPEN headers stop
+     falling back to the generic un-cropped tile texture. Wrapped in
+     min-width:768px only so mobile OPEN is untouched. AccordionContent
+     itself (the split-out content section below) is styled separately. */
+  @media (min-width: 768px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div::before {
+      background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
+      background-size: 896px 82px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
+      min-height: 82px;
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      padding-left: 36px;
+      padding-right: 36px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
+      font-size: 24px;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-img {
+      width: 150px;
+      height: 76px;
+      margin-right: 14px;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-img-media {
+      width: 150px;
+      height: 76px;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-header {
+      width: 430px;
+      flex: none;
+    }
+
+    /* Corner-fold at OPEN mirrors the same per-card distribution as
+       CLOSED above (1&4=top-right, 3=bottom-left, 2&5=none) — re-declared
+       verbatim so opening a card never changes which corner it folds. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(1)[data-state="open"]:not([data-faq-item="true"])>div::after,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(4)[data-state="open"]:not([data-faq-item="true"])>div::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+      background: linear-gradient(225deg, rgba(0, 0, 0, 0.18) 48%, rgba(255, 250, 235, 0.35) 52%, transparent 65%);
+      clip-path: polygon(100% 0, 100% 100%, 0 0);
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(3)[data-state="open"]:not([data-faq-item="true"])>div::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      bottom: 0;
+      left: 0;
+      top: auto;
+      right: auto;
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.18) 48%, rgba(255, 250, 235, 0.35) 52%, transparent 65%);
+      clip-path: polygon(0 100%, 100% 100%, 0 0);
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(2)[data-state="open"]:not([data-faq-item="true"])>div::after,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:nth-child(5)[data-state="open"]:not([data-faq-item="true"])>div::after {
+      content: none;
+    }
+
+    /* "Cena, zł" / "Czas realizacji" header labels: identical to the
+       section title's ink color instead of the site-wide white (which
+       has no contrast on this light parchment texture). Not new — the
+       exact color already used by .zakres-title-text above. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-price-header-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-time-header-text {
+      color: #3A2817;
+    }
+
+    /* Dojazd disclaimer note ("Nie mówimy, że dojazd..."): same secondary
+       ink tone as the "(do 5 km łącznie w obie strony)" caption elsewhere
+       on this page, not a new color — was near-white/illegible on this
+       light texture. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .dojazd-note-text {
+      color: #72502B;
+    }
+  }
+
+  /* WARM PARCHMENT — every card's OPEN content splits out of the header
+     wrapper into a sibling <section data-open-header-split-content="true">
+     (not nested inside it), so it never matches any existing
+     [data-slot="accordion-item"]>div rule above — no existing CLOSED/OPEN
+     selector is touched. Background/width mirrors the CLOSED header's
+     bleed technique. Text colors below reuse the two ink tones already
+     established for this page: #3A2817 (section-title color) for primary
+     text (service name, price value, duration value), #72502B
+     ("Zobacz cennik" link color) for secondary/parenthetical text — no
+     new color is introduced, only applied to table text that used to be
+     near-white (illegible on this light texture). */
+  @media (min-width: 768px) {
+    [data-open-header-split-content="true"] {
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      background: #efe3c8;
+      border-radius: 0 0 8px 8px;
+      color: #3A2817;
+    }
+
+    [data-open-header-split-content="true"] .service-description-text,
+    [data-open-header-split-content="true"] .price-value-text,
+    [data-open-header-split-content="true"] .duration-value-text {
+      color: #3A2817;
+    }
+
+    [data-open-header-split-content="true"] .parentheses-caption-text {
+      color: #72502B;
+    }
+
+    /* .parentheses-text-isolated carries a sitewide !important base color
+       (#cbb27c) — needs !important here too, or the override silently loses
+       to that base rule regardless of selector specificity. */
+    [data-open-header-split-content="true"] .parentheses-text-isolated {
+      color: #72502B !important;
+    }
+
+    /* Row title text (service name) slightly enlarged for readability on the
+       new light background — was 16px, kept below the price/duration cells'
+       size to avoid disturbing column layout/wrapping. */
+    [data-open-header-split-content="true"] .service-description-text {
+      font-size: 18px;
+    }
+
+    /* Remaining near-white emphasis lines ("zakres usługi obejmuje:",
+       "zakres PODSTAWOWY +", "Uwaga!!!") — same ink tone as the regular
+       row text above, not a new color. */
+    [data-open-header-split-content="true"] .emphasis-inline-text {
+      color: #3A2817;
+    }
+
+    /* FAQ: question titles match the primary ink tone, answers match the
+       secondary/caption tone — same two tokens as the rest of this page. */
+    [data-open-header-split-content="true"] .faq-question-title-text {
+      color: #3A2817;
+    }
+    [data-open-header-split-content="true"] .faq-answer-text {
+      color: #72502B;
+    }
   }
 
   /* =========================

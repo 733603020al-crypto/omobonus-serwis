@@ -297,7 +297,7 @@ export const renderPriceLines = (price: string, link?: string) => {
     return (
       <div
         key={key ? `${text}-${key}` : undefined}
-        className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]"
+        className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]"
       >
         {hasVariant ? (
           <>
@@ -357,7 +357,7 @@ export const renderPriceLines = (price: string, link?: string) => {
 }
 
 export const renderDurationValue = (value: string) => (
-  <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
+  <div className="duration-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
     {value}
   </div>
 )
@@ -379,7 +379,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           // Special handling for "zakres usługi obejmuje:", "zakres paketu obejmuje:", "zakres PODSTAWOWY +", "zakres STANDARD +", "zakres START +", "zakres BIZNES +" - white text, no parens
           if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
             return (
-              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
+              <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-1 first:mt-0">
                 {trimmed}
               </div>
             )
@@ -388,7 +388,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           // Special handling for "Uwaga!!!" - white text, no parens
           if (trimmed.startsWith('Uwaga!!!')) {
             return (
-              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
+              <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-1 first:mt-0">
                 {trimmed}
               </div>
             )
@@ -397,14 +397,14 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           // Special handling for bullet points - no parens, tighter spacing
           if (trimmed.startsWith('•')) {
             return (
-              <div key={idx} className="text-[14px] text-[#cbb27c] leading-[1.35] mt-[1px] pl-1">
+              <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-[1.35] mt-[1px] pl-1">
                 {trimmed}
               </div>
             )
           }
 
           return (
-            <div key={idx} className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
+            <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
               ({trimmed})
             </div>
           )
@@ -418,7 +418,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
 
   if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
     return (
-      <div className="text-[14px] text-white leading-relaxed">
+      <div className="emphasis-inline-text text-[14px] text-white leading-relaxed">
         {trimmed}
       </div>
     )
@@ -427,7 +427,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
   // Special handling for "Uwaga!!!" - white text, no parens
   if (trimmed.startsWith('Uwaga!!!')) {
     return (
-      <div className="text-[14px] text-white leading-relaxed">
+      <div className="emphasis-inline-text text-[14px] text-white leading-relaxed">
         {trimmed}
       </div>
     )
@@ -435,14 +435,14 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
 
   if (trimmed.startsWith('•')) {
     return (
-      <div className="text-[14px] text-[#cbb27c] leading-relaxed pl-1">
+      <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed pl-1">
         {trimmed}
       </div>
     )
   }
 
   return (
-    <div className="text-[14px] text-[#cbb27c] leading-relaxed">
+    <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">
       ({trimmed})
     </div>
   )
@@ -1094,45 +1094,55 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           data-main-accordion="true"
           data-parchment-variant={isWarmParchment ? 'warm' : undefined}
         >
-          {service.pricingSections.map((section, sectionIdx) => (
-            <AccordionItem
-              key={section.id}
-              value={section.id}
-              data-naprawy-main-section={section.id === 'naprawy' ? 'true' : undefined}
-              className={cn(
-                "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
-              )}
-              ref={node => {
-                sectionRefs.current[section.id] = node
-              }}
-            >
-              <div
-                className={cn(
-                  "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
-                  isWarmParchment
-                    ? ACCORDION_EDGE_CLASSES_FULL[sectionIdx % ACCORDION_EDGE_CLASSES_FULL.length]
-                    : ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
-                  isWarmParchment
-                    ? ACCORDION_ORIENT_CLASSES_FULL[sectionIdx % ACCORDION_ORIENT_CLASSES_FULL.length]
-                    : ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
-                  isWarmParchment
-                    ? ACCORDION_CORNER_CLASSES_FULL[sectionIdx % ACCORDION_CORNER_CLASSES_FULL.length]
-                    : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
-                )}
-              >
+          {service.pricingSections.map((section, sectionIdx) => {
+            // WARM PARCHMENT (serwis-laptopow) desktop: OPEN/CLOSED header split.
+            // Structural DOM change so AccordionContent is no longer nested inside
+            // the same parchment wrapper div as AccordionTrigger — see the two
+            // branches near the bottom of this callback. Not gated on open/closed
+            // state on purpose: keeping the DOM shape stable avoids remounting
+            // AccordionContent mid-animation. CLOSED looks identical either way
+            // since collapsed Content is 0px regardless of where it's parented.
+            // Applies to every card on this page (not just diagnoza).
+            const isOpenHeaderSplit = isWarmParchment && !isMobile
+            const headerWrapperClassName = cn(
+              "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
+              isWarmParchment
+                ? ACCORDION_EDGE_CLASSES_FULL[sectionIdx % ACCORDION_EDGE_CLASSES_FULL.length]
+                : ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
+              isWarmParchment
+                ? ACCORDION_ORIENT_CLASSES_FULL[sectionIdx % ACCORDION_ORIENT_CLASSES_FULL.length]
+                : ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
+              isWarmParchment
+                ? ACCORDION_CORNER_CLASSES_FULL[sectionIdx % ACCORDION_CORNER_CLASSES_FULL.length]
+                : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
+            )
+            const triggerNode = (
+              <>
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
                 <AccordionTrigger
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0 relative z-10"
                 >
                   <div className="flex items-center w-full text-left">
                     <div className="flex items-center flex-1 min-w-0">
-                      <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                      <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
                         <Image
-                          src={getIconForSection(section.id)}
+                          src={
+                            isWarmParchment && section.id === 'dojazd'
+                              ? '/images/accordion-icon-dojazd.webp'
+                              : isWarmParchment && section.id === 'diagnoza'
+                              ? '/images/accordion-icon-diagnoza.webp'
+                              : isWarmParchment && section.id === 'konserwacja'
+                              ? '/images/accordion-icon-czyszczenie.webp'
+                              : isWarmParchment && section.id === 'naprawy'
+                              ? '/images/accordion-icon-naprawy.webp'
+                              : isWarmParchment && section.id === 'faq'
+                              ? '/images/accordion-icon-faq.webp'
+                              : getIconForSection(section.id)
+                          }
                           alt={section.title}
                           width={50}
                           height={50}
-                          className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                          className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
                           unoptimized
                         />
                       </div>
@@ -1145,7 +1155,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' ? sectionHeaderRef2DZ :
                                   null
                         }
-                        className="flex-1 relative"
+                        className="zakres-debug-header flex-1 relative"
                       >
                         <div className="flex flex-col md:block">
                           <div className="flex items-start md:items-center gap-2 md:gap-0 md:flex-nowrap">
@@ -1357,7 +1367,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           )}
                         </div>
                         {section.id === 'dojazd' && isSectionOpen(section.id) && (
-                          <div className="mt-1 text-[12px] leading-snug text-[#f5f0df] max-w-[420px]">
+                          <div className="dojazd-note-text mt-1 text-[12px] leading-snug text-[#f5f0df] max-w-[420px]">
                             <div>{t.dojazdNote[0]}</div>
                             <div>{t.dojazdNote[1]}</div>
                           </div>
@@ -1529,7 +1539,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
+                                          'zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
                                           isDruk3DCustomSection(service.slug, section.id)
                                             ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
                                             : cn(
@@ -1632,7 +1642,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   : 'min-w-0'
                             )}
                           >
-                            <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
+                            <div className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
                               <div className="leading-[1.05]">{timeHeader}</div>
                               <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
                             </div>
@@ -1643,8 +1653,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     )}
                   </div>
                 </AccordionTrigger>
-
-                <AccordionContent
+              </>
+            )
+            const contentNode = (
+              <AccordionContent
                   data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
                   // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
                   // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
@@ -1719,7 +1731,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           ? 'div'
                                           : 'h4'
                                       const titleClassName = `font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
-                                        ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
+                                        ? 'faq-question-title-text text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
                                         : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
@@ -1789,7 +1801,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           )}>
                             {subcategory.answer ? (
                               <div
-                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${section.id === 'faq' ? 'pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${section.id === 'faq' ? 'faq-answer-text pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
                                 {subcategory.answer}
@@ -2048,9 +2060,33 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     </div>
                   )}
                 </AccordionContent>
-              </div>
-            </AccordionItem>
-          ))}
+            )
+            return (
+              <AccordionItem
+                key={section.id}
+                value={section.id}
+                data-naprawy-main-section={section.id === 'naprawy' ? 'true' : undefined}
+                className={cn(
+                  "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
+                )}
+                ref={node => {
+                  sectionRefs.current[section.id] = node
+                }}
+              >
+                {isOpenHeaderSplit ? (
+                  <>
+                    <div className={headerWrapperClassName}>{triggerNode}</div>
+                    <section data-open-header-split-content="true" data-section-id={section.id}>{contentNode}</section>
+                  </>
+                ) : (
+                  <div className={headerWrapperClassName}>
+                    {triggerNode}
+                    {contentNode}
+                  </div>
+                )}
+              </AccordionItem>
+            )
+          })}
         </Accordion>
       </div>
 
