@@ -1132,7 +1132,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     useSplitHeaderLayout && section.id === 'diagnoza' && 'diagnoza-open-header-row'
                   )}>
                     <div className="flex items-center flex-1 min-w-0">
-                      <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
+                      <div className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center group-data-[state=closed]:mr-2 md:group-data-[state=closed]:mr-4">
                         <Image
                           src={
                             isWarmParchment && section.id === 'dojazd'
@@ -1163,7 +1163,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' ? sectionHeaderRef2DZ :
                                   null
                         }
-                        className="zakres-debug-header flex-1 relative"
+                        className="zakres-debug-header flex-1 relative group-data-[state=closed]:flex-none group-data-[state=closed]:w-[212px] md:group-data-[state=closed]:flex-1 md:group-data-[state=closed]:w-auto"
                       >
                         <div className="flex flex-col md:block">
                           <div className="flex items-start md:items-center gap-2 md:gap-0 md:flex-nowrap">
@@ -1407,8 +1407,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               isDruk3DCustomSection(service.slug, section.id)
                                 ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? 'min-w-[96px] sm:min-w-[120px]'
-                                  : 'min-w-0 sm:min-w-[120px]'
+                                  ? 'min-w-[96px] sm:min-w-[120px] group-data-[state=closed]:w-[92px] group-data-[state=closed]:min-w-0 sm:group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                  : 'min-w-0 sm:min-w-[120px] group-data-[state=closed]:w-[92px] sm:group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
                             )}
                           >
                             {section.id === 'diagnoza' && (
