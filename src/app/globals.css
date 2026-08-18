@@ -691,6 +691,13 @@
       z-index: 2 !important;
     }
 
+    /* Diagnoza OPEN header only: kill the shared gold group-hover overlay
+       (first child of this div, see triggerNode in service-accordion.tsx) —
+       it read as a dark tint on the left third of this card on hover. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]:hover>div:first-child {
+      opacity: 0 !important;
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
       font-size: 24px;
     }
