@@ -1078,7 +1078,8 @@
     [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"]::after {
       content: '';
       position: absolute;
-      bottom: -28px;
+      top: 100%;
+      bottom: auto;
       left: 12px;
       right: 12px;
       height: 16px;
