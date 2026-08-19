@@ -1078,7 +1078,7 @@
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::after {
       content: '';
       position: absolute;
-      top: 100%;
+      top: calc(100% - 6px);
       left: 12px;
       right: 12px;
       height: 16px;
