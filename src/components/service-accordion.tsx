@@ -1427,7 +1427,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <span className={cn(
                                   "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
                                   isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]",
-                                  service.slug === 'serwis-laptopow' && "ml-[-5px] md:ml-0"
+                                  service.slug === 'serwis-laptopow' && "relative left-[-15px] md:left-0"
                                 )}>
                                   {t.gratisUpper}
                                 </span>
