@@ -1065,6 +1065,15 @@
       color: #3A2817;
     }
 
+    /* "i" info icon next to "Cena": 1:1 mirror of the desktop rule below
+       (gap/alignment/position relative to "Cena" text, same values). */
+    .diagnoza-open-header-row .zakres-price-header-text > span:last-child {
+      margin-left: -7px;
+      position: relative;
+      top: -3px;
+      color: #3A2817;
+    }
+
     /* Mobile mirror of the desktop fix above: kill the shared gold
        group-hover overlay (first child of this div, see triggerNode in
        service-accordion.tsx) — same left-side dark tint on hover/tap. */
