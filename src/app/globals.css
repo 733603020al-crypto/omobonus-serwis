@@ -1072,14 +1072,13 @@
       opacity: 0 !important;
     }
 
-    /* Same soft shadow cast + entrance animation as desktop, now anchored to
-       the trigger's own box (already position:relative) so it aligns with
-       the parchment header's true bottom edge (12px padding-bottom below). */
-    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"]::after {
+    /* Shadow anchored to the header wrapper div itself (already position:relative
+       via headerWrapperClassName) — measured via getBoundingClientRect() as the
+       element whose bottom edge matches the parchment's true visible bottom edge. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::after {
       content: '';
       position: absolute;
       top: 100%;
-      bottom: auto;
       left: 12px;
       right: 12px;
       height: 16px;
