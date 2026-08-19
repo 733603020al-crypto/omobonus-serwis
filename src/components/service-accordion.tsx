@@ -1497,7 +1497,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           }
                                         }}
                                       >
-                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                        <span className="inline sm:hidden">{service.slug === 'serwis-laptopow' ? priceHeaderFull : priceHeaderShort}</span>
                                         <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
                                           <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                         </span>
