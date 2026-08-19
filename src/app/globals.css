@@ -891,6 +891,12 @@
       border-bottom-width: 1px;
     }
 
+    /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
+       a gray tint across the row on this light parchment table. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:hover {
+      background-color: transparent !important;
+    }
+
     /* TEST — Diagnoza i wycena only: last row's divider stops ~28px short
        of the right edge instead of running into the parchment's
        bottom-right torn corner. Replaces the shared border-bottom above
@@ -1059,6 +1065,13 @@
       color: #3A2817;
     }
 
+    /* Mobile mirror of the desktop fix above: kill the shared gold
+       group-hover overlay (first child of this div, see triggerNode in
+       service-accordion.tsx) — same left-side dark tint on hover/tap. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]:hover>div:first-child {
+      opacity: 0 !important;
+    }
+
     /* Same soft shadow cast + entrance animation as desktop (diagnoza-shadow-in
        keyframes defined above), insets/height scaled down for the narrower row. */
     [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
@@ -1088,6 +1101,13 @@
       margin-right: -10px;
       background: transparent;
       color: #3A2817;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Same hover/tap darkening kill as desktop, in case the table renders
+       at this width (e.g. rows), plus the mobile tap-highlight above. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:hover {
+      background-color: transparent !important;
     }
 
     [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div {
