@@ -1129,12 +1129,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 >
                   <div className={cn(
                     "flex items-center w-full text-left",
-                    useSplitHeaderLayout && section.id === 'diagnoza' && 'diagnoza-open-header-row'
+                    useSplitHeaderLayout && section.id === 'diagnoza' && 'diagnoza-open-header-row',
+                    service.slug === 'serwis-laptopow' && section.id === 'diagnoza' && 'group-data-[state=open]:grid group-data-[state=open]:grid-cols-[1fr_auto] md:group-data-[state=open]:flex'
                   )}>
                     <div className="flex items-center flex-1 min-w-0">
                       <div className={cn(
                         "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center",
-                        service.slug === 'serwis-laptopow' && "group-data-[state=closed]:w-[115px] group-data-[state=closed]:h-[58px] md:group-data-[state=closed]:w-[50px] md:group-data-[state=closed]:h-[50px]"
+                        service.slug === 'serwis-laptopow' && "group-data-[state=closed]:w-[115px] group-data-[state=closed]:h-[58px] md:group-data-[state=closed]:w-[50px] md:group-data-[state=closed]:h-[50px]",
+                        service.slug === 'serwis-laptopow' && section.id === 'diagnoza' && "group-data-[state=open]:hidden md:group-data-[state=open]:flex"
                       )}>
                         <Image
                           src={
