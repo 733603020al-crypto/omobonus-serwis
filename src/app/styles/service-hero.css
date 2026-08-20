@@ -2,6 +2,19 @@
    SERVICE HERO IMAGE ANIMATION
    ========================= */
 
+/* Service-page hero → parchment background dissolve: same mask technique as
+   .hero-bg-fade on the homepage (globals.css), but a separate class — the
+   fixed height here is calibrated for the service-page hero geometry (ends
+   past the closed ServiceAccordion, near where GoogleReviews currently
+   starts), not the homepage's fold height. Kept independent of <main> height
+   so ServiceAccordion/submenu/table expansion never stretches or moves it. */
+.service-hero-bg-fade {
+  --service-hero-height: 1110px;
+  height: var(--service-hero-height);
+  -webkit-mask-image: linear-gradient(to top, transparent 0, black 240px);
+  mask-image: linear-gradient(to top, transparent 0, black 240px);
+}
+
 .service-hero-image-wrap {
   position: relative;
   isolation: isolate;

@@ -22,7 +22,7 @@ const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 // Per-service hero image scale relative to the fixed 400px/300px zone
 // (object-contain already caps at 100%; this intentionally overflows the zone).
 const HERO_SCALE: Record<string, number> = {
-  'serwis-laptopow': 1.5,
+  'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
   'serwis-plotterow': 1.4,
   'drukarka-zastepcza': 1.3,
@@ -105,7 +105,9 @@ interface SeoBlocksGridProps {
 
 function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   if (!items.length) return null
-  const wrapperClass = variant === 'related' ? 'pt-2 pb-6 md:pb-8' : 'pt-6 pb-24'
+  const wrapperClass = variant === 'related'
+    ? 'pt-2 pb-6 md:pb-8'
+    : slug === 'serwis-laptopow' ? 'pt-3 pb-24' : 'pt-6 pb-24'
   // Na druk-3d-na-zamowienie ten tekst nie ma być semantycznym H2 (nie jest
   // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
   const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : 'h2'
@@ -173,7 +175,7 @@ export function ServicePageTemplate({
       <Header locale={locale} />
       <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass}`}>
 
-        <div className="absolute inset-0">
+        <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
           <Image
             src="/images/omobonus-hero2.webp"
             alt="Omobonus serwis"
@@ -184,9 +186,18 @@ export function ServicePageTemplate({
             quality={60}
             className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="absolute inset-0 bg-black/50" />
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 -z-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
 
         <div className="relative">
           {pageClass ? (
@@ -319,8 +330,8 @@ export function ServicePageTemplate({
                   <BrandTicker brandNames={slugBrands} />
                 </div>
               )}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
-                <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 ${slug === 'serwis-laptopow' ? 'mb-3' : 'mb-6'}${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
+                <FadeSlideText className={`hidden md:block ${slug === 'serwis-laptopow' ? 'text-[20px]' : 'text-[18px]'} text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl`}>
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
