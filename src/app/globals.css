@@ -614,6 +614,33 @@
       transform: translateY(-4px) scale(1.04);
       box-shadow: 0 12px 20px rgba(35, 18, 8, 0.50);
     }
+    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]) {
+      position: relative;
+      z-index: 1;
+    }
+    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover {
+      transform: none !important;
+    }
+    [data-naprawy-subcategory="true"] [data-debug-subcategory-image] > img,
+    [data-naprawy-subcategory="true"] [data-debug-subcategory-text] {
+      transition: transform 180ms ease;
+      transform-origin: center;
+    }
+    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-debug-subcategory-image] > img {
+      transform: translateY(-3px) scale(1.06);
+    }
+    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-debug-subcategory-text] {
+      transform: translateY(-2px) scale(1.01);
+    }
+  }
+
+  /* WARM PARCHMENT — OPEN table, price column: same width/alignment/right
+     padding across every row (2nd table-cell). */
+  @media (min-width: 768px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [data-slot="table-cell"]:nth-child(2) {
+      text-align: center;
+      padding-right: 0;
+    }
   }
 
   /* WARM PARCHMENT — CLOSED-state vertical gap between the section title
@@ -680,7 +707,7 @@
        transform:scale, which would only look bigger without moving the
        actual box. Lifts ~2px. Height/padding/font stay on the shared rule
        above — not redeclared here. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       width: calc(100% + 72px);
       margin-left: -36px;
       margin-right: -36px;
@@ -694,7 +721,14 @@
     /* Diagnoza OPEN header only: kill the shared gold group-hover overlay
        (first child of this div, see triggerNode in service-accordion.tsx) —
        it read as a dark tint on the left third of this card on hover. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]:hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]):hover>div:first-child {
+      opacity: 0 !important;
+    }
+
+    /* Same overlay-kill, triggered by hovering the OPEN table below the
+       header (item-level :hover covers both), so lifting/hovering the
+       table no longer reveals the header's gold overlay on the left. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"])>div:first-child {
       opacity: 0 !important;
     }
 
@@ -773,6 +807,329 @@
     }
   }
 
+  /* WARM PARCHMENT — naprawy nested subcategory rows sit directly on the
+     shared big backdrop (see data-naprawy-main-section rule below), so
+     each row's own individual torn-parchment card (background/shadow/
+     corner-fold/bleed-sizing from the generic rules above) is stripped
+     here. Scoped via :not([data-slot="accordion-content"]) to the
+     trigger-row div only — the nested OPEN content div (its own
+     contact-form-parchment.webp backdrop from the diagnoza-reuse rules)
+     is untouched. Higher specificity (6 selectors) than every generic
+     rule above wins outright; source position after the OPEN corner-fold
+     block also wins the equal-specificity ties there. Existing
+     border-b/mb-1.5/pb-1.5 divider between rows (service-accordion.tsx)
+     is left as the only separation — nothing new added. */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+    box-shadow: none;
+    filter: none;
+    min-height: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before,
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::after {
+    content: none;
+    background-image: none;
+  }
+
+  /* Naprawy submenu rows: hide the built-in OPEN/CLOSED chevron (direct
+     svg child of AccordionTrigger) — the "Zobacz cennik" arrow lives in a
+     separate nested element and is untouched by this selector. */
+  [data-naprawy-subcategory="true"] [data-slot="accordion-trigger"] > svg {
+    display: none;
+  }
+
+  /* WARM PARCHMENT — naprawy top-level section: OPEN state swaps the
+     narrow per-card texture for one big shared backdrop (300/301 source
+     images) behind the whole collapsed-subcategory list. CLOSED state is
+     untouched (still the generic rule above). The AccordionItem itself is
+     the single containing-block wrapper: it alone carries the bleed +
+     position:relative + background:transparent (killing any
+     var(--bg-accordion-parchment) fallback); the backdrop <img>, the
+     header div and the content section are all plain width:100% inside
+     it, so nothing bleeds/offsets on its own anymore. */
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
+      background-image: url('/images/naprawy-open-parchment-mobile.webp');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: top center;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      box-shadow: none;
+      filter: none;
+      min-height: 0;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) {
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-right: -16px;
+      background: transparent;
+    }
+  }
+
+  /* WARM PARCHMENT — naprawy top-level: the AccordionItem is the containing
+     block for the shared backdrop <img> (position:relative, always on —
+     harmless at CLOSED since no img/bleed exists there). */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"] {
+    position: relative;
+  }
+
+  /* WARM PARCHMENT — naprawy wrapper (desktop OPEN): bleed +
+     background:transparent live on the Item itself only — same bleed
+     magnitude Diagnoza uses on its content section (48px / -24px each
+     side), reused as-is. Header div's own torn-image reuse/shadow/bleed
+     from the generic OPEN-header rule above is stripped down to plain
+     width:100% (position:relative;z-index:1 already comes from the base
+     accordion-item rule), since Naprawy is ONE continuous parchment sheet
+     from the header through all 7 submenu rows, not a split header+content
+     card like Diagnoza. */
+  @media (min-width: 768px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) {
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      background: transparent;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
+      box-shadow: none;
+      filter: none;
+      min-height: 0;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::after {
+      content: none;
+      background-image: none;
+    }
+  }
+
+  /* WARM PARCHMENT — naprawy desktop OPEN: programmatic slice of the shared
+     backdrop into header + row + bottom-tail segments (background-image /
+     background-position-y), replacing the old single full-height stretched
+     <img> (now md:hidden — mobile is untouched and keeps the old <img> +
+     its own ::before backdrop above). --naprawy-seg-size is computed once
+     from real DOM offsets/heights (service-accordion.tsx) and set on the
+     main AccordionItem, inherited by every segment; --naprawy-seg-y is set
+     per-segment. The row divider (border-b/border-t) moves from the
+     subcategory AccordionItem down to its own row-wrapper div here, so it
+     becomes a fixed segment cut instead of sliding under the open content. */
+  [data-naprawy-header-segment="true"] {
+    position: relative;
+  }
+
+  [data-naprawy-open-title="true"] {
+    transition: transform 180ms ease;
+  }
+
+  [data-naprawy-header-segment="true"]:hover [data-naprawy-open-title="true"] {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-inner="true"] {
+    visibility: hidden;
+  }
+
+  @media (min-width: 768px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
+      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp'), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%);
+      background-repeat: no-repeat, no-repeat;
+      background-size: var(--naprawy-seg-size), 100% 1px;
+      background-position: 0 var(--naprawy-seg-y, 0px), bottom left;
+      border-bottom: none;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-naprawy-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp'), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%);
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-size: var(--naprawy-seg-size), 100% 1px, 100% 1px;
+      background-position: 0 var(--naprawy-seg-y, 0px), bottom left, top left;
+      border-top: none;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    [data-naprawy-bottom-segment="true"] {
+      display: block;
+      height: var(--naprawy-tail-h, 0px);
+      margin-bottom: -20px;
+      overflow: visible;
+      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    [data-naprawy-first-row="true"] {
+      padding-top: 0 !important;
+      border-top-width: 0 !important;
+    }
+
+    [data-naprawy-subcategory="true"] {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    [data-naprawy-section="true"] > div {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+      border-top-width: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      border-left-width: 0 !important;
+      border-right-width: 0 !important;
+      width: 100%;
+    }
+
+    [data-naprawy-section="true"] {
+      margin-top: 0 !important;
+      border-top-width: 0 !important;
+      overflow: visible;
+    }
+
+    [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      overflow: visible;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
+      position: relative;
+      z-index: 30;
+      transform-origin: center center;
+      transform: scale(1.4);
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text] {
+      flex: 1 1 auto !important;
+      width: auto !important;
+      min-width: 0;
+      margin-left: 36px;
+    }
+
+    [data-debug-subcategory-text="true"] {
+      width: 50%;
+      flex: none;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
+      flex: 0 0 67%;
+      width: 67%;
+      max-width: 67%;
+      min-width: 0;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row > div:first-child {
+      position: absolute;
+      left: 67%;
+      width: 16.5%;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+      position: absolute;
+      left: 83.5%;
+      width: 16.5%;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
+      padding-left: 17px !important;
+      padding-right: 17px !important;
+    }
+
+    [data-nested-parchment="true"] {
+      width: calc(100% + 10px) !important;
+      margin-left: -5px !important;
+      margin-right: -5px !important;
+      padding-bottom: var(--naprawy-nested-extra-bottom, 30px);
+      overflow: hidden;
+    }
+
+    [data-nested-parchment="true"] > div {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+      top: calc(-1 * var(--naprawy-nested-extra-top, 8px) - 60px);
+      left: 0;
+      width: 100%;
+      height: calc(100% + var(--naprawy-nested-extra-top, 8px) + var(--naprawy-nested-extra-bottom, 22px) + 140px);
+    }
+
+    [data-nested-parchment="true"] > div > div.rounded-lg {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      border-color: transparent !important;
+    }
+
+  }
+
+  @media (max-width: 767px) {
+    [data-naprawy-bottom-segment="true"] {
+      height: 0;
+    }
+  }
+
   /* WARM PARCHMENT — every card's OPEN content splits out of the header
      wrapper into a sibling <section data-open-header-split-content="true">
      (not nested inside it), so it never matches any existing
@@ -784,7 +1141,22 @@
      ("Zobacz cennik" link color) for secondary/parenthetical text — no
      new color is introduced, only applied to table text that used to be
      near-white (illegible on this light texture). */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] {
+    padding-bottom: 4px;
+  }
+
+  [data-section-id="dojazd"] [data-slot="accordion-content"] > div {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: 0;
+  }
+
   @media (min-width: 768px) {
+    [data-slot="accordion-content"] > div,
+    [data-slot="accordion-content"] > div > div {
+      border-top: 0;
+    }
+
     [data-open-header-split-content="true"] {
       width: calc(100% + 48px);
       margin-left: -24px;
@@ -841,12 +1213,43 @@
        24px) so the sheet reads as slightly tucked under the header. The
        10px top overlap lives on the <img> itself (see JSX), not here, so
        it doesn't shift this box's own height/position. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       position: relative;
       width: calc(100% + 48px);
       margin-left: -24px;
       margin-right: -24px;
       background: transparent;
+    }
+
+    /* Naprawy OPEN content section: no page-edge bleed like diagnoza above
+       (matches the header's own plain width:100% now) and no cream
+       #efe3c8 fill — the shared backdrop <img> lives on the AccordionItem
+       ancestor now (service-accordion.tsx), so this section stays fully
+       transparent over it. */
+    [data-open-header-split-content="true"][data-section-id="naprawy"] {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      background: transparent;
+    }
+
+    /* Nested naprawy subcategory cards reuse all diagnoza OPEN styling
+       above (via the spoofed data-section-id="diagnoza"), but sit inside
+       their own indented card instead of at the page edge, so the -24px/
+       +48px bleed meant for the top-level sheet is wrong here — reset to
+       fill the nested card's own box instead. */
+    [data-open-header-split-content="true"][data-nested-parchment="true"] {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      background: transparent;
+      position: relative;
+    }
+
+    [data-nested-parchment="true"][data-state="closed"] > img {
+      display: none;
     }
 
     /* TEST — Diagnoza i wycena only: inset the whole table block 24px from
@@ -860,12 +1263,21 @@
        pushes the whole OPEN block — and the height:100% parchment <img>
        under it — taller automatically. Top offset/header and every row's
        own position/height above stay untouched. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
       margin-left: 24px;
       margin-right: 24px;
       padding-bottom: 48px;
       border-left: none;
       border-right: none;
+    }
+
+    /* naprawy: kill the same md:border-x/md:border-t (service-accordion.tsx:1729)
+       as two faint gold vertical lines over the shared 300/301 backdrop —
+       margin/padding above are diagnoza-only insets, not touched here. */
+    [data-open-header-split-content="true"][data-section-id="naprawy"] [data-slot="accordion-content"] > div {
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
     }
 
     /* TEST — Diagnoza i wycena only: kills the unified left/right/bottom
@@ -876,7 +1288,7 @@
        shared markup used by every service table, so scoped strictly to
        diagnoza. Top border on both wrappers is untouched (horizontal,
        matches "не ломать верх"), as are the table's own row dividers. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
       border-left: none;
       border-right: none;
       border-bottom: none;
@@ -886,14 +1298,18 @@
     /* Row divider lines: same secondary ink tone as the parenthetical
        caption text, thin 1px hairline — was a semi-transparent white
        border meant for the old dark background. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"] {
-      border-color: #72502B;
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"] {
+      border-color: rgba(114, 80, 43, 0.8);
       border-bottom-width: 1px;
+    }
+
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="konserwacja"]) [data-slot="table-row"]:first-child {
+      border-top: none;
     }
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -902,9 +1318,9 @@
        bottom-right torn corner. Replaces the shared border-bottom above
        with a gradient line that fades out at the same row width — every
        other row keeps the plain full-width border-bottom untouched. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:last-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:last-child {
       border-bottom: none;
-      background-image: linear-gradient(to right, #72502B 0, #72502B calc(100% - 56px), transparent calc(100% - 56px));
+      background-image: linear-gradient(to right, rgba(114, 80, 43, 0.8) 0, rgba(114, 80, 43, 0.8) calc(100% - 56px), transparent calc(100% - 56px));
       background-repeat: no-repeat;
       background-position: bottom left;
       background-size: 100% 1px;
@@ -914,12 +1330,12 @@
        problemu przez WhatsApp...)") matches the row's own main-text ink
        tone instead of the shared secondary #72502B — only its color
        changes, size stays as-is. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-caption-text {
       color: #332314;
       font-size: 15px;
       transform: translateY(-2px);
     }
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-text-isolated {
       color: #332314 !important;
       font-size: 13px !important;
       transform: translateY(-2px);
@@ -927,7 +1343,7 @@
 
     /* TEST — Diagnoza i wycena only: row title text 2px larger than the
        shared 18px every other OPEN card still uses. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
       color: #332314;
@@ -940,13 +1356,13 @@
        align-items:center replaces the lost vertical-align:middle from
        table-cell. Row border-color/last-row gradient divider above are
        unaffected — tr keeps its own box, only its internal layout changes. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] table {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) table {
       display: block;
     }
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] table tbody {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) table tbody {
       display: block;
     }
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"] {
       display: grid;
       grid-template-columns: 67% 16.5% 16.5%;
       align-items: center;
@@ -957,7 +1373,7 @@
        widths resolve against its own 67% column track instead, shrinking
        it to 67% of 67% and wrapping the text early. The grid track already
        constrains the width, so the extra cap is redundant; drop it. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-cell"]:first-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-cell"]:first-child {
       max-width: none;
     }
 
@@ -968,13 +1384,13 @@
        the trigger's own data-state is "open". .diagnoza-open-header-row is
        a bare marker class (no default styles) added only for this one
        card's header row in service-accordion.tsx. */
-    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
       display: grid;
       grid-template-columns: 67% 33%;
       align-items: center;
       position: relative;
     }
-    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-left: 0;
@@ -986,12 +1402,12 @@
        dedicated ::after (not box-shadow on the row itself) so it's
        independently animatable and its upward blur bleed stays inside the
        row's own opaque background instead of showing above the header. */
-    [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
+    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
       content: '';
       position: absolute;
       bottom: -14px;
-      left: 12px;
-      right: 12px;
+      left: -24px;
+      right: -24px;
       height: 16px;
       background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
       z-index: 2;
@@ -1007,6 +1423,25 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      position: relative;
+      z-index: 30;
+      overflow: visible;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::after {
+      content: '' !important;
+      position: absolute;
+      bottom: -14px;
+      left: -24px;
+      right: -24px;
+      height: 16px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
+      z-index: 20;
+      pointer-events: none;
+      animation: diagnoza-shadow-in 220ms ease;
     }
 
     /* "i" info icon next to "Cena, zł", OPEN Diagnoza header only: gap from
@@ -1036,21 +1471,21 @@
      header shadow) ported to mobile width, scaled down proportionally to the
      narrower mobile bleed (10px, same amount the CLOSED mobile card already
      uses — see the max-width:767px rule near the top of this file) instead of
-     desktop's 24px. Scoped strictly to [data-section-id="diagnoza"], the only
+     desktop's 24px. Scoped strictly to :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]), the only
      card that also gets the header/content DOM split on mobile (see
      isDiagnozaMobileSplit in service-accordion.tsx) — every other card on this
      page, and every other /uslugi/[slug] page, keeps its original mobile
      layout untouched. Mobile keeps its own flex-row item layout, not the
      desktop <table> — only card chrome changes here, never structure/columns. */
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-size: 100% 82px;
       background-repeat: no-repeat;
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       min-height: 82px;
       width: calc(100% + 32px);
       margin-left: -16px;
@@ -1061,8 +1496,13 @@
       padding-bottom: 12px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"] .zakres-price-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text {
+      font-size: 22px;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text {
       color: #3A2817;
+      font-size: 22px;
     }
 
     /* "i" info icon next to "Cena": 1:1 mirror of the desktop rule below
@@ -1077,19 +1517,25 @@
     /* Mobile mirror of the desktop fix above: kill the shared gold
        group-hover overlay (first child of this div, see triggerNode in
        service-accordion.tsx) — same left-side dark tint on hover/tap. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]:hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]):hover>div:first-child {
+      opacity: 0 !important;
+    }
+
+    /* Same overlay-kill, triggered by hovering the OPEN table below the
+       header (item-level :hover covers both). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])>div:first-child {
       opacity: 0 !important;
     }
 
     /* Shadow anchored to the header wrapper div itself (already position:relative
        via headerWrapperClassName) — measured via getBoundingClientRect() as the
        element whose bottom edge matches the parchment's true visible bottom edge. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::after {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::after {
       content: '';
       position: absolute;
       top: calc(100% - 6px);
-      left: 12px;
-      right: 12px;
+      left: 0;
+      right: 0;
       height: 16px;
       background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
       z-index: 2;
@@ -1101,7 +1547,7 @@
        technique as desktop (see the <img> in service-accordion.tsx, which
        renders regardless of viewport) — position:relative here just anchors
        that <img> correctly. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       position: relative;
       width: calc(100% + 20px);
       margin-left: -10px;
@@ -1109,40 +1555,59 @@
       background: transparent;
       color: #3A2817;
       -webkit-tap-highlight-color: transparent;
+      transform: translateY(-6px);
+    }
+
+    /* Nested naprawy subcategory cards: same reset as desktop, plus drop
+       the -6px nudge (tuned for tucking under the top-level CLOSED
+       header, not relevant to a nested card). */
+    [data-open-header-split-content="true"][data-nested-parchment="true"] {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      transform: none;
     }
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
       margin-left: 10px;
       margin-right: 10px;
-      padding-bottom: 24px;
+      padding-bottom: 48px;
     }
 
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [data-slot="accordion-content"] > div > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/20"]:last-child {
+      border-bottom: none;
+      background-image: linear-gradient(to right, rgba(114, 80, 43, 0.8) 0, rgba(114, 80, 43, 0.8) calc(100% - 36px), transparent calc(100% - 36px));
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-size: 100% 1px;
+    }
+
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
       outline: none;
     }
 
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text,
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .price-value-text,
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .duration-value-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .price-value-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .duration-value-text {
       color: #3A2817;
     }
 
     /* Service name 2px bigger than its parentheses caption text (14px) below it. */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text {
       font-size: 16px;
     }
 
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-caption-text {
       color: #72502B;
     }
 
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-text-isolated {
       color: #72502B !important;
     }
 
@@ -1150,9 +1615,56 @@
        was the semi-transparent white border meant for the old dark background
        ([class*=...] avoids escaping the Tailwind border-white/20|30 utility
        classes already on each mobile row in renderMobileServiceRow). */
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [class*="border-white/20"],
-    [data-open-header-split-content="true"][data-section-id="diagnoza"] [class*="border-white/30"] {
-      border-color: #72502B;
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/20"],
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/30"] {
+      border-color: rgba(114, 80, 43, 0.8);
+    }
+  }
+
+  /* WARM PARCHMENT — mobile table rows (all sections): name/parentheses/
+     price/duration sizes fixed (independent of the shared 13px/14px
+     responsive classes every other page still uses), name+parentheses
+     capped at 2 lines so long text never grows the row. */
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] .service-description-text {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.15;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] .parentheses-caption-text {
+      font-size: 13px;
+      line-height: 1.2;
+      margin-top: 2px;
+      font-family: var(--font-cormorant), serif;
+      font-weight: 500;
+      color: inherit;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] .price-value-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] .duration-value-text {
+      font-size: 14px;
+    }
+
+    /* OPEN table, price column: same width/alignment/right padding across
+       every row (2nd child of the mobile row div). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [class*="border-white/20"] > div:nth-child(2) {
+      width: 90px;
+      text-align: center;
+      padding-right: 0;
+    }
+
+    /* TEMP */
+    [data-parchment-variant="warm"][data-main-accordion="true"] .animate-accordion-down {
+      animation-duration: 2s;
     }
   }
 
