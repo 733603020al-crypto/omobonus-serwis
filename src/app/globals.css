@@ -831,7 +831,7 @@
     padding-bottom: 0;
   }
 
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before,
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"]):not([data-state="open"])>div:not([data-slot="accordion-content"])::before,
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::after {
     content: none;
     background-image: none;
@@ -946,33 +946,55 @@
 
   @media (min-width: 768px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
-      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp'), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%);
-      background-repeat: no-repeat, no-repeat;
-      background-size: var(--naprawy-seg-size), 100% 1px;
-      background-position: 0 var(--naprawy-seg-y, 0px), bottom left;
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
       border-bottom: none;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-naprawy-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp'), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%), linear-gradient(to right, transparent 0, transparent 17px, rgba(58, 40, 23, 0.28) 17px, rgba(58, 40, 23, 0.28) calc(100% - 17px), transparent calc(100% - 17px), transparent 100%);
-      background-repeat: no-repeat, no-repeat, no-repeat;
-      background-size: var(--naprawy-seg-size), 100% 1px, 100% 1px;
-      background-position: 0 var(--naprawy-seg-y, 0px), bottom left, top left;
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
       border-top: none;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+      position: relative;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-row-divider="true"] {
+      position: absolute;
+      left: 17px;
+      right: 17px;
+      bottom: 0;
+      height: 1px;
+      background: rgba(58, 40, 23, 0.30);
+      pointer-events: none;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-row-divider="true"] {
+      display: none;
+    }
+
+    [data-naprawy-subcategory="true"]:has(+ [data-naprawy-subcategory="true"][data-state="open"]) [data-naprawy-row-divider="true"] {
+      display: none;
     }
 
     [data-naprawy-bottom-segment="true"] {
@@ -980,7 +1002,7 @@
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: -20px;
       overflow: visible;
-      background-image: url('/images/naprawy-open-parchment-desktop-v15.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -994,6 +1016,81 @@
     [data-naprawy-subcategory="true"] {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
+    }
+
+    /* Naprawy OPEN row: no longer shows its own slice of the shared
+       naprawy-open-parchment-desktop-v16.webp canvas — that slice is
+       instead moved whole (see [data-naprawy-open-row-segment] below) to
+       sit under the table. Reuses the existing top-level warm-parchment
+       CLOSED-card asset (same file/size/position already used by
+       Diagnoza/Dojazd/Czyszczenie) for the row-wrapper itself. !important
+       needed to outrank the higher-specificity base canvas-background rule
+       above (~line 955). */
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp') !important;
+      background-size: var(--naprawy-seg-size) !important;
+      background-repeat: no-repeat !important;
+      background-position: 0 var(--naprawy-seg-y, 0px) !important;
+      z-index: auto;
+      isolation: auto;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      pointer-events: none;
+      background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
+      background-size: 896px 82px;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+      position: relative;
+      z-index: 4;
+    }
+
+    /* Two copies of the OPEN row's own canvas slice — fixed-height
+       (--naprawy-row-h each, restored) decorative filler pinned to the
+       bottom of the parchment container via `bottom`, not in-flow. Since
+       the container's own bottom edge is pushed to sit exactly on
+       RAGGED-ANCHOR ([data-naprawy-tail-spacer] flow spacer below, inside
+       [data-nested-parchment]), "bottom:0" here already lands on
+       RAGGED-ANCHOR with no separate formula needed. "lower" = nearest
+       RAGGED-ANCHOR; "upper" sits directly above it. Absolutely positioned
+       (child of the position:relative parchment container) so they never
+       affect flow height / where the next CLOSED row sits. Placed before
+       the table-parchment <img> in DOM so the img (also absolute) paints
+       above them. */
+    [data-naprawy-open-row-segment] {
+      display: none;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-row-segment] {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--naprawy-row-h, 0px);
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+      pointer-events: none;
+    }
+
+    [data-naprawy-open-row-segment="lower"] {
+      bottom: 0;
+    }
+
+    [data-naprawy-open-row-segment="upper"] {
+      bottom: var(--naprawy-row-h, 0px);
     }
 
     [data-naprawy-section="true"] > div {
@@ -1023,18 +1120,10 @@
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
-      position: relative;
-      z-index: 30;
-      transform-origin: center center;
-      transform: scale(1.4);
-    }
-
     [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text] {
       flex: 1 1 auto !important;
       width: auto !important;
       min-width: 0;
-      margin-left: 36px;
     }
 
     [data-debug-subcategory-text="true"] {
@@ -1049,58 +1138,27 @@
       width: 100%;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
-      flex: 0 0 67%;
-      width: 67%;
-      max-width: 67%;
-      min-width: 0;
-    }
-
-    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row {
-      position: absolute;
-      inset: 0;
-      display: block;
-    }
-
-    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row > div:first-child {
-      position: absolute;
-      left: 67%;
-      width: 16.5%;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    [data-naprawy-subcategory="true"][data-state="open"] .diagnoza-open-header-row > div:last-child {
-      position: absolute;
-      left: 83.5%;
-      width: 16.5%;
-      top: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
     [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
       padding-left: 17px !important;
       padding-right: 17px !important;
+      margin-bottom: 0;
     }
 
     [data-nested-parchment="true"] {
-      width: calc(100% + 10px) !important;
-      margin-left: -5px !important;
-      margin-right: -5px !important;
-      padding-bottom: var(--naprawy-nested-extra-bottom, 30px);
-      overflow: hidden;
+      position: relative;
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      overflow: visible;
+    }
+
+    /* Real-element flow spacer (afterContent, service-accordion.tsx), last
+       in-flow child of the container: pushes the container's own bottom
+       (and so the next CLOSED row's top) down onto the real RAGGED-ANCHOR
+       point. Height is set in JS from the actual measured gap between the
+       two real elements — no formula. */
+    [data-naprawy-tail-spacer="true"] {
+      display: block;
     }
 
     [data-nested-parchment="true"] > div {
@@ -1109,13 +1167,22 @@
     }
 
     [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
-      top: calc(-1 * var(--naprawy-nested-extra-top, 8px) - 60px);
-      left: 0;
-      width: 100%;
-      height: calc(100% + var(--naprawy-nested-extra-top, 8px) + var(--naprawy-nested-extra-bottom, 22px) + 140px);
+      filter: none !important;
+      z-index: 1;
+    }
+
+    /* Height is --naprawy-img-h (service-accordion.tsx): computed so the
+       image's own CURL-TOP pixel (source row 959/1121) lands exactly on the
+       WHITE table's real measured bottom edge — not a fixed row-count
+       formula. Fallback (pre-JS paint) assumes WHITE bottom ≈ container
+       100%, same 959/1121 scale, so it never visibly jumps. top:-68px kept
+       (JSX, untouched). */
+    [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+      height: var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) !important;
     }
 
     [data-nested-parchment="true"] > div > div.rounded-lg {
+      position: relative;
       width: 100%;
       margin-left: 0;
       margin-right: 0;
@@ -1146,7 +1213,6 @@
   }
 
   [data-section-id="dojazd"] [data-slot="accordion-content"] > div {
-    padding-top: 0;
     margin-top: 0;
     border-top: 0;
   }
@@ -1219,6 +1285,42 @@
       margin-left: -24px;
       margin-right: -24px;
       background: transparent;
+    }
+
+    /* Height is --diagnoza-img-h (service-accordion.tsx): computed so
+       the image's RAGGED-ANCHOR pixel (source row 1077/1121) lands exactly
+       on the next AccordionItem's top — same mechanism as the Naprawy
+       --naprawy-img-h rule above, just a different CONTENT-BOTTOM/
+       IMG_TOP_OFFSET (12px, not 68px). Fallback (pre-JS paint) assumes
+       CONTENT-BOTTOM ≈ container 100%, same 959/1121 scale, so it never
+       visibly jumps. top:-12px kept (JSX, untouched). Scoped to Diagnoza
+       only — Dojazd/Czyszczenie use the plain static img (no JS mechanism). */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      height: var(--diagnoza-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+
+    /* CLOSED cleanup: the OPEN img height (--diagnoza-img-h) can outlive the
+       collapsed (height:0) parchment host between JS reflow and the next
+       OPEN's recompute; hide the img whenever Diagnoza's own AccordionItem
+       isn't open so it never shows past the collapsed block's bounds. */
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
+    /* Same mechanism as Diagnoza above, ported 1:1 for Dojazd. */
+    [data-open-header-split-content="true"][data-section-id="dojazd"] > img.contact-form-parchment-shadow {
+      height: var(--dojazd-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="dojazd"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
+    /* Same mechanism as Diagnoza above, ported 1:1 for Czyszczenie i konserwacja. */
+    [data-open-header-split-content="true"][data-section-id="konserwacja"] > img.contact-form-parchment-shadow {
+      height: var(--konserwacja-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="konserwacja"] > img.contact-form-parchment-shadow {
+      display: none !important;
     }
 
     /* Naprawy OPEN content section: no page-edge bleed like diagnoza above
@@ -1309,21 +1411,8 @@
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
-    }
-
-    /* TEST — Diagnoza i wycena only: last row's divider stops ~28px short
-       of the right edge instead of running into the parchment's
-       bottom-right torn corner. Replaces the shared border-bottom above
-       with a gradient line that fades out at the same row width — every
-       other row keeps the plain full-width border-bottom untouched. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:last-child {
-      border-bottom: none;
-      background-image: linear-gradient(to right, rgba(114, 80, 43, 0.8) 0, rgba(114, 80, 43, 0.8) calc(100% - 56px), transparent calc(100% - 56px));
-      background-repeat: no-repeat;
-      background-position: bottom left;
-      background-size: 100% 1px;
     }
 
     /* TEST — Diagnoza i wycena only: parenthetical caption text (e.g. "(opis
@@ -1384,13 +1473,15 @@
        the trigger's own data-state is "open". .diagnoza-open-header-row is
        a bare marker class (no default styles) added only for this one
        card's header row in service-accordion.tsx. */
-    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
+    [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
       display: grid;
       grid-template-columns: 67% 33%;
       align-items: center;
       position: relative;
     }
-    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
+    [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > div:last-child {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-left: 0;
@@ -1427,21 +1518,29 @@
 
     [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       position: relative;
-      z-index: 30;
+      z-index: auto;
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::after {
-      content: '' !important;
+    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-header-shadow="true"] {
       position: absolute;
-      bottom: -14px;
-      left: -24px;
-      right: -24px;
+      left: 0;
+      right: 0;
+      top: calc(100% - 6px);
       height: 16px;
       background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
-      z-index: 20;
+      z-index: 2;
       pointer-events: none;
-      animation: diagnoza-shadow-in 220ms ease;
+      transform: translateY(-6px);
+    }
+
+    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-open-header-shadow="true"] {
+      display: none;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] {
+      position: relative;
+      z-index: 5;
     }
 
     /* "i" info icon next to "Cena, zł", OPEN Diagnoza header only: gap from
@@ -1558,6 +1657,28 @@
       transform: translateY(-6px);
     }
 
+    /* Mobile consumer for --diagnoza-img-h/--dojazd-img-h/--konserwacja-img-h
+       (service-accordion.tsx computes these on mobile too, no isMobile guard) —
+       same height/fallback/CLOSED-cleanup mechanism as the desktop rule above. */
+    [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      height: var(--diagnoza-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+    [data-open-header-split-content="true"][data-section-id="dojazd"] > img.contact-form-parchment-shadow {
+      height: var(--dojazd-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="dojazd"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+    [data-open-header-split-content="true"][data-section-id="konserwacja"] > img.contact-form-parchment-shadow {
+      height: var(--konserwacja-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="konserwacja"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
     /* Nested naprawy subcategory cards: same reset as desktop, plus drop
        the -6px nudge (tuned for tucking under the top-level CLOSED
        header, not relevant to a nested card). */
@@ -1570,7 +1691,7 @@
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -1580,12 +1701,9 @@
       padding-bottom: 48px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/20"]:last-child {
-      border-bottom: none;
-      background-image: linear-gradient(to right, rgba(114, 80, 43, 0.8) 0, rgba(114, 80, 43, 0.8) calc(100% - 36px), transparent calc(100% - 36px));
-      background-repeat: no-repeat;
-      background-position: bottom left;
-      background-size: 100% 1px;
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div:first-child {
+      margin-top: 10px;
+      border-top: 1px solid rgba(200, 169, 107, 0.3);
     }
 
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
@@ -2175,3 +2293,266 @@
     transform: scaleX(1);
   }
 }
+
+/* TEMP DEBUG OUTLINES v2 — separated DOM chain, distinct offsets, corner labels. Remove after use. */
+/* ===== DIAGNOZA OPEN chain ===== */
+[data-slot="accordion-item"]:has(> section[data-open-header-split-content="true"][data-section-id="diagnoza"]) {
+  position: relative; outline: 1px solid red !important; outline-offset: 0;
+}
+[data-slot="accordion-item"]:has(> section[data-open-header-split-content="true"][data-section-id="diagnoza"])::before {
+  content: "D-item"; color: red; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+div[data-section-id="diagnoza"]:not([data-slot="accordion-content"]) {
+  position: relative; outline: 1px solid orangered !important; outline-offset: 0;
+}
+div[data-section-id="diagnoza"]:not([data-slot="accordion-content"])::before {
+  content: "D-header"; color: orangered; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] {
+  outline: 1px solid gold !important; outline-offset: 0;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"]::before {
+  content: "D-section"; color: gold; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] > div.relative.z-10 {
+  outline: 1px solid yellow !important; outline-offset: -3px;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] > div.relative.z-10::before {
+  content: "D-wrap"; color: yellow; position: absolute; top: -3px; left: -3px; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] > div.relative.z-10 > [data-slot="accordion-content"] {
+  position: relative; outline: 1px solid khaki !important; outline-offset: -6px;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] > div.relative.z-10 > [data-slot="accordion-content"]::before {
+  content: "D-content"; color: khaki; position: absolute; top: -6px; left: -6px; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] .rounded-lg {
+  position: relative; outline: 1px solid white !important; outline-offset: 0;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] .rounded-lg::before {
+  content: "D-table"; color: white; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+section[data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+  outline: 1px solid lime !important; outline-offset: -9px;
+}
+
+/* ===== NAPRAWY OPEN chain ===== */
+[data-naprawy-subcategory="true"][data-state="closed"] { outline: 1px solid blue !important; }
+[data-naprawy-subcategory="true"][data-state="open"] {
+  position: relative; outline: 1px solid magenta !important; outline-offset: 0;
+}
+[data-naprawy-subcategory="true"][data-state="open"]::before {
+  content: "N-item"; color: magenta; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+[data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] {
+  position: relative; outline: 1px solid purple !important; outline-offset: 0;
+}
+[data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"]::before {
+  content: "N-header"; color: purple; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+/* [data-nested-parchment] IS the same node as AccordionContent (data-slot="accordion-content") for the repair subcategory — one element, both attributes, single outline */
+[data-nested-parchment="true"] {
+  outline: 1px solid green !important; outline-offset: 0;
+}
+[data-nested-parchment="true"]::before {
+  content: "N-AccordionContent+nested-parchment"; color: #7CFC7C; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+[data-nested-parchment="true"] > div {
+  position: relative; outline: 1px solid greenyellow !important; outline-offset: -3px;
+}
+[data-nested-parchment="true"] > div::before {
+  content: "N-content"; color: greenyellow; position: absolute; top: -3px; left: -3px; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+[data-nested-parchment="true"] .rounded-lg {
+  position: relative; outline: 1px solid white !important; outline-offset: -6px;
+}
+[data-nested-parchment="true"] .rounded-lg::before {
+  content: "N-table"; color: white; position: absolute; top: -6px; left: -6px; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+}
+[data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+  outline: 1px solid lime !important; outline-offset: -9px;
+}
+
+/* RAGGED-ANCHOR: permanent hidden anchor for the OPEN-block parchment's main
+   ragged edge — light-paper-to-dark-area boundary (R>150 & alpha>200 = paper),
+   NOT the semi-transparent shadow tail below it. Median per-column boundary
+   row across the central 20%-80% width band (folded corners excluded) = row
+   1077/1121 = 96.0749% down the source image, mapped through the real
+   scaled image height (--naprawy-img-h, service-accordion.tsx) via
+   calc(0.960749 * imgHeight - 68px) — top:-68px kept. Real DOM element
+   (sibling of the img). Hidden by default — add class "show-ragged-anchor"
+   to <html> in devtools to reveal for debug. */
+[data-ragged-anchor-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.960749 * var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) - 68px);
+  border-top: 4px solid red;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-ragged-anchor-marker="true"] {
+  display: block;
+}
+[data-ragged-anchor-marker="true"]::before {
+  content: "RAGGED-ANCHOR";
+  position: absolute; left: 0; top: 4px;
+  color: red; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — CURL-TOP: topmost point of the bottom-right paper curl fold on
+   contact-form-parchment.webp, source row 959/1121 (crease apex, not the
+   ragged edge, not the shadow). This is the point the whole OPEN parchment
+   height is now solved for (service-accordion.tsx): imgHeight is chosen so
+   this line lands exactly on the WHITE table's real bottom edge. */
+[data-curl-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.855486 * var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) - 68px);
+  border-top: 4px solid deepskyblue;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-curl-top-marker="true"] {
+  display: block;
+}
+[data-curl-top-marker="true"]::before {
+  content: "CURL-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — CLOSED-TOP: real measured top of the first CLOSED subcategory
+   (getBoundingClientRect, not a formula). top set inline via JS in
+   service-accordion.tsx. */
+[data-closed-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  border-top: 4px solid orange;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-closed-top-marker="true"] {
+  display: block;
+}
+[data-closed-top-marker="true"]::before {
+  content: "CLOSED-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: orange; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — runtime readout of the JS-computed tail-gap chain, written
+   as data-attributes in service-accordion.tsx (applyGeometry). Read-only
+   display, no effect on geometry. */
+[data-runtime-debug="true"] {
+  display: none; position: absolute; left: 0;
+  top: calc(0.960749 * var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) - 68px + 22px);
+  z-index: 2147483647; pointer-events: none;
+  white-space: pre;
+}
+html.show-ragged-anchor [data-runtime-debug="true"] {
+  display: block;
+}
+[data-runtime-debug="true"]::before {
+  content: "RAGGED-MARKER-Y: " attr(data-ragged-marker-y) "\A" "FIRST-CLOSED-Y: " attr(data-first-closed-y) "\A" "DIFF: " attr(data-diff);
+  display: block;
+  color: lime; font: 11px/1.4 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — CURL-TOP / RAGGED-ANCHOR for Diagnoza parchment only. Same
+   source fractions as the Naprawy markers above, distinct attribute names +
+   --diagnoza-img-h/12px so they don't read Naprawy's --naprawy-img-h/68px
+   formula. Hidden by default — add class "show-ragged-anchor" to <html> in
+   devtools to reveal for debug. */
+[data-diagnoza-ragged-anchor-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.960749 * var(--diagnoza-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid red;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-diagnoza-ragged-anchor-marker="true"] {
+  display: block;
+}
+[data-diagnoza-ragged-anchor-marker="true"]::before {
+  content: "RAGGED-ANCHOR";
+  position: absolute; left: 0; top: 4px;
+  color: red; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+[data-diagnoza-curl-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.855486 * var(--diagnoza-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid deepskyblue;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-diagnoza-curl-top-marker="true"] {
+  display: block;
+}
+[data-diagnoza-curl-top-marker="true"]::before {
+  content: "CURL-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — same mechanism as Diagnoza above, ported 1:1 for Dojazd. */
+[data-dojazd-ragged-anchor-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.960749 * var(--dojazd-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid red;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-dojazd-ragged-anchor-marker="true"] {
+  display: block;
+}
+[data-dojazd-ragged-anchor-marker="true"]::before {
+  content: "RAGGED-ANCHOR";
+  position: absolute; left: 0; top: 4px;
+  color: red; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+[data-dojazd-curl-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.855486 * var(--dojazd-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid deepskyblue;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-dojazd-curl-top-marker="true"] {
+  display: block;
+}
+[data-dojazd-curl-top-marker="true"]::before {
+  content: "CURL-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — same mechanism as Diagnoza above, ported 1:1 for Czyszczenie i konserwacja. */
+[data-konserwacja-ragged-anchor-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.960749 * var(--konserwacja-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid red;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-konserwacja-ragged-anchor-marker="true"] {
+  display: block;
+}
+[data-konserwacja-ragged-anchor-marker="true"]::before {
+  content: "RAGGED-ANCHOR";
+  position: absolute; left: 0; top: 4px;
+  color: red; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+[data-konserwacja-curl-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.855486 * var(--konserwacja-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid deepskyblue;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-konserwacja-curl-top-marker="true"] {
+  display: block;
+}
+[data-konserwacja-curl-top-marker="true"]::before {
+  content: "CURL-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+

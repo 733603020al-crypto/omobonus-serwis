@@ -830,7 +830,7 @@ const createLaptopPricingSections = (): PricingSection[] => {
     softwareSubcategory.items = [
       {
         service:
-          'Instalacja systemu Windows/Linux z aktualizacjami i sterownikami (bez zachowania danych) (Nie instalujemy oprogramowania bez ważnej i legalnej licencji. Pomagamy w zakupie licencji.)',
+          'Instalacja systemu Windows/Linux z aktualizacjami i sterownikami (bez zachowania danych) (system Windows instalujemy z licencją klienta. W razie jej braku pomagamy w zakupie odpowiedniej licencji)',
         price: '150 zł',
         duration: '1-2 dni',
       },
@@ -1206,7 +1206,7 @@ const applyDesktopSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.items = [
     {
       service:
-        'Instalacja systemu Windows/Linux z aktualizacjami i sterownikami (bez zachowania danych) (Nie instalujemy oprogramowania bez ważnej i legalnej licencji (pirackich wersji). Pomagamy w zakupie licencji.)',
+        'Instalacja systemu Windows/Linux z aktualizacjami i sterownikami (bez zachowania danych) (system Windows instalujemy z licencją klienta. W razie jej braku pomagamy w zakupie odpowiedniej licencji)',
       price: '150',
       duration: '1-2 dni',
     },
