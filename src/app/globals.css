@@ -613,8 +613,7 @@
       filter: none;
       transform: translateY(-4px) scale(1.04);
       box-shadow: 0 12px 20px rgba(35, 18, 8, 0.50);
-    }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]) {
+    }    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]) {
       position: relative;
       z-index: 1;
     }
@@ -708,10 +707,10 @@
        actual box. Lifts ~2px. Height/padding/font stay on the shared rule
        above — not redeclared here. */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
-      width: calc(100% + 72px);
-      margin-left: -36px;
-      margin-right: -36px;
-      transform: translateY(-2px);
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      transform: translateY(-4px) scale(1.04);
       /* Above the OPEN content section's own parchment <img> (sibling,
          extends -12px up into the header) so the header's own shadow
          casts visibly on top of it instead of being painted underneath. */
