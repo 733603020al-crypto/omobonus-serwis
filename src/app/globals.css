@@ -707,10 +707,10 @@
        actual box. Lifts ~2px. Height/padding/font stay on the shared rule
        above — not redeclared here. */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
-      width: calc(100% + 48px);
-      margin-left: -24px;
-      margin-right: -24px;
-      transform: translateY(-4px) scale(1.04);
+      width: calc(100% + 72px);
+      margin-left: -36px;
+      margin-right: -36px;
+      transform: translateY(-2px);
       /* Above the OPEN content section's own parchment <img> (sibling,
          extends -12px up into the header) so the header's own shadow
          casts visibly on top of it instead of being painted underneath. */
@@ -1143,6 +1143,11 @@
       margin-bottom: 0;
     }
 
+    [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"]::before {
+      content: none !important;
+      background-image: none !important;
+    }
+
     [data-nested-parchment="true"] {
       position: relative;
       width: 100% !important;
@@ -1176,7 +1181,7 @@
        formula. Fallback (pre-JS paint) assumes WHITE bottom ≈ container
        100%, same 959/1121 scale, so it never visibly jumps. top:-68px kept
        (JSX, untouched). */
-    [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+    [data-nested-parchment="true"][data-state="open"] > img.contact-form-parchment-shadow {
       height: var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) !important;
     }
 
@@ -1399,18 +1404,18 @@
     /* Row divider lines: same secondary ink tone as the parenthetical
        caption text, thin 1px hairline — was a semi-transparent white
        border meant for the old dark background. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
       border-color: rgba(114, 80, 43, 0.8);
       border-bottom-width: 1px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="konserwacja"]) [data-slot="table-row"]:first-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:first-child {
       border-top: none;
     }
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -1418,12 +1423,12 @@
        problemu przez WhatsApp...)") matches the row's own main-text ink
        tone instead of the shared secondary #72502B — only its color
        changes, size stays as-is. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
       color: #332314;
       font-size: 15px;
       transform: translateY(-2px);
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       color: #332314 !important;
       font-size: 13px !important;
       transform: translateY(-2px);
@@ -1431,7 +1436,7 @@
 
     /* TEST — Diagnoza i wycena only: row title text 2px larger than the
        shared 18px every other OPEN card still uses. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
       color: #332314;
@@ -1444,13 +1449,13 @@
        align-items:center replaces the lost vertical-align:middle from
        table-cell. Row border-color/last-row gradient divider above are
        unaffected — tr keeps its own box, only its internal layout changes. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) table {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) table {
       display: block;
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) table tbody {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) table tbody {
       display: block;
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-row"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
       display: grid;
       grid-template-columns: 67% 16.5% 16.5%;
       align-items: center;
@@ -1461,7 +1466,7 @@
        widths resolve against its own 67% column track instead, shrinking
        it to 67% of 67% and wrapping the text early. The grid track already
        constrains the width, so the extra cap is redundant; drop it. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="table-cell"]:first-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-cell"]:first-child {
       max-width: none;
     }
 
@@ -1690,7 +1695,7 @@
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -1709,22 +1714,22 @@
       outline: none;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .price-value-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .duration-value-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .price-value-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .duration-value-text {
       color: #3A2817;
     }
 
     /* Service name 2px bigger than its parentheses caption text (14px) below it. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 16px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
       color: #72502B;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       color: #72502B !important;
     }
 
@@ -1732,8 +1737,8 @@
        was the semi-transparent white border meant for the old dark background
        ([class*=...] avoids escaping the Tailwind border-white/20|30 utility
        classes already on each mobile row in renderMobileServiceRow). */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/20"],
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [class*="border-white/30"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/20"],
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
       border-color: rgba(114, 80, 43, 0.8);
     }
   }
@@ -1777,11 +1782,6 @@
       width: 90px;
       text-align: center;
       padding-right: 0;
-    }
-
-    /* TEMP */
-    [data-parchment-variant="warm"][data-main-accordion="true"] .animate-accordion-down {
-      animation-duration: 2s;
     }
   }
 

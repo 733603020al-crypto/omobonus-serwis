@@ -2295,7 +2295,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </AccordionTrigger>
                           <AccordionContent
                             data-open-header-split-content={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined}
-                            data-section-id={service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza' : undefined}
+                            data-section-id={service.slug === 'serwis-laptopow' && isRepairSection ? 'naprawy-nested' : undefined}
                             data-nested-parchment={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined}
                             beforeContent={service.slug === 'serwis-laptopow' && isRepairSection ? (
                               <>
