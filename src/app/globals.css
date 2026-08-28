@@ -717,6 +717,10 @@
       z-index: 2 !important;
     }
 
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+      transform: translateY(-4px) scale(1.04);
+    }
+
     /* Diagnoza OPEN header only: kill the shared gold group-hover overlay
        (first child of this div, see triggerNode in service-accordion.tsx) —
        it read as a dark tint on the left third of this card on hover. */
@@ -976,6 +980,20 @@
 
     [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
       position: relative;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+      transform: scale(1.04);
+      transform-origin: center;
     }
 
     [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-row-divider="true"] {

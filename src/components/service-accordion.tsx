@@ -1988,7 +1988,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       : "",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
-                      : "pt-3",
+                      : service.slug === 'serwis-laptopow' && ['diagnoza', 'dojazd', 'konserwacja', 'naprawy'].includes(section.id)
+                        ? "pt-[15px]"
+                        : "pt-3",
                     service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
                   )}
                 >
@@ -2662,6 +2664,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     <div
                       className={headerWrapperClassName}
                       data-section-id={section.id}
+                      data-top-level-service-header="true"
                       data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
                       ref={section.id === 'naprawy' ? naprawyHeaderSegmentRef : undefined}
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
