@@ -1195,7 +1195,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     }
     const CURL_TOP_FRACTION = 959 / 1121
     const RAGGED_ANCHOR_FRACTION = 1077 / 1121
-    const IMG_TOP_OFFSET = 12
+    const IMG_TOP_OFFSET = 25
     const applyGeometry = () => {
       const parchmentTop = parchmentEl.getBoundingClientRect().top
       const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
@@ -1472,6 +1472,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 ? ACCORDION_CORNER_CLASSES_FULL[sectionIdx % ACCORDION_CORNER_CLASSES_FULL.length]
                 : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
               section.id === 'dojazd' && isSectionOpen(section.id) && 'pt-1.5 pb-0',
+              section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
             )
             const triggerNode = (
               <>
@@ -2879,7 +2880,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             src="/images/contact-form-parchment.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
                           />
                           <span data-faq-curl-top-marker="true" aria-hidden="true" />
                           <span data-faq-ragged-anchor-marker="true" aria-hidden="true" />
