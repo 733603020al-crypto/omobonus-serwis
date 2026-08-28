@@ -812,6 +812,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const dojazdTailSpacerRef = useRef<HTMLDivElement | null>(null)
   const konserwacjaContentBottomRef = useRef<HTMLDivElement | null>(null)
   const konserwacjaTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const faqItemRef = useRef<HTMLDivElement | null>(null)
+  const faqContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const faqTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const faqInitialGapRef = useRef<number>(0)
+  const faqContentResizeRef = useRef<HTMLDivElement>(null)
   const [naprawySegmentMetrics, setNaprawySegmentMetrics] = useState<{
     containerWidth: number
     headerHeight: number
@@ -900,6 +905,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
 
   const handleSectionChange = (value: string | null) => {
+    if (value === 'faq' && openSection !== 'faq' && faqItemRef.current) {
+      const itemEl = faqItemRef.current
+      const nextEl = itemEl.nextElementSibling as HTMLElement | null
+      if (nextEl) {
+        faqInitialGapRef.current = nextEl.getBoundingClientRect().top - itemEl.getBoundingClientRect().bottom
+      }
+    }
     setOpenSection(prev => (prev === value ? null : value))
     setOpenSubcategory(null)
     if (!value || (service.slug === 'wynajem-drukarek' && value !== 'akordeon-1' && value !== 'akordeon-2')) {
@@ -1162,6 +1174,67 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     return () => window.removeEventListener('resize', applyGeometry)
   }, [service.slug, openSection])
 
+  // Same mechanism as Konserwacja above, ported for FAQ — own refs/CSS var, no
+  // price grid. Recomputed on openFaq too: unlike Konserwacja, FAQ content
+  // height changes each time a nested question is expanded/collapsed, so the
+  // body-bottom position must be re-measured. Spacer uses the real initial
+  // gap (faqInitialGapRef, captured pre-open in handleSectionChange) instead
+  // of a fixed 16px, since FAQ's gap to the next card isn't the same as
+  // Konserwacja's.
+  useLayoutEffect(() => {
+    if (service.slug !== 'serwis-laptopow') return
+    const contentBottomEl = faqContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const spacerEl = faqTailSpacerRef.current
+    if (openSection !== 'faq') {
+      parchmentEl.style.removeProperty('--faq-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12
+    const applyGeometry = () => {
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--faq-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextInfoBlockEl = spacerEl?.parentElement?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextInfoBlockEl) {
+        const currentSpacer = spacerEl.getBoundingClientRect().height
+        const nextTopY = nextInfoBlockEl.getBoundingClientRect().top
+        const baseNextTopY = nextTopY - currentSpacer
+        const nextSpacer = Math.max(
+          0,
+          raggedY + faqInitialGapRef.current - baseNextTopY
+        )
+        if (Math.abs(nextSpacer - currentSpacer) > 0.5) {
+          spacerEl.style.height = `${nextSpacer}px`
+        }
+      }
+    }
+    applyGeometry()
+    let faqRaf = 0
+    const faqObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(faqRaf)
+      faqRaf = requestAnimationFrame(applyGeometry)
+    })
+    if (openSection === 'faq' && faqContentResizeRef.current) {
+      faqObserver.observe(faqContentResizeRef.current)
+    }
+    window.addEventListener('resize', applyGeometry)
+    return () => {
+      window.removeEventListener('resize', applyGeometry)
+      faqObserver.disconnect()
+      cancelAnimationFrame(faqRaf)
+    }
+  }, [service.slug, openSection, openFaq])
+
   const getSubcategoryValue = (sectionId: string) =>
     sectionId === 'naprawy' ? openSubcategory ?? undefined : undefined
 
@@ -1418,7 +1491,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                           service.slug === 'serwis-laptopow' && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
                           service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
-                          service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
+                          service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
+                          service.slug === 'serwis-laptopow' && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          service.slug === 'serwis-laptopow' && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
                         )}>
                           <Image
                             src={
@@ -1468,6 +1543,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   return (
                                     <TitleTag className={cn(
                                       cn("zakres-title-text text-lg font-cormorant font-semibold transition-colors leading-tight", service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
+                                         compensation above (same 115px icon container × 1.4 scale = same
+                                         46px right-overflow), kept as its own condition rather than joining
+                                         the diagnoza/dojazd/konserwacja selector (FAQ has no price grid). */
+                                      service.slug === 'serwis-laptopow' && section.id === 'faq' && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0",
                                       isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col",
                                       service.slug === 'serwis-laptopow' && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
@@ -2000,10 +2080,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
                   style={service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
-                    "pb-3 scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
+                    "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
+                    !(service.slug === 'serwis-laptopow' && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
                     service.slug === 'serwis-laptopow' && section.id === 'konserwacja'
                       ? "max-h-none overflow-y-visible"
-                      : "max-h-[70vh] overflow-y-auto",
+                      : service.slug === 'serwis-laptopow' && section.id === 'faq'
+                        ? "overflow-visible"
+                        : "max-h-[70vh] overflow-y-auto",
                     service.slug === 'serwis-laptopow' && section.id === 'naprawy'
                       ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
                       : "",
@@ -2058,7 +2141,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             className={cn(
                               "hover:no-underline text-left w-full !focus-visible:ring-0 !focus-visible:outline-none focus-visible:ring-transparent transition-all duration-200",
                               section.id === 'faq'
-                                ? 'py-1 px-2 rounded-lg hover:border-[#ffecb3]/20'
+                                ? 'py-1 px-2 md:px-8 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                   ? service.slug === 'drukarka-zastepcza'
                                     ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
@@ -2118,8 +2201,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
                                           ? 'div'
                                           : 'h4'
-                                      const titleClassName = `${service.slug === 'serwis-laptopow' && isRepairSection ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && isRepairSection ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
-                                        ? 'faq-question-title-text text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
+                                      const titleClassName = `${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                        ? 'faq-question-title-text text-[18px] md:text-[22px] font-semibold text-[#3A2817] mb-0'
                                         : service.slug === 'serwis-laptopow' && isRepairSection
                                           ? 'zakres-title-text text-lg md:text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] group-data-[state=open]/subcategory:md:translate-x-[60px]'
                                           : 'text-lg font-semibold text-[#ffffff]'
@@ -2369,7 +2452,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           )}>
                             {subcategory.answer ? (
                               <div
-                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${section.id === 'faq' ? 'faq-answer-text pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text text-[14px] md:text-[15px] font-normal leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
                                 {subcategory.answer}
@@ -2511,15 +2594,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                       if (isFaqSection) {
                         return (
-                          <Accordion
-                            type="single"
-                            collapsible
-                            value={openFaq ?? undefined}
-                            onValueChange={value => setOpenFaq(value ?? null)}
-                            className="w-full"
-                          >
-                            {subcategoryItems}
-                          </Accordion>
+                          <>
+                            <Accordion
+                              ref={faqContentResizeRef}
+                              type="single"
+                              collapsible
+                              value={openFaq ?? undefined}
+                              onValueChange={value => setOpenFaq(value ?? null)}
+                              className="w-full"
+                            >
+                              {subcategoryItems}
+                            </Accordion>
+                            <div
+                              data-faq-content-bottom-marker="true"
+                              aria-hidden="true"
+                              ref={el => { faqContentBottomRef.current = el }}
+                            />
+                          </>
                         )
                       }
 
@@ -2671,6 +2762,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 )}
                 ref={node => {
                   sectionRefs.current[section.id] = node
+                  if (section.id === 'faq') faqItemRef.current = node
                 }}
                 style={section.id === 'naprawy' && naprawySegmentMetrics ? ({
                   '--naprawy-seg-size': `${naprawySegmentMetrics.containerWidth}px ${naprawySegmentMetrics.totalHeight}px`,
@@ -2777,6 +2869,22 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             style={{ height: 0 }}
                           />
                         </>
+                      ) : section.id === 'faq' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza/Czyszczenie above, ported 1:1 for
+                              FAQ. Height is --faq-img-h (service-accordion.tsx). Own refs
+                              (faqContentBottomRef/faqTailSpacerRef) — not the shared
+                              konserwacja ones, no price grid/columns here. */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                          />
+                          <span data-faq-curl-top-marker="true" aria-hidden="true" />
+                          <span data-faq-ragged-anchor-marker="true" aria-hidden="true" />
+                          <div className="relative z-10">{contentNode}</div>
+                        </>
                       ) : (
                         contentNode
                       )}
@@ -2817,6 +2925,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             </div>
           </div>
         </div>
+      )}
+      {service.slug === 'serwis-laptopow' && (
+        <div
+          data-faq-tail-spacer="true"
+          aria-hidden="true"
+          ref={el => { faqTailSpacerRef.current = el }}
+          style={{ height: 0 }}
+        />
       )}
     </div>
   )

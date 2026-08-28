@@ -735,6 +735,36 @@
       opacity: 0 !important;
     }
 
+    /* FAQ OPEN header, MASTER (desktop): standalone mirror of the Diagnoza/
+       Dojazd/Konserwacja OPEN header rules above — same property values,
+       but a separate selector so this never joins their shared :is() list
+       (FAQ has no price column / diagnoza-open-header-row grid). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] {
+      min-height: 82px;
+      width: calc(100% + 72px);
+      margin-left: -36px;
+      margin-right: -36px;
+      padding-left: 36px;
+      padding-right: 36px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      transform: translateY(-2px);
+      z-index: 2 !important;
+      overflow: visible;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-section-id="faq"] {
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]:hover>div:first-child {
+      opacity: 0 !important;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-section-id="faq"]>div:first-child {
+      opacity: 0 !important;
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
       font-size: 24px;
     }
@@ -1148,6 +1178,12 @@
       flex: none;
     }
 
+    [data-faq-item="true"] [data-debug-subcategory-text] {
+      width: auto;
+      flex: 1 1 0%;
+      min-width: 0;
+    }
+
     [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
       position: relative;
       display: flex;
@@ -1294,6 +1330,16 @@
       color: #72502B;
     }
 
+    [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+      font-family: inherit;
+      color: #72502B;
+    }
+    @media (min-width: 768px) {
+      [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+        color: #332314;
+      }
+    }
+
     /* TEST — Diagnoza i wycena only: real parchment image (same asset as
        /kontakt Formularz zgłoszeniowy) instead of the flat #efe3c8 fill
        every other OPEN card still uses. Kept 8px narrower per side than
@@ -1342,6 +1388,23 @@
       height: var(--konserwacja-img-h, calc((100% + 12px) * 1.168925)) !important;
     }
     [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="konserwacja"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
+    /* FAQ OPEN body parchment: standalone mirror of the Diagnoza/Dojazd/
+       Konserwacja rules above (own selector, not joined into their :is()
+       list — FAQ has no price grid/columns). */
+    [data-open-header-split-content="true"][data-section-id="faq"] {
+      position: relative;
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+      background: transparent;
+    }
+    [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+      height: var(--faq-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
       display: none !important;
     }
 
@@ -1617,6 +1680,27 @@
       padding-bottom: 12px;
     }
 
+    /* FAQ OPEN header, MASTER (mobile): standalone mirror of the Diagnoza/
+       Dojazd/Konserwacja OPEN header rules above — separate selector, not
+       part of their shared :is() list (no price column on FAQ). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]::before {
+      background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+      background-size: 100% 82px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] {
+      min-height: 82px;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-right: -16px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text {
       font-size: 22px;
     }
@@ -1652,6 +1736,28 @@
        via headerWrapperClassName) — measured via getBoundingClientRect() as the
        element whose bottom edge matches the parchment's true visible bottom edge. */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::after {
+      content: '';
+      position: absolute;
+      top: calc(100% - 6px);
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
+      z-index: 2;
+      pointer-events: none;
+      animation: diagnoza-shadow-in 220ms ease;
+    }
+
+    /* FAQ OPEN header, MASTER (mobile): standalone mirror, hover-kill + shadow. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]:hover>div:first-child {
+      opacity: 0 !important;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-section-id="faq"]>div:first-child {
+      opacity: 0 !important;
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]::after {
       content: '';
       position: absolute;
       top: calc(100% - 6px);
@@ -2567,6 +2673,38 @@ html.show-ragged-anchor [data-konserwacja-curl-top-marker="true"] {
   display: block;
 }
 [data-konserwacja-curl-top-marker="true"]::before {
+  content: "CURL-TOP";
+  position: absolute; left: 0; top: 4px;
+  color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+/* TEMP DEBUG — same mechanism as Konserwacja above, ported 1:1 for FAQ. */
+[data-faq-ragged-anchor-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.960749 * var(--faq-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid red;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-faq-ragged-anchor-marker="true"] {
+  display: block;
+}
+[data-faq-ragged-anchor-marker="true"]::before {
+  content: "RAGGED-ANCHOR";
+  position: absolute; left: 0; top: 4px;
+  color: red; font: 12px/1 monospace; font-weight: bold;
+  padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+[data-faq-curl-top-marker="true"] {
+  display: none; position: absolute; left: 0; right: 0;
+  top: calc(0.855486 * var(--faq-img-h, calc((100% + 12px) * 1.168925)) - 12px);
+  border-top: 4px solid deepskyblue;
+  z-index: 2147483647; pointer-events: none;
+}
+html.show-ragged-anchor [data-faq-curl-top-marker="true"] {
+  display: block;
+}
+[data-faq-curl-top-marker="true"]::before {
   content: "CURL-TOP";
   position: absolute; left: 0; top: 4px;
   color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
