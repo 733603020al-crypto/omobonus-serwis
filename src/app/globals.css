@@ -1331,7 +1331,7 @@
     }
 
     [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
-      font-family: inherit;
+      font-family: var(--font-cormorant), serif;
       color: #72502B;
     }
     @media (min-width: 768px) {
@@ -2709,5 +2709,74 @@ html.show-ragged-anchor [data-faq-curl-top-marker="true"] {
   position: absolute; left: 0; top: 4px;
   color: deepskyblue; font: 12px/1 monospace; font-weight: bold;
   padding: 2px 4px; background: rgba(0,0,0,0.85);
+}
+
+[data-faq-item="true"] {
+  position: relative;
+}
+[data-faq-item="true"]:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 1px;
+  background: rgba(114, 80, 43, 0.28);
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  [data-faq-item="true"]:not(:last-child)::after {
+    left: 32px;
+    right: 32px;
+  }
+}
+
+[data-faq-item="true"] [data-slot="accordion-trigger"] {
+  position: relative;
+  isolation: isolate;
+}
+[data-faq-item="true"] [data-slot="accordion-trigger"]::before {
+  content: "";
+  position: absolute;
+  inset: 2px 0;
+  z-index: -1;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(114, 80, 43, 0.11) 0%,
+    rgba(114, 80, 43, 0.06) 55%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.97);
+  transform-origin: left;
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+[data-faq-item="true"] .faq-question-title-text,
+[data-faq-item="true"] [data-slot="accordion-trigger"] svg {
+  transition: color 180ms ease, opacity 180ms ease;
+}
+[data-faq-item="true"] [data-slot="accordion-trigger"] svg {
+  opacity: 0.45;
+}
+[data-faq-item="true"] [data-slot="accordion-trigger"][data-state="open"]::before {
+  opacity: 0.55;
+  transform: scaleX(1);
+}
+[data-faq-item="true"] [data-slot="accordion-trigger"][data-state="open"] svg {
+  opacity: 0.9;
+}
+@media (hover: hover) and (pointer: fine) {
+  [data-faq-item="true"] [data-slot="accordion-trigger"]:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  [data-faq-item="true"] [data-slot="accordion-trigger"]:hover .faq-question-title-text {
+    color: #24170D;
+  }
+  [data-faq-item="true"] [data-slot="accordion-trigger"]:hover svg {
+    opacity: 0.9;
+  }
 }
 

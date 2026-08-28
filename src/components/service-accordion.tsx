@@ -2124,7 +2124,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isRepairSection && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
                             isRepairSection && index === 0 && 'md:pt-0',
                             section.id === 'faq'
-                              ? `border-b border-[#bfa76a]/30 mb-0.5 pb-0.5 ${index === 0 ? 'border-t border-[#bfa76a]/30 pt-0.5' : ''}`
+                              ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
                               : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                 ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
                                 : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
@@ -2202,7 +2202,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           ? 'div'
                                           : 'h4'
                                       const titleClassName = `${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
-                                        ? 'faq-question-title-text text-[18px] md:text-[22px] font-semibold text-[#3A2817] mb-0'
+                                        ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
                                         : service.slug === 'serwis-laptopow' && isRepairSection
                                           ? 'zakres-title-text text-lg md:text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] group-data-[state=open]/subcategory:md:translate-x-[60px]'
                                           : 'text-lg font-semibold text-[#ffffff]'
@@ -2452,7 +2452,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           )}>
                             {subcategory.answer ? (
                               <div
-                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text text-[14px] md:text-[15px] font-normal leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
                                 {subcategory.answer}
