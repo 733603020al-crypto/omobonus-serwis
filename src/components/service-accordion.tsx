@@ -983,33 +983,54 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
       const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
 
       const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]')
-      const firstClosedEl = accordionItemEl?.nextElementSibling as HTMLElement | null
       const spacerEl = naprawyTailSpacerRefs.current[openSubcategory]
+      // Universal by DOM position, not id: last subcategory has no next row
+      // in the nested Accordion.
+      const isLastSubcategory = accordionItemEl != null && accordionItemEl.nextElementSibling == null
 
-      // Real-element spacer: zero it first so re-runs (resize) measure the
-      // natural (pre-spacer) CLOSED-Y, not one already pushed by a stale gap.
-      if (spacerEl && firstClosedEl) {
-        spacerEl.style.height = '0px'
-        void spacerEl.offsetHeight
-        const closedY = firstClosedEl.getBoundingClientRect().top
-        const spacerH = Math.max(0, raggedY - closedY)
-        spacerEl.style.height = `${spacerH}px`
-      }
+      if (isLastSubcategory) {
+        // No next closed row / CLOSED-TOP to compute — align Naprawy's own
+        // bottom border-box edge (not the next top-level element) to
+        // RAGGED-ANCHOR. Whatever CSS margin/gap naturally follows Naprawy's
+        // own box (same classes as in CLOSED state, unaffected by inner
+        // content height) then reproduces the real CLOSED-to-next-top-level
+        // gap automatically — no hardcoded px, no id/name lookup.
+        const naprawyMainSectionEl = accordionItemEl?.closest('[data-naprawy-main-section="true"]') as HTMLElement | null
+        if (spacerEl && naprawyMainSectionEl) {
+          spacerEl.style.height = '0px'
+          void spacerEl.offsetHeight
+          const naprawyBottomY = naprawyMainSectionEl.getBoundingClientRect().bottom
+          const spacerH = Math.max(0, raggedY - naprawyBottomY)
+          spacerEl.style.height = `${spacerH}px`
+        }
+      } else {
+        const firstClosedEl = accordionItemEl?.nextElementSibling as HTMLElement | null
 
-      // Visual debug only — CLOSED-TOP marker mirrors the post-spacer result.
-      void parchmentEl.offsetHeight
-      const closedTopEl = naprawyClosedTopDebugRefs.current[openSubcategory]
-      if (closedTopEl && firstClosedEl) {
-        const finalClosedY = firstClosedEl.getBoundingClientRect().top - parchmentTop
-        closedTopEl.style.top = `${finalClosedY}px`
-      }
-      // Visual debug only — readout mirrors already-computed values.
-      const debugEl = naprawyDebugRefs.current[openSubcategory]
-      if (debugEl && firstClosedEl) {
-        const firstClosedYNow = firstClosedEl.getBoundingClientRect().top
-        debugEl.setAttribute('data-ragged-marker-y', Math.round(raggedY).toString())
-        debugEl.setAttribute('data-first-closed-y', Math.round(firstClosedYNow).toString())
-        debugEl.setAttribute('data-diff', Math.round(firstClosedYNow - raggedY).toString())
+        // Real-element spacer: zero it first so re-runs (resize) measure the
+        // natural (pre-spacer) CLOSED-Y, not one already pushed by a stale gap.
+        if (spacerEl && firstClosedEl) {
+          spacerEl.style.height = '0px'
+          void spacerEl.offsetHeight
+          const closedY = firstClosedEl.getBoundingClientRect().top
+          const spacerH = Math.max(0, raggedY - closedY)
+          spacerEl.style.height = `${spacerH}px`
+        }
+
+        // Visual debug only — CLOSED-TOP marker mirrors the post-spacer result.
+        void parchmentEl.offsetHeight
+        const closedTopEl = naprawyClosedTopDebugRefs.current[openSubcategory]
+        if (closedTopEl && firstClosedEl) {
+          const finalClosedY = firstClosedEl.getBoundingClientRect().top - parchmentTop
+          closedTopEl.style.top = `${finalClosedY}px`
+        }
+        // Visual debug only — readout mirrors already-computed values.
+        const debugEl = naprawyDebugRefs.current[openSubcategory]
+        if (debugEl && firstClosedEl) {
+          const firstClosedYNow = firstClosedEl.getBoundingClientRect().top
+          debugEl.setAttribute('data-ragged-marker-y', Math.round(raggedY).toString())
+          debugEl.setAttribute('data-first-closed-y', Math.round(firstClosedYNow).toString())
+          debugEl.setAttribute('data-diff', Math.round(firstClosedYNow - raggedY).toString())
+        }
       }
     }
     applyGeometry()
@@ -2013,6 +2034,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           value={subcategory.id}
                           data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
                           data-naprawy-first-row={isRepairSection && index === 0 ? 'true' : undefined}
+                          data-naprawy-last-row={isRepairSection && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
@@ -2301,8 +2323,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             data-nested-parchment={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined}
                             beforeContent={service.slug === 'serwis-laptopow' && isRepairSection ? (
                               <>
-                                <span data-naprawy-open-row-segment="upper" aria-hidden="true" />
-                                <span data-naprawy-open-row-segment="lower" aria-hidden="true" />
+                                {index !== (section.subcategories?.length ?? 0) - 1 && (
+                                  <>
+                                    <span data-naprawy-open-row-segment="upper" aria-hidden="true" />
+                                    <span data-naprawy-open-row-segment="lower" aria-hidden="true" />
+                                  </>
+                                )}
                                 <img
                                   src="/images/contact-form-parchment.webp"
                                   alt=""
@@ -2458,6 +2484,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         const bottomTailY = naprawySegmentMetrics
                           ? naprawySegmentMetrics.headerHeight + naprawySegmentMetrics.rowHeights.reduce((a, b) => a + b, 0)
                           : 0
+                        const isLastSubcategoryOpen = !!openSubcategory
+                          && section.subcategories![section.subcategories!.length - 1]?.id === openSubcategory
                         return (
                           <>
                             <Accordion
@@ -2473,7 +2501,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             <div
                               data-naprawy-bottom-segment="true"
                               style={{
-                                '--naprawy-tail-h': naprawySegmentMetrics ? `${naprawySegmentMetrics.bottomTailHeight}px` : '0px',
+                                '--naprawy-tail-h': isLastSubcategoryOpen ? '0px' : naprawySegmentMetrics ? `${naprawySegmentMetrics.bottomTailHeight}px` : '0px',
                                 '--naprawy-seg-y': `-${bottomTailY}px`,
                               } as React.CSSProperties}
                             />
