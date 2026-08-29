@@ -528,6 +528,14 @@
     }
   }
 
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::before {
+    background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
+    background-size: 896px 82px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-section-id="faq"] {
     overflow: visible;
     z-index: 2;
@@ -654,9 +662,9 @@
       transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div:hover {
-      filter: none;
+      filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.3));
       transform: translateY(-4px);
-      box-shadow: 0 12px 20px rgba(35, 18, 8, 0.50);
+      box-shadow: none;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div:hover::before {
       scale: 1.04;
@@ -1622,23 +1630,6 @@
       gap: 0;
     }
 
-    /* OPEN Diagnoza header only: soft shadow cast onto the table below,
-       entrance-animated (fade + 8px settle) when the header opens. A
-       dedicated ::after (not box-shadow on the row itself) so it's
-       independently animatable and its upward blur bleed stays inside the
-       row's own opaque background instead of showing above the header. */
-    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row::after {
-      content: '';
-      position: absolute;
-      bottom: -14px;
-      left: -24px;
-      right: -24px;
-      height: 16px;
-      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
-      z-index: 2;
-      pointer-events: none;
-      animation: diagnoza-shadow-in 220ms ease;
-    }
     @keyframes diagnoza-shadow-in {
       from {
         opacity: 0;
@@ -2471,7 +2462,7 @@ div[data-section-id="diagnoza"]:not([data-slot="accordion-content"]) {
   position: relative; outline: 1px solid orangered !important; outline-offset: 0;
 }
 div[data-section-id="diagnoza"]:not([data-slot="accordion-content"])::before {
-  content: "D-header"; color: orangered; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; background: rgba(0,0,0,0.8); z-index: 99999; pointer-events: none;
+  content: "D-header"; color: orangered; position: absolute; top: 0; left: 0; font: 9px/1 monospace; padding: 1px 3px; z-index: 99999; pointer-events: none;
 }
 section[data-open-header-split-content="true"][data-section-id="diagnoza"] {
   outline: 1px solid gold !important; outline-offset: 0;
