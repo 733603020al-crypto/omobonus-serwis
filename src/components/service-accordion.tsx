@@ -1473,6 +1473,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
               section.id === 'dojazd' && isSectionOpen(section.id) && 'pt-1.5 pb-0',
               section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
+              ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
             )
             const triggerNode = (
               <>
@@ -1513,7 +1514,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             alt={section.title}
                             width={50}
                             height={50}
-                            className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                            className={cn(
+                              "zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                              !isSectionOpen(section.id) && 'parchment-shadow-icon-closed'
+                            )}
                             unoptimized
                           />
                         </div>
@@ -2160,25 +2164,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
                                   <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[115px] h-[58px] md:w-[50px] md:h-[50px] flex-shrink-0 flex items-center justify-center relative md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Oprogramowanie' && (
-                                      <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
-                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Układ chłodzenia i czystość' && (
-                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Dyski i dane' && (
-                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Odzyskanie / usuwanie danych' && (
-                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Ekran i obudowa' && (
-                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                     {subcategory.title === 'Klawiatura / touchpad' && (
-                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className="zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity" />
+                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
                                     )}
                                   </div>
                                 )}
@@ -2417,7 +2421,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   src="/images/contact-form-parchment.webp"
                                   alt=""
                                   aria-hidden="true"
-                                  className="h-full absolute bottom-0 -top-[68px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                                  className={cn(
+                                    "h-full absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none",
+                                    isSubcategoryOpen(section.id, subcategory.id) ? 'parchment-shadow-content' : 'contact-form-parchment-shadow',
+                                  )}
                                   style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
                                 />
                                 <span
@@ -2818,7 +2825,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             src="/images/contact-form-parchment.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
                           <span data-diagnoza-curl-top-marker="true" aria-hidden="true" />
                           <span data-diagnoza-ragged-anchor-marker="true" aria-hidden="true" />
@@ -2838,7 +2845,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             src="/images/contact-form-parchment.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
                           <span data-dojazd-curl-top-marker="true" aria-hidden="true" />
                           <span data-dojazd-ragged-anchor-marker="true" aria-hidden="true" />
@@ -2858,7 +2865,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             src="/images/contact-form-parchment.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
                           <span data-konserwacja-curl-top-marker="true" aria-hidden="true" />
                           <span data-konserwacja-ragged-anchor-marker="true" aria-hidden="true" />
@@ -2880,7 +2887,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             src="/images/contact-form-parchment.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow pointer-events-none select-none"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
                           <span data-faq-curl-top-marker="true" aria-hidden="true" />
                           <span data-faq-ragged-anchor-marker="true" aria-hidden="true" />
