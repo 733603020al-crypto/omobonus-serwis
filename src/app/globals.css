@@ -98,19 +98,40 @@
       drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22)) !important;
   }
 
+  /* OPEN top-level header (diagnoza/dojazd/konserwacja/faq) hover: only the
+     existing foreground wrapper (icon+title+price+time) lifts 2px — the
+     parchment plate and its shadow (own filter above) stay still. */
+  .parchment-shadow-header > .flex {
+    transition: transform 200ms ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .parchment-shadow-header:hover > .flex {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Standard: OPEN-state icon shadow — main-category icons and Naprawy subcategory icons, applied directly to the <img>. */
+  .parchment-shadow-icon-open {
+    filter:
+      drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
+      drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
+      drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22));
+  }
+
   /* Standard: OPEN top-level accordion content — the big unrolled paper <img> below the header. */
   .parchment-shadow-content {
     filter:
-      drop-shadow(0 6px 4px rgba(24, 12, 5, 0.72))
-      drop-shadow(0 18px 12px rgba(34, 17, 7, 0.42))
-      drop-shadow(0 34px 24px rgba(47, 24, 10, 0.20));
+      drop-shadow(0 4px 3px rgba(24, 12, 5, 0.74))
+      drop-shadow(0 10px 7px rgba(34, 17, 7, 0.38))
+      drop-shadow(0 18px 12px rgba(47, 24, 10, 0.14));
   }
 
   /* Standard: CLOSED-state icon shadow — main-category icons and Naprawy subcategory icons. */
   .parchment-shadow-icon-closed {
     filter:
-      drop-shadow(0 3px 2px rgba(24, 12, 5, 0.38))
-      drop-shadow(0 7px 6px rgba(34, 17, 7, 0.20));
+      drop-shadow(0 4px 2px rgba(24, 12, 5, 0.58))
+      drop-shadow(0 10px 7px rgba(34, 17, 7, 0.32));
   }
 
   /* Standard: alpha-contour drop-shadow for a parchment image/illustration
@@ -1177,12 +1198,14 @@
       background-position: center bottom;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before,
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] [data-debug-subcategory-image="true"] img {
+    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
       filter:
         drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
         drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
-        drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22));
+        drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22))
+        drop-shadow(0 -4px 3px rgba(24, 12, 5, 0.52))
+        drop-shadow(0 -10px 8px rgba(34, 17, 7, 0.28))
+        drop-shadow(0 -18px 14px rgba(47, 24, 10, 0.12));
     }
 
     [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
@@ -1312,7 +1335,7 @@
       margin-right: 0 !important;
     }
 
-    [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+    [data-nested-parchment="true"]:not([data-state="open"]) > img.contact-form-parchment-shadow {
       filter: none !important;
       z-index: 1;
     }
@@ -1326,6 +1349,15 @@
     [data-nested-parchment="true"][data-state="open"] > img.contact-form-parchment-shadow {
       height: var(--naprawy-img-h, calc((100% + 68px) * 1.168925)) !important;
     }
+
+    [data-nested-parchment="true"][data-state="open"] > img.contact-form-parchment-shadow.parchment-shadow-content {
+      filter:
+        drop-shadow(0 4px 3px rgba(24, 12, 5, 0.74))
+        drop-shadow(0 10px 7px rgba(34, 17, 7, 0.38))
+        drop-shadow(0 18px 12px rgba(47, 24, 10, 0.14));
+    }
+
+
 
     [data-nested-parchment="true"] > div > div.rounded-lg {
       position: relative;

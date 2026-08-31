@@ -1024,7 +1024,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           spacerEl.style.height = '0px'
           void spacerEl.offsetHeight
           const closedY = firstClosedEl.getBoundingClientRect().top
-          const spacerH = Math.max(0, raggedY - closedY)
+          const spacerH = Math.max(0, (raggedY + 15) - closedY)
           spacerEl.style.height = `${spacerH}px`
         }
 
@@ -2164,25 +2164,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
                                   <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[115px] h-[58px] md:w-[50px] md:h-[50px] flex-shrink-0 flex items-center justify-center relative md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Oprogramowanie' && (
-                                      <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
-                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Układ chłodzenia i czystość' && (
-                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Dyski i dane' && (
-                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Odzyskanie / usuwanie danych' && (
-                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Ekran i obudowa' && (
-                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Klawiatura / touchpad' && (
-                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed')} />
+                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                   </div>
                                 )}
@@ -2423,7 +2423,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   aria-hidden="true"
                                   className={cn(
                                     "h-full absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none",
-                                    isSubcategoryOpen(section.id, subcategory.id) ? 'parchment-shadow-content' : 'contact-form-parchment-shadow',
+                                    isSubcategoryOpen(section.id, subcategory.id) ? 'contact-form-parchment-shadow parchment-shadow-content' : 'contact-form-parchment-shadow',
                                   )}
                                   style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
                                 />
