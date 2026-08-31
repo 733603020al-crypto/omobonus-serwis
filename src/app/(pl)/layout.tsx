@@ -118,7 +118,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pl"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable} show-ragged-anchor`}
+      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
       suppressHydrationWarning
     >
       <head>

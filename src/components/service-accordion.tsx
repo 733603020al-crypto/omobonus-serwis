@@ -802,9 +802,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // "closed sheet" baseline) — reused as-is while a row is open.
   const naprawyHeaderSegmentRef = useRef<HTMLDivElement | null>(null)
   const naprawyNestedTableRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-  const naprawyDebugRefs = useRef<{ [key: string]: HTMLSpanElement | null }>({}) // TEMP DEBUG
-  const naprawyClosedTopDebugRefs = useRef<{ [key: string]: HTMLSpanElement | null }>({}) // TEMP DEBUG
-  const naprawyRaggedAnchorDebugRefs = useRef<{ [key: string]: HTMLSpanElement | null }>({}) // TEMP DEBUG
   const naprawyTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const diagnozaContentBottomRef = useRef<HTMLDivElement | null>(null)
   const diagnozaTailSpacerRef = useRef<HTMLDivElement | null>(null)
@@ -1026,22 +1023,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           const closedY = firstClosedEl.getBoundingClientRect().top
           const spacerH = Math.max(0, (raggedY + 15) - closedY)
           spacerEl.style.height = `${spacerH}px`
-        }
-
-        // Visual debug only — CLOSED-TOP marker mirrors the post-spacer result.
-        void parchmentEl.offsetHeight
-        const closedTopEl = naprawyClosedTopDebugRefs.current[openSubcategory]
-        if (closedTopEl && firstClosedEl) {
-          const finalClosedY = firstClosedEl.getBoundingClientRect().top - parchmentTop
-          closedTopEl.style.top = `${finalClosedY}px`
-        }
-        // Visual debug only — readout mirrors already-computed values.
-        const debugEl = naprawyDebugRefs.current[openSubcategory]
-        if (debugEl && firstClosedEl) {
-          const firstClosedYNow = firstClosedEl.getBoundingClientRect().top
-          debugEl.setAttribute('data-ragged-marker-y', Math.round(raggedY).toString())
-          debugEl.setAttribute('data-first-closed-y', Math.round(firstClosedYNow).toString())
-          debugEl.setAttribute('data-diff', Math.round(firstClosedYNow - raggedY).toString())
         }
       }
     }
@@ -2427,22 +2408,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   )}
                                   style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
                                 />
-                                <span
-                                  data-ragged-anchor-marker="true"
-                                  aria-hidden="true"
-                                  ref={el => { naprawyRaggedAnchorDebugRefs.current[subcategory.id] = el }}
-                                />
-                                <span data-curl-top-marker="true" aria-hidden="true" />
-                                <span
-                                  data-runtime-debug="true"
-                                  aria-hidden="true"
-                                  ref={el => { naprawyDebugRefs.current[subcategory.id] = el }}
-                                />
-                                <span
-                                  data-closed-top-marker="true"
-                                  aria-hidden="true"
-                                  ref={el => { naprawyClosedTopDebugRefs.current[subcategory.id] = el }}
-                                />
                               </>
                             ) : undefined}
                             afterContent={service.slug === 'serwis-laptopow' && isRepairSection ? (
@@ -2827,8 +2792,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
-                          <span data-diagnoza-curl-top-marker="true" aria-hidden="true" />
-                          <span data-diagnoza-ragged-anchor-marker="true" aria-hidden="true" />
                           <div className="relative z-10">{contentNode}</div>
                           <div
                             data-diagnoza-tail-spacer="true"
@@ -2847,8 +2810,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
-                          <span data-dojazd-curl-top-marker="true" aria-hidden="true" />
-                          <span data-dojazd-ragged-anchor-marker="true" aria-hidden="true" />
                           <div className="relative z-10">{contentNode}</div>
                           <div
                             data-dojazd-tail-spacer="true"
@@ -2867,8 +2828,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
-                          <span data-konserwacja-curl-top-marker="true" aria-hidden="true" />
-                          <span data-konserwacja-ragged-anchor-marker="true" aria-hidden="true" />
                           <div className="relative z-10">{contentNode}</div>
                           <div
                             data-konserwacja-tail-spacer="true"
@@ -2889,8 +2848,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
                           />
-                          <span data-faq-curl-top-marker="true" aria-hidden="true" />
-                          <span data-faq-ragged-anchor-marker="true" aria-hidden="true" />
                           <div className="relative z-10">{contentNode}</div>
                         </>
                       ) : (
