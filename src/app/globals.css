@@ -1081,7 +1081,12 @@
   @media (min-width: 768px) {
     [data-naprawy-open-title="true"] {
       position: relative;
-      font-size: 28px;
+      display: flex;
+      align-items: center;
+      width: max-content;
+      margin-inline: auto;
+      gap: 18px;
+      font-size: 32px;
       font-weight: 600;
       color: rgba(62, 34, 16, 0.96);
       text-shadow: 0 1px 0 rgba(255, 242, 200, 0.35), 0 2px 2px rgba(55, 27, 8, 0.16);
@@ -1090,22 +1095,18 @@
     [data-naprawy-open-title="true"]::before,
     [data-naprawy-open-title="true"]::after {
       content: '';
-      position: absolute;
-      top: 50%;
+      position: static;
+      flex: 0 0 90px;
       width: 90px;
       height: 1px;
       pointer-events: none;
     }
 
     [data-naprawy-open-title="true"]::before {
-      right: 100%;
-      margin-right: 18px;
       background: linear-gradient(to left, rgba(139, 94, 52, 0.55), transparent);
     }
 
     [data-naprawy-open-title="true"]::after {
-      left: 100%;
-      margin-left: 18px;
       background: linear-gradient(to right, rgba(139, 94, 52, 0.55), transparent);
     }
 
