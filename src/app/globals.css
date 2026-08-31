@@ -1079,6 +1079,36 @@
   }
 
   @media (min-width: 768px) {
+    [data-naprawy-open-title="true"] {
+      position: relative;
+      font-size: 28px;
+      font-weight: 600;
+      color: rgba(62, 34, 16, 0.96);
+      text-shadow: 0 1px 0 rgba(255, 242, 200, 0.35), 0 2px 2px rgba(55, 27, 8, 0.16);
+    }
+
+    [data-naprawy-open-title="true"]::before,
+    [data-naprawy-open-title="true"]::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 90px;
+      height: 1px;
+      pointer-events: none;
+    }
+
+    [data-naprawy-open-title="true"]::before {
+      right: 100%;
+      margin-right: 18px;
+      background: linear-gradient(to left, rgba(139, 94, 52, 0.55), transparent);
+    }
+
+    [data-naprawy-open-title="true"]::after {
+      left: 100%;
+      margin-left: 18px;
+      background: linear-gradient(to right, rgba(139, 94, 52, 0.55), transparent);
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
       background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
       background-repeat: no-repeat;
