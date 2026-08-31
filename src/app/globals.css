@@ -1128,13 +1128,16 @@
     }
 
     [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-row-divider="true"] {
-      position: absolute;
-      left: 17px;
-      right: 17px;
-      bottom: 0;
-      height: 1px;
-      background: rgba(58, 40, 23, 0.30);
-      pointer-events: none;
+      display: none;
+    }
+
+    /* WARM PARCHMENT — naprawy CLOSED rows: subtle raised-paper relief
+       instead of the flat divider line above — faint inset highlight along
+       the row's top edge + a short soft shadow along its bottom, so each
+       row reads as a slightly lifted section of the same sheet rather than
+       a flat strip. No new element, no layout change (box-shadow only). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+      box-shadow: inset 0 1px 0 rgba(255, 250, 235, 0.16), 0 4px 4px -2px rgba(58, 40, 23, 0.30);
     }
 
     [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-row-divider="true"] {
