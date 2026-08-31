@@ -1,22 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "Lyhun Oleksandr",
-      "author_url": "https://www.google.com/maps/contrib/111728020883963041785/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLKyvdOOlIsxgZ72Q1f8_lE4W1u4GI-49v-pACNKNGePZ33CA=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Oddałem komputer do naprawy i jestem bardzo zadowolony. Szybka diagnoza, uczciwe podejście i profesjonalna obsługa. Wszystko zostało naprawione sprawnie, a dodatkowo dostałem kilka przydatnych wskazówek na przyszłość. Zdecydowanie polecam!",
-      "time": 1780342269,
-      "translated": false,
-      "text_uk": "Віддав комп'ютер у ремонт і залишився дуже задоволений. Швидка діагностика, чесний підхід і професійне обслуговування. Все було полагоджено оперативно, а також отримав кілька корисних порад на майбутнє. Однозначно рекомендую!",
-      "text_ru": "Отдал компьютер в ремонт и остался очень доволен. Быстрая диагностика, честный подход и профессиональное обслуживание. Всё было исправлено оперативно, а также я получил несколько полезных советов на будущее. Однозначно рекомендую!",
-      "relative_time_uk": "місяць тому",
-      "relative_time_ru": "месяц назад"
-    },
-    {
       "author_name": "Valery S",
       "author_url": "https://www.google.com/maps/contrib/111457558858800203494/reviews",
       "language": "pl",
@@ -159,7 +143,23 @@
       "text_ru": "Я настоятельно рекомендую эту услугу! Мой лазерный принтер HP оставлял некрасивые полосы на страницах, и я был уверен, что меня ждет дорогостоящий ремонт. Благодаря профессиональной диагностике специалистов оказалось, что достаточно простой замены тонера. Я бы сам до этого не догадался, и благодаря их честности я смог быстро и недорого починить устройство. Большой плюс за их профессионализм и за то, что они не завысили цену!",
       "relative_time_uk": "7 місяців тому",
       "relative_time_ru": "7 месяцев назад"
+    },
+    {
+      "author_name": "Peter Mishchuk",
+      "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWRYgTQO15FjcLPJgdpZqNp9JBiz0MQ90JEwYAy_GTliq-a-FE_=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "3 miesiące temu",
+      "text": "Dziękuję za szybką i profesjonalną naprawę drukarki oraz zmianę języka z niemieckiego na polski. Polecam ten serwis i Pana Andrzeja.",
+      "time": 1779523024,
+      "translated": false,
+      "text_uk": "Дякую за швидкий та професійний ремонт принтера та за зміну мови з німецької на польську. Я дуже рекомендую цей сервіс та пана Анджея.",
+      "text_ru": "Спасибо за быстрый и профессиональный ремонт принтера и за смену языка с немецкого на польский. Я настоятельно рекомендую эту услугу и господина Анджея.",
+      "relative_time_uk": "3 місяці тому",
+      "relative_time_ru": "3 месяца назад"
     }
   ],
-  "updatedAt": "2026-08-24T03:43:31.596Z"
+  "updatedAt": "2026-08-31T09:00:16.746Z"
 }
