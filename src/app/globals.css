@@ -2614,6 +2614,9 @@
 [data-faq-item="true"] [data-slot="accordion-trigger"] svg {
   transition: color 180ms ease, opacity 180ms ease;
 }
+[data-faq-item="true"] .faq-question-title-text {
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease-out;
+}
 [data-faq-item="true"] [data-slot="accordion-trigger"] svg {
   opacity: 0.45;
 }
@@ -2634,6 +2637,12 @@
   }
   [data-faq-item="true"] [data-slot="accordion-trigger"]:hover svg {
     opacity: 0.9;
+  }
+}
+
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+  [data-faq-item="true"] [data-slot="accordion-trigger"]:hover .faq-question-title-text {
+    transform: translateY(-2px);
   }
 }
 
