@@ -785,13 +785,40 @@ const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
 const createLaptopPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
-  const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
-  )
-  if (diagnosisItem) {
-    diagnosisItem.price = '90 zł'
+  if (diagnosisSection) {
+    diagnosisSection.items = [
+      {
+        service: 'Wstępna konsultacja online do 15 min (opis problemu przez WhatsApp, formularz lub telefon)',
+        price: 'GRATIS',
+        duration: 'do 15 min',
+      },
+      {
+        service: 'Wstępne sprawdzenie przy przyjęciu sprzętu (krótkie sprawdzenie objawów i wstępna ocena; nie zastępuje pełnej diagnozy)',
+        price: 'GRATIS',
+        duration: 'do 15 min',
+      },
+      {
+        service: 'Pełna diagnoza i wycena naprawy\n(bezpłatna w przypadku realizacji naprawy)',
+        price: 'GRATIS',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Pełna diagnoza i wycena naprawy\n(tylko w przypadku rezygnacji po wykonaniu pełnej diagnozy)',
+        price: '50 zł',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Pisemna opinia techniczna\n(dodatkowo do pełnej diagnozy, z dokumentacją fotograficzną)',
+        price: '+50 zł',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Pilna realizacja (jeśli to możliwe, przyspieszamy naprawę bez dodatkowej opłaty)',
+        price: 'GRATIS',
+        duration: 'do ustalenia',
+      },
+    ]
   }
-
 
   updateDojazdReturnPrice(sections, '100 zł')
   const cleaningSection = sections.find(section => section.id === 'konserwacja')
