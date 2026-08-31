@@ -406,6 +406,7 @@ export function ServicePageTemplate({
 
       <Footer
         t={footerT}
+        bare
         cta={{
           heading: labels.ctaHeading,
           text: labels.ctaText,
