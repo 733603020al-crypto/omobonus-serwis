@@ -821,6 +821,31 @@ const createLaptopPricingSections = (): PricingSection[] => {
   }
 
   updateDojazdReturnPrice(sections, '100 zł')
+  const dojazdSection = sections.find(section => section.id === 'dojazd')
+  if (dojazdSection) {
+    dojazdSection.items = [
+      {
+        service: 'Odbiór urządzenia od Klienta (do 2,5 km od serwisu; 5 km łącznie w obie strony)',
+        price: '20 zł',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Dostarczenie naprawionego urządzenia do Klienta (do 2,5 km od serwisu; 5 km łącznie w obie strony)',
+        price: '20 zł',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (trasa w obie strony; dopłata po przekroczeniu 5 km)',
+        price: '20 zł + 1,5 zł/km',
+        duration: '1-2 dni',
+      },
+      {
+        service: 'Pilna realizacja (jeśli to możliwe, realizujemy odbiór lub dostawę w pierwszej kolejności)',
+        price: 'GRATIS',
+        duration: 'do ustalenia',
+      },
+    ]
+  }
   const cleaningSection = sections.find(section => section.id === 'konserwacja')
   if (cleaningSection) {
     cleaningSection.items = [

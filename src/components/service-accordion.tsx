@@ -2140,7 +2140,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
                               <WynajemSubcategoryHeader service={service} section={section} subcategory={subcategory} viewDetails={viewDetails} isSectionOpen={isSectionOpen} isSubcategoryOpen={isSubcategoryOpen} wynajemHeaderRefs={wynajemHeaderRefs} drukarkaZastepczaHeaderRefs={drukarkaZastepczaHeaderRefs} />
                             ) : (
-                              <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
+                              <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
                                 <div data-naprawy-header-col1={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
                                   <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[115px] h-[58px] md:w-[50px] md:h-[50px] flex-shrink-0 flex items-center justify-center relative md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
@@ -2230,7 +2230,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <div
                                         data-subcategory-link
                                         className={cn(
-                                          "flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform whitespace-nowrap",
+                                          "flex items-center gap-2 text-xs font-serif group-hover/naprawy-row:translate-x-1 transition-transform whitespace-nowrap",
                                           service.slug === 'serwis-laptopow' && isRepairSection ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
                                         )}
                                       >
