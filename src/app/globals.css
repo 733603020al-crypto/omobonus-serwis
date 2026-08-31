@@ -1098,16 +1098,16 @@
       position: static;
       flex: 0 0 90px;
       width: 90px;
-      height: 1px;
+      height: 2px;
       pointer-events: none;
     }
 
     [data-naprawy-open-title="true"]::before {
-      background: linear-gradient(to left, rgba(139, 94, 52, 0.55), transparent);
+      background: linear-gradient(to left, rgba(104, 64, 28, 0.72), transparent);
     }
 
     [data-naprawy-open-title="true"]::after {
-      background: linear-gradient(to right, rgba(139, 94, 52, 0.55), transparent);
+      background: linear-gradient(to right, rgba(104, 64, 28, 0.72), transparent);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
