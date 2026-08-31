@@ -1181,12 +1181,14 @@
       pointer-events: none;
       background: linear-gradient(
         to bottom,
-        rgba(255, 250, 235, 0.10) 0%,
-        rgba(255, 250, 235, 0.10) 1px,
-        rgba(114, 80, 43, 0.05) 1px,
-        rgba(114, 80, 43, 0.02) 100%
+        rgba(255, 250, 235, 0.12) 0%,
+        rgba(255, 250, 235, 0.06) 35%,
+        rgba(114, 80, 43, 0.06) 70%,
+        rgba(86, 54, 25, 0.10) 100%
       );
-      box-shadow: 0 4px 5px -3px rgba(58, 40, 23, 0.28);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 250, 235, 0.16),
+        0 5px 6px -4px rgba(58, 40, 23, 0.36);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"][data-naprawy-last-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
