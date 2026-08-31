@@ -1127,27 +1127,8 @@
       transform-origin: center;
     }
 
-    /* WARM PARCHMENT — naprawy CLOSED rows: subtle raised-paper relief
-       using the existing row-divider element — a very faint light edge
-       followed by a short soft shading below it, confined to the sheet's
-       own side insets (17px, same as the old divider line) so nothing
-       reaches past the paper's edges. Not rendered after the last
-       subcategory (element absent there) — that edge already has the big
-       parchment's own bottom edge and shadow. */
     [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-row-divider="true"] {
-      position: absolute;
-      left: 17px;
-      right: 17px;
-      top: 100%;
-      height: 8px;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 250, 235, 0.07) 0%,
-        rgba(255, 250, 235, 0.07) 1px,
-        rgba(58, 40, 23, 0.28) 1px,
-        rgba(58, 40, 23, 0) 100%
-      );
-      pointer-events: none;
+      display: none;
     }
 
     [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-row-divider="true"] {
@@ -1156,6 +1137,34 @@
 
     [data-naprawy-subcategory="true"]:has(+ [data-naprawy-subcategory="true"][data-state="open"]) [data-naprawy-row-divider="true"] {
       display: none;
+    }
+
+    /* WARM PARCHMENT — naprawy CLOSED rows: subtle raised-paper relief as
+       an inset fill covering the row's inner area, painted behind its own
+       image/text (header-row gets its own stacking context below). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
+      content: '';
+      position: absolute;
+      inset: 3px 17px;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 250, 235, 0.10) 0%,
+        rgba(255, 250, 235, 0.10) 1px,
+        rgba(114, 80, 43, 0.05) 1px,
+        rgba(114, 80, 43, 0.02) 100%
+      );
+      box-shadow: 0 4px 5px -3px rgba(58, 40, 23, 0.28);
+    }
+
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"][data-naprawy-last-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
+      box-shadow: none;
+    }
+
+    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-header-row="true"] {
+      position: relative;
+      z-index: 1;
     }
 
     [data-naprawy-bottom-segment="true"] {
