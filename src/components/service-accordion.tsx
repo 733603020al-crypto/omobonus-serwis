@@ -944,7 +944,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         sc => subcategoryRefs.current[sc.id]?.offsetHeight ?? 0
       )
       const measuredHeight = headerHeight + rowHeights.reduce((a, b) => a + b, 0)
-      const aspectRatio = window.innerWidth < 768 ? 1085 / 726 : 858 / 1465
+      const aspectRatio = 858 / 1465
       const aspectHeight = aspectRatio * containerWidth
       const bottomTailHeight = Math.max(aspectHeight - measuredHeight, 24)
       setNaprawySegmentMetrics({
@@ -2865,6 +2865,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
                       >
                         {triggerNode}
+                        {service.slug === 'serwis-laptopow' && isSectionOpen(section.id) && (
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span
+                              data-naprawy-open-title="true"
+                              className={cn(
+                                "zakres-title-text text-xl md:text-2xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                                isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
+                                "w-full text-center whitespace-nowrap"
+                              )}
+                            >Naprawy i usługi serwisowe</span>
+                          </div>
+                        )}
                       </div>
                     ) : triggerNode}
                     {contentNode}
