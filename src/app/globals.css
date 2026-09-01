@@ -1483,9 +1483,6 @@
        that one stays scoped to [data-state="open"] here too.
        .zakres-debug-header's fixed 430px width is intentionally NOT
        ported — mobile keeps its flexible w-full/flex-1 sizing. */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
-      font-size: 24px;
-    }
 
     .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-debug-img {
       width: clamp(64px, 22vw, 84px);
@@ -1514,13 +1511,64 @@
       color: #3A2817;
     }
 
-    /* Positioning context for the shadow line below: mobile's header div
-       has no JSX position class (desktop gets its own relative/z-index
-       reset inside the min-width:768px block above, tied to its segmented-
-       background system) — without this the absolutely-positioned shadow
-       line would anchor to a distant ancestor instead of this row. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] {
+      overflow: visible !important;
+    }
+
     .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       position: relative;
+      z-index: 20;
+      overflow: visible !important;
+    }
+
+    /* Header row (icon+title) painted above its own ::before backdrop
+       below — mirrors desktop's data-naprawy-header-row stacking
+       (min-width:768px block above, z-index:4 vs the backdrop's 3). */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+      position: relative;
+      z-index: 4;
+      overflow: visible !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1="true"] {
+      overflow: visible !important;
+    }
+
+    /* Baked torn-edge parchment backdrop for the open header row — mirrors
+       desktop's ::before (min-width:768px block above), swapped to the
+       mobile asset. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      pointer-events: none;
+      width: 100%;
+      background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      filter:
+        drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
+        drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
+        drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22))
+        drop-shadow(0 -4px 3px rgba(24, 12, 5, 0.52))
+        drop-shadow(0 -10px 8px rgba(34, 17, 7, 0.28))
+        drop-shadow(0 -18px 14px rgba(47, 24, 10, 0.12));
+    }
+
+    /* Stacking fix: open header (icon+title+price, painted inside
+       AccordionTrigger) above the subcategory's own nested-parchment
+       content backdrop below it, so the icon never renders under it. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] {
+      overflow: visible !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
+      position: relative;
+      z-index: 10;
     }
 
     /* Soft shadow line under an open subcategory's header, separating it
@@ -1935,7 +1983,8 @@
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]),
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: calc(100% + 32px);
       margin-left: -16px;
@@ -1972,11 +2021,13 @@
       z-index: 2;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
       font-size: 22px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text,
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-price-header-text {
       color: #3A2817;
       font-size: 22px;
     }
@@ -2075,6 +2126,52 @@
       margin-right: 0;
       transform: none;
     }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > [data-nested-parchment="true"] {
+      display: block;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Kills the old rectangular repeat-y warm-parchment ::before (base rule:
+       [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]>div::before,
+       ~line 545) inherited on [data-nested-parchment="true"] itself, since
+       it's also a [data-slot="accordion-item"]'s direct div child. Desktop
+       already kills this (~line 1365); mobile had no equivalent, so this old
+       tiled backdrop was showing under the first row. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"]::before {
+      content: none !important;
+      background-image: none !important;
+    }
+
+    /* TEMP DEBUG — remove after visual check: outline diagnostics for
+       Naprawy → open Oprogramowanie container chain (serwis-laptopow only). */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] {
+      outline: 2px solid red;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-nested-parchment="true"] {
+      outline: 2px solid blue;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-nested-parchment="true"] > div:first-of-type {
+      outline: 2px solid green;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] .rounded-lg {
+      outline: 2px solid yellow;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-slot="table-container"] {
+      outline: 2px solid purple;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-slot="table"] {
+      outline: 2px solid white;
+      outline-offset: -2px;
+    }
+    /* END TEMP DEBUG */
 
 
     /* Same hover/tap darkening kill as desktop, in case the table renders

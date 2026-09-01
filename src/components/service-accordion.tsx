@@ -2116,6 +2116,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
+                            service.slug === 'serwis-laptopow' && isRepairSection && 'max-md:w-full max-md:min-w-0',
                             isRepairSection && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
                             isRepairSection && index === 0 && 'md:pt-0',
                             section.id === 'faq'
@@ -2151,11 +2152,28 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             ) : (
                               <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
                                 <div data-naprawy-header-col1={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
-                                {service.slug === 'serwis-laptopow' && isRepairSection && (
+                                {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title === 'Oprogramowanie' && (
+                                  <div className={cn(
+                                    "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
+                                    "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
+                                    "md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20",
+                                    "origin-top-left group-data-[state=open]/subcategory:scale-[1.4] group-data-[state=open]/subcategory:z-20"
+                                  )}>
+                                    <Image
+                                      src="/images/naprawy-oprogramowanie-v3.webp"
+                                      alt=""
+                                      width={50}
+                                      height={50}
+                                      className={cn(
+                                        "zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed'
+                                      )}
+                                      unoptimized
+                                    />
+                                  </div>
+                                )}
+                                {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
                                   <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
-                                    {subcategory.title === 'Oprogramowanie' && (
-                                      <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
                                       <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
@@ -2199,7 +2217,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       const titleClassName = `${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
                                         : service.slug === 'serwis-laptopow' && isRepairSection
-                                          ? 'zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] md:group-data-[state=open]/subcategory:translate-x-[60px]'
+                                          ? `zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] md:group-data-[state=open]/subcategory:translate-x-[60px]${subcategory.title === 'Oprogramowanie' ? ' max-md:group-data-[state=open]/subcategory:translate-x-[60px]' : ''}`
                                           : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
@@ -2430,7 +2448,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             className={cn(
                             section.id === 'faq' ? 'pt-0.5' : service.slug === 'serwis-laptopow' && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
                             (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
-                            service.slug === 'serwis-laptopow' && isRepairSection && "relative z-10"
+                            service.slug === 'serwis-laptopow' && isRepairSection && "relative z-10",
+                            service.slug === 'serwis-laptopow' && isRepairSection && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.answer ? (
                               <div
@@ -2468,22 +2487,64 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ref={(el) => { naprawyNestedTableRefs.current[subcategory.id] = el }}
                                 className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
                               >
-                                {/* Мобильная версия - flex layout */}
+                                {/* Мобильная версия - flex layout / (serwis-laptopow: новая Table-based mobile-разметка) */}
                                 <div className="block md:hidden">
-                                  {subcategory.items.map((item, idx) =>
-                                    renderMobileServiceRow(
-                                      item,
-                                      idx,
-                                      idx === 0 && !(service.slug === 'serwis-laptopow' && section.id === 'konserwacja'),
-                                      idx === subcategory.items.length - 1,
-                                      shouldHighlightPrices,
-                                      parseServiceText,
-                                      false,
-                                      false,
-                                      false,
-                                      false,
-                                      service.slug === 'serwis-laptopow' && isRepairSection,
-                                    ),
+                                  {service.slug === 'serwis-laptopow' && isRepairSection ? (
+                                    <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
+                                      <colgroup>
+                                        <col className="w-[75%]" />
+                                        <col className="w-[25%]" />
+                                      </colgroup>
+                                      <TableBody>
+                                        {subcategory.items.map((item, idx) => (
+                                          <TableRow
+                                            key={idx}
+                                            className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
+                                          >
+                                            <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden">
+                                              {(() => {
+                                                const parsed = parseServiceText(item.service)
+                                                return (
+                                                  <div className="service-description-text">
+                                                    <div className="text-[16px] text-white service-description-text leading-[1.3]">
+                                                      {parsed.main}
+                                                    </div>
+                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                                  </div>
+                                                )
+                                              })()}
+                                            </TableCell>
+                                            <TableCell
+                                              className={cn(
+                                                'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
+                                                (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
+                                                shouldHighlightPrices
+                                                  ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
+                                                  : ''
+                                              )}
+                                            >
+                                              {renderPriceLines(item.price, item.link)}
+                                            </TableCell>
+                                          </TableRow>
+                                        ))}
+                                      </TableBody>
+                                    </Table>
+                                  ) : (
+                                    subcategory.items.map((item, idx) =>
+                                      renderMobileServiceRow(
+                                        item,
+                                        idx,
+                                        idx === 0 && !(service.slug === 'serwis-laptopow' && section.id === 'konserwacja'),
+                                        idx === subcategory.items.length - 1,
+                                        shouldHighlightPrices,
+                                        parseServiceText,
+                                        false,
+                                        false,
+                                        false,
+                                        false,
+                                        service.slug === 'serwis-laptopow' && isRepairSection,
+                                      ),
+                                    )
                                   )}
                                 </div>
                                 {/* Десктопная версия - HTML таблица */}
