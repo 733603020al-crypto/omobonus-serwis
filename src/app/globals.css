@@ -1429,6 +1429,113 @@
       height: 24px;
       overflow: visible;
     }
+
+    /* Mobile doesn't use the desktop CURL/RAGGED-ANCHOR image scale (that
+       math + --naprawy-img-h are only consumed inside the min-width:768px
+       block above), so the JS-computed inline height on this real flow
+       spacer (afterContent, service-accordion.tsx) reproduces desktop's
+       tuned +15px offset at mobile row proportions instead of the intended
+       gap. Fixed to a flat 24px here, !important to win over the inline
+       style JS still sets on this element. */
+    .page-serwis-laptopow [data-naprawy-tail-spacer="true"] {
+      height: 24px !important;
+    }
+
+    /* Desktop wraps the open "Naprawy" title in two decorative gradient
+       lines (min-width:768px block above, fixed 90px each) — mobile had no
+       equivalent at all, title rendered as plain centered text. Same
+       flex + ::before/::after technique, line length scaled to viewport
+       (clamp) instead of copying the fixed desktop px. Font size/color
+       stay the JSX-driven responsive classes (text-xl, text-[#3A2817]/
+       text-white) — untouched here. */
+    .page-serwis-laptopow [data-naprawy-open-title="true"] {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 3vw, 14px);
+    }
+
+    .page-serwis-laptopow [data-naprawy-open-title="true"]::before,
+    .page-serwis-laptopow [data-naprawy-open-title="true"]::after {
+      content: '';
+      flex: 0 0 auto;
+      width: clamp(16px, 8vw, 36px);
+      height: 1px;
+      pointer-events: none;
+    }
+
+    .page-serwis-laptopow [data-naprawy-open-title="true"]::before {
+      background: linear-gradient(to left, rgba(104, 64, 28, 0.55), transparent);
+    }
+
+    .page-serwis-laptopow [data-naprawy-open-title="true"]::after {
+      background: linear-gradient(to right, rgba(104, 64, 28, 0.55), transparent);
+    }
+
+    /* Desktop draws every subcategory icon (Oprogramowanie etc.) as a wide
+       150x76 banner in BOTH closed and open state (two identical rules
+       inside min-width:768px blocks above, ~1.97:1) — mobile had no
+       override at all, staying the JSX default 50x50 square in both
+       states. Same ratio here, scaled with clamp() instead of the fixed
+       desktop px so it stays proportionate to the much narrower row.
+       Title bump to 24px is open-only on desktop (closed already gets
+       22px mobile / 24px desktop from the earlier unconditional rule), so
+       that one stays scoped to [data-state="open"] here too.
+       .zakres-debug-header's fixed 430px width is intentionally NOT
+       ported — mobile keeps its flexible w-full/flex-1 sizing. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
+      font-size: 24px;
+    }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-debug-img {
+      width: clamp(64px, 22vw, 84px);
+      height: clamp(33px, 11.2vw, 43px);
+      margin-right: clamp(8px, 3vw, 12px);
+    }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-debug-img-media {
+      width: clamp(64px, 22vw, 84px);
+      height: clamp(33px, 11.2vw, 43px);
+    }
+
+    /* "cena netto" info label + its "i" icon, shown next to an open
+       subcategory's title (service-accordion.tsx ~2269-2390): JSX hardcodes
+       text-white/text-white/80 (old dark-theme default) and only the
+       min-width:768px block above recolors both to the dark ink so they're
+       readable on the light parchment — mobile had neither, so this label
+       was effectively invisible against the cream background. Colors only,
+       nothing width-based, so ported 1:1. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-price-header-text,
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-time-header-text {
+      color: #3A2817;
+    }
+
+    .page-serwis-laptopow .diagnoza-open-header-row .zakres-price-header-text > span:last-child {
+      color: #3A2817;
+    }
+
+    /* Positioning context for the shadow line below: mobile's header div
+       has no JSX position class (desktop gets its own relative/z-index
+       reset inside the min-width:768px block above, tied to its segmented-
+       background system) — without this the absolutely-positioned shadow
+       line would anchor to a distant ancestor instead of this row. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      position: relative;
+    }
+
+    /* Soft shadow line under an open subcategory's header, separating it
+       from the price list below — desktop-only (min-width:768px block
+       above); mobile had no equivalent. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-header-shadow="true"] {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 12px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.5), transparent);
+      pointer-events: none;
+    }
   }
 
   /* WARM PARCHMENT — every card's OPEN content splits out of the header
@@ -1968,6 +2075,7 @@
       margin-right: 0;
       transform: none;
     }
+
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
