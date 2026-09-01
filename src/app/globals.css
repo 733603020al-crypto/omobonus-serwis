@@ -989,10 +989,10 @@
      it, so nothing bleeds/offsets on its own anymore. */
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
-      background-image: url('/images/naprawy-open-parchment-mobile.webp');
-      background-size: 100% 100%;
+      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-size: var(--naprawy-seg-size);
       background-repeat: no-repeat;
-      background-position: top center;
+      background-position: 0 0;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
@@ -1426,7 +1426,9 @@
 
   @media (max-width: 767px) {
     [data-naprawy-bottom-segment="true"] {
-      height: 0;
+      display: block;
+      height: var(--naprawy-tail-h, 0px);
+      overflow: visible;
     }
   }
 

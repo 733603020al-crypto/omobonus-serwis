@@ -944,7 +944,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         sc => subcategoryRefs.current[sc.id]?.offsetHeight ?? 0
       )
       const measuredHeight = headerHeight + rowHeights.reduce((a, b) => a + b, 0)
-      const aspectHeight = (858 / 1465) * containerWidth
+      const aspectRatio = window.innerWidth < 768 ? 1085 / 726 : 858 / 1465
+      const aspectHeight = aspectRatio * containerWidth
       const bottomTailHeight = Math.max(aspectHeight - measuredHeight, 24)
       setNaprawySegmentMetrics({
         containerWidth,
@@ -2133,7 +2134,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
                                     : 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
                                   : isRepairSection
-                                    ? 'py-1.5 px-1.5 data-[state=closed]:md:py-[3px] data-[state=open]:md:py-2 data-[state=closed]:md:px-3 data-[state=open]:md:px-0'
+                                    ? 'data-[state=closed]:py-[3px] data-[state=open]:py-2 data-[state=closed]:px-3 data-[state=open]:px-0'
                                     : 'py-1.5 px-1.5 data-[state=closed]:md:py-[3px] data-[state=open]:md:py-2 md:px-3',
                             )}
                           >
@@ -2143,7 +2144,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
                                 <div data-naprawy-header-col1={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
-                                  <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[115px] h-[58px] md:w-[50px] md:h-[50px] flex-shrink-0 flex items-center justify-center relative md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                  <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left group-data-[state=open]/subcategory:scale-[1.4] group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Oprogramowanie' && (
                                       <img src="/images/naprawy-oprogramowanie-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
@@ -2190,7 +2191,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       const titleClassName = `${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
                                         : service.slug === 'serwis-laptopow' && isRepairSection
-                                          ? 'zakres-title-text text-lg md:text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] group-data-[state=open]/subcategory:md:translate-x-[60px]'
+                                          ? 'zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] group-data-[state=open]/subcategory:translate-x-[60px]'
                                           : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
@@ -2857,7 +2858,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   </>
                 ) : (
                   <div className={headerWrapperClassName}>
-                    {triggerNode}
+                    {section.id === 'naprawy' ? (
+                      <div
+                        data-naprawy-header-segment="true"
+                        ref={naprawyHeaderSegmentRef}
+                        style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
+                      >
+                        {triggerNode}
+                      </div>
+                    ) : triggerNode}
                     {contentNode}
                   </div>
                 )}
