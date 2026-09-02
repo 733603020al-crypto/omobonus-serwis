@@ -1537,7 +1537,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      cn("zakres-title-text text-lg font-cormorant font-semibold transition-colors leading-tight", service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
                                       /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
                                          compensation above (same 115px icon container × 1.4 scale = same
                                          46px right-overflow), kept as its own condition rather than joining
@@ -1799,6 +1799,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
 
                             <div
+                              data-debug-price="true"
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
                               <TooltipProvider delayDuration={100}>
@@ -2285,7 +2286,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
-                                  <div className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
+                                  <div data-debug-subcategory-price="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
                                         <TooltipProvider delayDuration={100}>

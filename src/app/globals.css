@@ -1441,6 +1441,82 @@
       height: 24px !important;
     }
 
+    /* Mobile serwis-laptopow only: open subcategory row (e.g. Oprogramowanie)
+       matches the top-level closed plates' min-height (82px, see line 601)
+       instead of the naprawy-subcategory min-height:0 reset (line 959). */
+    .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="open"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
+      min-height: 82px;
+    }
+
+    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory row box gets
+       the same min-height/width/margin/padding as the top-level closed
+       plates (base line 601 + mobile 611-621), overriding the naprawy
+       reset at line 956-966 (not modified) via higher specificity. Trigger,
+       text and icon containers are untouched — only this outer box. */
+    .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
+      min-height: 82px;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    /* Mobile serwis-laptopow only: restore the closed-plate ::before
+       backdrop for CLOSED Naprawy subcategory rows — properties copied 1:1
+       from the top-level closed plates' ::before (base line 558, mobile
+       override line 569-572). `content: ''` overrides the closed-row
+       kill-switch at line 968-971 (content:none) via higher selector
+       specificity; that rule and [data-nested-parchment="true"] (a
+       different element — the AccordionContent wrapper, not this trigger
+       div) are both left untouched. */
+    .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"])::before {
+      content: '';
+      background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+      background-size: 100% 82px;
+      background-repeat: no-repeat;
+      background-position: center;
+      scale: 1;
+      transform-origin: center;
+      transition: scale 200ms ease;
+    }
+
+    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory trigger
+       painted above the ::before backdrop restored above (mirrors the
+       top-level closed plates' trigger position/z-index,
+       service-accordion.tsx:1472). Padding/gap/align and icon/img sizes
+       are untouched. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+      position: relative !important;
+      z-index: 10 !important;
+      gap: 0 !important;
+      padding-right: 0 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
+      display: none !important;
+    }
+
+    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory title carries
+       Tailwind's mb-1 (service-accordion.tsx:2220), unlike the top-level
+       closed titles which have no margin-bottom (service-accordion.tsx:1538-1540).
+       Zeroed here to match the top-level value exactly. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-title-text {
+      margin-bottom: 5px !important;
+      line-height: 1 !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-debug-img {
+      width: 115px !important;
+      height: 58px !important;
+      margin-right: 16px !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-debug-img img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
     /* Desktop wraps the open "Naprawy" title in two decorative gradient
        lines (min-width:768px block above, fixed 90px each) — mobile had no
        equivalent at all, title rendered as plain centered text. Same
@@ -1569,6 +1645,13 @@
     .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
       position: relative;
       z-index: 10;
+    }
+
+    /* OPEN SUBCATEGORY CONTENT: fit parchment to viewport */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+      width: 100% !important;
+      left: 0 !important;
+      right: auto !important;
     }
 
     /* Soft shadow line under an open subcategory's header, separating it
@@ -2145,6 +2228,83 @@
       background-image: none !important;
     }
 
+    /* OPEN SUBCATEGORY MATCH — STEP 1 */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      display: block !important;
+      position: relative !important;
+      min-height: 70px !important;
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      align-items: center !important;
+      gap: 0 !important;
+      position: relative !important;
+      z-index: 10;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
+      display: none !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
+      position: relative !important;
+      left: 15px !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
+      width: 115px !important;
+      height: 58px !important;
+      margin-right: 16px !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* OPEN SUBCATEGORY MATCH — STEP 2A: title inside green column */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] {
+      width: 100% !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] .zakres-title-text {
+      transform: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      text-align: left !important;
+      white-space: normal !important;
+      overflow-wrap: anywhere !important;
+      line-height: 1 !important;
+      display: -webkit-box !important;
+      -webkit-box-orient: vertical !important;
+      -webkit-line-clamp: 2 !important;
+      overflow: hidden !important;
+    }
+
+    /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns) */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+      display: grid !important;
+      grid-template-columns: 161px minmax(0, 1fr) auto;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
+      display: contents !important;
+    }
+
+    /* OPEN SUBCATEGORY MATCH — STEP 4: all open icons */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
+      transform: scale(1.4) !important;
+      transform-origin: top left !important;
+      position: relative !important;
+      z-index: 20 !important;
+    }
+
+    /* OPEN SUBCATEGORY MATCH — STEP 5: title left padding */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] .zakres-title-text {
+      padding-left: 8px !important;
+      box-sizing: border-box !important;
+    }
+
     /* TEMP DEBUG — remove after visual check: outline diagnostics for
        Naprawy → open Oprogramowanie container chain (serwis-laptopow only). */
     .page-serwis-laptopow [data-naprawy-subcategory="true"] {
@@ -2171,7 +2331,185 @@
       outline: 2px solid white;
       outline-offset: -2px;
     }
+
+    /* Same outline scheme as TEMP DEBUG 2 (open Oprogramowanie vs top
+       plates), applied here to every CLOSED Naprawy subcategory row. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) {
+      outline: 2px solid red;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::before {
+      outline: 2px dashed orange;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+      outline: 2px solid blue;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-header {
+      outline: 2px solid green;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-img {
+      outline: 2px solid purple;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-img-media {
+      outline: 2px solid cyan;
+      outline-offset: -2px;
+    }
     /* END TEMP DEBUG */
+
+    /* TEMP DEBUG 2 — remove after visual check: side-by-side outline
+       comparison, top plates Dojazd/Czyszczenie (closed AND open) vs open
+       Naprawy subcategory rows incl. Oprogramowanie (serwis-laptopow
+       mobile only). outline (not border) everywhere so no size/layout is
+       affected. Legend: red = outer header container; dashed orange =
+       ::before parchment; blue = [data-slot="accordion-trigger"]; green =
+       name/title container; purple = image container; cyan = <img>;
+       pink = "Cena, zł" + info-icon container (open only). */
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) {
+      outline: 2px solid red;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    )::before {
+      outline: 2px dashed orange;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) [data-slot="accordion-trigger"] {
+      outline: 2px solid blue;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) .zakres-debug-header {
+      outline: 2px solid green;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) .zakres-debug-img {
+      outline: 2px solid purple;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) .zakres-debug-img-media {
+      outline: 2px solid cyan;
+      outline-offset: -2px;
+    }
+    .page-serwis-laptopow :is(
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
+      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
+      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
+    ) :is([data-debug-price="true"], [data-debug-subcategory-price="true"]) {
+      outline: 2px solid pink;
+      outline-offset: -2px;
+    }
+
+    /* Direct (non-:is()) duplicates for open Naprawy subcategories only,
+       forced above the parchment stacking so borders that the shared rules
+       above match but the parchment/scale stacking hides become visible
+       again. Colors/thickness copied 1:1 from the shared rules above. */
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+      outline: 2px solid blue;
+      outline-offset: -2px;
+      position: relative !important;
+      z-index: 100 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) .zakres-debug-img {
+      outline: 2px solid purple;
+      outline-offset: 2px;
+      position: relative !important;
+      z-index: 102 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) .zakres-debug-img img {
+      outline: 2px solid cyan;
+      outline-offset: -2px;
+      position: relative !important;
+      z-index: 103 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-debug-subcategory-text="true"] {
+      outline: 2px solid green;
+      outline-offset: -2px;
+      position: relative !important;
+      z-index: 102 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-debug-subcategory-price="true"] {
+      outline: 2px solid pink;
+      outline-offset: -2px;
+      position: relative !important;
+      z-index: 102 !important;
+    }
+    /* END TEMP DEBUG 2 */
+
+    /* OPEN TOP CATEGORY MATCH: image / title / price */
+    .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
+    .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
+    .page-serwis-laptopow [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child {
+      display: grid !important;
+      grid-template-columns: 161px minmax(0, 1fr) !important;
+      align-items: center !important;
+      column-gap: 0 !important;
+      min-width: 0 !important;
+    }
+
+    .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header,
+    .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header,
+    .page-serwis-laptopow [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header {
+      width: 100% !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text,
+    .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text,
+    .page-serwis-laptopow [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+      transform: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      padding-left: 8px !important;
+      box-sizing: border-box !important;
+      text-align: left !important;
+      white-space: normal !important;
+      overflow-wrap: anywhere !important;
+      line-height: 1 !important;
+      display: -webkit-box !important;
+      -webkit-box-orient: vertical !important;
+      -webkit-line-clamp: 2 !important;
+      overflow: hidden !important;
+    }
 
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
