@@ -8,6 +8,15 @@
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
   --bg-zakres-parchment: url('/images/services-card-parchment.webp');
   --bg-accordion-parchment: url('/images/accordion-parchment-tile-desktop.avif');
+
+  /* Shared OPEN-state contour shadow, exact value of .parchment-shadow-icon-open.
+     Referenced by .parchment-shadow-icon-open itself, .naprawy-mobile-parchment-shadow,
+     and the mobile Naprawy open-plate ::before (globals.css ~1723), so all three
+     stay numerically identical from one source. */
+  --parchment-open-shadow:
+    drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
+    drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
+    drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22));
 }
 
 @media (max-width: 767px) {
@@ -90,6 +99,14 @@
     filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
   }
 
+  /* Mobile Naprawy parchment (service-accordion.tsx) — same drop-shadow as
+     .contact-form-parchment-shadow, but its own class name so it never
+     matches the legacy img.contact-form-parchment-shadow geometry rules
+     (globals.css ~1751, ~1401 etc.) that force desktop --naprawy-img-h. */
+  .naprawy-mobile-parchment-shadow {
+    filter: var(--parchment-open-shadow);
+  }
+
   /* Standard: OPEN top-level accordion header (diagnoza/dojazd/konserwacja/faq) — wrapper with the parchment plate + icon. */
   .parchment-shadow-header {
     filter:
@@ -113,10 +130,7 @@
 
   /* Standard: OPEN-state icon shadow — main-category icons and Naprawy subcategory icons, applied directly to the <img>. */
   .parchment-shadow-icon-open {
-    filter:
-      drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
-      drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
-      drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22));
+    filter: var(--parchment-open-shadow);
   }
 
   /* Standard: OPEN top-level accordion content — the big unrolled paper <img> below the header. */
@@ -1725,13 +1739,7 @@
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      filter:
-        drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
-        drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
-        drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22))
-        drop-shadow(0 -4px 3px rgba(24, 12, 5, 0.52))
-        drop-shadow(0 -10px 8px rgba(34, 17, 7, 0.28))
-        drop-shadow(0 -18px 14px rgba(47, 24, 10, 0.12));
+      filter: var(--parchment-open-shadow);
     }
 
     /* Stacking fix: open header (icon+title+price, painted inside
@@ -1755,18 +1763,13 @@
       height: var(--naprawy-img-h) !important;
     }
 
-    /* Soft shadow line under an open subcategory's header, separating it
-       from the price list below — desktop-only (min-width:768px block
-       above); mobile had no equivalent. */
+    /* Disabled on mobile Naprawy only: this flat gradient stacked with the
+       open header's own contour drop-shadow (::before, ~1723 above),
+       double-darkening the top of the price content. v17/geometry/spacer
+       untouched — this is a separate element (data-naprawy-open-header-shadow),
+       not referenced by any of those rules. */
     .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-header-shadow="true"] {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 100%;
-      height: 12px;
-      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.5), transparent);
-      pointer-events: none;
+      display: none;
     }
   }
 

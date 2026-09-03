@@ -1000,6 +1000,24 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
       // RAGGED-ANCHOR marker's own CSS — not read from marker DOM.
       const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
 
+      // Mobile: same algorithm as desktop above (own CURL-TOP/RAGGED-ANCHOR
+      // source fractions, own -top offset), applied to the single trimmed
+      // contact-form-parchment-mobile-naprawy.webp (634x1206) asset instead
+      // of contact-form-parchment.webp — no body/bottom split.
+      const MOBILE_CURL_TOP_FRACTION = 1132 / 1206
+      const MOBILE_IMG_TOP_OFFSET = 68 // matches the mobile img's fixed -top-[68px]
+      const mobileImgHeight = (whiteBottomY + MOBILE_IMG_TOP_OFFSET) / MOBILE_CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--naprawy-img-h-mobile', `${mobileImgHeight}px`)
+
+      // Mobile's own RAGGED-ANCHOR (source row 1204/1206 of the trimmed
+      // mobile asset) — the real screen line where mobile paper's torn edge
+      // ends, distinct from desktop's raggedY above. Spacer below must
+      // target this on mobile, not desktop's raggedY, or it overshoots past
+      // the visible mobile paper.
+      const MOBILE_RAGGED_ANCHOR_FRACTION = 1204 / 1206
+      const mobileRaggedY = parchmentTop + (MOBILE_RAGGED_ANCHOR_FRACTION * mobileImgHeight - MOBILE_IMG_TOP_OFFSET)
+      const spacerTargetY = window.innerWidth < 768 ? mobileRaggedY : raggedY
+
       const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]')
       const spacerEl = naprawyTailSpacerRefs.current[openSubcategory]
       // Universal by DOM position, not id: last subcategory has no next row
@@ -1018,7 +1036,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           spacerEl.style.height = '0px'
           void spacerEl.offsetHeight
           const naprawyBottomY = naprawyMainSectionEl.getBoundingClientRect().bottom
-          const spacerH = Math.max(0, raggedY - naprawyBottomY)
+          const spacerH = Math.max(0, spacerTargetY - naprawyBottomY)
           spacerEl.style.height = `${spacerH}px`
         }
       } else {
@@ -1030,7 +1048,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           spacerEl.style.height = '0px'
           void spacerEl.offsetHeight
           const closedY = firstClosedEl.getBoundingClientRect().top
-          const spacerH = Math.max(0, (raggedY + 15) - closedY)
+          const spacerH = Math.max(0, (spacerTargetY + 15) - closedY)
           spacerEl.style.height = `${spacerH}px`
         }
       }
@@ -2167,7 +2185,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       height={50}
                                       className={cn(
                                         "zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
-                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed'
+                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed',
+                                        isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open'
                                       )}
                                       unoptimized
                                     />
@@ -2427,11 +2446,32 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </>
                                 )}
                                 <img
+                                  src="/images/contact-form-parchment-mobile-naprawy.webp"
+                                  alt=""
+                                  aria-hidden="true"
+                                  className="md:hidden absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                                  style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto', height: 'var(--naprawy-img-h-mobile)' }}
+                                />
+                                {/* TEMP DEBUG 4 — remove after visual check: mobile CURL-TOP (magenta)
+                                    and RAGGED-ANCHOR (cyan) lines, at the same source fractions as
+                                    MOBILE_CURL_TOP_FRACTION/1204:1206 above. CSS-only, not baked into
+                                    the image. */}
+                                <span
+                                  aria-hidden="true"
+                                  className="md:hidden absolute left-0 right-0 pointer-events-none"
+                                  style={{ top: `calc(-68px + var(--naprawy-img-h-mobile) * ${1132 / 1206})`, height: '2px', background: 'magenta', zIndex: 50 }}
+                                />
+                                <span
+                                  aria-hidden="true"
+                                  className="md:hidden absolute left-0 right-0 pointer-events-none"
+                                  style={{ top: `calc(-68px + var(--naprawy-img-h-mobile) * ${1204 / 1206})`, height: '2px', background: 'cyan', zIndex: 50 }}
+                                />
+                                <img
                                   src="/images/contact-form-parchment.webp"
                                   alt=""
                                   aria-hidden="true"
                                   className={cn(
-                                    "h-full absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none",
+                                    "hidden md:block h-full absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none",
                                     isSubcategoryOpen(section.id, subcategory.id) ? 'contact-form-parchment-shadow parchment-shadow-content' : 'contact-form-parchment-shadow',
                                   )}
                                   style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
@@ -2502,7 +2542,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             key={idx}
                                             className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
                                           >
-                                            <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden">
+                                            <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden text-left">
                                               {(() => {
                                                 const parsed = parseServiceText(item.service)
                                                 return (
