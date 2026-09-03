@@ -994,6 +994,15 @@
       background-repeat: no-repeat;
     }
 
+    /* Kill the flat stretched layer above — matches its selector exactly
+       (same specificity family) so !important vs !important resolves by
+       specificity, not source order; a lower-specificity kill elsewhere
+       in the file cannot win against it. */
+    .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
+      content: none !important;
+      background-image: none !important;
+    }
+
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
       width: 100%;
       margin-left: 0;
@@ -1428,6 +1437,107 @@
       display: block;
       height: 24px;
       overflow: visible;
+    }
+
+    /* Mobile serwis-laptopow only: port of the desktop shared-backdrop
+       segmentation (min-width:768px blocks above) onto the OPEN Naprawy
+       main section, using the mobile canvas asset
+       naprawy-open-parchment-mobile-v17.webp instead of v16. Same
+       --naprawy-seg-size/--naprawy-seg-y/--naprawy-row-h/--naprawy-tail-h
+       vars (service-accordion.tsx, unchanged, already computed for both
+       breakpoints). Old single stretched <img> + the flat 100% 100%
+       ::before backdrop are disabled here so only the segmented slices
+       show; CLOSED main section and desktop are untouched. */
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] img[src="/images/naprawy-open-parchment-desktop.webp"] {
+      display: none !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-segment="true"]::after {
+      content: none !important;
+      background-image: none !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-segment="true"] {
+      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::before,
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::after {
+      content: none !important;
+      background-image: none !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment] {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--naprawy-row-h, 0px);
+      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+      pointer-events: none;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment="lower"] {
+      bottom: 0;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment="upper"] {
+      bottom: var(--naprawy-row-h, 0px);
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-bottom-segment="true"] {
+      height: var(--naprawy-tail-h, 0px);
+      margin-bottom: 0;
+      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-repeat: no-repeat;
+      background-size: var(--naprawy-seg-size);
+      background-position: 0 var(--naprawy-seg-y, 0px);
+    }
+
+    /* Coordinate fix: --naprawy-seg-y/naprawyCumY (service-accordion.tsx) is
+       accumulated from each row's offsetHeight, measured on the outer
+       AccordionItem — but the canvas slice above is painted on its inner
+       div. Any border/padding on the outer item before that inner div, or
+       margin after it (excluded from offsetHeight entirely), desyncs the
+       painted slice from its assumed position. Desktop already zeroes this
+       via [data-naprawy-first-row] (min-width:768px block) and md:mb-0 —
+       neither applies on mobile, so it's ported here 1:1. */
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-first-row="true"] {
+      padding-top: 0 !important;
+      border-top-width: 0 !important;
+    }
+
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"] {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* AccordionContent wrapping the row list ([data-naprawy-section], plus
+       its own pt-0/pb-4 inner div) sits between header-segment and row0 —
+       desktop already zeroes its top spacing (min-width:768px block,
+       ~1317-1332); no mobile counterpart existed, leaving this gap. */
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-section="true"] {
+      margin-top: 0 !important;
+      border-top-width: 0 !important;
+    }
+    .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-section="true"] > div {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+      border-top-width: 0 !important;
     }
 
     /* Mobile serwis-laptopow only: open subcategory row (e.g. Oprogramowanie)
