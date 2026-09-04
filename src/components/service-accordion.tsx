@@ -1557,7 +1557,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               "md:hidden flex justify-between w-full gap-2",
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
-                              <div className="flex-1 min-w-0 pr-2">
+                              <div data-open-header-hover-text="true" className="flex-1 min-w-0 pr-2">
                                 {(() => {
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
@@ -1636,7 +1636,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
                                 w wersji mobilnej (ten sam tekst, wspólny dla obu
                                 breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
-                            <div className="hidden md:block">
+                            <div data-open-header-hover-text="true" className="hidden md:block">
                               <div className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
                                 !(service.slug === 'serwis-laptopow' && section.id === 'naprawy') && "group-data-[state=open]:md:translate-x-[60px]",
@@ -1825,6 +1825,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
                             <div
                               data-debug-price="true"
+                              data-open-header-hover-text="true"
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
                               <TooltipProvider delayDuration={100}>
@@ -2059,7 +2060,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   : 'min-w-0'
                             )}
                           >
-                            <div className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
+                            <div data-open-header-hover-text="true" className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
                               <div className="leading-[1.05]">{timeHeader}</div>
                               <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
                             </div>
@@ -2076,19 +2077,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               <AccordionContent
                   beforeContent={section.id === 'dojazd' ? (
                     <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
-                      <div className="font-table-main text-[16px] md:text-[20px] leading-[1.3] md:whitespace-nowrap" style={{ color: '#3F2A16', fontSize: isMobile ? undefined : '18px', lineHeight: isMobile ? undefined : 1.2 }}>
-                        {isMobile ? (
-                          <>
-                            <span style={{ fontWeight: 700 }}>„DARMOWY DOJAZD” 😉</span>
-                            <br />
-                            <span style={{ fontWeight: 500 }}>nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</span>
-                          </>
-                        ) : (
-                          <>
-                            <div style={{ fontSize: '20px', fontWeight: 600 }}>„DARMOWY DOJAZD” 😉</div>
-                            <div style={{ fontSize: '16px', fontWeight: 400 }}>nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</div>
-                          </>
-                        )}
+                      <div className="font-table-main">
+                        <div className="text-[16px] text-white service-description-text leading-[1.3]">„DARMOWY DOJAZD” 😉</div>
+                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</div>
                       </div>
                     </div>
                   ) : undefined}
@@ -2179,7 +2170,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
                                 <div data-naprawy-header-col1={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title === 'Oprogramowanie' && (
-                                  <div className={cn(
+                                  <div data-naprawy-subcategory-image="true" className={cn(
                                     "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                                     "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
                                     "md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20",
@@ -2200,7 +2191,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
-                                  <div data-debug-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                  <div data-naprawy-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
                                       <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
@@ -2233,7 +2224,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                <div data-debug-subcategory-text="true" className={cn("flex-1 w-full min-w-0", service.slug === 'serwis-laptopow' && isRepairSection && "zakres-debug-header relative")}>
+                                <div data-debug-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", service.slug === 'serwis-laptopow' && isRepairSection && "zakres-debug-header relative")}>
                                   <div data-debug-subcategory-title="true">
                                     {(() => {
                                       const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
@@ -2312,7 +2303,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {service.slug === 'serwis-laptopow' && isRepairSection && (
-                                  <div data-debug-subcategory-price="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
+                                  <div data-debug-subcategory-price="true" data-naprawy-subcategory-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
                                         <TooltipProvider delayDuration={100}>

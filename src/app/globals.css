@@ -115,15 +115,17 @@
       drop-shadow(0 30px 22px rgba(47, 24, 10, 0.22)) !important;
   }
 
-  /* OPEN top-level header (diagnoza/dojazd/konserwacja/faq) hover: only the
-     existing foreground wrapper (icon+title+price+time) lifts 2px — the
-     parchment plate and its shadow (own filter above) stay still. */
-  .parchment-shadow-header > .flex {
+  /* OPEN top-level header (diagnoza/dojazd/konserwacja/faq) hover: title +
+     price + time text lift 2px together — the icon and the parchment plate
+     (own filter above) stay still. Targets containers marked directly in
+     JSX with [data-open-header-hover-text="true"] (mobile/desktop title,
+     price, time — never the icon). */
+  .parchment-shadow-header [data-open-header-hover-text="true"] {
     transition: transform 200ms ease-out;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .parchment-shadow-header:hover > .flex {
+    .parchment-shadow-header:hover [data-open-header-hover-text="true"] {
       transform: translateY(-2px);
     }
   }
@@ -734,15 +736,15 @@
     [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover {
       transform: none !important;
     }
-    [data-naprawy-subcategory="true"] [data-debug-subcategory-image] > img,
-    [data-naprawy-subcategory="true"] [data-debug-subcategory-text] {
+    [data-naprawy-subcategory="true"] [data-naprawy-subcategory-image] > img,
+    [data-naprawy-subcategory="true"] [data-naprawy-subcategory-hover-text] {
       transition: transform 180ms ease;
       transform-origin: center;
     }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-debug-subcategory-image] > img {
+    [data-naprawy-subcategory="true"][data-state="closed"]>div:not([data-slot="accordion-content"]):hover [data-naprawy-subcategory-image] > img {
       transform: translateY(-3px) scale(1.06);
     }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-debug-subcategory-text] {
+    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-naprawy-subcategory-hover-text] {
       transform: translateY(-2px) scale(1.01);
     }
   }
