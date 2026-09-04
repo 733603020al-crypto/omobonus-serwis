@@ -2304,6 +2304,14 @@
       display: none !important;
     }
 
+    /* FAQ split-header <img> only exists pre-hydration (isMobile starts
+       false, so the desktop split branch briefly renders on real mobile
+       too before useEffect corrects it) and has no mobile position:relative
+       rule by design — hide it here so it never paints before hydration. */
+    [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
     /* Nested naprawy subcategory cards: same reset as desktop, plus drop
        the -6px nudge (tuned for tucking under the top-level CLOSED
        header, not relevant to a nested card). */
