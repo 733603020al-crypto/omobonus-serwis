@@ -2209,6 +2209,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text,
     .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
       font-size: 22px;
     }
@@ -2266,6 +2267,21 @@
       opacity: 0 !important;
     }
 
+    /* FAQ OPEN header shadow: same mechanism as the Diagnoza/Dojazd/Konserwacja
+       ::after above (own selector, not joined into their :is() list). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]::after {
+      content: '';
+      position: absolute;
+      top: calc(100% - 6px);
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: linear-gradient(to bottom, rgba(35, 22, 10, 0.60), transparent);
+      z-index: 2;
+      pointer-events: none;
+      animation: diagnoza-shadow-in 220ms ease;
+    }
+
 
     /* Open content: real parchment image + soft drop-shadow, same asset/
        technique as desktop (see the <img> in service-accordion.tsx, which
@@ -2304,12 +2320,50 @@
       display: none !important;
     }
 
-    /* FAQ split-header <img> only exists pre-hydration (isMobile starts
-       false, so the desktop split branch briefly renders on real mobile
-       too before useEffect corrects it) and has no mobile position:relative
-       rule by design — hide it here so it never paints before hydration. */
+    /* FAQ OPEN content, mobile: standalone mirror of the Diagnoza/Dojazd/
+       Konserwacja wrapper above (own selector, not joined into their :is()
+       list — FAQ has no price grid/columns), same values. */
+    [data-open-header-split-content="true"][data-section-id="faq"] {
+      position: relative;
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      margin-right: -10px;
+      background: transparent;
+      color: #3A2817;
+      -webkit-tap-highlight-color: transparent;
+      transform: translateY(-6px);
+    }
+
+    /* Mobile consumer for --faq-img-h (service-accordion.tsx computes this on
+       mobile too, no isMobile guard) — same height/fallback/CLOSED-cleanup
+       mechanism as the desktop rule above and as Diagnoza/Dojazd/Konserwacja
+       just above. */
     [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+      height: var(--faq-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
       display: none !important;
+    }
+
+    /* FAQ open, mobile: question/answer typography matched 1:1 to Diagnoza's
+       actual cascade-resolved mobile values for the same row roles —
+       .service-description-text (question ~ service name) and
+       .parentheses-caption-text (answer ~ parenthetical caption), per the
+       [data-parchment-variant="warm"][data-main-accordion="true"] rules
+       above (~line 2730) which win those properties for Diagnoza too. */
+    [data-open-header-split-content="true"][data-section-id="faq"] .faq-question-title-text {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      padding-left: 8px;
+    }
+    [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #3A2817;
+      padding-left: 8px;
     }
 
     /* Nested naprawy subcategory cards: same reset as desktop, plus drop
@@ -2417,189 +2471,6 @@
       box-sizing: border-box !important;
     }
 
-    /* TEMP DEBUG — remove after visual check: outline diagnostics for
-       Naprawy → open Oprogramowanie container chain (serwis-laptopow only). */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] {
-      outline: 2px solid red;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-nested-parchment="true"] {
-      outline: 2px solid blue;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-nested-parchment="true"] > div:first-of-type {
-      outline: 2px solid green;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] .rounded-lg {
-      outline: 2px solid yellow;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-slot="table-container"] {
-      outline: 2px solid purple;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] [data-slot="table"] {
-      outline: 2px solid white;
-      outline-offset: -2px;
-    }
-
-    /* Same outline scheme as TEMP DEBUG 2 (open Oprogramowanie vs top
-       plates), applied here to every CLOSED Naprawy subcategory row. */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) {
-      outline: 2px solid red;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::before {
-      outline: 2px dashed orange;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
-      outline: 2px solid blue;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-header {
-      outline: 2px solid green;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-img {
-      outline: 2px solid purple;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-debug-img-media {
-      outline: 2px solid cyan;
-      outline-offset: -2px;
-    }
-    /* END TEMP DEBUG */
-
-    /* TEMP DEBUG 2 — remove after visual check: side-by-side outline
-       comparison, top plates Dojazd/Czyszczenie (closed AND open) vs open
-       Naprawy subcategory rows incl. Oprogramowanie (serwis-laptopow
-       mobile only). outline (not border) everywhere so no size/layout is
-       affected. Legend: red = outer header container; dashed orange =
-       ::before parchment; blue = [data-slot="accordion-trigger"]; green =
-       name/title container; purple = image container; cyan = <img>;
-       pink = "Cena, zł" + info-icon container (open only). */
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) {
-      outline: 2px solid red;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    )::before {
-      outline: 2px dashed orange;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) [data-slot="accordion-trigger"] {
-      outline: 2px solid blue;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) .zakres-debug-header {
-      outline: 2px solid green;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) .zakres-debug-img {
-      outline: 2px solid purple;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="closed"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) .zakres-debug-img-media {
-      outline: 2px solid cyan;
-      outline-offset: -2px;
-    }
-    .page-serwis-laptopow :is(
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="dojazd"],
-      [data-slot="accordion-item"][data-state="open"] > [data-top-level-service-header="true"][data-section-id="konserwacja"],
-      [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])
-    ) :is([data-debug-price="true"], [data-debug-subcategory-price="true"]) {
-      outline: 2px solid pink;
-      outline-offset: -2px;
-    }
-
-    /* Direct (non-:is()) duplicates for open Naprawy subcategories only,
-       forced above the parchment stacking so borders that the shared rules
-       above match but the parchment/scale stacking hides become visible
-       again. Colors/thickness copied 1:1 from the shared rules above. */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
-      outline: 2px solid blue;
-      outline-offset: -2px;
-      position: relative !important;
-      z-index: 100 !important;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) .zakres-debug-img {
-      outline: 2px solid purple;
-      outline-offset: 2px;
-      position: relative !important;
-      z-index: 102 !important;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) .zakres-debug-img img {
-      outline: 2px solid cyan;
-      outline-offset: -2px;
-      position: relative !important;
-      z-index: 103 !important;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-debug-subcategory-text="true"] {
-      outline: 2px solid green;
-      outline-offset: -2px;
-      position: relative !important;
-      z-index: 102 !important;
-    }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-debug-subcategory-price="true"] {
-      outline: 2px solid pink;
-      outline-offset: -2px;
-      position: relative !important;
-      z-index: 102 !important;
-    }
-    /* END TEMP DEBUG 2 */
-
-    /* TEMP DEBUG 3 — remove after visual check: magenta line at raggedY
-       (--debug-ragged-y set in service-accordion.tsx useLayoutEffect). */
-    .page-serwis-laptopow::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: var(--debug-ragged-y, -9999px);
-      height: 2px;
-      background: magenta;
-      z-index: 99999;
-      pointer-events: none;
-    }
-    /* END TEMP DEBUG 3 */
-
     /* OPEN TOP CATEGORY MATCH: image / title / price */
     .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
     .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
@@ -2676,7 +2547,12 @@
     }
 
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
-      color: #72502B !important;
+      font-family: var(--font-cormorant), serif !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      line-height: 1.2 !important;
+      color: #3A2817 !important;
+      opacity: 1 !important;
     }
 
     /* Row divider lines: same secondary ink tone as desktop, thin hairline —

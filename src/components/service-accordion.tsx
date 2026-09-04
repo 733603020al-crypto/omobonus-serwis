@@ -381,7 +381,11 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
           // Special handling for "zakres usługi obejmuje:", "zakres paketu obejmuje:", "zakres PODSTAWOWY +", "zakres STANDARD +", "zakres START +", "zakres BIZNES +" - white text, no parens
           if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
             return (
-              <div key={idx} className={`emphasis-inline-text text-[14px] leading-relaxed mt-1 first:mt-0 ${matchCaptionTypography ? 'text-[#72502B]' : 'text-white'}`}>
+              <div
+                key={idx}
+                className={matchCaptionTypography ? 'mt-1 first:mt-0' : 'emphasis-inline-text text-[14px] leading-relaxed mt-1 first:mt-0 text-white'}
+                style={matchCaptionTypography ? { fontFamily: 'var(--font-cormorant), serif', fontSize: '13px', fontWeight: 500, lineHeight: 1.2, color: '#3A2817', opacity: 1 } : undefined}
+              >
                 {trimmed}
               </div>
             )
@@ -405,8 +409,8 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
             return (
               <div
                 key={idx}
-                className={`parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 ${matchCaptionTypography ? 'leading-relaxed' : 'leading-[1.35]'}`}
-                style={matchCaptionTypography ? { color: '#72502B', opacity: 1 } : undefined}
+                className={matchCaptionTypography ? 'mt-[1px] pl-1' : 'parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 leading-[1.35]'}
+                style={matchCaptionTypography ? { fontFamily: 'var(--font-cormorant), serif', fontSize: '13px', fontWeight: 500, lineHeight: 1.2, color: '#3A2817', opacity: 1 } : undefined}
               >
                 {trimmed}
               </div>
@@ -581,6 +585,7 @@ const renderMobileServiceRow = (
   matchCaptionTypography: boolean = false,
   matchTitleTypography: boolean = false,
   showDuration: boolean = false,
+  finalLeftIndent8px: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -590,7 +595,7 @@ const renderMobileServiceRow = (
         } ${isLast ? '' : ''} py-1`}
     >
       {/* Левая колонка - описание */}
-      <div className="flex-1 min-w-0 pl-0.5">
+      <div className={`flex-1 min-w-0 ${finalLeftIndent8px ? 'pl-2' : 'pl-0.5'}`}>
         <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
@@ -1463,10 +1468,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             // since collapsed Content is 0px regardless of where it's parented.
             // Applies to every card on this page (not just diagnoza).
             const isOpenHeaderSplit = isWarmParchment && !isMobile
-            // Mobile: only "Diagnoza i wycena" reuses the same split (desktop MASTER
-            // parchment/shadow treatment for that one card only — every other card
-            // on this page keeps its original mobile layout untouched).
-            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja')
+            // Mobile: "Diagnoza i wycena", "Dojazd", "Konserwacja" and "FAQ" reuse the
+            // same split (desktop MASTER parchment/shadow treatment for these cards
+            // only — every other card on this page keeps its original mobile layout
+            // untouched). FAQ's own mobile geometry mirrors this same mechanism —
+            // see the [data-section-id="faq"] rules in the mobile CSS block.
+            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'faq')
             const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
               "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
@@ -2450,21 +2457,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   alt=""
                                   aria-hidden="true"
                                   className="md:hidden absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
-                                  style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto', height: 'var(--naprawy-img-h-mobile)' }}
-                                />
-                                {/* TEMP DEBUG 4 — remove after visual check: mobile CURL-TOP (magenta)
-                                    and RAGGED-ANCHOR (cyan) lines, at the same source fractions as
-                                    MOBILE_CURL_TOP_FRACTION/1204:1206 above. CSS-only, not baked into
-                                    the image. */}
-                                <span
-                                  aria-hidden="true"
-                                  className="md:hidden absolute left-0 right-0 pointer-events-none"
-                                  style={{ top: `calc(-68px + var(--naprawy-img-h-mobile) * ${1132 / 1206})`, height: '2px', background: 'magenta', zIndex: 50 }}
-                                />
-                                <span
-                                  aria-hidden="true"
-                                  className="md:hidden absolute left-0 right-0 pointer-events-none"
-                                  style={{ top: `calc(-68px + var(--naprawy-img-h-mobile) * ${1204 / 1206})`, height: '2px', background: 'cyan', zIndex: 50 }}
+                                  style={{ maxWidth: 'none', width: '100%', left: '0', right: 'auto', height: 'var(--naprawy-img-h-mobile)' }}
                                 />
                                 <img
                                   src="/images/contact-form-parchment.webp"
@@ -2755,6 +2748,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isDruk3DCustomSection(service.slug, section.id),
                             service.slug === 'serwis-laptopow' && section.id === 'konserwacja',
                             service.slug === 'serwis-laptopow' && section.id === 'konserwacja',
+                            false,
+                            service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja'),
                           )
                           return row
                         })}
