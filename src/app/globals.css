@@ -1644,6 +1644,7 @@
       align-items: center;
       justify-content: center;
       gap: clamp(8px, 3vw, 14px);
+      font-size: 22px;
     }
 
     .page-serwis-laptopow [data-naprawy-open-title="true"]::before,
