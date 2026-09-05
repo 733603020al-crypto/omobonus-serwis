@@ -119,8 +119,8 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
             key={index}
             className={
               variant === 'related'
-                ? `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 text-left ${index % 2 === 0 ? 'md:text-right md:pr-2' : 'md:text-left md:pl-2'}`
-                : `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? 'text-left md:text-right md:pr-2' : 'text-left md:pl-2'}`
+                ? `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/85 text-left ${index % 2 === 0 ? 'md:text-right md:pr-2' : 'md:text-left md:pl-2'}`
+                : `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/85 ${index % 2 === 0 ? 'text-left md:text-right md:pr-2' : 'text-left md:pl-2'}`
             }
           >
             {text}
@@ -304,8 +304,8 @@ export function ServicePageTemplate({
                     <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
                       {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa</span>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
                         </>
                       ) : (

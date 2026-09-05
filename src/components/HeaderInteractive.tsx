@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 const MobileMenuLoadingButton = () => (
   <button
     type="button"
-    className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+    className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white min-[920px]:hidden"
     aria-label="Open menu"
   >
     <Menu className="h-6 w-6" />
@@ -306,7 +306,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       </Link>
 
       {/* Desktop nav */}
-      <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
+      <nav className="z-10 ml-[35px] hidden items-center gap-[28px] min-[920px]:flex">
         <div
           className="relative h-full flex items-center"
           onMouseEnter={openServices}
@@ -318,7 +318,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               e.preventDefault()
               scrollToSection('uslugi')
             }}
-            className="flex items-center gap-1 font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
+            className="flex items-center gap-1 whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
             style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           >
             <span className={isServicesActive ? 'nav-active-underline' : ''}>{navServices}</span>
@@ -367,24 +367,24 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             </div>
           )}
         </div>
-        <Link href={aboutHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={aboutHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
         </Link>
-        <Link href={contactHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={contactHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
         </Link>
 
         <LanguageSwitcher />
 
         <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]" onClick={handlePhoneClick}>
-          <span className="md:hidden">{navCall}</span>
-          <span className="hidden md:inline">793 759 262</span>
+          <span className="min-[920px]:hidden">{navCall}</span>
+          <span className="hidden min-[920px]:inline">793 759 262</span>
         </CallButton>
       </nav>
 
       {/* Mobile: language switcher stays permanently visible in the header bar
           (not tucked inside the hamburger menu) — same component/logic as desktop. */}
-      <div className="flex items-center gap-3 md:hidden">
+      <div className="flex items-center gap-3 min-[920px]:hidden">
         <LanguageSwitcher />
 
         {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}

@@ -2566,6 +2566,12 @@
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
       border-color: rgba(114, 80, 43, 0.8);
     }
+
+    @media (max-width: 429px) {
+      .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] [data-zakres-title-oprogramowanie="true"] {
+        font-size: 12px !important;
+      }
+    }
   }
 
   /* WARM PARCHMENT — mobile table rows (all sections): name/parentheses/

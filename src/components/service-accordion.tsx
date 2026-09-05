@@ -2241,6 +2241,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       return (
                                         <TitleTag
                                           className={titleClassName}
+                                          data-zakres-title-oprogramowanie={service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title === 'Oprogramowanie' ? 'true' : undefined}
                                         >
                                           {(() => {
                                             const title = subcategory.title
@@ -2260,6 +2261,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   </>
                                                 )
                                               }
+                                            }
+                                            // RESP-002: mobile <430px width has no natural word-break point in
+                                            // this single-word title, causing the browser's overflow-wrap:anywhere
+                                            // fallback to split it at an arbitrary letter. A soft hyphen gives it
+                                            // one clean, deliberate break point instead.
+                                            if (service.slug === 'serwis-laptopow' && isRepairSection && title === 'Oprogramowanie') {
+                                              return 'Oprogra­mowanie'
                                             }
                                             return title
                                           })()}
