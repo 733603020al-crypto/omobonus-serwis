@@ -1005,7 +1005,7 @@
      it, so nothing bleeds/offsets on its own anymore. */
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
-      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-size: 100% 100%;
       background-repeat: no-repeat;
     }
@@ -1135,14 +1135,14 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1150,7 +1150,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-naprawy-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1158,7 +1158,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1174,7 +1174,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1229,7 +1229,7 @@
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: -20px;
       overflow: visible;
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1246,7 +1246,7 @@
     }
 
     /* Naprawy OPEN row: no longer shows its own slice of the shared
-       naprawy-open-parchment-desktop-v16.webp canvas — that slice is
+       naprawy-open-parchment-desktop-v17.webp canvas — that slice is
        instead moved whole (see [data-naprawy-open-row-segment] below) to
        sit under the table. Reuses the existing top-level warm-parchment
        CLOSED-card asset (same file/size/position already used by
@@ -1254,7 +1254,7 @@
        needed to outrank the higher-specificity base canvas-background rule
        above (~line 955). */
     [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp') !important;
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp') !important;
       background-size: var(--naprawy-seg-size) !important;
       background-repeat: no-repeat !important;
       background-position: 0 var(--naprawy-seg-y, 0px) !important;
@@ -1315,7 +1315,7 @@
       right: 0;
       width: 100%;
       height: var(--naprawy-row-h, 0px);
-      background-image: url('/images/naprawy-open-parchment-desktop-v16.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1458,7 +1458,7 @@
     /* Mobile serwis-laptopow only: port of the desktop shared-backdrop
        segmentation (min-width:768px blocks above) onto the OPEN Naprawy
        main section, using the mobile canvas asset
-       naprawy-open-parchment-mobile-v17.webp instead of v16. Same
+       naprawy-open-parchment-mobile-v172.webp instead of v16. Same
        --naprawy-seg-size/--naprawy-seg-y/--naprawy-row-h/--naprawy-tail-h
        vars (service-accordion.tsx, unchanged, already computed for both
        breakpoints). Old single stretched <img> + the flat 100% 100%
@@ -1474,7 +1474,7 @@
     }
 
     .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-segment="true"] {
-      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1487,7 +1487,7 @@
     }
 
     .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1500,7 +1500,7 @@
       right: 0;
       width: 100%;
       height: var(--naprawy-row-h, 0px);
-      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1518,7 +1518,7 @@
     .page-serwis-laptopow [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-bottom-segment="true"] {
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: 0;
-      background-image: url('/images/naprawy-open-parchment-mobile-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
