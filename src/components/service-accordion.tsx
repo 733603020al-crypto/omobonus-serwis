@@ -853,10 +853,7 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
 const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
-  // serwis-drukarek-laserowych adopts the warm-parchment card/typography style but keeps
-  // its existing top-level section icons (P1-P5) — the accordion-icon-*.webp set differs
-  // visually for konserwacja/naprawy/faq and must not silently replace this page's icons.
-  const useWarmSectionIcons = isWarmParchment && service.slug !== 'serwis-drukarek-laserowych'
+  const useWarmSectionIcons = isWarmParchment
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
   const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
