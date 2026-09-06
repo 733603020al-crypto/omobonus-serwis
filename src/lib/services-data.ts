@@ -64,7 +64,7 @@ export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 // extend this shared layout to another /uslugi/[slug] page. Drives both
 // service-accordion.tsx (isRepairAccordionLayout) and the shared
 // `.page-repair-accordion` CSS scope in globals.css.
-export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych']
+export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych', 'serwis-drukarek-termicznych']
 
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
@@ -3431,6 +3431,7 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.title = 'Oprogramowanie, konfiguracja i integracje'
   softwareSubcategory.subtitle =
     'etykiety drukują się przesunięte, w złym formacie, z błędnymi danymi lub nie drukują się wcale z programu'
+  softwareSubcategory.icon = '/images/naprawy-oprogramowanie-v3.webp'
   softwareSubcategory.items = [
     {
       service:
