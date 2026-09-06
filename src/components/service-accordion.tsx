@@ -848,6 +848,10 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
 const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
+  // serwis-drukarek-laserowych adopts the warm-parchment card/typography style but keeps
+  // its existing top-level section icons (P1-P5) — the accordion-icon-*.webp set differs
+  // visually for konserwacja/naprawy/faq and must not silently replace this page's icons.
+  const useWarmSectionIcons = isWarmParchment && service.slug !== 'serwis-drukarek-laserowych'
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
   const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
@@ -1575,15 +1579,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         )}>
                           <Image
                             src={
-                              isWarmParchment && section.id === 'dojazd'
+                              useWarmSectionIcons && section.id === 'dojazd'
                                 ? '/images/accordion-icon-dojazd.webp'
-                                : isWarmParchment && section.id === 'diagnoza'
+                                : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
-                                : isWarmParchment && section.id === 'konserwacja'
+                                : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
-                                : isWarmParchment && section.id === 'naprawy'
+                                : useWarmSectionIcons && section.id === 'naprawy'
                                 ? '/images/accordion-icon-naprawy.webp'
-                                : isWarmParchment && section.id === 'faq'
+                                : useWarmSectionIcons && section.id === 'faq'
                                 ? '/images/accordion-icon-faq.webp'
                                 : getIconForSection(section.id)
                             }
