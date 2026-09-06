@@ -3323,12 +3323,17 @@ const applyThermalModulesSubcategory = (sections: PricingSection[]) => {
   const modulesSubcategory = repairsSection.subcategories.find(
     sub =>
       sub.id === 'naprawy-skaner' ||
+      sub.id === 'naprawy-tasma' ||
       sub.title === 'Skaner / ADF' ||
       sub.title === 'Moduły dodatkowe: odklejak, nawijak, podajniki, obcinarka'
   )
 
   if (!modulesSubcategory) return
 
+  // Ujednolica id z wersją UK/RU (ta sama treść merytoryczna pod stałym id
+  // we wszystkich językach) — bez tego podkategoria zostawała pod id
+  // 'naprawy-tasma' i duplikowała domyślny tytuł "Taśma barwiąca...".
+  modulesSubcategory.id = 'naprawy-skaner'
   modulesSubcategory.title = 'Moduły dodatkowe: odklejak, nawijak, podajniki, obcinarka'
   modulesSubcategory.subtitle =
     'drukarka nie odkleja / nie odcina etykiet, źle nawija rolki, zacina przy aplikacji'
@@ -3429,6 +3434,10 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
 
   if (!softwareSubcategory) return
 
+  // Ujednolica id z wersją UK/RU (ta sama treść merytoryczna pod stałym id
+  // we wszystkich językach) — bez tego podkategoria zostawała pod id
+  // 'naprawy-dodatkowe' (dziedziczonym z domyślnego tytułu "Usługi dodatkowe").
+  softwareSubcategory.id = 'naprawy-additional'
   softwareSubcategory.title = 'Oprogramowanie, konfiguracja i integracje'
   softwareSubcategory.subtitle =
     'etykiety drukują się przesunięte, w złym formacie, z błędnymi danymi lub nie drukują się wcale z programu'
@@ -3540,6 +3549,25 @@ const createThermalPricingSections = (): PricingSection[] => {
   applyThermalElectronicsSubcategory(sections)
   applyThermalSoftwareSubcategory(sections)
   addThermalExtraServicesSubcategory(sections)
+
+  // Kolejność podkategorii "naprawy" musi być identyczna jak w UK/RU —
+  // wymuszamy ją jawnie, bo powyższe apply* funkcje tylko zmieniają treść
+  // istniejących obiektów, nie ich pozycję w tablicy.
+  const repairsSection = sections.find(section => section.id === 'naprawy')
+  if (repairsSection?.subcategories) {
+    const order = [
+      'naprawy-mechanizm',
+      'naprawy-karetka',
+      'naprawy-glowica',
+      'naprawy-elektronika',
+      'naprawy-skaner',
+      'naprawy-software',
+      'naprawy-additional',
+      'naprawy-termiczne-uslugi',
+    ]
+    repairsSection.subcategories.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
+  }
+
   return sections
 }
 
