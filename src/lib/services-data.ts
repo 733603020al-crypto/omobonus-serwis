@@ -64,7 +64,7 @@ export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 // extend this shared layout to another /uslugi/[slug] page. Drives both
 // service-accordion.tsx (isRepairAccordionLayout) and the shared
 // `.page-repair-accordion` CSS scope in globals.css.
-export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych']
+export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych']
 
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
@@ -2633,6 +2633,7 @@ const applyInkjetSoftwareSubcategory = (sections: PricingSection[]) => {
 
   if (!softwareSubcategory) return
 
+  softwareSubcategory.icon = '/images/naprawy-oprogramowanie-v3.webp'
   softwareSubcategory.items = [
     {
       service:

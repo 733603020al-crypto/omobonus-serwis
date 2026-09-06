@@ -42,3 +42,18 @@ Per-page hero scale overrides (`HERO_SCALE` map in `service-page-template.tsx`) 
 * The text wrapper (`.text-center` column with H1/H2) must keep `position: relative` with a `z-index` higher than the image wrapper.
 * `.service-hero-image-wrap` and all its effects (shine sweep, glow, hover scale) must stay below that text z-index — keep the wrap's own `z-index` lower, never override it per-page.
 * Flexbox note: a scaled-up wrap also needs `shrink-0`, or the flex container silently clamps its width back to 100% while height still grows, breaking the aspect ratio.
+
+## Repair-accordion design transfer (Naprawy-style pages)
+
+Reference/source of truth for this design: `/uslugi/serwis-laptopow`. When bringing this design to another repair-accordion page:
+
+* Transfer structure, fonts, sizes, spacing, and the new top-level section images (Diagnoza/Dojazd/Czyszczenie/Naprawy/FAQ) — same as `serwis-laptopow`.
+* Never change the target page's own texts, prices, or content.
+* Always read section/subcategory titles from that page's own data — never hardcode a title by `section.id` in the component.
+* Every Naprawy subcategory always gets a fixed image slot (same size/position/behavior, open+closed) — never conditionally omit it.
+* If a suitable existing image for that specific subcategory already exists in the project, use it via `subcategory.icon` (data-driven — never by title-matching or a hardcoded per-title condition in the component).
+* If no suitable image exists yet, use one neutral temporary placeholder icon, keeping the correct slot size/position.
+* Never substitute an image whose subject/theme doesn't fit the subcategory (e.g. a different device type) just to avoid a placeholder.
+* Verify once at mobile 390px and desktop 1440px, both open and closed section states — don't repeat full visual-regression checks multiple times.
+
+See also [[feedback_naprawy_icon_slot_rule]] (session memory with the same rule and its rationale).
