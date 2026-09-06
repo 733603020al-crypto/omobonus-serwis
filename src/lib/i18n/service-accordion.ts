@@ -19,12 +19,6 @@ export interface ServiceAccordionDict {
   exampleLabel: string
   rentPriceHeader: string
   printPriceHeader: string
-  /** Заголовки секций konserwacja/naprawy для мобильного аккордеона. null — использовать section.title из данных */
-  mobileAccordionTitles: {
-    konserwacja: string | null
-    naprawy: string | null
-    faq: string | null
-  }
   dojazdNote: readonly [string, string]
   deviceCategoriesDescription: {
     default: string
@@ -69,11 +63,6 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(np.',
     rentPriceHeader: 'Czynsz wynajmu [zł/mies.]',
     printPriceHeader: 'Cena wydruku',
-    mobileAccordionTitles: {
-      konserwacja: 'Czyszczenie i konserwacja',
-      naprawy: 'Naprawy i usługi serwisowe',
-      faq: 'Pytania (FAQ)',
-    },
     dojazdNote: [
       'Nie mówimy, że dojazd lub odbiór są „za darmo”,',
       'a następnie doliczamy ten koszt do ceny naprawy',
@@ -116,12 +105,6 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(напр.',
     rentPriceHeader: 'Орендна плата [zł/міс.]',
     printPriceHeader: 'Ціна друку',
-    // null — для секций konserwacja/naprawy на uk берётся section.title из данных (заголовки уже короткие и различаются по сервисам)
-    mobileAccordionTitles: {
-      konserwacja: null,
-      naprawy: null,
-      faq: null,
-    },
     dojazdNote: [
       'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
       'а потім додаємо цю вартість до ціни ремонту',
@@ -174,11 +157,6 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(напр.',
     rentPriceHeader: 'Аренда [zł/мес.]',
     printPriceHeader: 'Цена печати',
-    mobileAccordionTitles: {
-      konserwacja: 'Чистка и обслуживание',
-      naprawy: 'Ремонт и сервисное обслуживание',
-      faq: null,
-    },
     dojazdNote: [
       'Мы не говорим, что выезд или получение устройства «бесплатны»,',
       'а затем добавляем эту стоимость к цене ремонта',

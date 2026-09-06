@@ -479,6 +479,15 @@ const renderSectionTitleMobile = (title: string) => {
   return <>{title}</>
 }
 
+// Отделяет последнюю скобочную часть заголовка от основного текста — только
+// для стилевого оформления (отдельный <span> под суффикс). Текст всегда берётся
+// из section.title целиком; id секции здесь не используется для выбора текста.
+const splitTitleSuffix = (title: string): { main: string; suffix: string | null } => {
+  const match = title.match(/^(.+?)\s*\((.+?)\)$/)
+  if (!match) return { main: title, suffix: null }
+  return { main: match[1].trim(), suffix: `(${match[2].trim()})` }
+}
+
 // Sekcje strony druk-3d-na-zamowienie, które mają korzystać z tego samego
 // niestandardowego układu cennika co "Druk 3D z gotowego projektu" (id 'diagnoza').
 const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
@@ -816,6 +825,18 @@ const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'dr
 // druk-3d-na-zamowienie — the set that hides the "device categories" caption
 // line under the price header. Kept as its own list rather than derived from
 // PARCHMENT_TOOLTIP_CONTENT_SLUGS since the two sets differ by outsourcing-it.
+// Repair-part icon per naprawy subcategory title — only laptop/desktop
+// hardware-part subcategories have one; see the render site for how a
+// missing entry is handled (no icon box, not an empty one).
+const NAPRAWY_SUBCATEGORY_ICONS: Record<string, string> = {
+  'Płyta główna / zasilanie / podzespoły': '/images/naprawy-plyta-glowna-v3.webp',
+  'Układ chłodzenia i czystość': '/images/naprawy-uklad-chlodzenia-v3.webp',
+  'Dyski i dane': '/images/accordion-subcategory-dyski-dane.webp',
+  'Odzyskanie / usuwanie danych': '/images/naprawy-odzyskanie-danych-v2.webp',
+  'Ekran i obudowa': '/images/accordion-subcategory-ekran-obudowa.webp',
+  'Klawiatura / touchpad': '/images/accordion-subcategory-klawiatura.webp',
+}
+
 const HIDE_DEVICE_CAPTION_SLUGS = new Set([
   'serwis-laptopow',
   'serwis-komputerow-stacjonarnych',
@@ -1621,15 +1642,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           // Если закрыт - показываем обычный заголовок
                                           return section.title
                                         }
-                                        if (section.id === 'konserwacja') {
-                                          return t.mobileAccordionTitles.konserwacja ?? section.title
-                                        }
-                                        if (section.id === 'naprawy') {
-                                          return t.mobileAccordionTitles.naprawy ?? section.title
-                                        }
-                                        if (section.id === 'faq' && isRepairAccordionLayout) {
-                                          return t.mobileAccordionTitles.faq ?? section.title
-                                        }
                                         return section.title
                                       })()}
                                     </TitleTag>
@@ -1684,12 +1696,22 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                               )}>
                                 {isRepairAccordionLayout && (section.id === 'konserwacja' || section.id === 'naprawy') ? (
-                                  <>
-                                    {section.id === 'konserwacja' ? 'Czyszczenie i konserwacja' : 'Naprawy i usługi serwisowe'}{' '}
-                                    <span className={cn(section.id === 'konserwacja' && "group-data-[state=open]:md:block group-data-[state=open]:md:text-center")}>
-                                      {section.id === 'konserwacja' ? '(bez naprawy)' : '(opcjonalne)'}
-                                    </span>
-                                  </>
+                                  (() => {
+                                    const { main, suffix } = splitTitleSuffix(section.title)
+                                    return (
+                                      <>
+                                        {main}
+                                        {suffix && (
+                                          <>
+                                            {' '}
+                                            <span className={cn(section.id === 'konserwacja' && "group-data-[state=open]:md:block group-data-[state=open]:md:text-center")}>
+                                              {suffix}
+                                            </span>
+                                          </>
+                                        )}
+                                      </>
+                                    )
+                                  })()
                                 ) : section.title}
                               </div>
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
@@ -2230,28 +2252,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                {isRepairAccordionLayout && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
-                                  <div data-naprawy-subcategory-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
-                                    {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
-                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                    {subcategory.title === 'Układ chłodzenia i czystość' && (
-                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                    {subcategory.title === 'Dyski i dane' && (
-                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                    {subcategory.title === 'Odzyskanie / usuwanie danych' && (
-                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                    {subcategory.title === 'Ekran i obudowa' && (
-                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                    {subcategory.title === 'Klawiatura / touchpad' && (
-                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
-                                    )}
-                                  </div>
-                                )}
+                                {isRepairAccordionLayout && isRepairSection && subcategory.title !== 'Oprogramowanie' && (() => {
+                                  // Only laptop/desktop subcategory titles have a matching part
+                                  // icon — other repair-accordion pages (e.g. outsourcing-it, whose
+                                  // subcategories cover services, not hardware parts) render no box
+                                  // instead of an empty one.
+                                  const iconSrc = NAPRAWY_SUBCATEGORY_ICONS[subcategory.title]
+                                  if (!iconSrc) return null
+                                  return (
+                                    <div data-naprawy-subcategory-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                      <img src={iconSrc} alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                    </div>
+                                  )
+                                })()}
                                 {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
                                   <div className="mr-2 h-[60px] w-[60px] md:h-[50px] md:w-[50px] flex-shrink-0 flex items-center justify-center">
                                     <Image
