@@ -1189,6 +1189,7 @@ const printer3dNaprawy: PricingSection = {
     {
       id: '3d-software',
       title: 'Программное обеспечение и настройка',
+      icon: '/images/naprawy-oprogramowanie-v3.webp',
       items: [
         { service: 'Установка и настройка прошивки (Marlin, Klipper и т.д.)\n(системные ошибки, необходимость обновления или изменения функций)', price: '150 zł', duration: '1 день' },
         { service: 'Настройка слайсера и профилей материалов\n(Cura, PrusaSlicer, Bambu Studio и т.д.)', price: '120 zł', duration: '1 день' },

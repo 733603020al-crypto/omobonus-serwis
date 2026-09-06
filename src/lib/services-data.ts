@@ -64,7 +64,7 @@ export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 // extend this shared layout to another /uslugi/[slug] page. Drives both
 // service-accordion.tsx (isRepairAccordionLayout) and the shared
 // `.page-repair-accordion` CSS scope in globals.css.
-export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych', 'serwis-drukarek-termicznych']
+export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych', 'serwis-drukarek-termicznych', 'serwis-drukarek-3d']
 
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
@@ -1728,6 +1728,7 @@ const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
   const softwareSubcategory = serviceSection?.subcategories?.[3]
   if (!softwareSubcategory) return
   softwareSubcategory.title = 'Oprogramowanie i konfiguracja'
+  softwareSubcategory.icon = '/images/naprawy-oprogramowanie-v3.webp'
   softwareSubcategory.items = [
     {
       service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
