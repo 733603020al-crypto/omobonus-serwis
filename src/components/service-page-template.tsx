@@ -225,29 +225,29 @@ export function ServicePageTemplate({
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-laptopow' ? (
-                        // Animated WebP (screen animation baked into the file) — plain
-                        // <img>, not next/image, so the optimizer doesn't rasterize it
-                        // and kill the animation. width/height match the source's real
-                        // 578x502 aspect ratio (cropped to alpha bbox; not the generic
-                        // 420x420 square used by other service pages) so h-auto doesn't
-                        // cause a layout jump once the image loads.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={imageSrc}
+                        // Animated WebP (screen animation baked into the file, transparent
+                        // background) — canvas/offsets/disposal/blend across all 24 frames
+                        // must stay intact. width/height match the source's real 578x502
+                        // aspect ratio (cropped to alpha bbox; not the generic 420x420 square
+                        // used by other service pages) so h-auto doesn't cause a layout jump.
+                        // Starts on a static first-frame fallback (mobile and desktop alike)
+                        // and swaps in the animated file after page load (see
+                        // AnimatedHeroImage) to keep LCP fast on every screen size.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/serwis-laptopow-hero-static.webp"
                           alt={imageAlt}
                           width={578}
                           height={502}
                           className="service-hero-image service-hero-image-laptop object-contain w-full h-full mx-auto block"
-                          fetchPriority="high"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
                         // background, pre-cropped) — canvas/offsets/disposal/blend across all 16
                         // frames must stay byte-for-byte as authored (no crop/recode) or the
-                        // composited animation breaks. Desktop gets it directly via
-                        // <picture><source>; mobile starts on a static first-frame fallback and
-                        // swaps in the animated file after page load (see AnimatedHeroImage) to
-                        // keep mobile LCP fast.
+                        // composited animation breaks. Starts on a static first-frame fallback
+                        // (mobile and desktop alike) and swaps in the animated file after page
+                        // load (see AnimatedHeroImage) to keep LCP fast on every screen size.
                         <AnimatedHeroImage
                           animatedSrc={imageSrc}
                           staticSrc="/images/02_serwis-komputerow-stacjonarnych-static.webp"
@@ -260,9 +260,9 @@ export function ServicePageTemplate({
                         // Animated WebP (orbiting connection-dots animation baked into the
                         // file, transparent background) — canvas/offsets/disposal/blend
                         // across all 40 frames must stay intact or the composited animation
-                        // breaks. Desktop gets it directly via <picture><source>; mobile
-                        // starts on a static first-frame fallback and swaps in the animated
-                        // file after page load (see AnimatedHeroImage) to keep mobile LCP fast.
+                        // breaks. Starts on a static first-frame fallback (mobile and desktop
+                        // alike) and swaps in the animated file after page load (see
+                        // AnimatedHeroImage) to keep LCP fast on every screen size.
                         <AnimatedHeroImage
                           animatedSrc={imageSrc}
                           staticSrc="/images/03_outsourcing-it-static.webp"
