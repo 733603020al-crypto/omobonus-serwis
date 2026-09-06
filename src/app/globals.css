@@ -774,16 +774,16 @@
      never distorts. Gap to text 16px -> 14px. Text block next to it:
      flexible -> fixed 430px. Mobile and OPEN state untouched. */
   @media (min-width: 768px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-img {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-icon-box {
       width: 150px;
       height: 76px;
       margin-right: 14px;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-img-media {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-icon-media {
       width: 150px;
       height: 76px;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-debug-header {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-header-text {
       width: 430px;
       flex: none;
     }
@@ -886,16 +886,16 @@
       font-size: 24px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-img {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-box {
       width: 150px;
       height: 76px;
       margin-right: 14px;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-img-media {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-media {
       width: 150px;
       height: 76px;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-debug-header {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-header-text {
       width: 430px;
       flex: none;
     }
@@ -1357,18 +1357,18 @@
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text] {
+    [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text] {
       flex: 1 1 auto !important;
       width: auto !important;
       min-width: 0;
     }
 
-    [data-debug-subcategory-text="true"] {
+    [data-subcategory-text="true"] {
       width: 50%;
       flex: none;
     }
 
-    [data-faq-item="true"] [data-debug-subcategory-text] {
+    [data-faq-item="true"] [data-subcategory-text] {
       width: auto;
       flex: 1 1 0%;
       min-width: 0;
@@ -1622,12 +1622,12 @@
       line-height: 1 !important;
     }
 
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-debug-img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-icon-box {
       width: 115px !important;
       height: 58px !important;
       margin-right: 16px !important;
     }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-debug-img img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="closed"] .zakres-icon-box img {
       width: 100% !important;
       height: 100% !important;
     }
@@ -1673,16 +1673,16 @@
        Title bump to 24px is open-only on desktop (closed already gets
        22px mobile / 24px desktop from the earlier unconditional rule), so
        that one stays scoped to [data-state="open"] here too.
-       .zakres-debug-header's fixed 430px width is intentionally NOT
+       .zakres-header-text's fixed 430px width is intentionally NOT
        ported — mobile keeps its flexible w-full/flex-1 sizing. */
 
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-debug-img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-icon-box {
       width: clamp(64px, 22vw, 84px);
       height: clamp(33px, 11.2vw, 43px);
       margin-right: clamp(8px, 3vw, 12px);
     }
 
-    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-debug-img-media {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"] .zakres-icon-media {
       width: clamp(64px, 22vw, 84px);
       height: clamp(33px, 11.2vw, 43px);
     }
@@ -2420,23 +2420,23 @@
       position: relative !important;
       left: 15px !important;
     }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
       width: 115px !important;
       height: 58px !important;
       margin-right: 16px !important;
     }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box img {
       width: 100% !important;
       height: 100% !important;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 2A: title inside green column */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] {
       width: 100% !important;
       min-width: 0 !important;
       overflow: hidden !important;
     }
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] .zakres-title-text {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
       transform: none !important;
       width: 100% !important;
       max-width: 100% !important;
@@ -2461,7 +2461,7 @@
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 4: all open icons */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-debug-img {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
       transform: scale(1.4) !important;
       transform-origin: top left !important;
       position: relative !important;
@@ -2469,7 +2469,7 @@
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 5: title left padding */
-    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] .zakres-title-text {
+    .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
       padding-left: 8px !important;
       box-sizing: border-box !important;
     }
@@ -2485,9 +2485,9 @@
       min-width: 0 !important;
     }
 
-    .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header,
-    .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header,
-    .page-serwis-laptopow [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-debug-header {
+    .page-serwis-laptopow [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
+    .page-serwis-laptopow [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
+    .page-serwis-laptopow [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
       width: 100% !important;
       min-width: 0 !important;
       overflow: hidden !important;
@@ -2568,7 +2568,7 @@
     }
 
     @media (max-width: 429px) {
-      .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-debug-subcategory-text="true"] [data-zakres-title-oprogramowanie="true"] {
+      .page-serwis-laptopow [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] [data-zakres-title-oprogramowanie="true"] {
         font-size: 12px !important;
       }
     }
