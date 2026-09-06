@@ -14,6 +14,7 @@ export interface PricingSubcategory {
   subtitle?: string
   answer?: string // Odpowiedź dla FAQ (z obsługą formatowania)
   price?: string // Цена для отображения в заголовке подменю
+  icon?: string // Ścieżka do obrazka podkategorii (naprawy) — opcjonalna, placeholder gdy brak
 }
 
 export interface PricingSection {

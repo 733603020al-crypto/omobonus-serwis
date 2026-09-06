@@ -826,8 +826,11 @@ const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'dr
 // line under the price header. Kept as its own list rather than derived from
 // PARCHMENT_TOOLTIP_CONTENT_SLUGS since the two sets differ by outsourcing-it.
 // Repair-part icon per naprawy subcategory title — only laptop/desktop
-// hardware-part subcategories have one; see the render site for how a
-// missing entry is handled (no icon box, not an empty one).
+// hardware-part subcategories have one by title match; every other naprawy
+// subcategory (e.g. serwis-drukarek-laserowych, outsourcing-it) resolves via
+// subcategory.icon (services-data.ts) or falls back to NAPRAWY_FALLBACK_ICON —
+// see the render site: the icon slot itself is always rendered, only the src
+// varies, so adding a real photo later is a data-only change.
 const NAPRAWY_SUBCATEGORY_ICONS: Record<string, string> = {
   'Płyta główna / zasilanie / podzespoły': '/images/naprawy-plyta-glowna-v3.webp',
   'Układ chłodzenia i czystość': '/images/naprawy-uklad-chlodzenia-v3.webp',
@@ -836,6 +839,8 @@ const NAPRAWY_SUBCATEGORY_ICONS: Record<string, string> = {
   'Ekran i obudowa': '/images/accordion-subcategory-ekran-obudowa.webp',
   'Klawiatura / touchpad': '/images/accordion-subcategory-klawiatura.webp',
 }
+
+const NAPRAWY_FALLBACK_ICON = '/images/accordion-icon-naprawy.webp'
 
 const HIDE_DEVICE_CAPTION_SLUGS = new Set([
   'serwis-laptopow',
@@ -2245,6 +2250,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <Image
                                       src="/images/naprawy-oprogramowanie-v3.webp"
                                       alt=""
+                                      aria-hidden="true"
                                       width={50}
                                       height={50}
                                       className={cn(
@@ -2257,15 +2263,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {isRepairAccordionLayout && isRepairSection && subcategory.title !== 'Oprogramowanie' && (() => {
-                                  // Only laptop/desktop subcategory titles have a matching part
-                                  // icon — other repair-accordion pages (e.g. outsourcing-it, whose
-                                  // subcategories cover services, not hardware parts) render no box
-                                  // instead of an empty one.
-                                  const iconSrc = NAPRAWY_SUBCATEGORY_ICONS[subcategory.title]
-                                  if (!iconSrc) return null
+                                  // Icon slot always renders (same size/behavior as serwis-laptopow):
+                                  // subcategory.icon (data) > title-matched hardware part icon >
+                                  // neutral repair-icon placeholder. Adding a real photo later is
+                                  // just setting subcategory.icon in services-data.ts.
+                                  const iconSrc = subcategory.icon || NAPRAWY_SUBCATEGORY_ICONS[subcategory.title] || NAPRAWY_FALLBACK_ICON
                                   return (
                                     <div data-naprawy-subcategory-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
-                                      <img src={iconSrc} alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src={iconSrc} alt="" aria-hidden="true" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     </div>
                                   )
                                 })()}
