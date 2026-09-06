@@ -788,8 +788,46 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-iglowych',
 ])
 
+// Slugs using the "open laptop-repair card" treatment: icon-overflow
+// scale-compensation, centered/nowrap Naprawy header, custom Konserwacja/
+// Naprawy titles, curl/ragged-edge parchment geometry, etc. Add a slug here
+// — not new scattered `service.slug === '...'` checks — to extend this
+// layout to another /uslugi/[slug] page.
+const LAPTOP_REPAIR_LAYOUT_SLUGS = ['serwis-laptopow']
+
+// Slugs whose price-info popover/tooltip renders on the shared parchment
+// background (with a "cena netto" caption) instead of the plain dark
+// tooltip every other service uses.
+const PARCHMENT_TOOLTIP_SLUGS = new Set([
+  'outsourcing-it',
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+])
+
+// Same parchment tooltip content, plus druk-3d-na-zamowienie (which has its
+// own PopoverTrigger side/tooltip earlier but shares this TooltipContent).
+const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'druk-3d-na-zamowienie'])
+
+// Parchment-tooltip slugs (see above) minus outsourcing-it, plus
+// druk-3d-na-zamowienie — the set that hides the "device categories" caption
+// line under the price header. Kept as its own list rather than derived from
+// PARCHMENT_TOOLTIP_CONTENT_SLUGS since the two sets differ by outsourcing-it.
+const HIDE_DEVICE_CAPTION_SLUGS = new Set([
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+  'druk-3d-na-zamowienie',
+])
+
 const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
+  const isLaptopLayout = LAPTOP_REPAIR_LAYOUT_SLUGS.includes(service.slug)
+  const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
+  const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
+  const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
   const t = serviceAccordionI18n[locale]
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
@@ -987,7 +1025,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // in CSS, so once the container's bottom sits on RAGGED-ANCHOR they do
   // too, automatically.
   useLayoutEffect(() => {
-    if (service.slug !== 'serwis-laptopow' || openSection !== 'naprawy' || !openSubcategory) return
+    if (!isLaptopLayout || openSection !== 'naprawy' || !openSubcategory) return
     const whiteEl = naprawyNestedTableRefs.current[openSubcategory]
     if (!whiteEl) return
     const parchmentEl = whiteEl.closest('[data-nested-parchment="true"]') as HTMLElement | null
@@ -1069,7 +1107,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // 12px (matches -top-[12px], not Naprawy's 68px), spacer lands against the
   // next top-level AccordionItem.
   useLayoutEffect(() => {
-    if (service.slug !== 'serwis-laptopow') return
+    if (!isLaptopLayout) return
     const contentBottomEl = diagnozaContentBottomRef.current
     if (!contentBottomEl) return
     const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
@@ -1113,7 +1151,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
   // Same mechanism as Diagnoza above, ported 1:1 for Dojazd.
   useLayoutEffect(() => {
-    if (service.slug !== 'serwis-laptopow') return
+    if (!isLaptopLayout) return
     const contentBottomEl = dojazdContentBottomRef.current
     if (!contentBottomEl) return
     const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
@@ -1151,7 +1189,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
   // Same mechanism as Diagnoza above, ported 1:1 for Czyszczenie i konserwacja.
   useLayoutEffect(() => {
-    if (service.slug !== 'serwis-laptopow') return
+    if (!isLaptopLayout) return
     const contentBottomEl = konserwacjaContentBottomRef.current
     if (!contentBottomEl) return
     const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
@@ -1195,7 +1233,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // of a fixed 16px, since FAQ's gap to the next card isn't the same as
   // Konserwacja's.
   useLayoutEffect(() => {
-    if (service.slug !== 'serwis-laptopow') return
+    if (!isLaptopLayout) return
     const contentBottomEl = faqContentBottomRef.current
     if (!contentBottomEl) return
     const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
@@ -1502,15 +1540,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   )}>
                     <div data-naprawy-header-inner={section.id === 'naprawy' ? 'true' : undefined} className={cn(
                       "flex items-center flex-1 min-w-0",
-                      service.slug === 'serwis-laptopow' && "relative left-[15px] md:left-0"
+                      isLaptopLayout && "relative left-[15px] md:left-0"
                     )}>
                         <div className={cn(
                           "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
-                          service.slug === 'serwis-laptopow' && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
-                          service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
-                          service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
-                          service.slug === 'serwis-laptopow' && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
-                          service.slug === 'serwis-laptopow' && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
+                          isLaptopLayout && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
+                          isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
+                          isLaptopLayout && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isLaptopLayout && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
                         )}>
                           <Image
                             src={
@@ -1547,7 +1585,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         }
                         className={cn(
                           "zakres-debug-header flex-1 relative",
-                          service.slug === 'serwis-laptopow' && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full h-full flex items-center justify-center"
+                          isLaptopLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full h-full flex items-center justify-center"
                         )}
                       >
                         <div className="flex flex-col md:block">
@@ -1562,15 +1600,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
                                       /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
                                          compensation above (same 115px icon container × 1.4 scale = same
                                          46px right-overflow), kept as its own condition rather than joining
                                          the diagnoza/dojazd/konserwacja selector (FAQ has no price grid). */
-                                      service.slug === 'serwis-laptopow' && section.id === 'faq' && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0",
+                                      isLaptopLayout && section.id === 'faq' && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0",
                                       isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col",
-                                      service.slug === 'serwis-laptopow' && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
+                                      isLaptopLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                                     )}>
                                       {(() => {
                                         if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
@@ -1587,7 +1625,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         if (section.id === 'naprawy') {
                                           return t.mobileAccordionTitles.naprawy ?? section.title
                                         }
-                                        if (section.id === 'faq' && service.slug === 'serwis-laptopow') {
+                                        if (section.id === 'faq' && isLaptopLayout) {
                                           return t.mobileAccordionTitles.faq ?? section.title
                                         }
                                         return section.title
@@ -1639,11 +1677,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             <div data-open-header-hover-text="true" className="hidden md:block">
                               <div className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
-                                !(service.slug === 'serwis-laptopow' && section.id === 'naprawy') && "group-data-[state=open]:md:translate-x-[60px]",
+                                !(isLaptopLayout && section.id === 'naprawy') && "group-data-[state=open]:md:translate-x-[60px]",
                                 isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
-                                service.slug === 'serwis-laptopow' && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
+                                isLaptopLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                               )}>
-                                {service.slug === 'serwis-laptopow' && (section.id === 'konserwacja' || section.id === 'naprawy') ? (
+                                {isLaptopLayout && (section.id === 'konserwacja' || section.id === 'naprawy') ? (
                                   <>
                                     {section.id === 'konserwacja' ? 'Czyszczenie i konserwacja' : 'Naprawy i usługi serwisowe'}{' '}
                                     <span className={cn(section.id === 'konserwacja' && "group-data-[state=open]:md:block group-data-[state=open]:md:text-center")}>
@@ -1787,7 +1825,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                     </div>
 
-                    {section.id !== 'faq' && !(service.slug === 'serwis-laptopow' && section.id === 'naprawy') && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
+                    {section.id !== 'faq' && !(isLaptopLayout && section.id === 'naprawy') && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                       <>
                         <div
                           className={cn(
@@ -1805,7 +1843,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                   ? cn(
                                       'min-w-[96px] sm:min-w-[120px]',
-                                      service.slug === 'serwis-laptopow' && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                      isLaptopLayout && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
                                     )
                                   : 'min-w-0 sm:min-w-[120px]'
                             )}
@@ -1815,7 +1853,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <span className={cn(
                                   "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
                                   isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]",
-                                  service.slug === 'serwis-laptopow' && "relative left-[-15px] md:left-0"
+                                  isLaptopLayout && "relative left-[-15px] md:left-0"
                                 )}>
                                   {t.gratisUpper}
                                 </span>
@@ -1885,7 +1923,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           }
                                         }}
                                       >
-                                        <span className="inline sm:hidden">{service.slug === 'serwis-laptopow' ? priceHeaderFull : priceHeaderShort}</span>
+                                        <span className="inline sm:hidden">{isLaptopLayout ? priceHeaderFull : priceHeaderShort}</span>
                                         <PopoverAnchor asChild>
                                           <span className="-mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
                                             <Info className="w-4 h-4 opacity-70 pointer-events-none" />
@@ -1894,14 +1932,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       </div>
                                     </PopoverTrigger>
                                     <PopoverContent
-                                      side={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? 'top' : 'bottom'}
-                                      sideOffset={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (service.slug === 'serwis-laptopow' && section.id === 'diagnoza' ? 6 : 4) : 8}
+                                      side={isParchmentTooltipSlug ? 'top' : 'bottom'}
+                                      sideOffset={isParchmentTooltipSlug ? (isLaptopLayout && section.id === 'diagnoza' ? 6 : 4) : 8}
                                       className={cn(
-                                        service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow'
+                                        isParchmentTooltipSlug
                                           ? 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center'
                                           : 'w-fit max-w-[280px] border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
                                       )}
-                                      style={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? {
+                                      style={isParchmentTooltipSlug ? {
                                         backgroundImage: `var(--bg-parchment)`,
                                         width: 'max-content',
                                         minWidth: 0,
@@ -1910,7 +1948,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         left: 'auto',
                                       } : {}}
                                     >
-                                      {service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (
+                                      {isParchmentTooltipSlug ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
@@ -2000,12 +2038,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           collisionPadding: 16,
                                           className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
                                         }
-                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie'
+                                        : isParchmentTooltipContentSlug
                                           ? {
                                             side: 'top',
-                                            sideOffset: service.slug === 'serwis-laptopow' && section.id === 'diagnoza' ? 6 : 4,
+                                            sideOffset: isLaptopLayout && section.id === 'diagnoza' ? 6 : 4,
                                             ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
-                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${service.slug === 'serwis-laptopow' && section.id === 'diagnoza' ? ' diagnoza-tooltip-content' : ''}`,
+                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${isLaptopLayout && section.id === 'diagnoza' ? ' diagnoza-tooltip-content' : ''}`,
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
                                               backgroundSize: 'cover',
@@ -2019,7 +2057,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       {isSpecialTooltipService ? (
                                         <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
-                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie' ? (
+                                      ) : isParchmentTooltipContentSlug ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
@@ -2035,7 +2073,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </Tooltip>
                                 )}
                               </TooltipProvider>
-                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && service.slug !== 'druk-3d-na-zamowienie' && (
+                              {!hideDeviceCaption && (
                                 <span
                                   className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
                                   style={{
@@ -2090,21 +2128,21 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
                   // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
                   forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
-                  style={service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
+                  style={isLaptopLayout && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
-                    !(service.slug === 'serwis-laptopow' && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
-                    service.slug === 'serwis-laptopow' && section.id === 'konserwacja'
+                    !(isLaptopLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
+                    isLaptopLayout && section.id === 'konserwacja'
                       ? "max-h-none overflow-y-visible"
-                      : service.slug === 'serwis-laptopow' && section.id === 'faq'
+                      : isLaptopLayout && section.id === 'faq'
                         ? "overflow-visible"
                         : "max-h-[70vh] overflow-y-auto",
-                    service.slug === 'serwis-laptopow' && section.id === 'naprawy'
+                    isLaptopLayout && section.id === 'naprawy'
                       ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
                       : "",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
-                      : service.slug === 'serwis-laptopow' && ['diagnoza', 'dojazd', 'konserwacja', 'naprawy'].includes(section.id)
+                      : isLaptopLayout && ['diagnoza', 'dojazd', 'konserwacja', 'naprawy'].includes(section.id)
                         ? "pt-[15px]"
                         : "pt-3",
                     service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
@@ -2133,7 +2171,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
-                            service.slug === 'serwis-laptopow' && isRepairSection && 'max-md:w-full max-md:min-w-0',
+                            isLaptopLayout && isRepairSection && 'max-md:w-full max-md:min-w-0',
                             isRepairSection && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
                             isRepairSection && index === 0 && 'md:pt-0',
                             section.id === 'faq'
@@ -2167,9 +2205,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
                               <WynajemSubcategoryHeader service={service} section={section} subcategory={subcategory} viewDetails={viewDetails} isSectionOpen={isSectionOpen} isSubcategoryOpen={isSubcategoryOpen} wynajemHeaderRefs={wynajemHeaderRefs} drukarkaZastepczaHeaderRefs={drukarkaZastepczaHeaderRefs} />
                             ) : (
-                              <div data-naprawy-header-row={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : service.slug === 'serwis-laptopow' && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
-                                <div data-naprawy-header-col1={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
-                                {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title === 'Oprogramowanie' && (
+                              <div data-naprawy-header-row={isLaptopLayout && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : isLaptopLayout && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
+                                <div data-naprawy-header-col1={isLaptopLayout && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
+                                {isLaptopLayout && isRepairSection && subcategory.title === 'Oprogramowanie' && (
                                   <div data-naprawy-subcategory-image="true" className={cn(
                                     "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                                     "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
@@ -2190,7 +2228,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                {service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
+                                {isLaptopLayout && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
                                   <div data-naprawy-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
                                       <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
@@ -2224,7 +2262,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                <div data-debug-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", service.slug === 'serwis-laptopow' && isRepairSection && "zakres-debug-header relative")}>
+                                <div data-debug-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", isLaptopLayout && isRepairSection && "zakres-debug-header relative")}>
                                   <div data-debug-subcategory-title="true">
                                     {(() => {
                                       const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
@@ -2232,16 +2270,16 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
                                           ? 'div'
                                           : 'h4'
-                                      const titleClassName = `${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${service.slug === 'serwis-laptopow' && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                      const titleClassName = `${isLaptopLayout && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${isLaptopLayout && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
-                                        : service.slug === 'serwis-laptopow' && isRepairSection
+                                        : isLaptopLayout && isRepairSection
                                           ? `zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817] md:group-data-[state=open]/subcategory:translate-x-[60px]${subcategory.title === 'Oprogramowanie' ? ' max-md:group-data-[state=open]/subcategory:translate-x-[60px]' : ''}`
                                           : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
                                         <TitleTag
                                           className={titleClassName}
-                                          data-zakres-title-oprogramowanie={service.slug === 'serwis-laptopow' && isRepairSection && subcategory.title === 'Oprogramowanie' ? 'true' : undefined}
+                                          data-zakres-title-oprogramowanie={isLaptopLayout && isRepairSection && subcategory.title === 'Oprogramowanie' ? 'true' : undefined}
                                         >
                                           {(() => {
                                             const title = subcategory.title
@@ -2266,7 +2304,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             // this single-word title, causing the browser's overflow-wrap:anywhere
                                             // fallback to split it at an arbitrary letter. A soft hyphen gives it
                                             // one clean, deliberate break point instead.
-                                            if (service.slug === 'serwis-laptopow' && isRepairSection && title === 'Oprogramowanie') {
+                                            if (isLaptopLayout && isRepairSection && title === 'Oprogramowanie') {
                                               return 'Oprogra­mowanie'
                                             }
                                             return title
@@ -2284,7 +2322,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         data-subcategory-link
                                         className={cn(
                                           "flex items-center gap-2 text-xs font-serif group-hover/naprawy-row:translate-x-1 transition-transform whitespace-nowrap",
-                                          service.slug === 'serwis-laptopow' && isRepairSection ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
+                                          isLaptopLayout && isRepairSection ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
                                         )}
                                       >
                                         <span>
@@ -2292,7 +2330,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             ? viewDetails
                                             : viewPriceList}
                                         </span>
-                                        <ArrowRight className={cn("w-3 h-3", !(service.slug === 'serwis-laptopow' && isRepairSection) && "flex-shrink-0")} />
+                                        <ArrowRight className={cn("w-3 h-3", !(isLaptopLayout && isRepairSection) && "flex-shrink-0")} />
                                       </div>
                                     </>
                                   )}
@@ -2310,7 +2348,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     </div>
                                   </div>
                                 )}
-                                {service.slug === 'serwis-laptopow' && isRepairSection && (
+                                {isLaptopLayout && isRepairSection && (
                                   <div data-debug-subcategory-price="true" data-naprawy-subcategory-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
@@ -2440,10 +2478,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           </AccordionTrigger>
                           <AccordionContent
-                            data-open-header-split-content={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined}
-                            data-section-id={service.slug === 'serwis-laptopow' && isRepairSection ? 'naprawy-nested' : undefined}
-                            data-nested-parchment={service.slug === 'serwis-laptopow' && isRepairSection ? 'true' : undefined}
-                            beforeContent={service.slug === 'serwis-laptopow' && isRepairSection ? (
+                            data-open-header-split-content={isLaptopLayout && isRepairSection ? 'true' : undefined}
+                            data-section-id={isLaptopLayout && isRepairSection ? 'naprawy-nested' : undefined}
+                            data-nested-parchment={isLaptopLayout && isRepairSection ? 'true' : undefined}
+                            beforeContent={isLaptopLayout && isRepairSection ? (
                               <>
                                 {index !== (section.subcategories?.length ?? 0) - 1 && (
                                   <>
@@ -2470,7 +2508,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 />
                               </>
                             ) : undefined}
-                            afterContent={service.slug === 'serwis-laptopow' && isRepairSection ? (
+                            afterContent={isLaptopLayout && isRepairSection ? (
                               <div
                                 data-naprawy-tail-spacer="true"
                                 aria-hidden="true"
@@ -2479,10 +2517,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               />
                             ) : undefined}
                             className={cn(
-                            section.id === 'faq' ? 'pt-0.5' : service.slug === 'serwis-laptopow' && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
+                            section.id === 'faq' ? 'pt-0.5' : isLaptopLayout && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
                             (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
-                            service.slug === 'serwis-laptopow' && isRepairSection && "relative z-10",
-                            service.slug === 'serwis-laptopow' && isRepairSection && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
+                            isLaptopLayout && isRepairSection && "relative z-10",
+                            isLaptopLayout && isRepairSection && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.answer ? (
                               <div
@@ -2522,7 +2560,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               >
                                 {/* Мобильная версия - flex layout / (serwis-laptopow: новая Table-based mobile-разметка) */}
                                 <div className="block md:hidden">
-                                  {service.slug === 'serwis-laptopow' && isRepairSection ? (
+                                  {isLaptopLayout && isRepairSection ? (
                                     <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
                                       <colgroup>
                                         <col className="w-[75%]" />
@@ -2567,7 +2605,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       renderMobileServiceRow(
                                         item,
                                         idx,
-                                        idx === 0 && !(service.slug === 'serwis-laptopow' && section.id === 'konserwacja'),
+                                        idx === 0 && !(isLaptopLayout && section.id === 'konserwacja'),
                                         idx === subcategory.items.length - 1,
                                         shouldHighlightPrices,
                                         parseServiceText,
@@ -2575,7 +2613,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         false,
                                         false,
                                         false,
-                                        service.slug === 'serwis-laptopow' && isRepairSection,
+                                        isLaptopLayout && isRepairSection,
                                       ),
                                     )
                                   )}
@@ -2599,7 +2637,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       {subcategory.items.map((item, idx) => (
                                         <TableRow
                                           key={idx}
-                                          className={`border-white/20 border-b border-white/30 ${idx === 0 && !(service.slug === 'serwis-laptopow' && section.id === 'konserwacja') ? 'border-t border-white/30' : ''}`}
+                                          className={`border-white/20 border-b border-white/30 ${idx === 0 && !(isLaptopLayout && section.id === 'konserwacja') ? 'border-t border-white/30' : ''}`}
                                         >
                                           <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden">
                                             {(() => {
@@ -2739,16 +2777,16 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           const row = renderMobileServiceRow(
                             item,
                             idx,
-                            idx === 0 && section.id !== 'dojazd' && !(service.slug === 'serwis-laptopow' && section.id === 'konserwacja'),
+                            idx === 0 && section.id !== 'dojazd' && !(isLaptopLayout && section.id === 'konserwacja'),
                             idx === (section.items?.length ?? 0) - 1,
                             false,
                             parseServiceText,
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
-                            service.slug === 'serwis-laptopow' && section.id === 'konserwacja',
-                            service.slug === 'serwis-laptopow' && section.id === 'konserwacja',
+                            isLaptopLayout && section.id === 'konserwacja',
+                            isLaptopLayout && section.id === 'konserwacja',
                             false,
-                            service.slug === 'serwis-laptopow' && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja'),
+                            isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja'),
                           )
                           return row
                         })}
@@ -2785,7 +2823,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                           {parsed.main}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', false, service.slug === 'serwis-laptopow' && section.id === 'konserwacja')}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', false, isLaptopLayout && section.id === 'konserwacja')}
                                       </div>
                                     )
                                   })()}
@@ -2873,7 +2911,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
                     >
                       {triggerNode}
-                      {service.slug === 'serwis-laptopow' && section.id === 'naprawy' && isSectionOpen(section.id) && (
+                      {isLaptopLayout && section.id === 'naprawy' && isSectionOpen(section.id) && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                           <span
                             data-naprawy-open-title="true"
@@ -2974,7 +3012,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
                       >
                         {triggerNode}
-                        {service.slug === 'serwis-laptopow' && isSectionOpen(section.id) && (
+                        {isLaptopLayout && isSectionOpen(section.id) && (
                           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <span
                               data-naprawy-open-title="true"
@@ -3021,7 +3059,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           </div>
         </div>
       )}
-      {service.slug === 'serwis-laptopow' && (
+      {isLaptopLayout && (
         <div
           data-faq-tail-spacer="true"
           aria-hidden="true"
