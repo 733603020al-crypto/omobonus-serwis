@@ -1543,7 +1543,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       isLaptopLayout && "relative left-[15px] md:left-0"
                     )}>
                         <div className={cn(
-                          "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
+                          "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                           isLaptopLayout && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
                           isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
                           isLaptopLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
@@ -1568,7 +1568,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             width={50}
                             height={50}
                             className={cn(
-                              "zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                              "zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
                               !isSectionOpen(section.id) && 'parchment-shadow-icon-closed'
                             )}
                             unoptimized
@@ -1584,7 +1584,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   null
                         }
                         className={cn(
-                          "zakres-debug-header flex-1 relative",
+                          "zakres-header-text flex-1 relative",
                           isLaptopLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full h-full flex items-center justify-center"
                         )}
                       >
@@ -1862,7 +1862,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
 
                             <div
-                              data-debug-price="true"
+                              data-price="true"
                               data-open-header-hover-text="true"
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
@@ -2209,7 +2209,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <div data-naprawy-header-col1={isLaptopLayout && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {isLaptopLayout && isRepairSection && subcategory.title === 'Oprogramowanie' && (
                                   <div data-naprawy-subcategory-image="true" className={cn(
-                                    "zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
+                                    "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                                     "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
                                     "md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20",
                                     "origin-top-left group-data-[state=open]/subcategory:scale-[1.4] group-data-[state=open]/subcategory:z-20"
@@ -2220,7 +2220,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       width={50}
                                       height={50}
                                       className={cn(
-                                        "zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                        "zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
                                         !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed',
                                         isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open'
                                       )}
@@ -2229,24 +2229,24 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {isLaptopLayout && isRepairSection && subcategory.title !== 'Oprogramowanie' && (
-                                  <div data-naprawy-subcategory-image="true" className="zakres-debug-img mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                  <div data-naprawy-subcategory-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                     {subcategory.title === 'Płyta główna / zasilanie / podzespoły' && (
-                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/naprawy-plyta-glowna-v3.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Układ chłodzenia i czystość' && (
-                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/naprawy-uklad-chlodzenia-v3.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Dyski i dane' && (
-                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/accordion-subcategory-dyski-dane.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Odzyskanie / usuwanie danych' && (
-                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/naprawy-odzyskanie-danych-v2.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Ekran i obudowa' && (
-                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/accordion-subcategory-ekran-obudowa.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                     {subcategory.title === 'Klawiatura / touchpad' && (
-                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-debug-img-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src="/images/accordion-subcategory-klawiatura.webp" alt="" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     )}
                                   </div>
                                 )}
@@ -2262,8 +2262,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                <div data-debug-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", isLaptopLayout && isRepairSection && "zakres-debug-header relative")}>
-                                  <div data-debug-subcategory-title="true">
+                                <div data-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", isLaptopLayout && isRepairSection && "zakres-header-text relative")}>
+                                  <div data-subcategory-title="true">
                                     {(() => {
                                       const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
                                         ? 'h2'
@@ -2349,7 +2349,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {isLaptopLayout && isRepairSection && (
-                                  <div data-debug-subcategory-price="true" data-naprawy-subcategory-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
+                                  <div data-subcategory-price="true" data-naprawy-subcategory-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
                                         <TooltipProvider delayDuration={100}>
