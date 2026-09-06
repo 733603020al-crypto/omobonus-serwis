@@ -9,6 +9,7 @@ import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
+import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
@@ -165,6 +166,7 @@ export function ServicePageTemplate({
   footerT,
 }: ServicePageTemplateProps) {
   const pageClass = PAGE_CLASS_SLUGS.includes(slug) ? `page-${slug}` : ''
+  const repairAccordionClass = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'page-repair-accordion' : ''
 
   return (
     <>
@@ -173,7 +175,7 @@ export function ServicePageTemplate({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header locale={locale} />
-      <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass}`}>
+      <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass} ${repairAccordionClass}`}>
 
         <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
           <Image

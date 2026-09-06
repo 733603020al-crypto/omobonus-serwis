@@ -56,6 +56,15 @@ export interface ServiceData {
 
 export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 
+// Slugs sharing the "repair accordion" layout: warm-parchment card look,
+// open laptop-repair card treatment (icon-overflow scale-compensation,
+// centered/nowrap Naprawy header, curl/ragged-edge parchment geometry).
+// Add a slug here — not scattered `service.slug === '...'` checks — to
+// extend this shared layout to another /uslugi/[slug] page. Drives both
+// service-accordion.tsx (isRepairAccordionLayout) and the shared
+// `.page-repair-accordion` CSS scope in globals.css.
+export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych']
+
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
   {
