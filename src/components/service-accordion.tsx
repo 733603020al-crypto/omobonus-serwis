@@ -367,7 +367,7 @@ export const renderDurationValue = (value: string) => (
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px', matchCaptionTypography: boolean = false, matchTitleTypography: boolean = false) => {
+const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px') => {
   if (!text) return null
 
   // Jeśli tekst zawiera переносы строк, разбиваем и рендерим каждую строку отдельно
@@ -382,11 +382,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
           // Special handling for "zakres usługi obejmuje:", "zakres paketu obejmuje:", "zakres PODSTAWOWY +", "zakres STANDARD +", "zakres START +", "zakres BIZNES +" - white text, no parens
           if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
             return (
-              <div
-                key={idx}
-                className={matchCaptionTypography ? 'mt-1 first:mt-0' : 'emphasis-inline-text text-[14px] leading-relaxed mt-1 first:mt-0 text-white'}
-                style={matchCaptionTypography ? { fontFamily: 'var(--font-cormorant), serif', fontSize: '13px', fontWeight: 500, lineHeight: 1.2, color: '#3A2817', opacity: 1 } : undefined}
-              >
+              <div key={idx} className="emphasis-inline-text text-[14px] leading-relaxed mt-1 first:mt-0 text-white">
                 {trimmed}
               </div>
             )
@@ -394,11 +390,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
 
           // Special handling for "Uwaga!!!" - white text, no parens
           if (trimmed.startsWith('Uwaga!!!')) {
-            return matchTitleTypography ? (
-              <div key={idx} className="font-table-main text-[18px] font-medium text-[#3A2817] leading-[1.15] md:text-[20px] md:font-semibold md:text-[#332314] md:leading-[1.3] mt-1 first:mt-0">
-                {trimmed}
-              </div>
-            ) : (
+            return (
               <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-1 first:mt-0">
                 {trimmed}
               </div>
@@ -408,11 +400,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
           // Special handling for bullet points - no parens, tighter spacing
           if (trimmed.startsWith('•')) {
             return (
-              <div
-                key={idx}
-                className={matchCaptionTypography ? 'mt-[1px] pl-1' : 'parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 leading-[1.35]'}
-                style={matchCaptionTypography ? { fontFamily: 'var(--font-cormorant), serif', fontSize: '13px', fontWeight: 500, lineHeight: 1.2, color: '#3A2817', opacity: 1 } : undefined}
-              >
+              <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 leading-[1.35]">
                 {trimmed}
               </div>
             )
@@ -592,8 +580,6 @@ const renderMobileServiceRow = (
   parseServiceText: (text: string) => { main: string; parentheses: string | null },
   plainPrice: boolean = false,
   hideSubtitle: boolean = false,
-  matchCaptionTypography: boolean = false,
-  matchTitleTypography: boolean = false,
   showDuration: boolean = false,
   finalLeftIndent8px: boolean = false,
 ) => {
@@ -609,7 +595,7 @@ const renderMobileServiceRow = (
         <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {parsed.main}
         </div>
-        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', matchCaptionTypography, matchTitleTypography)}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
       </div>
       {/* Колонка - цена */}
       <div
@@ -2663,8 +2649,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         parseServiceText,
                                         false,
                                         false,
-                                        false,
-                                        false,
                                         isRepairAccordionLayout && isRepairSection,
                                       ),
                                     )
@@ -2836,8 +2820,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             parseServiceText,
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
-                            isRepairAccordionLayout && section.id === 'konserwacja',
-                            isRepairAccordionLayout && section.id === 'konserwacja',
                             false,
                             isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'),
                           )
@@ -2876,7 +2858,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                           {parsed.main}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', false, isRepairAccordionLayout && section.id === 'konserwacja')}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
                                       </div>
                                     )
                                   })()}
