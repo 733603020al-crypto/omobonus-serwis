@@ -1287,6 +1287,7 @@ const plotterNaprawy: PricingSection = {
     {
       id: 'plotter-software',
       title: 'Программное обеспечение и настройка',
+      icon: '/images/naprawy-oprogramowanie-v3.webp',
       items: [
         { service: 'Обновление прошивки\n(системные ошибки)', price: '120 zł', duration: 'до 1 дня' },
         { service: 'Настройка драйверов / RIP\n(проблемы с форматом)', price: '180 zł', duration: 'до 1 дня' },
