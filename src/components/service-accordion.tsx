@@ -2179,7 +2179,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     </div>
                   ) : undefined}
                   afterContent={service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
-                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '6px' : '8px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
                       <div className="font-table-main">
                         <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.</div>
                         <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-1">Dodatkowo płatne: naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.</div>
