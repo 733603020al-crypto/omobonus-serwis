@@ -889,6 +889,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const dojazdTailSpacerRef = useRef<HTMLDivElement | null>(null)
   const konserwacjaContentBottomRef = useRef<HTMLDivElement | null>(null)
   const konserwacjaTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const projektowanieModeliContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const projektowanieModeliTailSpacerRef = useRef<HTMLDivElement | null>(null)
   const faqItemRef = useRef<HTMLDivElement | null>(null)
   const faqContentBottomRef = useRef<HTMLDivElement | null>(null)
   const faqTailSpacerRef = useRef<HTMLDivElement | null>(null)
@@ -1254,6 +1256,46 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     return () => window.removeEventListener('resize', applyGeometry)
   }, [service.slug, openSection])
 
+  // Same mechanism as Diagnoza above, ported 1:1 for druk-3d-na-zamowienie's
+  // "Projektowanie i modelowanie 3D CAD" section (own refs/CSS var — this
+  // section only exists on that one page, see isDruk3DCustomSection).
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = projektowanieModeliContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]') as HTMLElement | null
+    const spacerEl = projektowanieModeliTailSpacerRef.current
+    if (openSection !== 'projektowanie-modeli') {
+      parchmentEl.style.removeProperty('--projektowanie-modeli-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12
+    const applyGeometry = () => {
+      if (spacerEl) spacerEl.style.height = '0px'
+
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--projektowanie-modeli-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextAccordionItemEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextAccordionItemEl) {
+        const nextTopY = nextAccordionItemEl.getBoundingClientRect().top
+        spacerEl.style.height = `${Math.max(0, (raggedY + 16) - nextTopY)}px`
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [service.slug, openSection])
+
   // Same mechanism as Konserwacja above, ported for FAQ — own refs/CSS var, no
   // price grid. Recomputed on openFaq too: unlike Konserwacja, FAQ content
   // height changes each time a nested question is expanded/collapsed, so the
@@ -1540,7 +1582,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             // only — every other card on this page keeps its original mobile layout
             // untouched). FAQ's own mobile geometry mirrors this same mechanism —
             // see the [data-section-id="faq"] rules in the mobile CSS block.
-            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'faq')
+            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'faq')
             const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
               "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
@@ -1565,7 +1607,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 >
                   <div className={cn(
                     "flex items-center w-full text-left",
-                    useSplitHeaderLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && 'diagnoza-open-header-row'
+                    useSplitHeaderLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && 'diagnoza-open-header-row'
                   )}>
                     <div data-naprawy-header-inner={section.id === 'naprawy' ? 'true' : undefined} className={cn(
                       "flex items-center flex-1 min-w-0",
@@ -1574,8 +1616,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <div className={cn(
                           "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                           isRepairAccordionLayout && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
-                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
-                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
                           isRepairAccordionLayout && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
                           isRepairAccordionLayout && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
                         )}>
@@ -1629,7 +1671,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
                                       /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
                                          compensation above (same 115px icon container × 1.4 scale = same
                                          46px right-overflow), kept as its own condition rather than joining
@@ -1858,24 +1900,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     {section.id !== 'faq' && !(isRepairAccordionLayout && section.id === 'naprawy') && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                       <>
                         <div
-                          className={cn(
-                            'flex items-center ml-3 sm:ml-4 flex-shrink-0',
-                            isDruk3DCustomSection(service.slug, section.id)
-                              ? 'gap-0 md:w-[calc(46%-9.2px)] md:mr-[10px]'
-                              : 'gap-3 sm:gap-4'
-                          )}
+                          className="flex items-center ml-3 sm:ml-4 flex-shrink-0 gap-3 sm:gap-4"
                         >
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              isDruk3DCustomSection(service.slug, section.id)
-                                ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
-                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? cn(
-                                      'min-w-[96px] sm:min-w-[120px]',
-                                      isRepairAccordionLayout && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
-                                    )
-                                  : 'min-w-0 sm:min-w-[120px]'
+                              section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                ? cn(
+                                    'min-w-[96px] sm:min-w-[120px]',
+                                    isRepairAccordionLayout && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                  )
+                                : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
                             {section.id === 'diagnoza' && (
@@ -1920,7 +1955,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <div
                                         className={cn(
                                           'zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                          section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
                                             ? 'justify-center'
                                             : 'justify-end',
                                           'md:cursor-default cursor-pointer'
@@ -2026,37 +2061,21 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <div
                                         className={cn(
                                           'zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
-                                          isDruk3DCustomSection(service.slug, section.id)
-                                            ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
-                                            : cn(
-                                                'flex items-center gap-[5px] pl-1 md:pl-0',
-                                                section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                                  ? 'justify-center'
-                                                  : 'justify-end'
-                                              ),
+                                          'flex items-center gap-[5px] pl-1 md:pl-0',
+                                          section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                            ? 'justify-center'
+                                            : 'justify-end',
                                           'md:cursor-default'
                                         )}
                                         role="button"
                                         tabIndex={0}
                                         aria-label="Informacja o cenach"
                                       >
-                                        {isDruk3DCustomSection(service.slug, section.id) ? (
-                                          <span className="relative inline-block">
-                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                            <span className="md:absolute md:left-full md:top-1/2 md:-translate-y-1/2 md:ml-3 ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
-                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                            </span>
-                                          </span>
-                                        ) : (
-                                          <>
-                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                            <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
-                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                            </span>
-                                          </>
-                                        )}
+                                        <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                        <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                        </span>
                                       </div>
                                     </TooltipTrigger>
                                     <TooltipContent
@@ -2071,9 +2090,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         : isParchmentTooltipContentSlug
                                           ? {
                                             side: 'top',
-                                            sideOffset: isRepairAccordionLayout && section.id === 'diagnoza' ? 6 : 4,
+                                            sideOffset: isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli') ? 6 : 4,
                                             ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
-                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${isRepairAccordionLayout && section.id === 'diagnoza' ? ' diagnoza-tooltip-content' : ''}`,
+                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli') ? ' diagnoza-tooltip-content' : ''}`,
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
                                               backgroundSize: 'cover',
@@ -2121,11 +2140,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              isDruk3DCustomSection(service.slug, section.id)
-                                ? 'md:w-[39.1304%] md:pl-4 md:pr-2'
-                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? 'min-w-[120px]'
-                                  : 'min-w-0'
+                              section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                ? 'min-w-[120px]'
+                                : 'min-w-0'
                             )}
                           >
                             <div data-open-header-hover-text="true" className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
@@ -2162,7 +2179,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
                     !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
-                    isRepairAccordionLayout && section.id === 'konserwacja'
+                    isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
                       ? "max-h-none overflow-y-visible"
                       : isRepairAccordionLayout && section.id === 'faq'
                         ? "overflow-visible"
@@ -2782,6 +2799,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       style={section.id === 'dojazd' ? { paddingTop: 0, marginTop: 0, overflow: 'visible' } : undefined}
                       ref={
                         section.id === 'diagnoza' ? (el => { diagnozaContentBottomRef.current = el }) :
+                        section.id === 'projektowanie-modeli' ? (el => { projektowanieModeliContentBottomRef.current = el }) :
                         section.id === 'dojazd' ? (el => { dojazdContentBottomRef.current = el }) :
                         section.id === 'konserwacja' ? (el => { konserwacjaContentBottomRef.current = el }) :
                         undefined
@@ -2807,7 +2825,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isRepairAccordionLayout && section.id === 'konserwacja',
                             isRepairAccordionLayout && section.id === 'konserwacja',
                             false,
-                            isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja'),
+                            isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'),
                           )
                           return row
                         })}
@@ -2966,6 +2984,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             data-diagnoza-tail-spacer="true"
                             aria-hidden="true"
                             ref={el => { diagnozaTailSpacerRef.current = el }}
+                            style={{ height: 0 }}
+                          />
+                        </>
+                      ) : section.id === 'projektowanie-modeli' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza above, ported 1:1 for
+                              druk-3d-na-zamowienie's "Projektowanie i modelowanie 3D CAD".
+                              Height is --projektowanie-modeli-img-h (service-accordion.tsx). */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                          <div
+                            data-projektowanie-modeli-tail-spacer="true"
+                            aria-hidden="true"
+                            ref={el => { projektowanieModeliTailSpacerRef.current = el }}
                             style={{ height: 0 }}
                           />
                         </>

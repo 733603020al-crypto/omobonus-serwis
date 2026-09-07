@@ -588,7 +588,7 @@
     }
   }
 
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="diagnoza"]::before {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"])::before {
     background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
     background-size: 896px 82px;
     background-repeat: no-repeat;
@@ -822,7 +822,7 @@
        transform:scale, which would only look bigger without moving the
        actual box. Lifts ~2px. Height/padding/font stay on the shared rule
        above — not redeclared here. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       width: calc(100% + 72px);
       margin-left: -36px;
       margin-right: -36px;
@@ -833,21 +833,21 @@
       z-index: 2 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       transform: translateY(-4px) scale(1.04);
     }
 
     /* Diagnoza OPEN header only: kill the shared gold group-hover overlay
        (first child of this div, see triggerNode in service-accordion.tsx) —
        it read as a dark tint on the left third of this card on hover. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]):hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]):hover>div:first-child {
       opacity: 0 !important;
     }
 
     /* Same overlay-kill, triggered by hovering the OPEN table below the
        header (item-level :hover covers both), so lifting/hovering the
        table no longer reveals the header's gold overlay on the left. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"])>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"])>div:first-child {
       opacity: 0 !important;
     }
 
@@ -1868,7 +1868,7 @@
        24px) so the sheet reads as slightly tucked under the header. The
        10px top overlap lives on the <img> itself (see JSX), not here, so
        it doesn't shift this box's own height/position. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       position: relative;
       width: calc(100% + 48px);
       margin-left: -24px;
@@ -1893,6 +1893,15 @@
        OPEN's recompute; hide the img whenever Diagnoza's own AccordionItem
        isn't open so it never shows past the collapsed block's bounds. */
     [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+
+    /* Same mechanism as Diagnoza above, ported 1:1 for druk-3d-na-zamowienie's
+       "Projektowanie i modelowanie 3D CAD" (isDruk3DCustomSection). */
+    [data-open-header-split-content="true"][data-section-id="projektowanie-modeli"] > img.contact-form-parchment-shadow {
+      height: var(--projektowanie-modeli-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="projektowanie-modeli"] > img.contact-form-parchment-shadow {
       display: none !important;
     }
 
@@ -1971,7 +1980,7 @@
        pushes the whole OPEN block — and the height:100% parchment <img>
        under it — taller automatically. Top offset/header and every row's
        own position/height above stay untouched. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
       margin-left: 24px;
       margin-right: 24px;
       padding-bottom: 48px;
@@ -1996,7 +2005,7 @@
        shared markup used by every service table, so scoped strictly to
        diagnoza. Top border on both wrappers is untouched (horizontal,
        matches "не ломать верх"), as are the table's own row dividers. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
       border-left: none;
       border-right: none;
       border-bottom: none;
@@ -2006,18 +2015,18 @@
     /* Row divider lines: same secondary ink tone as the parenthetical
        caption text, thin 1px hairline — was a semi-transparent white
        border meant for the old dark background. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
       border-color: rgba(114, 80, 43, 0.8);
       border-bottom-width: 1px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:first-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:first-child {
       border-top: none;
     }
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -2025,12 +2034,12 @@
        problemu przez WhatsApp...)") matches the row's own main-text ink
        tone instead of the shared secondary #72502B — only its color
        changes, size stays as-is. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
       color: #332314;
       font-size: 15px;
       transform: translateY(-2px);
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       color: #332314 !important;
       font-size: 13px !important;
       transform: translateY(-2px);
@@ -2038,7 +2047,7 @@
 
     /* TEST — Diagnoza i wycena only: row title text 2px larger than the
        shared 18px every other OPEN card still uses. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
       color: #332314;
@@ -2079,14 +2088,14 @@
        the trigger's own data-state is "open". .diagnoza-open-header-row is
        a bare marker class (no default styles) added only for this one
        card's header row in service-accordion.tsx. */
-    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
+    :is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
     [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
       display: grid;
       grid-template-columns: 67% 33%;
       align-items: center;
       position: relative;
     }
-    :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
+    :is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
     [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > div:last-child {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2166,14 +2175,14 @@
      layout untouched. Mobile keeps its own flex-row item layout, not the
      desktop <table> — only card chrome changes here, never structure/columns. */
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-size: 100% 82px;
       background-repeat: no-repeat;
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]),
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]),
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: calc(100% + 32px);
@@ -2211,13 +2220,13 @@
       z-index: 2;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text,
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
       font-size: 22px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text,
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-price-header-text {
       color: #3A2817;
       font-size: 22px;
@@ -2235,20 +2244,20 @@
     /* Mobile mirror of the desktop fix above: kill the shared gold
        group-hover overlay (first child of this div, see triggerNode in
        service-accordion.tsx) — same left-side dark tint on hover/tap. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]):hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]):hover>div:first-child {
       opacity: 0 !important;
     }
 
     /* Same overlay-kill, triggered by hovering the OPEN table below the
        header (item-level :hover covers both). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])>div:first-child {
       opacity: 0 !important;
     }
 
     /* Shadow anchored to the header wrapper div itself (already position:relative
        via headerWrapperClassName) — measured via getBoundingClientRect() as the
        element whose bottom edge matches the parchment's true visible bottom edge. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::after {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::after {
       content: '';
       position: absolute;
       top: calc(100% - 6px);
@@ -2290,7 +2299,7 @@
        technique as desktop (see the <img> in service-accordion.tsx, which
        renders regardless of viewport) — position:relative here just anchors
        that <img> correctly. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
       position: relative;
       width: calc(100% + 20px);
       margin-left: -10px;
@@ -2308,6 +2317,12 @@
       height: var(--diagnoza-img-h, calc((100% + 12px) * 1.168925)) !important;
     }
     [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="diagnoza"] > img.contact-form-parchment-shadow {
+      display: none !important;
+    }
+    [data-open-header-split-content="true"][data-section-id="projektowanie-modeli"] > img.contact-form-parchment-shadow {
+      height: var(--projektowanie-modeli-img-h, calc((100% + 12px) * 1.168925)) !important;
+    }
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="projektowanie-modeli"] > img.contact-form-parchment-shadow {
       display: none !important;
     }
     [data-open-header-split-content="true"][data-section-id="dojazd"] > img.contact-form-parchment-shadow {
@@ -2515,41 +2530,41 @@
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
       margin-left: 10px;
       margin-right: 10px;
       padding-bottom: 48px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div:first-child {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div:first-child {
       margin-top: 10px;
       border-top: 1px solid rgba(200, 169, 107, 0.3);
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
       outline: none;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .price-value-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .duration-value-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .price-value-text,
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .duration-value-text {
       color: #3A2817;
     }
 
     /* Service name 2px bigger than its parentheses caption text (14px) below it. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 16px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
       color: #72502B;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       font-family: var(--font-cormorant), serif !important;
       font-size: 13px !important;
       font-weight: 500 !important;
@@ -2562,8 +2577,8 @@
        was the semi-transparent white border meant for the old dark background
        ([class*=...] avoids escaping the Tailwind border-white/20|30 utility
        classes already on each mobile row in renderMobileServiceRow). */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/20"],
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/20"],
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
       border-color: rgba(114, 80, 43, 0.8);
     }
 
