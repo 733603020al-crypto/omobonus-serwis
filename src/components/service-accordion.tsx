@@ -2167,6 +2167,21 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</div>
                       </div>
                     </div>
+                  ) : service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
+                      <div className="font-table-main">
+                        <div className="text-[16px] text-white service-description-text leading-[1.3]">„PRZEDMUCHANIE + PASTA” 😉</div>
+                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia.</div>
+                      </div>
+                    </div>
+                  ) : undefined}
+                  afterContent={service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '6px' : '8px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                      <div className="font-table-main">
+                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.</div>
+                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-1">Dodatkowo płatne: naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.</div>
+                      </div>
+                    </div>
                   ) : undefined}
                   data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
                   // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
@@ -2178,12 +2193,16 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   style={isRepairAccordionLayout && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
-                    !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
+                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq')
+                      ? "wynajem-parchment-plate rounded-b-lg"
+                      : !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
                     isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
                       ? "max-h-none overflow-y-visible"
                       : isRepairAccordionLayout && section.id === 'faq'
                         ? "overflow-visible"
-                        : "max-h-[70vh] overflow-y-auto",
+                        : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq')
+                          ? "max-h-none overflow-visible"
+                          : "max-h-[70vh] overflow-y-auto",
                     isRepairAccordionLayout && section.id === 'naprawy'
                       ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
                       : "",
@@ -2224,7 +2243,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             section.id === 'faq'
                               ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
                               : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
+                                ? `border-b border-[#8b7a5a]/40 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-[#8b7a5a]/40 md:pt-1.5' : ''}`
                                 : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
                           )}
                           ref={node => {

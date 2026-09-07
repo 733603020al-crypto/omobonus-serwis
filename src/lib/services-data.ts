@@ -861,26 +861,20 @@ const createLaptopPricingSections = (): PricingSection[] => {
     cleaningSection.items = [
       {
         service:
-          'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wewnętrzne laptopa – usunięcie kurzu i zanieczyszczeń,\n• czyszczenie wentylatora oraz radiatora,\n• wymianę past termoprzewodzących CPU / GPU,\n• testy obciążeniowe oraz test temperatur,\n• czyszczenie zewnętrzne obudowy i klawiatury.',
-        price: '120 zł',
-        duration: '1-3 dni',
+          'Laptop — standardowy\n\nZakres usługi obejmuje:\n• demontaż obudowy i układu chłodzenia;\n• dokładne czyszczenie wnętrza, wentylatorów, radiatorów i kanałów wentylacyjnych;\n• wymiana pasty termoprzewodzącej na CPU oraz GPU, jeśli występuje;\n• kontrola stanu i, w razie potrzeby, wymiana lub dopasowanie termopadów;\n• sprawdzenie działania wentylatorów oraz widocznych uszkodzeń;\n• zewnętrzne czyszczenie obudowy i klawiatury;\n• ponowny montaż oraz test temperatur i stabilności pracy.',
+        price: '180 zł',
+        duration: '1-2 dni',
       },
       {
         service:
-          'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• wymiana / dopasowanie termopadów,\n• konserwacja portów,\n• krótki test pamięci RAM i dysku SMART.',
-        price: '160 zł',
-        duration: '1-3 dni',
+          'Laptop — gamingowy\n\nZakres usługi obejmuje:\n• wszystkie czynności wykonywane w ramach konserwacji laptopa standardowego;\n• demontaż i dokładne czyszczenie rozbudowanego układu chłodzenia CPU/GPU;\n• czyszczenie dodatkowych wentylatorów, radiatorów i kanałów wentylacyjnych;\n• kontrola oraz, w razie potrzeby, wymiana lub dopasowanie termopadów pamięci VRAM, sekcji zasilania VRM i pozostałych chłodzonych elementów;\n• rozszerzony test obciążeniowy CPU/GPU oraz kontrola temperatur po rozgrzaniu urządzenia.',
+        price: '250 zł',
+        duration: '1-2 dni',
       },
       {
         service:
-          'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• porządkowanie okablowania i kanałów powietrznych,\n• czyszczenie klawiatury i portów wewnętrznych sprężonym powietrzem bez rozkręcania,\n• aktualizacja BIOS/UEFI (jeśli wskazana),\n• długie testy obciążeniowe (CPU / GPU / RAM).',
+          'SPECJALNE (po zalaniu laptopa)\n\nZakres usługi obejmuje:\n• demontaż laptopa i odłączenie baterii;\n• identyfikacja zalanych obszarów i śladów korozji;\n• dokładne czyszczenie płyty głównej oraz zalanych podzespołów;\n• usunięcie pozostałości cieczy i ognisk korozji;\n• czyszczenie wnętrza, klawiatury i portów;\n• osuszenie urządzenia;\n• diagnostyka elektroniczna i test podstawowych funkcji;\n• ponowny montaż i test działania.\n\nUwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu.',
         price: '200 zł',
-        duration: '1-3 dni',
-      },
-      {
-        service:
-          'SPECIALNE (po zalaniu laptopa)\n\nzakres usługi obejmuje:\n• demontaż całego laptopa,\n• identyfikacja obszarów zalania,\n• czyszczenie lub naprawa niesprawnych elementów,\n• zabezpieczenie antykorozyjne płyty głównej i podzespołów,\n• czyszczenie klawiatury i portów wewnętrznych,\n• testy diagnostyczne elektroniczne i programowe,\n• montaż laptopa,\n• odkurzenie i oczyszczenie wnętrza laptopa oraz uzupełnienie brakujących śrub (gratis).\n\nUwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu.',
-        price: '200 zł\n+ części',
         duration: '1-3 dni',
       },
     ]
