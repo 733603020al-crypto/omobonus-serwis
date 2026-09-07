@@ -2819,7 +2819,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   ) : (
                     <div
                       className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
-                      style={section.id === 'dojazd' || (service.slug === 'serwis-laptopow' && section.id === 'konserwacja') ? { paddingTop: 0, marginTop: 0, overflow: 'visible' } : undefined}
+                      style={section.id === 'dojazd' ? { paddingTop: 0, marginTop: 0, overflow: 'visible' } : undefined}
                       ref={
                         section.id === 'diagnoza' ? (el => { diagnozaContentBottomRef.current = el }) :
                         section.id === 'projektowanie-modeli' ? (el => { projektowanieModeliContentBottomRef.current = el }) :
