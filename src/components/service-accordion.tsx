@@ -2168,7 +2168,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                     </div>
                   ) : service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
-                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
+                    // Sekcja konserwacja ma AccordionContent z marginTop: -8 (patrz `style` niżej),
+                    // którego "dojazd" nie ma — ten sam baner tekstowy potrzebuje więc +8px
+                    // paddingTop więcej niż w "dojazd", żeby wizualnie wypaść tak samo pod plakietką.
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '14px' : '8px', paddingBottom: isMobile ? '6px' : '4px' }}>
                       <div className="font-table-main">
                         <div className="text-[16px] text-white service-description-text leading-[1.3]">„PRZEDMUCHANIE + PASTA” 😉</div>
                         <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia</div>
@@ -2190,9 +2193,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
                   // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
                   forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
-                  style={isRepairAccordionLayout && section.id === 'konserwacja'
-                    ? (service.slug === 'serwis-laptopow' ? { paddingBottom: 16 } : { paddingBottom: 16, marginTop: -8 })
-                    : undefined}
+                  style={isRepairAccordionLayout && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq')
