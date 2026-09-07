@@ -2844,7 +2844,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             parseServiceText,
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
-                            isRepairAccordionLayout && section.id === 'konserwacja',
+                            isRepairAccordionLayout && section.id === 'konserwacja' && service.slug !== 'serwis-laptopow',
                             isRepairAccordionLayout && section.id === 'konserwacja',
                             false,
                             isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'),
