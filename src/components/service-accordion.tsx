@@ -506,7 +506,7 @@ const renderPlainPriceWithUnits = (price: string) => {
   const parts = price.split(/(zł\/gram|zł\/godz\.)/g)
   return parts.map((part, i) =>
     part === 'zł/gram' || part === 'zł/godz.' ? (
-      <span key={i} className="text-[#cbb27c]">{part}</span>
+      <span key={i} className="parentheses-caption-text text-[#cbb27c]">{part}</span>
     ) : (
       <span key={i}>{part}</span>
     )
@@ -534,11 +534,11 @@ const renderMaterialPrice = (price: string) => {
   const block = (value: string, unit: string, key: string, prefix?: string) => (
     <div key={key} className="flex items-start">
       {prefix && (
-        <span className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
+        <span className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
       )}
       <div className="flex flex-col items-center">
-        <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
-        {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+        <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">{value}</div>
+        {unit && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
       </div>
     </div>
   )
@@ -561,8 +561,8 @@ const renderTwoLinePrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
     <div className="flex flex-col items-center">
-      <div className="font-table-main text-[16px] text-white leading-[1.3]">{main}</div>
-      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
     </div>
   )
 }
@@ -576,8 +576,8 @@ const renderExpressPrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
     <div className="flex flex-col items-center">
-      <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
-      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
     </div>
   )
 }
@@ -632,7 +632,7 @@ const renderMobileServiceRow = (
           ) : item.price.includes('\n') ? (
             renderExpressPrice(item.price)
           ) : (
-            <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
+            <div className="price-value-text font-inter text-[13px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-normal">
               {renderPlainPriceWithUnits(item.price)}
             </div>
           )
@@ -2878,7 +2878,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     ) : item.price.includes('\n') ? (
                                       renderExpressPrice(item.price)
                                     ) : (
-                                      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
+                                      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">
                                         {renderPlainPriceWithUnits(item.price)}
                                       </div>
                                     )
@@ -2896,14 +2896,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                       {isDruk3DCustomSection(service.slug, section.id) && section.priceFormula && (
                         <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
-                          <p className="font-table-main text-[16px] text-white leading-[1.3]">
+                          <p className="service-description-text font-table-main text-[16px] text-white leading-[1.3]">
                             {section.priceFormula}
                           </p>
                         </div>
                       )}
                       {isDruk3DCustomSection(service.slug, section.id) && section.example && (
                         <div className="px-2 pb-2">
-                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
+                          <p className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
                             {section.example}
                           </p>
                         </div>
