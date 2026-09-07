@@ -188,7 +188,6 @@ const shouldLowercaseContinuation = (value: string) => {
   if (/^\d/.test(firstChar)) return false
   if (!/^[A-Za-zÀ-ÖØ-öø-ÿĄĆĘŁŃÓŚŹŻą-źż]/.test(firstChar)) return false
   const normalized = trimmed.toLowerCase()
-  if (normalized.startsWith('zakres usługi obejmuje:') || normalized.startsWith('zakres paketu obejmuje:') || normalized.startsWith('zakres podstawowy +') || normalized.startsWith('zakres standard +') || normalized.startsWith('zakres start +') || normalized.startsWith('zakres biznes +')) return false
   return !PROPER_NOUN_PREFIXES.some(prefix => normalized.startsWith(prefix))
 }
 
@@ -2845,7 +2844,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             parseServiceText,
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
-                            isRepairAccordionLayout && section.id === 'konserwacja' && service.slug !== 'serwis-laptopow',
+                            isRepairAccordionLayout && section.id === 'konserwacja',
                             isRepairAccordionLayout && section.id === 'konserwacja',
                             false,
                             isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'),
