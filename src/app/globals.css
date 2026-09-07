@@ -2631,6 +2631,21 @@
     }
   }
 
+  /* page-serwis-laptopow only: keep mobile Zakres/list/Uwaga text dark
+     after unifying its typography with Dojazd's plain classes (the
+     shared warm-parchment .parentheses-caption-text mobile rule above
+     resets color to inherit, and .emphasis-inline-text otherwise falls
+     back to the text-white utility class also present on those spans). */
+  @media (max-width: 767px) {
+    .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] .parentheses-caption-text {
+      color: #72502B;
+    }
+
+    .page-serwis-laptopow .emphasis-inline-text.text-white {
+      color: #3A2817;
+    }
+  }
+
   /* =========================
      FORM
      ========================= */
