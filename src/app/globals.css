@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* wynajem-drukarek / drukarka-zastepcza: parchment backdrop for the open
-   A4 / A3-A4 / FAQ panels. Reuses the same baked-edge card texture as the
-   repair-accordion's plain (non-Naprawy) parchment card — stretched as one
-   full-panel plate, not sliced into per-row segments like Naprawy's
-   height-driven system, since these two pages keep their own grid layout. */
-.wynajem-parchment-plate {
-  background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-@media (max-width: 767px) {
-  .wynajem-parchment-plate {
-    background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-  }
-}
-
 :root {
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');

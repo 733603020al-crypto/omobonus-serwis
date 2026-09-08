@@ -2177,16 +2177,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   style={isRepairAccordionLayout && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
-                    (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq')
-                      ? "wynajem-parchment-plate rounded-b-lg"
-                      : !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
+                    !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
                     isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
                       ? "max-h-none overflow-y-visible"
                       : isRepairAccordionLayout && section.id === 'faq'
                         ? "overflow-visible"
-                        : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq')
-                          ? "max-h-none overflow-visible"
-                          : "max-h-[70vh] overflow-y-auto",
+                        : "max-h-[70vh] overflow-y-auto",
                     isRepairAccordionLayout && section.id === 'naprawy'
                       ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
                       : "",
@@ -2227,7 +2223,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             section.id === 'faq'
                               ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
                               : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? `border-b border-[#8b7a5a]/40 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-[#8b7a5a]/40 md:pt-1.5' : ''}`
+                                ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
                                 : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
                           )}
                           ref={node => {
