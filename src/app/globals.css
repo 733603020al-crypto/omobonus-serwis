@@ -2679,7 +2679,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.3;
-      color: #72502B;
+      color: #3A2817;
       text-shadow: none;
     }
 
@@ -2698,7 +2698,7 @@
       font-size: 12px;
       font-weight: 400;
       line-height: 1.2;
-      color: #72502B;
+      color: #3A2817;
       text-shadow: none;
     }
 
@@ -2715,7 +2715,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.3;
-      color: #72502B;
+      color: #3A2817;
       text-shadow: none;
     }
   }
@@ -2744,7 +2744,7 @@
     .service-typography-standard .service-description-text {
       font-family: var(--font-cormorant), serif;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.15;
       color: #3A2817;
       text-shadow: none;
@@ -2762,10 +2762,10 @@
     .service-typography-standard .parentheses-caption-text,
     .service-typography-standard .parentheses-text-isolated {
       font-family: var(--font-cormorant), serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
-      line-height: 1.2;
-      color: #72502B;
+      line-height: 1.3;
+      color: #3A2817;
       text-shadow: none;
     }
 
@@ -2784,14 +2784,14 @@
       font-size: 12px;
       font-weight: 400;
       line-height: 1.2;
-      color: #72502B;
+      color: #3A2817;
       text-shadow: none;
     }
 
     .service-typography-standard .faq-question-title-text {
       font-family: var(--font-cormorant), serif;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.15;
       color: #3A2817;
       text-shadow: none;
@@ -2799,10 +2799,10 @@
 
     .service-typography-standard .faq-answer-text {
       font-family: var(--font-cormorant), serif;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
-      line-height: 1.2;
-      color: #72502B;
+      line-height: 1.3;
+      color: #3A2817;
       text-shadow: none;
     }
   }
