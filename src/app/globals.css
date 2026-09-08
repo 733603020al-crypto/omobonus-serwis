@@ -2581,6 +2581,14 @@
       color: #3A2817;
     }
 
+    /* Mobile counterpart of the desktop rule at ~line 1858 ("zakres usługi
+       obejmuje:", "zakres PODSTAWOWY +", "Uwaga!!!") — was missing here,
+       so .emphasis-inline-text kept its hardcoded text-white utility color
+       on the light parchment background. */
+    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .emphasis-inline-text {
+      color: #3A2817;
+    }
+
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       font-family: var(--font-cormorant), serif !important;
       font-size: 13px !important;
