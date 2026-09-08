@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* wynajem-drukarek / drukarka-zastepcza: parchment backdrop for the open
+   A4 / A3-A4 / FAQ panels. Reuses the same baked-edge card texture as the
+   repair-accordion's plain (non-Naprawy) parchment card — stretched as one
+   full-panel plate, not sliced into per-row segments like Naprawy's
+   height-driven system, since these two pages keep their own grid layout. */
+.wynajem-parchment-plate {
+  background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media (max-width: 767px) {
+  .wynajem-parchment-plate {
+    background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
+  }
+}
+
 :root {
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');
@@ -2561,7 +2578,7 @@
     }
 
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
-      color: #72502B;
+      color: #3A2817;
     }
 
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
@@ -2610,7 +2627,6 @@
       margin-top: 2px;
       font-family: var(--font-cormorant), serif;
       font-weight: 500;
-      color: inherit;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -2667,7 +2683,7 @@
     .service-typography-standard .emphasis-inline-text {
       font-family: var(--font-cormorant), serif;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.3;
       color: #3A2817;
       text-shadow: none;
@@ -2781,7 +2797,7 @@
       font-family: var(--font-cormorant), serif;
       font-size: 14px;
       color: #3A2817;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.2;
       text-shadow: none;
     }
