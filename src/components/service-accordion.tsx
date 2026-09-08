@@ -2152,8 +2152,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   beforeContent={section.id === 'dojazd' ? (
                     <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
                       <div className="font-table-main">
-                        <div className="text-[16px] text-white service-description-text leading-[1.3]">„DARMOWY DOJAZD” 😉</div>
-                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</div>
+                        <div className="service-description-text dojazd-promo-title">„DARMOWY DOJAZD” 😉</div>
+                        <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy</div>
                       </div>
                     </div>
                   ) : service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
