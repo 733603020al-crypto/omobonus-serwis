@@ -2162,8 +2162,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     // paddingTop więcej niż w "dojazd", żeby wizualnie wypaść tak samo pod plakietką.
                     <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '14px' : '8px', paddingBottom: isMobile ? '6px' : '4px' }}>
                       <div className="font-table-main">
-                        <div className="text-[16px] text-white service-description-text leading-[1.3]">„PRZEDMUCHANIE + PASTA” 😉</div>
-                        <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed md:whitespace-nowrap">Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia</div>
+                        <div className="service-promo-title">„PRZEDMUCHANIE + PASTA” 😉</div>
+                        <div className="service-promo-description md:whitespace-nowrap">Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia</div>
                       </div>
                     </div>
                   ) : undefined}
