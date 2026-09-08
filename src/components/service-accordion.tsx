@@ -1549,7 +1549,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           collapsible
           value={openSection ?? undefined}
           onValueChange={handleSectionChange}
-          className="w-full"
+          className={cn(
+            "w-full",
+            service.slug === 'serwis-laptopow' && 'service-typography-standard'
+          )}
           data-main-accordion="true"
           data-parchment-variant={isWarmParchment ? 'warm' : undefined}
         >
