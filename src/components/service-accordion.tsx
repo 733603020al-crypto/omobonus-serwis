@@ -1551,7 +1551,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           onValueChange={handleSectionChange}
           className={cn(
             "w-full",
-            ['serwis-laptopow', 'druk-3d-na-zamowienie', 'serwis-plotterow', 'serwis-drukarek-3d'].includes(service.slug) && 'service-typography-standard'
+            ['serwis-laptopow', 'druk-3d-na-zamowienie', 'serwis-plotterow', 'serwis-drukarek-3d', 'serwis-komputerow-stacjonarnych'].includes(service.slug) && 'service-typography-standard'
           )}
           data-main-accordion="true"
           data-parchment-variant={isWarmParchment ? 'warm' : undefined}
