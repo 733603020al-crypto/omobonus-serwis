@@ -2631,11 +2631,37 @@
     }
   }
 
-  /* page-serwis-laptopow only: keep mobile Zakres/list/Uwaga text dark
-     after unifying its typography with Dojazd's plain classes (the
-     shared warm-parchment .parentheses-caption-text mobile rule above
-     resets color to inherit, and .emphasis-inline-text otherwise falls
-     back to the text-white utility class also present on those spans). */
+  /* page-serwis-laptopow: unified accordion typography standard
+     (Diagnoza/Dojazd/Konserwacja/Naprawy/FAQ). Page-scoped so shared
+     classes and other repair-accordion pages keep current behavior.
+     Supersedes the interim mobile-only patch from commit cd173ee. */
+  @media (min-width: 768px) {
+    .page-serwis-laptopow [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
+      color: #3A2817;
+    }
+
+    .page-serwis-laptopow [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
+      color: #72502B;
+    }
+
+    .page-serwis-laptopow [data-open-header-split-content="true"] .emphasis-inline-text {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .page-serwis-laptopow [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+      font-size: 15px;
+      color: #72502B;
+    }
+
+    .page-serwis-laptopow [data-naprawy-open-title="true"] {
+      font-size: 24px;
+      font-weight: 600;
+      color: #3A2817;
+      text-shadow: none;
+    }
+  }
+
   @media (max-width: 767px) {
     .page-serwis-laptopow [data-parchment-variant="warm"][data-main-accordion="true"] .parentheses-caption-text {
       color: #72502B;
@@ -2643,6 +2669,18 @@
 
     .page-serwis-laptopow .emphasis-inline-text.text-white {
       color: #3A2817;
+      font-weight: 600;
+    }
+
+    .page-serwis-laptopow [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+      color: #72502B;
+    }
+
+    .page-serwis-laptopow [data-naprawy-open-title="true"] {
+      font-size: 22px;
+      font-weight: 600;
+      color: #3A2817;
+      text-shadow: none;
     }
   }
 
