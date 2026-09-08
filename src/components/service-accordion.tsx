@@ -2020,7 +2020,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ) : isMobile && isSpecialTooltipService ? (
                                   <div
                                     className={cn(
-                                      'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer'
+                                      'zakres-price-header-text flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer'
                                     )}
                                     role="button"
                                     tabIndex={0}
