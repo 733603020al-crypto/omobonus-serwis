@@ -1623,6 +1623,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-czyszczenie-termiczne.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
+                                ? '/images/accordion-icon-naprawy-termiczne.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
                                 ? '/images/accordion-icon-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'faq'
