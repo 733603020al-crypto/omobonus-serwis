@@ -3127,6 +3127,7 @@ const applyThermalMechanismSubcategory = (sections: PricingSection[]) => {
 
   mechanismSubcategory.title = 'Mechanizm podawania etykiet, rolki, prowadnice'
   mechanismSubcategory.subtitle = 'zacina etykiety, nie pobiera, wciąga krzywo lub „gubi” odstępy'
+  mechanismSubcategory.icon = '/images/accordion-icon-termiczne-mechanizm-podawania.webp'
   mechanismSubcategory.items = [
     {
       service:
