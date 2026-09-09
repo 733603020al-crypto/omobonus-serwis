@@ -180,29 +180,49 @@ export function ServicePageTemplate({
       <Header locale={locale} />
       <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass} ${repairAccordionClass}`}>
 
-        <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
-          <Image
-            src="/images/omobonus-hero2.webp"
-            alt="Omobonus serwis"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            quality={60}
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
+        {isLegacyHero ? (
+          <>
+            <div className="absolute inset-0">
+              <Image
+                src="/images/omobonus-hero2.webp"
+                alt="Omobonus serwis"
+                fill
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+                quality={60}
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/50" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
+              <Image
+                src="/images/omobonus-hero2.webp"
+                alt="Omobonus serwis"
+                fill
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+                quality={60}
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/50" />
+            </div>
 
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 -z-10"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
+            <div
+              aria-hidden="true"
+              className="fixed inset-0 -z-10"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          </>
+        )}
 
         <div className="relative">
           {pageClass ? (
