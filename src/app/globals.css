@@ -2241,13 +2241,11 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text,
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text {
       font-size: 22px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text,
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-price-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text {
       color: #3A2817;
       font-size: 22px;
     }
@@ -2476,10 +2474,10 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
-      text-align: left !important;
+      text-align: center !important;
       white-space: normal !important;
       overflow-wrap: anywhere !important;
-      line-height: 1 !important;
+      line-height: 1.05 !important;
       display: -webkit-box !important;
       -webkit-box-orient: vertical !important;
       -webkit-line-clamp: 2 !important;
@@ -2672,15 +2670,19 @@
       text-shadow: none;
     }
 
-    /* Naprawy subcategory titles: fixed size, distinct from top-level
-       section headers above, same in closed and open state. */
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+    /* Naprawy subcategory column headers (title / Cena / Czas): unified
+       size, centered within their own column, same in closed and open
+       state — distinct from top-level section headers above. */
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 600;
       line-height: 1.05;
       color: #3A2817;
       text-shadow: none;
+      text-align: center;
     }
 
     .service-typography-standard .zakres-price-header-text,
@@ -2796,15 +2798,19 @@
       text-shadow: none;
     }
 
-    /* Naprawy subcategory titles: fixed size, distinct from top-level
-       section headers above, same in closed and open state. */
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+    /* Naprawy subcategory column headers (title / Cena / Czas): unified
+       size, centered within their own column, same in closed and open
+       state — distinct from top-level section headers above. */
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       line-height: 1.05;
       color: #3A2817;
       text-shadow: none;
+      text-align: center;
     }
 
     .service-typography-standard .zakres-price-header-text,
