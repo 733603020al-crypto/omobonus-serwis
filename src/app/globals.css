@@ -1368,6 +1368,12 @@
       flex: none;
     }
 
+    .page-repair-accordion [data-naprawy-subcategory="true"] [data-subcategory-text="true"] {
+      width: auto;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
     [data-faq-item="true"] [data-subcategory-text] {
       width: auto;
       flex: 1 1 0%;
