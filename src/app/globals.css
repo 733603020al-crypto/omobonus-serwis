@@ -1374,6 +1374,13 @@
       min-width: 0;
     }
 
+    .page-repair-accordion [data-naprawy-subcategory="true"] [data-subcategory-text="true"].zakres-header-text {
+      width: auto !important;
+      max-width: none !important;
+      flex: 1 1 auto !important;
+      min-width: 0;
+    }
+
     [data-faq-item="true"] [data-subcategory-text] {
       width: auto;
       flex: 1 1 0%;
