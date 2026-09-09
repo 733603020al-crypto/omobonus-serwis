@@ -891,6 +891,13 @@
       height: 76px;
       margin-right: 14px;
     }
+
+    /* Naprawy subcategories, open state: reserve extra layout space so the
+       title shrinks/wraps instead of overlapping the scaled-up icon (см.
+       fix(naprawy) 395d4c5) — must beat the closed-state 14px rule above. */
+    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
+      margin-right: 76px !important;
+    }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-media {
       width: 150px;
       height: 76px;
