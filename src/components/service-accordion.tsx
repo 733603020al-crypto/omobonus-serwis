@@ -1587,6 +1587,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               section.id === 'dojazd' && isSectionOpen(section.id) && 'pt-1.5 pb-0',
               section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
               ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
+              service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && 'wynajem-akordeon-header-parchment',
             )
             const triggerNode = (
               <>
@@ -1622,6 +1623,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'faq'
                                 ? '/images/accordion-icon-faq.webp'
+                                : service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1'
+                                ? '/images/A4_Drukarki_mono.webp'
+                                : service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2'
+                                ? '/images/Drukarki_A3_A4_mono.webp'
                                 : getIconForSection(section.id)
                             }
                             alt={section.title}
