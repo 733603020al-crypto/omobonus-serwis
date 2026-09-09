@@ -2356,7 +2356,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         </TitleTag>
                                       )
                                     })()}
-                                    {subcategory.subtitle && section.id !== 'faq' && (
+                                    {subcategory.subtitle && section.id !== 'faq' && !(isRepairAccordionLayout && isRepairSection) && (
                                       renderParenthesesText(subcategory.subtitle, '12px')
                                     )}
                                   </div>
