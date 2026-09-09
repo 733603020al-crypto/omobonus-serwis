@@ -2665,6 +2665,17 @@
       text-shadow: none;
     }
 
+    /* Naprawy subcategory titles: fixed size, distinct from top-level
+       section headers above, same in closed and open state. */
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+      font-family: var(--font-cormorant), serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.05;
+      color: #3A2817;
+      text-shadow: none;
+    }
+
     .service-typography-standard .zakres-price-header-text,
     .service-typography-standard .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
@@ -2774,6 +2785,17 @@
       font-size: 22px;
       font-weight: 600;
       line-height: 1.1;
+      color: #3A2817;
+      text-shadow: none;
+    }
+
+    /* Naprawy subcategory titles: fixed size, distinct from top-level
+       section headers above, same in closed and open state. */
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+      font-family: var(--font-cormorant), serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.05;
       color: #3A2817;
       text-shadow: none;
     }
