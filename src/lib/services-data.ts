@@ -3178,6 +3178,7 @@ const applyThermalHeadSubcategory = (sections: PricingSection[]) => {
   headSubcategory.title = 'Głowica drukująca i rolka dociskowa (platen)'
   headSubcategory.subtitle =
     'słaba jakość wydruku, brak fragmentów nadruku, słabo czytelne kody kreskowe'
+  headSubcategory.icon = '/images/accordion-icon-termiczne-glowica-platen.webp'
   headSubcategory.items = [
     {
       service:
