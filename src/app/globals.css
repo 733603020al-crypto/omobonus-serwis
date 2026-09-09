@@ -1830,44 +1830,11 @@
       color: #3A2817;
     }
 
-    [data-open-header-split-content="true"] .service-description-text,
-    [data-open-header-split-content="true"] .price-value-text,
-    [data-open-header-split-content="true"] .duration-value-text {
-      color: #3A2817;
-    }
-
-    [data-open-header-split-content="true"] .parentheses-caption-text {
-      color: #72502B;
-    }
-
     /* .parentheses-text-isolated carries a sitewide !important base color
        (#cbb27c) — needs !important here too, or the override silently loses
        to that base rule regardless of selector specificity. */
     [data-open-header-split-content="true"] .parentheses-text-isolated {
       color: #72502B !important;
-    }
-
-    /* Row title text (service name) slightly enlarged for readability on the
-       new light background — was 16px, kept below the price/duration cells'
-       size to avoid disturbing column layout/wrapping. */
-    [data-open-header-split-content="true"] .service-description-text {
-      font-size: 18px;
-    }
-
-    /* Remaining near-white emphasis lines ("zakres usługi obejmuje:",
-       "zakres PODSTAWOWY +", "Uwaga!!!") — same ink tone as the regular
-       row text above, not a new color. */
-    [data-open-header-split-content="true"] .emphasis-inline-text {
-      color: #3A2817;
-    }
-
-    /* FAQ: question titles match the primary ink tone, answers match the
-       secondary/caption tone — same two tokens as the rest of this page. */
-    [data-open-header-split-content="true"] .faq-question-title-text {
-      color: #3A2817;
-    }
-    [data-open-header-split-content="true"] .faq-answer-text {
-      color: #72502B;
     }
 
     [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
@@ -2566,27 +2533,9 @@
       outline: none;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .price-value-text,
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .duration-value-text {
-      color: #3A2817;
-    }
-
     /* Service name 2px bigger than its parentheses caption text (14px) below it. */
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 16px;
-    }
-
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
-      color: #3A2817;
-    }
-
-    /* Mobile counterpart of the desktop rule at ~line 1858 ("zakres usługi
-       obejmuje:", "zakres PODSTAWOWY +", "Uwaga!!!") — was missing here,
-       so .emphasis-inline-text kept its hardcoded text-white utility color
-       on the light parchment background. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .emphasis-inline-text {
-      color: #3A2817;
     }
 
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
