@@ -697,11 +697,11 @@
      existing dark-brown text-[#3A2817] class already on the element;
      only font-size is touched here. Scoped to [data-state="closed"] so
      the OPEN title keeps its original size untouched. */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-title-text {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
     font-size: 22px;
   }
   @media (min-width: 768px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
       font-size: 24px;
     }
   }
@@ -882,7 +882,7 @@
       opacity: 0 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
       font-size: 24px;
     }
 
@@ -1639,7 +1639,6 @@
        Zeroed here to match the top-level value exactly. */
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-title-text {
       margin-bottom: 5px !important;
-      line-height: 1 !important;
     }
 
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] .zakres-icon-box {
@@ -2671,8 +2670,9 @@
     }
 
     /* Naprawy subcategory column headers (title / Cena / Czas): unified
-       size, centered within their own column, same in closed and open
-       state — distinct from top-level section headers above. */
+       size, same in closed and open state — distinct from top-level
+       section headers above. Title aligns left when closed, centers when
+       open (matches the open-row layout); Cena/Czas always center. */
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
@@ -2682,6 +2682,15 @@
       line-height: 1.05;
       color: #3A2817;
       text-shadow: none;
+    }
+
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+      text-align: left;
+    }
+
+    .service-typography-standard [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
       text-align: center;
     }
 
@@ -2799,8 +2808,10 @@
     }
 
     /* Naprawy subcategory column headers (title / Cena / Czas): unified
-       size, centered within their own column, same in closed and open
-       state — distinct from top-level section headers above. */
+       size, same in closed and open state — distinct from top-level
+       section headers above. Title aligns left when closed, centers when
+       open (matches the open-row layout, reinforced by the layout-scoped
+       STEP2A rule below for wrapping); Cena/Czas always center. */
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
     .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
@@ -2810,6 +2821,15 @@
       line-height: 1.05;
       color: #3A2817;
       text-shadow: none;
+    }
+
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+      text-align: left;
+    }
+
+    .service-typography-standard [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
+    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
       text-align: center;
     }
 
