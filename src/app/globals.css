@@ -749,15 +749,15 @@
     }
   }
 
-  /* WYNAJEM-DRUKAREK — block 1: closed A4/A3 section header brought to the
-     serwis-laptopow parchment look (same baked torn-edge asset/sizing/
-     hover as the shared WARM PARCHMENT closed header above), scoped to its
-     own marker class (.wynajem-akordeon-header-parchment, set in
-     service-accordion.tsx headerWrapperClassName) instead of
+  /* WYNAJEM-DRUKAREK — blocks 1-2: closed A4/A3 and FAQ section headers
+     brought to the serwis-laptopow parchment look (same baked torn-edge
+     asset/sizing/hover as the shared WARM PARCHMENT closed header above),
+     scoped to its own marker class (.wynajem-akordeon-header-parchment, set
+     in service-accordion.tsx headerWrapperClassName) instead of
      [data-parchment-variant="warm"] so none of the repair-accordion-only
      behavior (open/close split layout, diagnoza/dojazd/naprawy section-id
-     rules, isRepairAccordionLayout) is pulled in. FAQ header, the open
-     panel and subcategory rows are untouched (separate blocks). */
+     rules, isRepairAccordionLayout) is pulled in. The open panel and
+     subcategory rows are untouched (separate blocks). */
   [data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) > div.wynajem-akordeon-header-parchment {
     box-shadow: none;
     filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.3));

@@ -1587,7 +1587,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               section.id === 'dojazd' && isSectionOpen(section.id) && 'pt-1.5 pb-0',
               section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
               ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
-              service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && 'wynajem-akordeon-header-parchment',
+              service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2' || section.id === 'faq') && 'wynajem-akordeon-header-parchment',
             )
             const triggerNode = (
               <>
