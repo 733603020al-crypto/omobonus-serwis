@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
+import { CallButton } from '@/components/ui/CallButton'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
@@ -26,7 +27,6 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
   'serwis-plotterow': 1.4,
-  'drukarka-zastepcza': 1.3,
   'serwis-drukarek-termicznych': 1.2,
   'serwis-drukarek-iglowych': 1.2,
   'serwis-drukarek-atramentowych': 1.2,
@@ -167,6 +167,9 @@ export function ServicePageTemplate({
 }: ServicePageTemplateProps) {
   const pageClass = PAGE_CLASS_SLUGS.includes(slug) ? `page-${slug}` : ''
   const repairAccordionClass = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'page-repair-accordion' : ''
+  // wynajem-drukarek/drukarka-zastepcza intentionally kept on the old (pre-redesign)
+  // hero markup — they weren't part of this design pass and get their own pass later.
+  const isLegacyHero = slug === 'wynajem-drukarek' || slug === 'drukarka-zastepcza'
 
   return (
     <>
@@ -204,6 +207,66 @@ export function ServicePageTemplate({
         <div className="relative">
           {pageClass ? (
             <>
+              {isLegacyHero ? (
+                <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
+                  <div className="grid grid-cols-1 gap-4 md:gap-10 items-center md:grid-cols-[25%_75%]">
+                    <div className="flex justify-center md:justify-start">
+                      <div className="service-hero-image-wrap relative w-full">
+                        {heroLabels.map((label, index) => (
+                          <span
+                            key={label}
+                            className={`service-hero-label service-hero-label-${index + 1}`}
+                          >
+                            {label}
+                          </span>
+                        ))}
+
+                        <Image
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={420}
+                          height={420}
+                          sizes="(max-width: 768px) 85vw, 420px"
+                          className="service-hero-image object-contain w-full h-auto"
+                          priority
+                          fetchPriority="high"
+                          quality={60}
+                        />
+                      </div>
+                    </div>
+                    <div className="text-center flex flex-col items-center justify-center">
+                      <h1 className="text-[32px] md:text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
+                        {headings.h1 || service.title}
+                      </h1>
+
+                      {headings.h2 && (
+                        <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
+                          {headings.h2}
+                        </h2>
+                      )}
+                      <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
+                        <CallButton
+                          variant="primary"
+                          href="tel:+48793759262"
+                          className="w-[80%] md:w-auto"
+                        >
+                          <span className="md:hidden">{labels.callNow}</span>
+                          <span className="hidden md:inline">793 759 262</span>
+                        </CallButton>
+
+                        <CallButton
+                          variant="secondary"
+                          href={labels.formHref}
+                          className="w-[80%] md:w-auto"
+                          showIcon={false}
+                        >
+                          {labels.sendRequest}
+                        </CallButton>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
               <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                   <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
@@ -323,6 +386,7 @@ export function ServicePageTemplate({
                   </div>
                 </div>
               </div>
+              )}
               {slug === 'druk-3d-na-zamowienie' ? (
                 <div className="mt-[40px]">
                   <PrintedPartsTicker />
