@@ -917,6 +917,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
   const isLaserService = service.slug === 'serwis-drukarek-laserowych'
+  const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1618,6 +1619,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-diagnoza.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService
                                 ? '/images/accordion-icon-czyszczenie-laser.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
+                                ? '/images/accordion-icon-czyszczenie-termiczne.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
