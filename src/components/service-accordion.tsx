@@ -1616,6 +1616,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-dojazd.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService
+                                ? '/images/accordion-icon-czyszczenie-laser.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
