@@ -537,10 +537,13 @@
     }
   }
 
-  /* WARM PARCHMENT variant — visual test, serwis-laptopow only (see
-     WARM_PARCHMENT_SLUGS / isWarmParchment in service-accordion.tsx).
-     Literal, unmodified port of .zakres-paper-card's own base rule (home
-     "SERWIS I NAPRAWA" cards, lines ~207-220 above) — same filter:
+  /* WARM PARCHMENT variant — canonical parchment treatment for every
+     repair-accordion page (WARM_PARCHMENT_SLUGS = REPAIR_ACCORDION_LAYOUT_SLUGS
+     in service-accordion.tsx / services-data.ts — not a serwis-laptopow-only
+     test; serwis-laptopow is only the reference/master page this design was
+     first built against, see design-guardrails.md "Repair-accordion design
+     transfer"). Literal, unmodified port of .zakres-paper-card's own base
+     rule (home "SERWIS I NAPRAWA" cards, lines ~207-220 above) — same filter:
      drop-shadow value, zero overlay/vignette/contrast on the texture
      layer, no invented values. Only 2 things differ from the home card,
      both required by this component: (1) texture source stays this
@@ -551,8 +554,8 @@
      the accordion's open height is variable. Open/closed height logic is
      not touched. Edge/orient/corner classes are the shared zakres-* rules
      above, applied via service-accordion.tsx. Scoped strictly to
-     [data-parchment-variant="warm"] so every other /uslugi/[slug] page
-     keeps the base rules above pixel-identical. */
+     [data-parchment-variant="warm"] so any non-repair-accordion /uslugi/[slug]
+     page keeps the base rules above pixel-identical. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"]:not([data-faq-item="true"])>div {
     box-shadow: none;
     filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.3));
@@ -562,7 +565,7 @@
     background-image: var(--bg-accordion-parchment);
   }
 
-  /* WARM PARCHMENT — CLOSED-state baked parchment (serwis-laptopow only).
+  /* WARM PARCHMENT — CLOSED-state baked parchment (all repair-accordion pages).
      Uses pre-baked accordion-card-parchment-closed-desktop/mobile.avif:
      real torn edges, corner darkening and folds are already in the file
      itself, so no mask/gradient/filter/tint is layered on top here —
@@ -588,6 +591,12 @@
     }
   }
 
+  /* Diagnoza + Projektowanie modeli only (not the full plate group): OPEN
+     ::before keeps the same baked closed-plate texture instead of the
+     open-state var(--bg-accordion-parchment) every other plate-role card
+     uses — Dojazd/Konserwacja intentionally keep the base open background.
+     Narrower than data-open-header-plate on purpose, kept as an explicit
+     2-item list rather than a new role attribute for just these two rules. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"])::before {
     background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
     background-size: 896px 82px;
@@ -637,7 +646,7 @@
   }
 
   /* WARM PARCHMENT — CLOSED-state corner-fold variant, per card
-     (serwis-laptopow only). The shared zakres-corner-tl/tr/bl/br ::after
+     (all repair-accordion pages). The shared zakres-corner-tl/tr/bl/br ::after
      mechanism (see base definitions above) already varies per card via
      ACCORDION_CORNER_CLASSES_FULL, but that array also governs the OPEN
      state, which must stay untouched. So instead of changing the array,
@@ -817,12 +826,13 @@
       padding-bottom: 3px;
     }
 
-    /* TEST — Diagnoza i wycena only: OPEN header widens +12px per side
-       (24px wider than CLOSED total) via real width/margin, not a hover
-       transform:scale, which would only look bigger without moving the
-       actual box. Lifts ~2px. Height/padding/font stay on the shared rule
-       above — not redeclared here. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    /* Open-header "plate" role (Diagnoza/Projektowanie modeli/Dojazd/
+       Konserwacja — data-open-header-plate, set in service-accordion.tsx):
+       OPEN header widens +12px per side (24px wider than CLOSED total) via
+       real width/margin, not a hover transform:scale, which would only look
+       bigger without moving the actual box. Lifts ~2px. Height/padding/font
+       stay on the shared rule above — not redeclared here. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] {
       width: calc(100% + 72px);
       margin-left: -36px;
       margin-right: -36px;
@@ -833,21 +843,22 @@
       z-index: 2 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"] {
       transform: translateY(-4px) scale(1.04);
     }
 
-    /* Diagnoza OPEN header only: kill the shared gold group-hover overlay
-       (first child of this div, see triggerNode in service-accordion.tsx) —
-       it read as a dark tint on the left third of this card on hover. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"]):hover>div:first-child {
+    /* Plate role + Naprawy OPEN header: kill the shared gold group-hover
+       overlay (first child of this div, see triggerNode in
+       service-accordion.tsx) — it read as a dark tint on the left third of
+       this card on hover. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-open-header-plate="true"],[data-section-id="naprawy"]):hover>div:first-child {
       opacity: 0 !important;
     }
 
     /* Same overlay-kill, triggered by hovering the OPEN table below the
        header (item-level :hover covers both), so lifting/hovering the
        table no longer reveals the header's gold overlay on the left. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"])>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-open-header-plate="true"],[data-section-id="naprawy"])>div:first-child {
       opacity: 0 !important;
     }
 
@@ -1475,7 +1486,7 @@
       overflow: visible;
     }
 
-    /* Mobile serwis-laptopow only: port of the desktop shared-backdrop
+    /* Mobile (all repair-accordion pages): port of the desktop shared-backdrop
        segmentation (min-width:768px blocks above) onto the OPEN Naprawy
        main section, using the mobile canvas asset
        naprawy-open-parchment-mobile-v172.webp instead of v16. Same
@@ -1576,14 +1587,14 @@
       border-top-width: 0 !important;
     }
 
-    /* Mobile serwis-laptopow only: open subcategory row (e.g. Oprogramowanie)
+    /* Mobile (all repair-accordion pages): open subcategory row (e.g. Oprogramowanie)
        matches the top-level closed plates' min-height (82px, see line 601)
        instead of the naprawy-subcategory min-height:0 reset (line 959). */
     .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="open"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
     }
 
-    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory row box gets
+    /* Mobile (all repair-accordion pages): CLOSED Naprawy subcategory row box gets
        the same min-height/width/margin/padding as the top-level closed
        plates (base line 601 + mobile 611-621), overriding the naprawy
        reset at line 956-966 (not modified) via higher specificity. Trigger,
@@ -1599,7 +1610,7 @@
       padding-bottom: 12px;
     }
 
-    /* Mobile serwis-laptopow only: restore the closed-plate ::before
+    /* Mobile (all repair-accordion pages): restore the closed-plate ::before
        backdrop for CLOSED Naprawy subcategory rows — properties copied 1:1
        from the top-level closed plates' ::before (base line 558, mobile
        override line 569-572). `content: ''` overrides the closed-row
@@ -1618,7 +1629,7 @@
       transition: scale 200ms ease;
     }
 
-    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory trigger
+    /* Mobile (all repair-accordion pages): CLOSED Naprawy subcategory trigger
        painted above the ::before backdrop restored above (mirrors the
        top-level closed plates' trigger position/z-index,
        service-accordion.tsx:1472). Padding/gap/align and icon/img sizes
@@ -1633,7 +1644,7 @@
       display: none !important;
     }
 
-    /* Mobile serwis-laptopow only: CLOSED Naprawy subcategory title carries
+    /* Mobile (all repair-accordion pages): CLOSED Naprawy subcategory title carries
        Tailwind's mb-1 (service-accordion.tsx:2220), unlike the top-level
        closed titles which have no margin-bottom (service-accordion.tsx:1538-1540).
        Zeroed here to match the top-level value exactly. */
@@ -1847,14 +1858,14 @@
       }
     }
 
-    /* TEST — Diagnoza i wycena only: real parchment image (same asset as
+    /* Open-header "plate" role: real parchment image (same asset as
        /kontakt Formularz zgłoszeniowy) instead of the flat #efe3c8 fill
        every other OPEN card still uses. Kept 8px narrower per side than
        this card's own widened OPEN header above (32px overhang - 8px =
        24px) so the sheet reads as slightly tucked under the header. The
        10px top overlap lives on the <img> itself (see JSX), not here, so
        it doesn't shift this box's own height/position. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] {
       position: relative;
       width: calc(100% + 48px);
       margin-left: -24px;
@@ -1955,7 +1966,7 @@
       display: none;
     }
 
-    /* TEST — Diagnoza i wycena only: inset the whole table block 24px from
+    /* Open-header "plate" role: inset the whole table block 24px from
        each parchment edge (replaces the earlier first-cell padding-left
        hack) so text, price/duration values and row lines all stay clear
        of the torn edges. Overrides the shared AccordionContent inner
@@ -1966,7 +1977,7 @@
        pushes the whole OPEN block — and the height:100% parchment <img>
        under it — taller automatically. Top offset/header and every row's
        own position/height above stay untouched. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div {
       margin-left: 24px;
       margin-right: 24px;
       padding-bottom: 48px;
@@ -1976,22 +1987,23 @@
 
     /* naprawy: kill the same md:border-x/md:border-t (service-accordion.tsx:1729)
        as two faint gold vertical lines over the shared 300/301 backdrop —
-       margin/padding above are diagnoza-only insets, not touched here. */
+       margin/padding above are plate-role-only insets, not touched here. */
     [data-open-header-split-content="true"][data-section-id="naprawy"] [data-slot="accordion-content"] > div {
       border-left: 0;
       border-right: 0;
       border-top: 0;
     }
 
-    /* TEST — Diagnoza i wycena only: kills the unified left/right/bottom
+    /* Open-header "plate" role: kills the unified left/right/bottom
        frame around the OPEN table. Two nested wrappers each drew part of
        it: the AccordionContent inner div above (md:border-x, now removed)
        and this deeper decorative box (md:border on all 4 sides, plus a
        stray outline that md:outline-none wasn't actually clearing) —
        shared markup used by every service table, so scoped strictly to
-       diagnoza. Top border on both wrappers is untouched (horizontal,
-       matches "не ломать верх"), as are the table's own row dividers. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
+       data-open-header-plate. Top border on both wrappers is untouched
+       (horizontal, matches "не ломать верх"), as are the table's own row
+       dividers. */
+    [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div > div {
       border-left: none;
       border-right: none;
       border-bottom: none;
@@ -2001,45 +2013,61 @@
     /* Row divider lines: same secondary ink tone as the parenthetical
        caption text, thin 1px hairline — was a semi-transparent white
        border meant for the old dark background. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
       border-color: rgba(114, 80, 43, 0.8);
       border-bottom-width: 1px;
     }
 
+    /* Kills the table's own first-row top border since the plate header
+       above it already provides that edge — deliberately excludes Dojazd:
+       its content starts with the accent banner rendered via
+       AccordionContent's beforeContent (see design_open_header_master),
+       sitting before the scrollable table, so the table's first row is not
+       visually first there and needs to keep its top border to separate
+       it from the banner above. Kept as an explicit data-section-id list
+       (not data-open-header-plate) for exactly this reason. */
     [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:first-child {
       border-top: none;
     }
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
-    /* TEST — Diagnoza i wycena only: parenthetical caption text (e.g. "(opis
-       problemu przez WhatsApp...)") matches the row's own main-text ink
-       tone instead of the shared secondary #72502B — only its color
-       changes, size stays as-is. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
+    /* Plate role + Naprawy-nested table: parenthetical caption text (e.g.
+       "(opis problemu przez WhatsApp...)") matches the row's own
+       main-text ink tone instead of the shared secondary #72502B — only
+       its color changes, size stays as-is. */
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
       color: #332314;
       font-size: 15px;
       transform: translateY(-2px);
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       color: #332314 !important;
       font-size: 13px !important;
       transform: translateY(-2px);
     }
 
-    /* TEST — Diagnoza i wycena only: row title text 2px larger than the
-       shared 18px every other OPEN card still uses. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
+    /* Plate role + Naprawy-nested table: row title text 2px larger than
+       the shared 18px every other OPEN card still uses (desktop value here
+       happens to equal the canonical .service-typography-standard 20px —
+       see the mobile 767px block below where it diverges to 16px). */
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
       color: #332314;
     }
 
-    /* Diagnoza i wycena only, OPEN state: table rows switch from native
+    /* "Has a real price/time table" role — diagnoza, dojazd, konserwacja and
+       the nested naprawy-nested table all render a genuine <table>; deliberately
+       excludes projektowanie-modeli (druk-3d-na-zamowienie only), whose content
+       is a bespoke non-table block (see section.id === 'projektowanie-modeli'
+       branch in service-accordion.tsx) — kept as an explicit data-section-id
+       list rather than data-open-header-plate because it is a narrower,
+       structurally distinct group. OPEN state: table rows switch from native
        table-row layout to a 3-column CSS grid (67% / 16.5% / 16.5% — the
        exact widths the <colgroup> already used) so the row cells sit on a
        real shared grid instead of the browser's own table column-sizing.
@@ -2074,14 +2102,14 @@
        the trigger's own data-state is "open". .diagnoza-open-header-row is
        a bare marker class (no default styles) added only for this one
        card's header row in service-accordion.tsx. */
-    :is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
+    [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
     [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
       display: grid;
       grid-template-columns: 67% 33%;
       align-items: center;
       position: relative;
     }
-    :is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
+    [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
     [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > div:last-child {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2149,26 +2177,29 @@
     }
   }
 
-  /* WARM PARCHMENT — Diagnoza i wycena, MOBILE: same desktop MASTER OPEN-state
-     treatment above (real parchment card, dark-brown ink, entrance-animated
-     header shadow) ported to mobile width, scaled down proportionally to the
-     narrower mobile bleed (10px, same amount the CLOSED mobile card already
-     uses — see the max-width:767px rule near the top of this file) instead of
-     desktop's 24px. Scoped strictly to :is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"]), the only
-     card that also gets the header/content DOM split on mobile (see
-     isDiagnozaMobileSplit in service-accordion.tsx) — every other card on this
-     page, and every other /uslugi/[slug] page, keeps its original mobile
-     layout untouched. Mobile keeps its own flex-row item layout, not the
-     desktop <table> — only card chrome changes here, never structure/columns. */
+  /* WARM PARCHMENT — open-header "plate" role, MOBILE: same desktop MASTER
+     OPEN-state treatment above (real parchment card, dark-brown ink,
+     entrance-animated header shadow) ported to mobile width, scaled down
+     proportionally to the narrower mobile bleed (10px, same amount the
+     CLOSED mobile card already uses — see the max-width:767px rule near the
+     top of this file) instead of desktop's 24px. Scoped strictly to
+     [data-open-header-plate="true"] (Diagnoza/Projektowanie modeli/Dojazd/
+     Konserwacja) — the cards that also get the header/content DOM split on
+     mobile (see isOpenHeaderPlateSection/isDiagnozaMobileSplit in
+     service-accordion.tsx); FAQ gets its own separate mobile split rules
+     elsewhere, Naprawy is untouched here. Every other /uslugi/[slug] page
+     keeps its original mobile layout untouched. Mobile keeps its own
+     flex-row item layout, not the desktop <table> — only card chrome
+     changes here, never structure/columns. */
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"]::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-size: 100% 82px;
       background-repeat: no-repeat;
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]),
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"],
     .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: calc(100% + 32px);
@@ -2206,12 +2237,12 @@
       z-index: 2;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-title-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] .zakres-title-text,
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text {
       font-size: 22px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) .zakres-price-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] .zakres-price-header-text {
       color: #3A2817;
       font-size: 22px;
     }
@@ -2228,20 +2259,20 @@
     /* Mobile mirror of the desktop fix above: kill the shared gold
        group-hover overlay (first child of this div, see triggerNode in
        service-accordion.tsx) — same left-side dark tint on hover/tap. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]):hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"]:hover>div:first-child {
       opacity: 0 !important;
     }
 
     /* Same overlay-kill, triggered by hovering the OPEN table below the
        header (item-level :hover covers both). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-open-header-plate="true"]>div:first-child {
       opacity: 0 !important;
     }
 
     /* Shadow anchored to the header wrapper div itself (already position:relative
        via headerWrapperClassName) — measured via getBoundingClientRect() as the
        element whose bottom edge matches the parchment's true visible bottom edge. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"])::after {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"]::after {
       content: '';
       position: absolute;
       top: calc(100% - 6px);
@@ -2283,7 +2314,7 @@
        technique as desktop (see the <img> in service-accordion.tsx, which
        renders regardless of viewport) — position:relative here just anchors
        that <img> correctly. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] {
       position: relative;
       width: calc(100% + 20px);
       margin-left: -10px;
@@ -2514,31 +2545,39 @@
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div {
       margin-left: 10px;
       margin-right: 10px;
       padding-bottom: 48px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div:first-child {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div:first-child {
       margin-top: 10px;
       border-top: 1px solid rgba(200, 169, 107, 0.3);
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"]) [data-slot="accordion-content"] > div > div {
+    [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div > div {
       outline: none;
     }
 
-    /* Service name 2px bigger than its parentheses caption text (14px) below it. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .service-description-text {
+    /* Intentional mobile-only deviation from the canonical 18px in
+       .service-typography-standard .service-description-text below (min-width
+       767px block): inside the plate-role/naprawy-nested table row, the
+       service name instead stays 2px bigger than its own parentheses caption
+       text (14px) directly below it — a locally-consistent pair, not a bug.
+       Wins over the canonical rule via [data-open-header-split-content]'s
+       higher selector specificity; keep this comment here (not just in the
+       canonical block) so the divergence isn't mistaken for a leftover
+       conflict on a future pass. */
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 16px;
     }
 
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
       font-family: var(--font-cormorant), serif !important;
       font-size: 13px !important;
       font-weight: 500 !important;
@@ -2551,8 +2590,8 @@
        was the semi-transparent white border meant for the old dark background
        ([class*=...] avoids escaping the Tailwind border-white/20|30 utility
        classes already on each mobile row in renderMobileServiceRow). */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/20"],
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) [class*="border-white/20"],
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) [class*="border-white/30"] {
       border-color: rgba(114, 80, 43, 0.8);
     }
 

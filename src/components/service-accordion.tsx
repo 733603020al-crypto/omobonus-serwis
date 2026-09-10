@@ -1572,7 +1572,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             // only — every other card on this page keeps its original mobile layout
             // untouched). FAQ's own mobile geometry mirrors this same mechanism —
             // see the [data-section-id="faq"] rules in the mobile CSS block.
-            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'faq')
+            // Canonical "plate" role: the 4 top-level sections that share the
+            // OPEN-header parchment plate/shadow/grid treatment (Diagnoza,
+            // Projektowanie modeli, Dojazd, Konserwacja) — FAQ and Naprawy get
+            // their own separate treatment and are intentionally excluded.
+            // Mirrored onto the DOM as data-open-header-plate="true" below so
+            // globals.css can select this canonical group by role instead of
+            // repeating a [data-section-id="..."] :is() list per rule.
+            const isOpenHeaderPlateSection = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'
+            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
             const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
               "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
@@ -1597,7 +1605,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 >
                   <div className={cn(
                     "flex items-center w-full text-left",
-                    useSplitHeaderLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && 'diagnoza-open-header-row'
+                    useSplitHeaderLayout && isOpenHeaderPlateSection && 'diagnoza-open-header-row'
                   )}>
                     <div data-naprawy-header-inner={section.id === 'naprawy' ? 'true' : undefined} className={cn(
                       "flex items-center flex-1 min-w-0",
@@ -1606,8 +1614,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <div className={cn(
                           "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                           isRepairAccordionLayout && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
-                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
-                          isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && isOpenHeaderPlateSection && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && isOpenHeaderPlateSection && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
                           isRepairAccordionLayout && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
                           isRepairAccordionLayout && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
                         )}>
@@ -1667,7 +1675,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
                                   return (
                                     <TitleTag className={cn(
-                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja') && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && isOpenHeaderPlateSection && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
                                       /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
                                          compensation above (same 115px icon container × 1.4 scale = same
                                          46px right-overflow), kept as its own condition rather than joining
@@ -1901,7 +1909,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                              isOpenHeaderPlateSection || section.id === 'naprawy'
                                 ? cn(
                                     'min-w-[96px] sm:min-w-[120px]',
                                     isRepairAccordionLayout && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
@@ -1951,7 +1959,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <div
                                         className={cn(
                                           'zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                          isOpenHeaderPlateSection || section.id === 'naprawy'
                                             ? 'justify-center'
                                             : 'justify-end',
                                           'md:cursor-default cursor-pointer'
@@ -2058,7 +2066,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         className={cn(
                                           'zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
                                           'flex items-center gap-[5px] pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                          isOpenHeaderPlateSection || section.id === 'naprawy'
                                             ? 'justify-center'
                                             : 'justify-end',
                                           'md:cursor-default'
@@ -2136,7 +2144,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                              isOpenHeaderPlateSection || section.id === 'naprawy'
                                 ? 'min-w-[120px]'
                                 : 'min-w-0'
                             )}
@@ -2827,7 +2835,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
                             false,
-                            isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'),
+                            isRepairAccordionLayout && isOpenHeaderPlateSection,
                           )
                           return row
                         })}
@@ -2955,6 +2963,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       className={headerWrapperClassName}
                       data-section-id={section.id}
                       data-top-level-service-header="true"
+                      data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined}
                       data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
                       ref={section.id === 'naprawy' ? naprawyHeaderSegmentRef : undefined}
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
@@ -2972,7 +2981,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         </div>
                       )}
                     </div>
-                    <section data-open-header-split-content="true" data-section-id={section.id}>
+                    <section data-open-header-split-content="true" data-section-id={section.id} data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined}>
                       {section.id === 'diagnoza' ? (
                         <>
                           {/* Same parchment asset/technique as /kontakt Formularz
