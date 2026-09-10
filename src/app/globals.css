@@ -591,13 +591,12 @@
     }
   }
 
-  /* Diagnoza + Projektowanie modeli only (not the full plate group): OPEN
-     ::before keeps the same baked closed-plate texture instead of the
-     open-state var(--bg-accordion-parchment) every other plate-role card
-     uses — Dojazd/Konserwacja intentionally keep the base open background.
-     Narrower than data-open-header-plate on purpose, kept as an explicit
-     2-item list rather than a new role attribute for just these two rules. */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"])::before {
+  /* data-closed-texture role (Diagnoza + Projektowanie modeli — not the full
+     plate group): OPEN ::before keeps the same baked closed-plate texture
+     instead of the open-state var(--bg-accordion-parchment) every other
+     plate-role card uses — Dojazd/Konserwacja intentionally keep the base
+     open background, so they don't carry this attribute. */
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-closed-texture="true"]::before {
     background-image: url('/images/accordion-card-parchment-closed-desktop.avif');
     background-size: 896px 82px;
     background-repeat: no-repeat;
@@ -605,7 +604,7 @@
     background-color: transparent;
   }
 
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-section-id="faq"] {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-faq-role="true"] {
     overflow: visible;
     z-index: 2;
   }
@@ -866,7 +865,7 @@
        Dojazd/Konserwacja OPEN header rules above — same property values,
        but a separate selector so this never joins their shared :is() list
        (FAQ has no price column / diagnoza-open-header-row grid). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"] {
       min-height: 82px;
       width: calc(100% + 72px);
       margin-left: -36px;
@@ -880,16 +879,16 @@
       overflow: visible;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-section-id="faq"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-faq-role="true"] {
       transform: translateY(-4px) scale(1.04);
       overflow: visible;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]:hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"]:hover>div:first-child {
       opacity: 0 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-section-id="faq"]>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-faq-role="true"]>div:first-child {
       opacity: 0 !important;
     }
 
@@ -1848,12 +1847,12 @@
       color: #72502B !important;
     }
 
-    [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+    [data-open-header-split-content="true"][data-faq-role="true"] .faq-answer-text {
       font-family: var(--font-cormorant), serif;
       color: #72502B;
     }
     @media (min-width: 768px) {
-      [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+      [data-open-header-split-content="true"][data-faq-role="true"] .faq-answer-text {
         color: #332314;
       }
     }
@@ -1921,17 +1920,17 @@
     /* FAQ OPEN body parchment: standalone mirror of the Diagnoza/Dojazd/
        Konserwacja rules above (own selector, not joined into their :is()
        list — FAQ has no price grid/columns). */
-    [data-open-header-split-content="true"][data-section-id="faq"] {
+    [data-open-header-split-content="true"][data-faq-role="true"] {
       position: relative;
       width: calc(100% + 48px);
       margin-left: -24px;
       margin-right: -24px;
       background: transparent;
     }
-    [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+    [data-open-header-split-content="true"][data-faq-role="true"] > img.contact-form-parchment-shadow {
       height: var(--faq-img-h, calc((100% + 12px) * 1.168925)) !important;
     }
-    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-faq-role="true"] > img.contact-form-parchment-shadow {
       display: none !important;
     }
 
@@ -2019,14 +2018,13 @@
     }
 
     /* Kills the table's own first-row top border since the plate header
-       above it already provides that edge — deliberately excludes Dojazd:
-       its content starts with the accent banner rendered via
-       AccordionContent's beforeContent (see design_open_header_master),
-       sitting before the scrollable table, so the table's first row is not
-       visually first there and needs to keep its top border to separate
-       it from the banner above. Kept as an explicit data-section-id list
-       (not data-open-header-plate) for exactly this reason. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="projektowanie-modeli"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:first-child {
+       above it already provides that edge — deliberately excludes anything
+       carrying data-has-banner="true" (Dojazd): its content starts with the
+       accent banner rendered via AccordionContent's beforeContent (see
+       design_open_header_master), sitting before the scrollable table, so
+       the table's first row is not visually first there and needs to keep
+       its top border to separate it from the banner above. */
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]):not([data-has-banner="true"]) [data-slot="table-row"]:first-child {
       border-top: none;
     }
 
@@ -2053,34 +2051,35 @@
 
     /* Plate role + Naprawy-nested table: row title text 2px larger than
        the shared 18px every other OPEN card still uses (desktop value here
-       happens to equal the canonical .service-typography-standard 20px —
-       see the mobile 767px block below where it diverges to 16px). */
+       happens to equal the canonical .service-typography-standard 20px).
+       Mobile (767px block below) is unified to the canonical 18px/600
+       instead of diverging. */
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
       color: #332314;
     }
 
-    /* "Has a real price/time table" role — diagnoza, dojazd, konserwacja and
-       the nested naprawy-nested table all render a genuine <table>; deliberately
-       excludes projektowanie-modeli (druk-3d-na-zamowienie only), whose content
-       is a bespoke non-table block (see section.id === 'projektowanie-modeli'
-       branch in service-accordion.tsx) — kept as an explicit data-section-id
-       list rather than data-open-header-plate because it is a narrower,
-       structurally distinct group. OPEN state: table rows switch from native
-       table-row layout to a 3-column CSS grid (67% / 16.5% / 16.5% — the
-       exact widths the <colgroup> already used) so the row cells sit on a
-       real shared grid instead of the browser's own table column-sizing.
-       align-items:center replaces the lost vertical-align:middle from
-       table-cell. Row border-color/last-row gradient divider above are
-       unaffected — tr keeps its own box, only its internal layout changes. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) table {
+    /* "Has a real price/time table" role — data-has-table="true" is set
+       directly in service-accordion.tsx on diagnoza, dojazd, konserwacja
+       and the nested naprawy-nested content (all render a genuine <table>);
+       deliberately excludes projektowanie-modeli (druk-3d-na-zamowienie
+       only), whose content is a bespoke non-table block (see
+       hasOpenHeaderTable in service-accordion.tsx). OPEN state: table rows
+       switch from native table-row layout to a 3-column CSS grid (67% /
+       16.5% / 16.5% — the exact widths the <colgroup> already used) so the
+       row cells sit on a real shared grid instead of the browser's own
+       table column-sizing. align-items:center replaces the lost
+       vertical-align:middle from table-cell. Row border-color/last-row
+       gradient divider above are unaffected — tr keeps its own box, only
+       its internal layout changes. */
+    [data-open-header-split-content="true"][data-has-table="true"] table {
       display: block;
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) table tbody {
+    [data-open-header-split-content="true"][data-has-table="true"] table tbody {
       display: block;
     }
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-row"] {
+    [data-open-header-split-content="true"][data-has-table="true"] [data-slot="table-row"] {
       display: grid;
       grid-template-columns: 67% 16.5% 16.5%;
       align-items: center;
@@ -2091,7 +2090,7 @@
        widths resolve against its own 67% column track instead, shrinking
        it to 67% of 67% and wrapping the text early. The grid track already
        constrains the width, so the extra cap is redundant; drop it. */
-    [data-open-header-split-content="true"]:is([data-section-id="diagnoza"],[data-section-id="dojazd"],[data-section-id="konserwacja"],[data-section-id="naprawy-nested"]) [data-slot="table-cell"]:first-child {
+    [data-open-header-split-content="true"][data-has-table="true"] [data-slot="table-cell"]:first-child {
       max-width: none;
     }
 
@@ -2214,14 +2213,14 @@
     /* FAQ OPEN header, MASTER (mobile): standalone mirror of the Diagnoza/
        Dojazd/Konserwacja OPEN header rules above — separate selector, not
        part of their shared :is() list (no price column on FAQ). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"]::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-size: 100% 82px;
       background-repeat: no-repeat;
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"] {
       min-height: 82px;
       width: calc(100% + 32px);
       margin-left: -16px;
@@ -2232,13 +2231,13 @@
       padding-bottom: 12px;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-section-id="faq"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-faq-role="true"] {
       overflow: visible;
       z-index: 2;
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] .zakres-title-text,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"] .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"] .zakres-title-text {
       font-size: 22px;
     }
 
@@ -2286,17 +2285,17 @@
     }
 
     /* FAQ OPEN header, MASTER (mobile): standalone mirror, hover-kill + shadow. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]:hover>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"]:hover>div:first-child {
       opacity: 0 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-section-id="faq"]>div:first-child {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):hover>div[data-faq-role="true"]>div:first-child {
       opacity: 0 !important;
     }
 
     /* FAQ OPEN header shadow: same mechanism as the Diagnoza/Dojazd/Konserwacja
        ::after above (own selector, not joined into their :is() list). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-section-id="faq"]::after {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-faq-role="true"]::after {
       content: '';
       position: absolute;
       top: calc(100% - 6px);
@@ -2356,7 +2355,7 @@
     /* FAQ OPEN content, mobile: standalone mirror of the Diagnoza/Dojazd/
        Konserwacja wrapper above (own selector, not joined into their :is()
        list — FAQ has no price grid/columns), same values. */
-    [data-open-header-split-content="true"][data-section-id="faq"] {
+    [data-open-header-split-content="true"][data-faq-role="true"] {
       position: relative;
       width: calc(100% + 20px);
       margin-left: -10px;
@@ -2371,10 +2370,10 @@
        mobile too, no isMobile guard) — same height/fallback/CLOSED-cleanup
        mechanism as the desktop rule above and as Diagnoza/Dojazd/Konserwacja
        just above. */
-    [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+    [data-open-header-split-content="true"][data-faq-role="true"] > img.contact-form-parchment-shadow {
       height: var(--faq-img-h, calc((100% + 12px) * 1.168925)) !important;
     }
-    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-section-id="faq"] > img.contact-form-parchment-shadow {
+    [data-slot="accordion-item"]:not([data-state="open"]) > [data-open-header-split-content="true"][data-faq-role="true"] > img.contact-form-parchment-shadow {
       display: none !important;
     }
 
@@ -2384,14 +2383,14 @@
        .parentheses-caption-text (answer ~ parenthetical caption), per the
        [data-parchment-variant="warm"][data-main-accordion="true"] rules
        above (~line 2730) which win those properties for Diagnoza too. */
-    [data-open-header-split-content="true"][data-section-id="faq"] .faq-question-title-text {
+    [data-open-header-split-content="true"][data-faq-role="true"] .faq-question-title-text {
       font-size: 18px;
       font-weight: 500;
       line-height: 1.15;
       letter-spacing: -0.025em;
       padding-left: 8px;
     }
-    [data-open-header-split-content="true"][data-section-id="faq"] .faq-answer-text {
+    [data-open-header-split-content="true"][data-faq-role="true"] .faq-answer-text {
       font-size: 13px;
       font-weight: 500;
       line-height: 1.2;
@@ -2504,10 +2503,12 @@
       box-sizing: border-box !important;
     }
 
-    /* OPEN TOP CATEGORY MATCH: image / title / price */
-    .page-repair-accordion [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
-    .page-repair-accordion [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child,
-    .page-repair-accordion [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child {
+    /* OPEN TOP CATEGORY MATCH: image / title / price. Scoped to
+       [data-open-header-plate="true"][data-has-table="true"] — the
+       intersection of the plate role and the "has a real table" role is
+       exactly diagnoza/dojazd/konserwacja (projektowanie-modeli is plate
+       but not has-table, so it's excluded here same as before). */
+    .page-repair-accordion [data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:first-child {
       display: grid !important;
       grid-template-columns: 161px minmax(0, 1fr) !important;
       align-items: center !important;
@@ -2515,17 +2516,13 @@
       min-width: 0 !important;
     }
 
-    .page-repair-accordion [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
-    .page-repair-accordion [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
-    .page-repair-accordion [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
+    .page-repair-accordion [data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
       width: 100% !important;
       min-width: 0 !important;
       overflow: hidden !important;
     }
 
-    .page-repair-accordion [data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text,
-    .page-repair-accordion [data-section-id="dojazd"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text,
-    .page-repair-accordion [data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+    .page-repair-accordion [data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
       transform: none !important;
       width: 100% !important;
       max-width: 100% !important;
@@ -2564,17 +2561,19 @@
       outline: none;
     }
 
-    /* Intentional mobile-only deviation from the canonical 18px in
-       .service-typography-standard .service-description-text below (min-width
-       767px block): inside the plate-role/naprawy-nested table row, the
-       service name instead stays 2px bigger than its own parentheses caption
-       text (14px) directly below it — a locally-consistent pair, not a bug.
-       Wins over the canonical rule via [data-open-header-split-content]'s
-       higher selector specificity; keep this comment here (not just in the
-       canonical block) so the divergence isn't mistaken for a leftover
-       conflict on a future pass. */
-    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
-      font-size: 16px;
+    /* Unified to the canonical mobile 18px/600 (.service-typography-standard
+       .service-description-text below, min-width 767px block) — matches
+       desktop's 20px/600 title weight instead of the old 16px local
+       deviation. Needs the [data-parchment-variant="warm"][data-main-accordion="true"]
+       ancestor prefix (same attributes the general WARM PARCHMENT mobile
+       rule below uses on line ~2608) purely to win the same-specificity
+       cascade tie against that rule's font-weight:500 — this element is
+       always inside that ancestor already (data-open-header-split-content
+       only exists on warm-parchment pages), so the prefix narrows nothing,
+       it only breaks the tie deterministically without !important. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
+      font-size: 18px;
+      font-weight: 600;
     }
 
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {

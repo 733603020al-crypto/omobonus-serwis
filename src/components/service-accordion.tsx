@@ -1580,6 +1580,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             // globals.css can select this canonical group by role instead of
             // repeating a [data-section-id="..."] :is() list per rule.
             const isOpenHeaderPlateSection = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'
+            // Named structural variants within the plate role (not slug lists):
+            // mirrored onto the DOM the same way as data-open-header-plate, so
+            // globals.css can select "has a real <table>" / "has the accent
+            // banner before the table" / "OPEN state keeps the closed-plate
+            // texture" by meaning instead of enumerating section ids.
+            const hasOpenHeaderTable = isOpenHeaderPlateSection && section.id !== 'projektowanie-modeli' // Projektowanie modeli (druk-3d-na-zamowienie) renders a bespoke non-table block instead
+            const hasOpenHeaderBanner = section.id === 'dojazd' // "DARMOWY DOJAZD" accent banner rendered via AccordionContent's beforeContent, before the table
+            const keepsClosedPlateTexture = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' // OPEN ::before keeps the baked closed-plate texture instead of the open-state background
             const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
             const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
@@ -2527,6 +2535,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <AccordionContent
                             data-open-header-split-content={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
                             data-section-id={isRepairAccordionLayout && isRepairSection ? 'naprawy-nested' : undefined}
+                            data-has-table={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
                             data-nested-parchment={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
                             beforeContent={isRepairAccordionLayout && isRepairSection ? (
                               <>
@@ -2959,6 +2968,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       data-section-id={section.id}
                       data-top-level-service-header="true"
                       data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined}
+                      data-has-table={hasOpenHeaderTable ? 'true' : undefined}
+                      data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
+                      data-faq-role={section.id === 'faq' ? 'true' : undefined}
                       data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
                       ref={section.id === 'naprawy' ? naprawyHeaderSegmentRef : undefined}
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
@@ -2976,7 +2988,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         </div>
                       )}
                     </div>
-                    <section data-open-header-split-content="true" data-section-id={section.id} data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined}>
+                    <section data-open-header-split-content="true" data-section-id={section.id} data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined} data-has-table={hasOpenHeaderTable ? 'true' : undefined} data-has-banner={hasOpenHeaderBanner ? 'true' : undefined} data-faq-role={section.id === 'faq' ? 'true' : undefined}>
                       {section.id === 'diagnoza' ? (
                         <>
                           {/* Same parchment asset/technique as /kontakt Formularz
