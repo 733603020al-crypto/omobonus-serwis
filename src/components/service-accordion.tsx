@@ -2127,15 +2127,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 )}
                               </TooltipProvider>
                               {!hideDeviceCaption && (
-                                <span
-                                  className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
-                                  style={{
-                                    opacity: 1,
-                                    fontWeight: 'normal',
-                                    fontStyle: 'normal'
-                                  }}
-                                >
-                                  {t.deviceCategoriesCaption}
+                                <span className="hidden md:block">
+                                  <span className="parentheses-caption-text">
+                                    {t.deviceCategoriesCaption}
+                                  </span>
                                 </span>
                               )}
                             </div>
