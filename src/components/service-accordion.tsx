@@ -2895,24 +2895,62 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       const isWynajemSection = service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                       const isDrukarkaZastepczaSection = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
 
+                      const bottomTailY = parchmentListMetrics
+                        ? parchmentListMetrics.headerHeight +
+                          parchmentListMetrics.rowHeights.reduce((a, b) => a + b, 0)
+                        : 0
+
+                      const openRentalSubcategories = isWynajemSection
+                        ? openWynajemSubcategories
+                        : isDrukarkaZastepczaSection
+                          ? openDrukarkaZastepczaSubcategories
+                          : []
+
+                      const lastSubcategoryId =
+                        section.subcategories![section.subcategories!.length - 1]?.id
+
+                      const isLastSubcategoryOpen =
+                        !!lastSubcategoryId &&
+                        openRentalSubcategories.includes(lastSubcategoryId)
+
                       return (
-                        <Accordion
-                          type="multiple"
-                          className="w-full max-w-full min-w-0"
-                          data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
-                          value={
-                            isWynajemSection ? openWynajemSubcategories :
-                              isDrukarkaZastepczaSection ? openDrukarkaZastepczaSubcategories :
-                                undefined
-                          }
-                          onValueChange={
-                            isWynajemSection ? handleWynajemSubcategoryChange :
-                              isDrukarkaZastepczaSection ? handleDrukarkaZastepczaSubcategoryChange :
-                                undefined
-                          }
-                        >
-                          {subcategoryItems}
-                        </Accordion>
+                        <>
+                          <Accordion
+                            type="multiple"
+                            className="w-full max-w-full min-w-0"
+                            data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
+                            value={
+                              isWynajemSection
+                                ? openWynajemSubcategories
+                                : isDrukarkaZastepczaSection
+                                  ? openDrukarkaZastepczaSubcategories
+                                  : undefined
+                            }
+                            onValueChange={
+                              isWynajemSection
+                                ? handleWynajemSubcategoryChange
+                                : isDrukarkaZastepczaSection
+                                  ? handleDrukarkaZastepczaSubcategoryChange
+                                  : undefined
+                            }
+                          >
+                            {subcategoryItems}
+                          </Accordion>
+
+                          {usesParchmentList && (
+                            <div
+                              data-parchment-list-bottom="true"
+                              style={{
+                                '--naprawy-tail-h': isLastSubcategoryOpen
+                                  ? '0px'
+                                  : parchmentListMetrics
+                                    ? `${parchmentListMetrics.bottomTailHeight}px`
+                                    : '0px',
+                                '--naprawy-seg-y': `-${bottomTailY}px`,
+                              } as React.CSSProperties}
+                            />
+                          )}
+                        </>
                       )
                     })()
                   ) : (
