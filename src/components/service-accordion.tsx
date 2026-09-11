@@ -2569,11 +2569,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           </AccordionTrigger>
                           <AccordionContent
-                            data-open-header-split-content={usesParchmentList ? 'true' : undefined}
-                            data-section-id={usesParchmentList ? 'naprawy-nested' : undefined}
-                            data-has-table={usesParchmentList ? 'true' : undefined}
-                            data-nested-parchment={usesParchmentList ? 'true' : undefined}
-                            beforeContent={usesParchmentList ? (
+                            data-open-header-split-content={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
+                            data-section-id={isRepairAccordionLayout && isRepairSection ? 'naprawy-nested' : undefined}
+                            data-has-table={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
+                            data-nested-parchment={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
+                            beforeContent={isRepairAccordionLayout && isRepairSection ? (
                               <>
                                 {index !== (section.subcategories?.length ?? 0) - 1 && (
                                   <>
@@ -2600,7 +2600,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 />
                               </>
                             ) : undefined}
-                            afterContent={usesParchmentList ? (
+                            afterContent={isRepairAccordionLayout && isRepairSection ? (
                               <div
                                 data-parchment-list-tail-spacer="true"
                                 aria-hidden="true"
@@ -2609,9 +2609,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               />
                             ) : undefined}
                             className={cn(
-                            section.id === 'faq' ? 'pt-0.5' : usesParchmentList ? 'pt-[21px]' : 'pt-1.5',
+                            section.id === 'faq' ? 'pt-0.5' : isRepairAccordionLayout && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
                             (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
-                            usesParchmentList && "relative z-10",
+                            isRepairAccordionLayout && isRepairSection && "relative z-10",
                             isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.priceTiers && subcategory.priceTiers.length > 0 ? (
