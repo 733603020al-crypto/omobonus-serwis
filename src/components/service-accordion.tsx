@@ -2578,7 +2578,76 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isRepairAccordionLayout && isRepairSection && "relative z-10",
                             isRepairAccordionLayout && isRepairSection && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
-                            {subcategory.answer ? (
+                            {subcategory.priceTiers && subcategory.priceTiers.length > 0 ? (
+                              <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                                {/* Mobile: stos kart, jedna na plan taryfowy */}
+                                <div className="flex flex-col gap-3 p-2 md:hidden">
+                                  {subcategory.priceTiers.map((tier, tierIdx) => (
+                                    <div key={tierIdx} className="rounded-lg border border-white/20 overflow-hidden">
+                                      <div className="font-cormorant text-[17px] font-semibold text-white text-center py-1.5 px-2 border-b border-white/20 bg-white/5">
+                                        {tier.label}
+                                      </div>
+                                      <Table className="table-fixed border-collapse w-full">
+                                        <colgroup>
+                                          <col className="w-[58%]" />
+                                          <col className="w-[42%]" />
+                                        </colgroup>
+                                        <TableBody>
+                                          {tier.rows.map((row, rowIdx) => (
+                                            <TableRow key={rowIdx} className="border-white/10 border-b last:border-b-0">
+                                              <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal leading-[1.3] text-left text-[13px]">
+                                                {row.label}
+                                              </TableCell>
+                                              <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-right text-[15px] text-white font-table-main">
+                                                {row.value}
+                                              </TableCell>
+                                            </TableRow>
+                                          ))}
+                                        </TableBody>
+                                      </Table>
+                                    </div>
+                                  ))}
+                                </div>
+                                {/* Desktop: jedna tabela, kolumna na plan taryfowy */}
+                                <div className="hidden md:block">
+                                  <Table className="table-fixed border-collapse">
+                                    <colgroup>
+                                      <col style={{ width: '34%' }} />
+                                      {subcategory.priceTiers.map((_, tierIdx) => (
+                                        <col key={tierIdx} style={{ width: `${66 / subcategory.priceTiers!.length}%` }} />
+                                      ))}
+                                    </colgroup>
+                                    <TableHeader>
+                                      <TableRow className="border-white/20 border-b border-white/30">
+                                        <TableHead className="py-1 pl-2 pr-2" />
+                                        {subcategory.priceTiers.map((tier, tierIdx) => (
+                                          <TableHead key={tierIdx} className="font-cormorant text-[17px] font-semibold text-white text-center py-1.5 px-2">
+                                            {tier.label}
+                                          </TableHead>
+                                        ))}
+                                      </TableRow>
+                                    </TableHeader>
+                                    <TableBody>
+                                      {subcategory.priceTiers[0].rows.map((row, rowIdx) => (
+                                        <TableRow
+                                          key={rowIdx}
+                                          className={`border-white/20 border-b border-white/30 ${rowIdx === 0 ? 'border-t border-white/30' : ''}`}
+                                        >
+                                          <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal leading-[1.3] text-left">
+                                            {row.label}
+                                          </TableCell>
+                                          {subcategory.priceTiers!.map((tier, tierIdx) => (
+                                            <TableCell key={tierIdx} className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center text-[16px] text-white font-table-main">
+                                              {tier.rows[rowIdx]?.value}
+                                            </TableCell>
+                                          ))}
+                                        </TableRow>
+                                      ))}
+                                    </TableBody>
+                                  </Table>
+                                </div>
+                              </div>
+                            ) : subcategory.answer ? (
                               <div
                                 className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}

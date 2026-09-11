@@ -7,6 +7,16 @@ export interface PricingItem {
   link?: string
 }
 
+export interface PriceTierRow {
+  label: string
+  value: string
+}
+
+export interface PriceTier {
+  label: string // Nazwa planu w nagłówku kolumny (np. "500 str./mies.")
+  rows: PriceTierRow[] // Wiersz 1 zawsze to czynsz/mies., dalej realne dane taryfy
+}
+
 export interface PricingSubcategory {
   id: string
   title: string
@@ -15,6 +25,7 @@ export interface PricingSubcategory {
   answer?: string // Odpowiedź dla FAQ (z obsługą formatowania)
   price?: string // Цена для отображения в заголовке подменю
   icon?: string // Ścieżka do obrazka podkategorii (naprawy) — opcjonalna, placeholder gdy brak
+  priceTiers?: PriceTier[] // 3 plany taryfowe z pełną podtabelą (wynajem-drukarek, repair-accordion layout)
 }
 
 export interface PricingSection {
@@ -64,7 +75,7 @@ export const DEFAULT_PRICE_TOOLTIP = 'Ceny netto'
 // extend this shared layout to another /uslugi/[slug] page. Drives both
 // service-accordion.tsx (isRepairAccordionLayout) and the shared
 // `.page-repair-accordion` CSS scope in globals.css.
-export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych', 'serwis-drukarek-termicznych', 'serwis-drukarek-3d', 'druk-3d-na-zamowienie', 'serwis-plotterow']
+export const REPAIR_ACCORDION_LAYOUT_SLUGS = ['serwis-laptopow', 'serwis-komputerow-stacjonarnych', 'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych', 'serwis-drukarek-iglowych', 'serwis-drukarek-termicznych', 'serwis-drukarek-3d', 'druk-3d-na-zamowienie', 'serwis-plotterow', 'wynajem-drukarek']
 
 // Domyślne sekcje cennika (aby nie powtarzać kodu dla każdej usługi na start)
 const defaultPricingSections: PricingSection[] = [
@@ -3608,7 +3619,9 @@ const createWynajemPricingSections = (): PricingSection[] => {
       section.id !== 'naprawy'
   )
 
-  // Добавляем два аккордеона
+  // Добавляем два аккордеона (repair-accordion layout: pełna podtabela 3 planów
+  // taryfowych na podkategorię, czynsz jako pierwszy wiersz — dane realne,
+  // przeniesione 1:1 z dotychczasowego WynajemTable/WynajemSubcategoryHeader)
   sections.push({
     id: 'akordeon-1',
     title: 'Laserowe (format A4)',
@@ -3618,25 +3631,153 @@ const createWynajemPricingSections = (): PricingSection[] => {
         id: 'drukarki-mono',
         title: 'Drukarki A4 (mono)',
         items: [],
-        price: '30 / 50 / 100',
+        icon: '/images/A4_Drukarki_mono.webp',
+        priceTiers: [
+          {
+            label: '500 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '30 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '500 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Duplex', value: '-' },
+              { label: 'Prędkość druku do: (str./min)', value: '20' },
+            ],
+          },
+          {
+            label: '1 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '50 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Duplex', value: '- / +' },
+              { label: 'Prędkość druku do: (str./min)', value: '40' },
+            ],
+          },
+          {
+            label: '2 500 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 500 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+        ],
       },
       {
         id: 'drukarki-kolor',
         title: 'Drukarki A4 (mono+kolor)',
         items: [],
-        price: '50 / 100 / 150',
+        icon: '/images/A4_Drukarki_kolor.webp',
+        priceTiers: [
+          {
+            label: '1 000 + 0',
+            rows: [
+              { label: 'Czynsz / mies.', value: '50 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 0' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '20' },
+            ],
+          },
+          {
+            label: '1 000 + 200',
+            rows: [
+              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 200' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '40' },
+            ],
+          },
+          {
+            label: '2 000 + 200',
+            rows: [
+              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 + 200' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+        ],
       },
       {
         id: 'mfu-mono',
         title: 'MFU A4 (mono)',
         items: [],
-        price: '80 / 100 / 150',
+        icon: '/images/A4_MFU_mono.webp',
+        priceTiers: [
+          {
+            label: '1 500 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '80 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '20' },
+            ],
+          },
+          {
+            label: '2 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '40' },
+            ],
+          },
+          {
+            label: '3 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+        ],
       },
       {
         id: 'mfu-kolor',
         title: 'MFU A4 (mono+kolor)',
         items: [],
-        price: '100 / 150 / 200',
+        icon: '/images/A4_MFU_kolor.webp',
+        priceTiers: [
+          {
+            label: '1 000 + 100',
+            rows: [
+              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 100' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '20' },
+            ],
+          },
+          {
+            label: '1 500 + 200',
+            rows: [
+              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 + 200' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '30' },
+            ],
+          },
+          {
+            label: '2 000 + 300',
+            rows: [
+              { label: 'Czynsz / mies.', value: '200 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 + 300' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '40' },
+            ],
+          },
+        ],
       },
     ],
   })
@@ -3650,25 +3791,153 @@ const createWynajemPricingSections = (): PricingSection[] => {
         id: 'a3-drukarki-mono',
         title: 'Drukarki A3 (mono)',
         items: [],
-        price: '100 / 150 / 200',
+        icon: '/images/Drukarki_A3_A4_mono.webp',
+        priceTiers: [
+          {
+            label: '2 500 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 500 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '50' },
+            ],
+          },
+          {
+            label: '3 750 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 750 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+          {
+            label: '5 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '200 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '90' },
+            ],
+          },
+        ],
       },
       {
         id: 'a3-drukarki-kolor',
         title: 'Drukarki A3 (mono+kolor)',
         items: [],
-        price: '200 / 250 / 300',
+        icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
+        priceTiers: [
+          {
+            label: '2 000 + 300',
+            rows: [
+              { label: 'Czynsz / mies.', value: '200 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 + 300' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '50' },
+            ],
+          },
+          {
+            label: '3 000 + 500',
+            rows: [
+              { label: 'Czynsz / mies.', value: '250 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 000 + 500' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+          {
+            label: '5 000 + 800',
+            rows: [
+              { label: 'Czynsz / mies.', value: '300 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 + 800' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł (mono) / 0,18 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '90' },
+            ],
+          },
+        ],
       },
       {
         id: 'a3-mfu-mono',
         title: 'MFU A3 (mono)',
         items: [],
-        price: '200 / 250 / 300',
+        icon: '/images/MFU_A3_A4_mono.webp',
+        priceTiers: [
+          {
+            label: '5 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '200 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '50' },
+            ],
+          },
+          {
+            label: '7 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '250 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '7 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+          {
+            label: '10 000 str./mies.',
+            rows: [
+              { label: 'Czynsz / mies.', value: '300 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '10 000 str./mies.' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '90' },
+            ],
+          },
+        ],
       },
       {
         id: 'a3-mfu-kolor',
         title: 'MFU A3 (mono+kolor)',
         items: [],
-        price: '300 / 400 / 500',
+        icon: '/images/MFU_A3_A4_mono_kolor.webp',
+        priceTiers: [
+          {
+            label: '5 000 + 500',
+            rows: [
+              { label: 'Czynsz / mies.', value: '300 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 + 500' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,16 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '50' },
+            ],
+          },
+          {
+            label: '7 500 + 750',
+            rows: [
+              { label: 'Czynsz / mies.', value: '400 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '7 500 + 750' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,16 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '60' },
+            ],
+          },
+          {
+            label: '10 000 + 1 000',
+            rows: [
+              { label: 'Czynsz / mies.', value: '500 zł' },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: '10 000 + 1 000' },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł (mono) / 0,15 zł (kolor)' },
+              { label: 'Duplex', value: '+' },
+              { label: 'Prędkość druku do: (str./min)', value: '90' },
+            ],
+          },
+        ],
       },
     ],
   })
