@@ -2569,11 +2569,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           </AccordionTrigger>
                           <AccordionContent
-                            data-open-header-split-content={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
+                            data-open-header-split-content={usesParchmentList ? 'true' : undefined}
                             data-section-id={isRepairAccordionLayout && isRepairSection ? 'naprawy-nested' : undefined}
                             data-has-table={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
-                            data-nested-parchment={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
-                            beforeContent={isRepairAccordionLayout && isRepairSection ? (
+                            data-nested-parchment={usesParchmentList ? 'true' : undefined}
+                            beforeContent={usesParchmentList ? (
                               <>
                                 {index !== (section.subcategories?.length ?? 0) - 1 && (
                                   <>
@@ -2600,7 +2600,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 />
                               </>
                             ) : undefined}
-                            afterContent={isRepairAccordionLayout && isRepairSection ? (
+                            afterContent={usesParchmentList ? (
                               <div
                                 data-parchment-list-tail-spacer="true"
                                 aria-hidden="true"
@@ -2609,18 +2609,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               />
                             ) : undefined}
                             className={cn(
-                            section.id === 'faq' ? 'pt-0.5' : isRepairAccordionLayout && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
+                            section.id === 'faq' ? 'pt-0.5' : usesParchmentList ? 'pt-[21px]' : 'pt-1.5',
                             (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
-                            isRepairAccordionLayout && isRepairSection && "relative z-10",
+                            usesParchmentList && "relative z-10",
                             isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.priceTiers && subcategory.priceTiers.length > 0 ? (
-                              <div data-wynajem-price-parchment="true" className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                              <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
                                 {/* Mobile: stos kart, jedna na plan taryfowy */}
                                 <div className="flex flex-col gap-3 p-2 md:hidden">
                                   {subcategory.priceTiers.map((tier, tierIdx) => (
-                                    <div key={tierIdx} className="rounded-lg border border-white/20 overflow-hidden">
-                                      <div className="font-cormorant text-lg font-semibold leading-[1.05] text-white text-center py-1.5 px-2 border-b border-white/20 bg-white/5">
+                                    <div key={tierIdx} className="rounded-lg border border-[#72502B]/30 overflow-hidden">
+                                      <div className="zakres-title-text text-center py-1.5 px-2 border-b border-[#72502B]/30 bg-white/5">
                                         {tier.label}
                                       </div>
                                       <Table className="table-fixed border-collapse w-full">
@@ -2631,10 +2631,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <TableBody>
                                           {tier.rows.map((row, rowIdx) => (
                                             <TableRow key={rowIdx} className="border-white/10 border-b last:border-b-0">
-                                              <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal leading-[1.3] text-left text-[13px]">
+                                              <TableCell className="parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left">
                                                 {row.label}
                                               </TableCell>
-                                              <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-right text-[15px] text-white font-table-main">
+                                              <TableCell className="price-value-text py-1 pl-2 pr-2 align-middle text-right">
                                                 {row.value}
                                               </TableCell>
                                             </TableRow>
@@ -2654,10 +2654,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       ))}
                                     </colgroup>
                                     <TableHeader>
-                                      <TableRow className="border-white/20 border-b border-white/30">
+                                      <TableRow className="border-[#72502B]/30 border-b border-[#72502B]/30">
                                         <TableHead className="py-1 pl-2 pr-2" />
                                         {subcategory.priceTiers.map((tier, tierIdx) => (
-                                          <TableHead key={tierIdx} className="font-cormorant text-xl font-semibold leading-[1.05] text-white text-center py-1.5 px-2">
+                                          <TableHead key={tierIdx} className="zakres-title-text text-center py-1.5 px-2">
                                             {tier.label}
                                           </TableHead>
                                         ))}
@@ -2667,13 +2667,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       {subcategory.priceTiers[0].rows.map((row, rowIdx) => (
                                         <TableRow
                                           key={rowIdx}
-                                          className={`border-white/20 border-b border-white/30 ${rowIdx === 0 ? 'border-t border-white/30' : ''}`}
+                                          className={`border-[#72502B]/30 border-b border-[#72502B]/30 ${rowIdx === 0 ? 'border-t border-[#72502B]/30' : ''}`}
                                         >
-                                          <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal leading-[1.3] text-left">
+                                          <TableCell className="parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left">
                                             {row.label}
                                           </TableCell>
                                           {subcategory.priceTiers!.map((tier, tierIdx) => (
-                                            <TableCell key={tierIdx} className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center text-[16px] text-white font-table-main">
+                                            <TableCell key={tierIdx} className="price-value-text py-1 pl-2 pr-2 align-middle text-center">
                                               {tier.rows[rowIdx]?.value}
                                             </TableCell>
                                           ))}
