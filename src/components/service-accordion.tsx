@@ -1605,6 +1605,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
               ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
             )
+            const isWynajemOpenSectionContent = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
             const triggerNode = (
               <>
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
@@ -1721,14 +1722,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </span>
                                 )}
                               </div>
-                              {/* "Czynsz wynajmu [zł/mies.]" или "Cena wydruku format A4 [mono/kolor]" над столбцами цен - мобильная версия, только когда аккордеон открыт */}
-                              {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
-                                <div className="flex-shrink-0">
-                                  <span className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight whitespace-nowrap">
-                                    {t.rentPriceHeader}
-                                  </span>
-                                </div>
-                              )}
                               {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
                                 <div className="flex-shrink-0">
                                   <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
@@ -2195,13 +2188,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   style={isRepairAccordionLayout && section.id === 'konserwacja' ? { paddingBottom: 16, marginTop: -8 } : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
-                    !(isRepairAccordionLayout && section.id === 'faq') && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
+                    !(isRepairAccordionLayout && section.id === 'faq') && !isWynajemOpenSectionContent && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
                     isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
                       ? "max-h-none overflow-y-visible"
                       : isRepairAccordionLayout && section.id === 'faq'
                         ? "overflow-visible"
-                        : "max-h-[70vh] overflow-y-auto",
+                        : isWynajemOpenSectionContent
+                          ? ""
+                          : "max-h-[70vh] overflow-y-auto",
                     isRepairAccordionLayout && section.id === 'naprawy'
+                      ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
+                      : "",
+                    isWynajemOpenSectionContent
                       ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
                       : "",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
@@ -2233,9 +2231,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           data-naprawy-first-row={isRepairSection && index === 0 ? 'true' : undefined}
                           data-naprawy-last-row={isRepairSection && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
+                          data-wynajem-plain-row={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
-                            isRepairAccordionLayout && isRepairSection && 'max-md:w-full max-md:min-w-0',
+                            isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && 'max-md:w-full max-md:min-w-0',
                             isRepairSection && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
                             isRepairSection && index === 0 && 'md:pt-0',
                             section.id === 'faq'
@@ -2306,18 +2305,26 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   )
                                 })()}
                                 {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
-                                  <div className="mr-2 h-[60px] w-[60px] md:h-[50px] md:w-[50px] flex-shrink-0 flex items-center justify-center">
+                                  <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative">
                                     <Image
                                       src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
                                       alt={subcategory.title}
                                       width={100}
                                       height={100}
-                                      className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                                      className={cn(
+                                        "object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed',
+                                        isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open'
+                                      )}
                                       unoptimized
                                     />
                                   </div>
                                 )}
-                                <div data-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn("flex-1 w-full min-w-0", isRepairAccordionLayout && isRepairSection && "zakres-header-text relative")}>
+                                <div data-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn(
+                                  "flex-1 w-full min-w-0",
+                                  isRepairAccordionLayout && isRepairSection && "zakres-header-text relative",
+                                  isRepairAccordionLayout && !isRepairSection && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && "relative z-[1]"
+                                )}>
                                   <div data-subcategory-title="true">
                                     {(() => {
                                       const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
@@ -2325,11 +2332,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
                                           ? 'div'
                                           : 'h4'
-                                      const titleClassName = `${isRepairAccordionLayout && (isRepairSection || section.id === 'faq') ? 'font-cormorant' : 'font-table-main'} ${isRepairAccordionLayout && (isRepairSection || section.id === 'faq') ? 'leading-tight' : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                      const titleClassName = `${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || service.slug === 'wynajem-drukarek') ? 'font-cormorant' : 'font-table-main'} ${isRepairAccordionLayout && (isRepairSection || section.id === 'faq') ? 'leading-tight' : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.05]' : service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
                                         : isRepairAccordionLayout && isRepairSection
                                           ? `zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817]${subcategory.title === 'Oprogramowanie' ? ' max-md:group-data-[state=open]/subcategory:translate-x-[60px]' : ''}`
-                                          : 'text-lg font-semibold text-[#ffffff]'
+                                          : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                            ? 'text-lg md:text-xl font-semibold text-[#3A2817]'
+                                            : isRepairAccordionLayout && service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                              ? 'text-lg font-semibold text-[#3A2817]'
+                                              : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
                                         <TitleTag
@@ -2348,7 +2359,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 return (
                                                   <>
                                                     {mainPart}{' '}
-                                                    <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
+                                                    <span className={service.slug === 'wynajem-drukarek' ? 'text-lg md:text-xl font-semibold font-cormorant text-[#3A2817] leading-[1.05]' : `text-lg font-semibold font-table-main ${isRepairAccordionLayout && service.slug === 'drukarka-zastepcza' ? 'text-[#3A2817]' : 'text-[#ffffff]'} leading-[1.2] md:leading-[1.3]`}>
                                                       ({bracketPart})
                                                     </span>
                                                   </>
@@ -2576,15 +2587,15 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             section.id === 'faq' ? 'pt-0.5' : isRepairAccordionLayout && isRepairSection ? 'pt-[21px]' : 'pt-1.5',
                             (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
                             isRepairAccordionLayout && isRepairSection && "relative z-10",
-                            isRepairAccordionLayout && isRepairSection && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
+                            isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.priceTiers && subcategory.priceTiers.length > 0 ? (
-                              <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                              <div data-wynajem-price-parchment="true" className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
                                 {/* Mobile: stos kart, jedna na plan taryfowy */}
                                 <div className="flex flex-col gap-3 p-2 md:hidden">
                                   {subcategory.priceTiers.map((tier, tierIdx) => (
                                     <div key={tierIdx} className="rounded-lg border border-white/20 overflow-hidden">
-                                      <div className="font-cormorant text-[17px] font-semibold text-white text-center py-1.5 px-2 border-b border-white/20 bg-white/5">
+                                      <div className="font-cormorant text-lg font-semibold leading-[1.05] text-white text-center py-1.5 px-2 border-b border-white/20 bg-white/5">
                                         {tier.label}
                                       </div>
                                       <Table className="table-fixed border-collapse w-full">
@@ -2621,7 +2632,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       <TableRow className="border-white/20 border-b border-white/30">
                                         <TableHead className="py-1 pl-2 pr-2" />
                                         {subcategory.priceTiers.map((tier, tierIdx) => (
-                                          <TableHead key={tierIdx} className="font-cormorant text-[17px] font-semibold text-white text-center py-1.5 px-2">
+                                          <TableHead key={tierIdx} className="font-cormorant text-xl font-semibold leading-[1.05] text-white text-center py-1.5 px-2">
                                             {tier.label}
                                           </TableHead>
                                         ))}
