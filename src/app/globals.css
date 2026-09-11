@@ -705,11 +705,11 @@
      existing dark-brown text-[#3A2817] class already on the element;
      only font-size is touched here. Scoped to [data-state="closed"] so
      the OPEN title keeps its original size untouched. */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-parchment-list-row="true"]) .zakres-title-text {
     font-size: 22px;
   }
   @media (min-width: 768px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-parchment-list-row="true"]) .zakres-title-text {
       font-size: 24px;
     }
   }
@@ -737,22 +737,22 @@
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div:hover::before {
       scale: 1.04;
     }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"]>div:not([data-slot="accordion-content"]) {
       position: relative;
       z-index: 1;
     }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover {
+    [data-parchment-list-row="true"]>div:not([data-slot="accordion-content"]):hover {
       transform: none !important;
     }
-    [data-naprawy-subcategory="true"] [data-naprawy-subcategory-image] > img,
-    [data-naprawy-subcategory="true"] [data-naprawy-subcategory-hover-text] {
+    [data-parchment-list-row="true"] [data-parchment-list-image] > img,
+    [data-parchment-list-row="true"] [data-parchment-list-hover-text] {
       transition: transform 180ms ease;
       transform-origin: center;
     }
-    [data-naprawy-subcategory="true"][data-state="closed"]>div:not([data-slot="accordion-content"]):hover [data-naprawy-subcategory-image] > img {
+    [data-parchment-list-row="true"][data-state="closed"]>div:not([data-slot="accordion-content"]):hover [data-parchment-list-image] > img {
       transform: translateY(-3px) scale(1.06);
     }
-    [data-naprawy-subcategory="true"]>div:not([data-slot="accordion-content"]):hover [data-naprawy-subcategory-hover-text] {
+    [data-parchment-list-row="true"]>div:not([data-slot="accordion-content"]):hover [data-parchment-list-hover-text] {
       transform: translateY(-2px) scale(1.01);
     }
   }
@@ -892,7 +892,7 @@
       opacity: 0 !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):not([data-naprawy-subcategory="true"]) .zakres-title-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):not([data-parchment-list-row="true"]) .zakres-title-text {
       font-size: 24px;
     }
 
@@ -905,7 +905,7 @@
     /* Naprawy subcategories, open state: reserve extra layout space so the
        title shrinks/wraps instead of overlapping the scaled-up icon (см.
        fix(naprawy) 395d4c5) — must beat the closed-state 14px rule above. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-icon-box {
       margin-right: 76px !important;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-media {
@@ -975,7 +975,7 @@
   }
 
   /* WARM PARCHMENT — naprawy nested subcategory rows sit directly on the
-     shared big backdrop (see data-naprawy-main-section rule below), so
+     shared big backdrop (see data-parchment-list-main rule below), so
      each row's own individual torn-parchment card (background/shadow/
      corner-fold/bleed-sizing from the generic rules above) is stripped
      here. Scoped via :not([data-slot="accordion-content"]) to the
@@ -986,7 +986,7 @@
      block also wins the equal-specificity ties there. Existing
      border-b/mb-1.5/pb-1.5 divider between rows (service-accordion.tsx)
      is left as the only separation — nothing new added. */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
     box-shadow: none;
     filter: none;
     min-height: 0;
@@ -998,8 +998,8 @@
     padding-bottom: 0;
   }
 
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"]):not([data-state="open"])>div:not([data-slot="accordion-content"])::before,
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::after {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"]):not([data-state="open"])>div:not([data-slot="accordion-content"])::before,
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::after {
     content: none;
     background-image: none;
   }
@@ -1007,7 +1007,7 @@
   /* Naprawy submenu rows: hide the built-in OPEN/CLOSED chevron (direct
      svg child of AccordionTrigger) — the "Zobacz cennik" arrow lives in a
      separate nested element and is untouched by this selector. */
-  [data-naprawy-subcategory="true"] [data-slot="accordion-trigger"] > svg {
+  [data-parchment-list-row="true"] [data-slot="accordion-trigger"] > svg {
     display: none;
   }
 
@@ -1021,7 +1021,7 @@
      header div and the content section are all plain width:100% inside
      it, so nothing bleeds/offsets on its own anymore. */
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
       background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -1031,12 +1031,12 @@
        (same specificity family) so !important vs !important resolves by
        specificity, not source order; a lower-specificity kill elsewhere
        in the file cannot win against it. */
-    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
+    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div::before {
       content: none !important;
       background-image: none !important;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div {
       width: 100%;
       margin-left: 0;
       margin-right: 0;
@@ -1045,7 +1045,7 @@
       min-height: 0;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"]) {
       width: calc(100% + 32px);
       margin-left: -16px;
       margin-right: -16px;
@@ -1056,7 +1056,7 @@
   /* WARM PARCHMENT — naprawy top-level: the AccordionItem is the containing
      block for the shared backdrop <img> (position:relative, always on —
      harmless at CLOSED since no img/bleed exists there). */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"] {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"] {
     position: relative;
   }
 
@@ -1070,14 +1070,14 @@
      from the header through all 7 submenu rows, not a split header+content
      card like Diagnoza. */
   @media (min-width: 768px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"]) {
       width: calc(100% + 48px);
       margin-left: -24px;
       margin-right: -24px;
       background: transparent;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div {
       box-shadow: none;
       filter: none;
       min-height: 0;
@@ -1086,8 +1086,8 @@
       margin-right: 0;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::before,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"])>div::after {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div::before,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"])>div::after {
       content: none;
       background-image: none;
     }
@@ -1103,7 +1103,7 @@
      per-segment. The row divider (border-b/border-t) moves from the
      subcategory AccordionItem down to its own row-wrapper div here, so it
      becomes a fixed segment cut instead of sliding under the open content. */
-  [data-naprawy-header-segment="true"] {
+  [data-parchment-list-header="true"] {
     position: relative;
   }
 
@@ -1111,11 +1111,11 @@
     transition: transform 180ms ease;
   }
 
-  [data-naprawy-header-segment="true"]:hover [data-naprawy-open-title="true"] {
+  [data-parchment-list-header="true"]:hover [data-naprawy-open-title="true"] {
     transform: translateY(-2px) scale(1.01);
   }
 
-  [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-inner="true"] {
+  [data-parchment-list-main="true"][data-state="open"] [data-naprawy-header-inner="true"] {
     visibility: hidden;
   }
 
@@ -1151,14 +1151,14 @@
       background: linear-gradient(to right, rgba(104, 64, 28, 0.72), transparent);
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-main-section="true"][data-state="open"]:not([data-faq-item="true"]) [data-naprawy-header-segment="true"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"]) [data-parchment-list-header="true"] {
       background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
       background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
@@ -1166,7 +1166,7 @@
       border-bottom: none;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-naprawy-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-parchment-list-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
       background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
@@ -1174,18 +1174,18 @@
       border-top: none;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
       background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
-    [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"] > div:not([data-slot="accordion-content"]) {
       position: relative;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -1199,22 +1199,22 @@
       transform-origin: center;
     }
 
-    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-row-divider="true"] {
+    [data-parchment-list-row="true"][data-state="closed"] [data-parchment-list-divider="true"] {
       display: none;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-row-divider="true"] {
+    [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-divider="true"] {
       display: none;
     }
 
-    [data-naprawy-subcategory="true"]:has(+ [data-naprawy-subcategory="true"][data-state="open"]) [data-naprawy-row-divider="true"] {
+    [data-parchment-list-row="true"]:has(+ [data-parchment-list-row="true"][data-state="open"]) [data-parchment-list-divider="true"] {
       display: none;
     }
 
     /* WARM PARCHMENT — naprawy CLOSED rows: subtle raised-paper relief as
        an inset fill covering the row's inner area, painted behind its own
        image/text (header-row gets its own stacking context below). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="closed"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
       content: '';
       position: absolute;
       inset: 3px 17px;
@@ -1232,16 +1232,16 @@
         0 5px 6px -4px rgba(58, 40, 23, 0.36);
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"][data-naprawy-last-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="closed"][data-parchment-list-last-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"])::before {
       box-shadow: none;
     }
 
-    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-header-row="true"] {
+    [data-parchment-list-row="true"][data-state="closed"] [data-parchment-list-header-row="true"] {
       position: relative;
       z-index: 1;
     }
 
-    [data-naprawy-bottom-segment="true"] {
+    [data-parchment-list-bottom="true"] {
       display: block;
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: -20px;
@@ -1252,25 +1252,25 @@
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
-    [data-naprawy-first-row="true"] {
+    [data-parchment-list-first-row="true"] {
       padding-top: 0 !important;
       border-top-width: 0 !important;
     }
 
-    [data-naprawy-subcategory="true"] {
+    [data-parchment-list-row="true"] {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
     }
 
     /* Naprawy OPEN row: no longer shows its own slice of the shared
        naprawy-open-parchment-desktop-v17.webp canvas — that slice is
-       instead moved whole (see [data-naprawy-open-row-segment] below) to
+       instead moved whole (see [data-parchment-list-open-segment] below) to
        sit under the table. Reuses the existing top-level warm-parchment
        CLOSED-card asset (same file/size/position already used by
        Diagnoza/Dojazd/Czyszczenie) for the row-wrapper itself. !important
        needed to outrank the higher-specificity base canvas-background rule
        above (~line 955). */
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       background-image: url('/images/naprawy-open-parchment-desktop-v17.webp') !important;
       background-size: var(--naprawy-seg-size) !important;
       background-repeat: no-repeat !important;
@@ -1279,7 +1279,7 @@
       isolation: auto;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
       content: '';
       position: absolute;
       top: -4px;
@@ -1294,7 +1294,7 @@
       background-position: center bottom;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
       filter:
         drop-shadow(0 6px 4px rgba(24, 12, 5, 0.82))
         drop-shadow(0 16px 11px rgba(34, 17, 7, 0.48))
@@ -1304,7 +1304,7 @@
         drop-shadow(0 -18px 14px rgba(47, 24, 10, 0.12));
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+    [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-row="true"] {
       position: relative;
       z-index: 4;
     }
@@ -1313,7 +1313,7 @@
        (--naprawy-row-h each, restored) decorative filler pinned to the
        bottom of the parchment container via `bottom`, not in-flow. Since
        the container's own bottom edge is pushed to sit exactly on
-       RAGGED-ANCHOR ([data-naprawy-tail-spacer] flow spacer below, inside
+       RAGGED-ANCHOR ([data-parchment-list-tail-spacer] flow spacer below, inside
        [data-nested-parchment]), "bottom:0" here already lands on
        RAGGED-ANCHOR with no separate formula needed. "lower" = nearest
        RAGGED-ANCHOR; "upper" sits directly above it. Absolutely positioned
@@ -1321,11 +1321,11 @@
        affect flow height / where the next CLOSED row sits. Placed before
        the table-parchment <img> in DOM so the img (also absolute) paints
        above them. */
-    [data-naprawy-open-row-segment] {
+    [data-parchment-list-open-segment] {
       display: none;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-row-segment] {
+    [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-open-segment] {
       display: block;
       position: absolute;
       left: 0;
@@ -1339,15 +1339,15 @@
       pointer-events: none;
     }
 
-    [data-naprawy-open-row-segment="lower"] {
+    [data-parchment-list-open-segment="lower"] {
       bottom: 0;
     }
 
-    [data-naprawy-open-row-segment="upper"] {
+    [data-parchment-list-open-segment="upper"] {
       bottom: var(--naprawy-row-h, 0px);
     }
 
-    [data-naprawy-section="true"] > div {
+    [data-parchment-list-content="true"] > div {
       padding-top: 0 !important;
       margin-top: 0 !important;
       border-top-width: 0 !important;
@@ -1358,23 +1358,23 @@
       width: 100%;
     }
 
-    [data-naprawy-section="true"] {
+    [data-parchment-list-content="true"] {
       margin-top: 0 !important;
       border-top-width: 0 !important;
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"] > div:not([data-slot="accordion-content"]) {
       width: 100%;
       margin-left: 0;
       margin-right: 0;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text] {
+    [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text] {
       flex: 1 1 auto !important;
       width: auto !important;
       min-width: 0;
@@ -1385,13 +1385,13 @@
       flex: none;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"] [data-subcategory-text="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"] [data-subcategory-text="true"] {
       width: auto;
       flex: 1 1 auto;
       min-width: 0;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"] [data-subcategory-text="true"].zakres-header-text {
+    .page-repair-accordion [data-parchment-list-row="true"] [data-subcategory-text="true"].zakres-header-text {
       width: auto !important;
       max-width: none !important;
       flex: 1 1 auto !important;
@@ -1404,20 +1404,20 @@
       min-width: 0;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+    [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-row="true"] {
       position: relative;
       display: flex;
       align-items: center;
       width: 100%;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
+    [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"] {
       padding-left: 17px !important;
       padding-right: 17px !important;
       margin-bottom: 0;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"]::before {
+    [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"]::before {
       content: none !important;
       background-image: none !important;
     }
@@ -1435,7 +1435,7 @@
        (and so the next CLOSED row's top) down onto the real RAGGED-ANCHOR
        point. Height is set in JS from the actual measured gap between the
        two real elements — no formula. */
-    [data-naprawy-tail-spacer="true"] {
+    [data-parchment-list-tail-spacer="true"] {
       display: block;
     }
 
@@ -1479,7 +1479,7 @@
   }
 
   @media (max-width: 767px) {
-    [data-naprawy-bottom-segment="true"] {
+    [data-parchment-list-bottom="true"] {
       display: block;
       height: 24px;
       overflow: visible;
@@ -1494,36 +1494,36 @@
        breakpoints). Old single stretched <img> + the flat 100% 100%
        ::before backdrop are disabled here so only the segmented slices
        show; CLOSED main section and desktop are untouched. */
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] img[src="/images/naprawy-open-parchment-desktop.webp"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] img[src="/images/naprawy-open-parchment-desktop.webp"] {
       display: none !important;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-segment="true"]::after {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-header="true"]::after {
       content: none !important;
       background-image: none !important;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-header-segment="true"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-header="true"] {
       background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::before,
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::after {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-row="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::before,
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-row="true"][data-state="closed"] > div:not([data-slot="accordion-content"])::after {
       content: none !important;
       background-image: none !important;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"] > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-row="true"] > div:not([data-slot="accordion-content"]) {
       background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-open-segment] {
       display: block;
       position: absolute;
       left: 0;
@@ -1537,15 +1537,15 @@
       pointer-events: none;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment="lower"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-open-segment="lower"] {
       bottom: 0;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-open-row-segment="upper"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-open-segment="upper"] {
       bottom: var(--naprawy-row-h, 0px);
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-bottom-segment="true"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-bottom="true"] {
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: 0;
       background-image: url('/images/naprawy-open-parchment-mobile-v172.webp');
@@ -1560,27 +1560,27 @@
        div. Any border/padding on the outer item before that inner div, or
        margin after it (excluded from offsetHeight entirely), desyncs the
        painted slice from its assumed position. Desktop already zeroes this
-       via [data-naprawy-first-row] (min-width:768px block) and md:mb-0 —
+       via [data-parchment-list-first-row] (min-width:768px block) and md:mb-0 —
        neither applies on mobile, so it's ported here 1:1. */
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-first-row="true"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-first-row="true"] {
       padding-top: 0 !important;
       border-top-width: 0 !important;
     }
 
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-subcategory="true"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-row="true"] {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
     }
 
-    /* AccordionContent wrapping the row list ([data-naprawy-section], plus
+    /* AccordionContent wrapping the row list ([data-parchment-list-content], plus
        its own pt-0/pb-4 inner div) sits between header-segment and row0 —
        desktop already zeroes its top spacing (min-width:768px block,
        ~1317-1332); no mobile counterpart existed, leaving this gap. */
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-section="true"] {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-content="true"] {
       margin-top: 0 !important;
       border-top-width: 0 !important;
     }
-    .page-repair-accordion [data-naprawy-main-section="true"][data-state="open"] [data-naprawy-section="true"] > div {
+    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-content="true"] > div {
       padding-top: 0 !important;
       margin-top: 0 !important;
       border-top-width: 0 !important;
@@ -1589,7 +1589,7 @@
     /* Mobile (all repair-accordion pages): open subcategory row (e.g. Oprogramowanie)
        matches the top-level closed plates' min-height (82px, see line 601)
        instead of the naprawy-subcategory min-height:0 reset (line 959). */
-    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="open"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
     }
 
@@ -1598,7 +1598,7 @@
        plates (base line 601 + mobile 611-621), overriding the naprawy
        reset at line 956-966 (not modified) via higher specificity. Trigger,
        text and icon containers are untouched — only this outer box. */
-    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: 100%;
       margin-left: 0;
@@ -1617,7 +1617,7 @@
        specificity; that rule and [data-nested-parchment="true"] (a
        different element — the AccordionContent wrapper, not this trigger
        div) are both left untouched. */
-    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-naprawy-subcategory="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"])::before {
+    .page-repair-accordion [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="closed"]:not([data-faq-item="true"]) > div:not([data-slot="accordion-content"])::before {
       content: '';
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
       background-size: 100% 82px;
@@ -1633,13 +1633,13 @@
        top-level closed plates' trigger position/z-index,
        service-accordion.tsx:1472). Padding/gap/align and icon/img sizes
        are untouched. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
       position: relative !important;
       z-index: 10 !important;
       gap: 0 !important;
       padding-right: 0 !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
       display: none !important;
     }
 
@@ -1647,16 +1647,16 @@
        Tailwind's mb-1 (service-accordion.tsx:2220), unlike the top-level
        closed titles which have no margin-bottom (service-accordion.tsx:1538-1540).
        Zeroed here to match the top-level value exactly. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-title-text {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="closed"] > div:not([data-slot="accordion-content"]) .zakres-title-text {
       margin-bottom: 5px !important;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="closed"] .zakres-icon-box {
       width: 115px !important;
       height: 58px !important;
       margin-right: 16px !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="closed"] .zakres-icon-box img {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="closed"] .zakres-icon-box img {
       width: 100% !important;
       height: 100% !important;
     }
@@ -1705,13 +1705,13 @@
        .zakres-header-text's fixed 430px width is intentionally NOT
        ported — mobile keeps its flexible w-full/flex-1 sizing. */
 
-    .page-repair-accordion [data-naprawy-subcategory="true"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"] .zakres-icon-box {
       width: clamp(64px, 22vw, 84px);
       height: clamp(33px, 11.2vw, 43px);
       margin-right: clamp(8px, 3vw, 12px);
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"] .zakres-icon-media {
+    .page-repair-accordion [data-parchment-list-row="true"] .zakres-icon-media {
       width: clamp(64px, 22vw, 84px);
       height: clamp(33px, 11.2vw, 43px);
     }
@@ -1723,8 +1723,8 @@
        readable on the light parchment — mobile had neither, so this label
        was effectively invisible against the cream background. Colors only,
        nothing width-based, so ported 1:1. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-price-header-text,
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-time-header-text {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-price-header-text,
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-time-header-text {
       color: #3A2817;
     }
 
@@ -1732,33 +1732,33 @@
       color: #3A2817;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] {
       overflow: visible !important;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       position: relative;
       z-index: 20;
       overflow: visible !important;
     }
 
     /* Header row (icon+title) painted above its own ::before backdrop
-       below — mirrors desktop's data-naprawy-header-row stacking
+       below — mirrors desktop's data-parchment-list-header-row stacking
        (min-width:768px block above, z-index:4 vs the backdrop's 3). */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-row="true"] {
       position: relative;
       z-index: 4;
       overflow: visible !important;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-col1="true"] {
       overflow: visible !important;
     }
 
     /* Baked torn-edge parchment backdrop for the open header row — mirrors
        desktop's ::before (min-width:768px block above), swapped to the
        mobile asset. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"])::before {
       content: '';
       position: absolute;
       top: 0;
@@ -1777,18 +1777,18 @@
     /* Stacking fix: open header (icon+title+price, painted inside
        AccordionTrigger) above the subcategory's own nested-parchment
        content backdrop below it, so the icon never renders under it. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] {
       overflow: visible !important;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"] {
       position: relative;
       z-index: 10;
       overflow: visible !important;
     }
 
     /* OPEN SUBCATEGORY CONTENT: fit parchment to viewport */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"] > img.contact-form-parchment-shadow {
       width: 100% !important;
       left: 0 !important;
       right: auto !important;
@@ -1798,9 +1798,9 @@
     /* Disabled on mobile Naprawy only: this flat gradient stacked with the
        open header's own contour drop-shadow (::before, ~1723 above),
        double-darkening the top of the price content. v17/geometry/spacer
-       untouched — this is a separate element (data-naprawy-open-header-shadow),
+       untouched — this is a separate element (data-parchment-list-header-shadow),
        not referenced by any of those rules. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-header-shadow="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-shadow="true"] {
       display: none;
     }
   }
@@ -2102,14 +2102,14 @@
        a bare marker class (no default styles) added only for this one
        card's header row in service-accordion.tsx. */
     [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row,
-    [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
+    [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
       display: grid;
       grid-template-columns: 67% 33%;
       align-items: center;
       position: relative;
     }
     [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child,
-    [data-naprawy-subcategory="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > div:last-child {
+    [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > div:last-child {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-left: 0;
@@ -2127,13 +2127,13 @@
       }
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       position: relative;
       z-index: auto;
       overflow: visible;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-open-header-shadow="true"] {
+    [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-shadow="true"] {
       position: absolute;
       left: 0;
       right: 0;
@@ -2145,11 +2145,11 @@
       transform: translateY(-6px);
     }
 
-    [data-naprawy-subcategory="true"][data-state="closed"] [data-naprawy-open-header-shadow="true"] {
+    [data-parchment-list-row="true"][data-state="closed"] [data-parchment-list-header-shadow="true"] {
       display: none;
     }
 
-    [data-naprawy-subcategory="true"][data-state="open"] {
+    [data-parchment-list-row="true"][data-state="open"] {
       position: relative;
       z-index: 5;
     }
@@ -2199,7 +2199,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"],
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: calc(100% + 32px);
       margin-left: -16px;
@@ -2408,7 +2408,7 @@
       transform: none;
     }
 
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > [data-nested-parchment="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > [data-nested-parchment="true"] {
       display: block;
       width: 100% !important;
       min-width: 0 !important;
@@ -2421,20 +2421,20 @@
        it's also a [data-slot="accordion-item"]'s direct div child. Desktop
        already kills this (~line 1365); mobile had no equivalent, so this old
        tiled backdrop was showing under the first row. */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-nested-parchment="true"]::before {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"]::before {
       content: none !important;
       background-image: none !important;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 1 */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
       display: block !important;
       position: relative !important;
       min-height: 70px !important;
       padding-top: 6px !important;
       padding-bottom: 6px !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
       align-items: center !important;
@@ -2442,30 +2442,30 @@
       position: relative !important;
       z-index: 10;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) [data-slot="accordion-trigger"] > svg {
       display: none !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-col1] {
       position: relative !important;
       left: 15px !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-icon-box {
       width: 115px !important;
       height: 58px !important;
       margin-right: 16px !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box img {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-icon-box img {
       width: 100% !important;
       height: 100% !important;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 2A: title inside green column */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text="true"] {
       width: 100% !important;
       min-width: 0 !important;
       overflow: hidden !important;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
       transform: none !important;
       width: 100% !important;
       max-width: 100% !important;
@@ -2481,16 +2481,16 @@
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns) */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-row="true"] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-row="true"] {
       display: grid !important;
       grid-template-columns: 161px minmax(0, 1fr) auto;
     }
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-naprawy-header-col1] {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-col1] {
       display: contents !important;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 4: all open icons */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-icon-box {
       transform: scale(1.4) !important;
       transform-origin: top left !important;
       position: relative !important;
@@ -2498,7 +2498,7 @@
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 5: title left padding */
-    .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text="true"] .zakres-title-text {
       padding-left: 8px !important;
       box-sizing: border-box !important;
     }
@@ -2595,7 +2595,7 @@
     }
 
     @media (max-width: 429px) {
-      .page-repair-accordion [data-naprawy-subcategory="true"][data-state="open"] [data-subcategory-text="true"] [data-zakres-title-oprogramowanie="true"] {
+      .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text="true"] [data-zakres-title-oprogramowanie="true"] {
         font-size: 12px !important;
       }
     }
@@ -2660,9 +2660,9 @@
        size, same in closed and open state — distinct from top-level
        section headers above. Title aligns left when closed, centers when
        open (matches the open-row layout); Cena/Czas always center. */
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-title-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
       font-size: 20px;
       font-weight: 600;
@@ -2671,13 +2671,13 @@
       text-shadow: none;
     }
 
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-title-text {
       text-align: left;
     }
 
-    .service-typography-standard [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
+    .service-typography-standard [data-parchment-list-row="true"][data-state="open"] .zakres-title-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       text-align: center;
     }
 
@@ -2799,9 +2799,9 @@
        section headers above. Title aligns left when closed, centers when
        open (matches the open-row layout, reinforced by the layout-scoped
        STEP2A rule below for wrapping); Cena/Czas always center. */
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-title-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
       font-size: 18px;
       font-weight: 600;
@@ -2810,13 +2810,13 @@
       text-shadow: none;
     }
 
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-title-text {
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-title-text {
       text-align: left;
     }
 
-    .service-typography-standard [data-naprawy-subcategory="true"][data-state="open"] .zakres-title-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-price-header-text,
-    .service-typography-standard [data-naprawy-subcategory="true"] .zakres-time-header-text {
+    .service-typography-standard [data-parchment-list-row="true"][data-state="open"] .zakres-title-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
+    .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       text-align: center;
     }
 

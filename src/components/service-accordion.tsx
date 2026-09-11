@@ -1116,7 +1116,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         // own box (same classes as in CLOSED state, unaffected by inner
         // content height) then reproduces the real CLOSED-to-next-top-level
         // gap automatically — no hardcoded px, no id/name lookup.
-        const naprawyMainSectionEl = accordionItemEl?.closest('[data-naprawy-main-section="true"]') as HTMLElement | null
+        const naprawyMainSectionEl = accordionItemEl?.closest('[data-parchment-list-main="true"]') as HTMLElement | null
         if (spacerEl && naprawyMainSectionEl) {
           spacerEl.style.height = '0px'
           void spacerEl.offsetHeight
@@ -2202,7 +2202,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                     </div>
                   ) : undefined}
-                  data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
+                  data-parchment-list-content={section.id === 'naprawy' ? 'true' : undefined}
                   // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
                   // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
                   // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
@@ -2251,9 +2251,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <AccordionItem
                           key={subcategory.id}
                           value={subcategory.id}
-                          data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
-                          data-naprawy-first-row={isRepairSection && index === 0 ? 'true' : undefined}
-                          data-naprawy-last-row={isRepairSection && index === section.subcategories!.length - 1 ? 'true' : undefined}
+                          data-parchment-list-row={isRepairSection ? 'true' : undefined}
+                          data-parchment-list-first-row={isRepairSection && index === 0 ? 'true' : undefined}
+                          data-parchment-list-last-row={isRepairSection && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           data-wynajem-plain-row={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
@@ -2292,10 +2292,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
                               <WynajemSubcategoryHeader service={service} section={section} subcategory={subcategory} viewDetails={viewDetails} isSectionOpen={isSectionOpen} isSubcategoryOpen={isSubcategoryOpen} wynajemHeaderRefs={wynajemHeaderRefs} drukarkaZastepczaHeaderRefs={drukarkaZastepczaHeaderRefs} />
                             ) : (
-                              <div data-naprawy-header-row={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : isRepairAccordionLayout && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
-                                <div data-naprawy-header-col1={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
+                              <div data-parchment-list-header-row={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : isRepairAccordionLayout && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
+                                <div data-parchment-list-header-col1={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {isRepairAccordionLayout && isRepairSection && subcategory.title === 'Oprogramowanie' && (
-                                  <div data-naprawy-subcategory-image="true" className={cn(
+                                  <div data-parchment-list-image="true" className={cn(
                                     "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
                                     "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
                                     "md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20",
@@ -2323,7 +2323,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   // just setting subcategory.icon in services-data.ts.
                                   const iconSrc = subcategory.icon || NAPRAWY_SUBCATEGORY_ICONS[subcategory.title] || NAPRAWY_FALLBACK_ICON
                                   return (
-                                    <div data-naprawy-subcategory-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                    <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                       <img src={iconSrc} alt="" aria-hidden="true" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     </div>
                                   )
@@ -2344,7 +2344,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     />
                                   </div>
                                 )}
-                                <div data-subcategory-text="true" data-naprawy-subcategory-hover-text="true" className={cn(
+                                <div data-subcategory-text="true" data-parchment-list-hover-text="true" className={cn(
                                   "flex-1 w-full min-w-0",
                                   isRepairAccordionLayout && isRepairSection && "zakres-header-text relative",
                                   isRepairAccordionLayout && !isRepairSection && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && "relative z-[1]"
@@ -2439,7 +2439,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </div>
                                 )}
                                 {isRepairAccordionLayout && isRepairSection && (
-                                  <div data-subcategory-price="true" data-naprawy-subcategory-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
+                                  <div data-subcategory-price="true" data-parchment-list-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
                                         <TooltipProvider delayDuration={100}>
@@ -2561,10 +2561,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               </div>
                             )}
                             {isRepairSection && index !== (section.subcategories?.length ?? 0) - 1 && (
-                              <span data-naprawy-row-divider="true" aria-hidden="true" />
+                              <span data-parchment-list-divider="true" aria-hidden="true" />
                             )}
                             {isRepairSection && (
-                              <span data-naprawy-open-header-shadow="true" aria-hidden="true" />
+                              <span data-parchment-list-header-shadow="true" aria-hidden="true" />
                             )}
                           </AccordionTrigger>
                           <AccordionContent
@@ -2576,8 +2576,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               <>
                                 {index !== (section.subcategories?.length ?? 0) - 1 && (
                                   <>
-                                    <span data-naprawy-open-row-segment="upper" aria-hidden="true" />
-                                    <span data-naprawy-open-row-segment="lower" aria-hidden="true" />
+                                    <span data-parchment-list-open-segment="upper" aria-hidden="true" />
+                                    <span data-parchment-list-open-segment="lower" aria-hidden="true" />
                                   </>
                                 )}
                                 <img
@@ -2601,7 +2601,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             ) : undefined}
                             afterContent={isRepairAccordionLayout && isRepairSection ? (
                               <div
-                                data-naprawy-tail-spacer="true"
+                                data-parchment-list-tail-spacer="true"
                                 aria-hidden="true"
                                 ref={el => { naprawyTailSpacerRefs.current[subcategory.id] = el }}
                                 style={{ height: 0 }}
@@ -2854,12 +2854,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               value={getSubcategoryValue(section.id)}
                               onValueChange={value => handleSubcategoryChange(section.id, value)}
                               className="w-full max-w-full min-w-0"
-                              data-naprawy-accordion="true"
+                              data-parchment-list-accordion="true"
                             >
                               {subcategoryItems}
                             </Accordion>
                             <div
-                              data-naprawy-bottom-segment="true"
+                              data-parchment-list-bottom="true"
                               style={{
                                 '--naprawy-tail-h': isLastSubcategoryOpen ? '0px' : parchmentListMetrics ? `${parchmentListMetrics.bottomTailHeight}px` : '0px',
                                 '--naprawy-seg-y': `-${bottomTailY}px`,
@@ -3042,7 +3042,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               <AccordionItem
                 key={section.id}
                 value={section.id}
-                data-naprawy-main-section={section.id === 'naprawy' ? 'true' : undefined}
+                data-parchment-list-main={section.id === 'naprawy' ? 'true' : undefined}
                 className={cn(
                   "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
                 )}
@@ -3075,7 +3075,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       data-has-table={hasOpenHeaderTable ? 'true' : undefined}
                       data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
                       data-faq-role={section.id === 'faq' ? 'true' : undefined}
-                      data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
+                      data-parchment-list-header={section.id === 'naprawy' ? 'true' : undefined}
                       ref={node => {
                         if (usesSharedParchmentList(service.slug, section.id)) {
                           parchmentListHeaderRefs.current[section.id] = node
@@ -3199,7 +3199,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   <div className={headerWrapperClassName}>
                     {section.id === 'naprawy' ? (
                       <div
-                        data-naprawy-header-segment="true"
+                        data-parchment-list-header="true"
                         ref={node => {
                           if (usesSharedParchmentList(service.slug, section.id)) {
                             parchmentListHeaderRefs.current[section.id] = node
