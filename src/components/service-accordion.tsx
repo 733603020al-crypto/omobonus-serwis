@@ -867,8 +867,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const [isMobile, setIsMobile] = useState(false)
   const [openSmallTooltips, setOpenSmallTooltips] = useState<Set<string>>(new Set())
   const swipeStartY = useRef<number | null>(null)
-  const [openWynajemSubcategories, setOpenWynajemSubcategories] = useState<string[]>([])
-  const [openDrukarkaZastepczaSubcategories, setOpenDrukarkaZastepczaSubcategories] = useState<string[]>([])
+  const [openWynajemSubcategory, setOpenWynajemSubcategory] = useState<string | null>(null)
+  const [openDrukarkaZastepczaSubcategory, setOpenDrukarkaZastepczaSubcategory] = useState<string | null>(null)
   const sectionRefs = useRef<ScrollRefs>({})
   const subcategoryRefs = useRef<ScrollRefs>({})
   // Desktop Naprawy: programmatic slice of the shared parchment backdrop into
@@ -991,10 +991,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     setOpenSection(prev => (prev === value ? null : value))
     setOpenSubcategory(null)
     if (!value || (service.slug === 'wynajem-drukarek' && value !== 'akordeon-1' && value !== 'akordeon-2')) {
-      setOpenWynajemSubcategories([])
+      setOpenWynajemSubcategory(null)
     }
     if (!value || (service.slug === 'drukarka-zastepcza' && value !== 'akordeon-1' && value !== 'akordeon-2')) {
-      setOpenDrukarkaZastepczaSubcategories([])
+      setOpenDrukarkaZastepczaSubcategory(null)
     }
   }
 
@@ -1013,9 +1013,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
       openSection === 'naprawy'
         ? openSubcategory !== null
         : service.slug === 'wynajem-drukarek'
-          ? openWynajemSubcategories.length > 0
+          ? openWynajemSubcategory !== null
           : service.slug === 'drukarka-zastepcza'
-            ? openDrukarkaZastepczaSubcategories.length > 0
+            ? openDrukarkaZastepczaSubcategory !== null
             : false
     if (
       !openSection ||
@@ -1052,7 +1052,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     measure()
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
-  }, [openSection, openSubcategory, service.pricingSections, openWynajemSubcategories, openDrukarkaZastepczaSubcategories])
+  }, [openSection, openSubcategory, service.pricingSections, openWynajemSubcategory, openDrukarkaZastepczaSubcategory])
 
   // Desktop Naprawy: OPEN parchment (contact-form-parchment.webp) height is
   // derived, not guessed — the image is scaled so its own CURL-TOP pixel
@@ -1373,20 +1373,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
   const isSubcategoryOpen = (sectionId: string, subcategoryId: string) => {
     if (service.slug === 'wynajem-drukarek' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
-      return openWynajemSubcategories.includes(subcategoryId)
+      return openWynajemSubcategory === subcategoryId
     }
     if (service.slug === 'drukarka-zastepcza' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
-      return openDrukarkaZastepczaSubcategories.includes(subcategoryId)
+      return openDrukarkaZastepczaSubcategory === subcategoryId
     }
     return false
   }
 
-  const handleWynajemSubcategoryChange = (values: string[]) => {
-    setOpenWynajemSubcategories(values)
+  const handleWynajemSubcategoryChange = (value: string | null) => {
+    setOpenWynajemSubcategory(value)
   }
 
-  const handleDrukarkaZastepczaSubcategoryChange = (values: string[]) => {
-    setOpenDrukarkaZastepczaSubcategories(values)
+  const handleDrukarkaZastepczaSubcategoryChange = (value: string | null) => {
+    setOpenDrukarkaZastepczaSubcategory(value)
   }
 
   useEffect(() => {
@@ -2901,37 +2901,32 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         ? parchmentListMetrics.totalHeight - bottomTailHeight
                         : 0
 
-                      const openRentalSubcategories = isWynajemSection
-                        ? openWynajemSubcategories
+                      const openRentalSubcategory = isWynajemSection
+                        ? openWynajemSubcategory
                         : isDrukarkaZastepczaSection
-                          ? openDrukarkaZastepczaSubcategories
-                          : []
+                          ? openDrukarkaZastepczaSubcategory
+                          : null
 
                       const lastSubcategoryId =
                         section.subcategories![section.subcategories!.length - 1]?.id
 
                       const isLastSubcategoryOpen =
                         !!lastSubcategoryId &&
-                        openRentalSubcategories.includes(lastSubcategoryId)
+                        openRentalSubcategory === lastSubcategoryId
 
                       return (
                         <>
                           <Accordion
-                            type="multiple"
+                            type="single"
+                            collapsible
                             className="w-full max-w-full min-w-0"
                             data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
-                            value={
-                              isWynajemSection
-                                ? openWynajemSubcategories
-                                : isDrukarkaZastepczaSection
-                                  ? openDrukarkaZastepczaSubcategories
-                                  : undefined
-                            }
+                            value={openRentalSubcategory ?? undefined}
                             onValueChange={
                               isWynajemSection
-                                ? handleWynajemSubcategoryChange
+                                ? value => handleWynajemSubcategoryChange(value || null)
                                 : isDrukarkaZastepczaSection
-                                  ? handleDrukarkaZastepczaSubcategoryChange
+                                  ? value => handleDrukarkaZastepczaSubcategoryChange(value || null)
                                   : undefined
                             }
                           >
