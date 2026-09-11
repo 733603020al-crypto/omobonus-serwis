@@ -1011,7 +1011,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     if (!parchmentSection?.subcategories) return
 
     const measure = () => {
-      const containerEl = sectionRefs.current['naprawy']
+      const containerEl = sectionRefs.current[openSection]
       const headerEl = parchmentListHeaderRef.current
       if (!containerEl || !headerEl) return
       const containerWidth = containerEl.offsetWidth
