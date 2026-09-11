@@ -2259,14 +2259,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           data-wynajem-plain-row={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
-                            isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && 'max-md:w-full max-md:min-w-0',
+                            isRepairAccordionLayout && usesParchmentList && 'max-md:w-full max-md:min-w-0',
                             usesParchmentList && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
                             usesParchmentList && index === 0 && 'md:pt-0',
                             section.id === 'faq'
                               ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
                               : usesParchmentList
                                 ? ''
-                                : `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`,
+                                : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
                           )}
                           ref={node => {
                             subcategoryRefs.current[subcategory.id] = node
