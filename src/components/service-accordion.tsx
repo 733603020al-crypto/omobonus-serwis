@@ -1630,6 +1630,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
             )
             const isWynajemOpenSectionContent = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+            const usesParchmentList = usesSharedParchmentList(service.slug, section.id)
             const triggerNode = (
               <>
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
@@ -2202,7 +2203,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       </div>
                     </div>
                   ) : undefined}
-                  data-parchment-list-content={section.id === 'naprawy' ? 'true' : undefined}
+                  data-parchment-list-content={usesParchmentList ? 'true' : undefined}
                   // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
                   // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
                   // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
@@ -2251,26 +2252,26 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         <AccordionItem
                           key={subcategory.id}
                           value={subcategory.id}
-                          data-parchment-list-row={isRepairSection ? 'true' : undefined}
-                          data-parchment-list-first-row={isRepairSection && index === 0 ? 'true' : undefined}
-                          data-parchment-list-last-row={isRepairSection && index === section.subcategories!.length - 1 ? 'true' : undefined}
+                          data-parchment-list-row={usesParchmentList ? 'true' : undefined}
+                          data-parchment-list-first-row={usesParchmentList && index === 0 ? 'true' : undefined}
+                          data-parchment-list-last-row={usesParchmentList && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           data-wynajem-plain-row={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
                             isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && 'max-md:w-full max-md:min-w-0',
-                            isRepairSection && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
-                            isRepairSection && index === 0 && 'md:pt-0',
+                            usesParchmentList && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
+                            usesParchmentList && index === 0 && 'md:pt-0',
                             section.id === 'faq'
                               ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
-                              : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
-                                : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
+                              : usesParchmentList
+                                ? ''
+                                : `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`,
                           )}
                           ref={node => {
                             subcategoryRefs.current[subcategory.id] = node
                           }}
-                          style={usesSharedParchmentList(service.slug, section.id) && parchmentListCumY.length ? ({
+                          style={usesParchmentList && parchmentListCumY.length ? ({
                             '--naprawy-seg-y': `-${parchmentListCumY[index]}px`,
                             '--naprawy-row-h': `${parchmentListMetrics?.rowHeights[index] ?? 0}px`,
                           } as React.CSSProperties) : undefined}
@@ -2560,10 +2561,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 )}
                               </div>
                             )}
-                            {isRepairSection && index !== (section.subcategories?.length ?? 0) - 1 && (
+                            {usesParchmentList && index !== (section.subcategories?.length ?? 0) - 1 && (
                               <span data-parchment-list-divider="true" aria-hidden="true" />
                             )}
-                            {isRepairSection && (
+                            {usesParchmentList && (
                               <span data-parchment-list-header-shadow="true" aria-hidden="true" />
                             )}
                           </AccordionTrigger>
@@ -2897,7 +2898,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       return (
                         <Accordion
                           type="multiple"
-                          className="w-full"
+                          className="w-full max-w-full min-w-0"
+                          data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
                           value={
                             isWynajemSection ? openWynajemSubcategories :
                               isDrukarkaZastepczaSection ? openDrukarkaZastepczaSubcategories :
@@ -3042,7 +3044,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               <AccordionItem
                 key={section.id}
                 value={section.id}
-                data-parchment-list-main={section.id === 'naprawy' ? 'true' : undefined}
+                data-parchment-list-main={usesParchmentList ? 'true' : undefined}
                 className={cn(
                   "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
                 )}
@@ -3050,7 +3052,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   sectionRefs.current[section.id] = node
                   if (section.id === 'faq') faqItemRef.current = node
                 }}
-                style={section.id === 'naprawy' && parchmentListMetrics ? ({
+                style={usesParchmentList && parchmentListMetrics ? ({
                   '--naprawy-seg-size': `${parchmentListMetrics.containerWidth}px ${parchmentListMetrics.totalHeight}px`,
                 } as React.CSSProperties) : undefined}
               >
@@ -3075,13 +3077,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       data-has-table={hasOpenHeaderTable ? 'true' : undefined}
                       data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
                       data-faq-role={section.id === 'faq' ? 'true' : undefined}
-                      data-parchment-list-header={section.id === 'naprawy' ? 'true' : undefined}
+                      data-parchment-list-header={usesParchmentList ? 'true' : undefined}
                       ref={node => {
                         if (usesSharedParchmentList(service.slug, section.id)) {
                           parchmentListHeaderRefs.current[section.id] = node
                         }
                       }}
-                      style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
+                      style={usesParchmentList ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
                     >
                       {triggerNode}
                       {isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && (
@@ -3197,7 +3199,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   </>
                 ) : (
                   <div className={headerWrapperClassName}>
-                    {section.id === 'naprawy' ? (
+                    {usesParchmentList ? (
                       <div
                         data-parchment-list-header="true"
                         ref={node => {
