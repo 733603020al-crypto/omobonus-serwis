@@ -2290,11 +2290,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     : 'py-1.5 px-1.5 data-[state=closed]:md:py-[3px] data-[state=open]:md:py-2 md:px-3',
                             )}
                           >
-                            {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
+                            {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price && !usesParchmentList ? (
                               <WynajemSubcategoryHeader service={service} section={section} subcategory={subcategory} viewDetails={viewDetails} isSectionOpen={isSectionOpen} isSubcategoryOpen={isSubcategoryOpen} wynajemHeaderRefs={wynajemHeaderRefs} drukarkaZastepczaHeaderRefs={drukarkaZastepczaHeaderRefs} />
                             ) : (
-                              <div data-parchment-list-header-row={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : isRepairAccordionLayout && isRepairSection ? 'diagnoza-open-header-row' : 'gap-3'}`}>
-                                <div data-parchment-list-header-col1={isRepairAccordionLayout && isRepairSection ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
+                              <div data-parchment-list-header-row={usesParchmentList ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : usesParchmentList ? 'diagnoza-open-header-row' : 'gap-3'}`}>
+                                <div data-parchment-list-header-col1={usesParchmentList ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
                                 {isRepairAccordionLayout && isRepairSection && subcategory.title === 'Oprogramowanie' && (
                                   <div data-parchment-list-image="true" className={cn(
                                     "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
@@ -2329,8 +2329,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     </div>
                                   )
                                 })()}
-                                {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
-                                  <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative">
+                                {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
+                                  <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative">
                                     <Image
                                       src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
                                       alt={subcategory.title}
@@ -2347,7 +2347,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 )}
                                 <div data-subcategory-text="true" data-parchment-list-hover-text="true" className={cn(
                                   "flex-1 w-full min-w-0",
-                                  isRepairAccordionLayout && isRepairSection && "zakres-header-text relative",
+                                  usesParchmentList && "zakres-header-text relative",
                                   isRepairAccordionLayout && !isRepairSection && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && "relative z-[1]"
                                 )}>
                                   <div data-subcategory-title="true">
@@ -2359,7 +2359,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           : 'h4'
                                       const titleClassName = `${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || service.slug === 'wynajem-drukarek') ? 'font-cormorant' : 'font-table-main'} ${isRepairAccordionLayout && (isRepairSection || section.id === 'faq') ? 'leading-tight' : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.05]' : service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
-                                        : isRepairAccordionLayout && isRepairSection
+                                        : usesParchmentList
                                           ? `zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817]${subcategory.title === 'Oprogramowanie' ? ' max-md:group-data-[state=open]/subcategory:translate-x-[60px]' : ''}`
                                           : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                             ? 'text-lg md:text-xl font-semibold text-[#3A2817]'
@@ -2413,7 +2413,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         data-subcategory-link
                                         className={cn(
                                           "flex items-center gap-2 text-xs font-serif group-hover/naprawy-row:translate-x-1 transition-transform whitespace-nowrap",
-                                          isRepairAccordionLayout && isRepairSection ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
+                                          usesParchmentList ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
                                         )}
                                       >
                                         <span>
