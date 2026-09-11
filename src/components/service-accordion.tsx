@@ -483,9 +483,14 @@ const isDruk3DCustomSection = (slug: string, sectionId: string) =>
   slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
 
 // Which (slug, section) pairs render the shared sliced parchment backdrop
-// (header/row/bottom-tail segment metrics below). Only 'naprawy' for now.
+// (header/row/bottom-tail segment metrics below).
 const usesSharedParchmentList = (serviceSlug: string, sectionId: string) =>
-  sectionId === 'naprawy'
+  sectionId === 'naprawy' ||
+  (
+    (serviceSlug === 'wynajem-drukarek' ||
+      serviceSlug === 'drukarka-zastepcza') &&
+    (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')
+  )
 
 // Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
 // (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
@@ -871,7 +876,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // divider lines become segment cuts instead of the image being stretched to
   // the open block's height. Measured only while all rows are collapsed (the
   // "closed sheet" baseline) — reused as-is while a row is open.
-  const parchmentListHeaderRef = useRef<HTMLDivElement | null>(null)
+  const parchmentListHeaderRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const naprawyNestedTableRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const naprawyTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const diagnozaContentBottomRef = useRef<HTMLDivElement | null>(null)
@@ -1004,7 +1009,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     openSection ? openSection === sectionId : false
 
   useLayoutEffect(() => {
-    if (!openSection || !usesSharedParchmentList(service.slug, openSection) || openSubcategory !== null) return
+    const hasOpenListItem =
+      openSection === 'naprawy'
+        ? openSubcategory !== null
+        : service.slug === 'wynajem-drukarek'
+          ? openWynajemSubcategories.length > 0
+          : service.slug === 'drukarka-zastepcza'
+            ? openDrukarkaZastepczaSubcategories.length > 0
+            : false
+    if (
+      !openSection ||
+      !usesSharedParchmentList(service.slug, openSection) ||
+      hasOpenListItem
+    ) return
     const parchmentSection = service.pricingSections.find(
       section => section.id === openSection
     )
@@ -1012,7 +1029,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
     const measure = () => {
       const containerEl = sectionRefs.current[openSection]
-      const headerEl = parchmentListHeaderRef.current
+      const headerEl = parchmentListHeaderRefs.current[openSection]
       if (!containerEl || !headerEl) return
       const containerWidth = containerEl.offsetWidth
       const headerHeight = headerEl.offsetHeight
@@ -1035,7 +1052,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     measure()
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
-  }, [openSection, openSubcategory, service.pricingSections])
+  }, [openSection, openSubcategory, service.pricingSections, openWynajemSubcategories, openDrukarkaZastepczaSubcategories])
 
   // Desktop Naprawy: OPEN parchment (contact-form-parchment.webp) height is
   // derived, not guessed — the image is scaled so its own CURL-TOP pixel
@@ -3059,7 +3076,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
                       data-faq-role={section.id === 'faq' ? 'true' : undefined}
                       data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
-                      ref={section.id === 'naprawy' ? parchmentListHeaderRef : undefined}
+                      ref={node => {
+                        if (usesSharedParchmentList(service.slug, section.id)) {
+                          parchmentListHeaderRefs.current[section.id] = node
+                        }
+                      }}
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
                     >
                       {triggerNode}
@@ -3179,7 +3200,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     {section.id === 'naprawy' ? (
                       <div
                         data-naprawy-header-segment="true"
-                        ref={parchmentListHeaderRef}
+                        ref={node => {
+                          if (usesSharedParchmentList(service.slug, section.id)) {
+                            parchmentListHeaderRefs.current[section.id] = node
+                          }
+                        }}
                         style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
                       >
                         {triggerNode}
