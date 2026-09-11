@@ -482,6 +482,11 @@ const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
 const isDruk3DCustomSection = (slug: string, sectionId: string) =>
   slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
 
+// Which (slug, section) pairs render the shared sliced parchment backdrop
+// (header/row/bottom-tail segment metrics below). Only 'naprawy' for now.
+const usesSharedParchmentList = (serviceSlug: string, sectionId: string) =>
+  sectionId === 'naprawy'
+
 // Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
 // (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
 const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17'])
@@ -866,7 +871,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // divider lines become segment cuts instead of the image being stretched to
   // the open block's height. Measured only while all rows are collapsed (the
   // "closed sheet" baseline) — reused as-is while a row is open.
-  const naprawyHeaderSegmentRef = useRef<HTMLDivElement | null>(null)
+  const parchmentListHeaderRef = useRef<HTMLDivElement | null>(null)
   const naprawyNestedTableRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const naprawyTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const diagnozaContentBottomRef = useRef<HTMLDivElement | null>(null)
@@ -882,7 +887,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const faqTailSpacerRef = useRef<HTMLDivElement | null>(null)
   const faqInitialGapRef = useRef<number>(0)
   const faqContentResizeRef = useRef<HTMLDivElement>(null)
-  const [naprawySegmentMetrics, setNaprawySegmentMetrics] = useState<{
+  const [parchmentListMetrics, setParchmentListMetrics] = useState<{
     containerWidth: number
     headerHeight: number
     rowHeights: number[]
@@ -999,24 +1004,26 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     openSection ? openSection === sectionId : false
 
   useLayoutEffect(() => {
-    if (openSection !== 'naprawy' || openSubcategory !== null) return
-    const naprawySection = service.pricingSections.find(s => s.id === 'naprawy')
-    if (!naprawySection?.subcategories) return
+    if (!openSection || !usesSharedParchmentList(service.slug, openSection) || openSubcategory !== null) return
+    const parchmentSection = service.pricingSections.find(
+      section => section.id === openSection
+    )
+    if (!parchmentSection?.subcategories) return
 
     const measure = () => {
       const containerEl = sectionRefs.current['naprawy']
-      const headerEl = naprawyHeaderSegmentRef.current
+      const headerEl = parchmentListHeaderRef.current
       if (!containerEl || !headerEl) return
       const containerWidth = containerEl.offsetWidth
       const headerHeight = headerEl.offsetHeight
-      const rowHeights = naprawySection.subcategories!.map(
+      const rowHeights = parchmentSection.subcategories!.map(
         sc => subcategoryRefs.current[sc.id]?.offsetHeight ?? 0
       )
       const measuredHeight = headerHeight + rowHeights.reduce((a, b) => a + b, 0)
       const aspectRatio = 858 / 1465
       const aspectHeight = aspectRatio * containerWidth
       const bottomTailHeight = Math.max(aspectHeight - measuredHeight, 24)
-      setNaprawySegmentMetrics({
+      setParchmentListMetrics({
         containerWidth,
         headerHeight,
         rowHeights,
@@ -2214,10 +2221,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     (() => {
                       const isRepairSection = section.id === 'naprawy'
                       const isFaqSection = section.id === 'faq'
-                      let naprawyCumY: number[] = []
-                      if (isRepairSection && naprawySegmentMetrics) {
-                        let acc = naprawySegmentMetrics.headerHeight
-                        naprawyCumY = naprawySegmentMetrics.rowHeights.map(h => {
+                      let parchmentListCumY: number[] = []
+                      if (usesSharedParchmentList(service.slug, section.id) && parchmentListMetrics) {
+                        let acc = parchmentListMetrics.headerHeight
+                        parchmentListCumY = parchmentListMetrics.rowHeights.map(h => {
                           const y = acc
                           acc += h
                           return y
@@ -2246,9 +2253,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           ref={node => {
                             subcategoryRefs.current[subcategory.id] = node
                           }}
-                          style={isRepairSection && naprawyCumY.length ? ({
-                            '--naprawy-seg-y': `-${naprawyCumY[index]}px`,
-                            '--naprawy-row-h': `${naprawySegmentMetrics?.rowHeights[index] ?? 0}px`,
+                          style={usesSharedParchmentList(service.slug, section.id) && parchmentListCumY.length ? ({
+                            '--naprawy-seg-y': `-${parchmentListCumY[index]}px`,
+                            '--naprawy-row-h': `${parchmentListMetrics?.rowHeights[index] ?? 0}px`,
                           } as React.CSSProperties) : undefined}
                         >
                           <AccordionTrigger
@@ -2817,8 +2824,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       ))
 
                       if (isRepairSection) {
-                        const bottomTailY = naprawySegmentMetrics
-                          ? naprawySegmentMetrics.headerHeight + naprawySegmentMetrics.rowHeights.reduce((a, b) => a + b, 0)
+                        const bottomTailY = parchmentListMetrics
+                          ? parchmentListMetrics.headerHeight + parchmentListMetrics.rowHeights.reduce((a, b) => a + b, 0)
                           : 0
                         const isLastSubcategoryOpen = !!openSubcategory
                           && section.subcategories![section.subcategories!.length - 1]?.id === openSubcategory
@@ -2837,7 +2844,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             <div
                               data-naprawy-bottom-segment="true"
                               style={{
-                                '--naprawy-tail-h': isLastSubcategoryOpen ? '0px' : naprawySegmentMetrics ? `${naprawySegmentMetrics.bottomTailHeight}px` : '0px',
+                                '--naprawy-tail-h': isLastSubcategoryOpen ? '0px' : parchmentListMetrics ? `${parchmentListMetrics.bottomTailHeight}px` : '0px',
                                 '--naprawy-seg-y': `-${bottomTailY}px`,
                               } as React.CSSProperties}
                             />
@@ -3026,8 +3033,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   sectionRefs.current[section.id] = node
                   if (section.id === 'faq') faqItemRef.current = node
                 }}
-                style={section.id === 'naprawy' && naprawySegmentMetrics ? ({
-                  '--naprawy-seg-size': `${naprawySegmentMetrics.containerWidth}px ${naprawySegmentMetrics.totalHeight}px`,
+                style={section.id === 'naprawy' && parchmentListMetrics ? ({
+                  '--naprawy-seg-size': `${parchmentListMetrics.containerWidth}px ${parchmentListMetrics.totalHeight}px`,
                 } as React.CSSProperties) : undefined}
               >
                 {useSplitHeaderLayout ? (
@@ -3052,7 +3059,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
                       data-faq-role={section.id === 'faq' ? 'true' : undefined}
                       data-naprawy-header-segment={section.id === 'naprawy' ? 'true' : undefined}
-                      ref={section.id === 'naprawy' ? naprawyHeaderSegmentRef : undefined}
+                      ref={section.id === 'naprawy' ? parchmentListHeaderRef : undefined}
                       style={section.id === 'naprawy' ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
                     >
                       {triggerNode}
@@ -3172,7 +3179,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     {section.id === 'naprawy' ? (
                       <div
                         data-naprawy-header-segment="true"
-                        ref={naprawyHeaderSegmentRef}
+                        ref={parchmentListHeaderRef}
                         style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
                       >
                         {triggerNode}
