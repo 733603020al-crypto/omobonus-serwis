@@ -2895,9 +2895,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       const isWynajemSection = service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                       const isDrukarkaZastepczaSection = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
 
+                      const bottomTailHeight = parchmentListMetrics ? 24 : 0
+
                       const bottomTailY = parchmentListMetrics
-                        ? parchmentListMetrics.headerHeight +
-                          parchmentListMetrics.rowHeights.reduce((a, b) => a + b, 0)
+                        ? parchmentListMetrics.totalHeight - bottomTailHeight
                         : 0
 
                       const openRentalSubcategories = isWynajemSection
@@ -2943,9 +2944,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               style={{
                                 '--naprawy-tail-h': isLastSubcategoryOpen
                                   ? '0px'
-                                  : parchmentListMetrics
-                                    ? `${parchmentListMetrics.bottomTailHeight}px`
-                                    : '0px',
+                                  : `${bottomTailHeight}px`,
                                 '--naprawy-seg-y': `-${bottomTailY}px`,
                               } as React.CSSProperties}
                             />
