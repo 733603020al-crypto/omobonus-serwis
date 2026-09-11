@@ -1939,7 +1939,7 @@
        #efe3c8 fill — the shared backdrop <img> lives on the AccordionItem
        ancestor now (service-accordion.tsx), so this section stays fully
        transparent over it. */
-    [data-open-header-split-content="true"][data-section-id="naprawy"] {
+    [data-parchment-list-main="true"][data-state="open"] > [data-open-header-split-content="true"] {
       position: relative;
       z-index: 1;
       width: 100%;
@@ -1987,7 +1987,7 @@
     /* naprawy: kill the same md:border-x/md:border-t (service-accordion.tsx:1729)
        as two faint gold vertical lines over the shared 300/301 backdrop —
        margin/padding above are plate-role-only insets, not touched here. */
-    [data-open-header-split-content="true"][data-section-id="naprawy"] [data-slot="accordion-content"] > div {
+    [data-parchment-list-main="true"][data-state="open"] > [data-open-header-split-content="true"] [data-slot="accordion-content"] > div {
       border-left: 0;
       border-right: 0;
       border-top: 0;
