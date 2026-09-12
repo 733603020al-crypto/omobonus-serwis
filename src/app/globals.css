@@ -30,6 +30,23 @@
 }
 
 @layer base {
+  /* Wynajem-drukarek tariff tables: inner parchment panel behind the
+     priceTiers table, isolated from the Naprawy [data-nested-parchment]
+     system (curl-shaped image + per-row height sync) — same flat
+     texture+overlay recipe as the outer warm-parchment row background
+     (var(--bg-accordion-parchment), see ~line 520), just applied to this
+     one nested box. Own attribute name so it can never match any
+     naprawy-scoped selector. */
+  [data-wynajem-price-parchment="true"] {
+    position: relative;
+    background-image:
+      linear-gradient(to bottom,
+        rgba(50, 36, 18, 0.55) 0%,
+        rgba(45, 30, 15, 0.68) 100%),
+      var(--bg-accordion-parchment);
+    background-repeat: repeat;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
@@ -621,7 +638,7 @@
      Height grows the same way via min-height + matching +padding-y.
      Open state is untouched (own min-height/width/margin/padding,
      [data-state="closed"] required here). */
-  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+  [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"])>div {
     min-height: 82px;
     width: calc(100% + 48px);
     margin-left: -24px;
@@ -633,7 +650,7 @@
   }
 
   @media (max-width: 767px) {
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"])>div {
       width: calc(100% + 32px);
       margin-left: -16px;
       margin-right: -16px;
@@ -814,7 +831,7 @@
       background-position: center;
     }
 
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"])>div {
       min-height: 82px;
       width: calc(100% + 48px);
       margin-left: -24px;
@@ -2030,7 +2047,7 @@
 
     /* Kill the shared TableRow hover:bg-muted/50 (ui/table.tsx) — reads as
        a gray tint across the row on this light parchment table. */
-    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"],[data-nested-parchment="true"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -2542,7 +2559,7 @@
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
-    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"]) [data-slot="table-row"]:hover {
+    [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"],[data-nested-parchment="true"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
     }
 
@@ -2635,7 +2652,7 @@
 
     /* OPEN table, price column: same width/alignment/right padding across
        every row (2nd child of the mobile row div). */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [class*="border-white/20"] > div:nth-child(2) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [class*="border-white/20"]:not([data-slot]) > div:nth-child(2) {
       width: 90px;
       text-align: center;
       padding-right: 0;

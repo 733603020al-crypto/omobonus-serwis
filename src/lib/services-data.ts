@@ -3524,7 +3524,7 @@ const addThermalExtraServicesSubcategory = (sections: PricingSection[]) => {
         service:
           'Dostarczenie drukarki zastępczej na czas naprawy\nzapewnia ciągłość pracy magazynu / biura podczas dłuższej naprawy urządzenia klienta – cena nie obejmuje kosztu etykiet i taśmy barwiącej',
         price: 'od 25 / 35 / 45\nza dzień',
-        duration: 'wg dostępności modeli',
+        duration: 'wg dostępności',
       },
       {
         service:
@@ -3636,7 +3636,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '500 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '30 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '30 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '500 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
               { label: 'Duplex', value: '-' },
@@ -3646,7 +3646,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 000 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '50 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '50 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
               { label: 'Duplex', value: '- / +' },
@@ -3656,7 +3656,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '2 500 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '100 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 500 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
               { label: 'Duplex', value: '+' },
@@ -3674,9 +3674,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 000 + 0',
             rows: [
-              { label: 'Czynsz / mies.', value: '50 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '50 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 0' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,25 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
@@ -3684,9 +3685,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 000 + 200',
             rows: [
-              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '100 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 200' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,20 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
@@ -3694,9 +3696,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '2 000 + 200',
             rows: [
-              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '150 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 + 200' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,20 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
@@ -3712,7 +3715,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 500 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '80 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '80 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
               { label: 'Duplex', value: '+' },
@@ -3722,7 +3725,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '2 000 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '100 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
               { label: 'Duplex', value: '+' },
@@ -3732,7 +3735,7 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '3 000 str./mies.',
             rows: [
-              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '150 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 000 str./mies.' },
               { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
               { label: 'Duplex', value: '+' },
@@ -3750,9 +3753,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 000 + 100',
             rows: [
-              { label: 'Czynsz / mies.', value: '100 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '100 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 + 100' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,25 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
@@ -3760,9 +3764,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '1 500 + 200',
             rows: [
-              { label: 'Czynsz / mies.', value: '150 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '150 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 + 200' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,20 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '30' },
             ],
@@ -3770,9 +3775,10 @@ const createWynajemPricingSections = (): PricingSection[] => {
           {
             label: '2 000 + 300',
             rows: [
-              { label: 'Czynsz / mies.', value: '200 zł' },
+              { label: 'Czynsz wynajmu [zł/mies.]', value: '200 zł' },
               { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 + 300' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Cena wydruku A4 mono (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Cena wydruku A4 kolor (powyżej limitu)', value: '0,20 zł' },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
