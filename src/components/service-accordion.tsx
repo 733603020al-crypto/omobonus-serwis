@@ -2722,7 +2722,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     ? wynajemHeaderRefs.current[subcategoryKey]
                                     : drukarkaZastepczaHeaderRefs.current[subcategoryKey]
                                   if (headerRefs) {
-                                    return <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} serviceSlug={service.slug} locale={locale} />
+                                    return (
+                                      <div ref={el => { parchmentListContentRefs.current[subcategory.id] = el }}>
+                                        <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} serviceSlug={service.slug} locale={locale} />
+                                      </div>
+                                    )
                                   }
                                   return null
                                 })()
