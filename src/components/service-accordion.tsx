@@ -877,8 +877,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // the open block's height. Measured only while all rows are collapsed (the
   // "closed sheet" baseline) — reused as-is while a row is open.
   const parchmentListHeaderRefs = useRef<Record<string, HTMLDivElement | null>>({})
-  const naprawyNestedTableRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-  const naprawyTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const parchmentListContentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const parchmentListTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
   const diagnozaContentBottomRef = useRef<HTMLDivElement | null>(null)
   const diagnozaTailSpacerRef = useRef<HTMLDivElement | null>(null)
   const dojazdContentBottomRef = useRef<HTMLDivElement | null>(null)
@@ -1066,9 +1066,22 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   // fixed-height (--naprawy-row-h) and bottom-anchored inside the container
   // in CSS, so once the container's bottom sits on RAGGED-ANCHOR they do
   // too, automatically.
+  const openParchmentSubcategory =
+    openSection === 'naprawy'
+      ? openSubcategory
+      : service.slug === 'wynajem-drukarek'
+        ? openWynajemSubcategory
+        : service.slug === 'drukarka-zastepcza'
+          ? openDrukarkaZastepczaSubcategory
+          : null
+
   useLayoutEffect(() => {
-    if (!isRepairAccordionLayout || openSection !== 'naprawy' || !openSubcategory) return
-    const whiteEl = naprawyNestedTableRefs.current[openSubcategory]
+    if (
+      !openSection ||
+      !usesSharedParchmentList(service.slug, openSection) ||
+      !openParchmentSubcategory
+    ) return
+    const whiteEl = parchmentListContentRefs.current[openParchmentSubcategory]
     if (!whiteEl) return
     const parchmentEl = whiteEl.closest('[data-nested-parchment="true"]') as HTMLElement | null
     if (!parchmentEl) return
@@ -1104,7 +1117,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
       const spacerTargetY = window.innerWidth < 768 ? mobileRaggedY : raggedY
 
       const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]')
-      const spacerEl = naprawyTailSpacerRefs.current[openSubcategory]
+      const spacerEl = parchmentListTailSpacerRefs.current[openParchmentSubcategory]
       // Universal by DOM position, not id: last subcategory has no next row
       // in the nested Accordion.
       const isLastSubcategory = accordionItemEl != null && accordionItemEl.nextElementSibling == null
@@ -1116,11 +1129,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         // own box (same classes as in CLOSED state, unaffected by inner
         // content height) then reproduces the real CLOSED-to-next-top-level
         // gap automatically — no hardcoded px, no id/name lookup.
-        const naprawyMainSectionEl = accordionItemEl?.closest('[data-parchment-list-main="true"]') as HTMLElement | null
-        if (spacerEl && naprawyMainSectionEl) {
+        const parchmentListMainSectionEl = accordionItemEl?.closest('[data-parchment-list-main="true"]') as HTMLElement | null
+        if (spacerEl && parchmentListMainSectionEl) {
           spacerEl.style.height = '0px'
           void spacerEl.offsetHeight
-          const naprawyBottomY = naprawyMainSectionEl.getBoundingClientRect().bottom
+          const naprawyBottomY = parchmentListMainSectionEl.getBoundingClientRect().bottom
           const spacerH = Math.max(0, spacerTargetY - naprawyBottomY)
           spacerEl.style.height = `${spacerH}px`
         }
@@ -1141,7 +1154,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     applyGeometry()
     window.addEventListener('resize', applyGeometry)
     return () => window.removeEventListener('resize', applyGeometry)
-  }, [service.slug, openSection, openSubcategory])
+  }, [
+    service.slug,
+    openSection,
+    openSubcategory,
+    openWynajemSubcategory,
+    openDrukarkaZastepczaSubcategory,
+  ])
 
   // CURL/RAGGED mechanism, scoped to Diagnoza only. Same source fractions as
   // Naprawy above (properties of the shared contact-form-parchment.webp
@@ -2604,7 +2623,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               <div
                                 data-parchment-list-tail-spacer="true"
                                 aria-hidden="true"
-                                ref={el => { naprawyTailSpacerRefs.current[subcategory.id] = el }}
+                                ref={el => { parchmentListTailSpacerRefs.current[subcategory.id] = el }}
                                 style={{ height: 0 }}
                               />
                             ) : undefined}
@@ -2615,7 +2634,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
                           )}>
                             {subcategory.priceTiers && subcategory.priceTiers.length > 0 ? (
-                              <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                              <div
+                                ref={el => {
+                                  parchmentListContentRefs.current[subcategory.id] = el
+                                }}
+                                className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+                              >
                                 {/* Mobile: stos kart, jedna na plan taryfowy */}
                                 <div className="flex flex-col gap-3 p-2 md:hidden">
                                   {subcategory.priceTiers.map((tier, tierIdx) => (
@@ -2704,7 +2728,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 })()
                               ) : (
                                 <div
-                                  ref={isRepairSection ? (el => { naprawyNestedTableRefs.current[subcategory.id] = el }) : undefined}
+                                  ref={isRepairSection ? (el => { parchmentListContentRefs.current[subcategory.id] = el }) : undefined}
                                   className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden min-h-[100px] p-4"
                                 >
                                   {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
@@ -2716,7 +2740,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               )
                             ) : (
                               <div
-                                ref={(el) => { naprawyNestedTableRefs.current[subcategory.id] = el }}
+                                ref={(el) => { parchmentListContentRefs.current[subcategory.id] = el }}
                                 className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
                               >
                                 {/* Мобильная версия - flex layout / (serwis-laptopow: новая Table-based mobile-разметка) */}
