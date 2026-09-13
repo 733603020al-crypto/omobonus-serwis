@@ -809,7 +809,7 @@
       height: 76px;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-header-text {
-      width: 430px;
+      width: 510px;
       flex: none;
     }
   }
@@ -989,6 +989,7 @@
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .dojazd-note-text {
       color: #72502B;
     }
+
   }
 
   /* WARM PARCHMENT — naprawy nested subcategory rows sit directly on the
@@ -2698,6 +2699,12 @@
       text-align: center;
     }
 
+    /* wynajem-drukarek/akordeon-1: title stays left when open, matching
+       Dojazd's open-header layout (icon + left-aligned title in col1). */
+    .service-typography-standard [data-parchment-list-row="true"][data-state="open"] [data-wynajem-a4-header="true"] .zakres-title-text {
+      text-align: left;
+    }
+
     .service-typography-standard .zakres-price-header-text,
     .service-typography-standard .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
@@ -3530,3 +3537,4 @@
     transform: translateY(-2px);
   }
 }
+
