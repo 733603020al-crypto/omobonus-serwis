@@ -655,14 +655,14 @@ const EMPTY_WYNAJEM_HEADER_REFS: {
 // Techniczne wiersze drukarka-zastepcza A4/A3 (przeniesione z WynajemTable.tsx) — jedna kolumna wartości,
 // tłumaczone przez marker-label + t.wynajemTableLabels/t.gratisLower w renderze priceTiers
 const DZ_TECH_SPEC_ROWS: Record<string, { label: string; value: string }[]> = {
-  'drukarki-mono': [{ label: '__dz_duplex', value: '-' }, { label: '__dz_speed', value: '40' }],
-  'drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'a3-drukarki-mono': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
+  'drukarki-mono': [{ label: '__dz_duplex', value: '-' }, { label: '__dz_speed', value: '40 str./min.' }],
+  'drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
+  'mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
+  'mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
+  'a3-drukarki-mono': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
+  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
+  'a3-mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
+  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
 }
 
 // Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (4 of 11 services)
