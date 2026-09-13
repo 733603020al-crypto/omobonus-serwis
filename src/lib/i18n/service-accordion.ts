@@ -20,6 +20,11 @@ export interface ServiceAccordionDict {
   rentPriceHeader: string
   printPriceHeader: string
   dojazdNote: readonly [string, string]
+  dojazdPromoTitle: string
+  konserwacjaPromoTitle: string
+  konserwacjaPromoDescription: string
+  konserwacjaIncludedNote: string
+  konserwacjaExtraPaidNote: string
   deviceCategoriesDescription: {
     default: string
     serwisDrukarekIglowych: string
@@ -67,6 +72,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Nie mówimy, że dojazd lub odbiór są „za darmo”,',
       'a następnie doliczamy ten koszt do ceny naprawy',
     ],
+    dojazdPromoTitle: '„DARMOWY DOJAZD”',
+    konserwacjaPromoTitle: '„PRZEDMUCHANIE + PASTA”',
+    konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
+    konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
+    konserwacjaExtraPaidNote: 'Dodatkowo płatne: naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     deviceCategoriesDescription: {
       default: 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej',
       serwisDrukarekIglowych: 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej',
@@ -109,6 +119,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
       'а потім додаємо цю вартість до ціни ремонту',
     ],
+    dojazdPromoTitle: '«БЕЗКОШТОВНИЙ ВИЇЗД»',
+    konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
+    konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повну консервацію системи охолодження',
+    konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
+    konserwacjaExtraPaidNote: 'Додатково платно: ремонт і запасні частини — завжди за попереднім погодженням.',
     deviceCategoriesDescription: {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
@@ -161,6 +176,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Мы не говорим, что выезд или получение устройства «бесплатны»,',
       'а затем добавляем эту стоимость к цене ремонта',
     ],
+    dojazdPromoTitle: '«БЕСПЛАТНЫЙ ВЫЕЗД»',
+    konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
+    konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
+    konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
+    konserwacjaExtraPaidNote: 'Дополнительно платно: ремонт и запасные части — всегда по предварительному согласованию.',
     deviceCategoriesDescription: {
       default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
       serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',
