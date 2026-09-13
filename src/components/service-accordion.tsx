@@ -2833,15 +2833,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         // и первой технической строкой — общий шаблон для всех блоков DZ.
                                         const isLastPriceRow = row.label.startsWith('__dz_price') &&
                                           !effectiveTiers![0].rows[rowIdx + 1]?.label.startsWith('__dz_price')
-                                        const isDuplexRow = (isA4Wynajem && row.label === 'Duplex') || (isDzA4A3 && row.label === '__dz_duplex')
-                                        const secondLineStyle = isDuplexRow
-                                          ? {
-                                              backgroundImage: 'linear-gradient(rgba(114,80,43,0.3), rgba(114,80,43,0.3))',
-                                              backgroundSize: '100% 1px',
-                                              backgroundPosition: 'top 3px',
-                                              backgroundRepeat: 'no-repeat' as const,
-                                            }
-                                          : undefined
+                                        const secondLineStyle = undefined
                                         let labelContent: React.ReactNode = row.label
                                         if (isDzA4A3) {
                                           labelContent = translateDzRowLabel(row.label)
