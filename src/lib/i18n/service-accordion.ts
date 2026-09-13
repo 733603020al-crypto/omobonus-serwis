@@ -7,6 +7,7 @@ export interface ServiceAccordionCategoryTranslation {
 export interface ServiceAccordionDict {
   priceHeaderFull: string
   priceHeaderShort: string
+  priceNettoTooltip: string
   timeHeader: string
   timeHeaderLine2: string
   viewPriceList: string
@@ -56,6 +57,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   pl: {
     priceHeaderFull: 'Cena, zł',
     priceHeaderShort: 'Cena',
+    priceNettoTooltip: 'Cena netto',
     timeHeader: 'Czas',
     timeHeaderLine2: 'realizacji',
     viewPriceList: 'Zobacz cennik',
@@ -103,6 +105,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   uk: {
     priceHeaderFull: 'Ціна, zł',
     priceHeaderShort: 'Ціна',
+    priceNettoTooltip: 'Ціна без ПДВ',
     timeHeader: 'Час',
     timeHeaderLine2: 'виконання',
     viewPriceList: 'Переглянути прайс-лист',
@@ -160,6 +163,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   ru: {
     priceHeaderFull: 'Цена, zł',
     priceHeaderShort: 'Цена',
+    priceNettoTooltip: 'Цена без НДС',
     timeHeader: 'Срок',
     timeHeaderLine2: 'выполнения',
     viewPriceList: 'Смотреть прайс-лист',
