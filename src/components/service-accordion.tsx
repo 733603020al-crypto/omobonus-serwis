@@ -2790,7 +2790,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             return [
                                               rowEl,
                                               <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                                <TableCell colSpan={2} style={{ padding: 0, height: '4px' }} />
+                                                <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
                                               </TableRow>,
                                             ]
                                             })
@@ -2941,7 +2941,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         return [
                                           rowEl,
                                           <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                            <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '4px' }} />
+                                            <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
                                           </TableRow>,
                                         ]
                                       })}

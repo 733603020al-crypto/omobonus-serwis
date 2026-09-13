@@ -477,7 +477,7 @@ export function ServicePageTemplate({
         )}
 
         {service.slug === 'drukarka-zastepcza' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
+          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-6 pb-24">
             <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
               {labels.drukarkaZastepczaNote}
             </p>
