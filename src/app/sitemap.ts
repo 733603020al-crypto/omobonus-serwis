@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const ukServicePages = servicesUk.map((service) => ({
+  const ukServicePages = servicesUk.filter((service) => !noindexSlugs.includes(service.slug)).map((service) => ({
     url: `${baseUrl}/uk/uslugi/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -120,7 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const ruServicePages = servicesRu.map((service) => ({
+  const ruServicePages = servicesRu.filter((service) => !noindexSlugs.includes(service.slug)).map((service) => ({
     url: `${baseUrl}/ru/uslugi/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

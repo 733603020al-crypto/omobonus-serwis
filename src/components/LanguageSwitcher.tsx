@@ -124,7 +124,7 @@ export function LanguageSwitcher() {
           style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
-          aria-label="Wybierz język / Вибрати мову"
+          aria-label="Wybierz język / Вибрати мову / Выбрать язык"
         >
           <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>

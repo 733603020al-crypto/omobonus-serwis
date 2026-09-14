@@ -24,6 +24,7 @@ export const metadata: Metadata = {
         url: '/images/omobonus-hero.webp',
         width: 1200,
         height: 630,
+        alt: 'Omobonus - профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве',
       },
     ],
   },
