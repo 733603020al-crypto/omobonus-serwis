@@ -100,6 +100,33 @@ export default async function ServicePage({
     url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
   }
 
+  // FAQPage structured data — z tej samej sekcji "faq", która zasila akordeon FAQ na stronie
+  const faqSubcategories = service.pricingSections.find(s => s.id === 'faq')?.subcategories
+  const faqJsonLd = faqSubcategories?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSubcategories
+      .filter(sub => sub.answer)
+      .map(sub => ({
+        '@type': 'Question',
+        name: sub.title.replace(/\*\*/g, ''),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: sub.answer!.replace(/\*\*/g, ''),
+        },
+      })),
+  } : null
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://serwis.omobonus.com.pl/' },
+      { '@type': 'ListItem', position: 2, name: 'Usługi', item: 'https://serwis.omobonus.com.pl/#uslugi' },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `https://serwis.omobonus.com.pl/uslugi/${slug}` },
+    ],
+  }
+
   const relatedServices: RelatedService[] = services
     .filter(s => relatedServiceSlugs.includes(s.slug))
     .map(s => ({
@@ -123,7 +150,7 @@ export default async function ServicePage({
       basePath="/uslugi"
       labels={labels}
       relatedServices={relatedServices}
-      jsonLd={serviceJsonLd}
+      jsonLd={faqJsonLd ? [serviceJsonLd, breadcrumbJsonLd, faqJsonLd] : [serviceJsonLd, breadcrumbJsonLd]}
     />
   )
 }

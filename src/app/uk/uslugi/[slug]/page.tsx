@@ -5,7 +5,7 @@ import { serviceHeroLabelsUk } from '@/lib/service-hero-labels-uk'
 import { uk } from '@/lib/i18n/uk'
 import { ServicePageTemplate, type RelatedService } from '@/components/service-page-template'
 import { headingsUk, seoBlocksUk, imageAltUk, subServiceTitlesUk, seoMetadataUk, labelsUk } from '@/lib/services-meta-uk'
-import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs } from '@/lib/services-meta-shared'
+import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from '@/lib/services-meta-shared'
 
 export async function generateStaticParams() {
   return servicesUk.map(service => ({
@@ -29,9 +29,15 @@ export async function generateMetadata({
   return {
     title: seo.title,
     description: seo.description,
+    ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
+
     alternates: {
       canonical: `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
-      languages: {
+      languages: noindexSlugs.includes(slug) ? {
+        // Tymczasowa strona bez odpowiedników — nie dodawać hreflang na noindexowaną PL i ewentualne RU
+        'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
+      } : {
         'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
         'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
         'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
@@ -91,6 +97,33 @@ export default async function UkServicePage({
     url: `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
   }
 
+  // FAQPage structured data — z tej samej sekcji "faq", która zasila akordeon FAQ na stronie
+  const faqSubcategories = service.pricingSections.find(s => s.id === 'faq')?.subcategories
+  const faqJsonLd = faqSubcategories?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSubcategories
+      .filter(sub => sub.answer)
+      .map(sub => ({
+        '@type': 'Question',
+        name: sub.title.replace(/\*\*/g, ''),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: sub.answer!.replace(/\*\*/g, ''),
+        },
+      })),
+  } : null
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Головна', item: 'https://serwis.omobonus.com.pl/uk' },
+      { '@type': 'ListItem', position: 2, name: 'Послуги', item: 'https://serwis.omobonus.com.pl/uk/#uslugi' },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `https://serwis.omobonus.com.pl/uk/uslugi/${slug}` },
+    ],
+  }
+
   const relatedServices: RelatedService[] = servicesUk
     .filter(s => relatedServiceSlugs.includes(s.slug))
     .map(s => ({
@@ -114,7 +147,7 @@ export default async function UkServicePage({
       basePath="/uk/uslugi"
       labels={labelsUk}
       relatedServices={relatedServices}
-      jsonLd={serviceJsonLd}
+      jsonLd={faqJsonLd ? [serviceJsonLd, breadcrumbJsonLd, faqJsonLd] : [serviceJsonLd, breadcrumbJsonLd]}
       footerT={uk.footer}
     />
   )

@@ -146,7 +146,7 @@ interface ServicePageTemplateProps {
   basePath: string
   labels: ServicePageLabels
   relatedServices?: RelatedService[]
-  jsonLd: object
+  jsonLd: object | object[]
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
 }
 
@@ -171,10 +171,13 @@ export function ServicePageTemplate({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((block, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
       <Header locale={locale} />
       <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass} ${repairAccordionClass}`}>
 
