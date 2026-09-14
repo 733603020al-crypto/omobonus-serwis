@@ -96,6 +96,26 @@ const jsonLd = {
   alternateName: 'Omobonus Sp. z o.o.',
   url: 'https://serwis.omobonus.com.pl',
   telephone: '+48793759262',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.webp',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marcina Bukowskiego 174',
+    addressLocality: 'Wrocław',
+    postalCode: '52-418',
+    addressCountry: 'PL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.0775534,
+    longitude: 16.9784082,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
 }
 
 export default function RuRootLayout({ children }: { children: ReactNode }) {
