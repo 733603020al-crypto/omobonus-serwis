@@ -13,19 +13,15 @@ import { NextResponse } from 'next/server'
  */
 export async function GET() {
   const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
-  const envStatus: Record<string, { exists: boolean; value?: string }> = {}
+  const envStatus: Record<string, { exists: boolean }> = {}
   const missing: string[] = []
 
-  // Проверка наличия переменных окружения
+  // Проверка наличия переменных окружения (без раскрытия значений)
   for (const key of requiredEnvVars) {
     const value = process.env[key]
     const exists = !!value && value.trim() !== ''
-    
-    envStatus[key] = {
-      exists,
-      // Показываем значение только для несекретных переменных
-      value: key === 'SMTP_PASS' ? (exists ? '***' : undefined) : value,
-    }
+
+    envStatus[key] = { exists }
 
     if (!exists) {
       missing.push(key)
@@ -38,7 +34,6 @@ export async function GET() {
     const value = process.env[key]
     envStatus[key] = {
       exists: !!value && value.trim() !== '',
-      value: value,
     }
   }
 

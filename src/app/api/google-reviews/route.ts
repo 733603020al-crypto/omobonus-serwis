@@ -45,7 +45,7 @@ export async function GET() {
         return NextResponse.json(
             {
                 error: "Failed to read reviews data",
-                details: String(error),
+                ...(process.env.NODE_ENV === 'development' ? { details: String(error) } : {}),
             },
             { status: 500 }
         )
