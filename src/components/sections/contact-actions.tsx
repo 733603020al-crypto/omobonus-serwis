@@ -106,6 +106,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [hintActive, setHintActive] = useState(false)
   const [hintSourceRect, setHintSourceRect] = useState<DOMRect | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const honeypotRef = useRef<HTMLInputElement>(null)
   const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -169,6 +170,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       const formData = new FormData()
       formData.append('phone', phone)
       formData.append('country', countryName)
+      formData.append('company', honeypotRef.current?.value ?? '')
       const res = await fetch('/api/callback-request', { method: 'POST', body: formData })
       if (!res.ok) throw new Error('send failed')
       pushFormSubmitToDataLayer('quick_form', phone)
@@ -234,10 +236,23 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
         {/* Level 2: phone + button row */}
         <form ref={formRef} onSubmit={handleCallback}>
+          {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
+          <input
+            ref={honeypotRef}
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            defaultValue=""
+            className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+          />
           <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-3">
             <div className="flex-1 min-w-0">
               <CustomPhoneInput
                 aria-label={d.callbackTitle}
+                aria-invalid={phoneError}
+                aria-describedby={phoneError ? 'callback-phone-error-mobile callback-phone-error-desktop' : undefined}
                 value={phone}
                 onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
                 onCountryChange={({ name, dialCode, phoneLength }) => {
@@ -253,7 +268,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             </div>
             {/* Mobile only: error between phone row and button */}
             {phoneError && (
-              <p className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+              <p id="callback-phone-error-mobile" className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
             )}
             <button
               type="submit"
@@ -266,7 +281,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
           {/* Desktop only: error below the row */}
           {phoneError && (
-            <p className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+            <p id="callback-phone-error-desktop" className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
           )}
           {callbackError && !phoneError && (
             <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>

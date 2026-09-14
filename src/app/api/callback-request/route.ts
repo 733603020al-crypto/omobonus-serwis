@@ -21,6 +21,13 @@ export async function POST(request: NextRequest) {
     }
 
     const formData = await request.formData()
+
+    // Honeypot anti-spam: pole niewidoczne dla ludzi, wypełniane tylko przez boty
+    const honeypot = (formData.get('company') as string) ?? ''
+    if (honeypot.trim() !== '') {
+      return NextResponse.json({ success: true }, { status: 200 })
+    }
+
     const phone = (formData.get('phone') as string) ?? ''
     const country = (formData.get('country') as string) || 'Nie podano'
 

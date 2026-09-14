@@ -9,9 +9,19 @@ interface CustomCheckboxProps {
   checked: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   label: string | React.ReactNode
+  'aria-invalid'?: boolean
+  'aria-describedby'?: string
 }
 
-export function CustomCheckbox({ id, name, checked, onChange, label }: CustomCheckboxProps) {
+export function CustomCheckbox({
+  id,
+  name,
+  checked,
+  onChange,
+  label,
+  'aria-invalid': ariaInvalid,
+  'aria-describedby': ariaDescribedby,
+}: CustomCheckboxProps) {
   const frameBase =
     'relative w-7 h-7 rounded-sm border-[2.5px] transition-all duration-300 flex items-center justify-center overflow-visible bg-transparent'
   const frameState = checked
@@ -30,6 +40,8 @@ export function CustomCheckbox({ id, name, checked, onChange, label }: CustomChe
           name={name}
           checked={checked}
           onChange={onChange}
+          aria-invalid={ariaInvalid}
+          aria-describedby={ariaDescribedby}
           className="sr-only"
         />
         <div className="relative w-full h-full overflow-visible flex items-end justify-center">

@@ -76,10 +76,15 @@ export interface ContactT {
   submitButtonSeal: string
   submitting: string
   phoneError: string
+  emailError: string
   agreementError: string
   agreementConnector: string
   fileTypeError: string
   fileSizeError: (name: string, max: number) => string
+  errorMissingConfig: string
+  errorFileTooLarge: string
+  errorSmtp: string
+  errorGeneric: string
   successTitle: string
   successText: string
   successModal?: {
@@ -102,6 +107,7 @@ const PL: ContactT = {
   problemPlaceholder: 'Np. opisz problem, usterkę lub napisz, czego dotyczy zgłoszenie',
   attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
+  attachHint: '(zdjęcia, filmy, dokumenty — maks. 25 MB)',
   agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
   privacyLink: 'Polityką Prywatności',
   privacyHref: '/polityka-prywatnosci',
@@ -112,10 +118,15 @@ const PL: ContactT = {
   submitButtonSeal: 'Wyślij',
   submitting: 'Wysyłanie...',
   phoneError: 'Numer telefonu jest za krótki',
+  emailError: 'Nieprawidłowy adres e-mail',
   agreementError: 'Musisz zaakceptować regulamin',
   agreementConnector: 'oraz',
   fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
   fileSizeError: (name, max) => `Plik ${name} jest zbyt duży (maks. ${max} MB).`,
+  errorMissingConfig: 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.',
+  errorFileTooLarge: 'Jeden z plików jest za duży. Maksymalny rozmiar: 25 MB.',
+  errorSmtp: 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.',
+  errorGeneric: 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.',
   successTitle: 'Dziękujemy!',
   successText: 'Zgłoszenie zostało wysłane.',
 }
@@ -126,11 +137,11 @@ const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
   ru: ru.contactForm,
 }
 
-function buildFormSchema(phoneError: string, agreementError: string) {
+function buildFormSchema(phoneError: string, emailError: string, agreementError: string) {
   return z.object({
     name: z.string().optional(),
     phone: z.string().min(9, { message: phoneError }),
-    email: z.string().optional(),
+    email: z.union([z.literal(''), z.string().email({ message: emailError })]).optional(),
     address: z.string().optional(),
     problemDescription: z.string().optional(),
     agreements: z.literal(true, { message: agreementError }),
@@ -174,8 +185,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   const resolvedLocale: Locale = locale ?? 'pl'
   const d = t ?? CONTACT_DEFAULTS[resolvedLocale]
   const formSchema = useMemo(
-    () => buildFormSchema(d.phoneError, d.agreementError),
-    [d.phoneError, d.agreementError]
+    () => buildFormSchema(d.phoneError, d.emailError, d.agreementError),
+    [d.phoneError, d.emailError, d.agreementError]
   )
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -184,6 +195,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   const [attachmentError, setAttachmentError] = useState<string | null>(null)
   const [shouldScrollToError, setShouldScrollToError] = useState(false)
   const errorFieldsRef = useRef<Set<string>>(new Set())
+  const honeypotRef = useRef<HTMLInputElement>(null)
 
   const {
     register,
@@ -261,6 +273,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
           formData.append(key, value as string | Blob)
         }
       })
+      formData.append('locale', resolvedLocale)
+      formData.append('company', honeypotRef.current?.value ?? '')
       attachments.forEach(preview => {
         formData.append('attachments', preview.file)
       })
@@ -278,29 +292,26 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
       if (!response.ok) {
         // Структурированная обработка ошибок
         const errorType = responseData.errorType || 'UNKNOWN'
-        let errorMessage = 'Wystąpił błąd podczas wysyłania formularza.'
+        let errorMessage = d.errorGeneric
 
         switch (errorType) {
           case 'MISSING_CONFIG':
-            errorMessage = 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.'
+            errorMessage = d.errorMissingConfig
             break
           case 'FILE_TOO_LARGE':
-            errorMessage = responseData.error || 'Jeden z plików jest za duży. Maksymalny rozmiar: 25 MB.'
-            if (responseData.details) {
-              errorMessage += ` ${responseData.details}`
-            }
+            errorMessage = d.errorFileTooLarge
             break
           case 'SMTP_ERROR':
-            errorMessage = 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.'
+            errorMessage = d.errorSmtp
             if (responseData.details) {
               console.error('SMTP Error details:', responseData.details)
             }
             break
           case 'INVALID_REQUEST':
-            errorMessage = responseData.error || 'Nieprawidłowe dane w formularzu.'
+            errorMessage = d.errorGeneric
             break
           default:
-            errorMessage = responseData.error || 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.'
+            errorMessage = d.errorGeneric
         }
 
         throw new Error(errorMessage)
@@ -320,7 +331,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
       // Более информативное сообщение об ошибке
       const errorMessage = error instanceof Error
         ? error.message
-        : 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.'
+        : d.errorGeneric
 
       alert(errorMessage)
     } finally {
@@ -384,6 +395,17 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             })}
             className="space-y-[13px] md:space-y-4"
           >
+            {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              defaultValue=""
+              className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+            />
 
             {/* Imię i Telefon - Grid */}
             <div className="grid grid-cols-1 gap-[13px] md:gap-4">
@@ -396,11 +418,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   id="contact-name"
                   {...register('name')}
                   placeholder={d.namePlaceholder}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'contact-name-error' : undefined}
                   className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-lora font-normal leading-[1.4] placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
                 />
                 {errors.name && (
-                  <p className="text-red-600 text-sm">{errors.name.message}</p>
+                  <p id="contact-name-error" className="text-red-600 text-sm">{errors.name.message}</p>
                 )}
               </div>
 
@@ -430,12 +454,14 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                         onChange={field.onChange}
                         locale={resolvedLocale}
                         alwaysRow
+                        aria-invalid={!!errors.phone}
+                        aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
                       />
                     )}
                   />
                 </div>
                 {errors.phone && (
-                  <p className="text-red-600 text-sm ml-[calc(58%+6px)] sm:ml-[292px]">{errors.phone.message}</p>
+                  <p id="contact-phone-error" className="text-red-600 text-sm ml-[calc(58%+6px)] sm:ml-[292px]">{errors.phone.message}</p>
                 )}
               </div>
             </div>
@@ -450,11 +476,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 {...register('email')}
                 type="email"
                 placeholder="jan.kowalski@example.com"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'contact-email-error' : undefined}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.email && (
-                <p className="text-red-600 text-sm">{errors.email.message}</p>
+                <p id="contact-email-error" className="text-red-600 text-sm">{errors.email.message}</p>
               )}
             </div>
 
@@ -467,11 +495,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 id="contact-address"
                 {...register('address')}
                 placeholder={d.addressPlaceholder}
+                aria-invalid={!!errors.address}
+                aria-describedby={errors.address ? 'contact-address-error' : undefined}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.address && (
-                <p className="text-red-600 text-sm">{errors.address.message}</p>
+                <p id="contact-address-error" className="text-red-600 text-sm">{errors.address.message}</p>
               )}
             </div>
 
@@ -487,11 +517,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 {...register('problemDescription')}
                 rows={4}
                 placeholder={d.problemPlaceholder}
+                aria-invalid={!!errors.problemDescription}
+                aria-describedby={errors.problemDescription ? 'contact-problem-error' : undefined}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.problemDescription && (
-                <p className="text-red-600 text-sm">{errors.problemDescription.message}</p>
+                <p id="contact-problem-error" className="text-red-600 text-sm">{errors.problemDescription.message}</p>
               )}
             </div>
 
@@ -636,6 +668,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       name="agreements"
                       checked={field.value || false}
                       onChange={(e) => field.onChange(e.target.checked)}
+                      aria-invalid={!!errors.agreements}
+                      aria-describedby={errors.agreements ? 'contact-agreements-error' : undefined}
                       label={
                         <>
                           {d.agreementConfirm}{' '}
@@ -653,7 +687,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   )}
                 />
                 {errors.agreements && (
-                  <p className="text-red-600 text-sm ml-8 shake-error">
+                  <p id="contact-agreements-error" className="text-red-600 text-sm ml-8 shake-error">
                     {errors.agreements.message}
                   </p>
                 )}
