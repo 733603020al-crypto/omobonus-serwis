@@ -9,7 +9,7 @@ const Contact = dynamic(() =>
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = {
-  title: 'Kontakt|Serwis komputerów, laptopów i drukarek',
+  title: 'Kontakt | Serwis komputerów, laptopów i drukarek',
   description: '✔ Serwis komputerów, laptopów, drukarek, ploterów, ... we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ✔  ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/kontakt',

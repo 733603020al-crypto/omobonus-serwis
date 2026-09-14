@@ -2818,7 +2818,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   ? translateDzRowLabel(row.label)
                                                   : row.label}
                                               </TableCell>
-                                              <TableCell className="price-value-text py-1 pl-2 pr-2 align-middle text-right">
+                                              <TableCell className="price-value-text py-1 pl-2 pr-2 align-middle text-right !whitespace-normal">
                                                 {(() => {
                                                   const monoKolorMatch = isWdA4A3 && (row.label === 'Cena wydruku A4 (powyżej limitu)' || row.label === 'Liczba stron A4 wliczonych w czynsz')
                                                     ? row.value.match(/^(.+\(mono\))\s\/\s(.+\(kolor\))$/)

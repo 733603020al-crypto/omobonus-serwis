@@ -62,7 +62,10 @@ export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
       />
       <div className="absolute inset-0 z-[1] bg-black/50" />
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
-        <h1 className="text-[60px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto mb-[30px]">
+        <h1
+          className="font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto mb-[30px]"
+          style={{ fontSize: 'clamp(32px,8.5vw,60px)' }}
+        >
           {d.h1Line1} <br /> {d.h1Line2}
         </h1>
         <p

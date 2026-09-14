@@ -18,6 +18,16 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com', pathname: '/**' },
     ],
 
+    // Весь локальный контент сайта живёт под /public/images — разрешаем
+    // next/image оптимизировать любой файл оттуда (в т.ч. логотипы брендов
+    // из brand-ticker.tsx, которые грузятся с ?v=N для сброса кэша при
+    // замене файла — search не указываем, чтобы разрешить любое значение N).
+    // Без widecard-паттерна `localPatterns` превращается в allowlist и
+    // next/image возвращает 500 на КАЖДОЙ локальной картинке вне /brands/.
+    localPatterns: [
+      { pathname: '/images/**' },
+    ],
+
     // увеличиваем TTL для оптимизированных картинок Next.js
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 дней
 

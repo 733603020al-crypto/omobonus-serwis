@@ -165,12 +165,12 @@ export const subServiceTitles: Record<string, string> = {
 export const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Serwis i naprawa laptopów wszystkich marek we Wrocławiu ✔ Wymiana matrycy, dysku, baterii, klawiatury ✔ Diagnoza w 15 min ✔ Umów się już dziś! ☎ 793 759 262',
 
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Serwis i naprawa komputerów stacjonarnych',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana podzespołów, odzyskiwanie danych ✔ Diagnoza w 15 min ✔ Zadzwoń! ☎ 793 759 262',
 
   },
   'outsourcing-it': {
@@ -180,16 +180,16 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'serwis-drukarek-laserowych': {
     title: 'Naprawa drukarek laserowych',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Naprawa drukarek laserowych HP, Canon, Brother, Samsung, Xerox we Wrocławiu ✔ Czyszczenie, regeneracja, problemy z drukiem ✔ Diagnoza w 15 min ☎ 793 759 262',
 
   },
   'serwis-drukarek-atramentowych': {
     title: 'Naprawa drukarek atramentowych',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Naprawa drukarek atramentowych HP, Epson, Canon, Brother, Lexmark we Wrocławiu ✔ Czyszczenie, regeneracja, naprawa głowicy ✔ Diagnoza w 15 min ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
     title: 'Serwis i naprawa drukarek 3D',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Serwis i naprawa drukarek 3D we Wrocławiu — Bambu Lab, Creality, Anycubic, Prusa i inne ✔ Diagnoza w 15 min ✔ Pełny cennik na stronie ✔ Zadzwoń! ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
     title: 'Drukowanie 3D na zamówienie',
@@ -197,17 +197,17 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'serwis-drukarek-termicznych': {
     title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Serwis drukarek etykiet termicznych i termotransferowych Zebra, Dymo, Godex, Sato we Wrocławiu ✔ Diagnoza w 15 min ✔ Cennik na stronie ☎ 793 759 262',
 
   },
   'serwis-drukarek-iglowych': {
     title: 'Naprawa drukarek igłowych',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Naprawa i serwis drukarek igłowych (matrycowych) Epson, OKI, Bixolon, Citizen we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny cennik na stronie ☎ 793 759 262',
 
   },
   'naprawa-drukarek': {
     title: 'Naprawa drukarek i kserokopiarek',
-    description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ☎ 793 759 262',
+    description: '✔ Serwis drukarek i urządzeń wielofunkcyjnych — HP, Epson, Canon, Brother, Xerox, Kyocera we Wrocławiu ✔ Diagnoza w 15 min ✔ Cennik na stronie ☎ 793 759 262',
 
   },
   'wynajem-drukarek': {

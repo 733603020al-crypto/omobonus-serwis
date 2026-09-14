@@ -345,7 +345,9 @@ export const WynajemTable = ({
   }
 
   // Функция для рендеринга значения с суффиксом "/mies.", "/min" или "zł"
-  const renderValueWithSuffix = (value: string | undefined, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string) => {
+  // stacked=true — только для мобильной таблицы: число и единица переносятся на отдельные строки,
+  // чтобы длинные суффиксы (например "str./min") не вылезали за край узкой колонки на 375px
+  const renderValueWithSuffix = (value: string | undefined, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string, stacked: boolean = false) => {
     if (!value) return null
     const isLimitRow = rowLabel === 'Liczba stron A4 wliczonych w czynsz'
     const numberClass = isDrukarkaZastepcza ? 'price-value-text' : `font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`
@@ -483,9 +485,18 @@ export const WynajemTable = ({
         </div>
       )
     }
-    // Для "20 str./min" - не переносим, но "str./min" оформляем в том же стиле
+    // Для "20 str./min" - на десктопе не переносим, на мобильной таблице (stacked) переносим на новую строку,
+    // чтобы суффикс не вылезал за край узкой колонки
     if (value.includes('str./min')) {
       const number = value.replace(/\s*str\.\/min.*$/, '').trim()
+      if (stacked) {
+        return (
+          <span className="inline-flex flex-col items-center">
+            <span className={numberClass}>{number}</span>
+            <span className={unitClass}>{t.wynajemUnits.strPerMin}</span>
+          </span>
+        )
+      }
       return (
         <span className="inline-flex items-baseline">
           <span className={numberClass}>{number}</span>
@@ -773,7 +784,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                       {/* Второй столбец удален для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
@@ -794,7 +805,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                       {!isDrukarkaZastepcza && typedRow.plan3 && (
@@ -808,7 +819,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                     </TableRow>

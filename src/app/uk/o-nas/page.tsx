@@ -3,8 +3,8 @@ import { AboutPageTemplate } from '@/components/about-page-template'
 import { uk } from '@/lib/i18n/uk'
 
 export const metadata: Metadata = {
-  title: 'Про нас | Omobonus Вроцлав',
-  description: 'Познайомтеся з Omobonus — чесний сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві.',
+  title: 'Про нас | Чесний сервіс комп\'ютерів і принтерів | Omobonus Вроцлав',
+  description: 'Ми не заробляємо на вашій проблемі. Omobonus — сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві ✔ 10+ років досвіду ✔ Діагностика за 15 хв ✔ Ремонт за 48 годин',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/uk/o-nas',
     languages: {

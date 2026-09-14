@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+  /* Primary text ink color — the shared dark-brown used for the large
+     majority of accordion/service-page body & heading text (35+ occurrences
+     before this variable existed). #72502B (secondary label ink) and
+     #332314 (darker emphasis ink) are a deliberate separate hierarchy —
+     not folded in here. */
+  --text-primary: #3A2817;
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
@@ -979,7 +985,7 @@
        exact color already used by .zakres-title-text above. */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-price-header-text,
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-time-header-text {
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     /* Dojazd disclaimer note ("Nie mówimy, że dojazd..."): same secondary
@@ -1743,11 +1749,11 @@
        nothing width-based, so ported 1:1. */
     .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-price-header-text,
     .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-time-header-text {
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     .page-repair-accordion .diagnoza-open-header-row .zakres-price-header-text > span:last-child {
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] {
@@ -1855,7 +1861,7 @@
       margin-right: -24px;
       background: #efe3c8;
       border-radius: 0 0 8px 8px;
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     /* .parentheses-text-isolated carries a sitewide !important base color
@@ -2181,7 +2187,7 @@
       margin-left: -7px;
       position: relative;
       top: -3px;
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     /* Diagnoza price-header tooltip: Radix centers the popper on the whole
@@ -2260,7 +2266,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] .zakres-price-header-text {
-      color: #3A2817;
+      color: var(--text-primary);
       font-size: 22px;
     }
 
@@ -2270,7 +2276,7 @@
       margin-left: -7px;
       position: relative;
       top: -3px;
-      color: #3A2817;
+      color: var(--text-primary);
     }
 
     /* Mobile mirror of the desktop fix above: kill the shared gold
@@ -2337,7 +2343,7 @@
       margin-left: -10px;
       margin-right: -10px;
       background: transparent;
-      color: #3A2817;
+      color: var(--text-primary);
       -webkit-tap-highlight-color: transparent;
       transform: translateY(-6px);
     }
@@ -2379,7 +2385,7 @@
       margin-left: -10px;
       margin-right: -10px;
       background: transparent;
-      color: #3A2817;
+      color: var(--text-primary);
       -webkit-tap-highlight-color: transparent;
       transform: translateY(-6px);
     }
@@ -2412,7 +2418,7 @@
       font-size: 13px;
       font-weight: 500;
       line-height: 1.2;
-      color: #3A2817;
+      color: var(--text-primary);
       padding-left: 8px;
     }
 
@@ -2599,7 +2605,7 @@
       font-size: 13px !important;
       font-weight: 500 !important;
       line-height: 1.2 !important;
-      color: #3A2817 !important;
+      color: var(--text-primary) !important;
       opacity: 1 !important;
     }
 
@@ -2670,7 +2676,7 @@
       font-size: 24px;
       font-weight: 600;
       line-height: 1.1;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2685,7 +2691,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 1.05;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2711,7 +2717,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 1.05;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2720,7 +2726,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2729,7 +2735,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2739,7 +2745,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2749,7 +2755,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2758,7 +2764,7 @@
       font-size: 12px;
       font-weight: 400;
       line-height: 1.2;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2766,7 +2772,7 @@
       font-family: var(--font-cormorant), serif;
       font-size: 20px;
       font-weight: 600;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2775,7 +2781,7 @@
       font-size: 15px;
       font-weight: 500;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2784,7 +2790,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       opacity: 1;
       text-shadow: none;
     }
@@ -2794,7 +2800,7 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       opacity: 1;
       text-shadow: none;
     }
@@ -2814,7 +2820,7 @@
       font-size: 22px;
       font-weight: 600;
       line-height: 1.1;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2830,7 +2836,7 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 1.05;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2850,7 +2856,7 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 1.05;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2859,14 +2865,14 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 1.15;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
     .service-typography-standard .emphasis-inline-text {
       font-family: var(--font-cormorant), serif;
       font-size: 14px;
-      color: #3A2817;
+      color: var(--text-primary);
       font-weight: 500;
       line-height: 1.2;
       text-shadow: none;
@@ -2878,7 +2884,7 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2888,7 +2894,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2897,7 +2903,7 @@
       font-size: 12px;
       font-weight: 400;
       line-height: 1.2;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2906,7 +2912,7 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 1.15;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2915,7 +2921,7 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       text-shadow: none;
     }
 
@@ -2924,7 +2930,7 @@
       font-size: 18px;
       font-weight: 600;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       opacity: 1;
       text-shadow: none;
     }
@@ -2934,7 +2940,7 @@
       font-size: 15px;
       font-weight: 600;
       line-height: 1.3;
-      color: #3A2817;
+      color: var(--text-primary);
       opacity: 1;
       text-shadow: none;
     }
