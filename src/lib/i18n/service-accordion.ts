@@ -36,6 +36,8 @@ export interface ServiceAccordionDict {
     pagesIncluded: readonly [string, string]
     printPriceMono: readonly [string, string]
     printPriceColor: readonly [string, string]
+    /** Заголовок + подпись объединённой строки "Cena wydruku A4" (mono+kolor в одном значении) в современной accordion-tier таблице wynajem-drukarek */
+    printPriceOverLimit: readonly [string, string]
     scanning: string
     duplex: string
     printSpeedPrefix: string
@@ -89,6 +91,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Liczba stron A4', 'wliczonych w czynsz'],
       printPriceMono: ['Cena wydruku A4 mono', '(powyżej limitu)'],
       printPriceColor: ['Cena wydruku A4 kolor', '(powyżej limitu)'],
+      printPriceOverLimit: ['Cena wydruku A4', '(po wykorzystaniu wliczonych stron)'],
       scanning: 'Skanowanie',
       duplex: 'Duplex',
       printSpeedPrefix: 'Prędkość druku do:',
@@ -136,6 +139,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Кількість сторінок A4', 'включених в оренду'],
       printPriceMono: ['Ціна друку A4 моно', '(понад ліміт)'],
       printPriceColor: ['Ціна друку A4 колір', '(понад ліміт)'],
+      printPriceOverLimit: ['Ціна друку A4', '(після використання включених сторінок)'],
       scanning: 'Сканування',
       duplex: 'Duplex',
       printSpeedPrefix: 'Швидкість друку до:',
@@ -194,6 +198,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Количество страниц A4', 'включённых в аренду'],
       printPriceMono: ['Цена печати A4 моно', '(сверх лимита)'],
       printPriceColor: ['Цена печати A4 цвет', '(сверх лимита)'],
+      printPriceOverLimit: ['Цена печати A4', '(после использования включённых страниц)'],
       scanning: 'Сканирование',
       duplex: 'Duplex',
       printSpeedPrefix: 'Скорость печати до:',

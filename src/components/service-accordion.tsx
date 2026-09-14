@@ -8,6 +8,7 @@ import Link from 'next/link'
 import manifest from '@/config/manifest'
 import { DEFAULT_PRICE_TOOLTIP, REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
+import { getDisplayPrice, getDisplayDuration } from '@/lib/services-pricing'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import {
   Accordion,
@@ -655,14 +656,14 @@ const EMPTY_WYNAJEM_HEADER_REFS: {
 // Techniczne wiersze drukarka-zastepcza A4/A3 (przeniesione z WynajemTable.tsx) — jedna kolumna wartości,
 // tłumaczone przez marker-label + t.wynajemTableLabels/t.gratisLower w renderze priceTiers
 const DZ_TECH_SPEC_ROWS: Record<string, { label: string; value: string }[]> = {
-  'drukarki-mono': [{ label: '__dz_duplex', value: '-' }, { label: '__dz_speed', value: '40 str./min.' }],
-  'drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
-  'mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
-  'mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40 str./min.' }],
-  'a3-drukarki-mono': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
-  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
-  'a3-mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
-  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50 str./min.' }],
+  'drukarki-mono': [{ label: '__dz_duplex', value: '-' }, { label: '__dz_speed', value: '40' }],
+  'drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
+  'mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
+  'mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
+  'a3-drukarki-mono': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
+  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
 }
 
 // Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (4 of 11 services)
@@ -2759,11 +2760,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   case '__dz_price': return t.printPriceHeader
                                   case '__dz_scan': return t.wynajemTableLabels.scanning
                                   case '__dz_duplex': return t.wynajemTableLabels.duplex
-                                  case '__dz_speed': return `${t.wynajemTableLabels.printSpeedPrefix} (str./min)`
+                                  case '__dz_speed': return `${t.wynajemTableLabels.printSpeedPrefix} (${t.wynajemUnits.strPerMin})`
                                   default: return label
                                 }
                               }
                               const translateDzRowValue = (value: string): string => value === 'gratis' ? t.gratisLower : value
+                              // Разбивает "Тариф (примечание)" / "Тариф [примечание]" на [основной текст, примечание] —
+                              // не завязано на язык/конкретный текст, только на структуру "текст + висячая (...)/[...]"
+                              // в конце строки. Используется для строки "Czynsz wynajmu" (row 0) во всех 3 языках,
+                              // т.к. PL хранит примечание в (...), а RU/UK — в [...].
+                              const splitTrailingBracket = (label: string): [string, string] | null => {
+                                const m = label.match(/^(.*)\s((?:\([^)]*\))|(?:\[[^\]]*\]))$/)
+                                return m ? [m[1], m[2]] : null
+                              }
+                              // Значение вида "X (слово1) / Y (слово2)" (mono/kolor и т.п.) — переносим на 2 строки,
+                              // сохраняя исходные слова в скобках как есть (работает для любого языка/слова).
+                              const splitMonoKolorValue = (value: string): [string, string] | null => {
+                                const m = value.match(/^(.+\([^)]+\))\s\/\s(.+\([^)]+\))$/)
+                                return m ? [m[1], m[2]] : null
+                              }
                               return (
                               <div
                                 ref={el => {
@@ -2787,9 +2802,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         </colgroup>
                                         <TableBody>
                                           {(() => {
-                                            const filteredRows = tier.rows.filter(row => !(
-                                              (isWdA4A3 &&
-                                                (row.label === 'Duplex' || row.label === 'Prędkość druku do: (str./min)'))
+                                            const filteredRows = tier.rows.filter((row, idx) => !(
+                                              (isWdA4A3 && (idx === 3 || idx === 4))
                                               || (isDzA4A3 && ['__dz_duplex', '__dz_speed'].includes(row.label))
                                             ))
                                             return filteredRows.flatMap((row, rowIdx) => {
@@ -2800,18 +2814,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             const rowEl = (
                                             <TableRow key={rowIdx} className="border-[#72502B]/30 border-b last:border-b-0">
                                               <TableCell className="parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left">
-                                                {isWdA4A3 && row.label === 'Liczba stron A4 wliczonych w czynsz'
+                                                {isWdA4A3 && rowIdx === 1
                                                   ? (
                                                       <>
-                                                        <div className="parentheses-caption-text">Liczba stron A4</div>
-                                                        <div className="parentheses-caption-text">(wliczonych w czynsz)</div>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.pagesIncluded[0]}</div>
+                                                        <div className="parentheses-caption-text">({t.wynajemTableLabels.pagesIncluded[1]})</div>
                                                       </>
                                                     )
-                                                  : isWdA4A3 && row.label === 'Cena wydruku A4 (powyżej limitu)'
+                                                  : isWdA4A3 && rowIdx === 2
                                                   ? (
                                                       <>
-                                                        <div className="parentheses-caption-text">Cena wydruku A4</div>
-                                                        <div className="parentheses-caption-text">(po wykorzystaniu wliczonych stron)</div>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[0]}</div>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[1]}</div>
                                                       </>
                                                     )
                                                   : isDzA4A3
@@ -2820,14 +2834,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               </TableCell>
                                               <TableCell className="price-value-text py-1 pl-2 pr-2 align-middle text-right !whitespace-normal">
                                                 {(() => {
-                                                  const monoKolorMatch = isWdA4A3 && (row.label === 'Cena wydruku A4 (powyżej limitu)' || row.label === 'Liczba stron A4 wliczonych w czynsz')
-                                                    ? row.value.match(/^(.+\(mono\))\s\/\s(.+\(kolor\))$/)
+                                                  const monoKolorMatch = isWdA4A3 && (rowIdx === 1 || rowIdx === 2)
+                                                    ? splitMonoKolorValue(row.value)
                                                     : null
                                                   if (monoKolorMatch) {
                                                     return (
                                                       <>
+                                                        <div>{monoKolorMatch[0]}</div>
                                                         <div>{monoKolorMatch[1]}</div>
-                                                        <div>{monoKolorMatch[2]}</div>
                                                       </>
                                                     )
                                                   }
@@ -2878,7 +2892,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <TableBody>
                                       {effectiveTiers![0].rows.flatMap((row, rowIdx) => {
                                         const isA4Wynajem = isWdA4A3
-                                        const isDuplexOrSpeed = (isA4Wynajem && (row.label === 'Duplex' || row.label === 'Prędkość druku do: (str./min)'))
+                                        const isDuplexOrSpeed = (isA4Wynajem && (rowIdx === 3 || rowIdx === 4))
                                           || (isDzA4A3 && (row.label === '__dz_duplex' || row.label === '__dz_speed' || row.label === '__dz_scan'))
                                         // Вторая разделительная линия между ценовыми строками ("__dz_price*")
                                         // и первой технической строкой — общий шаблон для всех блоков DZ.
@@ -2889,38 +2903,30 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         if (isDzA4A3) {
                                           labelContent = translateDzRowLabel(row.label)
                                         } else if (isA4Wynajem) {
-                                          if (row.label === 'Liczba stron A4 wliczonych w czynsz') {
-                                            labelContent = (
-                                              <>
-                                                <div>Liczba stron A4</div>
-                                                <div className="parentheses-caption-text">(wliczonych w czynsz)</div>
-                                              </>
-                                            )
-                                          } else if (row.label === 'Czynsz wynajmu (zł miesięcznie)') {
-                                            labelContent = (
-                                              <>
-                                                <div>Czynsz wynajmu</div>
-                                                <div className="parentheses-caption-text">(zł miesięcznie)</div>
-                                              </>
-                                            )
-                                          } else if (!isDuplexOrSpeed) {
-                                            const cenaMatch = row.label.match(/^(Cena wydruku A4.*?)\s\(powyżej limitu\)$/)
-                                            const parenMatch = row.label.match(/^(.*)\s(\([^)]*\))$/)
-                                            if (cenaMatch) {
+                                          if (rowIdx === 0) {
+                                            const split = splitTrailingBracket(row.label)
+                                            if (split) {
                                               labelContent = (
                                                 <>
-                                                  <div>{cenaMatch[1]}</div>
-                                                  <div className="parentheses-caption-text">(po wykorzystaniu wliczonych stron)</div>
-                                                </>
-                                              )
-                                            } else if (parenMatch) {
-                                              labelContent = (
-                                                <>
-                                                  <div>{parenMatch[1]}</div>
-                                                  <div className="parentheses-caption-text">{parenMatch[2]}</div>
+                                                  <div>{split[0]}</div>
+                                                  <div className="parentheses-caption-text">{split[1]}</div>
                                                 </>
                                               )
                                             }
+                                          } else if (rowIdx === 1) {
+                                            labelContent = (
+                                              <>
+                                                <div>{t.wynajemTableLabels.pagesIncluded[0]}</div>
+                                                <div className="parentheses-caption-text">({t.wynajemTableLabels.pagesIncluded[1]})</div>
+                                              </>
+                                            )
+                                          } else if (rowIdx === 2) {
+                                            labelContent = (
+                                              <>
+                                                <div>{t.wynajemTableLabels.printPriceOverLimit[0]}</div>
+                                                <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[1]}</div>
+                                              </>
+                                            )
                                           }
                                         }
                                         const rowEl = (
@@ -2949,24 +2955,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               >
                                                 {(() => {
                                                   const value = tier.rows[rowIdx]?.value
-                                                  if (isA4Wynajem && row.label === 'Liczba stron A4 wliczonych w czynsz' && value) {
-                                                    const monoKolorMatch = value.match(/^(.+)\s\(mono\)\s\/\s(.+)\s\(kolor\)$/)
+                                                  if (isA4Wynajem && (rowIdx === 1 || rowIdx === 2) && value) {
+                                                    const monoKolorMatch = splitMonoKolorValue(value)
                                                     if (monoKolorMatch) {
                                                       return (
                                                         <>
-                                                          <div>{monoKolorMatch[1]} (mono)</div>
-                                                          <div>{monoKolorMatch[2]} (kolor)</div>
-                                                        </>
-                                                      )
-                                                    }
-                                                  }
-                                                  if (isA4Wynajem && row.label === 'Cena wydruku A4 (powyżej limitu)' && value) {
-                                                    const monoKolorMatch = value.match(/^(.+\(mono\))\s\/\s(.+\(kolor\))$/)
-                                                    if (monoKolorMatch) {
-                                                      return (
-                                                        <>
+                                                          <div>{monoKolorMatch[0]}</div>
                                                           <div>{monoKolorMatch[1]}</div>
-                                                          <div>{monoKolorMatch[2]}</div>
                                                         </>
                                                       )
                                                     }
@@ -3039,7 +3034,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <col className="w-[25%]" />
                                       </colgroup>
                                       <TableBody>
-                                        {subcategory.items.map((item, idx) => (
+                                        {subcategory.items.map((item, idx) => {
+                                          const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price)
+                                          return (
                                           <TableRow
                                             key={idx}
                                             className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
@@ -3066,16 +3063,21 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   : ''
                                               )}
                                             >
-                                              {renderPriceLines(item.price, item.link)}
+                                              {renderPriceLines(displayPrice, item.link)}
                                             </TableCell>
                                           </TableRow>
-                                        ))}
+                                          )
+                                        })}
                                       </TableBody>
                                     </Table>
                                   ) : (
                                     subcategory.items.map((item, idx) =>
                                       renderMobileServiceRow(
-                                        item,
+                                        {
+                                          ...item,
+                                          price: getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price),
+                                          duration: getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration),
+                                        },
                                         idx,
                                         idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja'),
                                         idx === subcategory.items.length - 1,
@@ -3104,7 +3106,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       </colgroup>
                                     )}
                                     <TableBody>
-                                      {subcategory.items.map((item, idx) => (
+                                      {subcategory.items.map((item, idx) => {
+                                        const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price)
+                                        const displayDuration = getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration)
+                                        return (
                                         <TableRow
                                           key={idx}
                                           className={`border-white/20 border-b border-white/30 ${idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja') ? 'border-t border-white/30' : ''}`}
@@ -3131,18 +3136,19 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 : ''
                                             )}
                                           >
-                                            {renderPriceLines(item.price, item.link)}
+                                            {renderPriceLines(displayPrice, item.link)}
                                           </TableCell>
                                           {!((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                                             <TableCell className={cn(
                                               'text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:px-2',
                                               (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]'
                                             )}>
-                                              {renderDurationValue(item.duration)}
+                                              {renderDurationValue(displayDuration)}
                                             </TableCell>
                                           )}
                                         </TableRow>
-                                      ))}
+                                        )
+                                      })}
                                     </TableBody>
                                   </Table>
                                 </div>
@@ -3279,7 +3285,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       <div className="block md:hidden">
                         {section.items?.map((item, idx) => {
                           const row = renderMobileServiceRow(
-                            item,
+                            {
+                              ...item,
+                              price: getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale, item.price),
+                              duration: getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration),
+                            },
                             idx,
                             idx === 0 && section.id !== 'dojazd' && !(isRepairAccordionLayout && section.id === 'konserwacja'),
                             idx === (section.items?.length ?? 0) - 1,
@@ -3312,7 +3322,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           </colgroup>
                           <TableBody>
-                            {section.items?.map((item, idx) => (
+                            {section.items?.map((item, idx) => {
+                              const displayPrice = getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale, item.price)
+                              const displayDuration = getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration)
+                              return (
                               <TableRow
                                 key={idx}
                                 className={`border-white/20 border-b border-white/30 ${idx === 0 && section.id !== 'dojazd' ? 'border-t border-white/30' : ''}`}
@@ -3332,28 +3345,29 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
                                   {isDruk3DCustomSection(service.slug, section.id) ? (
-                                    item.price.includes('zł/gram') ? (
-                                      renderMaterialPrice(item.price)
+                                    displayPrice.includes('zł/gram') ? (
+                                      renderMaterialPrice(displayPrice)
                                     ) : item.service.startsWith('Wysyłka') ? (
-                                      renderTwoLinePrice(item.price)
+                                      renderTwoLinePrice(displayPrice)
                                     ) : item.service.startsWith('Realizacja ekspresowa') ? (
-                                      renderExpressPrice(item.price)
-                                    ) : item.price.includes('\n') ? (
-                                      renderExpressPrice(item.price)
+                                      renderExpressPrice(displayPrice)
+                                    ) : displayPrice.includes('\n') ? (
+                                      renderExpressPrice(displayPrice)
                                     ) : (
                                       <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">
-                                        {renderPlainPriceWithUnits(item.price)}
+                                        {renderPlainPriceWithUnits(displayPrice)}
                                       </div>
                                     )
                                   ) : (
-                                    renderPriceLines(item.price, item.link)
+                                    renderPriceLines(displayPrice, item.link)
                                   )}
                                 </TableCell>
                                 <TableCell className="text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4">
-                                  {renderDurationValue(item.duration)}
+                                  {renderDurationValue(displayDuration)}
                                 </TableCell>
                               </TableRow>
-                            ))}
+                              )
+                            })}
                           </TableBody>
                         </Table>
                       </div>
