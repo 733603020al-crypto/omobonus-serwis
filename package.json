@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint",
     "export-services": "tsx export-services.ts",
+    "check:i18n-sync": "tsx -r tsconfig-paths/register scripts/check-i18n-sync.ts",
     "optimize-images": "node optimize-images.mjs",
     "analyze-images": "node optimize-images.js",
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force .turbo -ErrorAction SilentlyContinue; Write-Host Кеш очищен\"",
