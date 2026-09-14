@@ -106,7 +106,7 @@ export function WynajemSubcategoryHeader({
                                           )}
                                           style={{ width: 'calc((100% - 40px - 8px) * 0.4)' }}
                                         >
-                                          <h4 className={cn(
+                                          <h3 className={cn(
                                             "text-lg font-semibold text-[#ffffff] font-table-main leading-[1.3]"
                                           )}>
                                             {(() => {
@@ -141,7 +141,7 @@ export function WynajemSubcategoryHeader({
                                               }
                                               return title
                                             })()}
-                                          </h4>
+                                          </h3>
                                           <div
                                             data-subcategory-link
                                             className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform whitespace-nowrap"
@@ -554,7 +554,7 @@ export function WynajemSubcategoryHeader({
                                       />
                                     </div>
                                     <div className="flex-1 min-w-0" style={{ width: '48%', maxWidth: '48%' }}>
-                                      <h4 className="text-lg font-semibold text-[#ffffff] font-table-main leading-[1.2]">
+                                      <h3 className="text-lg font-semibold text-[#ffffff] font-table-main leading-[1.2]">
                                         {(() => {
                                           const title = subcategory.title
                                           // Для wynajem-drukarek и drukarka-zastepcza подкатегорий части в скобках оформляем в том же стиле
@@ -590,7 +590,7 @@ export function WynajemSubcategoryHeader({
                                           }
                                           return title
                                         })()}
-                                      </h4>
+                                      </h3>
                                     </div>
                                     {/* Цены справа - только на мобильных, выровнены с таблицей внутри аккордеона */}
                                     {/* Блок занимает 100% оставшегося места, внутри три равные колонки */}

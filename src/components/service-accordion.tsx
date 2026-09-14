@@ -2417,6 +2417,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             if (isRepairAccordionLayout && isRepairSection && title === 'Oprogramowanie') {
                                               return 'Oprogra­mowanie'
                                             }
+                                            if (isRepairAccordionLayout && isRepairSection) {
+                                              const bracketMatch = title.match(/^(.+?)\s*(\(.+\))$/)
+                                              if (bracketMatch) {
+                                                return (
+                                                  <>
+                                                    {bracketMatch[1].trim()}
+                                                    <span className="hidden group-data-[state=closed]/subcategory:inline"> {bracketMatch[2]}</span>
+                                                  </>
+                                                )
+                                              }
+                                            }
                                             return title
                                           })()}
                                         </TitleTag>
@@ -2515,7 +2526,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <div className="flex items-center justify-center">
                                       <div className="text-center block w-full">
                                         <TooltipProvider delayDuration={100}>
-                                          {(isMobile && !isSpecialTooltipService) ? (
+                                          {isMobile && isSpecialTooltipService ? (
+                                            <div
+                                              className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer"
+                                              style={{ gap: '1px' }}
+                                              role="button"
+                                              tabIndex={0}
+                                              aria-label="Informacja o kategoriach"
+                                              onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                                setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                              }}
+                                            >
+                                              <span className="inline sm:hidden">Cena</span>
+                                              <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                                <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                              </span>
+                                            </div>
+                                          ) : !isSpecialTooltipService && isMobile ? (
                                             <Popover
                                               open={openSmallTooltips.has(subcategory.id)}
                                               onOpenChange={open => {
@@ -2587,7 +2616,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               </PopoverContent>
                                             </Popover>
                                           ) : (
-                                            <Tooltip>
+                                            <Tooltip
+                                              onOpenChange={open => {
+                                                if (isSpecialTooltipService) {
+                                                  setCategoryTooltipOpen(open)
+                                                }
+                                              }}
+                                            >
                                               <TooltipTrigger asChild>
                                                 <div
                                                   className="zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap flex items-center gap-[5px] pl-1 md:pl-0 justify-center md:cursor-default"
@@ -2603,19 +2638,35 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 </div>
                                               </TooltipTrigger>
                                               <TooltipContent
-                                                side="top"
-                                                sideOffset={4}
-                                                className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden"
-                                                style={{
-                                                  backgroundImage: `var(--bg-parchment)`,
-                                                  backgroundSize: 'cover',
-                                                  backgroundPosition: 'center',
-                                                }}
+                                                {...(isSpecialTooltipService
+                                                  ? {
+                                                    side: 'left' as const,
+                                                    align: 'center' as const,
+                                                    sideOffset: -80,
+                                                    collisionPadding: 16,
+                                                    className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                                  }
+                                                  : {
+                                                    side: 'top' as const,
+                                                    sideOffset: 4,
+                                                    className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                                    style: {
+                                                      backgroundImage: `var(--bg-parchment)`,
+                                                      backgroundSize: 'cover',
+                                                      backgroundPosition: 'center',
+                                                    },
+                                                  })}
                                               >
-                                                <div className="absolute inset-0 bg-black/50 z-0" />
-                                                <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                                  cena netto
-                                                </p>
+                                                {isSpecialTooltipService ? (
+                                                  <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
+                                                ) : (
+                                                  <>
+                                                    <div className="absolute inset-0 bg-black/50 z-0" />
+                                                    <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                                      cena netto
+                                                    </p>
+                                                  </>
+                                                )}
                                               </TooltipContent>
                                             </Tooltip>
                                           )}

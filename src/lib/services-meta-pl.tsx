@@ -134,8 +134,8 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Wynajem kopiarek (urządzeń wielofunkcyjnych) - to jest wyjście z tej sytuacji.',]
   },
   'drukarka-zastepcza': {
-    items: [' ',
-      ' ',]
+    items: ['Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego.',
+      'Oferujemy drukarki zastępcze Wrocław dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową.',]
   },
 }
 
