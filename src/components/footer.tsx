@@ -4,7 +4,7 @@ import React from 'react'
 import { useRef, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
-import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
+import { FaWhatsapp, FaTelegramPlane, FaViber } from '@/components/icons/social-icons'
 import Link from 'next/link'
 import { HomeCta } from '@/components/home-cta'
 
