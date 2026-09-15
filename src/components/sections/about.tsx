@@ -1,10 +1,9 @@
-'use client'
-
-import { useRef, useEffect, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import manifest from '@/config/manifest'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 export interface AboutT {
   eyebrow?: string
@@ -45,33 +44,13 @@ export function About({
 }: {
   t?: AboutT
   bare?: boolean
-  // Passed in from a Server Component parent (e.g. <GoogleReviews /> from
-  // '@/components/google-reviews') since this is a Client Component and
-  // can't import a Server Component module directly.
+  // Passed in from a sibling Server Component (e.g. <GoogleReviews /> from
+  // '@/components/google-reviews') so the parent template controls ordering.
   reviewsSlot?: ReactNode
   compact?: boolean
   showMoreLink?: boolean
 } = {}) {
   const d = t ?? PL
-  const eyebrowRef = useRef<HTMLParagraphElement>(null)
-  const mobileEyebrowRef = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const observers: IntersectionObserver[] = []
-    for (const ref of [eyebrowRef, mobileEyebrowRef]) {
-      const el = ref.current
-      if (!el) continue
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.remove('fade-slide-init')
-          el.classList.add('fade-slide-animate')
-          observer.disconnect()
-        }
-      }, { threshold: 0.1 })
-      observer.observe(el)
-      observers.push(observer)
-    }
-    return () => observers.forEach((o) => o.disconnect())
-  }, [])
   return (
     <section
       id="o-nas"
@@ -90,9 +69,9 @@ export function About({
         {/* Mobile-only: logiczna kolejność treści */}
         <div className="md:hidden text-white space-y-6">
           {d.eyebrow && (
-            <p ref={mobileEyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
+            <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
               {d.eyebrow}
-            </p>
+            </FadeSlideP>
           )}
           <div className="space-y-2">
             <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
@@ -165,9 +144,9 @@ export function About({
           {/* Text */}
           <div className="text-white space-y-6">
             {d.eyebrow && (
-              <p ref={eyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+              <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
                 {d.eyebrow}
-              </p>
+              </FadeSlideP>
             )}
             <div className="space-y-2">
               <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
