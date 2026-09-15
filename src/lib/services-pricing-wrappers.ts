@@ -38,7 +38,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_n_zl_nl_stanowisko_v2": { pl: "{0} zł\n/ stanowisko", ru: "{0} zł\n/ место", uk: "{0} zł\n/ місце" },
 
   // Бывшие 19 спецслучаев цены — уникальные, по 1 использованию каждая
-  "p_plus_n_zl": { pl: "+{0} zł", ru: "+{0} zł", uk: "+{0} zł" },
+  "p_plus_n_zl": { pl: "+ {0} zł", ru: "+ {0} zł", uk: "+ {0} zł" },
   "p_n_zl_plus_n_zl_km": { pl: "{0} zł + {1} zł/km", ru: "{0} zł + {1} zł/км", uk: "{0} zł + {1} zł/km" },
   "p_n_zl_nosnik": { pl: "{0} zł + nośnik", ru: "{0} + носитель", uk: "{0} + носій" },
   "p_od_n_zl": { pl: "od {0} zł", ru: "от {0}", uk: "від {0}" },

@@ -28,7 +28,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
       },
       {
         service: 'Pisemna opinia techniczna\n(dodatkowo do pełnej diagnozy, z dokumentacją fotograficzną)',
-        price: '+50 zł',
+        price: '+ 50 zł',
         duration: '1-2 dni',
       },
       {

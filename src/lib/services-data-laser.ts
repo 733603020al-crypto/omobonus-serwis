@@ -436,9 +436,7 @@ const applyLaserAdditionalSubcategory = (sections: PricingSection[]) => {
 export const createLaserPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
-  const diagnosisItem = diagnosisSection?.items.find(
-    item => item.service === 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)'
-  )
+  const diagnosisItem = diagnosisSection?.items[3]
   if (diagnosisItem) {
     diagnosisItem.price = '70 / 100 / 150'
   }

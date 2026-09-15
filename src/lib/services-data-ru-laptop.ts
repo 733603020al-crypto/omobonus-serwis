@@ -28,7 +28,7 @@ export const laptopDiagnostaSection = (): PricingSection => ({
     },
     {
       service: 'Письменное техническое заключение\n(дополнительно к полной диагностике, с фотодокументацией)',
-      price: '+50 zł',
+      price: '+ 50 zł',
       duration: '1-2 дня',
     },
     {
