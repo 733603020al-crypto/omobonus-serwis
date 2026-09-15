@@ -33,7 +33,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-atramentowych': 1.2,
   'serwis-drukarek-laserowych': 1.2,
 }
-const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
+const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
@@ -340,7 +340,7 @@ export function ServicePageTemplate({
                 </div>
               )}
               <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'mb-3' : 'mb-6'}${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
-                <FadeSlideText className={`hidden md:block ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'text-[20px]' : 'text-[18px]'} text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
+                <FadeSlideP className={`hidden md:block ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'text-[20px]' : 'text-[18px]'} text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
@@ -348,7 +348,7 @@ export function ServicePageTemplate({
                       : slug === 'druk-3d-na-zamowienie'
                         ? (labels.fadeSlideDruk3DZamowienie ?? labels.fadeSlideDefault)
                         : labels.fadeSlideDefault}
-                </FadeSlideText>
+                </FadeSlideP>
               </div>
             </>
           ) : null}

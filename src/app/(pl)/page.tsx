@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { HomePageTemplate } from '@/components/home-page-template'
-import { HOME_EXTRA_SERVICES } from '@/lib/services-data'
+import { services, HOME_EXTRA_SERVICES } from '@/lib/services-data'
 
 export const metadata: Metadata = {
   title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <HomePageTemplate
+      servicesData={services}
       servicesExtra={HOME_EXTRA_SERVICES}
       cta={{
         heading: 'Masz problem z komputerem lub drukarką?',

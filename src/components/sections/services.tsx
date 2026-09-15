@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
-import { services as defaultServices, HOME_EXTRA_SERVICES } from '@/lib/services-data'
 import type { ServiceData } from '@/lib/services-data'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
@@ -111,7 +110,7 @@ export function Services({
   bare?: boolean
   extraServices?: string[]
 } = {}) {
-  const services = servicesData ?? defaultServices
+  const services = servicesData ?? []
   const d = t ?? PL
   const [expanded, setExpanded] = useState(false)
   const dividerRef = useRef<HTMLDivElement>(null)
