@@ -1,6 +1,6 @@
 import { type PricingItem, type PricingSection } from './services-data'
-import { migratedPrice, migratedDuration, type FieldMigration } from './services-pricing-data'
-import { PRICE_WRAPPERS, DURATION_WRAPPERS, type WrapperTemplate } from './services-pricing-wrappers'
+import { migratedPrice, migratedDuration } from './services-pricing-data'
+import { PRICE_WRAPPERS, DURATION_WRAPPERS } from './services-pricing-wrappers'
 
 export type PricingLocale = 'pl' | 'ru' | 'uk'
 
@@ -32,30 +32,16 @@ export function pricingId(slug: string, path: string): string {
 // перевод обёртки на нужный язык. Отредактировать число для всех 3 языков
 // сразу — значит отредактировать services-pricing-data.ts.
 //
-// Все 510 позиций цены и 510 позиций срока мигрированы в migratedPrice/
+// Все 510 позиций цены и 519 позиций срока мигрированы в migratedPrice/
 // migratedDuration (включая бывшие уникальные форматы — см. "Бывшие ... спец-
-// случаи" в services-pricing-wrappers.ts). Для цены (getDisplayPrice) legacy
-// item.price больше не существует как fallback — отсутствие записи в
-// migratedPrice/PRICE_WRAPPERS теперь явная ошибка (dev и build), чтобы цену
-// нельзя было молча потерять. Срок (getDisplayDuration) пока не мигрирован
-// на строгий режим — сохраняет fallback на item.duration.
+// случаи" в services-pricing-wrappers.ts). И для цены (getDisplayPrice), и
+// для срока (getDisplayDuration) legacy item.price/item.duration больше не
+// существует как fallback — отсутствие записи в migratedPrice/migratedDuration
+// или в соответствующем словаре обёрток теперь явная ошибка (dev и build),
+// чтобы значение нельзя было молча потерять.
 
 function fillTemplate(template: string, numbers: string[]): string {
   return template.replace(/\{(\d+)\}/g, (_, i) => numbers[Number(i)] ?? '')
-}
-
-function resolveDisplay(
-  migrated: Record<string, FieldMigration>,
-  wrappers: Record<string, WrapperTemplate>,
-  id: string,
-  locale: PricingLocale,
-  fallback: string,
-): string {
-  const entry = migrated[id]
-  if (!entry) return fallback
-  const wrapper = wrappers[entry.wrapperKey]
-  if (!wrapper) return fallback
-  return fillTemplate(wrapper[locale], entry.numbers)
 }
 
 export function getDisplayPrice(slug: string, path: string, locale: PricingLocale): string {
@@ -71,8 +57,17 @@ export function getDisplayPrice(slug: string, path: string, locale: PricingLocal
   return fillTemplate(wrapper[locale], entry.numbers)
 }
 
-export function getDisplayDuration(slug: string, path: string, locale: PricingLocale, fallback: string): string {
-  return resolveDisplay(migratedDuration, DURATION_WRAPPERS, pricingId(slug, path), locale, fallback)
+export function getDisplayDuration(slug: string, path: string, locale: PricingLocale): string {
+  const id = pricingId(slug, path)
+  const entry = migratedDuration[id]
+  if (!entry) {
+    throw new Error(`[services-pricing] Нет срока в migratedDuration для "${id}" — добавь запись в services-pricing-data.ts.`)
+  }
+  const wrapper = DURATION_WRAPPERS[entry.wrapperKey]
+  if (!wrapper) {
+    throw new Error(`[services-pricing] Неизвестный wrapperKey "${entry.wrapperKey}" для "${id}" в services-pricing-wrappers.ts.`)
+  }
+  return fillTemplate(wrapper[locale], entry.numbers)
 }
 
 // Сырые числа без обёртки — только для сборки составных полей (например,

@@ -5,12 +5,11 @@
 // 1) Структурное соответствие pl/ru/uk 1:1 — одинаковый набор и порядок
 //    slug-ов услуг, секций прайса, подкатегорий, количество позиций в каждой
 //    и (для wynajem-drukarek/drukarka-zastepcza) количество priceTiers/rows.
-// 2) Что для каждой ценовой/срочной позиции, для которой номера уже вынесены
-//    в общий источник (services-pricing-data.ts), текст в каждом языковом
-//    файле (item.price/item.duration) не разошёлся с тем, что реально
-//    выводится через getDisplayPrice/getDisplayDuration — то есть что в
-//    языковых файлах не появился новый захардкоженный текст цены/срока,
-//    из общей схемы.
+// 2) Что для каждой ценовой/срочной позиции legacy item.price/item.duration
+//    не появился заново в языковых файлах (оба поля больше не существуют как
+//    fallback — единственный источник это services-pricing-data.ts), и что
+//    getDisplayPrice/getDisplayDuration реально строятся для каждого id
+//    (иначе упал бы build).
 // 3) Числовое ядро priceTiers-строк и subcategory.price для wynajem-drukarek
 //    и drukarka-zastepcza — совпадает ли набор цифр в pl/ru/uk (сами числа
 //    там дублированы по 3 языковым файлам, поэтому могут разъехаться, если
@@ -159,13 +158,11 @@ services.forEach((plService, i) => {
   }
 })
 
-// --- 3) getDisplayPrice/getDisplayDuration vs. текст в языковых файлах -----
-// Цена для мигрированных позиций больше не хранится в языковых файлах
-// (item.price отсутствует) — единственный источник это services-pricing-data.ts,
-// getDisplayPrice бросает исключение сама, если для id нет записи. Здесь только
-// проверяем, что legacy item.price не появился заново по ошибке, и что
-// getDisplayPrice реально строится (иначе упал бы build).
-// Срок (duration) пока не мигрирован на строгий режим — сравниваем как раньше.
+// --- 3) getDisplayPrice/getDisplayDuration строятся, legacy-поля не вернулись
+// Цена и срок для мигрированных позиций больше не хранятся в языковых файлах
+// (item.price/item.duration отсутствуют как поля типа) — единственный источник
+// это services-pricing-data.ts, getDisplayPrice/getDisplayDuration бросают
+// исключение сами, если для id нет записи.
 
 interface LangSet {
   locale: 'pl' | Locale
@@ -197,10 +194,7 @@ for (const { locale, list, file } of langSets) {
       }
 
       if (migratedDuration[id]) {
-        const displayDuration = getDisplayDuration(service.slug, path, locale, item.duration)
-        if (displayDuration !== item.duration) {
-          report(id, file, `Срок в файле "${item.duration}" не совпадает с построенным через общую схему "${displayDuration}"`)
-        }
+        getDisplayDuration(service.slug, path, locale)
       }
     })
   }

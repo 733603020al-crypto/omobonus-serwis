@@ -9,27 +9,21 @@ export const defaultPricingSections: PricingSection[] = [
     items: [
       {
         service: 'Wstępna diagnoza online 15 min.(Opis problemu przez WhatsApp / stronę internetową/telefon)',
-        duration: 'do 15 min',
       },
       {
         service: 'Wstępna diagnoza przy dostawie do serwisu 15 min. (również w razie rezygnacji z naprawy)',
-        duration: 'do 15 min',
       },
       {
         service: 'Diagnoza i wycena naprawy\n(w przypadku realizacji naprawy)',
-        duration: '1-2 dni',
       },
       {
         service: 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)',
-        duration: '1-2 dni',
       },
       {
         service: 'Pisemna opinia techniczna\n(dodatkowo do pełnej diagnozy, z dokumentacją fotograficzną)',
-        duration: '1-2 dni',
       },
       {
         service: 'Pilna realizacja (jeśli to możliwe, przyspieszamy naprawę bez dodatkowej opłaty)',
-        duration: 'do ustalenia',
       },
     ],
   },
@@ -42,19 +36,15 @@ export const defaultPricingSections: PricingSection[] = [
     items: [
       {
         service: 'Odbiór urządzenia od Klienta (do 2,5 km od serwisu; 5 km łącznie w obie strony)',
-        duration: '1-2 dni',
       },
       {
         service: 'Dostarczenie naprawionego urządzenia do Klienta (do 2,5 km od serwisu; 5 km łącznie w obie strony)',
-        duration: '1-2 dni',
       },
       {
         service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (trasa w obie strony; dopłata po przekroczeniu 5 km)',
-        duration: '1-2 dni',
       },
       {
         service: 'Pilna realizacja (jeśli to możliwe, realizujemy odbiór lub dostawę w pierwszej kolejności)',
-        duration: 'do ustalenia',
       },
     ],
   },
@@ -65,15 +55,12 @@ export const defaultPricingSections: PricingSection[] = [
     items: [
       {
         service: 'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie zewnętrzne i wewnętrzne drukarki,\n• czyszczenie i konserwacja karetek,\n• sprawdzenie głowicy,\n• czyszczenie rolek pobierania papieru,\n• kontrola elementów mechanicznych,\n• test jakości wydruku.',
-        duration: '1-3 dni',
       },
       {
         service: 'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie czujników papieru,\n• czyszczenie stacji serwisowej.',
-        duration: '1-3 dni',
       },
       {
         service: 'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• udrożnienie układu tuszu,\n• czyszczenie pompy/pochłaniacza tuszu,\n• reset liczników serwisowych.',
-        duration: '1-3 dni',
       },
     ],
   },
@@ -87,15 +74,12 @@ export const defaultPricingSections: PricingSection[] = [
         items: [
           {
             service: 'Naprawa mechanizmu podawania oraz poboru papieru\n(usunięcie problemów z wciąganiem kartek, nieregularnym podawaniem papieru lub zatrzymywaniem się rolki)',
-            duration: '1–2 dni',
           },
           {
             service: 'Czyszczenie mechanizmu podawania i uchwytów papieru\n(usunięcie zabrudzeń z rolek i separatorów – poprawa przyczepności i płynności podawania papieru)',
-            duration: '1–2 dni',
           },
           {
             service: 'Usunięcie zacięć papieru i regeneracja mechanizmu podawania\n(eliminacja blokad papieru, wymiana zużytych rolek i elementów prowadzących, regeneracja sprężyn i separatorów)',
-            duration: '1–3 dni',
           },
         ],
       },
@@ -105,11 +89,9 @@ export const defaultPricingSections: PricingSection[] = [
         items: [
           {
             service: 'Wymiana głowicy drukującej (igłowej)\n(przywraca prawidłowy wydruk — rozwiązuje problem z brakiem znaków, przerywanymi liniami lub nierówną intensywnością druku)',
-            duration: '2–4 dni',
           },
           {
             service: 'Regulacja i czyszczenie mechanizmu igieł / ramienia uderzeniowego\n(czyszczenie i kalibracja mechanizmu uderzeniowego – usuwa zacięcia igieł, poprawia jakość i precyzję druku)',
-            duration: '1–3 dni',
           },
         ],
       },
@@ -119,15 +101,12 @@ export const defaultPricingSections: PricingSection[] = [
         items: [
           {
             service: 'Wymiana lub regulacja paska / przekładni napędu kartridża\n(naprawa napędu przesuwu głowicy – usuwa hałas, drgania i zatrzymania karetki podczas drukowania)',
-            duration: '1–3 dni',
           },
           {
             service: 'Czyszczenie i smarowanie prowadnic kartridża / ramienia\n(czyszczenie i konserwacja elementów prowadzących – poprawia płynność ruchu karetki i dokładność wydruku)',
-            duration: '1–2 dni',
           },
           {
             service: 'Wymiana lub naprawa mechanizmu wstęgi barwiącej\n(przywraca równomierne nanoszenie tuszu na papier, eliminuje problemy z przerywanym lub bladym drukiem)',
-            duration: '1–3 dni',
           },
         ],
       },
@@ -137,15 +116,12 @@ export const defaultPricingSections: PricingSection[] = [
         items: [
           {
             service: 'Wymiana taśmy barwiącej (ink-ribbon)\n(przywraca prawidłową intensywność i kontrast wydruku – usuwa efekt bladych lub przerywanych linii)',
-            duration: '1–2 dni',
           },
           {
             service: 'Czyszczenie mechanizmu wstęgi i prowadnic\n(usunięcie zabrudzeń i resztek tuszu z elementów prowadzących – poprawia równomierne przesuwanie taśmy i jakość druku)',
-            duration: '1–2 dni',
           },
           {
             service: 'Regeneracja mechanizmu wstęgi lub uchwytu wstęgi\n(naprawa lub wymiana zużytych elementów napędu taśmy – eliminuje zacięcia i problemy z podawaniem taśmy barwiącej)',
-            duration: '1–3 dni',
           },
         ],
       },
@@ -156,41 +132,33 @@ export const defaultPricingSections: PricingSection[] = [
           {
             service:
               'Naprawa lub wymiana złączki lub gniazda LAN/USB uszkodzone / poluzowane\n(usuwa brak wykrywania drukarki przez komputer / LAN)',
-            duration: '1-3 dni',
           },
           {
             service:
               'Naprawa lub wymiana zasilacza (PSU / płytka zasilająca)\n(po awarii po przepięciu / skoku napięcia)',
-            duration: '1-5 dni',
           },
           {
             service:
               'Diagnostyka płyty głównej / elektroniki sterującej\n(ustala źródło błędów, zwarć, braku komunikacji)',
-            duration: '1-2 dni',
           },
           {
             service:
               'Naprawa lub wymiana płyty głównej (formatera) / interfejsów I/O / HVPS\n(błędy firmware, usuwa problemy z uruchamianiem drukarki, samoczynnym wyłączaniem)',
-            duration: '1-5 dni',
           },
           {
             service:
               'Odbudowa ścieżek / lutów po zalaniu lub przepięciu\n(przywraca ciągłość sygnałów płyty głównej)',
-            duration: '2-5 dni',
           },
           {
             service:
               'Naprawa lub wymiana wentylatora / modułu chłodzenia\n(hałas, przegrzewanie, zabrudzenie)',
-            duration: '1-3 dni',
           },
           {
             service: 'Wymiana taśm sygnałowych / kabli wewnętrznych',
-            duration: '1-2 dni',
           },
           {
             service:
               'Naprawa lub wymiana uszkodzonego panelu sterowania\n(przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD)',
-            duration: '2-5 dni',
           },
         ],
       },
@@ -201,47 +169,38 @@ export const defaultPricingSections: PricingSection[] = [
           {
             service:
               'Instalacja sterowników i konfiguracja w sieci (router / Wi-Fi / LAN /) (zdalnie lub lokalnie)',
-            duration: '1-2 dni',
           },
           {
             service:
               'Aktualizacja firmware / reset systemu drukarki (usuwa błędy i komunikaty serwisowe)',
-            duration: '1-2 dni',
           },
           {
             service:
               'Reset liczników serwisowych bez ingerencji w moduły (odblokowanie funkcji po komunikacie o konserwacji)',
-            duration: '1 dzień',
           },
           {
             service:
               'Przywrócenie ustawień fabrycznych i ponowna konfiguracja (rozwiązuje problemy po błędnych zmianach ustawień)',
-            duration: '1 dzień',
           },
           {
             service:
               'Usunięcie komunikatów błędów systemowych (diagnostyka + reset) (drukarka wraca do pracy bez błędów)',
-            duration: '1-2 dni',
           },
           {
             service:
               'Usuwanie konfliktów sterowników (przywraca poprawną komunikację drukarka ↔ komputer)',
-            duration: '1 dzień',
           },
           {
             service:
               'Migracja drukarki na nowy komputer / serwer (przeniesienie profili, skrótów, udziałów)',
-            duration: '1 dzień',
           },
           {
             service:
               'Szkolenie użytkownika (5-15 min) (pokazanie podstaw obsługi: skan, druk, wymiana tuszu/tonera)',
-            duration: 'od ręki',
           },
           {
             service:
               'Wsparcie zdalne - konfiguracja / sterowniki / diagnostyka (pomoc bez wizyty serwisanta)',
-            duration: '1-2 dni',
           },
         ],
       },
@@ -251,20 +210,16 @@ export const defaultPricingSections: PricingSection[] = [
         items: [
           {
             service: 'Czyszczenie po silnym zalaniu tonerem (Pełna dekontaminacja)',
-            duration: '1-3 dni',
           },
           {
             service: 'Ocena stanu urządzenia przed zakupem (Ekspertyza)',
-            duration: '1 dzień',
           },
           {
             service: 'Drukarka zastępcza (Na czas naprawy)',
-            duration: '-',
             link: '/uslugi/drukarka-zastepcza',
           },
           {
             service: 'Odnowienie obudowy (Bielenie UV)',
-            duration: '1-5 dni',
           },
         ],
       },
@@ -401,25 +356,20 @@ export const createPricingSections = (): PricingSection[] => {
 export const getRecoveryItems = (): PricingItem[] => [
   {
     service: 'Oszacowanie możliwości odzyskania danych z uszkodzonego nośnika',
-    duration: '1-2 dni',
   },
   {
     service:
       'Odzyskanie danych (usuniętych plików) po skasowaniu ze sprawnego nośnika (dokumenty, zdjęcia lub filmy, przez przypadkowe ich usunięcie, sformatowanie dysku lub przywrócenie systemu Windows)',
-    duration: '1-5 dni',
   },
   {
     service:
       'Odzyskiwanie danych (uszkodzenia logiczne – nośnik (np. dysk twardy) zachował sprawność)',
-    duration: '1-5 dni',
   },
   {
     service:
       'Odzyskanie danych z uszkodzonego nośnika (fizycznie lub elektronicznie uszkodzonych dysków HDD i SSD)',
-    duration: '5-15 dni',
   },
   {
     service: 'Trwałe usuwanie danych',
-    duration: '1-2 dni',
   },
 ]

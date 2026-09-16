@@ -4,7 +4,6 @@ export interface PricingItem {
   // (см. getDisplayPrice). Строковое значение здесь остаётся только там, где
   // цена не мигрирована (3D-печать по формуле, priceTiers-таблицы).
   price?: string
-  duration: string
   link?: string
 }
 

@@ -8,17 +8,14 @@ const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
     {
       service:
         'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wszelkich prowadnic, śrub i osi (kurz, filament, zanieczyszczenia)\n• kontrola i czyszczenie ekstrudera oraz hotendu\n• sprawdzenie i czyszczenie stołu roboczego oraz układu podawania filamentu\n• szybki przegląd układu elektronicznego i złączy\n• test kalibracji podstawowej (osi X / Y / Z)',
-      duration: '1–3 dni',
     },
     {
       service:
         'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie napinaczy pasów i kontrola przesunięć osi\n• smarowanie prowadnic liniowych i śrub\n• regulacja naciągu pasków i prowadzeń\n• kontrola i czyszczenie czujników oraz krańcówek',
-      duration: '1–3 dni',
     },
     {
       service:
         'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• precyzyjna kalibracja stołu (auto-bed leveling / mesh)\n• pełne czyszczenie ekstrudera + wymiana tulei PTFE\n• kontrola i optymalizacja chłodzenia (wentylatory, kanały)\n• reset i aktualizacja firmware (jeśli możliwe)\n• test jakości wydruku i korekta parametrów',
-      duration: '1–3 dni',
     },
   ]
 }
@@ -31,23 +28,18 @@ const apply3DPrinterMechanicsSubcategory = (sections: PricingSection[]) => {
   mechanicsSubcategory.items = [
     {
       service: 'Regulacja i kalibracja osi X / Y / Z\n(nierówne warstwy, przesunięcia, stuki podczas ruchu)',
-      duration: '1–2 dni',
     },
     {
       service: 'Regulacja lub wymiana pasków i napinaczy\n(luzy, przeskakiwanie, utrata dokładności druku)',
-      duration: '1–3 dni',
     },
     {
       service: 'Serwis ekstrudera i hotendu\n(zatykanie, brak podawania filamentu, wycieki)',
-      duration: '1–3 dni',
     },
     {
       service: 'Czyszczenie i naprawa układu podawania filamentu\n(ślizganie filamentu, nieregularne podawanie)',
-      duration: '1–2 dni',
     },
     {
       service: 'Naprawa systemu chłodzenia (wentylatory, kanały)\n(przegrzewanie, deformacje wydruku)',
-      duration: '1–2 dni',
     },
   ]
 }
@@ -60,23 +52,18 @@ const apply3DPrinterElectronicsSubcategory = (sections: PricingSection[]) => {
   electronicsSubcategory.items = [
     {
       service: 'Diagnostyka i naprawa płyty głównej\n(błędy systemowe, brak reakcji, resetowanie się drukarki)',
-      duration: '1–3 dni',
     },
     {
       service: 'Wymiana lub naprawa czujników (endstop, BL-Touch, termistory)\n(błędy osi, problemy z poziomowaniem, błędy temperatury)',
-      duration: '1–2 dni',
     },
     {
       service: 'Naprawa lub wymiana okablowania i złączy\n(przerywanie pracy, zaniki sygnału, niestabilność)',
-      duration: '1–2 dni',
     },
     {
       service: 'Naprawa układów zasilania (zasilacz, przewody)\n(brak zasilania, wyłączanie się drukarki)',
-      duration: '1–3 dni',
     },
     {
       service: 'Wgrywanie, reset i konfiguracja firmware\n(błędy oprogramowania, nieprawidłowe działanie po aktualizacji)',
-      duration: '1 dzień',
     },
   ]
 }
@@ -89,23 +76,18 @@ const apply3DPrinterCalibrationSubcategory = (sections: PricingSection[]) => {
   calibrationSubcategory.items = [
     {
       service: 'Precyzyjna kalibracja poziomowania stołu (manual / auto-bed leveling)\n(problemy z pierwszą warstwą, słaba przyczepność)',
-      duration: '1 dzień',
     },
     {
       service: 'Kalibracja ekstrudera (E-steps, flow, retrakcja)\n(nitkowanie, niedolewanie, przelewanie filamentu)',
-      duration: '1 dzień',
     },
     {
       service: 'Kalibracja osi i geometrii drukarki\n(przekoszenia, nierówne ściany, przesunięcia warstw)',
-      duration: '1–2 dni',
     },
     {
       service: 'Testy jakości wydruku i korekta profilu materiału\n(PLA, PETG, ABS, TPU)',
-      duration: '1 dzień',
     },
     {
       service: 'Optymalizacja parametrów pod konkretny model / detal\n(druk techniczny, dokładność wymiarowa)',
-      duration: '1–2 dni',
     },
   ]
 }
@@ -119,23 +101,18 @@ const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.items = [
     {
       service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
-      duration: '1 dzień',
     },
     {
       service: 'Konfiguracja slicera i profili materiałów\n(Cura, PrusaSlicer, Bambu Studio itp.)',
-      duration: '1 dzień',
     },
     {
       service: 'Integracja z siecią i zdalne sterowanie (OctoPrint, Klipper UI)\n(zdalny monitoring, sterowanie z telefonu/PC)',
-      duration: '1 dzień',
     },
     {
       service: 'Backup i przywracanie ustawień drukarki\n(po awarii, aktualizacji, wymianie elektroniki)',
-      duration: '1 dzień',
     },
     {
       service: 'Szkolenie z obsługi i konfiguracji drukarki\n(dla nowych użytkowników lub firm)',
-      duration: 'wg ustaleń',
     },
   ]
 }
@@ -148,23 +125,18 @@ const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
   additionalSubcategory.items = [
     {
       service: 'Montaż i konfiguracja auto-levelingu (BL-Touch, CR-Touch itp.)',
-      duration: '1–2 dni',
     },
     {
       service: 'Upgrade ekstrudera (direct drive, all-metal hotend)',
-      duration: '1–3 dni',
     },
     {
       service: 'Modyfikacje pod materiały techniczne (ABS, nylon, CF)\n(komora, chłodzenie, ustawienia)',
-      duration: '1–3 dni',
     },
     {
       service: 'Usuwanie poważnych zatorów i regeneracja hotendu\n(cold pull, czyszczenie chemiczne, wymiana elementów)',
-      duration: '1–2 dni',
     },
     {
       service: 'Indywidualne modyfikacje na zamówienie\nwycena indywidualna wg ustaleń',
-      duration: '—',
     },
   ]
 }
@@ -209,13 +181,13 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       id: 'diagnoza',
       title: 'Drukowanie 3D z gotowego projektu',
       items: [
-        { service: 'Przygotowanie wydruku', duration: '1–2 dni' },
-        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', duration: '1–2 dni' },
-        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', duration: '1–2 dni' },
-        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', duration: '1–2 dni' },
-        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', duration: '1–2 dni' },
-        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', duration: 'do 24 h' },
-        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', duration: 'do 24 h' },
+        { service: 'Przygotowanie wydruku', },
+        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', },
+        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', },
+        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', },
+        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', },
+        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', },
+        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', },
       ],
       priceFormula: 'Cena końcowa = przygotowanie wydruku + materiał + czas druku',
       example: 'Przykład: Wydruk z PLA 100 g materiału przy 5 godzinach druku — 25 zł (przygotowanie wydruku) + 100 g materiału × 0,30 zł/gram + 5 godz. druku × 8 zł/h = 95 zł',
@@ -228,13 +200,13 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       id: 'projektowanie-modeli',
       title: 'Projektowanie i modelowanie 3D CAD',
       items: [
-        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', duration: 'do 24 h' },
-        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', duration: 'do 24 h' },
-        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', duration: '1–2 dni' },
-        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', duration: '1–2 dni' },
-        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', duration: '2–3 dni' },
-        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', duration: 'wg projektu' },
-        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', duration: 'do 24 h' },
+        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', },
+        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', },
+        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', },
+        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', },
+        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', },
+        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', },
+        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', },
       ],
     })
   }

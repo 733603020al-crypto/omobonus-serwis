@@ -9,15 +9,12 @@ const updateKonserwacjaForOutsourcing = (sections: PricingSection[]) => {
   konserwacjaSection.items = [
     {
       service: 'Pakiet START dla małych firm i biur (1–3 komputery)\n\nzakres paketu obejmuje:\n• zdalne wsparcie użytkowników (rozwiązywanie problemów z programami, drukowaniem, pocztą - pomoc telefoniczna/chat) - do 4 h miesięcznie,\n• aktualizacje systemów i oprogramowania,\n• administracja systemami Windows / macOS (utrzymanie stabilności i aktualności),\n• monitoring bezpieczeństwa (aktualizacje antywirusa, kontrola zapór i zagrożeń),\n• zarządzanie kopiami zapasowymi (backup + test odtwarzania).',
-      duration: 'do 4 h',
     },
     {
       service: 'Pakiet BIZNES dla rozwijających się firm (4–10 komputerów)\n\nzakres START +\n• zdalne wsparcie użytkowników - pomoc telefoniczna/chat - do 10 h miesięcznie,\n• monitoring bezpieczeństwa (aktualizacje antywirusa, kontrola zapór i zagrożeń),\n• zarządzanie kopiami zapasowymi (backup + test odtwarzania),\n• administracja siecią LAN / Wi-Fi / Router,\n• konfiguracja drukarek i skanowania w sieci (SMB / e-mail),\n• wizyta serwisanta na miejscu: 1× / miesiąc.',
-      duration: 'do 2 h',
     },
     {
       service: 'Pakiet PRO dla firm z rozbudowaną infrastrukturą (11+ komputerów)\n\nzakres BIZNES +\n• zdalne wsparcie użytkowników - pomoc telefoniczna/chat – nielimitowane,\n• zarządzanie użytkownikami i uprawnieniami,\n• administracja serwerami i usługami sieciowymi,\n• wizyta serwisanta na miejscu: 2× / miesiąc,\n• audyt sprzętu i raport miesięczny,\n• priorytetowa obsługa (pomijanie kolejki).',
-      duration: 'do 1 h',
     },
   ]
 }
@@ -33,27 +30,21 @@ const updateNaprawyKaretkaForOutsourcing = (sections: PricingSection[]) => {
   karetkaSubcategory.items = [
     {
       service: 'Wymiana zasilacza / dysku / RAM u Klienta\n(wymiana uszkodzonych lub rozbudowa podzespołów bezpośrednio w siedzibie firmy)',
-      duration: '1–3 dni',
     },
     {
       service: 'Czyszczenie wnętrza komputera i chłodzenia\n(usunięcie kurzu i zabrudzeń – poprawa wydajności i chłodzenia podzespołów)',
-      duration: '1–2 dni',
     },
     {
       service: 'Wymiana wentylatora / chłodzenia CPU\n(montaż nowego układu chłodzenia lub wymiana niesprawnego wentylatora)',
-      duration: '1–2 dni',
     },
     {
       service: 'Wymiana past termoprzewodzących CPU / GPU\n(odświeżenie połączenia termicznego dla lepszego odprowadzania ciepła)',
-      duration: '1–2 dni',
     },
     {
       service: 'Konserwacja stacji roboczej lub terminala\n(czyszczenie, kontrola połączeń, test stabilności – utrzymanie sprawności sprzętu)',
-      duration: '1–2 dni',
     },
     {
       service: 'Montaż nowego sprzętu\n(instalacja i podłączenie komputera, monitora, zasilacza UPS w miejscu pracy)',
-      duration: '1–3 dni',
     },
   ]
 }
@@ -69,27 +60,21 @@ const updateNaprawyGlowicaForOutsourcing = (sections: PricingSection[]) => {
   glowicaSubcategory.items = [
     {
       service: 'Diagnostyka i konfiguracja sieci LAN / Wi-Fi\n(analiza połączeń, usuwanie błędów komunikacji, optymalizacja ustawień sieci firmowej)',
-      duration: '1–2 dni',
     },
     {
       service: 'Konfiguracja routera, modemu, punktu dostępowego\n(ustawienie parametrów dostępu do Internetu, zabezpieczeń i sieci bezprzewodowej)',
-      duration: '1–2 dni',
     },
     {
       service: 'Konfiguracja lub ponowne uruchomienie urządzeń sieciowych (drukarka, skaner, router)\n(przywrócenie komunikacji w sieci lokalnej, ponowna instalacja i test urządzeń)',
-      duration: '1–2 dni',
     },
     {
       service: 'Udostępnianie plików i drukarek w sieci\n(tworzenie wspólnych zasobów w sieci lokalnej, konfiguracja uprawnień użytkowników)',
-      duration: '1–2 dni',
     },
     {
       service: 'Test prędkości i stabilności połączenia\n(pomiar wydajności i jakości łącza internetowego lub sieci wewnętrznej)',
-      duration: 'do 24 h',
     },
     {
       service: 'Podłączenie nowych stanowisk do sieci\n(instalacja kabli, konfiguracja adresów IP i włączenie komputerów do sieci biurowej)',
-      duration: '1–3 dni',
     },
   ]
 }
@@ -105,27 +90,21 @@ const updateNaprawyTasmaForOutsourcing = (sections: PricingSection[]) => {
   tasmaSubcategory.items = [
     {
       service: 'Usuwanie wirusów, trojanów, adware\n(czyszczenie systemu z oprogramowania szkodliwego, przywrócenie stabilności i wydajności)',
-      duration: '1–3 dni',
     },
     {
       service: 'Aktualizacja i konfiguracja antywirusa\n(instalacja, konfiguracja ochrony w czasie rzeczywistym, aktualizacja baz zagrożeń)',
-      duration: '1–2 dni',
     },
     {
       service: 'Konfiguracja zapory sieciowej (firewall)\n(ustawienie reguł dostępu, blokowanie nieautoryzowanych połączeń i zagrożeń sieciowych)',
-      duration: '1–2 dni',
     },
     {
       service: 'Wykonanie i test kopii zapasowej (backup + test odtwarzania)\n(tworzenie automatycznych kopii danych oraz kontrola poprawności odtwarzania)',
-      duration: '1–2 dni',
     },
     {
       service: 'Odzyskiwanie danych z dysku lub pendrive\'a (prosty przypadek)\n(odzyskanie skasowanych lub utraconych plików po awarii lub formatowaniu)',
-      duration: '1–5 dni',
     },
     {
       service: 'Przywrócenie dostępu do systemu lub konta użytkownika (po błędzie lub infekcji)\n(naprawa uszkodzonych profili, reset uprawnień, przywrócenie logowania do systemu)',
-      duration: '1–3 dni',
     },
   ]
 }
@@ -164,23 +143,18 @@ const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
     items: [
       {
         service: 'Audyt infrastruktury komputerowej\n(kompleksowa kontrola stacji roboczych, serwerów i urządzeń sieciowych – wykrycie usterek sprzętowych i programowych)',
-        duration: '1–3 dni',
       },
       {
         service: 'Analiza konfiguracji systemów i oprogramowania\n(ocena poprawności ustawień, legalności licencji oraz wydajności systemów operacyjnych i aplikacji)',
-        duration: '1–2 dni',
       },
       {
         service: 'Optymalizacja środowiska pracy\n(usprawnienie działania komputerów biurowych, usunięcie zbędnych procesów, poprawa szybkości i stabilności systemów)',
-        duration: '1–2 dni',
       },
       {
         service: 'Raport z audytu i rekomendacje modernizacji\n(szczegółowy raport z wynikami kontroli i sugestiami aktualizacji sprzętu, sieci i zabezpieczeń)',
-        duration: '1–2 dni',
       },
       {
         service: 'Weryfikacja kopii zapasowych i bezpieczeństwa danych\n(sprawdzenie procedur tworzenia backupów, test odtwarzania danych, ocena zabezpieczeń przed utratą informacji)',
-        duration: '1–3 dni',
       },
     ],
   }
@@ -205,23 +179,18 @@ const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
   mechanizmSubcategory.items = [
     {
       service: 'Wizyta serwisanta u Klienta\n(pierwsza godzina pracy – diagnostyka i usunięcie drobnych usterek bezpośrednio w siedzibie Klienta)',
-      duration: '1–3 dni',
     },
     {
       service: 'Każda kolejna rozpoczęta godzina pracy serwisanta\n(kontynuacja naprawy, konfiguracji lub wdrożenia po przekroczeniu pierwszej godziny)',
-      duration: '—',
     },
     {
       service: 'Pomoc zdalna\n(diagnostyka lub konfiguracja systemu, urządzeń biurowych i oprogramowania online)',
-      duration: 'do 24 h',
     },
     {
       service: 'Pilna interwencja\n(czas reakcji do 4 h w dni robocze – szybkie wsparcie w nagłych awariach)',
-      duration: 'do 4 h',
     },
     {
       service: 'Usługi poza godzinami pracy / weekendy / święta\n(realizacja zleceń w trybie awaryjnym – po godzinach pracy serwisu)',
-      duration: 'do 4 h',
     },
   ]
 }

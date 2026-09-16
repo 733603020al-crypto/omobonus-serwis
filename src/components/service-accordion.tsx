@@ -3076,7 +3076,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         {
                                           ...item,
                                           price: getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale),
-                                          duration: getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration),
+                                          duration: getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale),
                                         },
                                         idx,
                                         idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja'),
@@ -3108,7 +3108,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <TableBody>
                                       {subcategory.items.map((item, idx) => {
                                         const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
-                                        const displayDuration = getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration)
+                                        const displayDuration = getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
                                         return (
                                         <TableRow
                                           key={idx}
@@ -3288,7 +3288,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             {
                               ...item,
                               price: getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale),
-                              duration: getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration),
+                              duration: getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale),
                             },
                             idx,
                             idx === 0 && section.id !== 'dojazd' && !(isRepairAccordionLayout && section.id === 'konserwacja'),
@@ -3324,7 +3324,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <TableBody>
                             {section.items?.map((item, idx) => {
                               const displayPrice = getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale)
-                              const displayDuration = getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration)
+                              const displayDuration = getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale)
                               return (
                               <TableRow
                                 key={idx}
