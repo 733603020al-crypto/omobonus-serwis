@@ -547,35 +547,11 @@ export const WynajemTable = ({
     >
       <div
         className="overflow-x-auto md:overflow-x-visible -mx-4 md:mx-0 px-4 md:px-0"
-        ref={(el) => {
-          // ВРЕМЕННО: измерение ширины родительского контейнера overflow-x-auto
-          if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
-            setTimeout(() => {
-              const overflowRect = el.getBoundingClientRect()
-              console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер overflow-x-auto:`, {
-                width: overflowRect.width
-              })
-            }, 150)
-          }
-        }}
       >
         {/* Десктоп: flex с динамическими размерами из верхнего ряда */}
         <div
           className="hidden md:block"
           style={{ marginLeft: `${leftOffset}px`, width: `calc(100% - ${leftOffset}px)` }}
-          ref={(el) => {
-            // ВРЕМЕННО: измерение ширины родительского контейнера md:block
-            if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
-              setTimeout(() => {
-                const mdBlockRect = el.getBoundingClientRect()
-                console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер md:block:`, {
-                  width: mdBlockRect.width,
-                  marginLeft: leftOffset,
-                  calculatedWidth: `calc(100% - ${leftOffset}px)`
-                })
-              }, 120)
-            }
-          }}
         >
           {tableData.map((row, idx) => {
             if (!row || !(row as { label?: string }).label) return null
