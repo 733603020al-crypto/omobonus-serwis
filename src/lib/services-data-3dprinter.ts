@@ -8,19 +8,16 @@ const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
     {
       service:
         'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wszelkich prowadnic, śrub i osi (kurz, filament, zanieczyszczenia)\n• kontrola i czyszczenie ekstrudera oraz hotendu\n• sprawdzenie i czyszczenie stołu roboczego oraz układu podawania filamentu\n• szybki przegląd układu elektronicznego i złączy\n• test kalibracji podstawowej (osi X / Y / Z)',
-      price: '150',
       duration: '1–3 dni',
     },
     {
       service:
         'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie napinaczy pasów i kontrola przesunięć osi\n• smarowanie prowadnic liniowych i śrub\n• regulacja naciągu pasków i prowadzeń\n• kontrola i czyszczenie czujników oraz krańcówek',
-      price: '200',
       duration: '1–3 dni',
     },
     {
       service:
         'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• precyzyjna kalibracja stołu (auto-bed leveling / mesh)\n• pełne czyszczenie ekstrudera + wymiana tulei PTFE\n• kontrola i optymalizacja chłodzenia (wentylatory, kanały)\n• reset i aktualizacja firmware (jeśli możliwe)\n• test jakości wydruku i korekta parametrów',
-      price: '250',
       duration: '1–3 dni',
     },
   ]
@@ -34,27 +31,22 @@ const apply3DPrinterMechanicsSubcategory = (sections: PricingSection[]) => {
   mechanicsSubcategory.items = [
     {
       service: 'Regulacja i kalibracja osi X / Y / Z\n(nierówne warstwy, przesunięcia, stuki podczas ruchu)',
-      price: '150 zł',
       duration: '1–2 dni',
     },
     {
       service: 'Regulacja lub wymiana pasków i napinaczy\n(luzy, przeskakiwanie, utrata dokładności druku)',
-      price: '180 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Serwis ekstrudera i hotendu\n(zatykanie, brak podawania filamentu, wycieki)',
-      price: '200 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Czyszczenie i naprawa układu podawania filamentu\n(ślizganie filamentu, nieregularne podawanie)',
-      price: '150 zł',
       duration: '1–2 dni',
     },
     {
       service: 'Naprawa systemu chłodzenia (wentylatory, kanały)\n(przegrzewanie, deformacje wydruku)',
-      price: '150 zł + części',
       duration: '1–2 dni',
     },
   ]
@@ -68,27 +60,22 @@ const apply3DPrinterElectronicsSubcategory = (sections: PricingSection[]) => {
   electronicsSubcategory.items = [
     {
       service: 'Diagnostyka i naprawa płyty głównej\n(błędy systemowe, brak reakcji, resetowanie się drukarki)',
-      price: '200 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Wymiana lub naprawa czujników (endstop, BL-Touch, termistory)\n(błędy osi, problemy z poziomowaniem, błędy temperatury)',
-      price: '150 zł + części',
       duration: '1–2 dni',
     },
     {
       service: 'Naprawa lub wymiana okablowania i złączy\n(przerywanie pracy, zaniki sygnału, niestabilność)',
-      price: '150 zł + części',
       duration: '1–2 dni',
     },
     {
       service: 'Naprawa układów zasilania (zasilacz, przewody)\n(brak zasilania, wyłączanie się drukarki)',
-      price: '180 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Wgrywanie, reset i konfiguracja firmware\n(błędy oprogramowania, nieprawidłowe działanie po aktualizacji)',
-      price: '120 zł',
       duration: '1 dzień',
     },
   ]
@@ -102,27 +89,22 @@ const apply3DPrinterCalibrationSubcategory = (sections: PricingSection[]) => {
   calibrationSubcategory.items = [
     {
       service: 'Precyzyjna kalibracja poziomowania stołu (manual / auto-bed leveling)\n(problemy z pierwszą warstwą, słaba przyczepność)',
-      price: '150 zł',
       duration: '1 dzień',
     },
     {
       service: 'Kalibracja ekstrudera (E-steps, flow, retrakcja)\n(nitkowanie, niedolewanie, przelewanie filamentu)',
-      price: '150 zł',
       duration: '1 dzień',
     },
     {
       service: 'Kalibracja osi i geometrii drukarki\n(przekoszenia, nierówne ściany, przesunięcia warstw)',
-      price: '180 zł',
       duration: '1–2 dni',
     },
     {
       service: 'Testy jakości wydruku i korekta profilu materiału\n(PLA, PETG, ABS, TPU)',
-      price: '150 zł',
       duration: '1 dzień',
     },
     {
       service: 'Optymalizacja parametrów pod konkretny model / detal\n(druk techniczny, dokładność wymiarowa)',
-      price: '200 zł',
       duration: '1–2 dni',
     },
   ]
@@ -137,27 +119,22 @@ const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.items = [
     {
       service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
-      price: '150 zł',
       duration: '1 dzień',
     },
     {
       service: 'Konfiguracja slicera i profili materiałów\n(Cura, PrusaSlicer, Bambu Studio itp.)',
-      price: '120 zł',
       duration: '1 dzień',
     },
     {
       service: 'Integracja z siecią i zdalne sterowanie (OctoPrint, Klipper UI)\n(zdalny monitoring, sterowanie z telefonu/PC)',
-      price: '150 zł',
       duration: '1 dzień',
     },
     {
       service: 'Backup i przywracanie ustawień drukarki\n(po awarii, aktualizacji, wymianie elektroniki)',
-      price: '100 zł',
       duration: '1 dzień',
     },
     {
       service: 'Szkolenie z obsługi i konfiguracji drukarki\n(dla nowych użytkowników lub firm)',
-      price: '150 zł / godz.',
       duration: 'wg ustaleń',
     },
   ]
@@ -171,27 +148,22 @@ const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
   additionalSubcategory.items = [
     {
       service: 'Montaż i konfiguracja auto-levelingu (BL-Touch, CR-Touch itp.)',
-      price: '200 zł + części',
       duration: '1–2 dni',
     },
     {
       service: 'Upgrade ekstrudera (direct drive, all-metal hotend)',
-      price: '250 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Modyfikacje pod materiały techniczne (ABS, nylon, CF)\n(komora, chłodzenie, ustawienia)',
-      price: '200 zł + części',
       duration: '1–3 dni',
     },
     {
       service: 'Usuwanie poważnych zatorów i regeneracja hotendu\n(cold pull, czyszczenie chemiczne, wymiana elementów)',
-      price: '180 zł + części',
       duration: '1–2 dni',
     },
     {
       service: 'Indywidualne modyfikacje na zamówienie\nwycena indywidualna wg ustaleń',
-      price: '—',
       duration: '—',
     },
   ]
@@ -199,12 +171,6 @@ const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
 
 export const create3DPrinterPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
-
-  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
-  const diagnosisItem = diagnosisSection?.items[3]
-  if (diagnosisItem) {
-    diagnosisItem.price = '150'
-  }
 
   apply3DPrinterCleaningSection(sections)
 
@@ -243,13 +209,13 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       id: 'diagnoza',
       title: 'Drukowanie 3D z gotowego projektu',
       items: [
-        { service: 'Przygotowanie wydruku', price: '25 zł', duration: '1–2 dni' },
-        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', price: '0,30 zł/gram + 8 zł/godz.', duration: '1–2 dni' },
-        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', price: '0,35 zł/gram + 9 zł/godz.', duration: '1–2 dni' },
-        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', price: '0,45 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
-        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', price: '0,60 zł/gram + 12 zł/godz.', duration: '1–2 dni' },
-        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', price: '+50%\ndo ceny', duration: 'do 24 h' },
-        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', price: 'według cennika\nprzewoźnika', duration: 'do 24 h' },
+        { service: 'Przygotowanie wydruku', duration: '1–2 dni' },
+        { service: 'PLA\nstandardowy materiał do prototypów, modeli i elementów dekoracyjnych', duration: '1–2 dni' },
+        { service: 'PETG\nwytrzymały i odporny na wilgoć, do części użytkowych i technicznych', duration: '1–2 dni' },
+        { service: 'ABS / ASA\nwytrzymałe materiały do części technicznych i odpornych na temperaturę', duration: '1–2 dni' },
+        { service: 'TPU\nelastyczny materiał do uszczelek, osłon i elementów giętkich', duration: '1–2 dni' },
+        { service: 'Realizacja ekspresowa\nrealizacja tego samego dnia, jeśli pozwala na to czas druku', duration: 'do 24 h' },
+        { service: 'Wysyłka\nwysyłka kurierem lub do paczkomatu', duration: 'do 24 h' },
       ],
       priceFormula: 'Cena końcowa = przygotowanie wydruku + materiał + czas druku',
       example: 'Przykład: Wydruk z PLA 100 g materiału przy 5 godzinach druku — 25 zł (przygotowanie wydruku) + 100 g materiału × 0,30 zł/gram + 5 godz. druku × 8 zł/h = 95 zł',
@@ -262,13 +228,13 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
       id: 'projektowanie-modeli',
       title: 'Projektowanie i modelowanie 3D CAD',
       items: [
-        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', price: 'GRATIS\ndo 15 min konsultacji', duration: 'do 24 h' },
-        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', price: '49 zł\ndo 15 min pracy', duration: 'do 24 h' },
-        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', price: '149 zł\ndo 60 min pracy', duration: '1–2 dni' },
-        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', price: '199 zł\ndo 90 min pracy', duration: '1–2 dni' },
-        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', price: '299 zł\ndo 2 godz. pracy', duration: '2–3 dni' },
-        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', price: '35 zł\nza każde dodatkowe 15 min pracy', duration: 'wg projektu' },
-        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', price: '70 zł\ndo 30 min pracy', duration: 'do 24 h' },
+        { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', duration: 'do 24 h' },
+        { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', duration: 'do 24 h' },
+        { service: 'Prosty model techniczny\nna podstawie wymiarów, szkicu lub rysunku technicznego', duration: '1–2 dni' },
+        { service: 'Odtworzenie prostej części\nna podstawie wzoru, zdjęć i dokładnych wymiarów', duration: '1–2 dni' },
+        { service: 'Projekt techniczny średniej złożoności\nnp. obudowa, uchwyt, adapter lub bardziej złożony element', duration: '2–3 dni' },
+        { service: 'Dodatkowa praca projektowa\npo przekroczeniu czasu zawartego w wybranej usłudze', duration: 'wg projektu' },
+        { service: 'Dodatkowy pakiet poprawek\nzmiany w gotowym projekcie po jego akceptacji', duration: 'do 24 h' },
       ],
     })
   }
