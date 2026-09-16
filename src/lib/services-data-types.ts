@@ -26,6 +26,7 @@ export interface PricingSubcategory {
   price?: string // Цена для отображения в заголовке подменю
   icon?: string // Ścieżka do obrazka podkategorii (naprawy) — opcjonalna, placeholder gdy brak
   priceTiers?: PriceTier[] // 3 plany taryfowe z pełną podtabelą (wynajem-drukarek, repair-accordion layout)
+  closedSuffix?: string // Dodatkowy tekst po tytule, widoczny tylko na desktop i tylko gdy accordion jest zamknięty
 }
 
 export interface PricingSection {

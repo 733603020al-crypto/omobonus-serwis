@@ -16,7 +16,9 @@ export const needleNaprawy: PricingSection = {
   subcategories: [
     {
       id: 'naprawy-mechanizm',
-      title: 'Механізм подачі паперу, ролики, сепаратори',
+      title: 'Механізм транспортування паперу',
+      closedSuffix: ': трактор, вал, напрямні ролики',
+      icon: '/images/accordion-icon-iglowe-mechanizm-podawania.webp',
       items: [
         { service: 'Ремонт механізму подачі паперу\n(усунення проблем із захопленням або застряганням)', },
         { service: 'Чищення роликів подачі паперу', },
@@ -26,6 +28,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-karetka',
       title: 'Ударний механізм та друкувальна головка (матрична)',
+      icon: '/images/accordion-icon-iglowe-glowica.webp',
       items: [
         { service: 'Заміна друкувальної головки (матричної)\n(відновлює правильний друк — вирішує проблему відсутніх символів, переривчастих ліній)', },
         { service: 'Регулювання та чищення механізму голок / ударного важеля\n(чищення і калібрування ударного механізму — усуває застрягання голок)', },
@@ -34,6 +37,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-glowica',
       title: 'Привід та механіка переміщення каретки / фарбувальної стрічки',
+      icon: '/images/accordion-icon-iglowe-naped-karetki.webp',
       items: [
         { service: 'Заміна або регулювання паса / передачі приводу каретки\n(ремонт приводу переміщення головки — усуває шум, вібрації та зупинки каретки)', },
         { service: 'Чищення та змащення напрямних каретки / важеля\n(чищення та обслуговування напрямних елементів — покращує плавність руху)', },
@@ -43,6 +47,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-tasma',
       title: 'Фарбувальна стрічка / механізм фарбування',
+      icon: '/images/accordion-icon-iglowe-tasma.webp',
       items: [
         { service: 'Заміна фарбувальної стрічки (ink-ribbon)\n(відновлює правильну інтенсивність та контрастність друку)', },
         { service: 'Чищення механізму стрічки та напрямних\n(видалення забруднень і залишків фарби з напрямних елементів)', },
@@ -52,6 +57,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-elektronika',
       title: 'Електронні ремонти',
+      icon: '/images/accordion-icon-iglowe-elektronika.webp',
       items: [
         { service: 'Ремонт або заміна роз\'єму або гнізда LAN/USB пошкодженого / розхитаного\n(усуває відсутність виявлення принтера комп\'ютером / LAN)', },
         { service: 'Ремонт або заміна блока живлення (PSU / плата живлення)\n(після аварії через перепад / стрибок напруги)', },
@@ -66,7 +72,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Програмне забезпечення та налаштування',
-      icon: '/images/naprawy-oprogramowanie-v3.webp',
+      icon: '/images/naprawy-oprogramowanie-iglowe-v1.webp',
       items: [
         { service: 'Встановлення драйверів і налаштування в мережі (маршрутизатор / Wi-Fi / LAN) (дистанційно або локально)', },
         { service: 'Оновлення прошивки / скидання системи принтера (усуває помилки та сервісні повідомлення)', },
@@ -82,9 +88,8 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-dodatkowe',
       title: 'Додаткові послуги',
+      icon: '/images/accordion-icon-iglowe-uslugi-dodatkowe.webp',
       items: [
-        { service: 'Чищення після сильного розсипання тонера (Повна декантамінація)', },
-        { service: 'Оцінка стану пристрою перед покупкою (Експертиза)', },
         { service: 'Принтер на заміну (На час ремонту)', link: '/uk/uslugi/drukarka-zastepcza' },
         { service: 'Відновлення корпусу (Відбілення UV)', },
       ],

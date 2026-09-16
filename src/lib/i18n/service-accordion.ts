@@ -24,6 +24,10 @@ export interface ServiceAccordionDict {
   dojazdPromoTitle: string
   konserwacjaPromoTitle: string
   konserwacjaPromoDescription: string
+  konserwacjaPromoTitleAlt: string
+  konserwacjaPromoDescriptionAlt: string
+  konserwacjaPromoTitleInkjet: string
+  konserwacjaPromoDescriptionInkjet: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
   deviceCategoriesDescription: {
@@ -79,8 +83,12 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     dojazdPromoTitle: '„DARMOWY DOJAZD”',
     konserwacjaPromoTitle: '„PRZEDMUCHANIE + PASTA”',
     konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
+    konserwacjaPromoTitleAlt: '„TYLKO PRZEDMUCHANIE?”',
+    konserwacjaPromoDescriptionAlt: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację urządzenia.',
+    konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
+    konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
-    konserwacjaExtraPaidNote: 'Dodatkowo płatne: naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
+    konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     deviceCategoriesDescription: {
       default: 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej',
       serwisDrukarekIglowych: 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej',
@@ -128,8 +136,12 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     dojazdPromoTitle: '«БЕЗКОШТОВНИЙ ВИЇЗД»',
     konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
     konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повну консервацію системи охолодження',
+    konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
+    konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
+    konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
+    konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
-    konserwacjaExtraPaidNote: 'Додатково платно: ремонт і запасні частини — завжди за попереднім погодженням.',
+    konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
     deviceCategoriesDescription: {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
@@ -187,8 +199,12 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     dojazdPromoTitle: '«БЕСПЛАТНЫЙ ВЫЕЗД»',
     konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
     konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
+    konserwacjaPromoTitleAlt: '«ТОЛЬКО ПРОДУВКА?»',
+    konserwacjaPromoDescriptionAlt: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание устройства.',
+    konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
+    konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
-    konserwacjaExtraPaidNote: 'Дополнительно платно: ремонт и запасные части — всегда по предварительному согласованию.',
+    konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
     deviceCategoriesDescription: {
       default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
       serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',

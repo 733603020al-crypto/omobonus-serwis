@@ -286,7 +286,7 @@ export const renderPriceLines = (price: string, link?: string) => {
     return (
       <Link
         href={link}
-        className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] underline underline-offset-2 hover:text-white focus:text-white transition-colors"
+        className="font-inter text-[13px] md:text-[14px] text-[#3A2817] underline underline-offset-2 transition-colors"
       >
         {trimmedPrice}
       </Link>
@@ -807,6 +807,16 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-iglowych',
 ])
 
+// Strony drukarek, na których baner promo w sekcji "Konserwacja" ma inny tekst
+// (bez wzmianki o "pastcie termicznej" — dotyczy tylko laptopów/komputerów).
+const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
+  'serwis-drukarek-laserowych',
+  'serwis-drukarek-iglowych',
+  'serwis-drukarek-termicznych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+])
+
 // Slugs using the "open repair-accordion card" treatment: icon-overflow
 // scale-compensation, centered/nowrap Naprawy header, custom Konserwacja/
 // Naprawy titles, curl/ragged-edge parchment geometry, etc. Defined in
@@ -947,6 +957,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
   const isLaserService = service.slug === 'serwis-drukarek-laserowych'
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
+  const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
+  const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
+  const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1258,7 +1273,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     measure()
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
-  }, [isMobile, openSection, t.konserwacjaPromoDescription])
+  }, [isMobile, openSection, konserwacjaPromoDescriptionResolved])
 
   // Same mechanism as Diagnoza above, ported 1:1 for Dojazd.
   useLayoutEffect(() => {
@@ -1735,10 +1750,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-czyszczenie-laser.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
                                 ? '/images/accordion-icon-czyszczenie-termiczne.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isNeedleService
+                                ? '/images/accordion-icon-czyszczenie-iglowe.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isInkjetService
+                                ? '/images/accordion-icon-atramentowe-czyszczenie-v2.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
                                 ? '/images/accordion-icon-naprawy-termiczne.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isNeedleService
+                                ? '/images/accordion-icon-naprawy-iglowe.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
+                                ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
                                 ? '/images/accordion-icon-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'faq'
@@ -2200,20 +2223,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         </div>
                       </div>
                     </div>
-                  ) : service.slug === 'serwis-laptopow' && section.id === 'konserwacja' ? (
+                  ) : section.id === 'konserwacja' ? (
                     // Sekcja konserwacja ma AccordionContent z marginTop: -8 (patrz `style` niżej),
                     // którego "dojazd" nie ma — ten sam baner tekstowy potrzebuje więc +8px
                     // paddingTop więcej niż w "dojazd", żeby wizualnie wypaść tak samo pod plakietką.
                     <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '14px' : '8px', paddingBottom: isMobile ? '6px' : '4px' }}>
                       <div className="font-table-main">
-                        <div className="service-promo-title">{t.konserwacjaPromoTitle} <WinkEmoji variant="thinking" /></div>
+                        <div className="service-promo-title">{konserwacjaPromoTitleResolved} <WinkEmoji variant="thinking" /></div>
                         <div
                           ref={konserwacjaPromoBoxRef}
                           className="service-promo-description"
                           style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
                         >
-                          {isMobile ? t.konserwacjaPromoDescription : (
-                            <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{t.konserwacjaPromoDescription}</span>
+                          {isMobile ? konserwacjaPromoDescriptionResolved : (
+                            <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
                           )}
                         </div>
                       </div>
@@ -2417,6 +2440,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             // one clean, deliberate break point instead.
                                             if (isRepairAccordionLayout && isRepairSection && title === 'Oprogramowanie') {
                                               return 'Oprogra­mowanie'
+                                            }
+                                            if (isRepairAccordionLayout && isRepairSection && subcategory.closedSuffix) {
+                                              return (
+                                                <>
+                                                  {title}
+                                                  <span className="hidden md:group-data-[state=closed]/subcategory:inline">{subcategory.closedSuffix}</span>
+                                                </>
+                                              )
                                             }
                                             if (isRepairAccordionLayout && isRepairSection) {
                                               const bracketMatch = title.match(/^(.+?)\s*(\(.+\))$/)
@@ -3385,7 +3416,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </p>
                         </div>
                       )}
-                      {service.slug === 'serwis-laptopow' && section.id === 'konserwacja' && (
+                      {(service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych') && section.id === 'konserwacja' && (
                         <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
                           <div className="font-table-main">
                             <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">{t.konserwacjaIncludedNote}</div>

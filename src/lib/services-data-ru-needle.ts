@@ -16,7 +16,9 @@ export const needleNaprawy: PricingSection = {
   subcategories: [
     {
       id: 'naprawy-mechanizm',
-      title: 'Механизм подачи бумаги, ролики, сепараторы',
+      title: 'Механизм транспортировки бумаги',
+      closedSuffix: ': трактор, вал, направляющие ролики',
+      icon: '/images/accordion-icon-iglowe-mechanizm-podawania.webp',
       items: [
         { service: 'Ремонт механизма подачи бумаги\n(устранение проблем с захватом или застреванием)', },
         { service: 'Чистка роликов подачи бумаги', },
@@ -26,6 +28,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-karetka',
       title: 'Ударный механизм и печатающая головка (матричная)',
+      icon: '/images/accordion-icon-iglowe-glowica.webp',
       items: [
         { service: 'Замена печатающей головки (матричной)\n(восстанавливает правильную печать — решает проблему отсутствующих символов, прерывистых линий)', },
         { service: 'Регулировка и чистка механизма игл / ударного рычага\n(чистка и калибровка ударного механизма — устраняет застревание игл)', },
@@ -34,6 +37,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-glowica',
       title: 'Привод и механика перемещения каретки / красящей ленты',
+      icon: '/images/accordion-icon-iglowe-naped-karetki.webp',
       items: [
         { service: 'Замена или регулировка ремня / передачи привода каретки\n(ремонт привода перемещения головки — устраняет шум, вибрации и остановки каретки)', },
         { service: 'Чистка и смазка направляющих каретки / рычага\n(чистка и обслуживание направляющих элементов — улучшает плавность движения)', },
@@ -43,6 +47,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-tasma',
       title: 'Красящая лента / механизм окраски',
+      icon: '/images/accordion-icon-iglowe-tasma.webp',
       items: [
         { service: 'Замена красящей ленты (ink-ribbon)\n(восстанавливает правильную интенсивность и контрастность печати)', },
         { service: 'Чистка механизма ленты и направляющих\n(удаление загрязнений и остатков краски с направляющих элементов)', },
@@ -52,6 +57,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-elektronika',
       title: 'Электронные ремонты',
+      icon: '/images/accordion-icon-iglowe-elektronika.webp',
       items: [
         { service: 'Ремонт или замена разъёма или гнезда LAN/USB повреждённого / разболтанного\n(устраняет отсутствие обнаружения принтера компьютером / LAN)', },
         { service: 'Ремонт или замена блока питания (PSU / плата питания)\n(после аварии из-за перепада / скачка напряжения)', },
@@ -66,7 +72,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Программное обеспечение и настройка',
-      icon: '/images/naprawy-oprogramowanie-v3.webp',
+      icon: '/images/naprawy-oprogramowanie-iglowe-v1.webp',
       items: [
         { service: 'Установка драйверов и настройка в сети (маршрутизатор / Wi-Fi / LAN) (удалённо или локально)', },
         { service: 'Обновление прошивки / сброс системы принтера (устраняет ошибки и сервисные сообщения)', },
@@ -82,9 +88,8 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-dodatkowe',
       title: 'Дополнительные услуги',
+      icon: '/images/accordion-icon-iglowe-uslugi-dodatkowe.webp',
       items: [
-        { service: 'Чистка после сильного рассыпания тонера (Полная декантаминация)', },
-        { service: 'Оценка состояния устройства перед покупкой (Экспертиза)', },
         { service: 'Принтер на замену (На время ремонта)', link: '/ru/uslugi/drukarka-zastepcza' },
         { service: 'Восстановление корпуса (Отбеливание UV)', },
       ],

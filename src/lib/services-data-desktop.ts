@@ -7,15 +7,11 @@ const applyDesktopCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• demontarz obudowy,\n• czyszczenie wentylatorów i radiatorów,\n• wymiana past termoprzewodzących CPU/GPU,\n• usunięcie kurzu i zanieczyszczeń,\n• testy obciążeniowe + test temperatur.',
+        'Komputer — standardowy\n\nZakres usługi obejmuje:\n• demontaż paneli obudowy i przygotowanie komputera do konserwacji;\n• dokładne czyszczenie wnętrza, filtrów, wentylatorów i radiatorów;\n• czyszczenie układu chłodzenia procesora;\n• wymianę pasty termoprzewodzącej na CPU;\n• kontrolę stanu i, w razie potrzeby, wymianę lub dopasowanie standardowych termopadów;\n• kontrolę działania wentylatorów oraz przepływu powietrza;\n• ponowny montaż oraz test temperatur i stabilności pracy.',
     },
     {
       service:
-        'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• wymiana / dopasowanie termopadów,\n• konserwacja portów,\n• krótki test pamięci RAM i dysku SMART.',
-    },
-    {
-      service:
-        'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• porządkowanie okablowania i kanałów powietrznych,\n• czyszczenie klawiatury i portów wewnętrznych,\n• aktualizacja BIOS/UEFI (jeśli wskazana),\n• długie testy obciążeniowe (CPU / GPU / RAM).',
+        'Komputer — gamingowy\n\nZakres usługi obejmuje:\n• wszystkie czynności wykonywane w ramach konserwacji komputera standardowego;\n• demontaż i dokładne czyszczenie rozbudowanego układu chłodzenia CPU/GPU;\n• czyszczenie dodatkowych wentylatorów, radiatorów i kanałów powietrznych;\n• demontaż i konserwację układu chłodzenia karty graficznej;\n• wymianę pasty termoprzewodzącej na GPU;\n• kontrolę stanu oraz, w razie potrzeby, wymianę lub dopasowanie standardowych termopadów pamięci VRAM i sekcji zasilania VRM;\n• rozszerzony test obciążeniowy CPU/GPU oraz kontrolę temperatur po rozgrzaniu komputera.',
     },
   ]
 }
