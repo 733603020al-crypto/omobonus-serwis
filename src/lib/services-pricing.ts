@@ -74,3 +74,15 @@ export function getDisplayPrice(slug: string, path: string, locale: PricingLocal
 export function getDisplayDuration(slug: string, path: string, locale: PricingLocale, fallback: string): string {
   return resolveDisplay(migratedDuration, DURATION_WRAPPERS, pricingId(slug, path), locale, fallback)
 }
+
+// Сырые числа без обёртки — только для сборки составных полей (например,
+// tier.label), которые должны переиспользовать те же цифры, что и
+// getDisplayPrice для того же id, без повторного набора числа в data-файле.
+export function getPriceNumbers(slug: string, path: string): string[] {
+  const id = pricingId(slug, path)
+  const entry = migratedPrice[id]
+  if (!entry) {
+    throw new Error(`[services-pricing] Нет цены в migratedPrice для "${id}" — добавь запись в services-pricing-data.ts.`)
+  }
+  return entry.numbers
+}

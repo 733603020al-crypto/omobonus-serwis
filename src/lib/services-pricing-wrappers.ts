@@ -57,6 +57,12 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_gratis_nl_do_n_min_konsultacji": { pl: "GRATIS\ndo {0} min konsultacji", ru: "БЕСПЛАТНО\nдо {0} мин консультации", uk: "БЕЗКОШТОВНО\nдо {0} хв консультації" },
   "p_n_zl_nl_do_n_godz_pracy": { pl: "{0} zł\ndo {1} godz. pracy", ru: "{0} zł\nдо {1} ч работы", uk: "{0} zł\nдо {1} год роботи" },
   "p_n_zl_nl_za_kazde_dodatkowe_n_min_pracy": { pl: "{0} zł\nza każde dodatkowe {1} min pracy", ru: "{0} zł\nза каждые дополнительные {1} мин работы", uk: "{0} zł\nза кожні додаткові {1} хв роботи" },
+
+  // wynajem-drukarek / drukarka-zastepcza (tariff limity stron + ceny)
+  "p_n_str_mies": { pl: "{0} str./mies.", ru: "{0} стр./мес.", uk: "{0} стор./міс." },
+  "p_n_str_mono_plus_n_str_kolor": { pl: "{0} str. (mono) / + {1} str. (kolor)", ru: "{0} (моно) / +{1} (цвет)", uk: "{0} (моно) / +{1} (колір)" },
+  "p_n_zl_mono_n_zl_kolor": { pl: "{0} zł (mono) / {1} zł (kolor)", ru: "{0} zł (моно) / {1} zł (цвет)", uk: "{0} zł (моно) / {1} zł (колір)" },
+  "p_n_slash_n": { pl: "{0} / {1}", ru: "{0} / {1}", uk: "{0} / {1}" },
 }
 
 export const DURATION_WRAPPERS: Record<string, WrapperTemplate> = {

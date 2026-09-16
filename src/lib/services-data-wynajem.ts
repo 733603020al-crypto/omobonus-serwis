@@ -1,5 +1,12 @@
 import type { PricingSection } from './services-data-types'
 import { createDefaultPricingSections, createFaqSection } from './services-data-shared'
+import { getDisplayPrice } from './services-pricing'
+
+const SLUG = 'wynajem-drukarek'
+const rent = (path: string) => getDisplayPrice(SLUG, `${path}.rent`, 'pl')
+const pages = (path: string) => getDisplayPrice(SLUG, `${path}.pages`, 'pl')
+const overLimit = (path: string) => getDisplayPrice(SLUG, `${path}.overLimitPrice`, 'pl')
+const label = (path: string) => `${rent(path)}/mies.`
 
 export const createWynajemPricingSections = (): PricingSection[] => {
   // Используем только базовые секции без FAQ (FAQ добавим в конце)
@@ -29,31 +36,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/A4_Drukarki_mono.webp',
         priceTiers: [
           {
-            label: '30 zł/mies.',
+            label: label('akordeon-1.drukarki-mono.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '30 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '500 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-mono.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-mono.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-mono.tier0') },
               { label: 'Duplex', value: '-' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
           },
           {
-            label: '50 zł/mies.',
+            label: label('akordeon-1.drukarki-mono.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '50 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-mono.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-mono.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-mono.tier1') },
               { label: 'Duplex', value: '- / +' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
           },
           {
-            label: '100 zł/mies.',
+            label: label('akordeon-1.drukarki-mono.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '100 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 500 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-mono.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-mono.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-mono.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
@@ -67,31 +74,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/A4_Drukarki_kolor.webp',
         priceTiers: [
           {
-            label: '50 zł/mies.',
+            label: label('akordeon-1.drukarki-kolor.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '50 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str. (mono) / + 0 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-kolor.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-kolor.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-kolor.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
           },
           {
-            label: '100 zł/mies.',
+            label: label('akordeon-1.drukarki-kolor.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '100 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str. (mono) / + 200 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-kolor.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-kolor.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-kolor.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
           },
           {
-            label: '150 zł/mies.',
+            label: label('akordeon-1.drukarki-kolor.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '150 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str. (mono) / + 200 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.drukarki-kolor.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.drukarki-kolor.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.drukarki-kolor.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
@@ -105,31 +112,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/A4_MFU_mono.webp',
         priceTiers: [
           {
-            label: '80 zł/mies.',
+            label: label('akordeon-1.mfu-mono.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '80 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-mono.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-mono.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-mono.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
           },
           {
-            label: '100 zł/mies.',
+            label: label('akordeon-1.mfu-mono.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '100 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-mono.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-mono.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-mono.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
           },
           {
-            label: '150 zł/mies.',
+            label: label('akordeon-1.mfu-mono.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '150 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-mono.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-mono.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-mono.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
@@ -143,31 +150,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/A4_MFU_kolor.webp',
         priceTiers: [
           {
-            label: '100 zł/mies.',
+            label: label('akordeon-1.mfu-kolor.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '100 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 000 str. (mono) / + 100 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-kolor.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-kolor.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-kolor.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '20' },
             ],
           },
           {
-            label: '150 zł/mies.',
+            label: label('akordeon-1.mfu-kolor.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '150 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '1 500 str. (mono) / + 200 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,05 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-kolor.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-kolor.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-kolor.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '30' },
             ],
           },
           {
-            label: '200 zł/mies.',
+            label: label('akordeon-1.mfu-kolor.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '200 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str. (mono) / + 300 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-1.mfu-kolor.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-1.mfu-kolor.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-1.mfu-kolor.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '40' },
             ],
@@ -190,31 +197,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/Drukarki_A3_A4_mono.webp',
         priceTiers: [
           {
-            label: '100 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-mono.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '100 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 500 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-mono.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-mono.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-mono.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '50' },
             ],
           },
           {
-            label: '150 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-mono.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '150 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 750 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-mono.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-mono.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-mono.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
           },
           {
-            label: '200 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-mono.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '200 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-mono.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-mono.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-mono.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '90' },
             ],
@@ -228,31 +235,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
         priceTiers: [
           {
-            label: '200 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-kolor.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '200 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '2 000 str. (mono) / + 300 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,25 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-kolor.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-kolor.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '50' },
             ],
           },
           {
-            label: '250 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-kolor.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '250 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '3 000 str. (mono) / + 500 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,20 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-kolor.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-kolor.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
           },
           {
-            label: '300 zł/mies.',
+            label: label('akordeon-2.a3-drukarki-kolor.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '300 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str. (mono) / + 800 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł (mono) / 0,18 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-drukarki-kolor.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-drukarki-kolor.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '90' },
             ],
@@ -266,31 +273,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/MFU_A3_A4_mono.webp',
         priceTiers: [
           {
-            label: '200 zł/mies.',
+            label: label('akordeon-2.a3-mfu-mono.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '200 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-mono.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-mono.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-mono.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '50' },
             ],
           },
           {
-            label: '250 zł/mies.',
+            label: label('akordeon-2.a3-mfu-mono.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '250 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '7 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-mono.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-mono.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-mono.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
           },
           {
-            label: '300 zł/mies.',
+            label: label('akordeon-2.a3-mfu-mono.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '300 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '10 000 str./mies.' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-mono.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-mono.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-mono.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '90' },
             ],
@@ -304,31 +311,31 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         icon: '/images/MFU_A3_A4_mono_kolor.webp',
         priceTiers: [
           {
-            label: '300 zł/mies.',
+            label: label('akordeon-2.a3-mfu-kolor.tier0'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '300 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '5 000 str. (mono) / + 500 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,16 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-kolor.tier0') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-kolor.tier0') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-kolor.tier0') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '50' },
             ],
           },
           {
-            label: '400 zł/mies.',
+            label: label('akordeon-2.a3-mfu-kolor.tier1'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '400 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '7 500 str. (mono) / + 750 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,04 zł (mono) / 0,16 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-kolor.tier1') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-kolor.tier1') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-kolor.tier1') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '60' },
             ],
           },
           {
-            label: '500 zł/mies.',
+            label: label('akordeon-2.a3-mfu-kolor.tier2'),
             rows: [
-              { label: 'Czynsz wynajmu (zł miesięcznie)', value: '500 zł' },
-              { label: 'Liczba stron A4 wliczonych w czynsz', value: '10 000 str. (mono) / + 1 000 str. (kolor)' },
-              { label: 'Cena wydruku A4 (powyżej limitu)', value: '0,03 zł (mono) / 0,15 zł (kolor)' },
+              { label: 'Czynsz wynajmu (zł miesięcznie)', value: rent('akordeon-2.a3-mfu-kolor.tier2') },
+              { label: 'Liczba stron A4 wliczonych w czynsz', value: pages('akordeon-2.a3-mfu-kolor.tier2') },
+              { label: 'Cena wydruku A4 (powyżej limitu)', value: overLimit('akordeon-2.a3-mfu-kolor.tier2') },
               { label: 'Duplex', value: '+' },
               { label: 'Prędkość druku do: (str./min)', value: '90' },
             ],

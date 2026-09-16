@@ -1,5 +1,9 @@
 import type { PricingSection } from './services-data-types'
 import { createDefaultPricingSections, createFaqSection } from './services-data-shared'
+import { getDisplayPrice } from './services-pricing'
+
+const SLUG = 'drukarka-zastepcza'
+const price = (path: string) => getDisplayPrice(SLUG, `${path}.price`, 'pl')
 
 export const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
   // Используем только базовые секции без FAQ (FAQ добавим в конце)
@@ -24,25 +28,25 @@ export const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
         id: 'drukarki-mono',
         title: 'Drukarki A4 (mono)',
         items: [],
-        price: '0,06',
+        price: price('akordeon-1.drukarki-mono'),
       },
       {
         id: 'drukarki-kolor',
         title: 'Drukarki A4 (mono+kolor)',
         items: [],
-        price: '0,06 / 0,27',
+        price: price('akordeon-1.drukarki-kolor'),
       },
       {
         id: 'mfu-mono',
         title: 'MFU A4 (mono)',
         items: [],
-        price: '0,08',
+        price: price('akordeon-1.mfu-mono'),
       },
       {
         id: 'mfu-kolor',
         title: 'MFU A4 (mono+kolor)',
         items: [],
-        price: '0,08 / 0,30',
+        price: price('akordeon-1.mfu-kolor'),
       },
     ],
   })
@@ -56,25 +60,25 @@ export const createDrukarkaZastepczaPricingSections = (): PricingSection[] => {
         id: 'a3-drukarki-mono',
         title: 'Drukarki A3 (mono)',
         items: [],
-        price: '0,05',
+        price: price('akordeon-2.a3-drukarki-mono'),
       },
       {
         id: 'a3-drukarki-kolor',
         title: 'Drukarki A3 (mono+kolor)',
         items: [],
-        price: '0,05 / 0,27',
+        price: price('akordeon-2.a3-drukarki-kolor'),
       },
       {
         id: 'a3-mfu-mono',
         title: 'MFU A3 (mono)',
         items: [],
-        price: '0,07',
+        price: price('akordeon-2.a3-mfu-mono'),
       },
       {
         id: 'a3-mfu-kolor',
         title: 'MFU A3 (mono+kolor)',
         items: [],
-        price: '0,07 / 0,30',
+        price: price('akordeon-2.a3-mfu-kolor'),
       },
     ],
   })

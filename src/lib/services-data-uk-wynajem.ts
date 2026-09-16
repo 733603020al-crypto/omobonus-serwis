@@ -1,4 +1,11 @@
 import type { PricingSection } from './services-data-types'
+import { getDisplayPrice, getPriceNumbers } from './services-pricing'
+
+const SLUG = 'wynajem-drukarek'
+const rent = (path: string) => getDisplayPrice(SLUG, `${path}.rent`, 'uk')
+const pages = (path: string) => getDisplayPrice(SLUG, `${path}.pages`, 'uk')
+const overLimit = (path: string) => getDisplayPrice(SLUG, `${path}.overLimitPrice`, 'uk')
+const comboLabel = (path: string) => getPriceNumbers(SLUG, `${path}.pages`).join(' + ')
 
 export const wynajemAkordeon1: PricingSection = {
   id: 'akordeon-1',
@@ -12,31 +19,31 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_Drukarki_mono.webp',
       priceTiers: [
         {
-          label: '500 стор./міс.',
+          label: pages('akordeon-1.drukarki-mono.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '30 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '500 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-mono.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-mono.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-mono.tier0') },
             { label: 'Дуплекс', value: '-' },
             { label: 'Швидкість друку до: (стор./хв)', value: '20' },
           ],
         },
         {
-          label: '1 000 стор./міс.',
+          label: pages('akordeon-1.drukarki-mono.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '50 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-mono.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-mono.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-mono.tier1') },
             { label: 'Дуплекс', value: '- / +' },
             { label: 'Швидкість друку до: (стор./хв)', value: '40' },
           ],
         },
         {
-          label: '2 500 стор./міс.',
+          label: pages('akordeon-1.drukarki-mono.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '100 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 500 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-mono.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-mono.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-mono.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
@@ -50,31 +57,31 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_Drukarki_kolor.webp',
       priceTiers: [
         {
-          label: '1 000 + 0',
+          label: comboLabel('akordeon-1.drukarki-kolor.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '50 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 000 (моно) / +0 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł (моно) / 0,25 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-kolor.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-kolor.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-kolor.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '20' },
           ],
         },
         {
-          label: '1 000 + 200',
+          label: comboLabel('akordeon-1.drukarki-kolor.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '100 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 000 (моно) / +200 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł (моно) / 0,20 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-kolor.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-kolor.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-kolor.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '40' },
           ],
         },
         {
-          label: '2 000 + 200',
+          label: comboLabel('akordeon-1.drukarki-kolor.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '150 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 000 (моно) / +200 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,20 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.drukarki-kolor.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.drukarki-kolor.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.drukarki-kolor.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
@@ -88,31 +95,31 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_MFU_mono.webp',
       priceTiers: [
         {
-          label: '1 500 стор./міс.',
+          label: pages('akordeon-1.mfu-mono.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '80 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 500 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-mono.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-mono.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-mono.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '20' },
           ],
         },
         {
-          label: '2 000 стор./міс.',
+          label: pages('akordeon-1.mfu-mono.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '100 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-mono.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-mono.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-mono.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '40' },
           ],
         },
         {
-          label: '3 000 стор./міс.',
+          label: pages('akordeon-1.mfu-mono.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '150 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '3 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-mono.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-mono.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-mono.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
@@ -126,31 +133,31 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_MFU_kolor.webp',
       priceTiers: [
         {
-          label: '1 000 + 100',
+          label: comboLabel('akordeon-1.mfu-kolor.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '100 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 000 (моно) / +100 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł (моно) / 0,25 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-kolor.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-kolor.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-kolor.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '20' },
           ],
         },
         {
-          label: '1 500 + 200',
+          label: comboLabel('akordeon-1.mfu-kolor.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '150 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '1 500 (моно) / +200 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,05 zł (моно) / 0,20 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-kolor.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-kolor.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-kolor.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '30' },
           ],
         },
         {
-          label: '2 000 + 300',
+          label: comboLabel('akordeon-1.mfu-kolor.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '200 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 000 (моно) / +300 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,20 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-1.mfu-kolor.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-1.mfu-kolor.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-1.mfu-kolor.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '40' },
           ],
@@ -173,31 +180,31 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/Drukarki_A3_A4_mono.webp',
       priceTiers: [
         {
-          label: '2 500 стор./міс.',
+          label: pages('akordeon-2.a3-drukarki-mono.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '100 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 500 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-mono.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-mono.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-mono.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '50' },
           ],
         },
         {
-          label: '3 750 стор./міс.',
+          label: pages('akordeon-2.a3-drukarki-mono.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '150 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '3 750 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-mono.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-mono.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-mono.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
         },
         {
-          label: '5 000 стор./міс.',
+          label: pages('akordeon-2.a3-drukarki-mono.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '200 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '5 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,03 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-mono.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-mono.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-mono.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '90' },
           ],
@@ -211,31 +218,31 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
       priceTiers: [
         {
-          label: '2 000 + 300',
+          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '200 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '2 000 (моно) / +300 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,25 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-kolor.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-kolor.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '50' },
           ],
         },
         {
-          label: '3 000 + 500',
+          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '250 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '3 000 (моно) / +500 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,20 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-kolor.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-kolor.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
         },
         {
-          label: '5 000 + 800',
+          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '300 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '5 000 (моно) / +800 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,03 zł (моно) / 0,18 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-drukarki-kolor.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-drukarki-kolor.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-drukarki-kolor.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '90' },
           ],
@@ -249,31 +256,31 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/MFU_A3_A4_mono.webp',
       priceTiers: [
         {
-          label: '5 000 стор./міс.',
+          label: pages('akordeon-2.a3-mfu-mono.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '200 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '5 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-mono.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-mono.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-mono.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '50' },
           ],
         },
         {
-          label: '7 000 стор./міс.',
+          label: pages('akordeon-2.a3-mfu-mono.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '250 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '7 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-mono.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-mono.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-mono.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
         },
         {
-          label: '10 000 стор./міс.',
+          label: pages('akordeon-2.a3-mfu-mono.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '300 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '10 000 стор./міс.' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,03 zł' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-mono.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-mono.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-mono.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '90' },
           ],
@@ -287,31 +294,31 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/MFU_A3_A4_mono_kolor.webp',
       priceTiers: [
         {
-          label: '5 000 + 500',
+          label: comboLabel('akordeon-2.a3-mfu-kolor.tier0'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '300 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '5 000 (моно) / +500 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,16 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-kolor.tier0') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-kolor.tier0') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-kolor.tier0') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '50' },
           ],
         },
         {
-          label: '7 500 + 750',
+          label: comboLabel('akordeon-2.a3-mfu-kolor.tier1'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '400 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '7 500 (моно) / +750 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,04 zł (моно) / 0,16 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-kolor.tier1') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-kolor.tier1') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-kolor.tier1') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '60' },
           ],
         },
         {
-          label: '10 000 + 1 000',
+          label: comboLabel('akordeon-2.a3-mfu-kolor.tier2'),
           rows: [
-            { label: 'Орендна плата [zł/міс.]', value: '500 zł' },
-            { label: 'Кількість сторінок A4, включених в оренду', value: '10 000 (моно) / +1 000 (колір)' },
-            { label: 'Ціна друку A4 (понад ліміт)', value: '0,03 zł (моно) / 0,15 zł (колір)' },
+            { label: 'Орендна плата [zł/міс.]', value: rent('akordeon-2.a3-mfu-kolor.tier2') },
+            { label: 'Кількість сторінок A4, включених в оренду', value: pages('akordeon-2.a3-mfu-kolor.tier2') },
+            { label: 'Ціна друку A4 (понад ліміт)', value: overLimit('akordeon-2.a3-mfu-kolor.tier2') },
             { label: 'Дуплекс', value: '+' },
             { label: 'Швидкість друку до: (стор./хв)', value: '90' },
           ],
