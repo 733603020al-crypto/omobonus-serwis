@@ -1,6 +1,9 @@
 export interface PricingItem {
   service: string
-  price: string
+  // Реальная цена для мигрированных позиций — только в services-pricing-data.ts
+  // (см. getDisplayPrice). Строковое значение здесь остаётся только там, где
+  // цена не мигрирована (3D-печать по формуле, priceTiers-таблицы).
+  price?: string
   duration: string
   link?: string
 }

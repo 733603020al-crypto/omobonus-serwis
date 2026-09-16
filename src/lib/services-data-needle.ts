@@ -7,7 +7,6 @@ const applyNeedleCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service: 'PREMIUM (pełna konserwacja)\n\nzakres usługi obejmuje:\n• konserwacja całego mechanizmu uderzeniowego (smarowanie i regulacja igieł oraz prowadnic),\n• pełne czyszczenie i regeneracja toru papieru,\n• kontrola i kalibracja mechanizmu podawania,\n• czyszczenie elektroniki z pyłu,\n• test końcowy wydruku i reset liczników serwisowych.',
-      price: '150 / 200 / 250',
       duration: '1–3 dni',
     },
   ]
@@ -15,12 +14,6 @@ const applyNeedleCleaningSection = (sections: PricingSection[]) => {
 
 export const createNeedlePricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
-
-  const diagnosisSection = sections.find(section => section.id === 'diagnoza')
-  const diagnosisItem = diagnosisSection?.items[3]
-  if (diagnosisItem) {
-    diagnosisItem.price = '80 / 100 / 150'
-  }
 
   applyNeedleCleaningSection(sections)
 

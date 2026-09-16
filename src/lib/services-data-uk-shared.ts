@@ -1,38 +1,32 @@
 import type { PricingSection } from './services-data-types'
 
-export const diagnostaSection = (diagnosisPrice = ''): PricingSection => ({
+export const diagnostaSection = (): PricingSection => ({
   id: 'diagnoza',
   title: 'Діагностика та оцінка',
   status: 'Безкоштовно',
   items: [
     {
       service: 'Попередня діагностика онлайн 15 хв.\n(Опис проблеми через WhatsApp / сайт / телефон)',
-      price: 'Безкоштовно',
       duration: 'до 15 хв',
     },
     {
       service: 'Попередня діагностика при доставці до сервісу 15 хв.\n(також у разі відмови від ремонту)',
-      price: 'Безкоштовно',
       duration: 'до 15 хв',
     },
     {
       service: 'Діагностика та оцінка ремонту\n(у разі проведення ремонту)',
-      price: 'Безкоштовно',
       duration: '1-2 дні',
     },
     {
       service: 'Діагностика та оцінка ремонту\n(у разі відмови від ремонту)',
-      price: diagnosisPrice,
       duration: '1-2 дні',
     },
     {
       service: 'Письмовий технічний висновок\n(додатково до повної діагностики, з фотодокументацією)',
-      price: '+ 50 zł',
       duration: '1-2 дні',
     },
     {
       service: 'Термінове виконання (якщо можливо, прискорюємо ремонт без додаткової оплати)',
-      price: 'Безкоштовно',
       duration: 'за домовленістю',
     },
   ],
@@ -42,7 +36,7 @@ export const diagnostaSection = (diagnosisPrice = ''): PricingSection => ({
 // перелік пунктів (не спільний diagnostaSection), відповідає PL-версії
 // createLaptopPricingSections у services-data.ts.
 
-export const dojazdSection = (returnPrice = '20 zł'): PricingSection => ({
+export const dojazdSection = (): PricingSection => ({
   id: 'dojazd',
   title: 'Виїзд',
   status: '20 zł',
@@ -50,22 +44,18 @@ export const dojazdSection = (returnPrice = '20 zł'): PricingSection => ({
   items: [
     {
       service: 'Виїзд за пристроєм до клієнта (до 2,5 км від сервісу; 5 км загалом в обидва боки)',
-      price: '20 zł',
       duration: '1-2 дні',
     },
     {
       service: 'Доставка відремонтованого пристрою клієнту (до 2,5 км від сервісу; 5 км загалом в обидва боки)',
-      price: returnPrice,
       duration: '1-2 дні',
     },
     {
       service: 'Виїзд або доставка понад 2,5 км від сервісу (маршрут в обидва боки; доплата після перевищення 5 км)',
-      price: '20 zł + 1,5 zł/km',
       duration: '1-2 дні',
     },
     {
       service: 'Термінове виконання (якщо можливо, виконуємо виїзд або доставку в першу чергу)',
-      price: 'Безкоштовно',
       duration: 'за домовленістю',
     },
   ],

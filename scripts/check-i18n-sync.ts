@@ -160,11 +160,12 @@ services.forEach((plService, i) => {
 })
 
 // --- 3) getDisplayPrice/getDisplayDuration vs. текст в языковых файлах -----
-// Для позиций, у которых номера уже вынесены в общий источник, исходный
-// item.price/item.duration в языковом файле должен по-прежнему совпадать с
-// тем, что реально построит getDisplayPrice/getDisplayDuration — иначе это
-// означает, что кто-то отредактировал только языковой файл в обход общей
-// схемы (захардкодил текст заново), либо забыл обновить fallback-текст.
+// Цена для мигрированных позиций больше не хранится в языковых файлах
+// (item.price отсутствует) — единственный источник это services-pricing-data.ts,
+// getDisplayPrice бросает исключение сама, если для id нет записи. Здесь только
+// проверяем, что legacy item.price не появился заново по ошибке, и что
+// getDisplayPrice реально строится (иначе упал бы build).
+// Срок (duration) пока не мигрирован на строгий режим — сравниваем как раньше.
 
 interface LangSet {
   locale: 'pl' | Locale
@@ -189,10 +190,10 @@ for (const { locale, list, file } of langSets) {
 
       if (migratedPrice[id]) {
         migratedCount++
-        const displayPrice = getDisplayPrice(service.slug, path, locale, item.price)
-        if (displayPrice !== item.price) {
-          report(id, file, `Цена в файле "${item.price}" не совпадает с построенной через общую схему "${displayPrice}"`)
+        if (item.price !== undefined) {
+          report(id, file, `У мигрированной позиции остался legacy item.price = "${item.price}" — цена должна быть только в services-pricing-data.ts`)
         }
+        getDisplayPrice(service.slug, path, locale)
       }
 
       if (migratedDuration[id]) {

@@ -1,38 +1,32 @@
 import type { PricingSection } from './services-data-types'
 
-export const diagnostaSection = (diagnosisPrice = ''): PricingSection => ({
+export const diagnostaSection = (): PricingSection => ({
   id: 'diagnoza',
   title: 'Диагностика и оценка',
   status: 'Бесплатно',
   items: [
     {
       service: 'Предварительная диагностика онлайн 15 мин.\n(Описание проблемы через WhatsApp / сайт / телефон)',
-      price: 'Бесплатно',
       duration: 'до 15 мин',
     },
     {
       service: 'Предварительная диагностика при доставке в сервис 15 мин.\n(также в случае отказа от ремонта)',
-      price: 'Бесплатно',
       duration: 'до 15 мин',
     },
     {
       service: 'Диагностика и оценка ремонта\n(в случае проведения ремонта)',
-      price: 'Бесплатно',
       duration: '1-2 дня',
     },
     {
       service: 'Диагностика и оценка ремонта\n(в случае отказа от ремонта)',
-      price: diagnosisPrice,
       duration: '1-2 дня',
     },
     {
       service: 'Письменное техническое заключение\n(дополнительно к полной диагностике, с фотодокументацией)',
-      price: '+ 50 zł',
       duration: '1-2 дня',
     },
     {
       service: 'Срочное выполнение (если возможно, ускоряем ремонт без дополнительной платы)',
-      price: 'Бесплатно',
       duration: 'Индивидуально',
     },
   ],
@@ -42,7 +36,7 @@ export const diagnostaSection = (diagnosisPrice = ''): PricingSection => ({
 // перечень пунктов (не общий diagnostaSection), соответствует PL-версии
 // createLaptopPricingSections в services-data.ts.
 
-export const dojazdSection = (returnPrice = '20 zł'): PricingSection => ({
+export const dojazdSection = (): PricingSection => ({
   id: 'dojazd',
   title: 'Выезд',
   status: '20 zł',
@@ -50,22 +44,18 @@ export const dojazdSection = (returnPrice = '20 zł'): PricingSection => ({
   items: [
     {
       service: 'Выезд за устройством к клиенту (до 2,5 км от сервиса; 5 км в общей сложности в обе стороны)',
-      price: '20 zł',
       duration: '1-2 дня',
     },
     {
       service: 'Доставка отремонтированного устройства клиенту (до 2,5 км от сервиса; 5 км в общей сложности в обе стороны)',
-      price: returnPrice,
       duration: '1-2 дня',
     },
     {
       service: 'Выезд или доставка свыше 2,5 км от сервиса (маршрут в обе стороны; доплата после превышения 5 км)',
-      price: '20 zł + 1,5 zł/км',
       duration: '1-2 дня',
     },
     {
       service: 'Срочное выполнение (если возможно, выполняем выезд или доставку в первую очередь)',
-      price: 'Бесплатно',
       duration: 'Индивидуально',
     },
   ],

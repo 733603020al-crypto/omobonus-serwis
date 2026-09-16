@@ -34,9 +34,11 @@ export function pricingId(slug: string, path: string): string {
 //
 // Все 510 позиций цены и 510 позиций срока мигрированы в migratedPrice/
 // migratedDuration (включая бывшие уникальные форматы — см. "Бывшие ... спец-
-// случаи" в services-pricing-wrappers.ts). fallback в resolveDisplay остаётся
-// как защита архитектуры (id без записи в migrated* при будущих правках), а
-// не как активный путь для каких-то конкретных сегодняшних позиций.
+// случаи" в services-pricing-wrappers.ts). Для цены (getDisplayPrice) legacy
+// item.price больше не существует как fallback — отсутствие записи в
+// migratedPrice/PRICE_WRAPPERS теперь явная ошибка (dev и build), чтобы цену
+// нельзя было молча потерять. Срок (getDisplayDuration) пока не мигрирован
+// на строгий режим — сохраняет fallback на item.duration.
 
 function fillTemplate(template: string, numbers: string[]): string {
   return template.replace(/\{(\d+)\}/g, (_, i) => numbers[Number(i)] ?? '')
@@ -56,8 +58,17 @@ function resolveDisplay(
   return fillTemplate(wrapper[locale], entry.numbers)
 }
 
-export function getDisplayPrice(slug: string, path: string, locale: PricingLocale, fallback: string): string {
-  return resolveDisplay(migratedPrice, PRICE_WRAPPERS, pricingId(slug, path), locale, fallback)
+export function getDisplayPrice(slug: string, path: string, locale: PricingLocale): string {
+  const id = pricingId(slug, path)
+  const entry = migratedPrice[id]
+  if (!entry) {
+    throw new Error(`[services-pricing] Нет цены в migratedPrice для "${id}" — добавь запись в services-pricing-data.ts.`)
+  }
+  const wrapper = PRICE_WRAPPERS[entry.wrapperKey]
+  if (!wrapper) {
+    throw new Error(`[services-pricing] Неизвестный wrapperKey "${entry.wrapperKey}" для "${id}" в services-pricing-wrappers.ts.`)
+  }
+  return fillTemplate(wrapper[locale], entry.numbers)
 }
 
 export function getDisplayDuration(slug: string, path: string, locale: PricingLocale, fallback: string): string {

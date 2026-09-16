@@ -3035,7 +3035,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       </colgroup>
                                       <TableBody>
                                         {subcategory.items.map((item, idx) => {
-                                          const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price)
+                                          const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
                                           return (
                                           <TableRow
                                             key={idx}
@@ -3075,7 +3075,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       renderMobileServiceRow(
                                         {
                                           ...item,
-                                          price: getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price),
+                                          price: getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale),
                                           duration: getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration),
                                         },
                                         idx,
@@ -3107,7 +3107,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     )}
                                     <TableBody>
                                       {subcategory.items.map((item, idx) => {
-                                        const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.price)
+                                        const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
                                         const displayDuration = getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale, item.duration)
                                         return (
                                         <TableRow
@@ -3287,7 +3287,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           const row = renderMobileServiceRow(
                             {
                               ...item,
-                              price: getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale, item.price),
+                              price: getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale),
                               duration: getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration),
                             },
                             idx,
@@ -3323,7 +3323,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </colgroup>
                           <TableBody>
                             {section.items?.map((item, idx) => {
-                              const displayPrice = getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale, item.price)
+                              const displayPrice = getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale)
                               const displayDuration = getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale, item.duration)
                               return (
                               <TableRow

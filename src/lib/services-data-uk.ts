@@ -35,7 +35,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Діагностика, ремонт та модернізація системних блоків.',
     pricingSections: [
-      diagnostaSection('50'),
+      diagnostaSection(),
       dojazdSection(),
       desktopKonserwacja,
       desktopNaprawy,
@@ -49,7 +49,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['03_outsourcing_it'],
     description: 'Повне ІТ-обслуговування для Вашої компанії.',
     pricingSections: [
-      diagnostaSection('90'),
+      diagnostaSection(),
       dojazdSection(),
       outsourcingKonserwacja,
       outsourcingNaprawy,
@@ -63,7 +63,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
     pricingSections: [
-      diagnostaSection('80 / 100 / 150'),
+      diagnostaSection(),
       dojazdSection(),
       needleKonserwacja,
       needleNaprawy,
@@ -77,7 +77,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Професійний ремонт та обслуговування лазерних принтерів.',
     pricingSections: [
-      diagnostaSection('70 / 100 / 150'),
+      diagnostaSection(),
       dojazdSection(),
       laserKonserwacjaUk,
       laserNaprawy,
@@ -116,7 +116,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['05_serwis_drukarek_atramentowych'],
     description: 'Ремонт, прочищення головок та обслуговування струменевих принтерів.',
     pricingSections: [
-      diagnostaSection('50 / 70 / 90'),
+      diagnostaSection(),
       dojazdSection(),
       inkjetKonserwacjaUk,
       inkjetNaprawy,
@@ -130,7 +130,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['08_serwis_ploterow'],
     description: 'Сервіс та ремонт широкоформатних плотерів.',
     pricingSections: [
-      diagnostaSection('150'),
+      diagnostaSection(),
       dojazdSection(),
       plotterKonserwacja,
       plotterNaprawy,
@@ -144,7 +144,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервіс принтерів етикеток і штрих-кодів.',
     pricingSections: [
-      diagnostaSection('100 / 150 / 200'),
+      diagnostaSection(),
       dojazdSection(),
       thermalKonserwacja,
       thermalNaprawy,
@@ -159,7 +159,7 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
     pricingSections: [
-      diagnostaSection('80 / 100 / 150'),
+      diagnostaSection(),
       dojazdSection(),
       needleKonserwacja,
       needleNaprawy,
@@ -173,7 +173,7 @@ export const servicesUk: ServiceData[] = [
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Сервіс 3D-принтерів у Вроцлаві – ремонт 3D-принтера, калібрування столу, регулювання осей та покращення якості друку. Ремонт 3D-принтерів FDM та SLA, чищення екструдера та хотенду, заміна деталей та налаштування параметрів друку. Сервіс 3D-принтерів для компаній та майстерень, налаштування прошивки та підготовка до матеріалів ABS, PETG та nylon.',
     pricingSections: [
-      diagnostaSection('150'),
+      diagnostaSection(),
       dojazdSection(),
       printer3dKonserwacja,
       printer3dNaprawy,
