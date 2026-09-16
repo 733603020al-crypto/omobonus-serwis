@@ -23,7 +23,7 @@ export const laptopDiagnostaSection = (): PricingSection => ({
     },
     {
       service: 'Повна діагностика та оцінка ремонту\n(лише у разі відмови після проведеної повної діагностики)',
-      price: '50 zł',
+      price: '100 zł',
       duration: '1-2 дні',
     },
     {

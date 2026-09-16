@@ -311,7 +311,7 @@ export const createDesktopPricingSections = (): PricingSection[] => {
   const diagnosisSection = sections.find(section => section.id === 'diagnoza')
   const diagnosisItem = diagnosisSection?.items[3]
   if (diagnosisItem) {
-    diagnosisItem.price = '90'
+    diagnosisItem.price = '50'
   }
 
 

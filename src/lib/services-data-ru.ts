@@ -35,7 +35,7 @@ export const servicesRu: ServiceData[] = [
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Диагностика, ремонт и модернизация системных блоков.',
     pricingSections: [
-      diagnostaSection('90'),
+      diagnostaSection('50'),
       dojazdSection(),
       desktopKonserwacja,
       desktopNaprawy,

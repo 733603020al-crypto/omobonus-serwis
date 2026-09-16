@@ -23,7 +23,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
       },
       {
         service: 'Pełna diagnoza i wycena naprawy\n(tylko w przypadku rezygnacji po wykonaniu pełnej diagnozy)',
-        price: '50 zł',
+        price: '100 zł',
         duration: '1-2 dni',
       },
       {
