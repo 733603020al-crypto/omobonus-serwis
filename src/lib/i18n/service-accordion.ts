@@ -30,6 +30,8 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
+  konserwacjaIncludedNoteInkjet: string
+  konserwacjaExtraPaidNoteInkjet: string
   deviceCategoriesDescription: {
     default: string
     serwisDrukarekIglowych: string
@@ -89,6 +91,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
+    konserwacjaIncludedNoteInkjet: 'W cenie: standardowe środki i materiały potrzebne do czyszczenia drukarki i udrażniania układu drukującego.',
+    konserwacjaExtraPaidNoteInkjet: 'Dodatkowo płatne: wymiana absorbera zużytego tuszu, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     deviceCategoriesDescription: {
       default: 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej',
       serwisDrukarekIglowych: 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej',
@@ -142,6 +146,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
+    konserwacjaIncludedNoteInkjet: 'У ціну входить: стандартні засоби та матеріали, потрібні для чищення принтера та прочищення друкувальної системи.',
+    konserwacjaExtraPaidNoteInkjet: 'Додатково платно: заміна абсорбера відпрацьованого чорнила, ремонт і запасні частини — завжди за попереднім погодженням.',
     deviceCategoriesDescription: {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
@@ -205,6 +211,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
+    konserwacjaIncludedNoteInkjet: 'В цену входит: стандартные средства и материалы, необходимые для чистки принтера и прочистки печатающей системы.',
+    konserwacjaExtraPaidNoteInkjet: 'Дополнительно платно: замена абсорбера отработанных чернил, ремонт и запасные части — всегда по предварительному согласованию.',
     deviceCategoriesDescription: {
       default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
       serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',

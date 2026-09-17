@@ -39,6 +39,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-mechanizm',
       title: 'Механізм захоплення паперу, ролики, сепаратори, … (застряє або не захоплює папір)',
+      icon: '/images/accordion-icon-laser-mechanizm-podawania.webp',
       items: [
         { service: 'Видалення застряглого паперу / сторонніх предметів з тракту паперу\n(скріпки, залишки паперу, пил, … — типова причина повторних застрягань)', },
         { service: 'Чищення або заміна ролика захоплення та сепаратора\n(усуває застрягання, «захоплення кількох аркушів одразу», ковзання паперу)', },
@@ -50,6 +51,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-karetka',
       title: 'Барабан, ремінь перенесення, fuser (модулі зображення та закріплення)',
+      icon: '/images/accordion-icon-laserowe-moduly-obrazu-utrwalania-v2.webp',
       items: [
         { service: 'Заміна барабана зображення та леза очищення (cleaning blade). Скидання лічильника. Калібрування кольорів / реєстрації після заміни модулів\n(усуває повторювані смуги та забруднення на аркуші)', },
         { service: 'Заміна ременя перенесення або ролика перенесення.\nКалібрування кольорів / реєстрації після заміни модулів\n(усуває кольорові розводи, зміщення кольорів та забруднення паперу)', },
@@ -63,6 +65,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-glowica',
       title: 'Оптика та лазер',
+      icon: '/images/accordion-icon-laser-optyka.webp',
       items: [
         { service: 'Чищення модуля лазера / дзеркал сканера\n(усуває бліді відбитки, смуги, відсутність чорного — відновлює правильний контраст)', },
         { service: 'Заміна модуля лазера (DC Controller / LSU)\n(вирішує повну відсутність друку або повідомлення «помилка лазера»)', },
@@ -73,6 +76,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-elektronika',
       title: 'Електронні ремонти',
+      icon: '/images/accordion-icon-laser-elektronika.webp',
       items: [
         { service: 'Ремонт або заміна роз\'єму або гнізда LAN/USB пошкодженого / розхитаного\n(усуває відсутність виявлення принтера комп\'ютером / LAN)', },
         { service: 'Ремонт або заміна блока живлення (PSU / плата живлення)\n(після аварії через перепад / стрибок напруги)', },
@@ -88,6 +92,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Програмне забезпечення та налаштування',
+      icon: '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp',
       items: [
         { service: 'Встановлення драйверів та налаштування в мережі (маршрутизатор / Wi-Fi / LAN) (дистанційно або локально)', },
         { service: 'Встановлення мобільних програм (AirPrint / Mopria / програми виробника) (друк зі смартфона без кабелів)', },
@@ -108,6 +113,7 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-dodatkowe',
       title: 'Додаткові послуги',
+      icon: '/images/accordion-icon-laserowe-dodatkowe-uslugi-v3.webp',
       items: [
         { service: 'Відсмоктування внутрішніх частин після розсипання тонера (базове чищення)', },
         { service: 'Чищення після «сильного залиття тонером»\n(повна декантамінація та розбирання всіх компонентів принтера)', },

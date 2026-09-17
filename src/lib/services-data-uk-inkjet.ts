@@ -68,7 +68,7 @@ export const inkjetNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Програмне забезпечення та налаштування',
-      icon: '/images/accordion-icon-atramentowe-oprogramowanie-konfiguracja-v2.webp',
+      icon: '/images/accordion-icon-atramentowe-oprogramowanie-konfiguracja-v4.webp',
       items: [
         { service: 'Встановлення драйверів та налаштування в мережі (маршрутизатор / Wi-Fi / LAN /)\n(дистанційно або локально)', },
         { service: 'Встановлення мобільних програм (AirPrint / Mopria / програми виробника)\n(друк зі смартфона без кабелів)', },

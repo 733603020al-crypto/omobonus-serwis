@@ -213,7 +213,7 @@ const applyInkjetSoftwareSubcategory = (sections: PricingSection[]) => {
 
   if (!softwareSubcategory) return
 
-  softwareSubcategory.icon = '/images/accordion-icon-atramentowe-oprogramowanie-konfiguracja-v2.webp'
+  softwareSubcategory.icon = '/images/accordion-icon-atramentowe-oprogramowanie-konfiguracja-v4.webp'
   softwareSubcategory.items = [
     {
       service:

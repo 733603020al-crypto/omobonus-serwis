@@ -2140,6 +2140,19 @@
       gap: 0;
     }
 
+    /* Naprawy only: the table below sits inside [data-nested-parchment="true"],
+       which carries its own padding-left/right:17px (line ~1439) — the header
+       row above has no equivalent inset, so its 67%/33% grid was computed from
+       a ~34px wider box than the table's, landing "Cena, zł"/"Czas realizacji"
+       to the right of their columns even though the column ratios themselves
+       already matched. Mirroring the same 17px here (not touching the plate-role
+       [data-open-header-plate] header, which uses its own separate 24px inset
+       mechanism at line ~2003) realigns both sides to the same working width. */
+    [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
+      padding-left: 17px;
+      padding-right: 17px;
+    }
+
     @keyframes diagnoza-shadow-in {
       from {
         opacity: 0;
@@ -2504,13 +2517,33 @@
       overflow: hidden !important;
     }
 
-    /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns) */
+    /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns).
+       3rd column was "auto" (content-width "Cena" label, pinned to the right edge by the
+       1fr title column) while the mobile table below (service-accordion.tsx ~3062-3066)
+       has a fixed 25% price colgroup — two different width models that can never line up.
+       Switching this to the same 25% makes the header's price cell a grid item that
+       stretches to fill that column (CSS Grid default justify-self:stretch on a plain
+       block div), so "Cena" (already text-center inside it) lands centered over the
+       same 25%-wide zone the price value below is centered in. */
     .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-row="true"] {
       display: grid !important;
-      grid-template-columns: 161px minmax(0, 1fr) auto;
+      grid-template-columns: 161px minmax(0, 1fr) 25%;
     }
     .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-parchment-list-header-col1] {
       display: contents !important;
+    }
+
+    /* The 3rd grid column now stretches to the full 25% (default grid
+       justify-self:stretch), but [data-subcategory-price] itself is still
+       the plain JSX flex row (items-center, no justify-content) whose only
+       visible child on mobile is the "Cena" wrapper (Czas is hidden md:flex
+       here) — flex's default justify-content:flex-start left the whole
+       "Cena + info icon" group pinned to the column's left edge instead of
+       centered in it. Desktop doesn't need this: there this same div becomes
+       its own 1fr/1fr grid (line ~2138 above), which centers each half via
+       grid stretch, not flex. */
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-price="true"] {
+      justify-content: center;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 4: all open icons */
