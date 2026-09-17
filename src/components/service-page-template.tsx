@@ -7,6 +7,7 @@ import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
+import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
@@ -294,6 +295,13 @@ export function ServicePageTemplate({
                           className="service-hero-image object-contain w-full h-full"
                           fetchPriority="high"
                         />
+                      ) : slug === 'naprawa-drukarek' ? (
+                        // Center-active carousel of the same category hero
+                        // images used on their own service pages (laser,
+                        // inkjet, needle, thermal, plotter, 3D) — replaces
+                        // the single static Serwis_Drukarek.webp. No new
+                        // assets, same fixed hero zone.
+                        <HeroPrinterCarousel alt={imageAlt} />
                       ) : (
                         <Image
                           src={imageSrc}
