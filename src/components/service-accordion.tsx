@@ -852,7 +852,7 @@ const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'dr
 // varies, so adding a real photo later is a data-only change.
 const NAPRAWY_SUBCATEGORY_ICONS: Record<string, string> = {
   'Płyta główna / zasilanie / podzespoły': '/images/naprawy-plyta-glowna-v3.webp',
-  'Układ chłodzenia i czystość': '/images/naprawy-uklad-chlodzenia-v3.webp',
+  'Układ chłodzenia i czystość': '/images/naprawy-uklad-chlodzenia-v5.webp',
   'Dyski i dane': '/images/accordion-subcategory-dyski-dane.webp',
   'Odzyskanie / usuwanie danych': '/images/naprawy-odzyskanie-danych-v2.webp',
   'Ekran i obudowa': '/images/accordion-subcategory-ekran-obudowa.webp',
