@@ -212,9 +212,6 @@ export const defaultPricingSections: PricingSection[] = [
             service: 'Czyszczenie po silnym zalaniu tonerem (Pełna dekontaminacja)',
           },
           {
-            service: 'Ocena stanu urządzenia przed zakupem (Ekspertyza)',
-          },
-          {
             service: 'Drukarka zastępcza (Na czas naprawy)',
             link: '/uslugi/drukarka-zastepcza',
           },

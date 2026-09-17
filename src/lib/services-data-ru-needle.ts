@@ -72,7 +72,7 @@ export const needleNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Программное обеспечение и настройка',
-      icon: '/images/naprawy-oprogramowanie-iglowe-v1.webp',
+      icon: '/images/naprawy-oprogramowanie-iglowe-v3.webp',
       items: [
         { service: 'Установка драйверов и настройка в сети (маршрутизатор / Wi-Fi / LAN) (удалённо или локально)', },
         { service: 'Обновление прошивки / сброс системы принтера (устраняет ошибки и сервисные сообщения)', },

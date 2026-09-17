@@ -300,9 +300,6 @@ const applyInkjetAdditionalSubcategory = (sections: PricingSection[]) => {
         'Wymiana pojemnika / modułu na zużyty tusz (tzw. waste ink, „pampers”)',
     },
     {
-      service: 'Ocena stanu urządzenia przed zakupem (ekspertyza)',
-    },
-    {
       service: 'Drukarka zastępcza (na czas naprawy)',
       link: '/uslugi/drukarka-zastepcza',
     },

@@ -162,7 +162,7 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-additional',
       title: 'Програмне забезпечення, налаштування та інтеграції',
       subtitle: 'етикетки друкуються зі зміщенням, у неправильному форматі, з помилковими даними або взагалі не друкуються з програми',
-      icon: '/images/accordion-icon-termiczne-oprogramowanie.webp',
+      icon: '/images/accordion-icon-termiczne-oprogramowanie-v2.webp',
       items: [
         {
           service: 'Встановлення та налаштування драйверів принтера етикеток (Windows / macOS / Linux)\nвирішує проблеми з відсутністю можливості друку, неправильним вибором порту, помилковим форматом сторінки та неповною підтримкою функцій принтера',

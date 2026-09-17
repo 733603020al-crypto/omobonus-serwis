@@ -23,7 +23,7 @@ export const createNeedlePricingSections = (): PricingSection[] => {
     'naprawy-glowica': '/images/accordion-icon-iglowe-naped-karetki.webp',
     'naprawy-tasma': '/images/accordion-icon-iglowe-tasma.webp',
     'naprawy-elektronika': '/images/accordion-icon-iglowe-elektronika.webp',
-    'naprawy-software': '/images/naprawy-oprogramowanie-iglowe-v1.webp',
+    'naprawy-software': '/images/naprawy-oprogramowanie-iglowe-v3.webp',
     'naprawy-dodatkowe': '/images/accordion-icon-iglowe-uslugi-dodatkowe.webp',
   }
   naprawySection?.subcategories?.forEach(sub => {

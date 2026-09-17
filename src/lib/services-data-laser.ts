@@ -310,9 +310,6 @@ const applyLaserAdditionalSubcategory = (sections: PricingSection[]) => {
       service: 'Wymiana pojemnika na zużyty toner (waste toner)',
     },
     {
-      service: 'Ocena stanu urządzenia przed zakupem (ekspertyza)',
-    },
-    {
       service: 'Drukarka zastępcza (na czas naprawy)',
       link: '/uslugi/drukarka-zastepcza',
     },

@@ -291,7 +291,7 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.title = 'Oprogramowanie, konfiguracja i integracje'
   softwareSubcategory.subtitle =
     'etykiety drukują się przesunięte, w złym formacie, z błędnymi danymi lub nie drukują się wcale z programu'
-  softwareSubcategory.icon = '/images/accordion-icon-termiczne-oprogramowanie.webp'
+  softwareSubcategory.icon = '/images/accordion-icon-termiczne-oprogramowanie-v2.webp'
   softwareSubcategory.items = [
     {
       service:
