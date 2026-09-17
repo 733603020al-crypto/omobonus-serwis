@@ -610,7 +610,7 @@
   display: none;
 }
 
-/* Center-active printer carousel: naprawa-drukarek hero only. The 400/300px
+/* Stack printer carousel: naprawa-drukarek hero only. The 400/300px
    hero zone itself (.service-hero-image-wrap, the grid layout, the text
    column) is untouched — only the carousel's own visual area is allowed to
    bleed past it, same principle as the HERO_SCALE pages (e.g.

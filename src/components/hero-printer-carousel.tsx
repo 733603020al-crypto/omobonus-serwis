@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-// Center-active carousel for the /uslugi/naprawa-drukarek hero: reuses the
-// same category hero images already used on their own service pages (no new
+// Stack carousel for the /uslugi/naprawa-drukarek hero: reuses the same
+// category hero images already used on their own service pages (no new
 // assets). Only transform + opacity are animated (GPU-friendly, no reflow),
 // advance interval is paused entirely under prefers-reduced-motion.
 const SLIDES = [
@@ -40,23 +40,22 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
     <div className="hero-printer-carousel-bleed">
       <div className="hero-printer-carousel" role="img" aria-label={alt}>
         {SLIDES.map((src, i) => {
-          const raw = i - active
-          let delta = ((raw % SLIDE_COUNT) + SLIDE_COUNT) % SLIDE_COUNT
-          if (delta > SLIDE_COUNT / 2) delta -= SLIDE_COUNT
-          const abs = Math.abs(delta)
-          // Active slide only: 1.54x matches the ~1.2x-of-zone visual size
-          // used on e.g. serwis-drukarek-laserowych (0.78 * 1.54 = 1.2012),
-          // now that the carousel's bleed box (service-hero.css) is allowed
-          // to extend vertically too, same principle as that page's own
-          // hero wrap overflowing its zone. Side slides are left untouched.
-          const scale = delta === 0 ? 1.54 : abs === 1 ? 0.62 : 0.42
-          const opacity = delta === 0 ? 1 : abs === 1 ? 0.55 : 0
-          // 77% (was 65%): own box is 78% of the container, center's rendered
-          // half-width is 0.78*1.54/2=0.6006, side's rendered half-width is
-          // 0.78*0.62/2=0.2418 — solving shift-0.2418 = 0.6006-0.2418 (edges
-          // meet at the midpoint of the side slide) gives shift=0.6006, i.e.
-          // t=0.6006/0.78=0.77, for exactly 50% of each side slide visible.
-          const translateX = delta * 77
+          // Forward-only queue position (0 = active, 1/2 = next two waiting
+          // in the stack, 3+ = further back, invisible). Unlike a symmetric
+          // left/right carousel, there's no separate "previous" side: on
+          // advance, delta=0 jumps straight to the back of the queue
+          // (delta=SLIDE_COUNT-1), so the 900ms transition below carries it
+          // from front-center out to the hidden back position by itself —
+          // exactly the "current slides out and shrinks" motion, with no
+          // extra exit state needed.
+          const delta = ((i - active) % SLIDE_COUNT + SLIDE_COUNT) % SLIDE_COUNT
+          // Active: same 1.54x used by the previous carousel (0.78*1.54=1.2012
+          // of the zone, matching serwis-drukarek-laserowych's visual size).
+          const scale = delta === 0 ? 1.54 : delta === 1 ? 0.86 : delta === 2 ? 0.7 : 0.55
+          const opacity = delta === 0 ? 1 : delta === 1 ? 0.8 : delta === 2 ? 0.55 : 0
+          const translateX = delta === 0 ? 0 : delta === 1 ? 30 : delta === 2 ? 50 : 62
+          const translateY = delta === 0 ? 0 : delta === 1 ? -6 : delta === 2 ? -11 : -15
+          const zIndex = delta === 0 ? 16 : delta === 1 ? 15 : delta === 2 ? 14 : 13
 
           return (
             // eslint-disable-next-line @next/next/no-img-element
@@ -67,9 +66,9 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
               aria-hidden="true"
               className="hero-printer-carousel-slide"
               style={{
-                transform: `translate(-50%, -50%) translateX(${translateX}%) scale(${scale})`,
+                transform: `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(${scale})`,
                 opacity,
-                zIndex: 10 - abs,
+                zIndex,
               }}
             />
           )
