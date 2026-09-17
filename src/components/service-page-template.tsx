@@ -2,7 +2,6 @@ import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
@@ -12,6 +11,7 @@ import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
+import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false — content still renders server-side, only the JS bundle is split.
@@ -366,32 +366,41 @@ export function ServicePageTemplate({
           <section id="uslugi" className="relative text-center pt-0 pb-2">
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {(relatedServices ?? []).map((rs) => (
+                {(relatedServices ?? []).map((rs, i) => (
                   <Link
                     key={rs.slug}
                     href={`${basePath}/${rs.slug}`}
-                    className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] flex items-center text-left w-full services-card-bg transition-all duration-300 ease-out hover:border-[rgba(200,169,107,0.85)] hover:-translate-y-[2px] hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]"
+                    className={`
+    group
+    relative
+    min-h-[152px]
+    py-4 px-6
+    flex
+    items-center
+    text-left
+    w-full
+    zakres-paper-card
+    services-card-hover
+    ${EDGE_CLASSES[i % EDGE_CLASSES.length]}
+    ${ORIENT_CLASSES[i % ORIENT_CLASSES.length]}
+    ${CORNER_CLASSES[i % CORNER_CLASSES.length]}
+  `}
                   >
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/40 via-[#bfa76a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
-
-                    <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
-                      <Image
-                        src={rs.iconSrc}
-                        alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
-                        width={50}
-                        height={50}
-                        sizes="50px"
-                        className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                      />
+                    <div className="z-10 h-[120px] flex-shrink-0 w-[50%]">
+                      <div className="relative w-full h-full service-card-icon-zoom">
+                        <Image
+                          src={rs.iconSrc}
+                          alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
+                          fill
+                          sizes="(max-width: 768px) 35vw, 180px"
+                          className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
                     </div>
 
-                    <div className="relative z-10 flex-1">
-                      <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                    <div className="relative z-20 h-[120px] flex items-center pl-[15px] w-[50%]">
+                      <div className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
                         {rs.displayTitle}
-                      </div>
-                      <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
-                        <span>{labels.relatedCta}</span>
-                        <ArrowRight className="w-3 h-3" />
                       </div>
                     </div>
                   </Link>

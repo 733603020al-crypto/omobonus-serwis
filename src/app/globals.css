@@ -364,6 +364,16 @@
     }
   }
 
+  /* Single shared zoom for all service-card icons (home + related-services
+     on /uslugi/naprawa-drukarek) — one rule, no per-slug variants. Pure
+     visual transform (no reflow), centered; allowed to overflow its own
+     120px-tall zone since neither .zakres-paper-card nor its ancestors
+     clip (no overflow:hidden in that chain) — the text zone sits at a
+     higher z-index so it always stays on top of any overlap. */
+  .service-card-icon-zoom {
+    transform: scale(1.45);
+  }
+
   /* No clip-path polygon here on purpose: the card's visible silhouette
      comes from (a) the source WebP's own real alpha edge, plus (b) a soft
      bezier-curve SVG mask below — never straight/geometric lines. */

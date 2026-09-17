@@ -17,19 +17,24 @@ export const serviceImageSrc: Record<string, string> = {
   'drukarka-zastepcza': '/images/11_drukarka-zastepcza.webp',
 }
 
+// Единый стандарт card-icon для карточек услуг (главная + related-services):
+// прозрачный холст 160×160, объект центрирован, длинная сторона ≈80% холста.
+// Используется и в sections/services.tsx (карточки главной), и здесь для
+// related-services на страницах /uslugi/[slug].
 export const serviceIconSrc: Record<string, string> = {
-  'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych-icon.webp',
-  'serwis-laptopow': '/images/01_serwis-laptopow-icon.webp',
-  'outsourcing-it': '/images/03_outsourcing-it-icon.webp',
-  'serwis-drukarek-laserowych': '/images/04_serwis-drukarek-laserowych-icon.webp',
-  'serwis-drukarek-atramentowych': '/images/05_serwis-drukarek-atramentowych-icon.webp',
-  'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp',
-  'druk-3d-na-zamowienie': '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp',
-  'serwis-plotterow': '/images/08_serwis-ploterow-icon.webp',
-  'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych-icon.webp',
-  'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych-icon.webp',
-  'wynajem-drukarek': '/images/10_wynajem-drukarek-icon.webp',
-  'drukarka-zastepcza': '/images/11_drukarka-zastepcza-icon.webp',
+  'serwis-komputerow-stacjonarnych': '/images/serwis-komputerow-stacjonarnych-card-icon.webp',
+  'serwis-laptopow': '/images/serwis-laptopow-card-icon.webp',
+  'outsourcing-it': '/images/outsourcing-it-card-icon.webp',
+  'serwis-drukarek-laserowych': '/images/serwis-drukarek-laserowych-card-icon.webp',
+  'serwis-drukarek-atramentowych': '/images/serwis-drukarek-atramentowych-card-icon.webp',
+  'serwis-drukarek-3d': '/images/serwis-drukarek-3d-card-icon.webp',
+  'druk-3d-na-zamowienie': '/images/druk-3d-na-zamowienie-card-icon.webp',
+  'serwis-plotterow': '/images/serwis-plotterow-card-icon.webp',
+  'serwis-drukarek-termicznych': '/images/serwis-drukarek-termicznych-card-icon.webp',
+  'serwis-drukarek-iglowych': '/images/serwis-drukarek-iglowych-card-icon.webp',
+  'wynajem-drukarek': '/images/wynajem-drukarek-card-icon.webp',
+  'drukarka-zastepcza': '/images/drukarka-zastepcza-card-icon.webp',
+  'naprawa-drukarek': '/images/naprawa-drukarek-card-icon.webp',
 }
 
 export const slugBrands: Record<string, string[]> = {

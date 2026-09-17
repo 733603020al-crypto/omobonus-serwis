@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
 import type { ServiceData } from '@/lib/services-data'
+import { serviceIconSrc as CARD_ICON_SRC } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 // Written out as literal strings (not built via template interpolation) so
@@ -12,13 +13,13 @@ import manifest from '@/config/KANONICZNY_MANIFEST.json'
 // assembled as `zakres-edge-${x}` is invisible to that scanner and the
 // whole custom @layer utilities rule gets silently purged from the CSS
 // build even though the DOM ends up with the right class name.
-const ORIENT_CLASSES = [
+export const ORIENT_CLASSES = [
   'zakres-orient-normal',
   'zakres-orient-flipx',
   'zakres-orient-flipy',
   'zakres-orient-rotate180',
 ]
-const EDGE_CLASSES = [
+export const EDGE_CLASSES = [
   'zakres-edge-a',
   'zakres-edge-b',
   'zakres-edge-c',
@@ -29,7 +30,7 @@ const EDGE_CLASSES = [
   'zakres-edge-h',
 ]
 // '' = corner-none (no ::after at all — 4 of the 10 cards use this)
-const CORNER_CLASSES = [
+export const CORNER_CLASSES = [
   '',
   'zakres-corner-tl',
   'zakres-corner-tr',
@@ -162,15 +163,6 @@ export function Services({
   const canExpand = extraList.length > 0 && Boolean(d.viewAllLabel)
 
   const renderCard = (service: ServiceData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
-    const isPlotter = service.slug === 'serwis-plotterow'
-    const isEtykiety = service.slug === 'serwis-drukarek-termicznych'
-    const isDrukarki3D = service.slug === 'serwis-drukarek-3d'
-    const isLaptopy = service.slug === 'serwis-laptopow'
-    const isKomputery = service.slug === 'serwis-komputerow-stacjonarnych'
-    const isLaserowych = service.slug === 'serwis-drukarek-laserowych'
-    const isDruk3DZamowienie = service.slug === 'druk-3d-na-zamowienie'
-    const isWynajem = service.slug === 'wynajem-drukarek'
-    const isZastepcza = service.slug === 'drukarka-zastepcza'
     return (
       <Link
         key={service.slug}
@@ -193,49 +185,10 @@ export function Services({
   `}
       >
         {/* Ikona — centered within its own zone (no left/right push). */}
-        <div className={`z-10 h-[120px] flex-shrink-0 ${isPlotter || isDrukarki3D || isLaptopy || isLaserowych || isWynajem || isZastepcza ? 'w-[60%]' : 'w-[50%]'}`}>
-          <div
-            className={`relative w-full h-full ${isPlotter ? 'scale-[1.15] origin-right' : isEtykiety ? 'scale-[0.9] origin-center' : isDrukarki3D || isKomputery || isLaserowych || isDruk3DZamowienie || isWynajem || isZastepcza ? 'origin-center' : ''}`}
-            style={
-              isDrukarki3D ? { transform: 'scale(1.067)' }
-                : isKomputery ? { transform: 'scale(1.05)' }
-                : isLaserowych ? { transform: 'scale(1.17)' }
-                : isDruk3DZamowienie ? { transform: 'scale(0.89)' }
-                : isWynajem ? { transform: 'scale(1.06)' }
-                : isZastepcza ? { transform: 'translate(3px, -8px) scale(1.05)' }
-                : undefined
-            }
-          >
+        <div className="z-10 h-[120px] flex-shrink-0 w-[50%]">
+          <div className="relative w-full h-full service-card-icon-zoom">
           <Image
-            src={
-              service.slug === 'serwis-komputerow-stacjonarnych'
-                ? '/images/02_serwis-komputerow-stacjonarnych-home-icon.webp'
-                : service.slug === 'serwis-laptopow'
-                  ? '/images/01_serwis-laptopow-home-icon.webp'
-                  : service.slug === 'outsourcing-it'
-                    ? '/images/03_outsourcing-it-icon.webp'
-                    : service.slug === 'serwis-drukarek-laserowych'
-                      ? '/images/04_serwis-drukarek-laserowych-icon.webp'
-                      : service.slug === 'serwis-drukarek-atramentowych'
-                        ? '/images/05_serwis-drukarek-atramentowych-icon.webp'
-                        : service.slug === 'serwis-drukarek-3d'
-                          ? '/images/Serwis_i_Naprawa_Drukarek_3D-home-icon.webp'
-                          : service.slug === 'serwis-plotterow'
-                            ? '/images/08_serwis-ploterow-home-icon.webp'
-                            : service.slug === 'serwis-drukarek-termicznych'
-                              ? '/images/06_serwis-drukarek-termicznych-home-icon.webp'
-                              : service.slug === 'serwis-drukarek-iglowych'
-                                ? '/images/07_serwis-drukarek-iglowych-icon.webp'
-                                : service.slug === 'wynajem-drukarek'
-                                  ? '/images/10_wynajem-drukarek-icon.webp'
-                                  : service.slug === 'drukarka-zastepcza'
-                                    ? '/images/11_drukarka-zastepcza-icon.webp'
-                                    : service.slug === 'naprawa-drukarek'
-                                      ? '/images/Serwis_Drukarek-home-icon.webp'
-                                      : service.slug === 'druk-3d-na-zamowienie'
-                                        ? '/images/09_druk-3d-na-zamowienie-icon.webp'
-                                      : service.icon
-            }
+            src={CARD_ICON_SRC[service.slug] ?? service.icon}
             alt={`${service.title} Wrocław - ikona usługi serwisowej`}
             fill
             sizes="(max-width: 768px) 35vw, 180px"
@@ -246,7 +199,7 @@ export function Services({
 
         {/* Treść — text pulled toward the left edge of its own zone
             (close to the image), not centered in the half. */}
-        <div className={`relative z-10 h-[120px] flex items-center pl-[15px] ${isPlotter || isDrukarki3D || isLaptopy || isLaserowych || isWynajem || isZastepcza ? 'w-[40%]' : 'w-[50%]'}`}>
+        <div className="relative z-20 h-[120px] flex items-center pl-[15px] w-[50%]">
           <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
