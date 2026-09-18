@@ -282,7 +282,7 @@ const applyInkjetAdditionalSubcategory = (sections: PricingSection[]) => {
   if (!additionalSubcategory) return
 
   additionalSubcategory.title = 'Dodatkowe usługi'
-  additionalSubcategory.icon = '/images/accordion-icon-atramentowe-uslugi-dodatkowe-v2.webp'
+  additionalSubcategory.icon = '/images/accordion-icon-atramentowe-uslugi-dodatkowe-v3.webp'
   additionalSubcategory.items = [
     {
       service: 'Czyszczenie wnętrza po rozlaniu tuszu\npodstawowe czyszczenie',

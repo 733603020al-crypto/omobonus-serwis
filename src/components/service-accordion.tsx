@@ -1753,7 +1753,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isNeedleService
                                 ? '/images/accordion-icon-czyszczenie-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isInkjetService
-                                ? '/images/accordion-icon-atramentowe-czyszczenie-v2.webp'
+                                ? '/images/accordion-icon-atramentowe-czyszczenie-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
@@ -1761,7 +1761,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 : useWarmSectionIcons && section.id === 'naprawy' && isNeedleService
                                 ? '/images/accordion-icon-naprawy-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
-                                ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v2.webp'
+                                ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isLaserService
                                 ? '/images/accordion-icon-naprawy-laser-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
