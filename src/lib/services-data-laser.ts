@@ -1,4 +1,4 @@
-import type { PricingSection } from './services-data-types'
+import type { PricingSection, PricingSubcategory } from './services-data-types'
 import { createPricingSections } from './services-data-shared'
 
 const applyLaserCleaningSection = (sections: PricingSection[]) => {
@@ -133,7 +133,7 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
   const imagingSubcategory = serviceSection?.subcategories?.[1]
   if (!imagingSubcategory) return
   imagingSubcategory.title =
-    'Moduły obrazu i utrwalania (bęben, pas transferowy, fuser, ...)'
+    'Moduł obrazu (bęben, pas transferowy, ...)'
   imagingSubcategory.icon = '/images/accordion-icon-laserowe-moduly-obrazu-utrwalania-v2.webp'
   imagingSubcategory.items = [
     {
@@ -153,10 +153,6 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
         'Wymiana listwy czyszczącej pasa transferowego.\nKalibracja kolorów / rejestracji po wymianie modułów',
     },
     {
-      service:
-        'Regeneracja / serwis zespołu utrwalającego (fuser)\n(czyszczenie, wymiana folii / wałka dociskowego, elementu grzejnego, termistora, bezpiecznika fusera, kół zębatych, łożysk, tulei, smarowanie, testy - usuwa rozmazywanie tonera i zaginanie papieru)',
-    },
-    {
       service: 'Wymiana w całości zespołu utrwalającego (fuser)',
     },
     {
@@ -164,6 +160,20 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
         'Reset liczników modułów obrazu (usuwa komunikaty „wymień bęben / fuser / pas” po wymianie)',
     },
   ]
+
+  const imagingIndex = serviceSection.subcategories!.indexOf(imagingSubcategory)
+  const fuserSubcategory: PricingSubcategory = {
+    id: 'naprawy-fuser',
+    title: 'Moduł utrwalania (fuser)',
+    icon: '/images/accordion-icon-modul-utrwalania-fuser.webp',
+    items: [
+      {
+        service:
+          'Regeneracja / serwis zespołu utrwalającego (fuser)\n(czyszczenie, wymiana folii / wałka dociskowego, elementu grzejnego, termistora, bezpiecznika fusera, kół zębatych, łożysk, tulei, smarowanie, testy - usuwa rozmazywanie tonera i zaginanie papieru)',
+      },
+    ],
+  }
+  serviceSection.subcategories!.splice(imagingIndex + 1, 0, fuserSubcategory)
 }
 
 const applyLaserElectronicsSubcategory = (sections: PricingSection[]) => {
