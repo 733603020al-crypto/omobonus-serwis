@@ -70,7 +70,7 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
   ],
 
   'wynajem-drukarek': [
-    'Принтер для офиса',
+    'Принтер для компании',
     'Сервис в стоимости',
     'Без больших затрат',
     'Быстрая доставка',

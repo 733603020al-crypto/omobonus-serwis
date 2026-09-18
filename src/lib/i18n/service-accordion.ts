@@ -8,6 +8,9 @@ export interface ServiceAccordionDict {
   priceHeaderFull: string
   priceHeaderShort: string
   priceNettoTooltip: string
+  priceInfoAriaLabel: string
+  categoryInfoAriaLabel: string
+  closeAriaLabel: string
   timeHeader: string
   timeHeaderLine2: string
   viewPriceList: string
@@ -66,6 +69,9 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     priceHeaderFull: 'Cena, zł',
     priceHeaderShort: 'Cena',
     priceNettoTooltip: 'Cena netto',
+    priceInfoAriaLabel: 'Informacja o cenach',
+    categoryInfoAriaLabel: 'Informacja o kategoriach',
+    closeAriaLabel: 'Zamknij',
     timeHeader: 'Czas',
     timeHeaderLine2: 'realizacji',
     viewPriceList: 'Zobacz cennik',
@@ -91,8 +97,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
-    konserwacjaIncludedNoteInkjet: 'W cenie: standardowe środki i materiały potrzebne do czyszczenia drukarki i udrażniania układu drukującego.',
-    konserwacjaExtraPaidNoteInkjet: 'Dodatkowo płatne: wymiana absorbera zużytego tuszu, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
+    konserwacjaIncludedNoteInkjet: 'W cenie usług zawarte są standardowe środki i materiały potrzebne do wykonania prac serwisowych. W przypadku obsługi absorbera cena obejmuje jego czyszczenie lub wymianę na nowy — zależnie od stanu absorbera i dostępności odpowiedniej części.',
+    konserwacjaExtraPaidNoteInkjet: 'Dodatkowo płatne są naprawy oraz inne części zamienne, jeśli okażą się konieczne — zawsze po wcześniejszym uzgodnieniu z klientem.',
     deviceCategoriesDescription: {
       default: 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej',
       serwisDrukarekIglowych: 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej',
@@ -121,6 +127,9 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     priceHeaderFull: 'Ціна, zł',
     priceHeaderShort: 'Ціна',
     priceNettoTooltip: 'Ціна без ПДВ',
+    priceInfoAriaLabel: 'Інформація про ціни',
+    categoryInfoAriaLabel: 'Інформація про категорії',
+    closeAriaLabel: 'Закрити',
     timeHeader: 'Час',
     timeHeaderLine2: 'виконання',
     viewPriceList: 'Переглянути прайс-лист',
@@ -146,8 +155,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
-    konserwacjaIncludedNoteInkjet: 'У ціну входить: стандартні засоби та матеріали, потрібні для чищення принтера та прочищення друкувальної системи.',
-    konserwacjaExtraPaidNoteInkjet: 'Додатково платно: заміна абсорбера відпрацьованого чорнила, ремонт і запасні частини — завжди за попереднім погодженням.',
+    konserwacjaIncludedNoteInkjet: 'У вартість послуг входять стандартні засоби та матеріали, необхідні для виконання сервісних робіт. У разі обслуговування абсорбера ціна включає його чищення або заміну на новий — залежно від стану абсорбера та наявності відповідної частини.',
+    konserwacjaExtraPaidNoteInkjet: 'Додатково платно: ремонт та інші запасні частини, якщо вони виявляться необхідними — завжди за попереднім погодженням з клієнтом.',
     deviceCategoriesDescription: {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
@@ -186,6 +195,9 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     priceHeaderFull: 'Цена, zł',
     priceHeaderShort: 'Цена',
     priceNettoTooltip: 'Цена без НДС',
+    priceInfoAriaLabel: 'Информация о ценах',
+    categoryInfoAriaLabel: 'Информация о категориях',
+    closeAriaLabel: 'Закрыть',
     timeHeader: 'Срок',
     timeHeaderLine2: 'выполнения',
     viewPriceList: 'Смотреть прайс-лист',
@@ -211,8 +223,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
-    konserwacjaIncludedNoteInkjet: 'В цену входит: стандартные средства и материалы, необходимые для чистки принтера и прочистки печатающей системы.',
-    konserwacjaExtraPaidNoteInkjet: 'Дополнительно платно: замена абсорбера отработанных чернил, ремонт и запасные части — всегда по предварительному согласованию.',
+    konserwacjaIncludedNoteInkjet: 'В стоимость услуг входят стандартные средства и материалы, необходимые для выполнения сервисных работ. При обслуживании абсорбера цена включает его чистку или замену на новый — в зависимости от состояния абсорбера и наличия соответствующей детали.',
+    konserwacjaExtraPaidNoteInkjet: 'Дополнительно платно: ремонт и другие запасные части, если они окажутся необходимыми — всегда по предварительному согласованию с клиентом.',
     deviceCategoriesDescription: {
       default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
       serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',

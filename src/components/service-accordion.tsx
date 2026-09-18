@@ -959,6 +959,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
   const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
+  const isDesktopComputerService = service.slug === 'serwis-komputerow-stacjonarnych'
+  const isLaptopService = service.slug === 'serwis-laptopow'
+  const isPlotterService = service.slug === 'serwis-plotterow'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
   const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
   const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
@@ -1754,6 +1757,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-czyszczenie-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isInkjetService
                                 ? '/images/accordion-icon-atramentowe-czyszczenie-v3.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isDesktopComputerService
+                                ? '/images/accordion-icon-komputer-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaptopService
+                                ? '/images/accordion-icon-laptop-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isPlotterService
+                                ? '/images/accordion-icon-plotter-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
@@ -1764,6 +1773,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isLaserService
                                 ? '/images/accordion-icon-naprawy-laser-v2.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isDesktopComputerService
+                                ? '/images/accordion-icon-komputer-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaptopService
+                                ? '/images/accordion-icon-laptop-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isPlotterService
+                                ? '/images/accordion-icon-plotter-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
                                 ? '/images/accordion-icon-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'faq'
@@ -2018,7 +2033,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         style={{ gap: '1px' }}
                                         role="button"
                                         tabIndex={0}
-                                        aria-label="Informacja o cenach"
+                                        aria-label={t.priceInfoAriaLabel}
                                         onPointerDown={(e) => {
                                           // На мобильных обрабатываем touch события
                                           if (isMobile && !isSpecialTooltipService) {
@@ -2072,7 +2087,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                            cena netto
+                                            {t.priceNettoTooltip}
                                           </p>
                                           <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
                                         </>
@@ -2090,14 +2105,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     )}
                                     role="button"
                                     tabIndex={0}
-                                    aria-label="Informacja o kategoriach"
+                                    aria-label={t.categoryInfoAriaLabel}
                                     onClick={(e) => {
                                       e.preventDefault()
                                       e.stopPropagation()
                                       setCategoryTooltipOpen(!isCategoryTooltipOpen)
                                     }}
                                   >
-                                    <span className="inline sm:hidden">Cena</span>
+                                    <span className="inline sm:hidden">{priceHeaderShort}</span>
                                     <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
                                       <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                     </span>
@@ -2124,7 +2139,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         )}
                                         role="button"
                                         tabIndex={0}
-                                        aria-label="Informacja o cenach"
+                                        aria-label={t.priceInfoAriaLabel}
                                       >
                                         <span className="hidden sm:inline">{priceHeaderFull}</span>
                                         <span className="inline sm:hidden">{priceHeaderShort}</span>
@@ -2165,7 +2180,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                            cena netto
+                                            {t.priceNettoTooltip}
                                           </p>
                                         </>
                                       ) : (
@@ -2512,7 +2527,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               className="zakres-price-header-text hidden group-data-[state=open]/subcategory:flex items-center gap-[5px] text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap justify-center cursor-default"
                                               role="button"
                                               tabIndex={0}
-                                              aria-label="Informacja o cenach"
+                                              aria-label={t.priceInfoAriaLabel}
                                             >
                                               <span>{priceHeaderFull}</span>
                                               <span className="inline-flex items-center justify-center text-white/80 rounded-full p-1">
@@ -2566,14 +2581,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               style={{ gap: '1px' }}
                                               role="button"
                                               tabIndex={0}
-                                              aria-label="Informacja o kategoriach"
+                                              aria-label={t.categoryInfoAriaLabel}
                                               onClick={(e) => {
                                                 e.preventDefault()
                                                 e.stopPropagation()
                                                 setCategoryTooltipOpen(!isCategoryTooltipOpen)
                                               }}
                                             >
-                                              <span className="inline sm:hidden">Cena</span>
+                                              <span className="inline sm:hidden">{priceHeaderShort}</span>
                                               <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
                                                 <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                               </span>
@@ -2599,7 +2614,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   style={{ gap: '1px' }}
                                                   role="button"
                                                   tabIndex={0}
-                                                  aria-label="Informacja o cenach"
+                                                  aria-label={t.priceInfoAriaLabel}
                                                   onPointerDown={(e) => {
                                                     if (isMobile) {
                                                       e.preventDefault()
@@ -2644,7 +2659,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               >
                                                 <div className="absolute inset-0 bg-black/50 z-0" />
                                                 <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                                  cena netto
+                                                  {t.priceNettoTooltip}
                                                 </p>
                                                 <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
                                               </PopoverContent>
@@ -2662,7 +2677,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   className="zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap flex items-center gap-[5px] pl-1 md:pl-0 justify-center md:cursor-default"
                                                   role="button"
                                                   tabIndex={0}
-                                                  aria-label="Informacja o cenach"
+                                                  aria-label={t.priceInfoAriaLabel}
                                                 >
                                                   <span className="hidden sm:inline">{priceHeaderFull}</span>
                                                   <span className="inline sm:hidden">{priceHeaderShort}</span>
@@ -2697,7 +2712,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   <>
                                                     <div className="absolute inset-0 bg-black/50 z-0" />
                                                     <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                                      cena netto
+                                                      {t.priceNettoTooltip}
                                                     </p>
                                                   </>
                                                 )}

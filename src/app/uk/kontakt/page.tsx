@@ -11,7 +11,7 @@ const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = {
   title: 'Контакт | Сервіс комп\'ютерів, ноутбуків і принтерів',
-  description: '✔ Сервіс комп\'ютерів, ноутбуків, принтерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс на сайті ✔ Запишіться вже сьогодні! ☎ 793 759 262',
+  description: '✔ Сервіс комп\'ютерів, ноутбуків, принтерів, плотерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс на сайті ✔ Запишіться вже сьогодні! ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/uk/kontakt',
     languages: {

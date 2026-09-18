@@ -1,11 +1,11 @@
 import type { PricingSection } from './services-data-types'
-import { getDisplayPrice, getPriceNumbers } from './services-pricing'
+import { getDisplayPrice } from './services-pricing'
 
 const SLUG = 'wynajem-drukarek'
 const rent = (path: string) => getDisplayPrice(SLUG, `${path}.rent`, 'ru')
 const pages = (path: string) => getDisplayPrice(SLUG, `${path}.pages`, 'ru')
 const overLimit = (path: string) => getDisplayPrice(SLUG, `${path}.overLimitPrice`, 'ru')
-const comboLabel = (path: string) => getPriceNumbers(SLUG, `${path}.pages`).join(' + ')
+const label = (path: string) => `${rent(path)}/мес.`
 
 export const wynajemAkordeon1: PricingSection = {
   id: 'akordeon-1',
@@ -19,7 +19,7 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_Drukarki_mono.webp',
       priceTiers: [
         {
-          label: pages('akordeon-1.drukarki-mono.tier0'),
+          label: label('akordeon-1.drukarki-mono.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-mono.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-mono.tier0') },
@@ -29,7 +29,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-1.drukarki-mono.tier1'),
+          label: label('akordeon-1.drukarki-mono.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-mono.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-mono.tier1') },
@@ -39,7 +39,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-1.drukarki-mono.tier2'),
+          label: label('akordeon-1.drukarki-mono.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-mono.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-mono.tier2') },
@@ -57,7 +57,7 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_Drukarki_kolor.webp',
       priceTiers: [
         {
-          label: comboLabel('akordeon-1.drukarki-kolor.tier0'),
+          label: label('akordeon-1.drukarki-kolor.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-kolor.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-kolor.tier0') },
@@ -67,7 +67,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-1.drukarki-kolor.tier1'),
+          label: label('akordeon-1.drukarki-kolor.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-kolor.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-kolor.tier1') },
@@ -77,7 +77,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-1.drukarki-kolor.tier2'),
+          label: label('akordeon-1.drukarki-kolor.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.drukarki-kolor.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.drukarki-kolor.tier2') },
@@ -95,7 +95,7 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_MFU_mono.webp',
       priceTiers: [
         {
-          label: pages('akordeon-1.mfu-mono.tier0'),
+          label: label('akordeon-1.mfu-mono.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-mono.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-mono.tier0') },
@@ -105,7 +105,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-1.mfu-mono.tier1'),
+          label: label('akordeon-1.mfu-mono.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-mono.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-mono.tier1') },
@@ -115,7 +115,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-1.mfu-mono.tier2'),
+          label: label('akordeon-1.mfu-mono.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-mono.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-mono.tier2') },
@@ -133,7 +133,7 @@ export const wynajemAkordeon1: PricingSection = {
       icon: '/images/A4_MFU_kolor.webp',
       priceTiers: [
         {
-          label: comboLabel('akordeon-1.mfu-kolor.tier0'),
+          label: label('akordeon-1.mfu-kolor.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-kolor.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-kolor.tier0') },
@@ -143,7 +143,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-1.mfu-kolor.tier1'),
+          label: label('akordeon-1.mfu-kolor.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-kolor.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-kolor.tier1') },
@@ -153,7 +153,7 @@ export const wynajemAkordeon1: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-1.mfu-kolor.tier2'),
+          label: label('akordeon-1.mfu-kolor.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-1.mfu-kolor.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-1.mfu-kolor.tier2') },
@@ -180,7 +180,7 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/Drukarki_A3_A4_mono.webp',
       priceTiers: [
         {
-          label: pages('akordeon-2.a3-drukarki-mono.tier0'),
+          label: label('akordeon-2.a3-drukarki-mono.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-mono.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-mono.tier0') },
@@ -190,7 +190,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-2.a3-drukarki-mono.tier1'),
+          label: label('akordeon-2.a3-drukarki-mono.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-mono.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-mono.tier1') },
@@ -200,7 +200,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-2.a3-drukarki-mono.tier2'),
+          label: label('akordeon-2.a3-drukarki-mono.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-mono.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-mono.tier2') },
@@ -218,7 +218,7 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
       priceTiers: [
         {
-          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier0'),
+          label: label('akordeon-2.a3-drukarki-kolor.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-kolor.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-kolor.tier0') },
@@ -228,7 +228,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier1'),
+          label: label('akordeon-2.a3-drukarki-kolor.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-kolor.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-kolor.tier1') },
@@ -238,7 +238,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-2.a3-drukarki-kolor.tier2'),
+          label: label('akordeon-2.a3-drukarki-kolor.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-drukarki-kolor.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-drukarki-kolor.tier2') },
@@ -256,7 +256,7 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/MFU_A3_A4_mono.webp',
       priceTiers: [
         {
-          label: pages('akordeon-2.a3-mfu-mono.tier0'),
+          label: label('akordeon-2.a3-mfu-mono.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-mono.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-mono.tier0') },
@@ -266,7 +266,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-2.a3-mfu-mono.tier1'),
+          label: label('akordeon-2.a3-mfu-mono.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-mono.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-mono.tier1') },
@@ -276,7 +276,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: pages('akordeon-2.a3-mfu-mono.tier2'),
+          label: label('akordeon-2.a3-mfu-mono.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-mono.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-mono.tier2') },
@@ -294,7 +294,7 @@ export const wynajemAkordeon2: PricingSection = {
       icon: '/images/MFU_A3_A4_mono_kolor.webp',
       priceTiers: [
         {
-          label: comboLabel('akordeon-2.a3-mfu-kolor.tier0'),
+          label: label('akordeon-2.a3-mfu-kolor.tier0'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-kolor.tier0') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-kolor.tier0') },
@@ -304,7 +304,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-2.a3-mfu-kolor.tier1'),
+          label: label('akordeon-2.a3-mfu-kolor.tier1'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-kolor.tier1') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-kolor.tier1') },
@@ -314,7 +314,7 @@ export const wynajemAkordeon2: PricingSection = {
           ],
         },
         {
-          label: comboLabel('akordeon-2.a3-mfu-kolor.tier2'),
+          label: label('akordeon-2.a3-mfu-kolor.tier2'),
           rows: [
             { label: 'Арендная плата [zł/мес.]', value: rent('akordeon-2.a3-mfu-kolor.tier2') },
             { label: 'Количество страниц A4, включённых в аренду', value: pages('akordeon-2.a3-mfu-kolor.tier2') },
