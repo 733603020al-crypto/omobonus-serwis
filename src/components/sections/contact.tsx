@@ -264,7 +264,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   }, [errors])
 
   const onSubmit = async (data: FormValues) => {
-    console.log('🚀 Formularz został przesłany. Dane:', data)
+    console.log('🚀 Formularz został przesłany')
     setIsSubmitting(true)
     try {
       const formData = new FormData()
