@@ -101,7 +101,7 @@ export function LanguageSwitcher() {
               src={locale.flagSrc}
               alt=""
               width={18}
-              height={13}
+              height={12}
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
@@ -142,7 +142,7 @@ export function LanguageSwitcher() {
                 onClick={() => setIsOpen(false)}
                 className={dropdownItemClass(locale.code === currentLocale.code)}
               >
-                <Image src={locale.flagSrc} alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
+                <Image src={locale.flagSrc} alt="" width={20} height={13} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
                 {locale.fullLabel}
               </Link>
             ))}
