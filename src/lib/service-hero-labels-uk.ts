@@ -9,10 +9,10 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
   ],
 
   'outsourcing-it': [
-    'Постійна підтримка IT',
+    'Постійна ІТ-підтримка',
     'Helpdesk для компаній',
     'Резервне копіювання',
-    'Безпека IT',
+    'ІТ-безпека',
   ],
 
   'naprawa-drukarek': [
@@ -61,7 +61,7 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Не подає філамент',
     'Погана якість друку',
     'Калібрування столу',
-    'Засмічений hotend',
+    'Засмічений хотенд',
   ],
 
   'wynajem-drukarek': [

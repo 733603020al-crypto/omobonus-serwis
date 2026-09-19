@@ -53,7 +53,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_od_n_n_n_nl_za_dzien": { pl: "od {0} / {1} / {2}\nza dzień", ru: "от {0} / {1} / {2}\nза день", uk: "від {0} / {1} / {2}\nза день" },
   "p_n_zl_godz": { pl: "{0} zł / godz.", ru: "{0} zł / час.", uk: "{0} zł / год." },
   "p_dash": { pl: "—", ru: "—", uk: "—" },
-  "p_wg_cennika_przewoznika": { pl: "według cennika\nprzewoźnika", ru: "по тарифу\nперевозчика", uk: "за прайсом\nперевізника" },
+  "p_wg_cennika_przewoznika": { pl: "według cennika\nprzewoźnika", ru: "по тарифу\nперевозчика", uk: "за тарифом\nперевізника" },
   "p_gratis_nl_do_n_min_konsultacji": { pl: "GRATIS\ndo {0} min konsultacji", ru: "БЕСПЛАТНО\nдо {0} мин консультации", uk: "БЕЗКОШТОВНО\nдо {0} хв консультації" },
   "p_n_zl_nl_do_n_godz_pracy": { pl: "{0} zł\ndo {1} godz. pracy", ru: "{0} zł\nдо {1} ч работы", uk: "{0} zł\nдо {1} год роботи" },
   "p_n_zl_nl_za_kazde_dodatkowe_n_min_pracy": { pl: "{0} zł\nza każde dodatkowe {1} min pracy", ru: "{0} zł\nза каждые дополнительные {1} мин работы", uk: "{0} zł\nза кожні додаткові {1} хв роботи" },

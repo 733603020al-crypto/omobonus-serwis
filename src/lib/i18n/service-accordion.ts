@@ -143,7 +143,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     rentPriceHeader: 'Орендна плата [zł/міс.]',
     printPriceHeader: 'Ціна друку',
     dojazdNote: [
-      'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
+      'Ми не кажемо, що виїзд або забір пристрою «безкоштовні»,',
       'а потім додаємо цю вартість до ціни ремонту',
     ],
     dojazdPromoTitle: '«БЕЗКОШТОВНИЙ ВИЇЗД»',

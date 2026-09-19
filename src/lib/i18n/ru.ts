@@ -47,7 +47,7 @@ export const ru = {
       'serwis-plotterow': 'Плоттеров',
       'serwis-drukarek-laserowych': 'Лазерных принтеров',
       'serwis-drukarek-atramentowych': 'Струйных принтеров',
-      'serwis-drukarek-iglowych': 'Игольчатых принтеров',
+      'serwis-drukarek-iglowych': 'Матричных принтеров',
       'druk-3d-na-zamowienie': '3D-печать на заказ',
       'wynajem-drukarek': 'Аренда принтеров',
       'drukarka-zastepcza': 'Принтер на замену',

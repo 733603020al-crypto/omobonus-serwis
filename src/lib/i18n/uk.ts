@@ -86,7 +86,7 @@
       'serwis-plotterow': 'Плотерів',
       'serwis-drukarek-laserowych': 'Лазерних принтерів',
       'serwis-drukarek-atramentowych': 'Струменевих принтерів',
-      'serwis-drukarek-iglowych': 'Голкових принтерів',
+      'serwis-drukarek-iglowych': 'Матричних принтерів',
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
@@ -123,7 +123,7 @@
     errorInvalidRequest: 'Некоректні дані у формі.',
   },
   footer: {
-    contact: 'Контакт',
+    contact: 'Контакти',
     address: 'Адреса',
     phone: 'Телефон',
     email: 'E-mail',
