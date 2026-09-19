@@ -45,7 +45,15 @@ export const ru = {
       'serwis-drukarek-3d': '3D-принтеров',
       'serwis-drukarek-termicznych': 'Принтеров этикеток',
       'serwis-plotterow': 'Плоттеров',
+      'serwis-drukarek-laserowych': 'Лазерных принтеров',
+      'serwis-drukarek-atramentowych': 'Струйных принтеров',
+      'serwis-drukarek-iglowych': 'Игольчатых принтеров',
+      'druk-3d-na-zamowienie': '3D-печать на заказ',
+      'wynajem-drukarek': 'Аренда принтеров',
+      'drukarka-zastepcza': 'Принтер на замену',
     },
+    viewAllLabel: 'Показать все услуги ↓',
+    collapseLabel: 'Свернуть ↑',
   },
   footer: {
     contact: 'Контакты',
@@ -161,6 +169,7 @@ export const ru = {
     orFormLabel: 'или отправьте заявку на обслуживание',
     callNowButton: 'Позвонить сейчас',
     callNowDividerLabel: 'или напишите',
+    mapLabel: 'Карта',
   },
 } as const
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesRu } from '@/lib/services-data-ru'
+import { HOME_EXTRA_SERVICES } from '@/lib/services-data'
 import { ru } from '@/lib/i18n/ru'
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function RuHome() {
       servicesData={servicesRu}
       servicesBasePath="/ru/uslugi"
       servicesT={ru.services}
+      servicesExtra={HOME_EXTRA_SERVICES}
       aboutT={ru.about}
       footerT={ru.footer}
       cta={{

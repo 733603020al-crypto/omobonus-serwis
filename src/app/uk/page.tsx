@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesUk } from '@/lib/services-data-uk'
+import { HOME_EXTRA_SERVICES } from '@/lib/services-data'
 import { uk } from '@/lib/i18n/uk'
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function UkHome() {
       servicesData={servicesUk}
       servicesBasePath="/uk/uslugi"
       servicesT={uk.services}
+      servicesExtra={HOME_EXTRA_SERVICES}
       aboutT={uk.about}
       footerT={uk.footer}
       cta={{

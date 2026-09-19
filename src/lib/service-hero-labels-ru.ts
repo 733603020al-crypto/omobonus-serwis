@@ -1,10 +1,5 @@
 export const serviceHeroLabelsRu: Record<string, string[]> = {
-  'serwis-laptopow': [
-    'Медленная работа',
-    'Не включается',
-    'Установка Windows',
-    'Замена матрицы',
-  ],
+  'serwis-laptopow': [],
 
   'serwis-komputerow-stacjonarnych': [
     'Медленная работа',

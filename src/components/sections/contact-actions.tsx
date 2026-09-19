@@ -76,6 +76,7 @@ interface ContactActionsT {
   orFormLabel?: string
   callNowButton?: string
   callNowDividerLabel?: string
+  mapLabel?: string
 }
 
 const PL_ACTIONS: ContactActionsT = {
@@ -91,6 +92,7 @@ const PL_ACTIONS: ContactActionsT = {
   orFormLabel: 'lub wyślij zgłoszenie',
   callNowButton: 'Zadzwoń teraz',
   callNowDividerLabel: 'lub napisz',
+  mapLabel: 'Mapa',
 }
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
@@ -209,7 +211,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             className="contact-icon-link hidden md:flex md:flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
             <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Mapa</span>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
             <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>

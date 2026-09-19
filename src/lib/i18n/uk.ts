@@ -84,7 +84,15 @@
       'serwis-drukarek-3d': '3D-принтерів',
       'serwis-drukarek-termicznych': 'Принтерів етикеток',
       'serwis-plotterow': 'Плотерів',
+      'serwis-drukarek-laserowych': 'Лазерних принтерів',
+      'serwis-drukarek-atramentowych': 'Струменевих принтерів',
+      'serwis-drukarek-iglowych': 'Голкових принтерів',
+      'druk-3d-na-zamowienie': '3D-друк на замовлення',
+      'wynajem-drukarek': 'Оренда принтерів',
+      'drukarka-zastepcza': 'Принтер на заміну',
     },
+    viewAllLabel: 'Переглянути всі послуги ↓',
+    collapseLabel: 'Згорнути ↑',
   },
   contact: {
     formTitle: 'Форма заявки',
@@ -276,6 +284,7 @@
     orFormLabel: 'або відправте заявку на обслуговування',
     callNowButton: 'Зателефонувати зараз',
     callNowDividerLabel: 'або напишіть',
+    mapLabel: 'Карта',
   },
 } as const
 
