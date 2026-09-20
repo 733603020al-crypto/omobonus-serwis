@@ -25,6 +25,7 @@ const apply3DPrinterMechanicsSubcategory = (sections: PricingSection[]) => {
   const mechanicsSubcategory = serviceSection?.subcategories?.[0]
   if (!mechanicsSubcategory) return
   mechanicsSubcategory.title = 'Mechanika i układ ruchu (osie, paski, ekstruder)'
+  mechanicsSubcategory.icon = '/images/accordion-icon-3dprinter-mechanika.webp'
   mechanicsSubcategory.items = [
     {
       service: 'Regulacja i kalibracja osi X / Y / Z\n(nierówne warstwy, przesunięcia, stuki podczas ruchu)',
@@ -49,6 +50,7 @@ const apply3DPrinterElectronicsSubcategory = (sections: PricingSection[]) => {
   const electronicsSubcategory = serviceSection?.subcategories?.[1]
   if (!electronicsSubcategory) return
   electronicsSubcategory.title = 'Elektronika i sterowanie (płyta główna, czujniki, okablowanie)'
+  electronicsSubcategory.icon = '/images/accordion-icon-3dprinter-elektronika.webp'
   electronicsSubcategory.items = [
     {
       service: 'Diagnostyka i naprawa płyty głównej\n(błędy systemowe, brak reakcji, resetowanie się drukarki)',
@@ -73,6 +75,7 @@ const apply3DPrinterCalibrationSubcategory = (sections: PricingSection[]) => {
   const calibrationSubcategory = serviceSection?.subcategories?.[2]
   if (!calibrationSubcategory) return
   calibrationSubcategory.title = 'Kalibracja i jakość druku'
+  calibrationSubcategory.icon = '/images/accordion-icon-3dprinter-kalibracja.webp'
   calibrationSubcategory.items = [
     {
       service: 'Precyzyjna kalibracja poziomowania stołu (manual / auto-bed leveling)\n(problemy z pierwszą warstwą, słaba przyczepność)',
@@ -97,7 +100,7 @@ const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
   const softwareSubcategory = serviceSection?.subcategories?.[3]
   if (!softwareSubcategory) return
   softwareSubcategory.title = 'Oprogramowanie i konfiguracja'
-  softwareSubcategory.icon = '/images/naprawy-oprogramowanie-v3.webp'
+  softwareSubcategory.icon = '/images/accordion-icon-3dprinter-oprogramowanie.webp'
   softwareSubcategory.items = [
     {
       service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
@@ -122,6 +125,7 @@ const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
   const additionalSubcategory = serviceSection?.subcategories?.[4]
   if (!additionalSubcategory) return
   additionalSubcategory.title = 'Dodatkowe usługi (tuning i modyfikacje)'
+  additionalSubcategory.icon = '/images/accordion-icon-3dprinter-dodatkowe.webp'
   additionalSubcategory.items = [
     {
       service: 'Montaż i konfiguracja auto-levelingu (BL-Touch, CR-Touch itp.)',

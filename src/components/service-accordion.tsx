@@ -962,6 +962,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const isDesktopComputerService = service.slug === 'serwis-komputerow-stacjonarnych'
   const isLaptopService = service.slug === 'serwis-laptopow'
   const isPlotterService = service.slug === 'serwis-plotterow'
+  const isPrinter3DService = service.slug === 'serwis-drukarek-3d'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
   const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
   const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
@@ -1763,6 +1764,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-laptop-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isPlotterService
                                 ? '/images/accordion-icon-plotter-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isPrinter3DService
+                                ? '/images/accordion-icon-3dprinter-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
@@ -1779,6 +1782,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ? '/images/accordion-icon-laptop-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isPlotterService
                                 ? '/images/accordion-icon-plotter-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isPrinter3DService
+                                ? '/images/accordion-icon-3dprinter-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy'
                                 ? '/images/accordion-icon-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'faq'
