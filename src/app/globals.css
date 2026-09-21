@@ -891,7 +891,7 @@
        after visual width + gap, no manual px.
        --icon-left-bias = share of the extra width the icon grows to the left. */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"],
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):is(:is(:not([data-wynajem-plain-row="true"]), [data-dz-row="true"]), [data-wynajem-standard-icon="true"]) {
       --icon-base-width: 150px;
       --icon-base-height: 76px;
       --icon-scale: 1.4;
@@ -902,7 +902,7 @@
       --icon-right-growth: calc(var(--icon-extra-width) * (1 - var(--icon-left-bias)));
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):is(:is(:not([data-wynajem-plain-row="true"]), [data-dz-row="true"]), [data-wynajem-standard-icon="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       transform: scale(var(--icon-scale));
       transform-origin: calc(var(--icon-left-bias) * 100%) 0;
     }
@@ -911,18 +911,18 @@
       margin-right: calc(var(--icon-gap) + var(--icon-right-growth));
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):is(:is(:not([data-wynajem-plain-row="true"]), [data-dz-row="true"]), [data-wynajem-standard-icon="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       width: var(--icon-base-width);
       height: var(--icon-base-height);
       margin-right: calc(var(--icon-gap) + var(--icon-right-growth));
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):is(:is(:not([data-wynajem-plain-row="true"]), [data-dz-row="true"]), [data-wynajem-standard-icon="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media {
       width: 100%;
       height: 100%;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):is(:is(:not([data-wynajem-plain-row="true"]), [data-dz-row="true"]), [data-wynajem-standard-icon="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
       flex: 1 1 0;
       width: auto;
       min-width: 0;
@@ -988,7 +988,7 @@
        subcategories use the Diagnoza --icon-* system above): reserve extra
        layout space so the title shrinks/wraps instead of overlapping the
        scaled-up icon — must beat the closed-state 14px rule above. */
-    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"] .zakres-icon-box {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"]:where(:not([data-wynajem-standard-icon="true"], [data-dz-row="true"])) .zakres-icon-box {
       margin-right: 76px !important;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-media {
@@ -1511,6 +1511,29 @@
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) > div:not([data-slot="accordion-content"]) {
       padding-left: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
       padding-right: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
+    }
+
+    /* drukarka-zastepcza open row: same rule as above (wrapper padding = table
+       inset), so header row == table row. The trigger's own px-3 is zeroed so
+       the wrapper padding is the single source of the base. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-dz-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      padding-left: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
+      padding-right: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-dz-row="true"][data-state="open"] [data-slot="accordion-trigger"] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* wynajem-drukarek open row: Naprawy icon principle. The wrapper takes the
+       icon's left growth (nested inset + border) and the trigger's own left
+       padding is zeroed, so the enlarged icon starts exactly at the row edge.
+       Right side untouched. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-wynajem-standard-icon="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+      padding-left: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-wynajem-standard-icon="true"][data-state="open"] [data-slot="accordion-trigger"] {
+      padding-left: 0;
     }
 
     [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"]::before {

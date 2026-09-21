@@ -2369,6 +2369,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           data-parchment-list-last-row={usesParchmentList && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
                           data-wynajem-plain-row={(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
+                          data-dz-row={service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
+                          data-wynajem-standard-icon={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
                             "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
                             isRepairAccordionLayout && usesParchmentList && 'max-md:w-full max-md:min-w-0',
