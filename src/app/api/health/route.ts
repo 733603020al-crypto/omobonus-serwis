@@ -1,4 +1,6 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+
+import { rateLimit } from '@/lib/rate-limit'
 
 /**
  * Health check endpoint для мониторинга.
@@ -9,7 +11,10 @@ import { NextResponse } from 'next/server'
  * Имена переменных окружения, хосты и прочие детали конфигурации наружу не отдаются;
  * что именно не настроено, видно в логах сервера (send-email пишет их при обращении формы).
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const limited = rateLimit(request, 'health', 30)
+  if (limited) return limited
+
   const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
   const isHealthy = requiredEnvVars.every(key => !!process.env[key]?.trim())
 

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 import { CONTACT_INFO } from '@/config/contacts'
+import { rateLimit } from '@/lib/rate-limit'
 
 // Константы для валидации
 const MAX_FILE_SIZE_MB = 25
@@ -276,7 +277,13 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
   return { valid: true }
 }
 
+// Не более 5 отправок в минуту с одного IP (обычному посетителю нужно 1–3 попытки)
+const SEND_EMAIL_LIMIT_PER_MINUTE = 5
+
 export async function POST(request: NextRequest) {
+  const limited = rateLimit(request, 'send-email', SEND_EMAIL_LIMIT_PER_MINUTE)
+  if (limited) return limited
+
   console.log('📩 Форма вызвала /api/send-email')
 
   try {
