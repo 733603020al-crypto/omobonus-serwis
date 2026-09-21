@@ -2,8 +2,9 @@ import { Metadata } from 'next'
 import { LegalPageTemplate } from '@/components/legal-page-template'
 import { regulaminContentRu } from '@/lib/legal/legal-pages'
 import { ru } from '@/lib/i18n/ru'
+import { withSocialMeta } from '@/lib/social-meta'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocialMeta('ru', {
   title: 'Условия и положения | Omobonus Serwis',
   description: 'Условия и положения сервиса Omobonus Вроцлав. Правила ремонта компьютеров и принтеров, гарантия, претензии.',
   alternates: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
       'x-default': 'https://serwis.omobonus.com.pl/regulamin',
     },
   },
-}
+})
 
 export const dynamic = 'force-static'
 

@@ -131,7 +131,6 @@ export function MobileActionBar() {
                                 <Link
                                     href={contactHref}
                                     prefetch={false}
-                                    aria-label="Przejdź do kontaktu"
                                     className={BUTTON_CONTAINER_CLASS}
                                 >
                                     <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
@@ -177,7 +176,6 @@ export function MobileActionBar() {
                             href={MAPS_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Mapa"
                             className={BUTTON_CONTAINER_CLASS}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
@@ -190,7 +188,6 @@ export function MobileActionBar() {
                     <div className="flex items-center justify-center">
                         <a
                             href="tel:+48793759262"
-                            aria-label="Zadzwoń"
                             className={BUTTON_CONTAINER_CLASS}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-visible">

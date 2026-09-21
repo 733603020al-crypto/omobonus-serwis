@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import fs from "fs"
 import path from "path"
+
+import { rateLimit } from "@/lib/rate-limit"
 
 type RawReview = {
     rating: number
@@ -13,7 +15,10 @@ type RawReview = {
     [key: string]: unknown
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+    const limited = rateLimit(request, "google-reviews", 60)
+    if (limited) return limited
+
     try {
         const ratingFile = fs.readFileSync(path.join(process.cwd(), "data", "reviews.json"), "utf-8")
         const ratingData = JSON.parse(ratingFile)
@@ -45,7 +50,7 @@ export async function GET() {
         return NextResponse.json(
             {
                 error: "Failed to read reviews data",
-                details: String(error),
+                ...(process.env.NODE_ENV === 'development' ? { details: String(error) } : {}),
             },
             { status: 500 }
         )

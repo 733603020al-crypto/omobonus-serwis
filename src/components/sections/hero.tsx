@@ -42,7 +42,7 @@ const PL: HeroT = {
   stats: [
     { num: '10', unit: '+', label: 'lat doświadczenia' },
     { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
-    { num: '15', unit: 'min', label: 'wstępna diagnoza' },
+    { num: '48', pre: 'do', unit: 'h', label: 'większość napraw' },
     { num: '12', pre: 'do', unit: ' mies.', label: 'gwarancja' },
   ],
   googleRatingLabel: 'Google Rating',
@@ -62,8 +62,11 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
         justify-center
       "
     >
-      {/* Tło */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Tło — przedłużone w dół pod sekcję i zamaskowane do przezroczystości,
+          żeby to samo zdjęcie (ten sam plik, crop, object-position) płynnie
+          rozpuszczało się w tle drugiej sekcji, znikając dokładnie na wysokości
+          dolnej krawędzi pierwszego rzędu kart usług (per-breakpoint w hero-bg-fade). */}
+      <div className="absolute inset-x-0 top-0 overflow-visible hero-bg-fade">
         <Image
           src="/images/omobonus-hero-mobile.webp"
           alt="Omobonus serwis"
@@ -74,10 +77,9 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
           quality={60}
           className="object-cover object-center"
         />
+        {/* Затемнение */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
-
-      {/* Затемнение */}
-      <div className="absolute inset-0 bg-black/50" />
 
       {/* Zawartość */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-[110px]">

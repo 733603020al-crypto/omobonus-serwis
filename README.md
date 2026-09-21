@@ -4,17 +4,17 @@
 
 ## 🚀 Технологии
 
-- **Next.js 14** - React фреймворк с App Router
+- **Next.js 15** - React фреймворк с App Router (PL / UK / RU)
 - **TypeScript** - Типизированный JavaScript
 - **Tailwind CSS** - Utility-first CSS фреймворк
 - **Radix UI** - Компоненты UI
-- **Resend** - API для отправки email
+- **Nodemailer** - отправка email через SMTP (Zenbox)
 - **React Hook Form** - Управление формами
 - **Zod** - Валидация схем
 
 ## 📋 Требования
 
-- Node.js 18+ 
+- Node.js 18.18+ 
 - npm или yarn
 
 ## 🛠️ Установка
@@ -30,16 +30,18 @@ cd omobonus-serwis
 npm install
 ```
 
-3. Создайте файл `.env.local` на основе `.env.example`:
+3. Создайте файл `.env.local` на основе `.env.example` (подробности — в `docs/ENV_SETUP.md`):
 ```bash
 cp .env.example .env.local
 ```
 
 4. Заполните переменные окружения в `.env.local`:
 ```env
-RESEND_API_KEY=your_resend_api_key_here
-RESEND_FROM_EMAIL=Omobonus Formularz <no-reply@yourdomain.com>
-RESEND_TO_EMAIL=omobonus.pl@gmail.com
+SMTP_HOST=smtp.zenbox.pl
+SMTP_PORT=587
+SMTP_USER=serwis@omobonus.com.pl
+SMTP_PASS=your_smtp_password_here
+# опционально: SMTP_FROM, SMTP_TO (можно несколько адресов через запятую)
 ```
 
 ## 🏃 Запуск проекта
@@ -47,6 +49,11 @@ RESEND_TO_EMAIL=omobonus.pl@gmail.com
 ### Режим разработки:
 ```bash
 npm run dev
+```
+
+Быстрый режим на Turbopack:
+```bash
+npm run dev:turbo
 ```
 
 Или используйте безопасный скрипт для Windows:
@@ -69,8 +76,9 @@ omobonus-serwis/
 ├── src/
 │   ├── app/              # Next.js App Router страницы
 │   │   ├── api/          # API маршруты
-│   │   ├── uslugi/       # Страницы услуг
-│   │   └── page.tsx      # Главная страница
+│   │   ├── (pl)/         # Польская версия (основная)
+│   │   ├── uk/           # Украинская версия
+│   │   └── ru/           # Русская версия
 │   ├── components/        # React компоненты
 │   │   ├── sections/     # Секции страницы
 │   │   └── ui/           # UI компоненты
@@ -84,20 +92,21 @@ omobonus-serwis/
 ## 🔧 Доступные команды
 
 - `npm run dev` - Запуск dev сервера
+- `npm run dev:turbo` - Dev сервер на Turbopack
 - `npm run build` - Сборка проекта
 - `npm run start` - Запуск production сервера
 - `npm run lint` - Проверка кода линтером
+- `npm run check:i18n-sync` - Проверка синхронизации данных услуг между PL/UK/RU
 - `npm run clean` - Очистка кеша сборки
 - `npm run export-services` - Экспорт данных услуг
 
 ## 📧 Настройка отправки email
 
-Проект использует [Resend](https://resend.com) для отправки email через форму обратной связи.
+Формы (`/api/send-email`, `/api/callback-request`) отправляют письма через SMTP с помощью Nodemailer.
 
-1. Зарегистрируйтесь на [resend.com](https://resend.com)
-2. Создайте API ключ
-3. Добавьте ключ в `.env.local` как `RESEND_API_KEY`
-4. Настройте домен для отправки (опционально)
+1. Задайте `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` в `.env.local`
+2. При необходимости — `SMTP_FROM` и `SMTP_TO`
+3. Проверить конфигурацию на деплое: `GET /api/health`
 
 ## 🌐 Деплой на Vercel
 
@@ -107,9 +116,7 @@ omobonus-serwis/
 2. Убедитесь, что **Root Directory** пуст (не `src/`)
 3. Установите **Framework Preset** на **Next.js**
 4. Добавьте переменные окружения в настройках Vercel:
-   - `RESEND_API_KEY`
-   - `RESEND_FROM_EMAIL`
-   - `RESEND_TO_EMAIL`
+   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (и при необходимости `SMTP_FROM`, `SMTP_TO`)
 5. Деплой произойдет автоматически при push в основную ветку
 
 ## 📝 Основные функции
@@ -129,5 +136,3 @@ omobonus-serwis/
 
 - Email: omobonus.pl@gmail.com
 - Сайт: https://www.omobonus.com.pl
-
-Last sync test: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')

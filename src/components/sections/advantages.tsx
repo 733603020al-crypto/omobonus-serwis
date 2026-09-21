@@ -1,8 +1,6 @@
-'use client'
-
-import { useRef, useEffect } from 'react'
 import { Tag, Camera, ShieldCheck, RotateCcw, Printer } from 'lucide-react'
 import Image from 'next/image'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 interface CardText {
   title: string
@@ -58,20 +56,6 @@ const PL_KDR: CardText = {
 
 export function Advantages({ t }: { t?: AdvantagesT } = {}) {
   const eyebrow = t?.eyebrow ?? PL_HEADER.eyebrow
-  const eyebrowRef = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const el = eyebrowRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
   const h2 = t?.h2 ?? PL_HEADER.h2
   const lead = t?.lead ?? PL_HEADER.lead
   const kdr = t?.kdr ?? PL_KDR
@@ -80,9 +64,9 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
     <section className="pt-10 md:pt-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-8">
-          <p ref={eyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
+          <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
             {eyebrow}
-          </p>
+          </FadeSlideP>
           <h2
             className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,8vw,48px)] md:whitespace-nowrap md:max-w-none md:text-[clamp(32px,3.2vw,48px)]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}

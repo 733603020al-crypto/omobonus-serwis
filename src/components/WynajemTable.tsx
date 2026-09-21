@@ -17,6 +17,7 @@ export const WynajemTable = ({
   headerRefs,
   serviceSlug,
   locale = 'pl',
+  price,
 }: {
   subcategoryId: string
   headerRefs: {
@@ -26,6 +27,7 @@ export const WynajemTable = ({
   }
   serviceSlug?: string
   locale?: 'pl' | 'uk' | 'ru'
+  price?: string
 }) => {
   const t = serviceAccordionI18n[locale]
   const isDrukarkaZastepcza = serviceSlug === 'drukarka-zastepcza'
@@ -307,9 +309,24 @@ export const WynajemTable = ({
       })
   }
 
+  // Строки цен подменного принтера (drukarka-zastepcza): из subcategory.price, отдельной строкой на mono/kolor
+  if (isDrukarkaZastepcza && price) {
+    const priceParts = price.split(' / ')
+    const priceRows = priceParts.length > 1
+      ? [
+          { label: '__price_mono', plan1: `${priceParts[0]} zł` },
+          { label: '__price_kolor', plan1: `${priceParts[1]} zł` },
+        ]
+      : [{ label: '__price', plan1: `${priceParts[0]} zł` }]
+    tableData = [...priceRows, ...tableData]
+  }
+
   // Функция для рендеринга label с переносами строк (для мобильной и десктопной версий)
   const renderLabel = (label: string, fontSize: string) => {
-    if (label === 'Liczba stron A4 wliczonych w czynsz') {
+    if (label === '__price_mono') return `${t.printPriceHeader} (${t.wynajemUnits.mono})`
+    else if (label === '__price_kolor') return `${t.printPriceHeader} (${t.wynajemUnits.kolor})`
+    else if (label === '__price') return t.printPriceHeader
+    else if (label === 'Liczba stron A4 wliczonych w czynsz') {
       const [line1, line2] = t.wynajemTableLabels.pagesIncluded
       return <>{line1}<br />{line2}</>
     }
@@ -328,9 +345,13 @@ export const WynajemTable = ({
   }
 
   // Функция для рендеринга значения с суффиксом "/mies.", "/min" или "zł"
-  const renderValueWithSuffix = (value: string | undefined, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string) => {
+  // stacked=true — только для мобильной таблицы: число и единица переносятся на отдельные строки,
+  // чтобы длинные суффиксы (например "str./min") не вылезали за край узкой колонки на 375px
+  const renderValueWithSuffix = (value: string | undefined, fontSize: string = 'text-[16px]', columnIndex: number = 0, rowLabel?: string, stacked: boolean = false) => {
     if (!value) return null
     const isLimitRow = rowLabel === 'Liczba stron A4 wliczonych w czynsz'
+    const numberClass = isDrukarkaZastepcza ? 'price-value-text' : `font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`
+    const unitClass = isDrukarkaZastepcza ? 'parentheses-caption-text' : 'text-[14px] text-[#cbb27c] leading-relaxed'
     // Для сложных значений типа "1 000 + 0" (без "str.") - разделяем на две строки
     if (value.includes(' + ') && !value.includes(' str.')) {
       const parts = value.split(' + ')
@@ -345,19 +366,19 @@ export const WynajemTable = ({
             <div className="hidden md:flex flex-col items-center">
               {/* Первая строка: "1 000 mono" */}
               <div className="flex items-baseline">
-                <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{firstPart}</span>
+                <span className={numberClass}>{firstPart}</span>
                 <span
-                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+                  className={cn(unitClass, 'ml-1')}
                 >
                   {t.wynajemUnits.mono}
                 </span>
               </div>
               {/* Вторая строка: "+ 0 kolor" */}
               <div className="flex items-baseline">
-                <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
-                <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondPart}</span>
+                <span className={numberClass}>+</span>
+                <span className={cn(numberClass, 'ml-1')}>{secondPart}</span>
                 <span
-                  className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+                  className={cn(unitClass, 'ml-1')}
                 >
                   {t.wynajemUnits.kolor}
                 </span>
@@ -366,21 +387,21 @@ export const WynajemTable = ({
             {/* Мобильная версия: каждое число и подпись на отдельной строке */}
             <div className="md:hidden flex flex-col items-center">
               {/* "1 000" */}
-              <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{firstPart}</span>
+              <span className={numberClass}>{firstPart}</span>
               {/* "mono" */}
               <span
-                className="text-[14px] text-[#cbb27c] leading-relaxed"
+                className={unitClass}
               >
                 {t.wynajemUnits.mono}
               </span>
               {/* "+ 0" */}
               <div className="flex items-baseline">
-                <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
-                <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondPart}</span>
+                <span className={numberClass}>+</span>
+                <span className={cn(numberClass, 'ml-1')}>{secondPart}</span>
               </div>
               {/* "kolor" */}
               <span
-                className="text-[14px] text-[#cbb27c] leading-relaxed"
+                className={unitClass}
               >
                 {t.wynajemUnits.kolor}
               </span>
@@ -393,11 +414,11 @@ export const WynajemTable = ({
       return (
         <div className="flex flex-col items-center">
           {/* Первая строка: "1 000" */}
-          <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{firstPart}</span>
+          <span className={numberClass}>{firstPart}</span>
           {/* Вторая строка: "+ 0" */}
           <div className="flex items-baseline">
-            <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
-            <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondPart}</span>
+            <span className={numberClass}>+</span>
+            <span className={cn(numberClass, 'ml-1')}>{secondPart}</span>
           </div>
         </div>
       )
@@ -415,16 +436,16 @@ export const WynajemTable = ({
           const number = strMatch[1].trim()
           return (
             <div className="flex items-baseline">
-              <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
+              <span className={numberClass}>{number}</span>
               <span
-                className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+                className={cn(unitClass, 'ml-1')}
               >
                 {t.wynajemUnits.str}
               </span>
             </div>
           )
         }
-        return <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{strPart}</span>
+        return <span className={numberClass}>{strPart}</span>
       }
 
       // Парсим вторую часть отдельно
@@ -437,10 +458,10 @@ export const WynajemTable = ({
           {renderStrPart(firstPart)}
           {/* Вторая строка: "+ 0 str." */}
           <div className="flex items-baseline">
-            <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>+</span>
-            <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)] ml-1`}>{secondNumber}</span>
+            <span className={numberClass}>+</span>
+            <span className={cn(numberClass, 'ml-1')}>{secondNumber}</span>
             <span
-              className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+              className={cn(unitClass, 'ml-1')}
             >
               {t.wynajemUnits.str}
             </span>
@@ -455,23 +476,32 @@ export const WynajemTable = ({
       const number = parts[0].trim()
       return (
         <div className="flex flex-col items-center">
-          <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
+          <span className={numberClass}>{number}</span>
           <span
-            className="text-[14px] text-[#cbb27c] leading-relaxed"
+            className={unitClass}
           >
             {t.wynajemUnits.strPerMonth}
           </span>
         </div>
       )
     }
-    // Для "20 str./min" - не переносим, но "str./min" оформляем в том же стиле
+    // Для "20 str./min" - на десктопе не переносим, на мобильной таблице (stacked) переносим на новую строку,
+    // чтобы суффикс не вылезал за край узкой колонки
     if (value.includes('str./min')) {
       const number = value.replace(/\s*str\.\/min.*$/, '').trim()
+      if (stacked) {
+        return (
+          <span className="inline-flex flex-col items-center">
+            <span className={numberClass}>{number}</span>
+            <span className={unitClass}>{t.wynajemUnits.strPerMin}</span>
+          </span>
+        )
+      }
       return (
         <span className="inline-flex items-baseline">
-          <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
+          <span className={numberClass}>{number}</span>
           <span
-            className="text-[14px] text-[#cbb27c] leading-relaxed ml-1"
+            className={cn(unitClass, 'ml-1')}
           >
             {t.wynajemUnits.strPerMin}
           </span>
@@ -484,9 +514,9 @@ export const WynajemTable = ({
       const number = value.replace(/\s*zł.*$/, '').trim()
       return (
         <span className="inline-flex items-start">
-          <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{number}</span>
+          <span className={numberClass}>{number}</span>
           <span
-            className="text-[14px] text-[#cbb27c] leading-relaxed ml-0.5"
+            className={cn(unitClass, 'ml-0.5')}
             style={{ marginTop: '-3px' }}
           >
             {t.wynajemUnits.currency}
@@ -499,14 +529,14 @@ export const WynajemTable = ({
     if (isDrukarkaZastepcza && (value === 'gratis' || value === '+' || value === '-')) {
       return (
         <span
-          className="text-[14px] text-[#cbb27c] leading-relaxed"
+          className={unitClass}
         >
           {value === 'gratis' ? t.gratisLower : value}
         </span>
       )
     }
     const displayValue = value === 'gratis' ? t.gratisLower : value
-    return <span className={`font-inter ${fontSize} text-[rgba(255,255,245,0.85)]`}>{displayValue}</span>
+    return <span className={numberClass}>{displayValue}</span>
   }
 
   return (
@@ -517,35 +547,11 @@ export const WynajemTable = ({
     >
       <div
         className="overflow-x-auto md:overflow-x-visible -mx-4 md:mx-0 px-4 md:px-0"
-        ref={(el) => {
-          // ВРЕМЕННО: измерение ширины родительского контейнера overflow-x-auto
-          if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
-            setTimeout(() => {
-              const overflowRect = el.getBoundingClientRect()
-              console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер overflow-x-auto:`, {
-                width: overflowRect.width
-              })
-            }, 150)
-          }
-        }}
       >
         {/* Десктоп: flex с динамическими размерами из верхнего ряда */}
         <div
           className="hidden md:block"
           style={{ marginLeft: `${leftOffset}px`, width: `calc(100% - ${leftOffset}px)` }}
-          ref={(el) => {
-            // ВРЕМЕННО: измерение ширины родительского контейнера md:block
-            if (el && (subcategoryId === 'a3-mfu-mono' || subcategoryId === 'a3-mfu-kolor') && isDrukarkaZastepcza) {
-              setTimeout(() => {
-                const mdBlockRect = el.getBoundingClientRect()
-                console.log(`[WIDTH MEASURE] ${subcategoryId} - родительский контейнер md:block:`, {
-                  width: mdBlockRect.width,
-                  marginLeft: leftOffset,
-                  calculatedWidth: `calc(100% - ${leftOffset}px)`
-                })
-              }, 120)
-            }
-          }}
         >
           {tableData.map((row, idx) => {
             if (!row || !(row as { label?: string }).label) return null
@@ -587,7 +593,9 @@ export const WynajemTable = ({
                 {/* Колонка с описанием */}
                 <div
                   className={cn(
-                    `px-2 flex items-center font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)]`,
+                    isDrukarkaZastepcza
+                      ? 'px-2 flex items-center service-description-text'
+                      : `px-2 flex items-center font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)]`,
                     isDrukarkaZastepcza
                       ? (isSmallFontRow ? 'py-0' : 'py-[3px]')
                       : (isSmallFontRow ? 'py-0.5' : 'py-1')
@@ -715,7 +723,9 @@ export const WynajemTable = ({
                     >
                       <TableCell
                         className={cn(
-                          `px-2 pr-3 align-middle text-left font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)] break-words`,
+                          isDrukarkaZastepcza
+                            ? 'px-2 pr-3 align-middle text-left service-description-text break-words'
+                            : `px-2 pr-3 align-middle text-left font-table-main ${labelFontSize} ${lineHeight} text-[rgba(255,255,245,0.85)] break-words`,
                           isDrukarkaZastepcza
                             ? (isSmallFontRow ? 'py-[3px]' : 'py-2')
                             : (isSmallFontRow ? 'py-1' : 'py-2.5')
@@ -750,7 +760,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan1, valueFontSize, idx === 1 ? 0 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                       {/* Второй столбец удален для всех A3/A4 подкатегорий на Drukarka Zastępcza */}
@@ -771,7 +781,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan2, valueFontSize, idx === 1 ? 1 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                       {!isDrukarkaZastepcza && typedRow.plan3 && (
@@ -785,7 +795,7 @@ export const WynajemTable = ({
                             borderBottom: isLastRow ? 'none' : '1.5px solid rgba(139, 122, 90, 0.75)'
                           }}
                         >
-                          {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label)}
+                          {renderValueWithSuffix(typedRow.plan3, valueFontSize, idx === 1 ? 2 : 0, typedRow.label, true)}
                         </TableCell>
                       )}
                     </TableRow>

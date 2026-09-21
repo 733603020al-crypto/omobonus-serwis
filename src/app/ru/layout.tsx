@@ -32,6 +32,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  icons: { icon: '/favicon.ico' },
   title: {
     default: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
     template: '%s | Omobonus Вроцлав',
@@ -96,6 +97,26 @@ const jsonLd = {
   alternateName: 'Omobonus Sp. z o.o.',
   url: 'https://serwis.omobonus.com.pl',
   telephone: '+48793759262',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.webp',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marcina Bukowskiego 174',
+    addressLocality: 'Wrocław',
+    postalCode: '52-418',
+    addressCountry: 'PL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.0775534,
+    longitude: 16.9784082,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
 }
 
 export default function RuRootLayout({ children }: { children: ReactNode }) {
@@ -130,8 +151,6 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
         <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
-        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/48410f3df60da620-s.woff2" />
-        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/8e9860b6e62d6359-s.woff2" />
       </head>
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">

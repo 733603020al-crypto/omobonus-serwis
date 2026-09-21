@@ -1,10 +1,9 @@
-'use client'
-
-import { useRef, useEffect, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import manifest from '@/config/manifest'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 export interface AboutT {
   eyebrow?: string
@@ -45,37 +44,17 @@ export function About({
 }: {
   t?: AboutT
   bare?: boolean
-  // Passed in from a Server Component parent (e.g. <GoogleReviews /> from
-  // '@/components/google-reviews') since this is a Client Component and
-  // can't import a Server Component module directly.
+  // Passed in from a sibling Server Component (e.g. <GoogleReviews /> from
+  // '@/components/google-reviews') so the parent template controls ordering.
   reviewsSlot?: ReactNode
   compact?: boolean
   showMoreLink?: boolean
 } = {}) {
   const d = t ?? PL
-  const eyebrowRef = useRef<HTMLParagraphElement>(null)
-  const mobileEyebrowRef = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const observers: IntersectionObserver[] = []
-    for (const ref of [eyebrowRef, mobileEyebrowRef]) {
-      const el = ref.current
-      if (!el) continue
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.remove('fade-slide-init')
-          el.classList.add('fade-slide-animate')
-          observer.disconnect()
-        }
-      }, { threshold: 0.1 })
-      observer.observe(el)
-      observers.push(observer)
-    }
-    return () => observers.forEach((o) => o.disconnect())
-  }, [])
   return (
     <section
       id="o-nas"
-      className={`relative ${bare ? 'pt-10 md:pt-16' : 'py-16 md:py-24'}`}
+      className={`relative ${bare ? 'pt-5 md:pt-8' : 'py-16 md:py-24'}`}
     >
       {!bare && (
         <div
@@ -90,15 +69,15 @@ export function About({
         {/* Mobile-only: logiczna kolejność treści */}
         <div className="md:hidden text-white space-y-6">
           {d.eyebrow && (
-            <p ref={mobileEyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
+            <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
               {d.eyebrow}
-            </p>
+            </FadeSlideP>
           )}
           <div className="space-y-2">
             <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
               {d.heading}
             </h2>
-            <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
+            <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
               {d.subheading}
             </p>
           </div>
@@ -119,11 +98,11 @@ export function About({
             <h3 className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
               {d.ourCompany}
             </h3>
-            <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
+            <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
               {d.description[0]}
             </p>
           </div>
-          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
+          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
             <p className="text-xl md:text-2xl font-serif font-semibold text-white">
               &ldquo;{d.quote}&rdquo;
             </p>
@@ -132,11 +111,11 @@ export function About({
             </p>
           </div>
           {showMoreLink && (
-            <div className="flex justify-center">
+            <div className="flex justify-center !mt-1">
               <Link
                 href={d.moreAboutHref ?? '/o-nas'}
                 prefetch={false}
-                className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+                className="inline-flex items-center justify-center gap-1 min-w-[180px] rounded-full px-[28.8px] py-[14.4px] font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
                 {d.moreAboutLink ?? 'Więcej o nas'}
                 <ChevronRight className="w-4 h-4" />
@@ -165,15 +144,15 @@ export function About({
           {/* Text */}
           <div className="text-white space-y-6">
             {d.eyebrow && (
-              <p ref={eyebrowRef} className="fade-slide-init brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+              <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
                 {d.eyebrow}
-              </p>
+              </FadeSlideP>
             )}
             <div className="space-y-2">
               <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
                 {d.heading}
               </h2>
-              <p className="font-serif text-base md:text-lg font-normal italic leading-relaxed text-[#bfa76a]">
+              <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
                 {d.subheading}
               </p>
             </div>
@@ -181,11 +160,11 @@ export function About({
               <h3 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
                 {d.ourCompany}
               </h3>
-              <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-relaxed">
+              <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
                 {d.description[0]}
               </p>
             </div>
-            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-1.5">
+            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
               <p className="text-xl md:text-2xl font-serif font-semibold text-white">
                 &ldquo;{d.quote}&rdquo;
               </p>
@@ -194,11 +173,11 @@ export function About({
               </p>
             </div>
             {showMoreLink && (
-              <div className="pl-5 mt-6">
+              <div className="pl-5 !mt-1">
                 <Link
                   href={d.moreAboutHref ?? '/o-nas'}
                   prefetch={false}
-                  className="inline-flex items-center justify-center gap-1 min-w-[200px] rounded-full px-8 py-[16px] md:py-[12px] font-cormorant font-semibold text-[20px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+                  className="inline-flex items-center justify-center gap-1 min-w-[180px] rounded-full px-[28.8px] py-[14.4px] font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
                 >
                   {d.moreAboutLink ?? 'Więcej o nas'}
                   <ChevronRight className="w-4 h-4" />

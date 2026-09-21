@@ -18,6 +18,16 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com', pathname: '/**' },
     ],
 
+    // Весь локальный контент сайта живёт под /public/images — разрешаем
+    // next/image оптимизировать любой файл оттуда (в т.ч. логотипы брендов
+    // из brand-ticker.tsx, которые грузятся с ?v=N для сброса кэша при
+    // замене файла — search не указываем, чтобы разрешить любое значение N).
+    // Без widecard-паттерна `localPatterns` превращается в allowlist и
+    // next/image возвращает 500 на КАЖДОЙ локальной картинке вне /brands/.
+    localPatterns: [
+      { pathname: '/images/**' },
+    ],
+
     // увеличиваем TTL для оптимизированных картинок Next.js
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 дней
 
@@ -51,6 +61,23 @@ const nextConfig = {
         ],
       },
 
+      // Иконки из public/icons (не хешируются) — тот же длинный TTL, что и у favicon.
+      {
+        source: '/icons/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000',
+          },
+        ],
+      },
+
+      // floating-call.html — отдельный фрагмент виджета, не часть sitemap/навигации: не индексировать.
+      {
+        source: '/floating-call.html',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+
       // favicon.ico и robots.txt редко меняются, но не хешируются как
       // /_next/static, поэтому immutable не подходит — просто длинный TTL.
       {
@@ -60,6 +87,18 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=2592000',
           },
+        ],
+      },
+
+      // Базовые security-заголовки на все страницы. Полноценный CSP сюда
+      // не добавлен — требует отдельной сверки со всеми внешними скриптами
+      // (GTM, CookieYes, Google Maps, шрифты) и тестирования.
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
     ];

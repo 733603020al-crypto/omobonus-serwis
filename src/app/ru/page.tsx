@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesRu } from '@/lib/services-data-ru'
+import { HOME_EXTRA_SERVICES } from '@/lib/services-data'
 import { ru } from '@/lib/i18n/ru'
 
 export const metadata: Metadata = {
   title: 'Ремонт компьютеров, ноутбуков и принтеров | Omobonus Вроцлав',
-  description: '✔ Профессиональный ремонт и сервис компьютеров, ноутбуков, принтеров и МФУ во Вроцлаве ✔ Диагностика за 15 мин ✔ Цены на сайте ✔ Звоните: 793 759 262',
+  description: '✔ Профессиональный ремонт и сервис компьютеров, ноутбуков, принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Цены на сайте ✔ Запишитесь на сервис уже сегодня! ✔ Звоните: 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru',
     languages: {
@@ -17,13 +18,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
-    description: 'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве.',
+    description: 'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве. Ремонт оборудования, честные цены без скрытых затрат.',
     url: 'https://serwis.omobonus.com.pl/ru',
     images: [
       {
         url: '/images/omobonus-hero.webp',
         width: 1200,
         height: 630,
+        alt: 'Omobonus - профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве',
       },
     ],
   },
@@ -36,6 +38,7 @@ export default function RuHome() {
       servicesData={servicesRu}
       servicesBasePath="/ru/uslugi"
       servicesT={ru.services}
+      servicesExtra={HOME_EXTRA_SERVICES}
       aboutT={ru.about}
       footerT={ru.footer}
       cta={{

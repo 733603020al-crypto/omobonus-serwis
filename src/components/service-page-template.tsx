@@ -2,14 +2,16 @@ import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
-import { CallButton } from '@/components/ui/CallButton'
+import { AnimatedHeroImage } from '@/components/animated-hero-image'
+import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
+import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
+import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false — content still renders server-side, only the JS bundle is split.
@@ -18,7 +20,21 @@ import GoogleReviews from '@/components/google-reviews'
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 const ServiceAccordion = dynamic(() => import('@/components/service-accordion'))
 const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
-const FadeSlideText = dynamic(() => import('@/components/ui/FadeSlideText').then(m => ({ default: m.FadeSlideText })))
+
+// Per-service hero image scale relative to the fixed 400px/300px zone
+// (object-contain already caps at 100%; this intentionally overflows the zone).
+const HERO_SCALE: Record<string, number> = {
+  'serwis-laptopow': 1.4,
+  'outsourcing-it': 1.4,
+  'serwis-plotterow': 1.4,
+  'wynajem-drukarek': 1.4,
+  'drukarka-zastepcza': 1.4,
+  'serwis-drukarek-termicznych': 1.2,
+  'serwis-drukarek-iglowych': 1.2,
+  'serwis-drukarek-atramentowych': 1.2,
+  'serwis-drukarek-laserowych': 1.2,
+}
+const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
@@ -27,6 +43,27 @@ const PAGE_CLASS_SLUGS = [
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie',
 ]
+
+// PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
+// 3-line layout (matches the approved /uslugi/serwis-laptopow hero). Pages whose
+// meaning doesn't fit that template (outsourcing-it, druk-3d-na-zamowienie,
+// wynajem-drukarek, drukarka-zastepcza) are intentionally absent — they keep
+// headings.h1 as plain text, wrapped inside the same sized/centered box.
+// All 3 lines always share the same font size and horizontal center. The middle
+// line never shrinks and never wraps to a second line — if it's wider than the
+// 470px box, it overflows symmetrically (equal amounts left and right) around
+// that shared center.
+const HERO_LINES_PL: Record<string, { mid: string }> = {
+  'serwis-laptopow': { mid: 'laptopów' },
+  'naprawa-drukarek': { mid: 'drukarek' },
+  'serwis-komputerow-stacjonarnych': { mid: 'komputerów stacjonarnych' },
+  'serwis-drukarek-laserowych': { mid: 'drukarek laserowych' },
+  'serwis-drukarek-atramentowych': { mid: 'drukarek atramentowych' },
+  'serwis-drukarek-3d': { mid: 'drukarek 3D' },
+  'serwis-plotterow': { mid: 'ploterów drukujących' },
+  'serwis-drukarek-iglowych': { mid: 'drukarek igłowych' },
+  'serwis-drukarek-termicznych': { mid: 'drukarek etykiet' },
+}
 
 export interface ServicePageHeadings {
   h1: string
@@ -57,6 +94,10 @@ export interface ServicePageLabels {
   relatedCta: string
   relatedIconAltSuffix: string
   drukarkaZastepczaNote: ReactNode
+  ctaHeading: string
+  ctaText: string
+  ctaButton: string
+  ctaHref: string
 }
 
 interface SeoBlocksGridProps {
@@ -67,25 +108,31 @@ interface SeoBlocksGridProps {
 
 function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   if (!items.length) return null
-  const wrapperClass = variant === 'related' ? 'pt-2 pb-6 md:pb-8' : 'pt-6 pb-24'
+  const wrapperClass = variant === 'related'
+    ? 'pt-2 pb-6 md:pb-8'
+    : REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug ?? '') ? 'pt-3 pb-24' : 'pt-6 pb-24'
   // Na druk-3d-na-zamowienie ten tekst nie ma być semantycznym H2 (nie jest
   // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
   const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : 'h2'
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
-        {items.map((text, index) => (
-          <Tag
+        {items.map((text, index) => {
+          // Пустая ячейка-распорка остаётся в сетке, но не должна быть пустым заголовком для скринридеров.
+          const ItemTag = text.trim() ? Tag : 'div'
+          return (
+          <ItemTag
             key={index}
             className={
               variant === 'related'
-                ? `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 text-left ${index % 2 === 0 ? 'md:text-right md:pr-2' : 'md:text-left md:pl-2'}`
-                : `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/70 ${index % 2 === 0 ? 'text-left md:text-right md:pr-2' : 'text-left md:pl-2'}`
+                ? `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/85 text-left ${index % 2 === 0 ? 'md:text-right md:pr-2' : 'md:text-left md:pl-2'}`
+                : `text-[12px] font-normal leading-[1.1] m-0 p-0 text-[#bfa76a]/85 ${index % 2 === 0 ? 'text-left md:text-right md:pr-2' : 'text-left md:pl-2'}`
             }
           >
             {text}
-          </Tag>
-        ))}
+          </ItemTag>
+          )
+        })}
       </div>
     </div>
   )
@@ -104,7 +151,7 @@ interface ServicePageTemplateProps {
   basePath: string
   labels: ServicePageLabels
   relatedServices?: RelatedService[]
-  jsonLd: object
+  jsonLd: object | object[]
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
 }
 
@@ -125,52 +172,59 @@ export function ServicePageTemplate({
   footerT,
 }: ServicePageTemplateProps) {
   const pageClass = PAGE_CLASS_SLUGS.includes(slug) ? `page-${slug}` : ''
+  const repairAccordionClass = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'page-repair-accordion' : ''
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      {(Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map((block, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
+        />
+      ))}
       <Header locale={locale} />
-      <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass}`}>
+      <main className={`pt-[40px] pb-[10px] md:pb-[20px] relative overflow-visible ${pageClass} ${repairAccordionClass}`}>
 
-        <div className="absolute inset-0">
-          <Image
-            src="/images/omobonus-hero2.webp"
-            alt="Omobonus serwis"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            quality={60}
-            className="object-cover object-center"
+        <>
+          <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
+            <Image
+              src="/images/omobonus-hero2.webp"
+              alt="Omobonus serwis"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              quality={60}
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="fixed inset-0 -z-10"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           />
-        </div>
+        </>
 
-        <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative">
           {pageClass ? (
             <>
-              <div className="container max-w-5xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
-                <div
-                  className={`grid grid-cols-1 gap-4 md:gap-10 items-center ${slug === 'naprawa-drukarek'
-                    ? 'md:grid-cols-[40%_60%]'
-                    : 'md:grid-cols-[25%_75%]'
-                    }`}
-                >
-                  <div className="flex justify-center md:justify-start">
-                    <div className="service-hero-image-wrap relative w-full">
-                      {heroLabels.map((label, index) => (
-                        <span
-                          key={label}
-                          className={`service-hero-label service-hero-label-${index + 1}`}
-                        >
-                          {label}
-                        </span>
-                      ))}
-
+              <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+                  <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
+                    <div
+                      className={`service-hero-image-wrap relative ${
+                        HERO_SCALE[slug] ? 'shrink-0' : 'w-full h-full'
+                      }`}
+                      style={HERO_SCALE[slug] ? { width: `${HERO_SCALE[slug] * 100}%`, height: `${HERO_SCALE[slug] * 100}%` } : undefined}
+                    >
                       {slug === 'druk-3d-na-zamowienie' ? (
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
@@ -181,9 +235,77 @@ export function ServicePageTemplate({
                           alt={imageAlt}
                           width={420}
                           height={420}
-                          className="service-hero-image object-contain w-full h-auto"
+                          className="service-hero-image object-contain w-full h-full"
                           fetchPriority="high"
                         />
+                      ) : slug === 'serwis-laptopow' ? (
+                        // Animated WebP (screen animation baked into the file, transparent
+                        // background) — canvas/offsets/disposal/blend across all 24 frames
+                        // must stay intact. width/height match the source's real 578x502
+                        // aspect ratio (cropped to alpha bbox; not the generic 420x420 square
+                        // used by other service pages) so h-auto doesn't cause a layout jump.
+                        // Starts on a static first-frame fallback (mobile and desktop alike)
+                        // and swaps in the animated file after page load (see
+                        // AnimatedHeroImage) to keep LCP fast on every screen size.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/serwis-laptopow-hero-static.webp"
+                          alt={imageAlt}
+                          width={578}
+                          height={502}
+                          className="service-hero-image service-hero-image-laptop object-contain w-full h-full mx-auto block"
+                        />
+                      ) : slug === 'serwis-komputerow-stacjonarnych' ? (
+                        // Animated WebP (cooling-fan animation baked into the file, transparent
+                        // background, pre-cropped) — canvas/offsets/disposal/blend across all 16
+                        // frames must stay byte-for-byte as authored (no crop/recode) or the
+                        // composited animation breaks. Starts on a static first-frame fallback
+                        // (mobile and desktop alike) and swaps in the animated file after page
+                        // load (see AnimatedHeroImage) to keep LCP fast on every screen size.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/02_serwis-komputerow-stacjonarnych-static.webp"
+                          alt={imageAlt}
+                          width={622}
+                          height={773}
+                          className="service-hero-image object-contain w-full h-full"
+                        />
+                      ) : slug === 'outsourcing-it' ? (
+                        // Animated WebP (orbiting connection-dots animation baked into the
+                        // file, transparent background) — canvas/offsets/disposal/blend
+                        // across all 40 frames must stay intact or the composited animation
+                        // breaks. Starts on a static first-frame fallback (mobile and desktop
+                        // alike) and swaps in the animated file after page load (see
+                        // AnimatedHeroImage) to keep LCP fast on every screen size.
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/03_outsourcing-it-static.webp"
+                          alt={imageAlt}
+                          width={699}
+                          height={403}
+                          className="service-hero-image object-contain w-full h-full"
+                        />
+                      ) : slug === 'serwis-drukarek-3d' ? (
+                        // Animated WebP (rotating wireframe-fullerene print animation baked
+                        // into the file, transparent background) — plain <img>, not next/image,
+                        // so the optimizer doesn't rasterize it and kill the animation. 32
+                        // frames, disposal/blend must stay intact.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          width={492}
+                          height={497}
+                          className="service-hero-image object-contain w-full h-full"
+                          fetchPriority="high"
+                        />
+                      ) : slug === 'naprawa-drukarek' ? (
+                        // Center-active carousel of the same category hero
+                        // images used on their own service pages (laser,
+                        // inkjet, needle, thermal, plotter, 3D) — replaces
+                        // the single static Serwis_Drukarek.webp. No new
+                        // assets, same fixed hero zone.
+                        <HeroPrinterCarousel alt={imageAlt} />
                       ) : (
                         <Image
                           src={imageSrc}
@@ -191,7 +313,7 @@ export function ServicePageTemplate({
                           width={420}
                           height={420}
                           sizes="(max-width: 768px) 85vw, 420px"
-                          className="service-hero-image object-contain w-full h-auto"
+                          className="service-hero-image object-contain w-full h-full"
                           priority
                           fetchPriority="high"
                           quality={60}
@@ -199,9 +321,17 @@ export function ServicePageTemplate({
                       )}
                     </div>
                   </div>
-                  <div className="text-center flex flex-col items-center justify-center">
-                    <h1 className="text-[32px] md:text-[40px] font-cormorant font-bold text-[#ffffff] leading-[1.1]">
-                      {headings.h1 || service.title}
+                  <div className={`text-center flex flex-col items-center justify-center relative z-10 ${HERO_SCALE[slug] ? 'mt-14 md:mt-0' : ''}`}>
+                    <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
+                      {locale === 'pl' && HERO_LINES_PL[slug] ? (
+                        <>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                        </>
+                      ) : (
+                        headings.h1 || service.title
+                      )}
                     </h1>
 
                     {headings.h2 && (
@@ -209,25 +339,6 @@ export function ServicePageTemplate({
                         {headings.h2}
                       </h2>
                     )}
-                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-[28px] items-center justify-center w-full">
-                      <CallButton
-                        variant="primary"
-                        href="tel:+48793759262"
-                        className="w-[80%] md:w-auto"
-                      >
-                        <span className="md:hidden">{labels.callNow}</span>
-                        <span className="hidden md:inline">793 759 262</span>
-                      </CallButton>
-
-                      <CallButton
-                        variant="secondary"
-                        href={labels.formHref}
-                        className="w-[80%] md:w-auto"
-                        showIcon={false}
-                      >
-                        {labels.sendRequest}
-                      </CallButton>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -240,8 +351,8 @@ export function ServicePageTemplate({
                   <BrandTicker brandNames={slugBrands} />
                 </div>
               )}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-6${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
-                <FadeSlideText className="hidden md:block text-[18px] text-[#bfa76a] font-cormorant italic leading-tight max-w-3xl mx-auto font-semibold drop-shadow-2xl">
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'mb-3' : 'mb-6'}${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
+                <FadeSlideP className={`hidden md:block ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'text-[20px]' : 'text-[18px]'} text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
@@ -249,7 +360,7 @@ export function ServicePageTemplate({
                       : slug === 'druk-3d-na-zamowienie'
                         ? (labels.fadeSlideDruk3DZamowienie ?? labels.fadeSlideDefault)
                         : labels.fadeSlideDefault}
-                </FadeSlideText>
+                </FadeSlideP>
               </div>
             </>
           ) : null}
@@ -259,32 +370,41 @@ export function ServicePageTemplate({
           <section id="uslugi" className="relative text-center pt-0 pb-2">
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {(relatedServices ?? []).map((rs) => (
+                {(relatedServices ?? []).map((rs, i) => (
                   <Link
                     key={rs.slug}
                     href={`${basePath}/${rs.slug}`}
-                    className="group relative min-h-[70px] rounded-lg py-2 px-3 border-2 border-[rgba(200,169,107,0.5)] flex items-center text-left w-full services-card-bg transition-all duration-300 ease-out hover:border-[rgba(200,169,107,0.85)] hover:-translate-y-[2px] hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]"
+                    className={`
+    group
+    relative
+    min-h-[152px]
+    py-4 px-6
+    flex
+    items-center
+    text-left
+    w-full
+    zakres-paper-card
+    services-card-hover
+    ${EDGE_CLASSES[i % EDGE_CLASSES.length]}
+    ${ORIENT_CLASSES[i % ORIENT_CLASSES.length]}
+    ${CORNER_CLASSES[i % CORNER_CLASSES.length]}
+  `}
                   >
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/40 via-[#bfa76a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
-
-                    <div className="relative z-10 mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
-                      <Image
-                        src={rs.iconSrc}
-                        alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
-                        width={50}
-                        height={50}
-                        sizes="50px"
-                        className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                      />
+                    <div className="z-10 h-[120px] flex-shrink-0 w-[50%]">
+                      <div className="relative w-full h-full service-card-icon-zoom">
+                        <Image
+                          src={rs.iconSrc}
+                          alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
+                          fill
+                          sizes="(max-width: 768px) 35vw, 180px"
+                          className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
                     </div>
 
-                    <div className="relative z-10 flex-1">
-                      <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
+                    <div className="relative z-20 h-[120px] flex items-center pl-[15px] w-[50%]">
+                      <div className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
                         {rs.displayTitle}
-                      </div>
-                      <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform">
-                        <span>{labels.relatedCta}</span>
-                        <ArrowRight className="w-3 h-3" />
                       </div>
                     </div>
                   </Link>
@@ -300,21 +420,22 @@ export function ServicePageTemplate({
           </section>
         )}
 
-        {service.slug === 'drukarka-zastepcza' && (
-          <div className="relative z-10 container max-w-5xl mx-auto px-4 md:px-6 pt-[10px] pb-[30px]">
-            <p className="text-[12px] text-[#cbb27c] leading-relaxed text-justify max-w-4xl mx-auto">
-              {labels.drukarkaZastepczaNote}
-            </p>
-          </div>
-        )}
-
         <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
           <GoogleReviews />
         </div>
 
       </main>
 
-      <Footer t={footerT} />
+      <Footer
+        t={footerT}
+        bare
+        cta={{
+          heading: labels.ctaHeading,
+          text: labels.ctaText,
+          button: labels.ctaButton,
+          href: labels.ctaHref,
+        }}
+      />
     </>
   )
 }

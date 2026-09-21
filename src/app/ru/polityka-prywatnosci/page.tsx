@@ -2,8 +2,9 @@ import { Metadata } from 'next'
 import { LegalPageTemplate } from '@/components/legal-page-template'
 import { politykaPrywatnosciContentRu } from '@/lib/legal/legal-pages'
 import { ru } from '@/lib/i18n/ru'
+import { withSocialMeta } from '@/lib/social-meta'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocialMeta('ru', {
   title: 'Политика конфиденциальности | Omobonus Serwis',
   description: 'Политика конфиденциальности сервиса Omobonus Вроцлав. Принципы обработки персональных данных, защита GDPR.',
   alternates: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
       'x-default': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
     },
   },
-}
+})
 
 export const dynamic = 'force-static'
 

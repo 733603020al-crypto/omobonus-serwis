@@ -21,6 +21,8 @@ interface CustomPhoneInputProps {
   id?: string
   /** aria-label forwarded to the underlying number <input>, for when no visible <label> targets it. */
   'aria-label'?: string
+  'aria-invalid'?: boolean
+  'aria-describedby'?: string
 }
 
 const LOCALIZED_COUNTRY_NAME_KEYS = {
@@ -30,7 +32,7 @@ const LOCALIZED_COUNTRY_NAME_KEYS = {
 
 const DEFAULT_COUNTRY = countries[1]
 
-export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false, id, 'aria-label': ariaLabel }: CustomPhoneInputProps) {
+export function CustomPhoneInput({ value, onChange, onCountryChange, className = '', variant = 'light', locale = 'pl', selectorWidth, alwaysRow = false, id, 'aria-label': ariaLabel, 'aria-invalid': ariaInvalid, 'aria-describedby': ariaDescribedby }: CustomPhoneInputProps) {
   const dark = variant === 'dark'
   const [selectedCountry, setSelectedCountry] = useState<Country>(DEFAULT_COUNTRY) // По умолчанию Польша
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -271,6 +273,8 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           <input
             id={id}
             aria-label={ariaLabel}
+            aria-invalid={ariaInvalid}
+            aria-describedby={ariaDescribedby}
             type="tel"
             value={phoneNumber}
             onChange={handlePhoneChange}

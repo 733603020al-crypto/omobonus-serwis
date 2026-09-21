@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import { cn } from '@/lib/utils'
 
 export function FadeSlideP({ className, children }: { className?: string; children: React.ReactNode }) {
   const ref = useRef<HTMLParagraphElement>(null)
@@ -17,5 +18,5 @@ export function FadeSlideP({ className, children }: { className?: string; childr
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-  return <p ref={ref} className={`fade-slide-init ${className ?? ''}`}>{children}</p>
+  return <p ref={ref} className={cn('fade-slide-init', className)}>{children}</p>
 }

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
+import { rateLimit } from '@/lib/rate-limit'
+
 const formatPhone = (phone: string): string => {
   const cleaned = phone.replace(/[^\d+]/g, '')
   if (cleaned.startsWith('+48')) {
@@ -12,7 +14,21 @@ const formatPhone = (phone: string): string => {
   return phone
 }
 
+const escapeHtml = (text: string): string =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
+// Не более 5 заявок в минуту с одного IP (обычному посетителю нужно 1–3 попытки)
+const CALLBACK_LIMIT_PER_MINUTE = 5
+
 export async function POST(request: NextRequest) {
+  const limited = rateLimit(request, 'callback-request', CALLBACK_LIMIT_PER_MINUTE)
+  if (limited) return limited
+
   try {
     const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
     const missing = required.filter(k => !process.env[k]?.trim())
@@ -21,8 +37,19 @@ export async function POST(request: NextRequest) {
     }
 
     const formData = await request.formData()
+
+    // Honeypot anti-spam: pole niewidoczne dla ludzi, wypełniane tylko przez boty
+    const honeypot = (formData.get('company') as string) ?? ''
+    if (honeypot.trim() !== '') {
+      return NextResponse.json({ success: true }, { status: 200 })
+    }
+
     const phone = (formData.get('phone') as string) ?? ''
     const country = (formData.get('country') as string) || 'Nie podano'
+
+    if (phone.length > 50 || country.length > 100) {
+      return NextResponse.json({ success: false, error: 'Nieprawidłowe dane' }, { status: 400 })
+    }
 
     if (!phone || phone.replace(/\D/g, '').length < 7) {
       return NextResponse.json({ success: false, error: 'Nieprawidłowy numer telefonu' }, { status: 400 })
@@ -34,7 +61,6 @@ export async function POST(request: NextRequest) {
       secure: parseInt(process.env.SMTP_PORT || '587', 10) === 465,
       requireTLS: parseInt(process.env.SMTP_PORT || '587', 10) !== 465,
       auth: { user: process.env.SMTP_USER!, pass: process.env.SMTP_PASS! },
-      tls: { rejectUnauthorized: false },
       connectionTimeout: 10000,
       greetingTimeout: 10000,
     })
@@ -48,7 +74,7 @@ export async function POST(request: NextRequest) {
       to: toEmail,
       subject: 'Prośba o telefon',
       text: `Nowa prośba o telefon ze strony Kontakt.\nTelefon: ${formattedPhone}\nKraj: ${country}`,
-      html: `<p>Nowa prośba o telefon ze strony Kontakt.</p><p><strong>Telefon:</strong> ${formattedPhone}<br><strong>Kraj:</strong> ${country}</p>`,
+      html: `<p>Nowa prośba o telefon ze strony Kontakt.</p><p><strong>Telefon:</strong> ${escapeHtml(formattedPhone)}<br><strong>Kraj:</strong> ${escapeHtml(country)}</p>`,
     })
 
     return NextResponse.json({ success: true }, { status: 200 })

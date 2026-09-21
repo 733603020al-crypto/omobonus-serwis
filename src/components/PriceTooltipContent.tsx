@@ -196,7 +196,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
             }
           }}
           className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/70 active:bg-black/90 text-white transition-colors touch-manipulation shadow-lg cursor-pointer"
-          aria-label="Zamknij"
+          aria-label={t.closeAriaLabel}
         >
           <X className="w-5 h-5" />
         </div>

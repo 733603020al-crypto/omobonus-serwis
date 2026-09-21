@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { AboutPageTemplate } from '@/components/about-page-template'
 import { ru } from '@/lib/i18n/ru'
+import { withSocialMeta } from '@/lib/social-meta'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocialMeta('ru', {
   title: 'О нас | Честный сервис компьютеров и принтеров | Omobonus Вроцлав',
   description: 'Мы не зарабатываем на вашей проблеме. Omobonus — сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ 10+ лет опыта ✔ Диагностика за 15 мин ✔ Ремонт за 48 часов',
   alternates: {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
       'x-default': 'https://serwis.omobonus.com.pl/o-nas',
     },
   },
-}
+})
 
 export default function RuONasPage() {
   return (

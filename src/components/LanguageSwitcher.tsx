@@ -101,7 +101,7 @@ export function LanguageSwitcher() {
               src={locale.flagSrc}
               alt=""
               width={18}
-              height={13}
+              height={12}
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
@@ -124,7 +124,7 @@ export function LanguageSwitcher() {
           style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
-          aria-label="Wybierz język / Вибрати мову"
+          aria-label="Wybierz język / Вибрати мову / Выбрать язык"
         >
           <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -142,7 +142,7 @@ export function LanguageSwitcher() {
                 onClick={() => setIsOpen(false)}
                 className={dropdownItemClass(locale.code === currentLocale.code)}
               >
-                <Image src={locale.flagSrc} alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
+                <Image src={locale.flagSrc} alt="" width={20} height={13} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
                 {locale.fullLabel}
               </Link>
             ))}

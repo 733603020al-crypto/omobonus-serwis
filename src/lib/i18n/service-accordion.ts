@@ -7,6 +7,10 @@ export interface ServiceAccordionCategoryTranslation {
 export interface ServiceAccordionDict {
   priceHeaderFull: string
   priceHeaderShort: string
+  priceNettoTooltip: string
+  priceInfoAriaLabel: string
+  categoryInfoAriaLabel: string
+  closeAriaLabel: string
   timeHeader: string
   timeHeaderLine2: string
   viewPriceList: string
@@ -19,12 +23,18 @@ export interface ServiceAccordionDict {
   exampleLabel: string
   rentPriceHeader: string
   printPriceHeader: string
-  /** Заголовки секций konserwacja/naprawy для мобильного аккордеона. null — использовать section.title из данных */
-  mobileAccordionTitles: {
-    konserwacja: string | null
-    naprawy: string | null
-  }
   dojazdNote: readonly [string, string]
+  dojazdPromoTitle: string
+  konserwacjaPromoTitle: string
+  konserwacjaPromoDescription: string
+  konserwacjaPromoTitleAlt: string
+  konserwacjaPromoDescriptionAlt: string
+  konserwacjaPromoTitleInkjet: string
+  konserwacjaPromoDescriptionInkjet: string
+  konserwacjaIncludedNote: string
+  konserwacjaExtraPaidNote: string
+  konserwacjaIncludedNoteInkjet: string
+  konserwacjaExtraPaidNoteInkjet: string
   deviceCategoriesDescription: {
     default: string
     serwisDrukarekIglowych: string
@@ -35,6 +45,8 @@ export interface ServiceAccordionDict {
     pagesIncluded: readonly [string, string]
     printPriceMono: readonly [string, string]
     printPriceColor: readonly [string, string]
+    /** Заголовок + подпись объединённой строки "Cena wydruku A4" (mono+kolor в одном значении) в современной accordion-tier таблице wynajem-drukarek */
+    printPriceOverLimit: readonly [string, string]
     scanning: string
     duplex: string
     printSpeedPrefix: string
@@ -56,6 +68,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   pl: {
     priceHeaderFull: 'Cena, zł',
     priceHeaderShort: 'Cena',
+    priceNettoTooltip: 'Cena netto',
+    priceInfoAriaLabel: 'Informacja o cenach',
+    categoryInfoAriaLabel: 'Informacja o kategoriach',
+    closeAriaLabel: 'Zamknij',
     timeHeader: 'Czas',
     timeHeaderLine2: 'realizacji',
     viewPriceList: 'Zobacz cennik',
@@ -68,14 +84,21 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(np.',
     rentPriceHeader: 'Czynsz wynajmu [zł/mies.]',
     printPriceHeader: 'Cena wydruku',
-    mobileAccordionTitles: {
-      konserwacja: 'Czyszczenie i konserwacja',
-      naprawy: 'Naprawy i usługi serwisowe',
-    },
     dojazdNote: [
       'Nie mówimy, że dojazd lub odbiór są „za darmo”,',
       'a następnie doliczamy ten koszt do ceny naprawy',
     ],
+    dojazdPromoTitle: '„DARMOWY DOJAZD”',
+    konserwacjaPromoTitle: '„PRZEDMUCHANIE + PASTA”',
+    konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
+    konserwacjaPromoTitleAlt: '„TYLKO PRZEDMUCHANIE?”',
+    konserwacjaPromoDescriptionAlt: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację urządzenia.',
+    konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
+    konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
+    konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
+    konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
+    konserwacjaIncludedNoteInkjet: 'W cenie usług zawarte są standardowe środki i materiały potrzebne do wykonania prac serwisowych. W przypadku obsługi absorbera cena obejmuje jego czyszczenie lub wymianę na nowy — zależnie od stanu absorbera i dostępności odpowiedniej części.',
+    konserwacjaExtraPaidNoteInkjet: 'Dodatkowo płatne są naprawy oraz inne części zamienne, jeśli okażą się konieczne — zawsze po wcześniejszym uzgodnieniu z klientem.',
     deviceCategoriesDescription: {
       default: 'W cenniku pierwsza cena dotyczy drukarki domowej, druga – biurowej, trzecia – biznesowej',
       serwisDrukarekIglowych: 'W cenniku pierwsza cena dotyczy małej drukarki igłowej, druga – średniej, trzecia – dużej',
@@ -86,6 +109,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Liczba stron A4', 'wliczonych w czynsz'],
       printPriceMono: ['Cena wydruku A4 mono', '(powyżej limitu)'],
       printPriceColor: ['Cena wydruku A4 kolor', '(powyżej limitu)'],
+      printPriceOverLimit: ['Cena wydruku A4', '(po wykorzystaniu wliczonych stron)'],
       scanning: 'Skanowanie',
       duplex: 'Duplex',
       printSpeedPrefix: 'Prędkość druku do:',
@@ -102,6 +126,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   uk: {
     priceHeaderFull: 'Ціна, zł',
     priceHeaderShort: 'Ціна',
+    priceNettoTooltip: 'Ціна без ПДВ',
+    priceInfoAriaLabel: 'Інформація про ціни',
+    categoryInfoAriaLabel: 'Інформація про категорії',
+    closeAriaLabel: 'Закрити',
     timeHeader: 'Час',
     timeHeaderLine2: 'виконання',
     viewPriceList: 'Переглянути прайс-лист',
@@ -114,15 +142,21 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(напр.',
     rentPriceHeader: 'Орендна плата [zł/міс.]',
     printPriceHeader: 'Ціна друку',
-    // null — для секций konserwacja/naprawy на uk берётся section.title из данных (заголовки уже короткие и различаются по сервисам)
-    mobileAccordionTitles: {
-      konserwacja: null,
-      naprawy: null,
-    },
     dojazdNote: [
-      'Ми не кажемо, що виїзд або отримання пристрою «безкоштовні»,',
-      'а потім додаємо цю вартість до ціни ремонту',
+      'Ми не кажемо, що безкоштовно заберемо пристрій у клієнта та доставимо його назад,',
+      'а потім додаємо ці витрати до вартості ремонту.',
     ],
+    dojazdPromoTitle: '«БЕЗКОШТОВНО ЗАБЕРЕМО І ДОСТАВИМО»',
+    konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
+    konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повну консервацію системи охолодження',
+    konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
+    konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
+    konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
+    konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
+    konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
+    konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
+    konserwacjaIncludedNoteInkjet: 'У вартість послуг входять стандартні засоби та матеріали, необхідні для виконання сервісних робіт. У разі обслуговування абсорбера ціна включає його чищення або заміну на новий — залежно від стану абсорбера та наявності відповідної частини.',
+    konserwacjaExtraPaidNoteInkjet: 'Додатково платно: ремонт та інші запасні частини, якщо вони виявляться необхідними — завжди за попереднім погодженням з клієнтом.',
     deviceCategoriesDescription: {
       default: 'У прайсі перша ціна стосується домашнього принтера, друга — офісного, третя — бізнесового',
       serwisDrukarekIglowych: 'У прайсі перша ціна стосується малого матричного принтера, друга — середнього, третя — великого',
@@ -132,6 +166,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Кількість сторінок A4', 'включених в оренду'],
       printPriceMono: ['Ціна друку A4 моно', '(понад ліміт)'],
       printPriceColor: ['Ціна друку A4 колір', '(понад ліміт)'],
+      printPriceOverLimit: ['Ціна друку A4', '(після використання включених сторінок)'],
       scanning: 'Сканування',
       duplex: 'Duplex',
       printSpeedPrefix: 'Швидкість друку до:',
@@ -159,6 +194,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
   ru: {
     priceHeaderFull: 'Цена, zł',
     priceHeaderShort: 'Цена',
+    priceNettoTooltip: 'Цена без НДС',
+    priceInfoAriaLabel: 'Информация о ценах',
+    categoryInfoAriaLabel: 'Информация о категориях',
+    closeAriaLabel: 'Закрыть',
     timeHeader: 'Срок',
     timeHeaderLine2: 'выполнения',
     viewPriceList: 'Смотреть прайс-лист',
@@ -171,14 +210,21 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     exampleLabel: '(напр.',
     rentPriceHeader: 'Аренда [zł/мес.]',
     printPriceHeader: 'Цена печати',
-    mobileAccordionTitles: {
-      konserwacja: 'Чистка и обслуживание',
-      naprawy: 'Ремонт и сервисное обслуживание',
-    },
     dojazdNote: [
-      'Мы не говорим, что выезд или получение устройства «бесплатны»,',
-      'а затем добавляем эту стоимость к цене ремонта',
+      'Мы не говорим, что бесплатно заберём устройство у клиента и доставим его обратно,',
+      'а потом добавляем эти расходы к стоимости ремонта.',
     ],
+    dojazdPromoTitle: '«БЕСПЛАТНО ЗАБЕРЁМ И ДОСТАВИМ»',
+    konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
+    konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
+    konserwacjaPromoTitleAlt: '«ТОЛЬКО ПРОДУВКА?»',
+    konserwacjaPromoDescriptionAlt: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание устройства.',
+    konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
+    konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
+    konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
+    konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
+    konserwacjaIncludedNoteInkjet: 'В стоимость услуг входят стандартные средства и материалы, необходимые для выполнения сервисных работ. При обслуживании абсорбера цена включает его чистку или замену на новый — в зависимости от состояния абсорбера и наличия соответствующей детали.',
+    konserwacjaExtraPaidNoteInkjet: 'Дополнительно платно: ремонт и другие запасные части, если они окажутся необходимыми — всегда по предварительному согласованию с клиентом.',
     deviceCategoriesDescription: {
       default: 'В прайсе первая цена относится к домашнему принтеру, вторая — к офисному, третья — к бизнес-принтеру',
       serwisDrukarekIglowych: 'В прайсе первая цена относится к малому игольчатому принтеру, вторая — к среднему, третья — к большому',
@@ -188,6 +234,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       pagesIncluded: ['Количество страниц A4', 'включённых в аренду'],
       printPriceMono: ['Цена печати A4 моно', '(сверх лимита)'],
       printPriceColor: ['Цена печати A4 цвет', '(сверх лимита)'],
+      printPriceOverLimit: ['Цена печати A4', '(после использования включённых страниц)'],
       scanning: 'Сканирование',
       duplex: 'Duplex',
       printSpeedPrefix: 'Скорость печати до:',

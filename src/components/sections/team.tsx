@@ -1,7 +1,5 @@
-'use client'
-
-import { useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
 
 interface TeamMember {
   initial: string
@@ -39,20 +37,6 @@ const PL = {
 
 export function Team({ t }: { t?: TeamT } = {}) {
   const eyebrow = t?.eyebrow ?? PL.eyebrow
-  const eyebrowRef = useRef<HTMLParagraphElement>(null)
-  useEffect(() => {
-    const el = eyebrowRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
   const members = t?.members ?? PL_MEMBERS
   const showUmka = true
   const umka = t?.umka ?? { name: 'Umka', role: 'Nasz mały pomocnik', phrase: 'Wita klientów i dba o dobrą atmosferę' }
@@ -60,9 +44,9 @@ export function Team({ t }: { t?: TeamT } = {}) {
   return (
     <section className="pt-10 md:pt-16">
       <div className="max-w-5xl mx-auto px-6">
-        <p ref={eyebrowRef} className="fade-slide-init brush-underline text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-8">
+        <FadeSlideP className="brush-underline text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-8">
           {eyebrow}
-        </p>
+        </FadeSlideP>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {members.map((m, i) => (

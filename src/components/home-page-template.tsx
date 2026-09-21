@@ -2,13 +2,15 @@ import type { ComponentProps, ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
+import { About } from '@/components/sections/about'
 import BrandTicker from '@/components/brand-ticker'
 import GoogleReviews from '@/components/google-reviews'
 
 // Below-fold components: split into separate chunks so the initial JS
-// bundle only contains Header + Hero code, allowing LCP to paint sooner
+// bundle only contains Header + Hero code, allowing LCP to paint sooner.
+// About is a Server Component (no client JS besides the tiny FadeSlideP
+// eyebrow wrapper it renders internally), so it's imported statically.
 const Services = dynamic(() => import('@/components/sections/services').then(m => ({ default: m.Services })))
-const About = dynamic(() => import('@/components/sections/about').then(m => ({ default: m.About })))
 const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
@@ -17,6 +19,7 @@ interface HomePageTemplateProps {
   servicesData?: NonNullable<ComponentProps<typeof Services>>['servicesData']
   servicesBasePath?: NonNullable<ComponentProps<typeof Services>>['basePath']
   servicesT?: NonNullable<ComponentProps<typeof Services>>['t']
+  servicesExtra?: NonNullable<ComponentProps<typeof Services>>['extraServices']
   aboutT?: NonNullable<ComponentProps<typeof About>>['t']
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
   cta: {
@@ -33,6 +36,7 @@ export function HomePageTemplate({
   servicesData,
   servicesBasePath,
   servicesT,
+  servicesExtra,
   aboutT,
   footerT,
   cta,
@@ -59,7 +63,7 @@ export function HomePageTemplate({
           }}
         />
         <div className="relative z-10">
-          <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} bare />
+          <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
 
           <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
 
