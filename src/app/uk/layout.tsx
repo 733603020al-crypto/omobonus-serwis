@@ -32,6 +32,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  icons: { icon: '/favicon.ico' },
   title: {
     default: 'Сервіс комп\'ютерів, ноутбуків і принтерів Вроцлав | Omobonus',
     template: '%s | Omobonus Вроцлав',

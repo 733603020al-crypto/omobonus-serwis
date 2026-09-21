@@ -40,6 +40,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  icons: { icon: '/favicon.ico' },
   title: {
     default: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
     template: '%s | Omobonus Wrocław',
