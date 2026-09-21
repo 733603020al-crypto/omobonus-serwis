@@ -117,8 +117,11 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
-        {items.map((text, index) => (
-          <Tag
+        {items.map((text, index) => {
+          // Пустая ячейка-распорка остаётся в сетке, но не должна быть пустым заголовком для скринридеров.
+          const ItemTag = text.trim() ? Tag : 'div'
+          return (
+          <ItemTag
             key={index}
             className={
               variant === 'related'
@@ -127,8 +130,9 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
             }
           >
             {text}
-          </Tag>
-        ))}
+          </ItemTag>
+          )
+        })}
       </div>
     </div>
   )

@@ -214,19 +214,19 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/email.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
           </a>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/whatsapp.png" alt="WhatsApp" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/whatsapp.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
           </a>
           <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/telegram.png" alt="Telegram" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/telegram.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
           </a>
           <a href="viber://chat?number=%2B48793759262" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/viber.png" alt="Viber" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/viber.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
           </a>
         </div>
