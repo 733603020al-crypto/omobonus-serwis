@@ -72,10 +72,6 @@ const createTransporter = (): nodemailer.Transporter | null => {
         user: smtpUser,
         pass: smtpPass,
       },
-      tls: {
-        // Не требуем проверку сертификата для Zenbox
-        rejectUnauthorized: false,
-      },
       connectionTimeout: 10000, // 10 секунд таймаут подключения
       greetingTimeout: 10000, // 10 секунд таймаут приветствия
     })

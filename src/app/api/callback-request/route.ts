@@ -53,7 +53,6 @@ export async function POST(request: NextRequest) {
       secure: parseInt(process.env.SMTP_PORT || '587', 10) === 465,
       requireTLS: parseInt(process.env.SMTP_PORT || '587', 10) !== 465,
       auth: { user: process.env.SMTP_USER!, pass: process.env.SMTP_PASS! },
-      tls: { rejectUnauthorized: false },
       connectionTimeout: 10000,
       greetingTimeout: 10000,
     })
