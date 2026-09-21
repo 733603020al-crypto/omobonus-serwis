@@ -1887,7 +1887,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             <div data-open-header-hover-text="true" className="hidden md:block">
                               <div className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
-                                !(isRepairAccordionLayout && section.id === 'naprawy') && "group-data-[state=open]:md:translate-x-[60px]",
+                                !(isRepairAccordionLayout && section.id === 'naprawy') && !isOpenHeaderPlateSection && "group-data-[state=open]:md:translate-x-[60px]",
                                 isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
                                 isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                               )}>

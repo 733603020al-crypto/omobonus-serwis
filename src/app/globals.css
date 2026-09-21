@@ -876,7 +876,49 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"] {
-      transform: translateY(-4px) scale(1.04);
+      transform: translateY(-4px);
+    }
+
+    /* The 4% enlargement applies only to the decorative parchment plate
+       (::before), so header containers/text keep real layout geometry. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"]::before {
+      scale: 1.04;
+      transform-origin: center;
+    }
+
+    /* OPEN header icon system (plate + table sections). Everything derives from
+       base width x scale: text starts after visual width + gap, no manual px.
+       --icon-left-bias = share of the extra width the icon grows to the left. */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"] {
+      --icon-base-width: 150px;
+      --icon-base-height: 76px;
+      --icon-scale: 1.4;
+      --icon-gap: 14px;
+      --icon-left-bias: 0.3;
+      --icon-visual-width: calc(var(--icon-base-width) * var(--icon-scale));
+      --icon-extra-width: calc(var(--icon-visual-width) - var(--icon-base-width));
+      --icon-right-growth: calc(var(--icon-extra-width) * (1 - var(--icon-left-bias)));
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+      transform: scale(var(--icon-scale));
+      transform-origin: calc(var(--icon-left-bias) * 100%) 0;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+      translate: -17px 0;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+      width: var(--icon-base-width);
+      height: var(--icon-base-height);
+      margin-right: calc(var(--icon-gap) + var(--icon-right-growth));
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media {
+      width: 100%;
+      height: 100%;
+    }
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
+      flex: 1 1 0;
+      width: auto;
+      min-width: 0;
     }
 
     /* Plate role + Naprawy OPEN header: kill the shared gold group-hover
@@ -2148,6 +2190,25 @@
       grid-template-columns: 1fr 1fr;
       margin-left: 0;
       gap: 0;
+    }
+
+    /* Diagnoza/Dojazd/Konserwacja (all [data-open-header-plate] sections other
+       than projektowanie-modeli, which has its own more specific override
+       below): this header row sits in a 12px-padded box (headerWrapperClassName's
+       md:px-3) while the table below it is flush (0 inset) — see the long
+       explanation above projektowanie-modeli's own rule. Same P=12 derivation,
+       just plugged into the 67%/16.5%/16.5% base ratio instead of 54/28/18:
+       ~4px off on the title/price boundary, a further ~6px on price/time.
+       Scoped to [data-open-header-plate] only, not the combined selector
+       above (also used by Naprawy's [data-parchment-list-row] header, which
+       already has its own separate 17px padding fix below, tuned for the
+       untouched 67/33 base) — same specificity as that rule's first selector,
+       so source order alone makes it win here without touching Naprawy. */
+    [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+      grid-template-columns: 67% 33%;
+    }
+    [data-open-header-plate="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+      grid-template-columns: 50% 50%;
     }
 
     /* Naprawy only: the table below sits inside [data-nested-parchment="true"],
