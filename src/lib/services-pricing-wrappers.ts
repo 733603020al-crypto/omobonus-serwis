@@ -56,7 +56,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_wg_cennika_przewoznika": { pl: "według cennika\nprzewoźnika", ru: "по тарифу\nперевозчика", uk: "за тарифом\nперевізника" },
   "p_gratis_nl_do_n_min_konsultacji": { pl: "GRATIS\ndo {0} min konsultacji", ru: "БЕСПЛАТНО\nдо {0} мин консультации", uk: "БЕЗКОШТОВНО\nдо {0} хв консультації" },
   "p_n_zl_nl_do_n_godz_pracy": { pl: "{0} zł\ndo {1} godz. pracy", ru: "{0} zł\nдо {1} ч работы", uk: "{0} zł\nдо {1} год роботи" },
-  "p_n_zl_nl_za_kazde_dodatkowe_n_min_pracy": { pl: "{0} zł\nza każde dodatkowe {1} min pracy", ru: "{0} zł\nза каждые дополнительные {1} мин работы", uk: "{0} zł\nза кожні додаткові {1} хв роботи" },
+  "p_n_zl_nl_za_kazde_dodatkowe_n_min_pracy": { pl: "{0} zł\nza każde {1} min pracy", ru: "{0} zł\nза каждые {1} мин работы", uk: "{0} zł\nза кожні {1} хв роботи" },
 
   // wynajem-drukarek / drukarka-zastepcza (tariff limity stron + ceny)
   "p_n_str_mies": { pl: "{0} str./mies.", ru: "{0} стр./мес.", uk: "{0} стор./міс." },

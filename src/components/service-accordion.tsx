@@ -561,6 +561,31 @@ const renderMaterialPrice = (price: string) => {
   )
 }
 
+// Cena złożona "X zł/jedn. + Y zł/jedn." (PL/UK/RU, jednostki w każdym języku inne):
+// desktopowa tabela pokazuje ją w dwóch wyśrodkowanych liniach — bazowa, potem "+ dopłata".
+const isCompoundUnitPrice = (price: string) => /^[^+\n]*zł\/[^+\n]*\+[^\n]*zł\/[^\n]*$/.test(price)
+const renderCompoundPriceTwoLines = (price: string) => {
+  const plusIdx = price.indexOf('+')
+  const lines = [price.slice(0, plusIdx).trim(), `+ ${price.slice(plusIdx + 1).trim()}`]
+  return (
+    <div className="flex flex-col items-center text-center">
+      {lines.map((line, i) => {
+        const m = line.match(/^(.*zł)(\/.*)$/)
+        return (
+          <div key={i} className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">
+            {m ? (
+              <>
+                {m[1]}
+                <span className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c]">{m[2]}</span>
+              </>
+            ) : line}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 // Dwuliniowa cena (np. "według cennika" / "przewoźnika"): góra głównym
 // białym stylem, dół tym samym małym złotym stylem co /gram, /godz.
 const renderTwoLinePrice = (price: string) => {
@@ -3425,8 +3450,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
                                   {isDruk3DCustomSection(service.slug, section.id) ? (
-                                    displayPrice.includes('zł/gram') ? (
-                                      renderMaterialPrice(displayPrice)
+                                    isCompoundUnitPrice(displayPrice) ? (
+                                      renderCompoundPriceTwoLines(displayPrice)
                                     ) : item.service.startsWith('Wysyłka') ? (
                                       renderTwoLinePrice(displayPrice)
                                     ) : item.service.startsWith('Realizacja ekspresowa') ? (

@@ -908,6 +908,7 @@
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       translate: -17px 0;
+      margin-right: calc(var(--icon-gap) + var(--icon-right-growth));
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box,
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
@@ -2239,19 +2240,13 @@
        (see isDruk3DCustomSection's colgroup in service-accordion.tsx) — so the
        shared 67%/33% grid above lands "Cena, zł" and "Czas realizacji" over
        the wrong columns.
-       This row also sits inside headerWrapperClassName's own md:px-3 (12px
-       each side) padding, while the table below is flush against the card
-       edge (its AccordionContent inner div gets margin-left/right:24px,
-       which exactly cancels the +24px/-24px the split-content <section>
-       itself adds to bleed past the card — see the rules a few lines above).
-       Instead of nudging the percentages to approximate that gap, cancel it
-       structurally with the same 12px token as a negative margin, so this
-       row's own box is exactly as wide as the table's (both flush to the
-       card edge) — then the table's plain 54/28/18 ratio applies as-is,
-       with no px correction needed anywhere. */
+       The header row and the table share the same base box: the header
+       wrapper's bleed (-36px margin / 36px padding) leaves the trigger's
+       content box exactly at the card edge, and the table's AccordionContent
+       inner div (24px margins cancelling the split-content <section>'s
+       -24px bleed) lands on the same edge — so the row needs no margin or
+       offset of its own, and the plain 54/28/18 ratio applies as-is. */
     [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
-      margin-left: -12px;
-      margin-right: -12px;
       grid-template-columns: 54% 46%;
     }
     /* 46% here is 28% + 18% combined; splitting it 28fr/18fr keeps that
@@ -2270,8 +2265,13 @@
        full single-line width instead of being capped at the column's own
        width. Pin each of them to width:100% + min-width:0 so the title is
        hard-capped to the column and wraps within it instead of spilling
-       into "Cena, zł"; centered, matching the price/time headers beside it. */
-    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
+       into "Cena, zł"; left-aligned to the start of its own text zone (the
+       column right of the icon), same as the open Naprawy subcategory titles. */
+    /* The extra [data-top-level-service-header] raises specificity to a tie
+       with the shared OPEN-state ".zakres-header-text { width:430px; flex:none }"
+       rule further up (source order then lets this one win) — without it that
+       fixed 430px zone overflows the 54% column into "Cena, zł". */
+    [data-open-header-plate="true"][data-top-level-service-header="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
     [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] [data-open-header-hover-text="true"] {
       width: 100%;
       min-width: 0;
@@ -2282,16 +2282,17 @@
        title gets to clear the icon scaling 1.4x on open — that transform
        shifts a box without changing its layout width, so a capped/wrapped
        title would still visually land past the real column boundary. The
-       existing mr-4 (16px) gap on .zakres-icon-box already covers most of
-       the icon's growth (50px * 1.4 = 70px, +20px from its top-left origin),
-       so no extra shift is needed here; cap at a plain 100% of the column. */
+       icon box's own margin-right (icon-gap + icon-right-growth, see the
+       projektowanie-modeli .zakres-icon-box rule above) already starts the
+       text zone after the icon's scaled width, so the title just starts at
+       the left edge of that zone; cap at a plain 100% of the zone. */
     [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
       width: auto;
       max-width: 100%;
       min-width: 0;
       white-space: normal;
       overflow-wrap: break-word;
-      text-align: center;
+      text-align: left;
     }
 
     @keyframes diagnoza-shadow-in {
