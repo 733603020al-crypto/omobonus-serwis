@@ -59,8 +59,8 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_n_zl_nl_za_kazde_dodatkowe_n_min_pracy": { pl: "{0} zł\nza każde {1} min pracy", ru: "{0} zł\nза каждые {1} мин работы", uk: "{0} zł\nза кожні {1} хв роботи" },
 
   // wynajem-drukarek / drukarka-zastepcza (tariff limity stron + ceny)
-  "p_n_str_mies": { pl: "{0} str./mies.", ru: "{0} стр./мес.", uk: "{0} стор./міс." },
-  "p_n_str_mono_plus_n_str_kolor": { pl: "{0} str. (mono) / + {1} str. (kolor)", ru: "{0} (моно) / +{1} (цвет)", uk: "{0} (моно) / +{1} (колір)" },
+  "p_n_str_mies": { pl: "{0} (str./mies.)", ru: "{0} (стр./мес.)", uk: "{0} (стор./міс.)" },
+  "p_n_str_mono_plus_n_str_kolor": { pl: "{0} str. (mono) / + {1} str. (kolor)", ru: "{0} стр. (моно) / + {1} стр. (цвет)", uk: "{0} стор. (моно) / + {1} стор. (колір)" },
   "p_n_zl_mono_n_zl_kolor": { pl: "{0} zł (mono) / {1} zł (kolor)", ru: "{0} zł (моно) / {1} zł (цвет)", uk: "{0} zł (моно) / {1} zł (колір)" },
   "p_n_slash_n": { pl: "{0} / {1}", ru: "{0} / {1}", uk: "{0} / {1}" },
 }

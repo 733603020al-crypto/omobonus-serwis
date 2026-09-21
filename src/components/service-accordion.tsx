@@ -2867,7 +2867,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   case '__dz_price': return t.printPriceHeader
                                   case '__dz_scan': return t.wynajemTableLabels.scanning
                                   case '__dz_duplex': return t.wynajemTableLabels.duplex
-                                  case '__dz_speed': return `${t.wynajemTableLabels.printSpeedPrefix} (${t.wynajemUnits.strPerMin})`
+                                  case '__dz_speed': return t.wynajemTableLabels.printSpeedPrefix
                                   default: return label
                                 }
                               }
@@ -3034,6 +3034,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[1]}</div>
                                               </>
                                             )
+                                          } else if (rowIdx === 4) {
+                                            // Единица (стр./мин.) выводится у каждого значения — из названия строки убираем
+                                            labelContent = splitTrailingBracket(row.label)?.[0] ?? row.label
                                           }
                                         }
                                         const rowEl = (
@@ -3073,6 +3076,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                       )
                                                     }
                                                   }
+                                                  if (isA4Wynajem && rowIdx === 4 && value) return `${value} (${t.wynajemUnits.strPerMin}.)`
+                                                  if (isDzA4A3 && row.label === '__dz_speed' && value) return `${value} (${t.wynajemUnits.strPerMin}.)`
                                                   if (isDzA4A3) return translateDzRowValue(value ?? '')
                                                   return value
                                                 })()}
