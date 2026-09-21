@@ -1,22 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "Olena Golikova",
-      "author_url": "https://www.google.com/maps/contrib/111549386925395367368/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIIvMvQSiND4D190Ur1K1yuIwQeeWgo0PPeDp5iMfPTxcSACQ=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "miesiąc temu",
-      "text": "Świetny serwis! Wszystko jest wykonywane profesjonalnie, szybko i na wysokim poziomie. Współpracujemy od dawna i jesteśmy bardzo zadowoleni. Cieszymy się, że znaleźliśmy ludzi, którzy zawsze doskonale serwisują nasze drukarki. Firmie można zaufać i zawsze można na nich liczyć — nie zawodzą. Polecam!",
-      "time": 1780588238,
-      "translated": false,
-      "text_uk": "Чудовий сервіс! Все виконується професійно, швидко і на високому рівні. Співпрацюємо вже давно і дуже задоволені. Раді, що знайшли людей, які завжди відмінно обслуговують наші принтери. Компанії можна довіряти і на неї завжди можна покластися — не підводять. Рекомендую!",
-      "text_ru": "Отличный сервис! Всё выполняется профессионально, быстро и на высоком уровне. Сотрудничаем уже давно и очень довольны. Рады, что нашли людей, которые всегда отлично обслуживают наши принтеры. Компании можна доверять, на неё всегда можно положиться — не подводят. Рекомендую!",
-      "relative_time_uk": "місяць тому",
-      "relative_time_ru": "месяц назад"
-    },
-    {
       "author_name": "gg",
       "author_url": "https://www.google.com/maps/contrib/111428529099160674656/reviews",
       "language": "pl",
@@ -159,7 +143,23 @@
       "text_ru": "Потрясающий сервис! Настоятельно рекомендую. С моим ноутбуком что-то случилось, а у меня были важные документы и работа. Я принесла его вечером, когда мастерская уже почти закрывалась, но Макс, учитывая срочность ситуации, остался и быстро все починил, что меня очень выручило. Большое спасибо! Отличная работа и дружелюбный персонал, который поможет в любой ситуации. Еще раз спасибо!\n\nПотрясающий сервис! Настоятельно рекомендую. С моим ноутбуком что-то случилось, а у меня были важные документы и работа, которую мне нужно было завершить. Я принесла ноутбук вечером, когда мастерская уже почти закрывалась, но Макс, учитывая срочность ситуации, остался и быстро все починил, что меня очень выручило. Большое спасибо! Отличная работа и дружелюбный персонал, который поможет в любой ситуации. Еще раз большое спасибо!",
       "relative_time_uk": "3 місяці тому",
       "relative_time_ru": "3 месяца назад"
+    },
+    {
+      "author_name": "Gabrysia Pawełczak",
+      "author_url": "https://www.google.com/maps/contrib/115559142177355785172/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocK8rVKwKIExevqAfYt_DFQmO1XZlTkOfALau0MuejBaSkYRqA=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "2 miesiące temu",
+      "text": "Wspaniała obsługa i pełen profesjonalizm! Serwis szybko zdiagnozował problem z moim komputerem i sprawnie go naprawił. Dodatkowo pomogli mi z drukarką, która po naprawie działa bez zarzutu. Wszystko zostało dokładnie wyjaśnione, ceny są uczciwe, a kontakt z obsługą bardzo miły i rzeczowy. Zdecydowanie polecam ten serwis każdemu, kto szuka fachowej pomocy z komputerami i drukarkami. Na pewno skorzystam ponownie",
+      "time": 1782479051,
+      "translated": false,
+      "text_uk": "Відмінний сервіс та повний професіоналізм! Сервіс швидко діагностував проблему з моїм комп'ютером та швидко її виправив. Вони також допомогли мені з принтером, який тепер працює бездоганно після ремонту. Все було детально пояснено, ціни справедливі, а обслуговування клієнтів було дуже доброзичливим та професійним. Я дуже рекомендую цей сервіс усім, хто шукає професійної допомоги з комп'ютерами та принтерами. Я обов'язково скористаюся їхніми послугами знову.",
+      "text_ru": "Отличное обслуживание и полный профессионализм! Специалисты быстро диагностировали проблему с моим компьютером и оперативно её устранили. Они также помогли мне с принтером, который теперь работает безупречно после ремонта. Всё было подробно объяснено, цены приемлемые, а обслуживание клиентов очень дружелюбное и профессиональное. Я настоятельно рекомендую эту услугу всем, кто ищет профессиональную помощь с компьютерами и принтерами. Я обязательно воспользуюсь их услугами снова.",
+      "relative_time_uk": "2 місяці тому",
+      "relative_time_ru": "2 месяца назад"
     }
   ],
-  "updatedAt": "2026-09-14T08:12:39.966Z"
+  "updatedAt": "2026-09-21T08:18:26.530Z"
 }
