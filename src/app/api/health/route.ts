@@ -1,54 +1,21 @@
 import { NextResponse } from 'next/server'
 
 /**
- * Health check endpoint для проверки конфигурации SMTP
- * Используется для диагностики проблем с переменными окружения
- * 
+ * Health check endpoint для мониторинга.
+ *
  * Доступ: GET /api/health
- * 
- * Возвращает:
- * - status: 'ok' | 'error'
- * - smtp: информация о конфигурации SMTP (без паролей)
- * - environment: текущее окружение
+ *
+ * Возвращает только базовый статус: 'ok' (200) или 'error' (503, если SMTP не настроен).
+ * Имена переменных окружения, хосты и прочие детали конфигурации наружу не отдаются;
+ * что именно не настроено, видно в логах сервера (send-email пишет их при обращении формы).
  */
 export async function GET() {
   const requiredEnvVars = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
-  const envStatus: Record<string, { exists: boolean }> = {}
-  const missing: string[] = []
-
-  // Проверка наличия переменных окружения (без раскрытия значений)
-  for (const key of requiredEnvVars) {
-    const value = process.env[key]
-    const exists = !!value && value.trim() !== ''
-
-    envStatus[key] = { exists }
-
-    if (!exists) {
-      missing.push(key)
-    }
-  }
-
-  // Проверка опциональных переменных
-  const optionalEnvVars = ['SMTP_FROM', 'SMTP_TO']
-  for (const key of optionalEnvVars) {
-    const value = process.env[key]
-    envStatus[key] = {
-      exists: !!value && value.trim() !== '',
-    }
-  }
-
-  const isHealthy = missing.length === 0
-  const nodeEnv = process.env.NODE_ENV || 'unknown'
+  const isHealthy = requiredEnvVars.every(key => !!process.env[key]?.trim())
 
   return NextResponse.json(
     {
       status: isHealthy ? 'ok' : 'error',
-      environment: nodeEnv,
-      smtp: {
-        configured: isHealthy,
-        missing: missing.length > 0 ? missing : undefined,
-        variables: envStatus,
-      },
       timestamp: new Date().toISOString(),
     },
     {
@@ -59,6 +26,3 @@ export async function GET() {
     },
   )
 }
-
-
-
