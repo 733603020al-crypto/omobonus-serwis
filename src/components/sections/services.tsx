@@ -67,6 +67,11 @@ const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = 
   { edgeIdx: 5, orientIdx: 3, cornerIdx: 0 }, // 9 zastępcza:  edge-f + rotate180 + none
 ]
 
+// The card grid only needs these three fields. Keeping the prop this narrow
+// matters: Services is a client component, so everything passed in is
+// serialized into the page HTML (the full services dataset was ~145 KB there).
+export type ServiceCardData = Pick<ServiceData, 'slug' | 'title' | 'icon'>
+
 interface ServicesT {
   sectionLabel: string
   subheading: string
@@ -105,7 +110,7 @@ export function Services({
   bare = false,
   extraServices,
 }: {
-  servicesData?: ServiceData[]
+  servicesData?: ServiceCardData[]
   basePath?: string
   t?: ServicesT
   bare?: boolean
@@ -158,11 +163,11 @@ export function Services({
 
   const extraList = (extraServices ?? [])
     .map((slug) => services.find((service) => service.slug === slug))
-    .filter((service): service is ServiceData => Boolean(service))
+    .filter((service): service is ServiceCardData => Boolean(service))
 
   const canExpand = extraList.length > 0 && Boolean(d.viewAllLabel)
 
-  const renderCard = (service: ServiceData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
+  const renderCard = (service: ServiceCardData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
     return (
       <Link
         key={service.slug}

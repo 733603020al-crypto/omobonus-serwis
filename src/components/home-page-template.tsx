@@ -42,6 +42,9 @@ export function HomePageTemplate({
   cta,
   locale = 'pl',
 }: HomePageTemplateProps) {
+  // Services is a client component: pass only what the cards render so the
+  // full services dataset (prices, accordions) isn't serialized into the HTML.
+  const servicesCards = servicesData?.map(({ slug, title, icon }) => ({ slug, title, icon }))
   return (
     <>
       <Header locale={locale} />
@@ -63,7 +66,7 @@ export function HomePageTemplate({
           }}
         />
         <div className="relative z-10">
-          <Services servicesData={servicesData} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
+          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
 
           <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
 
