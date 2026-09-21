@@ -115,7 +115,6 @@ const applyPlotterSoftwareSubcategory = (sections: PricingSection[]) => {
   const softwareSubcategory = serviceSection?.subcategories?.find(sub => sub.id === 'plotter-software')
   if (!softwareSubcategory) return
   softwareSubcategory.title = 'Oprogramowanie i konfiguracja'
-  softwareSubcategory.icon = '/images/naprawy-oprogramowanie-v3.webp'
   softwareSubcategory.items = [
     {
       service: 'Aktualizacja firmware\n(błędy systemowe)',

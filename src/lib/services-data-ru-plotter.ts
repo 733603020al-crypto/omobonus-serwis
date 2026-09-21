@@ -65,7 +65,6 @@ export const plotterNaprawy: PricingSection = {
     {
       id: 'plotter-software',
       title: 'Программное обеспечение и настройка',
-      icon: '/images/naprawy-oprogramowanie-v3.webp',
       items: [
         { service: 'Обновление прошивки\n(системные ошибки)', },
         { service: 'Настройка драйверов / RIP\n(проблемы с форматом)', },

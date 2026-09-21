@@ -17,19 +17,6 @@ export const createNeedlePricingSections = (): PricingSection[] => {
   applyNeedleCleaningSection(sections)
 
   const naprawySection = sections.find(section => section.id === 'naprawy')
-  const subcategoryIcons: Record<string, string> = {
-    'naprawy-mechanizm': '/images/accordion-icon-iglowe-mechanizm-podawania.webp',
-    'naprawy-karetka': '/images/accordion-icon-iglowe-glowica.webp',
-    'naprawy-glowica': '/images/accordion-icon-iglowe-naped-karetki.webp',
-    'naprawy-tasma': '/images/accordion-icon-iglowe-tasma.webp',
-    'naprawy-elektronika': '/images/accordion-icon-iglowe-elektronika.webp',
-    'naprawy-software': '/images/naprawy-oprogramowanie-iglowe-v3.webp',
-    'naprawy-dodatkowe': '/images/accordion-icon-iglowe-uslugi-dodatkowe.webp',
-  }
-  naprawySection?.subcategories?.forEach(sub => {
-    const icon = subcategoryIcons[sub.id]
-    if (icon) sub.icon = icon
-  })
 
   const mechanizmSub = naprawySection?.subcategories?.find(sub => sub.id === 'naprawy-mechanizm')
   if (mechanizmSub) {

@@ -886,10 +886,12 @@
       transform-origin: center;
     }
 
-    /* OPEN header icon system (plate + table sections). Everything derives from
-       base width x scale: text starts after visual width + gap, no manual px.
+    /* OPEN header icon system (plate + table sections + open Naprawy
+       subcategories). Everything derives from base width x scale: text starts
+       after visual width + gap, no manual px.
        --icon-left-bias = share of the extra width the icon grows to the left. */
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"] {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"],
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) {
       --icon-base-width: 150px;
       --icon-base-height: 76px;
       --icon-scale: 1.4;
@@ -899,23 +901,27 @@
       --icon-extra-width: calc(var(--icon-visual-width) - var(--icon-base-width));
       --icon-right-growth: calc(var(--icon-extra-width) * (1 - var(--icon-left-bias)));
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       transform: scale(var(--icon-scale));
       transform-origin: calc(var(--icon-left-bias) * 100%) 0;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       translate: -17px 0;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-box {
       width: var(--icon-base-width);
       height: var(--icon-base-height);
       margin-right: calc(var(--icon-gap) + var(--icon-right-growth));
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-icon-media {
       width: 100%;
       height: 100%;
     }
-    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-top-level-service-header="true"][data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
       flex: 1 1 0;
       width: auto;
       min-width: 0;
@@ -977,10 +983,11 @@
       margin-right: 14px;
     }
 
-    /* Naprawy subcategories, open state: reserve extra layout space so the
-       title shrinks/wraps instead of overlapping the scaled-up icon (см.
-       fix(naprawy) 395d4c5) — must beat the closed-state 14px rule above. */
-    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] .zakres-icon-box {
+    /* wynajem-drukarek / drukarka-zastepcza open rows only (Naprawy
+       subcategories use the Diagnoza --icon-* system above): reserve extra
+       layout space so the title shrinks/wraps instead of overlapping the
+       scaled-up icon — must beat the closed-state 14px rule above. */
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"] .zakres-icon-box {
       margin-right: 76px !important;
     }
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"]) .zakres-icon-media {
@@ -1450,7 +1457,7 @@
       overflow: visible;
     }
 
-    [data-parchment-list-row="true"][data-state="open"] [data-subcategory-text] {
+    [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"] [data-subcategory-text] {
       flex: 1 1 auto !important;
       width: auto !important;
       min-width: 0;
@@ -1467,7 +1474,7 @@
       min-width: 0;
     }
 
-    .page-repair-accordion [data-parchment-list-row="true"] [data-subcategory-text="true"].zakres-header-text {
+    .page-repair-accordion [data-parchment-list-row="true"]:is([data-state="closed"], [data-wynajem-plain-row="true"]) [data-subcategory-text="true"].zakres-header-text {
       width: auto !important;
       max-width: none !important;
       flex: 1 1 auto !important;
@@ -1487,10 +1494,22 @@
       width: 100%;
     }
 
+    [data-parchment-list-row="true"] {
+      --naprawy-nested-inset: 17px;
+      --naprawy-info-border: 1px;
+    }
+
     [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"] {
-      padding-left: 17px !important;
-      padding-right: 17px !important;
+      padding-left: var(--naprawy-nested-inset) !important;
+      padding-right: var(--naprawy-nested-inset) !important;
       margin-bottom: 0;
+    }
+
+    /* Open header wrapper takes the table's own inset (content inset + info
+       container border), so header row == table row (left/right/width). */
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-state="open"]:not([data-faq-item="true"]):not([data-wynajem-plain-row="true"]) > div:not([data-slot="accordion-content"]) {
+      padding-left: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
+      padding-right: calc(var(--naprawy-nested-inset) + var(--naprawy-info-border));
     }
 
     [data-parchment-list-row="true"][data-state="open"] [data-nested-parchment="true"]::before {
@@ -1550,6 +1569,9 @@
       margin-left: 0;
       margin-right: 0;
       border-color: transparent !important;
+      /* same variable the open header wrapper adds to its inset (Tailwind md:border = 1px) */
+      border-left-width: var(--naprawy-info-border, 1px);
+      border-right-width: var(--naprawy-info-border, 1px);
     }
 
   }
@@ -2211,17 +2233,65 @@
       grid-template-columns: 50% 50%;
     }
 
-    /* Naprawy only: the table below sits inside [data-nested-parchment="true"],
-       which carries its own padding-left/right:17px (line ~1439) — the header
-       row above has no equivalent inset, so its 67%/33% grid was computed from
-       a ~34px wider box than the table's, landing "Cena, zł"/"Czas realizacji"
-       to the right of their columns even though the column ratios themselves
-       already matched. Mirroring the same 17px here (not touching the plate-role
-       [data-open-header-plate] header, which uses its own separate 24px inset
-       mechanism at line ~2003) realigns both sides to the same working width. */
-    [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
-      padding-left: 17px;
-      padding-right: 17px;
+    /* "Projektowanie i modelowanie 3D CAD" (druk-3d-na-zamowienie, section id
+       projektowanie-modeli): its own table uses a different <colgroup> than
+       every other plate-role table — 54% / 28% / 18%, not 67% / 16.5% / 16.5%
+       (see isDruk3DCustomSection's colgroup in service-accordion.tsx) — so the
+       shared 67%/33% grid above lands "Cena, zł" and "Czas realizacji" over
+       the wrong columns.
+       This row also sits inside headerWrapperClassName's own md:px-3 (12px
+       each side) padding, while the table below is flush against the card
+       edge (its AccordionContent inner div gets margin-left/right:24px,
+       which exactly cancels the +24px/-24px the split-content <section>
+       itself adds to bleed past the card — see the rules a few lines above).
+       Instead of nudging the percentages to approximate that gap, cancel it
+       structurally with the same 12px token as a negative margin, so this
+       row's own box is exactly as wide as the table's (both flush to the
+       card edge) — then the table's plain 54/28/18 ratio applies as-is,
+       with no px correction needed anywhere. */
+    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row {
+      margin-left: -12px;
+      margin-right: -12px;
+      grid-template-columns: 54% 46%;
+    }
+    /* 46% here is 28% + 18% combined; splitting it 28fr/18fr keeps that
+       exact ratio without restating it as new decimal percentages. */
+    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+      grid-template-columns: 28fr 18fr;
+    }
+
+    /* The title column above is narrower here (54%) than the shared 67%
+       every other plate-role section uses, and this section's title
+       ("Projektowanie i modelowanie 3D CAD") is long enough to overflow
+       past it instead of wrapping. Several ancestors in the flex chain
+       (zakres-header-text, and the "hidden md:block" title wrapper itself,
+       data-open-header-hover-text) default to content-based sizing
+       (flex: 0 1 auto / min-width: auto), which lets the title claim its
+       full single-line width instead of being capped at the column's own
+       width. Pin each of them to width:100% + min-width:0 so the title is
+       hard-capped to the column and wraps within it instead of spilling
+       into "Cena, zł"; centered, matching the price/time headers beside it. */
+    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text,
+    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] [data-open-header-hover-text="true"] {
+      width: 100%;
+      min-width: 0;
+      flex: 1 1 0%;
+    }
+    /* This title is excluded (service-accordion.tsx) from the shared
+       group-data-[state=open]:md:translate-x-[60px] every other plate-role
+       title gets to clear the icon scaling 1.4x on open — that transform
+       shifts a box without changing its layout width, so a capped/wrapped
+       title would still visually land past the real column boundary. The
+       existing mr-4 (16px) gap on .zakres-icon-box already covers most of
+       the icon's growth (50px * 1.4 = 70px, +20px from its top-left origin),
+       so no extra shift is needed here; cap at a plain 100% of the column. */
+    [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+      width: auto;
+      max-width: 100%;
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: break-word;
+      text-align: center;
     }
 
     @keyframes diagnoza-shadow-in {
@@ -2307,7 +2377,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"],
-    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"] > div:not([data-slot="accordion-content"]) {
       min-height: 82px;
       width: calc(100% + 32px);
       margin-left: -16px;
@@ -2588,6 +2658,13 @@
       overflow: hidden !important;
     }
 
+    .page-repair-accordion [data-parchment-list-row="true"][data-state="open"]:not([data-wynajem-plain-row="true"]) [data-subcategory-text="true"] .zakres-title-text {
+      text-align: left !important;
+      display: block !important;
+      -webkit-line-clamp: unset !important;
+      overflow: visible !important;
+    }
+
     /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns).
        3rd column was "auto" (content-width "Cena" label, pinned to the right edge by the
        1fr title column) while the mobile table below (service-accordion.tsx ~3062-3066)
@@ -2803,11 +2880,15 @@
       text-align: left;
     }
 
-    .service-typography-standard [data-parchment-list-row="true"][data-state="open"] .zakres-title-text,
+    .service-typography-standard [data-parchment-list-row="true"][data-state="open"][data-wynajem-plain-row="true"] .zakres-title-text,
     .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
     .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       text-align: center;
     }
+
+    /* Open Naprawy subcategory title (desktop) keeps text-align:left from the
+       rule above, same as open Diagnoza; only wynajem/drukarka-zastepcza
+       rows still center their open title. */
 
     /* wynajem-drukarek/akordeon-1: title stays left when open, matching
        Dojazd's open-header layout (icon + left-aligned title in col1). */

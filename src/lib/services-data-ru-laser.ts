@@ -23,7 +23,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-mechanizm',
       title: 'Механизм захвата бумаги, ролики, сепараторы, …',
-      icon: '/images/accordion-icon-laser-mechanizm-podawania.webp',
       items: [
         { service: 'Удаление застрявшей бумаги / посторонних предметов из тракта бумаги\n(скрепки, остатки бумаги, пыль, … — типичная причина повторных застреваний)', },
         { service: 'Чистка или замена ролика захвата и сепаратора\n(устраняет застревания, «захват нескольких листов сразу», проскальзывание бумаги)', },
@@ -35,7 +34,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-karetka',
       title: 'Модуль изображения (барабан, ремень переноса, …)',
-      icon: '/images/accordion-icon-laserowe-moduly-obrazu-utrwalania-v2.webp',
       items: [
         { service: 'Замена барабана изображения и лезвия очистки (cleaning blade)\n(drum / image unit). Сброс счётчика. Калибровка цветов / регистрации после замены модулей\n(устраняет повторяющиеся полосы и загрязнения на листе)', },
         { service: 'Замена ремня переноса или ролика переноса.\nКалибровка цветов / регистрации после замены модулей\n(устраняет цветные разводы, смещение цветов и загрязнение бумаги)', },
@@ -48,7 +46,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-fuser',
       title: 'Модуль закрепления (fuser)',
-      icon: '/images/accordion-icon-modul-utrwalania-fuser.webp',
       items: [
         { service: 'Регенерация / сервис узла закрепления (fuser)\n(чистка, замена плёнки / прижимного ролика, нагревательного элемента, терморезистора, предохранителя fuser\'а, шестерён, подшипников, втулок, смазка, тесты — устраняет размазывание тонера и сгибание бумаги)', },
       ],
@@ -56,7 +53,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-glowica',
       title: 'Оптика и лазер',
-      icon: '/images/accordion-icon-laser-optyka.webp',
       items: [
         { service: 'Чистка модуля лазера / зеркал сканера\n(устраняет бледные отпечатки, полосы, отсутствие чёрного — восстанавливает правильный контраст)', },
         { service: 'Замена модуля лазера (DC Controller / LSU)\n(решает полное отсутствие печати или сообщение «ошибка лазера»)', },
@@ -67,7 +63,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-elektronika',
       title: 'Электронные ремонты',
-      icon: '/images/accordion-icon-laser-elektronika.webp',
       items: [
         { service: 'Ремонт или замена разъёма или гнезда LAN/USB повреждённого / разболтанного\n(устраняет отсутствие обнаружения принтера компьютером / LAN)', },
         { service: 'Ремонт или замена блока питания (PSU / плата питания)\n(после аварии из-за перепада / скачка напряжения)', },
@@ -83,7 +78,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-software',
       title: 'Программное обеспечение и настройка',
-      icon: '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp',
       items: [
         { service: 'Установка драйверов и настройка в сети (маршрутизатор / Wi-Fi / LAN) (удалённо или локально)', },
         { service: 'Установка мобильных приложений (AirPrint / Mopria / приложения производителя) (печать со смартфона без кабелей)', },
@@ -104,7 +98,6 @@ export const laserNaprawy: PricingSection = {
     {
       id: 'naprawy-dodatkowe',
       title: 'Дополнительные услуги',
-      icon: '/images/accordion-icon-laserowe-dodatkowe-uslugi-v3.webp',
       items: [
         { service: 'Чистка пылесосом внутренних частей после рассыпания тонера (базовая чистка)', },
         { service: 'Чистка после «сильного загрязнения тонером»\n(полная деконтаминация и разборка всех компонентов принтера)', },

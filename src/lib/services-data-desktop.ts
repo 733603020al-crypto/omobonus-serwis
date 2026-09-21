@@ -155,7 +155,6 @@ const applyDesktopCoolingSubcategory = (sections: PricingSection[]) => {
   const coolingSubcategory = serviceSection?.subcategories?.[2]
   if (!coolingSubcategory) return
   coolingSubcategory.title = 'Układ chłodzenia i czystość'
-  coolingSubcategory.icon = '/images/naprawy-uklad-chlodzenia-v5.webp'
   coolingSubcategory.items = [
     {
       service:

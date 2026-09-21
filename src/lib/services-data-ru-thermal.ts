@@ -24,7 +24,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-mechanizm',
       title: 'Механизм подачи этикеток, ролики, направляющие',
       subtitle: 'застревает этикетка, не захватывает, подаёт криво или «теряет» пробелы',
-      icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp',
       items: [
         {
           service: 'Удаление застрявших этикеток / лайнера и посторонних предметов из тракта этикеток\nостатки этикеток, оторванный лайнер, пыль, мелкие элементы – типичная причина повторных застреваний',
@@ -47,7 +46,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-karetka',
       title: 'Термоголовка и прижимной ролик (platen)',
       subtitle: 'слабое качество печати, отсутствуют фрагменты отпечатка, плохо читаются штрих-коды',
-      icon: '/images/accordion-icon-termiczne-glowica-platen.webp',
       items: [
         {
           service: 'Чистка термоголовки и ролика под головкой (platen roller)\nвосстанавливает чёткость отпечатка, устраняет разрывы в линиях и загрязнения, вызывающие плохую читаемость штрих-кодов',
@@ -70,7 +68,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-glowica',
       title: 'Датчики носителя и калибровка этикеток',
       subtitle: 'принтер «не видит» этикетки, печатает вхолостую, останавливается с ошибкой носителя',
-      icon: '/images/accordion-icon-termiczne-czujniki.webp',
       items: [
         {
           service: 'Чистка датчиков этикеток (трансмиссионных / рефлексионных) и датчика ленты\nустраняет ошибки «label out» / «paper out» при установленном рулоне, ложное обнаружение конца этикеток или ленты',
@@ -93,7 +90,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-elektronika',
       title: 'Лента (ribbon) и механизм намотки',
       subtitle: 'рвёт ленту, ribbon сминается, загрязняет этикетки или вообще не перемещается',
-      icon: '/images/accordion-icon-termiczne-ribbon.webp',
       items: [
         {
           service: 'Корректировка проводки и правильной заправки ленты (ribbon)\nустраняет сминание ленты, смещение ribbon в сторону и загрязнение отпечатка из-за неправильной проводки ленты',
@@ -116,7 +112,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-skaner',
       title: 'Дополнительные модули: отклеиватель, намотчик, подаватели, резак',
       subtitle: 'принтер не отклеивает / не отрезает этикетки, плохо наматывает рулоны, застревает при аппликации',
-      icon: '/images/accordion-icon-termiczne-moduly.webp',
       items: [
         {
           service: 'Чистка и регулировка модуля отклеивания этикеток (peel-off)\nустраняет проблемы с оставанием этикетки на лайнере, разрывом при отклеивании и неравномерным выходом этикеток для ручного забора',
@@ -139,7 +134,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-software',
       title: 'Электроника, питание, панель управления, интерфейсы',
       subtitle: 'принтер не включается, зависает, показывает ошибки электроники или не соединяется с компьютером / сетью',
-      icon: '/images/accordion-icon-termiczne-elektronika.webp',
       items: [
         {
           service: 'Диагностика электронных неисправностей (блок питания, материнская плата, коммуникационные модули, панель управления – идентификация повреждённого компонента и предварительная оценка ремонта)',
@@ -162,7 +156,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-additional',
       title: 'Программное обеспечение, настройка и интеграции',
       subtitle: 'этикетки печатаются со смещением, в неправильном формате, с ошибочными данными или вообще не печатаются из программы',
-      icon: '/images/accordion-icon-termiczne-oprogramowanie-v2.webp',
       items: [
         {
           service: 'Установка и настройка драйверов принтера этикеток (Windows / macOS / Linux)\nрешает проблемы с отсутствием возможности печати, неправильным выбором порта, ошибочным форматом страницы и неполной поддержкой функций принтера',
@@ -185,7 +178,6 @@ export const thermalNaprawy: PricingSection = {
       id: 'naprawy-termiczne-uslugi',
       title: 'Дополнительные услуги и модернизация',
       subtitle: 'подготовка принтера к дальнейшей эксплуатации, перепродаже, минимизация простоев',
-      icon: '/images/accordion-icon-termiczne-uslugi-dodatkowe.webp',
       items: [
         {
           service: 'Технический осмотр и экспертиза состояния принтера этикеток\nоценка износа компонентов, указание рисков поломки, отчёт перед ремонтом или покупкой / продажей устройства',

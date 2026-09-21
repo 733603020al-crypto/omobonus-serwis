@@ -131,7 +131,6 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const boardSubcategory = serviceSection?.subcategories?.[1]
   if (boardSubcategory) {
     boardSubcategory.title = 'Płyta główna / zasilanie / podzespoły'
-    boardSubcategory.icon = '/images/naprawy-plyta-glowna-laptop-v6.webp'
     boardSubcategory.items = [
       {
         service: 'Wymiana płyty głównej (przekładka + konfiguracja)',

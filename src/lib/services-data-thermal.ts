@@ -36,7 +36,6 @@ const applyThermalMechanismSubcategory = (sections: PricingSection[]) => {
 
   mechanismSubcategory.title = 'Mechanizm podawania etykiet, rolki, prowadnice'
   mechanismSubcategory.subtitle = 'zacina etykiety, nie pobiera, wciąga krzywo lub „gubi” odstępy'
-  mechanismSubcategory.icon = '/images/accordion-icon-termiczne-mechanizm-podawania.webp'
   mechanismSubcategory.items = [
     {
       service:
@@ -77,7 +76,6 @@ const applyThermalHeadSubcategory = (sections: PricingSection[]) => {
   headSubcategory.title = 'Głowica drukująca i rolka dociskowa (platen)'
   headSubcategory.subtitle =
     'słaba jakość wydruku, brak fragmentów nadruku, słabo czytelne kody kreskowe'
-  headSubcategory.icon = '/images/accordion-icon-termiczne-glowica-platen.webp'
   headSubcategory.items = [
     {
       service:
@@ -116,7 +114,6 @@ const applyThermalSensorSubcategory = (sections: PricingSection[]) => {
   if (!sensorSubcategory) return
 
   sensorSubcategory.title = 'Czujniki mediów i kalibracja etykiet'
-  sensorSubcategory.icon = '/images/accordion-icon-termiczne-czujniki.webp'
   sensorSubcategory.subtitle =
     'drukarka „nie widzi” etykiet, drukuje w pustkę, zatrzymuje się z błędem nośnika'
   sensorSubcategory.items = [
@@ -157,7 +154,6 @@ const applyThermalRibbonSubcategory = (sections: PricingSection[]) => {
   if (!ribbonSubcategory) return
 
   ribbonSubcategory.title = 'Taśma barwiąca (ribbon) i mechanizm nawijania'
-  ribbonSubcategory.icon = '/images/accordion-icon-termiczne-ribbon.webp'
   ribbonSubcategory.subtitle =
     'zrywa taśmę, ribbon marszczy się, brudzi etykiety lub w ogóle się nie przesuwa'
   ribbonSubcategory.items = [
@@ -203,7 +199,6 @@ const applyThermalModulesSubcategory = (sections: PricingSection[]) => {
   // 'naprawy-tasma' i duplikowała domyślny tytuł "Taśma barwiąca...".
   modulesSubcategory.id = 'naprawy-skaner'
   modulesSubcategory.title = 'Moduły dodatkowe: odklejak, nawijak, podajniki, obcinarka'
-  modulesSubcategory.icon = '/images/accordion-icon-termiczne-moduly.webp'
   modulesSubcategory.subtitle =
     'drukarka nie odkleja / nie odcina etykiet, źle nawija rolki, zacina przy aplikacji'
   modulesSubcategory.items = [
@@ -244,7 +239,6 @@ const applyThermalElectronicsSubcategory = (sections: PricingSection[]) => {
   if (!electronicsSubcategory) return
 
   electronicsSubcategory.title = 'Elektronika, zasilanie, panel sterujący, interfejsy'
-  electronicsSubcategory.icon = '/images/accordion-icon-termiczne-elektronika.webp'
   electronicsSubcategory.subtitle =
     'drukarka nie włącza się, zawiesza się, pokazuje błędy elektroniki lub nie łączy się z komputerem / siecią'
   electronicsSubcategory.items = [
@@ -291,7 +285,6 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
   softwareSubcategory.title = 'Oprogramowanie, konfiguracja i integracje'
   softwareSubcategory.subtitle =
     'etykiety drukują się przesunięte, w złym formacie, z błędnymi danymi lub nie drukują się wcale z programu'
-  softwareSubcategory.icon = '/images/accordion-icon-termiczne-oprogramowanie-v2.webp'
   softwareSubcategory.items = [
     {
       service:
@@ -334,7 +327,6 @@ const addThermalExtraServicesSubcategory = (sections: PricingSection[]) => {
     id: 'naprawy-termiczne-uslugi',
     title: 'Usługi dodatkowe i modernizacje',
     subtitle: 'przygotowanie drukarki do dalszej eksploatacji, odsprzedaży, minimalizacja przestojów',
-    icon: '/images/accordion-icon-termiczne-uslugi-dodatkowe.webp',
     items: [
       {
         service:

@@ -16,7 +16,7 @@ export const wynajemAkordeon1: PricingSection = {
       id: 'drukarki-mono',
       title: 'Принтери A4 (моно)',
       items: [],
-      icon: '/images/A4_Drukarki_mono.webp',
+      icon: '/images/wynajem-a4-drukarki-mono-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-1.drukarki-mono.tier0'),
@@ -54,7 +54,7 @@ export const wynajemAkordeon1: PricingSection = {
       id: 'drukarki-kolor',
       title: 'Принтери A4 (моно+колір)',
       items: [],
-      icon: '/images/A4_Drukarki_kolor.webp',
+      icon: '/images/wynajem-a4-drukarki-kolor-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-1.drukarki-kolor.tier0'),
@@ -92,7 +92,7 @@ export const wynajemAkordeon1: PricingSection = {
       id: 'mfu-mono',
       title: 'МФУ A4 (моно)',
       items: [],
-      icon: '/images/A4_MFU_mono.webp',
+      icon: '/images/wynajem-a4-mfu-mono-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-1.mfu-mono.tier0'),
@@ -130,7 +130,7 @@ export const wynajemAkordeon1: PricingSection = {
       id: 'mfu-kolor',
       title: 'МФУ A4 (моно+колір)',
       items: [],
-      icon: '/images/A4_MFU_kolor.webp',
+      icon: '/images/wynajem-a4-mfu-kolor-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-1.mfu-kolor.tier0'),
@@ -177,7 +177,7 @@ export const wynajemAkordeon2: PricingSection = {
       id: 'a3-drukarki-mono',
       title: 'Принтери A3 (моно)',
       items: [],
-      icon: '/images/Drukarki_A3_A4_mono.webp',
+      icon: '/images/wynajem-a3-drukarki-mono-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-2.a3-drukarki-mono.tier0'),
@@ -215,7 +215,7 @@ export const wynajemAkordeon2: PricingSection = {
       id: 'a3-drukarki-kolor',
       title: 'Принтери A3 (моно+колір)',
       items: [],
-      icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
+      icon: '/images/wynajem-a3-drukarki-kolor-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-2.a3-drukarki-kolor.tier0'),
@@ -253,7 +253,7 @@ export const wynajemAkordeon2: PricingSection = {
       id: 'a3-mfu-mono',
       title: 'МФУ A3 (моно)',
       items: [],
-      icon: '/images/MFU_A3_A4_mono.webp',
+      icon: '/images/wynajem-a3-mfu-mono-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-2.a3-mfu-mono.tier0'),
@@ -291,7 +291,7 @@ export const wynajemAkordeon2: PricingSection = {
       id: 'a3-mfu-kolor',
       title: 'МФУ A3 (моно+колір)',
       items: [],
-      icon: '/images/MFU_A3_A4_mono_kolor.webp',
+      icon: '/images/wynajem-a3-mfu-kolor-v2.webp',
       priceTiers: [
         {
           label: label('akordeon-2.a3-mfu-kolor.tier0'),

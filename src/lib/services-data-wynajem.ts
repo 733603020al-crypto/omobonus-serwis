@@ -33,7 +33,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'drukarki-mono',
         title: 'Drukarki A4 (mono)',
         items: [],
-        icon: '/images/A4_Drukarki_mono.webp',
+        icon: '/images/wynajem-a4-drukarki-mono-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-1.drukarki-mono.tier0'),
@@ -71,7 +71,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'drukarki-kolor',
         title: 'Drukarki A4 (mono+kolor)',
         items: [],
-        icon: '/images/A4_Drukarki_kolor.webp',
+        icon: '/images/wynajem-a4-drukarki-kolor-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-1.drukarki-kolor.tier0'),
@@ -109,7 +109,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'mfu-mono',
         title: 'MFU A4 (mono)',
         items: [],
-        icon: '/images/A4_MFU_mono.webp',
+        icon: '/images/wynajem-a4-mfu-mono-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-1.mfu-mono.tier0'),
@@ -147,7 +147,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'mfu-kolor',
         title: 'MFU A4 (mono+kolor)',
         items: [],
-        icon: '/images/A4_MFU_kolor.webp',
+        icon: '/images/wynajem-a4-mfu-kolor-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-1.mfu-kolor.tier0'),
@@ -194,7 +194,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'a3-drukarki-mono',
         title: 'Drukarki A3 (mono)',
         items: [],
-        icon: '/images/Drukarki_A3_A4_mono.webp',
+        icon: '/images/wynajem-a3-drukarki-mono-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-2.a3-drukarki-mono.tier0'),
@@ -232,7 +232,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'a3-drukarki-kolor',
         title: 'Drukarki A3 (mono+kolor)',
         items: [],
-        icon: '/images/Drukarki_A3_A4_mono_kolor.webp',
+        icon: '/images/wynajem-a3-drukarki-kolor-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-2.a3-drukarki-kolor.tier0'),
@@ -270,7 +270,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'a3-mfu-mono',
         title: 'MFU A3 (mono)',
         items: [],
-        icon: '/images/MFU_A3_A4_mono.webp',
+        icon: '/images/wynajem-a3-mfu-mono-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-2.a3-mfu-mono.tier0'),
@@ -308,7 +308,7 @@ export const createWynajemPricingSections = (): PricingSection[] => {
         id: 'a3-mfu-kolor',
         title: 'MFU A3 (mono+kolor)',
         items: [],
-        icon: '/images/MFU_A3_A4_mono_kolor.webp',
+        icon: '/images/wynajem-a3-mfu-kolor-v2.webp',
         priceTiers: [
           {
             label: label('akordeon-2.a3-mfu-kolor.tier0'),

@@ -87,7 +87,7 @@ export function WynajemSubcategoryHeader({
                                           )}
                                         >
                                           <Image
-                                            src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
+                                            src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)}
                                             alt={subcategory.title}
                                             width={100}
                                             height={100}
@@ -542,7 +542,7 @@ export function WynajemSubcategoryHeader({
                                       "h-[60px] w-[60px]"
                                     )}>
                                       <Image
-                                        src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
+                                        src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)}
                                         alt={subcategory.title}
                                         width={100}
                                         height={100}

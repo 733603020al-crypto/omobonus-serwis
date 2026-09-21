@@ -56,7 +56,6 @@ export const printer3dNaprawy: PricingSection = {
     {
       id: '3d-software',
       title: 'Програмне забезпечення та налаштування',
-      icon: '/images/naprawy-oprogramowanie-v3.webp',
       items: [
         { service: 'Встановлення та налаштування прошивки (Marlin, Klipper тощо)\n(системні помилки, потреба в оновленні або зміні функцій)', },
         { service: 'Налаштування слайсера та профілів матеріалів\n(Cura, PrusaSlicer, Bambu Studio тощо)', },

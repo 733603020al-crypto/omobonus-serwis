@@ -7,7 +7,11 @@ const applyInkjetCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\n\nzakres usługi obejmuje:\n• czyszczenie zewnętrzne i wewnętrzne drukarki,\n• czyszczenie i konserwację karetki,\n• sprawdzenie głowicy,\n• czyszczenie rolek pobierania papieru,\n• kontrolę elementów mechanicznych,\n• czyszczenie czujników papieru,\n• czyszczenie stacji serwisowej,\n• udrożnienie układu tuszu,\n• czyszczenie pompy i pochłaniacza tuszu (bez wymiany absorbera zużytego tuszu);\n• test jakości wydruku.',
+        'PEŁNA KONSERWACJA\n\nzakres usługi obejmuje:\n• czyszczenie zewnętrzne i wewnętrzne drukarki;\n• czyszczenie i konserwacja karetki;\n• sprawdzenie głowicy i drożności układu tuszu;\n• czyszczenie rolek pobierania papieru i czujników;\n• kontrola elementów mechanicznych;\n• czyszczenie stacji serwisowej i pompy;\n• test jakości wydruku i prawidłowego działania drukarki.',
+    },
+    {
+      service:
+        'Wymiana / czyszczenie absorbera zużytego tuszu + reset licznika\n\nzakres usługi obejmuje:\n• demontaż elementów niezbędnych do uzyskania dostępu do absorbera;\n• wymianę lub dokładne oczyszczenie absorbera zużytego tuszu („pampersa”);\n• oczyszczenie komory absorbera z pozostałości tuszu;\n• kontrolę i oczyszczenie układu odprowadzania zużytego tuszu;\n• reset licznika zużytego tuszu / usunięcie blokady serwisowej;\n• ponowny montaż i test prawidłowego działania drukarki.',
     },
   ]
 }
@@ -22,7 +26,6 @@ const applyInkjetPaperFeedSubcategory = (sections: PricingSection[]) => {
 
   if (!paperSubcategory) return
 
-  paperSubcategory.icon = '/images/accordion-icon-atramentowe-mechanizm-podawania.webp'
   paperSubcategory.items = [
     {
       service:
@@ -53,7 +56,6 @@ const applyInkjetCarriageSubcategory = (sections: PricingSection[]) => {
 
   if (!carriageSubcategory) return
   carriageSubcategory.title = 'Karetka i napęd (pasek, enkoder)'
-  carriageSubcategory.icon = '/images/accordion-icon-atramentowe-karetka.webp'
 
   carriageSubcategory.items = [
     {
@@ -84,7 +86,6 @@ const applyInkjetHeadSubcategory = (sections: PricingSection[]) => {
 
   if (!headSubcategory) return
   headSubcategory.title = 'Głowica drukująca i układ tuszu'
-  headSubcategory.icon = '/images/accordion-icon-atramentowe-glowica.webp'
 
   headSubcategory.items = [
     {
@@ -120,7 +121,6 @@ const applyInkjetElectronicsSubcategory = (sections: PricingSection[]) => {
 
   if (!electronicsSubcategory) return
 
-  electronicsSubcategory.icon = '/images/accordion-icon-atramentowe-elektronika.webp'
   electronicsSubcategory.items = [
     {
       service:
@@ -213,7 +213,6 @@ const applyInkjetSoftwareSubcategory = (sections: PricingSection[]) => {
 
   if (!softwareSubcategory) return
 
-  softwareSubcategory.icon = '/images/accordion-icon-atramentowe-oprogramowanie-konfiguracja-v4.webp'
   softwareSubcategory.items = [
     {
       service:
@@ -282,7 +281,6 @@ const applyInkjetAdditionalSubcategory = (sections: PricingSection[]) => {
   if (!additionalSubcategory) return
 
   additionalSubcategory.title = 'Dodatkowe usługi'
-  additionalSubcategory.icon = '/images/accordion-icon-atramentowe-uslugi-dodatkowe-v3.webp'
   additionalSubcategory.items = [
     {
       service: 'Czyszczenie wnętrza po rozlaniu tuszu\npodstawowe czyszczenie',

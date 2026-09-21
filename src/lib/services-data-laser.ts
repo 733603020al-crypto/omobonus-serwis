@@ -26,7 +26,6 @@ const applyLaserPaperFeedSubcategory = (sections: PricingSection[]) => {
   if (!paperSubcategory) return
   paperSubcategory.title =
     'Mechanizm poboru papieru, rolki, separatory, …'
-  paperSubcategory.icon = '/images/accordion-icon-laser-mechanizm-podawania.webp'
   paperSubcategory.items = [
     {
       service:
@@ -62,7 +61,6 @@ const applyLaserOpticsSubcategory = (sections: PricingSection[]) => {
   if (!opticsSubcategory) return
 
   opticsSubcategory.title = 'Optyka i laser'
-  opticsSubcategory.icon = '/images/accordion-icon-laser-optyka.webp'
   opticsSubcategory.items = [
     {
       service:
@@ -134,7 +132,6 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
   if (!imagingSubcategory) return
   imagingSubcategory.title =
     'Moduł obrazu (bęben, pas transferowy, ...)'
-  imagingSubcategory.icon = '/images/accordion-icon-laserowe-moduly-obrazu-utrwalania-v2.webp'
   imagingSubcategory.items = [
     {
       service:
@@ -165,7 +162,6 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
   const fuserSubcategory: PricingSubcategory = {
     id: 'naprawy-fuser',
     title: 'Moduł utrwalania (fuser)',
-    icon: '/images/accordion-icon-modul-utrwalania-fuser.webp',
     items: [
       {
         service:
@@ -188,7 +184,6 @@ const applyLaserElectronicsSubcategory = (sections: PricingSection[]) => {
   )
   if (!electronicsSubcategory) return
   electronicsSubcategory.title = 'Naprawy elektroniczne'
-  electronicsSubcategory.icon = '/images/accordion-icon-laser-elektronika.webp'
   electronicsSubcategory.items = [
     {
       service:
@@ -234,7 +229,6 @@ const applyLaserSoftwareSubcategory = (sections: PricingSection[]) => {
     subcategory => subcategory.title === 'Oprogramowanie i konfiguracja'
   )
   if (!softwareSubcategory) return
-  softwareSubcategory.icon = '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp'
   softwareSubcategory.items = [
     {
       service:
@@ -302,7 +296,6 @@ const applyLaserAdditionalSubcategory = (sections: PricingSection[]) => {
   )
   if (!additionalSubcategory) return
   additionalSubcategory.title = 'Dodatkowe usługi'
-  additionalSubcategory.icon = '/images/accordion-icon-laserowe-dodatkowe-uslugi-v3.webp'
   additionalSubcategory.items = [
     {
       service:
