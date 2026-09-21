@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { ContactActionsSection } from '@/components/sections/contact-actions'
+import { withSocialMeta } from '@/lib/social-meta'
 
 const Contact = dynamic(() =>
   import('@/components/sections/contact').then(mod => mod.Contact)
 )
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocialMeta('pl', {
   title: 'Kontakt | Serwis komputerów, laptopów i drukarek',
   description: '✔ Serwis komputerów, laptopów, drukarek, ploterów, ... we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ✔  ☎ 793 759 262',
   alternates: {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
       'x-default': 'https://serwis.omobonus.com.pl/kontakt',
     },
   },
-}
+})
 
 export default function KontaktPage() {
   return (
