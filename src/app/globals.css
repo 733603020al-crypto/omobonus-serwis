@@ -94,12 +94,6 @@
     font-weight: 400;
   }
 
-  .font-table-header {
-    font-family: var(--font-cormorant), serif;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
   .font-table-accent {
     font-family: var(--font-cormorant), serif;
     font-weight: 700;
@@ -474,30 +468,6 @@
       ellipse at center,
       rgba(0, 0, 0, 0.32) 0%,
       rgba(0, 0, 0, 0.16) 40%,
-      rgba(0, 0, 0, 0) 72%
-    );
-    pointer-events: none;
-  }
-
-  /* Same vignette-darkening effect as .services-heading-text::before
-     (SERWIS I NAPRAWA), transferred 1:1 — applied to the row wrapper
-     (line + text + line) so it bleeds into the center of both lines. */
-  .services-cta-vignette {
-    position: relative;
-    z-index: 1;
-  }
-  .services-cta-vignette::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -26px;
-    bottom: -26px;
-    left: 15%;
-    right: 15%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0.36) 0%,
-      rgba(0, 0, 0, 0.20) 45%,
       rgba(0, 0, 0, 0) 72%
     );
     pointer-events: none;
@@ -3234,17 +3204,6 @@
     -moz-text-fill-color: #3a2e24 !important;
   }
 
-  /* Прозрачный фон для PhoneInput dropdown и кнопки с флагом */
-  .flag-dropdown,
-  .flag-dropdown.open,
-  .selected-flag,
-  .selected-flag:focus,
-  .selected-flag:hover,
-  .selected-flag:active {
-    background: transparent !important;
-    background-color: transparent !important;
-  }
-
   /* Фон выпадающего меню с текстурой бумаги */
   .country-list,
   .flag-dropdown .country-list,
@@ -3276,40 +3235,6 @@
   .country-list .country:hover,
   .country-list .country.highlight {
     background: rgba(58, 46, 36, 0.1) !important;
-  }
-
-  .modal-card-outer {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.50) 0%,
-        rgba(52, 36, 20, 0.85) 100%),
-      var(--bg-services-card);
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow:
-      0 6px 16px rgba(0, 0, 0, 0.5),
-      0 3px 8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 245, 200, 0.15),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  .modal-card-inner {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(58, 43, 23, 0.48) 0%,
-        rgba(52, 36, 20, 0.82) 100%),
-      var(--bg-services-card);
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.4),
-      0 2px 6px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 245, 200, 0.12),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.22);
   }
 
   @keyframes shake {
