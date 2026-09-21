@@ -12,6 +12,14 @@ const formatPhone = (phone: string): string => {
   return phone
 }
 
+const escapeHtml = (text: string): string =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
 export async function POST(request: NextRequest) {
   try {
     const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
@@ -30,6 +38,10 @@ export async function POST(request: NextRequest) {
 
     const phone = (formData.get('phone') as string) ?? ''
     const country = (formData.get('country') as string) || 'Nie podano'
+
+    if (phone.length > 50 || country.length > 100) {
+      return NextResponse.json({ success: false, error: 'Nieprawidłowe dane' }, { status: 400 })
+    }
 
     if (!phone || phone.replace(/\D/g, '').length < 7) {
       return NextResponse.json({ success: false, error: 'Nieprawidłowy numer telefonu' }, { status: 400 })
@@ -55,7 +67,7 @@ export async function POST(request: NextRequest) {
       to: toEmail,
       subject: 'Prośba o telefon',
       text: `Nowa prośba o telefon ze strony Kontakt.\nTelefon: ${formattedPhone}\nKraj: ${country}`,
-      html: `<p>Nowa prośba o telefon ze strony Kontakt.</p><p><strong>Telefon:</strong> ${formattedPhone}<br><strong>Kraj:</strong> ${country}</p>`,
+      html: `<p>Nowa prośba o telefon ze strony Kontakt.</p><p><strong>Telefon:</strong> ${escapeHtml(formattedPhone)}<br><strong>Kraj:</strong> ${escapeHtml(country)}</p>`,
     })
 
     return NextResponse.json({ success: true }, { status: 200 })

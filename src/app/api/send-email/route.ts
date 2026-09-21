@@ -3,15 +3,15 @@ import nodemailer from 'nodemailer'
 
 import { CONTACT_INFO } from '@/config/contacts'
 
-// ????????? ??? ?????????
+// Константы для валидации
 const MAX_FILE_SIZE_MB = 25
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024 // 25 MB
-const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024 // 50 MB ????? ?????? ???? ??????
+const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024 // 50 MB общий размер всех файлов
 
 const DEFAULT_TO = 'serwis@omobonus.com.pl'
 const DEFAULT_FROM = 'serwis@omobonus.com.pl'
 
-// ???? ?????? ??? ????????????????? ?????????
+// Типы ошибок для структурированной обработки
 type ErrorType =
   | 'MISSING_CONFIG'
   | 'SMTP_ERROR'
@@ -26,7 +26,7 @@ interface ApiError {
   code?: string
 }
 
-// ???????? ???????????? SMTP
+// Проверка конфигурации SMTP
 const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
   const missing: string[] = []
@@ -43,12 +43,12 @@ const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   }
 }
 
-// ???????? transporter SMTP
+// Создание transporter SMTP
 const createTransporter = (): nodemailer.Transporter | null => {
   const config = validateSmtpConfig()
 
   if (!config.valid) {
-    console.error('? SMTP ???????????? ????????. ???????????:', config.missing.join(', '))
+    console.error('❌ SMTP конфигурация неполная. Отсутствуют:', config.missing.join(', '))
     return null
   }
 
@@ -58,7 +58,7 @@ const createTransporter = (): nodemailer.Transporter | null => {
   const smtpPass = process.env.SMTP_PASS!
 
   if (isNaN(smtpPort) || smtpPort <= 0) {
-    console.error('? ???????? SMTP_PORT:', process.env.SMTP_PORT)
+    console.error('❌ Неверный SMTP_PORT:', process.env.SMTP_PORT)
     return null
   }
 
@@ -66,21 +66,21 @@ const createTransporter = (): nodemailer.Transporter | null => {
     return nodemailer.createTransport({
       host: smtpHost,
       port: smtpPort,
-      secure: smtpPort === 465, // true ??? ????? 465, false ??? ?????? (?????????? STARTTLS)
-      requireTLS: smtpPort !== 465, // ???????? STARTTLS ??? ?????? ????? 465
+      secure: smtpPort === 465, // true для порта 465, false для других (используем STARTTLS)
+      requireTLS: smtpPort !== 465, // Включаем STARTTLS для портов кроме 465
       auth: {
         user: smtpUser,
         pass: smtpPass,
       },
       tls: {
-        // ?? ??????? ???????? ??????????? ??? Zenbox
+        // Не требуем проверку сертификата для Zenbox
         rejectUnauthorized: false,
       },
-      connectionTimeout: 10000, // 10 ?????? ??????? ???????????
-      greetingTimeout: 10000, // 10 ?????? ??????? ???????????
+      connectionTimeout: 10000, // 10 секунд таймаут подключения
+      greetingTimeout: 10000, // 10 секунд таймаут приветствия
     })
   } catch (error) {
-    console.error('? ?????? ???????? SMTP transporter:', error)
+    console.error('❌ Ошибка создания SMTP transporter:', error)
     return null
   }
 }
@@ -195,7 +195,7 @@ const CLIENT_EMAIL_I18N: Record<EmailLocale, ClientEmailI18n> = {
   },
 }
 
-// ??????? ??? ??????????? ????????????? HTML
+// Функция для безопасного экранирования HTML
 const escapeHtml = (text: string | null | undefined): string => {
   if (!text) return ''
   return String(text)
@@ -206,13 +206,13 @@ const escapeHtml = (text: string | null | undefined): string => {
     .replace(/'/g, '&#039;')
 }
 
-// ??????? ??? ?????????????? ???????? (+48 778 786 796)
+// Функция для форматирования телефона (+48 778 786 796)
 const formatPhone = (phone: string | null | undefined): string => {
   if (!phone) return 'Nie podano'
-  // ??????? ??? ?????????? ??????? ????? +
+  // Убираем все символы кроме цифр и +
   let cleaned = phone.replace(/[^\d+]/g, '')
 
-  // ???? ?????????? ? +48, ??????????? ??? +48 XXX XXX XXX
+  // Если начинается с +48, форматируем как +48 XXX XXX XXX
   if (cleaned.startsWith('+48')) {
     const digits = cleaned.substring(3).replace(/\D/g, '')
     if (digits.length === 9) {
@@ -221,7 +221,7 @@ const formatPhone = (phone: string | null | undefined): string => {
     return phone
   }
 
-  // ???? ?????????? ? 48, ????????? +
+  // Если начинается с 48, добавляем +
   if (cleaned.startsWith('48')) {
     const digits = cleaned.substring(2).replace(/\D/g, '')
     if (digits.length === 9) {
@@ -232,14 +232,14 @@ const formatPhone = (phone: string | null | undefined): string => {
   return phone
 }
 
-// ????????? ?????? ?????? DDMMYY-XXX
+// Генерация номера заявки DDMMYY-XXX
 const generateTicketNumber = (): string => {
   const now = new Date()
   const day = String(now.getDate()).padStart(2, '0')
   const month = String(now.getMonth() + 1).padStart(2, '0')
   const year = String(now.getFullYear()).slice(-2)
 
-  // ?????????? ????????? 3 ????? timestamp ??? ????????????
+  // Используем последние 3 цифры timestamp для уникальности
   const timestamp = Date.now()
   const sequence = String(timestamp).slice(-3)
 
@@ -248,7 +248,7 @@ const generateTicketNumber = (): string => {
 
 
 
-// ????????? ??????? ??????
+// Валидация вложений
 const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError } => {
   let totalSize = 0
 
@@ -258,8 +258,8 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
         valid: false,
         error: {
           type: 'FILE_TOO_LARGE',
-          message: `???? "${file.name}" ??????? ???????. ???????????? ??????: ${MAX_FILE_SIZE_MB} MB`,
-          details: `?????? ?????: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
+          message: `Файл "${file.name}" слишком большой. Максимальный размер: ${MAX_FILE_SIZE_MB} MB`,
+          details: `Размер файла: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
         },
       }
     }
@@ -271,8 +271,8 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
       valid: false,
       error: {
         type: 'FILE_TOO_LARGE',
-        message: '????? ?????? ???? ?????? ????????? ?????',
-        details: `????? ??????: ${(totalSize / 1024 / 1024).toFixed(2)} MB, ?????: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
+        message: 'Общий размер всех файлов превышает лимит',
+        details: `Общий размер: ${(totalSize / 1024 / 1024).toFixed(2)} MB, лимит: ${MAX_TOTAL_SIZE_BYTES / 1024 / 1024} MB`,
       },
     }
   }
@@ -281,26 +281,26 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
 }
 
 export async function POST(request: NextRequest) {
-  console.log('?? ????? ??????? /api/send-email')
+  console.log('📩 Форма вызвала /api/send-email')
 
   try {
-    // ???????? ???????????? SMTP ? ??????
+    // Проверка конфигурации SMTP в начале
     const configCheck = validateSmtpConfig()
     if (!configCheck.valid) {
       const error: ApiError = {
         type: 'MISSING_CONFIG',
-        message: 'SMTP ???????????? ????????',
-        details: `??????????? ?????????? ?????????: ${configCheck.missing.join(', ')}`,
+        message: 'SMTP конфигурация неполная',
+        details: `Отсутствуют переменные окружения: ${configCheck.missing.join(', ')}`,
       }
 
-      console.error('?', error.message, error.details)
+      console.error('❌', error.message, error.details)
 
       return NextResponse.json(
         {
           success: false,
           error: error.message,
           errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : '????????? ????????? ???????',
+          details: process.env.NODE_ENV === 'development' ? error.details : 'Проверьте настройки сервера',
         },
         { status: 500 },
       )
@@ -332,6 +332,9 @@ export async function POST(request: NextRequest) {
     if (email && (email.length > 254 || !EMAIL_REGEX.test(email))) invalidFields.push('email')
     if (name.length > 200) invalidFields.push('name')
     if (address.length > 300) invalidFields.push('address')
+    if (phone.length > 50) invalidFields.push('phone')
+    if (deviceTypeRaw.length > 100) invalidFields.push('deviceType')
+    if (deviceModelRaw.length > 200) invalidFields.push('deviceModel')
     if (problemDescription.length > 5000) invalidFields.push('problemDescription')
 
     if (invalidFields.length > 0) {
@@ -354,16 +357,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // ????????? ? ????????? ??????
+    // Получаем файлы из формы
     const attachmentFiles = formData
       .getAll('attachments')
       .filter(item => item instanceof File) as File[]
 
-    // ????????? ??????? ??????
+    // Валидация файлов
     if (attachmentFiles.length > 0) {
       const validation = validateAttachments(attachmentFiles)
       if (!validation.valid && validation.error) {
-        console.error('? ?????? ????????? ??????:', validation.error)
+        console.error('❌ Ошибка валидации файлов:', validation.error)
         return NextResponse.json(
           {
             success: false,
@@ -376,7 +379,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // ??????????? ?????? ? ??????
+    // Конвертируем файлы в буферы
     const attachments =
       attachmentFiles.length > 0
         ? await Promise.all(
@@ -393,7 +396,7 @@ export async function POST(request: NextRequest) {
 
 
 
-    // HTML-?????? ?????? ??? ???????
+    // HTML-шаблон письма для сервиса
     const emailHtml = `
 <!DOCTYPE html>
 <html lang="pl">
@@ -513,7 +516,7 @@ export async function POST(request: NextRequest) {
 </html>
     `.trim()
 
-    // ????????? ?????? ??? ?????????????
+    // Формируем HTML письма для сервиса
     const emailContent = `
 Nowe zgłoszenie serwisowe
 Numer zgłoszenia: ${ticketNumber}
@@ -527,7 +530,7 @@ Model urządzenia: ${deviceModel}
 Opis problemu: ${problemDescription}
     `.trim()
 
-    // ???????? transporter SMTP
+    // Создание transporter SMTP
     const transporter = createTransporter()
 
     if (!transporter) {
@@ -537,7 +540,7 @@ Opis problemu: ${problemDescription}
         details: 'Sprawdź konfigurację SMTP',
       }
 
-      console.error('?', error.message)
+      console.error('❌', error.message)
 
       return NextResponse.json(
         {
@@ -553,12 +556,12 @@ Opis problemu: ${problemDescription}
     const fromEmail = process.env.SMTP_FROM || DEFAULT_FROM
     const toEmail = (process.env.SMTP_TO || DEFAULT_TO).split(',').map(value => value.trim())
 
-    console.log('?? ???????? ?????? ????? SMTP Zenbox...')
-    console.log('?? From:', fromEmail)
-    console.log('?? To:', toEmail)
-    console.log('?? Subject ticket:', ticketNumber)
+    console.log('📤 Отправка письма через SMTP Zenbox...')
+    console.log('📧 From:', fromEmail)
+    console.log('📧 To:', toEmail)
+    console.log('📧 Subject ticket:', ticketNumber)
 
-    // ?????????? ???????? ??? nodemailer
+    // Подготовка вложений для nodemailer
     const nodemailerAttachments = attachments
       ? attachments.map(att => ({
         filename: att.filename,
@@ -566,21 +569,21 @@ Opis problemu: ${problemDescription}
       }))
       : []
 
-    // ???????? ?????? ???????
+    // Отправка письма сервису
     const info = await transporter.sendMail({
       from: fromEmail,
       to: toEmail,
-      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${escapeHtml(name) || 'anonim'}`,
+      subject: `[${ticketNumber}] Nowe zgłoszenie serwisowe od ${name.replace(/[\r\n]+/g, ' ').trim() || 'anonim'}`,
       html: emailHtml,
       text: emailContent,
       attachments: nodemailerAttachments,
     })
 
-    console.log('? ?????? ??????? ?????????? ???????!')
-    console.log('?? Message ID:', info.messageId)
-    console.log('?? Response:', info.response)
+    console.log('✅ Письмо сервису отправлено успешно!')
+    console.log('📧 Message ID:', info.messageId)
+    console.log('📧 Response:', info.response)
 
-    // ???????? ?????? ??????? (???? email ??????)
+    // Отправка письма клиенту (если email указан)
     if (email && email.trim()) {
       try {
         const i18n = CLIENT_EMAIL_I18N[emailLocale]
@@ -781,53 +784,51 @@ ${i18n.footerNote(currentYear)}
           text: clientEmailContent,
         })
 
-        console.log('? ?????? ??????? ?????????? ???????!')
+        console.log('✅ Письмо клиенту отправлено успешно!')
       } catch (clientError: any) {
-        // ?? ????????? ???????? ???????? ??? ?????? ???????? ???????
-        console.error('?? ?????? ??? ???????? ?????? ??????? (?? ????????? ???????? ????????):', clientError)
-        console.error('?? ?????? ?????? ???????:', {
+        // Не прерываем основную отправку при ошибке отправки клиенту
+        console.error('⚠️ Ошибка при отправке письма клиенту (не прерываем основную отправку):', clientError)
+        console.error('⚠️ Детали ошибки клиента:', {
           message: clientError?.message,
           code: clientError?.code,
         })
       }
     } else {
-      console.log('?? Email ??????? ?? ??????, ?????????? ???????? ?????????????')
+      console.log('ℹ️ Email клиента не указан, пропускаем отправку подтверждения')
     }
 
     return NextResponse.json(
       {
         success: true,
-        messageId: info.messageId,
-        response: info.response,
       },
       { status: 200 },
     )
   } catch (error: any) {
-    console.error('? ?????? ??? ???????? ?????? ????? SMTP Zenbox:', error)
+    console.error('❌ Ошибка при отправке письма через SMTP Zenbox:', error)
 
     const errorDetails: ApiError = {
       type: 'SMTP_ERROR',
-      message: '?? ??????? ????????? ??????',
+      message: 'Не удалось отправить письмо',
       code: error?.code,
       details: error?.message,
     }
 
-    // ?????????????? ??????????? ??? SMTP ??????
+    // Дополнительная диагностика для SMTP ошибок
     if (error?.response) {
-      console.error('? SMTP Response:', error.response)
+      console.error('❌ SMTP Response:', error.response)
       errorDetails.details = error.response
     }
     if (error?.command) {
-      console.error('? SMTP Command:', error.command)
+      console.error('❌ SMTP Command:', error.command)
     }
 
-    // ??????????? ???? ??????
+    // Определяем тип ошибки
     if (error?.code === 'ETIMEDOUT' || error?.code === 'ECONNREFUSED') {
       errorDetails.type = 'SMTP_ERROR'
-      errorDetails.message = '?? ??????? ???????????? ? SMTP ???????'
+      errorDetails.message = 'Не удалось подключиться к SMTP серверу'
     } else if (error?.code === 'EAUTH') {
       errorDetails.type = 'SMTP_ERROR'
-      errorDetails.message = '?????? ?????????????? SMTP'
+      errorDetails.message = 'Ошибка аутентификации SMTP'
     }
 
     return NextResponse.json(
