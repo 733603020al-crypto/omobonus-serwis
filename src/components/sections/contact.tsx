@@ -264,7 +264,6 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   }, [errors])
 
   const onSubmit = async (data: FormValues) => {
-    console.log('🚀 Formularz został przesłany')
     setIsSubmitting(true)
     try {
       const formData = new FormData()
@@ -279,15 +278,12 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
         formData.append('attachments', preview.file)
       })
 
-      console.log('📡 Wysyłanie żądania do /api/send-email...')
       const response = await fetch('/api/send-email', {
         method: 'POST',
         body: formData,
       })
 
-      console.log('📥 Odpowiedź z serwera:', response.status, response.statusText)
       const responseData = await response.json()
-      console.log('📦 Dane odpowiedzi:', responseData)
 
       if (!response.ok) {
         // Структурированная обработка ошибок
@@ -317,7 +313,6 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
         throw new Error(errorMessage)
       }
 
-      console.log('✅ Formularz został wysłany pomyślnie!')
 
       pushFormSubmitToDataLayer('long_form', data.phone)
       setShowSuccessModal(true)
