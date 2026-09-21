@@ -3730,3 +3730,21 @@
   }
 }
 
+
+/* Mobile: open header of "Projektowanie i modelowanie 3D CAD" (druk-3d-na-zamowienie).
+   The title sits in the narrow gap between the scaled icon and "Cena" (~80px at 390px),
+   so the shared 2-line clamp cut it off ("...") or let it run under "Cena". Here the
+   title wraps in full inside that gap (mid-word only when a word is wider than it) and
+   the header grows in height instead. Icon, its 46px scale clearance and "Cena" are untouched. */
+@media (max-width: 767px) {
+  [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] .zakres-header-text {
+    min-width: 0;
+  }
+  [data-open-header-plate="true"][data-section-id="projektowanie-modeli"] [data-slot="accordion-trigger"][data-state="open"] [data-open-header-hover-text="true"] .zakres-title-text {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}

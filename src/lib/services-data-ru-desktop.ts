@@ -18,7 +18,7 @@ export const desktopNaprawy: PricingSection = {
   title: 'Ремонт и сервисные услуги (по необходимости)',
   subcategories: [
     {
-      id: 'naprawy-mechanizm',
+      id: 'naprawy-oprogramowanie',
       title: 'Программное обеспечение',
       items: [
         { service: 'Установка Windows/Linux с обновлениями и драйверами (без сохранения данных) (систему Windows устанавливаем с лицензией клиента. При её отсутствии помогаем приобрести соответствующую лицензию)', },
@@ -43,7 +43,7 @@ export const desktopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-plyta-glowna',
       title: 'Материнская плата / питание / компоненты',
       items: [
         { service: 'Замена процессора', },
@@ -64,7 +64,7 @@ export const desktopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-chlodzenie',
       title: 'Система охлаждения и чистка',
       items: [
         { service: 'Диагностика системы охлаждения (измерение температур до/после чистки)', },
@@ -73,7 +73,7 @@ export const desktopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-tasma',
+      id: 'naprawy-dyski-dane',
       title: 'Диски и данные',
       items: [
         { service: 'Диагностика диска + SMART / тест поверхности', },
@@ -84,7 +84,7 @@ export const desktopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-elektronika',
+      id: 'naprawy-odzyskiwanie-danych',
       title: 'Восстановление / удаление данных',
       items: [
         { service: 'Оценка возможности восстановления данных с повреждённого носителя', },

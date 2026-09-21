@@ -1882,7 +1882,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col",
                                       isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                                     )}>
-                                      {section.title}
+                                      {section.mobileTitle ?? section.title}
                                     </TitleTag>
                                   )
                                   const footerNode = hasWynajemA3Footer && (

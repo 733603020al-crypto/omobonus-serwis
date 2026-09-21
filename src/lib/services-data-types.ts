@@ -32,6 +32,7 @@ export interface PricingSubcategory {
 export interface PricingSection {
   id: string
   title: string
+  mobileTitle?: string // Krótsza nazwa nagłówka sekcji tylko na mobile (zamiast title)
   icon?: string
   status?: string // np. "GRATIS", "od 50 zł"
   items: PricingItem[]

@@ -43,7 +43,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-glowica-platen',
       title: 'Термоголовка и прижимной ролик (platen)',
       subtitle: 'слабое качество печати, отсутствуют фрагменты отпечатка, плохо читаются штрих-коды',
       items: [
@@ -65,7 +65,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-czujniki-kalibracja',
       title: 'Датчики носителя и калибровка этикеток',
       subtitle: 'принтер «не видит» этикетки, печатает вхолостую, останавливается с ошибкой носителя',
       items: [
@@ -87,7 +87,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-elektronika',
+      id: 'naprawy-tasma-ribbon',
       title: 'Лента (ribbon) и механизм намотки',
       subtitle: 'рвёт ленту, ribbon сминается, загрязняет этикетки или вообще не перемещается',
       items: [
@@ -109,7 +109,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-skaner',
+      id: 'naprawy-moduly-dodatkowe',
       title: 'Дополнительные модули: отклеиватель, намотчик, подаватели, резак',
       subtitle: 'принтер не отклеивает / не отрезает этикетки, плохо наматывает рулоны, застревает при аппликации',
       items: [
@@ -131,7 +131,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-software',
+      id: 'naprawy-elektronika-zasilanie',
       title: 'Электроника, питание, панель управления, интерфейсы',
       subtitle: 'принтер не включается, зависает, показывает ошибки электроники или не соединяется с компьютером / сетью',
       items: [
@@ -153,7 +153,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-additional',
+      id: 'naprawy-oprogramowanie',
       title: 'Программное обеспечение, настройка и интеграции',
       subtitle: 'этикетки печатаются со смещением, в неправильном формате, с ошибочными данными или вообще не печатаются из программы',
       items: [

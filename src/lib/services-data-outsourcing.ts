@@ -27,6 +27,7 @@ const updateNaprawyKaretkaForOutsourcing = (sections: PricingSection[]) => {
   if (!karetkaSubcategory) return
 
   karetkaSubcategory.title = 'Naprawy sprzętu komputerowego (na miejscu u Klienta)'
+  karetkaSubcategory.id = 'naprawy-sprzet-na-miejscu'
   karetkaSubcategory.items = [
     {
       service: 'Wymiana zasilacza / dysku / RAM u Klienta\n(wymiana uszkodzonych lub rozbudowa podzespołów bezpośrednio w siedzibie firmy)',
@@ -57,6 +58,7 @@ const updateNaprawyGlowicaForOutsourcing = (sections: PricingSection[]) => {
   if (!glowicaSubcategory) return
 
   glowicaSubcategory.title = 'Konfiguracja i sieć biurowa'
+  glowicaSubcategory.id = 'naprawy-siec-konfiguracja'
   glowicaSubcategory.items = [
     {
       service: 'Diagnostyka i konfiguracja sieci LAN / Wi-Fi\n(analiza połączeń, usuwanie błędów komunikacji, optymalizacja ustawień sieci firmowej)',
@@ -87,6 +89,7 @@ const updateNaprawyTasmaForOutsourcing = (sections: PricingSection[]) => {
   if (!tasmaSubcategory) return
 
   tasmaSubcategory.title = 'Bezpieczeństwo i kopie zapasowe'
+  tasmaSubcategory.id = 'naprawy-bezpieczenstwo-backup'
   tasmaSubcategory.items = [
     {
       service: 'Usuwanie wirusów, trojanów, adware\n(czyszczenie systemu z oprogramowania szkodliwego, przywrócenie stabilności i wydajności)',
@@ -133,8 +136,8 @@ const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
   const existingAudyt = naprawySection.subcategories.find(sub => sub.id === 'naprawy-audyt')
   if (existingAudyt) return
 
-  // Находим индекс подкатегории "naprawy-tasma" (Bezpieczeństwo i kopie zapasowe)
-  const tasmaIndex = naprawySection.subcategories.findIndex(sub => sub.id === 'naprawy-tasma')
+  // Находим индекс подкатегории "naprawy-bezpieczenstwo-backup" (Bezpieczeństwo i kopie zapasowe)
+  const tasmaIndex = naprawySection.subcategories.findIndex(sub => sub.id === 'naprawy-bezpieczenstwo-backup')
 
   // Создаем новую подкатегорию
   const audytSubcategory: PricingSubcategory = {
@@ -159,7 +162,7 @@ const addAudytSubcategoryForOutsourcing = (sections: PricingSection[]) => {
     ],
   }
 
-  // Вставляем новую подкатегорию после "naprawy-tasma"
+  // Вставляем новую подкатегорию после "naprawy-bezpieczenstwo-backup"
   if (tasmaIndex !== -1) {
     naprawySection.subcategories.splice(tasmaIndex + 1, 0, audytSubcategory)
   } else {
@@ -176,6 +179,7 @@ const updateNaprawyMechanizmForOutsourcing = (sections: PricingSection[]) => {
   if (!mechanizmSubcategory) return
 
   mechanizmSubcategory.title = 'Serwis ogólny (praca serwisanta u Klienta)'
+  mechanizmSubcategory.id = 'naprawy-serwis-ogolny'
   mechanizmSubcategory.items = [
     {
       service: 'Wizyta serwisanta u Klienta\n(pierwsza godzina pracy – diagnostyka i usunięcie drobnych usterek bezpośrednio w siedzibie Klienta)',

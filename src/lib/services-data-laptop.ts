@@ -65,6 +65,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const softwareSubcategory = serviceSection?.subcategories?.[0]
   if (softwareSubcategory) {
     softwareSubcategory.title = 'Oprogramowanie'
+    softwareSubcategory.id = 'naprawy-oprogramowanie'
     softwareSubcategory.items = [
       {
         service:
@@ -131,6 +132,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const boardSubcategory = serviceSection?.subcategories?.[1]
   if (boardSubcategory) {
     boardSubcategory.title = 'Płyta główna / zasilanie / podzespoły'
+    boardSubcategory.id = 'naprawy-plyta-glowna'
     boardSubcategory.items = [
       {
         service: 'Wymiana płyty głównej (przekładka + konfiguracja)',
@@ -177,6 +179,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const coolingSubcategory = serviceSection?.subcategories?.[2]
   if (coolingSubcategory) {
     coolingSubcategory.title = 'Układ chłodzenia i czystość'
+    coolingSubcategory.id = 'naprawy-chlodzenie'
     coolingSubcategory.items = [
       {
         service: 'Diagnostyka układu chłodzenia (pomiar temperatur przed/po czyszczeniu)',
@@ -195,6 +198,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const disksSubcategory = serviceSection?.subcategories?.[3]
   if (disksSubcategory) {
     disksSubcategory.title = 'Dyski i dane'
+    disksSubcategory.id = 'naprawy-dyski-dane'
     disksSubcategory.items = [
       {
         service: 'Diagnoza dysku + SMART / test powierzchni',
@@ -216,6 +220,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const recoverySubcategory = serviceSection?.subcategories?.[4]
   if (recoverySubcategory) {
     recoverySubcategory.title = 'Odzyskanie / usuwanie danych'
+    recoverySubcategory.id = 'naprawy-odzyskiwanie-danych'
     recoverySubcategory.items = getRecoveryItems().map(item => ({
       ...item,
     }))
@@ -223,6 +228,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const screenSubcategory = serviceSection?.subcategories?.[5]
   if (screenSubcategory) {
     screenSubcategory.title = 'Ekran i obudowa'
+    screenSubcategory.id = 'naprawy-ekran-obudowa'
     screenSubcategory.items = [
       {
         service: 'Wymiana uszkodzonej matrycy LCD/LED (standard, bez klejenia)',
@@ -262,6 +268,7 @@ export const createLaptopPricingSections = (): PricingSection[] => {
   const keyboardSubcategory = serviceSection?.subcategories?.[6]
   if (keyboardSubcategory) {
     keyboardSubcategory.title = 'Klawiatura / touchpad'
+    keyboardSubcategory.id = 'naprawy-klawiatura-touchpad'
     keyboardSubcategory.items = [
       {
         service: 'Czyszczenie klawiatury + dezynfekcja (bez rozkręcania / rozbierania)',

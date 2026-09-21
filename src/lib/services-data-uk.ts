@@ -205,6 +205,7 @@ export const servicesUk: ServiceData[] = [
       {
         id: 'projektowanie-modeli',
         title: 'Проєктування і 3D CAD-моделювання',
+        mobileTitle: 'Проєктування 3D CAD',
         items: [
           { service: 'Попередня оцінка проєкту\nперевірка можливості виконання та обсягу робіт', },
           { service: 'Невелика зміна файлу STL\nзміна розміру, отвору, виправлення або дрібне коригування моделі', },

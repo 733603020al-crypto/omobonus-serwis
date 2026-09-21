@@ -31,5 +31,11 @@ export const createNeedlePricingSections = (): PricingSection[] => {
     )
   }
 
+  const karetkaSub = naprawySection?.subcategories?.find(sub => sub.id === 'naprawy-karetka')
+  if (karetkaSub) karetkaSub.id = 'naprawy-glowica-matrycowa'
+
+  const glowicaSub = naprawySection?.subcategories?.find(sub => sub.id === 'naprawy-glowica')
+  if (glowicaSub) glowicaSub.id = 'naprawy-naped-kartridza'
+
   return sections
 }

@@ -21,6 +21,7 @@ const applyDesktopSoftwareSubcategory = (sections: PricingSection[]) => {
   const softwareSubcategory = serviceSection?.subcategories?.[0]
   if (!softwareSubcategory) return
   softwareSubcategory.title = 'Oprogramowanie'
+  softwareSubcategory.id = 'naprawy-oprogramowanie'
   softwareSubcategory.items = [
     {
       service:
@@ -94,6 +95,7 @@ const applyDesktopHardwareSubcategory = (sections: PricingSection[]) => {
   const hardwareSubcategory = serviceSection?.subcategories?.[1]
   if (!hardwareSubcategory) return
   hardwareSubcategory.title = 'Płyta główna / zasilanie / podzespoły'
+  hardwareSubcategory.id = 'naprawy-plyta-glowna'
   hardwareSubcategory.items = [
     {
       service: 'Wymiana procesora',
@@ -155,6 +157,7 @@ const applyDesktopCoolingSubcategory = (sections: PricingSection[]) => {
   const coolingSubcategory = serviceSection?.subcategories?.[2]
   if (!coolingSubcategory) return
   coolingSubcategory.title = 'Układ chłodzenia i czystość'
+  coolingSubcategory.id = 'naprawy-chlodzenie'
   coolingSubcategory.items = [
     {
       service:
@@ -174,6 +177,7 @@ const applyDesktopStorageSubcategory = (sections: PricingSection[]) => {
   const storageSubcategory = serviceSection?.subcategories?.[3]
   if (!storageSubcategory) return
   storageSubcategory.title = 'Dyski i dane'
+  storageSubcategory.id = 'naprawy-dyski-dane'
   storageSubcategory.items = [
     {
       service: 'Diagnoza dysku + SMART / test powierzchni',
@@ -199,6 +203,7 @@ const applyDesktopRecoverySubcategory = (sections: PricingSection[]) => {
   const recoverySubcategory = serviceSection?.subcategories?.[4]
   if (!recoverySubcategory) return
   recoverySubcategory.title = 'Odzyskanie / usuwanie danych'
+  recoverySubcategory.id = 'naprawy-odzyskiwanie-danych'
   recoverySubcategory.items = getRecoveryItems()
 }
 

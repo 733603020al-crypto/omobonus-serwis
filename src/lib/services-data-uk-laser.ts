@@ -48,7 +48,7 @@ export const laserNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-modul-obrazu',
       title: 'Модуль зображення (барабан, ремінь перенесення, …)',
       items: [
         { service: 'Заміна барабана зображення та леза очищення (cleaning blade)\n(drum / image unit). Скидання лічильника. Калібрування кольорів / реєстрації після заміни модулів\n(усуває повторювані смуги та забруднення на аркуші)', },
@@ -67,7 +67,7 @@ export const laserNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-optyka-laser',
       title: 'Оптика та лазер',
       items: [
         { service: 'Чищення модуля лазера / дзеркал сканера\n(усуває бліді відбитки, смуги, відсутність чорного — відновлює правильний контраст)', },

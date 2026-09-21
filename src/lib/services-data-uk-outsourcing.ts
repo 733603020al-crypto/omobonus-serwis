@@ -22,7 +22,7 @@ export const outsourcingNaprawy: PricingSection = {
   footer: '«Комп\'ютерна швидка допомога» — сервісні втручання поза абонементом',
   subcategories: [
     {
-      id: 'naprawy-mechanizm',
+      id: 'naprawy-serwis-ogolny',
       title: 'Загальний сервіс (робота фахівця у Клієнта)',
       items: [
         { service: 'Виїзд фахівця до Клієнта\n(перша година роботи — діагностика та усунення дрібних несправностей безпосередньо в офісі Клієнта)', },
@@ -33,7 +33,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-sprzet-na-miejscu',
       title: 'Ремонт комп\'ютерного обладнання (у Клієнта)',
       items: [
         { service: 'Заміна блока живлення / диска / RAM у Клієнта\n(заміна пошкоджених або розширення компонентів безпосередньо в офісі компанії)', },
@@ -45,7 +45,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-siec-konfiguracja',
       title: 'Налаштування та офісна мережа',
       items: [
         { service: 'Діагностика та налаштування мережі LAN / Wi-Fi\n(аналіз з\'єднань, усунення помилок зв\'язку, оптимізація налаштувань корпоративної мережі)', },
@@ -57,7 +57,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-tasma',
+      id: 'naprawy-bezpieczenstwo-backup',
       title: 'Безпека та резервні копії',
       items: [
         { service: 'Видалення вірусів, троянів, adware\n(очищення системи від шкідливого програмного забезпечення, відновлення стабільності та продуктивності)', },

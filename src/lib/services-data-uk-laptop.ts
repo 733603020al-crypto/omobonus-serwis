@@ -66,7 +66,7 @@ export const laptopNaprawy: PricingSection = {
   title: 'Ремонт та сервісні послуги (за потребою)',
   subcategories: [
     {
-      id: 'naprawy-mechanizm',
+      id: 'naprawy-oprogramowanie',
       title: 'Програмне забезпечення',
       items: [
         { service: 'Встановлення Windows/Linux з оновленнями та драйверами (без збереження даних)\n(систему Windows встановлюємо з ліцензією клієнта. За її відсутності допомагаємо придбати відповідну ліцензію)', },
@@ -90,7 +90,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-plyta-glowna',
       title: 'Материнська плата / живлення / компоненти',
       items: [
         { service: 'Заміна материнської плати (пересадка + налаштування)', },
@@ -109,7 +109,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-chlodzenie',
       title: 'Система охолодження та чистота',
       items: [
         { service: 'Діагностика системи охолодження (вимірювання температур до/після чищення)', },
@@ -119,7 +119,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-tasma',
+      id: 'naprawy-dyski-dane',
       title: 'Диски та дані',
       items: [
         { service: 'Діагностика диска + SMART / тест поверхні', },
@@ -130,7 +130,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-elektronika',
+      id: 'naprawy-odzyskiwanie-danych',
       title: 'Відновлення / видалення даних',
       items: [
         { service: 'Оцінка можливості відновлення даних з пошкодженого носія', },
@@ -141,7 +141,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-software',
+      id: 'naprawy-ekran-obudowa',
       title: 'Екран та корпус',
       items: [
         { service: 'Заміна пошкодженої матриці LCD/LED (стандарт, без склеювання)', },
@@ -158,7 +158,7 @@ export const laptopNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-dodatkowe',
+      id: 'naprawy-klawiatura-touchpad',
       title: 'Клавіатура / тачпад',
       items: [
         { service: 'Чищення клавіатури + дезінфекція (без розкручування / розбирання)', },

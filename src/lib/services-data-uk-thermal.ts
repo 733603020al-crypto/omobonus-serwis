@@ -43,7 +43,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-glowica-platen',
       title: 'Термоголівка та притискний ролик (platen)',
       subtitle: 'слабка якість друку, відсутні фрагменти відбитку, погано читаються штрих-коди',
       items: [
@@ -65,7 +65,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-czujniki-kalibracja',
       title: 'Датчики носія та калібрування етикеток',
       subtitle: 'принтер «не бачить» етикеток, друкує вхолосту, зупиняється з помилкою носія',
       items: [
@@ -87,7 +87,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-elektronika',
+      id: 'naprawy-tasma-ribbon',
       title: 'Стрічка (ribbon) та механізм намотування',
       subtitle: 'рве стрічку, ribbon зминається, забруднює етикетки або зовсім не переміщується',
       items: [
@@ -109,7 +109,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-skaner',
+      id: 'naprawy-moduly-dodatkowe',
       title: 'Додаткові модулі: відклеювач, намотувач, подавачі, різак',
       subtitle: 'принтер не відклеює / не відрізає етикетки, погано намотує ролики, застряє при аплікації',
       items: [
@@ -131,7 +131,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-software',
+      id: 'naprawy-elektronika-zasilanie',
       title: 'Електроніка, живлення, панель керування, інтерфейси',
       subtitle: 'принтер не вмикається, зависає, показує помилки електроніки або не з\'єднується з комп\'ютером / мережею',
       items: [
@@ -153,7 +153,7 @@ export const thermalNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-additional',
+      id: 'naprawy-oprogramowanie',
       title: 'Програмне забезпечення, налаштування та інтеграції',
       subtitle: 'етикетки друкуються зі зміщенням, у неправильному форматі, з помилковими даними або взагалі не друкуються з програми',
       items: [

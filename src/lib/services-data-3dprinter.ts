@@ -198,6 +198,7 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
     sections.splice(diagnosisIndex + 1, 0, {
       id: 'projektowanie-modeli',
       title: 'Projektowanie i modelowanie 3D CAD',
+      mobileTitle: 'Projektowanie 3D CAD',
       items: [
         { service: 'Wstępna ocena projektu\nsprawdzenie możliwości wykonania i zakresu prac', },
         { service: 'Mała modyfikacja pliku STL\nzmiana wymiaru, otworu, naprawa lub drobna korekta modelu', },

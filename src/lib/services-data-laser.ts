@@ -61,6 +61,7 @@ const applyLaserOpticsSubcategory = (sections: PricingSection[]) => {
   if (!opticsSubcategory) return
 
   opticsSubcategory.title = 'Optyka i laser'
+  opticsSubcategory.id = 'naprawy-optyka-laser'
   opticsSubcategory.items = [
     {
       service:
@@ -130,6 +131,7 @@ const applyLaserImagingSubcategory = (sections: PricingSection[]) => {
   const serviceSection = sections.find(section => section.id === 'naprawy')
   const imagingSubcategory = serviceSection?.subcategories?.[1]
   if (!imagingSubcategory) return
+  imagingSubcategory.id = 'naprawy-modul-obrazu'
   imagingSubcategory.title =
     'Moduł obrazu (bęben, pas transferowy, ...)'
   imagingSubcategory.items = [

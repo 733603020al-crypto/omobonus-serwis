@@ -22,7 +22,7 @@ export const outsourcingNaprawy: PricingSection = {
   footer: '«Компьютерная скорая помощь» — сервисные вмешательства вне подписки',
   subcategories: [
     {
-      id: 'naprawy-mechanizm',
+      id: 'naprawy-serwis-ogolny',
       title: 'Общий сервис (работа специалиста у Клиента)',
       items: [
         { service: 'Выезд специалиста к Клиенту\n(первый час работы — диагностика и устранение мелких неисправностей непосредственно в офисе Клиента)', },
@@ -33,7 +33,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-karetka',
+      id: 'naprawy-sprzet-na-miejscu',
       title: 'Ремонт компьютерного оборудования (у Клиента)',
       items: [
         { service: 'Замена блока питания / диска / RAM у Клиента\n(замена повреждённых или расширение компонентов непосредственно в офисе компании)', },
@@ -45,7 +45,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-glowica',
+      id: 'naprawy-siec-konfiguracja',
       title: 'Настройка и офисная сеть',
       items: [
         { service: 'Диагностика и настройка сети LAN / Wi-Fi\n(анализ соединений, устранение ошибок связи, оптимизация настроек корпоративной сети)', },
@@ -57,7 +57,7 @@ export const outsourcingNaprawy: PricingSection = {
       ],
     },
     {
-      id: 'naprawy-tasma',
+      id: 'naprawy-bezpieczenstwo-backup',
       title: 'Безопасность и резервные копии',
       items: [
         { service: 'Удаление вирусов, троянов, adware\n(очистка системы от вредоносного программного обеспечения, восстановление стабильности и производительности)', },

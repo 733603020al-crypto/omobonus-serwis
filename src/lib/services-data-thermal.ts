@@ -74,6 +74,7 @@ const applyThermalHeadSubcategory = (sections: PricingSection[]) => {
   if (!headSubcategory) return
 
   headSubcategory.title = 'Głowica drukująca i rolka dociskowa (platen)'
+  headSubcategory.id = 'naprawy-glowica-platen'
   headSubcategory.subtitle =
     'słaba jakość wydruku, brak fragmentów nadruku, słabo czytelne kody kreskowe'
   headSubcategory.items = [
@@ -114,6 +115,7 @@ const applyThermalSensorSubcategory = (sections: PricingSection[]) => {
   if (!sensorSubcategory) return
 
   sensorSubcategory.title = 'Czujniki mediów i kalibracja etykiet'
+  sensorSubcategory.id = 'naprawy-czujniki-kalibracja'
   sensorSubcategory.subtitle =
     'drukarka „nie widzi” etykiet, drukuje w pustkę, zatrzymuje się z błędem nośnika'
   sensorSubcategory.items = [
@@ -154,6 +156,7 @@ const applyThermalRibbonSubcategory = (sections: PricingSection[]) => {
   if (!ribbonSubcategory) return
 
   ribbonSubcategory.title = 'Taśma barwiąca (ribbon) i mechanizm nawijania'
+  ribbonSubcategory.id = 'naprawy-tasma-ribbon'
   ribbonSubcategory.subtitle =
     'zrywa taśmę, ribbon marszczy się, brudzi etykiety lub w ogóle się nie przesuwa'
   ribbonSubcategory.items = [
@@ -186,7 +189,7 @@ const applyThermalModulesSubcategory = (sections: PricingSection[]) => {
 
   const modulesSubcategory = repairsSection.subcategories.find(
     sub =>
-      sub.id === 'naprawy-skaner' ||
+      sub.id === 'naprawy-moduly-dodatkowe' ||
       sub.id === 'naprawy-tasma' ||
       sub.title === 'Skaner / ADF' ||
       sub.title === 'Moduły dodatkowe: odklejak, nawijak, podajniki, obcinarka'
@@ -197,7 +200,7 @@ const applyThermalModulesSubcategory = (sections: PricingSection[]) => {
   // Ujednolica id z wersją UK/RU (ta sama treść merytoryczna pod stałym id
   // we wszystkich językach) — bez tego podkategoria zostawała pod id
   // 'naprawy-tasma' i duplikowała domyślny tytuł "Taśma barwiąca...".
-  modulesSubcategory.id = 'naprawy-skaner'
+  modulesSubcategory.id = 'naprawy-moduly-dodatkowe'
   modulesSubcategory.title = 'Moduły dodatkowe: odklejak, nawijak, podajniki, obcinarka'
   modulesSubcategory.subtitle =
     'drukarka nie odkleja / nie odcina etykiet, źle nawija rolki, zacina przy aplikacji'
@@ -239,6 +242,7 @@ const applyThermalElectronicsSubcategory = (sections: PricingSection[]) => {
   if (!electronicsSubcategory) return
 
   electronicsSubcategory.title = 'Elektronika, zasilanie, panel sterujący, interfejsy'
+  electronicsSubcategory.id = 'naprawy-elektronika-zasilanie'
   electronicsSubcategory.subtitle =
     'drukarka nie włącza się, zawiesza się, pokazuje błędy elektroniki lub nie łączy się z komputerem / siecią'
   electronicsSubcategory.items = [
@@ -271,7 +275,7 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
 
   const softwareSubcategory = repairsSection.subcategories.find(
     sub =>
-      sub.id === 'naprawy-additional' ||
+      sub.id === 'naprawy-oprogramowanie' ||
       sub.title === 'Usługi dodatkowe' ||
       sub.title === 'Oprogramowanie, konfiguracja i integracje'
   )
@@ -281,7 +285,7 @@ const applyThermalSoftwareSubcategory = (sections: PricingSection[]) => {
   // Ujednolica id z wersją UK/RU (ta sama treść merytoryczna pod stałym id
   // we wszystkich językach) — bez tego podkategoria zostawała pod id
   // 'naprawy-dodatkowe' (dziedziczonym z domyślnego tytułu "Usługi dodatkowe").
-  softwareSubcategory.id = 'naprawy-additional'
+  softwareSubcategory.id = 'naprawy-oprogramowanie'
   softwareSubcategory.title = 'Oprogramowanie, konfiguracja i integracje'
   softwareSubcategory.subtitle =
     'etykiety drukują się przesunięte, w złym formacie, z błędnymi danymi lub nie drukują się wcale z programu'
@@ -372,12 +376,12 @@ export const createThermalPricingSections = (): PricingSection[] => {
   if (repairsSection?.subcategories) {
     const order = [
       'naprawy-mechanizm',
-      'naprawy-karetka',
-      'naprawy-glowica',
-      'naprawy-elektronika',
-      'naprawy-skaner',
-      'naprawy-software',
-      'naprawy-additional',
+      'naprawy-glowica-platen',
+      'naprawy-czujniki-kalibracja',
+      'naprawy-tasma-ribbon',
+      'naprawy-moduly-dodatkowe',
+      'naprawy-elektronika-zasilanie',
+      'naprawy-oprogramowanie',
       'naprawy-termiczne-uslugi',
     ]
     repairsSection.subcategories.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
