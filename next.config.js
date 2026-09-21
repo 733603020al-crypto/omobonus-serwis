@@ -61,6 +61,23 @@ const nextConfig = {
         ],
       },
 
+      // Иконки из public/icons (не хешируются) — тот же длинный TTL, что и у favicon.
+      {
+        source: '/icons/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000',
+          },
+        ],
+      },
+
+      // floating-call.html — отдельный фрагмент виджета, не часть sitemap/навигации: не индексировать.
+      {
+        source: '/floating-call.html',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+
       // favicon.ico и robots.txt редко меняются, но не хешируются как
       // /_next/static, поэтому immutable не подходит — просто длинный TTL.
       {
