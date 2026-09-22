@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Stack carousel used in service-page hero zones (originally built for
 // /uslugi/naprawa-drukarek, now also reused for /uslugi/serwis-laptopow via
@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 // (GPU-friendly, no reflow), advance interval is paused entirely under
 // prefers-reduced-motion. `slides` is supplied by the caller so this
 // component holds no page-specific image list itself.
-const ADVANCE_MS = 3800
+const ADVANCE_MS = 5500
 
 // Per-delta geometry (scale/opacity/translate/zIndex) is variant-specific so
 // a new page can get its own stack proportions without touching the
@@ -26,7 +26,12 @@ const VARIANT_CONFIG = {
     boxClass: 'hero-printer-carousel',
     slideClass: 'hero-printer-carousel-slide',
     scale: [1.54, 0.8, 0.64, 0.5],
-    opacity: [1, 0.85, 0.65, 0],
+    // Tier1 (immediate next-up) stays fully opaque so it fully hides tier2
+    // behind it — tier2's own 0.65 was showing through tier1's old 0.85,
+    // reading as a ghosting/see-through artifact. Tier2 keeps its partial
+    // opacity (it's mostly covered by tier1 anyway, just a depth cue at the
+    // edge), tier3 stays invisible.
+    opacity: [1, 1, 0.65, 0],
     translateX: [0, -68, -76, -95],
     translateY: [0, -8, -16, -24],
     zIndex: [16, 15, 14, 13],
@@ -36,7 +41,7 @@ const VARIANT_CONFIG = {
     boxClass: 'hero-laptop-carousel',
     slideClass: 'hero-laptop-carousel-slide',
     scale: [1, 0.52, 0.42, 0.32],
-    opacity: [1, 0.85, 0.65, 0],
+    opacity: [1, 1, 0.65, 0],
     translateX: [0, -68, -76, -95],
     translateY: [0, -8, -16, -24],
     zIndex: [16, 15, 14, 13],
@@ -67,15 +72,36 @@ export function HeroPrinterCarousel({
   slides,
   alt,
   variant = 'printer',
+  sizeCoefficients,
+  verticalBias,
 }: {
   slides: string[]
   alt: string
   variant?: CarouselVariant
+  // Optional per-slide adjustments (index-matched to `slides`). Left
+  // undefined by every caller except serwis-drukarek-atramentowych, so all
+  // other carousels keep their exact previous scale/position.
+  sizeCoefficients?: number[]
+  verticalBias?: number[]
 }) {
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
+  const [inView, setInView] = useState(true)
+  const boxRef = useRef<HTMLDivElement>(null)
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
+
+  // Stops the rotation entirely once the hero scrolls out of view — no
+  // point re-rendering a carousel nobody can see.
+  useEffect(() => {
+    const node = boxRef.current
+    if (!node || typeof IntersectionObserver === 'undefined') return
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      threshold: 0.1,
+    })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -116,14 +142,18 @@ export function HeroPrinterCarousel({
   }, [])
 
   useEffect(() => {
-    if (!ready) return
+    if (!ready || !inView) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const id = setInterval(() => {
+      // Tab in the background: skip the tick instead of tearing the
+      // interval down, so it resumes on the same cadence once it's focused
+      // again rather than restarting the 5.5s countdown from zero.
+      if (document.hidden) return
       setActive((prev) => (prev + 1) % slideCount)
     }, ADVANCE_MS)
     return () => clearInterval(id)
-  }, [ready, slideCount])
+  }, [ready, inView, slideCount])
 
   return (
     // Outer "bleed" box: purely a wider, non-clipping paint-containment
@@ -133,7 +163,7 @@ export function HeroPrinterCarousel({
     // the inner carousel's own size, so slide sizing/position/speed stay
     // identical to before.
     <div className={config.bleedClass}>
-      <div className={config.boxClass} role="img" aria-label={alt}>
+      <div className={config.boxClass} role="img" aria-label={alt} ref={boxRef}>
         {slides.map((src, i) => {
           // Before preloading finishes, active stays 0 (the interval below is
           // gated on `ready`), so only the first slide needs to be in the DOM —
@@ -150,10 +180,13 @@ export function HeroPrinterCarousel({
           // extra exit state needed.
           const delta = ((i - active) % slideCount + slideCount) % slideCount
           const tier = delta === 0 ? 0 : delta === 1 ? 1 : delta === 2 ? 2 : 3
-          const scale = config.scale[tier]
+          // Coefficient/bias apply to every tier of this slide, not just the
+          // active one, so its relative size stays consistent through its
+          // whole time in the queue.
+          const scale = config.scale[tier] * (sizeCoefficients?.[i] ?? 1)
           const opacity = config.opacity[tier]
           const translateX = config.translateX[tier]
-          const translateY = config.translateY[tier]
+          const translateY = config.translateY[tier] + (verticalBias?.[i] ?? 0)
           const zIndex = config.zIndex[tier]
 
           return (

@@ -47,6 +47,50 @@ const PRINTER_HERO_SLIDES = [
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
 ]
 
+// serwis-drukarek-atramentowych: existing hero image kept as slide 0, plus 5
+// more inkjet-printer renders (Epson/Canon), each cropped to its own alpha
+// bbox and downscaled to match, same convention as the assets above.
+const ATRAMENT_HERO_SLIDES = [
+  '/images/05_serwis-drukarek-atramentowych.webp',
+  '/images/atrament-carousel-02b.webp',
+  '/images/atrament-carousel-03b.webp',
+  '/images/atrament-carousel-04b.webp',
+  '/images/atrament-carousel-05b.webp',
+  '/images/atrament-carousel-06b.webp',
+]
+
+// Per-slide real-world size category (small/small, medium/medium,
+// large/large, matching ATRAMENT_HERO_SLIDES order 1:1) — applied to every
+// tier's scale, not just the active slide, so a small desktop printer never
+// reads as big as a floor-standing machine while queued.
+const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
+// Graduated downward nudge — small stays centered (0), medium gets a light
+// nudge, large gets more — so top overflow shrinks for every category that
+// had any, while large still shifts furthest toward the logo strip below.
+// Values differ per slide, not one shared bottom line for all six.
+const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
+
+// serwis-drukarek-laserowych: existing hero image kept as slide 0 (unchanged,
+// medium-sized), plus 6 more laser-printer/MFP renders, each cropped to its
+// own alpha bbox and downscaled, same convention as the atrament set above.
+const LASER_HERO_SLIDES = [
+  '/images/04_serwis-drukarek-laserowych.webp',
+  '/images/laser-carousel-02b.webp',
+  '/images/laser-carousel-03b.webp',
+  '/images/laser-carousel-04b.webp',
+  '/images/laser-carousel-05b.webp',
+  '/images/laser-carousel-06b.webp',
+  '/images/laser-carousel-07b.webp',
+]
+
+// Per-slide real-world size category (medium/small/small/medium/medium/
+// large/large, matching LASER_HERO_SLIDES order 1:1) — same coefficient
+// bands as ATRAMENT_SIZE_COEFFICIENTS above.
+const LASER_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.85, 0.88, 0.95, 0.95]
+// Same graduated downward nudge as ATRAMENT_VERTICAL_BIAS: small stays
+// centered, medium gets a light nudge, large gets more.
+const LASER_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: the original cracked-screen animation (same file the
 // static AnimatedHeroImage used before this carousel existed — kept as slide
 // 0 so it's still the eager/high-priority LCP slide, same as before) plus
@@ -325,6 +369,30 @@ export function ServicePageTemplate({
                         // the single static Serwis_Drukarek.webp. No new
                         // assets, same fixed hero zone.
                         <HeroPrinterCarousel alt={imageAlt} slides={PRINTER_HERO_SLIDES} />
+                      ) : slug === 'serwis-drukarek-atramentowych' ? (
+                        // Same stack-carousel mechanic as naprawa-drukarek
+                        // (default "printer" variant, no new CSS) — the
+                        // existing hero image stays slide 0, followed by 5
+                        // more inkjet-printer renders cropped to their own
+                        // alpha bbox (see public/images/atrament-carousel-*.webp).
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={ATRAMENT_HERO_SLIDES}
+                          sizeCoefficients={ATRAMENT_SIZE_COEFFICIENTS}
+                          verticalBias={ATRAMENT_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-laserowych' ? (
+                        // Same stack-carousel mechanic as the atramentowych
+                        // page above — the existing hero image stays slide 0
+                        // unchanged, followed by 6 more laser-printer/MFP
+                        // renders cropped to their own alpha bbox (see
+                        // public/images/laser-carousel-*.webp).
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={LASER_HERO_SLIDES}
+                          sizeCoefficients={LASER_SIZE_COEFFICIENTS}
+                          verticalBias={LASER_VERTICAL_BIAS}
+                        />
                       ) : (
                         <Image
                           src={imageSrc}
