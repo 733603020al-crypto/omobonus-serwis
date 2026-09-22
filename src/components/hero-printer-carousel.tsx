@@ -2,25 +2,52 @@
 
 import { useEffect, useState } from 'react'
 
-// Stack carousel for the /uslugi/naprawa-drukarek hero: reuses the same
-// category hero images already used on their own service pages (no new
-// assets). Only transform + opacity are animated (GPU-friendly, no reflow),
-// advance interval is paused entirely under prefers-reduced-motion.
-const SLIDES = [
-  '/images/04_serwis-drukarek-laserowych.webp',
-  '/images/05_serwis-drukarek-atramentowych.webp',
-  '/images/07_serwis-drukarek-iglowych.webp',
-  '/images/06_serwis-drukarek-termicznych.webp',
-  '/images/08_serwis-ploterow.webp',
-  '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-]
-
+// Stack carousel used in service-page hero zones (originally built for
+// /uslugi/naprawa-drukarek, now also reused for /uslugi/serwis-laptopow via
+// the `variant` prop below). Only transform + opacity are animated
+// (GPU-friendly, no reflow), advance interval is paused entirely under
+// prefers-reduced-motion. `slides` is supplied by the caller so this
+// component holds no page-specific image list itself.
 const ADVANCE_MS = 3800
-const SLIDE_COUNT = SLIDES.length
 
-// Loads only the active slide eagerly (LCP candidate); the other 5 are
-// fetched in the background after the page finishes loading (window "load"
-// + requestIdleCallback, so they never compete with the LCP image or main
+// Per-delta geometry (scale/opacity/translate/zIndex) is variant-specific so
+// a new page can get its own stack proportions without touching the
+// printer carousel's existing numbers.
+// - printer: active slide intentionally overflows its box (1.54x) — the
+//   hero-printer-carousel-bleed box in service-hero.css is sized to let it
+//   spill past the zone, matching the previous single-image hero.
+// - laptop: active slide stays at 1x (no overflow) so the whole stack stays
+//   inside the left hero column, per the no-crop/no-spill requirement for
+//   /uslugi/serwis-laptopow. Same translateX/Y/opacity/zIndex shape as
+//   printer so the queue effect itself still reads the same.
+const VARIANT_CONFIG = {
+  printer: {
+    bleedClass: 'hero-printer-carousel-bleed',
+    boxClass: 'hero-printer-carousel',
+    slideClass: 'hero-printer-carousel-slide',
+    scale: [1.54, 0.8, 0.64, 0.5],
+    opacity: [1, 0.85, 0.65, 0],
+    translateX: [0, -68, -76, -95],
+    translateY: [0, -8, -16, -24],
+    zIndex: [16, 15, 14, 13],
+  },
+  laptop: {
+    bleedClass: 'hero-laptop-carousel-bleed',
+    boxClass: 'hero-laptop-carousel',
+    slideClass: 'hero-laptop-carousel-slide',
+    scale: [1, 0.52, 0.42, 0.32],
+    opacity: [1, 0.85, 0.65, 0],
+    translateX: [0, -68, -76, -95],
+    translateY: [0, -8, -16, -24],
+    zIndex: [16, 15, 14, 13],
+  },
+} as const
+
+type CarouselVariant = keyof typeof VARIANT_CONFIG
+
+// Loads only the active slide eagerly (LCP candidate); the rest are fetched
+// in the background after the page finishes loading (window "load" +
+// requestIdleCallback, so they never compete with the LCP image or main
 // bundle for bandwidth), then the carousel only starts once they're cached.
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
@@ -36,16 +63,26 @@ function preloadImages(srcs: string[]): Promise<void> {
   ).then(() => undefined)
 }
 
-export function HeroPrinterCarousel({ alt }: { alt: string }) {
+export function HeroPrinterCarousel({
+  slides,
+  alt,
+  variant = 'printer',
+}: {
+  slides: string[]
+  alt: string
+  variant?: CarouselVariant
+}) {
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
+  const config = VARIANT_CONFIG[variant]
+  const slideCount = slides.length
 
   useEffect(() => {
     let cancelled = false
     let idleHandle: number | undefined
 
     const runPreload = () => {
-      preloadImages(SLIDES.slice(1)).then(() => {
+      preloadImages(slides.slice(1)).then(() => {
         if (!cancelled) setReady(true)
       })
     }
@@ -75,6 +112,7 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -82,10 +120,10 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const id = setInterval(() => {
-      setActive((prev) => (prev + 1) % SLIDE_COUNT)
+      setActive((prev) => (prev + 1) % slideCount)
     }, ADVANCE_MS)
     return () => clearInterval(id)
-  }, [ready])
+  }, [ready, slideCount])
 
   return (
     // Outer "bleed" box: purely a wider, non-clipping paint-containment
@@ -94,9 +132,9 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
     // service-hero.css from the exact overflow math below — does not affect
     // the inner carousel's own size, so slide sizing/position/speed stay
     // identical to before.
-    <div className="hero-printer-carousel-bleed">
-      <div className="hero-printer-carousel" role="img" aria-label={alt}>
-        {SLIDES.map((src, i) => {
+    <div className={config.bleedClass}>
+      <div className={config.boxClass} role="img" aria-label={alt}>
+        {slides.map((src, i) => {
           // Before preloading finishes, active stays 0 (the interval below is
           // gated on `ready`), so only the first slide needs to be in the DOM —
           // it renders exactly like a normal hero image, full priority, no wait.
@@ -106,24 +144,17 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
           // in the stack, 3+ = further back, invisible). Unlike a symmetric
           // left/right carousel, there's no separate "previous" side: on
           // advance, delta=0 jumps straight to the back of the queue
-          // (delta=SLIDE_COUNT-1), so the 900ms transition below carries it
+          // (delta=slideCount-1), so the 900ms transition below carries it
           // from front-center out to the hidden back position by itself —
           // exactly the "current slides out and shrinks" motion, with no
           // extra exit state needed.
-          const delta = ((i - active) % SLIDE_COUNT + SLIDE_COUNT) % SLIDE_COUNT
-          // Active: same 1.54x used by the previous carousel (0.78*1.54=1.2012
-          // of the zone, matching serwis-drukarek-laserowych's visual size).
-          // The two behind it now step back-left (not straight behind) so they
-          // read as a queue: each translateX solved against the active slide's
-          // own left edge (-0.6006 of the container, from 0.78*1.54/2) so that
-          // roughly 35-50% of its own width stays clear of the active slide —
-          // delta=1 at -68% leaves ~39% visible, delta=2 at -76% (smaller, so
-          // less overlap despite the bigger shift) leaves ~48% visible.
-          const scale = delta === 0 ? 1.54 : delta === 1 ? 0.8 : delta === 2 ? 0.64 : 0.5
-          const opacity = delta === 0 ? 1 : delta === 1 ? 0.85 : delta === 2 ? 0.65 : 0
-          const translateX = delta === 0 ? 0 : delta === 1 ? -68 : delta === 2 ? -76 : -95
-          const translateY = delta === 0 ? 0 : delta === 1 ? -8 : delta === 2 ? -16 : -24
-          const zIndex = delta === 0 ? 16 : delta === 1 ? 15 : delta === 2 ? 14 : 13
+          const delta = ((i - active) % slideCount + slideCount) % slideCount
+          const tier = delta === 0 ? 0 : delta === 1 ? 1 : delta === 2 ? 2 : 3
+          const scale = config.scale[tier]
+          const opacity = config.opacity[tier]
+          const translateX = config.translateX[tier]
+          const translateY = config.translateY[tier]
+          const zIndex = config.zIndex[tier]
 
           return (
             // eslint-disable-next-line @next/next/no-img-element
@@ -134,7 +165,7 @@ export function HeroPrinterCarousel({ alt }: { alt: string }) {
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}
               fetchPriority={i === 0 ? 'high' : 'auto'}
-              className="hero-printer-carousel-slide"
+              className={config.slideClass}
               style={{
                 transform: `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(${scale})`,
                 opacity,

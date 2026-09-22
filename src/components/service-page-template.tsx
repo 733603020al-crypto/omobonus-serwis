@@ -36,6 +36,31 @@ const HERO_SCALE: Record<string, number> = {
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
+// naprawa-drukarek: same category hero images already used on their own
+// service pages (laser, inkjet, needle, thermal, plotter, 3D) — no new assets.
+const PRINTER_HERO_SLIDES = [
+  '/images/04_serwis-drukarek-laserowych.webp',
+  '/images/05_serwis-drukarek-atramentowych.webp',
+  '/images/07_serwis-drukarek-iglowych.webp',
+  '/images/06_serwis-drukarek-termicznych.webp',
+  '/images/08_serwis-ploterow.webp',
+  '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+]
+
+// serwis-laptopow: repair close-ups (broken screen, motherboard/SSD/fan work),
+// cropped to alpha bbox and optimized to WebP — see public/images/laptop-carousel/.
+const LAPTOP_HERO_SLIDES = [
+  '/images/laptop-carousel/laptop-carousel-01.webp',
+  '/images/laptop-carousel/laptop-carousel-02.webp',
+  '/images/laptop-carousel/laptop-carousel-03.webp',
+  '/images/laptop-carousel/laptop-carousel-04.webp',
+  '/images/laptop-carousel/laptop-carousel-05.webp',
+  '/images/laptop-carousel/laptop-carousel-06.webp',
+  '/images/laptop-carousel/laptop-carousel-07.webp',
+  '/images/laptop-carousel/laptop-carousel-08.webp',
+  '/images/laptop-carousel/laptop-carousel-09.webp',
+]
+
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
   'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych',
@@ -239,22 +264,12 @@ export function ServicePageTemplate({
                           fetchPriority="high"
                         />
                       ) : slug === 'serwis-laptopow' ? (
-                        // Animated WebP (screen animation baked into the file, transparent
-                        // background) — canvas/offsets/disposal/blend across all 24 frames
-                        // must stay intact. width/height match the source's real 578x502
-                        // aspect ratio (cropped to alpha bbox; not the generic 420x420 square
-                        // used by other service pages) so h-auto doesn't cause a layout jump.
-                        // Starts on a static first-frame fallback (mobile and desktop alike)
-                        // and swaps in the animated file after page load (see
-                        // AnimatedHeroImage) to keep LCP fast on every screen size.
-                        <AnimatedHeroImage
-                          animatedSrc={imageSrc}
-                          staticSrc="/images/serwis-laptopow-hero-static.webp"
-                          alt={imageAlt}
-                          width={578}
-                          height={502}
-                          className="service-hero-image service-hero-image-laptop object-contain w-full h-full mx-auto block"
-                        />
+                        // Center-active carousel of laptop repair close-ups
+                        // (same stack mechanic as naprawa-drukarek below, via
+                        // variant="laptop" for its own contained-in-zone
+                        // geometry — see hero-printer-carousel.tsx). Replaces
+                        // the single animated laptop-screen WebP.
+                        <HeroPrinterCarousel alt={imageAlt} slides={LAPTOP_HERO_SLIDES} variant="laptop" />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
                         // background, pre-cropped) — canvas/offsets/disposal/blend across all 16
@@ -305,7 +320,7 @@ export function ServicePageTemplate({
                         // inkjet, needle, thermal, plotter, 3D) — replaces
                         // the single static Serwis_Drukarek.webp. No new
                         // assets, same fixed hero zone.
-                        <HeroPrinterCarousel alt={imageAlt} />
+                        <HeroPrinterCarousel alt={imageAlt} slides={PRINTER_HERO_SLIDES} />
                       ) : (
                         <Image
                           src={imageSrc}

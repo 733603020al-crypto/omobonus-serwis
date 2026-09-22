@@ -666,3 +666,44 @@
     transition: none;
   }
 }
+
+/* Stack carousel: serwis-laptopow hero only. Separate classes from the
+   printer carousel above on purpose — that one intentionally bleeds its
+   active slide past the fixed hero zone (scale 1.54 in hero-printer-
+   carousel.tsx); serwis-laptopow must stay fully inside its own hero
+   column (no crop, no spill into the text side), so this variant has no
+   negative bleed inset and its active slide is left at 1x (see the
+   "laptop" entry in VARIANT_CONFIG). The .service-hero-image-wrap parent
+   still carries its usual HERO_SCALE (1.4) enlargement — unchanged, so the
+   carousel just fills that same box the previous static image used to. */
+.hero-laptop-carousel-bleed {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.hero-laptop-carousel {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.hero-laptop-carousel-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1), opacity 900ms ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-laptop-carousel-slide {
+    transition: none;
+  }
+}
