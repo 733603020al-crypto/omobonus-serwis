@@ -47,9 +47,13 @@ const PRINTER_HERO_SLIDES = [
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
 ]
 
-// serwis-laptopow: repair close-ups (broken screen, motherboard/SSD/fan work),
-// cropped to alpha bbox and optimized to WebP — see public/images/laptop-carousel/.
+// serwis-laptopow: the original cracked-screen animation (same file the
+// static AnimatedHeroImage used before this carousel existed — kept as slide
+// 0 so it's still the eager/high-priority LCP slide, same as before) plus
+// repair close-ups (broken screen, motherboard/SSD/fan work), cropped to
+// alpha bbox and optimized to WebP — see public/images/laptop-carousel/.
 const LAPTOP_HERO_SLIDES = [
+  '/images/serwis-laptopow-hero-animated.webp',
   '/images/laptop-carousel/laptop-carousel-01.webp',
   '/images/laptop-carousel/laptop-carousel-02.webp',
   '/images/laptop-carousel/laptop-carousel-03.webp',
