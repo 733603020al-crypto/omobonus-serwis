@@ -744,7 +744,11 @@ const scrollIntoViewIfNeeded = (
   })
 }
 
-// Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent
+// Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent.
+// Если реального overflow:auto/scroll контейнера нет (например, у секции
+// naprawy AccordionContent сделан overflow-y-visible нарочно) — возвращает
+// null, а не первый попавшийся div "как будто" он скроллится (scrollTo на
+// нём ничего не делает и только создаёт иллюзию рабочей синхронизации).
 const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElement | null => {
   const children = Array.from(accordionContentElement.children) as HTMLElement[]
 
@@ -763,86 +767,72 @@ const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElem
     return accordionContentElement
   }
 
-  // Fallback: первый дочерний div или сам AccordionContent
-  return children.find(el => el.tagName === 'DIV') || accordionContentElement
+  return null
 }
 
-// Функция для прокрутки подкатегории внутри контейнера с overflow
+// Функция для прокрутки к только что открытой подкатегории.
+// Ставит ВЕРХНЮЮ границу заголовка (trigger) подкатегории под фиксированной
+// верхней шапкой сайта (отступ headerOffset) — открытый контент сразу виден
+// под заголовком, а не уезжает за нижний край экрана. Формула строится на
+// реальных window.scrollY/getBoundingClientRect, поэтому работает одинаково
+// на desktop и mobile без отдельных пиксельных значений под конкретные
+// размеры экрана.
 const scrollSubcategoryToTop = (
   sectionRef: HTMLDivElement | null,
   subcategoryRef: HTMLDivElement | null,
-  sectionOffset = SECTION_SCROLL_OFFSET,
+  headerOffset = SECTION_SCROLL_OFFSET,
 ) => {
   if (!sectionRef || !subcategoryRef) return
 
-  // subcategoryRef указывает на AccordionItem, нам нужно найти AccordionTrigger внутри него
-  // для прокрутки к заголовку подкатегории
-  const subcategoryTrigger = subcategoryRef.querySelector<HTMLElement>(
-    '[data-slot="accordion-trigger"]'
-  ) || subcategoryRef
-
-  // Ждем завершения анимации раскрытия аккордеона Radix UI
-  // Radix UI Accordion использует CSS анимации ~200-300ms
-  // Используем двойной RAF + задержку для гарантии завершения анимации
+  // У Radix UI Accordion в этом проекте нет CSS-анимации высоты открытия
+  // (только универсальный opacity-fade, не двигающий layout) — контент и
+  // геометрия parchment уже посчитаны синхронно в useLayoutEffect до отрисовки
+  // кадра. Одного requestAnimationFrame достаточно, чтобы дождаться коммита
+  // DOM после открытия; отдельный setTimeout поверх него только откладывал
+  // прокрутку без всякой пользы.
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        // 1. Сначала проверяем и прокручиваем страницу, чтобы заголовок секции был виден
-        // Проверяем, находится ли заголовок секции в нужной позиции (с отступом sectionOffset)
-        const sectionRect = sectionRef.getBoundingClientRect()
-        const targetSectionTop = sectionOffset
-        const currentSectionTop = sectionRect.top
-        const needsPageScroll = Math.abs(currentSectionTop - targetSectionTop) > 20 // Порог для прокрутки
+    // Перепроверяем, что подкатегория реально открыта (пользователь мог
+    // успеть закрыть её за это время) — прокручиваем только к реальному
+    // открытому triggeru.
+    if (subcategoryRef.dataset.state !== 'open') return
 
-        if (needsPageScroll) {
-          const sectionTop = sectionRect.top + window.scrollY - sectionOffset
-          window.scrollTo({ top: Math.max(0, sectionTop), behavior: 'smooth' })
-        }
+    const subcategoryTrigger = subcategoryRef.querySelector<HTMLElement>(
+      '[data-slot="accordion-trigger"]'
+    ) || subcategoryRef
 
-        // 2. Находим контейнер с overflow-y-auto внутри AccordionContent
-        // AccordionContent имеет data-slot="accordion-content"
-        // Внутри него есть div с overflow-y-auto (className применяется к внутреннему div)
-        const accordionContentElement = sectionRef.querySelector<HTMLElement>(
-          '[data-slot="accordion-content"]'
-        )
+    // Если у подкатегории есть собственный scroll-контейнер — подтягиваем
+    // trigger к его верху. Для naprawy такого контейнера нет
+    // (AccordionContent секции overflow-y-visible), поэтому
+    // findScrollableContainer вернёт null и этот шаг ничего не сделает.
+    const accordionContentElement = sectionRef.querySelector<HTMLElement>(
+      '[data-slot="accordion-content"]'
+    )
+    const scrollableContainer = accordionContentElement
+      ? findScrollableContainer(accordionContentElement)
+      : null
 
-        if (!accordionContentElement) return
+    if (scrollableContainer) {
+      const triggerRect = subcategoryTrigger.getBoundingClientRect()
+      const containerRect = scrollableContainer.getBoundingClientRect()
+      const relativeTop = triggerRect.top - containerRect.top
+      const currentScrollTop = scrollableContainer.scrollTop
+      const targetScrollTop = currentScrollTop + relativeTop - 10 // небольшой отступ сверху внутри контейнера
+      // behavior: 'auto' — открытие подкатегории должно сразу ставить её в
+      // нужную позицию, без плавной докрутки поверх мгновенного открытия
+      // (см. диагностику выше: остаточное "движение шапки" создавал именно
+      // smooth-скролл после открытия). Обычная прокрутка пользователя
+      // (scroll-behavior: smooth в globals.css) не трогается.
+      scrollableContainer.scrollTo({ top: Math.max(0, targetScrollTop), behavior: 'auto' })
+    }
 
-        // Ищем scrollable контейнер
-        const scrollableContainer = findScrollableContainer(accordionContentElement)
+    // Прокручиваем страницу так, чтобы верх trigger'а оказался под
+    // фиксированной шапкой (headerOffset), а не у нижнего края экрана.
+    const triggerRect = subcategoryTrigger.getBoundingClientRect()
+    const delta = triggerRect.top - headerOffset
 
-        // Функция для выполнения прокрутки контейнера
-        const performContainerScroll = () => {
-          // Получаем актуальные позиции после возможной прокрутки страницы
-          // Используем trigger для прокрутки к заголовку подкатегории
-          const subcategoryTriggerRect = subcategoryTrigger.getBoundingClientRect()
-          const containerRect = scrollableContainer!.getBoundingClientRect()
-
-          // Вычисляем относительную позицию заголовка подкатегории внутри контейнера
-          const relativeTop = subcategoryTriggerRect.top - containerRect.top
-
-          // Вычисляем, насколько нужно прокрутить контейнер
-          // Чтобы заголовок подкатегории был в самом верху контейнера (с небольшим отступом)
-          const currentScrollTop = scrollableContainer!.scrollTop
-          const targetScrollTop = currentScrollTop + relativeTop - 10 // Небольшой отступ сверху для визуального комфорта
-
-          // Прокручиваем контейнер плавно
-          scrollableContainer!.scrollTo({
-            top: Math.max(0, targetScrollTop),
-            behavior: 'smooth'
-          })
-        }
-
-        // Если была прокрутка страницы, ждем её начала перед прокруткой контейнера
-        // Это нужно для корректного расчета позиций элементов
-        if (needsPageScroll) {
-          setTimeout(performContainerScroll, 200) // Даем время на начало прокрутки страницы
-        } else {
-          // Если страница не прокручивается, выполняем прокрутку контейнера сразу
-          performContainerScroll()
-        }
-      }, 100) // Задержка для завершения анимации раскрытия Radix UI Accordion
-    })
+    if (Math.abs(delta) > 4) {
+      window.scrollTo({ top: window.scrollY + delta, behavior: 'auto' })
+    }
   })
 }
 
@@ -1537,24 +1527,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
       return
     }
 
-    // Прокручиваем подкатегорию к верху внутри контейнера
-    // Fix: Change order - first ensure content appears (state changed), 
-    // then wait for DOM to likely settle (RAF + timeout), THEN scroll.
-    // This helps the browser accept the "open" state as the new baseline.
-    const rafId = requestAnimationFrame(() => {
-      const timerId = setTimeout(() => {
-        // Double-check: if user closed it during the delay, DO NOT scroll.
-        if (subcategoryRef.dataset.state !== 'open') return
-        scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
-      }, 100)
-
-      // Cleanup inside the RAF closure isn't possible directly via useEffect return, 
-      // but we can't easily cancel internal logic from outside.
-      // However, the `dataset.state` check acts as a logical gate.
-    })
-
-    // Basic cleanup to prevent memory leaks if component unmounts
-    return () => cancelAnimationFrame(rafId)
+    // scrollSubcategoryToTop уже ждёт один requestAnimationFrame перед
+    // измерением DOM — свой RAF/setTimeout поверх него только дублировал
+    // ожидание и откладывал прокрутку без пользы.
+    scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
   }, [openSubcategory, openSection])
 
 
@@ -2398,7 +2374,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                   ? 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
                                   : isRepairSection
-                                    ? 'data-[state=closed]:py-[3px] data-[state=open]:py-2 data-[state=closed]:px-3 data-[state=open]:px-0'
+                                    // transition-none: базовый transition-all duration-200 выше
+                                    // анимировал бы py/px между data-[state=closed] и open (~200мс),
+                                    // из-за чего шапка naprawy визуально росла уже ПОСЛЕ открытия —
+                                    // само открытие мгновенное, растягивать его не нужно.
+                                    ? 'transition-none data-[state=closed]:py-[3px] data-[state=open]:py-2 data-[state=closed]:px-3 data-[state=open]:px-0'
                                     : 'py-1.5 px-1.5 data-[state=closed]:md:py-[3px] data-[state=open]:md:py-2 md:px-3',
                             )}
                           >
