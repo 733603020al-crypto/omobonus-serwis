@@ -108,7 +108,7 @@ export function MobileActionBar() {
             `}</style>
 
             <div
-                className="fixed bottom-0 left-0 right-0 z-[9999] md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center"
+                className="fixed bottom-0 left-0 right-0 z-40 md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center"
                 style={{ backgroundImage: 'var(--bg-parchment)' }}
             >
                 <div className="absolute inset-0 bg-black/60" />
