@@ -144,7 +144,7 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     case 'Drukarka biurowa':
       return '/images/A4_MFU_kolor.webp'
     case 'Drukarka biznesowa':
-      return '/images/MFU A3A4 (mono).webp'
+      return '/images/MFU_A3_A4_mono.webp'
     default:
       return ''
   }
