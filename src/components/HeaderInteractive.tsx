@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils'
 const MobileMenuLoadingButton = () => (
   <button
     type="button"
-    className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white min-[920px]:hidden"
+    className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white min-[920px]:hidden"
     aria-label="Open menu"
     aria-haspopup="dialog"
     aria-expanded="false"
@@ -393,7 +393,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         {!mounted ? (
           <button
             type="button"
-            className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white"
+            className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white"
             aria-label="Open menu"
             aria-haspopup="dialog"
             aria-expanded="false"

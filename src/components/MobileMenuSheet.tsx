@@ -44,7 +44,7 @@ export function MobileMenuSheet({
             <SheetTrigger asChild className="z-10 min-[920px]:hidden">
                 <button
                     type="button"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-md text-white"
                     aria-label="Open menu"
                 >
                     <Menu className="h-6 w-6" />
