@@ -736,7 +736,10 @@ const scrollIntoViewIfNeeded = (
     }
 
     const top = rect.top + window.scrollY - offset
-    window.scrollTo({ top, behavior: 'smooth' })
+    // behavior: 'auto' — открытие категории должно сразу ставить её шапку под
+    // фиксированный header, без последующей плавной докрутки поверх открытия
+    // (тот же принцип, что и в scrollSubcategoryToTop для подкатегорий).
+    window.scrollTo({ top, behavior: 'auto' })
   }
 
   requestAnimationFrame(() => {
@@ -1533,6 +1536,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
   }, [openSubcategory, openSection])
 
+  useEffect(() => {
+    // Прокрутка только при открытии FAQ-вопроса, не всей секции FAQ.
+    // Тот же helper и тот же принцип, что для подкатегорий naprawy выше:
+    // шапка вопроса встаёт под фиксированный header, behavior уже 'auto'
+    // внутри scrollSubcategoryToTop.
+    if (!openFaq || openSection !== 'faq') {
+      return
+    }
+
+    const sectionRef = sectionRefs.current['faq']
+    const questionRef = subcategoryRefs.current[openFaq]
+
+    if (!sectionRef || !questionRef) {
+      return
+    }
+
+    scrollSubcategoryToTop(sectionRef, questionRef, SECTION_SCROLL_OFFSET)
+  }, [openFaq, openSection])
+
 
   // Измерение позиции столбцов цен для позиционирования "Czynsz wynajmu [zł/mies.]"
   useEffect(() => {
@@ -1718,7 +1740,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
             const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
             const headerWrapperClassName = cn(
-              "group relative w-full transition-all duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
+              // transition-shadow (not transition-all): only the hover glow below should
+              // fade. Open-state size changes on this wrapper (min-height/width/margin/
+              // transform from [data-open-header-plate]/[data-faq-role] in globals.css,
+              // plus the dojazd padding swap below) must apply instantly, not animate.
+              "group relative w-full transition-shadow duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
               isWarmParchment
                 ? ACCORDION_EDGE_CLASSES_FULL[sectionIdx % ACCORDION_EDGE_CLASSES_FULL.length]
                 : ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
