@@ -1518,13 +1518,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   }, [openSection, openFaq])
 
   useEffect(() => {
-    // Прокрутка только при открытии подкатегории
-    if (!openSubcategory || openSection !== 'naprawy') {
+    // Прокрутка при открытии подкатегории — naprawy, wynajem-drukarek и
+    // drukarka-zastepcza (все три используют общий parchment-list, см.
+    // usesSharedParchmentList/openParchmentSubcategory выше). Раньше это
+    // работало только для naprawy — на wynajem/drukarka-zastepcza открытая
+    // подкатегория никак не поднимала свою шапку под фиксированный header.
+    if (!openSection || !usesSharedParchmentList(service.slug, openSection) || !openParchmentSubcategory) {
       return
     }
 
-    const sectionRef = sectionRefs.current['naprawy']
-    const subcategoryRef = subcategoryRefs.current[openSubcategory]
+    const sectionRef = sectionRefs.current[openSection]
+    const subcategoryRef = subcategoryRefs.current[openParchmentSubcategory]
 
     if (!sectionRef || !subcategoryRef) {
       return
@@ -1534,7 +1538,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     // измерением DOM — свой RAF/setTimeout поверх него только дублировал
     // ожидание и откладывал прокрутку без пользы.
     scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
-  }, [openSubcategory, openSection])
+  }, [openParchmentSubcategory, openSection, service.slug])
 
   useEffect(() => {
     // Прокрутка только при открытии FAQ-вопроса, не всей секции FAQ.
@@ -1607,10 +1611,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         measurePriceColumns('akordeon-2', sectionHeaderRef2, setPriceColumnsPosition2)
       }
 
-      // Задержка для обеспечения рендеринга
-      const timeoutId1 = setTimeout(measureAll, 100)
-      const timeoutId2 = setTimeout(measureAll, 300)
-      const timeoutId3 = setTimeout(measureAll, 500)
+      // Один requestAnimationFrame после открытия секции — DOM уже обновлён
+      // синхронно (см. scrollSubcategoryToTop выше), кадр нужен только чтобы
+      // дождаться layout-коммита перед чтением getBoundingClientRect.
+      // Каскад setTimeout(100/300/500) не улучшал результат, только
+      // откладывал появление позиции столбцов после открытия.
+      const raf = requestAnimationFrame(measureAll)
 
       const handleResize = () => {
         measureAll()
@@ -1620,9 +1626,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
       return () => {
         window.removeEventListener('resize', handleResize)
-        clearTimeout(timeoutId1)
-        clearTimeout(timeoutId2)
-        clearTimeout(timeoutId3)
+        cancelAnimationFrame(raf)
       }
     }
 
@@ -1669,10 +1673,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         measurePriceColumnsDZ('akordeon-2', sectionHeaderRef2DZ, setPriceColumnsPosition2DZ)
       }
 
-      // Задержка для обеспечения рендеринга
-      const timeoutId1DZ = setTimeout(measureAllDZ, 100)
-      const timeoutId2DZ = setTimeout(measureAllDZ, 300)
-      const timeoutId3DZ = setTimeout(measureAllDZ, 500)
+      // Тот же принцип, что и для wynajem-drukarek выше: один RAF вместо
+      // каскада setTimeout(100/300/500).
+      const rafDZ = requestAnimationFrame(measureAllDZ)
 
       const handleResizeDZ = () => {
         measureAllDZ()
@@ -1682,9 +1685,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
       return () => {
         window.removeEventListener('resize', handleResizeDZ)
-        clearTimeout(timeoutId1DZ)
-        clearTimeout(timeoutId2DZ)
-        clearTimeout(timeoutId3DZ)
+        cancelAnimationFrame(rafDZ)
       }
     }
   }, [service.slug, openSection, sectionRefs, wynajemHeaderRefs, drukarkaZastepczaHeaderRefs])
@@ -2398,7 +2399,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               section.id === 'faq'
                                 ? 'py-1 px-2 md:px-8 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                  ? 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                  // transition-none: та же причина, что и для naprawy ниже — без
+                                  // этого унаследованный transition-all duration-200 анимировал бы
+                                  // изменение высоты шапки (на mobile отступы в
+                                  // WynajemSubcategoryHeader зависят от isSectionOpen) уже ПОСЛЕ
+                                  // открытия категории, а не мгновенно вместе с ним.
+                                  ? 'transition-none py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
                                   : isRepairSection
                                     // transition-none: базовый transition-all duration-200 выше
                                     // анимировал бы py/px между data-[state=closed] и open (~200мс),

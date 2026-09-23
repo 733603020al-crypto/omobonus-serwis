@@ -760,6 +760,19 @@
     }
   }
 
+  /* WYNAJEM/DZ — the hover-lift rules above aren't all scoped to
+     [data-state="closed"] (the icon one is, the title one at line 758 isn't),
+     so if the pointer is still resting on a row right when it opens (same
+     spot that was just clicked/tapped), the icon's hover transform reverts
+     and animates over the shared 180ms transition instead of snapping —
+     reads as the icon/title gliding into place on open. Killed only for
+     wynajem-drukarek/drukarka-zastepcza rows so naprawy's hover-lift keeps
+     working exactly as before. */
+  [data-wynajem-plain-row="true"][data-state="open"] [data-parchment-list-image] > img,
+  [data-wynajem-plain-row="true"][data-state="open"] [data-parchment-list-hover-text] {
+    transition: none;
+  }
+
   /* WARM PARCHMENT — OPEN table, price column: same width/alignment/right
      padding across every row (2nd table-cell). */
   @media (min-width: 768px) {

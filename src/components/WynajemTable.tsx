@@ -98,11 +98,6 @@ export const WynajemTable = ({
       }
     }
 
-    // Задержка для обеспечения рендеринга элементов
-    const timeoutId1 = setTimeout(measureColumns, 50)
-    const timeoutId2 = setTimeout(measureColumns, 200)
-    const timeoutId3 = setTimeout(measureColumns, 500)
-
     // Измерение структуры заголовка для всех A3/A4 подкатегорий на Drukarka Zastępcza
     const measureHeader = () => {
       const iconEl = headerRefs.icon.current
@@ -131,14 +126,22 @@ export const WynajemTable = ({
 
     // Измеряем заголовок для всех A3/A4 подкатегорий на Drukarka Zastępcza
     const a3A4SubcategoryIds = ['a3-drukarki-mono', 'a3-drukarki-kolor', 'a3-mfu-mono', 'a3-mfu-kolor', 'drukarki-mono', 'drukarki-kolor', 'mfu-mono', 'mfu-kolor']
-    if (isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)) {
-      setTimeout(measureHeader, 600)
-      setTimeout(measureHeader, 1000)
-    }
+    const shouldMeasureHeader = isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)
+
+    // Один requestAnimationFrame вместо каскада setTimeout(50/200/500 для
+    // колонок, 600/1000 для заголовка) — DOM подкатегории уже обновлён
+    // синхронно к моменту открытия, кадр нужен только чтобы дождаться
+    // layout-коммита перед чтением getBoundingClientRect.
+    const raf = requestAnimationFrame(() => {
+      measureColumns()
+      if (shouldMeasureHeader) {
+        measureHeader()
+      }
+    })
 
     const handleResize = () => {
       measureColumns()
-      if (isDrukarkaZastepcza && a3A4SubcategoryIds.includes(subcategoryId)) {
+      if (shouldMeasureHeader) {
         measureHeader()
       }
     }
@@ -147,9 +150,7 @@ export const WynajemTable = ({
 
     return () => {
       window.removeEventListener('resize', handleResize)
-      clearTimeout(timeoutId1)
-      clearTimeout(timeoutId2)
-      clearTimeout(timeoutId3)
+      cancelAnimationFrame(raf)
     }
   }, [subcategoryId, headerRefs, isDrukarkaZastepcza, effectiveSubcategoryId, a3ReferenceWidths])
 
