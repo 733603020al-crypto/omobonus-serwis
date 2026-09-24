@@ -37,6 +37,13 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
 
+  // CSS встраивается в HTML (<style>) вместо отдельных <link>: на мобильных
+  // убирает 3 блокирующих запроса перед первой отрисовкой. Стили те же и в
+  // том же порядке, поэтому вид страниц не меняется.
+  experimental: {
+    inlineCss: true,
+  },
+
   async headers() {
     return [
       // Кэш для next static файлов (js, css, chunks)
