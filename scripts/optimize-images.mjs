@@ -47,9 +47,6 @@ const FILE_QUALITY = {
   '08_serwis-ploterow-icon.webp': 65,
   '10_wynajem-drukarek-icon.webp': 65,
   '11_drukarka-zastepcza-icon.webp': 65,
-  '12_wymiana-tuszy-regeneracja-tonerow-icon.webp': 65,
-  '13_odkup-komputerow-laptopow-icon.webp': 65,
-  'Serwis_Drukarek-icon.webp': 65,
   'Serwis_i_Naprawa_Drukarek_3D-icon.webp': 65,
 
   // Team portraits
@@ -97,14 +94,12 @@ const FILE_QUALITY = {
 // Files to skip (flags, logos, umka paws — already tiny or critical for visual quality)
 const SKIP = new Set([
   'Logo_Omobonus.webp',         // 12K logo, critical visual quality
-  'Logo_Omobonus_favicon.webp', // 12K favicon
   '02_serwis-komputerow-stacjonarnych.webp', // animated hero — this script doesn't pass {animated:true} to sharp and would flatten it to a static first frame
   '03_outsourcing-it.webp', // animated hero — same reason
   'Serwis_i_Naprawa_Drukarek_3D.webp', // animated hero — same reason
-  'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp', 'by.webp',
-  'sk.webp', 'lv.webp', 'lt.webp', 'gb.webp', 'ee.webp',
-  'umka_paw_brown.webp', 'umka_paw_cbb27c.webp', 'umka_paw_dark.webp',
-  'umka_paw_exact.webp', 'umka_paw_heart_gold_clean.webp',
+  'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp',
+  'sk.webp', 'lt.webp', 'gb.webp',
+  'umka_paw_dark.webp',
   'Umka_site_400x400.webp',
 ])
 

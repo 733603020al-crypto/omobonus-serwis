@@ -1596,13 +1596,9 @@
        naprawy-open-parchment-mobile-v172.webp instead of v16. Same
        --naprawy-seg-size/--naprawy-seg-y/--naprawy-row-h/--naprawy-tail-h
        vars (service-accordion.tsx, unchanged, already computed for both
-       breakpoints). Old single stretched <img> + the flat 100% 100%
-       ::before backdrop are disabled here so only the segmented slices
-       show; CLOSED main section and desktop are untouched. */
-    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] img[src="/images/naprawy-open-parchment-desktop.webp"] {
-      display: none !important;
-    }
-
+       breakpoints). The flat 100% 100% ::before backdrop is disabled here
+       so only the segmented slices show; CLOSED main section and desktop
+       are untouched. */
     .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-header="true"]::after {
       content: none !important;
       background-image: none !important;

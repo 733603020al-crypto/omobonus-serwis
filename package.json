@@ -13,7 +13,7 @@
     "lint": "eslint",
     "export-services": "tsx export-services.ts",
     "check:i18n-sync": "tsx -r tsconfig-paths/register scripts/check-i18n-sync.ts",
-    "optimize-images": "node optimize-images.mjs",
+    "optimize-images": "node scripts/optimize-images.mjs",
     "analyze-images": "node optimize-images.js",
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force .turbo -ErrorAction SilentlyContinue; Write-Host Кеш очищен\"",
     "kill-node": "powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-Host Node.js процессы остановлены\""
@@ -46,6 +46,7 @@
     "baseline-browser-mapping": "^2.9.6",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.5.9",
+    "lighthouse": "^13.5.0",
     "playwright": "^1.62.1",
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
