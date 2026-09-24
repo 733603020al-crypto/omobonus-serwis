@@ -5,6 +5,7 @@ import { serviceHeroLabels } from "@/lib/service-hero-labels"
 import { ServicePageTemplate, type RelatedService } from "@/components/service-page-template"
 import { headings, seoBlocks, imageAlt, subServiceTitles, seoMetadata, labels } from "@/lib/services-meta-pl"
 import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from "@/lib/services-meta-shared"
+import { withSocialMeta } from "@/lib/social-meta"
 
 export async function generateStaticParams() {
   return services.map(service => ({
@@ -28,7 +29,7 @@ export async function generateMetadata({
     }
   }
 
-  return {
+  const meta = withSocialMeta('pl', {
     title: seo.title,
     description: seo.description,
     ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
@@ -46,19 +47,17 @@ export async function generateMetadata({
         'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       },
     },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
-      images: [
-        {
-          url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
-          width: 400,
-          height: 400,
-          alt: service.title,
-        },
-      ],
-    },
+  })
+
+  // withSocialMeta przywraca og:type/locale/siteName i twitter; obraz zostaje własny dla usługi
+  const ogImage = {
+    url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
+    alt: service.title,
+  }
+  return {
+    ...meta,
+    openGraph: { ...meta.openGraph, images: [ogImage] },
+    twitter: { ...meta.twitter, images: [ogImage.url] },
   }
 }
 

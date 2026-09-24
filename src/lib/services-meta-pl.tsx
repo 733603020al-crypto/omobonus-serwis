@@ -174,7 +174,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
 
   },
   'outsourcing-it': {
-    title: 'Outsourcing IT Wrocław | Omobonus obsługa informatyczna',
+    title: 'Outsourcing IT | obsługa informatyczna',
     description: 'Outsourcing IT Wrocław – obsługa informatyczna firm, wsparcie IT, helpdesk, administracja sieci i serwerów, stała opieka techniczna dla firm.',
 
   },

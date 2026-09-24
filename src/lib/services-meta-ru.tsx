@@ -166,7 +166,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
     description: '✔ Сервис и ремонт стационарных компьютеров во Вроцлаве ✔ Чистка, замена комплектующих, восстановление данных ✔ Диагностика за 15 мин ✔ Звоните! ☎ 793 759 262',
   },
   'outsourcing-it': {
-    title: 'IT-аутсорсинг Вроцлав | Omobonus IT-обслуживание',
+    title: 'IT-аутсорсинг | IT-обслуживание',
     description: 'IT-аутсорсинг Вроцлав — IT-обслуживание компаний, IT-поддержка, helpdesk, администрирование сетей и серверов, постоянная техническая поддержка для бизнеса.',
   },
   'serwis-drukarek-laserowych': {
@@ -179,7 +179,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'serwis-drukarek-3d': {
     title: 'Сервис и ремонт 3D-принтеров',
-    description: '✔ Сервис и ремонт 3D-принтеров во Вроцлаве — Bambu Lab, Creality, Anycubic, Prusa и другие ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ☎ 793 759 262',
+    description: '✔ Сервис и ремонт 3D-принтеров во Вроцлаве — Bambu Lab, Creality, Anycubic, Prusa и другие ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Звоните! ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
     title: '3D-печать на заказ',
@@ -195,7 +195,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'naprawa-drukarek': {
     title: 'Ремонт принтеров и копировальных аппаратов',
-    description: '✔ Сервис принтеров и многофункциональных устройств — HP, Epson, Canon, Brother, Xerox во Вроцлаве ✔ Диагностика за 15 мин ✔ Прайс-лист на сайте ☎ 793 759 262',
+    description: '✔ Сервис принтеров и многофункциональных устройств — HP, Epson, Canon, Brother, Xerox, Kyocera во Вроцлаве ✔ Диагностика за 15 мин ✔ Прайс-лист на сайте ☎ 793 759 262',
   },
   'wynajem-drukarek': {
     title: 'Аренда принтеров и копировальных аппаратов',
@@ -207,7 +207,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'serwis-plotterow': {
     title: 'Сервис и ремонт плоттеров',
-    description: '✔ Комплексное обслуживание плоттеров ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Ремонт и сервис плоттеров HP, Canon, Epson, … во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
   },
 }
 

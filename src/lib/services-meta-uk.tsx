@@ -158,7 +158,7 @@ export const subServiceTitlesUk: Record<string, string> = {
 
 export const seoMetadataUk: Record<string, { title: string; description: string }> = {
   'serwis-laptopow': {
-    title: 'Сервіс і ремонт ноутбуків у Вроцлаві',
+    title: 'Сервіс і ремонт ноутбуків',
     description: '✔ Сервіс і ремонт ноутбуків усіх марок у Вроцлаві ✔ Заміна матриці, диска, акумулятора, клавіатури ✔ Діагностика за 15 хв ✔ Запишіться вже сьогодні! ☎ 793 759 262',
   },
   'serwis-komputerow-stacjonarnych': {
@@ -166,7 +166,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: '✔ Сервіс і ремонт стаціонарних комп\'ютерів у Вроцлаві ✔ Чищення, заміна комплектуючих, відновлення даних ✔ Діагностика за 15 хв ✔ Телефонуйте! ☎ 793 759 262',
   },
   'outsourcing-it': {
-    title: 'Аутсорсинг IT Вроцлав | Omobonus IT-обслуговування',
+    title: 'Аутсорсинг IT | IT-обслуговування',
     description: 'Аутсорсинг IT Вроцлав – IT-обслуговування компаній, IT-підтримка, helpdesk, адміністрування мереж і серверів, постійна технічна підтримка для бізнесу.',
   },
   'serwis-drukarek-laserowych': {
@@ -179,7 +179,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   },
   'serwis-drukarek-3d': {
     title: 'Сервіс і ремонт 3D-принтерів',
-    description: '✔ Сервіс і ремонт 3D-принтерів у Вроцлаві — Bambu Lab, Creality, Anycubic, Prusa та інші ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ☎ 793 759 262',
+    description: '✔ Сервіс і ремонт 3D-принтерів у Вроцлаві — Bambu Lab, Creality, Anycubic, Prusa та інші ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ✔ Телефонуйте! ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
     title: '3D-друк на замовлення',
@@ -195,7 +195,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   },
   'naprawa-drukarek': {
     title: 'Ремонт принтерів і копіювальних апаратів',
-    description: '✔ Сервіс принтерів і багатофункціональних пристроїв — HP, Epson, Canon, Brother, Xerox у Вроцлаві ✔ Діагностика за 15 хв ✔ Прайс-лист на сайті ☎ 793 759 262',
+    description: '✔ Сервіс принтерів і багатофункціональних пристроїв — HP, Epson, Canon, Brother, Xerox, Kyocera у Вроцлаві ✔ Діагностика за 15 хв ✔ Прайс-лист на сайті ☎ 793 759 262',
   },
   'wynajem-drukarek': {
     title: 'Оренда (лізинг) принтерів і копіювальних апаратів',
@@ -207,7 +207,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   },
   'serwis-plotterow': {
     title: 'Сервіс і ремонт плотерів',
-    description: '✔ Комплексне обслуговування плотерів ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ✔ Запишіться на сервіс! ☎ 793 759 262',
+    description: '✔ Ремонт і сервіс плотерів HP, Canon, Epson, … у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ✔ Запишіться на сервіс уже сьогодні! ☎ 793 759 262',
   },
 }
 
