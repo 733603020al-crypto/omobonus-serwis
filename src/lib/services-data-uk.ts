@@ -244,7 +244,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'wynajem-drukarek',
-    title: 'Оренда (лізинг) принтерів',
+    title: 'Оренда принтерів',
     subtitle: 'Оренда друкувальних пристроїв для офісів',
     icon: manifest['10_wynajem_drukarek'],
     description: 'Оренда друкувальних пристроїв для офісів і компаній.',

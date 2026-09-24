@@ -44,7 +44,7 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
   },
   'wynajem-drukarek': {
-    h1: 'Оренда (лізинг) принтерів і копіювальних апаратів',
+    h1: 'Оренда принтерів і копіювальних апаратів',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
   'drukarka-zastepcza': {
@@ -198,7 +198,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: '✔ Сервіс принтерів і багатофункціональних пристроїв — HP, Epson, Canon, Brother, Xerox, Kyocera у Вроцлаві ✔ Діагностика за 15 хв ✔ Прайс-лист на сайті ☎ 793 759 262',
   },
   'wynajem-drukarek': {
-    title: 'Оренда (лізинг) принтерів і копіювальних апаратів',
+    title: 'Оренда принтерів і копіювальних апаратів',
     description: 'Навіть за 24 год ✔ Без довгострокових договорів ✔ Сервіс і витратні матеріали у вартості ✔ Доступність одразу! ✔ Телефонуйте і замовляйте! ☎ 793 759 262',
   },
   'drukarka-zastepcza': {
