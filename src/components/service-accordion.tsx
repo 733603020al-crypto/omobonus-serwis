@@ -3551,17 +3551,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
               >
                 {useSplitHeaderLayout ? (
                   <>
-                    {section.id === 'naprawy' && isSectionOpen(section.id) && (
-                      /* Mobile only: one shared big backdrop behind the header row AND the
-                         whole subcategory list together (unchanged behavior). Desktop uses
-                         the segmented background-image slices below instead (md:hidden here). */
-                      <img
-                        src="/images/naprawy-open-parchment-desktop.webp"
-                        alt=""
-                        aria-hidden="true"
-                        className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none md:hidden"
-                      />
-                    )}
                     <div
                       className={headerWrapperClassName}
                       data-section-id={section.id}
