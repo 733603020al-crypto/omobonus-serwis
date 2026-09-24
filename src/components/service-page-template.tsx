@@ -42,8 +42,8 @@ const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m =
 const PRINTER_HERO_SLIDES = [
   '/images/laser-carousel-v3-01.webp',
   '/images/atrament-carousel-v3-01.webp',
-  '/images/07_serwis-drukarek-iglowych.webp',
-  '/images/06_serwis-drukarek-termicznych.webp',
+  '/images/iglowe-carousel-v3-01.webp',
+  '/images/termiczne-carousel-v3-01.webp',
   '/images/08_serwis-ploterow.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
 ]
@@ -69,6 +69,38 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 // had any, while large still shifts furthest toward the logo strip below.
 // Values differ per slide, not one shared bottom line for all six.
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
+
+// serwis-drukarek-iglowych: 7 dot-matrix printer renders (slides 0–6),
+// each cropped to its own alpha bbox and downscaled to max 512px.
+const IGLOWE_HERO_SLIDES = [
+  '/images/iglowe-carousel-v3-01.webp',
+  '/images/iglowe-carousel-v3-02.webp',
+  '/images/iglowe-carousel-v3-03.webp',
+  '/images/iglowe-carousel-v3-04.webp',
+  '/images/iglowe-carousel-v3-05.webp',
+  '/images/iglowe-carousel-v3-06.webp',
+  '/images/iglowe-carousel-v3-07.webp',
+]
+// Per-slide size category (medium/small/small/medium/medium/large/large,
+// matching IGLOWE_HERO_SLIDES order 1:1) — same bands and nudges as LASER.
+const IGLOWE_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.85, 0.88, 0.95, 0.95]
+const IGLOWE_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
+
+// serwis-drukarek-termicznych: 7 label/thermal printer renders (slides 0–6),
+// each cropped to its own alpha bbox and downscaled to max 512px.
+const TERMICZNE_HERO_SLIDES = [
+  '/images/termiczne-carousel-v3-01.webp',
+  '/images/termiczne-carousel-v3-02.webp',
+  '/images/termiczne-carousel-v3-03.webp',
+  '/images/termiczne-carousel-v3-04.webp',
+  '/images/termiczne-carousel-v3-05.webp',
+  '/images/termiczne-carousel-v3-06.webp',
+  '/images/termiczne-carousel-v3-07.webp',
+]
+// Per-slide size category (medium/small/small/small/small/large/large,
+// matching TERMICZNE_HERO_SLIDES order 1:1) — same bands as LASER/IGLOWE.
+const TERMICZNE_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.74, 0.76, 0.95, 0.95]
+const TERMICZNE_VERTICAL_BIAS = [4, 0, 0, 0, 0, 13, 13]
 
 // serwis-drukarek-laserowych: 7 laser-printer/MFP renders (slides 1–7),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -400,6 +432,25 @@ export function ServicePageTemplate({
                           slides={LASER_HERO_SLIDES}
                           sizeCoefficients={LASER_SIZE_COEFFICIENTS}
                           verticalBias={LASER_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-iglowych' ? (
+                        // Same stack-carousel mechanic as naprawa-drukarek
+                        // with per-slide size bands — 7 dot-matrix printer renders
+                        // (see public/images/iglowe-carousel-v3-*.webp).
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={IGLOWE_HERO_SLIDES}
+                          sizeCoefficients={IGLOWE_SIZE_COEFFICIENTS}
+                          verticalBias={IGLOWE_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-termicznych' ? (
+                        // Same stack-carousel mechanic — 7 thermal printer
+                        // renders (see public/images/termiczne-carousel-v3-*.webp).
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={TERMICZNE_HERO_SLIDES}
+                          sizeCoefficients={TERMICZNE_SIZE_COEFFICIENTS}
+                          verticalBias={TERMICZNE_VERTICAL_BIAS}
                         />
                       ) : (
                         <Image

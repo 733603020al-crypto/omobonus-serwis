@@ -2,7 +2,7 @@
 // (ścieżki obrazów/ikon, marki, lista usług powiązanych).
 
 export const serviceImageSrc: Record<string, string> = {
-  'serwis-drukarek-termicznych': '/images/06_serwis-drukarek-termicznych.webp',
+  'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
   'outsourcing-it': '/images/03_outsourcing-it.webp',
@@ -11,7 +11,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
   'druk-3d-na-zamowienie': '/images/Druk_3D_animation.svg?v=15',
   'serwis-plotterow': '/images/08_serwis-ploterow.webp',
-  'serwis-drukarek-iglowych': '/images/07_serwis-drukarek-iglowych.webp',
+  'serwis-drukarek-iglowych': '/images/iglowe-carousel-v3-01.webp',
   'naprawa-drukarek': '/images/Serwis_Drukarek.webp',
   'wynajem-drukarek': '/images/10_wynajem-drukarek.webp',
   'drukarka-zastepcza': '/images/11_drukarka-zastepcza.webp',
@@ -30,8 +30,8 @@ export const serviceIconSrc: Record<string, string> = {
   'serwis-drukarek-3d': '/images/serwis-drukarek-3d-card-icon.webp',
   'druk-3d-na-zamowienie': '/images/druk-3d-na-zamowienie-card-icon.webp',
   'serwis-plotterow': '/images/serwis-plotterow-card-icon.webp',
-  'serwis-drukarek-termicznych': '/images/serwis-drukarek-termicznych-card-icon.webp',
-  'serwis-drukarek-iglowych': '/images/serwis-drukarek-iglowych-card-icon.webp',
+  'serwis-drukarek-termicznych': '/images/termiczne-card-icon-v3.webp',
+  'serwis-drukarek-iglowych': '/images/iglowe-card-icon-v3.webp',
   'wynajem-drukarek': '/images/wynajem-drukarek-card-icon.webp',
   'drukarka-zastepcza': '/images/drukarka-zastepcza-card-icon.webp',
   'naprawa-drukarek': '/images/naprawa-drukarek-card-icon.webp',
