@@ -313,6 +313,18 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           className="relative h-full flex items-center"
           onMouseEnter={openServices}
           onMouseLeave={scheduleCloseServices}
+          onFocus={openServices}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+              scheduleCloseServices()
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' && isServicesOpen) {
+              setIsServicesOpen(false)
+              e.currentTarget.querySelector('a')?.focus()
+            }
+          }}
         >
           <Link
             href={homeSectionHref}

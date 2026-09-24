@@ -1048,6 +1048,18 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     }
   }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
 
+  // Escape закрывает мобильное модальное окно с категориями устройств
+  useEffect(() => {
+    if (!(isCategoryTooltipOpen && isMobile && isSpecialTooltipService)) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setCategoryTooltipOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
+
   const handleSectionChange = (value: string | null) => {
     if (value === 'faq' && openSection !== 'faq' && faqItemRef.current) {
       const itemEl = faqItemRef.current
@@ -2111,6 +2123,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             e.stopPropagation()
                                           }
                                         }}
+                                        onKeyDown={(e) => {
+                                          if ((e.key === 'Enter' || e.key === ' ') && isMobile && !isSpecialTooltipService) {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            const newSet = new Set(openSmallTooltips)
+                                            if (newSet.has(section.id)) {
+                                              newSet.delete(section.id)
+                                            } else {
+                                              newSet.clear()
+                                              newSet.add(section.id)
+                                            }
+                                            setOpenSmallTooltips(newSet)
+                                          }
+                                        }}
                                       >
                                         <span className="inline sm:hidden">{isRepairAccordionLayout ? priceHeaderFull : priceHeaderShort}</span>
                                         <PopoverAnchor asChild>
@@ -2164,6 +2190,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       e.preventDefault()
                                       e.stopPropagation()
                                       setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                    }}
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault()
+                                        e.stopPropagation()
+                                        setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                      }
                                     }}
                                   >
                                     <span className="inline sm:hidden">{priceHeaderShort}</span>
@@ -2399,7 +2432,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                         >
                           <AccordionTrigger
                             className={cn(
-                              "hover:no-underline text-left w-full !focus-visible:ring-0 !focus-visible:outline-none focus-visible:ring-transparent transition-all duration-200",
+                              "hover:no-underline text-left w-full transition-all duration-200",
                               section.id === 'faq'
                                 ? 'py-1 px-2 md:px-8 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
@@ -2662,6 +2695,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 e.stopPropagation()
                                                 setCategoryTooltipOpen(!isCategoryTooltipOpen)
                                               }}
+                                              onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                  e.preventDefault()
+                                                  e.stopPropagation()
+                                                  setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                                }
+                                              }}
                                             >
                                               <span className="inline sm:hidden">{priceHeaderShort}</span>
                                               <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
@@ -2708,6 +2748,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                     if (isMobile) {
                                                       e.preventDefault()
                                                       e.stopPropagation()
+                                                    }
+                                                  }}
+                                                  onKeyDown={(e) => {
+                                                    if ((e.key === 'Enter' || e.key === ' ') && isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                      const newSet = new Set(openSmallTooltips)
+                                                      if (newSet.has(subcategory.id)) {
+                                                        newSet.delete(subcategory.id)
+                                                      } else {
+                                                        newSet.clear()
+                                                        newSet.add(subcategory.id)
+                                                      }
+                                                      setOpenSmallTooltips(newSet)
                                                     }
                                                   }}
                                                 >

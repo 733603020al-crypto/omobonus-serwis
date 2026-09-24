@@ -36,7 +36,7 @@ export function CompactSuccessModal({
       >
         <Image src={manifest.Background_1} alt="" fill sizes="360px" className="object-cover object-center" />
         <div className="absolute inset-0 bg-black/55" />
-        <div className="relative z-10 flex items-center gap-3 px-4 py-4 pr-10">
+        <div className="relative z-10 flex items-center gap-3 px-4 py-4 pr-10" role="status" aria-live="polite">
           <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-[#1c6e43]">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 10l4.5 4.5L16 6" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
