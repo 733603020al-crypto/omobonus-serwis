@@ -28,7 +28,7 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
     h2: '(HP, Epson, Canon, Brother, Lexmark, ...)',
   },
   'serwis-drukarek-3d': {
-    h1: 'Сервіс і ремонт принтерів 3D у Вроцлаві',
+    h1: 'Сервіс і ремонт 3D-принтерів у Вроцлаві',
     h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
   },
   'druk-3d-na-zamowienie': {
@@ -57,8 +57,8 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
     items: [
       'Також надаємо послуги очищення, технічного обслуговування, регенерації, ремонту головки.',
       'Також копіювальних апаратів Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba.',
-      'Ваш принтер або ксерокс — повідомимо вартість ремонту за 15 хв і виконаємо сервіс.',
-      'Забезпечуємо сервіс після гарантії у Вроцлаві (Кшики, Фабрична, Грабишинська, Псе-Поле) і околицях.',
+      'Ваш принтер або ксерокс — повідомимо вартість ремонту за 15 хв і виконаємо сервіс принтера (ксерокса).',
+      'Забезпечуємо післягарантійний сервіс у Вроцлаві (Кшики, Фабрична, Грабишинська, Псе-Поле) і околицях.',
     ],
   },
   'serwis-drukarek-termicznych': {
@@ -125,7 +125,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
   },
   'wynajem-drukarek': {
     items: [
-      'Потрібен копіювальний апарат, а коштів зараз немає? Є рішення.',
+      'Потрібен копіювальний апарат, а коштів зараз немає? Копіювальний апарат буде.',
       'Оренда копіювальних апаратів (багатофункціональних пристроїв) – це вихід із ситуації.',
     ],
   },
@@ -142,7 +142,7 @@ export const imageAltUk: Record<string, string> = {
   'outsourcing-it': 'Аутсорсинг IT',
   'serwis-drukarek-laserowych': 'Сервіс лазерних принтерів',
   'serwis-drukarek-atramentowych': 'Сервіс струменевих принтерів',
-  'serwis-drukarek-3d': 'Сервіс і ремонт принтерів 3D',
+  'serwis-drukarek-3d': 'Сервіс і ремонт 3D-принтерів',
   'druk-3d-na-zamowienie': '3D-друк на замовлення у Вроцлаві',
   'serwis-plotterow': 'Сервіс і ремонт плотерів',
   'serwis-drukarek-iglowych': 'Сервіс матричних принтерів',
@@ -178,7 +178,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: '✔ Ремонт струменевих принтерів HP, Epson, Canon, Brother, Lexmark у Вроцлаві ✔ Чищення, регенерація, ремонт головки ✔ Діагностика за 15 хв ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
-    title: 'Сервіс і ремонт принтерів 3D',
+    title: 'Сервіс і ремонт 3D-принтерів',
     description: '✔ Сервіс і ремонт 3D-принтерів у Вроцлаві — Bambu Lab, Creality, Anycubic, Prusa та інші ✔ Діагностика за 15 хв ✔ Повний прайс-лист на сайті ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
@@ -215,7 +215,7 @@ export const labelsUk: ServicePageLabels = {
   callNow: 'Зателефонувати зараз',
   sendRequest: 'Швидкий контакт',
   formHref: '/uk/kontakt',
-  fadeSlideDefault: 'Повний прайс-лист послуг, без прихованих витрат (не "ремонт від 50 zł" або "ціна до узгодження")',
+  fadeSlideDefault: 'Повний перелік послуг і цін, без прихованих витрат (не "ремонт від 50 zł" або "ціна за домовленістю")',
   fadeSlideDrukarkaZastepcza: 'Поломка? Без стресу – на час ремонту надаємо принтер на заміну без абонентської плати',
   fadeSlideWynajem: 'Принтер із сервісом і тонером у ціні — ви дбаєте лише про папір та електроенергію.',
   fadeSlideDruk3DZamowienie: 'Повний перелік послуг і цін, без прихованих витрат (не "ціна від 50 zł" або "ціна за домовленістю")',

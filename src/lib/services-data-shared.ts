@@ -158,7 +158,7 @@ export const defaultPricingSections: PricingSection[] = [
           },
           {
             service:
-              'Naprawa lub wymiana uszkodzonego panelu sterowania\n(przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD)',
+              'Naprawa lub wymiana uszkodzonego panelu sterowania, panelu dotykowego / ekranu LCD\n(przyciski, taśmy, sensory)',
           },
         ],
       },
@@ -308,7 +308,7 @@ export const faqSection: PricingSection = {
       id: 'faq-13',
       title: 'To ceny brutto czy netto?',
       items: [],
-      answer: 'Wszystkie podane ceny są netto**.',
+      answer: 'Wszystkie podane ceny są netto.',
     },
   ],
   items: [], // Pusta tablica, bo używamy subcategories

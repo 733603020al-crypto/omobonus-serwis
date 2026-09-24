@@ -87,13 +87,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
   'serwis-laptopow': {
     items: ['Diagnostyka, czyszczenie i konserwacja laptopa po zalaniu, instalacja oprogramowania.',
       'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
-      'Wymiana plyty glownej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania).',
+      'Wymiana płyty głównej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania).',
       'baterii, zasilacza, matrycy (ekranu), obudowy, zawiasów, klawiatury (klawisza), ...',]
   },
   'serwis-komputerow-stacjonarnych': {
     items: ['Diagnostyka, czyszczenie i konserwacja komputera, instalacja oprogramowania.',
       'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
-      'Wymiana plyty glownej, karty sieciowejю dysku, pamięci ram, pasty termoprzewodzącej, ',
+      'Wymiana płyty głównej, karty sieciowej, dysku, pamięci ram, pasty termoprzewodzącej, ',
       'wentylatora, portu usb (zasilania), zasilacza, obudowy, ...',]
   },
   'outsourcing-it': {

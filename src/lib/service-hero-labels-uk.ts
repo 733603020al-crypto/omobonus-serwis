@@ -17,13 +17,13 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
 
   'naprawa-drukarek': [
     'Не друкує',
-    'Затискає папір',
+    'Застрягає папір',
     'Поганий друк',
     'Чищення принтера',
   ],
 
   'serwis-drukarek-laserowych': [
-    'Затискає папір',
+    'Застрягає папір',
     'Блідий друк',
     'Бруднить сторінки',
     'Заміна тонера',
@@ -52,7 +52,7 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
 
   'serwis-drukarek-iglowych': [
     'Поганий друк',
-    'Затискає папір',
+    'Застрягає папір',
     'Заміна стрічки',
     'Ремонт головки',
   ],

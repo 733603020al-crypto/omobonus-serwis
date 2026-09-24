@@ -17,7 +17,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
     h1: 'Сервис и ремонт стационарных компьютеров',
   },
   'outsourcing-it': {
-    h1: 'IT-аутсорсинг и информационное обслуживание компаний',
+    h1: 'IT-аутсорсинг и IT-обслуживание компаний',
   },
   'serwis-drukarek-laserowych': {
     h1: 'Сервис и ремонт лазерных принтеров',
@@ -29,7 +29,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-3d': {
     h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
-    h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
+    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
   },
   'druk-3d-na-zamowienie': {
     h1: '3D-печать на заказ во Вроцлаве',
@@ -167,7 +167,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'outsourcing-it': {
     title: 'IT-аутсорсинг Вроцлав | Omobonus IT-обслуживание',
-    description: 'IT-аутсорсинг Вроцлав — информационное обслуживание компаний, IT-поддержка, helpdesk, администрирование сетей и серверов, постоянная техническая поддержка для бизнеса.',
+    description: 'IT-аутсорсинг Вроцлав — IT-обслуживание компаний, IT-поддержка, helpdesk, администрирование сетей и серверов, постоянная техническая поддержка для бизнеса.',
   },
   'serwis-drukarek-laserowych': {
     title: 'Ремонт лазерных принтеров',

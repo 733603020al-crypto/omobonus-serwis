@@ -135,7 +135,7 @@ export const faqSectionUk = (): PricingSection => ({
       id: 'faq-13',
       title: 'Це ціни брутто чи нетто?',
       items: [],
-      answer: 'Усі зазначені ціни є цінами нетто**.',
+      answer: 'Усі зазначені ціни є цінами нетто.',
     },
   ],
   items: [],

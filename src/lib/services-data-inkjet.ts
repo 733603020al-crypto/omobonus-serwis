@@ -155,7 +155,7 @@ const applyInkjetElectronicsSubcategory = (sections: PricingSection[]) => {
     },
     {
       service:
-        'Naprawa lub wymiana uszkodzonego panelu sterowania (przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD)',
+        'Naprawa lub wymiana uszkodzonego panelu sterowania (przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD',
     },
   ]
 }

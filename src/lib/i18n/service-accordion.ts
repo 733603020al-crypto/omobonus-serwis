@@ -148,7 +148,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     ],
     dojazdPromoTitle: '«БЕЗКОШТОВНО ЗАБЕРЕМО І ДОСТАВИМО»',
     konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
-    konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повну консервацію системи охолодження',
+    konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повне обслуговування системи охолодження',
     konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
@@ -168,7 +168,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       printPriceColor: ['Ціна друку A4 колір', '(понад ліміт)'],
       printPriceOverLimit: ['Ціна друку A4', '(після використання включених сторінок)'],
       scanning: 'Сканування',
-      duplex: 'Duplex',
+      duplex: 'Дуплекс',
       printSpeedPrefix: 'Швидкість друку до:',
     },
     wynajemUnits: {
@@ -236,7 +236,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       printPriceColor: ['Цена печати A4 цвет', '(сверх лимита)'],
       printPriceOverLimit: ['Цена печати A4', '(после использования включённых страниц)'],
       scanning: 'Сканирование',
-      duplex: 'Duplex',
+      duplex: 'Дуплекс',
       printSpeedPrefix: 'Скорость печати до:',
     },
     wynajemUnits: {

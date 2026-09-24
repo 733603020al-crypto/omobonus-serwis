@@ -220,7 +220,7 @@ const applyLaserElectronicsSubcategory = (sections: PricingSection[]) => {
     },
     {
       service:
-        'Naprawa lub wymiana uszkodzonego panelu sterowania\n(przyciski, taśmy, sensory), panelu dotykowego / ekranu LCD)',
+        'Naprawa lub wymiana uszkodzonego panelu sterowania, panelu dotykowego / ekranu LCD\n(przyciski, taśmy, sensory)',
     },
   ]
 }
