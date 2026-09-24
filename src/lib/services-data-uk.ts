@@ -139,7 +139,7 @@ export const servicesUk: ServiceData[] = [
   },
   {
     slug: 'serwis-drukarek-termicznych',
-    title: 'Сервіс термо- та термотрансферних принтерів етикеток',
+    title: 'Сервіс термоетикеткових принтерів',
     subtitle: 'Ремонт принтерів етикеток і штрих-кодів',
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервіс принтерів етикеток і штрих-кодів.',

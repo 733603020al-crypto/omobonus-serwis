@@ -211,7 +211,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
 
   },
   'wynajem-drukarek': {
-    title: 'Wynajem (dzierżawa) drukarek i kerokopiarek',
+    title: 'Wynajem (dzierżawa) drukarek i kserokopiarek',
     description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ dostępność od ręki! ✔ Zadzwoń i zamów! ☎ 793 759 262',
 
   },

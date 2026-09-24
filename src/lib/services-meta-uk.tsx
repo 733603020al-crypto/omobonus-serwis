@@ -136,7 +136,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
 }
 
 export const imageAltUk: Record<string, string> = {
-  'serwis-drukarek-termicznych': 'Принтер термотрансферних етикеток',
+  'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
   'serwis-komputerow-stacjonarnych': 'Сервіс стаціонарних комп\'ютерів',
   'outsourcing-it': 'Аутсорсинг IT',
@@ -186,7 +186,7 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: '✔ 3D-друк з PLA, PETG, ASA та TPU – запасні частини, прототипи, корпуси, деталі… Чесні ціни! ✔ Повний прайс-лист на сайті ✔ Навіть сьогодні! ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
-    title: 'Сервіс і ремонт термотрансферних принтерів Zebra, Dymo',
+    title: 'Сервіс і ремонт принтерів етикеток Zebra, Dymo',
     description: '✔ Сервіс принтерів термоетикеток і термотрансферних Zebra, Dymo, Godex, Sato у Вроцлаві ✔ Діагностика за 15 хв ✔ Прайс-лист на сайті ☎ 793 759 262',
   },
   'serwis-drukarek-iglowych': {
