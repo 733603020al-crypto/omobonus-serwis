@@ -315,9 +315,18 @@ export function ServicePageTemplate({
                         // Center-active carousel of laptop repair close-ups
                         // (same stack mechanic as naprawa-drukarek below, via
                         // variant="laptop" for its own contained-in-zone
-                        // geometry — see hero-printer-carousel.tsx). Replaces
-                        // the single animated laptop-screen WebP.
-                        <HeroPrinterCarousel alt={imageAlt} slides={LAPTOP_HERO_SLIDES} variant="laptop" />
+                        // geometry — see hero-printer-carousel.tsx). Slide 0
+                        // is the heavy (531KB) animated laptop-screen WebP, so
+                        // posterSrc gives it the same static-first-then-
+                        // animate treatment AnimatedHeroImage uses elsewhere
+                        // (lightweight 67KB first frame paints immediately,
+                        // the animated file loads only after window "load").
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={LAPTOP_HERO_SLIDES}
+                          variant="laptop"
+                          posterSrc="/images/serwis-laptopow-hero-static.webp"
+                        />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
                         // background, pre-cropped) — canvas/offsets/disposal/blend across all 16

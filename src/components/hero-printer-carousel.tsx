@@ -74,6 +74,7 @@ export function HeroPrinterCarousel({
   variant = 'printer',
   sizeCoefficients,
   verticalBias,
+  posterSrc,
 }: {
   slides: string[]
   alt: string
@@ -83,10 +84,20 @@ export function HeroPrinterCarousel({
   // other carousels keep their exact previous scale/position.
   sizeCoefficients?: number[]
   verticalBias?: number[]
+  // Optional lightweight static stand-in for slide 0, used only when slide 0
+  // itself is a heavy file (e.g. serwis-laptopow's animated-WebP laptop,
+  // ~530KB). When set: the poster paints immediately (fetchPriority high,
+  // small transfer) and slide 0's real file is fetched in the background
+  // only after window "load", then swapped in once cached — same
+  // static-first-then-animate contract as AnimatedHeroImage, adapted for the
+  // carousel. Every other caller leaves this undefined, so their slide 0
+  // keeps loading exactly as before (no behavior change).
+  posterSrc?: string
 }) {
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
   const [inView, setInView] = useState(true)
+  const [slide0Ready, setSlide0Ready] = useState(!posterSrc)
   const boxRef = useRef<HTMLDivElement>(null)
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
@@ -141,6 +152,36 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Poster -> real slide-0 swap, mirrors AnimatedHeroImage: only runs when a
+  // posterSrc was supplied. Fetches slide 0's own file after window "load"
+  // (so it never competes with the LCP paint or the main bundle), then swaps
+  // once it's cached, so the visible transition is instant. Skipped entirely
+  // under prefers-reduced-motion — the poster (a static first frame) stays
+  // put, saving the animated-file transfer for users who opted out of motion.
+  useEffect(() => {
+    if (!posterSrc) return
+    let cancelled = false
+
+    const swap = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      preloadImages([slides[0]]).then(() => {
+        if (!cancelled) setSlide0Ready(true)
+      })
+    }
+
+    if (document.readyState === 'complete') {
+      swap()
+    } else {
+      window.addEventListener('load', swap, { once: true })
+    }
+
+    return () => {
+      cancelled = true
+      window.removeEventListener('load', swap)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     if (!ready || !inView) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -164,7 +205,30 @@ export function HeroPrinterCarousel({
     // identical to before.
     <div className={config.bleedClass}>
       <div className={config.boxClass} role="img" aria-label={alt} ref={boxRef}>
+        {posterSrc && !slide0Ready && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={posterSrc}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            fetchPriority="high"
+            className={config.slideClass}
+            style={{
+              transform: `translate(-50%, -50%) translateX(${config.translateX[0]}%) translateY(${
+                config.translateY[0] + (verticalBias?.[0] ?? 0)
+              }%) scale(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)})`,
+              opacity: config.opacity[0],
+              zIndex: config.zIndex[0],
+            }}
+          />
+        )}
         {slides.map((src, i) => {
+          // Slide 0 stays out of the DOM until its real file is cached when a
+          // posterSrc is in play (the poster above stands in for it) — this
+          // is what keeps the heavy animated file off the critical path.
+          if (i === 0 && posterSrc && !slide0Ready) return null
+
           // Before preloading finishes, active stays 0 (the interval below is
           // gated on `ready`), so only the first slide needs to be in the DOM —
           // it renders exactly like a normal hero image, full priority, no wait.
