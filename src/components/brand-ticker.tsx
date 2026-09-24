@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
-const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string }[] = [
+// listedOnly: marka pokazywana tylko tam, gdzie jest jawnie wymieniona w brandNames
+// (nie trafia do ogólnego paska na stronie głównej / "O nas").
+const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string; listedOnly?: boolean }[] = [
   // компьютеры / ноутбуки
   { name: "apple", src: "/images/brands/apple.svg?v=2", heightClass: "h-[44px] md:h-[42px]", maxWidthClass: "max-w-[155px]" },
   { name: "microsoft", src: "/images/brands/microsoft.svg?v=2", heightClass: "h-[47px] md:h-[48px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
@@ -33,6 +35,14 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "dymo",           heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   { name: "zebra",          heightClass: "h-[88px] md:h-[38px]", maxWidthClass: "max-w-[300px] md:max-w-[170px]" },
   { name: "godex",          heightClass: "h-[35px] md:h-[34px]", maxWidthClass: "max-w-[185px] md:max-w-[189px]" },
+  { name: "tsc",            src: "/images/brands/tsc.webp",            listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
+  { name: "toshiba-tec",    src: "/images/brands/toshiba-tec.webp?v=2",    listedOnly: true, heightClass: "h-[24px] md:h-[24px]", maxWidthClass: "max-w-[220px] md:max-w-[220px]" },
+  { name: "honeywell",      listedOnly: true, heightClass: "h-[34px] md:h-[34px]", maxWidthClass: "max-w-[200px] md:max-w-[200px]" },
+  { name: "sato",           src: "/images/brands/sato.webp?v=3",       listedOnly: true, heightClass: "h-[40px] md:h-[40px]", maxWidthClass: "max-w-[140px] md:max-w-[140px]" },
+  { name: "citizen",        src: "/images/brands/citizen.svg?v=2", listedOnly: true, heightClass: "h-[32px] md:h-[32px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
+  { name: "cab",            src: "/images/brands/cab.webp",            listedOnly: true, heightClass: "h-[42px] md:h-[42px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
+  { name: "star-micronics", src: "/images/brands/star-micronics.webp?v=2", listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
+  { name: "argox",          src: "/images/brands/argox.webp",          listedOnly: true, heightClass: "h-[38px] md:h-[38px]", maxWidthClass: "max-w-[160px] md:max-w-[160px]" },
   { name: "apc", src: "/images/brands/apc.svg?v=2", heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   // drukarki 3D
   { name: "bambulab",  src: "/images/brands/bambulab.svg?v=2", heightClass: "h-[36px] md:h-[34px]", maxWidthClass: "max-w-[210px] md:max-w-[210px]" },
@@ -95,9 +105,10 @@ function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typ
 }
 
 export default function BrandTicker({ brandNames, compact }: { brandNames?: string[]; compact?: boolean } = {}) {
+  // Kolejność = kolejność w brandNames (slugBrands), żeby dało się ją ustawić per strona.
   const displayBrands = brandNames
-    ? brands.filter(b => brandNames.includes(b.name))
-    : brands
+    ? brandNames.map(n => brands.find(b => b.name === n)).filter((b): b is (typeof brands)[number] => !!b)
+    : brands.filter(b => !b.listedOnly)
   // Tyle kopii, żeby jedna "grupa" (100%/copies szerokości toru) zawsze
   // przekraczała szerokość viewportu — pętla translateX(-100%/copies) zostaje
   // wizualnie bezszwowa nawet przy krótkich listach marek (np. slugBrands).

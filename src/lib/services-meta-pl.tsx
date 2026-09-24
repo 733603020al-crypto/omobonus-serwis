@@ -3,7 +3,7 @@ import type { ServicePageLabels } from '@/components/service-page-template'
 export const headings: Record<string, { h1: string; h2?: string }> = {
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
-    h2: '(Zebra, Dymo, Godex, Sato, Brother i inne)',
+    h2: '(Zebra, TSC, Toshiba TEC, Honeywell, GoDEX, SATO, Brother, DYMO, Citizen, BIXOLON, Epson, cab, Star Micronics, OKI, Argox, …)',
   },
 
   'serwis-laptopow': {
