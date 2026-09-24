@@ -319,13 +319,14 @@ export function ServicePageTemplate({
                         // is the heavy (531KB) animated laptop-screen WebP, so
                         // posterSrc gives it the same static-first-then-
                         // animate treatment AnimatedHeroImage uses elsewhere
-                        // (lightweight 67KB first frame paints immediately,
+                        // (lightweight 38KB first frame — the animation's own
+                        // first frame, byte-for-byte — paints immediately,
                         // the animated file loads only after window "load").
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           slides={LAPTOP_HERO_SLIDES}
                           variant="laptop"
-                          posterSrc="/images/serwis-laptopow-hero-static.webp"
+                          posterSrc="/images/serwis-laptopow-hero-static-v2.webp"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
@@ -361,15 +362,17 @@ export function ServicePageTemplate({
                         // Animated WebP (rotating wireframe-fullerene print animation baked
                         // into the file, transparent background) — plain <img>, not next/image,
                         // so the optimizer doesn't rasterize it and kill the animation. 32
-                        // frames, disposal/blend must stay intact.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={imageSrc}
+                        // frames, disposal/blend must stay intact. Starts on a static first
+                        // frame (the animation's own first ANMF chunk copied byte-for-byte,
+                        // so the swap is pixel-identical) and swaps in the ~600KB animated
+                        // file after page load (see AnimatedHeroImage).
+                        <AnimatedHeroImage
+                          animatedSrc={imageSrc}
+                          staticSrc="/images/Serwis_i_Naprawa_Drukarek_3D-static.webp"
                           alt={imageAlt}
                           width={492}
                           height={497}
                           className="service-hero-image object-contain w-full h-full"
-                          fetchPriority="high"
                         />
                       ) : slug === 'naprawa-drukarek' ? (
                         // Center-active carousel of the same category hero
