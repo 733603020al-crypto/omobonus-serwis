@@ -6,6 +6,7 @@ import Image from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
+import { OutsourcingItHero } from '@/components/outsourcing-it-hero'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
@@ -344,15 +345,14 @@ export function ServicePageTemplate({
                           className="service-hero-image object-contain w-full h-full"
                         />
                       ) : slug === 'outsourcing-it' ? (
-                        // Animated WebP (orbiting connection-dots animation baked into the
-                        // file, transparent background) — canvas/offsets/disposal/blend
-                        // across all 40 frames must stay intact or the composited animation
-                        // breaks. Starts on a static first-frame fallback (mobile and desktop
-                        // alike) and swaps in the animated file after page load (see
-                        // AnimatedHeroImage) to keep LCP fast on every screen size.
-                        <AnimatedHeroImage
-                          animatedSrc={imageSrc}
-                          staticSrc="/images/03_outsourcing-it-static.webp"
+                        // Split animation (see OutsourcingItHero): static first frame for fast
+                        // LCP, then after page load a clean background plus a transparent
+                        // 40-frame overlay with only the moving orbit dots/arcs (100 ms per
+                        // frame, same as the original) — ~0.55 MB instead of 2.85 MB.
+                        <OutsourcingItHero
+                          staticSrc="/images/03_outsourcing-it-v3-static.webp"
+                          baseSrc="/images/03_outsourcing-it-v3-base.webp"
+                          overlaySrc="/images/03_outsourcing-it-v3-overlay.webp"
                           alt={imageAlt}
                           width={699}
                           height={403}
