@@ -283,6 +283,10 @@ const parseServiceText = (text: string) => {
 
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
 
+// Ответы FAQ в данных выделяют жирный фрагмент как **текст** (JSON-LD эти звёздочки срезает)
+const renderBoldMarkup = (text: string) =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part))
+
 // Общая функция для рендеринга второстепенного текста (стиль как у SEO-текста)
 // Единый стиль для всех второстепенных описаний на страницах услуг
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
@@ -3117,7 +3121,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
-                                {subcategory.answer}
+                                {renderBoldMarkup(subcategory.answer)}
                               </div>
                             ) : subcategory.items.length === 0 ? (
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
