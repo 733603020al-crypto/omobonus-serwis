@@ -25,8 +25,6 @@ const FILE_QUALITY = {
   // Service page main images (clearly visible, 512×512)
   '01_serwis-laptopow.webp': 72,
   '03_outsourcing-it.webp': 72,
-  '04_serwis-drukarek-laserowych.webp': 72,
-  '05_serwis-drukarek-atramentowych.webp': 72,
   '06_serwis-drukarek-termicznych.webp': 72,
   '07_serwis-drukarek-iglowych.webp': 72,
   '08_serwis-ploterow.webp': 72,
@@ -40,8 +38,6 @@ const FILE_QUALITY = {
   '01_serwis-laptopow-icon.webp': 65,
   '02_serwis-komputerow-stacjonarnych-icon.webp': 65,
   '03_outsourcing-it-icon.webp': 65,
-  '04_serwis-drukarek-laserowych-icon.webp': 65,
-  '05_serwis-drukarek-atramentowych-icon.webp': 65,
   '06_serwis-drukarek-termicznych-icon.webp': 65,
   '07_serwis-drukarek-iglowych-icon.webp': 65,
   '08_serwis-ploterow-icon.webp': 65,

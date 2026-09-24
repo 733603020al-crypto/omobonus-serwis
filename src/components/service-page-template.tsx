@@ -40,24 +40,23 @@ const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m =
 // naprawa-drukarek: same category hero images already used on their own
 // service pages (laser, inkjet, needle, thermal, plotter, 3D) — no new assets.
 const PRINTER_HERO_SLIDES = [
-  '/images/04_serwis-drukarek-laserowych.webp',
-  '/images/05_serwis-drukarek-atramentowych.webp',
+  '/images/laser-carousel-v3-01.webp',
+  '/images/atrament-carousel-v3-01.webp',
   '/images/07_serwis-drukarek-iglowych.webp',
   '/images/06_serwis-drukarek-termicznych.webp',
   '/images/08_serwis-ploterow.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
 ]
 
-// serwis-drukarek-atramentowych: existing hero image kept as slide 0, plus 5
-// more inkjet-printer renders (Epson/Canon), each cropped to its own alpha
-// bbox and downscaled to match, same convention as the assets above.
+// serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),
+// each cropped to its own alpha bbox and downscaled to max 512px.
 const ATRAMENT_HERO_SLIDES = [
-  '/images/05_serwis-drukarek-atramentowych.webp',
-  '/images/atrament-carousel-02b.webp',
-  '/images/atrament-carousel-03b.webp',
-  '/images/atrament-carousel-04b.webp',
-  '/images/atrament-carousel-05b.webp',
-  '/images/atrament-carousel-06b.webp',
+  '/images/atrament-carousel-v3-01.webp',
+  '/images/atrament-carousel-v3-02.webp',
+  '/images/atrament-carousel-v3-03.webp',
+  '/images/atrament-carousel-v3-04.webp',
+  '/images/atrament-carousel-v3-05.webp',
+  '/images/atrament-carousel-v3-06.webp',
 ]
 
 // Per-slide real-world size category (small/small, medium/medium,
@@ -71,17 +70,16 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 // Values differ per slide, not one shared bottom line for all six.
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
 
-// serwis-drukarek-laserowych: existing hero image kept as slide 0 (unchanged,
-// medium-sized), plus 6 more laser-printer/MFP renders, each cropped to its
-// own alpha bbox and downscaled, same convention as the atrament set above.
+// serwis-drukarek-laserowych: 7 laser-printer/MFP renders (slides 1–7),
+// each cropped to its own alpha bbox and downscaled to max 512px.
 const LASER_HERO_SLIDES = [
-  '/images/04_serwis-drukarek-laserowych.webp',
-  '/images/laser-carousel-02b.webp',
-  '/images/laser-carousel-03b.webp',
-  '/images/laser-carousel-04b.webp',
-  '/images/laser-carousel-05b.webp',
-  '/images/laser-carousel-06b.webp',
-  '/images/laser-carousel-07b.webp',
+  '/images/laser-carousel-v3-01.webp',
+  '/images/laser-carousel-v3-02.webp',
+  '/images/laser-carousel-v3-03.webp',
+  '/images/laser-carousel-v3-04.webp',
+  '/images/laser-carousel-v3-05.webp',
+  '/images/laser-carousel-v3-06.webp',
+  '/images/laser-carousel-v3-07.webp',
 ]
 
 // Per-slide real-world size category (medium/small/small/medium/medium/
@@ -383,10 +381,9 @@ export function ServicePageTemplate({
                         <HeroPrinterCarousel alt={imageAlt} slides={PRINTER_HERO_SLIDES} />
                       ) : slug === 'serwis-drukarek-atramentowych' ? (
                         // Same stack-carousel mechanic as naprawa-drukarek
-                        // (default "printer" variant, no new CSS) — the
-                        // existing hero image stays slide 0, followed by 5
-                        // more inkjet-printer renders cropped to their own
-                        // alpha bbox (see public/images/atrament-carousel-*.webp).
+                        // (default "printer" variant, no new CSS) — 6
+                        // inkjet-printer renders cropped to their own
+                        // alpha bbox (see public/images/atrament-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           slides={ATRAMENT_HERO_SLIDES}
@@ -395,10 +392,9 @@ export function ServicePageTemplate({
                         />
                       ) : slug === 'serwis-drukarek-laserowych' ? (
                         // Same stack-carousel mechanic as the atramentowych
-                        // page above — the existing hero image stays slide 0
-                        // unchanged, followed by 6 more laser-printer/MFP
+                        // page above — 7 laser-printer/MFP
                         // renders cropped to their own alpha bbox (see
-                        // public/images/laser-carousel-*.webp).
+                        // public/images/laser-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           slides={LASER_HERO_SLIDES}
