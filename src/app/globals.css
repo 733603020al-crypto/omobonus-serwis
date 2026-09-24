@@ -1219,14 +1219,14 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"]) [data-parchment-list-header="true"] {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1234,7 +1234,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-parchment-list-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1242,7 +1242,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1258,7 +1258,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1313,7 +1313,7 @@
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: -20px;
       overflow: visible;
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1330,7 +1330,7 @@
     }
 
     /* Naprawy OPEN row: no longer shows its own slice of the shared
-       naprawy-open-parchment-desktop-v17.webp canvas — that slice is
+       naprawy-open-parchment-desktop-v18.webp canvas — that slice is
        instead moved whole (see [data-parchment-list-open-segment] below) to
        sit under the table. Reuses the existing top-level warm-parchment
        CLOSED-card asset (same file/size/position already used by
@@ -1338,7 +1338,7 @@
        needed to outrank the higher-specificity base canvas-background rule
        above (~line 955). */
     [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp') !important;
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp') !important;
       background-size: var(--naprawy-seg-size) !important;
       background-repeat: no-repeat !important;
       background-position: 0 var(--naprawy-seg-y, 0px) !important;
@@ -1399,7 +1399,7 @@
       right: 0;
       width: 100%;
       height: var(--naprawy-row-h, 0px);
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
