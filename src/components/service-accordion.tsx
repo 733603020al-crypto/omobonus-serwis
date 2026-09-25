@@ -281,6 +281,15 @@ const parseServiceText = (text: string) => {
   }
 }
 
+// Separator linii (U+2028) w nazwie pakietu = nowa linia tym samym rozmiarem czcionki;
+// lista prac pod tak\u0105 nazw\u0105 dostaje odst\u0119p ~14px (PACKAGE_LIST_GAP)
+const renderServiceMain = (main: string) =>
+  main.includes('\u2028')
+    ? main.split('\u2028').map((line, i) => (i > 0 ? <span key={i}><br />{line}</span> : line))
+    : main
+// desktop: +2px kompensuje translateY(-2px) listy w otwartej sekcji
+const packageListGap = (main: string) => (main.includes('\u2028') ? 'mt-[14px] md:mt-[16px]' : undefined)
+
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
 
 // Ответы FAQ в данных выделяют жирный фрагмент как **текст** (JSON-LD эти звёздочки срезает)
@@ -394,14 +403,14 @@ export const renderDurationValue = (value: string) => (
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px') => {
+const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px', gapClass?: string) => {
   if (!text) return null
 
   // Jeśli tekst zawiera переносы строк, разбиваем и рендерим каждую строку отдельно
   if (text.includes('\n')) {
     const lines = text.split('\n').filter(line => line.trim())
     return (
-      <div className="text-[14px] text-[#cbb27c] leading-relaxed mt-1">
+      <div className={cn('text-[14px] text-[#cbb27c] leading-relaxed mt-1', gapClass)}>
         {lines.map((line, idx) => {
           const trimmed = line.trim()
           const lower = trimmed.toLowerCase()
@@ -640,9 +649,9 @@ const renderMobileServiceRow = (
       {/* Левая колонка - описание */}
       <div className={`flex-1 min-w-0 ${finalLeftIndent8px ? 'pl-2' : 'pl-0.5'}`}>
         <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
-          {parsed.main}
+          {renderServiceMain(parsed.main)}
         </div>
-        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
       </div>
       {/* Колонка - цена */}
       <div
@@ -3229,9 +3238,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 return (
                                                   <div className="service-description-text">
                                                     <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                                      {parsed.main}
+                                                      {renderServiceMain(parsed.main)}
                                                     </div>
-                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
                                                   </div>
                                                 )
                                               })()}
@@ -3302,9 +3311,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               return (
                                                 <div className="service-description-text">
                                                   <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                                    {parsed.main}
+                                                    {renderServiceMain(parsed.main)}
                                                   </div>
-                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
                                                 </div>
                                               )
                                             })()}
@@ -3518,9 +3527,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     return (
                                       <div className="service-description-text">
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                          {parsed.main}
+                                          {renderServiceMain(parsed.main)}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
                                       </div>
                                     )
                                   })()}

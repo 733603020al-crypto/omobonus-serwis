@@ -8,15 +8,7 @@ const applyThermalCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wnętrza drukarki (pył z etykiet, resztki kleju, kurz),\n• czyszczenie i kontrola rolki dociskowej (platen roller),\n• czyszczenie podstawowych elementów prowadzenia etykiet (tor papieru),\n• wstępna kontrola czujników nośnika / znacznika (gap / black mark),\n• kontrola głównych elementów mechanicznych podajnika etykiet,\n• test jakości wydruku etykiet (kody kreskowe / tekst).',
-    },
-    {
-      service:
-        'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• dokładne czyszczenie głowicy drukującej (środkiem na bazie alkoholu izopropylowego),\n• czyszczenie czujników papieru / etykiet i elementów wykrywających taśmę barwiącą,\n• czyszczenie elementów prowadzenia etykiet na całej ścieżce (rolki, prowadnice),\n• smarowanie wybranych elementów mechanicznych (zgodnie z zaleceniami producenta),\n• sprawdzenie i podstawowa kalibracja czujników nośnika (pozycja etykiety, odczyt znacznika),\n• sprawdzenie ustawień mediów i parametrów drukowania (temperatura, prędkość, ciemność).',
-    },
-    {
-      service:
-        'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• zaawansowane czyszczenie i ocena stanu głowicy drukującej (raport zużycia),\n• konserwacja i czyszczenie modułów dodatkowych: odklejak (peel-off), nawijak etykiet / taśmy (jeśli występują),\n• czyszczenie i konserwacja obcinarki (cutter) – usuwanie resztek etykiet i kleju, test cięcia,\n• dokładne czyszczenie lub regeneracja rolki dociskowej (platen) – robocizna bez ceny części,\n• reset liczników serwisowych / konserwacyjnych (jeśli technicznie możliwe w danym modelu),\n• kontrola stanu materiałów eksploatacyjnych (etykiety, taśma barwiąca / ribbon) – zalecenia wymiany,\n• kalibracja jakości wydruku (gęstość, kontrast kodów kreskowych, wyrównanie druku).',
+        'PEŁNA KONSERWACJA\u2028kompleksowe czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki oraz całego toru etykiet / taśmy termotransferowej,\n• czyszczenie głowicy termicznej, wałka dociskowego, czujników, prowadnic i elementów podawania,\n• kontrolę stanu głowicy, wałka, napędu i głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• czyszczenie i kontrolę modułów dodatkowych: obcinaka, odklejaka i nawijaka – jeśli występują,\n• kalibrację czujników i mediów oraz sprawdzenie parametrów druku,\n• test końcowy jakości wydruku, czytelności kodów kreskowych i prawidłowego podawania etykiet.',
     },
   ]
 }
