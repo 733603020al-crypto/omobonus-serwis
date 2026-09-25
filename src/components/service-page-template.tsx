@@ -27,7 +27,7 @@ const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 const HERO_SCALE: Record<string, number> = {
   'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
-  'serwis-plotterow': 1.4,
+  'serwis-plotterow': 1.2,
   'wynajem-drukarek': 1.4,
   'drukarka-zastepcza': 1.4,
   'serwis-drukarek-termicznych': 1.2,
@@ -44,7 +44,7 @@ const PRINTER_HERO_SLIDES = [
   '/images/atrament-carousel-v3-01.webp',
   '/images/iglowe-carousel-v3-01.webp',
   '/images/termiczne-carousel-v3-01.webp',
-  '/images/08_serwis-ploterow.webp',
+  '/images/plotter-carousel-v3-00.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
 ]
 
@@ -121,6 +121,36 @@ const LASER_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.85, 0.88, 0.95, 0.95]
 // Same graduated downward nudge as ATRAMENT_VERTICAL_BIAS: small stays
 // centered, medium gets a light nudge, large gets more.
 const LASER_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
+
+// serwis-plotterow: main plotter render (slide 0, same on-screen size as the
+// previous static hero at HERO_SCALE 1.4) + small/small, medium/medium,
+// large renders (see public/images/plotter-carousel-v3-*.webp).
+const PLOTTER_HERO_SLIDES = [
+  '/images/plotter-carousel-v3-00.webp',
+  '/images/plotter-carousel-v3-01.webp',
+  '/images/plotter-carousel-v3-02.webp',
+  '/images/plotter-carousel-v3-03.webp',
+  '/images/plotter-carousel-v3-04.webp',
+  '/images/plotter-carousel-v3-05.webp',
+  '/images/plotter-carousel-v3-06.webp',
+]
+const PLOTTER_SIZE_COEFFICIENTS = [0.97, 0.74, 0.76, 0.85, 0.85, 1.045, 1.14]
+const PLOTTER_VERTICAL_BIAS = [0, 0, 0, 4, 4, 13, 13]
+
+// serwis-drukarek-3d: the original animated hero (slide 0, eager LCP) + 6 3D-printer renders cropped to their own alpha bbox
+// (see public/images/druk3d-carousel-v3-*.webp) — sizes small/small,
+// medium/medium, large/large, matching DRUK3D_HERO_SLIDES order 1:1.
+const DRUK3D_HERO_SLIDES = [
+  '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+  '/images/druk3d-carousel-v3-01.webp',
+  '/images/druk3d-carousel-v3-02.webp',
+  '/images/druk3d-carousel-v3-03.webp',
+  '/images/druk3d-carousel-v3-04.webp',
+  '/images/druk3d-carousel-v3-05.webp',
+  '/images/druk3d-carousel-v3-06.webp',
+]
+const DRUK3D_SIZE_COEFFICIENTS = [0.88, 0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const DRUK3D_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
 
 // serwis-laptopow: the original cracked-screen animation (same file the
 // static AnimatedHeroImage used before this carousel existed — kept as slide
@@ -389,20 +419,22 @@ export function ServicePageTemplate({
                           className="service-hero-image object-contain w-full h-full"
                         />
                       ) : slug === 'serwis-drukarek-3d' ? (
-                        // Animated WebP (rotating wireframe-fullerene print animation baked
-                        // into the file, transparent background) — plain <img>, not next/image,
-                        // so the optimizer doesn't rasterize it and kill the animation. 32
-                        // frames, disposal/blend must stay intact. Starts on a static first
-                        // frame (the animation's own first ANMF chunk copied byte-for-byte,
-                        // so the swap is pixel-identical) and swaps in the ~600KB animated
-                        // file after page load (see AnimatedHeroImage).
-                        <AnimatedHeroImage
-                          animatedSrc={imageSrc}
-                          staticSrc="/images/Serwis_i_Naprawa_Drukarek_3D-static.webp"
+                        // Same stack-carousel mechanic as naprawa-drukarek
+                        // with per-slide size bands — 6 3D-printer renders.
+                        <HeroPrinterCarousel
                           alt={imageAlt}
-                          width={492}
-                          height={497}
-                          className="service-hero-image object-contain w-full h-full"
+                          slides={DRUK3D_HERO_SLIDES}
+                          sizeCoefficients={DRUK3D_SIZE_COEFFICIENTS}
+                          verticalBias={DRUK3D_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-plotterow' ? (
+                        // Same stack-carousel mechanic as naprawa-drukarek
+                        // with per-slide size bands — plotter renders.
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          slides={PLOTTER_HERO_SLIDES}
+                          sizeCoefficients={PLOTTER_SIZE_COEFFICIENTS}
+                          verticalBias={PLOTTER_VERTICAL_BIAS}
                         />
                       ) : slug === 'naprawa-drukarek' ? (
                         // Center-active carousel of the same category hero

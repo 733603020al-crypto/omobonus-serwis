@@ -14,7 +14,7 @@ export const manifest = {
   "05_serwis_drukarek_atramentowych": "/images/atrament-carousel-v3-01.webp",
   "06_serwis_drukarek_termicznych": "/images/termiczne-carousel-v3-01.webp",
   "07_serwis_drukarek_iglowych": "/images/iglowe-carousel-v3-01.webp",
-  "08_serwis_ploterow": "/images/08_serwis-ploterow.webp",
+  "08_serwis_ploterow": "/images/plotter-carousel-v3-00.webp",
   "09_serwis_niszczarek": "/images/09_serwis-niszczarek.webp",
   "10_wynajem_drukarek": "/images/10_wynajem-drukarek.webp",
   "11_drukarka_zastepcza": "/images/11_drukarka-zastepcza.webp",
