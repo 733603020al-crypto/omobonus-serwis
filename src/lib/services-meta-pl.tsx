@@ -31,7 +31,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-atramentowych': {
     h1: 'Serwis drukarek atramentowych',
-    h2: '(HP, Epson, Canon, Brother, Lexmark, ...)',
+    h2: '(HP, Canon, Epson, Brother, Lexmark, Ricoh, RISO, Xerox, …)',
   },
 
   'serwis-drukarek-3d': {

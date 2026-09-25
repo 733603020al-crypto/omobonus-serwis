@@ -27,7 +27,7 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "kyocera",        heightClass: "h-[36px] md:h-[34px]", maxWidthClass: "max-w-[195px] md:max-w-[190px]" },
   { name: "konica-minolta", heightClass: "h-[47px] md:h-[48px]", maxWidthClass: "max-w-[260px]" },
   { name: "sharp",          heightClass: "h-[31px] md:h-[30px]", maxWidthClass: "max-w-[155px] md:max-w-[160px]" },
-  { name: "lexmark",        heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
+  { name: "lexmark", src: "/images/brands/lexmark.webp", heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   { name: "pantum",         heightClass: "h-[42px] md:h-[43px]", maxWidthClass: "max-w-[210px] md:max-w-[216px]" },
   { name: "toshiba",        heightClass: "h-[33px] md:h-[31px]", maxWidthClass: "max-w-[175px] md:max-w-[171px]" },
   { name: "olivetti",       heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
@@ -71,6 +71,7 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "printronix", src: "/images/brands/printronix.webp", listedOnly: true },
   { name: "panasonic", src: "/images/brands/panasonic.webp", listedOnly: true },
   { name: "tallygenicom", src: "/images/brands/tallygenicom.webp", listedOnly: true },
+  { name: "riso", src: "/images/brands/riso.webp", listedOnly: true },
   { name: "qidi", src: "/images/brands/qidi.webp", listedOnly: true },
   { name: "flyingbear", src: "/images/brands/flyingbear.webp", listedOnly: true },
   { name: "raise3d", src: "/images/brands/raise3d.webp", listedOnly: true },
@@ -90,7 +91,7 @@ const LOGO_RATIO: Record<string, number> = {
   "apple": 0.814, "microsoft": 4.689, "dell": 1.000, "hp": 1.002, "lenovo": 3.000, "acer": 4.151,
   "asus": 4.673, "msi": 3.084, "fujitsu": 2.055, "samsung": 2.947, "canon": 4.781, "epson": 4.068,
   "brother": 3.740, "xerox": 3.554, "ricoh": 5.541, "kyocera": 3.985, "konica-minolta": 1.723,
-  "sharp": 7.018, "lexmark": 4.847, "pantum": 9.179, "toshiba": 6.563, "olivetti": 2.817,
+  "sharp": 7.018, "lexmark": 5.194, "pantum": 9.179, "toshiba": 6.563, "olivetti": 2.817,
   "oki": 3.369, "bixolon": 6.760, "dymo": 3.121, "zebra": 3.429, "godex": 4.196, "tsc": 2.682,
   "toshiba-tec": 9.042, "honeywell": 5.635, "sato": 3.375, "citizen": 5.473, "cab": 2.690,
   "star-micronics": 1.852, "argox": 3.908, "apc": 2.097, "bambulab": 3.593, "formlabs": 6.846,
@@ -99,7 +100,7 @@ const LOGO_RATIO: Record<string, number> = {
   "mimaki": 5.460, "roland-dg": 6.911, "mutoh": 5.742, "fujifilm": 6.065, "agfa": 3.976, "kip": 2.395,
   "durst": 3.331, "swissqprint": 5.508,
   "hb3d": 3.742, "qidi": 5.605, "flyingbear": 4.121, "raise3d": 4.21, "sovol": 5.855, "makerbot": 4.984, "uniformation": 8.387, "peopoly": 4.04, "tronxy": 8.323, "bcn3d": 3.984,
-  "dascom": 8.895, "printronix": 6.339, "panasonic": 6.806, "tallygenicom": 4.266,
+  "dascom": 8.895, "printronix": 6.339, "panasonic": 6.806, "tallygenicom": 4.266, "riso": 4.379,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
@@ -211,9 +212,10 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
     }
 
     const sectionObserver = new IntersectionObserver(([entry]) => {
-      isIntersecting = entry.isIntersecting
+      // ruch tylko gdy widać co najmniej połowę paska
+      isIntersecting = entry.intersectionRatio >= 0.5
       applyPlayState()
-    }, { threshold: 0 })
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
     sectionObserver.observe(section)
 
     document.addEventListener("visibilitychange", applyPlayState)

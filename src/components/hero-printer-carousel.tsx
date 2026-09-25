@@ -102,13 +102,13 @@ export function HeroPrinterCarousel({
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
 
-  // Stops the rotation entirely once the hero scrolls out of view — no
-  // point re-rendering a carousel nobody can see.
+  // Stops the rotation once less than half of the hero is on screen — no
+  // point rotating slides nobody really sees; resumes on scroll back.
   useEffect(() => {
     const node = boxRef.current
     if (!node || typeof IntersectionObserver === 'undefined') return
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
-      threshold: 0.1,
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.intersectionRatio >= 0.5), {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
     })
     observer.observe(node)
     return () => observer.disconnect()

@@ -139,9 +139,10 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         // Only run the scroll loop while the carousel is actually visible on screen —
         // avoids burning main-thread time on an animation nobody sees yet (e.g. during initial load).
         const sectionObserver = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) startAnimation()
+            // ruch tylko gdy widać co najmniej połowę karuzeli
+            if (entry.intersectionRatio >= 0.5) startAnimation()
             else stopAnimation()
-        }, { threshold: 0 })
+        }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
         sectionObserver.observe(container)
 
         const handleVisibility = () => {

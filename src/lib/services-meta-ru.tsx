@@ -25,7 +25,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-atramentowych': {
     h1: 'Сервис струйных принтеров',
-    h2: '(HP, Epson, Canon, Brother, Lexmark, ...)',
+    h2: '(HP, Canon, Epson, Brother, Lexmark, Ricoh, RISO, Xerox, …)',
   },
   'serwis-drukarek-3d': {
     h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
