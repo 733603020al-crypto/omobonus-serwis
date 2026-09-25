@@ -66,6 +66,20 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "phrozen",    src: "/images/brands/phrozen.svg?v=2", heightClass: "h-[70px] md:h-[62px]", maxWidthClass: "max-w-[85px] md:max-w-[76px]" },
   { name: "artillery",  src: "/images/brands/artillery.svg?v=2", heightClass: "h-[36px] md:h-[36px]", maxWidthClass: "max-w-[260px] md:max-w-[240px]" },
   { name: "snapmaker",  src: "/images/brands/snapmaker.svg?v=2", heightClass: "h-[34px] md:h-[34px]", maxWidthClass: "max-w-[155px] md:max-w-[155px]" },
+  { name: "hb3d", src: "/images/brands/hb3d.webp", listedOnly: true },
+  { name: "dascom", src: "/images/brands/dascom.webp", listedOnly: true },
+  { name: "printronix", src: "/images/brands/printronix.webp", listedOnly: true },
+  { name: "panasonic", src: "/images/brands/panasonic.webp", listedOnly: true },
+  { name: "tallygenicom", src: "/images/brands/tallygenicom.webp", listedOnly: true },
+  { name: "qidi", src: "/images/brands/qidi.webp", listedOnly: true },
+  { name: "flyingbear", src: "/images/brands/flyingbear.webp", listedOnly: true },
+  { name: "raise3d", src: "/images/brands/raise3d.webp", listedOnly: true },
+  { name: "sovol", src: "/images/brands/sovol.webp", listedOnly: true },
+  { name: "makerbot", src: "/images/brands/makerbot.webp", listedOnly: true },
+  { name: "uniformation", src: "/images/brands/uniformation.webp", listedOnly: true },
+  { name: "peopoly", src: "/images/brands/peopoly.webp", listedOnly: true },
+  { name: "tronxy", src: "/images/brands/tronxy.webp", listedOnly: true },
+  { name: "bcn3d", src: "/images/brands/bcn3d.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -84,6 +98,8 @@ const LOGO_RATIO: Record<string, number> = {
   "zortrax": 4.435, "ultimaker": 6.818, "phrozen": 1.000, "artillery": 5.242, "snapmaker": 4.386,
   "mimaki": 5.460, "roland-dg": 6.911, "mutoh": 5.742, "fujifilm": 6.065, "agfa": 3.976, "kip": 2.395,
   "durst": 3.331, "swissqprint": 5.508,
+  "hb3d": 3.742, "qidi": 5.605, "flyingbear": 4.121, "raise3d": 4.21, "sovol": 5.855, "makerbot": 4.984, "uniformation": 8.387, "peopoly": 4.04, "tronxy": 8.323, "bcn3d": 3.984,
+  "dascom": 8.895, "printronix": 6.339, "panasonic": 6.806, "tallygenicom": 4.266,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

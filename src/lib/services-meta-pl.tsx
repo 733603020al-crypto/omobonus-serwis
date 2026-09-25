@@ -36,7 +36,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-3d': {
     h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
-    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HB3D, …)',
   },
 
   // Tymczasowa kopia 'serwis-drukarek-3d' — jedyna świadomie inna wartość na tym etapie to H1
@@ -52,7 +52,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-iglowych': {
     h1: 'Serwis drukarek igłowych (Matrycowych)',
-    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
+    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
 
   'wynajem-drukarek': {

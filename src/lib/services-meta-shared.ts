@@ -48,8 +48,8 @@ export const slugBrands: Record<string, string[]> = {
   'drukarka-zastepcza': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
   'serwis-drukarek-laserowych': ['hp', 'samsung', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'oki'],
   'serwis-drukarek-atramentowych': ['hp', 'canon', 'epson', 'brother'],
-  'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon'],
-  'serwis-drukarek-3d': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
+  'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon', 'citizen', 'star-micronics', 'dascom', 'printronix', 'fujitsu', 'olivetti', 'panasonic', 'tallygenicom'],
+  'serwis-drukarek-3d': ['bambulab', 'prusa', 'creality', 'anycubic', 'elegoo', 'formlabs', 'ultimaker', 'flashforge', 'snapmaker', 'qidi', 'makerbot', 'raise3d', 'zortrax', 'sovol', 'artillery', 'phrozen', 'bcn3d', 'peopoly', 'uniformation', 'tronxy', 'flyingbear', 'hb3d'],
   'druk-3d-na-zamowienie': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
 }
 

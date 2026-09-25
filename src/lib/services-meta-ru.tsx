@@ -29,7 +29,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-3d': {
     h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
-    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HB3D, …)',
   },
   'druk-3d-na-zamowienie': {
     h1: '3D-печать на заказ во Вроцлаве',
@@ -41,7 +41,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-iglowych': {
     h1: 'Сервис игольчатых (матричных) принтеров',
-    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
+    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
   'wynajem-drukarek': {
     h1: 'Аренда принтеров и копировальных аппаратов',
