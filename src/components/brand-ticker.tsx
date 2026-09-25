@@ -35,14 +35,14 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "dymo",           heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   { name: "zebra",          heightClass: "h-[88px] md:h-[38px]", maxWidthClass: "max-w-[300px] md:max-w-[170px]" },
   { name: "godex",          heightClass: "h-[35px] md:h-[34px]", maxWidthClass: "max-w-[185px] md:max-w-[189px]" },
-  { name: "tsc",            src: "/images/brands/tsc.webp",            listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
+  { name: "tsc",            src: "/images/brands/tsc.webp",            listedOnly: true, heightClass: "h-[38px] md:h-[38px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
   { name: "toshiba-tec",    src: "/images/brands/toshiba-tec.webp?v=2",    listedOnly: true, heightClass: "h-[24px] md:h-[24px]", maxWidthClass: "max-w-[220px] md:max-w-[220px]" },
   { name: "honeywell",      listedOnly: true, heightClass: "h-[34px] md:h-[34px]", maxWidthClass: "max-w-[200px] md:max-w-[200px]" },
   { name: "sato",           src: "/images/brands/sato.webp?v=3",       listedOnly: true, heightClass: "h-[40px] md:h-[40px]", maxWidthClass: "max-w-[140px] md:max-w-[140px]" },
-  { name: "citizen",        src: "/images/brands/citizen.svg?v=2", listedOnly: true, heightClass: "h-[32px] md:h-[32px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
-  { name: "cab",            src: "/images/brands/cab.webp",            listedOnly: true, heightClass: "h-[42px] md:h-[42px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
+  { name: "citizen",        src: "/images/brands/citizen.svg?v=2", listedOnly: true, heightClass: "h-[27px] md:h-[27px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
+  { name: "cab",            src: "/images/brands/cab.webp",            listedOnly: true, heightClass: "h-[36px] md:h-[36px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
   { name: "star-micronics", src: "/images/brands/star-micronics.webp?v=2", listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
-  { name: "argox",          src: "/images/brands/argox.webp",          listedOnly: true, heightClass: "h-[38px] md:h-[38px]", maxWidthClass: "max-w-[160px] md:max-w-[160px]" },
+  { name: "argox",          src: "/images/brands/argox.webp",          listedOnly: true, heightClass: "h-[33px] md:h-[33px]", maxWidthClass: "max-w-[160px] md:max-w-[160px]" },
   { name: "apc", src: "/images/brands/apc.svg?v=2", heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   // drukarki 3D
   { name: "bambulab",  src: "/images/brands/bambulab.svg?v=2", heightClass: "h-[36px] md:h-[34px]", maxWidthClass: "max-w-[210px] md:max-w-[210px]" },
@@ -58,6 +58,22 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "artillery",  src: "/images/brands/artillery.svg?v=2", heightClass: "h-[36px] md:h-[36px]", maxWidthClass: "max-w-[260px] md:max-w-[240px]" },
   { name: "snapmaker",  src: "/images/brands/snapmaker.svg?v=2", heightClass: "h-[34px] md:h-[34px]", maxWidthClass: "max-w-[155px] md:max-w-[155px]" },
 ]
+
+// Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
+// szerokość jeszcze przed załadowaniem (loading="lazy") — bez tego doładowanie
+// logo zmieniało szerokość toru, przesuwało kolejne logo i przeliczało czas
+// animacji w trakcie ruchu (widoczne "szarpnięcie"). Przy nowej marce dopisać.
+const LOGO_RATIO: Record<string, number> = {
+  "apple": 0.814, "microsoft": 4.689, "dell": 1.000, "hp": 1.002, "lenovo": 3.000, "acer": 4.151,
+  "asus": 4.673, "msi": 3.084, "fujitsu": 2.055, "samsung": 2.947, "canon": 4.781, "epson": 4.068,
+  "brother": 3.740, "xerox": 3.554, "ricoh": 5.541, "kyocera": 3.985, "konica-minolta": 1.723,
+  "sharp": 7.018, "lexmark": 4.847, "pantum": 9.179, "toshiba": 6.563, "olivetti": 2.817,
+  "oki": 3.369, "bixolon": 6.760, "dymo": 3.121, "zebra": 3.429, "godex": 4.196, "tsc": 2.682,
+  "toshiba-tec": 9.042, "honeywell": 5.635, "sato": 3.375, "citizen": 5.473, "cab": 2.690,
+  "star-micronics": 1.852, "argox": 3.908, "apc": 2.097, "bambulab": 3.593, "formlabs": 6.846,
+  "creality": 4.352, "anycubic": 5.074, "prusa": 1.566, "flashforge": 4.853, "elegoo": 4.044,
+  "zortrax": 4.435, "ultimaker": 6.818, "phrozen": 1.000, "artillery": 5.242, "snapmaker": 4.386,
+}
 
 const gap = 48
 // Docelowa prędkość ruchu identyczna z poprzednią implementacją JS (rAF):
@@ -89,7 +105,7 @@ function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typ
             <Image
               src={brand.src ?? `/images/brands/${brand.name}.svg`}
               alt={ariaHidden ? "" : brand.name}
-              width={240}
+              width={Math.round(62 * (LOGO_RATIO[brand.name] ?? 240 / 62))}
               height={62}
               loading="lazy"
               unoptimized
