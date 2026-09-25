@@ -37,7 +37,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-plotterow': {
     h1: 'Сервис и ремонт плоттеров во Вроцлаве',
-    h2: '(плоттеры HP, Canon, Epson и другие)',
+    h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
   'serwis-drukarek-iglowych': {
     h1: 'Сервис игольчатых (матричных) принтеров',

@@ -42,7 +42,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-komputerow-stacjonarnych': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
   'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'olivetti', 'oki'],
-  'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh'],
+  'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh', 'mimaki', 'roland-dg', 'mutoh', 'oki', 'fujifilm', 'agfa', 'kip', 'durst', 'swissqprint'],
   'serwis-drukarek-termicznych': ['zebra', 'tsc', 'toshiba-tec', 'honeywell', 'godex', 'sato', 'brother', 'dymo', 'citizen', 'bixolon', 'epson', 'cab', 'star-micronics', 'oki', 'argox'],
   'wynajem-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
   'drukarka-zastepcza': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],

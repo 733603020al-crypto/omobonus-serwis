@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { LOGO_METRICS } from "@/lib/brand-logo-metrics"
 
 // listedOnly: marka pokazywana tylko tam, gdzie jest jawnie wymieniona w brandNames
 // (nie trafia do ogólnego paska na stronie głównej / "O nas").
@@ -43,6 +44,14 @@ const brands: { name: string; src?: string; label?: string; heightClass?: string
   { name: "cab",            src: "/images/brands/cab.webp",            listedOnly: true, heightClass: "h-[36px] md:h-[36px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
   { name: "star-micronics", src: "/images/brands/star-micronics.webp?v=2", listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[150px] md:max-w-[150px]" },
   { name: "argox",          src: "/images/brands/argox.webp",          listedOnly: true, heightClass: "h-[33px] md:h-[33px]", maxWidthClass: "max-w-[160px] md:max-w-[160px]" },
+  { name: "mimaki",        src: "/images/brands/mimaki.webp", listedOnly: true, heightClass: "h-[30px] md:h-[30px]", maxWidthClass: "max-w-[169px] md:max-w-[169px]" },
+  { name: "roland-dg",     src: "/images/brands/roland-dg.webp?v=2", listedOnly: true, heightClass: "h-[30px] md:h-[30px]", maxWidthClass: "max-w-[213px] md:max-w-[213px]" },
+  { name: "mutoh",         src: "/images/brands/mutoh.webp", listedOnly: true, heightClass: "h-[30px] md:h-[30px]", maxWidthClass: "max-w-[178px] md:max-w-[178px]" },
+  { name: "fujifilm",      src: "/images/brands/fujifilm.webp?v=2", listedOnly: true, heightClass: "h-[29px] md:h-[29px]", maxWidthClass: "max-w-[181px] md:max-w-[181px]" },
+  { name: "agfa",          src: "/images/brands/agfa.webp?v=2", listedOnly: true, heightClass: "h-[40px] md:h-[40px]", maxWidthClass: "max-w-[165px] md:max-w-[165px]" },
+  { name: "kip",           src: "/images/brands/kip.webp", listedOnly: true, heightClass: "h-[48px] md:h-[48px]", maxWidthClass: "max-w-[120px] md:max-w-[120px]" },
+  { name: "durst",         src: "/images/brands/durst.webp", listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[152px] md:max-w-[152px]" },
+  { name: "swissqprint",   src: "/images/brands/swissqprint.webp?v=2", listedOnly: true, heightClass: "h-[32px] md:h-[32px]", maxWidthClass: "max-w-[182px] md:max-w-[182px]" },
   { name: "apc", src: "/images/brands/apc.svg?v=2", heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   // drukarki 3D
   { name: "bambulab",  src: "/images/brands/bambulab.svg?v=2", heightClass: "h-[36px] md:h-[34px]", maxWidthClass: "max-w-[210px] md:max-w-[210px]" },
@@ -73,6 +82,26 @@ const LOGO_RATIO: Record<string, number> = {
   "star-micronics": 1.852, "argox": 3.908, "apc": 2.097, "bambulab": 3.593, "formlabs": 6.846,
   "creality": 4.352, "anycubic": 5.074, "prusa": 1.566, "flashforge": 4.853, "elegoo": 4.044,
   "zortrax": 4.435, "ultimaker": 6.818, "phrozen": 1.000, "artillery": 5.242, "snapmaker": 4.386,
+  "mimaki": 5.460, "roland-dg": 6.911, "mutoh": 5.742, "fujifilm": 6.065, "agfa": 3.976, "kip": 2.395,
+  "durst": 3.331, "swissqprint": 5.508,
+}
+
+// Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
+// zamiast ręcznych heightClass — każde logo ma podobną "wagę" wizualną:
+// długie napisy niższe, zwarte znaki wyższe, bardzo gęste/pełne trochę mniejsze.
+// BRAND_SIZE_K — ogólna wielkość wszystkich logo naraz; compact (główna, "O nas") ×0.82.
+const BRAND_SIZE_K = 66
+const BRAND_INK_EXP = 0.3
+const BRAND_MIN_H = 20
+const BRAND_MAX_H = 54
+const BRAND_MAX_W = 260
+function autoLogoHeight(name: string, compact?: boolean): number | undefined {
+  const m = LOGO_METRICS[name]
+  if (!m) return undefined
+  let h = (compact ? 0.82 : 1) * BRAND_SIZE_K / Math.sqrt(m.ratio) * Math.pow(0.5 / m.ink, BRAND_INK_EXP)
+  h = Math.min(BRAND_MAX_H, Math.max(BRAND_MIN_H, h), BRAND_MAX_W / m.ratio)
+  // wysokość pliku razem z jego pustym marginesem
+  return Math.round(h / (1 - m.pad))
 }
 
 const gap = 48
@@ -83,7 +112,9 @@ const TARGET_SPEED_PX_PER_SEC = 24
 function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; ariaHidden?: boolean }) {
   return (
     <>
-      {displayBrands.map((brand, i) => (
+      {displayBrands.map((brand, i) => {
+        const autoH = autoLogoHeight(brand.name, compact)
+        return (
         <div
           key={i}
           className={`inline-flex shrink-0 items-center h-[78px] transition-opacity duration-300 ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}`}
@@ -109,13 +140,14 @@ function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typ
               height={62}
               loading="lazy"
               unoptimized
-              className={`w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
-              style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))" }}
+              className={autoH ? "w-auto object-contain" : `w-auto object-contain ${brand.heightClass ?? ''} ${brand.maxWidthClass ?? ''}${compact ? ' md:max-h-[44px]' : ''}`}
+              style={{ filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.45))", ...(autoH ? { height: autoH } : {}) }}
               draggable={false}
             />
           )}
         </div>
-      ))}
+        )
+      })}
     </>
   )
 }
