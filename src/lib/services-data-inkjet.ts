@@ -7,11 +7,11 @@ const applyInkjetCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\n\nzakres usługi obejmuje:\n• czyszczenie zewnętrzne i wewnętrzne drukarki;\n• czyszczenie i konserwacja karetki;\n• sprawdzenie głowicy i drożności układu tuszu;\n• czyszczenie rolek pobierania papieru i czujników;\n• kontrola elementów mechanicznych;\n• czyszczenie stacji serwisowej i pompy;\n• test jakości wydruku i prawidłowego działania drukarki.',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza i obudowy drukarki,\n• czyszczenie toru papieru, rolek pobierania i czujników,\n• czyszczenie i konserwacja karetki, prowadnic i enkodera,\n• kontrola głowicy drukującej i drożności układu tuszu,\n• czyszczenie stacji serwisowej i pompy oraz kontrola mechanizmów drukarki,\n• kalibracja i końcowy test jakości wydruku oraz podawania papieru.',
     },
     {
       service:
-        'Wymiana / czyszczenie absorbera zużytego tuszu + reset licznika\n\nzakres usługi obejmuje:\n• demontaż elementów niezbędnych do uzyskania dostępu do absorbera;\n• wymianę lub dokładne oczyszczenie absorbera zużytego tuszu („pampersa”);\n• oczyszczenie komory absorbera z pozostałości tuszu;\n• kontrolę i oczyszczenie układu odprowadzania zużytego tuszu;\n• reset licznika zużytego tuszu / usunięcie blokady serwisowej;\n• ponowny montaż i test prawidłowego działania drukarki.',
+        'Wymiana / czyszczenie absorbera zużytego tuszu + reset licznika\n• demontaż elementów niezbędnych do uzyskania dostępu do absorbera;\n• wymianę lub dokładne oczyszczenie absorbera zużytego tuszu („pampersa”);\n• oczyszczenie komory absorbera z pozostałości tuszu;\n• kontrolę i oczyszczenie układu odprowadzania zużytego tuszu;\n• reset licznika zużytego tuszu / usunięcie blokady serwisowej;\n• ponowny montaż i test prawidłowego działania drukarki.',
     },
   ]
 }

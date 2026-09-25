@@ -7,15 +7,7 @@ const applyPlotterCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wszystkich prowadnic, rolek i elementów mechanicznych — usuwanie kurzu, zanieczyszczeń i resztek materiałów drukujących\n• kontrola i czyszczenie układu podawania papieru / mediów drukujących\n• sprawdzenie i usunięcie zatorów w kanałach transportu materiału\n• kontrola i czyszczenie układu atramentowego / głowicy drukującej od strony użytkownika\n• czyszczenie powierzchni roboczej i obszarów kontaktu z materiałem\n• szybki przegląd układu elektronicznego i złączy\n• test podstawowej kalibracji osi i pozycji elementów',
-    },
-    {
-      service:
-        'STANDARD (rozszerzona konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie i regulacja napinaczy, pasów napędowych i prowadnic\n• smarowanie prowadnic liniowych, rolek i elementów ruchomych\n• kontrola i czyszczenie sensorów oraz krańcówek\n• sprawdzenie systemów odsysania / wspomagających (jeśli występują)\n• kontrola i czyszczenie elementów chłodzenia (jeśli występują)',
-    },
-    {
-      service:
-        'PREMIUM (pełna konserwacja techniczna)\n\nzakres STANDARD +\n• precyzyjna kalibracja osi X/Y oraz toru transportu mediów\n• zaawansowane czyszczenie głowicy (manualne + chemiczne) i kanałów atramentu\n• pełny przegląd wszystkich podzespołów ruchomych i sensorów\n• kontrola i optymalizacja chłodzenia\n• reset i aktualizacja firmware (jeśli możliwe)\n• test wydruku i korekta parametrów po testach',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja plotera\n• dokładne czyszczenie wnętrza plotera, prowadnic, rolek i toru prowadzenia mediów,\n• czyszczenie i kontrola karetki, paska enkodera oraz elementów napędu,\n• czyszczenie i kontrola stacji serwisowej oraz układu podawania tuszu,\n• kontrola głowicy drukującej i drożności układu atramentowego,\n• kontrola i konserwacja elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• kalibracja urządzenia oraz końcowy test jakości wydruku i podawania mediów.',
     },
   ]
 }

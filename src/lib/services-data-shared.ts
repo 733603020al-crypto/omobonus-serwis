@@ -52,17 +52,7 @@ export const defaultPricingSections: PricingSection[] = [
   {
     id: 'konserwacja',
     title: 'Czyszczenie i konserwacja (bez naprawy)',
-    items: [
-      {
-        service: 'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie zewnętrzne i wewnętrzne drukarki,\n• czyszczenie i konserwacja karetek,\n• sprawdzenie głowicy,\n• czyszczenie rolek pobierania papieru,\n• kontrola elementów mechanicznych,\n• test jakości wydruku.',
-      },
-      {
-        service: 'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie czujników papieru,\n• czyszczenie stacji serwisowej.',
-      },
-      {
-        service: 'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• udrożnienie układu tuszu,\n• czyszczenie pompy/pochłaniacza tuszu,\n• reset liczników serwisowych.',
-      },
-    ],
+    items: [], // każda strona ustawia własny pakiet
   },
   {
     id: 'naprawy',

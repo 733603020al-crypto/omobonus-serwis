@@ -1,12 +1,14 @@
 import type { PricingSection } from './services-data-types'
 import { createPricingSections } from './services-data-shared'
 
+// Serwis drukarek igłowych: jeden pakiet PEŁNA KONSERWACJA (standard jak termiczne / laserowe)
 const applyNeedleCleaningSection = (sections: PricingSection[]) => {
   const cleaningSection = sections.find(section => section.id === 'konserwacja')
   if (!cleaningSection) return
   cleaningSection.items = [
     {
-      service: 'PREMIUM (pełna konserwacja)\n\nzakres usługi obejmuje:\n• konserwacja całego mechanizmu uderzeniowego (smarowanie i regulacja igieł oraz prowadnic),\n• pełne czyszczenie i regeneracja toru papieru,\n• kontrola i kalibracja mechanizmu podawania,\n• czyszczenie elektroniki z pyłu,\n• test końcowy wydruku i reset liczników serwisowych.',
+      service:
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i regulacja drukarki\n• dokładne czyszczenie wnętrza drukarki i mechanizmu drukującego,\n• czyszczenie i konserwacja toru papieru, wałków, rolek, pasków i prowadnic,\n• czyszczenie i konserwacja prowadnicy karetki oraz mechanizmu przesuwu głowicy,\n• kontrola głowicy, napędu, mechanizmu taśmy barwiącej i głównych elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• regulacja mechanizmu podawania papieru i przesuwu taśmy barwiącej,\n• końcowy test jakości wydruku i prawidłowego podawania papieru.',
     },
   ]
 }

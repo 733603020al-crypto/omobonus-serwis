@@ -49,15 +49,15 @@ export const createLaptopPricingSections = (): PricingSection[] => {
     cleaningSection.items = [
       {
         service:
-          'Laptop — standardowy\n\nZakres usługi obejmuje:\n• demontaż obudowy i układu chłodzenia;\n• dokładne czyszczenie wnętrza, wentylatorów, radiatorów i kanałów wentylacyjnych;\n• wymiana pasty termoprzewodzącej na CPU oraz GPU, jeśli występuje;\n• kontrola stanu i, w razie potrzeby, wymiana lub dopasowanie termopadów;\n• sprawdzenie działania wentylatorów oraz widocznych uszkodzeń;\n• zewnętrzne czyszczenie obudowy i klawiatury;\n• ponowny montaż oraz test temperatur i stabilności pracy.',
+          'PEŁNA KONSERWACJA — LAPTOP STANDARDOWY\u2028czyszczenie wnętrza i układu chłodzenia, wymiana materiałów termicznych\n• demontaż i dokładne czyszczenie układu chłodzenia,\n• czyszczenie wentylatorów, radiatorów i kanałów wentylacyjnych,\n• wymiana pasty termoprzewodzącej na CPU/GPU,\n• kontrola i w razie potrzeby wymiana/dopasowanie termopadów,\n• kontrola działania wentylatorów,\n• czyszczenie obudowy i klawiatury,\n• montaż oraz test temperatur i stabilności pracy.',
       },
       {
         service:
-          'Laptop — gamingowy\n\nZakres usługi obejmuje:\n• wszystkie czynności wykonywane w ramach konserwacji laptopa standardowego;\n• demontaż i dokładne czyszczenie rozbudowanego układu chłodzenia CPU/GPU;\n• czyszczenie dodatkowych wentylatorów, radiatorów i kanałów wentylacyjnych;\n• kontrola oraz, w razie potrzeby, wymiana lub dopasowanie termopadów pamięci VRAM, sekcji zasilania VRM i pozostałych chłodzonych elementów;\n• rozszerzony test obciążeniowy CPU/GPU oraz kontrola temperatur po rozgrzaniu urządzenia.',
+          'PEŁNA KONSERWACJA — LAPTOP GAMINGOWY\u2028rozszerzone czyszczenie CPU/GPU i wymiana materiałów termicznych\n• dokładne czyszczenie rozbudowanego układu chłodzenia CPU/GPU,\n• czyszczenie wentylatorów, radiatorów i kanałów wentylacyjnych,\n• wymiana pasty termoprzewodzącej na CPU/GPU,\n• kontrola i wymiana/dopasowanie termopadów VRAM, VRM i pozostałych chłodzonych elementów,\n• montaż oraz rozszerzony test obciążeniowy CPU/GPU i kontrola temperatur.',
       },
       {
         service:
-          'SPECJALNE (po zalaniu laptopa)\n\nZakres usługi obejmuje:\n• demontaż laptopa i odłączenie baterii;\n• identyfikacja zalanych obszarów i śladów korozji;\n• dokładne czyszczenie płyty głównej oraz zalanych podzespołów;\n• usunięcie pozostałości cieczy i ognisk korozji;\n• czyszczenie wnętrza, klawiatury i portów;\n• osuszenie urządzenia;\n• diagnostyka elektroniczna i test podstawowych funkcji;\n• ponowny montaż i test działania.\n\nUwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu.',
+          'CZYSZCZENIE PO ZALANIU\u2028demontaż, czyszczenie i diagnostyka urządzenia\n• demontaż laptopa i odłączenie baterii,\n• lokalizacja śladów zalania i korozji,\n• dokładne czyszczenie płyty głównej i zalanych podzespołów,\n• usuwanie pozostałości cieczy i korozji,\n• czyszczenie złączy, portów i pozostałych zalanych elementów,\n• diagnostyka elektroniki,\n• montaż i test podstawowych funkcji urządzenia.\n\nUwaga!!! Prosimy o wyłączenie laptopa i wyciągnięcie baterii natychmiast po zalaniu.',
       },
     ]
   }

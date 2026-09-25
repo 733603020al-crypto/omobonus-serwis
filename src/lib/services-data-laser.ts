@@ -7,15 +7,7 @@ const applyLaserCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wnętrza urządzenia (kurz, resztki tonera),\n• kontrola i czyszczenie rolek poboru papieru (pickup roller) / separatora,\n• kontrola głównych elementów mechanicznych,\n• szybki przegląd sekcji obrazu i utrwalania (drum / transfer / fuser),\n• test jakości wydruku.',
-    },
-    {
-      service:
-        'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie czujników papieru,\n• czyszczenie elementów prowadzenia papieru,\n• smarowanie głównych elementów mechanicznych,\n• sprawdzenie modułu bębna i pasa transferowego.',
-    },
-    {
-      service:
-        'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• czyszczenie optyki lasera,\n• konserwacja modułu bębna, pasa transferowego i fusera,\n• reset liczników serwisowych (jeśli możliwe),\n• kontrola tonera i pojemnika na zużyty toner (ew. czyszczenie / wymiana),\n• kalibracja kolorów i rejestracji.',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki z kurzu, pyłu papierowego i pozostałości tonera,\n• czyszczenie toru papieru, rolek poboru i transportu, separatorów oraz czujników,\n• czyszczenie optyki i układu laserowego,\n• kontrola stanu bębna, pasa transferowego, fusera i pojemnika na zużyty toner,\n• kontrola i konserwacja głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• kalibracja druku / kolorów (jeśli dotyczy) oraz końcowy test jakości wydruku i podawania papieru.',
     },
   ]
 }

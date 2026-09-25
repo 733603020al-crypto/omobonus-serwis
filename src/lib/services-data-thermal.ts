@@ -8,7 +8,7 @@ const applyThermalCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028kompleksowe czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki oraz całego toru etykiet / taśmy termotransferowej,\n• czyszczenie głowicy termicznej, wałka dociskowego, czujników, prowadnic i elementów podawania,\n• kontrolę stanu głowicy, wałka, napędu i głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• czyszczenie i kontrolę modułów dodatkowych: obcinaka, odklejaka i nawijaka – jeśli występują,\n• kalibrację czujników i mediów oraz sprawdzenie parametrów druku,\n• test końcowy jakości wydruku, czytelności kodów kreskowych i prawidłowego podawania etykiet.',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki oraz całego toru etykiet / taśmy termotransferowej,\n• czyszczenie głowicy termicznej, wałka dociskowego, czujników, prowadnic i elementów podawania,\n• kontrolę stanu głowicy, wałka, napędu i głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• czyszczenie i kontrolę modułów dodatkowych: obcinaka, odklejaka i nawijaka – jeśli występują,\n• kalibrację czujników i mediów oraz sprawdzenie parametrów druku,\n• test końcowy jakości wydruku, czytelności kodów kreskowych i prawidłowego podawania etykiet.',
     },
   ]
 }

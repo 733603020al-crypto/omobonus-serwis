@@ -7,11 +7,15 @@ const applyDesktopCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'Komputer — standardowy\n\nZakres usługi obejmuje:\n• demontaż paneli obudowy i przygotowanie komputera do konserwacji;\n• dokładne czyszczenie wnętrza, filtrów, wentylatorów i radiatorów;\n• czyszczenie układu chłodzenia procesora;\n• wymianę pasty termoprzewodzącej na CPU;\n• kontrolę stanu i, w razie potrzeby, wymianę lub dopasowanie standardowych termopadów;\n• kontrolę działania wentylatorów oraz przepływu powietrza;\n• ponowny montaż oraz test temperatur i stabilności pracy.',
+        'PEŁNA KONSERWACJA — KOMPUTER STANDARDOWY\u2028czyszczenie wnętrza i układu chłodzenia, wymiana materiałów termicznych\n• dokładne czyszczenie wnętrza obudowy, filtrów, wentylatorów i radiatorów,\n• czyszczenie układu chłodzenia procesora,\n• wymiana pasty termoprzewodzącej na CPU,\n• kontrola i w razie potrzeby wymiana / dopasowanie termopadów,\n• kontrola wentylatorów i przepływu powietrza,\n• montaż oraz test temperatur i stabilności pracy.',
     },
     {
       service:
-        'Komputer — gamingowy\n\nZakres usługi obejmuje:\n• wszystkie czynności wykonywane w ramach konserwacji komputera standardowego;\n• demontaż i dokładne czyszczenie rozbudowanego układu chłodzenia CPU/GPU;\n• czyszczenie dodatkowych wentylatorów, radiatorów i kanałów powietrznych;\n• demontaż i konserwację układu chłodzenia karty graficznej;\n• wymianę pasty termoprzewodzącej na GPU;\n• kontrolę stanu oraz, w razie potrzeby, wymianę lub dopasowanie standardowych termopadów pamięci VRAM i sekcji zasilania VRM;\n• rozszerzony test obciążeniowy CPU/GPU oraz kontrolę temperatur po rozgrzaniu komputera.',
+        'PEŁNA KONSERWACJA — KOMPUTER GAMINGOWY\u2028rozszerzone czyszczenie CPU/GPU i wymiana materiałów termicznych\n• dokładne czyszczenie wnętrza, filtrów, wentylatorów i radiatorów,\n• demontaż i konserwacja układu chłodzenia CPU,\n• demontaż i konserwacja układu chłodzenia karty graficznej,\n• wymiana pasty termoprzewodzącej na CPU i GPU,\n• kontrola i w razie potrzeby wymiana / dopasowanie termopadów VRAM i VRM,\n• kontrola wentylatorów i przepływu powietrza,\n• rozszerzony test obciążeniowy CPU/GPU oraz kontrola temperatur.',
+    },
+    {
+      service:
+        'CZYSZCZENIE PO ZALANIU\u2028demontaż, czyszczenie i diagnostyka urządzenia\n• demontaż komputera i odłączenie zasilania,\n• lokalizacja śladów zalania i korozji,\n• dokładne czyszczenie płyty głównej i zalanych podzespołów,\n• usuwanie pozostałości cieczy i korozji,\n• czyszczenie złączy, portów i pozostałych zalanych elementów,\n• zabezpieczenie oczyszczonych miejsc przed dalszą korozją, jeśli jest to technicznie uzasadnione,\n• diagnostyka elektroniki,\n• montaż i test podstawowych funkcji urządzenia.\n\nUwaga!!! Po zalaniu natychmiast odłącz komputer od zasilania i nie uruchamiaj go ponownie.',
     },
   ]
 }

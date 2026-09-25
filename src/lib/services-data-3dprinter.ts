@@ -7,15 +7,7 @@ const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PODSTAWOWY (przegląd i profilaktyka)\n\nzakres usługi obejmuje:\n• czyszczenie wszelkich prowadnic, śrub i osi (kurz, filament, zanieczyszczenia)\n• kontrola i czyszczenie ekstrudera oraz hotendu\n• sprawdzenie i czyszczenie stołu roboczego oraz układu podawania filamentu\n• szybki przegląd układu elektronicznego i złączy\n• test kalibracji podstawowej (osi X / Y / Z)',
-    },
-    {
-      service:
-        'STANDARD (standardowa konserwacja)\n\nzakres PODSTAWOWY +\n• czyszczenie napinaczy pasów i kontrola przesunięć osi\n• smarowanie prowadnic liniowych i śrub\n• regulacja naciągu pasków i prowadzeń\n• kontrola i czyszczenie czujników oraz krańcówek',
-    },
-    {
-      service:
-        'PREMIUM (pełna konserwacja)\n\nzakres STANDARD +\n• precyzyjna kalibracja stołu (auto-bed leveling / mesh)\n• pełne czyszczenie ekstrudera + wymiana tulei PTFE\n• kontrola i optymalizacja chłodzenia (wentylatory, kanały)\n• reset i aktualizacja firmware (jeśli możliwe)\n• test jakości wydruku i korekta parametrów',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki 3D\n• dokładne czyszczenie wnętrza drukarki, prowadnic, śrub, osi i stołu roboczego,\n• **czyszczenie hotendu, dyszy i ekstrudera oraz kontrola układu podawania filamentu,**\n• kontrola i regulacja pasków, prowadnic, łożysk i mechanizmów napędowych,\n• smarowanie wymagających tego elementów mechanicznych,\n• kontrola czujników, krańcówek, chłodzenia i podstawowych połączeń,\n• kalibracja stołu i osi oraz końcowy test wydruku i korekta parametrów.\ndla dużych przemysłowych drukarek 3D – **wycena indywidualna**',
     },
   ]
 }

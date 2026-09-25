@@ -282,13 +282,18 @@ const parseServiceText = (text: string) => {
 }
 
 // Separator linii (U+2028) w nazwie pakietu = nowa linia tym samym rozmiarem czcionki;
-// lista prac pod tak\u0105 nazw\u0105 dostaje odst\u0119p ~14px (PACKAGE_LIST_GAP)
+// fragment [[...]] widoczny tylko na desktopie (na telefonie skrócona nazwa).
+// Lista prac (•) bezpośrednio pod nazwą pakietu dostaje odstęp ~14px (packageListGap).
+const renderDesktopOnly = (line: string) =>
+  line.includes('[[')
+    ? line.split(/\[\[(.+?)\]\]/).map((part, i) => (i % 2 === 1 ? <span key={i} className="hidden md:inline">{part}</span> : part))
+    : line
 const renderServiceMain = (main: string) =>
   main.includes('\u2028')
-    ? main.split('\u2028').map((line, i) => (i > 0 ? <span key={i}><br />{line}</span> : line))
+    ? main.split('\u2028').map((line, i) => (i > 0 ? <span key={i}><br />{renderDesktopOnly(line)}</span> : renderDesktopOnly(line)))
     : main
 // desktop: +2px kompensuje translateY(-2px) listy w otwartej sekcji
-const packageListGap = (main: string) => (main.includes('\u2028') ? 'mt-[14px] md:mt-[16px]' : undefined)
+const packageListGap = (secondary: string | null) => (secondary?.trimStart().startsWith('•') ? 'mt-[14px] md:mt-[16px]' : undefined)
 
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
 
@@ -424,11 +429,11 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
             )
           }
 
-          // Special handling for "Uwaga!!!" - white text, no parens
-          if (trimmed.startsWith('Uwaga!!!')) {
+          // Ostrzeżenie „Uwaga!!!” (PL/UK/RU) - biały, pogrubiony i podkreślony tekst, bez nawiasów
+          if (/^(Uwaga|Увага|Внимание)!!!/.test(trimmed)) {
             return (
-              <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-1 first:mt-0">
-                {trimmed}
+              <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-[10px] first:mt-0">
+                <span className="font-bold underline underline-offset-[3px]">{trimmed}</span>
               </div>
             )
           }
@@ -437,14 +442,14 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
           if (trimmed.startsWith('•')) {
             return (
               <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 leading-[1.35]">
-                {trimmed}
+                {renderBoldMarkup(trimmed)}
               </div>
             )
           }
 
           return (
             <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
-              ({trimmed})
+              ({renderBoldMarkup(trimmed)})
             </div>
           )
         })}
@@ -651,7 +656,7 @@ const renderMobileServiceRow = (
         <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {renderServiceMain(parsed.main)}
         </div>
-        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
       </div>
       {/* Колонка - цена */}
       <div
@@ -3240,7 +3245,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                     <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                                       {renderServiceMain(parsed.main)}
                                                     </div>
-                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
+                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
                                                   </div>
                                                 )
                                               })()}
@@ -3313,7 +3318,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                                     {renderServiceMain(parsed.main)}
                                                   </div>
-                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
                                                 </div>
                                               )
                                             })()}
@@ -3529,7 +3534,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                           {renderServiceMain(parsed.main)}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.main))}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
                                       </div>
                                     )
                                   })()}
