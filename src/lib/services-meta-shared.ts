@@ -38,15 +38,15 @@ export const serviceIconSrc: Record<string, string> = {
 }
 
 export const slugBrands: Record<string, string[]> = {
-  'serwis-laptopow': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba'],
-  'serwis-komputerow-stacjonarnych': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung'],
+  'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi'],
+  'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
   'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'olivetti', 'oki'],
   'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh', 'mimaki', 'roland-dg', 'mutoh', 'oki', 'fujifilm', 'agfa', 'kip', 'durst', 'swissqprint'],
   'serwis-drukarek-termicznych': ['zebra', 'tsc', 'toshiba-tec', 'honeywell', 'godex', 'sato', 'brother', 'dymo', 'citizen', 'bixolon', 'epson', 'cab', 'star-micronics', 'oki', 'argox'],
   'wynajem-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
   'drukarka-zastepcza': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
-  'serwis-drukarek-laserowych': ['hp', 'samsung', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'oki'],
+  'serwis-drukarek-laserowych': ['hp', 'samsung', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'oki', 'epson', 'fujifilm', 'develop', 'utax', 'sindoh'],
   'serwis-drukarek-atramentowych': ['hp', 'canon', 'epson', 'brother', 'lexmark', 'ricoh', 'riso', 'xerox'],
   'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon', 'citizen', 'star-micronics', 'dascom', 'printronix', 'fujitsu', 'olivetti', 'panasonic', 'tallygenicom'],
   'serwis-drukarek-3d': ['bambulab', 'prusa', 'creality', 'anycubic', 'elegoo', 'formlabs', 'ultimaker', 'flashforge', 'snapmaker', 'qidi', 'makerbot', 'raise3d', 'zortrax', 'sovol', 'artillery', 'phrozen', 'bcn3d', 'peopoly', 'uniformation', 'tronxy', 'flyingbear', 'hb3d'],

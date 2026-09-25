@@ -2,7 +2,7 @@ import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image, { getImageProps } from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
@@ -24,6 +24,10 @@ const BrandTicker = dynamic(() => import('@/components/brand-ticker'))
 
 // Per-service hero image scale relative to the fixed 400px/300px zone
 // (object-contain already caps at 100%; this intentionally overflows the zone).
+const serviceBgCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', priority: true } as const
+const { props: { srcSet: serviceBgDesktopSrcSet } } = getImageProps({ ...serviceBgCommon, src: '/images/omobonus-hero2-desktop.webp', quality: 32 })
+const { props: serviceBgMobileProps } = getImageProps({ ...serviceBgCommon, src: '/images/omobonus-hero2.webp', quality: 60 })
+
 const HERO_SCALE: Record<string, number> = {
   'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
@@ -322,16 +326,13 @@ export function ServicePageTemplate({
 
         <>
           <div className="absolute inset-x-0 top-0 overflow-visible service-hero-bg-fade">
-            <Image
-              src="/images/omobonus-hero2.webp"
-              alt="Omobonus serwis"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="100vw"
-              quality={60}
-              className="object-cover object-center"
-            />
+            {/* Telefon (<768px) — bez zmian. Od 768px — ten sam kadr (te same
+                proporcje), powiększony AI do 1920px. */}
+            <picture>
+              <source media="(min-width: 768px)" srcSet={serviceBgDesktopSrcSet} sizes="100vw" />
+              {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+              <img {...serviceBgMobileProps} fetchPriority="high" className="object-cover object-center" />
+            </picture>
             <div className="absolute inset-0 bg-black/50" />
           </div>
 

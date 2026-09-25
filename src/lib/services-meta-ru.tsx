@@ -7,7 +7,7 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-laptopow': {
     h1: 'Сервис и ремонт ноутбуков во Вроцлаве',
-    h2: '',
+    h2: '', // '(Microsoft, Dell, HP, Lenovo, Acer, Asus, MSI, Fujitsu, Samsung, Toshiba, Huawei, LG, Gigabyte, Razer, HONOR, Xiaomi, MEDION, Dynabook, VAIO, Panasonic, Framework, CHUWI, …)',
   },
   'naprawa-drukarek': {
     h1: 'Сервис принтеров и многофункциональных устройств во Вроцлаве',
@@ -15,13 +15,14 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-komputerow-stacjonarnych': {
     h1: 'Сервис и ремонт стационарных компьютеров',
+    h2: '', // '(HP, Dell, Lenovo, Asus, Acer, MSI, Microsoft, Samsung, Gigabyte, Alienware, Fujitsu, Corsair, ZOTAC, MINISFORUM, Framework, …)',
   },
   'outsourcing-it': {
     h1: 'IT-аутсорсинг и IT-обслуживание компаний',
   },
   'serwis-drukarek-laserowych': {
     h1: 'Сервис и ремонт лазерных принтеров',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
+    h2: '(HP, Samsung, Canon, Brother, Xerox, Ricoh, Kyocera, Konica Minolta, Sharp, Lexmark, Pantum, Toshiba, OKI, Epson, Fujifilm, DEVELOP, UTAX, Sindoh, …)',
   },
   'serwis-drukarek-atramentowych': {
     h1: 'Сервис струйных принтеров',

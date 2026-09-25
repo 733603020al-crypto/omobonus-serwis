@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import Image from 'next/image'
+import { getImageProps } from 'next/image'
 import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
 
 interface HeroStat {
@@ -49,6 +49,10 @@ const PL: HeroT = {
   trustLabel: 'Zaufanie klientów',
 }
 
+const heroCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', priority: true } as const
+const { props: { srcSet: heroDesktopSrcSet } } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-desktop.webp', quality: 32 })
+const { props: heroMobileProps } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-mobile.webp', quality: 60 })
+
 export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
   const d = t ?? PL
 
@@ -67,16 +71,14 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
           rozpuszczało się w tle drugiej sekcji, znikając dokładnie na wysokości
           dolnej krawędzi pierwszego rzędu kart usług (per-breakpoint w hero-bg-fade). */}
       <div className="absolute inset-x-0 top-0 overflow-visible hero-bg-fade">
-        <Image
-          src="/images/omobonus-hero-mobile.webp"
-          alt="Omobonus serwis"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          quality={60}
-          className="object-cover object-center"
-        />
+        {/* Telefon (<768px) — bez zmian (640px, q60). Od 768px — ten sam kadr
+            (te same proporcje 2:3, object-cover/center), powiększony AI do 1920px;
+            ostry jest tylko pas widoczny na ekranach poziomych, reszta jak dawniej. */}
+        <picture>
+          <source media="(min-width: 768px)" srcSet={heroDesktopSrcSet} sizes="100vw" />
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+          <img {...heroMobileProps} fetchPriority="high" className="object-cover object-center" />
+        </picture>
         {/* Затемнение */}
         <div className="absolute inset-0 bg-black/50" />
       </div>

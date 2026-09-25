@@ -31,7 +31,7 @@ const nextConfig = {
     // увеличиваем TTL для оптимизированных картинок Next.js
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 дней
 
-    qualities: [40, 60, 75, 85, 90, 100],
+    qualities: [32, 40, 60, 75, 85, 90, 100],
   },
 
   compress: true,

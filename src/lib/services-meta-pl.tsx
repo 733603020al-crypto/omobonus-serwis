@@ -8,7 +8,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-laptopow': {
     h1: 'Serwis i naprawa laptopów we Wrocławiu',
-    h2: '', // '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
+    h2: '', // '(Microsoft, Dell, HP, Lenovo, Acer, Asus, MSI, Fujitsu, Samsung, Toshiba, Huawei, LG, Gigabyte, Razer, HONOR, Xiaomi, MEDION, Dynabook, VAIO, Panasonic, Framework, CHUWI, …)',
   },
 
   'naprawa-drukarek': {
@@ -18,6 +18,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-komputerow-stacjonarnych': {
     h1: 'Serwis i naprawa komputerów stacjonarnych',
+    h2: '', // '(HP, Dell, Lenovo, Asus, Acer, MSI, Microsoft, Samsung, Gigabyte, Alienware, Fujitsu, Corsair, ZOTAC, MINISFORUM, Framework, …)',
   },
 
   'outsourcing-it': {
@@ -26,7 +27,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-laserowych': {
     h1: 'Serwis i naprawa drukarek laserowych',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
+    h2: '(HP, Samsung, Canon, Brother, Xerox, Ricoh, Kyocera, Konica Minolta, Sharp, Lexmark, Pantum, Toshiba, OKI, Epson, Fujifilm, DEVELOP, UTAX, Sindoh, …)',
   },
 
   'serwis-drukarek-atramentowych': {
