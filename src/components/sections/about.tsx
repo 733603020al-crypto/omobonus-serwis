@@ -149,17 +149,17 @@ export function About({
               </FadeSlideP>
             )}
             <div className="space-y-2">
-              <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
+              <div role="heading" aria-level={2} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
                 {d.heading}
-              </h2>
+              </div>
               <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
                 {d.subheading}
               </p>
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
+              <div role="heading" aria-level={3} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
                 {d.ourCompany}
-              </h3>
+              </div>
               <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
                 {d.description[0]}
               </p>

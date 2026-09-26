@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { getImageProps } from 'next/image'
 import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
+import { HomeHeroShowcase, type HeroMid } from '@/components/sections/home-hero-showcase'
 
 interface HeroStat {
   num: string
@@ -25,6 +26,28 @@ export interface HeroT {
   googleRatingLabel: string
   trustLabel: string
   googleReviewsAriaLabel?: string
+  /** Visual H1 of the home carousel: fixed first/last line, middle line
+      follows the active slide. The SEO H1 text above stays unchanged. */
+  carouselLine1?: string
+  carouselLine3?: string
+  carouselMids?: readonly HeroMid[]
+  carouselAlt?: string
+}
+
+const CAROUSEL_PL = {
+  line1: 'Serwis i naprawa',
+  line3: 'we Wrocławiu',
+  alt: 'Serwis laptopów, komputerów i drukarek we Wrocławiu',
+  mids: [
+    { group: 'laptop', parts: ['laptopów', ''] },
+    { group: 'pc', parts: ['komputerów', 'stacjonarnych'] },
+    { group: 'printer', parts: ['drukarek', 'laserowych'] },
+    { group: 'printer', parts: ['drukarek', 'atramentowych'] },
+    { group: 'printer', parts: ['drukarek', 'igłowych'] },
+    { group: 'printer', parts: ['drukarek', 'etykiet'] },
+    { group: 'printer', parts: ['drukarek', '3D'] },
+    { group: 'plotter', parts: ['ploterów', ''] },
+  ] as readonly HeroMid[],
 }
 
 const PL: HeroT = {
@@ -85,33 +108,22 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
       </div>
 
       {/* Zawartość */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center flex flex-col items-center pb-[90px] md:pb-[110px]">
-
-        <h1 className="hidden md:block text-[52px] font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px]">
-          {d.h1Line1} <br /> {d.h1Line2} <br /> {d.h1Line3}
-        </h1>
-        <h1
-          className="md:hidden font-cormorant font-bold text-[#ffffff] max-w-[92vw]"
-          style={{ fontSize: 'clamp(32px, 10.5vw, 40px)', lineHeight: 1.05 }}
-        >
-          {d.mobileH1Line1 ? (
-            <>
-              {d.mobileH1Line1} <br /> {d.mobileH1Line2} <br /> {d.mobileH1Line3}
-            </>
-          ) : (
-            d.mobileH1
-          )}
-        </h1>
-
-        <HeroTrust t={d} locale={locale} />
+      <div className="relative z-10 w-full pb-[90px] md:pb-[110px]">
+        <HomeHeroShowcase
+          h1={`${d.h1Line1} ${d.h1Line2} ${d.h1Line3}`}
+          line1={d.carouselLine1 ?? CAROUSEL_PL.line1}
+          line3={d.carouselLine3 ?? CAROUSEL_PL.line3}
+          mids={d.carouselMids ?? CAROUSEL_PL.mids}
+          alt={d.carouselAlt ?? CAROUSEL_PL.alt}
+        />
       </div>
       {children}
     </section>
   )
 }
 
-// Tagline + trust block (Google badge + 2x2 stat cards) — shared by the home
-// hero and the /o-nas hero, so both stay identical.
+// Tagline + trust block (Google badge + 2x2 stat cards) — used by the
+// /o-nas hero (the home hero now shows the device carousel instead).
 export function HeroTrust({ t, locale = 'pl', animatedBadge = false }: { t?: HeroT; locale?: 'pl' | 'uk' | 'ru'; animatedBadge?: boolean }) {
   const d = t ?? PL
   return (

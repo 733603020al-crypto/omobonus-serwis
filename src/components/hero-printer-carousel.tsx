@@ -75,6 +75,7 @@ export function HeroPrinterCarousel({
   sizeCoefficients,
   verticalBias,
   posterSrc,
+  onActiveChange,
 }: {
   slides: string[]
   alt: string
@@ -93,6 +94,9 @@ export function HeroPrinterCarousel({
   // carousel. Every other caller leaves this undefined, so their slide 0
   // keeps loading exactly as before (no behavior change).
   posterSrc?: string
+  // Optional: reports the active slide index (home hero uses it to swap the
+  // matching word in the H1 line in sync with the slide change).
+  onActiveChange?: (index: number) => void
 }) {
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
@@ -181,6 +185,11 @@ export function HeroPrinterCarousel({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    onActiveChange?.(active)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active])
 
   useEffect(() => {
     if (!ready || !inView) return
