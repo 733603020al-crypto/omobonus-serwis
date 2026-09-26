@@ -3360,8 +3360,74 @@
 @media (min-width: 768px) {
   .hero-bg-fade { --hero-extend: 284px; }
 }
+/* ≥1024px: longer, softer dissolve ending at the bottom of the "Zobacz wszystkie
+   usługi" button. The taller box would re-center the 2:3 image and shift the
+   first screen, so the image top is pinned where it was with the old 294px box. */
 @media (min-width: 1024px) {
-  .hero-bg-fade { --hero-extend: 294px; }
+  .hero-bg-fade {
+    --hero-extend: 700px;
+    container-type: inline-size;
+    /* eased: stays visible behind both card rows, fades out gently below the button */
+    -webkit-mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 330px, black var(--hero-extend));
+    mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 330px, black var(--hero-extend));
+  }
+  .hero-bg-fade img {
+    object-position: 50% clamp(min(100svh + 635px - 150cqw, 0px), (100svh + 229px - 150cqw) / 2, 0px);
+  }
+}
+
+/* Gold outline button — light gliding along the border (principle of the
+   21st.dev "hero-section-dark" rotating conic-gradient border). The 1px border
+   keeps its width but is drawn by a masked ring instead: the same #bfa76a,
+   a dim 30% half, brightening into a light-gold head (#e6cc82, the hero
+   stat-number gold already on the site) that rotates around (3s).
+   No extra glow, no new colours; background/text/size untouched. */
+@property --gold-flow-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.gold-border-flow.gold-border-flow {
+  position: relative;
+  border-color: transparent;
+}
+.gold-border-flow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gold-flow-angle),
+    rgba(191, 167, 106, 0.3) 0%,
+    rgba(191, 167, 106, 0.3) 40%,
+    #bfa76a 78%,
+    #e6cc82 93%,
+    rgba(191, 167, 106, 0.3) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: gold-border-flow 3s linear infinite;
+  pointer-events: none;
+}
+@keyframes gold-border-flow {
+  to { --gold-flow-angle: 360deg; }
+}
+/* Same button: the light-gold glint also sweeps across the label every 4s. */
+.gold-text-sweep {
+  background: linear-gradient(110deg, #bfa76a 40%, #e6cc82 50%, #bfa76a 60%) 100% 0 / 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-text-sweep 4s ease-in-out infinite;
+}
+@keyframes gold-text-sweep {
+  0% { background-position: 100% 0; }
+  35%, 100% { background-position: 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold-border-flow::before, .gold-text-sweep { animation: none; }
 }
 
 /* Floating icon: elliptical shadow under icon creates elevation effect */

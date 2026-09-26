@@ -69,7 +69,8 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
       {/* Tło — przedłużone w dół pod sekcję i zamaskowane do przezroczystości,
           żeby to samo zdjęcie (ten sam plik, crop, object-position) płynnie
           rozpuszczało się w tle drugiej sekcji, znikając dokładnie na wysokości
-          dolnej krawędzi pierwszego rzędu kart usług (per-breakpoint w hero-bg-fade). */}
+          dolnej krawędzi pierwszego rzędu kart usług, a od 1024px — poniżej przycisku
+          „Zobacz wszystkie usługi” (per-breakpoint w hero-bg-fade). */}
       <div className="absolute inset-x-0 top-0 overflow-visible hero-bg-fade">
         {/* Telefon (<768px) — bez zmian (640px, q60). Od 768px — ten sam kadr
             (te same proporcje 2:3, object-cover/center), powiększony AI do 1920px;
