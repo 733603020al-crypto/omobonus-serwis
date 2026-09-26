@@ -268,7 +268,7 @@ export const faqSection: PricingSection = {
       id: 'faq-8',
       title: 'Czy naprawiacie komputery / drukarki wszystkich marek?',
       items: [],
-      answer: 'Tak. Naprawiamy m.in. HP, Dell, Lenovo, ASUS, Acer, MSI, Apple i inne.',
+      answer: 'Tak. Naprawiamy m.in. HP, Dell, Lenovo, ASUS, Acer, MSI i inne.',
     },
     {
       id: 'faq-9',

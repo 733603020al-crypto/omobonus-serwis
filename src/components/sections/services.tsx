@@ -8,6 +8,35 @@ import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
+// Home cards drawn as one finished picture (parchment + device + light and
+// shadow, no text) — desktop and mobile proportions. The text stays live HTML.
+const CARD_BAKED: Record<string, { d: string; m: string }> = {
+  'serwis-laptopow': { d: '/images/services-card-baked-laptop.webp', m: '/images/services-card-baked-laptop-mobile.webp' },
+  'serwis-komputerow-stacjonarnych': { d: '/images/services-card-baked-desktop.webp', m: '/images/services-card-baked-desktop-mobile.webp' },
+  'naprawa-drukarek': { d: '/images/services-card-baked-printer.webp', m: '/images/services-card-baked-printer-mobile.webp' },
+  'serwis-drukarek-3d': { d: '/images/services-card-baked-3d.webp', m: '/images/services-card-baked-3d-mobile.webp' },
+  'serwis-drukarek-termicznych': { d: '/images/services-card-baked-label.webp', m: '/images/services-card-baked-label-mobile.webp' },
+  'serwis-plotterow': { d: '/images/services-card-baked-plotter.webp', m: '/images/services-card-baked-plotter-mobile.webp' },
+}
+
+// Home cards only: larger, tightly cropped renders of each service's own
+// hero image (trimmed to the visible device, no transparent margins), with
+// their natural size and the geometry class that places them on the card.
+// Services without one fall back to the shared 160px card icon.
+const CARD_DEVICE: Record<string, { src: string; w: number; h: number; cls: string }> = {
+  'serwis-laptopow': { src: '/images/serwis-laptopow-card-device.webp', w: 399, h: 345, cls: 'tech-laptop' },
+  'serwis-komputerow-stacjonarnych': { src: '/images/serwis-komputerow-stacjonarnych-card-device.webp', w: 321, h: 400, cls: 'tech-desktop' },
+  'naprawa-drukarek': { src: '/images/naprawa-drukarek-card-device.webp', w: 400, h: 390, cls: 'tech-printer' },
+  'serwis-drukarek-3d': { src: '/images/serwis-drukarek-3d-card-device.webp', w: 394, h: 398, cls: 'tech-3d' },
+  'serwis-drukarek-termicznych': { src: '/images/serwis-drukarek-termicznych-card-device.webp', w: 400, h: 303, cls: 'tech-label' },
+  'serwis-plotterow': { src: '/images/serwis-plotterow-card-device.webp', w: 400, h: 283, cls: 'tech-plotter' },
+  'serwis-drukarek-laserowych': { src: '/images/serwis-drukarek-laserowych-card-device.webp', w: 400, h: 355, cls: 'tech-printer' },
+  'serwis-drukarek-atramentowych': { src: '/images/serwis-drukarek-atramentowych-card-device.webp', w: 399, h: 306, cls: 'tech-printer' },
+  'serwis-drukarek-iglowych': { src: '/images/serwis-drukarek-iglowych-card-device.webp', w: 400, h: 272, cls: 'tech-printer' },
+  'wynajem-drukarek': { src: '/images/wynajem-drukarek-card-device.webp', w: 400, h: 311, cls: 'tech-printer' },
+  'drukarka-zastepcza': { src: '/images/drukarka-zastepcza-card-device.webp', w: 400, h: 255, cls: 'tech-printer' },
+}
+
 // Written out as literal strings (not built via template interpolation) so
 // Tailwind's static content scanner can actually find them — a class name
 // assembled as `zakres-edge-${x}` is invisible to that scanner and the
@@ -79,6 +108,7 @@ interface ServicesT {
   cardLabels: Record<string, string>
   viewAllLabel?: string
   collapseLabel?: string
+  moreLabel?: string
 }
 
 const PL: ServicesT = {
@@ -101,6 +131,7 @@ const PL: ServicesT = {
   },
   viewAllLabel: 'Zobacz wszystkie usługi ↓',
   collapseLabel: 'Zwiń ↑',
+  moreLabel: 'Zobacz więcej',
 }
 
 export function Services({
@@ -163,39 +194,48 @@ export function Services({
         className={`
     group
     relative
-    min-h-[152px]
-    py-4 px-6
+    min-h-[168px]
+    py-4 pl-8 md:pl-10 pr-3
     flex
     items-center
     text-left
     w-full
     zakres-paper-card
+    services-home-card
     services-card-hover
+    isolate
+    ${CARD_BAKED[service.slug] ? 'services-card-baked' : ''}
     ${EDGE_CLASSES[style.edgeIdx]}
     ${ORIENT_CLASSES[style.orientIdx]}
     ${CORNER_CLASSES[style.cornerIdx]}
   `}
+        style={CARD_BAKED[service.slug] ? ({ '--baked-d': `url(${CARD_BAKED[service.slug].d})`, '--baked-m': `url(${CARD_BAKED[service.slug].m})` } as React.CSSProperties) : undefined}
       >
-        {/* Ikona — centered within its own zone (no left/right push). */}
-        <div className="z-10 h-[120px] flex-shrink-0 w-[50%]">
-          <div className="relative w-full h-full service-card-icon-zoom">
-          <Image
-            src={CARD_ICON_SRC[service.slug] ?? service.icon}
-            alt={`${service.title} Wrocław - ikona usługi serwisowej`}
-            fill
-            sizes="(max-width: 768px) 35vw, 180px"
-            className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-          />
-          </div>
-        </div>
-
-        {/* Treść — text pulled toward the left edge of its own zone
-            (close to the image), not centered in the half. */}
-        <div className="relative z-20 h-[120px] flex items-center pl-[15px] w-[50%]">
-          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
+        {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
+        <div className="relative z-[4] flex-none max-w-[48%] flex flex-col items-start">
+          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.15] text-[26px] md:text-[28px]">
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
+          <span className="mt-2 inline-flex items-center gap-1 border-b border-[#3A2817]/40 pb-px font-cormorant font-semibold text-[16px] leading-none text-[#3A2817]/80 transition-colors group-hover:text-[#3A2817] group-hover:border-[#3A2817]/70">
+            {d.moreLabel ?? 'Zobacz więcej'} <span aria-hidden="true">→</span>
+          </span>
         </div>
+
+        {/* Technika — layers over the parchment (0): brown patch (1), gold
+            glow (2), device (3); text is on top (4). Nothing here clips, so
+            the glow and shadow may spill past the parchment. */}
+        {!CARD_BAKED[service.slug] && (
+        <div className="tech-wrap">
+          <Image
+            src={CARD_DEVICE[service.slug]?.src ?? CARD_ICON_SRC[service.slug] ?? service.icon}
+            alt={`${service.title} Wrocław - ikona usługi serwisowej`}
+            width={CARD_DEVICE[service.slug]?.w ?? 160}
+            height={CARD_DEVICE[service.slug]?.h ?? 160}
+            sizes="(max-width: 768px) 50vw, 200px"
+            className={`tech-image ${CARD_DEVICE[service.slug]?.cls ?? 'tech-printer'}`}
+          />
+        </div>
+        )}
       </Link>
     )
   }
@@ -262,9 +302,9 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="inline-flex items-center justify-center min-w-[148.5px] px-[24.3px] py-[11.7px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
+                className="inline-flex items-center justify-center min-w-[260px] md:min-w-[300px] rounded-full px-[32px] py-[14px] whitespace-nowrap font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] gold-border-flow"
               >
-                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '17.1px' }}>
+                <span className="gold-text-sweep">
                   {d.viewAllLabel}
                 </span>
               </button>
@@ -286,9 +326,9 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(false)}
-                className="inline-flex items-center justify-center min-w-[148.5px] px-[24.3px] py-[11.7px] whitespace-nowrap zakres-paper-card services-card-hover zakres-edge-a zakres-orient-normal zakres-corner-bl"
+                className="inline-flex items-center justify-center min-w-[260px] md:min-w-[300px] rounded-full px-[32px] py-[14px] whitespace-nowrap font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] gold-border-flow"
               >
-                <span className="relative z-10 font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '17.1px' }}>
+                <span className="gold-text-sweep">
                   {d.collapseLabel ?? 'Zwiń ↑'}
                 </span>
               </button>

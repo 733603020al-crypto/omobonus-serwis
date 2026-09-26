@@ -115,6 +115,7 @@ export function Hero({ children, t, locale = 'pl' }: { children?: ReactNode; t?:
           line3={d.carouselLine3 ?? CAROUSEL_PL.line3}
           mids={d.carouselMids ?? CAROUSEL_PL.mids}
           alt={d.carouselAlt ?? CAROUSEL_PL.alt}
+          basePath={locale === 'pl' ? '/uslugi' : `/${locale}/uslugi`}
         />
       </div>
       {children}

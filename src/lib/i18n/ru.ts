@@ -67,6 +67,7 @@ export const ru = {
     },
     viewAllLabel: 'Показать все услуги ↓',
     collapseLabel: 'Свернуть ↑',
+    moreLabel: 'Подробнее',
   },
   footer: {
     contact: 'Контакты',

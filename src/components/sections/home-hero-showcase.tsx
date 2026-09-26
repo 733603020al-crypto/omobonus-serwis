@@ -3,6 +3,7 @@
 import '@/app/styles/service-hero.css'
 import '@/app/styles/home-hero-words.css'
 import { useLayoutEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 
 // Home hero: the same stack carousel as the service pages (image left, text
@@ -26,6 +27,17 @@ const SLIDES = [
 const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97]
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0]
 const LAPTOP_POSTER = '/images/serwis-laptopow-hero-static-v2.webp'
+// Service page opened by a click on the picture or the heading, per slide.
+const SLUGS = [
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'serwis-drukarek-laserowych',
+  'serwis-drukarek-atramentowych',
+  'serwis-drukarek-iglowych',
+  'serwis-drukarek-termicznych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+]
 
 export interface HeroMid {
   /** Device group — a group change animates the whole line letter by letter,
@@ -82,6 +94,7 @@ export function HomeHeroShowcase({
   line3,
   mids,
   alt,
+  basePath = '/uslugi',
 }: {
   /** Full H1 text for search engines/screen readers (unchanged SEO heading). */
   h1: string
@@ -89,6 +102,8 @@ export function HomeHeroShowcase({
   line3: string
   mids: readonly HeroMid[]
   alt: string
+  /** Locale prefix of the service pages, e.g. /uk/uslugi. */
+  basePath?: string
 }) {
   const [active, setActive] = useState(0)
   const [prevGroup, setPrevGroup] = useState(mids[0].group)
@@ -104,12 +119,15 @@ export function HomeHeroShowcase({
 
   const second = mid.parts[1] ? ` ${mid.parts[1]}` : ''
   const firstLen = Array.from(mid.parts[0]).length
+  // Plain link without prefetch — nothing extra is loaded until the click.
+  const href = `${basePath}/${SLUGS[active % SLUGS.length]}`
+  const label = `${line1} ${mid.parts[0]}${mid.parts[1] ? ` ${mid.parts[1]}` : ''}`
 
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
         <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
-          <div className="service-hero-image-wrap relative shrink-0" style={{ width: '120%', height: '120%' }}>
+          <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
               alt={alt}
               slides={SLIDES}
@@ -118,19 +136,19 @@ export function HomeHeroShowcase({
               posterSrc={LAPTOP_POSTER}
               onActiveChange={onActiveChange}
             />
-          </div>
+          </Link>
         </div>
         <div className="text-center flex flex-col items-center justify-center relative z-10 mt-14 md:mt-0">
           <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[clamp(26px,8vw,40px)] md:text-[52px] leading-[1.15]">
             <span className="sr-only">{h1}</span>
-            <span aria-hidden="true">
+            <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
               <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
               <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">
                 <AnimatedPart text={mid.parts[0]} mode={mode} />
                 <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} />
               </span>
               <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
-            </span>
+            </Link>
           </h1>
         </div>
       </div>

@@ -106,6 +106,7 @@
     },
     viewAllLabel: 'Переглянути всі послуги ↓',
     collapseLabel: 'Згорнути ↑',
+    moreLabel: 'Детальніше',
   },
   contact: {
     formTitle: 'Форма заявки',

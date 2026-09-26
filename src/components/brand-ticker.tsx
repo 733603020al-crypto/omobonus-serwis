@@ -6,9 +6,11 @@ import { LOGO_METRICS } from "@/lib/brand-logo-metrics"
 
 // listedOnly: marka pokazywana tylko tam, gdzie jest jawnie wymieniona w brandNames
 // (nie trafia do ogólnego paska na stronie głównej / "O nas").
-const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string; listedOnly?: boolean }[] = [
+// hidden: logo zostaje w projekcie, ale na razie nigdzie się nie wyświetla
+// (np. Apple — tych urządzeń jeszcze nie naprawiamy).
+const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string; listedOnly?: boolean; hidden?: boolean }[] = [
   // компьютеры / ноутбуки
-  { name: "apple", src: "/images/brands/apple.svg?v=2", heightClass: "h-[44px] md:h-[42px]", maxWidthClass: "max-w-[155px]" },
+  { name: "apple", src: "/images/brands/apple.svg?v=2", hidden: true, heightClass: "h-[44px] md:h-[42px]", maxWidthClass: "max-w-[155px]" },
   { name: "microsoft", src: "/images/brands/microsoft.svg?v=2", heightClass: "h-[47px] md:h-[48px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
   { name: "dell", src: "/images/brands/dell.svg?v=4", heightClass: "h-[55px] md:h-[60px]", maxWidthClass: "max-w-[155px] md:max-w-[170px]" },
   { name: "hp",             heightClass: "h-[55px] md:h-[60px]", maxWidthClass: "max-w-[155px] md:max-w-[170px]" },
@@ -193,8 +195,8 @@ function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typ
 export default function BrandTicker({ brandNames, compact }: { brandNames?: string[]; compact?: boolean } = {}) {
   // Kolejność = kolejność w brandNames (slugBrands), żeby dało się ją ustawić per strona.
   const displayBrands = brandNames
-    ? brandNames.map(n => brands.find(b => b.name === n)).filter((b): b is (typeof brands)[number] => !!b)
-    : brands.filter(b => !b.listedOnly)
+    ? brandNames.map(n => brands.find(b => b.name === n)).filter((b): b is (typeof brands)[number] => !!b && !b.hidden)
+    : brands.filter(b => !b.listedOnly && !b.hidden)
   // Tyle kopii, żeby jedna "grupa" (100%/copies szerokości toru) zawsze
   // przekraczała szerokość viewportu — pętla translateX(-100%/copies) zostaje
   // wizualnie bezszwowa nawet przy krótkich listach marek (np. slugBrands).

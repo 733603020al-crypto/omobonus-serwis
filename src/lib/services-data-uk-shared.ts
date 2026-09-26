@@ -105,7 +105,7 @@ export const faqSectionUk = (): PricingSection => ({
       id: 'faq-8',
       title: 'Чи ремонтуєте комп\'ютери / принтери всіх марок?',
       items: [],
-      answer: 'Так. Ремонтуємо зокрема HP, Dell, Lenovo, ASUS, Acer, MSI, Apple та інші.',
+      answer: 'Так. Ремонтуємо зокрема HP, Dell, Lenovo, ASUS, Acer, MSI та інші.',
     },
     {
       id: 'faq-9',

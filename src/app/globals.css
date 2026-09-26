@@ -13,6 +13,7 @@
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
   --bg-zakres-parchment: url('/images/services-card-parchment.webp');
+  --bg-zakres-home-parchment: url('/images/services-card-parchment-home.webp');
   --bg-accordion-parchment: url('/images/accordion-parchment-tile-desktop.avif');
 
   /* Shared OPEN-state contour shadow, exact value of .parchment-shadow-icon-open.
@@ -31,6 +32,7 @@
     --bg-services-card: url('/images/services-background-mobile.webp');
     --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
     --bg-zakres-parchment: url('/images/services-card-parchment-mobile.avif');
+    --bg-zakres-home-parchment: url('/images/services-card-parchment-home-mobile.avif');
     --bg-accordion-parchment: url('/images/accordion-parchment-tile-mobile.avif');
   }
 }
@@ -367,6 +369,97 @@
   .service-card-icon-zoom {
     transform: scale(1.45);
   }
+
+  /* Home "SERWIS I NAPRAWA" cards: the device lies over the parchment —
+     soft dark-brown shadow to the right/down (brown of the card hover
+     shadow), plus a very faint glow in the site gold underneath. */
+  /* Home cards use a copy of the parchment with the wide torn strip on
+     one side trimmed, so the torn edge is equally thin all around. */
+  .services-home-card::before {
+    background-image: var(--bg-zakres-home-parchment);
+  }
+  /* Device layer of the home cards: covers the whole card, clips nothing. */
+  .tech-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+  /* Large brown-amber patch behind the device. */
+  .tech-wrap::before {
+    content: '';
+    position: absolute;
+    width: 54%;
+    height: 112%;
+    right: -7%;
+    bottom: -19%;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 64% 61%,
+      rgba(154, 76, 24, 0.48) 0%,
+      rgba(127, 58, 18, 0.42) 28%,
+      rgba(91, 38, 10, 0.31) 52%,
+      rgba(55, 22, 6, 0.16) 73%,
+      rgba(55, 22, 6, 0) 100%
+    );
+    filter: blur(24px);
+    opacity: 1;
+  }
+  /* Golden glow on top of the patch. */
+  .tech-wrap::after {
+    content: '';
+    position: absolute;
+    width: 45%;
+    height: 92%;
+    right: -1%;
+    bottom: -7%;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 61% 56%,
+      rgba(255, 204, 108, 0.58) 0%,
+      rgba(237, 165, 69, 0.44) 25%,
+      rgba(202, 116, 40, 0.28) 50%,
+      rgba(154, 76, 23, 0.12) 72%,
+      rgba(154, 76, 23, 0) 100%
+    );
+    filter: blur(20px);
+    opacity: 1;
+  }
+  /* The device itself; shadow follows the PNG alpha. */
+  .tech-image {
+    position: absolute;
+    height: auto;
+    z-index: 3;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 7px 5px rgba(46, 20, 5, 0.55))
+      drop-shadow(11px 13px 14px rgba(91, 39, 9, 0.42))
+      drop-shadow(18px 10px 23px rgba(189, 108, 32, 0.28));
+  }
+  /* Home cards drawn as one finished picture: no flip, no edge mask, no
+     corner fold — the picture already has its own torn edge. */
+  .zakres-paper-card.services-card-baked::before {
+    background-image: var(--baked-d);
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .zakres-paper-card.services-card-baked::after {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .zakres-paper-card.services-card-baked::before {
+      background-image: var(--baked-m);
+    }
+  }
+  .tech-laptop  { width: 44.8%; right: 3.8%; bottom: 6.8%; }
+  .tech-desktop { width: 33.4%; right: 5.1%; bottom: 2.1%; }
+  .tech-printer { width: 40%;   right: 5%;   bottom: 2.6%; }
+  .tech-3d      { width: 45%;   right: 5.1%; bottom: 5.9%; }
+  .tech-label   { width: 33.7%; right: 4.7%; bottom: 2%; }
+  .tech-plotter { width: 48.9%; right: 1.2%; bottom: 3.1%; }
 
   /* No clip-path polygon here on purpose: the card's visible silhouette
      comes from (a) the source WebP's own real alpha edge, plus (b) a soft
