@@ -22,6 +22,7 @@ export default function RuONasPage() {
     <AboutPageTemplate
       brandCaptionText="Ремонтируем технику популярных брендов"
       onasHeroT={ru.onasHero}
+      heroT={ru.hero}
       advantagesT={ru.advantages}
       aboutT={ru.aboutOnas}
       teamT={ru.team}

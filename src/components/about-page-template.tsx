@@ -2,6 +2,7 @@ import '@/app/styles/umka-paw.css'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { ONasHero, type ONasHeroT } from '@/components/sections/o-nas-hero'
+import type { HeroT } from '@/components/sections/hero'
 import { Advantages, type AdvantagesT } from '@/components/sections/advantages'
 import { About, type AboutT } from '@/components/sections/about'
 import { Team, type TeamT } from '@/components/sections/team'
@@ -21,6 +22,7 @@ const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 interface AboutPageTemplateProps {
   brandCaptionText: string
   onasHeroT?: ONasHeroT
+  heroT?: HeroT
   advantagesT?: AdvantagesT
   aboutT?: AboutT
   teamT?: TeamT
@@ -31,6 +33,7 @@ interface AboutPageTemplateProps {
 export function AboutPageTemplate({
   brandCaptionText,
   onasHeroT,
+  heroT,
   advantagesT,
   aboutT,
   teamT,
@@ -40,16 +43,19 @@ export function AboutPageTemplate({
   return (
     <>
       <Header locale={locale} />
-      <ONasHero t={onasHeroT} />
-      <div
-        className="relative isolate overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <ONasHero t={onasHeroT} heroT={heroT} locale={locale} />
+      {/* Tło jak na stronie głównej: nieruchoma warstwa pod spodem, żeby tło
+          z ONasHero mogło rozpuścić się nad nią aż do „Skąd nazwa”. */}
+      <div className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 -z-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-parchment)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
         <div className="relative z-10">
           <Advantages t={advantagesT} />
           <About t={aboutT} bare compact />

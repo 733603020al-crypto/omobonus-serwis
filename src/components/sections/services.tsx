@@ -83,7 +83,7 @@ interface ServicesT {
 
 const PL: ServicesT = {
   sectionLabel: 'GŁÓWNE USŁUGI',
-  subheading: 'SERWIS I NAPRAWA',
+  subheading: 'Serwis i naprawa',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   cardLabels: {
     'serwis-laptopow': 'Laptopów',
@@ -120,7 +120,6 @@ export function Services({
   const d = t ?? PL
   const [expanded, setExpanded] = useState(false)
   const dividerRef = useRef<HTMLDivElement>(null)
-  const headingDividerRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const el = dividerRef.current
     if (!el) return
@@ -133,18 +132,6 @@ export function Services({
     observer.observe(el)
     return () => observer.disconnect()
   }, [expanded])
-  useEffect(() => {
-    const el = headingDividerRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
 
   const mainServices = services
     .filter(
@@ -235,18 +222,17 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        <div ref={headingDividerRef} className="brush-divider-row flex items-center gap-[18px] mt-[10px] mb-[28px]">
-          <div
-            className="divider-line divider-line-left flex-1"
-            style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-          />
-          <h2 className="services-heading-text whitespace-nowrap font-cormorant font-bold leading-[1.1] tracking-[0.04em] text-[34px] md:text-[42px] lg:text-[51px]">
+        {/* Nagłówek w stylu „Dlaczego Omobonus / Uczciwość i szacunek do klienta” z /o-nas (advantages.tsx) */}
+        <div className="text-center mt-[10px]">
+          <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
+            {d.sectionLabel}
+          </FadeSlideP>
+          <h2
+            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,7.7vw,30px)] md:whitespace-nowrap md:max-w-none md:text-[40px]"
+            style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
+          >
             {d.subheading}
           </h2>
-          <div
-            className="divider-line divider-line-right flex-1"
-            style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">

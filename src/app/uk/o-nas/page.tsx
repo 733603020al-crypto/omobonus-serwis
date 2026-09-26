@@ -22,6 +22,7 @@ export default function UkONasPage() {
     <AboutPageTemplate
       brandCaptionText="Ремонтуємо техніку популярних брендів"
       onasHeroT={uk.onasHero}
+      heroT={uk.hero}
       advantagesT={uk.advantages}
       aboutT={uk.aboutOnas}
       teamT={uk.team}

@@ -68,7 +68,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
             {eyebrow}
           </FadeSlideP>
           <h2
-            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,8vw,48px)] md:whitespace-nowrap md:max-w-none md:text-[clamp(32px,3.2vw,48px)]"
+            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,7.7vw,30px)] md:whitespace-nowrap md:max-w-none md:text-[40px]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
             {h2}
@@ -81,47 +81,48 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
             return (
               <article
                 key={title}
-                className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1"
+                className="bg-gradient-to-b from-[rgba(191,167,106,0.24)] to-[rgba(60,45,25,0.32)] backdrop-blur-[6px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg overflow-hidden pt-[14px] px-[20px] pb-[16px] transition-all duration-300 ease-out hover:-translate-y-1 hover:from-[rgba(191,167,106,0.32)] hover:to-[rgba(60,45,25,0.40)] hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
               >
-                <div className="flex items-center gap-[14px] mb-[18px]">
+                <div className="flex items-center gap-[12px] mb-[10px]">
                   <span
                     className="shrink-0 flex items-center justify-center rounded-full"
                     style={{
-                      width: 58, height: 58,
-                      background: 'transparent',
+                      width: 40, height: 40,
+                      background: 'rgba(191,167,106,.12)',
                       border: '1.5px solid rgba(201,162,75,.7)',
                       boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
                     }}
                   >
-                    <Icon className="w-[30px] h-[30px] text-[#e6cc82]" />
+                    <Icon className="w-[20px] h-[20px] text-[#e6cc82]" />
                   </span>
-                  <h3 className="m-0 text-[19px] font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.18]">
+                  <h3 className="m-0 text-[18px] font-cormorant font-semibold text-[#e6cc82] leading-[1.18]">
                     {override?.title ?? title}
                   </h3>
                 </div>
-                <p className="text-[14px] text-[hsl(45_18%_82%)] font-inter leading-[1.45] m-0">
+                <div className="h-px mb-[10px] bg-gradient-to-r from-[#bfa76a]/60 via-[#bfa76a]/25 to-transparent" />
+                <p className="text-[15px] md:text-[16px] text-[hsl(45_18%_82%)] font-cormorant leading-[1.3] m-0">
                   {override?.text ?? text}
                 </p>
               </article>
             )
           })}
 
-          <article className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-6 px-[26px] pb-[26px] transition-transform duration-[180ms] hover:-translate-y-1">
-            <div className="flex items-center gap-[14px] mb-[18px]">
+          <article className="bg-gradient-to-b from-[rgba(191,167,106,0.24)] to-[rgba(60,45,25,0.32)] backdrop-blur-[6px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg overflow-hidden pt-[14px] px-[20px] pb-[16px] transition-all duration-300 ease-out hover:-translate-y-1 hover:from-[rgba(191,167,106,0.32)] hover:to-[rgba(60,45,25,0.40)] hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]">
+            <div className="flex items-center gap-[12px] mb-[10px]">
               <span
                 className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
                 style={{
-                  width: 58, height: 58,
+                  width: 40, height: 40,
                   border: '1.5px solid rgba(201,162,75,.7)',
                   boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
                 }}
               >
-                <span style={{ width: 48, height: 34, background: 'rgb(227,231,240)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ width: 32, height: 23, background: 'rgb(227,231,240)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Image
                     src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
                     alt="Karta Dużej Rodziny"
-                    width={48}
-                    height={34}
+                    width={32}
+                    height={23}
                     className="object-contain w-full h-full"
                     loading="lazy"
                     quality={75}
@@ -131,26 +132,27 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
               <span
                 className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
                 style={{
-                  width: 58, height: 58,
+                  width: 40, height: 40,
                   border: '1.5px solid rgba(201,162,75,.7)',
                   boxShadow: 'inset 0 0 0 4px rgba(201,162,75,.10), 0 1px 3px rgba(0,0,0,.25)',
                 }}
               >
-                <span style={{ width: 48, height: 34, background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span style={{ width: 32, height: 23, background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Image
                     src="/images/Karta-Seniora.webp"
                     alt="Karta Seniora"
-                    width={48}
-                    height={34}
+                    width={32}
+                    height={23}
                     className="object-contain w-full h-full"
                     loading="lazy"
                     quality={75}
                   />
                 </span>
               </span>
-              <h3 className="m-0 text-[19px] font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.18]">{kdr.title}</h3>
+              <h3 className="m-0 text-[18px] font-cormorant font-semibold text-[#e6cc82] leading-[1.18]">{kdr.title}</h3>
             </div>
-            <p className="text-[14px] text-[hsl(45_18%_82%)] font-inter leading-[1.45] m-0">
+            <div className="h-px mb-[10px] bg-gradient-to-r from-[#bfa76a]/60 via-[#bfa76a]/25 to-transparent" />
+            <p className="text-[15px] md:text-[16px] text-[hsl(45_18%_82%)] font-cormorant leading-[1.3] m-0">
               {kdr.text}
             </p>
           </article>
