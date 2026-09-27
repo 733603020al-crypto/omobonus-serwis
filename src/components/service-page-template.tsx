@@ -161,22 +161,20 @@ const DRUK3D_HERO_SLIDES = [
 const DRUK3D_SIZE_COEFFICIENTS = [0.88, 0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DRUK3D_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
 
-// serwis-laptopow: the original cracked-screen animation (same file the
-// static AnimatedHeroImage used before this carousel existed — kept as slide
-// 0 so it's still the eager/high-priority LCP slide, same as before) plus
-// repair close-ups (broken screen, motherboard/SSD/fan work), cropped to
-// alpha bbox and optimized to WebP — see public/images/laptop-carousel/.
+// serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
+// and optimized to WebP — see public/images/laptop-carousel/. The original
+// cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
+// the light first photo stays the eager LCP slide, the animation is fetched
+// in the background with the other slides).
 const LAPTOP_HERO_SLIDES = [
+  '/images/laptop-carousel/laptop-carousel-v2-01.webp',
   '/images/serwis-laptopow-hero-animated.webp',
-  '/images/laptop-carousel/laptop-carousel-01.webp',
-  '/images/laptop-carousel/laptop-carousel-02.webp',
-  '/images/laptop-carousel/laptop-carousel-03.webp',
-  '/images/laptop-carousel/laptop-carousel-04.webp',
-  '/images/laptop-carousel/laptop-carousel-05.webp',
-  '/images/laptop-carousel/laptop-carousel-06.webp',
-  '/images/laptop-carousel/laptop-carousel-07.webp',
-  '/images/laptop-carousel/laptop-carousel-08.webp',
-  '/images/laptop-carousel/laptop-carousel-09.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-02.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-03.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-04.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-05.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-06.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-07.webp',
 ]
 // Same on-screen laptop size as on the home hero (0.87 in its 1.2 box),
 // recalculated for this page's 1.4 box.
@@ -398,19 +396,12 @@ export function ServicePageTemplate({
                         // Center-active carousel of laptop repair close-ups
                         // (same stack mechanic as naprawa-drukarek below, via
                         // variant="laptop" for its own contained-in-zone
-                        // geometry — see hero-printer-carousel.tsx). Slide 0
-                        // is the heavy (531KB) animated laptop-screen WebP, so
-                        // posterSrc gives it the same static-first-then-
-                        // animate treatment AnimatedHeroImage uses elsewhere
-                        // (lightweight 38KB first frame — the animation's own
-                        // first frame, byte-for-byte — paints immediately,
-                        // the animated file loads only after window "load").
+                        // geometry — see hero-printer-carousel.tsx).
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           slides={LAPTOP_HERO_SLIDES}
                           variant="home"
                           sizeCoefficients={LAPTOP_SIZE_COEFFICIENTS}
-                          posterSrc="/images/serwis-laptopow-hero-static-v2.webp"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
