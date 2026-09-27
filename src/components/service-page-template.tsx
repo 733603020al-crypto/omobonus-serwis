@@ -73,10 +73,10 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 // had any, while large still shifts furthest toward the logo strip below.
 // Values differ per slide, not one shared bottom line for all six.
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
-// One-time sheet-eject clip over slide 1; box = printer's alpha bbox in the 1280×720 frame.
+// One-time sheet-eject clip over slide 1; box = printer's alpha bbox in the 792×612 frame.
 const ATRAMENT_INTRO_VIDEO = {
-  src: '/images/atrament-carousel-v3-01-eject.webm',
-  box: [297 / 1280, 92 / 720, 995 / 1280, 625 / 720],
+  src: '/images/atrament-carousel-v3-01-print.webm',
+  box: [30 / 792, 18 / 612, 776 / 792, 594 / 612],
 } as const
 
 // serwis-drukarek-iglowych: 7 dot-matrix printer renders (slides 0–6),
