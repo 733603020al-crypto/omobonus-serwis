@@ -80,7 +80,7 @@ export interface ContactT {
   agreementError: string
   agreementConnector: string
   fileTypeError: string
-  fileSizeError: (name: string, max: number) => string
+  fileSizeError: (max: number) => string
   errorMissingConfig: string
   errorFileTooLarge: string
   errorSmtp: string
@@ -107,7 +107,7 @@ const PL: ContactT = {
   problemPlaceholder: 'Np. opisz problem, usterkę lub napisz, czego dotyczy zgłoszenie',
   attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
-  attachHint: '(zdjęcia, filmy, dokumenty — maks. 25 MB)',
+  attachHint: '(zdjęcia, filmy, dokumenty — łącznie maks. 4 MB)',
   agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
   privacyLink: 'Polityką Prywatności',
   privacyHref: '/polityka-prywatnosci',
@@ -122,9 +122,9 @@ const PL: ContactT = {
   agreementError: 'Musisz zaakceptować regulamin',
   agreementConnector: 'oraz',
   fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
-  fileSizeError: (name, max) => `Plik ${name} jest zbyt duży (maks. ${max} MB).`,
+  fileSizeError: max => `Wybrane pliki nie zostały dodane: łączny rozmiar załączników przekroczyłby ${max} MB.`,
   errorMissingConfig: 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.',
-  errorFileTooLarge: 'Jeden z plików jest za duży. Maksymalny rozmiar: 25 MB.',
+  errorFileTooLarge: 'Załączniki są za duże. Łączny rozmiar plików nie może przekraczać 4 MB.',
   errorSmtp: 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.',
   errorGeneric: 'Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.',
   successTitle: 'Dziękujemy!',
@@ -163,7 +163,11 @@ const defaultFormValues: Partial<FormValues> = {
 // Ошибка с уже переведённым текстом для пользователя (в отличие от сетевых/технических).
 class FormSubmitError extends Error {}
 
-const MAX_FILE_SIZE_MB = 25
+// Лимит на ВСЕ вложения вместе: файлы идут в теле запроса к Vercel Function (лимит ~4.5 MB).
+// TODO: przenieść duże załączniki na bezpośredni upload do private storage, żeby można było
+// ponownie obsługiwać większe pliki bez limitu Vercel Function.
+const MAX_TOTAL_ATTACHMENTS_MB = 4
+const MAX_TOTAL_ATTACHMENTS_BYTES = MAX_TOTAL_ATTACHMENTS_MB * 1024 * 1024
 const ACCEPTED_PREFIXES = [
   'image/',
   'video/',
@@ -269,6 +273,13 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true)
     try {
+      // Проверка до отправки: запрос не уходит, введённые данные и вложения остаются.
+      const totalAttachmentsSize = attachments.reduce((sum, preview) => sum + preview.file.size, 0)
+      if (totalAttachmentsSize > MAX_TOTAL_ATTACHMENTS_BYTES) {
+        setAttachmentError(d.errorFileTooLarge)
+        throw new FormSubmitError(d.errorFileTooLarge)
+      }
+
       const formData = new FormData()
       Object.entries(data).forEach(([key, value]) => {
         if (value !== undefined && value !== null) {
@@ -576,20 +587,20 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   let error: string | null = null
                   const nextPreviews: AttachmentPreview[] = []
 
-                  files.forEach(file => {
+                  const validFiles = files.filter(file => {
                     const typeValid = ACCEPTED_PREFIXES.some(prefix => file.type.startsWith(prefix))
-                    const sizeValid = file.size <= MAX_FILE_SIZE_MB * 1024 * 1024
+                    if (!typeValid) error = d.fileTypeError
+                    return typeValid
+                  })
 
-                    if (!typeValid) {
-                      error = d.fileTypeError
-                      return
-                    }
+                  // Пачка добавляется атомарно: если с ней общий размер превысит лимит — не добавляется ни один файл.
+                  const currentSize = attachments.reduce((sum, preview) => sum + preview.file.size, 0)
+                  const batchSize = validFiles.reduce((sum, file) => sum + file.size, 0)
+                  const batchFits = currentSize + batchSize <= MAX_TOTAL_ATTACHMENTS_BYTES
+                  if (!batchFits) error = d.fileSizeError(MAX_TOTAL_ATTACHMENTS_MB)
+                  const filesToAdd = batchFits ? validFiles : []
 
-                    if (!sizeValid) {
-                      error = d.fileSizeError(file.name, MAX_FILE_SIZE_MB)
-                      return
-                    }
-
+                  filesToAdd.forEach(file => {
                     const kind = file.type.startsWith('image/')
                       ? 'image'
                       : file.type.startsWith('video/')

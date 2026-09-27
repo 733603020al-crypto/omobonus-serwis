@@ -5,9 +5,12 @@ import { CONTACT_INFO } from '@/config/contacts'
 import { rateLimit } from '@/lib/rate-limit'
 
 // Константы для валидации
-const MAX_FILE_SIZE_MB = 25
-const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024 // 25 MB
-const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024 // 50 MB общий размер всех файлов
+// Лимит 4 MB на ВСЕ вложения вместе (тело запроса к Vercel Function ограничено ~4.5 MB).
+// TODO: przenieść duże załączniki na bezpośredni upload do private storage, żeby można było
+// ponownie obsługiwać większe pliki bez limitu Vercel Function.
+const MAX_FILE_SIZE_MB = 4
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024 // 4 MB
+const MAX_TOTAL_SIZE_BYTES = 4 * 1024 * 1024 // 4 MB общий размер всех файлов
 
 const DEFAULT_TO = 'serwis@omobonus.com.pl'
 const DEFAULT_FROM = 'serwis@omobonus.com.pl'
