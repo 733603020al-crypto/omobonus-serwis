@@ -104,7 +104,7 @@
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
     },
-    viewAllLabel: 'Переглянути всі послуги ↓',
+    viewAllLabel: 'Усі послуги ↓',
     collapseLabel: 'Згорнути ↑',
     moreLabel: 'Детальніше',
   },

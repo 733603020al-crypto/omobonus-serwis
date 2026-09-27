@@ -673,6 +673,66 @@
   }
 }
 
+/* =========================
+   HERO CAROUSEL — home + service pages (.home-hero-carousel-wrap)
+   ========================= */
+
+/* Old service-page image effect (.service-hero-image): normal gold glow,
+   stronger on hover plus 3.5% grow, 300ms. The slide keeps the carousel's
+   own 900ms transform/opacity transitions; filter eases in 300ms. */
+.home-hero-carousel-wrap .hero-printer-carousel-slide {
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1), opacity 450ms ease, filter 300ms ease;
+}
+
+/* A slide brought in by an advance eases into place (the entrance runs on
+   the individual scale/translate properties, so the inline transform that
+   sets its final size/position stays untouched). */
+.hero-printer-carousel-slide.hero-home-slide-active.hero-home-slide-enter {
+  animation: heroHomeSlideEnter 650ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@keyframes heroHomeSlideEnter {
+  from {
+    opacity: 0;
+    scale: 0.96;
+    translate: -25px 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+/* The grow goes on the inner carousel box, not on the slides — their
+   transform belongs to the carousel. */
+.home-hero-carousel-wrap .hero-printer-carousel {
+  transition: transform 300ms ease, filter 300ms ease, scale 300ms ease;
+}
+
+@media (hover: hover) {
+  .service-hero-image-wrap.home-hero-carousel-wrap:hover .hero-printer-carousel {
+    scale: 1.035;
+  }
+
+  .service-hero-image-wrap.home-hero-carousel-wrap:hover .hero-printer-carousel-slide.hero-home-slide-active {
+    filter:
+      drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(191, 167, 106, 0.55)) drop-shadow(0 0 46px rgba(191, 167, 106, 0.34));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-carousel-wrap .hero-printer-carousel-slide {
+    transition: none;
+  }
+
+  .hero-printer-carousel-slide.hero-home-slide-active.hero-home-slide-enter {
+    animation: none;
+  }
+}
+
 /* Stack carousel: serwis-laptopow hero only. Separate classes from the
    printer carousel above on purpose — that one intentionally bleeds its
    active slide past the fixed hero zone (scale 1.54 in hero-printer-
@@ -711,5 +771,38 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-laptop-carousel-slide {
     transition: none;
+  }
+}
+
+/* =========================
+   SERVICE HERO — phone (<768px)
+   ========================= */
+
+/* The image zone clips sideways at the screen edges (negative margin +
+   padding = full width clip box, the image itself keeps the container
+   width), so neighbouring slides / wide renders never cause page overflow.
+   Vertical overflow stays visible for the shadow and glow. The HERO_SCALE
+   enlargement is a desktop-only overflow — on a phone the image fits the
+   300px zone. Slide glow/shadow is the same desktop filter (not overridden). */
+@media (max-width: 767.98px) {
+  .service-hero-zone {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    overflow-x: clip;
+  }
+
+  .service-hero-zone > .service-hero-image-wrap {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Size cap per slide (--mobile-fit, see hero-printer-carousel.tsx). */
+  .service-hero-carousel .hero-printer-carousel-slide {
+    --slide-fit: var(--mobile-fit, 1);
+  }
+
+  /* Only the active slide is visible; the queued ones stay hidden. */
+  .service-hero-carousel .hero-printer-carousel-slide[data-tier]:not([data-tier="0"]) {
+    opacity: 0 !important;
   }
 }

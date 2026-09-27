@@ -65,7 +65,7 @@ export const ru = {
       'wynajem-drukarek': 'Аренда принтеров',
       'drukarka-zastepcza': 'Принтер на замену',
     },
-    viewAllLabel: 'Показать все услуги ↓',
+    viewAllLabel: 'Все услуги ↓',
     collapseLabel: 'Свернуть ↑',
     moreLabel: 'Подробнее',
   },

@@ -2,9 +2,11 @@
 
 import '@/app/styles/service-hero.css'
 import '@/app/styles/home-hero-words.css'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
+import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
 
 // Home hero: the same stack carousel as the service pages (image left, text
 // right), fed with the first slide of each service page. The middle H1 line
@@ -26,7 +28,7 @@ const SLIDES = [
 // slide-0 coefficient), recalculated for this 1.2 box.
 const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97]
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0]
-const LAPTOP_POSTER = '/images/serwis-laptopow-hero-static-v2.webp'
+const LAPTOP_POSTER ='/images/serwis-laptopow-hero-static-v2.webp'
 // Service page opened by a click on the picture or the heading, per slide.
 const SLUGS = [
   'serwis-laptopow',
@@ -95,6 +97,7 @@ export function HomeHeroShowcase({
   mids,
   alt,
   basePath = '/uslugi',
+  cta,
 }: {
   /** Full H1 text for search engines/screen readers (unchanged SEO heading). */
   h1: string
@@ -104,6 +107,8 @@ export function HomeHeroShowcase({
   alt: string
   /** Locale prefix of the service pages, e.g. /uk/uslugi. */
   basePath?: string
+  /** "Szybki kontakt" button under the H1 — same as the home CTA section, ~10% larger. */
+  cta?: { label: ReactNode; href: string }
 }) {
   const [active, setActive] = useState(0)
   const [prevGroup, setPrevGroup] = useState(mids[0].group)
@@ -126,10 +131,11 @@ export function HomeHeroShowcase({
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-        <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
-          <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
+        <div className="service-hero-zone flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
+          <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap home-hero-carousel-wrap service-hero-carousel relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
               alt={alt}
+              variant="home"
               slides={SLIDES}
               sizeCoefficients={SIZE_COEFFICIENTS}
               verticalBias={VERTICAL_BIAS}
@@ -138,18 +144,28 @@ export function HomeHeroShowcase({
             />
           </Link>
         </div>
-        <div className="text-center flex flex-col items-center justify-center relative z-10 mt-14 md:mt-0">
-          <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[clamp(26px,8vw,40px)] md:text-[52px] leading-[1.15]">
+        <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
+          <h1 className="font-cormorant font-bold text-[#ffffff] max-w-[90vw] md:max-w-none md:w-[470px] text-[clamp(28px,8.4vw,46px)] md:text-[60px] leading-[1.15]">
             <span className="sr-only">{h1}</span>
             <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
-              <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
+              <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
               <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">
                 <AnimatedPart text={mid.parts[0]} mode={mode} />
                 <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} />
               </span>
-              <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
+              <span className="block w-full text-center whitespace-nowrap text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
             </Link>
           </h1>
+          {cta && (
+            <Link
+              href={cta.href}
+              prefetch={false}
+              className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}
+            >
+              <span className="gold-text-sweep">{cta.label}</span>
+              <ChevronRight className="w-[18px] h-[18px]" />
+            </Link>
+          )}
         </div>
       </div>
     </div>

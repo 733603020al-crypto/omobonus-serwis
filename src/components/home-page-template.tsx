@@ -49,9 +49,9 @@ export function HomePageTemplate({
     <>
       <Header locale={locale} />
       <div>
-        <Hero t={heroT} locale={locale}>
+        <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
           <div className="absolute bottom-[120px] left-0 w-full z-10 md:bottom-[48px]">
-            <BrandTicker compact />
+            <BrandTicker compact muted />
           </div>
         </Hero>
       </div>

@@ -8,7 +8,9 @@ import { LOGO_METRICS } from "@/lib/brand-logo-metrics"
 // (nie trafia do ogólnego paska na stronie głównej / "O nas").
 // hidden: logo zostaje w projekcie, ale na razie nigdzie się nie wyświetla
 // (np. Apple — tych urządzeń jeszcze nie naprawiamy).
-const brands: { name: string; src?: string; label?: string; heightClass?: string; maxWidthClass?: string; listedOnly?: boolean; hidden?: boolean }[] = [
+// scale: opcjonalny ręczny współczynnik dla jednej marki (mnoży rozmiar z autoLogoHeight),
+// działa wszędzie, gdzie jest pasek — na komputerze i telefonie.
+const brands: { name: string; src?: string; label?: string; scale?: number; heightClass?: string; maxWidthClass?: string; listedOnly?: boolean; hidden?: boolean }[] = [
   // компьютеры / ноутбуки
   { name: "apple", src: "/images/brands/apple.svg?v=2", hidden: true, heightClass: "h-[44px] md:h-[42px]", maxWidthClass: "max-w-[155px]" },
   { name: "microsoft", src: "/images/brands/microsoft.svg?v=2", heightClass: "h-[47px] md:h-[48px]", maxWidthClass: "max-w-[180px] md:max-w-[180px]" },
@@ -129,19 +131,25 @@ const LOGO_RATIO: Record<string, number> = {
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
 // zamiast ręcznych heightClass — każde logo ma podobną "wagę" wizualną:
 // długie napisy niższe, zwarte znaki wyższe, bardzo gęste/pełne trochę mniejsze.
-// BRAND_SIZE_K — ogólna wielkość wszystkich logo naraz; compact (główna, "O nas") ×0.82.
-const BRAND_SIZE_K = 66
+// Reguła: wysokość ∝ ratio^-0.4 (pomiędzy równą wysokością a równą
+// powierzchnią — przy równej powierzchni zwarte/kwadratowe znaki wychodziły
+// za duże); bardzo gęste/pełne logo trochę mniejsze, cienkie NIE są
+// powiększane (wtedy ich prostokąt urastał ponad resztę); wspólny limit
+// wysokości/szerokości. BRAND_SIZE_K — ogólna wielkość wszystkich logo,
+// ta sama na każdej stronie (compact zmienia tylko wysokość paska).
+const BRAND_SIZE_K = 60
+const BRAND_RATIO_EXP = 0.4
 const BRAND_INK_EXP = 0.3
-const BRAND_MIN_H = 20
-const BRAND_MAX_H = 54
-const BRAND_MAX_W = 260
-function autoLogoHeight(name: string, compact?: boolean): number | undefined {
+const BRAND_MIN_H = 22
+const BRAND_MAX_H = 50
+const BRAND_MAX_W = 240
+function autoLogoHeight(name: string, scale = 1): number | undefined {
   const m = LOGO_METRICS[name]
   if (!m) return undefined
-  let h = (compact ? 0.82 : 1) * BRAND_SIZE_K / Math.sqrt(m.ratio) * Math.pow(0.5 / m.ink, BRAND_INK_EXP)
+  let h = BRAND_SIZE_K * Math.pow(m.ratio, -BRAND_RATIO_EXP) * Math.pow(Math.min(1, 0.5 / m.ink), BRAND_INK_EXP)
   h = Math.min(BRAND_MAX_H, Math.max(BRAND_MIN_H, h), BRAND_MAX_W / m.ratio)
   // wysokość pliku razem z jego pustym marginesem
-  return Math.round(h / (1 - m.pad))
+  return Math.round((h * scale) / (1 - m.pad))
 }
 
 const gap = 48
@@ -149,15 +157,15 @@ const gap = 48
 // 0.4px/klatkę przy ~60fps = 24px/s. Ta sama stała co w PrintedPartsTicker.
 const TARGET_SPEED_PX_PER_SEC = 24
 
-function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; ariaHidden?: boolean }) {
+function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; muted?: boolean; ariaHidden?: boolean }) {
   return (
     <>
       {displayBrands.map((brand, i) => {
-        const autoH = autoLogoHeight(brand.name, compact)
+        const autoH = autoLogoHeight(brand.name, brand.scale)
         return (
         <div
           key={i}
-          className={`inline-flex shrink-0 items-center h-[78px] transition-opacity duration-300 ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}`}
+          className={`inline-flex shrink-0 items-center h-[78px] transition-opacity duration-300 ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}${muted ? ' brand-ticker-logo-muted' : ''}`}
           aria-hidden={ariaHidden}
         >
           {brand.label ? (
@@ -192,7 +200,8 @@ function BrandGroup({ displayBrands, compact, ariaHidden }: { displayBrands: typ
   )
 }
 
-export default function BrandTicker({ brandNames, compact }: { brandNames?: string[]; compact?: boolean } = {}) {
+// muted — przygaszone logo na desktopie (pierwszy ekran głównej), pełny kolor po najechaniu.
+export default function BrandTicker({ brandNames, compact, muted }: { brandNames?: string[]; compact?: boolean; muted?: boolean } = {}) {
   // Kolejność = kolejność w brandNames (slugBrands), żeby dało się ją ustawić per strona.
   const displayBrands = brandNames
     ? brandNames.map(n => brands.find(b => b.name === n)).filter((b): b is (typeof brands)[number] => !!b && !b.hidden)
@@ -272,7 +281,7 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
           style={{ gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s` }}
         >
           {Array.from({ length: copies }).map((_, i) => (
-            <BrandGroup key={i} displayBrands={displayBrands} compact={compact} ariaHidden={i > 0} />
+            <BrandGroup key={i} displayBrands={displayBrands} compact={compact} muted={muted} ariaHidden={i > 0} />
           ))}
         </div>
       </div>
@@ -286,6 +295,17 @@ export default function BrandTicker({ brandNames, compact }: { brandNames?: stri
         @keyframes brand-ticker-scroll {
           from { transform: translateX(0); }
           to { transform: translateX(-${toPercent}%); }
+        }
+        @media (min-width: 768px) {
+          .brand-ticker-logo-muted {
+            opacity: 0.75;
+            filter: saturate(0.8) brightness(0.9);
+            transition-property: opacity, filter;
+          }
+          .brand-ticker-logo-muted:hover {
+            opacity: 1;
+            filter: saturate(1) brightness(1);
+          }
         }
         @media (prefers-reduced-motion: reduce) {
           .brand-ticker-track {

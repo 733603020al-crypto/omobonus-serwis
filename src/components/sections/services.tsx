@@ -8,6 +8,9 @@ import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
+// "Wszystkie usługi ↓" / "Zwiń ↑": GŁÓWNE USŁUGI label text styles, 0.06em tracking, thin 1px line (text colour) 6px below; hover: block +3px right, arrow +3px more, line widens slightly.
+const TEXT_CTA = "relative inline-flex items-baseline gap-[6px] bg-transparent border-0 px-0 pt-0 pb-[6px] m-0 cursor-pointer whitespace-nowrap text-sm font-inter font-semibold tracking-[0.06em] uppercase text-[#bfa76a] transition-transform duration-[250ms] ease-[ease] hover:translate-x-[3px] after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-current after:transition-transform after:duration-[250ms] after:ease-[ease] hover:after:scale-x-[1.08]"
+
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.
 const CARD_BAKED: Record<string, { d: string; m: string }> = {
@@ -129,7 +132,7 @@ const PL: ServicesT = {
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
-  viewAllLabel: 'Zobacz wszystkie usługi ↓',
+  viewAllLabel: 'Wszystkie usługi ↓',
   collapseLabel: 'Zwiń ↑',
   moreLabel: 'Zobacz więcej',
 }
@@ -264,11 +267,12 @@ export function Services({
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         {/* Nagłówek w stylu „Dlaczego Omobonus / Uczciwość i szacunek do klienta” z /o-nas (advantages.tsx) */}
         <div className="text-center mt-[10px]">
-          <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
+          <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-[12px]">
             {d.sectionLabel}
           </FadeSlideP>
+          {/* Same size/weight/line-height as "Serwis i naprawa" in the home hero H1 (0.93em of its 60px / clamp). */}
           <h2
-            className="font-cormorant font-semibold text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] max-w-full whitespace-normal break-words text-[clamp(26px,7.7vw,30px)] md:whitespace-nowrap md:max-w-none md:text-[40px]"
+            className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-[1.15] mx-auto mb-[24px] max-w-full whitespace-normal break-words text-[calc(0.93*clamp(28px,8.4vw,46px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
             {d.subheading}
@@ -298,15 +302,17 @@ export function Services({
             {/* Plain-text CTA (no parchment button) flanked by the golden line in two
                 segments (existing .brush-divider-row / .divider-line pattern, reused
                 1:1 from contact-actions.tsx / "Skąd nazwa" underline). */}
-            <div ref={dividerRef} className="brush-divider-row flex items-center justify-center gap-[18px] mt-[22px]">
+            <div ref={dividerRef} className="brush-divider-row flex items-center justify-center gap-[18px] mt-[28px]">
+              {/* Text CTA: no pill/border/background; hover — light underline, arrow drops 3px. */}
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="inline-flex items-center justify-center min-w-[260px] md:min-w-[300px] rounded-full px-[32px] py-[14px] whitespace-nowrap font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] gold-border-flow"
+                className={`group ${TEXT_CTA}`}
               >
-                <span className="gold-text-sweep">
-                  {d.viewAllLabel}
+                <span>
+                  {d.viewAllLabel?.replace(/\s*↓$/, '')}
                 </span>
+                <span aria-hidden="true" className="inline-block transition-transform duration-[250ms] ease-[ease] group-hover:translate-x-[3px]">↓</span>
               </button>
             </div>
           </>
@@ -326,11 +332,12 @@ export function Services({
               <button
                 type="button"
                 onClick={() => setExpanded(false)}
-                className="inline-flex items-center justify-center min-w-[260px] md:min-w-[300px] rounded-full px-[32px] py-[14px] whitespace-nowrap font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] gold-border-flow"
+                className={`group ${TEXT_CTA}`}
               >
-                <span className="gold-text-sweep">
-                  {d.collapseLabel ?? 'Zwiń ↑'}
+                <span>
+                  {(d.collapseLabel ?? 'Zwiń ↑').replace(/\s*↑$/, '')}
                 </span>
+                <span aria-hidden="true" className="inline-block transition-transform duration-[250ms] ease-[ease] group-hover:translate-x-[3px]">↑</span>
               </button>
               <div
                 className="divider-line divider-line-right flex-1"

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 
 // Stack carousel used in service-page hero zones (originally built for
 // /uslugi/naprawa-drukarek, now also reused for /uslugi/serwis-laptopow via
@@ -9,6 +9,14 @@ import { useEffect, useRef, useState } from 'react'
 // prefers-reduced-motion. `slides` is supplied by the caller so this
 // component holds no page-specific image list itself.
 const ADVANCE_MS = 5500
+
+// Phone hero (service pages, <768px): the slide's size coefficient is capped
+// here so big machines (plotter, floor MFP) never outgrow the zone. Applied
+// only through --slide-fit, which service-hero.css sets inside the mobile
+// media query — desktop scale stays exactly as before.
+const MOBILE_MAX_COEF = 0.78
+const fitVars = (coef: number) =>
+  ({ '--mobile-fit': Math.min(1, MOBILE_MAX_COEF / coef).toFixed(4) }) as CSSProperties
 
 // Per-delta geometry (scale/opacity/translate/zIndex) is variant-specific so
 // a new page can get its own stack proportions without touching the
@@ -32,6 +40,24 @@ const VARIANT_CONFIG = {
     // opacity (it's mostly covered by tier1 anyway, just a depth cue at the
     // edge), tier3 stays invisible.
     opacity: [1, 1, 0.65, 0],
+    translateX: [0, -68, -76, -95],
+    translateY: [0, -8, -16, -24],
+    zIndex: [16, 15, 14, 13],
+  },
+  // Home hero: printer geometry, but the waiting slides are tucked behind the
+  // active one so only `peek` (share of the next-up's width) shows past its
+  // left edge; translateX for tiers 1-3 is computed per slide from `peek`.
+  home: {
+    bleedClass: 'hero-printer-carousel-bleed',
+    boxClass: 'hero-printer-carousel',
+    slideClass: 'hero-printer-carousel-slide',
+    scale: [1.54, 0.8, 0.64, 0.5],
+    opacity: [1, 1, 0.65, 0],
+    peek: 0.15,
+    // Active slide: hover glow target; after the first advance also the
+    // entrance (fade + slight grow/slide-in). Styles in home-hero-words.css.
+    activeClass: 'hero-home-slide-active',
+    enterClass: 'hero-home-slide-enter',
     translateX: [0, -68, -76, -95],
     translateY: [0, -8, -16, -24],
     zIndex: [16, 15, 14, 13],
@@ -76,6 +102,7 @@ export function HeroPrinterCarousel({
   verticalBias,
   posterSrc,
   onActiveChange,
+  introVideo,
 }: {
   slides: string[]
   alt: string
@@ -97,14 +124,82 @@ export function HeroPrinterCarousel({
   // Optional: reports the active slide index (home hero uses it to swap the
   // matching word in the H1 line in sync with the slide change).
   onActiveChange?: (index: number) => void
+  // Optional one-time intro video over slide 0 (transparent WebM). Slide 0's
+  // static image paints first; the video loads after window "load", plays
+  // once when ready, then fades back to the static image and never plays
+  // again. `box` = the printer's bbox in the video frame (fractions x0,y0,x1,y1),
+  // mapped onto slide 0's image. Skipped on Apple WebKit (no WebM alpha) and
+  // under prefers-reduced-motion.
+  introVideo?: { src: string; box: readonly [number, number, number, number] }
 }) {
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
   const [inView, setInView] = useState(true)
   const [slide0Ready, setSlide0Ready] = useState(!posterSrc)
+  // Entrance animation only for slides shown by an advance, never on the
+  // first paint (keeps the LCP slide visible immediately).
+  const [advanced, setAdvanced] = useState(false)
   const boxRef = useRef<HTMLDivElement>(null)
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
+
+  // Intro video: idle -> loading (hidden <video> buffering) -> playing
+  // (video shown, static slide 0 hidden) -> ending (fade back) -> done.
+  const [intro, setIntro] = useState<'idle' | 'loading' | 'playing' | 'ending' | 'done'>('idle')
+  const slide0Ref = useRef<HTMLImageElement | null>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [introMeta, setIntroMeta] = useState(false)
+  const [introStarted, setIntroStarted] = useState(false)
+  const [introGeo, setIntroGeo] = useState<{ w: number; h: number; dx: number; dy: number; ox: number; oy: number } | null>(null)
+
+  useEffect(() => {
+    if (!introVideo) return
+    const ua = navigator.userAgent
+    if (/AppleWebKit/.test(ua) && !/(Chrome|Chromium|Android)/.test(ua)) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const start = () => setIntro((s) => (s === 'idle' ? 'loading' : s))
+    if (document.readyState === 'complete') start()
+    else window.addEventListener('load', start, { once: true })
+    return () => window.removeEventListener('load', start)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Size/offset of the video so the printer inside its frame lands exactly
+  // on slide 0's image (object-contain rect of the static file).
+  useEffect(() => {
+    const img = slide0Ref.current
+    if (!introVideo || intro === 'idle' || intro === 'done' || !img) return
+    const measure = () => {
+      const bw = img.offsetWidth
+      const bh = img.offsetHeight
+      const vid = videoRef.current
+      if (!bw || !bh || !img.naturalWidth || !vid?.videoWidth) return
+      const ar = img.naturalWidth / img.naturalHeight
+      const cw = bw / bh > ar ? bh * ar : bw
+      const [x0, y0, x1, y1] = introVideo.box
+      const w = cw / (x1 - x0)
+      const h = (w * vid.videoHeight) / vid.videoWidth
+      const cx = (x0 + x1) / 2
+      const cy = (y0 + y1) / 2
+      setIntroGeo({ w, h, dx: (0.5 - cx) * w, dy: (0.5 - cy) * h, ox: cx * 100, oy: cy * 100 })
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(img)
+    return () => ro.disconnect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intro, introMeta])
+
+  // Slide 0 left the front while the video was still on: finish the intro.
+  useEffect(() => {
+    if (active !== 0 && (intro === 'loading' || intro === 'playing')) setIntro(intro === 'loading' ? 'done' : 'ending')
+  }, [active, intro])
+
+  useEffect(() => {
+    if (intro !== 'ending') return
+    const id = window.setTimeout(() => setIntro('done'), 450)
+    return () => window.clearTimeout(id)
+  }, [intro])
 
   // Stops the rotation once less than half of the hero is on screen — no
   // point rotating slides nobody really sees; resumes on scroll back.
@@ -201,9 +296,11 @@ export function HeroPrinterCarousel({
       // again rather than restarting the 5.5s countdown from zero.
       if (document.hidden) return
       setActive((prev) => (prev + 1) % slideCount)
+      setAdvanced(true)
     }, ADVANCE_MS)
     return () => clearInterval(id)
-  }, [ready, inView, slideCount])
+    // intro video started: restart the countdown so slide 0 holds for the whole clip
+  }, [ready, inView, slideCount, introStarted])
 
   return (
     // Outer "bleed" box: purely a wider, non-clipping paint-containment
@@ -226,9 +323,10 @@ export function HeroPrinterCarousel({
             style={{
               transform: `translate(-50%, -50%) translateX(${config.translateX[0]}%) translateY(${
                 config.translateY[0] + (verticalBias?.[0] ?? 0)
-              }%) scale(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)})`,
+              }%) scale(calc(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)} * var(--slide-fit, 1)))`,
               opacity: config.opacity[0],
               zIndex: config.zIndex[0],
+              ...fitVars(sizeCoefficients?.[0] ?? 1),
             }}
           />
         )}
@@ -257,29 +355,83 @@ export function HeroPrinterCarousel({
           // active one, so its relative size stays consistent through its
           // whole time in the queue.
           const scale = config.scale[tier] * (sizeCoefficients?.[i] ?? 1)
-          const opacity = config.opacity[tier]
-          const translateX = config.translateX[tier]
+          const opacity = i === 0 && intro === 'playing' ? 0 : config.opacity[tier]
+          let translateX: number = config.translateX[tier]
+          if ('peek' in config && tier > 0) {
+            // Left edges in slide-box widths: active, then next-up = active − peek.
+            const coef = (k: number) => sizeCoefficients?.[k % slideCount] ?? 1
+            const activeLeft = -config.scale[0] * coef(active) / 2
+            const nextLeft = activeLeft - config.peek * config.scale[1] * coef(active + 1)
+            const half = config.scale[tier] * coef(i) / 2
+            translateX = 100 * (tier === 1 ? nextLeft + half : nextLeft + half + 0.02)
+          }
           const translateY = config.translateY[tier] + (verticalBias?.[i] ?? 0)
           const zIndex = config.zIndex[tier]
+          const stateClass =
+            tier === 0 && 'activeClass' in config
+              ? ` ${config.activeClass}${advanced ? ` ${config.enterClass}` : ''}`
+              : ''
 
           return (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
+              ref={i === 0 ? slide0Ref : undefined}
               src={src}
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}
               fetchPriority={i === 0 ? 'high' : 'auto'}
-              className={config.slideClass}
+              className={config.slideClass + stateClass}
+              data-tier={tier}
               style={{
-                transform: `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(${scale})`,
+                transform: `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(calc(${scale} * var(--slide-fit, 1)))`,
                 opacity,
                 zIndex,
+                ...fitVars(sizeCoefficients?.[i] ?? 1),
               }}
             />
           )
         })}
+        {introVideo && intro !== 'idle' && intro !== 'done' && (
+          <video
+            ref={videoRef}
+            src={introVideo.src}
+            muted
+            playsInline
+            autoPlay={false}
+            preload="auto"
+            aria-hidden="true"
+            className={config.slideClass + ('activeClass' in config ? ` ${config.activeClass}` : '')}
+            onLoadedMetadata={() => setIntroMeta(true)}
+            onCanPlayThrough={(e) => {
+              if (intro !== 'loading' || active !== 0) return
+              e.currentTarget.play().then(() => { setIntro('playing'); setIntroStarted(true) }, () => setIntro('done'))
+            }}
+            onEnded={() => setIntro('ending')}
+            style={{
+              width: introGeo?.w,
+              height: introGeo?.h,
+              // global preflight caps video at max-width:100% — that squeezed the
+              // 16:9 frame (printer shrank/shifted); the transparent frame may overhang
+              maxWidth: 'none',
+              maxHeight: 'none',
+              objectFit: 'fill',
+              objectPosition: '50% 50%',
+              overflow: 'visible',
+              transformOrigin: introGeo ? `${introGeo.ox}% ${introGeo.oy}%` : undefined,
+              transform: introGeo
+                ? `translate(-50%, -50%) translate(${introGeo.dx}px, ${introGeo.dy}px) scale(calc(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)} * var(--slide-fit, 1)))`
+                : undefined,
+              ...fitVars(sizeCoefficients?.[0] ?? 1),
+              visibility: introGeo ? undefined : 'hidden',
+              // no transform transition: the clip must sit still on slide 0, only fade
+              transition: 'opacity 450ms ease, filter 300ms ease',
+              opacity: intro === 'playing' && introGeo ? 1 : 0,
+              zIndex: config.zIndex[0] + 1,
+            }}
+          />
+        )}
       </div>
     </div>
   )

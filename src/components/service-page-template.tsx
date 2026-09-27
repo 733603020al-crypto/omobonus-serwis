@@ -73,6 +73,11 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 // had any, while large still shifts furthest toward the logo strip below.
 // Values differ per slide, not one shared bottom line for all six.
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
+// One-time sheet-eject clip over slide 1; box = printer's alpha bbox in the 1280×720 frame.
+const ATRAMENT_INTRO_VIDEO = {
+  src: '/images/atrament-carousel-v3-01-eject.webm',
+  box: [297 / 1280, 92 / 720, 995 / 1280, 625 / 720],
+} as const
 
 // serwis-drukarek-iglowych: 7 dot-matrix printer renders (slides 0–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -173,6 +178,22 @@ const LAPTOP_HERO_SLIDES = [
   '/images/laptop-carousel/laptop-carousel-08.webp',
   '/images/laptop-carousel/laptop-carousel-09.webp',
 ]
+// Same on-screen laptop size as on the home hero (0.87 in its 1.2 box),
+// recalculated for this page's 1.4 box.
+const LAPTOP_SIZE_COEFFICIENTS = LAPTOP_HERO_SLIDES.map(() => (0.87 * 1.2) / 1.4)
+
+// Carousel pages share the home hero's carousel look: peek, entrance, hover
+// and glow (styles in service-hero.css under .home-hero-carousel-wrap).
+const HERO_CAROUSEL_SLUGS = new Set([
+  'serwis-laptopow',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+  'naprawa-drukarek',
+  'serwis-drukarek-atramentowych',
+  'serwis-drukarek-laserowych',
+  'serwis-drukarek-iglowych',
+  'serwis-drukarek-termicznych',
+])
 
 const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-termicznych', 'serwis-laptopow', 'serwis-komputerow-stacjonarnych',
@@ -353,9 +374,9 @@ export function ServicePageTemplate({
             <>
               <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 pt-1 md:pt-2 mb-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-                  <div className="flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
+                  <div className="service-hero-zone flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
                     <div
-                      className={`service-hero-image-wrap relative ${
+                      className={`service-hero-image-wrap relative ${HERO_CAROUSEL_SLUGS.has(slug) ? 'home-hero-carousel-wrap service-hero-carousel ' : ''}${
                         HERO_SCALE[slug] ? 'shrink-0' : 'w-full h-full'
                       }`}
                       style={HERO_SCALE[slug] ? { width: `${HERO_SCALE[slug] * 100}%`, height: `${HERO_SCALE[slug] * 100}%` } : undefined}
@@ -387,7 +408,8 @@ export function ServicePageTemplate({
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           slides={LAPTOP_HERO_SLIDES}
-                          variant="laptop"
+                          variant="home"
+                          sizeCoefficients={LAPTOP_SIZE_COEFFICIENTS}
                           posterSrc="/images/serwis-laptopow-hero-static-v2.webp"
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
@@ -424,6 +446,7 @@ export function ServicePageTemplate({
                         // with per-slide size bands — 6 3D-printer renders.
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={DRUK3D_HERO_SLIDES}
                           sizeCoefficients={DRUK3D_SIZE_COEFFICIENTS}
                           verticalBias={DRUK3D_VERTICAL_BIAS}
@@ -433,6 +456,7 @@ export function ServicePageTemplate({
                         // with per-slide size bands — plotter renders.
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={PLOTTER_HERO_SLIDES}
                           sizeCoefficients={PLOTTER_SIZE_COEFFICIENTS}
                           verticalBias={PLOTTER_VERTICAL_BIAS}
@@ -443,7 +467,7 @@ export function ServicePageTemplate({
                         // inkjet, needle, thermal, plotter, 3D) — replaces
                         // the single static Serwis_Drukarek.webp. No new
                         // assets, same fixed hero zone.
-                        <HeroPrinterCarousel alt={imageAlt} slides={PRINTER_HERO_SLIDES} />
+                        <HeroPrinterCarousel alt={imageAlt} variant="home" slides={PRINTER_HERO_SLIDES} />
                       ) : slug === 'serwis-drukarek-atramentowych' ? (
                         // Same stack-carousel mechanic as naprawa-drukarek
                         // (default "printer" variant, no new CSS) — 6
@@ -451,9 +475,11 @@ export function ServicePageTemplate({
                         // alpha bbox (see public/images/atrament-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={ATRAMENT_HERO_SLIDES}
                           sizeCoefficients={ATRAMENT_SIZE_COEFFICIENTS}
                           verticalBias={ATRAMENT_VERTICAL_BIAS}
+                          introVideo={ATRAMENT_INTRO_VIDEO}
                         />
                       ) : slug === 'serwis-drukarek-laserowych' ? (
                         // Same stack-carousel mechanic as the atramentowych
@@ -462,6 +488,7 @@ export function ServicePageTemplate({
                         // public/images/laser-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={LASER_HERO_SLIDES}
                           sizeCoefficients={LASER_SIZE_COEFFICIENTS}
                           verticalBias={LASER_VERTICAL_BIAS}
@@ -472,6 +499,7 @@ export function ServicePageTemplate({
                         // (see public/images/iglowe-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={IGLOWE_HERO_SLIDES}
                           sizeCoefficients={IGLOWE_SIZE_COEFFICIENTS}
                           verticalBias={IGLOWE_VERTICAL_BIAS}
@@ -481,6 +509,7 @@ export function ServicePageTemplate({
                         // renders (see public/images/termiczne-carousel-v3-*.webp).
                         <HeroPrinterCarousel
                           alt={imageAlt}
+                          variant="home"
                           slides={TERMICZNE_HERO_SLIDES}
                           sizeCoefficients={TERMICZNE_SIZE_COEFFICIENTS}
                           verticalBias={TERMICZNE_VERTICAL_BIAS}
@@ -500,8 +529,9 @@ export function ServicePageTemplate({
                       )}
                     </div>
                   </div>
-                  <div className={`text-center flex flex-col items-center justify-center relative z-10 ${HERO_SCALE[slug] ? 'mt-14 md:mt-0' : ''}`}>
-                    <h1 className="font-cormorant font-bold text-[#ffffff] md:w-[470px] text-[40px] md:text-[52px] leading-[1.15]">
+                  {/* Phone: H1 goes first (above the image), so its position never depends on the image. */}
+                  <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
+                    <h1 className="font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words">
                       {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
