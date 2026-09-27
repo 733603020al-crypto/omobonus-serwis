@@ -160,6 +160,9 @@ const defaultFormValues: Partial<FormValues> = {
 }
 
 
+// Ошибка с уже переведённым текстом для пользователя (в отличие от сетевых/технических).
+class FormSubmitError extends Error {}
+
 const MAX_FILE_SIZE_MB = 25
 const ACCEPTED_PREFIXES = [
   'image/',
@@ -283,11 +286,18 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
         body: formData,
       })
 
-      const responseData = await response.json()
+      // Ответ может быть не JSON (HTML-страница ошибки хостинга, 413 и т.п.) —
+      // тогда просто нет errorType, пользователь видит переведённое сообщение.
+      let responseData: { errorType?: string; details?: unknown } = {}
+      try {
+        responseData = await response.json()
+      } catch {
+        responseData = {}
+      }
 
       if (!response.ok) {
         // Структурированная обработка ошибок
-        const errorType = responseData.errorType || 'UNKNOWN'
+        const errorType = responseData.errorType || (response.status === 413 ? 'FILE_TOO_LARGE' : 'UNKNOWN')
         let errorMessage = d.errorGeneric
 
         switch (errorType) {
@@ -310,7 +320,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             errorMessage = d.errorGeneric
         }
 
-        throw new Error(errorMessage)
+        throw new FormSubmitError(errorMessage)
       }
 
 
@@ -323,8 +333,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
     } catch (error) {
       console.error('❌ Error submitting form:', error)
 
-      // Более информативное сообщение об ошибке
-      const errorMessage = error instanceof Error
+      // Только наши переведённые сообщения; сетевые/технические ошибки → общее.
+      const errorMessage = error instanceof FormSubmitError
         ? error.message
         : d.errorGeneric
 

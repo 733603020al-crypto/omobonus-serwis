@@ -197,6 +197,7 @@ export function Services({
         className={`
     group
     relative
+    [container-type:inline-size]
     min-h-[168px]
     py-4 pl-8 md:pl-10 pr-3
     flex
@@ -216,7 +217,7 @@ export function Services({
       >
         {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
         <div className="relative z-[4] flex-none max-w-[48%] flex flex-col items-start">
-          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.15] text-[26px] md:text-[28px]">
+          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.15] text-[26px] md:text-[length:min(28px,8.05cqi)]">
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
           <span className="mt-2 inline-flex items-center gap-1 border-b border-[#3A2817]/40 pb-px font-cormorant font-semibold text-[16px] leading-none text-[#3A2817]/80 transition-colors group-hover:text-[#3A2817] group-hover:border-[#3A2817]/70">

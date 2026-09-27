@@ -683,7 +683,9 @@
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-      background-size: 100% 82px;
+      /* Grows with the card when a long title wraps to 3 lines, so the
+         "Zobacz cennik" line never lands on/below the torn bottom edge. */
+      background-size: 100% max(82px, 100%);
     }
   }
 

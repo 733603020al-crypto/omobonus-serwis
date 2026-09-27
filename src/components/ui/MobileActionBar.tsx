@@ -1,7 +1,7 @@
 'use client'
 
 import { Phone } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -22,6 +22,56 @@ const CAPTION_STYLE = { textShadow: '0 1px 2px rgba(0,0,0,0.75), 0 0 6px rgba(21
 // Fixed, identical width for all 3 buttons so each is a same-sized block centered
 // in its own grid third — not just auto-sized to its own (different-length) caption.
 const BUTTON_CONTAINER_CLASS = 'flex w-[116px] items-center justify-center gap-[10px] active:opacity-80'
+const BUTTON_WIDTH = 116
+const ICON_WIDTH = 44
+const ICON_GAP = 10
+const CAPTION_FONT = 17
+const MIN_CAPTION_FONT = 14
+const MIN_ICON_GAP = 6
+// Minimum space between a button's content and a column divider / screen edge.
+const EDGE_PAD = 4
+
+type ColumnFit = { widths: number[]; contents: number[]; fonts: (number | undefined)[]; gap: number }
+
+// `texts` are caption widths at the normal font size. Columns stay equal unless some
+// icon + gap + caption doesn't fit its equal share with EDGE_PAD on both sides. Then:
+// 1) the overflowing columns take what they lack from the others' spare room;
+// 2) if the row still can't fit, the widest caption alone gets a smaller font
+//    (not below MIN_CAPTION_FONT), just enough to fit;
+// 3) if that's not enough either, the icon–caption gap of every button shrinks evenly
+//    (not below MIN_ICON_GAP). Returns null for "keep equal".
+function fitColumns(total: number, texts: number[]): ColumnFit | null {
+    const n = texts.length
+    const base = total / n
+    const contents = texts.map(t => ICON_WIDTH + ICON_GAP + t)
+    const needs = contents.map(c => c + 2 * EDGE_PAD)
+    if (needs.every(w => w <= base)) return null
+    const fonts: (number | undefined)[] = texts.map(() => undefined)
+    const shortage = () => needs.reduce((a, b) => a + b, 0) - total
+    if (shortage() > 0) {
+        const i = texts.indexOf(Math.max(...texts))
+        const size = Math.max(MIN_CAPTION_FONT, Math.floor((CAPTION_FONT * (texts[i] - shortage()) / texts[i]) * 10) / 10)
+        const saved = texts[i] * (1 - size / CAPTION_FONT)
+        fonts[i] = size
+        contents[i] -= saved
+        needs[i] -= saved
+    }
+    let gap = ICON_GAP
+    if (shortage() > 0) {
+        gap = Math.max(MIN_ICON_GAP, Math.floor((ICON_GAP - shortage() / n) * 10) / 10)
+        for (let i = 0; i < n; i++) {
+            contents[i] -= ICON_GAP - gap
+            needs[i] -= ICON_GAP - gap
+        }
+    }
+    const deficit = needs.reduce((s, w) => s + Math.max(0, w - base), 0)
+    const slack = needs.reduce((s, w) => s + Math.max(0, base - w), 0)
+    if (slack <= 0) return null
+    const give = Math.min(1, slack / deficit)
+    const take = Math.min(1, deficit / slack)
+    const widths = needs.map(w => (w > base ? base + (w - base) * give : base - (base - w) * take))
+    return { widths, contents, fonts, gap }
+}
 
 // Same visual language as the top Header: parchment texture (var(--bg-parchment),
 // swapped to the mobile-optimized image by the same CSS media query) + a flat
@@ -33,12 +83,45 @@ export function MobileActionBar() {
     const contactHref = locale === 'uk' ? '/uk/kontakt' : locale === 'ru' ? '/ru/kontakt' : '/kontakt'
     const labels = LABELS[locale]
     const isKontakt = pathname?.endsWith('/kontakt') ?? false
+    const gridRef = useRef<HTMLDivElement>(null)
+    const captionRefs = useRef<(HTMLSpanElement | null)[]>([])
+    const [columns, setColumns] = useState<ColumnFit | null>(null)
 
     useEffect(() => {
         setMounted(true)
     }, [])
 
+    useLayoutEffect(() => {
+        if (!mounted) return
+        const measure = () => {
+            const grid = gridRef.current
+            if (!grid) return
+            // Normalised to the normal font size, since a caption may currently be shrunk.
+            const texts = captionRefs.current
+                .filter((el): el is HTMLSpanElement => !!el)
+                .map(el => Math.ceil(el.getBoundingClientRect().width * CAPTION_FONT / parseFloat(getComputedStyle(el).fontSize)))
+            setColumns(fitColumns(grid.clientWidth, texts))
+        }
+        measure()
+        document.fonts?.ready.then(measure)
+        window.addEventListener('resize', measure)
+        return () => window.removeEventListener('resize', measure)
+    }, [mounted, locale, isKontakt])
+
     if (!mounted) return null
+
+    const colCount = isKontakt ? 2 : 3
+    const colTotal = columns?.widths.reduce((a, b) => a + b, 0) ?? 0
+    const colPercents = columns?.widths.map(w => (w / colTotal) * 100)
+    const dividerLeft = (i: number) => colPercents ? `${colPercents.slice(0, i + 1).reduce((a, b) => a + b, 0)}%` : undefined
+    // Redistributed columns: a button may need to be wider than 116px (long caption) or
+    // narrower (to free room), so its box follows its column; equal mode keeps 116px.
+    const buttonStyle = (i: number) => columns
+        ? { width: Math.max(columns.contents[i], Math.min(BUTTON_WIDTH, columns.widths[i])), gap: columns.gap }
+        : undefined
+    const captionStyle = (i: number) => columns?.fonts[i] ? { ...CAPTION_STYLE, fontSize: columns.fonts[i] } : CAPTION_STYLE
+    const captionRef = (i: number) => (el: HTMLSpanElement | null) => { captionRefs.current[i] = el }
+    captionRefs.current.length = colCount
 
     return createPortal(
         <>
@@ -115,13 +198,16 @@ export function MobileActionBar() {
 
                 <div className="pt-2" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
                 <div
+                    ref={gridRef}
                     className={`relative grid w-full ${isKontakt ? 'grid-cols-2' : 'grid-cols-3'}`}
+                    style={colPercents ? { gridTemplateColumns: colPercents.map(p => `${p}%`).join(' ') } : undefined}
                 >
                     {!isKontakt && (
-                        <span className="pointer-events-none absolute left-1/3 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45" aria-hidden="true" />
+                        <span className="pointer-events-none absolute left-1/3 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45" style={{ left: dividerLeft(0) }} aria-hidden="true" />
                     )}
                     <span
                         className={`pointer-events-none absolute top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45 ${isKontakt ? 'left-1/2' : 'left-2/3'}`}
+                        style={{ left: dividerLeft(isKontakt ? 0 : 1) }}
                         aria-hidden="true"
                     />
 
@@ -132,6 +218,7 @@ export function MobileActionBar() {
                                     href={contactHref}
                                     prefetch={false}
                                     className={BUTTON_CONTAINER_CLASS}
+                                    style={buttonStyle(0)}
                                 >
                                     <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                         <svg
@@ -165,7 +252,7 @@ export function MobileActionBar() {
                                             */}
                                         </svg>
                                     </span>
-                                    <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.write}</span>
+                                    <span ref={captionRef(0)} className={CAPTION_CLASS} style={captionStyle(0)}>{labels.write}</span>
                                 </Link>
                             </div>
                         </>
@@ -177,11 +264,12 @@ export function MobileActionBar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={BUTTON_CONTAINER_CLASS}
+                            style={buttonStyle(isKontakt ? 0 : 1)}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                                 <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
                             </span>
-                            <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.map}</span>
+                            <span ref={captionRef(isKontakt ? 0 : 1)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 0 : 1)}>{labels.map}</span>
                         </a>
                     </div>
 
@@ -189,6 +277,7 @@ export function MobileActionBar() {
                         <a
                             href="tel:+48793759262"
                             className={BUTTON_CONTAINER_CLASS}
+                            style={buttonStyle(isKontakt ? 1 : 2)}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-visible">
                                 <span className="bar-ripple pointer-events-none"></span>
@@ -197,7 +286,7 @@ export function MobileActionBar() {
                                     <Phone className="w-[22px] h-[22px] bar-call-icon" />
                                 </span>
                             </span>
-                            <span className={CAPTION_CLASS} style={CAPTION_STYLE}>{labels.call}</span>
+                            <span ref={captionRef(isKontakt ? 1 : 2)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 1 : 2)}>{labels.call}</span>
                         </a>
                     </div>
                 </div>

@@ -917,6 +917,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
   const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
   const t = serviceAccordionI18n[locale]
+  // UK/RU "free" label (БЕЗКОШТОВНО/БЕСПЛАТНО) is too wide to sit beside the diagnoza
+  // title on phones, so there it goes under the title instead of the right column.
+  const stackGratisOnMobile = locale !== 'pl'
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
   const timeHeader = t.timeHeader
@@ -1940,6 +1943,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   }
                                   return titleNode
                                 })()}
+                                {stackGratisOnMobile && section.id === 'diagnoza' && service.slug !== 'druk-3d-na-zamowienie' && (
+                                  <span className={cn(
+                                    "block my-0.5 text-lg font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
+                                    isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]"
+                                  )}>
+                                    {t.gratisUpper}
+                                  </span>
+                                )}
                                 {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
@@ -2068,7 +2079,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 <span className={cn(
                                   "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
                                   isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]",
-                                  isRepairAccordionLayout && "relative left-[-15px] md:left-0"
+                                  isRepairAccordionLayout && "relative left-[-15px] md:left-0",
+                                  stackGratisOnMobile && "max-md:hidden"
                                 )}>
                                   {t.gratisUpper}
                                 </span>

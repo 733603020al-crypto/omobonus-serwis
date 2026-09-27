@@ -522,7 +522,10 @@ export function ServicePageTemplate({
                   </div>
                   {/* Phone: H1 goes first (above the image), so its position never depends on the image. */}
                   <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
-                    <h1 className="font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words">
+                    {/* naprawa-drukarek UK/RU: "багатофункціональних"/"многофункциональных" is wider than
+                        the phone column at 40px and got split mid-word — scale just this H1 with the
+                        screen (≤40px) so the whole word fits. */}
+                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' && locale !== 'pl' ? ' max-md:text-[length:min(40px,9vw)]' : ''}`}>
                       {locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>

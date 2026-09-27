@@ -94,8 +94,10 @@ export function LanguageSwitcher() {
       ref={ref}
       translate="no"
       className="notranslate relative h-full flex items-center"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      // Hover-open only for a real mouse: on touch the tap also fires a synthetic
+      // mouseenter, which opened the list right before the arrow's click toggled it shut.
+      onPointerEnter={e => { if (e.pointerType === 'mouse') setIsOpen(true) }}
+      onPointerLeave={e => { if (e.pointerType === 'mouse') setIsOpen(false) }}
     >
       <div className="flex items-center gap-2">
         {visibleLocales.map(locale => (
