@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import { AnimatedPart, type HeroMid } from '@/components/sections/home-hero-showcase'
+import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 
 // /uslugi/naprawa-drukarek hero: the carousel (image column) and the middle H1
 // line (text column) live in different parts of the server template, so the
@@ -22,8 +23,21 @@ const setCurrent = (i: number) => {
   listeners.forEach((l) => l())
 }
 
+// Slide 1 (inkjet) plays the print clip from /uslugi/serwis-drukarek-atramentowych;
+// its static image stays only as the Safari / failed-clip fallback.
+const INKJET_SLIDE = 1
+
 export function PrinterHubCarousel({ alt, slides }: { alt: string; slides: string[] }) {
-  return <HeroPrinterCarousel alt={alt} variant="home" slides={slides} onActiveChange={(i) => setCurrent(Math.max(i, 0))} />
+  return (
+    <HeroPrinterCarousel
+      alt={alt}
+      variant="home"
+      slides={slides}
+      introVideo={ATRAMENT_PRINT_CLIP}
+      animationSlideIndex={INKJET_SLIDE}
+      onActiveChange={(i) => setCurrent(Math.max(i, 0))}
+    />
+  )
 }
 
 export function PrinterHubMid({ mids }: { mids: readonly HeroMid[] }) {

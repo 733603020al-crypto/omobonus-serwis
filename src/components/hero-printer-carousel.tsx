@@ -572,6 +572,25 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intro, active, ready, inView, openingOn, hoverPaused, loaded])
 
+  // A tick already wanted to bring the clip slide in but its clip was still
+  // loading: move on the moment it becomes playable instead of waiting out
+  // another 5.5s. Hover / off-screen / hidden tab leave it to the regular timer.
+  const clipHeldRef = useRef(false)
+  useEffect(() => {
+    clipHeldRef.current = false
+  }, [active])
+  useEffect(() => {
+    if (intro !== 'ready' || !clipHeldRef.current) return
+    clipHeldRef.current = false
+    if ((activeRef.current + 1) % slideCount !== clipAt) return
+    if (!ready || !inView || openingOn || hoverPaused || document.hidden) return
+    if (!aheadLoaded(activeRef.current, loadedRef.current)) return
+    setActive(clipAt)
+    setAdvanced(true)
+    setTimerKick((k) => k + 1)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intro])
+
   useEffect(() => {
     if (!ready || !inView || openingOn || hoverPaused) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -589,8 +608,12 @@ export function HeroPrinterCarousel({
       if (document.hidden) return
       // The print-clip slide leaves on the clip's end, not on the timer...
       if (activeRef.current === clipAt && introRef.current !== 'off') return
-      // ...and is not moved to the front while its clip is still loading.
-      if ((activeRef.current + 1) % slideCount === clipAt && introRef.current === 'wait') return
+      // ...and is not moved to the front while its clip is still loading
+      // (the switch is caught up as soon as the clip is ready, see clipHeldRef).
+      if ((activeRef.current + 1) % slideCount === clipAt && introRef.current === 'wait') {
+        clipHeldRef.current = true
+        return
+      }
       // Slow connection: hold the current slide until the incoming ones are cached.
       if (!aheadLoaded(activeRef.current, loadedRef.current)) return
       // ...and until the incoming slide's animation (if it has a poster) is cached.
