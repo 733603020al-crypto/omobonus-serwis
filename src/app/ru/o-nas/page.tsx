@@ -4,7 +4,7 @@ import { ru } from '@/lib/i18n/ru'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('ru', {
-  title: 'О нас | Честный сервис компьютеров и принтеров | Omobonus Вроцлав',
+  title: 'О нас | Честный сервис компьютеров и принтеров',
   description: 'Мы не зарабатываем на вашей проблеме. Omobonus — сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ 10+ лет опыта ✔ Диагностика за 15 мин ✔ Ремонт за 48 часов',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru/o-nas',

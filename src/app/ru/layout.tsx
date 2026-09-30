@@ -171,8 +171,8 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
         {/* Mobile-only bottom quick-action bar */}
         <MobileActionBar />
 
-        <Script
-          id="json-ld"
+        {/* Обычный тег, а не next/script: разметка должна быть в исходном HTML без выполнения JS */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

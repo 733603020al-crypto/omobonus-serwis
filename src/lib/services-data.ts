@@ -27,7 +27,6 @@ import { create3DPrinterPricingSections, createDruk3DZamowieniePricingSections }
 import { createPlotterPricingSections } from './services-data-plotter'
 import { createInkjetPricingSections } from './services-data-inkjet'
 import { createIglowePricingSections } from './services-data-needle'
-import { createFaqSection } from './services-data-shared'
 import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
@@ -63,8 +62,9 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    // Strona renderuje siatkę kart zamiast cennika; z danych używane jest tylko FAQ (JSON-LD FAQPage)
-    pricingSections: [createFaqSection()],
+    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
+    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
+    pricingSections: [],
   },
   {
     slug: 'serwis-drukarek-laserowych',

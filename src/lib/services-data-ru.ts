@@ -1,6 +1,6 @@
 import manifest from '@/config/manifest'
 import type { ServiceData, PricingSection } from './services-data-types'
-import { diagnostaSection, dojazdSection, faqSectionRu } from './services-data-ru-shared'
+import { diagnostaSection, dojazdSection } from './services-data-ru-shared'
 import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy, laptopFaqSection } from './services-data-ru-laptop'
 import { desktopKonserwacja, desktopNaprawy, desktopFaqSection } from './services-data-ru-desktop'
 import { outsourcingKonsultacja, outsourcingKonserwacja, outsourcingNaprawy, outsourcingFaq } from './services-data-ru-outsourcing'
@@ -61,8 +61,9 @@ export const servicesRu: ServiceData[] = [
     subtitle: 'Ремонт специализированных матричных принтеров',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт специализированных матричных принтеров.',
-    // Strona renderuje siatkę kart zamiast cennika; z danych używane jest tylko FAQ (JSON-LD FAQPage)
-    pricingSections: [faqSectionRu()],
+    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
+    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
+    pricingSections: [],
   },
   {
     slug: 'serwis-drukarek-laserowych',
