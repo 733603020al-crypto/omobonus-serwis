@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { HeroSpotlight, spotlightFor } from '@/components/hero-spotlight'
+import '@/app/styles/hero-intro-video.css'
 
 // Stack carousel used in service-page hero zones (originally built for
 // /uslugi/naprawa-drukarek, now also reused for /uslugi/serwis-laptopow via
@@ -89,6 +90,9 @@ const LOOKAHEAD = 3
 // initial preload, so it doesn't compete with the first screen; still leaves
 // ~4s before the first advance.
 const ANIM_DELAY_MS = 1500
+// Slide-0 print clip still not playable this long after it started loading:
+// fall back to the static image and the regular timer.
+const INTRO_FAIL_MS = 10000
 
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
@@ -154,13 +158,24 @@ export function HeroPrinterCarousel({
   // Optional: reports the active slide index (home hero uses it to swap the
   // matching word in the H1 line in sync with the slide change).
   onActiveChange?: (index: number) => void
-  // Optional one-time intro video over slide 0 (transparent WebM). Slide 0's
-  // static image paints first; the video loads after window "load", plays
-  // once when ready, then fades back to the static image and never plays
-  // again. `box` = the printer's bbox in the video frame (fractions x0,y0,x1,y1),
-  // mapped onto slide 0's image. Skipped on Apple WebKit (no WebM alpha) and
-  // under prefers-reduced-motion.
-  introVideo?: { src: string; box: readonly [number, number, number, number] }
+  // Optional print clip as slide 0 (transparent WebM, serwis-drukarek-atramentowych).
+  // `poster` = the clip's own frame 0 (same frame size), painted first; the clip
+  // loads after window "load", replaces the poster once ready and plays at once,
+  // then stays on its last frame. The carousel advances on `ended` (not the
+  // 5.5s timer); on the next visit the clip is rewound and played again. Paused
+  // while the hero is off screen. Apple WebKit (no WebM alpha), reduced motion
+  // and a failed clip keep the static slide-0 image (`slides[0]`) on the timer.
+  // `box` = the printer's bbox in the frame (fractions x0,y0,x1,y1), mapped onto
+  // slide 0's contained image (`photoAspect` = its width/height); `depth` =
+  // depth map in the frame's geometry for the hover light.
+  introVideo?: {
+    src: string
+    poster: string
+    depth: string
+    frame: readonly [number, number]
+    photoAspect: number
+    box: readonly [number, number, number, number]
+  }
   // Optional (serwis-laptopow): slide 0 is only a light stand-in for the
   // animated slide 1. Slide 1 is fetched right after mount and the carousel
   // moves to it as soon as it is fully cached, instead of waiting for the
@@ -240,65 +255,95 @@ export function HeroPrinterCarousel({
     !!slidePosters?.[i] && !animReadyRef.current[i] &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Intro video: idle -> loading (hidden <video> buffering) -> playing
-  // (video shown, static slide 0 hidden) -> ending (fade back) -> done.
-  const [intro, setIntro] = useState<'idle' | 'loading' | 'playing' | 'ending' | 'done'>('idle')
-  const slide0Ref = useRef<HTMLImageElement | null>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [introMeta, setIntroMeta] = useState(false)
-  const [introStarted, setIntroStarted] = useState(false)
-  const [introGeo, setIntroGeo] = useState<{ w: number; h: number; dx: number; dy: number; ox: number; oy: number } | null>(null)
+  // Print clip on slide 0: wait (poster, clip loading) -> ready (cached, waits
+  // for the front + visible hero) -> playing -> ended (last frame; the carousel
+  // advances) -> rewound to ready once slide 0 is hidden at the back. 'off' =
+  // no clip (static slide-0 image, regular timer).
+  const [intro, setIntro] = useState<'wait' | 'ready' | 'playing' | 'ended' | 'off'>(introVideo ? 'wait' : 'off')
+  const introOn = intro !== 'off'
   const introRef = useRef(intro)
   introRef.current = intro
+  const [introLoad, setIntroLoad] = useState(false)
+  // First real playback; the poster is hidden for good from then on.
+  const [introStarted, setIntroStarted] = useState(false)
+  const introStartedRef = useRef(introStarted)
+  introStartedRef.current = introStarted
+  const introLeftRef = useRef(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  // Timer restart after the clip-driven advance, so the next slide gets its full 5.5s.
+  const [timerKick, setTimerKick] = useState(0)
+
+  // Clip unavailable: switch to the static image once it's cached (no empty frame).
+  const introFail = () => {
+    if (introRef.current === 'off') return
+    preloadImages([slides[0]]).then(() => setIntro('off'))
+  }
 
   useEffect(() => {
     if (!introVideo) return
     const ua = navigator.userAgent
-    if (/AppleWebKit/.test(ua) && !/(Chrome|Chromium|Android)/.test(ua)) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const start = () => setIntro((s) => (s === 'idle' ? 'loading' : s))
+    if ((/AppleWebKit/.test(ua) && !/(Chrome|Chromium|Android)/.test(ua)) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIntro('off')
+      return
+    }
+    let failTimer: number | undefined
+    const start = () => {
+      setIntroLoad(true)
+      // Never became playable (stalled network): give up on the clip.
+      failTimer = window.setTimeout(() => {
+        if (introRef.current === 'wait') introFail()
+      }, INTRO_FAIL_MS)
+    }
     if (document.readyState === 'complete') start()
     else window.addEventListener('load', start, { once: true })
-    return () => window.removeEventListener('load', start)
+    return () => {
+      window.removeEventListener('load', start)
+      window.clearTimeout(failTimer)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Size/offset of the video so the printer inside its frame lands exactly
-  // on slide 0's image (object-contain rect of the static file).
+  // Play as soon as the clip is ready, slide 0 is in front and the hero is on
+  // screen; pause when it scrolls away, resume from the same spot on return.
   useEffect(() => {
-    const img = slide0Ref.current
-    if (!introVideo || intro === 'idle' || intro === 'done' || !img) return
-    const measure = () => {
-      const bw = img.offsetWidth
-      const bh = img.offsetHeight
-      const vid = videoRef.current
-      if (!bw || !bh || !img.naturalWidth || !vid?.videoWidth) return
-      const ar = img.naturalWidth / img.naturalHeight
-      const cw = bw / bh > ar ? bh * ar : bw
-      const [x0, y0, x1, y1] = introVideo.box
-      const w = cw / (x1 - x0)
-      const h = (w * vid.videoHeight) / vid.videoWidth
-      const cx = (x0 + x1) / 2
-      const cy = (y0 + y1) / 2
-      setIntroGeo({ w, h, dx: (0.5 - cx) * w, dy: (0.5 - cy) * h, ox: cx * 100, oy: cy * 100 })
+    const v = videoRef.current
+    if (!v || active !== 0) return
+    if (intro === 'ready') {
+      if (inView) setIntro('playing')
+      return
     }
-    measure()
-    const ro = new ResizeObserver(measure)
-    ro.observe(img)
-    return () => ro.disconnect()
+    if (intro !== 'playing') return
+    if (!inView) {
+      v.pause()
+      return
+    }
+    if (v.paused) v.play().catch((e: DOMException) => {
+      if (e?.name !== 'AbortError') introFail()
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [intro, introMeta])
+  }, [intro, inView, active])
 
-  // Slide 0 left the front while the video was still on: finish the intro.
+  // Rewind once slide 0 sits hidden at the back of the queue (not while it is
+  // still sliding out), so it re-enters on frame 0 and plays again.
   useEffect(() => {
-    if (active !== 0 && (intro === 'loading' || intro === 'playing')) setIntro(intro === 'loading' ? 'done' : 'ending')
-  }, [active, intro])
-
-  useEffect(() => {
-    if (intro !== 'ending') return
-    const id = window.setTimeout(() => setIntro('done'), 450)
-    return () => window.clearTimeout(id)
-  }, [intro])
+    if (intro !== 'ended') return
+    if (active === 0) {
+      if (!introLeftRef.current) return
+    } else {
+      introLeftRef.current = true
+      const delta = (slideCount - active) % slideCount
+      if (delta < 3 || delta === slideCount - 1) return
+    }
+    introLeftRef.current = false
+    const v = videoRef.current
+    if (v) {
+      v.pause()
+      v.currentTime = 0
+    }
+    setIntro('ready')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intro, active])
 
   // Stops the rotation once less than half of the hero is on screen — no
   // point rotating slides nobody really sees; resumes on scroll back.
@@ -490,6 +535,28 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Clip finished: advance right away (hover, off-screen and uncached next
+  // slides hold it, like the regular tick).
+  useEffect(() => {
+    if (intro !== 'ended' || active !== 0 || !ready || !inView || openingOn || hoverPaused) return
+    if (!aheadLoaded(0, loaded)) return
+    const go = () => {
+      setActive(1 % slideCount)
+      setAdvanced(true)
+      setTimerKick((k) => k + 1)
+    }
+    if (!document.hidden) {
+      go()
+      return
+    }
+    const onVisible = () => {
+      if (!document.hidden) go()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => document.removeEventListener('visibilitychange', onVisible)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intro, active, ready, inView, openingOn, hoverPaused, loaded])
+
   useEffect(() => {
     if (!ready || !inView || openingOn || hoverPaused) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -505,8 +572,8 @@ export function HeroPrinterCarousel({
       // timer down, so it resumes on the same cadence once it's focused
       // again rather than restarting the 5.5s countdown from zero.
       if (document.hidden) return
-      // Intro clip still playing: let it finish, advance on a later tick.
-      if (introRef.current === 'playing') return
+      // Slide 0 with the print clip leaves on the clip's end, not on the timer.
+      if (activeRef.current === 0 && introRef.current !== 'off') return
       // Slow connection: hold the current slide until the incoming ones are cached.
       if (!aheadLoaded(activeRef.current, loadedRef.current)) return
       // ...and until the incoming slide's animation (if it has a poster) is cached.
@@ -516,9 +583,9 @@ export function HeroPrinterCarousel({
     }
     id = window.setTimeout(tick, Math.max(0, ADVANCE_MS - (Date.now() - countdownStartRef.current)))
     return () => clearTimeout(id)
-    // intro video started: restart the countdown so slide 0 holds for the whole clip
-    // quick first advance: restart the countdown so slide 1 gets its full 5.5s
-  }, [ready, inView, slideCount, introStarted, openingOn, hoverPaused, quickAdvanced])
+    // quick first advance / clip-driven advance: restart the countdown so the
+    // next slide gets its full 5.5s
+  }, [ready, inView, slideCount, openingOn, hoverPaused, quickAdvanced, timerKick])
 
   const coef = (k: number) => sizeCoefficients?.[((k % slideCount) + slideCount) % slideCount] ?? 1
   // Front / next-up slide coefficients (the opening slide stands in front of slide 0).
@@ -532,6 +599,21 @@ export function HeroPrinterCarousel({
     const half = config.scale[tier] * c / 2
     return 100 * (tier === 1 ? nextLeft + half : nextLeft + half + 0.02)
   }
+
+  // Poster / clip box inside slide 0 (see introVideo): the static image's
+  // object-contain width is --intro-cw; the frame is scaled so its printer
+  // bbox spans that width and centred on it.
+  const introMedia: CSSProperties | undefined = introVideo && (() => {
+    const [fw, fh] = introVideo.frame
+    const [x0, y0, x1, y1] = introVideo.box
+    const kw = 1 / (x1 - x0)
+    const kh = (kw * fh) / fw
+    return {
+      width: `calc(var(--intro-cw) * ${kw})`,
+      height: `calc(var(--intro-cw) * ${kh})`,
+      transform: `translate(-50%, -50%) translate(calc(var(--intro-cw) * ${(0.5 - (x0 + x1) / 2) * kw}), calc(var(--intro-cw) * ${(0.5 - (y0 + y1) / 2) * kh}))`,
+    }
+  })()
 
   return (
     // Outer "bleed" box: purely a wider, non-clipping paint-containment
@@ -615,7 +697,7 @@ export function HeroPrinterCarousel({
           // active one, so its relative size stays consistent through its
           // whole time in the queue.
           const scale = config.scale[tier] * (sizeCoefficients?.[i] ?? 1)
-          const opacity = i === 0 && intro === 'playing' ? 0 : config.opacity[tier]
+          const opacity = config.opacity[tier]
           const translateX = peekX(tier, coef(i))
           const translateY = config.translateY[tier] + (verticalBias?.[i] ?? 0)
           const zIndex = config.zIndex[tier]
@@ -623,12 +705,75 @@ export function HeroPrinterCarousel({
             tier === 0 && 'activeClass' in config
               ? ` ${config.activeClass}${advanced ? ` ${config.enterClass}` : ''}`
               : ''
+          const slideTransform = `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(calc(${scale} * var(--slide-fit, 1)))`
+
+          if (i === 0 && introVideo && introMedia) {
+            // Slide 0 with the print clip: the slot moves through the queue like
+            // any slide; inside it the poster (clip frame 0) and the clip share
+            // one CSS-computed box, so the hand-over is pixel-exact. The static
+            // image is only for Apple WebKit / reduced motion (CSS, from the
+            // first paint) and a failed clip (data-vid="off").
+            return (
+              <div
+                key={src}
+                className={config.slideClass + stateClass + ' hero-intro-slide'}
+                data-tier={tier}
+                data-vid={introOn ? undefined : 'off'}
+                data-started={introStarted ? '' : undefined}
+                style={{
+                  transform: slideTransform,
+                  opacity,
+                  zIndex,
+                  ...fitVars(sizeCoefficients?.[i] ?? 1),
+                  ['--intro-cw' as string]: `min(100cqw, ${introVideo.photoAspect} * 100cqh)`,
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" aria-hidden="true" loading="lazy" className="hero-intro-photo" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={introVideo.poster}
+                  alt=""
+                  aria-hidden="true"
+                  loading="eager"
+                  fetchPriority="high"
+                  className="hero-intro-media hero-intro-poster"
+                  style={introMedia}
+                />
+                {introLoad && introOn && (
+                  <video
+                    ref={videoRef}
+                    src={introVideo.src}
+                    muted
+                    playsInline
+                    preload="auto"
+                    aria-hidden="true"
+                    className="hero-intro-media"
+                    style={introMedia}
+                    onCanPlayThrough={() => setIntro((s) => (s === 'wait' ? 'ready' : s))}
+                    onPlaying={() => setIntroStarted(true)}
+                    onEnded={() => setIntro('ended')}
+                    onError={introFail}
+                  />
+                )}
+                {tier === 0 && introOn && !openingOn && (
+                  <HeroSpotlight
+                    src={introVideo.poster}
+                    depth={introVideo.depth}
+                    className="hero-intro-media"
+                    style={introMedia}
+                    hide=".hero-intro-poster, video"
+                    live={() => (introStartedRef.current ? videoRef.current : null)}
+                  />
+                )}
+              </div>
+            )
+          }
 
           return (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
-              ref={i === 0 ? slide0Ref : undefined}
               src={slidePosters?.[i] ? (animReady[i] ? animSrcRef.current[i] ?? src : slidePosters[i]) : src}
               alt=""
               aria-hidden="true"
@@ -637,7 +782,7 @@ export function HeroPrinterCarousel({
               className={config.slideClass + stateClass}
               data-tier={tier}
               style={{
-                transform: `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(calc(${scale} * var(--slide-fit, 1)))`,
+                transform: slideTransform,
                 opacity,
                 zIndex,
                 ...fitVars(sizeCoefficients?.[i] ?? 1),
@@ -646,11 +791,12 @@ export function HeroPrinterCarousel({
           )
         })}
         {spotlights[active] && !openingOn && !(active === 0 && posterSrc && !slide0Ready) &&
-          !(active === 0 && (intro === 'loading' || intro === 'playing' || intro === 'ending')) && (
+          !(active === 0 && introOn) && (
           <HeroSpotlight
             key={active}
             src={spotlights[active]!.src}
             depth={spotlights[active]!.depth}
+            hide={active === 0 && introVideo ? '[data-tier="0"] .hero-intro-photo' : undefined}
             className={config.slideClass + ('activeClass' in config ? ` ${config.activeClass}` : '')}
             style={{
               transform: `translate(-50%, -50%) translateX(${peekX(0, coef(active))}%) translateY(${
@@ -658,45 +804,6 @@ export function HeroPrinterCarousel({
               }%) scale(calc(${config.scale[0] * coef(active)} * var(--slide-fit, 1)))`,
               zIndex: config.zIndex[0] + 1,
               ...fitVars(coef(active)),
-            }}
-          />
-        )}
-        {introVideo && intro !== 'idle' && intro !== 'done' && (
-          <video
-            ref={videoRef}
-            src={introVideo.src}
-            muted
-            playsInline
-            autoPlay={false}
-            preload="auto"
-            aria-hidden="true"
-            className={config.slideClass + ('activeClass' in config ? ` ${config.activeClass}` : '')}
-            onLoadedMetadata={() => setIntroMeta(true)}
-            onCanPlayThrough={(e) => {
-              if (intro !== 'loading' || active !== 0) return
-              e.currentTarget.play().then(() => { setIntro('playing'); setIntroStarted(true) }, () => setIntro('done'))
-            }}
-            onEnded={() => setIntro('ending')}
-            style={{
-              width: introGeo?.w,
-              height: introGeo?.h,
-              // global preflight caps video at max-width:100% — that squeezed the
-              // 16:9 frame (printer shrank/shifted); the transparent frame may overhang
-              maxWidth: 'none',
-              maxHeight: 'none',
-              objectFit: 'fill',
-              objectPosition: '50% 50%',
-              overflow: 'visible',
-              transformOrigin: introGeo ? `${introGeo.ox}% ${introGeo.oy}%` : undefined,
-              transform: introGeo
-                ? `translate(-50%, -50%) translate(${introGeo.dx}px, ${introGeo.dy}px) scale(calc(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)} * var(--slide-fit, 1)))`
-                : undefined,
-              ...fitVars(sizeCoefficients?.[0] ?? 1),
-              visibility: introGeo ? undefined : 'hidden',
-              // no transform transition: the clip must sit still on slide 0, only fade
-              transition: 'opacity 450ms ease, filter 300ms ease',
-              opacity: intro === 'playing' && introGeo ? 1 : 0,
-              zIndex: config.zIndex[0] + 1,
             }}
           />
         )}

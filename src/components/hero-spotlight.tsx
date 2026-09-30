@@ -98,6 +98,7 @@ export function HeroSpotlight({
   className,
   style,
   hide = 'img[data-tier="0"]',
+  live,
 }: {
   src: string
   depth: string
@@ -106,8 +107,14 @@ export function HeroSpotlight({
   // What the lit canvas replaces inside its parent: the carousel's active
   // slide by default; single-image heroes pass 'img' (every image in the wrap).
   hide?: string
+  // Optional video to light instead of the still `src` (slide-0 print clip):
+  // its current frame is re-uploaded every frame while lit. `src` must be a
+  // frame of the same size; the hidden set is re-queried, as the clip mounts late.
+  live?: () => HTMLVideoElement | null
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const liveRef = useRef(live)
+  liveRef.current = live
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -126,6 +133,7 @@ export function HeroSpotlight({
     let hover = false
     let hm = 0
     let hiddenSlides: HTMLElement[] | null = null
+    let imageTex: WebGLTexture | null = null
     const blockedUntil = performance.now() + SETTLE_MS
 
     const init = () =>
@@ -157,7 +165,9 @@ export function HeroSpotlight({
           uni[n] = g.getUniformLocation(prog, n)
         ;[img, dep].forEach((el, unit) => {
           g.activeTexture(g.TEXTURE0 + unit)
-          g.bindTexture(g.TEXTURE_2D, g.createTexture())
+          const tex = g.createTexture()
+          if (unit === 0) imageTex = tex
+          g.bindTexture(g.TEXTURE_2D, tex)
           g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_S, g.CLAMP_TO_EDGE)
           g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_T, g.CLAMP_TO_EDGE)
           g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MIN_FILTER, g.LINEAR)
@@ -203,8 +213,15 @@ export function HeroSpotlight({
       // the alpha and shows the image's box as a dark rectangle.
       const lit = hm > 0
       canvas.style.opacity = lit ? '1' : '0'
+      if (liveRef.current) hiddenSlides = null
       hiddenSlides ??= Array.from(canvas.parentElement?.querySelectorAll<HTMLElement>(hide) ?? [])
       for (const el of hiddenSlides) el.style.visibility = lit ? 'hidden' : ''
+      const video = lit ? liveRef.current?.() : null
+      if (video && video.readyState >= 2) {
+        g.activeTexture(g.TEXTURE0)
+        g.bindTexture(g.TEXTURE_2D, imageTex)
+        g.texImage2D(g.TEXTURE_2D, 0, g.RGBA, g.RGBA, g.UNSIGNED_BYTE, video)
+      }
       g.uniform2f(uni.uMouse, sm.x, sm.y)
       g.uniform1f(uni.uHover, hm)
       g.drawArrays(g.TRIANGLE_STRIP, 0, 4)
