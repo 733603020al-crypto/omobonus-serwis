@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
+import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 
 // Home hero: the same stack carousel as the service pages (image left, text
 // right), fed with the first slide of each service page. The middle H1 line
@@ -38,6 +39,10 @@ const MOBILE_SLIDE_ANIMS = [undefined, '/images/02_serwis-komputerow-stacjonarny
 // cached it gives way to slide 0 and never returns.
 const OPENING = { src: '/images/laptop-carousel/laptop-carousel-v2-01.webp', minMs: 2800 }
 const OPENING_MID: HeroMid = { group: 'opening', parts: [' ', ''] }
+// Inkjet slide plays the print clip from /uslugi/serwis-drukarek-atramentowych
+// (its static image stays only as the Safari / failed-clip fallback) and the
+// carousel moves on at the clip's end instead of the 5.5s timer.
+const INKJET_SLIDE = 3
 // Service page opened by a click on the picture or the heading, per slide.
 const SLUGS = [
   'serwis-laptopow',
@@ -153,6 +158,8 @@ export function HomeHeroShowcase({
               slidePosters={SLIDE_POSTERS}
               mobileSlideAnims={MOBILE_SLIDE_ANIMS}
               opening={OPENING}
+              introVideo={ATRAMENT_PRINT_CLIP}
+              animationSlideIndex={INKJET_SLIDE}
               onActiveChange={onActiveChange}
             />
           </Link>

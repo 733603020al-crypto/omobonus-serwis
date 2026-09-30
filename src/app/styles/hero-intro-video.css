@@ -1,4 +1,4 @@
-/* Slide 0 with the print clip (serwis-drukarek-atramentowych), see introVideo
+/* Print-clip slide (serwis-drukarek-atramentowych slide 0, home slide 3), see introVideo
    in hero-printer-carousel.tsx. The slot keeps the slide class (size, queue
    transform, glow); the poster and the clip sit in one box sized from its
    container units, so both land on exactly the same pixels. */

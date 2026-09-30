@@ -9,6 +9,7 @@ import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import { OutsourcingItHero } from '@/components/outsourcing-it-hero'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
 import { HeroSpotlight } from '@/components/hero-spotlight'
+import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
@@ -105,18 +106,6 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 // had any, while large still shifts furthest toward the logo strip below.
 // Values differ per slide, not one shared bottom line for all six.
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
-// Print clip as slide 1 (plays on every visit, carousel moves on at its end).
-// poster = the clip's own frame 0, depth = hover-light depth map in the same
-// 792×612 frame; box = printer's bbox in that frame, mapped onto the static
-// 512×392 slide image (still used on Apple WebKit / reduced motion / failed clip).
-const ATRAMENT_INTRO_VIDEO = {
-  src: '/images/atrament-carousel-v3-01-print2.webm',
-  poster: '/images/atrament-carousel-v3-01-print2-first.webp',
-  depth: '/images/atrament-carousel-v3-01-print2-depth.webp',
-  frame: [792, 612],
-  photoAspect: 512 / 392,
-  box: [30 / 792, 18 / 612, 776 / 792, 594 / 612],
-} as const
 
 // serwis-drukarek-iglowych: 7 dot-matrix printer renders (slides 0–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -515,7 +504,8 @@ export function ServicePageTemplate({
                           slides={ATRAMENT_HERO_SLIDES}
                           sizeCoefficients={ATRAMENT_SIZE_COEFFICIENTS}
                           verticalBias={ATRAMENT_VERTICAL_BIAS}
-                          introVideo={ATRAMENT_INTRO_VIDEO}
+                          introVideo={ATRAMENT_PRINT_CLIP}
+                          animationSlideIndex={0}
                         />
                       ) : slug === 'serwis-drukarek-laserowych' ? (
                         // Same stack-carousel mechanic as the atramentowych

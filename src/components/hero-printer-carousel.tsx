@@ -120,6 +120,7 @@ export function HeroPrinterCarousel({
   opening,
   onActiveChange,
   introVideo,
+  animationSlideIndex = 0,
   advanceOnSecondReady,
 }: {
   slides: string[]
@@ -158,16 +159,19 @@ export function HeroPrinterCarousel({
   // Optional: reports the active slide index (home hero uses it to swap the
   // matching word in the H1 line in sync with the slide change).
   onActiveChange?: (index: number) => void
-  // Optional print clip as slide 0 (transparent WebM, serwis-drukarek-atramentowych).
-  // `poster` = the clip's own frame 0 (same frame size), painted first; the clip
-  // loads after window "load", replaces the poster once ready and plays at once,
-  // then stays on its last frame. The carousel advances on `ended` (not the
-  // 5.5s timer); on the next visit the clip is rewound and played again. Paused
-  // while the hero is off screen. Apple WebKit (no WebM alpha), reduced motion
-  // and a failed clip keep the static slide-0 image (`slides[0]`) on the timer.
-  // `box` = the printer's bbox in the frame (fractions x0,y0,x1,y1), mapped onto
-  // slide 0's contained image (`photoAspect` = its width/height); `depth` =
-  // depth map in the frame's geometry for the hover light.
+  // Optional print clip (transparent WebM) in place of slide `animationSlideIndex`
+  // (serwis-drukarek-atramentowych: 0, home hero: 3). `poster` = the clip's own
+  // frame 0 (same frame size), painted until the clip plays; the clip loads after
+  // window "load" once the slide is in the DOM, and plays from frame 0 as soon as
+  // the slide is in front, then stays on its last frame. The carousel advances on
+  // `ended` (not the 5.5s timer) and never moves onto the slide while the clip
+  // is still loading; on the next visit the clip is rewound and played again.
+  // Paused while the hero is off screen. Apple WebKit (no WebM alpha), reduced
+  // motion and a failed clip (error, rejected play, or not playable
+  // INTRO_FAIL_MS after the slide shows up in the stack) keep the slide's static
+  // image on the timer. `box` = the printer's bbox in the frame (fractions
+  // x0,y0,x1,y1), mapped onto the slide's contained image (`photoAspect` = its
+  // width/height); `depth` = depth map in the frame's geometry for the hover light.
   introVideo?: {
     src: string
     poster: string
@@ -176,6 +180,7 @@ export function HeroPrinterCarousel({
     photoAspect: number
     box: readonly [number, number, number, number]
   }
+  animationSlideIndex?: number
   // Optional (serwis-laptopow): slide 0 is only a light stand-in for the
   // animated slide 1. Slide 1 is fetched right after mount and the carousel
   // moves to it as soon as it is fully cached, instead of waiting for the
@@ -211,6 +216,8 @@ export function HeroPrinterCarousel({
   const boxRef = useRef<HTMLDivElement>(null)
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
+  // Slide replaced by the print clip (see introVideo); -1 = none.
+  const clipAt = introVideo ? animationSlideIndex % slideCount : -1
   const lookahead = Math.min(LOOKAHEAD, slideCount - 1)
   const aheadLoaded = (from: number, flags: boolean[]) => {
     for (let k = 1; k <= lookahead; k++) if (!flags[(from + k) % slideCount]) return false
@@ -224,7 +231,10 @@ export function HeroPrinterCarousel({
       const i = (from + k) % slideCount
       if (requestedRef.current.has(i)) continue
       requestedRef.current.add(i)
-      preloadImages([slidePosters?.[i] ?? slides[i]]).then(() =>
+      // Clip slide: its frame-0 poster, not the static image (the fallback
+      // fetches that one itself).
+      const src = i === clipAt && introRef.current !== 'off' ? introVideo!.poster : slidePosters?.[i] ?? slides[i]
+      preloadImages([src]).then(() =>
         setLoaded((prev) => {
           if (prev[i]) return prev
           const next = [...prev]
@@ -255,10 +265,10 @@ export function HeroPrinterCarousel({
     !!slidePosters?.[i] && !animReadyRef.current[i] &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Print clip on slide 0: wait (poster, clip loading) -> ready (cached, waits
-  // for the front + visible hero) -> playing -> ended (last frame; the carousel
-  // advances) -> rewound to ready once slide 0 is hidden at the back. 'off' =
-  // no clip (static slide-0 image, regular timer).
+  // Print clip on slide `clipAt`: wait (poster, clip loading) -> ready (cached,
+  // waits for the front + visible hero) -> playing -> ended (last frame; the
+  // carousel advances) -> rewound to ready once the slide is hidden at the back.
+  // 'off' = no clip (static slide image, regular timer).
   const [intro, setIntro] = useState<'wait' | 'ready' | 'playing' | 'ended' | 'off'>(introVideo ? 'wait' : 'off')
   const introOn = intro !== 'off'
   const introRef = useRef(intro)
@@ -269,14 +279,17 @@ export function HeroPrinterCarousel({
   const introStartedRef = useRef(introStarted)
   introStartedRef.current = introStarted
   const introLeftRef = useRef(false)
+  const introFailTimerRef = useRef<number | undefined>(undefined)
   const videoRef = useRef<HTMLVideoElement>(null)
   // Timer restart after the clip-driven advance, so the next slide gets its full 5.5s.
   const [timerKick, setTimerKick] = useState(0)
+  // Queue position of the clip slide (0 = front; +1 while the opening slide is there).
+  const clipDelta = ((clipAt - active) % slideCount + slideCount) % slideCount + (openingOn ? 1 : 0)
 
   // Clip unavailable: switch to the static image once it's cached (no empty frame).
   const introFail = () => {
     if (introRef.current === 'off') return
-    preloadImages([slides[0]]).then(() => setIntro('off'))
+    preloadImages([slides[clipAt]]).then(() => setIntro('off'))
   }
 
   useEffect(() => {
@@ -287,28 +300,31 @@ export function HeroPrinterCarousel({
       setIntro('off')
       return
     }
-    let failTimer: number | undefined
-    const start = () => {
-      setIntroLoad(true)
-      // Never became playable (stalled network): give up on the clip.
-      failTimer = window.setTimeout(() => {
-        if (introRef.current === 'wait') introFail()
-      }, INTRO_FAIL_MS)
-    }
+    const start = () => setIntroLoad(true)
     if (document.readyState === 'complete') start()
     else window.addEventListener('load', start, { once: true })
     return () => {
       window.removeEventListener('load', start)
-      window.clearTimeout(failTimer)
+      window.clearTimeout(introFailTimerRef.current)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Play as soon as the clip is ready, slide 0 is in front and the hero is on
-  // screen; pause when it scrolls away, resume from the same spot on return.
+  // Stall guard, counted from when the slide shows up in the visible stack (not
+  // from page load): still not playable INTRO_FAIL_MS later -> static image.
+  useEffect(() => {
+    if (!introLoad || intro !== 'wait' || clipDelta > 2 || introFailTimerRef.current !== undefined) return
+    introFailTimerRef.current = window.setTimeout(() => {
+      if (introRef.current === 'wait') introFail()
+    }, INTRO_FAIL_MS)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [introLoad, intro, clipDelta])
+
+  // Play as soon as the clip is ready, its slide is in front and the hero is
+  // on screen; pause when it scrolls away, resume from the same spot on return.
   useEffect(() => {
     const v = videoRef.current
-    if (!v || active !== 0) return
+    if (!v || active !== clipAt) return
     if (intro === 'ready') {
       if (inView) setIntro('playing')
       return
@@ -324,16 +340,15 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intro, inView, active])
 
-  // Rewind once slide 0 sits hidden at the back of the queue (not while it is
-  // still sliding out), so it re-enters on frame 0 and plays again.
+  // Rewind once the clip slide sits hidden at the back of the queue (not while
+  // it is still sliding out), so it re-enters on frame 0 and plays again.
   useEffect(() => {
     if (intro !== 'ended') return
-    if (active === 0) {
+    if (active === clipAt) {
       if (!introLeftRef.current) return
     } else {
       introLeftRef.current = true
-      const delta = (slideCount - active) % slideCount
-      if (delta < 3 || delta === slideCount - 1) return
+      if (clipDelta < 3 || clipDelta === slideCount - 1) return
     }
     introLeftRef.current = false
     const v = videoRef.current
@@ -538,10 +553,10 @@ export function HeroPrinterCarousel({
   // Clip finished: advance right away (hover, off-screen and uncached next
   // slides hold it, like the regular tick).
   useEffect(() => {
-    if (intro !== 'ended' || active !== 0 || !ready || !inView || openingOn || hoverPaused) return
-    if (!aheadLoaded(0, loaded)) return
+    if (intro !== 'ended' || active !== clipAt || !ready || !inView || openingOn || hoverPaused) return
+    if (!aheadLoaded(clipAt, loaded)) return
     const go = () => {
-      setActive(1 % slideCount)
+      setActive((clipAt + 1) % slideCount)
       setAdvanced(true)
       setTimerKick((k) => k + 1)
     }
@@ -572,8 +587,10 @@ export function HeroPrinterCarousel({
       // timer down, so it resumes on the same cadence once it's focused
       // again rather than restarting the 5.5s countdown from zero.
       if (document.hidden) return
-      // Slide 0 with the print clip leaves on the clip's end, not on the timer.
-      if (activeRef.current === 0 && introRef.current !== 'off') return
+      // The print-clip slide leaves on the clip's end, not on the timer...
+      if (activeRef.current === clipAt && introRef.current !== 'off') return
+      // ...and is not moved to the front while its clip is still loading.
+      if ((activeRef.current + 1) % slideCount === clipAt && introRef.current === 'wait') return
       // Slow connection: hold the current slide until the incoming ones are cached.
       if (!aheadLoaded(activeRef.current, loadedRef.current)) return
       // ...and until the incoming slide's animation (if it has a poster) is cached.
@@ -600,7 +617,7 @@ export function HeroPrinterCarousel({
     return 100 * (tier === 1 ? nextLeft + half : nextLeft + half + 0.02)
   }
 
-  // Poster / clip box inside slide 0 (see introVideo): the static image's
+  // Poster / clip box inside the clip slide (see introVideo): the static image's
   // object-contain width is --intro-cw; the frame is scaled so its printer
   // bbox spans that width and centred on it.
   const introMedia: CSSProperties | undefined = introVideo && (() => {
@@ -707,8 +724,8 @@ export function HeroPrinterCarousel({
               : ''
           const slideTransform = `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(calc(${scale} * var(--slide-fit, 1)))`
 
-          if (i === 0 && introVideo && introMedia) {
-            // Slide 0 with the print clip: the slot moves through the queue like
+          if (i === clipAt && introVideo && introMedia) {
+            // Print-clip slide: the slot moves through the queue like
             // any slide; inside it the poster (clip frame 0) and the clip share
             // one CSS-computed box, so the hand-over is pixel-exact. The static
             // image is only for Apple WebKit / reduced motion (CSS, from the
@@ -736,7 +753,7 @@ export function HeroPrinterCarousel({
                   alt=""
                   aria-hidden="true"
                   loading="eager"
-                  fetchPriority="high"
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
                   className="hero-intro-media hero-intro-poster"
                   style={introMedia}
                 />
@@ -791,12 +808,12 @@ export function HeroPrinterCarousel({
           )
         })}
         {spotlights[active] && !openingOn && !(active === 0 && posterSrc && !slide0Ready) &&
-          !(active === 0 && introOn) && (
+          !(active === clipAt && introOn) && (
           <HeroSpotlight
             key={active}
             src={spotlights[active]!.src}
             depth={spotlights[active]!.depth}
-            hide={active === 0 && introVideo ? '[data-tier="0"] .hero-intro-photo' : undefined}
+            hide={active === clipAt ? '[data-tier="0"] .hero-intro-photo' : undefined}
             className={config.slideClass + ('activeClass' in config ? ` ${config.activeClass}` : '')}
             style={{
               transform: `translate(-50%, -50%) translateX(${peekX(0, coef(active))}%) translateY(${
