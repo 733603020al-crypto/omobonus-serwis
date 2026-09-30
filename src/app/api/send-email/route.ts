@@ -1,8 +1,10 @@
+import { promises as dns } from 'node:dns'
+
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import nodemailer, { type Transporter } from 'nodemailer'
 
 import { CONTACT_INFO } from '@/config/contacts'
-import { rateLimit } from '@/lib/rate-limit'
+import { getClientIp, rateLimit } from '@/lib/rate-limit'
 
 // Константы для валидации
 // Лимит 4 MB на ВСЕ вложения вместе (тело запроса к Vercel Function ограничено ~4.5 MB).
@@ -30,6 +32,27 @@ interface ApiError {
   code?: string
 }
 
+// Ответ с ошибкой: клиенту — только тип ошибки и общее сообщение; подробности
+// (имена переменных, ответы SMTP, коды) — только в логах сервера и в режиме разработки.
+const PUBLIC_ERROR_MESSAGE: Record<ErrorType, string> = {
+  MISSING_CONFIG: 'Nie udało się wysłać zgłoszenia',
+  SMTP_ERROR: 'Nie udało się wysłać zgłoszenia',
+  FILE_TOO_LARGE: 'Załączniki są za duże',
+  INVALID_REQUEST: 'Nieprawidłowe dane w formularzu',
+  INTERNAL_ERROR: 'Nie udało się wysłać zgłoszenia',
+}
+
+const errorResponse = (error: ApiError, status: number) =>
+  NextResponse.json(
+    {
+      success: false,
+      error: PUBLIC_ERROR_MESSAGE[error.type],
+      errorType: error.type,
+      details: process.env.NODE_ENV === 'development' ? error.details : undefined,
+    },
+    { status },
+  )
+
 // Проверка конфигурации SMTP
 const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
   const required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS']
@@ -48,7 +71,7 @@ const validateSmtpConfig = (): { valid: boolean; missing: string[] } => {
 }
 
 // Создание transporter SMTP
-const createTransporter = (): nodemailer.Transporter | null => {
+const createTransporter = (): Transporter | null => {
   const config = validateSmtpConfig()
 
   if (!config.valid) {
@@ -258,7 +281,7 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
         valid: false,
         error: {
           type: 'FILE_TOO_LARGE',
-          message: `Файл "${file.name}" слишком большой. Максимальный размер: ${MAX_FILE_SIZE_MB} MB`,
+          message: `Файл слишком большой. Максимальный размер: ${MAX_FILE_SIZE_MB} MB`,
           details: `Размер файла: ${(file.size / 1024 / 1024).toFixed(2)} MB`,
         },
       }
@@ -283,6 +306,57 @@ const validateAttachments = (files: File[]): { valid: boolean; error?: ApiError 
 // Не более 5 отправок в минуту с одного IP (обычному посетителю нужно 1–3 попытки)
 const SEND_EMAIL_LIMIT_PER_MINUTE = 5
 
+// Строгая проверка адреса: ровно одна «@», без пробелов, запятых, кавычек, угловых скобок и
+// переводов строки (иначе в поле можно передать несколько получателей), домен — латинские
+// метки и TLD из букв. Клиентская проверка (zod) пропускает только такие адреса.
+const STRICT_EMAIL_REGEX =
+  /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/
+
+const isValidEmail = (value: string): boolean => {
+  if (value.length > 254 || !STRICT_EMAIL_REGEX.test(value)) return false
+  const local = value.slice(0, value.lastIndexOf('@'))
+  return local.length <= 64 && !local.startsWith('.') && !local.endsWith('.') && !local.includes('..')
+}
+
+// Автоответ уходит только на домен, который реально принимает почту (есть MX-запись).
+// Это не подтверждение владельца адреса, но отсекает выдуманные и опечатанные домены.
+const MX_LOOKUP_TIMEOUT_MS = 3000
+
+const domainAcceptsMail = async (domain: string): Promise<boolean> => {
+  const lookup = dns
+    .resolveMx(domain)
+    .then(records => records.some(mx => mx.exchange && mx.exchange !== '.'))
+    .catch(() => false)
+  const timeout = new Promise<boolean>(resolve => setTimeout(() => resolve(false), MX_LOOKUP_TIMEOUT_MS))
+  return Promise.race([lookup, timeout])
+}
+
+// Лимиты автоответа, чтобы форму нельзя было использовать для рассылки писем на чужие адреса:
+// не больше 2 автоответов в час на один адрес и не больше 3 в час с одного IP.
+// Состояние в памяти экземпляра функции — защита «по мере возможности», как и rateLimit.
+const AUTOREPLY_WINDOW_MS = 60 * 60 * 1000
+const AUTOREPLY_PER_ADDRESS = 2
+const AUTOREPLY_PER_IP = 3
+const autoReplyLog = new Map<string, number[]>()
+
+const takeAutoReplySlot = (address: string, ip: string | null): boolean => {
+  const now = Date.now()
+  if (autoReplyLog.size > 5_000) {
+    for (const [key, times] of autoReplyLog) {
+      if (times.every(t => now - t > AUTOREPLY_WINDOW_MS)) autoReplyLog.delete(key)
+    }
+  }
+  const recent = (key: string) => (autoReplyLog.get(key) ?? []).filter(t => now - t < AUTOREPLY_WINDOW_MS)
+  const addressKey = `addr:${address}`
+  const ipKey = ip ? `ip:${ip}` : null
+  const addressTimes = recent(addressKey)
+  const ipTimes = ipKey ? recent(ipKey) : []
+  if (addressTimes.length >= AUTOREPLY_PER_ADDRESS || ipTimes.length >= AUTOREPLY_PER_IP) return false
+  autoReplyLog.set(addressKey, [...addressTimes, now])
+  if (ipKey) autoReplyLog.set(ipKey, [...ipTimes, now])
+  return true
+}
+
 export async function POST(request: NextRequest) {
   const limited = rateLimit(request, 'send-email', SEND_EMAIL_LIMIT_PER_MINUTE)
   if (limited) return limited
@@ -301,15 +375,7 @@ export async function POST(request: NextRequest) {
 
       console.error('❌', error.message, error.details)
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: error.message,
-          errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : 'Проверьте настройки сервера',
-        },
-        { status: 500 },
-      )
+      return errorResponse(error, 500)
     }
 
     const formData = await request.formData()
@@ -323,7 +389,7 @@ export async function POST(request: NextRequest) {
 
     const name = (formData.get('name') as string) ?? ''
     const phone = (formData.get('phone') as string) ?? ''
-    const email = (formData.get('email') as string) ?? ''
+    const email = ((formData.get('email') as string) ?? '').trim()
     const address = (formData.get('address') as string) ?? ''
     const deviceTypeRaw = (formData.get('deviceType') as string) ?? ''
     const deviceType = mapDeviceType(deviceTypeRaw)
@@ -333,9 +399,8 @@ export async function POST(request: NextRequest) {
     const emailLocale = resolveEmailLocale((formData.get('locale') as string) ?? null)
 
     // Podstawowa walidacja serwerowa (niezależna od walidacji po stronie klienta)
-    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const invalidFields: string[] = []
-    if (email && (email.length > 254 || !EMAIL_REGEX.test(email))) invalidFields.push('email')
+    if (email && !isValidEmail(email)) invalidFields.push('email')
     if (name.length > 200) invalidFields.push('name')
     if (address.length > 300) invalidFields.push('address')
     if (phone.length > 50) invalidFields.push('phone')
@@ -352,15 +417,7 @@ export async function POST(request: NextRequest) {
 
       console.error('❌ Błąd walidacji:', error.message, error.details)
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: error.message,
-          errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : undefined,
-        },
-        { status: 400 },
-      )
+      return errorResponse(error, 400)
     }
 
     // Получаем файлы из формы
@@ -373,15 +430,7 @@ export async function POST(request: NextRequest) {
       const validation = validateAttachments(attachmentFiles)
       if (!validation.valid && validation.error) {
         console.error('❌ Ошибка валидации файлов:', validation.error)
-        return NextResponse.json(
-          {
-            success: false,
-            error: validation.error.message,
-            errorType: validation.error.type,
-            details: validation.error.details,
-          },
-          { status: 400 },
-        )
+        return errorResponse(validation.error, 400)
       }
     }
 
@@ -548,15 +597,7 @@ Opis problemu: ${problemDescription}
 
       console.error('❌', error.message)
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: error.message,
-          errorType: error.type,
-          details: process.env.NODE_ENV === 'development' ? error.details : 'Błąd konfiguracji',
-        },
-        { status: 500 },
-      )
+      return errorResponse(error, 500)
     }
 
     const fromEmail = process.env.SMTP_FROM || DEFAULT_FROM
@@ -589,8 +630,19 @@ Opis problemu: ${problemDescription}
     console.log('📧 Message ID:', info.messageId)
     console.log('📧 Response:', info.response)
 
-    // Отправка письма клиенту (если email указан)
-    if (email && email.trim()) {
+    // Автоответ клиенту — только на корректный адрес с почтовым доменом и в пределах лимитов
+    let autoReplyAllowed = false
+    if (email) {
+      autoReplyAllowed = await domainAcceptsMail(email.slice(email.lastIndexOf('@') + 1))
+      if (!autoReplyAllowed) {
+        console.warn('⚠️ Домен адреса клиента не принимает почту — автоответ не отправляем')
+      } else if (!takeAutoReplySlot(email.toLowerCase(), getClientIp(request))) {
+        autoReplyAllowed = false
+        console.warn('⚠️ Лимит автоответов исчерпан — автоответ не отправляем')
+      }
+    }
+
+    if (autoReplyAllowed) {
       try {
         const i18n = CLIENT_EMAIL_I18N[emailLocale]
         const clientDeviceType = mapDeviceType(deviceTypeRaw, emailLocale)
@@ -784,7 +836,8 @@ ${i18n.footerNote(currentYear)}
 
         await transporter.sendMail({
           from: fromEmail,
-          to: email.trim(),
+          // Объект с одним адресом — строка не разбирается как список получателей
+          to: { name: '', address: email },
           subject: i18n.subject(ticketNumber),
           html: clientEmailHtml,
           text: clientEmailContent,
@@ -799,7 +852,7 @@ ${i18n.footerNote(currentYear)}
           code: clientError?.code,
         })
       }
-    } else {
+    } else if (!email) {
       console.log('ℹ️ Email клиента не указан, пропускаем отправку подтверждения')
     }
 
@@ -837,15 +890,6 @@ ${i18n.footerNote(currentYear)}
       errorDetails.message = 'Ошибка аутентификации SMTP'
     }
 
-    return NextResponse.json(
-      {
-        success: false,
-        error: errorDetails.message,
-        errorType: errorDetails.type,
-        details: process.env.NODE_ENV === 'development' ? errorDetails.details : undefined,
-        code: errorDetails.code,
-      },
-      { status: 500 },
-    )
+    return errorResponse(errorDetails, 500)
   }
 }
