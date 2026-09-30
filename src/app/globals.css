@@ -3906,3 +3906,21 @@
     overflow-wrap: anywhere;
   }
 }
+
+/* Cookie-баннер CookieYes на телефоне: компактнее (≈37% экрана вместо ≈53%) — меньше отступы и шрифт,
+   «Dostosuj»/«Odrzuć» в одну строку. Текст и кнопки те же; десктоп (>440px) не затрагивается.
+   !important — стили CookieYes подключаются позже наших. */
+@media (max-width: 440px) {
+  .cky-consent-container .cky-consent-bar .cky-notice-content-wrapper { padding: 16px 0 8px !important; }
+  .cky-consent-container .cky-notice .cky-title,
+  .cky-consent-container .cky-notice-des,
+  .cky-consent-container .cky-notice-btn-wrapper { padding: 0 16px !important; }
+  .cky-consent-container .cky-notice .cky-title { font-size: 16px !important; margin-bottom: 8px !important; }
+  .cky-consent-container .cky-notice-des,
+  .cky-consent-container .cky-notice-des * { font-size: 13px !important; line-height: 19px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; margin-top: 12px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn { margin: 0 !important; padding: 7px 8px !important; line-height: 22px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-accept { flex: 1 1 100% !important; width: 100% !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-customize,
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-reject { flex: 1 1 0 !important; width: auto !important; min-width: 0 !important; }
+}
