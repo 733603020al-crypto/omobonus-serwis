@@ -152,9 +152,14 @@ export const imageAltUk: Record<string, string> = {
   'drukarka-zastepcza': 'Принтер на заміну',
 }
 
+// Short card names on /uslugi/naprawa-drukarek, same as the home service cards.
 export const subServiceTitlesUk: Record<string, string> = {
-  'serwis-drukarek-termicznych': 'Сервіс і ремонт принтерів етикеток',
-  'serwis-drukarek-laserowych': 'Сервіс лазерних принтерів',
+  'serwis-drukarek-laserowych': 'Лазерних принтерів',
+  'serwis-drukarek-atramentowych': 'Струменевих принтерів',
+  'serwis-plotterow': 'Плотерів',
+  'serwis-drukarek-termicznych': 'Принтерів етикеток',
+  'serwis-drukarek-iglowych': 'Матричних принтерів',
+  'serwis-drukarek-3d': '3D-принтерів',
 }
 
 export const seoMetadataUk: Record<string, { title: string; description: string }> = {

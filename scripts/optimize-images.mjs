@@ -45,26 +45,8 @@ const FILE_QUALITY = {
   'andrzey_avatar_400.webp': 75,
 
   // Pricing category images (256×256, ~20-28K each)
-  'Drukarka_domowa.webp': 68,
-  'Drukarka_biurowa_atramentowa.webp': 68,
-  'Drukarka_biznesowa_atramentowa.webp': 68,
-  'Drukarka_domowa_atramentowa.webp': 68,
-  'Mała_drukarka_etykiet.webp': 68,
-  'Srednia_drukarka_etykiet.webp': 68,
-  'Duża_drukarka_etykiet.webp': 68,
-  'Mała_drukarka_Igłowa.webp': 68,
-  'Średnia_drukarka_Igłowa.webp': 68,
-  'Duża_drukarka_Igłowa.webp': 68,
-  'A4_Drukarki_mono.webp': 68,
-  'A4_Drukarki_kolor.webp': 68,
-  'A4_MFU_mono.webp': 68,
-  'A4_MFU_kolor.webp': 68,
   'A3.webp': 68,
   'A4.webp': 68,
-  'Drukarki_A3_A4_mono.webp': 68,
-  'Drukarki_A3_A4_mono_kolor.webp': 68,
-  'MFU_A3_A4_mono.webp': 68,
-  'MFU_A3_A4_mono_kolor.webp': 68,
 
   // KDR / senior card
   'KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp': 65,

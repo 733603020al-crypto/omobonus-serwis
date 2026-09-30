@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from "react"
+import { useNearViewport } from "@/lib/use-near-viewport"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
@@ -73,6 +74,9 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
     const opinieTitleRef = useRef<HTMLDivElement | null>(null)
     const offsetRef = useRef(0)
+    // Parchment behind the review cards: fetched only when the block is near.
+    const sectionRef = useRef<HTMLElement | null>(null)
+    const bgNear = useNearViewport(sectionRef)
     const rafRef = useRef<number | null>(null)
     const isRunningRef = useRef(true)
     const isHoverRef = useRef(false)
@@ -168,7 +172,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
 
 
     return (
-        <section className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+        <section ref={sectionRef} className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
 
 
 
@@ -274,7 +278,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             return (
                             <div
                                 key={i}
-                                style={{ width: `${cardWidth}px` }}
+                                style={{ width: `${cardWidth}px`, ...(bgNear ? {} : { '--review-bg': 'none' }) } as React.CSSProperties}
                                 className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >
                                 <div className="relative z-10 flex items-center gap-3 mb-0.5">

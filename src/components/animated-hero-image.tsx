@@ -4,6 +4,9 @@ import { useEffect, useRef } from 'react'
 
 interface AnimatedHeroImageProps {
   animatedSrc: string
+  // Optional smaller animated file for phones (same frames/timing), used on
+  // screens narrower than md.
+  mobileAnimatedSrc?: string
   staticSrc: string
   alt: string
   width: number
@@ -21,6 +24,7 @@ interface AnimatedHeroImageProps {
 // - If the animated file fails to load, the static frame simply stays put.
 export function AnimatedHeroImage({
   animatedSrc,
+  mobileAnimatedSrc,
   staticSrc,
   alt,
   width,
@@ -34,11 +38,12 @@ export function AnimatedHeroImage({
 
     let cancelled = false
     const swap = () => {
+      const src = mobileAnimatedSrc && window.matchMedia('(max-width: 767px)').matches ? mobileAnimatedSrc : animatedSrc
       const preload = new window.Image()
       preload.onload = () => {
-        if (!cancelled && imgRef.current) imgRef.current.src = animatedSrc
+        if (!cancelled && imgRef.current) imgRef.current.src = src
       }
-      preload.src = animatedSrc
+      preload.src = src
     }
 
     if (document.readyState === 'complete') {
@@ -53,7 +58,7 @@ export function AnimatedHeroImage({
       cancelled = true
       window.removeEventListener('load', swap)
     }
-  }, [animatedSrc])
+  }, [animatedSrc, mobileAnimatedSrc])
 
   return (
     // eslint-disable-next-line @next/next/no-img-element

@@ -450,6 +450,15 @@
     display: none;
   }
   @media (max-width: 767px) {
+    /* Same proportions as on desktop (picture 800×336); on narrow phones the
+       168px min height takes over and the mobile picture below is used. */
+    .zakres-paper-card.services-card-baked {
+      aspect-ratio: 800 / 336;
+    }
+  }
+  /* Mobile picture (720×338, made for a 358×168 card) only where the card is
+     that narrow; from ~378px card width the desktop picture fits better. */
+  @media (max-width: 409px) {
     .zakres-paper-card.services-card-baked::before {
       background-image: var(--baked-m);
     }
@@ -528,7 +537,8 @@
      above, but with the contact form's own parchment texture instead of
      the services-card one (same file as Formularz zgłoszenia). */
   .zakres-paper-card.review-parchment::before {
-    background-image: url('/images/contact-form-parchment.webp');
+    /* --review-bg: none until the block is near (google-reviews-carousel.tsx) */
+    background-image: var(--review-bg, url('/images/contact-form-parchment.webp'));
   }
 
   /* SERWIS I NAPRAWA heading text — flat plain white, no gradient/center
@@ -2840,6 +2850,18 @@
       -webkit-box-orient: vertical !important;
       -webkit-line-clamp: 2 !important;
       overflow: hidden !important;
+    }
+
+    /* outsourcing-it "Konsultacja i wycena obsługi IT" (PL/UK/RU): the first
+       word is wider than this narrow column, so overflow-wrap:anywhere split
+       it mid-word. Wrap only between whole words, slightly smaller so the
+       longest word fits the column. Mobile only (inside this media query). */
+    .page-outsourcing-it.page-repair-accordion [data-open-header-plate="true"][data-has-table="true"][data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      padding-left: 0 !important;
+      font-size: 17px !important;
     }
 
 

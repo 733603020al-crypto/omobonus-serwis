@@ -1,26 +1,17 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useNearViewport } from '@/lib/use-near-viewport'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
 import type { ServiceData } from '@/lib/services-data'
-import { serviceIconSrc as CARD_ICON_SRC } from '@/lib/services-meta-shared'
+import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 
 // "Wszystkie usługi ↓" / "Zwiń ↑": GŁÓWNE USŁUGI label text styles, 0.06em tracking, thin 1px line (text colour) 6px below; hover: block +3px right, arrow +3px more, line widens slightly.
 const TEXT_CTA = "relative inline-flex items-baseline gap-[6px] bg-transparent border-0 px-0 pt-0 pb-[6px] m-0 cursor-pointer whitespace-nowrap text-sm font-inter font-semibold tracking-[0.06em] uppercase text-[#bfa76a] transition-transform duration-[250ms] ease-[ease] hover:translate-x-[3px] after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-current after:transition-transform after:duration-[250ms] after:ease-[ease] hover:after:scale-x-[1.08]"
-
-// Home cards drawn as one finished picture (parchment + device + light and
-// shadow, no text) — desktop and mobile proportions. The text stays live HTML.
-const CARD_BAKED: Record<string, { d: string; m: string }> = {
-  'serwis-laptopow': { d: '/images/services-card-baked-laptop.webp', m: '/images/services-card-baked-laptop-mobile.webp' },
-  'serwis-komputerow-stacjonarnych': { d: '/images/services-card-baked-desktop.webp', m: '/images/services-card-baked-desktop-mobile.webp' },
-  'naprawa-drukarek': { d: '/images/services-card-baked-printer.webp', m: '/images/services-card-baked-printer-mobile.webp' },
-  'serwis-drukarek-3d': { d: '/images/services-card-baked-3d.webp', m: '/images/services-card-baked-3d-mobile.webp' },
-  'serwis-drukarek-termicznych': { d: '/images/services-card-baked-label.webp', m: '/images/services-card-baked-label-mobile.webp' },
-  'serwis-plotterow': { d: '/images/services-card-baked-plotter.webp', m: '/images/services-card-baked-plotter-mobile.webp' },
-}
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -154,6 +145,9 @@ export function Services({
   const d = t ?? PL
   const [expanded, setExpanded] = useState(false)
   const dividerRef = useRef<HTMLDivElement>(null)
+  // Baked card pictures sit below the first screen: fetched only on approach.
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgNear = useNearViewport(sectionRef)
   useEffect(() => {
     const el = dividerRef.current
     if (!el) return
@@ -213,15 +207,17 @@ export function Services({
     ${ORIENT_CLASSES[style.orientIdx]}
     ${CORNER_CLASSES[style.cornerIdx]}
   `}
-        style={CARD_BAKED[service.slug] ? ({ '--baked-d': `url(${CARD_BAKED[service.slug].d})`, '--baked-m': `url(${CARD_BAKED[service.slug].m})` } as React.CSSProperties) : undefined}
+        style={CARD_BAKED[service.slug] && bgNear ? ({ '--baked-d': `url(${CARD_BAKED[service.slug].d})`, '--baked-m': `url(${CARD_BAKED[service.slug].m})` } as React.CSSProperties) : undefined}
       >
         {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
         <div className="relative z-[4] flex-none max-w-[48%] flex flex-col items-start">
-          <h2 className="font-cormorant font-semibold text-[#3A2817] leading-[1.15] text-[26px] md:text-[length:min(28px,8.05cqi)]">
+          <h2 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[26px] md:text-[length:min(28px,8.05cqi)]">
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
-          <span className="mt-2 inline-flex items-center gap-1 border-b border-[#3A2817]/40 pb-px font-cormorant font-semibold text-[16px] leading-none text-[#3A2817]/80 transition-colors group-hover:text-[#3A2817] group-hover:border-[#3A2817]/70">
-            {d.moreLabel ?? 'Zobacz więcej'} <span aria-hidden="true">→</span>
+          {/* Same as the closed-section "Zobacz cennik" link on the service pages. */}
+          <span className="flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] group-hover:translate-x-1 transition-transform">
+            <span>{d.moreLabel ?? 'Zobacz więcej'}</span>
+            <ArrowRight className="w-3 h-3" />
           </span>
         </div>
 
@@ -246,6 +242,7 @@ export function Services({
 
   return (
     <section
+      ref={sectionRef}
       id="uslugi"
       className="relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden"
     >

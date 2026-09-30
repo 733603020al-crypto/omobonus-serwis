@@ -141,27 +141,9 @@ export const getIconForSection = (sectionId: string, serviceSlug?: string) => {
 }
 
 export const getIconForSubcategory = (subcategoryId: string, serviceSlug?: string) => {
-  if (serviceSlug && RENTAL_ICON_SLUGS.has(serviceSlug) && WYNAJEM_SUBCATEGORY_ICONS[subcategoryId]) return WYNAJEM_SUBCATEGORY_ICONS[subcategoryId]
-  switch (subcategoryId) {
-    case 'drukarki-mono':
-      return '/images/A4_Drukarki_mono.webp'
-    case 'drukarki-kolor':
-      return '/images/A4_Drukarki_kolor.webp'
-    case 'mfu-mono':
-      return '/images/A4_MFU_mono.webp'
-    case 'mfu-kolor':
-      return '/images/A4_MFU_kolor.webp'
-    case 'a3-drukarki-mono':
-      return '/images/Drukarki_A3_A4_mono.webp'
-    case 'a3-drukarki-kolor':
-      return '/images/Drukarki_A3_A4_mono_kolor.webp'
-    case 'a3-mfu-mono':
-      return '/images/MFU_A3_A4_mono.webp'
-    case 'a3-mfu-kolor':
-      return '/images/MFU_A3_A4_mono_kolor.webp'
-    default:
-      return null
-  }
+  // These subcategories exist only on the rental pages.
+  if (serviceSlug && RENTAL_ICON_SLUGS.has(serviceSlug)) return WYNAJEM_SUBCATEGORY_ICONS[subcategoryId] ?? null
+  return null
 }
 
 const PROPER_NOUN_PREFIXES = [
@@ -524,12 +506,12 @@ const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17
 const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
   slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
 
-// Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
-// (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
+// Подсвietla jednostki "zł/gram" i "zł/h" złotym kolorem wewnątrz jednolinijkowej ceny
+// (np. "0,30 zł/gram + 8 zł/h") — reszta tekstu (liczby, "+") pozostaje biała.
 const renderPlainPriceWithUnits = (price: string) => {
-  const parts = price.split(/(zł\/gram|zł\/godz\.)/g)
+  const parts = price.split(/(zł\/gram|zł\/h)/g)
   return parts.map((part, i) =>
-    part === 'zł/gram' || part === 'zł/godz.' ? (
+    part === 'zł/gram' || part === 'zł/h' ? (
       <span key={i} className="parentheses-caption-text text-[#cbb27c]">{part}</span>
     ) : (
       <span key={i}>{part}</span>
@@ -545,7 +527,7 @@ const renderMaterialPrice = (price: string) => {
   const plusIdx = price.indexOf('+')
   if (plusIdx === -1) return renderPlainPriceWithUnits(price)
   const mainPart = price.slice(0, plusIdx).trim() // "0,30 zł/gram"
-  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/godz."
+  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/h"
 
   const splitValueUnit = (part: string) => {
     const m = part.match(/^(.*zł)(\/.*)$/)
@@ -720,17 +702,19 @@ const EMPTY_WYNAJEM_HEADER_REFS: {
 // Techniczne wiersze drukarka-zastepcza A4/A3 (przeniesione z WynajemTable.tsx) — jedna kolumna wartości,
 // tłumaczone przez marker-label + t.wynajemTableLabels/t.gratisLower w renderze priceTiers
 const DZ_TECH_SPEC_ROWS: Record<string, { label: string; value: string }[]> = {
-  'drukarki-mono': [{ label: '__dz_duplex', value: '-' }, { label: '__dz_speed', value: '40' }],
-  'drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '40' }],
-  'a3-drukarki-mono': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-mfu-mono': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
-  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'gratis' }, { label: '__dz_duplex', value: '+' }, { label: '__dz_speed', value: '50' }],
+  'drukarki-mono': [{ label: '__dz_duplex', value: 'nie' }, { label: '__dz_speed', value: '40' }],
+  'drukarki-kolor': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'mfu-mono': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'mfu-kolor': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'a3-drukarki-mono': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-mono': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
 }
+// Bloki warunków pod cennikiem (drukarka-zastepcza, wynajem-drukarek): bez mobilnego obcinania do 2 linii (reguła warm-parchment dla .parentheses-caption-text)
+const DZ_TERMS_TEXT_STYLE: React.CSSProperties = { display: 'block', WebkitLineClamp: 'none', overflow: 'visible' }
 
-// Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (4 of 11 services)
+// Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (6 of 11 services)
 const PriceTooltipContent = dynamic(() => import('./PriceTooltipContent').then(m => ({ default: m.PriceTooltipContent })))
 
 // Wynajem/drukarka-zastepcza subcategory header (pixel-alignment grid) — only used
@@ -862,6 +846,8 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
 ])
 
 // Strony drukarek, na których baner promo w sekcji "Konserwacja" ma inny tekst
@@ -897,11 +883,10 @@ const PARCHMENT_TOOLTIP_SLUGS = new Set([
 // own PopoverTrigger side/tooltip earlier but shares this TooltipContent).
 const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'druk-3d-na-zamowienie'])
 
-// Parchment-tooltip slugs (see above) minus outsourcing-it, plus
-// druk-3d-na-zamowienie — the set that hides the "device categories" caption
-// line under the price header. Kept as its own list rather than derived from
-// PARCHMENT_TOOLTIP_CONTENT_SLUGS since the two sets differ by outsourcing-it.
+// Parchment-tooltip slugs (see above) plus druk-3d-na-zamowienie — the set
+// that hides the "device categories" caption line under the price header.
 const HIDE_DEVICE_CAPTION_SLUGS = new Set([
+  'outsourcing-it',
   'serwis-laptopow',
   'serwis-komputerow-stacjonarnych',
   'serwis-drukarek-3d',
@@ -917,6 +902,50 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
   const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
   const t = serviceAccordionI18n[locale]
+  // Ikonka „i” z dymkiem „Cena netto” — ten sam dymek co przy nagłówku ceny (serwis-laptopow):
+  // telefon — kliknięcie (Popover), desktop — najechanie (Tooltip).
+  const nettoInfoIcon = (
+    // pozycja jak ikonka przy „Cena, zł” (serwis-laptopow): gap 5px, margin-left -7px, top -3px
+    <span className="inline-flex items-center justify-center rounded-full p-1 cursor-pointer" style={{ marginLeft: '-7px', marginTop: '-4px', marginBottom: '-4px', position: 'relative', top: '-3px', color: 'var(--text-primary)' }} role="button" tabIndex={0} aria-label={t.priceInfoAriaLabel} onClick={e => e.stopPropagation()}>
+      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+    </span>
+  )
+  const nettoInfoContent = (
+    <>
+      <div className="absolute inset-0 bg-black/50 z-0" />
+      <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+        {t.priceNettoTooltip}
+      </p>
+    </>
+  )
+  const renderNettoInfo = () => isMobile ? (
+    <Popover>
+      <PopoverTrigger asChild>{nettoInfoIcon}</PopoverTrigger>
+      <PopoverContent
+        side="top"
+        sideOffset={4}
+        className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `var(--bg-parchment)`, width: 'max-content', minWidth: 0, whiteSpace: 'nowrap' }}
+      >
+        {nettoInfoContent}
+        <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+      </PopoverContent>
+    </Popover>
+  ) : (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>{nettoInfoIcon}</TooltipTrigger>
+        <TooltipContent
+          side="top"
+          sideOffset={4}
+          className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden"
+          style={{ backgroundImage: `var(--bg-parchment)`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
+          {nettoInfoContent}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
   // UK/RU "free" label (БЕЗКОШТОВНО/БЕСПЛАТНО) is too wide to sit beside the diagnoza
   // title on phones, so there it goes under the title instead of the right column.
   const stackGratisOnMobile = locale !== 'pl'
@@ -1905,7 +1934,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               <div data-open-header-hover-text="true" className="flex-1 min-w-0 pr-2">
                                 {(() => {
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
-                                  const hasWynajemA3Footer = service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer
+                                  const hasWynajemA3Footer = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer
                                   const titleNode = (
                                     <TitleTag className={cn(
                                       cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && isOpenHeaderPlateSection && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
@@ -2010,7 +2039,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </span>
                               )}
                               {/* Footer dla sekcji A3/A4 (Laserowe) na wynajem-drukarek - desktop, tylko gdy otwarta */}
-                              {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer && (
+                              {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer && (
                                 <span
                                   className={cn("text-[12px] leading-relaxed block", isWarmParchment ? "text-[#72502B]" : "text-[#cbb27c]")}
                                   style={{
@@ -2024,29 +2053,6 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                               )}
                             </div>
                           </div>
-                          {/* "Czynsz wynajmu [zł/mies.]" над столбцами цен - десктопная версия */}
-                          {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
-                            <>
-                              {priceColumnsPosition1 ? (
-                                <>
-                                  {/* Десктопная версия с вычисленной позицией */}
-                                  <div
-                                    className="hidden md:block absolute top-0"
-                                    style={{
-                                      left: `${priceColumnsPosition1.left}px`,
-                                      width: `${priceColumnsPosition1.width}px`,
-                                    }}
-                                  >
-                                    <div className="text-center">
-                                      <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        {t.rentPriceHeader}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </>
-                              ) : null}
-                            </>
-                          )}
                         </div>
                         <div className={cn(
                           "zakres-cennik-link flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden",
@@ -2305,7 +2311,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </Tooltip>
                                 )}
                               </TooltipProvider>
-                              {!hideDeviceCaption && !(isOutsourcingService && section.id === 'konserwacja') && (
+                              {!hideDeviceCaption && (
                                 <span className="hidden md:block">
                                   <span className="parentheses-caption-text">
                                     {t.deviceCategoriesCaption}
@@ -2324,8 +2330,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           >
                             <div data-open-header-hover-text="true" className="zakres-time-header-text w-full min-w-0 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
-                              <div className="leading-[1.05]">{timeHeader}</div>
-                              <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                              {isOutsourcingService && section.id === 'konserwacja' ? (
+                                <>
+                                  <div className="leading-[1.05]">{t.reactionTimeHeader}</div>
+                                  <div className="leading-[1.05]">{t.reactionTimeHeaderLine2}</div>
+                                </>
+                              ) : (
+                                <>
+                                  <div className="leading-[1.05]">{timeHeader}</div>
+                                  <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -2948,10 +2963,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 const priceParts = subcategory.price.split(' / ')
                                 const priceRows = priceParts.length > 1
                                   ? [
-                                      { label: '__dz_price_mono', value: `${priceParts[0]} zł` },
-                                      { label: '__dz_price_kolor', value: `${priceParts[1]} zł` },
+                                      { label: '__dz_price_mono', value: `${priceParts[0]} zł/${t.wynajemUnits.str}` },
+                                      { label: '__dz_price_kolor', value: `${priceParts[1]} zł/${t.wynajemUnits.str}` },
                                     ]
-                                  : [{ label: '__dz_price', value: `${priceParts[0]} zł` }]
+                                  : [{ label: '__dz_price', value: `${priceParts[0]} zł/${t.wynajemUnits.str}` }]
                                 const techRows = DZ_TECH_SPEC_ROWS[subcategory.id] ?? []
                                 effectiveTiers = [{ label: '', rows: [...priceRows, ...techRows] }]
                               }
@@ -2967,7 +2982,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   default: return label
                                 }
                               }
-                              const translateDzRowValue = (value: string): string => value === 'gratis' ? t.gratisLower : value
+                              const translateDzRowValue = (value: string): string => value === 'tak' ? t.dzTerms.yes : value === 'nie' ? t.dzTerms.no : value === 'gratis' ? t.gratisLower : value
                               // Разбивает "Тариф (примечание)" / "Тариф [примечание]" на [основной текст, примечание] —
                               // не завязано на язык/конкретный текст, только на структуру "текст + висячая (...)/[...]"
                               // в конце строки. Используется для строки "Czynsz wynajmu" (row 0) во всех 3 языках,
@@ -2976,12 +2991,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 const m = label.match(/^(.*)\s((?:\([^)]*\))|(?:\[[^\]]*\]))$/)
                                 return m ? [m[1], m[2]] : null
                               }
-                              // Значение вида "X (слово1) / Y (слово2)" (mono/kolor и т.п.) — переносим на 2 строки,
-                              // сохраняя исходные слова в скобках как есть (работает для любого языка/слова).
+                              // Значение вида "X str. mono + Y str. kolor" / "X zł mono / Y zł kolor" — переносим на 2 строки:
+                              // "+ …" остаётся во второй строке, разделитель " / " убирается (работает для любого языка).
                               const splitMonoKolorValue = (value: string): [string, string] | null => {
-                                const m = value.match(/^(.+\([^)]+\))\s\/\s(.+\([^)]+\))$/)
-                                return m ? [m[1], m[2]] : null
+                                const m = value.match(/^(.+?)\s(\+|\/)\s(.+)$/)
+                                if (!m) return null
+                                return [m[1], m[2] === '+' ? `+ ${m[3]}` : m[3]]
                               }
+                              // Подпись строки czynszu: "Czynsz wynajmu (zł/mies.)" → ["Czynsz wynajmu", "zł/mies."]
+                              const splitRentLabel = (label: string): [string, string] | null => {
+                                const split = splitTrailingBracket(label)
+                                return split ? [split[0], split[1].slice(1, -1)] : null
+                              }
+                              // Czynsz — ok. 14% większy i wyraźniejszy od pozostałych parametrów (ten sam krój pisma)
+                              const rentValueStyle: React.CSSProperties = { fontSize: '16px', fontWeight: 600 }
                               return (
                               <div
                                 ref={el => {
@@ -3006,7 +3029,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         <TableBody>
                                           {(() => {
                                             const filteredRows = tier.rows.filter((row, idx) => !(
-                                              (isWdA4A3 && (idx === 3 || idx === 4))
+                                              (isWdA4A3 && idx >= 3)
                                               || (isDzA4A3 && ['__dz_duplex', '__dz_speed'].includes(row.label))
                                             ))
                                             return filteredRows.flatMap((row, rowIdx) => {
@@ -3017,7 +3040,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             const rowEl = (
                                             <TableRow key={rowIdx} className="border-[#72502B]/30 border-b last:border-b-0">
                                               <TableCell className="parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left">
-                                                {isWdA4A3 && rowIdx === 1
+                                                {isWdA4A3 && rowIdx === 0 && splitRentLabel(row.label)
+                                                  ? (
+                                                      <>
+                                                        <div className="parentheses-caption-text flex items-center gap-[5px]"><span>{splitRentLabel(row.label)![0]}</span>{renderNettoInfo()}</div>
+                                                        <div className="parentheses-caption-text">{splitRentLabel(row.label)![1]}</div>
+                                                      </>
+                                                    )
+                                                  : isWdA4A3 && rowIdx === 1
                                                   ? (
                                                       <>
                                                         <div className="parentheses-caption-text">{t.wynajemTableLabels.pagesIncluded[0]}</div>
@@ -3035,7 +3065,10 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                   ? translateDzRowLabel(row.label)
                                                   : row.label}
                                               </TableCell>
-                                              <TableCell className="price-value-text py-1 pl-2 pr-2 align-middle text-right !whitespace-normal">
+                                              <TableCell
+                                                className="price-value-text py-1 pl-2 pr-2 align-middle text-right !whitespace-normal"
+                                                style={isWdA4A3 && rowIdx === 0 ? rentValueStyle : undefined}
+                                              >
                                                 {(() => {
                                                   const monoKolorMatch = isWdA4A3 && (rowIdx === 1 || rowIdx === 2)
                                                     ? splitMonoKolorValue(row.value)
@@ -3095,7 +3128,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <TableBody>
                                       {effectiveTiers![0].rows.flatMap((row, rowIdx) => {
                                         const isA4Wynajem = isWdA4A3
-                                        const isDuplexOrSpeed = (isA4Wynajem && (rowIdx === 3 || rowIdx === 4))
+                                        const isDuplexOrSpeed = (isA4Wynajem && rowIdx >= 3)
                                           || (isDzA4A3 && (row.label === '__dz_duplex' || row.label === '__dz_speed' || row.label === '__dz_scan'))
                                         // Вторая разделительная линия между ценовыми строками ("__dz_price*")
                                         // и первой технической строкой — общий шаблон для всех блоков DZ.
@@ -3107,11 +3140,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           labelContent = translateDzRowLabel(row.label)
                                         } else if (isA4Wynajem) {
                                           if (rowIdx === 0) {
-                                            const split = splitTrailingBracket(row.label)
+                                            const split = splitRentLabel(row.label)
                                             if (split) {
                                               labelContent = (
                                                 <>
-                                                  <div>{split[0]}</div>
+                                                  <div className="flex items-center gap-[5px]"><span>{split[0]}</span>{renderNettoInfo()}</div>
                                                   <div className="parentheses-caption-text">{split[1]}</div>
                                                 </>
                                               )
@@ -3131,7 +3164,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               </>
                                             )
                                           } else if (rowIdx === 4) {
-                                            // Единица (стр./мин.) выводится у каждого значения — из названия строки убираем
+                                            // Единица (стр./мин.) выводится у каждого значения, в названии строки её нет
                                             labelContent = splitTrailingBracket(row.label)?.[0] ?? row.label
                                           }
                                         }
@@ -3156,6 +3189,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 className="price-value-text py-1 pl-2 pr-2 align-middle text-center"
                                                 style={{
                                                   ...(isDuplexOrSpeed ? { fontSize: '12px' } : {}),
+                                                  ...(isA4Wynajem && rowIdx === 0 ? rentValueStyle : {}),
                                                   ...(secondLineStyle || {}),
                                                 }}
                                               >
@@ -3172,8 +3206,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                       )
                                                     }
                                                   }
-                                                  if (isA4Wynajem && rowIdx === 4 && value) return `${value} (${t.wynajemUnits.strPerMin}.)`
-                                                  if (isDzA4A3 && row.label === '__dz_speed' && value) return `${value} (${t.wynajemUnits.strPerMin}.)`
+                                                  if (isA4Wynajem && rowIdx === 4 && value) return `${value} ${t.wynajemUnits.strPerMin}`
+                                                  if (isDzA4A3 && row.label === '__dz_speed' && value) return `${value} ${t.wynajemUnits.strPerMin}`
                                                   if (isDzA4A3) return translateDzRowValue(value ?? '')
                                                   return value
                                                 })()}
@@ -3593,6 +3627,17 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </p>
                         </div>
                       )}
+                      {section.notes && section.notes.length > 0 && (
+                        <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                          <div className="font-table-main">
+                            {section.notes.map((note, noteIdx) => (
+                              <div key={noteIdx} className={cn('parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed', noteIdx > 0 && 'mt-1')}>
+                                {renderBoldMarkup(note)}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       {(service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych') && section.id === 'konserwacja' && (
                         <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
                           <div className="font-table-main">
@@ -3614,8 +3659,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                 </AccordionContent>
             )
             return (
+              <React.Fragment key={section.id}>
               <AccordionItem
-                key={section.id}
                 value={section.id}
                 data-parchment-list-main={usesParchmentList ? 'true' : undefined}
                 className={cn(
@@ -3790,6 +3835,75 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                   </div>
                 )}
               </AccordionItem>
+              {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && (
+                // Wspólny blok warunków wynajmu pod cennikiem (A4 + A3), przed FAQ —
+                // ta sama podkładka (obrazy + cień), co rozwinięta podkategoria z tabelą cen
+                <div className="relative mb-4 px-5 py-5 md:px-10 md:py-7">
+                  <img
+                    src="/images/contact-form-parchment-mobile-naprawy.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="md:hidden absolute inset-0 h-full object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                    style={{ maxWidth: 'none', width: '100%' }}
+                  />
+                  <img
+                    src="/images/contact-form-parchment.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
+                    style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
+                  />
+                  <div className="relative">
+                  <div className="grid gap-3 md:grid-cols-2 md:gap-8">
+                    {([
+                      [t.wynajemTerms.includedTitle, t.wynajemTerms.included],
+                      [t.wynajemTerms.clientTitle, t.wynajemTerms.client],
+                    ] as const).map(([title, list]) => (
+                      <div key={title}>
+                        <div className="service-description-text">{title}</div>
+                        <ul className="parentheses-caption-text list-disc pl-5" style={DZ_TERMS_TEXT_STYLE}>
+                          {list.map(entry => <li key={entry}>{entry}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-[#72502B]/30">
+                    {t.wynajemTerms.conditions.map(line => <div key={line} className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{line}</div>)}
+                  </div>
+                  </div>
+                </div>
+              )}
+              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && (
+                // Blok warunków drukarki zastępczej pod cennikiem (A4 + A3), przed FAQ —
+                // ta sama podkładka, co blok warunków na wynajem-drukarek
+                <div className="relative mb-4 px-5 py-5 md:px-10 md:py-7">
+                  <img
+                    src="/images/contact-form-parchment-mobile-naprawy.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="md:hidden absolute inset-0 h-full object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                    style={{ maxWidth: 'none', width: '100%' }}
+                  />
+                  <img
+                    src="/images/contact-form-parchment.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
+                    style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
+                  />
+                  <div className="relative">
+                    <div className="service-description-text">{t.dzTerms.title}</div>
+                    <ul className="parentheses-caption-text list-disc pl-5" style={DZ_TERMS_TEXT_STYLE}>
+                      {t.dzTerms.included.map(entry => <li key={entry}>{entry}</li>)}
+                    </ul>
+                    <div className="mt-2 pt-2 border-t border-[#72502B]/30">
+                      {t.dzTerms.conditions.map(line => <div key={line} className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{line}</div>)}
+                      <div className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{t.dzTerms.netNote}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              </React.Fragment>
             )
           })}
         </Accordion>

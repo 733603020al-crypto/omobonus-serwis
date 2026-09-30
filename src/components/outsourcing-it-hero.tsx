@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
+const ANIM_DELAY_MS = 2500
+
 interface OutsourcingItHeroProps {
   // Static-first, same as AnimatedHeroImage: the page paints a single
   // lightweight first frame (staticSrc = clean background + the orbit dots
@@ -51,18 +53,26 @@ export function OutsourcingItHero({
         })
         .catch(() => {})
     }
-
-    if (document.readyState === 'complete') {
-      swap()
-      return () => {
-        cancelled = true
+    // Every screen size: the static frame alone is the whole first screen; the ~430KB of
+    // base + overlay wait until the browser is idle after "load" plus
+    // ANIM_DELAY_MS, so they never share the first seconds with the page.
+    let timer = 0
+    let idle = 0
+    const start = () => {
+      const later = () => {
+        timer = window.setTimeout(swap, ANIM_DELAY_MS)
       }
+      if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(later, { timeout: 3000 })
+      else later()
     }
 
-    window.addEventListener('load', swap, { once: true })
+    if (document.readyState === 'complete') start()
+    else window.addEventListener('load', start, { once: true })
     return () => {
       cancelled = true
-      window.removeEventListener('load', swap)
+      window.removeEventListener('load', start)
+      window.clearTimeout(timer)
+      if (idle) window.cancelIdleCallback(idle)
     }
   }, [baseSrc, overlaySrc])
 

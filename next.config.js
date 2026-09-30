@@ -4,6 +4,13 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// Локально (next dev) браузер не должен запоминать файлы: имена чанков и
+// картинок там не меняются после правок, и годовой immutable-кэш показывал
+// старый код/картинки даже после Ctrl+Shift+R. На продакшене — как было.
+const LONG_CACHE = process.env.NODE_ENV === 'development'
+  ? 'no-store'
+  : 'public, max-age=31536000, immutable'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -52,7 +59,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
       },
@@ -63,7 +70,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
       },

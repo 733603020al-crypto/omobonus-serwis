@@ -8,11 +8,14 @@ import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import { OutsourcingItHero } from '@/components/outsourcing-it-hero'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
+import { HeroSpotlight } from '@/components/hero-spotlight'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
 import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services'
+import { serviceCardBaked as CARD_BAKED, relatedServiceSlugs } from '@/lib/services-meta-shared'
+import { PrinterHubCarousel, PrinterHubMid } from '@/components/printer-hub-hero'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false — content still renders server-side, only the JS bundle is split.
@@ -28,6 +31,26 @@ const serviceBgCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', pr
 const { props: { srcSet: serviceBgDesktopSrcSet } } = getImageProps({ ...serviceBgCommon, src: '/images/omobonus-hero2-desktop.webp', quality: 32 })
 const { props: serviceBgMobileProps } = getImageProps({ ...serviceBgCommon, src: '/images/omobonus-hero2.webp', quality: 60 })
 
+// Desktop hover light for single-image heroes (the carousels get theirs from
+// HeroPrinterCarousel): lit source + depth map. Animated heroes use a still
+// frame 0, so the picture freezes while lit and plays on after.
+const SINGLE_HERO_SPOTLIGHT: Record<string, { src: string; depth: string }> = {
+  'serwis-komputerow-stacjonarnych': {
+    src: '/images/02_serwis-komputerow-stacjonarnych-still.webp',
+    depth: '/images/02_serwis-komputerow-stacjonarnych-still-depth.webp',
+  },
+  'outsourcing-it': {
+    src: '/images/03_outsourcing-it-v3-static.webp',
+    depth: '/images/03_outsourcing-it-v3-static-depth.webp',
+  },
+  'druk-3d-na-zamowienie': {
+    src: '/images/Druk_3D_animation-still.webp',
+    depth: '/images/Druk_3D_animation-still-depth.webp',
+  },
+  'wynajem-drukarek': { src: '/images/10_wynajem-drukarek.webp', depth: '/images/10_wynajem-drukarek-depth.webp' },
+  'drukarka-zastepcza': { src: '/images/11_drukarka-zastepcza.webp', depth: '/images/11_drukarka-zastepcza-depth.webp' },
+}
+
 const HERO_SCALE: Record<string, number> = {
   'serwis-laptopow': 1.4,
   'outsourcing-it': 1.4,
@@ -42,15 +65,24 @@ const HERO_SCALE: Record<string, number> = {
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
 // naprawa-drukarek: same category hero images already used on their own
-// service pages (laser, inkjet, needle, thermal, plotter, 3D) — no new assets.
+// service pages (laser, inkjet, needle, label, 3D, plotter) — no new assets.
+// Same order as the cards below and PRINTER_HERO_MIDS (middle H1 line, PL).
 const PRINTER_HERO_SLIDES = [
   '/images/laser-carousel-v3-01.webp',
   '/images/atrament-carousel-v3-01.webp',
   '/images/iglowe-carousel-v3-01.webp',
   '/images/termiczne-carousel-v3-01.webp',
-  '/images/plotter-carousel-v3-00.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
+  '/images/plotter-carousel-v3-00.webp',
 ]
+const PRINTER_HERO_MIDS = [
+  { group: 'printer', parts: ['drukarek', 'laserowych'] },
+  { group: 'printer', parts: ['drukarek', 'atramentowych'] },
+  { group: 'printer', parts: ['drukarek', 'igłowych'] },
+  { group: 'printer', parts: ['drukarek', 'etykiet'] },
+  { group: 'printer', parts: ['drukarek', '3D'] },
+  { group: 'plotter', parts: ['ploterów', ''] },
+] as const
 
 // serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -75,7 +107,7 @@ const ATRAMENT_SIZE_COEFFICIENTS = [0.72, 0.76, 0.82, 0.88, 0.95, 0.95]
 const ATRAMENT_VERTICAL_BIAS = [0, 0, 5, 3, 13, 13]
 // One-time sheet-eject clip over slide 1; box = printer's alpha bbox in the 792×612 frame.
 const ATRAMENT_INTRO_VIDEO = {
-  src: '/images/atrament-carousel-v3-01-print.webm',
+  src: '/images/atrament-carousel-v3-01-print2.webm',
   box: [30 / 792, 18 / 612, 776 / 792, 594 / 612],
 } as const
 
@@ -158,7 +190,10 @@ const DRUK3D_HERO_SLIDES = [
   '/images/druk3d-carousel-v3-05.webp',
   '/images/druk3d-carousel-v3-06.webp',
 ]
-const DRUK3D_SIZE_COEFFICIENTS = [0.88, 0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+// Static first frame of the animation (pixel-identical frame 0, 62KB) — paints
+// as LCP, the 586KB animation swaps in after window "load".
+const DRUK3D_POSTER = '/images/Serwis_i_Naprawa_Drukarek_3D-static.webp'
+const DRUK3D_SIZE_COEFFICIENTS =[0.88, 0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DRUK3D_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
 
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
@@ -402,6 +437,7 @@ export function ServicePageTemplate({
                           slides={LAPTOP_HERO_SLIDES}
                           variant="home"
                           sizeCoefficients={LAPTOP_SIZE_COEFFICIENTS}
+                          advanceOnSecondReady
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
                         // Animated WebP (cooling-fan animation baked into the file, transparent
@@ -412,6 +448,7 @@ export function ServicePageTemplate({
                         // load (see AnimatedHeroImage) to keep LCP fast on every screen size.
                         <AnimatedHeroImage
                           animatedSrc={imageSrc}
+                          mobileAnimatedSrc="/images/02_serwis-komputerow-stacjonarnych-mobile.webp"
                           staticSrc="/images/02_serwis-komputerow-stacjonarnych-static.webp"
                           alt={imageAlt}
                           width={622}
@@ -441,6 +478,7 @@ export function ServicePageTemplate({
                           slides={DRUK3D_HERO_SLIDES}
                           sizeCoefficients={DRUK3D_SIZE_COEFFICIENTS}
                           verticalBias={DRUK3D_VERTICAL_BIAS}
+                          posterSrc={DRUK3D_POSTER}
                         />
                       ) : slug === 'serwis-plotterow' ? (
                         // Same stack-carousel mechanic as naprawa-drukarek
@@ -458,7 +496,7 @@ export function ServicePageTemplate({
                         // inkjet, needle, thermal, plotter, 3D) — replaces
                         // the single static Serwis_Drukarek.webp. No new
                         // assets, same fixed hero zone.
-                        <HeroPrinterCarousel alt={imageAlt} variant="home" slides={PRINTER_HERO_SLIDES} />
+                        <PrinterHubCarousel alt={imageAlt} slides={PRINTER_HERO_SLIDES} />
                       ) : slug === 'serwis-drukarek-atramentowych' ? (
                         // Same stack-carousel mechanic as naprawa-drukarek
                         // (default "printer" variant, no new CSS) — 6
@@ -518,15 +556,40 @@ export function ServicePageTemplate({
                           quality={60}
                         />
                       )}
+                      {SINGLE_HERO_SPOTLIGHT[slug] && (
+                        <HeroSpotlight
+                          src={SINGLE_HERO_SPOTLIGHT[slug].src}
+                          depth={SINGLE_HERO_SPOTLIGHT[slug].depth}
+                          className="service-hero-image object-contain w-full h-full"
+                          style={{ position: 'absolute', inset: 0 }}
+                          hide="img"
+                        />
+                      )}
                     </div>
                   </div>
                   {/* Phone: H1 goes first (above the image), so its position never depends on the image. */}
                   <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
                     {/* naprawa-drukarek UK/RU: "багатофункціональних"/"многофункциональных" is wider than
                         the phone column at 40px and got split mid-word — scale just this H1 with the
-                        screen (≤40px) so the whole word fits. */}
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' && locale !== 'pl' ? ' max-md:text-[length:min(40px,9vw)]' : ''}`}>
-                      {locale === 'pl' && HERO_LINES_PL[slug] ? (
+                        screen (≤40px) so the whole word fits. PL: same scale keeps the changing middle
+                        line ("drukarek atramentowych") on one line, so the H1 height never jumps. */}
+                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : ''}`}>
+                      {locale === 'pl' && slug === 'naprawa-drukarek' ? (
+                        // Middle line swaps with the carousel slide (home hero word animation);
+                        // search engines/screen readers get the unchanged H1 text.
+                        <>
+                          <span className="sr-only">Serwis i naprawa drukarek we Wrocławiu</span>
+                          <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
+                          <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] whitespace-nowrap"><PrinterHubMid mids={PRINTER_HERO_MIDS} /></span>
+                          <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                        </>
+                      ) : locale === 'pl' && slug === 'druk-3d-na-zamowienie' ? (
+                        <>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Druk 3D{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">na zamówienie{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                        </>
+                      ) : locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}{' '}</span>
@@ -554,8 +617,8 @@ export function ServicePageTemplate({
                   <BrandTicker brandNames={slugBrands} />
                 </div>
               )}
-              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'mb-3' : 'mb-6'}${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
-                <FadeSlideP className={`hidden md:block ${REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'text-[20px]' : 'text-[18px]'} text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
+              <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-3${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
+                <FadeSlideP className={`hidden md:block text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
@@ -573,7 +636,21 @@ export function ServicePageTemplate({
           <section id="uslugi" className="relative text-center pt-0 pb-2">
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {(relatedServices ?? []).map((rs, i) => (
+                {[...(relatedServices ?? [])].sort((a, b) => relatedServiceSlugs.indexOf(a.slug) - relatedServiceSlugs.indexOf(b.slug)).map((rs, i) => CARD_BAKED[rs.slug] ? (
+                  // Same finished picture cards as on the home page: text on the left, device drawn in.
+                  <Link
+                    key={rs.slug}
+                    href={`${basePath}/${rs.slug}`}
+                    className="group relative min-h-[168px] py-4 pl-8 md:pl-10 pr-3 flex items-center text-left w-full zakres-paper-card services-card-hover services-card-baked isolate"
+                    style={{ '--baked-d': `url(${CARD_BAKED[rs.slug].d})`, '--baked-m': `url(${CARD_BAKED[rs.slug].m})` } as React.CSSProperties}
+                  >
+                    {/* Phone cards wider than desktop: title box capped at its desktop width
+                        (48% of a 400px card's content = 167px), so names wrap the same way. */}
+                    <div className="relative z-[4] flex-none max-w-[48%] max-md:max-w-[min(48%,167px)] font-cormorant font-bold text-[#24160B] leading-[1.05] text-[26px]">
+                      {rs.displayTitle}
+                    </div>
+                  </Link>
+                ) : (
                   <Link
                     key={rs.slug}
                     href={`${basePath}/${rs.slug}`}

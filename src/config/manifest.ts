@@ -9,7 +9,7 @@ export const manifest = {
   "omobonus_hero": "/images/omobonus-hero.webp",
   "01_serwis_laptopow": "/images/01_serwis-laptopow.webp",
   "02_serwis_komputerow_stacjonarnych": "/images/02_serwis-komputerow-stacjonarnych.webp",
-  "03_outsourcing_it": "/images/03_outsourcing-it.webp",
+  "03_outsourcing_it": "/images/03_outsourcing-it-v3-static.webp",
   "04_serwis_drukarek_laserowych": "/images/laser-carousel-v3-01.webp",
   "05_serwis_drukarek_atramentowych": "/images/atrament-carousel-v3-01.webp",
   "06_serwis_drukarek_termicznych": "/images/termiczne-carousel-v3-01.webp",

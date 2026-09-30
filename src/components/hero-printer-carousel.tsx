@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { HeroSpotlight, spotlightFor } from '@/components/hero-spotlight'
 
 // Stack carousel used in service-page hero zones (originally built for
 // /uslugi/naprawa-drukarek, now also reused for /uslugi/serwis-laptopow via
@@ -76,10 +77,19 @@ const VARIANT_CONFIG = {
 
 type CarouselVariant = keyof typeof VARIANT_CONFIG
 
-// Loads only the active slide eagerly (LCP candidate); the rest are fetched
-// in the background after the page finishes loading (window "load" +
-// requestIdleCallback, so they never compete with the LCP image or main
-// bundle for bandwidth), then the carousel only starts once they're cached.
+// Loads only the active slide eagerly (LCP candidate). After the page finishes
+// loading (window "load" + requestIdleCallback, so nothing competes with the
+// LCP image or main bundle) only the next LOOKAHEAD slides are fetched — the
+// ones the stack shows (tiers 1-2) plus the hidden tier-3 one that slides in
+// next. The carousel starts once those are cached; every advance then fetches
+// the one new slide entering the hidden tier, ~5.5s before it becomes visible.
+// A tick is skipped if that slide isn't cached yet, so nothing appears empty.
+const LOOKAHEAD = 3
+// First next-up animation (slidePosters) is requested this long after the
+// initial preload, so it doesn't compete with the first screen; still leaves
+// ~4s before the first advance.
+const ANIM_DELAY_MS = 1500
+
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
     srcs.map(
@@ -101,8 +111,12 @@ export function HeroPrinterCarousel({
   sizeCoefficients,
   verticalBias,
   posterSrc,
+  slidePosters,
+  mobileSlideAnims,
+  opening,
   onActiveChange,
   introVideo,
+  advanceOnSecondReady,
 }: {
   slides: string[]
   alt: string
@@ -121,6 +135,22 @@ export function HeroPrinterCarousel({
   // carousel. Every other caller leaves this undefined, so their slide 0
   // keeps loading exactly as before (no behavior change).
   posterSrc?: string
+  // Optional per-slide static stand-ins (index-matched to `slides`) for heavy
+  // animated slides (home hero). The poster takes the slide's place in the
+  // queue; the animated file is fetched only when that slide is next up and
+  // swapped in once cached — the rotation holds until it is, so the slide is
+  // already animated when it comes to the front.
+  slidePosters?: (string | undefined)[]
+  // Optional smaller animated files for phones (index-matched, only for slides
+  // with a poster): same frames and timing, lower resolution. Chosen once, when
+  // the animation is requested, on screens narrower than md.
+  mobileSlideAnims?: (string | undefined)[]
+  // Optional one-time opening slide (home hero): shown in front of slide 0 on
+  // the first paint only. Slide 0's file starts loading right after mount; the
+  // intro leaves (normal advance motion) once minMs has passed since mount AND
+  // slide 0 plus the next slides are cached, then never comes back — the
+  // regular rotation starts from slide 0. onActiveChange reports -1 meanwhile.
+  opening?: { src: string; minMs: number }
   // Optional: reports the active slide index (home hero uses it to swap the
   // matching word in the H1 line in sync with the slide change).
   onActiveChange?: (index: number) => void
@@ -131,9 +161,33 @@ export function HeroPrinterCarousel({
   // mapped onto slide 0's image. Skipped on Apple WebKit (no WebM alpha) and
   // under prefers-reduced-motion.
   introVideo?: { src: string; box: readonly [number, number, number, number] }
+  // Optional (serwis-laptopow): slide 0 is only a light stand-in for the
+  // animated slide 1. Slide 1 is fetched right after mount and the carousel
+  // moves to it as soon as it is fully cached, instead of waiting for the
+  // regular 5.5s tick and the whole lookahead window.
+  advanceOnSecondReady?: boolean
 }) {
+  // Desktop hover light over the active slide (see HeroSpotlight).
+  const spotlights = slides.map(spotlightFor)
+  const hasSpotlight = spotlights.some(Boolean)
   const [active, setActive] = useState(0)
-  const [ready, setReady] = useState(false)
+  // Per-slide "cached" flags; slide 0 is the eager one (or covered by the poster).
+  const [loaded, setLoaded] = useState<boolean[]>(() => slides.map((_, i) => i === 0 && !opening))
+  const [openingState, setOpeningState] = useState<'on' | 'leaving' | 'off'>(opening ? 'on' : 'off')
+  const openingOn = openingState === 'on'
+  const mountedAtRef = useRef(0)
+  const reportedRef = useRef<number | null>(null)
+  const loadedRef = useRef(loaded)
+  loadedRef.current = loaded
+  const requestedRef = useRef<Set<number>>(new Set([0]))
+  const activeRef = useRef(active)
+  activeRef.current = active
+  const [animReady, setAnimReady] = useState<boolean[]>(() => slides.map(() => false))
+  const animReadyRef = useRef(animReady)
+  animReadyRef.current = animReady
+  const animRequestedRef = useRef<Set<number>>(new Set())
+  // Animated file actually requested per slide (desktop or mobile variant).
+  const animSrcRef = useRef<(string | undefined)[]>([])
   const [inView, setInView] = useState(true)
   const [slide0Ready, setSlide0Ready] = useState(!posterSrc)
   // Entrance animation only for slides shown by an advance, never on the
@@ -142,6 +196,49 @@ export function HeroPrinterCarousel({
   const boxRef = useRef<HTMLDivElement>(null)
   const config = VARIANT_CONFIG[variant]
   const slideCount = slides.length
+  const lookahead = Math.min(LOOKAHEAD, slideCount - 1)
+  const aheadLoaded = (from: number, flags: boolean[]) => {
+    for (let k = 1; k <= lookahead; k++) if (!flags[(from + k) % slideCount]) return false
+    return true
+  }
+  // Latches true once the first window is cached (flags never go back).
+  const ready = aheadLoaded(0, loaded)
+
+  const requestAhead = (from: number) => {
+    for (let k = 1; k <= lookahead; k++) {
+      const i = (from + k) % slideCount
+      if (requestedRef.current.has(i)) continue
+      requestedRef.current.add(i)
+      preloadImages([slidePosters?.[i] ?? slides[i]]).then(() =>
+        setLoaded((prev) => {
+          if (prev[i]) return prev
+          const next = [...prev]
+          next[i] = true
+          return next
+        })
+      )
+    }
+  }
+
+  // Animated file of a slide that has a poster; fetched only when it is next up.
+  const requestAnim = (i: number) => {
+    if (!slidePosters?.[i] || animRequestedRef.current.has(i)) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    animRequestedRef.current.add(i)
+    const animSrc = mobileSlideAnims?.[i] && window.matchMedia('(max-width: 767px)').matches ? mobileSlideAnims[i] : slides[i]
+    animSrcRef.current[i] = animSrc
+    preloadImages([animSrc]).then(() =>
+      setAnimReady((prev) => {
+        if (prev[i]) return prev
+        const next = [...prev]
+        next[i] = true
+        return next
+      })
+    )
+  }
+  const animPending = (i: number) =>
+    !!slidePosters?.[i] && !animReadyRef.current[i] &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   // Intro video: idle -> loading (hidden <video> buffering) -> playing
   // (video shown, static slide 0 hidden) -> ending (fade back) -> done.
@@ -151,6 +248,8 @@ export function HeroPrinterCarousel({
   const [introMeta, setIntroMeta] = useState(false)
   const [introStarted, setIntroStarted] = useState(false)
   const [introGeo, setIntroGeo] = useState<{ w: number; h: number; dx: number; dy: number; ox: number; oy: number } | null>(null)
+  const introRef = useRef(intro)
+  introRef.current = intro
 
   useEffect(() => {
     if (!introVideo) return
@@ -214,13 +313,12 @@ export function HeroPrinterCarousel({
   }, [])
 
   useEffect(() => {
-    let cancelled = false
     let idleHandle: number | undefined
+    let animTimer: number | undefined
 
     const runPreload = () => {
-      preloadImages(slides.slice(1)).then(() => {
-        if (!cancelled) setReady(true)
-      })
+      requestAhead(0)
+      if (slidePosters && !opening) animTimer = window.setTimeout(() => requestAnim(1 % slideCount), ANIM_DELAY_MS)
     }
 
     const schedule = () => {
@@ -238,8 +336,8 @@ export function HeroPrinterCarousel({
     }
 
     return () => {
-      cancelled = true
       window.removeEventListener('load', schedule)
+      window.clearTimeout(animTimer)
       if (idleHandle !== undefined) {
         if (typeof window.cancelIdleCallback === 'function') {
           window.cancelIdleCallback(idleHandle)
@@ -281,26 +379,159 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Intro: slide 0 starts loading right after the first paint (mount).
   useEffect(() => {
-    onActiveChange?.(active)
+    if (!opening) return
+    mountedAtRef.current = performance.now()
+    preloadImages([slides[0]]).then(() =>
+      setLoaded((prev) => (prev[0] ? prev : [true, ...prev.slice(1)]))
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Intro -> slide 0: not before minMs, and only once slide 0 and the next
+  // slides are cached (slow network: the intro simply stays longer).
+  useEffect(() => {
+    if (!opening || !openingOn || !ready || !loaded[0] || !inView) return
+    const wait = Math.max(0, mountedAtRef.current + opening.minMs - performance.now())
+    const id = window.setTimeout(() => {
+      setOpeningState('leaving')
+      setAdvanced(true)
+      requestAnim(1 % slideCount)
+    }, wait)
+    return () => window.clearTimeout(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openingOn, ready, loaded, inView])
+
+  // The intro slides out to the back like any advanced slide, then unmounts.
+  useEffect(() => {
+    if (openingState !== 'leaving') return
+    const id = window.setTimeout(() => setOpeningState('off'), 900)
+    return () => window.clearTimeout(id)
+  }, [openingState])
+
+  // advanceOnSecondReady: fetch slide 1 right after mount (slide 0 is already
+  // painted by then), outside the load/idle-gated lookahead window.
+  const [quickAdvanced, setQuickAdvanced] = useState(false)
+  useEffect(() => {
+    if (!advanceOnSecondReady || slideCount < 2) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    requestedRef.current.add(1)
+    preloadImages([slides[1]]).then(() =>
+      setLoaded((prev) => {
+        if (prev[1]) return prev
+        const next = [...prev]
+        next[1] = true
+        return next
+      })
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // ...and move to it as soon as it is cached. It is rendered in the next-up
+  // position first, so the advance animates like a normal one; the double rAF
+  // lets that position paint before the move starts.
+  useEffect(() => {
+    if (!advanceOnSecondReady || quickAdvanced || !loaded[1] || active !== 0) return
+    let raf2 = 0
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        setActive(1)
+        setAdvanced(true)
+        setQuickAdvanced(true)
+      })
+    })
+    return () => {
+      cancelAnimationFrame(raf1)
+      cancelAnimationFrame(raf2)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded, active, quickAdvanced])
+
+  useEffect(() => {
+    const shown = openingOn ? -1 : active
+    if (reportedRef.current !== shown) {
+      reportedRef.current = shown
+      onActiveChange?.(shown)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, openingOn])
+
+  useEffect(() => {
+    // The first window is requested by the load/idle effect above.
+    if (active !== 0 || requestedRef.current.size > 1) requestAhead(active)
+    // Next-up animation; the very first one waits for the timer in the load effect.
+    if (active !== 0 || animRequestedRef.current.size > 0) requestAnim((active + 1) % slideCount)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
+  // Spotlight carousels hold the current slide while the pointer is over the
+  // hero, so the light isn't cut off by an advance. Hover time still counts
+  // toward the 5.5s: on leave only the remainder is waited, or the carousel
+  // advances right away if the slide has already been up that long.
+  const [hoverPaused, setHoverPaused] = useState(false)
+  const countdownStartRef = useRef(0)
+  const resumeFromHoverRef = useRef(false)
   useEffect(() => {
-    if (!ready || !inView) return
+    if (!hasSpotlight) return
+    const wrap = boxRef.current?.closest('.service-hero-image-wrap')
+    if (!wrap || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    const enter = () => setHoverPaused(true)
+    const leave = () => {
+      resumeFromHoverRef.current = true
+      setHoverPaused(false)
+    }
+    wrap.addEventListener('pointerenter', enter)
+    wrap.addEventListener('pointerleave', leave)
+    return () => {
+      wrap.removeEventListener('pointerenter', enter)
+      wrap.removeEventListener('pointerleave', leave)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (!ready || !inView || openingOn || hoverPaused) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const id = setInterval(() => {
+    const fromHover = resumeFromHoverRef.current
+    resumeFromHoverRef.current = false
+    if (!fromHover) countdownStartRef.current = Date.now()
+    let id: number
+    const tick = () => {
+      countdownStartRef.current = Date.now()
+      id = window.setTimeout(tick, ADVANCE_MS)
       // Tab in the background: skip the tick instead of tearing the
-      // interval down, so it resumes on the same cadence once it's focused
+      // timer down, so it resumes on the same cadence once it's focused
       // again rather than restarting the 5.5s countdown from zero.
       if (document.hidden) return
+      // Intro clip still playing: let it finish, advance on a later tick.
+      if (introRef.current === 'playing') return
+      // Slow connection: hold the current slide until the incoming ones are cached.
+      if (!aheadLoaded(activeRef.current, loadedRef.current)) return
+      // ...and until the incoming slide's animation (if it has a poster) is cached.
+      if (animPending((activeRef.current + 1) % slideCount)) return
       setActive((prev) => (prev + 1) % slideCount)
       setAdvanced(true)
-    }, ADVANCE_MS)
-    return () => clearInterval(id)
+    }
+    id = window.setTimeout(tick, Math.max(0, ADVANCE_MS - (Date.now() - countdownStartRef.current)))
+    return () => clearTimeout(id)
     // intro video started: restart the countdown so slide 0 holds for the whole clip
-  }, [ready, inView, slideCount, introStarted])
+    // quick first advance: restart the countdown so slide 1 gets its full 5.5s
+  }, [ready, inView, slideCount, introStarted, openingOn, hoverPaused, quickAdvanced])
+
+  const coef = (k: number) => sizeCoefficients?.[((k % slideCount) + slideCount) % slideCount] ?? 1
+  // Front / next-up slide coefficients (the opening slide stands in front of slide 0).
+  const frontCoef = coef(openingOn ? 0 : active)
+  const nextCoef = coef(openingOn ? 0 : active + 1)
+  const peekX = (tier: number, c: number): number => {
+    if (!('peek' in config) || tier === 0) return config.translateX[tier]
+    // Left edges in slide-box widths: active, then next-up = active − peek.
+    const activeLeft = -config.scale[0] * frontCoef / 2
+    const nextLeft = activeLeft - config.peek * config.scale[1] * nextCoef
+    const half = config.scale[tier] * c / 2
+    return 100 * (tier === 1 ? nextLeft + half : nextLeft + half + 0.02)
+  }
 
   return (
     // Outer "bleed" box: purely a wider, non-clipping paint-containment
@@ -330,16 +561,44 @@ export function HeroPrinterCarousel({
             }}
           />
         )}
+        {opening && openingState !== 'off' && (
+          // One-time opening slide: front while on, then the back of the queue
+          // (hidden tier 3) during the 900ms move, then unmounted.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key="opening"
+            src={opening.src}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            fetchPriority="high"
+            className={config.slideClass + (openingOn && 'activeClass' in config ? ` ${config.activeClass}` : '')}
+            data-tier={openingOn ? 0 : 3}
+            style={{
+              transform: `translate(-50%, -50%) translateX(${peekX(openingOn ? 0 : 3, coef(0))}%) translateY(${
+                config.translateY[openingOn ? 0 : 3] + (verticalBias?.[0] ?? 0)
+              }%) scale(calc(${config.scale[openingOn ? 0 : 3] * coef(0)} * var(--slide-fit, 1)))`,
+              opacity: config.opacity[openingOn ? 0 : 3],
+              zIndex: config.zIndex[openingOn ? 0 : 3],
+              ...fitVars(coef(0)),
+            }}
+          />
+        )}
         {slides.map((src, i) => {
           // Slide 0 stays out of the DOM until its real file is cached when a
           // posterSrc is in play (the poster above stands in for it) — this
           // is what keeps the heavy animated file off the critical path.
           if (i === 0 && posterSrc && !slide0Ready) return null
+          // Opening slide in front: slide 0 joins (as next-up) once cached.
+          if (i === 0 && opening && !loaded[0]) return null
 
-          // Before preloading finishes, active stays 0 (the interval below is
+          // Before the first window is cached, active stays 0 (the interval is
           // gated on `ready`), so only the first slide needs to be in the DOM —
           // it renders exactly like a normal hero image, full priority, no wait.
-          if (i !== 0 && !ready) return null
+          // Later slides join the DOM once cached, while still in the hidden
+          // tier 3, so their move into the visible stack animates as before.
+          // (advanceOnSecondReady: slide 1 joins as soon as it alone is cached.)
+          if (i !== 0 && (!(ready || (advanceOnSecondReady && i === 1)) || !loaded[i])) return null
 
           // Forward-only queue position (0 = active, 1/2 = next two waiting
           // in the stack, 3+ = further back, invisible). Unlike a symmetric
@@ -349,22 +608,15 @@ export function HeroPrinterCarousel({
           // from front-center out to the hidden back position by itself —
           // exactly the "current slides out and shrinks" motion, with no
           // extra exit state needed.
-          const delta = ((i - active) % slideCount + slideCount) % slideCount
+          // (+1 while the opening slide holds the front position.)
+          const delta = ((i - active) % slideCount + slideCount) % slideCount + (openingOn ? 1 : 0)
           const tier = delta === 0 ? 0 : delta === 1 ? 1 : delta === 2 ? 2 : 3
           // Coefficient/bias apply to every tier of this slide, not just the
           // active one, so its relative size stays consistent through its
           // whole time in the queue.
           const scale = config.scale[tier] * (sizeCoefficients?.[i] ?? 1)
           const opacity = i === 0 && intro === 'playing' ? 0 : config.opacity[tier]
-          let translateX: number = config.translateX[tier]
-          if ('peek' in config && tier > 0) {
-            // Left edges in slide-box widths: active, then next-up = active − peek.
-            const coef = (k: number) => sizeCoefficients?.[k % slideCount] ?? 1
-            const activeLeft = -config.scale[0] * coef(active) / 2
-            const nextLeft = activeLeft - config.peek * config.scale[1] * coef(active + 1)
-            const half = config.scale[tier] * coef(i) / 2
-            translateX = 100 * (tier === 1 ? nextLeft + half : nextLeft + half + 0.02)
-          }
+          const translateX = peekX(tier, coef(i))
           const translateY = config.translateY[tier] + (verticalBias?.[i] ?? 0)
           const zIndex = config.zIndex[tier]
           const stateClass =
@@ -377,7 +629,7 @@ export function HeroPrinterCarousel({
             <img
               key={src}
               ref={i === 0 ? slide0Ref : undefined}
-              src={src}
+              src={slidePosters?.[i] ? (animReady[i] ? animSrcRef.current[i] ?? src : slidePosters[i]) : src}
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}
@@ -393,6 +645,22 @@ export function HeroPrinterCarousel({
             />
           )
         })}
+        {spotlights[active] && !openingOn && !(active === 0 && posterSrc && !slide0Ready) &&
+          !(active === 0 && (intro === 'loading' || intro === 'playing' || intro === 'ending')) && (
+          <HeroSpotlight
+            key={active}
+            src={spotlights[active]!.src}
+            depth={spotlights[active]!.depth}
+            className={config.slideClass + ('activeClass' in config ? ` ${config.activeClass}` : '')}
+            style={{
+              transform: `translate(-50%, -50%) translateX(${peekX(0, coef(active))}%) translateY(${
+                config.translateY[0] + (verticalBias?.[active] ?? 0)
+              }%) scale(calc(${config.scale[0] * coef(active)} * var(--slide-fit, 1)))`,
+              zIndex: config.zIndex[0] + 1,
+              ...fitVars(coef(active)),
+            }}
+          />
+        )}
         {introVideo && intro !== 'idle' && intro !== 'done' && (
           <video
             ref={videoRef}

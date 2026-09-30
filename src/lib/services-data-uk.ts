@@ -1,17 +1,17 @@
 import manifest from '@/config/manifest'
 import type { ServiceData, PricingSection } from './services-data-types'
 import { diagnostaSection, dojazdSection, faqSectionUk } from './services-data-uk-shared'
-import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy } from './services-data-uk-laptop'
-import { desktopKonserwacja, desktopNaprawy } from './services-data-uk-desktop'
-import { outsourcingKonserwacja, outsourcingNaprawy } from './services-data-uk-outsourcing'
-import { laserKonserwacjaUk, laserNaprawy } from './services-data-uk-laser'
-import { inkjetKonserwacjaUk, inkjetNaprawy } from './services-data-uk-inkjet'
-import { thermalKonserwacja, thermalNaprawy } from './services-data-uk-thermal'
-import { needleKonserwacja, needleNaprawy } from './services-data-uk-needle'
-import { printer3dKonserwacja, printer3dNaprawy } from './services-data-uk-3dprinter'
-import { plotterKonserwacja, plotterNaprawy } from './services-data-uk-plotter'
-import { wynajemAkordeon1, wynajemAkordeon2 } from './services-data-uk-wynajem'
-import { zastepczaAkordeon1, zastepczaAkordeon2 } from './services-data-uk-drukarka-zastepcza'
+import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy, laptopFaqSection } from './services-data-uk-laptop'
+import { desktopKonserwacja, desktopNaprawy, desktopFaqSection } from './services-data-uk-desktop'
+import { outsourcingKonsultacja, outsourcingKonserwacja, outsourcingNaprawy, outsourcingFaq } from './services-data-uk-outsourcing'
+import { laserFaq, laserKonserwacjaUk, laserNaprawy } from './services-data-uk-laser'
+import { inkjetFaq, inkjetKonserwacjaUk, inkjetNaprawy } from './services-data-uk-inkjet'
+import { thermalFaq, thermalKonserwacja, thermalNaprawy } from './services-data-uk-thermal'
+import { needleFaq, needleKonserwacja, needleNaprawyIglowe } from './services-data-uk-needle'
+import { printer3dFaq, printer3dKonserwacja, printer3dNaprawy } from './services-data-uk-3dprinter'
+import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from './services-data-uk-plotter'
+import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-uk-wynajem'
+import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-uk-drukarka-zastepcza'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -25,7 +25,7 @@ export const servicesUk: ServiceData[] = [
       laptopDojazdSection(),
       laptopKonserwacja,
       laptopNaprawy,
-      faqSectionUk(),
+      laptopFaqSection(),
     ],
   },
   {
@@ -35,11 +35,11 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Діагностика, ремонт та модернізація системних блоків.',
     pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
+      laptopDiagnostaSection(),
+      laptopDojazdSection(),
       desktopKonserwacja,
       desktopNaprawy,
-      faqSectionUk(),
+      desktopFaqSection(),
     ],
   },
   {
@@ -49,11 +49,10 @@ export const servicesUk: ServiceData[] = [
     icon: manifest['03_outsourcing_it'],
     description: 'Повне ІТ-обслуговування для Вашої компанії.',
     pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
+      outsourcingKonsultacja,
       outsourcingKonserwacja,
       outsourcingNaprawy,
-      faqSectionUk(),
+      outsourcingFaq(),
     ],
   },
   {
@@ -62,13 +61,8 @@ export const servicesUk: ServiceData[] = [
     subtitle: 'Ремонт спеціалізованих матричних принтерів',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт спеціалізованих матричних принтерів.',
-    pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
-      needleKonserwacja,
-      needleNaprawy,
-      faqSectionUk(),
-    ],
+    // Strona renderuje siatkę kart zamiast cennika; z danych używane jest tylko FAQ (JSON-LD FAQPage)
+    pricingSections: [faqSectionUk()],
   },
   {
     slug: 'serwis-drukarek-laserowych',
@@ -81,33 +75,8 @@ export const servicesUk: ServiceData[] = [
       dojazdSection(),
       laserKonserwacjaUk,
       laserNaprawy,
-      faqSectionUk(),
+      laserFaq(),
     ],
-    priceTooltipRich: {
-      type: 'deviceCategories',
-      title: 'Категорії пристроїв',
-      description: 'Оберіть орієнтовно, до якої групи належить Ваш принтер. Це допоможе легше підібрати ціновий діапазон.',
-      categories: [
-        {
-          title: 'Домашній принтер',
-          description: 'Пристрій для домашнього використання або епізодичного друку. Невеликі моделі A4, зазвичай дешевші у придбанні.',
-          features: ['малі розміри', 'повільний друк', 'базові функції'],
-          examples: ['HP DeskJet 2720', 'Canon MG3650s'],
-        },
-        {
-          title: 'Офісний принтер',
-          description: 'Для роботи в малих і середніх офісах. Призначені для частішого друку та роботи в мережі.',
-          features: ['швидший друк', 'LAN / Wi-Fi', 'більша довговічність'],
-          examples: ['Brother DCP-J105', 'Epson L3150'],
-        },
-        {
-          title: 'Бізнес-принтер',
-          description: 'Великі пристрої A4/A3 для інтенсивної роботи та великих обсягів друку.',
-          features: ['дуже висока витривалість', 'швидкі тонери та картриджі', 'сервісні функції управління'],
-          examples: ['Epson L6570', 'Canon MAXIFY GX4040'],
-        },
-      ],
-    },
   },
   {
     slug: 'serwis-drukarek-atramentowych',
@@ -120,7 +89,7 @@ export const servicesUk: ServiceData[] = [
       dojazdSection(),
       inkjetKonserwacjaUk,
       inkjetNaprawy,
-      faqSectionUk(),
+      inkjetFaq(),
     ],
   },
   {
@@ -131,10 +100,10 @@ export const servicesUk: ServiceData[] = [
     description: 'Сервіс та ремонт широкоформатних плотерів.',
     pricingSections: [
       diagnostaSection(),
-      dojazdSection(),
+      plotterDojazd(),
       plotterKonserwacja,
       plotterNaprawy,
-      faqSectionUk(),
+      plotterFaq(),
     ],
   },
   {
@@ -148,7 +117,7 @@ export const servicesUk: ServiceData[] = [
       dojazdSection(),
       thermalKonserwacja,
       thermalNaprawy,
-      faqSectionUk(),
+      thermalFaq(),
     ],
     priceTooltip: 'Ціни нетто окремо для принтерів: настільних / напівпромислових / промислових (робота, без витратних матеріалів)',
   },
@@ -162,8 +131,8 @@ export const servicesUk: ServiceData[] = [
       diagnostaSection(),
       dojazdSection(),
       needleKonserwacja,
-      needleNaprawy,
-      faqSectionUk(),
+      needleNaprawyIglowe,
+      needleFaq(),
     ],
   },
   {
@@ -177,7 +146,7 @@ export const servicesUk: ServiceData[] = [
       dojazdSection(),
       printer3dKonserwacja,
       printer3dNaprawy,
-      faqSectionUk(),
+      printer3dFaq(),
     ],
   },
   {
@@ -200,7 +169,7 @@ export const servicesUk: ServiceData[] = [
           { service: 'Доставка\nкур\'єром або до поштомату', },
         ],
         priceFormula: 'Кінцева ціна = підготовка до друку + матеріал + час друку',
-        example: 'Приклад: друк з PLA, 100 г матеріалу, 5 годин друку — 25 zł (підготовка) + 100 г × 0,30 zł/грам + 5 год × 8 zł/год = 95 zł',
+        example: 'Приклад: друк з PLA, 100 г матеріалу, 5 годин друку — 25 zł (підготовка) + 100 г × 0,30 zł/грам + 5 год × 8 zł/год. = 95 zł',
       },
       {
         id: 'projektowanie-modeli',
@@ -251,7 +220,7 @@ export const servicesUk: ServiceData[] = [
     pricingSections: [
       wynajemAkordeon1,
       wynajemAkordeon2,
-      faqSectionUk(),
+      wynajemFaq(),
     ],
   },
   {
@@ -263,7 +232,7 @@ export const servicesUk: ServiceData[] = [
     pricingSections: [
       zastepczaAkordeon1,
       zastepczaAkordeon2,
-      faqSectionUk(),
+      zastepczaFaq(),
     ],
   },
 ]

@@ -158,9 +158,14 @@ export const imageAlt: Record<string, string> = {
 }
 
 // Nadpisania tytułów na kafelkach usług powiązanych (sekcja "naprawa-drukarek")
+// Short card names on /uslugi/naprawa-drukarek, same as the home service cards.
 export const subServiceTitles: Record<string, string> = {
-  'serwis-drukarek-termicznych': 'Serwis i naprawa drukarek etykiet',
-  'serwis-drukarek-laserowych': 'Serwis Drukarek Laserowych',
+  'serwis-drukarek-laserowych': 'Drukarek laserowych',
+  'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
+  'serwis-plotterow': 'Ploterów',
+  'serwis-drukarek-termicznych': 'Drukarek etykiet',
+  'serwis-drukarek-iglowych': 'Drukarek igłowych',
+  'serwis-drukarek-3d': 'Drukarek 3D',
 }
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {

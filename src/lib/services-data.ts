@@ -26,7 +26,8 @@ import { createLaserPricingSections } from './services-data-laser'
 import { create3DPrinterPricingSections, createDruk3DZamowieniePricingSections } from './services-data-3dprinter'
 import { createPlotterPricingSections } from './services-data-plotter'
 import { createInkjetPricingSections } from './services-data-inkjet'
-import { createNeedlePricingSections } from './services-data-needle'
+import { createIglowePricingSections } from './services-data-needle'
+import { createFaqSection } from './services-data-shared'
 import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
@@ -62,7 +63,8 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createNeedlePricingSections(),
+    // Strona renderuje siatkę kart zamiast cennika; z danych używane jest tylko FAQ (JSON-LD FAQPage)
+    pricingSections: [createFaqSection()],
   },
   {
     slug: 'serwis-drukarek-laserowych',
@@ -71,31 +73,6 @@ export const services: ServiceData[] = [
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Profesjonalna naprawa i serwis drukarek laserowych.',
     pricingSections: createLaserPricingSections(),
-    priceTooltipRich: {
-      type: 'deviceCategories',
-      title: 'Kategorie urządzeń',
-      description: 'Wybierz orientacyjnie, do której grupy należy Twoja drukarka. Dzięki temu łatwiej dopasujesz przedział cenowy.',
-      categories: [
-        {
-          title: 'Drukarka domowa',
-          description: 'Urządzenie do użytku domowego lub okazjonalnego drukowania. Małe modele A4, zwykle tańsze w zakupie.',
-          features: ['małe wymiary', 'wolniejszy druk', 'podstawowe funkcje'],
-          examples: ['HP DeskJet 2720', 'Canon MG3650s'],
-        },
-        {
-          title: 'Drukarka biurowa',
-          description: 'Do pracy w małych i średnich biurach. Przystosowane do częstszego drukowania i pracy w sieci.',
-          features: ['szybszy druk', 'LAN / Wi-Fi', 'wyższa trwałość'],
-          examples: ['Brother DCP-J105', 'Epson L3150'],
-        },
-        {
-          title: 'Drukarka biznesowa',
-          description: 'Duże urządzenia A4/A3 do intensywnej pracy i dużych wolumenów wydruku.',
-          features: ['bardzo wysoka wytrzymałość', 'szybkie tonery i kasety', 'serwisowe funkcje zarządzania'],
-          examples: ['Epson L6570', 'Canon MAXIFY GX4040'],
-        },
-      ],
-    },
   },
   {
     slug: 'serwis-drukarek-atramentowych',
@@ -130,7 +107,7 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createNeedlePricingSections(),
+    pricingSections: createIglowePricingSections(),
   },
   {
     slug: 'serwis-drukarek-3d',

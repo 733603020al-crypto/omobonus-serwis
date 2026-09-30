@@ -54,6 +54,6 @@ Reference/source of truth for this design: `/uslugi/serwis-laptopow`. When bring
 * If a suitable existing image for that specific subcategory already exists in the project, use it via `subcategory.icon` (data-driven — never by title-matching or a hardcoded per-title condition in the component).
 * If no suitable image exists yet, use one neutral temporary placeholder icon, keeping the correct slot size/position.
 * Never substitute an image whose subject/theme doesn't fit the subcategory (e.g. a different device type) just to avoid a placeholder.
-* Verify once at mobile 390px and desktop 1440px, both open and closed section states — don't repeat full visual-regression checks multiple times.
+* Visual check: one final check after all changes — desktop 1440px, plus mobile 390px if the task concerns mobile; check open/closed section states only when the task needs it (see CLAUDE.md «Визуальная проверка»).
 
 See also [[feedback_naprawy_icon_slot_rule]] (session memory with the same rule and its rationale).

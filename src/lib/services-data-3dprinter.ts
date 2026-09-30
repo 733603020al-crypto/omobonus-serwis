@@ -7,128 +7,148 @@ const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki 3D\n• dokładne czyszczenie wnętrza drukarki, prowadnic, śrub, osi i stołu roboczego,\n• **czyszczenie hotendu, dyszy i ekstrudera oraz kontrola układu podawania filamentu,**\n• kontrola i regulacja pasków, prowadnic, łożysk i mechanizmów napędowych,\n• smarowanie wymagających tego elementów mechanicznych,\n• kontrola czujników, krańcówek, chłodzenia i podstawowych połączeń,\n• kalibracja stołu i osi oraz końcowy test wydruku i korekta parametrów.\ndla dużych przemysłowych drukarek 3D – **wycena indywidualna**',
+        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki 3D\n• dokładne czyszczenie wnętrza drukarki, prowadnic, śrub, osi i stołu roboczego,\n• **czyszczenie hotendu, dyszy i ekstrudera oraz kontrola układu podawania filamentu,**\n• kontrola i regulacja pasków, prowadnic, łożysk i mechanizmów napędowych,\n• smarowanie wymagających tego elementów mechanicznych,\n• kontrola czujników, krańcówek, chłodzenia i podstawowych połączeń,\n• kalibracja stołu i osi oraz końcowy test wydruku i korekta parametrów.',
     },
   ]
 }
 
-const apply3DPrinterMechanicsSubcategory = (sections: PricingSection[]) => {
-  const serviceSection = sections.find(section => section.id === 'naprawy')
-  const mechanicsSubcategory = serviceSection?.subcategories?.[0]
-  if (!mechanicsSubcategory) return
-  mechanicsSubcategory.title = 'Mechanika i układ ruchu (osie, paski, ekstruder)'
-  mechanicsSubcategory.items = [
+const apply3DPrinterRepairsSection = (sections: PricingSection[]) => {
+  const repairsSection = sections.find(s => s.id === 'naprawy')
+  if (!repairsSection) return
+  repairsSection.subcategories = [
     {
-      service: 'Regulacja i kalibracja osi X / Y / Z\n(nierówne warstwy, przesunięcia, stuki podczas ruchu)',
+      id: '3d-mechanics',
+      title: 'Mechanika i układ ruchu',
+      items: [
+        { service: 'Regulacja i kalibracja osi X / Y / Z\n(przesunięcia warstw, nierówny ruch, stuki podczas pracy)' },
+        { service: 'Regulacja pasków i napinaczy\n(luzy, przeskakiwanie, utrata dokładności druku)' },
+        { service: 'Wymiana pasków i napinaczy\n(zużyte lub uszkodzone elementy napędu osi)' },
+        { service: 'Wymiana łożysk i rolek prowadzących\n(luzy, hałas, nierówny ruch osi)' },
+        { service: 'Serwis / regulacja osi Z\n(zacinanie osi, nierówne warstwy, problemy z ruchem Z)' },
+        { service: 'Wymiana śruby lub prowadnicy osi Z\n(wygięta śruba, luz na nakrętce, zużyta lub krzywa prowadnica osi Z)' },
+        { service: 'Wymiana silnika krokowego\n(brak ruchu osi, przeskakiwanie lub głośna praca)' },
+      ],
     },
     {
-      service: 'Regulacja lub wymiana pasków i napinaczy\n(luzy, przeskakiwanie, utrata dokładności druku)',
+      id: '3d-extruder',
+      title: 'Ekstruder, hotend i podawanie filamentu',
+      items: [
+        { service: 'Czyszczenie układu podawania filamentu\n(ślizganie filamentu, nieregularne podawanie)' },
+        { service: 'Usuwanie zatoru hotendu\n(zatkana dysza, brak lub słaby wypływ filamentu)' },
+        { service: 'Wymiana dyszy\n(zużyta lub uszkodzona dysza, pogorszenie jakości druku)' },
+        { service: 'Naprawa ekstrudera\n(filament nie jest prawidłowo podawany lub przeskakuje)' },
+        { service: 'Naprawa systemu AMS / podajnika wielomateriałowego\n(filament blokuje się, nie jest wykrywany lub nie przełącza się prawidłowo)' },
+        { service: 'Wymiana ekstrudera\n(uszkodzony mechanizm podawania filamentu)' },
+        { service: 'Naprawa hotendu\n(wycieki filamentu, problemy z nagrzewaniem lub ekstruzją)' },
+        { service: 'Wymiana hotendu\n(uszkodzony lub zużyty zespół hotendu)' },
+      ],
     },
     {
-      service: 'Serwis ekstrudera i hotendu\n(zatykanie, brak podawania filamentu, wycieki)',
+      id: '3d-heating',
+      title: 'Stół, grzanie i chłodzenie',
+      items: [
+        { service: 'Naprawa układu grzania stołu\n(stół nie nagrzewa się lub nie utrzymuje temperatury)' },
+        { service: 'Wymiana grzałki hotendu\n(hotend nie nagrzewa się lub zgłasza błąd temperatury)' },
+        { service: 'Wymiana termistora / czujnika temperatury\n(błędny odczyt temperatury, przerwanie wydruku)' },
+        { service: 'Wymiana wentylatora\n(brak chłodzenia, hałas lub przegrzewanie)' },
+        { service: 'Naprawa układu chłodzenia wydruku\n(deformacje, słaba jakość mostów lub przegrzewanie modelu)' },
+      ],
     },
     {
-      service: 'Czyszczenie i naprawa układu podawania filamentu\n(ślizganie filamentu, nieregularne podawanie)',
+      id: '3d-electronics',
+      title: 'Elektronika, zasilanie i czujniki',
+      items: [
+        { service: 'Naprawa płyty głównej\n(brak reakcji, resetowanie lub błędy sterowania)' },
+        { service: 'Wymiana płyty głównej\n(uszkodzona elektronika sterująca)' },
+        { service: 'Naprawa zasilacza\n(brak zasilania lub wyłączanie się drukarki)' },
+        { service: 'Wymiana zasilacza\n(uszkodzony zasilacz — naprawa nieopłacalna lub niemożliwa)' },
+        { service: 'Wymiana czujników i krańcówek\n(błędy osi, bazowania lub poziomowania)' },
+        { service: 'Naprawa okablowania i złączy\n(przerywanie pracy, zaniki sygnału lub niestabilność)' },
+        { service: 'Naprawa panelu sterowania\n(brak obrazu, dotyku lub reakcji panelu)' },
+        { service: 'Wymiana ekranu / panelu sterowania\n(pęknięty ekran, martwy dotyk lub uszkodzony moduł panelu)' },
+      ],
     },
     {
-      service: 'Naprawa systemu chłodzenia (wentylatory, kanały)\n(przegrzewanie, deformacje wydruku)',
+      id: '3d-calibration',
+      title: 'Kalibracja i jakość druku',
+      items: [
+        { service: 'Kalibracja i poziomowanie stołu\n(problemy z pierwszą warstwą, słaba przyczepność)' },
+        { service: 'Kalibracja ekstrudera i przepływu\n(niedolewanie, przelewanie lub nierówna ekstruzja)' },
+        { service: 'Kalibracja retrakcji\n(nitkowanie, wycieki filamentu podczas ruchów jałowych)' },
+        { service: 'Kalibracja osi i geometrii drukarki\n(przekoszenia, błędy wymiarów lub przesunięcia warstw)' },
+        { service: 'Kalibracja PID temperatury\n(wahania temperatury hotendu lub stołu)' },
+        { service: 'Kalibracja profilu materiału\n(problemy z drukiem PLA, PETG, ABS, ASA, TPU lub innych materiałów)' },
+      ],
+    },
+    {
+      id: '3d-software',
+      title: 'Oprogramowanie i konfiguracja',
+      items: [
+        { service: 'Aktualizacja firmware\n(błędy oprogramowania lub problemy po aktualizacji)' },
+        { service: 'Instalacja / konfiguracja Marlin lub Klipper\n(konfiguracja sterowania lub zmiana firmware)' },
+        { service: 'Konfiguracja slicera\n(nieprawidłowe parametry lub problemy z przygotowaniem wydruku)' },
+        { service: 'Konfiguracja sieci i zdalnego sterowania\n(OctoPrint, Klipper UI lub dostęp przez sieć)' },
+        { service: 'Backup / przywracanie konfiguracji\n(po awarii, aktualizacji lub wymianie elektroniki)' },
+      ],
+    },
+    {
+      id: '3d-resin',
+      title: 'Drukarki żywiczne SLA / MSLA / DLP',
+      items: [
+        { service: 'Czyszczenie i konserwacja wanny żywicy\n(pozostałości żywicy, zabrudzenia lub problemy z wydrukiem)' },
+        { service: 'Wymiana folii FEP / nFEP\n(uszkodzona, porysowana lub nieszczelna folia)' },
+        { service: 'Kalibracja platformy roboczej\n(wydruk nie przykleja się lub odkleja się podczas pracy)' },
+        { service: 'Wymiana matrycy LCD\n(martwe piksele, brak utwardzania lub uszkodzony ekran)' },
+        { service: 'Naprawa układu UV\n(żywica nie utwardza się lub wydruk jest niepełny)' },
+        { service: 'Wymiana modułu UV\n(zużyte lub uszkodzone diody / matryca LED UV)' },
+        { service: 'Naprawa mechanizmu osi Z\n(problemy z ruchem platformy lub nierówne warstwy)' },
+      ],
+    },
+    {
+      id: '3d-additional',
+      title: 'Modyfikacje i ulepszenia',
+      items: [
+        { service: 'Montaż i konfiguracja auto-levelingu\n(BL-Touch, CR-Touch lub podobny system)' },
+        { service: 'Upgrade ekstrudera\n(direct drive lub wydajniejszy układ podawania)' },
+        { service: 'Upgrade hotendu\n(all-metal lub hotend do wyższych temperatur)' },
+        { service: 'Modyfikacja pod materiały techniczne\n(ABS, ASA, nylon, PC, materiały z włóknem CF/GF)' },
+        { service: 'Montaż dodatkowych czujników i modułów\n(czujnik filamentu, kamera, ADXL, dodatkowe moduły sterujące)' },
+      ],
     },
   ]
 }
 
-const apply3DPrinterElectronicsSubcategory = (sections: PricingSection[]) => {
-  const serviceSection = sections.find(section => section.id === 'naprawy')
-  const electronicsSubcategory = serviceSection?.subcategories?.[1]
-  if (!electronicsSubcategory) return
-  electronicsSubcategory.title = 'Elektronika i sterowanie (płyta główna, czujniki, okablowanie)'
-  electronicsSubcategory.items = [
-    {
-      service: 'Diagnostyka i naprawa płyty głównej\n(błędy systemowe, brak reakcji, resetowanie się drukarki)',
-    },
-    {
-      service: 'Wymiana lub naprawa czujników (endstop, BL-Touch, termistory)\n(błędy osi, problemy z poziomowaniem, błędy temperatury)',
-    },
-    {
-      service: 'Naprawa lub wymiana okablowania i złączy\n(przerywanie pracy, zaniki sygnału, niestabilność)',
-    },
-    {
-      service: 'Naprawa układów zasilania (zasilacz, przewody)\n(brak zasilania, wyłączanie się drukarki)',
-    },
-    {
-      service: 'Wgrywanie, reset i konfiguracja firmware\n(błędy oprogramowania, nieprawidłowe działanie po aktualizacji)',
-    },
-  ]
-}
-
-const apply3DPrinterCalibrationSubcategory = (sections: PricingSection[]) => {
-  const serviceSection = sections.find(section => section.id === 'naprawy')
-  const calibrationSubcategory = serviceSection?.subcategories?.[2]
-  if (!calibrationSubcategory) return
-  calibrationSubcategory.title = 'Kalibracja i jakość druku'
-  calibrationSubcategory.items = [
-    {
-      service: 'Precyzyjna kalibracja poziomowania stołu (manual / auto-bed leveling)\n(problemy z pierwszą warstwą, słaba przyczepność)',
-    },
-    {
-      service: 'Kalibracja ekstrudera (E-steps, flow, retrakcja)\n(nitkowanie, niedolewanie, przelewanie filamentu)',
-    },
-    {
-      service: 'Kalibracja osi i geometrii drukarki\n(przekoszenia, nierówne ściany, przesunięcia warstw)',
-    },
-    {
-      service: 'Testy jakości wydruku i korekta profilu materiału\n(PLA, PETG, ABS, TPU)',
-    },
-    {
-      service: 'Optymalizacja parametrów pod konkretny model / detal\n(druk techniczny, dokładność wymiarowa)',
-    },
-  ]
-}
-
-const apply3DPrinterSoftwareSubcategory = (sections: PricingSection[]) => {
-  const serviceSection = sections.find(section => section.id === 'naprawy')
-  const softwareSubcategory = serviceSection?.subcategories?.[3]
-  if (!softwareSubcategory) return
-  softwareSubcategory.title = 'Oprogramowanie i konfiguracja'
-  softwareSubcategory.items = [
-    {
-      service: 'Instalacja i konfiguracja firmware (Marlin, Klipper, itp.)\n(błędy systemowe, potrzeba aktualizacji lub zmiany funkcji)',
-    },
-    {
-      service: 'Konfiguracja slicera i profili materiałów\n(Cura, PrusaSlicer, Bambu Studio itp.)',
-    },
-    {
-      service: 'Integracja z siecią i zdalne sterowanie (OctoPrint, Klipper UI)\n(zdalny monitoring, sterowanie z telefonu/PC)',
-    },
-    {
-      service: 'Backup i przywracanie ustawień drukarki\n(po awarii, aktualizacji, wymianie elektroniki)',
-    },
-    {
-      service: 'Szkolenie z obsługi i konfiguracji drukarki\n(dla nowych użytkowników lub firm)',
-    },
-  ]
-}
-
-const apply3DPrinterAdditionalSubcategory = (sections: PricingSection[]) => {
-  const serviceSection = sections.find(section => section.id === 'naprawy')
-  const additionalSubcategory = serviceSection?.subcategories?.[4]
-  if (!additionalSubcategory) return
-  additionalSubcategory.title = 'Dodatkowe usługi (tuning i modyfikacje)'
-  additionalSubcategory.items = [
-    {
-      service: 'Montaż i konfiguracja auto-levelingu (BL-Touch, CR-Touch itp.)',
-    },
-    {
-      service: 'Upgrade ekstrudera (direct drive, all-metal hotend)',
-    },
-    {
-      service: 'Modyfikacje pod materiały techniczne (ABS, nylon, CF)\n(komora, chłodzenie, ustawienia)',
-    },
-    {
-      service: 'Usuwanie poważnych zatorów i regeneracja hotendu\n(cold pull, czyszczenie chemiczne, wymiana elementów)',
-    },
-    {
-      service: 'Indywidualne modyfikacje na zamówienie\nwycena indywidualna wg ustaleń',
-    },
+const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
+  const faq = sections.find(section => section.id === 'faq')
+  if (!faq) return
+  faq.subcategories = [
+    { id: 'faq-1', title: 'Jak wygląda proces naprawy drukarki 3D?', items: [], answer: 'Najpierw wykonujemy wstępną diagnozę, następnie pełną diagnostykę urządzenia i podajemy dokładny koszt oraz termin naprawy. Prace rozpoczynamy dopiero po akceptacji Klienta.' },
+    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: 'Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna. Pełna diagnoza również jest bezpłatna przy realizacji naprawy. W przypadku rezygnacji koszt pełnej diagnozy wynosi 150 zł netto.' },
+    { id: 'faq-3', title: 'Ile trwa naprawa?', items: [], answer: 'Większość standardowych napraw wykonujemy w ciągu 1–3 dni roboczych. Czas może się wydłużyć przy złożonych usterkach elektroniki lub konieczności zamówienia części.' },
+    { id: 'faq-4', title: 'Jakie technologie drukarek 3D serwisujecie?', items: [], answer: 'Serwisujemy drukarki filamentowe FDM oraz żywiczne SLA / MSLA / DLP. Zakres napraw zależy od technologii i konstrukcji konkretnego urządzenia.' },
+    { id: 'faq-5', title: 'Jakie marki serwisujecie?', items: [], answer: 'Serwisujemy m.in. Bambu Lab, Prusa, Creality, Anycubic, Elegoo, Zortrax, FlashForge oraz inne popularne marki. Przed przyjęciem możemy potwierdzić możliwość naprawy konkretnego modelu.' },
+    { id: 'faq-6', title: 'Czy warto naprawiać tanią lub starszą drukarkę 3D?', items: [], answer: 'To zależy od rodzaju awarii, ceny części i wartości urządzenia. Po diagnozie informujemy, czy naprawa jest ekonomicznie uzasadniona.' },
+    { id: 'faq-7', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Jeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a części są rozliczane osobno. Ich koszt podajemy przed naprawą.' },
+    { id: 'faq-8', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonane naprawy udzielamy gwarancji od 3 do 12 miesięcy, zależnie od rodzaju pracy i zastosowanych części.' },
+    { id: 'faq-9', title: 'Czy muszę dostarczyć drukarkę do serwisu?', items: [], answer: 'Nie musisz. Jeśli możesz bezpiecznie przewieźć urządzenie, możesz dostarczyć je samodzielnie. Jeśli transport jest utrudniony, możesz zamówić odbiór zgodnie z cennikiem.' },
+    { id: 'faq-10', title: 'Dlaczego drukarka nie podaje filamentu?', items: [], answer: 'Przyczyną może być zatkana dysza, zabrudzony lub uszkodzony ekstruder, niewłaściwy docisk filamentu, problem z hotendem albo silnikiem podawania.' },
+    { id: 'faq-25', title: 'Drukarka Bambu Lab ma problem z AMS — czy to naprawiacie?', items: [], answer: 'Tak. Serwisujemy systemy AMS i AMS lite, w tym mechanizmy podawania, czujniki filamentu, prowadnice oraz problemy z ładowaniem i przełączaniem materiału.' },
+    { id: 'faq-11', title: 'Dlaczego filament przeskakuje w ekstruderze?', items: [], answer: 'Najczęściej powoduje to zator hotendu, zbyt niska temperatura, nadmierny opór filamentu albo problem z mechanizmem ekstrudera.' },
+    { id: 'faq-12', title: 'Dlaczego pierwsza warstwa nie przykleja się do stołu?', items: [], answer: 'Przyczyną może być nieprawidłowe poziomowanie, zła wysokość dyszy, zabrudzona powierzchnia stołu, niewłaściwa temperatura lub błędne ustawienia pierwszej warstwy.' },
+    { id: 'faq-13', title: 'Dlaczego warstwy przesuwają się podczas druku?', items: [], answer: 'Najczęstsze przyczyny to niewłaściwe napięcie pasków, luzy mechaniczne, problem z prowadnicami, silnikiem krokowym albo zbyt duża prędkość lub przyspieszenie.' },
+    { id: 'faq-14', title: 'Dlaczego na wydruku pojawia się stringing?', items: [], answer: 'Stringing może wynikać z niewłaściwej retrakcji, temperatury, wilgotnego filamentu lub ustawień slicera. Sprawdzamy zarówno mechanikę, jak i parametry druku.' },
+    { id: 'faq-15', title: 'Dlaczego hotend nie nagrzewa się albo pokazuje błędną temperaturę?', items: [], answer: 'Problem może dotyczyć grzałki, termistora, przewodów, płyty sterującej albo konfiguracji firmware.' },
+    { id: 'faq-16', title: 'Dlaczego stół grzewczy nie osiąga temperatury?', items: [], answer: 'Przyczyną może być grzałka stołu, czujnik temperatury, zasilacz, okablowanie albo elektronika sterująca.' },
+    { id: 'faq-17', title: 'Drukarka wydaje nietypowe dźwięki podczas ruchu — co sprawdzacie?', items: [], answer: 'Kontrolujemy paski, napinacze, rolki, łożyska, prowadnice, śruby osi Z oraz silniki krokowe.' },
+    { id: 'faq-18', title: 'Czy problem może wynikać tylko z ustawień slicera lub firmware?', items: [], answer: 'Tak. Nie wszystkie problemy oznaczają awarię mechaniczną. Błędny profil materiału, slicer, firmware lub kalibracja mogą powodować objawy podobne do uszkodzenia drukarki.' },
+    { id: 'faq-19', title: 'Czy konfigurujecie Klipper, Marlin i slicery?', items: [], answer: 'Tak. Wykonujemy instalację i konfigurację firmware, Klipper / Marlin, slicerów, profili materiałów oraz zdalnego sterowania.' },
+    { id: 'faq-20', title: 'Czy wykonujecie modyfikacje i ulepszenia?', items: [], answer: 'Tak. Montujemy m.in. auto-leveling, ulepszone ekstrudery, hotendy, czujniki oraz dodatkowe moduły.' },
+    { id: 'faq-21', title: 'Dlaczego wydruk żywiczny nie trzyma się platformy?', items: [], answer: 'Najczęstsze przyczyny to niewłaściwe poziomowanie platformy, błędny czas ekspozycji, problem z folią FEP/nFEP albo stan żywicy.' },
+    { id: 'faq-22', title: 'Kiedy trzeba wymienić folię FEP / nFEP?', items: [], answer: 'Gdy jest uszkodzona, przebita, mocno porysowana, zmętniała albo powoduje problemy z odrywaniem kolejnych warstw.' },
+    { id: 'faq-23', title: 'Jak rozpoznać uszkodzoną matrycę LCD w drukarce żywicznej?', items: [], answer: 'Typowe objawy to brak utwardzania w części pola roboczego, martwe obszary, pasy lub powtarzające się braki w modelach. Matrycę sprawdzamy przed decyzją o wymianie.' },
+    { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: 'Przed transportem skontaktuj się z nami. W drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę. W urządzeniu żywicznym należy opróżnić zbiornik z żywicy i zabezpieczyć wannę, platformę oraz oś Z.' },
+    { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa drukarki 3D?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 20 zł netto. Przy dłuższej trasie doliczamy 1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
+    { id: 'faq-27', title: 'Jak często wykonywać konserwację drukarki 3D?', items: [], answer: 'Przy codziennym druku zalecamy konserwację co 3–6 miesięcy, a wcześniej, gdy pojawiają się stuki, przesunięcia warstw, problemy z pierwszą warstwą lub nierówna ekstruzja.' },
   ]
 }
 
@@ -137,23 +157,8 @@ export const create3DPrinterPricingSections = (): PricingSection[] => {
 
   apply3DPrinterCleaningSection(sections)
 
-  const repairsSection = sections.find(s => s.id === 'naprawy')
-  if (repairsSection) {
-    // Resetuj podkategorie, aby nie pokazywały się te od laserówek
-    repairsSection.subcategories = [
-      { id: '3d-mechanics', title: '', items: [] },
-      { id: '3d-electronics', title: '', items: [] },
-      { id: '3d-calibration', title: '', items: [] },
-      { id: '3d-software', title: '', items: [] },
-      { id: '3d-additional', title: '', items: [] },
-    ]
-  }
-
-  apply3DPrinterMechanicsSubcategory(sections)
-  apply3DPrinterElectronicsSubcategory(sections)
-  apply3DPrinterCalibrationSubcategory(sections)
-  apply3DPrinterSoftwareSubcategory(sections)
-  apply3DPrinterAdditionalSubcategory(sections)
+  apply3DPrinterRepairsSection(sections)
+  apply3DPrinterFaqSection(sections)
 
   return sections
 }

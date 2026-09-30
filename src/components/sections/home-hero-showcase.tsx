@@ -28,7 +28,16 @@ const SLIDES = [
 // slide-0 coefficient), recalculated for this 1.2 box.
 const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97]
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0]
-const LAPTOP_POSTER ='/images/serwis-laptopow-hero-static-v2.webp'
+// Desktop PC: static picture holds the slide's place, the animation loads only
+// when that slide is next up (see HeroPrinterCarousel).
+const SLIDE_POSTERS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static.webp']
+// Phones get the same PC animation at 483×600 (~450KB instead of ~650KB).
+const MOBILE_SLIDE_ANIMS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-mobile.webp']
+// First open only: light cracked-screen laptop (slide 1 of /uslugi/serwis-laptopow)
+// in front, empty middle H1 line; after ≥2.8s and once the laptop animation is
+// cached it gives way to slide 0 and never returns.
+const OPENING = { src: '/images/laptop-carousel/laptop-carousel-v2-01.webp', minMs: 2800 }
+const OPENING_MID: HeroMid = { group: 'opening', parts: [' ', ''] }
 // Service page opened by a click on the picture or the heading, per slide.
 const SLUGS = [
   'serwis-laptopow',
@@ -50,7 +59,7 @@ export interface HeroMid {
 
 type Mode = 'letters' | 'cycle'
 
-function AnimatedPart({ text, mode, delay = 0 }: { text: string; mode: Mode; delay?: number }) {
+export function AnimatedPart({ text, mode, delay = 0 }: { text: string; mode: Mode; delay?: number }) {
   const [shown, setShown] = useState({ cur: text, prev: null as string | null, gen: 0, mode })
   const [width, setWidth] = useState<number | undefined>(undefined)
   const inRef = useRef<HTMLSpanElement>(null)
@@ -110,13 +119,14 @@ export function HomeHeroShowcase({
   /** "Szybki kontakt" button under the H1 — same as the home CTA section, ~10% larger. */
   cta?: { label: ReactNode; href: string }
 }) {
-  const [active, setActive] = useState(0)
-  const [prevGroup, setPrevGroup] = useState(mids[0].group)
+  // -1 = the one-time opening slide (see OPENING)
+  const [active, setActive] = useState(-1)
+  const [prevGroup, setPrevGroup] = useState(OPENING_MID.group)
   const [mode, setMode] = useState<Mode>('cycle')
-  const mid = mids[active % mids.length]
+  const mid = active < 0 ? OPENING_MID : mids[active % mids.length]
 
   const onActiveChange = (i: number) => {
-    const next = mids[i % mids.length]
+    const next = i < 0 ? OPENING_MID : mids[i % mids.length]
     setMode(next.group === prevGroup ? 'cycle' : 'letters')
     setPrevGroup(next.group)
     setActive(i)
@@ -125,8 +135,9 @@ export function HomeHeroShowcase({
   const second = mid.parts[1] ? ` ${mid.parts[1]}` : ''
   const firstLen = Array.from(mid.parts[0]).length
   // Plain link without prefetch — nothing extra is loaded until the click.
-  const href = `${basePath}/${SLUGS[active % SLUGS.length]}`
-  const label = `${line1} ${mid.parts[0]}${mid.parts[1] ? ` ${mid.parts[1]}` : ''}`
+  const href = `${basePath}/${SLUGS[Math.max(active, 0) % SLUGS.length]}`
+  const labelMid = active < 0 ? mids[0] : mid
+  const label = `${line1} ${labelMid.parts[0]}${labelMid.parts[1] ? ` ${labelMid.parts[1]}` : ''}`
 
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
@@ -139,7 +150,9 @@ export function HomeHeroShowcase({
               slides={SLIDES}
               sizeCoefficients={SIZE_COEFFICIENTS}
               verticalBias={VERTICAL_BIAS}
-              posterSrc={LAPTOP_POSTER}
+              slidePosters={SLIDE_POSTERS}
+              mobileSlideAnims={MOBILE_SLIDE_ANIMS}
+              opening={OPENING}
               onActiveChange={onActiveChange}
             />
           </Link>

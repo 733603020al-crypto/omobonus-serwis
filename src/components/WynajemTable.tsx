@@ -163,13 +163,13 @@ export const WynajemTable = ({
     { label: 'Liczba stron A4 wliczonych w czynsz', plan1: '500 str./mies.', plan2: '1 000 str./mies.', plan3: '2 500 str./mies.' },
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,05 zł', plan2: '0,05 zł', plan3: '0,04 zł' },
     { label: 'Duplex', plan1: '-', plan2: '- / +', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '40', plan3: '60' },
+    { label: 'Prędkość druku do:', plan1: '20', plan2: '40', plan3: '60' },
   ]
 
   // Данные для таблицы Drukarki mono (drukarka-zastepcza) - без строки "Cena wydruku A4 mono" и "Liczba stron A4"
   const tableDataMonoDZ = [
     { label: 'Duplex', plan1: '-' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+    { label: 'Prędkość druku do:', plan1: '40' },
   ]
 
   // Данные для таблицы Drukarki kolor
@@ -178,13 +178,13 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,05 zł', plan2: '0,05 zł', plan3: '0,04 zł' },
     { label: 'Cena wydruku A4 kolor (powyżej limitu)', plan1: '0,25 zł', plan2: '0,20 zł', plan3: '0,20 zł' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '40', plan3: '60' },
+    { label: 'Prędkość druku do:', plan1: '20', plan2: '40', plan3: '60' },
   ]
 
   // Данные для таблицы Drukarki kolor (drukarka-zastepcza) - только один столбец (plan1) и без некоторых строк
   const tableDataKolorDZ = [
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+    { label: 'Prędkość druku do:', plan1: '40' },
   ]
 
   // Данные для таблицы MFU mono
@@ -193,7 +193,7 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,05 zł', plan2: '0,05 zł', plan3: '0,04 zł' },
     { label: 'Skanowanie', plan1: 'gratis', plan2: 'gratis', plan3: 'gratis' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '40', plan3: '60' },
+    { label: 'Prędkość druku do:', plan1: '20', plan2: '40', plan3: '60' },
   ]
 
   // Данные для таблицы MFU kolor
@@ -203,21 +203,21 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 kolor (powyżej limitu)', plan1: '0,25 zł', plan2: '0,20 zł', plan3: '0,20 zł' },
     { label: 'Skanowanie', plan1: 'gratis', plan2: 'gratis', plan3: 'gratis' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '20', plan2: '30', plan3: '40' },
+    { label: 'Prędkość druku do:', plan1: '20', plan2: '30', plan3: '40' },
   ]
 
   // Данные для таблицы MFU mono (drukarka-zastepcza) - только один столбец и без некоторых строк
   const tableDataMfuMonoDZ = [
     { label: 'Skanowanie', plan1: 'gratis' },
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+    { label: 'Prędkość druku do:', plan1: '40' },
   ]
 
   // Данные для таблицы MFU kolor (drukarka-zastepcza) - только один столбец и без некоторых строк
   const tableDataMfuKolorDZ = [
     { label: 'Skanowanie', plan1: 'gratis' },
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '40' },
+    { label: 'Prędkość druku do:', plan1: '40' },
   ]
 
   // Данные для таблицы Drukarki A3/A4 mono
@@ -225,13 +225,13 @@ export const WynajemTable = ({
     { label: 'Liczba stron A4 wliczonych w czynsz', plan1: '2 500 str./mies.', plan2: '3 750 str./mies.', plan3: '5 000 str./mies.' },
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,04 zł', plan2: '0,04 zł', plan3: '0,03 zł' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+    { label: 'Prędkość druku do:', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
   // Данные для таблицы Drukarki A3/A4 mono (drukarka-zastepcza) - только технические строки, один столбец
   const tableDataA3MonoDZ = [
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+    { label: 'Prędkość druku do:', plan1: '50' },
   ]
 
   // Данные для таблицы Drukarki A3/A4 kolor
@@ -240,13 +240,13 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,04 zł', plan2: '0,04 zł', plan3: '0,03 zł' },
     { label: 'Cena wydruku A4 kolor (powyżej limitu)', plan1: '0,25 zł', plan2: '0,20 zł', plan3: '0,18 zł' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+    { label: 'Prędkość druku do:', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
   // Данные для таблицы Drukarki A3/A4 kolor (drukarka-zastepcza) - только технические строки, один столбец
   const tableDataA3KolorDZ = [
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+    { label: 'Prędkość druku do:', plan1: '50' },
   ]
 
   // Данные для таблицы MFU A3/A4 mono
@@ -255,14 +255,14 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 mono (powyżej limitu)', plan1: '0,04 zł', plan2: '0,04 zł', plan3: '0,03 zł' },
     { label: 'Skanowanie', plan1: 'gratis', plan2: 'gratis', plan3: 'gratis' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+    { label: 'Prędkość druku do:', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
   // Данные для таблицы MFU A3/A4 mono (drukarka-zastepcza) - только технические строки, без заголовка "Cena wydruku format A3", один столбец
   const tableDataA3MfuMonoDZ = [
     { label: 'Skanowanie', plan1: 'gratis' },
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+    { label: 'Prędkość druku do:', plan1: '50' },
   ]
 
   // Данные для таблицы MFU A3/A4 kolor
@@ -272,7 +272,7 @@ export const WynajemTable = ({
     { label: 'Cena wydruku A4 kolor (powyżej limitu)', plan1: '0,16 zł', plan2: '0,16 zł', plan3: '0,15 zł' },
     { label: 'Skanowanie', plan1: 'gratis', plan2: 'gratis', plan3: 'gratis' },
     { label: 'Duplex', plan1: '+', plan2: '+', plan3: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50', plan2: '60', plan3: '90' },
+    { label: 'Prędkość druku do:', plan1: '50', plan2: '60', plan3: '90' },
   ]
 
   // Данные для таблицы MFU A3/A4 kolor (drukarka-zastepcza) - только технические строки, без заголовка "Cena wydruku format A3"
@@ -280,7 +280,7 @@ export const WynajemTable = ({
   const tableDataA3MfuKolorDZ = [
     { label: 'Skanowanie', plan1: 'gratis' },
     { label: 'Duplex', plan1: '+' },
-    { label: 'Prędkość druku do: (str./min)', plan1: '50' },
+    { label: 'Prędkość druku do:', plan1: '50' },
   ]
 
   let tableData =
@@ -694,10 +694,6 @@ export const WynajemTable = ({
                     className="pl-2 pr-2 align-middle text-center border-l-2 border-[#8b7a5a]"
                     style={{ width: isDrukarkaZastepcza ? '45%' : '52%', maxWidth: isDrukarkaZastepcza ? '45%' : '52%', boxSizing: 'border-box', overflow: 'hidden' }}
                   >
-                    {/* Надпись "Czynsz wynajmu [zł/mies.]" убрана из таблицы - теперь она в шапке секции */}
-                    <div className="hidden md:block text-lg font-cormorant font-semibold text-[#ffffff] leading-tight">
-                      {t.rentPriceHeader}
-                    </div>
                   </TableHead>
                 </TableRow>
               </TableHeader>

@@ -5,7 +5,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
-  'outsourcing-it': '/images/03_outsourcing-it.webp',
+  'outsourcing-it': '/images/03_outsourcing-it-v3-static.webp',
   'serwis-drukarek-laserowych': '/images/laser-carousel-v3-01.webp',
   'serwis-drukarek-atramentowych': '/images/atrament-carousel-v3-01.webp',
   'serwis-drukarek-3d': '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
@@ -57,13 +57,30 @@ export const relatedServiceSlugs = [
   'serwis-drukarek-laserowych',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-iglowych',
-  'serwis-plotterow',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
-  'wynajem-drukarek',
-  'drukarka-zastepcza',
+  'serwis-plotterow',
 ]
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
 export const noindexSlugs: string[] = []
+
+// Home cards drawn as one finished picture (parchment + device + light and
+// shadow, no text) — desktop and mobile proportions. The text stays live HTML.
+// Also used by the card grid on /uslugi/naprawa-drukarek.
+const bakedCard = (name: string) => ({ d: `/images/services-card-v2-${name}.webp`, m: `/images/services-card-v2-${name}-mobile.webp` })
+export const serviceCardBaked: Record<string, { d: string; m: string }> = {
+  'serwis-laptopow': bakedCard('laptop'),
+  'serwis-komputerow-stacjonarnych': bakedCard('desktop'),
+  'naprawa-drukarek': bakedCard('printer'),
+  'serwis-drukarek-3d': bakedCard('3d'),
+  'serwis-drukarek-termicznych': bakedCard('label'),
+  'serwis-plotterow': bakedCard('plotter'),
+  'serwis-drukarek-laserowych': bakedCard('laser'),
+  'serwis-drukarek-atramentowych': bakedCard('inkjet3'),
+  'serwis-drukarek-iglowych': bakedCard('needle'),
+  'druk-3d-na-zamowienie': bakedCard('3d-print'),
+  'wynajem-drukarek': bakedCard('rental'),
+  'drukarka-zastepcza': bakedCard('replacement'),
+}
