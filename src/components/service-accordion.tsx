@@ -850,6 +850,13 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-plotterow',
 ])
 
+// Tooltip "Kategorie urządzeń" (side="left", szer. do 900px): Radix przy braku miejsca
+// po lewej nie przesuwa go w poziomie, więc na 1024–1280 wychodził za lewą krawędź.
+// Przesuwamy go w prawo dokładnie o brakującą szerokość (available-width od Radix
+// uwzględnia collisionPadding); gdy miejsca wystarcza (1440+), przesunięcie = 0.
+// Osobna właściwość `translate`, żeby nie kolidowała z `transform` animacji wejścia.
+const SPECIAL_TOOLTIP_FIT_CLASS = '[translate:max(0px,calc(100%_-_var(--radix-tooltip-content-available-width)))_0]'
+
 // Strony drukarek, na których baner promo w sekcji "Konserwacja" ma inny tekst
 // (bez wzmianki o "pastcie termicznej" — dotyczy tylko laptopów/komputerów).
 const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
@@ -2274,7 +2281,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           align: 'center',
                                           sideOffset: -80,
                                           collisionPadding: 16,
-                                          className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                          className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
                                         }
                                         : isParchmentTooltipContentSlug
                                           ? {
@@ -2863,7 +2870,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                     align: 'center' as const,
                                                     sideOffset: -80,
                                                     collisionPadding: 16,
-                                                    className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                                    className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
                                                   }
                                                   : {
                                                     side: 'top' as const,

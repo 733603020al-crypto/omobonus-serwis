@@ -39,7 +39,9 @@ type ColumnFit = { widths: number[]; contents: number[]; fonts: (number | undefi
 // 2) if the row still can't fit, the widest caption alone gets a smaller font
 //    (not below MIN_CAPTION_FONT), just enough to fit;
 // 3) if that's not enough either, the icon–caption gap of every button shrinks evenly
-//    (not below MIN_ICON_GAP). Returns null for "keep equal".
+//    (not below MIN_ICON_GAP);
+// 4) still short: the EDGE_PAD margins shrink evenly (not below 0), so a button never
+//    spills past its column / the screen edge. Returns null for "keep equal".
 function fitColumns(total: number, texts: number[]): ColumnFit | null {
     const n = texts.length
     const base = total / n
@@ -63,6 +65,10 @@ function fitColumns(total: number, texts: number[]): ColumnFit | null {
             contents[i] -= ICON_GAP - gap
             needs[i] -= ICON_GAP - gap
         }
+    }
+    if (shortage() > 0) {
+        const pad = Math.max(0, Math.floor((EDGE_PAD - shortage() / (2 * n)) * 10) / 10)
+        for (let i = 0; i < n; i++) needs[i] -= 2 * (EDGE_PAD - pad)
     }
     const deficit = needs.reduce((s, w) => s + Math.max(0, w - base), 0)
     const slack = needs.reduce((s, w) => s + Math.max(0, base - w), 0)
