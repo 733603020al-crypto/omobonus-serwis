@@ -535,6 +535,12 @@
     animation: serviceHeroImageMobilePulse 7s ease-in-out infinite;
   }
 
+  /* Glow of the pulse spills far outside the box; Chrome counts that spill into the image's LCP area,
+     so the delayed animation swap (~3s) used to become LCP. Clipping at 120px is visually identical. */
+  .page-outsourcing-it .service-hero-image-wrap {
+    clip-path: inset(-120px);
+  }
+
   .service-hero-image-wrap::after {
     display: none;
   }
