@@ -104,6 +104,10 @@ export function LanguageSwitcher() {
           <Link
             key={locale.code}
             href={buildLocaleHref(basePath, locale)}
+            // Смена языка = другой корневой layout, Next всё равно делает полную
+            // перезагрузку страницы, поэтому заранее скачанные данные (и шрифты
+            // кириллицы из них) не используются — prefetch только тратит трафик.
+            prefetch={false}
             onClick={() => setIsOpen(false)}
             aria-label={locale.fullLabel}
             className={`group !flex items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-0.5 select-none ${
@@ -152,6 +156,7 @@ export function LanguageSwitcher() {
               <Link
                 key={locale.code}
                 href={buildLocaleHref(basePath, locale)}
+                prefetch={false}
                 onClick={() => setIsOpen(false)}
                 className={dropdownItemClass(locale.code === currentLocale.code)}
               >

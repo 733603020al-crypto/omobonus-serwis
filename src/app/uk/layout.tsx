@@ -28,6 +28,9 @@ const lora = Lora({
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-lora',
+  // Lora нужна только форме на /kontakt (грузится там сама) — без preload
+  // на остальных страницах, где она не используется.
+  preload: false,
 })
 
 export const metadata: Metadata = {

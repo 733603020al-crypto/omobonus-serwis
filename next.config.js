@@ -49,6 +49,9 @@ const nextConfig = {
   // том же порядке, поэтому вид страниц не меняется.
   experimental: {
     inlineCss: true,
+    // Корневая 404 как app/global-not-found.tsx: иначе app/not-found.tsx
+    // вместе со всем globals.css встраивается в данные каждой страницы.
+    globalNotFound: true,
   },
 
   async headers() {

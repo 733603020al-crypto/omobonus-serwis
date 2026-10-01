@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
 import { cn } from '@/lib/utils'
@@ -162,6 +162,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -194,6 +195,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
   const contactHref = `${nav.prefix}/kontakt`
+  const prefetchHome = () => {
+    if (pathname !== homeHref) router.prefetch(homeHref)
+  }
   const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`)
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
@@ -283,6 +287,12 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       {/* Logo */}
       <Link
         href={homeHref}
+        // Без prefetch при появлении на экране (иначе данные главной ~43 КБ
+        // качаются вместе с первым экраном каждой страницы); подгружаем их
+        // только по наведению/касанию — переход остаётся быстрым.
+        prefetch={false}
+        onMouseEnter={prefetchHome}
+        onTouchStart={prefetchHome}
         className="group z-10 flex h-full items-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(191,167,106,0.30)]"
         onClick={(e) => {
           if (pathname === homeHref) {

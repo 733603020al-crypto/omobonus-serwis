@@ -3,7 +3,10 @@ import Link from 'next/link'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 
-/* Korzeń app/not-found.tsx nie ma nadrzędnego layoutu (trzy równoległe
+/* global-not-found (experimental.globalNotFound): renderowana tylko dla
+   nieistniejących adresów. Jako app/not-found.tsx trafiała (razem z całym
+   globals.css, ~170 KB) do danych RSC KAŻDEJ strony.
+   Korzeń app nie ma nadrzędnego layoutu (trzy równoległe
    layouty PL/RU/UK to osobne "root layouts" przez route groups) — dlatego
    ta strona musi sama zdefiniować <html>/<body> i podpiąć czcionki/globals.css,
    dokładnie tak jak robi to każdy z trzech layoutów językowych. Obsługuje
