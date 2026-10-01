@@ -13,6 +13,8 @@ import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
+import { getServiceDisplayPricing } from '@/lib/services-pricing'
+import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import GoogleReviews from '@/components/google-reviews'
 import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services-card-classes'
 import { serviceCardBaked as CARD_BAKED, relatedServiceSlugs } from '@/lib/services-meta-shared'
@@ -692,7 +694,13 @@ export function ServicePageTemplate({
           </section>
         ) : (
           <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
-            <ServiceAccordion service={service} locale={locale} />
+            {/* Ceny i słownik liczone tu, na serwerze — do przeglądarki trafia tylko ta usługa i ten język. */}
+            <ServiceAccordion
+              service={service}
+              locale={locale}
+              t={serviceAccordionI18n[locale]}
+              pricing={getServiceDisplayPricing(service.slug, service.pricingSections, locale)}
+            />
             <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} />
           </section>
         )}

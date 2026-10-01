@@ -9,8 +9,8 @@ import manifest from '@/config/manifest'
 import { getSubcategoryVisual, NAPRAWY_PLACEHOLDER_ICON } from '@/config/service-visuals'
 import { DEFAULT_PRICE_TOOLTIP, REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-layout-constants'
 import type { ServiceData } from '@/lib/services-data'
-import { getDisplayPrice, getDisplayDuration } from '@/lib/services-pricing'
-import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
+import type { ServiceDisplayPricing } from '@/lib/services-pricing'
+import type { ServiceAccordionDict } from '@/lib/i18n/service-accordion'
 import {
   Accordion,
   AccordionContent,
@@ -901,14 +901,26 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
   'druk-3d-na-zamowienie',
 ])
 
-const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
+// t i pricing przychodzą z serwera (service-page-template): słownik tylko
+// bieżącego języka i gotowe ceny/terminy tej jednej usługi — bez całego
+// services-pricing-data.ts i słowników 3 języków w JS przeglądarki.
+const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing }) => {
+  const lookupPrice = (path: string) => {
+    const value = pricing.price[path]
+    if (value === undefined) throw new Error(`[services-pricing] Нет цены в migratedPrice для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
+    return value
+  }
+  const lookupDuration = (path: string) => {
+    const value = pricing.duration[path]
+    if (value === undefined) throw new Error(`[services-pricing] Нет срока в migratedDuration для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
+    return value
+  }
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
   const useWarmSectionIcons = isWarmParchment
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
   const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
-  const t = serviceAccordionI18n[locale]
   // Ikonka „i” z dymkiem „Cena netto” — ten sam dymek co przy nagłówku ceny (serwis-laptopow):
   // telefon — kliknięcie (Popover), desktop — najechanie (Tooltip).
   const nettoInfoIcon = (
@@ -3289,7 +3301,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       </colgroup>
                                       <TableBody>
                                         {subcategory.items.map((item, idx) => {
-                                          const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
+                                          const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
                                           return (
                                           <TableRow
                                             key={idx}
@@ -3329,8 +3341,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       renderMobileServiceRow(
                                         {
                                           ...item,
-                                          price: getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale),
-                                          duration: getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale),
+                                          price: lookupPrice(`${section.id}.${subcategory.id}.${idx}`),
+                                          duration: lookupDuration(`${section.id}.${subcategory.id}.${idx}`),
                                         },
                                         idx,
                                         idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja'),
@@ -3361,8 +3373,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     )}
                                     <TableBody>
                                       {subcategory.items.map((item, idx) => {
-                                        const displayPrice = getDisplayPrice(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
-                                        const displayDuration = getDisplayDuration(service.slug, `${section.id}.${subcategory.id}.${idx}`, locale)
+                                        const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
+                                        const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
                                         return (
                                         <TableRow
                                           key={idx}
@@ -3541,8 +3553,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           const row = renderMobileServiceRow(
                             {
                               ...item,
-                              price: getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale),
-                              duration: getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale),
+                              price: lookupPrice(`${section.id}.items.${idx}`),
+                              duration: lookupDuration(`${section.id}.items.${idx}`),
                             },
                             idx,
                             idx === 0 && section.id !== 'dojazd' && !(isRepairAccordionLayout && section.id === 'konserwacja'),
@@ -3577,8 +3589,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           </colgroup>
                           <TableBody>
                             {section.items?.map((item, idx) => {
-                              const displayPrice = getDisplayPrice(service.slug, `${section.id}.items.${idx}`, locale)
-                              const displayDuration = getDisplayDuration(service.slug, `${section.id}.items.${idx}`, locale)
+                              const displayPrice = lookupPrice(`${section.id}.items.${idx}`)
+                              const displayDuration = lookupDuration(`${section.id}.items.${idx}`)
                               return (
                               <TableRow
                                 key={idx}
