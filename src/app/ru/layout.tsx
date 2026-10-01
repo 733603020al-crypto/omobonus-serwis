@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
@@ -22,16 +22,6 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
-const lora = Lora({
-  weight: ['400', '600'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-lora',
-  // Lora нужна только форме на /kontakt (грузится там сама) — без preload
-  // на остальных страницах, где она не используется.
-  preload: false,
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
@@ -126,7 +116,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="ru"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
@@ -14,7 +14,8 @@ import { ScrollToTop } from '@/components/ScrollToTop'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
+  // latin-ext: polskie znaki (ą ę ł ś ż) w nagłówkach — od razu w preload
+  subsets: ['latin', 'latin-ext'],
   display: 'swap',
   variable: '--font-cormorant',
 })
@@ -24,17 +25,6 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-})
-
-/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
-const lora = Lora({
-  weight: ['400', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-lora',
-  // Lora нужна только форме на /kontakt (грузится там сама) — без preload
-  // на остальных страницах, где она не используется.
-  preload: false,
 })
 
 /* =========================
@@ -142,7 +132,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pl"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

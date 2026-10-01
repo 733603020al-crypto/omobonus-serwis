@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { lora } from './contact-font'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
 
@@ -362,7 +363,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   return (
     <section
       id="formularz"
-      className={`relative ${bare ? 'pt-2 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
+      className={`${lora.variable} relative ${bare ? 'pt-2 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
 
     >
 
