@@ -14,7 +14,7 @@ import PrintedPartsTicker from '@/components/printed-parts-ticker'
 import type { ServiceData } from '@/lib/services-data'
 import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import GoogleReviews from '@/components/google-reviews'
-import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services'
+import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services-card-classes'
 import { serviceCardBaked as CARD_BAKED, relatedServiceSlugs } from '@/lib/services-meta-shared'
 import { PrinterHubCarousel, PrinterHubMid } from '@/components/printer-hub-hero'
 

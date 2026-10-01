@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useNearViewport } from '@/lib/use-near-viewport'
+import { ORIENT_CLASSES, EDGE_CLASSES, CORNER_CLASSES } from './services-card-classes'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { FadeSlideP } from '@/components/ui/fade-slide-p'
@@ -31,35 +32,6 @@ const CARD_DEVICE: Record<string, { src: string; w: number; h: number; cls: stri
   'drukarka-zastepcza': { src: '/images/drukarka-zastepcza-card-device.webp', w: 400, h: 255, cls: 'tech-printer' },
 }
 
-// Written out as literal strings (not built via template interpolation) so
-// Tailwind's static content scanner can actually find them — a class name
-// assembled as `zakres-edge-${x}` is invisible to that scanner and the
-// whole custom @layer utilities rule gets silently purged from the CSS
-// build even though the DOM ends up with the right class name.
-export const ORIENT_CLASSES = [
-  'zakres-orient-normal',
-  'zakres-orient-flipx',
-  'zakres-orient-flipy',
-  'zakres-orient-rotate180',
-]
-export const EDGE_CLASSES = [
-  'zakres-edge-a',
-  'zakres-edge-b',
-  'zakres-edge-c',
-  'zakres-edge-d',
-  'zakres-edge-e',
-  'zakres-edge-f',
-  'zakres-edge-g',
-  'zakres-edge-h',
-]
-// '' = corner-none (no ::after at all — 4 of the 10 cards use this)
-export const CORNER_CLASSES = [
-  '',
-  'zakres-corner-tl',
-  'zakres-corner-tr',
-  'zakres-corner-bl',
-  'zakres-corner-br',
-]
 // Homepage-only display order (doesn't touch services-data.ts, so sitemap,
 // header dropdown and the related-services widget keep their own order).
 const HOME_ORDER = [
