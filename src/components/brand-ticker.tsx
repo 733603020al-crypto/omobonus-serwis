@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type CSSProperties } from "react"
 import Image from "next/image"
 import { LOGO_METRICS } from "@/lib/brand-logo-metrics"
 
@@ -278,41 +278,13 @@ export default function BrandTicker({ brandNames, compact, muted }: { brandNames
         <div
           ref={trackRef}
           className="flex items-center brand-ticker-track"
-          style={{ gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s` }}
+          style={{ gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s`, "--brand-ticker-shift": `-${toPercent}%`, "--brand-ticker-play": durationSec > 0 ? "running" : "paused" } as CSSProperties}
         >
           {Array.from({ length: copies }).map((_, i) => (
             <BrandGroup key={i} displayBrands={displayBrands} compact={compact} muted={muted} ariaHidden={i > 0} />
           ))}
         </div>
       </div>
-      <style>{`
-        .brand-ticker-track {
-          animation-name: brand-ticker-scroll;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-play-state: ${durationSec > 0 ? 'running' : 'paused'};
-        }
-        @keyframes brand-ticker-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-${toPercent}%); }
-        }
-        @media (min-width: 768px) {
-          .brand-ticker-logo-muted {
-            opacity: 0.75;
-            filter: saturate(0.8) brightness(0.9);
-            transition-property: opacity, filter;
-          }
-          .brand-ticker-logo-muted:hover {
-            opacity: 1;
-            filter: saturate(1) brightness(1);
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .brand-ticker-track {
-            animation-play-state: paused;
-          }
-        }
-      `}</style>
     </section>
   )
 }

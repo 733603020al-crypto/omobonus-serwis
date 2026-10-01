@@ -3924,3 +3924,97 @@
   .cky-consent-container .cky-notice-btn-wrapper .cky-btn-customize,
   .cky-consent-container .cky-notice-btn-wrapper .cky-btn-reject { flex: 1 1 0 !important; width: auto !important; min-width: 0 !important; }
 }
+
+/* Pasek z przewijanymi logo marek (brand-ticker.tsx). Stałe reguły tutaj, a nie w <style> komponentu:
+   wstawienie arkusza z @keyframes w czasie działania przelicza style całej strony.
+   Przesunięcie pętli i start animacji ustawia komponent przez zmienne CSS. */
+.brand-ticker-track {
+  animation-name: brand-ticker-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: var(--brand-ticker-play, paused);
+}
+@keyframes brand-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--brand-ticker-shift, -50%)); }
+}
+@media (min-width: 768px) {
+  .brand-ticker-logo-muted {
+    opacity: 0.75;
+    filter: saturate(0.8) brightness(0.9);
+    transition-property: opacity, filter;
+  }
+  .brand-ticker-logo-muted:hover {
+    opacity: 1;
+    filter: saturate(1) brightness(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-ticker-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Animacje ikon dolnego paska na telefonie (MobileActionBar.tsx) — z tego samego powodu co wyżej. */
+@keyframes dot1-appear {
+    0%, 6%    { opacity: 0; transform: scale(0.4); }
+    9%        { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+@keyframes dot2-appear {
+    0%, 25%   { opacity: 0; transform: scale(0.4); }
+    28%       { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+@keyframes dot3-appear {
+    0%, 44%   { opacity: 0; transform: scale(0.4); }
+    47%       { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+
+.bar-dot-1 { animation: dot1-appear 7.5s ease-in-out infinite; }
+.bar-dot-2 { animation: dot2-appear 7.5s ease-in-out infinite; }
+.bar-dot-3 { animation: dot3-appear 7.5s ease-in-out infinite; }
+
+.bar-pen { animation: pen-write 7.5s ease-in-out infinite; }
+
+@keyframes pen-write {
+    0%        { transform: translate(-2px, 11px) rotate(3deg); animation-timing-function: ease-in; }
+    3%        { transform: translate(1px, 7px) rotate(-4deg); animation-timing-function: ease-out; }
+    6%, 19%   { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+    22%       { transform: translate(9px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+    25%, 38%  { transform: translate(6px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+    41%       { transform: translate(15px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+    44%, 85%  { transform: translate(12px, 9px) rotate(-1deg); }
+    100%      { transform: translate(-2px, 11px) rotate(3deg); }
+}
+
+@keyframes bar-ripple {
+    0%   { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2); opacity: 0; }
+}
+@keyframes bar-shake-periodic {
+    0%     { transform: rotate(0deg); }
+    2.14%  { transform: rotate(-12deg); }
+    4.29%  { transform: rotate(12deg); }
+    6.43%  { transform: rotate(-12deg); }
+    8.57%  { transform: rotate(12deg); }
+    10.71% { transform: rotate(0deg); }
+    100%   { transform: rotate(0deg); }
+}
+.bar-ripple {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    background: rgba(28,110,67,0.4);
+    animation: bar-ripple 2s infinite;
+}
+.bar-ripple.delay { animation-delay: 1s; }
+.bar-call-icon { animation: bar-shake-periodic 5.6s ease-in-out infinite; }
