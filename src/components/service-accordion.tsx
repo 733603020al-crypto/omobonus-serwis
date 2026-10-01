@@ -1629,15 +1629,20 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   }, [openFaq, openSection])
 
 
+  // У остальных услуг этих столбцов нет — сбрасываем позиции только при смене
+  // услуги, а не при каждом открытии секции: повторный setState(null) после
+  // рендера заставлял React ещё раз вызвать весь аккордеон без изменений.
+  useEffect(() => {
+    if (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') return
+    setPriceColumnsPosition1(null)
+    setPriceColumnsPosition2(null)
+    setPriceColumnsPosition1DZ(null)
+    setPriceColumnsPosition2DZ(null)
+  }, [service.slug])
+
   // Измерение позиции столбцов цен для позиционирования "Czynsz wynajmu [zł/mies.]"
   useEffect(() => {
-    if (service.slug !== 'wynajem-drukarek' && service.slug !== 'drukarka-zastepcza') {
-      setPriceColumnsPosition1(null)
-      setPriceColumnsPosition2(null)
-      setPriceColumnsPosition1DZ(null)
-      setPriceColumnsPosition2DZ(null)
-      return
-    }
+    if (service.slug !== 'wynajem-drukarek' && service.slug !== 'drukarka-zastepcza') return
 
     if (service.slug === 'wynajem-drukarek') {
 
