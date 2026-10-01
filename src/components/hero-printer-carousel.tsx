@@ -117,6 +117,7 @@ export function HeroPrinterCarousel({
   posterSrc,
   slidePosters,
   mobileSlideAnims,
+  mobileStills,
   opening,
   onActiveChange,
   introVideo,
@@ -150,6 +151,11 @@ export function HeroPrinterCarousel({
   // with a poster): same frames and timing, lower resolution. Chosen once, when
   // the animation is requested, on screens narrower than md.
   mobileSlideAnims?: (string | undefined)[]
+  // Optional static files for phones (index-matched, never slide 0): on screens
+  // narrower than md the slide is fetched and shown as this file instead of its
+  // animated one (serwis-laptopow: frame 0 of the broken-screen animation).
+  // Chosen once, at the first request; desktop keeps `slides` as is.
+  mobileStills?: (string | undefined)[]
   // Optional one-time opening slide (home hero): shown in front of slide 0 on
   // the first paint only. Slide 0's file starts loading right after mount; the
   // intro leaves (normal advance motion) once minMs has passed since mount AND
@@ -226,6 +232,15 @@ export function HeroPrinterCarousel({
   // Latches true once the first window is cached (flags never go back).
   const ready = aheadLoaded(0, loaded)
 
+  // Phone stand-in of slide i (see mobileStills); slides join the DOM only
+  // after a client-side preload, so this never runs during SSR.
+  const mobileStillsRef = useRef<(string | undefined)[] | null>(null)
+  const stillFor = (i: number) => {
+    if (!mobileStills?.[i]) return undefined
+    mobileStillsRef.current ??= window.matchMedia('(max-width: 767px)').matches ? mobileStills : []
+    return mobileStillsRef.current[i]
+  }
+
   const requestAhead = (from: number) => {
     for (let k = 1; k <= lookahead; k++) {
       const i = (from + k) % slideCount
@@ -233,7 +248,7 @@ export function HeroPrinterCarousel({
       requestedRef.current.add(i)
       // Clip slide: its frame-0 poster, not the static image (the fallback
       // fetches that one itself).
-      const src = i === clipAt && introRef.current !== 'off' ? introVideo!.poster : slidePosters?.[i] ?? slides[i]
+      const src = i === clipAt && introRef.current !== 'off' ? introVideo!.poster : slidePosters?.[i] ?? stillFor(i) ?? slides[i]
       preloadImages([src]).then(() =>
         setLoaded((prev) => {
           if (prev[i]) return prev
@@ -477,7 +492,7 @@ export function HeroPrinterCarousel({
     if (!advanceOnSecondReady || slideCount < 2) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     requestedRef.current.add(1)
-    preloadImages([slides[1]]).then(() =>
+    preloadImages([stillFor(1) ?? slides[1]]).then(() =>
       setLoaded((prev) => {
         if (prev[1]) return prev
         const next = [...prev]
@@ -814,7 +829,7 @@ export function HeroPrinterCarousel({
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
-              src={slidePosters?.[i] ? (animReady[i] ? animSrcRef.current[i] ?? src : slidePosters[i]) : src}
+              src={slidePosters?.[i] ? (animReady[i] ? animSrcRef.current[i] ?? src : slidePosters[i]) : stillFor(i) ?? src}
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}

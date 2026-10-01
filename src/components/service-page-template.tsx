@@ -212,6 +212,8 @@ const LAPTOP_HERO_SLIDES = [
 // Same on-screen laptop size as on the home hero (0.87 in its 1.2 box),
 // recalculated for this page's 1.4 box.
 const LAPTOP_SIZE_COEFFICIENTS = LAPTOP_HERO_SLIDES.map(() => (0.87 * 1.2) / 1.4)
+// Phones: the animation's frame 0 instead of the ~520KB animated file.
+const LAPTOP_MOBILE_STILLS = [undefined, '/images/serwis-laptopow-hero-animated-still.webp']
 
 // Carousel pages share the home hero's carousel look: peek, entrance, hover
 // and glow (styles in service-hero.css under .home-hero-carousel-wrap).
@@ -435,6 +437,7 @@ export function ServicePageTemplate({
                           slides={LAPTOP_HERO_SLIDES}
                           variant="home"
                           sizeCoefficients={LAPTOP_SIZE_COEFFICIENTS}
+                          mobileStills={LAPTOP_MOBILE_STILLS}
                           advanceOnSecondReady
                         />
                       ) : slug === 'serwis-komputerow-stacjonarnych' ? (
