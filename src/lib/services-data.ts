@@ -30,6 +30,7 @@ import { createIglowePricingSections } from './services-data-needle'
 import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
+import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
 
 export const services: ServiceData[] = [
   {
@@ -127,6 +128,16 @@ export const services: ServiceData[] = [
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
     description: 'Serwis drukarek 3D we Wrocławiu – naprawa drukarki 3D, kalibracja stołu, regulacja osi oraz poprawa jakości wydruku. Naprawa drukarek 3D FDM i SLA, czyszczenie ekstrudera i hotendu, wymiana części oraz konfiguracja ustawień druku. Serwis drukarek 3D dla firm i pracowni, konfiguracja firmware oraz przygotowanie drukarki do materiałów ABS, PETG i nylon.',
     pricingSections: createDruk3DZamowieniePricingSections(),
+  },
+  {
+    slug: 'serwis-niszczarek',
+    title: 'Serwis i naprawa niszczarek',
+    subtitle: 'Serwis i naprawa niszczarek we Wrocławiu',
+    // Tymczasowo neutralna ikona-placeholder projektu (brak własnej grafiki niszczarek)
+    icon: '/images/accordion-icon-naprawy.webp',
+    description: 'Serwis i naprawa niszczarek.',
+    pricingSections: createNiszczarkiPricingSections(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

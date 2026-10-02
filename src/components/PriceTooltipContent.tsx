@@ -118,6 +118,17 @@ const INKJET_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   features: [] as string[],
 }))
 
+// Категории для страницы "Serwis niszczarek"
+const NISZCZARKI_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
+  ...c,
+  title: ['Mała', 'Biurowa', 'Profesjonalna'][i],
+  description: [
+    'Kompaktowe niszczarki do domu i małego biura, przeznaczone do niewielkich i regularnych ilości dokumentów.',
+    'Niszczarki do regularnej pracy biurowej, dla kilku użytkowników, o większej wydajności i bardziej rozbudowanej konstrukcji.',
+    'Wydajne niszczarki do intensywnej lub ciągłej pracy, dużych ilości dokumentów i zastosowań profesjonalnych.',
+  ][i],
+}))
+
 // Функция для получения категорий устройств в зависимости от страницы
 const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
@@ -134,6 +145,9 @@ const getDeviceCategories = (serviceSlug?: string) => {
   }
   if (serviceSlug === 'serwis-plotterow') {
     return PLOTTER_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-niszczarek') {
+    return NISZCZARKI_DEVICE_CATEGORIES
   }
   return DEVICE_CATEGORIES
 }
@@ -208,6 +222,19 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
+  if (serviceSlug === 'serwis-niszczarek') {
+    switch (categoryTitle) {
+      case 'Mała':
+        return '/images/niszczarki-carousel-v1-01.webp'
+      case 'Biurowa':
+        return '/images/niszczarki-carousel-v1-04.webp'
+      case 'Profesjonalna':
+        return '/images/niszczarki-carousel-v2-06.webp'
+      default:
+        return ''
+    }
+  }
+
   // serwis-drukarek-laserowych (default categories)
   switch (categoryTitle) {
     case 'Drukarka domowa':
@@ -236,7 +263,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
   const tooltipContentRef = useRef<HTMLDivElement | null>(null)
   // Same backing as the header "Usługi" mega menu (parchment + black/55, gold
   // border, shadow). All four pages with this popup.
-  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow'
+  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek'
   // golden back light behind the category pictures — temporarily off; to enable: laser page only
   const backlit = false as boolean // service.slug === 'serwis-drukarek-laserowych'
 
@@ -301,6 +328,8 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 ? t.deviceCategoriesDescription.serwisPlotterow
                 : service.slug === 'serwis-drukarek-atramentowych'
                 ? t.deviceCategoriesDescription.serwisDrukarekAtramentowych
+                : service.slug === 'serwis-niszczarek'
+                ? t.deviceCategoriesDescription.serwisNiszczarek
                 : t.deviceCategoriesDescription.default}
           </p>
           <div className="mt-1 flex items-center justify-center gap-1">

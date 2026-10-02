@@ -1,6 +1,11 @@
 import type { ServicePageLabels } from '@/components/service-page-template'
 
 export const headings: Record<string, { h1: string; h2?: string }> = {
+  'serwis-niszczarek': {
+    h1: 'Serwis i naprawa niszczarek we Wrocławiu',
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
+  },
+
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
     h2: '(Zebra, TSC, Toshiba TEC, Honeywell, GoDEX, SATO, Brother, DYMO, Citizen, BIXOLON, Epson, cab, Star Micronics, OKI, Argox, …)',
@@ -71,6 +76,12 @@ export type SeoBlock = {
 }
 
 export const seoBlocks: Record<string, SeoBlock> = {
+  // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  'serwis-niszczarek': {
+    items: ['Świadczymy usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
+      'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',
+      'Naprawa, czyszczenie, konfiguracja Wi-Fi, problemy z drukowaniem, zacinaniem papieru i jakością wydruku.',]
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -142,6 +153,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
 
 // Opis alternatywny obrazu hero dla każdej usługi
 export const imageAlt: Record<string, string> = {
+  'serwis-niszczarek': 'Serwis i naprawa niszczarek',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -169,6 +181,11 @@ export const subServiceTitles: Record<string, string> = {
 }
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
+  // Tymczasowe neutralne metadane — docelowy tekst SEO zostanie dodany osobno
+  'serwis-niszczarek': {
+    title: 'Serwis i naprawa niszczarek',
+    description: 'Serwis i naprawa niszczarek we Wrocławiu — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle i inne.',
+  },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
     description: '✔ Serwis i naprawa laptopów wszystkich marek we Wrocławiu ✔ Wymiana matrycy, dysku, baterii, klawiatury ✔ Diagnoza w 15 min ✔ Umów się już dziś! ☎ 793 759 262',

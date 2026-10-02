@@ -49,6 +49,7 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescription: string
   konserwacjaPromoTitleAlt: string
   konserwacjaPromoDescriptionAlt: string
+  konserwacjaPromoDescriptionNiszczarki: string
   konserwacjaPromoTitleInkjet: string
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaIncludedNote: string
@@ -62,6 +63,7 @@ export interface ServiceAccordionDict {
     serwisDrukarek3d: string
     serwisPlotterow: string
     serwisDrukarekAtramentowych: string
+    serwisNiszczarek: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -147,6 +149,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
     konserwacjaPromoTitleAlt: '„TYLKO PRZEDMUCHANIE?”',
     konserwacjaPromoDescriptionAlt: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację urządzenia.',
+    konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację niszczarki.',
     konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
@@ -160,6 +163,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Cena zależy od wielkości i konstrukcji drukarki: pierwsza – mała, druga – średnia, trzecia – duża drukarka 3D.',
       serwisPlotterow: 'Cena zależy od wielkości i konstrukcji plotera: pierwsza – mały, druga – średni, trzecia – duży.',
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
+      serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -238,6 +242,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повне обслуговування системи охолодження',
     konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
+    konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування знищувача.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
@@ -251,6 +256,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Ціна залежить від розміру та конструкції принтера: перша — малий, друга — середній, третя — великий 3D-принтер.',
       serwisPlotterow: 'Ціна залежить від розміру та конструкції плотера: перша — малий, друга — середній, третя — великий.',
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
+      serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -275,6 +281,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-niszczarek
+      'Mała': { title: 'Мала', description: 'Компактні знищувачі документів для дому та невеликого офісу, розраховані на невеликі обсяги документів при регулярному використанні.', features: [] },
+      'Biurowa': { title: 'Офісна', description: 'Знищувачі для регулярної офісної роботи кількох користувачів, з вищою продуктивністю та складнішою конструкцією.', features: [] },
+      'Profesjonalna': { title: 'Професійна', description: 'Продуктивні знищувачі для інтенсивної або безперервної роботи, великих обсягів документів і професійного використання.', features: [] },
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні лазерні принтери A4 простішої конструкції, призначені для домашнього використання та невеликих навантажень.', features: [] },
       'Drukarka biurowa': { title: 'Офісний принтер', description: 'Принтери та багатофункціональні пристрої A4/A3 для регулярної роботи, зі складнішим трактом подачі паперу та додатковими модулями.', features: [] },
       'Drukarka biznesowa': { title: 'Бізнес-принтер', description: 'Великі та складні пристрої A4/A3 для інтенсивної роботи, часто з кількома лотками, дуплексом, ADF і фінішними модулями.', features: [] },
@@ -349,6 +359,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
     konserwacjaPromoTitleAlt: '«ТОЛЬКО ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание устройства.',
+    konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание уничтожителя.',
     konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
@@ -362,6 +373,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Цена зависит от размера и конструкции принтера: первая — малый, вторая — средний, третья — большой 3D-принтер.',
       serwisPlotterow: 'Цена зависит от размера и конструкции плоттера: первая — малый, вторая — средний, третья — большой.',
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
+      serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
@@ -386,6 +398,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-niszczarek
+      'Mała': { title: 'Малая', description: 'Компактные уничтожители документов для дома и небольшого офиса, рассчитанные на небольшие объёмы документов при регулярном использовании.', features: [] },
+      'Biurowa': { title: 'Офисная', description: 'Уничтожители для регулярной офисной работы нескольких пользователей, с более высокой производительностью и более сложной конструкцией.', features: [] },
+      'Profesjonalna': { title: 'Профессиональная', description: 'Производительные уничтожители для интенсивной или непрерывной работы, больших объёмов документов и профессионального применения.', features: [] },
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные лазерные принтеры A4 более простой конструкции, предназначенные для домашнего использования и небольших нагрузок.', features: [] },
       'Drukarka biurowa': { title: 'Офисный принтер', description: 'Принтеры и многофункциональные устройства A4/A3 для регулярной работы, с более сложным трактом подачи бумаги и дополнительными модулями.', features: [] },
       'Drukarka biznesowa': { title: 'Бизнес-принтер', description: 'Крупные и сложные устройства A4/A3 для интенсивной работы, часто с несколькими лотками, дуплексом, ADF и финишными модулями.', features: [] },

@@ -843,6 +843,7 @@ const scrollSubcategoryToTop = (
 
 const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
+  'serwis-niszczarek',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
@@ -861,6 +862,7 @@ const SPECIAL_TOOLTIP_FIT_CLASS = '[translate:max(0px,calc(100%_-_var(--radix-to
 // (bez wzmianki o "pastcie termicznej" — dotyczy tylko laptopów/komputerów).
 const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-drukarek-laserowych',
+  'serwis-niszczarek',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
@@ -1048,7 +1050,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const [priceColumnsPosition1DZ, setPriceColumnsPosition1DZ] = useState<{ left: number; width: number } | null>(null)
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
-  const isLaserService = service.slug === 'serwis-drukarek-laserowych'
+  // serwis-niszczarek: TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek'
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
   const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
@@ -1060,7 +1063,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
   const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1877,7 +1880,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
-                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
                                 ? '/images/accordion-icon-czyszczenie-termiczne-v2.webp'
@@ -1903,7 +1906,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-naprawy-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
                                 ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
-                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek'
                                 ? '/images/accordion-icon-naprawy-laser-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isDesktopComputerService
                                 ? '/images/accordion-icon-komputer-naprawy.webp'
@@ -2419,12 +2422,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                     </div>
                   ) : undefined}
                   data-parchment-list-content={usesParchmentList ? 'true' : undefined}
-                  // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
-                  // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
-                  // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
-                  // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
-                  // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
-                  forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
+                  // Treść każdej sekcji (cennik, naprawy, FAQ) jest zawsze w DOM — także
+                  // zamknięta — żeby Google widział teksty bez klikania. Zamknięty stan
+                  // ukrywa ją CSS-em (AccordionContent: data-[state=closed]:!hidden).
+                  forceMount
                   style={isRepairAccordionLayout && section.id === 'konserwacja' ? (isOutsourcingService ? { paddingBottom: 16 } : { paddingBottom: 16, marginTop: -8 }) : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
@@ -2446,8 +2447,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                       ? "md:pt-3 pt-0"
                       : isRepairAccordionLayout && ['diagnoza', 'dojazd', 'konserwacja', 'naprawy'].includes(section.id)
                         ? "pt-[15px]"
-                        : "pt-3",
-                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
+                        : "pt-3"
                   )}
                 >
                   {section.subcategories ? (
@@ -2550,13 +2550,13 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                   const iconSrc = subVisual(subcategory)?.icon ?? NAPRAWY_PLACEHOLDER_ICON
                                   return (
                                     <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
-                                      <img src={iconSrc} alt="" aria-hidden="true" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                      <img src={iconSrc} alt="" aria-hidden="true" loading="lazy" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                     </div>
                                   )
                                 })()}
                                 {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' && (
                                   <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
-                                    <img src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)} alt="" aria-hidden="true" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                    <img src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)} alt="" aria-hidden="true" loading="lazy" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
                                   </div>
                                 )}
                                 {((service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2') || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
@@ -2934,6 +2934,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                             )}
                           </AccordionTrigger>
                           <AccordionContent
+                            // Jak wyżej: pozycje cennika i odpowiedzi FAQ zawsze w DOM (SEO), zamknięte ukryte CSS-em.
+                            forceMount
                             data-open-header-split-content={usesParchmentList ? 'true' : undefined}
                             data-section-id={isRepairAccordionLayout && isRepairSection ? 'naprawy-nested' : undefined}
                             data-has-table={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
@@ -2948,6 +2950,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 )}
                                 <img
                                   src="/images/contact-form-parchment-mobile-naprawy.webp"
+                                  loading="lazy"
                                   alt=""
                                   aria-hidden="true"
                                   className="md:hidden absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"

@@ -29,6 +29,14 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Заміна тонера',
   ],
 
+  // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  'serwis-niszczarek': [
+    'Застрягає папір',
+    'Блідий друк',
+    'Бруднить сторінки',
+    'Заміна тонера',
+  ],
+
   'serwis-drukarek-atramentowych': [
     'Не друкує',
     'Засохла головка',

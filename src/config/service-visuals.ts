@@ -63,6 +63,8 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika': { icon: '/images/accordion-icon-laser-elektronika.webp' },
     'naprawy-software': { icon: '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp' },
   },
+  // Brak wpisów: wszystkie grupy niszczarek mają neutralną ikonę zastępczą (do wymiany na własne).
+  'serwis-niszczarek': {},
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },
     'naprawy-glowica-platen': { icon: '/images/accordion-icon-termiczne-glowica-platen.webp' },

@@ -103,6 +103,23 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "peopoly", src: "/images/brands/peopoly.webp", listedOnly: true },
   { name: "tronxy", src: "/images/brands/tronxy.webp", listedOnly: true },
   { name: "bcn3d", src: "/images/brands/bcn3d.webp", listedOnly: true },
+  // niszczarki (logo z oficjalnych stron producentów)
+  { name: "fellowes", listedOnly: true },
+  { name: "hsm", src: "/images/brands/hsm.webp", listedOnly: true },
+  { name: "kobra", listedOnly: true },
+  { name: "rexel", listedOnly: true },
+  { name: "ideal", src: "/images/brands/ideal.webp", listedOnly: true },
+  { name: "dahle", src: "/images/brands/dahle.webp", listedOnly: true },
+  { name: "opus", listedOnly: true },
+  { name: "leitz", listedOnly: true },
+  { name: "argo", src: "/images/brands/argo.webp", listedOnly: true },
+  { name: "eba", listedOnly: true },
+  { name: "tracer", listedOnly: true },
+  { name: "genie", listedOnly: true },
+  { name: "olympia", listedOnly: true },
+  { name: "intimus", listedOnly: true },
+  { name: "aurora", listedOnly: true },
+  { name: "peach", src: "/images/brands/peach.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -126,6 +143,8 @@ const LOGO_RATIO: Record<string, number> = {
   "develop": 6.226, "utax": 5.452, "sindoh": 5.435,
   "huawei": 3.839, "lg": 2.161, "gigabyte": 7.363, "razer": 3.427, "honor": 5.113, "xiaomi": 3.645, "medion": 6.855, "dynabook": 7.331, "vaio": 4.524, "chuwi": 4.879, "framework": 7.161,
   "alienware": 0.774, "zotac": 5.129, "corsair": 4.048, "minisforum": 9.331,
+  "fellowes": 4.388, "hsm": 3.383, "kobra": 3.989, "rexel": 1.920, "ideal": 3.939, "dahle": 4.775, "opus": 2.260, "leitz": 4.534,
+  "argo": 2.292, "eba": 5.620, "tracer": 5.800, "genie": 5.973, "olympia": 6.134, "intimus": 3.613, "aurora": 2.698, "peach": 3.450,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

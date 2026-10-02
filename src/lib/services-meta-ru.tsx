@@ -1,6 +1,12 @@
 import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
 export const headingsRu: Record<string, ServicePageHeadings> = {
+  'serwis-niszczarek': {
+    h1: 'Сервис и ремонт уничтожителей документов во Вроцлаве',
+    lines: ['Сервис и ремонт', 'уничтожителей документов', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -66,6 +72,14 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
 }
 
 export const seoBlocksRu: Record<string, { items: string[] }> = {
+  // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  'serwis-niszczarek': {
+    items: [
+      'Оказываем услуги по чистке, обслуживанию, регенерации, ... а также для Oki, Dell, Kyocera, Konica Minolta',
+      'Ваш лазерный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день.',
+      'Ремонт, чистка, настройка Wi-Fi, проблемы с печатью, замятием бумаги и качеством отпечатка.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Также оказываем услуги по чистке, обслуживанию, регенерации, ремонту головки.',
@@ -149,6 +163,7 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
 }
 
 export const imageAltRu: Record<string, string> = {
+  'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -175,6 +190,11 @@ export const subServiceTitlesRu: Record<string, string> = {
 }
 
 export const seoMetadataRu: Record<string, { title: string; description: string }> = {
+  // Временные нейтральные метаданные — итоговый SEO-текст будет добавлен отдельно
+  'serwis-niszczarek': {
+    title: 'Сервис и ремонт уничтожителей документов',
+    description: 'Сервис и ремонт уничтожителей документов во Вроцлаве — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle и другие.',
+  },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
     description: '✔ Сервис и ремонт ноутбуков всех марок во Вроцлаве ✔ Замена матрицы, диска, аккумулятора, клавиатуры ✔ Диагностика за 15 мин ✔ Запишитесь уже сегодня! ☎ 793 759 262',

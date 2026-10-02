@@ -12,6 +12,7 @@ import { printer3dFaq, printer3dKonserwacja, printer3dNaprawy } from './services
 import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from './services-data-uk-plotter'
 import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-uk-wynajem'
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-uk-drukarka-zastepcza'
+import { niszczarkiPricingSectionsUk, NISZCZARKI_PRICE_TOOLTIP_UK } from './services-data-uk-niszczarki'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -211,6 +212,15 @@ export const servicesUk: ServiceData[] = [
         ],
       },
     ],
+  },
+  {
+    slug: 'serwis-niszczarek',
+    title: 'Сервіс і ремонт знищувачів документів',
+    subtitle: 'Сервіс і ремонт знищувачів документів у Вроцлаві',
+    icon: '/images/accordion-icon-naprawy.webp',
+    description: 'Сервіс і ремонт знищувачів документів.',
+    pricingSections: niszczarkiPricingSectionsUk(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP_UK,
   },
   {
     slug: 'wynajem-drukarek',
