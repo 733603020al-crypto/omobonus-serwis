@@ -1,20 +1,24 @@
-import type { ServicePageLabels } from '@/components/service-page-template'
+import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
-export const headingsUk: Record<string, { h1: string; h2?: string }> = {
+export const headingsUk: Record<string, ServicePageHeadings> = {
   'serwis-drukarek-termicznych': {
-    h1: 'Сервіс і ремонт термо- та термотрансферних принтерів етикеток у Вроцлаві',
+    h1: 'Сервіс і ремонт принтерів етикеток у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'принтерів етикеток', 'у Вроцлаві'],
     h2: '(Zebra, TSC, Toshiba TEC, Honeywell, GoDEX, SATO, Brother, DYMO, Citizen, BIXOLON, Epson, cab, Star Micronics, OKI, Argox, …)',
   },
   'serwis-laptopow': {
     h1: 'Сервіс і ремонт ноутбуків у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'ноутбуків', 'у Вроцлаві'],
     h2: '', // '(Microsoft, Dell, HP, Lenovo, Acer, Asus, MSI, Fujitsu, Samsung, Toshiba, Huawei, LG, Gigabyte, Razer, HONOR, Xiaomi, MEDION, Dynabook, VAIO, Panasonic, Framework, CHUWI, …)',
   },
   'naprawa-drukarek': {
-    h1: 'Сервіс принтерів і багатофункціональних пристроїв у Вроцлаві',
+    h1: 'Сервіс і ремонт принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'принтерів', 'у Вроцлаві'],
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'serwis-komputerow-stacjonarnych': {
-    h1: 'Сервіс і ремонт стаціонарних комп\'ютерів у Вроцлаві',
+    h1: 'Сервіс і ремонт стаціонарних комп’ютерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'стаціонарних комп’ютерів', 'у Вроцлаві'],
     h2: '', // '(HP, Dell, Lenovo, Asus, Acer, MSI, Microsoft, Samsung, Gigabyte, Alienware, Fujitsu, Corsair, ZOTAC, MINISFORUM, Framework, …)',
   },
   'outsourcing-it': {
@@ -22,26 +26,32 @@ export const headingsUk: Record<string, { h1: string; h2?: string }> = {
   },
   'serwis-drukarek-laserowych': {
     h1: 'Сервіс і ремонт лазерних принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'лазерних принтерів', 'у Вроцлаві'],
     h2: '(HP, Samsung, Canon, Brother, Xerox, Ricoh, Kyocera, Konica Minolta, Sharp, Lexmark, Pantum, Toshiba, OKI, Epson, Fujifilm, DEVELOP, UTAX, Sindoh, …)',
   },
   'serwis-drukarek-atramentowych': {
-    h1: 'Сервіс струменевих принтерів у Вроцлаві',
+    h1: 'Сервіс і ремонт струменевих принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'струменевих принтерів', 'у Вроцлаві'],
     h2: '(HP, Canon, Epson, Brother, Lexmark, Ricoh, RISO, Xerox, …)',
   },
   'serwis-drukarek-3d': {
     h1: 'Сервіс і ремонт 3D-принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', '3D-принтерів', 'у Вроцлаві'],
     h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HB3D, …)',
   },
   'druk-3d-na-zamowienie': {
     h1: '3D-друк на замовлення у Вроцлаві',
+    lines: ['3D-друк', 'на замовлення', 'у Вроцлаві'],
     h2: '3D-друк за технологією FDM з PLA, PETG, ASA та TPU – запасні частини, прототипи, корпуси, технічні деталі та короткі серії.',
   },
   'serwis-plotterow': {
-    h1: 'Сервіс і ремонт плотерів у Вроцлаві',
+    h1: 'Сервіс і ремонт друкувальних плотерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'друкувальних плотерів', 'у Вроцлаві'],
     h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
   'serwis-drukarek-iglowych': {
-    h1: 'Сервіс матричних (голчастих) принтерів у Вроцлаві',
+    h1: 'Сервіс і ремонт матричних принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'матричних принтерів', 'у Вроцлаві'],
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
   'wynajem-drukarek': {

@@ -259,6 +259,9 @@ const HERO_LINES_PL: Record<string, { mid: string }> = {
 
 export interface ServicePageHeadings {
   h1: string
+  // UK/RU: the same 3 hero lines as HERO_LINES_PL (first / device / city),
+  // so the break points come from the data, not from the browser.
+  lines?: readonly [string, string, string]
   h2?: string
 }
 
@@ -596,6 +599,12 @@ export function ServicePageTemplate({
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                        </>
+                      ) : headings.lines ? (
+                        <>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[1]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
                         </>
                       ) : (
                         headings.h1 || service.title
