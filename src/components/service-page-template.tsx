@@ -156,7 +156,7 @@ const LASER_HERO_SLIDES = [
 // Per-slide real-world size category (medium/small/small/medium/medium/
 // large/large, matching LASER_HERO_SLIDES order 1:1) — same coefficient
 // bands as ATRAMENT_SIZE_COEFFICIENTS above.
-const LASER_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.85, 0.88, 0.95, 0.95]
+const LASER_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.765, 0.88, 0.95, 0.95]
 // Same graduated downward nudge as ATRAMENT_VERTICAL_BIAS: small stays
 // centered, medium gets a light nudge, large gets more.
 const LASER_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
