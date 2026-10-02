@@ -47,11 +47,13 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
   'serwis-plotterow': {
     h1: 'Сервис и ремонт печатающих плоттеров во Вроцлаве',
     lines: ['Сервис и ремонт', 'печатающих плоттеров', 'во Вроцлаве'],
+    fitMobile: true,
     h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
   'serwis-drukarek-iglowych': {
     h1: 'Сервис и ремонт матричных принтеров во Вроцлаве',
     lines: ['Сервис и ремонт', 'матричных принтеров', 'во Вроцлаве'],
+    fitMobile: true,
     h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
   'wynajem-drukarek': {

@@ -47,6 +47,7 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
   'serwis-plotterow': {
     h1: 'Сервіс і ремонт друкувальних плотерів у Вроцлаві',
     lines: ['Сервіс і ремонт', 'друкувальних плотерів', 'у Вроцлаві'],
+    fitMobile: true,
     h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
   'serwis-drukarek-iglowych': {

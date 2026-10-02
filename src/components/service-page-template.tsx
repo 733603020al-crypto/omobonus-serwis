@@ -262,6 +262,9 @@ export interface ServicePageHeadings {
   // UK/RU: the same 3 hero lines as HERO_LINES_PL (first / device / city),
   // so the break points come from the data, not from the browser.
   lines?: readonly [string, string, string]
+  // Phone only: the middle line is a bit too wide for 40px — scale this H1
+  // with the screen so it stays 3 lines, like PL.
+  fitMobile?: boolean
   h2?: string
 }
 
@@ -578,7 +581,7 @@ export function ServicePageTemplate({
                         the phone column at 40px and got split mid-word — scale just this H1 with the
                         screen (≤40px) so the whole word fits. PL: same scale keeps the changing middle
                         line ("drukarek atramentowych") on one line, so the H1 height never jumps. */}
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : ''}`}>
+                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''}`}>
                       {locale === 'pl' && slug === 'naprawa-drukarek' ? (
                         // Middle line swaps with the carousel slide (home hero word animation);
                         // search engines/screen readers get the unchanged H1 text.
