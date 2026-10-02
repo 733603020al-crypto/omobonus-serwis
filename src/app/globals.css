@@ -4018,3 +4018,11 @@
 }
 .bar-ripple.delay { animation-delay: 1s; }
 .bar-call-icon { animation: bar-shake-periodic 5.6s ease-in-out infinite; }
+
+/* Phones: system sans in place of Inter (metric-matched like next/font's Inter Fallback) */
+@font-face{font-family:"Inter Sys";font-weight:100 450;src:local("Roboto"),local("Roboto-Regular"),local("Arial"),local("ArialMT"),local("Helvetica");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@font-face{font-family:"Inter Sys";font-weight:451 550;src:local("Roboto Medium"),local("Roboto-Medium"),local("Arial"),local("ArialMT"),local("Helvetica");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@font-face{font-family:"Inter Sys";font-weight:551 900;src:local("Roboto Bold"),local("Roboto-Bold"),local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@media (max-width: 767px) {
+  html { --font-inter: "Inter Sys", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important; }
+}
