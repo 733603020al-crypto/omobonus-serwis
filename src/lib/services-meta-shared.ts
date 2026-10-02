@@ -76,7 +76,7 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'naprawa-drukarek': bakedCard('printer'),
   'serwis-drukarek-3d': bakedCard('3d'),
   'serwis-drukarek-termicznych': bakedCard('label'),
-  'serwis-plotterow': bakedCard('plotter2'),
+  'serwis-plotterow': bakedCard('plotter4'),
   'serwis-drukarek-laserowych': bakedCard('laser'),
   'serwis-drukarek-atramentowych': bakedCard('inkjet3'),
   'serwis-drukarek-iglowych': bakedCard('needle'),
