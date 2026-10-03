@@ -64,6 +64,7 @@ export interface ServiceAccordionDict {
     serwisPlotterow: string
     serwisDrukarekAtramentowych: string
     serwisNiszczarek: string
+    serwisDrukarekDoKart: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -164,6 +165,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Cena zależy od wielkości i konstrukcji plotera: pierwsza – mały, druga – średni, trzecia – duży.',
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
+      serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -257,6 +259,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Ціна залежить від розміру та конструкції плотера: перша — малий, друга — середній, третя — великий.',
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
+      serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -285,6 +288,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Mała': { title: 'Мала', description: 'Компактні знищувачі документів для дому та невеликого офісу, розраховані на невеликі обсяги документів при регулярному використанні.', features: [] },
       'Biurowa': { title: 'Офісна', description: 'Знищувачі для регулярної офісної роботи кількох користувачів, з вищою продуктивністю та складнішою конструкцією.', features: [] },
       'Profesjonalna': { title: 'Професійна', description: 'Продуктивні знищувачі для інтенсивної або безперервної роботи, великих обсягів документів і професійного використання.', features: [] },
+      // serwis-drukarek-do-kart-plastikowych
+      'Podstawowa': { title: 'Базовий', description: 'Односторонні принтери карток за технологією сублімації (direct-to-card) для простих бейджів і менших тиражів.', features: [] },
+      'Biznesowa': { title: 'Бізнесовий', description: 'Двосторонні принтери для регулярної роботи, часто з кодерами карток (магнітна смуга, чип, RFID) і більшим подавачем.', features: [] },
+      'Retransferowa': { title: 'Ретрансферний', description: 'Просунуті ретрансферні принтери, часто з модулем ламінації, для карток найвищої якості та інтенсивної роботи.', features: [] },
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні лазерні принтери A4 простішої конструкції, призначені для домашнього використання та невеликих навантажень.', features: [] },
       'Drukarka biurowa': { title: 'Офісний принтер', description: 'Принтери та багатофункціональні пристрої A4/A3 для регулярної роботи, зі складнішим трактом подачі паперу та додатковими модулями.', features: [] },
       'Drukarka biznesowa': { title: 'Бізнес-принтер', description: 'Великі та складні пристрої A4/A3 для інтенсивної роботи, часто з кількома лотками, дуплексом, ADF і фінішними модулями.', features: [] },
@@ -374,6 +381,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Цена зависит от размера и конструкции плоттера: первая — малый, вторая — средний, третья — большой.',
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
+      serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
@@ -402,6 +410,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Mała': { title: 'Малая', description: 'Компактные уничтожители документов для дома и небольшого офиса, рассчитанные на небольшие объёмы документов при регулярном использовании.', features: [] },
       'Biurowa': { title: 'Офисная', description: 'Уничтожители для регулярной офисной работы нескольких пользователей, с более высокой производительностью и более сложной конструкцией.', features: [] },
       'Profesjonalna': { title: 'Профессиональная', description: 'Производительные уничтожители для интенсивной или непрерывной работы, больших объёмов документов и профессионального применения.', features: [] },
+      // serwis-drukarek-do-kart-plastikowych
+      'Podstawowa': { title: 'Базовый', description: 'Односторонние принтеры карт по технологии сублимации (direct-to-card) для простых бейджей и небольших тиражей.', features: [] },
+      'Biznesowa': { title: 'Бизнес', description: 'Двусторонние принтеры для регулярной работы, часто с кодерами карт (магнитная полоса, чип, RFID) и большим податчиком.', features: [] },
+      'Retransferowa': { title: 'Ретрансферный', description: 'Продвинутые ретрансферные принтеры, часто с модулем ламинации, для карт высочайшего качества и интенсивной работы.', features: [] },
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные лазерные принтеры A4 более простой конструкции, предназначенные для домашнего использования и небольших нагрузок.', features: [] },
       'Drukarka biurowa': { title: 'Офисный принтер', description: 'Принтеры и многофункциональные устройства A4/A3 для регулярной работы, с более сложным трактом подачи бумаги и дополнительными модулями.', features: [] },
       'Drukarka biznesowa': { title: 'Бизнес-принтер', description: 'Крупные и сложные устройства A4/A3 для интенсивной работы, часто с несколькими лотками, дуплексом, ADF и финишными модулями.', features: [] },

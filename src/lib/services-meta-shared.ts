@@ -4,7 +4,7 @@
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
   // Tymczasowa grafika zastępcza — do wymiany na zdjęcie drukarki kart
-  'serwis-drukarek-do-kart-plastikowych': '/images/termiczne-carousel-v3-01.webp',
+  'serwis-drukarek-do-kart-plastikowych': '/images/niszczarki-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -43,6 +43,7 @@ export const serviceIconSrc: Record<string, string> = {
 export const slugBrands: Record<string, string[]> = {
   // Własna lista niszczarek; marka bez logo w brand-ticker.tsx jest na razie pomijana
   'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach'],
+  'serwis-drukarek-do-kart-plastikowych': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach'], // TYMCZASOWO logotypy niszczarek
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
