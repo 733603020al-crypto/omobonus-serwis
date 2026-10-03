@@ -43,6 +43,12 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Brudzi kartki',
         'Wymiana tonera',
     ],
+    'naprawa-zasilaczy-ups': [
+        'Zacina papier',
+        'Blady wydruk',
+        'Brudzi kartki',
+        'Wymiana tonera',
+    ],
 
     'serwis-drukarek-atramentowych': [
         'Nie drukuje',

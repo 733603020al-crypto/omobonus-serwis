@@ -140,6 +140,16 @@ export const services: ServiceData[] = [
     pricingSections: createNiszczarkiPricingSections(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
   },
+  // Nowa strona w przygotowaniu: kopia serwis-niszczarek (treść/ceny tymczasowe), tylko bezpośredni adres (noindex)
+  {
+    slug: 'naprawa-zasilaczy-ups',
+    title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
+    subtitle: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
+    icon: '/images/accordion-icon-naprawy.webp',
+    description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
+    pricingSections: createNiszczarkiPricingSections(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
+  },
   // Nowa strona w przygotowaniu: tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs)
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',

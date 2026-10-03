@@ -5,6 +5,12 @@ export const headings: Record<string, ServicePageHeadings> = {
     h1: 'Serwis i naprawa niszczarek we Wrocławiu',
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
   },
+  'naprawa-zasilaczy-ups': {
+    h1: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
+    lines: ['Serwis i naprawa', 'zasilaczy awaryjnych UPS', 'we Wrocławiu'],
+    fitMobile: true,
+    h2: '(APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru…)',
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     h1: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
     lines: ['Serwis i naprawa', 'drukarek do kart plastikowych', 'we Wrocławiu'],
@@ -88,6 +94,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',
       'Naprawa, czyszczenie, konfiguracja Wi-Fi, problemy z drukowaniem, zacinaniem papieru i jakością wydruku.',]
   },
+  'naprawa-zasilaczy-ups': {
+    items: [
+      'Wymiana akumulatorów, diagnostyka, naprawa elektroniki i układu ładowania zasilaczy awaryjnych UPS.',
+      'Twój zasilacz UPS — podamy koszt naprawy w 15 min.',
+      'Zasilacze UPS do domu, biura i serwerowni: APC, Eaton, Ever, Vertiv i inne.',
+    ],
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     items: [
       'Czyszczenie, konserwacja, wymiana głowicy i rolek, naprawa modułów laminacji, retransferu i kodowania kart.',
@@ -167,6 +180,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
 // Opis alternatywny obrazu hero dla każdej usługi
 export const imageAlt: Record<string, string> = {
   'serwis-niszczarek': 'Serwis i naprawa niszczarek',
+  'naprawa-zasilaczy-ups': 'Zasilacz awaryjny UPS',
   'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
@@ -199,6 +213,11 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-niszczarek': {
     title: 'Serwis i naprawa niszczarek',
     description: 'Serwis i naprawa niszczarek we Wrocławiu — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle i inne.',
+  },
+  // Strona w przygotowaniu (noindex) — kopia serwis-niszczarek, treść tymczasowa
+  'naprawa-zasilaczy-ups': {
+    title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
+    description: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, naprawa elektroniki. APC, Eaton, Ever, Vertiv i inne. Pełny cennik bez ukrytych kosztów.',
   },
   // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
   'serwis-drukarek-do-kart-plastikowych': {
@@ -291,6 +310,7 @@ export const labels: ServicePageLabels = {
     'serwis-drukarek-iglowych': 'Masz problem z drukarką igłową?',
     'serwis-drukarek-3d': 'Masz problem z drukarką 3D?',
     'serwis-niszczarek': 'Masz problem z niszczarką?',
+    'naprawa-zasilaczy-ups': 'Masz problem z UPS-em?',
     'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',

@@ -148,6 +148,29 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "hiti", src: "/images/brands/hiti.webp", listedOnly: true },
   { name: "swiftcolor", listedOnly: true },
   { name: "edisecure", listedOnly: true },
+  // zasilacze UPS (oficjalne logo producentów; ABB, Liebert — Wikimedia Commons; Powerware, MGE — archiwum oficjalnych stron)
+  { name: "schneider-electric", listedOnly: true },
+  { name: "powerware", src: "/images/brands/powerware.webp", listedOnly: true },
+  { name: "riello", src: "/images/brands/riello.webp", listedOnly: true },
+  { name: "vertiv", listedOnly: true },
+  { name: "liebert", listedOnly: true },
+  { name: "emerson", listedOnly: true },
+  { name: "mge", src: "/images/brands/mge.webp", listedOnly: true },
+  { name: "socomec", src: "/images/brands/socomec.webp", listedOnly: true },
+  { name: "delta", listedOnly: true },
+  { name: "ever", src: "/images/brands/ever.webp", listedOnly: true },
+  { name: "fideltronik", listedOnly: true },
+  { name: "cyberpower", listedOnly: true },
+  { name: "powerwalker", src: "/images/brands/powerwalker.webp", listedOnly: true },
+  { name: "legrand", listedOnly: true },
+  { name: "aeg", listedOnly: true },
+  { name: "abb", listedOnly: true },
+  { name: "ge", listedOnly: true },
+  { name: "siemens", listedOnly: true },
+  { name: "g-tec", src: "/images/brands/g-tec.webp", listedOnly: true },
+  { name: "borri", src: "/images/brands/borri.webp", listedOnly: true },
+  { name: "orvaldi", listedOnly: true },
+  { name: "salicru", src: "/images/brands/salicru.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -176,6 +199,9 @@ const LOGO_RATIO: Record<string, number> = {
   "3dgence": 4.075, "markforged": 0.942, "stratasys": 3.317, "lanberg": 4.950, "actina": 6.383, "komputronik": 5.925, "cisco": 1.892,
   "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
   "evolis": 5.125, "hid": 2.550, "magicard": 2.805, "entrust": 9.230, "matica": 6.900, "idp": 2.490, "hiti": 3.290, "swiftcolor": 5.375, "edisecure": 8.360,
+  "schneider-electric": 3.385, "powerware": 5.375, "riello": 3.465, "vertiv": 4.040, "liebert": 5.345, "emerson": 2.385, "mge": 1.610, "socomec": 5.975,
+  "delta": 3.245, "ever": 2.975, "fideltronik": 5.670, "cyberpower": 5.430, "powerwalker": 2.255, "legrand": 4.040, "aeg": 5.875, "abb": 2.605,
+  "ge": 1.000, "siemens": 6.315, "g-tec": 2.050, "borri": 3.900, "orvaldi": 1.610, "salicru": 7.710,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

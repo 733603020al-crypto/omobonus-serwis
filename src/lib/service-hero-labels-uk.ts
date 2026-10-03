@@ -43,6 +43,12 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Бруднить сторінки',
     'Заміна тонера',
   ],
+  'naprawa-zasilaczy-ups': [
+    'Застрягає папір',
+    'Блідий друк',
+    'Бруднить сторінки',
+    'Заміна тонера',
+  ],
 
   'serwis-drukarek-atramentowych': [
     'Не друкує',

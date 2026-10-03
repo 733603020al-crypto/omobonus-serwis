@@ -66,6 +66,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-laserowych': 1.2,
   'serwis-niszczarek': 1.2, // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
+  'naprawa-zasilaczy-ups': 1.2, // kopia serwis-niszczarek
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -261,6 +262,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-termicznych',
   'serwis-niszczarek', // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -270,6 +272,7 @@ const PAGE_CLASS_SLUGS = [
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -578,7 +581,7 @@ export function ServicePageTemplate({
                           sizeCoefficients={KARTY_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
                         />
-                      ) : slug === 'serwis-niszczarek' ? (
+                      ) : slug === 'serwis-niszczarek' || slug === 'naprawa-zasilaczy-ups' ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           variant="home"

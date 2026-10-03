@@ -7,6 +7,12 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
   },
+  'naprawa-zasilaczy-ups': {
+    h1: 'Сервіс і ремонт джерел безперебійного живлення UPS у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'джерел безперебійного живлення UPS', 'у Вроцлаві'],
+    fitMobile: true,
+    h2: '(APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru…)',
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     h1: 'Сервіс і ремонт принтерів для пластикових карток у Вроцлаві',
     lines: ['Сервіс і ремонт', 'принтерів для пластикових карток', 'у Вроцлаві'],
@@ -83,6 +89,13 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
       'Надаємо послуги очищення, обслуговування, регенерації, ... та для Oki, Dell, Kyocera, Konica Minolta',
       'Ваш лазерний принтер — повідомимо вартість ремонту за 15 хв і виконаємо ремонт навіть того ж дня.',
       'Ремонт, чищення, налаштування Wi-Fi, проблеми з друком, застряганням паперу та якістю відбитка.',
+    ],
+  },
+  'naprawa-zasilaczy-ups': {
+    items: [
+      'Заміна акумуляторів, діагностика, ремонт електроніки та системи заряджання джерел безперебійного живлення UPS.',
+      'Ваш UPS — повідомимо вартість ремонту за 15 хв.',
+      'UPS для дому, офісу та серверної: APC, Eaton, Ever, Vertiv та інші.',
     ],
   },
   'serwis-drukarek-do-kart-plastikowych': {
@@ -176,6 +189,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
 
 export const imageAltUk: Record<string, string> = {
   'serwis-niszczarek': 'Сервіс і ремонт знищувачів документів',
+  'naprawa-zasilaczy-ups': 'Джерело безперебійного живлення UPS',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластикових карток',
   'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
@@ -207,6 +221,10 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   'serwis-niszczarek': {
     title: 'Сервіс і ремонт знищувачів документів',
     description: 'Сервіс і ремонт знищувачів документів у Вроцлаві — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle та інші.',
+  },
+  'naprawa-zasilaczy-ups': {
+    title: 'Сервіс і ремонт UPS – джерел безперебійного живлення',
+    description: 'Сервіс і ремонт джерел безперебійного живлення UPS у Вроцлаві — заміна акумуляторів, діагностика, ремонт електроніки. APC, Eaton, Ever, Vertiv та інші. Повний прайс-лист без прихованих витрат.',
   },
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Сервіс і ремонт принтерів для пластикових карток',
@@ -288,6 +306,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-iglowych': 'Маєте проблему з матричним принтером?',
     'serwis-drukarek-3d': 'Маєте проблему з 3D-принтером?',
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
+    'naprawa-zasilaczy-ups': 'Маєте проблему з UPS?',
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
