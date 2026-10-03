@@ -71,15 +71,6 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
   },
   // Drukarki kart: te same grupy co drukarki etykiet — tymczasowo ich ikony (do wymiany na własne)
-  'serwis-drukarek-do-kart-plastikowych': {
-    'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },
-    'naprawy-glowica-platen': { icon: '/images/accordion-icon-termiczne-glowica-platen.webp' },
-    'naprawy-tasma-ribbon': { icon: '/images/accordion-icon-termiczne-ribbon.webp' },
-    'naprawy-mechanika-czujniki': { icon: '/images/accordion-icon-termiczne-czujniki.webp' },
-    'naprawy-moduly-dodatkowe': { icon: '/images/accordion-icon-termiczne-moduly.webp' },
-    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-termiczne-elektronika.webp' },
-    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-termiczne-oprogramowanie-v2.webp' },
-  },
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },
     'naprawy-glowica-platen': { icon: '/images/accordion-icon-termiczne-glowica-platen.webp' },
