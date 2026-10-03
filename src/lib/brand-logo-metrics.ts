@@ -103,6 +103,8 @@ export const LOGO_METRICS: Record<string, { ink: number; ratio: number; pad: num
   "genie": { ink: 0.396, ratio: 5.98, pad: 0 },
   "olympia": { ink: 0.329, ratio: 6.145, pad: 0 },
   "intimus": { ink: 0.742, ratio: 3.615, pad: 0 },
-  "aurora": { ink: 0.4, ratio: 2.705, pad: 0 },
+  "aurora": { ink: 0.458, ratio: 5.71, pad: 0 },
+  "wallner": { ink: 0.965, ratio: 2.405, pad: 0 },
+  "tarnator": { ink: 0.503, ratio: 10.55, pad: 0 },
   "peach": { ink: 0.356, ratio: 3.45, pad: 0 },
 }

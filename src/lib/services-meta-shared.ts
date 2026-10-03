@@ -46,7 +46,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
-  'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'olivetti', 'oki'],
+  'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'dell', 'pantum', 'toshiba', 'olivetti', 'oki'],
   'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh', 'mimaki', 'roland-dg', 'mutoh', 'oki', 'fujifilm', 'agfa', 'kip', 'durst', 'swissqprint'],
   'serwis-drukarek-termicznych': ['zebra', 'tsc', 'toshiba-tec', 'honeywell', 'godex', 'sato', 'brother', 'dymo', 'citizen', 'bixolon', 'epson', 'cab', 'star-micronics', 'oki', 'argox'],
   'wynajem-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],

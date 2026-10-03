@@ -118,7 +118,9 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "genie", listedOnly: true },
   { name: "olympia", listedOnly: true },
   { name: "intimus", listedOnly: true },
-  { name: "aurora", listedOnly: true },
+  { name: "aurora", src: "/images/brands/aurora.webp", listedOnly: true },
+  { name: "wallner", src: "/images/brands/wallner.webp", listedOnly: true },
+  { name: "tarnator", src: "/images/brands/tarnator.webp", listedOnly: true },
   { name: "peach", src: "/images/brands/peach.webp", listedOnly: true },
 ]
 
@@ -144,7 +146,7 @@ const LOGO_RATIO: Record<string, number> = {
   "huawei": 3.839, "lg": 2.161, "gigabyte": 7.363, "razer": 3.427, "honor": 5.113, "xiaomi": 3.645, "medion": 6.855, "dynabook": 7.331, "vaio": 4.524, "chuwi": 4.879, "framework": 7.161,
   "alienware": 0.774, "zotac": 5.129, "corsair": 4.048, "minisforum": 9.331,
   "fellowes": 4.388, "hsm": 3.383, "kobra": 3.989, "rexel": 1.920, "ideal": 3.939, "dahle": 4.775, "opus": 2.260, "leitz": 4.534,
-  "argo": 2.292, "eba": 5.620, "tracer": 5.800, "genie": 5.973, "olympia": 6.134, "intimus": 3.613, "aurora": 2.698, "peach": 3.450,
+  "argo": 2.292, "eba": 5.620, "tracer": 5.800, "genie": 5.973, "olympia": 6.134, "intimus": 3.613, "aurora": 5.712, "peach": 3.450, "wallner": 2.407, "tarnator": 10.548,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
