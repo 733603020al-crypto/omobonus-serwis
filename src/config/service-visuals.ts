@@ -64,7 +64,12 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-software': { icon: '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp' },
   },
   // Brak wpisów: wszystkie grupy niszczarek mają neutralną ikonę zastępczą (do wymiany na własne).
-  'serwis-niszczarek': {},
+  'serwis-niszczarek': {
+    'naprawy-mechanizm': { icon: '/images/accordion-icon-niszczarki-mechanizm.webp' },
+    'naprawy-naped': { icon: '/images/accordion-icon-niszczarki-naped.webp' },
+    'naprawy-czujniki': { icon: '/images/accordion-icon-niszczarki-czujniki.webp' },
+    'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
+  },
   // Drukarki kart: te same grupy co drukarki etykiet — tymczasowo ich ikony (do wymiany na własne)
   'serwis-drukarek-do-kart-plastikowych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },

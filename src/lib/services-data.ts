@@ -177,6 +177,7 @@ export const HOME_EXTRA_SERVICES = [
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-iglowych',
   'druk-3d-na-zamowienie',
+  'serwis-niszczarek',
   'wynajem-drukarek',
   'drukarka-zastepcza',
 ]

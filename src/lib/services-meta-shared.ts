@@ -42,20 +42,20 @@ export const serviceIconSrc: Record<string, string> = {
 
 export const slugBrands: Record<string, string[]> = {
   // Własna lista niszczarek; marka bez logo w brand-ticker.tsx jest na razie pomijana
-  'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach'],
+  'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach', 'lanberg'],
   'serwis-drukarek-do-kart-plastikowych': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach'], // TYMCZASOWO logotypy niszczarek
-  'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi'],
-  'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework'],
-  'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc'],
-  'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'dell', 'pantum', 'toshiba', 'olivetti', 'oki'],
+  'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
+  'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
+  'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
+  'naprawa-drukarek': ['hp', 'samsung', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'dell', 'pantum', 'toshiba', 'olivetti', 'oki', 'fujifilm'],
   'serwis-plotterow': ['hp', 'canon', 'epson', 'xerox', 'ricoh', 'mimaki', 'roland-dg', 'mutoh', 'oki', 'fujifilm', 'agfa', 'kip', 'durst', 'swissqprint'],
-  'serwis-drukarek-termicznych': ['zebra', 'tsc', 'toshiba-tec', 'honeywell', 'godex', 'sato', 'brother', 'dymo', 'citizen', 'bixolon', 'epson', 'cab', 'star-micronics', 'oki', 'argox'],
+  'serwis-drukarek-termicznych': ['zebra', 'tsc', 'toshiba-tec', 'honeywell', 'godex', 'sato', 'brother', 'dymo', 'citizen', 'bixolon', 'epson', 'cab', 'star-micronics', 'oki', 'argox', 'brady', 'avery-dennison', 'datamax-oneil'],
   'wynajem-drukarek': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
   'drukarka-zastepcza': ['hp', 'canon', 'epson', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'toshiba', 'oki'],
-  'serwis-drukarek-laserowych': ['hp', 'samsung', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'oki', 'epson', 'fujifilm', 'develop', 'utax', 'sindoh'],
+  'serwis-drukarek-laserowych': ['hp', 'samsung', 'canon', 'brother', 'xerox', 'ricoh', 'kyocera', 'konica-minolta', 'sharp', 'lexmark', 'pantum', 'toshiba', 'oki', 'epson', 'fujifilm', 'develop', 'utax', 'sindoh', 'triumph-adler', 'olivetti'],
   'serwis-drukarek-atramentowych': ['hp', 'canon', 'epson', 'brother', 'lexmark', 'ricoh', 'riso', 'xerox'],
   'serwis-drukarek-iglowych': ['epson', 'oki', 'bixolon', 'citizen', 'star-micronics', 'dascom', 'printronix', 'fujitsu', 'olivetti', 'panasonic', 'tallygenicom'],
-  'serwis-drukarek-3d': ['bambulab', 'prusa', 'creality', 'anycubic', 'elegoo', 'formlabs', 'ultimaker', 'flashforge', 'snapmaker', 'qidi', 'makerbot', 'raise3d', 'zortrax', 'sovol', 'artillery', 'phrozen', 'bcn3d', 'peopoly', 'uniformation', 'tronxy', 'flyingbear', 'hb3d'],
+  'serwis-drukarek-3d': ['bambulab', 'prusa', 'creality', 'anycubic', 'elegoo', 'formlabs', 'ultimaker', 'flashforge', 'snapmaker', 'qidi', 'makerbot', 'raise3d', 'zortrax', 'sovol', 'artillery', 'phrozen', 'bcn3d', 'peopoly', 'uniformation', 'tronxy', 'flyingbear', 'hbot3d', '3dgence', 'markforged', 'stratasys'],
   'druk-3d-na-zamowienie': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
 }
 
@@ -87,6 +87,7 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'serwis-drukarek-atramentowych': bakedCard('inkjet3'),
   'serwis-drukarek-iglowych': bakedCard('needle'),
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
+  'serwis-niszczarek': bakedCard('shredder'),
   'wynajem-drukarek': bakedCard('rental'),
   'drukarka-zastepcza': bakedCard('replacement'),
 }

@@ -9,7 +9,7 @@ export const headings: Record<string, ServicePageHeadings> = {
     h1: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
     lines: ['Serwis i naprawa', 'drukarek do kart plastikowych', 'we Wrocławiu'],
     fitMobile: true,
-    h2: '(Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, DNP, HiTi, …)',
+    h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
   },
 
   'serwis-drukarek-termicznych': {
@@ -48,7 +48,7 @@ export const headings: Record<string, ServicePageHeadings> = {
 
   'serwis-drukarek-3d': {
     h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
-    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HB3D, …)',
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HBot 3D, …)',
   },
 
   // Tymczasowa kopia 'serwis-drukarek-3d' — jedyna świadomie inna wartość na tym etapie to H1
@@ -279,7 +279,22 @@ export const labels: ServicePageLabels = {
   fadeSlideDruk3DZamowienie: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "cena od 50 zł" lub "cena do uzgodnienia")',
   relatedCta: 'Zobacz cennik',
   relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
-  ctaHeading: 'Masz problem z komputerem lub drukarką?',
+  ctaHeading: 'Masz problem ze swoim urządzeniem?',
+  ctaHeadingBySlug: {
+    'serwis-laptopow': 'Masz problem z laptopem?',
+    'serwis-komputerow-stacjonarnych': 'Masz problem z komputerem?',
+    'naprawa-drukarek': 'Masz problem z drukarką?',
+    'serwis-drukarek-laserowych': 'Masz problem z drukarką laserową?',
+    'serwis-drukarek-atramentowych': 'Masz problem z drukarką atramentową?',
+    'serwis-plotterow': 'Masz problem z ploterem?',
+    'serwis-drukarek-termicznych': 'Masz problem z drukarką termiczną?',
+    'serwis-drukarek-iglowych': 'Masz problem z drukarką igłową?',
+    'serwis-drukarek-3d': 'Masz problem z drukarką 3D?',
+    'serwis-niszczarek': 'Masz problem z niszczarką?',
+    'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
+    'wynajem-drukarek': 'Masz problem z drukarką?',
+    'drukarka-zastepcza': 'Masz problem z drukarką?',
+  },
   ctaText: 'Napisz lub zadzwoń — podpowiemy, od czego zacząć',
   ctaButton: 'Szybki kontakt',
   ctaHref: '/kontakt',

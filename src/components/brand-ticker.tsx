@@ -70,7 +70,7 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "phrozen",    src: "/images/brands/phrozen.svg?v=2", heightClass: "h-[70px] md:h-[62px]", maxWidthClass: "max-w-[85px] md:max-w-[76px]" },
   { name: "artillery",  src: "/images/brands/artillery.svg?v=2", heightClass: "h-[36px] md:h-[36px]", maxWidthClass: "max-w-[260px] md:max-w-[240px]" },
   { name: "snapmaker",  src: "/images/brands/snapmaker.svg?v=2", heightClass: "h-[34px] md:h-[34px]", maxWidthClass: "max-w-[155px] md:max-w-[155px]" },
-  { name: "hb3d", src: "/images/brands/hb3d.webp", listedOnly: true },
+  { name: "hbot3d", src: "/images/brands/hbot3d.webp", listedOnly: true },
   { name: "dascom", src: "/images/brands/dascom.webp", listedOnly: true },
   { name: "printronix", src: "/images/brands/printronix.webp", listedOnly: true },
   { name: "panasonic", src: "/images/brands/panasonic.webp", listedOnly: true },
@@ -119,9 +119,25 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "olympia", listedOnly: true },
   { name: "intimus", listedOnly: true },
   { name: "aurora", src: "/images/brands/aurora.webp", listedOnly: true },
-  { name: "wallner", src: "/images/brands/wallner.webp", listedOnly: true },
+  // scale: ciemne tło plakietki liczy się jako "gęste" logo, choć na ciemnym pasku go nie widać
+  { name: "wallner", src: "/images/brands/wallner.webp", listedOnly: true, scale: 1.22 },
   { name: "tarnator", src: "/images/brands/tarnator.webp", listedOnly: true },
   { name: "peach", src: "/images/brands/peach.webp", listedOnly: true },
+  // marki dodane po audycie logo (oficjalne logo producentów)
+  { name: "3dgence", src: "/images/brands/3dgence.webp", listedOnly: true },
+  { name: "markforged", src: "/images/brands/markforged.webp", listedOnly: true },
+  { name: "stratasys", src: "/images/brands/stratasys.webp", listedOnly: true },
+  { name: "lanberg", src: "/images/brands/lanberg.webp", listedOnly: true },
+  { name: "actina", src: "/images/brands/actina.webp", listedOnly: true },
+  { name: "komputronik", src: "/images/brands/komputronik.webp", listedOnly: true },
+  { name: "cisco", src: "/images/brands/cisco.webp", listedOnly: true },
+  { name: "ubiquiti", src: "/images/brands/ubiquiti.webp", listedOnly: true },
+  { name: "mikrotik", src: "/images/brands/mikrotik.webp", listedOnly: true },
+  { name: "eaton", src: "/images/brands/eaton.webp", listedOnly: true },
+  { name: "triumph-adler", src: "/images/brands/triumph-adler.webp", listedOnly: true, scale: 1.25 }, // drobne hasło pod nazwą zaniża wagę logo
+  { name: "brady", src: "/images/brands/brady.webp", listedOnly: true },
+  { name: "avery-dennison", src: "/images/brands/avery-dennison.webp", listedOnly: true },
+  { name: "datamax-oneil", src: "/images/brands/datamax-oneil.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -140,13 +156,15 @@ const LOGO_RATIO: Record<string, number> = {
   "zortrax": 4.435, "ultimaker": 6.818, "phrozen": 1.000, "artillery": 5.242, "snapmaker": 4.386,
   "mimaki": 5.460, "roland-dg": 6.911, "mutoh": 5.742, "fujifilm": 6.065, "agfa": 3.976, "kip": 2.395,
   "durst": 3.331, "swissqprint": 5.508,
-  "hb3d": 3.742, "qidi": 5.605, "flyingbear": 4.121, "raise3d": 4.21, "sovol": 5.855, "makerbot": 4.984, "uniformation": 8.387, "peopoly": 4.04, "tronxy": 8.323, "bcn3d": 3.984,
+  "hbot3d": 5.900, "qidi": 5.605, "flyingbear": 4.121, "raise3d": 4.21, "sovol": 5.855, "makerbot": 4.984, "uniformation": 8.387, "peopoly": 4.04, "tronxy": 8.323, "bcn3d": 3.984,
   "dascom": 8.895, "printronix": 6.339, "panasonic": 6.806, "tallygenicom": 4.266, "riso": 4.379,
   "develop": 6.226, "utax": 5.452, "sindoh": 5.435,
   "huawei": 3.839, "lg": 2.161, "gigabyte": 7.363, "razer": 3.427, "honor": 5.113, "xiaomi": 3.645, "medion": 6.855, "dynabook": 7.331, "vaio": 4.524, "chuwi": 4.879, "framework": 7.161,
   "alienware": 0.774, "zotac": 5.129, "corsair": 4.048, "minisforum": 9.331,
   "fellowes": 4.388, "hsm": 3.383, "kobra": 3.989, "rexel": 1.920, "ideal": 3.939, "dahle": 4.775, "opus": 2.260, "leitz": 4.534,
   "argo": 2.292, "eba": 5.620, "tracer": 5.800, "genie": 5.973, "olympia": 6.134, "intimus": 3.613, "aurora": 5.712, "peach": 3.450, "wallner": 2.407, "tarnator": 10.548,
+  "3dgence": 4.075, "markforged": 0.942, "stratasys": 3.317, "lanberg": 4.950, "actina": 6.383, "komputronik": 5.925, "cisco": 1.892,
+  "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

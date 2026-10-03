@@ -1189,7 +1189,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
       const measuredHeight = headerHeight + rowHeights.reduce((a, b) => a + b, 0)
       const aspectRatio = 858 / 1465
       const aspectHeight = aspectRatio * containerWidth
-      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza')
+      // serwis-niszczarek: tylko 4 podkategorie — bez dopełniania do proporcji tła, inaczej pod listą zostaje pusty pas
+      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek')
         ? 24
         : Math.max(aspectHeight - measuredHeight, 24)
       setParchmentListMetrics({
@@ -1882,6 +1883,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && (service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych')
+                                ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
@@ -1902,6 +1905,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-outsourcing-abonament-v2.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && (service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych')
+                                ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
                                 ? '/images/accordion-icon-naprawy-termiczne-v3.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isNeedleService

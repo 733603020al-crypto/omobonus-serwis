@@ -316,6 +316,8 @@ export interface ServicePageLabels {
   relatedIconAltSuffix: string
   drukarkaZastepczaNote: ReactNode
   ctaHeading: string
+  /** Заголовок CTA под устройство конкретной страницы; без записи — ctaHeading. */
+  ctaHeadingBySlug?: Record<string, string>
   ctaText: string
   ctaButton: string
   ctaHref: string
@@ -763,7 +765,7 @@ export function ServicePageTemplate({
         t={footerT}
         bare
         cta={{
-          heading: labels.ctaHeading,
+          heading: labels.ctaHeadingBySlug?.[slug] ?? labels.ctaHeading,
           text: labels.ctaText,
           button: labels.ctaButton,
           href: labels.ctaHref,

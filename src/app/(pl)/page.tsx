@@ -35,7 +35,7 @@ export default function Home() {
       servicesData={services}
       servicesExtra={HOME_EXTRA_SERVICES}
       cta={{
-        heading: 'Masz problem z komputerem lub drukarką?',
+        heading: 'Masz problem ze swoim urządzeniem?',
         text: 'Napisz lub zadzwoń — podpowiemy, od czego zacząć',
         button: 'Szybki kontakt',
         href: '/kontakt',

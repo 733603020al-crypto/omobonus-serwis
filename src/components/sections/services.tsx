@@ -92,6 +92,7 @@ const PL: ServicesT = {
     'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
     'serwis-drukarek-iglowych': 'Drukarek igłowych',
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
+    'serwis-niszczarek': 'Niszczarek',
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
@@ -144,6 +145,7 @@ export function Services({
           'wynajem-drukarek',
           'drukarka-zastepcza',
           'druk-3d-na-zamowienie',
+          'serwis-niszczarek',
           'serwis-drukarek-do-kart-plastikowych',
         ].includes(service.slug)
     )

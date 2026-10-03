@@ -101,6 +101,7 @@
       'serwis-drukarek-atramentowych': 'Струменевих принтерів',
       'serwis-drukarek-iglowych': 'Матричних принтерів',
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
+      'serwis-niszczarek': 'Шредерів',
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
     },
@@ -192,7 +193,7 @@
     quoteSubtitle: '— це наші основні принципи роботи',
   },
   homeCta: {
-    heading: 'Маєте проблему з комп\'ютером чи принтером?',
+    heading: 'Маєте проблему зі своїм пристроєм?',
     text: 'Напишіть або зателефонуйте — підкажемо, з чого почати',
     button: 'Швидкий контакт',
   },

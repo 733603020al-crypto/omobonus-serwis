@@ -1,5 +1,14 @@
 # AI_WORK_STATE — единый журнал проекта Omobonus (ветка test)
 
+## ⚡ КРАТКАЯ ШАПКА — в начале сессии читать только её (до маркера «КОНЕЦ ШАПКИ»)
+- Ветки: `test` — основная для оптимизации и проверок; `pages/new-services` — разработка новых страниц; `master` — запрещён всегда. Новые страницы не добавлять в `test`, меню или на главную без отдельного разрешения.
+- Контрольные точки (2026-10-03): `test` = 00587d8 (последний коммит кода be5f4d3); `pages/new-services` = 481c5e0 (страница «Сервис шредеров», прайс/FAQ в HTML) + незакоммичено: логотип Rexel, иконки аккордеона шредеров (ЭТАП 104), правка правил Claude Code (ЭТАП 105).
+- `pages/new-service-kart-plastikowych` = df03fec (930a776+df03fec, от 481c5e0): страница «Сервис принтеров для пластиковых карт», только по прямой ссылке, noindex; полная копия страницы шредеров (карусель, лента логотипов, подсказка категорий) с временными фото/логотипами шредеров — ждём настоящие (ЭТАП 106).
+- Последние этапы: 107 логотипы брендов + доработки шредеров/CTA (коммит на pages/new-service-kart-plastikowych) · 106 страница drukarek kart → 930a776 · 105 настройки Claude Code (doctor) · 104 Rexel + иконки шредеров · 102 прайс/FAQ в HTML → 481c5e0 · 101 → 00587d8 · 100 → f11623f · 85 → 865ec0f · 84 → 610b3c5.
+- Карта файла (всё ниже — справочно, читать только по необходимости, через поиск «ЭТАП N» / hash): цель → разделы 1–7 (сводка, контрольная точка `test` в разделе 6) → «ЖУРНАЛ ЭТАПОВ» (новые сверху) → «АРХИВ» → записи, дописанные в конец файла после архива (ЭТАП 84/85, 2026-09-30/10-01, 102, 104, 105).
+- История не удаляется; новые этапы — короткой записью сверху раздела «ЖУРНАЛ ЭТАПОВ» + обновить эту шапку. Номера этапов в `test` и `pages/new-services` пересекаются (102 есть в обеих с разным смыслом) — искать вместе с датой/hash.
+<!-- КОНЕЦ ШАПКИ: дальше читать только по необходимости (поиск по «ЭТАП N» / hash) -->
+
 Обновлено: 2026-10-02 (ЭТАП 100). Структура: цель → 7 сводных разделов → журнал этапов (новые сверху) → АРХИВ подробных старых записей.
 Источник правды для статусов — Git (`git log origin/test`). Все hash в разделах 1–6 проверены командой `git merge-base --is-ancestor <hash> origin/test` 2026-10-02: все есть в origin/test, test = origin/test.
 Пометка «не подтверждено» = нет доказательства ни в Git, ни в отчёте, ни в журнале.
@@ -116,6 +125,41 @@
 ---
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
+
+### ЭТАП 107 (2026-10-03) — аудит логотипов: новые бренды в лентах + коммит незакоммиченной работы по шредерам (ветка pages/new-service-kart-plastikowych)
+- Бренды (общий slugBrands для PL/UK/RU): 3D — HB3D→HBot 3D (+H2), 3DGence, Markforged, Stratasys; шредеры — Lanberg; ПК — Actina, Komputronik; ноутбуки — Alienware; outsourcing — Cisco, Ubiquiti, MikroTik, Eaton; naprawa — Fujifilm; лазерные — Triumph-Adler, Olivetti; термо — Brady, Avery Dennison, Datamax-O'Neil. Иглowe/плоттеры без изменений; Synology/QNAP/Graphtec/Summa/Compuprint/Lexmark Forms — не добавлять.
+- 15 новых webp (официальные сайты/Commons, тёмные → белые); hb3d.webp удалён. Метрики дописаны вручную в brand-logo-metrics.ts (полная регенерация сдвигает чужие значения).
+- Размер по алгоритму заполнения (autoLogoHeight); scale: wallner 1.22 (тёмная плашка = ink), triumph-adler 1.25 (мелкий слоган).
+- Оговорки: HBot 3D и Datamax-O'Neil — из архива официальных сайтов (Datamax низкое разрешение). Rexel/Apple/Dell/Samsung не менялись.
+- В том же коммите — работа по шредерам из этапов 101–104 (иконки аккордеона, карточка на главной в доп. списке, CTA по типу устройства PL/UK/RU, новый Rexel). CLAUDE.md и .claude/rules (этап 105) НЕ включены.
+
+### ЭТАП 106 (2026-10-03) — новая страница serwis-drukarek-do-kart-plastikowych (ветка pages/new-service-kart-plastikowych → 930a776, запушено)
+- Доп. коммит df03fec (запушен): по требованию пользователя страница = ПОЛНАЯ КОПИЯ serwis-niszczarek, ничего не убирать, где нет своего контента — заглушки. Карусель (слайды niszczarki), лента логотипов (список niszczarki), первая картинка niszczarki-carousel-v1-01, подсказка категорий Podstawowa/Biznesowa/Retransferowa (картинки niszczarki), подсветка цен. Только в рабочей копии (не закоммитить отдельно — объекты ещё не в HEAD): CTA «Masz problem z drukarką do kart?» и иконки разделов Czyszczenie/Naprawy от niszczarki.
+
+- Ветка создана от pages/new-services (481c5e0). Закоммичены только строки этой страницы; незакоммиченная работа по шредерам (ЭТАП 104/105) осталась нетронутой в рабочей копии.
+- Новые: src/lib/services-data-karty.ts, -uk-karty.ts, -ru-karty.ts (классы podstawowe/biznesowe/retransferowe; 6 групп napraw, 15 FAQ). Цены/сроки в services-pricing-data.ts — ЧЕРНОВИК по образцу drukarek termicznych, ждут подтверждения.
+- Подключено: services-data(-uk/-ru), meta pl/uk/ru (H1 в 3 строки через headings.lines; тип headings PL расширен до ServicePageHeadings), hero labels, REPAIR_ACCORDION_LAYOUT_SLUGS, KONSERWACJA_PROMO_ALT_SLUGS, PAGE_CLASS_SLUGS (без него нет hero), service-visuals.
+- Скрыто: noindexSlugs, исключена из mainServices главной (services.tsx); меню/sitemap не трогались. Проверено: tsc, build, PL/UK/RU 1440/390, нет гориз. скролла, ссылок на странице главной/других нет.
+- Остаток: свои фото (hero + 6 иконок групп — сейчас временные от принтеров этикеток), логотипы брендов (есть только Zebra), подтверждение цен, ctaHeadingBySlug (есть только в незакоммиченной работе шредеров). На 390 px средняя строка H1 PL/UK/RU переносится (4 строки).
+
+### ЭТАП 101 (2026-10-02) — новая страница serwis-niszczarek (ветка pages/new-services, НЕ закоммичено)
+
+- Ветка pages/new-services = fast-forward до test (be5f4d3). test не менялся. Commit/push — только по отдельному указанию.
+- Новые: src/lib/services-data-niszczarki.ts, services-data-uk-niszczarki.ts, services-data-ru-niszczarki.ts (классы Mała/Biurowa/Profesjonalna, 1 секция-заглушка «w przygotowaniu»).
+- Изменены: services-data(.ts/-uk/-ru) — запись перед wynajem-drukarek; services-meta-pl/uk/ru — H1/H2/alt/временные SEO-метаданные + пустые seoBlocks (отступ под аккордеоном, иначе отзывы наезжают); services-meta-shared — иконка-заглушка accordion-icon-naprawy.webp + slugBrands 19 брендов; services-layout-constants — REPAIR_ACCORDION_LAYOUT_SLUGS; service-page-template — PAGE_CLASS_SLUGS + HERO_LINES_PL.
+- Логотипы: есть только hp.svg, нет 18 брендов. Страница не в меню/на главной, но в sitemap. Лазерная страница не тронута.
+- tsc OK, build OK, 1440 проверено, PL/UK/RU 200.
+- ПО ПРОСЬБЕ ПОЛЬЗОВАТЕЛЯ (позже в тот же день): на странице временно ПОЛНАЯ КОПИЯ лазерной (карусель, прайс+цены/сроки, FAQ, SEO-блоки, иконки, подписи героя, всплывашка классов с лазерными картинками). Своё у шредеров: H1/H2, бренды, названия классов Mała/Biurowa/Profesjonalna. Все копии помечены комментарием «TYMCZASOWA KOPIA». Страница в noindexSlugs (noindex + не в sitemap). Лазерная страница не менялась. tsc OK, build после копии не запускался.
+- Карусель героя шредеров: свои 6 картинок public/images/niszczarki-carousel-v1-01..05.webp + v2-06.webp (6-й заменён исправленным 6.png, v1-06 удалён) (обрезка по прозрачности, max 512px, webp q82), собственные коэффициенты шредеров (не связаны с другими страницами): NISZCZARKI_SIZE_COEFFICIENTS 0.74/0.76/0.85/0.85/0.95/0.95, сдвиг 0/0/4/4/13/13. Остальное на странице — пока копия лазерной.
+- Лазерная карусель, 4-й слайд (белый HP МФУ): коммит 1171094 (0.85→0.765) работал только на компьютере; на телефоне слайды ограничены потолком 0.78, поэтому слайд 4 уменьшился всего на 2% (0.78→0.765). Исправлено: новый необязательный проп mobileSizeCoefficients в HeroPrinterCarousel; для лазерной LASER_MOBILE_SIZE_COEFFICIENTS[3] = 0.702 (= 0.78 × 0.9). Проверено 390/1440: на телефоне −10%, компьютер без изменений. Не закоммичено (в pages/new-services). Также 1171094 есть в test, но не в master — на боевом сайте изменения ещё нет.
+- Цена шредеров «Diagnoza i wycena naprawy (w przypadku rezygnacji z naprawy)» = 50 zł одной ценой (было 70/100/150 из копии лазерной), PL/UK/RU — одна запись в services-pricing-data.ts.
+- Всплывашка «Kategorie urządzeń» шредеров: свои тексты Mała/Biurowa/Profesjonalna (PL от пользователя, UK/RU перевод), верхний текст deviceCategoriesDescription.serwisNiszczarek, картинки = слайды карусели 1 / 4 / 6 (v1-01, v1-04, v2-06). Лазерные картинки не удалены — их использует лазерная страница. Пример цены «50 / 100 / 150» в шапке всплывашки не менялся.
+- Секция «Czyszczenie i konserwacja» шредеров заменена: один пункт PEŁNA KONSERWACJA (7 пунктов про niszczarki, PL/UK/RU), цена 150 / 200 / 250, срок 1–2 dni, без + części. Промо «TYLKO PRZEDMUCHANIE?» — свой текст (konserwacjaPromoDescriptionNiszczarki). Naprawy и FAQ — всё ещё лазерная копия. tsc OK.
+- Секция «Naprawy» шредеров заменена: 4 группы / 13 услуг (naprawy-mechanizm, -naped, -czujniki, -elektronika), PL/UK/RU, цены и сроки в pricing-data. Иконки: все 4 группы и заголовки секций Czyszczenie/Naprawy — нейтральные общие (лазерные убраны с шредеров). FAQ и SEO ещё копия лазерной.
+- Карусель шредеров: подсветка при наведении как на других страницах — 6 depth-карт niszczarki-carousel-*-depth.webp (подхватываются автоматически).
+- Бегущая строка шредеров: 17 логотипов с официальных сайтов производителей (public/images/brands, listedOnly, порядок = slugBrands). SVG: Fellowes, Kobra, Rexel, OPUS, Leitz, EBA, Tracer, Genie, Olympia, Intimus, Aurora (+ HP уже был). Только PNG на офиц. сайтах → webp: HSM, IDEAL, Dahle (dahle.com), Argo, Peach. Нет: Wallner (сайт лежит), Tarnator (нет офиц. сайта). Чёрные Fellowes/Kobra/Tracer/Dahle сделаны светлыми (иначе не видно на тёмном фоне); Rexel/OPUS/IDEAL/Genie/EBA — официальные светлые версии. brand-logo-metrics.ts: дописаны только 16 новых строк, старые значения не трогались. tsc OK, проверено 1440/390.
+- FAQ шредеров заменён: 22 вопроса PL (текст пользователя) / UK / RU (перевод), старые лазерные удалены, без гарантий/SLA/подменного оборудования; цены = прайс (50 zł, dojazd 20 + 1,5 zł/km). FAQPage 22/22/22, tsc OK, проверено 1440.
+- Дальше: решение пользователя по commit, SEO-тексты, реальный контент/цены/картинки, меню, noindex до наполнения?
 
 ### ЭТАП 100 (2026-10-02) — desktop-контроль всех мобильных оптимизаций: код не менялся
 - Что из desktop было подтверждено раньше: ЭТАП 86 (a5a27c5) — большой аудит 54 URL × 1440 + 8 ключевых × 1024/1280, LH desktop 96–98. После a5a27c5 у мобильных коммитов desktop проверялся только на 1440 скриншотами/Playwright (88: e34f358, 365053b; 90: 407f490; 91: 4825138; 95: 29da684; 94: 4ffd63d — анимации 1440); у 93 (b397a40, шрифты) и 87 (9f70a68 CookieYes) desktop — только окно 1440 / без LH; Lighthouse desktop после a5a27c5 не запускался ни разу; 1024/1280 после a5a27c5 не проверялись.
@@ -1130,3 +1174,21 @@ Report: https://claude.ai/artifact/ApU2CQ2JJuTzKJ46EEb6qG . Code NOT changed by 
 ## 2026-10-01 — naprawa-drukarek: слайд 1 (струйный) = ролик печати (ГОТОВО, 00e26c3, push test)
 - printer-hub-hero.tsx: introVideo=ATRAMENT_PRINT_CLIP, animationSlideIndex=1. Индексы: atrament 0, главная 3, naprawa 1.
 - hero-printer-carousel.tsx: clipHeldRef — если тик хотел перейти на ролик, а он ещё 'wait', переход сразу при 'ready' (не ждать 5,5 с); для статичных слайдов без изменений.
+
+## ЭТАП 102 (2026-10-02): прайс/FAQ всех страниц услуг в HTML (SEO) — ГОТОВО В КОДЕ, НЕ ЗАКОММИЧЕНО
+- Проблема: на всех страницах услуг (PL/UK/RU) тексты прайса, ремонтов и ответов FAQ появлялись в HTML только после клика (druk-3d — только вопросы FAQ).
+- Решение: forceMount на обоих AccordionContent в service-accordion.tsx (секции + вложенные пункты); в ui/accordion.tsx закрытый контент скрыт классом `data-[state=closed]:!hidden`. Убрано старое druk-3d-условие. loading="lazy" у картинок внутри аккордеона и в wink-emoji.tsx.
+- Проверено: prod-HTML содержит все вопросы+ответы FAQ и цены на всех 13 страницах с аккордеоном (PL/UK/RU); раскладка закрыто/открыто 1440/390 совпадает с исходной; tsc и build OK.
+- Цена: HTML страницы больше в ~1.5–2 раза (laser 298→616 КБ сырого).
+- Остаток: dev-сервер отдаёт 500 после build (build шёл при работающем dev) → остановить dev:turbo, rm -rf .next, npm run dev:turbo; затем финальный взгляд 1440/390. Commit — по разрешению пользователя.
+
+## ЭТАП 104 — логотип Rexel (сервис шредеров)
+- public/images/brands/rexel.svg заменён: официальный логотип rexeleurope.com (ACCO), белые буквы + красный X #e40029, как на шредере в hero. Пропорции те же (1.92). Проверено в строке брендов 1440/390. НЕ закоммичено (ветка pages/new-services).
+- Иконки аккордеона сервиса шредеров: 6 картинок пользователя -> public/images/accordion-icon-niszczarki-*.webp (обрезаны по прозрачности, до 200px высоты, webp ~20-28 КБ). Czyszczenie/Naprawy — в цепочке иконок service-accordion.tsx по slug; 4 подкатегории — в SERVICE_VISUALS (service-visuals.ts). PL/UK/RU одинаково (по id). Проверено 1440/390. НЕ закоммичено.
+
+## ЭТАП 105 (2026-10-03): настройки Claude Code по итогам doctor prompt-audit — НЕ ЗАКОММИЧЕНО
+- Журнал: добавлена краткая шапка сверху (читать только её), история не удалялась.
+- CLAUDE.md: роли веток (test / pages/new-services / любая явно названная; master — никогда), журнал можно коммитить, длинные отчёты — отдельным HTML-файлом + краткое резюме в ответе.
+- settings.local.json: убраны широкие разрешения (push/reset/checkout/rm/fetch/curl/npm run/playwright/удаление/остановка процессов/cd-wildcard и т.п.).
+- Память: удалены 3 дубля CLAUDE.md и 2 устаревшие записи; 1400 → 1440.
+- Код сайта не менялся. Commit/push — только по отдельному разрешению.
