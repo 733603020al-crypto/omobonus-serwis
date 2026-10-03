@@ -138,6 +138,16 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "brady", src: "/images/brands/brady.webp", listedOnly: true },
   { name: "avery-dennison", src: "/images/brands/avery-dennison.webp", listedOnly: true },
   { name: "datamax-oneil", src: "/images/brands/datamax-oneil.webp", listedOnly: true },
+  // drukarki do kart plastikowych (oficjalne logo producentów; XID nie ma osobnego logo — to seria drukarek Matica)
+  { name: "evolis", listedOnly: true },
+  { name: "hid", listedOnly: true },
+  { name: "magicard", listedOnly: true },
+  { name: "entrust", listedOnly: true },
+  { name: "matica", src: "/images/brands/matica.webp", listedOnly: true },
+  { name: "idp", src: "/images/brands/idp.webp", listedOnly: true },
+  { name: "hiti", src: "/images/brands/hiti.webp", listedOnly: true },
+  { name: "swiftcolor", listedOnly: true },
+  { name: "edisecure", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -165,6 +175,7 @@ const LOGO_RATIO: Record<string, number> = {
   "argo": 2.292, "eba": 5.620, "tracer": 5.800, "genie": 5.973, "olympia": 6.134, "intimus": 3.613, "aurora": 5.712, "peach": 3.450, "wallner": 2.407, "tarnator": 10.548,
   "3dgence": 4.075, "markforged": 0.942, "stratasys": 3.317, "lanberg": 4.950, "actina": 6.383, "komputronik": 5.925, "cisco": 1.892,
   "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
+  "evolis": 5.125, "hid": 2.550, "magicard": 2.805, "entrust": 9.230, "matica": 6.900, "idp": 2.490, "hiti": 3.290, "swiftcolor": 5.375, "edisecure": 8.360,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

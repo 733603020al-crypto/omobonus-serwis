@@ -126,6 +126,12 @@
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
 
+### ЭТАП 108 (2026-10-03) — логотипы в ленте страницы «Принтеры для пластиковых карт» (ветка pages/new-service-kart-plastikowych)
+- Лента = порядок H2: Evolis, Zebra, HID, Magicard, Entrust, Matica, IDP, HiTi, DASCOM, Swiftcolor, EDIsecure (временные логотипы шредеров убраны).
+- Источники: Evolis, Swiftcolor, Magicard — SVG с официальных сайтов; Matica и EDIsecure — официальный сайт группы Identis (identisgroup.com, владелец Matica); IDP — mail.idp-corp.com; HiTi — официальная картинка hiti.com (белый знак вырезан с фона); HID и Entrust — официальные сайты закрыты защитой от ботов → векторы с Wikimedia Commons.
+- Обработка: тёмные части → белый, цветные акценты оставлены (красный Matica/EDIsecure, синий HID/IDP, CMY Swiftcolor); у Magicard убрана мелкая подпись «by BRADY». Размер — автоматически по метрикам (строки дописаны вручную).
+- XID — отдельного логотипа нет (серия принтеров Matica/EDIsecure), в ленте не показывается; в H2 оставлен.
+
 ### ЭТАП 107 (2026-10-03) — аудит логотипов: новые бренды в лентах + коммит незакоммиченной работы по шредерам (ветка pages/new-service-kart-plastikowych)
 - Бренды (общий slugBrands для PL/UK/RU): 3D — HB3D→HBot 3D (+H2), 3DGence, Markforged, Stratasys; шредеры — Lanberg; ПК — Actina, Komputronik; ноутбуки — Alienware; outsourcing — Cisco, Ubiquiti, MikroTik, Eaton; naprawa — Fujifilm; лазерные — Triumph-Adler, Olivetti; термо — Brady, Avery Dennison, Datamax-O'Neil. Иглowe/плоттеры без изменений; Synology/QNAP/Graphtec/Summa/Compuprint/Lexmark Forms — не добавлять.
 - 15 новых webp (официальные сайты/Commons, тёмные → белые); hb3d.webp удалён. Метрики дописаны вручную в brand-logo-metrics.ts (полная регенерация сдвигает чужие значения).

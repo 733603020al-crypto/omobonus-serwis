@@ -121,4 +121,13 @@ export const LOGO_METRICS: Record<string, { ink: number; ratio: number; pad: num
   "stratasys": { ink: 0.177, ratio: 3.315, pad: 0 },
   "triumph-adler": { ink: 0.317, ratio: 3.492, pad: 0.055 },
   "ubiquiti": { ink: 0.383, ratio: 0.805, pad: 0 },
+  "evolis": { ink: 0.31, ratio: 5.125, pad: 0 },
+  "hid": { ink: 0.948, ratio: 2.55, pad: 0 },
+  "magicard": { ink: 0.297, ratio: 2.805, pad: 0 },
+  "entrust": { ink: 0.425, ratio: 9.23, pad: 0 },
+  "matica": { ink: 0.351, ratio: 6.9, pad: 0 },
+  "idp": { ink: 0.532, ratio: 2.49, pad: 0 },
+  "hiti": { ink: 0.434, ratio: 3.29, pad: 0 },
+  "swiftcolor": { ink: 0.291, ratio: 5.375, pad: 0 },
+  "edisecure": { ink: 0.452, ratio: 8.36, pad: 0 },
 }

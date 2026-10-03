@@ -43,7 +43,7 @@ export const serviceIconSrc: Record<string, string> = {
 export const slugBrands: Record<string, string[]> = {
   // Własna lista niszczarek; marka bez logo w brand-ticker.tsx jest na razie pomijana
   'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach', 'lanberg'],
-  'serwis-drukarek-do-kart-plastikowych': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach'], // TYMCZASOWO logotypy niszczarek
+  'serwis-drukarek-do-kart-plastikowych': ['evolis', 'zebra', 'hid', 'magicard', 'entrust', 'matica', 'idp', 'hiti', 'dascom', 'swiftcolor', 'edisecure'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
