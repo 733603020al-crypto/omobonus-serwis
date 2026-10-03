@@ -1,10 +1,5 @@
----
-paths:
-  - "**"
----
-
 # Long answers, analyses, and technical reports (always active)
 
-Any long answer, analysis, or technical report that doesn't fit fully in the terminal MUST be output in full in a new tab of the same Chrome via claude-in-chrome. The terminal is not considered a complete output channel for this content. Nothing may be shortened or summarized in the Chrome version — it must contain the entire answer.
+Any long answer, analysis, or technical report that doesn't fit comfortably in the terminal: give a short summary in the reply, and write the full, unabridged version to a separate HTML file outside the project (`%TEMP%\claude-answer.html`), then open it in the browser. Nothing may be shortened in the HTML version — it must contain the entire answer. Never create such report files inside the project.
 
-Before finishing the task, verify that the full version of the answer is actually open in Chrome (not just written to a file).
+Before finishing the task, verify that the HTML file was actually written and opened.
