@@ -129,6 +129,18 @@ const NISZCZARKI_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ][i],
 }))
 
+// Категории для страницы "Naprawa zasilaczy UPS" — klasy mocy
+const UPS_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
+  ...c,
+  title: ['do 1 kVA', '1–3 kVA', '3–10 kVA'][i],
+  description: [
+    'Małe zasilacze do komputera, routera, kasy fiskalnej lub monitoringu.',
+    'Zasilacze do biura i małych serwerów, w obudowie tower lub rack.',
+    'Zasilacze do serwerowni i firm, często online, z modułami bateryjnymi.',
+  ][i],
+  features: [] as string[],
+}))
+
 // Категории для страницы "Serwis drukarek do kart plastikowych"
 const KARTY_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ...c,
@@ -157,8 +169,11 @@ const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-plotterow') {
     return PLOTTER_DEVICE_CATEGORIES
   }
-  if (serviceSlug === 'serwis-niszczarek' || serviceSlug === 'naprawa-zasilaczy-ups') {
+  if (serviceSlug === 'serwis-niszczarek') {
     return NISZCZARKI_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'naprawa-zasilaczy-ups') {
+    return UPS_DEVICE_CATEGORIES
   }
   if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
     return KARTY_DEVICE_CATEGORIES
@@ -236,7 +251,20 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
-  if (serviceSlug === 'serwis-niszczarek' || serviceSlug === 'naprawa-zasilaczy-ups') {
+  if (serviceSlug === 'naprawa-zasilaczy-ups') {
+    switch (categoryTitle) {
+      case 'do 1 kVA':
+        return '/images/ups-carousel-v1-01.webp'
+      case '1–3 kVA':
+        return '/images/ups-carousel-v1-04.webp'
+      case '3–10 kVA':
+        return '/images/ups-carousel-v1-06.webp'
+      default:
+        return ''
+    }
+  }
+
+  if (serviceSlug === 'serwis-niszczarek') {
     switch (categoryTitle) {
       case 'Mała':
         return '/images/niszczarki-carousel-v1-01.webp'
@@ -355,8 +383,10 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 ? t.deviceCategoriesDescription.serwisPlotterow
                 : service.slug === 'serwis-drukarek-atramentowych'
                 ? t.deviceCategoriesDescription.serwisDrukarekAtramentowych
-                : service.slug === 'serwis-niszczarek' || service.slug === 'naprawa-zasilaczy-ups'
+                : service.slug === 'serwis-niszczarek'
                 ? t.deviceCategoriesDescription.serwisNiszczarek
+                : service.slug === 'naprawa-zasilaczy-ups'
+                ? t.deviceCategoriesDescription.ups
                 : service.slug === 'serwis-drukarek-do-kart-plastikowych'
                 ? t.deviceCategoriesDescription.serwisDrukarekDoKart
                 : t.deviceCategoriesDescription.default}

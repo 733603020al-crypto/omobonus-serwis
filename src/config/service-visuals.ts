@@ -70,12 +70,8 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-czujniki': { icon: '/images/accordion-icon-niszczarki-czujniki.webp' },
     'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
   },
-  'naprawa-zasilaczy-ups': {
-    'naprawy-mechanizm': { icon: '/images/accordion-icon-niszczarki-mechanizm.webp' },
-    'naprawy-naped': { icon: '/images/accordion-icon-niszczarki-naped.webp' },
-    'naprawy-czujniki': { icon: '/images/accordion-icon-niszczarki-czujniki.webp' },
-    'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
-  },
+  // UPS: brak wpisów — wszystkie grupy mają neutralną ikonę zastępczą (do wymiany na własne)
+  'naprawa-zasilaczy-ups': {},
   // Drukarki kart: te same grupy co drukarki etykiet — tymczasowo ich ikony (do wymiany na własne)
   'serwis-drukarek-do-kart-plastikowych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },

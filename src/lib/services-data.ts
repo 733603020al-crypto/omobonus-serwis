@@ -31,6 +31,7 @@ import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
+import { createUpsPricingSections } from './services-data-ups'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 
 export const services: ServiceData[] = [
@@ -147,7 +148,7 @@ export const services: ServiceData[] = [
     subtitle: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
     icon: '/images/accordion-icon-naprawy.webp',
     description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
-    pricingSections: createNiszczarkiPricingSections(),
+    pricingSections: createUpsPricingSections(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
   },
   // Nowa strona w przygotowaniu: tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs)

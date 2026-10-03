@@ -3,7 +3,7 @@
 
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
-  'naprawa-zasilaczy-ups': '/images/niszczarki-carousel-v1-01.webp', // tymczasowo zdjęcie niszczarek
+  'naprawa-zasilaczy-ups': '/images/ups-carousel-v1-01.webp',
   'serwis-drukarek-do-kart-plastikowych': '/images/karty-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',

@@ -50,6 +50,7 @@ export interface ServiceAccordionDict {
   konserwacjaPromoTitleAlt: string
   konserwacjaPromoDescriptionAlt: string
   konserwacjaPromoDescriptionNiszczarki: string
+  konserwacjaPromoDescriptionUps: string
   konserwacjaPromoTitleInkjet: string
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaIncludedNote: string
@@ -64,6 +65,7 @@ export interface ServiceAccordionDict {
     serwisPlotterow: string
     serwisDrukarekAtramentowych: string
     serwisNiszczarek: string
+    ups: string
     serwisDrukarekDoKart: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
@@ -151,6 +153,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleAlt: '„TYLKO PRZEDMUCHANIE?”',
     konserwacjaPromoDescriptionAlt: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację urządzenia.',
     konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację niszczarki.',
+    konserwacjaPromoDescriptionUps: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełny przegląd i konserwację UPS.',
     konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
@@ -165,6 +168,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Cena zależy od wielkości i konstrukcji plotera: pierwsza – mały, druga – średni, trzecia – duży.',
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
+      ups: 'Cena zależy od mocy zasilacza: pierwsza – do 1 kVA, druga – 1–⁠3 kVA, trzecia – 3–⁠10 kVA. UPS powyżej 10 kVA – wycena indywidualna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
     },
     categoryTranslations: {},
@@ -245,6 +249,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
     konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування знищувача.',
+    konserwacjaPromoDescriptionUps: 'Ми не обмежуємося лише видаленням пилу — виконуємо повний огляд і обслуговування ДБЖ.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
@@ -259,6 +264,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Ціна залежить від розміру та конструкції плотера: перша — малий, друга — середній, третя — великий.',
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
+      ups: 'Ціна залежить від потужності ДБЖ: перша — до 1 kVA, друга — 1–⁠3 kVA, третя — 3–⁠10 kVA. ДБЖ понад 10 kVA — індивідуальна оцінка.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
     },
     categoryTranslationsAtrament: {
@@ -284,6 +290,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // naprawa-zasilaczy-ups
+      'do 1 kVA': { title: 'до 1 kVA', description: 'Невеликі ДБЖ для комп’ютера, роутера, касового апарата або відеоспостереження.', features: [] },
+      '1–3 kVA': { title: '1–3 kVA', description: 'ДБЖ для офісу та невеликих серверів, у корпусі tower або rack.', features: [] },
+      '3–10 kVA': { title: '3–10 kVA', description: 'ДБЖ для серверних і фірм, часто online, з батарейними модулями.', features: [] },
       // serwis-niszczarek
       'Mała': { title: 'Мала', description: 'Компактні знищувачі документів для дому та невеликого офісу, розраховані на невеликі обсяги документів при регулярному використанні.', features: [] },
       'Biurowa': { title: 'Офісна', description: 'Знищувачі для регулярної офісної роботи кількох користувачів, з вищою продуктивністю та складнішою конструкцією.', features: [] },
@@ -367,6 +377,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleAlt: '«ТОЛЬКО ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание устройства.',
     konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание уничтожителя.',
+    konserwacjaPromoDescriptionUps: 'Мы не ограничиваемся только удалением пыли — выполняем полный осмотр и обслуживание ИБП.',
     konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
@@ -381,6 +392,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisPlotterow: 'Цена зависит от размера и конструкции плоттера: первая — малый, вторая — средний, третья — большой.',
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
+      ups: 'Цена зависит от мощности ИБП: первая — до 1 kVA, вторая — 1–⁠3 kVA, третья — 3–⁠10 kVA. ИБП свыше 10 kVA — индивидуальная оценка.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
     },
     categoryTranslationsAtrament: {
@@ -406,6 +418,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // naprawa-zasilaczy-ups
+      'do 1 kVA': { title: 'до 1 kVA', description: 'Небольшие ИБП для компьютера, роутера, кассового аппарата или видеонаблюдения.', features: [] },
+      '1–3 kVA': { title: '1–3 kVA', description: 'ИБП для офиса и небольших серверов, в корпусе tower или rack.', features: [] },
+      '3–10 kVA': { title: '3–10 kVA', description: 'ИБП для серверных и фирм, часто online, с батарейными модулями.', features: [] },
       // serwis-niszczarek
       'Mała': { title: 'Малая', description: 'Компактные уничтожители документов для дома и небольшого офиса, рассчитанные на небольшие объёмы документов при регулярном использовании.', features: [] },
       'Biurowa': { title: 'Офисная', description: 'Уничтожители для регулярной офисной работы нескольких пользователей, с более высокой производительностью и более сложной конструкцией.', features: [] },

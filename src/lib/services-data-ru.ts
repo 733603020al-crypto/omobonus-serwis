@@ -13,6 +13,7 @@ import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from '.
 import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-ru-wynajem'
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-ru-drukarka-zastepcza'
 import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
+import { upsPricingSectionsRu } from './services-data-ups'
 import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
 
 export const servicesRu: ServiceData[] = [
@@ -230,7 +231,7 @@ export const servicesRu: ServiceData[] = [
     subtitle: 'Сервис и ремонт источников бесперебойного питания UPS во Вроцлаве',
     icon: '/images/accordion-icon-naprawy.webp',
     description: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания.',
-    pricingSections: niszczarkiPricingSectionsRu(),
+    pricingSections: upsPricingSectionsRu(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP_RU,
   },
   {
