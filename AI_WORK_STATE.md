@@ -127,6 +127,11 @@
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
 
+### ЭТАП 109 (2026-10-03) — своя карусель страницы «Принтеры для пластиковых карт» (ветка pages/new-service-kart-plastikowych), не закоммичено
+- 6 фото пользователя → public/images/karty-carousel-v1-01..06.webp (обрезка по прозрачности, max 512px, webp q90, 33–49 КБ) + карты подсветки *-depth.webp (Depth Anything v2, тот же скрипт, что у шредеров).
+- Размеры (по указанию пользователя): 1,2 мелкие 0.74/0.76 (сдвиг 0), 3,4 средние 0.85 (4), 5,6 большие 0.95 (13) — KARTY_* в service-page-template.tsx, своя ветка карусели (больше не общая со шредерами).
+- 1-я картинка заменила временную везде (serviceImageSrc). Подсказка категорий: Podstawowa=01 (Zebra), Biznesowa=03 (Evolis Primacy), Retransferowa=05 (Matica XID 8300). tsc OK, проверено 1440/390.
+
 ### ЭТАП 108 (2026-10-03) — логотипы в ленте страницы «Принтеры для пластиковых карт» (ветка pages/new-service-kart-plastikowych)
 - Лента = порядок H2: Evolis, Zebra, HID, Magicard, Entrust, Matica, IDP, HiTi, DASCOM, Swiftcolor, EDIsecure (временные логотипы шредеров убраны).
 - Источники: Evolis, Swiftcolor, Magicard — SVG с официальных сайтов; Matica и EDIsecure — официальный сайт группы Identis (identisgroup.com, владелец Matica); IDP — mail.idp-corp.com; HiTi — официальная картинка hiti.com (белый знак вырезан с фона); HID и Entrust — официальные сайты закрыты защитой от ботов → векторы с Wikimedia Commons.

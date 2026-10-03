@@ -213,6 +213,20 @@ const NISZCZARKI_HERO_SLIDES = [
 const NISZCZARKI_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const NISZCZARKI_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+// serwis-drukarek-do-kart-plastikowych: 6 card-printer renders cropped to their own alpha bbox
+// (see public/images/karty-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const KARTY_HERO_SLIDES = [
+  '/images/karty-carousel-v1-01.webp',
+  '/images/karty-carousel-v1-02.webp',
+  '/images/karty-carousel-v1-03.webp',
+  '/images/karty-carousel-v1-04.webp',
+  '/images/karty-carousel-v1-05.webp',
+  '/images/karty-carousel-v1-06.webp',
+]
+const KARTY_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const KARTY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -246,7 +260,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-niszczarek', // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
-  'serwis-drukarek-do-kart-plastikowych', // kopia serwis-niszczarek (slajdy tymczasowe)
+  'serwis-drukarek-do-kart-plastikowych',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -556,8 +570,15 @@ export function ServicePageTemplate({
                           mobileSizeCoefficients={LASER_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={LASER_VERTICAL_BIAS}
                         />
-                      ) : slug === 'serwis-niszczarek' || slug === 'serwis-drukarek-do-kart-plastikowych' ? (
-                        // serwis-drukarek-do-kart-plastikowych: TYMCZASOWO slajdy niszczarek — do zastąpienia zdjęciami drukarek do kart
+                      ) : slug === 'serwis-drukarek-do-kart-plastikowych' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={KARTY_HERO_SLIDES}
+                          sizeCoefficients={KARTY_SIZE_COEFFICIENTS}
+                          verticalBias={KARTY_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-niszczarek' ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           variant="home"

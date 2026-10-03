@@ -129,7 +129,7 @@ const NISZCZARKI_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ][i],
 }))
 
-// Категории для страницы "Serwis drukarek do kart plastikowych" (картинки — временно от niszczarek)
+// Категории для страницы "Serwis drukarek do kart plastikowych"
 const KARTY_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ...c,
   title: ['Podstawowa', 'Biznesowa', 'Retransferowa'][i],
@@ -249,15 +249,14 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
-  // TYMCZASOWO zdjęcia niszczarek — do zastąpienia zdjęciami drukarek do kart
   if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
     switch (categoryTitle) {
       case 'Podstawowa':
-        return '/images/niszczarki-carousel-v1-01.webp'
+        return '/images/karty-carousel-v1-01.webp'
       case 'Biznesowa':
-        return '/images/niszczarki-carousel-v1-04.webp'
+        return '/images/karty-carousel-v1-03.webp'
       case 'Retransferowa':
-        return '/images/niszczarki-carousel-v2-06.webp'
+        return '/images/karty-carousel-v1-05.webp'
       default:
         return ''
     }
