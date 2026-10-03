@@ -7,6 +7,12 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
   },
+  'serwis-drukarek-do-kart-plastikowych': {
+    h1: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
+    lines: ['Сервис и ремонт', 'принтеров для пластиковых карт', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, DNP, HiTi, …)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -78,6 +84,13 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
       'Оказываем услуги по чистке, обслуживанию, регенерации, ... а также для Oki, Dell, Kyocera, Konica Minolta',
       'Ваш лазерный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день.',
       'Ремонт, чистка, настройка Wi-Fi, проблемы с печатью, замятием бумаги и качеством отпечатка.',
+    ],
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    items: [
+      'Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт.',
+      'Ваш принтер для пластиковых карт — сообщим стоимость ремонта за 15 мин.',
+      'Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие.',
     ],
   },
   'naprawa-drukarek': {
@@ -164,6 +177,7 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
 
 export const imageAltRu: Record<string, string> = {
   'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
+  'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -194,6 +208,10 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   'serwis-niszczarek': {
     title: 'Сервис и ремонт уничтожителей документов',
     description: 'Сервис и ремонт уничтожителей документов во Вроцлаве — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle и другие.',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    title: 'Сервис и ремонт принтеров для пластиковых карт',
+    description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Полный прайс-лист без скрытых платежей.',
   },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',

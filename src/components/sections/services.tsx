@@ -144,6 +144,7 @@ export function Services({
           'wynajem-drukarek',
           'drukarka-zastepcza',
           'druk-3d-na-zamowienie',
+          'serwis-drukarek-do-kart-plastikowych',
         ].includes(service.slug)
     )
     .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))

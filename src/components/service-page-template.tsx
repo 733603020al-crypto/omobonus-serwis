@@ -253,6 +253,7 @@ const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"

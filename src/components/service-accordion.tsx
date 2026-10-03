@@ -863,6 +863,7 @@ const SPECIAL_TOOLTIP_FIT_CLASS = '[translate:max(0px,calc(100%_-_var(--radix-to
 const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',

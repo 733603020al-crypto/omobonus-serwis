@@ -3,6 +3,8 @@
 
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
+  // Tymczasowa grafika zastępcza — do wymiany na zdjęcie drukarki kart
+  'serwis-drukarek-do-kart-plastikowych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -67,7 +69,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = ['serwis-niszczarek']
+export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych']
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.

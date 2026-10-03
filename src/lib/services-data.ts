@@ -31,6 +31,7 @@ import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
+import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 
 export const services: ServiceData[] = [
   {
@@ -138,6 +139,17 @@ export const services: ServiceData[] = [
     description: 'Serwis i naprawa niszczarek.',
     pricingSections: createNiszczarkiPricingSections(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
+  },
+  // Nowa strona w przygotowaniu: tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs)
+  {
+    slug: 'serwis-drukarek-do-kart-plastikowych',
+    title: 'Serwis i naprawa drukarek do kart plastikowych',
+    subtitle: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
+    // Tymczasowa grafika zastępcza (brak własnych zdjęć drukarek kart)
+    icon: '/images/termiczne-carousel-v3-01.webp',
+    description: 'Serwis i naprawa drukarek do kart plastikowych.',
+    pricingSections: createKartyPricingSections(),
+    priceTooltip: KARTY_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

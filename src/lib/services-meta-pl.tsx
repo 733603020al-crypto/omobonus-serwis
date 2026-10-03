@@ -1,9 +1,15 @@
-import type { ServicePageLabels } from '@/components/service-page-template'
+import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
-export const headings: Record<string, { h1: string; h2?: string }> = {
+export const headings: Record<string, ServicePageHeadings> = {
   'serwis-niszczarek': {
     h1: 'Serwis i naprawa niszczarek we Wrocławiu',
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    h1: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek do kart plastikowych', 'we Wrocławiu'],
+    fitMobile: true,
+    h2: '(Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, DNP, HiTi, …)',
   },
 
   'serwis-drukarek-termicznych': {
@@ -82,6 +88,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',
       'Naprawa, czyszczenie, konfiguracja Wi-Fi, problemy z drukowaniem, zacinaniem papieru i jakością wydruku.',]
   },
+  'serwis-drukarek-do-kart-plastikowych': {
+    items: [
+      'Czyszczenie, konserwacja, wymiana głowicy i rolek, naprawa modułów laminacji, retransferu i kodowania kart.',
+      'Twoja drukarka do kart plastikowych — podamy koszt naprawy w 15 min.',
+      'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -154,6 +167,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
 // Opis alternatywny obrazu hero dla każdej usługi
 export const imageAlt: Record<string, string> = {
   'serwis-niszczarek': 'Serwis i naprawa niszczarek',
+  'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -185,6 +199,11 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-niszczarek': {
     title: 'Serwis i naprawa niszczarek',
     description: 'Serwis i naprawa niszczarek we Wrocławiu — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle i inne.',
+  },
+  // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
+  'serwis-drukarek-do-kart-plastikowych': {
+    title: 'Serwis i naprawa drukarek do kart plastikowych',
+    description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Pełny cennik bez ukrytych kosztów.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',

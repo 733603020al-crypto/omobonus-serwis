@@ -13,6 +13,7 @@ import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from '.
 import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-ru-wynajem'
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-ru-drukarka-zastepcza'
 import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
+import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
 
 export const servicesRu: ServiceData[] = [
   {
@@ -221,6 +222,15 @@ export const servicesRu: ServiceData[] = [
     description: 'Сервис и ремонт уничтожителей документов.',
     pricingSections: niszczarkiPricingSectionsRu(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-do-kart-plastikowych',
+    title: 'Сервис и ремонт принтеров для пластиковых карт',
+    subtitle: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
+    icon: '/images/termiczne-carousel-v3-01.webp',
+    description: 'Сервис и ремонт принтеров для пластиковых карт.',
+    pricingSections: kartyPricingSectionsRu(),
+    priceTooltip: KARTY_PRICE_TOOLTIP_RU,
   },
   {
     slug: 'wynajem-drukarek',
