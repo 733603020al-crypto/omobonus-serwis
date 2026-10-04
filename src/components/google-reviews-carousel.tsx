@@ -172,7 +172,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
 
 
     return (
-        <section ref={sectionRef} className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+        <section ref={sectionRef} className="reviews-cv relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
 
 
 

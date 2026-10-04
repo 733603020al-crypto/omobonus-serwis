@@ -93,6 +93,15 @@
     html:not(.cv-off) .home-below > footer { contain-intrinsic-size: auto 597px; }
   }
 
+  /* Other pages: the same skip for blocks that are always below the first
+     screen — Google reviews (fixed height, already clipped) and the footer. */
+  html:not(.cv-off) .reviews-cv { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+  html:not(.cv-off) :not(.home-below) > footer#kontakt { content-visibility: auto; contain-intrinsic-size: auto 950px; }
+  @media (min-width: 768px) {
+    html:not(.cv-off) .reviews-cv { contain-intrinsic-size: auto 320px; }
+    html:not(.cv-off) :not(.home-below) > footer#kontakt { contain-intrinsic-size: auto 560px; }
+  }
+
   /* =========================
      GLOBAL FONTS (FINAL)
      ========================= */
