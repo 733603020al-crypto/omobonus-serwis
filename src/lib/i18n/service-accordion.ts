@@ -49,6 +49,7 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescription: string
   konserwacjaPromoTitleAlt: string
   konserwacjaPromoDescriptionAlt: string
+  konserwacjaPromoTitleNiszczarki: string
   konserwacjaPromoDescriptionNiszczarki: string
   konserwacjaPromoTitleInkjet: string
   konserwacjaPromoDescriptionInkjet: string
@@ -150,7 +151,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
     konserwacjaPromoTitleAlt: '„TYLKO PRZEDMUCHANIE?”',
     konserwacjaPromoDescriptionAlt: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację urządzenia.',
-    konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację niszczarki.',
+    konserwacjaPromoTitleNiszczarki: '„TYLKO OLEJENIE?”',
+    konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się do naoliwienia noży — wykonujemy pełną konserwację niszczarki.',
     konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
@@ -164,7 +166,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Cena zależy od wielkości i konstrukcji drukarki: pierwsza – mała, druga – średnia, trzecia – duża drukarka 3D.',
       serwisPlotterow: 'Cena zależy od wielkości i konstrukcji plotera: pierwsza – mały, druga – średni, trzecia – duży.',
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
-      serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
+      serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna. Duże niszczarki centralne i przemysłowe — wycena indywidualna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
     },
     categoryTranslations: {},
@@ -244,7 +246,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повне обслуговування системи охолодження',
     konserwacjaPromoTitleAlt: '«ТІЛЬКИ ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування пристрою.',
-    konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування знищувача.',
+    konserwacjaPromoTitleNiszczarki: '«ТІЛЬКИ ЗМАЩЕННЯ?»',
+    konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося змащенням ножів — виконуємо повне обслуговування знищувача.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
@@ -258,7 +261,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Ціна залежить від розміру та конструкції принтера: перша — малий, друга — середній, третя — великий 3D-принтер.',
       serwisPlotterow: 'Ціна залежить від розміру та конструкції плотера: перша — малий, друга — середній, третя — великий.',
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
-      serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
+      serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія. Великі центральні та промислові знищувачі — індивідуальна оцінка вартості.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
     },
     categoryTranslationsAtrament: {
@@ -366,7 +369,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
     konserwacjaPromoTitleAlt: '«ТОЛЬКО ПРОДУВКА?»',
     konserwacjaPromoDescriptionAlt: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание устройства.',
-    konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание уничтожителя.',
+    konserwacjaPromoTitleNiszczarki: '«ТОЛЬКО СМАЗКА?»',
+    konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся смазкой ножей — выполняем полное обслуживание уничтожителя.',
     konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
@@ -380,7 +384,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarek3d: 'Цена зависит от размера и конструкции принтера: первая — малый, вторая — средний, третья — большой 3D-принтер.',
       serwisPlotterow: 'Цена зависит от размера и конструкции плоттера: первая — малый, вторая — средний, третья — большой.',
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
-      serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
+      serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория. Большие центральные и промышленные уничтожители — индивидуальный расчёт стоимости.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
     },
     categoryTranslationsAtrament: {

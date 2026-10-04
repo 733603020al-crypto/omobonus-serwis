@@ -1052,7 +1052,6 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const [priceColumnsPosition1DZ, setPriceColumnsPosition1DZ] = useState<{ left: number; width: number } | null>(null)
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
-  // serwis-niszczarek: TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych'
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
@@ -1064,7 +1063,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isOutsourcingService = service.slug === 'outsourcing-it'
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
-  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
   const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen

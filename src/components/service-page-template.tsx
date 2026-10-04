@@ -64,7 +64,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-iglowych': 1.2,
   'serwis-drukarek-atramentowych': 1.2,
   'serwis-drukarek-laserowych': 1.2,
-  'serwis-niszczarek': 1.2, // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  'serwis-niszczarek': 1.2,
   'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
@@ -261,7 +261,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
-  'serwis-niszczarek', // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
+  'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
 ])
 

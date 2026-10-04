@@ -8,6 +8,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_n_n_n": { pl: "{0} / {1} / {2}", ru: "{0} / {1} / {2}", uk: "{0} / {1} / {2}" },
   "p_n_zl": { pl: "{0} zł", ru: "{0} zł", uk: "{0} zł" },
   "p_gratis": { pl: "GRATIS", ru: "Бесплатно", uk: "Безкоштовно" },
+  "p_do_ustalenia": { pl: "do ustalenia", ru: "Индивидуально", uk: "за домовленістю" },
   "p_n": { pl: "{0}", ru: "{0}", uk: "{0}" },
   "p_n_zl_czesci_v2": { pl: "{0} zł + części", ru: "{0} zł + детали", uk: "{0} zł + деталі" },
   "p_n_zl_czesc_zl": { pl: "{0} zł + część", ru: "{0} zł + деталь", uk: "{0} zł + деталь" },

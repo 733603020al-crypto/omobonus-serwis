@@ -3,7 +3,7 @@ import type { ServicePageHeadings, ServicePageLabels } from '@/components/servic
 export const headings: Record<string, ServicePageHeadings> = {
   'serwis-niszczarek': {
     h1: 'Serwis i naprawa niszczarek we Wrocławiu',
-    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
   },
   'serwis-drukarek-do-kart-plastikowych': {
     h1: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
@@ -82,11 +82,12 @@ export type SeoBlock = {
 }
 
 export const seoBlocks: Record<string, SeoBlock> = {
-  // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-niszczarek': {
-    items: ['Świadczymy usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta',
-      'Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',
-      'Naprawa, czyszczenie, konfiguracja Wi-Fi, problemy z drukowaniem, zacinaniem papieru i jakością wydruku.',]
+    items: [
+      'Konserwacja i olejenie, usuwanie zacięć, naprawa mechanizmu tnącego, przekładni, silnika i czujników niszczarki.',
+      'Twoją niszczarkę możemy wstępnie sprawdzić po dostarczeniu do serwisu — wstępna diagnoza trwa do 15 min.',
+      'Niszczarki małe, biurowe i profesjonalne: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg i inne.',
+    ],
   },
   'serwis-drukarek-do-kart-plastikowych': {
     items: [
@@ -195,10 +196,9 @@ export const subServiceTitles: Record<string, string> = {
 }
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
-  // Tymczasowe neutralne metadane — docelowy tekst SEO zostanie dodany osobno
   'serwis-niszczarek': {
-    title: 'Serwis i naprawa niszczarek',
-    description: 'Serwis i naprawa niszczarek we Wrocławiu — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle i inne.',
+    title: 'Naprawa niszczarek Wrocław — serwis i cennik',
+    description: 'Serwis i naprawa niszczarek we Wrocławiu: konserwacja i olejenie, usuwanie zacięć, wymiana noży, naprawa silnika i czujników. Cennik netto, diagnoza gratis przy naprawie. Fellowes, HSM, Kobra, Rexel, IDEAL.',
   },
   // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
   'serwis-drukarek-do-kart-plastikowych': {

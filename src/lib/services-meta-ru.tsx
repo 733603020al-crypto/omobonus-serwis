@@ -5,7 +5,7 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     h1: 'Сервис и ремонт уничтожителей документов во Вроцлаве',
     lines: ['Сервис и ремонт', 'уничтожителей документов', 'во Вроцлаве'],
     fitMobile: true,
-    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach)',
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
   },
   'serwis-drukarek-do-kart-plastikowych': {
     h1: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
@@ -78,12 +78,11 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
 }
 
 export const seoBlocksRu: Record<string, { items: string[] }> = {
-  // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-niszczarek': {
     items: [
-      'Оказываем услуги по чистке, обслуживанию, регенерации, ... а также для Oki, Dell, Kyocera, Konica Minolta',
-      'Ваш лазерный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день.',
-      'Ремонт, чистка, настройка Wi-Fi, проблемы с печатью, замятием бумаги и качеством отпечатка.',
+      'Обслуживание и смазка, устранение заторов, ремонт режущего механизма, редуктора, двигателя и датчиков уничтожителя.',
+      'Ваш уничтожитель можем предварительно проверить после доставки в сервис — предварительная диагностика занимает до 15 мин.',
+      'Малые, офисные и профессиональные уничтожители: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg и другие.',
     ],
   },
   'serwis-drukarek-do-kart-plastikowych': {
@@ -204,10 +203,9 @@ export const subServiceTitlesRu: Record<string, string> = {
 }
 
 export const seoMetadataRu: Record<string, { title: string; description: string }> = {
-  // Временные нейтральные метаданные — итоговый SEO-текст будет добавлен отдельно
   'serwis-niszczarek': {
-    title: 'Сервис и ремонт уничтожителей документов',
-    description: 'Сервис и ремонт уничтожителей документов во Вроцлаве — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle и другие.',
+    title: 'Ремонт уничтожителей документов Вроцлав — сервис и цены',
+    description: 'Сервис и ремонт уничтожителей документов во Вроцлаве: обслуживание и смазка, устранение заторов, замена ножей, ремонт двигателя и датчиков. Цены нетто, диагностика бесплатно при ремонте. Fellowes, HSM, Kobra, Rexel, IDEAL.',
   },
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Сервис принтеров для пластиковых карт — Zebra, Evolis, Fargo',

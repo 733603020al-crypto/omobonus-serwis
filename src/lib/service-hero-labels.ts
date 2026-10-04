@@ -36,12 +36,11 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Nie koduje kart',
     ],
 
-    // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
     'serwis-niszczarek': [
         'Zacina papier',
-        'Blady wydruk',
-        'Brudzi kartki',
-        'Wymiana tonera',
+        'Nie wciąga papieru',
+        'Głośno pracuje',
+        'Olejenie i konserwacja',
     ],
 
     'serwis-drukarek-atramentowych': [
