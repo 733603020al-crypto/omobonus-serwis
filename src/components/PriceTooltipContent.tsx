@@ -254,9 +254,9 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
       case 'Podstawowa':
         return '/images/karty-carousel-v1-01.webp'
       case 'Biznesowa':
-        return '/images/karty-carousel-v1-03.webp'
+        return '/images/karty-carousel-v1-04.webp'
       case 'Retransferowa':
-        return '/images/karty-carousel-v1-05.webp'
+        return '/images/karty-carousel-v1-06.webp'
       default:
         return ''
     }

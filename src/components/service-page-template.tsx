@@ -224,7 +224,9 @@ const KARTY_HERO_SLIDES = [
   '/images/karty-carousel-v1-05.webp',
   '/images/karty-carousel-v1-06.webp',
 ]
-const KARTY_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const KARTY_SIZE_COEFFICIENTS = [0.666, 0.76, 0.85, 0.85, 1.045, 0.95]
+// Phone: slide 5 also ~10% larger — 1.1 × the 0.78 phone cap it was held at.
+const KARTY_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, undefined, 0.858]
 const KARTY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
@@ -576,6 +578,7 @@ export function ServicePageTemplate({
                           variant="home"
                           slides={KARTY_HERO_SLIDES}
                           sizeCoefficients={KARTY_SIZE_COEFFICIENTS}
+                          mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-niszczarek' ? (

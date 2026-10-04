@@ -48,6 +48,7 @@ export const DURATION_WRAPPERS: Record<string, WrapperTemplate> = {
   "d_n_n_dni_v2": { pl: "{0}–{1} dni", ru: "{0}–{1} дня", uk: "{0}–{1} дні" },
   "d_n_n_dni_v3": { pl: "{0}-{1} dni", ru: "{0}-{1} дней", uk: "{0}-{1} днів" },
   "d_n_n_dni_v4": { pl: "{0}–{1} dni", ru: "{0}–{1} дней", uk: "{0}–{1} днів" },
+  "d_n_n_dni_czesci": { pl: "{0}–{1} dni\n+ czas na części", ru: "{0}–{1} дней\n+ время на запчасти", uk: "{0}–{1} днів\n+ час на запчастини" },
   "d_do_n_h": { pl: "do {0} h", ru: "до {0} ч", uk: "до {0} год" },
   "d_od_reki": { pl: "od ręki", ru: "сразу", uk: "одразу" },
   "d_do_n_dnia": { pl: "do {0} dnia", ru: "до {0} дня", uk: "до {0} дня" },

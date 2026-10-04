@@ -145,8 +145,7 @@ export const services: ServiceData[] = [
     slug: 'serwis-drukarek-do-kart-plastikowych',
     title: 'Serwis i naprawa drukarek do kart plastikowych',
     subtitle: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
-    // Tymczasowa grafika zastępcza (brak własnych zdjęć drukarek kart)
-    icon: '/images/termiczne-carousel-v3-01.webp',
+    icon: '/images/karty-carousel-v1-01.webp',
     description: 'Serwis i naprawa drukarek do kart plastikowych.',
     pricingSections: createKartyPricingSections(),
     priceTooltip: KARTY_PRICE_TOOLTIP,

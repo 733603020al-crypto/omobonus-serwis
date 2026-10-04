@@ -383,7 +383,7 @@ export const renderPriceLines = (price: string, link?: string) => {
 }
 
 export const renderDurationValue = (value: string) => (
-  <div className="duration-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
+  <div className="duration-value-text whitespace-pre-line font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
     {value}
   </div>
 )
@@ -1886,7 +1886,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-niszczarek'
                                 ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
-                                ? '/images/accordion-icon-czyszczenie.webp'
+                                ? '/images/accordion-icon-karty-czyszczenie-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
@@ -1910,7 +1910,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-niszczarek'
                                 ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
-                                ? NAPRAWY_PLACEHOLDER_ICON
+                                ? '/images/accordion-icon-karty-naprawy-v3.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
                                 ? '/images/accordion-icon-naprawy-termiczne-v3.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isNeedleService

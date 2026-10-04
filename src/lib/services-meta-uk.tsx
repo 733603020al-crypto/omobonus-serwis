@@ -88,7 +88,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
   'serwis-drukarek-do-kart-plastikowych': {
     items: [
       'Чищення, обслуговування, заміна головки й роликів, ремонт модулів ламінації, ретрансферу та кодування карток.',
-      'Ваш принтер для пластикових карток — повідомимо вартість ремонту за 15 хв.',
+      'Ваш принтер для пластикових карток — попередньо оцінимо проблему за 15 хв.',
       'Принтери для ID-карток, бейджів і карток лояльності: Zebra, Evolis, HID Fargo, Magicard та інші.',
     ],
   },
@@ -209,8 +209,8 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: 'Сервіс і ремонт знищувачів документів у Вроцлаві — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle та інші.',
   },
   'serwis-drukarek-do-kart-plastikowych': {
-    title: 'Сервіс і ремонт принтерів для пластикових карток',
-    description: 'Сервіс і ремонт принтерів для пластикових карток у Вроцлаві — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard та інші. Повний прайс-лист без прихованих витрат.',
+    title: 'Сервіс принтерів для пластикових карток — Zebra, Evolis, Fargo',
+    description: 'Сервіс і ремонт принтерів для пластикових карток у Вроцлаві — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard та інші. Прозорий прайс — вартість ремонту погоджуємо до його виконання.',
   },
   'serwis-laptopow': {
     title: 'Сервіс і ремонт ноутбуків',

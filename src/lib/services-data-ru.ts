@@ -227,7 +227,7 @@ export const servicesRu: ServiceData[] = [
     slug: 'serwis-drukarek-do-kart-plastikowych',
     title: 'Сервис и ремонт принтеров для пластиковых карт',
     subtitle: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
-    icon: '/images/termiczne-carousel-v3-01.webp',
+    icon: '/images/karty-carousel-v1-01.webp',
     description: 'Сервис и ремонт принтеров для пластиковых карт.',
     pricingSections: kartyPricingSectionsRu(),
     priceTooltip: KARTY_PRICE_TOOLTIP_RU,

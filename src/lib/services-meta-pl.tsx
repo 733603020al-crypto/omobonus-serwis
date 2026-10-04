@@ -91,7 +91,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
   'serwis-drukarek-do-kart-plastikowych': {
     items: [
       'Czyszczenie, konserwacja, wymiana głowicy i rolek, naprawa modułów laminacji, retransferu i kodowania kart.',
-      'Twoja drukarka do kart plastikowych — podamy koszt naprawy w 15 min.',
+      'Twoja drukarka do kart plastikowych — wstępnie ocenimy problem w 15 min.',
       'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
     ],
   },
@@ -202,8 +202,8 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
   'serwis-drukarek-do-kart-plastikowych': {
-    title: 'Serwis i naprawa drukarek do kart plastikowych',
-    description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Pełny cennik bez ukrytych kosztów.',
+    title: 'Serwis drukarek do kart plastikowych — Zebra, Evolis, Fargo',
+    description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Przejrzysty cennik — koszt naprawy ustalamy przed jej wykonaniem.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
