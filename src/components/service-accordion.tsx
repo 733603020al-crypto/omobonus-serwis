@@ -156,6 +156,7 @@ const PROPER_NOUN_PREFIXES = [
   'bios',
   'uefi',
   'raid',
+  'ups ',
   'hp',
   'canon',
   'epson',
@@ -845,6 +846,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
@@ -865,6 +867,7 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
@@ -1052,7 +1055,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const [priceColumnsPosition1DZ, setPriceColumnsPosition1DZ] = useState<{ left: number; width: number } | null>(null)
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
-  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych'
+  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups'
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
   const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
@@ -1064,7 +1067,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
   const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1189,7 +1192,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
       const aspectRatio = 858 / 1465
       const aspectHeight = aspectRatio * containerWidth
       // serwis-niszczarek: tylko 4 podkategorie — bez dopełniania do proporcji tła, inaczej pod listą zostaje pusty pas
-      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek')
+      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek' || service.slug === 'naprawa-zasilaczy-ups')
         ? 24
         : Math.max(aspectHeight - measuredHeight, 24)
       setParchmentListMetrics({
@@ -1882,11 +1885,13 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-niszczarek'
                                 ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-karty-czyszczenie-v3.webp'
-                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
                                 ? '/images/accordion-icon-czyszczenie-termiczne-v2.webp'
@@ -1906,6 +1911,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-outsourcing-abonament-v2.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-niszczarek'
                                 ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
@@ -1916,7 +1923,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-naprawy-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
                                 ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
-                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
                                 ? '/images/accordion-icon-naprawy-laser-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isDesktopComputerService
                                 ? '/images/accordion-icon-komputer-naprawy.webp'

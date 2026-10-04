@@ -42,6 +42,12 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Гучно працює',
     'Змащення й обслуговування',
   ],
+  'naprawa-zasilaczy-ups': [
+    'Застрягає папір',
+    'Блідий друк',
+    'Бруднить сторінки',
+    'Заміна тонера',
+  ],
 
   'serwis-drukarek-atramentowych': [
     'Не друкує',

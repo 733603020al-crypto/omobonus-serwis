@@ -93,6 +93,7 @@ const PL: ServicesT = {
     'serwis-drukarek-iglowych': 'Drukarek igłowych',
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
+    'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
@@ -147,6 +148,7 @@ export function Services({
           'druk-3d-na-zamowienie',
           'serwis-niszczarek',
           'serwis-drukarek-do-kart-plastikowych',
+          'naprawa-zasilaczy-ups',
         ].includes(service.slug)
     )
     .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))

@@ -31,6 +31,7 @@ import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
+import { createUpsPricingSections } from './services-data-ups'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 
 export const services: ServiceData[] = [
@@ -140,6 +141,14 @@ export const services: ServiceData[] = [
     pricingSections: createNiszczarkiPricingSections(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
   },
+  {
+    slug: 'naprawa-zasilaczy-ups',
+    title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
+    subtitle: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
+    icon: '/images/ups-carousel-v1-01.webp',
+    description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
+    pricingSections: createUpsPricingSections(),
+  },
   // Nowa strona w przygotowaniu: tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs)
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',
@@ -177,6 +186,7 @@ export const HOME_EXTRA_SERVICES = [
   'serwis-drukarek-iglowych',
   'druk-3d-na-zamowienie',
   'serwis-niszczarek',
+  'naprawa-zasilaczy-ups',
   'wynajem-drukarek',
   'drukarka-zastepcza',
 ]

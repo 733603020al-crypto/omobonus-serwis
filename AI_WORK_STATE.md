@@ -9,16 +9,6 @@
 <!-- КОНЕЦ ШАПКИ: дальше читать только по необходимости (поиск по «ЭТАП N» / hash) -->
 
 Обновлено: 2026-10-03 (ЭТАП 105). Структура: цель → 7 сводных разделов → журнал этапов (новые сверху) → АРХИВ подробных старых записей.
-=======
-- Контрольные точки (2026-10-03): `test` = 00587d8 (последний коммит кода be5f4d3); `pages/new-services` = 481c5e0 (страница «Сервис шредеров», прайс/FAQ в HTML) + незакоммичено: логотип Rexel, иконки аккордеона шредеров (ЭТАП 104), правка правил Claude Code (ЭТАП 105).
-- `pages/new-service-kart-plastikowych` = df03fec (930a776+df03fec, от 481c5e0): страница «Сервис принтеров для пластиковых карт», только по прямой ссылке, noindex; полная копия страницы шредеров (карусель, лента логотипов, подсказка категорий) с временными фото/логотипами шредеров — ждём настоящие (ЭТАП 106). Логотипы брендов → 21d7285 (ЭТАП 107).
-- ПЛАН (решение пользователя 2026-10-03): в test пока НИЧЕГО не переносить. Сначала доделать содержимое страниц шредеров и карт + решить публикацию (noindex, меню, главная, sitemap); потом одним этапом перенести всё в test и заново проверить затронутые страницы.
-- Последние этапы: 107 логотипы брендов + доработки шредеров/CTA (коммит на pages/new-service-kart-plastikowych) · 106 страница drukarek kart → 930a776 · 105 настройки Claude Code (doctor) · 104 Rexel + иконки шредеров · 102 прайс/FAQ в HTML → 481c5e0 · 101 → 00587d8 · 100 → f11623f · 85 → 865ec0f · 84 → 610b3c5.
-- Карта файла (всё ниже — справочно, читать только по необходимости, через поиск «ЭТАП N» / hash): цель → разделы 1–7 (сводка, контрольная точка `test` в разделе 6) → «ЖУРНАЛ ЭТАПОВ» (новые сверху) → «АРХИВ» → записи, дописанные в конец файла после архива (ЭТАП 84/85, 2026-09-30/10-01, 102, 104, 105).
-- История не удаляется; новые этапы — короткой записью сверху раздела «ЖУРНАЛ ЭТАПОВ» + обновить эту шапку. Номера этапов в `test` и `pages/new-services` пересекаются (102 есть в обеих с разным смыслом) — искать вместе с датой/hash.
-<!-- КОНЕЦ ШАПКИ: дальше читать только по необходимости (поиск по «ЭТАП N» / hash) -->
-
-Обновлено: 2026-10-02 (ЭТАП 100). Структура: цель → 7 сводных разделов → журнал этапов (новые сверху) → АРХИВ подробных старых записей.
 Источник правды для статусов — Git (`git log origin/test`). Все hash в разделах 1–6 проверены командой `git merge-base --is-ancestor <hash> origin/test` 2026-10-02: все есть в origin/test, test = origin/test.
 Пометка «не подтверждено» = нет доказательства ни в Git, ни в отчёте, ни в журнале.
 
@@ -193,7 +183,6 @@
 - V2 (отложенная гидрация всего прайса): серверный HTML 54 URL идентичен базе (кроме невидимой обёртки и авто-id); начальный JS услуг 234→187 КБ gz, 14→12 скриптов. Первая версия на React.lazy+Suspense отклонена сразу: React выносит большой блок (>12,8 КБ) в конец потока и вставляет после первой отрисовки → прайс «выпрыгивает» под футером. Рабочая версия (пустая обёртка при гидрации + подмена одним коммитом) функционально ок: ранний клик повторяется, фокус восстанавливается, раскладка до/после подмены совпадает на 390/768/1440. Но LH: 70→68, 67→66, 69→68, главная 76→73, naprawa 64→75; TBT 316→417 на laptopow — поздний полный рендер прайса сам попадает в окно замера. Откатано.
 - Разбор Lighthouse laptopow (база): LCP — картинка карусели первого экрана, задержка отрисовки; процессор: стили/раскладка ~1,8–2,6 с, скрипты ~1,5–1,9 с, отрисовка ~0,7 с; чанк аккордеона — ~185 мс. DOM 806 элементов.
 - Вывод: безопасный резерв по JS исчерпан. Для 90+ остаются только визуальные упрощения первого экрана (список — в отчёте ЭТАП 101, решение пользователя).
-=======
 ### ЭТАП 116 (2026-10-03) — иконки подкатегорий ремонтов принтеров карт → заглушка (ветка pages/new-service-kart-plastikowych), закоммичено
 - По указанию пользователя убраны иконки от термопринтеров у всех 8 подкатегорий «Naprawy» (запись страницы удалена из service-visuals) — везде нейтральная заглушка ремонтов. Ждём свои картинки.
 
@@ -209,6 +198,36 @@
 
 ### ЭТАП 112 (2026-10-03) — цена полной консервации принтеров карт (ветка pages/new-service-kart-plastikowych), закоммичено
 - По указанию пользователя: «Pełna konserwacja» = 180 / 250 / 350 zł + materiały (новый шаблон цены с «+ materiały / матеріали / материалы»), срок 1–2 dni. Больше ничего не менялось. Правки этой страницы — только в этой ветке.
+### ЭТАП 113 (2026-10-04) — UPS: финальные правки и публикация (ветка pages/new-service-ups), не закоммичено
+- FAQ (PL/UK/RU, теперь 26): «rodzaje» — duże/trójfazowe przyjmujemy do serwisu bez wyjazdu, powyżej 10 kVA wycena indywidualna; «kurier» — как упаковать (выключить, крепкий картон, наполнитель), большие/тяжёлые — связаться до отправки, лично или odbiór/dostawa wg cennika (Dojazd оставлен); новый вопрос для фирм — faktura VAT, регулярные przeglądy/stała obsługa po ustaleniu zakresu, w naszym serwisie.
+- Убраны остатки донора: комментарии «kopia serwis-niszczarek», невидимый priceTooltip шредеров у UPS (PL/UK/RU).
+- og/twitter image = /images/ups-carousel-v1-01.webp (icon услуги).
+- Публикация: UPS убран из noindexSlugs → index, sitemap ×3, hreflang pl/uk/ru/x-default; в мега-меню (колонка 1, «Zasilaczy UPS / ДБЖ (UPS) / ИБП (UPS)», иконка ups-icon-v3.webp); карточка на главной в HOME_EXTRA_SERVICES после шредеров, картинка services-card-v2-ups(.webp/-mobile) из рисунка пользователя (растянута на полный кадр как у шредеров; mobile 720×298 + поля 20px).
+- Проверено: tsc, build OK; PL/UK/RU 1440/390 — robots index, FAQ 26, 0 битых картинок, 0 ошибок 404, без горизонтального скролла, нет текста шредеров.
+
+### ЭТАП 112 (2026-10-03) — UPS: блоки Diagnoza, Konserwacja, Naprawy (ветка pages/new-service-ups), не закоммичено
+- services-pricing-data.ts, только naprawa-zasilaczy-ups::diagnoza: rezygnacja 100 / 180 / 300 (p_n_n_n), opinia +50 zł, pilna GRATIS (не менялись), сроки полной диагнозы (items 2–4) 1–3 dni; предварительные «do 15 min» и «do ustalenia» оставлены. PL/UK/RU подхватывают автоматически.
+- FAQ UPS — свой, 28 вопросов от пользователя (PL + перевод UK/RU) в services-data-ups.ts (UPS_FAQ_*), шредерный FAQ убран; разметка FAQ для поиска подхватывает все 28.
+- Блок «Czyszczenie i konserwacja»: свой пакет «PRZEGLĄD I KONSERWACJA UPS» (8 пунктов, PL + перевод UK/RU) в новом src/lib/services-data-ups.ts (createUpsPricingSections / upsPricingSectionsUk / upsPricingSectionsRu = секции шредеров с заменой konserwacja); цена 180 / 450 / 900, срок 1–2 dni. Подпись над блоком — своя: «Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełny przegląd i konserwację UPS.» (i18n konserwacjaPromoDescriptionUps, PL/UK/RU); заголовок «TYLKO PRZEDMUCHANIE?» общий.
+- «Naprawy i usługi serwisowe» перестроен под UPS (services-data-ups.ts, PL + UK/RU): 7 групп — akumulatory, ladowanie-dc, falownik, bypass, elektronika, chlodzenie, komunikacja (24 услуги, «Название\n(симптомы)»); цены do 3 / 3–10 / 10+ kVA и сроки — в services-pricing-data.ts (старые ключи шредеров для UPS удалены). Отдельных «Kalibracja» / «Test pod obciążeniem» нет — по указанию.
+- Иконки (2026-10-04): свои картинки пользователя для всех 7 групп Naprawy (accordion-icon-ups-*.webp, обрезка по контуру, высота 200, через service-visuals.ts) и шапок Czyszczenie/Naprawy (accordion-icon-ups-czyszczenie/naprawy.webp в service-accordion.tsx); Diagnoza/Dojazd/FAQ — общие. Источник: Desktop/omobonus-foto/Nowy folder/naprawa-zasilaczy-ups/карточки.
+aprawa-zasilaczy-upsкарточки.
+- Классы мощности UPS (решение пользователя): колонки цен = do 1 kVA / 1–3 kVA / 3–10 kVA; >10 kVA — «wycena indywidualna» (в подсказке «Cena ⓘ»: свои 3 класса + описание, i18n deviceCategoriesDescription.ups, картинки — нейтральная заглушка). Цены пересмотрены по исследованию конкурентов (A&D, Nano, iTECH, Rafcom, Power Supply и др.) + правки пользователя: не снижать массово, опора на iTECH; итог напр. akumulatory wymiana 60/120/220, ładowanie 180/300/500, falownik 200/350/650, MOSFET/IGBT 220/400/700, płyta sterująca 180/300/550, przegląd 150/250/450, rezygnacja 60/100/180; Static Bypass и SNMP «— / … / …» (нет у малых UPS).
+- Названия: «Baterie i akumulatory», «Ładowanie i zasilanie», «Wymiana tranzystorów mocy (MOSFET / IGBT)», «karta sieciowa SNMP»; новые услуги «Naprawa po przepięciu / burzy» (falownik.4, 250/450/800) и «Aktualizacja / przywrócenie oprogramowania UPS» (elektronika.4, 50/80/120) — PL/UK/RU.
+- Решения пользователя: курьер из всей Польши — строка в Dojazd «Wysyłka kurierem z całej Polski» (według cennika przewoźnika, 1–2 dni, только UPS через withUps) + FAQ «z całej Polski»; гарантия 6 мес. на работу / 12 мес. на новые аккумуляторы — FAQ; утилизация — не писать (FAQ про zużyte akumulatory удалён); срочный ремонт — оставить существующую Pilna realizacja; «płacisz tylko za skuteczną naprawę» — не добавлять, платную rezygnacja оставить; подменный UPS / монтаж / продажа — не предлагаем, нигде не упоминать (правило: то, на что пользователь ответил «нет», на странице не ставить).
+- FAQ UPS перестроен (25 вопросов PL/UK/RU): +6 новых (срок 1–3 дня, платная ли диагностика, от чего цена, писк/Replace Battery, сколько служат аккумуляторы, повтор неисправности — бесплатно по гарантии); 8 «czy naprawiacie…» → 2 (podzespoły; sekcja mocy MOSFET/IGBT/bypass); 4 типа → 1 «Jakie rodzaje UPS»; симптомы отдельно; в курьере — можно привезти лично. Ничего про выезд/подменный/аренду/продажу/24h.
+- Свои фото UPS: public/images/ups-carousel-v1-01..06.webp (+ -depth), размеры как у других страниц 0.74/0.76/0.85/0.85/0.95/0.95, сдвиг 0/0/4/4/13/13 (UPS_* в service-page-template.tsx); 1-е фото — главная картинка услуги; подсказка категорий: do 1 kVA=01 (APC), 1–3 kVA=04 (Vertiv), 3–10 kVA=06 (Delta). Проверено 1440/390.
+- В service-accordion.tsx в исключения строчной буквы добавлено «ups » — чтобы симптомы «(UPS …» не превращались в «(uPS …».
+
+### ЭТАП 111 (2026-10-03) — логотипы в ленте страницы UPS (ветка pages/new-service-ups), не закоммичено
+- Лента = порядок H2, 24 бренда (APC, Eaton — уже были; 22 новых файла в public/images/brands, listedOnly, метрики дописаны вручную).
+- Источники: официальные сайты — Schneider (белая версия), Riello UPS (riello-ups.de), Vertiv, Emerson (белая), Socomec (белая+жёлтый, со слоганом), Delta (белая), Ever (белая), Fideltronik (стандартный логотип из архива их сайта, без юбилейного «40»), CyberPower, PowerWalker (белая), Legrand (белая), AEG Power Solutions, GE, Siemens (белая), GTec Polska, Borri, Orvaldi, Salicru. ABB и Liebert — Wikimedia Commons; Powerware (архив powerware.com 2006) и MGE (архив mgeups.com 2005) — бренды закрыты, низкое разрешение.
+- Обработка: тёмные части → белый (Vertiv, CyberPower, Liebert, Fideltronik-текст, Riello-текст, MGE, Borri целиком, серое у G-Tec), цветные знаки оставлены. scale не понадобился. tsc OK, проверено 1440/390.
+
+### ЭТАП 110 (2026-10-03) — страница «Сервис и ремонт ИБП/UPS» (ветка pages/new-service-ups, от 1c8b5bd), не закоммичено
+- Адрес /uslugi/naprawa-zasilaczy-ups (+ /uk, /ru) — по просьбе пользователя вместо serwis-ups. Только прямая ссылка: noindex, нет в меню, на главной и в sitemap.
+- Утверждено: title «Serwis i naprawa UPS – zasilaczy awaryjnych», H1 «Serwis i naprawa / zasilaczy awaryjnych UPS / we Wrocławiu», H2 (APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru…), alt «Zasilacz awaryjny UPS», CTA «Masz problem z UPS-em?»; UK/RU по смыслу.
+- Всё остальное — полная копия шредеров (карусель, лента логотипов, подсказка категорий, иконки, цены/сроки, FAQ) как заглушки; ждём фото, логотипы, цены и тексты UPS. tsc+build OK, проверено 1440/390.
 
 ### ЭТАП 109 (2026-10-03) — своя карусель страницы «Принтеры для пластиковых карт» (ветка pages/new-service-kart-plastikowych), не закоммичено
 - 6 фото пользователя → public/images/karty-carousel-v1-01..06.webp (обрезка по прозрачности, max 512px, webp q90, 33–49 КБ) + карты подсветки *-depth.webp (Depth Anything v2, тот же скрипт, что у шредеров).

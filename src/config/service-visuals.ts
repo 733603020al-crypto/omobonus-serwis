@@ -70,6 +70,15 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-czujniki': { icon: '/images/accordion-icon-niszczarki-czujniki.webp' },
     'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
   },
+  'naprawa-zasilaczy-ups': {
+    'naprawy-akumulatory': { icon: '/images/accordion-icon-ups-akumulatory.webp' },
+    'naprawy-ladowanie-dc': { icon: '/images/accordion-icon-ups-ladowanie.webp' },
+    'naprawy-falownik': { icon: '/images/accordion-icon-ups-falownik.webp' },
+    'naprawy-bypass': { icon: '/images/accordion-icon-ups-bypass.webp' },
+    'naprawy-elektronika': { icon: '/images/accordion-icon-ups-elektronika.webp' },
+    'naprawy-chlodzenie': { icon: '/images/accordion-icon-ups-chlodzenie.webp' },
+    'naprawy-komunikacja': { icon: '/images/accordion-icon-ups-komunikacja.webp' },
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-karty-podawanie.webp' },
     'naprawy-glowica-platen': { icon: '/images/accordion-icon-karty-glowica.webp' },
