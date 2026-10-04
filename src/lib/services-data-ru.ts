@@ -224,15 +224,13 @@ export const servicesRu: ServiceData[] = [
     pricingSections: niszczarkiPricingSectionsRu(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP_RU,
   },
-  // Nowa strona w przygotowaniu: kopia serwis-niszczarek (treść/ceny tymczasowe), tylko bezpośredni adres (noindex)
   {
     slug: 'naprawa-zasilaczy-ups',
     title: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания',
     subtitle: 'Сервис и ремонт источников бесперебойного питания UPS во Вроцлаве',
-    icon: '/images/accordion-icon-naprawy.webp',
+    icon: '/images/ups-carousel-v1-01.webp',
     description: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания.',
     pricingSections: upsPricingSectionsRu(),
-    priceTooltip: NISZCZARKI_PRICE_TOOLTIP_RU,
   },
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',

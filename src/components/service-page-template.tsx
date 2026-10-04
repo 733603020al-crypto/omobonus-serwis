@@ -66,7 +66,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-laserowych': 1.2,
   'serwis-niszczarek': 1.2, // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
-  'naprawa-zasilaczy-ups': 1.2, // kopia serwis-niszczarek
+  'naprawa-zasilaczy-ups': 1.2,
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 

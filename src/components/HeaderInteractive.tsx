@@ -136,6 +136,7 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
       { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
       { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
       { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
     ],
   },
   {

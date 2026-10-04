@@ -102,6 +102,7 @@
       'serwis-drukarek-iglowych': 'Матричних принтерів',
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
       'serwis-niszczarek': 'Шредерів',
+      'naprawa-zasilaczy-ups': 'ДБЖ (UPS)',
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
     },

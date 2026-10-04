@@ -214,7 +214,6 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     title: 'Serwis i naprawa niszczarek',
     description: 'Serwis i naprawa niszczarek we Wrocławiu — Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle i inne.',
   },
-  // Strona w przygotowaniu (noindex) — kopia serwis-niszczarek, treść tymczasowa
   'naprawa-zasilaczy-ups': {
     title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
     description: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, naprawa elektroniki. APC, Eaton, Ever, Vertiv i inne. Pełny cennik bez ukrytych kosztów.',

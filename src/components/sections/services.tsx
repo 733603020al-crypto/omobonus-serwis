@@ -93,6 +93,7 @@ const PL: ServicesT = {
     'serwis-drukarek-iglowych': 'Drukarek igłowych',
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
+    'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
