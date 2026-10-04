@@ -1886,6 +1886,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && (service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych')
                                 ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
@@ -1908,6 +1910,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-outsourcing-abonament-v2.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && (service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych')
                                 ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
