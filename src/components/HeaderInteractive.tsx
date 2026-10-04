@@ -251,6 +251,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         return
       }
 
+      // Lift the home page's off-screen render skipping so the target's
+      // position is computed from real section heights (see globals.css).
+      document.documentElement.classList.add('cv-off')
       const el = document.getElementById(id)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })

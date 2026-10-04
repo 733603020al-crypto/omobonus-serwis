@@ -66,6 +66,33 @@
     overflow-x: clip;
   }
 
+  /* Home: the sections below the first screen (services, about + reviews,
+     footer) hold ~3/4 of the page's elements. content-visibility lets the
+     browser skip their style/layout until they approach the viewport, so the
+     first frame (logo, H1, hero) is ready before Chrome starts throttling
+     undrawn frames. Same content in the DOM/HTML (SEO, find-in-page), same
+     look: their overflowing parts are already clipped by inner wrappers and
+     none contains fixed elements. Placeholder heights ≈ real mobile sizes;
+     `auto` keeps the real size once rendered. .cv-off (set before scripted
+     scrolls) restores normal layout so scroll targets are measured exactly. */
+  html:not(.cv-off) .home-below > #uslugi {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1300px;
+  }
+  html:not(.cv-off) .home-below > #o-nas {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1400px;
+  }
+  html:not(.cv-off) .home-below > footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1000px;
+  }
+  @media (min-width: 1024px) {
+    html:not(.cv-off) .home-below > #uslugi { contain-intrinsic-size: auto 624px; }
+    html:not(.cv-off) .home-below > #o-nas { contain-intrinsic-size: auto 951px; }
+    html:not(.cv-off) .home-below > footer { contain-intrinsic-size: auto 597px; }
+  }
+
   /* =========================
      GLOBAL FONTS (FINAL)
      ========================= */

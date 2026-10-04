@@ -65,7 +65,7 @@ export function HomePageTemplate({
             backgroundPosition: 'center',
           }}
         />
-        <div className="relative z-10">
+        <div className="home-below relative z-10">
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
 
           <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
