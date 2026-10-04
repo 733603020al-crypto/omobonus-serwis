@@ -63,6 +63,24 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika': { icon: '/images/accordion-icon-laser-elektronika.webp' },
     'naprawy-software': { icon: '/images/accordion-icon-laser-oprogramowanie-konfiguracja.webp' },
   },
+  // Brak wpisów: wszystkie grupy niszczarek mają neutralną ikonę zastępczą (do wymiany na własne).
+  'serwis-niszczarek': {
+    'naprawy-mechanizm': { icon: '/images/accordion-icon-niszczarki-mechanizm.webp' },
+    'naprawy-naped': { icon: '/images/accordion-icon-niszczarki-naped.webp' },
+    'naprawy-czujniki': { icon: '/images/accordion-icon-niszczarki-czujniki.webp' },
+    'naprawy-elektronika': { icon: '/images/accordion-icon-niszczarki-elektronika.webp' },
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    'naprawy-mechanizm': { icon: '/images/accordion-icon-karty-podawanie.webp' },
+    'naprawy-glowica-platen': { icon: '/images/accordion-icon-karty-glowica.webp' },
+    'naprawy-tasma-ribbon': { icon: '/images/accordion-icon-karty-tasma.webp' },
+    'naprawy-mechanika-czujniki': { icon: '/images/accordion-icon-karty-mechanika.webp' },
+    'naprawy-moduly-dodatkowe': { icon: '/images/accordion-icon-karty-moduly.webp' },
+    'naprawy-kodowanie': { icon: '/images/accordion-icon-karty-kodowanie.webp' },
+    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-karty-elektronika.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-karty-oprogramowanie.webp' },
+  },
+  // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },
     'naprawy-glowica-platen': { icon: '/images/accordion-icon-termiczne-glowica-platen.webp' },

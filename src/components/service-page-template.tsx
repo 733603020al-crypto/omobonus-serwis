@@ -64,6 +64,8 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-iglowych': 1.2,
   'serwis-drukarek-atramentowych': 1.2,
   'serwis-drukarek-laserowych': 1.2,
+  'serwis-niszczarek': 1.2,
+  'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -157,6 +159,9 @@ const LASER_HERO_SLIDES = [
 // large/large, matching LASER_HERO_SLIDES order 1:1) — same coefficient
 // bands as ATRAMENT_SIZE_COEFFICIENTS above.
 const LASER_SIZE_COEFFICIENTS = [0.85, 0.74, 0.76, 0.765, 0.88, 0.95, 0.95]
+// Phone: slide 4 (white HP MFP) also ~10% smaller — 0.9 × the 0.78 phone cap
+// it was held at before (the cap alone hid the desktop reduction on phones).
+const LASER_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, 0.702]
 // Same graduated downward nudge as ATRAMENT_VERTICAL_BIAS: small stays
 // centered, medium gets a light nudge, large gets more.
 const LASER_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
@@ -194,6 +199,36 @@ const DRUK3D_POSTER = '/images/Serwis_i_Naprawa_Drukarek_3D-static.webp'
 const DRUK3D_SIZE_COEFFICIENTS =[0.88, 0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DRUK3D_VERTICAL_BIAS = [4, 0, 0, 4, 4, 13, 13]
 
+// serwis-niszczarek: 6 shredder renders cropped to their own alpha bbox
+// (see public/images/niszczarki-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const NISZCZARKI_HERO_SLIDES = [
+  '/images/niszczarki-carousel-v1-01.webp',
+  '/images/niszczarki-carousel-v1-02.webp',
+  '/images/niszczarki-carousel-v1-03.webp',
+  '/images/niszczarki-carousel-v1-04.webp',
+  '/images/niszczarki-carousel-v1-05.webp',
+  '/images/niszczarki-carousel-v2-06.webp',
+]
+const NISZCZARKI_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const NISZCZARKI_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
+// serwis-drukarek-do-kart-plastikowych: 6 card-printer renders cropped to their own alpha bbox
+// (see public/images/karty-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const KARTY_HERO_SLIDES = [
+  '/images/karty-carousel-v1-01.webp',
+  '/images/karty-carousel-v1-02.webp',
+  '/images/karty-carousel-v1-03.webp',
+  '/images/karty-carousel-v1-04.webp',
+  '/images/karty-carousel-v1-05.webp',
+  '/images/karty-carousel-v1-06.webp',
+]
+const KARTY_SIZE_COEFFICIENTS = [0.666, 0.76, 0.85, 0.85, 1.045, 0.95]
+// Phone: slide 5 also ~10% larger — 1.1 × the 0.78 phone cap it was held at.
+const KARTY_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, undefined, 0.858]
+const KARTY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -226,6 +261,8 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
+  'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -233,7 +270,8 @@ const PAGE_CLASS_SLUGS = [
   'outsourcing-it', 'serwis-drukarek-laserowych', 'serwis-drukarek-atramentowych',
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
-  'druk-3d-na-zamowienie',
+  'druk-3d-na-zamowienie', 'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -255,6 +293,7 @@ const HERO_LINES_PL: Record<string, { mid: string }> = {
   'serwis-plotterow': { mid: 'ploterów drukujących' },
   'serwis-drukarek-iglowych': { mid: 'drukarek igłowych' },
   'serwis-drukarek-termicznych': { mid: 'drukarek etykiet' },
+  'serwis-niszczarek': { mid: 'niszczarek' },
 }
 
 export interface ServicePageHeadings {
@@ -530,7 +569,25 @@ export function ServicePageTemplate({
                           variant="home"
                           slides={LASER_HERO_SLIDES}
                           sizeCoefficients={LASER_SIZE_COEFFICIENTS}
+                          mobileSizeCoefficients={LASER_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={LASER_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-do-kart-plastikowych' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={KARTY_HERO_SLIDES}
+                          sizeCoefficients={KARTY_SIZE_COEFFICIENTS}
+                          mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
+                          verticalBias={KARTY_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-niszczarek' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={NISZCZARKI_HERO_SLIDES}
+                          sizeCoefficients={NISZCZARKI_SIZE_COEFFICIENTS}
+                          verticalBias={NISZCZARKI_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-drukarek-iglowych' ? (
                         // Same stack-carousel mechanic as naprawa-drukarek

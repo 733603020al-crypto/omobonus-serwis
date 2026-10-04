@@ -12,6 +12,8 @@ import { printer3dFaq, printer3dKonserwacja, printer3dNaprawy } from './services
 import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from './services-data-uk-plotter'
 import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-uk-wynajem'
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-uk-drukarka-zastepcza'
+import { niszczarkiPricingSectionsUk, NISZCZARKI_PRICE_TOOLTIP_UK } from './services-data-uk-niszczarki'
+import { kartyPricingSectionsUk, KARTY_PRICE_TOOLTIP_UK } from './services-data-uk-karty'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -211,6 +213,24 @@ export const servicesUk: ServiceData[] = [
         ],
       },
     ],
+  },
+  {
+    slug: 'serwis-niszczarek',
+    title: 'Сервіс і ремонт знищувачів документів',
+    subtitle: 'Сервіс і ремонт знищувачів документів у Вроцлаві',
+    icon: '/images/accordion-icon-naprawy.webp',
+    description: 'Сервіс і ремонт знищувачів документів.',
+    pricingSections: niszczarkiPricingSectionsUk(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP_UK,
+  },
+  {
+    slug: 'serwis-drukarek-do-kart-plastikowych',
+    title: 'Сервіс і ремонт принтерів для пластикових карток',
+    subtitle: 'Сервіс і ремонт принтерів для пластикових карток у Вроцлаві',
+    icon: '/images/karty-carousel-v1-01.webp',
+    description: 'Сервіс і ремонт принтерів для пластикових карток.',
+    pricingSections: kartyPricingSectionsUk(),
+    priceTooltip: KARTY_PRICE_TOOLTIP_UK,
   },
   {
     slug: 'wynajem-drukarek',

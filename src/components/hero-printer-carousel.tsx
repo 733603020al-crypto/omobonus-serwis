@@ -15,10 +15,11 @@ const ADVANCE_MS = 5500
 // Phone hero (service pages, <768px): the slide's size coefficient is capped
 // here so big machines (plotter, floor MFP) never outgrow the zone. Applied
 // only through --slide-fit, which service-hero.css sets inside the mobile
-// media query — desktop scale stays exactly as before.
+// media query — desktop scale stays exactly as before. A page can give a
+// slide its own phone coefficient (mobileSizeCoefficients) instead of the cap.
 const MOBILE_MAX_COEF = 0.78
-const fitVars = (coef: number) =>
-  ({ '--mobile-fit': Math.min(1, MOBILE_MAX_COEF / coef).toFixed(4) }) as CSSProperties
+const fitVars = (coef: number, mobileCoef?: number) =>
+  ({ '--mobile-fit': (mobileCoef !== undefined ? mobileCoef / coef : Math.min(1, MOBILE_MAX_COEF / coef)).toFixed(4) }) as CSSProperties
 
 // Per-delta geometry (scale/opacity/translate/zIndex) is variant-specific so
 // a new page can get its own stack proportions without touching the
@@ -113,6 +114,7 @@ export function HeroPrinterCarousel({
   alt,
   variant = 'printer',
   sizeCoefficients,
+  mobileSizeCoefficients,
   verticalBias,
   posterSrc,
   slidePosters,
@@ -131,6 +133,9 @@ export function HeroPrinterCarousel({
   // undefined by every caller except serwis-drukarek-atramentowych, so all
   // other carousels keep their exact previous scale/position.
   sizeCoefficients?: number[]
+  // Optional phone-only coefficient per slide (<768px), replacing the
+  // MOBILE_MAX_COEF cap for that slide; undefined entries keep the cap.
+  mobileSizeCoefficients?: (number | undefined)[]
   verticalBias?: number[]
   // Optional lightweight static stand-in for slide 0, used only when slide 0
   // itself is a heavy file (e.g. serwis-laptopow's animated-WebP laptop,
@@ -694,7 +699,7 @@ export function HeroPrinterCarousel({
               }%) scale(calc(${config.scale[0] * (sizeCoefficients?.[0] ?? 1)} * var(--slide-fit, 1)))`,
               opacity: config.opacity[0],
               zIndex: config.zIndex[0],
-              ...fitVars(sizeCoefficients?.[0] ?? 1),
+              ...fitVars(sizeCoefficients?.[0] ?? 1, mobileSizeCoefficients?.[0]),
             }}
           />
         )}
@@ -717,7 +722,7 @@ export function HeroPrinterCarousel({
               }%) scale(calc(${config.scale[openingOn ? 0 : 3] * coef(0)} * var(--slide-fit, 1)))`,
               opacity: config.opacity[openingOn ? 0 : 3],
               zIndex: config.zIndex[openingOn ? 0 : 3],
-              ...fitVars(coef(0)),
+              ...fitVars(coef(0), mobileSizeCoefficients?.[0]),
             }}
           />
         )}
@@ -779,7 +784,7 @@ export function HeroPrinterCarousel({
                   transform: slideTransform,
                   opacity,
                   zIndex,
-                  ...fitVars(sizeCoefficients?.[i] ?? 1),
+                  ...fitVars(sizeCoefficients?.[i] ?? 1, mobileSizeCoefficients?.[i]),
                   ['--intro-cw' as string]: `min(100cqw, ${introVideo.photoAspect} * 100cqh)`,
                 }}
               >
@@ -840,7 +845,7 @@ export function HeroPrinterCarousel({
                 transform: slideTransform,
                 opacity,
                 zIndex,
-                ...fitVars(sizeCoefficients?.[i] ?? 1),
+                ...fitVars(sizeCoefficients?.[i] ?? 1, mobileSizeCoefficients?.[i]),
               }}
             />
           )
@@ -858,7 +863,7 @@ export function HeroPrinterCarousel({
                 config.translateY[0] + (verticalBias?.[active] ?? 0)
               }%) scale(calc(${config.scale[0] * coef(active)} * var(--slide-fit, 1)))`,
               zIndex: config.zIndex[0] + 1,
-              ...fitVars(coef(active)),
+              ...fitVars(coef(active), mobileSizeCoefficients?.[active]),
             }}
           />
         )}

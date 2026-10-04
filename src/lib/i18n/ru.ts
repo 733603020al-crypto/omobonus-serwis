@@ -62,6 +62,7 @@ export const ru = {
       'serwis-drukarek-atramentowych': 'Струйных принтеров',
       'serwis-drukarek-iglowych': 'Матричных принтеров',
       'druk-3d-na-zamowienie': '3D-печать на заказ',
+      'serwis-niszczarek': 'Шредеров',
       'wynajem-drukarek': 'Аренда принтеров',
       'drukarka-zastepcza': 'Принтер на замену',
     },

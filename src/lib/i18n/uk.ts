@@ -101,6 +101,7 @@
       'serwis-drukarek-atramentowych': 'Струменевих принтерів',
       'serwis-drukarek-iglowych': 'Матричних принтерів',
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
+      'serwis-niszczarek': 'Шредерів',
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
     },

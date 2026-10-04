@@ -1,6 +1,18 @@
 import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
 export const headingsRu: Record<string, ServicePageHeadings> = {
+  'serwis-niszczarek': {
+    h1: 'Сервис и ремонт уничтожителей документов во Вроцлаве',
+    lines: ['Сервис и ремонт', 'уничтожителей документов', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    h1: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
+    lines: ['Сервис и ремонт', 'принтеров для пластиковых карт', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -37,7 +49,7 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
   'serwis-drukarek-3d': {
     h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
     lines: ['Сервис и ремонт', '3D-принтеров', 'во Вроцлаве'],
-    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HB3D, …)',
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HBot 3D, …)',
   },
   'druk-3d-na-zamowienie': {
     h1: '3D-печать на заказ во Вроцлаве',
@@ -66,6 +78,20 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
 }
 
 export const seoBlocksRu: Record<string, { items: string[] }> = {
+  'serwis-niszczarek': {
+    items: [
+      'Обслуживание и смазка, устранение заторов, ремонт режущего механизма, редуктора, двигателя и датчиков уничтожителя.',
+      'Ваш уничтожитель можем предварительно проверить после доставки в сервис — предварительная диагностика занимает до 15 мин.',
+      'Малые, офисные и профессиональные уничтожители: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg и другие.',
+    ],
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    items: [
+      'Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт.',
+      'Ваш принтер для пластиковых карт — предварительно оценим проблему за 15 мин.',
+      'Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Также оказываем услуги по чистке, обслуживанию, регенерации, ремонту головки.',
@@ -149,6 +175,8 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
 }
 
 export const imageAltRu: Record<string, string> = {
+  'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
+  'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -175,6 +203,14 @@ export const subServiceTitlesRu: Record<string, string> = {
 }
 
 export const seoMetadataRu: Record<string, { title: string; description: string }> = {
+  'serwis-niszczarek': {
+    title: 'Ремонт уничтожителей документов Вроцлав — сервис и цены',
+    description: 'Сервис и ремонт уничтожителей документов во Вроцлаве: обслуживание и смазка, устранение заторов, замена ножей, ремонт двигателя и датчиков. Цены нетто, диагностика бесплатно при ремонте. Fellowes, HSM, Kobra, Rexel, IDEAL.',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    title: 'Сервис принтеров для пластиковых карт — Zebra, Evolis, Fargo',
+    description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Прозрачный прайс — стоимость ремонта согласовываем до его выполнения.',
+  },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
     description: '✔ Сервис и ремонт ноутбуков всех марок во Вроцлаве ✔ Замена матрицы, диска, аккумулятора, клавиатуры ✔ Диагностика за 15 мин ✔ Запишитесь уже сегодня! ☎ 793 759 262',
@@ -250,6 +286,8 @@ export const labelsRu: ServicePageLabels = {
     'serwis-drukarek-termicznych': 'Есть проблема с термопринтером?',
     'serwis-drukarek-iglowych': 'Есть проблема с матричным принтером?',
     'serwis-drukarek-3d': 'Есть проблема с 3D-принтером?',
+    'serwis-niszczarek': 'Есть проблема со шредером?',
+    'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
     'wynajem-drukarek': 'Есть проблема с принтером?',
     'drukarka-zastepcza': 'Есть проблема с принтером?',
   },

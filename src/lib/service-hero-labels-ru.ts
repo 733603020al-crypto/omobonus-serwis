@@ -29,6 +29,20 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
     'Замена тонера',
   ],
 
+  'serwis-drukarek-do-kart-plastikowych': [
+    'Застревают карты',
+    'Полосы на печати',
+    'Ошибка ленты',
+    'Не кодирует карты',
+  ],
+
+  'serwis-niszczarek': [
+    'Зажёвывает бумагу',
+    'Не затягивает бумагу',
+    'Громко работает',
+    'Смазка и обслуживание',
+  ],
+
   'serwis-drukarek-atramentowych': [
     'Не печатает',
     'Засохшая головка',

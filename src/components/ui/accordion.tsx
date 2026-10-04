@@ -57,7 +57,10 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="overflow-hidden text-sm"
+      // Zamknięta treść jest ukrywana CSS-em, a nie odmontowywana: przy forceMount
+      // (service-accordion) teksty cennika/FAQ są w HTML od razu (SEO), a wygląd
+      // zamkniętego stanu pozostaje taki sam jak bez forceMount.
+      className="overflow-hidden text-sm data-[state=closed]:!hidden"
       {...props}
     >
       {beforeContent}
