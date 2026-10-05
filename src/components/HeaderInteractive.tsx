@@ -138,20 +138,20 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
       { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
       { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
       { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
-      { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
-      { label: { pl: 'Niszczarek', uk: 'Шредерів', ru: 'Шредеров' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
-    ],
-  },
-  {
-    items: [
       { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
       { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
       { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
       { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
       { label: { pl: 'Drukarek do kart plastikowych', uk: 'Принтерів пластикових карток', ru: 'Принтеров пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
+    ],
+  },
+  {
+    items: [
       { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
+      { label: { pl: 'Niszczarek', uk: 'Шредерів', ru: 'Шредеров' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
+      { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
       { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
       { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],

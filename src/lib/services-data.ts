@@ -183,9 +183,6 @@ export const HOME_EXTRA_SERVICES = [
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-iglowych',
   'druk-3d-na-zamowienie',
-  'serwis-niszczarek',
-  'naprawa-zasilaczy-ups',
-  'serwis-drukarek-do-kart-plastikowych',
   'wynajem-drukarek',
   'drukarka-zastepcza',
 ]

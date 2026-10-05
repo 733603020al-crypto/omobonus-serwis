@@ -1356,3 +1356,12 @@ Report: https://claude.ai/artifact/ApU2CQ2JJuTzKJ46EEb6qG . Code NOT changed by 
 - Картинки карточек — из пользовательских файлов «основная страница» (serwis-niszczarek.png, serwis-drukarek-do-kart-plastikowych.png, naprawa-zasilaczy-ups.png, новая карточка плотера.png): services-card-v2-shredder2 / ups2 / card-printer / plotter5 (+ -mobile). Старые shredder / ups / plotter4 удалены. Иконки меню: niszczarki-icon-v1.webp, karty-icon-v1.webp. Иконка услуги шредеров (PL/UK/RU) — niszczarki-carousel-v1-01.webp вместо временной заглушки.
 - DTG и следующая новая страница НЕ добавлены (ни меню, ни главная, ни sitemap).
 - Проверки: tsc, check:i18n-sync OK, npm run build OK (48 HTML обновлено), локальная прод-сборка: главная PL/UK/RU 390/412/1024/1280/1440 — карточки, переход по клику на нужные страницы, меню без дублей, без горизонтальной прокрутки, без битых картинок; ошибки консоли только CookieYes на локальном адресе.
+
+
+## ЭТАП 119 (2026-10-06): девять главных карточек на главной
+- Блок «GŁÓWNE USŁUGI» — 9 карточек, на компьютере сетка 3×3: Laptopy, Komputery stacjonarne, Drukarki i kserokopiarki / Drukarki 3D, Drukarki etykiet, Plotery / Drukarki do kart plastikowych, Niszczarki, Zasilacze UPS. На телефоне — 9 карточек в один столбец, как раньше.
+- «Wszystkie usługi ↓» — 6 карточек без дублей: laserowe, atramentowe, igłowe, Druk 3D na zamówienie, Wynajem, Drukarka zastępcza (PL/UK/RU одинаково).
+- Меню «Usługi»: слева Laptopy, Komputery, Outsourcing IT, laserowe, atramentowe, igłowe, etykiet termicznych, karty plastikowe; справа 3D, Druk 3D, Plotery, Niszczarki, UPS, Wynajem, Drukarka zastępcza.
+- Картинки не копировались — используются services-card-v2-card-printer / shredder2 / ups2 / plotter5.
+- Скорость главной: первая загрузка без изменений (тот же объём, Lighthouse в пределах шума: телефон ~88–92, компьютер 99–100). При прокрутке до карточек грузится на ~115–135 КБ больше — это три новые карточки, они подгружаются только при подходе к блоку.
+- Проверки: tsc, check:i18n-sync, build OK; PL/UK/RU на 390/412/1024/1280/1440 — порядок, ссылки, без дублей, без битых картинок, без горизонтальной прокрутки, без ошибок; переходы 9 верхних карточек на 390 и 1440 на всех языках.
