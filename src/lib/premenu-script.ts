@@ -3,8 +3,10 @@
 // button ([data-premenu]) with no handler, so a tap right after the page appears
 // used to do nothing. This script opens a static copy of the same drawer (same
 // markup and classes as MobileMenuSheet + Sheet) on such a tap. Its links are
-// plain <a>, so they work without React. The copy lives until it is closed; once
-// the real drawer is mounted the placeholder is gone and taps go to React.
+// plain <a>, so they work without React. Focus goes to the close button, Tab
+// stays inside the drawer, and closing returns focus to the hamburger. The copy
+// lives until it is closed; once the real drawer is mounted the placeholder is
+// gone and taps go to React.
 // Labels/hrefs come from the placeholder's data-premenu JSON (per locale).
 const X_ICON =
   '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x size-4" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>'
@@ -23,14 +25,15 @@ const CLOSE_CLASS =
 
 const source = `(function(){
 if(window.__premenu)return;window.__premenu=1;
-var d=document,data=null,box=null,prevOverflow='';
+var d=document,data=null,box=null,prevOverflow='',opener=null;
 function read(){var e=d.querySelector('[data-premenu^="{"]');if(e)try{data=JSON.parse(e.getAttribute('data-premenu'))}catch(x){}}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
 function a(h,t){return '<a href="'+esc(h)+'">'+t+'</a>'}
 function close(){if(!box)return;var b=box;box=null;d.documentElement.style.overflow=prevOverflow;d.removeEventListener('keydown',key,true);
-for(var i=0;i<b.children.length;i++)b.children[i].setAttribute('data-state','closed');setTimeout(function(){b.remove()},300)}
-function key(e){if(e.key==='Escape')close()}
-function open(){read();if(!data||box)return;var m=data;box=d.createElement('div');box.setAttribute('data-premenu-drawer','');
+for(var i=0;i<b.children.length;i++)b.children[i].setAttribute('data-state','closed');setTimeout(function(){b.remove()},300);if(opener&&opener.isConnected)opener.focus({preventScroll:true})}
+function key(e){if(e.key==='Escape')return close();if(e.key!=='Tab'||!box)return;var f=box.querySelectorAll('a,button'),l=f[f.length-1];
+if(e.shiftKey?d.activeElement===f[0]:d.activeElement===l||!box.contains(d.activeElement)){e.preventDefault();(e.shiftKey?l:f[0]).focus()}}
+function open(o){opener=o;read();if(!data||box)return;var m=data;box=d.createElement('div');box.setAttribute('data-premenu-drawer','');
 box.innerHTML='<div data-state="open" class="${OVERLAY_CLASS}"></div>'+
 '<div role="dialog" aria-modal="true" aria-label="Menu" data-state="open" class="${CONTENT_CLASS}" tabindex="-1">'+
 '<div class="relative isolate overflow-hidden rounded-l-lg border border-[#bfa76a]/30"><div class="absolute inset-0 bg-cover bg-center" style="background-image: var(--bg-parchment);"></div><div class="absolute inset-0 bg-black/55"></div>'+
@@ -42,9 +45,9 @@ a(m.home,'<div class="flex gap-2 tracking-wide font-cormorant text-base md:text-
 box.firstChild.addEventListener('click',close);box.querySelector('[data-premenu-close]').addEventListener('click',close);
 box.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setTimeout(close,0)});
 prevOverflow=d.documentElement.style.overflow;d.documentElement.style.overflow='hidden';
-d.addEventListener('keydown',key,true);d.body.appendChild(box);box.lastChild.focus({preventScroll:true})}
+d.addEventListener('keydown',key,true);d.body.appendChild(box);box.querySelector('[data-premenu-close]').focus({preventScroll:true})}
 read();
-d.addEventListener('click',function(e){var t=e.target;if(t&&t.closest&&t.closest('[data-premenu]')){e.preventDefault();open()}},true);
+d.addEventListener('click',function(e){var t=e.target;if(t&&t.closest&&t.closest('[data-premenu]')){e.preventDefault();open(t.closest('[data-premenu]'))}},true);
 })()`
 
 export const PREMENU_SCRIPT = source.replace(/\n/g, '')
