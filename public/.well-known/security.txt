@@ -1,0 +1,4 @@
+Contact: mailto:serwis@omobonus.com.pl
+Expires: 2027-09-21T00:00:00.000Z
+Preferred-Languages: pl, ru, uk
+Canonical: https://serwis.omobonus.com.pl/.well-known/security.txt

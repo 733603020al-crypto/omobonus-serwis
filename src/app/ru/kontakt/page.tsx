@@ -3,13 +3,14 @@ import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { ContactActionsSection } from '@/components/sections/contact-actions'
 import { ru } from '@/lib/i18n/ru'
+import { withSocialMeta } from '@/lib/social-meta'
 
 const Contact = dynamic(() =>
   import('@/components/sections/contact').then(mod => mod.Contact)
 )
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSocialMeta('ru', {
   title: 'Контакт | Сервис компьютеров, ноутбуков и принтеров',
   description: '✔ Сервис компьютеров, ноутбуков, принтеров и плоттеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс на сайте ✔ Запишитесь уже сегодня! ☎ 793 759 262',
   alternates: {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
       'x-default': 'https://serwis.omobonus.com.pl/kontakt',
     },
   },
-}
+})
 
 export default function RuKontaktPage() {
   return (

@@ -1,9 +1,50 @@
 'use client'
 
 import { useEffect, useRef } from "react"
+import { useNearViewport } from "@/lib/use-near-viewport"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
+
+// Same edge/orientation/corner variability system as services.tsx's
+// zakres-paper-card cards (literal strings, not template-built, so
+// Tailwind's content scanner keeps them) — reused verbatim per the
+// "don't invent a new algorithm" instruction, cycled per review card.
+const ORIENT_CLASSES = [
+    'zakres-orient-normal',
+    'zakres-orient-flipx',
+    'zakres-orient-flipy',
+    'zakres-orient-rotate180',
+]
+const EDGE_CLASSES = [
+    'zakres-edge-a',
+    'zakres-edge-b',
+    'zakres-edge-c',
+    'zakres-edge-d',
+    'zakres-edge-e',
+    'zakres-edge-f',
+    'zakres-edge-g',
+    'zakres-edge-h',
+]
+const CORNER_CLASSES = [
+    '',
+    'zakres-corner-tl',
+    'zakres-corner-tr',
+    'zakres-corner-bl',
+    'zakres-corner-br',
+]
+const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = [
+    { edgeIdx: 0, orientIdx: 0, cornerIdx: 3 },
+    { edgeIdx: 1, orientIdx: 1, cornerIdx: 0 },
+    { edgeIdx: 2, orientIdx: 3, cornerIdx: 2 },
+    { edgeIdx: 3, orientIdx: 2, cornerIdx: 1 },
+    { edgeIdx: 4, orientIdx: 0, cornerIdx: 0 },
+    { edgeIdx: 5, orientIdx: 1, cornerIdx: 4 },
+    { edgeIdx: 6, orientIdx: 3, cornerIdx: 0 },
+    { edgeIdx: 7, orientIdx: 2, cornerIdx: 3 },
+    { edgeIdx: 2, orientIdx: 1, cornerIdx: 2 },
+    { edgeIdx: 5, orientIdx: 3, cornerIdx: 0 },
+]
 
 export type Review = {
     author_name: string
@@ -33,6 +74,9 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
     const opinieTitleRef = useRef<HTMLDivElement | null>(null)
     const offsetRef = useRef(0)
+    // Parchment behind the review cards: fetched only when the block is near.
+    const sectionRef = useRef<HTMLElement | null>(null)
+    const bgNear = useNearViewport(sectionRef)
     const rafRef = useRef<number | null>(null)
     const isRunningRef = useRef(true)
     const isHoverRef = useRef(false)
@@ -99,9 +143,10 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         // Only run the scroll loop while the carousel is actually visible on screen —
         // avoids burning main-thread time on an animation nobody sees yet (e.g. during initial load).
         const sectionObserver = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) startAnimation()
+            // ruch tylko gdy widać co najmniej połowę karuzeli
+            if (entry.intersectionRatio >= 0.5) startAnimation()
             else stopAnimation()
-        }, { threshold: 0 })
+        }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
         sectionObserver.observe(container)
 
         const handleVisibility = () => {
@@ -127,7 +172,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
 
 
     return (
-        <section className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+        <section ref={sectionRef} className="reviews-cv relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
 
 
 
@@ -135,8 +180,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
             {/* Zawartość */}
             <div className="relative z-10">
 
-                <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8">
-                    <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-start">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 pt-2 mb-2">
+                    <div className="flex flex-col md:flex-row justify-center gap-6 text-center md:items-center">
 
                         <a
                             href="https://g.page/omobonus-serwis/review"
@@ -228,14 +273,15 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                 locale === 'uk' ? (review.relative_time_uk || review.relative_time_description) :
                                 locale === 'ru' ? (review.relative_time_ru || review.relative_time_description) :
                                 review.relative_time_description
+                            const cardStyle = CARD_STYLE[i % CARD_STYLE.length]
 
                             return (
                             <div
                                 key={i}
-                                style={{ width: `${cardWidth}px` }}
-                                className="services-card-bg shrink-0 rounded-lg p-3 flex flex-col transition-transform duration-300 hover:scale-[1.02] border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)]"
+                                style={{ width: `${cardWidth}px`, ...(bgNear ? {} : { '--review-bg': 'none' }) } as React.CSSProperties}
+                                className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >
-                                <div className="flex items-center gap-3 mb-1">
+                                <div className="relative z-10 flex items-center gap-3 mb-0.5">
                                     {review.profile_photo_url ? (
                                         <Image
                                             src={review.profile_photo_url.replace(/=s\d+/, '=s72')}
@@ -251,35 +297,35 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                         </div>
                                     )}
 
-                                    <div className="font-semibold leading-tight text-sm text-white">
+                                    <div className="font-semibold leading-tight text-sm text-[#3A2817]">
                                         {review.author_name}
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 text-yellow-400 text-lg mb-2">
-                                    <div className="flex gap-1">
+                                <div className="relative z-10 flex items-center gap-2 text-yellow-400 text-lg mb-1">
+                                    <div className="flex gap-[2px]">
                                         {Array.from({ length: 5 }).map((_, star) => (
                                             <span
                                                 key={star}
                                                 className={
                                                     star < Math.floor(review.rating)
-                                                        ? "text-yellow-300 text-[18px] drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]"
-                                                        : "text-yellow-300/30 text-[18px]"
+                                                        ? "text-[16px] leading-none"
+                                                        : "text-[16px] leading-none opacity-25"
                                                 }
                                             >
-                                                {"★"}
+                                                {"⭐"}
                                             </span>
                                         ))}
                                     </div>
 
                                     {localizedTime && (
-                                        <span className="text-[12px] text-white/50 ml-1">
+                                        <span className="text-[12px] text-[#72502B] ml-1">
                                             • {localizedTime}
                                         </span>
                                     )}
                                 </div>
 
-                                <p className="text-[12px] leading-[1.6] text-[#f1ead6] tracking-[0.015em] line-clamp-5">
+                                <p className="relative z-10 text-[12px] leading-[1.42] text-[#3A2817] tracking-[0.015em] line-clamp-6">
                                     {localizedText}
                                 </p>
                             </div>

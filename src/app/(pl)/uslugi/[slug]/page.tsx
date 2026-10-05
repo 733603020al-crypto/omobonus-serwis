@@ -5,6 +5,7 @@ import { serviceHeroLabels } from "@/lib/service-hero-labels"
 import { ServicePageTemplate, type RelatedService } from "@/components/service-page-template"
 import { headings, seoBlocks, imageAlt, subServiceTitles, seoMetadata, labels } from "@/lib/services-meta-pl"
 import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from "@/lib/services-meta-shared"
+import { withSocialMeta } from "@/lib/social-meta"
 
 export async function generateStaticParams() {
   return services.map(service => ({
@@ -28,7 +29,7 @@ export async function generateMetadata({
     }
   }
 
-  return {
+  const meta = withSocialMeta('pl', {
     title: seo.title,
     description: seo.description,
     ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
@@ -46,19 +47,17 @@ export async function generateMetadata({
         'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       },
     },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
-      images: [
-        {
-          url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
-          width: 400,
-          height: 400,
-          alt: service.title,
-        },
-      ],
-    },
+  })
+
+  // withSocialMeta przywraca og:type/locale/siteName i twitter; obraz zostaje własny dla usługi
+  const ogImage = {
+    url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
+    alt: service.title,
+  }
+  return {
+    ...meta,
+    openGraph: { ...meta.openGraph, images: [ogImage] },
+    twitter: { ...meta.twitter, images: [ogImage.url] },
   }
 }
 
@@ -100,6 +99,33 @@ export default async function ServicePage({
     url: `https://serwis.omobonus.com.pl/uslugi/${slug}`,
   }
 
+  // FAQPage structured data — z tej samej sekcji "faq", która zasila akordeon FAQ na stronie
+  const faqSubcategories = service.pricingSections.find(s => s.id === 'faq')?.subcategories
+  const faqJsonLd = faqSubcategories?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSubcategories
+      .filter(sub => sub.answer)
+      .map(sub => ({
+        '@type': 'Question',
+        name: sub.title.replace(/\*\*/g, ''),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: sub.answer!.replace(/\*\*/g, ''),
+        },
+      })),
+  } : null
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Strona główna', item: 'https://serwis.omobonus.com.pl/' },
+      { '@type': 'ListItem', position: 2, name: 'Usługi', item: 'https://serwis.omobonus.com.pl/#uslugi' },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `https://serwis.omobonus.com.pl/uslugi/${slug}` },
+    ],
+  }
+
   const relatedServices: RelatedService[] = services
     .filter(s => relatedServiceSlugs.includes(s.slug))
     .map(s => ({
@@ -123,7 +149,7 @@ export default async function ServicePage({
       basePath="/uslugi"
       labels={labels}
       relatedServices={relatedServices}
-      jsonLd={serviceJsonLd}
+      jsonLd={faqJsonLd ? [serviceJsonLd, breadcrumbJsonLd, faqJsonLd] : [serviceJsonLd, breadcrumbJsonLd]}
     />
   )
 }

@@ -1,0 +1,20 @@
+{
+  "autoCompactEnabled": true,
+  "autoCompactWindow": 200000,
+  "permissions": {
+    "deny": [
+      "Bash(git push * master*)",
+      "Bash(git push *:master*)",
+      "Bash(git checkout master*)",
+      "Bash(git switch master*)",
+      "PowerShell(git push * master*)",
+      "PowerShell(git push *:master*)",
+      "PowerShell(git checkout master*)",
+      "PowerShell(git switch master*)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "PowerShell(git push *)"
+    ]
+  }
+}

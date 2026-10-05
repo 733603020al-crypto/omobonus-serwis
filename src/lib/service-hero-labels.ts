@@ -1,10 +1,5 @@
 export const serviceHeroLabels: Record<string, string[]> = {
-    'serwis-laptopow': [
-        'Wolna praca',
-        'Nie włącza się',
-        'Instalacja Windows',
-        'Wymiana matrycy',
-    ],
+    'serwis-laptopow': [],
 
     'serwis-komputerow-stacjonarnych': [
         'Wolna praca',
@@ -28,6 +23,26 @@ export const serviceHeroLabels: Record<string, string[]> = {
     ],
 
     'serwis-drukarek-laserowych': [
+        'Zacina papier',
+        'Blady wydruk',
+        'Brudzi kartki',
+        'Wymiana tonera',
+    ],
+
+    'serwis-drukarek-do-kart-plastikowych': [
+        'Zacina karty',
+        'Linie na nadruku',
+        'Błąd taśmy',
+        'Nie koduje kart',
+    ],
+
+    'serwis-niszczarek': [
+        'Zacina papier',
+        'Nie wciąga papieru',
+        'Głośno pracuje',
+        'Olejenie i konserwacja',
+    ],
+    'naprawa-zasilaczy-ups': [
         'Zacina papier',
         'Blady wydruk',
         'Brudzi kartki',

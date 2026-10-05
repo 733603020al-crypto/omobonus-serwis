@@ -2,9 +2,11 @@
 
 import React from 'react'
 import { useRef, useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
-import { FaWhatsapp, FaTelegramPlane, FaViber } from 'react-icons/fa'
+import { FaWhatsapp, FaTelegramPlane, FaViber } from '@/components/icons/social-icons'
 import Link from 'next/link'
+import { HomeCta } from '@/components/home-cta'
 
 export interface FooterT {
   contact: string
@@ -40,7 +42,14 @@ const PL: FooterT = {
   regulaminHref: '/regulamin',
 }
 
-export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}) {
+interface FooterCta {
+  heading: ReactNode
+  text: ReactNode
+  button: ReactNode
+  href: string
+}
+
+export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; cta?: FooterCta } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
@@ -101,7 +110,13 @@ export function Footer({ t, bare = false }: { t?: FooterT; bare?: boolean } = {}
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        {cta && (
+          <div className="-mt-[26px]">
+            <HomeCta heading={cta.heading} text={cta.text} button={cta.button} href={cta.href} />
+          </div>
+        )}
+
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ${cta ? 'mt-[44px]' : ''}`}>
           {/* Lewa kolumna - Kontakt */}
           <div className="space-y-4">
             <div ref={kontaktRef} className="fade-slide-init brush-underline text-2xl md:text-3xl font-cormorant font-bold leading-tight tracking-wide text-[#bfa76a] mb-4">

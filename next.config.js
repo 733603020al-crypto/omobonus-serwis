@@ -4,6 +4,13 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// Локально (next dev) браузер не должен запоминать файлы: имена чанков и
+// картинок там не меняются после правок, и годовой immutable-кэш показывал
+// старый код/картинки даже после Ctrl+Shift+R. На продакшене — как было.
+const LONG_CACHE = process.env.NODE_ENV === 'development'
+  ? 'no-store'
+  : 'public, max-age=31536000, immutable'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -18,14 +25,34 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lh3.googleusercontent.com', pathname: '/**' },
     ],
 
+    // Весь локальный контент сайта живёт под /public/images — разрешаем
+    // next/image оптимизировать любой файл оттуда (в т.ч. логотипы брендов
+    // из brand-ticker.tsx, которые грузятся с ?v=N для сброса кэша при
+    // замене файла — search не указываем, чтобы разрешить любое значение N).
+    // Без widecard-паттерна `localPatterns` превращается в allowlist и
+    // next/image возвращает 500 на КАЖДОЙ локальной картинке вне /brands/.
+    localPatterns: [
+      { pathname: '/images/**' },
+    ],
+
     // увеличиваем TTL для оптимизированных картинок Next.js
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 дней
 
-    qualities: [40, 60, 75, 85, 90, 100],
+    qualities: [32, 40, 60, 75, 85, 90, 100],
   },
 
   compress: true,
   poweredByHeader: false,
+
+  // CSS встраивается в HTML (<style>) вместо отдельных <link>: на мобильных
+  // убирает 3 блокирующих запроса перед первой отрисовкой. Стили те же и в
+  // том же порядке, поэтому вид страниц не меняется.
+  experimental: {
+    inlineCss: true,
+    // Корневая 404 как app/global-not-found.tsx: иначе app/not-found.tsx
+    // вместе со всем globals.css встраивается в данные каждой страницы.
+    globalNotFound: true,
+  },
 
   async headers() {
     return [
@@ -35,7 +62,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
       },
@@ -46,9 +73,26 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
+      },
+
+      // Иконки из public/icons (не хешируются) — тот же длинный TTL, что и у favicon.
+      {
+        source: '/icons/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000',
+          },
+        ],
+      },
+
+      // floating-call.html — отдельный фрагмент виджета, не часть sitemap/навигации: не индексировать.
+      {
+        source: '/floating-call.html',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
       },
 
       // favicon.ico и robots.txt редко меняются, но не хешируются как
@@ -60,6 +104,18 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=2592000',
           },
+        ],
+      },
+
+      // Базовые security-заголовки на все страницы. Полноценный CSP сюда
+      // не добавлен — требует отдельной сверки со всеми внешними скриптами
+      // (GTM, CookieYes, Google Maps, шрифты) и тестирования.
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
     ];

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
@@ -19,19 +19,14 @@ const inter = Inter({
   weight: ['400', '500', '600'],
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
+  preload: false,
   variable: '--font-inter',
 })
 
-/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
-const lora = Lora({
-  weight: ['400', '600'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-lora',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  icons: { icon: '/favicon.ico' },
   title: {
     default: 'Сервіс комп\'ютерів, ноутбуків і принтерів Вроцлав | Omobonus',
     template: '%s | Omobonus Вроцлав',
@@ -96,13 +91,33 @@ const jsonLd = {
   alternateName: 'Omobonus Sp. z o.o.',
   url: 'https://serwis.omobonus.com.pl',
   telephone: '+48793759262',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.webp',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marcina Bukowskiego 174',
+    addressLocality: 'Wrocław',
+    postalCode: '52-418',
+    addressCountry: 'PL',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.0775534,
+    longitude: 16.9784082,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
 }
 
 export default function UkRootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="uk"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -129,9 +144,6 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
-        <link rel="dns-prefetch" href="https://lh3.googleusercontent.com" />
-        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/48410f3df60da620-s.woff2" />
-        <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/_next/static/media/8e9860b6e62d6359-s.woff2" />
       </head>
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
@@ -153,8 +165,8 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         {/* Mobile-only bottom quick-action bar */}
         <MobileActionBar />
 
-        <Script
-          id="json-ld"
+        {/* Обычный тег, а не next/script: разметка должна быть в исходном HTML без выполнения JS */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

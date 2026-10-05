@@ -5,7 +5,8 @@ import { serviceHeroLabelsRu } from '@/lib/service-hero-labels-ru'
 import { ru } from '@/lib/i18n/ru'
 import { ServicePageTemplate, type RelatedService } from '@/components/service-page-template'
 import { headingsRu, seoBlocksRu, imageAltRu, subServiceTitlesRu, seoMetadataRu, labelsRu } from '@/lib/services-meta-ru'
-import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs } from '@/lib/services-meta-shared'
+import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from '@/lib/services-meta-shared'
+import { withSocialMeta } from '@/lib/social-meta'
 
 export async function generateStaticParams() {
   return servicesRu.map(service => ({
@@ -26,31 +27,35 @@ export async function generateMetadata({
     return { title: 'Услуга не найдена' }
   }
 
-  return {
+  const meta = withSocialMeta('ru', {
     title: seo.title,
     description: seo.description,
+    ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
+
     alternates: {
       canonical: `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
-      languages: {
+      languages: noindexSlugs.includes(slug) ? {
+        // Tymczasowa strona bez odpowiedników — nie dodawać hreflang na noindexowaną PL i ewentualne UK
+        'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
+      } : {
         'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
         'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
         'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
         'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       },
     },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
-      images: [
-        {
-          url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
-          width: 400,
-          height: 400,
-          alt: service.title,
-        },
-      ],
-    },
+  })
+
+  // withSocialMeta przywraca og:type/locale/siteName i twitter; obraz zostaje własny dla usługi
+  const ogImage = {
+    url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
+    alt: service.title,
+  }
+  return {
+    ...meta,
+    openGraph: { ...meta.openGraph, images: [ogImage] },
+    twitter: { ...meta.twitter, images: [ogImage.url] },
   }
 }
 
@@ -91,6 +96,33 @@ export default async function RuServicePage({
     url: `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
   }
 
+  // FAQPage structured data — из той же секции "faq", которая наполняет аккордеон FAQ на странице
+  const faqSubcategories = service.pricingSections.find(s => s.id === 'faq')?.subcategories
+  const faqJsonLd = faqSubcategories?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSubcategories
+      .filter(sub => sub.answer)
+      .map(sub => ({
+        '@type': 'Question',
+        name: sub.title.replace(/\*\*/g, ''),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: sub.answer!.replace(/\*\*/g, ''),
+        },
+      })),
+  } : null
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://serwis.omobonus.com.pl/ru' },
+      { '@type': 'ListItem', position: 2, name: 'Услуги', item: 'https://serwis.omobonus.com.pl/ru/#uslugi' },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `https://serwis.omobonus.com.pl/ru/uslugi/${slug}` },
+    ],
+  }
+
   const relatedServices: RelatedService[] = servicesRu
     .filter(s => relatedServiceSlugs.includes(s.slug))
     .map(s => ({
@@ -114,7 +146,7 @@ export default async function RuServicePage({
       basePath="/ru/uslugi"
       labels={labelsRu}
       relatedServices={relatedServices}
-      jsonLd={serviceJsonLd}
+      jsonLd={faqJsonLd ? [serviceJsonLd, breadcrumbJsonLd, faqJsonLd] : [serviceJsonLd, breadcrumbJsonLd]}
       footerT={ru.footer}
     />
   )

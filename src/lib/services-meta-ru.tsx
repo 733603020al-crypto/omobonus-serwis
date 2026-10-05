@@ -1,50 +1,81 @@
-import type { ServicePageLabels } from '@/components/service-page-template'
+import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
-export const headingsRu: Record<string, { h1: string; h2?: string }> = {
+export const headingsRu: Record<string, ServicePageHeadings> = {
+  'serwis-niszczarek': {
+    h1: 'Сервис и ремонт уничтожителей документов во Вроцлаве',
+    lines: ['Сервис и ремонт', 'уничтожителей документов', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
+  },
+  'naprawa-zasilaczy-ups': {
+    h1: 'Сервис и ремонт источников бесперебойного питания UPS во Вроцлаве',
+    lines: ['Сервис и ремонт', 'источников бесперебойного питания UPS', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru…)',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    h1: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
+    lines: ['Сервис и ремонт', 'принтеров для пластиковых карт', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
+  },
   'serwis-drukarek-termicznych': {
-    h1: 'Сервис и ремонт термоэтикеточных и термотрансферных принтеров во Вроцлаве',
-    h2: '(Zebra, Dymo, Godex, Sato, Brother и другие)',
+    h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
+    lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
+    h2: '(Zebra, TSC, Toshiba TEC, Honeywell, GoDEX, SATO, Brother, DYMO, Citizen, BIXOLON, Epson, cab, Star Micronics, OKI, Argox, …)',
   },
   'serwis-laptopow': {
-    h1: 'Сервис и ремонт ноутбуков во Вроцлаве',
-    h2: '',
+    h1: 'Сервис и ремонт ноутбуков во Вроцлаве',
+    lines: ['Сервис и ремонт', 'ноутбуков', 'во Вроцлаве'],
+    h2: '', // '(Microsoft, Dell, HP, Lenovo, Acer, Asus, MSI, Fujitsu, Samsung, Toshiba, Huawei, LG, Gigabyte, Razer, HONOR, Xiaomi, MEDION, Dynabook, VAIO, Panasonic, Framework, CHUWI, …)',
   },
   'naprawa-drukarek': {
-    h1: 'Сервис принтеров и многофункциональных устройств во Вроцлаве',
+    h1: 'Сервис и ремонт принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'принтеров', 'во Вроцлаве'],
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)',
   },
   'serwis-komputerow-stacjonarnych': {
-    h1: 'Сервис и ремонт стационарных компьютеров',
+    h1: 'Сервис и ремонт стационарных компьютеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'стационарных компьютеров', 'во Вроцлаве'],
+    h2: '', // '(HP, Dell, Lenovo, Asus, Acer, MSI, Microsoft, Samsung, Gigabyte, Alienware, Fujitsu, Corsair, ZOTAC, MINISFORUM, Framework, …)',
   },
   'outsourcing-it': {
-    h1: 'IT-аутсорсинг и информационное обслуживание компаний',
+    h1: 'IT-аутсорсинг и IT-обслуживание компаний',
   },
   'serwis-drukarek-laserowych': {
-    h1: 'Сервис и ремонт лазерных принтеров',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
+    h1: 'Сервис и ремонт лазерных принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'лазерных принтеров', 'во Вроцлаве'],
+    h2: '(HP, Samsung, Canon, Brother, Xerox, Ricoh, Kyocera, Konica Minolta, Sharp, Lexmark, Pantum, Toshiba, OKI, Epson, Fujifilm, DEVELOP, UTAX, Sindoh, …)',
   },
   'serwis-drukarek-atramentowych': {
-    h1: 'Сервис струйных принтеров',
-    h2: '(HP, Epson, Canon, Brother, Lexmark, ...)',
+    h1: 'Сервис и ремонт струйных принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'струйных принтеров', 'во Вроцлаве'],
+    h2: '(HP, Canon, Epson, Brother, Lexmark, Ricoh, RISO, Xerox, …)',
   },
   'serwis-drukarek-3d': {
-    h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
-    h2: '(Bambulab / Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, ...)',
+    h1: 'Сервис и ремонт 3D-принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', '3D-принтеров', 'во Вроцлаве'],
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HBot 3D, …)',
   },
   'druk-3d-na-zamowienie': {
-    h1: '3D-печать на заказ во Вроцлаве',
+    h1: '3D-печать на заказ во Вроцлаве',
+    lines: ['3D-печать', 'на заказ', 'во Вроцлаве'],
     h2: '3D-печать по технологии FDM из PLA, PETG, ASA и TPU – запасные части, прототипы, корпуса, технические детали и короткие серии.',
   },
   'serwis-plotterow': {
-    h1: 'Сервис и ремонт плоттеров во Вроцлаве',
-    h2: '(плоттеры HP, Canon, Epson и другие)',
+    h1: 'Сервис и ремонт печатающих плоттеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'печатающих плоттеров', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
   'serwis-drukarek-iglowych': {
-    h1: 'Сервис игольчатых (матричных) принтеров',
-    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
+    h1: 'Сервис и ремонт матричных принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'матричных принтеров', 'во Вроцлаве'],
+    fitMobile: true,
+    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
   'wynajem-drukarek': {
-    h1: 'Аренда (лизинг) принтеров и копировальных аппаратов',
+    h1: 'Аренда принтеров и копировальных аппаратов',
     h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, ...)',
   },
   'drukarka-zastepcza': {
@@ -53,6 +84,27 @@ export const headingsRu: Record<string, { h1: string; h2?: string }> = {
 }
 
 export const seoBlocksRu: Record<string, { items: string[] }> = {
+  'serwis-niszczarek': {
+    items: [
+      'Обслуживание и смазка, устранение заторов, ремонт режущего механизма, редуктора, двигателя и датчиков уничтожителя.',
+      'Ваш уничтожитель можем предварительно проверить после доставки в сервис — предварительная диагностика занимает до 15 мин.',
+      'Малые, офисные и профессиональные уничтожители: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg и другие.',
+    ],
+  },
+  'naprawa-zasilaczy-ups': {
+    items: [
+      'Замена аккумуляторов, диагностика, ремонт электроники и системы зарядки источников бесперебойного питания UPS.',
+      'Ваш UPS — сообщим стоимость ремонта за 15 мин.',
+      'UPS для дома, офиса и серверной: APC, Eaton, Ever, Vertiv и другие.',
+    ],
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    items: [
+      'Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт.',
+      'Ваш принтер для пластиковых карт — предварительно оценим проблему за 15 мин.',
+      'Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Также оказываем услуги по чистке, обслуживанию, регенерации, ремонту головки.',
@@ -130,11 +182,15 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
     ],
   },
   'drukarka-zastepcza': {
-    items: [' ', ' '],
+    items: ['Принтер на замену во Вроцлаве — устройство на время ремонта принтера или сервиса офисной техники.',
+      'Предлагаем принтеры на замену Вроцлав для компаний и частных клиентов, быструю подмену устройства, аренду принтера на время сервиса, а также полное сервисное обслуживание.',],
   },
 }
 
 export const imageAltRu: Record<string, string> = {
+  'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
+  'naprawa-zasilaczy-ups': 'Источник бесперебойного питания UPS',
+  'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -150,35 +206,52 @@ export const imageAltRu: Record<string, string> = {
   'drukarka-zastepcza': 'Принтер на замену',
 }
 
+// Short card names on /uslugi/naprawa-drukarek, same as the home service cards.
 export const subServiceTitlesRu: Record<string, string> = {
-  'serwis-drukarek-termicznych': 'Сервис и ремонт принтеров этикеток',
-  'serwis-drukarek-laserowych': 'Сервис лазерных принтеров',
+  'serwis-drukarek-laserowych': 'Лазерных принтеров',
+  'serwis-drukarek-atramentowych': 'Струйных принтеров',
+  'serwis-plotterow': 'Плоттеров',
+  'serwis-drukarek-termicznych': 'Принтеров этикеток',
+  'serwis-drukarek-iglowych': 'Матричных принтеров',
+  'serwis-drukarek-3d': '3D-принтеров',
 }
 
 export const seoMetadataRu: Record<string, { title: string; description: string }> = {
+  'serwis-niszczarek': {
+    title: 'Ремонт уничтожителей документов Вроцлав — сервис и цены',
+    description: 'Сервис и ремонт уничтожителей документов во Вроцлаве: обслуживание и смазка, устранение заторов, замена ножей, ремонт двигателя и датчиков. Цены нетто, диагностика бесплатно при ремонте. Fellowes, HSM, Kobra, Rexel, IDEAL.',
+  },
+  'naprawa-zasilaczy-ups': {
+    title: 'Сервис и ремонт UPS – источников бесперебойного питания',
+    description: 'Сервис и ремонт источников бесперебойного питания UPS во Вроцлаве — замена аккумуляторов, диагностика, ремонт электроники. APC, Eaton, Ever, Vertiv и другие. Полный прайс-лист без скрытых платежей.',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    title: 'Сервис принтеров для пластиковых карт — Zebra, Evolis, Fargo',
+    description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Прозрачный прайс — стоимость ремонта согласовываем до его выполнения.',
+  },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Сервис и ремонт ноутбуков всех марок во Вроцлаве ✔ Замена матрицы, диска, аккумулятора, клавиатуры ✔ Диагностика за 15 мин ✔ Запишитесь уже сегодня! ☎ 793 759 262',
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Сервис и ремонт стационарных компьютеров',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Сервис и ремонт стационарных компьютеров во Вроцлаве ✔ Чистка, замена комплектующих, восстановление данных ✔ Диагностика за 15 мин ✔ Звоните! ☎ 793 759 262',
   },
   'outsourcing-it': {
-    title: 'IT-аутсорсинг Вроцлав | Omobonus IT-обслуживание',
-    description: 'IT-аутсорсинг Вроцлав — информационное обслуживание компаний, IT-поддержка, helpdesk, администрирование сетей и серверов, постоянная техническая поддержка для бизнеса.',
+    title: 'IT-аутсорсинг | IT-обслуживание',
+    description: 'IT-аутсорсинг Вроцлав — IT-обслуживание компаний, IT-поддержка, helpdesk, администрирование сетей и серверов, постоянная техническая поддержка для бизнеса.',
   },
   'serwis-drukarek-laserowych': {
     title: 'Ремонт лазерных принтеров',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Ремонт лазерных принтеров HP, Canon, Brother, Samsung, Xerox во Вроцлаве ✔ Чистка, регенерация, проблемы с печатью ✔ Диагностика за 15 мин ☎ 793 759 262',
   },
   'serwis-drukarek-atramentowych': {
     title: 'Ремонт струйных принтеров',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Ремонт струйных принтеров HP, Epson, Canon, Brother, Lexmark во Вроцлаве ✔ Чистка, регенерация, ремонт головки ✔ Диагностика за 15 мин ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
     title: 'Сервис и ремонт 3D-принтеров',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Сервис и ремонт 3D-принтеров во Вроцлаве — Bambu Lab, Creality, Anycubic, Prusa и другие ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Звоните! ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
     title: '3D-печать на заказ',
@@ -186,15 +259,15 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'serwis-drukarek-termicznych': {
     title: 'Сервис и ремонт принтеров этикеток Zebra, Dymo',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Сервис термоэтикеточных и термотрансферных принтеров Zebra, Dymo, Godex, Sato во Вроцлаве ✔ Диагностика за 15 мин ✔ Прайс-лист на сайте ☎ 793 759 262',
   },
   'serwis-drukarek-iglowych': {
     title: 'Ремонт игольчатых принтеров',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Ремонт и сервис игольчатых (матричных) принтеров Epson, OKI, Bixolon, Citizen во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ☎ 793 759 262',
   },
   'naprawa-drukarek': {
     title: 'Ремонт принтеров и копировальных аппаратов',
-    description: '✔ Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Сервис принтеров и многофункциональных устройств — HP, Epson, Canon, Brother, Xerox, Kyocera во Вроцлаве ✔ Диагностика за 15 мин ✔ Прайс-лист на сайте ☎ 793 759 262',
   },
   'wynajem-drukarek': {
     title: 'Аренда принтеров и копировальных аппаратов',
@@ -206,7 +279,7 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   },
   'serwis-plotterow': {
     title: 'Сервис и ремонт плоттеров',
-    description: '✔ Комплексное обслуживание плоттеров ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
+    description: '✔ Ремонт и сервис плоттеров HP, Canon, Epson, … во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс-лист на сайте ✔ Запишитесь на сервис уже сегодня! ☎ 793 759 262',
   },
 }
 
@@ -220,6 +293,26 @@ export const labelsRu: ServicePageLabels = {
   fadeSlideDruk3DZamowienie: 'Полный перечень услуг и цен, без скрытых платежей (не «цена от 50 zł» или «цена по договорённости»)',
   relatedCta: 'Смотреть прайс-лист',
   relatedIconAltSuffix: 'Вроцлав - иконка сервисной услуги',
+  ctaHeading: 'Есть проблема с вашим устройством?',
+  ctaHeadingBySlug: {
+    'serwis-laptopow': 'Есть проблема с ноутбуком?',
+    'serwis-komputerow-stacjonarnych': 'Есть проблема с компьютером?',
+    'naprawa-drukarek': 'Есть проблема с принтером?',
+    'serwis-drukarek-laserowych': 'Есть проблема с лазерным принтером?',
+    'serwis-drukarek-atramentowych': 'Есть проблема со струйным принтером?',
+    'serwis-plotterow': 'Есть проблема с плоттером?',
+    'serwis-drukarek-termicznych': 'Есть проблема с термопринтером?',
+    'serwis-drukarek-iglowych': 'Есть проблема с матричным принтером?',
+    'serwis-drukarek-3d': 'Есть проблема с 3D-принтером?',
+    'serwis-niszczarek': 'Есть проблема со шредером?',
+    'naprawa-zasilaczy-ups': 'Есть проблема с UPS?',
+    'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
+    'wynajem-drukarek': 'Есть проблема с принтером?',
+    'drukarka-zastepcza': 'Есть проблема с принтером?',
+  },
+  ctaText: 'Напишите или позвоните — подскажем, с чего начать',
+  ctaButton: 'Быстрый контакт',
+  ctaHref: '/ru/kontakt',
   drukarkaZastepczaNote: (
     <>
       Принтер на замену во Вроцлаве — устройство на время ремонта принтера или сервиса офисной техники. Предлагаем <strong>принтеры на замену Вроцлав</strong> для компаний и частных клиентов, быструю подмену устройства, аренду принтера на время сервиса, а также полное сервисное обслуживание.

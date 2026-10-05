@@ -36,9 +36,9 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
           <div className="container mx-auto px-2 md:px-4 flex flex-col items-center">
             <div className={`w-full max-w-6xl bg-paper-texture shadow-2xl rounded-sm p-3 md:p-5 border border-[#3a2e24]/20 scale-[0.95] md:scale-[0.8] origin-top ${cardMarginBottomClass}`}>
 
-              <h2 className="text-[#3a2e24] text-2xl md:text-3xl font-cormorant font-bold text-center mb-3 md:mb-4">
+              <h1 className="text-[#3a2e24] text-2xl md:text-3xl font-cormorant font-bold text-center mb-3 md:mb-4">
                 {content.title}
-              </h2>
+              </h1>
 
               <div className="space-y-2 md:space-y-3 text-[#3a2e24]">
                 {content.sections.map((section, idx) => (

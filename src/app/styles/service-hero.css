@@ -2,11 +2,23 @@
    SERVICE HERO IMAGE ANIMATION
    ========================= */
 
+/* Service-page hero → parchment background dissolve: same mask technique as
+   .hero-bg-fade on the homepage (globals.css), but a separate class — the
+   fixed height here is calibrated for the service-page hero geometry (ends
+   past the closed ServiceAccordion, near where GoogleReviews currently
+   starts), not the homepage's fold height. Kept independent of <main> height
+   so ServiceAccordion/submenu/table expansion never stretches or moves it. */
+.service-hero-bg-fade {
+  --service-hero-height: 1110px;
+  height: var(--service-hero-height);
+  -webkit-mask-image: linear-gradient(to top, transparent 0, black 240px);
+  mask-image: linear-gradient(to top, transparent 0, black 240px);
+}
+
 .service-hero-image-wrap {
   position: relative;
   isolation: isolate;
-  animation: serviceHeroFloat 7s ease-in-out infinite;
-
+  z-index: 1;
 }
 
 .service-hero-image {
@@ -15,10 +27,9 @@
   transition:
     transform 300ms ease,
     filter 300ms ease;
-  animation: serviceHeroGlow 7s ease-in-out infinite;
   filter:
     drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  /* Every service page keeps this hero animating (float/glow, or the
+  /* Every service page keeps this hero's shine sweep animating (or the
      druk-3d SMIL SVG) for as long as the page is open, which keeps costing
      Style/Layout/Rendering work on the main thread even while scrolled out
      of view. content-visibility skips that work entirely while off-screen
@@ -122,40 +133,6 @@
   border-color: transparent !important;
   background: transparent !important;
   box-shadow: none !important;
-}
-
-@keyframes serviceHeroFloat {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-
-  12% {
-    transform: translateY(-3px) scale(1);
-  }
-
-  24% {
-    transform: translateY(-7px) scale(1.018);
-  }
-
-  32% {
-    transform: translateY(-8px) scale(1.025);
-  }
-
-  38% {
-    transform: translateY(-6px) scale(1.012);
-  }
-
-  50% {
-    transform: translateY(-8px) scale(1);
-  }
-
-  75% {
-    transform: translateY(-3px) scale(1);
-  }
-
-  100% {
-    transform: translateY(0) scale(1);
-  }
 }
 
 @keyframes serviceHeroShine {
@@ -492,43 +469,6 @@
 }
 
 
-@keyframes serviceHeroGlow {
-  0% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  12% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  24% {
-    filter:
-      drop-shadow(0 20px 28px rgba(0, 0, 0, 0.52)) drop-shadow(0 0 26px rgba(191, 167, 106, 0.58)) drop-shadow(0 0 54px rgba(191, 167, 106, 0.36));
-  }
-
-  32% {
-    filter:
-      drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(191, 167, 106, 0.68)) drop-shadow(0 0 64px rgba(191, 167, 106, 0.42));
-  }
-
-  38% {
-    filter:
-      drop-shadow(0 20px 28px rgba(0, 0, 0, 0.52)) drop-shadow(0 0 24px rgba(191, 167, 106, 0.52)) drop-shadow(0 0 46px rgba(191, 167, 106, 0.30));
-  }
-
-  50% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-
-  100% {
-    filter:
-      drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
-  }
-}
-
 @keyframes serviceHeroImageMobilePulse {
   0% {
     transform: translateY(0) scale(1);
@@ -595,6 +535,12 @@
     animation: serviceHeroImageMobilePulse 7s ease-in-out infinite;
   }
 
+  /* Glow of the pulse spills far outside the box; Chrome counts that spill into the image's LCP area,
+     so the delayed animation swap (~3s) used to become LCP. Clipping at 120px is visually identical. */
+  .page-outsourcing-it .service-hero-image-wrap {
+    clip-path: inset(-120px);
+  }
+
   .service-hero-image-wrap::after {
     display: none;
   }
@@ -645,6 +591,7 @@
   }
 }
 
+
 /* On "druk-3d-na-zamowienie" only: drop the generic hero float/glow/shine
    effects (shared by every service page) — the hero illustration on this
    page is a self-animated SVG (Druk_3D_animation.svg, movement/jet/glow all
@@ -667,4 +614,201 @@
 
 .page-druk-3d-na-zamowienie .service-hero-image-wrap::after {
   display: none;
+}
+
+/* Stack printer carousel: default "printer" variant (naprawa-drukarek,
+   serwis-drukarek-atramentowych). The 400/300px
+   hero zone itself (.service-hero-image-wrap, the grid layout, the text
+   column) is untouched — only the carousel's own visual area is allowed to
+   bleed past it, same principle as the HERO_SCALE pages (e.g.
+   serwis-drukarek-laserowych) that let their hero image overflow its zone.
+
+   .hero-printer-carousel-bleed / .hero-printer-carousel keep the exact same
+   nested inset geometry as before (it's what positions/sizes the slides —
+   changing it would change slide size/position). It previously also carried
+   content-visibility:auto for off-screen render skipping, but that implies
+   contain:paint, which hard-clips any descendant (incl. drop-shadow) at this
+   box's own edge — with the enlarged active slide (scale 1.54) sized right up
+   to that edge, sub-pixel rounding + shadow bleed clipped a sliver, seen as a
+   straight top/bottom line. Removed here (this hero is always above the
+   fold, so the skip-when-offscreen benefit didn't apply anyway) and replaced
+   with explicit overflow:visible so nothing on this element can clip the
+   printers or their shadow again. May visually extend over/under the text
+   column — that column sits in its own isolated stacking context at a higher
+   z-index, so text stays on top regardless. */
+.hero-printer-carousel-bleed {
+  position: absolute;
+  top: -10.06%;
+  bottom: -10.06%;
+  left: -34.24%;
+  right: -34.24%;
+  overflow: visible;
+}
+
+.hero-printer-carousel {
+  position: absolute;
+  top: 8.37%;
+  bottom: 8.37%;
+  left: 20.32%;
+  right: 20.32%;
+  overflow: visible;
+}
+
+.hero-printer-carousel-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  /* Opacity settles in half the time it takes transform to finish moving/
+     scaling, so the outgoing slide is already invisible (and the incoming
+     one already fully opaque) well before either stops sliding — closes the
+     double-exposure window where both used to be partially visible and
+     overlapping mid-transition. */
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1), opacity 450ms ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-printer-carousel-slide {
+    transition: none;
+  }
+}
+
+/* =========================
+   HERO CAROUSEL — home + service pages (.home-hero-carousel-wrap)
+   ========================= */
+
+/* Old service-page image effect (.service-hero-image): normal gold glow,
+   stronger on hover plus 3.5% grow, 300ms. The slide keeps the carousel's
+   own 900ms transform/opacity transitions; filter eases in 300ms. */
+.home-hero-carousel-wrap .hero-printer-carousel-slide {
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1), opacity 450ms ease, filter 300ms ease;
+}
+
+/* A slide brought in by an advance eases into place (the entrance runs on
+   the individual scale/translate properties, so the inline transform that
+   sets its final size/position stays untouched). */
+.hero-printer-carousel-slide.hero-home-slide-active.hero-home-slide-enter {
+  animation: heroHomeSlideEnter 650ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@keyframes heroHomeSlideEnter {
+  from {
+    opacity: 0;
+    scale: 0.96;
+    translate: -25px 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+/* The grow goes on the inner carousel box, not on the slides — their
+   transform belongs to the carousel. */
+.home-hero-carousel-wrap .hero-printer-carousel {
+  transition: transform 300ms ease, filter 300ms ease, scale 300ms ease;
+}
+
+@media (hover: hover) {
+  .service-hero-image-wrap.home-hero-carousel-wrap:hover .hero-printer-carousel {
+    scale: 1.035;
+  }
+
+  .service-hero-image-wrap.home-hero-carousel-wrap:hover .hero-printer-carousel-slide.hero-home-slide-active {
+    filter:
+      drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(191, 167, 106, 0.55)) drop-shadow(0 0 46px rgba(191, 167, 106, 0.34));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-carousel-wrap .hero-printer-carousel-slide {
+    transition: none;
+  }
+
+  .hero-printer-carousel-slide.hero-home-slide-active.hero-home-slide-enter {
+    animation: none;
+  }
+}
+
+/* Stack carousel: serwis-laptopow hero only. Separate classes from the
+   printer carousel above on purpose — that one intentionally bleeds its
+   active slide past the fixed hero zone (scale 1.54 in hero-printer-
+   carousel.tsx); serwis-laptopow must stay fully inside its own hero
+   column (no crop, no spill into the text side), so this variant has no
+   negative bleed inset and its active slide is left at 1x (see the
+   "laptop" entry in VARIANT_CONFIG). The .service-hero-image-wrap parent
+   still carries its usual HERO_SCALE (1.4) enlargement — unchanged, so the
+   carousel just fills that same box the previous static image used to. */
+.hero-laptop-carousel-bleed {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.hero-laptop-carousel {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.hero-laptop-carousel-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 900ms cubic-bezier(0.4, 0, 0.2, 1), opacity 450ms ease;
+  will-change: transform, opacity;
+  pointer-events: none;
+  filter:
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 18px rgba(191, 167, 106, 0.38)) drop-shadow(0 0 34px rgba(191, 167, 106, 0.22));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-laptop-carousel-slide {
+    transition: none;
+  }
+}
+
+/* =========================
+   SERVICE HERO — phone (<768px)
+   ========================= */
+
+/* The image zone clips sideways at the screen edges (negative margin +
+   padding = full width clip box, the image itself keeps the container
+   width), so neighbouring slides / wide renders never cause page overflow.
+   Vertical overflow stays visible for the shadow and glow. The HERO_SCALE
+   enlargement is a desktop-only overflow — on a phone the image fits the
+   300px zone. Slide glow/shadow is the same desktop filter (not overridden). */
+@media (max-width: 767.98px) {
+  .service-hero-zone {
+    margin-inline: -16px;
+    padding-inline: 16px;
+    overflow-x: clip;
+  }
+
+  .service-hero-zone > .service-hero-image-wrap {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Size cap per slide (--mobile-fit, see hero-printer-carousel.tsx). */
+  .service-hero-carousel .hero-printer-carousel-slide {
+    --slide-fit: var(--mobile-fit, 1);
+  }
+
+  /* Only the active slide is visible; the queued ones stay hidden. */
+  .service-hero-carousel .hero-printer-carousel-slide[data-tier]:not([data-tier="0"]) {
+    opacity: 0 !important;
+  }
 }

@@ -73,6 +73,17 @@ export function LanguageSwitcher() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
+
   const dropdownItemClass = (active: boolean) =>
     `flex items-center gap-2 rounded-sm border border-transparent px-2 py-1.5 font-cormorant text-[15px] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 ${
       active ? 'text-[#f3df9a] [text-shadow:0_0_8px_rgba(191,167,106,0.5)]' : 'text-white'
@@ -83,14 +94,20 @@ export function LanguageSwitcher() {
       ref={ref}
       translate="no"
       className="notranslate relative h-full flex items-center"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      // Hover-open only for a real mouse: on touch the tap also fires a synthetic
+      // mouseenter, which opened the list right before the arrow's click toggled it shut.
+      onPointerEnter={e => { if (e.pointerType === 'mouse') setIsOpen(true) }}
+      onPointerLeave={e => { if (e.pointerType === 'mouse') setIsOpen(false) }}
     >
       <div className="flex items-center gap-2">
         {visibleLocales.map(locale => (
           <Link
             key={locale.code}
             href={buildLocaleHref(basePath, locale)}
+            // Смена языка = другой корневой layout, Next всё равно делает полную
+            // перезагрузку страницы, поэтому заранее скачанные данные (и шрифты
+            // кириллицы из них) не используются — prefetch только тратит трафик.
+            prefetch={false}
             onClick={() => setIsOpen(false)}
             aria-label={locale.fullLabel}
             className={`group !flex items-center gap-1 transition-all duration-300 ease-out hover:-translate-y-0.5 select-none ${
@@ -101,7 +118,7 @@ export function LanguageSwitcher() {
               src={locale.flagSrc}
               alt=""
               width={18}
-              height={13}
+              height={12}
               className="rounded-[2px] object-cover flex-shrink-0"
               unoptimized
             />
@@ -124,7 +141,7 @@ export function LanguageSwitcher() {
           style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
-          aria-label="Wybierz język / Вибрати мову"
+          aria-label="Wybierz język / Вибрати мову / Выбрать язык"
         >
           <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -139,10 +156,11 @@ export function LanguageSwitcher() {
               <Link
                 key={locale.code}
                 href={buildLocaleHref(basePath, locale)}
+                prefetch={false}
                 onClick={() => setIsOpen(false)}
                 className={dropdownItemClass(locale.code === currentLocale.code)}
               >
-                <Image src={locale.flagSrc} alt="" width={20} height={15} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
+                <Image src={locale.flagSrc} alt="" width={20} height={13} className="rounded-[2px] object-cover flex-shrink-0 opacity-90" unoptimized />
                 {locale.fullLabel}
               </Link>
             ))}

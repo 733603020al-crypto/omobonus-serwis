@@ -49,14 +49,14 @@ function Divider({ label }: { label: string }) {
   return (
     <div ref={ref} className="brush-divider-row flex items-center gap-3">
       <div
-        className="divider-line divider-line-left h-px flex-1"
+        className="divider-line divider-line-left h-px min-w-4 flex-1"
         style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
       />
-      <span className="whitespace-nowrap font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5e6bf]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
+      <span className="min-w-0 text-center [text-wrap:balance] font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5e6bf]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
         {label}
       </span>
       <div
-        className="divider-line divider-line-right h-px flex-1"
+        className="divider-line divider-line-right h-px min-w-4 flex-1"
         style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
       />
     </div>
@@ -76,6 +76,7 @@ interface ContactActionsT {
   orFormLabel?: string
   callNowButton?: string
   callNowDividerLabel?: string
+  mapLabel?: string
 }
 
 const PL_ACTIONS: ContactActionsT = {
@@ -91,6 +92,7 @@ const PL_ACTIONS: ContactActionsT = {
   orFormLabel: 'lub wyślij zgłoszenie',
   callNowButton: 'Zadzwoń teraz',
   callNowDividerLabel: 'lub napisz',
+  mapLabel: 'Mapa',
 }
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
@@ -106,6 +108,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [hintActive, setHintActive] = useState(false)
   const [hintSourceRect, setHintSourceRect] = useState<DOMRect | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const honeypotRef = useRef<HTMLInputElement>(null)
   const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
@@ -169,6 +172,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       const formData = new FormData()
       formData.append('phone', phone)
       formData.append('country', countryName)
+      formData.append('company', honeypotRef.current?.value ?? '')
       const res = await fetch('/api/callback-request', { method: 'POST', body: formData })
       if (!res.ok) throw new Error('send failed')
       pushFormSubmitToDataLayer('quick_form', phone)
@@ -207,22 +211,22 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             className="contact-icon-link hidden md:flex md:flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
             <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Mapa</span>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email.png" alt="E-mail" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/email.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
           </a>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/whatsapp.png" alt="WhatsApp" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/whatsapp.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
           </a>
           <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/telegram.png" alt="Telegram" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/telegram.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
           </a>
           <a href="viber://chat?number=%2B48793759262" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/viber.png" alt="Viber" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/viber.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
           </a>
         </div>
@@ -234,10 +238,23 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
         {/* Level 2: phone + button row */}
         <form ref={formRef} onSubmit={handleCallback}>
+          {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
+          <input
+            ref={honeypotRef}
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            defaultValue=""
+            className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+          />
           <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-3">
             <div className="flex-1 min-w-0">
               <CustomPhoneInput
                 aria-label={d.callbackTitle}
+                aria-invalid={phoneError}
+                aria-describedby={phoneError ? 'callback-phone-error-mobile callback-phone-error-desktop' : undefined}
                 value={phone}
                 onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
                 onCountryChange={({ name, dialCode, phoneLength }) => {
@@ -253,7 +270,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             </div>
             {/* Mobile only: error between phone row and button */}
             {phoneError && (
-              <p className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+              <p id="callback-phone-error-mobile" className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
             )}
             <button
               type="submit"
@@ -266,7 +283,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
 
           {/* Desktop only: error below the row */}
           {phoneError && (
-            <p className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
+            <p id="callback-phone-error-desktop" className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
           )}
           {callbackError && !phoneError && (
             <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>

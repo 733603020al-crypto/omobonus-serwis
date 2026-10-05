@@ -1,14 +1,16 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import manifest from '@/config/manifest'
-import { DEFAULT_PRICE_TOOLTIP } from '@/lib/services-data'
+import { getSubcategoryVisual, NAPRAWY_PLACEHOLDER_ICON } from '@/config/service-visuals'
+import { DEFAULT_PRICE_TOOLTIP, REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-layout-constants'
 import type { ServiceData } from '@/lib/services-data'
-import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
+import type { ServiceDisplayPricing } from '@/lib/services-pricing'
+import type { ServiceAccordionDict } from '@/lib/i18n/service-accordion'
 import {
   Accordion,
   AccordionContent,
@@ -31,17 +33,96 @@ import {
 } from '@/components/ui/tooltip'
 import {
   Popover,
+  PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { Info, ArrowRight } from 'lucide-react'
+import { WinkEmoji } from '@/components/wink-emoji'
 
-export const getIconForSection = (sectionId: string) => {
+// Literal strings (not template-interpolated) so Tailwind's static content
+// scanner can find them — same reasoning as services.tsx's ORIENT/EDGE/
+// CORNER_CLASSES, which this deliberately mirrors for the accordion's own
+// torn-parchment edge variety (zero new image files, same CSS mechanism).
+const ACCORDION_EDGE_CLASSES = [
+  'zakres-edge-a',
+  'zakres-edge-c',
+  'zakres-edge-e',
+  'zakres-edge-g',
+]
+const ACCORDION_ORIENT_CLASSES = [
+  'zakres-orient-normal',
+  'zakres-orient-flipy',
+]
+// Mostly corner-none, so folds stay subtle across a whole page of sections.
+const ACCORDION_CORNER_CLASSES = [
+  '',
+  'zakres-corner-tr',
+  '',
+  'zakres-corner-bl',
+]
+
+// Slugs opted into the lighter "warm parchment" look that mirrors the
+// homepage SERWIS I NAPRAWA cards (near-zero overlay, dark-brown header
+// text, full torn-edge variety) instead of the shared darker accordion
+// treatment every other /uslugi/[slug] page keeps. Shares its slug list
+// with the repair-accordion layout below (see REPAIR_ACCORDION_LAYOUT_SLUGS)
+// — this never mutates the base ACCORDION_EDGE/ORIENT/CORNER_CLASSES arrays
+// above, which other pages still use as-is.
+const WARM_PARCHMENT_SLUGS = REPAIR_ACCORDION_LAYOUT_SLUGS
+
+// Full 8/4/5 variety, ported 1:1 from services.tsx's EDGE_CLASSES/
+// ORIENT_CLASSES/CORNER_CLASSES — only used for WARM_PARCHMENT_SLUGS pages.
+const ACCORDION_EDGE_CLASSES_FULL = [
+  'zakres-edge-a',
+  'zakres-edge-b',
+  'zakres-edge-c',
+  'zakres-edge-d',
+  'zakres-edge-e',
+  'zakres-edge-f',
+  'zakres-edge-g',
+  'zakres-edge-h',
+]
+const ACCORDION_ORIENT_CLASSES_FULL = [
+  'zakres-orient-normal',
+  'zakres-orient-flipx',
+  'zakres-orient-flipy',
+  'zakres-orient-rotate180',
+]
+const ACCORDION_CORNER_CLASSES_FULL = [
+  '',
+  'zakres-corner-tl',
+  'zakres-corner-tr',
+  'zakres-corner-bl',
+  'zakres-corner-br',
+]
+
+const RENTAL_ICON_SLUGS = new Set(['wynajem-drukarek', 'drukarka-zastepcza'])
+
+const WYNAJEM_SECTION_ICONS: Record<string, string> = {
+  'akordeon-1': '/images/wynajem-a4-v2.webp',
+  'akordeon-2': '/images/wynajem-a3-v3.webp',
+}
+
+const WYNAJEM_SUBCATEGORY_ICONS: Record<string, string> = {
+  'drukarki-mono': '/images/wynajem-a4-drukarki-mono-v2.webp',
+  'drukarki-kolor': '/images/wynajem-a4-drukarki-kolor-v2.webp',
+  'mfu-mono': '/images/wynajem-a4-mfu-mono-v2.webp',
+  'mfu-kolor': '/images/wynajem-a4-mfu-kolor-v2.webp',
+  'a3-drukarki-mono': '/images/wynajem-a3-drukarki-mono-v2.webp',
+  'a3-drukarki-kolor': '/images/wynajem-a3-drukarki-kolor-v2.webp',
+  'a3-mfu-mono': '/images/wynajem-a3-mfu-mono-v2.webp',
+  'a3-mfu-kolor': '/images/wynajem-a3-mfu-kolor-v2.webp',
+}
+
+export const getIconForSection = (sectionId: string, serviceSlug?: string) => {
+  if (serviceSlug && RENTAL_ICON_SLUGS.has(serviceSlug) && WYNAJEM_SECTION_ICONS[sectionId]) return WYNAJEM_SECTION_ICONS[sectionId]
   switch (sectionId) {
     case 'diagnoza':
       return manifest.P1_Diagnoza_i_wycena
     case 'projektowanie-modeli':
-      return manifest.P1_Diagnoza_i_wycena
+      return '/images/accordion-icon-druk3d-projektowanie-cad-v2.webp'
     case 'dojazd':
       return manifest.P2_Dojazd
     case 'konserwacja':
@@ -59,27 +140,10 @@ export const getIconForSection = (sectionId: string) => {
   }
 }
 
-export const getIconForSubcategory = (subcategoryId: string) => {
-  switch (subcategoryId) {
-    case 'drukarki-mono':
-      return '/images/A4_Drukarki_mono.webp'
-    case 'drukarki-kolor':
-      return '/images/A4_Drukarki_kolor.webp'
-    case 'mfu-mono':
-      return '/images/A4_MFU_mono.webp'
-    case 'mfu-kolor':
-      return '/images/A4_MFU_kolor.webp'
-    case 'a3-drukarki-mono':
-      return '/images/Drukarki_A3_A4_mono.webp'
-    case 'a3-drukarki-kolor':
-      return '/images/Drukarki_A3_A4_mono_kolor.webp'
-    case 'a3-mfu-mono':
-      return '/images/MFU_A3_A4_mono.webp'
-    case 'a3-mfu-kolor':
-      return '/images/MFU_A3_A4_mono_kolor.webp'
-    default:
-      return null
-  }
+export const getIconForSubcategory = (subcategoryId: string, serviceSlug?: string) => {
+  // These subcategories exist only on the rental pages.
+  if (serviceSlug && RENTAL_ICON_SLUGS.has(serviceSlug)) return WYNAJEM_SUBCATEGORY_ICONS[subcategoryId] ?? null
+  return null
 }
 
 const PROPER_NOUN_PREFIXES = [
@@ -92,6 +156,7 @@ const PROPER_NOUN_PREFIXES = [
   'bios',
   'uefi',
   'raid',
+  'ups ',
   'hp',
   'canon',
   'epson',
@@ -199,7 +264,25 @@ const parseServiceText = (text: string) => {
   }
 }
 
+// Separator linii (U+2028) w nazwie pakietu = nowa linia tym samym rozmiarem czcionki;
+// fragment [[...]] widoczny tylko na desktopie (na telefonie skrócona nazwa).
+// Lista prac (•) bezpośrednio pod nazwą pakietu dostaje odstęp ~14px (packageListGap).
+const renderDesktopOnly = (line: string) =>
+  line.includes('[[')
+    ? line.split(/\[\[(.+?)\]\]/).map((part, i) => (i % 2 === 1 ? <span key={i} className="hidden md:inline">{part}</span> : part))
+    : line
+const renderServiceMain = (main: string) =>
+  main.includes('\u2028')
+    ? main.split('\u2028').map((line, i) => (i > 0 ? <span key={i}><br />{renderDesktopOnly(line)}</span> : renderDesktopOnly(line)))
+    : main
+// desktop: +2px kompensuje translateY(-2px) listy w otwartej sekcji
+const packageListGap = (secondary: string | null) => (secondary?.trimStart().startsWith('•') ? 'mt-[14px] md:mt-[16px]' : undefined)
+
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
+
+// Ответы FAQ в данных выделяют жирный фрагмент как **текст** (JSON-LD эти звёздочки срезает)
+const renderBoldMarkup = (text: string) =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part))
 
 // Общая функция для рендеринга второстепенного текста (стиль как у SEO-текста)
 // Единый стиль для всех второстепенных описаний на страницах услуг
@@ -225,7 +308,7 @@ export const renderPriceLines = (price: string, link?: string) => {
     return (
       <Link
         href={link}
-        className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] underline underline-offset-2 hover:text-white focus:text-white transition-colors"
+        className="font-inter text-[13px] md:text-[14px] text-[#3A2817] underline underline-offset-2 transition-colors"
       >
         {trimmedPrice}
       </Link>
@@ -241,7 +324,7 @@ export const renderPriceLines = (price: string, link?: string) => {
     return (
       <div
         key={key ? `${text}-${key}` : undefined}
-        className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]"
+        className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]"
       >
         {hasVariant ? (
           <>
@@ -301,21 +384,21 @@ export const renderPriceLines = (price: string, link?: string) => {
 }
 
 export const renderDurationValue = (value: string) => (
-  <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
+  <div className="duration-value-text whitespace-pre-line font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">
     {value}
   </div>
 )
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px') => {
+const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px', gapClass?: string) => {
   if (!text) return null
 
   // Jeśli tekst zawiera переносы строк, разбиваем и рендерим каждую строку отдельно
   if (text.includes('\n')) {
     const lines = text.split('\n').filter(line => line.trim())
     return (
-      <div className="text-[14px] text-[#cbb27c] leading-relaxed mt-1">
+      <div className={cn('text-[14px] text-[#cbb27c] leading-relaxed mt-1', gapClass)}>
         {lines.map((line, idx) => {
           const trimmed = line.trim()
           const lower = trimmed.toLowerCase()
@@ -323,17 +406,17 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           // Special handling for "zakres usługi obejmuje:", "zakres paketu obejmuje:", "zakres PODSTAWOWY +", "zakres STANDARD +", "zakres START +", "zakres BIZNES +" - white text, no parens
           if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
             return (
-              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
+              <div key={idx} className="emphasis-inline-text text-[14px] leading-relaxed mt-1 first:mt-0 text-white">
                 {trimmed}
               </div>
             )
           }
 
-          // Special handling for "Uwaga!!!" - white text, no parens
-          if (trimmed.startsWith('Uwaga!!!')) {
+          // Ostrzeżenie „Uwaga!!!” (PL/UK/RU) - biały, pogrubiony i podkreślony tekst, bez nawiasów
+          if (/^(Uwaga|Увага|Внимание)!!!/.test(trimmed)) {
             return (
-              <div key={idx} className="text-[14px] text-white leading-relaxed mt-1 first:mt-0">
-                {trimmed}
+              <div key={idx} className="emphasis-inline-text text-[14px] text-white leading-relaxed mt-[10px] first:mt-0">
+                <span className="font-bold underline underline-offset-[3px]">{trimmed}</span>
               </div>
             )
           }
@@ -341,15 +424,15 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
           // Special handling for bullet points - no parens, tighter spacing
           if (trimmed.startsWith('•')) {
             return (
-              <div key={idx} className="text-[14px] text-[#cbb27c] leading-[1.35] mt-[1px] pl-1">
-                {trimmed}
+              <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] mt-[1px] pl-1 leading-[1.35]">
+                {renderBoldMarkup(trimmed)}
               </div>
             )
           }
 
           return (
-            <div key={idx} className="text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
-              ({trimmed})
+            <div key={idx} className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-0.5 first:mt-0">
+              ({renderBoldMarkup(trimmed)})
             </div>
           )
         })}
@@ -362,7 +445,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
 
   if (lower.startsWith('zakres usługi obejmuje:') || lower.startsWith('zakres paketu obejmuje:') || lower.startsWith('zakres podstawowy +') || lower.startsWith('zakres standard +') || lower.startsWith('zakres start +') || lower.startsWith('zakres biznes +')) {
     return (
-      <div className="text-[14px] text-white leading-relaxed">
+      <div className="emphasis-inline-text text-[14px] text-white leading-relaxed">
         {trimmed}
       </div>
     )
@@ -371,7 +454,7 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
   // Special handling for "Uwaga!!!" - white text, no parens
   if (trimmed.startsWith('Uwaga!!!')) {
     return (
-      <div className="text-[14px] text-white leading-relaxed">
+      <div className="emphasis-inline-text text-[14px] text-white leading-relaxed">
         {trimmed}
       </div>
     )
@@ -379,33 +462,27 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px')
 
   if (trimmed.startsWith('•')) {
     return (
-      <div className="text-[14px] text-[#cbb27c] leading-relaxed pl-1">
+      <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed pl-1">
         {trimmed}
       </div>
     )
   }
 
   return (
-    <div className="text-[14px] text-[#cbb27c] leading-relaxed">
+    <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">
       ({trimmed})
     </div>
   )
 }
 
 // Функция для рендеринга заголовка секции с возможностью переноса части в скобках
-const renderSectionTitleMobile = (title: string) => {
+// Отделяет последнюю скобочную часть заголовка от основного текста — только
+// для стилевого оформления (отдельный <span> под суффикс). Текст всегда берётся
+// из section.title целиком; id секции здесь не используется для выбора текста.
+const splitTitleSuffix = (title: string): { main: string; suffix: string | null } => {
   const match = title.match(/^(.+?)\s*\((.+?)\)$/)
-  if (match) {
-    const mainPart = match[1].trim()
-    const bracketPart = match[2].trim()
-    return (
-      <>
-        <div>{mainPart}</div>
-        <div>({bracketPart})</div>
-      </>
-    )
-  }
-  return <>{title}</>
+  if (!match) return { main: title, suffix: null }
+  return { main: match[1].trim(), suffix: `(${match[2].trim()})` }
 }
 
 // Sekcje strony druk-3d-na-zamowienie, które mają korzystać z tego samego
@@ -414,19 +491,29 @@ const DRUK3D_CUSTOM_SECTION_IDS = new Set(['diagnoza', 'projektowanie-modeli'])
 const isDruk3DCustomSection = (slug: string, sectionId: string) =>
   slug === 'druk-3d-na-zamowienie' && DRUK3D_CUSTOM_SECTION_IDS.has(sectionId)
 
+// Which (slug, section) pairs render the shared sliced parchment backdrop
+// (header/row/bottom-tail segment metrics below).
+const usesSharedParchmentList = (serviceSlug: string, sectionId: string) =>
+  sectionId === 'naprawy' ||
+  (
+    (serviceSlug === 'wynajem-drukarek' ||
+      serviceSlug === 'drukarka-zastepcza') &&
+    (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')
+  )
+
 // Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
 // (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
 const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17'])
 const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
   slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
 
-// Подсвietla jednostki "zł/gram" i "zł/godz." złotym kolorem wewnątrz jednolinijkowej ceny
-// (np. "0,30 zł/gram + 8 zł/godz.") — reszta tekstu (liczby, "+") pozostaje biała.
+// Подсвietla jednostki "zł/gram" i "zł/h" złotym kolorem wewnątrz jednolinijkowej ceny
+// (np. "0,30 zł/gram + 8 zł/h") — reszta tekstu (liczby, "+") pozostaje biała.
 const renderPlainPriceWithUnits = (price: string) => {
-  const parts = price.split(/(zł\/gram|zł\/godz\.)/g)
+  const parts = price.split(/(zł\/gram|zł\/h)/g)
   return parts.map((part, i) =>
-    part === 'zł/gram' || part === 'zł/godz.' ? (
-      <span key={i} className="text-[#cbb27c]">{part}</span>
+    part === 'zł/gram' || part === 'zł/h' ? (
+      <span key={i} className="parentheses-caption-text text-[#cbb27c]">{part}</span>
     ) : (
       <span key={i}>{part}</span>
     )
@@ -441,7 +528,7 @@ const renderMaterialPrice = (price: string) => {
   const plusIdx = price.indexOf('+')
   if (plusIdx === -1) return renderPlainPriceWithUnits(price)
   const mainPart = price.slice(0, plusIdx).trim() // "0,30 zł/gram"
-  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/godz."
+  const surchargePart = price.slice(plusIdx).trim() // "+ 8 zł/h"
 
   const splitValueUnit = (part: string) => {
     const m = part.match(/^(.*zł)(\/.*)$/)
@@ -454,11 +541,11 @@ const renderMaterialPrice = (price: string) => {
   const block = (value: string, unit: string, key: string, prefix?: string) => (
     <div key={key} className="flex items-start">
       {prefix && (
-        <span className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
+        <span className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">{prefix}&nbsp;</span>
       )}
       <div className="flex flex-col items-center">
-        <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">{value}</div>
-        {unit && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
+        <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">{value}</div>
+        {unit && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{unit}</div>}
       </div>
     </div>
   )
@@ -475,14 +562,39 @@ const renderMaterialPrice = (price: string) => {
   )
 }
 
+// Cena złożona "X zł/jedn. + Y zł/jedn." (PL/UK/RU, jednostki w każdym języku inne):
+// desktopowa tabela pokazuje ją w dwóch wyśrodkowanych liniach — bazowa, potem "+ dopłata".
+const isCompoundUnitPrice = (price: string) => /^[^+\n]*zł\/[^+\n]*\+[^\n]*zł\/[^\n]*$/.test(price)
+const renderCompoundPriceTwoLines = (price: string) => {
+  const plusIdx = price.indexOf('+')
+  const lines = [price.slice(0, plusIdx).trim(), `+ ${price.slice(plusIdx + 1).trim()}`]
+  return (
+    <div className="flex flex-col items-center text-center">
+      {lines.map((line, i) => {
+        const m = line.match(/^(.*zł)(\/.*)$/)
+        return (
+          <div key={i} className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">
+            {m ? (
+              <>
+                {m[1]}
+                <span className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c]">{m[2]}</span>
+              </>
+            ) : line}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 // Dwuliniowa cena (np. "według cennika" / "przewoźnika"): góra głównym
 // białym stylem, dół tym samym małym złotym stylem co /gram, /godz.
 const renderTwoLinePrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
     <div className="flex flex-col items-center">
-      <div className="font-table-main text-[16px] text-white leading-[1.3]">{main}</div>
-      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
     </div>
   )
 }
@@ -496,8 +608,8 @@ const renderExpressPrice = (price: string) => {
   const [main, sub] = price.split('\n')
   return (
     <div className="flex flex-col items-center">
-      <div className="font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
-      {sub && <div className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
+      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3]">{main}</div>
+      {sub && <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">{sub}</div>}
     </div>
   )
 }
@@ -512,6 +624,8 @@ const renderMobileServiceRow = (
   parseServiceText: (text: string) => { main: string; parentheses: string | null },
   plainPrice: boolean = false,
   hideSubtitle: boolean = false,
+  showDuration: boolean = false,
+  finalLeftIndent8px: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -521,17 +635,18 @@ const renderMobileServiceRow = (
         } ${isLast ? '' : ''} py-1`}
     >
       {/* Левая колонка - описание */}
-      <div className="flex-1 min-w-0 pl-0.5">
-        <div className="font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
-          {parsed.main}
+      <div className={`flex-1 min-w-0 ${finalLeftIndent8px ? 'pl-2' : 'pl-0.5'}`}>
+        <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
+          {renderServiceMain(parsed.main)}
         </div>
-        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
       </div>
-      {/* Правая колонка - цена */}
+      {/* Колонка - цена */}
       <div
         className={cn(
-          'flex-shrink-0 text-center leading-[1.3] pr-2',
-          plainPrice ? 'min-w-[110px] max-w-[130px]' : 'min-w-[80px] max-w-[90px]',
+          'flex-shrink-0 text-center leading-[1.3]',
+          showDuration ? 'pr-1 min-w-[58px] max-w-[68px]' : 'pr-2',
+          !showDuration && (plainPrice ? 'min-w-[110px] max-w-[130px]' : 'min-w-[80px] max-w-[90px]'),
           shouldHighlightPrices
             ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
             : ''
@@ -547,7 +662,7 @@ const renderMobileServiceRow = (
           ) : item.price.includes('\n') ? (
             renderExpressPrice(item.price)
           ) : (
-            <div className="font-inter text-[13px] text-white leading-[1.3] whitespace-normal">
+            <div className="price-value-text font-inter text-[13px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-normal">
               {renderPlainPriceWithUnits(item.price)}
             </div>
           )
@@ -555,6 +670,12 @@ const renderMobileServiceRow = (
           renderPriceLines(item.price, item.link)
         )}
       </div>
+      {/* Колонка - срок */}
+      {showDuration && (
+        <div className="flex-shrink-0 text-center leading-[1.3] pr-1 min-w-[58px] max-w-[68px]">
+          {renderDurationValue(item.duration)}
+        </div>
+      )}
     </div>
   )
 }
@@ -566,7 +687,35 @@ const SECTION_SCROLL_OFFSET = 120
 // Компонент для таблицы wynajem с динамическим выравниванием
 const WynajemTable = dynamic(() => import('./WynajemTable').then(m => ({ default: m.WynajemTable })))
 
-// Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (4 of 11 services)
+// Заглушка-рефы для WynajemTable, когда реальные refs шапки (WynajemSubcategoryHeader) не примонтированы
+// (np. na drukarka-zastepcza w parchment-list branch) — tabela nadal renderuje dane, tylko bez
+// precyzyjnego wyrównania kolumn do szapki (opcjonalny efekt, bezpieczny do pominięcia)
+const EMPTY_WYNAJEM_HEADER_REFS: {
+  icon: React.RefObject<HTMLDivElement | null>
+  text: React.RefObject<HTMLDivElement | null>
+  prices: React.RefObject<HTMLDivElement | null>[]
+} = {
+  icon: { current: null },
+  text: { current: null },
+  prices: [{ current: null }, { current: null }, { current: null }],
+}
+
+// Techniczne wiersze drukarka-zastepcza A4/A3 (przeniesione z WynajemTable.tsx) — jedna kolumna wartości,
+// tłumaczone przez marker-label + t.wynajemTableLabels/t.gratisLower w renderze priceTiers
+const DZ_TECH_SPEC_ROWS: Record<string, { label: string; value: string }[]> = {
+  'drukarki-mono': [{ label: '__dz_duplex', value: 'nie' }, { label: '__dz_speed', value: '40' }],
+  'drukarki-kolor': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'mfu-mono': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'mfu-kolor': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '40' }],
+  'a3-drukarki-mono': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-drukarki-kolor': [{ label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-mono': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+  'a3-mfu-kolor': [{ label: '__dz_scan', value: 'tak' }, { label: '__dz_duplex', value: 'tak' }, { label: '__dz_speed', value: '50' }],
+}
+// Bloki warunków pod cennikiem (drukarka-zastepcza, wynajem-drukarek): bez mobilnego obcinania do 2 linii (reguła warm-parchment dla .parentheses-caption-text)
+const DZ_TERMS_TEXT_STYLE: React.CSSProperties = { display: 'block', WebkitLineClamp: 'none', overflow: 'visible' }
+
+// Device-category tooltip content — only used by SPECIAL_TOOLTIP_SERVICES (6 of 11 services)
 const PriceTooltipContent = dynamic(() => import('./PriceTooltipContent').then(m => ({ default: m.PriceTooltipContent })))
 
 // Wynajem/drukarka-zastepcza subcategory header (pixel-alignment grid) — only used
@@ -590,7 +739,10 @@ const scrollIntoViewIfNeeded = (
     }
 
     const top = rect.top + window.scrollY - offset
-    window.scrollTo({ top, behavior: 'smooth' })
+    // behavior: 'auto' — открытие категории должно сразу ставить её шапку под
+    // фиксированный header, без последующей плавной докрутки поверх открытия
+    // (тот же принцип, что и в scrollSubcategoryToTop для подкатегорий).
+    window.scrollTo({ top, behavior: 'auto' })
   }
 
   requestAnimationFrame(() => {
@@ -598,7 +750,11 @@ const scrollIntoViewIfNeeded = (
   })
 }
 
-// Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent
+// Вспомогательная функция для поиска scrollable контейнера внутри AccordionContent.
+// Если реального overflow:auto/scroll контейнера нет (например, у секции
+// naprawy AccordionContent сделан overflow-y-visible нарочно) — возвращает
+// null, а не первый попавшийся div "как будто" он скроллится (scrollTo на
+// нём ничего не делает и только создаёт иллюзию рабочей синхронизации).
 const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElement | null => {
   const children = Array.from(accordionContentElement.children) as HTMLElement[]
 
@@ -617,98 +773,210 @@ const findScrollableContainer = (accordionContentElement: HTMLElement): HTMLElem
     return accordionContentElement
   }
 
-  // Fallback: первый дочерний div или сам AccordionContent
-  return children.find(el => el.tagName === 'DIV') || accordionContentElement
+  return null
 }
 
-// Функция для прокрутки подкатегории внутри контейнера с overflow
+// Функция для прокрутки к только что открытой подкатегории.
+// Ставит ВЕРХНЮЮ границу заголовка (trigger) подкатегории под фиксированной
+// верхней шапкой сайта (отступ headerOffset) — открытый контент сразу виден
+// под заголовком, а не уезжает за нижний край экрана. Формула строится на
+// реальных window.scrollY/getBoundingClientRect, поэтому работает одинаково
+// на desktop и mobile без отдельных пиксельных значений под конкретные
+// размеры экрана.
 const scrollSubcategoryToTop = (
   sectionRef: HTMLDivElement | null,
   subcategoryRef: HTMLDivElement | null,
-  sectionOffset = SECTION_SCROLL_OFFSET,
+  headerOffset = SECTION_SCROLL_OFFSET,
 ) => {
   if (!sectionRef || !subcategoryRef) return
 
-  // subcategoryRef указывает на AccordionItem, нам нужно найти AccordionTrigger внутри него
-  // для прокрутки к заголовку подкатегории
-  const subcategoryTrigger = subcategoryRef.querySelector<HTMLElement>(
-    '[data-slot="accordion-trigger"]'
-  ) || subcategoryRef
-
-  // Ждем завершения анимации раскрытия аккордеона Radix UI
-  // Radix UI Accordion использует CSS анимации ~200-300ms
-  // Используем двойной RAF + задержку для гарантии завершения анимации
+  // У Radix UI Accordion в этом проекте нет CSS-анимации высоты открытия
+  // (только универсальный opacity-fade, не двигающий layout) — контент и
+  // геометрия parchment уже посчитаны синхронно в useLayoutEffect до отрисовки
+  // кадра. Одного requestAnimationFrame достаточно, чтобы дождаться коммита
+  // DOM после открытия; отдельный setTimeout поверх него только откладывал
+  // прокрутку без всякой пользы.
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        // 1. Сначала проверяем и прокручиваем страницу, чтобы заголовок секции был виден
-        // Проверяем, находится ли заголовок секции в нужной позиции (с отступом sectionOffset)
-        const sectionRect = sectionRef.getBoundingClientRect()
-        const targetSectionTop = sectionOffset
-        const currentSectionTop = sectionRect.top
-        const needsPageScroll = Math.abs(currentSectionTop - targetSectionTop) > 20 // Порог для прокрутки
+    // Перепроверяем, что подкатегория реально открыта (пользователь мог
+    // успеть закрыть её за это время) — прокручиваем только к реальному
+    // открытому triggeru.
+    if (subcategoryRef.dataset.state !== 'open') return
 
-        if (needsPageScroll) {
-          const sectionTop = sectionRect.top + window.scrollY - sectionOffset
-          window.scrollTo({ top: Math.max(0, sectionTop), behavior: 'smooth' })
-        }
+    const subcategoryTrigger = subcategoryRef.querySelector<HTMLElement>(
+      '[data-slot="accordion-trigger"]'
+    ) || subcategoryRef
 
-        // 2. Находим контейнер с overflow-y-auto внутри AccordionContent
-        // AccordionContent имеет data-slot="accordion-content"
-        // Внутри него есть div с overflow-y-auto (className применяется к внутреннему div)
-        const accordionContentElement = sectionRef.querySelector<HTMLElement>(
-          '[data-slot="accordion-content"]'
-        )
+    // Если у подкатегории есть собственный scroll-контейнер — подтягиваем
+    // trigger к его верху. Для naprawy такого контейнера нет
+    // (AccordionContent секции overflow-y-visible), поэтому
+    // findScrollableContainer вернёт null и этот шаг ничего не сделает.
+    const accordionContentElement = sectionRef.querySelector<HTMLElement>(
+      '[data-slot="accordion-content"]'
+    )
+    const scrollableContainer = accordionContentElement
+      ? findScrollableContainer(accordionContentElement)
+      : null
 
-        if (!accordionContentElement) return
+    if (scrollableContainer) {
+      const triggerRect = subcategoryTrigger.getBoundingClientRect()
+      const containerRect = scrollableContainer.getBoundingClientRect()
+      const relativeTop = triggerRect.top - containerRect.top
+      const currentScrollTop = scrollableContainer.scrollTop
+      const targetScrollTop = currentScrollTop + relativeTop - 10 // небольшой отступ сверху внутри контейнера
+      // behavior: 'auto' — открытие подкатегории должно сразу ставить её в
+      // нужную позицию, без плавной докрутки поверх мгновенного открытия
+      // (см. диагностику выше: остаточное "движение шапки" создавал именно
+      // smooth-скролл после открытия). Обычная прокрутка пользователя
+      // (scroll-behavior: smooth в globals.css) не трогается.
+      scrollableContainer.scrollTo({ top: Math.max(0, targetScrollTop), behavior: 'auto' })
+    }
 
-        // Ищем scrollable контейнер
-        const scrollableContainer = findScrollableContainer(accordionContentElement)
+    // Прокручиваем страницу так, чтобы верх trigger'а оказался под
+    // фиксированной шапкой (headerOffset), а не у нижнего края экрана.
+    const triggerRect = subcategoryTrigger.getBoundingClientRect()
+    const delta = triggerRect.top - headerOffset
 
-        // Функция для выполнения прокрутки контейнера
-        const performContainerScroll = () => {
-          // Получаем актуальные позиции после возможной прокрутки страницы
-          // Используем trigger для прокрутки к заголовку подкатегории
-          const subcategoryTriggerRect = subcategoryTrigger.getBoundingClientRect()
-          const containerRect = scrollableContainer!.getBoundingClientRect()
-
-          // Вычисляем относительную позицию заголовка подкатегории внутри контейнера
-          const relativeTop = subcategoryTriggerRect.top - containerRect.top
-
-          // Вычисляем, насколько нужно прокрутить контейнер
-          // Чтобы заголовок подкатегории был в самом верху контейнера (с небольшим отступом)
-          const currentScrollTop = scrollableContainer!.scrollTop
-          const targetScrollTop = currentScrollTop + relativeTop - 10 // Небольшой отступ сверху для визуального комфорта
-
-          // Прокручиваем контейнер плавно
-          scrollableContainer!.scrollTo({
-            top: Math.max(0, targetScrollTop),
-            behavior: 'smooth'
-          })
-        }
-
-        // Если была прокрутка страницы, ждем её начала перед прокруткой контейнера
-        // Это нужно для корректного расчета позиций элементов
-        if (needsPageScroll) {
-          setTimeout(performContainerScroll, 200) // Даем время на начало прокрутки страницы
-        } else {
-          // Если страница не прокручивается, выполняем прокрутку контейнера сразу
-          performContainerScroll()
-        }
-      }, 100) // Задержка для завершения анимации раскрытия Radix UI Accordion
-    })
+    if (Math.abs(delta) > 4) {
+      window.scrollTo({ top: window.scrollY + delta, behavior: 'auto' })
+    }
   })
 }
 
 const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
+  'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
 ])
 
-const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' }) => {
-  const t = serviceAccordionI18n[locale]
+// Tooltip "Kategorie urządzeń" (side="left", szer. do 900px): Radix przy braku miejsca
+// po lewej nie przesuwa go w poziomie, więc na 1024–1280 wychodził za lewą krawędź.
+// Przesuwamy go w prawo dokładnie o brakującą szerokość (available-width od Radix
+// uwzględnia collisionPadding); gdy miejsca wystarcza (1440+), przesunięcie = 0.
+// Osobna właściwość `translate`, żeby nie kolidowała z `transform` animacji wejścia.
+const SPECIAL_TOOLTIP_FIT_CLASS = '[translate:max(0px,calc(100%_-_var(--radix-tooltip-content-available-width)))_0]'
+
+// Strony drukarek, na których baner promo w sekcji "Konserwacja" ma inny tekst
+// (bez wzmianki o "pastcie termicznej" — dotyczy tylko laptopów/komputerów).
+const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
+  'serwis-drukarek-laserowych',
+  'serwis-niszczarek',
+  'serwis-drukarek-do-kart-plastikowych',
+  'naprawa-zasilaczy-ups',
+  'serwis-drukarek-iglowych',
+  'serwis-drukarek-termicznych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+])
+
+// Slugs using the "open repair-accordion card" treatment: icon-overflow
+// scale-compensation, centered/nowrap Naprawy header, custom Konserwacja/
+// Naprawy titles, curl/ragged-edge parchment geometry, etc. Defined in
+// services-data.ts (REPAIR_ACCORDION_LAYOUT_SLUGS) so service-page-template.tsx
+// can apply the matching shared `.page-repair-accordion` CSS class — add a
+// slug there, not scattered `service.slug === '...'` checks, to extend this
+// layout to another /uslugi/[slug] page.
+
+const PARCHMENT_SRC = '/images/contact-form-parchment.webp'
+
+// Slugs whose price-info popover/tooltip renders on the shared parchment
+// background (with a "cena netto" caption) instead of the plain dark
+// tooltip every other service uses.
+const PARCHMENT_TOOLTIP_SLUGS = new Set([
+  'outsourcing-it',
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+])
+
+// Same parchment tooltip content, plus druk-3d-na-zamowienie (which has its
+// own PopoverTrigger side/tooltip earlier but shares this TooltipContent).
+const PARCHMENT_TOOLTIP_CONTENT_SLUGS = new Set([...PARCHMENT_TOOLTIP_SLUGS, 'druk-3d-na-zamowienie'])
+
+// Parchment-tooltip slugs (see above) plus druk-3d-na-zamowienie — the set
+// that hides the "device categories" caption line under the price header.
+const HIDE_DEVICE_CAPTION_SLUGS = new Set([
+  'outsourcing-it',
+  'serwis-laptopow',
+  'serwis-komputerow-stacjonarnych',
+  'serwis-drukarek-3d',
+  'serwis-plotterow',
+  'druk-3d-na-zamowienie',
+])
+
+// t i pricing przychodzą z serwera (service-page-template): słownik tylko
+// bieżącego języka i gotowe ceny/terminy tej jednej usługi — bez całego
+// services-pricing-data.ts i słowników 3 języków w JS przeglądarki.
+const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing }) => {
+  const lookupPrice = (path: string) => {
+    const value = pricing.price[path]
+    if (value === undefined) throw new Error(`[services-pricing] Нет цены в migratedPrice для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
+    return value
+  }
+  const lookupDuration = (path: string) => {
+    const value = pricing.duration[path]
+    if (value === undefined) throw new Error(`[services-pricing] Нет срока в migratedDuration для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
+    return value
+  }
+  const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
+  const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
+  const useWarmSectionIcons = isWarmParchment
+  const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
+  const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
+  const hideDeviceCaption = HIDE_DEVICE_CAPTION_SLUGS.has(service.slug)
+  // Ikonka „i” z dymkiem „Cena netto” — ten sam dymek co przy nagłówku ceny (serwis-laptopow):
+  // telefon — kliknięcie (Popover), desktop — najechanie (Tooltip).
+  const nettoInfoIcon = (
+    // pozycja jak ikonka przy „Cena, zł” (serwis-laptopow): gap 5px, margin-left -7px, top -3px
+    <span className="inline-flex items-center justify-center rounded-full p-1 cursor-pointer" style={{ marginLeft: '-7px', marginTop: '-4px', marginBottom: '-4px', position: 'relative', top: '-3px', color: 'var(--text-primary)' }} role="button" tabIndex={0} aria-label={t.priceInfoAriaLabel} onClick={e => e.stopPropagation()}>
+      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+    </span>
+  )
+  const nettoInfoContent = (
+    <>
+      <div className="absolute inset-0 bg-black/50 z-0" />
+      <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+        {t.priceNettoTooltip}
+      </p>
+    </>
+  )
+  const renderNettoInfo = () => isMobile ? (
+    <Popover>
+      <PopoverTrigger asChild>{nettoInfoIcon}</PopoverTrigger>
+      <PopoverContent
+        side="top"
+        sideOffset={4}
+        className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `var(--bg-parchment)`, width: 'max-content', minWidth: 0, whiteSpace: 'nowrap' }}
+      >
+        {nettoInfoContent}
+        <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+      </PopoverContent>
+    </Popover>
+  ) : (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>{nettoInfoIcon}</TooltipTrigger>
+        <TooltipContent
+          side="top"
+          sideOffset={4}
+          className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden"
+          style={{ backgroundImage: `var(--bg-parchment)`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
+          {nettoInfoContent}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+  // UK/RU "free" label (БЕЗКОШТОВНО/БЕСПЛАТНО) is too wide to sit beside the diagnoza
+  // title on phones, so there it goes under the title instead of the right column.
+  const stackGratisOnMobile = locale !== 'pl'
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
   const timeHeader = t.timeHeader
@@ -722,10 +990,46 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const [isMobile, setIsMobile] = useState(false)
   const [openSmallTooltips, setOpenSmallTooltips] = useState<Set<string>>(new Set())
   const swipeStartY = useRef<number | null>(null)
-  const [openWynajemSubcategories, setOpenWynajemSubcategories] = useState<string[]>([])
-  const [openDrukarkaZastepczaSubcategories, setOpenDrukarkaZastepczaSubcategories] = useState<string[]>([])
+  const [openWynajemSubcategory, setOpenWynajemSubcategory] = useState<string | null>(null)
+  const [openDrukarkaZastepczaSubcategory, setOpenDrukarkaZastepczaSubcategory] = useState<string | null>(null)
   const sectionRefs = useRef<ScrollRefs>({})
   const subcategoryRefs = useRef<ScrollRefs>({})
+  // Desktop Naprawy: programmatic slice of the shared parchment backdrop into
+  // header + row + bottom-tail segments (background-image/-position-y), so the
+  // divider lines become segment cuts instead of the image being stretched to
+  // the open block's height. Measured only while all rows are collapsed (the
+  // "closed sheet" baseline) — reused as-is while a row is open.
+  const parchmentListHeaderRefs = useRef<Record<string, HTMLDivElement | null>>({})
+  const parchmentListContentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const parchmentListTailSpacerRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+  const diagnozaContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const diagnozaTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const dojazdContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const dojazdTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const dojazdCaptionBoxRef = useRef<HTMLDivElement | null>(null)
+  const dojazdCaptionSpanRef = useRef<HTMLSpanElement | null>(null)
+  const [dojazdCaptionOverflows, setDojazdCaptionOverflows] = useState(false)
+  const [dojazdCaptionWraps, setDojazdCaptionWraps] = useState(false)
+  const dojazdBannerPadLeft = 250
+  const konserwacjaPromoBoxRef = useRef<HTMLDivElement | null>(null)
+  const konserwacjaPromoSpanRef = useRef<HTMLSpanElement | null>(null)
+  const [konserwacjaPromoOverflows, setKonserwacjaPromoOverflows] = useState(false)
+  const konserwacjaContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const konserwacjaTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const projektowanieModeliContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const projektowanieModeliTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const faqItemRef = useRef<HTMLDivElement | null>(null)
+  const faqContentBottomRef = useRef<HTMLDivElement | null>(null)
+  const faqTailSpacerRef = useRef<HTMLDivElement | null>(null)
+  const faqInitialGapRef = useRef<number>(0)
+  const faqContentResizeRef = useRef<HTMLDivElement>(null)
+  const [parchmentListMetrics, setParchmentListMetrics] = useState<{
+    containerWidth: number
+    headerHeight: number
+    rowHeights: number[]
+    totalHeight: number
+    bottomTailHeight: number
+  } | null>(null)
   // Refs для колонок цен в шапке wynajem подменю
   const wynajemHeaderRefs = useRef<{
     [key: string]: {
@@ -753,9 +1057,32 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const [priceColumnsPosition1DZ, setPriceColumnsPosition1DZ] = useState<{ left: number; width: number } | null>(null)
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
-  const isLaserService = service.slug === 'serwis-drukarek-laserowych'
+  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups'
+  const isThermalService = service.slug === 'serwis-drukarek-termicznych'
+  const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
+  const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
+  const isDesktopComputerService = service.slug === 'serwis-komputerow-stacjonarnych'
+  const isLaptopService = service.slug === 'serwis-laptopow'
+  const isPlotterService = service.slug === 'serwis-plotterow'
+  const isPrinter3DService = service.slug === 'serwis-drukarek-3d'
+  const isOutsourcingService = service.slug === 'outsourcing-it'
+  const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
+  const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
+
+  // Parchment backdrop of open sections: its <img> tags are lazy (they sit in
+  // closed content), so warm the cache once the page has loaded — opening a
+  // section then shows the backdrop immediately.
+  useEffect(() => {
+    let timer = 0
+    const warm = () => { timer = window.setTimeout(() => { new window.Image().src = PARCHMENT_SRC }, 1500) }
+    if (document.readyState === 'complete') warm()
+    else window.addEventListener('load', warm, { once: true })
+    return () => { window.removeEventListener('load', warm); window.clearTimeout(timer) }
+  }, [])
 
   // Определение размера экрана
   useEffect(() => {
@@ -806,14 +1133,33 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
     }
   }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
 
+  // Escape закрывает мобильное модальное окно с категориями устройств
+  useEffect(() => {
+    if (!(isCategoryTooltipOpen && isMobile && isSpecialTooltipService)) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setCategoryTooltipOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
+
   const handleSectionChange = (value: string | null) => {
+    if (value === 'faq' && openSection !== 'faq' && faqItemRef.current) {
+      const itemEl = faqItemRef.current
+      const nextEl = itemEl.nextElementSibling as HTMLElement | null
+      if (nextEl) {
+        faqInitialGapRef.current = nextEl.getBoundingClientRect().top - itemEl.getBoundingClientRect().bottom
+      }
+    }
     setOpenSection(prev => (prev === value ? null : value))
     setOpenSubcategory(null)
     if (!value || (service.slug === 'wynajem-drukarek' && value !== 'akordeon-1' && value !== 'akordeon-2')) {
-      setOpenWynajemSubcategories([])
+      setOpenWynajemSubcategory(null)
     }
     if (!value || (service.slug === 'drukarka-zastepcza' && value !== 'akordeon-1' && value !== 'akordeon-2')) {
-      setOpenDrukarkaZastepczaSubcategories([])
+      setOpenDrukarkaZastepczaSubcategory(null)
     }
   }
 
@@ -827,25 +1173,439 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   const isSectionOpen = (sectionId: string) =>
     openSection ? openSection === sectionId : false
 
+  useLayoutEffect(() => {
+    const hasOpenListItem =
+      openSection === 'naprawy'
+        ? openSubcategory !== null
+        : service.slug === 'wynajem-drukarek'
+          ? openWynajemSubcategory !== null
+          : service.slug === 'drukarka-zastepcza'
+            ? openDrukarkaZastepczaSubcategory !== null
+            : false
+    if (
+      !openSection ||
+      !usesSharedParchmentList(service.slug, openSection) ||
+      hasOpenListItem
+    ) return
+    const parchmentSection = service.pricingSections.find(
+      section => section.id === openSection
+    )
+    if (!parchmentSection?.subcategories) return
+
+    const measure = () => {
+      const containerEl = sectionRefs.current[openSection]
+      const headerEl = parchmentListHeaderRefs.current[openSection]
+      if (!containerEl || !headerEl) return
+      const containerWidth = containerEl.offsetWidth
+      const headerHeight = headerEl.offsetHeight
+      const rowHeights = parchmentSection.subcategories!.map(
+        sc => subcategoryRefs.current[sc.id]?.offsetHeight ?? 0
+      )
+      const measuredHeight = headerHeight + rowHeights.reduce((a, b) => a + b, 0)
+      const aspectRatio = 858 / 1465
+      const aspectHeight = aspectRatio * containerWidth
+      // serwis-niszczarek: tylko 4 podkategorie — bez dopełniania do proporcji tła, inaczej pod listą zostaje pusty pas
+      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek' || service.slug === 'naprawa-zasilaczy-ups')
+        ? 24
+        : Math.max(aspectHeight - measuredHeight, 24)
+      setParchmentListMetrics({
+        containerWidth,
+        headerHeight,
+        rowHeights,
+        totalHeight: measuredHeight + bottomTailHeight,
+        bottomTailHeight,
+      })
+    }
+
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [openSection, openSubcategory, service.pricingSections, openWynajemSubcategory, openDrukarkaZastepczaSubcategory])
+
+  // Desktop Naprawy: OPEN parchment (contact-form-parchment.webp) height is
+  // derived, not guessed — the image is scaled so its own CURL-TOP pixel
+  // (source row 959/1121, the fold's apex) lands exactly on the WHITE
+  // table's real measured bottom edge. RAGGED-ANCHOR (source row 1077/1121)
+  // falls out of that same scale automatically. A real flow spacer
+  // (afterContent, last child of the container) is sized to the actual gap
+  // between the real RAGGED-ANCHOR marker and the real next-CLOSED top, so
+  // the container's flow-bottom — and so the next CLOSED row's top — lands
+  // exactly on that point. The two decorative COPY segments are
+  // fixed-height (--naprawy-row-h) and bottom-anchored inside the container
+  // in CSS, so once the container's bottom sits on RAGGED-ANCHOR they do
+  // too, automatically.
+  const openParchmentSubcategory =
+    openSection === 'naprawy'
+      ? openSubcategory
+      : service.slug === 'wynajem-drukarek'
+        ? openWynajemSubcategory
+        : service.slug === 'drukarka-zastepcza'
+          ? openDrukarkaZastepczaSubcategory
+          : null
+
+  useLayoutEffect(() => {
+    if (
+      !openSection ||
+      !usesSharedParchmentList(service.slug, openSection) ||
+      !openParchmentSubcategory
+    ) return
+    const whiteEl = parchmentListContentRefs.current[openParchmentSubcategory]
+    if (!whiteEl) return
+    const parchmentEl = whiteEl.closest('[data-nested-parchment="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 68 // matches the img's fixed -top-[68px]
+    const applyGeometry = () => {
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const whiteBottomY = whiteEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (whiteBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--naprawy-img-h', `${imgHeight}px`)
+
+      // Computed directly from the same source fraction as the visual
+      // RAGGED-ANCHOR marker's own CSS — not read from marker DOM.
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      // Mobile: same algorithm as desktop above (own CURL-TOP/RAGGED-ANCHOR
+      // source fractions, own -top offset), applied to the single trimmed
+      // contact-form-parchment-mobile-naprawy.webp (634x1206) asset instead
+      // of contact-form-parchment.webp — no body/bottom split.
+      const MOBILE_CURL_TOP_FRACTION = 1132 / 1206
+      const MOBILE_IMG_TOP_OFFSET = 68 // matches the mobile img's fixed -top-[68px]
+      const mobileImgHeight = (whiteBottomY + MOBILE_IMG_TOP_OFFSET) / MOBILE_CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--naprawy-img-h-mobile', `${mobileImgHeight}px`)
+
+      // Mobile's own RAGGED-ANCHOR (source row 1204/1206 of the trimmed
+      // mobile asset) — the real screen line where mobile paper's torn edge
+      // ends, distinct from desktop's raggedY above. Spacer below must
+      // target this on mobile, not desktop's raggedY, or it overshoots past
+      // the visible mobile paper.
+      const MOBILE_RAGGED_ANCHOR_FRACTION = 1204 / 1206
+      const mobileRaggedY = parchmentTop + (MOBILE_RAGGED_ANCHOR_FRACTION * mobileImgHeight - MOBILE_IMG_TOP_OFFSET)
+      const spacerTargetY = window.innerWidth < 768 ? mobileRaggedY : raggedY
+
+      const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]')
+      const spacerEl = parchmentListTailSpacerRefs.current[openParchmentSubcategory]
+      // Universal by DOM position, not id: last subcategory has no next row
+      // in the nested Accordion.
+      const isLastSubcategory = accordionItemEl != null && accordionItemEl.nextElementSibling == null
+
+      if (isLastSubcategory) {
+        // No next closed row / CLOSED-TOP to compute — align Naprawy's own
+        // bottom border-box edge (not the next top-level element) to
+        // RAGGED-ANCHOR. Whatever CSS margin/gap naturally follows Naprawy's
+        // own box (same classes as in CLOSED state, unaffected by inner
+        // content height) then reproduces the real CLOSED-to-next-top-level
+        // gap automatically — no hardcoded px, no id/name lookup.
+        const parchmentListMainSectionEl = accordionItemEl?.closest('[data-parchment-list-main="true"]') as HTMLElement | null
+        if (spacerEl && parchmentListMainSectionEl) {
+          spacerEl.style.height = '0px'
+          void spacerEl.offsetHeight
+          const naprawyBottomY = parchmentListMainSectionEl.getBoundingClientRect().bottom
+          const spacerH = Math.max(0, spacerTargetY - naprawyBottomY)
+          spacerEl.style.height = `${spacerH}px`
+        }
+      } else {
+        const firstClosedEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+
+        // Real-element spacer: zero it first so re-runs (resize) measure the
+        // natural (pre-spacer) CLOSED-Y, not one already pushed by a stale gap.
+        if (spacerEl && firstClosedEl) {
+          spacerEl.style.height = '0px'
+          void spacerEl.offsetHeight
+          const closedY = firstClosedEl.getBoundingClientRect().top
+          const spacerH = Math.max(0, (spacerTargetY + 15) - closedY)
+          spacerEl.style.height = `${spacerH}px`
+        }
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [
+    service.slug,
+    openSection,
+    openSubcategory,
+    openWynajemSubcategory,
+    openDrukarkaZastepczaSubcategory,
+  ])
+
+  // CURL/RAGGED mechanism, scoped to Diagnoza only. Same source fractions as
+  // Naprawy above (properties of the shared contact-form-parchment.webp
+  // asset); CONTENT-BOTTOM is the `.rounded-lg` wrapper, IMG_TOP_OFFSET is
+  // 12px (matches -top-[12px], not Naprawy's 68px), spacer lands against the
+  // next top-level AccordionItem.
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = diagnozaContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]') as HTMLElement | null
+    const spacerEl = diagnozaTailSpacerRef.current
+    if (openSection !== 'diagnoza') {
+      // CLOSED cleanup: drop the stale computed height so the parchment img
+      // (hidden via CSS for the closed state) recomputes fresh on the next
+      // OPEN instead of reusing last OPEN's geometry.
+      parchmentEl.style.removeProperty('--diagnoza-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12 // matches the img's fixed -top-[12px]
+    const applyGeometry = () => {
+      if (spacerEl) spacerEl.style.height = '0px'
+
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--diagnoza-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      // Sole rule: NEXT AccordionItem top = RAGGED-ANCHOR + 16px. Measured
+      // directly off the next item's own (reset) natural top — not off this
+      // item's bottom/padding/margin — and pushed via real spacer height.
+      const nextAccordionItemEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextAccordionItemEl) {
+        const nextTopY = nextAccordionItemEl.getBoundingClientRect().top
+        spacerEl.style.height = `${Math.max(0, (raggedY + 16) - nextTopY)}px`
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [service.slug, openSection])
+
+  // Dojazd caption: center when it fits, right-anchor (grow left, no wrap/clip) when it overflows,
+  // and split into its two note parts (centered) when even the left padding zone can't hold one line.
+  useLayoutEffect(() => {
+    if (isMobile) return
+    const boxEl = dojazdCaptionBoxRef.current
+    const spanEl = dojazdCaptionSpanRef.current
+    if (!boxEl || !spanEl) return
+    const measure = () => {
+      const lineWidth = spanEl.getBoundingClientRect().width
+      setDojazdCaptionOverflows(lineWidth > boxEl.clientWidth)
+      setDojazdCaptionWraps(lineWidth > boxEl.clientWidth + dojazdBannerPadLeft - 12)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [isMobile, openSection, t.dojazdNote])
+
+  // Same centering/overflow algorithm as the Dojazd caption above, for the
+  // Konserwacja "PRZEDMUCHANIE + PASTA" promo description.
+  useLayoutEffect(() => {
+    if (isMobile) return
+    const boxEl = konserwacjaPromoBoxRef.current
+    const spanEl = konserwacjaPromoSpanRef.current
+    if (!boxEl || !spanEl) return
+    const measure = () => {
+      setKonserwacjaPromoOverflows(spanEl.scrollWidth > boxEl.clientWidth)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [isMobile, openSection, konserwacjaPromoDescriptionResolved])
+
+  // Same mechanism as Diagnoza above, ported 1:1 for Dojazd.
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = dojazdContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]') as HTMLElement | null
+    const spacerEl = dojazdTailSpacerRef.current
+    if (openSection !== 'dojazd') {
+      parchmentEl.style.removeProperty('--dojazd-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12
+    const applyGeometry = () => {
+      if (spacerEl) spacerEl.style.height = '0px'
+
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--dojazd-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextAccordionItemEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextAccordionItemEl) {
+        const nextTopY = nextAccordionItemEl.getBoundingClientRect().top
+        spacerEl.style.height = `${Math.max(0, (raggedY + 16) - nextTopY)}px`
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [service.slug, openSection])
+
+  // Same mechanism as Diagnoza above, ported 1:1 for Czyszczenie i konserwacja.
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = konserwacjaContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]') as HTMLElement | null
+    const spacerEl = konserwacjaTailSpacerRef.current
+    if (openSection !== 'konserwacja') {
+      parchmentEl.style.removeProperty('--konserwacja-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12
+    const applyGeometry = () => {
+      if (spacerEl) spacerEl.style.height = '0px'
+
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--konserwacja-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextAccordionItemEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextAccordionItemEl) {
+        const nextTopY = nextAccordionItemEl.getBoundingClientRect().top
+        spacerEl.style.height = `${Math.max(0, (raggedY + 16) - nextTopY)}px`
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [service.slug, openSection])
+
+  // Same mechanism as Diagnoza above, ported 1:1 for druk-3d-na-zamowienie's
+  // "Projektowanie i modelowanie 3D CAD" section (own refs/CSS var — this
+  // section only exists on that one page, see isDruk3DCustomSection).
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = projektowanieModeliContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const accordionItemEl = parchmentEl.closest('[data-slot="accordion-item"]') as HTMLElement | null
+    const spacerEl = projektowanieModeliTailSpacerRef.current
+    if (openSection !== 'projektowanie-modeli') {
+      parchmentEl.style.removeProperty('--projektowanie-modeli-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 12
+    const applyGeometry = () => {
+      if (spacerEl) spacerEl.style.height = '0px'
+
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--projektowanie-modeli-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextAccordionItemEl = accordionItemEl?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextAccordionItemEl) {
+        const nextTopY = nextAccordionItemEl.getBoundingClientRect().top
+        spacerEl.style.height = `${Math.max(0, (raggedY + 16) - nextTopY)}px`
+      }
+    }
+    applyGeometry()
+    window.addEventListener('resize', applyGeometry)
+    return () => window.removeEventListener('resize', applyGeometry)
+  }, [service.slug, openSection])
+
+  // Same mechanism as Konserwacja above, ported for FAQ — own refs/CSS var, no
+  // price grid. Recomputed on openFaq too: unlike Konserwacja, FAQ content
+  // height changes each time a nested question is expanded/collapsed, so the
+  // body-bottom position must be re-measured. Spacer uses the real initial
+  // gap (faqInitialGapRef, captured pre-open in handleSectionChange) instead
+  // of a fixed 16px, since FAQ's gap to the next card isn't the same as
+  // Konserwacja's.
+  useLayoutEffect(() => {
+    if (!isRepairAccordionLayout) return
+    const contentBottomEl = faqContentBottomRef.current
+    if (!contentBottomEl) return
+    const parchmentEl = contentBottomEl.closest('[data-open-header-split-content="true"]') as HTMLElement | null
+    if (!parchmentEl) return
+    const spacerEl = faqTailSpacerRef.current
+    if (openSection !== 'faq') {
+      parchmentEl.style.removeProperty('--faq-img-h')
+      if (spacerEl) spacerEl.style.height = '0px'
+      return
+    }
+    const CURL_TOP_FRACTION = 959 / 1121
+    const RAGGED_ANCHOR_FRACTION = 1077 / 1121
+    const IMG_TOP_OFFSET = 25
+    const applyGeometry = () => {
+      const parchmentTop = parchmentEl.getBoundingClientRect().top
+      const contentBottomY = contentBottomEl.getBoundingClientRect().bottom - parchmentTop
+      const imgHeight = (contentBottomY + IMG_TOP_OFFSET) / CURL_TOP_FRACTION
+      parchmentEl.style.setProperty('--faq-img-h', `${imgHeight}px`)
+
+      const raggedY = parchmentTop + (RAGGED_ANCHOR_FRACTION * imgHeight - IMG_TOP_OFFSET)
+
+      const nextInfoBlockEl = spacerEl?.parentElement?.nextElementSibling as HTMLElement | null
+      if (spacerEl && nextInfoBlockEl) {
+        const currentSpacer = spacerEl.getBoundingClientRect().height
+        const nextTopY = nextInfoBlockEl.getBoundingClientRect().top
+        const baseNextTopY = nextTopY - currentSpacer
+        const nextSpacer = Math.max(
+          0,
+          raggedY + faqInitialGapRef.current - baseNextTopY
+        )
+        if (Math.abs(nextSpacer - currentSpacer) > 0.5) {
+          spacerEl.style.height = `${nextSpacer}px`
+        }
+      }
+    }
+    applyGeometry()
+    let faqRaf = 0
+    const faqObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(faqRaf)
+      faqRaf = requestAnimationFrame(applyGeometry)
+    })
+    if (openSection === 'faq' && faqContentResizeRef.current) {
+      faqObserver.observe(faqContentResizeRef.current)
+    }
+    window.addEventListener('resize', applyGeometry)
+    return () => {
+      window.removeEventListener('resize', applyGeometry)
+      faqObserver.disconnect()
+      cancelAnimationFrame(faqRaf)
+    }
+  }, [service.slug, openSection, openFaq])
+
   const getSubcategoryValue = (sectionId: string) =>
     sectionId === 'naprawy' ? openSubcategory ?? undefined : undefined
 
   const isSubcategoryOpen = (sectionId: string, subcategoryId: string) => {
     if (service.slug === 'wynajem-drukarek' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
-      return openWynajemSubcategories.includes(subcategoryId)
+      return openWynajemSubcategory === subcategoryId
     }
     if (service.slug === 'drukarka-zastepcza' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
-      return openDrukarkaZastepczaSubcategories.includes(subcategoryId)
+      return openDrukarkaZastepczaSubcategory === subcategoryId
     }
     return false
   }
 
-  const handleWynajemSubcategoryChange = (values: string[]) => {
-    setOpenWynajemSubcategories(values)
+  const handleWynajemSubcategoryChange = (value: string | null) => {
+    setOpenWynajemSubcategory(value)
   }
 
-  const handleDrukarkaZastepczaSubcategoryChange = (values: string[]) => {
-    setOpenDrukarkaZastepczaSubcategories(values)
+  const handleDrukarkaZastepczaSubcategoryChange = (value: string | null) => {
+    setOpenDrukarkaZastepczaSubcategory(value)
   }
 
   useEffect(() => {
@@ -860,48 +1620,62 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
   }, [openSection, openFaq])
 
   useEffect(() => {
-    // Прокрутка только при открытии подкатегории
-    if (!openSubcategory || openSection !== 'naprawy') {
+    // Прокрутка при открытии подкатегории — naprawy, wynajem-drukarek и
+    // drukarka-zastepcza (все три используют общий parchment-list, см.
+    // usesSharedParchmentList/openParchmentSubcategory выше). Раньше это
+    // работало только для naprawy — на wynajem/drukarka-zastepcza открытая
+    // подкатегория никак не поднимала свою шапку под фиксированный header.
+    if (!openSection || !usesSharedParchmentList(service.slug, openSection) || !openParchmentSubcategory) {
       return
     }
 
-    const sectionRef = sectionRefs.current['naprawy']
-    const subcategoryRef = subcategoryRefs.current[openSubcategory]
+    const sectionRef = sectionRefs.current[openSection]
+    const subcategoryRef = subcategoryRefs.current[openParchmentSubcategory]
 
     if (!sectionRef || !subcategoryRef) {
       return
     }
 
-    // Прокручиваем подкатегорию к верху внутри контейнера
-    // Fix: Change order - first ensure content appears (state changed), 
-    // then wait for DOM to likely settle (RAF + timeout), THEN scroll.
-    // This helps the browser accept the "open" state as the new baseline.
-    const rafId = requestAnimationFrame(() => {
-      const timerId = setTimeout(() => {
-        // Double-check: if user closed it during the delay, DO NOT scroll.
-        if (subcategoryRef.dataset.state !== 'open') return
-        scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
-      }, 100)
+    // scrollSubcategoryToTop уже ждёт один requestAnimationFrame перед
+    // измерением DOM — свой RAF/setTimeout поверх него только дублировал
+    // ожидание и откладывал прокрутку без пользы.
+    scrollSubcategoryToTop(sectionRef, subcategoryRef, SECTION_SCROLL_OFFSET)
+  }, [openParchmentSubcategory, openSection, service.slug])
 
-      // Cleanup inside the RAF closure isn't possible directly via useEffect return, 
-      // but we can't easily cancel internal logic from outside.
-      // However, the `dataset.state` check acts as a logical gate.
-    })
+  useEffect(() => {
+    // Прокрутка только при открытии FAQ-вопроса, не всей секции FAQ.
+    // Тот же helper и тот же принцип, что для подкатегорий naprawy выше:
+    // шапка вопроса встаёт под фиксированный header, behavior уже 'auto'
+    // внутри scrollSubcategoryToTop.
+    if (!openFaq || openSection !== 'faq') {
+      return
+    }
 
-    // Basic cleanup to prevent memory leaks if component unmounts
-    return () => cancelAnimationFrame(rafId)
-  }, [openSubcategory, openSection])
+    const sectionRef = sectionRefs.current['faq']
+    const questionRef = subcategoryRefs.current[openFaq]
 
+    if (!sectionRef || !questionRef) {
+      return
+    }
+
+    scrollSubcategoryToTop(sectionRef, questionRef, SECTION_SCROLL_OFFSET)
+  }, [openFaq, openSection])
+
+
+  // У остальных услуг этих столбцов нет — сбрасываем позиции только при смене
+  // услуги, а не при каждом открытии секции: повторный setState(null) после
+  // рендера заставлял React ещё раз вызвать весь аккордеон без изменений.
+  useEffect(() => {
+    if (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') return
+    setPriceColumnsPosition1(null)
+    setPriceColumnsPosition2(null)
+    setPriceColumnsPosition1DZ(null)
+    setPriceColumnsPosition2DZ(null)
+  }, [service.slug])
 
   // Измерение позиции столбцов цен для позиционирования "Czynsz wynajmu [zł/mies.]"
   useEffect(() => {
-    if (service.slug !== 'wynajem-drukarek' && service.slug !== 'drukarka-zastepcza') {
-      setPriceColumnsPosition1(null)
-      setPriceColumnsPosition2(null)
-      setPriceColumnsPosition1DZ(null)
-      setPriceColumnsPosition2DZ(null)
-      return
-    }
+    if (service.slug !== 'wynajem-drukarek' && service.slug !== 'drukarka-zastepcza') return
 
     if (service.slug === 'wynajem-drukarek') {
 
@@ -944,10 +1718,12 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         measurePriceColumns('akordeon-2', sectionHeaderRef2, setPriceColumnsPosition2)
       }
 
-      // Задержка для обеспечения рендеринга
-      const timeoutId1 = setTimeout(measureAll, 100)
-      const timeoutId2 = setTimeout(measureAll, 300)
-      const timeoutId3 = setTimeout(measureAll, 500)
+      // Один requestAnimationFrame после открытия секции — DOM уже обновлён
+      // синхронно (см. scrollSubcategoryToTop выше), кадр нужен только чтобы
+      // дождаться layout-коммита перед чтением getBoundingClientRect.
+      // Каскад setTimeout(100/300/500) не улучшал результат, только
+      // откладывал появление позиции столбцов после открытия.
+      const raf = requestAnimationFrame(measureAll)
 
       const handleResize = () => {
         measureAll()
@@ -957,9 +1733,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
       return () => {
         window.removeEventListener('resize', handleResize)
-        clearTimeout(timeoutId1)
-        clearTimeout(timeoutId2)
-        clearTimeout(timeoutId3)
+        cancelAnimationFrame(raf)
       }
     }
 
@@ -976,19 +1750,22 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         // Ищем первую подкатегорию в секции
         const firstSubcategoryKey = sectionId === 'akordeon-1' ? 'akordeon-1-drukarki-mono' : 'akordeon-2-a3-drukarki-mono'
         const headerRefs = drukarkaZastepczaHeaderRefs.current[firstSubcategoryKey]
+        // drukarki-mono на drukarka-zastepcza рендерит только 2 столбца цены
+        // (см. WynajemSubcategoryHeader) — третьего рефа там нет, поэтому берём
+        // последний реально существующий столбец как правую границу.
+        const lastColumnRef = headerRefs?.prices[2]?.current ?? headerRefs?.prices[1]?.current
 
-        if (headerRefs && headerRefs.prices[0]?.current && headerRefs.prices[2]?.current) {
+        if (headerRefs && headerRefs.prices[0]?.current && lastColumnRef) {
           const firstColumn = headerRefs.prices[0].current
-          const thirdColumn = headerRefs.prices[2].current
           const firstRect = firstColumn.getBoundingClientRect()
-          const thirdRect = thirdColumn.getBoundingClientRect()
+          const lastRect = lastColumnRef.getBoundingClientRect()
           const headerRect = sectionHeaderRef.current.getBoundingClientRect()
 
           // Вычисляем относительную позицию первого столбца относительно контейнера заголовка
           const left = firstRect.left - headerRect.left
 
-          // Ширина = позиция правого края третьего столбца - позиция левого края первого столбца
-          const totalWidth = (thirdRect.right - headerRect.left) - left
+          // Ширина = позиция правого края последнего доступного столбца - позиция левого края первого столбца
+          const totalWidth = (lastRect.right - headerRect.left) - left
 
           if (totalWidth > 0 && left > 0) {
             setPosition({ left, width: totalWidth })
@@ -1003,10 +1780,9 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
         measurePriceColumnsDZ('akordeon-2', sectionHeaderRef2DZ, setPriceColumnsPosition2DZ)
       }
 
-      // Задержка для обеспечения рендеринга
-      const timeoutId1DZ = setTimeout(measureAllDZ, 100)
-      const timeoutId2DZ = setTimeout(measureAllDZ, 300)
-      const timeoutId3DZ = setTimeout(measureAllDZ, 500)
+      // Тот же принцип, что и для wynajem-drukarek выше: один RAF вместо
+      // каскада setTimeout(100/300/500).
+      const rafDZ = requestAnimationFrame(measureAllDZ)
 
       const handleResizeDZ = () => {
         measureAllDZ()
@@ -1016,9 +1792,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
       return () => {
         window.removeEventListener('resize', handleResizeDZ)
-        clearTimeout(timeoutId1DZ)
-        clearTimeout(timeoutId2DZ)
-        clearTimeout(timeoutId3DZ)
+        cancelAnimationFrame(rafDZ)
       }
     }
   }, [service.slug, openSection, sectionRefs, wynajemHeaderRefs, drukarkaZastepczaHeaderRefs])
@@ -1033,42 +1807,163 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
           collapsible
           value={openSection ?? undefined}
           onValueChange={handleSectionChange}
-          className="w-full"
+          className={cn(
+            "w-full",
+            isRepairAccordionLayout && 'service-typography-standard'
+          )}
           data-main-accordion="true"
+          data-parchment-variant={isWarmParchment ? 'warm' : undefined}
         >
-          {service.pricingSections.map((section) => (
-            <AccordionItem
-              key={section.id}
-              value={section.id}
-              data-naprawy-main-section={section.id === 'naprawy' ? 'true' : undefined}
-              className={cn(
-                "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
-              )}
-              ref={node => {
-                sectionRefs.current[section.id] = node
-              }}
-            >
-              <div
-                className={cn(
-                  "group relative w-full transition-all duration-300 min-h-[70px] rounded-lg py-1.5 px-0 sm:py-2 md:px-3 border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] hover:shadow-[0_0_24px_rgba(191,167,106,0.35)] bg-[rgba(5,5,5,0.85)]"
-                )}
-              >
+          {service.pricingSections.map((section, sectionIdx) => {
+            // WARM PARCHMENT (serwis-laptopow) desktop: OPEN/CLOSED header split.
+            // Structural DOM change so AccordionContent is no longer nested inside
+            // the same parchment wrapper div as AccordionTrigger — see the two
+            // branches near the bottom of this callback. Not gated on open/closed
+            // state on purpose: keeping the DOM shape stable avoids remounting
+            // AccordionContent mid-animation. CLOSED looks identical either way
+            // since collapsed Content is 0px regardless of where it's parented.
+            // Applies to every card on this page (not just diagnoza).
+            const isOpenHeaderSplit = isWarmParchment && !isMobile
+            // Mobile: "Diagnoza i wycena", "Dojazd", "Konserwacja" and "FAQ" reuse the
+            // same split (desktop MASTER parchment/shadow treatment for these cards
+            // only — every other card on this page keeps its original mobile layout
+            // untouched). FAQ's own mobile geometry mirrors this same mechanism —
+            // see the [data-section-id="faq"] rules in the mobile CSS block.
+            // Canonical "plate" role: the 4 top-level sections that share the
+            // OPEN-header parchment plate/shadow/grid treatment (Diagnoza,
+            // Projektowanie modeli, Dojazd, Konserwacja) — FAQ and Naprawy get
+            // their own separate treatment and are intentionally excluded.
+            // Mirrored onto the DOM as data-open-header-plate="true" below so
+            // globals.css can select this canonical group by role instead of
+            // repeating a [data-section-id="..."] :is() list per rule.
+            const isOpenHeaderPlateSection = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' || section.id === 'dojazd' || section.id === 'konserwacja'
+            // Named structural variants within the plate role (not slug lists):
+            // mirrored onto the DOM the same way as data-open-header-plate, so
+            // globals.css can select "has a real <table>" / "has the accent
+            // banner before the table" / "OPEN state keeps the closed-plate
+            // texture" by meaning instead of enumerating section ids.
+            const hasOpenHeaderTable = isOpenHeaderPlateSection && section.id !== 'projektowanie-modeli' // Projektowanie modeli (druk-3d-na-zamowienie) renders a bespoke non-table block instead
+            const hasOpenHeaderBanner = section.id === 'dojazd' // "DARMOWY DOJAZD" accent banner rendered via AccordionContent's beforeContent, before the table
+            const keepsClosedPlateTexture = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' // OPEN ::before keeps the baked closed-plate texture instead of the open-state background
+            const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
+            const useSplitHeaderLayout = isOpenHeaderSplit || isDiagnozaMobileSplit
+            const headerWrapperClassName = cn(
+              // transition-shadow (not transition-all): only the hover glow below should
+              // fade. Open-state size changes on this wrapper (min-height/width/margin/
+              // transform from [data-open-header-plate]/[data-faq-role] in globals.css,
+              // plus the dojazd padding swap below) must apply instantly, not animate.
+              "group relative w-full transition-shadow duration-300 min-h-[70px] py-1.5 px-0 sm:py-2 md:px-3 hover:shadow-[0_0_24px_rgba(191,167,106,0.35)]",
+              isWarmParchment
+                ? ACCORDION_EDGE_CLASSES_FULL[sectionIdx % ACCORDION_EDGE_CLASSES_FULL.length]
+                : ACCORDION_EDGE_CLASSES[sectionIdx % ACCORDION_EDGE_CLASSES.length],
+              isWarmParchment
+                ? ACCORDION_ORIENT_CLASSES_FULL[sectionIdx % ACCORDION_ORIENT_CLASSES_FULL.length]
+                : ACCORDION_ORIENT_CLASSES[sectionIdx % ACCORDION_ORIENT_CLASSES.length],
+              isWarmParchment
+                ? ACCORDION_CORNER_CLASSES_FULL[sectionIdx % ACCORDION_CORNER_CLASSES_FULL.length]
+                : ACCORDION_CORNER_CLASSES[sectionIdx % ACCORDION_CORNER_CLASSES.length],
+              section.id === 'dojazd' && isSectionOpen(section.id) && 'pt-1.5 pb-0',
+              section.id === 'faq' && 'parchment-shadow-image parchment-shadow-block',
+              ['diagnoza', 'dojazd', 'konserwacja', 'faq'].includes(section.id) && isSectionOpen(section.id) && 'parchment-shadow-header',
+            )
+            const isWynajemOpenSectionContent = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+            const usesParchmentList = usesSharedParchmentList(service.slug, section.id)
+            const triggerNode = (
+              <>
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
                 <AccordionTrigger
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0 relative z-10"
                 >
-                  <div className="flex items-center w-full text-left">
-                    <div className="flex items-center flex-1 min-w-0">
-                      <div className="mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center">
-                        <Image
-                          src={getIconForSection(section.id)}
-                          alt={section.title}
-                          width={50}
-                          height={50}
-                          className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                          unoptimized
-                        />
-                      </div>
+                  <div className={cn(
+                    "flex items-center w-full text-left",
+                    useSplitHeaderLayout && isOpenHeaderPlateSection && 'diagnoza-open-header-row'
+                  )}>
+                    <div data-naprawy-header-inner={section.id === 'naprawy' ? 'true' : undefined} className={cn(
+                      "flex items-center flex-1 min-w-0",
+                      isRepairAccordionLayout && "relative left-[15px] md:left-0"
+                    )}>
+                        <div className={cn(
+                          "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
+                          isRepairAccordionLayout && "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
+                          isRepairAccordionLayout && isOpenHeaderPlateSection && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && isOpenHeaderPlateSection && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && section.id === 'faq' && "md:origin-top-left md:group-data-[state=open]:scale-[1.4] md:group-data-[state=open]:z-20",
+                          isRepairAccordionLayout && section.id === 'faq' && "origin-top-left group-data-[state=open]:scale-[1.4] group-data-[state=open]:z-20"
+                        )}>
+                          <Image
+                            src={
+                              useWarmSectionIcons && section.id === 'dojazd'
+                                ? '/images/accordion-icon-dojazd.webp'
+                                : useWarmSectionIcons && section.id === 'diagnoza' && isDruk3DZamowienieService
+                                ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
+                                : useWarmSectionIcons && section.id === 'diagnoza'
+                                ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-niszczarek'
+                                ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
+                                ? '/images/accordion-icon-karty-czyszczenie-v3.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
+                                ? '/images/accordion-icon-czyszczenie-termiczne-v2.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isNeedleService
+                                ? '/images/accordion-icon-czyszczenie-iglowe.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isInkjetService
+                                ? '/images/accordion-icon-atramentowe-czyszczenie-v3.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isDesktopComputerService
+                                ? '/images/accordion-icon-komputer-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaptopService
+                                ? '/images/accordion-icon-laptop-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isPlotterService
+                                ? '/images/accordion-icon-plotter-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isPrinter3DService
+                                ? '/images/accordion-icon-3dprinter-czyszczenie-v2.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isOutsourcingService
+                                ? '/images/accordion-icon-outsourcing-abonament-v2.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja'
+                                ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-ups-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-niszczarek'
+                                ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
+                                ? '/images/accordion-icon-karty-naprawy-v3.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
+                                ? '/images/accordion-icon-naprawy-termiczne-v3.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isNeedleService
+                                ? '/images/accordion-icon-naprawy-iglowe.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
+                                ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
+                                ? '/images/accordion-icon-naprawy-laser-v2.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isDesktopComputerService
+                                ? '/images/accordion-icon-komputer-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaptopService
+                                ? '/images/accordion-icon-laptop-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isPlotterService
+                                ? '/images/accordion-icon-plotter-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isPrinter3DService
+                                ? '/images/accordion-icon-3dprinter-naprawy-v2.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isOutsourcingService
+                                ? '/images/accordion-icon-outsourcing-naprawy-v3.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy'
+                                ? '/images/accordion-icon-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'faq'
+                                ? '/images/accordion-icon-faq.webp'
+                                : getIconForSection(section.id, service.slug)
+                            }
+                            alt={section.title}
+                            width={50}
+                            height={50}
+                            className={cn(
+                              "zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                              !isSectionOpen(section.id) && 'parchment-shadow-icon-closed'
+                            )}
+                            unoptimized
+                          />
+                        </div>
 
                       <div
                         ref={
@@ -1078,43 +1973,70 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' ? sectionHeaderRef2DZ :
                                   null
                         }
-                        className="flex-1 relative"
+                        className={cn(
+                          "zakres-header-text flex-1 relative",
+                          isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full h-full flex items-center justify-center"
+                        )}
                       >
                         <div className="flex flex-col md:block">
-                          <div className="flex items-start md:items-center gap-2 md:gap-0 md:flex-nowrap">
+                          <div className={cn(
+                            "flex items-start md:items-center gap-2 md:gap-0 md:flex-nowrap",
+                            service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:justify-between"
+                          )}>
                             {/* Мобильная версия: заголовок и надпись в одной строке */}
                             <div className={cn(
                               "md:hidden flex justify-between w-full gap-2",
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) ? "items-center" : "items-start"
                             )}>
-                              <div className="flex-1 min-w-0 pr-2">
+                              <div data-open-header-hover-text="true" className="flex-1 min-w-0 pr-2">
                                 {(() => {
                                   const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
-                                  return (
+                                  const hasWynajemA3Footer = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer
+                                  const titleNode = (
                                     <TitleTag className={cn(
-                                      "text-lg font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors leading-tight",
-                                      (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col"
+                                      cn("zakres-title-text text-xl font-cormorant font-semibold transition-colors leading-tight", isRepairAccordionLayout && isOpenHeaderPlateSection && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0"),
+                                      /* FAQ OPEN header, mobile: standalone mirror of the icon-overflow
+                                         compensation above (same 115px icon container × 1.4 scale = same
+                                         46px right-overflow), kept as its own condition rather than joining
+                                         the diagnoza/dojazd/konserwacja selector (FAQ has no price grid). */
+                                      isRepairAccordionLayout && section.id === 'faq' && "md:hidden group-data-[state=open]:line-clamp-2 group-data-[state=open]:translate-x-[46px] group-data-[state=open]:max-w-[calc(100%-46px)] group-data-[state=open]:min-w-0",
+                                      isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
+                                      (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col",
+                                      isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                                     )}>
-                                      {(() => {
-                                        if ((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) {
-                                          // Если аккордеон открыт, переносим заголовок на две строки для экономии места
-                                          if (isSectionOpen(section.id)) {
-                                            return renderSectionTitleMobile(section.title)
-                                          }
-                                          // Если закрыт - показываем обычный заголовок
-                                          return section.title
-                                        }
-                                        if (section.id === 'konserwacja') {
-                                          return t.mobileAccordionTitles.konserwacja ?? section.title
-                                        }
-                                        if (section.id === 'naprawy') {
-                                          return t.mobileAccordionTitles.naprawy ?? section.title
-                                        }
-                                        return section.title
-                                      })()}
+                                      {section.mobileTitle ?? section.title}
                                     </TitleTag>
                                   )
+                                  const footerNode = hasWynajemA3Footer && (
+                                    <span
+                                      className={cn("text-[12px] leading-relaxed block mt-0.5 text-center max-w-[190px] mx-auto", isWarmParchment ? "text-[#72502B]" : "text-[#cbb27c]")}
+                                      style={{
+                                        opacity: 1,
+                                        fontWeight: 'normal',
+                                        fontStyle: 'normal'
+                                      }}
+                                    >
+                                      {section.footer}
+                                    </span>
+                                  )
+                                  if (hasWynajemA3Footer) {
+                                    return (
+                                      <div className="inline-block w-fit">
+                                        {titleNode}
+                                        {footerNode}
+                                      </div>
+                                    )
+                                  }
+                                  return titleNode
                                 })()}
+                                {stackGratisOnMobile && section.id === 'diagnoza' && service.slug !== 'druk-3d-na-zamowienie' && (
+                                  <span className={cn(
+                                    "block my-0.5 text-lg font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
+                                    isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]"
+                                  )}>
+                                    {t.gratisUpper}
+                                  </span>
+                                )}
                                 {/* Footer для секции naprawy на странице Outsourcing IT - мобильная версия, только когда открыта */}
                                 {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                   <span
@@ -1129,36 +2051,36 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </span>
                                 )}
                               </div>
-                              {/* "Czynsz wynajmu [zł/mies.]" или "Cena wydruku format A4 [mono/kolor]" над столбцами цен - мобильная версия, только когда аккордеон открыт */}
-                              {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && (
-                                <div className="flex-shrink-0">
-                                  <span className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight whitespace-nowrap">
-                                    {t.rentPriceHeader}
-                                  </span>
-                                </div>
-                              )}
-                              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
-                                <div className="flex-shrink-0">
-                                  <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
-                                    <div>{t.printPriceHeader}</div>
-                                  </div>
-                                </div>
-                              )}
-                              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && isSectionOpen(section.id) && (
-                                <div className="flex-shrink-0">
-                                  <div className="text-base font-cormorant font-semibold text-[#ffffff] leading-tight text-center">
-                                    <div>{t.printPriceHeader}</div>
-                                  </div>
-                                </div>
-                              )}
                             </div>
                             {/* Десктопная версия: обычный заголовок.
                                 Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
                                 w wersji mobilnej (ten sam tekst, wspólny dla obu
                                 breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
-                            <div className="hidden md:block">
-                              <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] group-hover:text-white transition-colors mb-1 leading-tight">
-                                {section.title}
+                            <div data-open-header-hover-text="true" className="hidden md:block">
+                              <div className={cn(
+                                "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                                !(isRepairAccordionLayout && section.id === 'naprawy') && !isOpenHeaderPlateSection && "group-data-[state=open]:md:translate-x-[60px]",
+                                isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
+                                isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
+                              )}>
+                                {isRepairAccordionLayout && ((section.id === 'konserwacja' && locale !== 'uk') || section.id === 'naprawy') ? (
+                                  (() => {
+                                    const { main, suffix } = splitTitleSuffix(section.title)
+                                    return (
+                                      <>
+                                        {main}
+                                        {suffix && (
+                                          <>
+                                            {' '}
+                                            <span className={cn(section.id === 'konserwacja' && "group-data-[state=open]:md:block group-data-[state=open]:md:text-center")}>
+                                              {suffix}
+                                            </span>
+                                          </>
+                                        )}
+                                      </>
+                                    )
+                                  })()
+                                ) : section.title}
                               </div>
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
@@ -1173,155 +2095,56 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   ({section.footer})
                                 </span>
                               )}
+                              {/* Footer dla sekcji A3/A4 (Laserowe) na wynajem-drukarek - desktop, tylko gdy otwarta */}
+                              {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer && (
+                                <span
+                                  className={cn("text-[12px] leading-relaxed block", isWarmParchment ? "text-[#72502B]" : "text-[#cbb27c]")}
+                                  style={{
+                                    opacity: 1,
+                                    fontWeight: 'normal',
+                                    fontStyle: 'normal'
+                                  }}
+                                >
+                                  {section.footer}
+                                </span>
+                              )}
                             </div>
                           </div>
-                          {/* "Czynsz wynajmu [zł/mies.]" над столбцами цен - десктопная версия */}
-                          {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
-                            <>
-                              {priceColumnsPosition1 ? (
-                                <>
-                                  {/* Десктопная версия с вычисленной позицией */}
-                                  <div
-                                    className="hidden md:block absolute top-0"
-                                    style={{
-                                      left: `${priceColumnsPosition1.left}px`,
-                                      width: `${priceColumnsPosition1.width}px`,
-                                    }}
-                                  >
-                                    <div className="text-center">
-                                      <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        {t.rentPriceHeader}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </>
-                              ) : null}
-                            </>
-                          )}
-                          {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && isSectionOpen(section.id) && (
-                            <>
-                              {/* Десктопная версия */}
-                              {priceColumnsPosition2 ? (
-                                <div
-                                  className="hidden md:block absolute top-0"
-                                  style={{
-                                    left: `${priceColumnsPosition2.left}px`,
-                                    width: `${priceColumnsPosition2.width}px`,
-                                  }}
-                                >
-                                  <div className="text-center">
-                                    <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      {t.rentPriceHeader}
-                                    </span>
-                                  </div>
-                                </div>
-                              ) : (
-                                <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                  <div className="text-center">
-                                    <span className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      {t.rentPriceHeader}
-                                    </span>
-                                  </div>
-                                </div>
-                              )}
-                            </>
-                          )}
-                          {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-1' && isSectionOpen(section.id) && (
-                            <>
-                              {priceColumnsPosition1DZ ? (
-                                <>
-                                  {/* Десктопная версия с вычисленной позицией */}
-                                  <div
-                                    className="hidden md:block absolute top-0"
-                                    style={{
-                                      left: `${priceColumnsPosition1DZ.left}px`,
-                                      width: `${priceColumnsPosition1DZ.width}px`,
-                                    }}
-                                  >
-                                    <div className="text-left" style={{ marginLeft: '50px' }}>
-                                      <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                        <div>{t.printPriceHeader}</div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </>
-                              ) : (
-                                <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                  <div className="text-left" style={{ marginLeft: '50px' }}>
-                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>{t.printPriceHeader}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </>
-                          )}
-                          {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && isSectionOpen(section.id) && (
-                            <>
-                              {/* Десктопная версия */}
-                              {priceColumnsPosition2DZ ? (
-                                <div
-                                  className="hidden md:block absolute top-0"
-                                  style={{
-                                    left: `${priceColumnsPosition2DZ.left}px`,
-                                    width: `${priceColumnsPosition2DZ.width}px`,
-                                  }}
-                                >
-                                  <div className="text-left" style={{ marginLeft: '50px' }}>
-                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>{t.printPriceHeader}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : (
-                                <div className="hidden md:block absolute top-0 right-0" style={{ width: '60%' }}>
-                                  <div className="text-left" style={{ marginLeft: '50px' }}>
-                                    <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-tight">
-                                      <div>{t.printPriceHeader}</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </>
-                          )}
                         </div>
-                        {section.id === 'dojazd' && isSectionOpen(section.id) && (
-                          <div className="mt-1 text-[12px] leading-snug text-[#f5f0df] max-w-[420px]">
-                            <div>{t.dojazdNote[0]}</div>
-                            <div>{t.dojazdNote[1]}</div>
-                          </div>
-                        )}
-
-                        <div className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden">
+                        <div className={cn(
+                          "zakres-cennik-link flex items-center gap-2 text-xs font-serif group-hover:translate-x-1 transition-transform group-data-[state=open]:hidden",
+                          isWarmParchment ? "text-[#72502B]" : "text-[#bfa76a]"
+                        )}>
                           <span>{section.id === 'faq' ? viewDetails : viewPriceList}</span>
                           <ArrowRight className="w-3 h-3" />
                         </div>
                       </div>
                     </div>
 
-                    {section.id !== 'faq' && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
+                    {section.id !== 'faq' && !(isRepairAccordionLayout && section.id === 'naprawy') && !(service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && !(service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                       <>
                         <div
-                          className={cn(
-                            'flex items-center ml-3 sm:ml-4 flex-shrink-0',
-                            isDruk3DCustomSection(service.slug, section.id)
-                              ? 'gap-0 md:w-[calc(46%-9.2px)] md:mr-[10px]'
-                              : 'gap-3 sm:gap-4'
-                          )}
+                          className="flex items-center ml-3 sm:ml-4 flex-shrink-0 gap-3 sm:gap-4"
                         >
                           <div
                             className={cn(
                               'flex items-center justify-center',
-                              isDruk3DCustomSection(service.slug, section.id)
-                                ? 'min-w-[96px] max-w-[110px] md:w-[60.8696%] md:min-w-0 md:max-w-none md:pl-4 md:pr-2'
-                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? 'min-w-[96px] sm:min-w-[120px]'
-                                  : 'min-w-0 sm:min-w-[120px]'
+                              isOpenHeaderPlateSection || section.id === 'naprawy'
+                                ? cn(
+                                    'min-w-[96px] sm:min-w-[120px]',
+                                    isRepairAccordionLayout && 'group-data-[state=closed]:min-w-0 group-data-[state=closed]:w-auto sm:group-data-[state=closed]:min-w-[120px]'
+                                  )
+                                : 'min-w-0 sm:min-w-[120px]'
                             )}
                           >
                             {section.id === 'diagnoza' && (
                               service.slug === 'druk-3d-na-zamowienie' ? null : (
-                                <span className="text-lg md:text-xl font-table-accent text-[rgba(255,255,245,0.85)] group-data-[state=open]:hidden whitespace-nowrap">
+                                <span className={cn(
+                                  "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
+                                  isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]",
+                                  isRepairAccordionLayout && "relative left-[-15px] md:left-0",
+                                  stackGratisOnMobile && "max-md:hidden"
+                                )}>
                                   {t.gratisUpper}
                                 </span>
                               )
@@ -1329,6 +2152,8 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
 
 
                             <div
+                              data-price="true"
+                              data-open-header-hover-text="true"
                               className="text-center hidden group-data-[state=open]:block w-full"
                             >
                               <TooltipProvider delayDuration={100}>
@@ -1354,15 +2179,16 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
-                                          section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
+                                          'zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0',
+                                          isOpenHeaderPlateSection || section.id === 'naprawy'
                                             ? 'justify-center'
                                             : 'justify-end',
                                           'md:cursor-default cursor-pointer'
                                         )}
+                                        style={{ gap: '1px' }}
                                         role="button"
                                         tabIndex={0}
-                                        aria-label="Informacja o cenach"
+                                        aria-label={t.priceInfoAriaLabel}
                                         onPointerDown={(e) => {
                                           // На мобильных обрабатываем touch события
                                           if (isMobile && !isSpecialTooltipService) {
@@ -1386,32 +2212,53 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                             e.stopPropagation()
                                           }
                                         }}
+                                        onKeyDown={(e) => {
+                                          if ((e.key === 'Enter' || e.key === ' ') && isMobile && !isSpecialTooltipService) {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            const newSet = new Set(openSmallTooltips)
+                                            if (newSet.has(section.id)) {
+                                              newSet.delete(section.id)
+                                            } else {
+                                              newSet.clear()
+                                              newSet.add(section.id)
+                                            }
+                                            setOpenSmallTooltips(newSet)
+                                          }
+                                        }}
                                       >
-                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                        <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
-                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                        </span>
+                                        <span className="inline sm:hidden">{isRepairAccordionLayout ? priceHeaderFull : priceHeaderShort}</span>
+                                        <PopoverAnchor asChild>
+                                          <span className="-mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                            <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                          </span>
+                                        </PopoverAnchor>
                                       </div>
                                     </PopoverTrigger>
                                     <PopoverContent
-                                      side="bottom"
-                                      sideOffset={8}
+                                      side={isParchmentTooltipSlug ? 'top' : 'bottom'}
+                                      sideOffset={isParchmentTooltipSlug ? (isRepairAccordionLayout && section.id === 'diagnoza' ? 6 : 4) : 8}
                                       className={cn(
-                                        "w-fit max-w-[280px]",
-                                        service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow'
+                                        isParchmentTooltipSlug
                                           ? 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center'
-                                          : 'border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
+                                          : 'w-fit max-w-[280px] border border-[#bfa76a]/30 text-white shadow-lg p-3 bg-[#1a1a1a]'
                                       )}
-                                      style={service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? {
+                                      style={isParchmentTooltipSlug ? {
                                         backgroundImage: `var(--bg-parchment)`,
+                                        width: 'max-content',
+                                        minWidth: 0,
+                                        whiteSpace: 'nowrap',
+                                        right: '4px',
+                                        left: 'auto',
                                       } : {}}
                                     >
-                                      {service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' ? (
+                                      {isParchmentTooltipSlug ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
-                                          <p className="relative z-10 text-sm leading-snug text-white font-medium">
-                                            cena netto
+                                          <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                            {t.priceNettoTooltip}
                                           </p>
+                                          <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
                                         </>
                                       ) : (
                                         <p className="max-w-xs text-sm leading-snug text-[#f8f1db]">
@@ -1423,18 +2270,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 ) : isMobile && isSpecialTooltipService ? (
                                   <div
                                     className={cn(
-                                      'flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer'
+                                      'zakres-price-header-text flex items-center gap-2 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer'
                                     )}
                                     role="button"
                                     tabIndex={0}
-                                    aria-label="Informacja o kategoriach"
+                                    aria-label={t.categoryInfoAriaLabel}
                                     onClick={(e) => {
                                       e.preventDefault()
                                       e.stopPropagation()
                                       setCategoryTooltipOpen(!isCategoryTooltipOpen)
                                     }}
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault()
+                                        e.stopPropagation()
+                                        setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                      }
+                                    }}
                                   >
-                                    <span className="inline sm:hidden">Cena</span>
+                                    <span className="inline sm:hidden">{priceHeaderShort}</span>
                                     <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
                                       <Info className="w-4 h-4 opacity-70 pointer-events-none" />
                                     </span>
@@ -1452,38 +2306,22 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       <div
                                         className={cn(
-                                          'text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
-                                          isDruk3DCustomSection(service.slug, section.id)
-                                            ? 'relative md:w-full flex items-center justify-center gap-2 pl-1 md:pl-0'
-                                            : cn(
-                                                'flex items-center gap-2 pl-1 md:pl-0',
-                                                section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                                  ? 'justify-center'
-                                                  : 'justify-end'
-                                              ),
+                                          'zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap',
+                                          'flex items-center gap-[5px] pl-1 md:pl-0',
+                                          isOpenHeaderPlateSection || section.id === 'naprawy'
+                                            ? 'justify-center'
+                                            : 'justify-end',
                                           'md:cursor-default'
                                         )}
                                         role="button"
                                         tabIndex={0}
-                                        aria-label="Informacja o cenach"
+                                        aria-label={t.priceInfoAriaLabel}
                                       >
-                                        {isDruk3DCustomSection(service.slug, section.id) ? (
-                                          <span className="relative inline-block">
-                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                            <span className="md:absolute md:left-full md:top-1/2 md:-translate-y-1/2 md:ml-3 ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
-                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                            </span>
-                                          </span>
-                                        ) : (
-                                          <>
-                                            <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                            <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                            <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
-                                              <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                            </span>
-                                          </>
-                                        )}
+                                        <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                        <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                        <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1 md:cursor-pointer">
+                                          <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                        </span>
                                       </div>
                                     </TooltipTrigger>
                                     <TooltipContent
@@ -1493,14 +2331,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                           align: 'center',
                                           sideOffset: -80,
                                           collisionPadding: 16,
-                                          className: 'p-0 border-none bg-transparent shadow-none max-w-none rounded-none',
+                                          className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
                                         }
-                                        : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie'
+                                        : isParchmentTooltipContentSlug
                                           ? {
                                             side: 'top',
-                                            sideOffset: 4,
+                                            sideOffset: isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli') ? 6 : 4,
                                             ...(service.slug === 'druk-3d-na-zamowienie' ? { align: 'end' as const, alignOffset: -4 } : {}),
-                                            className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                            className: `border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden${isRepairAccordionLayout && (section.id === 'diagnoza' || section.id === 'projektowanie-modeli') ? ' diagnoza-tooltip-content' : ''}`,
                                             style: {
                                               backgroundImage: `var(--bg-parchment)`,
                                               backgroundSize: 'cover',
@@ -1514,11 +2352,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     >
                                       {isSpecialTooltipService ? (
                                         <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
-                                      ) : service.slug === 'outsourcing-it' || service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'druk-3d-na-zamowienie' ? (
+                                      ) : isParchmentTooltipContentSlug ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
                                           <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                            cena netto
+                                            {t.priceNettoTooltip}
                                           </p>
                                         </>
                                       ) : (
@@ -1530,16 +2368,11 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                   </Tooltip>
                                 )}
                               </TooltipProvider>
-                              {service.slug !== 'serwis-laptopow' && service.slug !== 'serwis-komputerow-stacjonarnych' && service.slug !== 'serwis-drukarek-3d' && service.slug !== 'serwis-plotterow' && service.slug !== 'druk-3d-na-zamowienie' && (
-                                <span
-                                  className="text-[12px] text-[#cbb27c] leading-relaxed hidden md:block"
-                                  style={{
-                                    opacity: 1,
-                                    fontWeight: 'normal',
-                                    fontStyle: 'normal'
-                                  }}
-                                >
-                                  {t.deviceCategoriesCaption}
+                              {!hideDeviceCaption && (
+                                <span className="hidden md:block">
+                                  <span className="parentheses-caption-text">
+                                    {t.deviceCategoriesCaption}
+                                  </span>
                                 </span>
                               )}
                             </div>
@@ -1548,16 +2381,23 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                           <div
                             className={cn(
                               'items-center justify-center hidden md:flex',
-                              isDruk3DCustomSection(service.slug, section.id)
-                                ? 'md:w-[39.1304%] md:pl-4 md:pr-2'
-                                : section.id === 'diagnoza' || section.id === 'dojazd' || section.id === 'konserwacja' || section.id === 'naprawy'
-                                  ? 'min-w-[120px]'
-                                  : 'min-w-0'
+                              isOpenHeaderPlateSection || section.id === 'naprawy'
+                                ? 'min-w-[120px]'
+                                : 'min-w-0'
                             )}
                           >
-                            <div className="text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
-                              <div className="leading-[1.05]">{timeHeader}</div>
-                              <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                            <div data-open-header-hover-text="true" className="zakres-time-header-text w-full min-w-0 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]:block leading-[1.05]">
+                              {isOutsourcingService && section.id === 'konserwacja' ? (
+                                <>
+                                  <div className="leading-[1.05]">{t.reactionTimeHeader}</div>
+                                  <div className="leading-[1.05]">{t.reactionTimeHeaderLine2}</div>
+                                </>
+                              ) : (
+                                <>
+                                  <div className="leading-[1.05]">{timeHeader}</div>
+                                  <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -1566,87 +2406,233 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                     )}
                   </div>
                 </AccordionTrigger>
-
-                <AccordionContent
-                  data-naprawy-section={section.id === 'naprawy' ? 'true' : undefined}
-                  // Na druk-3d-na-zamowienie treść FAQ (lista pytań) ma pozostawać w DOM
-                  // niezależnie od stanu tej sekcji, żeby teksty pytań (w tym te
-                  // semantyczne <h2>) były obecne w DOM od razu, a nie dopiero po
-                  // kliknięciu. Same odpowiedzi nadal montują się tylko po otwarciu
-                  // konkretnego pytania (osobny zagnieżdżony Accordion niżej, bez forceMount).
-                  forceMount={service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' ? true : undefined}
+              </>
+            )
+            const contentNode = (
+              <AccordionContent
+                  beforeContent={section.id === 'dojazd' ? (
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : `${dojazdBannerPadLeft}px`, paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
+                      <div className="font-table-main">
+                        <div className="service-description-text dojazd-promo-title">{t.dojazdPromoTitle} <WinkEmoji variant="thinking" /></div>
+                        <div
+                          ref={dojazdCaptionBoxRef}
+                          className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed"
+                          style={isMobile ? { display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties : { display: 'flex', position: 'relative', justifyContent: dojazdCaptionOverflows && !dojazdCaptionWraps ? 'flex-end' : 'center', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}
+                        >
+                          {isMobile ? t.dojazdNote.join(' ') : (
+                            <>
+                              <span ref={dojazdCaptionSpanRef} aria-hidden="true" style={{ position: 'absolute', right: 0, top: 0, visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'nowrap' }}>{t.dojazdNote.join(' ')}</span>
+                              {dojazdCaptionWraps ? (
+                                <span style={{ textAlign: 'center' }}>{t.dojazdNote[0]}<br />{t.dojazdNote[1]}</span>
+                              ) : (
+                                <span style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{t.dojazdNote.join(' ')}</span>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ) : section.id === 'konserwacja' && !isOutsourcingService ? (
+                    // Sekcja konserwacja ma AccordionContent z marginTop: -8 (patrz `style` niżej),
+                    // którego "dojazd" nie ma — ten sam baner tekstowy potrzebuje więc +8px
+                    // paddingTop więcej niż w "dojazd", żeby wizualnie wypaść tak samo pod plakietką.
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '250px', paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '14px' : '8px', paddingBottom: isMobile ? '6px' : '4px' }}>
+                      <div className="font-table-main">
+                        <div className="service-promo-title">{konserwacjaPromoTitleResolved} <WinkEmoji variant="thinking" /></div>
+                        <div
+                          ref={konserwacjaPromoBoxRef}
+                          className="service-promo-description"
+                          style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
+                        >
+                          {isMobile ? konserwacjaPromoDescriptionResolved : (
+                            <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ) : undefined}
+                  data-parchment-list-content={usesParchmentList ? 'true' : undefined}
+                  // Treść każdej sekcji (cennik, naprawy, FAQ) jest zawsze w DOM — także
+                  // zamknięta — żeby Google widział teksty bez klikania. Zamknięty stan
+                  // ukrywa ją CSS-em (AccordionContent: data-[state=closed]:!hidden).
+                  forceMount
+                  style={isRepairAccordionLayout && section.id === 'konserwacja' ? (isOutsourcingService ? { paddingBottom: 16 } : { paddingBottom: 16, marginTop: -8 }) : undefined}
                   className={cn(
-                    "pb-3 max-h-[70vh] overflow-y-auto scroll-smooth accordion-scroll relative z-10 md:border-t md:border-[rgba(200,169,107,0.3)] md:mt-2 md:border-x md:border-[rgba(191,167,106,0.3)] md:mx-2 md:mb-2 md:rounded-b-lg",
+                    "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
+                    !(isRepairAccordionLayout && section.id === 'faq') && !isWynajemOpenSectionContent && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
+                    isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
+                      ? "max-h-none overflow-y-visible"
+                      : isRepairAccordionLayout && section.id === 'faq'
+                        ? "overflow-visible"
+                        : isWynajemOpenSectionContent
+                          ? ""
+                          : "max-h-[70vh] overflow-y-auto",
+                    isRepairAccordionLayout && section.id === 'naprawy'
+                      ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
+                      : "",
+                    isWynajemOpenSectionContent
+                      ? "max-h-none h-auto overflow-y-visible overflow-x-visible w-full min-w-0"
+                      : "",
                     (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id)
                       ? "md:pt-3 pt-0"
-                      : "pt-3",
-                    service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq' && !isSectionOpen(section.id) && "hidden"
+                      : isRepairAccordionLayout && ['diagnoza', 'dojazd', 'konserwacja', 'naprawy'].includes(section.id)
+                        ? "pt-[15px]"
+                        : "pt-3"
                   )}
                 >
                   {section.subcategories ? (
                     (() => {
                       const isRepairSection = section.id === 'naprawy'
                       const isFaqSection = section.id === 'faq'
+                      const subVisual = (sub: { id: string }) => getSubcategoryVisual(service.slug, sub.id)
+                      const isSoftwareSub = (sub: { id: string }) => subVisual(sub)?.software === true
+                      let parchmentListCumY: number[] = []
+                      if (usesSharedParchmentList(service.slug, section.id) && parchmentListMetrics) {
+                        let acc = parchmentListMetrics.headerHeight
+                        parchmentListCumY = parchmentListMetrics.rowHeights.map(h => {
+                          const y = acc
+                          acc += h
+                          return y
+                        })
+                      }
                       const subcategoryItems = section.subcategories.map((subcategory, index) => (
                         <AccordionItem
                           key={subcategory.id}
                           value={subcategory.id}
-                          data-naprawy-subcategory={isRepairSection ? 'true' : undefined}
+                          data-parchment-list-row={usesParchmentList ? 'true' : undefined}
+                          data-parchment-list-first-row={usesParchmentList && index === 0 ? 'true' : undefined}
+                          data-parchment-list-last-row={usesParchmentList && index === section.subcategories!.length - 1 ? 'true' : undefined}
                           data-faq-item={section.id === 'faq' ? 'true' : undefined}
+                          data-wynajem-plain-row={(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
+                          data-dz-row={service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
+                          data-wynajem-standard-icon={service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined}
                           className={cn(
-                            "border-0 last:border-b-0 last:mb-0 group scroll-mt-[100px]",
+                            "border-0 last:border-b-0 last:mb-0 group group/subcategory scroll-mt-[100px]",
+                            isRepairAccordionLayout && usesParchmentList && 'max-md:w-full max-md:min-w-0',
+                            usesParchmentList && 'md:border-b-0 md:border-t-0 md:mb-0 md:pb-0',
+                            usesParchmentList && index === 0 && 'md:pt-0',
                             section.id === 'faq'
-                              ? `border-b border-[#bfa76a]/30 mb-0.5 pb-0.5 ${index === 0 ? 'border-t border-[#bfa76a]/30 pt-0.5' : ''}`
-                              : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                ? `border-b border-white/20 mb-1 pb-1 md:mb-1.5 md:pb-1.5 ${index === 0 ? 'border-t border-white/20 md:pt-1.5' : ''}`
+                              ? `mb-0.5 pb-0.5 ${index === 0 ? 'pt-0.5' : ''}`
+                              : usesParchmentList
+                                ? ''
                                 : `border-b border-white/20 mb-1.5 pb-1.5 ${index === 0 ? 'border-t border-white/20 pt-1.5' : ''}`,
                           )}
                           ref={node => {
                             subcategoryRefs.current[subcategory.id] = node
                           }}
+                          style={usesParchmentList && parchmentListCumY.length ? ({
+                            '--naprawy-seg-y': `-${parchmentListCumY[index]}px`,
+                            '--naprawy-row-h': `${parchmentListMetrics?.rowHeights[index] ?? 0}px`,
+                          } as React.CSSProperties) : undefined}
                         >
                           <AccordionTrigger
                             className={cn(
-                              "hover:no-underline text-left w-full !focus-visible:ring-0 !focus-visible:outline-none focus-visible:ring-transparent transition-all duration-200",
+                              "hover:no-underline text-left w-full transition-all duration-200",
                               section.id === 'faq'
-                                ? 'py-1 px-2 rounded-lg hover:border-[#ffecb3]/20'
+                                ? 'py-1 px-2 md:px-8 rounded-lg hover:border-[#ffecb3]/20'
                                 : (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
-                                  ? service.slug === 'drukarka-zastepcza'
-                                    ? 'py-[1px] px-1.5 md:py-[1px] md:px-3 [&>svg]:hidden md:[&>svg]:block'
-                                    : 'py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
-                                  : 'py-1.5 px-1.5 md:py-2 md:px-3',
+                                  // transition-none: та же причина, что и для naprawy ниже — без
+                                  // этого унаследованный transition-all duration-200 анимировал бы
+                                  // изменение высоты шапки (на mobile отступы в
+                                  // WynajemSubcategoryHeader зависят от isSectionOpen) уже ПОСЛЕ
+                                  // открытия категории, а не мгновенно вместе с ним.
+                                  ? 'transition-none py-1 px-1.5 md:py-2 md:px-3 [&>svg]:hidden md:[&>svg]:block'
+                                  : isRepairSection
+                                    // transition-none: базовый transition-all duration-200 выше
+                                    // анимировал бы py/px между data-[state=closed] и open (~200мс),
+                                    // из-за чего шапка naprawy визуально росла уже ПОСЛЕ открытия —
+                                    // само открытие мгновенное, растягивать его не нужно.
+                                    ? 'transition-none data-[state=closed]:py-[3px] data-[state=open]:py-2 data-[state=closed]:px-3 data-[state=open]:px-0'
+                                    : 'py-1.5 px-1.5 data-[state=closed]:md:py-[3px] data-[state=open]:md:py-2 md:px-3',
                             )}
                           >
-                            {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price ? (
+                            {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price && !usesParchmentList ? (
                               <WynajemSubcategoryHeader service={service} section={section} subcategory={subcategory} viewDetails={viewDetails} isSectionOpen={isSectionOpen} isSubcategoryOpen={isSubcategoryOpen} wynajemHeaderRefs={wynajemHeaderRefs} drukarkaZastepczaHeaderRefs={drukarkaZastepczaHeaderRefs} />
                             ) : (
-                              <div className={`flex items-center w-full ${service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'gap-2.5 md:gap-3' : 'gap-3'}`}>
-                                {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
-                                  <div className="mr-2 h-[60px] w-[60px] md:h-[50px] md:w-[50px] flex-shrink-0 flex items-center justify-center">
+                              <div data-parchment-list-header-row={usesParchmentList ? 'true' : undefined} data-wynajem-a4-header={(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'true' : undefined} className={`flex items-center w-full group/naprawy-row ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'diagnoza-open-header-row' : usesParchmentList ? 'diagnoza-open-header-row' : 'gap-3'}`}>
+                                <div data-parchment-list-header-col1={usesParchmentList ? 'true' : undefined} className="flex items-center min-w-0 flex-1">
+                                {isRepairAccordionLayout && isRepairSection && isSoftwareSub(subcategory) && (
+                                  <div data-parchment-list-image="true" className={cn(
+                                    "zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative",
+                                    "w-[115px] h-[58px] md:w-[50px] md:h-[50px]",
+                                    "md:origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20",
+                                    "origin-top-left group-data-[state=open]/subcategory:scale-[1.4] group-data-[state=open]/subcategory:z-20"
+                                  )}>
                                     <Image
-                                      src={getIconForSubcategory(subcategory.id) || getIconForSection(section.id)}
-                                      alt={subcategory.title}
-                                      width={100}
-                                      height={100}
-                                      className="object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
+                                      src={subVisual(subcategory)?.icon ?? NAPRAWY_PLACEHOLDER_ICON}
+                                      alt=""
+                                      aria-hidden="true"
+                                      width={50}
+                                      height={50}
+                                      className={cn(
+                                        "zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed',
+                                        isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open'
+                                      )}
                                       unoptimized
                                     />
                                   </div>
                                 )}
-                                <div className="flex-1 w-full min-w-0">
-                                  <div>
+                                {isRepairAccordionLayout && isRepairSection && !isSoftwareSub(subcategory) && (() => {
+                                  // Icon slot always renders (same size/behavior as serwis-laptopow):
+                                  // shared visual config (slug + subcategory id) only;
+                                  // the placeholder is a safety net for a missing config entry.
+                                  const iconSrc = subVisual(subcategory)?.icon ?? NAPRAWY_PLACEHOLDER_ICON
+                                  return (
+                                    <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                      <img src={iconSrc} alt="" aria-hidden="true" loading="lazy" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                    </div>
+                                  )
+                                })()}
+                                {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1' && (
+                                  <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                    <img src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)} alt="" aria-hidden="true" loading="lazy" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
+                                  </div>
+                                )}
+                                {((service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2') || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
+                                  <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
+                                    <Image
+                                      src={getIconForSubcategory(subcategory.id, service.slug) || getIconForSection(section.id, service.slug)}
+                                      alt={subcategory.title}
+                                      width={100}
+                                      height={100}
+                                      className={cn(
+                                        service.slug === 'drukarka-zastepcza' && "zakres-icon-media",
+                                        "object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity",
+                                        !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed',
+                                        isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open'
+                                      )}
+                                      unoptimized
+                                    />
+                                  </div>
+                                )}
+                                <div data-subcategory-text="true" data-parchment-list-hover-text="true" className={cn(
+                                  "flex-1 w-full min-w-0",
+                                  usesParchmentList && "zakres-header-text relative",
+                                  isRepairAccordionLayout && !isRepairSection && (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && "relative z-[1]"
+                                )}>
+                                  <div data-subcategory-title="true">
                                     {(() => {
                                       const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
                                         ? 'h2'
                                         : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
                                           ? 'div'
                                           : 'h4'
-                                      const titleClassName = `font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
-                                        ? 'text-[15px] md:text-[16px] font-semibold text-[#ffffff] mb-0'
-                                        : 'text-lg font-semibold text-[#ffffff]'
+                                      const titleClassName = `${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || service.slug === 'wynajem-drukarek') ? 'font-cormorant' : 'font-table-main'} ${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || (service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1')) ? 'leading-tight' : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' ? 'leading-[1.05]' : service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
+                                        ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
+                                        : usesParchmentList
+                                          ? `zakres-title-text text-xl font-semibold transition-colors mb-1 text-[#3A2817] group-hover:text-[#3A2817]${isSoftwareSub(subcategory) ? ' max-md:group-data-[state=open]/subcategory:translate-x-[60px]' : ''}`
+                                          : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                            ? 'text-lg md:text-xl font-semibold text-[#3A2817]'
+                                            : isRepairAccordionLayout && service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                                              ? 'text-lg font-semibold text-[#3A2817]'
+                                              : 'text-lg font-semibold text-[#ffffff]'
                                         }`
                                       return (
-                                        <TitleTag className={titleClassName}>
+                                        <TitleTag
+                                          className={titleClassName}
+                                          data-zakres-title-oprogramowanie={isRepairAccordionLayout && isRepairSection && isSoftwareSub(subcategory) ? 'true' : undefined}
+                                        >
                                           {(() => {
                                             const title = subcategory.title
                                             // Применяем стиль для wynajem-drukarek и drukarka-zastepcza
@@ -1659,9 +2645,37 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                                 return (
                                                   <>
                                                     {mainPart}{' '}
-                                                    <span className={`text-lg font-semibold text-[#ffffff] font-table-main ${(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'}`}>
+                                                    <span className={service.slug === 'wynajem-drukarek' ? 'text-lg md:text-xl font-semibold font-cormorant text-[#3A2817] leading-[1.05]' : service.slug === 'drukarka-zastepcza' ? 'zakres-title-text' : `text-lg font-semibold font-table-main ${isRepairAccordionLayout ? 'text-[#3A2817]' : 'text-[#ffffff]'} leading-[1.2] md:leading-[1.3]`}>
                                                       ({bracketPart})
                                                     </span>
+                                                  </>
+                                                )
+                                              }
+                                            }
+                                            // RESP-002: mobile <430px width has no natural word-break point in
+                                            // a single-word software title, causing the browser's overflow-wrap:anywhere
+                                            // fallback to split it at an arbitrary letter. A soft hyphen in the
+                                            // middle gives it one clean, deliberate break point instead.
+                                            // Multi-word titles (UK/RU) already wrap at spaces.
+                                            if (isRepairAccordionLayout && isRepairSection && isSoftwareSub(subcategory) && !/\s/.test(title)) {
+                                              const mid = Math.ceil(title.length / 2)
+                                              return `${title.slice(0, mid)}­${title.slice(mid)}`
+                                            }
+                                            if (isRepairAccordionLayout && isRepairSection && subcategory.closedSuffix) {
+                                              return (
+                                                <>
+                                                  {title}
+                                                  <span className="hidden md:group-data-[state=closed]/subcategory:inline">{subcategory.closedSuffix}</span>
+                                                </>
+                                              )
+                                            }
+                                            if (isRepairAccordionLayout && isRepairSection) {
+                                              const bracketMatch = title.match(/^(.+?)\s*(\(.+\))$/)
+                                              if (bracketMatch) {
+                                                return (
+                                                  <>
+                                                    {bracketMatch[1].trim()}
+                                                    <span className="hidden group-data-[state=closed]/subcategory:inline"> {bracketMatch[2]}</span>
                                                   </>
                                                 )
                                               }
@@ -1671,7 +2685,7 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                         </TitleTag>
                                       )
                                     })()}
-                                    {subcategory.subtitle && section.id !== 'faq' && (
+                                    {subcategory.subtitle && section.id !== 'faq' && !usesParchmentList && (
                                       renderParenthesesText(subcategory.subtitle, '12px')
                                     )}
                                   </div>
@@ -1679,58 +2693,626 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     <>
                                       <div
                                         data-subcategory-link
-                                        className="flex items-center gap-2 text-[#bfa76a] text-xs font-serif group-hover:translate-x-1 transition-transform whitespace-nowrap"
+                                        className={cn(
+                                          "flex items-center gap-2 text-xs font-serif group-hover/naprawy-row:translate-x-1 transition-transform whitespace-nowrap",
+                                          usesParchmentList ? "zakres-cennik-link text-[#72502B]" : "text-[#bfa76a]"
+                                        )}
                                       >
                                         <span>
                                           {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                                             ? viewDetails
                                             : viewPriceList}
                                         </span>
-                                        <ArrowRight className="w-3 h-3 flex-shrink-0" />
+                                        <ArrowRight className={cn("w-3 h-3", !(isRepairAccordionLayout && isRepairSection) && "flex-shrink-0")} />
                                       </div>
                                     </>
                                   )}
                                 </div>
-                                {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && subcategory.price && (
-                                  <div className="hidden md:flex items-center justify-end flex-shrink-0 min-w-[200px]">
-                                    <div className="font-inter text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] text-right whitespace-nowrap">
-                                      {subcategory.price.split(' / ').map((price, idx, arr) => (
-                                        <span key={idx}>
-                                          {price}
-                                          {idx < arr.length - 1 && ' / '}
-                                        </span>
-                                      ))}
+                                </div>
+                                {service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
+                                  <div className="flex items-center ml-3 sm:ml-4 flex-shrink-0 gap-3 sm:gap-4">
+                                    <div className="flex items-center justify-center min-w-0 sm:min-w-[120px] group-data-[state=closed]/subcategory:min-w-0 group-data-[state=closed]/subcategory:w-auto sm:group-data-[state=closed]/subcategory:min-w-[120px]">
+                                      <div data-price="true" className="text-center hidden group-data-[state=open]/subcategory:block w-full" />
+                                    </div>
+                                    <div className="items-center justify-center hidden md:flex min-w-[120px]">
+                                      <div className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center hidden group-data-[state=open]/subcategory:block leading-[1.05]" />
+                                    </div>
+                                  </div>
+                                )}
+                                {service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && (
+                                  <div className="hidden md:flex items-center ml-3 sm:ml-4 flex-shrink-0 gap-3 sm:gap-4">
+                                    <div className="flex items-center justify-center min-w-[120px]" aria-hidden="true" />
+                                    <div data-dz-price-header="true" className="items-center justify-center hidden md:flex min-w-[120px]">
+                                      <TooltipProvider delayDuration={100}>
+                                        <Tooltip>
+                                          <TooltipTrigger asChild>
+                                            <div
+                                              className="zakres-price-header-text hidden group-data-[state=open]/subcategory:flex items-center gap-[5px] text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap justify-center cursor-default"
+                                              role="button"
+                                              tabIndex={0}
+                                              aria-label={t.priceInfoAriaLabel}
+                                            >
+                                              <span>{priceHeaderFull}</span>
+                                              <span className="inline-flex items-center justify-center text-white/80 rounded-full p-1">
+                                                <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                              </span>
+                                            </div>
+                                          </TooltipTrigger>
+                                          <TooltipContent
+                                            side="top"
+                                            sideOffset={4}
+                                            className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden"
+                                            style={{
+                                              backgroundImage: `var(--bg-parchment)`,
+                                              backgroundSize: 'cover',
+                                              backgroundPosition: 'center',
+                                            }}
+                                          >
+                                            <div className="absolute inset-0 bg-black/50 z-0" />
+                                            <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                              {t.priceNettoTooltip}
+                                            </p>
+                                          </TooltipContent>
+                                        </Tooltip>
+                                      </TooltipProvider>
+                                    </div>
+                                  </div>
+                                )}
+                                {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && isSubcategoryOpen(section.id, subcategory.id) && (() => {
+                                  if (!subcategory.price) return null
+                                  return (
+                                    <div className="hidden md:flex items-center justify-end flex-shrink-0 min-w-[200px]">
+                                      <div className="font-inter text-[14px] leading-[1.3] text-right whitespace-nowrap text-[rgba(255,255,255,0.9)]">
+                                        {subcategory.price.split(' / ').map((price, idx, arr) => (
+                                          <span key={idx}>
+                                            {price}
+                                            {idx < arr.length - 1 && ' / '}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )
+                                })()}
+                                {isRepairAccordionLayout && isRepairSection && (
+                                  <div data-subcategory-price="true" data-parchment-list-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
+                                    <div className="flex items-center justify-center">
+                                      <div className="text-center block w-full">
+                                        <TooltipProvider delayDuration={100}>
+                                          {isMobile && isSpecialTooltipService ? (
+                                            <div
+                                              className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer"
+                                              style={{ gap: '1px' }}
+                                              role="button"
+                                              tabIndex={0}
+                                              aria-label={t.categoryInfoAriaLabel}
+                                              onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                                setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                              }}
+                                              onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                  e.preventDefault()
+                                                  e.stopPropagation()
+                                                  setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                                }
+                                              }}
+                                            >
+                                              <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                              <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                                <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                              </span>
+                                            </div>
+                                          ) : !isSpecialTooltipService && isMobile ? (
+                                            <Popover
+                                              open={openSmallTooltips.has(subcategory.id)}
+                                              onOpenChange={open => {
+                                                if (isMobile) {
+                                                  const newSet = new Set(openSmallTooltips)
+                                                  if (open) {
+                                                    newSet.add(subcategory.id)
+                                                  } else {
+                                                    newSet.delete(subcategory.id)
+                                                  }
+                                                  setOpenSmallTooltips(newSet)
+                                                }
+                                              }}
+                                            >
+                                              <PopoverTrigger asChild>
+                                                <div
+                                                  className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center md:cursor-default cursor-pointer"
+                                                  style={{ gap: '1px' }}
+                                                  role="button"
+                                                  tabIndex={0}
+                                                  aria-label={t.priceInfoAriaLabel}
+                                                  onPointerDown={(e) => {
+                                                    if (isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                      const newSet = new Set(openSmallTooltips)
+                                                      if (newSet.has(subcategory.id)) {
+                                                        newSet.delete(subcategory.id)
+                                                      } else {
+                                                        newSet.clear()
+                                                        newSet.add(subcategory.id)
+                                                      }
+                                                      setOpenSmallTooltips(newSet)
+                                                    }
+                                                  }}
+                                                  onClick={(e) => {
+                                                    if (isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                    }
+                                                  }}
+                                                  onKeyDown={(e) => {
+                                                    if ((e.key === 'Enter' || e.key === ' ') && isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                      const newSet = new Set(openSmallTooltips)
+                                                      if (newSet.has(subcategory.id)) {
+                                                        newSet.delete(subcategory.id)
+                                                      } else {
+                                                        newSet.clear()
+                                                        newSet.add(subcategory.id)
+                                                      }
+                                                      setOpenSmallTooltips(newSet)
+                                                    }
+                                                  }}
+                                                >
+                                                  <span className="inline sm:hidden">{priceHeaderFull}</span>
+                                                  <PopoverAnchor asChild>
+                                                    <span className="-mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                                      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                                    </span>
+                                                  </PopoverAnchor>
+                                                </div>
+                                              </PopoverTrigger>
+                                              <PopoverContent
+                                                side="top"
+                                                sideOffset={4}
+                                                className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center"
+                                                style={{
+                                                  backgroundImage: `var(--bg-parchment)`,
+                                                  width: 'max-content',
+                                                  minWidth: 0,
+                                                  whiteSpace: 'nowrap',
+                                                  right: '4px',
+                                                  left: 'auto',
+                                                }}
+                                              >
+                                                <div className="absolute inset-0 bg-black/50 z-0" />
+                                                <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                                  {t.priceNettoTooltip}
+                                                </p>
+                                                <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+                                              </PopoverContent>
+                                            </Popover>
+                                          ) : (
+                                            <Tooltip
+                                              onOpenChange={open => {
+                                                if (isSpecialTooltipService) {
+                                                  setCategoryTooltipOpen(open)
+                                                }
+                                              }}
+                                            >
+                                              <TooltipTrigger asChild>
+                                                <div
+                                                  className="zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap flex items-center gap-[5px] pl-1 md:pl-0 justify-center md:cursor-default"
+                                                  role="button"
+                                                  tabIndex={0}
+                                                  aria-label={t.priceInfoAriaLabel}
+                                                >
+                                                  <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                                  <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                                  <span className="ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1">
+                                                    <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                                  </span>
+                                                </div>
+                                              </TooltipTrigger>
+                                              <TooltipContent
+                                                {...(isSpecialTooltipService
+                                                  ? {
+                                                    side: 'left' as const,
+                                                    align: 'center' as const,
+                                                    sideOffset: -80,
+                                                    collisionPadding: 16,
+                                                    className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
+                                                  }
+                                                  : {
+                                                    side: 'top' as const,
+                                                    sideOffset: 4,
+                                                    className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                                    style: {
+                                                      backgroundImage: `var(--bg-parchment)`,
+                                                      backgroundSize: 'cover',
+                                                      backgroundPosition: 'center',
+                                                    },
+                                                  })}
+                                              >
+                                                {isSpecialTooltipService ? (
+                                                  <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
+                                                ) : (
+                                                  <>
+                                                    <div className="absolute inset-0 bg-black/50 z-0" />
+                                                    <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                                      {t.priceNettoTooltip}
+                                                    </p>
+                                                  </>
+                                                )}
+                                              </TooltipContent>
+                                            </Tooltip>
+                                          )}
+                                        </TooltipProvider>
+                                      </div>
+                                    </div>
+                                    <div className="items-center justify-center hidden md:flex">
+                                      <div className="zakres-time-header-text w-full min-w-0 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center block leading-[1.05]">
+                                        <div className="leading-[1.05]">{timeHeader}</div>
+                                        <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                                      </div>
                                     </div>
                                   </div>
                                 )}
                               </div>
                             )}
+                            {usesParchmentList && index !== (section.subcategories?.length ?? 0) - 1 && (
+                              <span data-parchment-list-divider="true" aria-hidden="true" />
+                            )}
+                            {usesParchmentList && (
+                              <span data-parchment-list-header-shadow="true" aria-hidden="true" />
+                            )}
                           </AccordionTrigger>
-                          <AccordionContent className={cn(
-                            section.id === 'faq' ? 'pt-0.5' : 'pt-1.5',
-                            (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5"
-                          )}>
-                            {subcategory.answer ? (
+                          <AccordionContent
+                            // Jak wyżej: pozycje cennika i odpowiedzi FAQ zawsze w DOM (SEO), zamknięte ukryte CSS-em.
+                            forceMount
+                            data-open-header-split-content={usesParchmentList ? 'true' : undefined}
+                            data-section-id={isRepairAccordionLayout && isRepairSection ? 'naprawy-nested' : undefined}
+                            data-has-table={isRepairAccordionLayout && isRepairSection ? 'true' : undefined}
+                            data-nested-parchment={usesParchmentList ? 'true' : undefined}
+                            beforeContent={usesParchmentList ? (
+                              <>
+                                {index !== (section.subcategories?.length ?? 0) - 1 && (
+                                  <>
+                                    <span data-parchment-list-open-segment="upper" aria-hidden="true" />
+                                    <span data-parchment-list-open-segment="lower" aria-hidden="true" />
+                                  </>
+                                )}
+                                <img
+                                  src="/images/contact-form-parchment-mobile-naprawy.webp"
+                                  loading="lazy"
+                                  alt=""
+                                  aria-hidden="true"
+                                  className="md:hidden absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                                  style={{ maxWidth: 'none', width: '100%', left: '0', right: 'auto', height: 'var(--naprawy-img-h-mobile)' }}
+                                />
+                                <img
+                                  src="/images/contact-form-parchment.webp"
+                                  loading="lazy"
+                                  alt=""
+                                  aria-hidden="true"
+                                  className={cn(
+                                    "hidden md:block h-full absolute bottom-0 -top-[68px] object-fill pointer-events-none select-none",
+                                    isSubcategoryOpen(section.id, subcategory.id) ? 'contact-form-parchment-shadow parchment-shadow-content' : 'contact-form-parchment-shadow',
+                                  )}
+                                  style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
+                                />
+                              </>
+                            ) : undefined}
+                            afterContent={usesParchmentList ? (
                               <div
-                                className={`font-cormorant text-base whitespace-pre-line text-[#fff8e7] ${section.id === 'faq' ? 'pt-0.5 pl-4 leading-snug' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                data-parchment-list-tail-spacer="true"
+                                aria-hidden="true"
+                                ref={el => { parchmentListTailSpacerRefs.current[subcategory.id] = el }}
+                                style={{ height: 0 }}
+                              />
+                            ) : undefined}
+                            className={cn(
+                            section.id === 'faq' ? 'pt-0.5' : usesParchmentList ? 'pt-[21px]' : 'pt-1.5',
+                            (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "md:pt-1.5 pt-0.5",
+                            usesParchmentList && "relative z-10",
+                            isRepairAccordionLayout && (isRepairSection || (service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2'))) && "max-md:!w-full max-md:max-w-full max-md:min-w-0"
+                          )}>
+                            {(() => {
+                              const isWdA4A3 = service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                              const isDzA4A3 = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
+                              let effectiveTiers = subcategory.priceTiers
+                              if ((!effectiveTiers || effectiveTiers.length === 0) && isDzA4A3 && subcategory.price) {
+                                const priceParts = subcategory.price.split(' / ')
+                                const priceRows = priceParts.length > 1
+                                  ? [
+                                      { label: '__dz_price_mono', value: `${priceParts[0]} zł/${t.wynajemUnits.str}` },
+                                      { label: '__dz_price_kolor', value: `${priceParts[1]} zł/${t.wynajemUnits.str}` },
+                                    ]
+                                  : [{ label: '__dz_price', value: `${priceParts[0]} zł/${t.wynajemUnits.str}` }]
+                                const techRows = DZ_TECH_SPEC_ROWS[subcategory.id] ?? []
+                                effectiveTiers = [{ label: '', rows: [...priceRows, ...techRows] }]
+                              }
+                              if (!effectiveTiers || effectiveTiers.length === 0) return null
+                              const translateDzRowLabel = (label: string): React.ReactNode => {
+                                switch (label) {
+                                  case '__dz_price_mono': return `${t.printPriceHeader} (${t.wynajemUnits.mono})`
+                                  case '__dz_price_kolor': return `${t.printPriceHeader} (${t.wynajemUnits.kolor})`
+                                  case '__dz_price': return t.printPriceHeader
+                                  case '__dz_scan': return t.wynajemTableLabels.scanning
+                                  case '__dz_duplex': return t.wynajemTableLabels.duplex
+                                  case '__dz_speed': return t.wynajemTableLabels.printSpeedPrefix
+                                  default: return label
+                                }
+                              }
+                              const translateDzRowValue = (value: string): string => value === 'tak' ? t.dzTerms.yes : value === 'nie' ? t.dzTerms.no : value === 'gratis' ? t.gratisLower : value
+                              // Разбивает "Тариф (примечание)" / "Тариф [примечание]" на [основной текст, примечание] —
+                              // не завязано на язык/конкретный текст, только на структуру "текст + висячая (...)/[...]"
+                              // в конце строки. Используется для строки "Czynsz wynajmu" (row 0) во всех 3 языках,
+                              // т.к. PL хранит примечание в (...), а RU/UK — в [...].
+                              const splitTrailingBracket = (label: string): [string, string] | null => {
+                                const m = label.match(/^(.*)\s((?:\([^)]*\))|(?:\[[^\]]*\]))$/)
+                                return m ? [m[1], m[2]] : null
+                              }
+                              // Значение вида "X str. mono + Y str. kolor" / "X zł mono / Y zł kolor" — переносим на 2 строки:
+                              // "+ …" остаётся во второй строке, разделитель " / " убирается (работает для любого языка).
+                              const splitMonoKolorValue = (value: string): [string, string] | null => {
+                                const m = value.match(/^(.+?)\s(\+|\/)\s(.+)$/)
+                                if (!m) return null
+                                return [m[1], m[2] === '+' ? `+ ${m[3]}` : m[3]]
+                              }
+                              // Подпись строки czynszu: "Czynsz wynajmu (zł/mies.)" → ["Czynsz wynajmu", "zł/mies."]
+                              const splitRentLabel = (label: string): [string, string] | null => {
+                                const split = splitTrailingBracket(label)
+                                return split ? [split[0], split[1].slice(1, -1)] : null
+                              }
+                              // Czynsz — ok. 14% większy i wyraźniejszy od pozostałych parametrów (ten sam krój pisma)
+                              const rentValueStyle: React.CSSProperties = { fontSize: '16px', fontWeight: 600 }
+                              return (
+                              <div
+                                ref={el => {
+                                  parchmentListContentRefs.current[subcategory.id] = el
+                                }}
+                                className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+                              >
+                                {/* Mobile: stos kart, jedna na plan taryfowy */}
+                                <div className="flex flex-col gap-3 p-2 md:hidden">
+                                  {effectiveTiers!.map((tier, tierIdx) => (
+                                    <div key={tierIdx} className="rounded-lg border border-[#72502B]/30 overflow-hidden">
+                                      {tier.label ? (
+                                        <div className="zakres-title-text text-center py-1.5 px-2 border-b border-[#72502B]/30 bg-white/5">
+                                          {tier.label}
+                                        </div>
+                                      ) : null}
+                                      <Table className="table-fixed border-collapse w-full">
+                                        <colgroup>
+                                          <col className="w-[58%]" />
+                                          <col className="w-[42%]" />
+                                        </colgroup>
+                                        <TableBody>
+                                          {(() => {
+                                            const filteredRows = tier.rows.filter((row, idx) => !(
+                                              (isWdA4A3 && idx >= 3)
+                                              || (isDzA4A3 && ['__dz_duplex', '__dz_speed'].includes(row.label))
+                                            ))
+                                            return filteredRows.flatMap((row, rowIdx) => {
+                                            // Вторая разделительная линия между ценовыми строками ("__dz_price*")
+                                            // и первой технической строкой — общий шаблон для всех блоков DZ.
+                                            const isLastPriceRow = row.label.startsWith('__dz_price') &&
+                                              !filteredRows[rowIdx + 1]?.label.startsWith('__dz_price')
+                                            const rowEl = (
+                                            <TableRow key={rowIdx} className="border-[#72502B]/30 border-b last:border-b-0">
+                                              <TableCell className="parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left">
+                                                {isWdA4A3 && rowIdx === 0 && splitRentLabel(row.label)
+                                                  ? (
+                                                      <>
+                                                        <div className="parentheses-caption-text flex items-center gap-[5px]"><span>{splitRentLabel(row.label)![0]}</span>{renderNettoInfo()}</div>
+                                                        <div className="parentheses-caption-text">{splitRentLabel(row.label)![1]}</div>
+                                                      </>
+                                                    )
+                                                  : isWdA4A3 && rowIdx === 1
+                                                  ? (
+                                                      <>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.pagesIncluded[0]}</div>
+                                                        <div className="parentheses-caption-text">({t.wynajemTableLabels.pagesIncluded[1]})</div>
+                                                      </>
+                                                    )
+                                                  : isWdA4A3 && rowIdx === 2
+                                                  ? (
+                                                      <>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[0]}</div>
+                                                        <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[1]}</div>
+                                                      </>
+                                                    )
+                                                  : isDzA4A3
+                                                  ? translateDzRowLabel(row.label)
+                                                  : row.label}
+                                              </TableCell>
+                                              <TableCell
+                                                className="price-value-text py-1 pl-2 pr-2 align-middle text-right !whitespace-normal"
+                                                style={isWdA4A3 && rowIdx === 0 ? rentValueStyle : undefined}
+                                              >
+                                                {(() => {
+                                                  const monoKolorMatch = isWdA4A3 && (rowIdx === 1 || rowIdx === 2)
+                                                    ? splitMonoKolorValue(row.value)
+                                                    : null
+                                                  if (monoKolorMatch) {
+                                                    return (
+                                                      <>
+                                                        <div>{monoKolorMatch[0]}</div>
+                                                        <div>{monoKolorMatch[1]}</div>
+                                                      </>
+                                                    )
+                                                  }
+                                                  if (isDzA4A3) return translateDzRowValue(row.value)
+                                                  return row.value
+                                                })()}
+                                              </TableCell>
+                                            </TableRow>
+                                            )
+                                            if (!isLastPriceRow) return [rowEl]
+                                            return [
+                                              rowEl,
+                                              <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                                <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
+                                              </TableRow>,
+                                            ]
+                                            })
+                                          })()}
+                                        </TableBody>
+                                      </Table>
+                                    </div>
+                                  ))}
+                                </div>
+                                {/* Desktop: jedna tabela, kolumna na plan taryfowy */}
+                                <div className={cn(
+                                  "hidden md:block",
+                                  (isWdA4A3 || isDzA4A3) && "mt-[34px]"
+                                )}>
+                                  <Table className="table-fixed border-collapse">
+                                    <colgroup>
+                                      <col style={{ width: isDzA4A3 ? '83.5%' : '34%' }} />
+                                      {effectiveTiers!.map((_, tierIdx) => (
+                                        <col key={tierIdx} style={{ width: isDzA4A3 ? `${16.5 / effectiveTiers!.length}%` : `${66 / effectiveTiers!.length}%` }} />
+                                      ))}
+                                    </colgroup>
+                                    {!(isWdA4A3 || isDzA4A3) && (
+                                      <TableHeader>
+                                        <TableRow className="border-[#72502B]/30 border-b border-[#72502B]/30">
+                                          <TableHead className="py-1 pl-2 pr-2" />
+                                          {effectiveTiers!.map((tier, tierIdx) => (
+                                            <TableHead key={tierIdx} className="zakres-title-text text-center py-1.5 px-2">
+                                              {tier.label}
+                                            </TableHead>
+                                          ))}
+                                        </TableRow>
+                                      </TableHeader>
+                                    )}
+                                    <TableBody>
+                                      {effectiveTiers![0].rows.flatMap((row, rowIdx) => {
+                                        const isA4Wynajem = isWdA4A3
+                                        const isDuplexOrSpeed = (isA4Wynajem && rowIdx >= 3)
+                                          || (isDzA4A3 && (row.label === '__dz_duplex' || row.label === '__dz_speed' || row.label === '__dz_scan'))
+                                        // Вторая разделительная линия между ценовыми строками ("__dz_price*")
+                                        // и первой технической строкой — общий шаблон для всех блоков DZ.
+                                        const isLastPriceRow = row.label.startsWith('__dz_price') &&
+                                          !effectiveTiers![0].rows[rowIdx + 1]?.label.startsWith('__dz_price')
+                                        const secondLineStyle = undefined
+                                        let labelContent: React.ReactNode = row.label
+                                        if (isDzA4A3) {
+                                          labelContent = translateDzRowLabel(row.label)
+                                        } else if (isA4Wynajem) {
+                                          if (rowIdx === 0) {
+                                            const split = splitRentLabel(row.label)
+                                            if (split) {
+                                              labelContent = (
+                                                <>
+                                                  <div className="flex items-center gap-[5px]"><span>{split[0]}</span>{renderNettoInfo()}</div>
+                                                  <div className="parentheses-caption-text">{split[1]}</div>
+                                                </>
+                                              )
+                                            }
+                                          } else if (rowIdx === 1) {
+                                            labelContent = (
+                                              <>
+                                                <div>{t.wynajemTableLabels.pagesIncluded[0]}</div>
+                                                <div className="parentheses-caption-text">({t.wynajemTableLabels.pagesIncluded[1]})</div>
+                                              </>
+                                            )
+                                          } else if (rowIdx === 2) {
+                                            labelContent = (
+                                              <>
+                                                <div>{t.wynajemTableLabels.printPriceOverLimit[0]}</div>
+                                                <div className="parentheses-caption-text">{t.wynajemTableLabels.printPriceOverLimit[1]}</div>
+                                              </>
+                                            )
+                                          } else if (rowIdx === 4) {
+                                            // Единица (стр./мин.) выводится у каждого значения, в названии строки её нет
+                                            labelContent = splitTrailingBracket(row.label)?.[0] ?? row.label
+                                          }
+                                        }
+                                        const rowEl = (
+                                          <TableRow
+                                            key={rowIdx}
+                                            className={`border-[#72502B]/30 border-b border-[#72502B]/30 ${rowIdx === 0 ? 'border-t border-[#72502B]/30' : ''}`}
+                                          >
+                                            <TableCell
+                                              className={
+                                                isDuplexOrSpeed
+                                                  ? "parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left"
+                                                  : (isA4Wynajem || isDzA4A3) ? "service-description-text py-1 pl-2 pr-2 !whitespace-normal text-left" : "parentheses-caption-text py-1 pl-2 pr-2 !whitespace-normal text-left"
+                                              }
+                                              style={secondLineStyle}
+                                            >
+                                              {labelContent}
+                                            </TableCell>
+                                            {effectiveTiers!.map((tier, tierIdx) => (
+                                              <TableCell
+                                                key={tierIdx}
+                                                className="price-value-text py-1 pl-2 pr-2 align-middle text-center"
+                                                style={{
+                                                  ...(isDuplexOrSpeed ? { fontSize: '12px' } : {}),
+                                                  ...(isA4Wynajem && rowIdx === 0 ? rentValueStyle : {}),
+                                                  ...(secondLineStyle || {}),
+                                                }}
+                                              >
+                                                {(() => {
+                                                  const value = tier.rows[rowIdx]?.value
+                                                  if (isA4Wynajem && (rowIdx === 1 || rowIdx === 2) && value) {
+                                                    const monoKolorMatch = splitMonoKolorValue(value)
+                                                    if (monoKolorMatch) {
+                                                      return (
+                                                        <>
+                                                          <div>{monoKolorMatch[0]}</div>
+                                                          <div>{monoKolorMatch[1]}</div>
+                                                        </>
+                                                      )
+                                                    }
+                                                  }
+                                                  if (isA4Wynajem && rowIdx === 4 && value) return `${value} ${t.wynajemUnits.strPerMin}`
+                                                  if (isDzA4A3 && row.label === '__dz_speed' && value) return `${value} ${t.wynajemUnits.strPerMin}`
+                                                  if (isDzA4A3) return translateDzRowValue(value ?? '')
+                                                  return value
+                                                })()}
+                                              </TableCell>
+                                            ))}
+                                          </TableRow>
+                                        )
+
+                                        if (!isLastPriceRow) return [rowEl]
+
+                                        return [
+                                          rowEl,
+                                          <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                            <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
+                                          </TableRow>,
+                                        ]
+                                      })}
+                                    </TableBody>
+                                  </Table>
+                                </div>
+                              </div>
+                              )
+                            })() ?? (subcategory.answer ? (
+                              <div
+                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
-                                {subcategory.answer}
+                                {renderBoldMarkup(subcategory.answer)}
                               </div>
                             ) : subcategory.items.length === 0 ? (
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
                                 (() => {
                                   const subcategoryKey = `${section.id}-${subcategory.id}`
-                                  const headerRefs = service.slug === 'wynajem-drukarek'
+                                  const headerRefs = (service.slug === 'wynajem-drukarek'
                                     ? wynajemHeaderRefs.current[subcategoryKey]
-                                    : drukarkaZastepczaHeaderRefs.current[subcategoryKey]
-                                  if (headerRefs) {
-                                    return <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} serviceSlug={service.slug} locale={locale} />
-                                  }
-                                  return null
+                                    : drukarkaZastepczaHeaderRefs.current[subcategoryKey]) ?? EMPTY_WYNAJEM_HEADER_REFS
+                                  return (
+                                    <div ref={el => { parchmentListContentRefs.current[subcategory.id] = el }}>
+                                      <WynajemTable subcategoryId={subcategory.id} headerRefs={headerRefs} serviceSlug={service.slug} locale={locale} price={service.slug === 'drukarka-zastepcza' ? subcategory.price : undefined} />
+                                    </div>
+                                  )
                                 })()
                               ) : (
-                                <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden min-h-[100px] p-4">
+                                <div
+                                  ref={isRepairSection ? (el => { parchmentListContentRefs.current[subcategory.id] = el }) : undefined}
+                                  className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden min-h-[100px] p-4"
+                                >
                                   {(service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
                                     <div className="text-center text-[rgba(255,255,245,0.85)] font-cormorant text-base">
                                       {detailsInPreparation}
@@ -1739,18 +3321,73 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                 </div>
                               )
                             ) : (
-                              <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
-                                {/* Мобильная версия - flex layout */}
+                              <div
+                                ref={(el) => { parchmentListContentRefs.current[subcategory.id] = el }}
+                                className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+                              >
+                                {/* Мобильная версия - flex layout / (serwis-laptopow: новая Table-based mobile-разметка) */}
                                 <div className="block md:hidden">
-                                  {subcategory.items.map((item, idx) =>
-                                    renderMobileServiceRow(
-                                      item,
-                                      idx,
-                                      idx === 0,
-                                      idx === subcategory.items.length - 1,
-                                      shouldHighlightPrices,
-                                      parseServiceText,
-                                    ),
+                                  {isRepairAccordionLayout && isRepairSection ? (
+                                    <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
+                                      <colgroup>
+                                        <col className="w-[75%]" />
+                                        <col className="w-[25%]" />
+                                      </colgroup>
+                                      <TableBody>
+                                        {subcategory.items.map((item, idx) => {
+                                          const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
+                                          return (
+                                          <TableRow
+                                            key={idx}
+                                            className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
+                                          >
+                                            <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden text-left">
+                                              {(() => {
+                                                const parsed = parseServiceText(item.service)
+                                                return (
+                                                  <div className="service-description-text">
+                                                    <div className="text-[16px] text-white service-description-text leading-[1.3]">
+                                                      {renderServiceMain(parsed.main)}
+                                                    </div>
+                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                                  </div>
+                                                )
+                                              })()}
+                                            </TableCell>
+                                            <TableCell
+                                              className={cn(
+                                                'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
+                                                (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
+                                                shouldHighlightPrices
+                                                  ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
+                                                  : ''
+                                              )}
+                                            >
+                                              {renderPriceLines(displayPrice, item.link)}
+                                            </TableCell>
+                                          </TableRow>
+                                          )
+                                        })}
+                                      </TableBody>
+                                    </Table>
+                                  ) : (
+                                    subcategory.items.map((item, idx) =>
+                                      renderMobileServiceRow(
+                                        {
+                                          ...item,
+                                          price: lookupPrice(`${section.id}.${subcategory.id}.${idx}`),
+                                          duration: lookupDuration(`${section.id}.${subcategory.id}.${idx}`),
+                                        },
+                                        idx,
+                                        idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja'),
+                                        idx === subcategory.items.length - 1,
+                                        shouldHighlightPrices,
+                                        parseServiceText,
+                                        false,
+                                        false,
+                                        isRepairAccordionLayout && isRepairSection,
+                                      ),
+                                    )
                                   )}
                                 </div>
                                 {/* Десктопная версия - HTML таблица */}
@@ -1769,10 +3406,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                       </colgroup>
                                     )}
                                     <TableBody>
-                                      {subcategory.items.map((item, idx) => (
+                                      {subcategory.items.map((item, idx) => {
+                                        const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
+                                        const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
+                                        return (
                                         <TableRow
                                           key={idx}
-                                          className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
+                                          className={`border-white/20 border-b border-white/30 ${idx === 0 && !(isRepairAccordionLayout && section.id === 'konserwacja') ? 'border-t border-white/30' : ''}`}
                                         >
                                           <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden">
                                             {(() => {
@@ -1780,96 +3420,162 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                               return (
                                                 <div className="service-description-text">
                                                   <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                                    {parsed.main}
+                                                    {renderServiceMain(parsed.main)}
                                                   </div>
-                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
                                                 </div>
                                               )
                                             })()}
                                           </TableCell>
                                           <TableCell
                                             className={cn(
-                                              'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4',
+                                              'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
                                               (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
                                               shouldHighlightPrices
                                                 ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
                                                 : ''
                                             )}
                                           >
-                                            {renderPriceLines(item.price, item.link)}
+                                            {renderPriceLines(displayPrice, item.link)}
                                           </TableCell>
                                           {!((service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2')) && (
                                             <TableCell className={cn(
-                                              'text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4',
+                                              'text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:px-2',
                                               (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]'
                                             )}>
-                                              {renderDurationValue(item.duration)}
+                                              {renderDurationValue(displayDuration)}
                                             </TableCell>
                                           )}
                                         </TableRow>
-                                      ))}
+                                        )
+                                      })}
                                     </TableBody>
                                   </Table>
                                 </div>
                               </div>
-                            )}
+                            ))}
                           </AccordionContent>
                         </AccordionItem>
                       ))
 
                       if (isRepairSection) {
+                        const bottomTailY = parchmentListMetrics
+                          ? parchmentListMetrics.headerHeight + parchmentListMetrics.rowHeights.reduce((a, b) => a + b, 0)
+                          : 0
+                        const isLastSubcategoryOpen = !!openSubcategory
+                          && section.subcategories![section.subcategories!.length - 1]?.id === openSubcategory
                         return (
-                          <Accordion
-                            type="single"
-                            collapsible
-                            value={getSubcategoryValue(section.id)}
-                            onValueChange={value => handleSubcategoryChange(section.id, value)}
-                            className="w-full"
-                            data-naprawy-accordion="true"
-                          >
-                            {subcategoryItems}
-                          </Accordion>
+                          <>
+                            <Accordion
+                              type="single"
+                              collapsible
+                              value={getSubcategoryValue(section.id)}
+                              onValueChange={value => handleSubcategoryChange(section.id, value)}
+                              className="w-full max-w-full min-w-0"
+                              data-parchment-list-accordion="true"
+                            >
+                              {subcategoryItems}
+                            </Accordion>
+                            <div
+                              data-parchment-list-bottom="true"
+                              style={{
+                                '--naprawy-tail-h': isLastSubcategoryOpen ? '0px' : parchmentListMetrics ? `${parchmentListMetrics.bottomTailHeight}px` : '0px',
+                                '--naprawy-seg-y': `-${bottomTailY}px`,
+                              } as React.CSSProperties}
+                            />
+                          </>
                         )
                       }
 
                       if (isFaqSection) {
                         return (
-                          <Accordion
-                            type="single"
-                            collapsible
-                            value={openFaq ?? undefined}
-                            onValueChange={value => setOpenFaq(value ?? null)}
-                            className="w-full"
-                          >
-                            {subcategoryItems}
-                          </Accordion>
+                          <>
+                            <Accordion
+                              ref={faqContentResizeRef}
+                              type="single"
+                              collapsible
+                              value={openFaq ?? undefined}
+                              onValueChange={value => setOpenFaq(value ?? null)}
+                              className="w-full"
+                            >
+                              {subcategoryItems}
+                            </Accordion>
+                            <div
+                              data-faq-content-bottom-marker="true"
+                              aria-hidden="true"
+                              ref={el => { faqContentBottomRef.current = el }}
+                            />
+                          </>
                         )
                       }
 
                       const isWynajemSection = service.slug === 'wynajem-drukarek' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
                       const isDrukarkaZastepczaSection = service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2')
 
+                      const bottomTailHeight = parchmentListMetrics ? 24 : 0
+
+                      const bottomTailY = parchmentListMetrics
+                        ? parchmentListMetrics.totalHeight - bottomTailHeight
+                        : 0
+
+                      const openRentalSubcategory = isWynajemSection
+                        ? openWynajemSubcategory
+                        : isDrukarkaZastepczaSection
+                          ? openDrukarkaZastepczaSubcategory
+                          : null
+
+                      const lastSubcategoryId =
+                        section.subcategories![section.subcategories!.length - 1]?.id
+
+                      const isLastSubcategoryOpen =
+                        !!lastSubcategoryId &&
+                        openRentalSubcategory === lastSubcategoryId
+
                       return (
-                        <Accordion
-                          type="multiple"
-                          className="w-full"
-                          value={
-                            isWynajemSection ? openWynajemSubcategories :
-                              isDrukarkaZastepczaSection ? openDrukarkaZastepczaSubcategories :
-                                undefined
-                          }
-                          onValueChange={
-                            isWynajemSection ? handleWynajemSubcategoryChange :
-                              isDrukarkaZastepczaSection ? handleDrukarkaZastepczaSubcategoryChange :
-                                undefined
-                          }
-                        >
-                          {subcategoryItems}
-                        </Accordion>
+                        <>
+                          <Accordion
+                            type="single"
+                            collapsible
+                            className="w-full max-w-full min-w-0"
+                            data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
+                            value={openRentalSubcategory ?? undefined}
+                            onValueChange={
+                              isWynajemSection
+                                ? value => handleWynajemSubcategoryChange(value)
+                                : isDrukarkaZastepczaSection
+                                  ? value => handleDrukarkaZastepczaSubcategoryChange(value)
+                                  : undefined
+                            }
+                          >
+                            {subcategoryItems}
+                          </Accordion>
+
+                          {usesParchmentList && (
+                            <div
+                              data-parchment-list-bottom="true"
+                              style={{
+                                '--naprawy-tail-h': isLastSubcategoryOpen
+                                  ? '0px'
+                                  : `${bottomTailHeight}px`,
+                                '--naprawy-seg-y': `-${bottomTailY}px`,
+                              } as React.CSSProperties}
+                            />
+                          )}
+                        </>
                       )
                     })()
                   ) : (
-                    <div className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden">
+                    <div
+                      className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
+                      style={section.id === 'dojazd' || (service.slug === 'serwis-laptopow' && section.id === 'konserwacja') ? { paddingTop: 0, marginTop: 0, overflow: 'visible' } : undefined}
+                      ref={
+                        section.id === 'diagnoza' ? (el => { diagnozaContentBottomRef.current = el }) :
+                        section.id === 'projektowanie-modeli' ? (el => { projektowanieModeliContentBottomRef.current = el }) :
+                        section.id === 'dojazd' ? (el => { dojazdContentBottomRef.current = el }) :
+                        section.id === 'konserwacja' ? (el => { konserwacjaContentBottomRef.current = el }) :
+                        undefined
+                      }
+                    >
                       {isDruk3DCustomSection(service.slug, section.id) && section.intro && (
                         <p className="text-[13px] md:text-[14px] text-[rgba(255,255,245,0.8)] leading-[1.4] px-2 pt-2 pb-2 whitespace-pre-line">
                           {section.intro}
@@ -1877,18 +3583,25 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                       )}
                       {/* Мобильная версия - flex layout */}
                       <div className="block md:hidden">
-                        {section.items?.map((item, idx) =>
-                          renderMobileServiceRow(
-                            item,
+                        {section.items?.map((item, idx) => {
+                          const row = renderMobileServiceRow(
+                            {
+                              ...item,
+                              price: lookupPrice(`${section.id}.items.${idx}`),
+                              duration: lookupDuration(`${section.id}.items.${idx}`),
+                            },
                             idx,
-                            idx === 0,
+                            idx === 0 && section.id !== 'dojazd' && !(isRepairAccordionLayout && section.id === 'konserwacja'),
                             idx === (section.items?.length ?? 0) - 1,
                             false,
                             parseServiceText,
                             isDruk3DCustomSection(service.slug, section.id),
                             isDruk3DCustomSection(service.slug, section.id),
-                          ),
-                        )}
+                            false,
+                            isRepairAccordionLayout && isOpenHeaderPlateSection,
+                          )
+                          return row
+                        })}
                       </div>
                       {/* Десктопная версия - HTML таблица */}
                       <div className="hidden md:block">
@@ -1909,10 +3622,13 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                             )}
                           </colgroup>
                           <TableBody>
-                            {section.items?.map((item, idx) => (
+                            {section.items?.map((item, idx) => {
+                              const displayPrice = lookupPrice(`${section.id}.items.${idx}`)
+                              const displayDuration = lookupDuration(`${section.id}.items.${idx}`)
+                              return (
                               <TableRow
                                 key={idx}
-                                className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
+                                className={`border-white/20 border-b border-white/30 ${idx === 0 && section.id !== 'dojazd' ? 'border-t border-white/30' : ''}`}
                               >
                                 <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden">
                                   {(() => {
@@ -1920,60 +3636,341 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
                                     return (
                                       <div className="service-description-text">
                                         <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                          {parsed.main}
+                                          {renderServiceMain(parsed.main)}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px')}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
                                       </div>
                                     )
                                   })()}
                                 </TableCell>
                                 <TableCell className="py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4">
                                   {isDruk3DCustomSection(service.slug, section.id) ? (
-                                    item.price.includes('zł/gram') ? (
-                                      renderMaterialPrice(item.price)
+                                    isCompoundUnitPrice(displayPrice) ? (
+                                      renderCompoundPriceTwoLines(displayPrice)
                                     ) : item.service.startsWith('Wysyłka') ? (
-                                      renderTwoLinePrice(item.price)
+                                      renderTwoLinePrice(displayPrice)
                                     ) : item.service.startsWith('Realizacja ekspresowa') ? (
-                                      renderExpressPrice(item.price)
-                                    ) : item.price.includes('\n') ? (
-                                      renderExpressPrice(item.price)
+                                      renderExpressPrice(displayPrice)
+                                    ) : displayPrice.includes('\n') ? (
+                                      renderExpressPrice(displayPrice)
                                     ) : (
-                                      <div className="font-inter text-[13px] md:text-[14px] text-white leading-[1.3] whitespace-nowrap">
-                                        {renderPlainPriceWithUnits(item.price)}
+                                      <div className="price-value-text font-inter text-[13px] md:text-[14px] text-[rgba(255,255,255,0.9)] leading-[1.3] whitespace-nowrap">
+                                        {renderPlainPriceWithUnits(displayPrice)}
                                       </div>
                                     )
                                   ) : (
-                                    renderPriceLines(item.price, item.link)
+                                    renderPriceLines(displayPrice, item.link)
                                   )}
                                 </TableCell>
                                 <TableCell className="text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4">
-                                  {renderDurationValue(item.duration)}
+                                  {renderDurationValue(displayDuration)}
                                 </TableCell>
                               </TableRow>
-                            ))}
+                              )
+                            })}
                           </TableBody>
                         </Table>
                       </div>
                       {isDruk3DCustomSection(service.slug, section.id) && section.priceFormula && (
                         <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
-                          <p className="font-table-main text-[16px] text-white leading-[1.3]">
+                          <p className="service-description-text font-table-main text-[16px] text-white leading-[1.3]">
                             {section.priceFormula}
                           </p>
                         </div>
                       )}
                       {isDruk3DCustomSection(service.slug, section.id) && section.example && (
                         <div className="px-2 pb-2">
-                          <p className="font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
+                          <p className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed">
                             {section.example}
                           </p>
+                        </div>
+                      )}
+                      {section.notes && section.notes.length > 0 && (
+                        <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                          <div className="font-table-main">
+                            {section.notes.map((note, noteIdx) => (
+                              <div key={noteIdx} className={cn('parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed', noteIdx > 0 && 'mt-1')}>
+                                {renderBoldMarkup(note)}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {(service.slug === 'serwis-laptopow' || service.slug === 'serwis-komputerow-stacjonarnych') && section.id === 'konserwacja' && (
+                        <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                          <div className="font-table-main">
+                            <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">{t.konserwacjaIncludedNote}</div>
+                            <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-1">{t.konserwacjaExtraPaidNote}</div>
+                          </div>
+                        </div>
+                      )}
+                      {service.slug === 'serwis-drukarek-atramentowych' && section.id === 'konserwacja' && (
+                        <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderTop: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : '40px', paddingRight: isMobile ? '24px' : '40px', paddingTop: isMobile ? '2px' : '2px', paddingBottom: isMobile ? '6px' : '8px' }}>
+                          <div className="font-table-main">
+                            <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">{t.konserwacjaIncludedNoteInkjet}</div>
+                            <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed mt-1">{t.konserwacjaExtraPaidNoteInkjet}</div>
+                          </div>
                         </div>
                       )}
                     </div>
                   )}
                 </AccordionContent>
-              </div>
-            </AccordionItem>
-          ))}
+            )
+            return (
+              <React.Fragment key={section.id}>
+              <AccordionItem
+                value={section.id}
+                data-parchment-list-main={usesParchmentList ? 'true' : undefined}
+                className={cn(
+                  "border-0 group mb-4 last:mb-0 scroll-mt-[120px]"
+                )}
+                ref={node => {
+                  sectionRefs.current[section.id] = node
+                  if (section.id === 'faq') faqItemRef.current = node
+                }}
+                style={usesParchmentList && parchmentListMetrics ? ({
+                  '--naprawy-seg-size': `${parchmentListMetrics.containerWidth}px ${parchmentListMetrics.totalHeight}px`,
+                } as React.CSSProperties) : undefined}
+              >
+                {useSplitHeaderLayout ? (
+                  <>
+                    <div
+                      className={headerWrapperClassName}
+                      data-section-id={section.id}
+                      data-top-level-service-header="true"
+                      data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined}
+                      data-has-table={hasOpenHeaderTable ? 'true' : undefined}
+                      data-closed-texture={keepsClosedPlateTexture ? 'true' : undefined}
+                      data-faq-role={section.id === 'faq' ? 'true' : undefined}
+                      data-parchment-list-header={usesParchmentList ? 'true' : undefined}
+                      ref={node => {
+                        if (usesSharedParchmentList(service.slug, section.id)) {
+                          parchmentListHeaderRefs.current[section.id] = node
+                        }
+                      }}
+                      style={usesParchmentList ? ({ '--naprawy-seg-y': '0px' } as React.CSSProperties) : undefined}
+                    >
+                      {triggerNode}
+                      {isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && (
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <span
+                            data-naprawy-open-title="true"
+                            className={cn(
+                            "zakres-title-text text-xl md:text-2xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                            isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
+                            "w-full text-center whitespace-nowrap"
+                          )}>{splitTitleSuffix(section.title).main}</span>
+                        </div>
+                      )}
+                    </div>
+                    <section data-open-header-split-content="true" data-section-id={section.id} data-open-header-plate={isOpenHeaderPlateSection ? 'true' : undefined} data-has-table={hasOpenHeaderTable ? 'true' : undefined} data-has-banner={hasOpenHeaderBanner ? 'true' : undefined} data-faq-role={section.id === 'faq' ? 'true' : undefined}>
+                      {section.id === 'diagnoza' ? (
+                        <>
+                          {/* Same parchment asset/technique as /kontakt Formularz
+                              zgłoszeniowy — img sits behind contentNode, offset -12px at
+                              the top so it tucks under the CLOSED header without shifting
+                              the table's own position. Height is --diagnoza-img-h
+                              (service-accordion.tsx): computed so the image's
+                              RAGGED-ANCHOR pixel (source row 1077/1121) lands exactly on
+                              the next AccordionItem's top — same mechanism as Naprawy
+                              above. */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            loading="lazy"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                          <div
+                            data-diagnoza-tail-spacer="true"
+                            aria-hidden="true"
+                            ref={el => { diagnozaTailSpacerRef.current = el }}
+                            style={{ height: 0 }}
+                          />
+                        </>
+                      ) : section.id === 'projektowanie-modeli' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza above, ported 1:1 for
+                              druk-3d-na-zamowienie's "Projektowanie i modelowanie 3D CAD".
+                              Height is --projektowanie-modeli-img-h (service-accordion.tsx). */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            loading="lazy"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                          <div
+                            data-projektowanie-modeli-tail-spacer="true"
+                            aria-hidden="true"
+                            ref={el => { projektowanieModeliTailSpacerRef.current = el }}
+                            style={{ height: 0 }}
+                          />
+                        </>
+                      ) : section.id === 'dojazd' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza above, ported 1:1. Height is
+                              --dojazd-img-h (service-accordion.tsx). */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            loading="lazy"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                          <div
+                            data-dojazd-tail-spacer="true"
+                            aria-hidden="true"
+                            ref={el => { dojazdTailSpacerRef.current = el }}
+                            style={{ height: 0 }}
+                          />
+                        </>
+                      ) : section.id === 'konserwacja' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza above, ported 1:1. Height is
+                              --konserwacja-img-h (service-accordion.tsx). */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            loading="lazy"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                          <div
+                            data-konserwacja-tail-spacer="true"
+                            aria-hidden="true"
+                            ref={el => { konserwacjaTailSpacerRef.current = el }}
+                            style={{ height: 0 }}
+                          />
+                        </>
+                      ) : section.id === 'faq' ? (
+                        <>
+                          {/* Same mechanism as Diagnoza/Czyszczenie above, ported 1:1 for
+                              FAQ. Height is --faq-img-h (service-accordion.tsx). Own refs
+                              (faqContentBottomRef/faqTailSpacerRef) — not the shared
+                              konserwacja ones, no price grid/columns here. */}
+                          <img
+                            src="/images/contact-form-parchment.webp"
+                            loading="lazy"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
+                          />
+                          <div className="relative z-10">{contentNode}</div>
+                        </>
+                      ) : (
+                        contentNode
+                      )}
+                    </section>
+                  </>
+                ) : (
+                  <div className={headerWrapperClassName}>
+                    {usesParchmentList ? (
+                      <div
+                        data-parchment-list-header="true"
+                        ref={node => {
+                          if (usesSharedParchmentList(service.slug, section.id)) {
+                            parchmentListHeaderRefs.current[section.id] = node
+                          }
+                        }}
+                        style={{ '--naprawy-seg-y': '0px' } as React.CSSProperties}
+                      >
+                        {triggerNode}
+                        {isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && (
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span
+                              data-naprawy-open-title="true"
+                              className={cn(
+                                "zakres-title-text text-xl md:text-2xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
+                                isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
+                                "w-full text-center whitespace-nowrap"
+                              )}
+                            >{splitTitleSuffix(section.title).main}</span>
+                          </div>
+                        )}
+                      </div>
+                    ) : triggerNode}
+                    {contentNode}
+                  </div>
+                )}
+              </AccordionItem>
+              {service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' && (
+                // Wspólny blok warunków wynajmu pod cennikiem (A4 + A3), przed FAQ —
+                // ta sama podkładka (obrazy + cień), co rozwinięta podkategoria z tabelą cen
+                <div className="relative mb-4 px-5 py-5 md:px-10 md:py-7">
+                  <img
+                    src="/images/contact-form-parchment-mobile-naprawy.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="md:hidden absolute inset-0 h-full object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                    style={{ maxWidth: 'none', width: '100%' }}
+                  />
+                  <img
+                    src="/images/contact-form-parchment.webp"
+                    loading="lazy"
+                    alt=""
+                    aria-hidden="true"
+                    className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
+                    style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
+                  />
+                  <div className="relative">
+                  <div className="grid gap-3 md:grid-cols-2 md:gap-8">
+                    {([
+                      [t.wynajemTerms.includedTitle, t.wynajemTerms.included],
+                      [t.wynajemTerms.clientTitle, t.wynajemTerms.client],
+                    ] as const).map(([title, list]) => (
+                      <div key={title}>
+                        <div className="service-description-text">{title}</div>
+                        <ul className="parentheses-caption-text list-disc pl-5" style={DZ_TERMS_TEXT_STYLE}>
+                          {list.map(entry => <li key={entry}>{entry}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-[#72502B]/30">
+                    {t.wynajemTerms.conditions.map(line => <div key={line} className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{line}</div>)}
+                  </div>
+                  </div>
+                </div>
+              )}
+              {service.slug === 'drukarka-zastepcza' && section.id === 'akordeon-2' && (
+                // Blok warunków drukarki zastępczej pod cennikiem (A4 + A3), przed FAQ —
+                // ta sama podkładka, co blok warunków na wynajem-drukarek
+                <div className="relative mb-4 px-5 py-5 md:px-10 md:py-7">
+                  <img
+                    src="/images/contact-form-parchment-mobile-naprawy.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="md:hidden absolute inset-0 h-full object-fill pointer-events-none select-none naprawy-mobile-parchment-shadow"
+                    style={{ maxWidth: 'none', width: '100%' }}
+                  />
+                  <img
+                    src="/images/contact-form-parchment.webp"
+                    loading="lazy"
+                    alt=""
+                    aria-hidden="true"
+                    className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
+                    style={{ maxWidth: 'none', width: 'calc(100% + 16px)', left: '-8px', right: 'auto' }}
+                  />
+                  <div className="relative">
+                    <div className="service-description-text">{t.dzTerms.title}</div>
+                    <ul className="parentheses-caption-text list-disc pl-5" style={DZ_TERMS_TEXT_STYLE}>
+                      {t.dzTerms.included.map(entry => <li key={entry}>{entry}</li>)}
+                    </ul>
+                    <div className="mt-2 pt-2 border-t border-[#72502B]/30">
+                      {t.dzTerms.conditions.map(line => <div key={line} className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{line}</div>)}
+                      <div className="parentheses-caption-text" style={DZ_TERMS_TEXT_STYLE}>{t.dzTerms.netNote}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              </React.Fragment>
+            )
+          })}
         </Accordion>
       </div>
 
@@ -2000,6 +3997,14 @@ const ServiceAccordion = ({ service, locale = 'pl' }: { service: ServiceData; lo
             </div>
           </div>
         </div>
+      )}
+      {isRepairAccordionLayout && (
+        <div
+          data-faq-tail-spacer="true"
+          aria-hidden="true"
+          ref={el => { faqTailSpacerRef.current = el }}
+          style={{ height: 0 }}
+        />
       )}
     </div>
   )

@@ -1,10 +1,5 @@
 export const serviceHeroLabelsRu: Record<string, string[]> = {
-  'serwis-laptopow': [
-    'Медленная работа',
-    'Не включается',
-    'Установка Windows',
-    'Замена матрицы',
-  ],
+  'serwis-laptopow': [],
 
   'serwis-komputerow-stacjonarnych': [
     'Медленная работа',
@@ -28,6 +23,26 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
   ],
 
   'serwis-drukarek-laserowych': [
+    'Зажёвывает бумагу',
+    'Бледная печать',
+    'Пачкает листы',
+    'Замена тонера',
+  ],
+
+  'serwis-drukarek-do-kart-plastikowych': [
+    'Застревают карты',
+    'Полосы на печати',
+    'Ошибка ленты',
+    'Не кодирует карты',
+  ],
+
+  'serwis-niszczarek': [
+    'Зажёвывает бумагу',
+    'Не затягивает бумагу',
+    'Громко работает',
+    'Смазка и обслуживание',
+  ],
+  'naprawa-zasilaczy-ups': [
     'Зажёвывает бумагу',
     'Бледная печать',
     'Пачкает листы',
@@ -70,7 +85,7 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
   ],
 
   'wynajem-drukarek': [
-    'Принтер для офиса',
+    'Принтер для компании',
     'Сервис в стоимости',
     'Без больших затрат',
     'Быстрая доставка',

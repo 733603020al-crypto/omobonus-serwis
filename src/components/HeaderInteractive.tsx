@@ -5,18 +5,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
 import { cn } from '@/lib/utils'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
 // chunk is still loading, so the hamburger icon never disappears mid-transition.
+// data-premenu: a tap here opens the static drawer copy (see premenu-script.ts).
 const MobileMenuLoadingButton = () => (
   <button
     type="button"
-    className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
+    data-premenu=""
+    className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white min-[920px]:hidden"
     aria-label="Open menu"
+    aria-haspopup="dialog"
+    aria-expanded="false"
   >
     <Menu className="h-6 w-6" />
   </button>
@@ -133,18 +137,21 @@ const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: s
     items: [
       { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
       { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: { pl: 'Outsourcing IT', uk: 'Аутсорсинг IT', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
+      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
+      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
+      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
+      { label: { pl: 'Drukarek do kart plastikowych', uk: 'Принтерів пластикових карток', ru: 'Принтеров пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
     ],
   },
   {
     items: [
-      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
-      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
-      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
-      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
       { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
+      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
+      { label: { pl: 'Niszczarek', uk: 'Шредерів', ru: 'Шредеров' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
+      { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
       { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
       { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
@@ -160,6 +167,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -192,6 +200,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
   const contactHref = `${nav.prefix}/kontakt`
+  const prefetchHome = () => {
+    if (pathname !== homeHref) router.prefetch(homeHref)
+  }
   const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`)
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
@@ -245,6 +256,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         return
       }
 
+      // Lift the home page's off-screen render skipping so the target's
+      // position is computed from real section heights (see globals.css).
+      document.documentElement.classList.add('cv-off')
       const el = document.getElementById(id)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -281,6 +295,12 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       {/* Logo */}
       <Link
         href={homeHref}
+        // Без prefetch при появлении на экране (иначе данные главной ~43 КБ
+        // качаются вместе с первым экраном каждой страницы); подгружаем их
+        // только по наведению/касанию — переход остаётся быстрым.
+        prefetch={false}
+        onMouseEnter={prefetchHome}
+        onTouchStart={prefetchHome}
         className="group z-10 flex h-full items-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(191,167,106,0.30)]"
         onClick={(e) => {
           if (pathname === homeHref) {
@@ -290,13 +310,16 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         }}
       >
         <div className="relative flex h-full w-[40px] items-center md:w-[48px]">
-          {/* Not the LCP element — loads eagerly but without priority/high
-              fetch priority, so it doesn't compete with Hero's LCP image. */}
+          {/* Not the LCP element — loads eagerly but at fetchPriority="low",
+              so its browser-auto preload doesn't compete with Hero's LCP
+              image (a plain `loading="eager"` image still gets a
+              default-high-priority preload otherwise). */}
           <Image
             src="/images/Logo_Omobonus.webp"
             alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
             fill
             loading="eager"
+            fetchPriority="low"
             quality={60}
             sizes="(max-width: 768px) 40px, 48px"
             className="object-contain p-[1px]"
@@ -306,11 +329,23 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       </Link>
 
       {/* Desktop nav */}
-      <nav className="z-10 ml-[35px] hidden items-center gap-[28px] md:flex">
+      <nav className="z-10 ml-[35px] hidden items-center gap-[28px] min-[920px]:flex">
         <div
           className="relative h-full flex items-center"
           onMouseEnter={openServices}
           onMouseLeave={scheduleCloseServices}
+          onFocus={openServices}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+              scheduleCloseServices()
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' && isServicesOpen) {
+              setIsServicesOpen(false)
+              e.currentTarget.querySelector('a')?.focus()
+            }
+          }}
         >
           <Link
             href={homeSectionHref}
@@ -318,7 +353,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               e.preventDefault()
               scrollToSection('uslugi')
             }}
-            className="flex items-center gap-1 font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
+            className="flex items-center gap-1 whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
             style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           >
             <span className={isServicesActive ? 'nav-active-underline' : ''}>{navServices}</span>
@@ -367,32 +402,43 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             </div>
           )}
         </div>
-        <Link href={aboutHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={aboutHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
         </Link>
-        <Link href={contactHref} prefetch={false} className="font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
+        <Link href={contactHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
           <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
         </Link>
 
         <LanguageSwitcher />
 
         <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]" onClick={handlePhoneClick}>
-          <span className="md:hidden">{navCall}</span>
-          <span className="hidden md:inline">793 759 262</span>
+          <span className="min-[920px]:hidden">{navCall}</span>
+          <span className="hidden min-[920px]:inline">793 759 262</span>
         </CallButton>
       </nav>
 
       {/* Mobile: language switcher stays permanently visible in the header bar
           (not tucked inside the hamburger menu) — same component/logic as desktop. */}
-      <div className="flex items-center gap-3 md:hidden">
+      <div className="flex items-center gap-3 min-[920px]:hidden">
         <LanguageSwitcher />
 
         {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
         {!mounted ? (
+          // Before hydration a tap here opens a static copy of the drawer
+          // (premenu-script.ts) built from this data, so the menu works at once.
           <button
             type="button"
-            className="z-10 inline-flex h-10 w-10 items-center justify-center rounded-md text-white"
+            data-premenu={JSON.stringify({
+              home: homeHref,
+              services: [homeSectionHref, navServices],
+              about: [aboutHref, navAbout],
+              contact: [contactHref, navContact],
+              form: navSendForm,
+            })}
+            className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white"
             aria-label="Open menu"
+            aria-haspopup="dialog"
+            aria-expanded="false"
           >
             <Menu className="h-6 w-6" />
           </button>

@@ -3,8 +3,20 @@
 import 'tsconfig-paths/register'
 
 import { services } from './src/lib/services-data'
+import { getDisplayPrice, getDisplayDuration } from './src/lib/services-pricing'
 import fs from 'fs'
 import path from 'path'
+
+// Централизованные цена/срок (services-pricing-data.ts) больше не дублируются
+// как литералы в item.price/item.duration — тянем актуальное значение отсюда,
+// чтобы экспорт не расходился с тем, что реально показано на сайте.
+function safeDisplay(fn: () => string): string {
+  try {
+    return fn()
+  } catch {
+    return ''
+  }
+}
 
 // Функция для экранирования CSV значений
 function escapeCSV(value: string | null | undefined): string {
@@ -170,15 +182,16 @@ function flattenServices(servicesData: typeof services): CSVRow[] {
       
       // Обработка обычных элементов секции (items)
       if (section.items && section.items.length > 0) {
-        section.items.forEach(item => {
+        section.items.forEach((item, idx) => {
+          const itemPath = `${section.id}.items.${idx}`
           const serviceText = item.service || ''
           const descriptionText = categoryDescription
           // Объединяем service и description для HTML_Opis
           // Service может содержать форматированный текст (списки, переносы строк)
-          const fullTextForHTML = serviceText 
+          const fullTextForHTML = serviceText
             ? (descriptionText ? `${serviceText}\n\n${descriptionText}` : serviceText)
             : descriptionText
-          
+
           rows.push({
             category: category,
             section: sectionTitle,
@@ -186,8 +199,8 @@ function flattenServices(servicesData: typeof services): CSVRow[] {
             service: serviceText,
             description: descriptionText,
             htmlDescription: extractHTML(fullTextForHTML),
-            price: item.price || '',
-            duration: item.duration || '',
+            price: item.price || safeDisplay(() => getDisplayPrice(service.slug, itemPath, 'pl')),
+            duration: safeDisplay(() => getDisplayDuration(service.slug, itemPath, 'pl')),
             notes: sectionStatus || globalNotes,
             link: item.link || ''
           })
@@ -202,14 +215,15 @@ function flattenServices(servicesData: typeof services): CSVRow[] {
           
           // Если есть элементы в подкатегории
           if (subcat.items && subcat.items.length > 0) {
-            subcat.items.forEach(item => {
+            subcat.items.forEach((item, idx) => {
+              const itemPath = `${section.id}.${subcat.id}.${idx}`
               const serviceText = item.service || ''
               const descriptionText = subcatDescription
               // Объединяем service и description для HTML_Opis
               const fullTextForHTML = serviceText
                 ? (descriptionText ? `${serviceText}\n\n${descriptionText}` : serviceText)
                 : descriptionText
-              
+
               rows.push({
                 category: category,
                 section: sectionTitle,
@@ -217,8 +231,8 @@ function flattenServices(servicesData: typeof services): CSVRow[] {
                 service: serviceText,
                 description: descriptionText,
                 htmlDescription: extractHTML(fullTextForHTML),
-                price: item.price || subcat.price || '',
-                duration: item.duration || '',
+                price: item.price || subcat.price || safeDisplay(() => getDisplayPrice(service.slug, itemPath, 'pl')),
+                duration: safeDisplay(() => getDisplayDuration(service.slug, itemPath, 'pl')),
                 notes: sectionStatus || globalNotes,
                 link: item.link || ''
               })

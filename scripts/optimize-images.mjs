@@ -24,34 +24,19 @@ const FILE_QUALITY = {
 
   // Service page main images (clearly visible, 512×512)
   '01_serwis-laptopow.webp': 72,
-  '02_serwis-komputerow-stacjonarnych.webp': 72,
   '03_outsourcing-it.webp': 72,
-  '04_serwis-drukarek-laserowych.webp': 72,
-  '05_serwis-drukarek-atramentowych.webp': 72,
-  '06_serwis-drukarek-termicznych.webp': 72,
-  '07_serwis-drukarek-iglowych.webp': 72,
-  '08_serwis-ploterow.webp': 72,
   '10_wynajem-drukarek.webp': 72,
   '11_drukarka-zastepcza.webp': 72,
   '12_wymiana-tuszy-regeneracja-tonerow.webp': 72,
   '13_odkup-komputerow-laptopow.webp': 72,
   'Serwis_Drukarek.webp': 72,
-  'Serwis_i_Naprawa_Drukarek_3D.webp': 72,
 
   // Service card/accordion background tab icons (128×128)
   '01_serwis-laptopow-icon.webp': 65,
   '02_serwis-komputerow-stacjonarnych-icon.webp': 65,
   '03_outsourcing-it-icon.webp': 65,
-  '04_serwis-drukarek-laserowych-icon.webp': 65,
-  '05_serwis-drukarek-atramentowych-icon.webp': 65,
-  '06_serwis-drukarek-termicznych-icon.webp': 65,
-  '07_serwis-drukarek-iglowych-icon.webp': 65,
-  '08_serwis-ploterow-icon.webp': 65,
   '10_wynajem-drukarek-icon.webp': 65,
   '11_drukarka-zastepcza-icon.webp': 65,
-  '12_wymiana-tuszy-regeneracja-tonerow-icon.webp': 65,
-  '13_odkup-komputerow-laptopow-icon.webp': 65,
-  'Serwis_Drukarek-icon.webp': 65,
   'Serwis_i_Naprawa_Drukarek_3D-icon.webp': 65,
 
   // Team portraits
@@ -60,26 +45,8 @@ const FILE_QUALITY = {
   'andrzey_avatar_400.webp': 75,
 
   // Pricing category images (256×256, ~20-28K each)
-  'Drukarka_domowa.webp': 68,
-  'Drukarka_biurowa_atramentowa.webp': 68,
-  'Drukarka_biznesowa_atramentowa.webp': 68,
-  'Drukarka_domowa_atramentowa.webp': 68,
-  'Mała_drukarka_etykiet.webp': 68,
-  'Srednia_drukarka_etykiet.webp': 68,
-  'Duża_drukarka_etykiet.webp': 68,
-  'Mała_drukarka_Igłowa.webp': 68,
-  'Średnia_drukarka_Igłowa.webp': 68,
-  'Duża_drukarka_Igłowa.webp': 68,
-  'A4_Drukarki_mono.webp': 68,
-  'A4_Drukarki_kolor.webp': 68,
-  'A4_MFU_mono.webp': 68,
-  'A4_MFU_kolor.webp': 68,
   'A3.webp': 68,
   'A4.webp': 68,
-  'Drukarki_A3_A4_mono.webp': 68,
-  'Drukarki_A3_A4_mono_kolor.webp': 68,
-  'MFU_A3_A4_mono.webp': 68,
-  'MFU_A3_A4_mono_kolor.webp': 68,
 
   // KDR / senior card
   'KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp': 65,
@@ -99,11 +66,12 @@ const FILE_QUALITY = {
 // Files to skip (flags, logos, umka paws — already tiny or critical for visual quality)
 const SKIP = new Set([
   'Logo_Omobonus.webp',         // 12K logo, critical visual quality
-  'Logo_Omobonus_favicon.webp', // 12K favicon
-  'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp', 'by.webp',
-  'sk.webp', 'lv.webp', 'lt.webp', 'gb.webp', 'ee.webp',
-  'umka_paw_brown.webp', 'umka_paw_cbb27c.webp', 'umka_paw_dark.webp',
-  'umka_paw_exact.webp', 'umka_paw_heart_gold_clean.webp',
+  '02_serwis-komputerow-stacjonarnych.webp', // animated hero — this script doesn't pass {animated:true} to sharp and would flatten it to a static first frame
+  '03_outsourcing-it.webp', // animated hero — same reason
+  'Serwis_i_Naprawa_Drukarek_3D.webp', // animated hero — same reason
+  'pl.webp', 'ua.webp', 'other.webp', 'de.webp', 'cz.webp',
+  'sk.webp', 'lt.webp', 'gb.webp',
+  'umka_paw_dark.webp',
   'Umka_site_400x400.webp',
 ])
 
