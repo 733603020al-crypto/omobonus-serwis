@@ -13,6 +13,11 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
   },
+  'serwis-drukarek-dtg': {
+    h1: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'DTG-принтеров', 'во Вроцлаве'],
+    h2: '(Epson, Brother, … — список марок УТОЧНИТЬ)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -91,6 +96,13 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
       'Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт.',
       'Ваш принтер для пластиковых карт — предварительно оценим проблему за 15 мин.',
       'Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие.',
+    ],
+  },
+  'serwis-drukarek-dtg': {
+    items: [
+      'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
+      'Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин.',
+      'Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде.',
     ],
   },
   'naprawa-drukarek': {
@@ -178,6 +190,7 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
 export const imageAltRu: Record<string, string> = {
   'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
+  'serwis-drukarek-dtg': 'DTG-принтер для печати на футболках',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -212,6 +225,10 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Сервис принтеров для пластиковых карт — Zebra, Evolis, Fargo',
     description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Прозрачный прайс — стоимость ремонта согласовываем до его выполнения.',
+  },
+  'serwis-drukarek-dtg': {
+    title: 'Сервис DTG-принтеров — печать на футболках',
+    description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — забитая головка, белые чернила, сервисная станция, обслуживание. Стоимость ремонта согласовываем до его выполнения.',
   },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
@@ -290,6 +307,7 @@ export const labelsRu: ServicePageLabels = {
     'serwis-drukarek-3d': 'Есть проблема с 3D-принтером?',
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
+    'serwis-drukarek-dtg': 'Есть проблема с DTG-принтером?',
     'wynajem-drukarek': 'Есть проблема с принтером?',
     'drukarka-zastepcza': 'Есть проблема с принтером?',
   },

@@ -4,6 +4,8 @@
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
   'serwis-drukarek-do-kart-plastikowych': '/images/karty-carousel-v1-01.webp',
+  // TYMCZASOWO zdjęcie drukarki atramentowej — do wymiany na własne zdjęcie drukarki DTG
+  'serwis-drukarek-dtg': '/images/atrament-carousel-v3-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -43,6 +45,8 @@ export const slugBrands: Record<string, string[]> = {
   // Własna lista niszczarek; marka bez logo w brand-ticker.tsx jest na razie pomijana
   'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach', 'lanberg'],
   'serwis-drukarek-do-kart-plastikowych': ['evolis', 'zebra', 'hid', 'magicard', 'entrust', 'matica', 'idp', 'hiti', 'dascom', 'swiftcolor', 'edisecure'],
+  // TYMCZASOWO — lista marek DTG do potwierdzenia (logo innych marek trzeba dodać do brand-ticker)
+  'serwis-drukarek-dtg': ['epson', 'brother'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
@@ -69,7 +73,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych']
+export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg']
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.

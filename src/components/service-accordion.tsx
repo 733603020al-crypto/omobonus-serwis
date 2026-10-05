@@ -865,6 +865,7 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
+  'serwis-drukarek-dtg',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',

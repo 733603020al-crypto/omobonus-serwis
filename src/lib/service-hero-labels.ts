@@ -36,6 +36,13 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Nie koduje kart',
     ],
 
+    'serwis-drukarek-dtg': [
+        'Zapchana głowica',
+        'Pasy na nadruku',
+        'Biały atrament',
+        'Konserwacja DTG',
+    ],
+
     // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
     'serwis-niszczarek': [
         'Zacina papier',

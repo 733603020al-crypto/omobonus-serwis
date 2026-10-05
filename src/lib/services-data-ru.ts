@@ -14,6 +14,7 @@ import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-ru-drukarka-zastepcza'
 import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
 import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
+import { dtgPricingSectionsRu, DTG_PRICE_TOOLTIP_RU } from './services-data-ru-dtg'
 
 export const servicesRu: ServiceData[] = [
   {
@@ -231,6 +232,15 @@ export const servicesRu: ServiceData[] = [
     description: 'Сервис и ремонт принтеров для пластиковых карт.',
     pricingSections: kartyPricingSectionsRu(),
     priceTooltip: KARTY_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-dtg',
+    title: 'Сервис и ремонт DTG-принтеров',
+    subtitle: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
+    icon: '/images/atrament-carousel-v3-01.webp',
+    description: 'Сервис и ремонт DTG-принтеров для печати на футболках.',
+    pricingSections: dtgPricingSectionsRu(),
+    priceTooltip: DTG_PRICE_TOOLTIP_RU,
   },
   {
     slug: 'wynajem-drukarek',

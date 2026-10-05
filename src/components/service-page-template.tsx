@@ -66,6 +66,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-laserowych': 1.2,
   'serwis-niszczarek': 1.2, // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
+  'serwis-drukarek-dtg': 1.2, // kopia serwis-drukarek-do-kart-plastikowych
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -229,6 +230,13 @@ const KARTY_SIZE_COEFFICIENTS = [0.666, 0.76, 0.85, 0.85, 1.045, 0.95]
 const KARTY_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, undefined, 0.858]
 const KARTY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+// serwis-drukarek-dtg: TYMCZASOWO zdjęcia drukarek atramentowych (atrament-carousel-v3-*)
+// z tymi samymi współczynnikami co strona atramentowych — do wymiany na 6 własnych
+// zdjęć drukarek DTG (małe/małe, średnie/średnie, duże/duże), wycięte do alpha bbox.
+const DTG_HERO_SLIDES = ATRAMENT_HERO_SLIDES
+const DTG_SIZE_COEFFICIENTS = ATRAMENT_SIZE_COEFFICIENTS
+const DTG_VERTICAL_BIAS = ATRAMENT_VERTICAL_BIAS
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -263,6 +271,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-termicznych',
   'serwis-niszczarek', // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych',
+  'serwis-drukarek-dtg',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -271,7 +280,7 @@ const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
-  'serwis-drukarek-do-kart-plastikowych',
+  'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -580,6 +589,14 @@ export function ServicePageTemplate({
                           sizeCoefficients={KARTY_SIZE_COEFFICIENTS}
                           mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-dtg' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={DTG_HERO_SLIDES}
+                          sizeCoefficients={DTG_SIZE_COEFFICIENTS}
+                          verticalBias={DTG_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-niszczarek' ? (
                         <HeroPrinterCarousel
