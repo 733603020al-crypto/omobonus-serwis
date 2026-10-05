@@ -71,7 +71,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych']
+export const noindexSlugs: string[] = []
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.
@@ -83,13 +83,14 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'naprawa-drukarek': bakedCard('printer'),
   'serwis-drukarek-3d': bakedCard('3d'),
   'serwis-drukarek-termicznych': bakedCard('label'),
-  'serwis-plotterow': bakedCard('plotter4'),
+  'serwis-plotterow': bakedCard('plotter5'),
   'serwis-drukarek-laserowych': bakedCard('laser'),
   'serwis-drukarek-atramentowych': bakedCard('inkjet3'),
   'serwis-drukarek-iglowych': bakedCard('needle'),
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
-  'serwis-niszczarek': bakedCard('shredder'),
-  'naprawa-zasilaczy-ups': bakedCard('ups'),
+  'serwis-niszczarek': bakedCard('shredder2'),
+  'naprawa-zasilaczy-ups': bakedCard('ups2'),
+  'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer'),
   'wynajem-drukarek': bakedCard('rental'),
   'drukarka-zastepcza': bakedCard('replacement'),
 }

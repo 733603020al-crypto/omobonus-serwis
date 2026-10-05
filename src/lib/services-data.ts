@@ -135,8 +135,7 @@ export const services: ServiceData[] = [
     slug: 'serwis-niszczarek',
     title: 'Serwis i naprawa niszczarek',
     subtitle: 'Serwis i naprawa niszczarek we Wrocławiu',
-    // Tymczasowo neutralna ikona-placeholder projektu (brak własnej grafiki niszczarek)
-    icon: '/images/accordion-icon-naprawy.webp',
+    icon: '/images/niszczarki-carousel-v1-01.webp',
     description: 'Serwis i naprawa niszczarek.',
     pricingSections: createNiszczarkiPricingSections(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
@@ -149,7 +148,6 @@ export const services: ServiceData[] = [
     description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
     pricingSections: createUpsPricingSections(),
   },
-  // Nowa strona w przygotowaniu: tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs)
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',
     title: 'Serwis i naprawa drukarek do kart plastikowych',
@@ -187,6 +185,7 @@ export const HOME_EXTRA_SERVICES = [
   'druk-3d-na-zamowienie',
   'serwis-niszczarek',
   'naprawa-zasilaczy-ups',
+  'serwis-drukarek-do-kart-plastikowych',
   'wynajem-drukarek',
   'drukarka-zastepcza',
 ]

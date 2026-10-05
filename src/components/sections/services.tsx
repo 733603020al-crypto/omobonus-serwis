@@ -94,6 +94,7 @@ const PL: ServicesT = {
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
     'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
+    'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },

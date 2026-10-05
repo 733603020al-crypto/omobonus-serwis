@@ -218,7 +218,6 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
     description: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, naprawa elektroniki. APC, Eaton, Ever, Vertiv i inne. Pełny cennik bez ukrytych kosztów.',
   },
-  // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Serwis drukarek do kart plastikowych — Zebra, Evolis, Fargo',
     description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Przejrzysty cennik — koszt naprawy ustalamy przed jej wykonaniem.',

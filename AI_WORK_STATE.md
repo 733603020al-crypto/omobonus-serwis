@@ -1347,3 +1347,12 @@ Report: https://claude.ai/artifact/ApU2CQ2JJuTzKJ46EEb6qG . Code NOT changed by 
 ## ЭТАП 117 — перенос в test (2026-10-05)
 Перенесено из integration/new-pages-performance (коммит acc2422) поверх origin/test (da4e845) через отдельную копию: три готовые новые страницы — шредеры, принтеры пластиковых карт, UPS (PL/UK/RU, картинки, логотипы, прайс, FAQ) — и ускорения ЭТАП 113/114 (уже были в test), 116 и 117, в т.ч. меню с первого нажатия. Итого на сайте 16 страниц услуг × PL/UK/RU. Не перенесено: DTG (ветка pages/new-service-dtg), следующая новая страница, временные и экспериментальные файлы, master.
 Доработка при переносе: во временном меню (до загрузки скриптов) фокус ставится на крестик с видимой рамкой, Tab не выходит за пределы меню, после закрытия фокус возвращается на кнопку меню.
+
+
+## ЭТАП 118 (2026-10-05): открыты три услуги и добавлены карточки — ГОТОВО, в test
+- Подтверждены и открыты для поиска: Serwis niszczarek, Serwis drukarek do kart plastikowych, Serwis UPS (naprawa-zasilaczy-ups). Список noindexSlugs теперь пустой; страницы в sitemap на PL/UK/RU, у них есть hreflang.
+- Главная (PL/UK/RU): карточки шредеров, принтеров пластиковых карт и UPS — в блоке «Wszystkie usługi ↓» (после «Druk 3D na zamówienie»: Niszczarek, Zasilaczy UPS, Drukarek do kart plastikowych, Wynajem, Drukarka zastępcza). Всего 15 карточек, размеры и сетка прежние.
+- Меню «Usługi» (компьютер): «Niszczarek» в левой колонке после UPS, «Drukarek do kart plastikowych» в правой колонке после термопринтеров. Плоттер в меню уже был, его карточка на главной получила новую картинку.
+- Картинки карточек — из пользовательских файлов «основная страница» (serwis-niszczarek.png, serwis-drukarek-do-kart-plastikowych.png, naprawa-zasilaczy-ups.png, новая карточка плотера.png): services-card-v2-shredder2 / ups2 / card-printer / plotter5 (+ -mobile). Старые shredder / ups / plotter4 удалены. Иконки меню: niszczarki-icon-v1.webp, karty-icon-v1.webp. Иконка услуги шредеров (PL/UK/RU) — niszczarki-carousel-v1-01.webp вместо временной заглушки.
+- DTG и следующая новая страница НЕ добавлены (ни меню, ни главная, ни sitemap).
+- Проверки: tsc, check:i18n-sync OK, npm run build OK (48 HTML обновлено), локальная прод-сборка: главная PL/UK/RU 390/412/1024/1280/1440 — карточки, переход по клику на нужные страницы, меню без дублей, без горизонтальной прокрутки, без битых картинок; ошибки консоли только CookieYes на локальном адресе.

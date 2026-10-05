@@ -219,7 +219,7 @@ export const servicesUk: ServiceData[] = [
     slug: 'serwis-niszczarek',
     title: 'Сервіс і ремонт знищувачів документів',
     subtitle: 'Сервіс і ремонт знищувачів документів у Вроцлаві',
-    icon: '/images/accordion-icon-naprawy.webp',
+    icon: '/images/niszczarki-carousel-v1-01.webp',
     description: 'Сервіс і ремонт знищувачів документів.',
     pricingSections: niszczarkiPricingSectionsUk(),
     priceTooltip: NISZCZARKI_PRICE_TOOLTIP_UK,
