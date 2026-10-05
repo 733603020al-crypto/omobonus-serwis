@@ -13,7 +13,7 @@ const applyDtgCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA [[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki DTG\n• czyszczenie stacji serwisowej: nasadek (kapping), wycieraczki głowicy i ich otoczenia;\n• czyszczenie wózka głowicy, prowadnicy i okolic głowicy z zaschniętego atramentu i włókien tkaniny;\n• kontrola tłumików (damperów) i przewodów atramentowych pod kątem zapowietrzenia i wycieków;\n• kontrola cyrkulacji / mieszania białego atramentu, jeśli występuje w danym modelu;\n• kontrola i opróżnienie pojemnika na zużyty atrament;\n• czyszczenie enkodera (taśmy i dysku) oraz smarowanie prowadnic;\n• kontrola stołu (płyty) i mechanizmu jego przesuwu, regulacja wysokości;\n• test dysz, wyrównanie głowicy i wydruk testowy na tkaninie.',
+        'PEŁNA KONSERWACJA [[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki DTG\n• czyszczenie głowic i ich otoczenia;\n• czyszczenie capów / stacji serwisowej i wiperów;\n• kontrola i czyszczenie układu atramentowego;\n• kontrola przewodów, damperów i filtrów;\n• kontrola cyrkulacji / mieszania białego atramentu;\n• kontrola i opróżnienie układu zużytego atramentu;\n• czyszczenie enkodera;\n• czyszczenie i kontrola prowadnic oraz mechanizmu karetki;\n• czyszczenie i kontrola stołu / platenu;\n• kontrola filtrów powietrza / wentylacji;\n• test dysz, wyrównanie głowicy i wydruk testowy.',
     },
   ]
 }
