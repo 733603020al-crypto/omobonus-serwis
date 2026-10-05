@@ -3340,6 +3340,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                               className={cn(
                                                 'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
                                                 (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
+                                                !/\d/.test(displayPrice ?? '') && '!whitespace-normal',
                                                 shouldHighlightPrices
                                                   ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
                                                   : ''
@@ -3434,6 +3435,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                     </TableBody>
                                   </Table>
                                 </div>
+                                {isRepairAccordionLayout && isRepairSection && subcategory.subtitle && (
+                                  <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed text-center px-4 pt-1 pb-2">{subcategory.subtitle}</div>
+                                )}
                               </div>
                             ))}
                           </AccordionContent>
