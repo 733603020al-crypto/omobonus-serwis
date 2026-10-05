@@ -65,6 +65,7 @@ export interface ServiceAccordionDict {
     serwisDrukarekAtramentowych: string
     serwisNiszczarek: string
     serwisDrukarekDoKart: string
+    serwisDrukarekDtg: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -90,6 +91,8 @@ export interface ServiceAccordionDict {
   categoryTranslations: Record<string, ServiceAccordionCategoryTranslation>
   /** Переопределение categoryTranslations только для serwis-drukarek-atramentowych (те же польские title, что у DEVICE_CATEGORIES) */
   categoryTranslationsAtrament: Record<string, ServiceAccordionCategoryTranslation>
+  /** Переопределение categoryTranslations только для serwis-drukarek-dtg (title «Profesjonalna» совпадает с шредерами) */
+  categoryTranslationsDtg: Record<string, ServiceAccordionCategoryTranslation>
 }
 
 export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDict> = {
@@ -166,9 +169,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
+      serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
+    categoryTranslationsDtg: {},
     wynajemTableLabels: {
       pagesIncluded: ['Liczba stron A4', 'wliczonych w czynsz'],
       printPriceMono: ['Cena wydruku A4 mono', '(powyżej limitu)'],
@@ -260,11 +265,17 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
+      serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша — компактний, друга — професійний, третя — промисловий.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
       'Drukarka biurowa': { title: 'Офісний принтер', description: 'Принтери A4/A3 для регулярної роботи, часто з розширеним лотком подачі, сканером або системою безперервної подачі чорнила.', features: [] },
       'Drukarka biznesowa': { title: 'Бізнес-принтер', description: 'Більші та складніші пристрої A4/A3 для інтенсивної роботи та більших навантажень.', features: [] },
+    },
+    categoryTranslationsDtg: {
+      'Kompaktowa': { title: 'Компактний', description: 'Компактні DTG-принтери для малих тиражів, персоналізації одягу та невеликого виробництва.', features: [] },
+      'Profesjonalna': { title: 'Професійний', description: 'DTG-принтери для регулярного виробництва, більших тиражів та інтенсивної щоденної роботи.', features: [] },
+      'Przemysłowa': { title: 'Промисловий', description: 'Високопродуктивні DTG-системи для серійного виробництва, великих тиражів і промислової роботи.', features: [] },
     },
     wynajemTableLabels: {
       pagesIncluded: ['Кількість сторінок A4', 'включених в оренду'],
@@ -382,11 +393,17 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
+      serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая — компактный, вторая — профессиональный, третья — промышленный.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
       'Drukarka biurowa': { title: 'Офисный принтер', description: 'Принтеры A4/A3 для регулярной работы, часто с расширенным лотком подачи, сканером или системой непрерывной подачи чернил.', features: [] },
       'Drukarka biznesowa': { title: 'Бизнес-принтер', description: 'Более крупные и сложные устройства A4/A3 для интенсивной работы и больших нагрузок.', features: [] },
+    },
+    categoryTranslationsDtg: {
+      'Kompaktowa': { title: 'Компактный', description: 'Компактные DTG-принтеры для небольших тиражей, персонализации одежды и небольшого производства.', features: [] },
+      'Profesjonalna': { title: 'Профессиональный', description: 'DTG-принтеры для регулярного производства, больших тиражей и интенсивной ежедневной работы.', features: [] },
+      'Przemysłowa': { title: 'Промышленный', description: 'Высокопроизводительные DTG-системы для серийного производства, больших тиражей и промышленной работы.', features: [] },
     },
     wynajemTableLabels: {
       pagesIncluded: ['Количество страниц A4', 'включённых в аренду'],

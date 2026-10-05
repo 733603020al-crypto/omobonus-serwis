@@ -845,6 +845,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
+  'serwis-drukarek-dtg',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
