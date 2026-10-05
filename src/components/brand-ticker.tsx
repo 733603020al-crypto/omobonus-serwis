@@ -148,6 +148,19 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "hiti", src: "/images/brands/hiti.webp", listedOnly: true },
   { name: "swiftcolor", listedOnly: true },
   { name: "edisecure", listedOnly: true },
+  // drukarki DTG (oficjalne logo producentów)
+  { name: "kornit", src: "/images/brands/kornit.webp", listedOnly: true, scale: 1.15 },
+  { name: "polyprint", src: "/images/brands/polyprint.webp", listedOnly: true },
+  { name: "aeoon", src: "/images/brands/aeoon.webp", listedOnly: true },
+  { name: "mr", src: "/images/brands/mr.webp", listedOnly: true, scale: 1.15 },
+  { name: "roq", src: "/images/brands/roq.webp", listedOnly: true },
+  { name: "omniprint", src: "/images/brands/omniprint.webp", listedOnly: true, scale: 1.2 },
+  { name: "coldesi", src: "/images/brands/coldesi.webp", listedOnly: true },
+  { name: "pigment", src: "/images/brands/pigment.webp", listedOnly: true },
+  { name: "anajet", src: "/images/brands/anajet.webp", listedOnly: true },
+  { name: "azonprinter", src: "/images/brands/azonprinter.webp", listedOnly: true },
+  { name: "resolute", src: "/images/brands/resolute.webp", listedOnly: true },
+  { name: "lawson", src: "/images/brands/lawson.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -176,6 +189,7 @@ const LOGO_RATIO: Record<string, number> = {
   "3dgence": 4.075, "markforged": 0.942, "stratasys": 3.317, "lanberg": 4.950, "actina": 6.383, "komputronik": 5.925, "cisco": 1.892,
   "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
   "evolis": 5.125, "hid": 2.550, "magicard": 2.805, "entrust": 9.230, "matica": 6.900, "idp": 2.490, "hiti": 3.290, "swiftcolor": 5.375, "edisecure": 8.360,
+  "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

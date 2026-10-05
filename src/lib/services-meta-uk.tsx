@@ -16,7 +16,7 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
   'serwis-drukarek-dtg': {
     h1: 'Сервіс і ремонт DTG-принтерів у Вроцлаві',
     lines: ['Сервіс і ремонт', 'DTG-принтерів', 'у Вроцлаві'],
-    h2: '(Epson, Brother, Ricoh, Kornit, Polyprint, Aeoon, M&R, ROQ, OmniPrint, DTG Digital, ColDesi, AnaJet, Roland, Azon, Resolute DTG, Lawson, Durst, …)',
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
   'serwis-drukarek-termicznych': {
     h1: 'Сервіс і ремонт принтерів етикеток у Вроцлаві',
