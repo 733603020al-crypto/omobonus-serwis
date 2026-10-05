@@ -237,7 +237,7 @@ export const servicesUk: ServiceData[] = [
     slug: 'serwis-drukarek-dtg',
     title: 'Сервіс і ремонт DTG-принтерів',
     subtitle: 'Сервіс і ремонт DTG-принтерів у Вроцлаві',
-    icon: '/images/atrament-carousel-v3-01.webp',
+    icon: '/images/dtg-carousel-v1-01.webp',
     description: 'Сервіс і ремонт DTG-принтерів для друку на футболках.',
     pricingSections: dtgPricingSectionsUk(),
     priceTooltip: DTG_PRICE_TOOLTIP_UK,

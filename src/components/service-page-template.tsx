@@ -230,12 +230,19 @@ const KARTY_SIZE_COEFFICIENTS = [0.666, 0.76, 0.85, 0.85, 1.045, 0.95]
 const KARTY_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, undefined, 0.858]
 const KARTY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
-// serwis-drukarek-dtg: TYMCZASOWO zdjęcia drukarek atramentowych (atrament-carousel-v3-*)
-// z tymi samymi współczynnikami co strona atramentowych — do wymiany na 6 własnych
-// zdjęć drukarek DTG (małe/małe, średnie/średnie, duże/duże), wycięte do alpha bbox.
-const DTG_HERO_SLIDES = ATRAMENT_HERO_SLIDES
-const DTG_SIZE_COEFFICIENTS = ATRAMENT_SIZE_COEFFICIENTS
-const DTG_VERTICAL_BIAS = ATRAMENT_VERTICAL_BIAS
+// serwis-drukarek-dtg: 6 DTG-printer renders cropped to their own alpha bbox
+// (see public/images/dtg-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const DTG_HERO_SLIDES = [
+  '/images/dtg-carousel-v1-01.webp',
+  '/images/dtg-carousel-v1-02.webp',
+  '/images/dtg-carousel-v1-03.webp',
+  '/images/dtg-carousel-v1-04.webp',
+  '/images/dtg-carousel-v1-05.webp',
+  '/images/dtg-carousel-v1-06.webp',
+]
+const DTG_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const DTG_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original

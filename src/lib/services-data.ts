@@ -152,12 +152,11 @@ export const services: ServiceData[] = [
     priceTooltip: KARTY_PRICE_TOOLTIP,
   },
   // Nowa strona w przygotowaniu (DTG): tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs).
-  // TYMCZASOWA ikona — zdjęcie drukarki atramentowej, do wymiany na własne zdjęcie drukarki DTG.
   {
     slug: 'serwis-drukarek-dtg',
     title: 'Serwis i naprawa drukarek DTG',
     subtitle: 'Serwis i naprawa drukarek DTG we Wrocławiu',
-    icon: '/images/atrament-carousel-v3-01.webp',
+    icon: '/images/dtg-carousel-v1-01.webp',
     description: 'Serwis i naprawa drukarek DTG do nadruku na koszulkach.',
     pricingSections: createDtgPricingSections(),
     priceTooltip: DTG_PRICE_TOOLTIP,

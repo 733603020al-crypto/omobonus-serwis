@@ -4,8 +4,7 @@
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
   'serwis-drukarek-do-kart-plastikowych': '/images/karty-carousel-v1-01.webp',
-  // TYMCZASOWO zdjęcie drukarki atramentowej — do wymiany na własne zdjęcie drukarki DTG
-  'serwis-drukarek-dtg': '/images/atrament-carousel-v3-01.webp',
+  'serwis-drukarek-dtg': '/images/dtg-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
