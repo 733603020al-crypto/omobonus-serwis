@@ -12,9 +12,11 @@ import { cn } from '@/lib/utils'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
 // chunk is still loading, so the hamburger icon never disappears mid-transition.
+// data-premenu: a tap here opens the static drawer copy (see premenu-script.ts).
 const MobileMenuLoadingButton = () => (
   <button
     type="button"
+    data-premenu=""
     className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white min-[920px]:hidden"
     aria-label="Open menu"
     aria-haspopup="dialog"
@@ -420,8 +422,17 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
 
         {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
         {!mounted ? (
+          // Before hydration a tap here opens a static copy of the drawer
+          // (premenu-script.ts) built from this data, so the menu works at once.
           <button
             type="button"
+            data-premenu={JSON.stringify({
+              home: homeHref,
+              services: [homeSectionHref, navServices],
+              about: [aboutHref, navAbout],
+              contact: [contactHref, navContact],
+              form: navSendForm,
+            })}
             className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white"
             aria-label="Open menu"
             aria-haspopup="dialog"

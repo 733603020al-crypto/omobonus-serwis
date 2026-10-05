@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import manifest from '@/config/manifest'
 import { HeaderInteractive, type Locale } from '@/components/HeaderInteractive'
+import { PREMENU_SCRIPT } from '@/lib/premenu-script'
 
 export type { Locale }
 
@@ -35,6 +36,8 @@ export function Header({ locale }: { locale: Locale }) {
       </div>
 
       <HeaderInteractive locale={locale} />
+      {/* Makes the hamburger work before hydration (see premenu-script.ts). */}
+      <script dangerouslySetInnerHTML={{ __html: PREMENU_SCRIPT }} />
     </header>
   )
 }

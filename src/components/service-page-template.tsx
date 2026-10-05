@@ -482,15 +482,21 @@ export function ServicePageTemplate({
                         // Self-animated SVG (SMIL/CSS baked in) — plain <img>, not
                         // next/image, so the optimizer doesn't rasterize it and kill
                         // the animation.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={imageSrc}
-                          alt={imageAlt}
-                          width={420}
-                          height={420}
-                          className="service-hero-image object-contain w-full h-full"
-                          fetchPriority="high"
-                        />
+                        // The shared file holds both the animated and the still layer
+                        // (CSS media query picks one); here each mode gets a file with
+                        // only its own layer, so the phone downloads half as much.
+                        <picture className="contents">
+                          <source media="(prefers-reduced-motion: reduce)" srcSet="/images/Druk_3D_animation-reduced.svg?v=1" />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src="/images/Druk_3D_animation-motion.svg?v=1"
+                            alt={imageAlt}
+                            width={420}
+                            height={420}
+                            className="service-hero-image object-contain w-full h-full"
+                            fetchPriority="high"
+                          />
+                        </picture>
                       ) : slug === 'serwis-laptopow' ? (
                         // Center-active carousel of laptop repair close-ups
                         // (same stack mechanic as naprawa-drukarek below, via

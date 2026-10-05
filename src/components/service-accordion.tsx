@@ -882,6 +882,8 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
 // slug there, not scattered `service.slug === '...'` checks, to extend this
 // layout to another /uslugi/[slug] page.
 
+const PARCHMENT_SRC = '/images/contact-form-parchment.webp'
+
 // Slugs whose price-info popover/tooltip renders on the shared parchment
 // background (with a "cena netto" caption) instead of the plain dark
 // tooltip every other service uses.
@@ -1070,6 +1072,17 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
+
+  // Parchment backdrop of open sections: its <img> tags are lazy (they sit in
+  // closed content), so warm the cache once the page has loaded — opening a
+  // section then shows the backdrop immediately.
+  useEffect(() => {
+    let timer = 0
+    const warm = () => { timer = window.setTimeout(() => { new window.Image().src = PARCHMENT_SRC }, 1500) }
+    if (document.readyState === 'complete') warm()
+    else window.addEventListener('load', warm, { once: true })
+    return () => { window.removeEventListener('load', warm); window.clearTimeout(timer) }
+  }, [])
 
   // Определение размера экрана
   useEffect(() => {
@@ -2975,6 +2988,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 />
                                 <img
                                   src="/images/contact-form-parchment.webp"
+                                  loading="lazy"
                                   alt=""
                                   aria-hidden="true"
                                   className={cn(
@@ -3762,6 +3776,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               above. */}
                           <img
                             src="/images/contact-form-parchment.webp"
+                            loading="lazy"
                             alt=""
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
@@ -3781,6 +3796,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               Height is --projektowanie-modeli-img-h (service-accordion.tsx). */}
                           <img
                             src="/images/contact-form-parchment.webp"
+                            loading="lazy"
                             alt=""
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
@@ -3799,6 +3815,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               --dojazd-img-h (service-accordion.tsx). */}
                           <img
                             src="/images/contact-form-parchment.webp"
+                            loading="lazy"
                             alt=""
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
@@ -3817,6 +3834,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               --konserwacja-img-h (service-accordion.tsx). */}
                           <img
                             src="/images/contact-form-parchment.webp"
+                            loading="lazy"
                             alt=""
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[12px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
@@ -3837,6 +3855,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               konserwacja ones, no price grid/columns here. */}
                           <img
                             src="/images/contact-form-parchment.webp"
+                            loading="lazy"
                             alt=""
                             aria-hidden="true"
                             className="w-full h-full absolute left-0 right-0 bottom-0 -top-[25px] object-fill contact-form-parchment-shadow parchment-shadow-content pointer-events-none select-none"
@@ -3892,6 +3911,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                   />
                   <img
                     src="/images/contact-form-parchment.webp"
+                    loading="lazy"
                     alt=""
                     aria-hidden="true"
                     className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
@@ -3930,6 +3950,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                   />
                   <img
                     src="/images/contact-form-parchment.webp"
+                    loading="lazy"
                     alt=""
                     aria-hidden="true"
                     className="hidden md:block absolute top-0 bottom-0 h-full object-fill pointer-events-none select-none contact-form-parchment-shadow parchment-shadow-content"
