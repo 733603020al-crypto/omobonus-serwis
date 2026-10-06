@@ -67,6 +67,7 @@ export const relatedServiceSlugs = [
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
   'serwis-plotterow',
+  'serwis-drukarek-do-kart-plastikowych',
 ]
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).

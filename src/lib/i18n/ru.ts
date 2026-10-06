@@ -32,6 +32,9 @@ export const ru = {
       { group: 'printer', parts: ['принтеров', 'этикеток'] },
       { group: 'printer', parts: ['3D-принтеров', ''] },
       { group: 'plotter', parts: ['плоттеров', ''] },
+      { group: 'printer', parts: ['принтеров', 'для пластиковых карт'] },
+      { group: 'shredder', parts: ['уничтожителей', 'документов'] },
+      { group: 'ups', parts: ['источников бесперебойного', 'питания UPS'] },
     ],
   },
   about: {

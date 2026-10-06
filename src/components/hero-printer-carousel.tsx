@@ -505,10 +505,11 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Intro -> slide 0: not before minMs, and only once slide 0 and the next
-  // slides are cached (slow network: the intro simply stays longer).
+  // Intro -> slide 0: not before minMs, and only once slide 0 and its animation
+  // are cached — the slides queued behind may still be loading (slow network:
+  // the intro simply stays longer).
   useEffect(() => {
-    if (!opening || !openingOn || !ready || !loaded[0] || !inView) return
+    if (!opening || !openingOn || !loaded[0] || !inView) return
     if (animPending(0)) return
     const wait = Math.max(0, mountedAtRef.current + opening.minMs - performance.now())
     const id = window.setTimeout(() => {
@@ -518,7 +519,7 @@ export function HeroPrinterCarousel({
     }, wait)
     return () => window.clearTimeout(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openingOn, ready, loaded, inView, animReady])
+  }, [openingOn, loaded, inView, animReady])
 
   // The intro slides out to the back like any advanced slide, then unmounts.
   useEffect(() => {

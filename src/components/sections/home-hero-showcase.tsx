@@ -2,7 +2,7 @@
 
 import '@/app/styles/service-hero.css'
 import '@/app/styles/home-hero-words.css'
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
@@ -13,7 +13,8 @@ import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 // right), fed with the first slide of each service page. The middle H1 line
 // swaps its words in sync with the active slide.
 
-// Order: laptop, desktop PC, laser, inkjet, dot-matrix, label, 3D, plotter.
+// Order: laptop, desktop PC, laser, inkjet, dot-matrix, label, 3D, plotter,
+// plastic-card printer, shredder, UPS.
 // Slides 0/1/6 are the animated heroes from their own service pages.
 const SLIDES = [
   '/images/serwis-laptopow-hero-animated.webp',
@@ -24,20 +25,23 @@ const SLIDES = [
   '/images/termiczne-carousel-v3-01.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
   '/images/plotter-carousel-v3-00.webp',
+  '/images/karty-carousel-v1-03.webp',
+  '/images/niszczarki-carousel-v2-06.webp',
+  '/images/ups-carousel-v1-01.webp',
 ]
 // Same on-screen size as on each service page (its own HERO_SCALE box and
 // slide-0 coefficient), recalculated for this 1.2 box.
-const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97]
-const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0]
+const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85, 0.95, 0.74]
+const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0, 4, 13, 0]
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
 const SLIDE_POSTERS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static.webp']
 // Phones get the same PC animation at 483×600 (~450KB instead of ~650KB).
 const MOBILE_SLIDE_ANIMS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-mobile.webp']
 // First open only: light cracked-screen laptop (slide 1 of /uslugi/serwis-laptopow)
-// in front, empty middle H1 line; after ≥2.8s and once the laptop animation is
+// in front, empty middle H1 line; no fixed minimum: as soon as the page and the laptop animation are
 // cached it gives way to slide 0 and never returns.
-const OPENING = { src: '/images/laptop-carousel/laptop-carousel-v2-01.webp', minMs: 2800 }
+const OPENING = { src: '/images/laptop-carousel/laptop-carousel-v2-01.webp', minMs: 0 }
 const OPENING_MID: HeroMid = { group: 'opening', parts: [' ', ''] }
 // Inkjet slide plays the print clip from /uslugi/serwis-drukarek-atramentowych
 // (its static image stays only as the Safari / failed-clip fallback) and the
@@ -53,6 +57,9 @@ const SLUGS = [
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
   'serwis-plotterow',
+  'serwis-drukarek-do-kart-plastikowych',
+  'serwis-niszczarek',
+  'naprawa-zasilaczy-ups',
 ]
 
 export interface HeroMid {
@@ -64,7 +71,7 @@ export interface HeroMid {
 
 type Mode = 'letters' | 'cycle'
 
-export function AnimatedPart({ text, mode, delay = 0 }: { text: string; mode: Mode; delay?: number }) {
+export function AnimatedPart({ text, mode, delay = 0, fit = 1 }: { text: string; mode: Mode; delay?: number; fit?: number }) {
   const [shown, setShown] = useState({ cur: text, prev: null as string | null, gen: 0, mode })
   const [width, setWidth] = useState<number | undefined>(undefined)
   const inRef = useRef<HTMLSpanElement>(null)
@@ -75,7 +82,7 @@ export function AnimatedPart({ text, mode, delay = 0 }: { text: string; mode: Mo
 
   useLayoutEffect(() => {
     if (inRef.current) setWidth(inRef.current.offsetWidth)
-  }, [shown.cur])
+  }, [shown.cur, fit])
 
   const letters = (t: string, cls: string, step: number) =>
     Array.from(t).map((ch, i) => (
@@ -139,6 +146,25 @@ export function HomeHeroShowcase({
 
   const second = mid.parts[1] ? ` ${mid.parts[1]}` : ''
   const firstLen = Array.from(mid.parts[0]).length
+
+  // Long middle lines (plastic-card printers, UPS — mostly UK/RU) shrink to fit:
+  // max 720px on desktop (≈ the widest older line), the text column's width on phones.
+  const [fit, setFit] = useState(1)
+  const [vw, setVw] = useState(0)
+  const measureRef = useRef<HTMLSpanElement>(null)
+  useEffect(() => {
+    const onResize = () => setVw(window.innerWidth)
+    window.addEventListener('resize', onResize)
+    document.fonts?.ready.then(onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  useLayoutEffect(() => {
+    const el = measureRef.current
+    const column = el?.closest('h1')?.parentElement
+    if (!el || !column) return
+    const max = window.innerWidth >= 768 ? 720 : column.clientWidth
+    setFit(Math.min(1, max / el.offsetWidth))
+  }, [mid, vw])
   // Plain link without prefetch — nothing extra is loaded until the click.
   const href = `${basePath}/${SLUGS[Math.max(active, 0) % SLUGS.length]}`
   const labelMid = active < 0 ? mids[0] : mid
@@ -169,10 +195,11 @@ export function HomeHeroShowcase({
             <span className="sr-only">{h1}</span>
             <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
-              <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">
-                <AnimatedPart text={mid.parts[0]} mode={mode} />
-                <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} />
+              <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]" style={fit < 1 ? { fontSize: `${fit}em` } : undefined}>
+                <AnimatedPart text={mid.parts[0]} mode={mode} fit={fit} />
+                <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} fit={fit} />
               </span>
+              <span ref={measureRef} aria-hidden="true" className="fixed left-0 top-0 invisible whitespace-nowrap pointer-events-none">{mid.parts[0]}{second}</span>
               <span className="block w-full text-center whitespace-nowrap text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
             </Link>
           </h1>

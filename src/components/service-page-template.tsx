@@ -71,7 +71,8 @@ const HERO_SCALE: Record<string, number> = {
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
 // naprawa-drukarek: same category hero images already used on their own
-// service pages (laser, inkjet, needle, label, 3D, plotter) — no new assets.
+// service pages (laser, inkjet, needle, label, 3D, plotter; plastic-card
+// printer = its slide 3, as on the home hero) — no new assets.
 // Same order as the cards below and PRINTER_HERO_MIDS (middle H1 line, PL).
 const PRINTER_HERO_SLIDES = [
   '/images/laser-carousel-v3-01.webp',
@@ -80,6 +81,7 @@ const PRINTER_HERO_SLIDES = [
   '/images/termiczne-carousel-v3-01.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
   '/images/plotter-carousel-v3-00.webp',
+  '/images/karty-carousel-v1-03.webp',
 ]
 const PRINTER_HERO_MIDS = [
   { group: 'printer', parts: ['drukarek', 'laserowych'] },
@@ -88,6 +90,7 @@ const PRINTER_HERO_MIDS = [
   { group: 'printer', parts: ['drukarek', 'etykiet'] },
   { group: 'printer', parts: ['drukarek', '3D'] },
   { group: 'plotter', parts: ['ploterów', ''] },
+  { group: 'printer', parts: ['drukarek', 'do kart plastikowych'] },
 ] as const
 
 // serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),

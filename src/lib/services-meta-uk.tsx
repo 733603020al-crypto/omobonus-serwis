@@ -213,6 +213,7 @@ export const subServiceTitlesUk: Record<string, string> = {
   'serwis-drukarek-termicznych': 'Принтерів етикеток',
   'serwis-drukarek-iglowych': 'Матричних принтерів',
   'serwis-drukarek-3d': '3D-принтерів',
+  'serwis-drukarek-do-kart-plastikowych': 'Принтерів пластикових карток',
 }
 
 export const seoMetadataUk: Record<string, { title: string; description: string }> = {

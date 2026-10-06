@@ -47,6 +47,9 @@ const CAROUSEL_PL = {
     { group: 'printer', parts: ['drukarek', 'etykiet'] },
     { group: 'printer', parts: ['drukarek', '3D'] },
     { group: 'plotter', parts: ['ploterów', ''] },
+    { group: 'printer', parts: ['drukarek', 'do kart plastikowych'] },
+    { group: 'shredder', parts: ['niszczarek', ''] },
+    { group: 'ups', parts: ['zasilaczy', 'awaryjnych UPS'] },
   ] as readonly HeroMid[],
 }
 

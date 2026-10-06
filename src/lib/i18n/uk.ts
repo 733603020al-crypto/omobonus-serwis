@@ -60,6 +60,9 @@
       { group: 'printer', parts: ['принтерів', 'етикеток'] },
       { group: 'printer', parts: ['3D-принтерів', ''] },
       { group: 'plotter', parts: ['плотерів', ''] },
+      { group: 'printer', parts: ['принтерів', 'для пластикових карток'] },
+      { group: 'shredder', parts: ['знищувачів', 'документів'] },
+      { group: 'ups', parts: ['джерел безперебійного', 'живлення UPS'] },
     ],
   },
   about: {

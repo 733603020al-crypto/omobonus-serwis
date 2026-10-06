@@ -207,6 +207,7 @@ export const subServiceTitles: Record<string, string> = {
   'serwis-drukarek-termicznych': 'Drukarek etykiet',
   'serwis-drukarek-iglowych': 'Drukarek igłowych',
   'serwis-drukarek-3d': 'Drukarek 3D',
+  'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
 }
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
