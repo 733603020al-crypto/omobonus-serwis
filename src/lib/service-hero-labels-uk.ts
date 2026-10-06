@@ -42,12 +42,6 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Біле чорнило',
     'Обслуговування DTG',
   ],
-  'serwis-drukarek-dtf': [
-    'Забита головка',
-    'Смуги на друці',
-    'Біле чорнило',
-    'Обслуговування DTG',
-  ],
 
   // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-niszczarek': [
