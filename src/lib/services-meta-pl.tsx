@@ -31,6 +31,11 @@ export const headings: Record<string, ServicePageHeadings> = {
     lines: ['Serwis i naprawa', 'drukarek DTG', 'we Wrocławiu'],
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
+  'serwis-drukarek-dtf': {
+    h1: 'Serwis i naprawa drukarek DTG we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek DTG', 'we Wrocławiu'],
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  },
 
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
