@@ -52,6 +52,8 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescriptionNiszczarki: string
   konserwacjaPromoTitleInkjet: string
   konserwacjaPromoDescriptionInkjet: string
+  konserwacjaPromoTitleDtg: string
+  konserwacjaPromoDescriptionDtg: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
   konserwacjaIncludedNoteInkjet: string
@@ -156,6 +158,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełną konserwację niszczarki.',
     konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
+    konserwacjaPromoTitleDtg: '„TYLKO CYKL CZYSZCZĄCY?”',
+    konserwacjaPromoDescriptionDtg: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTG.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     konserwacjaIncludedNoteInkjet: 'W cenie usług zawarte są standardowe środki i materiały potrzebne do wykonania prac serwisowych. W przypadku obsługi absorbera cena obejmuje jego czyszczenie lub wymianę na nowy — zależnie od stanu absorbera i dostępności odpowiedniej części.',
@@ -169,7 +173,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
-      serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa.',
+      serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa. Czas realizacji nie obejmuje oczekiwania na części.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -252,6 +256,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося лише видаленням пилу — виконуємо повне обслуговування знищувача.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
+    konserwacjaPromoTitleDtg: '«ТІЛЬКИ ЦИКЛ ЧИЩЕННЯ?»',
+    konserwacjaPromoDescriptionDtg: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTG-принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
     konserwacjaIncludedNoteInkjet: 'У вартість послуг входять стандартні засоби та матеріали, необхідні для виконання сервісних робіт. У разі обслуговування абсорбера ціна включає його чищення або заміну на новий — залежно від стану абсорбера та наявності відповідної частини.',
@@ -265,7 +271,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша — домашній, друга — офісний, третя — бізнесовий.',
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
-      serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша — компактний, друга — професійний, третя — промисловий.',
+      serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша — компактний, друга — професійний, третя — промисловий. Термін виконання не враховує очікування на деталі.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -380,6 +386,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся только удалением пыли — выполняем полное обслуживание уничтожителя.',
     konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
+    konserwacjaPromoTitleDtg: '«ТОЛЬКО ЦИКЛ ЧИСТКИ?»',
+    konserwacjaPromoDescriptionDtg: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTG-принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
     konserwacjaIncludedNoteInkjet: 'В стоимость услуг входят стандартные средства и материалы, необходимые для выполнения сервисных работ. При обслуживании абсорбера цена включает его чистку или замену на новый — в зависимости от состояния абсорбера и наличия соответствующей детали.',
@@ -393,7 +401,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая — домашний, вторая — офисный, третья — бизнес-принтер.',
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
-      serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая — компактный, вторая — профессиональный, третья — промышленный.',
+      serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая — компактный, вторая — профессиональный, третья — промышленный. Срок выполнения не включает ожидание деталей.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },

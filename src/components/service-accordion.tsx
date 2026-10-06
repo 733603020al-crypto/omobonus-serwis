@@ -1066,8 +1066,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isOutsourcingService = service.slug === 'outsourcing-it'
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
-  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoTitleDtg : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -2427,7 +2427,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           className="service-promo-description"
                           style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
                         >
-                          {isMobile ? konserwacjaPromoDescriptionResolved : (
+                          {/* DTG: opis dłuższy niż jedna linia — na desktopie zawijany jak na telefonie */}
+                          {isMobile || service.slug === 'serwis-drukarek-dtg' ? konserwacjaPromoDescriptionResolved : (
                             <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
                           )}
                         </div>

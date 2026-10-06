@@ -19,8 +19,6 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_n_zl_gram_n_zl_godz": { pl: "{0} zł/gram + {1} zł/h", ru: "{0} zł/грамм + {1} zł/ч", uk: "{0} zł/грам + {1} zł/год." },
   "p_n_zl_nl_do_n_min_pracy": { pl: "{0} zł\ndo {1} min pracy", ru: "{0} zł\nдо {1} мин работы", uk: "{0} zł\nдо {1} хв роботи" },
   "p_npct_nl_do_ceny_v2": { pl: "+{0}%\ndo ceny", ru: "+{0}%\nк цене", uk: "+{0}%\nдо ціни" },
-  // Tymczasowe miejsce na cenę (strona w przygotowaniu) — cena do potwierdzenia przez właściciela
-  "p_do_potwierdzenia": { pl: "cena do potwierdzenia", ru: "цена уточняется", uk: "ціна уточнюється" },
 
   // Бывшие 19 спецслучаев цены — уникальные, по 1 использованию каждая
   "p_plus_n_zl": { pl: "+ {0} zł", ru: "+ {0} zł", uk: "+ {0} zł" },

@@ -100,7 +100,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
     ],
   },
-  // Strona w przygotowaniu (noindex) — tekst do potwierdzenia przed publikacją
+  // Strona w przygotowaniu (noindex)
   'serwis-drukarek-dtg': {
     items: [
       'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
@@ -219,10 +219,10 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     title: 'Serwis drukarek do kart plastikowych — Zebra, Evolis, Fargo',
     description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Przejrzysty cennik — koszt naprawy ustalamy przed jej wykonaniem.',
   },
-  // Strona w przygotowaniu (noindex) — tekst SEO do potwierdzenia przed publikacją
+  // Strona w przygotowaniu (noindex)
   'serwis-drukarek-dtg': {
-    title: 'Serwis drukarek DTG — nadruk na koszulkach',
-    description: 'Serwis i naprawa drukarek DTG we Wrocławiu — zapchana głowica, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy ustalamy przed jej wykonaniem.',
+    title: 'Serwis i naprawa drukarek DTG — Epson, Brother, Kornit',
+    description: 'Serwis i naprawa drukarek DTG we Wrocławiu — jawny cennik: udrażnianie głowicy, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
