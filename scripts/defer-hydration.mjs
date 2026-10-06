@@ -1,5 +1,5 @@
 // Post-build step (runs after `next build`): in the prerendered HTML of the
-// service pages, Next's async <script src> chunks (and their preload links)
+// service pages and /kontakt (PL/UK/RU), Next's async <script src> chunks (and their preload links)
 // are replaced by one tiny inline loader that requests them only after the
 // first paint.
 // The first screen is fully server-rendered, so nothing changes visually —
@@ -31,7 +31,7 @@ function walk(dir, out = []) {
 let changed = 0
 for (const file of walk(root)) {
   const rel = path.relative(root, file).replace(/\\/g, '/')
-  if (scope === 'uslugi' && !/(^|\/)uslugi\//.test(rel)) continue
+  if (scope === 'uslugi' && !/(^|\/)(uslugi\/|kontakt\.html$)/.test(rel)) continue
   const html = fs.readFileSync(file, 'utf8')
   if (html.includes('data-deferred-hydration')) continue
   const list = []

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import { preload } from 'react-dom'
 import { Header } from '@/components/header'
 import { ContactActionsSection } from '@/components/sections/contact-actions'
 import { ru } from '@/lib/i18n/ru'
@@ -25,10 +26,13 @@ export const metadata: Metadata = withSocialMeta('ru', {
 })
 
 export default function RuKontaktPage() {
+  // Page background (LCP). preload() puts these hints at the top of <head>,
+  // ahead of the inlined CSS, so the browser starts the download right away;
+  // a <link> rendered here would land after ~200 KB of inline styles.
+  preload('/images/Background_1.webp', { as: 'image', fetchPriority: 'high', media: '(min-width: 768px)' })
+  preload('/images/Background_1-mobile.webp', { as: 'image', fetchPriority: 'high', media: '(max-width: 767px)' })
   return (
     <>
-      <link rel="preload" as="image" href="/images/Background_1.webp" fetchPriority="high" media="(min-width: 768px)" />
-      <link rel="preload" as="image" href="/images/Background_1-mobile.webp" fetchPriority="high" media="(max-width: 767px)" />
       <Header locale="ru" />
       <main
         className="relative overflow-hidden"
