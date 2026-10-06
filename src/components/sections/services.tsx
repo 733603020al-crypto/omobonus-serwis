@@ -170,7 +170,7 @@ export function Services({
     group
     relative
     [container-type:inline-size]
-    min-h-[168px]
+    ${CARD_BAKED[service.slug] ? 'md:min-h-[168px]' : 'min-h-[168px]'}
     py-4 pl-8 md:pl-10 pr-3
     flex
     items-center
@@ -189,7 +189,7 @@ export function Services({
       >
         {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
         <div className="relative z-[4] flex-none max-w-[48%] flex flex-col items-start">
-          <h2 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[26px] md:text-[length:min(28px,8.05cqi)]">
+          <h2 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
           {/* Same as the closed-section "Zobacz cennik" link on the service pages. */}

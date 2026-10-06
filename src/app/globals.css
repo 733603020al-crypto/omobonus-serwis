@@ -486,16 +486,17 @@
     display: none;
   }
   @media (max-width: 767px) {
-    /* Same proportions as on desktop (picture 800×336); on narrow phones the
-       168px min height takes over and the mobile picture below is used. */
+    /* Same proportions as on desktop (picture 800×336). Home cards have no
+       min height on phones, so the card follows the picture exactly. */
     .zakres-paper-card.services-card-baked {
       aspect-ratio: 800 / 336;
     }
   }
   /* Mobile picture (720×338, made for a 358×168 card) only where the card is
-     that narrow; from ~378px card width the desktop picture fits better. */
+     that narrow; from ~378px card width the desktop picture fits better.
+     Home cards always use the desktop picture at its own proportions. */
   @media (max-width: 409px) {
-    .zakres-paper-card.services-card-baked::before {
+    .zakres-paper-card.services-card-baked:not(.services-home-card)::before {
       background-image: var(--baked-m);
     }
   }
