@@ -383,7 +383,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               <div className="absolute inset-0 bg-black/55" />
               <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-3">
                 <div className="col-span-full row-start-1 mb-3">
-                  <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />

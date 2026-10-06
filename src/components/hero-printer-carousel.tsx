@@ -87,13 +87,24 @@ type CarouselVariant = keyof typeof VARIANT_CONFIG
 // the one new slide entering the hidden tier, ~5.5s before it becomes visible.
 // A tick is skipped if that slide isn't cached yet, so nothing appears empty.
 const LOOKAHEAD = 3
-// First next-up animation (slidePosters) is requested this long after the
+// First next-up animation (see ANIMATED_STILLS) is requested this long after the
 // initial preload, so it doesn't compete with the first screen; still leaves
 // ~4s before the first advance.
 const ANIM_DELAY_MS = 1500
 // Slide-0 print clip still not playable this long after it started loading:
 // fall back to the static image and the regular timer.
 const INTRO_FAIL_MS = 10000
+
+// Animated slides (looping animated WebP) -> their static frame 0. Such a slide
+// shows the still everywhere in the queue and plays only while it is in front:
+// on reaching the front it gets a fresh copy of the animation (new object URL,
+// so it always starts from frame 0), and on leaving it drops back to the still.
+// The rotation keeps its regular 5.5s cadence (no waiting for the loop's end).
+const ANIMATED_STILLS: Record<string, string> = {
+  '/images/serwis-laptopow-hero-animated.webp': '/images/serwis-laptopow-hero-animated-still.webp',
+  '/images/02_serwis-komputerow-stacjonarnych.webp': '/images/02_serwis-komputerow-stacjonarnych-static.webp',
+  '/images/Serwis_i_Naprawa_Drukarek_3D.webp': '/images/Serwis_i_Naprawa_Drukarek_3D-static.webp',
+}
 
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
@@ -148,9 +159,9 @@ export function HeroPrinterCarousel({
   posterSrc?: string
   // Optional per-slide static stand-ins (index-matched to `slides`) for heavy
   // animated slides (home hero). The poster takes the slide's place in the
-  // queue; the animated file is fetched only when that slide is next up and
-  // swapped in once cached — the rotation holds until it is, so the slide is
-  // already animated when it comes to the front.
+  // queue; the animated file is fetched only when that slide is next up (the
+  // rotation holds until it is cached) and plays only while the slide is in
+  // front — see ANIMATED_STILLS, which covers the other animated slides.
   slidePosters?: (string | undefined)[]
   // Optional smaller animated files for phones (index-matched, only for slides
   // with a poster): same frames and timing, lower resolution. Chosen once, when
@@ -217,8 +228,10 @@ export function HeroPrinterCarousel({
   const animReadyRef = useRef(animReady)
   animReadyRef.current = animReady
   const animRequestedRef = useRef<Set<number>>(new Set())
-  // Animated file actually requested per slide (desktop or mobile variant).
-  const animSrcRef = useRef<(string | undefined)[]>([])
+  // Fetched animation per slide (desktop or mobile variant), see ANIMATED_STILLS.
+  const animBlobRef = useRef<(Blob | undefined)[]>([])
+  // Animation playing on the front slide: a fresh object URL of its blob.
+  const [frontAnim, setFrontAnim] = useState<{ i: number; url: string } | null>(null)
   const [inView, setInView] = useState(true)
   const [slide0Ready, setSlide0Ready] = useState(!posterSrc)
   // Entrance animation only for slides shown by an advance, never on the
@@ -245,6 +258,14 @@ export function HeroPrinterCarousel({
     mobileStillsRef.current ??= window.matchMedia('(max-width: 767px)').matches ? mobileStills : []
     return mobileStillsRef.current[i]
   }
+  // Static frame of an animated slide (shown whenever it is not in front).
+  const stillOf = (i: number) => slidePosters?.[i] ?? ANIMATED_STILLS[slides[i]]
+  // Animation file of slide i, or undefined when it never animates (static
+  // slide, or a phone stand-in from mobileStills).
+  const animSrcFor = (i: number) => {
+    if (!stillOf(i) || stillFor(i)) return undefined
+    return mobileSlideAnims?.[i] && window.matchMedia('(max-width: 767px)').matches ? mobileSlideAnims[i] : slides[i]
+  }
 
   const requestAhead = (from: number) => {
     for (let k = 1; k <= lookahead; k++) {
@@ -253,7 +274,7 @@ export function HeroPrinterCarousel({
       requestedRef.current.add(i)
       // Clip slide: its frame-0 poster, not the static image (the fallback
       // fetches that one itself).
-      const src = i === clipAt && introRef.current !== 'off' ? introVideo!.poster : slidePosters?.[i] ?? stillFor(i) ?? slides[i]
+      const src = i === clipAt && introRef.current !== 'off' ? introVideo!.poster : stillFor(i) ?? stillOf(i) ?? slides[i]
       preloadImages([src]).then(() =>
         setLoaded((prev) => {
           if (prev[i]) return prev
@@ -265,24 +286,35 @@ export function HeroPrinterCarousel({
     }
   }
 
-  // Animated file of a slide that has a poster; fetched only when it is next up.
+  // Animation of an animated slide; fetched (after window "load") when it is
+  // next up or in front. Reduced motion keeps the still.
   const requestAnim = (i: number) => {
-    if (!slidePosters?.[i] || animRequestedRef.current.has(i)) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (animRequestedRef.current.has(i)) return
+    const animSrc = animSrcFor(i)
+    if (!animSrc || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     animRequestedRef.current.add(i)
-    const animSrc = mobileSlideAnims?.[i] && window.matchMedia('(max-width: 767px)').matches ? mobileSlideAnims[i] : slides[i]
-    animSrcRef.current[i] = animSrc
-    preloadImages([animSrc]).then(() =>
+    const done = () =>
       setAnimReady((prev) => {
         if (prev[i]) return prev
         const next = [...prev]
         next[i] = true
         return next
       })
-    )
+    const run = () =>
+      fetch(animSrc)
+        .then((r) => (r.ok ? r.blob() : Promise.reject()))
+        .then((blob) => {
+          animBlobRef.current[i] = blob
+        })
+        // Failed fetch: no blob, the slide simply stays on its still (the
+        // rotation is not held for it).
+        .catch(() => {})
+        .finally(done)
+    if (document.readyState === 'complete') run()
+    else window.addEventListener('load', run, { once: true })
   }
   const animPending = (i: number) =>
-    !!slidePosters?.[i] && !animReadyRef.current[i] &&
+    !!animSrcFor(i) && !animReadyRef.current[i] &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   // Print clip on slide `clipAt`: wait (poster, clip loading) -> ready (cached,
@@ -398,7 +430,7 @@ export function HeroPrinterCarousel({
 
     const runPreload = () => {
       requestAhead(0)
-      if (slidePosters && !opening) animTimer = window.setTimeout(() => requestAnim(1 % slideCount), ANIM_DELAY_MS)
+      if (!opening) animTimer = window.setTimeout(() => requestAnim(1 % slideCount), ANIM_DELAY_MS)
     }
 
     const schedule = () => {
@@ -441,7 +473,8 @@ export function HeroPrinterCarousel({
 
     const swap = () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-      preloadImages([slides[0]]).then(() => {
+      // An animated slide 0 joins as its still (it animates via frontAnim).
+      preloadImages([stillOf(0) ?? slides[0]]).then(() => {
         if (!cancelled) setSlide0Ready(true)
       })
     }
@@ -463,9 +496,12 @@ export function HeroPrinterCarousel({
   useEffect(() => {
     if (!opening) return
     mountedAtRef.current = performance.now()
-    preloadImages([slides[0]]).then(() =>
+    preloadImages([stillOf(0) ?? slides[0]]).then(() =>
       setLoaded((prev) => (prev[0] ? prev : [true, ...prev.slice(1)]))
     )
+    // Slide 0 is next up behind the intro; its animation (if any) is fetched
+    // after window "load" so it can start as soon as the slide is in front.
+    requestAnim(0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -473,6 +509,7 @@ export function HeroPrinterCarousel({
   // slides are cached (slow network: the intro simply stays longer).
   useEffect(() => {
     if (!opening || !openingOn || !ready || !loaded[0] || !inView) return
+    if (animPending(0)) return
     const wait = Math.max(0, mountedAtRef.current + opening.minMs - performance.now())
     const id = window.setTimeout(() => {
       setOpeningState('leaving')
@@ -481,7 +518,7 @@ export function HeroPrinterCarousel({
     }, wait)
     return () => window.clearTimeout(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openingOn, ready, loaded, inView])
+  }, [openingOn, ready, loaded, inView, animReady])
 
   // The intro slides out to the back like any advanced slide, then unmounts.
   useEffect(() => {
@@ -497,7 +534,8 @@ export function HeroPrinterCarousel({
     if (!advanceOnSecondReady || slideCount < 2) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     requestedRef.current.add(1)
-    preloadImages([stillFor(1) ?? slides[1]]).then(() =>
+    requestAnim(1)
+    preloadImages([stillFor(1) ?? stillOf(1) ?? slides[1]]).then(() =>
       setLoaded((prev) => {
         if (prev[1]) return prev
         const next = [...prev]
@@ -513,6 +551,8 @@ export function HeroPrinterCarousel({
   // lets that position paint before the move starts.
   useEffect(() => {
     if (!advanceOnSecondReady || quickAdvanced || !loaded[1] || active !== 0) return
+    // ...and its animation, so it starts the moment the slide is in front.
+    if (animPending(1)) return
     let raf2 = 0
     const raf1 = requestAnimationFrame(() => {
       raf2 = requestAnimationFrame(() => {
@@ -526,7 +566,7 @@ export function HeroPrinterCarousel({
       cancelAnimationFrame(raf2)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loaded, active, quickAdvanced])
+  }, [loaded, active, quickAdvanced, animReady])
 
   useEffect(() => {
     const shown = openingOn ? -1 : active
@@ -542,8 +582,46 @@ export function HeroPrinterCarousel({
     if (active !== 0 || requestedRef.current.size > 1) requestAhead(active)
     // Next-up animation; the very first one waits for the timer in the load effect.
     if (active !== 0 || animRequestedRef.current.size > 0) requestAnim((active + 1) % slideCount)
+    // Front slide's own animation (normally already fetched as next-up; slide 0
+    // on the first paint waits for window "load" inside requestAnim).
+    if (!openingOn) requestAnim(active)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active])
+  }, [active, openingOn])
+
+  // Start the front slide's animation from frame 0: a fresh object URL of its
+  // blob, decoded before the swap so the still is replaced without a gap.
+  // Any other slide (and the front one once it leaves) shows its still.
+  useEffect(() => {
+    const i = openingOn ? -1 : active
+    const blob = i >= 0 && animReady[i] ? animBlobRef.current[i] : undefined
+    if (!blob) {
+      setFrontAnim(null)
+      return
+    }
+    if (frontAnim?.i === i) return
+    if (frontAnim) setFrontAnim(null)
+    let cancelled = false
+    const url = URL.createObjectURL(blob)
+    const img = new window.Image()
+    img.src = url
+    img.decode().catch(() => {}).then(() => {
+      if (cancelled) URL.revokeObjectURL(url)
+      else setFrontAnim({ i, url })
+    })
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, openingOn, animReady])
+
+  // Release the previous animation copy once its slide has switched back.
+  useEffect(() => {
+    if (!frontAnim) return
+    const { url } = frontAnim
+    return () => {
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000)
+    }
+  }, [frontAnim])
 
   // Spotlight carousels hold the current slide while the pointer is over the
   // hero, so the light isn't cut off by an advance. Hover time still counts
@@ -834,7 +912,7 @@ export function HeroPrinterCarousel({
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
-              src={slidePosters?.[i] ? (animReady[i] ? animSrcRef.current[i] ?? src : slidePosters[i]) : stillFor(i) ?? src}
+              src={frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src}
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}
