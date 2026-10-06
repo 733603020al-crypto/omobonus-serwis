@@ -67,6 +67,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-niszczarek': 1.2, // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych': 1.2, // kopia serwis-niszczarek
   'serwis-drukarek-dtg': 1.2, // kopia serwis-drukarek-do-kart-plastikowych
+  'serwis-drukarek-dtf': 1.2, // kopia serwis-drukarek-do-kart-plastikowych
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -278,7 +279,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-drukarek-termicznych',
   'serwis-niszczarek', // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach
   'serwis-drukarek-do-kart-plastikowych',
-  'serwis-drukarek-dtg',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -287,7 +288,7 @@ const PAGE_CLASS_SLUGS = [
   'serwis-drukarek-3d', 'serwis-plotterow', 'serwis-drukarek-iglowych',
   'naprawa-drukarek', 'wynajem-drukarek', 'drukarka-zastepcza',
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
-  'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg',
+  'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -601,7 +602,7 @@ export function ServicePageTemplate({
                           mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
                         />
-                      ) : slug === 'serwis-drukarek-dtg' ? (
+                      ) : (slug === 'serwis-drukarek-dtg' || slug === 'serwis-drukarek-dtf') ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           variant="home"

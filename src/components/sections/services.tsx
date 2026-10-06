@@ -147,7 +147,7 @@ export function Services({
           'druk-3d-na-zamowienie',
           'serwis-niszczarek',
           'serwis-drukarek-do-kart-plastikowych',
-          'serwis-drukarek-dtg',
+          'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
         ].includes(service.slug)
     )
     .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))

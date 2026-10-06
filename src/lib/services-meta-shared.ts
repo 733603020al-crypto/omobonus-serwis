@@ -5,6 +5,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
   'serwis-drukarek-do-kart-plastikowych': '/images/karty-carousel-v1-01.webp',
   'serwis-drukarek-dtg': '/images/dtg-carousel-v1-01.webp',
+  'serwis-drukarek-dtf': '/images/dtg-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -45,6 +46,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach', 'lanberg'],
   'serwis-drukarek-do-kart-plastikowych': ['evolis', 'zebra', 'hid', 'magicard', 'entrust', 'matica', 'idp', 'hiti', 'dascom', 'swiftcolor', 'edisecure'],
   'serwis-drukarek-dtg': ['epson', 'brother', 'kornit', 'ricoh', 'polyprint', 'aeoon', 'mr', 'roq', 'omniprint', 'coldesi', 'pigment', 'anajet', 'roland-dg', 'mimaki', 'azonprinter', 'resolute', 'lawson', 'durst'],
+  'serwis-drukarek-dtf': ['epson', 'brother', 'kornit', 'ricoh', 'polyprint', 'aeoon', 'mr', 'roq', 'omniprint', 'coldesi', 'pigment', 'anajet', 'roland-dg', 'mimaki', 'azonprinter', 'resolute', 'lawson', 'durst'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
@@ -71,7 +73,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg']
+export const noindexSlugs: string[] = ['serwis-niszczarek', 'serwis-drukarek-do-kart-plastikowych', 'serwis-drukarek-dtg', 'serwis-drukarek-dtf']
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.
