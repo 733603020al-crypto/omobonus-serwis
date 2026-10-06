@@ -132,30 +132,49 @@ const LOCALE_NAV: Record<Locale, {
    Mega menu data
    ========================= */
 
-const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
+// Three groups; desktop shows them as 3 columns from 1280 px and as 2 columns
+// below (Komputery + Druk 3D stacked on the left, Drukarki on the right). The
+// mobile drawer lists the same groups in one column under "Usługi".
+export type ServiceGroup = { title: string; items: { label: string; href: string; icon: string }[] }
+
+const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
   {
+    title: { pl: 'Komputery i IT', uk: 'Комп\'ютери та ІТ', ru: 'Компьютеры и IT' },
     items: [
-      { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: { pl: 'Laptopy', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
       { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
       { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+    ],
+  },
+  {
+    title: { pl: 'Drukarki', uk: 'Принтери', ru: 'Принтеры' },
+    items: [
       { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
       { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
       { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
       { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
       { label: { pl: 'Drukarek do kart plastikowych', uk: 'Принтерів пластикових карток', ru: 'Принтеров пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
+      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
+      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
   {
+    title: { pl: 'Druk 3D i urządzenia specjalne', uk: '3D-друк і спеціальні пристрої', ru: '3D-печать и специальные устройства' },
     items: [
       { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
       { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
       { label: { pl: 'Niszczarek', uk: 'Шредерів', ru: 'Шредеров' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
       { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
-      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
     ],
   },
+]
+
+// Grid placement per group: 2 columns below 1280 px, 3 columns from 1280 px.
+const MEGA_GROUP_CLASS = [
+  'col-start-1 row-start-2 pr-3',
+  'col-start-2 row-start-2 row-span-2 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:row-span-1 min-[1280px]:pr-3',
+  'col-start-1 row-start-3 mt-3 pr-3 min-[1280px]:col-start-3 min-[1280px]:row-start-2 min-[1280px]:mt-0 min-[1280px]:border-l min-[1280px]:border-[#bfa76a]/25 min-[1280px]:pl-3 min-[1280px]:pr-0',
 ]
 
 /* =========================
@@ -231,22 +250,17 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     }
   }, [isOpen])
 
-  useEffect(() => {
-    if (!isOpen) return
+  // Closing on an outside tap / overlay click, Escape, the Tab trap and focus
+  // return are all handled by the Radix drawer itself. A custom pointerdown
+  // listener used to close it earlier, so the click of the same tap landed on
+  // whatever was underneath (reopening the menu or following a page link).
 
-    const handlePointerDown = (event: PointerEvent) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('pointerdown', handlePointerDown)
-    return () =>
-      document.removeEventListener('pointerdown', handlePointerDown)
-  }, [isOpen])
+  const serviceGroups: ServiceGroup[] = MEGA_MENU.map((group) => ({
+    title: group.title[locale],
+    items: group.items
+      .filter((item) => !item.locales || item.locales.includes(locale))
+      .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon })),
+  }))
 
   const scrollToSection = (id: string) => {
     const performScroll = () => {
@@ -363,19 +377,22 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           {/* Mega menu panel */}
           {isServicesOpen && (
             <div
-              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
+              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[860px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
               style={{ backgroundImage: `var(--bg-parchment)` }}
             >
               <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
-                <div className="col-span-2 mb-3">
+              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-3">
+                <div className="col-span-full row-start-1 mb-3">
                   <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                 </div>
                 {MEGA_MENU.map((col, i) => (
-                  <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
+                  <div key={i} className={MEGA_GROUP_CLASS[i]}>
+                    <p className="mb-1 px-2 font-cormorant text-[15px] font-semibold text-[#bfa76a]">
+                      {col.title[locale]}
+                    </p>
                     <div className="flex flex-col divide-y divide-[#bfa76a]/25">
                       {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
                         <Link
@@ -457,12 +474,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                 setIsOpen(false)
               }
             }}
-            homeSectionHref={homeSectionHref}
-            onServicesClick={(e) => {
-              e.preventDefault()
-              scrollToSection('uslugi')
-            }}
             navServices={navServices}
+            servicesHeader={megaMenuHeader}
+            serviceGroups={serviceGroups}
             aboutHref={aboutHref}
             navAbout={navAbout}
             contactHref={contactHref}

@@ -21,7 +21,7 @@ const CONTENT_CLASS =
 const FORM_CLASS =
   'inline-flex items-center justify-center gap-2 min-w-[200px] rounded-full px-8 py-[14px] md:py-[10px] font-sans font-semibold text-[16px] transition-all duration-300 ease-out hover:-translate-y-1 bg-transparent text-[#bfa76a] border border-[#bfa76a]/80 hover:bg-[#bfa76a]/10 hover:shadow-[0_0_20px_rgba(191,167,106,0.35)] w-full'
 const CLOSE_CLASS =
-  'ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-1 right-1 flex items-center justify-center p-3.5 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none'
+  'data-[state=open]:bg-secondary absolute top-1 right-1 flex items-center justify-center p-3.5 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:outline-hidden focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#f3df9a] disabled:pointer-events-none'
 
 const source = `(function(){
 if(window.__premenu)return;window.__premenu=1;
