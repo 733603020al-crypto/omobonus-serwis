@@ -320,6 +320,10 @@ export interface ServicePageHeadings {
   // Phone only: the middle line is a bit too wide for 40px — scale this H1
   // with the screen so it stays 3 lines, like PL.
   fitMobile?: boolean
+  // Podpis pod drugą linią H1 (styl jak napis „Pełny wykaz usług i cen…” pod hero)
+  tagline?: string
+  // Fragment drugiej linii H1 w kolorze podpisu (#bfa76a), np. „DTG”
+  accent?: string
   h2?: string
 }
 
@@ -689,7 +693,10 @@ export function ServicePageTemplate({
                       ) : headings.lines ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[1]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.accent && headings.lines[1].includes(headings.accent) ? (<>{headings.lines[1].split(headings.accent)[0]}<span className="text-[#bfa76a]">{headings.accent}</span>{headings.lines[1].split(headings.accent).slice(1).join(headings.accent)}</>) : headings.lines[1]}{' '}</span>
+                          {headings.tagline && (
+                            <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
+                          )}
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
                         </>
                       ) : (
