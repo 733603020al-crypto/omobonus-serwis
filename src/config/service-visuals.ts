@@ -80,6 +80,15 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-karty-elektronika.webp' },
     'naprawy-oprogramowanie': { icon: '/images/accordion-icon-karty-oprogramowanie.webp' },
   },
+  'serwis-drukarek-dtg': {
+    'naprawy-glowica': { icon: '/images/accordion-icon-dtg-glowica.webp' },
+    'naprawy-atrament': { icon: '/images/accordion-icon-dtg-atrament.webp' },
+    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-dtg-stacja-serwisowa.webp' },
+    'naprawy-karetka': { icon: '/images/accordion-icon-dtg-karetka.webp' },
+    'naprawy-stol': { icon: '/images/accordion-icon-dtg-stol.webp' },
+    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-dtg-elektronika.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtg-oprogramowanie.webp' },
+  },
   // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },
