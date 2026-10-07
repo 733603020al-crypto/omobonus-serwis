@@ -1083,15 +1083,29 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
     return () => { window.removeEventListener('load', warm); window.clearTimeout(timer) }
   }, [])
 
-  // Определение размера экрана
+  // Определение размера экрана. Сервер и гидрация — всегда desktop-ветка. Всё, что
+  // зависит от isMobile, видно только в открытом разделе, поэтому на телефоне
+  // переключаемся не сразу после загрузки (это была лишняя полная перерисовка
+  // прайса), а вместе с первым открытием раздела (handleSectionChange) — в том
+  // же рендере. Ресайз — только при реальной смене ширины (на телефоне resize
+  // приходит и от панели адреса при прокрутке).
   useEffect(() => {
+    let lastWidth = window.innerWidth
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      if (window.innerWidth === lastWidth) return
+      lastWidth = window.innerWidth
+      setIsMobile(lastWidth < 768)
     }
-    checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+  const refocusSectionRef = useRef<string | null>(null)
+  useLayoutEffect(() => {
+    const id = refocusSectionRef.current
+    refocusSectionRef.current = null
+    if (!id || (document.activeElement && document.activeElement !== document.body)) return
+    sectionRefs.current[id]?.querySelector<HTMLElement>('[data-slot="accordion-trigger"]')?.focus({ preventScroll: true })
+  }, [isMobile])
 
   // Закрытие маленьких tooltip при клике вне их области на мобильных
   useEffect(() => {
@@ -1145,6 +1159,14 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
 
   const handleSectionChange = (value: string | null) => {
+    const nowMobile = window.innerWidth < 768
+    if (nowMobile !== isMobile) {
+      // Переключение вида меняет обёртку заголовка у части разделов (Naprawy) —
+      // запоминаем раздел с фокусом, чтобы вернуть фокус на его кнопку.
+      const active = document.activeElement
+      refocusSectionRef.current = Object.keys(sectionRefs.current).find(id => active && sectionRefs.current[id]?.contains(active)) ?? null
+      setIsMobile(nowMobile)
+    }
     if (value === 'faq' && openSection !== 'faq' && faqItemRef.current) {
       const itemEl = faqItemRef.current
       const nextEl = itemEl.nextElementSibling as HTMLElement | null

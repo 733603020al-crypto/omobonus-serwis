@@ -7,6 +7,7 @@ import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
 /* =========================
    Fonts
@@ -164,6 +165,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
         <ScrollToTop />
+        <GoldAnimationPause />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 

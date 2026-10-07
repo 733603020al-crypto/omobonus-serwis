@@ -3598,6 +3598,8 @@
   0% { background-position: 100% 0; }
   35%, 100% { background-position: 0 0; }
 }
+/* off-screen: paused by GoldAnimationPause (these run on the main thread only) */
+.gold-border-flow[data-anim-off]::before, .gold-text-sweep[data-anim-off] { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .gold-border-flow::before, .gold-text-sweep { animation: none; }
 }

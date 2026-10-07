@@ -73,17 +73,17 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     const carouselContainerRef = useRef<HTMLDivElement | null>(null)
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
     const opinieTitleRef = useRef<HTMLDivElement | null>(null)
-    const offsetRef = useRef(0)
     // Parchment behind the review cards: fetched only when the block is near.
     const sectionRef = useRef<HTMLElement | null>(null)
     const bgNear = useNearViewport(sectionRef)
-    const rafRef = useRef<number | null>(null)
+    const syncRef = useRef<(() => void) | null>(null)
     const isRunningRef = useRef(true)
     const isHoverRef = useRef(false)
 
     const cardWidth = 320
     const gap = 24
-    const speed = 0.35
+    // 0.35 px na klatkę przy 60 Hz — dotychczasowa prędkość
+    const speedPxPerSecond = 0.35 * 60
 
     useEffect(() => {
         const el = opinieTitleRef.current
@@ -118,39 +118,33 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         const track = trackRef.current
         const container = carouselContainerRef.current
 
-        const animate = () => {
-            if (isRunningRef.current && !isHoverRef.current) {
-                const totalWidth = (cardWidth + gap) * reviews.length
-                offsetRef.current += speed
-                if (offsetRef.current >= totalWidth) {
-                    offsetRef.current = 0
-                }
-                track.style.transform = `translateX(-${offsetRef.current}px)`
-            }
-            rafRef.current = requestAnimationFrame(animate)
-        }
+        // Ruch taśmy jako animacja transform (Web Animations): przeglądarka przesuwa
+        // ją sama, poza głównym wątkiem, i w tempie zależnym od czasu, a nie od liczby
+        // klatek — ta sama prędkość na ekranach 60 i 120 Hz (wcześniej 0.35 px/klatkę).
+        const totalWidth = (cardWidth + gap) * reviews.length
+        const anim = track.animate(
+            [{ transform: 'translateX(0px)' }, { transform: `translateX(-${totalWidth}px)` }],
+            { duration: (totalWidth / speedPxPerSecond) * 1000, iterations: Infinity, easing: 'linear' }
+        )
+        anim.pause()
 
-        const startAnimation = () => {
-            if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
+        let visible = false
+        const sync = () => {
+            if (visible && isRunningRef.current && !isHoverRef.current) anim.play()
+            else anim.pause()
         }
-        const stopAnimation = () => {
-            if (rafRef.current !== null) {
-                cancelAnimationFrame(rafRef.current)
-                rafRef.current = null
-            }
-        }
+        syncRef.current = sync
 
-        // Only run the scroll loop while the carousel is actually visible on screen —
-        // avoids burning main-thread time on an animation nobody sees yet (e.g. during initial load).
+        // ruch tylko gdy widać co najmniej połowę karuzeli
         const sectionObserver = new IntersectionObserver(([entry]) => {
-            // ruch tylko gdy widać co najmniej połowę karuzeli
-            if (entry.intersectionRatio >= 0.5) startAnimation()
-            else stopAnimation()
+            visible = entry.intersectionRatio >= 0.5
+            sync()
         }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
         sectionObserver.observe(container)
 
         const handleVisibility = () => {
             isRunningRef.current = !document.hidden
+            sync()
         }
 
         document.addEventListener("visibilitychange", handleVisibility)
@@ -158,7 +152,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         return () => {
             document.removeEventListener("visibilitychange", handleVisibility)
             sectionObserver.disconnect()
-            stopAnimation()
+            syncRef.current = null
+            anim.cancel()
         }
     }, [reviews])
 
@@ -253,8 +248,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                 <div
                     ref={carouselContainerRef}
                     className="relative w-screen -mx-[calc((100vw-100%)/2)] overflow-visible"
-                    onMouseEnter={() => (isHoverRef.current = true)}
-                    onMouseLeave={() => (isHoverRef.current = false)}
+                    onMouseEnter={() => { isHoverRef.current = true; syncRef.current?.() }}
+                    onMouseLeave={() => { isHoverRef.current = false; syncRef.current?.() }}
                 >
                     <div
                         ref={trackRef}
@@ -264,7 +259,10 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             willChange: "transform",
                         }}
                     >
-                        {[...reviews, ...reviews].map((review, i) => {
+                        {/* Second copy = seamless loop. It starts a full set (~3.4k px) to the
+                            right, so it is only needed once the strip can move: render it when
+                            the block comes near (also skips it in HTML and hydration on load). */}
+                        {(bgNear ? [...reviews, ...reviews] : reviews).map((review, i) => {
                             const localizedText =
                                 locale === 'uk' ? (review.text_uk || review.text) :
                                 locale === 'ru' ? (review.text_ru || review.text) :
@@ -278,6 +276,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             return (
                             <div
                                 key={i}
+                                aria-hidden={i >= reviews.length || undefined}
                                 style={{ width: `${cardWidth}px`, ...(bgNear ? {} : { '--review-bg': 'none' }) } as React.CSSProperties}
                                 className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >

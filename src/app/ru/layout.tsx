@@ -7,6 +7,7 @@ import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -148,6 +149,7 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
         <ScrollToTop />
+        <GoldAnimationPause />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
