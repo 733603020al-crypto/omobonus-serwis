@@ -501,11 +501,8 @@ const usesSharedParchmentList = (serviceSlug: string, sectionId: string) =>
     (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')
   )
 
-// Pytania FAQ na druk-3d-na-zamowienie, które mają semantycznie być <h2>
-// (reszta pytań FAQ — na tej i innych stronach — pozostaje <h4> bez zmian).
-const DRUK3D_FAQ_H2_IDS = new Set(['faq-3', 'faq-6', 'faq-13', 'faq-16', 'faq-17'])
-const isDruk3DFaqH2 = (slug: string, sectionId: string, subcategoryId: string) =>
-  slug === 'druk-3d-na-zamowienie' && sectionId === 'faq' && DRUK3D_FAQ_H2_IDS.has(subcategoryId)
+// Semantyka nagłówków akordeonu usług: tytuł sekcji = <h2>, podsekcja / pytanie FAQ = <h3>.
+// Tylko typ elementu — klasy i wygląd bez zmian.
 
 // Подсвietla jednostki "zł/gram" i "zł/h" złotym kolorem wewnątrz jednolinijkowej ceny
 // (np. "0,30 zł/gram + 8 zł/h") — reszta tekstu (liczby, "+") pozostaje biała.
@@ -1990,7 +1987,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                             )}>
                               <div data-open-header-hover-text="true" className="flex-1 min-w-0 pr-2">
                                 {(() => {
-                                  const TitleTag = isDruk3DCustomSection(service.slug, section.id) ? 'h2' : 'div'
+                                  const TitleTag = 'h2'
                                   const hasWynajemA3Footer = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && section.id === 'akordeon-2' && isSectionOpen(section.id) && section.footer
                                   const titleNode = (
                                     <TitleTag className={cn(
@@ -2613,11 +2610,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 )}>
                                   <div data-subcategory-title="true">
                                     {(() => {
-                                      const TitleTag = isDruk3DFaqH2(service.slug, section.id, subcategory.id)
-                                        ? 'h2'
-                                        : service.slug === 'druk-3d-na-zamowienie' && section.id === 'faq'
-                                          ? 'div'
-                                          : 'h4'
+                                      const TitleTag = 'h3'
                                       const titleClassName = `${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || service.slug === 'wynajem-drukarek') ? 'font-cormorant' : 'font-table-main'} ${isRepairAccordionLayout && (isRepairSection || section.id === 'faq' || (service.slug === 'wynajem-drukarek' && section.id === 'akordeon-1')) ? 'leading-tight' : isRepairAccordionLayout && service.slug === 'wynajem-drukarek' && section.id === 'akordeon-2' ? 'leading-[1.05]' : service.slug === 'drukarka-zastepcza' && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? 'leading-[1.2] md:leading-[1.3]' : 'leading-[1.3]'} ${section.id === 'faq'
                                         ? 'faq-question-title-text text-[17px] md:text-[20px] font-semibold text-[#3A2817] mb-0'
                                         : usesParchmentList

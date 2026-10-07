@@ -707,11 +707,16 @@ export function ServicePageTemplate({
                       )}
                     </h1>
 
-                    {headings.h2 && (
-                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
-                        {headings.h2}
-                      </h2>
-                    )}
+                    {headings.h2 && (() => {
+                      // Lista marek „(HP, Epson, …)” pod H1 to opis, nie sekcja — zwykły <div> z tym samym wyglądem.
+                      // naprawa-drukarek i opisowe podtytuły (np. druk-3d) zostają <h2>.
+                      const SubTag = headings.h2.trim().startsWith('(') && slug !== 'naprawa-drukarek' ? 'div' : 'h2'
+                      return (
+                        <SubTag className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
+                          {headings.h2}
+                        </SubTag>
+                      )
+                    })()}
                   </div>
                 </div>
               </div>
