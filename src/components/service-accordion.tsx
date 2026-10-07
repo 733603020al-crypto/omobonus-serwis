@@ -845,7 +845,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
-  'serwis-drukarek-dtg',
+  'serwis-drukarek-dtg', 'serwis-drukarek-sublimacyjnych',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
@@ -866,7 +866,7 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-drukarek-laserowych',
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
-  'serwis-drukarek-dtg',
+  'serwis-drukarek-dtg', 'serwis-drukarek-sublimacyjnych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
@@ -1066,8 +1066,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isOutsourcingService = service.slug === 'outsourcing-it'
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
-  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoTitleDtg : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.konserwacjaPromoTitleDtg : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1889,7 +1889,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-karty-czyszczenie-v3.webp'
-                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-dtg'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
                                 ? '/images/accordion-icon-dtg-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
@@ -1915,7 +1915,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-karty-naprawy-v3.webp'
-                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-dtg'
+                                : useWarmSectionIcons && section.id === 'naprawy' && (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
                                 ? '/images/accordion-icon-dtg-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
                                 ? '/images/accordion-icon-naprawy-termiczne-v3.webp'
@@ -2432,7 +2432,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
                         >
                           {/* DTG: opis dłuższy niż jedna linia — na desktopie zawijany jak na telefonie */}
-                          {isMobile || service.slug === 'serwis-drukarek-dtg' ? konserwacjaPromoDescriptionResolved : (
+                          {isMobile || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? konserwacjaPromoDescriptionResolved : (
                             <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
                           )}
                         </div>

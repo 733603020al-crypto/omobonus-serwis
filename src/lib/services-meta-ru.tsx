@@ -20,6 +20,13 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     accent: 'DTG',
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
+  'serwis-drukarek-sublimacyjnych': {
+    h1: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'DTG-принтеров', 'во Вроцлаве'],
+    tagline: 'печать прямо на одежде (Direct to Garment)',
+    accent: 'DTG',
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -101,6 +108,13 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
     ],
   },
   'serwis-drukarek-dtg': {
+    items: [
+      'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
+      'Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин.',
+      'Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде.',
+    ],
+  },
+  'serwis-drukarek-sublimacyjnych': {
     items: [
       'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
       'Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин.',
@@ -193,6 +207,7 @@ export const imageAltRu: Record<string, string> = {
   'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
   'serwis-drukarek-dtg': 'DTG-принтер для печати на футболках',
+  'serwis-drukarek-sublimacyjnych': 'DTG-принтер для печати на футболках',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -229,6 +244,10 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
     description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Прозрачный прайс — стоимость ремонта согласовываем до его выполнения.',
   },
   'serwis-drukarek-dtg': {
+    title: 'Сервис и ремонт DTG-принтеров — Epson, Brother, Kornit',
+    description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — открытый прайс: прочистка головки, белые чернила, сервисная станция, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
+  },
+  'serwis-drukarek-sublimacyjnych': {
     title: 'Сервис и ремонт DTG-принтеров — Epson, Brother, Kornit',
     description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — открытый прайс: прочистка головки, белые чернила, сервисная станция, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
   },
@@ -310,6 +329,7 @@ export const labelsRu: ServicePageLabels = {
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
     'serwis-drukarek-dtg': 'Есть проблема с DTG-принтером?',
+    'serwis-drukarek-sublimacyjnych': 'Есть проблема с DTG-принтером?',
     'wynajem-drukarek': 'Есть проблема с принтером?',
     'drukarka-zastepcza': 'Есть проблема с принтером?',
   },
