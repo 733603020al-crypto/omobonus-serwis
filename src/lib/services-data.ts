@@ -33,6 +33,8 @@ import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
 import { createUpsPricingSections } from './services-data-ups'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
+import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
+import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
 
 export const services: ServiceData[] = [
   {
@@ -156,6 +158,25 @@ export const services: ServiceData[] = [
     description: 'Serwis i naprawa drukarek do kart plastikowych.',
     pricingSections: createKartyPricingSections(),
     priceTooltip: KARTY_PRICE_TOOLTIP,
+  },
+  // Nowa strona w przygotowaniu (DTG): tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs).
+  {
+    slug: 'serwis-drukarek-dtg',
+    title: 'Serwis i naprawa drukarek DTG',
+    subtitle: 'Serwis i naprawa drukarek DTG we Wrocławiu',
+    icon: '/images/dtg-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek DTG do nadruku na koszulkach.',
+    pricingSections: createDtgPricingSections(),
+    priceTooltip: DTG_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-dtf',
+    title: 'Serwis i naprawa drukarek DTF',
+    subtitle: 'Serwis i naprawa drukarek DTF we Wrocławiu',
+    icon: '/images/dtf-carousel-v3-01.webp',
+    description: 'Serwis i naprawa drukarek DTF do druku transferów na folii.',
+    pricingSections: createDtfPricingSections(),
+    priceTooltip: DTF_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

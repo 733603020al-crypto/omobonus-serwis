@@ -17,6 +17,20 @@ export const headings: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
   },
+  'serwis-drukarek-dtg': {
+    h1: 'Serwis i naprawa drukarek DTG we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek DTG', 'we Wrocławiu'],
+    tagline: 'druk bezpośrednio na odzieży (Direct to Garment)',
+    accent: 'DTG',
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  },
+  'serwis-drukarek-dtf': {
+    h1: 'Serwis i naprawa drukarek DTF we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek DTF', 'we Wrocławiu'],
+    tagline: 'druk na folii z transferem (Direct to Film)',
+    accent: 'DTF',
+    h2: '(Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec, DTF Station / Prestige, …)',
+  },
 
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
@@ -109,6 +123,21 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
     ],
   },
+  // Strona w przygotowaniu (noindex)
+  'serwis-drukarek-dtg': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
+      'Twoja drukarka DTG do nadruku na koszulkach — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek DTG dla drukarni tekstylnych i firm z nadrukiem na odzieży.',
+    ],
+  },
+  'serwis-drukarek-dtf': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
+      'Twoja drukarka DTF do druku na folii — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek DTF dla drukarni, firm z nadrukiem na odzieży i produkcji transferów.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -183,6 +212,8 @@ export const imageAlt: Record<string, string> = {
   'serwis-niszczarek': 'Serwis i naprawa niszczarek',
   'naprawa-zasilaczy-ups': 'Zasilacz awaryjny UPS',
   'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
+  'serwis-drukarek-dtg': 'Drukarka DTG do nadruku na koszulkach',
+  'serwis-drukarek-dtf': 'Drukarka DTF do druku na folii',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -222,6 +253,15 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Serwis drukarek do kart plastikowych — Zebra, Evolis, Fargo',
     description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Przejrzysty cennik — koszt naprawy ustalamy przed jej wykonaniem.',
+  },
+  // Strona w przygotowaniu (noindex)
+  'serwis-drukarek-dtg': {
+    title: 'Serwis i naprawa drukarek DTG — Epson, Brother, Kornit',
+    description: 'Serwis i naprawa drukarek DTG we Wrocławiu — jawny cennik: udrażnianie głowicy, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
+  },
+  'serwis-drukarek-dtf': {
+    title: 'Serwis drukarek DTF Wrocław — naprawa i konserwacja',
+    description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
@@ -311,6 +351,8 @@ export const labels: ServicePageLabels = {
     'serwis-niszczarek': 'Masz problem z niszczarką?',
     'naprawa-zasilaczy-ups': 'Masz problem z UPS-em?',
     'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
+    'serwis-drukarek-dtg': 'Masz problem z drukarką DTG?',
+    'serwis-drukarek-dtf': 'Masz problem z drukarką DTF?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',
   },

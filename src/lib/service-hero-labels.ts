@@ -36,6 +36,19 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Nie koduje kart',
     ],
 
+    'serwis-drukarek-dtg': [
+        'Zapchana głowica',
+        'Pasy na nadruku',
+        'Biały atrament',
+        'Konserwacja DTG',
+    ],
+    'serwis-drukarek-dtf': [
+        'Zapchana głowica',
+        'Pasy na wydruku',
+        'Biały atrament',
+        'Konserwacja DTF',
+    ],
+
     'serwis-niszczarek': [
         'Zacina papier',
         'Nie wciąga papieru',

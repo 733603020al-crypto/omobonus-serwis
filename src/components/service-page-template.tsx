@@ -67,6 +67,8 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-niszczarek': 1.2,
   'serwis-drukarek-do-kart-plastikowych': 1.2,
   'naprawa-zasilaczy-ups': 1.2,
+  'serwis-drukarek-dtg': 1.2,
+  'serwis-drukarek-dtf': 1.2,
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -247,6 +249,34 @@ const UPS_HERO_SLIDES = [
 const UPS_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const UPS_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+// serwis-drukarek-dtg: 6 DTG-printer renders cropped to their own alpha bbox
+// (see public/images/dtg-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const DTG_HERO_SLIDES = [
+  '/images/dtg-carousel-v1-01.webp',
+  '/images/dtg-carousel-v1-02.webp',
+  '/images/dtg-carousel-v1-03.webp',
+  '/images/dtg-carousel-v1-04.webp',
+  '/images/dtg-carousel-v1-05.webp',
+  '/images/dtg-carousel-v1-06.webp',
+]
+const DTG_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const DTG_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
+// serwis-drukarek-dtf: 6 DTF-printer renders cropped to their own alpha bbox
+// (see public/images/dtf-carousel-v3-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const DTF_HERO_SLIDES = [
+  '/images/dtf-carousel-v3-01.webp',
+  '/images/dtf-carousel-v3-02.webp',
+  '/images/dtf-carousel-v3-03.webp',
+  '/images/dtf-carousel-v3-04.webp',
+  '/images/dtf-carousel-v3-05.webp',
+  '/images/dtf-carousel-v3-06.webp',
+]
+const DTF_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const DTF_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -282,6 +312,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -292,6 +323,7 @@ const PAGE_CLASS_SLUGS = [
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -324,6 +356,10 @@ export interface ServicePageHeadings {
   // Phone only: the middle line is a bit too wide for 40px — scale this H1
   // with the screen so it stays 3 lines, like PL.
   fitMobile?: boolean
+  // Podpis pod drugą linią H1 (styl jak napis „Pełny wykaz usług i cen…” pod hero)
+  tagline?: string
+  // Fragment drugiej linii H1 w kolorze podpisu (#bfa76a), np. „DTG”
+  accent?: string
   h2?: string
 }
 
@@ -615,6 +651,22 @@ export function ServicePageTemplate({
                           sizeCoefficients={UPS_SIZE_COEFFICIENTS}
                           verticalBias={UPS_VERTICAL_BIAS}
                         />
+                      ) : slug === 'serwis-drukarek-dtg' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={DTG_HERO_SLIDES}
+                          sizeCoefficients={DTG_SIZE_COEFFICIENTS}
+                          verticalBias={DTG_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-dtf' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={DTF_HERO_SLIDES}
+                          sizeCoefficients={DTF_SIZE_COEFFICIENTS}
+                          verticalBias={DTF_VERTICAL_BIAS}
+                        />
                       ) : slug === 'serwis-niszczarek' ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
@@ -674,6 +726,18 @@ export function ServicePageTemplate({
                         the phone column at 40px and got split mid-word — scale just this H1 with the
                         screen (≤40px) so the whole word fits. PL: same scale keeps the changing middle
                         line ("drukarek atramentowych") on one line, so the H1 height never jumps. */}
+                    {headings.lines && headings.tagline && !(locale === 'pl' && (slug === 'naprawa-drukarek' || slug === 'druk-3d-na-zamowienie' || HERO_LINES_PL[slug])) ? (
+                      // Podpis (tagline) nie jest częścią H1: zewnętrzny <div> ma klasy H1 + flex-col, a <h1 className="contents">
+                      // nie tworzy własnego pudełka — linie i podpis układają się jak wcześniej; podpis wraca między 2. a 3. linię przez order.
+                      <div className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''} flex flex-col`}>
+                        <h1 className="contents">
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.accent && headings.lines[1].includes(headings.accent) ? (<>{headings.lines[1].split(headings.accent)[0]}<span className="text-[#bfa76a]">{headings.accent}</span>{headings.lines[1].split(headings.accent).slice(1).join(headings.accent)}</>) : headings.lines[1]}{' '}</span>
+                          <span className="order-2 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
+                        </h1>
+                        <span className="order-1 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
+                      </div>
+                    ) : (
                     <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''}`}>
                       {locale === 'pl' && slug === 'naprawa-drukarek' ? (
                         // Middle line swaps with the carousel slide (home hero word animation);
@@ -699,13 +763,17 @@ export function ServicePageTemplate({
                       ) : headings.lines ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[1]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.accent && headings.lines[1].includes(headings.accent) ? (<>{headings.lines[1].split(headings.accent)[0]}<span className="text-[#bfa76a]">{headings.accent}</span>{headings.lines[1].split(headings.accent).slice(1).join(headings.accent)}</>) : headings.lines[1]}{' '}</span>
+                          {headings.tagline && (
+                            <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
+                          )}
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
                         </>
                       ) : (
                         headings.h1 || service.title
                       )}
                     </h1>
+                    )}
 
                     {headings.h2 && (() => {
                       // Lista marek „(HP, Epson, …)” pod H1 to opis, nie sekcja — zwykły <div> z tym samym wyglądem.

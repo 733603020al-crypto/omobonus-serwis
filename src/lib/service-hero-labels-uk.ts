@@ -36,6 +36,19 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Не кодує картки',
   ],
 
+  'serwis-drukarek-dtg': [
+    'Забита головка',
+    'Смуги на друці',
+    'Біле чорнило',
+    'Обслуговування DTG',
+  ],
+  'serwis-drukarek-dtf': [
+    'Забита головка',
+    'Смуги на друці',
+    'Біле чорнило',
+    'Обслуговування DTF',
+  ],
+
   'serwis-niszczarek': [
     'Застрягає папір',
     'Не затягує папір',

@@ -19,6 +19,20 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
   },
+  'serwis-drukarek-dtg': {
+    h1: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'DTG-принтеров', 'во Вроцлаве'],
+    tagline: 'печать прямо на одежде (Direct to Garment)',
+    accent: 'DTG',
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  },
+  'serwis-drukarek-dtf': {
+    h1: 'Сервис и ремонт DTF-принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'DTF-принтеров', 'во Вроцлаве'],
+    tagline: 'печать на плёнке с переносом (Direct to Film)',
+    accent: 'DTF',
+    h2: '(Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec, DTF Station / Prestige, …)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],
@@ -103,6 +117,20 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
       'Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт.',
       'Ваш принтер для пластиковых карт — предварительно оценим проблему за 15 мин.',
       'Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие.',
+    ],
+  },
+  'serwis-drukarek-dtg': {
+    items: [
+      'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
+      'Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин.',
+      'Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде.',
+    ],
+  },
+  'serwis-drukarek-dtf': {
+    items: [
+      'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
+      'Ваш DTF-принтер для печати на плёнке — предварительно оценим проблему за 15 мин.',
+      'Сервис DTF-принтеров для типографий, компаний с печатью на одежде и производства трансферов.',
     ],
   },
   'naprawa-drukarek': {
@@ -191,6 +219,8 @@ export const imageAltRu: Record<string, string> = {
   'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
   'naprawa-zasilaczy-ups': 'Источник бесперебойного питания UPS',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
+  'serwis-drukarek-dtg': 'DTG-принтер для печати на футболках',
+  'serwis-drukarek-dtf': 'DTF-принтер для печати на плёнке',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -229,6 +259,14 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
   'serwis-drukarek-do-kart-plastikowych': {
     title: 'Сервис принтеров для пластиковых карт — Zebra, Evolis, Fargo',
     description: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard и другие. Прозрачный прайс — стоимость ремонта согласовываем до его выполнения.',
+  },
+  'serwis-drukarek-dtg': {
+    title: 'Сервис и ремонт DTG-принтеров — Epson, Brother, Kornit',
+    description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — открытый прайс: прочистка головки, белые чернила, сервисная станция, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
+  },
+  'serwis-drukarek-dtf': {
+    title: 'Сервис DTF-принтеров Вроцлав — ремонт и обслуживание',
+    description: 'Сервис DTF-принтеров во Вроцлаве — ремонт головок, системы белых чернил, подачи плёнки, электроники и RIP. Открытый прайс и диагностика перед ремонтом.',
   },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
@@ -308,6 +346,8 @@ export const labelsRu: ServicePageLabels = {
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'naprawa-zasilaczy-ups': 'Есть проблема с UPS?',
     'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
+    'serwis-drukarek-dtg': 'Есть проблема с DTG-принтером?',
+    'serwis-drukarek-dtf': 'Есть проблема с DTF-принтером?',
     'wynajem-drukarek': 'Есть проблема с принтером?',
     'drukarka-zastepcza': 'Есть проблема с принтером?',
   },

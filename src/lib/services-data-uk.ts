@@ -15,6 +15,8 @@ import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services
 import { niszczarkiPricingSectionsUk, NISZCZARKI_PRICE_TOOLTIP_UK } from './services-data-uk-niszczarki'
 import { upsPricingSectionsUk } from './services-data-ups'
 import { kartyPricingSectionsUk, KARTY_PRICE_TOOLTIP_UK } from './services-data-uk-karty'
+import { dtgPricingSectionsUk, DTG_PRICE_TOOLTIP_UK } from './services-data-uk-dtg'
+import { dtfPricingSectionsUk, DTF_PRICE_TOOLTIP_UK } from './services-data-uk-dtf'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -240,6 +242,24 @@ export const servicesUk: ServiceData[] = [
     description: 'Сервіс і ремонт принтерів для пластикових карток.',
     pricingSections: kartyPricingSectionsUk(),
     priceTooltip: KARTY_PRICE_TOOLTIP_UK,
+  },
+  {
+    slug: 'serwis-drukarek-dtg',
+    title: 'Сервіс і ремонт DTG-принтерів',
+    subtitle: 'Сервіс і ремонт DTG-принтерів у Вроцлаві',
+    icon: '/images/dtg-carousel-v1-01.webp',
+    description: 'Сервіс і ремонт DTG-принтерів для друку на футболках.',
+    pricingSections: dtgPricingSectionsUk(),
+    priceTooltip: DTG_PRICE_TOOLTIP_UK,
+  },
+  {
+    slug: 'serwis-drukarek-dtf',
+    title: 'Сервіс і ремонт DTF-принтерів',
+    subtitle: 'Сервіс і ремонт DTF-принтерів у Вроцлаві',
+    icon: '/images/dtf-carousel-v3-01.webp',
+    description: 'Сервіс і ремонт DTF-принтерів для друку трансферів на плівці.',
+    pricingSections: dtfPricingSectionsUk(),
+    priceTooltip: DTF_PRICE_TOOLTIP_UK,
   },
   {
     slug: 'wynajem-drukarek',

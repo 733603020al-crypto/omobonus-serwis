@@ -171,6 +171,30 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "borri", src: "/images/brands/borri.webp", listedOnly: true },
   { name: "orvaldi", listedOnly: true },
   { name: "salicru", src: "/images/brands/salicru.webp", listedOnly: true },
+  // drukarki DTG (oficjalne logo producentów)
+  { name: "kornit", src: "/images/brands/kornit.webp", listedOnly: true, scale: 1.15 },
+  { name: "polyprint", src: "/images/brands/polyprint.webp", listedOnly: true },
+  { name: "aeoon", src: "/images/brands/aeoon.webp", listedOnly: true },
+  { name: "mr", src: "/images/brands/mr.webp", listedOnly: true, scale: 1.15 },
+  { name: "roq", src: "/images/brands/roq.webp", listedOnly: true },
+  { name: "omniprint", src: "/images/brands/omniprint.webp", listedOnly: true, scale: 1.2 },
+  { name: "coldesi", src: "/images/brands/coldesi.webp", listedOnly: true },
+  { name: "pigment", src: "/images/brands/pigment.webp", listedOnly: true },
+  { name: "anajet", src: "/images/brands/anajet.webp", listedOnly: true },
+  { name: "azonprinter", src: "/images/brands/azonprinter.webp", listedOnly: true },
+  { name: "resolute", src: "/images/brands/resolute.webp", listedOnly: true },
+  { name: "lawson", src: "/images/brands/lawson.webp", listedOnly: true },
+  // DTF
+  { name: "fedar", src: "/images/brands/fedar.webp", listedOnly: true },
+  { name: "audley", src: "/images/brands/audley.webp", listedOnly: true },
+  { name: "pegasus", src: "/images/brands/pegasus.webp", listedOnly: true },
+  { name: "trujet", src: "/images/brands/trujet.webp", listedOnly: true },
+  { name: "artemis", src: "/images/brands/artemis.webp", listedOnly: true },
+  { name: "ironprinter", src: "/images/brands/ironprinter.webp", listedOnly: true },
+  { name: "dias", src: "/images/brands/dias.svg", listedOnly: true },
+  { name: "cobe", src: "/images/brands/cobe.svg", listedOnly: true },
+  { name: "keditec", src: "/images/brands/keditec.svg", listedOnly: true },
+  { name: "dtf-station", src: "/images/brands/dtf-station.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -202,6 +226,8 @@ const LOGO_RATIO: Record<string, number> = {
   "schneider-electric": 3.385, "powerware": 5.375, "riello": 3.465, "vertiv": 4.040, "liebert": 5.345, "emerson": 2.385, "mge": 1.610, "socomec": 5.975,
   "delta": 3.245, "ever": 2.975, "fideltronik": 5.670, "cyberpower": 5.430, "powerwalker": 2.255, "legrand": 4.040, "aeg": 5.875, "abb": 2.605,
   "ge": 1.000, "siemens": 6.315, "g-tec": 2.050, "borri": 3.900, "orvaldi": 1.610, "salicru": 7.710,
+  "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
+  "fedar": 4.070, "audley": 7.595, "pegasus": 3.875, "trujet": 4.880, "artemis": 4.090, "ironprinter": 2.605, "dias": 2.645, "cobe": 7.200, "keditec": 5.055, "dtf-station": 3.110,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
