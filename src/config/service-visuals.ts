@@ -90,13 +90,14 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtg-oprogramowanie.webp' },
   },
   'serwis-drukarek-dtf': {
-    'naprawy-glowica': { icon: '/images/accordion-icon-dtg-glowica.webp' },
-    'naprawy-atrament': { icon: '/images/accordion-icon-dtg-atrament.webp' },
-    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-dtg-stacja-serwisowa.webp' },
-    'naprawy-karetka': { icon: '/images/accordion-icon-dtg-karetka.webp' },
-    'naprawy-stol': { icon: '/images/accordion-icon-dtg-stol.webp' },
-    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-dtg-elektronika.webp' },
-    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtg-oprogramowanie.webp' },
+    'naprawy-glowica': { icon: '/images/accordion-icon-dtf-glowica.webp' },
+    'naprawy-atrament': { icon: '/images/accordion-icon-dtf-atrament.webp' },
+    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-dtf-stacja-serwisowa.webp' },
+    'naprawy-karetka': { icon: '/images/accordion-icon-dtf-karetka.webp' },
+    'naprawy-folia': { icon: '/images/accordion-icon-dtf-folia.webp' },
+    'naprawy-grzanie': { icon: '/images/accordion-icon-dtf-grzanie.webp' },
+    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-dtf-elektronika.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtf-oprogramowanie.webp' },
   },
   // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {

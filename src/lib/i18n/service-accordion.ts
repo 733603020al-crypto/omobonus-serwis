@@ -54,6 +54,7 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaPromoTitleDtg: string
   konserwacjaPromoDescriptionDtg: string
+  konserwacjaPromoDescriptionDtf: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
   konserwacjaIncludedNoteInkjet: string
@@ -68,6 +69,7 @@ export interface ServiceAccordionDict {
     serwisNiszczarek: string
     serwisDrukarekDoKart: string
     serwisDrukarekDtg: string
+    serwisDrukarekDtf: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -95,6 +97,7 @@ export interface ServiceAccordionDict {
   categoryTranslationsAtrament: Record<string, ServiceAccordionCategoryTranslation>
   /** Переопределение categoryTranslations только для serwis-drukarek-dtg (title «Profesjonalna» совпадает с шредерами) */
   categoryTranslationsDtg: Record<string, ServiceAccordionCategoryTranslation>
+  categoryTranslationsDtf: Record<string, ServiceAccordionCategoryTranslation>
 }
 
 export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDict> = {
@@ -160,6 +163,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaPromoTitleDtg: '„TYLKO CYKL CZYSZCZĄCY?”',
     konserwacjaPromoDescriptionDtg: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTG.',
+    konserwacjaPromoDescriptionDtf: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTF.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     konserwacjaIncludedNoteInkjet: 'W cenie usług zawarte są standardowe środki i materiały potrzebne do wykonania prac serwisowych. W przypadku obsługi absorbera cena obejmuje jego czyszczenie lub wymianę na nowy — zależnie od stanu absorbera i dostępności odpowiedniej części.',
@@ -174,10 +178,12 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
       serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa. Czas realizacji nie obejmuje oczekiwania na części.',
+      serwisDrukarekDtf: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTF. W cenniku kolejno podajemy ceny dla urządzeń: kompaktowych / profesjonalnych / przemysłowych.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
     categoryTranslationsDtg: {},
+    categoryTranslationsDtf: {},
     wynajemTableLabels: {
       pagesIncluded: ['Liczba stron A4', 'wliczonych w czynsz'],
       printPriceMono: ['Cena wydruku A4 mono', '(powyżej limitu)'],
@@ -258,6 +264,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaPromoTitleDtg: '«ТІЛЬКИ ЦИКЛ ЧИЩЕННЯ?»',
     konserwacjaPromoDescriptionDtg: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTG-принтера.',
+    konserwacjaPromoDescriptionDtf: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTF-принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
     konserwacjaIncludedNoteInkjet: 'У вартість послуг входять стандартні засоби та матеріали, необхідні для виконання сервісних робіт. У разі обслуговування абсорбера ціна включає його чищення або заміну на новий — залежно від стану абсорбера та наявності відповідної частини.',
@@ -272,6 +279,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
       serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша — компактний, друга — професійний, третя — промисловий. Термін виконання не враховує очікування на деталі.',
+      serwisDrukarekDtf: 'Ціна залежить від класу, конструкції та продуктивності DTF-принтера. У прайсі послідовно вказуємо ціни для пристроїв: компактних / професійних / промислових.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -282,6 +290,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Kompaktowa': { title: 'Компактний', description: 'Компактні DTG-принтери для малих тиражів, персоналізації одягу та невеликого виробництва.', features: [] },
       'Profesjonalna': { title: 'Професійний', description: 'DTG-принтери для регулярного виробництва, більших тиражів та інтенсивної щоденної роботи.', features: [] },
       'Przemysłowa': { title: 'Промисловий', description: 'Високопродуктивні DTG-системи для серійного виробництва, великих тиражів і промислової роботи.', features: [] },
+    },
+    categoryTranslationsDtf: {
+      'Kompaktowa': { title: 'Компактний', description: 'Менші DTF-принтери для коротких серій, персоналізації одягу та невеликого виробництва.', features: [] },
+      'Profesjonalna': { title: 'Професійний', description: 'DTF-принтери для регулярного виробництва, більших тиражів і щоденної роботи.', features: [] },
+      'Przemysłowa': { title: 'Промисловий', description: 'Продуктивні DTF-системи для великих тиражів, серійного виробництва та інтенсивної роботи.', features: [] },
     },
     wynajemTableLabels: {
       pagesIncluded: ['Кількість сторінок A4', 'включених в оренду'],
@@ -388,6 +401,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaPromoTitleDtg: '«ТОЛЬКО ЦИКЛ ЧИСТКИ?»',
     konserwacjaPromoDescriptionDtg: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTG-принтера.',
+    konserwacjaPromoDescriptionDtf: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTF-принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
     konserwacjaIncludedNoteInkjet: 'В стоимость услуг входят стандартные средства и материалы, необходимые для выполнения сервисных работ. При обслуживании абсорбера цена включает его чистку или замену на новый — в зависимости от состояния абсорбера и наличия соответствующей детали.',
@@ -402,6 +416,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
       serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая — компактный, вторая — профессиональный, третья — промышленный. Срок выполнения не включает ожидание деталей.',
+      serwisDrukarekDtf: 'Цена зависит от класса, конструкции и производительности DTF-принтера. В прайсе последовательно указываем цены для устройств: компактных / профессиональных / промышленных.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
@@ -412,6 +427,11 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Kompaktowa': { title: 'Компактный', description: 'Компактные DTG-принтеры для небольших тиражей, персонализации одежды и небольшого производства.', features: [] },
       'Profesjonalna': { title: 'Профессиональный', description: 'DTG-принтеры для регулярного производства, больших тиражей и интенсивной ежедневной работы.', features: [] },
       'Przemysłowa': { title: 'Промышленный', description: 'Высокопроизводительные DTG-системы для серийного производства, больших тиражей и промышленной работы.', features: [] },
+    },
+    categoryTranslationsDtf: {
+      'Kompaktowa': { title: 'Компактный', description: 'Небольшие DTF-принтеры для коротких серий, персонализации одежды и небольшого производства.', features: [] },
+      'Profesjonalna': { title: 'Профессиональный', description: 'DTF-принтеры для регулярного производства, больших тиражей и ежедневной работы.', features: [] },
+      'Przemysłowa': { title: 'Промышленный', description: 'Производительные DTF-системы для больших тиражей, серийного производства и интенсивной работы.', features: [] },
     },
     wynajemTableLabels: {
       pagesIncluded: ['Количество страниц A4', 'включённых в аренду'],

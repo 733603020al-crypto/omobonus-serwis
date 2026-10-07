@@ -21,11 +21,11 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
   'serwis-drukarek-dtf': {
-    h1: 'Сервіс і ремонт DTG-принтерів у Вроцлаві',
-    lines: ['Сервіс і ремонт', 'DTG-принтерів', 'у Вроцлаві'],
-    tagline: 'друк безпосередньо на одязі (Direct to Garment)',
-    accent: 'DTG',
-    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+    h1: 'Сервіс і ремонт DTF-принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'DTF-принтерів', 'у Вроцлаві'],
+    tagline: 'друк на плівці з перенесенням (Direct to Film)',
+    accent: 'DTF',
+    h2: '(Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec, DTF Station / Prestige, …)',
   },
   'serwis-drukarek-termicznych': {
     h1: 'Сервіс і ремонт принтерів етикеток у Вроцлаві',
@@ -116,8 +116,8 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
   'serwis-drukarek-dtf': {
     items: [
       'Чищення та обслуговування, прочищення й заміна головки, ремонт системи білого чорнила та сервісної станції.',
-      'Ваш DTG-принтер для друку на футболках — попередньо оцінимо проблему за 15 хв.',
-      'Сервіс DTG-принтерів для текстильних друкарень і компаній з друком на одязі.',
+      'Ваш DTF-принтер для друку на плівці — попередньо оцінимо проблему за 15 хв.',
+      'Сервіс DTF-принтерів для друкарень, компаній з друком на одязі та виробництва трансферів.',
     ],
   },
   'naprawa-drukarek': {
@@ -206,7 +206,7 @@ export const imageAltUk: Record<string, string> = {
   'serwis-niszczarek': 'Сервіс і ремонт знищувачів документів',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластикових карток',
   'serwis-drukarek-dtg': 'DTG-принтер для друку на футболках',
-  'serwis-drukarek-dtf': 'DTG-принтер для друку на футболках',
+  'serwis-drukarek-dtf': 'DTF-принтер для друку на плівці',
   'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
   'serwis-komputerow-stacjonarnych': 'Сервіс стаціонарних комп\'ютерів',
@@ -247,8 +247,8 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: 'Сервіс і ремонт DTG-принтерів у Вроцлаві — відкритий прайс: прочищення головки, біле чорнило, сервісна станція, обслуговування. Вартість ремонту ви знаєте до його виконання.',
   },
   'serwis-drukarek-dtf': {
-    title: 'Сервіс і ремонт DTG-принтерів — Epson, Brother, Kornit',
-    description: 'Сервіс і ремонт DTG-принтерів у Вроцлаві — відкритий прайс: прочищення головки, біле чорнило, сервісна станція, обслуговування. Вартість ремонту ви знаєте до його виконання.',
+    title: 'Сервіс DTF-принтерів Вроцлав — ремонт і обслуговування',
+    description: 'Сервіс і ремонт DTF-принтерів у Вроцлаві — відкритий прайс: прочищення головок, біле чорнило, подача плівки, нагрів, RIP. Вартість ремонту ви знаєте до його виконання.',
   },
   'serwis-laptopow': {
     title: 'Сервіс і ремонт ноутбуків',
@@ -328,7 +328,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'serwis-drukarek-dtg': 'Маєте проблему з DTG-принтером?',
-    'serwis-drukarek-dtf': 'Маєте проблему з DTG-принтером?',
+    'serwis-drukarek-dtf': 'Маєте проблему з DTF-принтером?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
   },

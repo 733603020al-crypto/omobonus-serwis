@@ -15,6 +15,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_n_n_zl_czesc_zl": { pl: "{0}-{1} zł + część", ru: "{0}-{1} zł + деталь", uk: "{0}-{1} zł + деталь" },
   "p_n_n_n_czesci": { pl: "{0} / {1} / {2} + części", ru: "{0} / {1} / {2} + детали", uk: "{0} / {1} / {2} + частини" },
   "p_n_n_n_czesci_v2": { pl: "{0} / {1} / {2} + części", ru: "{0} / {1} / {2} + детали", uk: "{0} / {1} / {2} + деталі" },
+  "p_n_n_n_czesci_jesli_konieczne": { pl: "{0} / {1} / {2} + części, jeśli konieczne", ru: "{0} / {1} / {2} + детали при необходимости", uk: "{0} / {1} / {2} + деталі за потреби" },
   "p_n_n_n_zl_materialy": { pl: "{0} / {1} / {2} zł + materiały", ru: "{0} / {1} / {2} zł + материалы", uk: "{0} / {1} / {2} zł + матеріали" },
   "p_n_zl_gram_n_zl_godz": { pl: "{0} zł/gram + {1} zł/h", ru: "{0} zł/грамм + {1} zł/ч", uk: "{0} zł/грам + {1} zł/год." },
   "p_n_zl_nl_do_n_min_pracy": { pl: "{0} zł\ndo {1} min pracy", ru: "{0} zł\nдо {1} мин работы", uk: "{0} zł\nдо {1} хв роботи" },

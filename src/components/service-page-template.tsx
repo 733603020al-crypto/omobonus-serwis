@@ -245,6 +245,20 @@ const DTG_HERO_SLIDES = [
 const DTG_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DTG_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+// serwis-drukarek-dtf: 6 DTF-printer renders cropped to their own alpha bbox
+// (see public/images/dtf-carousel-v3-*.webp) — sizes small/small,
+// medium/medium, large/large. Own per-page coefficients (not tied to other pages).
+const DTF_HERO_SLIDES = [
+  '/images/dtf-carousel-v3-01.webp',
+  '/images/dtf-carousel-v3-02.webp',
+  '/images/dtf-carousel-v3-03.webp',
+  '/images/dtf-carousel-v3-04.webp',
+  '/images/dtf-carousel-v3-05.webp',
+  '/images/dtf-carousel-v3-06.webp',
+]
+const DTF_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const DTF_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -602,13 +616,21 @@ export function ServicePageTemplate({
                           mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
                         />
-                      ) : (slug === 'serwis-drukarek-dtg' || slug === 'serwis-drukarek-dtf') ? (
+                      ) : slug === 'serwis-drukarek-dtg' ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           variant="home"
                           slides={DTG_HERO_SLIDES}
                           sizeCoefficients={DTG_SIZE_COEFFICIENTS}
                           verticalBias={DTG_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-dtf' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={DTF_HERO_SLIDES}
+                          sizeCoefficients={DTF_SIZE_COEFFICIENTS}
+                          verticalBias={DTF_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-niszczarek' ? (
                         <HeroPrinterCarousel

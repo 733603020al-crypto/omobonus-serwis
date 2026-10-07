@@ -161,6 +161,17 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "azonprinter", src: "/images/brands/azonprinter.webp", listedOnly: true },
   { name: "resolute", src: "/images/brands/resolute.webp", listedOnly: true },
   { name: "lawson", src: "/images/brands/lawson.webp", listedOnly: true },
+  // DTF
+  { name: "fedar", src: "/images/brands/fedar.webp", listedOnly: true },
+  { name: "audley", src: "/images/brands/audley.webp", listedOnly: true },
+  { name: "pegasus", src: "/images/brands/pegasus.webp", listedOnly: true },
+  { name: "trujet", src: "/images/brands/trujet.webp", listedOnly: true },
+  { name: "artemis", src: "/images/brands/artemis.webp", listedOnly: true },
+  { name: "ironprinter", src: "/images/brands/ironprinter.webp", listedOnly: true },
+  { name: "dias", src: "/images/brands/dias.svg", listedOnly: true },
+  { name: "cobe", src: "/images/brands/cobe.svg", listedOnly: true },
+  { name: "keditec", src: "/images/brands/keditec.svg", listedOnly: true },
+  { name: "dtf-station", src: "/images/brands/dtf-station.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -190,6 +201,7 @@ const LOGO_RATIO: Record<string, number> = {
   "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
   "evolis": 5.125, "hid": 2.550, "magicard": 2.805, "entrust": 9.230, "matica": 6.900, "idp": 2.490, "hiti": 3.290, "swiftcolor": 5.375, "edisecure": 8.360,
   "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
+  "fedar": 4.070, "audley": 7.595, "pegasus": 3.875, "trujet": 4.880, "artemis": 4.090, "ironprinter": 2.605, "dias": 2.645, "cobe": 7.200, "keditec": 5.055, "dtf-station": 3.110,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)
