@@ -668,6 +668,18 @@ export function ServicePageTemplate({
                         the phone column at 40px and got split mid-word — scale just this H1 with the
                         screen (≤40px) so the whole word fits. PL: same scale keeps the changing middle
                         line ("drukarek atramentowych") on one line, so the H1 height never jumps. */}
+                    {headings.lines && headings.tagline && !(locale === 'pl' && (slug === 'naprawa-drukarek' || slug === 'druk-3d-na-zamowienie' || HERO_LINES_PL[slug])) ? (
+                      // Podpis (tagline) nie jest częścią H1: zewnętrzny <div> ma klasy H1 + flex-col, a <h1 className="contents">
+                      // nie tworzy własnego pudełka — linie i podpis układają się jak wcześniej; podpis wraca między 2. a 3. linię przez order.
+                      <div className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''} flex flex-col`}>
+                        <h1 className="contents">
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
+                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.accent && headings.lines[1].includes(headings.accent) ? (<>{headings.lines[1].split(headings.accent)[0]}<span className="text-[#bfa76a]">{headings.accent}</span>{headings.lines[1].split(headings.accent).slice(1).join(headings.accent)}</>) : headings.lines[1]}{' '}</span>
+                          <span className="order-2 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
+                        </h1>
+                        <span className="order-1 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
+                      </div>
+                    ) : (
                     <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(40px,9vw)]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''}`}>
                       {locale === 'pl' && slug === 'naprawa-drukarek' ? (
                         // Middle line swaps with the carousel slide (home hero word animation);
@@ -703,12 +715,18 @@ export function ServicePageTemplate({
                         headings.h1 || service.title
                       )}
                     </h1>
-
-                    {headings.h2 && (
-                      <h2 className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
-                        {headings.h2}
-                      </h2>
                     )}
+
+                    {headings.h2 && (() => {
+                      // Lista marek „(HP, Epson, …)” pod H1 to opis, nie sekcja — zwykły <div> z tym samym wyglądem.
+                      // naprawa-drukarek i opisowe podtytuły (np. druk-3d) zostają <h2>.
+                      const SubTag = headings.h2.trim().startsWith('(') && slug !== 'naprawa-drukarek' ? 'div' : 'h2'
+                      return (
+                        <SubTag className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
+                          {headings.h2}
+                        </SubTag>
+                      )
+                    })()}
                   </div>
                 </div>
               </div>
