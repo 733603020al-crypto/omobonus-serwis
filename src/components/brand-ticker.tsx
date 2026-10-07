@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type CSSProperties } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties } from "react"
 import Image from "next/image"
 import { LOGO_METRICS } from "@/lib/brand-logo-metrics"
 
@@ -255,6 +255,9 @@ function autoLogoHeight(name: string, scale = 1): number | undefined {
 }
 
 const gap = 48
+const subscribeNoop = () => () => {}
+// Stała referencja: React 19 przy nowym obiekcie ponownie ustawia innerHTML.
+const KEEP_SERVER_HTML = { __html: "" }
 // Docelowa prędkość ruchu identyczna z poprzednią implementacją JS (rAF):
 // 0.4px/klatkę przy ~60fps = 24px/s. Ta sama stała co w PrintedPartsTicker.
 const TARGET_SPEED_PX_PER_SEC = 24
@@ -318,6 +321,11 @@ export default function BrandTicker({ brandNames, compact, muted }: { brandNames
   const sectionRef = useRef<HTMLElement | null>(null)
   const hoverRef = useRef<HTMLDivElement | null>(null)
   const [durationSec, setDurationSec] = useState(0)
+  // Logo z serwera nie są hydratowane — React zostawia ich HTML bez zmian
+  // (statyczne obrazki). Przy montowaniu na kliencie (przejście między
+  // stronami) renderują się normalnie.
+  const mountedAfterHydration = useSyncExternalStore(subscribeNoop, () => true, () => false)
+  const [staticLogos] = useState(() => typeof window !== "undefined" && !mountedAfterHydration)
 
   useEffect(() => {
     const track = trackRef.current
@@ -369,6 +377,7 @@ export default function BrandTicker({ brandNames, compact, muted }: { brandNames
   }, [copies])
 
   const toPercent = 100 / copies
+  const trackStyle = { gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s`, "--brand-ticker-shift": `-${toPercent}%`, "--brand-ticker-play": durationSec > 0 ? "running" : "paused" } as CSSProperties
 
   return (
     <section ref={sectionRef} className={`relative w-full h-[78px] -mt-[39px] -mb-[39px] md:-mt-[34px] md:-mb-[34px] z-10 overflow-hidden ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}`}>
@@ -377,15 +386,21 @@ export default function BrandTicker({ brandNames, compact, muted }: { brandNames
         style={{ background: "radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0.22) 0%, transparent 72%)" }}
       />
       <div ref={hoverRef} className="relative z-10 w-screen -mx-[calc((100vw-100%)/2)] overflow-visible brand-ticker-hover-pause">
-        <div
-          ref={trackRef}
-          className="flex items-center brand-ticker-track"
-          style={{ gap: `${gap}px`, width: "max-content", willChange: "transform", animationDuration: `${durationSec}s`, "--brand-ticker-shift": `-${toPercent}%`, "--brand-ticker-play": durationSec > 0 ? "running" : "paused" } as CSSProperties}
-        >
-          {Array.from({ length: copies }).map((_, i) => (
-            <BrandGroup key={i} displayBrands={displayBrands} compact={compact} muted={muted} ariaHidden={i > 0} />
-          ))}
-        </div>
+        {staticLogos ? (
+          <div
+            ref={trackRef}
+            className="flex items-center brand-ticker-track"
+            style={trackStyle}
+            dangerouslySetInnerHTML={KEEP_SERVER_HTML}
+            suppressHydrationWarning
+          />
+        ) : (
+          <div ref={trackRef} className="flex items-center brand-ticker-track" style={trackStyle}>
+            {Array.from({ length: copies }).map((_, i) => (
+              <BrandGroup key={i} displayBrands={displayBrands} compact={compact} muted={muted} ariaHidden={i > 0} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

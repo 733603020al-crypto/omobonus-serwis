@@ -1,4 +1,5 @@
-// Post-build step (runs after `next build`): in the prerendered HTML of the
+// Post-build step (runs after `next build`). Every prerendered page loses the
+// duplicate CSS text of the RSC payload (see stripCssCopy). In the HTML of the
 // service pages and /kontakt (PL/UK/RU), Next's async <script src> chunks (and their preload links)
 // are replaced by one tiny inline loader that requests them only after the
 // first paint.
@@ -31,7 +32,15 @@ function stripCssCopy(html) {
   const pushes = [...html.matchAll(PUSH_RE)]
   const chunks = pushes.map((m) => Buffer.from(JSON.parse(m[1]), 'utf8'))
   if (!chunks.length || pushes.some((m, i) => enc(chunks[i].toString('utf8')) !== m[1])) return html
-  const ids = new Set([...Buffer.concat(chunks).toString('utf8').matchAll(/"precedence":"[^"]+","href":"[^"]+\.css","children":"\$([0-9a-f]+)"/g)].map((m) => m[1]))
+  const text = Buffer.concat(chunks).toString('utf8')
+  const ids = new Set([...text.matchAll(/"precedence":"[^"]+","href":"[^"]+\.css","children":"\$([0-9a-f]+)"/g)].map((m) => m[1]))
+  // Same for inline <script dangerouslySetInnerHTML> (JSON-LD, the menu
+  // pre-script): the browser already has them in the HTML, hydration never
+  // reads innerHTML, and React never runs scripts it creates itself.
+  for (const m of text.matchAll(/"dangerouslySetInnerHTML":\{"__html":"\$([0-9a-f]+)"\}/g)) {
+    const el = text.lastIndexOf('["$",', m.index)
+    if (text.startsWith('["$","script",', el) && text.split(`"$${m[1]}"`).length === 2) ids.add(m[1])
+  }
   if (!ids.size) return html
   // Walk the rows exactly like React's flight client and note the CSS text rows.
   const all = Buffer.concat(chunks), starts = []
@@ -86,10 +95,11 @@ function walk(dir, out = []) {
 let changed = 0
 for (const file of walk(root)) {
   const rel = path.relative(root, file).replace(/\\/g, '/')
-  if (scope === 'uslugi' && !/(^|\/)(uslugi\/|kontakt\.html$)/.test(rel)) continue
   const raw = fs.readFileSync(file, 'utf8')
   const html = stripCssCopy(raw)
-  if (html.includes('data-deferred-hydration')) {
+  // The CSS copy is dropped on every page; the deferred loader stays in scope.
+  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|kontakt\.html$)/.test(rel)
+  if (!inScope || html.includes('data-deferred-hydration')) {
     if (html !== raw) { fs.writeFileSync(file, html); changed++ }
     continue
   }

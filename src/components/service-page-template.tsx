@@ -887,7 +887,7 @@ export function ServicePageTemplate({
         )}
 
         <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
-          <GoogleReviews />
+          <GoogleReviews locale={locale} />
         </div>
 
       </main>

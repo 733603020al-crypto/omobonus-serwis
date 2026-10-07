@@ -68,7 +68,7 @@ export function HomePageTemplate({
         <div className="home-below relative z-10">
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
 
-          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
+          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews locale={locale} />} />
 
           <HomeCta {...cta} />
 

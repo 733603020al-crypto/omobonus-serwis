@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useNearViewport } from "@/lib/use-near-viewport"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -58,6 +58,10 @@ export type Review = {
     relative_time_ru?: string | null
 }
 
+const subscribeNoop = () => () => {}
+// Stała referencja: React 19 przy nowym obiekcie ponownie ustawia innerHTML.
+const KEEP_SERVER_HTML = { __html: "" }
+
 interface GoogleReviewsCarouselProps {
     reviews: Review[]
     rating: number | null
@@ -76,6 +80,11 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     // Parchment behind the review cards: fetched only when the block is near.
     const sectionRef = useRef<HTMLElement | null>(null)
     const bgNear = useNearViewport(sectionRef)
+    // Karty z serwera nie są hydratowane — React zostawia ich HTML bez zmian
+    // (statyczny tekst, bez obsługi zdarzeń). Przy montowaniu na kliencie
+    // (przejście między stronami) karty renderują się normalnie.
+    const mountedAfterHydration = useSyncExternalStore(subscribeNoop, () => true, () => false)
+    const [staticCards] = useState(() => typeof window !== "undefined" && !mountedAfterHydration)
     const syncRef = useRef<(() => void) | null>(null)
     const isRunningRef = useRef(true)
     const isHoverRef = useRef(false)
@@ -112,6 +121,21 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         observer.observe(el)
         return () => observer.disconnect()
     }, [])
+
+    // Statyczne karty: gdy blok jest blisko — tło pergaminu i druga kopia taśmy
+    // (klon kart z serwera), tak samo jak w renderze Reacta poniżej.
+    useEffect(() => {
+        const track = trackRef.current
+        if (!staticCards || !bgNear || !track || track.dataset.copies) return
+        const cards = Array.from(track.children) as HTMLElement[]
+        for (const card of cards) card.style.removeProperty('--review-bg')
+        for (const card of cards) {
+            const copy = card.cloneNode(true) as HTMLElement
+            copy.setAttribute('aria-hidden', 'true')
+            track.appendChild(copy)
+        }
+        track.dataset.copies = '2'
+    }, [staticCards, bgNear])
 
     useEffect(() => {
         if (!trackRef.current || !carouselContainerRef.current || !reviews.length) return
@@ -251,6 +275,18 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                     onMouseEnter={() => { isHoverRef.current = true; syncRef.current?.() }}
                     onMouseLeave={() => { isHoverRef.current = false; syncRef.current?.() }}
                 >
+                    {staticCards ? (
+                    <div
+                        ref={trackRef}
+                        className="flex"
+                        style={{
+                            gap: `${gap}px`,
+                            willChange: "transform",
+                        }}
+                        dangerouslySetInnerHTML={KEEP_SERVER_HTML}
+                        suppressHydrationWarning
+                    />
+                    ) : (
                     <div
                         ref={trackRef}
                         className="flex"
@@ -331,6 +367,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             )
                         })}
                     </div>
+                    )}
                 </div>
             </div>
         </section>
