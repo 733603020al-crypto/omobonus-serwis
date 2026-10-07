@@ -243,7 +243,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'serwis-drukarek-dtf': {
     title: 'Serwis drukarek DTF Wrocław — naprawa i konserwacja',
-    description: 'Serwis i naprawa drukarek DTF we Wrocławiu — jawny cennik: udrażnianie głowic, biały atrament, posuw folii, grzanie, RIP. Koszt naprawy znasz przed jej wykonaniem.',
+    description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
