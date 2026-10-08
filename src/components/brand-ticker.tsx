@@ -196,6 +196,15 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "cobe", src: "/images/brands/cobe.svg", listedOnly: true },
   { name: "keditec", src: "/images/brands/keditec.svg", listedOnly: true },
   { name: "dtf-station", src: "/images/brands/dtf-station.webp", listedOnly: true },
+  // drukarki spożywcze (oficjalne logo producentów)
+  { name: "jetlt", src: "/images/brands/jetlt.webp", listedOnly: true },
+  { name: "primera", src: "/images/brands/primera.webp", listedOnly: true },
+  { name: "icing-images", src: "/images/brands/icing-images.webp", listedOnly: true },
+  { name: "icinginks", src: "/images/brands/icinginks.webp", listedOnly: true },
+  { name: "kopykake", src: "/images/brands/kopykake.webp", listedOnly: true, scale: 1.3 }, // drobny napis + grafika kucharza zaniżają wagę logo
+  { name: "decopac", src: "/images/brands/decopac.webp", listedOnly: true },
+  { name: "evebot", src: "/images/brands/evebot.webp", listedOnly: true },
+  { name: "cino-printer", src: "/images/brands/cino-printer.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -229,6 +238,7 @@ const LOGO_RATIO: Record<string, number> = {
   "ge": 1.000, "siemens": 6.315, "g-tec": 2.050, "borri": 3.900, "orvaldi": 1.610, "salicru": 7.710,
   "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
   "fedar": 4.070, "audley": 7.595, "pegasus": 3.875, "trujet": 4.880, "artemis": 4.090, "ironprinter": 2.605, "dias": 2.645, "cobe": 7.200, "keditec": 5.055, "dtf-station": 3.110,
+  "jetlt": 4.411, "primera": 3.443, "icing-images": 6.563, "icinginks": 2.275, "kopykake": 2.519, "decopac": 6.131, "evebot": 3.682, "cino-printer": 2.706,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

@@ -48,6 +48,18 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Biały atrament',
         'Konserwacja DTF',
     ],
+    'serwis-drukarek-sublimacyjnych': [
+        'Udrażnianie głowic',
+        'Układ atramentowy',
+        'Konserwacja',
+        'Plotery sublimacyjne',
+    ],
+    'serwis-drukarek-spozywczych': [
+        'Zapchana głowica',
+        'Pasy na nadruku',
+        'Błąd platformy',
+        'Konserwacja drukarki',
+    ],
 
     'serwis-niszczarek': [
         'Zacina papier',

@@ -150,7 +150,7 @@ export function Services({
           'wynajem-drukarek',
           'drukarka-zastepcza',
           'druk-3d-na-zamowienie',
-          'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
+          'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
         ].includes(service.slug)
     )
     .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))

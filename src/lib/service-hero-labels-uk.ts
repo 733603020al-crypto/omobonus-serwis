@@ -48,6 +48,18 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Біле чорнило',
     'Обслуговування DTF',
   ],
+  'serwis-drukarek-sublimacyjnych': [
+    'Прочищення головок',
+    'Чорнильна система',
+    'Обслуговування',
+    'Сублімаційні плотери',
+  ],
+  'serwis-drukarek-spozywczych': [
+    'Забита головка',
+    'Смуги на друці',
+    'Помилка платформи',
+    'Обслуговування принтера',
+  ],
 
   'serwis-niszczarek': [
     'Застрягає папір',

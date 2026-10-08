@@ -69,6 +69,8 @@ const HERO_SCALE: Record<string, number> = {
   'naprawa-zasilaczy-ups': 1.2,
   'serwis-drukarek-dtg': 1.2,
   'serwis-drukarek-dtf': 1.2,
+  'serwis-drukarek-sublimacyjnych': 1.2,
+  'serwis-drukarek-spozywczych': 1.2,
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -277,6 +279,25 @@ const DTF_HERO_SLIDES = [
 const DTF_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DTF_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+const SUBLIMACJA_HERO_SLIDES = [1, 2, 3, 4, 5, 6].map((n) => `/images/sublimacja-carousel-v1-0${n}.webp`)
+const SUBLIMACJA_SIZE_COEFFICIENTS = [0.65, 0.76, 0.85, 0.85, 0.95, 0.95]
+const SUBLIMACJA_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
+// serwis-drukarek-spozywczych: 7 food-printer renders cropped to their own alpha bbox
+// (see public/images/spozywcze-carousel-v1-*.webp) — sizes small/small,
+// medium/medium/medium, large/large (user order 1→7).
+const SPOZYWCZE_HERO_SLIDES = [
+  '/images/spozywcze-carousel-v1-01.webp',
+  '/images/spozywcze-carousel-v1-02.webp',
+  '/images/spozywcze-carousel-v1-03.webp',
+  '/images/spozywcze-carousel-v1-04.webp',
+  '/images/spozywcze-carousel-v1-05.webp',
+  '/images/spozywcze-carousel-v1-06.webp',
+  '/images/spozywcze-carousel-v1-07.webp',
+]
+const SPOZYWCZE_SIZE_COEFFICIENTS = [0.814, 0.836, 0.935, 0.85, 0.85, 0.95, 0.95]
+const SPOZYWCZE_VERTICAL_BIAS = [0, 0, 4, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -312,7 +333,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -323,7 +344,7 @@ const PAGE_CLASS_SLUGS = [
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -666,6 +687,22 @@ export function ServicePageTemplate({
                           slides={DTF_HERO_SLIDES}
                           sizeCoefficients={DTF_SIZE_COEFFICIENTS}
                           verticalBias={DTF_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-sublimacyjnych' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={SUBLIMACJA_HERO_SLIDES}
+                          sizeCoefficients={SUBLIMACJA_SIZE_COEFFICIENTS}
+                          verticalBias={SUBLIMACJA_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-spozywczych' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={SPOZYWCZE_HERO_SLIDES}
+                          sizeCoefficients={SPOZYWCZE_SIZE_COEFFICIENTS}
+                          verticalBias={SPOZYWCZE_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-niszczarek' ? (
                         <HeroPrinterCarousel
