@@ -38,6 +38,12 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     lines: ['Сервис и ремонт', 'сублимационных принтеров', 'во Вроцлаве'],
     h2: '(Epson, Sawgrass, Mimaki, Roland DG, Mutoh, Ricoh, Brother, ...)',
   },
+  'serwis-drukarek-spozywczych': {
+    h1: 'Сервис и ремонт пищевых принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'пищевых принтеров', 'во Вроцлаве'],
+    tagline: 'печать на тортах, печенье и пищевых продуктах',
+    h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],

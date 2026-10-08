@@ -36,6 +36,7 @@ import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data
 import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
 import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
 import { createSublimacjaPricingSections, SUBLIMACJA_PRICE_TOOLTIP } from './services-data-sublimacja'
+import { createSpozywczePricingSections, SPOZYWCZE_PRICE_TOOLTIP } from './services-data-spozywcze'
 
 export const services: ServiceData[] = [
   {
@@ -187,6 +188,15 @@ export const services: ServiceData[] = [
     description: 'Serwis i naprawa drukarek i ploterów sublimacyjnych.',
     pricingSections: createSublimacjaPricingSections(),
     priceTooltip: SUBLIMACJA_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Serwis i naprawa drukarek spożywczych',
+    subtitle: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek spożywczych.',
+    pricingSections: createSpozywczePricingSections(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

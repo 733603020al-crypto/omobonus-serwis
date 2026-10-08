@@ -18,6 +18,7 @@ import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-
 import { dtgPricingSectionsRu, DTG_PRICE_TOOLTIP_RU } from './services-data-ru-dtg'
 import { dtfPricingSectionsRu, DTF_PRICE_TOOLTIP_RU } from './services-data-ru-dtf'
 import { sublimacjaPricingSectionsRu, SUBLIMACJA_PRICE_TOOLTIP_RU } from './services-data-ru-sublimacja'
+import { spozywczePricingSectionsRu, SPOZYWCZE_PRICE_TOOLTIP_RU } from './services-data-ru-spozywcze'
 
 export const servicesRu: ServiceData[] = [
   {
@@ -270,6 +271,15 @@ export const servicesRu: ServiceData[] = [
     description: 'Сервис и ремонт сублимационных принтеров и плоттеров.',
     pricingSections: sublimacjaPricingSectionsRu(),
     priceTooltip: SUBLIMACJA_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Сервис и ремонт пищевых принтеров',
+    subtitle: 'Сервис и ремонт пищевых принтеров во Вроцлаве',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Сервис и ремонт пищевых принтеров.',
+    pricingSections: spozywczePricingSectionsRu(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP_RU,
   },
   {
     slug: 'wynajem-drukarek',

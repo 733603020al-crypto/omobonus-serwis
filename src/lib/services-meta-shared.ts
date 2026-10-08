@@ -8,6 +8,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-dtg': '/images/dtg-carousel-v1-01.webp',
   'serwis-drukarek-dtf': '/images/dtf-carousel-v3-01.webp',
   'serwis-drukarek-sublimacyjnych': '/images/sublimacja-carousel-v1-01.webp',
+  'serwis-drukarek-spozywczych': '/images/spozywcze-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -51,6 +52,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-drukarek-dtg': ['epson', 'brother', 'kornit', 'ricoh', 'polyprint', 'aeoon', 'mr', 'roq', 'omniprint', 'coldesi', 'pigment', 'anajet', 'roland-dg', 'mimaki', 'azonprinter', 'resolute', 'lawson', 'durst'],
   'serwis-drukarek-dtf': ['epson', 'roland-dg', 'mimaki', 'mutoh', 'fedar', 'audley', 'pegasus', 'trujet', 'artemis', 'ironprinter', 'dias', 'cobe', 'keditec', 'dtf-station'],
   'serwis-drukarek-sublimacyjnych': ['epson', 'sawgrass', 'mimaki', 'roland-dg', 'mutoh', 'ricoh', 'brother'],
+  'serwis-drukarek-spozywczych': ['canon', 'epson', 'brother', 'jetlt', 'primera', 'icing-images', 'icinginks', 'kopykake', 'decopac', 'evebot', 'cino-printer'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
@@ -78,7 +80,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = ['serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych']
+export const noindexSlugs: string[] = ['serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych']
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.

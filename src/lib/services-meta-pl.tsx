@@ -36,6 +36,12 @@ export const headings: Record<string, ServicePageHeadings> = {
     lines: ['Serwis i naprawa', 'drukarek sublimacyjnych', 'we Wrocławiu'],
     h2: '(Epson, Sawgrass, Mimaki, Roland DG, Mutoh, Ricoh, Brother, ...)',
   },
+  'serwis-drukarek-spozywczych': {
+    h1: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek spożywczych', 'we Wrocławiu'],
+    tagline: 'druk na tortach, ciastkach i produktach spożywczych',
+    h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
+  },
 
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',

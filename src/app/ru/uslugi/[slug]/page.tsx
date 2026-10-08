@@ -9,9 +9,9 @@ import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noind
 import { withSocialMeta } from '@/lib/social-meta'
 
 export async function generateStaticParams() {
-  return servicesRu.map(service => ({
-    slug: service.slug,
-  }))
+  return servicesRu.flatMap(service => service.slug === 'serwis-drukarek-spozywczych'
+    ? [{ slug: service.slug }, { slug: 'serwis-drukarek-spożywczych' }]
+    : [{ slug: service.slug }])
 }
 
 export async function generateMetadata({
@@ -19,7 +19,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
   const service = servicesRu.find(s => s.slug === slug)
   const seo = seoMetadataRu[slug]
 
@@ -54,6 +56,8 @@ export async function generateMetadata({
   }
   return {
     ...meta,
+    // Tytuł z własną marką na końcu — bez dopisywania szablonu „| Omobonus Вроцлав” z layoutu
+    ...(seo.title.endsWith('| Omobonus') ? { title: { absolute: seo.title } } : {}),
     openGraph: { ...meta.openGraph, images: [ogImage] },
     twitter: { ...meta.twitter, images: [ogImage.url] },
   }
@@ -64,7 +68,9 @@ export default async function RuServicePage({
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
   const service = servicesRu.find(s => s.slug === slug)
   const heroLabels = serviceHeroLabelsRu[slug] || []
 
