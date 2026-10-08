@@ -132,49 +132,55 @@ const LOCALE_NAV: Record<Locale, {
    Mega menu data
    ========================= */
 
-// Three groups; desktop shows them as 3 columns from 1280 px and as 2 columns
-// below (Komputery + Druk 3D stacked on the left, Drukarki on the right). The
-// mobile drawer lists the same groups in one column under "Usługi".
+// Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
+// below. The mobile drawer lists the same groups in one column under "Usługi".
 export type ServiceGroup = { title: string; items: { label: string; href: string; icon: string }[] }
 
 const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
   {
     title: { pl: 'Komputery i IT', uk: 'Комп\'ютери та ІТ', ru: 'Компьютеры и IT' },
     items: [
-      { label: { pl: 'Laptopy', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
+      { label: { pl: 'Laptopy', uk: 'Ноутбуки', ru: 'Ноутбуки' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
+      { label: { pl: 'Komputery stacjonarne', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
       { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
     ],
   },
   {
-    title: { pl: 'Drukarki', uk: 'Принтери', ru: 'Принтеры' },
+    title: { pl: 'Drukarki biurowe', uk: 'Офісні принтери', ru: 'Офисные принтеры' },
     items: [
-      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
-      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
-      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
-      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
-      { label: { pl: 'Drukarek do kart plastikowych', uk: 'Принтерів пластикових карток', ru: 'Принтеров пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
-      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
+      { label: { pl: 'Drukarki laserowe', uk: 'Лазерні принтери', ru: 'Лазерные принтеры' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
+      { label: { pl: 'Drukarki atramentowe', uk: 'Струменеві принтери', ru: 'Струйные принтеры' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
+      { label: { pl: 'Drukarki igłowe', uk: 'Матричні принтери', ru: 'Матричные принтеры' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
+      { label: { pl: 'Drukarki etykiet termicznych', uk: 'Термопринтери етикеток', ru: 'Термопринтеры этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
     ],
   },
   {
-    title: { pl: 'Druk 3D i urządzenia specjalne', uk: '3D-друк і спеціальні пристрої', ru: '3D-печать и специальные устройства' },
+    title: { pl: 'Drukarki specjalistyczne', uk: 'Спеціалізовані принтери', ru: 'Специализированные принтеры' },
     items: [
-      { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
-      { label: { pl: 'Niszczarek', uk: 'Шредерів', ru: 'Шредеров' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
-      { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
+      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
+      { label: { pl: 'Drukarki sublimacyjne', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/sublimacja-carousel-v1-01.webp' },
+      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/dtg-carousel-v1-01.webp' },
+      { label: { pl: 'Drukarki DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/dtf-carousel-v3-01.webp' },
+      { label: { pl: 'Drukarki spożywcze', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/spozywcze-carousel-v1-01.webp' },
+    ],
+  },
+  {
+    title: { pl: 'Pozostałe urządzenia', uk: 'Інші пристрої', ru: 'Другие устройства' },
+    items: [
+      { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
+      { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
+      { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
     ],
   },
 ]
 
-// Grid placement per group: 2 columns below 1280 px, 3 columns from 1280 px.
+// Grid placement per group: 2×2 below 1280 px, 4 columns from 1280 px.
 const MEGA_GROUP_CLASS = [
   'col-start-1 row-start-2 pr-3',
-  'col-start-2 row-start-2 row-span-2 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:row-span-1 min-[1280px]:pr-3',
-  'col-start-1 row-start-3 mt-3 pr-3 min-[1280px]:col-start-3 min-[1280px]:row-start-2 min-[1280px]:mt-0 min-[1280px]:border-l min-[1280px]:border-[#bfa76a]/25 min-[1280px]:pl-3 min-[1280px]:pr-0',
+  'col-start-2 row-start-2 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:pr-3',
+  'col-start-1 row-start-3 mt-3 pr-3 min-[1280px]:col-start-3 min-[1280px]:row-start-2 min-[1280px]:mt-0 min-[1280px]:border-l min-[1280px]:border-[#bfa76a]/25 min-[1280px]:pl-3',
+  'col-start-2 row-start-3 mt-3 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:col-start-4 min-[1280px]:row-start-2 min-[1280px]:mt-0',
 ]
 
 /* =========================
@@ -377,11 +383,11 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           {/* Mega menu panel */}
           {isServicesOpen && (
             <div
-              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[860px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
+              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[1120px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
               style={{ backgroundImage: `var(--bg-parchment)` }}
             >
               <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-3">
+              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-4">
                 <div className="col-span-full row-start-1 mb-3">
                   <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
@@ -396,7 +402,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                     <div className="flex flex-col divide-y divide-[#bfa76a]/25">
                       {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
                         <Link
-                          key={item.href}
+                          key={item.label.pl}
                           href={`${nav.prefix}${item.href}`}
                           className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                         >

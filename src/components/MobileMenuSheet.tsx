@@ -122,7 +122,7 @@ export function MobileMenuSheet({
                                                 <div className="flex flex-col divide-y divide-[#bfa76a]/25">
                                                     {group.items.map((item) => (
                                                         <Link
-                                                            key={item.href}
+                                                            key={item.label}
                                                             href={item.href}
                                                             onClick={() => setIsOpen(false)}
                                                             className="flex items-center gap-2 py-1.5 text-[17px] leading-snug"
