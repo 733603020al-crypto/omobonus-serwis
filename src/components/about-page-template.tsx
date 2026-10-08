@@ -67,7 +67,7 @@ export function AboutPageTemplate({
             </div>
           </div>
           <div className="pt-10 md:pt-16">
-            <GoogleReviews />
+            <GoogleReviews locale={locale} />
           </div>
           <Footer t={footerT} bare />
         </div>
