@@ -161,7 +161,7 @@ export const services: ServiceData[] = [
     pricingSections: createKartyPricingSections(),
     priceTooltip: KARTY_PRICE_TOOLTIP,
   },
-  // Nowa strona w przygotowaniu (DTG): tylko bezpośredni adres (bez menu, strony głównej i sitemap — noindexSlugs).
+  // Strony drukarek DTG, DTF, sublimacyjnych i spożywczych.
   {
     slug: 'serwis-drukarek-dtg',
     title: 'Serwis i naprawa drukarek DTG',
