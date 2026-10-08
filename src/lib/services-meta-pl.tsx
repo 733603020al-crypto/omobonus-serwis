@@ -134,7 +134,6 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
     ],
   },
-  // Strona w przygotowaniu (noindex)
   'serwis-drukarek-dtg': {
     items: [
       'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
@@ -151,7 +150,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
   },
   'serwis-drukarek-sublimacyjnych': {
     items: [
-      'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+      'Naprawa drukarek sublimacyjnych dla drukarni, producentów gadżetów, odzieży sportowej i tekstyliów',
       'Udrażnianie i regeneracja głowic w drukarkach i ploterach sublimacyjnych',
       'Konserwacja drukarek sublimacyjnych — stacja serwisowa, układ atramentowy, mechanika',
     ],
@@ -270,33 +269,32 @@ export const subServiceTitles: Record<string, string> = {
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-niszczarek': {
-    title: 'Naprawa niszczarek Wrocław — serwis i cennik',
-    description: 'Serwis i naprawa niszczarek we Wrocławiu: konserwacja i olejenie, usuwanie zacięć, wymiana noży, naprawa silnika i czujników. Cennik netto, diagnoza gratis przy naprawie. Fellowes, HSM, Kobra, Rexel, IDEAL.',
+    title: 'Serwis i naprawa niszczarek — cennik',
+    description: 'Naprawa niszczarek we Wrocławiu: olejenie, usuwanie zacięć, wymiana noży, silnik i czujniki. Fellowes, HSM, Kobra, Rexel. Diagnoza gratis przy naprawie.',
   },
   'naprawa-zasilaczy-ups': {
-    title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
-    description: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, naprawa elektroniki. APC, Eaton, Ever, Vertiv i inne. Pełny cennik bez ukrytych kosztów.',
+    title: 'Naprawa UPS i zasilaczy awaryjnych',
+    description: 'Naprawa zasilaczy UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, elektronika. APC, Eaton, Ever, Vertiv. Pełny cennik bez ukrytych kosztów.',
   },
   'serwis-drukarek-do-kart-plastikowych': {
-    title: 'Serwis drukarek do kart plastikowych — Zebra, Evolis, Fargo',
-    description: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust Datacard i inne. Przejrzysty cennik — koszt naprawy ustalamy przed jej wykonaniem.',
+    title: 'Serwis drukarek do kart plastikowych',
+    description: 'Naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust. Koszt naprawy ustalamy przed jej wykonaniem.',
   },
-  // Strona w przygotowaniu (noindex)
   'serwis-drukarek-dtg': {
-    title: 'Serwis i naprawa drukarek DTG — Epson, Brother, Kornit',
-    description: 'Serwis i naprawa drukarek DTG we Wrocławiu — jawny cennik: udrażnianie głowicy, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
+    title: 'Serwis i naprawa drukarek DTG',
+    description: 'Naprawa drukarek DTG Epson, Brother, Kornit we Wrocławiu: udrażnianie głowicy, biały atrament, stacja serwisowa. Koszt naprawy znasz z góry.',
   },
   'serwis-drukarek-dtf': {
-    title: 'Serwis drukarek DTF Wrocław — naprawa i konserwacja',
+    title: 'Serwis i naprawa drukarek DTF',
     description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
   },
   'serwis-drukarek-sublimacyjnych': {
-    title: 'Serwis drukarek sublimacyjnych — Epson, Sawgrass, Mimaki',
-    description: 'Naprawa i konserwacja drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh i Roland. Udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Ceny netto, Wrocław.',
+    title: 'Serwis i naprawa drukarek sublimacyjnych',
+    description: 'Naprawa drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh, Roland: udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Wrocław.',
   },
   'serwis-drukarek-spozywczych': {
     title: 'Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus',
-    description: 'Serwis i naprawa drukarek spożywczych we Wrocławiu — jawny cennik: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
+    description: 'Naprawa drukarek spożywczych we Wrocławiu: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego. Koszt naprawy znasz z góry.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',

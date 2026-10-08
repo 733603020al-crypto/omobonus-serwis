@@ -381,6 +381,20 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
+          {/* While the mega menu is closed its links are still in the HTML
+              (hidden, no icons), so search engines see every service page. */}
+          {!isServicesOpen && (
+            <ul hidden>
+              {serviceGroups.flatMap((group) => group.items).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} prefetch={false} tabIndex={-1}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
           {/* Mega menu panel */}
           {isServicesOpen && (
             <div
