@@ -33,7 +33,7 @@ import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
-import { createSublimacjaPricingSections, SUBLIMACJA_PRICE_TOOLTIP } from './services-data-sublimacja'
+import { createSpozywczePricingSections, SPOZYWCZE_PRICE_TOOLTIP } from './services-data-spozywcze'
 
 export const services: ServiceData[] = [
   {
@@ -163,13 +163,13 @@ export const services: ServiceData[] = [
     priceTooltip: DTG_PRICE_TOOLTIP,
   },
   {
-    slug: 'serwis-drukarek-sublimacyjnych',
-    title: 'Serwis i naprawa drukarek DTG',
-    subtitle: 'Serwis i naprawa drukarek DTG we Wrocławiu',
-    icon: '/images/dtg-carousel-v1-01.webp',
-    description: 'Serwis i naprawa drukarek DTG do nadruku na koszulkach.',
-    pricingSections: createSublimacjaPricingSections(),
-    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP,
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Serwis i naprawa drukarek spożywczych',
+    subtitle: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek spożywczych do druku na tortach i ciastkach.',
+    pricingSections: createSpozywczePricingSections(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

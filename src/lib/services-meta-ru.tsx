@@ -20,12 +20,11 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     accent: 'DTG',
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
-  'serwis-drukarek-sublimacyjnych': {
-    h1: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
-    lines: ['Сервис и ремонт', 'DTG-принтеров', 'во Вроцлаве'],
-    tagline: 'печать прямо на одежде (Direct to Garment)',
-    accent: 'DTG',
-    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  'serwis-drukarek-spozywczych': {
+    h1: 'Сервис и ремонт пищевых принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'пищевых принтеров', 'во Вроцлаве'],
+    tagline: 'печать на тортах, печенье и пищевых продуктах',
+    h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
   },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
@@ -114,11 +113,11 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
       'Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде.',
     ],
   },
-  'serwis-drukarek-sublimacyjnych': {
+  'serwis-drukarek-spozywczych': {
     items: [
-      'Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции.',
-      'Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин.',
-      'Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде.',
+      'Чистка и обслуживание, прочистка и замена головки, ремонт принтеров для тортов, печенья и вафельных картинок со съедобными чернилами.',
+      'Ваш пищевой принтер для печати на тортах и печенье — предварительно оценим проблему за 15 мин.',
+      'Сервис пищевых принтеров во Вроцлаве для кондитерских, пекарен и мастерских тортов — также кондитерские принтеры Canon, Epson и Brother со съедобными чернилами.',
     ],
   },
   'naprawa-drukarek': {
@@ -207,7 +206,7 @@ export const imageAltRu: Record<string, string> = {
   'serwis-niszczarek': 'Сервис и ремонт уничтожителей документов',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластиковых карт',
   'serwis-drukarek-dtg': 'DTG-принтер для печати на футболках',
-  'serwis-drukarek-sublimacyjnych': 'DTG-принтер для печати на футболках',
+  'serwis-drukarek-spozywczych': 'Пищевой принтер для печати на тортах и печенье',
   'serwis-drukarek-termicznych': 'Принтер термоэтикеток',
   'serwis-laptopow': 'Ремонт ноутбуков',
   'serwis-komputerow-stacjonarnych': 'Сервис стационарных компьютеров',
@@ -247,9 +246,9 @@ export const seoMetadataRu: Record<string, { title: string; description: string 
     title: 'Сервис и ремонт DTG-принтеров — Epson, Brother, Kornit',
     description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — открытый прайс: прочистка головки, белые чернила, сервисная станция, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
   },
-  'serwis-drukarek-sublimacyjnych': {
-    title: 'Сервис и ремонт DTG-принтеров — Epson, Brother, Kornit',
-    description: 'Сервис и ремонт DTG-принтеров во Вроцлаве — открытый прайс: прочистка головки, белые чернила, сервисная станция, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
+  'serwis-drukarek-spozywczych': {
+    title: 'Сервис пищевых принтеров и принтеров для тортов — Вроцлав | Omobonus',
+    description: 'Сервис и ремонт пищевых принтеров во Вроцлаве — открытый прайс: прочистка головки, платформа direct-to-food, подача сахарной бумаги, обслуживание. Стоимость ремонта вы знаете до его выполнения.',
   },
   'serwis-laptopow': {
     title: 'Сервис и ремонт ноутбуков',
@@ -329,7 +328,7 @@ export const labelsRu: ServicePageLabels = {
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
     'serwis-drukarek-dtg': 'Есть проблема с DTG-принтером?',
-    'serwis-drukarek-sublimacyjnych': 'Есть проблема с DTG-принтером?',
+    'serwis-drukarek-spozywczych': 'Есть проблема с пищевым принтером?',
     'wynajem-drukarek': 'Есть проблема с принтером?',
     'drukarka-zastepcza': 'Есть проблема с принтером?',
   },

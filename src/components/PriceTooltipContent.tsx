@@ -151,6 +151,17 @@ const DTG_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ][i],
 }))
 
+// Категории для страницы "Serwis drukarek spożywczych"
+const SPOZYWCZE_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
+  ...c,
+  title: ['Arkuszowe / adaptowane', 'Direct-to-food kompaktowe', 'Direct-to-food profesjonalne'][i],
+  description: [
+    'Drukarki atramentowe przystosowane do pracy z jadalnymi tuszami i drukowania na arkuszach cukrowych, waflowych oraz frosting sheets.',
+    'Kompaktowe drukarki z mechanizmem stołu lub platformy, umożliwiające bezpośredni nadruk na ciastkach, topperach, ciasteczkach i innych produktach.',
+    'Bardziej rozbudowane drukarki spożywcze do regularnej pracy, z własnym mechanizmem pozycjonowania produktu, napędem, czujnikami i systemem bezpośredniego nadruku.',
+  ][i],
+}))
+
 // Функция для получения категорий устройств в зависимости от страницы
 const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
@@ -174,7 +185,10 @@ const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
     return KARTY_DEVICE_CATEGORIES
   }
-  if ((serviceSlug === 'serwis-drukarek-dtg' || serviceSlug === 'serwis-drukarek-sublimacyjnych')) {
+  if (serviceSlug === 'serwis-drukarek-spozywczych') {
+    return SPOZYWCZE_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-drukarek-dtg') {
     return DTG_DEVICE_CATEGORIES
   }
   return DEVICE_CATEGORIES
@@ -276,7 +290,20 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
-  if ((serviceSlug === 'serwis-drukarek-dtg' || serviceSlug === 'serwis-drukarek-sublimacyjnych')) {
+  if (serviceSlug === 'serwis-drukarek-spozywczych') {
+    switch (categoryTitle) {
+      case 'Arkuszowe / adaptowane':
+        return '/images/spozywcze-category-01.webp'
+      case 'Direct-to-food kompaktowe':
+        return '/images/spozywcze-category-02.webp'
+      case 'Direct-to-food profesjonalne':
+        return '/images/spozywcze-category-03.webp'
+      default:
+        return ''
+    }
+  }
+
+  if (serviceSlug === 'serwis-drukarek-dtg') {
     switch (categoryTitle) {
       case 'Kompaktowa':
         return '/images/dtg-carousel-v1-01.webp'
@@ -317,7 +344,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
   const tooltipContentRef = useRef<HTMLDivElement | null>(null)
   // Same backing as the header "Usługi" mega menu (parchment + black/55, gold
   // border, shadow). All four pages with this popup.
-  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
+  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-spozywczych')
   // golden back light behind the category pictures — temporarily off; to enable: laser page only
   const backlit = false as boolean // service.slug === 'serwis-drukarek-laserowych'
 
@@ -386,7 +413,9 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 ? t.deviceCategoriesDescription.serwisNiszczarek
                 : service.slug === 'serwis-drukarek-do-kart-plastikowych'
                 ? t.deviceCategoriesDescription.serwisDrukarekDoKart
-                : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
+                : service.slug === 'serwis-drukarek-spozywczych'
+                ? t.deviceCategoriesDescription.serwisDrukarekSpozywczych
+                : service.slug === 'serwis-drukarek-dtg'
                 ? t.deviceCategoriesDescription.serwisDrukarekDtg
                 : t.deviceCategoriesDescription.default}
           </p>
@@ -394,7 +423,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines((service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? '150 / 250 / 450' : '50 / 100 / 150')}
+                {renderPriceLines(service.slug === 'serwis-drukarek-spozywczych' ? '150 / 250 / 350' : service.slug === 'serwis-drukarek-dtg' ? '150 / 250 / 450' : '50 / 100 / 150')}
               </div>
             </div>
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
@@ -402,7 +431,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
           {getDeviceCategories(service.slug).map(category => {
-            const ukCat = (service.slug === 'serwis-drukarek-atramentowych' ? t.categoryTranslationsAtrament[category.title] : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.categoryTranslationsDtg[category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
+            const ukCat = (service.slug === 'serwis-drukarek-atramentowych' ? t.categoryTranslationsAtrament[category.title] : service.slug === 'serwis-drukarek-dtg' ? t.categoryTranslationsDtg[category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
             return (
             <div
               key={category.title}

@@ -42,11 +42,11 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Biały atrament',
         'Konserwacja DTG',
     ],
-    'serwis-drukarek-sublimacyjnych': [
+    'serwis-drukarek-spozywczych': [
         'Zapchana głowica',
         'Pasy na nadruku',
-        'Biały atrament',
-        'Konserwacja DTG',
+        'Błąd platformy',
+        'Konserwacja drukarki',
     ],
 
     // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach

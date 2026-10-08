@@ -127,6 +127,45 @@
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
 
+## ЭТАП (2026-10-08): spożywcze — доработка по конкурентам, ЭТАП 3: PL + UK/RU ГОТОВО (НЕ закоммичено)
+- Решения владельца: диагноз при отказе **50 / 100 / 150 zł**; гарантия без изменений (3 мес. работа, 7 дней udrażnianie/regeneracja, части — гарантия производителя/поставщика); общепольского забора курьером НЕТ — клиент сам отправляет курьером, предварительно связавшись; услуги переделки обычных принтеров под съедобные чернила НЕТ; FAQ «Czy usterka może wrócić?» не добавлять; удалённая помощь / подменный принтер / блок отзывов Google — ответа нет, НИЧЕГО о них не писать.
+- Dojazd только для этой страницы (applySpozywczeDojazdSection): 20 zł = до 2,5 км от сервиса (5 км в обе стороны), сверх — 20 zł + 1,50 zł/km за каждый доп. км всей трассы туда-обратно сверх первых 5 км; тот же смысл в FAQ.
+- Названия: stacji kapującej (cap station), pochłaniacza (absorbera), płytki czujników (sensor board), wanienki atramentu (ink trough) i filtrów, damperów (tłumików atramentu); «zaschnięty atrament» в симптомах udrażniania. FAQ PL = 29 (5 новых + марки полным списком). SEO-строка с «drukarki cukiernicze»; title PL «Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus» (absolute, без шаблона layout — условие в (pl)/uslugi/[slug]/page.tsx по окончанию «| Omobonus»).
+- Naprawy = 10 групп: старая «Elektronika, zasilanie i oprogramowanie» заменена на «Elektronika, zasilanie i panel sterowania» (8 поз., + części, 2–4/1–3/2–5 dni, заметка «Nie każda drukarka… panel lub wyświetlacz…») и «Oprogramowanie i konfiguracja» (5 поз., 80/100/120 · 100/150/200, do 1 dnia; заметка: настройка/firmware/калибровка, нужные для завершения нашего ремонта, входят в его цену, отдельная цена — только при отдельном заказе). AirPrint/Mopria/сканирование/офисные функции НЕ добавлять.
+- Иконки всех 10 групп Naprawy — свои (из omobonus-foto/Nowy folder/serwis-drukarek-spozywczych, accordion-icon-spozywcze-*.webp). Иконки разделов Czyszczenie i konserwacja и Naprawy тоже свои (accordion-icon-spozywcze-czyszczenie/naprawy.webp, отделены от DTG в service-accordion.tsx). Временных картинок на странице больше нет.
+- UK/RU синхронизированы (29 FAQ, dojazd через свою обёртку dojazdSection, названия, SEO-строка «кондитерські/кондитерские принтери»); title UK «Сервіс харчових принтерів і принтерів для тортів — Вроцлав | Omobonus», RU «Сервис пищевых принтеров и принтеров для тортов — Вроцлав | Omobonus» (absolute, так же в uk/ru page.tsx).
+- noindex / sitemap / меню не тронуты. tsc OK, PL 1440 и UK 390 проверены. Дальше: коммит только по разрешению.
+
+## ЭТАП (2026-10-07): spożywcze — убраны все DTG-остатки (НЕ закоммичено)
+- UK/RU герой (h1/lines/tagline без accent, бренды как PL), SEO-строки под аккордеоном PL/UK/RU (предложенный вариант с ключами: торты/ciastka/opłatki, cukiernie/piekarnie, Canon/Epson/Brother z jadalnym tuszem), title/description PL/UK/RU «…drukarek spożywczych — Canon, Epson, Primera», alt героя, чипсы героя (Błąd platformy, Konserwacja drukarki), title/subtitle/description в services-data PL/UK/RU. В HTML остаются только DTG-ключи общего словаря (не видны).
+
+## ЭТАП (2026-10-07): spożywcze — FAQ UK/RU синхронизирован с PL (25 вопросов), CTA «Masz problem z drukarką spożywczą?» / «Маєте проблему з харчовим принтером?» / «Есть проблема с пищевым принтером?» (НЕ закоммичено)
+- DTG-остатки ещё: SEO-строки под аккордеоном (пользователь думает, предложен вариант), UK/RU H1/tagline/h2 героя, title/description PL/UK/RU, alt картинки героя.
+
+## ЭТАП (2026-10-07): spożywcze — FAQ PL заменён целиком на 25 вопросов пользователя (НЕ закоммичено)
+- Только PL (applySpozywczeFaqSection, faq-1..25, жирный через **). UK/RU FAQ пока старые от DTG — синхронизировать после утверждения PL. Ещё DTG-остатки: тексты под аккордеоном, alt картинки и «Masz problem z drukarką DTG?» в services-meta-pl.
+
+## ЭТАП (2026-10-07): spożywcze — Naprawy i usługi serwisowe заменены целиком (ветка pages/serwis-drukarek-spozywczych, НЕ закоммичено)
+- 9 групп / 47 услуг из списка пользователя (PL дословно, UK/RU перевод): naprawy-glowica(4), -kartridze(6), -stacja-serwisowa(7), -podawanie(5), -platforma(5), -pozycjonowanie(5), -czujniki(4), -karetka(5), -elektronika-zasilanie(6). Цены/сроки в services-pricing-data (94 строки), «—» для 1-й категории где не применимо. Без платной калибровки после ремонта. Старые DTG/sublimacja услуги удалены.
+- Иконки (service-visuals): glowica→dtg-glowica, kartridze→dtg-atrament, stacja→dtg-stacja-serwisowa, podawanie→atramentowe-mechanizm-podawania, platforma→dtg-stol, czujniki→niszczarki-czujniki, karetka→dtg-karetka, elektronika→dtg-elektronika; pozycjonowanie — заглушка, ждёт картинку от пользователя.
+- Промо-текст конcервации: t.konserwacjaPromoDescriptionSpozywcze. Остаток: FAQ и SEO-тексты внизу ещё от DTG. Проверено 1440/390, tsc ок.
+
+## ЭТАП (2026-10-07): spożywcze — Czyszczenie i konserwacja: PEŁNA KONSERWACJA, «[[pełne ]]czyszczenie i kontrola drukarki spożywczej», 10 пунктов, 150 / 250 / 400 zł, 1–2 dni; промо-описание свой ключ konserwacjaPromoDescriptionSpozywcze («…mechaniki drukarki spożywczej»). PL/UK/RU (НЕ закоммичено).
+
+## ЭТАП (2026-10-07): spożywcze — Dojazd как у atramentowych: 20 / 20 / 20 zł + 1,5 zł/km, 1–2 dni, Pilna GRATIS / do ustalenia (НЕ закоммичено).
+
+## ЭТАП (2026-10-07): spożywcze — цена «Diagnoza i wycena naprawy (w przypadku rezygnacji)» = 100 / 200 / 300 zł, срок 1–3 dni (НЕ закоммичено). FAQ-3 пока говорит 150 / 250 / 450 — не трогали.
+
+## ЭТАП (2026-10-07): spożywcze — карусель героя (НЕ закоммичено)
+- Свой HeroPrinterCarousel: SPOZYWCZE_HERO_SLIDES = public/images/spozywcze-carousel-v1-01..07.webp (+ -depth.webp, Depth Anything v2) из Desktop/.../serwis-drukarek-spozywczych 1–7.png по порядку; размеры [0.814,0.836,0.935,0.85,0.85,0.95,0.95] (1–3 увеличены на 10% по просьбе пользователя), bias [0,0,4,4,4,13,13]. Первый слайд = главная картинка страницы (serviceImageSrc, icon в services-data PL/UK/RU). DTG-карусель не тронута. Проверено 1440/390.
+
+## ЭТАП (2026-10-07): spożywcze — popup «Kategorie urządzeń» (НЕ закоммичено)
+- Свои категории SPOZYWCZE_DEVICE_CATEGORIES: Arkuszowe / adaptowane, Direct-to-food kompaktowe, Direct-to-food profesjonalne; картинки public/images/spozywcze-category-01..03.webp (из Desktop/.../serwis-drukarek-spozywczych 1, 5, 7.png); текст сверху serwisDrukarekSpozywczych, пример 150 / 250 / 350. UK/RU переведены. DTG-попап не тронут.
+
+## ЭТАП (2026-10-07): spożywcze — бегущая строка брендов (ветка pages/serwis-drukarek-spozywczych, НЕ закоммичено)
+- Порядок = подзаголовок: Canon, Epson, Brother (были) + 8 новых webp с официальных сайтов: jetlt (jetlt.com, белый фон снят, чёрное→белое), primera (primera.com, серый текст→белый), icing-images (icingimages.com, белая версия), icinginks (icinginks.com, 200px — мелкий оригинал), kopykake (kopykake.com, только 300x169, тёмно-синее→белое, scale 1.3), decopac (decopac.com SVG, фиолетовый→белый; DecoPac/PhotoCake = один логотип DecoPac), evebot (shop.evebot.cc, синий как есть), cino-printer (cinoprinter.com, белая версия). Метрики дописаны вручную.
+- Внимание: на :3200 висят ДВА dev-сервера — наш (127.0.0.1) и копия Temp/omobonus-sublim ([::1]) → localhost может открыть чужой и дать 404.
+
 ### ЭТАП 116 (2026-10-03) — иконки подкатегорий ремонтов принтеров карт → заглушка (ветка pages/new-service-kart-plastikowych), закоммичено
 - По указанию пользователя убраны иконки от термопринтеров у всех 8 подкатегорий «Naprawy» (запись страницы удалена из service-visuals) — везде нейтральная заглушка ремонтов. Ждём свои картинки.
 

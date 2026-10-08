@@ -54,6 +54,7 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaPromoTitleDtg: string
   konserwacjaPromoDescriptionDtg: string
+  konserwacjaPromoDescriptionSpozywcze: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
   konserwacjaIncludedNoteInkjet: string
@@ -68,6 +69,7 @@ export interface ServiceAccordionDict {
     serwisNiszczarek: string
     serwisDrukarekDoKart: string
     serwisDrukarekDtg: string
+    serwisDrukarekSpozywczych: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -160,6 +162,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki.',
     konserwacjaPromoTitleDtg: '„TYLKO CYKL CZYSZCZĄCY?”',
     konserwacjaPromoDescriptionDtg: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTG.',
+    konserwacjaPromoDescriptionSpozywcze: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki spożywczej.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
     konserwacjaIncludedNoteInkjet: 'W cenie usług zawarte są standardowe środki i materiały potrzebne do wykonania prac serwisowych. W przypadku obsługi absorbera cena obejmuje jego czyszczenie lub wymianę na nowy — zależnie od stanu absorbera i dostępności odpowiedniej części.',
@@ -174,6 +177,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
       serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa. Czas realizacji nie obejmuje oczekiwania na części.',
+      serwisDrukarekSpozywczych: 'Cena zależy od konstrukcji i stopnia rozbudowania drukarki spożywczej: pierwsza — arkuszowa / adaptowana, druga — kompaktowa direct-to-food, trzecia — profesjonalna direct-to-food. Czas realizacji nie obejmuje oczekiwania na części.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -258,6 +262,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера.',
     konserwacjaPromoTitleDtg: '«ТІЛЬКИ ЦИКЛ ЧИЩЕННЯ?»',
     konserwacjaPromoDescriptionDtg: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTG-принтера.',
+    konserwacjaPromoDescriptionSpozywcze: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки харчового принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
     konserwacjaIncludedNoteInkjet: 'У вартість послуг входять стандартні засоби та матеріали, необхідні для виконання сервісних робіт. У разі обслуговування абсорбера ціна включає його чищення або заміну на новий — залежно від стану абсорбера та наявності відповідної частини.',
@@ -272,6 +277,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша — мала, друга — офісна, третя — професійна категорія.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша — базовий, друга — бізнесовий, третя — ретрансферний.',
       serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша — компактний, друга — професійний, третя — промисловий. Термін виконання не враховує очікування на деталі.',
+      serwisDrukarekSpozywczych: 'Ціна залежить від конструкції та рівня складності харчового принтера: перша — аркушевий / адаптований, друга — компактний direct-to-food, третя — професійний direct-to-food. Термін виконання не враховує очікування на деталі.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -301,6 +307,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-drukarek-spozywczych
+      'Arkuszowe / adaptowane': { title: 'Аркушеві / адаптовані', description: 'Струменеві принтери, пристосовані до роботи з їстівним чорнилом і друку на цукрових, вафельних аркушах та frosting sheets.', features: [] },
+      'Direct-to-food kompaktowe': { title: 'Direct-to-food компактні', description: 'Компактні принтери з механізмом столу або платформи, що дозволяють друкувати безпосередньо на тістечках, топперах, печиві та інших продуктах.', features: [] },
+      'Direct-to-food profesjonalne': { title: 'Direct-to-food професійні', description: 'Складніші харчові принтери для регулярної роботи, з власним механізмом позиціонування продукту, приводом, датчиками та системою прямого друку.', features: [] },
       // serwis-niszczarek
       'Mała': { title: 'Мала', description: 'Компактні знищувачі документів для дому та невеликого офісу, розраховані на невеликі обсяги документів при регулярному використанні.', features: [] },
       'Biurowa': { title: 'Офісна', description: 'Знищувачі для регулярної офісної роботи кількох користувачів, з вищою продуктивністю та складнішою конструкцією.', features: [] },
@@ -388,6 +398,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера.',
     konserwacjaPromoTitleDtg: '«ТОЛЬКО ЦИКЛ ЧИСТКИ?»',
     konserwacjaPromoDescriptionDtg: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTG-принтера.',
+    konserwacjaPromoDescriptionSpozywcze: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики пищевого принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
     konserwacjaIncludedNoteInkjet: 'В стоимость услуг входят стандартные средства и материалы, необходимые для выполнения сервисных работ. При обслуживании абсорбера цена включает его чистку или замену на новый — в зависимости от состояния абсорбера и наличия соответствующей детали.',
@@ -402,6 +413,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая — малая, вторая — офисная, третья — профессиональная категория.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая — базовый, вторая — бизнес, третья — ретрансферный.',
       serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая — компактный, вторая — профессиональный, третья — промышленный. Срок выполнения не включает ожидание деталей.',
+      serwisDrukarekSpozywczych: 'Цена зависит от конструкции и степени сложности пищевого принтера: первая — листовой / адаптированный, вторая — компактный direct-to-food, третья — профессиональный direct-to-food. Срок выполнения не включает ожидание деталей.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
@@ -431,6 +443,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-drukarek-spozywczych
+      'Arkuszowe / adaptowane': { title: 'Листовые / адаптированные', description: 'Струйные принтеры, приспособленные для работы со съедобными чернилами и печати на сахарных, вафельных листах и frosting sheets.', features: [] },
+      'Direct-to-food kompaktowe': { title: 'Direct-to-food компактные', description: 'Компактные принтеры с механизмом стола или платформы, позволяющие печатать прямо на пирожных, топперах, печенье и других продуктах.', features: [] },
+      'Direct-to-food profesjonalne': { title: 'Direct-to-food профессиональные', description: 'Более сложные пищевые принтеры для регулярной работы, с собственным механизмом позиционирования продукта, приводом, датчиками и системой прямой печати.', features: [] },
       // serwis-niszczarek
       'Mała': { title: 'Малая', description: 'Компактные уничтожители документов для дома и небольшого офиса, рассчитанные на небольшие объёмы документов при регулярном использовании.', features: [] },
       'Biurowa': { title: 'Офисная', description: 'Уничтожители для регулярной офисной работы нескольких пользователей, с более высокой производительностью и более сложной конструкцией.', features: [] },

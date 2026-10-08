@@ -161,6 +161,15 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "azonprinter", src: "/images/brands/azonprinter.webp", listedOnly: true },
   { name: "resolute", src: "/images/brands/resolute.webp", listedOnly: true },
   { name: "lawson", src: "/images/brands/lawson.webp", listedOnly: true },
+  // drukarki spożywcze (oficjalne logo producentów)
+  { name: "jetlt", src: "/images/brands/jetlt.webp", listedOnly: true },
+  { name: "primera", src: "/images/brands/primera.webp", listedOnly: true },
+  { name: "icing-images", src: "/images/brands/icing-images.webp", listedOnly: true },
+  { name: "icinginks", src: "/images/brands/icinginks.webp", listedOnly: true },
+  { name: "kopykake", src: "/images/brands/kopykake.webp", listedOnly: true, scale: 1.3 }, // drobny napis + grafika kucharza zaniżają wagę logo
+  { name: "decopac", src: "/images/brands/decopac.webp", listedOnly: true },
+  { name: "evebot", src: "/images/brands/evebot.webp", listedOnly: true },
+  { name: "cino-printer", src: "/images/brands/cino-printer.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -190,6 +199,7 @@ const LOGO_RATIO: Record<string, number> = {
   "ubiquiti": 0.807, "mikrotik": 5.808, "eaton": 3.650, "triumph-adler": 3.300, "brady": 5.267, "avery-dennison": 3.100, "datamax-oneil": 1.615,
   "evolis": 5.125, "hid": 2.550, "magicard": 2.805, "entrust": 9.230, "matica": 6.900, "idp": 2.490, "hiti": 3.290, "swiftcolor": 5.375, "edisecure": 8.360,
   "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
+  "jetlt": 4.411, "primera": 3.443, "icing-images": 6.563, "icinginks": 2.275, "kopykake": 2.519, "decopac": 6.131, "evebot": 3.682, "cino-printer": 2.706,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

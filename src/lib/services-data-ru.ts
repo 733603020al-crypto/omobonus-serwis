@@ -15,7 +15,7 @@ import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services
 import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
 import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
 import { dtgPricingSectionsRu, DTG_PRICE_TOOLTIP_RU } from './services-data-ru-dtg'
-import { sublimacjaPricingSectionsRu, SUBLIMACJA_PRICE_TOOLTIP_RU } from './services-data-ru-sublimacja'
+import { spozywczePricingSectionsRu, SPOZYWCZE_PRICE_TOOLTIP_RU } from './services-data-ru-spozywcze'
 
 export const servicesRu: ServiceData[] = [
   {
@@ -244,13 +244,13 @@ export const servicesRu: ServiceData[] = [
     priceTooltip: DTG_PRICE_TOOLTIP_RU,
   },
   {
-    slug: 'serwis-drukarek-sublimacyjnych',
-    title: 'Сервис и ремонт DTG-принтеров',
-    subtitle: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
-    icon: '/images/dtg-carousel-v1-01.webp',
-    description: 'Сервис и ремонт DTG-принтеров для печати на футболках.',
-    pricingSections: sublimacjaPricingSectionsRu(),
-    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP_RU,
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Сервис и ремонт пищевых принтеров',
+    subtitle: 'Сервис и ремонт пищевых принтеров во Вроцлаве',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Сервис и ремонт пищевых принтеров для печати на тортах и печенье.',
+    pricingSections: spozywczePricingSectionsRu(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP_RU,
   },
   {
     slug: 'wynajem-drukarek',
