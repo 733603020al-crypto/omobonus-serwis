@@ -108,6 +108,14 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-dtf-elektronika.webp' },
     'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtf-oprogramowanie.webp' },
   },
+  'serwis-drukarek-sublimacyjnych': {
+    'naprawy-glowica': { icon: '/images/accordion-icon-sublimacja-glowica.webp' },
+    'naprawy-atrament': { icon: '/images/accordion-icon-sublimacja-atrament.webp' },
+    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-sublimacja-stacja-serwisowa.webp' },
+    'naprawy-karetka': { icon: '/images/accordion-icon-sublimacja-karetka.webp' },
+    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-sublimacja-elektronika.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-sublimacja-oprogramowanie.webp' },
+  },
   // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },

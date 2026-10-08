@@ -17,6 +17,7 @@ import { upsPricingSectionsUk } from './services-data-ups'
 import { kartyPricingSectionsUk, KARTY_PRICE_TOOLTIP_UK } from './services-data-uk-karty'
 import { dtgPricingSectionsUk, DTG_PRICE_TOOLTIP_UK } from './services-data-uk-dtg'
 import { dtfPricingSectionsUk, DTF_PRICE_TOOLTIP_UK } from './services-data-uk-dtf'
+import { sublimacjaPricingSectionsUk, SUBLIMACJA_PRICE_TOOLTIP_UK } from './services-data-uk-sublimacja'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -260,6 +261,15 @@ export const servicesUk: ServiceData[] = [
     description: 'Сервіс і ремонт DTF-принтерів для друку трансферів на плівці.',
     pricingSections: dtfPricingSectionsUk(),
     priceTooltip: DTF_PRICE_TOOLTIP_UK,
+  },
+  {
+    slug: 'serwis-drukarek-sublimacyjnych',
+    title: 'Сервіс і ремонт сублімаційних принтерів',
+    subtitle: 'Сервіс і ремонт сублімаційних принтерів у Вроцлаві',
+    icon: '/images/sublimacja-carousel-v1-01.webp',
+    description: 'Сервіс і ремонт сублімаційних принтерів і плотерів.',
+    pricingSections: sublimacjaPricingSectionsUk(),
+    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP_UK,
   },
   {
     slug: 'wynajem-drukarek',

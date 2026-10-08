@@ -33,6 +33,11 @@ export const headingsRu: Record<string, ServicePageHeadings> = {
     accent: 'DTF',
     h2: '(Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec, DTF Station / Prestige, …)',
   },
+  'serwis-drukarek-sublimacyjnych': {
+    h1: 'Сервис и ремонт сублимационных принтеров во Вроцлаве',
+    lines: ['Сервис и ремонт', 'сублимационных принтеров', 'во Вроцлаве'],
+    h2: '(Epson, Sawgrass, Mimaki, Roland DG, Mutoh, Ricoh, Brother, ...)',
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервис и ремонт принтеров этикеток во Вроцлаве',
     lines: ['Сервис и ремонт', 'принтеров этикеток', 'во Вроцлаве'],

@@ -35,6 +35,7 @@ import { createUpsPricingSections } from './services-data-ups'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
 import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
+import { createSublimacjaPricingSections, SUBLIMACJA_PRICE_TOOLTIP } from './services-data-sublimacja'
 
 export const services: ServiceData[] = [
   {
@@ -177,6 +178,15 @@ export const services: ServiceData[] = [
     description: 'Serwis i naprawa drukarek DTF do druku transferów na folii.',
     pricingSections: createDtfPricingSections(),
     priceTooltip: DTF_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-sublimacyjnych',
+    title: 'Serwis i naprawa drukarek sublimacyjnych',
+    subtitle: 'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+    icon: '/images/sublimacja-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek i ploterów sublimacyjnych.',
+    pricingSections: createSublimacjaPricingSections(),
+    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP,
   },
   {
     slug: 'wynajem-drukarek',

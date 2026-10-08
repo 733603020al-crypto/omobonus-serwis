@@ -56,6 +56,7 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "kip",           src: "/images/brands/kip.webp", listedOnly: true, heightClass: "h-[48px] md:h-[48px]", maxWidthClass: "max-w-[120px] md:max-w-[120px]" },
   { name: "durst",         src: "/images/brands/durst.webp", listedOnly: true, heightClass: "h-[44px] md:h-[44px]", maxWidthClass: "max-w-[152px] md:max-w-[152px]" },
   { name: "swissqprint",   src: "/images/brands/swissqprint.webp?v=2", listedOnly: true, heightClass: "h-[32px] md:h-[32px]", maxWidthClass: "max-w-[182px] md:max-w-[182px]" },
+  { name: "sawgrass",      src: "/images/brands/sawgrass.svg", listedOnly: true, heightClass: "h-[30px] md:h-[30px]", maxWidthClass: "max-w-[228px] md:max-w-[228px]" },
   { name: "apc", src: "/images/brands/apc.svg?v=2", heightClass: "h-[39px] md:h-[38px]", maxWidthClass: "max-w-[170px] md:max-w-[170px]" },
   // drukarki 3D
   { name: "bambulab",  src: "/images/brands/bambulab.svg?v=2", heightClass: "h-[36px] md:h-[34px]", maxWidthClass: "max-w-[210px] md:max-w-[210px]" },
@@ -212,7 +213,7 @@ const LOGO_RATIO: Record<string, number> = {
   "creality": 4.352, "anycubic": 5.074, "prusa": 1.566, "flashforge": 4.853, "elegoo": 4.044,
   "zortrax": 4.435, "ultimaker": 6.818, "phrozen": 1.000, "artillery": 5.242, "snapmaker": 4.386,
   "mimaki": 5.460, "roland-dg": 6.911, "mutoh": 5.742, "fujifilm": 6.065, "agfa": 3.976, "kip": 2.395,
-  "durst": 3.331, "swissqprint": 5.508,
+  "durst": 3.331, "swissqprint": 5.508, "sawgrass": 7.605,
   "hbot3d": 5.900, "qidi": 5.605, "flyingbear": 4.121, "raise3d": 4.21, "sovol": 5.855, "makerbot": 4.984, "uniformation": 8.387, "peopoly": 4.04, "tronxy": 8.323, "bcn3d": 3.984,
   "dascom": 8.895, "printronix": 6.339, "panasonic": 6.806, "tallygenicom": 4.266, "riso": 4.379,
   "develop": 6.226, "utax": 5.452, "sindoh": 5.435,
