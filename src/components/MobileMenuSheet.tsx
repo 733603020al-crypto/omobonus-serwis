@@ -110,16 +110,16 @@ export function MobileMenuSheet({
 
                                 {servicesOpen && (
                                     <div id={servicesId} className="mt-3">
-                                        <p className="pb-1.5 text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+                                        <p className="pb-1.5 text-[13px] font-semibold uppercase tracking-[0.25em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                                             {servicesHeader}
                                         </p>
                                         <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                                         {serviceGroups.map((group) => (
                                             <div key={group.title} className="mt-3">
-                                                <p className="mb-1 text-[16px] font-semibold text-[#bfa76a]">
+                                                <p className="mb-1.5 text-[18px] font-semibold text-[#bfa76a]">
                                                     {group.title}
                                                 </p>
-                                                <div className="flex flex-col divide-y divide-[#bfa76a]/25">
+                                                <div className="flex flex-col divide-y divide-[#bfa76a]/25 border-y border-[#bfa76a]/25">
                                                     {group.items.map((item) => (
                                                         <Link
                                                             key={item.label}
@@ -130,10 +130,10 @@ export function MobileMenuSheet({
                                                             <Image
                                                                 src={item.icon}
                                                                 alt=""
-                                                                width={20}
-                                                                height={20}
-                                                                sizes="20px"
-                                                                className="flex-shrink-0 object-contain opacity-90"
+                                                                width={26}
+                                                                height={item.iconTall ? 26 : 20}
+                                                                sizes="26px"
+                                                                className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
                                                                 unoptimized
                                                             />
                                                             {item.label}

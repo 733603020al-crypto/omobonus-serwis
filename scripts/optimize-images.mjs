@@ -32,12 +32,8 @@ const FILE_QUALITY = {
   'Serwis_Drukarek.webp': 72,
 
   // Service card/accordion background tab icons (128×128)
-  '01_serwis-laptopow-icon.webp': 65,
-  '02_serwis-komputerow-stacjonarnych-icon.webp': 65,
-  '03_outsourcing-it-icon.webp': 65,
   '10_wynajem-drukarek-icon.webp': 65,
   '11_drukarka-zastepcza-icon.webp': 65,
-  'Serwis_i_Naprawa_Drukarek_3D-icon.webp': 65,
 
   // Team portraits
   'maksym_portret_400x400.webp': 75,

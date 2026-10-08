@@ -134,44 +134,44 @@ const LOCALE_NAV: Record<Locale, {
 
 // Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
 // below. The mobile drawer lists the same groups in one column under "Usługi".
-export type ServiceGroup = { title: string; items: { label: string; href: string; icon: string }[] }
+export type ServiceGroup = { title: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
 
-const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
+const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale, string>; href: string; icon: string; iconTall?: boolean; locales?: Locale[] }[] }[] = [
   {
     title: { pl: 'Komputery i IT', uk: 'Комп\'ютери та ІТ', ru: 'Компьютеры и IT' },
     items: [
-      { label: { pl: 'Laptopy', uk: 'Ноутбуки', ru: 'Ноутбуки' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: { pl: 'Komputery stacjonarne', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
+      { label: { pl: 'Laptopy', uk: 'Ноутбуки', ru: 'Ноутбуки' }, href: '/uslugi/serwis-laptopow', icon: '/images/menu-icon-laptopy.webp' },
+      { label: { pl: 'Komputery stacjonarne', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/menu-icon-komputery-stacjonarne.webp' },
+      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/menu-icon-outsourcing-it.webp' },
     ],
   },
   {
     title: { pl: 'Drukarki biurowe', uk: 'Офісні принтери', ru: 'Офисные принтеры' },
     items: [
-      { label: { pl: 'Drukarki laserowe', uk: 'Лазерні принтери', ru: 'Лазерные принтеры' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/laser-icon-v3.webp' },
-      { label: { pl: 'Drukarki atramentowe', uk: 'Струменеві принтери', ru: 'Струйные принтеры' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/atrament-icon-v3.webp' },
-      { label: { pl: 'Drukarki igłowe', uk: 'Матричні принтери', ru: 'Матричные принтеры' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/iglowe-icon-v3.webp' },
-      { label: { pl: 'Drukarki etykiet termicznych', uk: 'Термопринтери етикеток', ru: 'Термопринтеры этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/termiczne-icon-v3.webp' },
+      { label: { pl: 'Drukarki laserowe', uk: 'Лазерні принтери', ru: 'Лазерные принтеры' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/menu-icon-drukarki-laserowe.webp' },
+      { label: { pl: 'Drukarki atramentowe', uk: 'Струменеві принтери', ru: 'Струйные принтеры' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/menu-icon-drukarki-atramentowe.webp' },
+      { label: { pl: 'Drukarki igłowe', uk: 'Матричні принтери', ru: 'Матричные принтеры' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/menu-icon-drukarki-iglowe.webp' },
+      { label: { pl: 'Drukarki etykiet termicznych', uk: 'Термопринтери етикеток', ru: 'Термопринтеры этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/menu-icon-drukarki-etykiet-termicznych.webp' },
     ],
   },
   {
     title: { pl: 'Drukarki specjalistyczne', uk: 'Спеціалізовані принтери', ru: 'Специализированные принтеры' },
     items: [
-      { label: { pl: 'Drukarki sublimacyjne', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/sublimacja-carousel-v1-01.webp' },
-      { label: { pl: 'Drukarki DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/dtf-carousel-v3-01.webp' },
-      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/dtg-carousel-v1-01.webp' },
-      { label: { pl: 'Drukarki spożywcze', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/spozywcze-carousel-v1-01.webp' },
-      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
+      { label: { pl: 'Drukarki sublimacyjne', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/menu-icon-drukarki-sublimacyjne.webp' },
+      { label: { pl: 'Drukarki DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/menu-icon-drukarki-dtf.webp' },
+      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/menu-icon-drukarki-dtg.webp' },
+      { label: { pl: 'Drukarki spożywcze', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/menu-icon-drukarki-spozywcze.webp', iconTall: true },
+      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/menu-icon-drukarki-do-kart-plastikowych.webp' },
     ],
   },
   {
     title: { pl: 'Inne urządzenia i usługi', uk: 'Інші пристрої та послуги', ru: 'Другие устройства и услуги' },
     items: [
-      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/druk-3d-na-zamowienie-card-icon.webp' },
-      { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
-      { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
-      { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
+      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/menu-icon-drukarki-3d.webp' },
+      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/menu-icon-druk-3d-na-zamowienie.webp' },
+      { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
+      { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/menu-icon-niszczarki.webp' },
+      { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/menu-icon-zasilacze-ups.webp' },
     ],
   },
 ]
@@ -266,7 +266,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     title: group.title[locale],
     items: group.items
       .filter((item) => !item.locales || item.locales.includes(locale))
-      .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon })),
+      .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon, iconTall: item.iconTall })),
   }))
 
   const scrollToSection = (id: string) => {
@@ -390,17 +390,17 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               <div className="absolute inset-0 bg-black/55" />
               <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-4">
                 <div className="col-span-full row-start-1 mb-3">
-                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                 </div>
                 {MEGA_MENU.map((col, i) => (
                   <div key={i} className={MEGA_GROUP_CLASS[i]}>
-                    <p className="mb-1 px-2 font-cormorant text-[15px] font-semibold text-[#bfa76a]">
+                    <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
                       {col.title[locale]}
                     </p>
-                    <div className="flex flex-col divide-y divide-[#bfa76a]/25">
+                    <div className="flex flex-col divide-y divide-[#bfa76a]/25 border border-[#bfa76a]/25">
                       {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
                         <Link
                           key={item.label.pl}
@@ -410,10 +410,11 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                           <Image
                             src={item.icon}
                             alt=""
-                            width={22}
-                            height={22}
-                            sizes="22px"
-                            className="flex-shrink-0 object-contain opacity-90"
+                            width={28}
+                            height={item.iconTall ? 28 : 22}
+                            sizes="28px"
+                            // A tall icon (cake candle) rises above the slot without changing the row height.
+                            className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
                             unoptimized
                           />
                           {item.label[locale]}
