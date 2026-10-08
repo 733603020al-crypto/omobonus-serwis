@@ -34,7 +34,7 @@ export const headings: Record<string, ServicePageHeadings> = {
   'serwis-drukarek-sublimacyjnych': {
     h1: 'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
     lines: ['Serwis i naprawa', 'drukarek sublimacyjnych', 'we Wrocławiu'],
-    h2: '(Epson, Sawgrass, Mimaki, Roland DG, Mutoh, Ricoh, Brother, ...)',
+    h2: '(Epson, Mimaki, Mutoh, Roland DG, Sawgrass, HP, Brother, …)',
   },
   'serwis-drukarek-spozywczych': {
     h1: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
@@ -149,6 +149,20 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Serwis drukarek DTF dla drukarni, firm z nadrukiem na odzieży i produkcji transferów.',
     ],
   },
+  'serwis-drukarek-sublimacyjnych': {
+    items: [
+      'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+      'Udrażnianie i regeneracja głowic w drukarkach i ploterach sublimacyjnych',
+      'Konserwacja drukarek sublimacyjnych — stacja serwisowa, układ atramentowy, mechanika',
+    ],
+  },
+  'serwis-drukarek-spozywczych': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa drukarek do tortów, ciastek i opłatków z jadalnym tuszem.',
+      'Twoja drukarka spożywcza do nadruku na tortach i ciastkach — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek spożywczych we Wrocławiu dla cukierni, piekarni i pracowni tortów — także drukarki cukiernicze Canon, Epson i Brother z jadalnym tuszem.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -225,6 +239,8 @@ export const imageAlt: Record<string, string> = {
   'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
   'serwis-drukarek-dtg': 'Drukarka DTG do nadruku na koszulkach',
   'serwis-drukarek-dtf': 'Drukarka DTF do druku na folii',
+  'serwis-drukarek-sublimacyjnych': 'Drukarka sublimacyjna — serwis i naprawa we Wrocławiu',
+  'serwis-drukarek-spozywczych': 'Drukarka spożywcza do druku na tortach i ciastkach',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -273,6 +289,14 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-drukarek-dtf': {
     title: 'Serwis drukarek DTF Wrocław — naprawa i konserwacja',
     description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    title: 'Serwis drukarek sublimacyjnych — Epson, Sawgrass, Mimaki',
+    description: 'Naprawa i konserwacja drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh i Roland. Udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Ceny netto, Wrocław.',
+  },
+  'serwis-drukarek-spozywczych': {
+    title: 'Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus',
+    description: 'Serwis i naprawa drukarek spożywczych we Wrocławiu — jawny cennik: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
@@ -364,6 +388,8 @@ export const labels: ServicePageLabels = {
     'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
     'serwis-drukarek-dtg': 'Masz problem z drukarką DTG?',
     'serwis-drukarek-dtf': 'Masz problem z drukarką DTF?',
+    'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką sublimacyjną?',
+    'serwis-drukarek-spozywczych': 'Masz problem z drukarką spożywczą?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',
   },

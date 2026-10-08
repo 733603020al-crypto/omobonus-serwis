@@ -36,7 +36,7 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
   'serwis-drukarek-sublimacyjnych': {
     h1: 'Сервіс і ремонт сублімаційних принтерів у Вроцлаві',
     lines: ['Сервіс і ремонт', 'сублімаційних принтерів', 'у Вроцлаві'],
-    h2: '(Epson, Sawgrass, Mimaki, Roland DG, Mutoh, Ricoh, Brother, ...)',
+    h2: '(Epson, Mimaki, Mutoh, Roland DG, Sawgrass, HP, Brother, …)',
   },
   'serwis-drukarek-spozywczych': {
     h1: 'Сервіс і ремонт харчових принтерів у Вроцлаві',
@@ -143,6 +143,20 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
       'Сервіс DTF-принтерів для друкарень, компаній з друком на одязі та виробництва трансферів.',
     ],
   },
+  'serwis-drukarek-sublimacyjnych': {
+    items: [
+      'Сервіс і ремонт сублімаційних принтерів у Вроцлаві',
+      'Прочищення та регенерація головок у сублімаційних принтерах і плотерах',
+      'Обслуговування сублімаційних принтерів — сервісна станція, чорнильна система, механіка',
+    ],
+  },
+  'serwis-drukarek-spozywczych': {
+    items: [
+      'Чищення та обслуговування, прочищення й заміна головки, ремонт принтерів для тортів, печива та вафельних картинок з їстівним чорнилом.',
+      'Ваш харчовий принтер для друку на тортах і печиві — попередньо оцінимо проблему за 15 хв.',
+      'Сервіс харчових принтерів у Вроцлаві для кондитерських, пекарень і майстерень тортів — також кондитерські принтери Canon, Epson і Brother з їстівним чорнилом.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Також надаємо послуги очищення, технічного обслуговування, регенерації, ремонту головки.',
@@ -231,6 +245,8 @@ export const imageAltUk: Record<string, string> = {
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластикових карток',
   'serwis-drukarek-dtg': 'DTG-принтер для друку на футболках',
   'serwis-drukarek-dtf': 'DTF-принтер для друку на плівці',
+  'serwis-drukarek-sublimacyjnych': 'Сублімаційний принтер — сервіс і ремонт у Вроцлаві',
+  'serwis-drukarek-spozywczych': 'Харчовий принтер для друку на тортах і печиві',
   'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
   'serwis-komputerow-stacjonarnych': 'Сервіс стаціонарних комп\'ютерів',
@@ -277,6 +293,14 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   'serwis-drukarek-dtf': {
     title: 'Сервіс DTF-принтерів Вроцлав — ремонт і обслуговування',
     description: 'Сервіс DTF-принтерів у Вроцлаві — ремонт головок, системи білого чорнила, подачі плівки, електроніки та RIP. Відкритий прайс і діагностика перед ремонтом.',
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    title: 'Сервіс сублімаційних принтерів — Epson, Sawgrass, Mimaki',
+    description: 'Ремонт і обслуговування сублімаційних принтерів Epson, Sawgrass, Mimaki, Mutoh і Roland. Прочищення та регенерація головок, чорнильна система, електроніка. Ціни нетто, Вроцлав.',
+  },
+  'serwis-drukarek-spozywczych': {
+    title: 'Сервіс харчових принтерів і принтерів для тортів — Вроцлав | Omobonus',
+    description: 'Сервіс і ремонт харчових принтерів у Вроцлаві — відкритий прайс: прочищення головки, платформа direct-to-food, подача цукрового паперу, обслуговування. Вартість ремонту ви знаєте до його виконання.',
   },
   'serwis-laptopow': {
     title: 'Сервіс і ремонт ноутбуків',
@@ -358,6 +382,8 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'serwis-drukarek-dtg': 'Маєте проблему з DTG-принтером?',
     'serwis-drukarek-dtf': 'Маєте проблему з DTF-принтером?',
+    'serwis-drukarek-sublimacyjnych': 'Маєте проблему із сублімаційним принтером?',
+    'serwis-drukarek-spozywczych': 'Маєте проблему з харчовим принтером?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
   },

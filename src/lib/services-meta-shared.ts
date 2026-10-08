@@ -51,7 +51,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-drukarek-do-kart-plastikowych': ['evolis', 'zebra', 'hid', 'magicard', 'entrust', 'matica', 'idp', 'hiti', 'dascom', 'swiftcolor', 'edisecure'],
   'serwis-drukarek-dtg': ['epson', 'brother', 'kornit', 'ricoh', 'polyprint', 'aeoon', 'mr', 'roq', 'omniprint', 'coldesi', 'pigment', 'anajet', 'roland-dg', 'mimaki', 'azonprinter', 'resolute', 'lawson', 'durst'],
   'serwis-drukarek-dtf': ['epson', 'roland-dg', 'mimaki', 'mutoh', 'fedar', 'audley', 'pegasus', 'trujet', 'artemis', 'ironprinter', 'dias', 'cobe', 'keditec', 'dtf-station'],
-  'serwis-drukarek-sublimacyjnych': ['epson', 'sawgrass', 'mimaki', 'roland-dg', 'mutoh', 'ricoh', 'brother'],
+  'serwis-drukarek-sublimacyjnych': ['epson', 'mimaki', 'mutoh', 'roland-dg', 'sawgrass', 'hp', 'brother'],
   'serwis-drukarek-spozywczych': ['canon', 'epson', 'brother', 'jetlt', 'primera', 'icing-images', 'icinginks', 'kopykake', 'decopac', 'evebot', 'cino-printer'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],

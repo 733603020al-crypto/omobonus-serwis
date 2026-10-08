@@ -194,7 +194,7 @@ export const services: ServiceData[] = [
     title: 'Serwis i naprawa drukarek spożywczych',
     subtitle: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
     icon: '/images/spozywcze-carousel-v1-01.webp',
-    description: 'Serwis i naprawa drukarek spożywczych.',
+    description: 'Serwis i naprawa drukarek spożywczych do druku na tortach i ciastkach.',
     pricingSections: createSpozywczePricingSections(),
     priceTooltip: SPOZYWCZE_PRICE_TOOLTIP,
   },
