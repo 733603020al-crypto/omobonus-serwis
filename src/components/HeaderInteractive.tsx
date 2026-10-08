@@ -157,17 +157,18 @@ const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale,
   {
     title: { pl: 'Drukarki specjalistyczne', uk: 'Спеціалізовані принтери', ru: 'Специализированные принтеры' },
     items: [
-      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
       { label: { pl: 'Drukarki sublimacyjne', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/sublimacja-carousel-v1-01.webp' },
-      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/dtg-carousel-v1-01.webp' },
       { label: { pl: 'Drukarki DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/dtf-carousel-v3-01.webp' },
+      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/dtg-carousel-v1-01.webp' },
       { label: { pl: 'Drukarki spożywcze', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/spozywcze-carousel-v1-01.webp' },
+      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/karty-icon-v1.webp' },
     ],
   },
   {
-    title: { pl: 'Pozostałe urządzenia', uk: 'Інші пристрої', ru: 'Другие устройства' },
+    title: { pl: 'Inne urządzenia i usługi', uk: 'Інші пристрої та послуги', ru: 'Другие устройства и услуги' },
     items: [
+      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
+      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/druk-3d-na-zamowienie-card-icon.webp' },
       { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/plotter-icon-v3.webp' },
       { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/niszczarki-icon-v1.webp' },
       { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/ups-icon-v3.webp' },
