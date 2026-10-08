@@ -90,13 +90,13 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtg-oprogramowanie.webp' },
   },
   'serwis-drukarek-sublimacyjnych': {
-    'naprawy-glowica': { icon: '/images/accordion-icon-dtg-glowica.webp' },
-    'naprawy-atrament': { icon: '/images/accordion-icon-dtg-atrament.webp' },
-    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-dtg-stacja-serwisowa.webp' },
-    'naprawy-karetka': { icon: '/images/accordion-icon-dtg-karetka.webp' },
-    'naprawy-stol': { icon: '/images/accordion-icon-dtg-stol.webp' },
-    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-dtg-elektronika.webp' },
-    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-dtg-oprogramowanie.webp' },
+    'naprawy-glowica': { icon: '/images/accordion-icon-sublimacja-glowica.webp' },
+    'naprawy-atrament': { icon: '/images/accordion-icon-sublimacja-atrament.webp' },
+    'naprawy-stacja-serwisowa': { icon: '/images/accordion-icon-sublimacja-stacja-serwisowa.webp' },
+    'naprawy-podawanie': { icon: '/images/accordion-icon-sublimacja-podawanie.webp' },
+    'naprawy-karetka': { icon: '/images/accordion-icon-sublimacja-karetka.webp' },
+    'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-sublimacja-elektronika.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-sublimacja-oprogramowanie.webp' },
   },
   // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {

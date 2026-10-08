@@ -1067,7 +1067,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
   const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.konserwacjaPromoTitleDtg : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1889,7 +1889,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-niszczarki-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-karty-czyszczenie-v3.webp'
-                                : useWarmSectionIcons && section.id === 'konserwacja' && (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-sublimacyjnych'
+                                ? '/images/accordion-icon-sublimacja-czyszczenie-v2.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-dtg'
                                 ? '/images/accordion-icon-dtg-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
@@ -1915,7 +1917,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-niszczarki-naprawy-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-do-kart-plastikowych'
                                 ? '/images/accordion-icon-karty-naprawy-v3.webp'
-                                : useWarmSectionIcons && section.id === 'naprawy' && (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-sublimacyjnych'
+                                ? '/images/accordion-icon-sublimacja-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-dtg'
                                 ? '/images/accordion-icon-dtg-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isThermalService
                                 ? '/images/accordion-icon-naprawy-termiczne-v3.webp'

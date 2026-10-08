@@ -151,6 +151,17 @@ const DTG_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ][i],
 }))
 
+// Категории для страницы "Serwis drukarek sublimacyjnych"
+const SUBLIMACJA_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
+  ...c,
+  title: ['Kompaktowa', 'Profesjonalna', 'Wielkoformatowa'][i],
+  description: [
+    'Kompaktowe drukarki sublimacyjne do małych nakładów, personalizacji i niewielkiej produkcji.',
+    'Drukarki sublimacyjne do regularnej produkcji, większych formatów i intensywniejszej pracy.',
+    'Wielkoformatowe drukarki sublimacyjne do druku z roli i większych nakładów produkcyjnych.',
+  ][i],
+}))
+
 // Функция для получения категорий устройств в зависимости от страницы
 const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
@@ -174,7 +185,10 @@ const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
     return KARTY_DEVICE_CATEGORIES
   }
-  if ((serviceSlug === 'serwis-drukarek-dtg' || serviceSlug === 'serwis-drukarek-sublimacyjnych')) {
+  if (serviceSlug === 'serwis-drukarek-sublimacyjnych') {
+    return SUBLIMACJA_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-drukarek-dtg') {
     return DTG_DEVICE_CATEGORIES
   }
   return DEVICE_CATEGORIES
@@ -276,7 +290,20 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
-  if ((serviceSlug === 'serwis-drukarek-dtg' || serviceSlug === 'serwis-drukarek-sublimacyjnych')) {
+  if (serviceSlug === 'serwis-drukarek-sublimacyjnych') {
+    switch (categoryTitle) {
+      case 'Kompaktowa':
+        return '/images/sublimacja-carousel-v1-02.webp'
+      case 'Profesjonalna':
+        return '/images/sublimacja-carousel-v1-04.webp'
+      case 'Wielkoformatowa':
+        return '/images/sublimacja-carousel-v1-06.webp'
+      default:
+        return ''
+    }
+  }
+
+  if (serviceSlug === 'serwis-drukarek-dtg') {
     switch (categoryTitle) {
       case 'Kompaktowa':
         return '/images/dtg-carousel-v1-01.webp'
@@ -386,7 +413,9 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 ? t.deviceCategoriesDescription.serwisNiszczarek
                 : service.slug === 'serwis-drukarek-do-kart-plastikowych'
                 ? t.deviceCategoriesDescription.serwisDrukarekDoKart
-                : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych')
+                : service.slug === 'serwis-drukarek-sublimacyjnych'
+                ? t.deviceCategoriesDescription.serwisDrukarekSublimacja
+                : service.slug === 'serwis-drukarek-dtg'
                 ? t.deviceCategoriesDescription.serwisDrukarekDtg
                 : t.deviceCategoriesDescription.default}
           </p>
@@ -394,7 +423,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines((service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? '150 / 250 / 450' : '50 / 100 / 150')}
+                {renderPriceLines(service.slug === 'serwis-drukarek-sublimacyjnych' ? '150 / 250 / 400' : service.slug === 'serwis-drukarek-dtg' ? '150 / 250 / 450' : '50 / 100 / 150')}
               </div>
             </div>
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
@@ -402,7 +431,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
           {getDeviceCategories(service.slug).map(category => {
-            const ukCat = (service.slug === 'serwis-drukarek-atramentowych' ? t.categoryTranslationsAtrament[category.title] : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-sublimacyjnych') ? t.categoryTranslationsDtg[category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
+            const ukCat = (service.slug === 'serwis-drukarek-atramentowych' ? t.categoryTranslationsAtrament[category.title] : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.categoryTranslationsSublimacja[category.title] : service.slug === 'serwis-drukarek-dtg' ? t.categoryTranslationsDtg[category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
             return (
             <div
               key={category.title}

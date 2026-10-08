@@ -21,11 +21,9 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
   'serwis-drukarek-sublimacyjnych': {
-    h1: 'Сервіс і ремонт DTG-принтерів у Вроцлаві',
-    lines: ['Сервіс і ремонт', 'DTG-принтерів', 'у Вроцлаві'],
-    tagline: 'друк безпосередньо на одязі (Direct to Garment)',
-    accent: 'DTG',
-    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+    h1: 'Сервіс і ремонт сублімаційних принтерів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'сублімаційних принтерів', 'у Вроцлаві'],
+    h2: '(Epson, Mimaki, Mutoh, Roland DG, Sawgrass, HP, Brother, …)',
   },
   'serwis-drukarek-termicznych': {
     h1: 'Сервіс і ремонт принтерів етикеток у Вроцлаві',
@@ -115,9 +113,9 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
   },
   'serwis-drukarek-sublimacyjnych': {
     items: [
-      'Чищення та обслуговування, прочищення й заміна головки, ремонт системи білого чорнила та сервісної станції.',
-      'Ваш DTG-принтер для друку на футболках — попередньо оцінимо проблему за 15 хв.',
-      'Сервіс DTG-принтерів для текстильних друкарень і компаній з друком на одязі.',
+      'Сервіс і ремонт сублімаційних принтерів у Вроцлаві',
+      'Прочищення та регенерація головок у сублімаційних принтерах і плотерах',
+      'Обслуговування сублімаційних принтерів — сервісна станція, чорнильна система, механіка',
     ],
   },
   'naprawa-drukarek': {
@@ -206,7 +204,7 @@ export const imageAltUk: Record<string, string> = {
   'serwis-niszczarek': 'Сервіс і ремонт знищувачів документів',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластикових карток',
   'serwis-drukarek-dtg': 'DTG-принтер для друку на футболках',
-  'serwis-drukarek-sublimacyjnych': 'DTG-принтер для друку на футболках',
+  'serwis-drukarek-sublimacyjnych': 'Сублімаційний принтер — сервіс і ремонт у Вроцлаві',
   'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
   'serwis-komputerow-stacjonarnych': 'Сервіс стаціонарних комп\'ютерів',
@@ -247,8 +245,8 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
     description: 'Сервіс і ремонт DTG-принтерів у Вроцлаві — відкритий прайс: прочищення головки, біле чорнило, сервісна станція, обслуговування. Вартість ремонту ви знаєте до його виконання.',
   },
   'serwis-drukarek-sublimacyjnych': {
-    title: 'Сервіс і ремонт DTG-принтерів — Epson, Brother, Kornit',
-    description: 'Сервіс і ремонт DTG-принтерів у Вроцлаві — відкритий прайс: прочищення головки, біле чорнило, сервісна станція, обслуговування. Вартість ремонту ви знаєте до його виконання.',
+    title: 'Сервіс сублімаційних принтерів — Epson, Sawgrass, Mimaki',
+    description: 'Ремонт і обслуговування сублімаційних принтерів Epson, Sawgrass, Mimaki, Mutoh і Roland. Прочищення та регенерація головок, чорнильна система, електроніка. Ціни нетто, Вроцлав.',
   },
   'serwis-laptopow': {
     title: 'Сервіс і ремонт ноутбуків',
@@ -328,7 +326,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'serwis-drukarek-dtg': 'Маєте проблему з DTG-принтером?',
-    'serwis-drukarek-sublimacyjnych': 'Маєте проблему з DTG-принтером?',
+    'serwis-drukarek-sublimacyjnych': 'Маєте проблему із сублімаційним принтером?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
   },

@@ -19,11 +19,9 @@ export const headings: Record<string, ServicePageHeadings> = {
     h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
   },
   'serwis-drukarek-sublimacyjnych': {
-    h1: 'Serwis i naprawa drukarek DTG we Wrocławiu',
-    lines: ['Serwis i naprawa', 'drukarek DTG', 'we Wrocławiu'],
-    tagline: 'druk bezpośrednio na odzieży (Direct to Garment)',
-    accent: 'DTG',
-    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+    h1: 'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek sublimacyjnych', 'we Wrocławiu'],
+    h2: '(Epson, Mimaki, Mutoh, Roland DG, Sawgrass, HP, Brother, …)',
   },
 
   'serwis-drukarek-termicznych': {
@@ -119,9 +117,9 @@ export const seoBlocks: Record<string, SeoBlock> = {
   },
   'serwis-drukarek-sublimacyjnych': {
     items: [
-      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
-      'Twoja drukarka DTG do nadruku na koszulkach — wstępnie ocenimy problem w 15 min.',
-      'Serwis drukarek DTG dla drukarni tekstylnych i firm z nadrukiem na odzieży.',
+      'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+      'Udrażnianie i regeneracja głowic w drukarkach i ploterach sublimacyjnych',
+      'Konserwacja drukarek sublimacyjnych — stacja serwisowa, układ atramentowy, mechanika',
     ],
   },
   'naprawa-drukarek': {
@@ -198,7 +196,7 @@ export const imageAlt: Record<string, string> = {
   'serwis-niszczarek': 'Serwis i naprawa niszczarek',
   'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
   'serwis-drukarek-dtg': 'Drukarka DTG do nadruku na koszulkach',
-  'serwis-drukarek-sublimacyjnych': 'Drukarka DTG do nadruku na koszulkach',
+  'serwis-drukarek-sublimacyjnych': 'Drukarka sublimacyjna — serwis i naprawa we Wrocławiu',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -242,8 +240,8 @@ export const seoMetadata: Record<string, { title: string; description: string }>
     description: 'Serwis i naprawa drukarek DTG we Wrocławiu — jawny cennik: udrażnianie głowicy, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
   },
   'serwis-drukarek-sublimacyjnych': {
-    title: 'Serwis i naprawa drukarek DTG — Epson, Brother, Kornit',
-    description: 'Serwis i naprawa drukarek DTG we Wrocławiu — jawny cennik: udrażnianie głowicy, biały atrament, stacja serwisowa, konserwacja. Koszt naprawy znasz przed jej wykonaniem.',
+    title: 'Serwis drukarek sublimacyjnych — Epson, Sawgrass, Mimaki',
+    description: 'Naprawa i konserwacja drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh i Roland. Udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Ceny netto, Wrocław.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
@@ -333,7 +331,7 @@ export const labels: ServicePageLabels = {
     'serwis-niszczarek': 'Masz problem z niszczarką?',
     'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
     'serwis-drukarek-dtg': 'Masz problem z drukarką DTG?',
-    'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką DTG?',
+    'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką sublimacyjną?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',
   },

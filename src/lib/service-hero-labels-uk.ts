@@ -43,10 +43,10 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Обслуговування DTG',
   ],
   'serwis-drukarek-sublimacyjnych': [
-    'Забита головка',
-    'Смуги на друці',
-    'Біле чорнило',
-    'Обслуговування DTG',
+    'Прочищення головок',
+    'Чорнильна система',
+    'Обслуговування',
+    'Сублімаційні плотери',
   ],
 
   // TYMCZASOWA KOPIA treści z serwis-drukarek-laserowych — do zastąpienia treścią o niszczarkach

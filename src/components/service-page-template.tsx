@@ -245,6 +245,10 @@ const DTG_HERO_SLIDES = [
 const DTG_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const DTG_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+const SUBLIMACJA_HERO_SLIDES = [1, 2, 3, 4, 5, 6].map((n) => `/images/sublimacja-carousel-v1-0${n}.webp`)
+const SUBLIMACJA_SIZE_COEFFICIENTS = [0.65, 0.76, 0.85, 0.85, 0.95, 0.95]
+const SUBLIMACJA_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -602,7 +606,15 @@ export function ServicePageTemplate({
                           mobileSizeCoefficients={KARTY_MOBILE_SIZE_COEFFICIENTS}
                           verticalBias={KARTY_VERTICAL_BIAS}
                         />
-                      ) : (slug === 'serwis-drukarek-dtg' || slug === 'serwis-drukarek-sublimacyjnych') ? (
+                      ) : slug === 'serwis-drukarek-sublimacyjnych' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={SUBLIMACJA_HERO_SLIDES}
+                          sizeCoefficients={SUBLIMACJA_SIZE_COEFFICIENTS}
+                          verticalBias={SUBLIMACJA_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-drukarek-dtg' ? (
                         <HeroPrinterCarousel
                           alt={imageAlt}
                           variant="home"

@@ -68,6 +68,7 @@ export const LOGO_METRICS: Record<string, { ink: number; ratio: number; pad: num
   "roland-dg": { ink: 0.557, ratio: 6.91, pad: 0 },
   "samsung": { ink: 0.678, ratio: 3.089, pad: 0.16 },
   "sato": { ink: 0.502, ratio: 3.375, pad: 0 },
+  "sawgrass": { ink: 0.404, ratio: 7.605, pad: 0 },
   "sharp": { ink: 0.523, ratio: 7.02, pad: 0 },
   "sindoh": { ink: 0.532, ratio: 5.435, pad: 0 },
   "snapmaker": { ink: 0.196, ratio: 4.581, pad: 0.045 },
