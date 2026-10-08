@@ -3351,54 +3351,64 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ref={(el) => { parchmentListContentRefs.current[subcategory.id] = el }}
                                 className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
                               >
-                                {/* Мобильная версия - flex layout / (serwis-laptopow: новая Table-based mobile-разметка) */}
-                                <div className="block md:hidden">
-                                  {isRepairAccordionLayout && isRepairSection ? (
-                                    <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
-                                      <colgroup>
-                                        <col className="w-[75%]" />
-                                        <col className="w-[25%]" />
-                                      </colgroup>
-                                      <TableBody>
-                                        {subcategory.items.map((item, idx) => {
-                                          const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
-                                          return (
-                                          <TableRow
-                                            key={idx}
-                                            className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
-                                          >
-                                            <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden text-left">
-                                              {(() => {
-                                                const parsed = parseServiceText(item.service)
-                                                return (
-                                                  <div className="service-description-text">
-                                                    <div className="text-[16px] text-white service-description-text leading-[1.3]">
-                                                      {renderServiceMain(parsed.main)}
-                                                    </div>
-                                                    {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                {isRepairAccordionLayout && isRepairSection ? (
+                                  /* Ремонтная таблица — одна разметка для mobile и desktop: на mobile колонка срока скрыта (ширина 0), ширины колонок 75/25 вместо 67/16,5/16,5 */
+                                  <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
+                                    <colgroup>
+                                      <col className="w-[75%] md:w-[67%]" />
+                                      <col className="w-[25%] md:w-[16.5%]" />
+                                      <col className="w-0 md:w-[16.5%]" />
+                                    </colgroup>
+                                    <TableBody>
+                                      {subcategory.items.map((item, idx) => {
+                                        const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
+                                        const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
+                                        return (
+                                        <TableRow
+                                          key={idx}
+                                          className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
+                                        >
+                                          <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden max-md:text-left">
+                                            {(() => {
+                                              const parsed = parseServiceText(item.service)
+                                              return (
+                                                <div className="service-description-text">
+                                                  <div className="text-[16px] text-white service-description-text leading-[1.3]">
+                                                    {renderServiceMain(parsed.main)}
                                                   </div>
-                                                )
-                                              })()}
-                                            </TableCell>
-                                            <TableCell
-                                              className={cn(
-                                                'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
-                                                (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
-                                                !/\d/.test(displayPrice ?? '') && '!whitespace-normal',
-                                                shouldHighlightPrices
-                                                  ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
-                                                  : ''
-                                              )}
-                                            >
-                                              {renderPriceLines(displayPrice, item.link)}
-                                            </TableCell>
-                                          </TableRow>
-                                          )
-                                        })}
-                                      </TableBody>
-                                    </Table>
-                                  ) : (
-                                    subcategory.items.map((item, idx) =>
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                                </div>
+                                              )
+                                            })()}
+                                          </TableCell>
+                                          <TableCell
+                                            className={cn(
+                                              'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',
+                                              (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]',
+                                              !/\d/.test(displayPrice ?? '') && 'max-md:!whitespace-normal',
+                                              shouldHighlightPrices
+                                                ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] brightness-110'
+                                                : ''
+                                            )}
+                                          >
+                                            {renderPriceLines(displayPrice, item.link)}
+                                          </TableCell>
+                                          <TableCell className={cn(
+                                            'max-md:hidden text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:px-2',
+                                            (subcategory.id === 'opcjonalne' || subcategory.title?.includes('opcjonalne')) && 'md:translate-x-[8px]'
+                                          )}>
+                                            {renderDurationValue(displayDuration)}
+                                          </TableCell>
+                                        </TableRow>
+                                        )
+                                      })}
+                                    </TableBody>
+                                  </Table>
+                                ) : (
+                                <>
+                                {/* Мобильная версия - flex layout */}
+                                <div className="block md:hidden">
+                                  {subcategory.items.map((item, idx) =>
                                       renderMobileServiceRow(
                                         {
                                           ...item,
@@ -3415,7 +3425,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                         isRepairAccordionLayout && isRepairSection,
                                       ),
                                     )
-                                  )}
+                                  }
                                 </div>
                                 {/* Десктопная версия - HTML таблица */}
                                 <div className="hidden md:block">
@@ -3479,6 +3489,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                     </TableBody>
                                   </Table>
                                 </div>
+                                </>
+                                )}
                                 {isRepairAccordionLayout && isRepairSection && subcategory.subtitle && (
                                   <div className="parentheses-caption-text font-table-main text-[14px] text-[#cbb27c] leading-relaxed text-center px-4 pt-1 pb-2">{subcategory.subtitle}</div>
                                 )}
@@ -3611,6 +3623,66 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           {section.intro}
                         </p>
                       )}
+                      {!isDruk3DCustomSection(service.slug, section.id) ? (
+                        /* Одна разметка для mobile и desktop: на desktop — таблица 67/16,5/16,5, на mobile те же строки
+                           раскладываются как прежние flex-строки (описание + цена), колонка срока скрыта */
+                        <Table className="table-fixed border-collapse max-md:block">
+                          <colgroup className="max-md:hidden">
+                            <col style={{ width: '67%' }} />
+                            <col style={{ width: '16.5%' }} />
+                            <col style={{ width: '16.5%' }} />
+                          </colgroup>
+                          <tbody data-slot="table-body" className="md:[&_tr:last-child]:border-0 max-md:block">
+                            {section.items?.map((item, idx) => {
+                              const displayPrice = lookupPrice(`${section.id}.items.${idx}`)
+                              const displayDuration = lookupDuration(`${section.id}.items.${idx}`)
+                              const finalLeftIndent8px = isRepairAccordionLayout && isOpenHeaderPlateSection
+                              return (
+                              <TableRow
+                                key={idx}
+                                className={cn(
+                                  'border-white/20 border-b border-white/30',
+                                  idx === 0 && section.id !== 'dojazd' && 'border-t border-white/30',
+                                  idx === 0 && isRepairAccordionLayout && section.id === 'konserwacja' && 'max-md:border-t-0',
+                                  'max-md:flex max-md:items-start max-md:w-full max-md:gap-0.5 max-md:py-1 max-md:hover:bg-transparent'
+                                )}
+                              >
+                                <TableCell className={cn(
+                                  'font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden',
+                                  'max-md:block max-md:flex-1 max-md:min-w-0 max-md:max-w-none max-md:p-0 max-md:overflow-visible',
+                                  finalLeftIndent8px ? 'max-md:pl-2' : 'max-md:pl-0.5'
+                                )}>
+                                  {(() => {
+                                    const parsed = parseServiceText(item.service)
+                                    return (
+                                      /* на mobile обёртка без своего блока (как прежняя flex-строка), чтобы мобильное обрезание
+                                         .service-description-text до 2 строк не задевало описание в скобках */
+                                      <div className="service-description-text max-md:!contents">
+                                        <div className="text-[16px] max-md:text-[15px] max-md:tracking-tight text-white service-description-text leading-[1.3]">
+                                          {renderServiceMain(parsed.main)}
+                                        </div>
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                      </div>
+                                    )
+                                  })()}
+                                </TableCell>
+                                <TableCell className={cn(
+                                  'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:pl-4 max-md:block max-md:flex-shrink-0 max-md:p-0 max-md:max-w-[90px] max-md:whitespace-normal',
+                                  // как правило globals.css для мобильной строки в тёплом пергаменте: колонка цены 90px без правого отступа
+                                  isWarmParchment ? 'max-md:w-[90px]' : 'max-md:pr-2'
+                                )}>
+                                  {renderPriceLines(displayPrice, item.link)}
+                                </TableCell>
+                                <TableCell className="max-md:hidden text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:pl-4">
+                                  {renderDurationValue(displayDuration)}
+                                </TableCell>
+                              </TableRow>
+                              )
+                            })}
+                          </tbody>
+                        </Table>
+                      ) : (
+                      <>
                       {/* Мобильная версия - flex layout */}
                       <div className="block md:hidden">
                         {section.items?.map((item, idx) => {
@@ -3701,6 +3773,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           </TableBody>
                         </Table>
                       </div>
+                      </>
+                      )}
                       {isDruk3DCustomSection(service.slug, section.id) && section.priceFormula && (
                         <div className="border-t border-[#bfa76a]/20 px-2 pt-2 pb-1">
                           <p className="service-description-text font-table-main text-[16px] text-white leading-[1.3]">
