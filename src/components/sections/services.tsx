@@ -1,10 +1,10 @@
 'use client'
 
-import { useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { useNearViewport } from '@/lib/use-near-viewport'
 import { ORIENT_CLASSES, EDGE_CLASSES, CORNER_CLASSES } from './services-card-classes'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
@@ -92,12 +92,12 @@ const PL: ServicesT = {
 }
 
 // Category tabs: one cell per category, thin gold dividers between them —
-// a single row from lg, a 2×2 grid below (no horizontal overflow on phones).
-// Active tab: user's parchment (three pictures for three tab shapes) as a
-// 9-slice — burnt edges and curled corners keep their proportions, only the
-// plain middle adapts. Phones: one-line top row / two-line bottom row.
-const PARCHMENT_TOP = '[border-image:url(/images/services-tab-parchment-m1.webp)_35_fill/12px_stretch] md:[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment-m1.webp)] p-[7px] md:bg-[url(/images/services-tab-parchment.webp)] md:p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
-const PARCHMENT_BOTTOM = '[border-image:url(/images/services-tab-parchment-m2.webp)_45_fill/15px_stretch] md:[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment-m2.webp)] p-[9px] md:bg-[url(/images/services-tab-parchment.webp)] md:p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
+// a single row from lg, a 2×2 grid on tablets, one full-width row per
+// category on phones (no horizontal overflow).
+// Active tab: user's parchment as a 9-slice — burnt edges and curled corners
+// keep their proportions, only the plain middle adapts. Phones use the same
+// wide picture as desktop (full-width row has the desktop tab's shape).
+const PARCHMENT = '[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment.webp)] p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
 // Same dark brown as the card names on the parchment cards below.
 const ACTIVE_INK = '#24160B'
 // Gold of the "Skąd nazwa" / "Święty Omobonus XII wieku" headings (about.tsx).
@@ -129,6 +129,14 @@ export function Services({
   const services = servicesData ?? []
   const d = t ?? PL
   const [active, setActive] = useState(0)
+  // Phones only: a second tap on the open category folds it (no panel shown).
+  const [collapsed, setCollapsed] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767.98px)')
+    const onChange = () => { if (!mq.matches) setCollapsed(false) }
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const idBase = useId()
   // Baked card pictures sit below the first screen: fetched only on approach.
@@ -148,7 +156,28 @@ export function Services({
     const count = SERVICE_CATEGORIES.length
     const next = (index + count) % count
     setActive(next)
+    setCollapsed(false)
     tabRefs.current[next]?.focus()
+  }
+
+  // Phones: after switching, the open category may have jumped up past the
+  // fixed header (the previous panel above it closed) — bring it back in view.
+  const openTab = (index: number) => {
+    if (!window.matchMedia('(max-width: 767.98px)').matches) {
+      setActive(index)
+      return
+    }
+    if (index === active && !collapsed) {
+      setCollapsed(true)
+      return
+    }
+    setActive(index)
+    setCollapsed(false)
+    requestAnimationFrame(() => {
+      const top = tabRefs.current[index]?.getBoundingClientRect().top ?? 0
+      const header = document.querySelector('header')?.getBoundingClientRect().bottom ?? 0
+      if (top < header + 8) window.scrollBy({ top: top - header - 8 })
+    })
   }
 
   const onTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -242,27 +271,33 @@ export function Services({
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         <div className="text-center mt-[10px]">
-          {/* Same size/weight/line-height as "Serwis i naprawa" in the home hero H1 (0.93em of its 60px / clamp). */}
+          {/* Same weight/line-height as "Serwis i naprawa" in the home hero H1; desktop 0.93em of its 60px,
+              phones ~18% larger than before (was 0.93*clamp(28px,8.4vw,46px)). */}
           <h2
-            className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-[1.15] mx-auto mb-[24px] max-w-full whitespace-normal break-words text-[calc(0.93*clamp(28px,8.4vw,46px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
+            className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-[1.1] md:leading-[1.15] mx-auto mb-[24px] max-w-full whitespace-normal break-words text-[calc(1.09*clamp(33px,9.9vw,54px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
             {d.subheading}
           </h2>
         </div>
 
+        {/* Phones: a vertical accordion — the tablist is display:contents, so its cells
+            and the one card panel are flex items here, ordered by --m-order: the
+            panel sits right below the open category. Tablet/desktop: plain tabs. */}
+        <div className="max-md:flex max-md:flex-col max-md:gap-[6px]">
         {/* Category panel (same dark plate + gold hairline as the header menu). */}
         <div
           role="tablist"
           aria-label={d.subheading}
-          className="mb-5 grid grid-cols-2 gap-[6px] md:mb-6 lg:grid-cols-[repeat(4,auto)]"
+          className="max-md:contents md:mb-6 md:grid md:grid-cols-2 md:gap-[6px] lg:grid-cols-[repeat(4,auto)]"
         >
           {SERVICE_CATEGORIES.map((category, i) => {
-            const selected = i === active
+            // Folded (phones only): the category looks and reads as closed.
+            const selected = i === active && !collapsed
             return (
-              <div key={category.title.pl} role="presentation" className="group relative">
+              <div key={category.title.pl} role="presentation" className="group relative max-md:[order:var(--m-order)]" style={{ '--m-order': i <= active ? i : i + 1 } as React.CSSProperties}>
                 {/* Active parchment fills the whole cell (not just the button inside it). */}
-                {selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${i < 2 ? PARCHMENT_TOP : PARCHMENT_BOTTOM}`} />}
+                {selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${PARCHMENT}`} />}
                 <button
                   ref={(el) => { tabRefs.current[i] = el }}
                   type="button"
@@ -270,15 +305,16 @@ export function Services({
                   id={`${idBase}-tab-${i}`}
                   aria-selected={selected}
                   aria-controls={`${idBase}-panel`}
-                  tabIndex={selected ? 0 : -1}
-                  onClick={() => setActive(i)}
+                  tabIndex={i === active ? 0 : -1}
+                  onClick={() => openTab(i)}
                   onKeyDown={(e) => onTabKeyDown(e, i)}
-                  className={`relative flex h-full w-full flex-col items-center justify-center gap-1 rounded-md border px-1.5 py-2 text-center font-cormorant text-[16px] font-semibold leading-tight hyphens-auto md:flex-row md:gap-3 md:px-3 md:py-2.5 md:text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px] ${
+                  className={`relative flex h-full min-h-[52px] w-full flex-row items-center justify-start gap-3 rounded-md border px-4 py-2 text-left font-cormorant text-[18px] font-semibold leading-tight hyphens-auto md:min-h-0 md:px-3 md:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px] ${
                     selected
                       ? `border-transparent text-[#24160B] ${CARD_HOVER_MOVE}`
                       : // Same hover as the items of the header Usługi menu; thin gold ring of the
                         // Szybki kontakt button: closed frame at rest, its glint runs only while hovered.
-                        'gold-border-flow !border-[#bfa76a]/80 bg-black/55 before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100'
+                        // Hover glow only from md: on phones a tap just switches the category.
+                        'gold-border-flow !border-[#bfa76a]/80 bg-black/55 before:opacity-0 before:![animation-play-state:paused] md:hover:before:opacity-100 md:hover:before:![animation-play-state:running] text-white transition-all duration-300 ease-out md:hover:-translate-y-0.5 md:hover:border-[#bfa76a]/80 md:hover:bg-gradient-to-r md:hover:from-[#bfa76a]/40 md:hover:via-[#bfa76a]/20 md:hover:to-transparent md:hover:text-[#f3df9a] md:hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] md:hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] md:[&:hover_img]:opacity-100'
                   }`}
                 >
                   {/* Same icon shape, filled with one colour: card-name brown when active,
@@ -298,7 +334,16 @@ export function Services({
                       WebkitMaskPosition: 'center',
                     }}
                   />
-                  <span>{(category.homeTitle ?? category.title)[locale]}</span>
+                  {category.titleMobile ? (
+                    <>
+                      <span className="md:hidden">{category.titleMobile[locale]}</span>
+                      <span className="max-md:hidden">{(category.homeTitle ?? category.title)[locale]}</span>
+                    </>
+                  ) : (
+                    <span>{(category.homeTitle ?? category.title)[locale]}</span>
+                  )}
+                  {/* Phones: accordion arrow (same chevron as the mobile menu's Usługi). */}
+                  <ChevronDown aria-hidden="true" className={`ml-auto h-5 w-5 flex-shrink-0 transition-transform duration-200 md:hidden ${selected ? 'rotate-180' : ''}`} />
                 </button>
               </div>
             )
@@ -309,9 +354,11 @@ export function Services({
           role="tabpanel"
           id={`${idBase}-panel`}
           aria-labelledby={`${idBase}-tab-${active}`}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`}
+          style={{ '--m-order': active + 1 } as React.CSSProperties}
         >
           {activeCards.map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
+        </div>
         </div>
       </div>
     </section>

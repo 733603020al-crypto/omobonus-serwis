@@ -42,6 +42,8 @@ export default function RuHome() {
       cta={{
         heading: ru.homeCta.heading,
         text: ru.homeCta.text,
+        headingMobile: ru.homeCta.headingMobile,
+        textMobile: ru.homeCta.textMobile,
         button: ru.homeCta.button,
         href: '/ru/kontakt',
       }}

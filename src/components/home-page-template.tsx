@@ -24,6 +24,8 @@ interface HomePageTemplateProps {
   cta: {
     heading: ReactNode
     text: ReactNode
+    headingMobile?: ReactNode
+    textMobile?: ReactNode
     button: ReactNode
     href: string
   }
@@ -48,7 +50,7 @@ export function HomePageTemplate({
       <Header locale={locale} />
       <div>
         <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
-          <div className="absolute bottom-[120px] left-0 w-full z-10 md:bottom-[48px]">
+          <div className="absolute bottom-[36px] left-0 w-full z-10 md:bottom-[48px]">
             <BrandTicker compact muted />
           </div>
         </Hero>

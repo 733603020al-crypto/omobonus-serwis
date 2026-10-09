@@ -122,11 +122,11 @@ export function MobileMenuSheet({
                                                         onClick={() => setIsOpen(false)}
                                                         className="mb-1.5 block text-[18px] font-semibold text-[#bfa76a]"
                                                     >
-                                                        {group.title}
+                                                        {group.titleMobile ?? group.title}
                                                     </Link>
                                                 ) : (
                                                     <p className="mb-1.5 text-[18px] font-semibold text-[#bfa76a]">
-                                                        {group.title}
+                                                        {group.titleMobile ?? group.title}
                                                     </p>
                                                 )}
                                                 <div className="flex flex-col divide-y divide-[#bfa76a]/25 border-y border-[#bfa76a]/25">

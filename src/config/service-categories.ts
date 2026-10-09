@@ -19,6 +19,8 @@ export type ServiceCategory = {
   title: Record<ServiceLocale, string>
   /** Category button on the home page (defaults to `title`). */
   homeTitle?: Record<ServiceLocale, string>
+  /** Shorter title on phones (mobile menu + home category button); desktop keeps `title`. */
+  titleMobile?: Record<ServiceLocale, string>
   /** Makes the menu column title a link, looking the same as before. */
   href?: string
   /** Icon of the category button on the home page. */
@@ -38,6 +40,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     title: { pl: 'Drukarki (kserokopiarki) biurowe', uk: 'Офісні принтери (копіри)', ru: 'Офисные принтеры (копиры)' },
+    titleMobile: { pl: 'Drukarki biurowe', uk: 'Офісні принтери', ru: 'Офисные принтеры' },
     href: '/uslugi/naprawa-drukarek',
     icon: '/images/menu-icon-drukarki-laserowe.webp',
     items: [

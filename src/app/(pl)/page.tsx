@@ -36,6 +36,8 @@ export default function Home() {
       cta={{
         heading: 'Masz problem ze swoim urządzeniem?',
         text: 'Napisz lub zadzwoń — podpowiemy, od czego zacząć',
+        headingMobile: 'Masz problem z urządzeniem?',
+        textMobile: 'Napisz lub zadzwoń — znajdziemy rozwiązanie!',
         button: 'Szybki kontakt',
         href: '/kontakt',
       }}

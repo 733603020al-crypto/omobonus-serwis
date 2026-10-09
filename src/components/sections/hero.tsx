@@ -86,7 +86,8 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
     <section
       className="
         relative
-        min-h-[calc(100svh-65px)]
+        min-h-[calc(100svh-149px)]
+        md:min-h-[calc(100svh-65px)]
         flex
         items-center
         justify-center
@@ -111,7 +112,7 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
       </div>
 
       {/* Zawartość */}
-      <div className="relative z-10 w-full pb-[90px] md:pb-[110px]">
+      <div className="relative z-10 w-full pb-[6px] md:pb-[110px]">
         <HomeHeroShowcase
           h1={`${d.h1Line1} ${d.h1Line2} ${d.h1Line3}`}
           line1={d.carouselLine1 ?? CAROUSEL_PL.line1}

@@ -3982,6 +3982,13 @@
   filter: saturate(0.8) brightness(0.9);
   transition-property: opacity, filter;
 }
+/* Strony usług: przygaszone tylko na telefonie, desktop w pełnym kolorze. */
+@media (max-width: 767.98px) {
+  .brand-ticker-logo-muted-mobile {
+    opacity: 0.75;
+    filter: saturate(0.8) brightness(0.9);
+  }
+}
 @media (min-width: 768px) {
   .brand-ticker-logo-muted:hover {
     opacity: 1;

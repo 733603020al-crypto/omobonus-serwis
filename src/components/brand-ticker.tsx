@@ -273,7 +273,7 @@ const KEEP_SERVER_HTML = { __html: "" }
 // 0.4px/klatkę przy ~60fps = 24px/s. Ta sama stała co w PrintedPartsTicker.
 const TARGET_SPEED_PX_PER_SEC = 24
 
-function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; muted?: boolean; ariaHidden?: boolean }) {
+function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBrands: typeof brands; compact?: boolean; muted?: boolean | 'mobile'; ariaHidden?: boolean }) {
   return (
     <>
       {displayBrands.map((brand, i) => {
@@ -281,7 +281,7 @@ function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBran
         return (
         <div
           key={i}
-          className={`inline-flex shrink-0 items-center h-[78px] transition-opacity duration-300 ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}${muted ? ' brand-ticker-logo-muted' : ''}`}
+          className={`inline-flex shrink-0 items-center h-[78px] transition-opacity duration-300 ${compact ? 'md:h-[56px]' : 'md:h-[68px]'}${muted === 'mobile' ? ' brand-ticker-logo-muted-mobile' : muted ? ' brand-ticker-logo-muted' : ''}`}
           aria-hidden={ariaHidden}
         >
           {brand.label ? (
@@ -316,8 +316,9 @@ function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBran
   )
 }
 
-// muted — przygaszone logo (pierwszy ekran głównej, telefon i desktop), na desktopie pełny kolor po najechaniu.
-export default function BrandTicker({ brandNames, compact, muted }: { brandNames?: string[]; compact?: boolean; muted?: boolean } = {}) {
+// muted — przygaszone logo (pierwszy ekran głównej, telefon i desktop), na desktopie pełny kolor po najechaniu;
+// muted="mobile" — tylko na telefonie (strony usług).
+export default function BrandTicker({ brandNames, compact, muted }: { brandNames?: string[]; compact?: boolean; muted?: boolean | 'mobile' } = {}) {
   // Kolejność = kolejność w brandNames (slugBrands), żeby dało się ją ustawić per strona.
   const displayBrands = brandNames
     ? brandNames.map(n => brands.find(b => b.name === n)).filter((b): b is (typeof brands)[number] => !!b && !b.hidden)

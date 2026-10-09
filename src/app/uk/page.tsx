@@ -42,6 +42,8 @@ export default function UkHome() {
       cta={{
         heading: uk.homeCta.heading,
         text: uk.homeCta.text,
+        headingMobile: uk.homeCta.headingMobile,
+        textMobile: uk.homeCta.textMobile,
         button: uk.homeCta.button,
         href: '/uk/kontakt',
       }}

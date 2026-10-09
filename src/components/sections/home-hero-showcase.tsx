@@ -191,7 +191,7 @@ export function HomeHeroShowcase({
           </Link>
         </div>
         <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
-          <h1 className="font-cormorant font-bold text-[#ffffff] max-w-[90vw] md:max-w-none md:w-[470px] text-[clamp(28px,8.4vw,46px)] md:text-[60px] leading-[1.15]">
+          <h1 className="font-cormorant font-bold text-[#ffffff] max-w-[90vw] md:max-w-none md:w-[470px] text-[clamp(28px,10.6vw,47px)] md:text-[60px] leading-[1.15] max-md:leading-[1.05]">
             <span className="sr-only">{h1}</span>
             <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>

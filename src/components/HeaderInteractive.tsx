@@ -136,7 +136,7 @@ const LOCALE_NAV: Record<Locale, {
 // Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
 // below. The mobile drawer lists the same groups in one column under "Usługi".
 // Data lives in config/service-categories (shared with the home page catalogue).
-export type ServiceGroup = { title: string; href?: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
+export type ServiceGroup = { title: string; titleMobile?: string; href?: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
 
 // Grid placement per group: 2×2 below 1280 px, 4 columns from 1280 px.
 const MEGA_GROUP_CLASS = [
@@ -226,6 +226,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
 
   const serviceGroups: ServiceGroup[] = SERVICE_CATEGORIES.map((group) => ({
     title: group.title[locale],
+    titleMobile: group.titleMobile?.[locale],
     href: group.href ? `${nav.prefix}${group.href}` : undefined,
     items: group.items
       .filter((item) => !item.locales || item.locales.includes(locale))
@@ -388,7 +389,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                          // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
+                          className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                         >
                           <Image
                             src={item.icon}

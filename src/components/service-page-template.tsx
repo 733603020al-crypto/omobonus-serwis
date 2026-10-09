@@ -407,6 +407,10 @@ export interface ServicePageLabels {
   /** Заголовок CTA под устройство конкретной страницы; без записи — ctaHeading. */
   ctaHeadingBySlug?: Record<string, string>
   ctaText: string
+  /** Telefon: krótszy CTA — ogólna nazwa urządzenia (bez typu); brak wpisu → ctaHeadingMobile. */
+  ctaHeadingMobile?: string
+  ctaHeadingMobileBySlug?: Record<string, string>
+  ctaTextMobile?: string
   ctaButton: string
   ctaHref: string
 }
@@ -825,7 +829,7 @@ export function ServicePageTemplate({
                 </div>
               ) : slugBrands && slugBrands.length > 0 && (
                 <div className="mt-[40px]">
-                  <BrandTicker brandNames={slugBrands} />
+                  <BrandTicker brandNames={slugBrands} muted="mobile" />
                 </div>
               )}
               <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-3${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
@@ -896,6 +900,8 @@ export function ServicePageTemplate({
         cta={{
           heading: labels.ctaHeadingBySlug?.[slug] ?? labels.ctaHeading,
           text: labels.ctaText,
+          headingMobile: labels.ctaHeadingMobileBySlug?.[slug] ?? labels.ctaHeadingMobile,
+          textMobile: labels.ctaTextMobile,
           button: labels.ctaButton,
           href: labels.ctaHref,
         }}
