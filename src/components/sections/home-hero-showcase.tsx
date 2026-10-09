@@ -34,7 +34,8 @@ const SLIDES = [
 const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85, 0.95, 0.74]
 // Phones: every picture stays within ~90% of the screen width (cap 0.75 on
 // the full-width box), smaller ones keep their own size.
-const MOBILE_SIZE_COEFFICIENTS = SIZE_COEFFICIENTS.map((c) => Math.min(c, 0.75))
+// The laptop (slide 0 and the opening laptop) is 10% bigger and may reach the screen edges.
+const MOBILE_SIZE_COEFFICIENTS = SIZE_COEFFICIENTS.map((c, i) => (i === 0 ? 0.825 : Math.min(c, 0.75)))
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0, 4, 13, 0]
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
