@@ -173,7 +173,7 @@ export function HomeHeroShowcase({
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-        <div className="service-hero-zone flex justify-center items-center h-[300px] md:h-[400px] md:self-center">
+        <div className="service-hero-zone flex justify-center items-center h-[min(380px,84vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center">
           <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap home-hero-carousel-wrap service-hero-carousel relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
               alt={alt}
@@ -200,7 +200,7 @@ export function HomeHeroShowcase({
                 <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} fit={fit} />
               </span>
               <span ref={measureRef} aria-hidden="true" className="fixed left-0 top-0 invisible whitespace-nowrap pointer-events-none">{mid.parts[0]}{second}</span>
-              <span className="block w-full text-center whitespace-nowrap text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
+              <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
             </Link>
           </h1>
           {cta && (

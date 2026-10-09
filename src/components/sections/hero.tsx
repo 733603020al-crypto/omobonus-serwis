@@ -112,7 +112,7 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
       </div>
 
       {/* Zawartość */}
-      <div className="relative z-10 w-full pb-[6px] md:pb-[110px]">
+      <div className="relative z-10 w-full pt-[24px] pb-[90px] md:pt-0 md:pb-[110px]">
         <HomeHeroShowcase
           h1={`${d.h1Line1} ${d.h1Line2} ${d.h1Line3}`}
           line1={d.carouselLine1 ?? CAROUSEL_PL.line1}
