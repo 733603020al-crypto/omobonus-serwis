@@ -51,12 +51,12 @@ export const ru = {
     moreAboutHref: '/ru/o-nas',
   },
   services: {
-    sectionLabel: 'ОСНОВНЫЕ УСЛУГИ',
     subheading: 'Сервис и ремонт',
     tagline: 'Предлагаем сервис компьютеров, ноутбуков и принтеров, а также техническую поддержку для дома и офиса во Вроцлаве',
     cardLabels: {
       'serwis-laptopow': 'Ноутбуков',
       'serwis-komputerow-stacjonarnych': 'Стационарных компьютеров',
+      'outsourcing-it': 'IT-аутсорсинг',
       'naprawa-drukarek': 'Принтеров и ксероксов',
       'serwis-drukarek-3d': '3D-принтеров',
       'serwis-drukarek-termicznych': 'Принтеров этикеток',
@@ -64,6 +64,10 @@ export const ru = {
       'serwis-drukarek-laserowych': 'Лазерных принтеров',
       'serwis-drukarek-atramentowych': 'Струйных принтеров',
       'serwis-drukarek-iglowych': 'Матричных принтеров',
+      'serwis-drukarek-sublimacyjnych': 'Сублимационных принтеров',
+      'serwis-drukarek-dtf': 'DTF-принтеров',
+      'serwis-drukarek-dtg': 'DTG-принтеров',
+      'serwis-drukarek-spozywczych': 'Пищевых принтеров',
       'druk-3d-na-zamowienie': '3D-печать на заказ',
       'serwis-niszczarek': 'Шредеров',
       'naprawa-zasilaczy-ups': 'ИБП (UPS)',
@@ -71,8 +75,6 @@ export const ru = {
       'wynajem-drukarek': 'Аренда принтеров',
       'drukarka-zastepcza': 'Принтер на замену',
     },
-    viewAllLabel: 'Все услуги ↓',
-    collapseLabel: 'Свернуть ↑',
     moreLabel: 'Подробнее',
   },
   footer: {

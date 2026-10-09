@@ -2,6 +2,7 @@ import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import Image, { getImageProps } from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
@@ -16,7 +17,6 @@ import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import { getServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import GoogleReviews from '@/components/google-reviews'
-import { EDGE_CLASSES, ORIENT_CLASSES, CORNER_CLASSES } from '@/components/sections/services-card-classes'
 import { serviceCardBaked as CARD_BAKED, relatedServiceSlugs } from '@/lib/services-meta-shared'
 import { PrinterHubCarousel, PrinterHubMid } from '@/components/printer-hub-hero'
 
@@ -74,28 +74,23 @@ const HERO_SCALE: Record<string, number> = {
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
-// naprawa-drukarek: same category hero images already used on their own
-// service pages (laser, inkjet, needle, label, 3D, plotter; plastic-card
-// printer = its slide 3, as on the home hero) — no new assets.
-// Same order as the cards below and PRINTER_HERO_MIDS (middle H1 line, PL).
+// naprawa-drukarek: the four office-printer categories (same as the cards
+// below and the "Drukarki biurowe" home tab), each its own page's hero image.
+// Same order as PRINTER_HERO_MIDS (middle H1 line, PL).
 const PRINTER_HERO_SLIDES = [
   '/images/laser-carousel-v3-01.webp',
   '/images/atrament-carousel-v3-01.webp',
   '/images/iglowe-carousel-v3-01.webp',
   '/images/termiczne-carousel-v3-01.webp',
-  '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-  '/images/plotter-carousel-v3-00.webp',
-  '/images/karty-carousel-v1-03.webp',
 ]
 const PRINTER_HERO_MIDS = [
   { group: 'printer', parts: ['drukarek', 'laserowych'] },
   { group: 'printer', parts: ['drukarek', 'atramentowych'] },
   { group: 'printer', parts: ['drukarek', 'igłowych'] },
   { group: 'printer', parts: ['drukarek', 'etykiet'] },
-  { group: 'printer', parts: ['drukarek', '3D'] },
-  { group: 'plotter', parts: ['ploterów', ''] },
-  { group: 'printer', parts: ['drukarek', 'do kart plastikowych'] },
 ] as const
+// "Zobacz więcej →" under the card names (as on the home cards).
+const MORE_LABEL = { pl: 'Zobacz więcej', uk: 'Детальніше', ru: 'Подробнее' } as const
 
 // serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -853,56 +848,23 @@ export function ServicePageTemplate({
           <section id="uslugi" className="relative text-center pt-0 pb-2">
             <div className="relative max-w-7xl mx-auto px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {[...(relatedServices ?? [])].sort((a, b) => relatedServiceSlugs.indexOf(a.slug) - relatedServiceSlugs.indexOf(b.slug)).map((rs, i) => CARD_BAKED[rs.slug] ? (
-                  // Same finished picture cards as on the home page: text on the left, device drawn in.
+                {[...(relatedServices ?? [])].sort((a, b) => relatedServiceSlugs.indexOf(a.slug) - relatedServiceSlugs.indexOf(b.slug)).map((rs) => (
+                  // Same cards as the "Drukarki biurowe" tab on the home page.
                   <Link
                     key={rs.slug}
                     href={`${basePath}/${rs.slug}`}
-                    className="group relative min-h-[168px] py-4 pl-8 md:pl-10 pr-3 flex items-center text-left w-full zakres-paper-card services-card-hover services-card-baked isolate"
-                    style={{ '--baked-d': `url(${CARD_BAKED[rs.slug].d})`, '--baked-m': `url(${CARD_BAKED[rs.slug].m})` } as React.CSSProperties}
+                    prefetch={false}
+                    className={`group relative [container-type:inline-size] ${CARD_BAKED[rs.slug] ? 'md:min-h-[168px]' : 'min-h-[168px]'} py-4 pl-6 md:pl-8 pr-3 flex items-center text-left w-full zakres-paper-card services-home-card services-card-hover isolate ${CARD_BAKED[rs.slug] ? 'services-card-baked' : ''}`}
+                    style={CARD_BAKED[rs.slug] ? ({ '--baked-d': `url(${CARD_BAKED[rs.slug].d})`, '--baked-m': `url(${CARD_BAKED[rs.slug].m})` } as React.CSSProperties) : undefined}
                   >
-                    {/* Phone cards wider than desktop: title box capped at its desktop width
-                        (48% of a 400px card's content = 167px), so names wrap the same way. */}
-                    <div className="relative z-[4] flex-none max-w-[48%] max-md:max-w-[min(48%,167px)] font-cormorant font-bold text-[#24160B] leading-[1.05] text-[26px]">
-                      {rs.displayTitle}
-                    </div>
-                  </Link>
-                ) : (
-                  <Link
-                    key={rs.slug}
-                    href={`${basePath}/${rs.slug}`}
-                    className={`
-    group
-    relative
-    min-h-[152px]
-    py-4 px-6
-    flex
-    items-center
-    text-left
-    w-full
-    zakres-paper-card
-    services-card-hover
-    ${EDGE_CLASSES[i % EDGE_CLASSES.length]}
-    ${ORIENT_CLASSES[i % ORIENT_CLASSES.length]}
-    ${CORNER_CLASSES[i % CORNER_CLASSES.length]}
-  `}
-                  >
-                    <div className="z-10 h-[120px] flex-shrink-0 w-[50%]">
-                      <div className="relative w-full h-full service-card-icon-zoom">
-                        <Image
-                          src={rs.iconSrc}
-                          alt={`${rs.title} ${labels.relatedIconAltSuffix}`}
-                          fill
-                          sizes="(max-width: 768px) 35vw, 180px"
-                          className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="relative z-20 h-[120px] flex items-center pl-[15px] w-[50%]">
-                      <div className="font-cormorant font-semibold text-[#3A2817] leading-[1.25]" style={{ fontSize: '25.4px' }}>
+                    <div className="relative z-[4] flex-none max-w-[49%] flex flex-col items-start">
+                      <div className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
                         {rs.displayTitle}
                       </div>
+                      <span className="flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] group-hover:translate-x-1 transition-transform">
+                        <span>{MORE_LABEL[locale]}</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
                     </div>
                   </Link>
                 ))}

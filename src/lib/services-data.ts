@@ -3,7 +3,7 @@ import manifest from '@/config/manifest'
 // Public API kept identical to the pre-split single-file module: types,
 // layout constants, and per-service pricing-section builders are now split
 // across services-data-*.ts files; this file re-exports them and assembles
-// the final `services` / `HOME_EXTRA_SERVICES` arrays so nothing elsewhere
+// the final `services` array so nothing elsewhere
 // in the codebase needs to change its imports.
 export type {
   PricingItem,
@@ -216,14 +216,3 @@ export const services: ServiceData[] = [
   },
 ]
 
-// Homepage "SERWIS I NAPRAWA" block: slugi ujawniane po kliknięciu
-// "ZOBACZ WSZYSTKIE USŁUGI" — centralized here so services can be
-// added/removed without touching the Services component itself.
-export const HOME_EXTRA_SERVICES = [
-  'serwis-drukarek-laserowych',
-  'serwis-drukarek-atramentowych',
-  'serwis-drukarek-iglowych',
-  'druk-3d-na-zamowienie',
-  'wynajem-drukarek',
-  'drukarka-zastepcza',
-]

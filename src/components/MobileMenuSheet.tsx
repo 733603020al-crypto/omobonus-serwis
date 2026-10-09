@@ -116,9 +116,19 @@ export function MobileMenuSheet({
                                         <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                                         {serviceGroups.map((group) => (
                                             <div key={group.title} className="mt-3">
-                                                <p className="mb-1.5 text-[18px] font-semibold text-[#bfa76a]">
-                                                    {group.title}
-                                                </p>
+                                                {group.href ? (
+                                                    <Link
+                                                        href={group.href}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="mb-1.5 block text-[18px] font-semibold text-[#bfa76a]"
+                                                    >
+                                                        {group.title}
+                                                    </Link>
+                                                ) : (
+                                                    <p className="mb-1.5 text-[18px] font-semibold text-[#bfa76a]">
+                                                        {group.title}
+                                                    </p>
+                                                )}
                                                 <div className="flex flex-col divide-y divide-[#bfa76a]/25 border-y border-[#bfa76a]/25">
                                                     {group.items.map((item) => (
                                                         <Link

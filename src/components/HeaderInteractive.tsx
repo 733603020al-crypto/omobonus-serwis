@@ -9,6 +9,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
 import { cn } from '@/lib/utils'
+import { SERVICE_CATEGORIES } from '@/config/service-categories'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
 // chunk is still loading, so the hamburger icon never disappears mid-transition.
@@ -134,47 +135,8 @@ const LOCALE_NAV: Record<Locale, {
 
 // Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
 // below. The mobile drawer lists the same groups in one column under "Usługi".
-export type ServiceGroup = { title: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
-
-const MEGA_MENU: { title: Record<Locale, string>; items: { label: Record<Locale, string>; href: string; icon: string; iconTall?: boolean; locales?: Locale[] }[] }[] = [
-  {
-    title: { pl: 'Komputery i IT', uk: 'Комп\'ютери та ІТ', ru: 'Компьютеры и IT' },
-    items: [
-      { label: { pl: 'Laptopy', uk: 'Ноутбуки', ru: 'Ноутбуки' }, href: '/uslugi/serwis-laptopow', icon: '/images/menu-icon-laptopy.webp' },
-      { label: { pl: 'Komputery stacjonarne', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/menu-icon-komputery-stacjonarne.webp' },
-      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/menu-icon-outsourcing-it.webp' },
-    ],
-  },
-  {
-    title: { pl: 'Drukarki biurowe', uk: 'Офісні принтери', ru: 'Офисные принтеры' },
-    items: [
-      { label: { pl: 'Drukarki laserowe', uk: 'Лазерні принтери', ru: 'Лазерные принтеры' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/menu-icon-drukarki-laserowe.webp' },
-      { label: { pl: 'Drukarki atramentowe', uk: 'Струменеві принтери', ru: 'Струйные принтеры' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/menu-icon-drukarki-atramentowe.webp' },
-      { label: { pl: 'Drukarki igłowe', uk: 'Матричні принтери', ru: 'Матричные принтеры' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/menu-icon-drukarki-iglowe.webp' },
-      { label: { pl: 'Drukarki etykiet termicznych', uk: 'Термопринтери етикеток', ru: 'Термопринтеры этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/menu-icon-drukarki-etykiet-termicznych.webp' },
-    ],
-  },
-  {
-    title: { pl: 'Drukarki specjalistyczne', uk: 'Спеціалізовані принтери', ru: 'Специализированные принтеры' },
-    items: [
-      { label: { pl: 'Drukarki sublimacyjne', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/menu-icon-drukarki-sublimacyjne.webp' },
-      { label: { pl: 'Drukarki DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/menu-icon-drukarki-dtf.webp' },
-      { label: { pl: 'Drukarki DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/menu-icon-drukarki-dtg.webp' },
-      { label: { pl: 'Drukarki spożywcze', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/menu-icon-drukarki-spozywcze.webp', iconTall: true },
-      { label: { pl: 'Drukarki do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/menu-icon-drukarki-do-kart-plastikowych.webp' },
-    ],
-  },
-  {
-    title: { pl: 'Inne urządzenia i usługi', uk: 'Інші пристрої та послуги', ru: 'Другие устройства и услуги' },
-    items: [
-      { label: { pl: 'Drukarki 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/menu-icon-drukarki-3d.webp' },
-      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/menu-icon-druk-3d-na-zamowienie.webp' },
-      { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
-      { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/menu-icon-niszczarki.webp' },
-      { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/menu-icon-zasilacze-ups.webp' },
-    ],
-  },
-]
+// Data lives in config/service-categories (shared with the home page catalogue).
+export type ServiceGroup = { title: string; href?: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
 
 // Grid placement per group: 2×2 below 1280 px, 4 columns from 1280 px.
 const MEGA_GROUP_CLASS = [
@@ -262,8 +224,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   // listener used to close it earlier, so the click of the same tap landed on
   // whatever was underneath (reopening the menu or following a page link).
 
-  const serviceGroups: ServiceGroup[] = MEGA_MENU.map((group) => ({
+  const serviceGroups: ServiceGroup[] = SERVICE_CATEGORIES.map((group) => ({
     title: group.title[locale],
+    href: group.href ? `${nav.prefix}${group.href}` : undefined,
     items: group.items
       .filter((item) => !item.locales || item.locales.includes(locale))
       .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon, iconTall: item.iconTall })),
@@ -385,7 +348,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               (hidden, no icons), so search engines see every service page. */}
           {!isServicesOpen && (
             <ul hidden>
-              {serviceGroups.flatMap((group) => group.items).map((item) => (
+              {serviceGroups.flatMap((group) => (group.href ? [{ label: group.title, href: group.href }, ...group.items] : group.items)).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} prefetch={false} tabIndex={-1}>
                     {item.label}
@@ -409,16 +372,22 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                 </div>
-                {MEGA_MENU.map((col, i) => (
+                {serviceGroups.map((col, i) => (
                   <div key={i} className={MEGA_GROUP_CLASS[i]}>
-                    <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
-                      {col.title[locale]}
-                    </p>
+                    {col.href ? (
+                      <Link href={col.href} className="mb-1.5 block px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                        {col.title}
+                      </Link>
+                    ) : (
+                      <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                        {col.title}
+                      </p>
+                    )}
                     <div className="flex flex-col divide-y divide-[#bfa76a]/25 border border-[#bfa76a]/25">
-                      {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
+                      {col.items.map((item) => (
                         <Link
-                          key={item.label.pl}
-                          href={`${nav.prefix}${item.href}`}
+                          key={item.href}
+                          href={item.href}
                           className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                         >
                           <Image
@@ -431,7 +400,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                             className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
                             unoptimized
                           />
-                          {item.label[locale]}
+                          {item.label}
                         </Link>
                       ))}
                     </div>

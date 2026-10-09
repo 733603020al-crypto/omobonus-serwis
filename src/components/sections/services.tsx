@@ -1,18 +1,15 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useId, useRef, useState } from 'react'
 import { useNearViewport } from '@/lib/use-near-viewport'
 import { ORIENT_CLASSES, EDGE_CLASSES, CORNER_CLASSES } from './services-card-classes'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { FadeSlideP } from '@/components/ui/fade-slide-p'
 import Image from 'next/image'
 import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
-
-// "Wszystkie usługi ↓" / "Zwiń ↑": GŁÓWNE USŁUGI label text styles, 0.06em tracking, thin 1px line (text colour) 6px below; hover: block +3px right, arrow +3px more, line widens slightly.
-const TEXT_CTA = "relative inline-flex items-baseline gap-[6px] bg-transparent border-0 px-0 pt-0 pb-[6px] m-0 cursor-pointer whitespace-nowrap text-sm font-inter font-semibold tracking-[0.06em] uppercase text-[#bfa76a] transition-transform duration-[250ms] ease-[ease] hover:translate-x-[3px] after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-px after:bg-current after:transition-transform after:duration-[250ms] after:ease-[ease] hover:after:scale-x-[1.08]"
+import { SERVICE_CATEGORIES, type ServiceLocale } from '@/config/service-categories'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -34,17 +31,6 @@ const CARD_DEVICE: Record<string, { src: string; w: number; h: number; cls: stri
 
 // Homepage-only display order (doesn't touch services-data.ts, so sitemap,
 // header dropdown and the related-services widget keep their own order).
-const HOME_ORDER = [
-  'serwis-laptopow',
-  'serwis-komputerow-stacjonarnych',
-  'naprawa-drukarek',
-  'serwis-drukarek-3d',
-  'serwis-drukarek-termicznych',
-  'serwis-plotterow',
-  'serwis-drukarek-do-kart-plastikowych',
-  'serwis-niszczarek',
-  'naprawa-zasilaczy-ups',
-]
 // Fixed (non-random) edge+orientation+corner assignment for the 10 cards,
 // indexed by position in the 3-column grid (0,1,2 / 3,4,5 / 6,7,8 / 9).
 // Rules satisfied: no (edge, orientation, corner) triple repeats anywhere;
@@ -71,22 +57,19 @@ const CARD_STYLE: { edgeIdx: number; orientIdx: number; cornerIdx: number }[] = 
 export type ServiceCardData = Pick<ServiceData, 'slug' | 'title' | 'icon'>
 
 interface ServicesT {
-  sectionLabel: string
   subheading: string
   tagline: string
   cardLabels: Record<string, string>
-  viewAllLabel?: string
-  collapseLabel?: string
   moreLabel?: string
 }
 
 const PL: ServicesT = {
-  sectionLabel: 'GŁÓWNE USŁUGI',
   subheading: 'Serwis i naprawa',
   tagline: 'Oferujemy serwis komputerów, laptopów i drukarek oraz wsparcie techniczne dla domu i biura we Wrocławiu',
   cardLabels: {
     'serwis-laptopow': 'Laptopów',
     'serwis-komputerow-stacjonarnych': 'Komputerów stacjonarnych',
+    'outsourcing-it': 'Outsourcing IT',
     'naprawa-drukarek': 'Drukarek i kserokopiarek',
     'serwis-drukarek-3d': 'Drukarek 3D',
     'serwis-drukarek-termicznych': 'Drukarek etykiet',
@@ -94,6 +77,10 @@ const PL: ServicesT = {
     'serwis-drukarek-laserowych': 'Drukarek laserowych',
     'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
     'serwis-drukarek-iglowych': 'Drukarek igłowych',
+    'serwis-drukarek-sublimacyjnych': 'Drukarek sublimacyjnych',
+    'serwis-drukarek-dtf': 'Drukarek DTF',
+    'serwis-drukarek-dtg': 'Drukarek DTG',
+    'serwis-drukarek-spozywczych': 'Drukarek spożywczych',
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
     'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
@@ -101,65 +88,77 @@ const PL: ServicesT = {
     'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
-  viewAllLabel: 'Wszystkie usługi ↓',
-  collapseLabel: 'Zwiń ↑',
   moreLabel: 'Zobacz więcej',
 }
+
+// Category tabs: one cell per category, thin gold dividers between them —
+// a single row from lg, a 2×2 grid below (no horizontal overflow on phones).
+// Active tab: user's parchment (three pictures for three tab shapes) as a
+// 9-slice — burnt edges and curled corners keep their proportions, only the
+// plain middle adapts. Phones: one-line top row / two-line bottom row.
+const PARCHMENT_TOP = '[border-image:url(/images/services-tab-parchment-m1.webp)_35_fill/12px_stretch] md:[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment-m1.webp)] p-[7px] md:bg-[url(/images/services-tab-parchment.webp)] md:p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
+const PARCHMENT_BOTTOM = '[border-image:url(/images/services-tab-parchment-m2.webp)_45_fill/15px_stretch] md:[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment-m2.webp)] p-[9px] md:bg-[url(/images/services-tab-parchment.webp)] md:p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
+// Same dark brown as the card names on the parchment cards below.
+const ACTIVE_INK = '#24160B'
+// Gold of the "Skąd nazwa" / "Święty Omobonus XII wieku" headings (about.tsx).
+const IDLE_INK = '#bfa76a'
+// Tab-only mask copies of two menu icons: their dark inner lines are cut out,
+// so a one-colour fill keeps the printer details and the cube edges.
+const TAB_ICON_MASK: Record<string, string> = {
+  '/images/menu-icon-drukarki-laserowe.webp': '/images/services-tab-mask-drukarki-laserowe.webp',
+  '/images/menu-icon-drukarki-3d.webp': '/images/services-tab-mask-drukarki-3d.webp',
+}
+// Active tab hover = the parchment cards' hover (.services-card-hover in
+// globals.css): same lift + scale, shadow, 180ms curve, mouse-only.
+const CARD_HOVER_MOVE = 'transition-all duration-[180ms] ease-[cubic-bezier(0.4,0,0.2,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:[transform:translateY(-4px)_scale(1.04)]'
+const CARD_HOVER_SHADOW = '[@media(hover:hover)_and_(pointer:fine)]:group-hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)]'
 
 export function Services({
   servicesData,
   basePath = '/uslugi',
   t,
   bare = false,
-  extraServices,
+  locale = 'pl',
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
   t?: ServicesT
   bare?: boolean
-  extraServices?: string[]
+  locale?: ServiceLocale
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
-  const [expanded, setExpanded] = useState(false)
-  const dividerRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const idBase = useId()
   // Baked card pictures sit below the first screen: fetched only on approach.
   const sectionRef = useRef<HTMLElement>(null)
   const bgNear = useNearViewport(sectionRef)
-  useEffect(() => {
-    const el = dividerRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [expanded])
 
-  const mainServices = services
-    .filter(
-      (service) =>
-        ![
-          'serwis-drukarek-laserowych',
-          'serwis-drukarek-atramentowych',
-          'serwis-drukarek-iglowych',
-          'outsourcing-it',
-          'wynajem-drukarek',
-          'drukarka-zastepcza',
-          'druk-3d-na-zamowienie',
-          'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
-        ].includes(service.slug)
-    )
-    .sort((a, b) => HOME_ORDER.indexOf(a.slug) - HOME_ORDER.indexOf(b.slug))
+  // Only the active category's cards are rendered; every service link is
+  // still in the HTML through the header's hidden menu list.
+  const activeCards = SERVICE_CATEGORIES[active].items
+    .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
+    .map((item) => {
+      const slug = item.href.split('/').pop() as string
+      return services.find((service) => service.slug === slug) ?? { slug, title: item.label[locale], icon: item.icon }
+    })
 
-  const extraList = (extraServices ?? [])
-    .map((slug) => services.find((service) => service.slug === slug))
-    .filter((service): service is ServiceCardData => Boolean(service))
+  const selectTab = (index: number) => {
+    const count = SERVICE_CATEGORIES.length
+    const next = (index + count) % count
+    setActive(next)
+    tabRefs.current[next]?.focus()
+  }
 
-  const canExpand = extraList.length > 0 && Boolean(d.viewAllLabel)
+  const onTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (e.key === 'ArrowRight') selectTab(index + 1)
+    else if (e.key === 'ArrowLeft') selectTab(index - 1)
+    else if (e.key === 'Home') selectTab(0)
+    else if (e.key === 'End') selectTab(SERVICE_CATEGORIES.length - 1)
+    else return
+    e.preventDefault()
+  }
 
   const renderCard = (service: ServiceCardData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
     return (
@@ -172,7 +171,7 @@ export function Services({
     relative
     [container-type:inline-size]
     ${CARD_BAKED[service.slug] ? 'md:min-h-[168px]' : 'min-h-[168px]'}
-    py-4 pl-8 md:pl-10 pr-3
+    py-4 pl-6 md:pl-8 pr-3
     flex
     items-center
     text-left
@@ -189,7 +188,7 @@ export function Services({
         style={CARD_BAKED[service.slug] && bgNear ? ({ '--baked-d': `url(${CARD_BAKED[service.slug].d})`, '--baked-m': `url(${CARD_BAKED[service.slug].m})` } as React.CSSProperties) : undefined}
       >
         {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
-        <div className="relative z-[4] flex-none max-w-[48%] flex flex-col items-start">
+        <div className="relative z-[4] flex-none max-w-[49%] flex flex-col items-start">
           <h2 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
             {d.cardLabels[service.slug] ?? service.title}
           </h2>
@@ -242,11 +241,7 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-        {/* Nagłówek w stylu „Dlaczego Omobonus / Uczciwość i szacunek do klienta” z /o-nas (advantages.tsx) */}
         <div className="text-center mt-[10px]">
-          <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-[12px]">
-            {d.sectionLabel}
-          </FadeSlideP>
           {/* Same size/weight/line-height as "Serwis i naprawa" in the home hero H1 (0.93em of its 60px / clamp). */}
           <h2
             className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-[1.15] mx-auto mb-[24px] max-w-full whitespace-normal break-words text-[calc(0.93*clamp(28px,8.4vw,46px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
@@ -256,73 +251,68 @@ export function Services({
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-          {mainServices.map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
+        {/* Category panel (same dark plate + gold hairline as the header menu). */}
+        <div
+          role="tablist"
+          aria-label={d.subheading}
+          className="mb-5 grid grid-cols-2 gap-[6px] md:mb-6 lg:grid-cols-[repeat(4,auto)]"
+        >
+          {SERVICE_CATEGORIES.map((category, i) => {
+            const selected = i === active
+            return (
+              <div key={category.title.pl} role="presentation" className="group relative">
+                {/* Active parchment fills the whole cell (not just the button inside it). */}
+                {selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${i < 2 ? PARCHMENT_TOP : PARCHMENT_BOTTOM}`} />}
+                <button
+                  ref={(el) => { tabRefs.current[i] = el }}
+                  type="button"
+                  role="tab"
+                  id={`${idBase}-tab-${i}`}
+                  aria-selected={selected}
+                  aria-controls={`${idBase}-panel`}
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => setActive(i)}
+                  onKeyDown={(e) => onTabKeyDown(e, i)}
+                  className={`relative flex h-full w-full flex-col items-center justify-center gap-1 rounded-md border px-1.5 py-2 text-center font-cormorant text-[16px] font-semibold leading-tight hyphens-auto md:flex-row md:gap-3 md:px-3 md:py-2.5 md:text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px] ${
+                    selected
+                      ? `border-transparent text-[#24160B] ${CARD_HOVER_MOVE}`
+                      : // Same hover as the items of the header Usługi menu; thin gold ring of the
+                        // Szybki kontakt button: closed frame at rest, its glint runs only while hovered.
+                        'gold-border-flow !border-[#bfa76a]/80 bg-black/55 before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100'
+                  }`}
+                >
+                  {/* Same icon shape, filled with one colour: card-name brown when active,
+                      gold of the "Skąd nazwa" headings otherwise. */}
+                  <span
+                    aria-hidden="true"
+                    className="h-[22px] w-[28px] flex-shrink-0 md:h-[27px] md:w-[34px]"
+                    style={{
+                      backgroundColor: selected ? ACTIVE_INK : IDLE_INK,
+                      maskImage: `url(${TAB_ICON_MASK[category.icon] ?? category.icon})`,
+                      WebkitMaskImage: `url(${TAB_ICON_MASK[category.icon] ?? category.icon})`,
+                      maskSize: 'contain',
+                      WebkitMaskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                      WebkitMaskPosition: 'center',
+                    }}
+                  />
+                  <span>{(category.homeTitle ?? category.title)[locale]}</span>
+                </button>
+              </div>
+            )
+          })}
         </div>
 
-        {canExpand && !expanded && (
-          <>
-            {/* Previous line-based CTA — hidden, not removed (kept for possible future use) */}
-            <div className="hidden text-center mt-8 md:mt-10">
-              <FadeSlideP className="brush-underline brush-underline-center-glow block w-full text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
-                <button
-                  type="button"
-                  onClick={() => setExpanded(true)}
-                  className="bg-transparent border-0 p-0 m-0 cursor-pointer"
-                >
-                  {d.viewAllLabel}
-                </button>
-                <span aria-hidden="true" className="brush-underline-spark" />
-              </FadeSlideP>
-            </div>
-
-            {/* Plain-text CTA (no parchment button) flanked by the golden line in two
-                segments (existing .brush-divider-row / .divider-line pattern, reused
-                1:1 from contact-actions.tsx / "Skąd nazwa" underline). */}
-            <div ref={dividerRef} className="brush-divider-row flex items-center justify-center gap-[18px] mt-[28px]">
-              {/* Text CTA: no pill/border/background; hover — light underline, arrow drops 3px. */}
-              <button
-                type="button"
-                onClick={() => setExpanded(true)}
-                className={`group ${TEXT_CTA}`}
-              >
-                <span>
-                  {d.viewAllLabel?.replace(/\s*↓$/, '')}
-                </span>
-                <span aria-hidden="true" className="inline-block transition-transform duration-[250ms] ease-[ease] group-hover:translate-x-[3px]">↓</span>
-              </button>
-            </div>
-          </>
-        )}
-
-        {canExpand && expanded && (
-          <>
-            <div className="fade-slide-animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start mt-4">
-              {extraList.map((service, i) => renderCard(service, CARD_STYLE[(mainServices.length + i) % CARD_STYLE.length]))}
-            </div>
-
-            <div className="brush-divider-row flex items-center gap-[18px] mt-[22px]">
-              <div
-                className="divider-line divider-line-left flex-1"
-                style={{ height: '2px', background: 'linear-gradient(to right, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-              />
-              <button
-                type="button"
-                onClick={() => setExpanded(false)}
-                className={`group ${TEXT_CTA}`}
-              >
-                <span>
-                  {(d.collapseLabel ?? 'Zwiń ↑').replace(/\s*↑$/, '')}
-                </span>
-                <span aria-hidden="true" className="inline-block transition-transform duration-[250ms] ease-[ease] group-hover:translate-x-[3px]">↑</span>
-              </button>
-              <div
-                className="divider-line divider-line-right flex-1"
-                style={{ height: '2px', background: 'linear-gradient(to left, transparent 0%, rgba(191,167,106,0.35) 30%, rgba(230,204,130,0.95) 100%)', boxShadow: '0 0 10px rgba(230,204,130,0.45)' }}
-              />
-            </div>
-          </>
-        )}
+        <div
+          role="tabpanel"
+          id={`${idBase}-panel`}
+          aria-labelledby={`${idBase}-tab-${active}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start"
+        >
+          {activeCards.map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
+        </div>
       </div>
     </section>
   )

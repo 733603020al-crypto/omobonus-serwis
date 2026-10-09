@@ -90,12 +90,12 @@
     ],
   },
   services: {
-    sectionLabel: 'ОСНОВНІ ПОСЛУГИ',
     subheading: 'Сервіс і ремонт',
     tagline: 'Пропонуємо сервіс комп\'ютерів, ноутбуків і принтерів та технічну підтримку для дому та офісу у Вроцлаві',
     cardLabels: {
       'serwis-laptopow': 'Ноутбуків',
       'serwis-komputerow-stacjonarnych': 'Стаціонарних комп\'ютерів',
+      'outsourcing-it': 'ІТ-аутсорсинг',
       'naprawa-drukarek': 'Принтерів і ксероксів',
       'serwis-drukarek-3d': '3D-принтерів',
       'serwis-drukarek-termicznych': 'Принтерів етикеток',
@@ -103,6 +103,10 @@
       'serwis-drukarek-laserowych': 'Лазерних принтерів',
       'serwis-drukarek-atramentowych': 'Струменевих принтерів',
       'serwis-drukarek-iglowych': 'Матричних принтерів',
+      'serwis-drukarek-sublimacyjnych': 'Сублімаційних принтерів',
+      'serwis-drukarek-dtf': 'DTF-принтерів',
+      'serwis-drukarek-dtg': 'DTG-принтерів',
+      'serwis-drukarek-spozywczych': 'Харчових принтерів',
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
       'serwis-niszczarek': 'Шредерів',
       'naprawa-zasilaczy-ups': 'ДБЖ (UPS)',
@@ -110,8 +114,6 @@
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
     },
-    viewAllLabel: 'Усі послуги ↓',
-    collapseLabel: 'Згорнути ↑',
     moreLabel: 'Детальніше',
   },
   contact: {

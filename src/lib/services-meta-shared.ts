@@ -73,9 +73,6 @@ export const relatedServiceSlugs = [
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
-  'serwis-drukarek-3d',
-  'serwis-plotterow',
-  'serwis-drukarek-do-kart-plastikowych',
 ]
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
@@ -94,12 +91,17 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'serwis-drukarek-termicznych': bakedCard('label'),
   'serwis-plotterow': bakedCard('plotter5'),
   'serwis-drukarek-laserowych': bakedCard('laser'),
-  'serwis-drukarek-atramentowych': bakedCard('inkjet3'),
+  'serwis-drukarek-atramentowych': bakedCard('inkjet4'),
   'serwis-drukarek-iglowych': bakedCard('needle'),
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
-  'serwis-niszczarek': bakedCard('shredder2'),
-  'naprawa-zasilaczy-ups': bakedCard('ups2'),
-  'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer'),
+  'serwis-niszczarek': bakedCard('shredder3'),
+  'naprawa-zasilaczy-ups': bakedCard('ups3'),
+  'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer2'),
   'wynajem-drukarek': bakedCard('rental'),
   'drukarka-zastepcza': bakedCard('replacement'),
+  'outsourcing-it': bakedCard('outsourcing'),
+  'serwis-drukarek-dtf': bakedCard('dtf'),
+  'serwis-drukarek-dtg': bakedCard('dtg'),
+  'serwis-drukarek-sublimacyjnych': bakedCard('sublimacja'),
+  'serwis-drukarek-spozywczych': bakedCard('spozywcze'),
 }
