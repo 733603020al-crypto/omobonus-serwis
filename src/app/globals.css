@@ -3977,12 +3977,12 @@
   from { transform: translateX(0); }
   to { transform: translateX(var(--brand-ticker-shift, -50%)); }
 }
+.brand-ticker-logo-muted {
+  opacity: 0.75;
+  filter: saturate(0.8) brightness(0.9);
+  transition-property: opacity, filter;
+}
 @media (min-width: 768px) {
-  .brand-ticker-logo-muted {
-    opacity: 0.75;
-    filter: saturate(0.8) brightness(0.9);
-    transition-property: opacity, filter;
-  }
   .brand-ticker-logo-muted:hover {
     opacity: 1;
     filter: saturate(1) brightness(1);

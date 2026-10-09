@@ -316,7 +316,7 @@ function BrandGroup({ displayBrands, compact, muted, ariaHidden }: { displayBran
   )
 }
 
-// muted — przygaszone logo na desktopie (pierwszy ekran głównej), pełny kolor po najechaniu.
+// muted — przygaszone logo (pierwszy ekran głównej, telefon i desktop), na desktopie pełny kolor po najechaniu.
 export default function BrandTicker({ brandNames, compact, muted }: { brandNames?: string[]; compact?: boolean; muted?: boolean } = {}) {
   // Kolejność = kolejność w brandNames (slugBrands), żeby dało się ją ustawić per strona.
   const displayBrands = brandNames

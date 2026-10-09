@@ -812,3 +812,12 @@
     opacity: 0 !important;
   }
 }
+
+/* naprawa-drukarek (PL/UK/RU), phone: the H1 is ~18% larger (page template), so the
+   printer is slightly smaller to keep the text/image balance; the 300px zone
+   and the distance to the brand logos stay the same. */
+@media (max-width: 767.98px) {
+  .page-naprawa-drukarek .service-hero-carousel .hero-printer-carousel {
+    scale: 0.93;
+  }
+}
