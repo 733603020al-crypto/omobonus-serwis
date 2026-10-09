@@ -83,3 +83,12 @@
   .hero-cycle-out { animation: none; opacity: 1; }
   .hero-word-out { display: none; }
 }
+
+/* Home hero on phones only: the picture box gets the full screen width and the
+   same 120% height as on desktop (size cap per slide: MOBILE_SIZE_COEFFICIENTS). */
+@media (max-width: 767.98px) {
+  .home-hero-zone > .service-hero-image-wrap {
+    width: 100vw !important;
+    height: 120% !important;
+  }
+}

@@ -32,6 +32,9 @@ const SLIDES = [
 // Same on-screen size as on each service page (its own HERO_SCALE box and
 // slide-0 coefficient), recalculated for this 1.2 box.
 const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85, 0.95, 0.74]
+// Phones: every picture stays within ~90% of the screen width (cap 0.75 on
+// the full-width box), smaller ones keep their own size.
+const MOBILE_SIZE_COEFFICIENTS = SIZE_COEFFICIENTS.map((c) => Math.min(c, 0.75))
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0, 4, 13, 0]
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
@@ -173,13 +176,14 @@ export function HomeHeroShowcase({
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-        <div className="service-hero-zone flex justify-center items-center h-[min(380px,84vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center">
+        <div className="service-hero-zone home-hero-zone flex justify-center items-center h-[min(420px,100vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center">
           <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap home-hero-carousel-wrap service-hero-carousel relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
               alt={alt}
               variant="home"
               slides={SLIDES}
               sizeCoefficients={SIZE_COEFFICIENTS}
+              mobileSizeCoefficients={MOBILE_SIZE_COEFFICIENTS}
               verticalBias={VERTICAL_BIAS}
               slidePosters={SLIDE_POSTERS}
               mobileSlideAnims={MOBILE_SLIDE_ANIMS}

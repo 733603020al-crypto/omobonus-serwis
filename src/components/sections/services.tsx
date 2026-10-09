@@ -129,11 +129,12 @@ export function Services({
   const services = servicesData ?? []
   const d = t ?? PL
   const [active, setActive] = useState(0)
-  // Phones only: a second tap on the open category folds it (no panel shown).
-  const [collapsed, setCollapsed] = useState(false)
+  // Phones only: every category starts folded; a second tap on the open one folds it again.
+  const [collapsed, setCollapsed] = useState(true)
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767.98px)')
     const onChange = () => { if (!mq.matches) setCollapsed(false) }
+    onChange()
     mq.addEventListener('change', onChange)
     return () => mq.removeEventListener('change', onChange)
   }, [])
