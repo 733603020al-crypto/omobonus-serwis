@@ -44,6 +44,11 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
     tagline: 'друк на тортах, печиві та харчових продуктах',
     h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
   },
+  'serwis-ekspresow-do-kawy': {
+    h1: 'Сервіс і ремонт кавомашин у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'кавомашин', 'у Вроцлаві'],
+    h2: "(De'Longhi, Philips, Saeco, Siemens, Bosch, Jura, Krups, Nivona, Melitta, Gaggia, Miele, Sage, Smeg, AEG, Tchibo, WMF, Franke, Coffee Format, Dr.Coffee, Lelit, Rancilio, Nuova Simonelli, La Marzocco, Ascaso)",
+  },
   'serwis-drukarek-termicznych': {
     h1: 'Сервіс і ремонт принтерів етикеток у Вроцлаві',
     lines: ['Сервіс і ремонт', 'принтерів етикеток', 'у Вроцлаві'],
@@ -157,6 +162,13 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
       'Сервіс харчових принтерів у Вроцлаві для кондитерських, пекарень і майстерень тортів — також кондитерські принтери Canon, Epson і Brother з їстівним чорнилом.',
     ],
   },
+  'serwis-ekspresow-do-kawy': {
+    items: [
+      'Повне обслуговування, діагностика водяної, нагрівальної, молочної системи та механізмів кавомашини.',
+      'Ваша кавомашина — оцінимо несправність і повідомимо вартість ремонту до початку робіт.',
+      'Сервіс домашніх, офісних, преміальних і професійних кавомашин у Вроцлаві.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Також надаємо послуги очищення, технічного обслуговування, регенерації, ремонту головки.',
@@ -247,6 +259,7 @@ export const imageAltUk: Record<string, string> = {
   'serwis-drukarek-dtf': 'DTF-принтер для друку на плівці',
   'serwis-drukarek-sublimacyjnych': 'Сублімаційний принтер — сервіс і ремонт у Вроцлаві',
   'serwis-drukarek-spozywczych': 'Харчовий принтер для друку на тортах і печиві',
+  'serwis-ekspresow-do-kawy': 'Кавомашина — сервіс і ремонт',
   'serwis-drukarek-termicznych': 'Принтер термоетикеток',
   'serwis-laptopow': 'Ремонт ноутбуків',
   'serwis-komputerow-stacjonarnych': 'Сервіс стаціонарних комп\'ютерів',
@@ -301,6 +314,10 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   'serwis-drukarek-spozywczych': {
     title: 'Сервіс харчових принтерів для тортів — Вроцлав | Omobonus',
     description: 'Ремонт харчових принтерів у Вроцлаві: прочищення головки, платформа direct-to-food, подача цукрового паперу. Вартість ремонту ви знаєте заздалегідь.',
+  },
+  'serwis-ekspresow-do-kawy': {
+    title: 'Сервіс кавомашин — Вроцлав | Omobonus',
+    description: 'Ремонт кавомашин у Вроцлаві: водяна й нагрівальна системи, млинок, заварювальний блок, молочна система та електроніка. Вартість до початку робіт.',
   },
   'serwis-laptopow': {
     title: 'Сервіс і ремонт ноутбуків',
@@ -384,6 +401,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-dtf': 'Маєте проблему з DTF-принтером?',
     'serwis-drukarek-sublimacyjnych': 'Маєте проблему із сублімаційним принтером?',
     'serwis-drukarek-spozywczych': 'Маєте проблему з харчовим принтером?',
+    'serwis-ekspresow-do-kawy': 'Маєте проблему з кавомашиною?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
   },
@@ -403,6 +421,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-dtf': 'Маєте проблему з принтером?',
     'serwis-drukarek-sublimacyjnych': 'Маєте проблему з принтером?',
     'serwis-drukarek-spozywczych': 'Маєте проблему з принтером?',
+    'serwis-ekspresow-do-kawy': 'Маєте проблему з кавомашиною?',
     'wynajem-drukarek': 'Маєте проблему з принтером?',
     'drukarka-zastepcza': 'Маєте проблему з принтером?',
     'serwis-plotterow': 'Маєте проблему з плотером?',

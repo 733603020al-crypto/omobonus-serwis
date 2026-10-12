@@ -196,6 +196,17 @@ const SPOZYWCZE_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
   ][i],
 }))
 
+// Категории для страницы "Serwis ekspresów do kawy"
+const KAWA_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
+  ...c,
+  title: ['Ekspresy domowe', 'Ekspresy biurowe i premium', 'Ekspresy profesjonalne i gastronomiczne'][i],
+  description: [
+    'Ekspresy automatyczne i kolbowe do codziennego użytku domowego.',
+    'Zaawansowane ekspresy do biur, firm i wymagających użytkowników.',
+    'Ekspresy do kawiarni, restauracji i hoteli, przeznaczone do intensywnej pracy.',
+  ][i],
+}))
+
 // Функция для получения категорий устройств в зависимости от страницы
 const getDeviceCategories = (serviceSlug?: string) => {
   if (serviceSlug === 'serwis-drukarek-atramentowych') {
@@ -230,6 +241,9 @@ const getDeviceCategories = (serviceSlug?: string) => {
   }
   if (serviceSlug === 'serwis-drukarek-sublimacyjnych') {
     return SUBLIMACJA_DEVICE_CATEGORIES
+  }
+  if (serviceSlug === 'serwis-ekspresow-do-kawy') {
+    return KAWA_DEVICE_CATEGORIES
   }
   if (serviceSlug === 'serwis-drukarek-spozywczych') {
     return SPOZYWCZE_DEVICE_CATEGORIES
@@ -385,6 +399,19 @@ const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string)
     }
   }
 
+  if (serviceSlug === 'serwis-ekspresow-do-kawy') {
+    switch (categoryTitle) {
+      case 'Ekspresy domowe':
+        return '/images/kawa-carousel-v1-01.webp'
+      case 'Ekspresy biurowe i premium':
+        return '/images/kawa-carousel-v1-04.webp'
+      case 'Ekspresy profesjonalne i gastronomiczne':
+        return '/images/kawa-carousel-v1-05.webp'
+      default:
+        return ''
+    }
+  }
+
   if (serviceSlug === 'serwis-drukarek-spozywczych') {
     switch (categoryTitle) {
       case 'Arkuszowe / adaptowane':
@@ -426,7 +453,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
   const tooltipContentRef = useRef<HTMLDivElement | null>(null)
   // Same backing as the header "Usługi" mega menu (parchment + black/55, gold
   // border, shadow). All four pages with this popup.
-  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups' || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || service.slug === 'serwis-drukarek-spozywczych')
+  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups' || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy'))
   // golden back light behind the category pictures — temporarily off; to enable: laser page only
   const backlit = false as boolean // service.slug === 'serwis-drukarek-laserowych'
 
@@ -503,6 +530,8 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 ? t.deviceCategoriesDescription.serwisDrukarekDtf
                 : service.slug === 'serwis-drukarek-sublimacyjnych'
                 ? t.deviceCategoriesDescription.serwisDrukarekSublimacja
+                : service.slug === 'serwis-ekspresow-do-kawy'
+                ? t.deviceCategoriesDescription.serwisEkspresowDoKawy
                 : service.slug === 'serwis-drukarek-spozywczych'
                 ? t.deviceCategoriesDescription.serwisDrukarekSpozywczych
                 : t.deviceCategoriesDescription.default}
@@ -512,7 +541,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines(service.slug === 'serwis-drukarek-sublimacyjnych' ? '150 / 250 / 400' : service.slug === 'serwis-drukarek-spozywczych' ? '150 / 250 / 350' : service.slug === 'serwis-drukarek-dtg' ?'150 / 250 / 450' : '50 / 100 / 150')}
+                {renderPriceLines(service.slug === 'serwis-drukarek-sublimacyjnych' ? '150 / 250 / 400' : service.slug === 'serwis-ekspresow-do-kawy' ? (locale === 'pl' ? '80 / 120 / 180 zł netto' : '80 / 120 / 180 zł нетто') : service.slug === 'serwis-drukarek-spozywczych' ? '150 / 250 / 350' : service.slug === 'serwis-drukarek-dtg' ?'150 / 250 / 450' : '50 / 100 / 150')}
               </div>
             </div>
             <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
@@ -534,7 +563,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 </p>
               </div>
               {/* Добавление картинки принтера */}
-              <div className="flex justify-center items-center my-3">
+              <div className={cn("flex justify-center items-center my-3", service.slug === 'serwis-ekspresow-do-kawy' && "mt-auto")}>
                 {backlit ? (
                   <BacklitImage
                     src={getPrinterImageForCategory(category.title, service.slug)}
