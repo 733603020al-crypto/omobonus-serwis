@@ -70,6 +70,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       { label: { pl: 'Plotery', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
       { label: { pl: 'Niszczarki', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/menu-icon-niszczarki.webp' },
       { label: { pl: 'Zasilacze UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/menu-icon-zasilacze-ups.webp' },
+      { label: { pl: 'Ekspresy do kawy', uk: 'Кавомашини', ru: 'Кофемашины' }, href: '/uslugi/serwis-ekspresow-do-kawy', icon: '/images/menu-icon-serwis-ekspresow-do-kawy.webp' },
       { label: { pl: 'Wynajem', uk: 'Оренда', ru: 'Аренда' }, href: '/uslugi/wynajem-drukarek', icon: '/images/menu-icon-wynajem.webp' },
       { label: { pl: 'Drukarka zastępcza', uk: 'Підмінний принтер', ru: 'Подменный принтер' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/menu-icon-drukarka-zastepcza.webp', menuOnly: true },
     ],

@@ -98,6 +98,7 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
   'serwis-niszczarek': bakedCard('shredder3'),
   'naprawa-zasilaczy-ups': bakedCard('ups3'),
+  'serwis-ekspresow-do-kawy': bakedCard('kawa'),
   'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer2'),
   'wynajem-drukarek': bakedCard('rental'),
   'drukarka-zastepcza': bakedCard('replacement'),

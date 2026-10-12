@@ -110,6 +110,7 @@
       'druk-3d-na-zamowienie': '3D-друк на замовлення',
       'serwis-niszczarek': 'Шредерів',
       'naprawa-zasilaczy-ups': 'ДБЖ (UPS)',
+      'serwis-ekspresow-do-kawy': 'Кавомашин',
       'serwis-drukarek-do-kart-plastikowych': 'Принтерів пластикових карток',
       'wynajem-drukarek': 'Оренда принтерів',
       'drukarka-zastepcza': 'Принтер на заміну',
