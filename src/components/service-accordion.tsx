@@ -925,6 +925,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   }
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
+  // Табличные заголовки th/scope только для страницы кофемашин — не трогаем
+  // остальные страницы, использующие тот же REPAIR_ACCORDION_LAYOUT_SLUGS layout.
+  const isKawaRepairTable = service.slug === 'serwis-ekspresow-do-kawy'
+  const kawaColumnLabels = { pl: ['Usługa', 'Cena', 'Czas realizacji'], ru: ['Услуга', 'Цена', 'Срок'], uk: ['Послуга', 'Ціна', 'Строк'] }[locale] ?? ['Usługa', 'Cena', 'Czas realizacji']
   const useWarmSectionIcons = isWarmParchment
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
@@ -2094,11 +2098,19 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               </div>
                             </div>
                             {/* Десктопная версия: обычный заголовок.
-                                Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
-                                w wersji mobilnej (ten sam tekst, wspólny dla obu
-                                breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
+                                Для большинства страниц — не <h2>, т.к. semantyczny <h2>
+                                dla tej sekcji już istnieje w wersji mobilnej (ten sam
+                                tekst, wspólny dla obu breakpointów w drzewie DOM), więc
+                                unikamy duplikatu H2. Для serwis-ekspresow-do-kawy (единственная
+                                страница) desktop-версия — настоящий <h2>, т.к. мобильный
+                                <h2> здесь display:none на md+ и полностью пропадает
+                                из дерева доступности; оба <h2> взаимоисключающе видимы
+                                (md:hidden / hidden md:block), поэтому дубликата нет. */}
                             <div data-open-header-hover-text="true" className="hidden md:block">
-                              <div className={cn(
+                              {(() => {
+                                const DesktopTitleTag = isKawaRepairTable ? 'h2' : 'div'
+                                return (
+                              <DesktopTitleTag className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
                                 !(isRepairAccordionLayout && section.id === 'naprawy') && !isOpenHeaderPlateSection && "group-data-[state=open]:md:translate-x-[60px]",
                                 isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
@@ -2122,7 +2134,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                     )
                                   })()
                                 ) : section.title}
-                              </div>
+                              </DesktopTitleTag>
+                                )
+                              })()}
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span
@@ -3371,16 +3385,29 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       <col className="w-[25%] md:w-[16.5%]" />
                                       <col className="w-0 md:w-[16.5%]" />
                                     </colgroup>
+                                    {isKawaRepairTable && (
+                                      <TableHeader className="sr-only">
+                                        <TableRow>
+                                          <TableHead scope="col">{kawaColumnLabels[0]}</TableHead>
+                                          <TableHead scope="col">{kawaColumnLabels[1]}</TableHead>
+                                          <TableHead scope="col">{kawaColumnLabels[2]}</TableHead>
+                                        </TableRow>
+                                      </TableHeader>
+                                    )}
                                     <TableBody>
                                       {subcategory.items.map((item, idx) => {
                                         const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
                                         const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
+                                        const ServiceNameCell = isKawaRepairTable ? TableHead : TableCell
                                         return (
                                         <TableRow
                                           key={idx}
                                           className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
                                         >
-                                          <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden max-md:text-left">
+                                          <ServiceNameCell
+                                            {...(isKawaRepairTable ? { scope: 'row' } : {})}
+                                            className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden max-md:text-left font-normal whitespace-normal"
+                                          >
                                             {(() => {
                                               const parsed = parseServiceText(item.service)
                                               return (
@@ -3392,7 +3419,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                                 </div>
                                               )
                                             })()}
-                                          </TableCell>
+                                          </ServiceNameCell>
                                           <TableCell
                                             className={cn(
                                               'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',

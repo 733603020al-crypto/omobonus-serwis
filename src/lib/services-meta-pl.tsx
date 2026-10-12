@@ -169,9 +169,11 @@ export const seoBlocks: Record<string, SeoBlock> = {
   },
   'serwis-ekspresow-do-kawy': {
     items: [
-      'Pełna konserwacja, diagnostyka układu wodnego, grzewczego, mlecznego i mechanizmów ekspresu.',
-      'Twój ekspres do kawy — ocenimy usterkę i przedstawimy koszt naprawy przed rozpoczęciem prac.',
-      'Serwis domowych, biurowych, premium oraz profesjonalnych ekspresów do kawy we Wrocławiu.',
+      'Serwisujemy we Wrocławiu ekspresy automatyczne i kolbowe do domu, biura oraz lokali gastronomicznych.',
+      'Naprawiamy ekspresy, które nie pobierają wody, nie podgrzewają jej, przeciekają, nie mielą kawy lub nie spieniają mleka.',
+      'Podobne objawy mogą mieć różne przyczyny, dlatego zakres naprawy ustalamy po diagnostyce urządzenia.',
+      'Obsługujemy ekspresy m.in. marek De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups i Melitta.',
+      'Koszt naprawy przedstawiamy do akceptacji przed rozpoczęciem prac.',
     ],
   },
   'naprawa-drukarek': {
