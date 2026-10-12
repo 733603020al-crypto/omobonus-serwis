@@ -60,6 +60,12 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Błąd platformy',
         'Konserwacja drukarki',
     ],
+    'serwis-ekspresow-do-kawy': [
+        'Brak poboru wody',
+        'Kawa jest zimna',
+        'Ekspres przecieka',
+        'Młynek nie mieli kawy',
+    ],
 
     'serwis-niszczarek': [
         'Zacina papier',

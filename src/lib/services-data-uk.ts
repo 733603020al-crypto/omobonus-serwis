@@ -19,6 +19,7 @@ import { dtgPricingSectionsUk, DTG_PRICE_TOOLTIP_UK } from './services-data-uk-d
 import { dtfPricingSectionsUk, DTF_PRICE_TOOLTIP_UK } from './services-data-uk-dtf'
 import { sublimacjaPricingSectionsUk, SUBLIMACJA_PRICE_TOOLTIP_UK } from './services-data-uk-sublimacja'
 import { spozywczePricingSectionsUk, SPOZYWCZE_PRICE_TOOLTIP_UK } from './services-data-uk-spozywcze'
+import { kawaPricingSectionsUk, KAWA_PRICE_TOOLTIP_UK } from './services-data-uk-kawa'
 
 export const servicesUk: ServiceData[] = [
   {
@@ -280,6 +281,15 @@ export const servicesUk: ServiceData[] = [
     description: 'Сервіс і ремонт харчових принтерів.',
     pricingSections: spozywczePricingSectionsUk(),
     priceTooltip: SPOZYWCZE_PRICE_TOOLTIP_UK,
+  },
+  {
+    slug: 'serwis-ekspresow-do-kawy',
+    title: 'Сервіс і ремонт кавомашин',
+    subtitle: 'Сервіс і ремонт кавомашин у Вроцлаві',
+    icon: '/images/kawa-carousel-v1-01.webp',
+    description: 'Сервіс і ремонт домашніх, офісних і професійних кавомашин.',
+    pricingSections: kawaPricingSectionsUk(),
+    priceTooltip: KAWA_PRICE_TOOLTIP_UK,
   },
   {
     slug: 'wynajem-drukarek',

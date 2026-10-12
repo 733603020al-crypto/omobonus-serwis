@@ -60,6 +60,12 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
     'Ошибка платформы',
     'Обслуживание принтера',
   ],
+  'serwis-ekspresow-do-kawy': [
+    'Не набирает воду',
+    'Холодный кофе',
+    'Кофемашина протекает',
+    'Кофемолка не мелет',
+  ],
 
   'serwis-niszczarek': [
     'Зажёвывает бумагу',

@@ -71,6 +71,7 @@ export const ru = {
       'druk-3d-na-zamowienie': '3D-печать на заказ',
       'serwis-niszczarek': 'Шредеров',
       'naprawa-zasilaczy-ups': 'ИБП (UPS)',
+      'serwis-ekspresow-do-kawy': 'Кофемашин',
       'serwis-drukarek-do-kart-plastikowych': 'Принтеров пластиковых карт',
       'wynajem-drukarek': 'Аренда принтеров',
       'drukarka-zastepcza': 'Принтер на замену',

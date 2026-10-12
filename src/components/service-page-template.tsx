@@ -71,6 +71,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-drukarek-dtf': 1.2,
   'serwis-drukarek-sublimacyjnych': 1.2,
   'serwis-drukarek-spozywczych': 1.2,
+  'serwis-ekspresow-do-kawy': 1.2,
 }
 const FadeSlideP = dynamic(() => import('@/components/ui/fade-slide-p').then(m => ({ default: m.FadeSlideP })))
 
@@ -293,6 +294,13 @@ const SPOZYWCZE_HERO_SLIDES = [
 const SPOZYWCZE_SIZE_COEFFICIENTS = [0.814, 0.836, 0.935, 0.85, 0.85, 0.95, 0.95]
 const SPOZYWCZE_VERTICAL_BIAS = [0, 0, 4, 4, 4, 13, 13]
 
+// serwis-ekspresow-do-kawy: 6 coffee-machine renders cropped to their own alpha bbox
+// (see public/images/kawa-carousel-v1-*.webp) — sizes small/small, medium/medium,
+// large/large (user order 1→6).
+const KAWA_HERO_SLIDES = [1, 2, 3, 4, 5, 6].map((n) => `/images/kawa-carousel-v1-0${n}.webp`)
+const KAWA_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
+const KAWA_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-laptopow: repair photos (user's order 1,3-8), cropped to alpha bbox
 // and optimized to WebP — see public/images/laptop-carousel/. The original
 // cracked-screen animation sits in slot 2 (it's heavy, so it isn't slide 0:
@@ -328,7 +336,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
 ])
 
 const PAGE_CLASS_SLUGS = [
@@ -339,7 +347,7 @@ const PAGE_CLASS_SLUGS = [
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
 ]
 
 // PL-only H1 restructuring into the unified "Serwis i naprawa X we Wrocławiu"
@@ -694,6 +702,14 @@ export function ServicePageTemplate({
                           slides={SUBLIMACJA_HERO_SLIDES}
                           sizeCoefficients={SUBLIMACJA_SIZE_COEFFICIENTS}
                           verticalBias={SUBLIMACJA_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'serwis-ekspresow-do-kawy' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={KAWA_HERO_SLIDES}
+                          sizeCoefficients={KAWA_SIZE_COEFFICIENTS}
+                          verticalBias={KAWA_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-drukarek-spozywczych' ? (
                         <HeroPrinterCarousel

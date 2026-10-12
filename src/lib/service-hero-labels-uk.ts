@@ -60,6 +60,12 @@ export const serviceHeroLabelsUk: Record<string, string[]> = {
     'Помилка платформи',
     'Обслуговування принтера',
   ],
+  'serwis-ekspresow-do-kawy': [
+    'Не набирає воду',
+    'Холодна кава',
+    'Кавомашина протікає',
+    'Кавомолка не меле',
+  ],
 
   'serwis-niszczarek': [
     'Застрягає папір',

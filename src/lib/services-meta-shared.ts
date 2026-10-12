@@ -9,6 +9,7 @@ export const serviceImageSrc: Record<string, string> = {
   'serwis-drukarek-dtf': '/images/dtf-carousel-v3-01.webp',
   'serwis-drukarek-sublimacyjnych': '/images/sublimacja-carousel-v1-01.webp',
   'serwis-drukarek-spozywczych': '/images/spozywcze-carousel-v1-01.webp',
+  'serwis-ekspresow-do-kawy': '/images/kawa-carousel-v1-01.webp',
   'serwis-drukarek-termicznych': '/images/termiczne-carousel-v3-01.webp',
   'serwis-laptopow': '/images/serwis-laptopow-hero-animated.webp',
   'serwis-komputerow-stacjonarnych': '/images/02_serwis-komputerow-stacjonarnych.webp',
@@ -53,6 +54,7 @@ export const slugBrands: Record<string, string[]> = {
   'serwis-drukarek-dtf': ['epson', 'roland-dg', 'mimaki', 'mutoh', 'fedar', 'audley', 'pegasus', 'trujet', 'artemis', 'ironprinter', 'dias', 'cobe', 'keditec', 'dtf-station'],
   'serwis-drukarek-sublimacyjnych': ['epson', 'mimaki', 'mutoh', 'roland-dg', 'sawgrass', 'hp', 'brother'],
   'serwis-drukarek-spozywczych': ['canon', 'epson', 'brother', 'jetlt', 'primera', 'icing-images', 'icinginks', 'kopykake', 'decopac', 'evebot', 'cino-printer'],
+  'serwis-ekspresow-do-kawy': ['delonghi', 'philips', 'saeco', 'siemens', 'bosch', 'jura', 'krups', 'nivona', 'melitta', 'gaggia', 'miele', 'sage', 'smeg', 'aeg-home', 'tchibo', 'wmf', 'franke', 'coffee-format', 'dr-coffee', 'lelit', 'rancilio', 'nuova-simonelli', 'la-marzocco', 'ascaso'],
   'serwis-laptopow': ['microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'toshiba', 'huawei', 'lg', 'gigabyte', 'razer', 'honor', 'xiaomi', 'medion', 'dynabook', 'vaio', 'panasonic', 'framework', 'chuwi', 'alienware'],
   'serwis-komputerow-stacjonarnych': ['hp', 'dell', 'lenovo', 'asus', 'acer', 'msi', 'microsoft', 'samsung', 'gigabyte', 'alienware', 'fujitsu', 'corsair', 'zotac', 'minisforum', 'framework', 'actina', 'komputronik'],
   'outsourcing-it': ['apple', 'microsoft', 'dell', 'hp', 'lenovo', 'acer', 'asus', 'msi', 'fujitsu', 'samsung', 'apc', 'cisco', 'ubiquiti', 'mikrotik', 'eaton'],
@@ -77,7 +79,7 @@ export const relatedServiceSlugs = [
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).
 // Usuń slug stąd, gdy treść strony zostanie docelowo zastąpiona.
-export const noindexSlugs: string[] = []
+export const noindexSlugs: string[] = ['serwis-ekspresow-do-kawy']
 
 // Home cards drawn as one finished picture (parchment + device + light and
 // shadow, no text) — desktop and mobile proportions. The text stays live HTML.
@@ -96,6 +98,7 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
   'serwis-niszczarek': bakedCard('shredder3'),
   'naprawa-zasilaczy-ups': bakedCard('ups3'),
+  'serwis-ekspresow-do-kawy': bakedCard('kawa'),
   'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer2'),
   'wynajem-drukarek': bakedCard('rental'),
   'drukarka-zastepcza': bakedCard('replacement'),
