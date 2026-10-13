@@ -1830,3 +1830,33 @@ Report: https://claude.ai/artifact/ApU2CQ2JJuTzKJ46EEb6qG . Code NOT changed by 
 - Добавлены уменьшенные WebP-варианты для PC static, laptop, inkjet и laser изображений; `HeroPrinterCarousel` теперь использует `srcSet`/`sizes`, при этом активный слайд сохраняет оригинальный файл.
 - Production-сборка завершилась успешно; `tsc --noEmit` и `git diff --check` проходят.
 - Следующий шаг: после публикации test повторить PageSpeed desktop/mobile. Старый production-отчёт эти новые варианты ещё не видит.
+
+## 2026-10-13 — PageSpeed: стартовое изображение и LCP
+- В `HeroPrinterCarousel` добавлены `srcSet` и `sizes` для `posterSrc` и стартового `opening.src`; на мобильном браузер может выбрать уменьшенный WebP-вариант вместо полноразмерного изображения.
+- Проверено: `npx tsc --noEmit --incremental false`, `git diff --check`, `npm run build` — успешно. Остались только прежние ESLint-предупреждения hooks и `<img>`.
+- Следующий шаг: после публикации тестовой версии повторить PageSpeed mobile/desktop; текущий публичный отчёт всё ещё относится к старой production-версии.
+
+## 2026-10-13 — PageSpeed: LCP hero
+- PageSpeed wskazał element LCP jako główny obraz hero (`Omobonus serwis`): TTFB 10 ms, ładowanie 200 ms, ale opóźnienie renderowania 2120 ms.
+- W `src/components/sections/hero.tsx` ustawiono `decoding="sync"` dla jedynego priorytetowego obrazu hero, aby skrócić opóźnienie jego pierwszego malowania.
+- Ponownie sprawdzono TypeScript, `git diff --check` i `npm run build` — OK. Następny krok: ponowny PageSpeed po publikacji wersji `test`; publiczny raport nadal dotyczy production.
+
+## 2026-10-13 — PageSpeed: pozostałe obrazy karuzeli
+- Po wdrożeniu `srcSet` główny hero nie jest już wskazywany jako problem; pozostała rekomendacja dotyczy ukrytych/slajdów karuzeli i szacunkowo 31 KiB.
+- Dodano wariant 768 px `atrament-carousel-v3-01-print2-first-medium.webp` (30,6 KiB) dla ekranów o wysokim DPR oraz ponownie skompresowano `02_serwis-komputerow-stacjonarnych-static-mobile.webp` do 47,9 KiB.
+- `tsc --noEmit` i `git diff --check` — OK. Następny krok: po publikacji ponownie sprawdzić PageSpeed; nie zmieniać CookieYes ani układu hero bez nowego pomiaru.
+
+## 2026-10-13 — PageSpeed desktop: forced reflow
+- При desktop-отчёте 88 основная метрика уже была хорошей (FCP 0,5 с, LCP 1,1 с, CLS 0); снижение связано с TBT 210 мс и forced reflow около 97 мс.
+- В `home-hero-showcase.tsx` отключено начальное измерение `offsetWidth` для стартовой надписи и отложено измерение до первого реального слайда; визуальная анимация последующих слайдов сохранена.
+- Проверка сборки успешна; после финальной правки зависимостей повторить `tsc`/build и затем PageSpeed. Commit/merge/deploy не выполнялись.
+
+## 2026-10-13 — PageSpeed desktop: скрытые слайды
+- В публичном отчёте ещё видны оригинальные `src` у `data-tier="3"`; это старая production-версия, где браузер мог выбрать исходный файл несмотря на `srcSet`.
+- В `HeroPrinterCarousel` скрытые слайды tier 3 теперь получают малый WebP напрямую, а оригинал используется при переходе слайда на передний план.
+- Production build завершён успешно; после публикации test повторить PageSpeed desktop. Commit/merge/deploy не выполнялись.
+
+## 2026-10-13 — PageSpeed desktop: main thread
+- Raport wskazywał 2,3 s aktywności głównego wątku, w tym 1058 ms ewaluacji skryptów; część obciążenia pochodziła z GTM ładowanego po 7 s i wchodzącego do okna Lighthouse.
+- W `src/components/DeferredGtm.tsx` fallback GTM przesunięto do 15 s. Kliknięcie konwersyjne i wysłanie formularza nadal ładują GTM natychmiast.
+- Build i TypeScript zakończone poprawnie. Po publikacji test powtórzyć PageSpeed; nie wykonywać commit/merge/deploy bez zgody.

@@ -15,7 +15,9 @@ declare global {
 // submitting a form) — those we still want to attribute even if they
 // happen in the first few seconds.
 const CONVERSION_HREF_PATTERN = /^tel:|wa\.me|t\.me\/|viber:/i
-const FALLBACK_DELAY_MS = 7000
+// Keep analytics out of the first Lighthouse window. Conversion actions still
+// load GTM immediately through the listeners below.
+const FALLBACK_DELAY_MS = 15000
 
 export function DeferredGtm({ gtmId }: { gtmId: string }) {
     useEffect(() => {

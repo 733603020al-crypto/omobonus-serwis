@@ -86,8 +86,11 @@ export function AnimatedPart({ text, mode, delay = 0, fit = 1 }: { text: string;
   }
 
   useLayoutEffect(() => {
+    // The opening text has no outgoing/incoming animation yet, so measuring it
+    // during the first paint only forces an unnecessary synchronous reflow.
+    if (shown.gen === 0) return
     if (inRef.current) setWidth(inRef.current.offsetWidth)
-  }, [shown.cur, fit])
+  }, [shown.cur, shown.gen, fit])
 
   const letters = (t: string, cls: string, step: number) =>
     Array.from(t).map((ch, i) => (
@@ -164,12 +167,15 @@ export function HomeHeroShowcase({
     return () => window.removeEventListener('resize', onResize)
   }, [])
   useLayoutEffect(() => {
+    // The opening slide uses the natural text width. Defer this measurement
+    // until the first real carousel item is shown.
+    if (active < 0) return
     const el = measureRef.current
     const column = el?.closest('h1')?.parentElement
     if (!el || !column) return
     const max = window.innerWidth >= 768 ? 720 : column.clientWidth
     setFit(Math.min(1, max / el.offsetWidth))
-  }, [mid, vw])
+  }, [active, mid, vw])
   // Plain link without prefetch — nothing extra is loaded until the click.
   const href = `${basePath}/${SLUGS[Math.max(active, 0) % SLUGS.length]}`
   const labelMid = active < 0 ? mids[0] : mid

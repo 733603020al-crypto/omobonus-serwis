@@ -105,7 +105,12 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
         <picture>
           <source media="(min-width: 768px)" srcSet={heroDesktopSrcSet} sizes="100vw" />
           {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
-          <img {...heroMobileProps} fetchPriority="high" className="object-cover object-center" />
+          <img
+            {...heroMobileProps}
+            decoding="sync"
+            fetchPriority="high"
+            className="object-cover object-center"
+          />
         </picture>
         {/* Затемнение */}
         <div className="absolute inset-0 bg-black/50" />

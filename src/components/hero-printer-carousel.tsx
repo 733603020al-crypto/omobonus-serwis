@@ -116,10 +116,17 @@ const RESPONSIVE_SMALLS: Record<string, string> = {
   '/images/laser-carousel-v3-01.webp': '/images/laser-carousel-v3-01-small.webp',
 }
 
+const RESPONSIVE_MIDS: Record<string, string> = {
+  '/images/atrament-carousel-v3-01-print2-first.webp': '/images/atrament-carousel-v3-01-print2-first-medium.webp',
+}
+
 const responsiveSrcSet = (src: string) => {
   const small = RESPONSIVE_SMALLS[src]
-  return small ? `${small} 384w, ${src} 622w` : undefined
+  const medium = RESPONSIVE_MIDS[src]
+  return small ? `${small} 384w${medium ? `, ${medium} 768w` : ''}, ${src} 622w` : undefined
 }
+
+const responsiveSmallSrc = (src: string) => RESPONSIVE_SMALLS[src] ?? src
 
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
@@ -782,6 +789,8 @@ export function HeroPrinterCarousel({
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={posterSrc}
+            srcSet={responsiveSrcSet(posterSrc)}
+            sizes="(max-width: 767px) 384px, 622px"
             alt=""
             aria-hidden="true"
             loading="eager"
@@ -804,6 +813,8 @@ export function HeroPrinterCarousel({
           <img
             key="opening"
             src={opening.src}
+            srcSet={responsiveSrcSet(opening.src)}
+            sizes="(max-width: 767px) 384px, 622px"
             alt=""
             aria-hidden="true"
             loading="eager"
@@ -885,9 +896,9 @@ export function HeroPrinterCarousel({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt="" aria-hidden="true" loading="lazy" className="hero-intro-photo" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                   src={introVideo.poster}
-                   srcSet={responsiveSrcSet(introVideo.poster)}
+                <img
+                   src={tier === 3 ? responsiveSmallSrc(introVideo.poster) : introVideo.poster}
+                   srcSet={responsiveSrcSet(tier === 3 ? responsiveSmallSrc(introVideo.poster) : introVideo.poster)}
                    sizes={tier === 0 ? '622px' : '384px'}
                    alt=""
                   aria-hidden="true"
@@ -926,7 +937,8 @@ export function HeroPrinterCarousel({
             )
           }
 
-          const displayedSrc = frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src
+          const displayedSrcBase = frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src
+          const displayedSrc = tier === 3 ? responsiveSmallSrc(displayedSrcBase) : displayedSrcBase
           return (
             // eslint-disable-next-line @next/next/no-img-element
             <img
