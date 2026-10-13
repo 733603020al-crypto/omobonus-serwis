@@ -13,6 +13,7 @@
   --bg-services-card: url('/images/services-background.webp');
   --bg-paper-texture: url('/images/zmiety arkusz papieru 2.webp');
   --bg-zakres-parchment: url('/images/services-card-parchment.webp');
+  --bg-zakres-home-parchment: url('/images/services-card-parchment-home.webp');
   --bg-accordion-parchment: url('/images/accordion-parchment-tile-desktop.avif');
 
   /* Shared OPEN-state contour shadow, exact value of .parchment-shadow-icon-open.
@@ -31,6 +32,7 @@
     --bg-services-card: url('/images/services-background-mobile.webp');
     --bg-paper-texture: url('/images/zmiety-arkusz-papieru-2-mobile.webp');
     --bg-zakres-parchment: url('/images/services-card-parchment-mobile.avif');
+    --bg-zakres-home-parchment: url('/images/services-card-parchment-home-mobile.avif');
     --bg-accordion-parchment: url('/images/accordion-parchment-tile-mobile.avif');
   }
 }
@@ -62,6 +64,42 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
+  }
+
+  /* Home: the sections below the first screen (services, about + reviews,
+     footer) hold ~3/4 of the page's elements. content-visibility lets the
+     browser skip their style/layout until they approach the viewport, so the
+     first frame (logo, H1, hero) is ready before Chrome starts throttling
+     undrawn frames. Same content in the DOM/HTML (SEO, find-in-page), same
+     look: their overflowing parts are already clipped by inner wrappers and
+     none contains fixed elements. Placeholder heights ≈ real mobile sizes;
+     `auto` keeps the real size once rendered. .cv-off (set before scripted
+     scrolls) restores normal layout so scroll targets are measured exactly. */
+  html:not(.cv-off) .home-below > #uslugi {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1300px;
+  }
+  html:not(.cv-off) .home-below > #o-nas {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1400px;
+  }
+  html:not(.cv-off) .home-below > footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1000px;
+  }
+  @media (min-width: 1024px) {
+    html:not(.cv-off) .home-below > #uslugi { contain-intrinsic-size: auto 624px; }
+    html:not(.cv-off) .home-below > #o-nas { contain-intrinsic-size: auto 951px; }
+    html:not(.cv-off) .home-below > footer { contain-intrinsic-size: auto 597px; }
+  }
+
+  /* Other pages: the same skip for blocks that are always below the first
+     screen — Google reviews (fixed height, already clipped) and the footer. */
+  html:not(.cv-off) .reviews-cv { content-visibility: auto; contain-intrinsic-size: auto 420px; }
+  html:not(.cv-off) :not(.home-below) > footer#kontakt { content-visibility: auto; contain-intrinsic-size: auto 950px; }
+  @media (min-width: 768px) {
+    html:not(.cv-off) .reviews-cv { contain-intrinsic-size: auto 320px; }
+    html:not(.cv-off) :not(.home-below) > footer#kontakt { contain-intrinsic-size: auto 560px; }
   }
 
   /* =========================
@@ -368,6 +406,107 @@
     transform: scale(1.45);
   }
 
+  /* Home "SERWIS I NAPRAWA" cards: the device lies over the parchment —
+     soft dark-brown shadow to the right/down (brown of the card hover
+     shadow), plus a very faint glow in the site gold underneath. */
+  /* Home cards use a copy of the parchment with the wide torn strip on
+     one side trimmed, so the torn edge is equally thin all around. */
+  .services-home-card::before {
+    background-image: var(--bg-zakres-home-parchment);
+  }
+  /* Device layer of the home cards: covers the whole card, clips nothing. */
+  .tech-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+  /* Large brown-amber patch behind the device. */
+  .tech-wrap::before {
+    content: '';
+    position: absolute;
+    width: 54%;
+    height: 112%;
+    right: -7%;
+    bottom: -19%;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 64% 61%,
+      rgba(154, 76, 24, 0.48) 0%,
+      rgba(127, 58, 18, 0.42) 28%,
+      rgba(91, 38, 10, 0.31) 52%,
+      rgba(55, 22, 6, 0.16) 73%,
+      rgba(55, 22, 6, 0) 100%
+    );
+    filter: blur(24px);
+    opacity: 1;
+  }
+  /* Golden glow on top of the patch. */
+  .tech-wrap::after {
+    content: '';
+    position: absolute;
+    width: 45%;
+    height: 92%;
+    right: -1%;
+    bottom: -7%;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at 61% 56%,
+      rgba(255, 204, 108, 0.58) 0%,
+      rgba(237, 165, 69, 0.44) 25%,
+      rgba(202, 116, 40, 0.28) 50%,
+      rgba(154, 76, 23, 0.12) 72%,
+      rgba(154, 76, 23, 0) 100%
+    );
+    filter: blur(20px);
+    opacity: 1;
+  }
+  /* The device itself; shadow follows the PNG alpha. */
+  .tech-image {
+    position: absolute;
+    height: auto;
+    z-index: 3;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 7px 5px rgba(46, 20, 5, 0.55))
+      drop-shadow(11px 13px 14px rgba(91, 39, 9, 0.42))
+      drop-shadow(18px 10px 23px rgba(189, 108, 32, 0.28));
+  }
+  /* Home cards drawn as one finished picture: no flip, no edge mask, no
+     corner fold — the picture already has its own torn edge. */
+  .zakres-paper-card.services-card-baked::before {
+    background-image: var(--baked-d);
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .zakres-paper-card.services-card-baked::after {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    /* Same proportions as on desktop (picture 800×336). Home cards have no
+       min height on phones, so the card follows the picture exactly. */
+    .zakres-paper-card.services-card-baked {
+      aspect-ratio: 800 / 336;
+    }
+  }
+  /* Mobile picture (720×338, made for a 358×168 card) only where the card is
+     that narrow; from ~378px card width the desktop picture fits better.
+     Home cards always use the desktop picture at its own proportions. */
+  @media (max-width: 409px) {
+    .zakres-paper-card.services-card-baked:not(.services-home-card)::before {
+      background-image: var(--baked-m);
+    }
+  }
+  .tech-laptop  { width: 44.8%; right: 3.8%; bottom: 6.8%; }
+  .tech-desktop { width: 33.4%; right: 5.1%; bottom: 2.1%; }
+  .tech-printer { width: 40%;   right: 5%;   bottom: 2.6%; }
+  .tech-3d      { width: 45%;   right: 5.1%; bottom: 5.9%; }
+  .tech-label   { width: 33.7%; right: 4.7%; bottom: 2%; }
+  .tech-plotter { width: 48.9%; right: 1.2%; bottom: 3.1%; }
+
   /* No clip-path polygon here on purpose: the card's visible silhouette
      comes from (a) the source WebP's own real alpha edge, plus (b) a soft
      bezier-curve SVG mask below — never straight/geometric lines. */
@@ -435,7 +574,8 @@
      above, but with the contact form's own parchment texture instead of
      the services-card one (same file as Formularz zgłoszenia). */
   .zakres-paper-card.review-parchment::before {
-    background-image: url('/images/contact-form-parchment.webp');
+    /* --review-bg: none until the block is near (google-reviews-carousel.tsx) */
+    background-image: var(--review-bg, url('/images/contact-form-parchment.webp'));
   }
 
   /* SERWIS I NAPRAWA heading text — flat plain white, no gradient/center
@@ -590,7 +730,9 @@
   @media (max-width: 767px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"])>div::before {
       background-image: url('/images/accordion-card-parchment-closed-mobile.avif');
-      background-size: 100% 82px;
+      /* Grows with the card when a long title wraps to 3 lines, so the
+         "Zobacz cennik" line never lands on/below the torn bottom edge. */
+      background-size: 100% max(82px, 100%);
     }
   }
 
@@ -758,6 +900,19 @@
     [data-parchment-list-row="true"]>div:not([data-slot="accordion-content"]):hover [data-parchment-list-hover-text] {
       transform: translateY(-2px) scale(1.01);
     }
+  }
+
+  /* WYNAJEM/DZ — the hover-lift rules above aren't all scoped to
+     [data-state="closed"] (the icon one is, the title one at line 758 isn't),
+     so if the pointer is still resting on a row right when it opens (same
+     spot that was just clicked/tapped), the icon's hover transform reverts
+     and animates over the shared 180ms transition instead of snapping —
+     reads as the icon/title gliding into place on open. Killed only for
+     wynajem-drukarek/drukarka-zastepcza rows so naprawy's hover-lift keeps
+     working exactly as before. */
+  [data-wynajem-plain-row="true"][data-state="open"] [data-parchment-list-image] > img,
+  [data-wynajem-plain-row="true"][data-state="open"] [data-parchment-list-hover-text] {
+    transition: none;
   }
 
   /* WARM PARCHMENT — OPEN table, price column: same width/alignment/right
@@ -1206,14 +1361,14 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-main="true"][data-state="open"]:not([data-faq-item="true"]) [data-parchment-list-header="true"] {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1221,7 +1376,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"][data-parchment-list-first-row="true"]:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1229,7 +1384,7 @@
     }
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-parchment-list-row="true"]:last-child:not([data-faq-item="true"])>div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1245,7 +1400,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1300,7 +1455,7 @@
       height: var(--naprawy-tail-h, 0px);
       margin-bottom: -20px;
       overflow: visible;
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1317,7 +1472,7 @@
     }
 
     /* Naprawy OPEN row: no longer shows its own slice of the shared
-       naprawy-open-parchment-desktop-v17.webp canvas — that slice is
+       naprawy-open-parchment-desktop-v18.webp canvas — that slice is
        instead moved whole (see [data-parchment-list-open-segment] below) to
        sit under the table. Reuses the existing top-level warm-parchment
        CLOSED-card asset (same file/size/position already used by
@@ -1325,7 +1480,7 @@
        needed to outrank the higher-specificity base canvas-background rule
        above (~line 955). */
     [data-parchment-list-row="true"][data-state="open"] > div:not([data-slot="accordion-content"]) {
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp') !important;
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp') !important;
       background-size: var(--naprawy-seg-size) !important;
       background-repeat: no-repeat !important;
       background-position: 0 var(--naprawy-seg-y, 0px) !important;
@@ -1386,7 +1541,7 @@
       right: 0;
       width: 100%;
       height: var(--naprawy-row-h, 0px);
-      background-image: url('/images/naprawy-open-parchment-desktop-v17.webp');
+      background-image: url('/images/naprawy-open-parchment-desktop-v18.webp');
       background-repeat: no-repeat;
       background-size: var(--naprawy-seg-size);
       background-position: 0 var(--naprawy-seg-y, 0px);
@@ -1583,13 +1738,9 @@
        naprawy-open-parchment-mobile-v172.webp instead of v16. Same
        --naprawy-seg-size/--naprawy-seg-y/--naprawy-row-h/--naprawy-tail-h
        vars (service-accordion.tsx, unchanged, already computed for both
-       breakpoints). Old single stretched <img> + the flat 100% 100%
-       ::before backdrop are disabled here so only the segmented slices
-       show; CLOSED main section and desktop are untouched. */
-    .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] img[src="/images/naprawy-open-parchment-desktop.webp"] {
-      display: none !important;
-    }
-
+       breakpoints). The flat 100% 100% ::before backdrop is disabled here
+       so only the segmented slices show; CLOSED main section and desktop
+       are untouched. */
     .page-repair-accordion [data-parchment-list-main="true"][data-state="open"] [data-parchment-list-header="true"]::after {
       content: none !important;
       background-image: none !important;
@@ -2738,6 +2889,18 @@
       overflow: hidden !important;
     }
 
+    /* outsourcing-it "Konsultacja i wycena obsługi IT" (PL/UK/RU): the first
+       word is wider than this narrow column, so overflow-wrap:anywhere split
+       it mid-word. Wrap only between whole words, slightly smaller so the
+       longest word fits the column. Mobile only (inside this media query). */
+    .page-outsourcing-it.page-repair-accordion [data-open-header-plate="true"][data-has-table="true"][data-section-id="diagnoza"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+      hyphens: none !important;
+      padding-left: 0 !important;
+      font-size: 17px !important;
+    }
+
 
     /* Same hover/tap darkening kill as desktop, in case the table renders
        at this width (e.g. rows), plus the mobile tap-highlight above. */
@@ -3351,8 +3514,94 @@
 @media (min-width: 768px) {
   .hero-bg-fade { --hero-extend: 284px; }
 }
+/* ≥1024px: longer, softer dissolve ending at the bottom of the "Zobacz wszystkie
+   usługi" button. The taller box would re-center the 2:3 image and shift the
+   first screen, so the image top is pinned where it was with the old 294px box. */
 @media (min-width: 1024px) {
-  .hero-bg-fade { --hero-extend: 294px; }
+  .hero-bg-fade {
+    --hero-extend: 700px;
+    container-type: inline-size;
+    /* eased: stays visible behind both card rows, fades out gently below the button */
+    -webkit-mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 330px, black var(--hero-extend));
+    mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 330px, black var(--hero-extend));
+  }
+  .hero-bg-fade img {
+    object-position: 50% clamp(min(100svh + 635px - 150cqw, 0px), (100svh + 229px - 150cqw) / 2, 0px);
+  }
+  /* /o-nas: dissolve reaches as far down as the 2:3 image itself goes with the
+     first-screen framing kept ((150vw - hero)/2, ~990px at 1920×960; 20px
+     scrollbar margin), so the first-screen framing never shifts on narrower screens.
+     Image top pinned where the old hero-sized box (no extension) put it. */
+  .hero-bg-fade.onas-bg-fade {
+    --hero-extend: clamp(284px, (150vw - 100svh + 65px) / 2 - 20px, 1000px);
+    -webkit-mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 340px, black var(--hero-extend));
+    mask-image: linear-gradient(to top, transparent 0, rgba(0,0,0,.25) 120px, rgba(0,0,0,.7) 340px, black var(--hero-extend));
+  }
+  .hero-bg-fade.onas-bg-fade img {
+    object-position: 50% clamp(min(100svh - 65px + var(--hero-extend) - 150cqw, 0px), (100svh - 65px - 150cqw) / 2, 0px);
+  }
+}
+
+/* Gold outline button — light gliding along the border (principle of the
+   21st.dev "hero-section-dark" rotating conic-gradient border). The 1px border
+   keeps its width but is drawn by a masked ring instead: the same #bfa76a,
+   a dim 30% half, brightening into a light-gold head (#e6cc82, the hero
+   stat-number gold already on the site) that rotates around (3s).
+   No extra glow, no new colours; background/text/size untouched. */
+@property --gold-flow-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.gold-border-flow.gold-border-flow {
+  position: relative;
+  border-color: transparent;
+}
+.gold-border-flow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gold-flow-angle),
+    rgba(191, 167, 106, 0.3) 0%,
+    rgba(191, 167, 106, 0.3) 40%,
+    #bfa76a 78%,
+    #e6cc82 93%,
+    rgba(191, 167, 106, 0.3) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: gold-border-flow 3s linear infinite;
+  pointer-events: none;
+}
+/* same ring for 2px-bordered elements (Google rating badge) */
+.gold-border-flow-2::before { inset: -2px; padding: 2px; }
+@keyframes gold-border-flow {
+  to { --gold-flow-angle: 360deg; }
+}
+/* Same button: the light-gold glint also sweeps across the label every 4s. */
+.gold-text-sweep {
+  background: linear-gradient(110deg, #bfa76a 40%, #e6cc82 50%, #bfa76a 60%) 100% 0 / 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-text-sweep 4s ease-in-out infinite;
+}
+/* white caption keeps white, sweep in the stars' light gold */
+.gold-text-sweep.text-sweep-white {
+  background-image: linear-gradient(110deg, #fff 40%, #f3df9a 50%, #fff 60%);
+}
+@keyframes gold-text-sweep {
+  0% { background-position: 100% 0; }
+  35%, 100% { background-position: 0 0; }
+}
+/* off-screen: paused by GoldAnimationPause (these run on the main thread only) */
+.gold-border-flow[data-anim-off]::before, .gold-text-sweep[data-anim-off] { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .gold-border-flow::before, .gold-text-sweep { animation: none; }
 }
 
 /* Floating icon: elliptical shadow under icon creates elevation effect */
@@ -3695,4 +3944,131 @@
     min-width: 0;
     overflow-wrap: anywhere;
   }
+}
+
+/* Cookie-баннер CookieYes на телефоне: компактнее (≈37% экрана вместо ≈53%) — меньше отступы и шрифт,
+   «Dostosuj»/«Odrzuć» в одну строку. Текст и кнопки те же; десктоп (>440px) не затрагивается.
+   !important — стили CookieYes подключаются позже наших. */
+@media (max-width: 440px) {
+  .cky-consent-container .cky-consent-bar .cky-notice-content-wrapper { padding: 16px 0 8px !important; }
+  .cky-consent-container .cky-notice .cky-title,
+  .cky-consent-container .cky-notice-des,
+  .cky-consent-container .cky-notice-btn-wrapper { padding: 0 16px !important; }
+  .cky-consent-container .cky-notice .cky-title { font-size: 16px !important; margin-bottom: 8px !important; }
+  .cky-consent-container .cky-notice-des,
+  .cky-consent-container .cky-notice-des * { font-size: 13px !important; line-height: 19px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; margin-top: 12px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn { margin: 0 !important; padding: 7px 8px !important; line-height: 22px !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-accept { flex: 1 1 100% !important; width: 100% !important; }
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-customize,
+  .cky-consent-container .cky-notice-btn-wrapper .cky-btn-reject { flex: 1 1 0 !important; width: auto !important; min-width: 0 !important; }
+}
+
+/* Pasek z przewijanymi logo marek (brand-ticker.tsx). Stałe reguły tutaj, a nie w <style> komponentu:
+   wstawienie arkusza z @keyframes w czasie działania przelicza style całej strony.
+   Przesunięcie pętli i start animacji ustawia komponent przez zmienne CSS. */
+.brand-ticker-track {
+  animation-name: brand-ticker-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: var(--brand-ticker-play, paused);
+}
+@keyframes brand-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--brand-ticker-shift, -50%)); }
+}
+.brand-ticker-logo-muted {
+  opacity: 0.75;
+  filter: saturate(0.8) brightness(0.9);
+  transition-property: opacity, filter;
+}
+/* Strony usług: przygaszone tylko na telefonie, desktop w pełnym kolorze. */
+@media (max-width: 767.98px) {
+  .brand-ticker-logo-muted-mobile {
+    opacity: 0.75;
+    filter: saturate(0.8) brightness(0.9);
+  }
+}
+@media (min-width: 768px) {
+  .brand-ticker-logo-muted:hover {
+    opacity: 1;
+    filter: saturate(1) brightness(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-ticker-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Animacje ikon dolnego paska na telefonie (MobileActionBar.tsx) — z tego samego powodu co wyżej. */
+@keyframes dot1-appear {
+    0%, 6%    { opacity: 0; transform: scale(0.4); }
+    9%        { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+@keyframes dot2-appear {
+    0%, 25%   { opacity: 0; transform: scale(0.4); }
+    28%       { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+@keyframes dot3-appear {
+    0%, 44%   { opacity: 0; transform: scale(0.4); }
+    47%       { opacity: 1; transform: scale(1); }
+    78%       { opacity: 1; transform: scale(1); }
+    85%       { opacity: 0; transform: scale(0.4); }
+    100%      { opacity: 0; transform: scale(0.4); }
+}
+
+.bar-dot-1 { animation: dot1-appear 7.5s ease-in-out infinite; }
+.bar-dot-2 { animation: dot2-appear 7.5s ease-in-out infinite; }
+.bar-dot-3 { animation: dot3-appear 7.5s ease-in-out infinite; }
+
+.bar-pen { animation: pen-write 7.5s ease-in-out infinite; }
+
+@keyframes pen-write {
+    0%        { transform: translate(-2px, 11px) rotate(3deg); animation-timing-function: ease-in; }
+    3%        { transform: translate(1px, 7px) rotate(-4deg); animation-timing-function: ease-out; }
+    6%, 19%   { transform: translate(0px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+    22%       { transform: translate(9px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+    25%, 38%  { transform: translate(6px, 9px) rotate(-1deg); animation-timing-function: ease-in; }
+    41%       { transform: translate(15px, 7px) rotate(4deg); animation-timing-function: ease-out; }
+    44%, 85%  { transform: translate(12px, 9px) rotate(-1deg); }
+    100%      { transform: translate(-2px, 11px) rotate(3deg); }
+}
+
+@keyframes bar-ripple {
+    0%   { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2); opacity: 0; }
+}
+@keyframes bar-shake-periodic {
+    0%     { transform: rotate(0deg); }
+    2.14%  { transform: rotate(-12deg); }
+    4.29%  { transform: rotate(12deg); }
+    6.43%  { transform: rotate(-12deg); }
+    8.57%  { transform: rotate(12deg); }
+    10.71% { transform: rotate(0deg); }
+    100%   { transform: rotate(0deg); }
+}
+.bar-ripple {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    background: rgba(28,110,67,0.4);
+    animation: bar-ripple 2s infinite;
+}
+.bar-ripple.delay { animation-delay: 1s; }
+.bar-call-icon { animation: bar-shake-periodic 5.6s ease-in-out infinite; }
+
+/* Phones: system sans in place of Inter (metric-matched like next/font's Inter Fallback) */
+@font-face{font-family:"Inter Sys";font-weight:100 450;src:local("Roboto"),local("Roboto-Regular"),local("Arial"),local("ArialMT"),local("Helvetica");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@font-face{font-family:"Inter Sys";font-weight:451 550;src:local("Roboto Medium"),local("Roboto-Medium"),local("Arial"),local("ArialMT"),local("Helvetica");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@font-face{font-family:"Inter Sys";font-weight:551 900;src:local("Roboto Bold"),local("Roboto-Bold"),local("Arial Bold"),local("Arial-BoldMT"),local("Helvetica Bold");ascent-override:90.44%;descent-override:22.52%;line-gap-override:0%;size-adjust:107.12%}
+@media (max-width: 767px) {
+  html { --font-inter: "Inter Sys", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important; }
 }

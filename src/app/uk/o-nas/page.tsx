@@ -4,7 +4,7 @@ import { uk } from '@/lib/i18n/uk'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('uk', {
-  title: 'Про нас | Чесний сервіс комп\'ютерів і принтерів | Omobonus Вроцлав',
+  title: 'Про нас | Чесний сервіс комп\'ютерів і принтерів',
   description: 'Ми не заробляємо на вашій проблемі. Omobonus — сервіс комп\'ютерів, ноутбуків і принтерів у Вроцлаві ✔ 10+ років досвіду ✔ Діагностика за 15 хв ✔ Ремонт за 48 годин',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/uk/o-nas',
@@ -22,6 +22,7 @@ export default function UkONasPage() {
     <AboutPageTemplate
       brandCaptionText="Ремонтуємо техніку популярних брендів"
       onasHeroT={uk.onasHero}
+      heroT={uk.hero}
       advantagesT={uk.advantages}
       aboutT={uk.aboutOnas}
       teamT={uk.team}

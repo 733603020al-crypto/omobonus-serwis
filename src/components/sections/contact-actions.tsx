@@ -49,14 +49,14 @@ function Divider({ label }: { label: string }) {
   return (
     <div ref={ref} className="brush-divider-row flex items-center gap-3">
       <div
-        className="divider-line divider-line-left h-px flex-1"
+        className="divider-line divider-line-left h-px min-w-4 flex-1"
         style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
       />
-      <span className="whitespace-nowrap font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5e6bf]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
+      <span className="min-w-0 text-center [text-wrap:balance] font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5e6bf]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
         {label}
       </span>
       <div
-        className="divider-line divider-line-right h-px flex-1"
+        className="divider-line divider-line-right h-px min-w-4 flex-1"
         style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
       />
     </div>

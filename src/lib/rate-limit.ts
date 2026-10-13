@@ -16,7 +16,7 @@ const MAX_BUCKETS = 10_000
 
 const buckets = new Map<string, Bucket>()
 
-function getClientIp(request: NextRequest): string | null {
+export function getClientIp(request: NextRequest): string | null {
   // На Vercel эти заголовки выставляет платформа (клиентские значения перезаписываются)
   const realIp = request.headers.get('x-real-ip')?.trim()
   if (realIp) return realIp

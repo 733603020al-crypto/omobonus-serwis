@@ -94,9 +94,10 @@ export default function PrintedPartsTicker() {
     }
 
     const sectionObserver = new IntersectionObserver(([entry]) => {
-      isIntersecting = entry.isIntersecting
+      // ruch tylko gdy widać co najmniej połowę paska
+      isIntersecting = entry.intersectionRatio >= 0.5
       applyPlayState()
-    }, { threshold: 0 })
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
     sectionObserver.observe(section)
 
     document.addEventListener("visibilitychange", applyPlayState)

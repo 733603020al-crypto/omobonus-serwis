@@ -6,11 +6,12 @@ import { ru } from '@/lib/i18n/ru'
 import { ServicePageTemplate, type RelatedService } from '@/components/service-page-template'
 import { headingsRu, seoBlocksRu, imageAltRu, subServiceTitlesRu, seoMetadataRu, labelsRu } from '@/lib/services-meta-ru'
 import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from '@/lib/services-meta-shared'
+import { withSocialMeta } from '@/lib/social-meta'
 
 export async function generateStaticParams() {
-  return servicesRu.map(service => ({
-    slug: service.slug,
-  }))
+  return servicesRu.flatMap(service => service.slug === 'serwis-drukarek-spozywczych'
+    ? [{ slug: service.slug }, { slug: 'serwis-drukarek-spożywczych' }]
+    : [{ slug: service.slug }])
 }
 
 export async function generateMetadata({
@@ -18,7 +19,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
   const service = servicesRu.find(s => s.slug === slug)
   const seo = seoMetadataRu[slug]
 
@@ -26,7 +29,7 @@ export async function generateMetadata({
     return { title: 'Услуга не найдена' }
   }
 
-  return {
+  const meta = withSocialMeta('ru', {
     title: seo.title,
     description: seo.description,
     ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
@@ -44,19 +47,19 @@ export async function generateMetadata({
         'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       },
     },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
-      images: [
-        {
-          url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
-          width: 400,
-          height: 400,
-          alt: service.title,
-        },
-      ],
-    },
+  })
+
+  // withSocialMeta przywraca og:type/locale/siteName i twitter; obraz zostaje własny dla usługi
+  const ogImage = {
+    url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
+    alt: service.title,
+  }
+  return {
+    ...meta,
+    // Tytuł z własną marką na końcu — bez dopisywania szablonu „| Omobonus Вроцлав” z layoutu
+    ...(seo.title.endsWith('| Omobonus') ? { title: { absolute: seo.title } } : {}),
+    openGraph: { ...meta.openGraph, images: [ogImage] },
+    twitter: { ...meta.twitter, images: [ogImage.url] },
   }
 }
 
@@ -65,7 +68,9 @@ export default async function RuServicePage({
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
   const service = servicesRu.find(s => s.slug === slug)
   const heroLabels = serviceHeroLabelsRu[slug] || []
 

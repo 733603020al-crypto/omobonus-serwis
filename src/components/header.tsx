@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import manifest from '@/config/manifest'
 import { HeaderInteractive, type Locale } from '@/components/HeaderInteractive'
+import { PREMENU_SCRIPT } from '@/lib/premenu-script'
 
 export type { Locale }
 
@@ -16,14 +17,17 @@ export function Header({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-50 h-[65px] w-full border-b border-border">
       {/* Background */}
       <div className="absolute inset-0">
-        {/* Not the LCP element (Hero's background is) — loads eagerly but
-            without `priority`/fetchPriority=high, so it doesn't compete with
-            Hero's image for early bandwidth/priority-queue slots. */}
+        {/* Not the LCP element (Hero's background is) — loads eagerly but at
+            fetchPriority="low", so its browser-auto preload doesn't compete
+            with Hero's image for early bandwidth/priority-queue slots
+            (a plain `loading="eager"` image still gets a default-high-priority
+            preload otherwise). */}
         <Image
           src={manifest.Background_1}
           alt=""
           fill
           loading="eager"
+          fetchPriority="low"
           sizes="100vw"
           quality={40}
           className="object-cover object-center"
@@ -32,6 +36,8 @@ export function Header({ locale }: { locale: Locale }) {
       </div>
 
       <HeaderInteractive locale={locale} />
+      {/* Makes the hamburger work before hydration (see premenu-script.ts). */}
+      <script dangerouslySetInnerHTML={{ __html: PREMENU_SCRIPT }} />
     </header>
   )
 }

@@ -1,98 +1,45 @@
-'use client'
-
-import { useRef, useEffect } from 'react'
-import Image from 'next/image'
-import manifest from '@/config/manifest'
-
-interface StatItem {
-  num: string
-  pre?: string
-  unit: string
-  label: string
-}
+import { getImageProps } from 'next/image'
+import { HeroTrust, type HeroT } from '@/components/sections/hero'
 
 export interface ONasHeroT {
   h1Line1: string
   h1Line2: string
-  sub: string
-  stats: readonly StatItem[]
 }
 
 const PL: ONasHeroT = {
   h1Line1: 'Nie bogacimy się na',
   h1Line2: 'Twoim problemie',
-  sub: 'Od ponad 10 lat naprawiamy komputery, laptopy i drukarki we Wrocławiu',
-  stats: [
-    { num: '10', unit: '+', label: 'lat doświadczenia' },
-    { num: '2', pre: 'do', unit: 'h', label: 'przyjazd we Wrocławiu' },
-    { num: '15', unit: 'min', label: 'wstępna diagnoza' },
-    { num: '48', pre: 'do', unit: 'h', label: 'większość napraw' },
-  ],
 }
 
-export function ONasHero({ t }: { t?: ONasHeroT } = {}) {
-  const d = t ?? PL
-  const subRef = useRef<HTMLParagraphElement>(null)
+const heroCommon = { alt: '', fill: true, sizes: '100vw', priority: true } as const
+const { props: { srcSet: heroDesktopSrcSet } } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-desktop.webp', quality: 32 })
+const { props: heroMobileProps } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-mobile.webp', quality: 60 })
 
-  useEffect(() => {
-    const el = subRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.remove('fade-slide-init')
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+export function ONasHero({ t, heroT, locale = 'pl' }: { t?: ONasHeroT; heroT?: HeroT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
+  const d = t ?? PL
 
   return (
-    <section className="relative min-h-[calc(100svh-65px)] flex items-center justify-center overflow-hidden">
-      <Image
-        src={manifest.omobonus_hero}
-        alt=""
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        quality={60}
-        className="object-cover object-center z-0"
-      />
-      <div className="absolute inset-0 z-[1] bg-black/50" />
+    <section className="relative min-h-[calc(100svh-65px)] flex items-center justify-center">
+      {/* To samo tło co na stronie głównej (hero.tsx): od 768px ostra wersja
+          1920px, na telefonie plik mobilny. Przedłużone w dół i rozpuszczone
+          jak na głównej; od 1024px znika na wysokości „Skąd nazwa” (onas-bg-fade). */}
+      <div className="absolute inset-x-0 top-0 overflow-visible hero-bg-fade onas-bg-fade">
+        <picture>
+          <source media="(min-width: 768px)" srcSet={heroDesktopSrcSet} sizes="100vw" />
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+          <img {...heroMobileProps} fetchPriority="high" className="object-cover object-center" />
+        </picture>
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
         <h1
-          className="font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto mb-[30px]"
-          style={{ fontSize: 'clamp(32px,8.5vw,60px)' }}
+          className="font-cormorant font-bold leading-[1.1] text-[#ffffff] max-w-[900px] mx-auto text-[clamp(32px,10.5vw,40px)] md:text-[52px]"
         >
           {d.h1Line1} <br /> {d.h1Line2}
         </h1>
-        <p
-          ref={subRef}
-          className="fade-slide-init font-cormorant italic font-normal text-[#cbb27c] leading-[1.55] max-w-[60ch] mx-auto mb-10 md:whitespace-nowrap md:max-w-none"
-          style={{ fontSize: 'clamp(18px,2.1vw,24px)' }}
-        >
-          {d.sub}
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {d.stats.map((s, i) => (
-            <div
-              key={i}
-              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden py-8 px-5 text-center transition-transform duration-[180ms] hover:-translate-y-1"
-            >
-              <div className="font-cormorant font-bold text-[#e6cc82] leading-none mb-1">
-                {s.pre && (
-                  <span className="text-[hsl(45_50%_70%)] text-lg mr-1 font-normal">{s.pre}</span>
-                )}
-                <span style={{ fontSize: 'clamp(40px,5vw,60px)' }}>{s.num}</span>
-                <small className="text-xl">{s.unit}</small>
-              </div>
-              <div className="text-base text-[hsl(45_18%_82%)] font-inter mt-3">
-                {s.label}
-              </div>
-            </div>
-          ))}
+        {/* Ten sam blok co pod H1 na stronie głównej */}
+        <div className="flex flex-col items-center">
+          <HeroTrust t={heroT} locale={locale} animatedBadge />
         </div>
       </div>
     </section>

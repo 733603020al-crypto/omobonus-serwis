@@ -1,31 +1,38 @@
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import type { ReactNode } from 'react'
+import { GOLD_CTA, GOLD_CTA_SIZE } from '@/components/ui/gold-cta'
 
 interface HomeCtaProps {
   heading: ReactNode
   text: ReactNode
+  /** Krótsza wersja tylko na telefon (<768px); desktop bez zmian. */
+  headingMobile?: ReactNode
+  textMobile?: ReactNode
   button: ReactNode
   href: string
 }
 
-export function HomeCta({ heading, text, button, href }: HomeCtaProps) {
+const phoneOr = (desktop: ReactNode, phone?: ReactNode) =>
+  phone ? (<><span className="md:hidden">{phone}</span><span className="max-md:hidden">{desktop}</span></>) : desktop
+
+export function HomeCta({ heading, text, headingMobile, textMobile, button, href }: HomeCtaProps) {
   return (
     <section className="relative z-10 pt-6 pb-2 md:pt-8 md:pb-3">
       <div className="max-w-3xl mx-auto px-6 text-center text-white space-y-1">
-        <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-white">
-          {heading}
+        <h2 className="text-[22px] md:text-3xl font-cormorant font-bold leading-tight text-white">
+          {phoneOr(heading, headingMobile)}
         </h2>
-        <p className="font-serif text-base md:text-lg font-normal leading-relaxed text-[#bfa76a]">
-          {text}
+        <p className="font-serif text-[15px] md:text-lg font-normal leading-relaxed text-[#bfa76a]">
+          {phoneOr(text, textMobile)}
         </p>
         <div className="flex justify-center">
           <Link
             href={href}
             prefetch={false}
-            className="inline-flex items-center justify-center gap-1 min-w-[180px] rounded-full px-[28.8px] py-[14.4px] font-cormorant font-semibold text-[19px] transition-all duration-300 ease-out backdrop-blur-[2px] text-[#bfa76a] border border-[#bfa76a]/80 bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
+            className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
           >
-            {button}
+            <span className="gold-text-sweep">{button}</span>
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>

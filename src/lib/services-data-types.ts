@@ -41,6 +41,7 @@ export interface PricingSection {
   intro?: string // Tekst wprowadzający wyświetlany na początku otwartej sekcji, przed tabelą
   priceFormula?: string // Wzór wyliczenia ceny końcowej, wyświetlany pod tabelą (biały, styl zwykłej pozycji)
   example?: string // Jedna mała złota linia z przykładem wyliczenia, pod priceFormula
+  notes?: string[] // Uwagi/warunki pod tabelą sekcji (małe złote linie, **pogrubienie**)
 }
 
 export interface PriceTooltipCategory {

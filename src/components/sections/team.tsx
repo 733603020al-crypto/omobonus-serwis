@@ -37,6 +37,7 @@ const PL = {
 
 export function Team({ t }: { t?: TeamT } = {}) {
   const eyebrow = t?.eyebrow ?? PL.eyebrow
+  const h2 = t?.h2 ?? PL.h2
   const members = t?.members ?? PL_MEMBERS
   const showUmka = true
   const umka = t?.umka ?? { name: 'Umka', role: 'Nasz mały pomocnik', phrase: 'Wita klientów i dba o dobrą atmosferę' }
@@ -44,48 +45,54 @@ export function Team({ t }: { t?: TeamT } = {}) {
   return (
     <section className="pt-10 md:pt-16">
       <div className="max-w-5xl mx-auto px-6">
-        <FadeSlideP className="brush-underline text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-8">
+        <FadeSlideP className="brush-underline text-center text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] mb-3">
           {eyebrow}
         </FadeSlideP>
+        <h2
+          className="font-cormorant font-semibold text-center text-[hsl(45_25%_95%)] leading-[1.12] mx-auto mb-[28px] text-[clamp(26px,7.7vw,30px)] md:text-[40px]"
+          style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
+        >
+          {h2}
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {members.map((m, i) => (
             <article
               key={m.name}
-              className="services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden pt-5 pb-3 px-7 text-center"
+              className="bg-black/60 bg-gradient-to-b from-[rgba(191,167,106,0.24)] to-[rgba(60,45,25,0.32)] backdrop-blur-[6px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] hover:from-[rgba(191,167,106,0.32)] hover:to-[rgba(60,45,25,0.40)] transition-all duration-300 ease-out rounded-[10px] overflow-hidden pt-5 pb-3 px-7 text-center"
             >
               <div
                 className="w-[168px] h-[168px] rounded-full flex items-center justify-center text-white font-cormorant text-5xl font-bold mx-auto mb-[12px] border-2 border-[rgba(201,162,75,0.5)] overflow-hidden"
                 style={{
                   background: m.avatar ? 'transparent' : GRADIENTS[i],
-                  boxShadow: '0 0 0 6px rgba(201,162,75,0.1), 0 14px 30px rgba(0,0,0,0.4)',
+                  boxShadow: '0 1px 3px rgba(0,0,0,.25)',
                 }}
               >
                 {m.avatar ? (
                   <Image src={m.avatar} alt={m.name} width={168} height={168} sizes="168px" className="w-full h-full object-cover" />
                 ) : m.initial}
               </div>
-              <h3 className="text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">{m.name}</h3>
-              <p className="text-base text-[#cbb27c] font-cormorant italic">{m.role}</p>
+              <h3 className="text-[24px] font-cormorant font-semibold text-[#bfa76a] mb-[2px]">{m.name}</h3>
+              <p className="text-base text-[hsl(45_18%_82%)] font-cormorant italic">{m.role}</p>
             </article>
           ))}
         </div>
 
         {showUmka && (
-          <div className="mt-6 services-card-bg border-2 border-[rgba(200,169,107,0.5)] hover:border-[rgba(200,169,107,0.85)] rounded-[10px] overflow-hidden px-7 py-[10px] flex flex-col md:flex-row items-center gap-4">
+          <div className="mt-6 bg-black/60 bg-gradient-to-b from-[rgba(191,167,106,0.24)] to-[rgba(60,45,25,0.32)] backdrop-blur-[6px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] hover:from-[rgba(191,167,106,0.32)] hover:to-[rgba(60,45,25,0.40)] transition-all duration-300 ease-out rounded-[10px] overflow-hidden px-7 py-[10px] flex flex-col md:flex-row items-center gap-4">
             <div
               className="w-[88px] h-[88px] md:w-[100px] md:h-[100px] rounded-full flex-shrink-0 overflow-hidden border-2 border-[rgba(201,162,75,0.5)]"
-              style={{ boxShadow: '0 0 0 6px rgba(201,162,75,0.1), 0 14px 30px rgba(0,0,0,0.4)' }}
+              style={{ boxShadow: '0 1px 3px rgba(0,0,0,.25)' }}
             >
               <Image src="/images/Umka_site_400x400.webp" alt="Umka" width={100} height={100} sizes="100px" className="w-full h-full object-cover" />
             </div>
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="flex items-end gap-2.5 text-[24px] font-cormorant font-semibold text-[hsl(45_25%_95%)] mb-[2px]">
+              <h3 className="flex items-end gap-2.5 text-[24px] font-cormorant font-semibold text-[#bfa76a] mb-[2px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/umka_paw_dark.webp" alt="" className="umka-paw-img" aria-hidden="true" loading="lazy" style={{ transform: 'translateY(-14px)' }} />
                 {umka.name ?? 'Umka'}
               </h3>
-              <p className="text-base text-[#cbb27c] font-cormorant italic">
+              <p className="text-base text-[hsl(45_18%_82%)] font-cormorant italic">
                 {umka.role}. {umka.phrase}
               </p>
             </div>

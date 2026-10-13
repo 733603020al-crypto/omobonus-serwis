@@ -1,14 +1,56 @@
-import type { ServicePageLabels } from '@/components/service-page-template'
+import type { ServicePageHeadings, ServicePageLabels } from '@/components/service-page-template'
 
-export const headings: Record<string, { h1: string; h2?: string }> = {
+export const headings: Record<string, ServicePageHeadings> = {
+  'serwis-niszczarek': {
+    h1: 'Serwis i naprawa niszczarek we Wrocławiu',
+    h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
+  },
+  'naprawa-zasilaczy-ups': {
+    h1: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
+    lines: ['Serwis i naprawa', 'zasilaczy awaryjnych UPS', 'we Wrocławiu'],
+    fitMobile: true,
+    h2: '(APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru…)',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    h1: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek do kart plastikowych', 'we Wrocławiu'],
+    fitMobile: true,
+    h2: '(Evolis, Zebra, HID Fargo, Magicard, Entrust Datacard, Matica, IDP Smart, HiTi, DASCOM, Swiftcolor, XID, EDIsecure...)',
+  },
+  'serwis-drukarek-dtg': {
+    h1: 'Serwis i naprawa drukarek DTG we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek DTG', 'we Wrocławiu'],
+    tagline: 'druk bezpośrednio na odzieży (Direct to Garment)',
+    accent: 'DTG',
+    h2: '(Epson, Brother, Kornit Digital, Ricoh, Polyprint, aeoon Technologies, M&R, ROQ, OmniPrint, ColDesi, DTG Digital / Pigment.inc, AnaJet, Roland DG, Mimaki, Azonprinter, Resolute DTG, Lawson Screen & Digital, Durst, …)',
+  },
+  'serwis-drukarek-dtf': {
+    h1: 'Serwis i naprawa drukarek DTF we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek DTF', 'we Wrocławiu'],
+    tagline: 'druk na folii z transferem (Direct to Film)',
+    accent: 'DTF',
+    h2: '(Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec, DTF Station / Prestige, …)',
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    h1: 'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek sublimacyjnych', 'we Wrocławiu'],
+    h2: '(Epson, Mimaki, Mutoh, Roland DG, Sawgrass, HP, Brother, …)',
+  },
+  'serwis-drukarek-spozywczych': {
+    h1: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
+    lines: ['Serwis i naprawa', 'drukarek spożywczych', 'we Wrocławiu'],
+    tagline: 'druk na tortach, ciastkach i produktach spożywczych',
+    h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
+  },
+
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
-    h2: '(Zebra, Dymo, Godex, Sato, Brother i inne)',
+    h2: '(Zebra, TSC, Toshiba TEC, Honeywell, GoDEX, SATO, Brother, DYMO, Citizen, BIXOLON, Epson, cab, Star Micronics, OKI, Argox, …)',
   },
 
   'serwis-laptopow': {
     h1: 'Serwis i naprawa laptopów we Wrocławiu',
-    h2: '', // '(HP, Dell, Lenovo, Acer, Asus, Apple, MSI, Fujitsu Siemens, ...) ',
+    h2: '', // '(Microsoft, Dell, HP, Lenovo, Acer, Asus, MSI, Fujitsu, Samsung, Toshiba, Huawei, LG, Gigabyte, Razer, HONOR, Xiaomi, MEDION, Dynabook, VAIO, Panasonic, Framework, CHUWI, …)',
   },
 
   'naprawa-drukarek': {
@@ -18,6 +60,7 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-komputerow-stacjonarnych': {
     h1: 'Serwis i naprawa komputerów stacjonarnych',
+    h2: '', // '(HP, Dell, Lenovo, Asus, Acer, MSI, Microsoft, Samsung, Gigabyte, Alienware, Fujitsu, Corsair, ZOTAC, MINISFORUM, Framework, …)',
   },
 
   'outsourcing-it': {
@@ -26,17 +69,17 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-drukarek-laserowych': {
     h1: 'Serwis i naprawa drukarek laserowych',
-    h2: '(HP, Epson, Brother, Canon, Samsung, Xerox, Lexmark, OKI, Toshiba, Sharp, Ricoh ...)',
+    h2: '(HP, Samsung, Canon, Brother, Xerox, Ricoh, Kyocera, Konica Minolta, Sharp, Lexmark, Pantum, Toshiba, OKI, Epson, Fujifilm, DEVELOP, UTAX, Sindoh, …)',
   },
 
   'serwis-drukarek-atramentowych': {
     h1: 'Serwis drukarek atramentowych',
-    h2: '(HP, Epson, Canon, Brother, Lexmark, ...)',
+    h2: '(HP, Canon, Epson, Brother, Lexmark, Ricoh, RISO, Xerox, …)',
   },
 
   'serwis-drukarek-3d': {
     h1: 'Serwis i naprawa drukarek 3D we Wrocławiu',
-    h2: '(Bambu Lab, Creality, Anycubic, Flashforge, Prusa Research, Formlabs, Elegoo, QIDI Tech, Zortrax, Flying Bear, HBot...)',
+    h2: '(Bambu Lab, Prusa Research, Creality, Anycubic, Elegoo, Formlabs, Ultimaker, Flashforge, Snapmaker, QIDI Tech, MakerBot, Raise3D, Zortrax, Sovol, Artillery, Phrozen, BCN3D, Peopoly, UniFormation, Tronxy, Flying Bear, HBot 3D, …)',
   },
 
   // Tymczasowa kopia 'serwis-drukarek-3d' — jedyna świadomie inna wartość na tym etapie to H1
@@ -47,12 +90,12 @@ export const headings: Record<string, { h1: string; h2?: string }> = {
 
   'serwis-plotterow': {
     h1: 'Serwis i naprawa ploterów drukujących we Wrocławiu',
-    h2: '(plotery HP, Canon, Epson i inne)',
+    h2: '(HP, Canon, Epson, Xerox, Ricoh, Mimaki, Roland DG, Mutoh, OKI, Fujifilm, Agfa, KIP, Durst, swissQprint, …)',
   },
 
   'serwis-drukarek-iglowych': {
     h1: 'Serwis drukarek igłowych (Matrycowych)',
-    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics...)',
+    h2: '(Epson, OKI, Bixolon, Citizen, Star Micronics, Tally DASCOM, Printronix, Fujitsu, Olivetti, Panasonic, TallyGenicom, …)',
   },
 
   'wynajem-drukarek': {
@@ -70,6 +113,55 @@ export type SeoBlock = {
 }
 
 export const seoBlocks: Record<string, SeoBlock> = {
+  'serwis-niszczarek': {
+    items: [
+      'Konserwacja i olejenie, usuwanie zacięć, naprawa mechanizmu tnącego, przekładni, silnika i czujników niszczarki.',
+      'Twoją niszczarkę możemy wstępnie sprawdzić po dostarczeniu do serwisu — wstępna diagnoza trwa do 15 min.',
+      'Niszczarki małe, biurowe i profesjonalne: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg i inne.',
+    ],
+  },
+  'naprawa-zasilaczy-ups': {
+    items: [
+      'Wymiana akumulatorów, diagnostyka, naprawa elektroniki i układu ładowania zasilaczy awaryjnych UPS.',
+      'Twój zasilacz UPS — podamy koszt naprawy w 15 min.',
+      'Zasilacze UPS do domu, biura i serwerowni: APC, Eaton, Ever, Vertiv i inne.',
+    ],
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    items: [
+      'Czyszczenie, konserwacja, wymiana głowicy i rolek, naprawa modułów laminacji, retransferu i kodowania kart.',
+      'Twoja drukarka do kart plastikowych — wstępnie ocenimy problem w 15 min.',
+      'Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne.',
+    ],
+  },
+  'serwis-drukarek-dtg': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
+      'Twoja drukarka DTG do nadruku na koszulkach — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek DTG dla drukarni tekstylnych i firm z nadrukiem na odzieży.',
+    ],
+  },
+  'serwis-drukarek-dtf': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej.',
+      'Twoja drukarka DTF do druku na folii — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek DTF dla drukarni, firm z nadrukiem na odzieży i produkcji transferów.',
+    ],
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    items: [
+      'Naprawa drukarek sublimacyjnych dla drukarni, producentów gadżetów, odzieży sportowej i tekstyliów',
+      'Udrażnianie i regeneracja głowic w drukarkach i ploterach sublimacyjnych',
+      'Konserwacja drukarek sublimacyjnych — stacja serwisowa, układ atramentowy, mechanika',
+    ],
+  },
+  'serwis-drukarek-spozywczych': {
+    items: [
+      'Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa drukarek do tortów, ciastek i opłatków z jadalnym tuszem.',
+      'Twoja drukarka spożywcza do nadruku na tortach i ciastkach — wstępnie ocenimy problem w 15 min.',
+      'Serwis drukarek spożywczych we Wrocławiu dla cukierni, piekarni i pracowni tortów — także drukarki cukiernicze Canon, Epson i Brother z jadalnym tuszem.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -87,13 +179,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
   'serwis-laptopow': {
     items: ['Diagnostyka, czyszczenie i konserwacja laptopa po zalaniu, instalacja oprogramowania.',
       'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
-      'Wymiana plyty glownej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania).',
+      'Wymiana płyty głównej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania).',
       'baterii, zasilacza, matrycy (ekranu), obudowy, zawiasów, klawiatury (klawisza), ...',]
   },
   'serwis-komputerow-stacjonarnych': {
     items: ['Diagnostyka, czyszczenie i konserwacja komputera, instalacja oprogramowania.',
       'Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików.',
-      'Wymiana plyty glownej, karty sieciowejю dysku, pamięci ram, pasty termoprzewodzącej, ',
+      'Wymiana płyty głównej, karty sieciowej, dysku, pamięci ram, pasty termoprzewodzącej, ',
       'wentylatora, portu usb (zasilania), zasilacza, obudowy, ...',]
   },
   'outsourcing-it': {
@@ -141,6 +233,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
 
 // Opis alternatywny obrazu hero dla każdej usługi
 export const imageAlt: Record<string, string> = {
+  'serwis-niszczarek': 'Serwis i naprawa niszczarek',
+  'naprawa-zasilaczy-ups': 'Zasilacz awaryjny UPS',
+  'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
+  'serwis-drukarek-dtg': 'Drukarka DTG do nadruku na koszulkach',
+  'serwis-drukarek-dtf': 'Drukarka DTF do druku na folii',
+  'serwis-drukarek-sublimacyjnych': 'Drukarka sublimacyjna — serwis i naprawa we Wrocławiu',
+  'serwis-drukarek-spozywczych': 'Drukarka spożywcza do druku na tortach i ciastkach',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -157,12 +256,46 @@ export const imageAlt: Record<string, string> = {
 }
 
 // Nadpisania tytułów na kafelkach usług powiązanych (sekcja "naprawa-drukarek")
+// Short card names on /uslugi/naprawa-drukarek, same as the home service cards.
 export const subServiceTitles: Record<string, string> = {
-  'serwis-drukarek-termicznych': 'Serwis i naprawa drukarek etykiet',
-  'serwis-drukarek-laserowych': 'Serwis Drukarek Laserowych',
+  'serwis-drukarek-laserowych': 'Drukarek laserowych',
+  'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
+  'serwis-plotterow': 'Ploterów',
+  'serwis-drukarek-termicznych': 'Drukarek etykiet',
+  'serwis-drukarek-iglowych': 'Drukarek igłowych',
+  'serwis-drukarek-3d': 'Drukarek 3D',
+  'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
 }
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
+  'serwis-niszczarek': {
+    title: 'Serwis i naprawa niszczarek — cennik',
+    description: 'Naprawa niszczarek we Wrocławiu: olejenie, usuwanie zacięć, wymiana noży, silnik i czujniki. Fellowes, HSM, Kobra, Rexel. Diagnoza gratis przy naprawie.',
+  },
+  'naprawa-zasilaczy-ups': {
+    title: 'Naprawa UPS i zasilaczy awaryjnych',
+    description: 'Naprawa zasilaczy UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, elektronika. APC, Eaton, Ever, Vertiv. Pełny cennik bez ukrytych kosztów.',
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    title: 'Serwis drukarek do kart plastikowych',
+    description: 'Naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust. Koszt naprawy ustalamy przed jej wykonaniem.',
+  },
+  'serwis-drukarek-dtg': {
+    title: 'Serwis i naprawa drukarek DTG',
+    description: 'Naprawa drukarek DTG Epson, Brother, Kornit we Wrocławiu: udrażnianie głowicy, biały atrament, stacja serwisowa. Koszt naprawy znasz z góry.',
+  },
+  'serwis-drukarek-dtf': {
+    title: 'Serwis i naprawa drukarek DTF',
+    description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    title: 'Serwis i naprawa drukarek sublimacyjnych',
+    description: 'Naprawa drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh, Roland: udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Wrocław.',
+  },
+  'serwis-drukarek-spozywczych': {
+    title: 'Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus',
+    description: 'Naprawa drukarek spożywczych we Wrocławiu: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego. Koszt naprawy znasz z góry.',
+  },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
     description: '✔ Serwis i naprawa laptopów wszystkich marek we Wrocławiu ✔ Wymiana matrycy, dysku, baterii, klawiatury ✔ Diagnoza w 15 min ✔ Umów się już dziś! ☎ 793 759 262',
@@ -174,7 +307,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
 
   },
   'outsourcing-it': {
-    title: 'Outsourcing IT Wrocław | Omobonus obsługa informatyczna',
+    title: 'Outsourcing IT | obsługa informatyczna',
     description: 'Outsourcing IT Wrocław – obsługa informatyczna firm, wsparcie IT, helpdesk, administracja sieci i serwerów, stała opieka techniczna dla firm.',
 
   },
@@ -211,7 +344,7 @@ export const seoMetadata: Record<string, { title: string; description: string }>
 
   },
   'wynajem-drukarek': {
-    title: 'Wynajem (dzierżawa) drukarek i kerokopiarek',
+    title: 'Wynajem (dzierżawa) drukarek i kserokopiarek',
     description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ dostępność od ręki! ✔ Zadzwoń i zamów! ☎ 793 759 262',
 
   },
@@ -237,8 +370,50 @@ export const labels: ServicePageLabels = {
   fadeSlideDruk3DZamowienie: 'Pełny wykaz usług i cen, bez ukrytych kosztów (nie "cena od 50 zł" lub "cena do uzgodnienia")',
   relatedCta: 'Zobacz cennik',
   relatedIconAltSuffix: 'Wrocław - ikona usługi serwisowej',
-  ctaHeading: 'Masz problem z komputerem lub drukarką?',
+  ctaHeading: 'Masz problem ze swoim urządzeniem?',
+  ctaHeadingBySlug: {
+    'serwis-laptopow': 'Masz problem z laptopem?',
+    'serwis-komputerow-stacjonarnych': 'Masz problem z komputerem?',
+    'naprawa-drukarek': 'Masz problem z drukarką?',
+    'serwis-drukarek-laserowych': 'Masz problem z drukarką laserową?',
+    'serwis-drukarek-atramentowych': 'Masz problem z drukarką atramentową?',
+    'serwis-plotterow': 'Masz problem z ploterem?',
+    'serwis-drukarek-termicznych': 'Masz problem z drukarką termiczną?',
+    'serwis-drukarek-iglowych': 'Masz problem z drukarką igłową?',
+    'serwis-drukarek-3d': 'Masz problem z drukarką 3D?',
+    'serwis-niszczarek': 'Masz problem z niszczarką?',
+    'naprawa-zasilaczy-ups': 'Masz problem z UPS-em?',
+    'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
+    'serwis-drukarek-dtg': 'Masz problem z drukarką DTG?',
+    'serwis-drukarek-dtf': 'Masz problem z drukarką DTF?',
+    'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką sublimacyjną?',
+    'serwis-drukarek-spozywczych': 'Masz problem z drukarką spożywczą?',
+    'wynajem-drukarek': 'Masz problem z drukarką?',
+    'drukarka-zastepcza': 'Masz problem z drukarką?',
+  },
   ctaText: 'Napisz lub zadzwoń — podpowiemy, od czego zacząć',
+  ctaHeadingMobile: 'Masz problem z urządzeniem?',
+  ctaHeadingMobileBySlug: {
+    'serwis-laptopow': 'Masz problem z laptopem?',
+    'serwis-komputerow-stacjonarnych': 'Masz problem z komputerem?',
+    'naprawa-drukarek': 'Masz problem z drukarką?',
+    'serwis-drukarek-laserowych': 'Masz problem z drukarką?',
+    'serwis-drukarek-atramentowych': 'Masz problem z drukarką?',
+    'serwis-drukarek-termicznych': 'Masz problem z drukarką?',
+    'serwis-drukarek-iglowych': 'Masz problem z drukarką?',
+    'serwis-drukarek-3d': 'Masz problem z drukarką?',
+    'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką?',
+    'serwis-drukarek-dtg': 'Masz problem z drukarką?',
+    'serwis-drukarek-dtf': 'Masz problem z drukarką?',
+    'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką?',
+    'serwis-drukarek-spozywczych': 'Masz problem z drukarką?',
+    'wynajem-drukarek': 'Masz problem z drukarką?',
+    'drukarka-zastepcza': 'Masz problem z drukarką?',
+    'serwis-plotterow': 'Masz problem z ploterem?',
+    'serwis-niszczarek': 'Masz problem z niszczarką?',
+    'naprawa-zasilaczy-ups': 'Masz problem z zasilaczem UPS?',
+  },
+  ctaTextMobile: 'Napisz lub zadzwoń — znajdziemy rozwiązanie!',
   ctaButton: 'Szybki kontakt',
   ctaHref: '/kontakt',
   drukarkaZastepczaNote: (

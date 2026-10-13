@@ -47,11 +47,19 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
             document.removeEventListener('click', onClick)
             document.removeEventListener('submit', onSubmit)
             clearTimeout(timer)
+            if (idle !== undefined) window.cancelIdleCallback?.(idle)
         }
 
         document.addEventListener('click', onClick, { passive: true })
         document.addEventListener('submit', onSubmit, { passive: true })
-        const timer = setTimeout(load, FALLBACK_DELAY_MS)
+        // After the timer GTM (~1–3 s of main-thread work with Ads, GA4 and
+        // Clarity) waits for an idle moment, so it doesn't land in the middle of
+        // a scroll or tap; conversion clicks above still load it immediately.
+        let idle: number | undefined
+        const timer = setTimeout(() => {
+            if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(load, { timeout: 2000 })
+            else load()
+        }, FALLBACK_DELAY_MS)
 
         return cleanup
     }, [gtmId])

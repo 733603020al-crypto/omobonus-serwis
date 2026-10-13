@@ -31,7 +31,9 @@ function getRating() {
     }
 }
 
-function getReviews(): Review[] {
+// Only the page's language reaches the client: the carousel falls back to
+// `text` / `relative_time_description` when the _uk/_ru fields are empty.
+function getReviews(locale: "pl" | "uk" | "ru"): Review[] {
     try {
         const filePath = path.join(process.cwd(), "data", "reviews-feed.json")
         const file = fs.readFileSync(filePath, "utf-8")
@@ -44,20 +46,18 @@ function getReviews(): Review[] {
                 author_name: r.author_name,
                 rating: r.rating,
                 profile_photo_url: r.profile_photo_url,
-                text: r.text,
-                text_uk: r.text_uk ?? null,
-                text_ru: r.text_ru ?? null,
-                relative_time_description: r.relative_time_description,
-                relative_time_uk: r.relative_time_uk ?? null,
-                relative_time_ru: r.relative_time_ru ?? null,
+                text: (locale === "uk" ? r.text_uk : locale === "ru" ? r.text_ru : null) || r.text,
+                relative_time_description:
+                    (locale === "uk" ? r.relative_time_uk : locale === "ru" ? r.relative_time_ru : null) ||
+                    r.relative_time_description,
             }))
     } catch {
         return []
     }
 }
 
-export default function GoogleReviews() {
+export default function GoogleReviews({ locale = "pl" }: { locale?: "pl" | "uk" | "ru" }) {
     const { rating, totalReviews } = getRating()
-    const reviews = getReviews()
+    const reviews = getReviews(locale)
     return <GoogleReviewsCarousel reviews={reviews} rating={rating} totalReviews={totalReviews} />
 }

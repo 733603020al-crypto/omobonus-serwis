@@ -4,6 +4,13 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// Локально (next dev) браузер не должен запоминать файлы: имена чанков и
+// картинок там не меняются после правок, и годовой immutable-кэш показывал
+// старый код/картинки даже после Ctrl+Shift+R. На продакшене — как было.
+const LONG_CACHE = process.env.NODE_ENV === 'development'
+  ? 'no-store'
+  : 'public, max-age=31536000, immutable'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -31,11 +38,21 @@ const nextConfig = {
     // увеличиваем TTL для оптимизированных картинок Next.js
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 дней
 
-    qualities: [40, 60, 75, 85, 90, 100],
+    qualities: [32, 40, 60, 75, 85, 90, 100],
   },
 
   compress: true,
   poweredByHeader: false,
+
+  // CSS встраивается в HTML (<style>) вместо отдельных <link>: на мобильных
+  // убирает 3 блокирующих запроса перед первой отрисовкой. Стили те же и в
+  // том же порядке, поэтому вид страниц не меняется.
+  experimental: {
+    inlineCss: true,
+    // Корневая 404 как app/global-not-found.tsx: иначе app/not-found.tsx
+    // вместе со всем globals.css встраивается в данные каждой страницы.
+    globalNotFound: true,
+  },
 
   async headers() {
     return [
@@ -45,7 +62,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
       },
@@ -56,7 +73,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: LONG_CACHE,
           },
         ],
       },

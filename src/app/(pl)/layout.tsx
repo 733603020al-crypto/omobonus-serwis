@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
 /* =========================
    Fonts
@@ -14,7 +15,8 @@ import { ScrollToTop } from '@/components/ScrollToTop'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
+  // latin-ext: polskie znaki (ą ę ł ś ż) w nagłówkach — od razu w preload
+  subsets: ['latin', 'latin-ext'],
   display: 'swap',
   variable: '--font-cormorant',
 })
@@ -23,15 +25,8 @@ const inter = Inter({
   weight: ['400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
+  preload: false,
   variable: '--font-inter',
-})
-
-/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
-const lora = Lora({
-  weight: ['400', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-lora',
 })
 
 /* =========================
@@ -139,7 +134,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="pl"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -170,6 +165,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
         <ScrollToTop />
+        <GoldAnimationPause />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
@@ -187,8 +183,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Mobile-only bottom quick-action bar */}
         <MobileActionBar />
 
-        <Script
-          id="json-ld"
+        {/* Обычный тег, а не next/script: разметка должна быть в исходном HTML без выполнения JS */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

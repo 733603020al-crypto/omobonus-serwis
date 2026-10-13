@@ -20,11 +20,14 @@ export function GoogleRatingBadge({
   ratingLabel = 'Google Rating',
   locale = 'pl',
   ariaLabel = 'Zobacz wszystkie opinie Omobonus w Google',
+  animated = false,
 }: {
   className?: string
   ratingLabel?: string
   locale?: 'pl' | 'uk' | 'ru'
   ariaLabel?: string
+  /** Bieżący blik po ramce i złotych napisach, jak na przyciskach „Więcej o nas” */
+  animated?: boolean
 } = {}) {
   const { rating, total } = getRatingData()
   if (rating === null) return null
@@ -32,7 +35,7 @@ export function GoogleRatingBadge({
   const trustLabel = total !== null ? googleReviewsI18n[locale].basedOnReviews(total) : ''
 
   const shell =
-    `relative group flex items-center gap-2 md:gap-3 rounded-lg border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-[2px] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] cursor-pointer ${className}`
+    `relative group flex items-center gap-2 md:gap-3 rounded-lg border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] bg-[#bfa76a]/10 shadow-[0_0_20px_rgba(191,167,106,0.35)] px-3 py-1.5 md:px-4 md:py-2 backdrop-blur-[2px] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)] cursor-pointer${animated ? ' gold-border-flow gold-border-flow-2' : ''} ${className}`
 
   return (
     <a
@@ -68,18 +71,18 @@ export function GoogleRatingBadge({
 
       <div className="flex flex-col leading-none text-left">
         <span className="text-[11px] md:text-[12px] text-[#bfa76a] font-sans font-normal tracking-normal">
-          {ratingLabel}
+          <span className={animated ? 'gold-text-sweep' : undefined}>{ratingLabel}</span>
         </span>
         <div className="flex items-center gap-1 mt-1 md:mt-1.5">
           <span className="font-sans text-[20px] md:text-[24px] font-bold text-[#bfa76a]">
-            {rating.toFixed(1)}
+            <span className={animated ? 'gold-text-sweep' : undefined}>{rating.toFixed(1)}</span>
           </span>
           <span className="text-[#f3df9a] text-[15px] md:text-[18px] leading-none tracking-tight">
             {'★★★★★'}
           </span>
         </div>
         <span className="mt-1 md:mt-1.5 text-[11px] md:text-[12px] text-white/75 font-sans tracking-wide">
-          {trustLabel}
+          <span className={animated ? 'gold-text-sweep text-sweep-white' : undefined}>{trustLabel}</span>
         </span>
       </div>
     </a>

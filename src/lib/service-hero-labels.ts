@@ -29,6 +29,51 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Wymiana tonera',
     ],
 
+    'serwis-drukarek-do-kart-plastikowych': [
+        'Zacina karty',
+        'Linie na nadruku',
+        'Błąd taśmy',
+        'Nie koduje kart',
+    ],
+
+    'serwis-drukarek-dtg': [
+        'Zapchana głowica',
+        'Pasy na nadruku',
+        'Biały atrament',
+        'Konserwacja DTG',
+    ],
+    'serwis-drukarek-dtf': [
+        'Zapchana głowica',
+        'Pasy na wydruku',
+        'Biały atrament',
+        'Konserwacja DTF',
+    ],
+    'serwis-drukarek-sublimacyjnych': [
+        'Udrażnianie głowic',
+        'Układ atramentowy',
+        'Konserwacja',
+        'Plotery sublimacyjne',
+    ],
+    'serwis-drukarek-spozywczych': [
+        'Zapchana głowica',
+        'Pasy na nadruku',
+        'Błąd platformy',
+        'Konserwacja drukarki',
+    ],
+
+    'serwis-niszczarek': [
+        'Zacina papier',
+        'Nie wciąga papieru',
+        'Głośno pracuje',
+        'Olejenie i konserwacja',
+    ],
+    'naprawa-zasilaczy-ups': [
+        'Zacina papier',
+        'Blady wydruk',
+        'Brudzi kartki',
+        'Wymiana tonera',
+    ],
+
     'serwis-drukarek-atramentowych': [
         'Nie drukuje',
         'Zaschnięta głowica',

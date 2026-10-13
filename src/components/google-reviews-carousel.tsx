@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { useNearViewport } from "@/lib/use-near-viewport"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { googleReviewsI18n } from "@/lib/i18n/google-reviews"
@@ -57,6 +58,10 @@ export type Review = {
     relative_time_ru?: string | null
 }
 
+const subscribeNoop = () => () => {}
+// Stała referencja: React 19 przy nowym obiekcie ponownie ustawia innerHTML.
+const KEEP_SERVER_HTML = { __html: "" }
+
 interface GoogleReviewsCarouselProps {
     reviews: Review[]
     rating: number | null
@@ -72,14 +77,22 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     const carouselContainerRef = useRef<HTMLDivElement | null>(null)
     const allOpinionsRef = useRef<HTMLDivElement | null>(null)
     const opinieTitleRef = useRef<HTMLDivElement | null>(null)
-    const offsetRef = useRef(0)
-    const rafRef = useRef<number | null>(null)
+    // Parchment behind the review cards: fetched only when the block is near.
+    const sectionRef = useRef<HTMLElement | null>(null)
+    const bgNear = useNearViewport(sectionRef)
+    // Karty z serwera nie są hydratowane — React zostawia ich HTML bez zmian
+    // (statyczny tekst, bez obsługi zdarzeń). Przy montowaniu na kliencie
+    // (przejście między stronami) karty renderują się normalnie.
+    const mountedAfterHydration = useSyncExternalStore(subscribeNoop, () => true, () => false)
+    const [staticCards] = useState(() => typeof window !== "undefined" && !mountedAfterHydration)
+    const syncRef = useRef<(() => void) | null>(null)
     const isRunningRef = useRef(true)
     const isHoverRef = useRef(false)
 
     const cardWidth = 320
     const gap = 24
-    const speed = 0.35
+    // 0.35 px na klatkę przy 60 Hz — dotychczasowa prędkość
+    const speedPxPerSecond = 0.35 * 60
 
     useEffect(() => {
         const el = opinieTitleRef.current
@@ -109,43 +122,53 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         return () => observer.disconnect()
     }, [])
 
+    // Statyczne karty: gdy blok jest blisko — tło pergaminu i druga kopia taśmy
+    // (klon kart z serwera), tak samo jak w renderze Reacta poniżej.
+    useEffect(() => {
+        const track = trackRef.current
+        if (!staticCards || !bgNear || !track || track.dataset.copies) return
+        const cards = Array.from(track.children) as HTMLElement[]
+        for (const card of cards) card.style.removeProperty('--review-bg')
+        for (const card of cards) {
+            const copy = card.cloneNode(true) as HTMLElement
+            copy.setAttribute('aria-hidden', 'true')
+            track.appendChild(copy)
+        }
+        track.dataset.copies = '2'
+    }, [staticCards, bgNear])
+
     useEffect(() => {
         if (!trackRef.current || !carouselContainerRef.current || !reviews.length) return
         const track = trackRef.current
         const container = carouselContainerRef.current
 
-        const animate = () => {
-            if (isRunningRef.current && !isHoverRef.current) {
-                const totalWidth = (cardWidth + gap) * reviews.length
-                offsetRef.current += speed
-                if (offsetRef.current >= totalWidth) {
-                    offsetRef.current = 0
-                }
-                track.style.transform = `translateX(-${offsetRef.current}px)`
-            }
-            rafRef.current = requestAnimationFrame(animate)
-        }
+        // Ruch taśmy jako animacja transform (Web Animations): przeglądarka przesuwa
+        // ją sama, poza głównym wątkiem, i w tempie zależnym od czasu, a nie od liczby
+        // klatek — ta sama prędkość na ekranach 60 i 120 Hz (wcześniej 0.35 px/klatkę).
+        const totalWidth = (cardWidth + gap) * reviews.length
+        const anim = track.animate(
+            [{ transform: 'translateX(0px)' }, { transform: `translateX(-${totalWidth}px)` }],
+            { duration: (totalWidth / speedPxPerSecond) * 1000, iterations: Infinity, easing: 'linear' }
+        )
+        anim.pause()
 
-        const startAnimation = () => {
-            if (rafRef.current === null) rafRef.current = requestAnimationFrame(animate)
+        let visible = false
+        const sync = () => {
+            if (visible && isRunningRef.current && !isHoverRef.current) anim.play()
+            else anim.pause()
         }
-        const stopAnimation = () => {
-            if (rafRef.current !== null) {
-                cancelAnimationFrame(rafRef.current)
-                rafRef.current = null
-            }
-        }
+        syncRef.current = sync
 
-        // Only run the scroll loop while the carousel is actually visible on screen —
-        // avoids burning main-thread time on an animation nobody sees yet (e.g. during initial load).
+        // ruch tylko gdy widać co najmniej połowę karuzeli
         const sectionObserver = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) startAnimation()
-            else stopAnimation()
-        }, { threshold: 0 })
+            visible = entry.intersectionRatio >= 0.5
+            sync()
+        }, { threshold: [0, 0.25, 0.5, 0.75, 1] })
         sectionObserver.observe(container)
 
         const handleVisibility = () => {
             isRunningRef.current = !document.hidden
+            sync()
         }
 
         document.addEventListener("visibilitychange", handleVisibility)
@@ -153,7 +176,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         return () => {
             document.removeEventListener("visibilitychange", handleVisibility)
             sectionObserver.disconnect()
-            stopAnimation()
+            syncRef.current = null
+            anim.cancel()
         }
     }, [reviews])
 
@@ -167,7 +191,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
 
 
     return (
-        <section className="relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
+        <section ref={sectionRef} className="reviews-cv relative w-full mt-[2px] md:mt-0 py-0 h-[420px] md:h-[320px] overflow-hidden">
 
 
 
@@ -248,9 +272,21 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                 <div
                     ref={carouselContainerRef}
                     className="relative w-screen -mx-[calc((100vw-100%)/2)] overflow-visible"
-                    onMouseEnter={() => (isHoverRef.current = true)}
-                    onMouseLeave={() => (isHoverRef.current = false)}
+                    onMouseEnter={() => { isHoverRef.current = true; syncRef.current?.() }}
+                    onMouseLeave={() => { isHoverRef.current = false; syncRef.current?.() }}
                 >
+                    {staticCards ? (
+                    <div
+                        ref={trackRef}
+                        className="flex"
+                        style={{
+                            gap: `${gap}px`,
+                            willChange: "transform",
+                        }}
+                        dangerouslySetInnerHTML={KEEP_SERVER_HTML}
+                        suppressHydrationWarning
+                    />
+                    ) : (
                     <div
                         ref={trackRef}
                         className="flex"
@@ -259,7 +295,10 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             willChange: "transform",
                         }}
                     >
-                        {[...reviews, ...reviews].map((review, i) => {
+                        {/* Second copy = seamless loop. It starts a full set (~3.4k px) to the
+                            right, so it is only needed once the strip can move: render it when
+                            the block comes near (also skips it in HTML and hydration on load). */}
+                        {(bgNear ? [...reviews, ...reviews] : reviews).map((review, i) => {
                             const localizedText =
                                 locale === 'uk' ? (review.text_uk || review.text) :
                                 locale === 'ru' ? (review.text_ru || review.text) :
@@ -273,7 +312,8 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             return (
                             <div
                                 key={i}
-                                style={{ width: `${cardWidth}px` }}
+                                aria-hidden={i >= reviews.length || undefined}
+                                style={{ width: `${cardWidth}px`, ...(bgNear ? {} : { '--review-bg': 'none' }) } as React.CSSProperties}
                                 className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >
                                 <div className="relative z-10 flex items-center gap-3 mb-0.5">
@@ -327,6 +367,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             )
                         })}
                     </div>
+                    )}
                 </div>
             </div>
         </section>

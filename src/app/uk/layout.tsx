@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter, Lora } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { ScrollToTop } from '@/components/ScrollToTop'
+import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -19,16 +20,10 @@ const inter = Inter({
   weight: ['400', '500', '600'],
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
+  preload: false,
   variable: '--font-inter',
 })
 
-/* Tylko dla formularza kontaktowego (/kontakt) — etykiety i tekst w polach */
-const lora = Lora({
-  weight: ['400', '600'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-lora',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
@@ -123,7 +118,7 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="uk"
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -154,6 +149,7 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
 
       <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
         <ScrollToTop />
+        <GoldAnimationPause />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
@@ -171,8 +167,8 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         {/* Mobile-only bottom quick-action bar */}
         <MobileActionBar />
 
-        <Script
-          id="json-ld"
+        {/* Обычный тег, а не next/script: разметка должна быть в исходном HTML без выполнения JS */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />

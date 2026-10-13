@@ -1,17 +1,24 @@
 import manifest from '@/config/manifest'
 import type { ServiceData, PricingSection } from './services-data-types'
-import { diagnostaSection, dojazdSection, faqSectionRu } from './services-data-ru-shared'
-import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy } from './services-data-ru-laptop'
-import { desktopKonserwacja, desktopNaprawy } from './services-data-ru-desktop'
-import { outsourcingKonserwacja, outsourcingNaprawy } from './services-data-ru-outsourcing'
-import { laserKonserwacjaRu, laserNaprawy } from './services-data-ru-laser'
-import { inkjetKonserwacjaRu, inkjetNaprawy } from './services-data-ru-inkjet'
-import { thermalKonserwacja, thermalNaprawy } from './services-data-ru-thermal'
-import { needleKonserwacja, needleNaprawy } from './services-data-ru-needle'
-import { printer3dKonserwacja, printer3dNaprawy } from './services-data-ru-3dprinter'
-import { plotterKonserwacja, plotterNaprawy } from './services-data-ru-plotter'
-import { wynajemAkordeon1, wynajemAkordeon2 } from './services-data-ru-wynajem'
-import { zastepczaAkordeon1, zastepczaAkordeon2 } from './services-data-ru-drukarka-zastepcza'
+import { diagnostaSection, dojazdSection } from './services-data-ru-shared'
+import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy, laptopFaqSection } from './services-data-ru-laptop'
+import { desktopKonserwacja, desktopNaprawy, desktopFaqSection } from './services-data-ru-desktop'
+import { outsourcingKonsultacja, outsourcingKonserwacja, outsourcingNaprawy, outsourcingFaq } from './services-data-ru-outsourcing'
+import { laserFaq, laserKonserwacjaRu, laserNaprawy } from './services-data-ru-laser'
+import { inkjetFaq, inkjetKonserwacjaRu, inkjetNaprawy } from './services-data-ru-inkjet'
+import { thermalFaq, thermalKonserwacja, thermalNaprawy } from './services-data-ru-thermal'
+import { needleFaq, needleKonserwacja, needleNaprawyIglowe } from './services-data-ru-needle'
+import { printer3dFaq, printer3dKonserwacja, printer3dNaprawy } from './services-data-ru-3dprinter'
+import { plotterDojazd, plotterFaq, plotterKonserwacja, plotterNaprawy } from './services-data-ru-plotter'
+import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-ru-wynajem'
+import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-ru-drukarka-zastepcza'
+import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
+import { upsPricingSectionsRu } from './services-data-ups'
+import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
+import { dtgPricingSectionsRu, DTG_PRICE_TOOLTIP_RU } from './services-data-ru-dtg'
+import { dtfPricingSectionsRu, DTF_PRICE_TOOLTIP_RU } from './services-data-ru-dtf'
+import { sublimacjaPricingSectionsRu, SUBLIMACJA_PRICE_TOOLTIP_RU } from './services-data-ru-sublimacja'
+import { spozywczePricingSectionsRu, SPOZYWCZE_PRICE_TOOLTIP_RU } from './services-data-ru-spozywcze'
 
 export const servicesRu: ServiceData[] = [
   {
@@ -25,7 +32,7 @@ export const servicesRu: ServiceData[] = [
       laptopDojazdSection(),
       laptopKonserwacja,
       laptopNaprawy,
-      faqSectionRu(),
+      laptopFaqSection(),
     ],
   },
   {
@@ -35,11 +42,11 @@ export const servicesRu: ServiceData[] = [
     icon: manifest['02_serwis_komputerow_stacjonarnych'],
     description: 'Диагностика, ремонт и модернизация системных блоков.',
     pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
+      laptopDiagnostaSection(),
+      laptopDojazdSection(),
       desktopKonserwacja,
       desktopNaprawy,
-      faqSectionRu(),
+      desktopFaqSection(),
     ],
   },
   {
@@ -49,11 +56,10 @@ export const servicesRu: ServiceData[] = [
     icon: manifest['03_outsourcing_it'],
     description: 'Полное IT-обслуживание для вашей компании.',
     pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
+      outsourcingKonsultacja,
       outsourcingKonserwacja,
       outsourcingNaprawy,
-      faqSectionRu(),
+      outsourcingFaq(),
     ],
   },
   {
@@ -62,13 +68,9 @@ export const servicesRu: ServiceData[] = [
     subtitle: 'Ремонт специализированных матричных принтеров',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт специализированных матричных принтеров.',
-    pricingSections: [
-      diagnostaSection(),
-      dojazdSection(),
-      needleKonserwacja,
-      needleNaprawy,
-      faqSectionRu(),
-    ],
+    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
+    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
+    pricingSections: [],
   },
   {
     slug: 'serwis-drukarek-laserowych',
@@ -81,33 +83,8 @@ export const servicesRu: ServiceData[] = [
       dojazdSection(),
       laserKonserwacjaRu,
       laserNaprawy,
-      faqSectionRu(),
+      laserFaq(),
     ],
-    priceTooltipRich: {
-      type: 'deviceCategories',
-      title: 'Категории устройств',
-      description: 'Выберите ориентировочно, к какой группе относится ваш принтер. Это поможет легче подобрать ценовой диапазон.',
-      categories: [
-        {
-          title: 'Домашний принтер',
-          description: 'Устройство для домашнего использования или эпизодической печати. Небольшие модели A4, как правило, более дешёвые при покупке.',
-          features: ['компактные размеры', 'медленная печать', 'базовые функции'],
-          examples: ['HP DeskJet 2720', 'Canon MG3650s'],
-        },
-        {
-          title: 'Офисный принтер',
-          description: 'Для работы в малых и средних офисах. Предназначены для более частой печати и работы в сети.',
-          features: ['более быстрая печать', 'LAN / Wi-Fi', 'большая долговечность'],
-          examples: ['Brother DCP-J105', 'Epson L3150'],
-        },
-        {
-          title: 'Бизнес-принтер',
-          description: 'Крупные устройства A4/A3 для интенсивной работы и больших объёмов печати.',
-          features: ['очень высокая выносливость', 'быстрые тонеры и картриджи', 'сервисные функции управления'],
-          examples: ['Epson L6570', 'Canon MAXIFY GX4040'],
-        },
-      ],
-    },
   },
   {
     slug: 'serwis-drukarek-atramentowych',
@@ -120,7 +97,7 @@ export const servicesRu: ServiceData[] = [
       dojazdSection(),
       inkjetKonserwacjaRu,
       inkjetNaprawy,
-      faqSectionRu(),
+      inkjetFaq(),
     ],
   },
   {
@@ -131,15 +108,15 @@ export const servicesRu: ServiceData[] = [
     description: 'Сервис и ремонт широкоформатных плоттеров.',
     pricingSections: [
       diagnostaSection(),
-      dojazdSection(),
+      plotterDojazd(),
       plotterKonserwacja,
       plotterNaprawy,
-      faqSectionRu(),
+      plotterFaq(),
     ],
   },
   {
     slug: 'serwis-drukarek-termicznych',
-    title: 'Сервис термоэтикеточных и термотрансферных принтеров',
+    title: 'Сервис термоэтикеточных принтеров',
     subtitle: 'Ремонт принтеров этикеток и штрихкодов',
     icon: manifest['06_serwis_drukarek_termicznych'],
     description: 'Сервис принтеров этикеток и штрихкодов.',
@@ -148,7 +125,7 @@ export const servicesRu: ServiceData[] = [
       dojazdSection(),
       thermalKonserwacja,
       thermalNaprawy,
-      faqSectionRu(),
+      thermalFaq(),
     ],
     priceTooltip: 'Цены нетто отдельно для принтеров: настольных / полупромышленных / промышленных (работа, без расходных материалов)',
   },
@@ -162,8 +139,8 @@ export const servicesRu: ServiceData[] = [
       diagnostaSection(),
       dojazdSection(),
       needleKonserwacja,
-      needleNaprawy,
-      faqSectionRu(),
+      needleNaprawyIglowe,
+      needleFaq(),
     ],
   },
   {
@@ -171,13 +148,13 @@ export const servicesRu: ServiceData[] = [
     title: 'Сервис и ремонт 3D-принтеров',
     subtitle: 'Полный перечень услуг и цен, без скрытых платежей',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-    description: 'Сервис 3D-принтеров во Вроцлаве – ремонт 3D-принтера, калибровка стола, регулировка осей и улучшение качества печати. Ремонт 3D-принтеров FDM и SLA, чистка экструдера и хотэнда, замена деталей и настройка параметров печати. Сервис 3D-принтеров для компаний и мастерских, настройка прошивки и подготовка к материалам ABS, PETG и nylon.',
+    description: 'Сервис 3D-принтеров во Вроцлаве – ремонт 3D-принтера, калибровка стола, регулировка осей и улучшение качества печати. Ремонт 3D-принтеров FDM и SLA, чистка экструдера и хотэнда, замена деталей и настройка параметров печати. Сервис 3D-принтеров для компаний и мастерских, настройка прошивки и подготовка принтера к материалам ABS, PETG и нейлону.',
     pricingSections: [
       diagnostaSection(),
       dojazdSection(),
       printer3dKonserwacja,
       printer3dNaprawy,
-      faqSectionRu(),
+      printer3dFaq(),
     ],
   },
   {
@@ -185,7 +162,7 @@ export const servicesRu: ServiceData[] = [
     title: '3D-печать на заказ',
     subtitle: 'Полный перечень услуг и цен, без скрытых платежей',
     icon: '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-    description: 'Сервис 3D-принтеров во Вроцлаве – ремонт 3D-принтера, калибровка стола, регулировка осей и улучшение качества печати. Ремонт 3D-принтеров FDM и SLA, чистка экструдера и хотэнда, замена деталей и настройка параметров печати. Сервис 3D-принтеров для компаний и мастерских, настройка прошивки и подготовка к материалам ABS, PETG и nylon.',
+    description: 'Сервис 3D-принтеров во Вроцлаве – ремонт 3D-принтера, калибровка стола, регулировка осей и улучшение качества печати. Ремонт 3D-принтеров FDM и SLA, чистка экструдера и хотэнда, замена деталей и настройка параметров печати. Сервис 3D-принтеров для компаний и мастерских, настройка прошивки и подготовка принтера к материалам ABS, PETG и нейлону.',
     pricingSections: [
       {
         id: 'diagnoza',
@@ -243,15 +220,77 @@ export const servicesRu: ServiceData[] = [
     ],
   },
   {
+    slug: 'serwis-niszczarek',
+    title: 'Сервис и ремонт уничтожителей документов',
+    subtitle: 'Сервис и ремонт уничтожителей документов во Вроцлаве',
+    icon: '/images/niszczarki-carousel-v1-01.webp',
+    description: 'Сервис и ремонт уничтожителей документов.',
+    pricingSections: niszczarkiPricingSectionsRu(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'naprawa-zasilaczy-ups',
+    title: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания',
+    subtitle: 'Сервис и ремонт источников бесперебойного питания UPS во Вроцлаве',
+    icon: '/images/ups-carousel-v1-01.webp',
+    description: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания.',
+    pricingSections: upsPricingSectionsRu(),
+  },
+  {
+    slug: 'serwis-drukarek-do-kart-plastikowych',
+    title: 'Сервис и ремонт принтеров для пластиковых карт',
+    subtitle: 'Сервис и ремонт принтеров для пластиковых карт во Вроцлаве',
+    icon: '/images/karty-carousel-v1-01.webp',
+    description: 'Сервис и ремонт принтеров для пластиковых карт.',
+    pricingSections: kartyPricingSectionsRu(),
+    priceTooltip: KARTY_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-dtg',
+    title: 'Сервис и ремонт DTG-принтеров',
+    subtitle: 'Сервис и ремонт DTG-принтеров во Вроцлаве',
+    icon: '/images/dtg-carousel-v1-01.webp',
+    description: 'Сервис и ремонт DTG-принтеров для печати на футболках.',
+    pricingSections: dtgPricingSectionsRu(),
+    priceTooltip: DTG_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-dtf',
+    title: 'Сервис и ремонт DTF-принтеров',
+    subtitle: 'Сервис и ремонт DTF-принтеров во Вроцлаве',
+    icon: '/images/dtf-carousel-v3-01.webp',
+    description: 'Сервис и ремонт DTF-принтеров для печати трансферов на плёнке.',
+    pricingSections: dtfPricingSectionsRu(),
+    priceTooltip: DTF_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-sublimacyjnych',
+    title: 'Сервис и ремонт сублимационных принтеров',
+    subtitle: 'Сервис и ремонт сублимационных принтеров во Вроцлаве',
+    icon: '/images/sublimacja-carousel-v1-01.webp',
+    description: 'Сервис и ремонт сублимационных принтеров и плоттеров.',
+    pricingSections: sublimacjaPricingSectionsRu(),
+    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP_RU,
+  },
+  {
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Сервис и ремонт пищевых принтеров',
+    subtitle: 'Сервис и ремонт пищевых принтеров во Вроцлаве',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Сервис и ремонт пищевых принтеров.',
+    pricingSections: spozywczePricingSectionsRu(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP_RU,
+  },
+  {
     slug: 'wynajem-drukarek',
-    title: 'Аренда (лизинг) принтеров',
+    title: 'Аренда принтеров',
     subtitle: 'Аренда печатающих устройств для офисов',
     icon: manifest['10_wynajem_drukarek'],
     description: 'Аренда печатающих устройств для офисов и компаний.',
     pricingSections: [
       wynajemAkordeon1,
       wynajemAkordeon2,
-      faqSectionRu(),
+      wynajemFaq(),
     ],
   },
   {
@@ -263,7 +302,7 @@ export const servicesRu: ServiceData[] = [
     pricingSections: [
       zastepczaAkordeon1,
       zastepczaAkordeon2,
-      faqSectionRu(),
+      zastepczaFaq(),
     ],
   },
 ]

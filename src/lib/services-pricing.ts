@@ -81,3 +81,26 @@ export function getPriceNumbers(slug: string, path: string): string[] {
   }
   return entry.numbers
 }
+
+// Готовые строки цен/сроков ОДНОЙ услуги на ОДНОМ языке (ключ — тот же путь,
+// что в walkPricingItems). Считаются на сервере и передаются в клиентский
+// аккордеон — иначе в браузер уходил бы весь services-pricing-data.ts с ценами
+// всех услуг (~67 КБ JS). Строки те же, что вернули бы getDisplayPrice/
+// getDisplayDuration.
+export interface ServiceDisplayPricing {
+  price: Record<string, string>
+  duration: Record<string, string>
+}
+
+export function getServiceDisplayPricing(
+  slug: string,
+  sections: PricingSection[],
+  locale: PricingLocale
+): ServiceDisplayPricing {
+  const out: ServiceDisplayPricing = { price: {}, duration: {} }
+  walkPricingItems(sections, (path) => {
+    if (migratedPrice[pricingId(slug, path)]) out.price[path] = getDisplayPrice(slug, path, locale)
+    if (migratedDuration[pricingId(slug, path)]) out.duration[path] = getDisplayDuration(slug, path, locale)
+  })
+  return out
+}

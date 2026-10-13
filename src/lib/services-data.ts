@@ -3,7 +3,7 @@ import manifest from '@/config/manifest'
 // Public API kept identical to the pre-split single-file module: types,
 // layout constants, and per-service pricing-section builders are now split
 // across services-data-*.ts files; this file re-exports them and assembles
-// the final `services` / `HOME_EXTRA_SERVICES` arrays so nothing elsewhere
+// the final `services` array so nothing elsewhere
 // in the codebase needs to change its imports.
 export type {
   PricingItem,
@@ -26,10 +26,17 @@ import { createLaserPricingSections } from './services-data-laser'
 import { create3DPrinterPricingSections, createDruk3DZamowieniePricingSections } from './services-data-3dprinter'
 import { createPlotterPricingSections } from './services-data-plotter'
 import { createInkjetPricingSections } from './services-data-inkjet'
-import { createNeedlePricingSections } from './services-data-needle'
+import { createIglowePricingSections } from './services-data-needle'
 import { createThermalPricingSections } from './services-data-thermal'
 import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
+import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
+import { createUpsPricingSections } from './services-data-ups'
+import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
+import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
+import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
+import { createSublimacjaPricingSections, SUBLIMACJA_PRICE_TOOLTIP } from './services-data-sublimacja'
+import { createSpozywczePricingSections, SPOZYWCZE_PRICE_TOOLTIP } from './services-data-spozywcze'
 
 export const services: ServiceData[] = [
   {
@@ -62,7 +69,9 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createNeedlePricingSections(),
+    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
+    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
+    pricingSections: [],
   },
   {
     slug: 'serwis-drukarek-laserowych',
@@ -71,31 +80,6 @@ export const services: ServiceData[] = [
     icon: manifest['04_serwis_drukarek_laserowych'],
     description: 'Profesjonalna naprawa i serwis drukarek laserowych.',
     pricingSections: createLaserPricingSections(),
-    priceTooltipRich: {
-      type: 'deviceCategories',
-      title: 'Kategorie urządzeń',
-      description: 'Wybierz orientacyjnie, do której grupy należy Twoja drukarka. Dzięki temu łatwiej dopasujesz przedział cenowy.',
-      categories: [
-        {
-          title: 'Drukarka domowa',
-          description: 'Urządzenie do użytku domowego lub okazjonalnego drukowania. Małe modele A4, zwykle tańsze w zakupie.',
-          features: ['małe wymiary', 'wolniejszy druk', 'podstawowe funkcje'],
-          examples: ['HP DeskJet 2720', 'Canon MG3650s'],
-        },
-        {
-          title: 'Drukarka biurowa',
-          description: 'Do pracy w małych i średnich biurach. Przystosowane do częstszego drukowania i pracy w sieci.',
-          features: ['szybszy druk', 'LAN / Wi-Fi', 'wyższa trwałość'],
-          examples: ['Brother DCP-J105', 'Epson L3150'],
-        },
-        {
-          title: 'Drukarka biznesowa',
-          description: 'Duże urządzenia A4/A3 do intensywnej pracy i dużych wolumenów wydruku.',
-          features: ['bardzo wysoka wytrzymałość', 'szybkie tonery i kasety', 'serwisowe funkcje zarządzania'],
-          examples: ['Epson L6570', 'Canon MAXIFY GX4040'],
-        },
-      ],
-    },
   },
   {
     slug: 'serwis-drukarek-atramentowych',
@@ -130,7 +114,7 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    pricingSections: createNeedlePricingSections(),
+    pricingSections: createIglowePricingSections(),
   },
   {
     slug: 'serwis-drukarek-3d',
@@ -152,6 +136,69 @@ export const services: ServiceData[] = [
     pricingSections: createDruk3DZamowieniePricingSections(),
   },
   {
+    slug: 'serwis-niszczarek',
+    title: 'Serwis i naprawa niszczarek',
+    subtitle: 'Serwis i naprawa niszczarek we Wrocławiu',
+    icon: '/images/niszczarki-carousel-v1-01.webp',
+    description: 'Serwis i naprawa niszczarek.',
+    pricingSections: createNiszczarkiPricingSections(),
+    priceTooltip: NISZCZARKI_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'naprawa-zasilaczy-ups',
+    title: 'Serwis i naprawa UPS – zasilaczy awaryjnych',
+    subtitle: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
+    icon: '/images/ups-carousel-v1-01.webp',
+    description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
+    pricingSections: createUpsPricingSections(),
+  },
+  {
+    slug: 'serwis-drukarek-do-kart-plastikowych',
+    title: 'Serwis i naprawa drukarek do kart plastikowych',
+    subtitle: 'Serwis i naprawa drukarek do kart plastikowych we Wrocławiu',
+    icon: '/images/karty-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek do kart plastikowych.',
+    pricingSections: createKartyPricingSections(),
+    priceTooltip: KARTY_PRICE_TOOLTIP,
+  },
+  // Strony drukarek DTG, DTF, sublimacyjnych i spożywczych.
+  {
+    slug: 'serwis-drukarek-dtg',
+    title: 'Serwis i naprawa drukarek DTG',
+    subtitle: 'Serwis i naprawa drukarek DTG we Wrocławiu',
+    icon: '/images/dtg-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek DTG do nadruku na koszulkach.',
+    pricingSections: createDtgPricingSections(),
+    priceTooltip: DTG_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-dtf',
+    title: 'Serwis i naprawa drukarek DTF',
+    subtitle: 'Serwis i naprawa drukarek DTF we Wrocławiu',
+    icon: '/images/dtf-carousel-v3-01.webp',
+    description: 'Serwis i naprawa drukarek DTF do druku transferów na folii.',
+    pricingSections: createDtfPricingSections(),
+    priceTooltip: DTF_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-sublimacyjnych',
+    title: 'Serwis i naprawa drukarek sublimacyjnych',
+    subtitle: 'Serwis i naprawa drukarek sublimacyjnych we Wrocławiu',
+    icon: '/images/sublimacja-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek i ploterów sublimacyjnych.',
+    pricingSections: createSublimacjaPricingSections(),
+    priceTooltip: SUBLIMACJA_PRICE_TOOLTIP,
+  },
+  {
+    slug: 'serwis-drukarek-spozywczych',
+    title: 'Serwis i naprawa drukarek spożywczych',
+    subtitle: 'Serwis i naprawa drukarek spożywczych we Wrocławiu',
+    icon: '/images/spozywcze-carousel-v1-01.webp',
+    description: 'Serwis i naprawa drukarek spożywczych do druku na tortach i ciastkach.',
+    pricingSections: createSpozywczePricingSections(),
+    priceTooltip: SPOZYWCZE_PRICE_TOOLTIP,
+  },
+  {
     slug: 'wynajem-drukarek',
     title: 'Wynajem (dzierżawa) drukarek',
     subtitle: 'Dzierżawa urządzeń drukujących dla biur',
@@ -169,14 +216,3 @@ export const services: ServiceData[] = [
   },
 ]
 
-// Homepage "SERWIS I NAPRAWA" block: slugi ujawniane po kliknięciu
-// "ZOBACZ WSZYSTKIE USŁUGI" — centralized here so services can be
-// added/removed without touching the Services component itself.
-export const HOME_EXTRA_SERVICES = [
-  'serwis-drukarek-laserowych',
-  'serwis-drukarek-atramentowych',
-  'serwis-drukarek-iglowych',
-  'druk-3d-na-zamowienie',
-  'wynajem-drukarek',
-  'drukarka-zastepcza',
-]

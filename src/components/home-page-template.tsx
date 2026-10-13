@@ -19,12 +19,13 @@ interface HomePageTemplateProps {
   servicesData?: NonNullable<ComponentProps<typeof Services>>['servicesData']
   servicesBasePath?: NonNullable<ComponentProps<typeof Services>>['basePath']
   servicesT?: NonNullable<ComponentProps<typeof Services>>['t']
-  servicesExtra?: NonNullable<ComponentProps<typeof Services>>['extraServices']
   aboutT?: NonNullable<ComponentProps<typeof About>>['t']
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
   cta: {
     heading: ReactNode
     text: ReactNode
+    headingMobile?: ReactNode
+    textMobile?: ReactNode
     button: ReactNode
     href: string
   }
@@ -36,7 +37,6 @@ export function HomePageTemplate({
   servicesData,
   servicesBasePath,
   servicesT,
-  servicesExtra,
   aboutT,
   footerT,
   cta,
@@ -49,9 +49,9 @@ export function HomePageTemplate({
     <>
       <Header locale={locale} />
       <div>
-        <Hero t={heroT} locale={locale}>
-          <div className="absolute bottom-[120px] left-0 w-full z-10 md:bottom-[48px]">
-            <BrandTicker compact />
+        <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
+          <div className="absolute bottom-[36px] left-0 w-full z-10 md:bottom-[48px]">
+            <BrandTicker compact muted />
           </div>
         </Hero>
       </div>
@@ -65,10 +65,10 @@ export function HomePageTemplate({
             backgroundPosition: 'center',
           }}
         />
-        <div className="relative z-10">
-          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} extraServices={servicesExtra} bare />
+        <div className="home-below relative z-10">
+          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare />
 
-          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews />} />
+          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews locale={locale} />} />
 
           <HomeCta {...cta} />
 

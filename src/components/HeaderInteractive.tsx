@@ -5,16 +5,19 @@ import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { CallButton } from '@/components/ui/CallButton'
 import { cn } from '@/lib/utils'
+import { SERVICE_CATEGORIES } from '@/config/service-categories'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
 // chunk is still loading, so the hamburger icon never disappears mid-transition.
+// data-premenu: a tap here opens the static drawer copy (see premenu-script.ts).
 const MobileMenuLoadingButton = () => (
   <button
     type="button"
+    data-premenu=""
     className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white min-[920px]:hidden"
     aria-label="Open menu"
     aria-haspopup="dialog"
@@ -130,27 +133,17 @@ const LOCALE_NAV: Record<Locale, {
    Mega menu data
    ========================= */
 
-const MEGA_MENU: { items: { label: Record<Locale, string>; href: string; icon: string; locales?: Locale[] }[] }[] = [
-  {
-    items: [
-      { label: { pl: 'Laptopów', uk: 'Ноутбуків', ru: 'Ноутбуков' }, href: '/uslugi/serwis-laptopow', icon: '/images/01_serwis-laptopow-icon.webp' },
-      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарних комп\'ютерів', ru: 'Стационарных компьютеров' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/02_serwis-komputerow-stacjonarnych-icon.webp' },
-      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг' }, href: '/uslugi/outsourcing-it', icon: '/images/03_outsourcing-it-icon.webp' },
-    ],
-  },
-  {
-    items: [
-      { label: { pl: 'Drukarek laserowych', uk: 'Лазерних принтерів', ru: 'Лазерных принтеров' }, href: '/uslugi/serwis-drukarek-laserowych', icon: '/images/04_serwis-drukarek-laserowych-icon.webp' },
-      { label: { pl: 'Drukarek atramentowych', uk: 'Струменевих принтерів', ru: 'Струйных принтеров' }, href: '/uslugi/serwis-drukarek-atramentowych', icon: '/images/05_serwis-drukarek-atramentowych-icon.webp' },
-      { label: { pl: 'Drukarek igłowych', uk: 'Матричних принтерів', ru: 'Матричных принтеров' }, href: '/uslugi/serwis-drukarek-iglowych', icon: '/images/07_serwis-drukarek-iglowych-icon.webp' },
-      { label: { pl: 'Drukarek etykiet termicznych', uk: 'Термічних принтерів етикеток', ru: 'Термических принтеров этикеток' }, href: '/uslugi/serwis-drukarek-termicznych', icon: '/images/06_serwis-drukarek-termicznych-icon.webp' },
-      { label: { pl: 'Drukarek 3D', uk: 'Принтерів 3D', ru: '3D-принтеров' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/Serwis_i_Naprawa_Drukarek_3D-icon.webp' },
-      { label: { pl: 'Ploterów', uk: 'Плотерів', ru: 'Плоттеров' }, href: '/uslugi/serwis-plotterow', icon: '/images/08_serwis-ploterow-icon.webp' },
-      { label: { pl: 'Wynajem (dzierżawa) drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/10_wynajem-drukarek-icon.webp' },
-      { label: { pl: 'Drukarka zastępcza', uk: 'Принтер на заміну', ru: 'Принтер на замену' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/11_drukarka-zastepcza-icon.webp' },
-    ],
-  },
+// Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
+// below. The mobile drawer lists the same groups in one column under "Usługi".
+// Data lives in config/service-categories (shared with the home page catalogue).
+export type ServiceGroup = { title: string; titleMobile?: string; href?: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
+
+// Grid placement per group: 2×2 below 1280 px, 4 columns from 1280 px.
+const MEGA_GROUP_CLASS = [
+  'col-start-1 row-start-2 pr-3',
+  'col-start-2 row-start-2 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:pr-3',
+  'col-start-1 row-start-3 mt-3 pr-3 min-[1280px]:col-start-3 min-[1280px]:row-start-2 min-[1280px]:mt-0 min-[1280px]:border-l min-[1280px]:border-[#bfa76a]/25 min-[1280px]:pl-3',
+  'col-start-2 row-start-3 mt-3 border-l border-[#bfa76a]/25 pl-3 min-[1280px]:col-start-4 min-[1280px]:row-start-2 min-[1280px]:mt-0',
 ]
 
 /* =========================
@@ -162,6 +155,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -194,6 +188,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
   const contactHref = `${nav.prefix}/kontakt`
+  const prefetchHome = () => {
+    if (pathname !== homeHref) router.prefetch(homeHref)
+  }
   const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`)
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
@@ -222,22 +219,19 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     }
   }, [isOpen])
 
-  useEffect(() => {
-    if (!isOpen) return
+  // Closing on an outside tap / overlay click, Escape, the Tab trap and focus
+  // return are all handled by the Radix drawer itself. A custom pointerdown
+  // listener used to close it earlier, so the click of the same tap landed on
+  // whatever was underneath (reopening the menu or following a page link).
 
-    const handlePointerDown = (event: PointerEvent) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('pointerdown', handlePointerDown)
-    return () =>
-      document.removeEventListener('pointerdown', handlePointerDown)
-  }, [isOpen])
+  const serviceGroups: ServiceGroup[] = SERVICE_CATEGORIES.map((group) => ({
+    title: group.title[locale],
+    titleMobile: group.titleMobile?.[locale],
+    href: group.href ? `${nav.prefix}${group.href}` : undefined,
+    items: group.items
+      .filter((item) => !item.locales || item.locales.includes(locale))
+      .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon, iconTall: item.iconTall })),
+  }))
 
   const scrollToSection = (id: string) => {
     const performScroll = () => {
@@ -247,6 +241,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         return
       }
 
+      // Lift the home page's off-screen render skipping so the target's
+      // position is computed from real section heights (see globals.css).
+      document.documentElement.classList.add('cv-off')
       const el = document.getElementById(id)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -283,6 +280,12 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
       {/* Logo */}
       <Link
         href={homeHref}
+        // Без prefetch при появлении на экране (иначе данные главной ~43 КБ
+        // качаются вместе с первым экраном каждой страницы); подгружаем их
+        // только по наведению/касанию — переход остаётся быстрым.
+        prefetch={false}
+        onMouseEnter={prefetchHome}
+        onTouchStart={prefetchHome}
         className="group z-10 flex h-full items-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(191,167,106,0.30)]"
         onClick={(e) => {
           if (pathname === homeHref) {
@@ -292,13 +295,16 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         }}
       >
         <div className="relative flex h-full w-[40px] items-center md:w-[48px]">
-          {/* Not the LCP element — loads eagerly but without priority/high
-              fetch priority, so it doesn't compete with Hero's LCP image. */}
+          {/* Not the LCP element — loads eagerly but at fetchPriority="low",
+              so its browser-auto preload doesn't compete with Hero's LCP
+              image (a plain `loading="eager"` image still gets a
+              default-high-priority preload otherwise). */}
           <Image
             src="/images/Logo_Omobonus.webp"
             alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
             fill
             loading="eager"
+            fetchPriority="low"
             quality={60}
             sizes="(max-width: 768px) 40px, 48px"
             className="object-contain p-[1px]"
@@ -313,6 +319,18 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           className="relative h-full flex items-center"
           onMouseEnter={openServices}
           onMouseLeave={scheduleCloseServices}
+          onFocus={openServices}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+              scheduleCloseServices()
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' && isServicesOpen) {
+              setIsServicesOpen(false)
+              e.currentTarget.querySelector('a')?.focus()
+            }
+          }}
         >
           <Link
             href={homeSectionHref}
@@ -327,39 +345,64 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
+          {/* While the mega menu is closed its links are still in the HTML
+              (hidden, no icons), so search engines see every service page. */}
+          {!isServicesOpen && (
+            <ul hidden>
+              {serviceGroups.flatMap((group) => (group.href ? [{ label: group.title, href: group.href }, ...group.items] : group.items)).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} prefetch={false} tabIndex={-1}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+
           {/* Mega menu panel */}
           {isServicesOpen && (
             <div
-              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[600px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
+              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[1120px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
               style={{ backgroundImage: `var(--bg-parchment)` }}
             >
               <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4">
-                <div className="col-span-2 mb-3">
-                  <p className="pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-[#f3df9a] [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-4">
+                <div className="col-span-full row-start-1 mb-3">
+                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
                 </div>
-                {MEGA_MENU.map((col, i) => (
-                  <div key={i} className={i === 0 ? 'border-r border-[#bfa76a]/25 pr-3' : 'pl-3'}>
-                    <div className="flex flex-col divide-y divide-[#bfa76a]/25">
-                      {col.items.filter((item) => !item.locales || item.locales.includes(locale)).map((item) => (
+                {serviceGroups.map((col, i) => (
+                  <div key={i} className={MEGA_GROUP_CLASS[i]}>
+                    {col.href ? (
+                      <Link href={col.href} className="mb-1.5 block px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                        {col.title}
+                      </Link>
+                    ) : (
+                      <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                        {col.title}
+                      </p>
+                    )}
+                    <div className="flex flex-col divide-y divide-[#bfa76a]/25 border border-[#bfa76a]/25">
+                      {col.items.map((item) => (
                         <Link
                           key={item.href}
-                          href={`${nav.prefix}${item.href}`}
-                          className="flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                          href={item.href}
+                          // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
+                          className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
                         >
                           <Image
                             src={item.icon}
                             alt=""
-                            width={22}
-                            height={22}
-                            sizes="22px"
-                            className="flex-shrink-0 object-contain opacity-90"
+                            width={28}
+                            height={item.iconTall ? 28 : 22}
+                            sizes="28px"
+                            // A tall icon (cake candle) rises above the slot without changing the row height.
+                            className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
                             unoptimized
                           />
-                          {item.label[locale]}
+                          {item.label}
                         </Link>
                       ))}
                     </div>
@@ -391,8 +434,17 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
 
         {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
         {!mounted ? (
+          // Before hydration a tap here opens a static copy of the drawer
+          // (premenu-script.ts) built from this data, so the menu works at once.
           <button
             type="button"
+            data-premenu={JSON.stringify({
+              home: homeHref,
+              services: [homeSectionHref, navServices],
+              about: [aboutHref, navAbout],
+              contact: [contactHref, navContact],
+              form: navSendForm,
+            })}
             className="z-10 inline-flex h-11 w-11 items-center justify-center rounded-md text-white"
             aria-label="Open menu"
             aria-haspopup="dialog"
@@ -415,12 +467,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                 setIsOpen(false)
               }
             }}
-            homeSectionHref={homeSectionHref}
-            onServicesClick={(e) => {
-              e.preventDefault()
-              scrollToSection('uslugi')
-            }}
             navServices={navServices}
+            servicesHeader={megaMenuHeader}
+            serviceGroups={serviceGroups}
             aboutHref={aboutHref}
             navAbout={navAbout}
             contactHref={contactHref}

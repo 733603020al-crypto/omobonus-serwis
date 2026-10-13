@@ -6,7 +6,7 @@ export const diagnostaSection = (): PricingSection => ({
   status: 'Безкоштовно',
   items: [
     {
-      service: 'Попередня діагностика онлайн 15 хв.\n(Опис проблеми через WhatsApp / сайт / телефон)',
+      service: 'Попередня діагностика онлайн\n(опис проблеми через WhatsApp, сайт або телефон)',
     },
     {
       service: 'Попередня діагностика при доставці до сервісу 15 хв.\n(також у разі відмови від ремонту)',
@@ -105,7 +105,7 @@ export const faqSectionUk = (): PricingSection => ({
       id: 'faq-8',
       title: 'Чи ремонтуєте комп\'ютери / принтери всіх марок?',
       items: [],
-      answer: 'Так. Ремонтуємо зокрема HP, Dell, Lenovo, ASUS, Acer, MSI, Apple та інші.',
+      answer: 'Так. Ремонтуємо зокрема HP, Dell, Lenovo, ASUS, Acer, MSI та інші.',
     },
     {
       id: 'faq-9',
@@ -135,7 +135,7 @@ export const faqSectionUk = (): PricingSection => ({
       id: 'faq-13',
       title: 'Це ціни брутто чи нетто?',
       items: [],
-      answer: 'Усі зазначені ціни є цінами нетто**.',
+      answer: 'Усі зазначені ціни є цінами нетто.',
     },
   ],
   items: [],

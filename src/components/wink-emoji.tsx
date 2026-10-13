@@ -99,6 +99,7 @@ export function WinkEmoji({ variant = 'wink' }: WinkEmojiProps) {
         key={variant === 'thinking' ? 'thinking' : isPlaying ? `play-${playKey}` : 'static'}
         src={showAnimated ? animatedSrc : staticSrc}
         alt={alt}
+        loading="lazy"
         width={SIZE}
         height={SIZE}
         style={{
