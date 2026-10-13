@@ -235,6 +235,22 @@ export function HeroPrinterCarousel({
   const spotlights = slides.map(spotlightFor)
   const hasSpotlight = spotlights.some(Boolean)
   const [active, setActive] = useState(0)
+  // Slide that just left the front: it keeps its full-size file through the
+  // 900ms move to the back and gets the light tier-3 copy only once it is there
+  // (invisible). Swapped in at the start of the move, the light copy's first
+  // paint landed while the slide was still full size — a new, slightly bigger
+  // LCP image after the page's JS (serwis-laptopow mobile).
+  const [prevActive, setPrevActive] = useState(0)
+  const [leaving, setLeaving] = useState(-1)
+  if (prevActive !== active) {
+    setPrevActive(active)
+    setLeaving(prevActive)
+  }
+  useEffect(() => {
+    if (leaving < 0) return
+    const id = window.setTimeout(() => setLeaving(-1), 900)
+    return () => window.clearTimeout(id)
+  }, [leaving])
   // Per-slide "cached" flags; slide 0 is the eager one (or covered by the poster).
   const [loaded, setLoaded] = useState<boolean[]>(() => slides.map((_, i) => i === 0 && !opening))
   const [openingState, setOpeningState] = useState<'on' | 'leaving' | 'off'>(opening ? 'on' : 'off')
@@ -254,6 +270,10 @@ export function HeroPrinterCarousel({
   const animBlobRef = useRef<(Blob | undefined)[]>([])
   // Animation playing on the front slide: a fresh object URL of its blob.
   const [frontAnim, setFrontAnim] = useState<{ i: number; url: string } | null>(null)
+  // Slide 0's animation copy, decoded while the opening is still in front, so
+  // it is on the slide from the opening's exit on (see the intro effects).
+  const openingAnimUrlRef = useRef<string | null>(null)
+  const [openingAnimDecoded, setOpeningAnimDecoded] = useState(false)
   const [inView, setInView] = useState(true)
   const [slide0Ready, setSlide0Ready] = useState(!posterSrc)
   // Entrance animation only for slides shown by an advance, never on the
@@ -533,15 +553,21 @@ export function HeroPrinterCarousel({
   useEffect(() => {
     if (!opening || !openingOn || !loaded[0] || !inView) return
     if (animPending(0)) return
+    if (animBlobRef.current[0] && !openingAnimDecoded) return
     const wait = Math.max(0, mountedAtRef.current + opening.minMs - performance.now())
+    // The animation goes on together with the exit: swapped in later (after
+    // its decode), the slide's first paint with the new file could land when
+    // it is already full size — a bigger image than the opening, which then
+    // replaced the opening as the page's LCP element (Lighthouse outliers).
     const id = window.setTimeout(() => {
       setOpeningState('leaving')
       setAdvanced(true)
+      if (openingAnimUrlRef.current) setFrontAnim({ i: 0, url: openingAnimUrlRef.current })
       requestAnim(1 % slideCount)
     }, wait)
     return () => window.clearTimeout(id)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openingOn, loaded, inView, animReady])
+  }, [openingOn, loaded, inView, animReady, openingAnimDecoded])
 
   // The intro slides out to the back like any advanced slide, then unmounts.
   useEffect(() => {
@@ -615,6 +641,15 @@ export function HeroPrinterCarousel({
   // blob, decoded before the swap so the still is replaced without a gap.
   // Any other slide (and the front one once it leaves) shows its still.
   useEffect(() => {
+    // Opening in front: decode slide 0's animation now, the exit puts it on.
+    const blob0 = openingOn && animReady[0] ? animBlobRef.current[0] : undefined
+    if (blob0 && !openingAnimUrlRef.current) {
+      const url = URL.createObjectURL(blob0)
+      openingAnimUrlRef.current = url
+      const img = new window.Image()
+      img.src = url
+      img.decode().catch(() => {}).then(() => setOpeningAnimDecoded(true))
+    }
     const i = openingOn ? -1 : active
     const blob = i >= 0 && animReady[i] ? animBlobRef.current[i] : undefined
     if (!blob) {
@@ -871,6 +906,10 @@ export function HeroPrinterCarousel({
               ? ` ${config.activeClass}${advanced ? ` ${config.enterClass}` : ''}`
               : ''
           const slideTransform = `translate(-50%, -50%) translateX(${translateX}%) translateY(${translateY}%) scale(calc(${scale} * var(--slide-fit, 1)))`
+          // High fetch priority only while slide 0 is the page's first visible
+          // frame (no opening/poster in front of it); queued, hidden and small
+          // (tier 3) copies load at normal priority.
+          const firstFrame = i === 0 && !opening && !posterSrc
 
           if (i === clipAt && introVideo && introMedia) {
             // Print-clip slide: the slot moves through the queue like
@@ -903,7 +942,7 @@ export function HeroPrinterCarousel({
                    alt=""
                   aria-hidden="true"
                   loading="eager"
-                  fetchPriority={i === 0 ? 'high' : 'auto'}
+                  fetchPriority={firstFrame && tier === 0 ? 'high' : 'auto'}
                   className="hero-intro-media hero-intro-poster"
                   style={introMedia}
                 />
@@ -938,7 +977,7 @@ export function HeroPrinterCarousel({
           }
 
           const displayedSrcBase = frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src
-          const displayedSrc = tier === 3 ? responsiveSmallSrc(displayedSrcBase) : displayedSrcBase
+          const displayedSrc = tier === 3 && i !== leaving ? responsiveSmallSrc(displayedSrcBase) : displayedSrcBase
           return (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -949,7 +988,7 @@ export function HeroPrinterCarousel({
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}
-              fetchPriority={i === 0 ? 'high' : 'auto'}
+              fetchPriority={firstFrame && tier === 0 ? 'high' : 'auto'}
               className={config.slideClass + stateClass}
               data-tier={tier}
               style={{

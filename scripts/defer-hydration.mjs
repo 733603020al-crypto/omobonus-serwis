@@ -1,6 +1,6 @@
 // Post-build step (runs after `next build`). Every prerendered page loses the
 // duplicate CSS text of the RSC payload (see stripCssCopy). In the HTML of the
-// service pages and /kontakt (PL/UK/RU), Next's async <script src> chunks (and their preload links)
+// home page, the service pages and /kontakt (PL/UK/RU), Next's async <script src> chunks (and their preload links)
 // are replaced by one tiny inline loader that requests them only after the
 // first paint.
 // The first screen is fully server-rendered, so nothing changes visually —
@@ -17,7 +17,10 @@ const SCRIPT_RE = /<script src="(\/_next\/static\/chunks\/[^"]+\.js)"( id="([^"]
 function loader(list) {
   // FCP entry arrives right after the first frame is on screen; the timeout
   // covers browsers without Paint Timing and pages opened in a background tab.
-  return `<script>(function(){var s=${JSON.stringify(list)},d=document,r=0;function go(){if(r)return;r=1;for(var i=0;i<s.length;i++){var e=d.createElement('script');e.src=s[i][0];e.async=true;if(s[i][1])e.id=s[i][1];d.head.appendChild(e)}}function later(){requestAnimationFrame(function(){setTimeout(go,0)})}try{new PerformanceObserver(function(l,o){if(l.getEntriesByName('first-contentful-paint').length){o.disconnect();later()}}).observe({type:'paint',buffered:true})}catch(e){later()}setTimeout(go,3000)})()</script>`
+  // Text can paint before the hero image (desktop), so after FCP the loader
+  // also waits until the high-priority images are decoded — otherwise the
+  // chunks start before the LCP image is on screen.
+  return `<script>(function(){var s=${JSON.stringify(list)},d=document,r=0;function go(){if(r)return;r=1;for(var i=0;i<s.length;i++){var e=d.createElement('script');e.src=s[i][0];e.async=true;if(s[i][1])e.id=s[i][1];d.head.appendChild(e)}}function frame(){requestAnimationFrame(function(){setTimeout(go,0)})}function later(){var m=d.querySelectorAll('img[fetchpriority=high]'),p=[];try{for(var i=0;i<m.length;i++)p.push(m[i].decode().catch(function(){}))}catch(e){}p.length&&window.Promise?Promise.all(p).then(frame):frame()}try{new PerformanceObserver(function(l,o){if(l.getEntriesByName('first-contentful-paint').length){o.disconnect();later()}}).observe({type:'paint',buffered:true})}catch(e){later()}setTimeout(go,3000)})()</script>`
 }
 
 // Inline CSS (experimental.inlineCss) reaches the browser twice: as the <style>
@@ -98,7 +101,7 @@ for (const file of walk(root)) {
   const raw = fs.readFileSync(file, 'utf8')
   const html = stripCssCopy(raw)
   // The CSS copy is dropped on every page; the deferred loader stays in scope.
-  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|kontakt\.html$)/.test(rel)
+  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|kontakt\.html$)|^(index|uk|ru)\.html$/.test(rel)
   if (!inScope || html.includes('data-deferred-hydration')) {
     if (html !== raw) { fs.writeFileSync(file, html); changed++ }
     continue
