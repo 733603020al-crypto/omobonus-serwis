@@ -1,5 +1,10 @@
 # AI_WORK_STATE — единый журнал проекта Omobonus (ветка test)
 
+## 2026-10-13 — активная подсветка Usługi после перехода на главную
+- В `src/components/HeaderInteractive.tsx` добавлена синхронизация активного пункта `Usługi` с якорем `#uslugi` на главной странице.
+- При клике на `Usługi` на главной подсветка включается только после клика; якорь не переписывается принудительно, а переходы по `#uslugi` синхронизируются отдельно.
+- Проверено: локальная главная отдаёт HTTP 200, `tsc --noEmit` и `git diff --check` без ошибок. Commit/push/merge/deploy не выполнялись.
+
 ## Кофемашины — доступность таблицы, H2, подпись №34, bottom-block — 2026-10-12, commit 3659d7b
 - Ветка `pages/serwis-ekspresow-do-kawy`, worktree `C:\Users\Andrii\omobonus-kawa`. Коммит `3659d7b` — только в этой ветке, push/merge/deploy не выполнялись.
 - **Внедрено и закоммичено:** `<th scope="row">` для названия услуги и `<th scope="col">` для заголовков таблицы в 44 строках ремонта (только serwis-ekspresow-do-kawy, через флаг `isKawaRepairTable` в `service-accordion.tsx`, 0 влияния на ~18 других страниц с общим layout); desktop-заголовки разделов теперь реальные `<h2>` (ранее `<div>`, мобильный h2 был недостижим на desktop через `md:hidden`/display:none) — тоже только для этой страницы, без дублей в accessibility-дереве; подпись позиции №34 (PL/RU/UK) уточнена на "ekspres pokazuje brak wody mimo pełnego zbiornika, przerywa parzenie" + переводы; bottom-block, предложение №2 — добавлено "lub nie spieniają mleka" + переводы. Всё проверено PL/RU/UK, desktop 1440px и mobile 390px, tsc без ошибок.
