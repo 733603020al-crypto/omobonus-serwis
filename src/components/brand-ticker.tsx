@@ -205,6 +205,30 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "decopac", src: "/images/brands/decopac.webp", listedOnly: true },
   { name: "evebot", src: "/images/brands/evebot.webp", listedOnly: true },
   { name: "cino-printer", src: "/images/brands/cino-printer.webp", listedOnly: true },
+  // ekspresy do kawy (oficjalne logo producentów; AEG — Wikimedia Commons, plik z prasowej strony AEG)
+  { name: "delonghi", src: "/images/brands/delonghi.svg", listedOnly: true },
+  { name: "philips", src: "/images/brands/philips.svg", listedOnly: true },
+  { name: "saeco", src: "/images/brands/saeco.webp", listedOnly: true },
+  { name: "bosch", src: "/images/brands/bosch.svg", listedOnly: true },
+  { name: "jura", src: "/images/brands/jura.webp", listedOnly: true },
+  { name: "krups", src: "/images/brands/krups.svg", listedOnly: true },
+  { name: "nivona", src: "/images/brands/nivona.svg", listedOnly: true },
+  { name: "melitta", src: "/images/brands/melitta.svg", listedOnly: true },
+  { name: "gaggia", src: "/images/brands/gaggia.webp", listedOnly: true },
+  { name: "miele", src: "/images/brands/miele.svg", listedOnly: true },
+  { name: "sage", src: "/images/brands/sage.svg", listedOnly: true },
+  { name: "smeg", src: "/images/brands/smeg.webp", listedOnly: true },
+  { name: "aeg-home", src: "/images/brands/aeg-home.svg", listedOnly: true },
+  { name: "tchibo", src: "/images/brands/tchibo.svg", listedOnly: true },
+  { name: "wmf", src: "/images/brands/wmf.svg", listedOnly: true },
+  { name: "franke", src: "/images/brands/franke.svg", listedOnly: true },
+  { name: "coffee-format", src: "/images/brands/coffee-format.webp", listedOnly: true, scale: 1.22 }, // ciemna plakietka jak wallner
+  { name: "dr-coffee", src: "/images/brands/dr-coffee.svg", listedOnly: true },
+  { name: "lelit", src: "/images/brands/lelit.svg", listedOnly: true },
+  { name: "rancilio", src: "/images/brands/rancilio.webp", listedOnly: true },
+  { name: "nuova-simonelli", src: "/images/brands/nuova-simonelli.svg", listedOnly: true },
+  { name: "la-marzocco", src: "/images/brands/la-marzocco.svg", listedOnly: true },
+  { name: "ascaso", src: "/images/brands/ascaso.svg", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -239,6 +263,7 @@ const LOGO_RATIO: Record<string, number> = {
   "kornit": 4.120, "polyprint": 4.210, "aeoon": 3.880, "mr": 2.845, "roq": 2.345, "omniprint": 2.160, "coldesi": 4.200, "pigment": 4.205, "anajet": 2.765, "azonprinter": 1.545, "resolute": 1.000, "lawson": 5.530,
   "fedar": 4.070, "audley": 7.595, "pegasus": 3.875, "trujet": 4.880, "artemis": 4.090, "ironprinter": 2.605, "dias": 2.645, "cobe": 7.200, "keditec": 5.055, "dtf-station": 3.110,
   "jetlt": 4.411, "primera": 3.443, "icing-images": 6.563, "icinginks": 2.275, "kopykake": 2.519, "decopac": 6.131, "evebot": 3.682, "cino-printer": 2.706,
+  "delonghi": 3.230, "philips": 5.505, "saeco": 3.080, "bosch": 4.465, "jura": 2.310, "krups": 4.535, "nivona": 1.535, "melitta": 1.515, "gaggia": 2.155, "miele": 2.620, "sage": 2.290, "smeg": 5.125, "aeg-home": 2.640, "tchibo": 3.335, "wmf": 0.805, "franke": 3.075, "coffee-format": 2.485, "dr-coffee": 8.700, "lelit": 1.055, "rancilio": 3.825, "nuova-simonelli": 6.575, "la-marzocco": 5.765, "ascaso": 6.010,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

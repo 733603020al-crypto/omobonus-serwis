@@ -37,6 +37,7 @@ import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg
 import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
 import { createSublimacjaPricingSections, SUBLIMACJA_PRICE_TOOLTIP } from './services-data-sublimacja'
 import { createSpozywczePricingSections, SPOZYWCZE_PRICE_TOOLTIP } from './services-data-spozywcze'
+import { createKawaPricingSections, KAWA_PRICE_TOOLTIP } from './services-data-kawa'
 
 export const services: ServiceData[] = [
   {
@@ -199,6 +200,15 @@ export const services: ServiceData[] = [
     priceTooltip: SPOZYWCZE_PRICE_TOOLTIP,
   },
   {
+    slug: 'serwis-ekspresow-do-kawy',
+    title: 'Serwis i naprawa ekspresów do kawy',
+    subtitle: 'Serwis i naprawa ekspresów do kawy we Wrocławiu',
+    icon: '/images/kawa-carousel-v1-01.webp',
+    description: 'Serwis i naprawa domowych, biurowych i profesjonalnych ekspresów do kawy.',
+    pricingSections: createKawaPricingSections(),
+    priceTooltip: KAWA_PRICE_TOOLTIP,
+  },
+  {
     slug: 'wynajem-drukarek',
     title: 'Wynajem (dzierżawa) drukarek',
     subtitle: 'Dzierżawa urządzeń drukujących dla biur',
@@ -215,4 +225,3 @@ export const services: ServiceData[] = [
     pricingSections: createDrukarkaZastepczaPricingSections(),
   },
 ]
-

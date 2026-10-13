@@ -59,6 +59,8 @@ export interface ServiceAccordionDict {
   konserwacjaPromoDescriptionDtf: string
   konserwacjaPromoDescriptionSublimacja: string
   konserwacjaPromoDescriptionSpozywcze: string
+  konserwacjaPromoTitleKawa: string
+  konserwacjaPromoDescriptionKawa: string
   konserwacjaIncludedNote: string
   konserwacjaExtraPaidNote: string
   konserwacjaIncludedNoteInkjet: string
@@ -77,6 +79,7 @@ export interface ServiceAccordionDict {
     serwisDrukarekDtf: string
     serwisDrukarekSublimacja: string
     serwisDrukarekSpozywczych: string
+    serwisEkspresowDoKawy: string
   }
   /** Подписи строк таблицы wynajem (akordeon-1/akordeon-2), двустрочные варианты для renderLabel */
   wynajemTableLabels: {
@@ -175,6 +178,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionDtg: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTG.',
     konserwacjaPromoDescriptionDtf: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki DTF.',
     konserwacjaPromoDescriptionSublimacja: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki sublimacyjnej.',
+    konserwacjaPromoTitleKawa: '„TYLKO ODKAMIENIANIE?”',
+    konserwacjaPromoDescriptionKawa: 'Nie ograniczamy się do uruchomienia programu czyszczenia — wykonujemy pełną konserwację układu kawowego, wodnego, mlecznego oraz mechanizmów ekspresu.',
     konserwacjaPromoDescriptionSpozywcze: 'Nie ograniczamy się do czyszczenia z panelu — wykonujemy pełną konserwację stacji serwisowej, układu atramentowego i mechaniki drukarki spożywczej.',
     konserwacjaIncludedNote: 'W cenie: materiały eksploatacyjne potrzebne do wykonania usługi, w tym pasta termoprzewodząca i standardowe termopady.',
     konserwacjaExtraPaidNote: 'Dodatkowo płatne: niestandardowe materiały, naprawy i części zamienne — zawsze po wcześniejszym uzgodnieniu.',
@@ -194,6 +199,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekDtf: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTF. W cenniku kolejno podajemy ceny dla urządzeń: kompaktowych / profesjonalnych / przemysłowych.',
       serwisDrukarekSublimacja: 'Cena zależy od klasy, konstrukcji i wielkości drukarki sublimacyjnej: pierwsza — kompaktowa, druga — profesjonalna, trzecia — wielkoformatowa. Czas realizacji nie obejmuje oczekiwania na części.',
       serwisDrukarekSpozywczych: 'Cena zależy od konstrukcji i stopnia rozbudowania drukarki spożywczej: pierwsza — arkuszowa / adaptowana, druga — kompaktowa direct-to-food, trzecia — profesjonalna direct-to-food. Czas realizacji nie obejmuje oczekiwania na części.',
+      serwisEkspresowDoKawy: 'Cena zależy od klasy, konstrukcji i stopnia zaawansowania ekspresu do kawy: pierwsza — domowa, druga — biurowa i premium, trzecia — profesjonalna i gastronomiczna.',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -284,6 +290,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionDtg: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTG-принтера.',
     konserwacjaPromoDescriptionDtf: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки DTF-принтера.',
     konserwacjaPromoDescriptionSublimacja: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки сублімаційного принтера.',
+    konserwacjaPromoTitleKawa: '«ТІЛЬКИ ВИДАЛЕННЯ НАКИПУ?»',
+    konserwacjaPromoDescriptionKawa: 'Ми не обмежуємося запуском програми чищення — виконуємо повне обслуговування кавової, водяної та молочної систем, а також механізмів кавомашини.',
     konserwacjaPromoDescriptionSpozywcze: 'Ми не обмежуємося чищенням із панелі — виконуємо повне обслуговування сервісної станції, чорнильної системи та механіки харчового принтера.',
     konserwacjaIncludedNote: 'У ціну входить: витратні матеріали, потрібні для виконання послуги, зокрема термопаста та стандартні термопрокладки.',
     konserwacjaExtraPaidNote: 'Додатково платно: нестандартні матеріали, ремонт і запасні частини — завжди за попереднім погодженням.',
@@ -303,6 +311,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekDtf: 'Ціна залежить від класу, конструкції та продуктивності DTF-принтера. У прайсі послідовно вказуємо ціни для пристроїв: компактних / професійних / промислових.',
       serwisDrukarekSublimacja: 'Ціна залежить від класу, конструкції та розміру сублімаційного принтера: перша — компактний, друга — професійний, третя — широкоформатний. Термін виконання не враховує очікування на деталі.',
       serwisDrukarekSpozywczych: 'Ціна залежить від конструкції та рівня складності харчового принтера: перша — аркушевий / адаптований, друга — компактний direct-to-food, третя — професійний direct-to-food. Термін виконання не враховує очікування на деталі.',
+      serwisEkspresowDoKawy: 'Ціна залежить від класу, конструкції та рівня складності кавомашини: перша — домашня, друга — офісна та преміум, третя — професійна та гастрономічна.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Компактні принтери A4 простішої конструкції, призначені для домашнього та нечастого використання.', features: [] },
@@ -342,6 +351,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-ekspresow-do-kawy
+      'Ekspresy domowe': { title: 'Домашні кавомашини', description: 'Автоматичні та ріжкові кавомашини для щоденного домашнього використання.', features: [] },
+      'Ekspresy biurowe i premium': { title: 'Офісні та преміум кавомашини', description: 'Просунуті кавомашини для офісів, компаній і вимогливих користувачів.', features: [] },
+      'Ekspresy profesjonalne i gastronomiczne': { title: 'Професійні та гастрономічні кавомашини', description: 'Кавомашини для кав’ярень, ресторанів і готелів, призначені для інтенсивної роботи.', features: [] },
       // serwis-drukarek-spozywczych
       'Arkuszowe / adaptowane': { title: 'Аркушеві / адаптовані', description: 'Струменеві принтери, пристосовані до роботи з їстівним чорнилом і друку на цукрових, вафельних аркушах та frosting sheets.', features: [] },
       'Direct-to-food kompaktowe': { title: 'Direct-to-food компактні', description: 'Компактні принтери з механізмом столу або платформи, що дозволяють друкувати безпосередньо на тістечках, топперах, печиві та інших продуктах.', features: [] },
@@ -441,6 +454,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoDescriptionDtg: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTG-принтера.',
     konserwacjaPromoDescriptionDtf: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики DTF-принтера.',
     konserwacjaPromoDescriptionSublimacja: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики сублимационного принтера.',
+    konserwacjaPromoTitleKawa: '«ТОЛЬКО УДАЛЕНИЕ НАКИПИ?»',
+    konserwacjaPromoDescriptionKawa: 'Мы не ограничиваемся запуском программы чистки — выполняем полное обслуживание кофейной, водяной и молочной систем, а также механизмов кофемашины.',
     konserwacjaPromoDescriptionSpozywcze: 'Мы не ограничиваемся чисткой с панели — выполняем полное обслуживание сервисной станции, чернильной системы и механики пищевого принтера.',
     konserwacjaIncludedNote: 'В цену входит: расходные материалы, необходимые для выполнения услуги, в том числе термопаста и стандартные термопрокладки.',
     konserwacjaExtraPaidNote: 'Дополнительно платно: нестандартные материалы, ремонт и запасные части — всегда по предварительному согласованию.',
@@ -460,6 +475,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekDtf: 'Цена зависит от класса, конструкции и производительности DTF-принтера. В прайсе последовательно указываем цены для устройств: компактных / профессиональных / промышленных.',
       serwisDrukarekSublimacja: 'Цена зависит от класса, конструкции и размера сублимационного принтера: первая — компактный, вторая — профессиональный, третья — широкоформатный. Срок выполнения не включает ожидание деталей.',
       serwisDrukarekSpozywczych: 'Цена зависит от конструкции и степени сложности пищевого принтера: первая — листовой / адаптированный, вторая — компактный direct-to-food, третья — профессиональный direct-to-food. Срок выполнения не включает ожидание деталей.',
+      serwisEkspresowDoKawy: 'Цена зависит от класса, конструкции и степени сложности кофемашины: первая — домашняя, вторая — офисная и премиум, третья — профессиональная и гастрономическая.',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Компактные принтеры A4 более простой конструкции, предназначенные для домашнего и нечастого использования.', features: [] },
@@ -499,6 +515,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       currency: 'zł',
     },
     categoryTranslations: {
+      // serwis-ekspresow-do-kawy
+      'Ekspresy domowe': { title: 'Домашние кофемашины', description: 'Автоматические и рожковые кофемашины для ежедневного домашнего использования.', features: [] },
+      'Ekspresy biurowe i premium': { title: 'Офисные и премиум кофемашины', description: 'Продвинутые кофемашины для офисов, компаний и требовательных пользователей.', features: [] },
+      'Ekspresy profesjonalne i gastronomiczne': { title: 'Профессиональные и гастрономические кофемашины', description: 'Кофемашины для кофеен, ресторанов и отелей, предназначенные для интенсивной работы.', features: [] },
       // serwis-drukarek-spozywczych
       'Arkuszowe / adaptowane': { title: 'Листовые / адаптированные', description: 'Струйные принтеры, приспособленные для работы со съедобными чернилами и печати на сахарных, вафельных листах и frosting sheets.', features: [] },
       'Direct-to-food kompaktowe': { title: 'Direct-to-food компактные', description: 'Компактные принтеры с механизмом стола или платформы, позволяющие печатать прямо на пирожных, топперах, печенье и других продуктах.', features: [] },

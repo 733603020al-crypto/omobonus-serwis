@@ -136,7 +136,15 @@ const LOCALE_NAV: Record<Locale, {
 // Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
 // below. The mobile drawer lists the same groups in one column under "Usługi".
 // Data lives in config/service-categories (shared with the home page catalogue).
-export type ServiceGroup = { title: string; titleMobile?: string; href?: string; items: { label: string; href: string; icon: string; iconTall?: boolean }[] }
+type ServiceGroupItem = { label: string; href: string; icon: string; iconTall?: boolean }
+export type ServiceGroup = {
+  title: string
+  titleMobile?: string
+  href?: string
+  items: ServiceGroupItem[]
+  /** A second titled block stacked below `items` in the same menu column. */
+  subgroup?: { title: string; items: ServiceGroupItem[] }
+}
 
 // Grid placement per group: 2×2 below 1280 px, 4 columns from 1280 px.
 const MEGA_GROUP_CLASS = [
@@ -154,6 +162,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [activeHomeSection, setActiveHomeSection] = useState<string | null>(null)
   const pathname = usePathname()
   const router = useRouter()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
@@ -191,7 +200,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const prefetchHome = () => {
     if (pathname !== homeHref) router.prefetch(homeHref)
   }
-  const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`)
+  const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`) || (pathname === homeHref && activeHomeSection === 'uslugi')
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
 
@@ -210,6 +219,17 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Service links from the home page use an anchor (/#uslugi). The pathname
+  // stays the home pathname, so keep the selected section in sync with the hash.
+  useEffect(() => {
+    const syncHomeSection = () => {
+      setActiveHomeSection(window.location.hash.replace(/^#/, '') || null)
+    }
+    syncHomeSection()
+    window.addEventListener('hashchange', syncHomeSection)
+    return () => window.removeEventListener('hashchange', syncHomeSection)
   }, [])
 
   useEffect(() => {
@@ -231,6 +251,14 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     items: group.items
       .filter((item) => !item.locales || item.locales.includes(locale))
       .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon, iconTall: item.iconTall })),
+    subgroup: group.subgroup
+      ? {
+          title: group.subgroup.title[locale],
+          items: group.subgroup.items
+            .filter((item) => !item.locales || item.locales.includes(locale))
+            .map((item) => ({ label: item.label[locale], href: `${nav.prefix}${item.href}`, icon: item.icon, iconTall: item.iconTall })),
+        }
+      : undefined,
   }))
 
   const scrollToSection = (id: string) => {
@@ -240,6 +268,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         window.location.href = nav.homeSectionHref(id)
         return
       }
+
+      setActiveHomeSection(id)
 
       // Lift the home page's off-screen render skipping so the target's
       // position is computed from real section heights (see globals.css).
@@ -265,6 +295,10 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   }
 
   const scrollToTop = () => {
+    setActiveHomeSection(null)
+    if (window.location.hash) {
+      window.history.replaceState(null, '', nav.homeHref)
+    }
     if (isOpen) {
       setIsOpen(false)
       setTimeout(() => {
@@ -349,7 +383,12 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               (hidden, no icons), so search engines see every service page. */}
           {!isServicesOpen && (
             <ul hidden>
-              {serviceGroups.flatMap((group) => (group.href ? [{ label: group.title, href: group.href }, ...group.items] : group.items)).map((item) => (
+              {serviceGroups.reduce<{ label: string; href: string }[]>((items, group) => {
+                if (group.href) items.push({ label: group.title, href: group.href })
+                items.push(...group.items)
+                items.push(...(group.subgroup?.items ?? []))
+                return items
+              }, []).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} prefetch={false} tabIndex={-1}>
                     {item.label}
@@ -368,7 +407,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               <div className="absolute inset-0 bg-black/55" />
               <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-4">
                 <div className="col-span-full row-start-1 mb-3">
-                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[13px] font-semibold uppercase tracking-[0.25em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
+                  <p className="col-span-full text-center pb-1.5 font-cormorant text-[16px] font-semibold uppercase tracking-[0.2em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
                   </p>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[#bfa76a]/70 to-transparent shadow-[0_0_14px_rgba(191,167,106,0.55)]" />
@@ -406,6 +445,35 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                         </Link>
                       ))}
                     </div>
+                    {col.subgroup && (
+                      <>
+                        <p className="mb-1.5 mt-3 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                          {col.subgroup.title}
+                        </p>
+                        <div className="flex flex-col divide-y divide-[#bfa76a]/25 border border-[#bfa76a]/25">
+                          {col.subgroup.items.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
+                              className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                            >
+                              <Image
+                                src={item.icon}
+                                alt=""
+                                width={28}
+                                height={item.iconTall ? 28 : 22}
+                                sizes="28px"
+                                // A tall icon (cake candle) rises above the slot without changing the row height.
+                                className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
+                                unoptimized
+                              />
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>

@@ -129,6 +129,22 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-elektronika-zasilanie': { icon: '/images/accordion-icon-spozywcze-elektronika.webp' },
     'naprawy-oprogramowanie': { icon: '/images/accordion-icon-spozywcze-oprogramowanie.webp' },
   },
+  'serwis-ekspresow-do-kawy': {
+    'naprawy-pompy': { icon: '/images/accordion-icon-kawa-pompy.webp' },
+    'naprawy-grzanie': { icon: '/images/accordion-icon-kawa-grzanie.webp' },
+    'naprawy-woda': { icon: '/images/accordion-icon-kawa-woda.webp' },
+    'naprawy-zawory': { icon: '/images/accordion-icon-kawa-zawory.webp' },
+    'naprawy-mlynki': { icon: '/images/accordion-icon-kawa-mlynki.webp' },
+    'naprawy-zaparzacz': { icon: '/images/accordion-icon-kawa-zaparzacz.webp' },
+    'naprawy-mleko': { icon: '/images/accordion-icon-kawa-mleko.webp' },
+    'naprawy-uszczelnienia': { icon: '/images/accordion-icon-kawa-uszczelnienia.webp' },
+    'naprawy-elektronika': { icon: '/images/accordion-icon-kawa-elektronika-v2.webp' },
+    'naprawy-panele': { icon: '/images/accordion-icon-kawa-panele-v2.webp' },
+    'naprawy-czujniki': { icon: '/images/accordion-icon-kawa-czujniki.webp' },
+    'naprawy-mechanika': { icon: '/images/accordion-icon-kawa-mechanika.webp' },
+    'naprawy-kolbowe': { icon: '/images/accordion-icon-kawa-kolbowe-v2.webp' },
+    'naprawy-para': { icon: '/images/accordion-icon-kawa-para-v2.webp' },
+  },
   // Drukarki termiczne (etykiet)
   'serwis-drukarek-termicznych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-termiczne-mechanizm-podawania.webp' },

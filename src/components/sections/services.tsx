@@ -84,8 +84,9 @@ const PL: ServicesT = {
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
     'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
+    'serwis-ekspresow-do-kawy': 'Ekspresów do kawy',
     'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
-    'wynajem-drukarek': 'Wynajem (dzierżawa) drukarek',
+    'wynajem-drukarek': 'Wynajem drukarek',
     'drukarka-zastepcza': 'Drukarka zastępcza',
   },
   moreLabel: 'Zobacz więcej',
@@ -146,7 +147,7 @@ export function Services({
 
   // Only the active category's cards are rendered; every service link is
   // still in the HTML through the header's hidden menu list.
-  const activeCards = SERVICE_CATEGORIES[active].items
+  const activeCards = [...SERVICE_CATEGORIES[active].items, ...(SERVICE_CATEGORIES[active].subgroup?.items ?? [])]
     .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
     .map((item) => {
       const slug = item.href.split('/').pop() as string

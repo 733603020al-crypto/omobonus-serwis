@@ -215,7 +215,7 @@ const normalizeSecondLine = (value?: string | null) => {
 const stripTrailingPeriod = (value: string) => {
   let result = value.trim()
   if (result.endsWith('.')) {
-    result = result.slice(0, -1).trimEnd()
+    result = result.slice(0, -1).replace(/\s+$/, '')
   }
   return result
 }
@@ -844,7 +844,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-iglowych',
@@ -866,7 +866,7 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
-  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych',
+  'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
@@ -925,6 +925,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   }
   const isWarmParchment = WARM_PARCHMENT_SLUGS.includes(service.slug)
   const isRepairAccordionLayout = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(service.slug)
+  // Табличные заголовки th/scope только для страницы кофемашин — не трогаем
+  // остальные страницы, использующие тот же REPAIR_ACCORDION_LAYOUT_SLUGS layout.
+  const isKawaRepairTable = service.slug === 'serwis-ekspresow-do-kawy'
+  const kawaColumnLabels = { pl: ['Usługa', 'Cena', 'Czas realizacji'], ru: ['Услуга', 'Цена', 'Срок'], uk: ['Послуга', 'Ціна', 'Строк'] }[locale] ?? ['Usługa', 'Cena', 'Czas realizacji']
   const useWarmSectionIcons = isWarmParchment
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
@@ -1067,8 +1071,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isOutsourcingService = service.slug === 'outsourcing-it'
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
-  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || service.slug === 'serwis-drukarek-spozywczych') ? t.konserwacjaPromoTitleDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-drukarek-dtf' ? t.konserwacjaPromoDescriptionDtf : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-drukarek-spozywczych' ? t.konserwacjaPromoDescriptionSpozywcze :service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoTitleKawa : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? t.konserwacjaPromoTitleDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-drukarek-dtf' ? t.konserwacjaPromoDescriptionDtf : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoDescriptionKawa : service.slug === 'serwis-drukarek-spozywczych' ? t.konserwacjaPromoDescriptionSpozywcze :service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1929,6 +1933,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-dtf-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-sublimacyjnych'
                                 ? '/images/accordion-icon-sublimacja-czyszczenie-v2.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-ekspresow-do-kawy'
+                                ? '/images/accordion-icon-kawa-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-spozywczych'
                                 ? '/images/accordion-icon-spozywcze-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-dtg'
@@ -1963,6 +1969,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-dtf-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-sublimacyjnych'
                                 ? '/images/accordion-icon-sublimacja-naprawy.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-ekspresow-do-kawy'
+                                ? '/images/accordion-icon-kawa-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-spozywczych'
                                 ? '/images/accordion-icon-spozywcze-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-drukarek-dtg'
@@ -2090,11 +2098,19 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               </div>
                             </div>
                             {/* Десктопная версия: обычный заголовок.
-                                Не <h2> — semantyczny <h2> dla tej sekcji już istnieje
-                                w wersji mobilnej (ten sam tekst, wspólny dla obu
-                                breakpointów w drzewie DOM), więc unikamy duplikatu H2. */}
+                                Для большинства страниц — не <h2>, т.к. semantyczny <h2>
+                                dla tej sekcji już istnieje w wersji mobilnej (ten sam
+                                tekst, wspólny dla obu breakpointów w drzewie DOM), więc
+                                unikamy duplikatu H2. Для serwis-ekspresow-do-kawy (единственная
+                                страница) desktop-версия — настоящий <h2>, т.к. мобильный
+                                <h2> здесь display:none на md+ и полностью пропадает
+                                из дерева доступности; оба <h2> взаимоисключающе видимы
+                                (md:hidden / hidden md:block), поэтому дубликата нет. */}
                             <div data-open-header-hover-text="true" className="hidden md:block">
-                              <div className={cn(
+                              {(() => {
+                                const DesktopTitleTag = isKawaRepairTable ? 'h2' : 'div'
+                                return (
+                              <DesktopTitleTag className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",
                                 !(isRepairAccordionLayout && section.id === 'naprawy') && !isOpenHeaderPlateSection && "group-data-[state=open]:md:translate-x-[60px]",
                                 isWarmParchment ? "text-[#3A2817] group-hover:text-[#3A2817]" : "text-[#ffffff] group-hover:text-white",
@@ -2118,7 +2134,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                     )
                                   })()
                                 ) : section.title}
-                              </div>
+                              </DesktopTitleTag>
+                                )
+                              })()}
                               {/* Footer для секции naprawy на странице Outsourcing IT - только когда открыта */}
                               {service.slug === 'outsourcing-it' && section.id === 'naprawy' && isSectionOpen(section.id) && section.footer && (
                                 <span
@@ -2482,7 +2500,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
                         >
                           {/* DTG: opis dłuższy niż jedna linia — na desktopie zawijany jak na telefonie */}
-                          {isMobile || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || service.slug === 'serwis-drukarek-spozywczych') ? konserwacjaPromoDescriptionResolved : (
+                          {isMobile || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? konserwacjaPromoDescriptionResolved : (
                             <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
                           )}
                         </div>
@@ -3124,7 +3142,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                               (isWdA4A3 && idx >= 3)
                                               || (isDzA4A3 && ['__dz_duplex', '__dz_speed'].includes(row.label))
                                             ))
-                                            return filteredRows.flatMap((row, rowIdx) => {
+                                            return filteredRows.reduce<React.ReactNode[]>((elements, row, rowIdx) => {
                                             // Вторая разделительная линия между ценовыми строками ("__dz_price*")
                                             // и первой технической строкой — общий шаблон для всех блоков DZ.
                                             const isLastPriceRow = row.label.startsWith('__dz_price') &&
@@ -3179,14 +3197,16 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                               </TableCell>
                                             </TableRow>
                                             )
-                                            if (!isLastPriceRow) return [rowEl]
-                                            return [
-                                              rowEl,
-                                              <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                                <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
-                                              </TableRow>,
-                                            ]
-                                            })
+                                             elements.push(rowEl)
+                                             if (isLastPriceRow) {
+                                               elements.push(
+                                                 <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                                   <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
+                                                 </TableRow>,
+                                               )
+                                             }
+                                             return elements
+                                             }, [])
                                           })()}
                                         </TableBody>
                                       </Table>
@@ -3218,7 +3238,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       </TableHeader>
                                     )}
                                     <TableBody>
-                                      {effectiveTiers![0].rows.flatMap((row, rowIdx) => {
+                                      {effectiveTiers![0].rows.reduce<React.ReactNode[]>((elements, row, rowIdx) => {
                                         const isA4Wynajem = isWdA4A3
                                         const isDuplexOrSpeed = (isA4Wynajem && rowIdx >= 3)
                                           || (isDzA4A3 && (row.label === '__dz_duplex' || row.label === '__dz_speed' || row.label === '__dz_scan'))
@@ -3308,15 +3328,16 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                           </TableRow>
                                         )
 
-                                        if (!isLastPriceRow) return [rowEl]
-
-                                        return [
-                                          rowEl,
-                                          <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                            <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
-                                          </TableRow>,
-                                        ]
-                                      })}
+                                         elements.push(rowEl)
+                                         if (isLastPriceRow) {
+                                           elements.push(
+                                             <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                               <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
+                                             </TableRow>,
+                                           )
+                                         }
+                                         return elements
+                                      }, [])}
                                     </TableBody>
                                   </Table>
                                 </div>
@@ -3367,16 +3388,29 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       <col className="w-[25%] md:w-[16.5%]" />
                                       <col className="w-0 md:w-[16.5%]" />
                                     </colgroup>
+                                    {isKawaRepairTable && (
+                                      <TableHeader className="sr-only">
+                                        <TableRow>
+                                          <TableHead scope="col">{kawaColumnLabels[0]}</TableHead>
+                                          <TableHead scope="col">{kawaColumnLabels[1]}</TableHead>
+                                          <TableHead scope="col">{kawaColumnLabels[2]}</TableHead>
+                                        </TableRow>
+                                      </TableHeader>
+                                    )}
                                     <TableBody>
                                       {subcategory.items.map((item, idx) => {
                                         const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
                                         const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
+                                        const ServiceNameCell = isKawaRepairTable ? TableHead : TableCell
                                         return (
                                         <TableRow
                                           key={idx}
                                           className={`border-white/20 border-b border-white/30 ${idx === 0 ? 'border-t border-white/30' : ''}`}
                                         >
-                                          <TableCell className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden max-md:text-left">
+                                          <ServiceNameCell
+                                            {...(isKawaRepairTable ? { scope: 'row' } : {})}
+                                            className="font-table-main text-[rgba(255,255,245,0.85)] py-1 pl-2 pr-2 !whitespace-normal w-auto max-w-[67%] leading-[1.3] tracking-normal overflow-hidden max-md:text-left font-normal whitespace-normal"
+                                          >
                                             {(() => {
                                               const parsed = parseServiceText(item.service)
                                               return (
@@ -3388,7 +3422,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                                 </div>
                                               )
                                             })()}
-                                          </TableCell>
+                                          </ServiceNameCell>
                                           <TableCell
                                             className={cn(
                                               'py-1 pl-2 pr-2 align-middle leading-[1.3] text-center w-auto min-w-[80px] md:px-2',

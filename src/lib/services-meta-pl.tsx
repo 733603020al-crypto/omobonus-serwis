@@ -42,6 +42,11 @@ export const headings: Record<string, ServicePageHeadings> = {
     tagline: 'druk na tortach, ciastkach i produktach spożywczych',
     h2: '(Canon, Epson, Brother, JetLT, Primera, Icing Images, Icinginks, Kopykake, DecoPac / PhotoCake, EVEBOT, Cino Printer, ...)',
   },
+  'serwis-ekspresow-do-kawy': {
+    h1: 'Serwis i naprawa ekspresów do kawy we Wrocławiu',
+    lines: ['Serwis i naprawa', 'ekspresów do kawy', 'we Wrocławiu'],
+    h2: "(De'Longhi, Philips, Saeco, Siemens, Bosch, Jura, Krups, Nivona, Melitta, Gaggia, Miele, Sage, Smeg, AEG, Tchibo, WMF, Franke, Coffee Format, Dr.Coffee, Lelit, Rancilio, Nuova Simonelli, La Marzocco, Ascaso)",
+  },
 
   'serwis-drukarek-termicznych': {
     h1: 'Serwis i naprawa drukarek etykiet termicznych i termotransferowych we Wrocławiu',
@@ -162,6 +167,15 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Serwis drukarek spożywczych we Wrocławiu dla cukierni, piekarni i pracowni tortów — także drukarki cukiernicze Canon, Epson i Brother z jadalnym tuszem.',
     ],
   },
+  'serwis-ekspresow-do-kawy': {
+    items: [
+      'Serwisujemy we Wrocławiu ekspresy automatyczne i kolbowe do domu, biura oraz lokali gastronomicznych.',
+      'Naprawiamy ekspresy, które nie pobierają wody, nie podgrzewają jej, przeciekają, nie mielą kawy lub nie spieniają mleka.',
+      'Podobne objawy mogą mieć różne przyczyny, dlatego zakres naprawy ustalamy po diagnostyce urządzenia.',
+      'Obsługujemy ekspresy m.in. marek De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups i Melitta.',
+      'Koszt naprawy przedstawiamy do akceptacji przed rozpoczęciem prac.',
+    ],
+  },
   'naprawa-drukarek': {
     items: [
       'Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy.',
@@ -240,6 +254,7 @@ export const imageAlt: Record<string, string> = {
   'serwis-drukarek-dtf': 'Drukarka DTF do druku na folii',
   'serwis-drukarek-sublimacyjnych': 'Drukarka sublimacyjna — serwis i naprawa we Wrocławiu',
   'serwis-drukarek-spozywczych': 'Drukarka spożywcza do druku na tortach i ciastkach',
+  'serwis-ekspresow-do-kawy': 'Ekspres do kawy — serwis i naprawa',
   'serwis-drukarek-termicznych': 'Drukarka etykiet termicznych',
   'serwis-laptopow': 'Naprawa laptopów',
   'serwis-komputerow-stacjonarnych': 'Serwis komputerów stacjonarnych',
@@ -295,6 +310,10 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-drukarek-spozywczych': {
     title: 'Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus',
     description: 'Naprawa drukarek spożywczych we Wrocławiu: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego. Koszt naprawy znasz z góry.',
+  },
+  'serwis-ekspresow-do-kawy': {
+    title: 'Serwis ekspresów do kawy — Wrocław | Omobonus',
+    description: 'Naprawa ekspresów do kawy we Wrocławiu: układ wodny, grzewczy, młynek, zaparzacz, mleko i elektronika. Koszt naprawy poznasz przed pracą.',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
@@ -388,6 +407,7 @@ export const labels: ServicePageLabels = {
     'serwis-drukarek-dtf': 'Masz problem z drukarką DTF?',
     'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką sublimacyjną?',
     'serwis-drukarek-spozywczych': 'Masz problem z drukarką spożywczą?',
+    'serwis-ekspresow-do-kawy': 'Masz problem z ekspresem do kawy?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',
   },
@@ -407,6 +427,7 @@ export const labels: ServicePageLabels = {
     'serwis-drukarek-dtf': 'Masz problem z drukarką?',
     'serwis-drukarek-sublimacyjnych': 'Masz problem z drukarką?',
     'serwis-drukarek-spozywczych': 'Masz problem z drukarką?',
+    'serwis-ekspresow-do-kawy': 'Masz problem z ekspresem do kawy?',
     'wynajem-drukarek': 'Masz problem z drukarką?',
     'drukarka-zastepcza': 'Masz problem z drukarką?',
     'serwis-plotterow': 'Masz problem z ploterem?',
