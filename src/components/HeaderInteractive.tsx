@@ -383,11 +383,12 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               (hidden, no icons), so search engines see every service page. */}
           {!isServicesOpen && (
             <ul hidden>
-              {serviceGroups.flatMap((group) => [
-                ...(group.href ? [{ label: group.title, href: group.href }] : []),
-                ...group.items,
-                ...(group.subgroup?.items ?? []),
-              ]).map((item) => (
+              {serviceGroups.reduce<{ label: string; href: string }[]>((items, group) => {
+                if (group.href) items.push({ label: group.title, href: group.href })
+                items.push(...group.items)
+                items.push(...(group.subgroup?.items ?? []))
+                return items
+              }, []).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} prefetch={false} tabIndex={-1}>
                     {item.label}

@@ -354,7 +354,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                                     </div>
 
                                     {localizedTime && (
-                                        <span className="text-[12px] text-[#72502B] ml-1">
+                                        <span className="text-[12px] text-[#3A2817] ml-1">
                                             • {localizedTime}
                                         </span>
                                     )}

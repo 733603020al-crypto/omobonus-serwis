@@ -106,6 +106,21 @@ const ANIMATED_STILLS: Record<string, string> = {
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp': '/images/Serwis_i_Naprawa_Drukarek_3D-static.webp',
 }
 
+// Smaller candidates for slides that are visible in the carousel stack but are
+// not the active slide. The active slide keeps the original candidate.
+const RESPONSIVE_SMALLS: Record<string, string> = {
+  '/images/02_serwis-komputerow-stacjonarnych-static.webp': '/images/02_serwis-komputerow-stacjonarnych-static-small.webp',
+  '/images/atrament-carousel-v3-01-print2-first.webp': '/images/atrament-carousel-v3-01-print2-first-small.webp',
+  '/images/laptop-carousel/laptop-carousel-v2-01.webp': '/images/laptop-carousel/laptop-carousel-v2-01-small.webp',
+  '/images/atrament-carousel-v3-01.webp': '/images/atrament-carousel-v3-01-small.webp',
+  '/images/laser-carousel-v3-01.webp': '/images/laser-carousel-v3-01-small.webp',
+}
+
+const responsiveSrcSet = (src: string) => {
+  const small = RESPONSIVE_SMALLS[src]
+  return small ? `${small} 384w, ${src} 622w` : undefined
+}
+
 function preloadImages(srcs: string[]): Promise<void> {
   return Promise.all(
     srcs.map(
@@ -870,9 +885,11 @@ export function HeroPrinterCarousel({
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt="" aria-hidden="true" loading="lazy" className="hero-intro-photo" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={introVideo.poster}
-                  alt=""
+                  <img
+                   src={introVideo.poster}
+                   srcSet={responsiveSrcSet(introVideo.poster)}
+                   sizes={tier === 0 ? '622px' : '384px'}
+                   alt=""
                   aria-hidden="true"
                   loading="eager"
                   fetchPriority={i === 0 ? 'high' : 'auto'}
@@ -909,11 +926,14 @@ export function HeroPrinterCarousel({
             )
           }
 
+          const displayedSrc = frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src
           return (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={src}
-              src={frontAnim?.i === i ? frontAnim.url : stillFor(i) ?? stillOf(i) ?? src}
+              src={displayedSrc}
+              srcSet={responsiveSrcSet(displayedSrc)}
+              sizes={tier === 0 ? '622px' : '384px'}
               alt=""
               aria-hidden="true"
               loading={i === 0 ? 'eager' : 'lazy'}

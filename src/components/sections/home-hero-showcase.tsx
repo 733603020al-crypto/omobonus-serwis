@@ -40,6 +40,7 @@ const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0, 4, 13, 0]
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
 const SLIDE_POSTERS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static.webp']
+const MOBILE_STILLS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static-mobile.webp']
 // Phones get the same PC animation at 483×600 (~450KB instead of ~650KB).
 const MOBILE_SLIDE_ANIMS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-mobile.webp']
 // First open only: light cracked-screen laptop (slide 1 of /uslugi/serwis-laptopow)
@@ -187,6 +188,7 @@ export function HomeHeroShowcase({
               mobileSizeCoefficients={MOBILE_SIZE_COEFFICIENTS}
               verticalBias={VERTICAL_BIAS}
               slidePosters={SLIDE_POSTERS}
+              mobileStills={MOBILE_STILLS}
               mobileSlideAnims={MOBILE_SLIDE_ANIMS}
               opening={OPENING}
               introVideo={ATRAMENT_PRINT_CLIP}

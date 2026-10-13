@@ -215,7 +215,7 @@ const normalizeSecondLine = (value?: string | null) => {
 const stripTrailingPeriod = (value: string) => {
   let result = value.trim()
   if (result.endsWith('.')) {
-    result = result.slice(0, -1).trimEnd()
+    result = result.slice(0, -1).replace(/\s+$/, '')
   }
   return result
 }
@@ -3142,7 +3142,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                               (isWdA4A3 && idx >= 3)
                                               || (isDzA4A3 && ['__dz_duplex', '__dz_speed'].includes(row.label))
                                             ))
-                                            return filteredRows.flatMap((row, rowIdx) => {
+                                            return filteredRows.reduce<React.ReactNode[]>((elements, row, rowIdx) => {
                                             // Вторая разделительная линия между ценовыми строками ("__dz_price*")
                                             // и первой технической строкой — общий шаблон для всех блоков DZ.
                                             const isLastPriceRow = row.label.startsWith('__dz_price') &&
@@ -3197,14 +3197,16 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                               </TableCell>
                                             </TableRow>
                                             )
-                                            if (!isLastPriceRow) return [rowEl]
-                                            return [
-                                              rowEl,
-                                              <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                                <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
-                                              </TableRow>,
-                                            ]
-                                            })
+                                             elements.push(rowEl)
+                                             if (isLastPriceRow) {
+                                               elements.push(
+                                                 <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                                   <TableCell colSpan={2} style={{ padding: 0, height: '2px' }} />
+                                                 </TableRow>,
+                                               )
+                                             }
+                                             return elements
+                                             }, [])
                                           })()}
                                         </TableBody>
                                       </Table>
@@ -3236,7 +3238,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       </TableHeader>
                                     )}
                                     <TableBody>
-                                      {effectiveTiers![0].rows.flatMap((row, rowIdx) => {
+                                      {effectiveTiers![0].rows.reduce<React.ReactNode[]>((elements, row, rowIdx) => {
                                         const isA4Wynajem = isWdA4A3
                                         const isDuplexOrSpeed = (isA4Wynajem && rowIdx >= 3)
                                           || (isDzA4A3 && (row.label === '__dz_duplex' || row.label === '__dz_speed' || row.label === '__dz_scan'))
@@ -3326,15 +3328,16 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                           </TableRow>
                                         )
 
-                                        if (!isLastPriceRow) return [rowEl]
-
-                                        return [
-                                          rowEl,
-                                          <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
-                                            <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
-                                          </TableRow>,
-                                        ]
-                                      })}
+                                         elements.push(rowEl)
+                                         if (isLastPriceRow) {
+                                           elements.push(
+                                             <TableRow key={`price-divider-${rowIdx}`} aria-hidden="true" className="border-[#72502B]/30 border-b">
+                                               <TableCell colSpan={1 + effectiveTiers!.length} style={{ padding: 0, height: '2px' }} />
+                                             </TableRow>,
+                                           )
+                                         }
+                                         return elements
+                                      }, [])}
                                     </TableBody>
                                   </Table>
                                 </div>
