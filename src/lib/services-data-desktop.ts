@@ -61,6 +61,8 @@ const applyDesktopRepairSubcategories = (sections: PricingSection[]) => {
         { service: 'Aktualizacja / konfiguracja BIOS / UEFI' },
         { service: 'Naprawa / odzyskanie BIOS po błędnej aktualizacji' },
         { service: 'Programowanie kości BIOS / UEFI' },
+        { service: 'Usunięcie hasła BIOS / UEFI' },
+        { service: 'Odtworzenie BIOS z zachowaniem danych (numer seryjny, klucz Windows)' },
         { service: 'Konfiguracja RAID 0 / 1 / 5 / 10' },
       ],
     },
@@ -69,6 +71,7 @@ const applyDesktopRepairSubcategories = (sections: PricingSection[]) => {
       title: 'Płyta główna i elektronika',
       items: [
         { service: 'Naprawa płyty głównej\n(przerwane ścieżki, zimne luty, mikrolutowanie, uszkodzenia elementów elektronicznych)' },
+        { service: 'Wymiana / montaż płyty głównej' },
         { service: 'Naprawa / wymiana portu USB / HDMI / Audio / LAN' },
         { service: 'Wymiana baterii CMOS / BIOS' },
         { service: 'Naprawa przycisku POWER / panelu przedniego' },
@@ -79,11 +82,11 @@ const applyDesktopRepairSubcategories = (sections: PricingSection[]) => {
       title: 'Podzespoły i modernizacja',
       items: [
         { service: 'Wymiana / montaż procesora' },
-        { service: 'Wymiana / montaż płyty głównej' },
         { service: 'Wymiana / montaż karty graficznej' },
         { service: 'Wymiana / rozbudowa pamięci RAM' },
         { service: 'Wymiana zasilacza' },
         { service: 'Wymiana / montaż karty rozszerzeń\n(np. Wi-Fi, LAN, karta dźwiękowa, kontroler)' },
+        { service: 'Naprawa / konfiguracja Wi-Fi i Bluetooth' },
         { service: 'Wymiana napędu / nagrywarki' },
         { service: 'Wymiana obudowy / pełne przełożenie podzespołów' },
         { service: 'Montaż komputera z części dostarczonych przez Klienta' },
@@ -138,7 +141,7 @@ export const createDesktopPricingSections = (): PricingSection[] => {
 const desktopFaqItems = (): PricingSubcategory[] => [
   { id: 'faq-1', title: 'Jak wygląda proces naprawy komputera stacjonarnego?', items: [], answer: 'Najpierw wykonujemy diagnozę i przedstawiamy wycenę. Naprawę rozpoczynamy dopiero po akceptacji kosztu.' },
   { id: 'faq-2', title: 'Ile trwa diagnoza komputera?', items: [], answer: 'Pełna diagnoza zajmuje zwykle **1–2 dni**.' },
-  { id: 'faq-3', title: 'Czy diagnoza jest bezpłatna?', items: [], answer: 'Tak, jeśli zlecasz naprawę. W przypadku rezygnacji po pełnej diagnozie jej koszt wynosi **100 zł**.' },
+  { id: 'faq-3', title: 'Czy diagnoza jest bezpłatna?', items: [], answer: 'Tak, jeśli zlecasz naprawę. W przypadku rezygnacji po pełnej diagnozie jej koszt wynosi **80 zł**.' },
   { id: 'faq-4', title: 'Czy przed naprawą poznam dokładny koszt?', items: [], answer: 'Tak. Koszt potwierdzamy przed rozpoczęciem płatnych prac — bez Twojej akceptacji nie zaczynamy naprawy.' },
   { id: 'faq-5', title: 'Ile trwa naprawa komputera?', items: [], answer: 'Standardowe naprawy trwają zwykle **1–3 dni**. Naprawa elektroniki, odzyskiwanie danych lub oczekiwanie na części mogą potrwać dłużej.' },
   { id: 'faq-6', title: 'Czy ceny w cenniku obejmują części zamienne?', items: [], answer: 'Jeśli przy cenie widnieje „+ części”, cena dotyczy samej robocizny, a koszt części uzgadniamy osobno.' },

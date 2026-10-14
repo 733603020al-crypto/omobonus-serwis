@@ -44,7 +44,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    title: { pl: 'Drukarek i kserokopiarek biurowych', uk: 'Офісних принтерів та копірів', ru: 'Офисных принтеров и копиров' },
+    title: { pl: 'Drukarek (kserokopiarek) biurowych', uk: 'Офісних принтерів (копірів)', ru: 'Офисных принтеров (копиров)' },
     titleMobile: { pl: 'Drukarek biurowych', uk: 'Офісних принтерів', ru: 'Офисных принтеров' },
     href: '/uslugi/naprawa-drukarek',
     icon: '/images/menu-icon-drukarki-laserowe.webp',
@@ -59,12 +59,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: { pl: 'Drukarek specjalistycznych', uk: 'Спеціалізованих принтерів', ru: 'Специализированных принтеров' },
     icon: '/images/menu-icon-drukarki-dtg.webp',
     items: [
+      { label: { pl: 'Drukarek 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/menu-icon-drukarki-3d.webp' },
       { label: { pl: 'Drukarek sublimacyjnych', uk: 'Сублімаційні принтери', ru: 'Сублимационные принтеры' }, href: '/uslugi/serwis-drukarek-sublimacyjnych', icon: '/images/menu-icon-drukarki-sublimacyjne.webp' },
       { label: { pl: 'Drukarek DTF', uk: 'DTF-принтери', ru: 'DTF-принтеры' }, href: '/uslugi/serwis-drukarek-dtf', icon: '/images/menu-icon-drukarki-dtf.webp' },
       { label: { pl: 'Drukarek DTG', uk: 'DTG-принтери', ru: 'DTG-принтеры' }, href: '/uslugi/serwis-drukarek-dtg', icon: '/images/menu-icon-drukarki-dtg.webp' },
       { label: { pl: 'Drukarek spożywczych', uk: 'Харчові принтери', ru: 'Пищевые принтеры' }, href: '/uslugi/serwis-drukarek-spozywczych', icon: '/images/menu-icon-drukarki-spozywcze.webp', iconTall: true },
       { label: { pl: 'Drukarek do kart plastikowych', uk: 'Принтери пластикових карток', ru: 'Принтеры пластиковых карт' }, href: '/uslugi/serwis-drukarek-do-kart-plastikowych', icon: '/images/menu-icon-drukarki-do-kart-plastikowych.webp' },
-      { label: { pl: 'Drukarek 3D', uk: '3D-принтери', ru: '3D-принтеры' }, href: '/uslugi/serwis-drukarek-3d', icon: '/images/menu-icon-drukarki-3d.webp' },
     ],
   },
   {

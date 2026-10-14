@@ -405,7 +405,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               style={{ backgroundImage: `var(--bg-parchment)` }}
             >
               <div className="absolute inset-0 bg-black/55" />
-              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-4">
+              <div className="relative z-10 grid grid-cols-2 items-start gap-0 p-4 min-[1280px]:grid-cols-[0.95fr_1.12fr_1.05fr_0.95fr]">
                 <div className="col-span-full row-start-1 mb-3">
                   <p className="col-span-full text-center pb-1.5 font-cormorant text-[16px] font-semibold uppercase tracking-[0.2em] text-white [text-shadow:0_0_14px_rgba(191,167,106,0.75)]">
                     {megaMenuHeader}
