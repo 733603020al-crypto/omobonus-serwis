@@ -8,14 +8,12 @@ export interface SubcategoryVisual {
   software?: boolean
 }
 
-const SOFTWARE_ICON = '/images/naprawy-oprogramowanie-v3.webp'
-
 // Нейтральная временная иконка: для подкатегорий, у которых ещё нет своей картинки.
 export const NAPRAWY_PLACEHOLDER_ICON = '/images/accordion-icon-naprawy.webp'
 
 export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> = {
   'serwis-laptopow': {
-    'naprawy-oprogramowanie': { icon: SOFTWARE_ICON, software: true },
+    'naprawy-oprogramowanie': { icon: '/images/naprawy-oprogramowanie-laptop-v3.webp' },
     'naprawy-bios': { icon: '/images/naprawy-bios-desktop-v2.webp' },
     'naprawy-plyta-glowna': { icon: '/images/naprawy-plyta-glowna-laptop-v6.webp' },
     'naprawy-bateria': { icon: '/images/naprawy-bateria-laptop.webp' },
@@ -28,7 +26,7 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-klawiatura-touchpad': { icon: '/images/accordion-subcategory-klawiatura.webp' },
   },
   'serwis-komputerow-stacjonarnych': {
-    'naprawy-oprogramowanie': { icon: SOFTWARE_ICON, software: true },
+    'naprawy-oprogramowanie': { icon: '/images/naprawy-oprogramowanie-desktop-v5.webp' },
     'naprawy-bios': { icon: '/images/naprawy-bios-desktop-v2.webp' },
     'naprawy-plyta-glowna': { icon: '/images/naprawy-plyta-glowna-v3.webp' },
     'naprawy-podzespoly': { icon: '/images/naprawy-podzespoly-desktop.webp' },
