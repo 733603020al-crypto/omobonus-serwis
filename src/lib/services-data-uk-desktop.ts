@@ -86,6 +86,13 @@ export const desktopNaprawy: PricingSection = {
         { service: 'Заміна / встановлення материнської плати' },
         { service: 'Ремонт / заміна порту USB / HDMI / Audio / LAN' },
         { service: 'Заміна батарейки CMOS / BIOS' },
+      ],
+    },
+    {
+      id: 'naprawy-zasilanie',
+      title: 'Живлення',
+      items: [
+        { service: 'Заміна блока живлення' },
         { service: 'Ремонт кнопки POWER / передньої панелі' },
       ],
     },
@@ -96,7 +103,6 @@ export const desktopNaprawy: PricingSection = {
         { service: 'Заміна / встановлення процесора' },
         { service: 'Заміна / встановлення відеокарти' },
         { service: 'Заміна / розширення пам\'яті RAM' },
-        { service: 'Заміна блока живлення' },
         { service: 'Заміна / встановлення карти розширення\n(напр. Wi-Fi, LAN, звукова карта, контролер)' },
         { service: 'Ремонт / налаштування Wi-Fi та Bluetooth' },
         { service: 'Заміна приводу / записувача' },

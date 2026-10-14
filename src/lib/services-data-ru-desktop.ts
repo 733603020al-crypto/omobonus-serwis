@@ -86,6 +86,13 @@ export const desktopNaprawy: PricingSection = {
         { service: 'Замена / установка материнской платы' },
         { service: 'Ремонт / замена порта USB / HDMI / Audio / LAN' },
         { service: 'Замена батарейки CMOS / BIOS' },
+      ],
+    },
+    {
+      id: 'naprawy-zasilanie',
+      title: 'Питание',
+      items: [
+        { service: 'Замена блока питания' },
         { service: 'Ремонт кнопки POWER / передней панели' },
       ],
     },
@@ -96,7 +103,6 @@ export const desktopNaprawy: PricingSection = {
         { service: 'Замена / установка процессора' },
         { service: 'Замена / установка видеокарты' },
         { service: 'Замена / расширение памяти RAM' },
-        { service: 'Замена блока питания' },
         { service: 'Замена / установка карты расширения\n(напр. Wi-Fi, LAN, звуковая карта, контроллер)' },
         { service: 'Ремонт / настройка Wi-Fi и Bluetooth' },
         { service: 'Замена привода / пишущего привода' },

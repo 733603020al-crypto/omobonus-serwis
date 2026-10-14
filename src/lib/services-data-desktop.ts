@@ -74,6 +74,13 @@ const applyDesktopRepairSubcategories = (sections: PricingSection[]) => {
         { service: 'Wymiana / montaż płyty głównej' },
         { service: 'Naprawa / wymiana portu USB / HDMI / Audio / LAN' },
         { service: 'Wymiana baterii CMOS / BIOS' },
+      ],
+    },
+    {
+      id: 'naprawy-zasilanie',
+      title: 'Zasilanie',
+      items: [
+        { service: 'Wymiana zasilacza' },
         { service: 'Naprawa przycisku POWER / panelu przedniego' },
       ],
     },
@@ -84,7 +91,6 @@ const applyDesktopRepairSubcategories = (sections: PricingSection[]) => {
         { service: 'Wymiana / montaż procesora' },
         { service: 'Wymiana / montaż karty graficznej' },
         { service: 'Wymiana / rozbudowa pamięci RAM' },
-        { service: 'Wymiana zasilacza' },
         { service: 'Wymiana / montaż karty rozszerzeń\n(np. Wi-Fi, LAN, karta dźwiękowa, kontroler)' },
         { service: 'Naprawa / konfiguracja Wi-Fi i Bluetooth' },
         { service: 'Wymiana napędu / nagrywarki' },
