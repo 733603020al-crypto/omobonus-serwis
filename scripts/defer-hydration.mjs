@@ -1,6 +1,6 @@
 // Post-build step (runs after `next build`). Every prerendered page loses the
 // duplicate CSS text of the RSC payload (see stripCssCopy). In the HTML of the
-// home page, the service pages and /kontakt (PL/UK/RU), Next's async <script src> chunks (and their preload links)
+// home page, the service pages, /kontakt, /o-nas and the legal pages (PL/UK/RU), Next's async <script src> chunks (and their preload links)
 // are replaced by one tiny inline loader that requests them only after the
 // first paint.
 // The first screen is fully server-rendered, so nothing changes visually —
@@ -101,7 +101,7 @@ for (const file of walk(root)) {
   const raw = fs.readFileSync(file, 'utf8')
   const html = stripCssCopy(raw)
   // The CSS copy is dropped on every page; the deferred loader stays in scope.
-  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|kontakt\.html$)|^(index|uk|ru)\.html$/.test(rel)
+  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|(kontakt|o-nas|polityka-prywatnosci|regulamin)\.html$)|^(index|uk|ru)\.html$/.test(rel)
   if (!inScope || html.includes('data-deferred-hydration')) {
     if (html !== raw) { fs.writeFileSync(file, html); changed++ }
     continue
