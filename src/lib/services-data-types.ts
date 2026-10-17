@@ -33,6 +33,7 @@ export interface PricingSection {
   id: string
   title: string
   mobileTitle?: string // Krótsza nazwa nagłówka sekcji tylko na mobile (zamiast title)
+  mobileOpenTitle?: string // Krótsza nazwa tylko w otwartym nagłówku na mobile (zamknięta karta i SSR — pełny title)
   icon?: string
   status?: string // np. "GRATIS", "od 50 zł"
   items: PricingItem[]

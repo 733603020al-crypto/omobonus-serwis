@@ -2057,13 +2057,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') && isSectionOpen(section.id) && "flex flex-col",
                                       isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                                     )}>
-                                      {isRepairAccordionLayout && section.id === 'konserwacja' && !section.mobileTitle && splitTitleSuffix(section.title).suffix ? (
-                                        // открытая шапка на телефоне: «(bez naprawy)» скрыто (в DOM — Google видит), иначе название не помещается у картинки
-                                        <>
-                                          {splitTitleSuffix(section.title).main}
-                                          <span className="group-data-[state=open]:hidden"> {splitTitleSuffix(section.title).suffix}</span>
-                                        </>
-                                      ) : (section.mobileTitle ?? section.title)}
+                                      {/* открытая шапка на телефоне: короткое название, если есть (закрытая карточка и SSR — полное) */}
+                                      {(isSectionOpen(section.id) && section.mobileOpenTitle) || section.mobileTitle || section.title}
                                     </TitleTag>
                                   )
                                   const footerNode = hasWynajemA3Footer && (

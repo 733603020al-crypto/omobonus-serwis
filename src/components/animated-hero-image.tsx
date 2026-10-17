@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
+const ANIM_DELAY_MS = 2500
+
 interface AnimatedHeroImageProps {
   animatedSrc: string
   // Optional smaller animated file for phones (same frames/timing), used on
@@ -17,8 +19,9 @@ interface AnimatedHeroImageProps {
 // Progressive loading for a heavy animated-WebP hero, same on every screen size:
 // - Everyone (mobile and desktop) starts on the lightweight static first-frame
 //   fallback (fast LCP, small transfer), then swaps to the animated file only
-//   after window "load", so it never competes with the page's own
-//   critical-path loading.
+//   once the browser is idle after window "load" plus ANIM_DELAY_MS (same
+//   timing as OutsourcingItHero), so it never competes with the page's own
+//   critical-path loading or hydration.
 // - prefers-reduced-motion: keeps the static frame and never fetches the
 //   animation at all, on any screen size.
 // - If the animated file fails to load, the static frame simply stays put.
@@ -46,17 +49,23 @@ export function AnimatedHeroImage({
       preload.src = src
     }
 
-    if (document.readyState === 'complete') {
-      swap()
-      return () => {
-        cancelled = true
+    let timer = 0
+    let idle = 0
+    const start = () => {
+      const later = () => {
+        timer = window.setTimeout(swap, ANIM_DELAY_MS)
       }
+      if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(later, { timeout: 3000 })
+      else later()
     }
 
-    window.addEventListener('load', swap, { once: true })
+    if (document.readyState === 'complete') start()
+    else window.addEventListener('load', start, { once: true })
     return () => {
       cancelled = true
-      window.removeEventListener('load', swap)
+      window.removeEventListener('load', start)
+      window.clearTimeout(timer)
+      if (idle) window.cancelIdleCallback(idle)
     }
   }, [animatedSrc, mobileAnimatedSrc])
 

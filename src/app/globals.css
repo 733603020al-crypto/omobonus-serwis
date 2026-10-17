@@ -2886,7 +2886,9 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
-      padding-left: 8px !important;
+      /* no gap after the image: "Czyszczenie"/"konserwacja" (85-86px at 18px)
+         only fit the column without it */
+      padding-left: 0 !important;
       box-sizing: border-box !important;
       text-align: left !important;
       white-space: normal !important;
@@ -2901,6 +2903,16 @@
          3 lines (60px) still fit beside the 81px image. */
       font-size: 18px !important;
       hyphens: auto !important;
+    }
+
+    /* Czyszczenie: 17px (as outsourcing-it below), 2 lines, long words not
+       hyphenated — UK "обслуговування" is cut with "…" on the 2nd line. */
+    .page-repair-accordion [data-open-header-plate="true"][data-has-table="true"][data-section-id="konserwacja"] [data-slot="accordion-trigger"][data-state="open"] .zakres-title-text {
+      font-size: 17px !important;
+      -webkit-line-clamp: 2 !important;
+      hyphens: none !important;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
     }
 
     /* "Cena, zł" in the open header: the header row is 6px wider on the

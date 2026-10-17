@@ -52,6 +52,7 @@ export const defaultPricingSections: PricingSection[] = [
   {
     id: 'konserwacja',
     title: 'Czyszczenie i konserwacja (bez naprawy)',
+    mobileOpenTitle: 'Czyszczenie konserwacja',
     items: [], // każda strona ustawia własny pakiet
   },
   {

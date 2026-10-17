@@ -4,438 +4,184 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import type { ServiceData } from '@/lib/services-data'
-import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
+import { serviceAccordionI18n, type ServiceAccordionDict } from '@/lib/i18n/service-accordion'
 import { renderPriceLines } from '@/components/service-accordion'
 import { X } from 'lucide-react'
 import { BacklitImage } from '@/components/backlit-image'
 
-const DEVICE_CATEGORIES = [
-  {
-    title: 'Drukarka domowa',
-    description:
-      'Kompaktowe drukarki laserowe A4 o prostszej konstrukcji, przeznaczone do użytku domowego i niewielkich obciążeń.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Drukarka biurowa',
-    description:
-      'Drukarki i urządzenia wielofunkcyjne A4/A3 do regularnej pracy, z bardziej rozbudowanym torem papieru i dodatkowymi modułami.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Drukarka biznesowa',
-    description:
-      'Duże i rozbudowane urządzenia A4/A3 do intensywnej pracy, często z wieloma podajnikami, duplexem, ADF i modułami wykańczającymi.',
-    features: [] as string[],
-    examples: '',
-  },
-]
+type DeviceCategoriesTextKey = keyof ServiceAccordionDict['deviceCategoriesDescription']
 
-// Категории для страницы "Serwis Drukarek Termiczno-etykietowych"
-const THERMAL_DEVICE_CATEGORIES = [
-  {
-    title: 'Drukarka biurkowa',
-    description:
-      'Kompaktowe drukarki etykiet przeznaczone do standardowej pracy przy mniejszych i średnich wolumenach.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Drukarka półprzemysłowa',
-    description:
-      'Wydajniejsze drukarki do regularnej pracy w magazynach, handlu i logistyce, z bardziej rozbudowanym mechanizmem.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Drukarka przemysłowa',
-    description:
-      'Drukarki o wzmocnionej konstrukcji do intensywnej lub ciągłej pracy, często wyposażone w dodatkowe moduły.',
-    features: [] as string[],
-    examples: '',
-  },
-]
+// Osobne mapy tłumaczeń kart w i18n — dla stron, na których polski tytuł karty powtarza się na innej stronie
+type DeviceCategoriesTranslationsKey =
+  | 'categoryTranslationsAtrament'
+  | 'categoryTranslationsDtg'
+  | 'categoryTranslationsDtf'
+  | 'categoryTranslationsSublimacja'
+  | 'categoryTranslationsSpozywcze'
 
-// Категории для страницы "Serwis Drukarek Igłowych"
-const NEEDLE_DEVICE_CATEGORIES = [
-  {
-    title: 'Mała drukarka igłowa',
-    description:
-      'Kompaktowe drukarki biurkowe z węższym torem papieru i prostszą konstrukcją.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Średnia drukarka igłowa',
-    description:
-      'Większe drukarki biurowe i formularzowe z rozbudowanym mechanizmem podawania papieru.',
-    features: [] as string[],
-    examples: '',
-  },
-  {
-    title: 'Duża drukarka igłowa',
-    description:
-      'Drukarki przemysłowe i szerokowierszowe do intensywnej pracy i wielowarstwowych formularzy.',
-    features: [] as string[],
-    examples: '',
-  },
-]
-
-// Категории для страницы "Serwis Drukarek 3D" (те же описания, что у игольчатых)
-const PRINTER_3D_DEVICE_CATEGORIES = NEEDLE_DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Mała drukarka 3D', 'Średnia drukarka 3D', 'Duża drukarka 3D'][i],
-  description: [
-    'Kompaktowe drukarki o prostej konstrukcji i małym polu roboczym.',
-    'Większe drukarki, często zamknięte lub CoreXY, z bardziej rozbudowaną mechaniką.',
-    'Duże drukarki desktopowe i profesjonalne o rozbudowanej konstrukcji i bardziej pracochłonnym serwisie.',
-  ][i],
-  features: [] as string[],
-}))
-
-// Категории для страницы "Serwis Ploterów" (особенности — как у игольчатых)
-const PLOTTER_DEVICE_CATEGORIES = NEEDLE_DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Mały ploter', 'Średni ploter', 'Duży ploter'][i],
-  description: [
-    'Kompaktowe, zwykle do 24″. Prostsza konstrukcja i łatwiejszy dostęp serwisowy.',
-    'Plotery o szerokości druku od 36″ do 44″. Większe gabaryty i bardziej rozbudowana konstrukcja.',
-    'Plotery o szerokości druku powyżej 44″, np. 54–64″ i szersze. Cięższa konstrukcja i bardziej pracochłonny serwis.',
-  ][i],
-  features: [] as string[],
-}))
-
-// Категории для страницы "Serwis Drukarek Atramentowych" (те же title/картинки, свои описания, без подписей)
-const INKJET_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  description: [
-    'Kompaktowe drukarki A4 o prostszej konstrukcji, przeznaczone do użytku domowego i okazjonalnego.',
-    'Drukarki A4/A3 do regularnej pracy, często z rozbudowanym podajnikiem, skanerem lub systemem stałego zasilania tuszem.',
-    'Większe i bardziej rozbudowane urządzenia A4/A3 do intensywnej pracy i większych obciążeń.',
-  ][i],
-  features: [] as string[],
-}))
-
-// Категории для страницы "Serwis niszczarek"
-const NISZCZARKI_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Mała', 'Biurowa', 'Profesjonalna'][i],
-  description: [
-    'Kompaktowe niszczarki do domu i małego biura, przeznaczone do niewielkich i regularnych ilości dokumentów.',
-    'Niszczarki do regularnej pracy biurowej, dla kilku użytkowników, o większej wydajności i bardziej rozbudowanej konstrukcji.',
-    'Wydajne niszczarki do intensywnej lub ciągłej pracy, dużych ilości dokumentów i zastosowań profesjonalnych.',
-  ][i],
-}))
-
-// Категории для страницы "Naprawa zasilaczy UPS" — klasy mocy
-const UPS_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['do 1 kVA', '1–3 kVA', '3–10 kVA'][i],
-  description: [
-    'Małe zasilacze do komputera, routera, kasy fiskalnej lub monitoringu.',
-    'Zasilacze do biura i małych serwerów, w obudowie tower lub rack.',
-    'Zasilacze do serwerowni i firm, często online, z modułami bateryjnymi.',
-  ][i],
-  features: [] as string[],
-}))
-
-// Категории для страницы "Serwis drukarek do kart plastikowych"
-const KARTY_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Podstawowa', 'Biznesowa', 'Retransferowa'][i],
-  description: [
-    'Jednostronne drukarki do kart w technologii sublimacji (direct-to-card), do prostych identyfikatorów i mniejszych nakładów.',
-    'Drukarki dwustronne do regularnej pracy, często z koderami kart (pasek magnetyczny, chip, RFID) i większym podajnikiem.',
-    'Zaawansowane drukarki retransferowe, często z modułem laminacji, do kart najwyższej jakości i intensywnej pracy.',
-  ][i],
-}))
-
-// Категории для страницы "Serwis drukarek DTG"
-const DTG_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Kompaktowa', 'Profesjonalna', 'Przemysłowa'][i],
-  description: [
-    'Kompaktowe drukarki DTG do małych nakładów, personalizacji odzieży i niewielkiej produkcji.',
-    'Drukarki DTG do regularnej produkcji, większych nakładów i intensywnej codziennej pracy.',
-    'Wysokowydajne systemy DTG do produkcji seryjnej, dużych nakładów i pracy przemysłowej.',
-  ][i],
-}))
-
-// Категории для страницы "Serwis drukarek DTF"
-const DTF_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Kompaktowa', 'Profesjonalna', 'Przemysłowa'][i],
-  description: [
-    'Mniejsze drukarki DTF do krótkich serii, personalizacji odzieży i niewielkiej produkcji.',
-    'Drukarki DTF do regularnej produkcji, większych nakładów i codziennej pracy.',
-    'Wydajne systemy DTF do dużych nakładów, produkcji seryjnej i intensywnej pracy.',
-  ][i],
-}))
-
-// Категории для страницы "Serwis drukarek sublimacyjnych"
-const SUBLIMACJA_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Kompaktowa', 'Profesjonalna', 'Wielkoformatowa'][i],
-  description: [
-    'Kompaktowe drukarki sublimacyjne do małych nakładów, personalizacji i niewielkiej produkcji.',
-    'Drukarki sublimacyjne do regularnej produkcji, większych formatów i intensywniejszej pracy.',
-    'Wielkoformatowe drukarki sublimacyjne do druku z roli i większych nakładów produkcyjnych.',
-  ][i],
-}))
-
-// Категории для страницы "Serwis drukarek spożywczych"
-const SPOZYWCZE_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Arkuszowe / adaptowane', 'Direct-to-food kompaktowe', 'Direct-to-food profesjonalne'][i],
-  description: [
-    'Drukarki atramentowe przystosowane do pracy z jadalnymi tuszami i drukowania na arkuszach cukrowych, waflowych oraz frosting sheets.',
-    'Kompaktowe drukarki z mechanizmem stołu lub platformy, umożliwiające bezpośredni nadruk na ciastkach, topperach, ciasteczkach i innych produktach.',
-    'Bardziej rozbudowane drukarki spożywcze do regularnej pracy, z własnym mechanizmem pozycjonowania produktu, napędem, czujnikami i systemem bezpośredniego nadruku.',
-  ][i],
-}))
-
-// Категории для страницы "Serwis ekspresów do kawy"
-const KAWA_DEVICE_CATEGORIES = DEVICE_CATEGORIES.map((c, i) => ({
-  ...c,
-  title: ['Ekspresy domowe', 'Ekspresy biurowe i premium', 'Ekspresy profesjonalne i gastronomiczne'][i],
-  description: [
-    'Ekspresy automatyczne i kolbowe do codziennego użytku domowego.',
-    'Zaawansowane ekspresy do biur, firm i wymagających użytkowników.',
-    'Ekspresy do kawiarni, restauracji i hoteli, przeznaczone do intensywnej pracy.',
-  ][i],
-}))
-
-// Функция для получения категорий устройств в зависимости от страницы
-const getDeviceCategories = (serviceSlug?: string) => {
-  if (serviceSlug === 'serwis-drukarek-atramentowych') {
-    return INKJET_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-termicznych') {
-    return THERMAL_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-iglowych') {
-    return NEEDLE_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-3d') {
-    return PRINTER_3D_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-plotterow') {
-    return PLOTTER_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-niszczarek') {
-    return NISZCZARKI_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'naprawa-zasilaczy-ups') {
-    return UPS_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
-    return KARTY_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-dtg') {
-    return DTG_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-dtf') {
-    return DTF_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-sublimacyjnych') {
-    return SUBLIMACJA_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-ekspresow-do-kawy') {
-    return KAWA_DEVICE_CATEGORIES
-  }
-  if (serviceSlug === 'serwis-drukarek-spozywczych') {
-    return SPOZYWCZE_DEVICE_CATEGORIES
-  }
-  return DEVICE_CATEGORIES
+interface DeviceCategory {
+  /** Polski tytuł karty — zarazem klucz tłumaczenia UK/RU w i18n */
+  title: string
+  /** Polski opis karty (bez kropki na końcu) */
+  description: string
+  /** Obrazek karty z public/images */
+  image: string
 }
 
-// Функция для получения пути к картинке принтера по названию категории
-const getPrinterImageForCategory = (categoryTitle: string, serviceSlug?: string): string => {
-  if (serviceSlug === 'serwis-plotterow') {
-    switch (categoryTitle) {
-      case 'Mały ploter':
-        return '/images/plotter-carousel-v3-02.webp'
-      case 'Średni ploter':
-        return '/images/plotter-carousel-v3-04.webp'
-      case 'Duży ploter':
-        return '/images/plotter-carousel-v3-05.webp'
-      default:
-        return ''
-    }
-  }
+interface DeviceCategoriesWindow {
+  /** Klucz w i18n: deviceCategoriesDescription (opis, obowiązkowy) i deviceCategoriesNote (uwaga pod kartami, opcjonalna) */
+  textKey: DeviceCategoriesTextKey
+  /** Przykład „(np. A / B / C zł netto)” — trzy ceny jednej usługi z cennika tej samej strony, w kolejności kart */
+  priceExample: string
+  /** Osobna mapa tłumaczeń kart; bez niej — wspólna categoryTranslations */
+  translationsKey?: DeviceCategoriesTranslationsKey
+  categories: [DeviceCategory, DeviceCategory, DeviceCategory]
+}
 
-  if (serviceSlug === 'serwis-drukarek-3d') {
-    switch (categoryTitle) {
-      case 'Mała drukarka 3D':
-        return '/images/druk3d-carousel-v3-01.webp'
-      case 'Średnia drukarka 3D':
-        return '/images/druk3d-carousel-v3-04.webp'
-      case 'Duża drukarka 3D':
-        return '/images/druk3d-carousel-v3-06.webp'
-      default:
-        return ''
-    }
-  }
+// Okno „Kategorie urządzeń” — jedna konfiguracja na stronę (slug). Nowe okno = nowy wpis tutaj
+// + teksty w i18n (deviceCategoriesDescription, tłumaczenia kart, opcjonalnie deviceCategoriesNote).
+// Przykład cen: diagnoza i wycena naprawy; plotery, 3D i niszczarki — czyszczenie i konserwacja.
+// Standard: docs/kategorie-urzadzen-standard.md
+const DEVICE_CATEGORIES_WINDOWS: Record<string, DeviceCategoriesWindow> = {
+  'serwis-drukarek-laserowych': {
+    textKey: 'default',
+    priceExample: '70 / 100 / 150',
+    categories: [
+      { title: 'Drukarka domowa', description: 'Małe drukarki laserowe A4 do domu i okazjonalnego drukowania', image: '/images/laser-carousel-v3-02.webp' },
+      { title: 'Drukarka biurowa', description: 'Drukarki i urządzenia wielofunkcyjne A4/A3 do codziennej pracy w biurze', image: '/images/laser-carousel-v3-04.webp' },
+      { title: 'Drukarka biznesowa', description: 'Duże urządzenia A4/A3 do intensywnej pracy w firmie, często z kilkoma podajnikami papieru i dodatkowym wyposażeniem', image: '/images/laser-carousel-v3-07.webp' },
+    ],
+  },
+  'serwis-drukarek-atramentowych': {
+    textKey: 'serwisDrukarekAtramentowych',
+    priceExample: '70 / 100 / 150',
+    translationsKey: 'categoryTranslationsAtrament',
+    categories: [
+      { title: 'Drukarka domowa', description: 'Małe drukarki atramentowe A4 do domu i okazjonalnego drukowania', image: '/images/atrament-carousel-v3-01.webp' },
+      { title: 'Drukarka biurowa', description: 'Drukarki A4/A3 do codziennej pracy w biurze, często ze skanerem lub dużymi zbiornikami tuszu', image: '/images/atrament-carousel-v3-04.webp' },
+      { title: 'Drukarka biznesowa', description: 'Większe i bardziej rozbudowane urządzenia A4/A3 do intensywnej pracy w firmie', image: '/images/atrament-carousel-v3-05.webp' },
+    ],
+  },
+  'serwis-plotterow': {
+    textKey: 'serwisPlotterow',
+    priceExample: '350 / 500 / 700',
+    categories: [
+      { title: 'Mały ploter', description: 'Kompaktowe plotery o szerokości druku do 24″', image: '/images/plotter-carousel-v3-02.webp' },
+      { title: 'Średni ploter', description: 'Plotery o szerokości druku powyżej 24″ do 44″', image: '/images/plotter-carousel-v3-04.webp' },
+      { title: 'Duży ploter', description: 'Plotery o szerokości druku powyżej 44″', image: '/images/plotter-carousel-v3-05.webp' },
+    ],
+  },
+  'serwis-drukarek-termicznych': {
+    textKey: 'serwisDrukarekTermicznych',
+    priceExample: '100 / 150 / 200',
+    categories: [
+      { title: 'Drukarka biurkowa', description: 'Małe drukarki etykiet do codziennej pracy przy niewielkiej i średniej liczbie wydruków', image: '/images/termiczne-carousel-v3-02.webp' },
+      { title: 'Drukarka półprzemysłowa', description: 'Wydajniejsze drukarki do regularnej pracy w magazynach, sklepach i logistyce', image: '/images/termiczne-carousel-v3-03.webp' },
+      { title: 'Drukarka przemysłowa', description: 'Wytrzymałe drukarki do intensywnej lub ciągłej pracy, często z dodatkowym wyposażeniem', image: '/images/termiczne-carousel-v3-06.webp' },
+    ],
+  },
+  'serwis-drukarek-iglowych': {
+    textKey: 'serwisDrukarekIglowych',
+    priceExample: '50 / 70 / 100',
+    categories: [
+      { title: 'Mała drukarka igłowa', description: 'Małe drukarki biurkowe z węższym torem papieru', image: '/images/iglowe-carousel-v3-02.webp' },
+      { title: 'Średnia drukarka igłowa', description: 'Większe drukarki do biura i drukowania formularzy', image: '/images/iglowe-carousel-v3-04.webp' },
+      { title: 'Duża drukarka igłowa', description: 'Duże drukarki do intensywnej pracy i drukowania formularzy wielowarstwowych', image: '/images/iglowe-carousel-v3-07.webp' },
+    ],
+  },
+  'serwis-drukarek-3d': {
+    textKey: 'serwisDrukarek3d',
+    priceExample: '200 / 250 / 350',
+    categories: [
+      { title: 'Mała drukarka 3D', description: 'Kompaktowe drukarki o prostej konstrukcji i niewielkim polu roboczym', image: '/images/druk3d-carousel-v3-01.webp' },
+      { title: 'Średnia drukarka 3D', description: 'Większe drukarki, często z zamkniętą obudową i bardziej rozbudowaną mechaniką', image: '/images/druk3d-carousel-v3-04.webp' },
+      { title: 'Duża drukarka 3D', description: 'Duże drukarki desktopowe i profesjonalne o rozbudowanej konstrukcji', image: '/images/druk3d-carousel-v3-06.webp' },
+    ],
+  },
+  'serwis-niszczarek': {
+    textKey: 'serwisNiszczarek',
+    priceExample: '150 / 200 / 250',
+    categories: [
+      { title: 'Mała', description: 'Małe niszczarki do domu i małego biura, przeznaczone do niszczenia niewielkich ilości dokumentów', image: '/images/niszczarki-carousel-v1-01.webp' },
+      { title: 'Biurowa', description: 'Niszczarki do codziennej pracy w biurze, przeznaczone dla kilku użytkowników', image: '/images/niszczarki-carousel-v1-04.webp' },
+      { title: 'Profesjonalna', description: 'Wydajne niszczarki do intensywnej pracy i niszczenia dużych ilości dokumentów', image: '/images/niszczarki-carousel-v2-06.webp' },
+    ],
+  },
+  'naprawa-zasilaczy-ups': {
+    textKey: 'ups',
+    priceExample: '60 / 100 / 180',
+    categories: [
+      { title: 'do 1 kVA', description: 'Małe zasilacze do komputera, routera, kasy fiskalnej lub monitoringu', image: '/images/ups-carousel-v1-01.webp' },
+      { title: '1–3 kVA', description: 'Zasilacze do biura i małych serwerów, stojące lub przeznaczone do szafy serwerowej', image: '/images/ups-carousel-v1-04.webp' },
+      { title: '3–10 kVA', description: 'Zasilacze do serwerowni i firm, często typu online (z podwójną konwersją), z dodatkowymi modułami bateryjnymi', image: '/images/ups-carousel-v1-06.webp' },
+    ],
+  },
+  'serwis-drukarek-do-kart-plastikowych': {
+    textKey: 'serwisDrukarekDoKart',
+    priceExample: '100 / 150 / 200',
+    categories: [
+      { title: 'Podstawowa', description: 'Drukarki do jednostronnego nadruku na kartach plastikowych, np. identyfikatorach i kartach pracowniczych', image: '/images/karty-carousel-v1-01.webp' },
+      { title: 'Biznesowa', description: 'Drukarki do dwustronnego nadruku i codziennej pracy, często z możliwością zapisu danych na pasku magnetycznym lub chipie', image: '/images/karty-carousel-v1-04.webp' },
+      { title: 'Retransferowa', description: 'Drukarki nanoszące nadruk na kartę za pomocą specjalnej folii, przeznaczone do uzyskiwania wysokiej jakości wydruków', image: '/images/karty-carousel-v1-06.webp' },
+    ],
+  },
+  'serwis-drukarek-dtg': {
+    textKey: 'serwisDrukarekDtg',
+    priceExample: '150 / 250 / 450',
+    translationsKey: 'categoryTranslationsDtg',
+    categories: [
+      { title: 'Kompaktowa', description: 'Małe drukarki DTG do krótkich serii i personalizacji odzieży', image: '/images/dtg-carousel-v1-01.webp' },
+      { title: 'Profesjonalna', description: 'Drukarki DTG do codziennej produkcji i większych nakładów', image: '/images/dtg-carousel-v1-03.webp' },
+      { title: 'Przemysłowa', description: 'Duże i wydajne drukarki DTG do produkcji seryjnej i dużych nakładów', image: '/images/dtg-carousel-v1-05.webp' },
+    ],
+  },
+  'serwis-drukarek-dtf': {
+    textKey: 'serwisDrukarekDtf',
+    priceExample: '250 / 350 / 500',
+    translationsKey: 'categoryTranslationsDtf',
+    categories: [
+      { title: 'Kompaktowa', description: 'Małe drukarki DTF do krótkich serii i personalizacji odzieży', image: '/images/dtf-carousel-v3-01.webp' },
+      { title: 'Profesjonalna', description: 'Drukarki DTF do codziennej produkcji i większych nakładów', image: '/images/dtf-carousel-v3-03.webp' },
+      { title: 'Przemysłowa', description: 'Duże i wydajne drukarki DTF do produkcji seryjnej i dużych nakładów', image: '/images/dtf-carousel-v3-06.webp' },
+    ],
+  },
+  'serwis-drukarek-sublimacyjnych': {
+    textKey: 'serwisDrukarekSublimacja',
+    priceExample: '150 / 250 / 400',
+    translationsKey: 'categoryTranslationsSublimacja',
+    categories: [
+      { title: 'Kompaktowa', description: 'Małe drukarki sublimacyjne do krótkich serii i personalizacji', image: '/images/sublimacja-carousel-v1-02.webp' },
+      { title: 'Profesjonalna', description: 'Drukarki sublimacyjne do codziennej produkcji i większych formatów', image: '/images/sublimacja-carousel-v1-04.webp' },
+      { title: 'Wielkoformatowa', description: 'Duże drukarki sublimacyjne do druku z roli i dużych nakładów', image: '/images/sublimacja-carousel-v1-06.webp' },
+    ],
+  },
+  'serwis-drukarek-spozywczych': {
+    textKey: 'serwisDrukarekSpozywczych',
+    priceExample: '50 / 100 / 150',
+    translationsKey: 'categoryTranslationsSpozywcze',
+    categories: [
+      { title: 'Arkuszowa', description: 'Drukarki atramentowe z jadalnym tuszem do drukowania na arkuszach cukrowych i waflowych', image: '/images/spozywcze-category-01.webp' },
+      { title: 'Kompaktowa', description: 'Niewielkie drukarki do bezpośredniego nadruku na ciastkach i innych produktach spożywczych', image: '/images/spozywcze-category-02.webp' },
+      { title: 'Profesjonalna', description: 'Większe drukarki do regularnego wykonywania nadruków bezpośrednio na produktach spożywczych', image: '/images/spozywcze-category-03.webp' },
+    ],
+  },
+  'serwis-ekspresow-do-kawy': {
+    textKey: 'serwisEkspresowDoKawy',
+    priceExample: '80 / 120 / 180',
+    categories: [
+      { title: 'Ekspresy domowe', description: 'Ekspresy automatyczne i kolbowe do codziennego użytku domowego', image: '/images/kawa-carousel-v1-01.webp' },
+      { title: 'Ekspresy biurowe', description: 'Ekspresy do biur i firm, przystosowane do przygotowywania większej liczby kaw', image: '/images/kawa-carousel-v1-04.webp' },
+      { title: 'Ekspresy gastronomiczne', description: 'Ekspresy do kawiarni, restauracji i hoteli, przeznaczone do intensywnej pracy', image: '/images/kawa-carousel-v1-05.webp' },
+    ],
+  },
+}
 
-  // Для страницы "Serwis Drukarek Igłowych" используем специальные изображения
-  if (serviceSlug === 'serwis-drukarek-iglowych') {
-    switch (categoryTitle) {
-      case 'Mała drukarka igłowa':
-        return '/images/iglowe-carousel-v3-02.webp'
-      case 'Średnia drukarka igłowa':
-        return '/images/iglowe-carousel-v3-04.webp'
-      case 'Duża drukarka igłowa':
-        return '/images/iglowe-carousel-v3-07.webp'
-      default:
-        return ''
-    }
-  }
-
-  // Для страницы "Serwis Drukarek Termiczno-etykietowych" используем специальные изображения
-  if (serviceSlug === 'serwis-drukarek-termicznych') {
-    switch (categoryTitle) {
-      case 'Drukarka biurkowa':
-        return '/images/termiczne-carousel-v3-02.webp'
-      case 'Drukarka półprzemysłowa':
-        return '/images/termiczne-carousel-v3-03.webp'
-      case 'Drukarka przemysłowa':
-        return '/images/termiczne-carousel-v3-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  // Для страницы "Serwis Drukarek Atramentowych" используем специальные изображения
-  if (serviceSlug === 'serwis-drukarek-atramentowych') {
-    switch (categoryTitle) {
-      case 'Drukarka domowa':
-        return '/images/atrament-carousel-v3-01.webp'
-      case 'Drukarka biurowa':
-        return '/images/atrament-carousel-v3-04.webp'
-      case 'Drukarka biznesowa':
-        return '/images/atrament-carousel-v3-05.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'naprawa-zasilaczy-ups') {
-    switch (categoryTitle) {
-      case 'do 1 kVA':
-        return '/images/ups-carousel-v1-01.webp'
-      case '1–3 kVA':
-        return '/images/ups-carousel-v1-04.webp'
-      case '3–10 kVA':
-        return '/images/ups-carousel-v1-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-niszczarek') {
-    switch (categoryTitle) {
-      case 'Mała':
-        return '/images/niszczarki-carousel-v1-01.webp'
-      case 'Biurowa':
-        return '/images/niszczarki-carousel-v1-04.webp'
-      case 'Profesjonalna':
-        return '/images/niszczarki-carousel-v2-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-drukarek-do-kart-plastikowych') {
-    switch (categoryTitle) {
-      case 'Podstawowa':
-        return '/images/karty-carousel-v1-01.webp'
-      case 'Biznesowa':
-        return '/images/karty-carousel-v1-04.webp'
-      case 'Retransferowa':
-        return '/images/karty-carousel-v1-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-drukarek-dtg') {
-    switch (categoryTitle) {
-      case 'Kompaktowa':
-        return '/images/dtg-carousel-v1-01.webp'
-      case 'Profesjonalna':
-        return '/images/dtg-carousel-v1-03.webp'
-      case 'Przemysłowa':
-        return '/images/dtg-carousel-v1-05.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-drukarek-dtf') {
-    switch (categoryTitle) {
-      case 'Kompaktowa':
-        return '/images/dtf-carousel-v3-01.webp'
-      case 'Profesjonalna':
-        return '/images/dtf-carousel-v3-03.webp'
-      case 'Przemysłowa':
-        return '/images/dtf-carousel-v3-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-drukarek-sublimacyjnych') {
-    switch (categoryTitle) {
-      case 'Kompaktowa':
-        return '/images/sublimacja-carousel-v1-02.webp'
-      case 'Profesjonalna':
-        return '/images/sublimacja-carousel-v1-04.webp'
-      case 'Wielkoformatowa':
-        return '/images/sublimacja-carousel-v1-06.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-ekspresow-do-kawy') {
-    switch (categoryTitle) {
-      case 'Ekspresy domowe':
-        return '/images/kawa-carousel-v1-01.webp'
-      case 'Ekspresy biurowe i premium':
-        return '/images/kawa-carousel-v1-04.webp'
-      case 'Ekspresy profesjonalne i gastronomiczne':
-        return '/images/kawa-carousel-v1-05.webp'
-      default:
-        return ''
-    }
-  }
-
-  if (serviceSlug === 'serwis-drukarek-spozywczych') {
-    switch (categoryTitle) {
-      case 'Arkuszowe / adaptowane':
-        return '/images/spozywcze-category-01.webp'
-      case 'Direct-to-food kompaktowe':
-        return '/images/spozywcze-category-02.webp'
-      case 'Direct-to-food profesjonalne':
-        return '/images/spozywcze-category-03.webp'
-      default:
-        return ''
-    }
-  }
-
-  // serwis-drukarek-laserowych (default categories)
-  switch (categoryTitle) {
-    case 'Drukarka domowa':
-      return '/images/laser-carousel-v3-02.webp'
-    case 'Drukarka biurowa':
-      return '/images/laser-carousel-v3-04.webp'
-    case 'Drukarka biznesowa':
-      return '/images/laser-carousel-v3-07.webp'
-    default:
-      return ''
-  }
+// Standard okna (docs/kategorie-urzadzen-standard.md): linia 1 „Cena zależy od …:”, linia 2 „pierwsza – …”.
+// Dzielimy po pierwszym „: ”, tylko gdy dalej zaczyna się wyliczenie kategorii; inaczej tekst zostaje jednym akapitem.
+const splitDeviceCategoriesDescription = (text: string): string[] => {
+  const idx = text.indexOf(': ')
+  if (idx < 0 || !/^(pierwsza|перша|первая)\s/i.test(text.slice(idx + 2))) return [text]
+  return [text.slice(0, idx + 1), text.slice(idx + 2)]
 }
 
 interface PriceTooltipContentProps {
@@ -445,17 +191,19 @@ interface PriceTooltipContentProps {
   onClose: () => void
 }
 
-// Only rendered for the 4 "special tooltip" services (SPECIAL_TOOLTIP_SERVICES in
-// service-accordion.tsx) — code-split out so the other 7 service pages don't parse
-// this device-category grid (+ its images) at all.
+// Rendered only for slugs in SPECIAL_TOOLTIP_SERVICES (service-accordion.tsx) — code-split
+// out so other service pages don't parse this device-category grid (+ its images) at all.
 export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose }: PriceTooltipContentProps) {
   const t = serviceAccordionI18n[locale]
   const tooltipContentRef = useRef<HTMLDivElement | null>(null)
   // Same backing as the header "Usługi" mega menu (parchment + black/55, gold
   // border, shadow). All four pages with this popup.
-  const menuBacking = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-drukarek-atramentowych' || service.slug === 'serwis-drukarek-iglowych' || service.slug === 'serwis-drukarek-termicznych' || service.slug === 'serwis-drukarek-3d' || service.slug === 'serwis-plotterow' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups' || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy'))
+  const menuBacking = service.slug in DEVICE_CATEGORIES_WINDOWS
   // golden back light behind the category pictures — temporarily off; to enable: laser page only
   const backlit = false as boolean // service.slug === 'serwis-drukarek-laserowych'
+  // Dane okna z konfiguracji po slug (slug spoza konfiguracji — okno drukarek laserowych, jak dotąd)
+  const win = DEVICE_CATEGORIES_WINDOWS[service.slug] ?? DEVICE_CATEGORIES_WINDOWS['serwis-drukarek-laserowych']
+  const deviceCategoriesNote = t.deviceCategoriesNote?.[win.textKey]
 
   return (
     <div
@@ -504,69 +252,44 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
         )}
       >
         <div className="text-center space-y-2">
-          <h4 className={cn("text-[22px] md:text-[26px] font-cormorant font-semibold tracking-wide", menuBacking ? "text-[#f3df9a]" : "text-white")}>
+          <h4 className={cn("text-[22px] md:text-[26px] leading-normal md:leading-4 font-cormorant font-semibold tracking-wide", menuBacking ? "text-[#f3df9a]" : "text-white")}>
             {t.deviceCategoriesTitle}
           </h4>
           <p className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
-            {service.slug === 'serwis-drukarek-iglowych'
-              ? t.deviceCategoriesDescription.serwisDrukarekIglowych
-              : service.slug === 'serwis-drukarek-termicznych'
-                ? t.deviceCategoriesDescription.serwisDrukarekTermicznych
-                : service.slug === 'serwis-drukarek-3d'
-                ? t.deviceCategoriesDescription.serwisDrukarek3d
-                : service.slug === 'serwis-plotterow'
-                ? t.deviceCategoriesDescription.serwisPlotterow
-                : service.slug === 'serwis-drukarek-atramentowych'
-                ? t.deviceCategoriesDescription.serwisDrukarekAtramentowych
-                : service.slug === 'serwis-niszczarek'
-                ? t.deviceCategoriesDescription.serwisNiszczarek
-                : service.slug === 'naprawa-zasilaczy-ups'
-                ? t.deviceCategoriesDescription.ups
-                : service.slug === 'serwis-drukarek-do-kart-plastikowych'
-                ? t.deviceCategoriesDescription.serwisDrukarekDoKart
-                : service.slug === 'serwis-drukarek-dtg'
-                ? t.deviceCategoriesDescription.serwisDrukarekDtg
-                : service.slug === 'serwis-drukarek-dtf'
-                ? t.deviceCategoriesDescription.serwisDrukarekDtf
-                : service.slug === 'serwis-drukarek-sublimacyjnych'
-                ? t.deviceCategoriesDescription.serwisDrukarekSublimacja
-                : service.slug === 'serwis-ekspresow-do-kawy'
-                ? t.deviceCategoriesDescription.serwisEkspresowDoKawy
-                : service.slug === 'serwis-drukarek-spozywczych'
-                ? t.deviceCategoriesDescription.serwisDrukarekSpozywczych
-                : t.deviceCategoriesDescription.default}
+            {splitDeviceCategoriesDescription(t.deviceCategoriesDescription[win.textKey]).map((line, i) => (
+              <span key={i} className="block">{line}</span>
+            ))}
           </p>
-          {service.slug !== 'serwis-drukarek-dtf' && (
+          {win.priceExample && (
           <div className="mt-1 flex items-center justify-center gap-1">
-            <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
+            <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines(service.slug === 'serwis-drukarek-sublimacyjnych' ? '150 / 250 / 400' : service.slug === 'serwis-ekspresow-do-kawy' ? (locale === 'pl' ? '80 / 120 / 180 zł netto' : '80 / 120 / 180 zł нетто') : service.slug === 'serwis-drukarek-spozywczych' ? '150 / 250 / 350' : service.slug === 'serwis-drukarek-dtg' ?'150 / 250 / 450' : '50 / 100 / 150')}
+                {renderPriceLines(`${win.priceExample} ${locale === 'pl' ? 'zł netto' : 'zł нетто'}`)}
               </div>
             </div>
-            <span className="text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
+            <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">)</span>
           </div>
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pb-4">
-          {getDeviceCategories(service.slug).map(category => {
-            const ukCat = (service.slug === 'serwis-drukarek-atramentowych' ? t.categoryTranslationsAtrament[category.title] : service.slug === 'serwis-drukarek-dtg' ? t.categoryTranslationsDtg[category.title] : service.slug === 'serwis-drukarek-dtf' ? t.categoryTranslationsDtf[category.title] : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.categoryTranslationsSublimacja[category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
+        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto] gap-4 md:gap-x-6 md:gap-y-0 pb-4">
+          {win.categories.map(category => {
+            const ukCat = (win.translationsKey ? t[win.translationsKey][category.title] : undefined) ?? t.categoryTranslations[category.title] ?? null
             return (
             <div
               key={category.title}
-              className={cn("bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center", backlit && "relative isolate overflow-hidden")}
+              className={cn("bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl p-4 flex flex-col md:grid md:grid-rows-subgrid md:row-span-4 md:gap-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] text-center", backlit && "relative isolate overflow-hidden")}
             >
-              <div>
-                <div className={cn("text-xl font-cormorant font-semibold", menuBacking ? "text-[#f3df9a]" : "text-white")}>{ukCat ? ukCat.title : category.title}</div>
-                <p className={cn("text-[rgba(255,255,245,0.85)] leading-snug mt-1 whitespace-pre-line", menuBacking ? "text-[14px] md:text-[16px] font-cormorant" : "text-xs md:text-sm")}>
-                  {ukCat ? ukCat.description : category.description}
-                </p>
-              </div>
+              {/* md+: wiersze karty wspólne z sąsiednimi kartami (subgrid) — strefa tytułu, opis i obrazek na tej samej wysokości */}
+              <div className={cn("text-xl font-cormorant font-semibold md:flex md:items-center md:justify-center", menuBacking ? "text-[#f3df9a]" : "text-white")}>{ukCat ? ukCat.title : category.title}</div>
+              <p className={cn("text-[rgba(255,255,245,0.85)] mt-1 whitespace-pre-line", menuBacking ? "text-[14px] md:text-[16px] leading-normal md:leading-4 font-cormorant" : "text-xs md:text-sm")}>
+                {ukCat ? ukCat.description : category.description}
+              </p>
               {/* Добавление картинки принтера */}
-              <div className={cn("flex justify-center items-center my-3", service.slug === 'serwis-ekspresow-do-kawy' && "mt-auto")}>
+              <div className="flex justify-center items-center my-3">
                 {backlit ? (
                   <BacklitImage
-                    src={getPrinterImageForCategory(category.title, service.slug)}
+                    src={category.image}
                     alt={category.title}
                     width={200}
                     height={150}
@@ -574,7 +297,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                   />
                 ) : (
                 <Image
-                  src={getPrinterImageForCategory(category.title, service.slug)}
+                  src={category.image}
                   alt={category.title}
                   width={200}
                   height={150}
@@ -583,14 +306,19 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
                 />
                 )}
               </div>
-              {(ukCat ? ukCat.features : category.features).length > 0 && (
+              {(ukCat?.features ?? []).length > 0 && (
                 <p className="text-[13px] text-[rgba(255,255,245,0.85)] leading-snug font-table-sub text-center mt-auto pt-2">
-                  {(ukCat ? ukCat.features : category.features).join(', ')}
+                  {(ukCat?.features ?? []).join(', ')}
                 </p>
               )}
             </div>
           )})}
         </div>
+        {deviceCategoriesNote && (
+          <p className="text-center text-[15px] md:text-[17px] text-[rgba(255,255,245,0.85)] leading-snug font-cormorant">
+            {deviceCategoriesNote}
+          </p>
+        )}
       </div>
     </div>
   )
