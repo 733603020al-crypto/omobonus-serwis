@@ -391,7 +391,8 @@ export const renderDurationValue = (value: string) => (
 
 // Функция для рендеринга текста в скобках - использует тот же стиль, что и "do ceny"
 // Явно переопределяем все визуальные параметры, чтобы избежать наследования от родительских элементов
-const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px', gapClass?: string) => {
+// hideClass — tylko dla zwykłego podpisu w nawiasach (telefon: ukryty, zostaje w HTML i na desktopie)
+const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px', gapClass?: string, hideClass?: string) => {
   if (!text) return null
 
   // Jeśli tekst zawiera переносы строк, разбиваем и рендерим каждую строку отдельно
@@ -469,10 +470,16 @@ const renderParenthesesText = (text: string, fontSize: '12px' | '14px' = '14px',
   }
 
   return (
-    <div className="parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed">
+    <div className={cn('parentheses-caption-text text-[14px] text-[#cbb27c] leading-relaxed', hideClass)}>
       ({trimmed})
     </div>
   )
+}
+// Telefon: podpis w nawiasach ukryty, chyba że ta sama nazwa powtarza się w liście (np. „Pełna diagnoza” GRATIS / 100 zł)
+const hasNameTwin = (items: { service: string }[] | undefined, idx: number, parse: (text: string) => { main: string }) => {
+  if (!items) return false
+  const main = parse(items[idx].service).main
+  return items.some((other, i) => i !== idx && parse(other.service).main === main)
 }
 
 // Функция для рендеринга заголовка секции с возможностью переноса части в скобках
@@ -623,6 +630,7 @@ const renderMobileServiceRow = (
   hideSubtitle: boolean = false,
   showDuration: boolean = false,
   finalLeftIndent8px: boolean = false,
+  keepSubtitle: boolean = false,
 ) => {
   const parsed = parseServiceText(item.service)
   return (
@@ -636,7 +644,7 @@ const renderMobileServiceRow = (
         <div className="service-description-text font-table-main text-[rgba(255,255,245,0.85)] text-[15px] text-white leading-[1.3] tracking-tight">
           {renderServiceMain(parsed.main)}
         </div>
-        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+        {!hideSubtitle && parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses), keepSubtitle ? undefined : '!hidden')}
       </div>
       {/* Колонка - цена */}
       <div
@@ -2075,7 +2083,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                   return titleNode
                                 })()}
                                 {stackGratisOnMobile && section.id === 'diagnoza' && service.slug !== 'druk-3d-na-zamowienie' && (
-                                  <span className={cn(
+                                  <span data-card-price="true" className={cn(
                                     "block my-0.5 text-lg font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
                                     isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]"
                                   )}>
@@ -2194,7 +2202,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           >
                             {section.id === 'diagnoza' && (
                               service.slug === 'druk-3d-na-zamowienie' ? null : (
-                                <span className={cn(
+                                <span data-card-price="true" className={cn(
                                   "text-lg md:text-xl font-table-accent group-data-[state=open]:hidden whitespace-nowrap",
                                   isWarmParchment ? "text-[#3A2817]" : "text-[rgba(255,255,245,0.85)]",
                                   isRepairAccordionLayout && "relative left-[-15px] md:left-0",
@@ -3345,7 +3353,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               )
                             })() ?? (subcategory.answer ? (
                               <div
-                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#332314] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#3A2817] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
                                 {renderBoldMarkup(subcategory.answer)}
@@ -3418,7 +3426,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                                   <div className="text-[16px] text-white service-description-text leading-[1.3]">
                                                     {renderServiceMain(parsed.main)}
                                                   </div>
-                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                                  {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses), hasNameTwin(subcategory.items, idx, parseServiceText) ? undefined : 'max-md:!hidden')}
                                                 </div>
                                               )
                                             })()}
@@ -3465,6 +3473,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                         false,
                                         false,
                                         isRepairAccordionLayout && isRepairSection,
+                                        hasNameTwin(subcategory.items, idx, parseServiceText),
                                       ),
                                     )
                                   }
@@ -3703,7 +3712,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                         <div className="text-[16px] max-md:text-[15px] max-md:tracking-tight text-white service-description-text leading-[1.3]">
                                           {renderServiceMain(parsed.main)}
                                         </div>
-                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses))}
+                                        {parsed.parentheses && renderParenthesesText(parsed.parentheses, '14px', packageListGap(parsed.parentheses), hasNameTwin(section.items, idx, parseServiceText) ? undefined : 'max-md:!hidden')}
                                       </div>
                                     )
                                   })()}
@@ -3743,6 +3752,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                             isDruk3DCustomSection(service.slug, section.id),
                             false,
                             isRepairAccordionLayout && isOpenHeaderPlateSection,
+                            hasNameTwin(section.items, idx, parseServiceText),
                           )
                           return row
                         })}

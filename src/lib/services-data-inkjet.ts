@@ -7,7 +7,7 @@ const applyInkjetCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza i obudowy drukarki,\n• czyszczenie toru papieru, rolek pobierania i czujników,\n• czyszczenie i konserwacja karetki, prowadnic i enkodera,\n• kontrola głowicy drukującej i drożności układu tuszu,\n• czyszczenie stacji serwisowej i pompy oraz kontrola mechanizmów drukarki,\n• kalibracja i końcowy test jakości wydruku oraz podawania papieru.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza i obudowy drukarki,\n• czyszczenie toru papieru, rolek pobierania i czujników,\n• czyszczenie i konserwacja karetki, prowadnic i enkodera,\n• kontrola głowicy drukującej i drożności układu tuszu,\n• czyszczenie stacji serwisowej i pompy oraz kontrola mechanizmów drukarki,\n• kalibracja i końcowy test jakości wydruku oraz podawania papieru.',
     },
     {
       service:

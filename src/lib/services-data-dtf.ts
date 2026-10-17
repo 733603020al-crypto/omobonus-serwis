@@ -11,7 +11,7 @@ const applyDtfCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki DTF\n• czyszczenie głowic i ich otoczenia;\n• czyszczenie captopów, wiperów i stacji serwisowej;\n• kontrola układu atramentowego, przewodów, damperów i filtrów;\n• kontrola pomp i odpływu zużytego atramentu;\n• kontrola i czyszczenie systemu białego atramentu;\n• czyszczenie enkodera i czujników;\n• czyszczenie i kontrola prowadnic oraz mechanizmu karetki;\n• kontrola pasków, napędów i rolek;\n• czyszczenie i kontrola toru prowadzenia folii;\n• test dysz;\n• kalibracja głowic i podawania materiału;\n• wydruk testowy po konserwacji.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki DTF\n• czyszczenie głowic i ich otoczenia;\n• czyszczenie captopów, wiperów i stacji serwisowej;\n• kontrola układu atramentowego, przewodów, damperów i filtrów;\n• kontrola pomp i odpływu zużytego atramentu;\n• kontrola i czyszczenie systemu białego atramentu;\n• czyszczenie enkodera i czujników;\n• czyszczenie i kontrola prowadnic oraz mechanizmu karetki;\n• kontrola pasków, napędów i rolek;\n• czyszczenie i kontrola toru prowadzenia folii;\n• test dysz;\n• kalibracja głowic i podawania materiału;\n• wydruk testowy po konserwacji.',
     },
   ]
   cleaningSection.notes = [

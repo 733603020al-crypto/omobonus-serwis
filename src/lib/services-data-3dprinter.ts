@@ -7,7 +7,7 @@ const apply3DPrinterCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki 3D\n• dokładne czyszczenie wnętrza drukarki, prowadnic, śrub, osi i stołu roboczego,\n• **czyszczenie hotendu, dyszy i ekstrudera oraz kontrola układu podawania filamentu,**\n• kontrola i regulacja pasków, prowadnic, łożysk i mechanizmów napędowych,\n• smarowanie wymagających tego elementów mechanicznych,\n• kontrola czujników, krańcówek, chłodzenia i podstawowych połączeń,\n• kalibracja stołu i osi oraz końcowy test wydruku i korekta parametrów.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki 3D\n• dokładne czyszczenie wnętrza drukarki, prowadnic, śrub, osi i stołu roboczego,\n• **czyszczenie hotendu, dyszy i ekstrudera oraz kontrola układu podawania filamentu,**\n• kontrola i regulacja pasków, prowadnic, łożysk i mechanizmów napędowych,\n• smarowanie wymagających tego elementów mechanicznych,\n• kontrola czujników, krańcówek, chłodzenia i podstawowych połączeń,\n• kalibracja stołu i osi oraz końcowy test wydruku i korekta parametrów.',
     },
   ]
 }

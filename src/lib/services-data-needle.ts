@@ -8,7 +8,7 @@ const applyNeedleCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i regulacja drukarki\n• dokładne czyszczenie wnętrza drukarki i mechanizmu drukującego,\n• czyszczenie i konserwacja toru papieru, wałków, rolek, pasków i prowadnic,\n• czyszczenie i konserwacja prowadnicy karetki oraz mechanizmu przesuwu głowicy,\n• kontrola głowicy, napędu, mechanizmu taśmy barwiącej i głównych elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• regulacja mechanizmu podawania papieru i przesuwu taśmy barwiącej,\n• końcowy test jakości wydruku i prawidłowego podawania papieru.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i regulacja drukarki\n• dokładne czyszczenie wnętrza drukarki i mechanizmu drukującego,\n• czyszczenie i konserwacja toru papieru, wałków, rolek, pasków i prowadnic,\n• czyszczenie i konserwacja prowadnicy karetki oraz mechanizmu przesuwu głowicy,\n• kontrola głowicy, napędu, mechanizmu taśmy barwiącej i głównych elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• regulacja mechanizmu podawania papieru i przesuwu taśmy barwiącej,\n• końcowy test jakości wydruku i prawidłowego podawania papieru.',
     },
   ]
 }

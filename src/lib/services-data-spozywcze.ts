@@ -12,7 +12,7 @@ const applySpozywczeCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[pełne ]]czyszczenie i kontrola drukarki spożywczej\n• kontrola dysz i nozzle check;\n• standardowy cykl czyszczenia głowicy;\n• czyszczenie głowicy / powierzchni dysz;\n• czyszczenie capów i wipera;\n• czyszczenie odpływu zużytego atramentu;\n• czyszczenie filtrów;\n• czyszczenie rolek i toru podawania arkuszy;\n• czyszczenie platformy / stołu roboczego w drukarkach direct-to-food;\n• czyszczenie czujników produktu i położenia;\n• wydruk testowy po konserwacji.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[pełne ]]czyszczenie i kontrola drukarki spożywczej\n• kontrola dysz i nozzle check;\n• standardowy cykl czyszczenia głowicy;\n• czyszczenie głowicy / powierzchni dysz;\n• czyszczenie capów i wipera;\n• czyszczenie odpływu zużytego atramentu;\n• czyszczenie filtrów;\n• czyszczenie rolek i toru podawania arkuszy;\n• czyszczenie platformy / stołu roboczego w drukarkach direct-to-food;\n• czyszczenie czujników produktu i położenia;\n• wydruk testowy po konserwacji.',
     },
   ]
   cleaningSection.notes = [

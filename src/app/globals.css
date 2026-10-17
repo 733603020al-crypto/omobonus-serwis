@@ -5,9 +5,9 @@
 :root {
   /* Primary text ink color — the shared dark-brown used for the large
      majority of accordion/service-page body & heading text (35+ occurrences
-     before this variable existed). #72502B (secondary label ink) and
-     #332314 (darker emphasis ink) are a deliberate separate hierarchy —
-     not folded in here. */
+     before this variable existed). #72502B (secondary label ink) is a deliberate separate tone,
+     not folded in here (former #332314 emphasis ink was unified into
+     this color 2026-10-16). */
   --text-primary: #3A2817;
   --bg-parchment: url('/images/Background_1.webp');
   --bg-services-card: url('/images/services-background.webp');
@@ -916,10 +916,12 @@
   }
 
   /* WARM PARCHMENT — OPEN table, price column: same width/alignment/right
-     padding across every row (2nd table-cell). */
+     padding across every row (2nd table-cell). No side padding at all, so
+     the price sits exactly centered under "Cena, zł" in every section. */
   @media (min-width: 768px) {
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [data-slot="table-cell"]:nth-child(2) {
       text-align: center;
+      padding-left: 0;
       padding-right: 0;
     }
   }
@@ -2096,7 +2098,7 @@
     }
     @media (min-width: 768px) {
       [data-open-header-split-content="true"][data-faq-role="true"] .faq-answer-text {
-        color: #332314;
+        color: #3A2817;
       }
     }
 
@@ -2208,7 +2210,7 @@
       display: none;
     }
 
-    /* Open-header "plate" role: inset the whole table block 24px from
+    /* Open-header "plate" role: inset the whole table block 18px from
        each parchment edge (replaces the earlier first-cell padding-left
        hack) so text, price/duration values and row lines all stay clear
        of the torn edges. Overrides the shared AccordionContent inner
@@ -2220,8 +2222,8 @@
        under it — taller automatically. Top offset/header and every row's
        own position/height above stay untouched. */
     [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div {
-      margin-left: 24px;
-      margin-right: 24px;
+      margin-left: 18px;
+      margin-right: 18px;
       padding-bottom: 48px;
       border-left: none;
       border-right: none;
@@ -2282,13 +2284,14 @@
        main-text ink tone instead of the shared secondary #72502B — only
        its color changes, size stays as-is. */
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-caption-text {
-      color: #332314;
+      color: #3A2817;
       font-size: 15px;
       transform: translateY(-2px);
     }
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
-      color: #332314 !important;
+      color: #3A2817 !important;
       font-size: 13px !important;
+      line-height: 1.2 !important;
       transform: translateY(-2px);
     }
 
@@ -2300,7 +2303,7 @@
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .service-description-text {
       font-size: 20px;
       font-weight: 600;
-      color: #332314;
+      color: #3A2817;
     }
 
     /* "Has a real price/time table" role — data-has-table="true" is set
@@ -2566,7 +2569,7 @@
 
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"]:not([data-faq-item="true"])>div[data-open-header-plate="true"] .zakres-price-header-text {
       color: var(--text-primary);
-      font-size: 22px;
+      font-size: 20px;
     }
 
     /* "i" info icon next to "Cena": 1:1 mirror of the desktop rule below
@@ -2708,7 +2711,7 @@
        above (~line 2730) which win those properties for Diagnoza too. */
     [data-open-header-split-content="true"][data-faq-role="true"] .faq-question-title-text {
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.15;
       letter-spacing: -0.025em;
       padding-left: 8px;
@@ -2808,6 +2811,12 @@
       display: block !important;
       -webkit-line-clamp: unset !important;
       overflow: visible !important;
+      /* Long words that don't fit the narrow column break with a proper hyphen
+         ("Transporti-rovka") instead of a bare mid-word split; 6px left inset
+         (not 8px) so "Oprogramowanie" fits whole (Polish has no hyphenation
+         dictionary in Chrome). */
+      hyphens: auto !important;
+      padding-left: 6px !important;
     }
 
     /* OPEN SUBCATEGORY MATCH — STEP 3: shared mobile grid (image / title / price columns).
@@ -2882,7 +2891,7 @@
       text-align: left !important;
       white-space: normal !important;
       overflow-wrap: anywhere !important;
-      line-height: 1 !important;
+      line-height: 1.1 !important;
       display: -webkit-box !important;
       -webkit-box-orient: vertical !important;
       -webkit-line-clamp: 2 !important;
@@ -2906,6 +2915,15 @@
        at this width (e.g. rows), plus the mobile tap-highlight above. */
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy"],[data-section-id="naprawy-nested"],[data-nested-parchment="true"]) [data-slot="table-row"]:hover {
       background-color: transparent !important;
+    }
+
+    /* Naprawy-nested table: same 16px inset from the parchment edges as the
+       plate-role tables (Diagnoza/Dojazd/Czyszczenie) — rows used to run
+       right up to the torn edge. */
+    [data-open-header-split-content="true"][data-section-id="naprawy-nested"] > div:has([data-slot="table-container"]) {
+      width: auto !important;
+      margin-left: 16px;
+      margin-right: 16px;
     }
 
     [data-open-header-split-content="true"][data-open-header-plate="true"] [data-slot="accordion-content"] > div {
@@ -2939,9 +2957,9 @@
     }
 
     [data-open-header-split-content="true"]:is([data-open-header-plate="true"],[data-section-id="naprawy-nested"]) .parentheses-text-isolated {
-      font-family: var(--font-cormorant), serif !important;
+      font-family: var(--font-inter), sans-serif !important;
       font-size: 13px !important;
-      font-weight: 500 !important;
+      font-weight: 400 !important;
       line-height: 1.2 !important;
       color: var(--text-primary) !important;
       opacity: 1 !important;
@@ -3001,6 +3019,19 @@
       width: 90px;
       text-align: center;
       padding-right: 0;
+    }
+  }
+
+  /* Price on the closed card (GRATIS) uses the card-title style:
+     24/26.4 · 600 on desktop, 22/24.2 · 600 on mobile. */
+  .service-typography-standard [data-card-price="true"] {
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 600;
+  }
+  @media (min-width: 768px) {
+    .service-typography-standard [data-card-price="true"] {
+      font-size: 24px;
     }
   }
 
@@ -3104,7 +3135,7 @@
     .service-typography-standard .zakres-cennik-link {
       font-family: var(--font-cormorant), serif;
       font-size: 12px;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1.2;
       color: var(--text-primary);
       text-shadow: none;
@@ -3175,7 +3206,7 @@
     .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
     .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       font-family: var(--font-cormorant), serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
       line-height: 1.05;
       color: var(--text-primary);
@@ -3190,6 +3221,12 @@
     .service-typography-standard [data-parchment-list-row="true"] .zakres-price-header-text,
     .service-typography-standard [data-parchment-list-row="true"] .zakres-time-header-text {
       text-align: center;
+    }
+
+    /* Open subcategory title sits in a narrow column beside the image:
+       20px splits long words ("Oprogramowa-nie"), so it stays 18px. */
+    .service-typography-standard [data-parchment-list-row="true"][data-state="open"] .zakres-title-text {
+      font-size: 18px;
     }
 
     .service-typography-standard .zakres-price-header-text,
@@ -3213,7 +3250,7 @@
 
     .service-typography-standard .emphasis-inline-text {
       font-family: var(--font-cormorant), serif;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-primary);
       font-weight: 500;
       line-height: 1.2;
@@ -3243,7 +3280,7 @@
     .service-typography-standard .zakres-cennik-link {
       font-family: var(--font-cormorant), serif;
       font-size: 12px;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1.2;
       color: var(--text-primary);
       text-shadow: none;
@@ -3293,6 +3330,7 @@
     .service-typography-standard .parentheses-caption-text.dojazd-promo-caption {
       font-size: 15px;
       font-weight: 600;
+      line-height: 1.3;
     }
 
     .service-typography-standard .service-description-text.dojazd-promo-title {

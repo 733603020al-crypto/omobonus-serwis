@@ -189,21 +189,21 @@ export const createPricingSections = (): PricingSection[] => {
 
 export const getRecoveryItems = (): PricingItem[] => [
   {
-    service: 'Oszacowanie możliwości odzyskania danych z uszkodzonego nośnika',
+    service: 'Ocena możliwości odzyskania danych z uszkodzonego nośnika',
   },
   {
     service:
-      'Odzyskanie danych (usuniętych plików) po skasowaniu ze sprawnego nośnika (dokumenty, zdjęcia lub filmy, przez przypadkowe ich usunięcie, sformatowanie dysku lub przywrócenie systemu Windows)',
+      'Odzyskanie przypadkowo usuniętych danych / po formatowaniu',
   },
   {
     service:
-      'Odzyskiwanie danych (uszkodzenia logiczne – nośnik (np. dysk twardy) zachował sprawność)',
+      'Odzyskiwanie danych — uszkodzenia logiczne',
   },
   {
     service:
-      'Odzyskanie danych z uszkodzonego nośnika (fizycznie lub elektronicznie uszkodzonych dysków HDD i SSD)',
+      'Odzyskanie danych z fizycznie / elektronicznie uszkodzonego HDD / SSD',
   },
   {
-    service: 'Trwałe usuwanie danych',
+    service: 'Trwałe usuwanie danych\n(przed sprzedażą, przekazaniem lub utylizacją sprzętu)',
   },
 ]

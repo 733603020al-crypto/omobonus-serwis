@@ -12,7 +12,7 @@ const applyNiszczarkiCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA I OLEJENIE\u2028[[kompleksowe ]]czyszczenie, kontrola i konserwacja niszczarki\n• dokładne czyszczenie wnętrza urządzenia z pyłu papierowego i pozostałości ścinków;\n• czyszczenie mechanizmu tnącego, szczeliny podawczej i czujników;\n• smarowanie mechanizmu tnącego odpowiednim olejem;\n• kontrola noży / wałków tnących oraz zespołu napędowego;\n• kontrola kół zębatych, silnika i głównych elementów mechanicznych;\n• kontrola działania rewersu, start/stop i zabezpieczeń, jeśli występują;\n• końcowy test pracy i niszczenia dokumentów.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i konserwacja niszczarki\n• dokładne czyszczenie wnętrza urządzenia z pyłu papierowego i pozostałości ścinków;\n• czyszczenie mechanizmu tnącego, szczeliny podawczej i czujników;\n• smarowanie mechanizmu tnącego odpowiednim olejem;\n• kontrola noży / wałków tnących oraz zespołu napędowego;\n• kontrola kół zębatych, silnika i głównych elementów mechanicznych;\n• kontrola działania rewersu, start/stop i zabezpieczeń, jeśli występują;\n• końcowy test pracy i niszczenia dokumentów.',
     },
   ]
 }
@@ -61,17 +61,6 @@ const applyNiszczarkiRepairsSection = (sections: PricingSection[]) => {
   ]
 }
 
-// Wiersz pilnej realizacji — neutralnie, bez obietnicy „bez dodatkowej opłaty” (cena i termin: do ustalenia).
-const applyNiszczarkiUrgentRows = (sections: PricingSection[]) => {
-  const rename = (id: string, index: number) => {
-    const section = sections.find(s => s.id === id)
-    if (!section?.items?.[index]) return
-    section.items = section.items.map((item, i) => (i === index ? { ...item, service: 'Pilny termin' } : item))
-  }
-  rename('diagnoza', 5)
-  rename('dojazd', 3)
-}
-
 const applyNiszczarkiFaqSection = (sections: PricingSection[]) => {
   const faq = sections.find(section => section.id === 'faq')
   if (!faq) return
@@ -109,7 +98,6 @@ export const createNiszczarkiPricingSections = (): PricingSection[] => {
   const sections = createPricingSections()
   applyNiszczarkiCleaningSection(sections)
   applyNiszczarkiRepairsSection(sections)
-  applyNiszczarkiUrgentRows(sections)
   applyNiszczarkiFaqSection(sections)
   return sections
 }

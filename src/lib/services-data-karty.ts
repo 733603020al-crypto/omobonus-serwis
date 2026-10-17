@@ -12,7 +12,7 @@ const applyKartyCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA [[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki kart\n• dokładne czyszczenie wnętrza drukarki oraz całego toru transportu kart;\n• czyszczenie głowicy drukującej i rolek podających;\n• czyszczenie / wymiana rolki czyszczącej oraz wkładu / kasety czyszczącej, jeśli występują w danym modelu;\n• czyszczenie i kontrola podajnika, odbiornika kart i modułu obracania (druk dwustronny), jeśli występuje;\n• kontrola mechanizmu prowadzenia taśmy barwiącej (ribbon) i czujników;\n• kontrola modułu laminacji / retransferu oraz koderów (pasek magnetyczny, chip, RFID), jeśli występują;\n• kalibracja czujników i parametrów druku;\n• test końcowy jakości nadruku i prawidłowego podawania kart.',
+        'CZYSZCZENIE I KONSERWACJA [[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki kart\n• dokładne czyszczenie wnętrza drukarki oraz całego toru transportu kart;\n• czyszczenie głowicy drukującej i rolek podających;\n• czyszczenie / wymiana rolki czyszczącej oraz wkładu / kasety czyszczącej, jeśli występują w danym modelu;\n• czyszczenie i kontrola podajnika, odbiornika kart i modułu obracania (druk dwustronny), jeśli występuje;\n• kontrola mechanizmu prowadzenia taśmy barwiącej (ribbon) i czujników;\n• kontrola modułu laminacji / retransferu oraz koderów (pasek magnetyczny, chip, RFID), jeśli występują;\n• kalibracja czujników i parametrów druku;\n• test końcowy jakości nadruku i prawidłowego podawania kart.',
     },
   ]
 }

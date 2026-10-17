@@ -7,7 +7,7 @@ const applyLaserCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki z kurzu, pyłu papierowego i pozostałości tonera,\n• czyszczenie toru papieru, rolek poboru i transportu, separatorów oraz czujników,\n• czyszczenie optyki i układu laserowego,\n• kontrola stanu bębna, pasa transferowego, fusera i pojemnika na zużyty toner,\n• kontrola i konserwacja głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• kalibracja druku / kolorów (jeśli dotyczy) oraz końcowy test jakości wydruku i podawania papieru.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja drukarki\n• dokładne czyszczenie wnętrza drukarki z kurzu, pyłu papierowego i pozostałości tonera,\n• czyszczenie toru papieru, rolek poboru i transportu, separatorów oraz czujników,\n• czyszczenie optyki i układu laserowego,\n• kontrola stanu bębna, pasa transferowego, fusera i pojemnika na zużyty toner,\n• kontrola i konserwacja głównych elementów mechanicznych; smarowanie, jeśli przewiduje je producent,\n• kalibracja druku / kolorów (jeśli dotyczy) oraz końcowy test jakości wydruku i podawania papieru.',
     },
   ]
 }

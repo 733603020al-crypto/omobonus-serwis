@@ -23,7 +23,7 @@ const applySublimacjaCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028pełne czyszczenie, kontrola i konserwacja drukarki sublimacyjnej\n• czyszczenie stacji serwisowej i capów;\n• czyszczenie wiperów;\n• czyszczenie okolic głowicy i spodu karetki;\n• kontrola i czyszczenie układu odprowadzania zużytego atramentu;\n• kontrola układu atramentowego;\n• czyszczenie rolek i toru prowadzenia materiału;\n• czyszczenie czujników materiału;\n• kontrola prowadnic i mechanizmu karetki;\n• nozzle check i standardowy cykl czyszczenia;\n• wydruk testowy po konserwacji.',
+        'CZYSZCZENIE I KONSERWACJA\u2028pełne czyszczenie, kontrola i konserwacja drukarki sublimacyjnej\n• czyszczenie stacji serwisowej i capów;\n• czyszczenie wiperów;\n• czyszczenie okolic głowicy i spodu karetki;\n• kontrola i czyszczenie układu odprowadzania zużytego atramentu;\n• kontrola układu atramentowego;\n• czyszczenie rolek i toru prowadzenia materiału;\n• czyszczenie czujników materiału;\n• kontrola prowadnic i mechanizmu karetki;\n• nozzle check i standardowy cykl czyszczenia;\n• wydruk testowy po konserwacji.',
     },
   ]
   cleaningSection.notes = [

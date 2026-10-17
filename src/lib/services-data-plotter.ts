@@ -7,7 +7,7 @@ const applyPlotterCleaningSection = (sections: PricingSection[]) => {
   cleaningSection.items = [
     {
       service:
-        'PEŁNA KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja plotera\n• dokładne czyszczenie wnętrza plotera, prowadnic, rolek i toru prowadzenia mediów,\n• czyszczenie i kontrola karetki, paska enkodera oraz elementów napędu,\n• czyszczenie i kontrola stacji serwisowej oraz układu podawania tuszu,\n• kontrola głowicy drukującej i drożności układu atramentowego,\n• kontrola i konserwacja elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• kalibracja urządzenia oraz końcowy test jakości wydruku i podawania mediów.',
+        'CZYSZCZENIE I KONSERWACJA\u2028[[kompleksowe ]]czyszczenie, kontrola i kalibracja plotera\n• dokładne czyszczenie wnętrza plotera, prowadnic, rolek i toru prowadzenia mediów,\n• czyszczenie i kontrola karetki, paska enkodera oraz elementów napędu,\n• czyszczenie i kontrola stacji serwisowej oraz układu podawania tuszu,\n• kontrola głowicy drukującej i drożności układu atramentowego,\n• kontrola i konserwacja elementów mechanicznych; smarowanie zgodnie z zaleceniami producenta,\n• kalibracja urządzenia oraz końcowy test jakości wydruku i podawania mediów.',
     },
   ]
 }
