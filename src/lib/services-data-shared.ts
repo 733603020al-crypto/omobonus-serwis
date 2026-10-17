@@ -189,19 +189,19 @@ export const createPricingSections = (): PricingSection[] => {
 
 export const getRecoveryItems = (): PricingItem[] => [
   {
-    service: 'Ocena możliwości odzyskania danych z uszkodzonego nośnika',
+    service: 'Ocena możliwości odzyskania danych z uszkodzonego nośnika\n(sprawdzenie przyczyny uszkodzenia, czy dane da się odzyskać, ile to potrwa i będzie kosztować)',
   },
   {
     service:
-      'Odzyskanie przypadkowo usuniętych danych / po formatowaniu',
+      'Odzyskanie przypadkowo usuniętych danych / po formatowaniu\n(skasowane pliki, sformatowany dysk, przeinstalowany system)',
   },
   {
     service:
-      'Odzyskiwanie danych — uszkodzenia logiczne',
+      'Odzyskiwanie danych — uszkodzenia logiczne\n(niewidoczna partycja, znikające foldery, komunikat „dysk wymaga formatowania”)',
   },
   {
     service:
-      'Odzyskanie danych z fizycznie / elektronicznie uszkodzonego HDD / SSD',
+      'Odzyskanie danych z fizycznie / elektronicznie uszkodzonego HDD / SSD\n(dysk klika, nie jest wykrywany lub nie da się go odczytać)',
   },
   {
     service: 'Trwałe usuwanie danych\n(przed sprzedażą, przekazaniem lub utylizacją sprzętu)',

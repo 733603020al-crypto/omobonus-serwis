@@ -2894,8 +2894,20 @@
       line-height: 1.1 !important;
       display: -webkit-box !important;
       -webkit-box-orient: vertical !important;
-      -webkit-line-clamp: 2 !important;
+      -webkit-line-clamp: 3 !important;
       overflow: hidden !important;
+      /* Same as the open Naprawy subcategory title: 18px, long words break
+         with a hyphen ("Діагно-стика") instead of a bare mid-word split;
+         3 lines (60px) still fit beside the 81px image. */
+      font-size: 18px !important;
+      hyphens: auto !important;
+    }
+
+    /* "Cena, zł" in the open header: the header row is 6px wider on the
+       right than the table below it, so pull the price cell in by 6px to
+       sit exactly over the 96px price column of the rows. */
+    .page-repair-accordion [data-open-header-plate="true"][data-has-table="true"] [data-slot="accordion-trigger"][data-state="open"] .diagnoza-open-header-row > div:last-child {
+      margin-right: 6px !important;
     }
 
     /* outsourcing-it "Konsultacja i wycena obsługi IT" (PL/UK/RU): the first
@@ -3016,7 +3028,7 @@
     /* OPEN table, price column: same width/alignment/right padding across
        every row (2nd child of the mobile row div). */
     [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="open"] [class*="border-white/20"]:not([data-slot]) > div:nth-child(2) {
-      width: 90px;
+      width: 96px;
       text-align: center;
       padding-right: 0;
     }
