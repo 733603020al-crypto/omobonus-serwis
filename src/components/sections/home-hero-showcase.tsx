@@ -171,7 +171,7 @@ export function HomeHeroShowcase({
     // until the first real carousel item is shown.
     if (active < 0) return
     const el = measureRef.current
-    const column = el?.closest('h1')?.parentElement
+    const column = el?.closest('[data-hero-title]')?.parentElement
     if (!el || !column) return
     const max = window.innerWidth >= 768 ? 720 : column.clientWidth
     setFit(Math.min(1, max / el.offsetWidth))
@@ -204,8 +204,11 @@ export function HomeHeroShowcase({
           </Link>
         </div>
         <div className="text-center flex flex-col items-center justify-center relative z-10 order-first md:order-none">
-          <h1 className="font-cormorant font-bold text-[#ffffff] max-w-[90vw] md:max-w-none md:w-[470px] text-[clamp(28px,10.6vw,47px)] md:text-[60px] leading-[1.15] max-md:leading-[1.05]">
-            <span className="sr-only">{h1}</span>
+          {/* The H1 is one clean phrase; the animated headline below is its visual
+              form (aria-hidden link), kept outside the H1 so the cycling words
+              never glue onto the heading text. */}
+          <div data-hero-title className="font-cormorant font-bold text-[#ffffff] max-w-[90vw] md:max-w-none md:w-[470px] text-[clamp(28px,10.6vw,47px)] md:text-[60px] leading-[1.15] max-md:leading-[1.05]">
+            <h1 className="sr-only">{h1}</h1>
             <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
               <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]" style={fit < 1 ? { fontSize: `${fit}em` } : undefined}>
@@ -215,7 +218,7 @@ export function HomeHeroShowcase({
               <span ref={measureRef} aria-hidden="true" className="fixed left-0 top-0 invisible whitespace-nowrap pointer-events-none">{mid.parts[0]}{second}</span>
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
             </Link>
-          </h1>
+          </div>
           {cta && (
             <Link
               href={cta.href}
