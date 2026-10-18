@@ -7,6 +7,11 @@ export const headingsUk: Record<string, ServicePageHeadings> = {
     fitMobile: true,
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
   },
+  'naprawa-projektorow': {
+    h1: 'Сервіс і ремонт проєкторів у Вроцлаві',
+    lines: ['Сервіс і ремонт', 'проєкторів', 'у Вроцлаві'],
+    h2: '(Epson, BenQ, Optoma, Acer, Sony, Panasonic, ViewSonic, Samsung, LG, Xiaomi, Philips, NEC, Sharp, Vivitek, JVC, Canon, XGIMI, Hisense, …)',
+  },
   'naprawa-zasilaczy-ups': {
     h1: 'Сервіс і ремонт джерел безперебійного живлення UPS у Вроцлаві',
     lines: ['Сервіс і ремонт', 'джерел безперебійного живлення UPS', 'у Вроцлаві'],
@@ -118,6 +123,13 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
       'Обслуговування та змащення, усунення застрягань, ремонт ріжучого механізму, редуктора, двигуна й датчиків знищувача.',
       'Ваш знищувач можемо попередньо перевірити після доставки в сервіс — попередня діагностика триває до 15 хв.',
       'Малі, офісні та професійні знищувачі: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg та інші.',
+    ],
+  },
+  'naprawa-projektorow': {
+    items: [
+      'Заміна лампи, ремонт живлення, оптичної системи та охолодження, чищення й обслуговування проєкторів.',
+      'Попередня діагностика проєктора — до 15 хв.',
+      'Домашні, офісні та професійні проєктори: Epson, BenQ, Optoma, Acer, Sony та інші.',
     ],
   },
   'naprawa-zasilaczy-ups': {
@@ -256,6 +268,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
 export const imageAltUk: Record<string, string> = {
   'serwis-niszczarek': 'Сервіс і ремонт знищувачів документів',
   'naprawa-zasilaczy-ups': 'Джерело безперебійного живлення UPS',
+  'naprawa-projektorow': 'Проєктор',
   'serwis-drukarek-do-kart-plastikowych': 'Принтер для пластикових карток',
   'serwis-drukarek-dtg': 'DTG-принтер для друку на футболках',
   'serwis-drukarek-dtf': 'DTF-принтер для друку на плівці',
@@ -292,6 +305,10 @@ export const seoMetadataUk: Record<string, { title: string; description: string 
   'serwis-niszczarek': {
     title: 'Сервіс і ремонт знищувачів документів',
     description: 'Ремонт знищувачів документів у Вроцлаві: змащення, застрягання, заміна ножів, двигун і датчики. Fellowes, HSM, Kobra, Rexel. Діагностика безкоштовна в разі ремонту.',
+  },
+  'naprawa-projektorow': {
+    title: 'Сервіс і ремонт проєкторів — ціни',
+    description: 'Ремонт проєкторів у Вроцлаві — заміна лампи, живлення, оптика, охолодження, чищення. Epson, BenQ, Optoma, Acer, Sony. Повний прайс-лист без прихованих витрат.',
   },
   'naprawa-zasilaczy-ups': {
     title: 'Ремонт UPS і джерел безперебійного живлення',
@@ -398,6 +415,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-3d': 'Маєте проблему з 3D-принтером?',
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'naprawa-zasilaczy-ups': 'Маєте проблему з UPS?',
+    'naprawa-projektorow': 'Маєте проблему з проєктором?',
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'serwis-drukarek-dtg': 'Маєте проблему з DTG-принтером?',
     'serwis-drukarek-dtf': 'Маєте проблему з DTF-принтером?',
@@ -429,6 +447,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-plotterow': 'Маєте проблему з плотером?',
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'naprawa-zasilaczy-ups': 'Маєте проблему з ДБЖ (UPS)?',
+    'naprawa-projektorow': 'Маєте проблему з проєктором?',
   },
   ctaTextMobile: 'Напишіть або зателефонуйте — знайдемо рішення!',
   ctaButton: 'Швидкий контакт',

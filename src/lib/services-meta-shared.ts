@@ -4,6 +4,7 @@
 export const serviceImageSrc: Record<string, string> = {
   'serwis-niszczarek': '/images/niszczarki-carousel-v1-01.webp',
   'naprawa-zasilaczy-ups': '/images/ups-carousel-v1-01.webp',
+  'naprawa-projektorow': '/images/projektory-carousel-v1-01.webp',
   'serwis-drukarek-do-kart-plastikowych': '/images/karty-carousel-v1-01.webp',
   'serwis-drukarek-dtg': '/images/dtg-carousel-v1-01.webp',
   'serwis-drukarek-dtf': '/images/dtf-carousel-v3-01.webp',
@@ -49,6 +50,8 @@ export const slugBrands: Record<string, string[]> = {
   // Własna lista niszczarek; marka bez logo w brand-ticker.tsx jest na razie pomijana
   'serwis-niszczarek': ['fellowes', 'hsm', 'kobra', 'rexel', 'ideal', 'dahle', 'opus', 'leitz', 'wallner', 'argo', 'eba', 'hp', 'tracer', 'tarnator', 'genie', 'olympia', 'intimus', 'aurora', 'peach', 'lanberg'],
   'naprawa-zasilaczy-ups': ['apc', 'schneider-electric', 'eaton', 'powerware', 'riello', 'vertiv', 'liebert', 'emerson', 'mge', 'socomec', 'delta', 'ever', 'fideltronik', 'cyberpower', 'powerwalker', 'legrand', 'aeg', 'abb', 'ge', 'siemens', 'g-tec', 'borri', 'orvaldi', 'salicru'],
+  // Marki projektorów (pasek marek + FAQ 1–2)
+  'naprawa-projektorow': ['epson', 'benq', 'optoma', 'acer', 'sony', 'panasonic', 'viewsonic', 'samsung', 'lg', 'xiaomi', 'philips', 'nec', 'sharp', 'vivitek', 'jvc', 'canon', 'xgimi', 'hisense', 'asus', 'jmgo', 'wanbo', 'dangbei', 'nebula', 'overmax', 'kiano', 'kodak', 'barco', 'christie', 'eiki', 'ricoh', 'hitachi', 'sanyo', 'mitsubishi', 'casio', 'infocus', 'toshiba', 'dell', 'hp', 'lenovo', '3m', 'ask-proxima', 'boxlight', 'plus', 'digital-projection', 'sim2', 'projectiondesign', 'runco', 'marantz'],
   'serwis-drukarek-do-kart-plastikowych': ['evolis', 'zebra', 'hid', 'magicard', 'entrust', 'matica', 'idp', 'hiti', 'dascom', 'swiftcolor', 'edisecure'],
   'serwis-drukarek-dtg': ['epson', 'brother', 'kornit', 'ricoh', 'polyprint', 'aeoon', 'mr', 'roq', 'omniprint', 'coldesi', 'pigment', 'anajet', 'roland-dg', 'mimaki', 'azonprinter', 'resolute', 'lawson', 'durst'],
   'serwis-drukarek-dtf': ['epson', 'roland-dg', 'mimaki', 'mutoh', 'fedar', 'audley', 'pegasus', 'trujet', 'artemis', 'ironprinter', 'dias', 'cobe', 'keditec', 'dtf-station'],
@@ -98,6 +101,7 @@ export const serviceCardBaked: Record<string, { d: string; m: string }> = {
   'druk-3d-na-zamowienie': bakedCard('3d-print'),
   'serwis-niszczarek': bakedCard('shredder3'),
   'naprawa-zasilaczy-ups': bakedCard('ups3'),
+  'naprawa-projektorow': bakedCard('projektory'),
   'serwis-ekspresow-do-kawy': bakedCard('kawa'),
   'serwis-drukarek-do-kart-plastikowych': bakedCard('card-printer2'),
   'wynajem-drukarek': bakedCard('rental'),

@@ -2,11 +2,11 @@
 
 import { useId, useRef, useState, type RefObject } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Menu, ChevronDown } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { CallButton } from '@/components/ui/CallButton'
 import type { ServiceGroup } from '@/components/HeaderInteractive'
+import { MenuItemIcon } from '@/components/menu-item-icon'
 
 interface MobileMenuSheetProps {
     isOpen: boolean
@@ -137,15 +137,7 @@ export function MobileMenuSheet({
                                                             onClick={() => setIsOpen(false)}
                                                             className="flex items-center gap-2 py-1.5 text-[17px] leading-snug"
                                                         >
-                                                            <Image
-                                                                src={item.icon}
-                                                                alt=""
-                                                                width={26}
-                                                                height={item.iconTall ? 26 : 20}
-                                                                sizes="26px"
-                                                                className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
-                                                                unoptimized
-                                                            />
+                                                            <MenuItemIcon icon={item.icon} tall={item.iconTall} mobile />
                                                             {item.label}
                                                         </Link>
                                                     ))}
@@ -163,15 +155,7 @@ export function MobileMenuSheet({
                                                                     onClick={() => setIsOpen(false)}
                                                                     className="flex items-center gap-2 py-1.5 text-[17px] leading-snug"
                                                                 >
-                                                                    <Image
-                                                                        src={item.icon}
-                                                                        alt=""
-                                                                        width={26}
-                                                                        height={item.iconTall ? 26 : 20}
-                                                                        sizes="26px"
-                                                                        className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
-                                                                        unoptimized
-                                                                    />
+                                                                    <MenuItemIcon icon={item.icon} tall={item.iconTall} mobile />
                                                                     {item.label}
                                                                 </Link>
                                                             ))}

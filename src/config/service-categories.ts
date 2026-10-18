@@ -2,12 +2,19 @@
 // "Serwis i naprawa" catalogue, so both always list the same services.
 // Labels are nominative (menu); the home cards keep their own genitive labels.
 
+import type { ComponentType } from 'react'
+import { ProjectorFilled } from '@/components/icons/projector-filled'
+
+/** An svg pictogram drawn in currentColor (the menu gold). */
+export type MenuIconComponent = ComponentType<{ size?: number; className?: string }>
+
 export type ServiceLocale = 'pl' | 'uk' | 'ru'
 
 export type ServiceCategoryItem = {
   label: Record<ServiceLocale, string>
   href: string
-  icon: string
+  /** Gold menu webp, or an svg pictogram drawn in the menu gold. */
+  icon: string | MenuIconComponent
   iconTall?: boolean
   locales?: ServiceLocale[]
   /** Listed in the header menu only, not among the home cards. */
@@ -75,6 +82,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       { label: { pl: 'Ploterów', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
       { label: { pl: 'Niszczarek', uk: 'Шредери', ru: 'Шредеры' }, href: '/uslugi/serwis-niszczarek', icon: '/images/menu-icon-niszczarki.webp' },
       { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/menu-icon-zasilacze-ups.webp' },
+      { label: { pl: 'Projektorów', uk: 'Проєктори', ru: 'Проекторы' }, href: '/uslugi/naprawa-projektorow', icon: ProjectorFilled },
       { label: { pl: 'Ekspresów do kawy', uk: 'Кавомашини', ru: 'Кофемашины' }, href: '/uslugi/serwis-ekspresow-do-kawy', icon: '/images/menu-icon-serwis-ekspresow-do-kawy.webp' },
     ],
     subgroup: {

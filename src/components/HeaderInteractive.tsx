@@ -7,9 +7,10 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
+import { MenuItemIcon } from '@/components/menu-item-icon'
 import { CallButton } from '@/components/ui/CallButton'
 import { cn } from '@/lib/utils'
-import { SERVICE_CATEGORIES } from '@/config/service-categories'
+import { SERVICE_CATEGORIES, type MenuIconComponent } from '@/config/service-categories'
 
 // Same-looking static button shown for the brief window while MobileMenuSheet's
 // chunk is still loading, so the hamburger icon never disappears mid-transition.
@@ -136,7 +137,7 @@ const LOCALE_NAV: Record<Locale, {
 // Four groups; desktop shows them as 4 columns from 1280 px and as a 2×2 grid
 // below. The mobile drawer lists the same groups in one column under "Usługi".
 // Data lives in config/service-categories (shared with the home page catalogue).
-type ServiceGroupItem = { label: string; href: string; icon: string; iconTall?: boolean }
+type ServiceGroupItem = { label: string; href: string; icon: string | MenuIconComponent; iconTall?: boolean }
 export type ServiceGroup = {
   title: string
   titleMobile?: string
@@ -429,18 +430,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                           key={item.href}
                           href={item.href}
                           // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
-                          className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                          className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100"
                         >
-                          <Image
-                            src={item.icon}
-                            alt=""
-                            width={28}
-                            height={item.iconTall ? 28 : 22}
-                            sizes="28px"
-                            // A tall icon (cake candle) rises above the slot without changing the row height.
-                            className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
-                            unoptimized
-                          />
+                          <MenuItemIcon icon={item.icon} tall={item.iconTall} />
                           {item.label}
                         </Link>
                       ))}
@@ -456,18 +448,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                               key={item.href}
                               href={item.href}
                               // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
-                              className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100"
+                              className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100"
                             >
-                              <Image
-                                src={item.icon}
-                                alt=""
-                                width={28}
-                                height={item.iconTall ? 28 : 22}
-                                sizes="28px"
-                                // A tall icon (cake candle) rises above the slot without changing the row height.
-                                className={`flex-shrink-0 object-contain opacity-90 ${item.iconTall ? '-mt-1.5' : ''}`}
-                                unoptimized
-                              />
+                              <MenuItemIcon icon={item.icon} tall={item.iconTall} />
                               {item.label}
                             </Link>
                           ))}

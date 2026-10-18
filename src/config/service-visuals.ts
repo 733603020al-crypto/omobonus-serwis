@@ -79,6 +79,15 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     'naprawy-chlodzenie': { icon: '/images/accordion-icon-ups-chlodzenie.webp' },
     'naprawy-komunikacja': { icon: '/images/accordion-icon-ups-komunikacja.webp' },
   },
+  'naprawa-projektorow': {
+    'naprawy-lampy': { icon: '/images/accordion-icon-projektory-lampy.webp' },
+    'naprawy-zasilanie': { icon: '/images/accordion-icon-projektory-zasilanie.webp' },
+    'naprawy-optyka': { icon: '/images/accordion-icon-projektory-optyka.webp' },
+    'naprawy-chlodzenie': { icon: '/images/accordion-icon-projektory-chlodzenie-v2.webp' },
+    'naprawy-zlacza': { icon: '/images/accordion-icon-projektory-zlacza.webp' },
+    'naprawy-mechanika': { icon: '/images/accordion-icon-projektory-mechanika-v2.webp' },
+    'naprawy-oprogramowanie': { icon: '/images/accordion-icon-projektory-oprogramowanie.webp' },
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     'naprawy-mechanizm': { icon: '/images/accordion-icon-karty-podawanie.webp' },
     'naprawy-glowica-platen': { icon: '/images/accordion-icon-karty-glowica.webp' },

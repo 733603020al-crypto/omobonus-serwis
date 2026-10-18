@@ -67,6 +67,7 @@ const HERO_SCALE: Record<string, number> = {
   'serwis-niszczarek': 1.2,
   'serwis-drukarek-do-kart-plastikowych': 1.2,
   'naprawa-zasilaczy-ups': 1.2,
+  'naprawa-projektorow': 1.2,
   'serwis-drukarek-dtg': 1.2,
   'serwis-drukarek-dtf': 1.2,
   'serwis-drukarek-sublimacyjnych': 1.2,
@@ -247,6 +248,23 @@ const UPS_HERO_SLIDES = [
 const UPS_SIZE_COEFFICIENTS = [0.74, 0.76, 0.85, 0.85, 0.95, 0.95]
 const UPS_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
 
+// naprawa-projektorow: 6 projector renders cropped to their own alpha bbox
+// (see public/images/projektory-carousel-v1-*.webp) — sizes small/small,
+// medium/medium, large/large, same coefficients as the other pages.
+const PROJEKTORY_HERO_SLIDES = [
+  '/images/projektory-carousel-v1-01.webp',
+  '/images/projektory-carousel-v1-02.webp',
+  '/images/projektory-carousel-v1-03.webp',
+  '/images/projektory-carousel-v1-04.webp',
+  '/images/projektory-carousel-v1-05.webp',
+  '/images/projektory-carousel-v1-06.webp',
+]
+// Slide 1 (two tall mini projectors) −30%, slide 6 +20% (0.95 → 1.14).
+const PROJEKTORY_SIZE_COEFFICIENTS = [0.518, 0.76, 0.85, 0.85, 0.95, 1.14]
+// Phone: slide 6 also +20% — 1.2 × the 0.78 phone cap it was held at.
+const PROJEKTORY_MOBILE_SIZE_COEFFICIENTS = [undefined, undefined, undefined, undefined, undefined, 0.936]
+const PROJEKTORY_VERTICAL_BIAS = [0, 0, 4, 4, 13, 13]
+
 // serwis-drukarek-dtg: 6 DTG-printer renders cropped to their own alpha bbox
 // (see public/images/dtg-carousel-v1-*.webp) — sizes small/small,
 // medium/medium, large/large. Own per-page coefficients (not tied to other pages).
@@ -336,6 +354,7 @@ const HERO_CAROUSEL_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'naprawa-projektorow',
   'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
 ])
 
@@ -347,6 +366,7 @@ const PAGE_CLASS_SLUGS = [
   'druk-3d-na-zamowienie', 'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'naprawa-projektorow',
   'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
 ]
 
@@ -678,6 +698,15 @@ export function ServicePageTemplate({
                           slides={UPS_HERO_SLIDES}
                           sizeCoefficients={UPS_SIZE_COEFFICIENTS}
                           verticalBias={UPS_VERTICAL_BIAS}
+                        />
+                      ) : slug === 'naprawa-projektorow' ? (
+                        <HeroPrinterCarousel
+                          alt={imageAlt}
+                          variant="home"
+                          slides={PROJEKTORY_HERO_SLIDES}
+                          sizeCoefficients={PROJEKTORY_SIZE_COEFFICIENTS}
+                          mobileSizeCoefficients={PROJEKTORY_MOBILE_SIZE_COEFFICIENTS}
+                          verticalBias={PROJEKTORY_VERTICAL_BIAS}
                         />
                       ) : slug === 'serwis-drukarek-dtg' ? (
                         <HeroPrinterCarousel
