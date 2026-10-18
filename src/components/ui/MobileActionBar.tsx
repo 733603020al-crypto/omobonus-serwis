@@ -208,7 +208,7 @@ export function MobileActionBar() {
                             style={buttonStyle(isKontakt ? 0 : 1)}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                                <Image src="/images/google-maps.png" alt="Google Maps" fill className="object-cover scale-[1.45]" />
+                                <Image src="/images/google-maps.png" alt="Google Maps" fill sizes="64px" className="object-cover scale-[1.45]" />
                             </span>
                             <span ref={captionRef(isKontakt ? 0 : 1)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 0 : 1)}>{labels.map}</span>
                         </a>

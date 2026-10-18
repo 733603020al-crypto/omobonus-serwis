@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { createPortal } from 'react-dom'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -1621,7 +1622,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   }, [service.slug, openSection, openFaq])
 
   const getSubcategoryValue = (sectionId: string) =>
-    sectionId === 'naprawy' ? openSubcategory ?? undefined : undefined
+    sectionId === 'naprawy' ? openSubcategory ?? '' : undefined
 
   const isSubcategoryOpen = (sectionId: string, subcategoryId: string) => {
     if (service.slug === 'wynajem-drukarek' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
@@ -1838,7 +1839,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
         <Accordion
           type="single"
           collapsible
-          value={openSection ?? undefined}
+          value={openSection ?? ''}
           onValueChange={handleSectionChange}
           className={cn(
             "w-full",
@@ -3588,7 +3589,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               ref={faqContentResizeRef}
                               type="single"
                               collapsible
-                              value={openFaq ?? undefined}
+                              value={openFaq ?? ''}
                               onValueChange={value => setOpenFaq(value ?? null)}
                               className="w-full"
                             >
@@ -3632,7 +3633,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                             collapsible
                             className="w-full max-w-full min-w-0"
                             data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
-                            value={openRentalSubcategory ?? undefined}
+                            value={isWynajemSection || isDrukarkaZastepczaSection ? openRentalSubcategory ?? '' : undefined}
                             onValueChange={
                               isWynajemSection
                                 ? value => handleWynajemSubcategoryChange(value)
@@ -4132,8 +4133,11 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
       </div>
 
       {/* БОЛЬШАЯ ПОДСКАЗКА (МОДАЛЬНОЕ ОКНО) ДЛЯ МОБИЛЬНЫХ */}
-      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm">
+      {/* Через портал в body: внутри страницы окно попадает в слой своей секции (z-10),
+          и следующие секции (блок отзывов) рисуются поверх него. z-30 — над контентом,
+          но под шапкой (z-50) и нижней панелью (z-40), как и было. */}
+      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && createPortal(
+        <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm">
           <div
             className="absolute left-0 right-0 bottom-0 top-0 overflow-y-auto"
             style={{
@@ -4153,7 +4157,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
               <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
       {isRepairAccordionLayout && (
         <div

@@ -849,7 +849,7 @@ export function ServicePageTemplate({
                 </div>
               )}
               <div className={`container max-w-5xl mx-auto px-4 md:px-6 text-center relative z-10 mb-3${slug === 'druk-3d-na-zamowienie' ? ' mt-[74px]' : slugBrands && slugBrands.length > 0 ? ' mt-[44px]' : ''}`}>
-                <FadeSlideP className={`hidden md:block text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'max-w-3xl mx-auto'}`}>
+                <FadeSlideP className={`hidden md:block text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl ${slug === 'drukarka-zastepcza' ? 'whitespace-nowrap' : 'mx-auto'}`}>
                   {slug === 'drukarka-zastepcza'
                     ? labels.fadeSlideDrukarkaZastepcza
                     : slug === 'wynajem-drukarek'
