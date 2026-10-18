@@ -14,6 +14,7 @@ import { wynajemAkordeon1, wynajemAkordeon2, wynajemFaq } from './services-data-
 import { zastepczaAkordeon1, zastepczaAkordeon2, zastepczaFaq } from './services-data-ru-drukarka-zastepcza'
 import { niszczarkiPricingSectionsRu, NISZCZARKI_PRICE_TOOLTIP_RU } from './services-data-ru-niszczarki'
 import { upsPricingSectionsRu } from './services-data-ups'
+import { projektoryPricingSectionsRu } from './services-data-projektory'
 import { kartyPricingSectionsRu, KARTY_PRICE_TOOLTIP_RU } from './services-data-ru-karty'
 import { dtgPricingSectionsRu, DTG_PRICE_TOOLTIP_RU } from './services-data-ru-dtg'
 import { dtfPricingSectionsRu, DTF_PRICE_TOOLTIP_RU } from './services-data-ru-dtf'
@@ -236,7 +237,15 @@ export const servicesRu: ServiceData[] = [
     icon: '/images/ups-carousel-v1-01.webp',
     description: 'Сервис и ремонт ИБП (UPS) – источников бесперебойного питания.',
     pricingSections: upsPricingSectionsRu(),
+  },  {
+    slug: 'naprawa-projektorow',
+    title: 'Сервис и ремонт проекторов',
+    subtitle: 'Сервис и ремонт проекторов во Вроцлаве',
+    icon: '/images/projektory-carousel-v1-01.webp',
+    description: 'Сервис и ремонт проекторов.',
+    pricingSections: projektoryPricingSectionsRu(),
   },
+
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',
     title: 'Сервис и ремонт принтеров для пластиковых карт',

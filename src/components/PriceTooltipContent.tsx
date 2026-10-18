@@ -116,6 +116,15 @@ const DEVICE_CATEGORIES_WINDOWS: Record<string, DeviceCategoriesWindow> = {
       { title: '3–10 kVA', description: 'Zasilacze do serwerowni i firm, często typu online (z podwójną konwersją), z dodatkowymi modułami bateryjnymi', image: '/images/ups-carousel-v1-06.webp' },
     ],
   },
+  'naprawa-projektorow': {
+    textKey: 'projektory',
+    priceExample: '60 / 100 / 180',
+    categories: [
+      { title: 'Projektory kompaktowe', description: 'Małe i przenośne projektory do użytku domowego, podróży i niewielkich pomieszczeń', image: '/images/projektory-kategoria-kompaktowe.webp' },
+      { title: 'Projektory domowe i biurowe', description: 'Projektory do oglądania filmów, prezentacji oraz codziennego użytku w domach, biurach i szkołach', image: '/images/projektory-kategoria-domowe-biurowe.webp' },
+      { title: 'Projektory profesjonalne i instalacyjne', description: 'Zaawansowane projektory do sal konferencyjnych, audytoriów i dużych obiektów, przeznaczone do intensywnej pracy', image: '/images/projektory-kategoria-profesjonalne.webp' },
+    ],
+  },
   'serwis-drukarek-do-kart-plastikowych': {
     textKey: 'serwisDrukarekDoKart',
     priceExample: '100 / 150 / 200',

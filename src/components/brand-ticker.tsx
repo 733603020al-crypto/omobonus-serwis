@@ -229,6 +229,40 @@ const brands: { name: string; src?: string; label?: string; scale?: number; heig
   { name: "nuova-simonelli", src: "/images/brands/nuova-simonelli.svg", listedOnly: true },
   { name: "la-marzocco", src: "/images/brands/la-marzocco.svg", listedOnly: true },
   { name: "ascaso", src: "/images/brands/ascaso.svg", listedOnly: true },
+  // projektory (oficjalne logo producentów; NEC, 3M, Sanyo, PLUS, Hisense, Mitsubishi, Nebula — Wikimedia Commons; ASK Proxima, Runco, Projectiondesign — archiwum oficjalnych stron)
+  { name: "benq", src: "/images/brands/benq.webp", listedOnly: true },
+  { name: "optoma", src: "/images/brands/optoma.webp", listedOnly: true },
+  { name: "sony", src: "/images/brands/sony.webp", listedOnly: true },
+  { name: "viewsonic", src: "/images/brands/viewsonic.webp", listedOnly: true },
+  { name: "nec", src: "/images/brands/nec.webp", listedOnly: true },
+  { name: "vivitek", src: "/images/brands/vivitek.webp", listedOnly: true },
+  { name: "jvc", src: "/images/brands/jvc.webp", listedOnly: true },
+  { name: "xgimi", src: "/images/brands/xgimi.webp", listedOnly: true },
+  { name: "hisense", src: "/images/brands/hisense.webp", listedOnly: true },
+  { name: "jmgo", src: "/images/brands/jmgo.webp", listedOnly: true },
+  { name: "wanbo", src: "/images/brands/wanbo.webp", listedOnly: true },
+  { name: "dangbei", src: "/images/brands/dangbei.webp", listedOnly: true },
+  { name: "nebula", src: "/images/brands/nebula.webp", listedOnly: true },
+  { name: "overmax", src: "/images/brands/overmax.webp", listedOnly: true },
+  { name: "kiano", src: "/images/brands/kiano.webp", listedOnly: true },
+  { name: "kodak", src: "/images/brands/kodak.webp", listedOnly: true },
+  { name: "barco", src: "/images/brands/barco.webp", listedOnly: true },
+  { name: "christie", src: "/images/brands/christie.webp", listedOnly: true },
+  { name: "eiki", src: "/images/brands/eiki.webp", listedOnly: true },
+  { name: "hitachi", src: "/images/brands/hitachi.webp", listedOnly: true },
+  { name: "sanyo", src: "/images/brands/sanyo.webp", listedOnly: true },
+  { name: "mitsubishi", src: "/images/brands/mitsubishi.webp", listedOnly: true },
+  { name: "casio", src: "/images/brands/casio.webp", listedOnly: true },
+  { name: "infocus", src: "/images/brands/infocus.webp", listedOnly: true },
+  { name: "3m", src: "/images/brands/3m.webp", listedOnly: true },
+  { name: "ask-proxima", src: "/images/brands/ask-proxima.webp", listedOnly: true },
+  { name: "boxlight", src: "/images/brands/boxlight.webp", listedOnly: true },
+  { name: "plus", src: "/images/brands/plus.webp", listedOnly: true },
+  { name: "digital-projection", src: "/images/brands/digital-projection.webp", listedOnly: true },
+  { name: "sim2", src: "/images/brands/sim2.webp", listedOnly: true },
+  { name: "projectiondesign", src: "/images/brands/projectiondesign.webp", listedOnly: true },
+  { name: "runco", src: "/images/brands/runco.webp", listedOnly: true, scale: 1.25 }, // drobne hasło pod nazwą zaniża wagę logo
+  { name: "marantz", src: "/images/brands/marantz.webp", listedOnly: true },
 ]
 
 // Proporcje (szerokość / wysokość) plików logo. Dzięki nim <img> ma poprawną
@@ -264,6 +298,7 @@ const LOGO_RATIO: Record<string, number> = {
   "fedar": 4.070, "audley": 7.595, "pegasus": 3.875, "trujet": 4.880, "artemis": 4.090, "ironprinter": 2.605, "dias": 2.645, "cobe": 7.200, "keditec": 5.055, "dtf-station": 3.110,
   "jetlt": 4.411, "primera": 3.443, "icing-images": 6.563, "icinginks": 2.275, "kopykake": 2.519, "decopac": 6.131, "evebot": 3.682, "cino-printer": 2.706,
   "delonghi": 3.230, "philips": 5.505, "saeco": 3.080, "bosch": 4.465, "jura": 2.310, "krups": 4.535, "nivona": 1.535, "melitta": 1.515, "gaggia": 2.155, "miele": 2.620, "sage": 2.290, "smeg": 5.125, "aeg-home": 2.640, "tchibo": 3.335, "wmf": 0.805, "franke": 3.075, "coffee-format": 2.485, "dr-coffee": 8.700, "lelit": 1.055, "rancilio": 3.825, "nuova-simonelli": 6.575, "la-marzocco": 5.765, "ascaso": 6.010,
+  "benq": 1.853, "optoma": 3.293, "sony": 5.634, "viewsonic": 6.118, "nec": 3.747, "vivitek": 3.800, "jvc": 2.520, "xgimi": 4.307, "hisense": 5.594, "jmgo": 3.680, "wanbo": 4.293, "dangbei": 4.073, "nebula": 2.940, "overmax": 6.557, "kiano": 6.107, "kodak": 1.093, "barco": 1.507, "christie": 7.018, "eiki": 3.550, "hitachi": 6.107, "sanyo": 5.926, "mitsubishi": 3.427, "casio": 5.293, "infocus": 5.100, "3m": 1.913, "ask-proxima": 8.118, "boxlight": 3.680, "plus": 2.913, "digital-projection": 7.767, "sim2": 2.433, "projectiondesign": 6.688, "runco": 1.691, "marantz": 9.302,
 }
 
 // Rozmiar liczony z pomiarów logo (scripts/brand-logo-metrics.mjs)

@@ -5,6 +5,11 @@ export const headings: Record<string, ServicePageHeadings> = {
     h1: 'Serwis i naprawa niszczarek we Wrocławiu',
     h2: '(Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, OPUS, Leitz, Wallner, Argo, EBA, HP, Tracer, Tarnator, Genie, Olympia, Intimus, Aurora, Peach, Lanberg)',
   },
+  'naprawa-projektorow': {
+    h1: 'Serwis i naprawa projektorów we Wrocławiu',
+    lines: ['Serwis i naprawa', 'projektorów', 'we Wrocławiu'],
+    h2: '(Epson, BenQ, Optoma, Acer, Sony, Panasonic, ViewSonic, Samsung, LG, Xiaomi, Philips, NEC, Sharp, Vivitek, JVC, Canon, XGIMI, Hisense, …)',
+  },
   'naprawa-zasilaczy-ups': {
     h1: 'Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu',
     lines: ['Serwis i naprawa', 'zasilaczy awaryjnych UPS', 'we Wrocławiu'],
@@ -123,6 +128,13 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Konserwacja i olejenie, usuwanie zacięć, naprawa mechanizmu tnącego, przekładni, silnika i czujników niszczarki.',
       'Twoją niszczarkę możemy wstępnie sprawdzić po dostarczeniu do serwisu — wstępna diagnoza trwa do 15 min.',
       'Niszczarki małe, biurowe i profesjonalne: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg i inne.',
+    ],
+  },
+  'naprawa-projektorow': {
+    items: [
+      'Wymiana lampy, naprawa zasilania, układu optycznego i chłodzenia, czyszczenie i konserwacja projektorów.',
+      'Wstępna diagnoza projektora — do 15 min.',
+      'Projektory domowe, biurowe i profesjonalne: Epson, BenQ, Optoma, Acer, Sony i inne.',
     ],
   },
   'naprawa-zasilaczy-ups': {
@@ -249,6 +261,7 @@ export const seoBlocks: Record<string, SeoBlock> = {
 export const imageAlt: Record<string, string> = {
   'serwis-niszczarek': 'Serwis i naprawa niszczarek',
   'naprawa-zasilaczy-ups': 'Zasilacz awaryjny UPS',
+  'naprawa-projektorow': 'Projektor',
   'serwis-drukarek-do-kart-plastikowych': 'Drukarka do kart plastikowych',
   'serwis-drukarek-dtg': 'Drukarka DTG do nadruku na koszulkach',
   'serwis-drukarek-dtf': 'Drukarka DTF do druku na folii',
@@ -286,6 +299,10 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   'serwis-niszczarek': {
     title: 'Serwis i naprawa niszczarek — cennik',
     description: 'Naprawa niszczarek we Wrocławiu: olejenie, usuwanie zacięć, wymiana noży, silnik i czujniki. Fellowes, HSM, Kobra, Rexel. Diagnoza gratis przy naprawie.',
+  },
+  'naprawa-projektorow': {
+    title: 'Serwis i naprawa projektorów — cennik',
+    description: 'Naprawa projektorów we Wrocławiu — wymiana lampy, zasilanie, optyka, chłodzenie, czyszczenie. Epson, BenQ, Optoma, Acer, Sony. Pełny cennik bez ukrytych kosztów.',
   },
   'naprawa-zasilaczy-ups': {
     title: 'Naprawa UPS i zasilaczy awaryjnych',
@@ -402,6 +419,7 @@ export const labels: ServicePageLabels = {
     'serwis-drukarek-3d': 'Masz problem z drukarką 3D?',
     'serwis-niszczarek': 'Masz problem z niszczarką?',
     'naprawa-zasilaczy-ups': 'Masz problem z UPS-em?',
+    'naprawa-projektorow': 'Masz problem z projektorem?',
     'serwis-drukarek-do-kart-plastikowych': 'Masz problem z drukarką do kart?',
     'serwis-drukarek-dtg': 'Masz problem z drukarką DTG?',
     'serwis-drukarek-dtf': 'Masz problem z drukarką DTF?',
@@ -433,6 +451,7 @@ export const labels: ServicePageLabels = {
     'serwis-plotterow': 'Masz problem z ploterem?',
     'serwis-niszczarek': 'Masz problem z niszczarką?',
     'naprawa-zasilaczy-ups': 'Masz problem z zasilaczem UPS?',
+    'naprawa-projektorow': 'Masz problem z projektorem?',
   },
   ctaTextMobile: 'Napisz lub zadzwoń — znajdziemy rozwiązanie!',
   ctaButton: 'Szybki kontakt',

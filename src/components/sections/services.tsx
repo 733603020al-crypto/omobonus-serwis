@@ -84,6 +84,7 @@ const PL: ServicesT = {
     'druk-3d-na-zamowienie': 'Druk 3D na zamówienie',
     'serwis-niszczarek': 'Niszczarek',
     'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
+    'naprawa-projektorow': 'Projektorów',
     'serwis-ekspresow-do-kawy': 'Ekspresów do kawy',
     'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
     'wynajem-drukarek': 'Wynajem drukarek',
@@ -151,7 +152,7 @@ export function Services({
     .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
     .map((item) => {
       const slug = item.href.split('/').pop() as string
-      return services.find((service) => service.slug === slug) ?? { slug, title: item.label[locale], icon: item.icon }
+      return services.find((service) => service.slug === slug) ?? { slug, title: item.label[locale], icon: typeof item.icon === 'string' ? item.icon : '' }
     })
 
   const selectTab = (index: number) => {

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { createPortal } from 'react-dom'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -852,6 +853,7 @@ const SPECIAL_TOOLTIP_SERVICES = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'naprawa-projektorow',
   'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-termicznych',
@@ -874,6 +876,7 @@ const KONSERWACJA_PROMO_ALT_SLUGS = new Set([
   'serwis-niszczarek',
   'serwis-drukarek-do-kart-plastikowych',
   'naprawa-zasilaczy-ups',
+  'naprawa-projektorow',
   'serwis-drukarek-dtg', 'serwis-drukarek-dtf', 'serwis-drukarek-sublimacyjnych', 'serwis-drukarek-spozywczych', 'serwis-ekspresow-do-kawy',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
@@ -1068,7 +1071,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const [priceColumnsPosition1DZ, setPriceColumnsPosition1DZ] = useState<{ left: number; width: number } | null>(null)
   const [priceColumnsPosition2DZ, setPriceColumnsPosition2DZ] = useState<{ left: number; width: number } | null>(null)
   const priceTooltip = service.priceTooltip ?? DEFAULT_PRICE_TOOLTIP
-  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || service.slug === 'naprawa-zasilaczy-ups'
+  const isLaserService = service.slug === 'serwis-drukarek-laserowych' || service.slug === 'serwis-niszczarek' || service.slug === 'serwis-drukarek-do-kart-plastikowych' || (service.slug === 'naprawa-zasilaczy-ups' || service.slug === 'naprawa-projektorow')
   const isThermalService = service.slug === 'serwis-drukarek-termicznych'
   const isNeedleService = service.slug === 'serwis-drukarek-iglowych'
   const isInkjetService = service.slug === 'serwis-drukarek-atramentowych'
@@ -1079,8 +1082,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const isOutsourcingService = service.slug === 'outsourcing-it'
   const isDruk3DZamowienieService = service.slug === 'druk-3d-na-zamowienie'
   const usesAltKonserwacjaPromo = KONSERWACJA_PROMO_ALT_SLUGS.has(service.slug)
-  const konserwacjaPromoTitleResolved = isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoTitleKawa : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? t.konserwacjaPromoTitleDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
-  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-drukarek-dtf' ? t.konserwacjaPromoDescriptionDtf : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoDescriptionKawa : service.slug === 'serwis-drukarek-spozywczych' ? t.konserwacjaPromoDescriptionSpozywcze :service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
+  const konserwacjaPromoTitleResolved = service.slug === 'naprawa-projektorow' ? t.konserwacjaPromoTitleProjektory : isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoTitleKawa : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? t.konserwacjaPromoTitleDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
+  const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-drukarek-dtf' ? t.konserwacjaPromoDescriptionDtf : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoDescriptionKawa : service.slug === 'serwis-drukarek-spozywczych' ? t.konserwacjaPromoDescriptionSpozywcze :service.slug === 'naprawa-projektorow' ? t.konserwacjaPromoDescriptionProjektory : service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
 
@@ -1238,7 +1241,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
       const aspectRatio = 858 / 1465
       const aspectHeight = aspectRatio * containerWidth
       // serwis-niszczarek: tylko 4 podkategorie — bez dopełniania do proporcji tła, inaczej pod listą zostaje pusty pas
-      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek' || service.slug === 'naprawa-zasilaczy-ups')
+      const bottomTailHeight = (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza' || service.slug === 'serwis-niszczarek' || (service.slug === 'naprawa-zasilaczy-ups' || service.slug === 'naprawa-projektorow'))
         ? 24
         : Math.max(aspectHeight - measuredHeight, 24)
       setParchmentListMetrics({
@@ -1621,7 +1624,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   }, [service.slug, openSection, openFaq])
 
   const getSubcategoryValue = (sectionId: string) =>
-    sectionId === 'naprawy' ? openSubcategory ?? undefined : undefined
+    sectionId === 'naprawy' ? openSubcategory ?? '' : undefined
 
   const isSubcategoryOpen = (sectionId: string, subcategoryId: string) => {
     if (service.slug === 'wynajem-drukarek' && (sectionId === 'akordeon-1' || sectionId === 'akordeon-2')) {
@@ -1838,7 +1841,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
         <Accordion
           type="single"
           collapsible
-          value={openSection ?? undefined}
+          value={openSection ?? ''}
           onValueChange={handleSectionChange}
           className={cn(
             "w-full",
@@ -1931,6 +1934,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-druk3d-gotowy-projekt-v2.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza'
                                 ? '/images/accordion-icon-diagnoza.webp'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'naprawa-projektorow'
+                                ? '/images/accordion-icon-projektory-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'naprawa-zasilaczy-ups'
                                 ? '/images/accordion-icon-ups-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-niszczarek'
@@ -1947,7 +1952,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-spozywcze-czyszczenie.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && service.slug === 'serwis-drukarek-dtg'
                                 ? '/images/accordion-icon-dtg-czyszczenie.webp'
-                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
+                                : useWarmSectionIcons && section.id === 'konserwacja' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups' && service.slug !== 'naprawa-projektorow'
                                 ? '/images/accordion-icon-czyszczenie-laser-v3.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja' && isThermalService
                                 ? '/images/accordion-icon-czyszczenie-termiczne-v2.webp'
@@ -1967,6 +1972,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-outsourcing-abonament-v2.webp'
                                 : useWarmSectionIcons && section.id === 'konserwacja'
                                 ? '/images/accordion-icon-czyszczenie.webp'
+                                : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'naprawa-projektorow'
+                                ? '/images/accordion-icon-projektory-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'naprawa-zasilaczy-ups'
                                 ? '/images/accordion-icon-ups-naprawy.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && service.slug === 'serwis-niszczarek'
@@ -1989,7 +1996,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 ? '/images/accordion-icon-naprawy-iglowe.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isInkjetService
                                 ? '/images/accordion-icon-atramentowe-naprawy-uslugi-v3.webp'
-                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups'
+                                : useWarmSectionIcons && section.id === 'naprawy' && isLaserService && service.slug !== 'serwis-niszczarek' && service.slug !== 'serwis-drukarek-do-kart-plastikowych' && service.slug !== 'naprawa-zasilaczy-ups' && service.slug !== 'naprawa-projektorow'
                                 ? '/images/accordion-icon-naprawy-laser-v2.webp'
                                 : useWarmSectionIcons && section.id === 'naprawy' && isDesktopComputerService
                                 ? '/images/accordion-icon-komputer-naprawy.webp'
@@ -2509,7 +2516,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                           style={isMobile ? undefined : { display: 'flex', justifyContent: konserwacjaPromoOverflows ? 'flex-end' : 'center', overflow: 'visible' }}
                         >
                           {/* DTG: opis dłuższy niż jedna linia — na desktopie zawijany jak na telefonie */}
-                          {isMobile || (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? konserwacjaPromoDescriptionResolved : (
+                          {isMobile || (service.slug === 'naprawa-projektorow' || service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? konserwacjaPromoDescriptionResolved : (
                             <span ref={konserwacjaPromoSpanRef} style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{konserwacjaPromoDescriptionResolved}</span>
                           )}
                         </div>
@@ -3588,7 +3595,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                               ref={faqContentResizeRef}
                               type="single"
                               collapsible
-                              value={openFaq ?? undefined}
+                              value={openFaq ?? ''}
                               onValueChange={value => setOpenFaq(value ?? null)}
                               className="w-full"
                             >
@@ -3632,7 +3639,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                             collapsible
                             className="w-full max-w-full min-w-0"
                             data-parchment-list-accordion={usesParchmentList ? 'true' : undefined}
-                            value={openRentalSubcategory ?? undefined}
+                            value={isWynajemSection || isDrukarkaZastepczaSection ? openRentalSubcategory ?? '' : undefined}
                             onValueChange={
                               isWynajemSection
                                 ? value => handleWynajemSubcategoryChange(value)
@@ -4132,8 +4139,11 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
       </div>
 
       {/* БОЛЬШАЯ ПОДСКАЗКА (МОДАЛЬНОЕ ОКНО) ДЛЯ МОБИЛЬНЫХ */}
-      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm">
+      {/* Через портал в body: внутри страницы окно попадает в слой своей секции (z-10),
+          и следующие секции (блок отзывов) рисуются поверх него. z-30 — над контентом,
+          но под шапкой (z-50) и нижней панелью (z-40), как и было. */}
+      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && createPortal(
+        <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm">
           <div
             className="absolute left-0 right-0 bottom-0 top-0 overflow-y-auto"
             style={{
@@ -4153,7 +4163,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
               <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
       {isRepairAccordionLayout && (
         <div

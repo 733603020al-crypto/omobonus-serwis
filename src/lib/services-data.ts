@@ -32,6 +32,7 @@ import { createWynajemPricingSections } from './services-data-wynajem'
 import { createDrukarkaZastepczaPricingSections } from './services-data-drukarka-zastepcza'
 import { createNiszczarkiPricingSections, NISZCZARKI_PRICE_TOOLTIP } from './services-data-niszczarki'
 import { createUpsPricingSections } from './services-data-ups'
+import { createProjektoryPricingSections } from './services-data-projektory'
 import { createKartyPricingSections, KARTY_PRICE_TOOLTIP } from './services-data-karty'
 import { createDtgPricingSections, DTG_PRICE_TOOLTIP } from './services-data-dtg'
 import { createDtfPricingSections, DTF_PRICE_TOOLTIP } from './services-data-dtf'
@@ -152,6 +153,15 @@ export const services: ServiceData[] = [
     icon: '/images/ups-carousel-v1-01.webp',
     description: 'Serwis i naprawa UPS – zasilaczy awaryjnych.',
     pricingSections: createUpsPricingSections(),
+  },
+  {
+    // naprawa-projektorow — noindex do publikacji (services-meta-shared.ts → noindexSlugs)
+    slug: 'naprawa-projektorow',
+    title: 'Naprawa projektorów',
+    subtitle: 'Naprawa projektorów we Wrocławiu',
+    icon: '/images/projektory-carousel-v1-01.webp',
+    description: 'Naprawa projektorów.',
+    pricingSections: createProjektoryPricingSections(),
   },
   {
     slug: 'serwis-drukarek-do-kart-plastikowych',

@@ -52,6 +52,8 @@ export interface ServiceAccordionDict {
   konserwacjaPromoTitleNiszczarki: string
   konserwacjaPromoDescriptionNiszczarki: string
   konserwacjaPromoDescriptionUps: string
+  konserwacjaPromoTitleProjektory: string
+  konserwacjaPromoDescriptionProjektory: string
   konserwacjaPromoTitleInkjet: string
   konserwacjaPromoDescriptionInkjet: string
   konserwacjaPromoTitleDtg: string
@@ -74,6 +76,7 @@ export interface ServiceAccordionDict {
     serwisDrukarekAtramentowych: string
     serwisNiszczarek: string
     ups: string
+    projektory: string
     serwisDrukarekDoKart: string
     serwisDrukarekDtg: string
     serwisDrukarekDtf: string
@@ -176,6 +179,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleNiszczarki: '„TYLKO OLEJENIE?”',
     konserwacjaPromoDescriptionNiszczarki: 'Nie ograniczamy się tylko do naoliwienia noży — wykonujemy pełną konserwację niszczarki',
     konserwacjaPromoDescriptionUps: 'Nie ograniczamy się tylko do usunięcia kurzu — wykonujemy pełny przegląd i konserwację UPS',
+    konserwacjaPromoTitleProjektory: '„TYLKO USUWANIE KURZU?”',
+    konserwacjaPromoDescriptionProjektory: 'Nie ograniczamy się do zwykłego czyszczenia — wykonujemy kompleksowy przegląd i konserwację projektora, w tym układu optycznego i chłodzenia.',
     konserwacjaPromoTitleInkjet: '„TYLKO CZYSZCZENIE GŁOWICY?”',
     konserwacjaPromoDescriptionInkjet: 'Nie ograniczamy się do udrażniania głowicy — wykonujemy pełną konserwację układu drukującego i mechanizmów drukarki',
     konserwacjaPromoTitleDtg: '„TYLKO CYKL CZYSZCZĄCY?”',
@@ -198,6 +203,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Cena zależy od klasy, konstrukcji i przeznaczenia drukarki: pierwsza – domowa, druga – biurowa, trzecia – biznesowa.',
       serwisNiszczarek: 'Cena zależy od klasy, konstrukcji i wydajności niszczarki: pierwsza – mała, druga – biurowa, trzecia – profesjonalna.',
       ups: 'Cena zależy od mocy zasilacza: pierwsza – do 1 kVA, druga – 1–⁠3 kVA, trzecia – 3–⁠10 kVA.',
+      projektory: 'Cena zależy od konstrukcji, rodzaju i stopnia zaawansowania projektora: pierwsza – kompaktowa, druga – domowa i biurowa, trzecia – profesjonalna i instalacyjna.',
       serwisDrukarekDoKart: 'Cena zależy od klasy, konstrukcji i wyposażenia drukarki do kart: pierwsza – podstawowa, druga – biznesowa, trzecia – retransferowa.',
       serwisDrukarekDtg: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTG: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa.',
       serwisDrukarekDtf: 'Cena zależy od klasy, konstrukcji i wydajności drukarki DTF: pierwsza – kompaktowa, druga – profesjonalna, trzecia – przemysłowa.',
@@ -208,6 +214,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     deviceCategoriesNote: {
       serwisNiszczarek: 'Duże niszczarki centralne i przemysłowe – wycena indywidualna.',
       ups: 'Zasilacze UPS powyżej 10 kVA – wycena indywidualna.',
+      projektory: 'Ostateczną kategorię ustalamy na podstawie modelu i konstrukcji projektora',
     },
     categoryTranslations: {},
     categoryTranslationsAtrament: {},
@@ -293,6 +300,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleNiszczarki: '«ТІЛЬКИ ЗМАЩЕННЯ?»',
     konserwacjaPromoDescriptionNiszczarki: 'Ми не обмежуємося лише змащенням ножів — виконуємо повне обслуговування знищувача',
     konserwacjaPromoDescriptionUps: 'Ми не обмежуємося лише видаленням пилу — виконуємо повний огляд і обслуговування ДБЖ',
+    konserwacjaPromoTitleProjektory: '«ТІЛЬКИ ВИДАЛЕННЯ ПИЛУ?»',
+    konserwacjaPromoDescriptionProjektory: 'Ми не обмежуємося звичайним чищенням — виконуємо комплексний огляд і обслуговування проєктора, зокрема оптичної системи та системи охолодження.',
     konserwacjaPromoTitleInkjet: '«ТІЛЬКИ ЧИЩЕННЯ ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Ми не обмежуємося прочищенням головки — виконуємо повне обслуговування друкувального вузла та механізмів принтера',
     konserwacjaPromoTitleDtg: '«ТІЛЬКИ ЦИКЛ ЧИЩЕННЯ?»',
@@ -315,6 +324,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Ціна залежить від класу, конструкції та призначення принтера: перша – домашній, друга – офісний, третя – бізнесовий.',
       serwisNiszczarek: 'Ціна залежить від класу, конструкції та продуктивності знищувача: перша – мала, друга – офісна, третя – професійна.',
       ups: 'Ціна залежить від потужності ДБЖ: перша – до 1 kVA, друга – 1–⁠3 kVA, третя – 3–⁠10 kVA.',
+      projektory: 'Ціна залежить від конструкції, типу та ступеня складності проєктора: перша – компактний, друга – домашній і офісний, третя – професійний та інсталяційний.',
       serwisDrukarekDoKart: 'Ціна залежить від класу, конструкції та оснащення принтера карток: перша – базовий, друга – бізнесовий, третя – ретрансферний.',
       serwisDrukarekDtg: 'Ціна залежить від класу, конструкції та продуктивності DTG-принтера: перша – компактний, друга – професійний, третя – промисловий.',
       serwisDrukarekDtf: 'Ціна залежить від класу, конструкції та продуктивності DTF-принтера: перша – компактний, друга – професійний, третя – промисловий.',
@@ -325,6 +335,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     deviceCategoriesNote: {
       serwisNiszczarek: 'Великі центральні та промислові знищувачі – індивідуальна оцінка вартості.',
       ups: 'ДБЖ понад 10 kVA – індивідуальна оцінка вартості.',
+      projektory: 'Остаточну категорію визначаємо на підставі моделі та конструкції проєктора',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашній принтер', description: 'Невеликі струменеві принтери A4 для дому та нечастого друку', features: [] },
@@ -373,6 +384,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Ekspresy domowe': { title: 'Домашні кавомашини', description: 'Автоматичні та ріжкові кавомашини для щоденного домашнього використання', features: [] },
       'Ekspresy biurowe': { title: 'Офісні кавомашини', description: 'Кавомашини для офісів і компаній, розраховані на приготування більшої кількості кави', features: [] },
       'Ekspresy gastronomiczne': { title: 'Гастрономічні кавомашини', description: 'Кавомашини для кав’ярень, ресторанів і готелів, призначені для інтенсивної роботи', features: [] },
+      // naprawa-projektorow
+      'Projektory kompaktowe': { title: 'Компактні проєктори', description: 'Малі та портативні проєктори для домашнього використання, подорожей і невеликих приміщень', features: [] },
+      'Projektory domowe i biurowe': { title: 'Домашні та офісні проєктори', description: 'Проєктори для перегляду фільмів, презентацій і щоденного використання вдома, в офісах і школах', features: [] },
+      'Projektory profesjonalne i instalacyjne': { title: 'Професійні та інсталяційні проєктори', description: 'Високотехнологічні проєктори для конференц-залів, аудиторій і великих об’єктів, призначені для інтенсивної роботи', features: [] },
       // naprawa-zasilaczy-ups
       'do 1 kVA': { title: 'до 1 kVA', description: 'Невеликі ДБЖ для комп’ютера, роутера, касового апарата або відеоспостереження', features: [] },
       '1–3 kVA': { title: '1–3 kVA', description: 'ДБЖ для офісу та невеликих серверів, підлогові або призначені для серверної шафи', features: [] },
@@ -462,6 +477,8 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     konserwacjaPromoTitleNiszczarki: '«ТОЛЬКО СМАЗКА?»',
     konserwacjaPromoDescriptionNiszczarki: 'Мы не ограничиваемся только смазкой ножей — выполняем полное обслуживание уничтожителя',
     konserwacjaPromoDescriptionUps: 'Мы не ограничиваемся только удалением пыли — выполняем полный осмотр и обслуживание ИБП',
+    konserwacjaPromoTitleProjektory: '«ТОЛЬКО УДАЛЕНИЕ ПЫЛИ?»',
+    konserwacjaPromoDescriptionProjektory: 'Мы не ограничиваемся обычной чисткой — выполняем комплексный осмотр и обслуживание проектора, включая оптическую систему и систему охлаждения.',
     konserwacjaPromoTitleInkjet: '«ТОЛЬКО ЧИСТКА ГОЛОВКИ?»',
     konserwacjaPromoDescriptionInkjet: 'Мы не ограничиваемся прочисткой головки — выполняем полное обслуживание печатающего узла и механизмов принтера',
     konserwacjaPromoTitleDtg: '«ТОЛЬКО ЦИКЛ ЧИСТКИ?»',
@@ -484,6 +501,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       serwisDrukarekAtramentowych: 'Цена зависит от класса, конструкции и назначения принтера: первая – домашний, вторая – офисный, третья – бизнес-принтер.',
       serwisNiszczarek: 'Цена зависит от класса, конструкции и производительности уничтожителя: первая – малая, вторая – офисная, третья – профессиональная.',
       ups: 'Цена зависит от мощности ИБП: первая – до 1 kVA, вторая – 1–⁠3 kVA, третья – 3–⁠10 kVA.',
+      projektory: 'Цена зависит от конструкции, типа и степени сложности проектора: первая – компактный, вторая – домашний и офисный, третья – профессиональный и инсталляционный.',
       serwisDrukarekDoKart: 'Цена зависит от класса, конструкции и оснащения принтера карт: первая – базовый, вторая – бизнес, третья – ретрансферный.',
       serwisDrukarekDtg: 'Цена зависит от класса, конструкции и производительности DTG-принтера: первая – компактный, вторая – профессиональный, третья – промышленный.',
       serwisDrukarekDtf: 'Цена зависит от класса, конструкции и производительности DTF-принтера: первая – компактный, вторая – профессиональный, третья – промышленный.',
@@ -494,6 +512,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
     deviceCategoriesNote: {
       serwisNiszczarek: 'Крупные центральные и промышленные уничтожители – индивидуальный расчёт стоимости.',
       ups: 'ИБП свыше 10 kVA – индивидуальный расчёт стоимости.',
+      projektory: 'Окончательную категорию определяем на основании модели и конструкции проектора',
     },
     categoryTranslationsAtrament: {
       'Drukarka domowa': { title: 'Домашний принтер', description: 'Небольшие струйные принтеры A4 для дома и нечастой печати', features: [] },
@@ -542,6 +561,10 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru', ServiceAccordionDi
       'Ekspresy domowe': { title: 'Домашние кофемашины', description: 'Автоматические и рожковые кофемашины для ежедневного домашнего использования', features: [] },
       'Ekspresy biurowe': { title: 'Офисные кофемашины', description: 'Кофемашины для офисов и компаний, рассчитанные на приготовление большего количества кофе', features: [] },
       'Ekspresy gastronomiczne': { title: 'Гастрономические кофемашины', description: 'Кофемашины для кофеен, ресторанов и отелей, предназначенные для интенсивной работы', features: [] },
+      // naprawa-projektorow
+      'Projektory kompaktowe': { title: 'Компактные проекторы', description: 'Небольшие и портативные проекторы для домашнего использования, путешествий и небольших помещений', features: [] },
+      'Projektory domowe i biurowe': { title: 'Домашние и офисные проекторы', description: 'Проекторы для просмотра фильмов, презентаций и повседневного использования дома, в офисах и школах', features: [] },
+      'Projektory profesjonalne i instalacyjne': { title: 'Профессиональные и инсталляционные проекторы', description: 'Высокотехнологичные проекторы для конференц-залов, аудиторий и крупных объектов, предназначенные для интенсивной работы', features: [] },
       // naprawa-zasilaczy-ups
       'do 1 kVA': { title: 'до 1 kVA', description: 'Небольшие ИБП для компьютера, роутера, кассового аппарата или видеонаблюдения', features: [] },
       '1–3 kVA': { title: '1–3 kVA', description: 'ИБП для офиса и небольших серверов, напольные или предназначенные для серверного шкафа', features: [] },
