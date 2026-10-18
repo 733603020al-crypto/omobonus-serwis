@@ -54,8 +54,8 @@ const CAROUSEL_PL = {
 }
 
 const PL: HeroT = {
-  h1Line1: 'Profesjonalny serwis',
-  h1Line2: 'komputerów, laptopów i drukarek',
+  h1Line1: 'Serwis komputerów,',
+  h1Line2: 'laptopów, drukarek i urządzeń biurowych',
   h1Line3: 'we Wrocławiu',
   mobileH1: 'Serwis komputerów, laptopów i drukarek we Wrocławiu',
   mobileH1Line1: 'Serwis komputerów,',

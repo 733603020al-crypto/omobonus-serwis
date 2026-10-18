@@ -145,9 +145,10 @@ export function Services({
   const sectionRef = useRef<HTMLElement>(null)
   const bgNear = useNearViewport(sectionRef)
 
-  // Only the active category's cards are rendered; every service link is
-  // still in the HTML through the header's hidden menu list.
-  const activeCards = [...SERVICE_CATEGORIES[active].items, ...(SERVICE_CATEGORIES[active].subgroup?.items ?? [])]
+  // Every category's cards are in the HTML (search engines see all services
+  // and their links without clicking a tab); the inactive panels are simply
+  // display:none, so their lazy pictures aren't fetched until opened.
+  const categoryCards = (index: number) => [...SERVICE_CATEGORIES[index].items, ...(SERVICE_CATEGORIES[index].subgroup?.items ?? [])]
     .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
     .map((item) => {
       const slug = item.href.split('/').pop() as string
@@ -220,9 +221,9 @@ export function Services({
       >
         {/* Treść — name at the left edge, small "Zobacz więcej →" under it. */}
         <div className="relative z-[4] flex-none max-w-[49%] flex flex-col items-start">
-          <h2 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
+          <h3 className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
             {d.cardLabels[service.slug] ?? service.title}
-          </h2>
+          </h3>
           {/* Same as the closed-section "Zobacz cennik" link on the service pages. */}
           <span className="flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] group-hover:translate-x-1 transition-transform">
             <span>{d.moreLabel ?? 'Zobacz więcej'}</span>
@@ -306,7 +307,7 @@ export function Services({
                   role="tab"
                   id={`${idBase}-tab-${i}`}
                   aria-selected={selected}
-                  aria-controls={`${idBase}-panel`}
+                  aria-controls={`${idBase}-panel-${i}`}
                   tabIndex={i === active ? 0 : -1}
                   onClick={() => openTab(i)}
                   onKeyDown={(e) => onTabKeyDown(e, i)}
@@ -352,15 +353,20 @@ export function Services({
           })}
         </div>
 
-        <div
-          role="tabpanel"
-          id={`${idBase}-panel`}
-          aria-labelledby={`${idBase}-tab-${active}`}
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`}
-          style={{ '--m-order': active + 1 } as React.CSSProperties}
-        >
-          {activeCards.map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
-        </div>
+        {SERVICE_CATEGORIES.map((category, c) => (
+          <div
+            key={category.title.pl}
+            role="tabpanel"
+            id={`${idBase}-panel-${c}`}
+            aria-labelledby={`${idBase}-tab-${c}`}
+            className={c === active
+              ? `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
+              : 'hidden'}
+            style={c === active ? ({ '--m-order': active + 1 } as React.CSSProperties) : undefined}
+          >
+            {categoryCards(c).map((service, i) => renderCard(service, CARD_STYLE[i % CARD_STYLE.length]))}
+          </div>
+        ))}
         </div>
       </div>
     </section>

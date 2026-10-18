@@ -42,6 +42,7 @@ export function About({
   reviewsSlot,
   compact = false,
   showMoreLink = false,
+  plainHeadings = false,
 }: {
   t?: AboutT
   bare?: boolean
@@ -50,8 +51,14 @@ export function About({
   reviewsSlot?: ReactNode
   compact?: boolean
   showMoreLink?: boolean
+  /** Home page: the saint's name and "O nas:" are plain text, not headings. Visible text unchanged. */
+  plainHeadings?: boolean
 } = {}) {
   const d = t ?? PL
+  const SaintHeading = plainHeadings ? 'div' : 'h2'
+  const OurCompanyHeading = plainHeadings ? 'div' : 'h3'
+  // Desktop copies: heading role only where the block is a real heading (/o-nas).
+  const desktopHeading = (level: number) => (plainHeadings ? {} : { role: 'heading', 'aria-level': level })
   return (
     <section
       id="o-nas"
@@ -75,9 +82,9 @@ export function About({
             </FadeSlideP>
           )}
           <div className="space-y-2">
-            <h2 className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
+            <SaintHeading className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
               {d.heading}
-            </h2>
+            </SaintHeading>
             <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
               {d.subheading}
             </p>
@@ -96,9 +103,9 @@ export function About({
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
+            <OurCompanyHeading className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
               {d.ourCompany}
-            </h3>
+            </OurCompanyHeading>
             <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
               {d.description[0]}
             </p>
@@ -150,7 +157,7 @@ export function About({
               </FadeSlideP>
             )}
             <div className="space-y-2">
-              <div role="heading" aria-level={2} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
+              <div {...desktopHeading(2)} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
                 {d.heading}
               </div>
               <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
@@ -158,7 +165,7 @@ export function About({
               </p>
             </div>
             <div>
-              <div role="heading" aria-level={3} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
+              <div {...desktopHeading(3)} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
                 {d.ourCompany}
               </div>
               <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">

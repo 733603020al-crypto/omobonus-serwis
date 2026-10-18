@@ -5,6 +5,10 @@ import { Hero } from '@/components/sections/hero'
 import { About } from '@/components/sections/about'
 import BrandTicker from '@/components/brand-ticker'
 import GoogleReviews from '@/components/google-reviews'
+import { SERVICE_CATEGORIES } from '@/config/service-categories'
+
+const SITE_URL = 'https://serwis.omobonus.com.pl'
+const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт', ru: 'Сервис и ремонт' } as const
 
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner.
@@ -45,8 +49,41 @@ export function HomePageTemplate({
   // Services is a client component: pass only what the cards render so the
   // full services dataset (prices, accordions) isn't serialized into the HTML.
   const servicesCards = servicesData?.map(({ slug, title, icon }) => ({ slug, title, icon }))
+  // The services shown on the cards, added to the site-wide LocalBusiness (same @id, so
+  // search engines merge it with the layout's block) — home page only.
+  const offerCatalogLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_URL}/#organization`,
+    name: 'Omobonus Serwis',
+    url: SITE_URL,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: CATALOG_NAME[locale],
+      itemListElement: SERVICE_CATEGORIES.map((category) => ({
+        '@type': 'OfferCatalog',
+        name: (category.homeTitle ?? category.title)[locale],
+        itemListElement: [...category.items, ...(category.subgroup?.items ?? [])]
+          // Same list as the home cards: menu-only entries (Drukarka zastępcza)
+          // have no card here, so they're not claimed in this page's markup.
+          .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
+          .map((item) => {
+            const slug = item.href.split('/').pop() as string
+            return {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: servicesData?.find((s) => s.slug === slug)?.title ?? item.label[locale],
+                url: `${SITE_URL}${servicesBasePath ?? '/uslugi'}/${slug}`,
+              },
+            }
+          }),
+      })),
+    },
+  }
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogLd) }} />
       <Header locale={locale} />
       <div>
         <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
@@ -68,9 +105,9 @@ export function HomePageTemplate({
         <div className="home-below relative z-10">
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare />
 
-          <About t={aboutT} bare showMoreLink reviewsSlot={<GoogleReviews locale={locale} />} />
+          <About t={aboutT} bare showMoreLink plainHeadings reviewsSlot={<GoogleReviews locale={locale} />} />
 
-          <HomeCta {...cta} />
+          <HomeCta {...cta} singleHeading />
 
           <Footer t={footerT} bare />
         </div>
