@@ -311,7 +311,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div className="relative flex h-full w-full items-stretch justify-between px-4 md:px-8">
+    <div className="relative flex h-full w-full items-stretch justify-between px-4 max-[374px]:pr-2 md:px-8">
       {/* Logo */}
       <Link
         href={homeHref}
@@ -480,7 +480,9 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
 
       {/* Mobile: language switcher stays permanently visible in the header bar
           (not tucked inside the hamburger menu) — same component/logic as desktop. */}
-      <div className="flex items-center gap-3 min-[920px]:hidden">
+      {/* Below 375px the flags ran into "serwis": there this gap is 4px and the
+          bar's right padding 8px (the menu icon has its own 10px inner space). */}
+      <div className="flex items-center gap-3 max-[374px]:gap-1 min-[920px]:hidden">
         <LanguageSwitcher />
 
         {/* Mobile menu — Sheet/Radix renderowany dopiero po zamontowaniu na kliencie, aby uniknąć hydration mismatch (Radix generuje inne id podczas SSR i na kliencie) */}
