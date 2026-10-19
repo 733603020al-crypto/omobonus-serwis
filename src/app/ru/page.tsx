@@ -3,9 +3,13 @@ import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesRu } from '@/lib/services-data-ru'
 import { ru } from '@/lib/i18n/ru'
 
+// Meta, og:description i twitter:description — jeden zatwierdzony tekst (docs/seo/description-standard.md)
+const DESCRIPTION =
+  '✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Цену ремонта согласуем до начала работ ✔ Полный прайс без скрытых платежей ☎ 793 759 262'
+
 export const metadata: Metadata = {
   title: 'Ремонт компьютеров, ноутбуков и принтеров | Omobonus Вроцлав',
-  description: '✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Цену ремонта согласуем до начала работ ✔ Полный прайс без скрытых платежей ☎ 793 759 262',
+  description: DESCRIPTION,
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru',
     languages: {
@@ -17,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
-    description: 'Профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве. Ремонт оборудования, честные цены без скрытых затрат.',
+    description: DESCRIPTION,
     url: 'https://serwis.omobonus.com.pl/ru',
     images: [
       {
@@ -27,6 +31,12 @@ export const metadata: Metadata = {
         alt: 'Omobonus - профессиональный сервис компьютеров, ноутбуков и принтеров во Вроцлаве',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Сервис компьютеров, ноутбуков и принтеров Вроцлав | Omobonus',
+    description: DESCRIPTION,
+    images: ['/images/omobonus-hero.webp'],
   },
 }
 

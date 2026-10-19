@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: '%s | Omobonus Wrocław',
   },
   description:
-    'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów. Dojazd gratis.',
+    'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów.',
   authors: [{ name: 'Omobonus Sp. z o.o.' }],
   creator: 'Omobonus Sp. z o.o.',
   publisher: 'Omobonus Sp. z o.o.',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
     description:
-      'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Uczciwe ceny, dojazd gratis.',
+      'Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu. Naprawa sprzętu, outsourcing IT, uczciwe ceny bez ukrytych kosztów.',
     images: ['/images/omobonus-hero.webp'],
   },
   alternates: {
