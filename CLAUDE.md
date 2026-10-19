@@ -104,7 +104,7 @@ Commit, push и merge — только после явного разрешен�
 
 Правила Title, утверждённые решения и порядок повторной проверки — `docs/seo/title-standard.md` (решения — `docs/seo/title-decisions.json`, история проверок — `docs/seo/audit-history.json`). Проверка: `node scripts/seo-audit/title-audit.mjs`, панель — `node scripts/seo-audit/serve.mjs` → `http://localhost:4100`. Утверждённые Title и исключения не пересматривать без новой причины.
 
-Description: аудит идёт во вкладке Description той же панели (`node scripts/seo-audit/description-audit.mjs`), предложения и решения — `docs/seo/description-decisions.json`. Стандарта Description пока нет; на сайте Description меняются только после утверждения пользователем в панели.
+Правила Description, исключения, методика исследования и порядок проверки — `docs/seo/description-standard.md` (решения и исключения — `docs/seo/description-decisions.json`, исследования — `docs/seo/description-research/`). Проверка: `node scripts/seo-audit/description-audit.mjs`, панель — `http://localhost:4100/#description`. Description на сайте меняются только после утверждения пользователем в панели; утверждённые тексты и исключения не пересматривать без новой причины.
 
 ## Стандарт окна «Kategorie urządzeń»
 

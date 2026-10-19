@@ -1,6 +1,6 @@
 {
-  "_readme": "Рабочие данные аудита Description для SEO-панели (localhost:4100): предложения Claude (pending.proposals), утверждённые (approved), отклонённые (rejected), проверенные свои варианты (pending.review). Это не стандарт. Сайт меняется только после утверждения пользователем.",
-  "format": "✔ Serwis i naprawa [urządzenia] we Wrocławiu ✔ [3–5 работ] ✔ Pełny cennik na stronie, bez ukrytych kosztów ☎ 793 759 262 — до 160 символов",
+  "_readme": "Принятые решения по Description для SEO-панели (localhost:4100): утверждённые (approved, с полем exception у согласованных исключений, exceptionPending у страниц, чьё отличие от стандарта ещё ждёт согласования, и history — прежние утверждённые тексты страницы), отклонённые (rejected), предложения Claude и проверенные свои варианты (pending). Правила — docs/seo/description-standard.md. Проверка — scripts/seo-audit/description-audit.mjs. Сайт меняется только после утверждения пользователем.",
+  "format": "✔ Serwis i naprawa [urządzeń] we Wrocławiu ✔ [2–4 konkretne prace] ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262 — цель 150–160 символов, максимум 160 (UK: «Сервіс і ремонт … у Вроцлаві … ✔ Повний прайс без прихованих витрат», RU: «Сервис и ремонт … во Вроцлаве … ✔ Полный прайс без скрытых платежей»)",
   "approved": {
     "/": {
       "lang": "pl",
@@ -8,7 +8,8 @@
       "date": "2026-10-19",
       "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («przed pracą» → «przed rozpoczęciem», без запятой после «cennik»), без отдельной проверки в панели",
       "length": 159,
-      "agreed": true
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
     },
     "/uk": {
       "lang": "uk",
@@ -16,7 +17,8 @@
       "date": "2026-10-19",
       "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Вартість» → «Ціну» (было 161 знак)), без отдельной проверки в панели",
       "length": 157,
-      "agreed": true
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
     },
     "/ru": {
       "lang": "ru",
@@ -24,7 +26,8 @@
       "date": "2026-10-19",
       "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Стоимость… согласовываем» → «Цену… согласуем» (было 164 знака)), без отдельной проверки в панели",
       "length": 155,
-      "agreed": true
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
     },
     "/uslugi/serwis-laptopow": {
       "lang": "pl",
@@ -73,42 +76,75 @@
       "description": "✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 158
+      "length": 158,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/uk/uslugi/outsourcing-it": {
       "lang": "uk",
       "description": "✔ IT-аутсорсинг і обслуговування фірм у Вроцлаві ✔ Постійна IT-підтримка, helpdesk, мережа, резервні копії ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 157
+      "length": 157,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/ru/uslugi/outsourcing-it": {
       "lang": "ru",
       "description": "✔ IT-аутсорсинг и обслуживание фирм во Вроцлаве ✔ Постоянная IT-поддержка, helpdesk, сеть, резервные копии ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 156
+      "length": 156,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/uslugi/naprawa-drukarek": {
       "lang": "pl",
-      "description": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "description": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykietowe i plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 148
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 152,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 148,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uk/uslugi/naprawa-drukarek": {
       "lang": "uk",
-      "description": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, етикеток, плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "description": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, принтери етикеток і плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 141
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 151,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, етикеток, плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 141,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/ru/uslugi/naprawa-drukarek": {
       "lang": "ru",
-      "description": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, этикеток, плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "description": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, принтеры этикеток и плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 140
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 150,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, этикеток, плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uslugi/serwis-drukarek-laserowych": {
       "lang": "pl",
@@ -241,21 +277,24 @@
       "description": "✔ Druk 3D na zamówienie we Wrocławiu ✔ Części zamienne, prototypy, druk z pliku STL, projektowanie 3D ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 151
+      "length": 151,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/uk/uslugi/druk-3d-na-zamowienie": {
       "lang": "uk",
       "description": "✔ 3D-друк на замовлення у Вроцлаві ✔ Запчастини, прототипи, друк із файлу STL, 3D-моделювання ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 144
+      "length": 144,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/ru/uslugi/druk-3d-na-zamowienie": {
       "lang": "ru",
       "description": "✔ 3D-печать на заказ во Вроцлаве ✔ Запчасти, прототипы, печать из файла STL, 3D-моделирование ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
       "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 143
+      "length": 143,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
     },
     "/uslugi/serwis-drukarek-dtf": {
       "lang": "pl",
@@ -343,24 +382,54 @@
     },
     "/uslugi/wynajem-drukarek": {
       "lang": "pl",
-      "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262",
+      "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, serwis i tonery w cenie, bez umowy długoterminowej ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 139
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 159,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 139,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uk/uslugi/wynajem-drukarek": {
       "lang": "uk",
-      "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Сервіс і тонери в ціні ✔ Без довгострокового договору ☎ 793 759 262",
+      "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, сервіс і тонери в ціні, без довгострокового договору ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 132
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 154,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Сервіс і тонери в ціні ✔ Без довгострокового договору ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 132,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/ru/uslugi/wynajem-drukarek": {
       "lang": "ru",
-      "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Сервис и тонеры в цене ✔ Без долгосрочного договора ☎ 793 759 262",
+      "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, сервис и тонеры в цене, без долгосрочного договора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 130
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 152,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Сервис и тонеры в цене ✔ Без долгосрочного договора ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 130,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uslugi/naprawa-zasilaczy-ups": {
       "lang": "pl",
@@ -371,17 +440,35 @@
     },
     "/uk/uslugi/naprawa-zasilaczy-ups": {
       "lang": "uk",
-      "description": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, огляд, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "description": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, техобслуговування, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 138
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 150,
+      "agreed": true,
+      "history": [
+        {
+          "description": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, огляд, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 138,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/ru/uslugi/naprawa-zasilaczy-ups": {
       "lang": "ru",
-      "description": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, осмотр, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "description": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, техобслуживание, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 140
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 149,
+      "agreed": true,
+      "history": [
+        {
+          "description": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, осмотр, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uslugi/serwis-niszczarek": {
       "lang": "pl",
@@ -469,24 +556,54 @@
     },
     "/uslugi/drukarka-zastepcza": {
       "lang": "pl",
-      "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
+      "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Bez abonamentu, płacisz za wydruki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 140
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 160,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/uk/uslugi/drukarka-zastepcza": {
       "lang": "uk",
-      "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ Навіть за 24 години ✔ A4 і A3, ч/б і колір ✔ Без абонплати — оплата за друк ☎ 793 759 262",
+      "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Без абонплати, оплата за відбитки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 137
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 155,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ Навіть за 24 години ✔ A4 і A3, ч/б і колір ✔ Без абонплати — оплата за друк ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 137,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     },
     "/ru/uslugi/drukarka-zastepcza": {
       "lang": "ru",
-      "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ Даже за 24 часа ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты — оплата за печать ☎ 793 759 262",
+      "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
       "date": "2026-10-19",
-      "note": "Утверждено пользователем 19.10 (решения из панели)",
-      "length": 137
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 157,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ Даже за 24 часа ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты — оплата за печать ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 137,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
     }
   },
   "rejected": {

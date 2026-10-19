@@ -1,5 +1,5 @@
 // Проверка meta description и сборка вкладки Description SEO-панели (localhost:4100).
-// Предложения и решения: docs/seo/description-decisions.json · история: docs/seo/audit-history.json
+// Правила: docs/seo/description-standard.md · решения: docs/seo/description-decisions.json · история: docs/seo/audit-history.json
 //
 //   node scripts/seo-audit/description-audit.mjs        — проверить, записать в историю, собрать панель
 //   node scripts/seo-audit/description-audit.mjs --dry  — без записи в историю
@@ -39,8 +39,10 @@ const rows = urls.map((u) => {
   return {
     s, l, u, t, len: [...t].length, base: t, suffix: '',
     name: names[s] || s,
+    exc: dec.pending.review[u]?.exc ?? a?.exception ?? p?.exc ?? null,
+    excPending: a?.exceptionPending ?? null,
     review: dec.pending.review[u] || null,
-    appr: a ? { base: a.description, applied: t === a.description, date: fmt(a.date), stage: a.agreed ? 'согласовано сразу' : a.stage ? `этап ${a.stage}` : '' } : null,
+    appr: a ? { base: a.description, applied: t === a.description, date: fmt(a.date), stage: a.agreed ? 'согласовано сразу' : a.stage ? `этап ${a.stage}` : '', was: a.history?.at(-1)?.description ?? null } : null,
     rej: rj ? { t: rj.description, date: fmt(rj.date) } : null,
     prop: p?.description ?? null,
     why: p?.why ?? null,

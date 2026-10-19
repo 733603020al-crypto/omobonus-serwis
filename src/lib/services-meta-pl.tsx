@@ -376,17 +376,17 @@ export const seoMetadata: Record<string, { title: string; description: string }>
   },
   'naprawa-drukarek': {
     title: 'Serwis i naprawa drukarek i kserokopiarek',
-    description: '✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
+    description: '✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykietowe i plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'wynajem-drukarek': {
     title: 'Wynajem (dzierżawa) drukarek i kserokopiarek',
-    description: '✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262',
+    description: '✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, serwis i tonery w cenie, bez umowy długoterminowej ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'drukarka-zastepcza': {
     title: 'Drukarka zastępcza (na czas naprawy)',
-    description: '✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262',
+    description: '✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Bez abonamentu, płacisz za wydruki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'serwis-plotterow': {
