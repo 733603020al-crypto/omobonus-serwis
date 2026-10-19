@@ -26,6 +26,13 @@ const QUIET_MS = 1500
 const MAX_QUIET_WAIT_MS = 15000
 const ACTIVITY_EVENTS = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'wheel'] as const
 
+// CookieYes stores the choice as "...,analytics:yes,advertisement:yes,..." in this cookie.
+const hasConsent = () => {
+    const match = document.cookie.match(/(?:^|;\s*)cookieyes-consent=([^;]*)/)
+    const value = match ? decodeURIComponent(match[1]) : ''
+    return /analytics:yes|advertisement:yes/.test(value)
+}
+
 export function DeferredGtm({ gtmId }: { gtmId: string }) {
     useEffect(() => {
         let loaded = false
@@ -48,8 +55,19 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
 
         const onClick = (e: MouseEvent) => {
             const link = (e.target as HTMLElement)?.closest?.('a[href]') as HTMLAnchorElement | null
-            if (link && CONVERSION_HREF_PATTERN.test(link.getAttribute('href') || '')) {
+            const href = link?.getAttribute('href') || ''
+            if (link && CONVERSION_HREF_PATTERN.test(href)) {
+                const early = !loaded
                 load()
+                // GTM's own click listener doesn't exist yet, so it would never
+                // see this click. Queue it for GTM (trigger: custom event
+                // early_conversion_click) — only with consent already given,
+                // so a click before "accept" is never counted later.
+                if (early && hasConsent()) {
+                    // gtm.elementUrl feeds the built-in {{Click URL}}, so the existing
+                    // tag fields and trigger conditions work for this event too.
+                    window.dataLayer?.push({ event: 'early_conversion_click', click_url: href, 'gtm.elementUrl': href })
+                }
             }
         }
 
