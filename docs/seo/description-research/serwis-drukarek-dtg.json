@@ -1,0 +1,518 @@
+{
+ "page": "/uslugi/serwis-drukarek-dtg",
+ "name": "DTG-принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek dtg",
+    "naprawa drukarek dtg",
+    "serwis drukarek do tekstyliów",
+    "serwis drukarek dtg cennik",
+    "serwis drukarek dtg Warszawa",
+    "serwis drukarek dtg Kraków",
+    "serwis drukarek dtg Wrocław",
+    "serwis drukarek dtg Poznań",
+    "serwis drukarek dtg Gdańsk",
+    "serwis drukarek dtg Łódź",
+    "serwis drukarek dtg Katowice",
+    "serwis drukarek dtg Szczecin",
+    "serwis drukarek dtg Lublin",
+    "serwis drukarek dtg Bydgoszcz",
+    "serwis drukarek dtg Białystok",
+    "serwis drukarek dtg Kielce",
+    "serwis drukarek dtg Rzeszów",
+    "serwis drukarek dtg Toruń",
+    "serwis drukarek dtg Opole",
+    "serwis drukarek dtg Gdynia",
+    "serwis drukarek dtg Olsztyn",
+    "serwis drukarek dtg Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka dtg ",
+    "serwis dtg ",
+    "dtg ",
+    "brother gtx ",
+    "epson f2100 "
+   ],
+   "uniqueSuggestions": 274,
+   "withPrice": [
+    "drukarka dtg cena",
+    "brother gtx pro cena",
+    "drukarka dtf epson cena",
+    "drukarka dtf do koszulek cena"
+   ],
+   "wroclaw": [
+    "dtg wrocław",
+    "druk dtg wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Udrażnianie / czyszczenie głowicy": {
+    "seeds": [
+     "czyszczenie głowicy dtg",
+     "głowica dtg"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Układ białego atramentu / cyrkulacja": {
+    "seeds": [
+     "biały atrament dtg",
+     "dtg biały tusz"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Konserwacja / przegląd": {
+    "seeds": [
+     "konserwacja dtg",
+     "konserwacja drukarki dtg"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wymiana głowicy": {
+    "seeds": [
+     "wymiana głowicy dtg"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 1,
+   "impressions": 11,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "serwis drukarek dtg",
+     "impr": 11,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 6,
+  "checked": 170,
+  "candidates": 200,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "optima-md.pl",
+    "url": "https://optima-md.pl/drukarki-dtg-nadruk-na-koszulkach-serwis-i-wsparcie/",
+    "title": "Drukarki dtg - nadruk na koszulkach, serwis i wsparcie -",
+    "desc": "Nadruki na koszulkach wykonane na drukarkach DTG Epson z tuszami UV i sublimacyjnymi. Serwis drukarek DTG bieżące naprawy oraz wsparcie Częstochowa. Naprawa drukarek do koszulek udrażnianie głowic DX4 DX5 Dx6 wymiana damperów. Serwis drukarek UV już od 1000zł. Konserwacja drukarek Epson Częstochowa",
+    "h1": [
+     "H1: Drukarki dtg – nadruk na koszulkach, serwis i wsparcie"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Udrażnianie / czyszczenie głowicy",
+    "works": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Wymiana głowicy",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / capy / wipery",
+     "Pochłaniacz / zużyty atrament",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody",
+     "Stół / platen"
+    ],
+    "seoWorks": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Konserwacja / przegląd",
+     "Pompy / dampery / przewody"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Łódź",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "megatrondtg.pl",
+    "url": "https://megatrondtg.pl/",
+    "title": "Drukarki DTG i DTF - Profesjonalne Nadruki na Odzieży | MEGATRON",
+    "desc": "Oferujemy drukarki DTG i DTF do profesjonalnych nadruków na odzieży. Nasze usługi zapewniają trwałe, kolorowe nadruki na tekstyliach. Sprawdź naszą ofertę i przenieś swoje pomysły na materiał z fachowym doradztwem i wsparciem na każdym etapie.",
+    "h1": [
+     "H1: Drukarki DTG & DTF"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "dtflinko.com",
+    "url": "https://www.dtflinko.com/pl/przewodnik-cenowy-drukarek-dtg/",
+    "title": "Przewodnik po cenach drukarek DTG: od podstawowych do przemysłowych",
+    "desc": "Ceny drukarek DTG wahają się od 3000 rupii za modele podstawowe do ponad 70 000 rupii za systemy przemysłowe. Czynniki takie jak prędkość druku, technologia i marka wpływają na koszty.",
+    "h1": [
+     "H1: Przewodnik po cenach drukarek DTG: od podstawowych do przemysłowych"
+    ],
+    "first": "Pompy / dampery / przewody",
+    "seoFirst": "Pompy / dampery / przewody",
+    "works": [
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd",
+     "Pompy / dampery / przewody"
+    ],
+    "city": []
+   },
+   {
+    "host": "druk24h.pl",
+    "url": "https://www.druk24h.pl/dtg-dtf",
+    "title": "dtg-dtf - Centrum Druku 7/24h",
+    "desc": "Druk24h – Centrum Druku 7/24h jest największym profesjonalnym centrum druku cyfrowego i kopiowania w Warszawie. - Czynne Non Stop",
+    "h1": [
+     "H1: Rodzaje nadruku na odzieży: dtg, dtf i folia flex"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "diasjet.pl",
+    "url": "https://diasjet.pl/",
+    "title": "Profesjonalne drukarki dtf - Dias PL",
+    "desc": "Profesjonalne drukarki dtf - wiele materiałów do druku DTF",
+    "h1": [
+     "H1: TECHNOLOGIE DLA DRUKU I PERSONALIZACJI"
+    ],
+    "first": "Stół / platen",
+    "seoFirst": "",
+    "works": [
+     "Układ białego atramentu / cyrkulacja",
+     "Stół / platen"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "komputronik.pl",
+    "url": "https://www.komputronik.pl/informacje/drukarka-nie-drukuje/",
+    "title": "Drukarka nie drukuje: 9 najczęstszych przyczyn i jak je naprawić?",
+    "desc": "Dlaczego drukarka nie drukuje? Przyczyn może być wiele - w tym poradniku omawiamy najpopularniejsze i prezentujemy najskuteczniejsze rozwiązania.",
+    "h1": [
+     "H1: Drukarka nie drukuje: 9 najczęstszych przyczyn i jak je naprawić?"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "Naprawa elektroniki / płyty",
+    "works": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Konserwacja / przegląd",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody"
+    ],
+    "seoWorks": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Konserwacja / przegląd",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "city": []
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {}
+ },
+ "ranking": [
+  {
+   "work": "Układ białego atramentu / cyrkulacja",
+   "comp": {
+    "mention": 3,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konserwacja / przegląd",
+   "comp": {
+    "mention": 3,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 3,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "RIP / oprogramowanie",
+   "comp": {
+    "mention": 3,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 2,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Pompy / dampery / przewody",
+   "comp": {
+    "mention": 3,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 1,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Udrażnianie / czyszczenie głowicy",
+   "comp": {
+    "mention": 2,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 2,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 2,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stół / platen",
+   "comp": {
+    "mention": 2,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stacja serwisowa / capy / wipery",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Pochłaniacz / zużyty atrament",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Udrażnianie głowicy",
+   "why": "основной блок прайса (21 позиция)",
+   "evidence": ""
+  },
+  {
+   "w": "Naprawa układu białego tuszu",
+   "why": "характерная проблема DTG; в прайсе «Naprawa układu cyrkulacji białego atramentu»",
+   "evidence": ""
+  },
+  {
+   "w": "Naprawa stołu",
+   "why": "в прайсе группа «Stół (platen) i jego napęd»",
+   "evidence": ""
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Stacja serwisowa",
+   "why": "в прайсе 8 позиций; 4-й работой не помещается",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Очень слабые данные: в Польше найдено только 6 подходящих сервисов DTG; подсказок и Ads нет — выбор по прайсу Omobonus"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek DTG we Wrocławiu ✔ Udrażnianie głowicy, naprawa układu białego tuszu i stołu ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 154
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт DTG-принтерів у Вроцлаві ✔ Прочистка головки, ремонт системи білого чорнила і столу ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 152
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт DTG-принтеров во Вроцлаве ✔ Прочистка головки, ремонт системы белых чернил и стола ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 150
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

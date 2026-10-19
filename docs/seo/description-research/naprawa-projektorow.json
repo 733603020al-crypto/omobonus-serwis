@@ -1,0 +1,2312 @@
+{
+ "page": "/uslugi/naprawa-projektorow",
+ "name": "Проекторы",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "naprawa projektorów",
+    "naprawa projektora",
+    "serwis projektorów",
+    "naprawa projektorów cennik",
+    "serwis projektorów Warszawa",
+    "serwis projektorów Kraków",
+    "serwis projektorów Wrocław",
+    "serwis projektorów Poznań",
+    "serwis projektorów Gdańsk",
+    "serwis projektorów Łódź",
+    "serwis projektorów Katowice",
+    "serwis projektorów Szczecin",
+    "serwis projektorów Lublin",
+    "serwis projektorów Bydgoszcz",
+    "serwis projektorów Białystok",
+    "serwis projektorów Rzeszów",
+    "serwis projektorów Kielce",
+    "serwis projektorów Toruń",
+    "serwis projektorów Gdynia",
+    "serwis projektorów Opole",
+    "serwis projektorów Olsztyn",
+    "serwis projektorów Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "naprawa projektora ",
+    "serwis projektorów ",
+    "projektor ",
+    "projektor nie ",
+    "wymiana lampy projektor ",
+    "rzutnik "
+   ],
+   "uniqueSuggestions": 302,
+   "withPrice": [
+    "ile kosztuje naprawa projektora",
+    "projektor cena"
+   ],
+   "wroclaw": [
+    "serwis projektorów wrocław",
+    "serwis projektorów epson wrocław",
+    "projektor wrocław",
+    "grupa projektor wrocław",
+    "projektor wynajem wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Wymiana lampy projektora": {
+    "seeds": [
+     "wymiana lampy projektora",
+     "wymiana lampy w projektorze",
+     "lampa do projektora"
+    ],
+    "n": 20,
+    "nRaw": 20,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "wymiana lampy projektora epson",
+     "wymiana lampy projektora",
+     "wymiana lampy w projektorze",
+     "wymiana lampy w projektorze epson",
+     "wymiana lampy w projektorze cena",
+     "wymiana lampy w projektorze optoma",
+     "wymiana lampy w projektorze benq",
+     "wymiana lampy w projektorze nec",
+     "wymiana lampy w projektorze acer",
+     "wymiana lampy w projektorze na led"
+    ],
+    "all": [
+     "wymiana lampy projektora epson",
+     "wymiana lampy projektora",
+     "wymiana lampy w projektorze",
+     "wymiana lampy w projektorze epson",
+     "wymiana lampy w projektorze cena",
+     "wymiana lampy w projektorze optoma",
+     "wymiana lampy w projektorze benq",
+     "wymiana lampy w projektorze nec",
+     "wymiana lampy w projektorze acer",
+     "wymiana lampy w projektorze na led",
+     "lampa do projektora",
+     "lampa do projektora epson",
+     "lampa do projektora benq",
+     "lampa do projektora optoma",
+     "lampa do projektora acer",
+     "lampa do projektora nec",
+     "lampa do projektora cena",
+     "lampa do projektora epson eh tw5300",
+     "lampa do projektora overmax",
+     "lampa do projektora samsung freestyle 2"
+    ],
+    "dropped": []
+   },
+   "Czyszczenie projektora / optyki": {
+    "seeds": [
+     "czyszczenie projektora",
+     "czyszczenie projektora z kurzu",
+     "czyszczenie matrycy projektora"
+    ],
+    "n": 11,
+    "nRaw": 11,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie projektora",
+     "czyszczenie projektora z kurzu",
+     "czyszczenie projektora magcubic",
+     "czyszczenie projektora hy300",
+     "czyszczenie projektora hy320",
+     "czyszczenie projektora cena",
+     "czyszczenie projektora kiano",
+     "czyszczenie projektora sprężonym powietrzem",
+     "czyszczenie projektora epson",
+     "czyszczenie projektora optoma"
+    ],
+    "all": [
+     "czyszczenie projektora",
+     "czyszczenie projektora z kurzu",
+     "czyszczenie projektora magcubic",
+     "czyszczenie projektora hy300",
+     "czyszczenie projektora hy320",
+     "czyszczenie projektora cena",
+     "czyszczenie projektora kiano",
+     "czyszczenie projektora sprężonym powietrzem",
+     "czyszczenie projektora epson",
+     "czyszczenie projektora optoma",
+     "czyszczenie matrycy projektora"
+    ],
+    "dropped": []
+   },
+   "Usuwanie kropek / wymiana układu DMD": {
+    "seeds": [
+     "projektor białe kropki",
+     "wymiana dmd",
+     "projektor kropki na obrazie",
+     "chip dmd"
+    ],
+    "n": 14,
+    "nRaw": 14,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "projektor białe kropki",
+     "projektor benq białe kropki na ekranie",
+     "wymiana chipa dmd",
+     "projektor kropki na obrazie",
+     "chip dmd",
+     "chip dmd benq",
+     "chip dmd optoma",
+     "chip dmd 0.47",
+     "chip dmd 4k",
+     "chip dmd benq mp515 st"
+    ],
+    "all": [
+     "projektor białe kropki",
+     "projektor benq białe kropki na ekranie",
+     "wymiana chipa dmd",
+     "projektor kropki na obrazie",
+     "chip dmd",
+     "chip dmd benq",
+     "chip dmd optoma",
+     "chip dmd 0.47",
+     "chip dmd 4k",
+     "chip dmd benq mp515 st",
+     "chip dmd 0.33",
+     "chip dmd nec",
+     "chip dmd benq mp670",
+     "chip dmd proyektor"
+    ],
+    "dropped": []
+   },
+   "Wymiana matrycy LCD / polaryzatora": {
+    "seeds": [
+     "wymiana matrycy projektora",
+     "polaryzator projektor"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "polaryzator projektor",
+     "polaryzator do projektora"
+    ],
+    "all": [
+     "polaryzator projektor",
+     "polaryzator do projektora"
+    ],
+    "dropped": []
+   },
+   "Naprawa zasilacza / balastu": {
+    "seeds": [
+     "zasilacz projektora",
+     "projektor nie włącza się"
+    ],
+    "n": 12,
+    "nRaw": 13,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "zasilacz projektora",
+     "zasilacz do projektora samsung freestyle",
+     "zasilacz do projektora hy300",
+     "zasilacz do projektora magcubic",
+     "zasilacz do projektora samsung",
+     "zasilacz do projektora hy300 pro",
+     "zasilacz do projektora zenwire",
+     "zasilacz do projektora laserowego",
+     "zasilacz do projektora xiaomi",
+     "projektor benq nie włącza się"
+    ],
+    "all": [
+     "zasilacz projektora",
+     "zasilacz do projektora samsung freestyle",
+     "zasilacz do projektora hy300",
+     "zasilacz do projektora magcubic",
+     "zasilacz do projektora samsung",
+     "zasilacz do projektora hy300 pro",
+     "zasilacz do projektora zenwire",
+     "zasilacz do projektora laserowego",
+     "zasilacz do projektora xiaomi",
+     "projektor benq nie włącza się",
+     "projektor epson nie włącza się",
+     "projektor samsung freestyle nie włącza się"
+    ],
+    "dropped": [
+     [
+      "zasilacz do projektora wanbo",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Chłodzenie / wentylatory / przegrzewanie": {
+    "seeds": [
+     "projektor się przegrzewa",
+     "wentylator projektora"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wentylator projektora"
+    ],
+    "all": [
+     "wentylator projektora"
+    ],
+    "dropped": []
+   },
+   "Wymiana koła kolorów": {
+    "seeds": [
+     "koło kolorów projektor"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "koło kolorów projektor",
+     "koło kolorów do projektora"
+    ],
+    "all": [
+     "koło kolorów projektor",
+     "koło kolorów do projektora"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 5,
+   "impressions": 16,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "serwis projektorów epson",
+     "impr": 7,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "projektory wrocław",
+     "impr": 6,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "projektory wroclaw",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "rzutnik wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis projektorów wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 69,
+  "checked": 112,
+  "candidates": 112,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "naprawprojektor.pl",
+    "url": "https://www.naprawprojektor.pl/",
+    "title": "Serwis i Naprawa Projektorów (Epson, Panasonic, Sony) | naprawprojektor.pl",
+    "desc": "Serwis i naprawa projektorów. 30 lat doświadczenia. Szybka, bezpłatna diagnostyka (Epson, Panasonic, Sony, BenQ). Zgłoś urządzenie!",
+    "h1": [
+     "H1: SERWIS PROJEKTORÓW"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "restmag.pl",
+    "url": "https://restmag.pl/",
+    "title": "Restmag Services Centrum Serwisowe - naprawa projektorów i ekspresów do kawy",
+    "desc": "Restmag to specjalistyczny serwis projektorów i ekspresów do kawy. Oferujemy profesjonalne naprawy sprzętu, lampy projekcyjne. Tel. 510-625-391",
+    "h1": [
+     "H1: RESTMAG Services"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisprojektorow.com.pl",
+    "url": "https://www.serwisprojektorow.com.pl/serwis.html",
+    "title": "Naprawa Rzutników Multimedialnych, Serwis Projektorów Acer, Benq, Epson, Hitachi, Panasonic, Toshiba.",
+    "desc": "Serwis Projektorów Warszawa, Serwis Rzutników. Naprawa Przegrzewania Projektora. Wymiana Lampy w Projektorze. Czyszczenie Projektora.",
+    "h1": [
+     "H1: Serwis Projektorów"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Chłodzenie / wentylatory / przegrzewanie",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Chłodzenie / wentylatory / przegrzewanie"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisprojektorow.rafcom.eu",
+    "url": "https://serwisprojektorow.rafcom.eu/",
+    "title": "Serwis Projektorów Epson Benq Sanyo Acer Dell Nec Sharp Optoma",
+    "desc": "Wymieniamy lampy, Konserwujemy układy chłodzenia, Czyścimy optykę, Naprawiamy koła kolorów, Serwisujemy elektronikę, Katowice DZWOŃ ☎ 32 2564959 Pomożemy!",
+    "h1": [],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Naprawa HDMI / wejść"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów"
+    ],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "lampoprojekt.pl",
+    "url": "https://www.lampoprojekt.pl/serwis/",
+    "title": "Serwis Projektorów Cała Polska | Bezpłatna Diagnoza | Naprawa 24h",
+    "desc": "Profesjonalny serwis projektorów dla klientów z całej Polski. Bezpłatna diagnoza, kurier DHL za 20 zł i roczna gwarancja. Naprawiamy Optoma, BenQ, Epson i inne. Sprawdź!",
+    "h1": [
+     "H1: Serwis projektorów",
+     "H1: Profesjonalny Serwis i Naprawa Projektorów"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "serwisprojektorow.eu",
+    "url": "http://serwisprojektorow.eu/uslugi/",
+    "title": "Usługi – Serwis i naprawa projektorów",
+    "desc": "",
+    "h1": [
+     "H1: Oferujemy…"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Poznań",
+     "Łódź",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "irs.com.pl",
+    "url": "https://www.irs.com.pl/serwis-sprzetu-audiowizualnego/",
+    "title": "Serwis Sprzętu Audiowizualnego | Serwis Projektorów | ISO 9001",
+    "desc": "Serwis sprzętu audiowizualnego. Serwis projektorów, tablic i monitorów interaktywnych, kompletnych systemów.",
+    "h1": [
+     "H1: Serwis sprzętu audiowizualnego – Image Recording Solutions sp. z o.o."
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie projektora / optyki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Gdańsk",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "nabertronik.pl",
+    "url": "https://www.nabertronik.pl/naprawa-urzadzen-elektrycznych-i-elektronicznych/serwis-naprawa-projektorow/",
+    "title": "Naprawa projektorów, serwis projektorów | Nabertronik",
+    "desc": "Serwisujemy i naprawiamy projektory multimedialne najpopularniejszych producentów. Skorzystaj z usługi bezpłatnej diagnostyki swojego sprzętu. ",
+    "h1": [
+     "H1: Naprawa projektorów i profesjonalny serwis - Koszalin, Darłowo"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Szczecin",
+     "Bydgoszcz",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "kopiaserwis.pl",
+    "url": "https://kopiaserwis.pl/naprawa-projektorow/",
+    "title": "Naprawa projektorów – KOPIA",
+    "desc": "",
+    "h1": [
+     "H1: Bądźmy w kontakcie"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Gdańsk",
+     "Katowice",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "nowezyciesprzetu.pl",
+    "url": "https://nowezyciesprzetu.pl/serwis-projektorow",
+    "title": "Serwis projektorów | Nowe Życie Sprzetu",
+    "desc": "Serwis projektorów W naszych działaniach zajmujemy się różnego rodzaju sprzętami elektronicznymi i elektronicznymi. Z powodzeniem prowadzimy zarówno prace serwisowe, jak i naprawcze. Wykonujemy także serwis projektorów i rzutników multimedialnych.",
+    "h1": [
+     "H1: Serwis projektorów"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Łódź",
+     "Katowice",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "nano-serwis.pl",
+    "url": "https://nano-serwis.pl/uslugi/naprawa-projektorow-multimedialnych/",
+    "title": "? Naprawa projektorów multimedialnych we Wrocławiu | Nano-Serwis",
+    "desc": "Od czterech lat zajmujemy się naprawą projektorów i rzutników multimedialnych LCD jak i DLP. Naprawiamy wszystkiego rodzaju usterki. Zapraszamy!",
+    "h1": [
+     "H1: Naprawa projektorów multimedialnych Wrocław"
+    ],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "Wymiana matrycy LCD / polaryzatora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "complexbiuro.pl",
+    "url": "https://complexbiuro.pl/serwis-projektorow.html",
+    "title": "Serwis projektorów dla firm – naprawa i wymiana lamp | Gdańsk | ComplexBiuro",
+    "desc": "Profesjonalny serwis projektorów w Gdańsku i całej Polsce. Naprawa projektorów, wymiana lamp, konserwacja i szybka diagnoza.",
+    "h1": [
+     "H1: Serwis, sprzedaż i naprawa projektorów dla firm . Serwis projektorów Epson, BenQ, Optoma, Acer, ViewSonic, Sony, Panasonic, NEC"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Gdańsk",
+     "Toruń",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "laserservice.pl",
+    "url": "https://laserservice.pl/serwis/naprawa-projektorow/",
+    "title": "Serwis naprawa projektorów",
+    "desc": "Naprawa projektorów Warszawa",
+    "h1": [
+     "H1: Naprawa projektorów",
+     "H1: Naprawa projektorów"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "Naprawa płyty głównej / elektroniki",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "magserwis.pl",
+    "url": "https://magserwis.pl/naprawa-projektorow-gdansk/",
+    "title": "Naprawa projektorów Gdańsk, Gdynia, Sopot, Dobry Serwis - magserwis.pl",
+    "desc": "Naprawa projektorów multimedialnych realizowana przez Magserwis Gdańsk i Gdynia to specjalistyczna usługa. Wyceń naprawę rzutnika!",
+    "h1": [
+     "H1: Naprawa projektorów Gdańsk"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie projektora / optyki",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "iviterserwis.pl",
+    "url": "https://iviterserwis.pl/serwis-rtv/serwis-naprawa-projektorow",
+    "title": "Serwis - naprawa projektorów | Warszawa | Cała Polska",
+    "desc": "",
+    "h1": [
+     "H1: Serwis - naprawa projektorów"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Wymiana lampy projektora",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "techlamps.net",
+    "url": "http://techlamps.net/i1,serwis-projektorow.html",
+    "title": "Serwis projektorów :: techlamps.net",
+    "desc": "",
+    "h1": [],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Szczecin",
+     "Kielce",
+     "Toruń",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "projektory.pro",
+    "url": "https://projektory.pro/czytelnia/o-nas",
+    "title": "O nas | Wrocław - Projektory.pro",
+    "desc": "Projektory.pro ➤ O nas ✔️ 14 dni na zwrot ✔️ Darmowa dostawa od 99zł ⭐ Sprawdź!",
+    "h1": [
+     "H1: O nas"
+    ],
+    "first": "Moduł laser / LED",
+    "seoFirst": "Moduł laser / LED",
+    "works": [
+     "Wymiana lampy projektora",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Wrocław",
+     "Gdynia",
+     "Opole",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "comp-technica.pl",
+    "url": "https://comp-technica.pl/serwis-projektorow/",
+    "title": "Serwis projektorów - Comp-Technica",
+    "desc": "",
+    "h1": [],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Białystok",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/serwis-projektorow.html",
+    "title": "Serwis Projektorów – Poldruk",
+    "desc": "Był sobie projektor............\nNaprawa projektorów to nasza specjalność. Prowadzimy profesjonalny serwis rzutników od kilkunastu lat. Nasze usługi zyskały już uznanie dużego grona zadowolonych klientów. Co robimy?naprawę optyki\nnaprawę balast\nnaprawę zasilaczy\nczyszczenie projektorów po wybuchu lampy\nwymianę",
+    "h1": [
+     "H1: Serwis Projektorów"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "Czyszczenie projektora / optyki",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "elektroszpital.pl",
+    "url": "https://elektroszpital.pl/uslugi/serwis-rtv/serwis-naprawa-projektorow",
+    "title": "Serwis naprawa projektorów | Serwis ElektroSzpital Warszawa Mokotów, Wilanów, Ursynów",
+    "desc": "Jesteśmy profesjonalnym, pogwarancyjnym serwisem projektorów. Wystawiamy 12-miesięczną gwarancję na każdą usługę. Zapraszamy do skorzystania z darmowej diagnozy i wyceny!",
+    "h1": [
+     "H1: Serwis naprawa projektorów"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "sprzetmultimedialny.pl",
+    "url": "https://sprzetmultimedialny.pl/serwis/",
+    "title": "Serwis sprzętu multimedialnego - Eidotech",
+    "desc": "Profesjonalny serwis sprzętu multimedialnego – szybka diagnostyka i naprawa projektorów, ekranów LED, monitorów LCD oraz sprzętu audio. Skontaktuj się z ekspertami Eidotech Polska!",
+    "h1": [
+     "H1: Serwis sprzętu audiowizualnego"
+    ],
+    "first": "Moduł laser / LED",
+    "seoFirst": "Moduł laser / LED",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "projektory.sos.pl",
+    "url": "http://projektory.sos.pl/",
+    "title": "Serwis projektorów - DMD Serwis Kraów - P O L S K A",
+    "desc": "",
+    "h1": [
+     "H1: SERWIS, NAPRAWA I MONTAŻ PROJEKTORÓW - Kraków"
+    ],
+    "first": "Usuwanie kropek / wymiana układu DMD",
+    "seoFirst": "Usuwanie kropek / wymiana układu DMD",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Usuwanie kropek / wymiana układu DMD"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/cennik-serwisu-projektorow.php",
+    "title": "Cennik serwisu projektorów",
+    "desc": "Serwis Projektorów. Wymiana lampy, konserwacja układu chłodzenia czy też naprawa elektroniki zasilania. Podejmujemy się naprawy każdej usterki. Rafcom.eu Katowice",
+    "h1": [
+     "H1: Cennik serwisu projektorów"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "serwisagd-gdansk.pl",
+    "url": "https://www.serwisagd-gdansk.pl/serwis-rtv-telewizory-projektory-amplitunery-gdansk/",
+    "title": "Serwis RTV – telewizory projektory amplitunery – Gdańsk | Naprawa i serwis pralek, zmywarek - Serwis AGD Gdańsk, Gdynia, Sopot - Trójmiasto",
+    "desc": "",
+    "h1": [
+     "H1: Serwis RTV – telewizory projektory amplitunery – Gdańsk"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "imageav.pl",
+    "url": "https://imageav.pl/serwis-projektorow/",
+    "title": "Serwis Projektorów | Przeglądy | Oferta 2026",
+    "desc": "Serwis projektorów wszystkich marek. Diagnostyka, naprawy, czyszczenie i przeglądy. Pobierz formularz i zgłoś projektor do serwisu.",
+    "h1": [
+     "H1: Serwis projektorów",
+     "H1: Serwis projektorów Warszawa – naprawa, diagnostyka i konserwacja"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "Czyszczenie projektora / optyki",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "serwisprojektora.com",
+    "url": "https://www.serwisprojektora.com/",
+    "title": "Naprawa i konserwacja projektorów: Tablice i monitory interaktywne - CZYSTY PROJEKTOR",
+    "desc": "Jesteśmy firmą specjalizującą się w naprawie i konserwacji projektorów. Nasza oferta obejmuje szeroki zakres usług, w tym dystrybucję tablic i monitorów interaktywnych. Jako odpowiedź na rosnące zapotrzebowanie na serwis, rozszerzyliśmy naszą ofertę o kompleksowe wsparcie techniczne dla naszych klientów.",
+    "h1": [
+     "H1: Profesjonalna naprawa i przegląd",
+     "H1: projektorów&#xa0;"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "serwishp.pl",
+    "url": "https://serwishp.pl/cennik-serwisu-projektorow.html",
+    "title": "Cennik serwisu projektorów",
+    "desc": "Serwis Projektorów. Wymiana lampy, konserwacja układu chłodzenia czy też naprawa elektroniki zasilania. Podejmujemy się naprawy każdej usterki. Rafcom.eu Katowice",
+    "h1": [
+     "H1: Cennik serwisu projektorów"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "reparo.pl",
+    "url": "https://www.reparo.pl/uslugi/naprawa-projektorow",
+    "title": "Naprawa projektorów - Warszawa | Reparo",
+    "desc": "Skuteczna naprawa projektorów i rzutników w Warszawie - Reparo diagnozuje, czyści i kalibruje sprzęt, przywracając doskonałą jakość obrazu.",
+    "h1": [
+     "H1: Naprawa projektorów"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "cssbeskidy.pl",
+    "url": "https://cssbeskidy.pl/pl/centrum-serwisowe/uslugi-it/monitory-i-projektory",
+    "title": "Monitory i projektory",
+    "desc": "",
+    "h1": [
+     "H1: Monitory i projektory",
+     "H1: Serwis Monitorów i Projektorów"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "abcdata-serwis.pl",
+    "url": "https://www.abcdata-serwis.pl/uslugi/naprawa-projektorow-multimedialnych/",
+    "title": "Serwis / Naprawa projektorów multimedialnych Warszawa - ABC Data Serwis",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa projektorów multimedialnych"
+    ],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "sikorskiedu.pl",
+    "url": "https://sikorskiedu.pl/konserwacja-naprawa-projektorow/",
+    "title": "Konserwacja i naprawa projektorów – Kompleksowe wyposażenie szkół i przedszkoli",
+    "desc": "",
+    "h1": [
+     "H1: Konserwacja i naprawa projektorów"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "galileo.krakow.pl",
+    "url": "https://www.galileo.krakow.pl/naprawa-projektorow",
+    "title": "Naprawa projektorów Kraków – serwis | Galileo",
+    "desc": "Naprawiamy projektory w Krakowie – problemy z obrazem, zasilaniem, przegrzewaniem i optyką. Bezpłatna diagnoza, 3 oddziały Galileo.",
+    "h1": [
+     "H1: Naprawa projektorów Kraków – serwis i diagnostyka"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Naprawa HDMI / wejść",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Czyszczenie projektora / optyki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "topkomputer.com",
+    "url": "https://topkomputer.com/serwis/serwis-projektorow/",
+    "title": "Serwis i naprawa projektorów Łódź | Top Komputer",
+    "desc": "Nasza firma to najlepszy serwis projektorów w Łodzi w konkurencyjnych cenach. Oferujemy kompleksową naprawę projektorów realizowaną w szybkim czasie.",
+    "h1": [],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "businessonline.com.pl",
+    "url": "https://businessonline.com.pl/oferta/serwis-projektorow-krakow",
+    "title": "Serwis projektorów Kraków | Naprawa rzutników w Krakowie",
+    "desc": "Serwis projektorów Kraków ⬅️ Naprawa rzutników w Krakowie to nasza specjalność. Zapewniamy serwis projektorów wszystkich marek. Sprawdź cennik!",
+    "h1": [
+     "H1: Serwis projektorów Kraków"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/naprawa-projektorow",
+    "title": "Naprawa Projektorów Lublin. Serwis Rzutników - Nr. 1 w Lublinie",
+    "desc": "5/0 - Opinie - Naprawa Projektorów - Lublin. Profesjonalny Serwis Rzutników: Szybko, Tanio i Profesjonalnie. ☎ 517 532 335",
+    "h1": [
+     "H1: Naprawa projektorów – Lublin"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "naszacena.pl",
+    "url": "https://naszacena.pl/cennik-serwisu-projektorow/",
+    "title": "Cennik serwisu projektorów",
+    "desc": "",
+    "h1": [
+     "H1: Cennik serwisu projektorów"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "j-com.pl",
+    "url": "https://www.j-com.pl/naprawa-projektorow",
+    "title": "Naprawa projektorów | J-COM Poznań",
+    "desc": "Zajmujemy się również ekspertyzą i wymianą poszczególnych części, aby każde urządzenie działało sprawnie:",
+    "h1": [
+     "H1: Naprawa projektorów"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "multimediadlaedukacji.pl",
+    "url": "https://www.multimediadlaedukacji.pl/serwis-projektorow-lublin",
+    "title": "AGART VIDEO Serwis projektorów Lublin wymiana lamp wszystkich typów projektorów",
+    "desc": "serwis projektorów lublin, wymiana lamp w projektorze, lampy do projektorów wszystkich typów lublin, wymiana chipów MDM, naprawa zasilacza, wymiana koła kolorów, serwis projektora, naprawa projektorów lublin ",
+    "h1": [
+     "H1: AGART&#xa0; VIDEO",
+     "H1: Skontaktuj się:"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Wymiana koła kolorów"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Wymiana koła kolorów"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "aprint.pl",
+    "url": "http://www.aprint.pl/",
+    "title": "APRINT Serwis Laptop�w Drukarek",
+    "desc": "serwis,naprawa,sprzeda�,drukarek,notebook�w,komputer�w,ploter�w,tablet�w,tablet,komputer,laptop,PC,laptop�w,kielce,atramenty,tonery,materia�y eksploatacyjne,serwis laptop�w kielce,naprawa laptop�w kielce,naprawa komputer�w kielce",
+    "h1": [],
+    "first": "Naprawa zasilacza / balastu",
+    "seoFirst": "Wymiana matrycy LCD / polaryzatora",
+    "works": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa HDMI / wejść"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "naprawy-olsztyn.pl",
+    "url": "https://naprawy-olsztyn.pl/projektory/",
+    "title": "Projektory - Złoty Śrubokręt",
+    "desc": "Zajmujemy się naprawą projektorów, rzutników i podobnych urządzeń dla Firm, szkół oraz innych instytucji.",
+    "h1": [
+     "H1: Projektory"
+    ],
+    "first": "Naprawa HDMI / wejść",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa HDMI / wejść"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "mbm.krakow.pl",
+    "url": "https://www.mbm.krakow.pl/projektory-html/",
+    "title": "Serwis i montaż projektorów - MBM Kraków",
+    "desc": "Sprzedaż, serwis i montaż projektorów. Naprawa rzutników, regeneracja lamp. Zapraszamy do serwisu MBM Electronic w Krakowie!",
+    "h1": [
+     "H1: Montaż i serwis projektorów"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "unikom.pl",
+    "url": "https://unikom.pl/naprawa-projektorow-lcd/",
+    "title": "Naprawa projektorów lcd w serwisie Unikom . Serwis projektorów - Unikom",
+    "desc": "Profesjonalna naprawa projektorów w serwisie Unikom w Poznaniu. Bezpłatna diagnoza problemu i wycena naprawy ✔️ Nie czekaj i zadzwoń do nas już dzisiaj!",
+    "h1": [
+     "H1: UNIKOM",
+     "H1: Naprawa projektorów LCD Poznań"
+    ],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "Wymiana matrycy LCD / polaryzatora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "agart-video.pl",
+    "url": "https://agart-video.pl/serwis-projektorow-lublin",
+    "title": "AGART VIDEO Serwis projektorów Lublin wymiana lamp wszystkich typów projektorów",
+    "desc": "serwis projektorów lublin, wymiana lamp w projektorze, lampy do projektorów wszystkich typów lublin, wymiana chipów MDM, naprawa zasilacza, wymiana koła kolorów, serwis projektora, naprawa projektorów lublin ",
+    "h1": [
+     "H1: Skontaktuj się:",
+     "H1: AGART&#xa0; VIDEO"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Wymiana koła kolorów"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Naprawa zasilacza / balastu",
+     "Wymiana koła kolorów"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "computerspeed.czest.pl",
+    "url": "https://www.computerspeed.czest.pl/serwis-projektorow/",
+    "title": "Serwis projektorów - Serwis laptopów, komputerów, telefonów, usługi informatyczne - ComputerSpeed",
+    "desc": "ComputerSpeed naprawa projektorów. Konserwacja, wymiana lamp, naprawa elektroniki. Naprawa usterek w projektorach różnych firm.",
+    "h1": [
+     "H1: Serwis projektorów"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa HDMI / wejść",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "bestronic.pl",
+    "url": "https://bestronic.pl/naprawa-projektorow-poznan/",
+    "title": "Naprawa projektorów Poznań – Bestronic",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa projektorów"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisacera.pl",
+    "url": "https://serwisacera.pl/naprawa-projektorow.html",
+    "title": "Naprawa Projektorów – Acer Serwis Laptopów Katowice,Wymiana Klawiatur i Matryc",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa Projektorów"
+    ],
+    "first": "Chłodzenie / wentylatory / przegrzewanie",
+    "seoFirst": "Wymiana matrycy LCD / polaryzatora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "laservis.com.pl",
+    "url": "https://www.laservis.com.pl/serwis/projektory/",
+    "title": "Projektory - Laservis",
+    "desc": "Naprawa projektorów Lublin - Konserwacją i serwisem obejmujemy projektory pogwarancyjne wszelkich typów i producentów.",
+    "h1": [
+     "H1: Naprawa projektorów"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Moduł laser / LED",
+    "works": [
+     "Czyszczenie projektora / optyki",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "kmk.info.pl",
+    "url": "https://kmk.info.pl/",
+    "title": "KmK Technika Biurowa: multimedia, urządzenia wielofunkcyjne, drukarki, kopiarki, tablice interaktywne, ekrany projekcyjne, roboty interaktywne, monitory dotykowe, niszczarki, serwis Bydgoszcz - KmK Te",
+    "desc": "W ofercie firmy KmK Technika Biurowa z Bydgoszczy znajdują się urządzenia multimedialne, urządzenia wielofunkcyjne, multimedia, kopiarki, tablice interaktywne, ekrany projekcyjne, roboty interaktywne, monitory dotykowe, systemy nagłośnienia, niszczarki, serwis",
+    "h1": [
+     "H1: Od wielu lat zajmujemy się dystrybucją i serwisem wysokiej klasy urządzeń biurowych i multimedialnych",
+     "H1: Profesjonalne urządzenia wielofunkcyjne, drukarki, monitory interaktywne, tablice interaktywne, projektory, niszczarki"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "copybox.pl",
+    "url": "https://www.copybox.pl/",
+    "title": "Urządzenia wielofunkcyjne, TOSHIBA, e-STUDIO, kserokopiarki, drukarki Copybox - Toruń",
+    "desc": "Sprzedaż i dzierżawa zaawansowanych technologicznie urządzeń dla biur, szkół i sklepów. Biurowe urządzenia wielofunkcyjne, edukacyjne zestawy interaktywne, projektory, kasy fiskalne i metkownice. Serwis.",
+    "h1": [
+     "H1: Oszczędne, wydajne i niezawodne"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "moreplease.pl",
+    "url": "https://moreplease.pl/marketplace/profesjonalny-serwis-drukarek-i-projektorow-w-lublinie-naprawa-urzadzen-biurowych-laservis",
+    "title": "Profesjonalny serwis drukarek i projektorów w Lublinie – naprawa urządzeń biurowych laservis",
+    "desc": "Nagła awaria sprzętu biurowego potrafi skutecznie sparaliżować pracę w każdym biurze, urzędzie czy domowym gabinecie. Wiemy, jak frustrujące są",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek i projektorów w Lublinie – naprawa urządzeń biurowych laservis"
+    ],
+    "first": "Moduł laser / LED",
+    "seoFirst": "Moduł laser / LED",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "tmp.pl",
+    "url": "https://tmp.pl/serwis-sprzetu/",
+    "title": "Serwis i naprawa drukarek, sprzętu komputerowego, projektorów.",
+    "desc": "Serwis komputerów, laptopów, drukarek, projektorów, urzedzeń mobilnych. Realizujemy zaawansowane naprawy elektronicze. Odbiór sprzętu od klienta.",
+    "h1": [
+     "H1: Serwis sprzętu"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "renomax.pl",
+    "url": "https://renomax.pl/",
+    "title": "Renomax Białystok – sprzedaż, serwis, wynajem sprzętu biurowego",
+    "desc": "Renomax Białystok – kserokopiarki, dzierżawa, tonery, plotery, drukarki wielkoformatowe, projektory, głowice i serwis. Sprawdź poleasingowe okazje!",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "enter.bydgoszcz.pl",
+    "url": "https://enter.bydgoszcz.pl/",
+    "title": "ENTER Bydgoszcz Adrian Skrobot",
+    "desc": "",
+    "h1": [
+     "H1: Nasze Usługi",
+     "H1: Naprawiamy"
+    ],
+    "first": "Moduł laser / LED",
+    "seoFirst": "Moduł laser / LED",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa zasilacza / balastu",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Naprawa zasilacza / balastu",
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "barto719.wixsite.com",
+    "url": "https://barto719.wixsite.com/multimediaserwis",
+    "title": "MultiMedia Serwis Bartosz Osipowicz",
+    "desc": "Naprawa sprzętu komputerowego, Usługi Informatyczne, serwis, komputery, drukarki, laptopy, notebooki, tablety, monitory, plotery, projektory,rzeszów",
+    "h1": [
+     "H1: MultiMedia Serwis"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "krakow-atrakcje.pl",
+    "url": "https://krakow-atrakcje.pl/profesjonalny-projektorow-wszystkich/",
+    "title": "Profesjonalny serwis projektorów wszystkich marek - Kraków | Kraków Atrakcje",
+    "desc": "Projektor multimedialny to urządzenie, które na stałe wpisało się w codzienne funkcjonowanie wielu placówek - firm, szkół czy prywatnych",
+    "h1": [
+     "H1: Kraków Atrakcje",
+     "H1: Profesjonalny serwis projektorów wszystkich marek – Kraków"
+    ],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "Wymiana matrycy LCD / polaryzatora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Wymiana koła kolorów",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "animaxilight.pl",
+    "url": "http://animaxilight.pl/oferta.html",
+    "title": "Animaxi light, wynajem projektor�w multimedialnych ��d�, efektowych, plazm, rzutnik�w, ��d�, serwis urz�dze� scenicznych,optikinetics",
+    "desc": "Oprawa wydarze� w �wiat�o, obraz i d�wi�k. Wynajem i serwis sprz�tu audiowizualnego: projektory multimedialne, projektory efektowe, ekrany projekcyjne, plazmy, LCD, nag�o�nienie marek �wiatowych lider�w.",
+    "h1": [
+     "H1: Animacja �wietlna i scenograficzna"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "avcsa.pl",
+    "url": "https://www.avcsa.pl/",
+    "title": "Avc",
+    "desc": "page_description",
+    "h1": [
+     "H1: Kim jesteśmy ?"
+    ],
+    "first": "Moduł laser / LED",
+    "seoFirst": "",
+    "works": [
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "samsunga.pl",
+    "url": "https://samsunga.pl/cennik-serwisu-projektorow-samsung/",
+    "title": "Cennik serwisu projektorów samsung",
+    "desc": "",
+    "h1": [
+     "H1: Cennik serwisu projektorów samsung"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Chłodzenie / wentylatory / przegrzewanie",
+     "Wymiana koła kolorów",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "idboard.pl",
+    "url": "https://www.idboard.pl/",
+    "title": "Monitory interaktywne, tablice interaktywne - Lublin - Biuro-Serwis",
+    "desc": "",
+    "h1": [
+     "H1: Największy wybór monitorów interaktywnych oraz tablic interaktywnych w całym województwie lubelskim",
+     "H1: Nowości"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "kinekspert.com.pl",
+    "url": "http://www.kinekspert.com.pl/",
+    "title": "Kinekspert - projekcja cyfrowa 3D, nagłośnienie kinowe, serwis kinotechniczny, wyposażenie kin i teatrów w systemy projekcji i dźwięku",
+    "desc": "",
+    "h1": [],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "rafcom.eu",
+    "url": "https://rafcom.eu/uncategorized/naprawa-i-serwis-projektorow-panasonic-katowice-slask-lampy/",
+    "title": "Naprawa i Serwis Projektorów Panasonic Katowice Śląsk Lampy | Rafcom",
+    "desc": "teraz już działa",
+    "h1": [
+     "H1: Naprawa i Serwis Projektorów Panasonic Katowice Śląsk Lampy"
+    ],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "enkomp.pl",
+    "url": "https://enkomp.pl/serwis_laptopow_Torun.html",
+    "title": "Serwis laptopów Toruń tel. z listy punktów serwisowych , naprawy komputerów, drukarki, monitory, projektory, Enkomp Bielsko-Biała, obsługa informatyczna firm, outsourcing, strony i sklepy internetowe,",
+    "desc": "Serwis laptopów Toruń tel.  z listy punktów serwisowych , ",
+    "h1": [
+     "H1: ENKOMP Bielsko-Biała to serwis komputerów i laptopów , wykonanie stron i sklepów internetowych , obsługa informatyczna firm , reklama w inte",
+     "H1: Serwis laptopów, komputerów, nawigacji GPS, drukarek, obsługa informatyczna w mieście Toruń . Naprawa laptopa, komputera, urządzeń elektroni"
+    ],
+    "first": "Wymiana matrycy LCD / polaryzatora",
+    "seoFirst": "",
+    "works": [
+     "Wymiana lampy projektora",
+     "Usuwanie kropek / wymiana układu DMD",
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa zasilacza / balastu",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "glos24.pl",
+    "url": "https://glos24.pl/firma-swiadczaca-montaz-i-serwis-projektorow-w-krakowie",
+    "title": "Firma świadcząca montaż i serwis projektorów w Krakowie",
+    "desc": "Profesjonalny montaż i serwis projektorów w Krakowie. Sprawdź ofertę Business Online i ciesz się doskonałym obrazem oraz dźwiękiem w każdej przestrzeni.",
+    "h1": [
+     "H1: Firma świadcząca montaż i serwis projektorów w Krakowie"
+    ],
+    "first": "Kalibracja / ostrość / obraz",
+    "seoFirst": "Kalibracja / ostrość / obraz",
+    "works": [
+     "Czyszczenie projektora / optyki",
+     "Naprawa HDMI / wejść",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Kalibracja / ostrość / obraz"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "projektory.szczecin.pl",
+    "url": "https://projektory.szczecin.pl/",
+    "title": "Wynajem projektora Szczecin | Projektory, ekrany i sprzęt konferencyjny",
+    "desc": "Wynajem projektorów i ekranów w Szczecinie na szkolenia, konferencje i eventy. Dostawa, pomoc w podłączeniu i lokalna obsługa techniczna także w weekendy.",
+    "h1": [
+     "H1: Wynajem projektorów i ekranów w Szczecinie"
+    ],
+    "first": "Naprawa HDMI / wejść",
+    "seoFirst": "Naprawa HDMI / wejść",
+    "works": [
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "projektorwroclaw.pl",
+    "url": "https://projektorwroclaw.pl/",
+    "title": "Wypożyczalnia projektorów, wynajem rzutników, laptopów, ekranów Wrocław oraz inne miasta!",
+    "desc": "Wynajem projektorów, rzutników, ekranów, laptopów. Projektor tylko 50zł za dobę, możliwy dowóz. Najtaniej. Wypożyczalnia Wrocław oraz dowóz do innych miast. ",
+    "h1": [
+     "H1: Wypożyczalnia projektorów cennik: (ceny netto, faktura VAT)"
+    ],
+    "first": "Naprawa HDMI / wejść",
+    "seoFirst": "Naprawa HDMI / wejść",
+    "works": [
+     "Wymiana matrycy LCD / polaryzatora",
+     "Naprawa HDMI / wejść",
+     "Moduł laser / LED",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Naprawa HDMI / wejść"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "videohead.com.pl",
+    "url": "http://videohead.com.pl/",
+    "title": ".: Video Head Import & Export Polska :. .: Naprawa lamp do projektorów :. .: Lampy do projektorów multimedialnych :.",
+    "desc": "Video Head Import & Export POLAND, Video Head Service. Naprawia projektorów, czyszczenie optyki, wymiana lamp UHP, NSH, SHP, konkurencyjne ceny. Oferujemy również głowice nowe, głowice laserowe CD oraz DVD, PROFESJONALNY SERWIS sprzętu przemysłowego TIME LAPSE oraz wiele innych. Bogaty asortyment. Bezpo?redni importer.",
+    "h1": [],
+    "first": "Wymiana lampy projektora",
+    "seoFirst": "Wymiana lampy projektora",
+    "works": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Moduł laser / LED"
+    ],
+    "seoWorks": [
+     "Wymiana lampy projektora",
+     "Czyszczenie projektora / optyki",
+     "Moduł laser / LED"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "mikrotest.pl",
+    "url": "https://mikrotest.pl/index.php/serwis-modernizacja-naprawa-regulacja-regeneracja-mikroskopow-projektorow-pomiarowych-czesci",
+    "title": "Naprawa, modernizacja przyrządów pomiarowych. Serwis mikroskopów, projektorów.",
+    "desc": "Serwis przyrządów pomiarowych: naprawa, wymiana części, regeneracja i regulacja. Modernizacja m.in. mikroskopów i projektów. Specjalne narzędzia pomiarowe.",
+    "h1": [
+     "H1: Serwis - naprawa, konserwacja i modernizacja przyrządów oraz specjalne narzędzia i układy pomiarowe"
+    ],
+    "first": "Czyszczenie projektora / optyki",
+    "seoFirst": "Czyszczenie projektora / optyki",
+    "works": [
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki",
+     "Kalibracja / ostrość / obraz"
+    ],
+    "seoWorks": [
+     "Czyszczenie projektora / optyki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "softel.ipr.pl",
+    "url": "https://softel.ipr.pl/oferta/",
+    "title": "Oferta Softel Rzeszów - Sprzedaż serwis: zasilacze UPS, podzespoły sieci komputerowych, naprawa projektorów",
+    "desc": "Oferta Softel Rzeszów - Sprzedaż serwis:  zasilacze UPS, podzespoły sieci komputerowych, naprawa projektorów i rzutników, naprawa ruterów ZyXEL, naprawa komputerów Rzeszów",
+    "h1": [
+     "H1: Softel Sp. z o.o. (Rzeszów) Naprawa oraz sprzedaż zasilaczy UPS; Sprzedaż oraz instalacja akumulatorów do zasilaczy UPS; Naprawa rzutników m",
+     "H1: Polityka dotycząca plików cookies"
+    ],
+    "first": "Naprawa zasilacza / balastu",
+    "seoFirst": "Naprawa zasilacza / balastu",
+    "works": [
+     "Naprawa zasilacza / balastu"
+    ],
+    "seoWorks": [
+     "Naprawa zasilacza / balastu"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "najem-wynajem.pl",
+    "url": "https://najem-wynajem.pl/wypozyczalnia/2890/xvision.html",
+    "title": "Wypożyczalnia Xvision, Lublin: wypożyczalnia Projektorów i Rzutników",
+    "desc": "Xvision jest firmą, która od 2009 r. wynajmuje najwyższej jakości projektory multimedialne. W naszej ofercie posiadamy projektory do różnych zastosowań. Przygotowaliśmy możliwość wyboru urządzeń pracujących w różnych rozdzielczościach i mocach strumi",
+    "h1": [
+     "H1: Szczegóły Wypożyczalni"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Naprawa zasilacza / balastu": {
+    "было": 13,
+    "стало": 12,
+    "исключено": [
+     "zasilacz do projektora wanbo"
+    ]
+   },
+   "общие подсказки: Wymiana lampy projektora": {
+    "было": 3,
+    "стало": 2,
+    "исключено": [
+     "projektor lampka nocna"
+    ]
+   },
+   "общие подсказки: Moduł laser / LED": {
+    "было": 8,
+    "стало": 0,
+    "исключено": [
+     "projektor laserowy",
+     "projektor laserowy 4k",
+     "projektor led",
+     "projektor laserowy multikino",
+     "projektor led dla dzieci",
+     "projektor oceaniczny led usb",
+     "projektor oceaniczny led",
+     "projektor rzutnik led full hd smart tv 4k wifi przenośny android hy300 pro+"
+    ]
+   },
+   "общие подсказки: Kalibracja / ostrość / obraz": {
+    "было": 3,
+    "стало": 2,
+    "исключено": [
+     "projektor nie wyświetla obrazu z telefonu"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Wymiana lampy projektora",
+   "comp": {
+    "mention": 47,
+    "first": 15,
+    "seoFirst": 16,
+    "seo": 20,
+    "head": 9,
+    "td": 14
+   },
+   "ac": 2,
+   "probe": {
+    "n": 20,
+    "cena": 2,
+    "ex": [
+     "wymiana lampy projektora epson",
+     "wymiana lampy projektora",
+     "wymiana lampy w projektorze",
+     "wymiana lampy w projektorze epson",
+     "wymiana lampy w projektorze cena"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Czyszczenie projektora / optyki",
+   "comp": {
+    "mention": 42,
+    "first": 10,
+    "seoFirst": 3,
+    "seo": 10,
+    "head": 6,
+    "td": 6
+   },
+   "ac": 0,
+   "probe": {
+    "n": 11,
+    "cena": 1,
+    "ex": [
+     "czyszczenie projektora",
+     "czyszczenie projektora z kurzu",
+     "czyszczenie projektora magcubic",
+     "czyszczenie projektora hy300",
+     "czyszczenie projektora hy320"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / elektroniki",
+   "comp": {
+    "mention": 37,
+    "first": 8,
+    "seoFirst": 1,
+    "seo": 7,
+    "head": 4,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja / ostrość / obraz",
+   "comp": {
+    "mention": 35,
+    "first": 11,
+    "seoFirst": 6,
+    "seo": 8,
+    "head": 4,
+    "td": 4
+   },
+   "ac": 2,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Chłodzenie / wentylatory / przegrzewanie",
+   "comp": {
+    "mention": 27,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 7,
+    "head": 2,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "wentylator projektora"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Moduł laser / LED",
+   "comp": {
+    "mention": 26,
+    "first": 5,
+    "seoFirst": 5,
+    "seo": 10,
+    "head": 7,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana matrycy LCD / polaryzatora",
+   "comp": {
+    "mention": 24,
+    "first": 7,
+    "seoFirst": 5,
+    "seo": 7,
+    "head": 3,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "polaryzator projektor",
+     "polaryzator do projektora"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa zasilacza / balastu",
+   "comp": {
+    "mention": 22,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 7,
+    "head": 4,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": {
+    "n": 12,
+    "cena": 0,
+    "ex": [
+     "zasilacz projektora",
+     "zasilacz do projektora samsung freestyle",
+     "zasilacz do projektora hy300",
+     "zasilacz do projektora magcubic",
+     "zasilacz do projektora samsung"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa HDMI / wejść",
+   "comp": {
+    "mention": 16,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 2,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie kropek / wymiana układu DMD",
+   "comp": {
+    "mention": 13,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 2,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 14,
+    "cena": 0,
+    "ex": [
+     "projektor białe kropki",
+     "projektor benq białe kropki na ekranie",
+     "wymiana chipa dmd",
+     "projektor kropki na obrazie",
+     "chip dmd"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana koła kolorów",
+   "comp": {
+    "mention": 12,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 3,
+    "head": 0,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "koło kolorów projektor",
+     "koło kolorów do projektora"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Wymiana lampy",
+   "a": "Wymiana lampy projektora",
+   "why": "47 из 69, чаще всех в Title/Description; 20 подсказок",
+   "evidence": "конкуренты 47 из 69 (первой работой — 15, в Title/Description — 14) · подсказки Google 20 (напр. «wymiana lampy projektora epson», «wymiana lampy projektora»)"
+  },
+  {
+   "w": "Wymiana układu DMD",
+   "a": "Usuwanie kropek / wymiana układu DMD",
+   "why": "вместо симптома «kropki na obrazie» — работа из прайса «Wymiana układu DMD» (белые/чёрные точки)",
+   "evidence": "конкуренты 13 из 69 (первой работой — 1, в Title/Description — 3) · подсказки Google 14 (напр. «projektor białe kropki», «projektor benq białe kropki na ekranie»)"
+  },
+  {
+   "w": "Czyszczenie",
+   "a": "Czyszczenie projektora / optyki",
+   "why": "42 конкурента, 11 подсказок; в прайсе чистка включает оптику",
+   "evidence": "конкуренты 42 из 69 (первой работой — 10, в Title/Description — 6) · подсказки Google 11 (напр. «czyszczenie projektora», «czyszczenie projektora z kurzu»)"
+  },
+  {
+   "w": "Naprawa zasilacza",
+   "a": "Naprawa zasilacza / balastu",
+   "why": "12 подсказок после очистки; в прайсе «Naprawa zasilacza projektora»",
+   "evidence": "конкуренты 22 из 69 (первой работой — 2, в Title/Description — 4) · подсказки Google 12 (напр. «zasilacz projektora», «zasilacz do projektora samsung freestyle»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Chłodzenie",
+   "why": "27 конкурентов, но подсказок нет; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Страница открыта для индексации: в списке закрытых страниц её нет, она есть в sitemap (старый комментарий в коде про noindex устарел)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa projektorów we Wrocławiu ✔ Wymiana lampy i układu DMD, czyszczenie, naprawa zasilacza ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 154
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт проєкторів у Вроцлаві ✔ Заміна лампи і чипа DMD, чистка, ремонт блока живлення ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 147
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт проекторов во Вроцлаве ✔ Замена лампы и чипа DMD, чистка, ремонт блока питания ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 146
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

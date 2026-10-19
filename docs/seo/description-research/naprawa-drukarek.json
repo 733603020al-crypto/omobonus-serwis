@@ -1,0 +1,2944 @@
+{
+ "page": "/uslugi/naprawa-drukarek",
+ "name": "Принтеры (общая)",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "naprawa drukarek",
+    "serwis drukarek",
+    "naprawa drukarki cena",
+    "naprawa drukarek cennik",
+    "serwis drukarek Warszawa",
+    "serwis drukarek Kraków",
+    "serwis drukarek Wrocław",
+    "serwis drukarek Poznań",
+    "serwis drukarek Gdańsk",
+    "serwis drukarek Łódź",
+    "serwis drukarek Katowice",
+    "serwis drukarek Szczecin",
+    "serwis drukarek Lublin",
+    "serwis drukarek Białystok",
+    "serwis drukarek Bydgoszcz",
+    "serwis drukarek Toruń",
+    "serwis drukarek Rzeszów",
+    "serwis drukarek Kielce",
+    "serwis drukarek Opole",
+    "serwis drukarek Olsztyn",
+    "serwis drukarek Gdynia",
+    "serwis drukarek Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "naprawa drukarki ",
+    "naprawa drukarek ",
+    "serwis drukarek ",
+    "serwis drukarki ",
+    "drukarka naprawa ",
+    "drukarka nie "
+   ],
+   "uniqueSuggestions": 584,
+   "withPrice": [
+    "naprawa drukarki cena",
+    "naprawa drukarki epson cena",
+    "ile kosztuje naprawa drukarki canon",
+    "naprawa drukarki epson koszt",
+    "ile kosztuje naprawa głowicy drukarki",
+    "ile kosztuje naprawa drukarki hp",
+    "naprawa drukarki ile kosztuje",
+    "naprawa drukarki koszt",
+    "naprawa drukarek wrocław hercena",
+    "serwis drukarek wrocław hercena"
+   ],
+   "wroclaw": [
+    "naprawa drukarek wrocław",
+    "naprawa drukarek epson wrocław",
+    "naprawa drukarek brother wrocław",
+    "serwis drukarek wrocław",
+    "serwis drukarek hp wrocław",
+    "serwis drukarek brother wrocław",
+    "serwis drukarek epson wrocław",
+    "serwis drukarek canon wrocław",
+    "serwis drukarek 3d wrocław",
+    "naprawa drukarki brother wrocław",
+    "naprawa drukarki epson wrocław",
+    "naprawa drukarki hp wrocław",
+    "naprawa drukarki wrocław",
+    "naprawa drukarek atramentowych wrocław",
+    "naprawa drukarek canon wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Czyszczenie / konserwacja drukarki": {
+    "seeds": [
+     "czyszczenie drukarki",
+     "konserwacja drukarki"
+    ],
+    "n": 18,
+    "nRaw": 21,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie drukarki epson",
+     "czyszczenie drukarki brother",
+     "czyszczenie drukarki",
+     "czyszczenie drukarki canon",
+     "czyszczenie drukarki epson l3250",
+     "czyszczenie drukarki hp",
+     "czyszczenie drukarki canon g3410",
+     "czyszczenie drukarki epson l3150",
+     "czyszczenie drukarki epson l3251",
+     "czyszczenie drukarki canon g3010"
+    ],
+    "all": [
+     "czyszczenie drukarki epson",
+     "czyszczenie drukarki brother",
+     "czyszczenie drukarki",
+     "czyszczenie drukarki canon",
+     "czyszczenie drukarki epson l3250",
+     "czyszczenie drukarki hp",
+     "czyszczenie drukarki canon g3410",
+     "czyszczenie drukarki epson l3150",
+     "czyszczenie drukarki epson l3251",
+     "czyszczenie drukarki canon g3010",
+     "czyszczenie drukarki epson l3151",
+     "konserwacja drukarki",
+     "konserwacja drukarki epson",
+     "konserwacja drukarki brother",
+     "konserwacja drukarki laserowej",
+     "konserwacja drukarki hp",
+     "konserwacja drukarki canon",
+     "konserwacja drukarki atramentowej"
+    ],
+    "dropped": [
+     [
+      "konserwacja drukarki 3d",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "konserwacja drukarki jaki paragraf",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "konserwacja drukarki bambu lab p1s",
+      "другой тип устройства для этой страницы"
+     ]
+    ]
+   },
+   "Wymiana / czyszczenie głowicy": {
+    "seeds": [
+     "wymiana głowicy drukarki",
+     "czyszczenie głowicy drukarki"
+    ],
+    "n": 11,
+    "nRaw": 11,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie głowicy drukarki",
+     "czyszczenie głowicy drukarki canon pixma",
+     "czyszczenie głowicy drukarki epson",
+     "czyszczenie głowicy drukarki hp",
+     "czyszczenie głowicy drukarki canon",
+     "czyszczenie głowicy drukarki canon pixma z poziomu drukarki",
+     "czyszczenie głowicy drukarki brother dcp-j105",
+     "czyszczenie głowicy drukarki hp smart tank 580",
+     "czyszczenie głowicy drukarki epson l3150",
+     "czyszczenie głowicy drukarki brother"
+    ],
+    "all": [
+     "czyszczenie głowicy drukarki",
+     "czyszczenie głowicy drukarki canon pixma",
+     "czyszczenie głowicy drukarki epson",
+     "czyszczenie głowicy drukarki hp",
+     "czyszczenie głowicy drukarki canon",
+     "czyszczenie głowicy drukarki canon pixma z poziomu drukarki",
+     "czyszczenie głowicy drukarki brother dcp-j105",
+     "czyszczenie głowicy drukarki hp smart tank 580",
+     "czyszczenie głowicy drukarki epson l3150",
+     "czyszczenie głowicy drukarki brother",
+     "czyszczenie głowicy drukarki epson l3251"
+    ],
+    "dropped": []
+   },
+   "Usuwanie zacięć papieru / podawanie": {
+    "seeds": [
+     "drukarka nie pobiera papieru",
+     "zacięcie papieru drukarka"
+    ],
+    "n": 18,
+    "nRaw": 18,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "drukarka nie pobiera papieru",
+     "drukarka nie pobiera papieru canon",
+     "drukarka nie pobiera papieru hp deskjet",
+     "drukarka nie pobiera papieru brother",
+     "drukarka nie pobiera papieru epson",
+     "drukarka nie pobiera papieru fotograficznego",
+     "drukarka nie pobiera papieru hp",
+     "drukarka nie pobiera papieru samsung",
+     "drukarka nie pobiera papieru co zrobić",
+     "dlaczego drukarka nie pobiera papieru"
+    ],
+    "all": [
+     "drukarka nie pobiera papieru",
+     "drukarka nie pobiera papieru canon",
+     "drukarka nie pobiera papieru hp deskjet",
+     "drukarka nie pobiera papieru brother",
+     "drukarka nie pobiera papieru epson",
+     "drukarka nie pobiera papieru fotograficznego",
+     "drukarka nie pobiera papieru hp",
+     "drukarka nie pobiera papieru samsung",
+     "drukarka nie pobiera papieru co zrobić",
+     "dlaczego drukarka nie pobiera papieru",
+     "zacięcie papieru drukarka brother",
+     "zaciecie papieru drukarka hp",
+     "zaciecie papieru drukarka canon",
+     "zaciecie papieru drukarka epson",
+     "zaciecie papieru drukarka samsung",
+     "zaciecie papieru drukarka hp smart tank 515",
+     "zaciecie papieru drukarka oki",
+     "zaciecie papieru drukarka"
+    ],
+    "dropped": []
+   },
+   "Naprawa / regeneracja fusera (utrwalacza)": {
+    "seeds": [
+     "naprawa fusera",
+     "regeneracja fusera",
+     "wymiana fusera"
+    ],
+    "n": 7,
+    "nRaw": 7,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "naprawa fusera",
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother",
+     "wymiana folii fusera",
+     "hp p3015 wymiana fusera"
+    ],
+    "all": [
+     "naprawa fusera",
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother",
+     "wymiana folii fusera",
+     "hp p3015 wymiana fusera"
+    ],
+    "dropped": []
+   },
+   "Urządzenia wielofunkcyjne / kserokopiarki": {
+    "seeds": [
+     "naprawa kserokopiarek",
+     "serwis urządzeń wielofunkcyjnych"
+    ],
+    "n": 12,
+    "nRaw": 12,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "naprawa kserokopiarek",
+     "naprawa kserokopiarek płock",
+     "naprawa kserokopiarek warszawa",
+     "naprawa kserokopiarek lublin",
+     "naprawa kserokopiarek szczecin",
+     "naprawa kserokopiarek łódź",
+     "naprawa kserokopiarek rzeszów",
+     "naprawa kserokopiarek kraków",
+     "naprawa kserokopiarek sopot",
+     "naprawa kserokopiarek częstochowa"
+    ],
+    "all": [
+     "naprawa kserokopiarek",
+     "naprawa kserokopiarek płock",
+     "naprawa kserokopiarek warszawa",
+     "naprawa kserokopiarek lublin",
+     "naprawa kserokopiarek szczecin",
+     "naprawa kserokopiarek łódź",
+     "naprawa kserokopiarek rzeszów",
+     "naprawa kserokopiarek kraków",
+     "naprawa kserokopiarek sopot",
+     "naprawa kserokopiarek częstochowa",
+     "serwis urządzeń wielofunkcyjnych hp",
+     "serwis urządzeń wielofunkcyjnych"
+    ],
+    "dropped": []
+   },
+   "Dojazd / naprawa u klienta": {
+    "seeds": [
+     "naprawa drukarek z dojazdem",
+     "serwis drukarek z dojazdem"
+    ],
+    "n": 4,
+    "nRaw": 4,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "naprawa drukarek z dojazdem",
+     "naprawa drukarek poznań z dojazdem",
+     "serwis drukarek z dojazdem",
+     "serwis drukarek kraków z dojazdem"
+    ],
+    "all": [
+     "naprawa drukarek z dojazdem",
+     "naprawa drukarek poznań z dojazdem",
+     "serwis drukarek z dojazdem",
+     "serwis drukarek kraków z dojazdem"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 702,
+   "impressions": 25966,
+   "clicks": 3028,
+   "conversions": 256.84,
+   "top": [
+    {
+     "term": "serwis drukarek wrocław",
+     "impr": 4739,
+     "clicks": 445,
+     "conv": 25.41,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa drukarek wrocław",
+     "impr": 2509,
+     "clicks": 381,
+     "conv": 31.99,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek",
+     "impr": 1776,
+     "clicks": 109,
+     "conv": 4.8,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa drukarek",
+     "impr": 1277,
+     "clicks": 110,
+     "conv": 7.82,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Drukarki Noc (CPC)",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis drukarek brother wrocław",
+     "impr": 1144,
+     "clicks": 209,
+     "conv": 18.82,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis drukarek zebra",
+     "impr": 1105,
+     "clicks": 52,
+     "conv": 8,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko"
+     ],
+     "via": "thermal"
+    },
+    {
+     "term": "serwis drukarek hp wrocław",
+     "impr": 869,
+     "clicks": 210,
+     "conv": 18.83,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek epson wrocław",
+     "impr": 767,
+     "clicks": 185,
+     "conv": 10.84,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "zebra serwis",
+     "impr": 737,
+     "clicks": 21,
+     "conv": 2,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko"
+     ],
+     "via": "thermal"
+    },
+    {
+     "term": "serwis zebra",
+     "impr": 603,
+     "clicks": 22,
+     "conv": 2,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ],
+     "via": "thermal"
+    },
+    {
+     "term": "serwis drukarek canon wrocław",
+     "impr": 443,
+     "clicks": 96,
+     "conv": 7.33,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Drukarki Noc (CPC)"
+     ]
+    },
+    {
+     "term": "serwis drukarek wroclaw",
+     "impr": 424,
+     "clicks": 46,
+     "conv": 12,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek epson",
+     "impr": 373,
+     "clicks": 43,
+     "conv": 5.75,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki Noc (CPC)"
+     ]
+    },
+    {
+     "term": "serwis drukarek brother",
+     "impr": 346,
+     "clicks": 50,
+     "conv": 7,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa drukarek wroclaw",
+     "impr": 322,
+     "clicks": 49,
+     "conv": 6,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "naprawa drukarki",
+     "avg": 5000,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa drukarek",
+     "avg": 5000,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarek",
+     "avg": 5000,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarki",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarek epson",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarek hp",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarek brother",
+     "avg": 500,
+     "comp": "Средний"
+    },
+    {
+     "s": "drukarki hp atramentowe",
+     "avg": 500,
+     "comp": "Высокий",
+     "via": "inkjet"
+    },
+    {
+     "s": "serwis drukarek canon",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa drukarek hp",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "centrum drukarek",
+     "avg": 500,
+     "comp": "Средний"
+    },
+    {
+     "s": "naprawa drukarek zielona góra",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa drukarek epson",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa drukarek brother",
+     "avg": 500,
+     "comp": "Средний"
+    },
+    {
+     "s": "autoryzowany serwis drukarek epson",
+     "avg": 500,
+     "comp": "Низкий"
+    }
+   ],
+   "phrases": 257
+  }
+ },
+ "competitors": {
+  "relevant": 76,
+  "checked": 84,
+  "candidates": 206,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "naprawek.pl",
+    "url": "https://www.naprawek.pl/naprawa-drukarek",
+    "title": "Naprawa Drukarek | Cała Polska",
+    "desc": "Serwis Drukarek w Całej Polsce - Drukarki Atramentowe | Laserowe | Urządzenia Biurowe | Inne. Sprawdź Opinie, Zapytaj o Cenę i Zamów Usługę 24h!",
+    "h1": [
+     "H1: Naprawa Drukarek"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawa.pl",
+    "url": "https://naprawa.pl/serwis-wysylkowy/naprawa-drukarek",
+    "title": "Naprawa drukarek - Profesjonalny serwis wszystkich marek",
+    "desc": "Profesjonalna naprawa drukarek HP, Epson, Canon, Brother i innych. Serwis urządzeń atramentowych i laserowych. Szybka diagnostyka, oryginalne części, 90 dni gwarancji.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Drukarki termiczne / etykiet",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": []
+   },
+   {
+    "host": "adkprint.pl",
+    "url": "https://www.adkprint.pl/serwis_drukarek.html",
+    "title": "Serwis drukarek Wrocław – Naprawa drukarek HP, Brother, Canon, Epson | ADKPRINT",
+    "desc": "ADKPRINT – profesjonalny serwis drukarek we Wrocławiu. Naprawa drukarek HP, Brother, Canon, Epson i innych. Diagnoza, czyszczenie, konserwacja i wymiana części.",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek we Wrocławiu"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-wroclaw.pl",
+    "url": "https://serwis-drukarek-wroclaw.pl/",
+    "title": "Serwis drukarek we Wrocławiu, darmowa diagnoza",
+    "desc": "Naprawa drukarek w centrum Wrocławia. Diagnoza bezpłatna lub ekspres, ekspertyza uszkodzeń, gwarancja 6 miesięcy. Serwis marek Canon, HP, Epson, Brother, Lexmark i innych.",
+    "h1": [
+     "H1: Serwis drukarek we Wrocławiu, darmowa diagnoza"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwis-druk.pl",
+    "url": "https://serwis-druk.pl/naprawa-drukarek-hp/",
+    "title": "Naprawa drukarek HP w Warszawie | Serwis drukarek Hewlett-Packard",
+    "desc": "Nasz serwis drukarek HP (Hewlett-Packard) z siedzibą w Warszawie jest do Państwa dyspozycji przez cały tydzień. Zapraszamy na profesjonalną naprawę i konserwację wielofunkcyjnych sprzętów drukujących!",
+    "h1": [
+     "H1: Naprawa drukarek HP (Hewlett-Packard)"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "druktak.pl",
+    "url": "https://druktak.pl/serwis-drukarek-cennik-pm-77.html",
+    "title": "Serwis drukarek - cennik - DrukTak.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek - cennik"
+    ],
+    "first": "Drukarki termiczne / etykiet",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "regulservis.pl",
+    "url": "https://regulservis.pl/",
+    "title": "Serwis i naprawa drukarek w Warszawie",
+    "desc": "Ekspresowa naprawa drukarek w Warszawie – darmowa diagnostyka, dojazd w 90 minut, gwarancja do 12 miesięcy, urządzenie zastępcze. Zadzwoń ☎ 794 060 148",
+    "h1": [
+     "H1: Naprawa drukarek w Warszawie – ekspresowy serwis z gwarancją"
+    ],
+    "first": "Usuwanie zacięć papieru / podawanie",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "e-dts.pl",
+    "url": "https://e-dts.pl/",
+    "title": "DTS - serwis drukarek, drukarki, tonery, Kraków, Warszawa, wynajem, dzierżawa i sprzedaż drukarek. Serwis Drukarek Katowice",
+    "desc": "Firma DTS świadczy usługi: sprzedaży, serwis drukarek, wynajem drukarek. W ofercie tanie tonery i wynajem drukarek. Usługa zarządzanie drukiem oraz dzierżawa drukarek. Drukarki pod wynajem. Drukarki kolorowe, drukarki laserowe. Tonery Kraków",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych"
+    ],
+    "city": [
+     "Kraków",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "unibit.com.pl",
+    "url": "https://www.unibit.com.pl/cennik/",
+    "title": "Cennik1 - Unibit",
+    "desc": "",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": []
+   },
+   {
+    "host": "mikro-serwis.pl",
+    "url": "https://www.mikro-serwis.pl/cena-naprawy-drukarki-atramentowej",
+    "title": "Cennik: Naprawa drukarki atramentowej - Mikro-Serwis Olsztyn",
+    "desc": "Cennik: Naprawa drukarki atramentowej – Mikro-Serwis Olsztyn.",
+    "h1": [
+     "H1: Naprawa drukarki atramentowej"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/cennik-serwisu-drukarek.html",
+    "title": "Cennik serwisu drukarek – Poldruk",
+    "desc": "  Sprawdź Cennik serwisu drukarek laserowych i urządzeń wielofunkcyjnych HP",
+    "h1": [
+     "H1: Cennik serwisu drukarek"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": []
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/serwis-drukarek",
+    "title": "Serwis Drukarek Lublin - Naprawa Drukarek Lublin od 18 Lat",
+    "desc": "Naprawa Drukarek w Lublinie【Szybka Diagnoza 15min ⏩ Skuteczna Naprawa 24h】. Opinie 5☆. Naprawa z Gwarancją. Zadzwoń: ☎ 517-532-335",
+    "h1": [
+     "H1: Serwis drukarek Lublin"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Lublin",
+     "Opole"
+    ]
+   },
+   {
+    "host": "inforoffice.pl",
+    "url": "https://inforoffice.pl/serwis/warszawa/",
+    "title": "Serwis drukarek Warszawa - profesjonalna naprawa drukarek | Oddział Inforoffice",
+    "desc": "Posiadasz sprzęt do naprawy lub serwisu? Chcesz wynająć lub wydierżawić sprzęt? Zadźwoń i zapytaj o ofertę naszych handlowców.",
+    "h1": [
+     "H1: Serwis drukarek Warszawa"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "netservice.com.pl",
+    "url": "https://netservice.com.pl/usluga/dla-domu/naprawa-drukarek/",
+    "title": "Naprawa, serwis drukarek Gdynia - Netservice",
+    "desc": "Zapraszamy do skorzystania z usług naszej firmy informatycznej. Oferujemy m.in. naprawę drukarek na terenie Trójmiasta. Korzystne ceny i profesjonalna obsługa!",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konfiguracja / sieć / sterowniki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "wawanaprawa.pl",
+    "url": "https://wawanaprawa.pl/",
+    "title": "Naprawa drukarek i laptopów Warszawa | WAWANAPRAWA",
+    "desc": "Naprawa drukarek i laptopów w Warszawie od 80 zł. Diagnoza 0 zł, darmowy odbiór, gwarancja do 12 mies. ★ 4,9 w Google, 200+ opinii. ☎ 572 233 650",
+    "h1": [
+     "H1: Serwis i naprawa drukarek i laptopów w Warszawie"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Wymiana / czyszczenie głowicy",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "serwishp.pl",
+    "url": "https://serwishp.pl/cennik-serwisu-drukarek.html",
+    "title": "Cennik serwisu drukarek",
+    "desc": "Znajdź swoją cenę naprawy drukarki. Serwis Drukarek Atramentowych i Laserowych. Rafcom.eu",
+    "h1": [
+     "H1: Cennik serwisu drukarek"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": []
+   },
+   {
+    "host": "naprawimydrukarke.pl",
+    "url": "https://naprawimydrukarke.pl/",
+    "title": "Serwis drukarek Trójmiasto - Gdańsk, Gdynia, Sopot",
+    "desc": "Serwis drukarek w Trójmieście – naprawa i konserwacja sprzętu biurowego. Gdańsk, Gdynia, Sopot. Profesjonalna obsługa, szybka diagnoza, atrakcyjne ceny.",
+    "h1": [
+     "H1: ///////////////////////////////",
+     "H1: &#xa0;"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "procopy.wroclaw.pl",
+    "url": "https://www.procopy.wroclaw.pl/webpage/serwis-drukarek-wroclaw.html",
+    "title": "Serwis Drukarek Wrocław - ProOffice - Serwis kserokopiarek Wrocław",
+    "desc": "ProOffice Profesjonalny serwis ploterów, kserokopiarek i drukarek we Wrocławiu - wiodących producentów takich jak Samsung, Canon, Lexmark, HP i innych. Zapraszamy!\r\n",
+    "h1": [
+     "H1: Serwis drukarek Wrocław"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "darmar.wroclaw.pl",
+    "url": "http://www.darmar.wroclaw.pl/",
+    "title": "Darmar Wroc�aw - serwis i naprawa kserokopiarek, kopiarek i drukarek",
+    "desc": "Darmar Wroc�aw to serwis i naprawa kopiarek oraz kserokopiarek i drukarek. Solidnie i niedrogo. Sprawdz sam!",
+    "h1": [
+     "H1: Wroc�aw i Dolny �l�sk"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "euroimpex.pl",
+    "url": "https://euroimpex.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Wrocław, serwis drukarek w całej Polsce | Euroimpex S.A.",
+    "desc": "Oferujemy serwis drukarek, urządzeń wielofunkcyjnych i kserokopiarek Ricoh / Nashuatec, Epson, Sharp, Canon, Brother, HP, Xerox, itd. | Wrocław i okolice",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek Wrocław"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "szulcserwis.pl",
+    "url": "https://szulcserwis.pl/oferta/serwis/gdansk",
+    "title": "Serwis drukarek, kserokopiarek Gdańsk – Szulc Serwis - Szulc Serwis",
+    "desc": "Zapraszamy na stronę internetową Szulc Serwis. Prowadzimy serwis drukarek w Gdańsku. Oferujemy sprzedaż, leasing, wynajem markowego sprzętu. Kliknij tutaj.\n",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek Gdańsk"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "hicopy.gdansk.pl",
+    "url": "https://hicopy.gdansk.pl/serwis-drukarek/",
+    "title": "Naprawa i serwis drukarek Gdańsk, Gdynia i Sopot - HiCOPY",
+    "desc": "Naprawa i serwis drukarek Gdańsk, Gdynia, Sopot – HiCOPY. Gdańsk ul. Schuberta 1a/2, 80-171. Zadzwoń +48585858978. Testuj 30 dni za darmo!",
+    "h1": [
+     "H1: Naprawa i serwis drukarek Gdańsk, Gdynia i Sopot"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.com.pl",
+    "url": "https://serwisdrukarek.com.pl/",
+    "title": "SerwisDrukarek.com.pl",
+    "desc": "",
+    "h1": [],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych"
+    ],
+    "city": []
+   },
+   {
+    "host": "adtech.pl",
+    "url": "https://www.adtech.pl/cennik.html",
+    "title": "Cennik napraw, czyszczenie głowicy drukarki stacjonarnej, mobilnej | ADTECH S.C.",
+    "desc": "Serwis drukarek termotransferowych, mobilnych, wymiana, regulacja, czyszczenie głowicy drukarki, diagnostyka urządzeń, aktualizacje oprogramowania układowego firmware.",
+    "h1": [
+     "H1: Cennik serwisowy"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy"
+    ],
+    "city": []
+   },
+   {
+    "host": "derek.pl",
+    "url": "https://derek.pl/cennik/",
+    "title": "/Tusze i tonery cena, serwis i naprawa drukarek, laptopów, komputerowych Łódź - Derek Łódź, Gdańska 12 i 86/88",
+    "desc": "Cennik serwisu drukarek i naprawy drukarek, laptopów oraz komputerów. Łódź ul. Gdańska 86/88.",
+    "h1": [
+     "H1: Cennik"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "complexbiuro.pl",
+    "url": "https://complexbiuro.pl/serwis-drukarek.html",
+    "title": "Serwis komputerowy, naprawa, serwis drukarek laserowych Gdańsk, Gdynia, Sopot - ComplexBiuro",
+    "desc": "W ofercie sprzedaż, serwis i naprawa drukarek laserowych Xerox, Canon, Kyocera, HP, Minolta. Zapraszamy firmy do współpracy",
+    "h1": [
+     "H1: Serwis drukarek dla firm – naprawy i konserwacje"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "printflow.com.pl",
+    "url": "https://printflow.com.pl/uslugi/serwis-drukarek/lodz",
+    "title": "Serwis drukarek Łódź · Print Flow Solutions",
+    "desc": "Własny serwis drukarek w Łodzi i województwo łódzkie. Naprawiamy urządzenia wielu marek i ustalamy termin po rozpoznaniu zgłoszenia.",
+    "h1": [
+     "H1: Serwis drukarek Łódź"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Łódź",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "nsb-serwis.pl",
+    "url": "https://nsb-serwis.pl/naprawa-drukarek/",
+    "title": "Naprawa drukarek Warszawa | Serwis drukarek | NSB Serwis - Pogotowie z dojazdem",
+    "desc": "NSB Serwis: Profesjonalna naprawa drukarek laserowych, atramentowych i wielofunkcyjnych w Warszawie. Pogotowie drukarkowe z dojazdem do domu. Szybkie czyszczenie, wymiana tonera. Szybka wycena!",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "mfpservice.pl",
+    "url": "https://mfpservice.pl/",
+    "title": "Serwis drukarek i kserokopiarek popularnych marek. Samsung, Canon, EPSON i inne. Poleasingowe drukarki - Warszawa Białołęka | MFP Service",
+    "desc": "Specjalizujemy się w naprawie kserokopiarek i urządzeń wielofunkcyjnych. Wybierz MFP Service dla szybkiej i niezawodnej obsługi.",
+    "h1": [
+     "H1: Serwis drukarek HP, Canon, Samsung, Brother, Lexmark - Warszawa"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "tsdruk.pl",
+    "url": "https://www.tsdruk.pl/",
+    "title": "TSdruk — Serwis Drukarek | Naprawa HP, Canon, Brother, Epson",
+    "desc": "Profesjonalny serwis drukarek. Naprawa drukarek atramentowych, laserowych, igłowych i wielofunkcyjnych HP, Canon, Brother, Epson, Samsung. Diagnostyka, czyszczenie głowic, wymiana bębna i tonera, naprawa podajników papieru.",
+    "h1": [
+     "H1: Twoja drukarka znowu sprawna"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": []
+   },
+   {
+    "host": "portalmmo.pl",
+    "url": "https://portalmmo.pl/aktualnosci/serwis-i-naprawa-drukarek-ile-kosztuje-naprawa-drukarki,1175.html",
+    "title": "Serwis i naprawa drukarek ✪ Ile kosztuje naprawa drukarki? ✪ MMO News",
+    "desc": "Profesjonalny serwis i naprawa drukarek w Poznaniu. Specjalizujemy się w naprawach drukarek Brother, HP, Canon i Epson. Oferujemy szybką diagnostykę, konserwację oraz wymianę części w atrakcyjnych cenach.",
+    "h1": [
+     "H1: Serwis i naprawa drukarek ✪ Ile kosztuje naprawa drukarki?"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": []
+   },
+   {
+    "host": "serwisdrukarki.pl",
+    "url": "https://serwisdrukarki.pl/",
+    "title": "Lee-Can Serwis- drukarki, kopiarki, plotery -naprawa, sprzedaż",
+    "desc": "Serwis urządzeń biurowych, sprzedaż materiałów eksploatacyjnych, regeneracja, Tusze i tonery: Zamienne i oryginalne. Warszawa i okolice.",
+    "h1": [
+     "H1: LEE- CAN - serwis drukarek"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery"
+    ],
+    "city": []
+   },
+   {
+    "host": "weltronix.pl",
+    "url": "https://www.weltronix.pl/cennikhp.html",
+    "title": "Cennik HP Drukarki",
+    "desc": "",
+    "h1": [
+     "H1: Weltronix"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "",
+    "works": [
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "kopiaserwis.pl",
+    "url": "https://kopiaserwis.pl/cennik/",
+    "title": "Cennik – KOPIA",
+    "desc": "",
+    "h1": [
+     "H1: Bądźmy w kontakcie"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": []
+   },
+   {
+    "host": "markor.com.pl",
+    "url": "https://markor.com.pl/serwis-drukarek-markor/",
+    "title": "Serwis drukarek Canon Gdańsk, Gdynia - markor.com.pl",
+    "desc": "Markor to autoryzowany serwis drukarek Canon i nie tylko. Działamy na terenie Gdańska, Gdyni oraz całego województwa pomorskiego.",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "online.com.pl",
+    "url": "https://online.com.pl/serwis/drukarki/",
+    "title": "Naprawa drukarek serwis drukarek",
+    "desc": "Naprawy, konserwacja i przeglądy techniczne drukarek, urządzeń wielofunkcyjnych, ploterów",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "wbserwis.org",
+    "url": "https://www.wbserwis.org/",
+    "title": "Kserokopiarki Warszawa - Sprzedaż i serwis kopiarek, przegląd i naprawa drukarek, urządzeń biurowych | WB Serwis",
+    "desc": "Szukasz profesjonalnego serwisu urządzeń biurowych w Warszawie? Zapraszamy do WB Serwis! Oferujemy sprzedaż i serwis kopiarek, przegląd i naprawa drukarek, urządzeń biurowych, a także naprawy pogwarancyjne faksów",
+    "h1": [
+     "H1: Sprzedaż i serwis kserokopiarek oraz naprawy pogwarancyjne faksów"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/pl/i/Serwis-drukarek/22",
+    "title": "Serwis i naprawa drukarek Kraków i Małopolskie - Krakprint.pl",
+    "desc": "Prowadzimy stacjonarny serwis drukarek w Krakowie oraz świadczymy usługi serwisowe na terenie Krakowa oraz Małopolski. Mamy 20 letnie doświadczenie co pozwala nam świadczyć profesjonalne usługi na najwyższym poziomie. Zapraszamy do kontaktu!",
+    "h1": [],
+    "first": "Plotery",
+    "seoFirst": "Plotery",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Drukarki termiczne / etykiet"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-poznan.pl",
+    "url": "https://www.serwis-drukarek-poznan.pl/",
+    "title": "Naprawa i serwis drukarek Poznań | serwis-drukarek-poznan.pl",
+    "desc": "Profesjonalny serwis drukarek świadczy usługi na terenie Poznania oraz w niedalekich okolicach. Istnieje możliwość dojazdu na miejsce awarii. ",
+    "h1": [
+     "H1: Naprawa i serwis drukarek w Poznaniu"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "cartridgecentre.pl",
+    "url": "https://cartridgecentre.pl/serwis-drukarek/",
+    "title": "Serwis, szybka naprawa drukarek Gdańsk - Wrzeszcz - atramentowe, laserowe | Tonery i tusze do drukarek - sprzedaż, regeneracja, napełnianie Gdańsk - Wrzeszcz - Cartridge Centre KVADER",
+    "desc": "Diagnostyka, czyszczenie, naprawa – oferujemy kompleksowy serwis drukarek atramentowych oraz laserowych różnych producentów. Usługi świadczymy na terenie Gdańska.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/naprawa-drukarek.php",
+    "title": "Naprawa Drukarek",
+    "desc": "Naprawa usterek i wad w drukarkach laserowych i atramentowych. Wymiana tuszy, tonerów, taśm, folii. Znamy się na tej robocie zdobywając doświadczenie już ponad 10 lat.",
+    "h1": [
+     "H1: Naprawa Drukarek"
+    ],
+    "first": "Drukarki termiczne / etykiet",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-lublin.pl",
+    "url": "https://serwis-drukarek-lublin.pl/",
+    "title": "Serwis Drukarek Lublin - Naprawa Drukarek Lublin - Opinie 5.0",
+    "desc": "Naprawa Drukarek Lublin - Laserowe i Atramentowe \"Każda Marka\". ☑ Dojazd (0 zł) na Terenie Miasta ☆ Opinie 5.0 Google. ☎ 517 532 335",
+    "h1": [
+     "H1: Serwis Drukarek Lublin"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "doktortusz.pl",
+    "url": "https://www.doktortusz.pl/serwis-drukarek",
+    "title": "Pogwarancyjna naprawa drukarek. Białystok, tanio, sklep.",
+    "desc": "Serwis drukarek i urządzeń wielofunkcyjnych. Na wykonane naprawy udzielamy gwarancji. Stałym Klientom proponujemy atrakcyjne ceny.",
+    "h1": [
+     "H1: Serwis drukarek",
+     "H1: Serwis drukarek"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-kielce.pl",
+    "url": "http://serwis-drukarek-kielce.pl/",
+    "title": "SERWIS DRUKAREK KIELCE CHROMATIKA",
+    "desc": "",
+    "h1": [
+     "H1: Dlaczego powinieneś wybrać właśnie nas?",
+     "H1: Jak działamy?"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/",
+    "title": "Naprawa drukarek Częstochowa - naprawa drukarek Brother HP Epson Canon",
+    "desc": "Naprawa drukarek Częstochowa Północ. Autoryzowany serwis drukarek i urządzeń do biura. Przeglad, konserwacja, wymiana bębna, czyszczenie głowic.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek, naprawa laptopów",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "aristo.com.pl",
+    "url": "https://aristo.com.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Kraków, naprawa drukarek HP, Epson | Aristo-Com",
+    "desc": "Specjalistyczny serwis i naprawa drukarek w Krakowie. HP, Brother, Epson, Canon, OKI, Xerox i inne. Obsługujemy drukarki laserowe, atramentowe i igłowe.",
+    "h1": [
+     "H1: Naprawa drukarek w Krakowie – ponad 30 lat doświadczenia"
+    ],
+    "first": "Plotery",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Plotery",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "cartridgepoznan.pl",
+    "url": "https://cartridgepoznan.pl/serwis-drukarek/",
+    "title": "Serwis drukarek , naprawa, przeglądy i konserwacja drukarek Brother, Canon, HP - Cartridge Poznań",
+    "desc": "Serwis drukarek laserowych i atramentowych / kopiarek / Przeglądy konserwacja, czyszczenie usługi serwisowe urządzeń drukujących poznań",
+    "h1": [
+     "H1: Serwis drukarek w Poznaniu",
+     "H1: tel.602-302-798"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "ide.szczecin.pl",
+    "url": "https://ide.szczecin.pl/serwis",
+    "title": "Serwis drukarek Szczecin - naprawa Canon, Ricoh oraz Xerox",
+    "desc": "Profesjonalny serwis Canon, Ricoh, Xerox – wsparcie techniczne, konserwacja oraz naprawa usterek w drukarkach, kopiarkach oraz urządzeniach wielofunkcyjnych.",
+    "h1": [
+     "H1: Wsparcie techniczne"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/serwis-drukarek-rzeszow",
+    "title": "Serwis drukarek Rzeszów – naprawa i dojazd | DMD Tonery",
+    "desc": "Serwis drukarek w Rzeszowie z dojazdem do firmy lub domu. Diagnostyka i naprawa drukarek laserowych, atramentowych, MFP, igłowych oraz ploterów.",
+    "h1": [
+     "H1: Serwis drukarek w Rzeszowie"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Plotery",
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "kielceserwis.pl",
+    "url": "https://kielceserwis.pl/uslugi-informatyczne/naprawa-drukarki/",
+    "title": "Naprawa drukarek | DSP Systems",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "office-partner.pl",
+    "url": "https://office-partner.pl/serwis%20kserokopiarek.php",
+    "title": "Serwis kserokopiarek i drukarek — Opole Wrocław Katowice, reakcja 24h | OFFICE-PARTNER",
+    "desc": "Profesjonalny serwis i naprawa kserokopiarek i drukarek. Czas reakcji do 24h. Woj. opolskie, śląskie i dolnośląskie. Zadzwoń: 77 442 77 90.",
+    "h1": [
+     "H1: Profesjonalny serwis kserokopiarek, drukarek i faxów",
+     "H1: Przeglądy okresowe i konserwacje kserokopiarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwisdrukarekwarszawa.com.pl",
+    "url": "https://www.serwisdrukarekwarszawa.com.pl/",
+    "title": "AW PRINT – serwis drukarek | Podstawowe informacje – Warszawa",
+    "desc": "AW PRINT to warszawska firma zajmująca się m.in. serwisem drukarek. Zapraszamy do zapoznania się z podstawowymi informacjami na temat przedsiębiorstwa.",
+    "h1": [
+     "H1: Nasza oferta"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "wpc24.pl",
+    "url": "https://wpc24.pl/serwis-drukarek",
+    "title": "Naprawa, serwis drukarek i ploterów Kraków - HP, Brother, Canon, Epson - WPC24",
+    "desc": "Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych HP, Brother, Canon, Epson ✔ Serwis WPC24 Kraków i okolice ☎ 664 616 484",
+    "h1": [
+     "H1: Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych - Kraków"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Plotery",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "stan-mit.pl",
+    "url": "https://stan-mit.pl/serwis-drukarek/",
+    "title": "Serwis drukarek - Stan-mit",
+    "desc": "Profesjonalny serwis drukarek i kserokopiarek we Wrocławiu. Naprawa, konserwacja i wsparcie techniczne dla firm. Szybka reakcja!",
+    "h1": [
+     "H1: Serwis drukarek Wrocław"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "printhelp.pl",
+    "url": "https://printhelp.pl/",
+    "title": "Serwis drukarek i urządzeń drukujących w Katowicach - PrintHelp",
+    "desc": "Profesjonalny serwis drukarek w Katowicach. Szybko i sprawnie rozwiążemy wszystkie problemy z Twoją drukarką. Zapoznaj się z nasza ofertą!",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek i urządzeń drukujących"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "pro-serwis.pl",
+    "url": "https://pro-serwis.pl/",
+    "title": "Pro-Serwis.pl Bydgoszcz – Serwis kopiarek i drukarek. Sprzedaż i dzierżawa urządzeń drukujących oraz materiałów eksploatacyjnych.",
+    "desc": "",
+    "h1": [],
+    "first": "Konfiguracja / sieć / sterowniki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "drukarki.rzeszow.pl",
+    "url": "https://drukarki.rzeszow.pl/",
+    "title": "drukarki.rzeszow.pl - Serwis drukarek w Rzeszowie - prawdopodobnie najlepszy - naprawiamy już ponad 25 lat!",
+    "desc": "Serwis drukarek w Rzeszowie - prawdopodobnie najlepszy - naprawiamy już ponad 25 lat!",
+    "h1": [],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "naprawadrukarekczestochowa.pl",
+    "url": "https://naprawadrukarekczestochowa.pl/",
+    "title": "Strona główna - Naprawa drukarek Częstochowa",
+    "desc": "Twoja drukarka odmawia posłuszeństwa? Naprawimy ją w Częstochowie! Szybki serwis, profesjonalna diagnoza i drugie życie dla Twojego sprzętu. Nie pozwól, by",
+    "h1": [
+     "H1: Twoja drukarka odmawia posłuszeństwa? Naprawimy ją w Częstochowie!"
+    ],
+    "first": "Usuwanie zacięć papieru / podawanie",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "neoprint24.pl",
+    "url": "https://neoprint24.pl/index/",
+    "title": "Naprawa i serwis drukarek - Łódź - Bałuty | tel. 577 567 797",
+    "desc": "Profesjonalny serwis drukarek i urządzeń wielofunkcyjnych - HP, Samsung, Canon, Epson, Brother, Xerox, OKI, Kyocera, Dell, Ricoh i innych. Zapraszamy serdecznie",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek i urządzeń wielofunkcyjnych – neoprint24.pl"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "informatykdodomu.pl",
+    "url": "https://informatykdodomu.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Katowice - Serwis laptopów komputerów drukarek | Tusze Tonery | Informatykdodomu Ithelps Katowice",
+    "desc": "Serwis dojazdowy laptopów i komputerów w Katowicach, Chorzowie, Gliwicach, Rudzie Śląskiej, Dąbrowie Górniczej.",
+    "h1": [
+     "H1: Serwis drukarek Katowice"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "drukarkowyserwis.eu",
+    "url": "https://drukarkowyserwis.eu/",
+    "title": "serwis drukarek lublin | naprawa drukarek lublin | lokalnie",
+    "desc": "Serwis i naprawa drukarek w Lublinie – szybko, fachowo i lokalnie. Diagnoza na miejscu, wsparcie techniczne i części zamienne. Sprawdź naszą ofertę!",
+    "h1": [
+     "H1: serwis drukarek lublin oraz naprawa drukarek lublin, ekspertyza 0 zl",
+     "H1: Strona Główna"
+    ],
+    "first": "Dojazd / naprawa u klienta",
+    "seoFirst": "Dojazd / naprawa u klienta",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Dojazd / naprawa u klienta"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "kserfix.pl",
+    "url": "https://kserfix.pl/serwis-kserokopiarek/",
+    "title": "Serwis drukarek, kopiarek Canon, Xerox, Konica Minolta Białystok",
+    "desc": "Serwis i naprawa drukarek oraz kserokopiarek Konica Minolta, Xerox, Canon, Ricoh i innych. Firma Kserfix z Białegostoku działa na terenie województwa podlaskiego.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek – Podlaskie"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "biuromax-balcer.pl",
+    "url": "https://www.biuromax-balcer.pl/serwis-urzadzen-biurowych/",
+    "title": "Naprawa i serwis urządzeń biurowych - Bydgoszcz - Biuromax-Balcer",
+    "desc": "Profesjonalny serwis urządzeń biurowych jak drukarki, kserokopiarki i urządzenia wielofunkcyjne w Bydgoszczy. Naprawy, konserwacje, dojazd. Sprawdź ofertę!",
+    "h1": [
+     "H1: Serwis drukarek, urządzeń wielofunkcyjnych i kserokopiarek w Bydgoszczy – szybko i profesjonalnie"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "print-jet.pl",
+    "url": "http://www.print-jet.pl/serwis-drukarek-torun-c-2.html",
+    "title": "serwis drukarek Toruń, naprawa drukarek Toruń, naprawa drukarek, naprawa drukark",
+    "desc": "naprawa drukarek hp, naprawa drukarek epson, brother, naprawa drukarek canon, naprawa drukarek rubinkowo",
+    "h1": [
+     "H1: SERWIS DRUKAREK TORUŃ"
+    ],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "top-serwis.pl",
+    "url": "https://top-serwis.pl/serwis-drukarek-kielce",
+    "title": "Serwis drukarek Kielce",
+    "desc": "Serwis drukarek Kielce",
+    "h1": [],
+    "first": "Naprawa drukarek laserowych",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "jksupport.pl",
+    "url": "https://jksupport.pl/serwis-drukarek-i-kserokopiarek.html",
+    "title": "Serwis, konserwacja i naprawa kserokopiarek i drukarek Opole - JK Support",
+    "desc": "Potrzebujesz serwisu komputerów w Opolu? Oferujemy diagnozę, naprawę i konserwację sprzętu. Zaufaj naszemu doświadczeniu i skorzystaj z naszych usług!",
+    "h1": [
+     "H1: Serwis i naprawa drukarek i kserokopiarek w Opolu"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Naprawa płyty głównej / elektroniki",
+     "Dojazd / naprawa u klienta",
+     "Konfiguracja / sieć / sterowniki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwis-komputerow.olsztyn.pl",
+    "url": "http://serwis-komputerow.olsztyn.pl/oferta/serwis-naprawa-drukarek-olsztyn.html",
+    "title": "Serwis, naprawa drukarek Olsztyn - Exsoft",
+    "desc": "➨Serwis, naprawa drukarek Olsztyn - 10 lat doświadczenia na rynku! Naprawiamy drukarki takich producentów jak: ✔HP, ✔Brother, ✔OKI, ✔Samsung, ✔Konica Minolta, ✔Samsung, ✔Canon - Darmowa wycena usterki w 24h! Sprawdź ✆695-346-554, ✉ kontakt@serwis-komputerow.olsztyn.pl - czynne codziennie 24h. Zapraszamy!",
+    "h1": [
+     "H1: Serwis, naprawa drukarek Olsztyn"
+    ],
+    "first": "Naprawa drukarek atramentowych",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "arcan.pl",
+    "url": "https://arcan.pl/serwis/serwis-drukarek/",
+    "title": "Serwis i naprawa drukarek Poznań - Arcan s.c.",
+    "desc": "Potrzebna nagła naprawa drukarek? Arcan s.c. oferuje serwis drukarek tuszowych oraz laserowych, a także igłowych i do etykiet. Hp, Epson, Canon, czy Brother itp. Poznań i okolice.",
+    "h1": [
+     "H1: Serwis drukarek - ArCan Poznań"
+    ],
+    "first": "Drukarki termiczne / etykiet",
+    "seoFirst": "Naprawa drukarek laserowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Usuwanie zacięć papieru / podawanie",
+     "Dojazd / naprawa u klienta",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Drukarki termiczne / etykiet"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "abcdigital.pl",
+    "url": "https://www.abcdigital.pl/serwis-lub-pomoc-techniczna",
+    "title": "Serwis i naprawa drukarek, kopiarek i niszczarek | Szczecin",
+    "desc": "Prowadzimy serwis urządzeń wielofunkcyjnych, kopiarek, niszczarek, drukarek laserowych i kserokopiarek w Szczecinie. Wykonujemy naprawy urządzeń poleasingowych.\r\n",
+    "h1": [
+     "H1: Serwis urządzeń wielofunkcyjnych"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "kopiarkibialystok.pl",
+    "url": "https://www.kopiarkibialystok.pl/",
+    "title": "Serwis, naprawa, sprzedaż, wynajem kserokopiarek, drukarek",
+    "desc": "Serwis, naprawa, sprzedaż, wynajem, dzierżawa kserokopiarek, drukarek oraz urządzeń wielofunkcyjnych. Białystok, Warszawa, Gdańsk i okolice.",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "eurobiurotorun.pl",
+    "url": "https://www.eurobiurotorun.pl/serwis.html",
+    "title": "Euro Biuro Toruń - Serwis kserokopiarek, serwis sprzętu biurowego, naprawa drukarek, naprawa ploterów, naprawa niszczarek",
+    "desc": "Oferujemy najlepszy w Toruniu serwis kserokopiarek, drukarek laserowych i atramentowych, telefonów i faksów w bardzo atrakcyjnych cenach.",
+    "h1": [
+     "H1: Serwis Euro Biuro"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Czyszczenie / konserwacja drukarki",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "maxkolor.pl",
+    "url": "https://maxkolor.pl/naprawa-serwis-drukarek-kserokopiarek/",
+    "title": "Naprawa, serwis drukarek i kserokopiarek Rzeszów",
+    "desc": "Naprawa oraz serwis drukarek, kserokopiarek i innych urządzeń drukujących. Potrzebujesz błyskawicznej naprawy w Rzeszowie? Wejdź i skontaktuj się z nami!",
+    "h1": [
+     "H1: Oferta"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Wymiana / czyszczenie głowicy",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "naszadrukarka.pl",
+    "url": "https://naszadrukarka.pl/c/317/serwis.html",
+    "title": "Serwis drukarek Kraków",
+    "desc": "Serwis drukarek atramentowych oraz drukarek laserowych.",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Drukarki termiczne / etykiet",
+    "seoFirst": "Naprawa drukarek atramentowych",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy",
+     "Usuwanie zacięć papieru / podawanie",
+     "Drukarki termiczne / etykiet"
+    ],
+    "seoWorks": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "fabrykadrukarek.pl",
+    "url": "http://www.fabrykadrukarek.pl/",
+    "title": "Strona główna - serwis drukarek i urządzeń drukujących",
+    "desc": "Serwisujemy i naprawiamy drukarki i urządzenia drukujące w Poznaniu i na terenie wielkopolski. Obsługujemy firmy i osoby prywatne",
+    "h1": [
+     "H1: Serwis drukarek i urządzeń drukujących",
+     "H1: Naprawa drukarek i urządzeń drukujących"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Plotery",
+     "Dojazd / naprawa u klienta"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "allebiuro.pl",
+    "url": "https://allebiuro.pl/info/serwis-i-naprawa-drukarek",
+    "title": "Serwis i naprawa drukarek Łódź - Allebiuro",
+    "desc": "Profesjonalny serwis i naprawa drukarek  w Łodzi ul. Św. Teresy 100",
+    "h1": [
+     "H1: Serwis i Naprawa drukarek Łódź"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa drukarek laserowych",
+     "Naprawa drukarek atramentowych",
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Wymiana / czyszczenie głowicy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "ksero-contakt.pl",
+    "url": "https://www.ksero-contakt.pl/uslugi/serwis",
+    "title": "Serwis kserokopiarek i naprawa drukarek - Szczecin",
+    "desc": "Serwis Ksero Contakt w Szczecinie zapewnia naprawę drukarek i kserokopiarek, m.in. urządzeń firm Ricoh i Nashuatec. Sprawdź, co możemy Ci zaoferować.",
+    "h1": [
+     "H1: Serwis drukarek w Szczecinie"
+    ],
+    "first": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "seoFirst": "Urządzenia wielofunkcyjne / kserokopiarki",
+    "works": [
+     "Urządzenia wielofunkcyjne / kserokopiarki",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie zacięć papieru / podawanie"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne / kserokopiarki"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Czyszczenie / konserwacja drukarki": {
+    "было": 21,
+    "стало": 18,
+    "исключено": [
+     "konserwacja drukarki 3d",
+     "konserwacja drukarki jaki paragraf",
+     "konserwacja drukarki bambu lab p1s"
+    ]
+   },
+   "общие подсказки: Urządzenia wielofunkcyjne / kserokopiarki": {
+    "было": 6,
+    "стало": 3,
+    "исключено": [
+     "naprawa oraz serwis drukarek i kserokopiarek dormex opinie",
+     "as mar naprawa drukarek i kserokopiarek opinie",
+     "serwis drukarek i kserokopiarek mfp service opinie"
+    ]
+   },
+   "общие подсказки: Konfiguracja / sieć / sterowniki": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "drukarka nie łączy się z wifi"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Urządzenia wielofunkcyjne / kserokopiarki",
+   "comp": {
+    "mention": 62,
+    "first": 30,
+    "seoFirst": 20,
+    "seo": 33,
+    "head": 23,
+    "td": 28
+   },
+   "ac": 3,
+   "probe": {
+    "n": 12,
+    "cena": 0,
+    "ex": [
+     "naprawa kserokopiarek",
+     "naprawa kserokopiarek płock",
+     "naprawa kserokopiarek warszawa",
+     "naprawa kserokopiarek lublin",
+     "naprawa kserokopiarek szczecin"
+    ]
+   },
+   "ads": {
+    "impr": 367,
+    "clicks": 37,
+    "conv": 4,
+    "n": 22,
+    "top": [
+     "serwis kserokopiarek wrocław",
+     "serwis kserokopiarek",
+     "naprawa kserokopiarek",
+     "kserokopiarka"
+    ]
+   },
+   "xl": {
+    "n": 28,
+    "kp": 850,
+    "ex": [
+     "serwis kserokopiarek",
+     "dzierżawa kserokopiarek wrocław",
+     "wynajem kserokopiarek wrocław"
+    ]
+   }
+  },
+  {
+   "work": "Czyszczenie / konserwacja drukarki",
+   "comp": {
+    "mention": 57,
+    "first": 11,
+    "seoFirst": 14,
+    "seo": 24,
+    "head": 16,
+    "td": 16
+   },
+   "ac": 0,
+   "probe": {
+    "n": 18,
+    "cena": 0,
+    "ex": [
+     "czyszczenie drukarki epson",
+     "czyszczenie drukarki brother",
+     "czyszczenie drukarki",
+     "czyszczenie drukarki canon",
+     "czyszczenie drukarki epson l3250"
+    ]
+   },
+   "ads": {
+    "impr": 1518,
+    "clicks": 42,
+    "conv": 1,
+    "n": 260,
+    "top": [
+     "czyszczenie drukarki brother",
+     "czyszczenie drukarki epson",
+     "czyszczenie głowicy epson",
+     "epson czyszczenie głowicy"
+    ]
+   },
+   "xl": {
+    "n": 22,
+    "kp": 800,
+    "ex": [
+     "czyszczenie drukarek",
+     "czyszczenie drukarek wrocław",
+     "konserwacja drukarek"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa drukarek laserowych",
+   "comp": {
+    "mention": 50,
+    "first": 9,
+    "seoFirst": 9,
+    "seo": 25,
+    "head": 11,
+    "td": 16
+   },
+   "ac": 3,
+   "probe": null,
+   "ads": {
+    "impr": 112,
+    "clicks": 13,
+    "conv": 2,
+    "n": 24,
+    "top": [
+     "serwis drukarek laserowych hp",
+     "naprawa drukarek laserowych",
+     "serwis drukarek laserowych",
+     "czyszczenie drukarek laserowych"
+    ]
+   },
+   "xl": {
+    "n": 8,
+    "kp": 300,
+    "ex": [
+     "serwis drukarek laserowych",
+     "serwis drukarek laserowych hp",
+     "czyszczenie drukarek laserowych"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa drukarek atramentowych",
+   "comp": {
+    "mention": 45,
+    "first": 8,
+    "seoFirst": 7,
+    "seo": 19,
+    "head": 10,
+    "td": 12
+   },
+   "ac": 13,
+   "probe": null,
+   "ads": {
+    "impr": 74,
+    "clicks": 10,
+    "conv": 0,
+    "n": 7,
+    "top": [
+     "naprawa drukarek atramentowych",
+     "serwis drukarek atramentowych",
+     "czyszczenie drukarek atramentowych",
+     "czyszczenie drukarki atramentowej"
+    ]
+   },
+   "xl": {
+    "n": 5,
+    "kp": 250,
+    "ex": [
+     "serwis drukarek atramentowych",
+     "czyszczenie drukarek atramentowych",
+     "konserwacja drukarek atramentowych"
+    ]
+   }
+  },
+  {
+   "work": "Dojazd / naprawa u klienta",
+   "comp": {
+    "mention": 40,
+    "first": 7,
+    "seoFirst": 10,
+    "seo": 14,
+    "head": 9,
+    "td": 9
+   },
+   "ac": 1,
+   "probe": {
+    "n": 4,
+    "cena": 0,
+    "ex": [
+     "naprawa drukarek z dojazdem",
+     "naprawa drukarek poznań z dojazdem",
+     "serwis drukarek z dojazdem",
+     "serwis drukarek kraków z dojazdem"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana / czyszczenie głowicy",
+   "comp": {
+    "mention": 30,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 2,
+    "td": 3
+   },
+   "ac": 2,
+   "probe": {
+    "n": 11,
+    "cena": 0,
+    "ex": [
+     "czyszczenie głowicy drukarki",
+     "czyszczenie głowicy drukarki canon pixma",
+     "czyszczenie głowicy drukarki epson",
+     "czyszczenie głowicy drukarki hp",
+     "czyszczenie głowicy drukarki canon"
+    ]
+   },
+   "ads": {
+    "impr": 834,
+    "clicks": 17,
+    "conv": 0,
+    "n": 149,
+    "top": [
+     "czyszczenie głowicy epson",
+     "epson czyszczenie głowicy",
+     "epson l3250 czyszczenie głowicy",
+     "epson l3150 czyszczenie głowicy"
+    ]
+   },
+   "xl": {
+    "n": 8,
+    "kp": 100,
+    "ex": [
+     "naprawa głowicy drukarki brother",
+     "naprawa głowicy drukującej hp",
+     "udrażnianie głowic hp"
+    ]
+   }
+  },
+  {
+   "work": "Usuwanie zacięć papieru / podawanie",
+   "comp": {
+    "mention": 29,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 18,
+    "cena": 0,
+    "ex": [
+     "drukarka nie pobiera papieru",
+     "drukarka nie pobiera papieru canon",
+     "drukarka nie pobiera papieru hp deskjet",
+     "drukarka nie pobiera papieru brother",
+     "drukarka nie pobiera papieru epson"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "zacięcie papieru w drukarce brother",
+     "drukarka brother zacięcie papieru"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Konfiguracja / sieć / sterowniki",
+   "comp": {
+    "mention": 26,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 8,
+    "head": 8,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Plotery",
+   "comp": {
+    "mention": 24,
+    "first": 2,
+    "seoFirst": 2,
+    "seo": 8,
+    "head": 3,
+    "td": 6
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": {
+    "impr": 189,
+    "clicks": 30,
+    "conv": 3,
+    "n": 23,
+    "top": [
+     "serwis ploterów",
+     "serwis ploterów hp wrocław",
+     "serwis ploterów wrocław",
+     "naprawa ploterów"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Naprawa / regeneracja fusera (utrwalacza)",
+   "comp": {
+    "mention": 18,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 7,
+    "cena": 0,
+    "ex": [
+     "naprawa fusera",
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "hp m454 fuser replacement",
+     "fuser brother"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / elektroniki",
+   "comp": {
+    "mention": 17,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Drukarki termiczne / etykiet",
+   "comp": {
+    "mention": 14,
+    "first": 5,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 3,
+   "probe": null,
+   "ads": {
+    "impr": 61,
+    "clicks": 1,
+    "conv": 0,
+    "n": 3,
+    "top": [
+     "serwis drukarek etykiet",
+     "drukarka zebra nie drukuje etykiet",
+     "drukarka dymo nie drukuje etykiet"
+    ]
+   },
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Laserowe",
+   "a": "Naprawa drukarek laserowych",
+   "why": "50 конкурентов, KP ≈300, Ads 112/13/2",
+   "evidence": "конкуренты 50 из 76 (первой работой — 9, в Title/Description — 16) · Ads 112 показов / 13 кликов / 2 конв. · SEO-файл 8 фраз, KP ≈300"
+  },
+  {
+   "w": "Atramentowe",
+   "a": "Naprawa drukarek atramentowych",
+   "why": "45 конкурентов, KP ≈250, 13 подсказок",
+   "evidence": "конкуренты 45 из 76 (первой работой — 8, в Title/Description — 12) · Ads 74 показов / 10 кликов / 0 конв. · SEO-файл 5 фраз, KP ≈250"
+  },
+  {
+   "w": "Etykiet",
+   "a": "Drukarki termiczne / etykiet",
+   "why": "Zebra/этикетки ≈2959 показов Ads — второй по спросу тип у Omobonus",
+   "evidence": "конкуренты 14 из 76 (первой работой — 5, в Title/Description — 1) · Ads 61 показов / 1 кликов / 0 конв."
+  },
+  {
+   "w": "Plotery",
+   "a": "Plotery",
+   "why": "Ads 189 показов, 30 кликов, 3 конверсии",
+   "evidence": "конкуренты 24 из 76 (первой работой — 2, в Title/Description — 6) · Ads 189 показов / 30 кликов / 3 конв."
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Czyszczenie / konserwacja",
+   "a": "Czyszczenie / konserwacja drukarki",
+   "why": "Ads 1518 показов, но в основном «сделай сам» по моделям (мало кликов); на общей странице важнее типы техники",
+   "evidence": "конкуренты 57 из 76 (первой работой — 11, в Title/Description — 16) · подсказки Google 18 (напр. «czyszczenie drukarki epson», «czyszczenie drukarki brother») · Ads 1518 показов / 42 кликов / 1 конв. · SEO-файл 22 фраз, KP ≈800"
+  },
+  {
+   "w": "Dojazd do klienta",
+   "a": "Dojazd / naprawa u klienta",
+   "why": "есть у 40 конкурентов, но для всех типов не подтверждён в прайсе",
+   "evidence": "конкуренты 40 из 76 (первой работой — 7, в Title/Description — 9) · подсказки Google 4 (напр. «naprawa drukarek z dojazdem», «naprawa drukarek poznań z dojazdem»)"
+  },
+  {
+   "w": "Igłowe",
+   "why": "почти нет поиска; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Общая страница: вместо работ — типы техники (так задано в ТЗ); МФУ/копиры уже в названии «drukarek i kserokopiarek» (62 конкурента, Ads 367/37/4)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 148
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, етикеток, плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 141
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, этикеток, плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 140
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

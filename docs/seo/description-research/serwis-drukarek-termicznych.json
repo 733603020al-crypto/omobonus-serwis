@@ -1,0 +1,2206 @@
+{
+ "page": "/uslugi/serwis-drukarek-termicznych",
+ "name": "Принтеры этикеток",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "naprawa drukarek termicznych",
+    "serwis drukarek etykiet",
+    "serwis drukarek termotransferowych",
+    "serwis drukarek zebra",
+    "serwis drukarek etykiet cennik",
+    "serwis drukarek etykiet Warszawa",
+    "serwis drukarek etykiet Kraków",
+    "serwis drukarek etykiet Wrocław",
+    "serwis drukarek etykiet Poznań",
+    "serwis drukarek etykiet Gdańsk",
+    "serwis drukarek etykiet Szczecin",
+    "serwis drukarek etykiet Łódź",
+    "serwis drukarek etykiet Katowice",
+    "serwis drukarek etykiet Lublin",
+    "serwis drukarek etykiet Bydgoszcz",
+    "serwis drukarek etykiet Białystok",
+    "serwis drukarek etykiet Rzeszów",
+    "serwis drukarek etykiet Toruń",
+    "serwis drukarek etykiet Kielce",
+    "serwis drukarek etykiet Opole",
+    "serwis drukarek etykiet Olsztyn",
+    "serwis drukarek etykiet Gdynia",
+    "serwis drukarek etykiet Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "serwis drukarek etykiet ",
+    "naprawa drukarki zebra ",
+    "drukarka etykiet ",
+    "drukarka termiczna ",
+    "zebra ",
+    "serwis drukarek zebra "
+   ],
+   "uniqueSuggestions": 246,
+   "withPrice": [
+    "drukarka etykiet cena"
+   ],
+   "wroclaw": [
+    "serwis drukarek zebra wrocław",
+    "drukarka etykiet wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Wymiana głowicy drukującej": {
+    "seeds": [
+     "wymiana głowicy zebra",
+     "głowica drukarki etykiet",
+     "głowica zebra"
+    ],
+    "n": 13,
+    "nRaw": 13,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana głowicy zebra zt410",
+     "wymiana głowicy zebra gk420t",
+     "wymiana głowicy w drukarce zebra",
+     "głowica zebra zd421",
+     "głowica zebra zt411",
+     "głowica zebra gk420d",
+     "głowica zebra zt410",
+     "głowica zebra zt230",
+     "głowica zebra zd420",
+     "głowica zebra"
+    ],
+    "all": [
+     "wymiana głowicy zebra zt410",
+     "wymiana głowicy zebra gk420t",
+     "wymiana głowicy w drukarce zebra",
+     "głowica zebra zd421",
+     "głowica zebra zt411",
+     "głowica zebra gk420d",
+     "głowica zebra zt410",
+     "głowica zebra zt230",
+     "głowica zebra zd420",
+     "głowica zebra",
+     "głowica zebra zm400",
+     "głowica zebra gk420t",
+     "głowica zebra zt420"
+    ],
+    "dropped": []
+   },
+   "Wymiana wałka dociskowego": {
+    "seeds": [
+     "wałek zebra",
+     "wymiana wałka zebra",
+     "platen roller zebra"
+    ],
+    "n": 14,
+    "nRaw": 14,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wałek zebra",
+     "wałek zebra zt410",
+     "poduszka walek zebra",
+     "wałek do drukarki zebra",
+     "platen roller zebra",
+     "platen roller zebra zt230",
+     "platen roller zebra zt411",
+     "platen roller zebra zt410",
+     "platen roller zebra printer",
+     "platen roller zebra zt231"
+    ],
+    "all": [
+     "wałek zebra",
+     "wałek zebra zt410",
+     "poduszka walek zebra",
+     "wałek do drukarki zebra",
+     "platen roller zebra",
+     "platen roller zebra zt230",
+     "platen roller zebra zt411",
+     "platen roller zebra zt410",
+     "platen roller zebra printer",
+     "platen roller zebra zt231",
+     "platen roller zebra zd421",
+     "platen roller zebra zt610",
+     "platen roller zebra zt421",
+     "platen roller zebra zm400"
+    ],
+    "dropped": []
+   },
+   "Kalibracja czujników / mediów": {
+    "seeds": [
+     "kalibracja zebra",
+     "kalibracja drukarki zebra",
+     "kalibracja drukarki etykiet"
+    ],
+    "n": 20,
+    "nRaw": 20,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "kalibracja zebra zd421",
+     "kalibracja zebra zd420",
+     "kalibracja zebra gk420d",
+     "kalibracja zebra",
+     "kalibracja zebra gk420t",
+     "kalibracja zebra zd410",
+     "kalibracja zebra zd220",
+     "kalibracja zebra zt220",
+     "kalibracja zebra zt230",
+     "kalibracja zebra zt411"
+    ],
+    "all": [
+     "kalibracja zebra zd421",
+     "kalibracja zebra zd420",
+     "kalibracja zebra gk420d",
+     "kalibracja zebra",
+     "kalibracja zebra gk420t",
+     "kalibracja zebra zd410",
+     "kalibracja zebra zd220",
+     "kalibracja zebra zt220",
+     "kalibracja zebra zt230",
+     "kalibracja zebra zt411",
+     "kalibracja drukarki zebra",
+     "kalibracja drukarki zebra zd421",
+     "kalibracja drukarki zebra zd420",
+     "kalibracja drukarki zebra gk420t",
+     "kalibracja drukarki zebra zd220",
+     "kalibracja drukarki zebra zt411",
+     "kalibracja drukarki zebra zt230",
+     "kalibracja drukarki zebra gk420d",
+     "kalibracja drukarki zebra zd410",
+     "kalibracja drukarki etykiet"
+    ],
+    "dropped": []
+   },
+   "Naprawa mechanizmu ribbonu (taśmy barwiącej)": {
+    "seeds": [
+     "zebra ribbon",
+     "zebra ribbon out"
+    ],
+    "n": 16,
+    "nRaw": 19,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "zebra ribbon",
+     "zebra ribbon out error",
+     "zebra ribbons",
+     "zebra ribbon printer",
+     "zebra ribbon out",
+     "zebra ribbon in error",
+     "zebra ribbon 5095",
+     "zebra ribbon sensor",
+     "zebra ribbon out error zt411",
+     "zebra ribbon out error zt610"
+    ],
+    "all": [
+     "zebra ribbon",
+     "zebra ribbon out error",
+     "zebra ribbons",
+     "zebra ribbon printer",
+     "zebra ribbon out",
+     "zebra ribbon in error",
+     "zebra ribbon 5095",
+     "zebra ribbon sensor",
+     "zebra ribbon out error zt411",
+     "zebra ribbon out error zt610",
+     "zebra ribbon out error zt231",
+     "zebra ribbon out error zt510",
+     "zebra ribbon out zt411",
+     "zebra ribbon out error zt230",
+     "zebra zt410 ribbon out",
+     "zebra zt421 ribbon out error"
+    ],
+    "dropped": [
+     [
+      "zebra ribbon meaning",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zebra ribbon cartridge",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zebra ribbon installation",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Czyszczenie / konserwacja": {
+    "seeds": [
+     "czyszczenie głowicy zebra",
+     "konserwacja drukarki zebra"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie głowicy zebra"
+    ],
+    "all": [
+     "czyszczenie głowicy zebra"
+    ],
+    "dropped": []
+   },
+   "Konfiguracja / sterowniki / sieć": {
+    "seeds": [
+     "zebra sterownik",
+     "konfiguracja drukarki zebra"
+    ],
+    "n": 19,
+    "nRaw": 19,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "zebra sterowniki",
+     "zebra sterowniki zd421",
+     "zebra sterowniki zd220",
+     "zebra sterowniki gk420d",
+     "zebra sterowniki gk420t",
+     "zebra sterowniki zd420",
+     "zebra sterowniki zd230",
+     "sterownik zebra zd421",
+     "sterownik zebra gk420t",
+     "sterownik zebra zd220"
+    ],
+    "all": [
+     "zebra sterowniki",
+     "zebra sterowniki zd421",
+     "zebra sterowniki zd220",
+     "zebra sterowniki gk420d",
+     "zebra sterowniki gk420t",
+     "zebra sterowniki zd420",
+     "zebra sterowniki zd230",
+     "sterownik zebra zd421",
+     "sterownik zebra gk420t",
+     "sterownik zebra zd220",
+     "zebra sterownik",
+     "sterownik zebra gk420d",
+     "sterownik zebra zd230",
+     "sterownik zebra zd420",
+     "sterownik zebra zc300",
+     "sterownik zebra lp2844",
+     "sterownik zebra zt411",
+     "konfiguracja drukarki zebra zd421",
+     "konfiguracja drukarki zebra"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 39,
+   "impressions": 2959,
+   "clicks": 138,
+   "conversions": 15,
+   "top": [
+    {
+     "term": "serwis drukarek zebra",
+     "impr": 1105,
+     "clicks": 52,
+     "conv": 8,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "zebra serwis",
+     "impr": 737,
+     "clicks": 21,
+     "conv": 2,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis zebra",
+     "impr": 603,
+     "clicks": 22,
+     "conv": 2,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "drukarki zebra serwis",
+     "impr": 117,
+     "clicks": 6,
+     "conv": 1,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek zebra wrocław",
+     "impr": 58,
+     "clicks": 12,
+     "conv": 2,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek dymo",
+     "impr": 32,
+     "clicks": 10,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "drukarka zebra serwis",
+     "impr": 26,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek etykiet",
+     "impr": 24,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "drukarka zebra nie drukuje etykiet",
+     "impr": 24,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis zebra drukarki czytniki terminale",
+     "impr": 24,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "zebra drukarki serwis",
+     "impr": 22,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "zebra repair",
+     "impr": 22,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek termotransferowych",
+     "impr": 20,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "serwis dymo",
+     "impr": 14,
+     "clicks": 6,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    },
+    {
+     "term": "zebra pomoc techniczna",
+     "impr": 13,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Termiczno-Etykietowe Wrocław"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "drukarka zebra serwis",
+     "avg": 50,
+     "comp": "Средний"
+    },
+    {
+     "s": "naprawa drukarek zebra",
+     "avg": 50,
+     "comp": "Средний"
+    }
+   ],
+   "phrases": 39
+  }
+ },
+ "competitors": {
+  "relevant": 65,
+  "checked": 170,
+  "candidates": 182,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "serwis-zebry.pl",
+    "url": "https://www.serwis-zebry.pl/",
+    "title": "Serwis Zebra – Autoryzowany Serwis Drukarek i Terminali",
+    "desc": "Autoryzowany serwis Zebra z diagnostyką AI 24/7. Wycena w 2 minuty, kurier 24h, panel klienta. Drukarki, terminale, skanery. 25 lat doświadczenia.",
+    "h1": [
+     "H1: Autoryzowany Serwis Zebra"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Szczecin",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "serwis-zebra.pl",
+    "url": "https://serwis-zebra.pl/",
+    "title": "Serwis i naprawa drukarek Zebra | Wrocław i cała Polska",
+    "desc": "Błyskawiczna wycena kosztów naprawy drukarek etykiet. Fachowy serwis Zebra, szybkie naprawy i atrakcyjne ceny. Oficjalny dystrybutor marki Zebra w Polsce.",
+    "h1": [
+     "H1: Serwis Zebra: drukarki, skanery..."
+    ],
+    "first": "Kalibracja czujników / mediów",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Poznań",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "labelstore.pl",
+    "url": "https://labelstore.pl/produkt/serwis-urzadzen-do-etykiet/",
+    "title": "Serwis urządzeń do druku etykiet - Labelstore",
+    "desc": "Serwis drukarek do etykiet (CITIZEN, ZEBRA, TSC, Toshiba, Novexx, Avery Dennison, CAB, Intermec, Honeywell, Sato…) i urządzeń etykietujących (Print&Apply)",
+    "h1": [
+     "H1: Serwis urządzeń do druku etykiet"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Warszawa",
+     "Katowice",
+     "Białystok",
+     "Opole"
+    ]
+   },
+   {
+    "host": "zebra-serwis.pl",
+    "url": "https://zebra-serwis.pl/",
+    "title": "Zebra Serwis - Serwis drukarek i terminali Zebra",
+    "desc": "Zebra Serwis - Naprawy pogwarancyjne dla produktów ZEBRA Technologies. Autoryzowany serwis, wsparcie pogwarancyjne, pomoc techniczna.",
+    "h1": [
+     "H1: Serwis drukarek i terminali Zebra"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "takma.com.pl",
+    "url": "https://www.takma.com.pl/serwis",
+    "title": "Serwis Zebra, Honeywell, Datalogic — drukarki, terminale | TAKMA",
+    "desc": "Serwis pogwarancyjny urządzeń AutoID — Wrocław. Diagnostyka 48h GRATIS, autoryzowany serwis Zebra. Drukarki, terminale, skanery Zebra, Honeywell, Datalogic, M3.",
+    "h1": [
+     "H1: Serwis i naprawa drukarek etykiet, terminali i skanerów"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "weilandt-elektronik.pl",
+    "url": "https://weilandt-elektronik.pl/serwis-drukarek-etykiet/",
+    "title": "Serwis drukarek etykiet - Weilandt Elektronik - sprzedaż i serwis Auto ID",
+    "desc": "Serwis drukarek etykiet (drukarki termiczne) Zebra, Honeywell, Urovo i innych. Sprzedaż, naprawa, kontrakty. Konkurencyjne ceny.",
+    "h1": [
+     "H1: Serwis drukarek etykiet"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Katowice",
+     "Białystok",
+     "Toruń",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "zarten.pl",
+    "url": "https://www.zarten.pl/kategoria-produktu/serwis/",
+    "title": "Serwis drukarek etykiet, aplikatorów, konserwacja - ZARTEN",
+    "desc": "",
+    "h1": [],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa",
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "hant.pl",
+    "url": "https://www.hant.pl/uslugi-serwisu-drukarek-etykiet-tsc.html",
+    "title": "HANT-serwis-drukarek etykiet i kod�w TSC-naprawy, przegl�dy, konserwacje",
+    "desc": "Serwis drukarek etykiet i kod�w kreskowych TSC. Naprawa i konfiguracja drukarek etykiet i kod�w TSC. Naprawa i konfiguracja drukarek termicznych i termotransferowych TSC w siedzibie HANT i w miejscu instalacji ",
+    "h1": [
+     "H1: Us�ugi serwisu drukarek etykiet firmy TSC"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "promarklight.pl",
+    "url": "https://www.promarklight.pl/serwis.php",
+    "title": "Serwis etykieciarek i urządzeń drukująco-etykietujących - Promark Light",
+    "desc": "Oferujemy serwis etykieciarek i drukarek etykiet. Naprawiamy urządzenia marek TSC i Zebra. Zadzwoń do nas już teraz i sprawdź szczegóły współpracy!",
+    "h1": [
+     "H1: Serwis drukarek etykiet"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Katowice",
+     "Białystok",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "codeon.net.pl",
+    "url": "https://www.codeon.net.pl/naprawa-serwis/naprawa-drukarek-etykiet/naprawa-drukarek-etykiet-gprinter",
+    "title": "Centrum serwisowy do naprawy drukarek kodów kreskowych G-printer. Części, gwarancją, skup i wynajem drukarek etykiet.",
+    "desc": "Autoryzowany centrum serwisowy do naprawy drukarek kodów kreskowych G-printer✔️naprawy drukarek etykiet Zebra, Godex✔️Niskie ceny napraw pogwarancyjnych✔️Części zamienne, gwarancją, skup i wynajem drukarek etykiet.",
+    "h1": [
+     "H1: Naprawa drukarek etykiet G-printer"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Łódź",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "labelsoft.pl",
+    "url": "https://labelsoft.pl/serwis/",
+    "title": "Serwis | Firma LABELSOFT",
+    "desc": "Serwis - Firma LABELSOFT - drukarki firmy Zebra, serwis sprzętu, druk etykiet niestandardowych - Tel. 606292393​ ul. Peonii 20/8 Warszawa",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Naprawa obcinaka / odklejaka",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Naprawa obcinaka / odklejaka",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "mmrserwis.eu",
+    "url": "https://mmrserwis.eu/",
+    "title": "MMR Serwis. Drukarki etykiet i kodów. Skaner kodów kreskowych",
+    "desc": "MMR Serwis - serwis i sprzedaż drukarek i czytników. Drukarki etykiet i termicznych wszystkich marek, drukarki kodów kreskowych, skaner kodów kreskowych i inne.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "jurshen.pl",
+    "url": "https://jurshen.pl/gdansk/",
+    "title": "Drukarki przemysłowe i etykieciarki w Gdańsku",
+    "desc": "Sprzedaż, serwis i instalacja drukarek przemysłowych oraz etykieciarek w Gdańsku. CIJ, TIJ, lasery i nowoczesne systemy znakowania produktów.",
+    "h1": [
+     "H1: Drukarki przemysłowe i etykieciarki – sprzedaż, serwis i instalacja w Gdańsku"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Szczecin",
+     "Lublin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "rand.pl",
+    "url": "https://rand.pl/",
+    "title": "RAND – Kserokopiarki, Plotery, Drukarki – Najem i serwis",
+    "desc": "Kopiarki, drukarki sprzedaż i wynejem - CANON, HP, BROTHER, XEROX, LEXMARK, RICOH",
+    "h1": [
+     "H1: Nasza oferta",
+     "H1: Oferta sprzętu biurowego – kserokopiarki, drukarki i plotery – najem oraz sprzedaż"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Kraków",
+     "Poznań",
+     "Szczecin",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "biuromax-balcer.pl",
+    "url": "https://www.biuromax-balcer.pl/serwis-drukarek-etykiet/",
+    "title": "Serwis drukarek etykiet - naprawa i konserwacja - Biuromax-Balcer",
+    "desc": "Profesjonalny serwis drukarek etykiet. Eliminujemy przestoje, naprawiamy modele Zebra, TSC i Honeywell. Szybka diagnoza i sprzęt zastępczy. Sprawdź ofertę!",
+    "h1": [
+     "H1: Serwis drukarek etykiet"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Poznań",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "etisoft.wroc.pl",
+    "url": "https://www.etisoft.wroc.pl/",
+    "title": "Etykiety: magazynowe, logistyczne GS1, drukarki do kodów kreskowych, plomby gwarancyjne, kody kreskowe",
+    "desc": "",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "online.com.pl",
+    "url": "https://online.com.pl/serwis/drukarki/",
+    "title": "Naprawa drukarek serwis drukarek",
+    "desc": "Naprawy, konserwacja i przeglądy techniczne drukarek, urządzeń wielofunkcyjnych, ploterów",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "kodem.com.pl",
+    "url": "https://www.kodem.com.pl/serwis-drukarek-citizen/",
+    "title": "Nasz serwis - Kodem",
+    "desc": "Serwis drukarek termicznych Citizen i Novexx",
+    "h1": [
+     "H1: Nasz serwis"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "esales.com.pl",
+    "url": "https://www.esales.com.pl/serwis-drukarek-etykiet/",
+    "title": "Autoryzowany serwis drukarek etykiet Epson - ESALES - technika biurowa | drukarki | kopiarki | niszczarki | komputery",
+    "desc": "Autoryzowany serwis drukarek etykiet Epson. Naprawiać czy nie naprawiać? Jeśli tylko się da - naprawiać! Naprawa drukarek zawsze jest tańsza od kupna nowego sprzętu.",
+    "h1": [],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "naprawa.pl",
+    "url": "https://naprawa.pl/serwis-wysylkowy/naprawa-drukarek",
+    "title": "Naprawa drukarek - Profesjonalny serwis wszystkich marek",
+    "desc": "Profesjonalna naprawa drukarek HP, Epson, Canon, Brother i innych. Serwis urządzeń atramentowych i laserowych. Szybka diagnostyka, oryginalne części, 90 dni gwarancji.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Usuwanie zacięć etykiet",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "druktak.pl",
+    "url": "https://druktak.pl/serwis-drukarek-pm-78.html",
+    "title": "Serwis drukarek Kraków - DrukTak.pl",
+    "desc": "Serwis drukarek Kraków, serwis drukarek laserowych i atramentowych",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "naprawimydrukarke.pl",
+    "url": "https://naprawimydrukarke.pl/naprawa-i-serwis-drukarek-zebra-%E2%80%93-gdansk-gdynia-sopot",
+    "title": "Naprawa i serwis drukarek Zebra – Gdańsk, Gdynia, Sopot",
+    "desc": "Naprawa drukarek Zebra w Gdańsku, Gdyni i Sopocie. Serwis drukarek etykiet, czyszczenie głowic, kalibracja i wymiana części. Fachowa pomoc techniczna i szybka reakcja w całym Trójmieście.",
+    "h1": [
+     "H1: Naprawa i serwis drukarek Zebra – Gdańsk, Gdynia, Sopot"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "zpserwis.com.pl",
+    "url": "https://zpserwis.com.pl/",
+    "title": "ZP SERWIS",
+    "desc": "",
+    "h1": [],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "tk-systems.pl",
+    "url": "https://tk-systems.pl/uslugi/serwis-auto-id/",
+    "title": "Serwis AUTO-ID | Naprawa drukarek etykiet Wrocław i okolice",
+    "desc": "Specjalizujemy się w naprawach oraz przeglądach technicznych drukarek etykiet i terminali danych Zebra i innych. Dojeżdżamy do klientów na terenie całego kraju.",
+    "h1": [
+     "H1: Serwis AUTO-ID"
+    ],
+    "first": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "doprodukcji.com.pl",
+    "url": "https://doprodukcji.com.pl/",
+    "title": "MKtrade - drukarki termotransferowe, głowice i akcesoria | Serwis i wsparcie techniczne - doprodukcji.com.pl",
+    "desc": "Sprzedaż drukarek termotransferowych, głowic i akcesoriów. Automatyczna aplikacja etykiet. Profesjonalny serwis i wsparcie techniczne.",
+    "h1": [],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "pinnex.pl",
+    "url": "https://www.pinnex.pl/produkty/drukarki-etykiet/",
+    "title": "Drukarki etykiet: samoprzylepnych, Zebra - Kraków - Pinnex",
+    "desc": "W naszej ofercie znajdziecie Państwo drukarki etykiet i inne urządzenia do zarządzania sprzedażą.",
+    "h1": [
+     "H1: Drukarki etykiet"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "mindeo.com.pl",
+    "url": "https://www.mindeo.com.pl/naprawa-serwis",
+    "title": "Serwis/naprawa terminali i kolektorów danych, drukarek etykiet, serwis/naprawa terminali dotykovy POS, niezawodny Mindeo Serwis Kontakt i Mindeo pomoc techniczna.",
+    "desc": "Fachowy serwis i gwarancja na terenie Polski✔️serwis/naprawa terminali danych i kolektorów danych Mindeo, Zebra (Symbol, Motorola) i Point Mobile✔️ serwis/naprawa terminali dotykovy POS Poznań Warszawa Kraków✔️Twój niezawodny Mindeo  Zebra Serwis Kontakt i pomoc techniczna ",
+    "h1": [
+     "H1: Naprawa Serwis"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "sorfay.pl",
+    "url": "http://sorfay.pl/",
+    "title": "Sorfay — serwis drukarek etykiet i części",
+    "desc": "Serwis drukarek etykiet Zebra, CAB, SATO, TSC, Honeywell i innych. Diagnoza 99 zł netto, naprawa, dojazd na Śląsku, głowice, wałki, części oraz poradniki serwisowe Sorfay.",
+    "h1": [
+     "H1: Naprawa drukarek etykiet"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "hyprotech.com.pl",
+    "url": "https://www.hyprotech.com.pl/serwis/",
+    "title": "Serwis - HYPROTECH Polska - etykietowanie i identyfikacja AutoID dla przemysłu",
+    "desc": "SPRAWDŹ TO! Naprawimy Twoją drukarkę etykiet Serwis door-to-door dla całej Europy Zgłoś serwis Kompleksowo – sprzedaż i serwis Zapewniamy kompleksową obsługę Klienta poprzez sprzedaż, wdrażanie oraz serwis oferowanych przez nas urządzeń. Zajmujemy się również sprzętem zakupionym poza sklepem, również tym poza okresem g",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "drukarkietykiet24.pl",
+    "url": "https://drukarkietykiet24.pl/content/11-drukarki-etykiet-lodz",
+    "title": "Drukarki Etykiet Samoprzylepnych i Kodów Kreskowych Łódź | Sklep Internetowy - drukarkietykiet24.pl",
+    "desc": "\n          Drukarkietykiet24 ➤ Przemysłowe drukarki etykiet i etykiety do drukarek termicznych Łódź ✔️ Pomoc w wyborze urządzenia i pełne wsparcie ⭐ Sprawdź!\n      ",
+    "h1": [
+     "H1: Drukarki etykiet Łódź"
+    ],
+    "first": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/cennik-serwisu-drukarek.html",
+    "title": "Cennik serwisu drukarek – Poldruk",
+    "desc": "  Sprawdź Cennik serwisu drukarek laserowych i urządzeń wielofunkcyjnych HP",
+    "h1": [
+     "H1: Cennik serwisu drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "sped-id.pl",
+    "url": "https://sped-id.pl/uslugi-serwisowe/serwis-drukarek-zebra/",
+    "title": "Serwis drukarek Zebra – Automatyczna Identyfikacja / Grupa Sped",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek Zebra"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "labelland.com.pl",
+    "url": "https://labelland.com.pl/serwis-urzadzen/",
+    "title": "Serwis urządzeń - Labelland- Urządzenia do automatycznej identyfikacji, części zamienne oraz materiały eksploatacyjne",
+    "desc": "",
+    "h1": [],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Naprawa obcinaka / odklejaka",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "wawanaprawa.pl",
+    "url": "https://wawanaprawa.pl/naprawa-drukarek/serwis-drukarek-etykiet/",
+    "title": "Serwis i naprawa drukarek etykiet | Warszawa",
+    "desc": "Drukarka etykiet przestała drukować? Profesjonalny serwis w Warszawie z dojazdem. Naprawa głowic, czujników, noży i elektroniki. Zadzwon!",
+    "h1": [
+     "H1: Serwis i naprawa drukarek etykiet"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa obcinaka / odklejaka",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "arcan.pl",
+    "url": "https://arcan.pl/serwis/serwis-drukarek/",
+    "title": "Serwis i naprawa drukarek Poznań - Arcan s.c.",
+    "desc": "Potrzebna nagła naprawa drukarek? Arcan s.c. oferuje serwis drukarek tuszowych oraz laserowych, a także igłowych i do etykiet. Hp, Epson, Canon, czy Brother itp. Poznań i okolice.",
+    "h1": [
+     "H1: Serwis drukarek - ArCan Poznań"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.net.pl",
+    "url": "http://serwisdrukarek.net.pl/",
+    "title": "Serwis drukarek etykiet Częstochowa | ZebrioN",
+    "desc": "Serwis drukarek etykiet i kolektorów danych w Częstochowie i do 50 km. Naprawa u klienta, wymiana głowic i wałków od ręki. Diagnoza od 120 zł netto. Działamy od 2017 r.",
+    "h1": [
+     "H1: Serwis drukarek etykiet Częstochowa i okolice"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa obcinaka / odklejaka",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa obcinaka / odklejaka",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "nsb-serwis.pl",
+    "url": "https://nsb-serwis.pl/naprawa-drukarek-do-etykiet/",
+    "title": "Naprawa Drukarek do Etykiet Warszawa | NSB Serwis - Pogotowie z dojazdem",
+    "desc": "Serwis drukarek etykietowych Warszawa - naprawa drukarek do etykiet, wymiana głowicy, kalibracja, czyszczenie. Darmowy dojazd, szybka realizacja. NSB Serwis. Szybka wycena!",
+    "h1": [
+     "H1: Naprawa drukarek do etykiet Warszawa"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Usuwanie zacięć etykiet",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/pl/i/Serwis-drukarek/22",
+    "title": "Serwis i naprawa drukarek Kraków i Małopolskie - Krakprint.pl",
+    "desc": "Prowadzimy stacjonarny serwis drukarek w Krakowie oraz świadczymy usługi serwisowe na terenie Krakowa oraz Małopolski. Mamy 20 letnie doświadczenie co pozwala nam świadczyć profesjonalne usługi na najwyższym poziomie. Zapraszamy do kontaktu!",
+    "h1": [],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "aproks.pl",
+    "url": "https://aproks.pl/marki/zebra/",
+    "title": "Zebra Technologies Kielce – Partner | Drukarki Etykiet i AIDC",
+    "desc": "Partner Zebra Technologies w Kielcach. Dostawa, serwis drukarek etykiet, skanerów kodów kreskowych, terminali mobilnych i wsparcie techniczne.",
+    "h1": [
+     "H1: Zebra Technologies – Partner w Kielcach"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/serwis-drukarek-zebra-katowice.php",
+    "title": "Serwis Drukarek Zebra Katowice",
+    "desc": "Zapraszamy do serwisu drukarek Zebra. Oferujemy profesjonalny serwis drukarek Zebra w Katowicach",
+    "h1": [
+     "H1: Serwis Drukarek Zebra Katowice"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/drukarki/drukarki-termiczne",
+    "title": "Drukarki etykiet i etykieciarki | DMD Tonery",
+    "desc": "Drukarki etykiet do biura, sklepu i magazynu. Porównaj technologie, obsługiwane formaty i funkcje urządzeń. Wybierz odpowiedni model w DMD Tonery.",
+    "h1": [
+     "H1: Tonery"
+    ],
+    "first": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "xe.opole.pl",
+    "url": "https://xe.opole.pl/",
+    "title": "Kserokopiarki RICOH, skanery, drukarki, niszczarki, projektory - sprzedaż, wynajem, dzierżawa, serwis - XE Opole",
+    "desc": "Firma XE zajmuje się sprzedażą nowoczesnych urządzeń biurowych. Sprzedajemy skanery, kserokopiarki, drukarki, plotery, urządzenia wielkoformatowe, projektory, systemy DS.",
+    "h1": [
+     "H1: Sprzedaż, wynajem i serwis kserokopiarek, drukarek i skanerów - XE Opole"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/",
+    "title": "Naprawa drukarek Częstochowa - naprawa drukarek Brother HP Epson Canon",
+    "desc": "Naprawa drukarek Częstochowa Północ. Autoryzowany serwis drukarek i urządzeń do biura. Przeglad, konserwacja, wymiana bębna, czyszczenie głowic.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek, naprawa laptopów",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "zebrapolska.pl",
+    "url": "https://zebrapolska.pl/serwis/",
+    "title": "Serwis Zebra Polska – Naprawa i Wsparcie Techniczne",
+    "desc": "Profesjonalny serwis Zebra Polska – szybka naprawa drukarek, skanerów i urządzeń AutoID. Wsparcie techniczne dla Twojego biznesu.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "www2.bikop.pl",
+    "url": "https://www2.bikop.pl/",
+    "title": "Serwis - urządzeń wielofunkcyjnych, kserokopiarek, drukarek - Gdańsk, Trójmiasto - Bikop",
+    "desc": "Zajmujemy się sprzedażą urządzeń wielofunkcyjnych, drukarek, skanerów oraz niszczarek. Oferujemy również dzierżawę, serwis gwarancyjny i profesjonalne wsparcie IT.",
+    "h1": [
+     "H1: Drukarki i urządzenia wielofunkcyjne – serwis"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "skladtechniczny.pl",
+    "url": "https://www.skladtechniczny.pl/uslugi/serwis",
+    "title": "Profesjonalny serwis drukarek termotransferowych i innych narzędzi - Skład Techniczny",
+    "desc": "Inwestycja w drukarkę termotransferową wiąże się ze znacznymi kosztami. W przypadku wystąpienia problemów lub awarii, naprawa urządzenia często jest dużo bardziej opłacalna niż zakup nowego sprzętu.",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek termotransferowych i innych narzędzi"
+    ],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "polandithub.pl",
+    "url": "https://polandithub.pl/serwis-i-naprawa-drukarek-czestochowa-i-okolice/",
+    "title": "Serwis i naprawa drukarek – Częstochowa i okolice - Poland IT Hub",
+    "desc": "W Częstochowie i okolicach działa kilkadziesiąt specjalistycznych serwisów oferujących naprawę drukarek laserowych, atramentowych, igłowych, termicznych oraz",
+    "h1": [
+     "H1: Serwis i naprawa drukarek – Częstochowa i okolice"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć",
+     "Usuwanie zacięć etykiet",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "datasystem.net.pl",
+    "url": "https://datasystem.net.pl/",
+    "title": "PROFESJONALNY SERWIS DRUKAREK ZEBRA",
+    "desc": "Serwis pogwarancyjny drukarek Zebra. Dzia�amy na ternie ca�ego kraju. Naprawiamy tak�e elektronik� w drukarkach Zebra. Sprawd� jak niskie mog� by� ceny serwisu.",
+    "h1": [
+     "H1: Serwis pogwarancyjny drukarek ZEBRA"
+    ],
+    "first": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": []
+   },
+   {
+    "host": "druk-serwis.com.pl",
+    "url": "https://druk-serwis.com.pl/",
+    "title": "Druk Serwis - Serwis drukarek i ploterów. Tusze oraz Tonery",
+    "desc": "",
+    "h1": [],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "tekigraf.pl",
+    "url": "https://www.tekigraf.pl/",
+    "title": "Drukarnia etykiet samoprzylepnych – Tekigraf | Łódź",
+    "desc": "Kompleksowe usługi drukarni etykiet Tekigraf. Wykonujemy etykiety samoprzylepne na rolce wykorzystując nowoczesne techniki druku. Zapraszamy do współpracy.",
+    "h1": [
+     "H1: O nas"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "mezametlublin.pl",
+    "url": "https://www.mezametlublin.pl/",
+    "title": "Kasy i drukarki fiskalne online, drukarki etykiet Lublin - Mezamet",
+    "desc": "Kasy fiskalne, drukarki etykiet, czytniki kodów kreskowych i wiele innych! W naszym asortymencie znajdziesz wszystkie urządzenia niezbędne dla Twojej firmy!",
+    "h1": [
+     "H1: Mezamet – kasy i drukarki fiskalne online, drukarki etykiet, czytniki kodów kreskowych"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "printma.pl",
+    "url": "https://printma.pl/",
+    "title": "Drukarnia etykiet | Druk cyfrowy | Printma",
+    "desc": "Jesteśmy nowoczesną drukarnią blisko Lublina. Dla nas jakość produktu i zadowolenie klienta są priorytetem. Szukasz drukarni? Zaufaj Printma.",
+    "h1": [
+     "H1: Drukarnia etykiet - Printma"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "kasy-kielce.pl",
+    "url": "https://www.kasy-kielce.pl/product,page-1,category-58,n-Drukarki%20etykiet.html",
+    "title": "Drukarki etykiet - JSCKOMP - Tanio Kasy fiskalne Kielce, Sprzedaż kas i serwis, Profesjonalnie, Promocja, Polskie",
+    "desc": "\nJSCKOMP Kasy Fiskalne Kielce - Tanie, renomowane Kasy i Drukarki Fiskalne. Sprawny serwis, miła i profesjonalna obsługa. Oprogramowanie i akcesoria do handlu.",
+    "h1": [
+     "H1: Drukarki etykiet"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Naprawa obcinaka / odklejaka",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "zamowdruk.pl",
+    "url": "https://zamowdruk.pl/",
+    "title": "zamowdruk.pl - Drukarnia Rzeszów - Druki w 24 h Rzeszów - Druk katalogów - Druki Premium 3D - Druk wizytówek - Druk etykiet - Druk ulotek - Vouchery 3D",
+    "desc": "Drukarnia Rzeszów - zamowdruk.pl: wizytówki, ulotki, katalogi, naklejki, etykiety, broszury, pudełka i opakowania i druk premium 3D UV z produkcją w Rzeszowie.\r\nDruki w 24 h Rzeszów - Druk katalogów - Druki Premium 3D - Druk UV- Druk Flexo- Druk DTF -  - Druk etykiet - Druk ulotek - Vouchery 3D",
+    "h1": [
+     "H1: Twój pomysł. Dobrze wydrukowany."
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "promarkserwis.net.pl",
+    "url": "https://promarkserwis.net.pl/produkty-i-uslugi/drukarki-przemyslowe-linx/drukarki-termotransferowe/",
+    "title": "Drukarki Termotransferowe Linx - Promark Serwis",
+    "desc": "Poznaj nowoczesne drukarki termotransferowe firmy Linx do znakowania kodów wysokiej rozdzielczości na folii opakowaniowej i etykietach.",
+    "h1": [
+     "H1: DRUKARKI TERMOTRANSFEROWE LINX"
+    ],
+    "first": "Wymiana głowicy drukującej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "tomdruk.pl",
+    "url": "https://tomdruk.pl/",
+    "title": "Drukarnia Tom-Druk | producent etykiet na roli",
+    "desc": "Drukarnia fleksograficzna Tom-Druk - kompleksowa obsługa, krótkie terminy realizacji - etykiety samoprzylepne, na roli, sprzedaż drukarek do etykiet",
+    "h1": [
+     "H1: DRUKARNIA FLEKSOGRAFICZNA PRODUCENT ETYKIET NA ROLI"
+    ],
+    "first": "Naprawa obcinaka / odklejaka",
+    "seoFirst": "Naprawa obcinaka / odklejaka",
+    "works": [
+     "Naprawa obcinaka / odklejaka"
+    ],
+    "seoWorks": [
+     "Naprawa obcinaka / odklejaka"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "drukarniascanner.pl",
+    "url": "https://drukarniascanner.pl/oferta/druk-etykiet/",
+    "title": "Druk etykiet | Zakład Usług Poligraficznych Scanner G&M Toruń",
+    "desc": "Wykonujemy druk etykiet dla firm i klientów indywidualnych. Oferujemy druk etykiet samoprzylepnych na rolce lub na arkuszach. Sprawdź naszą ofertę!",
+    "h1": [
+     "H1: Druk etykiet"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "ibcsservice.pl",
+    "url": "https://www.ibcsservice.pl/drukarki-i-terminale-zebra/",
+    "title": "Drukarki i terminale Zebra - ibcsService",
+    "desc": "Pomoc techniczna dla urządzeń Zebra Masz problem z drukarką, terminalem lub innym sprzętem auto-ID Zebra? Potrzebujesz pomocy w zakresie obsługi? A może chcesz rozszerzyć funkcjonalność swojego urządzenia lub dokonać jego przeglądu? Pomoc techniczna ZEBRA w IBCS Poland jest do Twojej dyspozycji. Naprawiamy drukarki i t",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Wymiana wałka dociskowego",
+     "Kalibracja czujników / mediów",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "ilh.pl",
+    "url": "https://www.ilh.pl/wsparcie/serwis-drukarek-i-etykieciarek",
+    "title": "Serwis drukarek i etykieciarek | iLH.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek i etykieciarek"
+    ],
+    "first": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+    "seoFirst": "",
+    "works": [
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "pollygraf.com.pl",
+    "url": "http://pollygraf.com.pl/",
+    "title": "Pollygraf Drukarnia",
+    "desc": "",
+    "h1": [
+     "H1: Drukarnia Pollygraf Sp.z o.o - Mistrzowie Druku Etykiet z Ponad 25-letnim stażem!",
+     "H1: Drukarnia Pollygraf Sp.z o.o - Label Printing Masters with Over 25 Years of Experience!"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "",
+    "works": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "darpo.pl",
+    "url": "https://darpo.pl/pl/content/15-drukarnia-etykiet",
+    "title": "Drukarnia Etykiet Łódź – Etykiety Samoprzylepne na Roli | Darpo",
+    "desc": "Opis meta (meta description): Darpo to drukarnia etykiet z Łodzi z ponad 30-letnim doświadczeniem. Oferujemy etykiety samoprzylepne na roli – papierowe i foliowe, kolorowe i czarno-białe, odporne na ścieranie i wilgoć. Realizujemy zamówienia dla branż: spożywczej, kosmetycznej, logistycznej i innych. Szybka wysyłka na ",
+    "h1": [
+     "H1: Drukarnia Etykiet Łódź – Etykiety Samoprzylepne na Roli | Darpo"
+    ],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "grafpol.net",
+    "url": "https://www.grafpol.net/pl/o-firmie",
+    "title": "Druk etykiet samoprzylepnych - Grafpol - O firmie",
+    "desc": "GRAFPOL B.M. Meszkes Bydgoszcz etykiety samoprzylepne",
+    "h1": [
+     "H1: O firmie"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "kaspo.com.pl",
+    "url": "https://www.kaspo.com.pl/",
+    "title": "Kaspo | Drukarnia etykiet, kasy fiskalne, wagi",
+    "desc": "Specjalizujemy się w sprzedaży kas fiskalnych, wag przemysłowych. Działamy na rynku łódzkim już od 1990 roku. W sprzedaży posiadamy kasy online. Zajrzyj i zamów - kaspo.com.pl",
+    "h1": [
+     "H1: Sprzedaż, serwis wag i kas fiskalnych – Łódź"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "drukarniacreative.pl",
+    "url": "https://www.drukarniacreative.pl/etykiety-rzeszow",
+    "title": "Etykiety Rzeszów. Etykiety samoprzylepne w Rzeszowie | Drukarnia CreativePartner",
+    "desc": "Wydruk etykiet Rzeszów - drukujemy etykiety na produkty, etykiety na produkty. Drukujemy duże i małe ilości etykiet. Cennik etykiet",
+    "h1": [
+     "H1: Etykiety Rzeszów"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "multipc.pl",
+    "url": "https://multipc.pl/wyposazenie/drukarki-etykiet/",
+    "title": "Drukarki etykiet - Kasy fiskalne Kielce",
+    "desc": "",
+    "h1": [
+     "H1: Kasy fiskalne Kielce"
+    ],
+    "first": "Konfiguracja / sterowniki / sieć",
+    "seoFirst": "Konfiguracja / sterowniki / sieć",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / sieć"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Naprawa mechanizmu ribbonu (taśmy barwiącej)": {
+    "было": 19,
+    "стало": 16,
+    "исключено": [
+     "zebra ribbon meaning",
+     "zebra ribbon cartridge",
+     "zebra ribbon installation"
+    ]
+   },
+   "общие подсказки: Naprawa obcinaka / odklejaka": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "drukarka etykiet z odklejakiem"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Czyszczenie / konserwacja",
+   "comp": {
+    "mention": 43,
+    "first": 16,
+    "seoFirst": 9,
+    "seo": 14,
+    "head": 9,
+    "td": 9
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "czyszczenie głowicy zebra"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 3,
+    "kp": 0,
+    "ex": [
+     "konserwacja drukarki termicznej",
+     "przegląd drukarki zebra",
+     "wymiana głowicy termicznej, konserwacja i kalibracja urządzeń"
+    ]
+   }
+  },
+  {
+   "work": "Konfiguracja / sterowniki / sieć",
+   "comp": {
+    "mention": 37,
+    "first": 14,
+    "seoFirst": 7,
+    "seo": 10,
+    "head": 8,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 19,
+    "cena": 0,
+    "ex": [
+     "zebra sterowniki",
+     "zebra sterowniki zd421",
+     "zebra sterowniki zd220",
+     "zebra sterowniki gk420d",
+     "zebra sterowniki gk420t"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy drukującej",
+   "comp": {
+    "mention": 32,
+    "first": 13,
+    "seoFirst": 5,
+    "seo": 13,
+    "head": 10,
+    "td": 7
+   },
+   "ac": 0,
+   "probe": {
+    "n": 13,
+    "cena": 0,
+    "ex": [
+     "wymiana głowicy zebra zt410",
+     "wymiana głowicy zebra gk420t",
+     "wymiana głowicy w drukarce zebra",
+     "głowica zebra zd421",
+     "głowica zebra zt411"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 4,
+    "kp": 0,
+    "ex": [
+     "wymiana głowicy zebra",
+     "wymiana głowicy drukarki etykiet",
+     "naprawa głowicy zebra"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa płyty głównej / zasilacza",
+   "comp": {
+    "mention": 22,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 5,
+    "head": 3,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja czujników / mediów",
+   "comp": {
+    "mention": 19,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 6,
+    "head": 3,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 20,
+    "cena": 0,
+    "ex": [
+     "kalibracja zebra zd421",
+     "kalibracja zebra zd420",
+     "kalibracja zebra gk420d",
+     "kalibracja zebra",
+     "kalibracja zebra gk420t"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 1,
+    "kp": 0,
+    "ex": [
+     "wymiana głowicy termicznej, konserwacja i kalibracja urządzeń"
+    ]
+   }
+  },
+  {
+   "work": "Serwis u klienta / dojazd",
+   "comp": {
+    "mention": 19,
+    "first": 5,
+    "seoFirst": 4,
+    "seo": 6,
+    "head": 4,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+   "comp": {
+    "mention": 18,
+    "first": 5,
+    "seoFirst": 0,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 16,
+    "cena": 0,
+    "ex": [
+     "zebra ribbon",
+     "zebra ribbon out error",
+     "zebra ribbons",
+     "zebra ribbon printer",
+     "zebra ribbon out"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana wałka dociskowego",
+   "comp": {
+    "mention": 13,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 4,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 14,
+    "cena": 0,
+    "ex": [
+     "wałek zebra",
+     "wałek zebra zt410",
+     "poduszka walek zebra",
+     "wałek do drukarki zebra",
+     "platen roller zebra"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie zacięć etykiet",
+   "comp": {
+    "mention": 7,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa obcinaka / odklejaka",
+   "comp": {
+    "mention": 6,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Wymiana głowicy i wałka",
+   "a": "Wymiana głowicy drukującej",
+   "why": "głowica — 32 конкурента, у 13 первая; wałek — 14 подсказок; в прайсе «Wymiana głowicy drukującej», «Wymiana wałka dociskowego»",
+   "evidence": "конкуренты 32 из 65 (первой работой — 13, в Title/Description — 7) · подсказки Google 13 (напр. «wymiana głowicy zebra zt410», «wymiana głowicy zebra gk420t») · SEO-файл 4 фраз"
+  },
+  {
+   "w": "Kalibracja czujników",
+   "a": "Kalibracja czujników / mediów",
+   "why": "20 подсказок; в прайсе «Kalibracja czujników gap / black mark»",
+   "evidence": "конкуренты 19 из 65 (первой работой — 1, в Title/Description — 3) · подсказки Google 20 (напр. «kalibracja zebra zd421», «kalibracja zebra zd420») · SEO-файл 1 фраз"
+  },
+  {
+   "w": "Konfiguracja",
+   "a": "Konfiguracja / sterowniki / sieć",
+   "why": "37 конкурентов, у 14 первая; 19 подсказок",
+   "evidence": "конкуренты 37 из 65 (первой работой — 14, в Title/Description — 2) · подсказки Google 19 (напр. «zebra sterowniki», «zebra sterowniki zd421»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Regulacja ribbonu",
+   "a": "Naprawa mechanizmu ribbonu (taśmy barwiącej)",
+   "why": "18 конкурентов, 16 подсказок после очистки; с «wymiana głowicy i wałka» не помещается — запасной №1",
+   "evidence": "конкуренты 18 из 65 (первой работой — 5, в Title/Description — 0) · подсказки Google 16 (напр. «zebra ribbon», «zebra ribbon out error»)"
+  },
+  {
+   "w": "Czyszczenie",
+   "why": "№1 у конкурентов (43), но поиска почти нет; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Ads: «zebra serwis» ≈2959 показов — бренды в текст не включены (ТЗ), но спрос подтверждён",
+  "Только 65 подходящих конкурентов из 170 проверенных"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek etykiet we Wrocławiu ✔ Wymiana głowicy i wałka, kalibracja czujników, konfiguracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 160
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт принтерів етикеток у Вроцлаві ✔ Заміна головки і вала, калібрування датчиків, налаштування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 159
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт принтеров этикеток во Вроцлаве ✔ Замена головки и вала, калибровка датчиков, настройка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 154
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

@@ -100,6 +100,12 @@ Commit, push и merge — только после явного разрешен�
 
 Раз в месяц и для каждой новой страницы (до слияния) — проверка скорости и веса по `.claude/rules/optimization-check.md`. Дата последней проверки — в шапке `AI_WORK_STATE.md`; если прошло больше 30 дней — в начале сессии напомнить пользователю и предложить проверку.
 
+## SEO-панель и стандарт Title
+
+Правила Title, утверждённые решения и порядок повторной проверки — `docs/seo/title-standard.md` (решения — `docs/seo/title-decisions.json`, история проверок — `docs/seo/audit-history.json`). Проверка: `node scripts/seo-audit/title-audit.mjs`, панель — `node scripts/seo-audit/serve.mjs` → `http://localhost:4100`. Утверждённые Title и исключения не пересматривать без новой причины.
+
+Description: аудит идёт во вкладке Description той же панели (`node scripts/seo-audit/description-audit.mjs`), предложения и решения — `docs/seo/description-decisions.json`. Стандарта Description пока нет; на сайте Description меняются только после утверждения пользователем в панели.
+
 ## Стандарт окна «Kategorie urządzeń»
 
 Любое новое или изменяемое информационное окно с категориями устройств на страницах услуг — строго по `docs/kategorie-urzadzen-standard.md` (структура текста, оформление, выравнивание карточек, один общий компонент `PriceTooltipContent`). Отдельные компоненты и стили под одну страницу не создавать.

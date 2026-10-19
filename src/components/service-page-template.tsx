@@ -817,13 +817,16 @@ export function ServicePageTemplate({
                         </h1>
                         <span className="order-1 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
                       </div>
-                    ) : (
-                    <h1 className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(47px,10.6vw)] max-md:leading-[1.05]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''}`}>
+                    ) : (() => {
+                    // PL naprawa-drukarek: the animated headline is drawn by a plain wrapper and the H1
+                    // inside it holds only the clean phrase, so the cycling words never glue onto it (as on the home hero).
+                    const HeroTitleTag = locale === 'pl' && slug === 'naprawa-drukarek' ? 'div' : 'h1'
+                    return (
+                    <HeroTitleTag data-hero-title={HeroTitleTag === 'div' ? '' : undefined} className={`font-cormorant font-bold text-[#ffffff] w-full max-w-[90vw] md:max-w-none md:w-[470px] text-[40px] md:text-[52px] leading-[1.15] max-md:[text-wrap:balance] max-md:break-words${slug === 'naprawa-drukarek' ? ' max-md:text-[length:min(47px,10.6vw)] max-md:leading-[1.05]' : headings.fitMobile ? ' max-md:text-[length:min(40px,9.4vw)]' : ''}`}>
                       {locale === 'pl' && slug === 'naprawa-drukarek' ? (
-                        // Middle line swaps with the carousel slide (home hero word animation);
-                        // search engines/screen readers get the unchanged H1 text.
+                        // Middle line swaps with the carousel slide (home hero word animation).
                         <>
-                          <span className="sr-only">Serwis i naprawa drukarek we Wrocławiu</span>
+                          <h1 className="sr-only">Serwis i naprawa drukarek we Wrocławiu</h1>
                           <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
                           <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] whitespace-nowrap"><PrinterHubMid mids={PRINTER_HERO_MIDS} /></span>
                           <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
@@ -852,8 +855,9 @@ export function ServicePageTemplate({
                       ) : (
                         headings.h1 || service.title
                       )}
-                    </h1>
-                    )}
+                    </HeroTitleTag>
+                    )
+                    })()}
 
                     {headings.h2 && (() => {
                       // Lista marek „(HP, Epson, …)” pod H1 to opis, nie sekcja — zwykły <div> z tym samym wyglądem.

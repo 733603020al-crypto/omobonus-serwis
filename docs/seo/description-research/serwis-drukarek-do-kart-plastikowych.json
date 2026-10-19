@@ -1,0 +1,1101 @@
+{
+ "page": "/uslugi/serwis-drukarek-do-kart-plastikowych",
+ "name": "Принтеры пластиковых карт",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek do kart plastikowych",
+    "naprawa drukarek kart",
+    "serwis drukarek kart evolis",
+    "serwis drukarek kart plastikowych Warszawa",
+    "serwis drukarek do kart plastikowych cennik",
+    "serwis drukarek kart plastikowych Wrocław",
+    "serwis drukarek kart plastikowych Kraków",
+    "serwis drukarek kart plastikowych Poznań",
+    "serwis drukarek kart plastikowych Gdańsk",
+    "serwis drukarek kart plastikowych Łódź",
+    "serwis drukarek kart plastikowych Katowice",
+    "serwis drukarek kart plastikowych Szczecin",
+    "serwis drukarek kart plastikowych Lublin",
+    "serwis drukarek kart plastikowych Bydgoszcz",
+    "serwis drukarek kart plastikowych Białystok",
+    "serwis drukarek kart plastikowych Rzeszów",
+    "serwis drukarek kart plastikowych Kielce",
+    "serwis drukarek kart plastikowych Toruń",
+    "serwis drukarek kart plastikowych Olsztyn",
+    "serwis drukarek kart plastikowych Opole",
+    "serwis drukarek kart plastikowych Gdynia",
+    "serwis drukarek kart plastikowych Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka do kart ",
+    "serwis drukarek kart ",
+    "drukarka kart plastikowych ",
+    "evolis ",
+    "drukarka evolis "
+   ],
+   "uniqueSuggestions": 86,
+   "withPrice": [],
+   "wroclaw": [],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Wymiana / naprawa głowicy": {
+    "seeds": [
+     "głowica evolis",
+     "głowica drukarki kart"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Czyszczenie / konserwacja": {
+    "seeds": [
+     "czyszczenie drukarki evolis",
+     "czyszczenie drukarki kart"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie drukarki evolis zenius",
+     "czyszczenie drukarki evolis"
+    ],
+    "all": [
+     "czyszczenie drukarki evolis zenius",
+     "czyszczenie drukarki evolis"
+    ],
+    "dropped": []
+   },
+   "Taśma barwiąca / ribbon": {
+    "seeds": [
+     "taśma evolis",
+     "ribbon evolis"
+    ],
+    "n": 15,
+    "nRaw": 15,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "taśma evolis",
+     "taśma ymcko evolis primacy 300 wydruków r5f008eaa",
+     "taśma kolorowa evolis",
+     "taśma do drukarki evolis zenius",
+     "taśma do drukarki evolis",
+     "ribbon evolis",
+     "ribbon evolis primacy 2",
+     "ribbon evolis primacy",
+     "ribbon evolis zenius",
+     "ribbon evolis ymcko"
+    ],
+    "all": [
+     "taśma evolis",
+     "taśma ymcko evolis primacy 300 wydruków r5f008eaa",
+     "taśma kolorowa evolis",
+     "taśma do drukarki evolis zenius",
+     "taśma do drukarki evolis",
+     "ribbon evolis",
+     "ribbon evolis primacy 2",
+     "ribbon evolis primacy",
+     "ribbon evolis zenius",
+     "ribbon evolis ymcko",
+     "ribbon evolis avansia",
+     "ribbon evolis color ymcko",
+     "ribbon evolis high trust",
+     "ribbon evolis color",
+     "ribbon evolis primacy 1"
+    ],
+    "dropped": []
+   },
+   "Kodery (magnetyczny / chip / RFID)": {
+    "seeds": [
+     "koder evolis",
+     "kodowanie kart"
+    ],
+    "n": 4,
+    "nRaw": 20,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "kodowanie kart magnetycznych",
+     "kodowanie kart rfid",
+     "kodowanie kart nfc",
+     "kodowanie kart dostępu"
+    ],
+    "all": [
+     "kodowanie kart magnetycznych",
+     "kodowanie kart rfid",
+     "kodowanie kart nfc",
+     "kodowanie kart dostępu"
+    ],
+    "dropped": [
+     [
+      "kodowanie karty pracy",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty renault",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty renault megane 2",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty pracy do wydruku",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty pracy pdf",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty scenic 2",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty renault megane 3",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty renault espace 4",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karty laguna 2",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie karta pracy przedszkole",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie kart renault",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie kart",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "kodowanie kart do samochodów renault",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie kart espace 4",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie kart renault warszawa",
+      "другое устройство/тема"
+     ],
+     [
+      "kodowanie kart samochodowych",
+      "другое устройство/тема"
+     ]
+    ]
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 0,
+   "impressions": 0,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 27,
+  "checked": 170,
+  "candidates": 196,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "forcard.pl",
+    "url": "https://www.forcard.pl/3-serwis-drukarek",
+    "title": "serwis drukarek do kart plastikowych i naprawa drukarek - Forcard.pl",
+    "desc": "",
+    "h1": [
+     "H1: SERWIS DRUKAREK"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "Kodery (magnetyczny / chip / RFID)",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Podajnik / pobieranie kart",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Podajnik / pobieranie kart",
+     "Kodery (magnetyczny / chip / RFID)"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "serwis-zebry.pl",
+    "url": "https://www.serwis-zebry.pl/serwis-drukarek-kart-zebra",
+    "title": "Autoryzowany serwis drukarek kart Zebra ZC100, ZC300 | TAKMA",
+    "desc": "Autoryzowany serwis Zebra dla drukarek kart (Printer Repair Specialist – Card Printer). Naprawa ZC100, ZC300, ZC350 i ZXP, odbiór kurierem, 12 mies. gwarancji.",
+    "h1": [
+     "H1: Serwis drukarek kart plastikowych Zebra ZC100, ZC300, ZC350 i ZXP Series"
+    ],
+    "first": "Druk dwustronny / flipper",
+    "seoFirst": "",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Naprawa płyty głównej / elektroniki",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "takma.com.pl",
+    "url": "https://www.takma.com.pl/serwis/magicard",
+    "title": "Serwis Magicard — naprawa drukarek kart Pronto100, 300, 600 | TAKMA",
+    "desc": "Serwis drukarek kart Magicard: Pronto100, 300 Duo, 600 Duo, Rio Pro. Wymiana głowicy i wałków, naprawa flippera i kodera. Diagnostyka 48h, cała Polska.",
+    "h1": [
+     "H1: Serwis Magicard — naprawa drukarek kart PVC i identyfikatorów"
+    ],
+    "first": "Laminacja / retransfer",
+    "seoFirst": "Wymiana / naprawa głowicy",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Kalibracja",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [
+     "Wymiana / naprawa głowicy",
+     "Taśma barwiąca / ribbon",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Druk dwustronny / flipper"
+    ],
+    "city": []
+   },
+   {
+    "host": "ymck.pl",
+    "url": "https://www.ymck.pl/",
+    "title": "YMCK.pl – Drukarki kart, taśmy, karty plastikowe i akcesoria do personalizacji ID",
+    "desc": "YMCK.pl to specjalistyczny sklep z drukarkami kart plastikowych, taśmami YMCK, kartami MIFARE i oprogramowaniem do personalizacji identyfikatorów. Autoryzowany dystrybutor HID Fargo, Zebra, Evolis i Matica – szybka wysyłka z Polski, profesjonalne doradztwo i wsparcie techniczne.",
+    "h1": [
+     "H1: Drukarki do kart plastikowych, taśmy YMCKO i karty RFID – sklep i serwis Szybkie płatności | Darmowa wysyłka od 1000zł netto"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "Taśma barwiąca / ribbon",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [
+     "Taśma barwiąca / ribbon",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "city": []
+   },
+   {
+    "host": "drukmat.com.pl",
+    "url": "https://drukmat.com.pl/drukarki-do-kart-plastikowych/",
+    "title": "Drukarki do kart plastikowych - ceny, opinie",
+    "desc": "Drukarki do kart plastikowych wszystkich producentów- cennik; drukarka do kart plastikowych: ceny i opinie; Warszawa i Polska, e-sklep, polecane na forum.",
+    "h1": [
+     "H1: Drukarki do kart"
+    ],
+    "first": "Druk dwustronny / flipper",
+    "seoFirst": "",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Taśma barwiąca / ribbon",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pckf.pl",
+    "url": "https://pckf.pl/drukarki-kart-plastikowych",
+    "title": "Drukarki kart plastikowych - Warszawa · Poznań · Łódź · Lublin · Gdańsk · Katowice - 10 poz. - str. 1 z 2",
+    "desc": "Kup Teraz: Drukarki kart plastikowych - tylko w PCKF.pl - wyjątkowe promocje i największy wybór. Znajdź też inne produkty i porównaj ceny.",
+    "h1": [
+     "H1: Drukarki kart plastikowych"
+    ],
+    "first": "Druk dwustronny / flipper",
+    "seoFirst": "Druk dwustronny / flipper",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "city": [
+     "Warszawa",
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "uniskk-technology.com",
+    "url": "https://uniskk-technology.com/urzadzenia/drukarki-kart-plastikowych/evolis-zenius/",
+    "title": "Evolis Zenius - UNI+SKK Technology",
+    "desc": "Evolis Zenius - drukarka do kart do wielu zastosowań. Oficjalny dystrybutor Evolis - wsparcie na każdym etapie zakupu i eksploatacji. Sprawdź.",
+    "h1": [
+     "H1: Drukarka do kart Evolis Zenius"
+    ],
+    "first": "Laminacja / retransfer",
+    "seoFirst": "Laminacja / retransfer",
+    "works": [
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Laminacja / retransfer"
+    ],
+    "city": []
+   },
+   {
+    "host": "naprawimydrukarke.pl",
+    "url": "https://naprawimydrukarke.pl/",
+    "title": "Serwis drukarek Trójmiasto - Gdańsk, Gdynia, Sopot",
+    "desc": "Serwis drukarek w Trójmieście – naprawa i konserwacja sprzętu biurowego. Gdańsk, Gdynia, Sopot. Profesjonalna obsługa, szybka diagnoza, atrakcyjne ceny.",
+    "h1": [
+     "H1: ///////////////////////////////",
+     "H1: &#xa0;"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "idprint.com.pl",
+    "url": "https://www.idprint.com.pl/",
+    "title": "Drukarki do kart plastikowych - Kor-Tec",
+    "desc": "Sklep internetowy IDprint oferuje Pa�stwu drukarki do kart plastikowych najwy�szej jako�ci. W naszej ofercie znajduj� si� r�wnie� etui, smycze oraz szereg akcesori�w do druku.",
+    "h1": [
+     "H1: Drukarki kart plastikowych"
+    ],
+    "first": "Laminacja / retransfer",
+    "seoFirst": "",
+    "works": [
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "cardservice.pl",
+    "url": "https://cardservice.pl/",
+    "title": "CardService",
+    "desc": "",
+    "h1": [
+     "H1: Renomowany dostawca drukarek do kart"
+    ],
+    "first": "Konfiguracja / sterowniki / oprogramowanie",
+    "seoFirst": "",
+    "works": [
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "elzab.com.pl",
+    "url": "https://www.elzab.com.pl/pl/strefa-wiedzy/drukarka-kart-plastikowych/",
+    "title": "Drukarka kart plastikowych. Jak działa? - ELZAB Strefa Wiedzy",
+    "desc": "Drukarka kart plastikowych służy do drukowania: identyfikatorów, kart rabatowych czy lojalnościowych. Wysoka jakość druku i trwałość. Sprawdź jak działa.",
+    "h1": [
+     "H1: Drukarka kart plastikowych. Jak działa?",
+     "H1: Drukarka kart plastikowych: zasada działania"
+    ],
+    "first": "Konfiguracja / sterowniki / oprogramowanie",
+    "seoFirst": "Konfiguracja / sterowniki / oprogramowanie",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "city": []
+   },
+   {
+    "host": "cs.pl",
+    "url": "https://www.cs.pl/uslugi-control-system-fmn/serwis-drukarek-fargo/",
+    "title": "Serwis drukarek Fargo - naprawa i konserwacja - CS FMN",
+    "desc": "Autoryzowany Serwis drukarek Fargo HID realizowany w Control System FMN, gwarancja. Najlepszy serwis drukarek do kart w kraju.",
+    "h1": [
+     "H1: Serwis drukarek Fargo"
+    ],
+    "first": "Konfiguracja / sterowniki / oprogramowanie",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "acss.com.pl",
+    "url": "https://www.acss.com.pl/drukarki-evolis/",
+    "title": "Drukarki do kart plastikowych Evolis - www.acss.com.pl",
+    "desc": "Evolis oferuje kompletny zakres rozwiązań do identyfikacji osób i majątku: drukarki do kart, oprogramowanie do personalizacji kart, tablety do podpisów i akcesoria identyfikacyjne.",
+    "h1": [
+     "H1: Drukarki Evolis"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "Konfiguracja / sterowniki / oprogramowanie",
+    "works": [
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "csadams.pl",
+    "url": "https://csadams.pl/kategoria-produktu/drukarki-kart-plastikowych/drukarki-hid-fargo/",
+    "title": "Drukarki HID Fargo - do kart plastikowych - CSAdams",
+    "desc": "Drukarki do kart plastikowych HID Fargo. Najwyższa półka techniczna. A do nich: programy, taśmy do drukarek i serwis. Zajrzyj do nas!",
+    "h1": [
+     "H1: Drukarki HID Fargo"
+    ],
+    "first": "Taśma barwiąca / ribbon",
+    "seoFirst": "Taśma barwiąca / ribbon",
+    "works": [
+     "Taśma barwiąca / ribbon"
+    ],
+    "seoWorks": [
+     "Taśma barwiąca / ribbon"
+    ],
+    "city": []
+   },
+   {
+    "host": "stemplenadruki.com",
+    "url": "http://stemplenadruki.com/karty.html",
+    "title": "STEMPEL SERVICE - karty plastikowe Szczecin, agencja reklamowa, usługi reklamowe , sklep i produkcja, pieczątki, stemple, datowniki, nadruki, gadżety reklamowe, grawerowanie, piaskowanie, wizytówki, s",
+    "desc": "STEMPEL SERVICE - karty plastikoweSzczecin, agencja reklamowa, usługi reklamowe , pieczątki, stemple, datowniki, nadruki, sklep i produkcja, gadżety reklamowe, grawerowanie, piaskowanie, wizytówki, szyldy, identyfikatory, karty plastikowe, prezenty, upominki, dyplomy, puchary, trofea, nagrody sportowe, koszulki, stroje",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "netselekt.pl",
+    "url": "https://netselekt.pl/pl/i/Serwis/20",
+    "title": "Serwis urządzeń – od kas fiskalnych po drukarki etykiet! | Serwis drukarek fiskalnych | NetSelekt",
+    "desc": "W ramach naszych usług serwisowych oferujemy przeglądy serwisowe, które obejmują konserwację, czyszczenie i regulację urządzeń: terminali wózkowych, drukarek etykiet, terminali przenośnych oraz ręcznych czytników kodów kreskowych różnych marek",
+    "h1": [
+     "H1: Serwis",
+     "H1: Serwis urządzeń AutoID"
+    ],
+    "first": "Wymiana / naprawa głowicy",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Kalibracja"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "cardco.pl",
+    "url": "https://cardco.pl/drukarki-kart/",
+    "title": "Drukarki kart | Cardco",
+    "desc": "Drukarki kart plastikowych i identyfikatorów: termosublimacyjne i retransferowe Zebra, Fargo, Entrust Datacard. Sprzedaż, serwis, materiały eksploatacyjne.",
+    "h1": [
+     "H1: Drukarki kart"
+    ],
+    "first": "Laminacja / retransfer",
+    "seoFirst": "Laminacja / retransfer",
+    "works": [
+     "Taśma barwiąca / ribbon",
+     "Laminacja / retransfer"
+    ],
+    "seoWorks": [
+     "Laminacja / retransfer"
+    ],
+    "city": []
+   },
+   {
+    "host": "formatdruk.eu",
+    "url": "https://formatdruk.eu/oferta/karty-plastikowe",
+    "title": "Karty plastikowe z nadrukiem – drukowanie kart Łódź| Format Druk",
+    "desc": "Solidne karty plastikowe z nadrukiem. Estetyczne wykonanie i dbałość o każdy szczegół. Skorzystaj z oferty Format Druk z Łodzi. Zapraszamy do kontaktu.",
+    "h1": [
+     "H1: Karty plastikowe z nadrukiem – doskonały nośnik każdej reklamy"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "labelsoft.pl",
+    "url": "https://labelsoft.pl/serwis/",
+    "title": "Serwis | Firma LABELSOFT",
+    "desc": "Serwis - Firma LABELSOFT - drukarki firmy Zebra, serwis sprzętu, druk etykiet niestandardowych - Tel. 606292393​ ul. Peonii 20/8 Warszawa",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Wymiana / naprawa głowicy",
+    "seoFirst": "Wymiana / naprawa głowicy",
+    "works": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Wymiana / naprawa głowicy",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "chomtech.pl",
+    "url": "https://www.chomtech.pl/dystrybucja/fargo/",
+    "title": "Fargo | CHOMTECH.PL",
+    "desc": "",
+    "h1": [
+     "H1: Fargo"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "",
+    "works": [
+     "Taśma barwiąca / ribbon",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "zebrapolska.pl",
+    "url": "https://zebrapolska.pl/drukarki-kart-plastikowych/",
+    "title": "Drukarki kart plastikowych Zebra – Personalizacja ID Zebra Polska",
+    "desc": "Drukarki kart plastikowych Zebra – szybkie i trwałe wydruki kart ID, lojalnościowych i identyfikatorów. Jakość i niezawodność.",
+    "h1": [],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "",
+    "works": [
+     "Kodery (magnetyczny / chip / RFID)",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "systemdruk.pl",
+    "url": "https://systemdruk.pl/oferta/karty-plastikowe/",
+    "title": "Karty plastikowe kraków - SystemDruk - Kraków",
+    "desc": "SystemDruk - Kraków. Oferujemy usługi poligraficzne, druk cyfrowy, druk offsetowy, druk solwentowy, karty plastikowe, opakowania, torby, gadżety reklamowe.",
+    "h1": [
+     "H1: Karty plastikowe kraków"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "",
+    "works": [
+     "Kodery (magnetyczny / chip / RFID)"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "cennik.kamelot.pl",
+    "url": "https://www.cennik.kamelot.pl/druk/wizytowki/karty-plastikowe/",
+    "title": "Karty plastikowe – Cennik",
+    "desc": "",
+    "h1": [
+     "H1: Karty plastikowe"
+    ],
+    "first": "Druk dwustronny / flipper",
+    "seoFirst": "",
+    "works": [
+     "Kodery (magnetyczny / chip / RFID)",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "magicard.com.pl",
+    "url": "https://magicard.com.pl/",
+    "title": "MAGICARD - drukarki kart plastikowych, drukarki kart magnetycznych, drukarka do kart plastikowych, druk kart plastikowych, karty magnetyczne, identyfikatory, karty plastikowe, drukarka kart, personali",
+    "desc": "Drukarki kart plastikowych, drukarki do identyfikatorów Magicard. Jeżeli potrzebujesz urządzeń do drukowania kart plastikowych, kart magnetycznych, kart plastikowych lub identyfikatorów - drukarki kart Magicard będą dla Ciebie najlepszym rozwiązaniem. W ofercie materiały eksploatacyjne do drukarek kart: karty magnetycz",
+    "h1": [
+     "H1: Drukarki kart Magicard"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "Kodery (magnetyczny / chip / RFID)",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Taśma barwiąca / ribbon",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Kodery (magnetyczny / chip / RFID)"
+    ],
+    "city": []
+   },
+   {
+    "host": "kartypcv.pl",
+    "url": "https://kartypcv.pl/cennik-karty-plastikowe/",
+    "title": "Cennik karty plastikowe - Sprawdź ceny dla kart PCV z nadrukiem",
+    "desc": "Cennik na karty plastikowe to miejsce gdzie sprawdzisz ceny na karty PCV z nadrukiem. W cenniku zawarte są ceny wszystkich naszych produktów, np. identyfikatorów czy kart rabatowych.",
+    "h1": [
+     "H1: Cennik karty plastikowe"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "argo.pl",
+    "url": "https://argo.pl/",
+    "title": "Argo - Lider rynku w zakresie laminowania, bindowania, oprawy dokumentów, niszczarek, gilotyn, identyfikacji, kart plastikowych",
+    "desc": "Лидер рынка в сфере ламинирования, переплета документов, уничтожителей, резаков, идентификаци, пластиковых карт",
+    "h1": [],
+    "first": "Laminacja / retransfer",
+    "seoFirst": "Laminacja / retransfer",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Laminacja / retransfer"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja",
+     "Laminacja / retransfer"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "hant.pl",
+    "url": "https://www.hant.pl/drukarki-kart/zebra/zebra-zc300.html",
+    "title": "Pozna�- Drukarka kart Zebra ZC 300. Sprzeda�, instalacja, serwis- zadzwo� 61 8122954",
+    "desc": "Drukarka kart Zebra ZC 300 do wykruku kart plastikowych. Drukarka zapewnia wydruk trwa�ych kart do system�w lojano�ciowych, kontroli i autoryzacji dost�pu, rejestracji czasu pracy lub identyfikacji.",
+    "h1": [
+     "H1: Drukarka kart Zebra ZC 300"
+    ],
+    "first": "Kodery (magnetyczny / chip / RFID)",
+    "seoFirst": "",
+    "works": [
+     "Podajnik / pobieranie kart",
+     "Laminacja / retransfer",
+     "Kodery (magnetyczny / chip / RFID)",
+     "Konfiguracja / sterowniki / oprogramowanie",
+     "Druk dwustronny / flipper"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Kodery (magnetyczny / chip / RFID)": {
+    "было": 20,
+    "стало": 4,
+    "исключено": [
+     "kodowanie karty pracy",
+     "kodowanie karty renault",
+     "kodowanie karty renault megane 2",
+     "kodowanie karty pracy do wydruku",
+     "kodowanie karty pracy pdf",
+     "kodowanie karty scenic 2",
+     "kodowanie karty renault megane 3",
+     "kodowanie karty renault espace 4",
+     "kodowanie karty laguna 2",
+     "kodowanie karta pracy przedszkole",
+     "kodowanie kart renault",
+     "kodowanie kart",
+     "kodowanie kart do samochodów renault",
+     "kodowanie kart espace 4",
+     "kodowanie kart renault warszawa",
+     "kodowanie kart samochodowych"
+    ]
+   },
+   "общие подсказки: Kodery (magnetyczny / chip / RFID)": {
+    "было": 3,
+    "стало": 0,
+    "исключено": [
+     "drukarka do kart rfid",
+     "drukarka do kart magnetycznych",
+     "drukarka do kart zbliżeniowych"
+    ]
+   },
+   "общие подсказки: Druk dwustronny / flipper": {
+    "было": 3,
+    "стало": 0,
+    "исключено": [
+     "drukarka kart plastikowych dwustronna",
+     "drukarka do kart plastikowych dwustronna",
+     "drukarka kart zebra zc300 dwustronna"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Kodery (magnetyczny / chip / RFID)",
+   "comp": {
+    "mention": 18,
+    "first": 8,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 4,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 4,
+    "cena": 0,
+    "ex": [
+     "kodowanie kart magnetycznych",
+     "kodowanie kart rfid",
+     "kodowanie kart nfc",
+     "kodowanie kart dostępu"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konfiguracja / sterowniki / oprogramowanie",
+   "comp": {
+    "mention": 14,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 2,
+    "td": 2
+   },
+   "ac": 1,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Czyszczenie / konserwacja",
+   "comp": {
+    "mention": 12,
+    "first": 1,
+    "seoFirst": 3,
+    "seo": 5,
+    "head": 2,
+    "td": 3
+   },
+   "ac": 1,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "czyszczenie drukarki evolis zenius",
+     "czyszczenie drukarki evolis"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Taśma barwiąca / ribbon",
+   "comp": {
+    "mention": 11,
+    "first": 1,
+    "seoFirst": 2,
+    "seo": 3,
+    "head": 2,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 15,
+    "cena": 0,
+    "ex": [
+     "taśma evolis",
+     "taśma ymcko evolis primacy 300 wydruków r5f008eaa",
+     "taśma kolorowa evolis",
+     "taśma do drukarki evolis zenius",
+     "taśma do drukarki evolis"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk dwustronny / flipper",
+   "comp": {
+    "mention": 11,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Laminacja / retransfer",
+   "comp": {
+    "mention": 10,
+    "first": 5,
+    "seoFirst": 3,
+    "seo": 4,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana / naprawa głowicy",
+   "comp": {
+    "mention": 8,
+    "first": 2,
+    "seoFirst": 2,
+    "seo": 2,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Podajnik / pobieranie kart",
+   "comp": {
+    "mention": 7,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / elektroniki",
+   "comp": {
+    "mention": 4,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja",
+   "comp": {
+    "mention": 2,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Wymiana głowicy",
+   "a": "Wymiana / naprawa głowicy",
+   "why": "основной ремонт по прайсу (группа «Głowica drukująca», «Wymiana głowicy drukującej»)",
+   "evidence": "конкуренты 8 из 27 (первой работой — 2, в Title/Description — 1)"
+  },
+  {
+   "w": "Naprawa koderów",
+   "a": "Kodery (magnetyczny / chip / RFID)",
+   "why": "Решение пользователя 19.10 — подсказки 20→4 после очистки (были «kodowanie karty pracy / Renault»); остаётся 18 из 27 конкурентов, у 8 — первой работой; в прайсе 4 позиции",
+   "evidence": "конкуренты 18 из 27 (первой работой — 8, в Title/Description — 2) · подсказки Google 4 (напр. «kodowanie kart magnetycznych», «kodowanie kart rfid»)"
+  },
+  {
+   "w": "Naprawa laminatora",
+   "a": "Laminacja / retransfer",
+   "why": "10 конкурентов, у 5 — первая работа; в прайсе «Naprawa modułu laminacji»",
+   "evidence": "конкуренты 10 из 27 (первой работой — 5, в Title/Description — 1)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa podajnika kart",
+   "a": "Podajnik / pobieranie kart",
+   "why": "только 7 конкурентов и нет подсказок — слабее ламинации; 4-й работой не помещается",
+   "evidence": "конкуренты 7 из 27 (первой работой — 0, в Title/Description — 0)"
+  },
+  {
+   "w": "Ribbon",
+   "why": "15 подсказок, но в основном покупка лент; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «naprawa koderów»",
+  "Слабые данные: 27 подходящих конкурентов, Ads и XLSX нет"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek do kart plastikowych we Wrocławiu ✔ Wymiana głowicy, naprawa koderów i laminatora ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 159
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт принтерів пластикових карток у Вроцлаві ✔ Заміна головки, ремонт кодерів і ламінатора ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 154
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт принтеров пластиковых карт во Вроцлаве ✔ Замена головки, ремонт кодировщиков и ламинатора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 157
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

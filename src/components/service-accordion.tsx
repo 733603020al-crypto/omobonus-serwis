@@ -2113,18 +2113,12 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                 )}
                               </div>
                             </div>
-                            {/* Десктопная версия: обычный заголовок.
-                                Для большинства страниц — не <h2>, т.к. semantyczny <h2>
+                            {/* Десктопная версия: обычный текст, не <h2> — semantyczny <h2>
                                 dla tej sekcji już istnieje w wersji mobilnej (ten sam
-                                tekst, wspólny dla obu breakpointów w drzewie DOM), więc
-                                unikamy duplikatu H2. Для serwis-ekspresow-do-kawy (единственная
-                                страница) desktop-версия — настоящий <h2>, т.к. мобильный
-                                <h2> здесь display:none на md+ и полностью пропадает
-                                из дерева доступности; оба <h2> взаимоисключающе видимы
-                                (md:hidden / hidden md:block), поэтому дубликата нет. */}
+                                tekst w HTML), więc bez duplikatu H2 — na każdej stronie. */}
                             <div data-open-header-hover-text="true" className="hidden md:block">
                               {(() => {
-                                const DesktopTitleTag = isKawaRepairTable ? 'h2' : 'div'
+                                const DesktopTitleTag = 'div'
                                 return (
                               <DesktopTitleTag className={cn(
                                 "zakres-title-text text-lg md:text-xl font-cormorant font-semibold transition-colors mb-1 leading-tight",

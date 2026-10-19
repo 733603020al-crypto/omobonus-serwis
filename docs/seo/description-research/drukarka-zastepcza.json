@@ -1,0 +1,965 @@
+{
+ "page": "/uslugi/drukarka-zastepcza",
+ "name": "Принтер на замену",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "drukarka zastępcza na czas naprawy",
+    "urządzenie zastępcze na czas naprawy drukarki",
+    "drukarka zastępcza serwis",
+    "drukarka zastępcza na czas naprawy cennik",
+    "drukarka zastępcza Warszawa",
+    "drukarka zastępcza Kraków",
+    "drukarka zastępcza Wrocław",
+    "drukarka zastępcza Poznań",
+    "drukarka zastępcza Gdańsk",
+    "drukarka zastępcza Łódź",
+    "drukarka zastępcza Katowice",
+    "drukarka zastępcza Lublin",
+    "drukarka zastępcza Szczecin",
+    "drukarka zastępcza Białystok",
+    "drukarka zastępcza Bydgoszcz",
+    "drukarka zastępcza Rzeszów",
+    "drukarka zastępcza Toruń",
+    "drukarka zastępcza Kielce",
+    "drukarka zastępcza Opole",
+    "drukarka zastępcza Olsztyn",
+    "drukarka zastępcza Gdynia",
+    "drukarka zastępcza Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka zastępcza ",
+    "urządzenie zastępcze ",
+    "sprzęt zastępczy "
+   ],
+   "uniqueSuggestions": 4,
+   "withPrice": [],
+   "wroclaw": [],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Drukarka zastępcza na czas naprawy": {
+    "seeds": [
+     "drukarka na czas naprawy",
+     "urządzenie zastępcze na czas naprawy",
+     "drukarka zastępcza"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 0,
+   "impressions": 0,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [],
+   "phrases": 3
+  }
+ },
+ "competitors": {
+  "relevant": 34,
+  "checked": 170,
+  "candidates": 237,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "darodruk.pl",
+    "url": "https://darodruk.pl/drukarka-zastepcza/",
+    "title": "Drukarka zastępcza na czas naprawy – oferta DARO-DRUK",
+    "desc": "Zapewniamy drukarkę zastępczą na czas naprawy. Więcej informacji na ten temat znajdziesz na naszej stronie internetowej. W przypadku pytań prosimy o kontakt.",
+    "h1": [
+     "H1: Drukarka zastępcza"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "city": [
+     "Wrocław",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "ksero-partner.com.pl",
+    "url": "https://www.ksero-partner.com.pl/wynajem-drukarek-wroclaw/",
+    "title": "Wynajem drukarek Wrocław | Ksero Partner",
+    "desc": "Wynajmij drukarkę lub kserokopiarkę do swojej firmy. Wysokiej jakości sprzęt, który sprawdzi się w małej i dużej firmie we Wrocławiu",
+    "h1": [
+     "H1: Wynajem drukarek Wrocław"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Wrocław",
+     "Poznań",
+     "Katowice",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "unibit.com.pl",
+    "url": "https://www.unibit.com.pl/serwis-drukarek-i-kopiarek/",
+    "title": "Serwis drukarek i kopiarek - Unibit",
+    "desc": "",
+    "h1": [],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "wawanaprawa.pl",
+    "url": "https://wawanaprawa.pl/sprzet-zastepczy/",
+    "title": "Sprzęt zastępczy drukarki na czas naprawy | Warszawa",
+    "desc": "Sprzęt zastępczy na czas naprawy drukarki w Warszawie. Odbierzemy uszkodzone urządzenie i dostarczymy sprawną drukarkę – bez przestojów w pracy.",
+    "h1": [
+     "H1: Sprzęt zastępczy na czas naprawy drukarki"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy",
+     "Odbiór drukarki do naprawy"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "j-p.com.pl",
+    "url": "https://j-p.com.pl/serwis",
+    "title": "J-P: Serwis Drukarek i Urządzeń Biurowych – Szybko i Profesjonalnie",
+    "desc": "Naprawiamy drukarki i kopiarki biurowe. Sprawna diagnostyka, wymiana części, konserwacja i opieka serwisowa – szybko i rzetelnie.",
+    "h1": [],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "pewnybiznes.info",
+    "url": "https://www.pewnybiznes.info/zepsuty-sprzet-biurowy-czy-przysluguje-nam-zastepczy-na-okres-naprawy/",
+    "title": "Zepsuty sprzęt biurowy – czy przysługuje nam zastępczy na okres naprawy? – Biznes i Firma",
+    "desc": "",
+    "h1": [
+     "H1: Zepsuty sprzęt biurowy – czy przysługuje nam zastępczy na okres naprawy?"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "city": []
+   },
+   {
+    "host": "drukserwis24.com.pl",
+    "url": "https://drukserwis24.com.pl/wynajem-drukarek-przemyslowych/",
+    "title": "Wynajem drukarek przemysłowych CIJ, TIJ, laser | Druk Serwis 24",
+    "desc": "Wynajem drukarek do znakowania produktów — sprzęt, serwis, materiały i drukarka zastępcza w jednej racie. CIJ, TIJ, laser. Cała Polska. Zapytaj o wynajem.",
+    "h1": [
+     "H1: Wynajem drukarek przemysłowych (CIJ, TIJ, laser)"
+    ],
+    "first": "Bezpłatnie / w cenie serwisu",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "printflow.com.pl",
+    "url": "https://printflow.com.pl/uslugi/serwis-drukarek/lodz",
+    "title": "Serwis drukarek Łódź · Print Flow Solutions",
+    "desc": "Własny serwis drukarek w Łodzi i województwo łódzkie. Naprawiamy urządzenia wielu marek i ustalamy termin po rozpoznaniu zgłoszenia.",
+    "h1": [
+     "H1: Serwis drukarek Łódź"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "regulservis.pl",
+    "url": "https://regulservis.pl/",
+    "title": "Serwis i naprawa drukarek w Warszawie",
+    "desc": "Ekspresowa naprawa drukarek w Warszawie – darmowa diagnostyka, dojazd w 90 minut, gwarancja do 12 miesięcy, urządzenie zastępcze. Zadzwoń ☎ 794 060 148",
+    "h1": [
+     "H1: Naprawa drukarek w Warszawie – ekspresowy serwis z gwarancją"
+    ],
+    "first": "Dostawa i instalacja",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "meibi.pl",
+    "url": "https://meibi.pl/oferta/serwis-drukarek/",
+    "title": "Serwis i naprawa drukarek Kraków i okolice — Meibi.pl",
+    "desc": "Serwis drukarek firmowych każdego typu: HP, Brother, Epson, Canon, Samsung, OKI. Umowy serwisowe, dojazd do firmy, drukarka zastępcza. Kraków.",
+    "h1": [
+     "H1: Serwis i naprawa drukarek firmowych — Kraków i okolice"
+    ],
+    "first": "Bezpłatnie / w cenie serwisu",
+    "seoFirst": "Bezpłatnie / w cenie serwisu",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "seoWorks": [
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "forcopy.com.pl",
+    "url": "https://forcopy.com.pl/serwis-kserokopiarek/",
+    "title": "Serwis kserokopiarek Konica Minolta, Canon, Sharp",
+    "desc": "ForCopy|Serwis kserokopiarek — zgłoś usterkę online i odbierz bezpłatną diagnozę. Naprawy, przeglądy, oryginalne części. Reakcja 24h, cała Polska.",
+    "h1": [
+     "H1: Kserokopiarka nie może stać . Reagujemy, zanim biuro się zatrzyma."
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "ekrak.pl",
+    "url": "https://ekrak.pl/serwis-sprzetu/",
+    "title": "serwis komputerów i drukarek | ekrak.pl strona firmy eko-krak",
+    "desc": "serwis drukarek i komputerów Kraków, drukarki zastępcze na czas naprawy,naprawy drukarek,serwis laptopów",
+    "h1": [
+     "H1: serwis sprzętu",
+     "H1: Free WordPress Theme | Zincy lite"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "copyrem.pl",
+    "url": "https://www.copyrem.pl/dzierzawa-kserokopiarek/",
+    "title": "Dzierżawa kserokopiarek od 80 zł netto – Katowice, Śląsk",
+    "desc": "Dzierżawa kserokopiarek i drukarek od 80 zł netto/mies. Serwis, tonery i urządzenie zastępcze w cenie. Dla firm, szkół i urzędów – Katowice i Śląsk.",
+    "h1": [
+     "H1: Dzierżawa kserokopiarek i drukarek – Katowice i Śląsk"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "infotech.olsztyn.pl",
+    "url": "https://www.infotech.olsztyn.pl/najem",
+    "title": "Najem urządzeń biurowych Konica Minolta | Sprzęt zastępczy",
+    "desc": "Mamy do zaoferowania najem urządzeń biurowych. Głównymi zaletami tego rozwiązania są przewidywalne koszty oraz gwarancja sprzętu zastępczego w przypadku awarii.",
+    "h1": [
+     "H1: Najem"
+    ],
+    "first": "Bezpłatnie / w cenie serwisu",
+    "seoFirst": "",
+    "works": [
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "biuromax-balcer.pl",
+    "url": "https://www.biuromax-balcer.pl/serwis-urzadzen-biurowych/",
+    "title": "Naprawa i serwis urządzeń biurowych - Bydgoszcz - Biuromax-Balcer",
+    "desc": "Profesjonalny serwis urządzeń biurowych jak drukarki, kserokopiarki i urządzenia wielofunkcyjne w Bydgoszczy. Naprawy, konserwacje, dojazd. Sprawdź ofertę!",
+    "h1": [
+     "H1: Serwis drukarek, urządzeń wielofunkcyjnych i kserokopiarek w Bydgoszczy – szybko i profesjonalnie"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [
+     "Dostawa i instalacja",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "scanerserwis.pl",
+    "url": "https://scanerserwis.pl/katowice",
+    "title": "Katowice - Kserokopiarki, sprzedaż, dzierżawa, serwis",
+    "desc": "Profesjonalny serwis i dzierżawa kserokopiarek w Katowicach. Konica Minolta, Develop – szybki dojazd, tonery, części, urządzenia zastępcze. Sprawdź ofertę Scaner Serwis!",
+    "h1": [
+     "H1: Kserokopiarki Katowice – sprzedaż, dzierżawa i serwis urządzeń biurowych"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "e-serwis.pl",
+    "url": "https://e-serwis.pl/webpage/czy-zapewniacie-urzadzenie-zastepcze-w-razie-awarii.html",
+    "title": "Urządzenie zastępcze w razie awarii – szybka kontynuacja pracy",
+    "desc": "Zapewniamy urządzenia zastępcze w przypadku awarii sprzętu, aby zagwarantować ciągłość pracy. Nasz serwis natychmiast reaguje, dostarcza sprzęt i zajmuje się naprawą uszkodzonego urządzenia.",
+    "h1": [
+     "H1: Czy zapewniacie urządzenie zastępcze w razie awarii?"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "adlers.com.pl",
+    "url": "https://adlers.com.pl/serwis-drukarek-warszawa",
+    "title": "Serwis drukarek Warszawa - naprawa kserokopiarek, kopiarek - Adlers Serwis",
+    "desc": "Zapraszamy do Adlers: serwisu drukarek, a także kserokopiarek w Warszawie. Profesjonalnie wykonujemy przeglądy i naprawy. Sprawdź!",
+    "h1": [
+     "H1: Autoryzowany serwis drukarek atramentowych, kopiarek w Warszawie"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Dostawa i instalacja",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "ikielce.pl",
+    "url": "https://ikielce.pl/zastepcze.html",
+    "title": "Kielce ✴️ zastępcze usługi i oferty lokalne",
+    "desc": "Kielce - zastępcze usługi, zakupy, dostawy, gotówka, serwis, naprawy, terminy, rezerwacje i oferty lokalne w Kielcach.",
+    "h1": [
+     "H1: Zastępcze oferty Kielce"
+    ],
+    "first": "Dostawa i instalacja",
+    "seoFirst": "Dostawa i instalacja",
+    "works": [
+     "Dostawa i instalacja",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Dostawa i instalacja"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "falter.eu",
+    "url": "https://www.falter.eu/wsparcie/serwis/",
+    "title": "Serwis - Falter sp. z o.o.",
+    "desc": "",
+    "h1": [
+     "H1: Usługi serwisu"
+    ],
+    "first": "Dostawa i instalacja",
+    "seoFirst": "Dostawa i instalacja",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja"
+    ],
+    "seoWorks": [
+     "Dostawa i instalacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "przetargimedyczne.org",
+    "url": "https://www.przetargimedyczne.org/urzadzenie-zastepcze-na-czas-naprawy-aparatury-medycznej-kiedy-szpital-moze-wymagac-go-od-dostawcy/",
+    "title": "Urządzenie zastępcze na czas naprawy aparatury medycznej. Kiedy szpital może wymagać go od dostawcy? – Przetargi medyczne",
+    "desc": "",
+    "h1": [
+     "H1: Przetargi medyczne",
+     "H1: Urządzenie zastępcze na czas naprawy aparatury medycznej. Kiedy szpital może wymagać go od dostawcy?"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "hitpraca.pl",
+    "url": "https://www.hitpraca.pl/oferta/stanowisko-pracy-ds-pieczy-instytucjonalnej-i-pomocy-spolecznej-w-zespole-ds-pieczy-instytucjonalnejswiadczen-i-sprawozdawczosci-oraz-ds-usamodzielnien-dzialu-pieczy-zastepczej-k-m-7ed40362611c3c5/",
+    "title": "STANOWISKO PRACY: DS. PIECZY INSTYTUCJONALNEJ I POMOCY SPOŁECZNEJ W ZESPOLE DS. PIECZY INSTYTUCJONALNEJ, ŚWIADCZEŃ I SPRAWOZDAWCZOŚCI ORAZ DS. USAMODZIELNIEŃ DZIAŁU PIECZY ZASTĘPCZEJ (K/M) - Nowy Dwór",
+    "desc": "⭐ Praca: STANOWISKO PRACY: DS. PIECZY INSTYTUCJONALNEJ I POMOCY SPOŁECZNEJ W ZESPOLE DS. PIECZY INSTYTUCJONALNEJ,\nŚWIADCZEŃ I SPRAWOZDAWCZOŚCI ORAZ DS. USAMODZIELNIEŃ DZIAŁU PIECZY ZASTĘPCZEJ (K/M) - Nowy Dwór Gdański, Mzda: 5 000 Kč - 5 500 Kč, Treśc ogłoszenia wraz z załącznikami znajduje się na stronie https://pcprn",
+    "h1": [
+     "H1: STANOWISKO PRACY: DS. PIECZY INSTYTUCJONALNEJ I POMOCY SPOŁECZNEJ W ZESPOLE DS. PIECZY INSTYTUCJONALNEJ, ŚWIADCZEŃ I SPRAWOZDAWCZOŚCI ORAZ D"
+    ],
+    "first": "Dostawa i instalacja",
+    "seoFirst": "",
+    "works": [
+     "Dostawa i instalacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "autocentrum.pl",
+    "url": "https://www.autocentrum.pl/publikacje/naszym-zdaniem/samochod-zastepczy-na-czas-naprawy-kiedy-i-komu-przysluguje/",
+    "title": "Samochód zastępczy na czas naprawy - kiedy i komu przysługuje? &bull; AutoCentrum.pl",
+    "desc": "Miałeś wypadek lub kolizję drogową? Twoje auto zostało uszkodzone nie z Twojej winy, a Ty zostałeś pozbawiony środka transportu na kilka dni? Jeszcze do niedawna wiązałoby się to z wieloma niedogodnościami i przymusem korzystania z zastępczych środków transportu (komunikacja publiczna), gdyż auto zastępcze na czas napr",
+    "h1": [
+     "H1: Samochód zastępczy na czas naprawy - kiedy i komu przysługuje?"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "city": []
+   },
+   {
+    "host": "kserotechnik.com",
+    "url": "https://www.kserotechnik.com/wynajem/wynajem-drukarek.html",
+    "title": "Wynajem drukarek | Katowice, Tychy, Śląsk",
+    "desc": "Wynajem i dzierżawa drukarek dla firm w Tychach i najbliższej okolicy. Dobór urządzenia, serwis, materiały eksploatacyjne i pomoc techniczna.",
+    "h1": [
+     "H1: Wynajem i dzierżawa drukarek Tychy – serwis i materiały w cenie"
+    ],
+    "first": "Bezpłatnie / w cenie serwisu",
+    "seoFirst": "Bezpłatnie / w cenie serwisu",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "transinfo.pl",
+    "url": "https://transinfo.pl/inforail/polregio-szuka-przewoznika-autobusowego-na-trase-szczecin-angermunde-zastepcza-komunikacja-przez-ponad-pol-roku/",
+    "title": "POLREGIO szuka przewoźnika autobusowego na trasę Szczecin – Angermünde. Zastępcza komunikacja przez ponad pół roku - TransInfo",
+    "desc": "POLREGIO ogłosiło przetarg na obsługę zastępczej komunikacji autobusowej pomiędzy Szczecinem Głównym a niemieckim Angermünde.",
+    "h1": [
+     "H1: POLREGIO szuka przewoźnika autobusowego na trasę Szczecin – Angermünde. Zastępcza komunikacja przez ponad pół roku"
+    ],
+    "first": "Bezpłatnie / w cenie serwisu",
+    "seoFirst": "",
+    "works": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/oferta/serwis-drukarek",
+    "title": "Mobilny serwis drukarek – zakres i obszar działania | DMD Tonery",
+    "desc": "Mobilny serwis drukarek na Podkarpaciu. Diagnostyka i naprawa drukarek laserowych, atramentowych, urządzeń MFP, ploterów oraz drukarek igłowych.",
+    "h1": [
+     "H1: Serwis drukarek – Rzeszów i Podkarpacie"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Urządzenia A4 / A3 / wielofunkcyjne",
+     "Odbiór drukarki do naprawy",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "serwisenbio.com.pl",
+    "url": "http://serwisenbio.com.pl/",
+    "title": "Serwis autoklawów ENBIO – Serwis autoklawów",
+    "desc": "",
+    "h1": [
+     "H1: Serwisie autoklawów ENBIO",
+     "H1: Dlaczego my?"
+    ],
+    "first": "Odbiór drukarki do naprawy",
+    "seoFirst": "Odbiór drukarki do naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy",
+     "Odbiór drukarki do naprawy"
+    ],
+    "city": []
+   },
+   {
+    "host": "99rent.pl",
+    "url": "https://99rent.pl/",
+    "title": "Wypożyczalnia samochodów - wynajem samochodów i aut - tanio | 99rent",
+    "desc": "Wypożyczalnia samochodów 99rent ✅ Szeroka oferta aut ✅ Dostępna w 33 oddziałach w Polsce ✅ Serwis i ubezpieczenie w cenie ➤ Sprawdź!",
+    "h1": [
+     "H1: Wypożyczalnia samochodów 99RENT"
+    ],
+    "first": "Odbiór drukarki do naprawy",
+    "seoFirst": "Bezpłatnie / w cenie serwisu",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Odbiór drukarki do naprawy"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "szybkilak.pl",
+    "url": "https://szybkilak.pl/samochod-zastepczy-na-czas-naprawy/",
+    "title": "Samochód zastępczy na czas naprawy | SZYBKILAK.PL",
+    "desc": "Wynajmij tu ➤ Samochód zastępczy na czas naprawy ☎ 798-800-888 ✅ Likwidacja szkód ✅ Bezgotówkowe naprawy powypadkowe ✅ Auto zastępcze ⭐ Sprawdź nas!",
+    "h1": [
+     "H1: Samochód zastępczy na czas naprawy"
+    ],
+    "first": "Drukarka zastępcza na czas naprawy",
+    "seoFirst": "Drukarka zastępcza na czas naprawy",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Odbiór drukarki do naprawy"
+    ],
+    "seoWorks": [
+     "Drukarka zastępcza na czas naprawy"
+    ],
+    "city": []
+   },
+   {
+    "host": "copyplus.pl",
+    "url": "https://www.copyplus.pl/",
+    "title": "Kompleksowa obsługa, sprzedaż i serwis sprzętu biurowego – Kraków – Copy Plus",
+    "desc": "Zajmujemy się kompleksowym doradztwem w zakresie sprzętu biurowego. Sprzedajemy, dzierżawimy i serwisujemy kserokopiarki, drukarki, urządzenia elektroniczne.",
+    "h1": [
+     "H1: Sprzedaż i serwis sprzętów biurowych Copy Plus"
+    ],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "starcopy.pl",
+    "url": "https://starcopy.pl/serwis/",
+    "title": "Serwis, naprawa drukarek, ksero, niszczarek, Sharp - Poznań",
+    "desc": "Świadczymy serwis urządzeń: drukarek, ksero, niszczarek, innych. Profesjonalna naprawa. Stacopy - Poznań",
+    "h1": [],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "",
+    "works": [
+     "Dostawa i instalacja",
+     "Bezpłatnie / w cenie serwisu",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwis-drukarek.rzeszow.pl",
+    "url": "https://www.serwis-drukarek.rzeszow.pl/",
+    "title": "DMD-TONERY.pl | tusze do drukarek i tonery Rzeszów",
+    "desc": "DMD Tonery Rzeszów - Tusze do drukarek, tonery, drukarki nowe i używane.  Skup tonerów.  Dzierżawa kserokopiarek i drukarek. Serwis urządzeń drukujących.",
+    "h1": [],
+    "first": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "seoFirst": "Urządzenia A4 / A3 / wielofunkcyjne",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Dostawa i instalacja",
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "seoWorks": [
+     "Urządzenia A4 / A3 / wielofunkcyjne"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "autobaza.pl",
+    "url": "https://www.autobaza.pl/page/auto-ekspert/samochod-zastepczy-z-oc-sprawcy/",
+    "title": "Samochód zastępczy z OC sprawcy – kiedy i jak go uzyskać?",
+    "desc": "Dowiedz się, kiedy przysługuje samochód zastępczy z OC sprawcy, jak wygląda procedura i na co zwrócić uwagę przy wynajmie auta po kolizji.",
+    "h1": [
+     "H1: Samochód zastępczy z OC sprawcy – kiedy przysługuje, jak uzyskać?"
+    ],
+    "first": "Rozliczenie za wydruk / dzień",
+    "seoFirst": "",
+    "works": [
+     "Drukarka zastępcza na czas naprawy",
+     "Bezpłatnie / w cenie serwisu",
+     "Odbiór drukarki do naprawy",
+     "Rozliczenie za wydruk / dzień"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "opiekaseniora.pl",
+    "url": "https://opiekaseniora.pl/szukam/pomoc-w-opiece-nad-seniorem-krakow-91",
+    "title": "Szukam: Pomoc w opiece nad seniorem Kraków | OpiekaSeniora.pl",
+    "desc": "UAKTUALNIONE 10/18/26: Dzień dobry, szukam opiekunki dla seniorki, 87 lat, w Krakowie, dzielnica Kurdwanów. Mama ma średnią demencję (początki Alzheimera), jest chodząca, sama je i dba o higienę osobistą. Mama ma stałą opiekunkę która z nią mieszka ale potrzebujemy pomocy zastępczej 2 razy w tygodniu po 3-4 godziny jed",
+    "h1": [
+     "H1: Pomoc w opiece nad seniorem Kraków"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {}
+ },
+ "ranking": [
+  {
+   "work": "Drukarka zastępcza na czas naprawy",
+   "comp": {
+    "mention": 24,
+    "first": 9,
+    "seoFirst": 7,
+    "seo": 9,
+    "head": 6,
+    "td": 7
+   },
+   "ac": 1,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": {
+    "n": 1,
+    "kp": 0,
+    "ex": [
+     "drukarka na czas naprawy"
+    ]
+   }
+  },
+  {
+   "work": "Dostawa i instalacja",
+   "comp": {
+    "mention": 22,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 5,
+    "head": 4,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Bezpłatnie / w cenie serwisu",
+   "comp": {
+    "mention": 21,
+    "first": 5,
+    "seoFirst": 3,
+    "seo": 5,
+    "head": 3,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Urządzenia A4 / A3 / wielofunkcyjne",
+   "comp": {
+    "mention": 17,
+    "first": 12,
+    "seoFirst": 8,
+    "seo": 8,
+    "head": 7,
+    "td": 8
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Odbiór drukarki do naprawy",
+   "comp": {
+    "mention": 10,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Rozliczenie za wydruk / dzień",
+   "comp": {
+    "mention": 8,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Nawet w 24 h",
+   "why": "Ваше замечание 19.10: «Zwykle w 24 h robocze» заменить. Взято «Nawet w 24 h» — как сейчас на сайте; FAQ: «w typowych przypadkach do 24 h roboczych»",
+   "evidence": ""
+  },
+  {
+   "w": "A4 i A3, mono i kolor",
+   "a": "Urządzenia A4 / A3 / wielofunkcyjne",
+   "why": "у 12 из 34 конкурентов первая работа",
+   "evidence": "конкуренты 17 из 34 (первой работой — 12, в Title/Description — 8)"
+  },
+  {
+   "w": "Bez abonamentu — płacisz za wydruki",
+   "a": "Bezpłatnie / w cenie serwisu",
+   "why": "FAQ: абонплаты нет, оплата за отпечатки; «бесплатно» писать нельзя",
+   "evidence": "конкуренты 21 из 34 (первой работой — 5, в Title/Description — 3)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Bezpłatnie",
+   "why": "не подтверждено — оплачиваются отпечатки",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Слабые данные: 34 подходящих конкурента, поиска почти нет (4 подсказки)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
+   "length": 140
+  },
+  "uk": {
+   "text": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ Навіть за 24 години ✔ A4 і A3, ч/б і колір ✔ Без абонплати — оплата за друк ☎ 793 759 262",
+   "length": 137
+  },
+  "ru": {
+   "text": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ Даже за 24 часа ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты — оплата за печать ☎ 793 759 262",
+   "length": 137
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

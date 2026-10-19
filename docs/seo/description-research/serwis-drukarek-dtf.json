@@ -1,0 +1,1103 @@
+{
+ "page": "/uslugi/serwis-drukarek-dtf",
+ "name": "DTF-принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek dtf",
+    "naprawa drukarek dtf",
+    "naprawa drukarki dtf",
+    "serwis drukarek dtf cennik",
+    "serwis drukarek dtf Kraków",
+    "serwis drukarek dtf Warszawa",
+    "serwis drukarek dtf Wrocław",
+    "serwis drukarek dtf Poznań",
+    "serwis drukarek dtf Gdańsk",
+    "serwis drukarek dtf Katowice",
+    "serwis drukarek dtf Łódź",
+    "serwis drukarek dtf Szczecin",
+    "serwis drukarek dtf Bydgoszcz",
+    "serwis drukarek dtf Lublin",
+    "serwis drukarek dtf Białystok",
+    "serwis drukarek dtf Rzeszów",
+    "serwis drukarek dtf Toruń",
+    "serwis drukarek dtf Kielce",
+    "serwis drukarek dtf Opole",
+    "serwis drukarek dtf Olsztyn",
+    "serwis drukarek dtf Częstochowa",
+    "serwis drukarek dtf Gdynia"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka dtf ",
+    "serwis dtf ",
+    "dtf ",
+    "naprawa drukarki dtf ",
+    "drukarka dtf a3 "
+   ],
+   "uniqueSuggestions": 298,
+   "withPrice": [
+    "drukarka dtf cena",
+    "drukarka dtf a3 cena",
+    "drukarka dtf uv cena",
+    "drukarka dtf do koszulek cena",
+    "drukarka dtf koszt",
+    "dtf trinity cena"
+   ],
+   "wroclaw": [
+    "dtf wrocław",
+    "druk dtf wrocław",
+    "drukarnia dtf wrocław",
+    "nadruki dtf wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Udrażnianie / czyszczenie głowic": {
+    "seeds": [
+     "czyszczenie głowicy dtf",
+     "głowica dtf",
+     "zatkana głowica dtf"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Układ białego atramentu / cyrkulacja": {
+    "seeds": [
+     "biały tusz dtf",
+     "mieszadło dtf"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "biały tusz dtf"
+    ],
+    "all": [
+     "biały tusz dtf"
+    ],
+    "dropped": []
+   },
+   "Konserwacja / przegląd": {
+    "seeds": [
+     "konserwacja drukarki dtf",
+     "czyszczenie drukarki dtf"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wymiana głowicy": {
+    "seeds": [
+     "wymiana głowicy dtf",
+     "głowica i3200"
+    ],
+    "n": 6,
+    "nRaw": 6,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "głowica i3200",
+     "głowica epson i3200",
+     "głowica epson i3200 a1",
+     "głowica epson i3200 u1",
+     "głowica epson i3200 e1",
+     "głowica epson i3200 cena"
+    ],
+    "all": [
+     "głowica i3200",
+     "głowica epson i3200",
+     "głowica epson i3200 a1",
+     "głowica epson i3200 u1",
+     "głowica epson i3200 e1",
+     "głowica epson i3200 cena"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 0,
+   "impressions": 0,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 31,
+  "checked": 170,
+  "candidates": 194,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "diasjet.pl",
+    "url": "https://diasjet.pl/",
+    "title": "Profesjonalne drukarki dtf - Dias PL",
+    "desc": "Profesjonalne drukarki dtf - wiele materiałów do druku DTF",
+    "h1": [
+     "H1: TECHNOLOGIE DLA DRUKU I PERSONALIZACJI"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Układ białego atramentu / cyrkulacja",
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "jamac.pl",
+    "url": "https://jamac.pl/serwis-pras-transferowych-serwis-ploterow-tnacych/",
+    "title": "Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji - serwis pras transferowych, folie flex, materiały DTF, szkolenia, plotery tnące - sprzedaż, serwis",
+    "desc": "serwis pras transferowych, naprawa ploterów tnących, wymiana paska pod nóż, sprawdzenie grzałek, serwis ploterów, naprawa pras do koszulek",
+    "h1": [
+     "H1: Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Podawanie folii / nawijak",
+     "Grzałka / podgrzewanie"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": [
+     "Gdańsk",
+     "Szczecin",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "dtfy.pl",
+    "url": "https://dtfy.pl/",
+    "title": "Druk DTF 》 internetowa drukarnia - DTFy.pl®",
+    "desc": "Drukarnia internetowa DTF nr 1 w Polsce. Najwyższa jakość druku DTF. Ekspresowe terminy realizacji. Najlepsze ceny. Nie zwlekaj - zamów swój wydruk DTF on-line.",
+    "h1": [
+     "H1: To jest druk DTF!"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Gdańsk",
+     "Rzeszów",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "fancywork.pl",
+    "url": "https://fancywork.pl/",
+    "title": "Fancywork – Największa drukarnia DTF w Polsce",
+    "desc": "",
+    "h1": [
+     "H1: Fancywork - największa drukarnia DTF",
+     "H1: Zapytaj o wycenę"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "stacjadtf.pl",
+    "url": "https://stacjadtf.pl/",
+    "title": "StacjaDTF.pl | maszyny do DTF, DTF UV, prasy termotransferowe",
+    "desc": "",
+    "h1": [],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "dtflinko.com",
+    "url": "https://www.dtflinko.com/pl/uslugi-techniczne/",
+    "title": "Wsparcie i usługi techniczne - Drukarka LINKO DTF",
+    "desc": "LINKO jest czołowym chińskim producentem drukarek DTF. Zapewnia kompleksową obsługę techniczną z instrukcjami obsługi, rozwiązywaniem problemów i wsparciem online, aby zapewnić terminową i profesjonalną pomoc po zakupie.",
+    "h1": [
+     "H1: Usługi techniczne"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd",
+     "RIP / oprogramowanie"
+    ],
+    "city": []
+   },
+   {
+    "host": "drukarniadtf.com.pl",
+    "url": "https://drukarniadtf.com.pl/",
+    "title": "Drukarnia DTF, druk DTF, wydruk DTF do samodzielnego wgrzania, nadruk DTF cennik, znakowanie DTF dla firm, DTF UV",
+    "desc": "Najszybciej rozwijająca się drukarnia DTF w Polsce. Oferujemy bezkonkurencyjną jakość i szybkość realizacji zamówień na terenie całego kraju.",
+    "h1": [
+     "H1: Druk DTF - profesjonalny druk w technologi DTF"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Podawanie folii / nawijak",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": [
+     "Kraków",
+     "Poznań",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "dtf.pl",
+    "url": "https://www.dtf.pl/",
+    "title": "Transfer DTF - Wybierz rozwiązanie dopasowane do Twojego biznesu",
+    "desc": "Transfer DTF to przeniesienie cyfrowego obrazu wydrukowanego w technologii pigmentowej na podłoże tekstylne.",
+    "h1": [],
+    "first": "RIP / oprogramowanie",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "inksonic.com",
+    "url": "https://www.inksonic.com/pl/blogs/news/a-guide-to-dtf-printer-maintenance-to-maximize-performance",
+    "title": "Przewodnik po konserwacji drukarki DTF w celu maksymalizacji wydajnośc",
+    "desc": "Zmaksymalizuj wydajność i żywotność swojej drukarki DTF dzięki temu kompleksowemu przewodnikowi konserwacji. Utrzymuj swoje wydruki w żywych kolorach i szczegółach dzięki tym wskazówkom!",
+    "h1": [
+     "H1: Przewodnik po konserwacji drukarki DTF w celu maksymalizacji wydajności"
+    ],
+    "first": "Shaker / proszek / suszenie",
+    "seoFirst": "Pompy / dampery / przewody",
+    "works": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Stacja serwisowa / capy / wipery",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Stacja serwisowa / capy / wipery",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "city": []
+   },
+   {
+    "host": "mag-service.pl",
+    "url": "https://www.mag-service.pl/",
+    "title": "Termotransfery i nadruki DTF na odzież - Wrocław | Mag-Service",
+    "desc": "Mag-Service - drukarnia sitodrukowa we Wrocławiu oferująca nadruki DTF, folie do druku DTF, klisze do sitodruku i personalizację odzieży i gadżetów. Wysoka jakość nadruków, ekologiczne tusze Oeko-Tex, szybka realizacja zamówień i szeroki wybór materiałów.",
+    "h1": [
+     "H1: Termotransfery i nadruki DTF - Wrocław Mag-Service"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "drukarniadtf.pl",
+    "url": "https://drukarniadtf.pl/cennik",
+    "title": "Drukarnia DTF | Cennik gotowych wydruków DTF do samodzielnego wgrzania",
+    "desc": "Gotowe nadruki w technologii DTF cennik. Wydruki do samodzielnego wgrzania, gotowe transfery - drukarnia DTF",
+    "h1": [
+     "H1: Cennik gotowych wydruków DTF do samodzielnego wgrzania"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Kalibracja / ICC",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "agoodprinter.com",
+    "url": "https://www.agoodprinter.com/pl/blog/dtf-printing-problems-and-solutions.html",
+    "title": "Typowe problemy i rozwiązania związane z drukowaniem DTF: Przewodnik rozwiązywania problemów",
+    "desc": "Rozwiąż najczęstsze problemy z drukowaniem DTF, w tym zatkane głowice drukujące, problemy z białym atramentem, słabą przyczepność, problemy z kolorami i błędy transferu. Poznaj praktyczne rozwiązania poprawiające jakość druku i konserwujące drukarkę DTF.",
+    "h1": [
+     "H1: Problemy i rozwiązania związane z drukowaniem DTF: kompletny przewodnik rozwiązywania problemów na rok 2026"
+    ],
+    "first": "Pompy / dampery / przewody",
+    "seoFirst": "Pompy / dampery / przewody",
+    "works": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Podawanie folii / nawijak",
+     "Pompy / dampery / przewody"
+    ],
+    "city": []
+   },
+   {
+    "host": "dtfwarszawa.pl",
+    "url": "https://dtfwarszawa.pl/cennik/",
+    "title": "Cennik DTF - Druk DTF Warszawa",
+    "desc": "Cennik DTF - Sprawdź nasz cennik, aby zapoznać się z konkurencyjnymi cenami na usługi druku DTF, dopasowane do Twoich potrzeb...",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "dtfexpress.pl",
+    "url": "https://dtfexpress.pl/",
+    "title": "Drukarnia wysyłkowa DTF-najwyższa jakość! - DTF Express",
+    "desc": "",
+    "h1": [
+     "H1: Jak przygotować plik do DTF?",
+     "H1: Obsługa HANDLOWCÓW"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Kalibracja / ICC"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "znakowanieodziezy.eu",
+    "url": "https://www.znakowanieodziezy.eu/",
+    "title": "S Vision – Drukarnia DTF Express | Wydruki DTF 24h | Druk...",
+    "desc": "Profesjonalne wydruki DTF w 24h – 3 automatyczne linie, hot peel i intensywna biel. Polska drukarnia DTF z Rzeszowa. Zamówienia złożone do 12:00 wysyłamy...",
+    "h1": [],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "toteprint.pl",
+    "url": "https://toteprint.pl/",
+    "title": "Druk DTF Wrocław | Torby z nadrukiem | Toteprint",
+    "desc": "Druk DTF na metry, DTF transfers, torby bawełniane z nadrukiem / custom tote bags i film CTF do klisz. Toteprint Wrocław.",
+    "h1": [
+     "H1: Twój projekt. Nasz druk. Pełny efekt."
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "printdtf24.pl",
+    "url": "http://www.printdtf24.pl/",
+    "title": "PrintDTF24.pl - Drukarnia Rzeszów - Druk DTF UV - Druk DTF - Najwyższa jakość druku DTF. Ekspresowe terminy realizacji. Naklejki bez tła. - Najlepsze ceny. Nie zwlekaj - zamów swój wydruk DTF UV on-li",
+    "desc": "",
+    "h1": [
+     "H1: Druk DT F UV"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "centrumdtf.pl",
+    "url": "https://centrumdtf.pl/",
+    "title": "Centrum DTF - wydruki DTF UV do samodzielnej aplikacji. Drukarnia.",
+    "desc": "Drukarnia DTF, wydruki DTF, nadruki DTF, DTF UV GOLD, DTF UV SILVER, DTF UV METALIC, DTF UV złoty, srebrny,  samodzielne nadruki na odzieży, naprasowanki, wydruki dtf uv, naklejki DTF UV.",
+    "h1": [
+     "H1: Centrum DTF - wydruki DTF UV do samodzielnej aplikacji. Drukarnia."
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "dtfekspert.com.pl",
+    "url": "https://dtfekspert.com.pl/pl/n/10",
+    "title": "Blog - 10 najczęstszych problemów w druku DTF i jak je rozwiązać - Dtfekspert.com.pl",
+    "desc": "Poznaj 10 najczęstszych problemów w druku DTF i sprawdź, jak je szybko rozwiązać. Poradnik dla drukarni i firm zajmujących się nadrukami",
+    "h1": [
+     "H1: 10 najczęstszych problemów w druku DTF i jak je rozwiązać",
+     "H1: 10 najczęstszych problemów w druku DTF i jak je rozwiązać"
+    ],
+    "first": "Układ białego atramentu / cyrkulacja",
+    "seoFirst": "Układ białego atramentu / cyrkulacja",
+    "works": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Układ białego atramentu / cyrkulacja",
+     "Podawanie folii / nawijak",
+     "Shaker / proszek / suszenie"
+    ],
+    "city": []
+   },
+   {
+    "host": "sklep.adppolska.pl",
+    "url": "https://sklep.adppolska.pl/pl/content/6-serwis-maszyn",
+    "title": "Serwis ploterów i drukarek wielkoformatowych | AdpPolska",
+    "desc": "Profesjonalny serwis drukarek wielkoformatowych i ploterów. Naprawy, profile ICC, części zamienne i szybki dojazd – wsparcie na najwyższym poziomie.",
+    "h1": [
+     "H1: Serwis ploterów i drukarek wielkoformatowych"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Kalibracja / ICC",
+    "works": [
+     "Wymiana głowicy",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC",
+     "Pompy / dampery / przewody"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd",
+     "Kalibracja / ICC"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "kikesz.pl",
+    "url": "https://www.kikesz.pl/wydruki-dtf.html",
+    "title": "Kikesz.pl - Nadruki i hafty | Drukarnia | Sitodruk | DTF | Katowice",
+    "desc": "Kikesz oferuje nadruki i haft komputerowy w Katowicach. Specjalizujemy się w sitodruku, wydrukach DTF oraz profesjonalnym hafcie komputerowym.",
+    "h1": [
+     "H1: WYDRUKI DTF"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "fabrykadtf.pl",
+    "url": "https://fabrykadtf.pl/",
+    "title": "Druk DTF To Nasza Specjalność! Zamów DTF Najwyższej Jakości! - fabrykadtf.pl",
+    "desc": "Zajmujemy się profesjonalnym drukiem DTF. Zamówisz u nas Druk DTF oraz Druk DTF UV. 99% Zamówień wysyłamy tego samego dnia!",
+    "h1": [
+     "H1: Druk DTF"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak",
+     "Shaker / proszek / suszenie",
+     "Grzałka / podgrzewanie"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "color-laboratory.com",
+    "url": "https://www.color-laboratory.com/pl",
+    "title": "Drukarki wielkoformatowe, plotery tnące i serwis — Color Laboratory",
+    "desc": "Drukarki UV, DTF i ekosolwentowe, plotery tnące, atramenty oraz autoryzowany serwis maszyn wielkoformatowych. Color Laboratory — dostawca z Warszawy, od 2009 roku.",
+    "h1": [
+     "H1: Profesjonalne maszyny. Niezawodny serwis."
+    ],
+    "first": "RIP / oprogramowanie",
+    "seoFirst": "RIP / oprogramowanie",
+    "works": [
+     "Konserwacja / przegląd",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [
+     "RIP / oprogramowanie"
+    ],
+    "city": []
+   },
+   {
+    "host": "druk24h.pl",
+    "url": "https://www.druk24h.pl/dtg-dtf",
+    "title": "dtg-dtf - Centrum Druku 7/24h",
+    "desc": "Druk24h – Centrum Druku 7/24h jest największym profesjonalnym centrum druku cyfrowego i kopiowania w Warszawie. - Czynne Non Stop",
+    "h1": [
+     "H1: Rodzaje nadruku na odzieży: dtg, dtf i folia flex"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Podawanie folii / nawijak"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "sklep.poligrafia-szczecin.pl",
+    "url": "https://sklep.poligrafia-szczecin.pl/product-pol-14407-Drukarka-Otter-UV-DTF-C-30.html",
+    "title": "Drukarka Otter UV DTF C 30 | DTF \\ URZĄDZENIA \\ SYSTEMY I DRUKARKI",
+    "desc": "Drukarka Otter UV DTF C 30 | Drukarka Otter UV DTF C 30 | DTF \\ URZĄDZENIA \\ SYSTEMY I DRUKARKI",
+    "h1": [
+     "H1: Drukarka Otter UV DTF C 30",
+     "H1: WSZYSTKO DO SUBLIMACJI W JEDNYM MIEJSCU"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Udrażnianie / czyszczenie głowic",
+     "Układ białego atramentu / cyrkulacja",
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "trujetprint.pl",
+    "url": "https://trujetprint.pl/najczestsze-problemy-i-bledy-w-druku-na-folii/",
+    "title": "Najczęstsze problemy i błędy w druku na folii | Trujetprint",
+    "desc": "Najczęstsze problemy i błędy w druku na folii | Aktualności, porady i informacje na blogu Trujetprint.",
+    "h1": [
+     "H1: Najczęstsze problemy i błędy w druku na folii"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "Kalibracja / ICC"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak"
+    ],
+    "city": []
+   },
+   {
+    "host": "pegasusuv.com",
+    "url": "https://pegasusuv.com/pl/uslugi/771-przeglad-okresowy-plotera-eko-solwentowego-stormjet.html",
+    "title": "Przegląd gwarancyjny drukarka DTF | Autoryzowany serwis Pegasus",
+    "desc": "Przegląd gwarancyjny drukarka DTF. Autoryzowany Serwis wielkoformatowych ploterów i drukarek UV Pegasus. Profesjonalny, autoryzowany serwis i naprawa drukarek i ploterów Pegasus.",
+    "h1": [
+     "H1: Przegląd gwarancyjny drukarka DTF: TEX30 / TEX60",
+     "H1: Przegląd gwarancyjny drukarka DTF TEX30 / 60"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd",
+     "RIP / oprogramowanie",
+     "Kalibracja / ICC",
+     "Pompy / dampery / przewody"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "viscar.pl",
+    "url": "https://viscar.pl/62-drukarki-i-urzadzenia-dtf",
+    "title": "Druk DTF | Drukarki. Proszkarki. Tunele suszące i plotery do DTF",
+    "desc": "Sprzedajemy i instalujemy sprawdzonej jakości drukarki i kompletne linie do druku dtf. Specjalizujemy się w optymalnych i bezpiecznych rozwiązaniach dtf",
+    "h1": [
+     "H1: Drukarki i urządzenia DTF"
+    ],
+    "first": "Shaker / proszek / suszenie",
+    "seoFirst": "Shaker / proszek / suszenie",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Shaker / proszek / suszenie"
+    ],
+    "city": []
+   },
+   {
+    "host": "alsagraf.pl",
+    "url": "http://www.alsagraf.pl/",
+    "title": "Drukarnia Katowice, Sitodruk Katowice, Drukarnia Cyfrowa i Offsetowa - Śląsk ALSAGRAF",
+    "desc": "Katowicka drukarnia ALSAGRAF oferuje sitodruk. Oferujemy usługi w zakresie druku offsetowego, sitodruku, tampodruku, wraz z przygotowaniem projektu.",
+    "h1": [
+     "H1: Alsagraf drukarnia Katowice - Śląsk"
+    ],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Podawanie folii / nawijak",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "aukcje.efl.com.pl",
+    "url": "https://aukcje.efl.com.pl/Auction/System-nadruku-na-folii-transferowej-DTF.PL-MIDI-4-id438731",
+    "title": "System nadruku na folii transferowej DTF.PL MIDI 4 - Maszyny i urządzenia - Poligrafia i maszyny papiernicze - Aukcje EFL",
+    "desc": "System nadruku na folii transferowej DTF.PL MIDI 4 - Charakterystyka techniczna: 3.1. System nadruku na folii transferowej – DTF.PL MIDI 45  z proszkarką &lt;br/&gt;&lt;br/&gt;Brak dokumentacji i deklaracji zgodności.  &lt;br/&gt;3.1.1. Charakterystyka techniczna &lt;br/&gt;            - Producent                      ",
+    "h1": [],
+    "first": "Podawanie folii / nawijak",
+    "seoFirst": "Podawanie folii / nawijak",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie folii / nawijak",
+     "RIP / oprogramowanie",
+     "Pompy / dampery / przewody",
+     "Shaker / proszek / suszenie"
+    ],
+    "seoWorks": [
+     "Podawanie folii / nawijak",
+     "Shaker / proszek / suszenie"
+    ],
+    "city": []
+   },
+   {
+    "host": "algraf.eu",
+    "url": "https://algraf.eu/dtf-rzeszow-znakowanie-odziezy/",
+    "title": "DTF RZESZÓW - ZNAKOWANIE ODZIEŻY - Rzeszów · Do obchodu",
+    "desc": "DTF RZESZÓW — Rzeszów. Warszawska 40, 35-230 Rzeszów, Polska Otevírací doba a cesta Do obchodu.",
+    "h1": [
+     "H1: DTF RZESZÓW"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "общие подсказки: Podawanie folii / nawijak": {
+    "было": 2,
+    "стало": 0,
+    "исключено": [
+     "drukarka do folii dtf",
+     "dtf folia"
+    ]
+   },
+   "общие подсказки: Shaker / proszek / suszenie": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "drukarka dtf z proszkarką"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Podawanie folii / nawijak",
+   "comp": {
+    "mention": 26,
+    "first": 18,
+    "seoFirst": 7,
+    "seo": 10,
+    "head": 9,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konserwacja / przegląd",
+   "comp": {
+    "mention": 13,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 4,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "RIP / oprogramowanie",
+   "comp": {
+    "mention": 11,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Shaker / proszek / suszenie",
+   "comp": {
+    "mention": 10,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 3,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja / ICC",
+   "comp": {
+    "mention": 9,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Pompy / dampery / przewody",
+   "comp": {
+    "mention": 8,
+    "first": 1,
+    "seoFirst": 2,
+    "seo": 2,
+    "head": 2,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Układ białego atramentu / cyrkulacja",
+   "comp": {
+    "mention": 6,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "biały tusz dtf"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 5,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Udrażnianie / czyszczenie głowic",
+   "comp": {
+    "mention": 4,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Grzałka / podgrzewanie",
+   "comp": {
+    "mention": 2,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 6,
+    "cena": 1,
+    "ex": [
+     "głowica i3200",
+     "głowica epson i3200",
+     "głowica epson i3200 a1",
+     "głowica epson i3200 u1",
+     "głowica epson i3200 e1"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stacja serwisowa / capy / wipery",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Udrażnianie głowic",
+   "a": "Udrażnianie / czyszczenie głowic",
+   "why": "основной блок прайса (17 позиций)",
+   "evidence": "конкуренты 4 из 31 (первой работой — 0, в Title/Description — 1)"
+  },
+  {
+   "w": "Naprawa podawania folii",
+   "a": "Podawanie folii / nawijak",
+   "why": "26 из 31 конкурента, у 18 — первая работа (подсказок после очистки нет — были про покупку принтеров); в прайсе «Naprawa / wymiana silnika podawania folii»",
+   "evidence": "конкуренты 26 из 31 (первой работой — 18, в Title/Description — 4)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa układu białego tuszu",
+   "a": "Układ białego atramentu / cyrkulacja",
+   "why": "6 конкурентов; в прайсе есть. Третьей работой текст выходит за 160 (163)",
+   "evidence": "конкуренты 6 из 31 (первой работой — 1, в Title/Description — 1) · подсказки Google 1 (напр. «biały tusz dtf»)"
+  },
+  {
+   "w": "Shaker / proszek",
+   "why": "нет в прайсе Omobonus",
+   "evidence": ""
+  },
+  {
+   "w": "RIP",
+   "why": "11 конкурентов, не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «naprawa podawania folii», систему белых чернил не ставить",
+  "Слабые данные: 31 подходящий конкурент, подсказок и Ads почти нет"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek DTF we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania folii ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 140
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт DTF-принтерів у Вроцлаві ✔ Прочистка головок, ремонт подачі плівки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 135
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт DTF-принтеров во Вроцлаве ✔ Прочистка головок, ремонт подачи плёнки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 135
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

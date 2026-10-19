@@ -3,8 +3,8 @@ import { HomePageTemplate } from '@/components/home-page-template'
 import { services } from '@/lib/services-data'
 
 export const metadata: Metadata = {
-  title: 'Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław',
-  description: '✔ Profesjonalny serwis komputerów, laptopów i drukarek we Wrocławiu  ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś!  ✔ ☎ 793 759 262',
+  title: 'Naprawa komputerów, laptopów i drukarek | Omobonus Wrocław',
+  description: '✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Koszt naprawy uzgadniamy przed rozpoczęciem ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl',
     languages: {

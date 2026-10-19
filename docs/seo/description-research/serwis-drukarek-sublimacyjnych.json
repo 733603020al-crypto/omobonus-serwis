@@ -1,0 +1,695 @@
+{
+ "page": "/uslugi/serwis-drukarek-sublimacyjnych",
+ "name": "Сублимационные принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek sublimacyjnych",
+    "serwis ploterów sublimacyjnych",
+    "naprawa drukarek sublimacyjnych",
+    "serwis drukarek sublimacyjnych Warszawa",
+    "serwis drukarek sublimacyjnych cennik",
+    "serwis drukarek sublimacyjnych Kraków",
+    "serwis drukarek sublimacyjnych Wrocław",
+    "serwis drukarek sublimacyjnych Poznań",
+    "serwis drukarek sublimacyjnych Gdańsk",
+    "serwis drukarek sublimacyjnych Łódź",
+    "serwis drukarek sublimacyjnych Katowice",
+    "serwis drukarek sublimacyjnych Szczecin",
+    "serwis drukarek sublimacyjnych Lublin",
+    "serwis drukarek sublimacyjnych Bydgoszcz",
+    "serwis drukarek sublimacyjnych Białystok",
+    "serwis drukarek sublimacyjnych Rzeszów",
+    "serwis drukarek sublimacyjnych Toruń",
+    "serwis drukarek sublimacyjnych Kielce",
+    "serwis drukarek sublimacyjnych Opole",
+    "serwis drukarek sublimacyjnych Gdynia",
+    "serwis drukarek sublimacyjnych Olsztyn",
+    "serwis drukarek sublimacyjnych Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka sublimacyjna ",
+    "serwis drukarek sublimacyjnych ",
+    "sublimacja ",
+    "ploter sublimacyjny ",
+    "naprawa drukarki sublimacyjnej "
+   ],
+   "uniqueSuggestions": 277,
+   "withPrice": [
+    "drukarka sublimacyjna cena"
+   ],
+   "wroclaw": [
+    "sublimacja wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Udrażnianie / czyszczenie głowicy": {
+    "seeds": [
+     "czyszczenie głowicy drukarki sublimacyjnej",
+     "zatkana głowica sublimacja"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Kalibracja / jakość druku": {
+    "seeds": [
+     "kalibracja drukarki sublimacyjnej",
+     "profil icc sublimacja"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Konwersja drukarki na sublimację": {
+    "seeds": [
+     "przeróbka drukarki na sublimację",
+     "konwersja epson na sublimację",
+     "drukarka epson do sublimacji"
+    ],
+    "n": 0,
+    "nRaw": 10,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": [
+     [
+      "drukarka epson do sublimacji",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka epson do sublimacji a3",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "jaka drukarka epson do sublimacji",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka epson l1300 do sublimacji",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka epson ecotank l1270 do sublimacji",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka do sublimacji epson sc f100",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka do sublimacji epson surecolor sc f100",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka do sublimacji epson surecolor sc-f100 z atramentami",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka do sublimacji epson sc f100 a4",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "drukarka do sublimacji epson sc f100 a4 wi fi",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 0,
+   "impressions": 0,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "drukarka sublimacyjna epson",
+     "avg": 500,
+     "comp": "Высокий"
+    }
+   ],
+   "phrases": 1
+  }
+ },
+ "competitors": {
+  "relevant": 12,
+  "checked": 170,
+  "candidates": 210,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "jamac.pl",
+    "url": "https://jamac.pl/serwis-pras-transferowych-serwis-ploterow-tnacych/",
+    "title": "Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji - serwis pras transferowych, folie flex, materiały DTF, szkolenia, plotery tnące - sprzedaż, serwis",
+    "desc": "serwis pras transferowych, naprawa ploterów tnących, wymiana paska pod nóż, sprawdzenie grzałek, serwis ploterów, naprawa pras do koszulek",
+    "h1": [
+     "H1: Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji"
+    ],
+    "first": "Karetka / pasek / enkoder",
+    "seoFirst": "Karetka / pasek / enkoder",
+    "works": [
+     "Karetka / pasek / enkoder"
+    ],
+    "seoWorks": [
+     "Karetka / pasek / enkoder"
+    ],
+    "city": [
+     "Gdańsk",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "sublimacja.biz",
+    "url": "https://sublimacja.biz/content/16-serwis",
+    "title": "Serwis - Sublimacja.biz -Prasy -Plotery tnące -Drukarki - Termotransfer",
+    "desc": "Serwis - Naprawy gwarancyjne, pogwarancyjne Sublimacja.biz",
+    "h1": [
+     "H1: Wsparcie techniczne - Serwis - Naprawy gwarancyjne"
+    ],
+    "first": "Podawanie materiału / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "supportart.pl",
+    "url": "https://www.supportart.pl/serwis/",
+    "title": "Serwis pras sublimacyjnych i termotransferowych | Supportart",
+    "desc": "",
+    "h1": [
+     "H1: Serwis pras sublimacyjnych i termotransferowych"
+    ],
+    "first": "Kalibracja / jakość druku",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "sico.pl",
+    "url": "https://www.sico.pl/serwis-drukarek-cyfrowych/",
+    "title": "Serwis drukarek cyfrowych | Sico Print Solutions",
+    "desc": "",
+    "h1": [
+     "H1: Usługi serwisowe drukarek cyfrowych"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Wymiana głowicy",
+     "Kalibracja / jakość druku",
+     "Płukanie / odpowietrzanie układu atramentowego",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery",
+     "Karetka / pasek / enkoder",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy",
+     "Konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "poligrafia-szczecin.pl",
+    "url": "https://www.poligrafia-szczecin.pl/serwis.html",
+    "title": "Wszystko do sublimacji w jednym miejscu",
+    "desc": "Akcesoria, artykuły, prasy, drukarki do wykonywania nadruków w technologii sublimacji",
+    "h1": [],
+    "first": "Kalibracja / jakość druku",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/pl/i/Serwis-drukarek/22",
+    "title": "Serwis i naprawa drukarek Kraków i Małopolskie - Krakprint.pl",
+    "desc": "Prowadzimy stacjonarny serwis drukarek w Krakowie oraz świadczymy usługi serwisowe na terenie Krakowa oraz Małopolski. Mamy 20 letnie doświadczenie co pozwala nam świadczyć profesjonalne usługi na najwyższym poziomie. Zapraszamy do kontaktu!",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Stacja serwisowa / wipery",
+    "works": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Wymiana głowicy",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "reflect.pl",
+    "url": "https://www.reflect.pl/sublimacja.html",
+    "title": "Sublimacja, druk sublimacyjny cennik - Reflect",
+    "desc": "Oferta sublimacji na odzieży poliestrowej (np. odzież sportowa). Zamówienia realizowane na terenie całej Polski. Druk sublimacyjny - trwale i dobrze!",
+    "h1": [
+     "H1: Druk sublimacyjny"
+    ],
+    "first": "Kalibracja / jakość druku",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "optima-md.pl",
+    "url": "https://optima-md.pl/tani-serwis-ploterow-czestochowa-naprawa-ploterow/",
+    "title": "Serwis ploterów Częstochowa - Optima-MD",
+    "desc": "Profesjonalny serwis ploterów w Częstochowie. Obsługa firm i klientów indywidualnych. Brak kruczków - U nas znasz cenę przed naprawą! serwis ploterów HP Canon Epson Częstochowa Zawiercie Myszków Kłobuck. Udrażnianie zaschniętych głowic w ploterach atramentowych solwentowych sublimacyjnych szybki serwis ",
+    "h1": [
+     "H1: Serwis ploterów w Optima-MD – Częstochowa"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Udrażnianie / czyszczenie głowicy",
+    "works": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Wymiana głowicy",
+     "Kalibracja / jakość druku",
+     "Płukanie / odpowietrzanie układu atramentowego",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery",
+     "Karetka / pasek / enkoder",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Udrażnianie / czyszczenie głowicy"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "bestsub.pl",
+    "url": "https://bestsub.pl/",
+    "title": "Hurtownia artykułów do sublimacji - Bestsub",
+    "desc": "Hurtowa sprzedaż artykułów do wykonywania nadruków w technologii sublimacji. ",
+    "h1": [],
+    "first": "Kalibracja / jakość druku",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "ploterowo.pl",
+    "url": "https://www.ploterowo.pl/",
+    "title": "Ploterowo.pl Polski dostawca maszyn do cięcia drukowania grawerowania",
+    "desc": "Niezawodne laserowe: plotery, znakowarki, grawerki dla każdej branży. Maszyny do sublimacji termo transferu dtf dtg oraz sublimacji. Plotery tnące SKYCUT.",
+    "h1": [],
+    "first": "Podawanie materiału / nawijak",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku",
+     "Płukanie / odpowietrzanie układu atramentowego",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "margot.pl",
+    "url": "https://www.margot.pl/",
+    "title": "Drukarnia sublimacyjna, producent maszyn do druku sublimacyjnego – Margot",
+    "desc": "Jesteśmy uznanym producentem maszyn do druku sublimacyjnego. Firma Margot z Poznania opracuję projekt i stworzy urządzenia na miarę Państwa potrzeb. Zapraszamy.",
+    "h1": [
+     "H1: Producent kalandrów do druku sublimacyjnego – firma Margot"
+    ],
+    "first": "Kalibracja / jakość druku",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja / jakość druku",
+     "Karetka / pasek / enkoder",
+     "Podawanie materiału / nawijak"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "sklep.fastcom.com.pl",
+    "url": "https://sklep.fastcom.com.pl/serwis/",
+    "title": "Usługi :: Serwis",
+    "desc": " Serwis ploterów Zajmujemy się sprzedażą ploterów wielkoformatowych stołowych frezujących laserowych oraz wielu innych urządzeń wykorzystywanych w świecie reklamy Do oferowanych przez nas urządzeń zapewniamy kompleksowe wsparcie serwisowe Prowadzimy serwis urządzeń firm Roland Summa",
+    "h1": [
+     "H1: Serwis",
+     "H1: Serwis ploterów"
+    ],
+    "first": "Podawanie materiału / nawijak",
+    "seoFirst": "Podawanie materiału / nawijak",
+    "works": [
+     "Udrażnianie / czyszczenie głowicy",
+     "Płukanie / odpowietrzanie układu atramentowego",
+     "Stacja serwisowa / wipery",
+     "Podawanie materiału / nawijak",
+     "Naprawa elektroniki / płyty",
+     "RIP / oprogramowanie"
+    ],
+    "seoWorks": [
+     "Podawanie materiału / nawijak"
+    ],
+    "city": []
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Konwersja drukarki na sublimację": {
+    "было": 10,
+    "стало": 0,
+    "исключено": [
+     "drukarka epson do sublimacji",
+     "drukarka epson do sublimacji a3",
+     "jaka drukarka epson do sublimacji",
+     "drukarka epson l1300 do sublimacji",
+     "drukarka epson ecotank l1270 do sublimacji",
+     "drukarka do sublimacji epson sc f100",
+     "drukarka do sublimacji epson surecolor sc f100",
+     "drukarka do sublimacji epson surecolor sc-f100 z atramentami",
+     "drukarka do sublimacji epson sc f100 a4",
+     "drukarka do sublimacji epson sc f100 a4 wi fi"
+    ]
+   },
+   "общие подсказки: Kalibracja / jakość druku": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "sublimacja profili aluminiowych"
+    ]
+   },
+   "общие подсказки: Podawanie materiału / nawijak": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "euroland sublimacja"
+    ]
+   },
+   "общие подсказки: Naprawa elektroniki / płyty": {
+    "было": 1,
+    "стало": 0,
+    "исключено": [
+     "sublimacja na płytkach ceramicznych"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Kalibracja / jakość druku",
+   "comp": {
+    "mention": 8,
+    "first": 5,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Podawanie materiału / nawijak",
+   "comp": {
+    "mention": 7,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "RIP / oprogramowanie",
+   "comp": {
+    "mention": 7,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 6,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konserwacja / przegląd",
+   "comp": {
+    "mention": 5,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Płukanie / odpowietrzanie układu atramentowego",
+   "comp": {
+    "mention": 4,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stacja serwisowa / wipery",
+   "comp": {
+    "mention": 4,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Karetka / pasek / enkoder",
+   "comp": {
+    "mention": 4,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Udrażnianie / czyszczenie głowicy",
+   "comp": {
+    "mention": 3,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy",
+   "comp": {
+    "mention": 3,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konwersja drukarki na sublimację",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Udrażnianie głowic",
+   "why": "основной блок прайса (18 позиций); KP «drukarka sublimacyjna epson» ≈500",
+   "evidence": ""
+  },
+  {
+   "w": "Naprawa podawania papieru",
+   "why": "7 из 12 конкурентов; в прайсе «Naprawa mechanizmu podawania materiału»",
+   "evidence": ""
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa stacji serwisowej",
+   "why": "только 4 конкурента; третьей работой не помещается",
+   "evidence": ""
+  },
+  {
+   "w": "Konwersja na sublimację",
+   "why": "10 подсказок, но такой услуги нет в прайсе",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Слабые данные: 12 подходящих конкурентов"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek sublimacyjnych we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania papieru ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 153
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт сублімаційних принтерів у Вроцлаві ✔ Прочистка головок, ремонт подачі паперу ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 145
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт сублимационных принтеров во Вроцлаве ✔ Прочистка головок, ремонт подачи бумаги ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 146
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

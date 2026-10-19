@@ -1,0 +1,433 @@
+{
+ "page": "/uslugi/serwis-drukarek-spozywczych",
+ "name": "Пищевые принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek spożywczych",
+    "drukarka do tortów naprawa",
+    "drukarka jadalna serwis",
+    "drukarka spożywcza serwis Warszawa",
+    "serwis drukarek spożywczych cennik",
+    "drukarka spożywcza serwis Kraków",
+    "drukarka spożywcza serwis Wrocław",
+    "drukarka spożywcza serwis Poznań",
+    "drukarka spożywcza serwis Gdańsk",
+    "drukarka spożywcza serwis Katowice",
+    "drukarka spożywcza serwis Łódź",
+    "drukarka spożywcza serwis Szczecin",
+    "drukarka spożywcza serwis Bydgoszcz",
+    "drukarka spożywcza serwis Lublin",
+    "drukarka spożywcza serwis Białystok",
+    "drukarka spożywcza serwis Rzeszów",
+    "drukarka spożywcza serwis Toruń",
+    "drukarka spożywcza serwis Kielce",
+    "drukarka spożywcza serwis Opole",
+    "drukarka spożywcza serwis Olsztyn",
+    "drukarka spożywcza serwis Gdynia",
+    "drukarka spożywcza serwis Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka spożywcza ",
+    "drukarka do tortów ",
+    "drukarka jadalna ",
+    "drukarka do ciastek ",
+    "drukarka do kawy "
+   ],
+   "uniqueSuggestions": 69,
+   "withPrice": [
+    "drukarka do kawy cena",
+    "drukarka spożywcza cena",
+    "ms druk drukarka spożywcza cena"
+   ],
+   "wroclaw": [],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Czyszczenie / udrażnianie głowicy": {
+    "seeds": [
+     "czyszczenie drukarki do tortów",
+     "czyszczenie drukarki spożywczej"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wymiana głowicy / kartridży": {
+    "seeds": [
+     "tusze jadalne",
+     "kartridże jadalne"
+    ],
+    "n": 8,
+    "nRaw": 8,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "tusze jadalne do drukarki",
+     "tusze jadalne",
+     "tusze jadalne do drukarki canon pixma",
+     "tusze jadalne canon",
+     "tusze jadalne do drukarki canon",
+     "tusze jadalne do drukarki epson",
+     "drukarka tusze jadalne",
+     "drukarka na tusze jadalne"
+    ],
+    "all": [
+     "tusze jadalne do drukarki",
+     "tusze jadalne",
+     "tusze jadalne do drukarki canon pixma",
+     "tusze jadalne canon",
+     "tusze jadalne do drukarki canon",
+     "tusze jadalne do drukarki epson",
+     "drukarka tusze jadalne",
+     "drukarka na tusze jadalne"
+    ],
+    "dropped": []
+   },
+   "Naprawa podawania arkuszy / platformy": {
+    "seeds": [
+     "drukarka do tortów nie pobiera papieru"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 0,
+   "impressions": 0,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 5,
+  "checked": 170,
+  "candidates": 220,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "imagoprinter.com",
+    "url": "https://www.imagoprinter.com/produkty/drukarki-spozywcze/vulpes/",
+    "title": "VULPES - IMAGO Printer",
+    "desc": "",
+    "h1": [
+     "H1: Ploter cukierniczy VULPES – Profesjonalne przyśpieszenie produkcji cukierniczej"
+    ],
+    "first": "Wymiana głowicy / kartridży",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy / kartridży",
+     "Naprawa podawania arkuszy / platformy",
+     "Konfiguracja / oprogramowanie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "cityon.pl",
+    "url": "https://cityon.pl/warszawa/drukarki-sprzedaz-i-serwis",
+    "title": "Drukarki - Sprzedaż i serwis Warszawa – 17 miejsc",
+    "desc": "Drukarki - Sprzedaż i serwis w Warszawie: 17 miejsc, najwięcej: Wola, Bemowo, Włochy. Czynne w sobotę: 2. Adresy i godziny otwarcia.",
+    "h1": [
+     "H1: Drukarki - Sprzedaż i serwis w Warszawie"
+    ],
+    "first": "Wymiana głowicy / kartridży",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy / kartridży",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "inplusgastro.pl",
+    "url": "https://inplusgastro.pl/sklep/serwis",
+    "title": "Serwis maszyn do lodów i urządzeń cukierniczych | Naprawa i części zamienne - Inplusgastro.pl",
+    "desc": "Serwis urządzeń gastronomicznychOferujemy kompleksowe usługi serwisowe dla urządzeń gastronomicznych na terenie całego kraju. Specjalizujemy się w serwisie maszyn do lodów, naprawie urządzeń cukierniczych i piekarniczych, konserwacji profesjonalnych ekspresów do kawy, oraz innych urządzeń dostępnych w naszej ofercie. R",
+    "h1": [
+     "H1: Usługi serwisowe"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "sweetdecor.pl",
+    "url": "https://www.sweetdecor.pl/drukarki-cukiernicze.html",
+    "title": "DRUKARKI Spożywcze Cukiernicze",
+    "desc": "DRUKARKI Spożywcze Cukiernicze",
+    "h1": [
+     "H1: DRUKARKI CUKIERNICZE"
+    ],
+    "first": "Naprawa podawania arkuszy / platformy",
+    "seoFirst": "",
+    "works": [
+     "Naprawa podawania arkuszy / platformy"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "dalkom.pl",
+    "url": "https://www.dalkom.pl/",
+    "title": "Artykuły biurowe, serwis drukarek, pieczątki | Dalkom: Gdańsk",
+    "desc": "W naszej firmie znajdziesz ogromny wybór artykułów biurowych. Stworzymy dla Ciebie odpowiednią pieczątkę. Prowadzimy też serwis drukarek. Zapraszamy do nas!",
+    "h1": [
+     "H1: Zapoznaj się z naszą ofertą"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {}
+ },
+ "ranking": [
+  {
+   "work": "Konserwacja / przegląd",
+   "comp": {
+    "mention": 3,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy / kartridży",
+   "comp": {
+    "mention": 2,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 8,
+    "cena": 0,
+    "ex": [
+     "tusze jadalne do drukarki",
+     "tusze jadalne",
+     "tusze jadalne do drukarki canon pixma",
+     "tusze jadalne canon",
+     "tusze jadalne do drukarki canon"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa podawania arkuszy / platformy",
+   "comp": {
+    "mention": 2,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konfiguracja / oprogramowanie",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Czyszczenie / udrażnianie głowicy",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Czujniki",
+   "comp": {
+    "mention": 0,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Udrażnianie głowicy",
+   "why": "основной блок прайса",
+   "evidence": ""
+  },
+  {
+   "w": "Naprawa podawania arkuszy",
+   "why": "в прайсе «Naprawa mechanizmu pobierania arkuszy» и др.; заменяет «papier cukrowy» (это расходник, не работа)",
+   "evidence": ""
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Kartridże",
+   "why": "подсказки «wymiana kartridża» — замена расходника самим клиентом; работа в прайсе — «Naprawa problemów z rozpoznawaniem kartridży», длинно и узко",
+   "evidence": ""
+  },
+  {
+   "w": "Papier cukrowy",
+   "why": "расходник, а не работа",
+   "evidence": ""
+  },
+  {
+   "w": "Platforma direct-to-food",
+   "why": "клиенты так не ищут; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Очень слабые данные: найдено 5 подходящих конкурентов, Ads нет"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek spożywczych we Wrocławiu ✔ Udrażnianie głowicy, naprawa podawania arkuszy ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 151
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт харчових принтерів у Вроцлаві ✔ Прочистка головки, ремонт подачі аркушів ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 141
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт пищевых принтеров во Вроцлаве ✔ Прочистка головки, ремонт подачи листов ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 139
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

@@ -297,101 +297,101 @@ export const subServiceTitles: Record<string, string> = {
 
 export const seoMetadata: Record<string, { title: string; description: string }> = {
   'serwis-niszczarek': {
-    title: 'Serwis i naprawa niszczarek — cennik',
-    description: 'Naprawa niszczarek we Wrocławiu: olejenie, usuwanie zacięć, wymiana noży, silnik i czujniki. Fellowes, HSM, Kobra, Rexel. Diagnoza gratis przy naprawie.',
+    title: 'Serwis i naprawa niszczarek',
+    description: '✔ Serwis i naprawa niszczarek we Wrocławiu ✔ Olejenie, usuwanie zacięć, wymiana noży, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'naprawa-projektorow': {
-    title: 'Serwis i naprawa projektorów — cennik',
-    description: 'Naprawa projektorów we Wrocławiu — wymiana lampy, zasilanie, optyka, chłodzenie, czyszczenie. Epson, BenQ, Optoma, Acer, Sony. Pełny cennik bez ukrytych kosztów.',
+    title: 'Serwis i naprawa projektorów',
+    description: '✔ Serwis i naprawa projektorów we Wrocławiu ✔ Wymiana lampy i układu DMD, czyszczenie, naprawa zasilacza ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'naprawa-zasilaczy-ups': {
-    title: 'Naprawa UPS i zasilaczy awaryjnych',
-    description: 'Naprawa zasilaczy UPS we Wrocławiu — wymiana akumulatorów, diagnostyka, elektronika. APC, Eaton, Ever, Vertiv. Pełny cennik bez ukrytych kosztów.',
+    title: 'Serwis i naprawa zasilaczy awaryjnych UPS',
+    description: '✔ Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu ✔ Wymiana akumulatorów, przegląd, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-do-kart-plastikowych': {
-    title: 'Serwis drukarek do kart plastikowych',
-    description: 'Naprawa drukarek do kart plastikowych we Wrocławiu — Zebra, Evolis, HID Fargo, Magicard, Entrust. Koszt naprawy ustalamy przed jej wykonaniem.',
+    title: 'Serwis i naprawa drukarek do kart plastikowych',
+    description: '✔ Serwis i naprawa drukarek do kart plastikowych we Wrocławiu ✔ Wymiana głowicy, naprawa koderów i laminatora ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-dtg': {
     title: 'Serwis i naprawa drukarek DTG',
-    description: 'Naprawa drukarek DTG Epson, Brother, Kornit we Wrocławiu: udrażnianie głowicy, biały atrament, stacja serwisowa. Koszt naprawy znasz z góry.',
+    description: '✔ Serwis i naprawa drukarek DTG we Wrocławiu ✔ Udrażnianie głowicy, naprawa układu białego tuszu i stołu ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-dtf': {
     title: 'Serwis i naprawa drukarek DTF',
-    description: 'Serwis drukarek DTF we Wrocławiu — naprawa głowic, układu białego atramentu, podawania folii, elektroniki i RIP. Jawny cennik i diagnoza przed naprawą.',
+    description: '✔ Serwis i naprawa drukarek DTF we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania folii ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-sublimacyjnych': {
     title: 'Serwis i naprawa drukarek sublimacyjnych',
-    description: 'Naprawa drukarek sublimacyjnych Epson, Sawgrass, Mimaki, Mutoh, Roland: udrażnianie i regeneracja głowic, układ atramentowy, elektronika. Wrocław.',
+    description: '✔ Serwis i naprawa drukarek sublimacyjnych we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania papieru ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-spozywczych': {
-    title: 'Serwis drukarek spożywczych i do tortów — Wrocław | Omobonus',
-    description: 'Naprawa drukarek spożywczych we Wrocławiu: udrażnianie głowicy, platforma direct-to-food, podawanie papieru cukrowego. Koszt naprawy znasz z góry.',
+    title: 'Serwis i naprawa drukarek spożywczych',
+    description: '✔ Serwis i naprawa drukarek spożywczych we Wrocławiu ✔ Udrażnianie głowicy, naprawa podawania arkuszy ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-ekspresow-do-kawy': {
-    title: 'Serwis ekspresów do kawy — Wrocław | Omobonus',
-    description: 'Naprawa ekspresów do kawy we Wrocławiu: układ wodny, grzewczy, młynek, zaparzacz, mleko i elektronika. Koszt naprawy poznasz przed pracą.',
+    title: 'Serwis i naprawa ekspresów do kawy',
+    description: '✔ Serwis i naprawa ekspresów do kawy we Wrocławiu ✔ Odkamienianie, naprawa bloku zaparzającego i młynka ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-laptopow': {
     title: 'Serwis i naprawa laptopów',
-    description: '✔ Serwis i naprawa laptopów wszystkich marek we Wrocławiu ✔ Wymiana matrycy, dysku, baterii, klawiatury ✔ Diagnoza w 15 min ✔ Umów się już dziś! ☎ 793 759 262',
+    description: '✔ Serwis i naprawa laptopów we Wrocławiu ✔ Wymiana matrycy i baterii, czyszczenie laptopa, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'serwis-komputerow-stacjonarnych': {
     title: 'Serwis i naprawa komputerów stacjonarnych',
-    description: '✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana podzespołów, odzyskiwanie danych ✔ Diagnoza w 15 min ✔ Zadzwoń! ☎ 793 759 262',
+    description: '✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana dysku SSD, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'outsourcing-it': {
-    title: 'Outsourcing IT | obsługa informatyczna',
-    description: 'Outsourcing IT Wrocław – obsługa informatyczna firm, wsparcie IT, helpdesk, administracja sieci i serwerów, stała opieka techniczna dla firm.',
+    title: 'Outsourcing IT i obsługa informatyczna',
+    description: '✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'serwis-drukarek-laserowych': {
-    title: 'Naprawa drukarek laserowych',
-    description: '✔ Naprawa drukarek laserowych HP, Canon, Brother, Samsung, Xerox we Wrocławiu ✔ Czyszczenie, regeneracja, problemy z drukiem ✔ Diagnoza w 15 min ☎ 793 759 262',
+    title: 'Serwis i naprawa drukarek laserowych',
+    description: '✔ Serwis i naprawa drukarek laserowych we Wrocławiu ✔ Czyszczenie, usuwanie zacięć, wymiana bębna i fusera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'serwis-drukarek-atramentowych': {
-    title: 'Naprawa drukarek atramentowych',
-    description: '✔ Naprawa drukarek atramentowych HP, Epson, Canon, Brother, Lexmark we Wrocławiu ✔ Czyszczenie, regeneracja, naprawa głowicy ✔ Diagnoza w 15 min ☎ 793 759 262',
+    title: 'Serwis i naprawa drukarek atramentowych',
+    description: '✔ Serwis i naprawa drukarek atramentowych we Wrocławiu ✔ Czyszczenie głowicy, wymiana pochłaniacza tuszu ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-3d': {
     title: 'Serwis i naprawa drukarek 3D',
-    description: '✔ Serwis i naprawa drukarek 3D we Wrocławiu — Bambu Lab, Creality, Anycubic, Prusa i inne ✔ Diagnoza w 15 min ✔ Pełny cennik na stronie ✔ Zadzwoń! ☎ 793 759 262',
+    description: '✔ Serwis i naprawa drukarek 3D we Wrocławiu ✔ Naprawa ekstrudera i hotendu, kalibracja, konfiguracja Klippera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'druk-3d-na-zamowienie': {
-    title: 'Drukowanie 3D na zamówienie',
-    description: '✔ Wydruki 3D z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy … Uczciwe ceny! ✔ Pełny wykaz cen na stronie ✔ Nawet już dziś! ☎ 793 759 262',
+    title: 'Druk 3D na zamówienie',
+    description: '✔ Druk 3D na zamówienie we Wrocławiu ✔ Części zamienne, prototypy, druk z pliku STL, projektowanie 3D ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
   },
   'serwis-drukarek-termicznych': {
-    title: 'Serwis i naprawa drukarek etykiet Zebra, Dymo',
-    description: '✔ Serwis drukarek etykiet termicznych i termotransferowych Zebra, Dymo, Godex, Sato we Wrocławiu ✔ Diagnoza w 15 min ✔ Cennik na stronie ☎ 793 759 262',
+    title: 'Serwis i naprawa drukarek etykiet',
+    description: '✔ Serwis i naprawa drukarek etykiet we Wrocławiu ✔ Wymiana głowicy i wałka, kalibracja czujników, konfiguracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'serwis-drukarek-iglowych': {
-    title: 'Naprawa drukarek igłowych',
-    description: '✔ Naprawa i serwis drukarek igłowych (matrycowych) Epson, OKI, Bixolon, Citizen we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny cennik na stronie ☎ 793 759 262',
+    title: 'Serwis i naprawa drukarek igłowych',
+    description: '✔ Serwis i naprawa drukarek igłowych we Wrocławiu ✔ Naprawa głowicy, karetki i traktora papieru, konserwacja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'naprawa-drukarek': {
-    title: 'Naprawa drukarek i kserokopiarek',
-    description: '✔ Serwis drukarek i urządzeń wielofunkcyjnych — HP, Epson, Canon, Brother, Xerox, Kyocera we Wrocławiu ✔ Diagnoza w 15 min ✔ Cennik na stronie ☎ 793 759 262',
+    title: 'Serwis i naprawa drukarek i kserokopiarek',
+    description: '✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
   'wynajem-drukarek': {
     title: 'Wynajem (dzierżawa) drukarek i kserokopiarek',
-    description: 'Nawet w 24h  ✔ Bez umów długoterminowych ✔ Serwis i materiały w cenie ✔ dostępność od ręki! ✔ Zadzwoń i zamów! ☎ 793 759 262',
+    description: '✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262',
 
   },
   'drukarka-zastepcza': {
     title: 'Drukarka zastępcza (na czas naprawy)',
-    description: '✔ Potrzebna drukarka na czas naprawy? Nawet w 24h ✔ Bez opłat abonamentowych ✔ Sprzęt od ręki ✔ Zadzwoń i zamów! ☎ 793 759 262',
+    description: '✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262',
 
   },
   'serwis-plotterow': {
     title: 'Serwis i naprawa ploterów',
-    description: '✔ Naprawa i serwis ploterów HP, Canon, Epson, … we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ☎ 793 759 262',
+    description: '✔ Serwis i naprawa ploterów we Wrocławiu ✔ Udrażnianie głowicy, naprawa karetki i podawania mediów, kalibracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262',
 
   },
 }

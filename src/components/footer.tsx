@@ -114,7 +114,7 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
       <div className="relative max-w-7xl mx-auto">
         {cta && (
           <div className="-mt-[26px]">
-            <HomeCta heading={cta.heading} text={cta.text} headingMobile={cta.headingMobile} textMobile={cta.textMobile} button={cta.button} href={cta.href} />
+            <HomeCta heading={cta.heading} text={cta.text} headingMobile={cta.headingMobile} textMobile={cta.textMobile} button={cta.button} href={cta.href} singleHeading />
           </div>
         )}
 
