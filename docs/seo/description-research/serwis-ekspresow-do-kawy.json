@@ -1,0 +1,2825 @@
+{
+ "page": "/uslugi/serwis-ekspresow-do-kawy",
+ "name": "Кофемашины",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis ekspresów do kawy",
+    "naprawa ekspresów do kawy",
+    "naprawa ekspresu do kawy",
+    "serwis ekspresów do kawy cennik",
+    "serwis ekspresów do kawy Kraków",
+    "serwis ekspresów do kawy Warszawa",
+    "serwis ekspresów do kawy Wrocław",
+    "serwis ekspresów do kawy Poznań",
+    "serwis ekspresów do kawy Gdańsk",
+    "serwis ekspresów do kawy Łódź",
+    "serwis ekspresów do kawy Katowice",
+    "serwis ekspresów do kawy Szczecin",
+    "serwis ekspresów do kawy Lublin",
+    "serwis ekspresów do kawy Bydgoszcz",
+    "serwis ekspresów do kawy Białystok",
+    "serwis ekspresów do kawy Toruń",
+    "serwis ekspresów do kawy Rzeszów",
+    "serwis ekspresów do kawy Kielce",
+    "serwis ekspresów do kawy Opole",
+    "serwis ekspresów do kawy Gdynia",
+    "serwis ekspresów do kawy Częstochowa",
+    "serwis ekspresów do kawy Olsztyn"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "serwis ekspresów ",
+    "naprawa ekspresu ",
+    "ekspres do kawy ",
+    "ekspres nie ",
+    "odkamienianie ekspresu ",
+    "serwis ekspresów do kawy "
+   ],
+   "uniqueSuggestions": 661,
+   "withPrice": [
+    "serwis ekspresów cennik",
+    "naprawa ekspresu cena",
+    "naprawa ekspresu delonghi cena",
+    "naprawa ekspresu do kawy cena",
+    "ekspres do kawy cena",
+    "ekspres do kawy ile kosztuje",
+    "serwis ekspresów do kawy cena",
+    "serwis ekspresów do kawy koszt",
+    "serwis ekspresów do kawy cennik",
+    "naprawa ekspresu koszt",
+    "naprawa ekspresu do kawy koszt"
+   ],
+   "wroclaw": [
+    "serwis ekspresów do kawy wrocław",
+    "serwis ekspresów do kawy delonghi wrocław",
+    "serwis ekspresów krups wrocław",
+    "serwis ekspresów do kawy siemens wrocław",
+    "serwis ekspresów do kawy philips wrocław",
+    "serwis ekspresów inowrocław",
+    "serwis ekspresów do kawy inowrocław",
+    "serwis ekspresów jura wrocław",
+    "serwis ekspresów melitta wrocław",
+    "serwis ekspresów nivona wrocław",
+    "serwis ekspresów siemens wrocław",
+    "serwis ekspresów wrocław",
+    "serwis ekspresów wrocław żmigrodzka",
+    "naprawa ekspresu inowrocław",
+    "naprawa ekspresu do kawy inowrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Odkamienianie": {
+    "seeds": [
+     "odkamienianie ekspresu",
+     "odkamienianie ekspresu cena"
+    ],
+    "n": 13,
+    "nRaw": 13,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "odkamienianie ekspresu delonghi",
+     "odkamienianie ekspresu delonghi magnifica",
+     "odkamienianie ekspresu philips",
+     "odkamienianie ekspresu",
+     "odkamienianie ekspresu delonghi magnifica s",
+     "odkamienianie ekspresu delonghi magnifica evo",
+     "odkamienianie ekspresu tchibo",
+     "odkamienianie ekspresu siemens eq 6 plus s100",
+     "odkamienianie ekspresu philips lattego 3200",
+     "odkamienianie ekspresu philips lattego"
+    ],
+    "all": [
+     "odkamienianie ekspresu delonghi",
+     "odkamienianie ekspresu delonghi magnifica",
+     "odkamienianie ekspresu philips",
+     "odkamienianie ekspresu",
+     "odkamienianie ekspresu delonghi magnifica s",
+     "odkamienianie ekspresu delonghi magnifica evo",
+     "odkamienianie ekspresu tchibo",
+     "odkamienianie ekspresu siemens eq 6 plus s100",
+     "odkamienianie ekspresu philips lattego 3200",
+     "odkamienianie ekspresu philips lattego",
+     "odkamienianie ekspresu saeco",
+     "odkamienianie ekspresu cena",
+     "odkamienianie ekspresu delonghi cena"
+    ],
+    "dropped": []
+   },
+   "Czyszczenie / konserwacja / przegląd": {
+    "seeds": [
+     "czyszczenie ekspresu",
+     "przegląd ekspresu",
+     "konserwacja ekspresu"
+    ],
+    "n": 32,
+    "nRaw": 32,
+    "cena": 4,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie ekspresu philips",
+     "czyszczenie ekspresu delonghi",
+     "czyszczenie ekspresu",
+     "czyszczenie ekspresu philips lattego",
+     "czyszczenie ekspresu delonghi magnifica s",
+     "czyszczenie ekspresu delonghi magnifica",
+     "czyszczenie ekspresu krups",
+     "czyszczenie ekspresu siemens eq 6 plus s100",
+     "czyszczenie ekspresu siemens",
+     "czyszczenie ekspresu philips lattego 3200"
+    ],
+    "all": [
+     "czyszczenie ekspresu philips",
+     "czyszczenie ekspresu delonghi",
+     "czyszczenie ekspresu",
+     "czyszczenie ekspresu philips lattego",
+     "czyszczenie ekspresu delonghi magnifica s",
+     "czyszczenie ekspresu delonghi magnifica",
+     "czyszczenie ekspresu krups",
+     "czyszczenie ekspresu siemens eq 6 plus s100",
+     "czyszczenie ekspresu siemens",
+     "czyszczenie ekspresu philips lattego 3200",
+     "czyszczenie ekspresu saeco",
+     "przegląd ekspresu jura",
+     "przegląd ekspresu do kawy cena",
+     "przeglad ekspresu delonghi",
+     "przegląd ekspresu do kawy",
+     "przegląd ekspresu jura cena",
+     "przeglad ekspresu",
+     "przeglad ekspresu siemens",
+     "przegląd ekspresu krups",
+     "przeglad ekspresu delonghi cena",
+     "ile kosztuje przegląd ekspresu",
+     "konserwacja ekspresu do kawy",
+     "konserwacja ekspresu philips lattego",
+     "konserwacja ekspresu philips",
+     "konserwacja ekspresu do kawy delonghi",
+     "konserwacja ekspresu krups",
+     "konserwacja ekspresu saeco",
+     "konserwacja ekspresu",
+     "konserwacja ekspresu jura e8",
+     "konserwacja ekspresu philips lattego 5500",
+     "konserwacja ekspresu do kawy siemens",
+     "konserwacja ekspresu saeco granaroma"
+    ],
+    "dropped": []
+   },
+   "Naprawa / regeneracja bloku zaparzającego": {
+    "seeds": [
+     "blok zaparzający",
+     "zaparzacz",
+     "wymiana zaparzacza",
+     "regeneracja zaparzacza"
+    ],
+    "n": 32,
+    "nRaw": 42,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "blok zaparzający delonghi",
+     "blok zaparzający saeco",
+     "blok zaparzający",
+     "blok zaparzający philips lattego",
+     "blok zaparzający philips czyszczenie",
+     "blok zaparzający philips",
+     "blok zaparzający philips lattego czyszczenie",
+     "blok zaparzający delonghi dinamica",
+     "blok zaparzający philips lattego 5400",
+     "blok zaparzający nivona"
+    ],
+    "all": [
+     "blok zaparzający delonghi",
+     "blok zaparzający saeco",
+     "blok zaparzający",
+     "blok zaparzający philips lattego",
+     "blok zaparzający philips czyszczenie",
+     "blok zaparzający philips",
+     "blok zaparzający philips lattego czyszczenie",
+     "blok zaparzający delonghi dinamica",
+     "blok zaparzający philips lattego 5400",
+     "blok zaparzający nivona",
+     "blok zaparzający siemens",
+     "zaparzacz delonghi",
+     "zaparzacz siemens eq6",
+     "wymiana zaparzacza delonghi",
+     "wymiana zaparzacza siemens",
+     "wymiana zaparzacza krups",
+     "wymiana zaparzacza",
+     "wymiana zaparzacza jura",
+     "wymiana zaparzacza jura e8",
+     "wymiana zaparzacza philips",
+     "wymiana uszczelek zaparzacza siemens",
+     "wymiana uszczelek zaparzacza delonghi",
+     "wymiana uszczelek zaparzacza nivona",
+     "regeneracja zaparzacza nivona",
+     "regeneracja zaparzacza siemens",
+     "regeneracja zaparzacza delonghi",
+     "regeneracja zaparzacza jura",
+     "regeneracja zaparzacza",
+     "regeneracja zaparzacza philips",
+     "regeneracja zaparzacza jura ena 8",
+     "regeneracja zaparzacza melitta",
+     "regeneracja zaparzacza saeco"
+    ],
+    "dropped": [
+     [
+      "zaparzacz do herbaty",
+      "другое устройство/тема"
+     ],
+     [
+      "zaparzacz do kawy",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zaparzacz do kawy tłokowy",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zaparzacz do kawy przelewowy",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zaparzacz",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zaparzacz do herbaty szklany",
+      "другое устройство/тема"
+     ],
+     [
+      "zaparzacz do herbaty pepco",
+      "другое устройство/тема"
+     ],
+     [
+      "zaparzacz do herbaty ikea",
+      "другое устройство/тема"
+     ],
+     [
+      "zaparzacze do herbaty",
+      "другое устройство/тема"
+     ],
+     [
+      "zaparzacz do ziół",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Wymiana pompy": {
+    "seeds": [
+     "wymiana pompy w ekspresie",
+     "pompa do ekspresu"
+    ],
+    "n": 19,
+    "nRaw": 19,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "wymiana pompy w ekspresie delonghi dinamica",
+     "wymiana pompy w ekspresie delonghi cena",
+     "wymiana pompy w ekspresie delonghi",
+     "wymiana pompy w ekspresie do kawy",
+     "wymiana pompy w ekspresie saeco",
+     "wymiana pompy w ekspresie philips",
+     "wymiana pompy w ekspresie",
+     "wymiana pompy wody w ekspresie delonghi",
+     "ile kosztuje wymiana pompy w ekspresie do kawy",
+     "pompa do ekspresu"
+    ],
+    "all": [
+     "wymiana pompy w ekspresie delonghi dinamica",
+     "wymiana pompy w ekspresie delonghi cena",
+     "wymiana pompy w ekspresie delonghi",
+     "wymiana pompy w ekspresie do kawy",
+     "wymiana pompy w ekspresie saeco",
+     "wymiana pompy w ekspresie philips",
+     "wymiana pompy w ekspresie",
+     "wymiana pompy wody w ekspresie delonghi",
+     "ile kosztuje wymiana pompy w ekspresie do kawy",
+     "pompa do ekspresu",
+     "pompa do ekspresu philips lattego",
+     "pompa do ekspresu delonghi",
+     "pompa do ekspresu saeco",
+     "pompa do ekspresu philips",
+     "pompa do ekspresu delonghi dinamica",
+     "pompa do ekspresu philips lattego 5400",
+     "pompa do ekspresu siemens",
+     "pompa do ekspresu delonghi magnifica",
+     "pompa do ekspresu nivona"
+    ],
+    "dropped": []
+   },
+   "Naprawa młynka / żaren": {
+    "seeds": [
+     "wymiana żaren",
+     "młynek ekspres nie miele",
+     "naprawa młynka ekspres"
+    ],
+    "n": 13,
+    "nRaw": 13,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana żaren w młynku philips",
+     "wymiana żaren w młynku",
+     "wymiana żaren w młynku delonghi",
+     "wymiana żaren jura",
+     "wymiana żaren saeco",
+     "nivona wymiana żaren",
+     "philips lattego wymiana żaren",
+     "naprawa młynka w ekspresie delonghi",
+     "naprawa młynka w ekspresie saeco",
+     "naprawa mlynka w ekspresie philips"
+    ],
+    "all": [
+     "wymiana żaren w młynku philips",
+     "wymiana żaren w młynku",
+     "wymiana żaren w młynku delonghi",
+     "wymiana żaren jura",
+     "wymiana żaren saeco",
+     "nivona wymiana żaren",
+     "philips lattego wymiana żaren",
+     "naprawa młynka w ekspresie delonghi",
+     "naprawa młynka w ekspresie saeco",
+     "naprawa mlynka w ekspresie philips",
+     "naprawa mlynka w ekspresie siemens",
+     "naprawa młynka w ekspresie",
+     "naprawa młynka w ekspresie krups"
+    ],
+    "dropped": []
+   },
+   "Usuwanie wycieków / uszczelki": {
+    "seeds": [
+     "ekspres cieknie",
+     "wymiana uszczelek ekspres",
+     "ekspres przecieka"
+    ],
+    "n": 33,
+    "nRaw": 33,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "ekspres cieknie od spodu",
+     "ekspres cieknie",
+     "ekspres cieknie woda",
+     "cieknie ekspres delonghi",
+     "cieknie ekspres philips",
+     "cieknie ekspres krups",
+     "ekspres krups cieknie woda od spodu",
+     "ekspres philips cieknie woda",
+     "ekspres saeco cieknie woda",
+     "ekspres delonghi cieknie woda"
+    ],
+    "all": [
+     "ekspres cieknie od spodu",
+     "ekspres cieknie",
+     "ekspres cieknie woda",
+     "cieknie ekspres delonghi",
+     "cieknie ekspres philips",
+     "cieknie ekspres krups",
+     "ekspres krups cieknie woda od spodu",
+     "ekspres philips cieknie woda",
+     "ekspres saeco cieknie woda",
+     "ekspres delonghi cieknie woda",
+     "wymiana uszczelek ekspres krups",
+     "wymiana uszczelek ekspres philips",
+     "wymiana uszczelek ekspres saeco",
+     "wymiana uszczelek ekspres siemens",
+     "wymiana uszczelek ekspres delonghi",
+     "wymiana uszczelek ekspres philips lattego",
+     "wymiana uszczelek ekspres nivona",
+     "wymiana uszczelek ekspres",
+     "wymiana uszczelek w ekspresie krups cena",
+     "wymiana uszczelek w ekspresie krups ea89",
+     "ekspres przecieka od dolu",
+     "ekspres przecieka",
+     "przeciekający ekspres do kawy",
+     "przecieka ekspres delonghi",
+     "przeciekający ekspres do kawy krups",
+     "przeciekający ekspres do kawy philips",
+     "ekspres krups przecieka",
+     "ekspres krups przecieka od dolu",
+     "ekspres delonghi przecieka woda",
+     "ekspres philips przecieka",
+     "przecieka ekspres do kawy",
+     "ekspres saeco przecieka",
+     "dlaczego ekspres przecieka"
+    ],
+    "dropped": []
+   },
+   "Naprawa grzałki / termobloku": {
+    "seeds": [
+     "wymiana grzałki ekspres",
+     "ekspres nie grzeje",
+     "termoblok"
+    ],
+    "n": 19,
+    "nRaw": 25,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana grzalki ekspres delonghi",
+     "wymiana grzałki w ekspresie siemens",
+     "wymiana grzalki w ekspresie philips",
+     "wymiana grzalki w ekspresie",
+     "wymiana grzałki w ekspresie saeco",
+     "ekspres nie grzeje wody",
+     "ekspres nie grzeje mleka",
+     "ekspres siemens nie grzeje wody",
+     "ekspres krups nie grzeje wody",
+     "ekspres delonghi nie grzeje wody"
+    ],
+    "all": [
+     "wymiana grzalki ekspres delonghi",
+     "wymiana grzałki w ekspresie siemens",
+     "wymiana grzalki w ekspresie philips",
+     "wymiana grzalki w ekspresie",
+     "wymiana grzałki w ekspresie saeco",
+     "ekspres nie grzeje wody",
+     "ekspres nie grzeje mleka",
+     "ekspres siemens nie grzeje wody",
+     "ekspres krups nie grzeje wody",
+     "ekspres delonghi nie grzeje wody",
+     "ekspres delonghi nie grzeje mleka",
+     "ekspres philips nie grzeje wody",
+     "dlaczego ekspres nie grzeje wody",
+     "ekspres saeco nie grzeje wody",
+     "termoblok delonghi",
+     "termoblok delonghi dinamica",
+     "termoblok krups",
+     "termoblok w ekspresie",
+     "termoblok w ekspresie do kawy"
+    ],
+    "dropped": [
+     [
+      "ekspres przelewowy nie grzeje wody",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "termoblok",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "termoblok do klimatyzacji",
+      "другое устройство/тема"
+     ],
+     [
+      "termoblok do okna",
+      "другое устройство/тема"
+     ],
+     [
+      "termoblok laboratoryjny",
+      "другое устройство/тема"
+     ],
+     [
+      "termoblok klimatyzator",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Naprawa spieniacza / układu mlecznego": {
+    "seeds": [
+     "ekspres nie spienia mleka",
+     "spieniacz ekspres"
+    ],
+    "n": 24,
+    "nRaw": 24,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "ekspres nie spienia mleka",
+     "ekspres nie spienia mleka siemens",
+     "ekspres nie spienia mleka philips",
+     "ekspres nie spienia mleka krups",
+     "ekspres nie spienia mleka beko",
+     "ekspres nie spienia mleka saeco",
+     "ekspres nie spienia mleka delonghi",
+     "ekspres nie spienia mleka tylko gotuje",
+     "ekspres nie spienia mleka przyczyna",
+     "ekspres nie spienia mleka melitta"
+    ],
+    "all": [
+     "ekspres nie spienia mleka",
+     "ekspres nie spienia mleka siemens",
+     "ekspres nie spienia mleka philips",
+     "ekspres nie spienia mleka krups",
+     "ekspres nie spienia mleka beko",
+     "ekspres nie spienia mleka saeco",
+     "ekspres nie spienia mleka delonghi",
+     "ekspres nie spienia mleka tylko gotuje",
+     "ekspres nie spienia mleka przyczyna",
+     "ekspres nie spienia mleka melitta",
+     "spieniacz ekspres delonghi",
+     "spieniacz ekspres",
+     "spieniacz ekspres philips",
+     "spieniacz ekspres krups",
+     "spieniacz ekspresu krups",
+     "spieniacz ekspres siemens",
+     "ekspres spieniacz do mleka",
+     "spieniacz do ekspresu delonghi",
+     "spieniacz do ekspresu philips",
+     "spieniacz do ekspresu",
+     "spieniacz mleka ekspres philips",
+     "spieniacz mleka ekspres delonghi",
+     "spieniacz mleka ekspres krups",
+     "spieniacz mleka ekspres beko"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 11,
+   "impressions": 14,
+   "clicks": 1,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "naprawa ekspresów do kawy wrocław",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "serwis delonghi wrocław",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa ekspresu do kawy",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "serwis saeco wrocław krakowska",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa ekspresów do kawy cennik",
+     "impr": 1,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa ekspresów do kawy",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "serwis krups wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "wrocław serwis ekspresów do kawy",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "ekspres serwis",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "jura serwis wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Ekspresy do kawy Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ekspresów do kawy wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 77,
+  "checked": 84,
+  "candidates": 191,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "klinikaekspresow.pl",
+    "url": "https://klinikaekspresow.pl/",
+    "title": "Klinikaekspresow.pl ⋆ Klinika Ekspresow",
+    "desc": "Poradniki i inspiracje o ekspresach do kawy, akcesoriach, kuchni i AGD. Serwis i naprawa ekspresów, zdrowe żywienie, dieta oraz styl życia. Praktyczne wskazówki dla domu i wnętrz, kawa i parzenie – wszystko w jednym miejscu",
+    "h1": [
+     "H1: Klinika Ekspresow"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "Naprawa młynka / żaren",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawek.pl",
+    "url": "https://www.naprawek.pl/naprawa-ekspresow-do-kawy",
+    "title": "Naprawa Ekspresów do Kawy | Cała Polska",
+    "desc": "Naprawa Ekspresów do Kawy oraz serwis innego dużego Sprzętu AGD w całej Polsce. Sprawdź Opinie, Zapytaj o Cenę i Zamów Usługę 24h!",
+    "h1": [
+     "H1: Naprawa Ekspresów do Kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "doktorekspres.pl",
+    "url": "https://doktorekspres.pl/",
+    "title": "Serwis i naprawa ekspresów do kawy - Doktor Ekspres",
+    "desc": "Szukasz serwisu ekspresu do kawy? Doktor Ekspres oferuje kompleksowe naprawy, czyszczenie i odkamienianie dla wiodących marek ekspresów.",
+    "h1": [
+     "H1: Profesjonalny serwis ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "restmag.pl",
+    "url": "https://www.restmag.pl/serwis_ekspresow_krakow.html",
+    "title": "Serwis ekspresów do kawy Kraków | Naprawa ekspresów | 510 625 391",
+    "desc": "Serwis ekspresów do kawy w mieście Kraków. Naprawa ekspresów DeLonghi, Saeco, Jura, Siemens, Philips, Krups. Odbiór kurierem z miasta Kraków i okolic.",
+    "h1": [
+     "H1: RESTMAG Services"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "",
+    "works": [
+     "Naprawa młynka / żaren",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "ekspresowy-serwis.pl",
+    "url": "https://ekspresowy-serwis.pl/",
+    "title": "SERWIS I NAPRAWA EKSPRESÓW DO KAWY - Serwis Ekspresów do kawy",
+    "desc": "Profesjonalny serwis ekspresów do kawy. Zajmujemy się ekspresami domowymi jak i profesjonalnymi. Dojeżdzamy do klienta Gratis !",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Gdańsk",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "oto-mistrz.pl",
+    "url": "https://oto-mistrz.pl/serwis-ekspresow-do-kawy/krakow/",
+    "title": "Serwis ekspresów do kawy Kraków | Top 10 wykonawców | Otomistrz",
+    "desc": "Mamy 101 wykonawców usługi Serwis ekspresów do kawy w Krakowie. Wybierz najlepszego dla siebie i ciesz się wysoką jakością wykonania.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy w Krakowie"
+    ],
+    "first": "Usuwanie wycieków / uszczelki",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Lublin",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "blisco.pl",
+    "url": "https://blisco.pl/naprawa-ekspresow-do-kawy/naprawa-ekspresow-do-kawy-gdansk/",
+    "title": "Naprawa ekspresów do kawy Gdańsk - szybka pomoc | Blisco",
+    "desc": "Naprawa ekspresów do kawy Gdańsk - szybka pomoc fachowca, naprawy i serwis u klienta. Umow termin online lub telefonicznie. Blisco.pl.",
+    "h1": [
+     "H1: Serwis i Naprawa ekspresów do kawy Gdańsk"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Lublin",
+     "Bydgoszcz",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "caffedelmondo.pl",
+    "url": "https://caffedelmondo.pl/content/38-serwis-ekspresow-do-kawy-lublin",
+    "title": "Serwis Ekspresów do Kawy Lublin, Dzierżawa, Wynajem",
+    "desc": "Serwis Ekspresów do Kawy w Lublin! ☕️ Dzierżawa i wynajem do biur i korporacji ⭐️ Instalacja oraz naprawy na Terenie Całej Polski! ✅ Abonament od 1 zł!",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Lublin"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin",
+     "Bydgoszcz",
+     "Białystok",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "naprawiamyekspresy.pl",
+    "url": "https://naprawiamyekspresy.pl/serwis-ekspresow/",
+    "title": "Serwis ekspresów - Naprawiamyekspresy.pl",
+    "desc": "Skorzystaj z profesjonalnego serwisu ekspresów do kawy i ciesz się smakiem doskonałej kawy każdego dnia. Kliknij teraz i umów się na ekspertyzę!",
+    "h1": [
+     "H1: Serwis ekspresów bez wychodzenia z domu!"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Gdańsk",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "swiat-kawy.com",
+    "url": "https://swiat-kawy.com/",
+    "title": "Ekspresy do kawy Łódź, Bydgoszcz, Toruń, Częstochowa - Świat Kawy",
+    "desc": "Zapraszamy do naszych salonów w miejscowościach: Częstochowa, Toruń, Bydgoszcz, Łódź. Ekspresy do kawy firm Nivona, Melitta, Saeco oraz akcesoria, filtry, serwis.",
+    "h1": [
+     "H1: Serwis ekspresów - Łódź, Piotrków, Częstochowa",
+     "H1: Świat kawy - Ekspresy do kawy Łódź, Piotrków, Częstochowa"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Bydgoszcz",
+     "Toruń",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "abckawy.pl",
+    "url": "https://abckawy.pl/service/naprawa-ekspresow-do-kawy/",
+    "title": "Naprawa ekspresów do kawy | ABC Kawy – Serwis i naprawa ekspresów do kawy",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy – szybka diagnostyka i skuteczna naprawa"
+    ],
+    "first": "Naprawa spieniacza / układu mlecznego",
+    "seoFirst": "Naprawa spieniacza / układu mlecznego",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "ulubionyserwis.pl",
+    "url": "https://www.ulubionyserwis.pl/serwis-ekspresow-do-kawy/",
+    "title": "Serwis ekspresów do kawy – serwis pogwarancyjny | Ulubiony Serwis",
+    "desc": "Profesjonalny serwis ekspresów do kawy – naprawa, konserwacja i przeglądy. Gwarantujemy szybkie i skuteczne usługi, aby Twój ekspres działał jak nowy. Sprawdź naszą ofertę!",
+    "h1": [
+     "H1: Serwis pogwarancyjny ekspresów do kawy"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "caffo.pl",
+    "url": "https://caffo.pl/",
+    "title": "Serwis ekspresów do kawy Wrocław, naprawa ekspresów do kawy Wrocław. Szybko, solidnie i w dobrej cenie.",
+    "desc": "Autoryzowany serwis ekspresów do kawy we Wrocławiu. Naprawa ekspresów ciśnieniowych wielu marek. Diagnoza w 24 h, odbiór z biura, gwarancja. Tel. 796 71 71 71.",
+    "h1": [
+     "H1: Serwis i naprawa ekspresów do kawy we Wrocławiu"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "naprawa.pl",
+    "url": "https://naprawa.pl/serwis-wysylkowy/naprawa-ekspresow-do-kawy",
+    "title": "Profesjonalna naprawa ekspresów do kawy (wszystkich marek)",
+    "desc": "Profesjonalna naprawa ekspresów do kawy wszystkich marek. Serwis Jura, Saeco, DeLonghi, Bosch i innych. Szybka diagnoza, sprawdzone części, 90 dni gwarancji.",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy"
+    ],
+    "first": "Naprawa spieniacza / układu mlecznego",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "twojserwis.pro",
+    "url": "https://www.twojserwis.pro/cennik-serwisu-i-naprawy-ekspresow-do-kawy/",
+    "title": "Cennik serwisu i naprawy ekspresów do kawy - Twój Serwis",
+    "desc": "Cennik serwisu i naprawy ekspresów do kawy. Sprawdź orientacyjne ceny, diagnozę usterek i opcje serwisowe - fachowo, z gwarancją!",
+    "h1": [
+     "H1: Cennik serwisu i naprawy Ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": []
+   },
+   {
+    "host": "serwiskawowy.pl",
+    "url": "https://serwiskawowy.pl/",
+    "title": "Serwis ekspresów do kawy Warszawa",
+    "desc": "Sklep internetowy - Saeco ekspres, kawa ziarnista do ekspresu, serwis saeco warszawa, profesjonalny ekspret do kawy",
+    "h1": [
+     "H1: Serwis Kawowy",
+     "H1: Serwis ekspresów do kawy Warszawa"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "Naprawa młynka / żaren",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Naprawa młynka / żaren"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "cafeserwis-wroclaw.pl",
+    "url": "https://www.cafeserwis-wroclaw.pl/",
+    "title": "Serwis i naprawa ekspresów do kawy | Cafe Serwis – Wrocław",
+    "desc": "Firma serwisowa Cafe Serwis z Wrocławia zajmuje się naprawą ekspresów do kawy oraz drobnego sprzętu AGD. Zachęcamy do odwiedzenia naszej strony internetowej!",
+    "h1": [
+     "H1: Nasza oferta"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "amtserwis.pl",
+    "url": "https://amtserwis.pl/serwis-ekspresow-do-kawy",
+    "title": "Naprawa i serwis ekspresów do kawy Wrocław | AMT Serwis",
+    "desc": "Naprawa i serwis pogwarancyjny ekspresów do kawy we Wrocławiu – Krups, Nivona, DeLonghi, Jura i inne marki. Bezpłatna wycena, naprawy wysyłkowe z całej Polski.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy we Wrocławiu"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "kawaserwis.com.pl",
+    "url": "https://kawaserwis.com.pl/wojewodztwa/kujawsko-pomorskie",
+    "title": "Serwis ekspresów do kawy — kujawsko-pomorskie | Kawa Serwis",
+    "desc": "Naprawa, konserwacja i odkamienianie ekspresów do kawy w województwie kujawsko-pomorskie. Główne miasta: Bydgoszcz, Toruń. Czas reakcji: 24-48h.",
+    "h1": [
+     "H1: Serwis ekspresów — kujawsko-pomorskie"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Toruń",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "csespresso.pl",
+    "url": "https://csespresso.pl/",
+    "title": "Serwis ekspresów do kawy Kraków, Naprawa ekspresów Wrocław | csespresso.pl",
+    "desc": "Profesjonalny serwis ekspresów do kawy. ✅ Fachowa pomoc i doradztwo. ✅Serwisujemy urządzenia od klientów z całej Polski!",
+    "h1": [
+     "H1: Profesjonalny serwis ekspresów do kawy i małego AGD"
+    ],
+    "first": "Odkamienianie",
+    "seoFirst": "Odkamienianie",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Kraków",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "przyjacielekawy.pl",
+    "url": "https://www.przyjacielekawy.pl/serwis/",
+    "title": "Serwis ekspresów do kawy | Przyjaciele Kawy",
+    "desc": "Serwis ekspresu do kawy: dokładna diagnostyka, usługi programowania i konserwacji oraz naprawa ekspresów do kawy. Usuniemy każdą usterkę. ✔️",
+    "h1": [
+     "H1: Serwis i naprawa ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Warszawa",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "aquick.pl",
+    "url": "https://aquick.pl/serwis-ekspresow-do-kawy/",
+    "title": "Serwis ekspresów do kawy – naprawa, konserwacja, części",
+    "desc": "Serwis ekspresów do kawy – naprawiamy urządzenia wszystkich marek. Diagnoza, części, konserwacja i serwis z dojazdem. Szybko i skutecznie.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "naprawaekspresowbydgoszcz.pl",
+    "url": "https://www.naprawaekspresowbydgoszcz.pl/serwis-ekspresow-do-kawy-cennik/",
+    "title": "Serwis ekspresów do kawy Cennik –",
+    "desc": "Serwis ekspresów do kawy Cennik zależy od marki, modelu oraz rodzaju usterki. Poniżej przedstawiam orientacyjny cennik, który może się różnić",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Cennik"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "agd-czestochowa.pl",
+    "url": "https://www.agd-czestochowa.pl/glowna-opole",
+    "title": "Coffee Expert - Serwis ekspresów do kawy Opole",
+    "desc": "Serwis ekspresów do kawy Opole Coffee Expert  791213503\nSerwis specjalizuje sie w naprawie ekspresów ciśnieniowych automatycznych | Jura | Krups | DeLonghi | Nivona | Siemens |  Melitta | Miele | Saeco | Philips | Electrolux | AEG | Bosch | ekspresy do kawy Opole, serwis ekspresów Opole, naprawa ekspresów do kawy Opole",
+    "h1": [
+     "H1: Coffee Expert",
+     "H1: Serwis Ekspresów do kawy"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Opole",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "coffeecona.pl",
+    "url": "https://coffeecona.pl/cennik/",
+    "title": "Cennik serwisu ekspresów do kawy – naprawa | Coffee Cona",
+    "desc": "Cennik serwisu ekspresów do kawy: orientacyjne ceny diagnostyki, przeglądów, odkamieniania, czyszczenia i wybranych napraw.",
+    "h1": [
+     "H1: Cennik serwisu i naprawy ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "leczymyekspresy.pl",
+    "url": "https://leczymyekspresy.pl/cennik/",
+    "title": "Cennik - Leczymy ekspresy",
+    "desc": "Cennik usług serwisowych ekspresów Poznaj pełny zakres naszych usług wraz z przejrzystymi cenami i zakresem prac w każdym pakiecie serwisowym. Podstawowa diagnostyka Ocena stanu ekspresu, sprawdzenie głównych podzespołów i identyfikacja potencjalnych usterek. Konserwacja i czyszczenie Odkamienianie układu wodnego oraz ",
+    "h1": [
+     "H1: Leczymy ekspresy",
+     "H1: Cennik"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "kawologia.pl",
+    "url": "https://kawologia.pl/",
+    "title": "Kawologia - serwis ekspresów do kawy we Wrocławiu",
+    "desc": "Serwis ekspresów do kawy we Wrocławiu. Zajmujemy się ekspresami marek takich jak: Krups, Siemens, Saeco, DeLonghi, Bosch, Philips, Jura, Nivona, Melitta i również tych mniej znanych.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "coffee-partner.pl",
+    "url": "https://www.coffee-partner.pl/serwis-ekspresow-do-kawy-warszawa",
+    "title": "Serwis ekspresów do kawy Warszawa - Coffee Partner",
+    "desc": "Serwis ekspresów do kawy Warszawa",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Warszawa"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "kawawbiurze.pl",
+    "url": "https://kawawbiurze.pl/serwis-ekspresow/",
+    "title": "Serwis i naprawa ekspresów do kawy Gdańsk Sopot Gdynia - Jura, Melitta, Nivona, Saeco",
+    "desc": "Profesjonalny serwis i naprawa ekspresów do kawy zarówno domowych jak i profesjonalnych. Obsługujemy Gdańsk, Sopot, Gdynie, Trójmiasto. Jura, Melitta, Nivona, Saeco",
+    "h1": [
+     "H1: Serwis i naprawa ekspresów do kawy Gdańsk"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "tru-coffee-service.com",
+    "url": "https://www.tru-coffee-service.com/",
+    "title": "Tru Coffee Service | Serwis ekspresów do kawy w Katowicach",
+    "desc": "Profesjonalny serwis i naprawa ekspresów do kawy w Katowicach i na Śląsku. Szybka realizacja, gwarancja na naprawę, wszystkie marki.",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy w Katowicach"
+    ],
+    "first": "Wymiana pompy",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "ekspresso.eu",
+    "url": "https://ekspresso.eu/",
+    "title": "Serwis Ekspresów do Kawy - Katowice - Naprawa Ekspresso",
+    "desc": "Ekspresso - Serwis Naprawa Ekspresów do Kawy Katowice. ☆ 8 Lat Doświadczenia. ☑ Rzetelna Firma. Zadzwoń ☎ 798 903 409",
+    "h1": [
+     "H1: Serwis ekspresów do kawy - Katowice, Śląsk"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Katowice",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "15bar.pl",
+    "url": "https://15bar.pl/",
+    "title": "15bar — Serwis ekspresów do kawy | Wrocław",
+    "desc": "15bar — serwis ekspresów do kawy we Wrocławiu. Naprawy, konserwacja, czyszczenie i diagnostyka. Zadzwoń: 791 954 668.",
+    "h1": [
+     "H1: Profesjonalny serwis ekspresów do kawy we Wrocławiu"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "agdgroup.pl",
+    "url": "https://agdgroup.pl/services/serwis-ekspresow-lodz/",
+    "title": "Serwis ekspresów do kawy Łódź — pon–pt 9–19 | AGD Group",
+    "desc": "Serwis ekspresów do kawy w Łodzi — al. Włókniarzy 234A, pon–pt 9:00–19:00 (sobota zamknięta). Sprawdzenie 70 PLN, naprawa 2–3 dni, gwarancja do 12 mies. Bez...",
+    "h1": [
+     "H1: Serwis ekspresów do kawy w Łodzi — naprawa ekspresów"
+    ],
+    "first": "Naprawa / regeneracja bloku zaparzającego",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "goodcaffeine.pl",
+    "url": "https://www.goodcaffeine.pl/serwis-ekspresow-do-kawy/",
+    "title": "Serwis ekspresów do kawy – Wrocław - Good Caffeine",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ekspresów do kawy – Wrocław"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Usuwanie wycieków / uszczelki",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "ekspreson.pl",
+    "url": "http://ekspreson.pl/",
+    "title": "EkspresON | Serwis ekspresów do kawy Warszawa",
+    "desc": "EkspresON – serwis ekspresów do kawy w Warszawie. Diagnostyka, naprawa, czyszczenie i konserwacja ekspresów automatycznych.",
+    "h1": [
+     "H1: Twój ekspres. Nasza fachowa naprawa."
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "polskiserwiskawowy.pl",
+    "url": "https://polskiserwiskawowy.pl/serwis-ekspresow/",
+    "title": "Naprawa i serwis ekspresów do kawy | Polski Serwis Kawowy",
+    "desc": "Naprawa, diagnostyka i konserwacja ekspresów domowych oraz profesjonalnych. Zgłoś usterkę online lub znajdź punkt przyjęć Polskiego Serwisu Kawowego.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "doktorcafe.pl",
+    "url": "https://doktorcafe.pl/",
+    "title": "Naprawimy Twój Ekspres do kawy | Nowe i używane ekspresy do kawy | Wymiana i części zamienne | Dr Cafe",
+    "desc": "Specjalizujemy się w sprzedaży i naprawie ekspresów do kawy. Największy we Wrocławiu salon sprzedaży używanych ekspresów do kawy: ponad 100 szt już od 300zł. Sprzedajemy również części zamienne, zestawy naprawcze jak np. uszczelnienia, smar, tabletki do czyszczenia i odkamieniania itp. W ofercie mamy również kawę jaką ",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Usuwanie wycieków / uszczelki",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "apsserwis.pl",
+    "url": "https://apsserwis.pl/serwis-ekspresow-do-kawy",
+    "title": "Naprawa ekspresów do kawy",
+    "desc": "Skuteczna i szybka naprawa ekspresów do kawy. Realizujemy serwis gwarancyjny i pogwarancyjny automatycznych ekspresów domowych i biurowych na terenie całego kraju. Zapraszamy do kontaktu!",
+    "h1": [
+     "H1: Naprawa i serwis ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": []
+   },
+   {
+    "host": "espressoservis.pl",
+    "url": "https://www.espressoservis.pl/serwis-ekspresow-do-kawy",
+    "title": "Serwis ekspres&#xF3;w do kawy | EspressoServis.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ekspres&#xF3;w do kawy"
+    ],
+    "first": "Naprawa spieniacza / układu mlecznego",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "jaroher.pl",
+    "url": "https://jaroher.pl/",
+    "title": "- JaroHer Serwis-Naprawa ekspresów do kawy",
+    "desc": "Profesjonalny serwis ekspresów do kawy. Naprawa i konserwacja ekspresów Jura, DeLonghi, Saeco, Krups i innych marek. Szybka diagnoza i rzetelna naprawa",
+    "h1": [
+     "H1: Profesjonalny serwis ekspresów do kawy"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "kbserwis.com",
+    "url": "https://kbserwis.com/",
+    "title": "KB Serwis : Gdańsk : Gdynia : Sopot : Reda : Rumia : Puck : Kosakowo – Naprawa ekspresów do kawy : Serwis ekspresów dla firm i osób prywatnych",
+    "desc": "",
+    "h1": [
+     "H1: Masz problem ze swoim ekspresem do kawy?"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "finaltech.pl",
+    "url": "https://www.finaltech.pl/serwis-ekspresow-do-kawy.html",
+    "title": "Serwis automatów i naprawa ekspresów do kawy DeLonghi, Siemens – Bydgoszcz | Finaltech",
+    "desc": "Oferujemy Państwu pogwarancyjną naprawę oraz wszystkie czynności związane z serwisowaniem ekspresów znanych marek m.in. Krups, DeLonghi, Jura, Saeco, SIEMENS, Zelmer, PHILIPS.",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy DeLongi, Siemens - Bydgoszcz"
+    ],
+    "first": "Usuwanie wycieków / uszczelki",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "kawapodrodze.pl",
+    "url": "https://kawapodrodze.pl/cennik/",
+    "title": "Cennik | Kawa Po Drodze",
+    "desc": "",
+    "h1": [
+     "H1: Cennik"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "Naprawa młynka / żaren",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "coffeeclinic.pl",
+    "url": "https://coffeeclinic.pl/",
+    "title": "Coffee Clinic | Naprawa ekspresów do kawy | Mobilny serwis",
+    "desc": "",
+    "h1": [
+     "H1: Coffee Clinic | Naprawa ekspresów do kawy | Mobilny serwis",
+     "H1: Coffee Clinic | Naprawa ekspresów do kawy | Mobilny serwis"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "coffema.pl",
+    "url": "https://coffema.pl/serwis/",
+    "title": "Serwis Profesjonalnych Ekspresów | 24–48h Reakcja | Coffema",
+    "desc": "Profesjonalny serwis ekspresów do kawy w całej Polsce. Naprawy, części zamienne, szybka reakcja. Zaufaj ekspertom Coffema z ponad 30-letnim doświadczeniem. Carimali, Eversys, Elektra, La San Marco, Coffee Format, Fresco, Marco, Sielaff, TONE.",
+    "h1": [
+     "H1: Co zrobić, gdy zepsuł się ekspres?"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "coffeeplanet.eu",
+    "url": "https://coffeeplanet.eu/",
+    "title": "Sprzedaż i naprawa ekspresów do kawy - COFFEE PLANET",
+    "desc": "Sprzedaż i naprawa ekspresów do kawy",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "bisserwisrtv.pl",
+    "url": "https://bisserwisrtv.pl/",
+    "title": "Naprawy i serwis ekspresów do kawy — BIS SERWIS RTV",
+    "desc": "Jesteśmy firmą zajmującą się naprawą sprzętu gospodarstwa domowego. Działamy też jako serwis ekspresów do kawy. BIS SERWIS RTV - Warszawa",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Warszawa – profesjonalne naprawy pogwarancyjne"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "ekspressserwis.pl",
+    "url": "https://ekspressserwis.pl/",
+    "title": "Serwis ekspresów do kawy Kraków, naprawa Delonghi, Saeco, Krups",
+    "desc": "W Ekspress Serwis zajmujemy się naprawą ekspresów do kawy w Krakowie i okolicach, serwis ekspresów do kawy takich marek jak: Jura, DeLongi, Nivona, Krups, Saeco.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Kraków, naprawa ekspresów"
+    ],
+    "first": "Odkamienianie",
+    "seoFirst": "Odkamienianie",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Odkamienianie"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "serwis-ekspresow.com",
+    "url": "https://serwis-ekspresow.com/",
+    "title": "PAN ZIARENKO - Serwis Ekspresów do kawy Wrocław",
+    "desc": "Serwis ekspresów do kawy Siemens Bosch Saeco Delonghi Philips Krups Melitta Nivona, Naprawa ekspresów Wrocław, bezpłatna wycena, zastępczy ekspres   ",
+    "h1": [
+     "H1: &#xa0; Pan Ziarenko"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "abcespresso.pl",
+    "url": "https://www.abcespresso.pl/pl/page/serwis-ekspresow-do-kawy",
+    "title": "Serwis i naprawa ekspresów do kawy – Poznań | ABC Espresso",
+    "desc": "Twój ekspres wymaga naprawy? Nasz serwis urządzeń kawowych oferuje szybką diagnostykę i system door-to-door w Poznaniu. Przywróć smak swojej kawy już dziś!",
+    "h1": [],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "ekspresowaklinika.pl",
+    "url": "https://ekspresowaklinika.pl/",
+    "title": "Ekspresowa klinika – serwis ekspresów do kawy Saeco Philips Krups DeLonghi inne – Łódź Pabianice Aleksandrów Łódzki Koluszki Zgierz - Serwis ekspresów do kawy Łódź",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "chmielewski.szczecin.pl",
+    "url": "http://chmielewski.szczecin.pl/",
+    "title": "Serwis ekspresów do kawy Szczecin. Naprawiamy wszystkie marki.",
+    "desc": "Zajmujemy się naprawą automatycznych ekspresów do kawy, serwisem oraz sprzedażą. Nasza firma mieści się w Szczecinie na ul. Kolumba. Zadzwoń: 663 001 240",
+    "h1": [
+     "H1: Tylko u nas!!! darmowa diagnoza i najniższe ceny naprawy ekspresu, Mało??? Tylko teraz profesjonalana konserwacja za pół ceny",
+     "H1: Uwaga!!! Przerwa w pracy serwisu"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "naprawaekspresowlublin.pl",
+    "url": "https://naprawaekspresowlublin.pl/",
+    "title": "Naprawa ekspresów do kawy Lublin – dojazd i wycena Gratis",
+    "desc": "Naprawa ekspresów do kawy w Lublin. Wymiana i awarie szybka naprawa ekspresów Jura, Melitta, Nivona, Siemens, Bosch, Krups i inne.",
+    "h1": [],
+    "first": "Naprawa spieniacza / układu mlecznego",
+    "seoFirst": "Naprawa spieniacza / układu mlecznego",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "fonte.com.pl",
+    "url": "https://fonte.com.pl/serwis/",
+    "title": "Serwis sprzętu - ekspresów i młynków do kawy - Fonte Toruń",
+    "desc": "Profesjonalny serwis ekspresów JURA, Nivona, Saeco i innych. Przeglądy, odkamienianie i naprawy gwarancyjne w Fonte. 🛠️ ⚙️ ✅",
+    "h1": [
+     "H1: SERWIS EKSPRESÓW TORUŃ"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Naprawa młynka / żaren",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "kofart.com",
+    "url": "https://www.kofart.com/",
+    "title": "Sprzedaż i naprawa ekspresów kawowych - KOFART | Gdynia",
+    "desc": "Firma KOFART z Gdyni zajmuje się sprzedażą i naprawą ekspresów kawowych. W swojej ofercie posiada zarówno automaty do parzenia kawy, jak i kawę marki Lavazza.",
+    "h1": [
+     "H1: KOFART - Ekspresy do kawy i akcesoria"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "cavena.pl",
+    "url": "https://cavena.pl/cennik/",
+    "title": "Cennik - Cavena",
+    "desc": "",
+    "h1": [
+     "H1: Cennik"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "naprawekspres.pl",
+    "url": "https://naprawekspres.pl/",
+    "title": "Serwis ekspresów do kawy Poznań - Napraw Ekspres",
+    "desc": "Serwis ekspresów do kawy Poznań ☕ Diagnostyka i serwis ekspresów ⚡ Domowe ✅ Profesjonalne ✅ Automatyczne ✅ ➤ Sprawdź ofertę Napraw Ekspres",
+    "h1": [
+     "H1: serwis ekspresów do kawy Poznań"
+    ],
+    "first": "Naprawa spieniacza / układu mlecznego",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "fixpresso.pl",
+    "url": "http://fixpresso.pl/",
+    "title": "FIXPRESSO - serwis ekspresów do kawy w Gdańsku",
+    "desc": "Serwis i naprawa ekspresów do kawy DeLonghi, Saeco, Jura, Nivona, Krups, Melitta, Bosch, Siemens, Gaggia",
+    "h1": [
+     "H1: NAPRAWIAMY EKSPRESY",
+     "H1: O FIRMIE"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "serwisekspresow.bydgoszcz.pl",
+    "url": "https://serwisekspresow.bydgoszcz.pl/",
+    "title": "Serwis ekspresów do kawy - Bydgoszcz",
+    "desc": "Naprawa ekspresów do kawy - Bydgoszcz. Krups, Jura, DeLonghi, Siemens, Philips, Saeco, Nivona i inne. Zastępczy ekspres na czas naprawy. Skorzystaj z naszej szybkiej obsługi!",
+    "h1": [
+     "H1: Serwis ekspresów do kawy",
+     "H1: Serwis Ekspresów Bydgoszcz"
+    ],
+    "first": "Usuwanie wycieków / uszczelki",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "serwisagdbialystok.pl",
+    "url": "http://serwisagdbialystok.pl/naprawa-ekspresow/",
+    "title": "Ekspresy do kawy – Serwis AGD Białystok",
+    "desc": "",
+    "h1": [
+     "H1: Ekspresy do kawy"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "strefakawykielce.pl",
+    "url": "https://strefakawykielce.pl/serwis/",
+    "title": "Serwis – Strefa Kawy",
+    "desc": "",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "serwis-ekspresow.opole.pl",
+    "url": "https://www.serwis-ekspresow.opole.pl/",
+    "title": "Serwis ekspresów do kawy | Coffee Expert Opole",
+    "desc": "Serwis ekspresów do kawy w Opolu? Wybierz Coffee Expert! Doświadczeni technicy, szybka naprawa i konserwacja ekspresów Jura, Saeco, De",
+    "h1": [],
+    "first": "Wymiana pompy",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwis-ekspresow-krakow.pl",
+    "url": "https://serwis-ekspresow-krakow.pl/",
+    "title": "Serwis ekspresów do kawy w Krakowie",
+    "desc": "Naprawiamy ekspresy Saeco, Philips, Nivona i Melitta. Diagnoza od 20 zł, odliczana od kosztu naprawy. Na każdą naprawę dajemy 12 miesięcy gwarancji.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy w Krakowie"
+    ],
+    "first": "Naprawa / regeneracja bloku zaparzającego",
+    "seoFirst": "Naprawa / regeneracja bloku zaparzającego",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "katowice.serwisy.org.pl",
+    "url": "https://katowice.serwisy.org.pl/naprawa-ekspresow-do-kawy-katowice/",
+    "title": "Naprawa ekspresów do kawy Katowice – Serwis AGD Katowice",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy Katowice - Profesjonalny Serwis"
+    ],
+    "first": "Odkamienianie",
+    "seoFirst": "Odkamienianie",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "coffeemajster.pl",
+    "url": "https://coffeemajster.pl/",
+    "title": "Coffee Majster w Szczecinie - serwis ekspresów do kawy",
+    "desc": "Serwis ekspresów Coffee Majster w Szczecinie zapewnia szybką naprawę, konserwację i czyszczenie ekspresów domowych i profesjonalnych z indywidualnym podejściem.",
+    "h1": [
+     "H1: Serwis ekspresów do kawy Coffee Majster ze Szczecina"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "miko-kawa.pl",
+    "url": "https://miko-kawa.pl/serwis-ekspresow-do-kawy/",
+    "title": "Serwis ekspresów do kawy Bydgoszcz - Miko - Naprawa ekspresu i urządzeń do kawy",
+    "desc": "Miko Bydgoszcz Bronikowskiego 35 – Serwis ekspresów i urządzeń do kawy wszystkich marek w tym Delonghi, Philips, Siemens, Samsung, Dr. Coffee – Zapraszamy",
+    "h1": [
+     "H1: Serwis ekspresów do kawy i urządzeń do kawy - Bydgoszcz"
+    ],
+    "first": "Naprawa młynka / żaren",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "ekspres.rzeszow.pl",
+    "url": "https://www.ekspres.rzeszow.pl/",
+    "title": "Serwis Ekspresów Rzeszów",
+    "desc": "",
+    "h1": [
+     "H1: Profesjonalny serwis ekspresów do kawy w Rzeszowie – naprawa, konserwacja i czyszczenie urządzeń każdej marki."
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "kawa.opole.pl",
+    "url": "https://kawa.opole.pl/serwis-ekspresow/",
+    "title": "Serwis ekspresów do kawy w Opolu - Kawa dla biznesu - serwis, wynajem, dzierżawa, sprzedaż",
+    "desc": "Nasz serwis ekspresów do kawy zajmuje się naprawą ekspresów Delonghi, Siemens, Philips, Saeco, Jura, Melitta, Nivona, Krups, FRESCO.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwisagd.czest.pl",
+    "url": "https://serwisagd.czest.pl/ekspresy.html",
+    "title": "Serwis ekspresów do kawy Częstochowa ✔️ ☎️ 696318443",
+    "desc": "",
+    "h1": [
+     "H1: Serwis AGD Częstochowa"
+    ],
+    "first": "Usuwanie wycieków / uszczelki",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "pankawosz.pl",
+    "url": "https://pankawosz.pl/naprawa-i-serwis-ekspresow-do-kawy/",
+    "title": "Naprawa i serwis ekspresów do kawy w Olsztynie - Pan Kawosz",
+    "desc": "Naprawa i serwis ekspresów Olsztyn, oraz w województwach: warmińsko-mazurskie i pomorskie. Szybko, solidnie, z dojazdem lub kurierem! ☎️",
+    "h1": [
+     "H1: Naprawa i serwis ekspresów do kawy w Olsztynie"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "serwisekspresow4you.pl",
+    "url": "https://serwisekspresow4you.pl/",
+    "title": "Serwis i Naprawa Ekspresów do Kawy Warszawa ☕ SerwisEkspresów4You",
+    "desc": "Serwis i Naprawa ekspresów do Kawy Warszawa ☕ Odbiór i Diagnoza za 0 zł ✔️ Gwarancja Poserwisowa ✔️ Krótki Termin Naprawy ✔️ Zadzwoń »",
+    "h1": [
+     "H1: Serwis i naprawa ekspresów do kawy Warszawa"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa grzałki / termobloku",
+     "Zawory / elektrozawory"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd",
+     "Usuwanie wycieków / uszczelki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "flashcaffe.pl",
+    "url": "https://flashcaffe.pl/serwis-ekspresow-do-kawy/",
+    "title": "Serwis ekspresów do kawy Poznań — naprawa i przegląd | Flashcaffe",
+    "desc": "Serwis i naprawa ekspresów do kawy w Poznaniu. Obsługujemy Delonghi, Jura, Saeco, Nivona, Dr.Coffee i inne marki. Szybka diagnoza, oryginalne części. Zadzwoń!",
+    "h1": [
+     "H1: Serwis ekspresów do kawy"
+    ],
+    "first": "Odkamienianie",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "torunski-serwis-agd.pl",
+    "url": "https://www.torunski-serwis-agd.pl/naprawa-ekspresow-do-kawy",
+    "title": "Naprawa Ekspresów do Kawy w Toruniu i Okolicach",
+    "desc": "Pogwarancyjny Serwis Ekspresów do Kawy w Toruniu oraz inne usługi Naprawy AGD z Dojazdem. Sprawdź Serwisantów | Zapytaj o Cenę i Zamów Usługę 24/7",
+    "h1": [
+     "H1: Naprawa Ekspresów do Kawy Toruń"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "opole.serwisy.org.pl",
+    "url": "https://opole.serwisy.org.pl/naprawa-ekspresow-do-kawy-opole/",
+    "title": "Naprawa ekspresów do kawy Opole – Serwis AGD Opole",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa ekspresów do kawy Opole - Profesjonalny Serwis"
+    ],
+    "first": "Odkamienianie",
+    "seoFirst": "Odkamienianie",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Wymiana pompy",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "olsztynski-serwis-agd.pl",
+    "url": "https://www.olsztynski-serwis-agd.pl/naprawa-ekspresow-do-kawy",
+    "title": "Naprawa Ekspresów do Kawy w Olsztynie i Okolicach",
+    "desc": "Pogwarancyjny Serwis Ekspresów do Kawy w Olsztynie oraz inne usługi Naprawy AGD z Dojazdem. Sprawdź Serwisantów | Zapytaj o Cenę i Zamów Usługę 24/7",
+    "h1": [
+     "H1: Naprawa Ekspresów do Kawy Olsztyn"
+    ],
+    "first": "Wymiana pompy",
+    "seoFirst": "",
+    "works": [
+     "Wymiana pompy",
+     "Naprawa młynka / żaren",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "zwiadowca.pl",
+    "url": "https://zwiadowca.pl/informacje/serwis-ekspresow-do-kawy",
+    "title": "Serwis Ekspresów do Kawy – Sprawdź Ceny i Terminy u Sprawdzonych Serwisantów - zwiadowca.pl",
+    "desc": "Poszukujesz wyposażenia, wykonawcy hotelu, restauracji, biura, obiektu komercyjnego? Dodaj bezpłatnie zapytanie. Otrzymasz oferty od wielu firm.",
+    "h1": [
+     "H1: Serwis Ekspresów do Kawy – Sprawdź Ceny i Terminy u Sprawdzonych Serwisantów"
+    ],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "panodkawy.com.pl",
+    "url": "https://panodkawy.com.pl/",
+    "title": "Pan od Kawy - Mobilny serwis ekspresów do kawy | Kraków i okolice",
+    "desc": "Zepsuty ekspres? Pan od Kawy to profesjonalny, mobilny serwis ekspresów do kawy w Krakowie i okolicach. Dojeżdżamy do klienta. Zadzwoń i umów naprawę!",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / konserwacja / przegląd",
+    "works": [
+     "Odkamienianie",
+     "Czyszczenie / konserwacja / przegląd",
+     "Naprawa / regeneracja bloku zaparzającego",
+     "Naprawa młynka / żaren",
+     "Usuwanie wycieków / uszczelki",
+     "Naprawa spieniacza / układu mlecznego",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja / przegląd"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Naprawa / regeneracja bloku zaparzającego": {
+    "было": 42,
+    "стало": 32,
+    "исключено": [
+     "zaparzacz do herbaty",
+     "zaparzacz do kawy",
+     "zaparzacz do kawy tłokowy",
+     "zaparzacz do kawy przelewowy",
+     "zaparzacz",
+     "zaparzacz do herbaty szklany",
+     "zaparzacz do herbaty pepco",
+     "zaparzacz do herbaty ikea",
+     "zaparzacze do herbaty",
+     "zaparzacz do ziół"
+    ]
+   },
+   "подсказки: Naprawa grzałki / termobloku": {
+    "было": 25,
+    "стало": 19,
+    "исключено": [
+     "ekspres przelewowy nie grzeje wody",
+     "termoblok",
+     "termoblok do klimatyzacji",
+     "termoblok do okna",
+     "termoblok laboratoryjny",
+     "termoblok klimatyzator"
+    ]
+   },
+   "общие подсказки: Naprawa młynka / żaren": {
+    "было": 11,
+    "стало": 1,
+    "исключено": [
+     "ekspres do kawy z młynkiem",
+     "ekspres do kawy automatyczny z młynkiem",
+     "ekspres do kawy ciśnieniowy z młynkiem",
+     "ekspres do kawy ciśnieniowy krups coffee crush kolbowy z młynkiem",
+     "ekspres do kawy kolbowy z młynkiem",
+     "ekspres do kawy kolbowy z młynkiem i spieniaczem",
+     "ekspres do kawy przelewowy z młynkiem",
+     "ekspres do kawy z młynkiem i spieniaczem",
+     "ekspres do kawy z młynkiem delonghi",
+     "ekspres do kawy ziarnistej z młynkiem"
+    ]
+   },
+   "общие подсказки: Naprawa spieniacza / układu mlecznego": {
+    "было": 16,
+    "стало": 9,
+    "исключено": [
+     "ekspres do kawy bez pojemnika na mleko",
+     "ekspres do kawy bez spieniacza",
+     "ekspres do kawy kolbowy z młynkiem i spieniaczem",
+     "ekspres do kawy z młynkiem i spieniaczem",
+     "ekspres do kawy z rurką do mleka",
+     "ekspres do kawy z spieniaczem mleka media expert",
+     "ekspres do kawy z spieniaczem ranking"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Czyszczenie / konserwacja / przegląd",
+   "comp": {
+    "mention": 69,
+    "first": 44,
+    "seoFirst": 26,
+    "seo": 32,
+    "head": 25,
+    "td": 16
+   },
+   "ac": 0,
+   "probe": {
+    "n": 32,
+    "cena": 4,
+    "ex": [
+     "czyszczenie ekspresu philips",
+     "czyszczenie ekspresu delonghi",
+     "czyszczenie ekspresu",
+     "czyszczenie ekspresu philips lattego",
+     "czyszczenie ekspresu delonghi magnifica s"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Odkamienianie",
+   "comp": {
+    "mention": 55,
+    "first": 5,
+    "seoFirst": 4,
+    "seo": 15,
+    "head": 9,
+    "td": 6
+   },
+   "ac": 11,
+   "probe": {
+    "n": 13,
+    "cena": 2,
+    "ex": [
+     "odkamienianie ekspresu delonghi",
+     "odkamienianie ekspresu delonghi magnifica",
+     "odkamienianie ekspresu philips",
+     "odkamienianie ekspresu",
+     "odkamienianie ekspresu delonghi magnifica s"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa młynka / żaren",
+   "comp": {
+    "mention": 44,
+    "first": 8,
+    "seoFirst": 4,
+    "seo": 9,
+    "head": 8,
+    "td": 1
+   },
+   "ac": 1,
+   "probe": {
+    "n": 13,
+    "cena": 0,
+    "ex": [
+     "wymiana żaren w młynku philips",
+     "wymiana żaren w młynku",
+     "wymiana żaren w młynku delonghi",
+     "wymiana żaren jura",
+     "wymiana żaren saeco"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie wycieków / uszczelki",
+   "comp": {
+    "mention": 40,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 33,
+    "cena": 1,
+    "ex": [
+     "ekspres cieknie od spodu",
+     "ekspres cieknie",
+     "ekspres cieknie woda",
+     "cieknie ekspres delonghi",
+     "cieknie ekspres philips"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa spieniacza / układu mlecznego",
+   "comp": {
+    "mention": 39,
+    "first": 5,
+    "seoFirst": 2,
+    "seo": 9,
+    "head": 9,
+    "td": 0
+   },
+   "ac": 9,
+   "probe": {
+    "n": 24,
+    "cena": 0,
+    "ex": [
+     "ekspres nie spienia mleka",
+     "ekspres nie spienia mleka siemens",
+     "ekspres nie spienia mleka philips",
+     "ekspres nie spienia mleka krups",
+     "ekspres nie spienia mleka beko"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 32,
+    "first": 4,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 4,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana pompy",
+   "comp": {
+    "mention": 26,
+    "first": 3,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 19,
+    "cena": 2,
+    "ex": [
+     "wymiana pompy w ekspresie delonghi dinamica",
+     "wymiana pompy w ekspresie delonghi cena",
+     "wymiana pompy w ekspresie delonghi",
+     "wymiana pompy w ekspresie do kawy",
+     "wymiana pompy w ekspresie saeco"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa / regeneracja bloku zaparzającego",
+   "comp": {
+    "mention": 25,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 4,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 32,
+    "cena": 0,
+    "ex": [
+     "blok zaparzający delonghi",
+     "blok zaparzający saeco",
+     "blok zaparzający",
+     "blok zaparzający philips lattego",
+     "blok zaparzający philips czyszczenie"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Zawory / elektrozawory",
+   "comp": {
+    "mention": 20,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa grzałki / termobloku",
+   "comp": {
+    "mention": 13,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 19,
+    "cena": 0,
+    "ex": [
+     "wymiana grzalki ekspres delonghi",
+     "wymiana grzałki w ekspresie siemens",
+     "wymiana grzalki w ekspresie philips",
+     "wymiana grzalki w ekspresie",
+     "wymiana grzałki w ekspresie saeco"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Odkamienianie",
+   "a": "Odkamienianie",
+   "why": "55 конкурентов, 13 подсказок; входит в «Czyszczenie i konserwacja»",
+   "evidence": "конкуренты 55 из 77 (первой работой — 5, в Title/Description — 6) · подсказки Google 13 (напр. «odkamienianie ekspresu delonghi», «odkamienianie ekspresu delonghi magnifica»)"
+  },
+  {
+   "w": "Naprawa bloku zaparzającego",
+   "a": "Naprawa / regeneracja bloku zaparzającego",
+   "why": "32 подсказки после очистки (убраны «zaparzacz do herbaty» и т.п.); в прайсе «Regeneracja bloku», «Odblokowanie bloku»",
+   "evidence": "конкуренты 25 из 77 (первой работой — 2, в Title/Description — 0) · подсказки Google 32 (напр. «blok zaparzający delonghi», «blok zaparzający saeco»)"
+  },
+  {
+   "w": "Naprawa młynka",
+   "a": "Naprawa młynka / żaren",
+   "why": "44 конкурента, 13 подсказок; в прайсе «Wymiana silnika młynka»",
+   "evidence": "конкуренты 44 из 77 (первой работой — 8, в Title/Description — 1) · подсказки Google 13 (напр. «wymiana żaren w młynku philips», «wymiana żaren w młynku»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Usuwanie wycieków",
+   "a": "Usuwanie wycieków / uszczelki",
+   "why": "40 конкурентов, 33 подсказки; в прайсе «Lokalizacja i usunięcie wycieku». С формулировками-действиями 4-й работой не помещается (172)",
+   "evidence": "конкуренты 40 из 77 (первой работой — 4, в Title/Description — 1) · подсказки Google 33 (напр. «ekspres cieknie od spodu», «ekspres cieknie»)"
+  },
+  {
+   "w": "Spieniacz",
+   "a": "Naprawa spieniacza / układu mlecznego",
+   "why": "спорно: 24 подсказки и 39 конкурентов почти как у «wycieki»; не помещается 5-м — запасной №1",
+   "evidence": "конкуренты 39 из 77 (первой работой — 5, в Title/Description — 0) · подсказки Google 24 (напр. «ekspres nie spienia mleka», «ekspres nie spienia mleka siemens»)"
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «naprawa młynka», «usuwanie wycieków» не ставить",
+  "Ads по кофемашинам почти нет (14 показов)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa ekspresów do kawy we Wrocławiu ✔ Odkamienianie, naprawa bloku zaparzającego i młynka ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 153
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт кавомашин у Вроцлаві ✔ Видалення накипу, ремонт заварювального блока і кавомолки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 149
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт кофемашин во Вроцлаве ✔ Удаление накипи, ремонт заварочного блока и кофемолки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 145
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

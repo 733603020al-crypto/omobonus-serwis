@@ -574,8 +574,13 @@
      above, but with the contact form's own parchment texture instead of
      the services-card one (same file as Formularz zgłoszenia). */
   .zakres-paper-card.review-parchment::before {
-    /* --review-bg: none until the block is near (google-reviews-carousel.tsx) */
+    /* --review-bg: placeholder until the texture is loaded (google-reviews-carousel.tsx) */
     background-image: var(--review-bg, url('/images/contact-form-parchment.webp'));
+  }
+  /* Tiny 24px copy of the same parchment (~0.3 KB): on a slow network the
+     card already reads as parchment before the full texture arrives. */
+  .zakres-paper-card.review-parchment {
+    --review-bg-placeholder: url('data:image/webp;base64,UklGRjoBAABXRUJQVlA4WAoAAAAQAAAAFwAAIgAAQUxQSHgAAAARb6C2jSQ1eCHfPXP2EREwkr6SP+4WK8Aotu0mFANgARV1iwO8IIHBQAcDKTtWKQ5iIAHkkGogov9E0zapmtwbtxAQgmkYuz59P03to4O1+KsltR7vlDX9Xz3rcdkP/6Tv7/gJ6VI6tQ5O552AnVBCaRlnefErjgBWUDggnAAAAPAFAJ0BKhgAIwA+vVCjS6clI6G1WAwA4BeJQBbfbkEeAzgPxH1K6BJh9Z4vNR7iDwUa7UGClDIwAPz7bPy083voAPrpc/N7exMh7rHOKdvN/ftdTxBL18xoBVUGgVWIUMRLox8GeKSQejhpmgHY6RY88gTONKmPuI9jUykBpslsBYkgp8bRj3gj+xZUAkDvu14fyqwsCsqurIAAAA==');
   }
 
   /* SERWIS I NAPRAWA heading text — flat plain white, no gradient/center
@@ -933,6 +938,13 @@
      untouched. */
   [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-cennik-link {
     margin-top: -4px;
+  }
+  /* Phones: at -4px the descenders of the title's last line (у, р, ")")
+     touched the link — 3px back. */
+  @media (max-width: 767px) {
+    [data-parchment-variant="warm"][data-main-accordion="true"] [data-slot="accordion-item"][data-state="closed"]:not([data-faq-item="true"]) .zakres-cennik-link {
+      margin-top: -1px;
+    }
   }
 
   /* WARM PARCHMENT — DESKTOP CLOSED-state only: image container 150px

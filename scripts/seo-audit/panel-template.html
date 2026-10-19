@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO-панель Omobonus</title>
+<style>
+:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2b2118;--muted:#7a6a58;--line:#e2d6c2;--gold:#a8823c;--ok:#2e7d32;--okbg:#e8f4e8;--no:#b3261e;--nobg:#fbe9e7;--warn:#b26a00;--bad:#c62828;--chg:#fff4d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#2b2118;color:#f3e7cf;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+header h1{font-size:17px;margin:0 8px 0 0;font-weight:600}
+.tabs{display:flex;gap:4px;background:#3d3024;border-radius:8px;padding:3px}
+.tab{border:0;background:transparent;color:#f3e7cf;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:600}
+.tab.on{background:#f3e7cf;color:#2b2118}
+.btn{border:1px solid var(--gold);background:var(--gold);color:#fff;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px}
+.btn.ghost{background:transparent;color:#f3e7cf;border-color:#6b5a45}
+.stats{margin-left:auto;font-size:13px;color:#d9c9ac}
+.wrap{display:grid;grid-template-columns:220px 1fr;gap:16px;padding:16px;max-width:1560px;margin:0 auto}
+nav{position:sticky;top:calc(var(--hh,52px) + 52px);align-self:start;max-height:calc(100vh - 126px);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px}
+nav .g{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:10px 6px 4px}
+nav a{display:flex;justify-content:space-between;gap:6px;padding:4px 8px;border-radius:5px;color:var(--ink);text-decoration:none;font-size:13px}
+nav a:hover{background:#f1e7d3}
+nav a .d{font-size:11px;color:var(--muted);white-space:nowrap}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#4a3d30}
+.intro b{color:var(--ink)}
+.legend span{display:inline-block;margin-right:12px}
+section.page{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:14px;scroll-margin-top:calc(var(--hh,52px) + 56px)}
+section.page h2{margin:0;padding:10px 14px;font-size:15px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:baseline}
+section.page h2 small{color:var(--muted);font-weight:400;font-size:12px}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #efe6d6;vertical-align:top}
+tr.approved{background:var(--okbg)}
+tr.rejected{background:var(--nobg)}
+tr.keep td{color:#6d6255}
+.lang{font-weight:700;font-size:12px;color:var(--gold);margin-right:6px}
+a.url{font-size:12px;color:#5b4b39;word-break:break-all}
+.cur{font-size:13.5px}
+.suf{color:var(--muted)}
+.edit{display:block;border:1px solid var(--line);border-radius:6px;background:#fff;padding:2px 6px}
+.edit .ti{border:0;outline:0;font:inherit;font-size:13.5px;width:100%;resize:none;padding:3px 0;background:transparent;display:block;field-sizing:content;min-height:1.6em}
+.edit:focus-within{border-color:var(--gold);box-shadow:0 0 0 2px #a8823c33}
+.edit.changed{background:var(--chg)}
+.tag{display:inline-block;font-size:11.5px;border-radius:4px;padding:1px 6px;margin-top:3px;background:#efe6d6;color:#5b4b39}
+.n{font-size:12.5px}
+.n .num{font-variant-numeric:tabular-nums;font-size:13px}
+.n .num b{font-weight:600}
+.n .soft{color:var(--warn)}
+.ck{display:block;margin-top:3px;line-height:1.35}
+.ck.ok{color:var(--ok)}.ck.warn{color:var(--warn)}.ck.bad{color:var(--bad);font-weight:600}
+.why{font-size:12.5px;color:#4a3d30;max-width:260px}
+td.why .tags{margin-top:0}
+.why ul.works{margin:6px 0 2px;padding-left:16px}.why ul.works li{margin:2px 0}
+.why details.ev{margin-top:6px}.why details.ev summary{cursor:pointer;color:#7a4300}.why details.ev ul{margin:4px 0;padding-left:16px;font-size:11.5px}
+.act{display:flex;gap:6px;min-width:170px}
+.a{flex:1;border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px 6px;cursor:pointer;font-size:12.5px}
+.a.ok.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+.a.no.on{background:var(--no);color:#fff;border-color:var(--no)}
+.reset{font-size:11px;color:var(--muted);background:none;border:0;cursor:pointer;padding:0;text-decoration:underline;align-self:flex-start}
+.hidden{display:none!important}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#2b2118;color:#fff;padding:8px 14px;border-radius:6px;opacity:0;transition:.2s;pointer-events:none}
+#toast.show{opacity:1}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}.wrap>*{min-width:0}.edit .ti{min-width:0}nav{position:static;max-height:none}
+ table,tbody,tr,td{display:block;width:100%}thead{display:none}td{border:0;padding:6px 12px}.why{max-width:none}
+ header .stats{margin-left:0}}
+.hist{font-size:12.5px;color:#4a3d30}
+.hist s{color:var(--muted)}
+.prev{display:block;font-size:12px;color:var(--no);margin-top:3px}
+.tags .tag{margin-right:4px}
+.tag.p{background:#fbe2c4;color:#7a4300}
+.tag.rv{background:#dcefdc;color:#1f5e22}
+.prop{font-size:13.5px;font-weight:600}
+.own{margin-top:8px;padding:8px;border:1px dashed var(--no);border-radius:6px;background:#fff8f6}
+.own label{display:block;font-size:11.5px;font-weight:700;color:var(--no);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.own .edit{display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+.own .ow{border:0;outline:0;font:inherit;font-size:13.5px;flex:1 1 200px;min-width:0;resize:none;padding:3px 0;background:transparent;field-sizing:content;min-height:1.6em}
+.own .cnt{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.sheets{display:flex;gap:2px;padding:0 16px;background:#e9dfcc;border-bottom:1px solid var(--line);overflow-x:auto;position:sticky;top:var(--hh,52px);z-index:4}
+.sheet{border:1px solid transparent;border-bottom:0;background:transparent;color:#5b4b39;padding:7px 16px 6px;font-size:13.5px;font-weight:600;cursor:pointer;border-radius:6px 6px 0 0;margin-top:4px;white-space:nowrap}
+.sheet.on{background:var(--card);border-color:var(--line);color:var(--ink);margin-bottom:-1px}
+.sheet .c{font-weight:400;color:var(--muted);font-size:12px;margin-left:4px}
+.histbox{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:13px}
+.histbox .row{display:flex;flex-wrap:wrap;gap:4px 16px}
+.histbox .row b{font-variant-numeric:tabular-nums}
+.histbox details{margin-top:6px}.histbox summary{cursor:pointer;color:#5b4b39}
+.histbox ul{margin:6px 0 0;padding-left:18px}.histbox li{margin:2px 0;word-break:break-word}
+.histbox .old{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
+.empty{max-width:760px;margin:24px auto;padding:0 16px}
+.tag.nw{background:#dde7f7;color:#1d3f73}
+.yours{display:block;font-size:12px;color:#4a3d30;margin-top:3px}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <h1>SEO-панель</h1>
+  <div class="tabs" id="tabs"></div>
+  <button class="btn" id="copy">Скопировать решения для Claude</button>
+  <span class="stats" id="stats"></span>
+</header>
+<div class="sheets" id="sheets"></div>
+<div id="empty" class="empty hidden"></div>
+<div class="wrap" id="wrap">
+  <nav id="nav"></nav>
+  <main>
+    <div id="hist"></div>
+    <div class="intro" id="intro"></div>
+    <div id="pages"></div>
+  </main>
+</div>
+<div id="toast"></div>
+<script>
+/*DATA*/
+// ===== Общее =====
+const LN={pl:'PL',uk:'UK',ru:'RU'};
+const len=s=>[...s].length;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cv=document.createElement('canvas').getContext('2d');
+const px=(t,f='20px Arial')=>{cv.font=f;return Math.round(cv.measureText(t).width)};
+const now=()=>new Date().toLocaleString('ru-RU',{dateStyle:'short',timeStyle:'short'});
+const fmtD=d=>d.split('-').reverse().join('.');
+const load=k=>{try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}}};
+const BRANDS=/\b(Zebra|Dymo|HP|Canon|Epson|Brother|Xerox|Kyocera|Ricoh|Lexmark|OKI|Samsung|Konica|Minolta|Sharp|Evolis|Fargo|Datacard|APC|Eaton|Jura|Saeco|Philips|Siemens|Bosch|DeLonghi|Lenovo|Dell|Asus|Acer|Apple|Godex|Sato|Bixolon|Citizen|Sawgrass|Mimaki|Mutoh|Roland|Kornit|Magicard|Entrust|Vertiv|Ever|Fellowes|HSM|Kobra|Rexel|BenQ|Optoma|Sony|Bambu|Creality|Anycubic|Prusa)\b/g;
+// Отсечка: где обрежется текст шириной maxW (в px) — возвращает обрезанный хвост
+function cutTail(t,maxW,font){if(px(t,font)<=maxW)return null;const ch=[...t];let n=ch.length;
+  while(n>0&&px(ch.slice(0,n).join('')+'...',font)>maxW)n--;return {n,cut:ch.slice(n).join('').trim()}}
+
+// ===== Лист Title (логика без изменений) =====
+const TPL={pl:'Serwis i naprawa ',uk:'Сервіс і ремонт ',ru:'Сервис и ремонт '};
+const EXTRA=/\s[—–-]\s.*|(cennik|ціни|цены|ceny)|\(.*?\)/gi;
+// Синонимы одного устройства, соединённые «и/і/i/та/oraz», — бессмысленный повтор
+const SYN=/(UPS|ДБЖ|ИБП)\s+(і|и|i|та|oraz)\s+(джерел|источник|zasilacz)|(джерел|источник|zasilacz)[^|]*?\s(і|и|i|та|oraz)\s+(UPS|ДБЖ|ИБП)/i;
+const TBRANDS=/(Zebra|Dymo|HP|Canon|Epson|Brother|Xerox|Kyocera|Ricoh|Lexmark|OKI|Samsung|Konica|Minolta|Sharp|Evolis|Fargo|Datacard|APC|Eaton|Jura|Saeco|Philips|Siemens|Bosch|DeLonghi|Lenovo|Dell|Asus|Acer|Apple)/g;
+const TITLE={key:'title',name:'Title',store:'omobonus-title-audit-v2',
+  rows:DATA.title?DATA.title.rows:[],groups:DATA.title?DATA.title.groups:[],
+  issues(r,full){const out=[];const base=full.endsWith(r.suffix)?full.slice(0,-r.suffix.length):full;
+    if((full.match(/Omobonus/g)||[]).length!==1||!full.endsWith(r.suffix))out.push({cls:'bad',txt:'Суффикс не стандартный или повторяется'});
+    if(SYN.test(base))out.push({cls:'bad',txt:'Повтор синонимов одного устройства'});
+    if(!r.exc){
+      if(!base.startsWith(TPL[r.l])||len(base)<=len(TPL[r.l]))out.push({cls:'bad',txt:`Не по шаблону «${TPL[r.l]}[устройства]»`});
+      const br=[...new Set(base.match(TBRANDS)||[])];if(br.length)out.push({cls:'bad',txt:`Производители: ${br.join(', ')}`});
+      const ex=(base.match(EXTRA)||[]).map(x=>x.trim()).filter(Boolean);
+      if(ex.length)out.push({cls:'bad',txt:`Лишнее: «${ex.join(' ')}»`});
+    }
+    const d=cutTail(full,600,'20px Arial');if(d)out.push(d.n<len(base)?{cls:'bad',txt:`ПК: обрезаются ключевые слова («…${d.cut}»)`}:{cls:'warn',txt:`ПК: обрезается «${d.cut}»`});
+    let lines=1,line='';for(const w of full.split(' ')){const tr=line?line+' '+w:w;if(px(tr)>330&&line){lines++;line=w}else line=tr}
+    if(lines>2)out.push({cls:'warn',txt:'Телефон: больше 2 строк, конец может обрезаться'});
+    return out},
+  status(r){if(r.isNew||r.prop||r.review)return 'todo';if(r.appr)return r.appr.applied?'done':'todo';
+    return (r.exc||this.issues(r,r.t).length)?'todo':'done'},
+  reasons(r){const t=[];
+    if(r.review){t.push(['rv',r.review.status==='ok'?'Ваш вариант — проверено, ожидает утверждения':'Исправление вашего варианта']);if(r.review.why)t.push(['p',r.review.why]);return t}
+    if(r.isNew)t.push(['nw','Новая страница — Title ещё не согласован']);
+    if(r.appr&&!r.appr.applied)t.push(['p','Утверждено, но на сайте другой Title']);
+    for(const i of this.issues(r,r.t))t.push(['',i.txt.replace(/^(ПК|Телефон): /,'Сейчас — $1: ')]);
+    if(r.exc)t.push(['p',r.exc]);
+    if(r.def===r.base&&!r.appr&&!r.isNew)t.push(['p','Предложение: оставить как есть']);
+    return t},
+  reasonCol:false,doneLabel:'Утверждено',ownPh:'Ваш Title',
+  intro:todo=>todo
+   ?`Шаблон: <b>Serwis i naprawa [устройства] | Omobonus Wrocław</b> (UK «Сервіс і ремонт …», RU «Сервис и ремонт …»). Суффикс добавляется автоматически и учтён в длине; показаны только проблемы (✕ — серьёзно, ◐ — может обрезаться хвост). <b>Утвердить</b> — принять предложение Claude. <b>Отклонить</b> — откроется поле «Свой вариант»: Claude проверит его после экспорта, до утверждения на сайт он не попадёт.`
+   :`Только просмотр: применённые утверждённые Title и Title, полностью соответствующие стандарту. Повторно согласовывать не нужно.`,
+  emptyTodo:'Новых ошибок, изменений и несогласованных Title нет — всё утверждено.'};
+
+// ===== Лист Description =====
+const DTAIL={pl:'Pełny cennik bez ukrytych kosztów',uk:'Повний прайс без прихованих витрат',ru:'Полный прайс без скрытых платежей'};
+const DCITY={pl:/we Wrocławiu/,uk:/у Вроцлаві/,ru:/во Вроцлаве/};
+// Обещания, которые должны быть подтверждены на странице (слово само по себе не запрещено)
+const PROMISE=/bezpłatn\p{L}*|darmow\p{L}*|gratis|безкоштовн\p{L}*|бесплатн\p{L}*|najtań\p{L}*|найдешевш\p{L}*|самы\p{L}* дешев\p{L}*|najlepsz\p{L}*|найкращ\p{L}*|лучш\p{L}*|nr ?1\b|№ ?1\b|gwarancj\p{L}*|гаранті\p{L}*|гаранти\p{L}*|\b\d+ ?(min|minut|хв|мин)(?!\p{L})/giu;
+const DESC={key:'description',name:'Description',store:'omobonus-description-audit-v1',
+  rows:DATA.description?DATA.description.rows:[],groups:DATA.description?DATA.description.groups:[],
+  // Правила — docs/seo/description-standard.md
+  issues(r,t){const out=[];const n=len(t);
+    if(n>160)out.push({cls:'bad',txt:`Длиннее 160 символов (+${n-160})`});
+    else if(n<150)out.push({cls:'warn',txt:`Короче 150 (${n}) — проверить, есть ли полезное дополнение; не удлинять искусственно`});
+    // Google показывает ~2 строки по ~600 px (Arial 14px) — оценка приблизительная, только предупреждение
+    let lines=1,line='',rest=[];for(const w of t.split(' ')){const tr=line?line+' '+w:w;
+      if(lines>2)rest.push(w);else if(px(tr,'14px Arial')>600&&line){lines++;line=w;if(lines>2)rest.push(w)}else line=tr}
+    if(lines>2)out.push({cls:'warn',txt:`ПК: не помещается в 2 строки, может обрезаться «${rest.join(' ')}»`});
+    if(!/☎ 793 759 262$/.test(t))out.push({cls:'bad',txt:'Нет телефона «☎ 793 759 262» в конце'});
+    if(!/Wrocław|Вроцлав/.test(t))out.push({cls:'bad',txt:'Нет города'});
+    else if(!DCITY[r.l].test(t))out.push({cls:'warn',txt:`Город не в форме «${DCITY[r.l].source}»`});
+    // Производители техники запрещены; названия ПО/прошивок (Klipper, Marlin) — допустимы
+    const br=[...new Set(t.match(BRANDS)||[])];if(br.length)out.push({cls:'bad',txt:`Производители: ${br.join(', ')}`});
+    if(r.excPending)out.push({cls:'warn',txt:'Исключение ждёт согласования: '+r.excPending});
+    else{if(!r.exc&&!t.startsWith('✔ '+TPL[r.l]))out.push({cls:'bad',txt:`Не по шаблону «✔ ${TPL[r.l]}[urządzeń] …»`});
+      if(!t.endsWith(`✔ ${DTAIL[r.l]} ☎ 793 759 262`))out.push({cls:'bad',txt:`Концовка не «✔ ${DTAIL[r.l]} ☎ 793 759 262»`})}
+    const pr=[...new Set((t.match(PROMISE)||[]).map(x=>x.trim()))];if(pr.length)out.push({cls:'warn',txt:`Проверить, что обещание подтверждено на странице: ${pr.join(', ')}`});
+    // Повтор слова из первого блока (услуга в целом) в работах допустим: «Serwis i naprawa … ✔ Naprawa głowicy»
+    const body=t.split('✔').filter(s=>s.trim()).slice(1).join(' ');
+    const seen={},rep=new Set();for(const w of body.toLowerCase().match(/[\p{L}-]{5,}/gu)||[]){if(seen[w])rep.add(w);seen[w]=1}
+    if(rep.size)out.push({cls:'warn',txt:`Повтор: ${[...rep].join(', ')}`});
+    return out},
+  status(r){if(r.review)return 'todo';if(r.appr)return r.appr.applied?'done':'todo';
+    return r.prop&&r.prop!==r.t?'todo':'done'},
+  reasons(r){const t=[];
+    if(r.review){t.push(['rv',r.review.status==='ok'?'Ваш вариант — проверено, ожидает утверждения':'Исправление вашего варианта']);if(r.review.why)t.push(['p',r.review.why]);return t}
+    if(r.appr&&!r.appr.applied)t.push(['p','Утверждено, но на сайте другой Description']);
+    if(r.why)t.push(['p',r.why]);
+    for(const i of this.issues(r,r.t))t.push(['','Сейчас — '+i.txt]);
+    if(r.exc)t.push(['p','Исключение: '+r.exc]);
+    return t},
+  detail(r){if(r.review||!r.prop)return '';let h='';
+    if(r.works&&r.works.length)h+=`<ul class="works">${r.works.map(w=>`<li><b>${esc(w.w)}</b> — ${esc(w.why)}</li>`).join('')}</ul>`;
+    if(r.warnings&&r.warnings.length)h+=`<span class="tags">${r.warnings.map(w=>`<span class="tag p">◐ ${esc(w)}</span>`).join('')}</span>`;
+    if(r.evidence&&r.evidence.length)h+=`<details class="ev"><summary>Доказательства</summary><ul>${r.evidence.map(e=>`<li>${esc(e)}</li>`).join('')}</ul></details>`;
+    return h},
+  reasonCol:true,doneLabel:'Без изменений',ownPh:'Ваш Description',
+  intro:todo=>todo
+   ?`Формат: <b>✔ Serwis i naprawa [urządzeń] we Wrocławiu ✔ [2–4 konkretne prace] ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262</b> (UK «… у Вроцлаві … ✔ Повний прайс без прихованих витрат», RU «… во Вроцлаве … ✔ Полный прайс без скрытых платежей» — те же работы в том же порядке, не дословный перевод). Цель 150–160 символов, максимум 160. Работы — реальные ремонтные работы из прайса, выбранные по исследованию (конкуренты, подсказки Google, Ads, прайс Omobonus); в колонке «Причина» — работы, предупреждения, доказательства. Правила — <b>docs/seo/description-standard.md</b>. ✕ — нарушение стандарта, ◐ — рекомендация (обрезка, длина меньше 150, проверить обещание), текст автоматически не меняется. <b>Утвердить</b> — принять предложение Claude. <b>Отклонить</b> — поле «Свой вариант»: Claude проверит его после экспорта, до утверждения на сайт ничего не попадёт.`
+   :`Утверждённые и применённые Description — только просмотр, повторно не согласуются. ◐ здесь — рекомендации стандарта, автоматически ничего не меняется. Согласованные исключения отмечены в «Истории»; «Исключение ждёт согласования» — отличие от стандарта, вопрос по которому ещё открыт.`,
+  emptyTodo:'Новых ошибок и несогласованных Description нет.',
+  emptyDone:'Таких страниц пока нет: ни один текущий Description не совпадает с согласованным форматом, поэтому все страницы вынесены в «Требуют решения».'};
+
+const SHEETS=[['title','Title',TITLE],['description','Description',DESC],['h1','H1'],['h2','H2'],['h3','H3'],['h4','H4']];
+
+// ===== Состояние =====
+const UIKEY='omobonus-title-audit-ui2';
+let UI={sheet:'title',tab:{}};Object.assign(UI,load(UIKEY));
+if(typeof UI.tab!=='object'||!UI.tab)UI.tab={title:UI.tab||'todo'};
+{const k=location.hash.slice(1);if(SHEETS.some(s=>s[0]===k))UI.sheet=k} // localhost:4100/#description — открыть нужный лист
+if(!SHEETS.some(s=>s[0]===UI.sheet))UI.sheet='title';
+const saveUI=()=>{try{localStorage.setItem(UIKEY,JSON.stringify(UI))}catch(e){}};
+for(const C of [TITLE,DESC]){
+  C.S=load(C.store);C.save=()=>{try{localStorage.setItem(C.store,JSON.stringify(C.S))}catch(e){}};
+  C.rows.forEach(r=>{r.st=C.status(r);
+    r.def=r.review?(r.review.status==='ok'?r.review.own:r.review.fix):r.appr&&!r.appr.applied?r.appr.base:(r.prop??r.base)});
+  C.TODO=C.rows.filter(r=>r.st==='todo');
+  if(!C.TODO.length)UI.tab[C.key]='done'; // нечего решать — сразу показываем остальное
+  if(!UI.tab[C.key])UI.tab[C.key]='todo';
+}
+let C=TITLE;
+const st=r=>C.S[r.u]||(C.S[r.u]={});
+// Решение действует только для того предложения, к которому оно было принято
+const dec=r=>{const s=st(r);return s.d&&s.p===r.def?s.d:null};
+const fullOf=r=>r.def+r.suffix;
+
+// ===== Строки =====
+function numHtml(r,f,cur){const n=len(f);const lim=C===DESC?160:60;const c=n>lim?' class="soft"':'';
+  const w=C===DESC?px(f,'14px Arial'):px(f);
+  let h=`<span class="num">${cur||f===r.t?`<b${c}>${n}</b>`:`${r.len} → <b${c}>${n}</b>`} · ${w} px</span>`;
+  for(const i of C.issues(r,f))h+=`<span class="ck ${i.cls}">${i.cls==='bad'?'✕':'◐'} ${esc(i.txt)}</span>`;
+  return h}
+function urlCell(r){return `<span class="lang">${LN[r.l]}</span><a class="url" href="http://localhost:3000${esc(r.u)}" target="_blank">${esc(r.u)}</a>`}
+const cls=r=>{const d=dec(r);return d==='ok'?'approved':d==='no'?'rejected':''};
+const ownCnt=(r,v)=>v.trim()?`${len(v.trim()+r.suffix)} симв.${r.suffix?' с суффиксом':''}`:(r.suffix?'впишите свой Title — суффикс добавится сам':'впишите свой Description');
+const tagsHtml=r=>`<span class="tags">${C.reasons(r).map(([k,t])=>`<span class="tag ${k}">${esc(t)}</span>`).join('')}</span>`;
+function decRow(r){const s=st(r),d=dec(r),own=s.own||'';
+  return `<tr class="main ${cls(r)}" data-u="${esc(r.u)}">
+  <td>${urlCell(r)}</td><td class="cur">${esc(r.t)}</td>
+  <td><div class="prop">${esc(r.def)}<span class="suf">${esc(r.suffix)}</span></div>
+   ${C.reasonCol?'':tagsHtml(r)}
+   ${r.review&&r.review.status!=='ok'?`<span class="yours">Ваш вариант: «${esc(r.review.own+r.suffix)}»</span>`:''}
+   ${r.rej?`<span class="prev">Ранее отклонено: «${esc(r.rej.t)}» — повторно не предлагаю</span>`:''}
+   ${d==='no'?`<div class="own"><label>Свой вариант</label><div class="edit"><textarea class="ow" rows="1" placeholder="${C.ownPh}">${esc(own)}</textarea><span class="suf">${esc(r.suffix)}</span></div><span class="cnt">${ownCnt(r,own)}</span></div>`:''}</td>
+  <td class="n">${numHtml(r,fullOf(r))}</td>
+  ${C.reasonCol?`<td class="why">${tagsHtml(r)}${C.detail?C.detail(r):''}</td>`:''}
+  <td><div class="act"><button class="a ok ${d==='ok'?'on':''}" data-d="ok">Утвердить</button><button class="a no ${d==='no'?'on':''}" data-d="no">Отклонить</button></div></td></tr>`}
+function doneRow(r){const a=r.appr;
+  return `<tr><td style="width:300px">${urlCell(r)}</td><td class="cur">${esc(r.t)}</td><td class="n">${numHtml(r,r.t,true)}</td>
+  <td class="hist">${a?`Утверждено ${a.date}${a.stage?` (${a.stage})`:''}${a.was?`<br><s>было: ${esc(a.was)}</s>`:''}`:''}${C===DESC&&r.exc?`<br><span class="tag p">Исключение: ${esc(r.exc)}</span>`:''}</td></tr>`}
+function render(){const todo=UI.tab[C.key]==='todo';const want=todo?'todo':'done';
+  const byPage={};C.rows.forEach(r=>{if(r.st===want)(byPage[r.s]=byPage[r.s]||[]).push(r)});
+  let nav='',pages='';
+  for(const [g,slugs] of C.groups){const list=slugs.filter(s=>byPage[s]);if(!list.length)continue;
+    nav+=`<div class="g">${esc(g)}</div>`;
+    for(const s of list){const rs=byPage[s];const id='p-'+(s||'home');
+      nav+=`<a href="#${id}"><span>${esc(rs[0].name)}</span><span class="d" data-s="${s}">${todo?navCount(rs):rs.length}</span></a>`;
+      pages+=`<section class="page" id="${id}"><h2>${esc(rs[0].name)} <small>${s?'/uslugi/'+s:'/'}</small></h2><table>`;
+      pages+=todo?`<thead><tr><th style="width:150px">Язык / URL</th><th>${C.name} сейчас</th><th style="width:${C.reasonCol?28:32}%">Предлагаемый ${C.name}</th><th style="width:${C.reasonCol?14:18}%">Символы до → после</th>${C.reasonCol?'<th style="width:16%">Причина</th>':''}<th style="width:190px">Решение</th></tr></thead><tbody>${rs.map(decRow).join('')}</tbody>`
+        :`<thead><tr><th style="width:300px">Язык / URL</th><th>${C.name} на сайте</th><th style="width:20%">Символы / предупреждение</th><th style="width:24%">История</th></tr></thead><tbody>${rs.map(doneRow).join('')}</tbody>`;
+      pages+='</table></section>'}}
+  document.getElementById('hist').innerHTML=histHtml(C.key);
+  document.getElementById('nav').innerHTML=nav;document.getElementById('nav').classList.toggle('hidden',!nav);
+  document.getElementById('pages').innerHTML=pages||`<div class="intro">${todo?C.emptyTodo:(C.emptyDone||'Пока пусто.')}</div>`;
+  document.getElementById('intro').innerHTML=C.intro(todo);
+  document.querySelectorAll('tr.main').forEach(bindRow);stats();tabs()}
+const navCount=rs=>rs.filter(r=>dec(r)).length+'/'+rs.length;
+function updNav(){document.querySelectorAll('nav .d').forEach(e=>{if(UI.tab[C.key]==='todo')e.textContent=navCount(C.TODO.filter(r=>r.s===e.dataset.s))})}
+function bindRow(tr){const r=C.rows.find(x=>x.u===tr.dataset.u);
+  tr.querySelectorAll('.a').forEach(b=>b.addEventListener('click',()=>{const s=st(r);const v=b.dataset.d;
+    if(dec(r)===v){delete s.d;delete s.p}else{s.d=v;s.p=r.def}
+    (s.log=s.log||[]).push({at:now(),d:s.d||'снято',prop:r.def});C.save();refresh(tr,r)}));
+  const ow=tr.querySelector('.ow');if(ow){
+    ow.addEventListener('input',()=>{const s=st(r);s.own=ow.value.replace(/\n/g,' ');C.save();tr.querySelector('.cnt').textContent=ownCnt(r,s.own)});
+    ow.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ow.blur()}});
+    ow.addEventListener('change',()=>{const s=st(r);if(s.own&&s.own.trim())(s.log=s.log||[]).push({at:now(),own:s.own.trim()});C.save();updNav();stats()})}}
+function refresh(tr,r){const t=document.createElement('tbody');t.innerHTML=decRow(r);const a=t.firstElementChild;tr.replaceWith(a);bindRow(a);stats();updNav();
+  const ow=a.querySelector('.ow');if(ow&&!ow.value)ow.focus()}
+function stats(){const T=C.TODO,ok=T.filter(r=>dec(r)==='ok').length,no=T.filter(r=>dec(r)==='no').length;
+  document.getElementById('stats').textContent=`Всего ${C.rows.length} · ${C.doneLabel} ${C.rows.length-T.length} · На решении ${T.length}: утв. ${ok} · откл. ${no} · осталось ${T.length-ok-no}`}
+function tabs(){const el=document.getElementById('tabs');const t=UI.tab[C.key];
+  el.innerHTML=`<button class="tab ${t==='todo'?'on':''}" data-t="todo">Требуют решения · ${C.TODO.length}</button><button class="tab ${t==='done'?'on':''}" data-t="done">${C.doneLabel} · ${C.rows.length-C.TODO.length}</button>`;
+  el.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{UI.tab[C.key]=b.dataset.t;saveUI();render();scrollTo(0,0)}))}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
+document.getElementById('copy').addEventListener('click',()=>{const lines=[`Решения по ${C.name} (аудит Omobonus):`,''];
+  for(const r of C.TODO){const d=dec(r);if(!d)continue;const s=st(r),f=fullOf(r);
+    lines.push(`${r.u} [${LN[r.l]}] — ${d==='ok'?'УТВЕРДИТЬ':'ОТКЛОНИТЬ → свой вариант'}`);
+    lines.push(`  сейчас: ${r.t} (${r.len})`);
+    if(d==='ok')lines.push(`  итог: ${f} (${len(f)} симв.${C===TITLE?`, ${px(f)} px`:''})${f===r.t?' — без изменений':''}`);
+    else{lines.push(`  предложено Claude: ${f}`);const o=(s.own||'').trim();
+      lines.push(o?`  свой вариант: ${o+r.suffix} (${len(o+r.suffix)} симв.) — на проверку`:'  свой вариант: (не указан)')}}
+  if(lines.length===2)lines.push('(решений пока нет)');
+  const txt=lines.join('\n');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Скопировано')).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Скопировано')})});
+
+// ===== Листы и история =====
+const setHH=()=>document.documentElement.style.setProperty('--hh',document.getElementById('hdr').offsetHeight+'px');
+function chgLine(c){return c.type==='new'?`<b>новая</b> ${esc(c.u)} — «${esc(c.to)}»`:c.type==='removed'?`<b>пропала</b> ${esc(c.u)} — была «${esc(c.from)}»`:`${esc(c.u)}: <s>${esc(c.from)}</s> → «${esc(c.to)}»`}
+function histOne(e,last){return `<div class="row"><span>${last?'Последняя проверка':'Проверка'}: <b>${fmtD(e.date)}</b></span><span>страниц: <b>${e.pages}</b></span><span>требуют решения: <b>${e.problems}</b></span><span>изменений с прошлой проверки: <b>${e.changes.length}</b></span></div>`
+  +(e.note?`<div style="color:var(--muted);margin-top:3px">${esc(e.note)}</div>`:'')
+  +(e.changes.length?`<details><summary>Список изменений (${e.changes.length})</summary><ul>${e.changes.map(c=>`<li>${chgLine(c)}</li>`).join('')}</ul></details>`:'')}
+function histHtml(key){const L=HIST[key]||[];
+  if(!L.length)return '<div class="histbox"><b>История проверок:</b> проверка ещё не проводилась.</div>';
+  const prev=L.slice(0,-1).reverse();
+  return `<div class="histbox">${histOne(L.at(-1),true)}`
+   +(prev.length?`<details class="old"><summary>Предыдущие проверки (${prev.length})</summary>${prev.map(e=>`<div class="old">${histOne(e)}</div>`).join('')}</details>`:'')
+   +((MISSING[key]||[]).length?`<div class="prev">Утверждённые страницы пропали с сайта: ${MISSING[key].map(esc).join(', ')}</div>`:'')+'</div>'}
+function sheets(){const el=document.getElementById('sheets');
+  el.innerHTML=SHEETS.map(([k,n,c])=>`<button class="sheet ${UI.sheet===k?'on':''}" data-k="${k}">${n}${c&&c.rows.length?`<span class="c">${c.TODO.length}</span>`:''}</button>`).join('');
+  el.querySelectorAll('.sheet').forEach(b=>b.addEventListener('click',()=>{UI.sheet=b.dataset.k;saveUI();show();scrollTo(0,0)}))}
+function show(){const sh=SHEETS.find(s=>s[0]===UI.sheet);const live=sh[2]&&sh[2].rows.length;sheets();
+  for(const id of ['wrap','tabs','copy','stats'])document.getElementById(id).classList.toggle('hidden',!live);
+  const em=document.getElementById('empty');em.classList.toggle('hidden',!!live);
+  if(live){C=sh[2];render()}else em.innerHTML=histHtml(UI.sheet)+`<div class="intro"><b>${sh[1]}</b>: проверки для этого элемента ещё не настроены. Лист оставлен пустым — аудит ${sh[1]} проводится отдельной задачей.</div>`;
+  setHH()}
+show();
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>show());
+addEventListener('resize',setHH);
+</script>
+</body>
+</html>

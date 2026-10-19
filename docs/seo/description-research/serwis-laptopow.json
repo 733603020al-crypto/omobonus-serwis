@@ -1,0 +1,814 @@
+{
+ "page": "/uslugi/serwis-laptopow",
+ "name": "Ноутбуки",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "note": "исследование выполнено ранее, данные перенесены без повторного сбора"
+ },
+ "competitors": {
+  "relevant": 87,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "url": "https://www.grupabs.pl/",
+    "city": "Kraków",
+    "title": "Serwis komputerowy Kraków - Naprawa laptopów, komputerów PC, tabletów i konsol - GRUPA BS",
+    "desc": "Profesjonalny serwis komputerowy w Krakowie. Tania naprawa laptopów, komputerów PC oraz serwis tabletów i konsol. Oferujemy również usługi informatyczne dla firm oraz odzyskiwanie danych. Zaufaj profesjonalistom.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "http://www.ms-tech.com.pl/",
+    "city": "Gdańsk",
+    "title": "Serwis MS Tech - naprawa komputerów, laptopów oraz telefonów Gdańsk",
+    "desc": "",
+    "first": "Usuwanie wirusów"
+   },
+   {
+    "url": "https://pcserwis24.com/",
+    "city": "Kraków",
+    "title": "Serwis Komputerowy Kraków Naprawa Laptopów PCserwis24",
+    "desc": "Mobilny serwis komputerowy w Krakowie. Naprawa laptopów i komputerów na miejscu u klienta. Zadzwoń i zamów wizytę domową już teraz.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.x-top.pl/",
+    "city": "Poznań",
+    "title": "Serwis komputerowy Poznań - Naprawa laptopów Poznań - Serwis komputerów X-TOP",
+    "desc": "Serwis laptopów Poznań. Naprawa komputerów w Poznaniu. Odzyskiwanie danych. Sprzedaż akcesoriów komputerowych, zasilaczy, ładowarek, baterii Poznań.",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://www.yeto.pl/",
+    "city": "Poznań",
+    "title": "Serwis komputerowy Poznań - Naprawa laptopów Poznań - Serwis laptopów",
+    "desc": "Serwis laptopów Poznań. Naprawa komputerów w Poznaniu. Odzyskiwanie danych. Sprzedaż akcesoriów komputerowych, zasilaczy, ładowarek, baterii Poznan",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://www.ssk.szczecin.pl/serwis.html",
+    "city": "Szczecin",
+    "title": "Serwis komputerowy naprawa komputerów i pogotowie komputerowe Szczecin",
+    "desc": "Serwis komputerowy, pogotowie komputerowe Szczecin prawobrzeże, szybka i niedroga naprawa komputerów i laptopów z bezpłatnym dojazd dla Klientów Szczecin prawobrzeże, outsourcing IT dla firm i instytucji, pomoc informatyczna dla biur rachunkowych, stacjonarny serwis komputerowy Szczecin Zdroje",
+    "first": "Wymiana / naprawa klawiatury"
+   },
+   {
+    "url": "https://naprawalaptopawarszawa.pl/",
+    "city": "Warszawa",
+    "title": "Naprawa i serwis laptopa Warszawa - tanio z dojazdem",
+    "desc": "Naprawy i serwis laptopów z dojazdem na tarenie Warszawy i okolic. Naprawiamy laptopy po zalaniu i upadku, awaria laptopa i oprogramowania - 574 309 877",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://www.finaltech.pl/",
+    "city": "Bydgoszcz",
+    "title": "&#9757; Naprawa laptopów Bydgoszcz, konserwacja, serwis komputerów i notebooków m.in. Acer &#9757; - Finaltech.pl",
+    "desc": "Naprawa laptopów Bydgoszcz ✅ serwis komputerów i notebooków Apple, Acer, HP i innych ✅ Powierz naprawę laptopa w ręce specjalistów! Serwisujemy także monitory, wykonujemy odzyskiwanie danych, instalację sieci i inne usługi informatyczne!",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.klinika-laptopa.pl/",
+    "city": "Łódź",
+    "title": "Serwis laptopów Łódź – naprawa laptopów | Klinika Laptopa | Tel: 506 185 879",
+    "desc": "Naprawa laptopów i komputerów w Łodzi. Darmowa diagnoza, szybkie terminy, naprawy płyt głównych SMD i BGA oraz naprawy po zalaniu. Klinika Laptopa – centrum Łodzi.",
+    "first": "Naprawa BGA / karty graficznej"
+   },
+   {
+    "url": "https://digitalserwis.pl/",
+    "city": "Warszawa",
+    "title": "Digital Serwis - Serwis komputerowy i naprawa laptopów Warszawa. Odzyskiwanie danych Targówek",
+    "desc": "Digital Serwis - Profesjonalna Naprawa Sprzętu Komputerowego w Warszawie. Naprawiamy laptopy, komputery, telefony i tablety. Odzyskujemy dane. Skontaktuj się z nami i ciesz się sprawnym sprzętem!",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://gps.pc.pl/serwis-naprawa-laptopy/",
+    "city": "Szczecin",
+    "title": "Naprawa laptopów Szczecin - Profesjonalny serwis komputerowy",
+    "desc": "Szybka i skuteczna naprawa laptopów w Szczecinie. Zaufaj doświadczonym specjalistom i skorzystaj z usług profesjonalnego serwisu komputerowego.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://twojserwisant.pl/",
+    "city": "Wrocław",
+    "title": "Serwis Komputerowy i Naprawa Laptopów Wrocław | Twój Serwisant",
+    "desc": "Profesjonalny lokalny serwis laptopów i komputerów we Wrocławiu. Darmowa diagnoza, naprawa płyt głównych, wymiana matryc i odzyskiwanie danych. Zadzwoń: +48 455 510 637.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://www.profektus.pl/serwis-komputerow-i-pomoc-techniczna",
+    "city": "Łódź",
+    "title": "Profesjonalny serwis komputerowy, pomoc techniczna - Łódź centrum",
+    "desc": "Profesjonalny serwis komputerowy Łódź. Usuwamy awarie i usterki, naprawiamy laptopy. Masz popsuty sprzęt? Potrzebujesz szybkiej pomocy? Zadzwoń!",
+    "first": "Wymiana dysku / SSD"
+   },
+   {
+    "url": "https://www.elaptop.pl/",
+    "city": "Kraków",
+    "title": "Serwis Laptopów Kraków | Sklep Elaptop",
+    "desc": "ELAPTOP - profesjonalny serwis laptopów w Krakowie. Szybka i skuteczna naprawa laptopów, naprawy sprzętowe i systemowe. Ponad 20 lat doświadczenia. Sprzedaż części do laptopów",
+    "first": "Zawiasy i obudowa"
+   },
+   {
+    "url": "https://szybkikomp.pl/",
+    "city": "Łódź",
+    "title": "Szybki Komp – Serwis Komputerowy Łódź | Naprawa laptopów, odzysk danych",
+    "desc": "Serwis komputerowy Łódź – naprawa laptopów, desktopów, konsol PS/Xbox, odzysk danych, instalacja systemów. Darmowy odbiór sprzętu na terenie Łodzi. Pn–Pt 8–19. ☎ 501 506 406",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://serwislaptopowlublin.pl/",
+    "city": "Lublin",
+    "title": "DamTechPC - Serwis oraz naprawa laptopów i komputerów",
+    "desc": "DamTechPC - Serwis oraz naprawa laptopów i komputerów | Lublin",
+    "first": "Usuwanie wirusów"
+   },
+   {
+    "url": "https://itvip.pl/naprawa-komputerow-i-laptopow-gdansk/",
+    "city": "Gdańsk",
+    "title": "Naprawa komputerów i laptopów Gdańsk - ITvip",
+    "desc": "Masz problem z komputerem? Twój laptop nie reaguje? Wybierz nasz serwis. Nasze usługi to nie tylko naprawa komputerów i laptopów w Gdańsku.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://naprawlapka.pl/",
+    "city": "Wrocław",
+    "title": "Serwis i naprawa laptopów, komputerów Wrocław - naprawlapka.pl",
+    "desc": "Serwis i naprawa laptopów ⭐ Naprawa laptopów po zalaniu, naprawa płyt głównych, wymiana matryc oraz wiele innych ✓ Sprawdź naszą ofertę na naprawlapka.pl",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://www.alpal.pl/naprawa-serwis-laptopow-katowice.html",
+    "city": "Katowice",
+    "title": "Naprawa i serwis laptopów Katowice | Alpal.pl",
+    "desc": "Profesjonalny serwis i naprawa laptopa Katowice. Asus, Dell, Lenovo, LG, HP, IBM, Sony, Samsung, Toshiba oraz pozostałych. Dojazd do klienta gratis.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://naprawimy.net.pl/kontakt/katowice/",
+    "city": "Katowice",
+    "title": "Serwis Komputerów i Laptopów Katowice",
+    "desc": "Komputer nie odpowiada? Wylałeś kawę na laptopa i nie działa klawiatura? Skontaktuj się z serwisem MESKOMP w Katowicach, a naprawimy Twój sprzęt! %",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://mmce.pl/serwis/serwis-laptopow",
+    "city": "Lublin",
+    "title": "Naprawa laptopów, serwis notebook Lublin, wymiana matrycy",
+    "desc": "Naprawa i serwis laptopów w Lublinie, wymiana matrycy. Posiadamy 6 profesjonalnych stanowisk do naprawy sprzętu. Wszystkie marki. Darmowa diagnoza +48 81 440 20 47",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://www.naprawiamylaptopy.pl/",
+    "city": "Poznań",
+    "title": "Serwis i naprawa laptopów w Poznaniu, matryce do laptopów",
+    "desc": "Serwis laptopów w Poznaniu, tel. 61-222-49-05; 607-558-593, ul. Mickiewicza 3 / VI naprzeciwko szpitala Raszei na Jeżycach. Naprawa laptopów, wymiana matryc, części do laptopów, skup laptopów.",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://serwislodz.pl/",
+    "city": "Łódź",
+    "title": "Serwis komputerowy i naprawa laptopów Łódź: 5 piętro",
+    "desc": "Serwis komputerowy przy ulicy Łagiewnickiej 54/56 w mieście Łódź. Zaufaj doświadczeniu i zadowolonym klientom. Szybka i darmowa wycena od ręki.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://www.j-com.pl/",
+    "city": "Poznań",
+    "title": "Serwis komputerowy, naprawa laptopów, notebooków, monitorów, drukarek Poznań | J-COM Poznań",
+    "desc": "J-COM to najlepszy serwis komputerów i laptopów w Poznaniu. Możesz zamówić serwis online - kurier odbierze Twój uszkodzony komputer lub laptop. Działamy na terenie Poznania i okolic.",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://www.centrumnaprawlaptopow.pl/",
+    "city": "Warszawa",
+    "title": "Serwis laptopów, naprawa Acer, Asus, Dell, HP, Lenovo.. Warszawa serwis komputerowy",
+    "desc": "Naprawa laptopów, serwis komputerów. Wycena naprawy od ręki za darmo. Warszawa Ochota, Mokotów, Wola, Ursus Centrum, Ursynów. Naprawa dysków twardych",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://galaxy.gsm.pl/serwis-laptop%C3%B3w-szczecin",
+    "city": "Szczecin",
+    "title": "Serwis Laptopów Szczecin | Galaxy GSM Szczecin",
+    "desc": "Specjalnością naszej firmy jest również naprawa laptopów. Swoje usługi świadczymy w Szczecinie, dostosowując ofertę do indywidualnych preferencji naszych Klientów. Posiadamy duże zaplecze części do komputerów wszystkich marek.",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://www.serwisatium.pl/",
+    "city": "Kraków",
+    "title": "Serwis i naprawa laptopów, komputerów: Lenovo, Asus, HP, Dell - Serwis Atium",
+    "desc": "Serwis naprawy laptopów i komputerów w centrum Krakowa. Serwisujemy modele Lenovo, HP, Toshiby, Apple, Dell, Asus, Acer i wiele innych. Naprawa klawiatury, odzyskiwanie danych, wymiana matrycy, instalacja oprogramowania systemu. Zapoznaj się z ofertą i cennikiem usług.",
+    "first": "Wymiana / naprawa klawiatury"
+   },
+   {
+    "url": "https://techniko.com.pl/serwis/",
+    "city": "Szczecin",
+    "title": "Naprawa komputerów i laptopów Szczecin - TECHNIKO.com.pl - Obsługa IT dla firm | Podpis elektroniczny | Serwis",
+    "desc": "Profesjonalny serwis komputerowy w Szczecinie. Naprawa laptopów i komputerów stacjonarnych oraz pomoc w obsłudze komputera.",
+    "first": "Instalacja systemu / Windows"
+   },
+   {
+    "url": "https://www.arvika.pl/",
+    "city": "Kraków",
+    "title": "Serwis Laptopów Kraków ✪ Naprawa Komputerów I Notebooków | Arvika",
+    "desc": "Serwis komputerowy Kraków - Naprawa laptopów i PC wszystkich marek. Szybka naprawa w dobrej cenie ⭐ Długa gwarancja ➤ Dezynfekujemy sprzęt. Sprawdź!",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.ntbserwis.pl/",
+    "city": "Gdańsk",
+    "title": "NTBserwis – Serwis komputerów i laptopów Gdańsk | Naprawa laptopów",
+    "desc": "NTBserwis – profesjonalny serwis komputerów i laptopów w Gdańsku. Naprawa laptopów, komputerów PC, instalacja systemów, usuwanie wirusów, odzyskiwanie danych. Tel. 692 813 099",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://barth.pl/uslugi/naprawa-laptopow-rzeszow.html",
+    "city": "Rzeszów",
+    "title": "Naprawa Laptopów Rzeszów | Laptop Repair | Barth.pl",
+    "desc": "Naprawa laptopów Rzeszów — matryce, klawiatury, płyty główne, zalanie i chłodzenie. Laptop repair od 180 zł, diagnostyka i gwarancja na usługę. Dojazd gratis po 18:00. Barth.pl — tel. 609 358 563.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://naprawalaptopowlublin.pl/",
+    "city": "Lublin",
+    "title": "Naprawa komputerów Lublin",
+    "desc": "Profesjonalny serwis i naprawa komputerów – szybka diagnoza, wymiana części, kopie zapasowe oraz instalacja oprogramowania w Lublinie.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://alt-tab.pl/",
+    "city": "Gdańsk",
+    "title": "ALT-TAB Serwis Laptopów i Komputerów w Gdańsku",
+    "desc": "Serwis komputerowy Gdańsk - Żabianka, naprawa laptopów i komputerów. Diagnostyka, czyszczenie i modernizacja sprzętu. Ocena klientów: 4,9/5",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://mlap.pl/",
+    "city": "Białystok",
+    "title": "Serwis komputerowy Białystok – Naprawa laptopów i PC",
+    "desc": "Szukasz szybkiej pomocy z komputerem w Białymstoku? Oferujemy profesjonalną naprawę laptopów, usuwanie wirusów i instalację Windows. Darmowa diagnoza i gwarancja na usługi!",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://www.serwislaptopowkrakow.pl/",
+    "city": "Kraków",
+    "title": "Serwis laptopów i komputerów Kraków | Matryca w godzinę",
+    "desc": "Zepsuty laptop? Matrycę wymieniamy w godzinę, 300–600 zł. 16 lat doświadczenia, ocena 4,9 w Google. Prądnik Biały, pon–pt 9–17, sob 8–15.",
+    "first": "Zawiasy i obudowa"
+   },
+   {
+    "url": "https://itech-serwis.pl/",
+    "city": "Wrocław",
+    "title": "Serwis Laptopów Wrocław iTECH",
+    "desc": "iTECH - profesjonalny serwis laptopów we Wrocławiu. Szybka i skuteczna naprawa laptopów, wymiana uszkodzonych podzespołów i wiele innych usług. Tel. 783-929-915",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.serwis-krzycka.pl/",
+    "city": "Wrocław",
+    "title": "",
+    "desc": "Wykonujemy dla Państwa usługi naprawy komputerów i laptopów. Oferuje także szeroki wachlarz usług związanych z testowaniem, naprawą, instalacją i rozbudową sprzętu komputerowego.",
+    "first": "Naprawa BGA / karty graficznej"
+   },
+   {
+    "url": "https://aidcom.eu/",
+    "city": "Lublin",
+    "title": "AIDCOM Serwis komputerowy Lublin",
+    "desc": "Serwis komputerowy Lublin. Naprawa laptopów, komputerów PC, monitorów i sprzętu IT. Odzyskiwanie danych z dysków, kart pamięci i pendrive.",
+    "first": "Naprawa zasilacza"
+   },
+   {
+    "url": "https://naprawa-laptopa.com/pogotowie-komputerowe.html",
+    "city": "Białystok",
+    "title": "Pogotowie komputerowe - Białystok",
+    "desc": "Szybkie pogotowie komputerowe? 24h? Tylko u nas! Naprawiamy netbooki, laptopy (notebooki), tablety itp. Zadzwoń! Białystok.",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://pogotowiekomputerowe.wroc.pl/",
+    "city": "Wrocław",
+    "title": "Serwis komputerowy Wrocław, naprawa laptopów i komputerów Wrocław, pogotowie komputerowe Wrocław",
+    "desc": "Serwis komputerów stacjonarnych i serwis laptopów we Wrocławiu ✅ Naprawiamy komputery, laptopy i konsole. Z opcją bezpłatnego dojazdu do klienta ✅ Skorzystaj z naszego serwisu laptopów i komputerów we Wrocławiu ✅ Zapraszamy!",
+    "first": "Usuwanie wirusów"
+   },
+   {
+    "url": "https://pogotowie-komputerowe-lodz.pl/",
+    "city": "Łódź",
+    "title": "Pogotowie komputerowe Łódź | Mobilny informatyk z dojazdem",
+    "desc": "Pogotowie komputerowe Łódź: mobilny informatyk z dojazdem, naprawa laptopów i komputerów, obsługa informatyczna firm, pomoc zdalna i AI dla firm. Tel. 797 778 721.",
+    "first": "Instalacja systemu / Windows"
+   },
+   {
+    "url": "https://www.zaltronik.pl/",
+    "city": "Katowice",
+    "title": "Serwis Laptopów i Telefonów Katowice | Zaltronik Serwis IT",
+    "desc": "Serwis laptopów Katowice. Naprawiamy laptopy, telefony i płyty główne. Szybka diagnoza i gwarancja. Sprawdź opinie!",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.twojserwiskomputerowy.pl/",
+    "city": "Łódź",
+    "title": "MANUFAKTURA KOMPUTEROWA Serwis komputerów laptopów Łódź Bałuty",
+    "desc": "💻 Profesjonalna naprawa laptopów i PC w Łodzi! 🛠️ Darmowa diagnoza w 24h, gwarancja i odzysk danych. Ratujemy Twój sprzęt! ✨ - 502 950 982",
+    "first": "Wymiana dysku / SSD"
+   },
+   {
+    "url": "https://www.bansek.com.pl/",
+    "city": "Łódź",
+    "title": "BANSEK ŁÓDŹ - LAPTOPY NOTEBOOKI KOMPUTERY SKLEP I SERWIS",
+    "desc": "💻 Bansek Łódź – Twój sprawdzony sklep i serwis komputerowy od 1997 roku. Oferujemy nowoczesne laptopy, notebooki oraz profesjonalną naprawę.",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://serwisprogsm.pl/serwis-laptopow/",
+    "city": "Rzeszów",
+    "title": "Profesjonalna Naprawa Laptopów Rzeszów | Pro GSM",
+    "desc": "Kompleksowa naprawa laptopów Rzeszów. Uczciwe ceny, fachowa diagnoza i wysokiej jakości usługi. Sprawdź ofertę!",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://www.rc2000.net.pl/",
+    "city": "Poznań",
+    "title": "Serwis naprawa laptopów i komputerów Poznań Piątkowo RC2000",
+    "desc": "Serwis laptopów Poznań - Piątkowo. Naprawa laptopów, komputerów stacjonarnych i drukarek. Darmowa diagnoza, szybka naprawa, gwarancja. Darmowy Parking pod samymi drzwiami",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://www.naprawlaptopa.pl/",
+    "city": "Warszawa",
+    "title": "Serwis komputerowy Warszawa Bemowo - Naprawa laptopów, komputerów, smartfonów, tabletów, konsol.",
+    "desc": "Serwis Komputerowy Warszawa Bemowo | ul. Powstańców Śląskich 26 | +48 731 611 659 | Szybka Naprawa z Gwarancją | Laptop | Komputer | Smartfon",
+    "first": ""
+   },
+   {
+    "url": "https://ncklublin.pl/",
+    "city": "Lublin",
+    "title": "NCK Lublin – Serwis komputerowy Naprawię Ci komputer",
+    "desc": "",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://prestige-electro.pl/",
+    "city": "Rzeszów",
+    "title": "Serwis komputerów Rzeszów | Prestige Electro",
+    "desc": "Profesjonalny serwis komputerów Rzeszów – naprawa laptopów, PC i telefonów. Szybka diagnoza i skuteczne rozwiązania w Prestige Electro.",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://balta.pl/serwis-komputerow-i-laptopow-gdansk-szybkie-naprawy-notebookow/",
+    "city": "Gdańsk",
+    "title": "Serwis komputerów i laptopów Gdańsk – szybka naprawa | Balta",
+    "desc": "Naprawa komputerów i laptopów w Gdańsku. Szybka diagnoza, ekspresowa naprawa w 24h. Skontaktuj się z naszym serwisem już teraz!",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://serwislaptopow-ken.pl/",
+    "city": "Warszawa",
+    "title": "Serwis laptopów, notebooków i PC - Warszawa, Ursynów, Mokotów, Włochy - TPL Serwis Warszawa",
+    "desc": "Twój komputer działa wolno, zawiesza się, a Ty obawiasz się, że stracisz wszystkie dane? Skorzystaj z usług serwisu laptopów TPL w Warszawie – zapraszamy!",
+    "first": "Usuwanie wirusów"
+   },
+   {
+    "url": "https://armands.pl/",
+    "city": "Wrocław",
+    "title": "Naprawa i Serwis Laptopów Wrocław | Komputery • ArmandS",
+    "desc": "Profesjonalna naprawa laptopów i komputerów we Wrocławiu. Darmowa diagnoza, szybkie naprawy płyt głównych, matryc i układów chłodzenia oraz odzyskiwanie danych. Paczkomat 0 zł.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.mptech.pl/naprawa-laptopow/",
+    "city": "Katowice",
+    "title": "Naprawa i serwis laptopów notebooków - Katowice",
+    "desc": "Serwisujemy laptopy wszystkich marek. Nasza firma nieprzerwanie działa od 2011 na terytorium Katowic. Jesteśmy na ulicy Mikołowska 13.",
+    "first": "Wymiana baterii"
+   },
+   {
+    "url": "https://clearpc.pl/",
+    "city": "Białystok",
+    "title": "Serwis komputerowy Białystok: Clear PC naprawa laptopów",
+    "desc": "Serwis komputerowy w Białymstoku. Szybka naprawa i niskie ceny. Naprawa laptopów, komputerów stacjonarnych i monitorów. Usługi informatyczne.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://adenet.pl/naprawa-komputerow-i-laptopow",
+    "city": "Szczecin",
+    "title": "Naprawa komputerów i laptopów Szczecin | Adanet",
+    "desc": "",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://catom.pl/serwis-laptopow",
+    "city": "Katowice",
+    "title": "Serwis Laptopów i naprawa - Katowice - FHU Catom Tomasz Kaleta",
+    "desc": "Awaria laptopa? Serwis FHU Catom w Katowicach naprawi Twój sprzęt! Szybka diagnoza, profesjonalna naprawa i konserwacja. Zadzwoń lub odwiedź nas!",
+    "first": "Naprawa BGA / karty graficznej"
+   },
+   {
+    "url": "https://pk64.pl/nasze-uslugi/naprawa-laptopow",
+    "city": "Lublin",
+    "title": "Profesjonalna Naprawa Laptopów Lublin – Serwis z Dojazdem",
+    "desc": "Twój laptop wolno działa lub się grzeje? Oferujemy czyszczenie, wymianę podzespołów i naprawę laptopów z dojazdem na terenie Lublina. Szybki serwis mobilny.",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://komp-tech.pl/",
+    "city": "Bydgoszcz",
+    "title": "KOMP-TECH – Naprawa Laptopów – Serwis komputerowy. Naprawa laptopów – Bydgoszcz",
+    "desc": "",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://3giga.pl/serwis-i-naprawa-laptopow/",
+    "city": "Białystok",
+    "title": "Serwis i naprawa laptopów Białystok - 3Giga",
+    "desc": "Profesjonalny serwis laptopów w Białymstoku – naprawa wszystkich marek. Specjalizujemy się w usuwaniu usterek mechanicznych, i systemowych.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://netserwis.info.pl/index.php/pl/",
+    "city": "Lublin",
+    "title": "Net-Serwis",
+    "desc": "Profesjonalnie naprawiamy komputery, laptopy, tablety i sprzęt elektroniczny. Net-Serwis z Lublina to firma której możesz zaufać! Zadzwoń (81) 534-23-22",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://az-serwis.com/",
+    "city": "Poznań",
+    "title": "AZ Serwis komputerowy Poznań - naprawa laptopów i komputerów w Poznaniu",
+    "desc": "Serwis komputerów i laptopów w Poznaniu – Oferujemy darmową diagnozę ✅ 6 miesięcy gwarancji | szybką realizację | przejrzysty cennik",
+    "first": "Czyszczenie układu chłodzenia / pasta"
+   },
+   {
+    "url": "https://www.galileo.krakow.pl/",
+    "city": "Kraków",
+    "title": "Serwis komputerowy Kraków – naprawa laptopów i PC | Galileo",
+    "desc": "Serwis laptopów Kraków – naprawa laptopów i komputerów PC. Bezpłatna diagnoza, 3 oddziały Galileo i obsługa wysyłkowa z całej Polski.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://www.konsole.rzeszow.pl/naprawa/naprawa-laptopa",
+    "city": "Rzeszów",
+    "title": "Serwis laptopów Rzeszów. Naprawa płyt głównych, wymiana układów bga",
+    "desc": "Zajmujemy się naprawą laptopów i komputerów PC. Usuwamy usterki związane z brakiem obrazu na matrycy, naprawiamy laptopy po zalaniu oraz po upadku.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://wawanaprawa.pl/naprawa-komputerow-i-laptopow/",
+    "city": "Warszawa",
+    "title": "Naprawa komputerów i laptopów - Warszawa | WAWANAPRAWA",
+    "desc": "Szybka i skuteczna naprawa komputerów i laptopów w Warszawie. Diagnoza, serwis, wymiana części – zaufaj doświadczeniu Wawanaprawa.",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://www.serwiskomputerowy.poznan.pl/",
+    "city": "Poznań",
+    "title": "Serwis komputerowy Poznań. Pomoc informatyczna, naprawa, rozbudowy laptopów i komputerów Poznań",
+    "desc": "Serwis komputerowy Poznań. Naprawa, rozbudowa komputerów i laptopów Poznań. Monitoring i TV przemysłowa. Odzyskiwanie danych.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://laptoptech.pl/",
+    "city": "Katowice",
+    "title": "Serwis komputerowy Katowice, Naprawa laptopów, komputerów",
+    "desc": "Zajmujemy się profesjonalną naprawą komputerów, laptopów, tabletów, telefonów i nawigacji. Oferujemy ekspresowe naprawy dla każdego Klienta!",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://lapart.pl/naprawa-laptopow/",
+    "city": "Bydgoszcz",
+    "title": "Naprawa i serwis laptopów Bydgoszcz - Lapart",
+    "desc": "Skuteczna naprawa i serwis laptopów w Bydgoszczy. Ekspresowa pomoc, uczciwe ceny i fachowe doradztwo. Przywróć sprawność swojemu komputerowi jeszcze dzisiaj w Lapart!",
+    "first": "Wymiana baterii"
+   },
+   {
+    "url": "https://comstar.net.pl/",
+    "city": "Łódź",
+    "title": "Serwis komputerowy Łódź – naprawa laptopów i komputerów | Comstar",
+    "desc": "Profesjonalny serwis komputerowy w Łodzi z dojazdem do klienta. Naprawa laptopów i komputerów stacjonarnych, usuwanie wirusów, instalacja Windows. Kontakt możliwy codziennie 9:00-21:00. Tel. 508 401 802",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://goodfix.pl/",
+    "city": "Kraków",
+    "title": "Serwis laptopów, komputerów i konsol Kraków - GoodFix Serwis laptopów Kraków",
+    "desc": "Witaj w Goodfix.pl – profesjonalnym serwisie z naprawy laptopów, komputerów, konsol oraz tabletów w Krakowie.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://itelus.pl/",
+    "city": "Katowice",
+    "title": "Serwis komputerowy Katowice Panewniki | ITELUS",
+    "desc": "Profesjonalny serwis komputerowy Katowice Panewniki. Naprawa laptopów i komputerów dla firm i osób prywatnych – szybka i skuteczna pomoc. ITELUS.",
+    "first": ""
+   },
+   {
+    "url": "https://pcdr.pl/serwis-laptopow/",
+    "city": "Białystok",
+    "title": "Naprawa laptopów Białystok | Serwis laptopów | PCDOCTOR",
+    "desc": "Naprawa laptopów Białystok: zasilanie, matryce, zawiasy, klawiatury, chłodzenie i płyty główne. Diagnoza i koszt przed rozpoczęciem naprawy.",
+    "first": "Zawiasy i obudowa"
+   },
+   {
+    "url": "https://skil.wroclaw.pl/",
+    "city": "Wrocław",
+    "title": "SERWIS LAPTOPÓW WROCŁAW-KRZYKI (SKiL)",
+    "desc": "Naprawa Laptopów / Serwis Laptopów Wrocław-Krzyki",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://drlaptop.pl/serwis-naprawa-komputerow-laptopow-gdansk-gdynia/",
+    "city": "Gdańsk",
+    "title": "Serwis Naprawa Komputerów, Laptopów Gdańsk Gdynia - drLAPTOP",
+    "desc": "drLAPTOP ⭐ Profesjonalna i ekspresowa naprawa komputerów w Gdańsku i okolicy 💻 Naprawa laptopów i komputerów w Gdańsku szybko i skutecznie ✔️ Sprawdź Teraz!",
+    "first": "Naprawa BGA / karty graficznej"
+   },
+   {
+    "url": "https://naprawapclaptop.pl/",
+    "city": "Warszawa",
+    "title": "Naprawa Komputerów i Laptopów Serwis Pogotowie w Warszawie",
+    "desc": "Naprawa komputerów i laptopów w Warszawie. Serwis pogotowie, odzyskiwanie danych, formatowanie, Windows, wymiana części. Pomoc zdalna 24h. Zapraszamy!",
+    "first": "Instalacja systemu / Windows"
+   },
+   {
+    "url": "https://www.itcomputex.pl/serwis-laptopow.html",
+    "city": "Bydgoszcz",
+    "title": "Serwis komputerów dla firm Bydgoszcz | Naprawa | ITCOMPUTEX",
+    "desc": "Serwis sprzętu komputerowego dla firm w Bydgoszczy — naprawa komputerów i laptopów, wymiana dysków SSD i pamięci, modernizacja oraz odzyskiwanie danych.",
+    "first": "Rozbudowa RAM / modernizacja"
+   },
+   {
+    "url": "https://techdoktor.pl/",
+    "city": "Wrocław",
+    "title": "Serwis komputerowy Wrocław | Naprawa laptopów TechDoktor",
+    "desc": "Serwis komputerowy we Wrocławiu – naprawa laptopów, telefonów, tabletów i elektroniki. Bezpłatna diagnostyka, gwarancja, wysyłka kurierska. Tel. 784-956-965.",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://joker.wroc.pl/serwis/serwis-laptopow/",
+    "city": "Wrocław",
+    "title": "Naprawa i serwis laptopów, notebooków - Wrocław | Joker",
+    "desc": "Zajmujemy się naprawą laptopów we Wrocławiu, eliminując drobne i większe usterki. Prowadzimy serwis laptopów i serwis notebooków. Skorzystaj z oferty już dziś.",
+    "first": "Zawiasy i obudowa"
+   },
+   {
+    "url": "https://pc-mobile.pl/",
+    "city": "Warszawa",
+    "title": "Serwis Laptopów Warszawa Mokotów | Dell, Lenovo, HP, Asus ...",
+    "desc": "Laptop nie włącza się, długo się uruchamia, grzeje się? Naprawa laptopów po zalaniu, wymiana baterii, czyszczenie układu chłodzenia. Serwis laptopów Warszawa Mokotów PC Mobile służy wsparciem. Specjalizujemy się w naprawie popularnych marek laptopów, w tym Dell, Lenovo, Asus, Apple i HP. Zadzwoń już dziś i umów się na bezpłatną diagnozę.",
+    "first": "Instalacja systemu / Windows"
+   },
+   {
+    "url": "https://naratunekpc.pl/naprawa-laptopa/",
+    "city": "Bydgoszcz",
+    "title": "Naprawa laptopów, notebooków Bydgoszcz | NaRatunekPC.pl",
+    "desc": "Twój sprzęt został uszkodzony i nieunikniona jest naprawa laptopa? Zapraszamy do profesjonalnego serwisu urządzeń elektronicznych w Bydgoszczy!",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://notebookserwis.com/",
+    "city": "Bydgoszcz",
+    "title": "Serwis i naprawa komputerów, laptopów Bydgoszcz, używane laptopy i komputery - NSERWIS",
+    "desc": "Oferujemy serwis i naprawy komputerów, laptopów i konsol w Bydgoszczy. Dodatkowo oferujemy sprzedaż nowych i poleasingowych komputerów!",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://www.podzespol.pl/",
+    "city": "Gdańsk",
+    "title": "Serwis Komputerowy | Naprawa Laptopów | Podzespol.pl",
+    "desc": "Serwis komputerowy GDAŃSK dla firm i osób prywatnych. Naprawa laptopów oraz komputerów stacjonarnych. DARMOWA DIAGNOZA w 24h!",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://dos-lublin.pl/",
+    "city": "Lublin",
+    "title": "Sklep i Serwis Komputerowy Lublin DOS - Diagnostyka Naprawa",
+    "desc": "Serwis i Sklep Komputerowy Lublin. Naprawa komputera i laptopa. Serwis po uszkodzeniu mechanicznym czy zalaniu. Instalacja i konfiguracja komputera. Sprzedaż.",
+    "first": "Naprawa po zalaniu"
+   },
+   {
+    "url": "https://lapcoreserwis.pl/",
+    "city": "Rzeszów",
+    "title": "Serwis Komputerowy Rzeszów - Lapcore Serwis Laptop&oacute;w i PC Rzesz&oacute;w",
+    "desc": "Naprawa serwis komputerowy Rzeszów | Cała Polska - profesjonalna naprawa laptopów, konsol, iPhone i PC. Oferujemy darmową diagnozę i stawiamy na naprawę, nie wymianę. Skorzystaj z naszych usług, naprawy ładowania baterii, wymiany BGA, niewłączającego się laptopa, czarnego ekranu i każdej innej usterki.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://sstudio.pl/",
+    "city": "Kraków",
+    "title": "Serwis Laptopów Naprawa Komputerów i Maszyn Kraków",
+    "desc": "Profesjonalny serwis laptopów i komputerowy Kraków. Naprawa serwerów, maszyn przemysłowych i medycznych. Najlepsi od 20 LAT tel. 607 103 404",
+    "first": "Odzyskiwanie danych"
+   },
+   {
+    "url": "https://enterserwis.com/",
+    "city": "Warszawa",
+    "title": "Naprawa Laptopów Warszawa - Serwis Laptopów Warszawa",
+    "desc": "Profesjonalna naprawa laptopów Warszawa. Laptop sprawny w Jeden dzień. Bezpłatna wycena, naprawimy każdą usterkę. Oferujemy kompleksowe usługi serwisowe, w tym naprawę, modernizację, odzyskiwanie danych i czyszczenie układów chłodzenia. Szybka diagnoza i skuteczna naprawa Twojego laptopa.",
+    "first": "Naprawa płyty głównej"
+   },
+   {
+    "url": "https://naprawalaptopa.com.pl/",
+    "city": "Lublin",
+    "title": "Serwis Naprawa Laptop&oacute;w Komputer&oacute;w Lublin Gliniana 24 | Asus Lenovo HP Sony Vaio Dell MSI Acer Toshiba Samsung PackardBell Alienware Lublin",
+    "desc": "",
+    "first": "Wymiana matrycy / ekranu"
+   },
+   {
+    "url": "https://www.skylab-serwis.pl/",
+    "city": "Łódź",
+    "title": "SKYLAB-Serwis Komputerowy Łódź, naprawy laptopów: Xiaomi, Huawei, Asus, Apple, Lenovo.",
+    "desc": "Nasz serwis komputerowy Skylab oferuje szeroką gamę usług jak: naprawy laptopów, serwis laptopów, serwis sprzętu firm Xiaomi, Huawei, Asus, Apple, Lenovo, naprawy i serwis komputerów, instalacja systemu Windows",
+    "first": "Naprawa po zalaniu"
+   }
+  ]
+ },
+ "cleaning": null,
+ "ranking": [
+  {
+   "work": "Wymiana matrycy / ekranu",
+   "comp": {
+    "mention": 66,
+    "first": 9,
+    "td": 10
+   },
+   "ac": 76
+  },
+  {
+   "work": "Naprawa po zalaniu",
+   "comp": {
+    "mention": 63,
+    "first": 10,
+    "td": 7
+   },
+   "ac": 33
+  },
+  {
+   "work": "Odzyskiwanie danych",
+   "comp": {
+    "mention": 63,
+    "first": 17,
+    "td": 16
+   },
+   "ac": 15
+  },
+  {
+   "work": "Naprawa płyty głównej",
+   "comp": {
+    "mention": 60,
+    "first": 12,
+    "td": 8
+   },
+   "ac": 4
+  },
+  {
+   "work": "Wymiana / naprawa klawiatury",
+   "comp": {
+    "mention": 59,
+    "first": 2,
+    "td": 4
+   },
+   "ac": 42
+  },
+  {
+   "work": "Rozbudowa RAM / modernizacja",
+   "comp": {
+    "mention": 59,
+    "first": 7,
+    "td": 5
+   },
+   "ac": 9
+  },
+  {
+   "work": "Wymiana dysku / SSD",
+   "comp": {
+    "mention": 56,
+    "first": 2,
+    "td": 1
+   },
+   "ac": 45
+  },
+  {
+   "work": "Czyszczenie układu chłodzenia / pasta",
+   "comp": {
+    "mention": 54,
+    "first": 7,
+    "td": 2
+   },
+   "ac": 58
+  },
+  {
+   "work": "Instalacja systemu / Windows",
+   "comp": {
+    "mention": 49,
+    "first": 4,
+    "td": 5
+   },
+   "ac": 18
+  },
+  {
+   "work": "Usuwanie wirusów",
+   "comp": {
+    "mention": 47,
+    "first": 4,
+    "td": 3
+   },
+   "ac": 1
+  },
+  {
+   "work": "Gniazdo zasilania / ładowania",
+   "comp": {
+    "mention": 45,
+    "first": 0,
+    "td": 0
+   },
+   "ac": 19
+  },
+  {
+   "work": "Naprawa BGA / karty graficznej",
+   "comp": {
+    "mention": 45,
+    "first": 4,
+    "td": 3
+   },
+   "ac": 15
+  },
+  {
+   "work": "Zawiasy i obudowa",
+   "comp": {
+    "mention": 44,
+    "first": 4,
+    "td": 1
+   },
+   "ac": 32
+  },
+  {
+   "work": "Wymiana baterii",
+   "comp": {
+    "mention": 43,
+    "first": 2,
+    "td": 4
+   },
+   "ac": 69
+  },
+  {
+   "work": "Naprawa zasilacza",
+   "comp": {
+    "mention": 34,
+    "first": 1,
+    "td": 2
+   },
+   "ac": 6
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Wymiana matrycy",
+   "why": "главный спрос по подсказкам (76 вариантов), в прайсе и у конкурентов",
+   "evidence": ""
+  },
+  {
+   "w": "Wymiana baterii",
+   "why": "частая работа у конкурентов и в подсказках",
+   "evidence": ""
+  },
+  {
+   "w": "Czyszczenie laptopa",
+   "why": "58 подсказок, 20 с «cena»; конкуренты ставят высоко",
+   "evidence": ""
+  },
+  {
+   "w": "Odzyskiwanie danych",
+   "why": "сильная работа у конкурентов, высокая ценность для клиента",
+   "evidence": ""
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa płyty głównej",
+   "why": "запасной вариант №1 (ваше решение)",
+   "evidence": ""
+  },
+  {
+   "w": "Naprawa po zalaniu",
+   "why": "исключено вашим решением",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Исследование ноутбуков уже выполнено ранее и не повторялось; выбор работ согласован вами, текст нужно только утвердить"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa laptopów we Wrocławiu ✔ Wymiana matrycy i baterii, czyszczenie laptopa, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 160
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт ноутбуків у Вроцлаві ✔ Заміна матриці та батареї, чистка ноутбука, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 153
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт ноутбуков во Вроцлаве ✔ Замена матрицы и батареи, чистка ноутбука, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 156
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

@@ -1,0 +1,2438 @@
+{
+ "page": "/uslugi/serwis-drukarek-3d",
+ "name": "Ремонт 3D-принтеров",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek 3d",
+    "naprawa drukarki 3d",
+    "naprawa drukarek 3d",
+    "serwis drukarek 3d cennik",
+    "serwis drukarek 3d Warszawa",
+    "serwis drukarek 3d Kraków",
+    "serwis drukarek 3d Poznań",
+    "serwis drukarek 3d Wrocław",
+    "serwis drukarek 3d Gdańsk",
+    "serwis drukarek 3d Katowice",
+    "serwis drukarek 3d Łódź",
+    "serwis drukarek 3d Szczecin",
+    "serwis drukarek 3d Lublin",
+    "serwis drukarek 3d Bydgoszcz",
+    "serwis drukarek 3d Rzeszów",
+    "serwis drukarek 3d Białystok",
+    "serwis drukarek 3d Toruń",
+    "serwis drukarek 3d Opole",
+    "serwis drukarek 3d Kielce",
+    "serwis drukarek 3d Olsztyn",
+    "serwis drukarek 3d Częstochowa",
+    "serwis drukarek 3d Gdynia"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "serwis drukarek 3d ",
+    "naprawa drukarki 3d ",
+    "drukarka 3d ",
+    "bambu lab ",
+    "drukarka 3d nie ",
+    "kalibracja drukarki 3d "
+   ],
+   "uniqueSuggestions": 300,
+   "withPrice": [
+    "ile kosztuje naprawa drukarki 3d",
+    "drukarka 3d cena",
+    "drukarka 3d filament cena",
+    "drukarka 3d ile kosztuje",
+    "drukarka 3d ile kosztuje wydruk",
+    "drukarka 3d koszt",
+    "drukarka 3d koszty eksploatacji"
+   ],
+   "wroclaw": [
+    "serwis drukarek 3d wrocław",
+    "drukarka 3d usługi wrocław",
+    "drukarka 3d wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Kalibracja i poziomowanie stołu": {
+    "seeds": [
+     "kalibracja drukarki 3d",
+     "poziomowanie stołu drukarki 3d"
+    ],
+    "n": 8,
+    "nRaw": 9,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "kalibracja drukarki 3d",
+     "kalibracja drukarki 3d creality",
+     "kalibracja drukarki 3d ender 3",
+     "kalibracja drukarki 3d kostka",
+     "kalibracja drukarki 3d adventurer 4",
+     "kalibracja stołu drukarki 3d",
+     "kalibracja kroków drukarki 3d",
+     "poziomowanie stołu drukarki 3d"
+    ],
+    "all": [
+     "kalibracja drukarki 3d",
+     "kalibracja drukarki 3d creality",
+     "kalibracja drukarki 3d ender 3",
+     "kalibracja drukarki 3d kostka",
+     "kalibracja drukarki 3d adventurer 4",
+     "kalibracja stołu drukarki 3d",
+     "kalibracja kroków drukarki 3d",
+     "poziomowanie stołu drukarki 3d"
+    ],
+    "dropped": [
+     [
+      "kalibracja drukarki 3d krok po kroku",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Naprawa ekstrudera / hotendu": {
+    "seeds": [
+     "naprawa ekstrudera",
+     "wymiana hotendu",
+     "zapchany hotend"
+    ],
+    "n": 13,
+    "nRaw": 13,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana hotendu bambu lab p1s",
+     "wymiana hotendu bambu lab p2s",
+     "wymiana hotendu bambu lab a1",
+     "wymiana hotendu p1s",
+     "wymiana hotendu kobra s1",
+     "wymiana hotendu",
+     "wymiana hotendu bambu lab a1 mini",
+     "wymiana hotendu bambu lab x1c",
+     "bambu lab wymiana hotendu",
+     "ender 3 wymiana hotendu"
+    ],
+    "all": [
+     "wymiana hotendu bambu lab p1s",
+     "wymiana hotendu bambu lab p2s",
+     "wymiana hotendu bambu lab a1",
+     "wymiana hotendu p1s",
+     "wymiana hotendu kobra s1",
+     "wymiana hotendu",
+     "wymiana hotendu bambu lab a1 mini",
+     "wymiana hotendu bambu lab x1c",
+     "bambu lab wymiana hotendu",
+     "ender 3 wymiana hotendu",
+     "wymiana hotend kobra s1",
+     "wymiana hotend p2s",
+     "zapchany hotend"
+    ],
+    "dropped": []
+   },
+   "Wymiana / udrożnienie dyszy": {
+    "seeds": [
+     "wymiana dyszy drukarka 3d",
+     "zatkana dysza drukarka 3d",
+     "udrożnienie dyszy"
+    ],
+    "n": 2,
+    "nRaw": 3,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana dyszy drukarka 3d",
+     "zatkana dysza drukarka 3d"
+    ],
+    "all": [
+     "wymiana dyszy drukarka 3d",
+     "zatkana dysza drukarka 3d"
+    ],
+    "dropped": [
+     [
+      "udrożnienie dyszy spryskiwaczy",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Firmware / Klipper / Marlin": {
+    "seeds": [
+     "instalacja klipper",
+     "klipper",
+     "marlin firmware"
+    ],
+    "n": 10,
+    "nRaw": 26,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "instalacja klippera",
+     "instalacja klipper",
+     "klipper ender 3",
+     "marlin firmware",
+     "marlin firmware ender 3",
+     "marlin firmware ender 3 pro",
+     "marlin firmware ender 3 v2",
+     "marlin firmware 3d printer",
+     "marlin firmware service",
+     "marlin firmware ender 5 pro"
+    ],
+    "all": [
+     "instalacja klippera",
+     "instalacja klipper",
+     "klipper ender 3",
+     "marlin firmware",
+     "marlin firmware ender 3",
+     "marlin firmware ender 3 pro",
+     "marlin firmware ender 3 v2",
+     "marlin firmware 3d printer",
+     "marlin firmware service",
+     "marlin firmware ender 5 pro"
+    ],
+    "dropped": [
+     [
+      "klipper władysławowo",
+      "другое устройство/тема"
+     ],
+     [
+      "klipperscreen",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "klipper github",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "klipper minecraft",
+      "другое устройство/тема"
+     ],
+     [
+      "klipper tawerna",
+      "другое устройство/тема"
+     ],
+     [
+      "klipper vs marlin",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "klipper port",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "klipper cnc",
+      "другое устройство/тема"
+     ],
+     [
+      "kliper statek",
+      "другое устройство/тема"
+     ],
+     [
+      "klipper screen",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin firmware download",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin firmware github",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin.firmware service",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin firmware builder",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin firmware configuration tool",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "marlin firmware guide",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Naprawa systemu AMS / Bambu Lab": {
+    "seeds": [
+     "serwis bambu lab",
+     "naprawa bambu lab",
+     "bambu lab ams problem"
+    ],
+    "n": 21,
+    "nRaw": 21,
+    "cena": 0,
+    "wroc": 1,
+    "ex": [
+     "serwis bambu lab",
+     "serwis bambu lab polska",
+     "serwis bambu lab warszawa",
+     "serwis bambu lab p1s",
+     "serwis bambu lab a1",
+     "serwis bambu lab kraków",
+     "serwis bambu lab wrocław",
+     "serwis drukarek bambu lab",
+     "autoryzowany serwis bambu lab",
+     "serwis gwarancyjny bambu lab"
+    ],
+    "all": [
+     "serwis bambu lab",
+     "serwis bambu lab polska",
+     "serwis bambu lab warszawa",
+     "serwis bambu lab p1s",
+     "serwis bambu lab a1",
+     "serwis bambu lab kraków",
+     "serwis bambu lab wrocław",
+     "serwis drukarek bambu lab",
+     "autoryzowany serwis bambu lab",
+     "serwis gwarancyjny bambu lab",
+     "bambu lab ams problems",
+     "bambu lab ams 2 problem",
+     "bambu lab ams 2 pro problem",
+     "bambu lab a1 ams problem",
+     "bambu lab ams lite problem",
+     "bambu lab p1s ams problem",
+     "bambu lab ams hub problem",
+     "bambu lab p1s ams probleme",
+     "bambu lab ams lite problems",
+     "bambu lab x2d ams problems",
+     "bambu lab ams problem"
+    ],
+    "dropped": []
+   },
+   "Przegląd / konserwacja": {
+    "seeds": [
+     "konserwacja drukarki 3d",
+     "przegląd drukarki 3d"
+    ],
+    "n": 3,
+    "nRaw": 3,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "konserwacja drukarki 3d",
+     "konserwacja drukarki 3d bambu lab",
+     "konserwacja drukarki 3d creality"
+    ],
+    "all": [
+     "konserwacja drukarki 3d",
+     "konserwacja drukarki 3d bambu lab",
+     "konserwacja drukarki 3d creality"
+    ],
+    "dropped": []
+   },
+   "Modyfikacje / upgrade": {
+    "seeds": [
+     "modyfikacje drukarki 3d",
+     "upgrade drukarki 3d"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Drukarki żywiczne SLA / MSLA": {
+    "seeds": [
+     "naprawa drukarki żywicznej",
+     "serwis drukarek żywicznych"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 61,
+   "impressions": 686,
+   "clicks": 113,
+   "conversions": 17.33,
+   "top": [
+    {
+     "term": "serwis drukarek 3d wrocław",
+     "impr": 283,
+     "clicks": 61,
+     "conv": 11.33,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki 3d Wrocław",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek 3d",
+     "impr": 161,
+     "clicks": 24,
+     "conv": 2,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa drukarek 3d",
+     "impr": 34,
+     "clicks": 6,
+     "conv": 1,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "serwis bambu lab",
+     "impr": 17,
+     "clicks": 6,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "bambu lab serwis polska",
+     "impr": 15,
+     "clicks": 4,
+     "conv": 1,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "bambu a1 maintenance",
+     "impr": 12,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarki 3d",
+     "impr": 12,
+     "clicks": 2,
+     "conv": 2,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "bambu lab a1 maintenance",
+     "impr": 11,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "serwis bambu lab polska",
+     "impr": 10,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "konserwacja drukarki 3d",
+     "impr": 9,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek 3d bambu lab",
+     "impr": 9,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "bambu lab serwis",
+     "impr": 8,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "czyszczenie drukarki 3d",
+     "impr": 7,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "bambu lab p1s konserwacja",
+     "impr": 6,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki 3d Wrocław"
+     ]
+    },
+    {
+     "term": "drukarki 3d wrocław",
+     "impr": 5,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [],
+   "phrases": 42
+  }
+ },
+ "competitors": {
+  "relevant": 67,
+  "checked": 151,
+  "candidates": 151,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "revo3d.pl",
+    "url": "https://revo3d.pl/serwis-drukarek-3d/",
+    "title": "Serwis drukarek 3D - Revo3d",
+    "desc": "Profesjonalny serwis drukarek 3D. Oferujemy kompleksową naprawę, konserwację i wsparcie techniczne dla wszystkich modeli drukarek 3D, zapewniając ich niezawodność i długowieczność.",
+    "h1": [],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Przegląd / konserwacja",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Firmware / Klipper / Marlin",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "b3d.com.pl",
+    "url": "https://b3d.com.pl/serwis-drukarek-3d/",
+    "title": "Serwis drukarek 3D - Skanery i drukarki 3D | B3D",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Naprawa ekstrudera / hotendu",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Naprawa elektroniki / płyty głównej",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "replica3d.pl",
+    "url": "https://replica3d.pl/druk-3d-krakow",
+    "title": "Drukarnia 3D Kraków - Druk 3D na Zamówienie z Wysyłką | REPLICA3D",
+    "desc": "Szukasz druku 3D w Kraków? Zamów profesjonalne wydruki 3D bez wychodzenia z domu. Szybka realizacja, darmowa wycena i bezpieczna dostawa do Kraków.",
+    "h1": [
+     "H1: druk 3d kraków"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Poznań",
+     "Wrocław",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "detal3d.pl",
+    "url": "https://www.detal3d.pl/serwis-drukarek-3d/",
+    "title": "Serwis i diagnostyka drukarek 3D - Kraków - detal3D",
+    "desc": "Szukasz niezawodnej diagnostyki i wsparcia dla swojej drukarki 3D? Detal3D oferuje profesjonalny serwis drukarek 3D. Sprawdź naszą ofertę już dziś!",
+    "h1": [
+     "H1: Serwis drukarek 3D – szybka diagnoza i naprawa"
+    ],
+    "first": "Kalibracja i poziomowanie stołu",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "cadxpert.pl",
+    "url": "https://cadxpert.pl/serwis/",
+    "title": "Serwis drukarek 3D: naprawa i przeglądy | CadXpert",
+    "desc": "Serwis drukarek 3D Stratasys, Formlabs i UltiMaker: naprawa, przeglądy i kalibracja. Serwis gwarancyjny i pogwarancyjny, wsparcie zdalne i na miejscu.",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Przegląd / konserwacja",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Przegląd / konserwacja"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "3dcreateandprint.pl",
+    "url": "https://3dcreateandprint.pl/serwis-drukarek-3d/",
+    "title": "3D Create and Print",
+    "desc": "",
+    "h1": [],
+    "first": "Modyfikacje / upgrade",
+    "seoFirst": "Modyfikacje / upgrade",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja"
+    ],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Łódź",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "inzynieria-3d.pl",
+    "url": "https://www.inzynieria-3d.pl/druk-3d/katowice/",
+    "title": "Druk 3D Katowice – Inżynieria-3D",
+    "desc": "",
+    "h1": [
+     "H1: Druk 3D Katowice"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Lublin",
+     "Rzeszów",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "xd3d.pl",
+    "url": "http://www.xd3d.pl/serwis-drukarek-3d-naprawa-konserwacja-i-wsparcie-techniczne/",
+    "title": "Serwis drukarek 3D Gdańsk | XD3D — Prusa, Bambu Lab, Creality, Anycubic",
+    "desc": "Profesjonalny serwis i naprawa drukarek 3D w Gdańsku. Prusa, Bambu Lab, Creality, Anycubic, Elegoo, Voron. Diagnoza bezpłatna. Wysyłka z całej Polski. XD3D.",
+    "h1": [
+     "H1: Serwis drukarek 3D – Naprawa, konserwacja i wsparcie techniczne"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Naprawa systemu AMS / Bambu Lab",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "3dforliving.pl",
+    "url": "https://3dforliving.pl/",
+    "title": "Strona główna - 3DForLiving - Druk 3D | Serwis drukarek 3D | Filamenty",
+    "desc": "",
+    "h1": [
+     "H1: Projektowanie, druk 3D, wsparcie i zakupy w jednym miejscu"
+    ],
+    "first": "Kalibracja i poziomowanie stołu",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Łódź",
+     "Rzeszów",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "tdi-cad.pl",
+    "url": "https://tdi-cad.pl/srewis",
+    "title": "Profesjonalny Serwis Drukarek 3D - Naprawy, Konserwacja, Aktualizacje |TDI-CAD.PL",
+    "desc": "Nasz profesjonalny serwis drukarek 3D oferuje kompleksowe usługi napraw, konserwacji i aktualizacji. Zaufaj naszemu doświadczonemu zespołowi, aby utrzymać Twoją drukarkę w doskonałej kondycji. Skorzystaj z naszych usług i ciesz się niezawodnością swojego ",
+    "h1": [],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Przegląd / konserwacja",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "3d-expert.pl",
+    "url": "https://3d-expert.pl/serwis-drukarek-3d/",
+    "title": "Serwis i naprawa drukarek 3D we Wrocławiu i Krakowie - 3D-Expert",
+    "desc": "Specjalizujemy się w kompleksowym serwisie i naprawie urządzeń przeznaczonych do druku 3D. Działamy m.in. we Wrocławiu i Krakowie. Więcej szczegółów na naszej stronie!",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "protofab.pl",
+    "url": "https://protofab.pl/serwis-drukarek-3d/",
+    "title": "Serwis Drukarek 3D - ProtoFAB - Projektowanie, budowa i serwis drukarek 3D, serwis ploterów CO2",
+    "desc": "Wykonujemy",
+    "h1": [
+     "H1: DRUKAREK 3D"
+    ],
+    "first": "Modyfikacje / upgrade",
+    "seoFirst": "Modyfikacje / upgrade",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [
+     "Modyfikacje / upgrade"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "drukarnie3d.pl",
+    "url": "https://drukarnie3d.pl/podlaskie/bialystok/",
+    "title": "Drukarnia 3D Białystok - Prototypowanie na zamówienie",
+    "desc": "Profesjonalne usługi druku 3D dla miasta Białystok. Prototypowanie, części zamienne, makiety. Sprawdź naszą ofertę z szybką dostawą.",
+    "h1": [
+     "H1: Profesjonalna Drukarnia 3D: Białystok"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok",
+     "Opole",
+     "Olsztyn",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "crave3d.pl",
+    "url": "https://crave3d.pl/serwis/",
+    "title": "Serwis | Crave3D - Druk3D dla firm",
+    "desc": "Strona główna Sklep Usługi Zamów wydruk Dobierz Drukarkę Projektowanie 3D Skanowanie 3D Serwis Blog O nas Kontakt Hamburger Toggle Menu Profesjonalny serwis drukarek 3D zgłoś usterkę Najczęstsze pytania Satysfakcja 98% Napraw w 2024/25 1200+ Średni czas realizacji 2–5 dni Dlaczego nasz serwis? Standard producenta, czyt",
+    "h1": [
+     "H1: Profesjonalny serwis drukarek 3D",
+     "H1: Obserwuj nas!"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Przegląd / konserwacja",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja"
+    ],
+    "city": [
+     "Poznań",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "trojwymiarowo.pl",
+    "url": "https://trojwymiarowo.pl/serwis-drukarek-3d/",
+    "title": "Serwis drukarek 3D - trojwymiarowo, drukarki 3d Warszawa",
+    "desc": "Serwis drukarek 3D w Warszawie, opartych o technologię RepRap. Obejmuje m.in. uruchomienie drukarki, zmiany firmware, zmiany konstrukcyjne itp.",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Firmware / Klipper / Marlin",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Firmware / Klipper / Marlin"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "j-com.pl",
+    "url": "https://www.j-com.pl/naprawa-drukarek-3d",
+    "title": "Naprawa drukarek 3D FDM/FFF | J-COM Poznań",
+    "desc": "Masz problem z drukarką 3D? Chcesz, aby działała bez zarzutu?/h2&gt; Zaufaj profesjonalistom! Oferujemy kompleksowy serwis drukarek 3D, który zapewni:",
+    "h1": [
+     "H1: Naprawa drukarek 3D FDM/FFF"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "get3d.pl",
+    "url": "https://get3d.pl/serwis/",
+    "title": "Serwis | get3D - drukarki 3D, akcesoria i filamenty",
+    "desc": "",
+    "h1": [],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "3d-lab.pl",
+    "url": "https://www.3d-lab.pl/pl/uslugi/wsparcie-techniczne",
+    "title": "Wsparcie techniczne - Usługi - 3D Lab",
+    "desc": "",
+    "h1": [
+     "H1: Wsparcie techniczne"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "2b3d.pl",
+    "url": "https://2b3d.pl/",
+    "title": "Wydruki 3D Wrocław, szkolenia i serwis drukarek 3D | 2B3D",
+    "desc": "Wydruki 3D na zamówienie we Wrocławiu i wysyłka w całej Polsce. FDM i żywica, bezpłatna wycena. Szkolenia z druku 3D i serwis drukarek. 2B3D od 2016 r",
+    "h1": [],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "dormex.pl",
+    "url": "https://www.dormex.pl/serwis/serwis-drukarek-3d-warszawa/",
+    "title": "Serwis drukarek 3D Warszawa | DORMEX",
+    "desc": "Nasz serwis drukarek 3D oferuje naprawy różnych modeli urządzeń. Do każdego zlecenia podchodzimy indywidualnie, mając na uwadze przede wszystkim maksymalną satysfakcję klienta.",
+    "h1": [
+     "H1: Serwis drukarek 3D Warszawa",
+     "H1: SERWIS DRUKAREK 3D WARSZAWA"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Wymiana / udrożnienie dyszy",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "3d-owl.pl",
+    "url": "https://3d-owl.pl/",
+    "title": "3D-Owl - Usługi druku 3D - Serwis drukarek 3D",
+    "desc": "Profesjonalne usługi druku 3D w technologii FDM i SLA, Kompleksowy serwis i kalibracja drukarek 3D, Projektowanie CAD, Szkolenia z druku 3D",
+    "h1": [
+     "H1: 3D-OWL"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Firmware / Klipper / Marlin",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Rzeszów",
+     "Opole"
+    ]
+   },
+   {
+    "host": "solid3d.pl",
+    "url": "https://solid3d.pl/",
+    "title": "Druk 3D - Drukarnia - Kraków - wydruk 3D FDM: usługa - drukowanie na zamówienie - Cena - Solid3Ds",
+    "desc": "🖨 Profesjonalny druk 3D Kraków 🖨 - Bezpłatna wycena! Jako drukarnia 3D w Krakowie specjalizujemy się w dostarczaniu wysokiej jakości wydruków 3D.",
+    "h1": [
+     "H1: Druk 3D Kraków. Wydruki na zamówienie - Drukarnia Solid3D"
+    ],
+    "first": "Mechanika osi / paski / łożyska",
+    "seoFirst": "",
+    "works": [
+     "Mechanika osi / paski / łożyska"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Katowice",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "paramid3d.com",
+    "url": "https://www.paramid3d.com/oferta/usluga/serwis-drukarek-3d.html",
+    "title": "Paramid3D - drukarki 3D producent - Warszawa - Serwis drukarek 3D",
+    "desc": "Serwisujemy drukarki 3D drukujące w technologii FDM niezależnie od producenta i modelu - serwis pogwarancyjny: Leapfrog, MakerBot, Ultimaker, Zortrax, Cube,...",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "3dprodruk.pl",
+    "url": "https://3dprodruk.pl/druk-3d-szczecin/",
+    "title": "Druk 3D Szczecin - 3DProdruk.pl | Usługi wydruku, projektowania, prototypowania i produkcji 3D przez wykwalifikowanych ekspertów technologi 3d.",
+    "desc": "",
+    "h1": [
+     "H1: Druk 3D Szczecin"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin",
+     "Bydgoszcz",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "filamenciarz.pl",
+    "url": "https://filamenciarz.pl/oferta/",
+    "title": "Oferta - Filamenciarz",
+    "desc": "",
+    "h1": [
+     "H1: Oferta"
+    ],
+    "first": "Naprawa ekstrudera / hotendu",
+    "seoFirst": "",
+    "works": [
+     "Naprawa ekstrudera / hotendu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "regulservis.pl",
+    "url": "https://regulservis.pl/serwis-drukarek-3d/",
+    "title": "Serwis drukarek 3D Warszawa | Naprawa drukarki 3d - Regul Serwis",
+    "desc": "Serwis drukarek 3D w Warszawie: naprawa urządzeń FDM i żywicznych każdej marki. Diagnostyka stacjonarna gratis, gwarancja od 3 do 12 miesięcy.",
+    "h1": [
+     "H1: Serwis drukarek 3D Warszawa"
+    ],
+    "first": "Wymiana / udrożnienie dyszy",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Mechanika osi / paski / łożyska",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "x3dgroup.pl",
+    "url": "https://x3dgroup.pl/oferta/serwis",
+    "title": "Serwis drukarek 3D — naprawy | X3D",
+    "desc": "Serwis drukarek 3D X3D — naprawy dla klientów indywidualnych, firm i placówek edukacyjnych. Serwisujemy Bambu Lab i inne marki.",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Naprawa systemu AMS / Bambu Lab",
+    "seoFirst": "Naprawa systemu AMS / Bambu Lab",
+    "works": [
+     "Modyfikacje / upgrade",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "centrumdruku3d.pl",
+    "url": "https://centrumdruku3d.pl/zortrax/",
+    "title": "ZORTRAX",
+    "desc": "",
+    "h1": [
+     "H1: ZORTRAX"
+    ],
+    "first": "Firmware / Klipper / Marlin",
+    "seoFirst": "",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "ubot3d.pl",
+    "url": "https://ubot3d.pl/blog/naprawa-drukarki-3d",
+    "title": "Naprawa drukarki 3D",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa drukarki 3D"
+    ],
+    "first": "Kalibracja i poziomowanie stołu",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Wymiana / udrożnienie dyszy",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "ai-technologia.pl",
+    "url": "https://ai-technologia.pl/technologie/najczestsze-problemy-drukarek-3d-i-ich-rozwiazania/",
+    "title": "Najczęstsze problemy drukarek 3D i ich rozwiązania | AI & TECHNOLOGIA",
+    "desc": "Kompleksowy poradnik dotyczący diagnozowania i naprawy typowych usterek drukarek 3D, od zatkanych dysz po problemy z elektroniką. - Naprawa drukarek 3D - Sprawdź",
+    "h1": [
+     "H1: Najczęstsze problemy drukarek 3D i ich rozwiązania"
+    ],
+    "first": "Wymiana / udrożnienie dyszy",
+    "seoFirst": "Wymiana / udrożnienie dyszy",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Przegląd / konserwacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "tmp.pl",
+    "url": "https://tmp.pl/produkty/drukarki-3d/",
+    "title": "Drukarki 3d Poznań | TMP - sprzedaż, serwis, wynajem",
+    "desc": "Drukarki 3d sprzedaż, wynajem. Doradztwo w zakresie tworzenia wydruków 3d. Szkolenia z obsługi urządzeń. Bogate doświadczenie.",
+    "h1": [
+     "H1: Sprzedaż drukarek 3D"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "fibometry.com",
+    "url": "https://fibometry.com/druk-3d-lodz/",
+    "title": "Profesjonalny druk 3D Łódź - Drukarnia 3D, projektowanie, prototypowanie.",
+    "desc": "Profesjonalne usługi druku 3D Łódź. Technologie SLS, MJF, FDM/FFF, SLA/DL, PPJ/MJM, DMLS/SLM. Drukowanie komponentów, prototypowanie.",
+    "h1": [
+     "H1: Druk 3d Łódź"
+    ],
+    "first": "Wymiana / udrożnienie dyszy",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Wymiana / udrożnienie dyszy",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Katowice",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "123d.pl",
+    "url": "https://123d.pl/serwis-drukarek-3d-lublin/",
+    "title": "Serwis drukarek 3D - 123d.pl",
+    "desc": "Profesjonalny serwis drukarek 3d w Lublinie. Wykonujemy usługi serwisu również u klienta. Zapraszamy do współpracy!",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "3dserwis.pl",
+    "url": "https://3dserwis.pl/",
+    "title": "Naprawa Drukarek 3D Białystok | Serwis 3D — 3DSerwis",
+    "desc": "Profesjonalny serwis drukarek 3D w Białymstoku i woj. podlaskim. Naprawa, diagnostyka, kalibracja: Bambu Lab, Prusa, Creality. Tel: 669 706 473",
+    "h1": [
+     "H1: NAPRAWIAMY DRUKARKI 3D"
+    ],
+    "first": "Naprawa systemu AMS / Bambu Lab",
+    "seoFirst": "Kalibracja i poziomowanie stołu",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "technika3d.com.pl",
+    "url": "https://www.technika3d.com.pl/serwis-drukarek-3d-czestochowa",
+    "title": "Serwis drukarek 3D Częstochowa | Technika 3D",
+    "desc": "Serwis drukarek 3D w Częstochowie: diagnostyka, konserwacja, kalibracja, naprawa mechaniki i oficjalne aktualizacje. Technika 3D Kamil Liberda.",
+    "h1": [
+     "H1: Diagnostyka, konserwacja i naprawa drukarek 3D."
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Przegląd / konserwacja",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA",
+     "Naprawa stołu grzewczego"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "pro-serwis.pl",
+    "url": "https://pro-serwis.pl/oferta/druk-3d/",
+    "title": "DRUKARKI 3D – Pro-Serwis.pl Bydgoszcz",
+    "desc": "Drukarki 3D to innowacyjne rozwiązanie, które już dziś może pojawić się w Twojej firmie, biurze, szkole lub domu. Wspomaga proces projektowania, prototypownia, produkcję krótkoseryjną, druk elementów do utrzymania ruchu lub modeli dydaktycznych. Wydruki 3D zwiększą możliwości Twojej pracy, pozwalając na tworzenie eleme",
+    "h1": [
+     "H1: DRUKARKI 3D"
+    ],
+    "first": "Firmware / Klipper / Marlin",
+    "seoFirst": "",
+    "works": [
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "mediamistrz.eu",
+    "url": "https://mediamistrz.eu/pl",
+    "title": "MediaMistrz — serwis DJI, Dyson, Dreame, Bambu Lab i Thermomix | Katowice",
+    "desc": "Naprawa dronów DJI, odkurzaczy Dyson, robotów Dreame, drukarek 3D Bambu Lab i robotów kuchennych Thermomix. Serwis stacjonarny w Katowicach i obsługa wysyłkowa z całej Polski. 12 miesięcy gwarancji na naprawę.",
+    "h1": [
+     "H1: Serwis elektroniki, któremu możesz zaufać"
+    ],
+    "first": "Naprawa elektroniki / płyty głównej",
+    "seoFirst": "Naprawa systemu AMS / Bambu Lab",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty głównej",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "zadar.pl",
+    "url": "https://zadar.pl/pl/n/93",
+    "title": "Druk 3D Kraków Sklep Zadar",
+    "desc": "Szeroki wybór filamentów, akcesoriów i części zamiennych najwyższej jakości. Znajdź wszystko, czego potrzebujesz do swojego projektu",
+    "h1": [
+     "H1: Druk 3D Kraków Sklep Zadar",
+     "H1: Druk 3D Kraków: Usługi i Produkty Zadar"
+    ],
+    "first": "Naprawa systemu AMS / Bambu Lab",
+    "seoFirst": "Naprawa ekstrudera / hotendu",
+    "works": [
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Naprawa elektroniki / płyty głównej",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "edutech.expert",
+    "url": "https://edutech.expert/pl/cms/serwis-drukarek-3d-28.html",
+    "title": "Autoryzowany serwis Bambu Lab – naprawa drukarek 3D | Edutech Expert",
+    "desc": "Autoryzowany serwis Bambu Lab: gwarancja, reklamacja i naprawa odpłatna drukarek oraz akcesoriów Bambu Lab. Status naprawy online, diagnoza od 119 zł.",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Naprawa systemu AMS / Bambu Lab",
+    "seoFirst": "Naprawa systemu AMS / Bambu Lab",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Mechanika osi / paski / łożyska",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": []
+   },
+   {
+    "host": "igo3d.com",
+    "url": "https://www.igo3d.com/pl/naprawa-drukarek-3d-przez-ekspertow-serwis-igo3d",
+    "title": "Naprawa drukarek 3D przez ekspertów | Serwis IGO3D",
+    "desc": "Drukarka 3D się zepsuła? Oferujemy szybką naprawę i serwis drukarek 3D marek Bambu Lab, Prusa, Ultimaker i innych. Zgłoś naprawę już teraz lub zgłoś reklama",
+    "h1": [],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "Naprawa systemu AMS / Bambu Lab",
+    "works": [
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": []
+   },
+   {
+    "host": "ajmaker.pl",
+    "url": "https://ajmaker.pl/wydruki-3d/",
+    "title": "Druk 3D — cennik, realizacja indywidualnych zamówień",
+    "desc": "Prototyp z drukarki 3D umożliwia idealne odzwierciedlenie Twojego projektu w rzeczywistości. Oferujemy różnokolorowe filamenty marki Spectrum Filaments.",
+    "h1": [
+     "H1: Druk 3d na zamówienie —wydrukujemy wszystko, ogranicza Cię tylko wyobraźnia!"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "ej-bej.xyz",
+    "url": "https://ej-bej.xyz/",
+    "title": "Ej-Bej - Serwis drukarek 3D po gwarancji | Warszawa i okolice",
+    "desc": "Profesjonalna diagnostyka, naprawa, kalibracja i modernizacja drukarek 3D po gwarancji. Prusa, Creality, Bambu Lab, Anycubic - Warszawa i okolice, z dojazdem i wyceną przed naprawą.",
+    "h1": [
+     "H1: Naprawiamy drukarki 3D, gdy gwarancja już nie pomaga."
+    ],
+    "first": "Naprawa ekstrudera / hotendu",
+    "seoFirst": "Kalibracja i poziomowanie stołu",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "3dfrog.pl",
+    "url": "https://3dfrog.pl/",
+    "title": "Projektowanie w 3D Mikołów | Drukarnia 3D | Szeroki wybór usług 3D | 3D Frog Katowice",
+    "desc": "",
+    "h1": [
+     "H1: SZTUKA I TECHNOLOGIA"
+    ],
+    "first": "Modyfikacje / upgrade",
+    "seoFirst": "",
+    "works": [
+     "Modyfikacje / upgrade",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "elprodruk3d.pl",
+    "url": "http://elprodruk3d.pl/",
+    "title": "Drukarnia 3d Łódź | ElproDruk3D - Profesjonalna drukarnia 3D",
+    "desc": "Dysponujemy najnowocześniejszą technologią oraz wykwalifikowanymi pracownikami, dzięki temu ElproDruk3D to najlepsza drukarnia 3D w Łodzi. Spradź sam!",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "pl.revieweuro.com",
+    "url": "https://pl.revieweuro.com/lublin/123d-2159253",
+    "title": "123D - drukarki 3D, druk 3D Lublin, Turystyczna 45A, Phone +48 733 123 123",
+    "desc": "Reviews about 123D - drukarki 3D, druk 3D Lublin, województwo lubelskie, phone numbers, addresses, hours. Leave your feedback.",
+    "h1": [
+     "H1: 123D - drukarki 3D, druk 3D Lublin"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "graften.com",
+    "url": "https://graften.com/uslugi/",
+    "title": "Usługi 3D – Graften Drukarki 3D",
+    "desc": "W naszej ofercie: Szkolenia z druku 3D oraz modelowania. Dzierżawa drukarek jedno i dwugłowicowych Graften One. Serwis drukarek 3D.",
+    "h1": [
+     "H1: Projektowanie 3D (Rapid prototyping)"
+    ],
+    "first": "Naprawa ekstrudera / hotendu",
+    "seoFirst": "Naprawa ekstrudera / hotendu",
+    "works": [
+     "Naprawa ekstrudera / hotendu"
+    ],
+    "seoWorks": [
+     "Naprawa ekstrudera / hotendu"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "smk3d.pl",
+    "url": "https://smk3d.pl/druk-3d/",
+    "title": "Druk 3D | SMK3D - Laserowy skan 3D, Modelowanie, Kursy, Druk 3D Łódź",
+    "desc": "Drukujemy za pomocą kilku urządzeń opartych o technologie FDM. Wyślij nam projekt na kartce, lub gotowy model STL a my go wycenimy i wydrukujemy dla Ciebie w 24h!",
+    "h1": [
+     "H1: Precyzyjny druk 3D",
+     "H1: Wyślij nam projekt 3d/ pomysł na projekt 3d, a my wycenimy go w 24h"
+    ],
+    "first": "Wymiana / udrożnienie dyszy",
+    "seoFirst": "Wymiana / udrożnienie dyszy",
+    "works": [
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Naprawa systemu AMS / Bambu Lab",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Wymiana / udrożnienie dyszy"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "dkk3d.pl",
+    "url": "https://www.dkk3d.pl/",
+    "title": "DKK Drukarki 3D Skanery 3D. Serwis urządzeń laboratoryjnych – sprzedaż, wynajem i serwis urządzeń do druku i skanowania oraz serwis urządzeń laboratoryjnych",
+    "desc": "",
+    "h1": [
+     "H1: Drukarki i skanery 3d"
+    ],
+    "first": "Firmware / Klipper / Marlin",
+    "seoFirst": "",
+    "works": [
+     "Firmware / Klipper / Marlin"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "3drukujesz.pl",
+    "url": "https://www.3drukujesz.pl/",
+    "title": "Druk 3D Poznań | 3Drukujesz? | Poznań",
+    "desc": "Drukarnia 3D oferująca druk 3D w Poznaniu oraz w całej Polsce w podstawowych technologiach (FDM-FFF, SLA-DLP, SLS). 3Drukujesz to firma z wieloletnim doświadczeniem na rynku.",
+    "h1": [
+     "H1: Make Your 3D Dreams a Reality"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "druk3dwroclaw.com",
+    "url": "https://druk3dwroclaw.com/",
+    "title": "Druk 3D Wrocław – Profesjonalna drukarnia 3D we Wrocławiu",
+    "desc": "",
+    "h1": [
+     "H1: Druk 3D Wrocław"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "druk3dkatowice.pl",
+    "url": "https://www.druk3dkatowice.pl/",
+    "title": "Druk 3D FDM - na zlecenie - Druk 3d Katowice",
+    "desc": "Zleć Druk 3D z plastiku. Szybko, sprawnie, konkurencyjne ceny, jakość, doświadczenie. Technologia FDM/FFF. Drukarnia 3D Katowice Śląsk Polska",
+    "h1": [
+     "H1: Druk 3D Katowice – Śląsk – Polska",
+     "H1: Druk 3D FDM – na zlecenie"
+    ],
+    "first": "Naprawa elektroniki / płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Wymiana / udrożnienie dyszy",
+     "Naprawa elektroniki / płyty głównej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "order3d.pl",
+    "url": "https://www.order3d.pl/",
+    "title": "ORDER 3D | Druk 3D Poznań",
+    "desc": "Drukarnia 3D Poznań. Kompleksowe usługi projektowania CAD, druku 3D oraz produkcji krótkoseryjnej. Bezpłatna wycena, profesjonalne doradztwo.",
+    "h1": [
+     "H1: Druk 3D Poznań - OD KONCEPCJI DO PRODUKTU"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "3dfrog.widocznoscwinternecie.pl",
+    "url": "http://3dfrog.widocznoscwinternecie.pl/",
+    "title": "Drukarki 3D Katowice, Śląsk - 3DFrog - doskonała precyzja wydruku",
+    "desc": "W Katowicach na Śląsku drukarki 3D pozwalają nam tworzyć precyzyjne i wytrzymałe wydruki przestrzenne oparte na profesjonalnym projekcie. Sprawdź!",
+    "h1": [
+     "H1: DARIUSZ ŻABCZYŃSKI IY0 DESIGN Połączenie sztuki i nowoczesnych technologii jest możliwe – poznaj 3DFrog Drukowanie 3D to proces wymagający n"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "3dfactor.pl",
+    "url": "https://3dfactor.pl/uslugi/druk-3d/",
+    "title": "Druk 3D na zamówienie | Drukowanie 3D | Wydruki 3D - Wrocław, Dolnośląskie | 3DFactor",
+    "desc": "Druk 3D to innowacja, która zaskakuje z wielu stron! Realizujemy zlecenia druku 3D na zamówienie w znakomitych cenach – sprawdź naszą ofertę już dziś!",
+    "h1": [
+     "H1: Druk 3D we Wrocławiu"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "3dmold.pl",
+    "url": "https://3dmold.pl/druk3d",
+    "title": "Druk 3D - Biuro konstrukcyjne 3D Mold",
+    "desc": "Biuro konstrukcyjne 3D Mold w Bydgoszczy to firma świadcząca kompleksowe usługi: projektowanie CAD, formy wtryskowe, termoformowanie, frezowanie CNC, automatyzacja procesów i produkcji, projektowanie maszyn i urządzeń, konstrukcji czy technologii.",
+    "h1": [
+     "H1: Druk 3D"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "serwis.info.pl",
+    "url": "https://serwis.info.pl/f/serwis-drukarek/",
+    "title": "Najlepsze serwisy drukarek w okolicy",
+    "desc": "Awaria drukarki? Sprawdź gdzie naprawić drukarki i drukarki 3D. Wybierz najlepszy serwis naprawy drukarek. Naprawa drukarek 3D – cennik.",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Naprawa elektroniki / płyty głównej",
+    "seoFirst": "Naprawa elektroniki / płyty głównej",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Wymiana / udrożnienie dyszy",
+     "Firmware / Klipper / Marlin",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty głównej"
+    ],
+    "city": []
+   },
+   {
+    "host": "3duv.pl",
+    "url": "https://3duv.pl/pl/contact",
+    "title": "Kontakt - 3DUV.PL - Profesjonalne drukarki żywiczne 3D | Twój ekspert w druku 3D",
+    "desc": "",
+    "h1": [],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Firmware / Klipper / Marlin",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "geometryhustlers.pl",
+    "url": "https://geometryhustlers.pl/druk-3d-lublin/",
+    "title": "Druk 3D Lublin - ekspresowa produkcja z tworzyw sztucznych",
+    "desc": "Druk 3D Lublin – Szybka produkcja części z tworzyw sztucznych, usługi druku 3D dla firm i osób prywatnych z Lublina i województwa lubelskiego",
+    "h1": [
+     "H1: Druk 3D Lublin"
+    ],
+    "first": "Naprawa elektroniki / płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty głównej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "hexagongroup.pl",
+    "url": "https://hexagongroup.pl/uslugidruku3d/",
+    "title": "Drukarnia 3D: drukowanie, wydruki: cena, cennik Warszawa - Hexagon Group",
+    "desc": "Autoryzowany Partner DWS SYSTEMS. Usługi druku 3d, prototypowania, skanowania 3d. Duży wybór materiałów i technologii druku 3D. Drukowanie 3d.",
+    "h1": [
+     "H1: Profesjonalny druk 3D",
+     "H1: Usługi druku 3D"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Wymiana / udrożnienie dyszy",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "elpi.wroclaw.pl",
+    "url": "https://elpi.wroclaw.pl/uslugi/druk-3d.html",
+    "title": "Druk 3D Wrocław – wydruki 3D | ELPI Wrocław",
+    "desc": "Druk 3D we Wrocławiu – wykonujemy wydruki 3D, prototypy, części i elementy użytkowe. Drukujemy z PLA, PET-G, ABS, poliamidu i innych materiałów.",
+    "h1": [
+     "H1: Drukarnia 3d Wrocław"
+    ],
+    "first": "Przegląd / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "graften.pl",
+    "url": "https://graften.pl/druk-3d-modelowanie-i-projektowanie-3d-cad/",
+    "title": "Producent drukarek 3D - Projektowanie i druk",
+    "desc": "Produkujemy drukarki 3D Graften PRO oraz drukujemy 3D na zamówienie. Oferujemy projektowanie 3D oraz szkolenia z modelowania 3D dla grup.\r\n",
+    "h1": [
+     "H1: Druk 3D – modelowanie i projektowanie CAD"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Modyfikacje / upgrade",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "medprint.pl",
+    "url": "https://medprint.pl/serwis-drukarek-3d/",
+    "title": "Serwis drukarek 3D - Medprint",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek 3D"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa elektroniki / płyty głównej",
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "drukarnia3d.eu",
+    "url": "https://www.drukarnia3d.eu/",
+    "title": "Drukarnia 3D Katowice | Wydruki na zamówienie | Gadżety 3D",
+    "desc": "",
+    "h1": [
+     "H1: Strona Główna",
+     "H1: Pomysł jest a Drukarki brak? Zleć wydruk NAM !"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "3druk.eu",
+    "url": "https://3druk.eu/",
+    "title": "Drukarnia 3D online - szybko i profesjonalnie - Gdynia | 3Druk.eu",
+    "desc": "Projektujemy i drukujemy elementy 3D na nowoczesnych i profesjonalnych drukarkach 3D. Technologie FDM, SLA, SLS.",
+    "h1": [
+     "H1: Drukarnia 3D"
+    ],
+    "first": "Mechanika osi / paski / łożyska",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "botland.com.pl",
+    "url": "https://botland.com.pl/",
+    "title": "Sklep Elektroniczny Botland - Sklep z Elektroniką",
+    "desc": "Sklep elektroniczny Botland - Twój świat elektroniki i druku 3D. W ofercie drukarki 3D, filamenty, Arduino, Raspberry Pi i części dla robotyków. Sprawdź!",
+    "h1": [
+     "H1: Sklep Elektroniczny Botland - Sklep z Elektroniką"
+    ],
+    "first": "Naprawa elektroniki / płyty głównej",
+    "seoFirst": "Naprawa elektroniki / płyty głównej",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska",
+     "Modyfikacje / upgrade",
+     "Naprawa systemu AMS / Bambu Lab"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty głównej",
+     "Mechanika osi / paski / łożyska"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "3dp.pl",
+    "url": "https://3dp.pl/",
+    "title": "3DP – Twój dostawca produktów i usług do druku 3D",
+    "desc": "",
+    "h1": [
+     "H1: 3DP"
+    ],
+    "first": "Firmware / Klipper / Marlin",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja i poziomowanie stołu",
+     "Naprawa ekstrudera / hotendu",
+     "Firmware / Klipper / Marlin"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "lifestyle-porady.pl",
+    "url": "https://lifestyle-porady.pl/druk-3d/krakow/",
+    "title": "Druk 3d Kraków - LifeStyle Porady",
+    "desc": "Poniżej znajdziesz listę firm i pracowni oferujących usługi druku 3D – od prostych modeli po zaawansowane projekty techniczne. W ofercie dostępne są różne",
+    "h1": [
+     "H1: Druk 3d Kraków"
+    ],
+    "first": "Drukarki żywiczne SLA / MSLA",
+    "seoFirst": "Drukarki żywiczne SLA / MSLA",
+    "works": [
+     "Przegląd / konserwacja",
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "seoWorks": [
+     "Drukarki żywiczne SLA / MSLA"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Kalibracja i poziomowanie stołu": {
+    "было": 9,
+    "стало": 8,
+    "исключено": [
+     "kalibracja drukarki 3d krok po kroku"
+    ]
+   },
+   "подсказки: Wymiana / udrożnienie dyszy": {
+    "было": 3,
+    "стало": 2,
+    "исключено": [
+     "udrożnienie dyszy spryskiwaczy"
+    ]
+   },
+   "подсказки: Firmware / Klipper / Marlin": {
+    "было": 26,
+    "стало": 10,
+    "исключено": [
+     "klipper władysławowo",
+     "klipperscreen",
+     "klipper github",
+     "klipper minecraft",
+     "klipper tawerna",
+     "klipper vs marlin",
+     "klipper port",
+     "klipper cnc",
+     "kliper statek",
+     "klipper screen",
+     "marlin firmware download",
+     "marlin firmware github",
+     "marlin.firmware service",
+     "marlin firmware builder",
+     "marlin firmware configuration tool",
+     "marlin firmware guide"
+    ]
+   },
+   "общие подсказки: Kalibracja i poziomowanie stołu": {
+    "было": 8,
+    "стало": 7,
+    "исключено": [
+     "kalibracja drukarki 3d krok po kroku"
+    ]
+   },
+   "общие подсказки: Naprawa ekstrudera / hotendu": {
+    "было": 3,
+    "стало": 1,
+    "исключено": [
+     "drukarka 3d wielogłowicowa",
+     "drukarka 3d z 4 głowicami"
+    ]
+   },
+   "общие подсказки: Naprawa systemu AMS / Bambu Lab": {
+    "было": 23,
+    "стало": 7,
+    "исключено": [
+     "drukarka 3d bambu lab",
+     "drukarka 3d bambu lab a1",
+     "bambu lab a1",
+     "bambu lab a1 mini",
+     "bambu lab p2s",
+     "bambu lab p1s",
+     "bambu lab x2d",
+     "bambu lab h2d",
+     "drukarka 3d bambu",
+     "drukarka 3d bambu lab a1 mini",
+     "drukarka 3d bambu lab p2s combo",
+     "drukarka 3d bambu lab p1s",
+     "drukarka 3d bambu lab a1 combo",
+     "drukarka 3d bambu lab p2s",
+     "drukarka 3d bambu lab p1s combo",
+     "drukarka 3d bambu lab a1 mini wi-fi"
+    ]
+   },
+   "общие подсказки: Drukarki żywiczne SLA / MSLA": {
+    "было": 11,
+    "стало": 0,
+    "исключено": [
+     "drukarka 3d żywica",
+     "drukarka 3d na żywice",
+     "drukarka 3d sla",
+     "drukarka 3d żywiczna",
+     "drukarka 3d żywiczna czy filament",
+     "drukarka 3d żywiczna jak działa",
+     "drukarka 3d żywiczna cena",
+     "drukarka 3d żywiczna ranking",
+     "drukarka 3d żywica anycubic",
+     "drukarka 3d żywica olx",
+     "drukarka 3d żywica creality"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Przegląd / konserwacja",
+   "comp": {
+    "mention": 37,
+    "first": 16,
+    "seoFirst": 5,
+    "seo": 9,
+    "head": 7,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": {
+    "n": 3,
+    "cena": 0,
+    "ex": [
+     "konserwacja drukarki 3d",
+     "konserwacja drukarki 3d bambu lab",
+     "konserwacja drukarki 3d creality"
+    ]
+   },
+   "ads": {
+    "impr": 33,
+    "clicks": 1,
+    "conv": 0,
+    "n": 7,
+    "top": [
+     "konserwacja drukarki 3d",
+     "czyszczenie drukarki 3d",
+     "bambu lab p1s konserwacja",
+     "bambu lab a1 konserwacja"
+    ]
+   },
+   "xl": {
+    "n": 2,
+    "kp": 0,
+    "ex": [
+     "konserwacja drukarki 3d",
+     "konserwacja drukarek 3d"
+    ]
+   }
+  },
+  {
+   "work": "Drukarki żywiczne SLA / MSLA",
+   "comp": {
+    "mention": 28,
+    "first": 16,
+    "seoFirst": 10,
+    "seo": 12,
+    "head": 7,
+    "td": 7
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Firmware / Klipper / Marlin",
+   "comp": {
+    "mention": 27,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 1,
+   "probe": {
+    "n": 10,
+    "cena": 0,
+    "ex": [
+     "instalacja klippera",
+     "instalacja klipper",
+     "klipper ender 3",
+     "marlin firmware",
+     "marlin firmware ender 3"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja i poziomowanie stołu",
+   "comp": {
+    "mention": 25,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 6,
+    "head": 3,
+    "td": 5
+   },
+   "ac": 7,
+   "probe": {
+    "n": 8,
+    "cena": 0,
+    "ex": [
+     "kalibracja drukarki 3d",
+     "kalibracja drukarki 3d creality",
+     "kalibracja drukarki 3d ender 3",
+     "kalibracja drukarki 3d kostka",
+     "kalibracja drukarki 3d adventurer 4"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 2,
+    "kp": 0,
+    "ex": [
+     "3d printer bed leveling",
+     "bed leveling 3d printer"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa ekstrudera / hotendu",
+   "comp": {
+    "mention": 23,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 1,
+   "probe": {
+    "n": 13,
+    "cena": 0,
+    "ex": [
+     "wymiana hotendu bambu lab p1s",
+     "wymiana hotendu bambu lab p2s",
+     "wymiana hotendu bambu lab a1",
+     "wymiana hotendu p1s",
+     "wymiana hotendu kobra s1"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty głównej",
+   "comp": {
+    "mention": 20,
+    "first": 5,
+    "seoFirst": 2,
+    "seo": 7,
+    "head": 7,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Mechanika osi / paski / łożyska",
+   "comp": {
+    "mention": 20,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Modyfikacje / upgrade",
+   "comp": {
+    "mention": 16,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 3,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana / udrożnienie dyszy",
+   "comp": {
+    "mention": 15,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "wymiana dyszy drukarka 3d",
+     "zatkana dysza drukarka 3d"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa systemu AMS / Bambu Lab",
+   "comp": {
+    "mention": 14,
+    "first": 4,
+    "seoFirst": 5,
+    "seo": 8,
+    "head": 4,
+    "td": 7
+   },
+   "ac": 7,
+   "probe": {
+    "n": 21,
+    "cena": 0,
+    "ex": [
+     "serwis bambu lab",
+     "serwis bambu lab polska",
+     "serwis bambu lab warszawa",
+     "serwis bambu lab p1s",
+     "serwis bambu lab a1"
+    ]
+   },
+   "ads": {
+    "impr": 146,
+    "clicks": 17,
+    "conv": 1,
+    "n": 35,
+    "top": [
+     "serwis bambu lab",
+     "bambu lab serwis polska",
+     "bambu a1 maintenance",
+     "bambu lab a1 maintenance"
+    ]
+   },
+   "xl": {
+    "n": 3,
+    "kp": 0,
+    "ex": [
+     "serwis bambu lab",
+     "serwis bambulab",
+     "naprawa bambulab"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa stołu grzewczego",
+   "comp": {
+    "mention": 6,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Naprawa ekstrudera i hotendu",
+   "a": "Naprawa ekstrudera / hotendu",
+   "why": "23 конкурента, 13 подсказок; в прайсе «Naprawa ekstrudera», «Naprawa hotendu»",
+   "evidence": "конкуренты 23 из 67 (первой работой — 4, в Title/Description — 1) · подсказки Google 13 (напр. «wymiana hotendu bambu lab p1s», «wymiana hotendu bambu lab p2s»)"
+  },
+  {
+   "w": "Kalibracja",
+   "a": "Kalibracja i poziomowanie stołu",
+   "why": "25 конкурентов, 8 подсказок; 7 позиций калибровки в прайсе",
+   "evidence": "конкуренты 25 из 67 (первой работой — 3, в Title/Description — 5) · подсказки Google 8 (напр. «kalibracja drukarki 3d», «kalibracja drukarki 3d creality») · SEO-файл 2 фраз"
+  },
+  {
+   "w": "Konfiguracja Klippera",
+   "a": "Firmware / Klipper / Marlin",
+   "why": "27 конкурентов, 10 подсказок после очистки (убраны download/GitHub/KlipperScreen); в прайсе «Instalacja / konfiguracja Marlin lub Klipper»",
+   "evidence": "конкуренты 27 из 67 (первой работой — 4, в Title/Description — 1) · подсказки Google 10 (напр. «instalacja klippera», «instalacja klipper»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa drukarek SLA",
+   "a": "Drukarki żywiczne SLA / MSLA",
+   "why": "Решение пользователя 19.10 — подсказки 11→0 после очистки (все про покупку принтеров); остаётся 28 конкурентов, у 16 — первой работой. С формулировками-действиями 4-й работой не помещается",
+   "evidence": "конкуренты 28 из 67 (первой работой — 16, в Title/Description — 7)"
+  },
+  {
+   "w": "Bambu Lab / AMS",
+   "a": "Naprawa systemu AMS / Bambu Lab",
+   "why": "спорно: сильный спрос (7 подсказок после очистки, Ads 146/17/1), но это бренд — по ТЗ без брендов; можно добавить вместо «kalibracja», если разрешите",
+   "evidence": "конкуренты 14 из 67 (первой работой — 4, в Title/Description — 7) · подсказки Google 21 (напр. «serwis bambu lab», «serwis bambu lab polska») · Ads 146 показов / 17 кликов / 1 конв. · SEO-файл 3 фраз"
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «konfiguracja Klippera», ремонт SLA не ставить",
+  "Только 67 подходящих конкурентов из 151"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek 3D we Wrocławiu ✔ Naprawa ekstrudera i hotendu, kalibracja, konfiguracja Klippera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 159
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт 3D-принтерів у Вроцлаві ✔ Ремонт екструдера і хотенда, калібрування, налаштування Klipper ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 158
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт 3D-принтеров во Вроцлаве ✔ Ремонт экструдера и хотэнда, калибровка, настройка Klipper ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 153
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

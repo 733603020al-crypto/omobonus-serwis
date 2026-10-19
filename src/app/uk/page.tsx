@@ -3,9 +3,13 @@ import { HomePageTemplate } from '@/components/home-page-template'
 import { servicesUk } from '@/lib/services-data-uk'
 import { uk } from '@/lib/i18n/uk'
 
+// Meta, og:description i twitter:description — jeden zatwierdzony tekst (docs/seo/description-standard.md)
+const DESCRIPTION =
+  "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Ціну ремонту узгоджуємо до початку робіт ✔ Повний прайс без прихованих витрат ☎ 793 759 262"
+
 export const metadata: Metadata = {
   title: "Ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
-  description: "✔ Професійний ремонт і сервіс комп’ютерів, ноутбуків, принтерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Ціни на сайті ✔ Запишіться на сервіс вже сьогодні! ✔ Телефонуйте: 793 759 262",
+  description: DESCRIPTION,
   alternates: {
     canonical: "https://serwis.omobonus.com.pl/uk",
     languages: {
@@ -17,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Сервіс комп'ютерів, ноутбуків і принтерів Вроцлав | Omobonus",
-    description: "Професійний сервіс комп'ютерів, ноутбуків і принтерів у Вроцлаві. Ремонт обладнання, чесні ціни без прихованих витрат.",
+    description: DESCRIPTION,
     url: "https://serwis.omobonus.com.pl/uk",
     images: [
       {
@@ -27,6 +31,12 @@ export const metadata: Metadata = {
         alt: "Omobonus - професійний сервіс комп'ютерів, ноутбуків і принтерів у Вроцлаві",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Сервіс комп'ютерів, ноутбуків і принтерів Вроцлав | Omobonus",
+    description: DESCRIPTION,
+    images: ["/images/omobonus-hero.webp"],
   },
 }
 

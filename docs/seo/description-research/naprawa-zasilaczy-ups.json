@@ -1,0 +1,2355 @@
+{
+ "page": "/uslugi/naprawa-zasilaczy-ups",
+ "name": "UPS",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "naprawa ups",
+    "serwis zasilaczy ups",
+    "naprawa zasilaczy awaryjnych",
+    "naprawa ups cennik",
+    "serwis ups Warszawa",
+    "serwis ups Kraków",
+    "serwis ups Wrocław",
+    "serwis ups Poznań",
+    "serwis ups Gdańsk",
+    "serwis ups Łódź",
+    "serwis ups Katowice",
+    "serwis ups Szczecin",
+    "serwis ups Lublin",
+    "serwis ups Białystok",
+    "serwis ups Bydgoszcz",
+    "serwis ups Rzeszów",
+    "serwis ups Opole",
+    "serwis ups Toruń",
+    "serwis ups Kielce",
+    "serwis ups Olsztyn",
+    "serwis ups Gdynia",
+    "serwis ups Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "naprawa ups ",
+    "serwis ups ",
+    "zasilacz ups ",
+    "ups nie ",
+    "wymiana akumulatora ups ",
+    "ups apc "
+   ],
+   "uniqueSuggestions": 271,
+   "withPrice": [
+    "zasilacz ups cena",
+    "zasilacz ups ile kosztuje",
+    "zasilacz awaryjny ups ile kosztuje",
+    "zasilacz ups koszt"
+   ],
+   "wroclaw": [
+    "naprawa ups wrocław",
+    "serwis ups wrocław",
+    "ups nie włącza się po powrocie zasilania",
+    "zasilacz ups wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Wymiana akumulatorów": {
+    "seeds": [
+     "wymiana akumulatora ups",
+     "wymiana baterii w ups",
+     "akumulator do ups"
+    ],
+    "n": 18,
+    "nRaw": 18,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana akumulatora ups",
+     "wymiana akumulatora w ups green cell",
+     "wymiana akumulatora w ups apc",
+     "wymiana akumulatora w ups na większy",
+     "wymiana baterii w ups",
+     "wymiana baterii w ups apc",
+     "wymiana baterii w ups green cell",
+     "co ile wymiana baterii w ups",
+     "akumulator do ups",
+     "akumulator do ups 100ah"
+    ],
+    "all": [
+     "wymiana akumulatora ups",
+     "wymiana akumulatora w ups green cell",
+     "wymiana akumulatora w ups apc",
+     "wymiana akumulatora w ups na większy",
+     "wymiana baterii w ups",
+     "wymiana baterii w ups apc",
+     "wymiana baterii w ups green cell",
+     "co ile wymiana baterii w ups",
+     "akumulator do ups",
+     "akumulator do ups 100ah",
+     "akumulator do ups 12v",
+     "akumulator do ups 12v 9ah",
+     "akumulator do ups 200ah",
+     "akumulator do ups 12v 7ah",
+     "akumulator do ups volt",
+     "akumulator do ups 120ah",
+     "akumulator do ups 12v 100ah",
+     "akumulator do ups volt polska"
+    ],
+    "dropped": []
+   },
+   "Przegląd / konserwacja / test": {
+    "seeds": [
+     "przegląd ups",
+     "serwis ups",
+     "test ups"
+    ],
+    "n": 24,
+    "nRaw": 33,
+    "cena": 1,
+    "wroc": 1,
+    "ex": [
+     "przegląd ups",
+     "przegląd ups cena",
+     "przegląd ups protokół",
+     "przegląd ups warszawa",
+     "przegląd ups zakres",
+     "przegląd zasilacza ups",
+     "co ile przegląd ups",
+     "serwis ups wrocław",
+     "serwis ups",
+     "serwis ups apc"
+    ],
+    "all": [
+     "przegląd ups",
+     "przegląd ups cena",
+     "przegląd ups protokół",
+     "przegląd ups warszawa",
+     "przegląd ups zakres",
+     "przegląd zasilacza ups",
+     "co ile przegląd ups",
+     "serwis ups wrocław",
+     "serwis ups",
+     "serwis ups apc",
+     "serwis ups warszawa",
+     "serwis ups volt",
+     "serwis ups szczecin",
+     "serwis ups poznań",
+     "serwis ups rzeszów",
+     "serwis ups łódź",
+     "serwis ups kraków",
+     "serwis ups katowice",
+     "test ups",
+     "test ups battery",
+     "test ups battery with multimeter",
+     "test ups apc",
+     "test ups nut",
+     "test ups battery health"
+    ],
+    "dropped": [
+     [
+      "test upsc",
+      "другое устройство/тема"
+     ],
+     [
+      "test upsit",
+      "другое устройство/тема"
+     ],
+     [
+      "test ups tracking number",
+      "другое устройство/тема"
+     ],
+     [
+      "test upsi",
+      "другое устройство/тема"
+     ],
+     [
+      "upside down text",
+      "другое устройство/тема"
+     ],
+     [
+      "test ups label",
+      "другое устройство/тема"
+     ],
+     [
+      "test upstream",
+      "другое устройство/тема"
+     ],
+     [
+      "test ups account number",
+      "другое устройство/тема"
+     ],
+     [
+      "test ups shipping label",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Naprawa elektroniki / płyty": {
+    "seeds": [
+     "naprawa ups",
+     "naprawa zasilacza ups",
+     "ups nie włącza się"
+    ],
+    "n": 14,
+    "nRaw": 14,
+    "cena": 0,
+    "wroc": 2,
+    "ex": [
+     "naprawa ups",
+     "naprawa ups volt",
+     "naprawa ups łódź",
+     "naprawa ups białystok",
+     "naprawa ups kraków",
+     "naprawa ups warszawa",
+     "naprawa ups apc",
+     "naprawa ups wrocław",
+     "naprawa ups rzeszów",
+     "naprawa ups bydgoszcz"
+    ],
+    "all": [
+     "naprawa ups",
+     "naprawa ups volt",
+     "naprawa ups łódź",
+     "naprawa ups białystok",
+     "naprawa ups kraków",
+     "naprawa ups warszawa",
+     "naprawa ups apc",
+     "naprawa ups wrocław",
+     "naprawa ups rzeszów",
+     "naprawa ups bydgoszcz",
+     "naprawa zasilacza ups",
+     "ups nie włącza się po powrocie zasilania",
+     "ups nie włącza się",
+     "ups apc nie włącza się"
+    ],
+    "dropped": []
+   },
+   "Naprawa po przepięciu / burzy": {
+    "seeds": [
+     "ups po burzy",
+     "ups przepięcie"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wymiana kondensatorów": {
+    "seeds": [
+     "kondensatory ups"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "kondensatory ups"
+    ],
+    "all": [
+     "kondensatory ups"
+    ],
+    "dropped": []
+   },
+   "Wymiana wentylatorów": {
+    "seeds": [
+     "wentylator ups"
+    ],
+    "n": 1,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wentylator ups"
+    ],
+    "all": [
+     "wentylator ups"
+    ],
+    "dropped": [
+     [
+      "wentylator upsiren",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Utylizacja akumulatorów": {
+    "seeds": [
+     "utylizacja akumulatorów ups"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "utylizacja akumulatorów ups"
+    ],
+    "all": [
+     "utylizacja akumulatorów ups"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 2,
+   "impressions": 5,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "aristo com serwis drukarek i upsów",
+     "impr": 4,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "ups serwis",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 75,
+  "checked": 96,
+  "candidates": 134,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "ups.com",
+    "url": "https://www.ups.com/pl/pl/support/contact-us",
+    "title": "Skontaktuj się z nami | UPS - Polska",
+    "desc": "Uzyskaj odpowiedzi na wszystkie pytania, korzystając z usług naszego wirtualnego asystenta lub dzwoniąc na infolinię UPS – zależnie od tego, która opcja sprawdzi się najlepiej w przypadku konkretnej sprawy.",
+    "h1": [
+     "H1: Skontaktuj się z nami"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "aldatech.pl",
+    "url": "https://aldatech.pl/naprawa-urzadzen-zasilajacych/serwis-ups/",
+    "title": "Serwis UPS - Naprawa i Regeneracja Zasilaczy Awaryjnych | Aldatech",
+    "desc": "Aldatech ➤ Zaufaj profesjonalistom! ✔️ Serwis UPS oferuje kompleksową naprawę i regenerację zasilaczy awaryjnych. ✔️ Odzyskaj bezpieczeństwo już teraz!",
+    "h1": [
+     "H1: Serwis UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "midaserwis.pl",
+    "url": "https://www.midaserwis.pl/",
+    "title": "MidaSerwis - zasilanie awaryjne UPS",
+    "desc": "Serwis i montaż zasilaczy awaryjnych UPS. Kompensatory mocy biernej",
+    "h1": [
+     "H1: Sklep Internetowy MidaSerwis",
+     "H1: Naprawa zasilaczy awaryjnych UPS"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Naprawa po przepięciu / burzy",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "godzinyotwarcia24.pl",
+    "url": "https://godzinyotwarcia24.pl/Ups-Katowice-RgMbDd",
+    "title": "ᐅ Godziny otwarcia „UPS“ | Bolesława Chrobrego 2 w Katowice",
+    "desc": "GODZINY OTWARCIA UPS ➤ Bolesława Chrobrego 2, 40-881 Katowice ☎ Numer telefonu ✔ Godziny otwarcia ✔ Dane kontaktowe ✔ Dojazd ★ Oferty w pobliżu. Zobacz!",
+    "h1": [
+     "H1: UPS"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Szczecin",
+     "Lublin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "punktykurierskie.pl",
+    "url": "https://www.punktykurierskie.pl/przesylki-Katowice-oddzia%C5%81-ups-katowice-13",
+    "title": "Kurier | Katowice | ODDZIAŁ UPS KATOWICE",
+    "desc": "Najbliższy punkt kurierski w 40-650 Katowice - ODDZIAŁ UPS KATOWICE, przesyłki kurierskie - aktualna lista punktów przyjęć, w których możesz tanio nadać paczkę.",
+    "h1": [
+     "H1: Punkt przyjęć przesyłek kurierskich UPS | Katowice"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Lublin",
+     "Bydgoszcz",
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwis-ups.pl",
+    "url": "https://www.serwis-ups.pl/",
+    "title": "POWER UPS | Serwis zasilaczy awaryjnych",
+    "desc": "",
+    "h1": [
+     "H1: Strona główna"
+    ],
+    "first": "Karta sieciowa / SNMP / komunikacja",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Olsztyn",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "jakimkurierem.pl",
+    "url": "https://www.jakimkurierem.pl/kontakt-z-kurierem-ups/",
+    "title": "Kontakt z kurierem UPS, infolinia, numer telefonu [2026] ⋆ JakimKurierem.pl",
+    "desc": "Sprawdź numer telefonu kuriera UPS oraz inne formy kontaktu. Lista wszystkich oddziałów przewoźnika UPS.",
+    "h1": [
+     "H1: Kontakt z kurierem UPS, infolinia, numer telefonu [2026]"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Poznań",
+     "Katowice",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "ups-naprawa.pl",
+    "url": "https://ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych. Oferujemy sprzedaż i wymianę baterii w UPS. Kalibracja oraz profesjonalny serwis zasilaczy UPS.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "aid-serwis.com.pl",
+    "url": "https://www.aid-serwis.com.pl/naprawa-zasilaczy-awaryjnych-ups/",
+    "title": "Zasilacze awaryjne UPS - diagnostyka i naprawa - A&D Serwis",
+    "desc": "Zasilacz bezprzerwowy to gwarancja nieprzerwanej pracy urządzeń nawet w razie braku prądu - w A&D Serwis naprawiamy UPS'y w specjalistycznym laboratorium.",
+    "h1": [
+     "H1: Naprawa zasilaczy awaryjnych UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "rgbelektronika.pl",
+    "url": "https://rgbelektronika.pl/naprawa-zasilaczy-ups/",
+    "title": "Naprawa zasilaczy UPS i serwis UPS | RGB Elektronika",
+    "desc": "Naprawa i serwis zasilaczy UPS: diagnostyka, wymiana baterii, naprawa elektroniki, testy obciążeniowe i przeglądy. Wrocław i cała Polska.",
+    "h1": [
+     "H1: Naprawa zasilaczy UPS"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "Naprawa elektroniki / płyty",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Wymiana kondensatorów",
+     "Wymiana wentylatorów",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Bypass"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "gtups.pl",
+    "url": "https://gtups.pl/serwis",
+    "title": "SERWIS PRZEGLĄD NAPRAWA UPS - Zasilaczy Awaryjnych - GT UPS",
+    "desc": "Wykonujemy naprawy oraz przeglądy wszystkich UPS-ów marki GT i nie tylko.",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "energy-lab.com.pl",
+    "url": "https://energy-lab.com.pl/serwis-zasilaczy-awaryjnych/serwis-ups/",
+    "title": "Serwis zasilaczy UPS - Energy Lab",
+    "desc": "Naprawa zasilacza awaryjnego UPS Nasza firma specjalizuje się w naprawie i konserwacji zasilaczy awaryjnych „UPS”.Dział serwisu zapewnia też udzielanie Użytkownikom wsparcia technicznego w zakresie rozwiązywania problemów związanych z funkcjonowaniem sprzętu. Aby wywiązać się z zadania szybkiego usunięcia skutków awari",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Poznań",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "itech-serwis.pl",
+    "url": "https://itech-serwis.pl/elektronika-przemyslowa-wroclaw/zasilacz-naprawa/",
+    "title": "Naprawa zasilaczy awaryjnych UPS | Wrocław Serwis iTECH",
+    "desc": "Naprawa zasilaczy awaryjnych UPS w iTECH Wrocław - Specjalistyczny serwis oferujący kompleksowe usługi naprawy zasilaczy różnych marek, jak Delta Electronics, Mean Well, TDK-Lambda...",
+    "h1": [
+     "H1: 783-929-915",
+     "H1: Serwis zasilaczy przemysłowych"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Wymiana kondensatorów",
+     "Wymiana wentylatorów",
+     "Naprawa po przepięciu / burzy",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów",
+     "Wymiana wentylatorów",
+     "Naprawa po przepięciu / burzy",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "laserservice.pl",
+    "url": "https://laserservice.pl/serwis/naprawa-ups/",
+    "title": "Serwis naprawa zasilaczy awaryjnych UPS",
+    "desc": "Specjalistyczne naprawy zasilaczy UPS, Warszawa",
+    "h1": [
+     "H1: Naprawa UPS",
+     "H1: Naprawa UPS"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "Naprawa elektroniki / płyty",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pogotowiedlaprzemyslu.pl",
+    "url": "https://pogotowiedlaprzemyslu.pl/naprawa-zasilaczy-ups/",
+    "title": "Naprawa zasilaczy UPS | Serwis zasilaczy awaryjnych",
+    "desc": "Profesjonalny serwis i naprawa zasilaczy UPS – diagnoza, wymiana baterii, regeneracja podzespołów. Naprawiamy UPS różnych marek. Szybka obsługa!",
+    "h1": [
+     "H1: Naprawa zasilaczy UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów"
+    ],
+    "city": []
+   },
+   {
+    "host": "zasilanie-serwis.pl",
+    "url": "https://zasilanie-serwis.pl/serwis-zasilaczy-awaryjnych/",
+    "title": "Serwis zasilaczy awaryjnych. Niskie ceny i profesjonalna obsługa.",
+    "desc": "Naprawa, przeglądy i regularne konserwacje zasilaczy awaryjnych - UPS. Wymiany i testy baterii w UPS. Fachowa pomoc przy eksploatacji zasilaczy awaryjnych.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": []
+   },
+   {
+    "host": "kurjerzy.pl",
+    "url": "https://www.kurjerzy.pl/blog/oddzialy/ups-szczecin/",
+    "title": "UPS Szczecin | KurJerzy.pl",
+    "desc": "UPS Szczecin",
+    "h1": [
+     "H1: UPS Szczecin"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Szczecin",
+     "Toruń",
+     "Kielce",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "plcontroll.com",
+    "url": "https://plcontroll.com/naprawa-zasilaczy-ups/",
+    "title": "Serwis UPS - Naprawa zasilaczy, wymiana baterii i testy",
+    "desc": "Serwis UPS - naprawa zasilaczy awaryjnych, problemy z podtrzymaniem zasilania. Wymiana baterii i testy. Szybka wycena i realne terminy.",
+    "h1": [
+     "H1: Naprawa zasilaczy UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Wymiana kondensatorów",
+     "Wymiana wentylatorów",
+     "Naprawa po przepięciu / burzy",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": []
+   },
+   {
+    "host": "wroclaw.ups-naprawa.pl",
+    "url": "https://wroclaw.ups-naprawa.pl/kontakt/",
+    "title": "Informacje kontaktowe z serwisem zasilaczy UPS we Wrocławiu",
+    "desc": "Serwis zasilaczy awaryjnych - UPS Wrocław. Pracujemy od poniedziałku do piątku oraz soboty. Oferujemy profesjonalne podejście do klienta, dogodne terminy napraw. Zapraszam do kontaktu mailowego i telefonicznego: 502-599-134. Naprawa ups, wymiana baterii w ups, przeglądy ups.",
+    "h1": [],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "nano-serwis.pl",
+    "url": "https://nano-serwis.pl/uslugi/naprawa-zasilaczy-ups/",
+    "title": "⚡ Profesjonalna i skuteczna naprawa zasilaczy UPS | Nano-Serwis",
+    "desc": "Nasz serwis specjalizuje się we wszelkiego rodzaju naprawach zasilaczy UPS we Wrocławiu. Wymieniamy złączki, układy BGA, czy obwody drukowane. Zapraszamy!",
+    "h1": [
+     "H1: Naprawa zasilaczy UPS Wrocław"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Wymiana kondensatorów",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/zasilaczy-awaryjnych-ups.html",
+    "title": "Cennik serwisu zasilaczy awaryjnych UPS – Poldruk",
+    "desc": "{slider } {slider  Sprawdź Cennik serwisu zasilaczy awaryjnych APC }    Cennik serwisu zasilaczy",
+    "h1": [
+     "H1: Cennik serwisu zasilaczy awaryjnych UPS"
+    ],
+    "first": "Naprawa elektroniki / płyty",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "eta.com.pl",
+    "url": "https://www.eta.com.pl/blog/naprawa-ups-kluczowe-aspekty-i-normy-bezpieczenstwa",
+    "title": "Naprawa UPS – kluczowe aspekty i normy bezpieczeństwa",
+    "desc": "Dowiedz się, jak naprawa UPS wpływa na bezpieczeństwo i ciągłość zasilania. Sprawdź kluczowe normy i wybierz odpowiedni serwis.",
+    "h1": [
+     "H1: Naprawa UPS – kluczowe aspekty i normy bezpieczeństwa"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "wroclaw.zasilanie-serwis.pl",
+    "url": "https://wroclaw.zasilanie-serwis.pl/serwis-zasilaczy-awaryjnych/",
+    "title": "Serwis zasilaczy awaryjnych we Wrocławiu. Niskie ceny i profesjonalna obsługa.",
+    "desc": "Naprawa, przeglądy i regularne konserwacje zasilaczy awaryjnych - UPS na terenie Wrocławia i okolic. Wymiany i testy baterii w UPS. Szybka i fachowa pomoc przy obsłudze i eksploatacji zasilaczy awaryjnych. Wykonywanie ekspertyz technicznych.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "cityon.pl",
+    "url": "https://cityon.pl/miejsce/ups-ul-kochanowskiego-19-21a-torun",
+    "title": "UPS, Kochanowskiego 19&#x2F;21A – Toruń",
+    "desc": "UPS, ul. Kochanowskiego 19/21A, Toruń, Usługi kurierskie. Dzielnica Bydgoskie Przedmieście. Adres i dojazd.",
+    "h1": [
+     "H1: UPS , ul. Kochanowskiego 19/21A, Bydgoskie Przedmieście, Toruń"
+    ],
+    "first": "Karta sieciowa / SNMP / komunikacja",
+    "seoFirst": "Karta sieciowa / SNMP / komunikacja",
+    "works": [
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "city": [
+     "Toruń",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "power-serwis.pl",
+    "url": "https://power-serwis.pl/",
+    "title": "Power Serwis - naprawa zasilaczy UPS, akumulatory bezobsługowe, wymiana akumulatorów",
+    "desc": "Zajmujemy sie naprawš zasilaczy UPS, zasilaczy do serwerów, wymieniamy baterie, naprawiamy elektronikę profesjonalnę i przemysłowę.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": []
+   },
+   {
+    "host": "warszawa.ups-naprawa.pl",
+    "url": "https://warszawa.ups-naprawa.pl/serwis-zasilaczy-ups/",
+    "title": "Naprawa i profesjonalny serwis zasilaczy awaryjnych UPS w Warszawie",
+    "desc": "Zapraszam do skorzystania z usług serwisu UPS. Serwis zasilaczy UPS w Warszawie wykonuje naprawy wszystkich marek zasilaczy awaryjnych UPS. Kalibracja modułów bateryjnych, wymiana baterii, przeglądy techniczne zasilaczy, okresowa konserwacja, serwis podzespołów UPS, uruchomienie UPS, sprzedaż zasilaczy.",
+    "h1": [],
+    "first": "Naprawa falownika / prostownika",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Naprawa po przepięciu / burzy",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "krakow.ups-naprawa.pl",
+    "url": "https://krakow.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Kraków",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Krakowie. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "ever.eu",
+    "url": "https://ever.eu/serwis-ever-serwis-ups-poznan2/",
+    "title": "Serwis UPS Poznań | Autoryzowany Serwis EVER",
+    "desc": "Serwis UPS Poznań – naprawa zasilaczy EVER. Szybka diagnoza, oryginalne części i gwarancja. Zgłoś usterkę online lub telefonicznie!",
+    "h1": [
+     "H1: serwis UPS Poznań"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "katowice.zasilanie-serwis.pl",
+    "url": "https://katowice.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Katowicach. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "lublin.ups-naprawa.pl",
+    "url": "https://lublin.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Lublin",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Lublinie. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "bialystok.ups-naprawa.pl",
+    "url": "https://bialystok.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Białystok",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Białymstoku. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "enter.bydgoszcz.pl",
+    "url": "https://enter.bydgoszcz.pl/zasilacze-ups",
+    "title": "ENTER » Zasilacze UPS",
+    "desc": "",
+    "h1": [],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "rzeszow.ups-naprawa.pl",
+    "url": "https://rzeszow.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Rzeszów",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Rzeszowie. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "opole.ups-naprawa.pl",
+    "url": "https://opole.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Opole",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Opolu. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "kielce.ups-naprawa.pl",
+    "url": "https://kielce.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Kielce",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Kielcach. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "olsztyn.zasilanie-serwis.pl",
+    "url": "https://olsztyn.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Olsztynie. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "gdynia.ups-naprawa.pl",
+    "url": "https://gdynia.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Gdynia",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Gdyni. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "lodz.ups-naprawa.pl",
+    "url": "https://lodz.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Łódź",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Łodzi. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "serwis-ups.poldruk.com",
+    "url": "https://serwis-ups.poldruk.com/",
+    "title": "Serwis Zasilaczy UPS APC Ever, Fideltronik Śląsk Katowice Centrum Rafcom",
+    "desc": "Wymieniamy baterie, testujemy i kalibrujemy, serwisujemy elektronikę. Wykonujemy Przeglądy Okresowe, Katowice DZWOŃ ☎ 32 2564959 Pomożemy!",
+    "h1": [
+     "H1: Nasz Zespół od Lat Podejmuje Trudne Wyzwania"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów",
+     "Wymiana wentylatorów",
+     "Naprawa po przepięciu / burzy",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "szczecin.ups-naprawa.pl",
+    "url": "https://szczecin.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Szczecin",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Szczecinie. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "bydgoszcz.ups-naprawa.pl",
+    "url": "https://bydgoszcz.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Bydgoszcz",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Bydgoszczy. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "ener-tech.pl",
+    "url": "https://ener-tech.pl/serwis-zasilaczy-ups-kielce/",
+    "title": "Serwis zasilaczy UPS Kielce - Fachowe naprawy ENER-TECH",
+    "desc": "Chcesz być pewny ciągłego działania Twoich urządzeń? Zapewniamy serwis, konserwację oraz przeglądy różnych rodzaji zasilaczy awaryjnych UPS.",
+    "h1": [
+     "H1: Serwis zasilaczy UPS Kielce"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "olsztyn.ups-naprawa.pl",
+    "url": "https://olsztyn.ups-naprawa.pl/serwis-zasilaczy-ups/",
+    "title": "Naprawa i profesjonalny serwis zasilaczy awaryjnych UPS w Olsztynie",
+    "desc": "Zapraszam do skorzystania z usług serwisu UPS. Serwis zasilaczy UPS w Olsztynie wykonuje naprawy wszystkich marek zasilaczy awaryjnych UPS. Kalibracja modułów bateryjnych, wymiana baterii, przeglądy techniczne zasilaczy, okresowa konserwacja, serwis podzespołów UPS, uruchomienie UPS, sprzedaż zasilaczy.",
+    "h1": [],
+    "first": "Naprawa falownika / prostownika",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Naprawa po przepięciu / burzy",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "gdynia.zasilanie-serwis.pl",
+    "url": "https://gdynia.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Gdyni. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "czestochowa.ups-naprawa.pl",
+    "url": "https://czestochowa.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Częstochowa",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Częstochowie. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "dacpol.eu",
+    "url": "https://www.dacpol.eu/pl/Baza-Wiedzy/wpis/naprawa-ups-najczestsze-awarie-diagnostyka-i-kiedy-warto-rozwazyc-serwis.html",
+    "title": "Naprawa UPS – najczęstsze awarie, diagnostyka i kiedy warto rozważyć serwis",
+    "desc": "Naprawa UPS – poznaj najczęstsze awarie, metody diagnostyki, problemy z akumulatorami oraz sprawdź, kiedy serwis jest bardziej opłacalny niż wymiana urządzenia.",
+    "h1": [
+     "H1: Naprawa UPS – najczęstsze awarie, diagnostyka i kiedy warto rozważyć serwis"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Wymiana wentylatorów",
+     "Naprawa po przepięciu / burzy",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Naprawa układu ładowania",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa układu ładowania"
+    ],
+    "city": []
+   },
+   {
+    "host": "aristo.com.pl",
+    "url": "https://aristo.com.pl/serwis-upsow/",
+    "title": "&#x1f6e0; Serwis upsów Kraków. Naprawa APC, Fideltronik, Mustek, Orvaldi",
+    "desc": "Naprawa upsów Kraków. Serwis upsów APC, Fideltronik, Ever, Powerware, Greencell, Eaton i innych. Wymiana baterii, kalibracja, naprawa uszkodzeń elektroniki.",
+    "h1": [
+     "H1: Serwis i naprawa zasilaczy UPS w Krakowie – wymiana akumulatorów i kalibracja"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "gdansk.ups-naprawa.pl",
+    "url": "https://gdansk.ups-naprawa.pl/serwis-zasilaczy/",
+    "title": "Serwis zasilaczy awaryjnych UPS w Gdańsku - UPS-Naprawa",
+    "desc": "Serwisujemy ups różnych producentów w Gdańsku i zawsze dajemy gwarancję najwyższej jakości wykonanych usług oraz dostępność części zamiennych wyłącznie renomowanych producentów. Wymiana części zamiennych w UPS, wymiana kondensatorów, montaż przełączników Bypass, kalibracja zasilaczy awaryjnych.",
+    "h1": [],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana kondensatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "katowice.ups-naprawa.pl",
+    "url": "https://katowice.ups-naprawa.pl/serwis-zasilaczy/",
+    "title": "Serwis zasilaczy awaryjnych UPS w Katowicach - UPS-Naprawa",
+    "desc": "Serwisujemy ups różnych producentów w Katowicach i zawsze dajemy gwarancję najwyższej jakości wykonanych usług oraz dostępność części zamiennych wyłącznie renomowanych producentów. Wymiana części zamiennych w UPS, wymiana kondensatorów, montaż przełączników Bypass, kalibracja zasilaczy awaryjnych.",
+    "h1": [],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana kondensatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "bezprzerw.pl",
+    "url": "https://bezprzerw.pl/serwis",
+    "title": "Serwis UPS, agregatów i ATS 24/7 — SLA od 2 h | Lublin",
+    "desc": "Serwis 24/7: naprawy UPS, agregatów, ATS/SZR i magazynów energii. SLA Premium 2–4 h w lubelskim, podkarpackim, podlaskim, mazowieckim i świętokrzyskim. Części na magazynie.",
+    "h1": [
+     "H1: Serwis, który jedzie , gdy zadzwonisz"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Karta sieciowa / SNMP / komunikacja",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "bialystok.zasilanie-serwis.pl",
+    "url": "https://bialystok.zasilanie-serwis.pl/serwis-zasilaczy-awaryjnych/",
+    "title": "Serwis zasilaczy awaryjnych w Białymstoku. Niskie ceny i profesjonalna obsługa.",
+    "desc": "Naprawa, przeglądy i regularne konserwacje zasilaczy awaryjnych - UPS na terenie Białegostoku i okolic. Wymiany i testy baterii w UPS. Szybka i fachowa pomoc przy obsłudze i eksploatacji zasilaczy awaryjnych. Wykonywanie ekspertyz technicznych.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "bydgoszcz.zasilanie-serwis.pl",
+    "url": "https://bydgoszcz.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Bydgoszczy. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "rzeszow.zasilanie-serwis.pl",
+    "url": "https://rzeszow.zasilanie-serwis.pl/serwis-zasilaczy-awaryjnych/",
+    "title": "Serwis zasilaczy awaryjnych w Rzeszowie. Niskie ceny i profesjonalna obsługa.",
+    "desc": "Naprawa, przeglądy i regularne konserwacje zasilaczy awaryjnych - UPS na terenie Rzeszowa i okolic. Wymiany i testy baterii w UPS. Szybka i fachowa pomoc przy obsłudze i eksploatacji zasilaczy awaryjnych. Wykonywanie ekspertyz technicznych.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "opole.zasilanie-serwis.pl",
+    "url": "https://opole.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Opolu. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "torun.ups-naprawa.pl",
+    "url": "https://torun.ups-naprawa.pl/",
+    "title": "Naprawa i serwis zasilaczy awaryjnych (UPS) | UPS-naprawa Toruń",
+    "desc": "Naprawa zasilaczy awaryjnych - UPS. Dokonujemy przeglądów okresowych oraz doraźnych zasilaczy. Oferujemy sprzedaż i wymianę baterii w atrakcyjnych cenach. Kalibracja oraz profesjonalny serwis zasilaczy UPS w Toruniu. Sprzedaż i naprawy pogwarancyjne wszystkich modeli UPS i o każdej pojemności.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Utylizacja akumulatorów"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "kielce.zasilanie-serwis.pl",
+    "url": "https://kielce.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Kielcach. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "gdansk.zasilanie-serwis.pl",
+    "url": "https://gdansk.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Gdańsku. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "lodz.zasilanie-serwis.pl",
+    "url": "https://lodz.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Łodzi. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "krakow.zasilanie-serwis.pl",
+    "url": "https://krakow.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Krakowie. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "szczecin.zasilanie-serwis.pl",
+    "url": "https://szczecin.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Szczecinie. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "lublin.zasilanie-serwis.pl",
+    "url": "https://lublin.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Lublinie. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "poznan.ups-naprawa.pl",
+    "url": "https://poznan.ups-naprawa.pl/serwis-zasilaczy/",
+    "title": "Serwis zasilaczy awaryjnych UPS w Poznaniu - UPS-Naprawa",
+    "desc": "Serwisujemy ups różnych producentów w Poznaniu i zawsze dajemy gwarancję najwyższej jakości wykonanych usług oraz dostępność części zamiennych wyłącznie renomowanych producentów. Wymiana części zamiennych w UPS, wymiana kondensatorów, montaż przełączników Bypass, kalibracja zasilaczy awaryjnych.",
+    "h1": [],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana kondensatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana kondensatorów",
+     "Bypass"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "softel.ipr.pl",
+    "url": "https://softel.ipr.pl/ponadto/",
+    "title": "Serwis zasilaczy UPS, Ekspertyzy, Pomiary, Ocena stanu systemów - ekspertyzy informatyczne",
+    "desc": "Doradztwo z zakresu doboru systemów zasilania UPS, Oceny stanu systemów zasilania UPS, Pomiary certyfikacyjne baterii akumulatorów do zasilaczy UPS, Ekspertyzy z zakresu informatyki",
+    "h1": [
+     "H1: Softel Sp. z o.o. (Rzeszów) Naprawa oraz sprzedaż zasilaczy UPS; Sprzedaż oraz instalacja akumulatorów do zasilaczy UPS; Naprawa rzutników m",
+     "H1: Polityka dotycząca plików cookies"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "czestochowa.zasilanie-serwis.pl",
+    "url": "https://czestochowa.zasilanie-serwis.pl/",
+    "title": "Serwis zasilaczy ups w Częstochowie. Serwis pogwarancyjny, wymiana baterii w UPS.",
+    "desc": "Nasza firma specjalizuje się w naprawach zasilaczy awaryjnych zwanych też popularnie UPS-ami. Serwis pogwarancyjny zasilaczy awaryjnych o każdej pojemności. Wymiana baterii w UPS.",
+    "h1": [
+     "H1: Serwis zasilania awaryjnego"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/serwis-ups.php",
+    "title": "Serwis Ups Naprawa Zasilaczy UPS EVER APC LG TRUST Wymiana Baterii Ups Katowice Sosnowiec Bytom Serwis Zasilaczy",
+    "desc": "Serwis Ups Naprawa Zasilaczy Ups Wymiana Baterii Ups Ever Apc Lg Trust Katowice Sosnowiec Bytom Serwis Zasilaczy Mikołów Tychy Chorzów Czeladź Ruda Śląska Zabrze Śląsk Świętochłowice Chorzów Siemianowice",
+    "h1": [
+     "H1: Serwis Ups Naprawa Zasilaczy UPS EVER APC LG TRUST Wymiana Baterii Ups Katowice Sosnowiec Bytom Serwis Zasilaczy"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "serv4b.pl",
+    "url": "https://www.serv4b.pl/serwis-systemow-zasilania-gwarantowanego-ups",
+    "title": "Serwis systemów zasilania gwarantowanego UPS - SERV4B Rzeszów - outsourcing IT, wsparcie informatyczne dla biznesu",
+    "desc": "Serwis systemów UPS w SERV4B to kompleksowa opieka nad zasilaniem gwarantowanym dla infrastruktury IT. Zapewniamy konserwację, testy, diagnostykę i - SERV4B Sp. z o.o. oferuje profesjonalne usługi IT dla firm — wdrożenia systemów ERP, outsourcing IT, audyty i kompleksową obsługę infrastruktury. Skorzystaj z doświadczen",
+    "h1": [
+     "H1: Serwis systemów zasilania gwarantowanego UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "warszawa.zasilanie-serwis.pl",
+    "url": "https://warszawa.zasilanie-serwis.pl/serwis-zasilaczy-awaryjnych/",
+    "title": "Serwis zasilaczy awaryjnych w Warszawie. Niskie ceny i profesjonalna obsługa.",
+    "desc": "Naprawa, przeglądy i regularne konserwacje zasilaczy awaryjnych - UPS na terenie Warszawy i okolic. Wymiany i testy baterii w UPS. Szybka i fachowa pomoc przy obsłudze i eksploatacji zasilaczy awaryjnych. Wykonywanie ekspertyz technicznych.",
+    "h1": [],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "magicservice.pl",
+    "url": "https://magicservice.pl/uslugi/serwis-ups",
+    "title": "Serwis UPS - Magic Service",
+    "desc": "",
+    "h1": [
+     "H1: Serwis UPS",
+     "H1: Dlaczego warto nam zaufać?"
+    ],
+    "first": "Naprawa po przepięciu / burzy",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Naprawa po przepięciu / burzy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "unikom.pl",
+    "url": "https://unikom.pl/naprawa-zasilaczy-ups/",
+    "title": "Naprawa zasilaczy UPS Poznań - Serwis Unikom",
+    "desc": "Szybka i skuteczna naprawa zasilaczy UPS w Poznaniu ✔️ Dzięki ponad 20 letniemu doświadczeniu na pewno rozwiążemy Twój problem. Zadzwoń teraz!",
+    "h1": [
+     "H1: UNIKOM",
+     "H1: Naprawa zasilaczy UPS Poznań"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana kondensatorów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "trak.com.pl",
+    "url": "https://www.trak.com.pl/naprawa-zasilaczy-ups/",
+    "title": "Naprawa zasilaczy awaryjnych UPS, serwis, przegląd - Poznań – TRAK S.J.",
+    "desc": "Serwis i naprawa UPS — Poznań i Warszawa. Konserwacja, testy, wymiana baterii. TRAK: szybka realizacja, pełna gwarancja, zadowoleni Klienci! ⚡",
+    "h1": [
+     "H1: Serwis i naprawa zasilaczy UPS Poznań Warszawa"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Naprawa falownika / prostownika",
+     "Naprawa układu ładowania"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "online.com.pl",
+    "url": "https://online.com.pl/",
+    "title": "Naprawa drukarek, ploterów, zasilaczy UPS, skanerów - Online Bydgoszcz",
+    "desc": "sprzedaż, serwis, naprawa, drukarek, ploterów, urządzeń wielofunkcyjnych, laptopów, skanerów, zasilaczy awaryjnych ups oraz kompleksowe rozwiązania do drukowania w firmach i instytucjach - Online Bydgoszcz",
+    "h1": [],
+    "first": "Karta sieciowa / SNMP / komunikacja",
+    "seoFirst": "",
+    "works": [
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "anmaro.pl",
+    "url": "https://anmaro.pl/",
+    "title": "Zasilanie awaryjne UPS – zasilacze, akumulatory i serwis | ANMARO",
+    "desc": "ANMARO – zasilanie awaryjne UPS do domu, serwerów i szpitali. Zasilacze bezprzerwowe, akumulatory do UPS, zasilanie rezerwowe, serwis i dobór systemów.",
+    "h1": [
+     "H1: ANMARO"
+    ],
+    "first": "Wymiana akumulatorów",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Karta sieciowa / SNMP / komunikacja"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "serwis.zsk.pl",
+    "url": "https://serwis.zsk.pl/serwis-zasilaczy-awaryjnych-ups/",
+    "title": "Serwis zasilaczy awaryjnych UPS – SERWIS ZSK Sp. z o.o.",
+    "desc": "",
+    "h1": [
+     "H1: Serwis zasilaczy awaryjnych UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "biuroservice.com.pl",
+    "url": "https://biuroservice.com.pl/naprawa-zasilaczy-ups/",
+    "title": "Biuro-Service - serwis i naprawa zasilaczy ups w Poznaniu",
+    "desc": "Serwis zasilaczy awaryjnych w Poznaniu. Roczne i półroczne przeglądy ups. Wymiana wentylatorów i baterii w UPS. Regularne konserwacje zasilaczy awaryjnych w Poznaniu. Skorzystaj z profesjonalnego serwisu UPS. Diagnostyka i wycena naprawy UPS w Poznaniu.",
+    "h1": [
+     "H1: Serwis UPS"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Przegląd / konserwacja / test",
+    "works": [
+     "Wymiana akumulatorów",
+     "Naprawa elektroniki / płyty",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów",
+     "Bypass"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test",
+     "Wymiana wentylatorów"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwis-upsow.pl",
+    "url": "https://www.serwis-upsow.pl/",
+    "title": "Serwis upsów w Krakowie",
+    "desc": "Serwis upsów w Krakowie. Wymiana akumulatorów, konserwacje, regulacje, naprawy specjalistyczne. Naprawiamy upsy wszystkich producentów, oferujemy krótkie terminy napraw i przystępne ceny",
+    "h1": [
+     "H1: SERWIS UPSÓW"
+    ],
+    "first": "Przegląd / konserwacja / test",
+    "seoFirst": "Wymiana akumulatorów",
+    "works": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "seoWorks": [
+     "Wymiana akumulatorów",
+     "Przegląd / konserwacja / test"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Przegląd / konserwacja / test": {
+    "было": 33,
+    "стало": 24,
+    "исключено": [
+     "test upsc",
+     "test upsit",
+     "test ups tracking number",
+     "test upsi",
+     "upside down text",
+     "test ups label",
+     "test upstream",
+     "test ups account number",
+     "test ups shipping label"
+    ]
+   },
+   "подсказки: Wymiana wentylatorów": {
+    "было": 2,
+    "стало": 1,
+    "исключено": [
+     "wentylator upsiren"
+    ]
+   },
+   "общие подсказки: Wymiana akumulatorów": {
+    "было": 12,
+    "стало": 7,
+    "исключено": [
+     "zasilacz ups z akumulatorem",
+     "zasilacz ups bez akumulatora",
+     "zasilacz ups bateria",
+     "zasilacz ups z wbudowanym akumulatorem",
+     "zasilacz ups z baterią"
+    ]
+   },
+   "общие подсказки: Naprawa falownika / prostownika": {
+    "было": 2,
+    "стало": 0,
+    "исключено": [
+     "zasilacz ups cyberpower cp1600epfclcd 1600va 1000w",
+     "zasilacz ups cyberpower cp1350epfclcd 1350va 810w"
+    ]
+   },
+   "общие подсказки: Karta sieciowa / SNMP / komunikacja": {
+    "было": 2,
+    "стало": 1,
+    "исключено": [
+     "zasilacz ups do monitoringu"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Przegląd / konserwacja / test",
+   "comp": {
+    "mention": 68,
+    "first": 48,
+    "seoFirst": 27,
+    "seo": 48,
+    "head": 34,
+    "td": 32
+   },
+   "ac": 0,
+   "probe": {
+    "n": 24,
+    "cena": 1,
+    "ex": [
+     "przegląd ups",
+     "przegląd ups cena",
+     "przegląd ups protokół",
+     "przegląd ups warszawa",
+     "przegląd ups zakres"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana akumulatorów",
+   "comp": {
+    "mention": 65,
+    "first": 14,
+    "seoFirst": 25,
+    "seo": 48,
+    "head": 9,
+    "td": 46
+   },
+   "ac": 7,
+   "probe": {
+    "n": 18,
+    "cena": 0,
+    "ex": [
+     "wymiana akumulatora ups",
+     "wymiana akumulatora w ups green cell",
+     "wymiana akumulatora w ups apc",
+     "wymiana akumulatora w ups na większy",
+     "wymiana baterii w ups"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty",
+   "comp": {
+    "mention": 37,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 7,
+    "head": 4,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": {
+    "n": 14,
+    "cena": 0,
+    "ex": [
+     "naprawa ups",
+     "naprawa ups volt",
+     "naprawa ups łódź",
+     "naprawa ups białystok",
+     "naprawa ups kraków"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Karta sieciowa / SNMP / komunikacja",
+   "comp": {
+    "mention": 15,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Bypass",
+   "comp": {
+    "mention": 14,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 1,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Utylizacja akumulatorów",
+   "comp": {
+    "mention": 14,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "utylizacja akumulatorów ups"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana wentylatorów",
+   "comp": {
+    "mention": 13,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "wentylator ups"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa układu ładowania",
+   "comp": {
+    "mention": 13,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa falownika / prostownika",
+   "comp": {
+    "mention": 11,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana kondensatorów",
+   "comp": {
+    "mention": 9,
+    "first": 0,
+    "seoFirst": 3,
+    "seo": 4,
+    "head": 1,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "kondensatory ups"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa po przepięciu / burzy",
+   "comp": {
+    "mention": 8,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Wymiana akumulatorów",
+   "a": "Wymiana akumulatorów",
+   "why": "65 из 75, чаще всех в Title/Description (46); 18 подсказок",
+   "evidence": "конкуренты 65 из 75 (первой работой — 14, в Title/Description — 46) · подсказки Google 18 (напр. «wymiana akumulatora ups», «wymiana akumulatora w ups green cell»)"
+  },
+  {
+   "w": "Przegląd",
+   "a": "Przegląd / konserwacja / test",
+   "why": "68 конкурентов, у 48 первая работа; 24 подсказки после очистки (убраны «UPS tracking/label» — курьер UPS)",
+   "evidence": "конкуренты 68 из 75 (первой работой — 48, в Title/Description — 32) · подсказки Google 24 (напр. «przegląd ups», «przegląd ups cena»)"
+  },
+  {
+   "w": "Naprawa elektroniki",
+   "a": "Naprawa elektroniki / płyty",
+   "why": "37 конкурентов, 14 подсказок; в прайсе «Naprawa układu ładowania», «Naprawa falownika»",
+   "evidence": "конкуренты 37 из 75 (первой работой — 3, в Title/Description — 4) · подсказки Google 14 (напр. «naprawa ups», «naprawa ups volt»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Falownik / bypass",
+   "why": "мало конкурентов (11–14), клиенты так не ищут",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Термины: UK — «ДБЖ (UPS)», RU — «ИБП (UPS)», «огляд/осмотр» — как на самой странице (FAQ)",
+  "Ads по UPS почти нет (5 показов)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu ✔ Wymiana akumulatorów, przegląd, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 160
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, огляд, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 138
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, осмотр, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 140
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

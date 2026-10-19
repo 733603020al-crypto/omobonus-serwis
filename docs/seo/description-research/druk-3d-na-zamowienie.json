@@ -1,0 +1,3172 @@
+{
+ "page": "/uslugi/druk-3d-na-zamowienie",
+ "name": "3D-печать на заказ",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "usługi druku 3d",
+    "drukowanie 3d na zamówienie",
+    "druk 3d na zamówienie",
+    "druk 3d na zamówienie cennik",
+    "druk 3d na zamówienie Warszawa",
+    "druk 3d na zamówienie Kraków",
+    "druk 3d na zamówienie Wrocław",
+    "druk 3d na zamówienie Poznań",
+    "druk 3d na zamówienie Gdańsk",
+    "druk 3d na zamówienie Łódź",
+    "druk 3d na zamówienie Szczecin",
+    "druk 3d na zamówienie Katowice",
+    "druk 3d na zamówienie Lublin",
+    "druk 3d na zamówienie Bydgoszcz",
+    "druk 3d na zamówienie Białystok",
+    "druk 3d na zamówienie Rzeszów",
+    "druk 3d na zamówienie Toruń",
+    "druk 3d na zamówienie Opole",
+    "druk 3d na zamówienie Kielce",
+    "druk 3d na zamówienie Gdynia",
+    "druk 3d na zamówienie Olsztyn",
+    "druk 3d na zamówienie Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "druk 3d ",
+    "druk 3d na zamówienie ",
+    "drukowanie 3d ",
+    "wydruk 3d ",
+    "usługi druku 3d "
+   ],
+   "uniqueSuggestions": 501,
+   "withPrice": [
+    "druk 3d wrocław cennik",
+    "druk 3d wycena online",
+    "druk 3d na zamówienie cena",
+    "druk 3d na zamówienie wycena online",
+    "drukowanie 3d cena",
+    "drukowanie 3d wycena online",
+    "wydruk 3d cena",
+    "wydruk 3d wycena online",
+    "usługi druku 3d cena",
+    "druk 3d aluminium cena",
+    "druk 3d cena",
+    "druk 3d cena za gram"
+   ],
+   "wroclaw": [
+    "druk 3d wrocław",
+    "druk 3d wrocław cennik",
+    "druk 3d na zamówienie wrocław",
+    "drukowanie 3d wrocław",
+    "wydruk 3d wrocław",
+    "usługi druku 3d wrocław",
+    "druk 3d hala targowa wrocław",
+    "druk 3d inowrocław",
+    "druk 3d żywica wrocław",
+    "drukowanie 3d inowrocław",
+    "drukowanie 3d wrocław cennik",
+    "druk 3d sla wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Druk z pliku klienta (STL)": {
+    "seeds": [
+     "druk 3d z pliku",
+     "druk 3d stl",
+     "wydruk 3d z pliku stl"
+    ],
+    "n": 6,
+    "nRaw": 6,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "druk 3d z pliku stl",
+     "druk 3d z pliku",
+     "druk 3d format pliku",
+     "druk 3d stl",
+     "druk 3d pliki stl",
+     "druk 3d z stl"
+    ],
+    "all": [
+     "druk 3d z pliku stl",
+     "druk 3d z pliku",
+     "druk 3d format pliku",
+     "druk 3d stl",
+     "druk 3d pliki stl",
+     "druk 3d z stl"
+    ],
+    "dropped": []
+   },
+   "Projektowanie / modelowanie 3D": {
+    "seeds": [
+     "projektowanie 3d",
+     "modelowanie 3d na zamówienie",
+     "projektowanie części 3d"
+    ],
+    "n": 6,
+    "nRaw": 16,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "projektowanie 3d do druku",
+     "projektowanie 3d online",
+     "modelowanie 3d online",
+     "projektowanie 3d do druku online",
+     "modelowanie 3d na zamówienie",
+     "projektowanie czesci 3d"
+    ],
+    "all": [
+     "projektowanie 3d do druku",
+     "projektowanie 3d online",
+     "modelowanie 3d online",
+     "projektowanie 3d do druku online",
+     "modelowanie 3d na zamówienie",
+     "projektowanie czesci 3d"
+    ],
+    "dropped": [
+     [
+      "modelowanie 3d",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d online za darmo",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "modelowanie 3d org",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d za darmo",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d dla dzieci",
+      "другое устройство/тема"
+     ],
+     [
+      "modelowanie 3d praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d programy",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d tinkercad",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d ai",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "projektowanie 3d do druku za darmo",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Prototypy": {
+    "seeds": [
+     "prototypowanie 3d",
+     "druk 3d prototypów"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "prototypowanie 3d",
+     "prototypowanie druk 3d"
+    ],
+    "all": [
+     "prototypowanie 3d",
+     "prototypowanie druk 3d"
+    ],
+    "dropped": []
+   },
+   "Części zamienne / odtworzenie części": {
+    "seeds": [
+     "druk 3d części zamiennych",
+     "druk 3d części",
+     "odtworzenie części druk 3d"
+    ],
+    "n": 5,
+    "nRaw": 6,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "druk 3d drukowanie części zamiennych",
+     "druk 3d części",
+     "druk 3d części z tworzyw sztucznych plastiki naprawa plastików",
+     "druk 3d czesci zamienne",
+     "druk 3d czesci"
+    ],
+    "all": [
+     "druk 3d drukowanie części zamiennych",
+     "druk 3d części",
+     "druk 3d części z tworzyw sztucznych plastiki naprawa plastików",
+     "druk 3d czesci zamienne",
+     "druk 3d czesci"
+    ],
+    "dropped": [
+     [
+      "druk 3d części samochodowych",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Druk żywiczny (SLA)": {
+    "seeds": [
+     "druk 3d żywica",
+     "druk 3d sla"
+    ],
+    "n": 14,
+    "nRaw": 14,
+    "cena": 2,
+    "wroc": 2,
+    "ex": [
+     "druk 3d żywica",
+     "druk 3d żywica na zamówienie",
+     "druk 3d żywica wrocław",
+     "druk 3d żywica warszawa",
+     "druk 3d żywica cena",
+     "druk 3d żywica kraków",
+     "druk 3d sla",
+     "druk 3d sla na zamówienie",
+     "druk 3d śląsk",
+     "druk 3d sla wrocław"
+    ],
+    "all": [
+     "druk 3d żywica",
+     "druk 3d żywica na zamówienie",
+     "druk 3d żywica wrocław",
+     "druk 3d żywica warszawa",
+     "druk 3d żywica cena",
+     "druk 3d żywica kraków",
+     "druk 3d sla",
+     "druk 3d sla na zamówienie",
+     "druk 3d śląsk",
+     "druk 3d sla wrocław",
+     "druk 3d sla warszawa",
+     "druk 3d sla wycena",
+     "druk 3d fdm sla",
+     "druk 3d metoda sla"
+    ],
+    "dropped": []
+   },
+   "Figurki / modele / gadżety": {
+    "seeds": [
+     "druk 3d figurki"
+    ],
+    "n": 5,
+    "nRaw": 7,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "druk 3d figurki",
+     "druk 3d figurki rpg",
+     "druk 3d figurki warszawa",
+     "druk 3d na zamówienie figurki",
+     "ile kosztuje druk 3d figurki"
+    ],
+    "all": [
+     "druk 3d figurki",
+     "druk 3d figurki rpg",
+     "druk 3d figurki warszawa",
+     "druk 3d na zamówienie figurki",
+     "ile kosztuje druk 3d figurki"
+    ],
+    "dropped": [
+     [
+      "figurki druk 3d sklep",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "figurki druk 3d allegro",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Druk seryjny / małe serie": {
+    "seeds": [
+     "druk 3d seryjny",
+     "druk 3d produkcja"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "druk 3d seryjny",
+     "druk 3d produkcja"
+    ],
+    "all": [
+     "druk 3d seryjny",
+     "druk 3d produkcja"
+    ],
+    "dropped": []
+   },
+   "Wycena online / cennik": {
+    "seeds": [
+     "druk 3d wycena",
+     "druk 3d cena za gram"
+    ],
+    "n": 8,
+    "nRaw": 8,
+    "cena": 8,
+    "wroc": 0,
+    "ex": [
+     "druk 3d wycena online",
+     "druk 3d wycena",
+     "druk 3d automatyczna wycena",
+     "druk 3d sla wycena",
+     "druk 3d warszawa wycena online",
+     "druk 3d na zamówienie wycena online",
+     "druk 3d na zamówienie wycena",
+     "druk 3d cena za gram"
+    ],
+    "all": [
+     "druk 3d wycena online",
+     "druk 3d wycena",
+     "druk 3d automatyczna wycena",
+     "druk 3d sla wycena",
+     "druk 3d warszawa wycena online",
+     "druk 3d na zamówienie wycena online",
+     "druk 3d na zamówienie wycena",
+     "druk 3d cena za gram"
+    ],
+    "dropped": []
+   },
+   "Skanowanie 3D": {
+    "seeds": [
+     "skanowanie 3d"
+    ],
+    "n": 8,
+    "nRaw": 11,
+    "cena": 1,
+    "wroc": 1,
+    "ex": [
+     "skanowanie 3d",
+     "skanowanie 3d wrocław",
+     "skanowanie 3d cena",
+     "skanowanie 3d inżynieria odwrotna",
+     "skanowanie 3d warszawa",
+     "skanowanie 3d koszalin",
+     "skanowanie 3d olsztyn",
+     "skanowanie 3d usługi"
+    ],
+    "all": [
+     "skanowanie 3d",
+     "skanowanie 3d wrocław",
+     "skanowanie 3d cena",
+     "skanowanie 3d inżynieria odwrotna",
+     "skanowanie 3d warszawa",
+     "skanowanie 3d koszalin",
+     "skanowanie 3d olsztyn",
+     "skanowanie 3d usługi"
+    ],
+    "dropped": [
+     [
+      "skanowanie 3d telefonem",
+      "другое устройство/тема"
+     ],
+     [
+      "skanowanie 3d iphone",
+      "другое устройство/тема"
+     ],
+     [
+      "skanowanie 3d praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 6,
+   "impressions": 10,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "druk 3d wrocław",
+     "impr": 4,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "usługi druku 3d wrocław",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "firma druk 3d",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "drukowanie 3d wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "wydruki 3d wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "druk 3d wroclaw",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 79,
+  "checked": 84,
+  "candidates": 160,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "replica3d.pl",
+    "url": "https://replica3d.pl/",
+    "title": "Druk 3D na Zamówienie - Wydruki 3D Wrocław | REPLICA3D",
+    "desc": "Profesjonalna drukarnia 3D we Wrocławiu. Szybki druk 3D na zamówienie dla firm i klientów indywidualnych. Wygodna wycena online i wysyłka w całej Polsce.",
+    "h1": [
+     "H1: Druk 3D na zamówienie Wrocław"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "3dprodruk.pl",
+    "url": "https://3dprodruk.pl/",
+    "title": "Drukarnia 3D | Druk 3D na zamówienie | Seryjny Druk 3D | Warszawa",
+    "desc": "Drukarnia 3D - 3DProDruk oferuje profesjonalny druk 3D na zamówienie, dopasowany do indywidualnych potrzeb klientów. Realizujemy zarówno projekty jednostkowe, jak i seryjny druk 3D – szybko, precyzyjnie i z wykorzystaniem nowoczesnych technologii",
+    "h1": [
+     "H1: DRUK 3D - PROJEKTOWANIE - PROTOTYPOWANIE - PRODUKCJA w technologii druku 3D",
+     "H1: DRUK 3D - PROJEKTOWANIE - PROTOTYPOWANIE - PRODUKCJA w technologii druku 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "drukarnie3d.pl",
+    "url": "https://www.drukarnie3d.pl/mazowieckie/warszawa/",
+    "title": "Drukarnia 3D Warszawa - Prototypowanie na zamówienie",
+    "desc": "Profesjonalne usługi druku 3D dla miasta Warszawa. Prototypowanie, części zamienne, makiety. Sprawdź naszą ofertę z szybką dostawą.",
+    "h1": [
+     "H1: Profesjonalna Drukarnia 3D: Warszawa"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Figurki / modele / gadżety"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "inzynieria-3d.pl",
+    "url": "https://www.inzynieria-3d.pl/druk-3d/warszawa/",
+    "title": "Druk 3D Warszawa – Inżynieria-3D",
+    "desc": "",
+    "h1": [
+     "H1: Druk 3D Warszawa"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "ajmaker.pl",
+    "url": "https://ajmaker.pl/wydruki-3d/",
+    "title": "Druk 3D — cennik, realizacja indywidualnych zamówień",
+    "desc": "Prototyp z drukarki 3D umożliwia idealne odzwierciedlenie Twojego projektu w rzeczywistości. Oferujemy różnokolorowe filamenty marki Spectrum Filaments.",
+    "h1": [
+     "H1: Druk 3d na zamówienie —wydrukujemy wszystko, ogranicza Cię tylko wyobraźnia!"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa",
+     "Poznań",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "cadxpert.pl",
+    "url": "https://cadxpert.pl/uslugi-druku-3d/",
+    "title": "Usługi druku 3D dla firm: od 1 sztuki | CadXpert",
+    "desc": "Usługi druku 3D dla firm: 6 technologii, ponad 80 materiałów, części od 1 sztuki i krótkie serie. Wycena online, realizacja od 1 do 3 dni, kurier 24h.",
+    "h1": [
+     "H1: Profesjonalne usługi druku 3D"
+    ],
+    "first": "Skanowanie 3D",
+    "seoFirst": "Druk seryjny / małe serie",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "graph-art.pl",
+    "url": "https://graph-art.pl/",
+    "title": "Druk 3D",
+    "desc": "",
+    "h1": [
+     "H1: DRUK 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Gdańsk",
+     "Łódź",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "drukarex.pl",
+    "url": "https://drukarex.pl/index.php?page=druk-3d-na-zamowienie",
+    "title": "Druk 3D na zamówienie - cena, wycena, cennik, usługa druku 3D",
+    "desc": "Zamów wydruk 3D w minutę i miej go nawet już jutro. Bez ceny minimalnej, od jednej sztuki, z przesyłką do Paczkomatu.",
+    "h1": [
+     "H1: Drukarex",
+     "H1: Druk 3D na zamówienie - szybko i wygodnie"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Gdańsk",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "p3drc.pl",
+    "url": "https://www.p3drc.pl/",
+    "title": "Usługi druku 3D na zamówienie | P3DRC",
+    "desc": "Drukarnia 3D dla firm: prototypy, części techniczne i krótkie serie w FFF, SLS, MJF i SLA. Prześlij STL lub STEP i zamów wycenę w P3DRC.",
+    "h1": [
+     "H1: Druk 3D na zamówienie"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Łódź",
+     "Lublin",
+     "Bydgoszcz",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "detal3d.pl",
+    "url": "https://www.detal3d.pl/druk-3d-warszawa/",
+    "title": "Druk 3D Warszawa, skanowanie 3D, serwis drukarek, szkolenia - detal3D",
+    "desc": "Druk 3D w świetniej cenie. Wydruki 3D dostępne nawet tego samego dnia. Skanowanie 3D oraz serwis drukarek 3D. Skontaktuj się z nami już dziś!",
+    "h1": [
+     "H1: Druk 3D Warszawa– profesjonalne usługi druku 3D",
+     "H1: Dlaczego warto wybrać Detal3D / druk 3D Warszawa?"
+    ],
+    "first": "Druk SLS / MJF / przemysłowy",
+    "seoFirst": "Skanowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "goatprint3d.pl",
+    "url": "https://goatprint3d.pl/",
+    "title": "GoatPrint3D – druk 3D na zamówienie i wycena STL online",
+    "desc": "GoatPrint3D to polska platforma druku 3D na zamówienie. Wgraj plik STL lub 3MF, wybierz materiał i otrzymaj automatyczną wycenę online.",
+    "h1": [
+     "H1: Druk 3D bez czekania na wycenę."
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Gdańsk",
+     "Szczecin",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "geometryhustlers.pl",
+    "url": "https://geometryhustlers.pl/druk-3d-krakow/",
+    "title": "Druk 3D Kraków - ekspresowa produkcja z tworzyw sztucznych",
+    "desc": "Druk 3D Kraków - oferujemy nowoczesne usługi druku 3D na zamówienie w Krakowie i w całym woj. małopolskim. Szybka Produkcja części z tworzyw",
+    "h1": [
+     "H1: Druk 3D Kraków"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Druk seryjny / małe serie",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "bbsong.pl",
+    "url": "https://bbsong.pl/druk-3d-wroclaw/",
+    "title": "Druk 3D Wrocław – Druk 3D na zamówienie",
+    "desc": "Druk 3D Wrocław – profesjonalne wydruki 3D online Potrzebujesz wydruku 3D we Wrocławiu, ale nie chcesz tracić czasu na dojazdy i szukanie lokalnej pracowni? Zamów druk 3D online – prześlij nam swój model lub opisz, czego potrzebujesz, a zajmiemy się przygotowaniem i realizacją projektu. ZAMÓW WYDRUK 3D Zapytaj o wydruk",
+    "h1": [
+     "H1: Druk 3D Wrocław",
+     "H1: Druk 3D Wrocław – profesjonalne wydruki 3D online"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław",
+     "Lublin",
+     "Bydgoszcz",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "b3d.com.pl",
+    "url": "https://b3d.com.pl/szybkie-i-precyzyjne-drukowanie-3d-na-zamowienie/",
+    "title": "Drukowanie 3D na zamówienie – Profesjonalna drukarnia 3D | B3D",
+    "desc": "Profesjonalna drukarnia 3D oferuje drukowanie na zamówienie. Realizujemy prototypy, części i druk seryjny. Gwarancja jakości i szybka wycena. Wyślij plik!",
+    "h1": [
+     "H1: Drukowanie 3D na zamówienie"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Poznań",
+     "Łódź",
+     "Lublin",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "print-forge.pl",
+    "url": "https://www.print-forge.pl/",
+    "title": "Print-Forge — Druk 3D na Zamówienie",
+    "desc": "Profesjonalny druk 3D: customowe wydruki z Twojego pliku oraz gotowe modele ze sklepu.",
+    "h1": [
+     "H1: Twój pomysł w trzech wymiarach"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Druk z pliku klienta (STL)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Szczecin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "punktdruku3d.pl",
+    "url": "https://punktdruku3d.pl/",
+    "title": "punktdruku3d.pl | druk 3D - indywidualne zamówienia",
+    "desc": "Druki 3d na zamówienie - profesjonalne usługi druku 3D, szybka wycena.",
+    "h1": [
+     "H1: Drukowanie 3D na zamówienie, modelowanie 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Opole",
+     "Gdynia",
+     "Olsztyn",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "riwolab.pl",
+    "url": "https://riwolab.pl/wycena",
+    "title": "Druk 3D na zamówienie. Wycena online w minutę | RiwoLab",
+    "desc": "Usługa druku 3D online: wgraj model i od razu poznaj cenę. PLA, PETG, PCTG i tworzywa techniczne. Realizacja 2 do 3 dni roboczych, wysyłka w całej Polsce.",
+    "h1": [
+     "H1: Druk 3D na zamówienie online"
+    ],
+    "first": "Druk z pliku klienta (STL)",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Szczecin",
+     "Białystok",
+     "Rzeszów",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "send3d.pl",
+    "url": "https://send3d.pl/druk-3d-na-zamowienie",
+    "title": "Druk 3D na zamówienie — wyceń wydruk online | send3d.pl",
+    "desc": "Druk 3D na zamówienie z wysyłką w całej Polsce. Wgrywasz model, cenę widzisz od razu, bez czekania na handlowca. PLA, PETG i TPU, wydruk od 20 zł.",
+    "h1": [
+     "H1: Druk 3D na zamówienie"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Druk z materiałów PLA / PETG / ABS",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z materiałów PLA / PETG / ABS"
+    ],
+    "city": [
+     "Gdańsk",
+     "Szczecin",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "drukuje3d.com",
+    "url": "https://drukuje3d.com/",
+    "title": "Druk 3D na zamówienie i gotowe wydruki 3D | Drukuje3D.com",
+    "desc": "Druk 3D na zamówienie – od projektu po gotowy detal. Części zamienne, prototypy, gadżety i dekoracje. Sklep z gotowymi wydrukami 3D. Bezpłatna wycena!",
+    "h1": [
+     "H1: Druk 3D na zamówienie i gotowe wydruki 3D"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Części zamienne / odtworzenie części",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Lublin",
+     "Opole",
+     "Kielce",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "3d-innowacje.pl",
+    "url": "https://3d-innowacje.pl/sklep/zamow-druk-3d/",
+    "title": "Zamów druk 3D online - Drukarnia 3D",
+    "desc": "Wgraj swój model, wybierz materiał i od razu poznaj cenę!  ",
+    "h1": [
+     "H1: Druk 3D na zamówienie",
+     "H1: Druk 3D na zamówienie"
+    ],
+    "first": "Druk z pliku klienta (STL)",
+    "seoFirst": "",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Opole",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "lasertrade.pl",
+    "url": "https://lasertrade.pl/drukowanie-3d",
+    "title": "Drukowanie 3D | Wycena Online w 15 minut | LaserTrade",
+    "desc": "Drukowanie 3D na zamówienie. Jedno miejsce. Setki firm. Druk 3D w każdej technologii. Zapytaj - porównaj - zamów. Wysyłka tego samego dnia.",
+    "h1": [
+     "H1: Drukowanie 3D – Największa w Polsce Drukarnia 3D"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "goat3d.pl",
+    "url": "https://goat3d.pl/",
+    "title": "Druk 3D na zamówienie i projektowanie 3D | GOAT3D",
+    "desc": "Profesjonalny druk 3D na zamówienie dla firm i klientów indywidualnych. Projektowanie 3D, szeroka gama materiałów i gotowych modeli, szybka wycena | GOAT3D",
+    "h1": [],
+    "first": "Figurki / modele / gadżety",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Białystok",
+     "Opole"
+    ]
+   },
+   {
+    "host": "revo3d.pl",
+    "url": "https://revo3d.pl/uslugi-druku-3d/",
+    "title": "Usługi druku 3D - Revo3d",
+    "desc": "Profesjonalne usługi druku 3D dostosowane do Twoich potrzeb. Oferujemy precyzyjne wydruki 3D na zamówienie, kompleksowy serwis oraz wsparcie techniczne. Skontaktuj się z nami i zrealizuj swoje projekty w najwyższej jakości.",
+    "h1": [],
+    "first": "Druk z materiałów PLA / PETG / ABS",
+    "seoFirst": "",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów",
+     "Opole",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "3dfactor.pl",
+    "url": "https://3dfactor.pl/uslugi/druk-3d/",
+    "title": "Druk 3D na zamówienie | Drukowanie 3D | Wydruki 3D - Wrocław, Dolnośląskie | 3DFactor",
+    "desc": "Druk 3D to innowacja, która zaskakuje z wielu stron! Realizujemy zlecenia druku 3D na zamówienie w znakomitych cenach – sprawdź naszą ofertę już dziś!",
+    "h1": [
+     "H1: Druk 3D we Wrocławiu"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Druk seryjny / małe serie",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk seryjny / małe serie"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "solid3d.pl",
+    "url": "https://solid3d.pl/",
+    "title": "Druk 3D - Drukarnia - Kraków - wydruk 3D FDM: usługa - drukowanie na zamówienie - Cena - Solid3Ds",
+    "desc": "🖨 Profesjonalny druk 3D Kraków 🖨 - Bezpłatna wycena! Jako drukarnia 3D w Krakowie specjalizujemy się w dostarczaniu wysokiej jakości wydruków 3D.",
+    "h1": [
+     "H1: Druk 3D Kraków. Wydruki na zamówienie - Drukarnia Solid3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Kraków",
+     "Katowice",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "bzztproduction.pl",
+    "url": "https://bzztproduction.pl/strona-glowna-szczecin/",
+    "title": "Druk 3D Szczecin - projektowanie i realizacja | BZZT Production",
+    "desc": "Druk 3D Szczecin, nowoczesne usługi, projektowanie modeli, skanowanie i prototypowanie. BZZT Production – jakość, precyzja i szybka realizacja.",
+    "h1": [
+     "H1: Drukowanie 3d na zamówienie Szczecin"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Szczecin",
+     "Katowice",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "warstwokracja.pl",
+    "url": "https://warstwokracja.pl/druk-3d-gdansk/",
+    "title": "Druk 3D Gdańsk | Prototypy i części na zamówienie online",
+    "desc": "Szukasz profesjonalnego druku 3D w Gdańsku? Realizujemy prototypy, części zamienne i modele na zamówienie dla firm i osób prywatnych.",
+    "h1": [
+     "H1: Druk 3D Gdańsk"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części"
+    ],
+    "city": [
+     "Gdańsk",
+     "Katowice",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "drukownia3d.pl",
+    "url": "https://drukownia3d.pl/",
+    "title": "Druk 3D na Zamówienie - Drukownia 3D",
+    "desc": "Druk 3D na zamówienie dla firm – nylon, ABS, PC i inne materiały techniczne. Wgraj plik, otrzymaj automatyczną wycenę w kilka minut.",
+    "h1": [
+     "H1: Druk 3D na zamówienie — wrzuć plik, poznaj cenę, zamów online"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Druk z materiałów PLA / PETG / ABS",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": []
+   },
+   {
+    "host": "k3druk.pl",
+    "url": "https://www.k3druk.pl/druk-3d-krakow",
+    "title": "Druk 3D Kraków. Profesjonalne wydruki 3D dla przemysłu od K3D.",
+    "desc": "Drukarnia 3D K3D oferuje wysokiej jakości druk 3D dla klientów z Krakowa. Druk 3D jako Cyfrowa alternatywa dla formowania wtryskowego. ",
+    "h1": [
+     "H1: &#xa0;",
+     "H1: Druk 3D Kraków"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "moltenhub.com",
+    "url": "https://moltenhub.com/pl",
+    "title": "Druk 3D na zamówienie – natychmiastowa wycena online | MoltenHub",
+    "desc": "Profesjonalny druk 3D na zamówienie. Prześlij model STL, otrzymaj wycenę w sekundy. 7 materiałów: PLA, ABS, ASA, PETG, żywica, nylon, TPU. Wysyłka InPost do 10 ",
+    "h1": [
+     "H1: Druk 3D na zamówienie prosto i szybko"
+    ],
+    "first": "Druk z materiałów PLA / PETG / ABS",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "druk3dkatowice.pl",
+    "url": "https://www.druk3dkatowice.pl/druk-3d-na-zlecenie-szczecin-zachodniopomorskie/",
+    "title": "Druk 3D na zlecenie Szczecin i Województwo zachodniopomorskie - Druk 3d Katowice",
+    "desc": "Druk 3D techniką FDM / FFF na zlecenie dla Województwa Zachodniopomorskiego - Szczecin, Świnoujście, Koszalin i innych miast.",
+    "h1": [
+     "H1: Druk 3D Katowice – Śląsk – Polska",
+     "H1: Druk 3D na zlecenie Szczecin i Województwo zachodniopomorskie"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Druk seryjny / małe serie",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Szczecin",
+     "Katowice",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "fibometry.com",
+    "url": "https://fibometry.com/",
+    "title": "Druk 3D profesjonalne usługi, drukarnia 3D. Komponenty, części, prototypowanie. Druk SLS, MJF, FDM/FFF, SLA/DLP, PJ MJM Profesjonalne usługi druku 3D",
+    "desc": "Fibometry. Profesjonalne usługi druku 3D. Druk części zamiennych, komponentów, prototypowanie, produkcja seryjna. Drukujemy w technologiach SLS, MJF, FDM/FFF, SLA/DLP, PJ MJM.",
+    "h1": [
+     "H1: Odkryj możliwości zastosowania naszych technologii druku 3D i wytwarzania przyrostowego"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Łódź",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "printstein.pl",
+    "url": "https://printstein.pl/",
+    "title": "Druk 3D online z natychmiastową kalkulacją | Warszawa, Kraków, Gdańsk | Printstein",
+    "desc": "Profesjonalne drukowanie 3D z szybką kalkulacją online. Prześlij plik STL, wybierz materiał (PLA, PETG, TPU 95A), infill i płyty robocze z teksturą. Druk 3D Warszawa, Kraków, Gdańsk – dostawa paczkomatem lub kurierem.",
+    "h1": [
+     "H1: Druk 3D w prosty sposób"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Druk z pliku klienta (STL)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "3dstart.pl",
+    "url": "https://3dstart.pl/",
+    "title": "Druk 3D na zamówienie - 3D Start - Strona główna",
+    "desc": "Profesjonalny druk 3D na zamówienie – FDM, SLA, SLS. Wycena online, szybka realizacja, duży wybór materiałów. Drukujemy już od jednej sztuki.",
+    "h1": [
+     "H1: Postaw na precyzyjny druk 3D na zamówienie"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Warszawa",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "drukex.pl",
+    "url": "https://drukex.pl/wycena/",
+    "title": "Wycena druku 3D online | STL, szybka kalkulacja – DRUKEX",
+    "desc": "Automatyczna wycena druku 3D online. Prześlij plik STL lub STEP i otrzymaj szybką kalkulację kosztów druku 3D. PLA, PETG, ABS, ASA, Nylon, TPU.",
+    "h1": [
+     "H1: Wycena",
+     "H1: Wycena druku 3D online – prześlij plik STL lub STEP"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "3dit.pl",
+    "url": "https://3dit.pl/",
+    "title": "3Dit – druk 3D, usługi i sklep z technologią 3D | Wrocław",
+    "desc": "3Dit to druk 3D, skanowanie, projektowanie oraz sklep z technologią 3D. Obsługujemy klientów indywidualnych i firmy, oferując nowoczesne rozwiązania 3D we Wrocławiu i online.",
+    "h1": [
+     "H1: Profesjonalny druk 3D",
+     "H1: Profesjonalny druk 3D"
+    ],
+    "first": "Skanowanie 3D",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "protoplastic.pl",
+    "url": "https://protoplastic.pl/",
+    "title": "Usługi druku 3D - Protoplastic - Druk 3D Warszawa",
+    "desc": "Świadczymy kompleksowe usługi druku 3d. W naszej ofercie również projektowanie, skanowanie 3D oraz tworzenie dokumentacji technicznej.",
+    "h1": [
+     "H1: PROFESJONALNE USŁUGI DRUKU 3D"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "biznes-top.pl",
+    "url": "https://biznes-top.pl/szczecin/druk-3d/druk-3d-szczecin-uslugi-drukowania-3d-szczecin-bitemedia/",
+    "title": "Druk 3d Szczecin – Usługi drukowania 3d Szczecin – Bitemedia | Biznes-TOP",
+    "desc": "Druk 3d Szczecin – Usługi drukowania 3d Szczecin – Bitemedia (druk 3d) — Szczecin. Bośniacka 18/1, 70-842 Szczecin, Poland. Ocena: 5,0/5 (25 opinii). Adres, mapa, godziny otwarcia, kontakt.",
+    "h1": [
+     "H1: Druk 3d Szczecin – Usługi drukowania 3d Szczecin – Bitemedia"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "",
+    "works": [
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "3d-ice.pl",
+    "url": "https://3d-ice.pl/",
+    "title": "Druk 3D na zamówienie – Modele, prototypy, projekty | 3D ICE",
+    "desc": "Profesjonalny druk 3D z Twojego projektu. Tworzymy prototypy, modele funkcjonalne i elementy użytkowe. Zrealizuj swój projekt z 3D ICE!",
+    "h1": [
+     "H1: Druk 3D i projektowanie modeli 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)"
+    ],
+    "city": []
+   },
+   {
+    "host": "drukarnia3d.shop",
+    "url": "https://drukarnia3d.shop/",
+    "title": "drukarnia3d.shop - Druk 3D na zamówienie | Wycena online",
+    "desc": "Wgraj model 3D i otrzymaj natychmiastową wycenę druku 3D. PLA, PETG, ABS, ASA, TPU. Szybka realizacja na drukarkach Bambu Lab.",
+    "h1": [
+     "H1: Druk 3D na zamówienie z natychmiastową wyceną"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": []
+   },
+   {
+    "host": "3dtime.pl",
+    "url": "https://3dtime.pl/pl",
+    "title": "Druk 3D i modelowanie 3D na zamówienie. STUDIO 3DTIME",
+    "desc": "Druk 3D wyrobów z tworzyw sztucznych na drukarce 3D. Precyzyjne prototypowanie. Opracowywanie modeli 3D. Tworzenie układów. Produkcja seryjna wyrobów z tworzyw sztucznych. Druk 3D dużych układów.",
+    "h1": [
+     "H1: Wykonujemy pełen zakres usług związanych z technologiami 3D",
+     "H1: Informacje o nas"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "fluxar3d.pl",
+    "url": "https://www.fluxar3d.pl/",
+    "title": "Fluxar3D - Profesjonalny Druk 3D na Zamówienie | Szybka Wycena",
+    "desc": "Drukarnia 3D Fluxar3D - najwyższa jakość wydruków FDM/SLA. Oferujemy gotowe modele 3D, gadżety oraz darmową, błyskawiczną wycenę Twoich plików STL/OBJ. Sprawdź nasz cennik i materiały PLA, PETG, ASA, ABS.",
+    "h1": [
+     "H1: Twoje wizje. Nasza precyzja"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "city": []
+   },
+   {
+    "host": "printhalo3d.com",
+    "url": "https://printhalo3d.com/",
+    "title": "Druk 3D na zamówienie – wycena online | PrintHalo 3D",
+    "desc": "Wyceń druk 3D online z pliku STL albo zaprojektuj model za darmo w firmowym CAD 3D PrintHalo. Projektuj online, eksportuj STL, wyceń i zamów wydruk.",
+    "h1": [
+     "H1: Druk 3D na zamówienie — wycena online z pliku STL"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": []
+   },
+   {
+    "host": "longitech.pl",
+    "url": "https://longitech.pl/druk-3d-gdansk/",
+    "title": "Druk 3D Gdańsk – cena, wycena online i wysyłka | LongiTech",
+    "desc": "Druk 3D Gdańsk – cena już od 30 zł netto. Prototypy, części techniczne i krótkie serie. Wgraj plik STL, poznaj wycenę online i zamów wydruk z wysyłką.",
+    "h1": [
+     "H1: Druk 3D Gdańsk – LongiTech"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Gdańsk",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "xd3d.pl",
+    "url": "https://www.xd3d.pl/",
+    "title": "Druk 3D na zlecenie Gdańsk | XD3D — FDM, SLA, produkcja niskoseryjna",
+    "desc": "Profesjonalny druk 3D na zlecenie w Gdańsku. Technologie FDM i SLA, produkcja niskoseryjna, projektowanie CAD. Szybka wycena w 24h. Zadzwoń: 506 760 378.",
+    "h1": [],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "werk3d.pl",
+    "url": "https://werk3d.pl/",
+    "title": "Drukarnia 3D Werk3d - Profesjonalny druk 3D na zamówienie",
+    "desc": "Werk3D oferuje druk 3D na zamówienie oraz usługi skanowania i projektowania 3D. Wyróżnia nas nowoczesny sprzęt i wysoka jakość wydruków. Wejdź i zobacz!",
+    "h1": [
+     "H1: Monitor dla gracza"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D"
+    ],
+    "city": []
+   },
+   {
+    "host": "3dtechnology.pl",
+    "url": "https://www.3dtechnology.pl/",
+    "title": "Skanowanie 3D, druk 3D i projektowanie CAD | 3Dtechnology.pl — Śląsk",
+    "desc": "Profesjonalne skanowanie 3D, druk 3D (FDM, SLA, SLS) i projektowanie CAD . Bezpłatna wycena, szybka realizacja. Zadzwoń: 695 030 847.",
+    "h1": [],
+    "first": "Skanowanie 3D",
+    "seoFirst": "Skanowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "mapi-tech.pl",
+    "url": "https://mapi-tech.pl/druk-3d-lodz/",
+    "title": "Druk 3D Łódź - Mapi-Tech",
+    "desc": "Druk 3D w Łodzi na zamówienie. PLA, PETG, PETG FR, ASA, ABS, PA12 CF i więcej. Wycena online w kilka minut, wysyłka kurierem. Bez rejestracji.",
+    "h1": [
+     "H1: Druk 3D Łódź — na zamówienie, z wysyłką kurierem"
+    ],
+    "first": "Druk SLS / MJF / przemysłowy",
+    "seoFirst": "Druk z materiałów PLA / PETG / ABS",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "paliga3d.pl",
+    "url": "https://www.paliga3d.pl/",
+    "title": "Druk 3D Na Zamówienie – Szybka Wycena | Częstochowa | Paliga3D",
+    "desc": "Profesjonalny druk 3D na zamówienie (SLS, SLA, FDM). Szybka wycena na podstawie plików STL/STEP. Obsługa firm i klientów indywidualnych – Częstochowa i cała Polska.",
+    "h1": [
+     "H1: Druk 3D na zamówienie – Częstochowa i cała Polska"
+    ],
+    "first": "Druk SLS / MJF / przemysłowy",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "rudnik3d.pl",
+    "url": "https://rudnik3d.pl/",
+    "title": "Drukarnia 3D Warszawa — druk i wydruk 3D na zamówienie",
+    "desc": "Druk 3D Warszawa od 30 zł netto. Części techniczne, figurki, modele. Express 24/48h. Zamów online z dostawą InPost/DPD. Bezpłatna wycena.",
+    "h1": [
+     "H1: Druk 3D Warszawa — bezpłatna wycena w 15–30 min"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Figurki / modele / gadżety",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "druk3dkrakow.pl",
+    "url": "https://druk3dkrakow.pl/druk3d-krakow/",
+    "title": "Druk 3D Kraków | Wycena Online w 60 sekund | Szybka Realizacja",
+    "desc": "Wydrukuj swój projekt 3D w Krakowie! Druk3D Kraków - Prosta wycena online, szybka realizacja, zamówienia i odbiór w Twoim mieście.",
+    "h1": [
+     "H1: Druk 3D Kraków - szybko, lokalnie i profesjonalnie"
+    ],
+    "first": "Figurki / modele / gadżety",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "3done.tech",
+    "url": "https://3done.tech/",
+    "title": "Druk 3D na zamówienie Gdańsk | 3Done",
+    "desc": "Druk 3D na zamówienie w Gdańsku. Wgraj model do szybkiej wyceny online lub zleć wykonanie prototypu, części użytkowej albo krótkiej serii.",
+    "h1": [
+     "H1: Druk 3D na zamówienie w Gdańsku"
+    ],
+    "first": "Druk z materiałów PLA / PETG / ABS",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "lublin3d.pl",
+    "url": "https://lublin3d.pl/",
+    "title": "Druk 3D w Lublinie | Lublin3D",
+    "desc": "Od projektu do wydruku – kompleksowe usługi 3D w Lublinie. ",
+    "h1": [
+     "H1: Druk 3D w Lublinie"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "starydrukuje.pl",
+    "url": "https://starydrukuje.pl/druk-na-zamowienie/",
+    "title": "Druk 3D na zamówienie Bydgoszcz | starydrukuje.pl",
+    "desc": "Precyzyjny druk 3D na zamówienie dla branży stolarskiej i budowlanej. Projektujemy techniczne detale, eliminując przestoje. Bydgoszcz i cała Polska. Zadzwoń: 790 362 100.",
+    "h1": [
+     "H1: Druk 3D na zamówienie",
+     "H1: Opowiedz nam, czego potrzebujesz"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "3druk.eu",
+    "url": "https://3druk.eu/",
+    "title": "Drukarnia 3D online - szybko i profesjonalnie - Gdynia | 3Druk.eu",
+    "desc": "Projektujemy i drukujemy elementy 3D na nowoczesnych i profesjonalnych drukarkach 3D. Technologie FDM, SLA, SLS.",
+    "h1": [
+     "H1: Drukarnia 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk żywiczny (SLA)",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "3dpatiprint.pl",
+    "url": "https://3dpatiprint.pl/",
+    "title": "3D PATI Print - Druk 3D Częstochowa",
+    "desc": "3D PATI Print - Druk 3D Częstochowa - tworzenie prototypów i modeli przestrzennych, gadżety reklamowe, akcesoria AGD oraz elementy dekoracyjne",
+    "h1": [],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Figurki / modele / gadżety"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "druk3dwroclaw.com",
+    "url": "https://druk3dwroclaw.com/",
+    "title": "Druk 3D Wrocław – Profesjonalna drukarnia 3D we Wrocławiu",
+    "desc": "",
+    "h1": [
+     "H1: Druk 3D Wrocław"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "order3d.pl",
+    "url": "https://www.order3d.pl/",
+    "title": "ORDER 3D | Druk 3D Poznań",
+    "desc": "Drukarnia 3D Poznań. Kompleksowe usługi projektowania CAD, druku 3D oraz produkcji krótkoseryjnej. Bezpłatna wycena, profesjonalne doradztwo.",
+    "h1": [
+     "H1: Druk 3D Poznań - OD KONCEPCJI DO PRODUKTU"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "formbit.pl",
+    "url": "https://formbit.pl/",
+    "title": "Druk 3D, skanowanie 3D i reverse engineering Rzeszów | FORMBIT",
+    "desc": "Druk 3D, skanowanie 3D i reverse engineering w Rzeszowie. Odtwarzamy części na podstawie próbki, projektujemy w CAD i drukujemy prototypy oraz małe serie. Wycena w 24h, wysyłka w całej Polsce.",
+    "h1": [
+     "H1: Druk 3D, skanowanie 3D i reverse engineering w Rzeszowie"
+    ],
+    "first": "Skanowanie 3D",
+    "seoFirst": "Skanowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "dura3d.pl",
+    "url": "https://dura3d.pl/druk3d/",
+    "title": "Druk 3D na zamówienie Toruń | Części techniczne – Dura3D",
+    "desc": "Druk 3D części technicznych, prototypów, obudów, uchwytów i krótkich serii. Materiały PLA, PETG, ABS, ASA, PC, PA i kompozyty. Toruń i zlecenia wysyłkowe.",
+    "h1": [
+     "H1: Druk 3D na zamówienie"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "druk-smolarski.pl",
+    "url": "https://druk-smolarski.pl/druk3d-opole/",
+    "title": "Druk 3D - Opole",
+    "desc": "Szukasz profesjonalnej usługi druku 3D w Opolu? W Druk Smolarski realizujemy wydruki 3D na zamówienie dla klientów indywidualnych oraz firm.",
+    "h1": [
+     "H1: Druk 3D"
+    ],
+    "first": "Druk z pliku klienta (STL)",
+    "seoFirst": "Druk z pliku klienta (STL)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "technika3d.com.pl",
+    "url": "https://www.technika3d.com.pl/druk-3d-czestochowa",
+    "title": "Druk 3D Częstochowa - wydruki na zamówienie | Technika 3D",
+    "desc": "Druk 3D Częstochowa: precyzyjne wydruki 3D na zamówienie, prototypy, części użytkowe, projektowanie CAD i krótkie serie. Technika 3D Kamil Liberda.",
+    "h1": [
+     "H1: Wydruki 3D na zamówienie dla firm, warsztatów i klientów indywidualnych."
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "goodcompany.rocks",
+    "url": "https://goodcompany.rocks/druk-3d-poznan/",
+    "title": "Druk 3D Poznań | FDM & Żywicowy Druk na Zamówienie",
+    "desc": "Druk 3D w Poznaniu (Rataje). Druk FDM, żywica, prototypy i części zamienn. Odbiór osobisty lub szybka wysyłka. Wyceń w 24h!",
+    "h1": [
+     "H1: Druk 3D Poznań – Drukarnia i Projektowanie 3D Szybka Realizacja na Ratajach i Wysyłka"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "elprodruk3d.pl",
+    "url": "http://elprodruk3d.pl/",
+    "title": "Drukarnia 3d Łódź | ElproDruk3D - Profesjonalna drukarnia 3D",
+    "desc": "Dysponujemy najnowocześniejszą technologią oraz wykwalifikowanymi pracownikami, dzięki temu ElproDruk3D to najlepsza drukarnia 3D w Łodzi. Spradź sam!",
+    "h1": [],
+    "first": "Figurki / modele / gadżety",
+    "seoFirst": "Figurki / modele / gadżety",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "technodruk3d.pl",
+    "url": "https://technodruk3d.pl/druk-3d-warszawa",
+    "title": "Druk 3D Warszawa – wydruki na zamówienie | Technodruk3D",
+    "desc": "Druk 3D w Warszawie: części, prototypy i krótkie serie. Prześlij model lub opis, sprawdź wycenę i zamów wydruk z odbiorem albo wysyłką.",
+    "h1": [
+     "H1: Druk 3D Warszawa"
+    ],
+    "first": "Wycena online / cennik",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "wydruk3d-krakow.pl",
+    "url": "https://wydruk3d-krakow.pl/",
+    "title": "Wydruk 3D Kraków | wydruk3d-krakow",
+    "desc": "Wydruk 3D Kraków, zajmujemy się profesjonalnym drukiem 3D jak i modelowaniem. Zobacz co posiadamy w ofercie oraz co już wydrukowaliśmy!",
+    "h1": [
+     "H1: Innowacyjne druki 3D. Twórz, prototypuj i personalizuj z nami. Niezależnie od tego, czy to figurka, zabawka czy część mechaniczna, mamy rozw"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "pro3dlab.pl",
+    "url": "https://pro3dlab.pl/",
+    "title": "Druk 3D na zamówienie Wrocław | Pro3D Lab",
+    "desc": "Druk 3D na zamówienie we Wrocławiu: prototypy, części użytkowe i personalizowane przedmioty. Prześlij model do wyceny w Pro3D Lab.",
+    "h1": [
+     "H1: Twój pomysł. Trzeci wymiar."
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "kolorwit2.pl",
+    "url": "https://kolorwit2.pl/druk3d.php",
+    "title": "Druk 3D - drukowanie 3D na zamówienie - Bydgoszcz - Kolorwit 2",
+    "desc": "Druk 3D na zamówienie to nasza specjalność! Skontaktuj się z naszą agencją w Bydgoszczy i przekonaj się, że drukowanie rzeczy trójwymiarowych może być szybkie!",
+    "h1": [
+     "H1: Usługi druku 3D - drukowanie 3D na zamówienie - Bydgoszcz"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Druk żywiczny (SLA)",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "vecto3d.pl",
+    "url": "https://vecto3d.pl/",
+    "title": "Vecto3D — druk 3D, CNC, laser i prototypowanie na zamówienie",
+    "desc": "Druk 3D, CNC, laser i prototypowanie na zamówienie — Rzeszów i cała Polska. Wyceń model online w kilka minut, bez zakładania konta.",
+    "h1": [
+     "H1: Od pomysłu do gotowego produktu.",
+     "H1: Wyceń swój model"
+    ],
+    "first": "Prototypy",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "elementy3d.pl",
+    "url": "https://elementy3d.pl/",
+    "title": "Druk 3D Opole – Szybka Wycena i Tani Druk 3D Online | Elementy3D.pl",
+    "desc": "Szukasz druku 3D w Opolu? Prześlij plik STL/OBJ do kalkulatora online i uzyskaj natychmiastową wycenę. Drukuję z PLA i PETG dla studentów i każdego pasjonata.",
+    "h1": [
+     "H1: DRUK 3D OPOLE NA WYCIĄGNIĘCIE RĘKI"
+    ],
+    "first": "Figurki / modele / gadżety",
+    "seoFirst": "Wycena online / cennik",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "druk3dwaw.pl",
+    "url": "https://druk3dwaw.pl/",
+    "title": "Druk 3D Warszawa - Profesjonalny druk 3D w Warszawie",
+    "desc": "Profesjonalny druk 3D na zamówienie. Zamień swoje pomysły w rzeczywistość. Prototypy, części zamienne, modele. Szybka realizacja.",
+    "h1": [
+     "H1: Zamień swoje pomysły w rzeczywistość"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "modelownia.pl",
+    "url": "https://modelownia.pl/",
+    "title": "Druk 3D na zamówienie z pliku STL, Kraków | Modelownia",
+    "desc": "Druk 3D na zamówienie z Twojego pliku STL. Wgraj model, zobacz go w 3D i poznaj cenę od razu. PLA, PETG, ABS, wysyłka InPostem w całej Polsce.",
+    "h1": [
+     "H1: Wgraj plik STL, a cenę zobaczysz od razu"
+    ],
+    "first": "Druk z pliku klienta (STL)",
+    "seoFirst": "Druk z pliku klienta (STL)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Wycena online / cennik"
+    ],
+    "seoWorks": [
+     "Druk z pliku klienta (STL)",
+     "Druk z materiałów PLA / PETG / ABS"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "skandruk3d.pl",
+    "url": "https://skandruk3d.pl/",
+    "title": "Drukomat | Wydruk 3D Katowice | Druk 3D | Skan 3D | Drukarnia Śląsk",
+    "desc": "Profesjonalny druk 3D i skan 3D w Katowicach – szybka realizacja, wysoka jakość i indywidualne wyceny. Tworzymy prototypy, modele techniczne i elementy na zamówienie.",
+    "h1": [
+     "H1: print your world"
+    ],
+    "first": "Skanowanie 3D",
+    "seoFirst": "Skanowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Figurki / modele / gadżety",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "3dexlab.pl",
+    "url": "https://3dexlab.pl/",
+    "title": "3DexLab – Usługi druku 3D w Bydgoszczy | Szybko i precyzyjnie",
+    "desc": "3DexLab – usługi druku 3D i modelowania w Bydgoszczy. Maksymalna dokładność i szybki czas realizacji. Odkryj możliwości, zadzwoń do nas!",
+    "h1": [
+     "H1: Druk 3D Bydgoszcz"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "be3d.io",
+    "url": "https://be3d.io/",
+    "title": "Druk 3D i skanowanie 3D na zamówienie",
+    "desc": "Profesjonalny druk 3D i skanowanie 3D. Szybka wycena, doradztwo, prototypy i produkcja małoseryjna. Rzeszów i cała Polska.",
+    "h1": [
+     "H1: Druk 3D i Projektowanie na zamówienie"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Skanowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "innocraft.pl",
+    "url": "https://innocraft.pl/",
+    "title": "Druk 3D Opole | Projektowanie i skanowanie 3D – InnoCraft",
+    "desc": "Druk 3D, skanowanie 3D i projektowanie CAD w Opolu i całej Polsce. Prototypy, części zamienne i krótkie serie. Opisz swój projekt — przygotujemy wycenę.",
+    "h1": [
+     "H1: Druk 3D, projektowanie i skanowanie 3D"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "Projektowanie / modelowanie 3D",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Części zamienne / odtworzenie części",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Skanowanie 3D"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "3d-graphic.pl",
+    "url": "https://www.3d-graphic.pl/drukarnia/",
+    "title": "DRUKARNIA - GDYNIA - POGÓRZE | 3d-Graphic",
+    "desc": "Drukarnia wielkoformatowa - druk od najmniejszego formatu A3 wysokiej jakości w krótkim terminie. Profesjonalny projekt i przygotowanie do druku zdjęć. Naklejki",
+    "h1": [
+     "H1: DRUKARNIA",
+     "H1: Drukarnia cyfrowa"
+    ],
+    "first": "Projektowanie / modelowanie 3D",
+    "seoFirst": "",
+    "works": [
+     "Projektowanie / modelowanie 3D",
+     "Druk seryjny / małe serie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "prynt3d.pl",
+    "url": "https://prynt3d.pl/",
+    "title": "Druk 3D Olsztyn | FDM SLA SLS | Frezowanie CNC | prynt3D.space",
+    "desc": "Druk 3D Olsztyn - FDM, SLA, SLS, wielokolorowy. Frezowanie CNC, grawer laserowy, cięcie laserowe, skanowanie 3D. Profesjonalne usługi prynt3D.space",
+    "h1": [
+     "H1: Profesjonalny druk 3D i obróbka CNC w Olsztynie"
+    ],
+    "first": "Druk żywiczny (SLA)",
+    "seoFirst": "Druk żywiczny (SLA)",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk żywiczny (SLA)",
+     "Druk seryjny / małe serie",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Projektowanie / modelowanie 3D",
+     "Druk żywiczny (SLA)",
+     "Skanowanie 3D",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "3dprint.com.pl",
+    "url": "https://3dprint.com.pl/druk-3d-warszawa/",
+    "title": "Druk 3D Warszawa – profesjonalny 3D druk na zamówienie – 3DPrint",
+    "desc": "Oferujemy druk 3D w Warszawie – prototypy, modele techniczne, elementy do produkcji. Nowoczesna technologia, szybka realizacja, indywidualne podejście.",
+    "h1": [
+     "H1: Druk 3D – Warszawa"
+    ],
+    "first": "Druk seryjny / małe serie",
+    "seoFirst": "Prototypy",
+    "works": [
+     "Druk z pliku klienta (STL)",
+     "Projektowanie / modelowanie 3D",
+     "Prototypy",
+     "Druk z materiałów PLA / PETG / ABS",
+     "Druk żywiczny (SLA)",
+     "Figurki / modele / gadżety",
+     "Druk seryjny / małe serie",
+     "Wycena online / cennik",
+     "Druk SLS / MJF / przemysłowy"
+    ],
+    "seoWorks": [
+     "Prototypy",
+     "Druk seryjny / małe serie"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Projektowanie / modelowanie 3D": {
+    "было": 16,
+    "стало": 6,
+    "исключено": [
+     "modelowanie 3d",
+     "projektowanie 3d online za darmo",
+     "modelowanie 3d org",
+     "projektowanie 3d za darmo",
+     "projektowanie 3d dla dzieci",
+     "modelowanie 3d praca",
+     "projektowanie 3d programy",
+     "projektowanie 3d tinkercad",
+     "projektowanie 3d ai",
+     "projektowanie 3d do druku za darmo"
+    ]
+   },
+   "подсказки: Części zamienne / odtworzenie części": {
+    "было": 6,
+    "стало": 5,
+    "исключено": [
+     "druk 3d części samochodowych"
+    ]
+   },
+   "подсказки: Figurki / modele / gadżety": {
+    "было": 7,
+    "стало": 5,
+    "исключено": [
+     "figurki druk 3d sklep",
+     "figurki druk 3d allegro"
+    ]
+   },
+   "подсказки: Skanowanie 3D": {
+    "было": 11,
+    "стало": 8,
+    "исключено": [
+     "skanowanie 3d telefonem",
+     "skanowanie 3d iphone",
+     "skanowanie 3d praca"
+    ]
+   },
+   "общие подсказки: Projektowanie / modelowanie 3D": {
+    "было": 2,
+    "стало": 1,
+    "исключено": [
+     "mikra 3d druk 3d i projektowanie radom opinie"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Wycena online / cennik",
+   "comp": {
+    "mention": 72,
+    "first": 21,
+    "seoFirst": 20,
+    "seo": 49,
+    "head": 35,
+    "td": 36
+   },
+   "ac": 22,
+   "probe": {
+    "n": 8,
+    "cena": 8,
+    "ex": [
+     "druk 3d wycena online",
+     "druk 3d wycena",
+     "druk 3d automatyczna wycena",
+     "druk 3d sla wycena",
+     "druk 3d warszawa wycena online"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Prototypy",
+   "comp": {
+    "mention": 71,
+    "first": 9,
+    "seoFirst": 15,
+    "seo": 35,
+    "head": 17,
+    "td": 25
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "prototypowanie 3d",
+     "prototypowanie druk 3d"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk seryjny / małe serie",
+   "comp": {
+    "mention": 70,
+    "first": 7,
+    "seoFirst": 4,
+    "seo": 29,
+    "head": 21,
+    "td": 16
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "druk 3d seryjny",
+     "druk 3d produkcja"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk z pliku klienta (STL)",
+   "comp": {
+    "mention": 62,
+    "first": 4,
+    "seoFirst": 4,
+    "seo": 23,
+    "head": 14,
+    "td": 13
+   },
+   "ac": 1,
+   "probe": {
+    "n": 6,
+    "cena": 0,
+    "ex": [
+     "druk 3d z pliku stl",
+     "druk 3d z pliku",
+     "druk 3d format pliku",
+     "druk 3d stl",
+     "druk 3d pliki stl"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Projektowanie / modelowanie 3D",
+   "comp": {
+    "mention": 59,
+    "first": 15,
+    "seoFirst": 11,
+    "seo": 36,
+    "head": 28,
+    "td": 16
+   },
+   "ac": 1,
+   "probe": {
+    "n": 6,
+    "cena": 0,
+    "ex": [
+     "projektowanie 3d do druku",
+     "projektowanie 3d online",
+     "modelowanie 3d online",
+     "projektowanie 3d do druku online",
+     "modelowanie 3d na zamówienie"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk z materiałów PLA / PETG / ABS",
+   "comp": {
+    "mention": 56,
+    "first": 3,
+    "seoFirst": 3,
+    "seo": 27,
+    "head": 17,
+    "td": 13
+   },
+   "ac": 13,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Części zamienne / odtworzenie części",
+   "comp": {
+    "mention": 44,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 13,
+    "head": 7,
+    "td": 8
+   },
+   "ac": 0,
+   "probe": {
+    "n": 5,
+    "cena": 0,
+    "ex": [
+     "druk 3d drukowanie części zamiennych",
+     "druk 3d części",
+     "druk 3d części z tworzyw sztucznych plastiki naprawa plastików",
+     "druk 3d czesci zamienne",
+     "druk 3d czesci"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Figurki / modele / gadżety",
+   "comp": {
+    "mention": 43,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 11,
+    "head": 7,
+    "td": 5
+   },
+   "ac": 5,
+   "probe": {
+    "n": 5,
+    "cena": 1,
+    "ex": [
+     "druk 3d figurki",
+     "druk 3d figurki rpg",
+     "druk 3d figurki warszawa",
+     "druk 3d na zamówienie figurki",
+     "ile kosztuje druk 3d figurki"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk żywiczny (SLA)",
+   "comp": {
+    "mention": 40,
+    "first": 8,
+    "seoFirst": 6,
+    "seo": 22,
+    "head": 19,
+    "td": 11
+   },
+   "ac": 15,
+   "probe": {
+    "n": 14,
+    "cena": 2,
+    "ex": [
+     "druk 3d żywica",
+     "druk 3d żywica na zamówienie",
+     "druk 3d żywica wrocław",
+     "druk 3d żywica warszawa",
+     "druk 3d żywica cena"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Druk SLS / MJF / przemysłowy",
+   "comp": {
+    "mention": 35,
+    "first": 3,
+    "seoFirst": 0,
+    "seo": 13,
+    "head": 11,
+    "td": 7
+   },
+   "ac": 1,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Skanowanie 3D",
+   "comp": {
+    "mention": 20,
+    "first": 5,
+    "seoFirst": 5,
+    "seo": 13,
+    "head": 12,
+    "td": 8
+   },
+   "ac": 0,
+   "probe": {
+    "n": 8,
+    "cena": 1,
+    "ex": [
+     "skanowanie 3d",
+     "skanowanie 3d wrocław",
+     "skanowanie 3d cena",
+     "skanowanie 3d inżynieria odwrotna",
+     "skanowanie 3d warszawa"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Części zamienne",
+   "a": "Części zamienne / odtworzenie części",
+   "why": "сильная сторона Omobonus (odtworzenie części в прайсе), 44 конкурента",
+   "evidence": "конкуренты 44 из 79 (первой работой — 0, в Title/Description — 8) · подсказки Google 5 (напр. «druk 3d drukowanie części zamiennych», «druk 3d części»)"
+  },
+  {
+   "w": "Prototypy",
+   "a": "Prototypy",
+   "why": "71 из 79 конкурентов",
+   "evidence": "конкуренты 71 из 79 (первой работой — 9, в Title/Description — 25) · подсказки Google 2 (напр. «prototypowanie 3d», «prototypowanie druk 3d»)"
+  },
+  {
+   "w": "Druk z pliku STL",
+   "a": "Druk z pliku klienta (STL)",
+   "why": "62 конкурента; так клиенты ищут",
+   "evidence": "конкуренты 62 из 79 (первой работой — 4, в Title/Description — 13) · подсказки Google 6 (напр. «druk 3d z pliku stl», «druk 3d z pliku»)"
+  },
+  {
+   "w": "Projektowanie 3D",
+   "a": "Projektowanie / modelowanie 3D",
+   "why": "16 подсказок, у 15 конкурентов первая работа",
+   "evidence": "конкуренты 59 из 79 (первой работой — 15, в Title/Description — 16) · подсказки Google 6 (напр. «projektowanie 3d do druku», «projektowanie 3d online»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Wycena online",
+   "why": "№1 у конкурентов (72), но у Omobonus нет онлайн-калькулятора — «полный прайс» закрывает этот смысл",
+   "evidence": ""
+  },
+  {
+   "w": "Materiały PLA/PETG/ABS/TPU",
+   "why": "56 конкурентов, но вместе с работами не помещается; запасной вариант",
+   "evidence": ""
+  },
+  {
+   "w": "Druk żywiczny",
+   "why": "на заказ Omobonus печатает только филаментом",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Индивидуальный текст — не шаблон «Serwis i naprawa»"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Druk 3D na zamówienie we Wrocławiu ✔ Części zamienne, prototypy, druk z pliku STL, projektowanie 3D ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 151
+  },
+  "uk": {
+   "text": "✔ 3D-друк на замовлення у Вроцлаві ✔ Запчастини, прототипи, друк із файлу STL, 3D-моделювання ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 144
+  },
+  "ru": {
+   "text": "✔ 3D-печать на заказ во Вроцлаве ✔ Запчасти, прототипы, печать из файла STL, 3D-моделирование ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 143
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

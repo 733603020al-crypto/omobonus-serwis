@@ -1,0 +1,2100 @@
+{
+ "page": "/uslugi/serwis-niszczarek",
+ "name": "Шредеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "naprawa niszczarek",
+    "serwis niszczarek",
+    "naprawa niszczarki",
+    "serwis niszczarek cennik",
+    "serwis niszczarek Warszawa",
+    "serwis niszczarek Kraków",
+    "serwis niszczarek Wrocław",
+    "serwis niszczarek Poznań",
+    "serwis niszczarek Gdańsk",
+    "serwis niszczarek Łódź",
+    "serwis niszczarek Katowice",
+    "serwis niszczarek Szczecin",
+    "serwis niszczarek Lublin",
+    "serwis niszczarek Bydgoszcz",
+    "serwis niszczarek Białystok",
+    "serwis niszczarek Rzeszów",
+    "serwis niszczarek Toruń",
+    "serwis niszczarek Kielce",
+    "serwis niszczarek Opole",
+    "serwis niszczarek Gdynia",
+    "serwis niszczarek Olsztyn",
+    "serwis niszczarek Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "niszczarka ",
+    "serwis niszczarek ",
+    "naprawa niszczarki ",
+    "niszczarka nie ",
+    "niszczarka fellowes "
+   ],
+   "uniqueSuggestions": 287,
+   "withPrice": [
+    "ile kosztuje naprawa niszczarki",
+    "niszczarka cena",
+    "niszczarka ile kosztuje",
+    "niszczarka dokumentów cena",
+    "niszczarka biurowa cena",
+    "niszczarka fellowes cena",
+    "niszczarka hsm cena",
+    "niszczarka kobra cena",
+    "niszczarka papieru cena",
+    "banksy obraz niszczarka cena",
+    "niszczarka fellowes 99ci cena",
+    "niszczarka fellowes 12c cena"
+   ],
+   "wroclaw": [
+    "serwis niszczarek rexel wrocław",
+    "serwis niszczarek fellowes wrocław",
+    "serwis niszczarek wrocław",
+    "niszczarka do papieru wrocław",
+    "niszczarka do dokumentów wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Usuwanie zacięć": {
+    "seeds": [
+     "niszczarka zacięła się",
+     "niszczarka zacięcie",
+     "zacięta niszczarka"
+    ],
+    "n": 5,
+    "nRaw": 5,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "niszczarka się zacięła",
+     "niszczarka zacięcie papieru",
+     "niszczarka fellowes zacięcie papieru",
+     "niszczarka fellowes zaciecie papieru",
+     "zacięta niszczarka"
+    ],
+    "all": [
+     "niszczarka się zacięła",
+     "niszczarka zacięcie papieru",
+     "niszczarka fellowes zacięcie papieru",
+     "niszczarka fellowes zaciecie papieru",
+     "zacięta niszczarka"
+    ],
+    "dropped": []
+   },
+   "Naprawa / wymiana noży (mechanizmu tnącego)": {
+    "seeds": [
+     "wymiana noży w niszczarce",
+     "noże do niszczarki",
+     "ostrzenie noży niszczarki"
+    ],
+    "n": 7,
+    "nRaw": 7,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "noże do niszczarki",
+     "noże do niszczarki fellowes",
+     "noże do niszczarki papieru",
+     "noże do niszczarki rexel",
+     "noże do niszczarki hsm",
+     "noże niszczarki",
+     "ostrzenie noży niszczarki"
+    ],
+    "all": [
+     "noże do niszczarki",
+     "noże do niszczarki fellowes",
+     "noże do niszczarki papieru",
+     "noże do niszczarki rexel",
+     "noże do niszczarki hsm",
+     "noże niszczarki",
+     "ostrzenie noży niszczarki"
+    ],
+    "dropped": []
+   },
+   "Naprawa / wymiana silnika": {
+    "seeds": [
+     "silnik do niszczarki",
+     "niszczarka nie działa silnik"
+    ],
+    "n": 3,
+    "nRaw": 3,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "silnik do niszczarki fellowes",
+     "silnik do niszczarki papieru",
+     "silnik do niszczarki"
+    ],
+    "all": [
+     "silnik do niszczarki fellowes",
+     "silnik do niszczarki papieru",
+     "silnik do niszczarki"
+    ],
+    "dropped": []
+   },
+   "Konserwacja / olejowanie / czyszczenie": {
+    "seeds": [
+     "olej do niszczarki",
+     "olejowanie niszczarki",
+     "konserwacja niszczarki",
+     "czyszczenie niszczarki"
+    ],
+    "n": 14,
+    "nRaw": 18,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "olej do niszczarki",
+     "olej do niszczarki fellowes",
+     "olej do niszczarki papieru",
+     "olej do niszczarki hsm",
+     "olej do niszczarki jak używać",
+     "olej do niszczarki kobra",
+     "olej do niszczarki rexel",
+     "olejowanie niszczarki",
+     "konserwacja niszczarki do papieru",
+     "konserwacja niszczarki"
+    ],
+    "all": [
+     "olej do niszczarki",
+     "olej do niszczarki fellowes",
+     "olej do niszczarki papieru",
+     "olej do niszczarki hsm",
+     "olej do niszczarki jak używać",
+     "olej do niszczarki kobra",
+     "olej do niszczarki rexel",
+     "olejowanie niszczarki",
+     "konserwacja niszczarki do papieru",
+     "konserwacja niszczarki",
+     "konserwacja niszczarki fellowes",
+     "czyszczenie niszczarki do papieru",
+     "czyszczenie niszczarki",
+     "czyszczenie niszczarki fellowes"
+    ],
+    "dropped": [
+     [
+      "olej do niszczarki media expert",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "olej do niszczarki action",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "olej do niszczarki allegro",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "olej do niszczarki rtv euro agd",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Naprawa czujników / fotokomórki": {
+    "seeds": [
+     "czujnik niszczarki",
+     "niszczarka nie włącza się"
+    ],
+    "n": 4,
+    "nRaw": 4,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czujnik do niszczarki",
+     "niszczarka nie włącza się",
+     "fellowes niszczarka nie włącza się",
+     "niszczarka do papieru nie włącza się"
+    ],
+    "all": [
+     "czujnik do niszczarki",
+     "niszczarka nie włącza się",
+     "fellowes niszczarka nie włącza się",
+     "niszczarka do papieru nie włącza się"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 5,
+   "impressions": 24,
+   "clicks": 2,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "naprawa niszczarek wrocław",
+     "impr": 14,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa niszczarek",
+     "impr": 5,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis niszczarek wrocław",
+     "impr": 3,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa niszczarki",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis niszczarek fellowes wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 78,
+  "checked": 96,
+  "candidates": 104,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "naprawa-niszczarek.pl",
+    "url": "https://www.naprawa-niszczarek.pl/serwis-niszczarek.html",
+    "title": "Serwis i naprawa niszczarek, niszczarek - Biuromaszyny",
+    "desc": "Profesjonalny serwis/naprawa niszczarek do dokumentów, niszczarek przemysłowych, belownic. Zajmujemy się serwisem takich marek jak Ideal, HSM, Dahle, Kobra, Opus, Rexel, Fellowes, Eba, Wallner i innych producentów.",
+    "h1": [
+     "H1: Serwis niszczarek na którym można polegać"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisniszczarek.pl",
+    "url": "https://www.serwisniszczarek.pl/",
+    "title": "Serwis niszczarek | Naprawa niszczarek | Sprzedaż niszczarek | EBA | HSM | IDEAL | FELLOWES | Części zamienne",
+    "desc": "Specjalizujemy się w naprawie serwisowaniu niszczarek: EBA, IDEAL, KOBRA, TARNATOR,HSM,  REXEL, FELLOWES, TAROS, DAHLE, SUNWOOD, WALLNER I wiele innych",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwis-niszczarek.pl",
+    "url": "https://serwis-niszczarek.pl/",
+    "title": "Serwis niszczarek Warszawa | Naprawa i sprzedaż – Serwis Niszczarek",
+    "desc": "Serwis niszczarek Warszawa – naprawa niszczarek, liczarek banknotów i sprzedaż sprzętu biurowego. Szybka obsługa w Warszawie i w województwie mazowieckim.",
+    "h1": [
+     "H1: Serwis niszczarek i liczarek w Warszawie"
+    ],
+    "first": "Naprawa przekładni / kół zębatych",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "biurokseroserwis.com",
+    "url": "https://biurokseroserwis.com/serwis-niszczarek/",
+    "title": "Serwis niszczarek | Biuro Ksero Serwis",
+    "desc": "Szukasz serwisu drukarek? Świetnie trafiłeś. Sprawdź naszą ofertę na serwis drukarek. Szybki termin naprawy.",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "scspolska.pl",
+    "url": "https://scspolska.pl/serwis-niszczarek/",
+    "title": "Serwis niszczarek - Niszczarka | Niszczarki biurowe do papieru i dokumentów | Nacinarki do kartonów | Urządzenia do produkcji wypełniaczy | Sprzedaż | Wynajem | Serwis",
+    "desc": "",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "avarus.pl",
+    "url": "https://avarus.pl/wpis-9-serwis_niszczarek___profesjonalizm_i_niezawodnosc_z_avarus",
+    "title": "Serwis niszczarek, naprawa niszczarek w ofercie firmy Avarus",
+    "desc": "Serwis niszczarek, naprawa niszczarek w ofercie firmy Avarus. Zajmujemy się naprawą i serwisem niszczarek różnych producentów, oferujemy regularny serwis.",
+    "h1": [
+     "H1: Serwis niszczarek - profesjonalizm i niezawodność z Avarus"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "biuromaszyny.pl",
+    "url": "https://biuromaszyny.pl/pl/c/Naprawaserwis-niszczarek/341",
+    "title": "Naprawa/serwis niszczarek - BiuroMaszyny.pl",
+    "desc": "Lista produktów kategorii Naprawa/serwis niszczarek / Serwis/Naprawa Urządzeń Biurowych i Poligraficznych / INNE",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "jolmark.pl",
+    "url": "https://jolmark.pl/serwis-niszczarek/",
+    "title": "Serwis niszczarek – serwis i naprawa niszczarek, części",
+    "desc": "",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "Naprawa przekładni / kół zębatych",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Poznań",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "acesprojekt.pl",
+    "url": "https://www.acesprojekt.pl/naprawa-niszczarek-pm-31.html",
+    "title": "Profesjonalny serwis, konserwacja, naprawa niszczarek HSM, Fellows, Opus, Ideal",
+    "desc": "Oferujemy profesjonalną i kompleksową naprawę pogwarancyjną, konserwację i serwis niszczarek dokumentów renomowanych producentów urządzeń Fellowes, Wallner, Dahle, EBA, HSM, Ideal, Kobra, Opus, Rexel, Pabianice, Łódź, Łask, Bełchatów, Piotrków, Stryków, Konstantynów, Aleksandrów, Rzgów",
+    "h1": [
+     "H1: Naprawa niszczarek",
+     "H1: Profesjonalny serwis, konserwacja, naprawa niszczarek dokumentów HSM, Fellows, Opus, Ideal, Kobra, Rexel i innych."
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "zamawiamserwis.pl",
+    "url": "https://www.zamawiamserwis.pl/PL-H19/naprawa-i-serwis/13.html",
+    "title": "Naprawa i serwis niszczarek | AGD, RTV, GSM, IT",
+    "desc": "Naprawa i serwis niszczarek. Zgłaszanie napraw sprzętu AGD, RTV, komputerów, telefonów, pralek, lodówek i wielu innych urządzeń.",
+    "h1": [
+     "H1: Naprawa i serwis niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Szczecin",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "essi.pl",
+    "url": "https://essi.pl/content/serwis-niszczarek",
+    "title": "Serwis niszczarek w Warszawie i Poznaniu — fachowa naprawa",
+    "desc": "Prowadzimy serwis urządzeń biurowych. Świadczymy kompleksowe naprawy gwarancyjne i pogwarancyjne m.in. niszczarek, laminatorów oraz bindownic. Zamów usługę!",
+    "h1": [
+     "H1: Serwis urządzeń - Warszawa (Michałowice-Wieś), Poznań"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Poznań",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "procopy.wroclaw.pl",
+    "url": "https://www.procopy.wroclaw.pl/serwis-niszczarek-wroclaw.html",
+    "title": "Serwis niszczarek Wrocław - ProOffice - naprawa niszczarek Wrocław.",
+    "desc": "Naprawa niszczarek we Wrocławiu, bindownic, falcerek, drukarek. Sprzedaż niszczarek Opus, Ideal, HSM, Eba, Kobra. Profesjonalna naprawa niszczarek każdego rodzaju.",
+    "h1": [
+     "H1: SERWIS NISZCZAREK WROCŁAW"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "biurosprzet.pl",
+    "url": "https://biurosprzet.pl/serwis/serwis-niszczarek/",
+    "title": "Serwis i naprawa niszczarek Fellowes Warszawa - BIUROSPRZĘT",
+    "desc": "Naprawa niszczarek to usługa, jaką chcemy zaproponować naszym klientom na terenie Warszawy. Nasz serwis niszczarek to gwarancja pełnej sprawności urządzeń na lata.",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "rock-it.pl",
+    "url": "https://rock-it.pl/diagnostyka-i-naprawa-niszczarek-bezplatna-wycena-przed-serwisem/",
+    "title": "Diagnostyka i naprawa niszczarek – bezpłatna wycena przed serwisem",
+    "desc": "Niszczarki dokumentów to urządzenia niezbędne w każdej firmie dbającej o ochronę danych.",
+    "h1": [
+     "H1: Diagnostyka i naprawa niszczarek – bezpłatna wycena przed serwisem"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "platformabiurowa.pl",
+    "url": "https://platformabiurowa.pl/serwis-i-naprawa-niszczarek/",
+    "title": "Serwis i naprawa niszczarek - Platforma Biurowa",
+    "desc": "",
+    "h1": [
+     "H1: Serwis i naprawa niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pc-net.pl",
+    "url": "https://pc-net.pl/naprawa-niszczarek/",
+    "title": "Naprawa niszczarek - PC-NET serwis urządzeń biurowych",
+    "desc": "Naprawa niszczarek, bindowic, falcerek, drukarek. Sprzedaż niszczarek Tarnator, Opus, Ideal, HSM, Eba, Kobra. Profesjonalna naprawa niszczarek!",
+    "h1": [
+     "H1: Naprawa niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa czujników / fotokomórki",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "widkot.pl",
+    "url": "https://widkot.pl/niszczarki-lublin/",
+    "title": "Niszczarki HSM Lublin - Sprzedaż i serwis kserokopiarek drukarek Konica Minolta",
+    "desc": "Profesjonalna sprzedaż niszczarek HSM w Lublinie. Oferujemy nowoczesne niszczarki dokumentów dla firm i instytucji.",
+    "h1": [
+     "H1: Niszczarki HSM Lublin",
+     "H1: Niszczarki HSM Lublin — sprzedaż, wynajem i serwis"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Lublin",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "nsb-serwis.pl",
+    "url": "https://nsb-serwis.pl/serwis-i-naprawa-niszczarek/",
+    "title": "Naprawa niszczarek Warszawa | Serwis niszczarek – NSB Serwis",
+    "desc": "Profesjonalny serwis, naprawa i konserwacja niszczarek w Warszawie. Smarowanie, czyszczenie, wymiana noży, paska napędowego, silnika i przekładni. NSB Serwis. Regeneracja noży, naprawa zasilacza. Pogotowie niszczarkowe. Sprawdź cennik.",
+    "h1": [
+     "H1: Serwis i naprawa niszczarek"
+    ],
+    "first": "Naprawa / wymiana silnika",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa czujników / fotokomórki",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa czujników / fotokomórki",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pryzmat.com",
+    "url": "https://pryzmat.com/",
+    "title": "Pryzmat - sprzęt, druk i serwis dla Twojego biura",
+    "desc": "Jeden partner dla sprzętu biurowego, druku, dokumentów i wsparcia technicznego. Drukarki, monitory, serwis i wynajem dla firm i instytucji w całej Polsce.",
+    "h1": [
+     "H1: Twoje biuro w dobrych rękach"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Szczecin",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "polso2.com.pl",
+    "url": "https://polso2.com.pl/serwis-niszczarek/",
+    "title": "Serwis niszczarek HSM Katowice, Śląsk - Polso Katowice",
+    "desc": "Szukasz sprawdzonego serwisu niszczarek marki HSM lub innych modeli? Skontaktuj się z nami, proponujemy ekspresową naprawę w przystępnej cenie!",
+    "h1": [
+     "H1: Serwis niszczarek HSM"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa czujników / fotokomórki",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/serwis-niszczarek/opole-lubelskie",
+    "title": "Serwis Niszczarek Opole Lubelskie - Naprawa Niszczarek Tanio",
+    "desc": "Serwis Niszczarek Opole Lubelskie - Okolice. Profesjonalna Naprawa Niszczarek: Szybko, Tanio i Profesjonalnie. ☎ 517 532 335",
+    "h1": [
+     "H1: Serwis niszczarek Opole Lubelskie"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Lublin",
+     "Opole"
+    ]
+   },
+   {
+    "host": "tradecom.pl",
+    "url": "https://www.tradecom.pl/",
+    "title": "SERWIS NISZCZAREK WARSZAWA | CZĘŚCI DO NISZCZAREK EBA IDEAL HSM FELLOWES KOBRA | SERWIS LICZAREK | NISZCZARKI | LICZARKI",
+    "desc": "",
+    "h1": [
+     "H1: Wypożyczalnia niszczarek i liczarek",
+     "H1: Niszczarki EBA IDEAL Made in Germany"
+    ],
+    "first": "Naprawa przekładni / kół zębatych",
+    "seoFirst": "",
+    "works": [
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "niszczarka.net",
+    "url": "https://niszczarka.net/pl/c/SERWIS-NISZCZAREK/331/1/full",
+    "title": "SERWIS NISZCZAREK - www.niszczarka.net",
+    "desc": "Lista produktów kategorii SERWIS NISZCZAREK",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa podajnika AutoFeed"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "copi-flex.pl",
+    "url": "https://www.copi-flex.pl/pl/19-naprawy-i-konserwacje-niszczarek",
+    "title": "Naprawy - serwis i konserwacje niszczarek",
+    "desc": "Bezpłatna ocena kosztów naprawy. skorzystaj z naszej wiedzy i doświadczenia. Naprawiamy niszczarki Kobra, Fellowes, Ideal, HSM, Rexel, Wallner",
+    "h1": [
+     "H1: Naprawy - serwis i konserwacje niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": []
+   },
+   {
+    "host": "opus.pl",
+    "url": "https://opus.pl/serwis",
+    "title": "Serwis urządzeń biurowych - OPUS - nr 1 w biurze",
+    "desc": "OPUS - polski producent urządzeń i akcesoriów do bindowania, laminowania, opraw dokumentów, złoceń, niszczarek, gilotyn, obcinarek. Wyłączny przedstawiciel marek IDEAL i EBA w Polsce!",
+    "h1": [
+     "H1: Firma OPUS jest Wyłącznym Autoryzowanym Serwisem marek:"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa czujników / fotokomórki"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "complexbiuro.pl",
+    "url": "https://complexbiuro.pl/serwis-niszczarek.html",
+    "title": "Serwis i sprzedaż niszczarek Gdańsk - ComplexBiuro",
+    "desc": "Profesjonalna sprzedaż oraz serwis niszczarek dla firm - ComplexBiuro Gdańsk! Zapraszamy wszystkich do sprawdzania naszej atrakcyjnej oferty!",
+    "h1": [
+     "H1: Serwis niszczarek Gdańsk"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "silwer.com.pl",
+    "url": "https://silwer.com.pl/serwis",
+    "title": "Serwis, naprawa sejfów, niszczarek, liczarek, kalkulatorów z drukarką - Silwer Łódź",
+    "desc": "Nasza oferta to również serwis, naprawa sejfów, niszczarek, liczarek, kalkulatorów z drukarką i wielu innych urządzeń. Zapraszamy do Silwer.",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "corrado.lublin.pl",
+    "url": "https://corrado.lublin.pl/serwis/serwis-niszczarek/",
+    "title": "Serwis Niszczarek - Lublin i Okolice | Corrado",
+    "desc": "Przygotowaliśmy dla Ciebie ofertę fachowego serwisu niszczarek w Lublinie i okolicach. Nie czekaj i sprawdź naszą ofertę!",
+    "h1": [
+     "H1: Serwis niszczarek Lublin"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "printmark.pl",
+    "url": "https://printmark.pl/serwis/serwis-urzadzen",
+    "title": "Serwis kserokopiarek, drukarek, niszczarek | Białystok",
+    "desc": "Prowadzimy profesjonalny serwis drukarek, kserokopiarek, urządzeń wielofunkcyjnych, niszczarek i innych urządzeń biurowych.",
+    "h1": [
+     "H1: Serwis kserokopiarek, drukarek i niszczarek"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "dormex.pl",
+    "url": "https://www.dormex.pl/serwis/serwis-niszczarek-warszawa/",
+    "title": "Serwis niszczarek Warszawa | DORMEX",
+    "desc": "Serwis i naprawa niszczarek - Dormex Warszawa. Wychodząc na przeciw zapotrzebowaniom klientów nasza firma oferuje naprawę , serwis i konserwacje niszczarek.",
+    "h1": [
+     "H1: Serwis niszczarek Warszawa",
+     "H1: SERWIS NISZCZAREK WARSZAWA"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "easycopy.pl",
+    "url": "https://www.easycopy.pl/",
+    "title": "EasyCopy | Kserokopiarki i Niszczarki Kraków Dzierżawa Serwis",
+    "desc": "Zapoznaj się z ofertą naszych usług: dzierżawą i serwisem kserokopiarek, dzierżawą niszczarek. Prowadzimy sprzedaż kopiarek oraz niszczarek.",
+    "h1": [
+     "H1: Nowoczesne systemy biurowe kserokopiarki, drukarki, niszczarki"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "arcan.pl",
+    "url": "https://arcan.pl/serwis/serwis-niszczarek/",
+    "title": "Serwis i naprawa niszczarek do papieru Poznań - Arcan s.c.",
+    "desc": "Zajmujemy się naprawą niszczarek, jak i ich całym serwisem. Specjalizujemy się w markach Kobra i Fellowes. Oferta dla biur i osób prywatnych - Poznań i okolice",
+    "h1": [
+     "H1: Serwis niszczarek"
+    ],
+    "first": "Naprawa przekładni / kół zębatych",
+    "seoFirst": "Naprawa przekładni / kół zębatych",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "abcdigital.pl",
+    "url": "https://www.abcdigital.pl/serwis-lub-pomoc-techniczna",
+    "title": "Serwis i naprawa drukarek, kopiarek i niszczarek | Szczecin",
+    "desc": "Prowadzimy serwis urządzeń wielofunkcyjnych, kopiarek, niszczarek, drukarek laserowych i kserokopiarek w Szczecinie. Wykonujemy naprawy urządzeń poleasingowych.\r\n",
+    "h1": [
+     "H1: Serwis urządzeń wielofunkcyjnych"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "kopiarkibialystok.pl",
+    "url": "https://www.kopiarkibialystok.pl/",
+    "title": "Serwis, naprawa, sprzedaż, wynajem kserokopiarek, drukarek",
+    "desc": "Serwis, naprawa, sprzedaż, wynajem, dzierżawa kserokopiarek, drukarek oraz urządzeń wielofunkcyjnych. Białystok, Warszawa, Gdańsk i okolice.",
+    "h1": [],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "jksupport.pl",
+    "url": "https://jksupport.pl/serwis-drukarek-i-kserokopiarek.html",
+    "title": "Serwis, konserwacja i naprawa kserokopiarek i drukarek Opole - JK Support",
+    "desc": "Potrzebujesz serwisu komputerów w Opolu? Oferujemy diagnozę, naprawę i konserwację sprzętu. Zaufaj naszemu doświadczeniu i skorzystaj z naszych usług!",
+    "h1": [
+     "H1: Serwis i naprawa drukarek i kserokopiarek w Opolu"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "niszczarki.ms-24.pl",
+    "url": "https://www.niszczarki.ms-24.pl/serwis-niszczarek/",
+    "title": "Serwis Niszczarek Kraków | Niszczarki dokumentów - ms-24.pl",
+    "desc": "Serwisujemy Niszczarki Wszystkich Producentów Gwarantujemy Niskie Ceny ! Bezpłatny Kosztorys Naprawy!",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "biuroservice.com.pl",
+    "url": "https://biuroservice.com.pl/",
+    "title": "Biuro-Service - serwis i naprawa drukarek, kserokopiarek, liczarek, niszczarek w Poznaniu",
+    "desc": "Serwis niszczarek, zasilaczy awaryjnych ups w Poznaniu. Konserwacja sprzętu biurowego w Poznaniu. Skorzystaj z profesjonalnej naprawy sprzętu biurowego. Diagnostyka i wycena naprawy sprzętu biurowego w Poznaniu.",
+    "h1": [
+     "H1: Serwis zasilaczy awaryjnych"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "develop.szczecin.pl",
+    "url": "https://develop.szczecin.pl/serwis/",
+    "title": "Niszczarki HSM, Drukarki, Urządzenia wielofunkcyjne",
+    "desc": "INTER-COPY | Profesjonalne Niszczarki HSM. Drukarki profesjonalne, Urządzenia wielofunkcyjne",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "biuro-serwis.lublin.pl",
+    "url": "https://www.biuro-serwis.lublin.pl/",
+    "title": "Biuro-Serwis - urządzenia wielofunkcyjne, niszczarki, systemy interaktywne",
+    "desc": "Dla biura i edukacji: kserokopiarki i urządzenia wielofunkcyjne, niszczarki dokumentów, monitory i tablice interaktywne, projektory, komputery i pieczątki",
+    "h1": [
+     "H1: Biuro-Serwis",
+     "H1: Oferta sprzedaży"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "pragmatic.com.pl",
+    "url": "https://pragmatic.com.pl/",
+    "title": "Serwis, dzierżawa, sprzedaż kopiarek, drukarek, niszczarek w Bydgoszczy",
+    "desc": "Firma zajmuje się sprzedażą i serwisem urządzeń biurowych, a także materiałów eksploatacyjnych KYOCERA. Proponujemy Państwu doradztwo w zakresie instalacji i konfiguracji produktów tej marki.",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "eurobiurotorun.pl",
+    "url": "https://www.eurobiurotorun.pl/",
+    "title": "EURO BIURO TORUŃ ksero, kserokopiarki sprzedaż i serwis",
+    "desc": "EURO BIURO Toruń, sprzedaż i serwis kserokopiarek nowych i używanych. W ofercie sprzęt biurowy, kasy i drukarki fiksalne, drukarki laserowe, niszczarki. Usługi ksero kolorowe do A3, ksero i wydruki wielkoformatowe, laminowanie i bindowanie, oprawa prac na miejscu.",
+    "h1": [
+     "H1: Witaj na stronie firmy Euro Biuro z Torunia"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "kopiserwis.pl",
+    "url": "https://kopiserwis.pl/",
+    "title": "KopiSerwis – Niszczarki, Drukarki i Serwis Urządzeń Biurowych",
+    "desc": "Sprzedaż, dzierżawa i serwis niszczarek, drukarek i kopiarek. Kompleksowe rozwiązania biurowe dla firm, szkół i urzędów.",
+    "h1": [
+     "H1: Urządzenie dopasowane do Twoich potrzeb",
+     "H1: Zadbaj o sprawne biuro z Kopi Serwis"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "office-partner.pl",
+    "url": "https://office-partner.pl/niszczarki_hsm_classic.php",
+    "title": "OFFICE-PARTNER sprzedaż i serwis niszczarek Opole, Niszczarki Opus, Ideal, Rexel",
+    "desc": "W naszej ofercie znajdują się niszczarki, kopiarki, urządzenia do oprawy dokumentów\n oraz cała gama innych niezbędnych urządzeń w biurze XXI wieku",
+    "h1": [
+     "H1: HSM ShredStar S5",
+     "H1: HSM ShredStar S10"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "infotech.olsztyn.pl",
+    "url": "https://www.infotech.olsztyn.pl/",
+    "title": "Info Tech – sprzedaż i serwis urządzeń biurowych | Olsztyn",
+    "desc": "Firma Info Tech zajmuje się sprzedażą i serwisowaniem urządzeń biurowych. W naszej ofercie znajdą Państwo kserokopiarki, drukarki i niszczarki dokumentów.",
+    "h1": [
+     "H1: Sprzedaż i serwis urządzeń biurowych – Olsztyn"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "czestochowa.pc-net.pl",
+    "url": "https://czestochowa.pc-net.pl/?kontakt",
+    "title": "Firma PC-NET Serwis laptopów Częstochowa Pomoc IT Helpdesk - PC-NET",
+    "desc": "Serwis naprawa komputerów Częstochowa - Kontakt Adres: Słonecznikowa 6B Telefon: 602614637 e-mail: serwis@pc-net.pl Od: Poniedziałku do Piątku 8-16 Zapraszamy.",
+    "h1": [
+     "H1: Kontakt",
+     "H1: Jak dostarczyć urządzenie do serwisu"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "ms-24.pl",
+    "url": "https://ms-24.pl/",
+    "title": "Serwis Kserokopiarki Drukarki Niszczarki Dokumentów Kraków",
+    "desc": "",
+    "h1": [
+     "H1: Ms24 - Serwis urządzeń biurowych"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "www2.bikop.pl",
+    "url": "https://www2.bikop.pl/",
+    "title": "Serwis - urządzeń wielofunkcyjnych, kserokopiarek, drukarek - Gdańsk, Trójmiasto - Bikop",
+    "desc": "Zajmujemy się sprzedażą urządzeń wielofunkcyjnych, drukarek, skanerów oraz niszczarek. Oferujemy również dzierżawę, serwis gwarancyjny i profesjonalne wsparcie IT.",
+    "h1": [
+     "H1: Drukarki i urządzenia wielofunkcyjne – serwis"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "tromil.pl",
+    "url": "https://tromil.pl/serwis-niszczarek-lublin/",
+    "title": "Serwis niszczarek w Lublinie – kompleksowa obsługa i naprawa Tromil",
+    "desc": "Wybierz profesjonalny serwis niszczarek w Lublinie. Bezpłatny dojazd na terenie całego miasta z opcją naprawy na miejscu.",
+    "h1": [
+     "H1: Serwis niszczarek w Lublinie – kompleksowa obsługa i naprawa"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "bialcan.pl",
+    "url": "https://bialcan.pl/serwis/",
+    "title": "Serwis - Bialcan Białystok",
+    "desc": "",
+    "h1": [
+     "H1: Serwis Kserokopiarek",
+     "H1: STANDARD"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "xe.opole.pl",
+    "url": "https://xe.opole.pl/",
+    "title": "Kserokopiarki RICOH, skanery, drukarki, niszczarki, projektory - sprzedaż, wynajem, dzierżawa, serwis - XE Opole",
+    "desc": "Firma XE zajmuje się sprzedażą nowoczesnych urządzeń biurowych. Sprzedajemy skanery, kserokopiarki, drukarki, plotery, urządzenia wielkoformatowe, projektory, systemy DS.",
+    "h1": [
+     "H1: Sprzedaż, wynajem i serwis kserokopiarek, drukarek i skanerów - XE Opole"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "starcopy.pl",
+    "url": "https://starcopy.pl/",
+    "title": "STARCOPY Poznań – kserokopiarki, drukarki poleasingowe, używane, naprawa, wynajem, dzierżawa, leasing, serwis niszczarek, Sharp",
+    "desc": "Dzierżawa, zakup, serwis, leasing, wynajem kserokopiarek? Kopiarki, drukarki, niszczarki - używane / poleasingowe. Sprawdź ofertę firmy Starcopy z Poznania.",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "sklepbankservice.com.pl",
+    "url": "https://sklepbankservice.com.pl/serwis",
+    "title": "Serwis urządzeń biurowych w Szczecinie i woj. zachodniopomorskim",
+    "desc": "Od 1992 świadczymy usługi serwisowe m. in. w zakresie liczarek banknotów, sorterów bilonu, drukarek, niszczarek i urządzeń wielofunkcyjnych. Zapoznaj się z naszą ofertą",
+    "h1": [
+     "H1: Menu"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "tukan.rzeszow.pl",
+    "url": "https://tukan.rzeszow.pl/29054-Niszczarki",
+    "title": "TUKAN Rzeszów Biuro-Serwis, Hurtownia - niszczarki",
+    "desc": "",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "kserokop.pl",
+    "url": "https://kserokop.pl/",
+    "title": "Kserokop",
+    "desc": "",
+    "h1": [
+     "H1: SPRZEDAŻ I SERWIS URZĄDZEŃ BIUROWYCH",
+     "H1: KONTAKT"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa czujników / fotokomórki",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "correct.com.pl",
+    "url": "https://correct.com.pl/",
+    "title": "Niszczarki dokumentów, bindownice, laminatory biurowe gilotyny Fellowes Kobra Dahle Wallner CORRECT POZNAŃ",
+    "desc": "Niszczarki dokumentów, gilotyny do papieru, bindownice biurowe i laminatory, trymery, profesjonalne oczyszczacze powietrza aeramax pro. Najlepsze produkty firm: Fellowes, Kobra, Dahle, Wallner, Poznań, Argo , serwis niszczarek, laminowanie dokumentów, laminowanie map, naprawa niszczarek",
+    "h1": [],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "Naprawa elektroniki / płyty sterującej",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "pikpro.pl",
+    "url": "https://pikpro.pl/",
+    "title": "Serwis niszczarek i urządzeń biurowych Warszawa i okolice PiKpro",
+    "desc": "",
+    "h1": [
+     "H1: Serwis niszczarek oraz sprzedaż urządzeń biurowych – Warszawa i okolice"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "kserkomp.pl",
+    "url": "http://www.kserkomp.pl/",
+    "title": "SERWIS Kserokopiarki Szczecin | Plotery, Drukarki, Niszczarki, Canon, Xerox",
+    "desc": "Serwis i sprzedaż kserokopiarek nowych i używanych, drukarek, ploterów, niszczarek, opieka nad sprzętem, dyskusje o nowościach na rynku",
+    "h1": [
+     "H1: Profil naszej firmy :",
+     "H1: Produkty"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "Naprawa elektroniki / płyty sterującej",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "faxiko.pl",
+    "url": "https://faxiko.pl/",
+    "title": "Faxiko Olsztyn. Kopiarki, urządzenia biurowe, niszczarki | Sprzedaż, wynajem, serwis |",
+    "desc": "Sprzedaż i dzierżawa kserokopiarek – Olsztyn i Warmia-Mazury, Od 1989 roku, jako jedni z pierwszych w północno-wschodniej Polsce, oferujemy kompleksowe usługi w zakresie dystrybucji, wynajmu i serwisu urządzeń biurowych. Przez ponad 30 lat zdobyliśmy bogate doświadczenie i zbudowaliśmy silną pozycję na lokalnym rynku.\n",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "kserorze.pl",
+    "url": "http://kserorze.pl/",
+    "title": "KSEROSERWIS Rzeszów",
+    "desc": "",
+    "h1": [
+     "H1: Serwis, Sprzedaż Urządzeń Biurowych"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "agapo.pl",
+    "url": "https://agapo.pl/uslugi-serwisowe-c-1134.html",
+    "title": "Serwis i naprawa kserokopiarek, niszczarek w Częstochowie",
+    "desc": "PC-Net Częstochowa Naprawa serwis kserokopiarek, komputerów, laptopów, monitorów, drukarek, faksów, niszczarek, urządzeń wielofunkcyjnych, ploterów",
+    "h1": [
+     "H1: Usługi serwisowe"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "tanie-kopiowanie.pl",
+    "url": "http://www.tanie-kopiowanie.pl/serwis-niszczarek-warszawa/",
+    "title": "Serwis niszczarek Warszawa. Naprawa niszczarek biurowych.",
+    "desc": "Serwis niszczarek w Warszawie. Serwisowanie niszczarek Warszawa.",
+    "h1": [
+     "H1: Kopiarki"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pracabezszefa.pl",
+    "url": "https://pracabezszefa.pl/serwis-niszczarek-w-lublinie-naprawa-konserwacja-diagnostyka",
+    "title": "Serwis niszczarek Lublin - Naprawa. Konserwacja. Diagnostyka",
+    "desc": "Jaki serwis niszczarek w Lublinie polecamy dla właścicieli firm, biurowców i kancelarii prawnych?",
+    "h1": [
+     "H1: Serwis niszczarek w Lublinie – naprawa, konserwacja i diagnostyka"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "biznes-top.pl",
+    "url": "https://biznes-top.pl/bydgoszcz/serwis-komputerow/ja-to-naprawie-serwis-komputerow-niszczarek-i-elektroniki-uzytkowej/",
+    "title": "Ja to naprawię serwis komputerów, niszczarek i elektroniki użytkowej — Bydgoszcz | Biznes-TOP",
+    "desc": "Ja to naprawię serwis komputerów, niszczarek i elektroniki użytkowej (serwis komputerów) — Bydgoszcz. Karola Libelta 1/21, 85-080 Bydgoszcz, Poland. Ocena: 4,9/5 (45 opinii). Adres, mapa, godziny otwarcia, kontakt.",
+    "h1": [
+     "H1: Ja to naprawię serwis komputerów, niszczarek i elektroniki użytkowej"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "Naprawa elektroniki / płyty sterującej",
+    "works": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/serwis-urzadzen-biurowych/",
+    "title": "Serwis urządzeń biurowych - Serwis drukarek i kserokopiarek, naprawa laptopów Częstochowa, tel. 794 900 078",
+    "desc": "Serwis urządzeń biurowych różnego typu: niszczarek, liczarek i pozostałych sprzętów do biura. PC-NET Częstochowa, ul. Słonecznikowa 6b, tel. 793 900 878. Udrażnianie głowić w drukarkach atramentowych. Wymiana bębnów i tonerów w drukarkach laserowych. Naprawa laptopów i komputerów.",
+    "h1": [
+     "H1: Serwis urządzeń biurowych"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "aplauzprint.pl",
+    "url": "https://aplauzprint.pl/serwis-niszczarek-poznan/",
+    "title": "serwis niszczarek Poznań – Aplauz Print – Profesjonalna Drukarnia Online",
+    "desc": "",
+    "h1": [
+     "H1: Serwis niszczarek Poznań"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "techbanksolution.pl",
+    "url": "https://www.techbanksolution.pl/",
+    "title": "| SPRZĘT BANKOWY | SERWIS | SPRZEDAŻ | OBSŁUGA GOTÓWKI | OBSŁUGA KORESPONDENCJI",
+    "desc": "TechBank Solution Katowice, obsługa sprzętu bankowego, serwis sprzętu bankowego ,Liczarki do banknotów, Liczarki do bilonu, Sortery bilonu, Pakowarki próżniowe, Wiązarki, Rolomaty, Testery banknotów, frankownice,\r\nwagi pocztowe, systemy kopertujące, otwieracze korespondencji, niszczarki, przybiurkowe, przemysłowe, podr",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "convert.pl",
+    "url": "http://convert.pl/",
+    "title": "NISZCZARKI WARSZAWA - SERWIS NISZCZAREK - NISZCZARKI BIUROWE",
+    "desc": "Niszczarki Warszawa. Kopiarki Warszawa KONICA MINOLTA- to Convert. Solidnie, szybko i tanio. Dostawa kopiarki na terenie Warszawa bezp�atna. Kserokopiarki z gwarancj� serwisu. Bogate doswiadczenie od 1993 roku. Bogata oferta kopiarek z profesjonalnym doradztwem w zakresie urz�dze� biurowych - Warszawa i okolice.",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "banpost.com.pl",
+    "url": "https://banpost.com.pl/serwis",
+    "title": "Serwis frankownic, liczarek, stemplownic, niszczarek - Banpost Serwis z Katowic",
+    "desc": "Prowadzimy serwis liczarek, frankownic, stemplownic, niszczarek, skanerów i urządzeń do pakowania. Oferujemy szybką i fachową naprawę usterek. Zapraszamy.",
+    "h1": [
+     "H1: Serwis frankownic, liczarek, stemplownic, niszczarek, skanerów i urządzeń do pakowania"
+    ],
+    "first": "Naprawa / wymiana noży (mechanizmu tnącego)",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "laservis.com.pl",
+    "url": "https://www.laservis.com.pl/serwis/niszczarki/",
+    "title": "Niszczarki - Laservis",
+    "desc": "Naprawa niszczarek Lublin - Obsługa serwisowa obejmuje naprawy i przeglądy konserwacyjne niszczarek zarówno podręcznych, jak i przybiurkowych.",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "internacjonalizacja.com.pl",
+    "url": "https://internacjonalizacja.com.pl/serwis-niszczarek-warszawa-naprawa-i-konserwacja-urzadzen/",
+    "title": "Serwis niszczarek Warszawa: Naprawa i konserwacja urządzeń - internacjonalizacja.com.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis niszczarek Warszawa: Naprawa i konserwacja urządzeń"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "Konserwacja / olejowanie / czyszczenie",
+    "works": [
+     "Usuwanie zacięć",
+     "Naprawa / wymiana noży (mechanizmu tnącego)",
+     "Naprawa / wymiana silnika",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "origo.poznan.pl",
+    "url": "http://www.origo.poznan.pl/Produkty/SerwisNiszczarek/",
+    "title": "Serwis, Origo",
+    "desc": "",
+    "h1": [],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "robican.pl",
+    "url": "https://robican.pl/wynajem-niszczarek-olsztyn",
+    "title": "Wynajem niszczarek Olsztyn | Krótko- i długookresowy | Robican",
+    "desc": "Wynajem niszczarek w Olsztynie. Wypożycz niszczarkę na krótkie akcje niszczenia dokumentów lub do stałego użytku w biurze",
+    "h1": [
+     "H1: Wynajem niszczarek Olsztyn"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć",
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "pl.revieweuro.com",
+    "url": "https://pl.revieweuro.com/lower-silesian/biuro-serwis-1409746",
+    "title": "Biuro Serwis - naprawa niszczarek, liczarek, kopiarek, drukarek, Podwale 62a, Phone +48 71 342 29 80",
+    "desc": "Reviews about Biuro Serwis - naprawa niszczarek, liczarek, kopiarek, drukarek, województwo dolnośląskie, phone numbers, addresses, hours. Leave your feedback.",
+    "h1": [
+     "H1: Biuro Serwis - naprawa niszczarek, liczarek, kopiarek, drukarek"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwisneopost.pl",
+    "url": "https://www.serwisneopost.pl/",
+    "title": "Serwis niszczarek | Naprawa niszczarek | Sprzedaż niszczarek",
+    "desc": "Specjalizujemy się w serwisowaniu, naprawie frankownic, systemów kopertujących, otwieraczy korespondencji różnych producentów w szczególności Neopost",
+    "h1": [
+     "H1: Serwis urządzeń Neopost"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "telekontrakt.pl",
+    "url": "https://www.telekontrakt.pl/",
+    "title": "Urządzenia biurowe - wynajem, sprzedaż, serwis - Poznań",
+    "desc": "Jako autoryzowany dealer oferujemy sprzedaż i serwis urządzeń biurowych: kserokopiarek i drukarek marki Canon oraz niszczarek HSM. Sprawdź ofertę!",
+    "h1": [
+     "H1: Serwis i sprzedaż kserokopiarek, drukarek i sprzętu biurowego"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "kserokopiarkiczestochowa.pl",
+    "url": "https://kserokopiarkiczestochowa.pl/",
+    "title": "Sprzedaż oraz serwis kserokopiarek Develop, Konica, tel. 793 900 878",
+    "desc": "Sprzedaż i serwis kserokopiarek. Kserokopiarki kolorowe Konica, Develop - Sprzedaż, serwis i naprawa kserokopiarek Ricoh, Canon, Samsung",
+    "h1": [
+     "H1: Sprzedaż i serwis kserokopiarek PC-NET"
+    ],
+    "first": "Naprawa elektroniki / płyty sterującej",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie",
+     "Naprawa elektroniki / płyty sterującej",
+     "Naprawa przekładni / kół zębatych"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "makroserwis.pl",
+    "url": "https://makroserwis.pl/kserokopiarki/niszczarki/",
+    "title": "Niszczarki - Makroserwis - Nashuatec Ricoh Autoryzowany serwis i sprzedaż kserokopiarek Bydgoszcz, Inowrocław",
+    "desc": "",
+    "h1": [
+     "H1: Niszczarki"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "tmb.net.pl",
+    "url": "https://tmb.net.pl/",
+    "title": "TMB Wynajem i serwis kserokopiarek i drukarek – Wynajem kserokopiarek i serwis drukarek",
+    "desc": "",
+    "h1": [
+     "H1: Wynajem urządzeń biurowych tanich w eksploatacji"
+    ],
+    "first": "Konserwacja / olejowanie / czyszczenie",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / olejowanie / czyszczenie"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Konserwacja / olejowanie / czyszczenie": {
+    "было": 18,
+    "стало": 14,
+    "исключено": [
+     "olej do niszczarki media expert",
+     "olej do niszczarki action",
+     "olej do niszczarki allegro",
+     "olej do niszczarki rtv euro agd"
+    ]
+   },
+   "общие подсказки: Naprawa podajnika AutoFeed": {
+    "было": 4,
+    "стало": 0,
+    "исключено": [
+     "niszczarka leitz iq autofeed 100 p4",
+     "niszczarka rexel optimum autofeed+ 90x",
+     "niszczarka rexel optimum autofeed+ 225x",
+     "niszczarka z automatycznym podajnikiem papieru"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Konserwacja / olejowanie / czyszczenie",
+   "comp": {
+    "mention": 58,
+    "first": 47,
+    "seoFirst": 21,
+    "seo": 21,
+    "head": 18,
+    "td": 9
+   },
+   "ac": 0,
+   "probe": {
+    "n": 14,
+    "cena": 0,
+    "ex": [
+     "olej do niszczarki",
+     "olej do niszczarki fellowes",
+     "olej do niszczarki papieru",
+     "olej do niszczarki hsm",
+     "olej do niszczarki jak używać"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa elektroniki / płyty sterującej",
+   "comp": {
+    "mention": 23,
+    "first": 12,
+    "seoFirst": 3,
+    "seo": 4,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa / wymiana noży (mechanizmu tnącego)",
+   "comp": {
+    "mention": 21,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 7,
+    "cena": 0,
+    "ex": [
+     "noże do niszczarki",
+     "noże do niszczarki fellowes",
+     "noże do niszczarki papieru",
+     "noże do niszczarki rexel",
+     "noże do niszczarki hsm"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa przekładni / kół zębatych",
+   "comp": {
+    "mention": 16,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 2,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie zacięć",
+   "comp": {
+    "mention": 12,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 5,
+    "cena": 0,
+    "ex": [
+     "niszczarka się zacięła",
+     "niszczarka zacięcie papieru",
+     "niszczarka fellowes zacięcie papieru",
+     "niszczarka fellowes zaciecie papieru",
+     "zacięta niszczarka"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa / wymiana silnika",
+   "comp": {
+    "mention": 12,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 3,
+    "cena": 0,
+    "ex": [
+     "silnik do niszczarki fellowes",
+     "silnik do niszczarki papieru",
+     "silnik do niszczarki"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa czujników / fotokomórki",
+   "comp": {
+    "mention": 5,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 4,
+    "cena": 0,
+    "ex": [
+     "czujnik do niszczarki",
+     "niszczarka nie włącza się",
+     "fellowes niszczarka nie włącza się",
+     "niszczarka do papieru nie włącza się"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa podajnika AutoFeed",
+   "comp": {
+    "mention": 1,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Olejenie",
+   "a": "Konserwacja / olejowanie / czyszczenie",
+   "why": "58 из 78, у 47 первая работа; 14 подсказок после очистки; в прайсе «smarowanie mechanizmu tnącego olejem»",
+   "evidence": "конкуренты 58 из 78 (первой работой — 47, в Title/Description — 9) · подсказки Google 14 (напр. «olej do niszczarki», «olej do niszczarki fellowes»)"
+  },
+  {
+   "w": "Usuwanie zacięć",
+   "a": "Usuwanie zacięć",
+   "why": "12 конкурентов, 5 подсказок; в прайсе «Usuwanie zacięć i ciał obcych»",
+   "evidence": "конкуренты 12 из 78 (первой работой — 0, в Title/Description — 0) · подсказки Google 5 (напр. «niszczarka się zacięła», «niszczarka zacięcie papieru»)"
+  },
+  {
+   "w": "Wymiana noży",
+   "a": "Naprawa / wymiana noży (mechanizmu tnącego)",
+   "why": "21 конкурент, 7 подсказок; в прайсе «Wymiana noży / wałków tnących»",
+   "evidence": "конкуренты 21 из 78 (первой работой — 1, в Title/Description — 1) · подсказки Google 7 (напр. «noże do niszczarki», «noże do niszczarki fellowes»)"
+  },
+  {
+   "w": "Naprawa elektroniki",
+   "a": "Naprawa elektroniki / płyty sterującej",
+   "why": "23 конкурента, у 12 — первой работой",
+   "evidence": "конкуренты 23 из 78 (первой работой — 12, в Title/Description — 1)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa przekładni i silnika",
+   "why": "przekładnie — 16 конкурентов, silnik — 12; с формулировками-действиями не помещается",
+   "evidence": ""
+  },
+  {
+   "w": "Czujniki",
+   "why": "мало упоминаний (5)",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Ads по шредерам почти нет (24 показа)"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa niszczarek we Wrocławiu ✔ Olejenie, usuwanie zacięć, wymiana noży, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 155
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт шредерів у Вроцлаві ✔ Змащення, усунення застрягань, заміна ножів, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 154
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт шредеров во Вроцлаве ✔ Смазка, устранение застреваний, замена ножей, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 155
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

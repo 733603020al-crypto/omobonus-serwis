@@ -1,0 +1,3198 @@
+{
+ "page": "/uslugi/outsourcing-it",
+ "name": "Outsourcing IT",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "outsourcing it dla firm",
+    "obsługa informatyczna firm",
+    "outsourcing informatyczny",
+    "outsourcing it dla firm cennik",
+    "obsługa informatyczna firm Warszawa",
+    "obsługa informatyczna firm Kraków",
+    "obsługa informatyczna firm Wrocław",
+    "obsługa informatyczna firm Poznań",
+    "obsługa informatyczna firm Gdańsk",
+    "obsługa informatyczna firm Łódź",
+    "obsługa informatyczna firm Katowice",
+    "obsługa informatyczna firm Szczecin",
+    "obsługa informatyczna firm Lublin",
+    "obsługa informatyczna firm Bydgoszcz",
+    "obsługa informatyczna firm Białystok",
+    "obsługa informatyczna firm Rzeszów",
+    "obsługa informatyczna firm Toruń",
+    "obsługa informatyczna firm Kielce",
+    "obsługa informatyczna firm Opole",
+    "obsługa informatyczna firm Olsztyn",
+    "obsługa informatyczna firm Gdynia",
+    "obsługa informatyczna firm Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "outsourcing it ",
+    "obsługa informatyczna firm ",
+    "obsługa it ",
+    "opieka informatyczna ",
+    "informatyk dla firm ",
+    "administrator it "
+   ],
+   "uniqueSuggestions": 295,
+   "withPrice": [
+    "outsourcing it cennik",
+    "obsługa informatyczna firm cennik",
+    "outsourcing it koszt",
+    "outsourcing it warszawa cennik",
+    "outsourcing it cena"
+   ],
+   "wroclaw": [
+    "outsourcing it wrocław",
+    "obsługa informatyczna firm wrocław",
+    "obsługa it wrocław",
+    "opieka informatyczna wrocław",
+    "obsługa it firm wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Stała obsługa IT w abonamencie": {
+    "seeds": [
+     "obsługa informatyczna firm abonament",
+     "abonament it",
+     "obsługa it w abonamencie"
+    ],
+    "n": 0,
+    "nRaw": 11,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": [
+     [
+      "abonament itunes",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament italiana",
+      "другое устройство/тема"
+     ],
+     [
+      "itaxi abonament",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament telefon italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament netflix italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament autostrada italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament telepass italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament tren italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament vodafone italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament digi italia",
+      "другое устройство/тема"
+     ],
+     [
+      "abonament mentenanta it",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Administracja siecią i serwerami": {
+    "seeds": [
+     "administracja siecią",
+     "administracja serwerami",
+     "administrator sieci"
+    ],
+    "n": 7,
+    "nRaw": 15,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "administracja siecią komputerową",
+     "administracja serwerami",
+     "administracja serwerami linux",
+     "administracja serwerami warszawa",
+     "administrator sieci",
+     "administrator sieci komputerowych",
+     "administrator sieci informatycznej"
+    ],
+    "all": [
+     "administracja siecią komputerową",
+     "administracja serwerami",
+     "administracja serwerami linux",
+     "administracja serwerami warszawa",
+     "administrator sieci",
+     "administrator sieci komputerowych",
+     "administrator sieci informatycznej"
+    ],
+    "dropped": [
+     [
+      "kurs mikrotik administracja siecią od podstaw",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci krzyżówka",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci zarobki",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci kurs online",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci komputerowych zarobki",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci komputerowych praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "administrator sieci kurs",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Kopie zapasowe / backup": {
+    "seeds": [
+     "backup danych firmy",
+     "kopie zapasowe dla firm"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Bezpieczeństwo IT / antywirus / firewall": {
+    "seeds": [
+     "bezpieczeństwo it",
+     "cyberbezpieczeństwo dla firm"
+    ],
+    "n": 13,
+    "nRaw": 19,
+    "cena": 0,
+    "wroc": 1,
+    "ex": [
+     "bezpieczeństwo it",
+     "bezpieczeństwo it poznań",
+     "bezpieczeństwo it warszawa",
+     "bezpieczeństwo it w administracji",
+     "bezpieczeństwo it wrocław",
+     "bezpieczeństwo it w firmie",
+     "cyberbezpieczeństwo dla firm",
+     "cyberbezpieczeństwo dla firm omp",
+     "cyberbezpieczeństwo wymogi dla firm i instytucji",
+     "cyberbezpieczeństwo firmy"
+    ],
+    "all": [
+     "bezpieczeństwo it",
+     "bezpieczeństwo it poznań",
+     "bezpieczeństwo it warszawa",
+     "bezpieczeństwo it w administracji",
+     "bezpieczeństwo it wrocław",
+     "bezpieczeństwo it w firmie",
+     "cyberbezpieczeństwo dla firm",
+     "cyberbezpieczeństwo dla firm omp",
+     "cyberbezpieczeństwo wymogi dla firm i instytucji",
+     "cyberbezpieczeństwo firmy",
+     "cyberbezpieczeństwo firma",
+     "cyberbezpieczeństwo firm",
+     "cyberbezpieczeństwo firmy w polsce"
+    ],
+    "dropped": [
+     [
+      "bezpieczeństwo it praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "bezpieczeństwo it studia",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "kurs bezpieczeństwo it",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "bezpieczeństwo it szkolenie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "bezpieczeństwo it książka",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "cyberbezpieczeństwo szkolenie dla firm",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Pomoc zdalna / helpdesk": {
+    "seeds": [
+     "helpdesk",
+     "pomoc zdalna it"
+    ],
+    "n": 1,
+    "nRaw": 15,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "pomoc zdalna it"
+    ],
+    "all": [
+     "pomoc zdalna it"
+    ],
+    "dropped": [
+     [
+      "helpdesk",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk co to",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk uwr",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk dsw",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk ideis",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk logowanie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk dsw ideis",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk ue wroc",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk cui",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "helpdesk zhp",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "pomoc zdalna itbps",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "zdalna pomoc it adamietz",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "pomoc zdalna direct it",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Audyt IT": {
+    "seeds": [
+     "audyt it",
+     "audyt informatyczny"
+    ],
+    "n": 11,
+    "nRaw": 21,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "audyt it",
+     "audyt it dla firm",
+     "audyt it warszawa",
+     "audyt it rodo",
+     "audyt it cena",
+     "audyt informatyczny",
+     "audyt informatyczny na czym polega",
+     "audyt informatyczny dla firm",
+     "audyt informatyczny cena",
+     "audyt informatyczny rodo"
+    ],
+    "all": [
+     "audyt it",
+     "audyt it dla firm",
+     "audyt it warszawa",
+     "audyt it rodo",
+     "audyt it cena",
+     "audyt informatyczny",
+     "audyt informatyczny na czym polega",
+     "audyt informatyczny dla firm",
+     "audyt informatyczny cena",
+     "audyt informatyczny rodo",
+     "audyt informatyczny warszawa"
+    ],
+    "dropped": [
+     [
+      "audyt it co to",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt it studia podyplomowe",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt it szkolenie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt it praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt it zarobki",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt it studia",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt informatyczny wzór",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt informatyczny szkolenie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt informatyczny pdf",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "audyt informatyczny co to",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Konfiguracja sieci / Wi-Fi": {
+    "seeds": [
+     "konfiguracja sieci w firmie",
+     "sieci komputerowe dla firm"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "sieci komputerowe firma"
+    ],
+    "all": [
+     "sieci komputerowe firma"
+    ],
+    "dropped": []
+   },
+   "Microsoft 365 / poczta / licencje": {
+    "seeds": [
+     "wdrożenie microsoft 365",
+     "microsoft 365 dla firm"
+    ],
+    "n": 11,
+    "nRaw": 13,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "wdrożenie microsoft 365",
+     "wdrożenie microsoft dynamics 365",
+     "microsoft 365 dla firm",
+     "microsoft 365 dla firm cennik",
+     "microsoft 365 dla firmy",
+     "aplikacje microsoft 365 dla firm",
+     "microsoft office 365 dla firm",
+     "licencje microsoft 365 dla firm",
+     "microsoft 365 copilot dla firm",
+     "microsoft 365 dla małych firm"
+    ],
+    "all": [
+     "wdrożenie microsoft 365",
+     "wdrożenie microsoft dynamics 365",
+     "microsoft 365 dla firm",
+     "microsoft 365 dla firm cennik",
+     "microsoft 365 dla firmy",
+     "aplikacje microsoft 365 dla firm",
+     "microsoft office 365 dla firm",
+     "licencje microsoft 365 dla firm",
+     "microsoft 365 copilot dla firm",
+     "microsoft 365 dla małych firm",
+     "microsoft 365 plany dla firm"
+    ],
+    "dropped": [
+     [
+      "microsoft 365 dla firm logowanie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "microsoft 365 dla firm download",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 9,
+   "impressions": 27,
+   "clicks": 1,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "outsourcing it wrocław",
+     "impr": 7,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "obsługa informatyczna",
+     "impr": 6,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "obsługa informatyczna wrocław",
+     "impr": 5,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "obsługa informatyczna firm",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "opieka informatyczna wrocław",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "obsługa it wrocław",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "it outsourcing",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "proxicom usługi serwisowe największy wybór komputerów obsługa informatyczna",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "opolkom opieka informatyczna",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": null
+ },
+ "competitors": {
+  "relevant": 80,
+  "checked": 84,
+  "candidates": 295,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "itarchitekci.pl",
+    "url": "https://itarchitekci.pl/uslugi-informatyczne-warszawa/",
+    "title": "Usługi Informatyczne Warszawa. Obsługa IT dla Firm - ITArchitekci",
+    "desc": "ITArchitekci ➤ Usługi informatyczne Warszawa ⭐ Wieloletnie doświadczenie ✔️ Wykwalifikowani pracownicy ✔️ Liczne certyfikaty ✔️ Wejdź i sprawdź!",
+    "h1": [
+     "H1: Usługi informatyczne Warszawa – Obsługa IT dla firm"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Gdańsk",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "lizard.pl",
+    "url": "https://lizard.pl/",
+    "title": "Firma IT Lizard » Firma informatyczna » Serwis informatyczny",
+    "desc": "Firma informatyczna Lizard • Usługi i outsourcing IT • Rozwiązania informatyczne dla firm • Firma IT Lizard 📱+48 22 472 40 10",
+    "h1": [
+     "H1: Kompleksowa obsługa informatyczna"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Audyt IT",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "ngsolutions.pl",
+    "url": "https://ngsolutions.pl/",
+    "title": "Od 20 lat świadczymy, usługi informatyczne, opieka informatyczna, obsługa informatyczna, outsourcing IT, SLA, NIS2, KSC 2.0, ISO 27001, administracja chmur Microsoft i Google - NGSolutions.pl Warszawa",
+    "desc": "Świadczymy usługi informatyczne, opiekę IT, obsługę informatyczną od 20 lat. Sprawdź NASZĄ OFERTĘ lub skontaktuj się z nami a my dostosujemy nasze usługi IT do Twoich potrzeb. Zapraszamy! Usługi informatyczne, opieka informatyczna, obsługa informatyczna, wsparcie IT, outsourcing IT, SLA, NIS2, KSC 2.0, ISO 27001, certy",
+    "h1": [
+     "H1: Dostarczamy kompleksowe usługi informatyczne, outsourcing IT, opiekę IT oraz Wsparcie dla średniego biznesu oraz bezpieczeństwo cyfrowych da"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Warszawa",
+     "Wrocław",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "mitgroup.pl",
+    "url": "https://mitgroup.pl/cennik-outsourcingu-it-pelny-przewodnik-i-ceny/",
+    "title": "Outsourcing IT cennik 2026 – od 1 200 zł/mies. i 250 zł/h",
+    "desc": "Ile kosztuje outsourcing IT w 2026 r.? Abonament od 1 200 zł/mies. (1–5 stanowisk), 3 000–6 500 zł (6–20 stanowisk), godzina informatyka 250–450 zł. Tabela cen i kalkulator.",
+    "h1": [
+     "H1: Cennik Outsourcingu IT 2026: Kompletny przewodnik po kosztach, modelach i trendach"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Gdańsk",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "e-support.pl",
+    "url": "https://e-support.pl/obsluga-informatyczna-warszawa/",
+    "title": "Obsługa informatyczna Warszawa - Outsourcing IT | E-SUPPORT",
+    "desc": "Zapewniamy kompleksową obsługę informatyczną firm w Warszawie - od bieżącego wsparcia użytkowników, przez administrację serwerami, siecią i Microsoft 365, po monitoring, backup i cyberbezpieczeństwo.",
+    "h1": [
+     "H1: Obsługa informatyczna Warszawa - kompleksowe wsparcie IT dla firm"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Łódź",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "symbioza.it",
+    "url": "https://symbioza.it/uslugi-it-lublin/",
+    "title": "Firma Informatyczna Lublin. Kompleksowe Usługi IT dla Firm - Symbioza IT",
+    "desc": "Symbioza IT ➤ Firma Informatyczna Lublin ✔️ Miarą sukcesu jest dla nas rozwój Twojego biznesu i zadowolenie użytkowników ✔️ Zapoznaj się z ofertą!",
+    "h1": [
+     "H1: Usługi It Lublin"
+    ],
+    "first": "Kopie zapasowe / backup",
+    "seoFirst": "Kopie zapasowe / backup",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup"
+    ],
+    "city": [
+     "Szczecin",
+     "Lublin",
+     "Białystok",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "outsourcingit.pl",
+    "url": "https://outsourcingit.pl/",
+    "title": "OUTSOURCING IT, Usługi informatyczne dla firm | OUTSOURCINGIT.PL",
+    "desc": "Outsourcing IT to praktyka, która polega na zlecaniu zewnętrznym firmom lub osobom indywidualnym zadań związanych z obsługą technologii informatycznych. Outsourcing IT powierza zewnętrznym firmom wykonania zadania związanego z obsługą informatyczną. Mówiąc prościej, outsourcing polega na zatrudnieniu innej firmy i zlec",
+    "h1": [
+     "H1: Outsourcing IT"
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "",
+    "works": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "bss.com.pl",
+    "url": "https://bss.com.pl/usluga/helpdesk-it-bialystok/",
+    "title": "Obsługa informatyczna, helpdesk IT, outsourcing i wsparcie dla firm Białystok - Business Systems Solutions",
+    "desc": "",
+    "h1": [
+     "H1: Obsługa informatyczna, outsourcing i helpdesk IT Białystok"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Białystok",
+     "Opole",
+     "Olsztyn",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "ictfuture.pl",
+    "url": "https://ictfuture.pl/",
+    "title": "Firma IT Wrocław, outsourcing informatyczny Wrocław, firma informatyczna Wrocław, obsługa informatyczna firm Wrocław, wsparcie informatyczne, opieka informatyczna",
+    "desc": "ICT Future to kompleksowe rozwiązania z zakresu Information & Communication Technologies oraz cyberbezpieczeństwa dla Twojego biznesu. Zobacz jak możemy wesprzeć Twoją firmę.",
+    "h1": [
+     "H1: Komplesowa obsługa informatyczna firm Wrocław"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "inprox.pl",
+    "url": "https://www.inprox.pl/",
+    "title": "Us&#x142;ugi IT dla Firm | Gda&#x144;sk, Gdynia, Sopot | INPROX",
+    "desc": "Nasza firma informatyczna oferuje profesjonalne us&#x142;ugi it dla Firm i Urz&#x119;d&#xf3;w. Us&#x142;ugi &#x15b;wiadczymy w Gda&#x144;sku, Gdyni i okolicach",
+    "h1": [
+     "H1: Us&#x142;ugi informatyczne dla firm"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Audyt IT",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "city": [
+     "Gdańsk",
+     "Łódź",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "nowire.pl",
+    "url": "https://nowire.pl/",
+    "title": "NoWire OBSŁUGA IT DLA FIRM – OBSŁUGA IT DLA FIRM W ROZSĄDNEJ CENIE",
+    "desc": "",
+    "h1": [
+     "H1: OBSŁUGA IT DLA FIRM W ROZSĄDNEJ CENIE",
+     "H1: Nowire.pl – Opieka Informatyczna dla małych i średnich firm"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "support-online.pl",
+    "url": "https://www.support-online.pl/oferta/kompleksowa-obsluga-informatyczna/uslugi-informatyczne-opole",
+    "title": "Usługi informatyczne Opole",
+    "desc": "Profesjonalne usługi informatyczne ☑️ Wsparcie techniczne, administrowanie serwerami, zarządzanie siecią ☑️ Wybierz Support Online.",
+    "h1": [
+     "H1: Usługi informatyczne Opole"
+    ],
+    "first": "Kopie zapasowe / backup",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Opole",
+     "Olsztyn",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "netige.pl",
+    "url": "https://www.netige.pl/blog/outsourcing-it",
+    "title": "Outsourcing IT: Na czym polega i jak może zmniejszyć koszty",
+    "desc": "Dlaczego firmy częściej decydują się na outsourcing usług IT? Jakie korzyści niesie takie rozwiązanie? Jak wybrać dostawcę? Przeczytaj, aby się dowiedzieć.",
+    "h1": [
+     "H1: Outsourcing IT: Na czym polega i jak może zmniejszyć koszty Twojej firmy"
+    ],
+    "first": "Serwis sprzętu / wizyty u klienta",
+    "seoFirst": "",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "mellow.pl",
+    "url": "https://mellow.pl/",
+    "title": "Obsługa informatyczna firm Wrocław | Outsourcing IT i cyberbezpieczeństwo | MELLOW IT",
+    "desc": "Obsługa informatyczna firm we Wrocławiu: helpdesk, administracja IT, Microsoft 365, backup i cyberbezpieczeństwo. Outsourcing IT dla firm z Wrocławia i okolic.",
+    "h1": [
+     "H1: Kompleksowa obsługa IT dla firm, które chcą mieć jeden odpowiedzialny zespół do całego bieżącego wsparcia"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "spark-it.pl",
+    "url": "https://www.spark-it.pl/opiekainformatycznadlafirmwwarszawie",
+    "title": "Opieka informatyczna dla firm w Warszawie | SPARK-IT",
+    "desc": "SPARK-IT to profesjonalna opieka informatyczna dla firm z Warszawy. Potrzebujesz pomocy w konfiguracji i zakupie sprzętu? Boisz się o bezpieczeństwo danych w firmie, nie wiesz jak się zabezpieczyć przed cyberatakami? Zaufaj profesjonalistom! ",
+    "h1": [
+     "H1: Nasze usługi",
+     "H1: Nie trać czasu na problemy IT – zostaw to nam!"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Warszawa",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "rabiks.pl",
+    "url": "https://rabiks.pl/uslugi-informatyczne-katowice/",
+    "title": "Obsługa informatyczna Katowice • Usługi IT dla firm | Rabiks",
+    "desc": "Profesjonalne wsparcie IT dla firm z Katowic: zarządzanie siecią, wdrożenia ERP, monitoring awarii. Zapewniamy stabilność Twojej infrastruktury IT.​",
+    "h1": [
+     "H1: Usługi informatyczne Katowice"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Wdrożenie / konfiguracja stanowisk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Katowice",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "itdesk.eu",
+    "url": "https://itdesk.eu/obsluga-informatyczna/",
+    "title": "Opieka informatyczna dla firm - umowa IT od 400 zł /mies - itDesk",
+    "desc": "Obsługa informatyczna firm, outsourcing IT. Jesteśmy największą firmą IT w regionie świadcząca obsługę informatyczną dla firm. Ponad 28 lat na rynku i 50 specjalistów z branży IT",
+    "h1": [
+     "H1: Obsługa informatyczna firm",
+     "H1: Obsługa informatyczna firm"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "sztorm.eu",
+    "url": "https://sztorm.eu/cennik.html",
+    "title": "Outsourcing IT cennik — obsługa informatyczna firmy od 500 zł/mc | Sztorm IT",
+    "desc": "Outsourcing IT cennik 2026 — 3 pakiety obsługi informatycznej firm od 500 zł netto/mc. Ile kosztuje obsługa IT firmy? Administracja serwerami od 300 zł/serwer.",
+    "h1": [
+     "H1: Outsourcing IT cennik — obsługa informatyczna firmy od 500 zł/mc"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "g2it.pl",
+    "url": "https://g2it.pl/obsluga-informatyczna-firm-bydgoszcz/",
+    "title": "Obsługa informatyczna firm Bydgoszcz | G2IT",
+    "desc": "Obsługa informatyczna firm w Bydgoszczy. Wsparcie IT, administracja systemami, bezpieczeństwo i kopie zapasowe. G2IT — lokalnie i zdalnie.",
+    "h1": [
+     "H1: Obsługa informatyczna firm Bydgoszcz",
+     "H1: Obsługa informatyczna firm Bydgoszcz"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "adp-poland.pl",
+    "url": "https://adp-poland.pl/outsourcing-it-wroclaw",
+    "title": "Outsourcing IT dla firm Wrocław",
+    "desc": "Outsourcing IT dla firm we Wrocławiu: administracja sieciami i serwerami, help desk, bezpieczeństwo danych oraz stałe wsparcie zdalne i na miejscu.",
+    "h1": [
+     "H1: Outsourcing informatyczny we Wrocławiu"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "cyrekdigital.com",
+    "url": "https://cyrekdigital.com/pl/baza-wiedzy/obsluga-informatyczna-firm/",
+    "title": "Obsługa informatyczna firm - co to jest i co obejmuje?",
+    "desc": "Dowiedz się czym jest obsługa informatyczna firm i jaki zakres obejmują tego typu usługi.",
+    "h1": [
+     "H1: Obsługa informatyczna firm – co to jest i co obejmuje?"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": []
+   },
+   {
+    "host": "itssystem.pl",
+    "url": "https://itssystem.pl/przewodnik-po-uslugach-outsourcingu-informatycznego-co-warto-wiedziec/",
+    "title": "Przewodnik po usługach outsourcingu informatycznego - co warto wiedzieć? | ITS System",
+    "desc": "Dowiedz się, jak skutecznie wybrać usługi outsourcingu IT, zrozumieć ich korzyści, oraz jakie wyzwania mogą się pojawić.",
+    "h1": [
+     "H1: Przewodnik po usługach outsourcingu informatycznego – co warto wiedzieć?"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "itcompany.pl",
+    "url": "https://www.itcompany.pl/",
+    "title": "IT Company - firma informatyczna, outsourcing IT dla firm",
+    "desc": "Postaw na nowoczesne rozwiązania IT dla biznesu. IT Company zapewnia outsourcing IT oraz profesjonalną obsługę informatyczną na najwyższym poziomie.",
+    "h1": [
+     "H1: Nowoczesne rozwiązania IT dla biznesu",
+     "H1: Nowoczesne rozwiązania IT dla biznesu"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "ideacenter.pl",
+    "url": "https://ideacenter.pl/outsourcing-it",
+    "title": "Outsourcing IT dla firm — stała opieka | Idea Center",
+    "desc": "Outsourcing IT dla firm: helpdesk, administracja serwerami, monitoring infrastruktury i gwarantowany czas reakcji. Ryczałt zamiast etatu informatyka.",
+    "h1": [
+     "H1: Outsourcing IT dla firm"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "it-leader.pl",
+    "url": "https://it-leader.pl/",
+    "title": "Strona główna - IT-Leader",
+    "desc": "IT-Leader – firma informatyczna z Poznania. Profesjonalna obsługa IT, helpdesk i opieka IT dla firm. Stałe wsparcie i bezpieczeństwo.",
+    "h1": [
+     "H1: Kompleksowa obsługa informatyczna w Poznaniu"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "itglobal.pl",
+    "url": "https://itglobal.pl/",
+    "title": "Global IT Solutions: obsługa informatyczna firm | Gdańsk, Gdynia, Sopot",
+    "desc": "Obsługa informatyczna firm, outsourcing IT i audyt informatyczny na terenie Gdyni, Gdańska i Sopotu oraz całej Polski. Global IT Solutions.",
+    "h1": [
+     "H1: Zarządzamy Twoim IT, abyś Ty mógł zarządzać swoim biznesem",
+     "H1: 10+"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Audyt IT",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "intelion.pl",
+    "url": "https://intelion.pl/outsourcing-it-katowice-obsluga-informatyczna-firm/",
+    "title": "Outsourcing IT Katowice i Śląsk obsługa firm 24/7 | Intelion",
+    "desc": "Profesjonalna obsługa IT dla firm z Katowic i Śląska. 20 lat doświadczenia, 2000+ użytkowników, szybkie reakcje. Bezpłatna wycena.",
+    "h1": [
+     "H1: Outsourcing IT – Katowice i Śląsk"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "wasko.pl",
+    "url": "https://www.wasko.pl/uslugi/outsourcing-it/",
+    "title": "Outsourcing IT - Usługi informatyczne dla firm, wsparcie - WASKO",
+    "desc": "Outsourcing IT. Profesjonalna obsługa informatyczna małych i średnich firm. Kompleksowe podejście. Postaw na doświadczenie ▶ Skontaktuj się!",
+    "h1": [
+     "H1: Outsourcing IT"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "",
+    "works": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "informatycznaobsluga.pl",
+    "url": "https://informatycznaobsluga.pl/",
+    "title": "Informatyczna Obsługa - Jesteśmy Twoim IT. | Zajmujemy się obsługą informatyczną firm. Nasze profesjonalne usługi informatyczne zwiększą Twoje bezpieczeństwo, skorzystaj z outsourcingu IT.",
+    "desc": "Zajmujemy się obsługą informatyczną firm. Nasze profesjonalne usługi informatyczne zwiększą Twoje bezpieczeństwo, skorzystaj z outsourcingu IT.",
+    "h1": [
+     "H1: IT Twojej Firmy"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "meskomp.pl",
+    "url": "https://meskomp.pl/obsluga-informatyczna-firm-cennik-i-modele-rozliczen/",
+    "title": "Cennik i Modele Rozliczeń w Outsourcingu IT – Sprawdź Koszty",
+    "desc": "Poznaj cennik i modele rozliczeń w outsourcingu IT. Wybierz najlepsze rozwiązanie dla swojej firmy i zoptymalizuj koszty usług IT. Sprawdź!",
+    "h1": [
+     "H1: Obsługa informatyczna firm – cennik i modele rozliczeń"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "ronag.com.pl",
+    "url": "https://www.ronag.com.pl/IT/obsluga_informatyczna_firm/cennik_uslug_informatycznych.php",
+    "title": "Obsługa informatyczna firm cennik usług RONAG IT",
+    "desc": "Outsourcing IT cennik, usługi informatyczne cennik, obsługa informatyczna cennik, administracja serwerami cennik, instalacja sieci IT, koszt usług IT Warszawa",
+    "h1": [
+     "H1: Cennik obsługi informatycznej firm"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "zever.pl",
+    "url": "https://zever.pl/",
+    "title": "Obsługa informatyczna firm i systemy bezpieczeństwa - ZEVER",
+    "desc": "Kompleksowa obsługa informatyczna firm i systemy bezpieczeństwa od 2010 roku. Działamy w Gdańsku, Gdyni i Sopocie. Zapewnij sobie stabilne systemy IT. Skontaktuj się z nami!",
+    "h1": [
+     "H1: Wszystko, czego potrzebuje IT Twojej firmy – w jednym miejscu"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "system-3.com.pl",
+    "url": "https://system-3.com.pl/rozwiazania-i-uslugi/obsluga-informatyczna-firm",
+    "title": "Obsługa Informatyczna firm - System-3 - Wrocław, Lubin, Legnica, Jawor",
+    "desc": "Outsourcing IT, usługa informatyczna dla klientów biznesowych oraz instytucji ",
+    "h1": [
+     "H1: Obsługa Informatyczna firm"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "dcs.pl",
+    "url": "https://dcs.pl/pl/oferta/outsourcing-obsluga-informatyczna/",
+    "title": "Obsługa informatyczna firm i outsourcing IT - dcs.pl",
+    "desc": "Skorzystaj z outsourcingu usług IT i przekaż obsługę informatyczną Twojej firmy do dcs.pl.",
+    "h1": [
+     "H1: Obsługa informatyczna"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": []
+   },
+   {
+    "host": "dsx.pl",
+    "url": "https://dsx.pl/cennik/kalkulator",
+    "title": "Kalkulator cen — outsourcing IT od 990 PLN/mc · DSX",
+    "desc": "Policz cenę outsourcingu IT dla Twojej firmy. Wpisz liczbę stanowisk, branżę i wymagania — otrzymasz orientacyjną wycenę miesięczną i roczną w 5 sekund.",
+    "h1": [
+     "H1: Wycena w 5 sekund."
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "Wdrożenie / konfiguracja stanowisk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "csk.com.pl",
+    "url": "https://www.csk.com.pl/obsluga-informatyczna-w-krakowie/",
+    "title": "Obsługa informatyczna w Krakowie - CSK - Firma informatyczna, obsługa i outsourcing IT dla firm - Śląsk, Katowice",
+    "desc": "Szukasz usługi outsourcingowej w Krakowie? Potrzebujesz pomocy doświadczonych informatyków? Sprawdź, co możemy zrobić dla Twojej firmy!",
+    "h1": [
+     "H1: Obsługa informatyczna w Krakowie"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "knt.biz.pl",
+    "url": "https://knt.biz.pl/",
+    "title": "Usługi informatyczne dla firm – outsourcing i obsługa IT | Warszawa",
+    "desc": "Jesteśmy liderem w dostarczaniu usług IT w Warszawie. Oferujemy rozwiązania informatyczne, szkolenia i wsparcie dla firm. Skontaktuj się z nami już teraz!",
+    "h1": [
+     "H1: IT, które rozwija Twój biznes"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "",
+    "works": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "kompaniainformatyczna.pl",
+    "url": "https://kompaniainformatyczna.pl/2023/07/15/obsluga-informatyczna-firm/",
+    "title": "Obsługa informatyczna firm — co musisz wiedzieć - Profesjonalny Outsourcing IT Warszawa dla firm - Kompania Informatyczna",
+    "desc": "Czy Twoja firma potrzebuje obsługi informatycznej? Jakie są wady i zalety takiego rozwiązania? Ile kosztuje wynajęcie informatyka?",
+    "h1": [
+     "H1: Obsługa informatyczna firm — co musisz wiedzieć"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "comitsolution.pl",
+    "url": "https://comitsolution.pl/pl/outsourcing-it-cennik-uslug-informatycznych",
+    "title": "Прайс-лист IT послуг - Com It Solution sp z o.o.",
+    "desc": "Вам цікаво, скільки коштує надання комплексних ІТ-послуг для таких компаній, як ваша? Хочете знати, чи використання ІТ-аутсорсингу буде дешевшим, ніж утримання внутрішнього ІТ-відділу?\r\nВи потрапили в потрібне місце - тут знайдете найважливішу інформацію про ціни на ІТ-аутсорсинг.",
+    "h1": [
+     "H1: OUTSOURCING IT cennik usług informatycznych"
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "uslugi-informatyczne.gdansk.pomorskie.pl",
+    "url": "https://uslugi-informatyczne.gdansk.pomorskie.pl/",
+    "title": "Firma, Kompleksowa, Obsługa Informatyczna dla Firm, usługi informatyczne Gdańsk, outsourcing IT Gdańsk, usługi IT, opieka, obsługa - Gdynia, Gdańsk, Sopot, Trójmiasto | Usługi informatyczne - Gdańsk, ",
+    "desc": "Świadczymy usługi informatyczne od 20 lat. Sprawdź naszą ofertę lub skontaktuj się z nami a my dostosujemy nasze usługi IT do Twoich potrzeb. Usługi informatyczne dla Gdyni, Gdańska, Sopotu i całego Trójmiasta, w których skład wchodzi, opieka informatyczna, obsługa informatyczna,",
+    "h1": [],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Pomoc zdalna / helpdesk",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "exerit.pl",
+    "url": "https://exerit.pl/",
+    "title": "EXERIT - Profesjonalne usługi informatyczne - Kompleksowa obsługa informatyczna firm - Gdańsk Gdynia Sopot Trojmiasto",
+    "desc": "Profesjonalne rozwiązania informatyczne dla firm i instytucji. Dostarczamy kompleksowe rozwiązania. Obsługa informatyczna firm jest sztandarową pozycją w ofercie w firmy EXERIT",
+    "h1": [
+     "H1: EXERIT - Profesjonalne Rozwiązania Informatyczne"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Pomoc zdalna / helpdesk",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "escsa.pl",
+    "url": "https://www.escsa.pl/outsourcing-it",
+    "title": "Outsourcing IT Krak�w | ESC SA",
+    "desc": "Obs�uga informatyczna firm i organizacji jest jedn� z g��wnych dzia�alno�ci ESC SA. Jeste�my na rynku od 25 lat.",
+    "h1": [
+     "H1: Obs�uga informatyczna przedsi�biorstw - oferta"
+    ],
+    "first": "Kopie zapasowe / backup",
+    "seoFirst": "",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "topgold.pl",
+    "url": "https://topgold.pl/kielce",
+    "title": "Kompleksowe Usługi Informatyczne w Kielcach | TOPGOLD.PL",
+    "desc": "Usługi Informatyczne w Kielcach. Zadzwoń i zamów darmową Konsultację. Kompleksowe Usługi Informatyczne dla Firm i Instutucji w Kielcach. Zapraszamy!",
+    "h1": [
+     "H1: Usługi Informatyczne Kielce dla Firm i Osób Prywatnych"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Kielce",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "ccit.pl",
+    "url": "https://ccit.pl/oferta/outsourcing-it/",
+    "title": "Outsourcing IT dla firm – zakres, koszty i model współpracy",
+    "desc": "Outsourcing IT dla firm: helpdesk, serwery, cyberbezpieczeństwo i monitoring 24/7 za stałą opłatę miesięczną. Zakres, modele współpracy i realne koszty.",
+    "h1": [
+     "H1: Outsourcing IT dla firm – zakres, model i koszty"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "city": []
+   },
+   {
+    "host": "im-it.pl",
+    "url": "https://im-it.pl/",
+    "title": "Outsourcing IT dla firm – obsługa informatyczna | IM IT",
+    "desc": "Outsourcing IT dla firm: helpdesk, serwery, sieci, Microsoft 365, cyberbezpieczeństwo i szkolenia. Warszawa i Mazowsze, technicy także na miejscu. Od 2000 roku.",
+    "h1": [
+     "H1: Outsourcing IT dla firm"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": []
+   },
+   {
+    "host": "dreamiteam.pl",
+    "url": "https://dreamiteam.pl/",
+    "title": "Obsługa informatyczna firm w Warszawie – zewnętrzny dział IT | DreamITeam",
+    "desc": "Obsługa informatyczna firm Warszawa. Gwarantujemy niezawodną opiekę i wsparcie IT. Zapraszamy do skorzystania z outsourcingu IT. Magicy od IT",
+    "h1": [
+     "H1: OBSŁUGA INFORMATYCZNA TWOJEJ FIRMY"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Audyt IT",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "boit.pl",
+    "url": "https://boit.pl/",
+    "title": "Obsługa Informatyczna Firm – IT dla Biznesu Kraków - BOIT",
+    "desc": "BOIT to obsługa informatyczna firm w Krakowie: outsourcing IT, cyberbezpieczeństwo i nowoczesna infrastruktura. Poznaj naszą ofertę.",
+    "h1": [
+     "H1: TWOJE IT . NASZA ODPOWIEDZIALNOŚĆ."
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "xcore.pl",
+    "url": "https://www.xcore.pl/",
+    "title": "Outsourcing IT Poznań – Obsługa Informatyczna Firm | XCORE",
+    "desc": "Profesjonalny outsourcing IT i obsługa informatyczna firm w Poznaniu. Administracja sieci, serwis sprzętu i wsparcie B2B z czasem reakcji do 3h. Sprawdź nas!",
+    "h1": [
+     "H1: Outsourcing informatyczny IT - Poznań"
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisitgdansk.pl",
+    "url": "https://serwisitgdansk.pl/",
+    "title": "Obsługa Informatyczna Firm Gdańsk | Twój Zewnętrzny Dział IT",
+    "desc": "Szukasz niezawodnego wsparcia IT dla małego biura w Gdańsku? Zapewniamy kompleksowy serwis sprzętu, opiekę nad siecią i doradztwo. Umów audyt inżynierski!",
+    "h1": [
+     "H1: Zewnętrzny Dział IT dla Twojej Firmy w Gdańsku"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Serwis sprzętu / wizyty u klienta",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "obslugainformatycznafirm.pl",
+    "url": "https://obslugainformatycznafirm.pl/",
+    "title": "SSK - Obsługa informatyczna firm Łódź - Kompleksowy outsourcing IT",
+    "desc": "Obsługa informatyczna firm Łódź. Profesjonalne usługi IT dla biznesu w województwie Łódzkim. Obsługa sieci komputerowych, serwerów FTP, VPN",
+    "h1": [],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Konfiguracja sieci / Wi-Fi",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "outpro.pl",
+    "url": "https://www.outpro.pl/",
+    "title": "Obsługa informatyczna firm Szczecin - outsourcing IT Szczecin",
+    "desc": "Kompleksowa obsługa informatyczna firm. Oferujemy outsourcing IT na terenie Szczecina oraz całej Polski. Wdrażamy skuteczne rozwiązania informatyczne dla firm.",
+    "h1": [
+     "H1: Stała ochrona, spokój i stabilność IT Twojego przedsiębiorstwa"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "zis.com.pl",
+    "url": "https://zis.com.pl/obsluga-informatyczna-firm/",
+    "title": "Obsługa informatyczna firm Bydgoszcz - Zakład Informatyki",
+    "desc": "Obsługa informatyczna firm w Bydgoszczy. Świadczymy usługi outsourcingu IT dla firm handlowych, jednostek budżetowych i przedsiębiorstw oraz osób prywatnych.",
+    "h1": [],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "mlap.pl",
+    "url": "https://mlap.pl/dla-klientow-biznesowych/",
+    "title": "Obsługa informatyczna firm Białystok – Serwis dla korporacji i biur",
+    "desc": "Profesjonalne wsparcie IT i serwis komputerowy dla firm w Białymstoku. Zapewniamy ciągłość pracy, szybkie naprawy i stałą opiekę techniczną. Zapraszamy do współpracy!",
+    "h1": [
+     "H1: Obsługa komputerów biurowych w Białymstoku"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "exclusiveit.pl",
+    "url": "https://exclusiveit.pl/",
+    "title": "Obsługa informatyczna firm Rzeszów | Exclusive IT",
+    "desc": "Witaj na Exclusive IT - Oferujemy kompleksowe usługi IT dla firm, dostosowane do indywidualnych potrzeb Twojego biznesu.",
+    "h1": [],
+    "first": "Kopie zapasowe / backup",
+    "seoFirst": "Kopie zapasowe / backup",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "ryan.torun.pl",
+    "url": "https://www.ryan.torun.pl/",
+    "title": "RYAN - usługi informatyczne dla firm, strony internetowe www toruń, obsługa informatyczna, pozycjonowanie",
+    "desc": "RYAN - usługi informatyczne dla firm, outsourcing IT, strony internetowe www, oprogramowanie internetowe, zarządzanie serwerami i sieciami, obsługa informatyczna firm i instytucji",
+    "h1": [
+     "H1: O firmie"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "knskielce.pl",
+    "url": "https://knskielce.pl/outsourcing-it-kielce/",
+    "title": "Outsourcing IT Kielce - Kompleksowa obsługa informatyczna firm",
+    "desc": "Outsourcing IT Kielce Wojewódzka 2 lub Młoda 53. Oferujemy kompleksową obsługę informatyczną firm, projektowanie sieci komputerowych, monitoring i serwery",
+    "h1": [
+     "H1: OUTSOURCING IT"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Konfiguracja sieci / Wi-Fi",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "opolkom.pl",
+    "url": "https://opolkom.pl/",
+    "title": "Informatyk Opole - Opolkom usług IT Opole",
+    "desc": "Skorzystaj z usług naszego informatyka w Opolu. Oferta skierowana jest do małych i większych firm z różnych branż. Poznaj szczegóły na stronie!",
+    "h1": [
+     "H1: Informatyk Opole"
+    ],
+    "first": "Konfiguracja sieci / Wi-Fi",
+    "seoFirst": "Konfiguracja sieci / Wi-Fi",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "olsztynit.pl",
+    "url": "https://olsztynit.pl/",
+    "title": "OlsztynIT.pl – Kompleksowa obsługa informatyczna Firm",
+    "desc": "",
+    "h1": [],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "informatykgdynia.pl",
+    "url": "https://informatykgdynia.pl/",
+    "title": "Informatyk Gdynia - obsługa informatyczna firm | AMADO IT",
+    "desc": "Informatyk Gdynia to firma informatyczna oferująca usługi informatyczne - stała obsługa informatyczna firm w Trójmieście. Reakcja przy awarii w 30 minut. Od 2016 roku, ponad 30 klientów.",
+    "h1": [
+     "H1: Informatyk Gdynia - stała obsługa informatyczna firm"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "dserve.pl",
+    "url": "https://dserve.pl/",
+    "title": "Obsługa Informatyczna dla Firm Częstochowa - DSERVE",
+    "desc": "Doświadczony zespół, szybka reakcja",
+    "h1": [
+     "H1: DServe Kompleksowe wsparcie dla firm"
+    ],
+    "first": "Microsoft 365 / poczta / licencje",
+    "seoFirst": "Microsoft 365 / poczta / licencje",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "outsourcing-informatyczny.pl",
+    "url": "https://outsourcing-informatyczny.pl/",
+    "title": "Outsourcing IT - Outsourcing Informatyczny",
+    "desc": "",
+    "h1": [
+     "H1: IT pod kontrolą. Biznes na pierwszym miejscu."
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "artsystem.pl",
+    "url": "https://artsystem.pl/",
+    "title": "ARTSYSTEM - Obsługa informatyczna firm Warszawa",
+    "desc": "Outsourcing IT Warszawa i obsługa informatyczna firm: helpdesk, Microsoft 365, serwery, backup, cyberbezpieczeństwo, cennik i kalkulator usług IT.",
+    "h1": [
+     "H1: OUTSOURCING IT DLA FIRM W WARSZAWIE"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "blackice.com.pl",
+    "url": "https://www.blackice.com.pl/",
+    "title": "BlackIce Networks – obsługa informatyczna firm, Kraków",
+    "desc": "Helpdesk, monitoring 24/7, serwery, sieć i bezpieczeństwo w umowie SLA. Na miejscu w Krakowie i Małopolsce, zdalnie w całej Polsce. Bezpłatna konsultacja.",
+    "h1": [
+     "H1: Obsługa informatyczna firm, które chcą pracować bez przestojów"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "tcats.pl",
+    "url": "https://www.tcats.pl/",
+    "title": "Obsługa informatyczna firm TCATS Wrocław - Usługi i wsparcie IT",
+    "desc": "Skorzystaj z kompleksowej opieki informatycznej dla firm. Profesjonalna obsługa IT we Wrocławiu. Zwiększ efektywność swojej firmy z TCATS!",
+    "h1": [
+     "H1: Usługi informatyczne dla firm - Wrocław"
+    ],
+    "first": "Audyt IT",
+    "seoFirst": "Audyt IT",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "hqnetworks.pl",
+    "url": "https://hqnetworks.pl/",
+    "title": "Outsourcing IT Poznań — obsługa i opieka IT | HQ Networks",
+    "desc": "Outsourcing IT Poznań: obsługa informatyczna i opieka IT dla firm. Abonament ze SLA, monitoringiem i helpdeskiem. Bezpłatna konsultacja — wycena w 1 rozmowie.",
+    "h1": [
+     "H1: Outsourcing IT Poznań — obsługa i opieka IT dla firm"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "informatykgdansk.pl",
+    "url": "https://informatykgdansk.pl/",
+    "title": "Informatyk Gdańsk - kompleksowa obsługa informatyczna firm",
+    "desc": "Informatyk Gdańsk - kompleksowa obsługa informatyczna: jedna umowa, wsparcie, serwery, sieć, poczta i bezpieczeństwo. Od 2016 roku, ponad 30 obsługiwanych firm.",
+    "h1": [
+     "H1: Informatyk Gdańsk"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "symex.pl",
+    "url": "https://www.symex.pl/",
+    "title": "Usługi informatyczne Śląsk, Katowice - Obsługa informatyczna firm SYMEX",
+    "desc": "Oferujemy obsługę informatyczną firm z Katowic i całego Śląska. Zajmujemy się m.in. oprogramowaniem w biznesie, systemami fiskalnymi. Sprawdź szczegóły.",
+    "h1": [
+     "H1: Obsługa informatyczna firm – Katowice, Śląsk"
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "Wdrożenie / konfiguracja stanowisk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "logicnet.com.pl",
+    "url": "https://logicnet.com.pl/",
+    "title": "Logic Net - Obsługa informatyczna firm Szczecin",
+    "desc": "Zaufaj Logic Net - profesjonalnej firmie informatycznej w Szczecinie. Oferujemy kompleksową obsługę IT, serwis oraz outsourcing, wspierając rozwój Twojej firmy.",
+    "h1": [
+     "H1: KOMPLEKSOWA OBSŁUGA INFORMATYCZNA",
+     "H1: Pliki cookies"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Bezpieczeństwo IT / antywirus / firewall",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "informatyk-lublin.pl",
+    "url": "http://informatyk-lublin.pl/obsluga_informatyczna_firm_lublin.html",
+    "title": "OBSŁUGA INFORMATYCZNA FIRM - Lublin >> Outsourcing IT Lublin",
+    "desc": "Obsługa IT Lublin. Opieka i usługi Informatyczne dla firm. Zdalnie lub z dojazdem. Profesjonalnie i tanio, w pakietach. ☎81-470-72-82☎",
+    "h1": [
+     "H1: Informatyk-Lublin.pl",
+     "H1: Outsourcing IT Lublin – kompleksowo"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Serwis sprzętu / wizyty u klienta",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "kordata.pl",
+    "url": "https://kordata.pl/",
+    "title": "Informatyczna obsługa firm – Bydgoszcz | Kordata",
+    "desc": "Informatyczna obsługa firm - administracja siecią, pomoc zdalna na żądanie. Programy Insert GT / Nexo. Serwery, komputery PC, oprogramowanie.",
+    "h1": [
+     "H1: Wsparcie informatyczne dla Twojej firmy_"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "serv4b.pl",
+    "url": "https://www.serv4b.pl/",
+    "title": "SERV4B Rzeszów - outsourcing IT, wsparcie informatyczne dla biznesu",
+    "desc": "SERV4B Sp. z o.o. oferuje profesjonalne usługi IT dla firm — wdrożenia systemów ERP, outsourcing IT, audyty i kompleksową obsługę infrastruktury. Skorzystaj z doświadczenia ekspertów z Rzeszowa.",
+    "h1": [
+     "H1: Stabilny i bezpieczny hosting z pełnym wsparciem technicznym dla firm",
+     "H1: Serwis IT z szybkim wsparciem lokalnym dla firm z Rzeszowa i okolic"
+    ],
+    "first": "Wdrożenie / konfiguracja stanowisk",
+    "seoFirst": "Wdrożenie / konfiguracja stanowisk",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "aproks.pl",
+    "url": "https://aproks.pl/uslugi/obsluga-informatyczna/",
+    "title": "Obsługa informatyczna Kielce - Outsourcing IT | APROKS",
+    "desc": "Obsługa informatyczna Kielce dla firm, które nie chcą tracić czasu na awarie. Szybka reakcja i pełna opieka IT. Sprawdź bezpłatnie swoją sytuację ☎ 723-688-978.",
+    "h1": [
+     "H1: Obsługa informatyczna Kielce – outsourcing IT dla firm i instytucji"
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Serwis sprzętu / wizyty u klienta"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "wscomputer.pl",
+    "url": "https://wscomputer.pl/",
+    "title": "WS Computer | usługi IT dla firm, obsługa informatyczna Olsztyn",
+    "desc": "opieka informatyczna dla firm, sieci informatyczne, serwerownie, podwykonawca IT w Olsztynie, zakładanie monitoringu, wdrażanie systemów",
+    "h1": [],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "absinformatyk.pl",
+    "url": "https://absinformatyk.pl/",
+    "title": "ABS Informatyk – Obsługa IT dla firm Częstochowa, Katowice, Śląsk, Informatyk dla firm, Outsourcing IT, Backup Synology, Mikrotik, Serwery Dell i Lenovo, Profesjonalna obsługa IT i serwis komputerowy ",
+    "desc": "ABS Informatyk to profesjonalna firma IT ze Śląska oferująca kompleksową obsługę IT dla firm i instytucji w regionie Częstochowy, Katowic, Sosnowca, Bytomia, Chorzowa, Gliwic, Zabrza i Tych. Od 15 lat wspieramy biznes w zakresie outsourcingu IT, administracji sieci, serwerów i systemów bezpieczeństwa danych. Naszym cel",
+    "h1": [
+     "H1: Oferujemy cyfrowe rozwiązania dla Twojego biznesu",
+     "H1: Kompleksowe usługi dla Twojej firmy"
+    ],
+    "first": "Bezpieczeństwo IT / antywirus / firewall",
+    "seoFirst": "Kopie zapasowe / backup",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "we-support.pl",
+    "url": "https://www.we-support.pl/",
+    "title": "Outsourcing IT dla firm – Helpdesk i wsparcie IT | We'Support",
+    "desc": "Outsourcing IT dla firm bez zbędnych kosztów. Helpdesk, administracja serwerami i siecią, cyberbezpieczeństwo, backup oraz wsparcie IT 24/7.",
+    "h1": [],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk"
+    ],
+    "city": []
+   },
+   {
+    "host": "pietruczyk.pl",
+    "url": "https://pietruczyk.pl/cennik",
+    "title": "Cennik outsourcingu IT 2026 - pakiety od 1200 zł netto/mies.",
+    "desc": "Stała kwota, pula godzin w umowie, znana stawka za godziny ponad pulę. Pakiety od 1200 zł netto. Miesięczne wypowiedzenie, bez kar za rozwiązanie umowy.",
+    "h1": [
+     "H1: Opieka IT od 1200 zł miesięcznie."
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Stała obsługa IT w abonamencie",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": []
+   },
+   {
+    "host": "ravnet.pl",
+    "url": "https://www.ravnet.pl/",
+    "title": "Firma IT (integrator IT) w Warszawie od 1999 roku - RavNet",
+    "desc": "RavNet – firma IT (integrator IT) w Warszawie od 1999 roku. Dwa modele współpracy, jeden zespół i zakres usług. Zadzwoń: +48 22 869 75 15.",
+    "h1": [
+     "H1: RavNet – firma IT, która działa jak Twój dział IT"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Microsoft 365 / poczta / licencje"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "obsluga-informatyczna-krakow.pl",
+    "url": "https://obsluga-informatyczna-krakow.pl/",
+    "title": "Home - Obsługa informatyczna Kraków",
+    "desc": "Specjalizujemy się w obsłudze informatycznej firm, dzięki czemu będziesz mógł się skupić na swojej firmie, a IT powierz specjalistom! Obsługa IT",
+    "h1": [
+     "H1: Obsługa informatyczna Kraków"
+    ],
+    "first": "Administracja siecią i serwerami",
+    "seoFirst": "Administracja siecią i serwerami",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Konfiguracja sieci / Wi-Fi",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Administracja siecią i serwerami",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "pan-informatyk.pl",
+    "url": "https://pan-informatyk.pl/",
+    "title": "Informatyk Łódź — obsługa IT firm i mobilny informatyk z dojazdem | Pan-Informatyk",
+    "desc": "Informatyk w Łodzi: stała obsługa informatyczna firm (stanowiska, Microsoft 365, sieć, backup) oraz mobilny informatyk z dojazdem i naprawa laptopów i komputerów dla osób indywidualnych. Faktura VAT. Tel. 690 553 590.",
+    "h1": [
+     "H1: Informatyk dla firm w Łodzi - stała obsługa IT. Mobilny informatyk dla osób indywidualnych."
+    ],
+    "first": "Stała obsługa IT w abonamencie",
+    "seoFirst": "Serwis sprzętu / wizyty u klienta",
+    "works": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "seoWorks": [
+     "Stała obsługa IT w abonamencie",
+     "Kopie zapasowe / backup",
+     "Serwis sprzętu / wizyty u klienta",
+     "Konfiguracja sieci / Wi-Fi",
+     "Microsoft 365 / poczta / licencje",
+     "Wdrożenie / konfiguracja stanowisk"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "obsluga-it.katowice.pl",
+    "url": "https://obsluga-it.katowice.pl/",
+    "title": "Kompleksowa obsługa IT w Katowicach | Górny Śląsk",
+    "desc": "Profesjonalna obsługa IT w Katowicach i na Śląsku. Helpdesk, zarządzanie infrastrukturą IT, audyty bezpieczeństwa, hardening systemów. Skontaktuj się z nami!",
+    "h1": [
+     "H1: Kompleksowa obsługa IT dla firm z Katowic i Górnego Śląska"
+    ],
+    "first": "Pomoc zdalna / helpdesk",
+    "seoFirst": "Pomoc zdalna / helpdesk",
+    "works": [
+     "Administracja siecią i serwerami",
+     "Kopie zapasowe / backup",
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "seoWorks": [
+     "Bezpieczeństwo IT / antywirus / firewall",
+     "Pomoc zdalna / helpdesk",
+     "Audyt IT"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Stała obsługa IT w abonamencie": {
+    "было": 11,
+    "стало": 0,
+    "исключено": [
+     "abonament itunes",
+     "abonament italiana",
+     "itaxi abonament",
+     "abonament telefon italia",
+     "abonament netflix italia",
+     "abonament autostrada italia",
+     "abonament telepass italia",
+     "abonament tren italia",
+     "abonament vodafone italia",
+     "abonament digi italia",
+     "abonament mentenanta it"
+    ]
+   },
+   "подсказки: Administracja siecią i serwerami": {
+    "было": 15,
+    "стало": 7,
+    "исключено": [
+     "kurs mikrotik administracja siecią od podstaw",
+     "administrator sieci praca",
+     "administrator sieci krzyżówka",
+     "administrator sieci zarobki",
+     "administrator sieci kurs online",
+     "administrator sieci komputerowych zarobki",
+     "administrator sieci komputerowych praca",
+     "administrator sieci kurs"
+    ]
+   },
+   "подсказки: Bezpieczeństwo IT / antywirus / firewall": {
+    "было": 19,
+    "стало": 13,
+    "исключено": [
+     "bezpieczeństwo it praca",
+     "bezpieczeństwo it studia",
+     "kurs bezpieczeństwo it",
+     "bezpieczeństwo it szkolenie",
+     "bezpieczeństwo it książka",
+     "cyberbezpieczeństwo szkolenie dla firm"
+    ]
+   },
+   "подсказки: Pomoc zdalna / helpdesk": {
+    "было": 15,
+    "стало": 1,
+    "исключено": [
+     "helpdesk",
+     "helpdesk co to",
+     "helpdesk uwr",
+     "helpdesk praca",
+     "helpdesk dsw",
+     "helpdesk ideis",
+     "helpdesk logowanie",
+     "helpdesk dsw ideis",
+     "helpdesk ue wroc",
+     "helpdesk cui",
+     "helpdesk zhp",
+     "pomoc zdalna itbps",
+     "zdalna pomoc it adamietz",
+     "pomoc zdalna direct it"
+    ]
+   },
+   "подсказки: Audyt IT": {
+    "было": 21,
+    "стало": 11,
+    "исключено": [
+     "audyt it co to",
+     "audyt it studia podyplomowe",
+     "audyt it szkolenie",
+     "audyt it praca",
+     "audyt it zarobki",
+     "audyt it studia",
+     "audyt informatyczny wzór",
+     "audyt informatyczny szkolenie",
+     "audyt informatyczny pdf",
+     "audyt informatyczny co to"
+    ]
+   },
+   "подсказки: Microsoft 365 / poczta / licencje": {
+    "было": 13,
+    "стало": 11,
+    "исключено": [
+     "microsoft 365 dla firm logowanie",
+     "microsoft 365 dla firm download"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Bezpieczeństwo IT / antywirus / firewall",
+   "comp": {
+    "mention": 75,
+    "first": 15,
+    "seoFirst": 9,
+    "seo": 35,
+    "head": 28,
+    "td": 11
+   },
+   "ac": 0,
+   "probe": {
+    "n": 13,
+    "cena": 0,
+    "ex": [
+     "bezpieczeństwo it",
+     "bezpieczeństwo it poznań",
+     "bezpieczeństwo it warszawa",
+     "bezpieczeństwo it w administracji",
+     "bezpieczeństwo it wrocław"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Administracja siecią i serwerami",
+   "comp": {
+    "mention": 71,
+    "first": 9,
+    "seoFirst": 15,
+    "seo": 34,
+    "head": 21,
+    "td": 20
+   },
+   "ac": 0,
+   "probe": {
+    "n": 7,
+    "cena": 0,
+    "ex": [
+     "administracja siecią komputerową",
+     "administracja serwerami",
+     "administracja serwerami linux",
+     "administracja serwerami warszawa",
+     "administrator sieci"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kopie zapasowe / backup",
+   "comp": {
+    "mention": 62,
+    "first": 4,
+    "seoFirst": 3,
+    "seo": 21,
+    "head": 17,
+    "td": 7
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Pomoc zdalna / helpdesk",
+   "comp": {
+    "mention": 61,
+    "first": 16,
+    "seoFirst": 11,
+    "seo": 26,
+    "head": 20,
+    "td": 13
+   },
+   "ac": 3,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "pomoc zdalna it"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Microsoft 365 / poczta / licencje",
+   "comp": {
+    "mention": 56,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 15,
+    "head": 13,
+    "td": 6
+   },
+   "ac": 0,
+   "probe": {
+    "n": 11,
+    "cena": 2,
+    "ex": [
+     "wdrożenie microsoft 365",
+     "wdrożenie microsoft dynamics 365",
+     "microsoft 365 dla firm",
+     "microsoft 365 dla firm cennik",
+     "microsoft 365 dla firmy"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stała obsługa IT w abonamencie",
+   "comp": {
+    "mention": 55,
+    "first": 17,
+    "seoFirst": 14,
+    "seo": 25,
+    "head": 24,
+    "td": 8
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Audyt IT",
+   "comp": {
+    "mention": 55,
+    "first": 10,
+    "seoFirst": 5,
+    "seo": 19,
+    "head": 18,
+    "td": 4
+   },
+   "ac": 0,
+   "probe": {
+    "n": 11,
+    "cena": 2,
+    "ex": [
+     "audyt it",
+     "audyt it dla firm",
+     "audyt it warszawa",
+     "audyt it rodo",
+     "audyt it cena"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wdrożenie / konfiguracja stanowisk",
+   "comp": {
+    "mention": 54,
+    "first": 6,
+    "seoFirst": 4,
+    "seo": 15,
+    "head": 11,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Serwis sprzętu / wizyty u klienta",
+   "comp": {
+    "mention": 47,
+    "first": 1,
+    "seoFirst": 3,
+    "seo": 11,
+    "head": 7,
+    "td": 7
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konfiguracja sieci / Wi-Fi",
+   "comp": {
+    "mention": 44,
+    "first": 1,
+    "seoFirst": 3,
+    "seo": 12,
+    "head": 10,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "sieci komputerowe firma"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Stała opieka IT",
+   "a": "Stała obsługa IT w abonamencie",
+   "why": "Решение пользователя 19.10 — подсказки после очистки 0 (были «abonament itunes / italiana»); остаётся 55 конкурентов, у 17 — первой работой; 17 позиций абонемента в прайсе",
+   "evidence": "конкуренты 55 из 80 (первой работой — 17, в Title/Description — 8)"
+  },
+  {
+   "w": "Helpdesk",
+   "a": "Pomoc zdalna / helpdesk",
+   "why": "Решение пользователя 19.10 — подсказки 15→1 после очистки; остаётся 61 конкурент, у 16 — первой работой",
+   "evidence": "конкуренты 61 из 80 (первой работой — 16, в Title/Description — 13) · подсказки Google 1 (напр. «pomoc zdalna it»)"
+  },
+  {
+   "w": "Sieć",
+   "a": "Administracja siecią i serwerami",
+   "why": "71 конкурент, 7 подсказок после очистки; услуги, не ремонт — перечислять услуги допустимо",
+   "evidence": "конкуренты 71 из 80 (первой работой — 9, в Title/Description — 20) · подсказки Google 7 (напр. «administracja siecią komputerową», «administracja serwerami»)"
+  },
+  {
+   "w": "Kopie zapasowe",
+   "a": "Kopie zapasowe / backup",
+   "why": "62 конкурента; в прайсе «Konfiguracja backupu + test odtwarzania»",
+   "evidence": "конкуренты 62 из 80 (первой работой — 4, в Title/Description — 7)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Bezpieczeństwo IT",
+   "a": "Bezpieczeństwo IT / antywirus / firewall",
+   "why": "спорно: №1 по упоминаниям (75), но слово общее, без конкретики; не влезает 5-й работой",
+   "evidence": "конкуренты 75 из 80 (первой работой — 15, в Title/Description — 11) · подсказки Google 13 (напр. «bezpieczeństwo it», «bezpieczeństwo it poznań»)"
+  },
+  {
+   "w": "Audyt IT",
+   "a": "Audyt IT",
+   "why": "21 подсказка, но первой ставят реже; запасной №1",
+   "evidence": "конкуренты 55 из 80 (первой работой — 10, в Title/Description — 4) · подсказки Google 11 (напр. «audyt it», «audyt it dla firm»)"
+  },
+  {
+   "w": "Microsoft 365",
+   "a": "Microsoft 365 / poczta / licencje",
+   "why": "нет в прайсе Omobonus",
+   "evidence": "конкуренты 56 из 80 (первой работой — 1, в Title/Description — 6) · подсказки Google 11 (напр. «wdrożenie microsoft 365», «wdrożenie microsoft dynamics 365»)"
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «stała opieka IT, helpdesk, sieć, kopie zapasowe»",
+  "Ads по аутсорсингу почти нет данных; в XLSX данных нет"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 158
+  },
+  "uk": {
+   "text": "✔ IT-аутсорсинг і обслуговування фірм у Вроцлаві ✔ Постійна IT-підтримка, helpdesk, мережа, резервні копії ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 157
+  },
+  "ru": {
+   "text": "✔ IT-аутсорсинг и обслуживание фирм во Вроцлаве ✔ Постоянная IT-поддержка, helpdesk, сеть, резервные копии ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 156
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

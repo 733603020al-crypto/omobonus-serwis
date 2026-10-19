@@ -1,0 +1,1076 @@
+{
+ "page": "/uslugi/serwis-drukarek-iglowych",
+ "name": "Матричные принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek igłowych",
+    "naprawa drukarek igłowych",
+    "naprawa drukarki igłowej",
+    "serwis drukarek igłowych cennik",
+    "serwis drukarek igłowych Warszawa",
+    "serwis drukarek igłowych Kraków",
+    "serwis drukarek igłowych Wrocław",
+    "serwis drukarek igłowych Poznań",
+    "serwis drukarek igłowych Gdańsk",
+    "serwis drukarek igłowych Łódź",
+    "serwis drukarek igłowych Katowice",
+    "serwis drukarek igłowych Szczecin",
+    "serwis drukarek igłowych Lublin",
+    "serwis drukarek igłowych Bydgoszcz",
+    "serwis drukarek igłowych Białystok",
+    "serwis drukarek igłowych Toruń",
+    "serwis drukarek igłowych Rzeszów",
+    "serwis drukarek igłowych Opole",
+    "serwis drukarek igłowych Kielce",
+    "serwis drukarek igłowych Olsztyn",
+    "serwis drukarek igłowych Częstochowa",
+    "serwis drukarek igłowych Gdynia"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "drukarka igłowa ",
+    "serwis drukarek igłowych ",
+    "naprawa drukarki igłowej ",
+    "głowica drukarki igłowej "
+   ],
+   "uniqueSuggestions": 80,
+   "withPrice": [
+    "drukarka igłowa cena"
+   ],
+   "wroclaw": [],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Naprawa / wymiana głowicy igłowej": {
+    "seeds": [
+     "głowica drukarki igłowej",
+     "wymiana głowicy drukarki igłowej"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "głowica drukarki igłowej"
+    ],
+    "all": [
+     "głowica drukarki igłowej"
+    ],
+    "dropped": []
+   },
+   "Naprawa traktora / prowadzenia papieru": {
+    "seeds": [
+     "traktor drukarki igłowej"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Mechanizm taśmy barwiącej": {
+    "seeds": [
+     "taśma do drukarki igłowej"
+    ],
+    "n": 3,
+    "nRaw": 3,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "taśma do drukarki igłowej",
+     "taśma do drukarki igłowej oki",
+     "taśma barwiąca do drukarki igłowej"
+    ],
+    "all": [
+     "taśma do drukarki igłowej",
+     "taśma do drukarki igłowej oki",
+     "taśma barwiąca do drukarki igłowej"
+    ],
+    "dropped": []
+   },
+   "Czyszczenie / konserwacja": {
+    "seeds": [
+     "czyszczenie drukarki igłowej",
+     "konserwacja drukarki igłowej"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 2,
+   "impressions": 5,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "naprawa drukarek igłowych",
+     "impr": 3,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "serwis drukarek igłowych",
+     "impr": 2,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [],
+   "phrases": 17
+  }
+ },
+ "competitors": {
+  "relevant": 32,
+  "checked": 170,
+  "candidates": 192,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "unibit.com.pl",
+    "url": "https://www.unibit.com.pl/serwis-drukarek-i-kopiarek/",
+    "title": "Serwis drukarek i kopiarek - Unibit",
+    "desc": "",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Katowice",
+     "Lublin",
+     "Bydgoszcz",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "pc-net.pl",
+    "url": "https://pc-net.pl/serwis-drukarek/",
+    "title": "Serwis drukarek - naprawa drukarek laserowych, atramentowych",
+    "desc": "Serwis drukarek laserowych. atramentowych, igłowych. Naprawa drukarek Brother Epson HP Lexmark Canon Konica Minolta Ricoh Xerox Kyocera",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Katowice",
+     "Rzeszów",
+     "Opole",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "laserservice.pl",
+    "url": "https://laserservice.pl/serwis/naprawa-drukarek/",
+    "title": "Naprawa drukarek laserowych, atramentowych, igłowych",
+    "desc": "Naprawa drukarek laserowych, igłowych i atramentowych Warszawa, serwis drukarek dla firm, HP, Lexmark, OKI, Xerox, Samsung, Brother, Canon, EPSON, Konica Minolta, DEVELOP, Kyocera Mita.",
+    "h1": [
+     "H1: Naprawa drukarek",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "bjprint.pl",
+    "url": "https://www.bjprint.pl/",
+    "title": "BJPrint - serwis drukarek atramentowych, serwis drukarek laserowych, serwis ploterów, materiały eksploatacyjne, własny transport, krótki czas naprawy, Sosnowiec, śląskie, Kraków, małopolskie",
+    "desc": "BJ Print zajmuje się profesjonalnym serwisem drukarek laserowych, drukarek atramentowych, drukarek igłowych a także faksów, ploterów i kserokopiarek.",
+    "h1": [
+     "H1: O Firmie"
+    ],
+    "first": "Konfiguracja / sterowniki / port",
+    "seoFirst": "Konfiguracja / sterowniki / port",
+    "works": [
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / port"
+    ],
+    "city": [
+     "Kraków",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "aristo.com.pl",
+    "url": "https://aristo.com.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Kraków, naprawa drukarek HP, Epson | Aristo-Com",
+    "desc": "Specjalistyczny serwis i naprawa drukarek w Krakowie. HP, Brother, Epson, Canon, OKI, Xerox i inne. Obsługujemy drukarki laserowe, atramentowe i igłowe.",
+    "h1": [
+     "H1: Naprawa drukarek w Krakowie – ponad 30 lat doświadczenia"
+    ],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "mfpservice.pl",
+    "url": "https://mfpservice.pl/serwis-drukarek-warszawa/",
+    "title": "Serwis drukarek Warszawa | MFP Service",
+    "desc": "Specjalizujemy się w serwisie drukarek czarno-białych, atramentowych, igłowych, kolorowych i laserowych na terenie Warszawy i okolic.",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "druk-serwis.com",
+    "url": "https://druk-serwis.com/naprawa-drukarek-krakow/",
+    "title": "Naprawa Drukarek Kraków -",
+    "desc": "Naprawiamy drukarki biurowe oraz kserokopiarki na terenie Krakowa i okolic. Obsługa dla firm i korporacji. Wynajem dojazd do klienta.",
+    "h1": [
+     "H1: Naprawa Drukarek Kraków"
+    ],
+    "first": "Usuwanie zacięć",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "arcan.pl",
+    "url": "https://arcan.pl/serwis/serwis-drukarek/",
+    "title": "Serwis i naprawa drukarek Poznań - Arcan s.c.",
+    "desc": "Potrzebna nagła naprawa drukarek? Arcan s.c. oferuje serwis drukarek tuszowych oraz laserowych, a także igłowych i do etykiet. Hp, Epson, Canon, czy Brother itp. Poznań i okolice.",
+    "h1": [
+     "H1: Serwis drukarek - ArCan Poznań"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/",
+    "title": "Naprawa drukarek Częstochowa - naprawa drukarek Brother HP Epson Canon",
+    "desc": "Naprawa drukarek Częstochowa Północ. Autoryzowany serwis drukarek i urządzeń do biura. Przeglad, konserwacja, wymiana bębna, czyszczenie głowic.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek, naprawa laptopów",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konfiguracja / sterowniki / port",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "mikro-serwis.pl",
+    "url": "https://www.mikro-serwis.pl/drukarki-iglowe",
+    "title": "Naprawa drukarek igłowych, autoryzowany serwis OKI - Mikro-Serwis Olsztyn",
+    "desc": "Naprawa drukarek igłowych, autoryzowany serwis OKI",
+    "h1": [
+     "H1: Drukarki Igłowe"
+    ],
+    "first": "Naprawa / wymiana głowicy igłowej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "nsb-serwis.pl",
+    "url": "https://nsb-serwis.pl/naprawa-drukarek/",
+    "title": "Naprawa drukarek Warszawa | Serwis drukarek | NSB Serwis - Pogotowie z dojazdem",
+    "desc": "NSB Serwis: Profesjonalna naprawa drukarek laserowych, atramentowych i wielofunkcyjnych w Warszawie. Pogotowie drukarkowe z dojazdem do domu. Szybkie czyszczenie, wymiana tonera. Szybka wycena!",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Usuwanie zacięć",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Mechanizm taśmy barwiącej",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "naprawimydrukarke.pl",
+    "url": "https://naprawimydrukarke.pl/",
+    "title": "Serwis drukarek Trójmiasto - Gdańsk, Gdynia, Sopot",
+    "desc": "Serwis drukarek w Trójmieście – naprawa i konserwacja sprzętu biurowego. Gdańsk, Gdynia, Sopot. Profesjonalna obsługa, szybka diagnoza, atrakcyjne ceny.",
+    "h1": [
+     "H1: ///////////////////////////////",
+     "H1: &#xa0;"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "xeroserwis.pl",
+    "url": "https://xeroserwis.pl/_cms/view/41/serwis-i-naprawa.html",
+    "title": "Serwis naprawa drukarek atramentowych laserowych Warszawa - Xeroserwis",
+    "desc": "Serwis i naprawa",
+    "h1": [
+     "H1: Serwis i naprawa drukarek laserowych i atramentowych Warszawa, kserokopiarek i innych"
+    ],
+    "first": "Mechanizm taśmy barwiącej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Mechanizm taśmy barwiącej",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "tsdruk.pl",
+    "url": "https://www.tsdruk.pl/",
+    "title": "TSdruk — Serwis Drukarek | Naprawa HP, Canon, Brother, Epson",
+    "desc": "Profesjonalny serwis drukarek. Naprawa drukarek atramentowych, laserowych, igłowych i wielofunkcyjnych HP, Canon, Brother, Epson, Samsung. Diagnostyka, czyszczenie głowic, wymiana bębna i tonera, naprawa podajników papieru.",
+    "h1": [
+     "H1: Twoja drukarka znowu sprawna"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Mechanizm taśmy barwiącej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "topkomputer.com",
+    "url": "https://topkomputer.com/serwis/serwis-i-naprawa-drukarek-laserowych-lodz/",
+    "title": "Serwis drukarek Łódź | Top Komputer",
+    "desc": "Oferujemy serwis i naprawę drukarek laserowych i igłowych Łódź. Nasz serwis drukarek laserowych prowadzi naprawy większości typów drukarek.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "drukarkowyserwis.eu",
+    "url": "https://drukarkowyserwis.eu/nasze-uslugi/",
+    "title": "Nasze usługi &#x2d; serwis drukarek lublin oraz naprawa drukarek lublin, ekspertyza 0 zl",
+    "desc": "Kompleksowa oferta Oferujemy Państwu profesjonalne naprawy drukarek i urządzeń wielofunkcyjnych laserowych, atramentowych, igłowych.",
+    "h1": [
+     "H1: serwis drukarek lublin oraz naprawa drukarek lublin, ekspertyza 0 zl",
+     "H1: Nasze usługi"
+    ],
+    "first": "Mechanizm taśmy barwiącej",
+    "seoFirst": "",
+    "works": [
+     "Mechanizm taśmy barwiącej",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "drukaton.pl",
+    "url": "http://www.drukaton.pl/",
+    "title": "Serwis drukarek - Drukaton",
+    "desc": "Drukarki Naprawiamy drukarki i urządzenia wielofunkcyjne monochroniczne i kolorowe. Drukarki. Serwis drukarek, naprawa drukarek laserowych, atramentowych i igłowych. .",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "serwis.torun.pl",
+    "url": "https://serwis.torun.pl/serwis-komputerowy/naprawa-drukarek-laserowych/",
+    "title": "Naprawa i serwis drukarek laserowych, igłowych oraz atramentowych Toruń – obecnie wstrzymana - Serwis laptopów Toruń | naprawa komputerów",
+    "desc": "[URIS id=336] Niezastąpione w każdym biurze, a także domu. Drukarki laserowe i igłowe to urządzenia, bez których trudno sobie wyobrazić codzienną pracę oraz obieg dokumentów w firmie. W przypadku, gdy sprzęt odmówił Wam posłuszeństwa lub pojawiają się błędy podczas jego funkcjonowania, skontaktujcie się z nami, a my po",
+    "h1": [
+     "H1: Naprawa i serwis drukarek laserowych, igłowych oraz atramentowych Toruń – obecnie wstrzymana"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/serwis-drukarek-rzeszow",
+    "title": "Serwis drukarek Rzeszów – naprawa i dojazd | DMD Tonery",
+    "desc": "Serwis drukarek w Rzeszowie z dojazdem do firmy lub domu. Diagnostyka i naprawa drukarek laserowych, atramentowych, MFP, igłowych oraz ploterów.",
+    "h1": [
+     "H1: Serwis drukarek w Rzeszowie"
+    ],
+    "first": "Naprawa / wymiana głowicy igłowej",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "kielceserwis.pl",
+    "url": "https://kielceserwis.pl/uslugi-informatyczne/naprawa-drukarki/",
+    "title": "Naprawa drukarek | DSP Systems",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konfiguracja / sterowniki / port",
+    "seoFirst": "Konfiguracja / sterowniki / port",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [
+     "Konfiguracja / sterowniki / port"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/pl/i/Serwis-drukarek/22",
+    "title": "Serwis i naprawa drukarek Kraków i Małopolskie - Krakprint.pl",
+    "desc": "Prowadzimy stacjonarny serwis drukarek w Krakowie oraz świadczymy usługi serwisowe na terenie Krakowa oraz Małopolski. Mamy 20 letnie doświadczenie co pozwala nam świadczyć profesjonalne usługi na najwyższym poziomie. Zapraszamy do kontaktu!",
+    "h1": [],
+    "first": "Naprawa / wymiana głowicy igłowej",
+    "seoFirst": "Naprawa / wymiana głowicy igłowej",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "polandithub.pl",
+    "url": "https://polandithub.pl/serwis-i-naprawa-drukarek-czestochowa-i-okolice/",
+    "title": "Serwis i naprawa drukarek – Częstochowa i okolice - Poland IT Hub",
+    "desc": "W Częstochowie i okolicach działa kilkadziesiąt specjalistycznych serwisów oferujących naprawę drukarek laserowych, atramentowych, igłowych, termicznych oraz",
+    "h1": [
+     "H1: Serwis i naprawa drukarek – Częstochowa i okolice"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "j-com.pl",
+    "url": "https://www.j-com.pl/naprawa-drukarek",
+    "title": "Naprawa drukarek | J-COM Poznań",
+    "desc": "Twoja drukarka wydaje dziwne odgłosy, nie reaguje na polecenia albo nie działa jak powinna? Czas oddać ją do serwisu, aby znów działała jak należy. W JCOM wykonujemy naprawę wszelkiego rodzaju drukarek: atramentowe, igłowe, laserowe. Nasi serwisanci są specjalistami w dziedzinie napraw wszelkiego sprzętu biurowego.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwisdrukarekhp.pl",
+    "url": "https://serwisdrukarekhp.pl/?serwis-drukarek",
+    "title": "Serwis drukarek laserowych i atramentowych Częstochowa - PC-NET",
+    "desc": "naprawa drukarek Częstochowa, serwis drukarek laserowych",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "serwbit.pl",
+    "url": "https://serwbit.pl/serwis-drukarek/",
+    "title": "Naprawa Drukarek – Laserowe, Atramentowe, 3D | Katowice",
+    "desc": "Twoja drukarka przestała działać, brudzi kartki, blado drukuje lub sygnalizuje błędy? Oferujemy naprawy drukarek laserowych, atramentowych, igłowych oraz urządzeń wielofunkcyjnych, kserokopiarek i ploterów.",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "tonerylublin.pl",
+    "url": "https://tonerylublin.pl/serwis-drukarek-lublin/",
+    "title": "Serwis drukarek Lublin – diagnostyka 0 zł | Toner Service",
+    "desc": "Serwis i naprawa drukarek w Lublinie: HP, Brother, Canon, Epson, Kyocera i inne. Diagnostyka 0 zł, wycena przed naprawą i do 6 miesięcy gwarancji.",
+    "h1": [
+     "H1: Serwis drukarek Lublin – naprawa i diagnostyka 0 zł"
+    ],
+    "first": "Usuwanie zacięć",
+    "seoFirst": "Usuwanie zacięć",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [
+     "Karetka / pasek napędu",
+     "Usuwanie zacięć"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "ebis.pl",
+    "url": "https://www.ebis.pl/serwis-pm-21.html",
+    "title": "Serwis | EBIS.PL",
+    "desc": "Serwis i konserwacja drukarek atramentowych, laserowych i igłowych EBIS w Gorzowie Wlkp.",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "Czyszczenie / konserwacja",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja"
+    ],
+    "city": []
+   },
+   {
+    "host": "naprawadrukarekhp.pl",
+    "url": "https://naprawadrukarekhp.pl/?serwis-drukarek",
+    "title": "Serwis drukarek Częstochowa - PC-NET",
+    "desc": "naprawa drukarek Częstochowa, serwis drukarek",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja",
+     "Usuwanie zacięć"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "zdorganika.pl",
+    "url": "https://www.zdorganika.pl/drukarka-iglowa-czym-sie-cechuje-i-kiedy-warto-z-niej-korzystac/",
+    "title": "Drukarka igłowa – czym się cechuje i kiedy warto z niej korzystać? – Zdorganika",
+    "desc": "",
+    "h1": [
+     "H1: Drukarka igłowa – czym się cechuje i kiedy warto z niej korzystać?"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "maxkolor.pl",
+    "url": "https://maxkolor.pl/dostarczamy-do/",
+    "title": "Dostarczamy do klientów najwyższej jakości materiały do druku",
+    "desc": "Dostarczamy w MaxKolor materiały do każdego urządzenia drukującego - folie do faksów, taśmy do drukarek igłowych, tonery, tusze czy sprzęt drukujący",
+    "h1": [
+     "H1: Dostarczamy do"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "naprawakserokopiarekczestochowa.pl",
+    "url": "https://www.naprawakserokopiarekczestochowa.pl/?serwis-drukarek",
+    "title": "Serwis drukarek Częstochowa - PC-NET",
+    "desc": "naprawa drukarek Częstochowa, serwis drukarek",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Naprawa traktora / prowadzenia papieru",
+     "Karetka / pasek napędu",
+     "Czyszczenie / konserwacja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "weltronix.pl",
+    "url": "https://www.weltronix.pl/naprawa-serwis-drukarek.html",
+    "title": "Naprawa i serwis drukarek - Weltronix Bielsko",
+    "desc": "",
+    "h1": [
+     "H1: Weltronix",
+     "H1: Naprawa drukarek atramentowych, laserowych i igłowych"
+    ],
+    "first": "Konfiguracja / sterowniki / port",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana głowicy igłowej",
+     "Czyszczenie / konserwacja",
+     "Naprawa płyty głównej / zasilacza",
+     "Konfiguracja / sterowniki / port"
+    ],
+    "seoWorks": [],
+    "city": []
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {}
+ },
+ "ranking": [
+  {
+   "work": "Czyszczenie / konserwacja",
+   "comp": {
+    "mention": 29,
+    "first": 16,
+    "seoFirst": 8,
+    "seo": 9,
+    "head": 6,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": {
+    "n": 3,
+    "kp": 0,
+    "ex": [
+     "konserwacja drukarki igłowej",
+     "konserwacja drukarek igłowych",
+     "czyszczenie drukarki igłowej"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa / wymiana głowicy igłowej",
+   "comp": {
+    "mention": 18,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 4,
+    "head": 3,
+    "td": 2
+   },
+   "ac": 2,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "głowica drukarki igłowej"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 1,
+    "kp": 0,
+    "ex": [
+     "wymiana głowicy drukarki igłowej"
+    ]
+   }
+  },
+  {
+   "work": "Konfiguracja / sterowniki / port",
+   "comp": {
+    "mention": 15,
+    "first": 4,
+    "seoFirst": 2,
+    "seo": 5,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / zasilacza",
+   "comp": {
+    "mention": 11,
+    "first": 2,
+    "seoFirst": 2,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa traktora / prowadzenia papieru",
+   "comp": {
+    "mention": 10,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Karetka / pasek napędu",
+   "comp": {
+    "mention": 10,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie zacięć",
+   "comp": {
+    "mention": 10,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Mechanizm taśmy barwiącej",
+   "comp": {
+    "mention": 4,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 3,
+    "cena": 0,
+    "ex": [
+     "taśma do drukarki igłowej",
+     "taśma do drukarki igłowej oki",
+     "taśma barwiąca do drukarki igłowej"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Naprawa głowicy",
+   "a": "Naprawa / wymiana głowicy igłowej",
+   "why": "18 из 32 конкурентов; 13 позиций в прайсе",
+   "evidence": "конкуренты 18 из 32 (первой работой — 3, в Title/Description — 2) · подсказки Google 1 (напр. «głowica drukarki igłowej») · SEO-файл 1 фраз"
+  },
+  {
+   "w": "Karetka",
+   "a": "Karetka / pasek napędu",
+   "why": "10 конкурентов, 10 позиций в прайсе",
+   "evidence": "конкуренты 10 из 32 (первой работой — 0, в Title/Description — 0)"
+  },
+  {
+   "w": "Traktor papieru",
+   "a": "Naprawa traktora / prowadzenia papieru",
+   "why": "характерная для матричных поломка; 10 конкурентов",
+   "evidence": "конкуренты 10 из 32 (первой работой — 0, в Title/Description — 0)"
+  },
+  {
+   "w": "Konserwacja",
+   "a": "Czyszczenie / konserwacja",
+   "why": "29 из 32, у 16 — первая работа",
+   "evidence": "конкуренты 29 из 32 (первой работой — 16, в Title/Description — 5) · SEO-файл 3 фраз"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Konfiguracja / port",
+   "why": "15 конкурентов, но это скорее настройка, не ремонт; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Слабые данные: только 32 подходящих конкурента в Польше, подсказки и Ads почти пустые — выбор в основном по прайсу и конкурентам"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek igłowych we Wrocławiu ✔ Naprawa głowicy, karetki i traktora papieru, konserwacja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 158
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт матричних принтерів у Вроцлаві ✔ Ремонт головки, каретки і тракта паперу, обслуговування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 157
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт матричных принтеров во Вроцлаве ✔ Ремонт головки, каретки и тракта бумаги, обслуживание ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 155
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

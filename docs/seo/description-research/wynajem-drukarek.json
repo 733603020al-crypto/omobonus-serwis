@@ -1,0 +1,2525 @@
+{
+ "page": "/uslugi/wynajem-drukarek",
+ "name": "Аренда принтеров",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "dzierżawa drukarek",
+    "wynajem drukarek dla firm",
+    "wynajem drukarek",
+    "wynajem drukarek dla firm cennik",
+    "wynajem drukarek Warszawa",
+    "wynajem drukarek Kraków",
+    "wynajem drukarek Poznań",
+    "wynajem drukarek Gdańsk",
+    "wynajem drukarek Łódź",
+    "wynajem drukarek Wrocław",
+    "wynajem drukarek Katowice",
+    "wynajem drukarek Szczecin",
+    "wynajem drukarek Lublin",
+    "wynajem drukarek Bydgoszcz",
+    "wynajem drukarek Białystok",
+    "wynajem drukarek Rzeszów",
+    "wynajem drukarek Toruń",
+    "wynajem drukarek Kielce",
+    "wynajem drukarek Opole",
+    "wynajem drukarek Gdynia",
+    "wynajem drukarek Olsztyn",
+    "wynajem drukarek Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "wynajem drukarek ",
+    "dzierżawa drukarek ",
+    "wynajem drukarki ",
+    "wynajem kserokopiarki ",
+    "drukarka w abonamencie "
+   ],
+   "uniqueSuggestions": 105,
+   "withPrice": [
+    "dzierżawa drukarek cennik",
+    "wynajem drukarki do biura cena",
+    "wynajem kserokopiarki cena",
+    "wynajem drukarek cennik",
+    "wynajem drukarek warszawa cennik",
+    "wynajem drukarki cena",
+    "wynajem drukarki koszt",
+    "wynajem drukarek cena"
+   ],
+   "wroclaw": [
+    "wynajem drukarek wrocław",
+    "dzierżawa drukarek wrocław",
+    "wynajem drukarki wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Serwis w cenie wynajmu": {
+    "seeds": [
+     "wynajem drukarki z serwisem"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Tonery / materiały eksploatacyjne w cenie": {
+    "seeds": [
+     "wynajem drukarki z tonerem"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Rozliczenie za wydruk / kopię": {
+    "seeds": [
+     "dzierżawa kserokopiarki cena za kopię",
+     "wynajem drukarki cena za stronę"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wynajem krótkoterminowy": {
+    "seeds": [
+     "wynajem drukarki na event",
+     "wynajem drukarki na miesiąc",
+     "wynajem drukarki na dzień"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Stały abonament miesięczny": {
+    "seeds": [
+     "drukarka w abonamencie",
+     "abonament na drukarkę"
+    ],
+    "n": 2,
+    "nRaw": 2,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "drukarka w abonamencie",
+     "abonament na drukarkę"
+    ],
+    "all": [
+     "drukarka w abonamencie",
+     "abonament na drukarkę"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 4,
+   "impressions": 15,
+   "clicks": 0,
+   "conversions": 0,
+   "top": [
+    {
+     "term": "wdb serwis kserokopiarek i drukarek dzierżawa kserokopiarek wrocław wszystko dla biura",
+     "impr": 7,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "wynajem drukarek",
+     "impr": 6,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "wynajem drukarek wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "wynajem kserokopiarek wrocław",
+     "impr": 1,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "dzierżawa kserokopiarek canon",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "wynajem drukarek brother",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "kserotechnik sprzedaż serwis wynajem drukarek dzierżawa kserokopiarek tusze tonery",
+     "avg": 0,
+     "comp": "Неизвестно"
+    }
+   ],
+   "phrases": 31
+  }
+ },
+ "competitors": {
+  "relevant": 77,
+  "checked": 84,
+  "candidates": 185,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "ksero-partner.com.pl",
+    "url": "https://www.ksero-partner.com.pl/wynajem-drukarek-i-urzadzen-biurowych/",
+    "title": "Wynajem drukarek i urządzeń biurowych, dzierżawa i leasing drukarek Poznań | Ksero-Partner",
+    "desc": "Wynajmij lub wydzierżaw urządzenia biurowe. W swojej ofercie posiadamy drukarki, kopiarki, skanery lub inny wysokiej jakości sprzęt do biura.",
+    "h1": [
+     "H1: Wynajem drukarek i urządzeń biurowych"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "copiersservice.pl",
+    "url": "https://www.copiersservice.pl/",
+    "title": "Copiers Service - Dzierżawa Kopiarek, Wynajem Drukarek, Wynajem Kserokopiarek",
+    "desc": "Dzierżawa Kopiarki to doskonały sposób na oszczędność w Twojej firmie. Wynajem kserokopiarek pozwala Ci płacić tylko za wydrukowane strony. Oferujemy również wynajem drukarek oraz skanerów. Oszczędzaj już Dziś.",
+    "h1": [
+     "H1: Serwis drukarek, kopiarek i faxów",
+     "H1: Dzierżawa kopiarek"
+    ],
+    "first": "Wynajem krótkoterminowy",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Łódź",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "leterus.com.pl",
+    "url": "https://leterus.com.pl/wynajem-drukarek-dla-firm/",
+    "title": "Wynajem Drukarek dla Firm – Kompletny Przewodnik | Leterus",
+    "desc": "Wynajem drukarek dla firm od 200 zł netto/mies. Ceny modeli Konica Minolta, warunki umowy, porównanie z zakupem i leasingiem. Przewodnik dla każdej branży .",
+    "h1": [
+     "H1: Wynajem Drukarek dla Firm – Kompletny Przewodnik"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "tondruk.pl",
+    "url": "https://tondruk.pl/",
+    "title": "Wynajem i dzierżawa drukarek i kserokopiarek | TonDruk",
+    "desc": "Wynajem i dzierżawa drukarek oraz kserokopiarek dla firm. Wszystkie tonery, części eksploatacyjne i serwis po stronie TonDruk. Sprawdź ofertę.",
+    "h1": [
+     "H1: Drukarki i kserokopiarki dla firm"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "aglar.pl",
+    "url": "https://www.aglar.pl/",
+    "title": "Wynajem Kserokopiarek, Ploterów i Drukarek Canon | AGLAR",
+    "desc": "Dzierżawa kserokopiarek Canon w całej Polsce. Płacisz tylko miesięczną ratę: toner, serwis i części w cenie. Co 4 lata nowy sprzęt. Tel. +48 32 255 28 08",
+    "h1": [
+     "H1: Wynajem, dzierżawa i serwis kserokopiarek, ploterów i drukarek Canon. AGLAR, autoryzowany partner Canon, Katowice"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Katowice",
+     "Bydgoszcz",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "superkopia.pl",
+    "url": "https://superkopia.pl/wynajem-kserokopiarek/",
+    "title": "Dzierżawa drukarek i kserokopiarek A4/A3 | Super Kopia",
+    "desc": "Dzierżawa nowych drukarek A4 i A3. Dobierz urządzenie do potrzeb biura, poznaj modele Super Kopia i zapytaj o indywidualną ofertę oraz serwis.",
+    "h1": [
+     "H1: Dzierżawa nowych drukarek i kserokopiarek dla firm"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kraków",
+     "Poznań",
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "wynajem-drukarek.pl",
+    "url": "https://wynajem-drukarek.pl/",
+    "title": "Wynajem drukarek bez niespodziewanych kosztów serwisu | OTUS",
+    "desc": "Koniec z niespodziewanymi fakturami za serwis drukarek. Wynajem OTUS: tonery, serwis i BDO w stałej opłacie od 130 zł netto/mc. Sprawdź, ile przepłacasz.",
+    "h1": [
+     "H1: Koniec z niespodziewanymi fakturami za serwis drukarek"
+    ],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "Tonery / materiały eksploatacyjne w cenie",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Wrocław",
+     "Bydgoszcz",
+     "Toruń",
+     "Opole"
+    ]
+   },
+   {
+    "host": "dks.pl",
+    "url": "https://dks.pl/oddzialy/poznan",
+    "title": "Kserokopiarki, urządzenia biurowe i poligraficzne – DKS Poznań | DKS",
+    "desc": "Proponujemy nowe i poleasingowe urządzenia biurowe: kserokopiarki, drukarki, skanery. Dostarczamy drukarki poligraficzne i wielkoformatowe. Sprawdź ofertę!",
+    "h1": [
+     "H1: Urządzenia biurowe i poligraficzne w Poznaniu"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Poznań",
+     "Łódź",
+     "Szczecin",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "leasingdrukarki.pl",
+    "url": "https://www.leasingdrukarki.pl/",
+    "title": "Wynajem drukarek w abonamencie - DMD Tonery",
+    "desc": "Oferujemy kompleksowy wynajem drukarek w abonamencie, dzięki czemu zyskujesz dostęp do najnowszych technologii bez konieczności kupna drogiech drukarek",
+    "h1": [
+     "H1: Drukuj bez ograniczeń! Nowoczesne drukarki w abonamencie"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Tonery / materiały eksploatacyjne w cenie",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie"
+    ],
+    "city": [
+     "Łódź",
+     "Białystok",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "pakoprint.pl",
+    "url": "https://pakoprint.pl/wynajem-drukarek-wroclaw/",
+    "title": "Wynajem drukarek, wynajem kserokopiarek Wrocław- PAKOPRINT",
+    "desc": "Wynajem drukarek Wrocław - oferujemy dzierżawę i sprzedaż drukarek dla firm. Nowoczesne urządzenia, profesjonalny serwis.",
+    "h1": [
+     "H1: Wynajem drukarek Wrocław"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Wrocław",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "copyoffice.pl",
+    "url": "https://copyoffice.pl/wynajem/",
+    "title": "Wynajem drukarek - Copy Office",
+    "desc": "Wynajem drukarek to korzystna opcja dla firm, eliminująca koszty zakupu. Dobór odpowiedniego pakietu zapewni obniżenie kosztów wydruku w firmie",
+    "h1": [],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kraków",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "office-partner.pl",
+    "url": "https://office-partner.pl/wynajem%20kserokopiarek.php",
+    "title": "Wynajem i dzierżawa kserokopiarek i drukarek — cennik od 0,02 zł | Opole Wrocław Katowice | OFFICE-PARTNER",
+    "desc": "Dzierżawa kserokopiarek i drukarek bez kosztów serwisu. Tonery i serwis w cenie abonamentu. Opole, Wrocław, Katowice, Częstochowa, Warszawa. Sprawdź cennik.",
+    "h1": [
+     "H1: Wynajem kserokopiarek i drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Wrocław",
+     "Katowice",
+     "Opole",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "inforoffice.pl",
+    "url": "https://inforoffice.pl/wynajem/",
+    "title": "Dzierżawa drukarek i wynajem kserokopiarek | Inforoffice",
+    "desc": "Wynajem drukarek i kserokopiarek dla firm bez kosztów zakupu. Stała miesięczna opłata, serwis, tonery i wsparcie w cenie. Sprawdź ofertę InforOffice!",
+    "h1": [
+     "H1: Wynajem drukarek i kserokopiarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Warszawa",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "e-dts.pl",
+    "url": "https://e-dts.pl/pl/dzierzawa-drukarek/",
+    "title": "Dzierżawa, wynajem i wypożyczenie drukarek",
+    "desc": "Nie musisz kupować drukarek, wynajem drukarki w DTS przyniesie Ci szereg korzyści. Serwis drukarki, tonery wliczone w cenę dzierżawy. Wypożyczanie drukarek może być dużo tańsze niż zakup drukarki.",
+    "h1": [
+     "H1: Dzierżawa drukarek"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Serwis w cenie wynajmu",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie"
+    ],
+    "city": [
+     "Kraków",
+     "Gdańsk",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "plenti.app",
+    "url": "https://plenti.app/pl/category/78/drukarki-i-niszczarki",
+    "title": "Wynajem drukarek i niszczarek – sprzęt biurowy bez zobowiązań | Plenti",
+    "desc": "Potrzebujesz drukarki lub niszczarki do biura? Wynajmij sprzęt biurowy na Plenti i ciesz się nowoczesnymi urządzeniami bez konieczności zakupu. Sprawdź ofertę już dziś!",
+    "h1": [
+     "H1: Drukarki i Niszczarki"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Szczecin",
+     "Białystok",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "wynajemit.pl",
+    "url": "https://wynajemit.pl/wynajem_drukarek.php",
+    "title": "Wynajem drukarek - WynajemIT",
+    "desc": "Dzierżawa drukarek. Wypożyczalnia drukarek na długi i krótki termin wynajmu. Sprawdź ofertę wypożyczenia drukarki.",
+    "h1": [
+     "H1: Wynajem drukarek",
+     "H1: Wynajem drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "gemini24.com.pl",
+    "url": "https://www.gemini24.com.pl/wynajem/",
+    "title": "Wynajem | Gemini - Urządzenia biurowe",
+    "desc": "",
+    "h1": [
+     "H1: Wynajem i leasing urządzeń biurowych"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "extrawynajemkserokopiarek.pl",
+    "url": "https://www.extrawynajemkserokopiarek.pl/",
+    "title": "Wynajem Kserokopiarek",
+    "desc": "Wynajem Kserokopiarek  ☎️ tel.  Wynajem Kopiarki  Wynajem Drukarki ",
+    "h1": [
+     "H1: Wynajem Kserokopiarek",
+     "H1: O Nas"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Łódź",
+     "Białystok",
+     "Opole",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "asprinters.pl",
+    "url": "https://www.asprinters.pl/dzierzawa",
+    "title": "Dzierżawa urządzeń drukujących — jasne warunki umowy",
+    "desc": "Prowadzisz firmę i potrzebujesz niezawodnego sprzętu? U nas możesz skorzystać z dzierżawy oraz wynajmu drukarek. Obsługujemy klientów z całej Polski. Sprawdź.",
+    "h1": [
+     "H1: Dzierżawa i wynajem urządzeń drukujących na terenie całej Polski"
+    ],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "wynajemdrukarek.com",
+    "url": "https://www.wynajemdrukarek.com/",
+    "title": "Wynajem drukarek • Dzierżawa | Leasing kserokopiarek | Warszawa",
+    "desc": "Wynajem drukarek, kopiarek, kserokopiarek Warszawa Wilanów ⭐ Dzierżawa, leasing urządzeń wielofunkcyjnych ✅ Atrakcyjne ceny ➤ Sprawdź!",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "drukarkidlafirm.pl",
+    "url": "https://www.drukarkidlafirm.pl/",
+    "title": "Wynajem drukarek dla firm | Drukarka na abonament | Serwis i tonery w cenie",
+    "desc": "Wynajem drukarek dla firm już od 100 zł netto miesięcznie. Drukarki A4 mono, A4 kolor i A3 kolor. Serwis, tonery, wsparcie techniczne i pakiet stron w cenie abonamentu.",
+    "h1": [
+     "H1: Wynajem drukarek dla firm"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "najem-wynajem.pl",
+    "url": "https://najem-wynajem.pl/oferty/1240.1.1.6.288/wynajem-drukarek-krakow.html",
+    "title": "Wynajem Drukarek Kraków małopolskie",
+    "desc": "Wynajem Drukarek Kraków małopolskie np. laserowe, atramentowe, wielofunkcyjne, kolorowe i przemysłowe.",
+    "h1": [
+     "H1: Wynajem Drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Kraków",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "wynajem-kserokopiarek.pl",
+    "url": "https://wynajem-kserokopiarek.pl/",
+    "title": "Wynajem kserokopiarek i drukarek dla firm — od 149 zł/mies.",
+    "desc": "Wynajmij kserokopiarkę Develop dla swojej firmy. Serwis, tonery i przeglądy w cenie. Bez kosztów początkowych. Autoryzowany partner.",
+    "h1": [
+     "H1: Wynajem kserokopiarek dla Twojej firmy"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "kopiarka.net",
+    "url": "https://www.kopiarka.net/wynajem-dzierzawa-urzadzen/",
+    "title": "wynajem-dzierzawa-urzadzen – DK.K Drukarki Kopiarki. Kompleksowo",
+    "desc": "",
+    "h1": [
+     "H1: Wynajem/dzierżawa urządzeń"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "markor.com.pl",
+    "url": "https://markor.com.pl/dzierzawa-drukarek/",
+    "title": "Dzierżawa drukarek Gdańsk, Gdynia, Pomorskie - Markor",
+    "desc": "Zastanawiasz się jak pozyskać wydajny sprzęt do Twojej firmy? Dzierżawa drukarek czy wynajem drukarek to sprawdzony sposób.",
+    "h1": [
+     "H1: Dzierżawa drukarek"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Stały abonament miesięczny",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Stały abonament miesięczny"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "golden-line.pl",
+    "url": "https://golden-line.pl/strona/wynajmij-drukarke",
+    "title": "Wspieramy biznes na terenie całego kraju - wynajmij drukarkę",
+    "desc": "Wynajmij drukarkę i oszczędzaj nawet 30% rocznie. Korzystaj tak, jak ze swojej, nie martw się serwisem czy naprawami i płać za to tylko niewielką miesięczną opłatę. Dostawca materiałów eksploatacyjnych do druku Golden Line, oferuje wynajem drukarki, leasing, udostępnienie i dzierżawę urządzeń drukujących. Usługi skiero",
+    "h1": [
+     "H1: Wynajem i dzierżawa drukarek",
+     "H1: Nie angażuj własnych środków finansowych"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Stały abonament miesięczny",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "seoWorks": [
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "nobagroup.com.pl",
+    "url": "https://nobagroup.com.pl/wynajem-drukarek-krakow/",
+    "title": "Wynajem Drukarek Kraków | Dzierżawa Kserokopiarek – Noba Group",
+    "desc": "Wynajem i dzierżawa kserokopiarek Konica Minolta dla firm z Krakowa. Autoryzowany serwis, bezpłatna dostawa i instalacja. Zadzwoń: 791 811 911",
+    "h1": [
+     "H1: Wynajem Drukarek i Kserokopiarek Kraków – Noba Group",
+     "H1: Wynajem i Dzierżawa Kserokopiarki — Kraków"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kraków",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "e-intrax.pl",
+    "url": "https://www.e-intrax.pl/gdansk",
+    "title": "Wynajem i dzierżawa drukarek i kserokopiarek Gdańsk | INTRAX",
+    "desc": "Najem urządzeń biurowych i wielofunkcyjnych dla firm w Gdańsku od 46 zł netto/mies. – serwis 24–48 h i tonery po stronie INTRAX. Oliwa, Wrzeszcz, Pomorskie.",
+    "h1": [
+     "H1: Wynajem, najem i dzierżawa urządzeń biurowych dla firm w Gdańsku"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Gdańsk",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "hicopy.gdansk.pl",
+    "url": "https://hicopy.gdansk.pl/wynajem-drukarek/",
+    "title": "Wynajem drukarek Gdańsk, Gdynia i Sopot - HiCOPY",
+    "desc": "Wynajem drukarek Gdańsk, Gdynia, Sopot – HiCOPY. Gdańsk ul. Schuberta 1a/2, 80-171. Zadzwoń +48585858978. Testuj 30 dni za darmo!",
+    "h1": [
+     "H1: Wynajem drukarek Gdańsk, Gdynia i Sopot"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "biurokseroserwis.com",
+    "url": "https://biurokseroserwis.com/wynajem-drukarek/",
+    "title": "Wynajem drukarek | Dzierżawa drukarek | Biuro Ksero Serwis",
+    "desc": "Wynajem drukarek. Potrzebujesz drukarkę do firmy, ale stanowi to zbyt dużą inwestycję? Wynajmij drukarkę i, nie martw się niczym innym niż drukowaniem.",
+    "h1": [
+     "H1: Wynajem drukarek"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Rozliczenie za wydruk / kopię",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "kopiertechnik.pl",
+    "url": "https://www.kopiertechnik.pl/",
+    "title": "Wypożyczalnia, leasing, wynajem drukarek, kserokopiarek i urządzeń wielofunkcyjnych dla firm – Warszawa – Kopier Technik",
+    "desc": "Jesteśmy dystrybutorem drukarek z wieloletnim doświadczeniem. Oferujemy oryginalne drukarki dla firm od zaufanych producentów. Sprawdź na naszej stronie.",
+    "h1": [
+     "H1: Dystrybutor, wynajem, wypożyczalnia drukarek, kserokopiarek – Warszawa"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "proxer.pl",
+    "url": "https://proxer.pl/dzierzawa-drukarek-warszawa/",
+    "title": "Dzierżawa drukarek | Proxer Sp. z o.o.",
+    "desc": "",
+    "h1": [
+     "H1: Dzierżawa urządzeń wielofunkcyjnych",
+     "H1: O nas"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "widkot.pl",
+    "url": "https://widkot.pl/kserokopiarki-bialystok/",
+    "title": "Kserokopiarki Białystok - Sprzedaż i serwis kserokopiarek drukarek Konica Minolta",
+    "desc": "Oferujemy sprzedaż, wynajem i serwis kserokopiarek, drukarek oraz niszczarek w Białymstoku. Skontaktuj się z nami!",
+    "h1": [
+     "H1: Kserokopiarki Białystok",
+     "H1: Kserokopiarki Białystok — sprzedaż, wynajem i serwis Konica Minolta i Sharp"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Bez kaucji / bez inwestycji",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "procopy.wroclaw.pl",
+    "url": "https://www.procopy.wroclaw.pl/webpage/wynajem-drukarek-wroclaw.html",
+    "title": "Wynajem drukarek i kserokopiarek Wrocław - ProOffice dzierżawa drukarek",
+    "desc": "Dzierżawa Kopiarki Wrocław to doskonały sposób na oszczędność w Twojej firmie. Wynajem kserokopiarek Wrocław pozwala Ci płacić tylko za wydrukowane strony. ",
+    "h1": [
+     "H1: Wynajem drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "seoWorks": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "kopiarkibialystok.pl",
+    "url": "https://www.kopiarkibialystok.pl/",
+    "title": "Serwis, naprawa, sprzedaż, wynajem kserokopiarek, drukarek",
+    "desc": "Serwis, naprawa, sprzedaż, wynajem, dzierżawa kserokopiarek, drukarek oraz urządzeń wielofunkcyjnych. Białystok, Warszawa, Gdańsk i okolice.",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Białystok",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "biztec.pl",
+    "url": "https://biztec.pl/",
+    "title": "BIZTEC – serwis dzierżawa wynajem kserokopiarek drukarek Wrocław",
+    "desc": "",
+    "h1": [
+     "H1: BIZTEC",
+     "H1: Autoryzowany partner i serwis DEVELOP"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "szulcserwis.pl",
+    "url": "https://szulcserwis.pl/wynajem-drukarek-i-kserokopiarek-gdansk",
+    "title": "Wynajem kserokopiarek, drukarek – Szulc Serwis",
+    "desc": "Oferujemy wynajem kserokopiarek w Trójmieście. Proponujemy wynajem kopiarek od najlepszych producentów: Lexmark, HP, Samsung, Konica Minolta, Epson. Zapras",
+    "h1": [
+     "H1: Wynajem kserokopiarek i drukarek"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "prooffice.wroclaw.pl",
+    "url": "https://www.prooffice.wroclaw.pl/wynajem-kopiarek-wroclaw.html",
+    "title": "WYNAJEM DRUKAREK WROCŁAW",
+    "desc": "Wynajem drukarek i kserokopiarek Wrocław. Zamiast kupować drukarkę lub kserokopiarkę wynajmij ją na dowolny okres (od 1 dnia do 5 lat!) za niewielką opłatę miesięczną.Pro",
+    "h1": [
+     "H1: WYNAJEM DRUKAREK WROCŁAW"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Wynajem krótkoterminowy"
+    ],
+    "seoWorks": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "aneks.gda.pl",
+    "url": "https://aneks.gda.pl/",
+    "title": "Aneks wynajem kopiarek drukarek i urządzeń wielofunkcyjnych",
+    "desc": "Aneks oferuje wynajem oraz dzierżawę drukarek, kopiarek i urządzeń wielofunkcyjnych na terenie Gdańska, trójmiasta oraz w województwie pomorskim",
+    "h1": [
+     "H1: Wynajem kserokopiarek"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "robican.pl",
+    "url": "https://robican.pl/wynajem-drukarek-szczecin",
+    "title": "Wynajem drukarek w Szczecinie z pełną obsługą | ROBICAN",
+    "desc": "Wynajmij drukarki, kserokopiarki i skanery w Szczecinie. Serwis i materiały eksploatacyjne w cenie. Elastyczne finansowanie – w ROBICAN",
+    "h1": [
+     "H1: Wynajem drukarek Szczecin"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Szczecin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "darodruk.pl",
+    "url": "https://darodruk.pl/",
+    "title": "DARODRUK - Ksera, Drukarki, Serwis, Najem - Wrocław (dzierżawa, tusze, tonery, głowice, bębny)",
+    "desc": "Serwis i sprzedaż urządzeń drukujących i kopiujących. Najem, dzierżawa, leasing kserokopiarek biurowych. Materiały eksploatacyjne, tusze, tonery.",
+    "h1": [],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "Tonery / materiały eksploatacyjne w cenie",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "ecopartner.pl",
+    "url": "https://ecopartner.pl/wynajem",
+    "title": "Wynajem Drukarek dla Firm – 0 zł na Start | Ecopartner",
+    "desc": "Profesjonalny wynajem drukarek HP dla firm. 0 zł na start, serwis i tonery w cenie. Stały abonament od 65 zł netto/mc. Sprawdź ofertę Ecopartner.",
+    "h1": [
+     "H1: Wynajem Drukarek – Nie Kupuj, To Się Nie Opłaca"
+    ],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "prooffice.sklep.pl",
+    "url": "https://www.prooffice.sklep.pl/wynajem-drukarek-wroclaw.html",
+    "title": "WYNAJEM DRUKAREK Wrocław - Dzierżawa kserokopiarek, niskie ceny, korzystne warunki.",
+    "desc": "WYNAJEM DRUKAREK Wrocław - Dzierżawa kopiarek, niskie ceny korzystne warunki. Firma ProOffice prowadzi sprzedaż i wynajem kserokopiarek, drukarek. Główne miasta to Wrocław i całe województwo dolnośląskie.",
+    "h1": [
+     "H1: WYNAJEM DRUKAREK WROCŁAW"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Wynajem krótkoterminowy"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "a4polska.pl",
+    "url": "https://a4polska.pl/wynajem-drukarek-warszawa/",
+    "title": "Wynajem drukarek Warszawa - abonament i serwis | A4 Polska",
+    "desc": "Wynajem drukarek Warszawa: abonament od 59 zł, materiały i serwis w cenie. Drukarki A4 i A3, Konica Minolta, Lexmark, HP. Tel. 508 20 30 40.",
+    "h1": [
+     "H1: Wynajem drukarek Warszawa"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Stały abonament miesięczny",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Warszawa",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "complexbiuro.pl",
+    "url": "https://complexbiuro.pl/dzierzawa-leasing-kserokopiarek-drukarek.html",
+    "title": "Dzierżawa i leasing kserokopiarek | urządzenia wielofunkcyjne | ComplexBiuro",
+    "desc": "Dzierżawa i leasing kserokopiarek oraz urządzeń wielofunkcyjnych. Sprzedaż, serwis i wynajem sprzętu biurowego. Korzystne warunki i doświadczenie od 1994 roku – ComplexBiuro.",
+    "h1": [
+     "H1: Wynajem kserokopiarek dla firm, leasing kopiarek i drukarek Gdańsk, Sopot, Gdynia."
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Bez kaucji / bez inwestycji",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "kserokopiarki-netcan.pl",
+    "url": "https://kserokopiarki-netcan.pl/wynajem-dzierzawa",
+    "title": "Dzierżawa kserokopiarek",
+    "desc": "Sprawdź jakie korzyści możesz zyskać dzierżawiąc lub wynajmując kserokopiarkę. Konkretne przykłady naszych klientów z Warszawy. Atrakcyjne ceny i warunki.",
+    "h1": [
+     "H1: Dzierżawa / Wynajem Kserokopiarki, Drukarki, Urządzenia…"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "telecopy.pl",
+    "url": "https://www.telecopy.pl/",
+    "title": "Nowe i używane kserokopiarki - Wrocław - Poznań - Telecopy",
+    "desc": "Kserokopiarki i drukarki Konica Minolta, Canon w stanie nowym i używanym. W ofercie sprzedaż, wynajem, leasing i dzierżawa kserokopiarek. Sprawdź.",
+    "h1": [
+     "H1: Kompleksowa obsługa druku"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Poznań",
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "wynajem-lcd.pl",
+    "url": "https://wynajem-lcd.pl/oferta/wynajem-drukarek/",
+    "title": "Wynajem drukarek laserowych » Wypożyczenie drukarki » Wynajem-lcd.pl",
+    "desc": "Wynajem drukarek. Nasza wypożyczalnia zapewni drukarki. Drukarki na wynajem w najlepszych cenach. Szkolenia, Eventy, Egzaminy. Wypożyczenie sprzętu IT.",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "fixandprint.pl",
+    "url": "https://fixandprint.pl/",
+    "title": "Kserokopiarki, Kopiarki - Warszawa - Wynajem, serwis, sprzedaż Fix&Print",
+    "desc": "Oferujemy kompleksową obsługę firm sprzedając, dzierżawiąc i serwisując urządzenia marki Canon oraz Konica Minolta.",
+    "h1": [
+     "H1: Kserokopiarki i Kopiarki w Warszawie - FixAndPrint"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "dsd.com.pl",
+    "url": "https://www.dsd.com.pl/wynajem-kopiarek-i-drukarek",
+    "title": "Wynajem kopiarek i drukarek - Co robimy? - Oferta - DSD",
+    "desc": "Szukasz rozwiązania dla swojego biznesu? Skorzystaj z wynajmu kserokopiarek i drukarek laserowych od firmy DSD Hicopy! Oferujemy fabrycznie nowe oraz poleasingowe urządzenia renomowanych",
+    "h1": [
+     "H1: Wynajem kopiarek i drukarek - oferta firmy DSD Hicopy"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "xerro-polska.pl",
+    "url": "https://xerro-polska.pl/",
+    "title": "Katowice Kserokopiarki Plotery Serwis Dzierżawa | Xerro-Polska",
+    "desc": "Kserokopiarki Plotery | Serwis Katowice Sprzedaż Dzierżawa - Profesjonalne rozwiązania z zakresu druku do biura. Sprawdź usługi Xerro-Polska!",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Katowice",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "ide.szczecin.pl",
+    "url": "https://ide.szczecin.pl/wynajem-drukarek",
+    "title": "Dzierżawa urządzeń wielofunkcyjnych - wynajem drukarek Szczecin",
+    "desc": "Dzierżawa drukarek pozwala uniknąć zakupu całego niezbędnego sprzętu biurowego do prawidłowego funkcjonowania firmy. Zachęcamy do zapoznania się z ofertą.",
+    "h1": [
+     "H1: Dzierżawa urządzeń wielofunkcyjnych"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "printservice.pl",
+    "url": "http://www.printservice.pl/",
+    "title": "Wynajem drukarek Lublin | tel. 504 433 522 | Cennik 2026",
+    "desc": "Wynajem drukarek Lublin - Cena. Tanie drukarki laserowe, zobacz naszą ofertę.",
+    "h1": [
+     "H1: Zobacz nasze urządzenia",
+     "H1: Zobacz nasze referencje"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "faxiko.pl",
+    "url": "https://faxiko.pl/",
+    "title": "Faxiko Olsztyn. Kopiarki, urządzenia biurowe, niszczarki | Sprzedaż, wynajem, serwis |",
+    "desc": "Sprzedaż i dzierżawa kserokopiarek – Olsztyn i Warmia-Mazury, Od 1989 roku, jako jedni z pierwszych w północno-wschodniej Polsce, oferujemy kompleksowe usługi w zakresie dystrybucji, wynajmu i serwisu urządzeń biurowych. Przez ponad 30 lat zdobyliśmy bogate doświadczenie i zbudowaliśmy silną pozycję na lokalnym rynku.\n",
+    "h1": [],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "wajpol.com.pl",
+    "url": "https://wajpol.com.pl/",
+    "title": "Wynajem kserokopiarek w Częstochowie | Konica Minolta Partner",
+    "desc": "Pełna obsługa druku biurowego, systemy OCR, wynajem kserokopiarek. Jesteśmy jedynym autoryzowanym partnerem Konica Minolta w Częstochowie",
+    "h1": [
+     "H1: Kontakt z nami"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Wynajem krótkoterminowy",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "bialcan.pl",
+    "url": "https://bialcan.pl/dzierzawa-wynajem/",
+    "title": "Dzierżawa / Wynajem - Bialcan Białystok wynajem drukarki białystok",
+    "desc": "Jeżeli interesuje Cię wynajem sprze∂tu biurowego, wynajem drukarki, wynajem skanera, wynajem urządzenia wielofunkcyjnego - skontaktuj sie z nami.",
+    "h1": [],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "pureprint.co",
+    "url": "https://pureprint.co/",
+    "title": "Wynajem i dzierżawa drukarek dla firm, Kielce | Pure Print",
+    "desc": "Wynajem i dzierżawa drukarek oraz kserokopiarek dla firm z Kielc, Krakowa, województwa świętokrzyskiego i małopolskiego. Sprzęt, tonery i serwis w abonamencie od 50 zł netto.",
+    "h1": [
+     "H1: Wynajem drukarek dla firm · Kielce · Kraków"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "dip.com.pl",
+    "url": "https://www.dip.com.pl/wynajem-urzadzen/",
+    "title": "Wynajem drukarki Szczecin - dzierżawa urządzeń biurowych",
+    "desc": "Oferujemy wynajem nowoczesnych urządzeń biurowych, w tym drukarek i urządzeń wielofunkcyjnych. Zyskaj dostęp do najnowszej technologii bez wysokich kosztów!",
+    "h1": [
+     "H1: Wynajem urządzeń"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/wynajem-drukarek",
+    "title": "Wynajem drukarek Lublin; Drukuj od 1 zł bez Abonamentu",
+    "desc": "Lub abonament od 48 zł NETTO / mies. ✅ 0 zł Serwis ✅ Tonery GRATIS, 100% wygody! Zadzwoń 517-532-335 i zacznij oszczędzać od dziś!",
+    "h1": [
+     "H1: Wynajem drukarek Lublin. Drukuj od 1 zł bez Abonamentu"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Stały abonament miesięczny",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Bez kaucji / bez inwestycji",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "printmark.pl",
+    "url": "https://printmark.pl/",
+    "title": "Printmark - kserokopiarki, drukarki, niszczarki | Białystok",
+    "desc": "Firma Printmark z Białegostoku od ponad 10 lat specjalizuje się w sprzedaży i serwisie: drukarek, kopiarek, urządzeń wielofunkcyjnych i niszczarek. Zajmujemy si",
+    "h1": [
+     "H1: Profesjonalne rozwiązania drukujące i IT dla biznesu"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/oferta/wynajem-drukarek",
+    "title": "Wynajem drukarek - DMD Tonery – kompleksowa obsługa druku dla firm",
+    "desc": " - DMD Tonery zapewnia urządzenia drukujące, wynajem, zarządzanie drukiem MPS, serwis, tonery, tusze i artykuły biurowe dla firm i instytucji.",
+    "h1": [],
+    "first": "Rozliczenie za wydruk / kopię",
+    "seoFirst": "Tonery / materiały eksploatacyjne w cenie",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "top-serwis.pl",
+    "url": "https://www.top-serwis.pl/",
+    "title": "TOP-SERWIS Sprzedaż, dzierżawa i serwis drukarek i kserokopiarek. Numer 1 w województwie świętokrzyskim !",
+    "desc": "Serwis drukarek, kserokopiarek Kielce - kserokopiarki nowe i używane - wynajem i dzierżawa.",
+    "h1": [
+     "H1: GWARANCJA NA 5 LAT I DOJAZD GRATIS !!!"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "escop.com.pl",
+    "url": "http://www.escop.com.pl/",
+    "title": "ESCOP Kserokopiarki Drukarki Bydgoszcz - Wynajem, Sprzedaż, Serwis",
+    "desc": "Profesjonalny najem, sprzedaż i serwis kserokopiarek poleasingowych i nowych. Autoryzowany dealer Ricoh w Bydgoszczy. Zoptymalizuj koszty druku z ESCOP.",
+    "h1": [
+     "H1: Kserokopiarki i Drukarki Bydgoszcz nowe i używane – dzierżawa/najem, sprzedaż i serwis w Bydgoszczy"
+    ],
+    "first": "Dostawa / instalacja / konfiguracja",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "kupdrukarke.pl",
+    "url": "https://kupdrukarke.pl/wynajem-drukarek-kielce",
+    "title": "Wynajem drukarek Kielce | Urządzenia do biura i firmy",
+    "desc": "Wynajem drukarek w Kielcach. Dobór urządzeń Epson do biur i firm, wsparcie we wdrożeniu oraz pomoc w ograniczeniu kosztów druku.",
+    "h1": [
+     "H1: Wynajem drukarek Kielce"
+    ],
+    "first": "Dostawa / instalacja / konfiguracja",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "freshpc.pl",
+    "url": "https://freshpc.pl/dla-firm/wynajem-drukarek-poznan/",
+    "title": "Wynajem drukarek Poznań | FreshPC",
+    "desc": "Tani wynajem drukarek i kserokopiarek dla firm w Poznaniu i okolicach. Zapewniamy niezawodny sprzęt, bezpłatny serwis i tonery.",
+    "h1": [
+     "H1: Wynajem drukarek Poznań"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "drukarkiwynajem.pl",
+    "url": "https://drukarkiwynajem.pl/",
+    "title": "Wynajem drukarek dla firm — Gdańsk i okolice | EcoPartner",
+    "desc": "Wynajem drukarek HP dla firm w Gdańsku i okolicy (do 50 km) — abonament all-in: serwis, tonery i części w cenie, już od 65 zł netto/mc. Bezpłatna wycena.",
+    "h1": [
+     "H1: Wynajem drukarek dla firm w Gdańsku i okolicy"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "printflow.live",
+    "url": "https://printflow.live/",
+    "title": "Printflow — wynajem drukarek i dzierżawa urządzeń biurowych, Łódź",
+    "desc": "Printflow — wynajem drukarek i dzierżawa urządzeń wielofunkcyjnych: flota pod wolumeny, rozliczenie za stronę, serwis i tonery w cenie, monitoring. Obsługujemy Łódź i województwo łódzkie.",
+    "h1": [
+     "H1: Firmowy druk płynie. Kupować nie trzeba."
+    ],
+    "first": "Rozliczenie za wydruk / kopię",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Serwis w cenie wynajmu",
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "saio.pl",
+    "url": "https://saio.pl/katowice/",
+    "title": "Serwis i wynajem drukarek – Katowice – SAiO",
+    "desc": "Potrzebujesz naprawy drukarki lub wynajmu kserokopiarek w Katowicach? SAiO oferuje fachowy serwis urządzeń biurowych HP, Brother, Canon i innych. Sprawdź!",
+    "h1": [
+     "H1: Serwis i wynajem urządzeń biurowych w Katowicach"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "ksero-contakt.pl",
+    "url": "https://www.ksero-contakt.pl/",
+    "title": "Sprzedaż, wynajem, serwis urządzeń biurowych – Szczecin",
+    "desc": "Ksero Contakt ze Szczecina zajmuje się sprzedażą, dzierżawą oraz serwisem urządzeń drukujących dla firm. Zapewniamy kompleksowe usługi. Zapraszamy!",
+    "h1": [
+     "H1: Sprzedaż, wynajem i serwis urządzeń wielofunkcyjnych - Ksero Contakt w Szczecinie"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "desklink.pl",
+    "url": "https://desklink.pl/wynajem/",
+    "title": "Wynajem drukarek Lublin dla firm | Desklink",
+    "desc": "Wynajem drukarek dla firm w Lublinie z obsługą serwisową i materiałami eksploatacyjnymi. Zapytaj Desklink o urządzenie dopasowane do liczby wydruków.",
+    "h1": [
+     "H1: Wynajem drukarek w Lublinie"
+    ],
+    "first": "Stały abonament miesięczny",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Rozliczenie za wydruk / kopię",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Wynajem krótkoterminowy",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "maxkolor.pl",
+    "url": "https://maxkolor.pl/",
+    "title": "Tonery i Tusze do drukarek, drukarki Rzeszów - MaxKolor",
+    "desc": "Tonery i tusze do drukarek ⇛ oryginalne i zamienniki ⇛ drukarki ⇛ wynajem kserokopiarek ⇛ serwis drukarek i kserokopiarek ⇛ zapraszamy tel. 17 200 08 04.",
+    "h1": [
+     "H1: Tonery i tusze MaxKolor Rzeszów"
+    ],
+    "first": "Tonery / materiały eksploatacyjne w cenie",
+    "seoFirst": "Tonery / materiały eksploatacyjne w cenie",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "apsmultiprint.pl",
+    "url": "https://apsmultiprint.pl/oferta",
+    "title": "Wynajem kserokopiarek i drukarek Warszawa - APS MultiPRINT",
+    "desc": "Oferujemy wynajem kserokopiarek i drukarek w Warszawie. Wybierz sprzęt od renomowanych producentów. Skontaktuj się z APS MultiPRINT i sprawdź szczegóły!",
+    "h1": [
+     "H1: Wynajem drukarek i kserokopiarek - Warszawa"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "copyplus.pl",
+    "url": "https://www.copyplus.pl/wynajem-sprzetu",
+    "title": "Wynajem, dzierżawa sprzętu biurowego – Kraków – Copy Plus",
+    "desc": "Dostarczamy nowoczesny i energooszczędny sprzęt biurowy. Oferujemy usługę dzierżawy drukarek, kserokopiarek, a także urządzeń wielofunkcyjnych. Zapraszamy!",
+    "h1": [
+     "H1: Wynajem sprzętu biurowego w Krakowie"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "copymaster.com.pl",
+    "url": "https://copymaster.com.pl/",
+    "title": "Wynajem kserokopiarek Poznań, dzierżawa kopiarek.",
+    "desc": "Wynajem kserokopiarek i kopiarek to nowoczesna i elastyczna forma finansowania druku w firmie. Dzierżawa drukarek w całym kraju. Zamów wycenę.",
+    "h1": [
+     "H1: Kserokopiarki, plotery, urządzenia wielofunkcyjne i kopiarki"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Stały abonament miesięczny",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "potis.pl",
+    "url": "https://potis.pl/",
+    "title": "Potis - kserokopiarki, drukarki i plotery Wrocław - sprzedaż, dzierżawa, wynajem, serwis",
+    "desc": "",
+    "h1": [
+     "H1: Kserokopiarki Drukarki Plotery",
+     "H1: Sprzedaż Wynajem Serwis"
+    ],
+    "first": "Urządzenia wielofunkcyjne A4 / A3",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "copybox.pl",
+    "url": "https://www.copybox.pl/oferta",
+    "title": "Oferta - Toruń",
+    "desc": "Sprzedaż i dzierżawa zaawansowanych technologicznie urządzeń dla biur, szkół i sklepów. Biurowe urządzenia wielofunkcyjne, edukacyjne zestawy interaktywne, projektory, kasy fiskalne i metkownice. Serwis.",
+    "h1": [
+     "H1: Oferta"
+    ],
+    "first": "Dla firm / biur",
+    "seoFirst": "Dla firm / biur",
+    "works": [
+     "Rozliczenie za wydruk / kopię",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Monitoring / zarządzanie drukiem",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "profikop.pl",
+    "url": "https://profikop.pl/",
+    "title": "Profikop - Strona główna",
+    "desc": "Kserokopiarki, drukarki, urządzenia wielofunkcyjne, systemy szerokoformatowe, skanery, powielacze cyfrowe oraz urządzenia do oprawy i niszczenia dokumentów. Dzierżawa drukarek, dzierżawa kserokopiarek, dzierżawa urządzeń wielofunkcyjnych. Oprogramowanie skanujące, OCR, obieg dokumentów, umowa serwisowa SLA",
+    "h1": [],
+    "first": "Dla firm / biur",
+    "seoFirst": "Urządzenia wielofunkcyjne A4 / A3",
+    "works": [
+     "Tonery / materiały eksploatacyjne w cenie",
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dostawa / instalacja / konfiguracja",
+     "Dla firm / biur"
+    ],
+    "seoWorks": [
+     "Urządzenia wielofunkcyjne A4 / A3",
+     "Dla firm / biur"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "общие подсказки: Tonery / materiały eksploatacyjne w cenie": {
+    "было": 2,
+    "стало": 0,
+    "исключено": [
+     "wynajem drukarek dzierżawa kserokopiarek tonery i serwis dts kraków opinie",
+     "wynajem drukarek dzierżawa kserokopiarek tonery i serwis dts łódź opinie"
+    ]
+   },
+   "общие подсказки: Urządzenia wielofunkcyjne A4 / A3": {
+    "было": 9,
+    "стало": 7,
+    "исключено": [
+     "wynajem drukarek dzierżawa kserokopiarek tonery i serwis dts kraków opinie",
+     "wynajem drukarek dzierżawa kserokopiarek tonery i serwis dts łódź opinie"
+    ]
+   },
+   "общие подсказки: Dla firm / biur": {
+    "было": 7,
+    "стало": 6,
+    "исключено": [
+     "wynajem drukarek serwis biurokseroserwis opinie"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Urządzenia wielofunkcyjne A4 / A3",
+   "comp": {
+    "mention": 70,
+    "first": 37,
+    "seoFirst": 42,
+    "seo": 59,
+    "head": 43,
+    "td": 52
+   },
+   "ac": 7,
+   "probe": null,
+   "ads": {
+    "impr": 8,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "wdb serwis kserokopiarek i drukarek dzierżawa kserokopiarek wrocław wszystko dla biura",
+     "wynajem kserokopiarek wrocław"
+    ]
+   },
+   "xl": {
+    "n": 14,
+    "kp": 50,
+    "ex": [
+     "dzierżawa kserokopiarek canon",
+     "kserokopiarki dzierżawa",
+     "dzierzawa kserokopiarek"
+    ]
+   }
+  },
+  {
+   "work": "Dla firm / biur",
+   "comp": {
+    "mention": 70,
+    "first": 22,
+    "seoFirst": 19,
+    "seo": 49,
+    "head": 36,
+    "td": 36
+   },
+   "ac": 6,
+   "probe": null,
+   "ads": {
+    "impr": 7,
+    "clicks": 0,
+    "conv": 0,
+    "n": 1,
+    "top": [
+     "wdb serwis kserokopiarek i drukarek dzierżawa kserokopiarek wrocław wszystko dla biura"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Tonery / materiały eksploatacyjne w cenie",
+   "comp": {
+    "mention": 58,
+    "first": 6,
+    "seoFirst": 5,
+    "seo": 29,
+    "head": 17,
+    "td": 21
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": {
+    "n": 1,
+    "kp": 0,
+    "ex": [
+     "kserotechnik sprzedaż serwis wynajem drukarek dzierżawa kserokopiarek tusze tonery"
+    ]
+   }
+  },
+  {
+   "work": "Dostawa / instalacja / konfiguracja",
+   "comp": {
+    "mention": 53,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 16,
+    "head": 14,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stały abonament miesięczny",
+   "comp": {
+    "mention": 46,
+    "first": 7,
+    "seoFirst": 4,
+    "seo": 15,
+    "head": 9,
+    "td": 10
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "drukarka w abonamencie",
+     "abonament na drukarkę"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Rozliczenie za wydruk / kopię",
+   "comp": {
+    "mention": 35,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 6,
+    "head": 4,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Monitoring / zarządzanie drukiem",
+   "comp": {
+    "mention": 23,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 6,
+    "head": 5,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Serwis w cenie wynajmu",
+   "comp": {
+    "mention": 22,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 13,
+    "head": 5,
+    "td": 10
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wynajem krótkoterminowy",
+   "comp": {
+    "mention": 8,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Bez kaucji / bez inwestycji",
+   "comp": {
+    "mention": 7,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "A4 i A3, mono i kolor",
+   "a": "Urządzenia wielofunkcyjne A4 / A3",
+   "why": "70 из 77 конкурентов, чаще всех в Title/Description (52)",
+   "evidence": "конкуренты 70 из 77 (первой работой — 37, в Title/Description — 52) · Ads 8 показов / 0 кликов / 0 конв. · SEO-файл 14 фраз, KP ≈50"
+  },
+  {
+   "w": "Serwis i tonery w cenie",
+   "a": "Tonery / materiały eksploatacyjne w cenie",
+   "why": "58 конкурентов; подтверждено в FAQ Omobonus (подсказки после очистки 0 — были названия фирм)",
+   "evidence": "конкуренты 58 из 77 (первой работой — 6, в Title/Description — 21) · SEO-файл 1 фраз"
+  },
+  {
+   "w": "Bez umowy długoterminowej",
+   "why": "отличие Omobonus (FAQ: «nie wymagamy umowy długoterminowej»)",
+   "evidence": ""
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Dostawa i instalacja w cenie",
+   "why": "53 конкурента, подтверждено в FAQ; не влезает — можно заменить им пункт",
+   "evidence": ""
+  },
+  {
+   "w": "Pełny cennik",
+   "why": "не влезает вместе с условиями аренды",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Индивидуальный текст без пункта про прайс"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262",
+   "length": 139
+  },
+  "uk": {
+   "text": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Сервіс і тонери в ціні ✔ Без довгострокового договору ☎ 793 759 262",
+   "length": 132
+  },
+  "ru": {
+   "text": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Сервис и тонеры в цене ✔ Без долгосрочного договора ☎ 793 759 262",
+   "length": 130
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

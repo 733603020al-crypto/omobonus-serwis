@@ -1,0 +1,643 @@
+{
+  "_readme": "Принятые решения по Description для SEO-панели (localhost:4100): утверждённые (approved, с полем exception у согласованных исключений, exceptionPending у страниц, чьё отличие от стандарта ещё ждёт согласования, и history — прежние утверждённые тексты страницы), отклонённые (rejected), предложения Claude и проверенные свои варианты (pending). Правила — docs/seo/description-standard.md. Проверка — scripts/seo-audit/description-audit.mjs. Сайт меняется только после утверждения пользователем.",
+  "format": "✔ Serwis i naprawa [urządzeń] we Wrocławiu ✔ [2–4 konkretne prace] ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262 — цель 150–160 символов, максимум 160 (UK: «Сервіс і ремонт … у Вроцлаві … ✔ Повний прайс без прихованих витрат», RU: «Сервис и ремонт … во Вроцлаве … ✔ Полный прайс без скрытых платежей»)",
+  "approved": {
+    "/": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Koszt naprawy uzgadniamy przed rozpoczęciem ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («przed pracą» → «przed rozpoczęciem», без запятой после «cennik»), без отдельной проверки в панели",
+      "length": 159,
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
+    },
+    "/uk": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Ціну ремонту узгоджуємо до початку робіт ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Вартість» → «Ціну» (было 161 знак)), без отдельной проверки в панели",
+      "length": 157,
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
+    },
+    "/ru": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Цену ремонта согласуем до начала работ ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Стоимость… согласовываем» → «Цену… согласуем» (было 164 знака)), без отдельной проверки в панели",
+      "length": 155,
+      "agreed": true,
+      "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
+    },
+    "/uslugi/serwis-laptopow": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa laptopów we Wrocławiu ✔ Wymiana matrycy i baterii, czyszczenie laptopa, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 160
+    },
+    "/uk/uslugi/serwis-laptopow": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт ноутбуків у Вроцлаві ✔ Заміна матриці та батареї, чистка ноутбука, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 153
+    },
+    "/ru/uslugi/serwis-laptopow": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт ноутбуков во Вроцлаве ✔ Замена матрицы и батареи, чистка ноутбука, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 156
+    },
+    "/uslugi/serwis-komputerow-stacjonarnych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana dysku SSD, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 160
+    },
+    "/uk/uslugi/serwis-komputerow-stacjonarnych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт стаціонарних комп'ютерів у Вроцлаві ✔ Чистка, заміна диска SSD, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 150
+    },
+    "/ru/uslugi/serwis-komputerow-stacjonarnych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт стационарных компьютеров во Вроцлаве ✔ Чистка, замена диска SSD, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uslugi/outsourcing-it": {
+      "lang": "pl",
+      "description": "✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 158,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/uk/uslugi/outsourcing-it": {
+      "lang": "uk",
+      "description": "✔ IT-аутсорсинг і обслуговування фірм у Вроцлаві ✔ Постійна IT-підтримка, helpdesk, мережа, резервні копії ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 157,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/ru/uslugi/outsourcing-it": {
+      "lang": "ru",
+      "description": "✔ IT-аутсорсинг и обслуживание фирм во Вроцлаве ✔ Постоянная IT-поддержка, helpdesk, сеть, резервные копии ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 156,
+      "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/uslugi/naprawa-drukarek": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykietowe i plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 152,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Serwis i naprawa drukarek i kserokopiarek we Wrocławiu ✔ Laserowe, atramentowe, etykiet, plotery ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 148,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uk/uslugi/naprawa-drukarek": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, принтери етикеток і плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 151,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Сервіс і ремонт принтерів та копірів у Вроцлаві ✔ Лазерні, струменеві, етикеток, плотери ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 141,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/ru/uslugi/naprawa-drukarek": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, принтеры этикеток и плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 150,
+      "agreed": true,
+      "exception": "Хаб раздела: типы техники вместо работ",
+      "history": [
+        {
+          "description": "✔ Сервис и ремонт принтеров и копиров во Вроцлаве ✔ Лазерные, струйные, этикеток, плоттеры ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uslugi/serwis-drukarek-laserowych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek laserowych we Wrocławiu ✔ Czyszczenie, usuwanie zacięć, wymiana bębna i fusera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 156
+    },
+    "/uk/uslugi/serwis-drukarek-laserowych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт лазерних принтерів у Вроцлаві ✔ Чистка, усунення застрягань, заміна барабана і ф'юзера ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 155
+    },
+    "/ru/uslugi/serwis-drukarek-laserowych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт лазерных принтеров во Вроцлаве ✔ Чистка, устранение замятий, замена барабана и фьюзера ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uslugi/serwis-drukarek-atramentowych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek atramentowych we Wrocławiu ✔ Czyszczenie głowicy, wymiana pochłaniacza tuszu ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uk/uslugi/serwis-drukarek-atramentowych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт струменевих принтерів у Вроцлаві ✔ Чистка головки, заміна абсорбера (памперса) ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 147
+    },
+    "/ru/uslugi/serwis-drukarek-atramentowych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт струйных принтеров во Вроцлаве ✔ Чистка головки, замена абсорбера (памперса) ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 144
+    },
+    "/uslugi/serwis-drukarek-termicznych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek etykiet we Wrocławiu ✔ Wymiana głowicy i wałka, kalibracja czujników, konfiguracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 160
+    },
+    "/uk/uslugi/serwis-drukarek-termicznych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт принтерів етикеток у Вроцлаві ✔ Заміна головки і вала, калібрування датчиків, налаштування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 159
+    },
+    "/ru/uslugi/serwis-drukarek-termicznych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт принтеров этикеток во Вроцлаве ✔ Замена головки и вала, калибровка датчиков, настройка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uslugi/serwis-drukarek-do-kart-plastikowych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek do kart plastikowych we Wrocławiu ✔ Wymiana głowicy, naprawa koderów i laminatora ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 159
+    },
+    "/uk/uslugi/serwis-drukarek-do-kart-plastikowych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт принтерів пластикових карток у Вроцлаві ✔ Заміна головки, ремонт кодерів і ламінатора ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/ru/uslugi/serwis-drukarek-do-kart-plastikowych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт принтеров пластиковых карт во Вроцлаве ✔ Замена головки, ремонт кодировщиков и ламинатора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 157
+    },
+    "/uslugi/serwis-plotterow": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa ploterów we Wrocławiu ✔ Udrażnianie głowicy, naprawa karetki i podawania mediów, kalibracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 160
+    },
+    "/uk/uslugi/serwis-plotterow": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт плотерів у Вроцлаві ✔ Прочистка головки, ремонт каретки і подачі носіїв, калібрування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/ru/uslugi/serwis-plotterow": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт плоттеров во Вроцлаве ✔ Прочистка головки, ремонт каретки и подачи носителей, калибровка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 156
+    },
+    "/uslugi/serwis-drukarek-3d": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek 3D we Wrocławiu ✔ Naprawa ekstrudera i hotendu, kalibracja, konfiguracja Klippera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 159
+    },
+    "/uk/uslugi/serwis-drukarek-3d": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт 3D-принтерів у Вроцлаві ✔ Ремонт екструдера і хотенда, калібрування, налаштування Klipper ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 158
+    },
+    "/ru/uslugi/serwis-drukarek-3d": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт 3D-принтеров во Вроцлаве ✔ Ремонт экструдера и хотэнда, калибровка, настройка Klipper ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 153
+    },
+    "/uslugi/druk-3d-na-zamowienie": {
+      "lang": "pl",
+      "description": "✔ Druk 3D na zamówienie we Wrocławiu ✔ Części zamienne, prototypy, druk z pliku STL, projektowanie 3D ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 151,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/uk/uslugi/druk-3d-na-zamowienie": {
+      "lang": "uk",
+      "description": "✔ 3D-друк на замовлення у Вроцлаві ✔ Запчастини, прототипи, друк із файлу STL, 3D-моделювання ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 144,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/ru/uslugi/druk-3d-na-zamowienie": {
+      "lang": "ru",
+      "description": "✔ 3D-печать на заказ во Вроцлаве ✔ Запчасти, прототипы, печать из файла STL, 3D-моделирование ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 143,
+      "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
+    },
+    "/uslugi/serwis-drukarek-dtf": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek DTF we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania folii ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 140
+    },
+    "/uk/uslugi/serwis-drukarek-dtf": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт DTF-принтерів у Вроцлаві ✔ Прочистка головок, ремонт подачі плівки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 135
+    },
+    "/ru/uslugi/serwis-drukarek-dtf": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт DTF-принтеров во Вроцлаве ✔ Прочистка головок, ремонт подачи плёнки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 135
+    },
+    "/uslugi/serwis-drukarek-dtg": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek DTG we Wrocławiu ✔ Udrażnianie głowicy, naprawa układu białego tuszu i stołu ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uk/uslugi/serwis-drukarek-dtg": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт DTG-принтерів у Вроцлаві ✔ Прочистка головки, ремонт системи білого чорнила і столу ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 152
+    },
+    "/ru/uslugi/serwis-drukarek-dtg": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт DTG-принтеров во Вроцлаве ✔ Прочистка головки, ремонт системы белых чернил и стола ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 150
+    },
+    "/uslugi/serwis-drukarek-sublimacyjnych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek sublimacyjnych we Wrocławiu ✔ Udrażnianie głowic, naprawa podawania papieru ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 153
+    },
+    "/uk/uslugi/serwis-drukarek-sublimacyjnych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт сублімаційних принтерів у Вроцлаві ✔ Прочистка головок, ремонт подачі паперу ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 145
+    },
+    "/ru/uslugi/serwis-drukarek-sublimacyjnych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт сублимационных принтеров во Вроцлаве ✔ Прочистка головок, ремонт подачи бумаги ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 146
+    },
+    "/uslugi/serwis-drukarek-spozywczych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek spożywczych we Wrocławiu ✔ Udrażnianie głowicy, naprawa podawania arkuszy ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 151
+    },
+    "/uk/uslugi/serwis-drukarek-spozywczych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт харчових принтерів у Вроцлаві ✔ Прочистка головки, ремонт подачі аркушів ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 141
+    },
+    "/ru/uslugi/serwis-drukarek-spozywczych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт пищевых принтеров во Вроцлаве ✔ Прочистка головки, ремонт подачи листов ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 139
+    },
+    "/uslugi/wynajem-drukarek": {
+      "lang": "pl",
+      "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, serwis i tonery w cenie, bez umowy długoterminowej ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 159,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 139,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uk/uslugi/wynajem-drukarek": {
+      "lang": "uk",
+      "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, сервіс і тонери в ціні, без довгострокового договору ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 154,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Сервіс і тонери в ціні ✔ Без довгострокового договору ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 132,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/ru/uslugi/wynajem-drukarek": {
+      "lang": "ru",
+      "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, сервис и тонеры в цене, без долгосрочного договора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 152,
+      "agreed": true,
+      "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
+      "history": [
+        {
+          "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Сервис и тонеры в цене ✔ Без долгосрочного договора ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 130,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uslugi/naprawa-zasilaczy-ups": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa zasilaczy awaryjnych UPS we Wrocławiu ✔ Wymiana akumulatorów, przegląd, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 160
+    },
+    "/uk/uslugi/naprawa-zasilaczy-ups": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, техобслуговування, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 150,
+      "agreed": true,
+      "history": [
+        {
+          "description": "✔ Сервіс і ремонт ДБЖ (UPS) у Вроцлаві ✔ Заміна акумуляторів, огляд, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 138,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/ru/uslugi/naprawa-zasilaczy-ups": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, техобслуживание, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 149,
+      "agreed": true,
+      "history": [
+        {
+          "description": "✔ Сервис и ремонт ИБП (UPS) во Вроцлаве ✔ Замена аккумуляторов, осмотр, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uslugi/serwis-niszczarek": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa niszczarek we Wrocławiu ✔ Olejenie, usuwanie zacięć, wymiana noży, naprawa elektroniki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 155
+    },
+    "/uk/uslugi/serwis-niszczarek": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт шредерів у Вроцлаві ✔ Змащення, усунення застрягань, заміна ножів, ремонт електроніки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/ru/uslugi/serwis-niszczarek": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт шредеров во Вроцлаве ✔ Смазка, устранение застреваний, замена ножей, ремонт электроники ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 155
+    },
+    "/uslugi/serwis-ekspresow-do-kawy": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa ekspresów do kawy we Wrocławiu ✔ Odkamienianie, naprawa bloku zaparzającego i młynka ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 153
+    },
+    "/uk/uslugi/serwis-ekspresow-do-kawy": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт кавомашин у Вроцлаві ✔ Видалення накипу, ремонт заварювального блока і кавомолки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 149
+    },
+    "/ru/uslugi/serwis-ekspresow-do-kawy": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт кофемашин во Вроцлаве ✔ Удаление накипи, ремонт заварочного блока и кофемолки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 145
+    },
+    "/uslugi/naprawa-projektorow": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa projektorów we Wrocławiu ✔ Wymiana lampy i układu DMD, czyszczenie, naprawa zasilacza ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 154
+    },
+    "/uk/uslugi/naprawa-projektorow": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт проєкторів у Вроцлаві ✔ Заміна лампи і чипа DMD, чистка, ремонт блока живлення ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 147
+    },
+    "/ru/uslugi/naprawa-projektorow": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт проекторов во Вроцлаве ✔ Замена лампы и чипа DMD, чистка, ремонт блока питания ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 146
+    },
+    "/uslugi/serwis-drukarek-iglowych": {
+      "lang": "pl",
+      "description": "✔ Serwis i naprawa drukarek igłowych we Wrocławiu ✔ Naprawa głowicy, karetki i traktora papieru, konserwacja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 158
+    },
+    "/uk/uslugi/serwis-drukarek-iglowych": {
+      "lang": "uk",
+      "description": "✔ Сервіс і ремонт матричних принтерів у Вроцлаві ✔ Ремонт головки, каретки і тракта паперу, обслуговування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 157
+    },
+    "/ru/uslugi/serwis-drukarek-iglowych": {
+      "lang": "ru",
+      "description": "✔ Сервис и ремонт матричных принтеров во Вроцлаве ✔ Ремонт головки, каретки и тракта бумаги, обслуживание ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 (решения из панели)",
+      "length": 155
+    },
+    "/uslugi/drukarka-zastepcza": {
+      "lang": "pl",
+      "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Bez abonamentu, płacisz za wydruki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 160,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 140,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/uk/uslugi/drukarka-zastepcza": {
+      "lang": "uk",
+      "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Без абонплати, оплата за відбитки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 155,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ Навіть за 24 години ✔ A4 і A3, ч/б і колір ✔ Без абонплати — оплата за друк ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 137,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    },
+    "/ru/uslugi/drukarka-zastepcza": {
+      "lang": "ru",
+      "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+      "date": "2026-10-19",
+      "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
+      "length": 157,
+      "agreed": true,
+      "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
+      "history": [
+        {
+          "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ Даже за 24 часа ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты — оплата за печать ☎ 793 759 262",
+          "date": "2026-10-19",
+          "length": 137,
+          "note": "Утверждено пользователем 19.10 (решения из панели)"
+        }
+      ]
+    }
+  },
+  "rejected": {
+    "/": [
+      {
+        "description": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny cennik na stronie, bez ukrytych kosztów ☎ 793 759 262",
+        "date": "2026-10-19",
+        "note": "предложение Claude отклонено — пользователь дал свой вариант"
+      }
+    ],
+    "/uk": [
+      {
+        "description": "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Діагностика за 15 хв ✔ Повний прайс на сайті, без прихованих витрат ☎ 793 759 262",
+        "date": "2026-10-19",
+        "note": "предложение Claude отклонено — пользователь дал свой вариант"
+      }
+    ],
+    "/ru": [
+      {
+        "description": "✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс на сайте, без скрытых платежей ☎ 793 759 262",
+        "date": "2026-10-19",
+        "note": "предложение Claude отклонено — пользователь дал свой вариант"
+      }
+    ],
+    "/uslugi/drukarka-zastepcza": [
+      {
+        "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Zwykle w 24 h robocze ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
+        "date": "2026-10-19",
+        "note": "Отклонено пользователем: «Zwykle w 24 h robocze» нужно поменять"
+      }
+    ]
+  },
+  "pending": {
+    "proposals": {},
+    "review": {}
+  }
+}

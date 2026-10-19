@@ -64,7 +64,7 @@ export function PrinterHubMid({ mids }: { mids: readonly HeroMid[] }) {
   }, [])
   useLayoutEffect(() => {
     const el = measureRef.current
-    const column = el?.closest('h1')?.parentElement
+    const column = el?.closest('[data-hero-title]')?.parentElement
     if (!el || !column) return
     setFit(window.innerWidth >= 768 ? 1 : Math.min(1, column.clientWidth / el.offsetWidth))
   }, [mid, vw])

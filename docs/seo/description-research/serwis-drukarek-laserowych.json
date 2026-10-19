@@ -1,0 +1,2881 @@
+{
+ "page": "/uslugi/serwis-drukarek-laserowych",
+ "name": "Лазерные принтеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis drukarek laserowych",
+    "naprawa drukarek laserowych",
+    "naprawa drukarki laserowej",
+    "serwis drukarek laserowych cennik",
+    "naprawa drukarek laserowych Kraków",
+    "naprawa drukarek laserowych Warszawa",
+    "naprawa drukarek laserowych Wrocław",
+    "naprawa drukarek laserowych Poznań",
+    "naprawa drukarek laserowych Gdańsk",
+    "naprawa drukarek laserowych Łódź",
+    "naprawa drukarek laserowych Katowice",
+    "naprawa drukarek laserowych Szczecin",
+    "naprawa drukarek laserowych Lublin",
+    "naprawa drukarek laserowych Bydgoszcz",
+    "naprawa drukarek laserowych Białystok",
+    "naprawa drukarek laserowych Rzeszów",
+    "naprawa drukarek laserowych Toruń",
+    "naprawa drukarek laserowych Opole",
+    "naprawa drukarek laserowych Kielce",
+    "naprawa drukarek laserowych Olsztyn",
+    "naprawa drukarek laserowych Gdynia",
+    "naprawa drukarek laserowych Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "naprawa drukarki laserowej ",
+    "serwis drukarek laserowych ",
+    "drukarka laserowa ",
+    "drukarka laserowa nie ",
+    "naprawa drukarek laserowych "
+   ],
+   "uniqueSuggestions": 249,
+   "withPrice": [
+    "drukarka laserowa cena",
+    "drukarka laserowa ile kosztuje"
+   ],
+   "wroclaw": [
+    "serwis drukarek laserowych wrocław",
+    "naprawa drukarek laserowych wrocław",
+    "drukarka laserowa wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Naprawa / regeneracja fusera (utrwalacza)": {
+    "seeds": [
+     "regeneracja fusera",
+     "wymiana fusera",
+     "naprawa fusera",
+     "wymiana grzałki w drukarce laserowej"
+    ],
+    "n": 7,
+    "nRaw": 7,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother",
+     "wymiana folii fusera",
+     "hp p3015 wymiana fusera",
+     "naprawa fusera"
+    ],
+    "all": [
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother",
+     "wymiana folii fusera",
+     "hp p3015 wymiana fusera",
+     "naprawa fusera"
+    ],
+    "dropped": []
+   },
+   "Usuwanie zacięć / naprawa podawania papieru": {
+    "seeds": [
+     "drukarka laserowa nie pobiera papieru",
+     "wymiana rolki pobierającej",
+     "drukarka laserowa zacina papier"
+    ],
+    "n": 5,
+    "nRaw": 5,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "drukarka laserowa nie pobiera papieru",
+     "drukarka laserowa brother nie pobiera papieru",
+     "drukarka laserowa hp nie pobiera papieru",
+     "drukarka laserowa samsung nie pobiera papieru",
+     "drukarka laserowa zacina papier"
+    ],
+    "all": [
+     "drukarka laserowa nie pobiera papieru",
+     "drukarka laserowa brother nie pobiera papieru",
+     "drukarka laserowa hp nie pobiera papieru",
+     "drukarka laserowa samsung nie pobiera papieru",
+     "drukarka laserowa zacina papier"
+    ],
+    "dropped": []
+   },
+   "Bęben / developer / zespół obrazowania": {
+    "seeds": [
+     "wymiana bębna",
+     "czyszczenie bębna drukarki laserowej"
+    ],
+    "n": 8,
+    "nRaw": 14,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana bębna w drukarce brother",
+     "wymiana bębna w drukarce",
+     "wymiana bębna brother dcp-l2532dw",
+     "wymiana bębna brother mfc l2712dw",
+     "czyszczenie bębna drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej hp",
+     "czyszczenie bębna drukarki laserowej samsung",
+     "czyszczenie bębna drukarki laserowej brother"
+    ],
+    "all": [
+     "wymiana bębna w drukarce brother",
+     "wymiana bębna w drukarce",
+     "wymiana bębna brother dcp-l2532dw",
+     "wymiana bębna brother mfc l2712dw",
+     "czyszczenie bębna drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej hp",
+     "czyszczenie bębna drukarki laserowej samsung",
+     "czyszczenie bębna drukarki laserowej brother"
+    ],
+    "dropped": [
+     [
+      "wymiana bębna w pralce koszt",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana bębna w pralce electrolux",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana bębna w pralce",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana bębna hamulcowego c 330",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana bębna w pralce samsung",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana bębna w pralce beko",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Czyszczenie / konserwacja drukarki": {
+    "seeds": [
+     "czyszczenie drukarki laserowej",
+     "konserwacja drukarki laserowej"
+    ],
+    "n": 12,
+    "nRaw": 12,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "czyszczenie drukarki laserowej",
+     "czyszczenie drukarki laserowej hp",
+     "czyszczenie drukarki laserowej brother",
+     "czyszczenie drukarki laserowej samsung",
+     "czyszczenie drukarki laserowej canon",
+     "czyszczenie bębna drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej hp",
+     "czyszczenie tonera drukarki laserowej",
+     "czyszczenie wałka drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej samsung"
+    ],
+    "all": [
+     "czyszczenie drukarki laserowej",
+     "czyszczenie drukarki laserowej hp",
+     "czyszczenie drukarki laserowej brother",
+     "czyszczenie drukarki laserowej samsung",
+     "czyszczenie drukarki laserowej canon",
+     "czyszczenie bębna drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej hp",
+     "czyszczenie tonera drukarki laserowej",
+     "czyszczenie wałka drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej samsung",
+     "konserwacja drukarki laserowej",
+     "konserwacja drukarki laserowej brother"
+    ],
+    "dropped": []
+   },
+   "Usuwanie smug / problemy z jakością wydruku": {
+    "seeds": [
+     "drukarka laserowa smuży",
+     "drukarka laserowa drukuje pasy",
+     "drukarka laserowa brudzi"
+    ],
+    "n": 13,
+    "nRaw": 13,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "drukarka laserowa smuży",
+     "drukarka laserowa drukuje pasy",
+     "drukarka laserowa drukuje czarne pasy",
+     "drukarka laserowa brudzi kartki",
+     "drukarka laserowa brudzi",
+     "drukarka laserowa brudzi wydruk",
+     "drukarka laserowa brudzi po bokach",
+     "drukarka laserowa brudzi brzeg kartki",
+     "drukarka laserowa brudzi strony",
+     "dlaczego drukarka laserowa brudzi"
+    ],
+    "all": [
+     "drukarka laserowa smuży",
+     "drukarka laserowa drukuje pasy",
+     "drukarka laserowa drukuje czarne pasy",
+     "drukarka laserowa brudzi kartki",
+     "drukarka laserowa brudzi",
+     "drukarka laserowa brudzi wydruk",
+     "drukarka laserowa brudzi po bokach",
+     "drukarka laserowa brudzi brzeg kartki",
+     "drukarka laserowa brudzi strony",
+     "dlaczego drukarka laserowa brudzi",
+     "dlaczego drukarka laserowa brudzi kartki",
+     "drukarka laserowa brother brudzi papier",
+     "drukarka laserowa hp brudzi wydruk"
+    ],
+    "dropped": []
+   },
+   "Naprawa lasera / skanera laserowego (LSU)": {
+    "seeds": [
+     "naprawa lasera drukarki",
+     "wymiana lasera w drukarce"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana lasera w drukarce"
+    ],
+    "all": [
+     "wymiana lasera w drukarce"
+    ],
+    "dropped": []
+   },
+   "Naprawa płyty głównej / elektroniki": {
+    "seeds": [
+     "naprawa formattera",
+     "płyta główna drukarki"
+    ],
+    "n": 2,
+    "nRaw": 4,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "płyta główna drukarki",
+     "płyta główna do drukarki brother"
+    ],
+    "all": [
+     "płyta główna drukarki",
+     "płyta główna do drukarki brother"
+    ],
+    "dropped": [
+     [
+      "płyta główna drukarki 3d",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "jaka płyta główna do drukarki 3d",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Pas transferowy / wałek transferowy": {
+    "seeds": [
+     "wymiana pasa transferowego",
+     "pas transferowy"
+    ],
+    "n": 8,
+    "nRaw": 11,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana pasa transferowego",
+     "pas transferowy",
+     "pas transferowy hp color laser mfp 179fnw",
+     "pas transferowy w drukarce",
+     "pas transferowy drukarka",
+     "pas transferowy samsung c480w",
+     "pas transferowy konica minolta",
+     "pas transferowy c224"
+    ],
+    "all": [
+     "wymiana pasa transferowego",
+     "pas transferowy",
+     "pas transferowy hp color laser mfp 179fnw",
+     "pas transferowy w drukarce",
+     "pas transferowy drukarka",
+     "pas transferowy samsung c480w",
+     "pas transferowy konica minolta",
+     "pas transferowy c224"
+    ],
+    "dropped": [
+     [
+      "pas transferowy dla pacjenta",
+      "другое устройство/тема"
+     ],
+     [
+      "pas transferowy do przemieszczania pacjenta",
+      "другое устройство/тема"
+     ],
+     [
+      "pas transferowy dla niepełnosprawnych",
+      "другое устройство/тема"
+     ]
+    ]
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 71,
+   "impressions": 339,
+   "clicks": 25,
+   "conversions": 2,
+   "top": [
+    {
+     "term": "tonery wrocław",
+     "impr": 37,
+     "clicks": 3,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "napełnianie tonerów wrocław",
+     "impr": 33,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "tonery",
+     "impr": 31,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis drukarek laserowych hp",
+     "impr": 18,
+     "clicks": 2,
+     "conv": 1,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "tonery wroclaw",
+     "impr": 18,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa drukarek laserowych",
+     "impr": 17,
+     "clicks": 3,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Drukarki Noc (CPC)"
+     ]
+    },
+    {
+     "term": "serwis drukarek laserowych",
+     "impr": 17,
+     "clicks": 4,
+     "conv": 0,
+     "camps": [
+      "Поиск Drukarki Noc (CPC)",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "tonery brother wrocław",
+     "impr": 10,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "regeneracja tonerów wrocław",
+     "impr": 10,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "tusze tonery",
+     "impr": 9,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "tusze tonery wrocław",
+     "impr": 9,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "czyszczenie drukarek laserowych",
+     "impr": 6,
+     "clicks": 1,
+     "conv": 1,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "tonery tusze wrocław",
+     "impr": 6,
+     "clicks": 1,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "czyszczenie drukarki laserowej",
+     "impr": 5,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław"
+     ]
+    },
+    {
+     "term": "tusze i tonery",
+     "impr": 5,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "drukarka laserowa brother 3w1",
+     "avg": 50,
+     "comp": "Высокий"
+    },
+    {
+     "s": "drukarki tonery serwis",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "euro agd drukarka laserowa",
+     "avg": 50,
+     "comp": "Высокий"
+    },
+    {
+     "s": "konserwacja drukarek laserowych",
+     "avg": 50,
+     "comp": "Неизвестно"
+    },
+    {
+     "s": "naprawa drukarek laserowych",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "regeneracja tonera lexmark",
+     "avg": 50,
+     "comp": "Средний"
+    },
+    {
+     "s": "regeneracja tonerów lexmark",
+     "avg": 50,
+     "comp": "Средний"
+    },
+    {
+     "s": "regeneracja tonerów sosnowiec",
+     "avg": 50,
+     "comp": "Неизвестно"
+    },
+    {
+     "s": "serwis drukarek laserowych",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis drukarek laserowych hp",
+     "avg": 50,
+     "comp": "Неизвестно"
+    },
+    {
+     "s": "toner service profesjonalny serwis twojej drukarki",
+     "avg": 50,
+     "comp": "Неизвестно"
+    },
+    {
+     "s": "tusze tonery regeneracja",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "amax tusze tonery regeneracja zamienniki oryginały serwis drukarek",
+     "avg": 0,
+     "comp": "Неизвестно"
+    }
+   ],
+   "phrases": 19
+  }
+ },
+ "competitors": {
+  "relevant": 79,
+  "checked": 120,
+  "candidates": 182,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "naprawek.pl",
+    "url": "https://www.naprawek.pl/naprawa-drukarek",
+    "title": "Naprawa Drukarek | Cała Polska",
+    "desc": "Serwis Drukarek w Całej Polsce - Drukarki Atramentowe | Laserowe | Urządzenia Biurowe | Inne. Sprawdź Opinie, Zapytaj o Cenę i Zamów Usługę 24h!",
+    "h1": [
+     "H1: Naprawa Drukarek"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Warszawa",
+     "Wrocław",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawa.pl",
+    "url": "https://naprawa.pl/serwis-wysylkowy/naprawa-drukarek",
+    "title": "Naprawa drukarek - Profesjonalny serwis wszystkich marek",
+    "desc": "Profesjonalna naprawa drukarek HP, Epson, Canon, Brother i innych. Serwis urządzeń atramentowych i laserowych. Szybka diagnostyka, oryginalne części, 90 dni gwarancji.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Usuwanie zacięć / naprawa podawania papieru",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.com.pl",
+    "url": "https://serwisdrukarek.com.pl/",
+    "title": "SerwisDrukarek.com.pl",
+    "desc": "",
+    "h1": [],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "adkprint.pl",
+    "url": "https://www.adkprint.pl/",
+    "title": "SERWIS DRUKAREK WROCŁAW - DARMOWA DIAGNOZA",
+    "desc": "Adkprint — profesjonalny serwis drukarek we Wrocławiu. Ponad 20 lat na rynku. Naprawa, konserwacja, części zamienne i tonery. Darmowy parking dla klientów",
+    "h1": [
+     "H1: Adkprint — Profesjonalny serwis drukarek we Wrocławiu"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "laserservice.pl",
+    "url": "https://laserservice.pl/serwis/naprawa-drukarek/",
+    "title": "Naprawa drukarek laserowych, atramentowych, igłowych",
+    "desc": "Naprawa drukarek laserowych, igłowych i atramentowych Warszawa, serwis drukarek dla firm, HP, Lexmark, OKI, Xerox, Samsung, Brother, Canon, EPSON, Konica Minolta, DEVELOP, Kyocera Mita.",
+    "h1": [
+     "H1: Naprawa drukarek",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Naprawa płyty głównej / elektroniki",
+    "seoFirst": "Naprawa płyty głównej / elektroniki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "printech.pl",
+    "url": "https://printech.pl/category/serwis-naprawa-drukarek-atramentowych-laserowych-kserokopiarek-wroclaw",
+    "title": "Serwis naprawa drukarek atramentowych, laserowych, kserokopiarek Wrocław",
+    "desc": "Serwis drukarek atramentowych, serwis drukarek laserowych, serwis kserokopiarek, naprawa drukarek atramentowych, naprawa drukarek laserowych i naprawa kserokopiarek Wrocław. Oferujemy profesjonalny serwis oraz naprawę drukarek atramentowych, laserowych oraz kserokopiarek we Wrocławiu.",
+    "h1": [
+     "H1: Serwis",
+     "H1: Serwis, naprawa drukarek atramentowych, laserowych i kserokopiarek Wrocław"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "druktak.pl",
+    "url": "https://druktak.pl/serwis-drukarek-pm-78.html",
+    "title": "Serwis drukarek Kraków - DrukTak.pl",
+    "desc": "Serwis drukarek Kraków, serwis drukarek laserowych i atramentowych",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "xeroserwis.pl",
+    "url": "https://xeroserwis.pl/_cms/view/41/serwis-i-naprawa.html",
+    "title": "Serwis naprawa drukarek atramentowych laserowych Warszawa - Xeroserwis",
+    "desc": "Serwis i naprawa",
+    "h1": [
+     "H1: Serwis i naprawa drukarek laserowych i atramentowych Warszawa, kserokopiarek i innych"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "unibit.com.pl",
+    "url": "https://www.unibit.com.pl/serwis-drukarek-i-kopiarek/",
+    "title": "Serwis drukarek i kopiarek - Unibit",
+    "desc": "",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": []
+   },
+   {
+    "host": "pc-work.pl",
+    "url": "https://www.pc-work.pl/serwis-drukarek/",
+    "title": "Serwis drukarek | Pc-Work",
+    "desc": "Serwis komputerowy – naprawa komputerów, laptopów",
+    "h1": [
+     "H1: Używasz przestarzałej przeglądarki internetowej Internet Explorer, która nie jest już wspierana przez firmę Microsoft. Aby przeglądać popraw",
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": []
+   },
+   {
+    "host": "stan-mit.pl",
+    "url": "https://stan-mit.pl/serwis-drukarek/",
+    "title": "Serwis drukarek - Stan-mit",
+    "desc": "Profesjonalny serwis drukarek i kserokopiarek we Wrocławiu. Naprawa, konserwacja i wsparcie techniczne dla firm. Szybka reakcja!",
+    "h1": [
+     "H1: Serwis drukarek Wrocław"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/cennik-serwisu-drukarek.html",
+    "title": "Cennik serwisu drukarek – Poldruk",
+    "desc": "  Sprawdź Cennik serwisu drukarek laserowych i urządzeń wielofunkcyjnych HP",
+    "h1": [
+     "H1: Cennik serwisu drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Pas transferowy / wałek transferowy",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "pc-net.pl",
+    "url": "https://pc-net.pl/serwis-drukarek/",
+    "title": "Serwis drukarek - naprawa drukarek laserowych, atramentowych",
+    "desc": "Serwis drukarek laserowych. atramentowych, igłowych. Naprawa drukarek Brother Epson HP Lexmark Canon Konica Minolta Ricoh Xerox Kyocera",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "regulservis.pl",
+    "url": "https://regulservis.pl/drukarki-mfp-ksero/naprawa-drukarek-laserowych/",
+    "title": "Konserwacja Drukarek Laserowych Warszawa | Czyszczenie drukarki laserowej",
+    "desc": "Polecamy tonery do drukarek laserowych, również oferujemy czyszczenie drukarki laserowej – Regul Servis, zadzwoń do nas ☎ 794 060 148 ✓ Dostępna cena ✓ Jakość",
+    "h1": [
+     "H1: Konserwacja drukarki laserowej"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "potis.pl",
+    "url": "https://potis.pl/strefa-serwisowa/",
+    "title": "Serwis i naprawa drukarek Wrocław | Serwis kserokopiarek Wrocław",
+    "desc": "Serwis i naprawa drukarek, kserokopiarek Wrocław. Zapraszamy do skorzystania z naszej kompleksowej oferty. Zapewniamyprofesjonalna opiekę serwisową.",
+    "h1": [
+     "H1: Strefa serwisowa",
+     "H1: Serwis drukarek we Wrocławiu"
+    ],
+    "first": "Naprawa skanera / ADF",
+    "seoFirst": "Naprawa skanera / ADF",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF"
+    ],
+    "seoWorks": [
+     "Naprawa skanera / ADF"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "biznes-top.pl",
+    "url": "https://biznes-top.pl/lodz/naprawa-drukarek/laser-service-jacek-kopa-naprawa-i-serwis-drukarek-lodz/",
+    "title": "Laser service Jacek Kopa – naprawa i serwis drukarek Łódź — Naprawa drukarek | Biznes-TOP",
+    "desc": "Laser service Jacek Kopa – naprawa i serwis drukarek Łódź (naprawa drukarek) — Łódź. Czytelnicza 15, 93-302 Łódź, Poland. Ocena: 4,8/5 (63 opinii). Adres, mapa, godziny otwarcia, kontakt.",
+    "h1": [
+     "H1: Laser service Jacek Kopa – naprawa i serwis drukarek Łódź"
+    ],
+    "first": "Konfiguracja sieci / sterowników",
+    "seoFirst": "Konfiguracja sieci / sterowników",
+    "works": [
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Kraków",
+     "Łódź",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "datajet.pl",
+    "url": "https://www.datajet.pl/serwis/",
+    "title": "Serwis i naprawa drukarek laserowych, kserokopiarek - DataJet",
+    "desc": "Serwis drukarek laserowych HP, urządzeń wielofunkcyjnych, kserokopiarek - Brother, Lexmark, Canon, Konica Minolta i innych producentów.",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "wawanaprawa.pl",
+    "url": "https://wawanaprawa.pl/naprawa-drukarek/",
+    "title": "Naprawa i serwis drukarek - Warszawa - WAWANAPRAWA",
+    "desc": "Naprawa i serwis drukarek wszystkich marek w Warszawie: atramentowych i laserowych, . Bezpłatna diagnoza, wycena przed naprawą, gwarancja.",
+    "h1": [
+     "H1: Naprawa i serwis drukarek - Warszawa"
+    ],
+    "first": "Usuwanie zacięć / naprawa podawania papieru",
+    "seoFirst": "Usuwanie zacięć / naprawa podawania papieru",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/serwis-drukarek/laserowych",
+    "title": "Serwis Drukarek Laserowych Lublin - Naprawa Drukarki Tanio",
+    "desc": "5/0 - Opinie - Serwis Drukarek Laserowych Lublin. Profesjonalna Naprawa Drukarki: Szybko, Tanio i Profesjonalnie. ☎ 517 532 335",
+    "h1": [
+     "H1: Serwis drukarek laserowych Lublin"
+    ],
+    "first": "Bęben / developer / zespół obrazowania",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "city": [
+     "Lublin",
+     "Opole"
+    ]
+   },
+   {
+    "host": "kaleron.pl",
+    "url": "https://kaleron.pl/naprawy-drukarek.htm",
+    "title": "Naprawa drukarek laserowych, serwis drukarek laserowych Wrocław - Jelcz Laskowice.",
+    "desc": "Serwis komputerowy. Naprawy drukarek. U nas naprawisz drukarkę laserową, kopiarkę, urządzenie wielofunkcyjne.",
+    "h1": [
+     "H1: NAPRAWA DRUKAREK, KOPIAREK I URZĄDZEŃ WIELOFUNKCYJNYCH"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa skanera / ADF"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/serwis-drukarek-canon-krakow",
+    "title": "Serwis drukarek Canon Kraków – naprawa, przeglądy, części | KrakPrint",
+    "desc": "Naprawa i serwis drukarek, urządzeń wielofunkcyjnych i ploterów Canon w Krakowie i Małopolsce: imageRUNNER ADVANCE C5535i, C259i i C256, imageRUNNER ADVANCE 400i, imagePROGRAF iPF755 i TM-200 i inne. Diagnostyka przed naprawą, dojazd do firm, części i mat",
+    "h1": [],
+    "first": "Pas transferowy / wałek transferowy",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Pas transferowy / wałek transferowy",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "complexbiuro.pl",
+    "url": "https://complexbiuro.pl/serwis-drukarek.html",
+    "title": "Serwis komputerowy, naprawa, serwis drukarek laserowych Gdańsk, Gdynia, Sopot - ComplexBiuro",
+    "desc": "W ofercie sprzedaż, serwis i naprawa drukarek laserowych Xerox, Canon, Kyocera, HP, Minolta. Zapraszamy firmy do współpracy",
+    "h1": [
+     "H1: Serwis drukarek dla firm – naprawy i konserwacje"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "naprawimydrukarke.pl",
+    "url": "https://naprawimydrukarke.pl/",
+    "title": "Serwis drukarek Trójmiasto - Gdańsk, Gdynia, Sopot",
+    "desc": "Serwis drukarek w Trójmieście – naprawa i konserwacja sprzętu biurowego. Gdańsk, Gdynia, Sopot. Profesjonalna obsługa, szybka diagnoza, atrakcyjne ceny.",
+    "h1": [
+     "H1: ///////////////////////////////",
+     "H1: &#xa0;"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "serwiscentrum.com.pl",
+    "url": "https://serwiscentrum.com.pl/content/10-serwis-i-naprawa-drukarek-laserowych",
+    "title": "Serwis i naprawa drukarek laserowych hp samsung oki canon brother Warszawa",
+    "desc": "Naprawa i serwis drukarek w Warszawie. Niskie ceny i bardzo szybka obsługa. Wieloletnie doświadczenie w serwisie i naprawie drukarek. Odwiedź nas w Warszawie.",
+    "h1": [
+     "H1: Serwis i naprawa drukarek laserowych Warszawa"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "derek.pl",
+    "url": "https://derek.pl/serwis-drukarek/",
+    "title": "Serwis drukarek i kopiarek laserowych i atramentowych Łódź - PHU Derek Computer",
+    "desc": "Oferujemy Państwu szeroki wybór drukarek oraz tuszy i tonerów do drukarek wraz z profesjonalnym doradztwem i serwisem.",
+    "h1": [
+     "H1: Naprawa drukarek Łódź – serwis drukarek HP, Brother, Canon, Epson | DEREK"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Gdańsk",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "tmp.pl",
+    "url": "https://tmp.pl/serwis-sprzetu/naprawa-drukarek/",
+    "title": "Naprawa drukarek - TMP Outsourcing IT",
+    "desc": "Posiadamy ponad 17-letnie doświadczenie w naprawie, konserwacji, wsparciu i renowacji wszystkich typów drukarek. Szeroki zakres usług.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Poznań",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "kseroton.pl",
+    "url": "https://kseroton.pl/serwis-oraz-naprawa-drukarek-i-kserokopiarek-lodz/",
+    "title": "Serwis drukarek, kserokopiarek, urządzeń wielofunkcyjnych Łódź",
+    "desc": "Serwisujemy i naprawiamy drukarki, kserokopiarki oraz biurowe urządzenia wielofunkcyjne marki Ricoh. Zapraszamy Łódź.",
+    "h1": [
+     "H1: Serwis oraz naprawa drukarek i kserokopiarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "kopiertechnik.pl",
+    "url": "https://www.kopiertechnik.pl/serwis/naprawa-drukarek/",
+    "title": "Naprawy gwarancyjne i pogwarancyjne drukarek laserowych - Warszawa - Kopier Technik",
+    "desc": "Wykonujemy naprawy drukarek laserowych i atramentowych. Zajmujemy się naprawami gwarancyjnymi i pogwarancyjnymi. Zapraszamy na naszą stronę internetową.",
+    "h1": [
+     "H1: Naprawa drukarek w Warszawie"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "j-com.pl",
+    "url": "https://www.j-com.pl/naprawa-drukarek",
+    "title": "Naprawa drukarek | J-COM Poznań",
+    "desc": "Twoja drukarka wydaje dziwne odgłosy, nie reaguje na polecenia albo nie działa jak powinna? Czas oddać ją do serwisu, aby znów działała jak należy. W JCOM wykonujemy naprawę wszelkiego rodzaju drukarek: atramentowe, igłowe, laserowe. Nasi serwisanci są specjalistami w dziedzinie napraw wszelkiego sprzętu biurowego.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "servikom.pl",
+    "url": "http://www.servikom.pl/naprawa-drukarek.php",
+    "title": "Naprawa drukarek laserowych | SERVIKOM Szczecin",
+    "desc": "Jedną z usług oferowanych przez SERVIKOM Szczecin jest naprawa drukarek laserowych. Mamy duże doświadczenie w pracy ze sprzętem komputerowym.",
+    "h1": [
+     "H1: Naprawa drukarek laserowych Szczecin"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "biuromax-balcer.pl",
+    "url": "https://www.biuromax-balcer.pl/naprawa-serwis-drukarek-laserowych/",
+    "title": "Serwis drukarek laserowych - Biuromax-Balcer",
+    "desc": "Profesjonalny serwis drukarek laserowych w Bydgoszczy. Naprawiamy sprzęt wszystkich marek już od 160 zł. Ponad 25 lat doświadczenia i gwarancja. Sprawdź!",
+    "h1": [
+     "H1: Serwis drukarek laserowych – profesjonalna naprawa i konserwacja w Bydgoszczy"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/serwis-drukarek-rzeszow",
+    "title": "Serwis drukarek Rzeszów – naprawa i dojazd | DMD Tonery",
+    "desc": "Serwis drukarek w Rzeszowie z dojazdem do firmy lub domu. Diagnostyka i naprawa drukarek laserowych, atramentowych, MFP, igłowych oraz ploterów.",
+    "h1": [
+     "H1: Serwis drukarek w Rzeszowie"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/",
+    "title": "Naprawa drukarek Częstochowa - naprawa drukarek Brother HP Epson Canon",
+    "desc": "Naprawa drukarek Częstochowa Północ. Autoryzowany serwis drukarek i urządzeń do biura. Przeglad, konserwacja, wymiana bębna, czyszczenie głowic.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek, naprawa laptopów",
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Bęben / developer / zespół obrazowania",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/naprawa-drukarek.php",
+    "title": "Naprawa Drukarek",
+    "desc": "Naprawa usterek i wad w drukarkach laserowych i atramentowych. Wymiana tuszy, tonerów, taśm, folii. Znamy się na tej robocie zdobywając doświadczenie już ponad 10 lat.",
+    "h1": [
+     "H1: Naprawa Drukarek"
+    ],
+    "first": "Pas transferowy / wałek transferowy",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Bęben / developer / zespół obrazowania",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Pas transferowy / wałek transferowy",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-lublin.pl",
+    "url": "https://serwis-drukarek-lublin.pl/",
+    "title": "Serwis Drukarek Lublin - Naprawa Drukarek Lublin - Opinie 5.0",
+    "desc": "Naprawa Drukarek Lublin - Laserowe i Atramentowe \"Każda Marka\". ☑ Dojazd (0 zł) na Terenie Miasta ☆ Opinie 5.0 Google. ☎ 517 532 335",
+    "h1": [
+     "H1: Serwis Drukarek Lublin"
+    ],
+    "first": "Usuwanie zacięć / naprawa podawania papieru",
+    "seoFirst": "Usuwanie zacięć / naprawa podawania papieru",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Pas transferowy / wałek transferowy",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "profixer.pl",
+    "url": "https://www.profixer.pl/informacje/serwis/drukarek-rzeszow/",
+    "title": "Serwis drukarek w Rzeszowie – przegląd drukarki laserowej",
+    "desc": "Usługi serwisu drukarek w Rzeszowie z dojazdem do firmy. Oferta profesjonalnego przeglądu drukarki laserowej i ledowej: czyszczenie oraz sprawdzanie elementów.",
+    "h1": [
+     "H1: Serwis drukarek w Rzeszowie"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "office-partner.pl",
+    "url": "https://office-partner.pl/serwis%20kserokopiarek.php",
+    "title": "Serwis kserokopiarek i drukarek — Opole Wrocław Katowice, reakcja 24h | OFFICE-PARTNER",
+    "desc": "Profesjonalny serwis i naprawa kserokopiarek i drukarek. Czas reakcji do 24h. Woj. opolskie, śląskie i dolnośląskie. Zadzwoń: 77 442 77 90.",
+    "h1": [
+     "H1: Profesjonalny serwis kserokopiarek, drukarek i faxów",
+     "H1: Przeglądy okresowe i konserwacje kserokopiarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "aproks.pl",
+    "url": "https://aproks.pl/uslugi/serwis-komputerowy/naprawa-drukarek/",
+    "title": "Naprawa i serwis drukarek Kielce | APROKS",
+    "desc": "Naprawa i serwis drukarek w Kielcach: urządzenia laserowe, atramentowe i wielofunkcyjne. Diagnostyka, konserwacja i usuwanie usterek.",
+    "h1": [
+     "H1: Naprawa i serwis drukarek w Kielcach"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "optima-md.pl",
+    "url": "https://optima-md.pl/tania-naprawa-drukarek-czestochowa-naprawa-drukarki/",
+    "title": "Naprawa drukarek Częstochowa - Optima-MD",
+    "desc": "Naprawa drukarek w Częstochowie. Bezpłatna diagnoza i wycena. Naprawa drukarek Samsung Brother Canon HP Epson Lexmark OKI Panasonic Xerox Kyocera. Naprawa drukarek Częstochowa laserowe i atramentowe drukarki naprawiane są szybko i z gwarancją ! Wycena kosztów naprawy profesjonalny punk napraw drukarek wielofunkcyjnych",
+    "h1": [
+     "H1: Naprawa drukarek w Optima-MD – Częstochowa"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "aristo.com.pl",
+    "url": "https://aristo.com.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Kraków, naprawa drukarek HP, Epson | Aristo-Com",
+    "desc": "Specjalistyczny serwis i naprawa drukarek w Krakowie. HP, Brother, Epson, Canon, OKI, Xerox i inne. Obsługujemy drukarki laserowe, atramentowe i igłowe.",
+    "h1": [
+     "H1: Naprawa drukarek w Krakowie – ponad 30 lat doświadczenia"
+    ],
+    "first": "Naprawa skanera / ADF",
+    "seoFirst": "Naprawa skanera / ADF",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "serwis-drukarek-poznan.pl",
+    "url": "https://www.serwis-drukarek-poznan.pl/naprawa-i-serwis-drukarek-laserowych.php",
+    "title": "Naprawa i serwis drukarek laserowych Poznań | serwis-drukarek-poznan.pl",
+    "desc": "Profesjonalny serwis drukarek świadczy usługi na terenie Poznania oraz w niedalekich okolicach. Istnieje możliwość dojazdu na miejsce awarii. ",
+    "h1": [
+     "H1: Naprawa i serwis drukarek laserowych Poznań"
+    ],
+    "first": "Konfiguracja sieci / sterowników",
+    "seoFirst": "",
+    "works": [
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "cartridgecentre.pl",
+    "url": "https://cartridgecentre.pl/serwis-drukarek/",
+    "title": "Serwis, szybka naprawa drukarek Gdańsk - Wrzeszcz - atramentowe, laserowe | Tonery i tusze do drukarek - sprzedaż, regeneracja, napełnianie Gdańsk - Wrzeszcz - Cartridge Centre KVADER",
+    "desc": "Diagnostyka, czyszczenie, naprawa – oferujemy kompleksowy serwis drukarek atramentowych oraz laserowych różnych producentów. Usługi świadczymy na terenie Gdańska.",
+    "h1": [],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "kserotechnik.com",
+    "url": "https://www.kserotechnik.com/serwis-drukarek-katowice",
+    "title": "Serwis i naprawa drukarek Brother - Katowice",
+    "desc": "erwis drukarek Katowice. Punkt odbioru przy ul. 1 Maja 23. Naprawiamy drukarki laserowe, atramentowe i urządzenia wielofunkcyjne. Ponad 20 lat doświadczenia.",
+    "h1": [
+     "H1: Serwis drukarek — Katowice"
+    ],
+    "first": "Usuwanie smug / problemy z jakością wydruku",
+    "seoFirst": "",
+    "works": [
+     "Bęben / developer / zespół obrazowania",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "procopy.info.pl",
+    "url": "https://procopy.info.pl/",
+    "title": "Serwis drukarek i ploterów Lublin – naprawa | PRO COPY",
+    "desc": "Naprawa drukarek, ploterów i kserokopiarek. Oferujemy szybki serwis, dojazd do klienta i wieloletnie doświadczenie. Sprawdź ofertę PRO COPY.",
+    "h1": [
+     "H1: Naprawa drukarek laserowych, kserokopiarek, ploterów i niszczarek",
+     "H1: Profesjonalny serwis urządzeń biurowych"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "doktortusz.pl",
+    "url": "https://www.doktortusz.pl/serwis-drukarek",
+    "title": "Pogwarancyjna naprawa drukarek. Białystok, tanio, sklep.",
+    "desc": "Serwis drukarek i urządzeń wielofunkcyjnych. Na wykonane naprawy udzielamy gwarancji. Stałym Klientom proponujemy atrakcyjne ceny.",
+    "h1": [
+     "H1: Serwis drukarek",
+     "H1: Serwis drukarek"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "serwis.torun.pl",
+    "url": "https://serwis.torun.pl/serwis-komputerowy/naprawa-drukarek-laserowych/",
+    "title": "Naprawa i serwis drukarek laserowych, igłowych oraz atramentowych Toruń – obecnie wstrzymana - Serwis laptopów Toruń | naprawa komputerów",
+    "desc": "[URIS id=336] Niezastąpione w każdym biurze, a także domu. Drukarki laserowe i igłowe to urządzenia, bez których trudno sobie wyobrazić codzienną pracę oraz obieg dokumentów w firmie. W przypadku, gdy sprzęt odmówił Wam posłuszeństwa lub pojawiają się błędy podczas jego funkcjonowania, skontaktujcie się z nami, a my po",
+    "h1": [
+     "H1: Naprawa i serwis drukarek laserowych, igłowych oraz atramentowych Toruń – obecnie wstrzymana"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "kielceserwis.pl",
+    "url": "https://kielceserwis.pl/uslugi-informatyczne/naprawa-drukarki/",
+    "title": "Naprawa drukarek | DSP Systems",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konfiguracja sieci / sterowników",
+    "seoFirst": "Konfiguracja sieci / sterowników",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Konfiguracja sieci / sterowników"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "akte.com.pl",
+    "url": "https://akte.com.pl/naprawa-drukarek-laserowych-i-atramentowych/",
+    "title": "Serwis drukarek laserowych, naprawa drukarek atramentowych Poznań - akte Outsourcing IT, serwis ploterów i odzyskiwanie danych",
+    "desc": "Serwis drukarek laserowych w Poznaniu i naprawa drukarek atramentowych Suchy Las, Złotniki. Oferujemy profesjonalny serwis z dojazdem do klienta.",
+    "h1": [
+     "H1: Serwis Drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Pas transferowy / wałek transferowy"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawa-drukarek-lublin.pl",
+    "url": "https://naprawa-drukarek-lublin.pl/",
+    "title": "Naprawa (Serwis) Drukarek Lublin - Ekspresowo i Skutecznie",
+    "desc": "Naprawiamy, testujemy, oddajemy gotowe do pracy drukarki. ✨ Zadowolenie gwarantowane. ⏩ Zgłoś naprawę drukarki ☎ 517-532-335.",
+    "h1": [
+     "H1: Serwis drukarek w Lublinie"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa płyty głównej / elektroniki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "mikro-serwis.pl",
+    "url": "https://www.mikro-serwis.pl/serwis-drukarek-laserowych",
+    "title": "Ceny związane z naprawami drukarek laserowych - Mikro-Serwis Olsztyn",
+    "desc": "Serwis drukarek laserowych to kluczowa usługa dla firm i użytkowników indywidualnych, zapewniająca długą żywotność sprzętu i wysoką jakość wydruków.…",
+    "h1": [
+     "H1: Drukarki czarno białe"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "wpc24.pl",
+    "url": "https://wpc24.pl/serwis-drukarek",
+    "title": "Naprawa, serwis drukarek i ploterów Kraków - HP, Brother, Canon, Epson - WPC24",
+    "desc": "Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych HP, Brother, Canon, Epson ✔ Serwis WPC24 Kraków i okolice ☎ 664 616 484",
+    "h1": [
+     "H1: Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych - Kraków"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "naprawa-laptopa.com",
+    "url": "https://naprawa-laptopa.com/serwis-drukarek.html",
+    "title": "Serwis, naprawa drukarek - Białystok",
+    "desc": "Szukasz serwisu, który naprawi Twoją drukarkę? Przyjdź do nas. Naprawiamy drukarki Brother, HP, Panasonic, Samsung i wiele innych!",
+    "h1": [
+     "H1: Serwis, naprawa drukarek Białystok"
+    ],
+    "first": "Naprawa lasera / skanera laserowego (LSU)",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "kopiserwis.pl",
+    "url": "https://kopiserwis.pl/naprawa-drukarek-kielce-serwis-urzadzen-biurowych-z-dojazdem/",
+    "title": "Naprawa drukarek Kielce – serwis urządzeń biurowych",
+    "desc": "Profesjonalna naprawa drukarek w Kielcach – serwis laserowych i atramentowych urządzeń biurowych z dojazdem do klienta. Sprawdź ofertę KopiSerwis!",
+    "h1": [
+     "H1: Naprawa drukarek Kielce – serwis urządzeń biurowych z dojazdem"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "arcan.pl",
+    "url": "https://arcan.pl/serwis/serwis-drukarek/",
+    "title": "Serwis i naprawa drukarek Poznań - Arcan s.c.",
+    "desc": "Potrzebna nagła naprawa drukarek? Arcan s.c. oferuje serwis drukarek tuszowych oraz laserowych, a także igłowych i do etykiet. Hp, Epson, Canon, czy Brother itp. Poznań i okolice.",
+    "h1": [
+     "H1: Serwis drukarek - ArCan Poznań"
+    ],
+    "first": "Usuwanie zacięć / naprawa podawania papieru",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "serwbit.pl",
+    "url": "https://serwbit.pl/serwis-drukarek/",
+    "title": "Naprawa Drukarek – Laserowe, Atramentowe, 3D | Katowice",
+    "desc": "Twoja drukarka przestała działać, brudzi kartki, blado drukuje lub sygnalizuje błędy? Oferujemy naprawy drukarek laserowych, atramentowych, igłowych oraz urządzeń wielofunkcyjnych, kserokopiarek i ploterów.",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "drukarkowyserwis.eu",
+    "url": "https://drukarkowyserwis.eu/serwis-drukarek-lublin/",
+    "title": "Serwis drukarek lublin | epson | brother | hp | lexmark | canon",
+    "desc": "Serwis drukarek Lublin – Naprawa atramentowych i laserowych | Drukarkowy Serwis Szukasz sprawdzonego miejsca w Lublinie, gdzie fachowo zostanie naprawiona Twoja…",
+    "h1": [
+     "H1: serwis drukarek lublin oraz naprawa drukarek lublin, ekspertyza 0 zl",
+     "H1: Serwis drukarek lublin"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "maxkolor.pl",
+    "url": "https://maxkolor.pl/naprawa-drukarek-rzeszow/",
+    "title": "Naprawa drukarek Rzeszów - MaxKolor",
+    "desc": "Profesjonalny serwis i naprawa drukarek Rzeszów. Serwis kserokopiarek, drukarek laserowych i atramentowych, czyszczenie głowic szybko i profesjonalnie.",
+    "h1": [
+     "H1: Naprawa drukarek Rzeszów"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "print-jet.pl",
+    "url": "http://www.print-jet.pl/serwis-drukarek-torun-c-2.html",
+    "title": "serwis drukarek Toruń, naprawa drukarek Toruń, naprawa drukarek, naprawa drukark",
+    "desc": "naprawa drukarek hp, naprawa drukarek epson, brother, naprawa drukarek canon, naprawa drukarek rubinkowo",
+    "h1": [
+     "H1: SERWIS DRUKAREK TORUŃ"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "polandithub.pl",
+    "url": "https://polandithub.pl/serwis-i-naprawa-drukarek-czestochowa-i-okolice/",
+    "title": "Serwis i naprawa drukarek – Częstochowa i okolice - Poland IT Hub",
+    "desc": "W Częstochowie i okolicach działa kilkadziesiąt specjalistycznych serwisów oferujących naprawę drukarek laserowych, atramentowych, igłowych, termicznych oraz",
+    "h1": [
+     "H1: Serwis i naprawa drukarek – Częstochowa i okolice"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "decusdruk.pl",
+    "url": "https://www.decusdruk.pl/old/serwis-drukarek-krakow.html",
+    "title": "Serwis drukarek Krak�w, naprawa drukarek - Decus Druk, Krak�w",
+    "desc": "Decus Druk: Serwis drukarek Krak�w, Drukarki, Tonery, Krak�w ul. Tr�bacza 8a, Tel.: (012) 633 66 53",
+    "h1": [
+     "H1: Serwis drukarek i urz�dze� drukuj�cych"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "dormex.pl",
+    "url": "https://www.dormex.pl/serwis/serwis-naprawa-drukarek-warszawa/",
+    "title": "Serwis oraz Naprawa drukarek Warszawa | DORMEX",
+    "desc": "Serwis, Naprawa drukarek Warszawa i okolice. Sprawdź nasze solidne usługi. Oferujemy profesjonalny serwis drukarek Warszawa, Naprawa Drukarek Warszawa - tylko DORMEX!",
+    "h1": [
+     "H1: Serwis drukarek Warszawa",
+     "H1: SERWIS DRUKAREK WARSZAWA"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "biurokseroserwis.com",
+    "url": "https://biurokseroserwis.com/serwis-drukarek-poznan/",
+    "title": "Serwis drukarek Poznań | Biuro KseroSerwis",
+    "desc": "Potrzebujesz wsparcia serwisowego dla swoich urządzeń drukujących? Sprawdź naszą ofertę na serwis drukarek laserowych na terenie Poznania.",
+    "h1": [
+     "H1: Serwis drukarek Poznań"
+    ],
+    "first": "Usuwanie smug / problemy z jakością wydruku",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "drukosfera.pl",
+    "url": "https://drukosfera.pl/serwis-drukarek-i-kserokopiarek-pm-9.html",
+    "title": "Serwis drukarek laserowych i atramentowych Łódź, tel. 42 632 23 23 - drukosfera.",
+    "desc": "Naprawa i serwis drukarek i kopiarek Łódź - tel. 42 632 23 23 ,serwis HP ,Brother, Canon, Epson.SERWIS DRUKAREK ŁÓDŹ, ul. Zachodnia 77 - drukosfera.pl",
+    "h1": [
+     "H1: Serwis Drukarek i Kserokopiarek"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "ithelps.pl",
+    "url": "https://ithelps.pl/serwis-drukarek/",
+    "title": "Serwis drukarek - Kompleksowa obsługa informatyczna Śląsk",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "abcdigital.pl",
+    "url": "https://www.abcdigital.pl/serwis-lub-pomoc-techniczna",
+    "title": "Serwis i naprawa drukarek, kopiarek i niszczarek | Szczecin",
+    "desc": "Prowadzimy serwis urządzeń wielofunkcyjnych, kopiarek, niszczarek, drukarek laserowych i kserokopiarek w Szczecinie. Wykonujemy naprawy urządzeń poleasingowych.\r\n",
+    "h1": [
+     "H1: Serwis urządzeń wielofunkcyjnych"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "drukaton.pl",
+    "url": "http://www.drukaton.pl/",
+    "title": "Serwis drukarek - Drukaton",
+    "desc": "Drukarki Naprawiamy drukarki i urządzenia wielofunkcyjne monochroniczne i kolorowe. Drukarki. Serwis drukarek, naprawa drukarek laserowych, atramentowych i igłowych. .",
+    "h1": [
+     "H1: Serwis drukarek"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "eurobiurotorun.pl",
+    "url": "https://www.eurobiurotorun.pl/serwis.html",
+    "title": "Euro Biuro Toruń - Serwis kserokopiarek, serwis sprzętu biurowego, naprawa drukarek, naprawa ploterów, naprawa niszczarek",
+    "desc": "Oferujemy najlepszy w Toruniu serwis kserokopiarek, drukarek laserowych i atramentowych, telefonów i faksów w bardzo atrakcyjnych cenach.",
+    "h1": [
+     "H1: Serwis Euro Biuro"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "cartridgepoznan.pl",
+    "url": "https://cartridgepoznan.pl/serwis-drukarek/",
+    "title": "Serwis drukarek , naprawa, przeglądy i konserwacja drukarek Brother, Canon, HP - Cartridge Poznań",
+    "desc": "Serwis drukarek laserowych i atramentowych / kopiarek / Przeglądy konserwacja, czyszczenie usługi serwisowe urządzeń drukujących poznań",
+    "h1": [
+     "H1: Serwis drukarek w Poznaniu",
+     "H1: tel.602-302-798"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Pas transferowy / wałek transferowy",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "tonerylublin.pl",
+    "url": "https://tonerylublin.pl/serwis-drukarek-lublin/",
+    "title": "Serwis drukarek Lublin – diagnostyka 0 zł | Toner Service",
+    "desc": "Serwis i naprawa drukarek w Lublinie: HP, Brother, Canon, Epson, Kyocera i inne. Diagnostyka 0 zł, wycena przed naprawą i do 6 miesięcy gwarancji.",
+    "h1": [
+     "H1: Serwis drukarek Lublin – naprawa i diagnostyka 0 zł"
+    ],
+    "first": "Usuwanie zacięć / naprawa podawania papieru",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Usuwanie smug / problemy z jakością wydruku",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "top-serwis.pl",
+    "url": "https://top-serwis.pl/serwis-drukarek-kielce",
+    "title": "Serwis drukarek Kielce",
+    "desc": "Serwis drukarek Kielce",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "tomi24.pl",
+    "url": "https://www.tomi24.pl/serwis-drukarek/",
+    "title": "Serwis drukarek Warszawa – naprawa + konserwacja drukarek",
+    "desc": "Naprawa drukarek laserowych i atramentowych w Warszawie. Serwis HP, Brother, Canon i innych. Dojazd do firm, tonery, konserwacja drukarek. Szybka diagnoza.",
+    "h1": [
+     "H1: Serwis drukarek laserowych i atramentowych"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki",
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "pokompa.pl",
+    "url": "https://pokompa.pl/uslugi/naprawa-drukarek/",
+    "title": "Serwis i Naprawa drukarek Poznań, Komorniki | Canon, HP, Lexmark | - PoKompa.pl",
+    "desc": "Serwis i naprawa drukarek atramentowych, laserowych i urządzeń wielofunkcyjnych z dojazdem do Klienta - Poznań Wilda, Piątkowo, Rataje oraz Komorniki i okolice. Zapraszamy!",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "topkomputer.com",
+    "url": "https://topkomputer.com/serwis/serwis-i-naprawa-drukarek-laserowych-lodz/",
+    "title": "Serwis drukarek Łódź | Top Komputer",
+    "desc": "Oferujemy serwis i naprawę drukarek laserowych i igłowych Łódź. Nasz serwis drukarek laserowych prowadzi naprawy większości typów drukarek.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "proserw.pl",
+    "url": "https://proserw.pl/naprawa-drukarek/",
+    "title": "Naprawa drukarek Poznań | Serwis drukarek — Proserw",
+    "desc": "Naprawa drukarek atramentowych, laserowych i termotransferowych. Mechanika, pobieranie papieru, utrwalanie, elektronika, skanery, ADF i kalibracja.",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Naprawa lasera / skanera laserowego (LSU)",
+    "seoFirst": "Pas transferowy / wałek transferowy",
+    "works": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Pas transferowy / wałek transferowy",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Pas transferowy / wałek transferowy"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "znam.szczecin.pl",
+    "url": "https://znam.szczecin.pl/uslugi-w-szczecinie/gdzie-w-szczecinie-naprawiaja-tanio-drukarki/",
+    "title": "Tani i dobry serwis drukarek - naprawa drukarek Szczecin",
+    "desc": "Serwis i naprawa drukarek Szczecin. Gdzie w Szczecinie znajduje się tani i dobry serwis punkt napraw drukarek laserowych oraz atramentowych",
+    "h1": [
+     "H1: Gdzie w Szczecinie naprawiają tanio drukarki – serwis drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "serwishp.pl",
+    "url": "https://serwishp.pl/cennik-serwisu-drukarek.html",
+    "title": "Cennik serwisu drukarek",
+    "desc": "Znajdź swoją cenę naprawy drukarki. Serwis Drukarek Atramentowych i Laserowych. Rafcom.eu",
+    "h1": [
+     "H1: Cennik serwisu drukarek"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / regeneracja fusera (utrwalacza)",
+     "Usuwanie zacięć / naprawa podawania papieru",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa lasera / skanera laserowego (LSU)",
+     "Naprawa płyty głównej / elektroniki",
+     "Naprawa skanera / ADF",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "printmark.pl",
+    "url": "https://printmark.pl/",
+    "title": "Printmark - kserokopiarki, drukarki, niszczarki | Białystok",
+    "desc": "Firma Printmark z Białegostoku od ponad 10 lat specjalizuje się w sprzedaży i serwisie: drukarek, kopiarek, urządzeń wielofunkcyjnych i niszczarek. Zajmujemy si",
+    "h1": [
+     "H1: Profesjonalne rozwiązania drukujące i IT dla biznesu"
+    ],
+    "first": "Toner / błędy tonera",
+    "seoFirst": "Toner / błędy tonera",
+    "works": [
+     "Bęben / developer / zespół obrazowania",
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Konfiguracja sieci / sterowników",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Toner / błędy tonera"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "smart.net.pl",
+    "url": "https://smart.net.pl/",
+    "title": "Sprzedaż i Serwis drukarek Xerox Olsztyn. Naprawa i serwis ploterów – SMART OFFICE",
+    "desc": "Oferujemy  sprzedaż, wynajem i serwis kserokopiarek Xerox i HP. Urządzenia wielofunkcyjne, drukarki laserowe A3 oraz profesjonalne wsparcie dla firm.",
+    "h1": [],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Konfiguracja sieci / sterowników"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "unikom.pl",
+    "url": "https://unikom.pl/naprawa-drukarek/",
+    "title": "Naprawa drukarek w Poznaniu. Serwis drukarek - Unikom",
+    "desc": "Profesjonalna i szybka naprawa drukarek w Poznaniu ✔️ Bezpłatna diagnoza problemu i wycena naprawy ✔️ Zadzwoń już teraz i sprawdź co możemy dla Ciebie zrobić!",
+    "h1": [
+     "H1: UNIKOM",
+     "H1: Naprawa drukarek w Poznaniu"
+    ],
+    "first": "Czyszczenie / konserwacja drukarki",
+    "seoFirst": "Czyszczenie / konserwacja drukarki",
+    "works": [
+     "Czyszczenie / konserwacja drukarki",
+     "Naprawa skanera / ADF",
+     "Toner / błędy tonera"
+    ],
+    "seoWorks": [
+     "Czyszczenie / konserwacja drukarki"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Bęben / developer / zespół obrazowania": {
+    "было": 14,
+    "стало": 8,
+    "исключено": [
+     "wymiana bębna w pralce koszt",
+     "wymiana bębna w pralce electrolux",
+     "wymiana bębna w pralce",
+     "wymiana bębna hamulcowego c 330",
+     "wymiana bębna w pralce samsung",
+     "wymiana bębna w pralce beko"
+    ]
+   },
+   "подсказки: Naprawa płyty głównej / elektroniki": {
+    "было": 4,
+    "стало": 2,
+    "исключено": [
+     "płyta główna drukarki 3d",
+     "jaka płyta główna do drukarki 3d"
+    ]
+   },
+   "подсказки: Pas transferowy / wałek transferowy": {
+    "было": 11,
+    "стало": 8,
+    "исключено": [
+     "pas transferowy dla pacjenta",
+     "pas transferowy do przemieszczania pacjenta",
+     "pas transferowy dla niepełnosprawnych"
+    ]
+   },
+   "общие подсказки: Naprawa skanera / ADF": {
+    "было": 26,
+    "стало": 7,
+    "исключено": [
+     "drukarka laserowa ze skanerem",
+     "drukarka laserowa kolorowa ze skanerem",
+     "drukarka laserowa a3 ze skanerem",
+     "drukarka laserowa brother ze skanerem",
+     "drukarka laserowa czarno-biała ze skanerem",
+     "drukarka laserowa dwustronna ze skanerem",
+     "drukarka laserowa hp ze skanerem",
+     "drukarka laserowa i skaner",
+     "drukarka laserowa kolorowa ze skanerem do domu",
+     "drukarka laserowa kolorowa dwustronna ze skanerem",
+     "drukarka laserowa skaner",
+     "drukarka laserowa ze skanerem wifi",
+     "drukarka laserowa ze skanerem do domu",
+     "drukarka laserowa ze skanerem kolorowa",
+     "drukarka laserowa ze skanerem brother",
+     "drukarka laserowa że skanerem wifi bluetooth",
+     "drukarka laserowa z skanerem media expert",
+     "drukarka brother laserowa że skanerem wifi",
+     "najlepsza drukarka laserowa że skanerem do domu media expert"
+    ]
+   },
+   "общие подсказки: Konfiguracja sieci / sterowników": {
+    "было": 20,
+    "стало": 0,
+    "исключено": [
+     "drukarka laserowa wifi",
+     "drukarka laserowa brother wifi",
+     "drukarka laserowa bluetooth wifi",
+     "drukarka laserowa brother wifi druk dwustronny",
+     "drukarka laserowa czarno-biała wifi",
+     "drukarka laserowa epson wifi",
+     "drukarka laserowa hp wifi",
+     "drukarka laserowa mała wifi",
+     "drukarka laserowa na wifi",
+     "drukarka laserowa samsung wifi",
+     "drukarka laserowa wifi bluetooth",
+     "drukarka laserowa wifi mała",
+     "drukarka laserowa wifi do domu",
+     "drukarka laserowa wifi druk dwustronny",
+     "drukarka laserowa wielofunkcyjna wifi",
+     "drukarka laserowa ze skanerem wifi",
+     "drukarka laserowa z wifi",
+     "drukarka laserowa z wifi i bluetooth",
+     "drukarka laserowa że skanerem wifi bluetooth",
+     "drukarka brother laserowa że skanerem wifi"
+    ]
+   },
+   "общие подсказки: Toner / błędy tonera": {
+    "было": 9,
+    "стало": 1,
+    "исключено": [
+     "drukarka laserowa hp laserjet m110w toner",
+     "drukarka laserowa ile kosztuje toner",
+     "drukarka laserowa jak czesto wymienia sie toner",
+     "drukarka laserowa na toner",
+     "drukarka laserowa toner",
+     "drukarka laserowa toner cena",
+     "drukarka laserowa tanie tonery",
+     "drukarka laserowa toner na ile wystarcza"
+    ]
+   },
+   "Ads: Toner / błędy tonera": {
+    "исключено": [
+     "tonery wrocław (37)",
+     "tonery wroclaw (18)",
+     "tonery brother wrocław (10)",
+     "tusze tonery wrocław (9)",
+     "tonery tusze wrocław (6)",
+     "tonery kamieniec wrocławski (5)",
+     "tonery near me (4)",
+     "skup zużytych tonerów wrocław (1)",
+     "tonery drukarki (1)",
+     "tonery hp color laser mfp 178nw (1)",
+     "gdzie oddać zużyte tonery wrocław (1)",
+     "zużyte tonery wrocław (1)",
+     "alfa tonery wrocław (1)"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Czyszczenie / konserwacja drukarki",
+   "comp": {
+    "mention": 72,
+    "first": 42,
+    "seoFirst": 20,
+    "seo": 22,
+    "head": 17,
+    "td": 13
+   },
+   "ac": 0,
+   "probe": {
+    "n": 12,
+    "cena": 0,
+    "ex": [
+     "czyszczenie drukarki laserowej",
+     "czyszczenie drukarki laserowej hp",
+     "czyszczenie drukarki laserowej brother",
+     "czyszczenie drukarki laserowej samsung",
+     "czyszczenie drukarki laserowej canon"
+    ]
+   },
+   "ads": {
+    "impr": 38,
+    "clicks": 2,
+    "conv": 1,
+    "n": 12,
+    "top": [
+     "czyszczenie drukarek laserowych",
+     "czyszczenie drukarki laserowej",
+     "czyszczenie drukarki laserowej brother",
+     "czyszczenie bębna drukarki laserowej"
+    ]
+   },
+   "xl": {
+    "n": 7,
+    "kp": 50,
+    "ex": [
+     "czyszczenie drukarek laserowych",
+     "konserwacja drukarek laserowych",
+     "drukarka laserowa konserwacja"
+    ]
+   }
+  },
+  {
+   "work": "Toner / błędy tonera",
+   "comp": {
+    "mention": 53,
+    "first": 17,
+    "seoFirst": 10,
+    "seo": 17,
+    "head": 13,
+    "td": 9
+   },
+   "ac": 1,
+   "probe": null,
+   "ads": {
+    "impr": 124,
+    "clicks": 4,
+    "conv": 0,
+    "n": 27,
+    "top": [
+     "napełnianie tonerów wrocław",
+     "tonery",
+     "regeneracja tonerów wrocław",
+     "tusze tonery"
+    ]
+   },
+   "xl": {
+    "n": 7,
+    "kp": 300,
+    "ex": [
+     "amax tusze tonery regeneracja zamienniki oryginały serwis drukarek",
+     "drukarki tonery serwis",
+     "regeneracja tonera lexmark"
+    ]
+   }
+  },
+  {
+   "work": "Usuwanie zacięć / naprawa podawania papieru",
+   "comp": {
+    "mention": 39,
+    "first": 5,
+    "seoFirst": 2,
+    "seo": 7,
+    "head": 6,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 5,
+    "cena": 0,
+    "ex": [
+     "drukarka laserowa nie pobiera papieru",
+     "drukarka laserowa brother nie pobiera papieru",
+     "drukarka laserowa hp nie pobiera papieru",
+     "drukarka laserowa samsung nie pobiera papieru",
+     "drukarka laserowa zacina papier"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Konfiguracja sieci / sterowników",
+   "comp": {
+    "mention": 38,
+    "first": 3,
+    "seoFirst": 2,
+    "seo": 7,
+    "head": 7,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Bęben / developer / zespół obrazowania",
+   "comp": {
+    "mention": 31,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 4,
+    "head": 4,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 8,
+    "cena": 0,
+    "ex": [
+     "wymiana bębna w drukarce brother",
+     "wymiana bębna w drukarce",
+     "wymiana bębna brother dcp-l2532dw",
+     "wymiana bębna brother mfc l2712dw",
+     "czyszczenie bębna drukarki laserowej"
+    ]
+   },
+   "ads": {
+    "impr": 9,
+    "clicks": 1,
+    "conv": 0,
+    "n": 3,
+    "top": [
+     "czyszczenie bębna drukarki laserowej",
+     "czyszczenie bębna drukarki laserowej samsung",
+     "czyszczenie bębna drukarki laserowej brother"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Naprawa skanera / ADF",
+   "comp": {
+    "mention": 31,
+    "first": 2,
+    "seoFirst": 2,
+    "seo": 4,
+    "head": 3,
+    "td": 1
+   },
+   "ac": 7,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa / regeneracja fusera (utrwalacza)",
+   "comp": {
+    "mention": 25,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 7,
+    "cena": 0,
+    "ex": [
+     "regeneracja fusera",
+     "wymiana fusera w drukarce",
+     "wymiana fusera",
+     "wymiana fusera brother",
+     "wymiana folii fusera"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "hp m454 fuser replacement",
+     "fuser brother"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / elektroniki",
+   "comp": {
+    "mention": 24,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 7,
+    "head": 7,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 2,
+    "cena": 0,
+    "ex": [
+     "płyta główna drukarki",
+     "płyta główna do drukarki brother"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Usuwanie smug / problemy z jakością wydruku",
+   "comp": {
+    "mention": 21,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 5,
+    "head": 5,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 13,
+    "cena": 0,
+    "ex": [
+     "drukarka laserowa smuży",
+     "drukarka laserowa drukuje pasy",
+     "drukarka laserowa drukuje czarne pasy",
+     "drukarka laserowa brudzi kartki",
+     "drukarka laserowa brudzi"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa lasera / skanera laserowego (LSU)",
+   "comp": {
+    "mention": 15,
+    "first": 2,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "wymiana lasera w drukarce"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Pas transferowy / wałek transferowy",
+   "comp": {
+    "mention": 12,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 1,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 8,
+    "cena": 0,
+    "ex": [
+     "wymiana pasa transferowego",
+     "pas transferowy",
+     "pas transferowy hp color laser mfp 179fnw",
+     "pas transferowy w drukarce",
+     "pas transferowy drukarka"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Czyszczenie",
+   "a": "Czyszczenie / konserwacja drukarki",
+   "why": "72 из 79 конкурентов, у 42 — первая работа",
+   "evidence": "конкуренты 72 из 79 (первой работой — 42, в Title/Description — 13) · подсказки Google 12 (напр. «czyszczenie drukarki laserowej», «czyszczenie drukarki laserowej hp») · Ads 38 показов / 2 кликов / 1 конв. · SEO-файл 7 фраз, KP ≈50"
+  },
+  {
+   "w": "Usuwanie zacięć",
+   "a": "Usuwanie zacięć / naprawa podawania papieru",
+   "why": "39 конкурентов; в прайсе «Usuwanie zacięć i ciał obcych z toru papieru»",
+   "evidence": "конкуренты 39 из 79 (первой работой — 5, в Title/Description — 1) · подсказки Google 5 (напр. «drukarka laserowa nie pobiera papieru», «drukarka laserowa brother nie pobiera papieru»)"
+  },
+  {
+   "w": "Wymiana bębna i fusera",
+   "a": "Bęben / developer / zespół obrazowania",
+   "why": "bęben — 31 конкурент, 8 подсказок после очистки (убраны pralka, hamulcowy); fuser — 25 конкурентов, 7 подсказок; в прайсе «Wymiana bębna», «Wymiana / regeneracja fusera»",
+   "evidence": "конкуренты 31 из 79 (первой работой — 2, в Title/Description — 1) · подсказки Google 8 (напр. «wymiana bębna w drukarce brother», «wymiana bębna w drukarce») · Ads 9 показов / 1 кликов / 0 конв."
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Smugi",
+   "why": "это симптом, а не работа — убрано по правилу; ремонт при смугах = чистка/барабан/фьюзер, они уже в тексте",
+   "evidence": ""
+  },
+  {
+   "w": "Toner",
+   "a": "Toner / błędy tonera",
+   "why": "у конкурентов это в основном продажа/заправка тонеров, не ремонт",
+   "evidence": "конкуренты 53 из 79 (первой работой — 17, в Title/Description — 9) · Ads 124 показов / 4 кликов / 0 конв. · SEO-файл 7 фраз, KP ≈300"
+  },
+  {
+   "w": "Skaner / ADF",
+   "a": "Naprawa skanera / ADF",
+   "why": "подсказки 26→7 после очистки (убраны покупки «ze skanerem»); 31 конкурент — запасной",
+   "evidence": "конкуренты 31 из 79 (первой работой — 2, в Title/Description — 1)"
+  },
+  {
+   "w": "Konfiguracja sieci",
+   "why": "подсказки в основном про установку драйверов самостоятельно",
+   "evidence": ""
+  }
+ ],
+ "warnings": [],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa drukarek laserowych we Wrocławiu ✔ Czyszczenie, usuwanie zacięć, wymiana bębna i fusera ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 156
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт лазерних принтерів у Вроцлаві ✔ Чистка, усунення застрягань, заміна барабана і ф'юзера ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 155
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт лазерных принтеров во Вроцлаве ✔ Чистка, устранение замятий, замена барабана и фьюзера ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 154
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

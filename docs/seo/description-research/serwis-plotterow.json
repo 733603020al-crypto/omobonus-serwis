@@ -1,0 +1,2426 @@
+{
+ "page": "/uslugi/serwis-plotterow",
+ "name": "Плоттеры",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis ploterów",
+    "naprawa ploterów",
+    "serwis ploterów cennik",
+    "serwis ploterów Warszawa",
+    "serwis ploterów atramentowych",
+    "serwis ploterów Kraków",
+    "serwis ploterów Wrocław",
+    "serwis ploterów Poznań",
+    "serwis ploterów Gdańsk",
+    "serwis ploterów Łódź",
+    "serwis ploterów Katowice",
+    "serwis ploterów Szczecin",
+    "serwis ploterów Lublin",
+    "serwis ploterów Bydgoszcz",
+    "serwis ploterów Białystok",
+    "serwis ploterów Rzeszów",
+    "serwis ploterów Toruń",
+    "serwis ploterów Kielce",
+    "serwis ploterów Opole",
+    "serwis ploterów Olsztyn",
+    "serwis ploterów Gdynia",
+    "serwis ploterów Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "serwis ploterów ",
+    "naprawa plotera ",
+    "ploter hp ",
+    "serwis plotera ",
+    "ploter designjet "
+   ],
+   "uniqueSuggestions": 141,
+   "withPrice": [
+    "ploter hp cena",
+    "ploter hp t120 cena"
+   ],
+   "wroclaw": [
+    "serwis ploterów hp wrocław",
+    "serwis ploterów wrocław"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Czyszczenie / udrażnianie głowicy": {
+    "seeds": [
+     "czyszczenie głowicy plotera",
+     "udrażnianie głowicy plotera"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Wymiana głowicy drukującej": {
+    "seeds": [
+     "wymiana głowicy plotera",
+     "głowica plotera hp"
+    ],
+    "n": 5,
+    "nRaw": 5,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "głowica do plotera hp t120",
+     "głowica do plotera hp 500",
+     "głowica do plotera hp designjet 500",
+     "głowica do plotera hp t520",
+     "głowica do plotera hp"
+    ],
+    "all": [
+     "głowica do plotera hp t120",
+     "głowica do plotera hp 500",
+     "głowica do plotera hp designjet 500",
+     "głowica do plotera hp t520",
+     "głowica do plotera hp"
+    ],
+    "dropped": []
+   },
+   "Kalibracja plotera": {
+    "seeds": [
+     "kalibracja plotera"
+    ],
+    "n": 3,
+    "nRaw": 3,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "kalibracja plotera tnącego",
+     "kalibracja plotera laserowego",
+     "kalibracja plotera"
+    ],
+    "all": [
+     "kalibracja plotera tnącego",
+     "kalibracja plotera laserowego",
+     "kalibracja plotera"
+    ],
+    "dropped": []
+   },
+   "Płukanie / naprawa układu atramentowego": {
+    "seeds": [
+     "płukanie plotera",
+     "wymiana damperów"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "wymiana damperów"
+    ],
+    "all": [
+     "wymiana damperów"
+    ],
+    "dropped": []
+   },
+   "Naprawa obcinaka": {
+    "seeds": [
+     "obcinak plotera",
+     "nóż plotera hp"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   },
+   "Konserwacja / przegląd": {
+    "seeds": [
+     "konserwacja plotera",
+     "przegląd plotera"
+    ],
+    "n": 1,
+    "nRaw": 1,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "konserwacja plotera"
+    ],
+    "all": [
+     "konserwacja plotera"
+    ],
+    "dropped": []
+   },
+   "Karetka / pasek / enkoder": {
+    "seeds": [
+     "pasek karetki plotera",
+     "enkoder plotera"
+    ],
+    "n": 0,
+    "nRaw": 0,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [],
+    "all": [],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 23,
+   "impressions": 189,
+   "clicks": 30,
+   "conversions": 3,
+   "top": [
+    {
+     "term": "serwis ploterów",
+     "impr": 34,
+     "clicks": 10,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów hp wrocław",
+     "impr": 25,
+     "clicks": 5,
+     "conv": 1,
+     "camps": [
+      "Поиск Plotery Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis ploterów wrocław",
+     "impr": 22,
+     "clicks": 3,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa ploterów",
+     "impr": 17,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów hp",
+     "impr": 15,
+     "clicks": 4,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław",
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis ploterów canon",
+     "impr": 13,
+     "clicks": 3,
+     "conv": 0,
+     "camps": [
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa ploterów wrocław",
+     "impr": 10,
+     "clicks": 2,
+     "conv": 1,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "2 Поиск Drukarki Wrocław",
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa ploterów hp",
+     "impr": 9,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko",
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterow",
+     "impr": 8,
+     "clicks": 1,
+     "conv": 1,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów drukujących",
+     "impr": 5,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów oce",
+     "impr": 4,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów laserowych co2",
+     "impr": 4,
+     "clicks": 2,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów tnących",
+     "impr": 4,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "naprawa plotera",
+     "impr": 3,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    },
+    {
+     "term": "serwis ploterów co2",
+     "impr": 3,
+     "clicks": 0,
+     "conv": 0,
+     "camps": [
+      "Поиск Plotery Wrocław"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "naprawa ploterów",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa ploterów hp",
+     "avg": 50,
+     "comp": "Средний"
+    },
+    {
+     "s": "serwis ploterów",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwis ploterów canon",
+     "avg": 50,
+     "comp": "Средний"
+    },
+    {
+     "s": "serwis ploterów drukujących",
+     "avg": 50,
+     "comp": "Низкий"
+    }
+   ],
+   "phrases": 11
+  }
+ },
+ "competitors": {
+  "relevant": 82,
+  "checked": 96,
+  "candidates": 155,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "mat.net.pl",
+    "url": "https://www.mat.net.pl/serwis/naprawa-ploterow-i-drukarek/",
+    "title": "Naprawa ploterów, serwis ploterów i drukarek HP | MAT",
+    "desc": "Od 12 lat świadczymy serwis ploterów i drukarek HP. Do napraw stosujemy tylko oryginalne części zamienne. Atrakcyjne ceny. Sprawdź!",
+    "h1": [
+     "H1: Naprawa ploterów Od 25 lat świadczymy serwis ploterów HP"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Gdańsk",
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "dmplot.com",
+    "url": "https://dmplot.com/serwis",
+    "title": "Serwis ploterów tnących, części zamienne - DMPlot",
+    "desc": "Jeżeli potrzebujesz pomocy z ploterem, zgłoś się do nas. Nasza firma serwisuje je od wielu lat i posiada duże doświadczenie w tym zakresie. Zapraszamy do kontaktu.",
+    "h1": [
+     "H1: Serwis ploterów tnących"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Łódź",
+     "Katowice",
+     "Szczecin",
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "plotserwis.pl",
+    "url": "http://www.plotserwis.pl/",
+    "title": "PLOTSERWIS – Profesjonalny Serwis Ploterów",
+    "desc": "",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Łódź",
+     "Szczecin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "atrium.com.pl",
+    "url": "https://www.atrium.com.pl/serwis-ploterow/",
+    "title": "Serwis ploterów | Atrium Centrum Ploterowe",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kraków",
+     "Poznań",
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "plotery24.pl",
+    "url": "https://plotery24.pl/",
+    "title": "PLOTERY24.PL - Maszyny Serwis Wsparcie | Roland Mutoh i inne",
+    "desc": "Plotery Roland Mutoh Mimaki Teneth z gwarancją i dowozem, laminatory, trymery, serwis ploterów, szkolenia, części, akcesoria, tusze, programy",
+    "h1": [
+     "H1: PLOTERY24.PL – Maszyny Serwis Wsparcie | Roland Mutoh Teneth STS Inks SAi Onyx Dr-INK",
+     "H1: PLOTERY24.PL – Maszyny Serwis Wsparcie"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Płukanie / naprawa układu atramentowego",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Łódź",
+     "Szczecin",
+     "Lublin"
+    ]
+   },
+   {
+    "host": "naprawadrukarek.pl",
+    "url": "https://naprawadrukarek.pl/serwis-ploterow/",
+    "title": "Serwis ploterów - naprawy ploterów gwarancyjne i pogwarancyjne",
+    "desc": "Potrzebny dobry serwis ploterów? Wymagany przegląd? Zadzwoń do nas - tel. 793900878. Serwisujemy od 20 lat: HP Canon Epson Konica Ricoh Develop Brother",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Białystok",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "serwis.integart.com.pl",
+    "url": "https://serwis.integart.com.pl/",
+    "title": "Serwis Integart - naprawa ploterów HP Latex, stołów Zund, pakiety serwisowe",
+    "desc": "",
+    "h1": [
+     "H1: O nas",
+     "H1: Dlaczego my?"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Katowice",
+     "Szczecin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "printiseasy.com.pl",
+    "url": "https://printiseasy.com.pl/serwis-ploterow-i-urzadzen-drukujacych/",
+    "title": "Serwis ploterów i urządzeń drukujących – Print is easy",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ploterów i urządzeń drukujących"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Gdańsk",
+     "Łódź",
+     "Szczecin",
+     "Białystok"
+    ]
+   },
+   {
+    "host": "naprawaplotera.pl",
+    "url": "https://naprawaplotera.pl/serwis-ploterow-hp/",
+    "title": "Serwis ploterów HP - Naprawa i serwis ploterów",
+    "desc": "",
+    "h1": [
+     "H1: Serwis i naprawa ploterów HP"
+    ],
+    "first": "Kalibracja plotera",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Gdańsk",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "api.pl",
+    "url": "https://www.api.pl/serwis/",
+    "title": "Usługi serwisowe i wsparcie techniczne - API.PL - autoryzowany serwis.",
+    "desc": "API.PL od lat rozwija swój zespół techników i inżynierów, którzy są dostępni na terenie całej Polski wspierając pracę swoich Klientów.",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok",
+     "Rzeszów",
+     "Kielce",
+     "Opole"
+    ]
+   },
+   {
+    "host": "toplaser.pl",
+    "url": "https://toplaser.pl/serwis-ploterow-laserowych/",
+    "title": "Serwis i naprawa ploterów laserowych CO2, fiber oraz UV | Toplaser",
+    "desc": "Serwis i naprawa ploterów laserowych CO2, Fiber laser, znakowarek UV. Skorzystaj z kalkulatora dojazdu serwisanta online i zamów serwis do swojego urządzenia.",
+    "h1": [
+     "H1: Serwis i naprawa ploterów laserowych CO2, znakowarek Fiber i UV"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Łódź",
+     "Szczecin",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "ploter-serwis.pl",
+    "url": "http://www.ploter-serwis.pl/",
+    "title": "Ploter Serwis - serwis ploterów laserowych i atramentowych, składarek, sprzedaż ploterów, tuszy i tonerów",
+    "desc": "Zajmujemy się serwisem, sprzedażą ploterów i materiałów eksploatacyjnych",
+    "h1": [
+     "H1: O nas"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Toruń",
+     "Opole"
+    ]
+   },
+   {
+    "host": "online.com.pl",
+    "url": "https://online.com.pl/",
+    "title": "Naprawa drukarek, ploterów, zasilaczy UPS, skanerów - Online Bydgoszcz",
+    "desc": "sprzedaż, serwis, naprawa, drukarek, ploterów, urządzeń wielofunkcyjnych, laptopów, skanerów, zasilaczy awaryjnych ups oraz kompleksowe rozwiązania do drukowania w firmach i instytucjach - Online Bydgoszcz",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Kielce",
+     "Olsztyn",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "centrumpapieru.pl",
+    "url": "https://www.centrumpapieru.pl/serwis",
+    "title": "Autoryzowany serwis ploterów Canon i Epson | Centrum Papieru",
+    "desc": "Autoryzowany serwis ploterów Canon i Epson w Krakowie – naprawy gwarancyjne i pogwarancyjne, wymiana głowic, dojazd. 30 lat doświadczenia i przejrzyste ceny.",
+    "h1": [
+     "H1: Serwis ploterów Canon, Epson"
+    ],
+    "first": "Naprawa podawania mediów / zacięcia",
+    "seoFirst": "Wymiana głowicy drukującej",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Naprawa obcinaka",
+     "Naprawa podawania mediów / zacięcia",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Kraków",
+     "Białystok",
+     "Toruń",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "polkos.eu",
+    "url": "https://polkos.eu/serwis/",
+    "title": "Serwis i naprawa ploterów",
+    "desc": "",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Płukanie / naprawa układu atramentowego",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Łódź",
+     "Bydgoszcz",
+     "Toruń",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "digipress.pl",
+    "url": "https://digipress.pl/serwis/",
+    "title": "Serwis i naprawa drukarek, ploterów, maszyn offsetowych i poligraficznych | Canon, Xerox, Ricoh | Digipress Sp. z o.o.",
+    "desc": "Profesjonalny serwis, a także szybka naprawa urządzeń poligraficznych! Skutecznie wyeliminujemy wszystkie usterki!",
+    "h1": [
+     "H1: Serwis i naprawa maszyn offsetowych i poligraficznych, drukarek, ploterów"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Opole",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "potis.pl",
+    "url": "https://potis.pl/serwis-urzadzen-wielkoformatowych/",
+    "title": "Serwis ploterów i skanerów wielkoformatowych Wrocław i okolice - Potis - kserokopiarki, drukarki i plotery Wrocław - sprzedaż, dzierżawa, wynajem, serwis",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ploterów i skanerów wielkoformatowych Wrocław i okolice"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Naprawa podawania mediów / zacięcia",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwisploterow.com",
+    "url": "https://serwisploterow.com/",
+    "title": "Serwis Ploterów - Serwis i naprawa ploterów — części i materiały eksploatacyjne",
+    "desc": "Serwis i naprawa ploterów — części i materiały eksploatacyjne",
+    "h1": [
+     "H1: Serwis i naprawa ploterów w Warszawie"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "e-serwis.pl",
+    "url": "https://e-serwis.pl/webpage/serwis-ploterow.html",
+    "title": "Serwis ploterów",
+    "desc": "Profesjonalny serwis ploterów – naprawa, konserwacja i części zamienne. Szybka i skuteczna obsługa urządzeń wszystkich marek.",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa obcinaka",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Poznań",
+     "Łódź"
+    ]
+   },
+   {
+    "host": "nsb-serwis.pl",
+    "url": "https://nsb-serwis.pl/naprawa-ploterow/",
+    "title": "Serwis i naprawa ploterów wielkoformatowych Warszawa | NSB Serwis",
+    "desc": "NSB Serwis: Profesjonalny serwis, naprawa i kalibracja ploterów. Specjalizujemy się w ploterach solwentowych, lateksowych i UV. Wymiana głowicy, pogotowie ploterowe z dojazdem w Warszawie. Sprawdź nasz cennik naprawy.",
+    "h1": [
+     "H1: Naprawa ploterów"
+    ],
+    "first": "Kalibracja plotera",
+    "seoFirst": "Kalibracja plotera",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "ankom.pl",
+    "url": "https://ankom.pl/serwis-kserokopiarek-ploterow-i-drukarek/",
+    "title": "Serwis kserokopiarek, ploterów i drukarek – ANKOM sp. z o.o.",
+    "desc": "",
+    "h1": [
+     "H1: Serwis kserokopiarek, ploterów i drukarek"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń",
+     "Kielce",
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "procad.pl",
+    "url": "https://www.procad.pl/serwis/",
+    "title": "Serwis - PROCAD » AutoCAD, Autodesk Inventor, Revit, 3ds max, - projekty, oprogramowanie, szkolenia",
+    "desc": "Produkty komplementarne",
+    "h1": [
+     "H1: Naprawa i konserwacja urządzeń drukujacych"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "markor.com.pl",
+    "url": "https://markor.com.pl/serwis-ploterow/",
+    "title": "Serwis ploterów Gdańsk, Gdynia, pomorskie | markor.com.pl",
+    "desc": "Markor to sprawdzony serwis ploterów. Działamy na terenie Gdańska, Gdyni oraz całego województwa pomorskiego. Szybki dojazd do klienta.",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Gdańsk",
+     "Toruń",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "prooffice.wroclaw.pl",
+    "url": "https://www.prooffice.wroclaw.pl/serwis-ploterow-canon-i-hp-wroclaw.html",
+    "title": "Serwis ploterów Wrocław; naprawa ploterów i drukarek wielkoformatowych Canon i HP Wrocław.",
+    "desc": "Strona Serwisu ProOffice; serwis, naprawa ploterów i drukarek wielkoformatowych Canon i HP Wrocław. Naprawa drukarek wielkoformatowych Canon i HP",
+    "h1": [
+     "H1: SERWIS PLOTERÓW CANON I HP WROCŁAW"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "ks-serwis.pl",
+    "url": "https://www.ks-serwis.pl/serwis-ploterow.php",
+    "title": "Serwis Ploter�w - KS-Serwis | Serwis Drukarek kserokopiarek",
+    "desc": "Serwis i naprawa ploter�w",
+    "h1": [
+     "H1: Serwis ploter�w"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin",
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "poldruk.com",
+    "url": "https://poldruk.com/",
+    "title": "Poldruk – poldruk",
+    "desc": "Tu Kupisz Tusze i Tonery do Drukarek   ♥   Tu Naprawisz Drukarkę, Kopiarkę i Urządzenie Wielofunkcyjne   ♥   Nasz Serwis Komputerowy Naprawia Plotery Laptopy Serwery Projektory Zasilacze UPS Tablety Smartfony\nTusze Tonery OfertaTusze Oryginalne do",
+    "h1": [
+     "H1: Tu Kupisz Tusze i Tonery do Drukarek ♥ Tu Naprawisz Drukarkę, Kopiarkę i Urządzenie Wielofunkcyjne ♥ Nasz Serwis Komputerowy Naprawia Ploter"
+    ],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Katowice",
+     "Opole"
+    ]
+   },
+   {
+    "host": "biurosprzet.pl",
+    "url": "https://biurosprzet.pl/serwis/serwis-ploterow/",
+    "title": "Serwis i naprawa ploterów Warszawa - BIUROSPRZĘT",
+    "desc": "Klientów z terenu miasta Warszawa i okolicy zainteresowanych serwisem lub zleceniem naprawy plotera zachęcamy do zapoznania się z naszą oferty!",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Naprawa obcinaka",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "serwis-mimaki.pl",
+    "url": "https://www.serwis-mimaki.pl/",
+    "title": "Serwis ploterów wielkoformatowych mimaki.",
+    "desc": "Sprawny Szybki, Fachowy serwis ploterów mimaki, ploterów tnących, solwentowych, drukujących. Sprawdź Naszą Ofertę!",
+    "h1": [
+     "H1: O Nas:"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "laserservice.pl",
+    "url": "https://laserservice.pl/serwis/naprawa-ploterow/",
+    "title": "Serwis naprawa ploterów",
+    "desc": "Naprawa ploterów Warszawa",
+    "h1": [
+     "H1: Naprawa ploterów",
+     "H1: Naprawa ploterów"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Karetka / pasek / enkoder",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "plotercad.pl",
+    "url": "https://plotercad.pl/kontakt/",
+    "title": "Kontakt - Serwis kserokopiarek i ploterów, Katowice, Gliwice, śląsk - Ploter CAD",
+    "desc": "Serwis i sprzedaż: ploterów, kopiarek i składarek.",
+    "h1": [
+     "H1: Kontakt",
+     "H1: Poznaj PLOTER CAD"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Opole"
+    ]
+   },
+   {
+    "host": "druktak.pl",
+    "url": "https://druktak.pl/serwis-drukarek-cennik-pm-77.html",
+    "title": "Serwis drukarek - cennik - DrukTak.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek - cennik"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Wymiana głowicy drukującej",
+     "Płukanie / naprawa układu atramentowego",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "flux-electronics.pl",
+    "url": "https://flux-electronics.pl/",
+    "title": "Serwis drukarek i ploterów Śląsk - Flux Electronics Katowice",
+    "desc": "Centrum Serwisowe Flux Electronics Katowice - sprzedaż i naprawa drukarek, ploterów, komputerów,  laptopów, kopiarek, zasilaczy UPS, tonerów i części. Telefon: 728 757 600",
+    "h1": [],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Katowice",
+     "Opole"
+    ]
+   },
+   {
+    "host": "serwisdrukarek.katowice.pl",
+    "url": "https://serwisdrukarek.katowice.pl/serwis-ploterow.php",
+    "title": "Serwis Ploterów Naprawa Ploterów Katowice Plotery Sosnowiec Bytom Czeladź Chorzów Siemianowice",
+    "desc": "Serwis Ploterów Naprawa Ploterów Katowice Plotery Hp Epson Canon Sosnowiec Bytom Czeladź Chorzów Siemianowice Tychy Mikołów Ruda Śląska Zabrze Śląsk Paski Nożyki Tusze, Serwis Ploterów Hp, Serwis Ploterów Epson",
+    "h1": [
+     "H1: Serwis Ploterów Naprawa Ploterów Katowice Plotery Sosnowiec Bytom Czeladź Chorzów Siemianowice",
+     "H1: Zapraszamy do Serwisu Ploterów Hp Epson Canon"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Karetka / pasek / enkoder",
+    "works": [
+     "Karetka / pasek / enkoder",
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Karetka / pasek / enkoder"
+    ],
+    "city": [
+     "Katowice",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "developpomorze.pl",
+    "url": "http://www.developpomorze.pl/naprawa-i-serwis-ploterow-hp-hewlett-packard-oce-canon-epson-mutoh-gdansk-gdynia-sopot-trojmiasto-serwis.html",
+    "title": "Kserokopiarki, drukarki, serwis i naprawa kopiarek - Gdynia, Gdańsk",
+    "desc": "W naszej ofercie kserokopiarki, drukarki i plotery. Naprawa drukarek, serwis gwarancyjny i pogwarancyjny, kopiarek, kserokopiarek, ploterów - Gdynia, Gdańsk, Sopot, Trójmiasto",
+    "h1": [
+     "H1: Naprawa i Serwis Ploterów HP, Hewlett Packard, OCE, Canon, Epson, Mutoh, Gdańsk, Gdynia, Sopot, Trójmiasto"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Karetka / pasek / enkoder",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "naprawaploterow.pl",
+    "url": "https://naprawaploterow.pl/cennik/",
+    "title": "Cennik – Serwis ploterów – najlepszy w Poznaniu",
+    "desc": "",
+    "h1": [],
+    "first": "Karetka / pasek / enkoder",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "magicservice.pl",
+    "url": "https://magicservice.pl/uslugi/serwis-drukarek-kserokopiarek-ploterow",
+    "title": "Serwis drukarek, kserokopiarek, ploterów - Magic Service",
+    "desc": "",
+    "h1": [
+     "H1: Serwis drukarek, kserokopiarek, ploterów",
+     "H1: Dlaczego warto nam zaufać?"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "procopy.wroclaw.pl",
+    "url": "https://www.procopy.wroclaw.pl/serwis-ploterow-canon-i-hp-wroclaw.html",
+    "title": "Serwis ploterów CANON i HP Wrocław, naprawa ploterów Wrocław.",
+    "desc": "Serdecznie witamy wszystkie osoby na stronie ProOffice serwis ploterów Canon, HP Wrocław. tel: 717885882 wew. 4 Zapraszamy.",
+    "h1": [
+     "H1: SERWIS PLOTERÓW CANON I HP WROCŁAW"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "biznes-top.pl",
+    "url": "https://biznes-top.pl/warszawa/naprawa-drukarek/lee-can-serwis-drukarek-ploterow-kopiarek-urzadzen-biurowych/",
+    "title": "Lee-Can – Serwis drukarek, ploterów, kopiarek, urządzeń biurowych. — Naprawa drukarek Warszawa | Biznes-TOP",
+    "desc": "Lee-Can – Serwis drukarek, ploterów, kopiarek, urządzeń biurowych. (naprawa drukarek) — Warszawa. plac Czerwca 1976 Roku 2, 02-495 Warszawa, Poland. Ocena: 5,0/5 (112 opinii). Adres, mapa, godziny otwarcia, kontakt.",
+    "h1": [
+     "H1: Lee-Can – Serwis drukarek, ploterów, kopiarek, urządzeń biurowych."
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa",
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "grawcom.com",
+    "url": "https://www.grawcom.com/serwis/",
+    "title": "Serwis Ploterów, Laserów, Znakowarek i Drukarek UV | Instalacja Urządzeń | Szkolenia - Grawcom",
+    "desc": "Serwis ploterów tnących, laserowych, frezujących, termicznych. Serwis znakowarek. Instalacja urządzeń. Szkolenia z obsługii ploterów, programów, konserwacji ",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Rzeszów",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "dormex.pl",
+    "url": "https://www.dormex.pl/serwis/serwis-naprawa-ploterow-warszawa/",
+    "title": "Serwis i naprawa ploterów Warszawa",
+    "desc": "Od kilu lat prowadzimy serwis ploterów wielko formatowych firm HP, OCE, CANON\nOferujemy pełny zakres usług związanych z konserwacją - bieżącym utrzymaniem i naprawa ploterów, jak również obsługę wszelkich sytuacji awaryjnych wymagających wykonania specjalistycznych napraw.",
+    "h1": [
+     "H1: Serwis i naprawa ploterów Warszawa"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "aristoserwis.pl",
+    "url": "https://aristoserwis.pl/",
+    "title": "Serwis drukarek, ploterów i upsów Kraków - Aristo-Com",
+    "desc": "",
+    "h1": [],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "ploterylaserowe.com.pl",
+    "url": "https://ploterylaserowe.com.pl/serwis-ploterow-laserowych/",
+    "title": "Serwis ploterów laserowych - Plotery laserowe i tuby CO2",
+    "desc": "",
+    "h1": [
+     "H1: Plotery laserowe",
+     "H1: Serwis ploterów laserowych"
+    ],
+    "first": "Kalibracja plotera",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "kartier.pl",
+    "url": "https://kartier.pl/serwis-1",
+    "title": "Serwis ploterów laserowych | Kartier",
+    "desc": "Przeglądy okresowe ploterów Co2, diagnostyka, remonty, fachowe doradztwo techniczne. Serwis ploterów laserowych Kartier. Zamów serwisanta!",
+    "h1": [
+     "H1: Serwis ploterów laserowych na terenie całego kraju!"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Białystok",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "protofab.pl",
+    "url": "https://protofab.pl/serwis-drukarek-3d/",
+    "title": "Serwis Drukarek 3D - ProtoFAB - Projektowanie, budowa i serwis drukarek 3D, serwis ploterów CO2",
+    "desc": "Wykonujemy",
+    "h1": [
+     "H1: DRUKAREK 3D"
+    ],
+    "first": "Czyszczenie / udrażnianie głowicy",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "aglar.pl",
+    "url": "https://www.aglar.pl/serwis-ploterow/",
+    "title": "Serwis PLOTERÓW | AGLAR",
+    "desc": "SERWIS PLOTERÓW W CAŁEJ POLSCE! Serwis ploterów AGLAR Profesjonalny serwis ploterów Canon w całej Polsce AGLAR to doświadczony i wyspecjalizowany partner w zakresie serwisu ploterów Canon. Od ponad…",
+    "h1": [],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Katowice"
+    ]
+   },
+   {
+    "host": "jamac.pl",
+    "url": "https://jamac.pl/serwis-pras-transferowych-serwis-ploterow-tnacych/",
+    "title": "Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji - serwis pras transferowych, folie flex, materiały DTF, szkolenia, plotery tnące - sprzedaż, serwis",
+    "desc": "serwis pras transferowych, naprawa ploterów tnących, wymiana paska pod nóż, sprawdzenie grzałek, serwis ploterów, naprawa pras do koszulek",
+    "h1": [
+     "H1: Serwis pras transferowych, serwis ploterów tnących oraz drukarek do sublimacji"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Karetka / pasek / enkoder",
+    "works": [
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "netbe.pl",
+    "url": "https://netbe.pl/naprawa-ploterow-najczestsze-usterki-diagnostyka-i-skuteczne-metody-serwisowe/",
+    "title": "Naprawa ploterów – najczęstsze usterki, diagnostyka i skuteczne metody serwisowe",
+    "desc": "Naprawa ploterów – najczęstsze usterki, diagnostyka i skuteczne metody serwisowe",
+    "h1": [
+     "H1: Naprawa ploterów – najczęstsze usterki, diagnostyka i skuteczne metody serwisowe",
+     "H1: Naprawa ploterów – najczęstsze usterki, diagnostyka i skuteczne metody serwisowe"
+    ],
+    "first": "Naprawa podawania mediów / zacięcia",
+    "seoFirst": "Naprawa podawania mediów / zacięcia",
+    "works": [
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Kalibracja plotera",
+     "Naprawa podawania mediów / zacięcia"
+    ],
+    "city": []
+   },
+   {
+    "host": "procopy.info.pl",
+    "url": "https://procopy.info.pl/",
+    "title": "Serwis drukarek i ploterów Lublin – naprawa | PRO COPY",
+    "desc": "Naprawa drukarek, ploterów i kserokopiarek. Oferujemy szybki serwis, dojazd do klienta i wieloletnie doświadczenie. Sprawdź ofertę PRO COPY.",
+    "h1": [
+     "H1: Naprawa drukarek laserowych, kserokopiarek, ploterów i niszczarek",
+     "H1: Profesjonalny serwis urządzeń biurowych"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "bialcan.pl",
+    "url": "https://bialcan.pl/serwis/",
+    "title": "Serwis - Bialcan Białystok",
+    "desc": "",
+    "h1": [
+     "H1: Serwis Kserokopiarek",
+     "H1: STANDARD"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "aprint.pl",
+    "url": "http://www.aprint.pl/",
+    "title": "APRINT Serwis Laptop�w Drukarek",
+    "desc": "serwis,naprawa,sprzeda�,drukarek,notebook�w,komputer�w,ploter�w,tablet�w,tablet,komputer,laptop,PC,laptop�w,kielce,atramenty,tonery,materia�y eksploatacyjne,serwis laptop�w kielce,naprawa laptop�w kielce,naprawa komputer�w kielce",
+    "h1": [],
+    "first": "Naprawa płyty głównej / zasilacza",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "smart.net.pl",
+    "url": "https://smart.net.pl/serwis-i-naprawa-drukarek-i-ploterow-olsztyn/",
+    "title": "Serwis drukarek Xerox , Ploterów HP Olsztyn",
+    "desc": "Serwis i naprawa drukarek oraz ploterów w Olsztynie. Diagnostyka, konserwacja i profesjonalny serwis urządzeń Xerox, Canon oraz ploterów HP. Szybka realizacja zleceń na terenie Olsztyna i woj. warmińsko-mazurskiego.",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "pc-net.pl",
+    "url": "https://pc-net.pl/serwis-ploterow-czestochowa-epson-hp-canon/",
+    "title": "Serwis ploterów HP, Canon, Oce, Epson w Częstochowie",
+    "desc": "Naprawa kserokopiarek, drukarek, laptopów, niszczarek i innych sprzętów biurowych. Serwis ploterów HP, Oce, Epson Częstochowa",
+    "h1": [
+     "H1: Serwis ploterów Częstochowa Epson HP Canon"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Wymiana głowicy drukującej",
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "profdruk.pl",
+    "url": "https://profdruk.pl/serwis-ploterow-warszawa/",
+    "title": "Serwis ploterów Warszawa",
+    "desc": "Oferujemy fachowy serwis ploterów Warszawa i okolice. Zapewniamy szybką diagnostykę, skuteczną naprawę usterek oraz kompleksową konserwację urządzeń wielkoformatowych. Obsługujemy firmy i klientów indywidualnych, gwarantując rzetelną obsługę, konkurencyjne ceny oraz możliwość zdalnego wsparcia.",
+    "h1": [
+     "H1: Serwis ploterów Warszawa – szybka naprawa ploterów Canon, HP, Epson"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "tonery-lublin.pl",
+    "url": "https://tonery-lublin.pl/serwis-ploterow",
+    "title": "Serwis Ploterów Lublin - Naprawa - Szybko i Fachowo",
+    "desc": "Serwis Ploterów - Lublin i Okolice. Profesjonalna Naprawa Ploterów: Szybko, Tanio i Profesjonalnie. ☎ 517 532 335",
+    "h1": [
+     "H1: Serwis ploterów Lublin"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Karetka / pasek / enkoder",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "pureprint.co",
+    "url": "https://pureprint.co/serwis/",
+    "title": "Serwis drukarek, kserokopiarek i ploterów Kielce | Pure Print",
+    "desc": "Naprawy i przeglądy drukarek, kserokopiarek i ploterów w Kielcach, świętokrzyskim i małopolskim — także sprzętu kupionego gdzie indziej. Wycena naprawy w ciągu 24 godzin.",
+    "h1": [
+     "H1: Serwis drukarek i kserokopiarek w Kielcach."
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Kalibracja plotera",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "infotech.olsztyn.pl",
+    "url": "https://www.infotech.olsztyn.pl/",
+    "title": "Info Tech – sprzedaż i serwis urządzeń biurowych | Olsztyn",
+    "desc": "Firma Info Tech zajmuje się sprzedażą i serwisowaniem urządzeń biurowych. W naszej ofercie znajdą Państwo kserokopiarki, drukarki i niszczarki dokumentów.",
+    "h1": [
+     "H1: Sprzedaż i serwis urządzeń biurowych – Olsztyn"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "wawanaprawa.pl",
+    "url": "https://wawanaprawa.pl/serwis-ploterow/",
+    "title": "Serwis ploterów Warszawa i cała Polska | WAWANAPRAWA",
+    "desc": "Profesjonalny serwis ploterów w Warszawie i na terenie całej Polski. Szybka diagnoza, naprawa elektroniki i mechaniki, wymiana głowic. Zadzwoń!",
+    "h1": [
+     "H1: Serwis i naprawa ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Wymiana głowicy drukującej",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "printech.pl",
+    "url": "https://printech.pl/category/serwis-naprawa-drukarek-atramentowych-laserowych-kserokopiarek-wroclaw",
+    "title": "Serwis naprawa drukarek atramentowych, laserowych, kserokopiarek Wrocław",
+    "desc": "Serwis drukarek atramentowych, serwis drukarek laserowych, serwis kserokopiarek, naprawa drukarek atramentowych, naprawa drukarek laserowych i naprawa kserokopiarek Wrocław. Oferujemy profesjonalny serwis oraz naprawę drukarek atramentowych, laserowych oraz kserokopiarek we Wrocławiu.",
+    "h1": [
+     "H1: Serwis",
+     "H1: Serwis, naprawa drukarek atramentowych, laserowych i kserokopiarek Wrocław"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "kserokopiarki-serwis.pl",
+    "url": "https://kserokopiarki-serwis.pl/sprzedaz-i-serwis-ploterow-bialystok/",
+    "title": "Sprzedaż i serwis ploterów Białystok - Sprzedaż • Wynajem • Serwis urządzeń biurowych Białystok",
+    "desc": "Szukasz nowoczesnego plotera do swojej firmy lub potrzebujesz sprawdzonego serwisu urządzenia wielkoformatowego? Oferujemy sprzedaż i serwis ploterów w",
+    "h1": [
+     "H1: Sprzedaż i serwis ploterów Białystok"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "Serwis u klienta / dojazd",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Serwis u klienta / dojazd"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "ploterykielce.pl",
+    "url": "https://www.ploterykielce.pl/",
+    "title": "Plotery Epson Kielce | Sprzedaż, wdrożenie i serwis | CHROMATIKA Serwis Drukarek Kielce",
+    "desc": "Plotery Epson w Kielcach i województwie świętokrzyskim. Sprzedaż, wdrożenie i serwis ploterów 24, 36 i 44 cale dla geodezji, architektury, projektowania i firm wykonawczych.",
+    "h1": [
+     "H1: Plotery i urządzenia wielkoformatowe"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "optima-md.pl",
+    "url": "https://optima-md.pl/tani-serwis-ploterow-czestochowa-naprawa-ploterow/",
+    "title": "Serwis ploterów Częstochowa - Optima-MD",
+    "desc": "Profesjonalny serwis ploterów w Częstochowie. Obsługa firm i klientów indywidualnych. Brak kruczków - U nas znasz cenę przed naprawą! serwis ploterów HP Canon Epson Częstochowa Zawiercie Myszków Kłobuck. Udrażnianie zaschniętych głowic w ploterach atramentowych solwentowych sublimacyjnych szybki serwis ",
+    "h1": [
+     "H1: Serwis ploterów w Optima-MD – Częstochowa"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Czyszczenie / udrażnianie głowicy",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Wymiana głowicy drukującej",
+     "Kalibracja plotera",
+     "Płukanie / naprawa układu atramentowego",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Czyszczenie / udrażnianie głowicy"
+    ],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "serwishp.pl",
+    "url": "https://serwishp.pl/cennik-serwisu-ploterow-hp.html",
+    "title": "Cennik serwisu ploterów HP",
+    "desc": "Tu sprawdzisz ceny napraw ploterów HP Design Jet. Wymieniamy części, naprawiamy elektronikę. Serwisant dojeżdża w miejsce instalacji plotera. Zadzwoń i zarezerwuj termin. Rafcom.eu",
+    "h1": [
+     "H1: Cennik serwisu ploterów HP"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Naprawa płyty głównej / zasilacza",
+    "works": [
+     "Kalibracja plotera",
+     "Płukanie / naprawa układu atramentowego",
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Naprawa płyty głównej / zasilacza"
+    ],
+    "city": []
+   },
+   {
+    "host": "aristo.com.pl",
+    "url": "https://aristo.com.pl/serwis-ploterow/",
+    "title": "Serwis ploterów w Krakowie, naprawy, konserwacje - Aristo-Com Kraków",
+    "desc": "Serwis i naprawa ploterów w Krakowie, w szczególności HP DesignJet. Diagnostyka, konserwacja i naprawy ploterów dla biur projektowych, firm i pracowni.",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "esales.com.pl",
+    "url": "https://www.esales.com.pl/oferta/uslugi-serwisowe/",
+    "title": "Serwis drukarek, urządzeń drukujących oraz ploterów | Katowice | Żory |",
+    "desc": "Usługi serwisowe urządzeń drukujących, ploterów wiekszości marek. Sharp, Brother, Lexmark, Epson. Serwis w Katowicach, Żorach.",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "abcdigital.pl",
+    "url": "https://www.abcdigital.pl/oferta-urzadzen/plotery",
+    "title": "Serwis i sprzedaż ploterów i drukarek wielkoformatowych | Szczecin",
+    "desc": "W naszej ofercie sprzedaży znajdują się plotery i drukarki umożliwiające wydruk wielkoformatowy. Wykonujemy też naprawę zepsutych urządzeń w Szczecinie.",
+    "h1": [
+     "H1: Sprzedaż i serwis ploterów w Szczecinie"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Kalibracja plotera",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "okapi24.pl",
+    "url": "https://okapi24.pl/serwis-sprzetu-drukujacego-bydgoszcz/",
+    "title": "Naprawa i serwis drukarek w Bydgoszczy - Okpai24.pl",
+    "desc": "Naprawa i serwis drukarek, ploterów, kserokopiarek w Bydgoszczy i okolic. Dojeżdżamy do klienta. Szybka naprawa drukarek Bydgoszcz tel. 501-123-147",
+    "h1": [
+     "H1: Serwis sprzętu drukującego Bydgoszcz"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "dmd-tonery.pl",
+    "url": "https://www.dmd-tonery.pl/oferta/serwis-drukarek",
+    "title": "Mobilny serwis drukarek – zakres i obszar działania | DMD Tonery",
+    "desc": "Mobilny serwis drukarek na Podkarpaciu. Diagnostyka i naprawa drukarek laserowych, atramentowych, urządzeń MFP, ploterów oraz drukarek igłowych.",
+    "h1": [
+     "H1: Serwis drukarek – Rzeszów i Podkarpacie"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Płukanie / naprawa układu atramentowego",
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "kielceserwis.pl",
+    "url": "https://kielceserwis.pl/uslugi-informatyczne/naprawa-drukarki/",
+    "title": "Naprawa drukarek | DSP Systems",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa drukarek"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "serwisdrukarekhp.pl",
+    "url": "https://www.serwisdrukarekhp.pl/?serwis-ploterow",
+    "title": "Serwis ploterów drukujących i tnących - PC-NET",
+    "desc": "serwis ploterów Częstochowa, naprawa ploterów tnących i drukujących HP, Canon, Oce",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "atler.pl",
+    "url": "https://atler.pl/serwis/",
+    "title": "Serwis Ploterów Warszawa | Serwis Roland, Liyu | Atler Plotery",
+    "desc": "",
+    "h1": [
+     "H1: Autoryzowany serwis ploterów"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "asprinters.pl",
+    "url": "https://www.asprinters.pl/serwis/serwis-pogwarancyjny-drukarek-i-kserokopiarek-krakow",
+    "title": "Pogwarancyjny serwis ploterów Epson oraz innych urządzeń",
+    "desc": "Zależy Ci na oddaniu swojego urządzenia do godnego zaufania serwisu? Sprawdź, co możemy Ci zaoferować w naszym pogwarancyjnym serwisie ploterów Epson.",
+    "h1": [
+     "H1: Pogwarancyjny serwis drukarek i kserokopiarek – Kraków"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Naprawa podawania mediów / zacięcia",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "naprawadrukarekhp.pl",
+    "url": "https://naprawadrukarekhp.pl/?serwis-ploterow",
+    "title": "Serwis ploterów - PC-NET",
+    "desc": "serwis ploterów Częstochowa, naprawa ploteró HP, Oce, Canon",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "wpc24.pl",
+    "url": "https://wpc24.pl/serwis-drukarek",
+    "title": "Naprawa, serwis drukarek i ploterów Kraków - HP, Brother, Canon, Epson - WPC24",
+    "desc": "Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych HP, Brother, Canon, Epson ✔ Serwis WPC24 Kraków i okolice ☎ 664 616 484",
+    "h1": [
+     "H1: Serwis, naprawa, dzierżawa drukarek i urządzeń wielofunkcyjnych - Kraków"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "dks.pl",
+    "url": "https://dks.pl/oddzialy/szczecin",
+    "title": "Urządzenia biurowe, kserokopiarki premium, plotery – DKS Szczecin | DKS",
+    "desc": "W DKS w zaopatrzysz się w urządzenia biurowe, kserokopiarki premium i skanery. Dostarczamy plotery wielkoformatowe i maszyny poligraficzne. Oferta na stronie.",
+    "h1": [
+     "H1: Kserokopiarki premium i urządzenia biurowe w Szczecinie"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "tuserwis.com.pl",
+    "url": "https://tuserwis.com.pl/cennik-serwisu-ploterow-hp/",
+    "title": "Cennik serwisu ploterów HP",
+    "desc": "",
+    "h1": [
+     "H1: Cennik serwisu ploterów HP"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Płukanie / naprawa układu atramentowego",
+     "Karetka / pasek / enkoder",
+     "Naprawa obcinaka",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "krakprint.pl",
+    "url": "https://krakprint.pl/pl/i/Serwis-ploterow/23",
+    "title": "Naprawa i serwis ploterów Kraków i Małopolskie - Krakprint.pl",
+    "desc": "Każdy ploter po przyjęciu jest diagnozowany. Po określeniu usterki kontaktujemy się, informujemy o szczegółach wykonania pracy. Na koniec, po zakończonym serwisie ploter jest sprawdzany, a następnie przygotowywany do wydania. Zapraszamy do kontaktu!",
+    "h1": [],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Czyszczenie / udrażnianie głowicy",
+     "Wymiana głowicy drukującej",
+     "Karetka / pasek / enkoder",
+     "Naprawa podawania mediów / zacięcia",
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd",
+     "Stacja serwisowa / wipery"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "druk-serwis.com.pl",
+    "url": "https://druk-serwis.com.pl/serwis/",
+    "title": "Serwis drukarek i ploterów – naprawa, konserwacja, wsparcie",
+    "desc": "Profesjonalny serwis drukarek i ploterów – szybka diagnoza, naprawa, przeglądy i konserwacja urządzeń wielofunkcyjnych. Obsługa firm i biur w całym kraju.",
+    "h1": [
+     "H1: Profesjonalny serwis urządzeń drukujących DRUK-SERWIS Wrocław"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "naprawaksero.pl",
+    "url": "https://naprawaksero.pl/?serwis-ploterow-czestochowa",
+    "title": "Serwis ploterów laserowych i atramentowych - PC-NET serwis Częstochowa Komputery Kserokopiarki Drukarki",
+    "desc": "serwis ploterów Częstochowa, naprawa ploterów HP, Oce, Canon",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Karetka / pasek / enkoder",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "igepa.pl",
+    "url": "https://igepa.pl/serwis-ploterow,1062,pl.html",
+    "title": "Serwis ploterów",
+    "desc": "",
+    "h1": [
+     "H1: Serwis ploterów"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Konserwacja / przegląd"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "akte.com.pl",
+    "url": "https://akte.com.pl/naprawa-i-serwis-plotterow-hp/",
+    "title": "Serwis Ploterów i Naprawa Drukarek Poznań - akte Outsourcing IT, serwis ploterów i odzyskiwanie danych - akte Outsourcing IT, serwis ploterów i odzyskiwanie danych",
+    "desc": "",
+    "h1": [
+     "H1: Serwis Ploterów"
+    ],
+    "first": "Serwis u klienta / dojazd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "xerro-polska.pl",
+    "url": "https://xerro-polska.pl/warsztat-techniczny-dla-urzadzen-wielkoformatowych-xerro-polska-serwis-katowice-i-okolice/",
+    "title": "Warsztat techniczny dla urządzeń wielkoformatowych – Xerro Polska | Serwis Katowice i okolice - Xerro-Polska",
+    "desc": "Profesjonalny warsztat techniczny Xerro Polska – serwis i naprawa ploterów, drukarek i kserokopiarek na terenie Katowic, Śląska i Częstochowy",
+    "h1": [
+     "H1: Warsztat techniczny dla urządzeń wielkoformatowych"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "",
+    "works": [
+     "Kalibracja plotera",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "xenons.info",
+    "url": "https://xenons.info/serwis/",
+    "title": "Serwis drukarek UV, ploterów i maszyn wielkoformatowych",
+    "desc": "Profesjonalny serwis drukarek UV, ploterów i maszyn wielkoformatowych. Naprawy, diagnostyka, części zamienne oraz wsparcie techniczne dla firm.",
+    "h1": [
+     "H1: Serwis ploterów i drukarek wielkoformatowych"
+    ],
+    "first": "Konserwacja / przegląd",
+    "seoFirst": "Konserwacja / przegląd",
+    "works": [
+     "Naprawa płyty głównej / zasilacza",
+     "Konserwacja / przegląd",
+     "Serwis u klienta / dojazd"
+    ],
+    "seoWorks": [
+     "Konserwacja / przegląd"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {}
+ },
+ "ranking": [
+  {
+   "work": "Konserwacja / przegląd",
+   "comp": {
+    "mention": 67,
+    "first": 49,
+    "seoFirst": 18,
+    "seo": 19,
+    "head": 11,
+    "td": 10
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "konserwacja plotera"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Serwis u klienta / dojazd",
+   "comp": {
+    "mention": 47,
+    "first": 16,
+    "seoFirst": 7,
+    "seo": 10,
+    "head": 7,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Kalibracja plotera",
+   "comp": {
+    "mention": 30,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 2,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 3,
+    "cena": 0,
+    "ex": [
+     "kalibracja plotera tnącego",
+     "kalibracja plotera laserowego",
+     "kalibracja plotera"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa płyty głównej / zasilacza",
+   "comp": {
+    "mention": 24,
+    "first": 4,
+    "seoFirst": 6,
+    "seo": 8,
+    "head": 4,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Karetka / pasek / enkoder",
+   "comp": {
+    "mention": 22,
+    "first": 1,
+    "seoFirst": 2,
+    "seo": 2,
+    "head": 0,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa podawania mediów / zacięcia",
+   "comp": {
+    "mention": 18,
+    "first": 2,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Czyszczenie / udrażnianie głowicy",
+   "comp": {
+    "mention": 12,
+    "first": 1,
+    "seoFirst": 1,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Stacja serwisowa / wipery",
+   "comp": {
+    "mention": 12,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Wymiana głowicy drukującej",
+   "comp": {
+    "mention": 11,
+    "first": 0,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 0,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 5,
+    "cena": 0,
+    "ex": [
+     "głowica do plotera hp t120",
+     "głowica do plotera hp 500",
+     "głowica do plotera hp designjet 500",
+     "głowica do plotera hp t520",
+     "głowica do plotera hp"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Naprawa obcinaka",
+   "comp": {
+    "mention": 9,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 0,
+    "td": 1
+   },
+   "ac": 0,
+   "probe": {
+    "n": 0,
+    "cena": 0,
+    "ex": []
+   },
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Płukanie / naprawa układu atramentowego",
+   "comp": {
+    "mention": 7,
+    "first": 0,
+    "seoFirst": 0,
+    "seo": 0,
+    "head": 0,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "wymiana damperów"
+    ]
+   },
+   "ads": null,
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Udrażnianie głowicy",
+   "a": "Wymiana głowicy drukującej",
+   "why": "единственная работа с подсказками (5); в прайсе «Czyszczenie / udrażnianie głowicy», 18 позиций по головке",
+   "evidence": "конкуренты 11 из 82 (первой работой — 0, в Title/Description — 3) · подсказки Google 5 (напр. «głowica do plotera hp t120», «głowica do plotera hp 500»)"
+  },
+  {
+   "w": "Naprawa karetki",
+   "a": "Karetka / pasek / enkoder",
+   "why": "22 конкурента; в прайсе «Naprawa napędu karetki» и ещё 5 позиций",
+   "evidence": "конкуренты 22 из 82 (первой работой — 1, в Title/Description — 2)"
+  },
+  {
+   "w": "Naprawa podawania mediów",
+   "a": "Naprawa podawania mediów / zacięcia",
+   "why": "18 конкурентов; в прайсе «Naprawa mechanizmu podawania roli»",
+   "evidence": "конкуренты 18 из 82 (первой работой — 2, в Title/Description — 0)"
+  },
+  {
+   "w": "Kalibracja",
+   "a": "Kalibracja plotera",
+   "why": "30 конкурентов; в прайсе 2 позиции калибровки",
+   "evidence": "конкуренты 30 из 82 (первой работой — 3, в Title/Description — 1) · подсказки Google 3 (напр. «kalibracja plotera tnącego», «kalibracja plotera laserowego»)"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Dojazd do klienta",
+   "a": "Serwis u klienta / dojazd",
+   "why": "убрано по вашему указанию",
+   "evidence": "конкуренты 47 из 82 (первой работой — 16, в Title/Description — 5)"
+  },
+  {
+   "w": "Konserwacja",
+   "why": "№1 у конкурентов (67), но без конкретики; не влезает",
+   "evidence": ""
+  }
+ ],
+ "warnings": [
+  "Подсказок почти нет; Ads по плоттерам 189 показов / 30 кликов / 3 конверсии — запрос общий, без работ"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa ploterów we Wrocławiu ✔ Udrażnianie głowicy, naprawa karetki i podawania mediów, kalibracja ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 160
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт плотерів у Вроцлаві ✔ Прочистка головки, ремонт каретки і подачі носіїв, калібрування ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 154
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт плоттеров во Вроцлаве ✔ Прочистка головки, ремонт каретки и подачи носителей, калибровка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 156
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

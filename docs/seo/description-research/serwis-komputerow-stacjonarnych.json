@@ -1,0 +1,3385 @@
+{
+ "page": "/uslugi/serwis-komputerow-stacjonarnych",
+ "name": "Компьютеры (ПК)",
+ "date": "2026-10-19",
+ "method": "Методика исследования ноутбуков: органическая выдача по всей Польше и 18 городам, подсказки Google, Google Ads (поисковые запросы), прошлогодний SEO-файл XLSX, прайс Omobonus.",
+ "sources": {
+  "organic": {
+   "engine": "DuckDuckGo (pl-pl). Google блокирует автоматический сбор — ограничение",
+   "queries": [
+    "serwis komputerów stacjonarnych cennik",
+    "serwis komputerów stacjonarnych",
+    "naprawa komputerów stacjonarnych",
+    "serwis komputerowy Kraków",
+    "serwis komputerowy Wrocław",
+    "serwis komputerowy Warszawa",
+    "serwis komputerowy Poznań",
+    "serwis komputerowy Łódź",
+    "serwis komputerowy Gdańsk",
+    "serwis komputerowy Katowice",
+    "serwis komputerowy Szczecin",
+    "serwis komputerowy Lublin",
+    "serwis komputerowy Bydgoszcz",
+    "serwis komputerowy Białystok",
+    "serwis komputerowy Toruń",
+    "serwis komputerowy Rzeszów",
+    "serwis komputerowy Olsztyn",
+    "serwis komputerowy Kielce",
+    "serwis komputerowy Opole",
+    "serwis komputerowy Gdynia",
+    "serwis komputerowy Częstochowa"
+   ],
+   "cities": [
+    "Warszawa",
+    "Kraków",
+    "Wrocław",
+    "Poznań",
+    "Gdańsk",
+    "Łódź",
+    "Katowice",
+    "Szczecin",
+    "Lublin",
+    "Bydgoszcz",
+    "Białystok",
+    "Rzeszów",
+    "Toruń",
+    "Kielce",
+    "Opole",
+    "Olsztyn",
+    "Gdynia",
+    "Częstochowa"
+   ]
+  },
+  "autocomplete": {
+   "source": "suggestqueries.google.com (hl=pl, gl=pl)",
+   "bases": [
+    "naprawa komputera ",
+    "serwis komputerowy ",
+    "naprawa komputerów stacjonarnych ",
+    "komputer stacjonarny ",
+    "serwis komputerów ",
+    "naprawa pc "
+   ],
+   "uniqueSuggestions": 408,
+   "withPrice": [
+    "naprawa komputera cena",
+    "naprawa komputera cennik",
+    "ile kosztuje naprawa ekranu komputera",
+    "naprawa komputera ile kosztuje",
+    "naprawa komputera koszt",
+    "ile kosztuje naprawa zalanego.komputera",
+    "serwis komputerowy cennik",
+    "serwis komputerowy wrocław cennik",
+    "serwis komputerowy cena",
+    "serwis komputerowy ile kosztuje",
+    "serwis komputerowy kraków cennik",
+    "serwis komputerowy warszawa cennik"
+   ],
+   "wroclaw": [
+    "naprawa komputera wrocław",
+    "serwis komputerowy wrocław",
+    "naprawa komputerów stacjonarnych wrocław",
+    "serwis komputerów wrocław",
+    "naprawa pc wroclaw",
+    "serwis komputerowy hilfe wrocław",
+    "serwis komputerowy inowrocław",
+    "serwis komputerowy inowrocław carrefour",
+    "serwis komputerowy wrocław psie pole",
+    "serwis komputerowy wrocław krzyki",
+    "serwis komputerowy wrocław cennik",
+    "serwis komputerowy wrocław grabiszyńska",
+    "serwis komputerowy wrocław najwyżej oceniane",
+    "serwis komputerowy wrocław gaj",
+    "serwis komputerowy wrocław otwarte teraz"
+   ],
+   "note": "число вариантов подсказок — не частота поиска"
+  },
+  "probes": {
+   "Czyszczenie komputera / układu chłodzenia": {
+    "seeds": [
+     "czyszczenie komputera",
+     "czyszczenie komputera z kurzu",
+     "wymiana pasty termoprzewodzącej komputer"
+    ],
+    "n": 21,
+    "nRaw": 25,
+    "cena": 6,
+    "wroc": 1,
+    "ex": [
+     "czyszczenie komputera",
+     "czyszczenie komputera wrocław",
+     "czyszczenie komputera z kurzu",
+     "czyszczenie komputera cena",
+     "czyszczenie komputera z kurzu cena",
+     "czyszczenie komputera online",
+     "czyszczenie komputera i wymiana pasty cena",
+     "czyszczenie komputera z kurzu serwis",
+     "czyszczenie komputera z kurzu warszawa",
+     "czyszczenie komputera z kurzu krakow"
+    ],
+    "all": [
+     "czyszczenie komputera",
+     "czyszczenie komputera wrocław",
+     "czyszczenie komputera z kurzu",
+     "czyszczenie komputera cena",
+     "czyszczenie komputera z kurzu cena",
+     "czyszczenie komputera online",
+     "czyszczenie komputera i wymiana pasty cena",
+     "czyszczenie komputera z kurzu serwis",
+     "czyszczenie komputera z kurzu warszawa",
+     "czyszczenie komputera z kurzu krakow",
+     "czyszczenie komputera z kurzu poznan",
+     "czyszczenie komputera z kurzu szczecin",
+     "czy czyszczenie komputera z kurzu pomaga",
+     "co daje czyszczenie komputera z kurzu",
+     "ile trwa czyszczenie komputera z kurzu",
+     "wymiana pasty termoprzewodzącej w komputerze",
+     "wymiana pasty termoprzewodzącej w komputerze cena",
+     "wymiana pasty termoprzewodzącej w komputerze stacjonarnym",
+     "wymiana pasty termoprzewodzącej w komputerze stacjonarnym cena",
+     "czy wymiana pasty termoprzewodzącej przyspieszy komputer",
+     "ile kosztuje wymiana pasty termoprzewodzącej i czyszczenie komputera"
+    ],
+    "dropped": [
+     [
+      "czyszczenie komputera windows 11",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "czyszczenie komputera program",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "czyszczenie komputera windows 10",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "czyszczenie komputera z niepotrzebnych plików",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Instalacja / reinstalacja systemu Windows": {
+    "seeds": [
+     "instalacja windows",
+     "reinstalacja windows",
+     "formatowanie komputera"
+    ],
+    "n": 27,
+    "nRaw": 33,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "instalacja windows 11",
+     "instalacja windows 11 bez konta microsoft",
+     "instalacja windows 11 bez internetu",
+     "instalacja windows 10",
+     "instalacja windows 11 na starym komputerze",
+     "instalacja windows 10 bez konta microsoft",
+     "instalacja windows",
+     "instalacja windows server 2025",
+     "instalacja windows 11 z usb",
+     "reinstalacja windows 11"
+    ],
+    "all": [
+     "instalacja windows 11",
+     "instalacja windows 11 bez konta microsoft",
+     "instalacja windows 11 bez internetu",
+     "instalacja windows 10",
+     "instalacja windows 11 na starym komputerze",
+     "instalacja windows 10 bez konta microsoft",
+     "instalacja windows",
+     "instalacja windows server 2025",
+     "instalacja windows 11 z usb",
+     "reinstalacja windows 11",
+     "reinstalacja windows 10",
+     "reinstalacja windows 11 bez utraty danych",
+     "reinstalacja windows",
+     "reinstalacja windows 10 bez utraty danych",
+     "reinstalacja windows 7 bez płyty",
+     "reinstalacja windows 11 bez utraty aplikacji",
+     "reinstalacja windows 7",
+     "reinstalacja windows 11 z zachowaniem danych",
+     "reinstalacja windows 10 bez płyty",
+     "formatowanie komputera",
+     "formatowanie komputera windows 11",
+     "formatowanie komputera windows 10",
+     "formatowanie komputera bez usuwania systemu",
+     "formatowanie komputera windows 7",
+     "formatowanie komputera z biosu",
+     "formatowanie komputera bez usuwania windowsa",
+     "formatowanie komputera cena"
+    ],
+    "dropped": [
+     [
+      "instalacja windows 11 z pendrive",
+      "другое устройство/тема"
+     ],
+     [
+      "instalacja windowsa z pendrive",
+      "другое устройство/тема"
+     ],
+     [
+      "instalacja windows 10 z pendrive",
+      "другое устройство/тема"
+     ],
+     [
+      "reinstalacja windows 11 na laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "formatowanie komputera co to",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "formatowanie komputera z pendrive",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Odzyskiwanie danych": {
+    "seeds": [
+     "odzyskiwanie danych",
+     "odzyskiwanie danych z dysku"
+    ],
+    "n": 13,
+    "nRaw": 17,
+    "cena": 3,
+    "wroc": 2,
+    "ex": [
+     "odzyskiwanie danych z dysku",
+     "odzyskiwanie danych wrocław",
+     "odzyskiwanie danych z dysku wrocław",
+     "odzyskiwanie danych",
+     "odzyskiwanie danych z dysku ssd",
+     "odzyskiwanie danych z dysku cena",
+     "odzyskiwanie danych z dysku hdd",
+     "odzyskiwanie danych z dysku zewnętrznego",
+     "odzyskiwanie danych z dysku program",
+     "odzyskiwanie danych z dysku twardego"
+    ],
+    "all": [
+     "odzyskiwanie danych z dysku",
+     "odzyskiwanie danych wrocław",
+     "odzyskiwanie danych z dysku wrocław",
+     "odzyskiwanie danych",
+     "odzyskiwanie danych z dysku ssd",
+     "odzyskiwanie danych z dysku cena",
+     "odzyskiwanie danych z dysku hdd",
+     "odzyskiwanie danych z dysku zewnętrznego",
+     "odzyskiwanie danych z dysku program",
+     "odzyskiwanie danych z dysku twardego",
+     "odzyskiwanie danych z dysku hdd cena",
+     "odzyskiwanie danych z dysku ssd cena",
+     "odzyskiwanie danych z dysku m2"
+    ],
+    "dropped": [
+     [
+      "odzyskiwanie danych z telefonu",
+      "другое устройство/тема"
+     ],
+     [
+      "odzyskiwanie danych z telefonu wrocław",
+      "другое устройство/тема"
+     ],
+     [
+      "odzyskiwanie danych z karty sd",
+      "другое устройство/тема"
+     ],
+     [
+      "odzyskiwanie danych z pendrive",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Wymiana dysku / montaż SSD": {
+    "seeds": [
+     "wymiana dysku na ssd",
+     "montaż dysku ssd",
+     "wymiana dysku w komputerze"
+    ],
+    "n": 16,
+    "nRaw": 27,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "wymiana dysku na ssd",
+     "wymiana dysku na ssd w komputerze stacjonarnym",
+     "montaż dysku ssd",
+     "montaż dysku ssd m2",
+     "montaż dysku ssd w komputerze stacjonarnym",
+     "montaż dysku ssd sata",
+     "montaż dysku ssd w pc",
+     "montaż dysku ssd sata 3",
+     "montaż dysku ssd pcie",
+     "wymiana dysku w komputerze"
+    ],
+    "all": [
+     "wymiana dysku na ssd",
+     "wymiana dysku na ssd w komputerze stacjonarnym",
+     "montaż dysku ssd",
+     "montaż dysku ssd m2",
+     "montaż dysku ssd w komputerze stacjonarnym",
+     "montaż dysku ssd sata",
+     "montaż dysku ssd w pc",
+     "montaż dysku ssd sata 3",
+     "montaż dysku ssd pcie",
+     "wymiana dysku w komputerze",
+     "wymiana dysku w komputerze cena",
+     "wymiana dysku w komputerze stacjonarnym",
+     "wymiana dysku ssd w komputerze",
+     "wymiana dysku twardego w komputerze",
+     "ile trwa wymiana dysku w komputerze",
+     "ile kosztuje wymiana dysku ssd w komputerze"
+    ],
+    "dropped": [
+     [
+      "wymiana dysku na ssd w laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana dysku na ssd w ps4",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana dysku na ssd w laptopie instalacja windows",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana dysku na ssd xbox one s",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana dysku na ssd w xbox one",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana dysku na ssd xbox one x",
+      "другое устройство/тема"
+     ],
+     [
+      "wymiana dysku na ssd w laptopie cena",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana dysku ssd na większy w laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "montaż dysku ssd ps5",
+      "другое устройство/тема"
+     ],
+     [
+      "montaż dysku ssd w laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "montaż dysku ssd m2 w laptopie",
+      "другой тип устройства для этой страницы"
+     ]
+    ]
+   },
+   "Modernizacja / rozbudowa komputera": {
+    "seeds": [
+     "modernizacja komputera",
+     "rozbudowa komputera",
+     "wymiana karty graficznej"
+    ],
+    "n": 13,
+    "nRaw": 24,
+    "cena": 1,
+    "wroc": 0,
+    "ex": [
+     "modernizacja komputera",
+     "modernizacja komputera stacjonarnego",
+     "modernizacja komputera pc",
+     "modernizacja komputera kraków",
+     "modernizacja komputera warszawa",
+     "modernizacja starego komputera",
+     "ile kosztuje modernizacja komputera",
+     "rozbudowa komputera",
+     "rozbudowa komputera stacjonarnego",
+     "wymiana karty graficznej w komputerze"
+    ],
+    "all": [
+     "modernizacja komputera",
+     "modernizacja komputera stacjonarnego",
+     "modernizacja komputera pc",
+     "modernizacja komputera kraków",
+     "modernizacja komputera warszawa",
+     "modernizacja starego komputera",
+     "ile kosztuje modernizacja komputera",
+     "rozbudowa komputera",
+     "rozbudowa komputera stacjonarnego",
+     "wymiana karty graficznej w komputerze",
+     "wymiana karty graficznej",
+     "wymiana karty graficznej sterowniki",
+     "wymiana karty graficznej w komputerze stacjonarnym"
+    ],
+    "dropped": [
+     [
+      "modernizacja komputera co to",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "modernizacja komputera jaki paragraf",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "x kom modernizacja komputera",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "rozbudowa komputera w praktyce",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "rozbudowa i naprawa komputera kompendium",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "wymiana karty graficznej w laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana karty graficznej w laptopie koszt",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana karty graficznej krok po kroku",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "wymiana karty graficznej w laptopie na mocniejszą",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana karty graficznej w laptopie acer nitro 5",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "wymiana karty graficznej w laptopie lenovo",
+      "другой тип устройства для этой страницы"
+     ]
+    ]
+   },
+   "Składanie komputera": {
+    "seeds": [
+     "składanie komputera",
+     "składanie komputerów"
+    ],
+    "n": 14,
+    "nRaw": 22,
+    "cena": 1,
+    "wroc": 2,
+    "ex": [
+     "składanie komputera",
+     "składanie komputera wrocław",
+     "składanie komputera online",
+     "składanie komputera gamingowego",
+     "składanie komputera na zamówienie",
+     "składanie komputera cena",
+     "składanie komputerów wrocław",
+     "składanie komputerów",
+     "składanie komputerów gamingowych",
+     "składanie komputerów na zamówienie"
+    ],
+    "all": [
+     "składanie komputera",
+     "składanie komputera wrocław",
+     "składanie komputera online",
+     "składanie komputera gamingowego",
+     "składanie komputera na zamówienie",
+     "składanie komputera cena",
+     "składanie komputerów wrocław",
+     "składanie komputerów",
+     "składanie komputerów gamingowych",
+     "składanie komputerów na zamówienie",
+     "składanie komputerów kraków",
+     "składanie komputerów warszawa",
+     "składanie komputerów katowice",
+     "składanie komputerów szczecin"
+    ],
+    "dropped": [
+     [
+      "składanie komputera x kom",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputera krok po kroku",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputera komputronik",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputera morele",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputera youtube",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputerów praca",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputerów wrocław opinie",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "składanie komputerów olx",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ]
+    ]
+   },
+   "Naprawa płyty głównej": {
+    "seeds": [
+     "naprawa płyty głównej"
+    ],
+    "n": 1,
+    "nRaw": 11,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "naprawa płyty głównej"
+    ],
+    "all": [
+     "naprawa płyty głównej"
+    ],
+    "dropped": [
+     [
+      "naprawa płyty głównej klimatyzacji",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej immergas",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej w telefonie",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej telewizora",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej junkers",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej viessmann",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej samsung s22",
+      "другое устройство/тема"
+     ],
+     [
+      "naprawa płyty głównej w laptopie",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "naprawa płyty głównej w laptopie cena",
+      "другой тип устройства для этой страницы"
+     ],
+     [
+      "naprawa płyty głównej pieca gazowego",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Naprawa / wymiana zasilacza": {
+    "seeds": [
+     "wymiana zasilacza w komputerze",
+     "naprawa zasilacza komputerowego"
+    ],
+    "n": 7,
+    "nRaw": 7,
+    "cena": 2,
+    "wroc": 0,
+    "ex": [
+     "wymiana zasilacza w komputerze",
+     "wymiana zasilacza w komputerze cena",
+     "wymiana zasilacza w komputerze stacjonarnym",
+     "czy wymiana zasilacza w komputerze jest trudna",
+     "ile trwa wymiana zasilacza w komputerze",
+     "naprawa zasilacza komputerowego",
+     "naprawa zasilacza komputerowego cena"
+    ],
+    "all": [
+     "wymiana zasilacza w komputerze",
+     "wymiana zasilacza w komputerze cena",
+     "wymiana zasilacza w komputerze stacjonarnym",
+     "czy wymiana zasilacza w komputerze jest trudna",
+     "ile trwa wymiana zasilacza w komputerze",
+     "naprawa zasilacza komputerowego",
+     "naprawa zasilacza komputerowego cena"
+    ],
+    "dropped": []
+   },
+   "Usuwanie wirusów": {
+    "seeds": [
+     "usuwanie wirusów"
+    ],
+    "n": 3,
+    "nRaw": 11,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "usuwanie wirusów",
+     "usuwanie wirusów z komputera",
+     "usuwanie wirusów online"
+    ],
+    "all": [
+     "usuwanie wirusów",
+     "usuwanie wirusów z komputera",
+     "usuwanie wirusów online"
+    ],
+    "dropped": [
+     [
+      "usuwanie wirusów z telefonu",
+      "другое устройство/тема"
+     ],
+     [
+      "usuwanie wirusów z telefonu android",
+      "другое устройство/тема"
+     ],
+     [
+      "usuwanie wirusów wordpress",
+      "другое устройство/тема"
+     ],
+     [
+      "usuwanie wirusów z telefonu za darmo",
+      "другое устройство/тема"
+     ],
+     [
+      "usuwanie wirusów iphone",
+      "другое устройство/тема"
+     ],
+     [
+      "usuwanie wirusów z komputera za darmo",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "usuwanie wirusów za darmo",
+      "не заказ услуги (обучение, покупка, вакансия, «сделай сам»)"
+     ],
+     [
+      "usuwanie wirusow android",
+      "другое устройство/тема"
+     ]
+    ]
+   },
+   "Komputer nie włącza się / brak obrazu": {
+    "seeds": [
+     "komputer nie włącza się",
+     "komputer nie uruchamia się"
+    ],
+    "n": 20,
+    "nRaw": 20,
+    "cena": 0,
+    "wroc": 0,
+    "ex": [
+     "komputer nie włącza się",
+     "komputer nie włącza się wentylatory chodzą",
+     "komputer nie włącza się po aktualizacji",
+     "komputer nie włącza się za pierwszym razem",
+     "komputer nie włącza się zasilacz sprawny",
+     "komputer nie włącza się przyciskiem",
+     "komputer nie włącza się z dwoma kośćmi ram",
+     "komputer nie włącza się i piszczy",
+     "komputer nie włącza się po złożeniu",
+     "komputer nie włącza się czarny ekran"
+    ],
+    "all": [
+     "komputer nie włącza się",
+     "komputer nie włącza się wentylatory chodzą",
+     "komputer nie włącza się po aktualizacji",
+     "komputer nie włącza się za pierwszym razem",
+     "komputer nie włącza się zasilacz sprawny",
+     "komputer nie włącza się przyciskiem",
+     "komputer nie włącza się z dwoma kośćmi ram",
+     "komputer nie włącza się i piszczy",
+     "komputer nie włącza się po złożeniu",
+     "komputer nie włącza się czarny ekran",
+     "komputer nie uruchamia się",
+     "komputer nie uruchamia się ponownie",
+     "komputer nie uruchamia się brak sygnału biosu",
+     "komputer nie uruchamia się po aktualizacji",
+     "komputer nie uruchamia się za pierwszym razem",
+     "komputer nie uruchamia się miga czerwona dioda",
+     "komputer nie uruchamia się czarny ekran",
+     "komputer nie uruchamia się po uśpieniu",
+     "komputer nie uruchamia się w trybie awaryjnym",
+     "komputer nie uruchamia się po odłączeniu zasilania"
+    ],
+    "dropped": []
+   }
+  },
+  "googleAds": {
+   "file": "Raport wyszukiwanych haseł.csv",
+   "terms": 581,
+   "impressions": 12853,
+   "clicks": 938,
+   "conversions": 308.08,
+   "top": [
+    {
+     "term": "serwis komputerowy wrocław",
+     "impr": 2894,
+     "clicks": 260,
+     "conv": 64.46,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis komputerowy",
+     "impr": 2395,
+     "clicks": 107,
+     "conv": 57,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa komputerów wrocław",
+     "impr": 1163,
+     "clicks": 103,
+     "conv": 40.99,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa komputerów",
+     "impr": 623,
+     "clicks": 29,
+     "conv": 21,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "pogotowie komputerowe wrocław",
+     "impr": 412,
+     "clicks": 40,
+     "conv": 6.5,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis komputerowy wroclaw",
+     "impr": 383,
+     "clicks": 29,
+     "conv": 10,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis komputerów wrocław",
+     "impr": 211,
+     "clicks": 16,
+     "conv": 4,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis komputerowy near me",
+     "impr": 189,
+     "clicks": 4,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "pogotowie komputerowe",
+     "impr": 181,
+     "clicks": 14,
+     "conv": 1,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "naprawa komputerow",
+     "impr": 181,
+     "clicks": 11,
+     "conv": 12,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "wrocław serwis komputerowy",
+     "impr": 160,
+     "clicks": 12,
+     "conv": 5,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "komputerowy",
+     "impr": 156,
+     "clicks": 6,
+     "conv": 2,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "komputery",
+     "impr": 151,
+     "clicks": 6,
+     "conv": 0,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "składanie komputerów wrocław",
+     "impr": 141,
+     "clicks": 17,
+     "conv": 2,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    },
+    {
+     "term": "serwis komputerów",
+     "impr": 141,
+     "clicks": 11,
+     "conv": 8.13,
+     "camps": [
+      "1 [PMAX] Wszystko"
+     ]
+    }
+   ],
+   "note": "показы рекламы ≠ объём поиска"
+  },
+  "xlsx": {
+   "keywordPlanner": [
+    {
+     "s": "czyszczenie komputerów",
+     "avg": 5000,
+     "comp": "Высокий"
+    },
+    {
+     "s": "naprawa komputera",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "komputer naprawa",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "naprawa komputera sosnowiec",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "serwisowanie komputera",
+     "avg": 500,
+     "comp": "Низкий"
+    },
+    {
+     "s": "cennik napraw komputerowych",
+     "avg": 50,
+     "comp": "Неизвестно"
+    },
+    {
+     "s": "cennik napraw komputerów",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "czyszczenie komputera cena",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "diagnostyka i naprawa komputera",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "komputronik naprawa komputera",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "konserwacja komputerów",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "koszt czyszczenia komputera",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "koszt naprawy komputera",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "kosztorys naprawy komputera",
+     "avg": 50,
+     "comp": "Низкий"
+    },
+    {
+     "s": "kosztorys naprawy komputera stacjonarnego",
+     "avg": 50,
+     "comp": "Низкий"
+    }
+   ],
+   "phrases": 338
+  }
+ },
+ "competitors": {
+  "relevant": 76,
+  "checked": 84,
+  "candidates": 295,
+  "note": "без агрегаторов, каталогов, производителей, статей и дублей доменов",
+  "list": [
+   {
+    "host": "naprawek.pl",
+    "url": "https://www.naprawek.pl/serwis-komputerowy",
+    "title": "Serwis Komputerowy | Cała Polska",
+    "desc": "Naprawa Komputerów w całej Polsce - Laptopy | Komputery stacjonarne | Pogotowie komputerowe. Sprawdź Opinie, Zapytaj o Cenę i Zamów Usługę 24h!\n",
+    "h1": [
+     "H1: Serwis Komputerowy"
+    ],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kraków",
+     "Wrocław",
+     "Warszawa",
+     "Poznań"
+    ]
+   },
+   {
+    "host": "kamlegit.pl",
+    "url": "https://www.kamlegit.pl/serwis-komputerowy/lodz/",
+    "title": "Naprawa/Serwis komputerów Łódź - KAMLEGIT.PL",
+    "desc": "Profesjonalny serwis komputerowy Łódź. Naprawa komputerów Łódź, Serwis laptopów Łódź, Usługi informatyczne oraz informatyk Łódź.",
+    "h1": [
+     "H1: Łódź"
+    ],
+    "first": "Wymiana dysku / montaż SSD",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź",
+     "Katowice",
+     "Białystok",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "itech-serwis.pl",
+    "url": "https://itech-serwis.pl/serwis-komputerowy-wroclaw/",
+    "title": "Serwis Komputerowy All-in-One | Wrocław iTECH",
+    "desc": "Profesjonalny serwis komputerów stacjonarnych, All-in-One oraz Notebooków we Wrocławiu - iTECH. Naprawa, modernizacja i wsparcie techniczne. Sprawdź naszą ofertę i odzyskaj pełną wydajność swojego PC!",
+    "h1": [
+     "H1: 783-929-915",
+     "H1: Profesjonalny Serwis Komputerowy Wrocław | Naprawa Komputerów iTECH"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwis-krzycka.pl",
+    "url": "https://www.serwis-krzycka.pl/oferta/naprawa-komputerow-stacjonarnych",
+    "title": "",
+    "desc": "",
+    "h1": [
+     "H1: Naprawa komputerów stacjonarnych"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "openservice.waw.pl",
+    "url": "https://www.openservice.waw.pl/",
+    "title": "OpenService Pogotowie Komputerowe Warszawa, Serwis i naprawa komputerów PC",
+    "desc": "Pogotowie komputerowe - Warszawa, serwis komputerowy i naprawa komputerów - dojazd 24/7! Informatyk Szybko i Tanio! Dzwoń: 609-804-366",
+    "h1": [
+     "H1: Informatyk w Warszawie"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "aviary.pl",
+    "url": "https://aviary.pl/serwisy-komputerowe/bydgoszcz/",
+    "title": "Serwis komputerowy Bydgoszcz — naprawa laptopów i komputerów 2025",
+    "desc": "Szukasz sprawdzonego serwisu komputerowego w Bydgoszczy? Oto lista polecanych punktów zajmujących się naprawą laptopów, komputerów stacjonarnych, tabletów i",
+    "h1": [
+     "H1: Serwis komputerowy Bydgoszcz — naprawa laptopów i komputerów 2025"
+    ],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz",
+     "Toruń",
+     "Kielce"
+    ]
+   },
+   {
+    "host": "skylerit.pl",
+    "url": "https://www.skylerit.pl/serwis-komputerow-pc/",
+    "title": "Naprawa komputerów Wrocław – serwis komputerów stacjonarnych PC | Skyler IT",
+    "desc": "Usługi serwisowe komputerów PC m.in. instalacja systemu Microsoft Windows, naprawa podzespołów, odzyskiwanie danych czy usuwanie wirusów i zbędnego oprogramowania.",
+    "h1": [
+     "H1: Serwis Komputerów PC Wrocław"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Instalacja / reinstalacja systemu Windows",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "joker.wroc.pl",
+    "url": "https://joker.wroc.pl/serwis/naprawa-komputerow/",
+    "title": "Naprawa komputerów stacjonarnych PC - Wrocław | Joker",
+    "desc": "Joker to sklep komputerowy we Wrocławiu z ponad 20-letnim doświadczeniem w branży. Oferujemy sprzedaż i serwis komputerów. Sprawdź naszą ofertę dziś!",
+    "h1": [
+     "H1: Naprawa komputerów – Wrocław"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "nano-serwis.pl",
+    "url": "https://nano-serwis.pl/uslugi/naprawa-komputerow-stacjonarnych/",
+    "title": "Serwis i naprawa komputerów stacjonarnych - Wrocław | Nano-Serwis",
+    "desc": "Zajmujemy się naprawą komputerów stacjonarnych. Gwarantujemy wysoką skuteczność naprawy przy konkurencyjnej cenie. Realizujemy naprawy wszystkich modułów.",
+    "h1": [
+     "H1: Naprawa komputerów stacjonarnych Wrocław"
+    ],
+    "first": "BIOS / UEFI",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "naprawa-komputerow-laptopow.pl",
+    "url": "https://naprawa-komputerow-laptopow.pl/serwis-komputerowy-katowice/",
+    "title": "Serwis komputerowy Katowice – naprawa-komputerow-laptopow.pl",
+    "desc": "",
+    "h1": [
+     "H1: Serwis komputerowy Katowice"
+    ],
+    "first": "Usuwanie wirusów",
+    "seoFirst": "",
+    "works": [
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice",
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "slc.com.pl",
+    "url": "https://slc.com.pl/",
+    "title": "Sklep komputerowy Olsztyn - sprzęt - hurtownia | Sklep online SL Computer",
+    "desc": "Sklep komputerowy SL Computer Olsztyn - w naszej ofercie ➤ komputery gamingowe ⚡ laptopy poleasingowe ⚡ podzespoły PC ⚡ Sprawdź sam już teraz! ✔",
+    "h1": [],
+    "first": "Wymiana dysku / montaż SSD",
+    "seoFirst": "Wymiana dysku / montaż SSD",
+    "works": [
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "seoWorks": [
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "krainakomputerow.pl",
+    "url": "https://krainakomputerow.pl/",
+    "title": "Zaufany serwis komputerów Katowice - Kraina Komputerów",
+    "desc": "Kraina Komputerów - serwis laptopów i komputerów PC: niskie ceny, Katowice, komputery, strony www, odzyskiwanie danych, ☎ 513 747 500",
+    "h1": [
+     "H1: Kraina Komputerów"
+    ],
+    "first": "Naprawa / wymiana karty graficznej",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "pcsmart.pl",
+    "url": "https://pcsmart.pl/",
+    "title": "Serwis komputerowy Gdańsk 24/7 – laptopy i PC | PCSmart",
+    "desc": "Serwis laptopów i komputerów w Gdańsku 24/7. Wycena przed naprawą, gwarancja 3–12 miesięcy i dojazd w Trójmieście po uzgodnieniu terminu.",
+    "h1": [
+     "H1: Serwis komputerowy Gdańsk 24/7"
+    ],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "Czyszczenie komputera / układu chłodzenia",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Naprawa płyty głównej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Naprawa płyty głównej"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "iviterserwis.pl",
+    "url": "https://iviterserwis.pl/serwis-komputerowy/serwis-naprawa-komputerow-stacjonarnych",
+    "title": "Serwis i naprawa komputerów stacjonarnych | Warszawa | Cała Polska",
+    "desc": "",
+    "h1": [
+     "H1: Serwis i naprawa komputerów stacjonarnych"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "finaltech.pl",
+    "url": "https://www.finaltech.pl/",
+    "title": "☝ Naprawa laptopów Bydgoszcz, konserwacja, serwis komputerów i notebooków m.in. Acer ☝ - Finaltech.pl",
+    "desc": "Naprawa laptopów Bydgoszcz ✅ serwis komputerów i notebooków Apple, Acer, HP i innych ✅ Powierz naprawę laptopa w ręce specjalistów! Serwisujemy także monitory, wykonujemy odzyskiwanie danych, instalację sieci i inne usługi informatyczne! ",
+    "h1": [
+     "H1: Serwis laptopów i komputerów Bydgoszcz - naprawa sprzętu w rękach specjalistów !"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Naprawa / wymiana zasilacza"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Bydgoszcz",
+     "Toruń"
+    ]
+   },
+   {
+    "host": "drlaptop.pl",
+    "url": "https://drlaptop.pl/",
+    "title": "Naprawa Komputerów i Laptopów - Gdańsk, Gdynia",
+    "desc": "drLAPTOP ⭐ Profesjonalny serwis komputerowy w Gdańsku Gdyni i Redzie 💻 Naprawa laptopów i komputerów w Gdańsku szybko i skutecznie ✔️ Sprawdź Teraz!",
+    "h1": [
+     "H1: Serwis komputerowy Gdańsk - Gdynia - Reda"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Gdańsk",
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "dillcom.pl",
+    "url": "https://dillcom.pl/serwis/naprawa-komputerow-warszawa/",
+    "title": "Naprawa Komputerów Warszawa | Serwis Komputerowy Warszawa | Dillcom",
+    "desc": "Serwis Komputerowy Warszawa - fachowa pomoc dla Twojego sprzętu. Naprawa komputerów Warszawa - profesjonalizm i wieloletnie doświadczenie!",
+    "h1": [
+     "H1: Naprawa komputerów Warszawa",
+     "H1: Naprawa komputerów Warszawa – skuteczna diagnoza, szybka naprawa"
+    ],
+    "first": "Usuwanie wirusów",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "x-connect.pl",
+    "url": "https://x-connect.pl/naprawa-i-modernizacja-komputerow-stacjonarnych/",
+    "title": "Naprawa i modernizacja komputerów stacjonarnych | X-Connect Serwis komputerowy Raszyn Warszawa",
+    "desc": "Potrzebujesz profesjonalnego wsparcia dla swojego komputera stacjonarnego? Nasza firma oferuje kompleksowe usługi naprawy, modernizacji i serwisu PC, abyś mógł cieszyć się płynną pracą swojego sprzętu. Naprawa Komputerów Stacjonarnych: Diagnoza Problemów: Nasi doświadczeni technicy przeprowadzą dokładną diagnozę, aby z",
+    "h1": [
+     "H1: Naprawa i modernizacja komputerów stacjonarnych"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": []
+   },
+   {
+    "host": "pokomp.pl",
+    "url": "https://pokomp.pl/serwis-komputerow-stacjonarnych/",
+    "title": "Serwis Komputerów Stacjonarnych - Warszawa",
+    "desc": "Najlepszy Serwis Komputerów PC w Warszawie. Najwyższa jakość, konkurencyjne ceny, gwarancja zadowolenia. Twój \"składak\" padł? Zadzwoń do nas!",
+    "h1": [
+     "H1: Serwis Komputerów Stacjonarnych",
+     "H1: Serwis komputerów stacjonarnych"
+    ],
+    "first": "Komputer nie włącza się / brak obrazu",
+    "seoFirst": "Komputer nie włącza się / brak obrazu",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "city": []
+   },
+   {
+    "host": "naprawowo.pl",
+    "url": "https://naprawowo.pl/serwis-komputerow-laptopow-torun/",
+    "title": "Naprawa komputerów i laptopów Toruń - serwis",
+    "desc": "",
+    "h1": [
+     "H1: Serwis komputerów i laptopów Toruń"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń",
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "pogotowiekomputerowe.wroc.pl",
+    "url": "https://pogotowiekomputerowe.wroc.pl/",
+    "title": "Serwis komputerowy Wrocław, naprawa laptopów i komputerów Wrocław, pogotowie komputerowe Wrocław",
+    "desc": "Serwis komputerów stacjonarnych i serwis laptopów we Wrocławiu ✅ Naprawiamy komputery, laptopy i konsole. Z opcją bezpłatnego dojazdu do klienta ✅ Skorzystaj z naszego serwisu laptopów i komputerów we Wrocławiu ✅ Zapraszamy!",
+    "h1": [
+     "H1: Serwis komputerowy Wrocław – naprawa laptopów, komputerów i konsol"
+    ],
+    "first": "Komputer nie włącza się / brak obrazu",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwiskomputerowygdansk.pl",
+    "url": "https://serwiskomputerowygdansk.pl/",
+    "title": "O firmie - SERWISKOMPUTEROWYGDANSK.PL",
+    "desc": "Witam na stronie SERWISKOMPUTEROWYGDANSK.PL. Twój laptop odmówił posłuszeństwa? Komputer stacjonarny działa wolniej niż zwykle, a może potrzebujesz",
+    "h1": [],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Usuwanie wirusów",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "dos-lublin.pl",
+    "url": "https://dos-lublin.pl/",
+    "title": "Sklep i Serwis Komputerowy Lublin DOS - Diagnostyka Naprawa",
+    "desc": "Serwis i Sklep Komputerowy Lublin. Naprawa komputera i laptopa. Serwis po uszkodzeniu mechanicznym czy zalaniu. Instalacja i konfiguracja komputera. Sprzedaż.",
+    "h1": [],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "clearpc.pl",
+    "url": "https://clearpc.pl/",
+    "title": "Serwis komputerowy Białystok: Clear PC naprawa laptopów",
+    "desc": "Serwis komputerowy w Białymstoku. Szybka naprawa i niskie ceny. Naprawa laptopów, komputerów stacjonarnych i monitorów. Usługi informatyczne.",
+    "h1": [
+     "H1: Serwis komputerowy Białystok: Clear PC"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "Naprawa płyty głównej",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej"
+    ],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "serwistorun.pl",
+    "url": "https://serwistorun.pl/",
+    "title": "Serwis Komputerowy Toruń. Naprawy komputerów i laptopów. Wsparcie informatyczne na terenie Torunia.",
+    "desc": "Serwis komputerowy w Toruniu. Zajmujemy się naprawami komputerów i laptopów. Oferujemy pomoc dla użytkowników domowych i firm. Zapraszamy do kontaktu.",
+    "h1": [],
+    "first": "Instalacja / reinstalacja systemu Windows",
+    "seoFirst": "",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "zefix.pl",
+    "url": "https://zefix.pl/",
+    "title": "Serwis komputerowy Olsztyn, naprawa laptopów, komputerów Olsztyn | ZEFIX®",
+    "desc": "Serwis Komputerowy Olsztyn ZEFIX ✆511-511-365 | Naprawiamy ✓Komputery, ✓Laptopy, ✓Drukarki, ✓Tablety, ✓Monitory, ✓Odzyskiwanie danych | Niskie ceny, szybka diagnoza i naprawa usterki, zapraszamy do kontaktu!",
+    "h1": [
+     "H1: Serwis komputerów Olsztyn"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "knskielce.pl",
+    "url": "https://knskielce.pl/",
+    "title": "SERWIS KOMPUTEROWY KIELCE - Naprawa komputerów i laptopów",
+    "desc": "Najlepszy serwis komputerowy Kielce - naprawa komputerów, laptopów, drukarek, tabletów, sieci komputerowe, obsługa informatyczna firm",
+    "h1": [
+     "H1: USŁUGI REKLAMOWE",
+     "H1: ROBOTY ENERGETYCZNE I TELETECHNICZNE"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "",
+    "works": [
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "servecom.pl",
+    "url": "https://www.servecom.pl/serwis-komputerowy",
+    "title": "Serwis komputerowy - SERVECOM Częstochowa",
+    "desc": "Serwis komputerowy w Częstochowie - Servecom.pl oferujemy naprawy pogwarancyjne komputerów PC, tabletów oraz laptopów m.in. Acer, Asus, Apple, Compaq, Dell, Toshiba, HP, Packard Bell, CA, Fujitsu-Siemens, IBM (Lenovo), Sony Vaio i innych.",
+    "h1": [
+     "H1: Usługi serwisowe"
+    ],
+    "first": "Naprawa / wymiana zasilacza",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "naprawakomputera.com",
+    "url": "https://www.naprawakomputera.com/",
+    "title": "Serwis komputerowy Warszawa | Serwis komputerów i laptopów Warszawa. Szybkie i tanie naprawy u Klienta na terenie Warszawy i okolic. Tel. 502 372 348",
+    "desc": "",
+    "h1": [
+     "H1: Serwis komputerowy Warszawa",
+     "H1: Serwis komputerowy Warszawa, tel. 502 372 348"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "",
+    "works": [
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "serwislodz.pl",
+    "url": "https://serwislodz.pl/",
+    "title": "Serwis komputerowy i naprawa laptopów Łódź: 5 piętro",
+    "desc": "Serwis komputerowy przy ulicy Łagiewnickiej 54/56 w mieście Łódź. Zaufaj doświadczeniu i zadowolonym klientom. Szybka i darmowa wycena od ręki.",
+    "h1": [
+     "H1: 5 piętro: Serwis Komputerowy Łódź"
+    ],
+    "first": "Komputer nie włącza się / brak obrazu",
+    "seoFirst": "",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "serwiskomputer.com.pl",
+    "url": "https://serwiskomputer.com.pl/serwis-komputerowy-katowice/",
+    "title": "Serwis komputerowy Katowice | Serwis z dojazdem do klienta",
+    "desc": "Potrzebujesz profesjonalnej pomocy? Serwis komputerowy Katowice oferuje kompleksową diagnostykę oraz naprawę komputerów, jak i laptopów.",
+    "h1": [
+     "H1: Serwis komputerowy Katowice – szybka pomoc z dojazdem"
+    ],
+    "first": "Komputer nie włącza się / brak obrazu",
+    "seoFirst": "",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "aidcom.eu",
+    "url": "https://aidcom.eu/",
+    "title": "AIDCOM Serwis komputerowy Lublin",
+    "desc": "Serwis komputerowy Lublin. Naprawa laptopów, komputerów PC, monitorów i sprzętu IT. Odzyskiwanie danych z dysków, kart pamięci i pendrive.",
+    "h1": [],
+    "first": "Naprawa / wymiana zasilacza",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "serwisbydgoszcz.pl",
+    "url": "https://www.serwisbydgoszcz.pl/serwis-komputerowy-bydgoszcz/",
+    "title": "Serwis komputerowy Bydgoszcz, serwis laptopów, komputerów",
+    "desc": "Serwis Komputerowy Bydgoszcz - naprawa komputerów, serwis laptopów. Usługi serwisowe stacjonarne, jak i bezpośrednio u klienta.",
+    "h1": [
+     "H1: Serwis Komputerowy Bydgoszcz - Serwis Laptopów",
+     "H1: Serwisujemy laptopy, już ponad 10 lat!"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Usuwanie wirusów",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "serwis-komputerow.olsztyn.pl",
+    "url": "http://serwis-komputerow.olsztyn.pl/",
+    "title": "Serwis komputerowy Olsztyn, naprawa komputerów i laptopów Olsztyn",
+    "desc": "➨Profesjonalny Serwis Komputerów Olsztyn, 10 lat doświadczenia na rynku! Naprawa: ✔Komputerów, ✔Laptopów, ✔Drukarek, ✔Tabletów, ✔Drukarek, ✔Odzyskiwanie danych. Darmowa wycena i diagnoza usterki w 24h! Sprawdź ✆695-346-554, ✉ kontakt@serwis-komputerow.olsztyn.pl - czynne codziennie 24h. Zapraszamy!",
+    "h1": [
+     "H1: Serwis komputerowy Olsztyn"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "serwisgdynia.pl",
+    "url": "https://serwisgdynia.pl/",
+    "title": "Serwis komputerowy, naprawa laptopów Gdynia - STRONA GŁÓWNA",
+    "desc": "Naprawa, serwis komputerowy Gdynia. Serwis komputerów, laptopów, notebooków, tabletów. Naprawa komputerów stacjonarnych i przenośnych. Serwis komputerowy Gdynia. Routery, serwery Linux, Unix, Windows Server, Novell. Naprawa, serwis drukarek. Usługi informatyczne. Obsługa informatyczna firm. Outsourcing informatyczny.",
+    "h1": [
+     "H1: Serwis komputerowy Gdynia, naprawa komputerów, laptopów, notebooków wszystkich marek.",
+     "H1: Serwis i naprawa laptopów, komputerów, drukarek."
+    ],
+    "first": "Usuwanie wirusów",
+    "seoFirst": "",
+    "works": [
+     "Odzyskiwanie danych",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "serwisatium.pl",
+    "url": "https://www.serwisatium.pl/",
+    "title": "Serwis i naprawa laptopów, komputerów: Lenovo, Asus, HP, Dell - Serwis Atium",
+    "desc": "Serwis naprawy laptopów i komputerów w centrum Krakowa. Serwisujemy modele Lenovo, HP, Toshiby, Apple, Dell, Asus, Acer i wiele innych. Naprawa klawiatury, odzyskiwanie danych, wymiana matrycy, instalacja oprogramowania systemu. Zapoznaj się z ofertą i cennikiem usług.",
+    "h1": [
+     "H1: Najlepszy serwis komputerowy w Krakowie",
+     "H1: Serwis laptopów"
+    ],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "pogotowie-komputery.pl",
+    "url": "https://pogotowie-komputery.pl/serwis-komputerowy-z-dojazdem-do-klienta/",
+    "title": "Serwis komputerowy z dojazdem do klienta - Serwis Komputerowy Warszawa – Step-Tech Bielany | Naprawa w 24h",
+    "desc": "Serwis komputerowy z dojazdem do klienta w Warszawie – naprawa laptopów i PC na miejscu, wymiana SSD, wirusy. Dojazd 0 zł, 80% napraw od ręki. Tel. 504 617 837.",
+    "h1": [
+     "H1: Serwis komputerowy z dojazdem do klienta"
+    ],
+    "first": "Wymiana dysku / montaż SSD",
+    "seoFirst": "Wymiana dysku / montaż SSD",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Wymiana dysku / montaż SSD",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Warszawa"
+    ]
+   },
+   {
+    "host": "serwiskomputerowy.poznan.pl",
+    "url": "https://serwiskomputerowy.poznan.pl/",
+    "title": "Serwis komputerowy Poznań. Pomoc informatyczna, naprawa, rozbudowy laptopów i komputerów Poznań",
+    "desc": "Serwis komputerowy Poznań. Naprawa, rozbudowa komputerów i laptopów Poznań.  Monitoring i TV przemysłowa. Odzyskiwanie danych.",
+    "h1": [
+     "H1: Serwis komputerowy Poznań"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "naprawa-komputerow-lodz.pl",
+    "url": "http://naprawa-komputerow-lodz.pl/",
+    "title": "Naprawa komputerów i Serwis komputerowy Łódź | 604-70-80-74 | Dojazd do klienta",
+    "desc": "Naprawa komputerów Łódź – profesjonalny serwis komputerów i laptopów, konfiguracja sieci, odzyskiwanie danych z dysków, pendrive’ów i kart pamięci, reinstalacja systemów oraz instalacja sterowników i oprogramowania biurowego.",
+    "h1": [],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "retesly.pl",
+    "url": "https://www.retesly.pl/",
+    "title": "Serwis Komputerowy Gdańsk - Serwis Komputerowy, Pogotowie komputerowe, Opieka Informatyczna, Outsourcing GdańskSerwis Komputerowy, Pogotowie komputerowe, Opieka Informatyczna, Outsourcing Gdańsk",
+    "desc": "",
+    "h1": [
+     "H1: Serwis Komputerowy Gdańsk"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "laptoptech.pl",
+    "url": "https://laptoptech.pl/",
+    "title": "Serwis komputerowy Katowice, Naprawa laptopów, komputerów",
+    "desc": "Zajmujemy się profesjonalną naprawą komputerów, laptopów, tabletów, telefonów i nawigacji. Oferujemy ekspresowe naprawy dla każdego Klienta!",
+    "h1": [
+     "H1: Serwis komputerowy Katowice"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "Naprawa płyty głównej",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Katowice"
+    ]
+   },
+   {
+    "host": "komputery.bydgoszcz.pl",
+    "url": "http://www.komputery.bydgoszcz.pl/",
+    "title": "Serwis komputerowy Bydgoszcz. D-Comp",
+    "desc": "Naprawa laptopów Bydgoszcz, serwis komputerów i notebooków,Od 20 lat naprawiamykomputery, laptopy i notebooki Acer, HP, Dell Lenovo, IBM, Serwisujemy także komputery stacjonarne",
+    "h1": [
+     "H1: Serwis komputerowy D-Comp",
+     "H1: Serwis Komputerowy"
+    ],
+    "first": "Naprawa / wymiana zasilacza",
+    "seoFirst": "",
+    "works": [
+     "Naprawa / wymiana zasilacza"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "ipsumkomp.pl",
+    "url": "https://www.ipsumkomp.pl/",
+    "title": "Ipsum Komp - serwis komputerowy Toruń | ul. Kozacka 17-19",
+    "desc": "Serwis komputerowy Ipsum Komp w Toruniu - naprawa komputerów, laptopów, konsol do gier oraz profesjonalne odzyskiwanie danych. Zapraszamy!",
+    "h1": [
+     "H1: Profesjonalny serwis komputerowy"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "fastcomp.pl",
+    "url": "https://fastcomp.pl/",
+    "title": "Serwis Komputerowy Rzeszów | Naprawa Laptopów i PC | Fastcomp.pl",
+    "desc": "Fastcomp – profesjonalny serwis komputerowy w Rzeszowie. Naprawa laptopów i komputerów PC, odzyskiwanie danych, usuwanie wirusów, opieka informatyczna dla firm, outsourcing IT, naprawa konsol oraz pogotowie komputerowe. Szybka diagnoza i fachowa pomoc.",
+    "h1": [
+     "H1: Serwis komputerowy w Rzeszowie",
+     "H1: Obsługa informatyczna firm"
+    ],
+    "first": "Składanie komputera",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Składanie komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "smir-tech.pl",
+    "url": "https://smir-tech.pl/",
+    "title": "SMIR-TECH | Serwis komputerowy Opole - Reymonta 21",
+    "desc": "Naprawa laptopów, komputerów PC, konsol. Serwis i sprzedaż sprzętu komputerowego | Odzyskiwanie danych | Przegrywanie VHS",
+    "h1": [
+     "H1: Sklep i serwis komputerowy Opole Reymonta 21"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "itserwis.wroclaw.pl",
+    "url": "https://itserwis.wroclaw.pl/",
+    "title": "Serwis komputerowy Wrocław – naprawa komputerów i laptopów",
+    "desc": "Serwis komputerowy Wrocław – naprawa komputerów i laptopów, konfiguracja sieci, strony WWW oraz monitoring CCTV. Profesjonalna pomoc IT.",
+    "h1": [
+     "H1: Serwis komputerowy Wrocław"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "serwiskomputerowy24poznan.pl",
+    "url": "https://serwiskomputerowy24poznan.pl/",
+    "title": "Serwis, pogotowie komputerowe Poznań",
+    "desc": "\nSzybki i uczciwy serwis komputerowy z dojazdem. Naprawa laptopów i PC. Działamy 24/7 – Napraw24IT!\n",
+    "h1": [],
+    "first": "Usuwanie wirusów",
+    "seoFirst": "",
+    "works": [
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "mmserwislodz.pl",
+    "url": "https://mmserwislodz.pl/",
+    "title": "Serwis komputerowy Łódź – naprawa laptopów i PC | MMSerwis",
+    "desc": "Serwis komputerowy Łódź – naprawa laptopów i komputerów PC, czyszczenie, Windows, SSD, RAM i odzyskiwanie danych. Szybka diagnoza i wycena.",
+    "h1": [
+     "H1: Naprawa komputerów i laptopów w Łodzi"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Wymiana dysku / montaż SSD",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "inteliserwis.szczecin.pl",
+    "url": "https://inteliserwis.szczecin.pl/",
+    "title": "Pogotowie komputerowe Szczecin, Serwis komputerowy - iNTELi SERWIS",
+    "desc": "iNTELi SERWIS świadczy usługi serwisowe jako pogotowie komputerowe. Wspieramy firmy oraz klientów indywidualnych. Zapraszamy do współpracy !",
+    "h1": [
+     "H1: Zawsze szybko, zawsze sprawnie, zawsze na czas Zadzwoń 536 336 108",
+     "H1: Zawsze możesz na nas liczyć Zadzwoń 536 336 108"
+    ],
+    "first": "Naprawa / wymiana zasilacza",
+    "seoFirst": "Naprawa / wymiana zasilacza",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "ratujkompa.pl",
+    "url": "https://ratujkompa.pl/naprawa-komputerow",
+    "title": "Naprawa Komputerów Lublin - Serwis Ratuj Kompa Od Ręki",
+    "desc": "Profesjonalna Naprawa Komputerów - Lublin. ☑ Serwis Komputerów Wszystkich Marek. ☆ 18 Lat Doświadczenia. ☎ 517 532 335 - Ratuj Kompa.",
+    "h1": [
+     "H1: Naprawa komputerów Lublin"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "3giga.pl",
+    "url": "https://3giga.pl/",
+    "title": "Serwis komputerowy Białystok, sprzęt poleasingowy - 3Giga",
+    "desc": "3Giga to serwis komputerowy i laptopów w Białymstoku. Świadczymy szybkie i profesjonalne usługi naprawy komputerów i laptopów",
+    "h1": [
+     "H1: Nie Wyrzucaj Napraw – i ciesz się sprawnym sprzętem"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "serwis.torun.pl",
+    "url": "https://serwis.torun.pl/",
+    "title": "Serwis laptopów Toruń | naprawa komputerów -",
+    "desc": "Nasz serwis komputerowy oferuje Państwu profesjonalne usługi w zakresie naprawy komputerów osobistych oraz laptopów. Działamy na terenie Torunia oraz okolic.",
+    "h1": [
+     "H1: Serwis komputerowy w Toruniu - Sak Computer Systems"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Toruń"
+    ]
+   },
+   {
+    "host": "lapcoreserwis.pl",
+    "url": "https://lapcoreserwis.pl/",
+    "title": "Serwis Komputerowy Rzeszów - Lapcore Serwis Laptopów i PC Rzeszów",
+    "desc": "Naprawa serwis komputerowy Rzeszów | Cała Polska - profesjonalna naprawa laptopów, konsol, iPhone i PC. Oferujemy darmową diagnozę i stawiamy na naprawę, nie wymianę. Skorzystaj z naszych usług, naprawy ładowania baterii, wymiany BGA, niewłączającego się laptopa, czarnego ekranu i każdej innej usterki.",
+    "h1": [
+     "H1: Home",
+     "H1: Serwis Komputerowy Rzeszów"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Rzeszów"
+    ]
+   },
+   {
+    "host": "aproks.pl",
+    "url": "https://aproks.pl/uslugi/serwis-komputerowy/",
+    "title": "Serwis komputerowy Kielce | APROKS – diagnostyka, sprzęt i IT",
+    "desc": "Serwis komputerowy Kielce. Diagnostyka sprzętu, konfiguracja systemów, modernizacja stanowisk pracy i wsparcie IT dla firm oraz klientów indywidualnych.",
+    "h1": [
+     "H1: Serwis komputerowy Kielce – diagnostyka, sprzęt i wsparcie IT"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Usuwanie wirusów",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Modernizacja / rozbudowa komputera"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "makitech.com.pl",
+    "url": "https://makitech.com.pl/",
+    "title": "Serwis komputerowy, laptopów, notebooków, komputery poleasingowe, używane, naprawa Opole",
+    "desc": "Profesjonalny serwis komputerowy MakiTech. Kompleksowa naprawa laptopów. W sprzedaży używane notebooki poleasingowe. Opole ul. Grunwaldzka 10.",
+    "h1": [],
+    "first": "Składanie komputera",
+    "seoFirst": "Składanie komputera",
+    "works": [
+     "Wymiana dysku / montaż SSD",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [
+     "Składanie komputera"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "noveria.pl",
+    "url": "http://www.noveria.pl/",
+    "title": "Serwis komputerowy - naprawa laptopów w Gdyni - Noveria",
+    "desc": "Serwis komputerowy, naprawa laptopów w Gdyni, profesjonalna diagnoza, czyszczenie, konserwacja, naprawy elektroniczne, wymiana podzespołów, kompleksowe usługi informatyczne.",
+    "h1": [
+     "H1: Serwis komputerowy w Gdyni",
+     "H1: 880 008 265"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "",
+    "works": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Gdynia"
+    ]
+   },
+   {
+    "host": "computerspeed.czest.pl",
+    "url": "https://www.computerspeed.czest.pl/",
+    "title": "ComputerSpeed - naprawa laptopów, komputerów, telefonów.",
+    "desc": "Firma ComputerSpeed - serwis laptopów, komputerów, telefonów, usługi informatyczne dla klientów indywidualnych i firm od 2008 roku.",
+    "h1": [
+     "H1: Serwis laptopów, komputerów, telefonów, usługi informatyczne – ComputerSpeed",
+     "H1: O firmie"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Częstochowa"
+    ]
+   },
+   {
+    "host": "raven-web.pl",
+    "url": "http://www.raven-web.pl/cennik",
+    "title": "Raven-Web - Serwis laptopów i PC Wrocław - cennik",
+    "desc": "Nasz serwis komputerowy we Wrocławiu, Zajmuje się naprawą komputerów stacjonarnych jak i laptopów oraz notebooków. Nasze pogotowie komputerowe naprawi Twój komputer w domu 24h. Naprawa laptopów i komputerów to nie wszystko co mamy do zaoferowania naszą pasją jest też tworzenie stron internetowych. Oferujemy równiez obs",
+    "h1": [],
+    "first": "Instalacja / reinstalacja systemu Windows",
+    "seoFirst": "",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Wymiana dysku / montaż SSD",
+     "Składanie komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "galileo.krakow.pl",
+    "url": "https://www.galileo.krakow.pl/",
+    "title": "Serwis komputerowy Kraków – naprawa laptopów i PC | Galileo",
+    "desc": "Serwis laptopów Kraków – naprawa laptopów i komputerów PC. Bezpłatna diagnoza, 3 oddziały Galileo i obsługa wysyłkowa z całej Polski.",
+    "h1": [
+     "H1: SERWIS LAPTOP&Oacute;W KRAK&Oacute;W – NAPRAWA LAPTOP&Oacute;W I KOMPUTER&Oacute;W"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "Naprawa płyty głównej",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "BIOS / UEFI"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "az-serwis.com",
+    "url": "https://az-serwis.com/",
+    "title": "AZ Serwis komputerowy Poznań - naprawa laptopów i komputerów w Poznaniu",
+    "desc": "Serwis komputerów i laptopów w Poznaniu – Oferujemy darmową diagnozę ✅ 6 miesięcy gwarancji | szybką realizację | przejrzysty cennik",
+    "h1": [
+     "H1: Serwis komputerowy Poznań – AZ Naprawa i serwis laptopów w Poznaniu"
+    ],
+    "first": "Instalacja / reinstalacja systemu Windows",
+    "seoFirst": "Instalacja / reinstalacja systemu Windows",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Wymiana dysku / montaż SSD",
+     "Składanie komputera",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "klinika-laptopa.pl",
+    "url": "https://klinika-laptopa.pl/serwis-komputerowy-lodz",
+    "title": "Serwis komputerowy Łódź | Klinika Laptopa",
+    "desc": "serwis komputerowy Lodz, naprawa komputerow, wymiana podzespolow,  instalacja oprogramowania, konserwacja komputera, wymiana pasty w komputerze, wymian kaarty graficznej, wymiana pamieci",
+    "h1": [
+     "H1: Serwis komputerowy Łódź"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej",
+     "BIOS / UEFI",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "servikom.pl",
+    "url": "http://www.servikom.pl/",
+    "title": "Naprawa i serwis laptopów oraz komputerów | SERVIKOM Szczecin",
+    "desc": "Świadczymy usługi w zakresie naprawy komputerów i laptopów oraz sprzętu komputerowego takiego jak drukarki. Specjalizujemy się również w odzyskiwaniu danych.",
+    "h1": [
+     "H1: Serwis i naprawa komuterów, laptopów Szczecin"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Naprawa płyty głównej"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "ncklublin.pl",
+    "url": "https://ncklublin.pl/",
+    "title": "NCK Lublin – Serwis komputerowy Naprawię Ci komputer",
+    "desc": "",
+    "h1": [],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Naprawa płyty głównej"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Lublin"
+    ]
+   },
+   {
+    "host": "komp-tech.pl",
+    "url": "https://komp-tech.pl/",
+    "title": "KOMP-TECH – Naprawa Laptopów – Serwis komputerowy. Naprawa laptopów – Bydgoszcz",
+    "desc": "",
+    "h1": [
+     "H1: SERWIS LAPTOPÓW I KOMPUTERÓW - BYDGOSZCZ"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Bydgoszcz"
+    ]
+   },
+   {
+    "host": "koba.pl",
+    "url": "https://www.koba.pl/oferta/serwis-komputerowy-bialystok/",
+    "title": "Serwis komputerowy Białystok - Naprawa komputerów i laptopów | Koba",
+    "desc": "Ekspresowa naprawa komputerów i laptopów w Białymstoku. Nasi technicy szybko i profesjonalnie rozwiążą problemy ze sprzętem i oprogramowaniem.",
+    "h1": [
+     "H1: Naprawa komputerów oraz laptopów - Białystok"
+    ],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Białystok"
+    ]
+   },
+   {
+    "host": "cmserwis.com",
+    "url": "https://www.cmserwis.com/",
+    "title": "Serwis komputerowy Olsztyn - Naprawa komputerów",
+    "desc": "Serwis komputerowy Olszyn. Naprawa laptopów. Naprawa komputerów w Olsztynie. Pogotowie komputerowe.",
+    "h1": [],
+    "first": "Czyszczenie komputera / układu chłodzenia",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Olsztyn"
+    ]
+   },
+   {
+    "host": "prokompkielce.pl",
+    "url": "http://www.prokompkielce.pl/serwis/",
+    "title": "Serwis – PROKOMP Kielce – naprawa komputerów Kielce, obsługa informatyczna firm Kielce, serwis laptopów Kielce, podpis elektroniczny Kielce, sprzęt poleasingowy Kielce, odzyskiwanie danych Kielce, usu",
+    "desc": "Serwis komputerów Kielce - naprawa laptopów Kielce, odzyskiwanie danych Kielce, usuwanie wirusów Kielce, diagnostyka komputerowa",
+    "h1": [
+     "H1: Serwis"
+    ],
+    "first": "Naprawa płyty głównej",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Kielce"
+    ]
+   },
+   {
+    "host": "multi-point.pl",
+    "url": "https://multi-point.pl/",
+    "title": "Serwis Komputerowy Opole | Naprawa Laptopów i Komputerów | Multi-Point",
+    "desc": "Serwis komputerowy Opole ★ Naprawa laptopów, serwis komputerów PC, naprawa telefonów. Multi-Point C.H. Auchan – darmowa diagnoza, naprawa w 24h. Ponad 20 lat doświadczenia. Zadzwoń: 887 564 455",
+    "h1": [
+     "H1: Profesjonalny serwis komputerowy w Opolu"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Modernizacja / rozbudowa komputera",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana karty graficznej",
+     "Komputer nie włącza się / brak obrazu"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej"
+    ],
+    "city": [
+     "Opole"
+    ]
+   },
+   {
+    "host": "nabertronik.pl",
+    "url": "https://www.nabertronik.pl/naprawa-urzadzen-elektrycznych-i-elektronicznych/komputery-stacjonarne/",
+    "title": "Serwis komputerów stacjonarnych | Nabertronik sklep z elektroniką",
+    "desc": "Postaw na sprawdzone usługi i wybierz wsparcie profesjonalistów – serwis komputerów w ramach usług Nabertronik. Skontaktuj się z nami już dziś!",
+    "h1": [
+     "H1: Serwis komputerów stacjonarnych"
+    ],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": []
+   },
+   {
+    "host": "grupabs.pl",
+    "url": "https://www.grupabs.pl/",
+    "title": "Serwis komputerowy Kraków - Naprawa laptopów, komputerów PC, tabletów i konsol - GRUPA BS",
+    "desc": "Profesjonalny serwis komputerowy w Krakowie. Tania naprawa laptopów, komputerów PC oraz serwis tabletów i konsol. Oferujemy również usługi informatyczne dla firm oraz odzyskiwanie danych. Zaufaj profesjonalistom.",
+    "h1": [
+     "H1: Serwis komputerowy",
+     "H1: Serwis laptopów"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Kraków"
+    ]
+   },
+   {
+    "host": "pogotowiekomputerowe.wroclaw.pl",
+    "url": "https://www.pogotowiekomputerowe.wroclaw.pl/",
+    "title": "Pogotowie Komputerowe we Wrocławiu - serwis komputerów i laptopów",
+    "desc": "Pogotowie Komputerowe Wrocław to szybka i skuteczna pomoc komputerowa na terenie Wrocławia i okolic. Darmowy dojazd do Klienta. Diagnostyka gratis!",
+    "h1": [
+     "H1: Pogotowie Komputerowe Wrocław"
+    ],
+    "first": "Składanie komputera",
+    "seoFirst": "",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Składanie komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [],
+    "city": [
+     "Wrocław"
+    ]
+   },
+   {
+    "host": "netmax-pc.pl",
+    "url": "https://www.netmax-pc.pl/serwis-komputerowy-poznan-2/",
+    "title": "Serwis komputerowy Poznań - Serwis komputerowy Poznań Piątkowo | Naprawa laptopów Netmax PC",
+    "desc": "Serwis komputerowy Poznań – szybka i profesjonalna naprawa komputerów oraz laptopów. Obsługujemy cały Poznań. Dzwoń i umów naprawę!",
+    "h1": [],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Usuwanie wirusów",
+     "Naprawa / wymiana karty graficznej"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Poznań"
+    ]
+   },
+   {
+    "host": "skylab-serwis.pl",
+    "url": "https://www.skylab-serwis.pl/",
+    "title": "SKYLAB-Serwis Komputerowy Łódź, naprawy laptopów: Xiaomi, Huawei, Asus, Apple, Lenovo.",
+    "desc": "Nasz serwis komputerowy Skylab oferuje szeroką gamę usług jak: naprawy laptopów, serwis laptopów, serwis sprzętu firm Xiaomi, Huawei, Asus, Apple, Lenovo, naprawy i serwis komputerów, instalacja systemu Windows",
+    "h1": [],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Instalacja / reinstalacja systemu Windows",
+    "works": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Składanie komputera",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Łódź"
+    ]
+   },
+   {
+    "host": "it-gda.pl",
+    "url": "https://it-gda.pl/",
+    "title": "IT-GDA.PL – Serwis Komputerowy Gdańsk | Naprawa Laptopów, IT Pomorze",
+    "desc": "Profesjonalny serwis komputerowy w Gdańsku i na Pomorzu. Naprawa laptopów, odzyskiwanie danych, usuwanie wirusów, modernizacja PC. Dojazd do klienta na terenie Trójmiasta. Szybka pomoc IT!",
+    "h1": [
+     "H1: IT-GDA.PL – Serwis Komputerowy Gdańsk Naprawa laptopów i komputerów na Pomorzu"
+    ],
+    "first": "Modernizacja / rozbudowa komputera",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Instalacja / reinstalacja systemu Windows",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa płyty głównej",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów",
+     "BIOS / UEFI"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych",
+     "Modernizacja / rozbudowa komputera",
+     "Usuwanie wirusów"
+    ],
+    "city": [
+     "Gdańsk"
+    ]
+   },
+   {
+    "host": "itludek.pl",
+    "url": "http://www.itludek.pl/",
+    "title": "Serwis laptopów Szczecin, serwis komputerowy Szczecin, naprawa komputerów Szczecin",
+    "desc": "Jesteśmy młodą, dynamiczną firmą świadczącą usługi w branży IT w Szczecinie. Nasza szeroka oferta skierowana jest do klientów indywidualnych oraz małych i średnich firm. Prowadzimy skuteczny serwis laptopów oraz komputerów przy wykorzystaniu nowoczesnego sprzętu. Posiadane doświadczenie pozwala nam na świadczenie usług",
+    "h1": [],
+    "first": "",
+    "seoFirst": "",
+    "works": [],
+    "seoWorks": [],
+    "city": [
+     "Szczecin"
+    ]
+   },
+   {
+    "host": "lapart.pl",
+    "url": "https://lapart.pl/",
+    "title": "Serwis komputerów i pogotowie komputerowe Bydgoszcz - Lapart",
+    "desc": "Potrzebny serwis komputerowy w Bydgoszczy? U nas znajdziesz profesjonalne pogotowie komputerowe – naprawy, konfiguracje i doradztwo.",
+    "h1": [
+     "H1: Serwis komputerowy w Bydgoszczy - Lapart"
+    ],
+    "first": "Odzyskiwanie danych",
+    "seoFirst": "Odzyskiwanie danych",
+    "works": [
+     "Czyszczenie komputera / układu chłodzenia",
+     "Odzyskiwanie danych",
+     "Wymiana dysku / montaż SSD",
+     "Modernizacja / rozbudowa komputera",
+     "Naprawa / wymiana zasilacza",
+     "Usuwanie wirusów"
+    ],
+    "seoWorks": [
+     "Odzyskiwanie danych"
+    ],
+    "city": [
+     "Bydgoszcz"
+    ]
+   }
+  ]
+ },
+ "cleaning": {
+  "date": "2026-10-19",
+  "note": "Контрольная проверка: из подсказок Google и Ads исключены фразы про другие устройства/темы (кондиционеры, телефоны, iTunes, карты водителя и т.п.), покупки товара, обучение, вакансии и «сделай сам». Числа выше — уже после очистки.",
+  "removed": {
+   "подсказки: Czyszczenie komputera / układu chłodzenia": {
+    "было": 25,
+    "стало": 21,
+    "исключено": [
+     "czyszczenie komputera windows 11",
+     "czyszczenie komputera program",
+     "czyszczenie komputera windows 10",
+     "czyszczenie komputera z niepotrzebnych plików"
+    ]
+   },
+   "подсказки: Instalacja / reinstalacja systemu Windows": {
+    "было": 33,
+    "стало": 27,
+    "исключено": [
+     "instalacja windows 11 z pendrive",
+     "instalacja windowsa z pendrive",
+     "instalacja windows 10 z pendrive",
+     "reinstalacja windows 11 na laptopie",
+     "formatowanie komputera co to",
+     "formatowanie komputera z pendrive"
+    ]
+   },
+   "подсказки: Odzyskiwanie danych": {
+    "было": 17,
+    "стало": 13,
+    "исключено": [
+     "odzyskiwanie danych z telefonu",
+     "odzyskiwanie danych z telefonu wrocław",
+     "odzyskiwanie danych z karty sd",
+     "odzyskiwanie danych z pendrive"
+    ]
+   },
+   "подсказки: Wymiana dysku / montaż SSD": {
+    "было": 27,
+    "стало": 16,
+    "исключено": [
+     "wymiana dysku na ssd w laptopie",
+     "wymiana dysku na ssd w ps4",
+     "wymiana dysku na ssd w laptopie instalacja windows",
+     "wymiana dysku na ssd xbox one s",
+     "wymiana dysku na ssd w xbox one",
+     "wymiana dysku na ssd xbox one x",
+     "wymiana dysku na ssd w laptopie cena",
+     "wymiana dysku ssd na większy w laptopie",
+     "montaż dysku ssd ps5",
+     "montaż dysku ssd w laptopie",
+     "montaż dysku ssd m2 w laptopie"
+    ]
+   },
+   "подсказки: Modernizacja / rozbudowa komputera": {
+    "было": 24,
+    "стало": 13,
+    "исключено": [
+     "modernizacja komputera co to",
+     "modernizacja komputera jaki paragraf",
+     "x kom modernizacja komputera",
+     "rozbudowa komputera w praktyce",
+     "rozbudowa i naprawa komputera kompendium",
+     "wymiana karty graficznej w laptopie",
+     "wymiana karty graficznej w laptopie koszt",
+     "wymiana karty graficznej krok po kroku",
+     "wymiana karty graficznej w laptopie na mocniejszą",
+     "wymiana karty graficznej w laptopie acer nitro 5",
+     "wymiana karty graficznej w laptopie lenovo"
+    ]
+   },
+   "подсказки: Składanie komputera": {
+    "было": 22,
+    "стало": 14,
+    "исключено": [
+     "składanie komputera x kom",
+     "składanie komputera krok po kroku",
+     "składanie komputera komputronik",
+     "składanie komputera morele",
+     "składanie komputera youtube",
+     "składanie komputerów praca",
+     "składanie komputerów wrocław opinie",
+     "składanie komputerów olx"
+    ]
+   },
+   "подсказки: Naprawa płyty głównej": {
+    "было": 11,
+    "стало": 1,
+    "исключено": [
+     "naprawa płyty głównej klimatyzacji",
+     "naprawa płyty głównej immergas",
+     "naprawa płyty głównej w telefonie",
+     "naprawa płyty głównej telewizora",
+     "naprawa płyty głównej junkers",
+     "naprawa płyty głównej viessmann",
+     "naprawa płyty głównej samsung s22",
+     "naprawa płyty głównej w laptopie",
+     "naprawa płyty głównej w laptopie cena",
+     "naprawa płyty głównej pieca gazowego"
+    ]
+   },
+   "подсказки: Usuwanie wirusów": {
+    "было": 11,
+    "стало": 3,
+    "исключено": [
+     "usuwanie wirusów z telefonu",
+     "usuwanie wirusów z telefonu android",
+     "usuwanie wirusów wordpress",
+     "usuwanie wirusów z telefonu za darmo",
+     "usuwanie wirusów iphone",
+     "usuwanie wirusów z komputera za darmo",
+     "usuwanie wirusów za darmo",
+     "usuwanie wirusow android"
+    ]
+   },
+   "Ads: Czyszczenie komputera / układu chłodzenia": {
+    "исключено": [
+     "czyszczenie komputera z danych (1)"
+    ]
+   }
+  }
+ },
+ "ranking": [
+  {
+   "work": "Odzyskiwanie danych",
+   "comp": {
+    "mention": 49,
+    "first": 14,
+    "seoFirst": 18,
+    "seo": 29,
+    "head": 19,
+    "td": 17
+   },
+   "ac": 0,
+   "probe": {
+    "n": 13,
+    "cena": 3,
+    "ex": [
+     "odzyskiwanie danych z dysku",
+     "odzyskiwanie danych wrocław",
+     "odzyskiwanie danych z dysku wrocław",
+     "odzyskiwanie danych",
+     "odzyskiwanie danych z dysku ssd"
+    ]
+   },
+   "ads": {
+    "impr": 15,
+    "clicks": 4,
+    "conv": 1,
+    "n": 3,
+    "top": [
+     "odzyskiwanie danych z komputera wrocław",
+     "odzyskiwanie danych z komputera",
+     "pogotowie komputerowe odzyskiwanie danych"
+    ]
+   },
+   "xl": {
+    "n": 108,
+    "kp": 0,
+    "ex": [
+     "odzyskiwanie danych",
+     "odzyskiwanie danych z dysku",
+     "odzyskiwanie danych z dysku zewnętrznego"
+    ]
+   }
+  },
+  {
+   "work": "Modernizacja / rozbudowa komputera",
+   "comp": {
+    "mention": 45,
+    "first": 16,
+    "seoFirst": 8,
+    "seo": 14,
+    "head": 12,
+    "td": 6
+   },
+   "ac": 0,
+   "probe": {
+    "n": 13,
+    "cena": 1,
+    "ex": [
+     "modernizacja komputera",
+     "modernizacja komputera stacjonarnego",
+     "modernizacja komputera pc",
+     "modernizacja komputera kraków",
+     "modernizacja komputera warszawa"
+    ]
+   },
+   "ads": {
+    "impr": 4,
+    "clicks": 0,
+    "conv": 0,
+    "n": 3,
+    "top": [
+     "pc upgrade service",
+     "modernizacja komputerów",
+     "modernizacja komputera"
+    ]
+   },
+   "xl": {
+    "n": 2,
+    "kp": 0,
+    "ex": [
+     "wymiana pamięci ram",
+     "wymiana pamięci ram w komputerze"
+    ]
+   }
+  },
+  {
+   "work": "Usuwanie wirusów",
+   "comp": {
+    "mention": 45,
+    "first": 4,
+    "seoFirst": 0,
+    "seo": 14,
+    "head": 10,
+    "td": 5
+   },
+   "ac": 0,
+   "probe": {
+    "n": 3,
+    "cena": 0,
+    "ex": [
+     "usuwanie wirusów",
+     "usuwanie wirusów z komputera",
+     "usuwanie wirusów online"
+    ]
+   },
+   "ads": null,
+   "xl": {
+    "n": 8,
+    "kp": 0,
+    "ex": [
+     "usuwanie wirusów",
+     "usuwanie złośliwego oprogramowania",
+     "usuwanie wirusów z komputera"
+    ]
+   }
+  },
+  {
+   "work": "Czyszczenie komputera / układu chłodzenia",
+   "comp": {
+    "mention": 43,
+    "first": 7,
+    "seoFirst": 1,
+    "seo": 6,
+    "head": 6,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 21,
+    "cena": 6,
+    "ex": [
+     "czyszczenie komputera",
+     "czyszczenie komputera wrocław",
+     "czyszczenie komputera z kurzu",
+     "czyszczenie komputera cena",
+     "czyszczenie komputera z kurzu cena"
+    ]
+   },
+   "ads": {
+    "impr": 159,
+    "clicks": 16,
+    "conv": 1,
+    "n": 15,
+    "top": [
+     "czyszczenie komputera",
+     "czyszczenie komputera wrocław",
+     "czyszczenie komputera z kurzu",
+     "czyszczenie komputerow"
+    ]
+   },
+   "xl": {
+    "n": 12,
+    "kp": 5100,
+    "ex": [
+     "czyszczenie komputera",
+     "czyszczenie komputera cena",
+     "czyszczenie komputerów"
+    ]
+   }
+  },
+  {
+   "work": "Wymiana dysku / montaż SSD",
+   "comp": {
+    "mention": 43,
+    "first": 3,
+    "seoFirst": 3,
+    "seo": 9,
+    "head": 9,
+    "td": 2
+   },
+   "ac": 0,
+   "probe": {
+    "n": 16,
+    "cena": 2,
+    "ex": [
+     "wymiana dysku na ssd",
+     "wymiana dysku na ssd w komputerze stacjonarnym",
+     "montaż dysku ssd",
+     "montaż dysku ssd m2",
+     "montaż dysku ssd w komputerze stacjonarnym"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "wymiana dysku w komputerze",
+     "wymiana dysku twardego w komputerze"
+    ]
+   },
+   "xl": {
+    "n": 62,
+    "kp": 0,
+    "ex": [
+     "wymiana dysku",
+     "wymiana dysku cena",
+     "wymiana dysku hdd"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa płyty głównej",
+   "comp": {
+    "mention": 41,
+    "first": 11,
+    "seoFirst": 3,
+    "seo": 7,
+    "head": 7,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 1,
+    "cena": 0,
+    "ex": [
+     "naprawa płyty głównej"
+    ]
+   },
+   "ads": {
+    "impr": 129,
+    "clicks": 15,
+    "conv": 6,
+    "n": 14,
+    "top": [
+     "naprawa płyt głównych wrocław",
+     "naprawa płyt głównych",
+     "naprawa płyty głównej",
+     "serwis płyt głównych wrocław"
+    ]
+   },
+   "xl": {
+    "n": 11,
+    "kp": 50,
+    "ex": [
+     "czyszczenie płyty głównej po zalaniu",
+     "czyszczenie płyty głównej po zalaniu cena",
+     "diagnoza płyty głównej"
+    ]
+   }
+  },
+  {
+   "work": "Instalacja / reinstalacja systemu Windows",
+   "comp": {
+    "mention": 29,
+    "first": 3,
+    "seoFirst": 3,
+    "seo": 6,
+    "head": 4,
+    "td": 3
+   },
+   "ac": 0,
+   "probe": {
+    "n": 27,
+    "cena": 1,
+    "ex": [
+     "instalacja windows 11",
+     "instalacja windows 11 bez konta microsoft",
+     "instalacja windows 11 bez internetu",
+     "instalacja windows 10",
+     "instalacja windows 11 na starym komputerze"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 1,
+    "top": [
+     "instalacja windows 10"
+    ]
+   },
+   "xl": {
+    "n": 10,
+    "kp": 0,
+    "ex": [
+     "odzyskiwanie danych po formatowaniu",
+     "odzyskiwanie danych po formatowaniu dysku",
+     "instalacja systemu windows"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa / wymiana zasilacza",
+   "comp": {
+    "mention": 25,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 1,
+   "probe": {
+    "n": 7,
+    "cena": 2,
+    "ex": [
+     "wymiana zasilacza w komputerze",
+     "wymiana zasilacza w komputerze cena",
+     "wymiana zasilacza w komputerze stacjonarnym",
+     "czy wymiana zasilacza w komputerze jest trudna",
+     "ile trwa wymiana zasilacza w komputerze"
+    ]
+   },
+   "ads": {
+    "impr": 14,
+    "clicks": 2,
+    "conv": 4,
+    "n": 4,
+    "top": [
+     "zasilacze komputerowe wrocław",
+     "zasilacze komputerowe",
+     "naprawa zasilacza komputerowego",
+     "wymiana zasilacza w komputerze stacjonarnym"
+    ]
+   },
+   "xl": {
+    "n": 3,
+    "kp": 0,
+    "ex": [
+     "wymiana zasilacza w komputerze",
+     "wymiana zasilacza w komputerze stacjonarnym",
+     "wymiana zasilacz w komputerze"
+    ]
+   }
+  },
+  {
+   "work": "Naprawa / wymiana karty graficznej",
+   "comp": {
+    "mention": 21,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 1,
+    "top": [
+     "wymiana karty graficznej w komputerze"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "Komputer nie włącza się / brak obrazu",
+   "comp": {
+    "mention": 18,
+    "first": 4,
+    "seoFirst": 1,
+    "seo": 3,
+    "head": 3,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 20,
+    "cena": 0,
+    "ex": [
+     "komputer nie włącza się",
+     "komputer nie włącza się wentylatory chodzą",
+     "komputer nie włącza się po aktualizacji",
+     "komputer nie włącza się za pierwszym razem",
+     "komputer nie włącza się zasilacz sprawny"
+    ]
+   },
+   "ads": {
+    "impr": 2,
+    "clicks": 0,
+    "conv": 0,
+    "n": 2,
+    "top": [
+     "komputer nie uruchamia się",
+     "komputer nie startuje"
+    ]
+   },
+   "xl": null
+  },
+  {
+   "work": "BIOS / UEFI",
+   "comp": {
+    "mention": 17,
+    "first": 1,
+    "seoFirst": 0,
+    "seo": 1,
+    "head": 1,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": null,
+   "ads": null,
+   "xl": null
+  },
+  {
+   "work": "Składanie komputera",
+   "comp": {
+    "mention": 14,
+    "first": 3,
+    "seoFirst": 1,
+    "seo": 2,
+    "head": 2,
+    "td": 0
+   },
+   "ac": 0,
+   "probe": {
+    "n": 14,
+    "cena": 1,
+    "ex": [
+     "składanie komputera",
+     "składanie komputera wrocław",
+     "składanie komputera online",
+     "składanie komputera gamingowego",
+     "składanie komputera na zamówienie"
+    ]
+   },
+   "ads": {
+    "impr": 278,
+    "clicks": 28,
+    "conv": 3,
+    "n": 12,
+    "top": [
+     "składanie komputerów wrocław",
+     "składanie komputera wrocław",
+     "składanie komputera",
+     "składamy komputery"
+    ]
+   },
+   "xl": null
+  }
+ ],
+ "chosen": [
+  {
+   "w": "Czyszczenie",
+   "a": "Czyszczenie komputera / układu chłodzenia",
+   "why": "KP ≈5000/мес «czyszczenie komputera», Ads 159 показов, 21 подсказка после очистки; в прайсе «Czyszczenie i konserwacja»",
+   "evidence": "конкуренты 43 из 76 (первой работой — 7, в Title/Description — 0) · подсказки Google 21 (напр. «czyszczenie komputera», «czyszczenie komputera wrocław») · Ads 159 показов / 16 кликов / 1 конв. · SEO-файл 12 фраз, KP ≈5100"
+  },
+  {
+   "w": "Wymiana dysku SSD",
+   "a": "Wymiana dysku / montaż SSD",
+   "why": "43 конкурента, 16 подсказок после очистки (убраны laptop/PS4/Xbox); в прайсе «Wymiana HDD na SSD», «Wymiana / montaż dysku SSD»",
+   "evidence": "конкуренты 43 из 76 (первой работой — 3, в Title/Description — 2) · подсказки Google 16 (напр. «wymiana dysku na ssd», «wymiana dysku na ssd w komputerze stacjonarnym») · Ads 2 показов / 0 кликов / 0 конв. · SEO-файл 62 фраз"
+  },
+  {
+   "w": "Odzyskiwanie danych",
+   "a": "Odzyskiwanie danych",
+   "why": "№1 у конкурентов (49), 13 подсказок после очистки (убраны telefon/SD/pendrive); 5 позиций в прайсе",
+   "evidence": "конкуренты 49 из 76 (первой работой — 14, в Title/Description — 17) · подсказки Google 13 (напр. «odzyskiwanie danych z dysku», «odzyskiwanie danych wrocław») · Ads 15 показов / 4 кликов / 1 конв. · SEO-файл 108 фраз"
+  }
+ ],
+ "rejected": [
+  {
+   "w": "Naprawa płyty głównej",
+   "a": "Naprawa płyty głównej",
+   "why": "Решение пользователя 19.10 — после очистки подсказок осталась 1 из 11 (остальные — кондиционеры, котлы, телефоны, ноутбуки). Остаются Ads 129 показов / 6 конверсий и 41 конкурент. С 4 работами текст не помещается в 160 — можно поставить вместо «odzyskiwanie danych»",
+   "evidence": "конкуренты 41 из 76 (первой работой — 11, в Title/Description — 0) · подсказки Google 1 (напр. «naprawa płyty głównej») · Ads 129 показов / 15 кликов / 6 конв. · SEO-файл 11 фраз, KP ≈50"
+  },
+  {
+   "w": "Modernizacja / rozbudowa",
+   "a": "Modernizacja / rozbudowa komputera",
+   "why": "спорно: 45 конкурентов и 24 подсказки, но в Ads почти нет спроса (4 показа); запасной №1",
+   "evidence": "конкуренты 45 из 76 (первой работой — 16, в Title/Description — 6) · подсказки Google 13 (напр. «modernizacja komputera», «modernizacja komputera stacjonarnego») · Ads 4 показов / 0 кликов / 0 конв. · SEO-файл 2 фраз"
+  },
+  {
+   "w": "Instalacja Windows",
+   "a": "Instalacja / reinstalacja systemu Windows",
+   "why": "много подсказок (33), но конкуренты редко выносят в SEO; запасной №2",
+   "evidence": "конкуренты 29 из 76 (первой работой — 3, в Title/Description — 3) · подсказки Google 27 (напр. «instalacja windows 11», «instalacja windows 11 bez konta microsoft») · Ads 2 показов / 0 кликов / 0 конв. · SEO-файл 10 фраз"
+  },
+  {
+   "w": "Usuwanie wirusów",
+   "a": "Usuwanie wirusów",
+   "why": "часто у конкурентов, но почти не ищут как услугу, в прайсе одна позиция",
+   "evidence": "конкуренты 45 из 76 (первой работой — 4, в Title/Description — 5) · подсказки Google 3 (напр. «usuwanie wirusów», «usuwanie wirusów z komputera») · SEO-файл 8 фраз"
+  },
+  {
+   "w": "Składanie komputera",
+   "a": "Składanie komputera",
+   "why": "Ads 278 показов, но мало конкурентов (14) и в прайсе всего 2 позиции",
+   "evidence": "конкуренты 14 из 76 (первой работой — 3, в Title/Description — 0) · подсказки Google 14 (напр. «składanie komputera», «składanie komputera wrocław») · Ads 278 показов / 28 кликов / 3 конв."
+  }
+ ],
+ "warnings": [
+  "Выбор работ согласован вами 19.10: оставить «odzyskiwanie danych», «naprawa płyty głównej» не ставить"
+ ],
+ "proposal": {
+  "pl": {
+   "text": "✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana dysku SSD, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "length": 160
+  },
+  "uk": {
+   "text": "✔ Сервіс і ремонт стаціонарних комп'ютерів у Вроцлаві ✔ Чистка, заміна диска SSD, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "length": 150
+  },
+  "ru": {
+   "text": "✔ Сервис и ремонт стационарных компьютеров во Вроцлаве ✔ Чистка, замена диска SSD, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "length": 154
+  }
+ },
+ "status": "предложение — ждёт решения пользователя"
+}

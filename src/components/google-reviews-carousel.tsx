@@ -59,6 +59,9 @@ export type Review = {
 }
 
 const subscribeNoop = () => () => {}
+
+// Same file as the default in .review-parchment::before (globals.css).
+const REVIEW_PARCHMENT_SRC = '/images/contact-form-parchment.webp'
 // Stała referencja: React 19 przy nowym obiekcie ponownie ustawia innerHTML.
 const KEEP_SERVER_HTML = { __html: "" }
 
@@ -80,6 +83,9 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
     // Parchment behind the review cards: fetched only when the block is near.
     const sectionRef = useRef<HTMLElement | null>(null)
     const bgNear = useNearViewport(sectionRef)
+    // Until the full texture is downloaded the cards keep a tiny blurred copy
+    // (--review-bg-placeholder in globals.css), so text never sits on the dark page.
+    const [bgLoaded, setBgLoaded] = useState(false)
     // Karty z serwera nie są hydratowane — React zostawia ich HTML bez zmian
     // (statyczny tekst, bez obsługi zdarzeń). Przy montowaniu na kliencie
     // (przejście między stronami) karty renderują się normalnie.
@@ -128,7 +134,6 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         const track = trackRef.current
         if (!staticCards || !bgNear || !track || track.dataset.copies) return
         const cards = Array.from(track.children) as HTMLElement[]
-        for (const card of cards) card.style.removeProperty('--review-bg')
         for (const card of cards) {
             const copy = card.cloneNode(true) as HTMLElement
             copy.setAttribute('aria-hidden', 'true')
@@ -136,6 +141,19 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
         }
         track.dataset.copies = '2'
     }, [staticCards, bgNear])
+
+    useEffect(() => {
+        if (!bgNear || bgLoaded) return
+        const img = new window.Image()
+        img.onload = img.onerror = () => setBgLoaded(true)
+        img.src = REVIEW_PARCHMENT_SRC
+    }, [bgNear, bgLoaded])
+
+    useEffect(() => {
+        const track = trackRef.current
+        if (!staticCards || !bgLoaded || !track) return
+        for (const card of Array.from(track.children) as HTMLElement[]) card.style.removeProperty('--review-bg')
+    }, [staticCards, bgLoaded])
 
     useEffect(() => {
         if (!trackRef.current || !carouselContainerRef.current || !reviews.length) return
@@ -313,7 +331,7 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             <div
                                 key={i}
                                 aria-hidden={i >= reviews.length || undefined}
-                                style={{ width: `${cardWidth}px`, ...(bgNear ? {} : { '--review-bg': 'none' }) } as React.CSSProperties}
+                                style={{ width: `${cardWidth}px`, ...(bgLoaded ? {} : { '--review-bg': 'var(--review-bg-placeholder)' }) } as React.CSSProperties}
                                 className={`zakres-paper-card review-parchment ${EDGE_CLASSES[cardStyle.edgeIdx]} ${ORIENT_CLASSES[cardStyle.orientIdx]} ${CORNER_CLASSES[cardStyle.cornerIdx]} shrink-0 pt-[16px] pb-[17px] pl-[22px] pr-[22px] flex flex-col`}
                             >
                                 <div className="relative z-10 flex items-center gap-3 mb-0.5">
