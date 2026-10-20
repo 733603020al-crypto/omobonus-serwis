@@ -281,9 +281,26 @@ const packageListGap = (secondary: string | null) => (secondary?.trimStart().sta
 
 const supplementTextShadow = '0 0 8px rgba(237, 224, 196, 0.4), 0 0 4px rgba(237, 224, 196, 0.3)'
 
-// Ответы FAQ в данных выделяют жирный фрагмент как **текст** (JSON-LD эти звёздочки срезает)
-const renderBoldMarkup = (text: string) =>
-  text.split(/\*\*(.+?)\*\*/g).map((part, i) => (i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part))
+// Ответы FAQ в данных: **текст** — жирный, [текст](/путь) — внутренняя ссылка (JSON-LD эту разметку срезает)
+const renderBoldMarkup = (text: string) => {
+  const out: React.ReactNode[] = []
+  const re = /\*\*(.+?)\*\*|\[([^\]]+)\]\((\/[^)\s]*)\)/g
+  let last = 0
+  let m: RegExpExecArray | null
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push(text.slice(last, m.index))
+    out.push(
+      m[1] !== undefined ? (
+        <strong key={m.index} className="font-bold">{m[1]}</strong>
+      ) : (
+        <Link key={m.index} href={m[3]} className="underline underline-offset-2 hover:text-[#24170D]">{m[2]}</Link>
+      ),
+    )
+    last = re.lastIndex
+  }
+  if (last < text.length) out.push(text.slice(last))
+  return out
+}
 
 // Общая функция для рендеринга второстепенного текста (стиль как у SEO-текста)
 // Единый стиль для всех второстепенных описаний на страницах услуг

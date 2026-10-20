@@ -114,7 +114,7 @@ export default async function RuServicePage({
         name: sub.title.replace(/\*\*/g, ''),
         acceptedAnswer: {
           '@type': 'Answer',
-          text: sub.answer!.replace(/\*\*/g, ''),
+          text: sub.answer!.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
         },
       })),
   } : null
