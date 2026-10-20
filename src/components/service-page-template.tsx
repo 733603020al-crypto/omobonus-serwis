@@ -914,9 +914,17 @@ export function ServicePageTemplate({
               showHeading={false}
               sectionClassName="relative pt-2 pb-2 text-center text-white overflow-hidden"
             />
-            <div className="relative max-w-7xl mx-auto px-4 md:px-6 text-center">
-              <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="related" />
-            </div>
+            {/* One FAQ card, same look as the FAQ of the repair pages: the accordion
+                borrows a repair-layout slug for styling only, the wrapper class
+                enables the matching CSS. The old small gold lines now live in its answers. */}
+            <section className="page-repair-accordion relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-4 pb-24">
+              <ServiceAccordion
+                service={{ ...service, slug: 'serwis-drukarek-laserowych' }}
+                locale={locale}
+                t={serviceAccordionI18n[locale]}
+                pricing={getServiceDisplayPricing(service.slug, service.pricingSections, locale)}
+              />
+            </section>
           </div>
         ) : (
           <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
