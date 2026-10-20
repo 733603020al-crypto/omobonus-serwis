@@ -33,7 +33,7 @@ export const diagnostaSection = (): PricingSection => ({
 export const dojazdSection = (): PricingSection => ({
   id: 'dojazd',
   title: 'Выезд',
-  status: '20 zł',
+  status: '25 zł',
   footer: 'Мы не говорим, что бесплатно заберём устройство у клиента и доставим его обратно, а потом добавляем эти расходы к стоимости ремонта.',
   items: [
     {

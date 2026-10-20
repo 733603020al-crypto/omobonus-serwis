@@ -137,7 +137,7 @@ const applyInkjetFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-24', title: 'Drukarka nie łączy się przez Wi-Fi / LAN albo komputer jej nie widzi — czy to naprawiacie?', items: [], answer: 'Tak. Sprawdzamy sterowniki, ustawienia sieci, firmware, porty USB/LAN oraz konfigurację drukarki i komputera.' },
     { id: 'faq-25', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonane naprawy udzielamy gwarancji od 3 do 12 miesięcy, zależnie od rodzaju pracy i zastosowanych części.' },
     { id: 'faq-26', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Zależy od usługi. Jeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a potrzebne części są rozliczane osobno. Przy wymianie / czyszczeniu absorbera zużytego tuszu cena 250 zł obejmuje już absorber i materiały potrzebne do wykonania usługi.' },
-    { id: 'faq-27', title: 'Ile kosztuje odbiór lub dostawa drukarki?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 20 zł netto. Przy dłuższej trasie doliczamy 1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
+    { id: 'faq-27', title: 'Ile kosztuje odbiór lub dostawa drukarki?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
   ]
 }
 
