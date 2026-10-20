@@ -1,8 +1,6 @@
 import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import Image, { getImageProps } from 'next/image'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
@@ -17,7 +15,10 @@ import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import { getServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import GoogleReviews from '@/components/google-reviews'
-import { serviceCardBaked as CARD_BAKED, relatedServiceSlugs } from '@/lib/services-meta-shared'
+import { Services } from '@/components/sections/services'
+import { PRINTER_HUB_CATEGORIES } from '@/config/service-categories'
+import { uk } from '@/lib/i18n/uk'
+import { ru } from '@/lib/i18n/ru'
 import { PrinterHubCarousel, PrinterHubMid } from '@/components/printer-hub-hero'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
@@ -92,7 +93,8 @@ const PRINTER_HERO_MIDS = [
   { group: 'printer', parts: ['drukarek', 'etykiet'] },
 ] as const
 // "Zobacz więcej →" under the card names (as on the home cards).
-const MORE_LABEL = { pl: 'Zobacz więcej', uk: 'Детальніше', ru: 'Подробнее' } as const
+// Card labels for the printer hub tabs (PL uses the component's defaults).
+const HUB_SERVICES_T = { pl: undefined, uk: uk.services, ru: ru.services } as const
 
 // serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -456,7 +458,9 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
     : REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug ?? '') ? 'pt-3 pb-24' : 'pt-6 pb-24'
   // Na druk-3d-na-zamowienie ten tekst nie ma być semantycznym H2 (nie jest
   // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
-  const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : 'h2'
+  // On the printer hub (variant related) these phrases are plain text too: the
+  // category tabs above are the page's H2s.
+  const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : variant === 'related' ? 'p' : 'h2'
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
@@ -861,8 +865,8 @@ export function ServicePageTemplate({
 
                     {headings.h2 && (() => {
                       // Lista marek „(HP, Epson, …)” pod H1 to opis, nie sekcja — zwykły <div> z tym samym wyglądem.
-                      // naprawa-drukarek i opisowe podtytuły (np. druk-3d) zostają <h2>.
-                      const SubTag = headings.h2.trim().startsWith('(') && slug !== 'naprawa-drukarek' ? 'div' : 'h2'
+                      // Opisowe podtytuły (np. druk-3d) zostają <h2>.
+                      const SubTag = headings.h2.trim().startsWith('(') ? 'div' : 'h2'
                       return (
                         <SubTag className="h1-sub text-[14px] md:text-[16px] opacity-80 font-cormorant font-bold text-[#ffffff] leading-[1.1] mt-1">
                           {headings.h2}
@@ -897,33 +901,32 @@ export function ServicePageTemplate({
         </div>
 
         {slug === 'naprawa-drukarek' ? (
-          <section id="uslugi" className="relative text-center pt-0 pb-2">
-            <div className="relative max-w-7xl mx-auto px-4 md:px-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                {[...(relatedServices ?? [])].sort((a, b) => relatedServiceSlugs.indexOf(a.slug) - relatedServiceSlugs.indexOf(b.slug)).map((rs) => (
-                  // Same cards as the "Drukarki biurowe" tab on the home page.
-                  <Link
-                    key={rs.slug}
-                    href={`${basePath}/${rs.slug}`}
-                    prefetch={false}
-                    className={`group relative [container-type:inline-size] ${CARD_BAKED[rs.slug] ? 'md:min-h-[168px]' : 'min-h-[168px]'} py-4 pl-6 md:pl-8 pr-3 flex items-center text-left w-full zakres-paper-card services-home-card services-card-hover isolate ${CARD_BAKED[rs.slug] ? 'services-card-baked' : ''}`}
-                    style={CARD_BAKED[rs.slug] ? ({ '--baked-d': `url(${CARD_BAKED[rs.slug].d})`, '--baked-m': `url(${CARD_BAKED[rs.slug].m})` } as React.CSSProperties) : undefined}
-                  >
-                    <div className="relative z-[4] flex-none max-w-[49%] flex flex-col items-start">
-                      <div className="font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
-                        {rs.displayTitle}
-                      </div>
-                      <span className="flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] group-hover:translate-x-1 transition-transform">
-                        <span>{MORE_LABEL[locale]}</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="related" />
-          </section>
+          <div className="relative">
+            {/* Same category tabs and cards as the home catalogue, printers only:
+                first tab open on desktop, all folded on phones (as on home). */}
+            <Services
+              servicesData={(relatedServices ?? []).map((rs) => ({ slug: rs.slug, title: rs.title, icon: rs.iconSrc }))}
+              basePath={basePath}
+              t={HUB_SERVICES_T[locale]}
+              locale={locale}
+              bare
+              categories={PRINTER_HUB_CATEGORIES}
+              showHeading={false}
+              centerLastRow
+              sectionClassName="relative pt-2 pb-2 text-center text-white overflow-hidden"
+            />
+            {/* One FAQ card, same look as the FAQ of the repair pages: the accordion
+                borrows a repair-layout slug for styling only, the wrapper class
+                enables the matching CSS. The old small gold lines now live in its answers. */}
+            <section className="page-repair-accordion relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-4 pb-24">
+              <ServiceAccordion
+                service={{ ...service, slug: 'serwis-drukarek-laserowych' }}
+                locale={locale}
+                t={serviceAccordionI18n[locale]}
+                pricing={getServiceDisplayPricing(service.slug, service.pricingSections, locale)}
+              />
+            </section>
+          </div>
         ) : (
           <section className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
             {/* Ceny i słownik liczone tu, na serwerze — do przeglądarki trafia tylko ta usługa i ten język. */}

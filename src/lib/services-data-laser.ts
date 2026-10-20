@@ -152,7 +152,7 @@ const applyLaserFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-25', title: 'Drukarka jest offline, nie łączy się przez Wi-Fi / LAN albo komputer jej nie widzi — czy to naprawiacie?', items: [], answer: 'Tak. Sprawdzamy sterowniki, konfigurację sieci, porty USB/LAN, firmware oraz ustawienia drukarki i komputera. Konfigurujemy również skanowanie sieciowe, SMB, e-mail i inne funkcje urządzeń wielofunkcyjnych.' },
     { id: 'faq-27', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonane naprawy udzielamy gwarancji od 3 do 12 miesięcy, zależnie od rodzaju pracy i zastosowanych części.' },
     { id: 'faq-28', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Nie. Jeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a potrzebne części są rozliczane osobno.' },
-    { id: 'faq-29', title: 'Ile kosztuje odbiór lub dostawa drukarki?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 20 zł netto. Przy dłuższej trasie doliczamy 1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
+    { id: 'faq-29', title: 'Ile kosztuje odbiór lub dostawa drukarki?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
   ]
 }
 

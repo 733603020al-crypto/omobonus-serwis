@@ -144,13 +144,13 @@ const applySpozywczeRepairsSection = (sections: PricingSection[]) => {
   ]
 }
 
-// Dojazd tej strony: 1,50 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
+// Dojazd tej strony: 2 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
 const applySpozywczeDojazdSection = (sections: PricingSection[]) => {
   const dojazd = sections.find(section => section.id === 'dojazd')
   if (!dojazd?.items[2]) return
   dojazd.items[2] = {
     ...dojazd.items[2],
-    service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (1,50 zł za każdy dodatkowy km całej trasy tam i z powrotem ponad pierwsze 5 km)',
+    service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (2 zł za każdy dodatkowy km całej trasy tam i z powrotem ponad pierwsze 5 km)',
   }
 }
 
@@ -183,7 +183,7 @@ const applySpozywczeFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-23', title: 'Czy części są w cenie naprawy?', items: [], answer: 'Ceny w cenniku dotyczą robocizny. Przy usługach oznaczonych **„+ części”** koszt potrzebnych części doliczamy osobno — po uzgodnieniu z Tobą.' },
     { id: 'faq-24', title: 'Czy mogę osobiście dostarczyć drukarkę do serwisu?', items: [], answer: 'Tak. To preferowany sposób. Jeśli nie masz takiej możliwości, możemy zorganizować odbiór urządzenia.' },
     { id: 'faq-25', title: 'Czy mogę wysłać drukarkę kurierem z innego miasta?', items: [], answer: 'Tak. Możesz samodzielnie wysłać dobrze zabezpieczoną drukarkę kurierem do naszego serwisu. Przed wysyłką skontaktuj się z nami. Nie organizujemy obecnie odbioru kurierskiego na terenie całej Polski.' },
-    { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa?', items: [], answer: '**20 zł** obejmuje trasę do 2,5 km od serwisu, czyli do 5 km łącznie w obie strony. Powyżej tego limitu: **20 zł + 1,50 zł/km** — za każdy dodatkowy kilometr całej trasy tam i z powrotem ponad pierwsze 5 km.' },
+    { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa?', items: [], answer: '**25 zł** obejmuje trasę do 2,5 km od serwisu, czyli do 5 km łącznie w obie strony. Powyżej tego limitu: **25 zł + 2 zł/km** — za każdy dodatkowy kilometr całej trasy tam i z powrotem ponad pierwsze 5 km.' },
     { id: 'faq-27', title: 'Jak często wykonywać konserwację?', items: [], answer: 'Zależy od modelu i intensywności pracy. Regularnej kontroli wymagają m.in. głowica, stacja serwisowa, czujniki, platforma oraz układ atramentowy.' },
     { id: 'faq-28', title: 'Czy udrażnianie głowicy jest częścią zwykłej konserwacji?', items: [], answer: 'Nie. Konserwacja dotyczy sprawnego urządzenia. Udrażnianie lub regeneracja niedrożnej głowicy jest usługą naprawczą.' },
     { id: 'faq-29', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonaną usługę serwisową udzielamy **3 miesięcy gwarancji**, a na **udrażnianie i regenerację głowicy — 7 dni**. Części podlegają gwarancji producenta lub dostawcy.' },

@@ -29,13 +29,13 @@ const applyKawaRepairsSection = (sections: PricingSection[]) => {
   repairsSection.subcategories = kawaRepairSubcategories('pl')
 }
 
-// Dojazd tej strony: 1,50 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
+// Dojazd tej strony: 2 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
 const applyKawaDojazdSection = (sections: PricingSection[]) => {
   const dojazd = sections.find(section => section.id === 'dojazd')
   if (!dojazd?.items[2]) return
   dojazd.items[2] = {
     ...dojazd.items[2],
-    service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (1,50 zł za każdy dodatkowy km całej trasy tam i z powrotem ponad pierwsze 5 km)',
+    service: 'Odbiór lub dostawa powyżej 2,5 km od serwisu (2 zł za każdy dodatkowy km całej trasy tam i z powrotem ponad pierwsze 5 km)',
   }
 }
 

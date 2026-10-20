@@ -1,6 +1,6 @@
 // Общая сборка SEO-панели: данные всех вкладок (%TEMP%\omobonus-seo-<вкладка>.json)
 // + история (docs/seo/audit-history.json) → %TEMP%\omobonus-seo-panel.html.
-// Вызывается из title-audit.mjs и description-audit.mjs.
+// Вызывается из title-audit.mjs, description-audit.mjs и heading-audit.mjs.
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -10,7 +10,7 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 export const HISTORY = path.join(ROOT, 'docs/seo/audit-history.json')
 export const PANEL = path.join(os.tmpdir(), 'omobonus-seo-panel.html')
 const TEMPLATE = path.join(ROOT, 'scripts/seo-audit/panel-template.html')
-const TABS = ['title', 'description']
+const TABS = ['title', 'description', 'h1', 'h2', 'h3', 'h4']
 export const SITE = process.env.SEO_SITE || 'http://localhost:3000'
 export const today = () => new Date().toLocaleDateString('sv-SE') // YYYY-MM-DD
 const tabFile = (k) => path.join(os.tmpdir(), `omobonus-seo-${k}.json`)
@@ -50,7 +50,7 @@ function html(hist) {
   for (const k of TABS) {
     if (!fs.existsSync(tabFile(k))) continue
     const d = JSON.parse(fs.readFileSync(tabFile(k), 'utf8'))
-    DATA[k] = { rows: d.rows, groups: d.groups }
+    DATA[k] = { rows: d.rows, groups: d.groups, ...(d.extra || {}) }
     MISSING[k] = d.missing || []
   }
   return fs.readFileSync(TEMPLATE, 'utf8').replace('/*DATA*/', () =>

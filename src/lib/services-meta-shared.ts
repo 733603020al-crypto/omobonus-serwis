@@ -73,11 +73,21 @@ export const slugBrands: Record<string, string[]> = {
   'druk-3d-na-zamowienie': ['bambulab', 'formlabs', 'creality', 'anycubic', 'prusa', 'flashforge', 'elegoo', 'zortrax', 'ultimaker', 'phrozen', 'artillery', 'snapmaker'],
 }
 
+// Cards on /uslugi/naprawa-drukarek (all tabs of PRINTER_HUB_CATEGORIES).
 export const relatedServiceSlugs = [
   'serwis-drukarek-laserowych',
   'serwis-drukarek-atramentowych',
   'serwis-drukarek-iglowych',
   'serwis-drukarek-termicznych',
+  'serwis-drukarek-3d',
+  'serwis-drukarek-sublimacyjnych',
+  'serwis-drukarek-dtf',
+  'serwis-drukarek-dtg',
+  'serwis-drukarek-spozywczych',
+  'serwis-drukarek-do-kart-plastikowych',
+  'serwis-plotterow',
+  'wynajem-drukarek',
+  'drukarka-zastepcza',
 ]
 
 // Strony tymczasowo wyłączone z indeksowania (kopie w trakcie przepisywania treści).

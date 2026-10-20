@@ -1,4 +1,5 @@
 import manifest from '@/config/manifest'
+import { printerHubFaqRu } from './services-data-printer-hub-faq'
 import type { ServiceData, PricingSection } from './services-data-types'
 import { diagnostaSection, dojazdSection } from './services-data-ru-shared'
 import { laptopDiagnostaSection, laptopDojazdSection, laptopKonserwacja, laptopNaprawy, laptopFaqSection } from './services-data-ru-laptop'
@@ -70,9 +71,8 @@ export const servicesRu: ServiceData[] = [
     subtitle: 'Ремонт специализированных матричных принтеров',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Ремонт специализированных матричных принтеров.',
-    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
-    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
-    pricingSections: [],
+    // Hub: category tabs instead of a price list, plus one FAQ card (also feeds FAQPage JSON-LD).
+    pricingSections: [printerHubFaqRu()],
   },
   {
     slug: 'serwis-drukarek-laserowych',

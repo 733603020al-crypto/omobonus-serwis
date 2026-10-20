@@ -104,7 +104,7 @@ export const createIglowePricingSections = (): PricingSection[] => {
     // Wspólne FAQ bez pytań o dane i zalanie; własne odpowiedzi dla opłacalności, dojazdu i marek
     const overrides: Record<string, { title?: string; answer: string }> = {
       'faq-1': { answer: 'Zwykle tak. Drukarki igłowe są bardzo trwałe, a części i taśmy tanie. Naprawa jest szczególnie opłacalna, gdy drukarka drukuje na papierze ciągłym, formularzach wielowarstwowych albo współpracuje ze starszym systemem LPT / RS232, pod który trudno dobrać nowe urządzenie. Po diagnozie mówimy wprost, czy naprawa ma sens.' },
-      'faq-4': { title: 'Czy mogę dostarczyć drukarkę sam albo zamówić odbiór?', answer: 'Tak. Możesz dostarczyć drukarkę do serwisu we Wrocławiu albo zamówić odbiór: do 2,5 km od serwisu 20 zł netto, dalej +1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy.' },
+      'faq-4': { title: 'Czy mogę dostarczyć drukarkę sam albo zamówić odbiór?', answer: 'Tak. Możesz dostarczyć drukarkę do serwisu we Wrocławiu albo zamówić odbiór: do 2,5 km od serwisu 25 zł netto, dalej +2 zł netto za każdy kilometr powyżej 5 km łącznej trasy.' },
       'faq-8': { title: 'Jakie marki drukarek igłowych serwisujecie?', answer: 'Serwisujemy m.in. Epson LX, FX, LQ i DFX, OKI Microline, Tally Dascom, Citizen, Star i Panasonic. Przed przyjęciem potwierdzamy możliwość naprawy konkretnego modelu.' },
     }
     const subs = faq.subcategories

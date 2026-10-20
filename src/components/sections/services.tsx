@@ -9,7 +9,7 @@ import Image from 'next/image'
 import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
-import { SERVICE_CATEGORIES, type ServiceLocale } from '@/config/service-categories'
+import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceLocale } from '@/config/service-categories'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -115,18 +115,42 @@ const TAB_ICON_MASK: Record<string, string> = {
 const CARD_HOVER_MOVE = 'transition-all duration-[180ms] ease-[cubic-bezier(0.4,0,0.2,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:[transform:translateY(-4px)_scale(1.04)]'
 const CARD_HOVER_SHADOW = '[@media(hover:hover)_and_(pointer:fine)]:group-hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)]'
 
+// "Drukarek (kserokopiarek) biurowych" vs phone "Drukarek biurowych": returns
+// [before, hidden part, after] when the phone label is the title without one
+// bracketed fragment, so the heading carries the full title only once.
+function splitMobileTitle(category: ServiceCategory, locale: ServiceLocale): [string, string, string] | null {
+  if (!category.titleMobile) return null
+  const title = (category.homeTitle ?? category.title)[locale]
+  const m = title.match(/\s*\([^)]*\)/)
+  if (!m || m.index === undefined) return null
+  const before = title.slice(0, m.index)
+  const after = title.slice(m.index + m[0].length)
+  return before + after === category.titleMobile[locale] ? [before, m[0], after] : null
+}
+
 export function Services({
   servicesData,
   basePath = '/uslugi',
   t,
   bare = false,
   locale = 'pl',
+  categories = SERVICE_CATEGORIES,
+  showHeading = true,
+  sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
+  centerLastRow = false,
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
   t?: ServicesT
   bare?: boolean
   locale?: ServiceLocale
+  /** Tabs to show (the printer page passes its own printer-only set). */
+  categories?: ServiceCategory[]
+  /** The big "Serwis i naprawa" heading above the tabs (home only). */
+  showHeading?: boolean
+  sectionClassName?: string
+  /** Printer page: an incomplete last row of cards is centred (same card width and gaps). */
+  centerLastRow?: boolean
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
@@ -149,7 +173,7 @@ export function Services({
   // Every category's cards are in the HTML (search engines see all services
   // and their links without clicking a tab); the inactive panels are simply
   // display:none, so their lazy pictures aren't fetched until opened.
-  const categoryCards = (index: number) => [...SERVICE_CATEGORIES[index].items, ...(SERVICE_CATEGORIES[index].subgroup?.items ?? [])]
+  const categoryCards = (index: number) => [...categories[index].items, ...(categories[index].subgroup?.items ?? [])]
     .filter((item) => !item.menuOnly && (!item.locales || item.locales.includes(locale)))
     .map((item) => {
       const slug = item.href.split('/').pop() as string
@@ -157,7 +181,7 @@ export function Services({
     })
 
   const selectTab = (index: number) => {
-    const count = SERVICE_CATEGORIES.length
+    const count = categories.length
     const next = (index + count) % count
     setActive(next)
     setCollapsed(false)
@@ -188,7 +212,7 @@ export function Services({
     if (e.key === 'ArrowRight') selectTab(index + 1)
     else if (e.key === 'ArrowLeft') selectTab(index - 1)
     else if (e.key === 'Home') selectTab(0)
-    else if (e.key === 'End') selectTab(SERVICE_CATEGORIES.length - 1)
+    else if (e.key === 'End') selectTab(categories.length - 1)
     else return
     e.preventDefault()
   }
@@ -255,7 +279,7 @@ export function Services({
     <section
       ref={sectionRef}
       id="uslugi"
-      className="relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden"
+      className={sectionClassName}
     >
 
       {/* Tło */}
@@ -274,6 +298,7 @@ export function Services({
 
       {/* Zawartość */}
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
+        {showHeading && (
         <div className="text-center mt-[10px]">
           {/* Same weight/line-height as "Serwis i naprawa" in the home hero H1; desktop 0.93em of its 60px,
               phones ~18% larger than before (was 0.93*clamp(28px,8.4vw,46px)). */}
@@ -284,6 +309,7 @@ export function Services({
             {d.subheading}
           </h2>
         </div>
+        )}
 
         {/* Phones: a vertical accordion — the tablist is display:contents, so its cells
             and the one card panel are flex items here, ordered by --m-order: the
@@ -293,13 +319,15 @@ export function Services({
         <div
           role="tablist"
           aria-label={d.subheading}
-          className="max-md:contents md:mb-6 md:grid md:grid-cols-2 md:gap-[6px] lg:grid-cols-[repeat(4,auto)]"
+          className={`max-md:contents md:mb-6 md:grid md:grid-cols-2 md:gap-[6px] ${categories.length === 3 ? 'lg:grid-cols-[repeat(3,auto)]' : 'lg:grid-cols-[repeat(4,auto)]'}`}
         >
-          {SERVICE_CATEGORIES.map((category, i) => {
+          {categories.map((category, i) => {
             // Folded (phones only): the category looks and reads as closed.
             const selected = i === active && !collapsed
             return (
-              <div key={category.title.pl} role="presentation" className="group relative max-md:[order:var(--m-order)]" style={{ '--m-order': i <= active ? i : i + 1 } as React.CSSProperties}>
+              // Each category name is the section's H2 for search engines; role=presentation
+              // keeps the tab structure intact for screen readers.
+              <h2 key={category.title.pl} role="presentation" className="group relative max-md:[order:var(--m-order)]" style={{ '--m-order': i <= active ? i : i + 1 } as React.CSSProperties}>
                 {/* Active parchment fills the whole cell (not just the button inside it). */}
                 {selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${PARCHMENT}`} />}
                 <button
@@ -338,7 +366,14 @@ export function Services({
                       WebkitMaskPosition: 'center',
                     }}
                   />
-                  {category.titleMobile ? (
+                  {splitMobileTitle(category, locale) ? (
+                    // One heading text: the part missing from the phone label is hidden there.
+                    <span>
+                      {splitMobileTitle(category, locale)![0]}
+                      <span className="max-md:hidden">{splitMobileTitle(category, locale)![1]}</span>
+                      {splitMobileTitle(category, locale)![2]}
+                    </span>
+                  ) : category.titleMobile ? (
                     <>
                       <span className="md:hidden">{category.titleMobile[locale]}</span>
                       <span className="max-md:hidden">{(category.homeTitle ?? category.title)[locale]}</span>
@@ -349,19 +384,21 @@ export function Services({
                   {/* Phones: accordion arrow (same chevron as the mobile menu's Usługi). */}
                   <ChevronDown aria-hidden="true" className={`ml-auto h-5 w-5 flex-shrink-0 transition-transform duration-200 md:hidden ${selected ? 'rotate-180' : ''}`} />
                 </button>
-              </div>
+              </h2>
             )
           })}
         </div>
 
-        {SERVICE_CATEGORIES.map((category, c) => (
+        {categories.map((category, c) => (
           <div
             key={category.title.pl}
             role="tabpanel"
             id={`${idBase}-panel-${c}`}
             aria-labelledby={`${idBase}-tab-${c}`}
             className={c === active
-              ? `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
+              ? `${centerLastRow
+                  ? 'flex flex-wrap justify-center md:[&>*]:!w-[calc((100%-1rem)/2)] lg:[&>*]:!w-[calc((100%-2rem)/3)]'
+                  : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
               : 'hidden'}
             style={c === active ? ({ '--m-order': active + 1 } as React.CSSProperties) : undefined}
           >

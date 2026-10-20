@@ -147,7 +147,7 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-22', title: 'Kiedy trzeba wymienić folię FEP / nFEP?', items: [], answer: 'Gdy jest uszkodzona, przebita, mocno porysowana, zmętniała albo powoduje problemy z odrywaniem kolejnych warstw.' },
     { id: 'faq-23', title: 'Jak rozpoznać uszkodzoną matrycę LCD w drukarce żywicznej?', items: [], answer: 'Typowe objawy to brak utwardzania w części pola roboczego, martwe obszary, pasy lub powtarzające się braki w modelach. Matrycę sprawdzamy przed decyzją o wymianie.' },
     { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: 'Przed transportem skontaktuj się z nami. W drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę. W urządzeniu żywicznym należy opróżnić zbiornik z żywicy i zabezpieczyć wannę, platformę oraz oś Z.' },
-    { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa drukarki 3D?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 20 zł netto. Przy dłuższej trasie doliczamy 1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
+    { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa drukarki 3D?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
     { id: 'faq-27', title: 'Jak często wykonywać konserwację drukarki 3D?', items: [], answer: 'Przy codziennym druku zalecamy konserwację co 3–6 miesięcy, a wcześniej, gdy pojawiają się stuki, przesunięcia warstw, problemy z pierwszą warstwą lub nierówna ekstruzja.' },
   ]
 }

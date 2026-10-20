@@ -1,4 +1,5 @@
 import manifest from '@/config/manifest'
+import { printerHubFaqPl } from './services-data-printer-hub-faq'
 
 // Public API kept identical to the pre-split single-file module: types,
 // layout constants, and per-service pricing-section builders are now split
@@ -71,9 +72,8 @@ export const services: ServiceData[] = [
     subtitle: 'Naprawa specjalistycznych drukarek igłowych',
     icon: manifest['07_serwis_drukarek_iglowych'],
     description: 'Naprawa specjalistycznych drukarek igłowych.',
-    // Strona renderuje siatkę kart zamiast cennika i nie ma widocznego FAQ — bez sekcji,
-    // żeby nie generować JSON-LD FAQPage dla treści, której nie ma na stronie
-    pricingSections: [],
+    // Hub: category tabs instead of a price list, plus one FAQ card (also feeds FAQPage JSON-LD).
+    pricingSections: [printerHubFaqPl()],
   },
   {
     slug: 'serwis-drukarek-laserowych',

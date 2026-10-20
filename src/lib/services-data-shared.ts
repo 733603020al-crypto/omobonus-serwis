@@ -30,7 +30,7 @@ export const defaultPricingSections: PricingSection[] = [
   {
     id: 'dojazd',
     title: 'Dojazd',
-    status: '20 zł',
+    status: '25 zł',
     footer:
       'Nie mówimy, że dojazd lub odbiór są „za darmo”, a następnie doliczamy ten koszt do ceny naprawy',
     items: [

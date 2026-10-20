@@ -28,10 +28,10 @@ export const kawaNaprawyRu: PricingSection = {
   items: [],
 }
 
-// Dojazd tej strony: 1,50 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
+// Dojazd tej strony: 2 zł/km liczone od całej trasy tam i z powrotem ponad pierwsze 5 km
 const kawaDojazdRu = (): PricingSection => {
   const section = dojazdSection()
-  section.items = section.items.map((item, index) => (index === 2 ? { ...item, service: 'Выезд или доставка свыше 2,5 км от сервиса (1,50 zł за каждый дополнительный км всего маршрута туда и обратно сверх первых 5 км)' } : item))
+  section.items = section.items.map((item, index) => (index === 2 ? { ...item, service: 'Выезд или доставка свыше 2,5 км от сервиса (2 zł за каждый дополнительный км всего маршрута туда и обратно сверх первых 5 км)' } : item))
   return section
 }
 

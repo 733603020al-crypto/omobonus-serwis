@@ -134,7 +134,7 @@ const applyThermalFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-21', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Jeżeli przy usłudze widnieje „+ części”, cena obejmuje robociznę, a części są rozliczane osobno. Koszt części podajemy przed rozpoczęciem naprawy.' },
     { id: 'faq-22', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonane naprawy udzielamy gwarancji od 3 do 12 miesięcy, zależnie od rodzaju pracy i zastosowanych części.' },
     { id: 'faq-23', title: 'Czy mogę dostarczyć drukarkę samodzielnie?', items: [], answer: 'Tak. Jeśli masz możliwość bezpiecznego transportu, możesz dostarczyć urządzenie bezpośrednio do serwisu. Możesz również zamówić odbiór zgodnie z aktualnym cennikiem.' },
-    { id: 'faq-24', title: 'Ile kosztuje odbiór lub dostawa drukarki etykiet?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 20 zł netto. Przy dłuższej trasie doliczamy 1,5 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
+    { id: 'faq-24', title: 'Ile kosztuje odbiór lub dostawa drukarki etykiet?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
     { id: 'faq-25', title: 'Jak często czyścić głowicę i konserwować drukarkę etykiet?', items: [], answer: 'Głowicę warto czyścić przy każdej wymianie ribbonu lub rolki etykiet, a przy intensywnej pracy częściej. Pełną konserwację zalecamy co 6–12 miesięcy albo wcześniej, gdy pojawiają się blade fragmenty, białe linie lub problemy z prowadzeniem etykiet.' },
   ]
 }
