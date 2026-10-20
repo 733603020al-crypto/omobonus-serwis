@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
@@ -24,6 +24,16 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+
+// Phones: the page (and the textured bottom bar) is drawn to the screen edge, under
+// the Android gesture bar / iPhone home indicator; the bar pads itself by the safe area.
+// theme-color = the bottom bar's average tone (parchment under its 60% black overlay).
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#30220b',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
@@ -147,7 +157,7 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
       </head>
 
-      <body className="antialiased scroll-smooth pb-[88px] md:pb-0">
+      <body className="antialiased scroll-smooth pb-[calc(88px+env(safe-area-inset-bottom))] md:pb-0">
         <ScrollToTop />
         <GoldAnimationPause />
         <ConsentManager />
