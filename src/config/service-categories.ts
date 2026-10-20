@@ -95,3 +95,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     },
   },
 ]
+
+// /uslugi/naprawa-drukarek: the same category tabs and cards as the home
+// catalogue, printers only — office and specialist printers as on the home
+// page, plus plotters, rental and a replacement printer.
+export const PRINTER_HUB_CATEGORIES: ServiceCategory[] = [
+  SERVICE_CATEGORIES[1],
+  SERVICE_CATEGORIES[2],
+  {
+    title: { pl: 'Ploterów i usług', uk: 'Плотерів та послуг', ru: 'Плоттеров и услуг' },
+    icon: '/images/menu-icon-plotery.webp',
+    items: [
+      { label: { pl: 'Ploterów', uk: 'Плотери', ru: 'Плоттеры' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
+      { label: { pl: 'Wynajem drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров' }, href: '/uslugi/wynajem-drukarek', icon: '/images/menu-icon-wynajem.webp' },
+      { label: { pl: 'Drukarka zastępcza', uk: 'Підмінний принтер', ru: 'Подменный принтер' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/menu-icon-drukarka-zastepcza.webp' },
+    ],
+  },
+]
