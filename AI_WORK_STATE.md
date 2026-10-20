@@ -306,6 +306,7 @@
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
 ### ЭТАП 175 (2026-10-20, test) — нижняя системная панель Android
 - Все layout PL/UK/RU: viewport-fit=cover + theme-color #30220b (средний тон мобильного меню: пергамент под 60% чёрного). Мобильное меню уже имело отступ safe-area снизу → текстура уходит под жестовую полоску; body pb = 88px + safe-area. body padding-left/right = safe-area (только вырез iPhone в ландшафте). color-scheme не задан сознательно (меняет формы/скроллбары). Ждёт проверки на реальном Android (жесты / 3 кнопки) и iPhone.
+- Владелец открывает сайт значком на телефоне — без манифеста это был простой ярлык, правки не видны. Добавлен public/manifest.webmanifest (standalone, theme/background #30220b, иконки public/icons/app-icon-192/512.png из Logo_Omobonus_email.jpg) + `manifest` в metadata трёх layout. Значок нужно переустановить. Ещё не закоммичено.
 
 ### ЭТАП 174 (2026-10-20, test) — хаб принтеров: неполный последний ряд карточек по центру
 - Services: проп centerLastRow (только /uslugi/naprawa-drukarek) — flex-wrap + justify-center с той же шириной карточек (lg 3, md 2 колонки, gap 16px). Главная без изменений. FAQ уже был по центру.
