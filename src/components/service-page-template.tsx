@@ -912,6 +912,7 @@ export function ServicePageTemplate({
               bare
               categories={PRINTER_HUB_CATEGORIES}
               showHeading={false}
+              centerLastRow
               sectionClassName="relative pt-2 pb-2 text-center text-white overflow-hidden"
             />
             {/* One FAQ card, same look as the FAQ of the repair pages: the accordion

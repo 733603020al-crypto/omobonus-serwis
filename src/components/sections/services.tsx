@@ -137,6 +137,7 @@ export function Services({
   categories = SERVICE_CATEGORIES,
   showHeading = true,
   sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
+  centerLastRow = false,
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
@@ -148,6 +149,8 @@ export function Services({
   /** The big "Serwis i naprawa" heading above the tabs (home only). */
   showHeading?: boolean
   sectionClassName?: string
+  /** Printer page: an incomplete last row of cards is centred (same card width and gaps). */
+  centerLastRow?: boolean
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
@@ -393,7 +396,9 @@ export function Services({
             id={`${idBase}-panel-${c}`}
             aria-labelledby={`${idBase}-tab-${c}`}
             className={c === active
-              ? `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
+              ? `${centerLastRow
+                  ? 'flex flex-wrap justify-center md:[&>*]:!w-[calc((100%-1rem)/2)] lg:[&>*]:!w-[calc((100%-2rem)/3)]'
+                  : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
               : 'hidden'}
             style={c === active ? ({ '--m-order': active + 1 } as React.CSSProperties) : undefined}
           >
