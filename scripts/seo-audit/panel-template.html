@@ -89,6 +89,27 @@ td.why .tags{margin-top:0}
 .empty{max-width:760px;margin:24px auto;padding:0 16px}
 .tag.nw{background:#dde7f7;color:#1d3f73}
 .yours{display:block;font-size:12px;color:#4a3d30;margin-top:3px}
+/* Листы H1–H4: та же разметка, что у Title/Description, плюс тег и «Свой вариант» с уровнем */
+.htag{font:600 11.5px ui-monospace,Consolas,monospace;background:#efe6d6;color:#5b3d10;border-radius:4px;padding:1px 5px;display:inline-block;margin-bottom:3px}
+.htag.plain{background:#eceae6;color:#6d6255}
+.muted{color:var(--muted);font-size:12px}
+.ls{display:inline-block;font-size:11px;border-radius:4px;padding:0 5px;margin:2px 2px 0 0;white-space:nowrap}
+.ls.a{background:var(--okbg);color:var(--ok)}.ls.c{background:#fff1d6;color:var(--warn)}.ls.m{background:var(--nobg);color:var(--no)}
+.tag.st1{background:#dde7f7;color:#1d3f73}.tag.st2{background:#efe0f5;color:#5a2a73}
+.tag.cf{background:var(--okbg);color:var(--ok)}.tag.gs{background:#fff1d6;color:var(--warn)}
+.tag.hs-approved{background:var(--okbg);color:var(--ok)}.tag.hs-rejected{background:var(--nobg);color:var(--no)}.tag.hs-rework{background:#fff1d6;color:var(--warn)}.tag.hs-implemented{background:#dde7f7;color:#1d3f73}
+tr.hr.gs>td{border-top:2px solid var(--line)}
+tr.ownv{background:#fff6e6}
+.act.h3b{flex-wrap:wrap;min-width:200px}.act.h3b .a{flex:1 1 30%}
+.a.my.on{background:var(--warn);color:#fff;border-color:var(--warn)}
+.own.o2{border-color:var(--warn);background:#fffaf0}.own.o2 label{color:var(--warn)}
+.own.o2 select{font:inherit;font-size:12.5px;padding:2px 4px;margin-bottom:4px;max-width:100%}
+.edit.cm{margin-top:6px}.edit.cm .hc{border:0;outline:0;font:inherit;font-size:12.5px;width:100%;resize:none;padding:3px 0;background:transparent;display:block;field-sizing:content;min-height:1.6em}
+.reset.all{display:block;margin-top:6px;color:#7a4300;text-align:left}
+details.pl{margin-top:6px;font-size:12px}details.pl summary{cursor:pointer;color:#5b4b39}details.pl ul{margin:4px 0;padding-left:16px;max-height:240px;overflow:auto}
+details.hh{margin-top:6px;font-size:12px}details.hh summary{cursor:pointer;color:var(--muted)}details.hh ul{margin:4px 0;padding-left:16px}
+.wrap.nonav{grid-template-columns:minmax(0,1fr)}
+@media (max-width:900px){.tabs{flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -212,7 +233,7 @@ const DESC={key:'description',name:'Description',store:'omobonus-description-aud
   emptyTodo:'Новых ошибок и несогласованных Description нет.',
   emptyDone:'Таких страниц пока нет: ни один текущий Description не совпадает с согласованным форматом, поэтому все страницы вынесены в «Требуют решения».'};
 
-const SHEETS=[['title','Title',TITLE],['description','Description',DESC],['h1','H1'],['h2','H2'],['h3','H3'],['h4','H4']];
+const SHEETS=[['title','Title',TITLE],['description','Description',DESC],['h1','H1',mkHead('h1','H1')],['h2','H2',mkHead('h2','H2')],['h3','H3',mkHead('h3','H3')],['h4','H4',mkHead('h4','H4')]];
 
 // ===== Состояние =====
 const UIKEY='omobonus-title-audit-ui2';
@@ -293,7 +314,7 @@ function tabs(){const el=document.getElementById('tabs');const t=UI.tab[C.key];
   el.innerHTML=`<button class="tab ${t==='todo'?'on':''}" data-t="todo">Требуют решения · ${C.TODO.length}</button><button class="tab ${t==='done'?'on':''}" data-t="done">${C.doneLabel} · ${C.rows.length-C.TODO.length}</button>`;
   el.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{UI.tab[C.key]=b.dataset.t;saveUI();render();scrollTo(0,0)}))}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
-document.getElementById('copy').addEventListener('click',()=>{const lines=[`Решения по ${C.name} (аудит Omobonus):`,''];
+document.getElementById('copy').addEventListener('click',()=>{if(C.copy)return C.copy();const lines=[`Решения по ${C.name} (аудит Omobonus):`,''];
   for(const r of C.TODO){const d=dec(r);if(!d)continue;const s=st(r),f=fullOf(r);
     lines.push(`${r.u} [${LN[r.l]}] — ${d==='ok'?'УТВЕРДИТЬ':'ОТКЛОНИТЬ → свой вариант'}`);
     lines.push(`  сейчас: ${r.t} (${r.len})`);
@@ -303,6 +324,139 @@ document.getElementById('copy').addEventListener('click',()=>{const lines=[`Ре
   if(lines.length===2)lines.push('(решений пока нет)');
   const txt=lines.join('\n');
   (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Скопировано')).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Скопировано')})});
+
+// ===== Листы H1–H4 =====
+// Тот же порядок работы, что у Title и Description: страница — один блок, под каждым заголовком строки PL / UK / RU,
+// у каждой языковой версии своё решение: Утвердить / Отклонить / Свой вариант (+ комментарий).
+// Данные — scripts/seo-audit/heading-audit.mjs, предложения аудита — docs/seo/heading-decisions.json.
+// Из панели сайт не меняется: решения хранятся в браузере и уходят Claude кнопкой «Скопировать решения для Claude».
+// Текст после правки по предложению: строка прайса уходит в H4 без подписи в скобках, в остальных меняется только тег
+function pText(p,it){return p.tab==='h4'&&p.prop.tag==='h4'?it.text.replace(/\s*\([^()]*\)\s*$/,''):it.text}
+function mkHead(key,name){const d=DATA[key];if(!d)return {key,name,hasData:false,rows:[],TODO:[]};
+  const info={};for(const p of d.pages)info[p.u]={l:p.l,slug:p.s.replace(/^uslugi\//,''),name:p.name};
+  const byId=Object.fromEntries(d.rows.map(p=>[p.id,p])),rows=[],seen=new Set();
+  const add=r=>{let k=key+'|'+r.u+'|'+r.t,n=1;while(seen.has(k))k=key+'|'+r.u+'|'+r.t+'#'+(++n);seen.add(k);
+    rows.push(Object.assign(r,{k},info[r.u]||{l:'pl',slug:r.u,name:r.u}))};
+  // 1) элементы предложений аудита (в т.ч. не заголовки: строки прайса, карточки) 2) остальные заголовки уровня на сайте
+  for(const p of d.rows){const top=p.partOf&&byId[p.partOf]||p;
+    for(const pg of p.pages)pg.items.forEach((it,j)=>add({u:pg.u,tag:it.tag,t:it.text,now:it.now,pos:it.pos??1e9,pr:top,sub:p,ptag:p.prop.tag,ptext:pText(p,it),g:'P:'+p.id+':'+j}))}
+  const has=new Set(rows.map(r=>r.u+'|'+r.t));
+  for(const p of d.pages)(d.live[p.u]||[]).forEach((t,i)=>{if(!has.has(p.u+'|'+t))add({u:p.u,tag:key,t,pos:((d.livePos||{})[p.u]||[])[i]??1e9,g:'L:'+i})});
+  for(const r of rows)r.st=r.pr&&r.pr.status==='proposed'?'todo':'done';
+  return {key,name,hasData:true,rows,TODO:rows.filter(r=>r.st==='todo'),props:d.rows,keep:d.keep,stages:d.stages,render:hRender,copy:hCopy}}
+const HDSTORE='omobonus-headings-v2';const HD=load(HDSTORE);
+const hdsave=()=>{try{localStorage.setItem(HDSTORE,JSON.stringify(HD))}catch(e){}};
+const HTAGS=['h1','h2','h3','h4','p','div'];
+const HST={proposed:'Предложено',approved:'Утверждено',rejected:'Отклонено',rework:'На доработке',implemented:'Внедрено'};
+const HDN={ok:'Утвердить',no:'Отклонить',own:'Свой вариант'};
+const HLIVE={applied:['уже внедрено','a'],changed:['изменилось на сайте','c'],missing:['не найдено на сайте','m']};
+const LORD={pl:0,uk:1,ru:2};
+const tagTxt=t=>/^h\d$/.test(t)?t.toUpperCase():`обычный текст (${t})`;
+const hTag=t=>`<code class="htag${/^h\d$/.test(t)?'':' plain'}">&lt;${t}&gt;</code>`;
+const mdc=s=>esc(s||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`([^`]+)`/g,'<code>$1</code>');
+const hs=r=>HD[r.k]||(HD[r.k]={});
+// Решение действует только для той редакции предложения Claude, к которой оно было принято
+const hsig=r=>r.pr?r.pr.sig+'|'+r.ptag+'|'+r.ptext:'-';
+const hdec=r=>{const s=HD[r.k];return s&&s.d&&s.p===hsig(r)?s.d:null};
+// Общий компонент: элементы того же предложения аудита, без него — тот же заголовок на других страницах
+const comp=r=>r.pr?C.rows.filter(x=>x.pr===r.pr):C.rows.filter(x=>!x.pr&&x.t===r.t);
+const nPages=rs=>new Set(rs.map(x=>x.u)).size;
+// Разделы навигации — как у Title; страницы вне них — «Прочие страницы»
+function hGroups(){const G=(DATA.title&&DATA.title.groups||[]).map(([g,s])=>[g,s.slice()]),all=new Set(G.flatMap(g=>g[1]));
+  const rest=[...new Set(C.rows.map(r=>r.slug))].filter(s=>!all.has(s));if(rest.length)G.push(['Прочие страницы',rest]);return G}
+// Языковые версии одного заголовка — строки друг под другом: PL, UK, RU (порядок групп — как на странице)
+function hBlocks(rs){const m=new Map();for(const r of rs){if(!m.has(r.g))m.set(r.g,[]);m.get(r.g).push(r)}
+  const pos=g=>{const p=g.find(x=>x.l==='pl')||g[0];return p.pos};
+  return [...m.values()].map(g=>g.sort((a,b)=>LORD[a.l]-LORD[b.l])).sort((a,b)=>pos(a)-pos(b))}
+function hReason(r){if(!r.pr)return '';const p=r.pr,more=[p.conf?`<span class="tag ${p.conf==='П'?'cf':'gs'}">${p.conf==='П'?'подтверждено':'предположение'}</span>`:'',
+    p.query?'Запрос: '+mdc(p.query):'',p.source?'Источник: '+mdc(p.source):'',...(p.warnings||[]).map(w=>'◐ '+mdc(w)),p.implNote?'При внедрении: '+mdc(p.implNote):''].filter(Boolean);
+  return `<span class="tags"><span class="tag st${p.stage}">Этап ${p.stage}</span><span class="tag">${esc(p.priority)}</span></span><div>${mdc(p.reason)}</div>`
+   +(more.length?`<details class="ev"><summary>Запрос, источник, оговорки</summary><ul>${more.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:'')}
+function hComp(r){const c=comp(r);if(c.length<2)return '';const ps=[...new Set(c.map(x=>x.u))];
+  return `<details class="pl"><summary>${r.pr?'Общий компонент':'Тот же заголовок'}: ${c.length} заг. на ${ps.length} стр.</summary><ul>${ps.map(u=>`<li>${esc(u)}</li>`).join('')}</ul></details>`}
+function hHist(r){const s=HD[r.k]||{};const L=(r.pr?r.pr.history||[]:[]).map(h=>`<li>${fmtD(h.date)} — ${r.pr.id}: ${HST[h.status]||h.status}${h.note?': '+esc(h.note):''}</li>`)
+  .concat((s.log||[]).map(l=>`<li>${esc(l.at)} — ${l.d?HDN[l.d]:'решение снято'}${l.own?` «${esc(l.own.text)}» ${esc(tagTxt(l.own.tag))}`:''}${l.c?` · комментарий «${esc(l.c)}»`:''}${l.from?` · применено со строки ${esc(l.from)}`:''}</li>`));
+  return L.length?`<details class="hh"><summary>История решений (${L.length})</summary><ul>${L.join('')}</ul></details>`:''}
+function hRowHtml(r,first){const d=hdec(r),s=HD[r.k]||{},o=s.own||{tag:r.pr?r.ptag:r.tag,text:r.pr?r.ptext:r.t},n=comp(r).length;
+  return `<tr class="hr ${d==='ok'?'approved':d==='no'?'rejected':d==='own'?'ownv':''}${first?' gs':''}" data-k="${esc(r.k)}">
+  <td>${urlCell(r)}</td>
+  <td>${hTag(r.tag)}<div class="cur">${esc(r.t)}</div>${HLIVE[r.now]?`<span class="ls ${HLIVE[r.now][1]}">${HLIVE[r.now][0]}</span>`:''}</td>
+  <td>${r.pr?`${hTag(r.ptag)}<div class="prop">${esc(r.ptext)}</div>${r.ptag===r.tag&&r.ptext===r.t?'<span class="tag p">без изменений — уточнить</span>':''}<span class="tag">${esc(r.sub.id)}</span>${r.pr.status!=='proposed'?` <span class="tag hs-${r.pr.status}">${HST[r.pr.status]}</span>`:''}`:'<span class="muted">Изменений не предлагает</span>'}</td>
+  <td class="why">${hReason(r)}${hComp(r)}</td>
+  <td><div class="act h3b">${['ok','no','own'].map(k=>`<button class="a ${k==='own'?'my':k} ${d===k?'on':''}" data-d="${k}">${HDN[k]}</button>`).join('')}</div>
+   ${d==='own'?`<div class="own o2"><label>Свой вариант</label><select class="et">${HTAGS.map(t=>`<option value="${t}" ${t===o.tag?'selected':''}>${tagTxt(t)}</option>`).join('')}</select><div class="edit"><textarea class="ow" rows="1" placeholder="Текст заголовка">${esc(o.text)}</textarea></div></div>`:''}
+   ${d?`<div class="edit cm"><textarea class="hc" rows="1" placeholder="${d==='no'?'Почему отклонено (комментарий для Claude)':'Комментарий (необязательно)'}">${esc(s.c||'')}</textarea></div>`:''}
+   ${d&&n>1?`<button class="reset all">Применить это решение ко всем ${n} заг. компонента</button>`:''}
+   ${hHist(r)}</td></tr>`}
+// Свои варианты из прежней версии панели (тот же ключ «лист|URL|текст») переносятся как «Свой вариант»; старые записи не удаляются
+function hMigrate(S){if(S.mig)return;S.mig=1;const O=load('omobonus-headings-own-v1');let n=0;
+  for(const r of S.rows){const o=O[r.k];if(o&&o.st==='on'&&!HD[r.k]){const own={tag:o.tag,text:o.text};HD[r.k]={d:'own',p:hsig(r),own,c:o.c||'',log:[{at:now(),d:'own',own,c:'перенесено из прежней версии панели'}]};n++}}
+  if(n)hdsave()}
+let HNAV={};
+const hCnt=rs=>rs.filter(r=>hdec(r)).length+'/'+rs.length;
+function hRender(){hMigrate(C);if(!UI.tab[C.key])UI.tab[C.key]=C.TODO.length?'todo':'done';const want=UI.tab[C.key],todo=want==='todo';
+  const by={};C.rows.forEach(r=>{if(r.st===want)(by[r.slug]=by[r.slug]||[]).push(r)});
+  let nav='',pages='';HNAV={};
+  for(const [g,slugs] of hGroups()){const list=slugs.filter(s=>by[s]);if(!list.length)continue;
+    nav+=`<div class="g">${esc(g)}</div>`;
+    for(const s of list){const rs=by[s];const id='hp-'+(s.replace(/\W/g,'_')||'home');HNAV[s]=rs;
+      nav+=`<a href="#${id}"><span>${esc(rs[0].name)}</span><span class="d" data-s="${esc(s)}">${hCnt(rs)}</span></a>`;
+      pages+=`<section class="page" id="${id}"><h2>${esc(rs[0].name)} <small>${s?(/^(o-nas|kontakt|polityka|regulamin)/.test(s)?'/':'/uslugi/')+esc(s):'/'}</small></h2><table>`
+       +`<thead><tr><th style="width:150px">Язык / URL</th><th>${C.name} сейчас</th><th style="width:22%">Предложение Claude</th><th style="width:20%">Причина</th><th style="width:230px">Решение</th></tr></thead><tbody>`
+       +hBlocks(rs).map(b=>b.map((r,i)=>hRowHtml(r,i===0)).join('')).join('')+'</tbody></table></section>'}}
+  document.getElementById('hist').innerHTML=histHtml(C.key);
+  document.getElementById('nav').innerHTML=nav;document.getElementById('nav').classList.toggle('hidden',!nav);document.getElementById('wrap').classList.toggle('nonav',!nav);
+  document.getElementById('pages').innerHTML=pages||`<div class="intro">${todo?`Предложений Claude по ${C.name}, ожидающих решения, нет. Любой заголовок можно утвердить, отклонить или заменить своим вариантом на вкладке «Без изменений».`:'Пока пусто.'}</div>`;
+  document.getElementById('intro').innerHTML=`<b>${C.name}</b>: каждая страница — один блок, под каждым заголовком языковые версии PL / UK / RU, у каждой своё решение. `
+   +(todo?'Здесь заголовки, по которым Claude предлагает изменение (предложения аудита: ID, этап, причина, источник). ':'Здесь остальные заголовки уровня на сайте — Claude их не меняет, но их тоже можно утвердить, отклонить или заменить своим вариантом. ')
+   +`<b>Утвердить</b> — принять ${todo?'предложение Claude':'заголовок как есть'}. <b>Отклонить</b> — с комментарием, почему. <b>Свой вариант</b> — свой текст и уровень (H1–H4 или обычный текст). Для общего компонента одно решение применяется ко всем страницам только кнопкой «Применить это решение ко всем». Из панели сайт не меняется; потом «Скопировать решения для Claude».`;
+  document.querySelectorAll('tr.hr').forEach(hBind);hStats();hTabs()}
+function hBind(tr){const r=C.rows.find(x=>x.k===tr.dataset.k);
+  tr.querySelectorAll('.a').forEach(b=>b.addEventListener('click',()=>{const s=hs(r),v=b.dataset.d;
+    if(hdec(r)===v){delete s.d;delete s.p}else{s.d=v;s.p=hsig(r);if(v==='own'&&!s.own)s.own={tag:r.pr?r.ptag:r.tag,text:r.pr?r.ptext:r.t}}
+    (s.log=s.log||[]).push({at:now(),d:s.d||'',own:s.d==='own'?{...s.own}:undefined});hdsave();hRefresh(tr,r)}));
+  const et=tr.querySelector('.et'),ow=tr.querySelector('.ow'),hc=tr.querySelector('.hc'),all=tr.querySelector('.all');
+  const logOwn=()=>{const s=hs(r);s.log.push({at:now(),d:'own',own:{...s.own}});hdsave()};
+  if(et)et.addEventListener('change',()=>{hs(r).own.tag=et.value;logOwn()});
+  if(ow){ow.addEventListener('input',()=>{hs(r).own.text=ow.value.replace(/\n/g,' ');hdsave()});
+    ow.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ow.blur()}});ow.addEventListener('change',logOwn)}
+  if(hc){hc.addEventListener('input',()=>{hs(r).c=hc.value.replace(/\n/g,' ');hdsave()});
+    hc.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();hc.blur()}});
+    hc.addEventListener('change',()=>{const s=hs(r);s.log.push({at:now(),d:s.d,c:(s.c||'').trim()});hdsave()})}
+  if(all)all.addEventListener('click',()=>hAll(r))}
+function hAll(r){const s=HD[r.k],d=hdec(r),c=comp(r).filter(x=>x!==r);if(!d||!c.length)return;
+  const diff=c.filter(x=>hdec(x)&&hdec(x)!==d).length;
+  if(!confirm(`Применить решение «${HDN[d]}» ещё к ${c.length} заг. на ${nPages(c)} стр.?`+(diff?`
+У ${diff} из них уже есть другое решение — оно будет заменено.`:'')+(d==='own'?'\nСвой текст ставится только там, где исходный текст такой же; на других языках и страницах меняется только уровень.':'')))return;
+  for(const x of c){const t=hs(x);t.d=d;t.p=hsig(x);
+    if(d==='own')t.own={tag:s.own.tag,text:x.t===r.t?s.own.text:(x.pr?x.ptext:x.t)};else delete t.own;
+    t.c=s.c||'';(t.log=t.log||[]).push({at:now(),d,own:t.own,c:s.c,from:`${r.u} [${LN[r.l]}]`})}
+  hdsave();const y=scrollY;hRender();scrollTo(0,y);toast(`Применено к ${c.length}`)}
+function hRefresh(tr,r){const t=document.createElement('tbody');t.innerHTML=hRowHtml(r,tr.classList.contains('gs'));const a=t.firstElementChild;tr.replaceWith(a);hBind(a);
+  const f=a.querySelector('.ow')||(hdec(r)==='no'&&a.querySelector('.hc'));if(f&&hdec(r)){f.focus();f.setSelectionRange(f.value.length,f.value.length)}
+  hStats();hTabs();sheets();document.querySelectorAll('nav .d[data-s]').forEach(e=>{const rs=HNAV[e.dataset.s];if(rs)e.textContent=hCnt(rs)})}
+function hStats(){const T=C.TODO,c={ok:0,no:0,own:0};T.forEach(r=>{const d=hdec(r);if(d)c[d]++});
+  const k=C.rows.filter(r=>r.st==='done'&&hdec(r)).length;
+  document.getElementById('stats').textContent=`Всего ${C.rows.length} · Без изменений ${C.rows.length-T.length} · На решении ${T.length}: утв. ${c.ok} · откл. ${c.no} · свой ${c.own} · осталось ${T.length-c.ok-c.no-c.own}`+(k?` · решений по остальным ${k}`:'')}
+function hTabs(){const el=document.getElementById('tabs'),t=UI.tab[C.key];
+  el.innerHTML=`<button class="tab ${t==='todo'?'on':''}" data-t="todo">Требуют решения · ${C.TODO.length}</button><button class="tab ${t==='done'?'on':''}" data-t="done">Без изменений · ${C.rows.length-C.TODO.length}</button>`;
+  el.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{UI.tab[C.key]=b.dataset.t;saveUI();hRender();scrollTo(0,0)}))}
+function hCopy(){const lines=['Решения по заголовкам H1–H4 (аудит Omobonus). Сайт не менялся — это решения для будущего внедрения.'];let n=0;
+  for(const [k,nm,S] of SHEETS){if(!/^h\d$/.test(k)||!S.hasData)continue;hMigrate(S);const G=hGroups(),ord={};G.flatMap(g=>g[1]).forEach((s,i)=>ord[s]=i);
+    const gp={};for(const r of S.rows){const g=r.slug+'|'+r.g;if(!(g in gp)||r.l==='pl')gp[g]=r.pos}const P=r=>gp[r.slug+'|'+r.g];
+    const rs=S.rows.filter(r=>{const s=HD[r.k];return s&&s.d&&s.p===hsig(r)}).sort((a,b)=>(ord[a.slug]??999)-(ord[b.slug]??999)||P(a)-P(b)||LORD[a.l]-LORD[b.l]);
+    if(!rs.length)continue;lines.push('',`== ${nm} ==`);
+    for(const r of rs){const s=HD[r.k],d=s.d;n++;
+      lines.push(`${r.u} [${LN[r.l]}] — ${d==='ok'?(r.pr?'УТВЕРДИТЬ предложение '+r.sub.id:'УТВЕРДИТЬ: оставить как есть'):d==='no'?(r.pr?'ОТКЛОНИТЬ предложение '+r.sub.id:'ОТКЛОНИТЬ: заголовок требует доработки'):'СВОЙ ВАРИАНТ — на проверку'}`);
+      lines.push(`  сейчас: <${r.tag}> ${r.t}`);
+      if(r.pr&&d!=='ok')lines.push(`  предложено Claude: <${r.ptag}> ${r.ptext}`);
+      if(d==='ok')lines.push(`  итог: <${r.pr?r.ptag:r.tag}> ${r.pr?r.ptext:r.t}${!r.pr||(r.ptag===r.tag&&r.ptext===r.t)?' — без изменений':''}`);
+      if(d==='own')lines.push(`  свой вариант: <${s.own.tag}> ${s.own.text}`);
+      const c=(s.c||'').trim();if(c)lines.push(`  комментарий: ${c}`);else if(d==='no')lines.push('  комментарий: (не указан)');
+      const f=(s.log||[]).filter(l=>l.from).at(-1);if(f)lines.push(`  применено ко всему компоненту со строки ${f.from}`)}}
+  if(!n)lines.push('','(решений пока нет)');
+  const txt=lines.join('\n');
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Скопировано')).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Скопировано')})}
 
 // ===== Листы и история =====
 const setHH=()=>document.documentElement.style.setProperty('--hh',document.getElementById('hdr').offsetHeight+'px');
@@ -319,10 +473,10 @@ function histHtml(key){const L=HIST[key]||[];
 function sheets(){const el=document.getElementById('sheets');
   el.innerHTML=SHEETS.map(([k,n,c])=>`<button class="sheet ${UI.sheet===k?'on':''}" data-k="${k}">${n}${c&&c.rows.length?`<span class="c">${c.TODO.length}</span>`:''}</button>`).join('');
   el.querySelectorAll('.sheet').forEach(b=>b.addEventListener('click',()=>{UI.sheet=b.dataset.k;saveUI();show();scrollTo(0,0)}))}
-function show(){const sh=SHEETS.find(s=>s[0]===UI.sheet);const live=sh[2]&&sh[2].rows.length;sheets();
+function show(){const sh=SHEETS.find(s=>s[0]===UI.sheet);const live=sh[2]&&(sh[2].rows.length||sh[2].hasData);sheets();
   for(const id of ['wrap','tabs','copy','stats'])document.getElementById(id).classList.toggle('hidden',!live);
   const em=document.getElementById('empty');em.classList.toggle('hidden',!!live);
-  if(live){C=sh[2];render()}else em.innerHTML=histHtml(UI.sheet)+`<div class="intro"><b>${sh[1]}</b>: проверки для этого элемента ещё не настроены. Лист оставлен пустым — аудит ${sh[1]} проводится отдельной задачей.</div>`;
+  if(live){C=sh[2];document.getElementById('wrap').classList.remove('nonav');(C.render||render)()}else em.innerHTML=histHtml(UI.sheet)+`<div class="intro"><b>${sh[1]}</b>: проверки для этого элемента ещё не настроены. Лист оставлен пустым — аудит ${sh[1]} проводится отдельной задачей.</div>`;
   setHH()}
 show();
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>show());

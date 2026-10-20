@@ -1,0 +1,4537 @@
+{
+ "_readme": "Предложения и решения по заголовкам H1–H4 для SEO-панели (localhost:4100, вкладки H1–H4). Перенесено из журнала C:\\Users\\Andrii\\Desktop\\omobonus-seo-h1-h4-audit.md (журнал не изменён). status: proposed — Предложено, approved — Утверждено, rejected — Отклонено, rework — На доработке, implemented — Внедрено; history — все смены статуса с датой и комментарием. Решения пользователь принимает в панели и экспортирует кнопкой «Скопировать решения для Claude»; Claude переносит их сюда. Отдельного стандарта H1–H4 нет — правила задачи в rules не являются утверждённым стандартом. Сайт меняется только после фразы «Разрешаю внедрение утверждённых изменений H1–H4» и только по пунктам approved. Проверка — scripts/seo-audit/heading-audit.mjs. Собственные предложения пользователя из панели (лист «На сайте» / «Мои предложения»: любой заголовок, свой текст и уровень) и свои варианты к предложениям Claude приходят тем же экспортом; Claude заносит их сюда — собственные как новые proposals с id «П-N» и by: «пользователь», варианты — в history соответствующего предложения.",
+ "source": {
+  "journal": "C:\\Users\\Andrii\\Desktop\\omobonus-seo-h1-h4-audit.md",
+  "md5": "e4a42a23ac08bd9848388fca913c4bb9",
+  "migrated": "2026-10-19"
+ },
+ "rules": "H1 — страница; H2 — крупные разделы и категории; H3 — блоки услуг; H4 — конкретные востребованные услуги внутри H3 (только с обоснованием запросом, не каждая строка прайса). Дизайн не меняется. FAQ не переводить в H3/H4 автоматически. SEO-текст под прайсом — обычный текст. (Рабочее правило задачи, НЕ утверждённый стандарт проекта.)",
+ "stages": {
+  "1": "Этап 1 — структура H1–H4 (семантика)",
+  "2": "Этап 2 — SEO-оптимизация по поисковым запросам"
+ },
+ "sources": "docs/seo/description-research/*.json: comp.mention / comp.head (конкуренты), ac (подсказки Google), probe, ads (показы/клики Google Ads — не частотность), xl (прошлогодний XLSX Keyword Planner). [П] — подтверждено данными проекта, [?] — предположение. Новых внешних поисков при аудите не делалось.",
+ "proposals": [
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "— (структурная правка)",
+   "source": "",
+   "warnings": [
+    "Оговорка журнала: wynajem, drukarka-zastępcza, outsourcing, druk-3d — SEO-фраз-H2 нет или там уже div; проверить при внедрении по факту. Перечень страниц ниже собран с сайта при переносе."
+   ],
+   "id": "А1",
+   "tab": "h2",
+   "component": "SEO-текст под прайсом (SeoBlocksGrid)",
+   "files": [
+    "src/components/service-page-template.tsx"
+   ],
+   "priority": "Высокий",
+   "scope": "все услуги, кроме druk-3d, wynajem*, zastępcza*, outsourcing* (18 × PL/UK/RU)",
+   "block": "SEO-текст под прайсом (SeoBlocksGrid)",
+   "cur": {
+    "tag": "h2",
+    "text": "× 2–4 на страницу, напр. ноутбуки: «Diagnostyka, czyszczenie i konserwacja laptopa po…», «…», «baterii, zasilacza, matrycy (ekranu), obudowy, zaw…»; igłowe: «Świadczymy usługi czyszczenie, regeneracja, konserwacja,» / «naprawa (wymiana) głowicy…»"
+   },
+   "prop": {
+    "tag": "p",
+    "text": "`p` (или `div`) с теми же классами — вид 1:1. Одна правка компонента: `Tag = 'p'` для всех slug (как уже сделано на druk-3d)"
+   },
+   "reason": "Это сопроводительный текст, а не разделы; обрывки фраз как H2 размывают структуру (165 лишних H2). Совпадает с правилом задачи «SEO-текст под прайсом — обычный текст».",
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Diagnostyka, czyszczenie i konserwacja laptopa po zalaniu, instalacja oprogramowania."
+      },
+      {
+       "tag": "h2",
+       "text": "Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików."
+      },
+      {
+       "tag": "h2",
+       "text": "Wymiana płyty głównej, dysku, pamięci ram, pasty termoprzewodzącej, wentylatora, portu usb (zasilania)."
+      },
+      {
+       "tag": "h2",
+       "text": "baterii, zasilacza, matrycy (ekranu), obudowy, zawiasów, klawiatury (klawisza), ..."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Diagnostyka, czyszczenie i konserwacja komputera, instalacja oprogramowania."
+      },
+      {
+       "tag": "h2",
+       "text": "Wgranie systemu windows, usuwanie wirusów, odzyskiwanie danych, przywracanie utraconych plików."
+      },
+      {
+       "tag": "h2",
+       "text": "Wymiana płyty głównej, karty sieciowej, dysku, pamięci ram, pasty termoprzewodzącej,"
+      },
+      {
+       "tag": "h2",
+       "text": "wentylatora, portu usb (zasilania), zasilacza, obudowy, ..."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Świadczymy usługi czyszczenie, konserwacja, regeneracja, ... i na Oki, Dell, Kyocera, Konica Minolta"
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka laserowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu."
+      },
+      {
+       "tag": "h2",
+       "text": "Naprawa, czyszczenie, konfiguracja Wi-Fi, problemy z drukowaniem, zacinaniem papieru i jakością wydruku."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Świadczymy usługi czyszczenie, regeneracja, naprawa głowicy, konserwacja, ..."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka atramentowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Usługi konserwacja, przegląd, naprawa (wymiana) głowicy, ...drukarki termicznej (termiczno etykietowych)"
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka termiczna (termotransferowa) - podamy koszt naprawy w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Drukarki termiczne (etykietowe) – nasza specjalizacja"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Świadczymy usługi czyszczenie, regeneracja, konserwacja,"
+      },
+      {
+       "tag": "h2",
+       "text": "naprawa (wymiana) głowicy, ... drukarki igłowej (matrycowej)"
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka igłowa - podamy koszt naprawy w 15 min"
+      },
+      {
+       "tag": "h2",
+       "text": "wykonamy naprawę nawet w tym dniu."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer"
+      },
+      {
+       "tag": "h2",
+       "text": "dla klientów biznesowych i indywidualnych."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Konserwacja i olejenie, usuwanie zacięć, naprawa mechanizmu tnącego, przekładni, silnika i czujników niszczarki."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoją niszczarkę możemy wstępnie sprawdzić po dostarczeniu do serwisu — wstępna diagnoza trwa do 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Niszczarki małe, biurowe i profesjonalne: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg i inne."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Wymiana akumulatorów, diagnostyka, naprawa elektroniki i układu ładowania zasilaczy awaryjnych UPS."
+      },
+      {
+       "tag": "h2",
+       "text": "Twój zasilacz UPS — podamy koszt naprawy w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Zasilacze UPS do domu, biura i serwerowni: APC, Eaton, Ever, Vertiv i inne."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Wymiana lampy, naprawa zasilania, układu optycznego i chłodzenia, czyszczenie i konserwacja projektorów."
+      },
+      {
+       "tag": "h2",
+       "text": "Wstępna diagnoza projektora — do 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Projektory domowe, biurowe i profesjonalne: Epson, BenQ, Optoma, Acer, Sony i inne."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Czyszczenie, konserwacja, wymiana głowicy i rolek, naprawa modułów laminacji, retransferu i kodowania kart."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka do kart plastikowych — wstępnie ocenimy problem w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Drukarki do kart ID, identyfikatorów i kart lojalnościowych: Zebra, Evolis, HID Fargo, Magicard i inne."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka DTG do nadruku na koszulkach — wstępnie ocenimy problem w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Serwis drukarek DTG dla drukarni tekstylnych i firm z nadrukiem na odzieży."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa układu białego atramentu i stacji serwisowej."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka DTF do druku na folii — wstępnie ocenimy problem w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Serwis drukarek DTF dla drukarni, firm z nadrukiem na odzieży i produkcji transferów."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Naprawa drukarek sublimacyjnych dla drukarni, producentów gadżetów, odzieży sportowej i tekstyliów"
+      },
+      {
+       "tag": "h2",
+       "text": "Udrażnianie i regeneracja głowic w drukarkach i ploterach sublimacyjnych"
+      },
+      {
+       "tag": "h2",
+       "text": "Konserwacja drukarek sublimacyjnych — stacja serwisowa, układ atramentowy, mechanika"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Czyszczenie i konserwacja, udrażnianie i wymiana głowicy, naprawa drukarek do tortów, ciastek i opłatków z jadalnym tuszem."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka spożywcza do nadruku na tortach i ciastkach — wstępnie ocenimy problem w 15 min."
+      },
+      {
+       "tag": "h2",
+       "text": "Serwis drukarek spożywczych we Wrocławiu dla cukierni, piekarni i pracowni tortów — także drukarki cukiernicze Canon, Epson i Brother z jadalnym tuszem."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Serwisujemy we Wrocławiu ekspresy automatyczne i kolbowe do domu, biura oraz lokali gastronomicznych."
+      },
+      {
+       "tag": "h2",
+       "text": "Naprawiamy ekspresy, które nie pobierają wody, nie podgrzewają jej, przeciekają, nie mielą kawy lub nie spieniają mleka."
+      },
+      {
+       "tag": "h2",
+       "text": "Podobne objawy mogą mieć różne przyczyny, dlatego zakres naprawy ustalamy po diagnostyce urządzenia."
+      },
+      {
+       "tag": "h2",
+       "text": "Obsługujemy ekspresy m.in. marek De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups i Melitta."
+      },
+      {
+       "tag": "h2",
+       "text": "Koszt naprawy przedstawiamy do akceptacji przed rozpoczęciem prac."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Potrzebujesz kserokopiarki i nie ma na to teraz pieniędzy? Kserokopiarka będzie."
+      },
+      {
+       "tag": "h2",
+       "text": "Wynajem kopiarek (urządzeń wielofunkcyjnych) - to jest wyjście z tej sytuacji."
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego."
+      },
+      {
+       "tag": "h2",
+       "text": "Oferujemy drukarki zastępcze Wrocław dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Діагностика, чищення та обслуговування ноутбука після заливання, встановлення ПЗ."
+      },
+      {
+       "tag": "h2",
+       "text": "Встановлення Windows, видалення вірусів, відновлення даних, повернення втрачених файлів."
+      },
+      {
+       "tag": "h2",
+       "text": "Заміна материнської плати, диска, оперативної пам'яті, термопасти, вентилятора, порту USB (живлення)."
+      },
+      {
+       "tag": "h2",
+       "text": "акумулятора, блока живлення, матриці (екрана), корпусу, петель, клавіатури (клавіші), ..."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Діагностика, чищення та обслуговування комп'ютера, встановлення ПЗ."
+      },
+      {
+       "tag": "h2",
+       "text": "Встановлення Windows, видалення вірусів, відновлення даних, повернення втрачених файлів."
+      },
+      {
+       "tag": "h2",
+       "text": "Заміна материнської плати, мережевої карти, диска, оперативної пам'яті, термопасти,"
+      },
+      {
+       "tag": "h2",
+       "text": "вентилятора, порту USB (живлення), блока живлення, корпусу, ..."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Надаємо послуги очищення, обслуговування, регенерації, ... та для Oki, Dell, Kyocera, Konica Minolta"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш лазерний принтер — повідомимо вартість ремонту за 15 хв і виконаємо ремонт навіть того ж дня."
+      },
+      {
+       "tag": "h2",
+       "text": "Ремонт, чищення, налаштування Wi-Fi, проблеми з друком, застряганням паперу та якістю відбитка."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Надаємо послуги очищення, регенерації, ремонту головки, обслуговування, ..."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш струменевий принтер — повідомимо вартість ремонту за 15 хв і виконаємо ремонт навіть того ж дня."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Послуги обслуговування, огляду, ремонту (заміни) головки, ... термічного принтера (термо-етикетного)"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш термічний (термотрансферний) принтер — повідомимо вартість ремонту за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Термічні (етикетні) принтери – наша спеціалізація"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Надаємо послуги очищення, регенерації, обслуговування,"
+      },
+      {
+       "tag": "h2",
+       "text": "ремонту (заміни) головки, ... матричного (голчастого) принтера"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш матричний принтер — повідомимо вартість ремонту за 15 хв"
+      },
+      {
+       "tag": "h2",
+       "text": "і виконаємо ремонт навіть того ж дня."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Надаємо сервісні послуги – сервіс 3D-принтера"
+      },
+      {
+       "tag": "h2",
+       "text": "для бізнес-клієнтів та фізичних осіб."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Обслуговування та змащення, усунення застрягань, ремонт ріжучого механізму, редуктора, двигуна й датчиків знищувача."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш знищувач можемо попередньо перевірити після доставки в сервіс — попередня діагностика триває до 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Малі, офісні та професійні знищувачі: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg та інші."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Заміна акумуляторів, діагностика, ремонт електроніки та системи заряджання джерел безперебійного живлення UPS."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш UPS — повідомимо вартість ремонту за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "UPS для дому, офісу та серверної: APC, Eaton, Ever, Vertiv та інші."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Заміна лампи, ремонт живлення, оптичної системи та охолодження, чищення й обслуговування проєкторів."
+      },
+      {
+       "tag": "h2",
+       "text": "Попередня діагностика проєктора — до 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Домашні, офісні та професійні проєктори: Epson, BenQ, Optoma, Acer, Sony та інші."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чищення, обслуговування, заміна головки й роликів, ремонт модулів ламінації, ретрансферу та кодування карток."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш принтер для пластикових карток — попередньо оцінимо проблему за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Принтери для ID-карток, бейджів і карток лояльності: Zebra, Evolis, HID Fargo, Magicard та інші."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чищення та обслуговування, прочищення й заміна головки, ремонт системи білого чорнила та сервісної станції."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш DTG-принтер для друку на футболках — попередньо оцінимо проблему за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервіс DTG-принтерів для текстильних друкарень і компаній з друком на одязі."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чищення та обслуговування, прочищення й заміна головки, ремонт системи білого чорнила та сервісної станції."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш DTF-принтер для друку на плівці — попередньо оцінимо проблему за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервіс DTF-принтерів для друкарень, компаній з друком на одязі та виробництва трансферів."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Ремонт сублімаційних принтерів для друкарень, виробників сувенірів, спортивного одягу й текстилю"
+      },
+      {
+       "tag": "h2",
+       "text": "Прочищення та регенерація головок у сублімаційних принтерах і плотерах"
+      },
+      {
+       "tag": "h2",
+       "text": "Обслуговування сублімаційних принтерів — сервісна станція, чорнильна система, механіка"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чищення та обслуговування, прочищення й заміна головки, ремонт принтерів для тортів, печива та вафельних картинок з їстівним чорнилом."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш харчовий принтер для друку на тортах і печиві — попередньо оцінимо проблему за 15 хв."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервіс харчових принтерів у Вроцлаві для кондитерських, пекарень і майстерень тортів — також кондитерські принтери Canon, Epson і Brother з їстівним чорнилом."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Обслуговуємо у Вроцлаві автоматичні та ріжкові кавомашини для дому, офісу та закладів громадського харчування."
+      },
+      {
+       "tag": "h2",
+       "text": "Ремонтуємо кавомашини, які не набирають воду, не підігрівають її, протікають, не мелють каву або не збивають молочну піну."
+      },
+      {
+       "tag": "h2",
+       "text": "Подібні симптоми можуть мати різні причини, тому обсяг ремонту визначаємо після діагностики пристрою."
+      },
+      {
+       "tag": "h2",
+       "text": "Обслуговуємо кавомашини, зокрема марок De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups і Melitta."
+      },
+      {
+       "tag": "h2",
+       "text": "Вартість ремонту надаємо на погодження перед початком робіт."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Потрібен копіювальний апарат, а коштів зараз немає? Копіювальний апарат буде."
+      },
+      {
+       "tag": "h2",
+       "text": "Оренда копіювальних апаратів (багатофункціональних пристроїв) – це вихід із ситуації."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Принтер на заміну у Вроцлаві – пристрій на час ремонту принтера або сервісу офісного обладнання."
+      },
+      {
+       "tag": "h2",
+       "text": "Пропонуємо принтери на заміну Вроцлав для компаній та фізичних осіб, швидке надання пристрою, оренду принтера на час сервісу та повне сервісне обслуговування."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Диагностика, чистка и обслуживание ноутбука после залития, установка ПО."
+      },
+      {
+       "tag": "h2",
+       "text": "Установка Windows, удаление вирусов, восстановление данных, восстановление утраченных файлов."
+      },
+      {
+       "tag": "h2",
+       "text": "Замена материнской платы, диска, оперативной памяти, термопасты, вентилятора, порта USB (питания)."
+      },
+      {
+       "tag": "h2",
+       "text": "аккумулятора, блока питания, матрицы (экрана), корпуса, петель, клавиатуры (клавиш), ..."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Диагностика, чистка и обслуживание компьютера, установка ПО."
+      },
+      {
+       "tag": "h2",
+       "text": "Установка Windows, удаление вирусов, восстановление данных, восстановление утраченных файлов."
+      },
+      {
+       "tag": "h2",
+       "text": "Замена материнской платы, сетевой карты, диска, оперативной памяти, термопасты,"
+      },
+      {
+       "tag": "h2",
+       "text": "вентилятора, порта USB (питания), блока питания, корпуса, ..."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Оказываем услуги по чистке, обслуживанию, регенерации, ... а также для Oki, Dell, Kyocera, Konica Minolta"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш лазерный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день."
+      },
+      {
+       "tag": "h2",
+       "text": "Ремонт, чистка, настройка Wi-Fi, проблемы с печатью, замятием бумаги и качеством отпечатка."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Оказываем услуги по чистке, регенерации, ремонту головки, обслуживанию, ..."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш струйный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Услуги по обслуживанию, осмотру, ремонту (замене) головки, ... термопринтера (этикеточного термопринтера)"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш термопринтер (термотрансферный) — сообщим стоимость ремонта за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Термопринтеры (этикеточные) — наша специализация"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Оказываем услуги по чистке, регенерации, обслуживанию,"
+      },
+      {
+       "tag": "h2",
+       "text": "ремонту (замене) головки, ... игольчатого (матричного) принтера"
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш игольчатый принтер — сообщим стоимость ремонта за 15 мин"
+      },
+      {
+       "tag": "h2",
+       "text": "и выполним ремонт даже в этот же день."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Оказываем сервисные услуги — сервис 3D-принтера"
+      },
+      {
+       "tag": "h2",
+       "text": "для бизнес-клиентов и частных лиц."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Обслуживание и смазка, устранение заторов, ремонт режущего механизма, редуктора, двигателя и датчиков уничтожителя."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш уничтожитель можем предварительно проверить после доставки в сервис — предварительная диагностика занимает до 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Малые, офисные и профессиональные уничтожители: Fellowes, HSM, Kobra, Rexel, IDEAL, Dahle, Lanberg и другие."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Замена аккумуляторов, диагностика, ремонт электроники и системы зарядки источников бесперебойного питания UPS."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш UPS — сообщим стоимость ремонта за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "UPS для дома, офиса и серверной: APC, Eaton, Ever, Vertiv и другие."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Замена лампы, ремонт питания, оптической системы и охлаждения, чистка и обслуживание проекторов."
+      },
+      {
+       "tag": "h2",
+       "text": "Предварительная диагностика проектора — до 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Домашние, офисные и профессиональные проекторы: Epson, BenQ, Optoma, Acer, Sony и другие."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чистка, обслуживание, замена головки и роликов, ремонт модулей ламинации, ретрансфера и кодирования карт."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш принтер для пластиковых карт — предварительно оценим проблему за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Принтеры для ID-карт, бейджей и карт лояльности: Zebra, Evolis, HID Fargo, Magicard и другие."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш DTG-принтер для печати на футболках — предварительно оценим проблему за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервис DTG-принтеров для текстильных типографий и компаний с печатью на одежде."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чистка и обслуживание, прочистка и замена головки, ремонт системы белых чернил и сервисной станции."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш DTF-принтер для печати на плёнке — предварительно оценим проблему за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервис DTF-принтеров для типографий, компаний с печатью на одежде и производства трансферов."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Ремонт сублимационных принтеров для типографий, производителей сувениров, спортивной одежды и текстиля"
+      },
+      {
+       "tag": "h2",
+       "text": "Прочистка и регенерация головок в сублимационных принтерах и плоттерах"
+      },
+      {
+       "tag": "h2",
+       "text": "Обслуживание сублимационных принтеров — сервисная станция, чернильная система, механика"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Чистка и обслуживание, прочистка и замена головки, ремонт принтеров для тортов, печенья и вафельных картинок со съедобными чернилами."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш пищевой принтер для печати на тортах и печенье — предварительно оценим проблему за 15 мин."
+      },
+      {
+       "tag": "h2",
+       "text": "Сервис пищевых принтеров во Вроцлаве для кондитерских, пекарен и мастерских тортов — также кондитерские принтеры Canon, Epson и Brother со съедобными чернилами."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Обслуживаем во Вроцлаве автоматические и рожковые кофемашины для дома, офиса, кафе и ресторанов."
+      },
+      {
+       "tag": "h2",
+       "text": "Ремонтируем кофемашины, которые не набирают воду, не нагревают её, протекают, не мелют кофе или не взбивают молочную пену."
+      },
+      {
+       "tag": "h2",
+       "text": "Похожие симптомы могут иметь разные причины, поэтому объём ремонта определяем после диагностики устройства."
+      },
+      {
+       "tag": "h2",
+       "text": "Обслуживаем кофемашины, в частности марок De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups и Melitta."
+      },
+      {
+       "tag": "h2",
+       "text": "Стоимость ремонта представляем на согласование до начала работ."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Нужен копир, а денег на это сейчас нет? Копир будет."
+      },
+      {
+       "tag": "h2",
+       "text": "Аренда копиров (многофункциональных устройств) — это решение в такой ситуации."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Принтер на замену во Вроцлаве — устройство на время ремонта принтера или сервиса офисной техники."
+      },
+      {
+       "tag": "h2",
+       "text": "Предлагаем принтеры на замену Вроцлав для компаний и частных клиентов, быструю подмену устройства, аренду принтера на время сервиса, а также полное сервисное обслуживание."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "warnings": [],
+   "id": "А1-хаб",
+   "tab": "h2",
+   "partOf": "А1",
+   "component": "SEO-текст под прайсом (SeoBlocksGrid)",
+   "files": [
+    "src/components/service-page-template.tsx"
+   ],
+   "priority": "Высокий",
+   "scope": "/uslugi/naprawa-drukarek",
+   "block": "SEO-фразы",
+   "cur": {
+    "tag": "h2",
+    "text": ""
+   },
+   "prop": {
+    "tag": "p",
+    "text": "`p` — входит в А1"
+   },
+   "reason": "см. А1",
+   "journalStatus": "Предложено (вместе с А1)",
+   "pages": [
+    {
+     "u": "/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Świadczymy również usługi czyszczenie, konserwacja, regeneracja, naprawa głowicy."
+      },
+      {
+       "tag": "h2",
+       "text": "Też kopiarek (drukarek z kopiarką) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba."
+      },
+      {
+       "tag": "h2",
+       "text": "Twoja drukarka lub ksero - podamy koszt naprawy w 15 min, oraz wykonamy serwis drukarki (kserokopiarki)."
+      },
+      {
+       "tag": "h2",
+       "text": "Zapewniamy serwis pogwarancyjny we Wrocławiu (Krzyki, Fabryczna, Grabiszyńska, Psie Pole) i okolice."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Також надаємо послуги очищення, технічного обслуговування, регенерації, ремонту головки."
+      },
+      {
+       "tag": "h2",
+       "text": "Також копіювальних апаратів Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш принтер або ксерокс — повідомимо вартість ремонту за 15 хв і виконаємо сервіс принтера (ксерокса)."
+      },
+      {
+       "tag": "h2",
+       "text": "Забезпечуємо післягарантійний сервіс у Вроцлаві (Кшики, Фабрична, Грабишинська, Псе-Поле) і околицях."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Также оказываем услуги по чистке, обслуживанию, регенерации, ремонту головки."
+      },
+      {
+       "tag": "h2",
+       "text": "А также копиров (МФУ) Lexmark, Oki, Dell, Konica Minolta, Ricoh, Sharp, Toshiba."
+      },
+      {
+       "tag": "h2",
+       "text": "Ваш принтер или копир — сообщим стоимость ремонта за 15 мин и выполним сервис принтера (копира)."
+      },
+      {
+       "tag": "h2",
+       "text": "Оказываем послегарантийный сервис во Вроцлаве (Кшики, Фабрична, Грабишинска, Псе-Поле) и окрестностях."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "warnings": [],
+   "id": "Б1",
+   "tab": "h2",
+   "component": "Подзаголовок под H1 (SubTag)",
+   "files": [
+    "src/components/service-page-template.tsx"
+   ],
+   "priority": "Высокий",
+   "scope": "/uslugi/naprawa-drukarek PL/UK/RU",
+   "block": "Подзаголовок под H1",
+   "cur": {
+    "tag": "h2",
+    "text": "«(HP, Epson, Canon, Brother…)»"
+   },
+   "prop": {
+    "tag": "div",
+    "text": "`div` с теми же классами (как на остальных услугах — там скобочные подзаголовки уже div)"
+   },
+   "reason": "Список марок — пояснение, а не раздел. Исключение для этого slug в SubTag убрать.",
+   "pages": [
+    {
+     "u": "/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "(HP, Epson, Brother, Canon, Samsung, Xerox, Kyocera, OKI, Lexmark, Dell, Konica Minolta, Ricoh, Sharp, Toshiba, ...)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": "П",
+   "query": "[П] research: «serwis drukarek laserowych/atramentowych» — основные запросы соответствующих услуг",
+   "source": "",
+   "warnings": [],
+   "id": "Б2",
+   "tab": "h2",
+   "component": "Хаб принтеров: карточки типов",
+   "files": [
+    "страница naprawa-drukarek (карточки)"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/naprawa-drukarek PL/UK/RU",
+   "block": "4 карточки «Drukarek laserowych / atramentowych / igłowych / etykiet»",
+   "cur": {
+    "tag": "div",
+    "text": "обычный текст (div)"
+   },
+   "prop": {
+    "tag": "h2",
+    "text": "`h2` на каждую карточку, вид без изменений"
+   },
+   "reason": "Это реальные разделы хаба, ведущие на дочерние страницы; сейчас на хабе нет ни одного смыслового H2 кроме марок",
+   "pages": [
+    {
+     "u": "/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Drukarek laserowych"
+      },
+      {
+       "tag": "div",
+       "text": "Drukarek atramentowych"
+      },
+      {
+       "tag": "div",
+       "text": "Drukarek igłowych"
+      },
+      {
+       "tag": "div",
+       "text": "Drukarek etykiet"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Лазерних принтерів"
+      },
+      {
+       "tag": "div",
+       "text": "Струменевих принтерів"
+      },
+      {
+       "tag": "div",
+       "text": "Матричних принтерів"
+      },
+      {
+       "tag": "div",
+       "text": "Принтерів етикеток"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-drukarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Лазерных принтеров"
+      },
+      {
+       "tag": "div",
+       "text": "Струйных принтеров"
+      },
+      {
+       "tag": "div",
+       "text": "Матричных принтеров"
+      },
+      {
+       "tag": "div",
+       "text": "Принтеров этикеток"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "warnings": [],
+   "id": "В1",
+   "tab": "h2",
+   "component": "Подзаголовок под H1 (SubTag)",
+   "files": [
+    "src/components/service-page-template.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/druk-3d-na-zamowienie PL/UK/RU",
+   "block": "Подзаголовок под H1",
+   "cur": {
+    "tag": "h2",
+    "text": "«Wydruki 3D w technologii FDM…» (длинное предложение)"
+   },
+   "prop": {
+    "tag": "p",
+    "text": "`p`/`div` с теми же классами"
+   },
+   "reason": "Подзаголовок-описание, не раздел. Разделы страницы — «Drukowanie 3D z gotowego projektu», «Projektowanie 3D CAD» — остаются H2.",
+   "pages": [
+    {
+     "u": "/uslugi/druk-3d-na-zamowienie",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Wydruki 3D w technologii FDM z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie."
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/druk-3d-na-zamowienie",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "3D-друк за технологією FDM з PLA, PETG, ASA та TPU – запасні частини, прототипи, корпуси, технічні деталі та короткі серії."
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/druk-3d-na-zamowienie",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "3D-печать по технологии FDM из PLA, PETG, ASA и TPU – запасные части, прототипы, корпуса, технические детали и короткие серии."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": "П",
+   "query": "[П] research: «czyszczenie drukarki», «konserwacja drukarki» в ac/comp.head большинства услуг",
+   "source": "",
+   "warnings": [],
+   "id": "Г1",
+   "tab": "h3",
+   "component": "Набор чистки в разделе «Czyszczenie i konserwacja» (service-accordion + services-data-*)",
+   "files": [
+    "src/components/service-accordion.tsx",
+    "src/lib/services-data-*.ts"
+   ],
+   "priority": "Средний",
+   "scope": "услуги с разделом «Czyszczenie i konserwacja (bez naprawy)» (≈ 17 × 3)",
+   "block": "Название набора чистки (составное)",
+   "cur": {
+    "tag": "div",
+    "text": "`div` «CZYSZCZENIE I KONSERWACJA» + `div` «kompleksowe czyszczenie, kontrola i kalibracja drukarki 3D» (пример 3D; **в ТЗ указано «PEŁNA KONSERWACJA» — сейчас в данных «CZYSZCZENIE I KONSERWACJA»**)"
+   },
+   "prop": {
+    "tag": "h3",
+    "text": "один `h3`, внутри два span с текущими классами (обе строки, перенос, регистр — как сейчас)"
+   },
+   "reason": "Набор — главная услуга раздела H2; сейчас у раздела нет ни одного H3.",
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-plotterow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja plotera"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-plotterow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування плотера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-plotterow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка плоттера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i regulacja drukarki"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та регулювання принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и регулировка принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki 3D"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування 3D-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка 3D-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i konserwacja niszczarki"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та обслуговування знищувача"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и обслуживание уничтожителя"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i test urządzenia"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та тестування пристрою"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и тестирование устройства"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i test urządzenia"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та тестування пристрою"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и тестирование устройства"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki kart"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування принтера карток"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-do-kart-plastikowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка принтера карт"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki DTG"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування DTG-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-dtg",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка DTG-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | kompleksowe czyszczenie, kontrola i kalibracja drukarki DTF"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | комплексне чищення, перевірка та калібрування DTF-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-dtf",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | комплексная чистка, проверка и калибровка DTF-принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | pełne czyszczenie, kontrola i konserwacja drukarki sublimacyjnej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | повне чищення, перевірка та обслуговування сублімаційного принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-sublimacyjnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | полная чистка, проверка и обслуживание сублимационного принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | pełne czyszczenie i kontrola drukarki spożywczej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | повне чищення та перевірка харчового принтера"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-spozywczych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | полная чистка и проверка пищевого принтера"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA | Czyszczenie, konserwacja i wymiana standardowych uszczelek"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ | Чищення, обслуговування та заміна стандартних ущільнювачів"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ | Чистка, обслуживание и замена стандартных уплотнителей"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": "П",
+   "query": "[П] ноутбуки: «czyszczenie laptopa», «laptop zalany» (ac, comp.head)",
+   "source": "",
+   "warnings": [],
+   "id": "Г1-лап",
+   "tab": "h3",
+   "component": "Набор чистки в разделе «Czyszczenie i konserwacja» (service-accordion + services-data-*)",
+   "files": [
+    "src/components/service-accordion.tsx",
+    "src/lib/services-data-*.ts"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-laptopow, -komputerow-stacjonarnych",
+   "block": "3 набора: «…— LAPTOP/KOMPUTER STANDARDOWY», «…GAMINGOWY», «CZYSZCZENIE PO ZALANIU»",
+   "cur": {
+    "tag": "div",
+    "text": "`div`"
+   },
+   "prop": {
+    "tag": "h3",
+    "text": "`h3` каждый (как Г1)"
+   },
+   "reason": "см. Г1",
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA — LAPTOP STANDARDOWY | czyszczenie wnętrza i układu chłodzenia, wymiana materiałów termicznych"
+      },
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA — LAPTOP GAMINGOWY | rozszerzone czyszczenie CPU/GPU i wymiana materiałów termicznych"
+      },
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE PO ZALANIU | demontaż, czyszczenie i diagnostyka urządzenia"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ — СТАНДАРТНИЙ НОУТБУК | чищення внутрішньої частини та системи охолодження, заміна термоматеріалів"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ — ІГРОВИЙ НОУТБУК | розширене чищення CPU/GPU та заміна термоматеріалів"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ПІСЛЯ ЗАЛИВАННЯ | демонтаж, чищення та діагностика пристрою"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ — СТАНДАРТНЫЙ НОУТБУК | чистка внутренней части и системы охлаждения, замена термоматериалов"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ — ИГРОВОЙ НОУТБУК | расширенная чистка CPU/GPU и замена термоматериалов"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИСТКА ПОСЛЕ ЗАЛИТИЯ | демонтаж, чистка и диагностика устройства"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA — KOMPUTER STANDARDOWY | czyszczenie wnętrza i układu chłodzenia, wymiana materiałów termicznych"
+      },
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE I KONSERWACJA — KOMPUTER GAMINGOWY | rozszerzone czyszczenie CPU/GPU i wymiana materiałów termicznych"
+      },
+      {
+       "tag": "div",
+       "text": "CZYSZCZENIE PO ZALANIU | demontaż, czyszczenie i diagnostyka urządzenia"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ — СТАНДАРТНИЙ КОМП’ЮТЕР | чищення внутрішньої частини та системи охолодження, заміна термоматеріалів"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ТА ОБСЛУГОВУВАННЯ — ІГРОВИЙ КОМП’ЮТЕР | розширене чищення CPU/GPU та заміна термоматеріалів"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИЩЕННЯ ПІСЛЯ ЗАЛИВАННЯ | демонтаж, чищення та діагностика пристрою"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ — СТАНДАРТНЫЙ КОМПЬЮТЕР | чистка внутренней части и системы охлаждения, замена термоматериалов"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИСТКА И ОБСЛУЖИВАНИЕ — ИГРОВОЙ КОМПЬЮТЕР | расширенная чистка CPU/GPU и замена термоматериалов"
+      },
+      {
+       "tag": "div",
+       "text": "ЧИСТКА ПОСЛЕ ЗАЛИТИЯ | демонтаж, чистка и диагностика устройства"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": "П",
+   "query": "[П] reset pochłaniacza: probe 30, XLSX 34",
+   "source": "",
+   "warnings": [],
+   "id": "Г1-атр",
+   "tab": "h3",
+   "component": "Набор чистки в разделе «Czyszczenie i konserwacja» (service-accordion + services-data-*)",
+   "files": [
+    "src/components/service-accordion.tsx",
+    "src/lib/services-data-atrament.ts"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-drukarek-atramentowych",
+   "block": "«Wymiana / czyszczenie absorbera (pochłaniacza)…» в разделе чистки",
+   "cur": {
+    "tag": "div",
+    "text": "`div`"
+   },
+   "prop": {
+    "tag": "h3",
+    "text": "`h3` (отдельная услуга раздела)"
+   },
+   "reason": "Самостоятельный частый запрос",
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana / czyszczenie absorbera zużytego tuszu + reset licznika"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна / чищення абсорбера відпрацьованого чорнила + скидання лічильника"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена / чистка абсорбера отработанных чернил + сброс счётчика"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "warnings": [],
+   "id": "Е1",
+   "tab": "h3",
+   "component": "Блок «O nas» (about.tsx)",
+   "files": [
+    "src/components/about.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/o-nas PL/UK/RU",
+   "block": "«O nas:» внутри H2 «Święty Omobonus…»",
+   "cur": {
+    "tag": "h3",
+    "text": "«O nas:»"
+   },
+   "prop": {
+    "tag": "div",
+    "text": "`div` (как на главной по ЭТАП 157)"
+   },
+   "reason": "Служебная подпись, не раздел; единообразие с главной",
+   "pages": [
+    {
+     "u": "/o-nas",
+     "items": [
+      {
+       "tag": "h3",
+       "text": "O nas:"
+      }
+     ]
+    },
+    {
+     "u": "/uk/o-nas",
+     "items": [
+      {
+       "tag": "h3",
+       "text": "Про нас:"
+      }
+     ]
+    },
+    {
+     "u": "/ru/o-nas",
+     "items": [
+      {
+       "tag": "h3",
+       "text": "О нас:"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 1,
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "warnings": [],
+   "id": "Ж1",
+   "tab": "h2",
+   "component": "Юридические страницы (legal-page-template.tsx)",
+   "files": [
+    "src/components/legal-page-template.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/polityka-prywatnosci, /regulamin PL/UK/RU",
+   "block": "Пункты «1. Wprowadzenie…», «2. …»",
+   "cur": {
+    "tag": "div",
+    "text": "обычный текст"
+   },
+   "prop": {
+    "tag": "h2",
+    "text": "`h2` с текущим видом"
+   },
+   "reason": "Структура документа; SEO-эффект минимальный",
+   "pages": [
+    {
+     "u": "/polityka-prywatnosci",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Wprowadzenie"
+      },
+      {
+       "tag": "div",
+       "text": "2. Administrator danych"
+      },
+      {
+       "tag": "div",
+       "text": "3. Rodzaje przetwarzanych danych"
+      },
+      {
+       "tag": "div",
+       "text": "4. Cel przetwarzania danych"
+      },
+      {
+       "tag": "div",
+       "text": "5. Podstawa prawna przetwarzania"
+      },
+      {
+       "tag": "div",
+       "text": "6. Okres przechowywania danych"
+      },
+      {
+       "tag": "div",
+       "text": "7. Prawa użytkownika"
+      },
+      {
+       "tag": "div",
+       "text": "8. Przekazywanie danych do krajów trzecich"
+      },
+      {
+       "tag": "div",
+       "text": "9. Bezpieczeństwo danych"
+      },
+      {
+       "tag": "div",
+       "text": "10. Kontakt"
+      },
+      {
+       "tag": "div",
+       "text": "11. Aktualizacje polityki"
+      },
+      {
+       "tag": "div",
+       "text": "12. Pliki cookies"
+      }
+     ]
+    },
+    {
+     "u": "/uk/polityka-prywatnosci",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Вступ"
+      },
+      {
+       "tag": "div",
+       "text": "2. Адміністратор даних"
+      },
+      {
+       "tag": "div",
+       "text": "3. Категорії оброблюваних даних"
+      },
+      {
+       "tag": "div",
+       "text": "4. Мета обробки даних"
+      },
+      {
+       "tag": "div",
+       "text": "5. Правова підстава обробки"
+      },
+      {
+       "tag": "div",
+       "text": "6. Строк зберігання даних"
+      },
+      {
+       "tag": "div",
+       "text": "7. Права користувача"
+      },
+      {
+       "tag": "div",
+       "text": "8. Передача даних до третіх країн"
+      },
+      {
+       "tag": "div",
+       "text": "9. Безпека даних"
+      },
+      {
+       "tag": "div",
+       "text": "10. Контакт"
+      },
+      {
+       "tag": "div",
+       "text": "11. Оновлення політики"
+      },
+      {
+       "tag": "div",
+       "text": "12. Файли cookies"
+      }
+     ]
+    },
+    {
+     "u": "/ru/polityka-prywatnosci",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Введение"
+      },
+      {
+       "tag": "div",
+       "text": "2. Администратор данных"
+      },
+      {
+       "tag": "div",
+       "text": "3. Виды обрабатываемых данных"
+      },
+      {
+       "tag": "div",
+       "text": "4. Цель обработки данных"
+      },
+      {
+       "tag": "div",
+       "text": "5. Правовое основание обработки"
+      },
+      {
+       "tag": "div",
+       "text": "6. Срок хранения данных"
+      },
+      {
+       "tag": "div",
+       "text": "7. Права пользователя"
+      },
+      {
+       "tag": "div",
+       "text": "8. Передача данных в третьи страны"
+      },
+      {
+       "tag": "div",
+       "text": "9. Безопасность данных"
+      },
+      {
+       "tag": "div",
+       "text": "10. Контакты"
+      },
+      {
+       "tag": "div",
+       "text": "11. Обновления политики"
+      },
+      {
+       "tag": "div",
+       "text": "12. Файлы cookie"
+      }
+     ]
+    },
+    {
+     "u": "/regulamin",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Postanowienia ogólne"
+      },
+      {
+       "tag": "div",
+       "text": "2. Definicje"
+      },
+      {
+       "tag": "div",
+       "text": "3. Zasady przyjęcia sprzętu do naprawy"
+      },
+      {
+       "tag": "div",
+       "text": "4. Czas realizacji usług"
+      },
+      {
+       "tag": "div",
+       "text": "5. Gwarancja na usługi"
+      },
+      {
+       "tag": "div",
+       "text": "6. Odpowiedzialność Serwisu"
+      },
+      {
+       "tag": "div",
+       "text": "7. Prawa i obowiązki Klienta"
+      },
+      {
+       "tag": "div",
+       "text": "8. Ochrona danych osobowych"
+      },
+      {
+       "tag": "div",
+       "text": "9. Cennik i płatności"
+      },
+      {
+       "tag": "div",
+       "text": "10. Reklamacje"
+      },
+      {
+       "tag": "div",
+       "text": "11. Zmiany Regulaminu"
+      },
+      {
+       "tag": "div",
+       "text": "12. Postanowienia końcowe"
+      }
+     ]
+    },
+    {
+     "u": "/uk/regulamin",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Загальні положення"
+      },
+      {
+       "tag": "div",
+       "text": "2. Визначення"
+      },
+      {
+       "tag": "div",
+       "text": "3. Правила приймання обладнання до ремонту"
+      },
+      {
+       "tag": "div",
+       "text": "4. Строки виконання послуг"
+      },
+      {
+       "tag": "div",
+       "text": "5. Гарантія на послуги"
+      },
+      {
+       "tag": "div",
+       "text": "6. Відповідальність Сервісу"
+      },
+      {
+       "tag": "div",
+       "text": "7. Права та обов'язки Клієнта"
+      },
+      {
+       "tag": "div",
+       "text": "8. Захист персональних даних"
+      },
+      {
+       "tag": "div",
+       "text": "9. Прайс-лист і оплата"
+      },
+      {
+       "tag": "div",
+       "text": "10. Рекламації"
+      },
+      {
+       "tag": "div",
+       "text": "11. Зміни Умов"
+      },
+      {
+       "tag": "div",
+       "text": "12. Прикінцеві положення"
+      }
+     ]
+    },
+    {
+     "u": "/ru/regulamin",
+     "items": [
+      {
+       "tag": "div",
+       "text": "1. Общие положения"
+      },
+      {
+       "tag": "div",
+       "text": "2. Определения"
+      },
+      {
+       "tag": "div",
+       "text": "3. Правила приёма оборудования в ремонт"
+      },
+      {
+       "tag": "div",
+       "text": "4. Сроки выполнения услуг"
+      },
+      {
+       "tag": "div",
+       "text": "5. Гарантия на услуги"
+      },
+      {
+       "tag": "div",
+       "text": "6. Ответственность Сервиса"
+      },
+      {
+       "tag": "div",
+       "text": "7. Права и обязанности Клиента"
+      },
+      {
+       "tag": "div",
+       "text": "8. Защита персональных данных"
+      },
+      {
+       "tag": "div",
+       "text": "9. Цены и оплата"
+      },
+      {
+       "tag": "div",
+       "text": "10. Претензии"
+      },
+      {
+       "tag": "div",
+       "text": "11. Изменения Условий"
+      },
+      {
+       "tag": "div",
+       "text": "12. Заключительные положения"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "З1",
+   "stage": 2,
+   "tab": "h2",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из сводки журнала (раздел 5); в таблице предложений отдельной строки нет"
+    }
+   ],
+   "component": "Данные wynajem / drukarka-zastępcza",
+   "files": [
+    "данные wynajem"
+   ],
+   "priority": "Низкий (уточнить, не ошибка ли)",
+   "scope": "6 страниц",
+   "block": "H2 разделов формата",
+   "cur": {
+    "tag": "h2",
+    "text": "Разные названия H2 «Laserowe (format A3/A4)» vs «(format A3)» на wynajem / drukarka-zastępcza"
+   },
+   "prop": {
+    "tag": "h2",
+    "text": "Уточнить, не ошибка ли (текст и тег не меняются без решения)"
+   },
+   "conf": null,
+   "query": "—",
+   "source": "",
+   "reason": "Разные названия одного и того же раздела на соседних страницах",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Laserowe (format A3/A4)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Лазерні (формат A3/A4)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/wynajem-drukarek",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Лазерные (формат A3/A4)"
+      }
+     ]
+    },
+    {
+     "u": "/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Laserowe (format A3)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Лазерні (формат A3)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/drukarka-zastepcza",
+     "items": [
+      {
+       "tag": "h2",
+       "text": "Лазерные (формат A3)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Д-лап-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Ekran, zawiasy i obudowa",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana matrycy"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana matrycy"
+   },
+   "conf": "П",
+   "query": "[П] «wymiana matrycy laptop»: comp 66, ac 76",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana matrycy (standardowej, bez klejenia)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна матриці (стандартної, без склеювання)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена матрицы (стандартной, без склейки)"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Klawiatura, touchpad…",
+   "cur": {
+    "tag": "div",
+    "text": "Naprawa lub wymiana klawiatury"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Naprawa lub wymiana klawiatury"
+   },
+   "conf": "П",
+   "query": "[П] comp/ac (research laptop)",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Naprawa lub wymiana klawiatury (wymiennej, przykręcanej)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт або заміна клавіатури (знімної, на гвинтах)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт или замена клавиатуры (съёмной, на винтах)"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Dyski i dane",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana HDD na SSD + migracja danych"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana HDD na SSD + migracja danych"
+   },
+   "conf": "П",
+   "query": "[П] research laptop, XLSX",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana HDD na SSD + migracja danych"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна HDD на SSD + міграція даних"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена HDD на SSD + миграция данных"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-4",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Odzyskiwanie i bezpieczne…",
+   "cur": {
+    "tag": "div",
+    "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+   },
+   "conf": "П",
+   "query": "[П] «odzyskiwanie danych» XLSX 108 (общий запрос)",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Відновлення даних — логічні пошкодження"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Восстановление данных — логические повреждения"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-5",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Płyta główna i elektronika",
+   "cur": {
+    "tag": "div",
+    "text": "Naprawa płyty głównej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Naprawa płyty głównej"
+   },
+   "conf": "П",
+   "query": "[П] Ads 129 показов / 15 кликов (не частотность)",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Naprawa płyty głównej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт материнської плати"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт материнской платы"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-6",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Bateria",
+   "cur": {
+    "tag": "div",
+    "text": "Diagnostyka / wymiana baterii laptopa"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Diagnostyka / wymiana baterii laptopa"
+   },
+   "conf": "П",
+   "query": "[П] ac «wymiana baterii laptop»",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Diagnostyka / wymiana baterii laptopa"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Діагностика / заміна батареї ноутбука"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Диагностика / замена батареи ноутбука"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-лап-7",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-laptopow",
+   "block": "Oprogramowanie i system",
+   "cur": {
+    "tag": "div",
+    "text": "Usuwanie wirusów i złośliwego oprogramowania"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Usuwanie wirusów i złośliwego oprogramowania"
+   },
+   "conf": "?",
+   "query": "[?] ac",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Usuwanie wirusów i złośliwego oprogramowania"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Видалення вірусів і шкідливого програмного забезпечення"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-laptopow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Удаление вирусов и вредоносного программного обеспечения"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пк-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-komputerow-stacjonarnych",
+   "block": "Odzyskiwanie i bezpieczne…",
+   "cur": {
+    "tag": "div",
+    "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+   },
+   "conf": "П",
+   "query": "[П] XLSX 108",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Odzyskiwanie danych — uszkodzenia logiczne"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Відновлення даних — логічні пошкодження"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Восстановление данных — логические повреждения"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пк-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-komputerow-stacjonarnych",
+   "block": "Dyski i dane",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana HDD na SSD + migracja danych"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana HDD na SSD + migracja danych"
+   },
+   "conf": "П",
+   "query": "[П] XLSX 62",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana HDD na SSD + migracja danych"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна HDD на SSD + міграція даних"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена HDD на SSD + миграция данных"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пк-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-komputerow-stacjonarnych",
+   "block": "Płyta główna i elektronika",
+   "cur": {
+    "tag": "div",
+    "text": "Naprawa płyty głównej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Naprawa płyty głównej"
+   },
+   "conf": "П",
+   "query": "[П] Ads 129 / 15",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Naprawa płyty głównej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт материнської плати"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт материнской платы"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пк-4",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-komputerow-stacjonarnych",
+   "block": "Oprogramowanie i system",
+   "cur": {
+    "tag": "div",
+    "text": "Instalacja systemu Windows / Linux"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Instalacja systemu Windows / Linux"
+   },
+   "conf": "П",
+   "query": "[П] research PC (ac)",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Instalacja systemu Windows / Linux"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Встановлення системи Windows / Linux"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Установка системы Windows / Linux"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пк-5",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-komputerow-stacjonarnych",
+   "block": "Oprogramowanie i system",
+   "cur": {
+    "tag": "div",
+    "text": "Usuwanie wirusów i złośliwego oprogramowania"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Usuwanie wirusów i złośliwego oprogramowania"
+   },
+   "conf": "?",
+   "query": "[?]",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Usuwanie wirusów i złośliwego oprogramowania"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Видалення вірусів і шкідливого програмного забезпечення"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-komputerow-stacjonarnych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Удаление вирусов и вредоносного программного обеспечения"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-пр-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/naprawa-projektorow",
+   "block": "Lampy i źródła światła",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana lampy projektora"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana lampy projektora"
+   },
+   "conf": "П",
+   "query": "[П] research: 47 / 20",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana lampy projektora"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна лампи проєктора"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-projektorow",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена лампы проектора"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-ups-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/naprawa-zasilaczy-ups",
+   "block": "Baterie i akumulatory",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana akumulatorów + kalibracja"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana akumulatorów + kalibracja"
+   },
+   "conf": "П",
+   "query": "[П] research: 65 / 18",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana akumulatorów + kalibracja"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна акумуляторів + калібрування"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/naprawa-zasilaczy-ups",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена аккумуляторов + калибровка"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-atr-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-drukarek-atramentowych",
+   "block": "Głowica drukująca i jakość",
+   "cur": {
+    "tag": "div",
+    "text": "Czyszczenie i udrażnianie głowicy drukującej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Czyszczenie i udrażnianie głowicy drukującej"
+   },
+   "conf": "П",
+   "query": "[П] Ads 829 показов / 17 кликов",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Czyszczenie i udrażnianie głowicy drukującej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Чищення та прочищення друкувальної головки"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Чистка и прочистка печатающей головки"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-atr-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-atramentowych",
+   "block": "Głowica drukująca i jakość",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana głowicy drukującej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana głowicy drukującej"
+   },
+   "conf": "П",
+   "query": "[П] comp.head",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana głowicy drukującej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна друкувальної головки"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-atramentowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена печатающей головки"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-las-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-laserowych",
+   "block": "Bęben, developer…",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana bębna / zespołu bębna"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana bębna / zespołu bębna"
+   },
+   "conf": "П",
+   "query": "[П] comp.head (research laser)",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana bębna / zespołu bębna"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна барабана / блока барабана"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена барабана / блока барабана"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-las-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-laserowych",
+   "block": "Zespół utrwalający (fuser)",
+   "cur": {
+    "tag": "div",
+    "text": "Regeneracja zespołu utrwalającego"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Regeneracja zespołu utrwalającego"
+   },
+   "conf": "П",
+   "query": "[П] comp.head",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Regeneracja zespołu utrwalającego (fusera)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Регенерація вузла закріплення (fuser)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Регенерация узла закрепления (fuser)"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-las-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-laserowych",
+   "block": "Transport papieru…",
+   "cur": {
+    "tag": "div",
+    "text": "Usuwanie zacięć i ciał obcych z toru papieru"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Usuwanie zacięć i ciał obcych z toru papieru"
+   },
+   "conf": "?",
+   "query": "[?] ac «drukarka zacina papier»",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Usuwanie zacięć i ciał obcych z toru papieru"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Усунення застрягань і сторонніх предметів із тракту паперу"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-laserowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Устранение замятий и посторонних предметов из тракта бумаги"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-ter-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-termicznych",
+   "block": "Głowica drukująca i wałek",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana głowicy drukującej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana głowicy drukującej"
+   },
+   "conf": "П",
+   "query": "[П] comp.head",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana głowicy drukującej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна друкуючої головки"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена печатающей головки"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-ter-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-termicznych",
+   "block": "Czujniki i kalibracja…",
+   "cur": {
+    "tag": "div",
+    "text": "Kalibracja czujników gap / black mark"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Kalibracja czujników gap / black mark"
+   },
+   "conf": "П",
+   "query": "[П] comp.mention",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Kalibracja czujników gap / black mark"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Калібрування датчиків gap / black mark"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Калибровка датчиков gap / black mark"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-ter-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-termicznych",
+   "block": "Głowica drukująca i wałek",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana wałka dociskowego"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana wałka dociskowego"
+   },
+   "conf": "П",
+   "query": "[П] comp.mention",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana wałka dociskowego (platen roller)"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна притискного ролика (platen roller)"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-termicznych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена прижимного ролика (platen roller)"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-iг-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-iglowych",
+   "block": "Głowica igłowa…",
+   "cur": {
+    "tag": "div",
+    "text": "Naprawa głowicy igłowej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Naprawa głowicy igłowej"
+   },
+   "conf": "?",
+   "query": "[?] мало данных",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Naprawa głowicy igłowej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт голкової головки"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-iglowych",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт игольчатой головки"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-kawa-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Средний",
+   "scope": "/uslugi/serwis-ekspresow-do-kawy",
+   "block": "(раздел чистки)",
+   "cur": {
+    "tag": "div",
+    "text": "Odkamienianie ekspresu"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Odkamienianie ekspresu"
+   },
+   "conf": "П",
+   "query": "[П] research kawa (ac, comp.head) — строка в разделе чистки, проверить уровень при внедрении",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [
+    "Строка «Odkamienianie ekspresu» в прайсе на сайте не найдена (при переносе 2026-10-19) — предложение требует уточнения"
+   ],
+   "pages": [],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-kawa-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-ekspresow-do-kawy",
+   "block": "Blok zaparzający i napęd",
+   "cur": {
+    "tag": "div",
+    "text": "Regeneracja bloku lub tłoka"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Regeneracja bloku lub tłoka"
+   },
+   "conf": "П",
+   "query": "[П] comp.head",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Regeneracja bloku lub tłoka"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Відновлення блока або поршня"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Восстановление блока или поршня"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-kawa-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-ekspresow-do-kawy",
+   "block": "Młynki…",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana kompletnego młynka"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana kompletnego młynka"
+   },
+   "conf": "П",
+   "query": "[П] comp.mention",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana kompletnego młynka"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна кавомолки в зборі"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена кофемолки в сборе"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-kawa-4",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-ekspresow-do-kawy",
+   "block": "Pompy i układ ciśnienia",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana pompy wibracyjnej"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana pompy wibracyjnej"
+   },
+   "conf": "П",
+   "query": "[П] comp.mention",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana pompy wibracyjnej"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна вібраційної помпи"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-ekspresow-do-kawy",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена вибрационного насоса"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-3d-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-3d",
+   "block": "Ekstruder, hotend…",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana dyszy"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana dyszy"
+   },
+   "conf": "П",
+   "query": "[П] research 3D",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana dyszy"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна сопла"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена сопла"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-3d-2",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-3d",
+   "block": "Ekstruder, hotend…",
+   "cur": {
+    "tag": "div",
+    "text": "Naprawa hotendu"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Naprawa hotendu"
+   },
+   "conf": "П",
+   "query": "[П] research 3D",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Naprawa hotendu"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт хотенду"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Ремонт хотенда"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-3d-3",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-3d",
+   "block": "Kalibracja i jakość druku",
+   "cur": {
+    "tag": "div",
+    "text": "Kalibracja i poziomowanie stołu"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Kalibracja i poziomowanie stołu"
+   },
+   "conf": "П",
+   "query": "[П] research 3D",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Kalibracja i poziomowanie stołu"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Калібрування та вирівнювання столу"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Калибровка и выравнивание стола"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-3d-4",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-drukarek-3d",
+   "block": "Oprogramowanie…",
+   "cur": {
+    "tag": "div",
+    "text": "Instalacja / konfiguracja Marlin lub Klipper"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Instalacja / konfiguracja Marlin lub Klipper"
+   },
+   "conf": "?",
+   "query": "[?] нишевый",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Instalacja / konfiguracja Marlin lub Klipper"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Встановлення / налаштування Marlin або Klipper"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-drukarek-3d",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Установка / настройка Marlin или Klipper"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  },
+  {
+   "id": "Д-nis-1",
+   "stage": 2,
+   "tab": "h4",
+   "status": "proposed",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "status": "proposed",
+     "by": "Claude",
+     "note": "Перенесено из журнала omobonus-seo-h1-h4-audit.md"
+    }
+   ],
+   "component": "Строки прайса (service-accordion)",
+   "files": [
+    "src/components/service-accordion.tsx"
+   ],
+   "priority": "Низкий",
+   "scope": "/uslugi/serwis-niszczarek",
+   "block": "Mechanizm tnący…",
+   "cur": {
+    "tag": "div",
+    "text": "Wymiana noży / wałków tnących"
+   },
+   "prop": {
+    "tag": "h4",
+    "text": "Wymiana noży / wałków tnących"
+   },
+   "conf": "?",
+   "query": "[?]",
+   "source": "",
+   "reason": "Конкретная востребованная работа внутри H3 — кандидат в H4 (этап 2)",
+   "warnings": [],
+   "pages": [
+    {
+     "u": "/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Wymiana noży / wałków tnących"
+      }
+     ]
+    },
+    {
+     "u": "/uk/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Заміна ножів / ріжучих валів"
+      }
+     ]
+    },
+    {
+     "u": "/ru/uslugi/serwis-niszczarek",
+     "items": [
+      {
+       "tag": "div",
+       "text": "Замена ножей / режущих валов"
+      }
+     ]
+    }
+   ],
+   "implNote": "Особенность оформления при внедрении Д*: в строке прайса тег меняется только у блока с названием; подпись в скобках и цена остаются отдельными div. Кофемашины — строки там `th scope=row`, H4 должен быть внутри `th`. UK/RU — те же строки в соответствующем переводе."
+  }
+ ],
+ "verified": [
+  {
+   "id": "K1",
+   "tab": "h1",
+   "text": "1 H1 на каждой странице; скрытые H1 на `/`, `/kontakt`, naprawa-drukarek — решение ЭТАП 157/161."
+  },
+  {
+   "id": "K2",
+   "tab": "h2",
+   "text": "Главная — ЭТАП 157."
+  },
+  {
+   "id": "K3",
+   "tab": "h2",
+   "text": "H2 разделов прайса («Diagnoza i wycena», «Dojazd», «Czyszczenie i konserwacja (bez naprawy)», «Naprawy i usługi serwisowe») — повторяются между страницами, но внутри страницы уникальны. Переименование не предлагаю."
+  },
+  {
+   "id": "K4",
+   "tab": "h3",
+   "text": "H3 подкатегорий «Naprawy…» — правильно."
+  },
+  {
+   "id": "K5",
+   "tab": "h3",
+   "text": "H2 FAQ → H3 вопросов — правильно, массово не трогать."
+  },
+  {
+   "id": "K6",
+   "tab": "h1",
+   "text": "/o-nas: H1-слоган «Nie bogacimy się na Twoim problemie», H2/H3 преимуществ, H3 имён команды — оставить (брендовая страница)."
+  },
+  {
+   "id": "K7",
+   "tab": "h1",
+   "text": "/kontakt: только скрытый H1, «Formularz zgłoszeniowy» — текст. Оставить."
+  },
+  {
+   "id": "K8",
+   "tab": "h2",
+   "text": "«Opinie klientów z Google», подвал — обычный текст, оставить."
+  },
+  {
+   "id": "K9",
+   "tab": "h4",
+   "text": "H4 в подсказке «Kategorie urządzeń» (`PriceTooltipContent`) не попадает в серверный HTML — не влияет."
+  },
+  {
+   "id": "K10",
+   "tab": "h4",
+   "text": "DTG, DTF, spożywcze, sublimacyjne, karty, plotery, wynajem, zastępcza, outsourcing — H4 не предлагаю: данных недостаточно (журнал, этап 2, «Не предлагать»)."
+  }
+ ],
+ "decisions": []
+}
