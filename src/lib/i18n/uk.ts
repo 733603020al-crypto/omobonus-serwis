@@ -304,6 +304,7 @@
     callNowButton: 'Зателефонувати зараз',
     callNowDividerLabel: 'або напишіть',
     mapLabel: 'Карта',
+    kosztLabel: 'Вартість доїзду',
   },
 } as const
 

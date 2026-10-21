@@ -6,6 +6,10 @@ import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 import { CallButton } from '@/components/ui/CallButton'
+import dynamic from 'next/dynamic'
+
+// the route window loads only after a click on the calculator icon
+const KosztDojazduModal = dynamic(() => import('@/components/koszt-dojazdu/KosztDojazduModal'), { ssr: false })
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
@@ -77,6 +81,7 @@ interface ContactActionsT {
   callNowButton?: string
   callNowDividerLabel?: string
   mapLabel?: string
+  kosztLabel?: string
 }
 
 const PL_ACTIONS: ContactActionsT = {
@@ -93,6 +98,7 @@ const PL_ACTIONS: ContactActionsT = {
   callNowButton: 'Zadzwoń teraz',
   callNowDividerLabel: 'lub napisz',
   mapLabel: 'Mapa',
+  kosztLabel: 'Koszt dojazdu',
 }
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
@@ -103,6 +109,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [countryPhoneLength, setCountryPhoneLength] = useState<number | undefined>(9)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [showKoszt, setShowKoszt] = useState(false)
   const [callbackError, setCallbackError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
   const [hintActive, setHintActive] = useState(false)
@@ -213,6 +220,10 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
+          <button type="button" onClick={() => setShowKoszt(true)} className="contact-icon-link flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/koszt-dojazdu-ikona.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="max-w-[76px] md:max-w-none text-center leading-[1.05] md:leading-[1.5] md:whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">{d.kosztLabel ?? 'Koszt dojazdu'}</span>
+          </button>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
             <div className="icon-float"><Image src="/images/email.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
@@ -301,6 +312,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
         )}
 
       </section>
+      {showKoszt && <KosztDojazduModal lang={locale} onClose={() => setShowKoszt(false)} />}
 
       <CompactSuccessModal
         isOpen={showModal}

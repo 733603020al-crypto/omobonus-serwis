@@ -1,0 +1,118 @@
+// Route from the service to the client by Google (Geocoding + Routes + Static Maps) for the "Koszt dojazdu" window.
+// The map has no Google markers: start/end points and the route label are drawn by the window itself,
+// so the map is requested with an explicit center/zoom and the points are returned in % of the image.
+
+export type Lang = 'pl' | 'uk' | 'ru'
+export type TrasaWynik = {
+  klientAdres: string
+  metry: number
+  czasMin: number
+  map: { src: string; width: number; height: number }
+  mapLabel: { left: number; top: number; side: 'left' | 'right' }
+  mapPins: { start: { left: number; top: number }; end: { left: number; top: number } }
+}
+export class TrasaError extends Error {
+  constructor(public code: 'not_found' | 'no_route' | 'google' | 'config') { super(code) }
+}
+
+export const SERWIS_ADRES = 'Marcina Bukowskiego 174, 52-418 Wrocław'
+const W = 560, H = 620, SCALE = 2
+const COUNTRY = /, (Polska|Poland|Польща|Польша)$/i
+
+function key() {
+  const k = process.env.GOOGLE_MAPS_API_KEY
+  if (!k) throw new TrasaError('config')
+  return k
+}
+
+async function geocode(q: { adres?: string; lat?: number; lng?: number }, lang: Lang) {
+  const where = q.adres
+    ? `address=${encodeURIComponent(q.adres)}&components=country:PL`
+    : `latlng=${q.lat},${q.lng}`
+  const r = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?${where}&region=pl&language=${lang}&key=${key()}`).then(x => x.json())
+  if (r.status === 'ZERO_RESULTS') throw new TrasaError('not_found')
+  if (r.status !== 'OK') throw new TrasaError('google')
+  const g = r.results[0]
+  // an unknown address falls back to the whole country or voivodeship — treat it as not found
+  const types: string[] = g.types ?? []
+  if (types.includes('country') || types.includes('administrative_area_level_1')) throw new TrasaError('not_found')
+  return { adres: String(g.formatted_address).replace(COUNTRY, ''), lat: g.geometry.location.lat as number, lng: g.geometry.location.lng as number }
+}
+
+function decode(s: string) {
+  const pts: [number, number][] = []
+  let i = 0, lat = 0, lng = 0
+  while (i < s.length) {
+    for (let k = 0; k < 2; k++) {
+      let b, sh = 0, res = 0
+      do { b = s.charCodeAt(i++) - 63; res |= (b & 31) << sh; sh += 5 } while (b >= 32)
+      const d = res & 1 ? ~(res >> 1) : res >> 1
+      if (k === 0) lat += d; else lng += d
+    }
+    pts.push([lat / 1e5, lng / 1e5])
+  }
+  return pts
+}
+
+const wx = (lng: number, z: number) => (lng + 180) / 360 * 256 * 2 ** z
+const wy = (lat: number, z: number) => { const s = Math.sin(lat * Math.PI / 180); return (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * 256 * 2 ** z }
+const r2 = (n: number) => Math.round(n * 100) / 100
+
+export async function obliczTrase(q: { adres?: string; lat?: number; lng?: number }, lang: Lang): Promise<TrasaWynik> {
+  const klient = await geocode(q, lang)
+
+  const route = await fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': key(), 'X-Goog-FieldMask': 'routes.distanceMeters,routes.duration,routes.polyline.encodedPolyline' },
+    body: JSON.stringify({
+      origin: { address: SERWIS_ADRES },
+      destination: { location: { latLng: { latitude: klient.lat, longitude: klient.lng } } },
+      travelMode: 'DRIVE', languageCode: lang, regionCode: 'PL',
+    }),
+  }).then(x => x.json())
+  const rt = route.routes?.[0]
+  if (!rt?.polyline?.encodedPolyline) throw new TrasaError('no_route')
+  const enc: string = rt.polyline.encodedPolyline
+  const pts = decode(enc)
+
+  // the largest zoom at which the whole route fits (room above for the end pin)
+  const lats = pts.map(p => p[0]), lngs = pts.map(p => p[1])
+  const PAD = 50, PADTOP = 70
+  let z = 18
+  for (; z > 3; z--) {
+    const w = wx(Math.max(...lngs), z) - wx(Math.min(...lngs), z)
+    const h = wy(Math.min(...lats), z) - wy(Math.max(...lats), z)
+    if (w <= W - 2 * PAD && h <= H - PAD - PADTOP) break
+  }
+  const cx = (wx(Math.max(...lngs), z) + wx(Math.min(...lngs), z)) / 2
+  const cy = (wy(Math.min(...lats), z) + wy(Math.max(...lats), z)) / 2 - (PADTOP - PAD) / 2
+  const lngC = cx / (256 * 2 ** z) * 360 - 180
+  const latC = 180 / Math.PI * Math.atan(Math.sinh(Math.PI - 2 * Math.PI * cy / (256 * 2 ** z)))
+  const pct = ([la, ln]: [number, number]) => ({ left: r2(((wx(ln, z) - cx) / W + 0.5) * 100), top: r2(((wy(la, z) - cy) / H + 0.5) * 100) })
+
+  // label at half of the route length, as Google does
+  const dist = (a: [number, number], b: [number, number]) => Math.hypot(a[0] - b[0], (a[1] - b[1]) * Math.cos(a[0] * Math.PI / 180))
+  let total = 0
+  for (let i = 1; i < pts.length; i++) total += dist(pts[i - 1], pts[i])
+  let acc = 0, mid = pts[0]
+  for (let i = 1; i < pts.length; i++) { acc += dist(pts[i - 1], pts[i]); if (acc >= total / 2) { mid = pts[i]; break } }
+  const mp = pct(mid)
+
+  const url = `https://maps.googleapis.com/maps/api/staticmap?size=${W}x${H}&scale=${SCALE}&maptype=roadmap&language=${lang}&region=PL`
+    + `&center=${latC.toFixed(6)},${lngC.toFixed(6)}&zoom=${z}`
+    + `&path=${encodeURIComponent(`weight:9|color:0x1967D2FF|enc:${enc}`)}`
+    + `&path=${encodeURIComponent(`weight:6|color:0x4285F4FF|enc:${enc}`)}`
+    + `&key=${key()}`
+  const img = await fetch(url)
+  if (!img.ok) throw new TrasaError('google')
+  const b64 = Buffer.from(await img.arrayBuffer()).toString('base64')
+
+  return {
+    klientAdres: klient.adres,
+    metry: rt.distanceMeters ?? 0,
+    czasMin: Math.max(1, Math.round(parseInt(rt.duration) / 60)),
+    map: { src: `data:image/png;base64,${b64}`, width: W * SCALE, height: H * SCALE },
+    mapLabel: { ...mp, side: mp.left < 50 ? 'right' : 'left' },
+    mapPins: { start: pct(pts[0]), end: pct(pts[pts.length - 1]) },
+  }
+}
