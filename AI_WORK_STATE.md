@@ -304,6 +304,9 @@
 ---
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
+### ЭТАП 176 (2026-10-21, test) — правила ответов клиентам из почты serwis@
+- Скилл `.claude/skills/odpowiedzi-klientom/` (SKILL.md + dystans.mjs): Claude работает с Outlook пользователя (COM), ответы только черновиками с CC zaemka222@gmail.com, подпись Maksym, все цены netto и только с живой страницы нужной услуги, расчёт odbiór/dostawa по адресу (25 zł за 2,5 km + 2 zł × 2 за каждый следующий km), забор предлагать всегда. Открыто: вилки цен ремонта без описанной поломки.
+
 ### ЭТАП 175 (2026-10-20, test) — нижняя системная панель Android
 - Все layout PL/UK/RU: viewport-fit=cover + theme-color #30220b (средний тон мобильного меню: пергамент под 60% чёрного). Мобильное меню уже имело отступ safe-area снизу → текстура уходит под жестовую полоску; body pb = 88px + safe-area. body padding-left/right = safe-area (только вырез iPhone в ландшафте). color-scheme не задан сознательно (меняет формы/скроллбары). Ждёт проверки на реальном Android (жесты / 3 кнопки) и iPhone.
 - Владелец открывает сайт значком на телефоне — без манифеста это был простой ярлык, правки не видны. Добавлен public/manifest.webmanifest (standalone, theme/background #30220b, иконки public/icons/app-icon-192/512.png из Logo_Omobonus_email.jpg) + `manifest` в metadata трёх layout. Значок нужно переустановить. Ещё не закоммичено.
