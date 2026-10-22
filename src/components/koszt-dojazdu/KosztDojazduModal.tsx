@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import Image from 'next/image'
-import { Ban, Calculator, MapPin, ShieldCheck, X } from 'lucide-react'
-import { KosztDojazduCard } from './KosztDojazduCard'
+import { Ban, Calculator, Loader2, MapPin, ShieldCheck } from 'lucide-react'
+import { KosztDojazduCard, KosztOkno, P, Row, SerwisRow, klientLabel } from './KosztDojazduCard'
+import { IkonaKlient } from './ikony'
 import { TARYFA_STANDARD } from './koszt-dojazdu'
+import { lora } from '@/components/sections/contact-font'
 
 // Popup on /kontakt. Order: 1) "use my location" (the browser asks only after this click) — the found address
 // is shown in the field to confirm; 2) or type an address and pick one of Google's suggestions;
@@ -30,6 +31,7 @@ const T = {
     locate: 'Użyj mojej lokalizacji', locating: 'Ustalamy lokalizację…',
     privacy: 'Lokalizacja służy wyłącznie do obliczenia kosztu dojazdu — nie daje dostępu do Twojego urządzenia.',
     ask: 'Nie chcesz udostępniać lokalizacji? Wpisz adres ręcznie poniżej:',
+    adresLabel: 'Adres',
     placeholder: 'Wpisz adres, np. Wrocław, ul. Legnicka 12',
     confirm: 'Sprawdź adres i kliknij „Oblicz koszt”.',
     geo: 'Nie mamy dostępu do lokalizacji — wpisz adres powyżej.',
@@ -49,6 +51,7 @@ const T = {
     locate: 'Використати моє місцезнаходження', locating: 'Визначаємо місцезнаходження…',
     privacy: 'Місцезнаходження використовується виключно для розрахунку вартості доїзду — воно не дає доступу до вашого пристрою.',
     ask: 'Не хочете ділитися місцезнаходженням? Введіть адресу вручну нижче:',
+    adresLabel: 'Адреса',
     placeholder: 'Введіть адресу, напр. Wrocław, ul. Legnicka 12',
     confirm: 'Перевірте адресу і натисніть «Розрахувати вартість».',
     geo: 'Немає доступу до місцезнаходження — введіть адресу вище.',
@@ -68,6 +71,7 @@ const T = {
     locate: 'Использовать моё местоположение', locating: 'Определяем местоположение…',
     privacy: 'Местоположение используется только для расчёта стоимости выезда — оно не даёт доступа к вашему устройству.',
     ask: 'Не хотите делиться местоположением? Введите адрес вручную ниже:',
+    adresLabel: 'Адрес',
     placeholder: 'Введите адрес, напр. Wrocław, ul. Legnicka 12',
     confirm: 'Проверьте адрес и нажмите «Рассчитать стоимость».',
     geo: 'Нет доступа к местоположению — введите адрес выше.',
@@ -189,14 +193,39 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
 
   const gotowe = !!wybor && !busy
 
+
+  const mapa = (
+    <>
+      {/* the service on the map — before the calculation there is nothing else on it */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/images/koszt-dojazdu/mapa-${lang}.webp`}
+        alt={t.mapAlt}
+        className="block w-full h-[240px] md:absolute md:inset-0 md:h-full object-cover"
+        style={{ objectPosition: `${PIN.left}% ${PIN.top}%` }}
+      />
+      <div className="absolute" style={{ left: `${PIN.left}%`, top: `${PIN.top}%` }}>
+        <svg viewBox="0 0 24 34" aria-hidden="true" className="absolute w-[32px] h-[45px] md:w-[40px] md:h-[56px] -translate-x-1/2 -translate-y-full drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+          <path d="M12 0C5.4 0 0 5.3 0 11.9 0 20.8 12 34 12 34s12-13.2 12-22.1C24 5.3 18.6 0 12 0z" fill="#EA4335" stroke="#B31412" strokeWidth="1" />
+          <circle cx="12" cy="12" r="4.2" fill="#B31412" />
+        </svg>
+        <div className="absolute left-[18px] md:left-[28px] -top-[58px] md:-top-[78px] whitespace-nowrap rounded-[8px] bg-white px-2.5 py-1.5 md:px-4 md:py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.22)] font-inter">
+          <p className="text-[12px] md:text-[17px] font-semibold leading-[1.3] text-[#202124]">Omobonus</p>
+          <p className="text-[11px] md:text-[15.5px] leading-[1.35] text-[#202124]">Marcina Bukowskiego 174<br />52-418 Wrocław</p>
+        </div>
+      </div>
+    </>
+  )
+
   return createPortal(
     <div
       role="dialog" aria-modal="true" aria-label={t.title}
-      className="fixed inset-0 z-[200] overflow-y-auto p-3 md:p-6 flex items-start md:items-center justify-center"
+      className={`${lora.variable} fixed inset-0 z-[200] overflow-y-auto p-3 md:p-6 flex items-start md:items-center justify-center`}
       onMouseDown={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      {wynik ? (
-        <div className="w-full max-w-[900px] my-auto">
+      <div className="w-full max-w-[900px] lg:max-w-[1300px] my-auto md:[zoom:0.8] lg:[zoom:0.88]">
+        {/* one window, two states: the address → the result in the same frame and size */}
+        {wynik ? (
           <KosztDojazduCard
             serwisAdres={SERWIS}
             klientAdres={wynik.klientAdres}
@@ -209,142 +238,100 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
             lang={lang}
             onClose={onClose}
           />
-          <div className="mt-3 text-center">
-            <button
-              type="button"
-              onClick={() => { setWynik(null); setWybor(null); setNote('hint'); setError('') }}
-              className="rounded-full bg-black/75 px-4 py-1.5 font-cormorant text-[16px] font-semibold text-[#f3df9a] underline underline-offset-4 decoration-[rgba(243,223,154,0.5)] hover:decoration-[#f3df9a] cursor-pointer"
+        ) : (
+          <KosztOkno lang={lang} onClose={onClose} mapa={mapa} przypisy={false}>
+            <form
+              className="mt-2 flex flex-col"
+              onSubmit={(e) => { e.preventDefault(); if (wybor) licz(); else zatwierdz() }}
             >
-              {t.change}
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="relative my-auto w-full max-w-[860px] rounded-[18px] bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.25),0_20px_60px_rgba(0,0,0,0.55)] font-inter">
-          <button
-            type="button"
-            aria-label={t.close}
-            onClick={onClose}
-            className="absolute top-4 right-4 md:top-5 md:right-5 z-20 w-10 h-10 flex items-center justify-center rounded-full text-[#5b6b80] hover:text-[#2d3a4a] transition-colors cursor-pointer touch-manipulation"
-          >
-            <X className="w-7 h-7" strokeWidth={1.6} />
-          </button>
-          <form
-            className="p-4 md:p-6"
-            onSubmit={(e) => { e.preventDefault(); if (wybor) licz(); else zatwierdz() }}
-          >
-            <div className="flex items-center gap-3 md:gap-4 pr-10">
-              <Image src="/icons/app-icon-192.png" alt="Omobonus" width={192} height={192} unoptimized className="w-[60px] h-[60px] md:w-[68px] md:h-[68px] flex-shrink-0 rounded-[12px] md:rounded-[14px]" />
-              <div>
-                <h2 className="font-cormorant text-[28px] md:text-[32px] font-bold leading-[1.05] text-[#3a2414]">{t.title}</h2>
-                <p className="mt-1 text-[15px] md:text-[16px] leading-[1.3] text-[#5b6b80]">{t.intro}</p>
-              </div>
-            </div>
+              <SerwisRow lang={lang} adres={SERWIS} />
+              <Row icon={<IkonaKlient size={24} />} last>
+                <div className="font-cormorant font-semibold text-[18px] md:text-[20px] leading-[1.15] text-[#3A2817]">{klientLabel(lang)}</div>
+              </Row>
 
-            <div className="mt-5 md:mt-6 grid gap-5 lg:gap-6 lg:grid-cols-[478px_minmax(0,1fr)]">
-              {/* the service on the map — before the calculation there is nothing else on it */}
-              <div className="relative h-[200px] md:h-[260px] lg:h-auto lg:min-h-[330px] overflow-hidden rounded-[12px] bg-[#eef1ec]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/images/koszt-dojazdu/mapa-${lang}.webp`}
-                  alt={t.mapAlt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: `${PIN.left}% ${PIN.top}%` }}
+              {/* 1. location — the main action (the browser asks only after this click) */}
+              <button
+                type="button"
+                onClick={lokalizacja}
+                disabled={lokalizuje || busy}
+                className="mt-2 w-full md:w-auto md:min-w-[280px] md:mx-auto min-h-[40px] flex items-center justify-center gap-2 rounded-[9px] bg-[#1c6e43] px-3 md:px-6 py-2 font-inter text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#155d36] disabled:opacity-80 cursor-pointer"
+              >
+                {lokalizuje
+                  ? <Loader2 className="w-[18px] h-[18px] flex-shrink-0 animate-spin" />
+                  : <MapPin className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={2} />}
+                {lokalizuje ? t.locating : t.locate}
+              </button>
+
+              <div className="mt-2.5 flex items-start gap-2.5">
+                <ShieldCheck className="mt-0 w-[21px] h-[21px] flex-shrink-0 text-[#3a2e24]" strokeWidth={1.6} />
+                <p className={`font-lora text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.privacy}</p>
+              </div>
+              <div className="mt-2.5 flex items-start gap-2.5">
+                <Ban className="mt-0 w-[21px] h-[21px] flex-shrink-0 text-[#3a2e24]" strokeWidth={1.6} />
+                <p className={`font-lora text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.ask}</p>
+              </div>
+
+              {/* 2. address typed by hand */}
+              <label htmlFor="koszt-adres" className={`block mt-3 mb-[5px] font-cormorant font-bold text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em] ${P.text}`}>{t.adresLabel}</label>
+              <div className="relative">
+                <input
+                  id="koszt-adres"
+                  ref={inputRef}
+                  value={adres}
+                  onChange={(e) => { setAdres(e.target.value); setWybor(null); setNote('hint'); if (error) setError('') }}
+                  onKeyDown={(e) => {
+                    if (!podp.length) return
+                    if (e.key === 'ArrowDown') { e.preventDefault(); setAktywna(i => (i + 1) % podp.length) }
+                    else if (e.key === 'ArrowUp') { e.preventDefault(); setAktywna(i => (i <= 0 ? podp.length - 1 : i - 1)) }
+                  }}
+                  placeholder={t.placeholder}
+                  autoComplete="off"
+                  maxLength={200}
+                  aria-autocomplete="list"
+                  aria-expanded={podp.length > 0}
+                  className={`w-full h-[44px] !bg-transparent border border-[rgba(70,45,25,0.75)] rounded-sm px-4 ${P.text} text-[16px] md:text-[17px] font-lora font-normal placeholder:text-[#6b5940] placeholder:![-webkit-text-fill-color:#6b5940] focus:outline-none hover:border-[rgba(70,45,25,0.95)] hover:bg-[rgba(70,45,25,0.05)] focus:border-[rgba(70,45,25,0.95)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250`}
                 />
-                <div className="absolute" style={{ left: `${PIN.left}%`, top: `${PIN.top}%` }}>
-                  <svg viewBox="0 0 24 34" aria-hidden="true" className="absolute w-[32px] h-[45px] -translate-x-1/2 -translate-y-full drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-                    <path d="M12 0C5.4 0 0 5.3 0 11.9 0 20.8 12 34 12 34s12-13.2 12-22.1C24 5.3 18.6 0 12 0z" fill="#EA4335" stroke="#B31412" strokeWidth="1" />
-                    <circle cx="12" cy="12" r="4.2" fill="#B31412" />
-                  </svg>
-                  <div className="absolute left-[18px] md:left-[22px] -top-[58px] md:-top-[68px] whitespace-nowrap rounded-[8px] bg-white px-2.5 py-1.5 md:px-3.5 md:py-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.22)]">
-                    <p className="text-[12px] md:text-[14px] font-semibold leading-[1.3] text-[#202124]">Omobonus</p>
-                    <p className="text-[11px] md:text-[13px] leading-[1.35] text-[#202124]">Marcina Bukowskiego 174<br />52-418 Wrocław</p>
-                  </div>
-                </div>
+
+                {podp.length > 0 && (
+                  <ul role="listbox" className="absolute left-0 right-0 top-full z-10 mt-1 overflow-hidden rounded-[12px] border border-[#d5dbe2] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.15)] font-inter">
+                    {podp.map((p, i) => (
+                      <li key={p.placeId} role="option" aria-selected={i === aktywna}>
+                        <button
+                          type="button"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => wybierz(p)}
+                          className={`w-full flex items-start gap-3 px-4 py-2.5 text-left cursor-pointer ${i === aktywna ? 'bg-[#eef3f0]' : 'hover:bg-[#f4f6f8]'}`}
+                        >
+                          <MapPin className="mt-0.5 w-4 h-4 flex-shrink-0 text-[#5b6b80]" />
+                          <span className="min-w-0">
+                            <span className="block text-[14px] md:text-[15px] text-[#1f2933]">{p.glowny}</span>
+                            {p.dodatkowy && <span className="block text-[12px] md:text-[13px] text-[#5b6b80]">{p.dodatkowy}</span>}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
-              <div className="flex flex-col lg:justify-center">
-                {/* 1. location — the main action */}
-                <button
-                  type="button"
-                  onClick={lokalizacja}
-                  disabled={lokalizuje || busy}
-                  className="w-full min-h-[40px] inline-flex items-center justify-center gap-2 rounded-[9px] bg-[#1c6e43] px-3 py-2 text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#155d36] disabled:opacity-80 cursor-pointer"
-                >
-                  <MapPin className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={2} />
-                  {lokalizuje ? t.locating : t.locate}
-                </button>
+              {error
+                ? <p className="mt-1.5 font-lora text-[13px] md:text-[14px] text-red-600">{error}</p>
+                : (lokalizuje || note !== 'hint') && <p className={`mt-1.5 font-lora text-[13px] md:text-[14px] ${P.note}`}>{lokalizuje ? t.locating : t[note as 'confirm' | 'geo']}</p>}
 
-                <div className="mt-2.5 flex items-start gap-2.5 px-0.5">
-                  <ShieldCheck className="mt-0.5 w-[18px] h-[18px] flex-shrink-0 text-[#5b6b80]" strokeWidth={1.6} />
-                  <p className="text-[12px] md:text-[12.5px] leading-[1.4] text-[#5b6b80]">{t.privacy}</p>
-                </div>
-                <div className="mt-3 flex items-start gap-2.5 px-0.5">
-                  <Ban className="mt-0.5 w-[18px] h-[18px] flex-shrink-0 text-[#5b6b80]" strokeWidth={1.6} />
-                  <p className="text-[12px] md:text-[12.5px] leading-[1.4] text-[#5b6b80]">{t.ask}</p>
-                </div>
-
-                <div className="relative mt-3">
-                  <MapPin className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#2d3a4a]" strokeWidth={1.8} />
-                  <input
-                    ref={inputRef}
-                    value={adres}
-                    onChange={(e) => { setAdres(e.target.value); setWybor(null); setNote('hint'); if (error) setError('') }}
-                    onKeyDown={(e) => {
-                      if (!podp.length) return
-                      if (e.key === 'ArrowDown') { e.preventDefault(); setAktywna(i => (i + 1) % podp.length) }
-                      else if (e.key === 'ArrowUp') { e.preventDefault(); setAktywna(i => (i <= 0 ? podp.length - 1 : i - 1)) }
-                    }}
-                    placeholder={t.placeholder}
-                    autoComplete="off"
-                    maxLength={200}
-                    aria-label={t.placeholder}
-                    aria-autocomplete="list"
-                    aria-expanded={podp.length > 0}
-                    className="w-full h-[40px] rounded-[9px] border border-[#cfd6de] bg-white pl-9 pr-3 text-[13px] text-[#1f2933] ![-webkit-text-fill-color:#1f2933] caret-[#1f2933] placeholder:![-webkit-text-fill-color:#8592a3] placeholder:!text-[#8592a3] outline-none focus:border-[#1c6e43] focus:ring-2 focus:ring-[#1c6e43]/15"
-                  />
-
-                  {podp.length > 0 && (
-                    <ul role="listbox" className="absolute left-0 right-0 top-full z-10 mt-1 overflow-hidden rounded-[12px] border border-[#d5dbe2] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
-                      {podp.map((p, i) => (
-                        <li key={p.placeId} role="option" aria-selected={i === aktywna}>
-                          <button
-                            type="button"
-                            onMouseDown={(e) => e.preventDefault()}
-                            onClick={() => wybierz(p)}
-                            className={`w-full flex items-start gap-3 px-4 py-2.5 text-left cursor-pointer ${i === aktywna ? 'bg-[#eef3f0]' : 'hover:bg-[#f4f6f8]'}`}
-                          >
-                            <MapPin className="mt-0.5 w-4 h-4 flex-shrink-0 text-[#5b6b80]" />
-                            <span className="min-w-0">
-                              <span className="block text-[14px] md:text-[15px] text-[#1f2933]">{p.glowny}</span>
-                              {p.dodatkowy && <span className="block text-[12px] md:text-[13px] text-[#5b6b80]">{p.dodatkowy}</span>}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {error
-                  ? <p className="mt-2 text-[13px] md:text-[14px] text-[#c0392b]">{error}</p>
-                  : note !== 'hint' && <p className="mt-2 text-[13px] md:text-[14px] text-[#5b6b80]">{t[note]}</p>}
-
-                {/* 3. calculation — after the address is set */}
-                <button
-                  type="button"
-                  onClick={licz}
-                  disabled={!gotowe}
-                  className="mt-2.5 w-full min-h-[40px] inline-flex items-center justify-center gap-2 rounded-[9px] px-3 py-2 text-[14px] font-semibold text-white transition-colors duration-200 bg-[#1c6e43] hover:bg-[#155d36] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#a6d2bb] disabled:hover:bg-[#a6d2bb]"
-                >
-                  <Calculator className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={1.8} />
-                  {busy ? t.counting : t.count}
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      )}
+              {/* 3. calculation — after the address is set */}
+              <button
+                type="button"
+                onClick={licz}
+                disabled={!gotowe}
+                className="mt-3 w-full md:w-auto md:min-w-[280px] md:mx-auto min-h-[40px] flex items-center justify-center gap-2 rounded-[9px] px-3 md:px-6 py-2 font-inter text-[14px] font-semibold text-white transition-colors duration-200 bg-[#1c6e43] hover:bg-[#155d36] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#a6d2bb] disabled:hover:bg-[#a6d2bb]"
+              >
+                <Calculator className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={1.8} />
+                {busy ? t.counting : t.count}
+              </button>
+            </form>
+          </KosztOkno>
+        )}
+      </div>
     </div>,
     document.body,
   )
