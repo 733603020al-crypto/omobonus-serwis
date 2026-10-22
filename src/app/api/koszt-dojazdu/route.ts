@@ -16,17 +16,19 @@ export async function POST(request: NextRequest) {
   const limited = rateLimit(request, 'koszt-dojazdu', PER_MINUTE)
   if (limited) return limited
 
-  let body: { adres?: unknown; lat?: unknown; lng?: unknown; lang?: unknown }
+  let body: { adres?: unknown; placeId?: unknown; lat?: unknown; lng?: unknown; lang?: unknown }
   try { body = await request.json() } catch { return err('bad_request', 400) }
 
   const lang: Lang = body.lang === 'uk' || body.lang === 'ru' ? body.lang : 'pl'
   const adres = typeof body.adres === 'string' ? body.adres.trim().replace(/\s+/g, ' ') : ''
   const lat = Number(body.lat), lng = Number(body.lng)
   const hasPoint = body.lat != null && body.lng != null && Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180
-  if (!hasPoint && (adres.length < 3 || adres.length > 200)) return err('bad_request', 400)
+  // placeId — an address chosen from the suggestions
+  const placeId = typeof body.placeId === 'string' && /^[\w-]{10,300}$/.test(body.placeId) ? body.placeId : ''
+  if (!placeId && !hasPoint && (adres.length < 3 || adres.length > 200)) return err('bad_request', 400)
 
-  const q = hasPoint ? { lat: Math.round(lat * 1e4) / 1e4, lng: Math.round(lng * 1e4) / 1e4 } : { adres }
-  const cacheKey = `${lang}|${hasPoint ? `${q.lat},${q.lng}` : adres.toLowerCase()}`
+  const q = placeId ? { placeId } : hasPoint ? { lat: Math.round(lat * 1e4) / 1e4, lng: Math.round(lng * 1e4) / 1e4 } : { adres }
+  const cacheKey = `${lang}|${placeId ? `id:${placeId}` : hasPoint ? `${q.lat},${q.lng}` : adres.toLowerCase()}`
   const hit = cache.get(cacheKey)
   if (hit && Date.now() - hit.at < CACHE_MS) return NextResponse.json(hit.data)
 

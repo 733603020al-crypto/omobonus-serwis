@@ -15,6 +15,8 @@ export class TrasaError extends Error {
   constructor(public code: 'not_found' | 'no_route' | 'google' | 'config') { super(code) }
 }
 
+export type Zapytanie = { adres?: string; placeId?: string; lat?: number; lng?: number }
+
 export const SERWIS_ADRES = 'Marcina Bukowskiego 174, 52-418 Wrocław'
 const W = 560, H = 620, SCALE = 2
 const COUNTRY = /, (Polska|Poland|Польща|Польша)$/i
@@ -25,17 +27,21 @@ function key() {
   return k
 }
 
-async function geocode(q: { adres?: string; lat?: number; lng?: number }, lang: Lang) {
-  const where = q.adres
+export async function geocode(q: Zapytanie, lang: Lang) {
+  const where = q.placeId
+    ? `place_id=${encodeURIComponent(q.placeId)}`
+    : q.adres
     ? `address=${encodeURIComponent(q.adres)}&components=country:PL`
     : `latlng=${q.lat},${q.lng}`
   const r = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?${where}&region=pl&language=${lang}&key=${key()}`).then(x => x.json())
   if (r.status === 'ZERO_RESULTS') throw new TrasaError('not_found')
   if (r.status !== 'OK') throw new TrasaError('google')
   const g = r.results[0]
-  // an unknown address falls back to the whole country or voivodeship — treat it as not found
+  // an unknown street falls back to the whole city, county, voivodeship or country — the route would go
+  // to the city centre, so treat it as not found
   const types: string[] = g.types ?? []
-  if (types.includes('country') || types.includes('administrative_area_level_1')) throw new TrasaError('not_found')
+  const OGOLNE = ['country', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3', 'locality']
+  if (types.some(t => OGOLNE.includes(t))) throw new TrasaError('not_found')
   return { adres: String(g.formatted_address).replace(COUNTRY, ''), lat: g.geometry.location.lat as number, lng: g.geometry.location.lng as number }
 }
 
@@ -58,7 +64,7 @@ const wx = (lng: number, z: number) => (lng + 180) / 360 * 256 * 2 ** z
 const wy = (lat: number, z: number) => { const s = Math.sin(lat * Math.PI / 180); return (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * 256 * 2 ** z }
 const r2 = (n: number) => Math.round(n * 100) / 100
 
-export async function obliczTrase(q: { adres?: string; lat?: number; lng?: number }, lang: Lang): Promise<TrasaWynik> {
+export async function obliczTrase(q: Zapytanie, lang: Lang): Promise<TrasaWynik> {
   const klient = await geocode(q, lang)
 
   const route = await fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
@@ -116,3 +122,28 @@ export async function obliczTrase(q: { adres?: string; lat?: number; lng?: numbe
     mapPins: { start: pct(pts[0]), end: pct(pts[pts.length - 1]) },
   }
 }
+
+// Address suggestions while typing (Places API New, Poland, closer to Wrocław first).
+export type Podpowiedz = { placeId: string; tekst: string; glowny: string; dodatkowy: string }
+export async function podpowiedzi(input: string, session: string, lang: Lang): Promise<Podpowiedz[]> {
+  const r = await fetch('https://places.googleapis.com/v1/places:autocomplete', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': key() },
+    body: JSON.stringify({
+      input, sessionToken: session, languageCode: lang, regionCode: 'pl', includedRegionCodes: ['pl'],
+      locationBias: { circle: { center: { latitude: 51.0775534, longitude: 16.9784082 }, radius: 50000 } },
+    }),
+  }).then(x => x.json())
+  if (r.error) { console.error('koszt-dojazdu autocomplete:', r.error.status); throw new TrasaError('google') }
+  return (r.suggestions ?? [])
+    .map((s: { placePrediction?: { placeId: string; text?: { text: string }; structuredFormat?: { mainText?: { text: string }; secondaryText?: { text: string } } } }) => s.placePrediction)
+    .filter(Boolean)
+    .slice(0, 5)
+    .map((p: { placeId: string; text?: { text: string }; structuredFormat?: { mainText?: { text: string }; secondaryText?: { text: string } } }) => ({
+      placeId: p.placeId,
+      tekst: String(p.text?.text ?? '').replace(COUNTRY, ''),
+      glowny: p.structuredFormat?.mainText?.text ?? p.text?.text ?? '',
+      dodatkowy: String(p.structuredFormat?.secondaryText?.text ?? '').replace(COUNTRY, '').replace(/^(Polska|Poland|Польща|Польша)$/i, ''),
+    }))
+}
+
