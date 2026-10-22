@@ -5,7 +5,7 @@ description: Стандарт ответов клиентам из почты se
 
 # Ответы клиентам — serwis@omobonus.com.pl
 
-СТАТУС: стандарт согласован (2026-10-21). Решено: цены только со страницы услуги, всё netto, подпись Maksym, CC zaemka222@gmail.com, естественный польский без канцелярита, без эмодзи.
+СТАТУС: стандарт согласован (2026-10-21). Решено: цены только со страницы услуги, всё netto, подпись Maksym, скрытая копия (BCC/UDW) zaemka222@gmail.com — копия сисадмину, естественный польский без канцелярита, без эмодзи.
 
 ## 1. Порядок работы
 
@@ -98,6 +98,23 @@ description: Стандарт ответов клиентам из почты se
 **K. Ремонт экономически нецелесообразен**
 Честно сказать об этом клиенту и коротко объяснить почему (стоимость частей и работы по сравнению с ценностью устройства). Решение — за клиентом: `Decyzja należy do Państwa`. Цену нового устройства и «выгоду» не придумывать; ремонт не отговаривать и не навязывать.
 
+**L. Довольный клиент благодарит / хочет сохранить контакт**
+Коротко и тепло: спасибо за отзыв → (если было наше упущение — честно извиниться) → «да, сохраните контакт» + кратко, что ещё обслуживаем (несколько типов техники, в конце «a nawet ekspresy do kawy») → подпись. Без цен и без навязывания. Образец (утверждён 2026-10-22, клиент Fresenius Kabi, после ремонта принтера):
+```
+Dzień dobry, Panie Michale,
+
+bardzo dziękuję za miłe słowa — cieszę się, że drukarka znów działa bez zarzutu.
+
+Przy okazji chciałbym przeprosić: po naprawie **zapomnieliśmy nakleić na drukarkę naszej firmowej etykiety z adresem i numerem telefonu**. Przepraszamy za to przeoczenie.
+
+**Oczywiście, proszę śmiało zapisać nasz kontakt.** Chętnie pomożemy także w przyszłości — serwisujemy m.in. drukarki i kserokopiarki, laptopy i komputery, plotery, niszczarki, zasilacze UPS i projektory, a nawet ekspresy do kawy. Wystarczy napisać lub zadzwonić.
+
+Pozdrawiam serdecznie
+**Maksym**
+[stała stopka]
+```
+Абзац с извинением — только если такое упущение реально было (подтвердил пользователь).
+
 ## 5. Цены и тарифы — ПРОВЕРЯТЬ ПЕРЕД КАЖДЫМ ПИСЬМОМ
 
 Цены меняются и отличаются по услугам (например, дорога и диагностика для плоттера, лазерного и струйного принтера — разные). Поэтому перед каждым ответом:
@@ -174,14 +191,14 @@ W niedzielę jesteśmy nieczynni.
 - Есть следующий шаг; лишние услуги не навязаны.
 - Естественный польский, без канцелярита, рекламы и эмодзи.
 - Жирное — умеренно, только главное (раздел 3); ссылки активные, с понятным текстом.
-- Получатель — клиент (не serwis@ сам себе); в копии (CC) — `zaemka222@gmail.com`.
+- Получатель — клиент (не serwis@ сам себе); в скрытой копии (BCC/UDW, не CC) — `zaemka222@gmail.com` (копия сисадмину, клиент её не видит).
 
 Пользователь может попросить проверить уже написанный им ответ — проверять по этому же списку. При правке, сокращении или переводе его текста сохранять все согласованные цены, условия и смысл исходного сообщения.
 
 ## 8. Техника (Outlook COM, PowerShell)
 
 - Ящик: `Stores` → `serwis@omobonus.com.pl`; входящие `GetDefaultFolder(6)`, отправленные — папка `Sent`, черновики — `Drafts`.
-- Ответ: `$r = $mail.Reply()` (или `ReplyAll()`), вставить свой HTML перед цитатой: `$r.HTMLBody = $myHtml + $r.HTMLBody`, добавить CC `zaemka222@gmail.com` (`$r.Recipients.Add(...).Type = 2`), затем `$r.Save()` — без `Send()`.
+- Ответ: `$r = $mail.Reply()` (или `ReplyAll()`), вставить свой HTML перед цитатой: `$r.HTMLBody = $myHtml + $r.HTMLBody`, добавить BCC `zaemka222@gmail.com` (`$r.Recipients.Add(...).Type = 3`; не CC), затем `$r.Save()` — без `Send()`.
 - Карточка маршрута в теле письма (до `$r.HTMLBody = ...`):
   ```
   $att = $r.Attachments.Add($png, 1, 0, 'koszt-dojazdu.png')
