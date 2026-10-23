@@ -115,6 +115,54 @@ Pozdrawiam serdecznie
 ```
 Абзац с извинением — только если такое упущение реально было (подтвердил пользователь).
 
+**M. Клиент спрашивает, можно ли выслать струйный принтер на диагностику/ремонт**
+Образец (утверждён 2026-10-23, клиент Mariusz Kupczyk, Epson WF-2010 с сублимационными чернилами — считали по прайсу струйных, категория «domowa»). Забор не предлагать. Цены диагностики и срок — каждый раз сверять со страницей услуги и категорией устройства. Адрес пакомата — в две строки (как ниже), курьерский — в одну.
+```
+Dzień dobry, Panie Mariuszu,
+
+**tak, drukarkę Epson WF-2010 można do nas przesłać** — zdiagnozujemy ją i przedstawimy koszt naprawy.
+
+Prosimy o krótki opis, co dokładnie dzieje się z drukarką (np. pasy na wydrukach, brak któregoś koloru, komunikat błędu). Najlepiej odpisać na tego maila albo włożyć kartkę z opisem do paczki.
+
+Adres do wysyłki **kurierem:**
+Omobonus Sp. z o.o.
+Marcina Bukowskiego 174, 52-418 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+Lub **przez paczkomat:**
+Omobonus Sp. z o.o.
+Paczkomat WRO138M (ul. Jastrzębia 14)
+53-148 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+**Odebranie paczki i odesłanie drukarki po naprawie nie jest dla nas żadnym problemem.** Koszt odesłania będzie taki, jak cena przewoźnika — nic do niej nie doliczamy.
+
+Chcę jednak uczciwie uprzedzić o jednym ryzyku. Drukarki atramentowe źle znoszą transport kurierski: gdy paczka jest odwracana, atrament może wylać się do środka i zalać drukarkę, czasem nieodwracalnie.
+
+Dlatego prosimy, aby **oznaczyć na kartonie markerem, gdzie jest góra, a gdzie dół, i dopisać „Nie odwracać”**. Nie daje to pełnej gwarancji, bo paczka przechodzi przez kilka rąk, ale wyraźnie zmniejsza ryzyko.
+
+Mieliśmy już przypadek, że mała drukarka atramentowa dotarła do nas rozbita i cała w atramencie. Wysłaliśmy klientowi zdjęcia i za jego zgodą została zutylizowana. W najgorszym razie straciłby Pan więc tylko koszt wysyłki. Jeśli drukarka i tak nie działa, a w pobliżu nie ma gdzie jej naprawić, myślę, że warto spróbować.
+
+**Koszt diagnozy:**
+• **Gratis** — jeśli zdecyduje się Pan na naprawę,
+• **70 zł netto** — w przypadku rezygnacji z naprawy.
+
+Diagnoza trwa zwykle 1–2 dni robocze od otrzymania drukarki. Orientacyjne ceny napraw znajdzie Pan w cenniku serwisu drukarek atramentowych [link na stronę usługi].
+
+Oczywiście **nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Pana zgody**.
+
+Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystkich możliwych ryzykach. Dlatego ta wiadomość jest dłuższa, choć mogłaby się ograniczyć do: „Tak, naprawiamy takie drukarki, proszę przesłać, oto adres”.
+
+Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
+
+Pozdrawiam serdecznie
+**Maksym**
+[stała stopka]
+```
+Если клиент уже описал неисправность — абзац с просьбой об описании убрать. Если он женщина/фирма — поменять формы (Pani / Państwo).
+
 ## 5. Цены и тарифы — ПРОВЕРЯТЬ ПЕРЕД КАЖДЫМ ПИСЬМОМ
 
 Цены меняются и отличаются по услугам (например, дорога и диагностика для плоттера, лазерного и струйного принтера — разные). Поэтому перед каждым ответом:
@@ -132,7 +180,27 @@ Pozdrawiam serdecznie
 - Всегда явно разделять ориентировочную и окончательную цену, например: `Orientacyjnie naprawa kosztuje 250–350 zł netto. Dokładny koszt podamy po diagnozie — przed rozpoczęciem naprawy.`
 
 ### Odbiór — предлагать, когда уместно
-Машина есть, забор техники возможен. Предлагать коротко, одной фразой, когда устройство нужно доставить в сервис и это реально помогает клиенту, — не механически в каждом письме. «Nie mamy możliwości odbioru» — только если пользователь сам так сказал по конкретному случаю.
+Машина есть, забор техники возможен. Предлагать коротко, одной фразой, когда устройство нужно доставить в сервис и это реально помогает клиенту, — не механически в каждом письме. **Если клиент сам пишет, что хочет выслать устройство (курьером/почтой), забор не предлагать и адрес для расчёта не просить** — дать адрес сервиса для отправки (утверждено 2026-10-23).
+
+### Клиент высылает устройство (утверждено 2026-10-23)
+Дать оба адреса:
+```
+Adres do wysyłki **kurierem:**
+Omobonus Sp. z o.o.
+Marcina Bukowskiego 174, 52-418 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+Lub **przez paczkomat:**
+Omobonus Sp. z o.o.
+Paczkomat WRO138M (ul. Jastrzębia 14)
+53-148 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+```
+- Odebrać paczkę i odesłać po naprawie — не проблема. Обратная отправка — **по цене перевозчика, мы на этом не зарабатываем**: `Koszt odesłania będzie taki, jak cena przewoźnika — nic do niej nie doliczamy.`
+- **Струйные принтеры (и др. техника с чернилами)** — честно предупредить о риске: при переворачивании посылки чернила могут залить принтер, иногда безвозвратно. Попросить **маркером** (не «flamaster») подписать на коробке верх/низ и «Nie odwracać»; гарантии это не даёт (посылка проходит через несколько рук), но снижает риск. Пример из практики: маленький струйный принтер приехал разбитым и в чернилах, клиенту отправили фото, с его согласия утилизировали — в худшем случае клиент теряет только стоимость пересылки; если принтер всё равно не работает и рядом негде починить — стоит рискнуть.
+- Принцип: **мы говорим честно и предупреждаем о всех возможных рисках**, даже если письмо из-за этого длиннее. Можно сказать это клиенту прямо: `Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystkich możliwych ryzykach. Dlatego ta wiadomość jest dłuższa, choć mogłaby się ograniczyć do: „Tak, naprawiamy takie drukarki, proszę przesłać, oto adres”.` Концовка: `Decyzja należy do Pana/Pani.` «Nie mamy możliwości odbioru» — только если пользователь сам так сказал по конкретному случаю.
 
 ### Диагностика (по прайсу «Diagnoza i wycena» конкретной услуги)
 Условия у каждой услуги свои. Бесплатную диагностику обещать только если такое условие есть на странице именно этой услуги, и всегда вместе с условием. Универсальных правил (например, «до 15 минут бесплатно») не переносить с одной услуги на другую.
@@ -177,7 +245,7 @@ Pracujemy: poniedziałek–piątek, 8:00–18:00
 Kontakt z serwisem: poniedziałek–sobota, 7:00–21:00
 W niedzielę jesteśmy nieczynni.
 ```
-После `Pozdrawiam serdecznie` запятую не ставить, `Maksym` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт в HTML делать активной. Не использовать варианты «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
+После `Pozdrawiam serdecznie` запятую не ставить, `Maksym` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт и e-mail в HTML делать активными (e-mail — `<a href="mailto:serwis@omobonus.com.pl">serwis@omobonus.com.pl</a>`, везде в письме, в т.ч. в адресе пакомата). Три последние строки (часы работы, контакт, воскресенье) — курсивом и чуть мельче: в HTML `<span style="font-size:9pt;font-style:italic">…</span>` (основной текст 11pt). Не использовать варианты «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
 
 Подпись — на языке письма: та же структура и те же данные, переведены только прощание и подписи строк (например, по-украински `З повагою` / `Працюємо: понеділок–п'ятниця, 8:00–18:00`, по-немецки `Mit freundlichen Grüßen` / `Arbeitszeiten: Montag–Freitag, 8:00–18:00`). Имя, название фирмы, адрес, телефон, e-mail и ссылка не меняются.
 
