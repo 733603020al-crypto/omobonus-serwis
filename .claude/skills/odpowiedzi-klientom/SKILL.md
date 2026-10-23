@@ -1,0 +1,278 @@
+---
+name: odpowiedzi-klientom
+description: Стандарт ответов клиентам из почты serwis@omobonus.com.pl (Outlook). Использовать, когда пользователь просит ответить на письмо клиента, подготовить черновик ответа, разобрать новые письма или проверить ответ перед отправкой.
+---
+
+# Ответы клиентам — serwis@omobonus.com.pl
+
+СТАТУС: стандарт согласован (2026-10-21). Решено: цены только со страницы услуги, всё netto, подпись Maksym, скрытая копия (BCC/UDW) zaemka222@gmail.com — копия сисадмину, естественный польский без канцелярита, без эмодзи.
+
+## 1. Порядок работы
+
+1. Пользователь пишет «ответь на письмо X» или «разбери новые письма».
+2. Claude читает письмо (и всю переписку в треде) через Outlook — ящик `serwis@omobonus.com.pl`.
+3. Claude показывает в чате коротко: кто, что хочет, какой тип письма (раздел 4), предлагаемый ответ.
+4. После «ок» — создаёт ответ как **черновик** в Outlook (папка Drafts этого ящика). Никогда не отправляет сам.
+5. Пользователь проверяет в Outlook и нажимает «Wyślij».
+
+**Напоминать о неотвеченных письмах.** Каждый раз при работе с почтой сверять входящие с отправленными (последние ~2 недели) и коротко перечислять письма клиентов без ответа: от кого, дата, о чём одной фразой. Служебные копии, спам и рассылки не считать. Если пользователь сказал «пока оставляем» — не настаивать, просто напомнить снова при следующей работе с почтой.
+
+Если не хватает данных (цена не ясна, неизвестно, есть ли часть, свободен ли водитель) — не выдумывать, а спросить пользователя в чате одной строкой. Никогда не придумывать результаты диагностики, сроки, цены, наличие частей и гарантии — только то, что есть на странице услуги или подтвердил пользователь.
+
+## 2. Язык и обращение
+
+- Отвечать и писать письма на языке получателя (клиента или поставщика): полякам — по-польски, украинцам — по-украински, немцам — по-немецки, чехам — по-чешски и т.д. Если язык неясен — по-польски.
+- Приветствие: `Dzień dobry, Panie Tomaszu,` / `Dzień dobry, Pani Elżbieto,` (звательный падеж имени). Если имя неизвестно или пишет организация — `Dzień dobry,`. Вечером после 18:00 допустимо `Dobry wieczór,`.
+- Пунктуация приветствия: после `Dzień dobry` перед `Pan/Pani` — запятая; после имени — тоже запятая. Без имени — `Dzień dobry,`.
+- Никогда: `Witam`, `Szanowna Pani Kowalska` (фамилия после титула), обращение не того рода.
+- `Pan/Pani` — когда адресат известен; `Państwo` — когда это естественно по контексту (организация, несколько человек, общее «у Państwa w firmie»). Искусственных запретов нет, главное — чтобы письмо читалось естественно.
+- «Мы» — от имени сервиса (`naprawiamy`, `odbierzemy`); «я» — когда Maksym лично объясняет или предлагает (`chętnie wyjaśnię`, `policzę koszt`).
+- Первая строка после приветствия — с маленькой буквы, если приветствие кончается запятой.
+
+## 3. Структура ответа
+
+1. Приветствие.
+2. Благодарность — необязательна; только когда есть за что конкретно (`dziękuję za przesłanie zdjęć i dokładny opis problemu`). В продолжении переписки обычно не нужна — сразу к делу.
+3. Прямой ответ на вопрос клиента — в первом абзаце (да/нет, делаем/не делаем, цена).
+4. Детали: возможная причина, ориентировочная цена (netto), срок, условия.
+5. Наш принцип (когда речь о ремонте): `Nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Państwa zgody.`
+6. Один понятный следующий шаг: привезти / заказать odbiór / прислать модель, фото, NIP / подтвердить.
+7. Подпись (раздел 6).
+
+Правила:
+- **Главный принцип:** письмо должно выглядеть как личный ответ опытного мастера, который действительно разобрался в вопросе клиента, а не как шаблонный ответ службы поддержки. Отсюда — естественный польский, конкретика по его устройству и ситуации. Без канцелярита и шаблонной рекламы: не писать `uprzejmie informujemy`, `w nawiązaniu do`, `pragniemy poinformować`, `z przyjemnością informujemy`, `kompleksowa obsługa`, `najwyższa jakość`, `profesjonalny zespół` и т.п.
+- Не навязывать услуги: предлагать только то, что решает проблему клиента. Дополнительные работы (чистка, обслуживание и т.п.) — только если связаны с его неисправностью.
+- Короткие абзацы по 1–3 предложения; списки для цен и вариантов.
+- Кратко, но существенные технические детали (модель, код ошибки, вероятная причина, что проверим, что может понадобиться заменить) ради сокращения не удалять.
+- Цены всегда с `netto` — для всех клиентов.
+- Цены и сроки — только «orientacyjnie», если устройство не видели.
+- Сравнения «как с автомобилем» — хорошо работают, использовать уместно, не в каждом письме.
+- Эмодзи в сервисных письмах не использовать.
+- Тон дружеский и тёплый, но без шуток, иронии и снисходительности: клиент не должен подумать, что над ним смеются, потому что он не разбирается в технике или что-то не так написал. Не поправлять его формулировки, не писать «jak już wspomnieliśmy». Слово «oczywiście» не запрещено (например, `Oczywiście nie rozpoczynamy żadnej płatnej naprawy…` — нормально), но избегать его там, где оно звучит снисходительно или подразумевает, что клиент должен был это знать («oczywiście, że…», «jak wiadomo»); сложное объяснять просто и уважительно.
+- Тему письма не менять (`RE: …` автоматически).
+
+### Выделение жирным (утверждено)
+Клиент должен с первого взгляда увидеть главное. Жирным выделять умеренно, только ключевые факты, не целые абзацы; обязательного количества нет. Что обычно выделять:
+- **Прямой ответ «делаем»** с моделью: `Tak, **naprawiamy drukarki Zortrax M200 Plus**, więc jak najbardziej możemy pomóc.`
+- **Каждая цена/вилка вместе с `netto`** в начале пункта списка: `**250–350 zł netto** — jeśli…`, `**Do około 800 zł netto** — jeśli…`
+- **Подзаголовок-вопрос** перед блоком о следующем шаге: `**Jak ustalić dokładny koszt?**`
+- **Выгода для клиента** — только вместе с условием и только если оно есть на странице этой услуги: `**diagnoza jest bezpłatna, jeśli zdecydują się Państwo na naprawę**`.
+- **Итог расчёта дороги** отдельной строкой: `**Łącznie: 55 zł netto za odbiór drukarki.**`
+- **Принцип согласия**: `Oczywiście **nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Państwa zgody**.`
+- **Имя в подписи**: `**Maksym**`.
+
+Не выделять: приветствие, благодарность, пояснения, формулу расчёта, адрес и часы в подписи. В HTML черновика — тег `<b>`.
+
+### Ссылки
+Ссылки в черновике — активные, в HTML: `<a href="https://serwis.omobonus.com.pl/uslugi/<slug>">cennik serwisu drukarek</a>`. Текст ссылки понятный (что откроется), а не голый URL в теле письма. Ссылка на сайт в подписи — тоже активная. Давать ссылку, когда она реально помогает клиенту (прайс, страница услуги, форма заявки), не в каждом письме.
+
+Хорошая концовка перед подписью: `Decyzja należy do Państwa. W razie pytań chętnie wszystko wyjaśnię.`
+
+## 4. Типовые ситуации
+
+**A. Запрос цены, модель известна**
+Делаем ли → ориентировочная цена netto (вилка «без части / с заменой части») → срок → диагностика (раздел 5) → как доставить устройство (привезти или odbiór, если уместно) → принцип согласия.
+
+**B. Модель/марка не указана**
+Коротко: делаем такой тип техники + просим точную модель (и фото таблички/ошибки, если полезно). Без цен.
+
+**C. По описанию нельзя определить причину**
+Объяснить честно (одна-две возможные причины), предложить диагностику в сервисе, указать ориентировочную стоимость работ, части — после проверки и с согласия.
+
+**D. Клиент хочет ремонт на месте**
+Вежливо объяснить: первый выезд обычно только диагностика, потом заказ части и повторный выезд → дороже и дольше. Предложить odbiór в сервис.
+
+**E. Odbiór / dostawa** — фраза «если нет возможности привезти — приедем и заберём» + карточка «Koszt dojazdu» с сайта + итог строкой (раздел 5).
+
+**F. Не наш профиль / нет части / нет услуги**
+`Niestety nie zajmujemy się …` + по возможности куда обратиться. Коротко, вежливо.
+
+**G. Подтверждения**: приняли заявку, забрали устройство, начали работу, готово, привезём — дата/время, что дальше.
+
+**H. Счёт / NIP / KSeF** — коротко и по делу; при нехватке данных попросить NIP и адрес.
+
+**I. Предложения купить у нас / спам / skup** — `Dziękujemy za ofertę, ale nie jesteśmy zainteresowani.`
+
+**J. Письмо в выходные** — ответить и предложить созвон/действие в понедельник.
+
+**K. Ремонт экономически нецелесообразен**
+Честно сказать об этом клиенту и коротко объяснить почему (стоимость частей и работы по сравнению с ценностью устройства). Решение — за клиентом: `Decyzja należy do Państwa`. Цену нового устройства и «выгоду» не придумывать; ремонт не отговаривать и не навязывать.
+
+**L. Довольный клиент благодарит / хочет сохранить контакт**
+Коротко и тепло: спасибо за отзыв → (если было наше упущение — честно извиниться) → «да, сохраните контакт» + кратко, что ещё обслуживаем (несколько типов техники, в конце «a nawet ekspresy do kawy») → подпись. Без цен и без навязывания. Образец (утверждён 2026-10-22, клиент Fresenius Kabi, после ремонта принтера):
+```
+Dzień dobry, Panie Michale,
+
+bardzo dziękuję za miłe słowa — cieszę się, że drukarka znów działa bez zarzutu.
+
+Przy okazji chciałbym przeprosić: po naprawie **zapomnieliśmy nakleić na drukarkę naszej firmowej etykiety z adresem i numerem telefonu**. Przepraszamy za to przeoczenie.
+
+**Oczywiście, proszę śmiało zapisać nasz kontakt.** Chętnie pomożemy także w przyszłości — serwisujemy m.in. drukarki i kserokopiarki, laptopy i komputery, plotery, niszczarki, zasilacze UPS i projektory, a nawet ekspresy do kawy. Wystarczy napisać lub zadzwonić.
+
+Pozdrawiam serdecznie
+**Maksym**
+[stała stopka]
+```
+Абзац с извинением — только если такое упущение реально было (подтвердил пользователь).
+
+**M. Клиент спрашивает, можно ли выслать струйный принтер на диагностику/ремонт**
+Образец (утверждён 2026-10-23, клиент Mariusz Kupczyk, Epson WF-2010 с сублимационными чернилами — считали по прайсу струйных, категория «domowa»). Забор не предлагать. Цены диагностики и срок — каждый раз сверять со страницей услуги и категорией устройства. Адрес пакомата — в две строки (как ниже), курьерский — в одну.
+```
+Dzień dobry, Panie Mariuszu,
+
+**tak, drukarkę Epson WF-2010 można do nas przesłać** — zdiagnozujemy ją i przedstawimy koszt naprawy.
+
+Prosimy o krótki opis, co dokładnie dzieje się z drukarką (np. pasy na wydrukach, brak któregoś koloru, komunikat błędu). Najlepiej odpisać na tego maila albo włożyć kartkę z opisem do paczki.
+
+Adres do wysyłki **kurierem:**
+Omobonus Sp. z o.o.
+Marcina Bukowskiego 174, 52-418 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+Lub **przez paczkomat:**
+Omobonus Sp. z o.o.
+Paczkomat WRO138M (ul. Jastrzębia 14)
+53-148 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+**Odebranie paczki i odesłanie drukarki po naprawie nie jest dla nas żadnym problemem.** Koszt odesłania będzie taki, jak cena przewoźnika — nic do niej nie doliczamy.
+
+Chcę jednak uczciwie uprzedzić o jednym ryzyku. Drukarki atramentowe źle znoszą transport kurierski: gdy paczka jest odwracana, atrament może wylać się do środka i zalać drukarkę, czasem nieodwracalnie.
+
+Dlatego prosimy, aby **oznaczyć na kartonie markerem, gdzie jest góra, a gdzie dół, i dopisać „Nie odwracać”**. Nie daje to pełnej gwarancji, bo paczka przechodzi przez kilka rąk, ale wyraźnie zmniejsza ryzyko.
+
+Mieliśmy już przypadek, że mała drukarka atramentowa dotarła do nas rozbita i cała w atramencie. Wysłaliśmy klientowi zdjęcia i za jego zgodą została zutylizowana. W najgorszym razie straciłby Pan więc tylko koszt wysyłki. Jeśli drukarka i tak nie działa, a w pobliżu nie ma gdzie jej naprawić, myślę, że warto spróbować.
+
+**Koszt diagnozy:**
+• **Gratis** — jeśli zdecyduje się Pan na naprawę,
+• **70 zł netto** — w przypadku rezygnacji z naprawy.
+
+Diagnoza trwa zwykle 1–2 dni robocze od otrzymania drukarki. Orientacyjne ceny napraw znajdzie Pan w cenniku serwisu drukarek atramentowych [link na stronę usługi].
+
+Oczywiście **nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Pana zgody**.
+
+Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystkich możliwych ryzykach. Dlatego ta wiadomość jest dłuższa, choć mogłaby się ograniczyć do: „Tak, naprawiamy takie drukarki, proszę przesłać, oto adres”.
+
+Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
+
+Pozdrawiam serdecznie
+**Maksym**
+[stała stopka]
+```
+Если клиент уже описал неисправность — абзац с просьбой об описании убрать. Если он женщина/фирма — поменять формы (Pani / Państwo).
+
+## 5. Цены и тарифы — ПРОВЕРЯТЬ ПЕРЕД КАЖДЫМ ПИСЬМОМ
+
+Цены меняются и отличаются по услугам (например, дорога и диагностика для плоттера, лазерного и струйного принтера — разные). Поэтому перед каждым ответом:
+
+1. Определить страницу услуги, к которой относится вопрос клиента (тип техники).
+2. Взять цены с **живой страницы** `https://serwis.omobonus.com.pl/uslugi/<slug>` — это то, что видит клиент (slug — из `https://serwis.omobonus.com.pl/sitemap.xml`). Если страница недоступна — из данных проекта `src/lib/services-data-<услуга>.ts` + `services-data-shared.ts` (учитывать функции-переопределения вроде `apply…DojazdSection`).
+3. Если цена зависит от категории устройства (например, «80 / 120 / 180») — определить категорию по подсказке «Kategorie urządzeń» на этой странице и написать клиенту **одну** цену его категории. Если категорию определить нельзя — спросить пользователя.
+4. В письме — только цены, которые есть на странице. Не придумывать и не брать из старых писем.
+
+Все цены — **netto**, для всех клиентов (частных и фирм).
+
+### Цена ремонта
+- Клиент называет конкретную работу, которая есть в прайсе страницы (например, замена и сброс памперса струйного принтера) — сразу писать цену с сайта.
+- Неисправность не описана («сломался, не печатает») — точную цену не называть: объяснить, что без диагностики её не определить, и дать ориентир «от – до» (без замены частей / с заменой частей). Вилку согласовать с пользователем, пока по ней нет правила; это ещё обсуждается.
+- Всегда явно разделять ориентировочную и окончательную цену, например: `Orientacyjnie naprawa kosztuje 250–350 zł netto. Dokładny koszt podamy po diagnozie — przed rozpoczęciem naprawy.`
+
+### Odbiór — предлагать, когда уместно
+Машина есть, забор техники возможен. Предлагать коротко, одной фразой, когда устройство нужно доставить в сервис и это реально помогает клиенту, — не механически в каждом письме. **Если клиент сам пишет, что хочет выслать устройство (курьером/почтой), забор не предлагать и адрес для расчёта не просить** — дать адрес сервиса для отправки (утверждено 2026-10-23).
+
+### Клиент высылает устройство (утверждено 2026-10-23)
+Дать оба адреса:
+```
+Adres do wysyłki **kurierem:**
+Omobonus Sp. z o.o.
+Marcina Bukowskiego 174, 52-418 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+
+Lub **przez paczkomat:**
+Omobonus Sp. z o.o.
+Paczkomat WRO138M (ul. Jastrzębia 14)
+53-148 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+```
+- Odebrać paczkę i odesłać po naprawie — не проблема. Обратная отправка — **по цене перевозчика, мы на этом не зарабатываем**: `Koszt odesłania będzie taki, jak cena przewoźnika — nic do niej nie doliczamy.`
+- **Струйные принтеры (и др. техника с чернилами)** — честно предупредить о риске: при переворачивании посылки чернила могут залить принтер, иногда безвозвратно. Попросить **маркером** (не «flamaster») подписать на коробке верх/низ и «Nie odwracać»; гарантии это не даёт (посылка проходит через несколько рук), но снижает риск. Пример из практики: маленький струйный принтер приехал разбитым и в чернилах, клиенту отправили фото, с его согласия утилизировали — в худшем случае клиент теряет только стоимость пересылки; если принтер всё равно не работает и рядом негде починить — стоит рискнуть.
+- Принцип: **мы говорим честно и предупреждаем о всех возможных рисках**, даже если письмо из-за этого длиннее. Можно сказать это клиенту прямо: `Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystkich możliwych ryzykach. Dlatego ta wiadomość jest dłuższa, choć mogłaby się ograniczyć do: „Tak, naprawiamy takie drukarki, proszę przesłać, oto adres”.` Концовка: `Decyzja należy do Pana/Pani.` «Nie mamy możliwości odbioru» — только если пользователь сам так сказал по конкретному случаю.
+
+### Диагностика (по прайсу «Diagnoza i wycena» конкретной услуги)
+Условия у каждой услуги свои. Бесплатную диагностику обещать только если такое условие есть на странице именно этой услуги, и всегда вместе с условием. Универсальных правил (например, «до 15 минут бесплатно») не переносить с одной услуги на другую.
+
+Пример позиций, которые встречаются на страницах (сверять каждый раз):
+- Wstępna diagnoza online (WhatsApp/strona/telefon) — GRATIS.
+- Wstępna diagnoza przy dostawie do serwisu — GRATIS, если и в тех пределах, что указаны на странице. **Это только предварительная оценка, она не заменяет полную диагностику** — так и писать клиенту: на месте можем сказать предварительно, точный диагноз и цена — после полной диагностики.
+- Diagnoza i wycena naprawy przy realizacji naprawy — GRATIS.
+- Diagnoza i wycena przy rezygnacji z naprawy — цена по категории устройства (на странице, например 80 / 120 / 180 zł).
+- Pisemna opinia techniczna — доплата (например +50 zł).
+- Pilna realizacja — GRATIS, jeśli możliwe.
+
+### Odbiór / dostawa
+- Тариф брать со страницы услуги (общий: до 2,5 km — 25 zł netto, дальше +2 zł netto за каждый km свыше 5 km всей трассы туда-обратно; у плоттеров и др. — своя база). Odbiór и dostawa считаются отдельно.
+- Формула (общий тариф), за одну поездку: `25 + (2 × км_в_одну_сторону − 5) × 2` zł netto. Пример: 10 km → 25 + (20 − 5) × 2 = 55 zł.
+- Расстояние и стоимость — **всегда через карточку «Koszt dojazdu»** — это та же самая карточка, что открывается на сайте на странице Kontakt (калькулятор): карта Google с маршрутом, адреса, км, расчёт, итог netto. Отдельный дизайн для писем не делать.
+  `node .claude/skills/odpowiedzi-klientom/karta-trasy.mjs "ulica nr, miasto" --baza 25 --stawka 2 --lang pl`
+  Нужен работающий dev-сервер на localhost:3000 (скрипт берёт карточку с локальной служебной страницы `/dev/koszt-dojazdu`, Google спрашивает сам dev-сервер). `--baza`/`--stawka` — со страницы услуги (у плоттеров база по размеру и т.п.); `--lang` — pl/uk/ru (для других языков письма карточка польская). Скрипт печатает найденный адрес (`adresZnaleziony`), км и сумму (`koszt`) и делает PNG. Сверить найденный адрес с письмом; если Google нашёл не то — уточнить у пользователя. Цифры в тексте письма — из того же вывода скрипта.
+- **Как вставлять в письмо (утверждено 2026-10-21):** короткая фраза, что если клиенту неудобно привезти устройство, мы можем приехать и забрать, — и **сразу под ней карточка** (встроенная картинка, раздел 8). Пример:
+  ```
+  Jeśli nie mają Państwo możliwości przywiezienia urządzenia do serwisu, możemy przyjechać i je odebrać. Koszt odbioru spod Państwa adresu wyliczyliśmy poniżej według trasy Google Maps:
+  [karta Koszt dojazdu]
+  **Łącznie: 42,60 zł netto za odbiór** — tyle samo kosztuje dowiezienie urządzenia po naprawie.
+  Decyzja należy do Państwa — czekamy na informację, czy przywiozą Państwo urządzenie sami, czy mamy po nie przyjechać.
+  ```
+  Под карточкой — одна строка с итогом текстом (на случай, если у клиента отключены картинки), а сразу после неё — фраза, что решение за клиентом и мы ждём его ответа (привезёт сам или забрать). Длинную формулу словами не расписывать — она есть на карточке.
+- Если адреса в письме нет — карточку не делать, а коротко предложить забор и попросить адрес: `Jeśli nie mają Państwo możliwości przywiezienia urządzenia, możemy przyjechać i je odebrać — proszę podać adres, a policzę koszt.`
+
+- Адрес сервиса: Marcina Bukowskiego 174, 52-418 Wrocław. Часы: пн–пт 8:00–18:00; контакт пн–сб 7:00–21:00; вс — nieczynne.
+
+## 6. Подпись (единая)
+
+```
+Pozdrawiam serdecznie
+Maksym
+Omobonus Sp. z o.o.
+Marcina Bukowskiego 174, 52-418 Wrocław
+tel. +48 793 759 262
+e-mail: serwis@omobonus.com.pl
+https://serwis.omobonus.com.pl/
+Pracujemy: poniedziałek–piątek, 8:00–18:00
+Kontakt z serwisem: poniedziałek–sobota, 7:00–21:00
+W niedzielę jesteśmy nieczynni.
+```
+После `Pozdrawiam serdecznie` запятую не ставить, `Maksym` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт и e-mail в HTML делать активными (e-mail — `<a href="mailto:serwis@omobonus.com.pl">serwis@omobonus.com.pl</a>`, везде в письме, в т.ч. в адресе пакомата). Три последние строки (часы работы, контакт, воскресенье) — курсивом и чуть мельче: в HTML `<span style="font-size:9pt;font-style:italic">…</span>` (основной текст 11pt). Не использовать варианты «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
+
+Подпись — на языке письма: та же структура и те же данные, переведены только прощание и подписи строк (например, по-украински `З повагою` / `Працюємо: понеділок–п'ятниця, 8:00–18:00`, по-немецки `Mit freundlichen Grüßen` / `Arbeitszeiten: Montag–Freitag, 8:00–18:00`). Имя, название фирмы, адрес, телефон, e-mail и ссылка не меняются.
+
+## 7. Проверка перед сохранением черновика
+
+- Нет служебных пометок (`///`, `/////`, вопросы себе, текст на другом языке для коллеги).
+- Имя и род клиента верные, обращение в звательном падеже, запятые в приветствии на месте.
+- Каждая цена сверена с живой страницей услуги именно этого типа техники (раздел 5), все netto; ориентировочная и окончательная цена различаются; расчёт дороги показан и пересчитан.
+- Ничего не придумано: результаты диагностики, сроки, цены, наличие частей, гарантии; бесплатная диагностика — только с условием этой услуги.
+- Есть ответ на каждый вопрос клиента; существенные технические детали не потеряны.
+- Есть следующий шаг; лишние услуги не навязаны.
+- Естественный польский, без канцелярита, рекламы и эмодзи.
+- Жирное — умеренно, только главное (раздел 3); ссылки активные, с понятным текстом.
+- Получатель — клиент (не serwis@ сам себе); в скрытой копии (BCC/UDW, не CC) — `zaemka222@gmail.com` (копия сисадмину, клиент её не видит).
+
+Пользователь может попросить проверить уже написанный им ответ — проверять по этому же списку. При правке, сокращении или переводе его текста сохранять все согласованные цены, условия и смысл исходного сообщения.
+
+## 8. Техника (Outlook COM, PowerShell)
+
+- Ящик: `Stores` → `serwis@omobonus.com.pl`; входящие `GetDefaultFolder(6)`, отправленные — папка `Sent`, черновики — `Drafts`.
+- Ответ: `$r = $mail.Reply()` (или `ReplyAll()`), вставить свой HTML перед цитатой: `$r.HTMLBody = $myHtml + $r.HTMLBody`, добавить BCC `zaemka222@gmail.com` (`$r.Recipients.Add(...).Type = 3`; не CC), затем `$r.Save()` — без `Send()`.
+- Карточка маршрута в теле письма (до `$r.HTMLBody = ...`):
+  ```
+  $att = $r.Attachments.Add($png, 1, 0, 'koszt-dojazdu.png')
+  $att.PropertyAccessor.SetProperty('http://schemas.microsoft.com/mapi/proptag/0x3712001F', 'karta-trasy')
+  $att.PropertyAccessor.SetProperty('http://schemas.microsoft.com/mapi/proptag/0x7FFE000B', $true)
+  ```
+  в HTML: `<img src="cid:karta-trasy" width="600" alt="Koszt dojazdu" style="display:block;max-width:100%;height:auto">`.
+- Ключ Google — `GOOGLE_MAPS_API_KEY` из `.env.local` (читает только скрипт, не выводить). На проекте дневные лимиты 100 запросов — хватает на десятки писем в день.
+- Искать письма через `Items.Restrict`/сортировку по дате, а не обходом всех папок (медленно).

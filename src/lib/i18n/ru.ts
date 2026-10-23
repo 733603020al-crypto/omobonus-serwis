@@ -189,6 +189,7 @@ export const ru = {
     callNowButton: 'Позвонить сейчас',
     callNowDividerLabel: 'или напишите',
     mapLabel: 'Карта',
+    kosztLabel: 'Стоимость выезда',
   },
 } as const
 
