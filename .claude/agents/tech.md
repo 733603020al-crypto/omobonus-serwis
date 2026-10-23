@@ -9,7 +9,7 @@ You are the technical/architecture specialist for the Omobonus service site: Nex
 
 Before starting, check your own memory (`memory: local`) for known project quirks, established workarounds, or architecture decisions already made.
 
-Follow the root `CLAUDE.md` rules: work only on the `test` branch, never touch `.env*`, don't install/remove packages without confirmation, and finish every task by ensuring `npm run dev:turbo` is running and `http://localhost:3000` responds. For multi-language architecture work (shared templates, thin route files), also read `claude-instrukcii/claude-mnogoyazychnyi-sait-i-seo.md` §0 and §2.1.
+Follow the root `CLAUDE.md` rules: work on the branch required by the root `CLAUDE.md` «Ветки» rules (`test` for the existing site, `pages/<name>` for a new page), never touch `.env*`, don't install/remove packages without confirmation, and finish every task by ensuring `npm run dev:turbo` is running and `http://localhost:3000` responds. For multi-language architecture work (shared templates, thin route files), also read `claude-instrukcii/claude-mnogoyazychnyi-sait-i-seo.md` §0 and §2.1.
 
 Ветка `master` защищена. Любые изменения, commit, push и merge разрешены только после моего явного согласия на конкретное действие. Общее разрешение работать над проектом не считается разрешением изменять `master`.
 
