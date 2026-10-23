@@ -31,7 +31,7 @@ export const regulaminContent: LegalPageContent = {
             <strong>1.1.</strong> Niniejszy Regulamin (dalej &ldquo;Regulamin&rdquo;) określa zasady i warunki świadczenia usług naprawy, diagnostyki, konserwacji, oraz innych usług związanych z komputerami, drukarkami, peryferiami i innym sprzętem IT przez firmę Omobonus Sp. z o.o. (dalej &ldquo;Serwis&rdquo;).
           </p>
           <p className={p}>
-            <strong>1.2.</strong> Usługi świadczone są przez Omobonus Sp. z o.o., z siedzibą pod adresem: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, kontakt e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, telefon: <span className={link}>+48 793 759 262</span>.
+            <strong>1.2.</strong> Usługi świadczone są przez Omobonus Sp. z o.o., z siedzibą pod adresem: ul. Saperów 45/8, 53-151 Wrocław, adres serwisu: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, kontakt e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, telefon: <span className={link}>+48 793 759 262</span>.
           </p>
           <p className={p}>
             <strong>1.3.</strong> Każdy Klient, który korzysta z usług Serwisu, zobowiązany jest do zapoznania się z niniejszym Regulaminem i jego zaakceptowania przed rozpoczęciem świadczenia usług.
@@ -251,7 +251,7 @@ export const politykaPrywatnosciContent: LegalPageContent = {
       body: (
         <p className={p}>
           Administratorem danych osobowych jest Omobonus Sp. z o.o. z siedzibą we Wrocławiu,
-          ul. Marcina Bukowskiego 174, 52-418 Wrocław.
+          ul. Saperów 45/8, 53-151 Wrocław.
         </p>
       ),
     },
@@ -407,7 +407,7 @@ export const regulaminContentUk: LegalPageContent = {
             <strong>1.1.</strong> Ці Умови та положення (далі &ldquo;Умови&rdquo;) визначають правила і порядок надання послуг з ремонту, діагностики, технічного обслуговування та інших послуг, пов&apos;язаних із комп&apos;ютерами, принтерами, периферійними пристроями та іншим IT-обладнанням, компанією Omobonus Sp. z o.o. (далі &ldquo;Сервіс&rdquo;).
           </p>
           <p className={p}>
-            <strong>1.2.</strong> Послуги надаються компанією Omobonus Sp. z o.o., з місцезнаходженням за адресою: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, телефон: <span className={link}>+48 793 759 262</span>.
+            <strong>1.2.</strong> Послуги надаються компанією Omobonus Sp. z o.o., з місцезнаходженням за адресою: ul. Saperów 45/8, 53-151 Wrocław, адреса сервісу: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, телефон: <span className={link}>+48 793 759 262</span>.
           </p>
           <p className={p}>
             <strong>1.3.</strong> Кожен Клієнт, який користується послугами Сервісу, зобов&apos;язаний ознайомитися з цими Умовами та прийняти їх до початку надання послуг.
@@ -627,7 +627,7 @@ export const politykaPrywatnosciContentUk: LegalPageContent = {
       body: (
         <p className={p}>
           Адміністратором персональних даних є Omobonus Sp. z o.o. з місцезнаходженням у Вроцлаві,
-          вул. Marcina Bukowskiego 174, 52-418 Wrocław.
+          вул. Saperów 45/8, 53-151 Wrocław.
         </p>
       ),
     },
@@ -783,7 +783,7 @@ export const regulaminContentRu: LegalPageContent = {
             <strong>1.1.</strong> Настоящие Условия и положения (далее «Условия») определяют правила и порядок предоставления услуг по ремонту, диагностике, техническому обслуживанию и других услуг, связанных с компьютерами, принтерами, периферийными устройствами и иным IT-оборудованием, компанией Omobonus Sp. z o.o. (далее «Сервис»).
           </p>
           <p className={p}>
-            <strong>1.2.</strong> Услуги предоставляются компанией Omobonus Sp. z o.o., с юридическим адресом: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, телефон: <span className={link}>+48 793 759 262</span>.
+            <strong>1.2.</strong> Услуги предоставляются компанией Omobonus Sp. z o.o., с юридическим адресом: ul. Saperów 45/8, 53-151 Wrocław, адрес сервиса: ul. Marcina Bukowskiego 174, 52-418 Wrocław, NIP: 8943160773, KRS: 0000869086, REGON: 387509703, e-mail: <a href="mailto:serwis@omobonus.com.pl" className={link}>serwis@omobonus.com.pl</a>, телефон: <span className={link}>+48 793 759 262</span>.
           </p>
           <p className={p}>
             <strong>1.3.</strong> Каждый Клиент, который пользуется услугами Сервиса, обязан ознакомиться с настоящими Условиями и принять их перед началом предоставления услуг.
@@ -1003,7 +1003,7 @@ export const politykaPrywatnosciContentRu: LegalPageContent = {
       body: (
         <p className={p}>
           Администратором персональных данных является Omobonus Sp. z o.o. с юридическим адресом во Вроцлаве,
-          ul. Marcina Bukowskiego 174, 52-418 Wrocław.
+          ul. Saperów 45/8, 53-151 Wrocław.
         </p>
       ),
     },
