@@ -23,6 +23,11 @@ export interface FooterT {
   allRights: string
   privacyHref: string
   regulaminHref: string
+  /** Opens the CookieYes preferences panel (change / withdraw consent). */
+  cookieSettings?: string
+  /** Map placeholder: Google Maps loads only after the visitor clicks. */
+  mapNotice?: string
+  mapButton?: string
 }
 
 const PL: FooterT = {
@@ -40,6 +45,9 @@ const PL: FooterT = {
   allRights: 'Wszelkie prawa zastrzeżone.',
   privacyHref: '/polityka-prywatnosci',
   regulaminHref: '/regulamin',
+  cookieSettings: 'Ustawienia cookies',
+  mapNotice: 'Mapa Google ładuje się dopiero po kliknięciu. Google otrzyma wtedy Twój adres IP i może zapisać pliki cookies.',
+  mapButton: 'Pokaż mapę',
 }
 
 interface FooterCta {
@@ -55,7 +63,6 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
-  const mapContainerRef = useRef<HTMLDivElement>(null)
   const [mapLoaded, setMapLoaded] = useState(false)
 
   const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -75,21 +82,6 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
         observer.disconnect()
       }
     }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  // Load the map iframe only once the block is about to enter the viewport,
-  // so the heavy Google Maps JS API doesn't load on initial page load.
-  useEffect(() => {
-    const el = mapContainerRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setMapLoaded(true)
-        observer.disconnect()
-      }
-    }, { rootMargin: '250px' })
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
@@ -235,7 +227,22 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
 
           {/* Prawa kolumna - Mapa */}
           <div className="flex items-center justify-center">
-            <div ref={mapContainerRef} className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
+              {/* Google Maps sets its own cookies and receives the visitor's IP,
+                  so the iframe loads only after an explicit click. */}
+              {!mapLoaded && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center bg-black/40 font-inter">
+                  <MapPin className="h-8 w-8 text-[#bfa76a]" aria-hidden="true" />
+                  <p className="max-w-[340px] text-sm leading-snug text-[#d9cbb5]">{d.mapNotice ?? PL.mapNotice}</p>
+                  <button
+                    type="button"
+                    onClick={() => setMapLoaded(true)}
+                    className="rounded-md border border-[#bfa76a] px-5 py-2 text-sm font-semibold text-[#bfa76a] hover:bg-[#bfa76a] hover:text-black transition-colors"
+                  >
+                    {d.mapButton ?? PL.mapButton}
+                  </button>
+                </div>
+              )}
               {mapLoaded && (
                 <iframe
                   src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
@@ -272,6 +279,14 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
             >
               {d.terms}
             </Link>
+            <span className="mx-2 opacity-40">|</span>
+            {/* cky-banner-element: CookieYes opens its preferences panel on click */}
+            <button
+              type="button"
+              className="cky-banner-element hover:text-primary transition-colors"
+            >
+              {d.cookieSettings ?? PL.cookieSettings}
+            </button>
           </div>
 
           {/* currentYear can legitimately differ between server-render time (build)

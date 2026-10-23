@@ -55,7 +55,7 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
                       (build) and hydration time (client) on any day after the last
                       build — suppress just that expected, harmless mismatch. */}
                   <p className="text-sm md:text-base font-sans text-[#3a2e24]/70 italic" suppressHydrationWarning>
-                    {`${content.lastUpdatedLabel}: ${new Date().toLocaleDateString(content.dateLocale, {
+                    {`${content.lastUpdatedLabel}: ${new Date(content.lastUpdated ?? Date.now()).toLocaleDateString(content.dateLocale, {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',

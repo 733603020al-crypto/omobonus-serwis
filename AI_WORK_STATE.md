@@ -1,5 +1,14 @@
 # AI_WORK_STATE — единый журнал проекта Omobonus (ветка test)
 
+## 2026-10-23 — ЭТАП 186: базовый Consent Mode + юр. страницы (test — commit + push; pages/en-version — EN-часть не закоммичена, вместе с EN-версией; GTM и CookieYes не изменены)
+- Сайт: GTM грузится только после согласия на аналитику или рекламу (src/lib/tracking-consent.ts, DeferredGtm); до согласия/при отказе — ни одного запроса к GA4/Ads/Clarity, form_submit в dataLayer не пишется, клики до согласия позже не передаются. Consent default — 7 категорий (security granted) + сразу update из cookie cookieyes-consent; ConsentManager передаёт все 7 категорий по detail.accepted. Удалён noscript-iframe GTM во всех layout.
+- Форма «Перезвоните мне»: строка-уведомление со ссылкой на политику (PL/UK/RU/EN), без галочки.
+- Политика: строка «сигналы без cookies» убрана, абзац Consent Mode — базовый режим (4 языка). EN Title/Description: Terms and Conditions / Privacy Policy (+ | Omobonus Wrocław).
+- GTM (подготовить в рабочей области, Preview, НЕ публиковать без разрешения): пауза тега CookieYes CMP; у Clarity убрать триггер cookie_consent_update (иначе ранний denied тратит «once per page» и Clarity не запускается), оставить таймер 3,5 с; доп. согласие analytics_storage — Google tag G-BZTB7NX4BX и события GA4; ad_storage — Google tag AW, 5 конверсий Ads, User-provided data, Conversion linker. Публиковать вместе с сайтом.
+- CookieYes блокирует googletagmanager.com в категории advertisement → при «только аналитика» статистики нет (было и раньше); можно снять блокировку в панели CookieYes.
+- Проверено (имитация правок GTM, Playwright, 4 языка × 1440/390): принять/без выбора/отказ/отзыв в футере/только реклама — ожидаемо; конверсии обеих форм после согласия. tsc обоих репо OK.
+- Дата вступления в силу = 2026-10-23 (LEGAL_DATE и §21, 4 языка). Если основной сайт выкладывается в другой день — поменять на день выкладки.
+
 ## 2026-10-18 — ЭТАП 159: GTM — ключ CookieYes и Clarity по согласию (опубликовано, версия 16)
 - Контейнер GTM-5XQXX5KL (аккаунт Omobonus 6330895704, контейнер 238991097, рабочая область 14). Версия 16 «CookieYes: poprawny klucz; Clarity: po zgodzie analytics, timer 3.5s», опубликована 2026-10-18 (предыдущая — 15 glysokon «poprawka»; откат — на 15).
 - Тег CookieYes: Website Key = 45d9e4594525ca10005b171a79e9b287 (раньше там был весь адрес скрипта → битый запрос client_data/src=%22… 403).
