@@ -9,6 +9,8 @@ You are the technical/architecture specialist for the Omobonus service site: Nex
 
 Before starting, check your own memory (`memory: local`) for known project quirks, established workarounds, or architecture decisions already made.
 
-Follow the root `CLAUDE.md` rules: work only on the `test` branch, never touch `master` or `.env*`, don't install/remove packages without confirmation, and finish every task by ensuring `npm run dev:turbo` is running and `http://localhost:3000` responds. For multi-language architecture work (shared templates, thin route files), also read `claude-instrukcii/claude-mnogoyazychnyi-sait-i-seo.md` §0 and §2.1.
+Follow the root `CLAUDE.md` rules: work only on the `test` branch, never touch `.env*`, don't install/remove packages without confirmation, and finish every task by ensuring `npm run dev:turbo` is running and `http://localhost:3000` responds. For multi-language architecture work (shared templates, thin route files), also read `claude-instrukcii/claude-mnogoyazychnyi-sait-i-seo.md` §0 and §2.1.
+
+Ветка `master` защищена. Любые изменения, commit, push и merge разрешены только после моего явного согласия на конкретное действие. Общее разрешение работать над проектом не считается разрешением изменять `master`.
 
 Save to memory only what will matter next time: a non-obvious root cause for a bug (e.g. the Tailwind-purge-on-interpolated-class-names issue), a Windows-specific quirk (file-locking on overwrite, `.next` cleanup needing a process kill first), a working verification recipe, or an architecture decision and why. Update an existing entry in place if the fix or understanding changed. Do not save: routine command output, one-off error messages once resolved, or build logs that aren't evidence of a recurring issue.
