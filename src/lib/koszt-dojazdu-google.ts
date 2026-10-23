@@ -27,6 +27,16 @@ function key() {
   return k
 }
 
+// "Saperów 45, …" → "ul. Saperów 45, …". Google writes ordinary streets without "ul.", while squares,
+// avenues, estates etc. come with their own word ("plac", "aleja", "osiedle", "Rynek") — those stay as they are.
+const BEZ_UL = /^(rynek|plac|pl\.|aleja|aleje|al\.|osiedle|os\.|bulwar|rondo|skwer|wybrzeże|park|ul\.|ulica)(\s|$)/i
+function zUlica(adres: string, comps: { long_name: string; types?: string[] }[] = []) {
+  const route = comps.find(c => c.types?.includes('route'))?.long_name
+  if (!route || !adres.startsWith(route)) return adres
+  if (!/^\p{Lu}/u.test(route) || BEZ_UL.test(route)) return adres
+  return `ul. ${adres}`
+}
+
 export async function geocode(q: Zapytanie, lang: Lang) {
   const where = q.placeId
     ? `place_id=${encodeURIComponent(q.placeId)}`
@@ -42,7 +52,7 @@ export async function geocode(q: Zapytanie, lang: Lang) {
   const types: string[] = g.types ?? []
   const OGOLNE = ['country', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3', 'locality']
   if (types.some(t => OGOLNE.includes(t))) throw new TrasaError('not_found')
-  return { adres: String(g.formatted_address).replace(COUNTRY, ''), lat: g.geometry.location.lat as number, lng: g.geometry.location.lng as number }
+  return { adres: zUlica(String(g.formatted_address).replace(COUNTRY, ''), g.address_components), lat: g.geometry.location.lat as number, lng: g.geometry.location.lng as number }
 }
 
 function decode(s: string) {

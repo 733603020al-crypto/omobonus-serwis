@@ -7,6 +7,7 @@ import { KosztDojazduCard, KosztOkno, P, Row, SerwisRow, klientLabel } from './K
 import { IkonaKlient } from './ikony'
 import { TARYFA_STANDARD } from './koszt-dojazdu'
 import { lora } from '@/components/sections/contact-font'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 // Popup on /kontakt. Order: 1) "use my location" (the browser asks only after this click) — the found address
 // is shown in the field to confirm; 2) or type an address and pick one of Google's suggestions;
@@ -32,10 +33,10 @@ const T = {
     privacy: 'Lokalizacja służy wyłącznie do obliczenia kosztu dojazdu — nie daje dostępu do Twojego urządzenia.',
     ask: 'Nie chcesz udostępniać lokalizacji? Wpisz adres ręcznie poniżej:',
     adresLabel: 'Adres',
-    placeholder: 'Wpisz adres, np. Wrocław, ul. Legnicka 12',
+    placeholder: 'Wpisz adres i wybierz z listy (np. ul. Legnicka 12)', placeholderKrotki: 'Wpisz adres i wybierz z listy',
     confirm: 'Sprawdź adres i kliknij „Oblicz koszt”.',
     geo: 'Nie mamy dostępu do lokalizacji — wpisz adres powyżej.',
-    count: 'Oblicz koszt', counting: 'Liczymy…',
+    count: 'Oblicz koszt', counting: 'Liczymy…', najpierw: 'Wpisz adres, aby obliczyć koszt',
     change: 'Zmień adres', alt: 'Trasa z serwisu Omobonus do Klienta według Google Maps',
     mapAlt: 'Mapa Wrocławia z lokalizacją serwisu Omobonus',
     err: {
@@ -52,10 +53,10 @@ const T = {
     privacy: 'Місцезнаходження використовується виключно для розрахунку вартості доїзду — воно не дає доступу до вашого пристрою.',
     ask: 'Не хочете ділитися місцезнаходженням? Введіть адресу вручну нижче:',
     adresLabel: 'Адреса',
-    placeholder: 'Введіть адресу, напр. Wrocław, ul. Legnicka 12',
+    placeholder: 'Введіть і виберіть адресу (напр. ul. Legnicka 12)', placeholderKrotki: 'Введіть і виберіть адресу',
     confirm: 'Перевірте адресу і натисніть «Розрахувати вартість».',
     geo: 'Немає доступу до місцезнаходження — введіть адресу вище.',
-    count: 'Розрахувати вартість', counting: 'Рахуємо…',
+    count: 'Розрахувати вартість', counting: 'Рахуємо…', najpierw: 'Введіть адресу, щоб розрахувати вартість',
     change: 'Змінити адресу', alt: 'Маршрут від сервісу Omobonus до Клієнта за Google Maps',
     mapAlt: 'Карта Вроцлава з розташуванням сервісу Omobonus',
     err: {
@@ -72,10 +73,10 @@ const T = {
     privacy: 'Местоположение используется только для расчёта стоимости выезда — оно не даёт доступа к вашему устройству.',
     ask: 'Не хотите делиться местоположением? Введите адрес вручную ниже:',
     adresLabel: 'Адрес',
-    placeholder: 'Введите адрес, напр. Wrocław, ul. Legnicka 12',
+    placeholder: 'Введите и выберите адрес (напр. ul. Legnicka 12)', placeholderKrotki: 'Введите и выберите адрес',
     confirm: 'Проверьте адрес и нажмите «Рассчитать стоимость».',
     geo: 'Нет доступа к местоположению — введите адрес выше.',
-    count: 'Рассчитать стоимость', counting: 'Считаем…',
+    count: 'Рассчитать стоимость', counting: 'Считаем…', najpierw: 'Введите адрес, чтобы рассчитать стоимость',
     change: 'Изменить адрес', alt: 'Маршрут от сервиса Omobonus к Клиенту по Google Maps',
     mapAlt: 'Карта Вроцлава с расположением сервиса Omobonus',
     err: {
@@ -102,16 +103,67 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
   const [reczny, setReczny] = useState(false)
   const [error, setError] = useState('')
   const [wynik, setWynik] = useState<Wynik | null>(null)
+  const [podpowiedz, setPodpowiedz] = useState(false) // hint on the inactive "Oblicz koszt"
+  // Phone: the address example does not fit in the field, so a shorter placeholder is used
+  const [waski, setWaski] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const upd = () => setWaski(mq.matches)
+    upd()
+    mq.addEventListener('change', upd)
+    return () => mq.removeEventListener('change', upd)
+  }, [])
   const inputRef = useRef<HTMLInputElement>(null)
   const session = useRef(newSession())
 
   useEffect(() => {
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    // The page scrolls on <html> (its overflow-x: clip keeps body's overflow from reaching the viewport),
+    // so the lock goes on <html>; the scrollbar gutter stays, so nothing shifts sideways.
+    const html = document.documentElement
+    const prev = { overflow: html.style.overflow, gutter: html.style.scrollbarGutter }
+    html.style.overflow = 'hidden'
+    html.style.scrollbarGutter = 'stable'
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
-    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey) }
+    return () => {
+      html.style.overflow = prev.overflow
+      html.style.scrollbarGutter = prev.gutter
+      window.removeEventListener('keydown', onKey)
+    }
   }, [onClose])
+
+  // Position: in the middle of the visible screen (horizontally and vertically), re-centred when the
+  // window grows after the calculation; scrolls inside only when taller than the screen.
+  // the scrolling box keeps a transparent margin around the window, so its shadow and gold glow are not cut off
+  const CIEN = 36
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [poz, setPoz] = useState<{ left: number; top: number; width: number; maxH: number } | null>(null)
+  useEffect(() => {
+    const el = panelRef.current
+    if (!el) return
+    // laptops: the window starts at the middle of the contact icons, so their upper halves stay visible above it
+    // (read once — the icons float slightly, and the page does not scroll while the window is open)
+    const ikona = document.querySelector('img[src*="koszt-dojazdu-ikona"]')?.getBoundingClientRect()
+    // when the icons are partly under the site header, half an icon's height is kept visible below the header
+    const naglowek = Math.max(0, document.querySelector('header')?.getBoundingClientRect().bottom ?? 0)
+    const licz = () => {
+      const vw = document.documentElement.clientWidth
+      const vh = window.innerHeight
+      const pad = vw < 768 ? 12 : 24
+      const width = Math.min(vw - 2 * pad, vw >= 1024 ? 1144 : 720)
+      const maxH = vh - 2 * 12
+      const h = Math.min(el.scrollHeight - 2 * CIEN, maxH)
+      const wIkony = vw >= 1024 && ikona && ikona.bottom > 0 && ikona.top < vh
+      const top = wIkony ? Math.min(Math.max(ikona.top, naglowek) + ikona.height / 2, vh - 12 - h) : (vh - h) / 2
+      const next = { left: Math.round((vw - width) / 2), top: Math.round(Math.max(12, top)), width, maxH }
+      setPoz((p) => (p && p.left === next.left && p.top === next.top && p.width === next.width && p.maxH === next.maxH ? p : next))
+    }
+    licz()
+    const ro = new ResizeObserver(licz)
+    ro.observe(el.firstElementChild ?? el)
+    window.addEventListener("resize", licz)
+    return () => { ro.disconnect(); window.removeEventListener("resize", licz) }
+  }, [])
 
   // suggestions while typing (not for an already chosen address)
   useEffect(() => {
@@ -192,6 +244,7 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
   }
 
   const gotowe = !!wybor && !busy
+  useEffect(() => { setPodpowiedz(false) }, [wybor]) // address chosen or cleared → hide the hint
 
 
   const mapa = (
@@ -220,10 +273,15 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
   return createPortal(
     <div
       role="dialog" aria-modal="true" aria-label={t.title}
-      className={`${lora.variable} fixed inset-0 z-[200] overflow-y-auto p-3 md:p-6 flex items-start md:items-center justify-center`}
-      onMouseDown={(e) => { if (e.target === e.currentTarget) onClose() }}
+      className={`${lora.variable} fixed inset-0 z-[200]`}
+      onMouseDown={(e) => { if (e.target === e.currentTarget || e.target === panelRef.current) onClose() }}
     >
-      <div className="w-full max-w-[900px] lg:max-w-[1300px] my-auto md:[zoom:0.8] lg:[zoom:0.88]">
+      <div
+        ref={panelRef}
+        className="absolute overflow-y-auto overscroll-contain"
+        style={poz ? { left: poz.left - CIEN, top: poz.top - CIEN, width: poz.width + 2 * CIEN, maxHeight: poz.maxH + 2 * CIEN, padding: CIEN } : { visibility: 'hidden', left: 0, top: 0, width: '100%', padding: CIEN }}
+      >
+      <div className="w-full max-w-[900px] lg:max-w-[1300px] md:[zoom:0.8] lg:[zoom:0.88]">
         {/* one window, two states: the address → the result in the same frame and size */}
         {wynik ? (
           <KosztDojazduCard
@@ -254,7 +312,7 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
                 type="button"
                 onClick={lokalizacja}
                 disabled={lokalizuje || busy}
-                className="mt-2 w-full md:w-auto md:min-w-[280px] md:mx-auto min-h-[40px] flex items-center justify-center gap-2 rounded-[9px] bg-[#1c6e43] px-3 md:px-6 py-2 font-inter text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#155d36] disabled:opacity-80 cursor-pointer"
+                className="mt-2 w-full md:w-auto md:min-w-[320px] md:mx-auto flex items-center justify-center gap-2 rounded-full border border-transparent bg-[#1c6e43] px-4 md:px-8 py-[12px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:opacity-80 disabled:hover:translate-y-0 cursor-pointer"
               >
                 {lokalizuje
                   ? <Loader2 className="w-[18px] h-[18px] flex-shrink-0 animate-spin" />
@@ -284,9 +342,10 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
                     if (e.key === 'ArrowDown') { e.preventDefault(); setAktywna(i => (i + 1) % podp.length) }
                     else if (e.key === 'ArrowUp') { e.preventDefault(); setAktywna(i => (i <= 0 ? podp.length - 1 : i - 1)) }
                   }}
-                  placeholder={t.placeholder}
+                  placeholder={waski ? t.placeholderKrotki : t.placeholder}
                   autoComplete="off"
                   maxLength={200}
+                  role="combobox"
                   aria-autocomplete="list"
                   aria-expanded={podp.length > 0}
                   className={`w-full h-[44px] !bg-transparent border border-[rgba(70,45,25,0.75)] rounded-sm px-4 ${P.text} text-[16px] md:text-[17px] font-lora font-normal placeholder:text-[#6b5940] placeholder:![-webkit-text-fill-color:#6b5940] focus:outline-none hover:border-[rgba(70,45,25,0.95)] hover:bg-[rgba(70,45,25,0.05)] focus:border-[rgba(70,45,25,0.95)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250`}
@@ -318,19 +377,38 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
                 ? <p className="mt-1.5 font-lora text-[13px] md:text-[14px] text-red-600">{error}</p>
                 : (lokalizuje || note !== 'hint') && <p className={`mt-1.5 font-lora text-[13px] md:text-[14px] ${P.note}`}>{lokalizuje ? t.locating : t[note as 'confirm' | 'geo']}</p>}
 
-              {/* 3. calculation — after the address is set */}
-              <button
-                type="button"
-                onClick={licz}
-                disabled={!gotowe}
-                className="mt-3 w-full md:w-auto md:min-w-[280px] md:mx-auto min-h-[40px] flex items-center justify-center gap-2 rounded-[9px] px-3 md:px-6 py-2 font-inter text-[14px] font-semibold text-white transition-colors duration-200 bg-[#1c6e43] hover:bg-[#155d36] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#a6d2bb] disabled:hover:bg-[#a6d2bb]"
-              >
-                <Calculator className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={1.8} />
-                {busy ? t.counting : t.count}
-              </button>
+              {/* 3. calculation — after the address is set. Without an address the button stays
+                  focusable (aria-disabled, not disabled) so the hint shows on hover, focus and tap. */}
+              <Tooltip open={podpowiedz && !wybor} onOpenChange={setPodpowiedz}>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      if (gotowe) { licz(); return }
+                      e.preventDefault() // keeps the hint open after a tap (the trigger closes it on click)
+                      if (!wybor) setPodpowiedz(true)
+                    }}
+                    aria-disabled={!gotowe}
+                    className="mt-3 w-full md:w-auto md:min-w-[320px] md:mx-auto flex items-center justify-center gap-2 rounded-full border border-transparent px-4 md:px-8 py-[12px] md:py-[10px] font-sans text-[16px] font-semibold text-white transition-all duration-300 ease-out bg-[#1c6e43] hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] cursor-pointer aria-disabled:cursor-not-allowed aria-disabled:bg-[rgba(28,110,67,0.6)] aria-disabled:hover:bg-[rgba(28,110,67,0.6)] aria-disabled:hover:translate-y-0 aria-disabled:hover:shadow-none"
+                  >
+                    <Calculator className="w-[18px] h-[18px] flex-shrink-0" strokeWidth={1.8} />
+                    {busy ? t.counting : t.count}
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="top"
+                  sideOffset={4}
+                  className="z-[210] border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden"
+                  style={{ backgroundImage: `var(--bg-parchment)`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                  <div className="absolute inset-0 bg-black/50 z-0" />
+                  <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">{t.najpierw}</p>
+                </TooltipContent>
+              </Tooltip>
             </form>
           </KosztOkno>
         )}
+      </div>
       </div>
     </div>,
     document.body,

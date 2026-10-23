@@ -32,16 +32,17 @@ export type KosztDojazduProps = {
 
 // Muted gold of the price-list notes (service-accordion) instead of the bright #f3df9a.
 const GOLD = 'text-[#cbb27c]'
-const TEXT = 'text-[rgba(255,255,245,0.85)]'
 // Device card of the "Kategorie urządzeń" window — frame of the map.
 const CARD = 'bg-[rgba(255,255,255,0.08)] border border-[rgba(191,167,106,0.35)] rounded-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]'
 
 // Text on the paper — colours of the "Formularz zgłoszeniowy" form (gold is not readable on the paper).
+// Standard: one dark brown for headings, labels and numbers (as on the home page paper cards),
+// notes in brackets a little lighter but still well readable on the paper.
 export const P = {
-  title: 'text-[#2f2418]',
-  label: 'text-[#412612]',
-  text: 'text-[#312b1f]',
-  note: 'text-[#6b5940]',
+  title: 'text-[#3A2817]',
+  label: 'text-[#3A2817]',
+  text: 'text-[#3A2817]',
+  note: 'text-[#4d3a26]',
   line: 'border-[rgba(70,45,25,0.45)]',
 }
 // Numbers — Inter, as prices in the price list.
@@ -124,8 +125,8 @@ function CalcRow({ name, note, value }: { name: ReactNode; note: string; value: 
   return (
     <div className={`flex items-center justify-between gap-3 py-0.5 border-b ${P.line}`}>
       <div className="min-w-0">
-        <div className={`text-[15px] md:text-[16px] leading-[1.15] ${P.text}`}>{name}</div>
-        <div className={`text-[12px] md:text-[13px] leading-[1.2] ${P.note}`}>{note}</div>
+        <div className={`font-semibold text-[15px] md:text-[16px] leading-[1.15] ${P.text}`}>{name}</div>
+        <div className={`font-semibold text-[12px] md:text-[13px] leading-[1.2] ${P.note}`}>{note}</div>
       </div>
       <Val text={value} className="text-[13px] md:text-[14px]" unitClassName="text-[15px] md:text-[16px]" />
     </div>
@@ -140,7 +141,7 @@ const T = {
     odleglosc: 'Odległość w jedną stronę', trasa: 'Łączna trasa w obie strony', zasady: 'Zasady rozliczenia',
     podstawowa: 'Opłata podstawowa', podstawowaNote: (pol: string, lim: string) => `(do ${pol} od serwisu; ${lim} łącznie w obie strony)`,
     trasaNote: '(według Google Maps)', powyzej: (lim: string) => `Kilometry powyżej ${lim}`, doplata: 'Dopłata za kilometry',
-    laczny: 'Łączny koszt odbioru lub dostawy urządzenia', netto: 'netto',
+    laczny: 'Łączny koszt odbioru lub dostawy', netto: 'netto',
     foot1: '*Koszt liczymy dla trasy w obie strony, ponieważ przy odbiorze lub dostawie serwisant musi dojechać do Klienta i wrócić do serwisu.',
     foot2: '**Dotyczy większości urządzeń do 30 kg, które przewiezie jeden kurier; cena w cenniku usługi, cięższe — wycena indywidualna.',
   },
@@ -150,7 +151,7 @@ const T = {
     odleglosc: 'Відстань в один бік', trasa: 'Загальний маршрут в обидва боки', zasady: 'Правила розрахунку',
     podstawowa: 'Базова оплата', podstawowaNote: (pol: string, lim: string) => `(до ${pol} від сервісу; ${lim} загалом в обидва боки)`,
     trasaNote: '(за Google Maps)', powyzej: (lim: string) => `Кілометри понад ${lim}`, doplata: 'Доплата за кілометри',
-    laczny: 'Загальна вартість забору або доставки пристрою', netto: 'нетто',
+    laczny: 'Загальна вартість забору або доставки', netto: 'нетто',
     foot1: '*Вартість рахуємо для маршруту в обидва боки, бо під час забору або доставки сервісант має доїхати до Клієнта і повернутися до сервісу.',
     foot2: '**Стосується більшості пристроїв до 30 кг, які перевезе один кур’єр; ціна — у прайсі послуги, важчі — індивідуальна оцінка.',
   },
@@ -160,7 +161,7 @@ const T = {
     odleglosc: 'Расстояние в одну сторону', trasa: 'Общий маршрут в обе стороны', zasady: 'Правила расчёта',
     podstawowa: 'Базовая оплата', podstawowaNote: (pol: string, lim: string) => `(до ${pol} от сервиса; ${lim} всего в обе стороны)`,
     trasaNote: '(по Google Maps)', powyzej: (lim: string) => `Километры сверх ${lim}`, doplata: 'Доплата за километры',
-    laczny: 'Общая стоимость забора или доставки устройства', netto: 'нетто',
+    laczny: 'Общая стоимость забора или доставки', netto: 'нетто',
     foot1: '*Стоимость считаем для маршрута в обе стороны, так как при заборе или доставке сервисант должен доехать до Клиента и вернуться в сервис.',
     foot2: '**Касается большинства устройств до 30 кг, которые перевезёт один курьер; цена — в прайсе услуги, более тяжёлые — индивидуальная оценка.',
   },
@@ -182,7 +183,7 @@ export function KosztOkno({ lang = 'pl', onClose, mapa, children, przypisy }: {
     <div data-koszt-dojazdu className="mx-auto w-full max-w-[900px] lg:max-w-[1300px]">
       {/* Window frame of "Kategorie urządzeń" */}
       <div
-        className="relative border-2 border-[rgba(200,169,107,0.5)] rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.5)] text-[#f8eacd]"
+        className="relative border-2 border-[#bfa76a]/80 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_16px_rgba(191,167,106,0.42),0_0_32px_rgba(191,167,106,0.25)] text-[#f8eacd]"
         style={{ backgroundImage: 'var(--bg-parchment)', backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className="absolute inset-0 rounded-lg bg-black/55" />
@@ -190,10 +191,10 @@ export function KosztOkno({ lang = 'pl', onClose, mapa, children, przypisy }: {
         <div className="relative p-4 md:px-6 lg:px-3 md:py-4 lg:pb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_540px] gap-3">
           {/* "DARMOWY DOJAZD" banner — the same text and animated emoji as in the price list's Dojazd section */}
           <div className="md:col-span-2 -mt-1 px-7 text-center font-cormorant font-semibold">
-            <div className={`text-[18px] md:text-[20px] leading-[1.3] ${TEXT}`}>
+            <div className="text-[18px] md:text-[20px] leading-[1.3] text-[rgba(255,255,245,0.97)] [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]">
               {promo.dojazdPromoTitle} <WinkEmoji variant="thinking" />
             </div>
-            <p className={`mt-0.5 text-[15px] md:text-[16px] leading-[1.3] ${GOLD}`}>{promo.dojazdNote.join(' ')}</p>
+            <p className="mt-0.5 text-[15px] md:text-[16px] leading-[1.3] text-[#dcc48f] [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]">{promo.dojazdNote.join(' ')}</p>
           </div>
 
           <div className={`${CARD} !shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_24px_22px_rgba(0,0,0,0.5),0_8px_10px_rgba(0,0,0,0.35)] relative overflow-hidden ${ROW_H}`}>{mapa}</div>
@@ -223,7 +224,7 @@ export function KosztOkno({ lang = 'pl', onClose, mapa, children, przypisy }: {
           {/* Footnotes inside the window, full width */}
           <p
             aria-hidden={!przypisy}
-            className={`md:col-span-2 -mt-1.5 text-center text-[12px] md:text-[13px] font-cormorant leading-[1.3] ${GOLD} ${przypisy ? '' : 'invisible max-md:hidden lg:hidden'}`}
+            className={`relative z-[1] md:col-span-2 -mt-1.5 text-center text-[12px] md:text-[13px] font-cormorant leading-[1.3] ${GOLD} ${przypisy ? '' : 'invisible max-md:hidden lg:hidden'}`}
           >
             {t.foot1}
             <br />
@@ -279,9 +280,12 @@ export function KosztDojazduCard({ serwisAdres, klientAdres, metryJednaStrona, t
     <KosztOkno lang={lang} onClose={onClose} mapa={mapa} przypisy>
       <div className="mt-2">
         <SerwisRow lang={lang} adres={serwisAdres} />
+        {/* one line: "Klient (ul. Saperów 45, 53-151 Wrocław)" */}
         <Row icon={<IkonaKlient size={24} />}>
-          <div className="font-cormorant font-semibold text-[18px] md:text-[20px] leading-[1.15] text-[#3A2817]">{t.klient}</div>
-          <div className="font-cormorant font-medium text-[15px] md:text-[16px] leading-[1.3] text-[#3A2817]">{klientAdres}</div>
+          <div className="font-cormorant leading-[1.2] text-[#3A2817]">
+            <span className="font-semibold text-[18px] md:text-[20px]">{t.klient}</span>{' '}
+            <span className="font-medium text-[15px] md:text-[16px]">({klientAdres})</span>
+          </div>
         </Row>
         <Row icon={<IkonaOdleglosc size={24} />}>
           <div className="flex items-center justify-between gap-3">
