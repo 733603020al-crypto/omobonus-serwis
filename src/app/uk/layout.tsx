@@ -113,6 +113,8 @@ const jsonLd = {
     postalCode: '52-418',
     addressCountry: 'PL',
   },
+  hasMap: 'https://maps.google.com/?cid=2313678441338780663',
+  sameAs: ['https://maps.google.com/?cid=2313678441338780663', 'https://www.facebook.com/omobonus/'],
   geo: {
     '@type': 'GeoCoordinates',
     latitude: 51.0775534,

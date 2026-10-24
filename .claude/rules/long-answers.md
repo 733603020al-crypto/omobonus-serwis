@@ -1,5 +1,9 @@
-# Long answers, analyses, and technical reports (always active)
+# Длинные ответы, анализы и технические отчёты (действует всегда)
 
-Any long answer, analysis, or technical report that doesn't fit comfortably in the terminal: give a short summary in the reply, and write the full, unabridged version to a separate HTML file outside the project (`%TEMP%\claude-answer.html`), then open it in the browser. Nothing may be shortened in the HTML version — it must contain the entire answer. Never create such report files inside the project.
+Любой длинный ответ, анализ или технический отчёт, который не помещается в короткий ответ: краткое резюме — в ответе, полная версия без сокращений — отдельным HTML-файлом вне проекта. В HTML ничего не сокращать — там весь ответ целиком.
 
-Before finishing the task, verify that the HTML file was actually written and opened.
+- В HTML-отчёте — кнопка «Скопировать всё», копирующая весь текст отчёта одним нажатием (если среда это поддерживает).
+- Локально на компьютере пользователя (Windows): `%TEMP%\claude-answer.html`, затем открыть в браузере. Перед завершением задачи проверить, что файл записан и открыт.
+- В Claude Code Web и других облачных средах: сохранить файл во временной папке среды и передать его пользователю в чат. Не обещать открыть файл в Chrome пользователя, если среда этого технически не позволяет.
+
+Внутри проекта такие отчёты не создавать.

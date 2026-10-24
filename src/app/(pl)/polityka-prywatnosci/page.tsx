@@ -4,7 +4,7 @@ import { politykaPrywatnosciContent } from '@/lib/legal/legal-pages'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('pl', {
-  title: 'Polityka Prywatności | Omobonus Serwis',
+  title: 'Polityka Prywatności',
   description: 'Polityka prywatności serwisu Omobonus Wrocław. Zasady przetwarzania danych osobowych, ochrona RODO.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/polityka-prywatnosci',

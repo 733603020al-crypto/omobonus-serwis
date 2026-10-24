@@ -4,7 +4,7 @@ import { regulaminContent } from '@/lib/legal/legal-pages'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('pl', {
-  title: 'Regulamin | Omobonus Serwis',
+  title: 'Regulamin',
   description: 'Regulamin serwisu Omobonus Wrocław. Zasady naprawy komputerów, laptopów i drukarek, gwarancja, reklamacje.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/regulamin',

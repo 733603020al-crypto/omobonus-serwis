@@ -5,7 +5,7 @@ import { ru } from '@/lib/i18n/ru'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('ru', {
-  title: 'Условия и положения | Omobonus Serwis',
+  title: 'Условия и положения',
   description: 'Условия и положения сервиса Omobonus Вроцлав. Правила ремонта компьютеров и принтеров, гарантия, претензии.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru/regulamin',
