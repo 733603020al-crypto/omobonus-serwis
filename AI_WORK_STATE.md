@@ -1,5 +1,9 @@
 # AI_WORK_STATE — единый журнал проекта Omobonus (ветка test)
 
+## 2026-10-24 — ЭТАП 189: карты на языке сайта (test, закоммичено и отправлено в origin/test)
+- Окно «Koszt dojazdu» EN: добавлена картинка public/images/koszt-dojazdu/mapa-en.webp (Static Maps, тот же вид, что pl/uk/ru, сверено попиксельно). Карта в подвале — hl по языку (FooterT.mapLang: uk/ru/en, PL по умолчанию).
+- Worktree omobonus-en и ветка pages/en-version удалены (всё в origin/test и master); основная папка обновлена до origin/test, свои правки сохранены (stash@{0} pre-update-en оставлен как резерв). npm install по package-lock разрешён пользователем постоянно.
+
 ## 2026-10-23 — ЭТАП 186: базовый Consent Mode + юр. страницы (test — commit + push; pages/en-version — EN-часть не закоммичена, вместе с EN-версией; GTM и CookieYes не изменены)
 - Сайт: GTM грузится только после согласия на аналитику или рекламу (src/lib/tracking-consent.ts, DeferredGtm); до согласия/при отказе — ни одного запроса к GA4/Ads/Clarity, form_submit в dataLayer не пишется, клики до согласия позже не передаются. Consent default — 7 категорий (security granted) + сразу update из cookie cookieyes-consent; ConsentManager передаёт все 7 категорий по detail.accepted. Удалён noscript-iframe GTM во всех layout.
 - Форма «Перезвоните мне»: строка-уведомление со ссылкой на политику (PL/UK/RU/EN), без галочки.

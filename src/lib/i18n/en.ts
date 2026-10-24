@@ -162,6 +162,7 @@ export const en = {
     allRights: 'All rights reserved.',
     privacyHref: '/en/polityka-prywatnosci',
     regulaminHref: '/en/regulamin',
+    mapLang: 'en',
     cookieSettings: 'Cookie settings',
   },
   successModal: {
