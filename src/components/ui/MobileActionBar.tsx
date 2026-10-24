@@ -13,6 +13,7 @@ const LABELS = {
     pl: { write: 'Napisz', map: 'Mapa', call: 'Zadzwoń' },
     uk: { write: 'Написати', map: 'Карта', call: 'Зателефонувати' },
     ru: { write: 'Написать', map: 'Карта', call: 'Позвонить' },
+    en: { write: 'Write', map: 'Map', call: 'Call' },
 }
 
 const MAPS_HREF = 'https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving'
@@ -85,8 +86,8 @@ function fitColumns(total: number, texts: number[]): ColumnFit | null {
 export function MobileActionBar() {
     const [mounted, setMounted] = useState(false)
     const pathname = usePathname()
-    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
-    const contactHref = locale === 'uk' ? '/uk/kontakt' : locale === 'ru' ? '/ru/kontakt' : '/kontakt'
+    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : pathname?.startsWith('/en') ? 'en' : 'pl'
+    const contactHref = locale === 'uk' ? '/uk/kontakt' : locale === 'ru' ? '/ru/kontakt' : locale === 'en' ? '/en/kontakt' : '/kontakt'
     const labels = LABELS[locale]
     const isKontakt = pathname?.endsWith('/kontakt') ?? false
     const gridRef = useRef<HTMLDivElement>(null)

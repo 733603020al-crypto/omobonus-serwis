@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
   let body: { q?: unknown; session?: unknown; lat?: unknown; lng?: unknown; lang?: unknown }
   try { body = await request.json() } catch { return err('bad_request', 400) }
-  const lang: Lang = body.lang === 'uk' || body.lang === 'ru' ? body.lang : 'pl'
+  const lang: Lang = body.lang === 'uk' || body.lang === 'ru' || body.lang === 'en' ? body.lang : 'pl'
 
   const today = new Date().toISOString().slice(0, 10)
   if (today !== day) { day = today; countPodp = 0; countAdres = 0 }

@@ -195,7 +195,7 @@ const splitDeviceCategoriesDescription = (text: string): string[] => {
 
 interface PriceTooltipContentProps {
   service: ServiceData
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
   isMobile: boolean
   onClose: () => void
 }
@@ -274,7 +274,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
             <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines(`${win.priceExample} ${locale === 'pl' ? 'zł netto' : 'zł нетто'}`)}
+                {renderPriceLines(`${win.priceExample} ${locale === 'pl' ? 'zł netto' : locale === 'en' ? 'zł net' : 'zł нетто'}`)}
               </div>
             </div>
             <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">)</span>

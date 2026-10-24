@@ -2,7 +2,7 @@
 // The map has no Google markers: start/end points and the route label are drawn by the window itself,
 // so the map is requested with an explicit center/zoom and the points are returned in % of the image.
 
-export type Lang = 'pl' | 'uk' | 'ru'
+export type Lang = 'pl' | 'uk' | 'ru' | 'en'
 export type TrasaWynik = {
   klientAdres: string
   metry: number

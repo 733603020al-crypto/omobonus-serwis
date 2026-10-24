@@ -26,7 +26,7 @@ export const WynajemTable = ({
     prices: React.RefObject<HTMLDivElement | null>[]
   }
   serviceSlug?: string
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
   price?: string
 }) => {
   const t = serviceAccordionI18n[locale]

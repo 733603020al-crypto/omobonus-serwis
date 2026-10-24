@@ -52,10 +52,12 @@ export type Review = {
     text: string
     text_uk?: string | null
     text_ru?: string | null
+    text_en?: string | null
     profile_photo_url?: string
     relative_time_description?: string
     relative_time_uk?: string | null
     relative_time_ru?: string | null
+    relative_time_en?: string | null
 }
 
 const subscribeNoop = () => () => {}
@@ -73,7 +75,7 @@ interface GoogleReviewsCarouselProps {
 
 export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }: GoogleReviewsCarouselProps) {
     const pathname = usePathname()
-    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : 'pl'
+    const locale = pathname?.startsWith('/uk') ? 'uk' : pathname?.startsWith('/ru') ? 'ru' : pathname?.startsWith('/en') ? 'en' : 'pl'
     const reviewsT = googleReviewsI18n[locale]
 
     const trackRef = useRef<HTMLDivElement | null>(null)
@@ -320,10 +322,12 @@ export default function GoogleReviewsCarousel({ reviews, rating, totalReviews }:
                             const localizedText =
                                 locale === 'uk' ? (review.text_uk || review.text) :
                                 locale === 'ru' ? (review.text_ru || review.text) :
+                                locale === 'en' ? (review.text_en || review.text) :
                                 review.text
                             const localizedTime =
                                 locale === 'uk' ? (review.relative_time_uk || review.relative_time_description) :
                                 locale === 'ru' ? (review.relative_time_ru || review.relative_time_description) :
+                                locale === 'en' ? (review.relative_time_en || review.relative_time_description) :
                                 review.relative_time_description
                             const cardStyle = CARD_STYLE[i % CARD_STYLE.length]
 

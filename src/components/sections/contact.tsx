@@ -7,11 +7,12 @@ import * as z from 'zod'
 import { Loader2, X } from 'lucide-react'
 import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
-import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { lora } from './contact-font'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
+import { en } from '@/lib/i18n/en'
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
@@ -33,7 +34,8 @@ const pushFormSubmitToDataLayer = (
   formId: DataLayerFormId,
   phoneNumber: string
 ): void => {
-  if (typeof window === 'undefined') return
+  // Without cookie consent the event is not queued, so it is never sent later.
+  if (typeof window === 'undefined' || !hasTrackingConsent()) return
 
   window.dataLayer = window.dataLayer || []
 
@@ -51,7 +53,7 @@ function splitLabelNote(text: string): { main: string; note: string | null } {
   return { main: match[1], note: match[2] }
 }
 
-export type Locale = 'pl' | 'uk' | 'ru'
+export type Locale = 'pl' | 'uk' | 'ru' | 'en'
 
 export interface ContactT {
   formTitle: string
@@ -59,6 +61,8 @@ export interface ContactT {
   namePlaceholder: string
   phoneLabel: string
   emailLabel: string
+  /** E-mail example; PL example when not set */
+  emailPlaceholder?: string
   addressLabel: string
   addressPlaceholder: string
   problemLabel: string
@@ -109,19 +113,19 @@ const PL: ContactT = {
   attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
   attachHint: '(zdjęcia, filmy, dokumenty — łącznie maks. 4 MB)',
-  agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
-  privacyLink: 'Polityką Prywatności',
+  agreementConfirm: 'Wysyłając zgłoszenie, przekazujesz nam dane potrzebne do odpowiedzi. Administratorem danych jest Omobonus Sp. z o.o., szczegóły w',
+  privacyLink: 'Polityce prywatności',
   privacyHref: '/polityka-prywatnosci',
-  termsLink: 'Regulaminem',
+  termsLink: 'Regulamin',
   termsHref: '/regulamin',
-  agreementEnd: 'i akceptuję ich postanowienia.',
+  agreementEnd: '.',
   submitButton: 'Wyślij zgłoszenie',
   submitButtonSeal: 'Wyślij',
   submitting: 'Wysyłanie...',
   phoneError: 'Numer telefonu jest za krótki',
   emailError: 'Nieprawidłowy adres e-mail',
   agreementError: 'Musisz zaakceptować regulamin',
-  agreementConnector: 'oraz',
+  agreementConnector: '. Warunki usług opisuje',
   fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
   fileSizeError: max => `Wybrane pliki nie zostały dodane: łączny rozmiar załączników przekroczyłby ${max} MB.`,
   errorMissingConfig: 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.',
@@ -136,16 +140,16 @@ const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
   pl: PL,
   uk: uk.contactForm,
   ru: ru.contactForm,
+  en: en.contactForm,
 }
 
-function buildFormSchema(phoneError: string, emailError: string, agreementError: string) {
+function buildFormSchema(phoneError: string, emailError: string) {
   return z.object({
     name: z.string().optional(),
     phone: z.string().min(9, { message: phoneError }),
     email: z.union([z.literal(''), z.string().email({ message: emailError })]).optional(),
     address: z.string().optional(),
     problemDescription: z.string().optional(),
-    agreements: z.literal(true, { message: agreementError }),
   })
 }
 
@@ -157,7 +161,6 @@ const defaultFormValues: Partial<FormValues> = {
   email: '',
   address: '',
   problemDescription: '',
-  agreements: undefined,
 }
 
 
@@ -193,8 +196,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   const resolvedLocale: Locale = locale ?? 'pl'
   const d = t ?? CONTACT_DEFAULTS[resolvedLocale]
   const formSchema = useMemo(
-    () => buildFormSchema(d.phoneError, d.emailError, d.agreementError),
-    [d.phoneError, d.emailError, d.agreementError]
+    () => buildFormSchema(d.phoneError, d.emailError),
+    [d.phoneError, d.emailError]
   )
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -492,7 +495,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 id="contact-email"
                 {...register('email')}
                 type="email"
-                placeholder="jan.kowalski@example.com"
+                placeholder={d.emailPlaceholder ?? "jan.kowalski@example.com"}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'contact-email-error' : undefined}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
@@ -672,44 +675,21 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               {attachmentError && <p className="text-red-600 text-sm">{attachmentError}</p>}
             </div>
 
-            {/* Checkboxy */}
-            <div className="space-y-3 pt-1">
-
-              <div className="space-y-1" data-field-name="agreements">
-                <Controller
-                  name="agreements"
-                  control={control}
-                  render={({ field }) => (
-                    <CustomCheckbox
-                      id="agreements"
-                      name="agreements"
-                      checked={field.value || false}
-                      onChange={(e) => field.onChange(e.target.checked)}
-                      aria-invalid={!!errors.agreements}
-                      aria-describedby={errors.agreements ? 'contact-agreements-error' : undefined}
-                      label={
-                        <>
-                          {d.agreementConfirm}{' '}
-                          <Link href={d.privacyHref} className="underline hover:text-black/70">
-                            {d.privacyLink}
-                          </Link>{' '}
-                          {d.agreementConnector}{' '}
-                          <Link href={d.termsHref} className="underline hover:text-black/70">
-                            {d.termsLink}
-                          </Link>{' '}
-                          {d.agreementEnd}
-                        </>
-                      }
-                    />
-                  )}
-                />
-                {errors.agreements && (
-                  <p id="contact-agreements-error" className="text-red-600 text-sm ml-8 shake-error">
-                    {errors.agreements.message}
-                  </p>
-                )}
-
-              </div>
+            {/* Informacja RODO (art. 13) zamiast checkboxa: podstawą przetwarzania jest
+                odpowiedź na zgłoszenie, nie zgoda — checkbox „akceptuję” tworzyłby
+                pozorną zgodę. */}
+            <div className="pt-1">
+              <p className="text-[#2f2418] font-lora font-normal text-[14px] md:text-[15px] leading-[1.45]">
+                {d.agreementConfirm}{' '}
+                <Link href={d.privacyHref} className="underline hover:text-black/70">
+                  {d.privacyLink}
+                </Link>
+                {d.agreementConnector}{' '}
+                <Link href={d.termsHref} className="underline hover:text-black/70">
+                  {d.termsLink}
+                </Link>
+                {d.agreementEnd}
+              </p>
             </div>
 
             {/* Przycisk Submit — pieczęć woskowa wspólna dla PL/UK/RU (grafika bez wypalonego
@@ -737,7 +717,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   </picture>
                   {!isSubmitting && (
                     <span
-                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
+                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' || resolvedLocale === 'en' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
                       style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
                     >
                       {d.submitButtonSeal}

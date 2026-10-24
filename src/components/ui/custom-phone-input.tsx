@@ -12,7 +12,7 @@ interface CustomPhoneInputProps {
   onCountryChange?: (data: { name: string; dialCode: string; phoneLength?: number }) => void
   className?: string
   variant?: 'light' | 'dark'
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
   /** Fixed pixel width for the country selector (overrides w-full). Selector becomes flex-shrink-0. */
   selectorWidth?: string
   /** Force flex-row at all breakpoints (instead of flex-col → sm:flex-row). */
@@ -28,6 +28,7 @@ interface CustomPhoneInputProps {
 const LOCALIZED_COUNTRY_NAME_KEYS = {
   uk: 'nameUk',
   ru: 'nameRu',
+  en: 'nameEn',
 } as const
 
 const DEFAULT_COUNTRY = countries[1]
@@ -148,7 +149,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
 
   const getPlaceholder = () => {
     if (selectedCountry.code === 'other') {
-      return 'Wprowadź numer'
+      return locale === 'en' ? 'Enter number' : 'Wprowadź numer'
     }
     if (selectedCountry.phoneFormat) {
       return selectedCountry.phoneFormat
@@ -157,7 +158,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
   }
 
   const getCountryLabel = (country: Country) => {
-    const key = LOCALIZED_COUNTRY_NAME_KEYS[locale as 'uk' | 'ru']
+    const key = LOCALIZED_COUNTRY_NAME_KEYS[locale as 'uk' | 'ru' | 'en']
     return (key && country[key]) || country.name
   }
 

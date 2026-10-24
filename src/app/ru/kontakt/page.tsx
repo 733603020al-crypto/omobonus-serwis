@@ -13,13 +13,14 @@ const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = withSocialMeta('ru', {
   title: 'Контакт | Сервис компьютеров, ноутбуков и принтеров',
-  description: '✔ Сервис компьютеров, ноутбуков, принтеров и плоттеров во Вроцлаве ✔ Диагностика за 15 мин ✔ Полный прайс на сайте ✔ Запишитесь уже сегодня! ☎ 793 759 262',
+  description: '✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Позвоните, напишите или отправьте заявку на сервис ✔ Полный прайс на сайте ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru/kontakt',
     languages: {
       pl: 'https://serwis.omobonus.com.pl/kontakt',
       uk: 'https://serwis.omobonus.com.pl/uk/kontakt',
       ru: 'https://serwis.omobonus.com.pl/ru/kontakt',
+      en: 'https://serwis.omobonus.com.pl/en/kontakt',
       'x-default': 'https://serwis.omobonus.com.pl/kontakt',
     },
   },

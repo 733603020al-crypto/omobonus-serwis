@@ -13,6 +13,9 @@ export interface AdvantagesT {
   lead?: string
   cards?: readonly CardText[]
   kdr?: CardText
+  /** Alt texts of the two card logos; PL when not set */
+  kdrAlt?: string
+  seniorAlt?: string
 }
 
 const PL_HEADER = {
@@ -120,7 +123,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
                 <span style={{ width: 32, height: 23, background: 'rgb(227,231,240)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Image
                     src="/images/KDR_Tu-honorujemy-Karte-Duzej-Rodziny.webp"
-                    alt="Karta Dużej Rodziny"
+                    alt={t?.kdrAlt ?? 'Karta Dużej Rodziny'}
                     width={32}
                     height={23}
                     className="object-contain w-full h-full"
@@ -140,7 +143,7 @@ export function Advantages({ t }: { t?: AdvantagesT } = {}) {
                 <span style={{ width: 32, height: 23, background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Image
                     src="/images/Karta-Seniora.webp"
-                    alt="Karta Seniora"
+                    alt={t?.seniorAlt ?? 'Karta Seniora'}
                     width={32}
                     height={23}
                     className="object-contain w-full h-full"

@@ -16,6 +16,8 @@ export interface AboutT {
   quoteSubtitle: string
   moreAboutLink?: string
   moreAboutHref?: string
+  /** Saint image alt; PL text when not set */
+  saintAlt?: string
   // legacy fields — kept for type-compat with existing translations
   kdkText?: string
   whyUs?: string
@@ -93,7 +95,7 @@ export function About({
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl max-w-sm w-full">
               <Image
                 src={manifest.omobonus_hero}
-                alt="Święty Omobonus"
+                alt={d.saintAlt ?? 'Święty Omobonus'}
                 width={400}
                 height={500}
                 sizes="(max-width: 768px) 85vw, 400px"
@@ -139,7 +141,7 @@ export function About({
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl max-w-sm w-full">
               <Image
                 src={manifest.omobonus_hero}
-                alt="Święty Omobonus"
+                alt={d.saintAlt ?? 'Święty Omobonus'}
                 width={400}
                 height={500}
                 sizes="(max-width: 768px) 85vw, 400px"

@@ -15,7 +15,7 @@ const heroCommon = { alt: '', fill: true, sizes: '100vw', priority: true } as co
 const { props: { srcSet: heroDesktopSrcSet } } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-desktop.webp', quality: 32 })
 const { props: heroMobileProps } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-mobile.webp', quality: 60 })
 
-export function ONasHero({ t, heroT, locale = 'pl' }: { t?: ONasHeroT; heroT?: HeroT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
+export function ONasHero({ t, heroT, locale = 'pl' }: { t?: ONasHeroT; heroT?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en' } = {}) {
   const d = t ?? PL
 
   return (

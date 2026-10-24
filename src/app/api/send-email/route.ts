@@ -113,6 +113,7 @@ const mapDeviceType = (value: string, locale: EmailLocale = 'pl') => {
     pl: { printer: 'Drukarka', computer: 'Komputer / Laptop', other: 'Inne urządzenie', fallback: 'Nie podano' },
     ru: { printer: 'Принтер', computer: 'Компьютер / Ноутбук', other: 'Другое устройство', fallback: 'Не указано' },
     uk: { printer: 'Принтер', computer: "Комп'ютер / Ноутбук", other: 'Інший пристрій', fallback: 'Не вказано' },
+    en: { printer: 'Printer', computer: 'Computer / Laptop', other: 'Other device', fallback: 'Not provided' },
   }
   const m = maps[locale]
   if (value === 'printer') return m.printer
@@ -121,10 +122,10 @@ const mapDeviceType = (value: string, locale: EmailLocale = 'pl') => {
   return m.fallback
 }
 
-type EmailLocale = 'pl' | 'ru' | 'uk'
+type EmailLocale = 'pl' | 'ru' | 'uk' | 'en'
 
 const resolveEmailLocale = (value: string | null): EmailLocale =>
-  value === 'ru' || value === 'uk' ? value : 'pl'
+  value === 'ru' || value === 'uk' || value === 'en' ? value : 'pl'
 
 interface ClientEmailI18n {
   subject: (ticket: string) => string
@@ -215,6 +216,28 @@ const CLIENT_EMAIL_I18N: Record<EmailLocale, ClientEmailI18n> = {
     teamName: 'Команда Omobonus Serwis',
     footerNote: year => `Повідомлення надіслано автоматично з форми Omobonus Serwis © ${year} Omobonus Serwis`,
     na: 'Не вказано',
+  },
+  en: {
+    subject: ticket => `Thank you for your service request [${ticket}]`,
+    htmlTitle: 'Thank you for your service request and for your trust!',
+    greeting: 'Dear Customer,',
+    confirmText: 'we confirm that we have received your service request at',
+    ticketPrefix: 'Your request has been registered under number:',
+    followUp: 'Our team will contact you shortly to agree on the next steps.',
+    textKeepTicketNote: 'Please keep the request number for future correspondence.',
+    correctionNote: 'If you notice a mistake in the details, reply to this e-mail and we will correct the request.',
+    dataHeader: 'Details submitted in the form:',
+    fieldName: 'Full name:',
+    fieldPhone: 'Phone number:',
+    fieldEmail: 'E-mail address:',
+    fieldAddress: 'Address:',
+    fieldDeviceType: 'Device type:',
+    fieldDeviceModel: 'Device model:',
+    fieldProblem: 'Problem description:',
+    signOff: 'Kind regards,',
+    teamName: 'The Omobonus Serwis team',
+    footerNote: year => `Message sent automatically from the Omobonus Serwis form © ${year} Omobonus Serwis`,
+    na: 'Not provided',
   },
 }
 

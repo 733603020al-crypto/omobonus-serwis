@@ -9,9 +9,11 @@ type RawReview = {
     text?: string
     text_uk?: string
     text_ru?: string
+    text_en?: string
     relative_time_description?: string
     relative_time_uk?: string
     relative_time_ru?: string
+    relative_time_en?: string
     [key: string]: unknown
 }
 
@@ -35,9 +37,11 @@ export async function GET(request: NextRequest) {
                 text: r.text,
                 text_uk: r.text_uk ?? null,
                 text_ru: r.text_ru ?? null,
+                text_en: r.text_en ?? null,
                 relative_time_description: r.relative_time_description,
                 relative_time_uk: r.relative_time_uk ?? null,
                 relative_time_ru: r.relative_time_ru ?? null,
+                relative_time_en: r.relative_time_en ?? null,
                 time: r.time,
             }))
 

@@ -1,0 +1,214 @@
+import type { Metadata, Viewport } from 'next'
+import type { ReactNode } from 'react'
+import Script from 'next/script'
+import { ConsentManager } from '@/components/ConsentManager'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
+import '../globals.css'
+import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
+import { DeferredGtm } from '@/components/DeferredGtm'
+import { ScrollToTop } from '@/components/ScrollToTop'
+import { GoldAnimationPause } from '@/components/GoldAnimationPause'
+
+/* =========================
+   Fonts
+   ========================= */
+
+const cormorant = Cormorant_Garamond({
+  weight: ['400', '500', '600', '700'],
+  // latin-ext: Polish letters in names (Wrocław, zł) — same subsets as PL
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-cormorant',
+})
+
+const inter = Inter({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+  preload: false,
+  variable: '--font-inter',
+})
+
+/* =========================
+   Metadata
+   ========================= */
+
+// Phones: the page (and the textured bottom bar) is drawn to the screen edge, under
+// the Android gesture bar / iPhone home indicator; the bar pads itself by the safe area.
+// theme-color = the bottom bar's average tone (parchment under its 60% black overlay).
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#30220b',
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://serwis.omobonus.com.pl'),
+  icons: { icon: '/favicon.ico' },
+  manifest: '/manifest.webmanifest',
+  title: {
+    default: 'Computer, laptop and printer repair Wrocław | Omobonus',
+    template: '%s | Omobonus Wrocław',
+  },
+  description:
+    'Professional computer, laptop and printer repair in Wrocław. Hardware repair, IT outsourcing, fair prices with no hidden costs.',
+  authors: [{ name: 'Omobonus Sp. z o.o.' }],
+  creator: 'Omobonus Sp. z o.o.',
+  publisher: 'Omobonus Sp. z o.o.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    url: 'https://serwis.omobonus.com.pl/en',
+    siteName: 'Omobonus Serwis',
+    title: 'Computer, laptop and printer repair Wrocław | Omobonus',
+    description:
+      'Professional computer, laptop and printer repair in Wrocław. Hardware repair, IT outsourcing, fair prices with no hidden costs.',
+    images: [
+      {
+        url: '/images/omobonus-hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Omobonus - computer, laptop and printer repair Wrocław',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Computer, laptop and printer repair Wrocław | Omobonus',
+    description:
+      'Professional computer, laptop and printer repair in Wrocław. Hardware repair, IT outsourcing, fair prices with no hidden costs.',
+    images: ['/images/omobonus-hero.webp'],
+  },
+  alternates: {
+    canonical: 'https://serwis.omobonus.com.pl/en',
+    languages: {
+      'pl': 'https://serwis.omobonus.com.pl',
+      'uk': 'https://serwis.omobonus.com.pl/uk',
+      'ru': 'https://serwis.omobonus.com.pl/ru',
+      'en': 'https://serwis.omobonus.com.pl/en',
+      'x-default': 'https://serwis.omobonus.com.pl',
+    },
+  },
+  category: 'technology',
+}
+
+/* =========================
+   Schema.org JSON-LD
+   ========================= */
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://serwis.omobonus.com.pl/#organization',
+  name: 'Omobonus Serwis',
+  alternateName: 'Omobonus Sp. z o.o.',
+  url: 'https://serwis.omobonus.com.pl',
+  telephone: '+48793759262',
+  image: 'https://serwis.omobonus.com.pl/images/omobonus-hero.webp',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Marcina Bukowskiego 174',
+    addressLocality: 'Wrocław',
+    postalCode: '52-418',
+    addressCountry: 'PL',
+  },
+  hasMap: 'https://maps.google.com/?cid=2313678441338780663',
+  sameAs: ['https://maps.google.com/?cid=2313678441338780663', 'https://www.facebook.com/omobonus/'],
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.0775534,
+    longitude: 16.9784082,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+}
+
+/* =========================
+   Root Layout
+   ========================= */
+
+export default function EnRootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <Script id="gtm-consent" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              personalization_storage: 'denied',
+              functionality_storage: 'denied',
+              security_storage: 'granted'
+            });
+            (function(){
+              var m = document.cookie.match(/(?:^|; *)cookieyes-consent=([^;]*)/);
+              if (!m) return;
+              var v = decodeURIComponent(m[1]);
+              var s = function(k){ return new RegExp('(?:^|,)' + k + ':yes').test(v) ? 'granted' : 'denied'; };
+              var ad = s('advertisement'), fn = s('functional');
+              gtag('consent', 'update', {
+                ad_storage: ad, ad_user_data: ad, ad_personalization: ad,
+                analytics_storage: s('analytics'),
+                functionality_storage: fn, personalization_storage: fn,
+                security_storage: 'granted'
+              });
+            })();
+          `}
+        </Script>
+
+        <Script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
+          strategy="lazyOnload"
+        />
+
+        <link rel="preconnect" href="https://cdn-cookieyes.com" />
+        <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
+        <link rel="dns-prefetch" href="https://log.cookieyes.com" />
+      </head>
+
+      <body className="antialiased scroll-smooth pb-[calc(88px+env(safe-area-inset-bottom))] md:pb-0">
+        <ScrollToTop />
+        <GoldAnimationPause />
+        <ConsentManager />
+        <DeferredGtm gtmId="GTM-5XQXX5KL" />
+
+        {children}
+
+        {/* Mobile-only bottom quick-action bar */}
+        <MobileActionBar />
+
+        {/* Обычный тег, а не next/script: разметка должна быть в исходном HTML без выполнения JS */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </body>
+    </html>
+  )
+}

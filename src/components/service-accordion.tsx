@@ -940,7 +940,7 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
 // t i pricing przychodzą z serwera (service-page-template): słownik tylko
 // bieżącego języka i gotowe ceny/terminy tej jednej usługi — bez całego
 // services-pricing-data.ts i słowników 3 języków w JS przeglądarki.
-const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing }) => {
+const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' | 'en'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing }) => {
   const lookupPrice = (path: string) => {
     const value = pricing.price[path]
     if (value === undefined) throw new Error(`[services-pricing] Нет цены в migratedPrice для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
@@ -956,7 +956,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   // Табличные заголовки th/scope только для страницы кофемашин — не трогаем
   // остальные страницы, использующие тот же REPAIR_ACCORDION_LAYOUT_SLUGS layout.
   const isKawaRepairTable = service.slug === 'serwis-ekspresow-do-kawy'
-  const kawaColumnLabels = { pl: ['Usługa', 'Cena', 'Czas realizacji'], ru: ['Услуга', 'Цена', 'Срок'], uk: ['Послуга', 'Ціна', 'Строк'] }[locale] ?? ['Usługa', 'Cena', 'Czas realizacji']
+  const kawaColumnLabels = { pl: ['Usługa', 'Cena', 'Czas realizacji'], ru: ['Услуга', 'Цена', 'Срок'], uk: ['Послуга', 'Ціна', 'Строк'], en: ['Service', 'Price', 'Lead time'] }[locale] ?? ['Usługa', 'Cena', 'Czas realizacji']
   const useWarmSectionIcons = isWarmParchment
   const isParchmentTooltipSlug = PARCHMENT_TOOLTIP_SLUGS.has(service.slug)
   const isParchmentTooltipContentSlug = PARCHMENT_TOOLTIP_CONTENT_SLUGS.has(service.slug)
@@ -1007,7 +1007,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   )
   // UK/RU "free" label (БЕЗКОШТОВНО/БЕСПЛАТНО) is too wide to sit beside the diagnoza
   // title on phones, so there it goes under the title instead of the right column.
-  const stackGratisOnMobile = locale !== 'pl'
+  // EN "FREE" is as short as PL "GRATIS" — same layout as PL.
+  const stackGratisOnMobile = locale !== 'pl' && locale !== 'en'
   const priceHeaderFull = t.priceHeaderFull
   const priceHeaderShort = t.priceHeaderShort
   const timeHeader = t.timeHeader

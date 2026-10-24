@@ -70,12 +70,14 @@ export const BrandWordmark = ({ className }: { className?: string }) => (
    Locale-aware navigation data
    ========================= */
 
-export type Locale = 'pl' | 'uk' | 'ru'
+export type Locale = 'pl' | 'uk' | 'ru' | 'en'
 
 const LOCALE_NAV: Record<Locale, {
   prefix: string
   homeHref: string
   homeSectionHref: (id: string) => string
+  /** Logo alt; PL text when not set */
+  logoAlt?: string
   labels: {
     services: string
     about: string
@@ -126,6 +128,21 @@ const LOCALE_NAV: Record<Locale, {
       call: 'Позвонить',
       sendForm: 'Быстрый контакт',
       megaMenuHeader: 'СЕРВИС И РЕМОНТ',
+    },
+  },
+  en: {
+    prefix: '/en',
+    homeHref: '/en',
+    homeSectionHref: (id) => `/en#${id}`,
+    logoAlt: 'Omobonus Serwis – computer, laptop and printer repair Wrocław',
+    labels: {
+      services: 'Services',
+      about: 'About us',
+      contact: 'Contact',
+      shop: 'Shop',
+      call: 'Call now',
+      sendForm: 'Quick contact',
+      megaMenuHeader: 'SERVICE AND REPAIR',
     },
   },
 }
@@ -336,7 +353,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               default-high-priority preload otherwise). */}
           <Image
             src="/images/Logo_Omobonus.webp"
-            alt="Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław"
+            alt={nav.logoAlt ?? 'Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław'}
             fill
             loading="eager"
             fetchPriority="low"

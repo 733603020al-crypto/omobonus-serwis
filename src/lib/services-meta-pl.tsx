@@ -228,12 +228,12 @@ export const seoBlocks: Record<string, SeoBlock> = {
       'Twoja drukarka atramentowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.',]
   },
   'serwis-drukarek-3d': {
-    items: ['Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ',
-      'dla klientów biznesowych i indywidualnych.',]
+    items: ['Serwis drukarek 3D FDM i żywicznych – naprawa ekstrudera i hotendu, kalibracja stołu,',
+      'konfiguracja firmware – dla klientów biznesowych i indywidualnych.',]
   },
   'druk-3d-na-zamowienie': {
-    items: ['Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ',
-      'dla klientów biznesowych i indywidualnych.',]
+    items: ['Druk 3D na zamówienie z PLA, PETG, ABS / ASA i TPU – z gotowego pliku lub według projektu,',
+      'odbiór osobisty we Wrocławiu lub wysyłka – dla klientów biznesowych i indywidualnych.',]
   },
   'serwis-plotterow': {
     items: [' ',

@@ -1,6 +1,7 @@
 import type { PricingSection } from './services-data-types'
 import { createNiszczarkiPricingSections } from './services-data-niszczarki'
 import { niszczarkiPricingSectionsUk } from './services-data-uk-niszczarki'
+import { niszczarkiPricingSectionsEn } from './services-data-en-niszczarki'
 import { niszczarkiPricingSectionsRu } from './services-data-ru-niszczarki'
 
 // naprawa-zasilaczy-ups: sekcje „Diagnoza” i „Dojazd” to wspólne zasady serwisu (ta sama baza co niszczarki);
@@ -237,6 +238,81 @@ const UPS_FAQ_RU: FaqEntry[] = [
   ['Стоит ли ремонтировать более старый ИБП?', 'Это зависит от вида повреждения, состояния устройства, наличия запчастей и стоимости ремонта. После диагностики можно оценить, оправдан ли ремонт экономически по сравнению с заменой устройства.'],
 ]
 
+const UPS_KONSERWACJA_EN =
+  'CLEANING AND MAINTENANCE [[comprehensive ]]cleaning, inspection and testing of the device\n• cleaning the inside of the UPS, the fans and the cooling system;\n• checking electrical connections and cable terminals;\n• checking the electronics, capacitors and fans;\n• checking the batteries and measuring internal resistance;\n• measuring input and output parameters;\n• checking messages, alarms and error history;\n• testing normal, battery and bypass operation;\n• final operation test and service recommendations.'
+
+const UPS_NAPRAWY_EN: NaprawyGroup[] = [
+  ['naprawy-akumulatory', 'Batteries', [
+    'Battery test / resistance measurement\n(the UPS provides backup only briefly, reports a weak battery or discharges quickly)',
+    'Battery replacement + calibration\n(the UPS does not provide backup power, the battery is worn out or needs replacing)',
+    'Repair of battery cables / connections\n(the UPS does not detect the battery, stops working on battery or reports a battery error)',
+    'Backup time test\n(checking how long the UPS actually runs after a power cut)',
+  ]],
+  ['naprawy-ladowanie-dc', 'Charging and power supply', [
+    'Charging circuit repair\n(the UPS does not charge the batteries, charges them too slowly or reports a charging error)',
+    'Rectifier / PFC circuit repair\n(the UPS does not start from the mains, reports a power error or does not charge the battery)',
+    'Auxiliary converter repair\n(the UPS does not start, keeps resetting or part of the electronics does not work)',
+    'DC capacitor replacement\n(the UPS works unstably, switches off or power section errors appear)',
+  ]],
+  ['naprawy-falownik', 'Inverter and power section', [
+    'Inverter repair\n(the UPS does not output voltage, switches off under load or goes into an error state)',
+    'Power transistor replacement (MOSFET / IGBT)\n(the UPS does not enable its output, trips the protection or reports a power error)',
+    'Power section repair\n(the UPS does not power connected devices, switches off or works unstably under load)',
+    'AC capacitor replacement\n(the UPS works unstably, is noisy or there are problems with the output voltage)',
+    'Repair after a power surge / storm\n(the UPS stopped working after a storm, voltage spike or mains failure, there is a burning smell or it trips the protection)',
+  ]],
+  ['naprawy-bypass', 'Bypass and switching', [
+    'Static Bypass circuit repair\n(the UPS does not switch to bypass or reports an error while switching)',
+    'Bypass relay repair / replacement\n(the UPS does not switch power, stops working or you can hear abnormal switching)',
+    'Mains / battery switching circuit repair\n(the UPS does not switch to battery or does not return to mains power)',
+  ]],
+  ['naprawy-elektronika', 'Electronics and control', [
+    'Control board / main board repair\n(the UPS does not start, freezes, keeps resetting or reports control errors)',
+    'Repair of control, measurement and protection circuits\n(incorrect readings, false alarms or protection not working properly)',
+    'Control panel / display repair\n(the display does not work, the buttons do not respond or you cannot control the UPS)',
+    'Power board repair\n(the UPS does not switch on, keeps resetting or does not power some of its circuits)',
+    'UPS firmware update / restore\n(firmware error, the UPS does not start after a failed update or needs a newer version — if the manufacturer provides one)',
+  ]],
+  ['naprawy-chlodzenie', 'Cooling', [
+    'Fan replacement (one or more)\n(the fan is noisy, does not turn or the UPS overheats)',
+    'Cooling control repair\n(the fans run all the time, do not start or the UPS reports a temperature warning)',
+  ]],
+  ['naprawy-komunikacja', 'Communication and monitoring', [
+    'SNMP network card repair / replacement\n(no UPS monitoring, the card does not respond or the device drops off the network)',
+    'Communication interface repair\n(no communication via USB, RS232 or the network)',
+    'UPS communication setup\n(the UPS works but does not communicate properly with the computer, server or monitoring system)',
+  ]],
+]
+
+const UPS_FAQ_EN: FaqEntry[] = [
+  ['Which UPS brands do you repair?', 'We service brands including APC, Schneider Electric, Eaton, Powerware, Riello, Vertiv, Liebert, Emerson, MGE, Socomec, Delta, Ever, Fideltronik, CyberPower, PowerWalker, Legrand, AEG, ABB, GE, Siemens, G-Tec, Borri, Orvaldi, Salicru, Tripp Lite, Huawei, Mustek, Inform, Gamatronic, Chloride, Masterguard, Schrack, Cover, Aros and CES. If your brand is not on the list, tell us the manufacturer and the exact UPS model.'],
+  ['What types of UPS do you service?', 'We service Online / Double Conversion, Line-Interactive and Offline / Standby UPS units — from small UPSs for computers and office equipment, through professional UPSs for server rooms, including 19” rack units, to larger industrial systems. We repair both single-phase and three-phase UPSs. We accept large and three-phase UPSs at our service centre and repair them there, without visiting the customer. UPSs above 10 kVA are quoted individually.'],
+  ['The UPS won’t switch on — what could be the cause?', 'The cause may be, among other things, damaged batteries, power supply circuit, rectifier, converter, inverter, power section or control electronics. We identify the exact cause during the diagnosis.'],
+  ['The UPS works but doesn’t provide backup power — is replacing the battery enough?', 'Not always. The most common cause is worn-out batteries, but the problem may also lie in the charging circuit, battery connections, inverter or the UPS electronics.'],
+  ['The UPS keeps switching to bypass — what does that mean?', 'The cause may be an overload, a problem with the inverter, the supply parameters, the control electronics or the bypass circuit itself. We establish the exact cause after the diagnosis.'],
+  ['The UPS beeps or shows “Replace Battery” — what does that mean?', 'Most often it means the batteries are worn out, but the signal may also indicate an overload, battery operation, overheating or a fault in the charging circuit. We establish the exact cause during the diagnosis.'],
+  ['How can I tell if the UPS batteries are worn out?', 'Typical symptoms are a short backup time, a sudden shutdown after a power cut, a weak battery message or a problem switching to battery operation.'],
+  ['How do you check the condition of UPS batteries?', 'We can assess the batteries by, among other things, measuring their parameters and internal resistance and running suitable operation tests on the device.'],
+  ['How many years do UPS batteries last?', 'Usually 3–5 years, depending on the quality of the batteries and the operating conditions. High temperature shortens their life the most — a UPS works best in a cool room (around 20–25°C), away from radiators and with its ventilation openings uncovered.'],
+  ['Do all the batteries in a UPS have to be replaced at the same time?', 'In systems made up of several or a dozen or more batteries, replacing the whole set is often recommended. The final decision depends on the age, condition and measurement results of the individual batteries.'],
+  ['Can I fit batteries from a different manufacturer than the original ones?', 'Yes, as long as they have the voltage, capacity, technology, dimensions and operating parameters required by the UPS in question.'],
+  ['Do you calibrate the UPS after replacing the batteries?', 'If the model requires calibration, a battery information reset or additional tests after the replacement, we carry out the necessary steps as part of the replacement service.'],
+  ['Which UPS components do you repair?', 'We repair, among other things, battery charging circuits, main boards and control electronics, measurement and protection circuits, displays and control panels, fans, AC and DC capacitors, as well as SNMP, USB and RS232 communication. We determine the scope of the repair after the diagnosis.'],
+  ['Do you repair the power section — inverters, rectifiers, MOSFET/IGBT and bypass?', 'Yes. Depending on the design of the device, we repair inverters, rectifiers, PFC circuits and converters, replace MOSFET / IGBT power transistors, and repair Static Bypass circuits, relays and the components responsible for switching between mains, battery and bypass power.'],
+  ['How long does a UPS repair take?', 'We complete most repairs within 1–3 days of the quote being accepted. If we need parts that we do not have in stock, the repair may take longer — we let you know when we give you the quote. In urgent cases, where possible, we speed up the repair at no extra charge.'],
+  ['How much does a UPS repair cost and what does the price depend on?', 'The price depends on the type of fault and the power rating of the UPS — the price list shows separate prices for UPSs up to 1 kVA, 1–3 kVA and 3–10 kVA. You will get the exact repair cost after the diagnosis, before any work starts. UPSs above 10 kVA are quoted individually.'],
+  ['Do you charge for the diagnosis?', 'The diagnosis is free if you decide to go ahead with the repair after receiving the quote. If you decide not to repair, we charge a diagnosis fee according to the price list — depending on the power rating of the UPS.'],
+  ['Will I get a quote before the repair?', 'Yes. First we diagnose the device and give you the scope and cost of the repair. We carry out the repair once you have accepted the quote.'],
+  ['Is the UPS tested after the repair?', 'Yes. After the repair, we run tests appropriate to the work carried out. If a load test or calibration is needed to complete the repair properly, it is part of the repair and we do not charge for it again as a separate service.'],
+  ['What warranty do you give on a UPS repair?', 'We give a 6-month warranty on the repair carried out, and 12 months on new batteries fitted at our service centre.'],
+  ['What if the fault comes back?', 'If the same fault comes back during the warranty period, we diagnose and repair the device again free of charge.'],
+  ['How often should a UPS be inspected?', 'In typical conditions, it is worth having an inspection at least once a year. With heavy use, high temperature, dust or critical infrastructure, inspections may be needed more often.'],
+  ['What does a UPS inspection and maintenance include?', 'It may include cleaning the inside of the device, checking the connections, electronics, capacitors and fans, checking the batteries, measuring parameters, analysing errors and testing mains, battery and bypass operation.'],
+  ['Do you issue VAT invoices and work with businesses?', 'Yes, we issue VAT invoices. For businesses, we also offer regular periodic UPS inspections and ongoing service support — we agree the scope and schedule individually. We carry out inspections and repairs at our service centre.'],
+  ['Can I send my UPS to you by courier?', 'Yes, you can send a UPS to our service centre by courier from anywhere in Poland. Before sending it, switch the UPS off and disconnect it from the power supply, pack it in a sturdy box (ideally the original one) and secure it with filling so that it cannot move inside — the batteries make a UPS heavy. For large or heavy devices (e.g. rack units or units with battery modules), please contact us before sending. You can also bring the UPS to our service centre in person or order pickup and delivery according to the price list (the “Pickup and delivery” section).'],
+  ['Is it worth repairing an older UPS?', 'It depends on the type of damage, the condition of the device, the availability of parts and the repair cost. After the diagnosis, we can assess whether the repair makes economic sense compared with replacing the device.'],
+]
+
 const withUps = (sections: PricingSection[], konserwacja: string, naprawy: NaprawyGroup[], faq: FaqEntry[], courier: string): PricingSection[] =>
   sections.map(section => {
     if (section.id === 'dojazd') return { ...section, items: [...(section.items ?? []), { service: courier }] }
@@ -258,6 +334,9 @@ export const createUpsPricingSections = (): PricingSection[] =>
 
 export const upsPricingSectionsUk = (): PricingSection[] =>
   withUps(niszczarkiPricingSectionsUk(), UPS_KONSERWACJA_UK, UPS_NAPRAWY_UK, UPS_FAQ_UK, 'Відправка кур’єром з усієї Польщі\n(ДБЖ можна надіслати в сервіс кур’єром, а після ремонту ми повернемо його так само)')
+
+export const upsPricingSectionsEn = (): PricingSection[] =>
+  withUps(niszczarkiPricingSectionsEn(), UPS_KONSERWACJA_EN, UPS_NAPRAWY_EN, UPS_FAQ_EN, 'Courier shipping from anywhere in Poland\n(you can send your UPS to our service centre by courier, and after the repair we will send it back the same way)')
 
 export const upsPricingSectionsRu = (): PricingSection[] =>
   withUps(niszczarkiPricingSectionsRu(), UPS_KONSERWACJA_RU, UPS_NAPRAWY_RU, UPS_FAQ_RU, 'Отправка курьером из любой точки Польши\n(ИБП можно отправить в сервис курьером, а после ремонта мы вернём его тем же способом)')

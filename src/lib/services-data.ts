@@ -69,9 +69,9 @@ export const services: ServiceData[] = [
   {
     slug: 'naprawa-drukarek',
     title: 'Naprawa drukarek i kserokopiarek',
-    subtitle: 'Naprawa specjalistycznych drukarek igłowych',
+    subtitle: 'Serwis i naprawa drukarek i kserokopiarek',
     icon: manifest['07_serwis_drukarek_iglowych'],
-    description: 'Naprawa specjalistycznych drukarek igłowych.',
+    description: 'Serwis i naprawa drukarek i kserokopiarek.',
     // Hub: category tabs instead of a price list, plus one FAQ card (also feeds FAQPage JSON-LD).
     pricingSections: [printerHubFaqPl()],
   },

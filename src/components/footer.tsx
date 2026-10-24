@@ -23,6 +23,8 @@ export interface FooterT {
   allRights: string
   privacyHref: string
   regulaminHref: string
+  /** Opens the CookieYes preferences panel (change / withdraw consent). */
+  cookieSettings?: string
 }
 
 const PL: FooterT = {
@@ -40,6 +42,7 @@ const PL: FooterT = {
   allRights: 'Wszelkie prawa zastrzeżone.',
   privacyHref: '/polityka-prywatnosci',
   regulaminHref: '/regulamin',
+  cookieSettings: 'Ustawienia cookies',
 }
 
 interface FooterCta {
@@ -272,6 +275,14 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
             >
               {d.terms}
             </Link>
+            <span className="mx-2 opacity-40">|</span>
+            {/* cky-banner-element: CookieYes opens its preferences panel on click */}
+            <button
+              type="button"
+              className="cky-banner-element hover:text-primary transition-colors"
+            >
+              {d.cookieSettings ?? PL.cookieSettings}
+            </button>
           </div>
 
           {/* currentYear can legitimately differ between server-render time (build)

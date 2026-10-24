@@ -19,6 +19,7 @@ import { Services } from '@/components/sections/services'
 import { PRINTER_HUB_CATEGORIES } from '@/config/service-categories'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
+import { en } from '@/lib/i18n/en'
 import { PrinterHubCarousel, PrinterHubMid } from '@/components/printer-hub-hero'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
@@ -94,7 +95,7 @@ const PRINTER_HERO_MIDS = [
 ] as const
 // "Zobacz więcej →" under the card names (as on the home cards).
 // Card labels for the printer hub tabs (PL uses the component's defaults).
-const HUB_SERVICES_T = { pl: undefined, uk: uk.services, ru: ru.services } as const
+const HUB_SERVICES_T = { pl: undefined, uk: uk.services, ru: ru.services, en: en.services } as const
 
 // serwis-drukarek-atramentowych: 6 inkjet-printer renders (slides 1–6),
 // each cropped to its own alpha bbox and downscaled to max 512px.
@@ -486,7 +487,7 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
 }
 
 interface ServicePageTemplateProps {
-  locale: 'pl' | 'uk' | 'ru'
+  locale: 'pl' | 'uk' | 'ru' | 'en'
   slug: string
   service: ServiceData
   heroLabels: string[]
@@ -878,7 +879,7 @@ export function ServicePageTemplate({
               </div>
               {slug === 'druk-3d-na-zamowienie' ? (
                 <div className="mt-[40px]">
-                  <PrintedPartsTicker />
+                  <PrintedPartsTicker locale={locale} />
                 </div>
               ) : slugBrands && slugBrands.length > 0 && (
                 <div className="mt-[40px]">

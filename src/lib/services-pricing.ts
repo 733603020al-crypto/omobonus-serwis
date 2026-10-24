@@ -2,7 +2,7 @@ import { type PricingItem, type PricingSection } from './services-data'
 import { migratedPrice, migratedDuration } from './services-pricing-data'
 import { PRICE_WRAPPERS, DURATION_WRAPPERS } from './services-pricing-wrappers'
 
-export type PricingLocale = 'pl' | 'ru' | 'uk'
+export type PricingLocale = 'pl' | 'ru' | 'uk' | 'en'
 
 // Id — позиционный, вычисляется на лету, без правки самих item-ов.
 

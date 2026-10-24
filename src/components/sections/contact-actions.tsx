@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 import { CallButton } from '@/components/ui/CallButton'
 import dynamic from 'next/dynamic'
@@ -27,7 +29,8 @@ const normalizePhoneNumberForDataLayer = (phoneNumber: string): string => {
 }
 
 const pushFormSubmitToDataLayer = (formId: DataLayerFormId, phoneNumber: string): void => {
-  if (typeof window === 'undefined') return
+  // Without cookie consent the event is not queued, so it is never sent later.
+  if (typeof window === 'undefined' || !hasTrackingConsent()) return
   window.dataLayer = window.dataLayer || []
   window.dataLayer.push({
     event: 'form_submit',
@@ -73,6 +76,9 @@ interface ContactActionsT {
   callbackButton: string
   callbackSubmitting: string
   callbackHint: string
+  privacyNotice?: string
+  privacyLink?: string
+  privacyHref?: string
   phoneError: string
   callbackError: string
   successTitle: string
@@ -90,6 +96,9 @@ const PL_ACTIONS: ContactActionsT = {
   callbackButton: 'Proszę o telefon',
   callbackSubmitting: 'Wysyłanie...',
   callbackHint: 'Oddzwaniamy: pon.–sob. 7:00–21:00',
+  privacyNotice: 'Numer wykorzystamy, aby oddzwonić — szczegóły w',
+  privacyLink: 'Polityce prywatności',
+  privacyHref: '/polityka-prywatnosci',
   phoneError: 'Numer telefonu jest za krótki',
   callbackError: 'Nie udało się wysłać prośby. Spróbuj ponownie lub zadzwoń.',
   successTitle: 'Dziękujemy!',
@@ -101,7 +110,7 @@ const PL_ACTIONS: ContactActionsT = {
   kosztLabel: 'Koszt dojazdu',
 }
 
-export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
+export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' | 'en' } = {}) {
   const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
   const [countryName, setCountryName] = useState('Polska')
@@ -302,6 +311,12 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
           <p className="mt-2 text-center font-inter text-[12px] text-white/45">
             {d.callbackHint}
           </p>
+          {d.privacyNotice && d.privacyLink && d.privacyHref && (
+            <p className="mt-1 text-center font-inter text-[12px] text-white/45">
+              {d.privacyNotice}{' '}
+              <Link href={d.privacyHref} className="underline underline-offset-2 hover:text-white/70">{d.privacyLink}</Link>.
+            </p>
+          )}
         </form>
 
         {/* Divider 2 */}

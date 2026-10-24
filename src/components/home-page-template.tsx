@@ -8,7 +8,7 @@ import GoogleReviews from '@/components/google-reviews'
 import { SERVICE_CATEGORIES } from '@/config/service-categories'
 
 const SITE_URL = 'https://serwis.omobonus.com.pl'
-const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт', ru: 'Сервис и ремонт' } as const
+const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт', ru: 'Сервис и ремонт', en: 'Service and repair' } as const
 
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner.
@@ -33,7 +33,7 @@ interface HomePageTemplateProps {
     button: ReactNode
     href: string
   }
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
 }
 
 export function HomePageTemplate({

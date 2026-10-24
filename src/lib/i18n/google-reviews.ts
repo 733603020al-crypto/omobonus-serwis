@@ -7,7 +7,7 @@ export interface GoogleReviewsDict {
   empty: string
 }
 
-export const googleReviewsI18n: Record<'pl' | 'uk' | 'ru', GoogleReviewsDict> = {
+export const googleReviewsI18n: Record<'pl' | 'uk' | 'ru' | 'en', GoogleReviewsDict> = {
   pl: {
     title: 'Opinie klientów z Google',
     link: 'Zobacz wszystkie opinie w Google →',
@@ -31,5 +31,13 @@ export const googleReviewsI18n: Record<'pl' | 'uk' | 'ru', GoogleReviewsDict> = 
     basedOnReviews: (count) => `На основе ${count} отзывов`,
     loading: 'Загрузка отзывов клиентов…',
     empty: 'Нет отзывов (API не вернул данные)',
+  },
+  en: {
+    title: 'Customer reviews on Google',
+    link: 'See all reviews on Google →',
+    ratingLabel: 'Google Rating',
+    basedOnReviews: (count) => `Based on ${count} reviews`,
+    loading: 'Loading customer reviews…',
+    empty: 'No reviews (the API returned no data)',
   },
 } as const

@@ -3,7 +3,8 @@
  "suffix": {
   "pl": " | Omobonus Wrocław",
   "uk": " | Omobonus Вроцлав",
-  "ru": " | Omobonus Вроцлав"
+  "ru": " | Omobonus Вроцлав",
+  "en": " | Omobonus Wrocław"
  },
  "approved": {
   "/": {
@@ -12,7 +13,7 @@
    "title": "Naprawa komputerów, laptopów i drukarek | Omobonus Wrocław",
    "stage": 1,
    "date": "2026-10-18",
-   "exception": "Главная: общий формат «Naprawa/Ремонт komputerów, laptopów i drukarek» — без шаблона «Serwis i naprawa»",
+   "exception": "Главная: общий формат без шаблона",
    "history": [
     {
      "title": "Naprawa Komputerów, Laptopów i Drukarek | Omobonus Wrocław",
@@ -30,7 +31,7 @@
    "title": "Ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Главная: общий формат «Naprawa/Ремонт komputerów, laptopów i drukarek» — без шаблона «Serwis i naprawa»",
+   "exception": "Главная: общий формат без шаблона",
    "history": [
     {
      "title": "Ремонт комп'ютерів, ноутбуків і принтерів | Omobonus Вроцлав",
@@ -44,7 +45,7 @@
    "title": "Ремонт компьютеров, ноутбуков и принтеров | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Главная: общий формат «Naprawa/Ремонт komputerów, laptopów i drukarek» — без шаблона «Serwis i naprawa»",
+   "exception": "Главная: общий формат без шаблона",
    "history": [
     {
      "title": "Ремонт компьютеров, ноутбуков и принтеров | Omobonus Вроцлав",
@@ -142,7 +143,7 @@
    "title": "Outsourcing IT i obsługa informatyczna | Omobonus Wrocław",
    "stage": 1,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аутсорсинг/обслуживание IT",
+   "exception": "Не ремонт: аутсорсинг IT",
    "history": [
     {
      "title": "Outsourcing IT | obsługa informatyczna | Omobonus Wrocław",
@@ -160,7 +161,7 @@
    "title": "Аутсорсинг IT та IT-обслуговування | Omobonus Вроцлав",
    "stage": 1,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аутсорсинг/обслуживание IT",
+   "exception": "Не ремонт: аутсорсинг IT",
    "history": [
     {
      "title": "Аутсорсинг IT | IT-обслуговування | Omobonus Вроцлав",
@@ -178,7 +179,7 @@
    "title": "IT-аутсорсинг и IT-обслуживание | Omobonus Вроцлав",
    "stage": 1,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аутсорсинг/обслуживание IT",
+   "exception": "Не ремонт: аутсорсинг IT",
    "history": [
     {
      "title": "IT-аутсорсинг | IT-обслуживание | Omobonus Вроцлав",
@@ -604,7 +605,7 @@
    "title": "Druk 3D na zamówienie | Omobonus Wrocław",
    "stage": 1,
    "date": "2026-10-18",
-   "exception": "Не ремонт: услуга печати на заказ",
+   "exception": "Не ремонт: печать на заказ",
    "history": [
     {
      "title": "Drukowanie 3D na zamówienie | Omobonus Wrocław",
@@ -622,7 +623,7 @@
    "title": "3D-друк на замовлення | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: услуга печати на заказ",
+   "exception": "Не ремонт: печать на заказ",
    "history": [
     {
      "title": "3D-друк на замовлення | Omobonus Вроцлав",
@@ -636,7 +637,7 @@
    "title": "3D-печать на заказ | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: услуга печати на заказ",
+   "exception": "Не ремонт: печать на заказ",
    "history": [
     {
      "title": "3D-печать на заказ | Omobonus Вроцлав",
@@ -830,7 +831,7 @@
    "title": "Wynajem (dzierżawa) drukarek i kserokopiarek | Omobonus Wrocław",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аренда; «(dzierżawa)» — пояснение термина",
+   "exception": "Не ремонт: аренда",
    "history": [
     {
      "title": "Wynajem (dzierżawa) drukarek i kserokopiarek | Omobonus Wrocław",
@@ -844,7 +845,7 @@
    "title": "Оренда принтерів і копіювальних апаратів | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аренда; «(dzierżawa)» — пояснение термина",
+   "exception": "Не ремонт: аренда",
    "history": [
     {
      "title": "Оренда принтерів і копіювальних апаратів | Omobonus Вроцлав",
@@ -858,7 +859,7 @@
    "title": "Аренда принтеров и копировальных аппаратов | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: аренда; «(dzierżawa)» — пояснение термина",
+   "exception": "Не ремонт: аренда",
    "history": [
     {
      "title": "Аренда принтеров и копировальных аппаратов | Omobonus Вроцлав",
@@ -872,7 +873,7 @@
    "title": "Drukarka zastępcza (na czas naprawy) | Omobonus Wrocław",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: подменный принтер; «(na czas naprawy)» — пояснение",
+   "exception": "Не ремонт: подменный принтер",
    "history": [
     {
      "title": "Drukarka zastępcza (na czas naprawy) | Omobonus Wrocław",
@@ -886,7 +887,7 @@
    "title": "Принтер на заміну (на час ремонту) | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: подменный принтер; «(na czas naprawy)» — пояснение",
+   "exception": "Не ремонт: подменный принтер",
    "history": [
     {
      "title": "Принтер на заміну (на час ремонту) | Omobonus Вроцлав",
@@ -900,7 +901,7 @@
    "title": "Принтер на замену (на время ремонта) | Omobonus Вроцлав",
    "stage": 2,
    "date": "2026-10-18",
-   "exception": "Не ремонт: подменный принтер; «(na czas naprawy)» — пояснение",
+   "exception": "Не ремонт: подменный принтер",
    "history": [
     {
      "title": "Принтер на замену (на время ремонта) | Omobonus Вроцлав",
@@ -932,7 +933,7 @@
    "title": "Ремонт джерел безперебійного живлення UPS | Omobonus Вроцлав",
    "stage": 3,
    "date": "2026-10-18",
-   "exception": "Формат «Ремонт …» вместо шаблона: «UPS» — пояснение термина, не повтор синонимов",
+   "exception": "«UPS» — пояснение термина",
    "history": [
     {
      "title": "Ремонт UPS і джерел безперебійного живлення | Omobonus Вроцлав",
@@ -950,7 +951,7 @@
    "title": "Ремонт источников бесперебойного питания UPS | Omobonus Вроцлав",
    "stage": 3,
    "date": "2026-10-18",
-   "exception": "Формат «Ремонт …» вместо шаблона: «UPS» — пояснение термина, не повтор синонимов",
+   "exception": "«UPS» — пояснение термина",
    "history": [
     {
      "title": "Ремонт UPS и источников бесперебойного питания | Omobonus Вроцлав",
@@ -1113,6 +1114,328 @@
     {
      "title": "Сервис и ремонт проекторов | Omobonus Вроцлав",
      "note": "утверждено, этап 2"
+    }
+   ]
+  },
+  "/en": {
+   "lang": "en",
+   "slug": "",
+   "title": "Computer, laptop and printer repair | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Главная: общий формат без шаблона",
+   "history": [
+    {
+     "title": "Computer, laptop and printer repair | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-laptopow": {
+   "lang": "en",
+   "slug": "serwis-laptopow",
+   "title": "Laptop repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Laptop repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-komputerow-stacjonarnych": {
+   "lang": "en",
+   "slug": "serwis-komputerow-stacjonarnych",
+   "title": "Desktop computer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Desktop computer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/outsourcing-it": {
+   "lang": "en",
+   "slug": "outsourcing-it",
+   "title": "IT outsourcing and IT support | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Не ремонт: аутсорсинг IT",
+   "history": [
+    {
+     "title": "IT outsourcing and IT support | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/naprawa-drukarek": {
+   "lang": "en",
+   "slug": "naprawa-drukarek",
+   "title": "Printer and copier repair | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Хаб раздела: типы техники",
+   "history": [
+    {
+     "title": "Printer and copier repair | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-laserowych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-laserowych",
+   "title": "Laser printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Laser printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-atramentowych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-atramentowych",
+   "title": "Inkjet printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Inkjet printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-plotterow": {
+   "lang": "en",
+   "slug": "serwis-plotterow",
+   "title": "Plotter repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Plotter repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-termicznych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-termicznych",
+   "title": "Label printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Label printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-iglowych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-iglowych",
+   "title": "Dot matrix printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Dot matrix printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-3d": {
+   "lang": "en",
+   "slug": "serwis-drukarek-3d",
+   "title": "3D printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "3D printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/druk-3d-na-zamowienie": {
+   "lang": "en",
+   "slug": "druk-3d-na-zamowienie",
+   "title": "Custom 3D printing service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Не ремонт: печать на заказ",
+   "history": [
+    {
+     "title": "Custom 3D printing service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-niszczarek": {
+   "lang": "en",
+   "slug": "serwis-niszczarek",
+   "title": "Paper shredder repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Paper shredder repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/naprawa-zasilaczy-ups": {
+   "lang": "en",
+   "slug": "naprawa-zasilaczy-ups",
+   "title": "UPS repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "UPS repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/naprawa-projektorow": {
+   "lang": "en",
+   "slug": "naprawa-projektorow",
+   "title": "Projector repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Projector repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-do-kart-plastikowych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-do-kart-plastikowych",
+   "title": "Plastic card printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Plastic card printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-dtg": {
+   "lang": "en",
+   "slug": "serwis-drukarek-dtg",
+   "title": "DTG printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "DTG printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-dtf": {
+   "lang": "en",
+   "slug": "serwis-drukarek-dtf",
+   "title": "DTF printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "DTF printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-sublimacyjnych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-sublimacyjnych",
+   "title": "Sublimation printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Sublimation printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-drukarek-spozywczych": {
+   "lang": "en",
+   "slug": "serwis-drukarek-spozywczych",
+   "title": "Edible printer repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Edible printer repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/serwis-ekspresow-do-kawy": {
+   "lang": "en",
+   "slug": "serwis-ekspresow-do-kawy",
+   "title": "Coffee machine repair and service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": null,
+   "history": [
+    {
+     "title": "Coffee machine repair and service | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/wynajem-drukarek": {
+   "lang": "en",
+   "slug": "wynajem-drukarek",
+   "title": "Printer and copier rental | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Не ремонт: аренда",
+   "history": [
+    {
+     "title": "Printer and copier rental | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
+    }
+   ]
+  },
+  "/en/uslugi/drukarka-zastepcza": {
+   "lang": "en",
+   "slug": "drukarka-zastepcza",
+   "title": "Replacement printer (during repair) | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-24",
+   "exception": "Не ремонт: подменный принтер",
+   "history": [
+    {
+     "title": "Replacement printer (during repair) | Omobonus Wrocław",
+     "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
     }
    ]
   }

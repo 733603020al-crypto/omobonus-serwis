@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { hasTrackingConsent as hasConsent } from '@/lib/tracking-consent'
 
 declare global {
     interface Window {
@@ -26,13 +27,6 @@ const QUIET_MS = 1500
 const MAX_QUIET_WAIT_MS = 15000
 const ACTIVITY_EVENTS = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'wheel'] as const
 
-// CookieYes stores the choice as "...,analytics:yes,advertisement:yes,..." in this cookie.
-const hasConsent = () => {
-    const match = document.cookie.match(/(?:^|;\s*)cookieyes-consent=([^;]*)/)
-    const value = match ? decodeURIComponent(match[1]) : ''
-    return /analytics:yes|advertisement:yes/.test(value)
-}
-
 export function DeferredGtm({ gtmId }: { gtmId: string }) {
     useEffect(() => {
         let loaded = false
@@ -40,8 +34,10 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
         let timer: ReturnType<typeof setTimeout> | undefined
         let idle: number | undefined
 
+        // Basic consent mode: without consent for analytics or advertising
+        // GTM is never loaded, so Google and Clarity receive nothing.
         const load = () => {
-            if (loaded) return
+            if (loaded || !hasConsent()) return
             loaded = true
             cleanup()
 
@@ -72,6 +68,14 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
         }
 
         const onSubmit = () => load()
+        // The visitor has just accepted in the banner — load right away (after
+        // CookieYes has stored the choice and sent the consent update).
+        const onConsent = (e: Event) => {
+            const accepted = (e as CustomEvent<{ accepted?: unknown }>).detail?.accepted
+            if (Array.isArray(accepted) && (accepted.includes('analytics') || accepted.includes('advertisement'))) {
+                setTimeout(load, 0)
+            }
+        }
         const onActivity = () => {
             lastActivity = performance.now()
         }
@@ -97,6 +101,7 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
             document.removeEventListener('click', onClick)
             document.removeEventListener('submit', onSubmit)
             document.removeEventListener('visibilitychange', onHidden)
+            document.removeEventListener('cookieyes_consent_update', onConsent)
             ACTIVITY_EVENTS.forEach(type => window.removeEventListener(type, onActivity, { capture: true }))
             clearTimeout(timer)
             if (idle !== undefined) window.cancelIdleCallback?.(idle)
@@ -105,6 +110,7 @@ export function DeferredGtm({ gtmId }: { gtmId: string }) {
         document.addEventListener('click', onClick, { passive: true })
         document.addEventListener('submit', onSubmit, { passive: true })
         document.addEventListener('visibilitychange', onHidden)
+        document.addEventListener('cookieyes_consent_update', onConsent)
         ACTIVITY_EVENTS.forEach(type => window.addEventListener(type, onActivity, { capture: true, passive: true }))
         timer = setTimeout(() => waitForQuiet(performance.now() + MAX_QUIET_WAIT_MS), FALLBACK_DELAY_MS)
 

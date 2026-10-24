@@ -13,7 +13,7 @@ import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 // md+ (≥768): map and paper side by side with a fixed height, the same before and after the calculation;
 // below md — map above the paper, height by content.
 
-export type Lang = 'pl' | 'uk' | 'ru'
+export type Lang = 'pl' | 'uk' | 'ru' | 'en'
 export type KosztDojazduProps = {
   serwisAdres: string
   klientAdres: string
@@ -164,6 +164,16 @@ const T = {
     laczny: 'Общая стоимость забора или доставки', netto: 'нетто',
     foot1: '*Стоимость считаем для маршрута в обе стороны, так как при заборе или доставке сервисант должен доехать до Клиента и вернуться в сервис.',
     foot2: '**Касается большинства устройств до 30 кг, которые перевезёт один курьер; цена — в прайсе услуги, более тяжёлые — индивидуальная оценка.',
+  },
+  en: {
+    title: 'Travel cost', naglowek: 'Device pickup (or delivery) cost',
+    serwis: 'Service', klient: 'Customer', km: 'km', min: 'min', close: 'Close',
+    odleglosc: 'One-way distance', trasa: 'Total round trip', zasady: 'How it is charged',
+    podstawowa: 'Base fee', podstawowaNote: (pol: string, lim: string) => `(up to ${pol} from the service; ${lim} round trip in total)`,
+    trasaNote: '(according to Google Maps)', powyzej: (lim: string) => `Kilometres above ${lim}`, doplata: 'Mileage surcharge',
+    laczny: 'Total pickup or delivery cost', netto: 'net',
+    foot1: '*The cost is calculated for the round trip, because for a pickup or delivery the technician has to drive to the customer and back to the service.',
+    foot2: '**Applies to most devices up to 30 kg that one courier can carry; the price is in the service price list, heavier ones are quoted individually.',
   },
 }
 export const kosztDojazduTitle = (lang: Lang) => T[lang].title

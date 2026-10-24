@@ -11,7 +11,7 @@ export async function GET(req: Request) {
   if (process.env.NODE_ENV === 'production') notFound()
   const sp = new URL(req.url).searchParams
   const adres = (sp.get('adres') ?? '').trim()
-  const lang = sp.get('lang') === 'uk' || sp.get('lang') === 'ru' ? (sp.get('lang') as 'uk' | 'ru') : 'pl'
+  const lang = sp.get('lang') === 'uk' || sp.get('lang') === 'ru' || sp.get('lang') === 'en' ? (sp.get('lang') as 'uk' | 'ru' | 'en') : 'pl'
   if (adres.length < 3) return Response.json({ error: 'bad_request' }, { status: 400 })
   try {
     const w = await obliczTrase({ adres }, lang)

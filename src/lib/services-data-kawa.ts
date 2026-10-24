@@ -5,7 +5,7 @@ import { kawaRepairSubcategories } from './services-data-kawa-repairs'
 // serwis-ekspresow-do-kawy — własne dane strony (PL = źródło prawdy dla UK/RU).
 // Wszystkie ikony (sekcje i grupy Naprawy) — właściwe zdjęcia od właściciela.
 export const KAWA_PRICE_TOOLTIP =
-  'Ceny netto za robociznę, bez części i atramentu. Przy pełnej konserwacji standardowe płyny czyszczące i drobne materiały serwisowe są wliczone w cenę. Czas realizacji nie obejmuje oczekiwania na części.'
+  'Ceny netto za robociznę, bez części. Przy pełnej konserwacji standardowe płyny czyszczące i drobne materiały serwisowe są wliczone w cenę. Czas realizacji nie obejmuje oczekiwania na części.'
 
 const applyKawaCleaningSection = (sections: PricingSection[]) => {
   const cleaningSection = sections.find(section => section.id === 'konserwacja')
@@ -14,8 +14,7 @@ const applyKawaCleaningSection = (sections: PricingSection[]) => {
     {
       service:
         'CZYSZCZENIE I KONSERWACJA\u2028Czyszczenie, konserwacja i wymiana standardowych uszczelek\n• odkamienianie układu wodnego;\n• czyszczenie układu kawowego;\n• czyszczenie i konserwacja zaparzacza;\n• czyszczenie młynka, regulacja w razie potrzeby;\n• czyszczenie układu mlecznego;\n• czyszczenie wylewek, dysz i odpływów;\n• czyszczenie wnętrza ekspresu;\n• kontrola uszczelek, zaworów i szczelności;\n• smarowanie mechanizmów i wymiana standardowych uszczelek oraz O-ringów;\n• kontrola parametrów parzenia i test działania.\nZakres prac zależy od konstrukcji urządzenia.',
-      price: '250 / 350 / 550',
-    },
+          },
   ]
   cleaningSection.notes = [
     'W cenie: profesjonalne środki czyszczące i odkamieniające, smary dopuszczone do kontaktu z żywnością, standardowe uszczelki i O-ringi oraz drobne materiały serwisowe.',

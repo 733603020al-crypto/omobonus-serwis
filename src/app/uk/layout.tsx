@@ -89,6 +89,7 @@ export const metadata: Metadata = {
       'pl': 'https://serwis.omobonus.com.pl',
       'uk': 'https://serwis.omobonus.com.pl/uk',
       'ru': 'https://serwis.omobonus.com.pl/ru',
+      'en': 'https://serwis.omobonus.com.pl/en',
       'x-default': 'https://serwis.omobonus.com.pl',
     },
   },
@@ -139,11 +140,26 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('consent', 'default', {
               ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
               analytics_storage: 'denied',
               personalization_storage: 'denied',
               functionality_storage: 'denied',
               security_storage: 'granted'
             });
+            (function(){
+              var m = document.cookie.match(/(?:^|; *)cookieyes-consent=([^;]*)/);
+              if (!m) return;
+              var v = decodeURIComponent(m[1]);
+              var s = function(k){ return new RegExp('(?:^|,)' + k + ':yes').test(v) ? 'granted' : 'denied'; };
+              var ad = s('advertisement'), fn = s('functional');
+              gtag('consent', 'update', {
+                ad_storage: ad, ad_user_data: ad, ad_personalization: ad,
+                analytics_storage: s('analytics'),
+                functionality_storage: fn, personalization_storage: fn,
+                security_storage: 'granted'
+              });
+            })();
           `}
         </Script>
 
@@ -163,15 +179,6 @@ export default function UkRootLayout({ children }: { children: ReactNode }) {
         <GoldAnimationPause />
         <ConsentManager />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
-
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5XQXX5KL"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
 
         {children}
 

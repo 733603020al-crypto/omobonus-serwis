@@ -101,7 +101,7 @@ for (const file of walk(root)) {
   const raw = fs.readFileSync(file, 'utf8')
   const html = stripCssCopy(raw)
   // The CSS copy is dropped on every page; the deferred loader stays in scope.
-  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|(kontakt|o-nas|polityka-prywatnosci|regulamin)\.html$)|^(index|uk|ru)\.html$/.test(rel)
+  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|(kontakt|o-nas|polityka-prywatnosci|regulamin)\.html$)|^(index|uk|ru|en)\.html$/.test(rel)
   if (!inScope || html.includes('data-deferred-hydration')) {
     if (html !== raw) { fs.writeFileSync(file, html); changed++ }
     continue

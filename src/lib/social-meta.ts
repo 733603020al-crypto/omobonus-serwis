@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 
-type SocialLocale = 'pl' | 'uk' | 'ru'
+type SocialLocale = 'pl' | 'uk' | 'ru' | 'en'
 
 // Значения совпадают с openGraph/twitter в layout соответствующей локали.
 const SOCIAL_BY_LOCALE: Record<SocialLocale, { ogLocale: string; imageAlt: string }> = {
   pl: { ogLocale: 'pl_PL', imageAlt: 'Omobonus - serwis komputerów, laptopów i drukarek Wrocław' },
   uk: { ogLocale: 'uk_UA', imageAlt: "Omobonus - сервіс комп'ютерів і принтерів Вроцлав" },
   ru: { ogLocale: 'ru_RU', imageAlt: 'Omobonus - сервис компьютеров и принтеров Вроцлав' },
+  en: { ogLocale: 'en_GB', imageAlt: 'Omobonus - computer, laptop and printer repair Wrocław' },
 }
 
 const SHARE_IMAGE = '/images/omobonus-hero.webp'
