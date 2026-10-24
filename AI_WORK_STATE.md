@@ -339,6 +339,11 @@
 ---
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
+### ЭТАП 190 (2026-10-24) — Workspace: облако, вход по паролю, Description 100 страниц, уборка
+- Облачная панель https://733603020al-crypto.github.io/omobonus-panel/ = сборка новой панели (omobonus-workspace, ветка claude/great-johnson-08s3eb; omobonus-panel main 94cd034). Вход: ключ GitHub один раз на устройстве, хранится в браузере зашифрованным паролем; проверено пользователем настоящим ключом. Прежняя облачная панель — /old/ (не удалять без согласования).
+- Проверка Description включает /o-nas и /kontakt PL/UK/RU/EN (test 4859a43): 100 страниц, все совпадают с утверждёнными. Отложено пользователем: концовка/длина Description O nas/Kontakt не по стандарту — тексты не менять.
+- Уборка: удалены старый сервер панели :4100 (scripts/seo-audit/serve.mjs) и его модули scripts/deferred-tasks/, scripts/workspace/ (рабочие копии — omobonus-workspace/app/server). Оставлены build-panel.mjs и panel-template.html (на них держатся проверки, подсчёт «требуют решения», Workspace и publish-seo). Ссылки на :4100 в стандартах и проверках → Workspace :5180.
+- Правила: подход к разработке Workspace и формат «один отчёт одним блоком» — в CLAUDE.md (test 5d3c511, 857ebe5).
 ### ЭТАП 189 (2026-10-24) — Omobonus Workspace отделён от старой панели :4100
 - Новая панель — код в папке app приватного omobonus-workspace (C:/Users/Andrii/omobonus-workspace/app, commit 7cf2adb, push), http://localhost:5180 (задачи /tasks, SEO /seo), запуск без окна — start-workspace.vbs (автозапуск — ярлык в shell:startup, ставит пользователь). Задачи — свой модуль server/tasks (CLI server/tasks/cli.mjs), решения SEO — omobonus-workspace/seo/decisions.json (commit 3bdb44f, push), свежие SEO-проверки панель сама переносит в omobonus-workspace/seo/panel-data.json. CLAUDE.md переведён на новые адреса.
 - Старая панель не удалена. Можно удалить: scripts/seo-audit/serve.mjs, scripts/deferred-tasks/, scripts/workspace/. Оставить: build-panel.mjs и panel-template.html (их используют сами проверки, облако и publish-seo). Ссылки на :4100 остались в docs/seo/title-standard.md, description-standard.md, docs/nowy-jezyk-standard.md.

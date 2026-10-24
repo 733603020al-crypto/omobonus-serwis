@@ -1,4 +1,4 @@
-// Проверка meta description и сборка вкладки Description SEO-панели (localhost:4100).
+// Проверка meta description и сборка вкладки Description SEO-панели (Omobonus Workspace, localhost:5180/seo?tab=description).
 // Правила: docs/seo/description-standard.md · решения: docs/seo/description-decisions.json · история: docs/seo/audit-history.json
 //
 //   node scripts/seo-audit/description-audit.mjs        — проверить, записать в историю, собрать панель

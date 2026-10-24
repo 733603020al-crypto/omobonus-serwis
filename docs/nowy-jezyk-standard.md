@@ -52,7 +52,7 @@
 - Title: шаблон как у EN — «[Устройство] repair and service | Omobonus Wrocław» в переводе; суффикс `| Omobonus Wrocław` добавляется сам.
 - Description: структура PL — `✔ … ✔ … ✔ <полный прайс, без скрытых платежей> ☎ 793 759 262`, сохранить ✔ и ☎, ≤160 знаков.
 - Исключения шаблона — те же страницы, что у EN (главная, outsourcing, хаб принтеров, druk 3D, аренда, подменный).
-- Все Title и Description нового языка утверждает **пользователь в панели** (`http://localhost:4100`), Claude только предлагает. Meta, og:description и twitter:description — отдельные тексты.
+- Все Title и Description нового языка утверждает **пользователь в панели** (Omobonus Workspace, `http://localhost:5180/seo`), Claude только предлагает. Meta, og:description и twitter:description — отдельные тексты.
 - До утверждения — без индексации; sitemap и hreflang на XX включать только после утверждения.
 
 ## 5. Проверки перед коммитом

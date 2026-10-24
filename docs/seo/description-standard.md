@@ -10,7 +10,7 @@
 | История проверок | `docs/seo/audit-history.json` (`tabs.description`) |
 | Проверка и сборка вкладки | `scripts/seo-audit/description-audit.mjs` |
 | Автоматические проверки и вид панели | `scripts/seo-audit/panel-template.html` (лист Description) |
-| Сервер панели | `scripts/seo-audit/serve.mjs` → `http://localhost:4100/#description` |
+| Панель | Omobonus Workspace → `http://localhost:5180/seo?tab=description` |
 
 Где Description задаются на сайте:
 - услуги — `src/lib/services-meta-{pl,uk,ru}.tsx` (`seoMetadata`);
