@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'Stop'
-$root = Get-Location
+$root = $PSScriptRoot # файлы исследования лежат рядом со скриптом
 $html = Get-Content -Raw -Encoding UTF8 (Join-Path $root 'research-coffee-market.html')
 function X([string]$s) { if ($null -eq $s) { return '' }; return [System.Security.SecurityElement]::Escape($s) }
 function Cell([string]$s) { return "<Cell><Data ss:Type='String'>$(X $s)</Data></Cell>" }
