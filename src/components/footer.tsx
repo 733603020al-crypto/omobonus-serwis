@@ -23,6 +23,8 @@ export interface FooterT {
   allRights: string
   privacyHref: string
   regulaminHref: string
+  /** Language of the Google map in the footer (hl), pl by default. */
+  mapLang?: string
   /** Opens the CookieYes preferences panel (change / withdraw consent). */
   cookieSettings?: string
 }
@@ -241,7 +243,7 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
             <div ref={mapContainerRef} className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border border-[#3a2e24]">
               {mapLoaded && (
                 <iframe
-                  src="https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=pl&z=11&output=embed"
+                  src={`https://www.google.com/maps?q=Marcina+Bukowskiego+174,+52-418+Wrocław&hl=${d.mapLang ?? 'pl'}&z=11&output=embed`}
                   width="100%"
                   height="100%"
                   style={{

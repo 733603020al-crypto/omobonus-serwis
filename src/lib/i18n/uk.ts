@@ -161,6 +161,7 @@
     allRights: 'Усі права захищені.',
     privacyHref: '/uk/polityka-prywatnosci',
     regulaminHref: '/uk/regulamin',
+    mapLang: 'uk',
     cookieSettings: 'Налаштування cookies',
   },
   successModal: {

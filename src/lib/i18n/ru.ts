@@ -94,6 +94,7 @@ export const ru = {
     allRights: 'Все права защищены.',
     privacyHref: '/ru/polityka-prywatnosci',
     regulaminHref: '/ru/regulamin',
+    mapLang: 'ru',
     cookieSettings: 'Настройки cookies',
   },
   homeCta: {
