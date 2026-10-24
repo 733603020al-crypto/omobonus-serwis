@@ -5,7 +5,7 @@ import { ru } from '@/lib/i18n/ru'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('ru', {
-  title: 'Политика конфиденциальности | Omobonus Serwis',
+  title: 'Политика конфиденциальности',
   description: 'Политика конфиденциальности сервиса Omobonus Вроцлав. Принципы обработки персональных данных, защита GDPR.',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru/polityka-prywatnosci',

@@ -5,7 +5,7 @@ description: Стандарт ответов клиентам из почты se
 
 # Ответы клиентам — serwis@omobonus.com.pl
 
-СТАТУС: стандарт согласован (2026-10-21). Решено: цены только со страницы услуги, всё netto, подпись Maksym, скрытая копия (BCC/UDW) zaemka222@gmail.com — копия сисадмину, естественный польский без канцелярита, без эмодзи.
+СТАТУС: стандарт согласован (2026-10-21). Решено: цены только со страницы услуги, всё netto, подпись Maksym Suprunenko (имя и фамилия), скрытая копия (BCC/UDW) zaemka222@gmail.com — копия сисадмину, естественный польский без канцелярита, без эмодзи.
 
 ## 1. Порядок работы
 
@@ -26,7 +26,7 @@ description: Стандарт ответов клиентам из почты se
 - Пунктуация приветствия: после `Dzień dobry` перед `Pan/Pani` — запятая; после имени — тоже запятая. Без имени — `Dzień dobry,`.
 - Никогда: `Witam`, `Szanowna Pani Kowalska` (фамилия после титула), обращение не того рода.
 - `Pan/Pani` — когда адресат известен; `Państwo` — когда это естественно по контексту (организация, несколько человек, общее «у Państwa w firmie»). Искусственных запретов нет, главное — чтобы письмо читалось естественно.
-- «Мы» — от имени сервиса (`naprawiamy`, `odbierzemy`); «я» — когда Maksym лично объясняет или предлагает (`chętnie wyjaśnię`, `policzę koszt`).
+- «Мы» — от имени сервиса (`naprawiamy`, `odbierzemy`); «я» — когда Maksym Suprunenko лично объясняет или предлагает (`chętnie wyjaśnię`, `policzę koszt`).
 - Первая строка после приветствия — с маленькой буквы, если приветствие кончается запятой.
 
 ## 3. Структура ответа
@@ -59,7 +59,7 @@ description: Стандарт ответов клиентам из почты se
 - **Выгода для клиента** — только вместе с условием и только если оно есть на странице этой услуги: `**diagnoza jest bezpłatna, jeśli zdecydują się Państwo na naprawę**`.
 - **Итог расчёта дороги** отдельной строкой: `**Łącznie: 55 zł netto za odbiór drukarki.**`
 - **Принцип согласия**: `Oczywiście **nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Państwa zgody**.`
-- **Имя в подписи**: `**Maksym**`.
+- **Имя в подписи**: `**Maksym Suprunenko**` — всегда имя и фамилия, не только имя.
 
 Не выделять: приветствие, благодарность, пояснения, формулу расчёта, адрес и часы в подписи. В HTML черновика — тег `<b>`.
 
@@ -110,7 +110,7 @@ Przy okazji chciałbym przeprosić: po naprawie **zapomnieliśmy nakleić na dru
 **Oczywiście, proszę śmiało zapisać nasz kontakt.** Chętnie pomożemy także w przyszłości — serwisujemy m.in. drukarki i kserokopiarki, laptopy i komputery, plotery, niszczarki, zasilacze UPS i projektory, a nawet ekspresy do kawy. Wystarczy napisać lub zadzwonić.
 
 Pozdrawiam serdecznie
-**Maksym**
+**Maksym Suprunenko**
 [stała stopka]
 ```
 Абзац с извинением — только если такое упущение реально было (подтвердил пользователь).
@@ -158,7 +158,7 @@ Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystk
 Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
 
 Pozdrawiam serdecznie
-**Maksym**
+**Maksym Suprunenko**
 [stała stopka]
 ```
 Если клиент уже описал неисправность — абзац с просьбой об описании убрать. Если он женщина/фирма — поменять формы (Pani / Państwo).
@@ -235,7 +235,7 @@ e-mail: serwis@omobonus.com.pl
 
 ```
 Pozdrawiam serdecznie
-Maksym
+Maksym Suprunenko
 Omobonus Sp. z o.o.
 Marcina Bukowskiego 174, 52-418 Wrocław
 tel. +48 793 759 262
@@ -245,7 +245,7 @@ Pracujemy: poniedziałek–piątek, 8:00–18:00
 Kontakt z serwisem: poniedziałek–sobota, 7:00–21:00
 W niedzielę jesteśmy nieczynni.
 ```
-После `Pozdrawiam serdecznie` запятую не ставить, `Maksym` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт и e-mail в HTML делать активными (e-mail — `<a href="mailto:serwis@omobonus.com.pl">serwis@omobonus.com.pl</a>`, везде в письме, в т.ч. в адресе пакомата). Три последние строки (часы работы, контакт, воскресенье) — курсивом и чуть мельче: в HTML `<span style="font-size:9pt;font-style:italic">…</span>` (основной текст 11pt). Не использовать варианты «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
+После `Pozdrawiam serdecznie` запятую не ставить, `Maksym Suprunenko` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт и e-mail в HTML делать активными (e-mail — `<a href="mailto:serwis@omobonus.com.pl">serwis@omobonus.com.pl</a>`, везде в письме, в т.ч. в адресе пакомата). Три последние строки (часы работы, контакт, воскресенье) — курсивом и чуть мельче: в HTML `<span style="font-size:9pt;font-style:italic">…</span>` (основной текст 11pt). Не использовать варианты «Maksym» без фамилии, «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
 
 Подпись — на языке письма: та же структура и те же данные, переведены только прощание и подписи строк (например, по-украински `З повагою` / `Працюємо: понеділок–п'ятниця, 8:00–18:00`, по-немецки `Mit freundlichen Grüßen` / `Arbeitszeiten: Montag–Freitag, 8:00–18:00`). Имя, название фирмы, адрес, телефон, e-mail и ссылка не меняются.
 

@@ -7,8 +7,8 @@ import * as z from 'zod'
 import { Loader2, X } from 'lucide-react'
 import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
-import { CustomCheckbox } from '@/components/ui/custom-checkbox'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { lora } from './contact-font'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
@@ -33,7 +33,8 @@ const pushFormSubmitToDataLayer = (
   formId: DataLayerFormId,
   phoneNumber: string
 ): void => {
-  if (typeof window === 'undefined') return
+  // Without cookie consent the event is not queued, so it is never sent later.
+  if (typeof window === 'undefined' || !hasTrackingConsent()) return
 
   window.dataLayer = window.dataLayer || []
 
@@ -109,19 +110,19 @@ const PL: ContactT = {
   attachLabel: 'Załącz zdjęcia / filmy / pliki',
   attachAdd: 'Dodaj',
   attachHint: '(zdjęcia, filmy, dokumenty — łącznie maks. 4 MB)',
-  agreementConfirm: 'Potwierdzam, że zapoznałem/am się z',
-  privacyLink: 'Polityką Prywatności',
+  agreementConfirm: 'Wysyłając zgłoszenie, przekazujesz nam dane potrzebne do odpowiedzi. Administratorem danych jest Omobonus Sp. z o.o., szczegóły w',
+  privacyLink: 'Polityce prywatności',
   privacyHref: '/polityka-prywatnosci',
-  termsLink: 'Regulaminem',
+  termsLink: 'Regulamin',
   termsHref: '/regulamin',
-  agreementEnd: 'i akceptuję ich postanowienia.',
+  agreementEnd: '.',
   submitButton: 'Wyślij zgłoszenie',
   submitButtonSeal: 'Wyślij',
   submitting: 'Wysyłanie...',
   phoneError: 'Numer telefonu jest za krótki',
   emailError: 'Nieprawidłowy adres e-mail',
   agreementError: 'Musisz zaakceptować regulamin',
-  agreementConnector: 'oraz',
+  agreementConnector: '. Warunki usług opisuje',
   fileTypeError: 'Możesz przesłać tylko zdjęcia lub wideo.',
   fileSizeError: max => `Wybrane pliki nie zostały dodane: łączny rozmiar załączników przekroczyłby ${max} MB.`,
   errorMissingConfig: 'Błąd konfiguracji serwera. Skontaktuj się z administratorem.',
@@ -138,14 +139,13 @@ const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
   ru: ru.contactForm,
 }
 
-function buildFormSchema(phoneError: string, emailError: string, agreementError: string) {
+function buildFormSchema(phoneError: string, emailError: string) {
   return z.object({
     name: z.string().optional(),
     phone: z.string().min(9, { message: phoneError }),
     email: z.union([z.literal(''), z.string().email({ message: emailError })]).optional(),
     address: z.string().optional(),
     problemDescription: z.string().optional(),
-    agreements: z.literal(true, { message: agreementError }),
   })
 }
 
@@ -157,7 +157,6 @@ const defaultFormValues: Partial<FormValues> = {
   email: '',
   address: '',
   problemDescription: '',
-  agreements: undefined,
 }
 
 
@@ -193,8 +192,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   const resolvedLocale: Locale = locale ?? 'pl'
   const d = t ?? CONTACT_DEFAULTS[resolvedLocale]
   const formSchema = useMemo(
-    () => buildFormSchema(d.phoneError, d.emailError, d.agreementError),
-    [d.phoneError, d.emailError, d.agreementError]
+    () => buildFormSchema(d.phoneError, d.emailError),
+    [d.phoneError, d.emailError]
   )
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -672,44 +671,21 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               {attachmentError && <p className="text-red-600 text-sm">{attachmentError}</p>}
             </div>
 
-            {/* Checkboxy */}
-            <div className="space-y-3 pt-1">
-
-              <div className="space-y-1" data-field-name="agreements">
-                <Controller
-                  name="agreements"
-                  control={control}
-                  render={({ field }) => (
-                    <CustomCheckbox
-                      id="agreements"
-                      name="agreements"
-                      checked={field.value || false}
-                      onChange={(e) => field.onChange(e.target.checked)}
-                      aria-invalid={!!errors.agreements}
-                      aria-describedby={errors.agreements ? 'contact-agreements-error' : undefined}
-                      label={
-                        <>
-                          {d.agreementConfirm}{' '}
-                          <Link href={d.privacyHref} className="underline hover:text-black/70">
-                            {d.privacyLink}
-                          </Link>{' '}
-                          {d.agreementConnector}{' '}
-                          <Link href={d.termsHref} className="underline hover:text-black/70">
-                            {d.termsLink}
-                          </Link>{' '}
-                          {d.agreementEnd}
-                        </>
-                      }
-                    />
-                  )}
-                />
-                {errors.agreements && (
-                  <p id="contact-agreements-error" className="text-red-600 text-sm ml-8 shake-error">
-                    {errors.agreements.message}
-                  </p>
-                )}
-
-              </div>
+            {/* Informacja RODO (art. 13) zamiast checkboxa: podstawą przetwarzania jest
+                odpowiedź na zgłoszenie, nie zgoda — checkbox „akceptuję” tworzyłby
+                pozorną zgodę. */}
+            <div className="pt-1">
+              <p className="text-[#2f2418] font-lora font-normal text-[14px] md:text-[15px] leading-[1.45]">
+                {d.agreementConfirm}{' '}
+                <Link href={d.privacyHref} className="underline hover:text-black/70">
+                  {d.privacyLink}
+                </Link>
+                {d.agreementConnector}{' '}
+                <Link href={d.termsHref} className="underline hover:text-black/70">
+                  {d.termsLink}
+                </Link>
+                {d.agreementEnd}
+              </p>
             </div>
 
             {/* Przycisk Submit — pieczęć woskowa wspólna dla PL/UK/RU (grafika bez wypalonego
