@@ -2,7 +2,7 @@ import type { LegalDoc } from './legal-render'
 
 // PL is the source of truth for all language versions of the legal pages.
 // Date of entry into force / last update of both documents (set on publication).
-export const LEGAL_DATE = '2026-10-23'
+export const LEGAL_DATE = '2026-10-24'
 
 export const regulaminPl: LegalDoc = {
   intro: '“Chcesz zapoznać się z naszym Regulaminem? Przeczytaj poniżej.”',
@@ -265,7 +265,7 @@ export const regulaminPl: LegalDoc = {
         'Możemy zmienić Regulamin z ważnych przyczyn, w szczególności przy zmianie przepisów, zakresu usług lub sposobu ich świadczenia. Nową wersję publikujemy na stronie z podaniem daty wejścia w życie.',
         'Do zleceń przyjętych przed zmianą stosuje się Regulamin w brzmieniu obowiązującym w dniu ich przyjęcia. Zmiany w umowach zawartych na czas dłuższy (np. wynajem, outsourcing IT) następują na zasadach tych umów.',
         'Regulamin sporządzono w języku polskim. Wersje w innych językach są tłumaczeniami pomocniczymi; w razie rozbieżności rozstrzyga wersja polska.',
-        'Regulamin obowiązuje od dnia 23 października 2026 r.',
+        'Regulamin obowiązuje od dnia 24 października 2026 r.',
         'Załącznik nr 1 — wzór formularza odstąpienia od umowy (poniżej).',
       ] }],
     },
