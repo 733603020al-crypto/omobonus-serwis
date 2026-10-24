@@ -19,6 +19,10 @@ Translations must stay faithful to PL meaning, tone, and structure — even for 
 
 Changing the URL/slug/canonical/hreflang/sitemap/robots.txt mechanism itself always requires stopping and asking first (this is already a global stop-condition in the root `CLAUDE.md` — restated here only because it applies directly to files in this path scope).
 
+## Новый язык сайта — полная инструкция
+
+Добавление нового языка (DE и др.) — строго по `docs/nowy-jezyk-standard.md` (шаги, список мест, что забыли на EN, проверки, публикация). Ниже — отдельно про карты.
+
 ## Новый язык сайта — карты Google (не забыть)
 
 Обе карты показываются на языке страницы — при добавлении языка XX:
