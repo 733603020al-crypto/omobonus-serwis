@@ -18,6 +18,7 @@
 // Подробнее об архитектуре — см. AGENTS.md, раздел "Цены/сроки услуг: единый
 // источник для 3 языков".
 
+import fs from 'fs'
 import { services, type PricingSection, type PricingSubcategory } from '@/lib/services-data'
 import { servicesRu } from '@/lib/services-data-ru'
 import { servicesUk } from '@/lib/services-data-uk'
@@ -205,6 +206,24 @@ for (const { locale, list, file } of langSets) {
         getDisplayDuration(service.slug, path, locale)
       }
     })
+  }
+}
+
+// --- Карты Google на языке сайта ----------------------------------------
+// Каждый язык (папка src/app/XX) должен иметь mapLang в i18n (карта в подвале)
+// и свою картинку карты для окна «Koszt dojazdu». Сделать её:
+// node scripts/maps/mapa-koszt-dojazdu.mjs XX
+{
+
+  const locales = fs.readdirSync('src/app', { withFileTypes: true })
+    .filter(d => d.isDirectory() && /^[a-z]{2}$/.test(d.name)).map(d => d.name)
+  for (const l of ['pl', ...locales]) {
+    if (!fs.existsSync(`public/images/koszt-dojazdu/mapa-${l}.webp`))
+      report('mapa', `public/images/koszt-dojazdu/mapa-${l}.webp`, `нет картинки карты для языка ${l} — node scripts/maps/mapa-koszt-dojazdu.mjs ${l}`)
+    if (l === 'pl') continue
+    const i18n = `src/lib/i18n/${l}.ts`
+    if (!fs.existsSync(i18n) || !fs.readFileSync(i18n, 'utf8').includes(`mapLang: '${l}'`))
+      report('mapa', i18n, `нет mapLang: '${l}' в footer — карта в подвале будет польской`)
   }
 }
 
