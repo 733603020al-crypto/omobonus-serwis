@@ -68,9 +68,9 @@ export const servicesRu: ServiceData[] = [
   {
     slug: 'naprawa-drukarek',
     title: 'Ремонт принтеров и копировальных аппаратов',
-    subtitle: 'Ремонт специализированных матричных принтеров',
+    subtitle: 'Сервис и ремонт принтеров и копировальных аппаратов',
     icon: manifest['07_serwis_drukarek_iglowych'],
-    description: 'Ремонт специализированных матричных принтеров.',
+    description: 'Сервис и ремонт принтеров и копировальных аппаратов.',
     // Hub: category tabs instead of a price list, plus one FAQ card (also feeds FAQPage JSON-LD).
     pricingSections: [printerHubFaqRu()],
   },

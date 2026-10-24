@@ -74,10 +74,10 @@ export const serviceHeroLabels: Record<string, string[]> = {
         'Olejenie i konserwacja',
     ],
     'naprawa-zasilaczy-ups': [
-        'Zacina papier',
-        'Blady wydruk',
-        'Brudzi kartki',
-        'Wymiana tonera',
+        'Nie włącza się',
+        'Piszczy (alarm)',
+        'Krótko działa na baterii',
+        'Wymiana akumulatora',
     ],
     'naprawa-projektorow': [
         'Nie włącza się',

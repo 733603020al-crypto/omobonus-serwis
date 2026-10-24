@@ -1,6 +1,7 @@
 import type { PricingSection } from './services-data-types'
 import { createNiszczarkiPricingSections } from './services-data-niszczarki'
 import { niszczarkiPricingSectionsUk } from './services-data-uk-niszczarki'
+import { niszczarkiPricingSectionsEn } from './services-data-en-niszczarki'
 import { niszczarkiPricingSectionsRu } from './services-data-ru-niszczarki'
 
 // naprawa-projektorow — strona zbudowana na szkielecie serwis-niszczarek (diagnoza i dojazd).
@@ -237,6 +238,81 @@ const PROJEKTORY_FAQ_RU: FaqEntry[] = [
   ['Стоит ли ремонтировать старый проектор?', 'Это зависит от стоимости устройства, цены ремонта и наличия запчастей. Замена лампы, ремонт питания или обслуживание могут продлить срок службы более старого проектора. При дорогостоящем повреждении оптической системы стоит сравнить стоимость ремонта с ценой устройства с похожими характеристиками.'],
 ]
 
+const PROJEKTORY_KONSERWACJA_EN =
+  'CLEANING AND MAINTENANCE [[comprehensive ]]cleaning, inspection and testing of the device\n• cleaning dust and dirt from the inside of the projector;\n• cleaning the cooling system and fans;\n• cleaning or checking the air filters;\n• cleaning the accessible parts of the optical system;\n• replacing the thermal paste of the DMD chip (in DLP projectors whose design requires it);\n• checking the power supply and electronics;\n• checking the temperature and fan operation;\n• checking image quality, brightness and colours;\n• checking the connectors and basic functions of the device;\n• final operation test and service recommendations.'
+
+const PROJEKTORY_NAPRAWY_EN: NaprawyGroup[] = [
+  ['naprawy-lampy', 'Lamps and light sources', [
+    'Projector lamp replacement\n(the image is dark, the lamp does not light up or the projector signals that it needs replacing)',
+    'Lamp ignition circuit (ballast) repair\n(the lamp does not light up, goes out after starting or the projector reports a lamp error)',
+    'LED / laser module power supply repair\n(the light source does not start, goes out or works unstably)',
+    'LED / laser light source module replacement\n(the projector does not display an image or the light source is damaged)',
+  ]],
+  ['naprawy-zasilanie', 'Power supply and electronics', [
+    'Projector power supply repair\n(the projector does not switch on, switches off by itself or does not respond to the power button)',
+    'Main board repair\n(the projector does not start, freezes or its basic functions do not work)',
+    'Control circuit repair\n(the projector does not respond to commands or buttons, or controls its components incorrectly)',
+    'Electronic module replacement\n(a damaged module stops certain projector functions from working)',
+  ]],
+  ['naprawy-optyka', 'Optical system and image', [
+    'DMD chip replacement\n(white or black dots appear on the image and gradually multiply)',
+    'Colour wheel replacement\n(the image has incorrect colours, flickers or the projector makes unusual noises)',
+    'LCD panel / imaging panel replacement\n(the image shows discolouration, spots, stripes or one of the colours is missing)',
+    'Polariser replacement\n(yellow, pink or purple discolouration appears on the image)',
+    'Ultrasonic cleaning of polarisers\n(spots or discolouration are visible on the image of an LCD projector because the polarisers are dirty; we do this when the material and design of the part allow it)',
+    'Light tunnel repair\n(dark stripes, shadows or uneven lighting are visible on the image)',
+    'Optical module repair or replacement\n(the image is distorted, unevenly lit or has permanent spots)',
+    'Optical system adjustment\n(the image is blurred, uneven or cannot be brought into proper focus)',
+  ]],
+  ['naprawy-chlodzenie', 'Cooling and ventilation', [
+    'Fan replacement\n(the fan is noisy, does not turn or the projector reports a cooling error)',
+    'Cooling system repair\n(the projector overheats, switches off during use or reports a temperature error)',
+    'Fan control repair\n(the fans run at the wrong speed or do not start)',
+    'Temperature sensor replacement\n(the projector reports a temperature error or switches off even though cooling works properly)',
+  ]],
+  ['naprawy-zlacza', 'Connectors and communication', [
+    'HDMI port repair or replacement\n(the projector does not detect the device, the image drops out or the port is damaged)',
+    'USB / VGA / audio port repair\n(connected devices do not work, or there is no image or sound through that port)',
+    'Wi-Fi / Bluetooth module repair\n(the projector does not connect to the network or does not detect wireless devices)',
+    'Repair of communication and image transmission circuits\n(the projector does not receive a signal, loses the connection or displays the input image incorrectly)',
+  ]],
+  ['naprawy-mechanika', 'Mechanics and housing', [
+    'Button and control panel repair\n(the buttons do not respond, stick or the control panel does not work)',
+    'Focus and zoom mechanism repair\n(you cannot focus the image or change its size)',
+    'Lens shift mechanism repair\n(you cannot move the image using the lens position adjustment)',
+    'Replacement of damaged housing parts\n(the housing is cracked, the mounts are damaged or parts do not stay in place properly)',
+  ]],
+  ['naprawy-oprogramowanie', 'Software and configuration', [
+    'Restoring settings and configuring the projector\n(incorrect settings cause problems with the image or how the device works)',
+    'Firmware update or restore\n(the projector freezes, works unstably or software errors occur)',
+    'Diagnosing and fixing system errors\n(the projector shows error messages, does not start functions or works incorrectly)',
+  ]],
+]
+
+const PROJEKTORY_FAQ_EN: FaqEntry[] = [
+  ['Which projector brands do you repair?', 'We repair projectors of all brands, including Epson, BenQ, Optoma, Acer, Sony, Panasonic, ViewSonic, Samsung, LG, Xiaomi, Philips, NEC, Sharp, Vivitek, JVC, Canon, XGIMI and Hisense. We service home, office and school multimedia projectors, as well as professional installation devices.'],
+  ['Do you repair projectors from other, less popular brands?', 'Yes. We also service projectors from ASUS, JMGO, Wanbo, Dangbei, Anker Nebula, Overmax, Kiano, Kodak, Barco, Christie, EIKI, Ricoh, Hitachi, Sanyo, Mitsubishi, Casio, InFocus, Toshiba, Dell, HP, Lenovo, 3M, ASK Proxima, Boxlight, PLUS, Digital Projection, SIM2, Projectiondesign, Runco and Marantz. Whether a specific repair is possible depends on the type of fault and the availability of parts.'],
+  ['Do you repair old projectors for which parts are hard to find?', 'Yes, we also accept older and discontinued models. We check whether the existing components can be repaired or suitable parts can be sourced. If the repair turns out not to be worth it, we tell you before starting any work.'],
+  ['Do you repair laser, LED, LCD and DLP projectors?', 'Yes. We service projectors that use lamps, LEDs and laser light sources, as well as DLP, LCD and 3LCD imaging technologies. The scope of the repair depends on the design of the specific model.'],
+  ['Why does the projector not switch on, or switch off after a few minutes?', 'The cause may be a damaged power supply, lamp ignition circuit, fan, temperature sensor or control electronics. The projector may also switch off because it is overheating. We establish the exact cause during the diagnosis. We also accept projectors for diagnosis after liquid damage, a fall or a power surge.'],
+  ['Why does the projector work but not display an image?', 'The problem may be caused by damage to the light source, optical system, electronics or signal input. Sometimes the cause is the wrong HDMI input being selected or a damaged cable. If a basic check of the connections does not help, a diagnosis is needed.'],
+  ['What causes white or black dots on the projector image?', 'In DLP projectors, fixed white or black dots may indicate damaged micromirrors on the DMD chip. The damaged chip usually has to be replaced, once the fault has been confirmed.'],
+  ['Why does the projector show yellow, pink or purple spots?', 'Discolouration may result from worn polarisers, damaged LCD panels or problems with the optical system. We identify the cause based on the type of discolouration and the design of the projector. In LCD projectors, discolouration may also be caused by dirty polarisers — if the material and design of the part allow it, they can be cleaned ultrasonically; otherwise, the polariser may need replacing.'],
+  ['Why is the projector noisy or overheating?', 'The most common possible causes are dirty filters, built-up dust, restricted airflow or a faulty fan. In such cases, the cooling system may need maintenance or a damaged component may need repairing.'],
+  ['What does a flashing LAMP or TEMP light mean?', 'The LAMP light usually indicates a problem with the lamp or its power supply (ballast), and TEMP indicates overheating: a dirty cooling system, a faulty fan or a faulty temperature sensor. The exact meaning of the signals depends on the projector model, so we confirm the cause during the diagnosis.'],
+  ['Does the lamp always need replacing when the image is too dark?', 'No. A dim image may be caused by a worn lamp, but also by dirty optics, damaged polarisers or other problems. Before replacing the lamp, it is worth checking the real cause of the loss of brightness. When replacing it, we fit original lamps, compatible replacements or a lamp supplied by the customer. A lamp replacement usually takes 1–3 days.'],
+  ['Do you repair projectors with a damaged HDMI port?', 'Yes. We diagnose and repair damaged HDMI ports and the circuits responsible for receiving the signal. If the projector does not detect the computer or the image drops out, we also check other possible causes.'],
+  ['What does projector cleaning and maintenance involve?', 'The service includes cleaning the inside, the cooling system, fans, filters and accessible optical components. In DLP projectors whose design requires it, we also replace the thermal paste of the DMD chip. We also check how the electronics work, the operating temperature and the quality of the displayed image. We adapt the scope of work to the design of the device.'],
+  ['How often should a projector be cleaned?', 'It depends on the operating conditions. At home or in the office, cleaning once a year is usually enough. In a dusty room, with many hours of daily use or with pets around, it is worth doing it more often. Signs that cleaning is needed are louder fans, temperature messages and a drop in image brightness.'],
+  ['How much does a projector diagnosis cost?', 'The initial online consultation and the initial diagnosis when you bring in the device are free. The full diagnosis is also free if we carry out the repair. If you decide not to go ahead with the repair, the cost is 60 / 100 / 180 zł, depending on the projector category.'],
+  ['How much does a projector repair cost?', 'The cost depends on the type of fault and the device category. The prices of individual jobs are in our price list, divided into compact, home and office, and professional and installation projectors. The prices in the price list cover the service itself — if the repair needs parts, their cost is added separately. We determine the cost of parts after diagnosing the specific model, and before the repair we give you the scope of work and the full cost.'],
+  ['Will I know the cost before the repair?', 'Yes. After the diagnosis, we give you the scope of work and the full repair cost, including the cost of any parts needed. We start the repair only after the customer has accepted the costs. If you decide to go ahead with the repair, the diagnosis is free. If you decide not to, you pay only for the diagnosis: 60 / 100 / 180 zł, depending on the projector category.'],
+  ['How long does a projector repair take?', 'Diagnosis and a quote usually take 1–3 days. The repair time depends on the type of fault, the design of the device and the availability of parts. The expected times for individual jobs are given in the price list.'],
+  ['Do you give a warranty on projector repairs?', 'Yes. We give a 3-month warranty on projector repairs. If a fault covered by the warranty comes back during this time, we fix it free of charge.'],
+  ['Can I send my projector to you by courier?', 'Yes, we accept projectors by courier from anywhere in Poland. The customer pays for shipping to our service centre and back after the repair, according to the carrier’s rates. Before sending, switch the projector off and wait for it to cool down, protect the lens, pack the device in a sturdy box (ideally the original one) and fill the empty space so that the projector cannot move inside. You can also bring the projector to our service centre in person. If the projector is ceiling-mounted, we agree the visit and removal individually.'],
+  ['Is it worth repairing an old projector?', 'It depends on the value of the device, the repair cost and the availability of parts. A lamp replacement, power supply repair or maintenance can extend the life of an older projector. With costly damage to the optical system, it is worth comparing the quote with the price of a device with similar specifications.'],
+]
+
 const withProjektory = (sections: PricingSection[], konserwacja: string, naprawy: NaprawyGroup[], faq: FaqEntry[], courier: string): PricingSection[] =>
   sections.map(section => {
     if (section.id === 'dojazd') return { ...section, items: [...(section.items ?? []), { service: courier }] }
@@ -258,6 +334,9 @@ export const createProjektoryPricingSections = (): PricingSection[] =>
 
 export const projektoryPricingSectionsUk = (): PricingSection[] =>
   withProjektory(niszczarkiPricingSectionsUk(), PROJEKTORY_KONSERWACJA_UK, PROJEKTORY_NAPRAWY_UK, PROJEKTORY_FAQ_UK, 'Відправка кур’єром з усієї Польщі\n(ви надсилаєте проєктор у сервіс кур’єром, а після ремонту ми повертаємо його так само; доставку в обидва боки оплачує Клієнт)')
+
+export const projektoryPricingSectionsEn = (): PricingSection[] =>
+  withProjektory(niszczarkiPricingSectionsEn(), PROJEKTORY_KONSERWACJA_EN, PROJEKTORY_NAPRAWY_EN, PROJEKTORY_FAQ_EN, 'Courier shipping from anywhere in Poland\n(you send the projector to our service centre by courier, and after the repair we send it back the same way; the customer pays for shipping both ways)')
 
 export const projektoryPricingSectionsRu = (): PricingSection[] =>
   withProjektory(niszczarkiPricingSectionsRu(), PROJEKTORY_KONSERWACJA_RU, PROJEKTORY_NAPRAWY_RU, PROJEKTORY_FAQ_RU, 'Отправка курьером из любой точки Польши\n(вы отправляете проектор в сервис курьером, а после ремонта мы возвращаем его тем же способом; доставку в обе стороны оплачивает Клиент)')

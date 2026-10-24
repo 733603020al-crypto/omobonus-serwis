@@ -24,7 +24,7 @@ export function GoogleRatingBadge({
 }: {
   className?: string
   ratingLabel?: string
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
   ariaLabel?: string
   /** Bieżący blik po ramce i złotych napisach, jak na przyciskach „Więcej o nas” */
   animated?: boolean

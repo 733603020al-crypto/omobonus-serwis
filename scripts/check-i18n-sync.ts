@@ -1,4 +1,4 @@
-// Постоянная проверка синхронности 3 языковых версий (pl/ru/uk) сайта.
+// Постоянная проверка синхронности 4 языковых версий (pl/ru/uk/en) сайта.
 // Запуск: npm run check:i18n-sync
 //
 // Что проверяет:
@@ -21,10 +21,11 @@
 import { services, type PricingSection, type PricingSubcategory } from '@/lib/services-data'
 import { servicesRu } from '@/lib/services-data-ru'
 import { servicesUk } from '@/lib/services-data-uk'
+import { servicesEn } from '@/lib/services-data-en'
 import { walkPricingItems, pricingId, getDisplayPrice, getDisplayDuration } from '@/lib/services-pricing'
 import { migratedPrice, migratedDuration } from '@/lib/services-pricing-data'
 
-type Locale = 'ru' | 'uk'
+type Locale = 'ru' | 'uk' | 'en'
 
 interface Problem {
   id: string
@@ -47,6 +48,7 @@ function numericCore(s: string): string {
 const plSlugs = services.map(s => s.slug)
 const ruSlugs = servicesRu.map(s => s.slug)
 const ukSlugs = servicesUk.map(s => s.slug)
+const enSlugs = servicesEn.map(s => s.slug)
 
 function compareSlugLists(locale: Locale, list: string[]) {
   if (list.length !== plSlugs.length) {
@@ -62,6 +64,7 @@ function compareSlugLists(locale: Locale, list: string[]) {
 
 compareSlugLists('ru', ruSlugs)
 compareSlugLists('uk', ukSlugs)
+compareSlugLists('en', enSlugs)
 
 // --- 2) Структурное соответствие секций/подкатегорий/позиций ---------------
 
@@ -150,11 +153,15 @@ function compareSubcategory(locale: Locale, plSlug: string, plSection: PricingSe
 services.forEach((plService, i) => {
   const ruService = servicesRu[i]
   const ukService = servicesUk[i]
+  const enService = servicesEn[i]
   if (ruService && ruService.slug === plService.slug) {
     compareSections('ru', plService.slug, plService.pricingSections, ruService.pricingSections)
   }
   if (ukService && ukService.slug === plService.slug) {
     compareSections('uk', plService.slug, plService.pricingSections, ukService.pricingSections)
+  }
+  if (enService && enService.slug === plService.slug) {
+    compareSections('en', plService.slug, plService.pricingSections, enService.pricingSections)
   }
 })
 
@@ -174,6 +181,7 @@ const langSets: LangSet[] = [
   { locale: 'pl', list: services, file: 'services-data.ts' },
   { locale: 'ru', list: servicesRu, file: 'services-data-ru.ts' },
   { locale: 'uk', list: servicesUk, file: 'services-data-uk.ts' },
+  { locale: 'en', list: servicesEn, file: 'services-data-en.ts' },
 ]
 
 let checkedPositions = 0
@@ -202,7 +210,7 @@ for (const { locale, list, file } of langSets) {
 
 // --- Итог --------------------------------------------------------------
 
-console.log(`check:i18n-sync — проверено услуг: PL=${plSlugs.length}, RU=${ruSlugs.length}, UK=${ukSlugs.length}`)
+console.log(`check:i18n-sync — проверено услуг: PL=${plSlugs.length}, RU=${ruSlugs.length}, UK=${ukSlugs.length}, EN=${enSlugs.length}`)
 console.log(`check:i18n-sync — позиций цен/сроков проверено: ${checkedPositions} (по общей схеме: ${migratedCount / langSets.length} id × ${langSets.length} языка)`)
 
 if (problems.length === 0) {

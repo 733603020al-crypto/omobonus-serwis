@@ -1,0 +1,160 @@
+import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
+import { servicesEn } from '@/lib/services-data-en'
+import { serviceHeroLabelsEn } from '@/lib/service-hero-labels-en'
+import { en } from '@/lib/i18n/en'
+import { ServicePageTemplate, type RelatedService } from '@/components/service-page-template'
+import { headingsEn, seoBlocksEn, imageAltEn, subServiceTitlesEn, seoMetadataEn, labelsEn } from '@/lib/services-meta-en'
+import { serviceImageSrc, serviceIconSrc, slugBrands, relatedServiceSlugs, noindexSlugs } from '@/lib/services-meta-shared'
+import { withSocialMeta } from '@/lib/social-meta'
+
+export async function generateStaticParams() {
+  return servicesEn.flatMap(service => service.slug === 'serwis-drukarek-spozywczych'
+    ? [{ slug: service.slug }, { slug: 'serwis-drukarek-spożywczych' }]
+    : [{ slug: service.slug }])
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
+  const service = servicesEn.find(s => s.slug === slug)
+  const seo = seoMetadataEn[slug]
+
+  if (!service || !seo) {
+    return { title: 'Service not found' }
+  }
+
+  const meta = withSocialMeta('en', {
+    title: seo.title,
+    description: seo.description,
+    ...(noindexSlugs.includes(slug) ? { robots: { index: false, follow: true } } : {}),
+
+    alternates: {
+      canonical: `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
+      languages: noindexSlugs.includes(slug) ? {
+        // Tymczasowa strona bez odpowiedników — nie dodawać hreflang na noindexowaną PL i ewentualne RU
+        'en': `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
+      } : {
+        'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+        'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
+        'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
+        'en': `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
+        'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
+      },
+    },
+  })
+
+  // withSocialMeta przywraca og:type/locale/siteName i twitter; obraz zostaje własny dla usługi
+  const ogImage = {
+    url: slug === 'naprawa-drukarek' ? 'https://serwis.omobonus.com.pl/images/Serwis_Drukarek.webp' : service.icon,
+    alt: service.title,
+  }
+  return {
+    ...meta,
+    // Tytuł z własną marką na końcu — bez dopisywania szablonu „| Omobonus Wrocław” z layoutu
+    ...(seo.title.endsWith('| Omobonus') ? { title: { absolute: seo.title } } : {}),
+    openGraph: { ...meta.openGraph, images: [ogImage] },
+    twitter: { ...meta.twitter, images: [ogImage.url] },
+  }
+}
+
+export default async function EnServicePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug: routeSlug } = await params
+  const decodedSlug = decodeURIComponent(routeSlug)
+  const slug = decodedSlug === 'serwis-drukarek-spożywczych' ? 'serwis-drukarek-spozywczych' : decodedSlug
+  const service = servicesEn.find(s => s.slug === slug)
+  const heroLabels = serviceHeroLabelsEn[slug] || []
+
+  if (!service) {
+    notFound()
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description: seoMetadataEn[slug]?.description || service.description,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Omobonus Serwis',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Marcina Bukowskiego 174',
+        addressLocality: 'Wrocław',
+        postalCode: '52-418',
+        addressCountry: 'PL',
+      },
+      telephone: '+48793759262',
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Wrocław',
+    },
+    url: `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
+  }
+
+  // FAQPage structured data — z tej samej sekcji "faq", która zasila akordeon FAQ na stronie
+  const faqSubcategories = service.pricingSections.find(s => s.id === 'faq')?.subcategories
+  const faqJsonLd = faqSubcategories?.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSubcategories
+      .filter(sub => sub.answer)
+      .map(sub => ({
+        '@type': 'Question',
+        name: sub.title.replace(/\*\*/g, ''),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: sub.answer!.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'),
+        },
+      })),
+  } : null
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://serwis.omobonus.com.pl/en' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://serwis.omobonus.com.pl/en/#uslugi' },
+      { '@type': 'ListItem', position: 3, name: service.title, item: `https://serwis.omobonus.com.pl/en/uslugi/${slug}` },
+    ],
+  }
+
+  const relatedServices: RelatedService[] = servicesEn
+    .filter(s => relatedServiceSlugs.includes(s.slug))
+    .map(s => ({
+      slug: s.slug,
+      title: s.title,
+      displayTitle: subServiceTitlesEn[s.slug] || s.title,
+      iconSrc: serviceIconSrc[s.slug] || s.icon,
+    }))
+
+  return (
+    <ServicePageTemplate
+      locale="en"
+      slug={slug}
+      service={service}
+      heroLabels={heroLabels}
+      headings={headingsEn[slug] ?? { h1: service.title }}
+      seoBlocks={seoBlocksEn[slug]}
+      slugBrands={slugBrands[slug]}
+      imageSrc={serviceImageSrc[slug] || service.icon}
+      imageAlt={imageAltEn[slug] || service.title}
+      basePath="/en/uslugi"
+      labels={labelsEn}
+      relatedServices={relatedServices}
+      jsonLd={faqJsonLd ? [serviceJsonLd, breadcrumbJsonLd, faqJsonLd] : [serviceJsonLd, breadcrumbJsonLd]}
+      footerT={en.footer}
+    />
+  )
+}

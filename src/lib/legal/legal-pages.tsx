@@ -2,6 +2,7 @@ import { toPageContent } from './legal-render'
 import { regulaminPl, politykaPl } from './legal-texts-pl'
 import { regulaminUk, politykaUk } from './legal-texts-uk'
 import { regulaminRu, politykaRu } from './legal-texts-ru'
+import { regulaminEn, politykaEn } from './legal-texts-en'
 
 export type { LegalSection, LegalPageContent } from './legal-render'
 
@@ -13,3 +14,5 @@ export const regulaminContentUk = toPageContent(regulaminUk)
 export const politykaPrywatnosciContentUk = toPageContent(politykaUk)
 export const regulaminContentRu = toPageContent(regulaminRu)
 export const politykaPrywatnosciContentRu = toPageContent(politykaRu)
+export const regulaminContentEn = toPageContent(regulaminEn)
+export const politykaPrywatnosciContentEn = toPageContent(politykaEn)

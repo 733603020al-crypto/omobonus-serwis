@@ -27,7 +27,7 @@ interface AboutPageTemplateProps {
   aboutT?: AboutT
   teamT?: TeamT
   footerT?: FooterT
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
 }
 
 export function AboutPageTemplate({

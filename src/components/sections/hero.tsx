@@ -79,7 +79,7 @@ const heroCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', priorit
 const { props: { srcSet: heroDesktopSrcSet } } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-desktop.webp', quality: 32 })
 const { props: heroMobileProps } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-mobile.webp', quality: 60 })
 
-export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru'; cta?: { label: ReactNode; href: string } } = {}) {
+export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en'; cta?: { label: ReactNode; href: string } } = {}) {
   const d = t ?? PL
 
   return (
@@ -135,7 +135,7 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
 
 // Tagline + trust block (Google badge + 2x2 stat cards) — used by the
 // /o-nas hero (the home hero now shows the device carousel instead).
-export function HeroTrust({ t, locale = 'pl', animatedBadge = false }: { t?: HeroT; locale?: 'pl' | 'uk' | 'ru'; animatedBadge?: boolean }) {
+export function HeroTrust({ t, locale = 'pl', animatedBadge = false }: { t?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en'; animatedBadge?: boolean }) {
   const d = t ?? PL
   return (
     <>

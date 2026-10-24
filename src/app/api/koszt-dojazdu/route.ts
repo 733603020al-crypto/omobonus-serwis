@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
   let body: { adres?: unknown; placeId?: unknown; lat?: unknown; lng?: unknown; lang?: unknown }
   try { body = await request.json() } catch { return err('bad_request', 400) }
 
-  const lang: Lang = body.lang === 'uk' || body.lang === 'ru' ? body.lang : 'pl'
+  const lang: Lang = body.lang === 'uk' || body.lang === 'ru' || body.lang === 'en' ? body.lang : 'pl'
   const adres = typeof body.adres === 'string' ? body.adres.trim().replace(/\s+/g, ' ') : ''
   const lat = Number(body.lat), lng = Number(body.lng)
   const hasPoint = body.lat != null && body.lng != null && Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180

@@ -11,7 +11,7 @@ interface LegalPageTemplateProps {
   footerT?: FooterT
   cardMarginBottomClass: string
   minHeightZero?: boolean
-  locale?: 'pl' | 'uk' | 'ru'
+  locale?: 'pl' | 'uk' | 'ru' | 'en'
 }
 
 export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, minHeightZero = false, locale = 'pl' }: LegalPageTemplateProps) {

@@ -363,7 +363,7 @@ export const politykaPl: LegalDoc = {
           ] },
           { title: 'Mapa Google w stopce strony', lines: [
             ['Dane', 'adres IP, informacje o przeglądarce'],
-            ['Podstawa', 'art. 6 ust. 1 lit. f RODO — pokazanie, jak do nas dojechać, gdy sam włączysz mapę przyciskiem „Pokaż mapę”'],
+            ['Podstawa', 'art. 6 ust. 1 lit. f RODO — pokazanie, jak do nas dojechać'],
             ['Okres', 'nie zapisujemy tych danych; po stronie Google według zasad Google'],
           ] },
           { title: 'Wyświetlanie opinii Google na stronie', lines: [
@@ -399,7 +399,7 @@ export const politykaPl: LegalDoc = {
       heading: '6. Kalkulator kosztu dojazdu i mapa',
       blocks: [{ ul: [
         'Kalkulator przekazuje wpisany adres (albo lokalizację, jeżeli zezwolisz na nią w przeglądarce) z naszego serwera do usług Google Maps Platform (wyszukiwanie adresu, wyznaczanie trasy, podpowiedzi adresów, mapa statyczna), aby obliczyć odległość i koszt. Nie zapisujemy tych danych.',
-        'Mapa w stopce strony jest wyświetlana przez Google Maps, ale nie ładuje się automatycznie. W jej miejscu widzisz informację i przycisk „Pokaż mapę”. Dopiero po jego kliknięciu Google otrzymuje Twój adres IP i informacje o przeglądarce i może zapisać własne pliki cookies na zasadach Google. Wybór nie jest zapamiętywany — przy kolejnym wyświetleniu strony mapa znów czeka na kliknięcie.',
+        'Mapa w stopce strony jest wyświetlana przez Google Maps. Podczas jej wyświetlania Google otrzymuje Twój adres IP i informacje o przeglądarce i może zapisać własne pliki cookies na zasadach Google.',
       ] }],
     },
     {
@@ -422,7 +422,7 @@ export const politykaPl: LegalDoc = {
           { title: 'Analityczne — Google Analytics: _ga, _ga_*', lines: [['Cel', 'statystyki odwiedzin'], ['Okres', '1 rok i 1 miesiąc']] },
           { title: 'Analityczne — Microsoft Clarity: _clck, _clsk', lines: [['Cel', 'mapy kliknięć, nagrania sesji'], ['Okres', '1 rok / 1 dzień']] },
           { title: 'Reklamowe — Google Ads: _gcl_au; doubleclick.net: test_cookie', lines: [['Cel', 'pomiar konwersji z reklam; sprawdzenie, czy przeglądarka obsługuje pliki cookies'], ['Okres', '3 miesiące / 15 minut']] },
-          { title: 'Mapa Google — pliki cookies Google (np. NID), tylko po kliknięciu „Pokaż mapę”', lines: [['Cel', 'działanie mapy; pliki zapisuje Google na własnych zasadach'], ['Okres', 'według zasad Google']] },
+          { title: 'Mapa Google — pliki cookies Google (np. NID)', lines: [['Cel', 'działanie mapy; pliki zapisuje Google na własnych zasadach'], ['Okres', 'według zasad Google']] },
           { title: 'Techniczne (tylko nasi pracownicy) — internal', lines: [['Cel', 'wyłączenie wizyt pracowników ze statystyk'], ['Okres', '1 dzień']] },
         ] },
       ],

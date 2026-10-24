@@ -12,6 +12,7 @@ import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { lora } from './contact-font'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
+import { en } from '@/lib/i18n/en'
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
@@ -52,7 +53,7 @@ function splitLabelNote(text: string): { main: string; note: string | null } {
   return { main: match[1], note: match[2] }
 }
 
-export type Locale = 'pl' | 'uk' | 'ru'
+export type Locale = 'pl' | 'uk' | 'ru' | 'en'
 
 export interface ContactT {
   formTitle: string
@@ -60,6 +61,8 @@ export interface ContactT {
   namePlaceholder: string
   phoneLabel: string
   emailLabel: string
+  /** E-mail example; PL example when not set */
+  emailPlaceholder?: string
   addressLabel: string
   addressPlaceholder: string
   problemLabel: string
@@ -137,6 +140,7 @@ const CONTACT_DEFAULTS: Record<Locale, ContactT> = {
   pl: PL,
   uk: uk.contactForm,
   ru: ru.contactForm,
+  en: en.contactForm,
 }
 
 function buildFormSchema(phoneError: string, emailError: string) {
@@ -491,7 +495,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 id="contact-email"
                 {...register('email')}
                 type="email"
-                placeholder="jan.kowalski@example.com"
+                placeholder={d.emailPlaceholder ?? "jan.kowalski@example.com"}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'contact-email-error' : undefined}
                 className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
@@ -713,7 +717,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   </picture>
                   {!isSubmitting && (
                     <span
-                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
+                      className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' || resolvedLocale === 'en' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
                       style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
                     >
                       {d.submitButtonSeal}

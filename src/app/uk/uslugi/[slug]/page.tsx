@@ -44,6 +44,7 @@ export async function generateMetadata({
         'pl': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
         'uk': `https://serwis.omobonus.com.pl/uk/uslugi/${slug}`,
         'ru': `https://serwis.omobonus.com.pl/ru/uslugi/${slug}`,
+        'en': `https://serwis.omobonus.com.pl/en/uslugi/${slug}`,
         'x-default': `https://serwis.omobonus.com.pl/uslugi/${slug}`,
       },
     },

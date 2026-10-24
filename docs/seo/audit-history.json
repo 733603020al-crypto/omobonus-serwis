@@ -189,6 +189,146 @@
       "to": "Сервис и ремонт проекторов | Omobonus Вроцлав"
      }
     ]
+   },
+   {
+    "date": "2026-10-24",
+    "pages": 69,
+    "problems": 0,
+    "changes": []
+   },
+   {
+    "date": "2026-10-24",
+    "pages": 92,
+    "problems": 23,
+    "changes": [
+     {
+      "u": "/en",
+      "type": "new",
+      "to": "Computer, laptop and printer repair | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": "Laptop repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": "Desktop computer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": "IT outsourcing and IT support | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": "Printer and copier repair | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": "Laser printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": "Inkjet printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": "Plotter repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": "Label printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": "Dot matrix printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": "3D printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": "Custom 3D printing service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": "Paper shredder repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": "UPS power supply repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": "Projector repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": "Plastic card printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": "DTG printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": "DTF printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": "Sublimation printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": "Edible printer repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": "Coffee machine repair and service | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": "Printer and copier rental | Omobonus Wrocław"
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": "Replacement printer (during repair) | Omobonus Wrocław"
+     }
+    ]
+   },
+   {
+    "date": "2026-10-24",
+    "pages": 92,
+    "problems": 0,
+    "changes": [
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "from": "UPS power supply repair and service | Omobonus Wrocław",
+      "to": "UPS repair and service | Omobonus Wrocław"
+     }
+    ]
    }
   ],
   "description": [
@@ -619,6 +759,145 @@
       "to": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262"
      }
     ]
+   },
+   {
+    "date": "2026-10-24",
+    "pages": 92,
+    "problems": 23,
+    "changes": [
+     {
+      "u": "/en",
+      "type": "new",
+      "to": "✔ Computer, laptop and printer service and repair in Wrocław ✔ Repair cost agreed before work starts ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": "✔ Laptop repair and service in Wrocław ✔ Screen and battery replacement, laptop cleaning, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": "✔ Desktop computer repair and service in Wrocław ✔ Cleaning, SSD replacement, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": "✔ IT outsourcing and IT support for businesses in Wrocław ✔ Ongoing IT support, helpdesk, network, backups ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": "✔ Printer and copier repair and service in Wrocław ✔ Laser, inkjet and label printers, plotters ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": "✔ Laser printer repair and service in Wrocław ✔ Cleaning, clearing paper jams, drum and fuser replacement ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": "✔ Inkjet printer repair and service in Wrocław ✔ Print head cleaning, waste ink pad replacement ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": "✔ Plotter repair and service in Wrocław ✔ Print head unclogging, carriage and media feed repair, calibration ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": "✔ Label printer repair and service in Wrocław ✔ Print head and roller replacement, sensor calibration, setup ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": "✔ Dot matrix printer repair and service in Wrocław ✔ Print head, carriage and tractor feed repair, maintenance ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": "✔ 3D printer repair and service in Wrocław ✔ Extruder and hotend repair, calibration, Klipper setup ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": "✔ Custom 3D printing in Wrocław ✔ Spare parts, prototypes, printing from STL files, 3D design ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": "✔ Paper shredder repair and service in Wrocław ✔ Oiling, clearing jams, blade replacement, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": "✔ UPS power supply repair and service in Wrocław ✔ Battery replacement, inspection, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": "✔ Projector repair and service in Wrocław ✔ Lamp and DMD chip replacement, cleaning, power supply repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": "✔ Plastic card printer repair and service in Wrocław ✔ Print head replacement, encoder and laminator repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": "✔ DTG printer repair and service in Wrocław ✔ Print head unclogging, white ink system and platen repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": "✔ DTF printer repair and service in Wrocław ✔ Print head unclogging, film feed repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": "✔ Sublimation printer repair and service in Wrocław ✔ Print head unclogging, paper feed repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": "✔ Edible printer repair and service in Wrocław ✔ Print head unclogging, sheet feed repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": "✔ Coffee machine repair and service in Wrocław ✔ Descaling, brew unit and grinder repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": "✔ Printer and copier rental in Wrocław ✔ A4 and A3, service and toner included, no long-term contract ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": "✔ Replacement printer during repair in Wrocław ✔ A4 and A3, mono and colour ✔ No subscription, pay per print ✔ Full price list, no hidden costs ☎ 793 759 262"
+     }
+    ]
+   },
+   {
+    "date": "2026-10-24",
+    "pages": 92,
+    "problems": 0,
+    "changes": [
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "from": "✔ IT outsourcing and IT support for businesses in Wrocław ✔ Ongoing IT support, helpdesk, network, backups ✔ Full price list, no hidden costs ☎ 793 759 262",
+      "to": "✔ IT outsourcing and IT support for businesses in Wrocław ✔ Helpdesk, network support and backups ✔ Full price list, no hidden costs ☎ 793 759 262"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "from": "✔ UPS power supply repair and service in Wrocław ✔ Battery replacement, inspection, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+      "to": "✔ UPS repair and service in Wrocław ✔ Battery replacement, inspection, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262"
+     }
+    ]
    }
   ],
   "h1": [
@@ -728,7 +1007,30 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "Сервис и ремонт пищевых принтеров | Omobonus Вроцлав",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "Сервис и ремонт кофемашин | Omobonus Вроцлав",
    "/ru/uslugi/wynajem-drukarek": "Аренда принтеров и копировальных аппаратов | Omobonus Вроцлав",
-   "/ru/uslugi/drukarka-zastepcza": "Принтер на замену (на время ремонта) | Omobonus Вроцлав"
+   "/ru/uslugi/drukarka-zastepcza": "Принтер на замену (на время ремонта) | Omobonus Вроцлав",
+   "/en": "Computer, laptop and printer repair | Omobonus Wrocław",
+   "/en/uslugi/serwis-laptopow": "Laptop repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "Desktop computer repair and service | Omobonus Wrocław",
+   "/en/uslugi/outsourcing-it": "IT outsourcing and IT support | Omobonus Wrocław",
+   "/en/uslugi/naprawa-drukarek": "Printer and copier repair | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-laserowych": "Laser printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-atramentowych": "Inkjet printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-plotterow": "Plotter repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-termicznych": "Label printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-iglowych": "Dot matrix printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-3d": "3D printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/druk-3d-na-zamowienie": "Custom 3D printing service | Omobonus Wrocław",
+   "/en/uslugi/serwis-niszczarek": "Paper shredder repair and service | Omobonus Wrocław",
+   "/en/uslugi/naprawa-zasilaczy-ups": "UPS repair and service | Omobonus Wrocław",
+   "/en/uslugi/naprawa-projektorow": "Projector repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "Plastic card printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-dtg": "DTG printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-dtf": "DTF printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "Sublimation printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-drukarek-spozywczych": "Edible printer repair and service | Omobonus Wrocław",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "Coffee machine repair and service | Omobonus Wrocław",
+   "/en/uslugi/wynajem-drukarek": "Printer and copier rental | Omobonus Wrocław",
+   "/en/uslugi/drukarka-zastepcza": "Replacement printer (during repair) | Omobonus Wrocław"
   },
   "description": {
    "/": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Koszt naprawy uzgadniamy przed rozpoczęciem ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
@@ -799,7 +1101,30 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "✔ Сервис и ремонт пищевых принтеров во Вроцлаве ✔ Прочистка головки, ремонт подачи листов ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "✔ Сервис и ремонт кофемашин во Вроцлаве ✔ Удаление накипи, ремонт заварочного блока и кофемолки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/ru/uslugi/wynajem-drukarek": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, сервис и тонеры в цене, без долгосрочного договора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
-   "/ru/uslugi/drukarka-zastepcza": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262"
+   "/ru/uslugi/drukarka-zastepcza": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "/en": "✔ Computer, laptop and printer service and repair in Wrocław ✔ Repair cost agreed before work starts ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-laptopow": "✔ Laptop repair and service in Wrocław ✔ Screen and battery replacement, laptop cleaning, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "✔ Desktop computer repair and service in Wrocław ✔ Cleaning, SSD replacement, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/outsourcing-it": "✔ IT outsourcing and IT support for businesses in Wrocław ✔ Helpdesk, network support and backups ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/naprawa-drukarek": "✔ Printer and copier repair and service in Wrocław ✔ Laser, inkjet and label printers, plotters ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-laserowych": "✔ Laser printer repair and service in Wrocław ✔ Cleaning, clearing paper jams, drum and fuser replacement ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-atramentowych": "✔ Inkjet printer repair and service in Wrocław ✔ Print head cleaning, waste ink pad replacement ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-plotterow": "✔ Plotter repair and service in Wrocław ✔ Print head unclogging, carriage and media feed repair, calibration ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-termicznych": "✔ Label printer repair and service in Wrocław ✔ Print head and roller replacement, sensor calibration, setup ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-iglowych": "✔ Dot matrix printer repair and service in Wrocław ✔ Print head, carriage and tractor feed repair, maintenance ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-3d": "✔ 3D printer repair and service in Wrocław ✔ Extruder and hotend repair, calibration, Klipper setup ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/druk-3d-na-zamowienie": "✔ Custom 3D printing in Wrocław ✔ Spare parts, prototypes, printing from STL files, 3D design ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-niszczarek": "✔ Paper shredder repair and service in Wrocław ✔ Oiling, clearing jams, blade replacement, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/naprawa-zasilaczy-ups": "✔ UPS repair and service in Wrocław ✔ Battery replacement, inspection, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/naprawa-projektorow": "✔ Projector repair and service in Wrocław ✔ Lamp and DMD chip replacement, cleaning, power supply repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "✔ Plastic card printer repair and service in Wrocław ✔ Print head replacement, encoder and laminator repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-dtg": "✔ DTG printer repair and service in Wrocław ✔ Print head unclogging, white ink system and platen repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-dtf": "✔ DTF printer repair and service in Wrocław ✔ Print head unclogging, film feed repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "✔ Sublimation printer repair and service in Wrocław ✔ Print head unclogging, paper feed repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-drukarek-spozywczych": "✔ Edible printer repair and service in Wrocław ✔ Print head unclogging, sheet feed repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "✔ Coffee machine repair and service in Wrocław ✔ Descaling, brew unit and grinder repair ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/wynajem-drukarek": "✔ Printer and copier rental in Wrocław ✔ A4 and A3, service and toner included, no long-term contract ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/uslugi/drukarka-zastepcza": "✔ Replacement printer during repair in Wrocław ✔ A4 and A3, mono and colour ✔ No subscription, pay per print ✔ Full price list, no hidden costs ☎ 793 759 262"
   },
   "h1": {
    "/": "Serwis komputerów, laptopów, drukarek i urządzeń biurowych we Wrocławiu",

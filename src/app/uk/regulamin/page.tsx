@@ -13,6 +13,7 @@ export const metadata: Metadata = withSocialMeta('uk', {
       'pl': 'https://serwis.omobonus.com.pl/regulamin',
       'uk': 'https://serwis.omobonus.com.pl/uk/regulamin',
       'ru': 'https://serwis.omobonus.com.pl/ru/regulamin',
+      'en': 'https://serwis.omobonus.com.pl/en/regulamin',
       'x-default': 'https://serwis.omobonus.com.pl/regulamin',
     },
   },

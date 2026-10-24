@@ -162,8 +162,6 @@
     privacyHref: '/uk/polityka-prywatnosci',
     regulaminHref: '/uk/regulamin',
     cookieSettings: 'Налаштування cookies',
-    mapNotice: 'Карта Google завантажується лише після натискання. Тоді Google отримає вашу IP-адресу і може зберегти файли cookies.',
-    mapButton: 'Показати карту',
   },
   successModal: {
     title: 'Дякуємо за заявку!',

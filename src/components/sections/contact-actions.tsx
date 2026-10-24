@@ -110,7 +110,7 @@ const PL_ACTIONS: ContactActionsT = {
   kosztLabel: 'Koszt dojazdu',
 }
 
-export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' } = {}) {
+export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' | 'en' } = {}) {
   const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
   const [countryName, setCountryName] = useState('Polska')

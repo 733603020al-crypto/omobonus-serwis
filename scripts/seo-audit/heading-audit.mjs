@@ -70,7 +70,7 @@ export async function sitePages() {
   return { urls, P }
 }
 export function pageInfo(u, names = {}) {
-  const m = u.match(/^(?:\/(uk|ru))?(?:\/(.*))?$/)
+  const m = u.match(/^(?:\/(uk|ru|en))?(?:\/(.*))?$/)
   const s = m[2] || ''
   const slug = s.replace(/^uslugi\//, '')
   return { u, l: m[1] || 'pl', s, name: names[slug] || PAGE_NAMES[s] || slug }

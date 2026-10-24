@@ -74,10 +74,10 @@ export const serviceHeroLabelsRu: Record<string, string[]> = {
     'Смазка и обслуживание',
   ],
   'naprawa-zasilaczy-ups': [
-    'Зажёвывает бумагу',
-    'Бледная печать',
-    'Пачкает листы',
-    'Замена тонера',
+    'Не включается',
+    'Пищит (тревога)',
+    'Мало работает от батареи',
+    'Замена аккумулятора',
   ],
 
   'serwis-drukarek-atramentowych': [

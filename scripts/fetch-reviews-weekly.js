@@ -31,6 +31,13 @@ function translatePolishTime(str, lang) {
             'miesiąc temu': 'місяць тому',
             'rok temu': 'рік тому',
         },
+        en: {
+            'dzisiaj': 'today',
+            'wczoraj': 'yesterday',
+            'tydzień temu': 'a week ago',
+            'miesiąc temu': 'a month ago',
+            'rok temu': 'a year ago',
+        },
         ru: {
             'dzisiaj': 'сегодня',
             'wczoraj': 'вчера',
@@ -64,6 +71,13 @@ function translatePolishTime(str, lang) {
             const f = n === 1 ? 'рік' : n < 5 ? 'роки' : 'років'
             return `${n} ${f} тому`
         }
+    }
+
+    if (lang === 'en') {
+        if (/^dzie[nń]|^dni$/.test(unit)) return `${n} ${n === 1 ? 'day' : 'days'} ago`
+        if (/^tygodni|^tydzie/.test(unit)) return `${n} ${n === 1 ? 'week' : 'weeks'} ago`
+        if (/^miesiąc|^miesięcy|^miesiące/.test(unit)) return `${n} ${n === 1 ? 'month' : 'months'} ago`
+        if (/^rok$|^lat[a]?$/.test(unit)) return `${n} ${n === 1 ? 'year' : 'years'} ago`
     }
 
     if (lang === 'ru') {
@@ -165,20 +179,25 @@ async function fetchWeeklyReviews() {
         const texts = candidates.map((r) => r.text)
         let translatedUk = null
         let translatedRu = null
+        let translatedEn = null
 
         if (TRANSLATE_KEY) {
             console.log(`🔄 Переводим ${texts.length} новых отзывов → UK...`)
             translatedUk = await translateTextsWithGoogle(texts, 'uk')
             console.log(`🔄 Переводим ${texts.length} новых отзывов → RU...`)
             translatedRu = await translateTextsWithGoogle(texts, 'ru')
+            console.log(`🔄 Переводим ${texts.length} новых отзывов → EN...`)
+            translatedEn = await translateTextsWithGoogle(texts, 'en')
         }
 
         const newEntries = candidates.map((r, i) => ({
             ...r,
             text_uk: translatedUk ? translatedUk[i] : null,
             text_ru: translatedRu ? translatedRu[i] : null,
+            text_en: translatedEn ? translatedEn[i] : null,
             relative_time_uk: translatePolishTime(r.relative_time_description, 'uk'),
             relative_time_ru: translatePolishTime(r.relative_time_description, 'ru'),
+            relative_time_en: translatePolishTime(r.relative_time_description, 'en'),
         }))
 
         // FIFO: новые уходят в конец, старые вытесняются с начала при превышении лимита

@@ -22,6 +22,26 @@ const parts: { name: string; src: string; alt: string; width: number; height: nu
   { name: "power-meter-jumper-cables", src: "/images/parts-strip/power-meter-jumper-cables.avif", alt: "Obudowa zasilacza z kablami wydrukowana w 3D", width: 594, height: 300 },
 ]
 
+// EN alt texts by part name (other languages keep the PL alt)
+const ALT_EN: Record<string, string> = {
+  "enclosure-cream": "3D-printed electronics enclosure",
+  "enclosure-usb-c": "3D-printed enclosure with a USB-C port",
+  "planetary-gearbox": "3D-printed planetary gearbox",
+  "multicolor-gearbox": "3D-printed multicolour gearbox",
+  "air-duct-adapter": "3D-printed air duct adapter",
+  "blue-wheel-hub": "3D-printed wheel hub",
+  "orange-black-gearbox": "3D-printed gearbox",
+  "gearbox-extra": "3D-printed mechanical part",
+  "enclosure-graphite-turquoise": "3D-printed electronics enclosure",
+  "manifold": "3D-printed technical manifold",
+  "power-supply-cream-blue": "3D-printed power supply enclosure",
+  "power-supply-cream-green": "3D-printed power supply enclosure",
+  "keychains": "3D-printed keychains",
+  "coffee-shop-sign": "3D-printed advertising sign",
+  "power-meter-white": "3D-printed energy meter enclosure",
+  "power-meter-jumper-cables": "3D-printed power supply enclosure with cables",
+}
+
 // Docelowa prędkość ruchu — ta sama co w standardowym BrandTicker (0.4px/klatkę
 // przy 60fps ≈ 24px/s), tak aby wizualna prędkość była identyczna niezależnie
 // od tego, ile obrazów jest w pasku i jak są szerokie.
@@ -30,7 +50,7 @@ const TARGET_SPEED_PX_PER_SEC = 24
 // szerokość toru (przybliżenie dla obecnego zestawu 13 obrazów na desktopie).
 const FALLBACK_DURATION_SEC = 135
 
-function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
+function PartsGroup({ ariaHidden, locale }: { ariaHidden?: boolean; locale?: string }) {
   return (
     <div className="flex items-center shrink-0" style={{ gap: "40px" }} aria-hidden={ariaHidden}>
       {parts.map((part, i) => (
@@ -40,7 +60,7 @@ function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
         >
           <Image
             src={part.src}
-            alt={ariaHidden ? "" : part.alt}
+            alt={ariaHidden ? "" : (locale === "en" && ALT_EN[part.name]) || part.alt}
             width={part.width}
             height={part.height}
             loading="lazy"
@@ -55,7 +75,7 @@ function PartsGroup({ ariaHidden }: { ariaHidden?: boolean }) {
   )
 }
 
-export default function PrintedPartsTicker() {
+export default function PrintedPartsTicker({ locale }: { locale?: string } = {}) {
   const trackRef = useRef<HTMLDivElement | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   const [durationSec, setDurationSec] = useState(FALLBACK_DURATION_SEC)
@@ -120,8 +140,8 @@ export default function PrintedPartsTicker() {
           className="flex items-center parts-ticker-track"
           style={{ gap: "40px", width: "max-content", animationDuration: `${durationSec}s` }}
         >
-          <PartsGroup />
-          <PartsGroup ariaHidden />
+          <PartsGroup locale={locale} />
+          <PartsGroup ariaHidden locale={locale} />
         </div>
       </div>
       <style>{`

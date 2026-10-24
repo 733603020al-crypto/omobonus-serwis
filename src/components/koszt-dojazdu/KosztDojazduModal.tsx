@@ -12,7 +12,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 // Popup on /kontakt. Order: 1) "use my location" (the browser asks only after this click) — the found address
 // is shown in the field to confirm; 2) or type an address and pick one of Google's suggestions;
 // 3) "Oblicz koszt" becomes active once the address is set → the server asks Google for the route.
-type Lang = 'pl' | 'uk' | 'ru'
+type Lang = 'pl' | 'uk' | 'ru' | 'en'
 type Wynik = {
   klientAdres: string; metry: number; czasMin: number
   map: { src: string; width: number; height: number }
@@ -84,6 +84,26 @@ const T = {
       no_route: 'Google не построил маршрут к этому адресу. Позвоните, и мы посчитаем стоимость.',
       busy: 'Слишком много запросов. Попробуйте через минуту.',
       other: 'Не удалось посчитать маршрут. Попробуйте ещё раз или позвоните.',
+    },
+  },
+  en: {
+    title: 'Travel cost', close: 'Close',
+    intro: 'Check the cost of picking up or delivering your device.',
+    locate: 'Use my location', locating: 'Finding your location…',
+    privacy: 'Your location is used only to calculate the travel cost — it gives no access to your device.',
+    ask: 'Prefer not to share your location? Enter the address manually below:',
+    adresLabel: 'Address',
+    placeholder: 'Enter an address and pick it from the list (e.g. ul. Legnicka 12)', placeholderKrotki: 'Enter and pick an address',
+    confirm: 'Check the address and click “Calculate cost”.',
+    geo: 'We have no access to your location — enter the address above.',
+    count: 'Calculate cost', counting: 'Calculating…', najpierw: 'Enter an address to calculate the cost',
+    change: 'Change address', alt: 'Route from the Omobonus service to the customer according to Google Maps',
+    mapAlt: 'Map of Wrocław showing the Omobonus service location',
+    err: {
+      not_found: 'We could not find this address. Check the street, number and city.',
+      no_route: 'Google could not plan a route to this address. Call us and we will calculate the cost.',
+      busy: 'Too many requests. Please try again in a moment.',
+      other: 'We could not calculate the route. Please try again or call us.',
     },
   },
 }

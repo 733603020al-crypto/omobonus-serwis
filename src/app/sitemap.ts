@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 import { services } from '@/lib/services-data'
 import { servicesUk } from '@/lib/services-data-uk'
 import { servicesRu } from '@/lib/services-data-ru'
+import { servicesEn } from '@/lib/services-data-en'
 import { noindexSlugs } from '@/lib/services-meta-shared'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -127,5 +128,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...mainPages, ...servicePages, ...ukMainPages, ...ukServicePages, ...ruMainPages, ...ruServicePages]
+  const enMainPages = [
+    {
+      url: `${baseUrl}/en`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/o-nas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/en/kontakt`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/en/polityka-prywatnosci`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/en/regulamin`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+  ]
+
+  const enServicePages = servicesEn.filter((service) => !noindexSlugs.includes(service.slug)).map((service) => ({
+    url: `${baseUrl}/en/uslugi/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }))
+
+  return [...mainPages, ...servicePages, ...ukMainPages, ...ukServicePages, ...ruMainPages, ...ruServicePages, ...enMainPages, ...enServicePages]
 }

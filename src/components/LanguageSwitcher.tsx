@@ -8,7 +8,7 @@ import { ChevronDown } from 'lucide-react'
 import manifest from '@/config/manifest'
 
 interface LocaleOption {
-  code: 'pl' | 'uk' | 'ru'
+  code: 'pl' | 'uk' | 'ru' | 'en'
   /** Префикс маршрута локали, '' для корневой (pl) локали */
   prefix: string
   /** Полное название языка в выпадающем списке */
@@ -27,6 +27,7 @@ const SUPPORTED_LOCALES: LocaleOption[] = [
   { code: 'pl', prefix: '', fullLabel: 'Polski', flagSrc: '/images/pl.webp', labelSrc: '/images/lang-label-pl.svg', labelWidth: 16, labelHeight: 18 },
   { code: 'uk', prefix: '/uk', fullLabel: 'Українська', flagSrc: '/images/ua.webp', labelSrc: '/images/lang-label-uk.svg', labelWidth: 20, labelHeight: 18 },
   { code: 'ru', prefix: '/ru', fullLabel: 'Русский', flagSrc: '/images/other.webp' },
+  { code: 'en', prefix: '/en', fullLabel: 'English', flagSrc: '/images/gb.webp' },
 ]
 
 function matchesLocale(pathname: string, locale: LocaleOption): boolean {
@@ -141,7 +142,7 @@ export function LanguageSwitcher() {
           style={isOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
-          aria-label="Wybierz język / Вибрати мову / Выбрать язык"
+          aria-label="Wybierz język / Вибрати мову / Выбрать язык / Choose language"
         >
           <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>

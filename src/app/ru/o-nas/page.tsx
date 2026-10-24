@@ -5,13 +5,14 @@ import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('ru', {
   title: 'О нас | Честный сервис компьютеров и принтеров',
-  description: 'Мы не зарабатываем на вашей проблеме. Omobonus — сервис компьютеров, ноутбуков и принтеров во Вроцлаве ✔ 10+ лет опыта ✔ Диагностика за 15 мин ✔ Ремонт за 48 часов',
+  description: '✔ 10+ лет ремонта компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Честные цены без скрытых платежей ✔ Скажем, когда ремонт невыгоден ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/ru/o-nas',
     languages: {
       pl: 'https://serwis.omobonus.com.pl/o-nas',
       uk: 'https://serwis.omobonus.com.pl/uk/o-nas',
       ru: 'https://serwis.omobonus.com.pl/ru/o-nas',
+      en: 'https://serwis.omobonus.com.pl/en/o-nas',
       'x-default': 'https://serwis.omobonus.com.pl/o-nas',
     },
   },

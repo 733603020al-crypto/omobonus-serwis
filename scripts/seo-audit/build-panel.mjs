@@ -15,15 +15,15 @@ export const SITE = process.env.SEO_SITE || 'http://localhost:3000'
 export const today = () => new Date().toLocaleDateString('sv-SE') // YYYY-MM-DD
 const tabFile = (k) => path.join(os.tmpdir(), `omobonus-seo-${k}.json`)
 
-// Адреса проверки: главная и /uslugi/* на PL/UK/RU — из sitemap
+// Адреса проверки: главная и /uslugi/* на PL/UK/RU/EN — из sitemap
 export async function siteUrls() {
   const sm = await (await fetch(`${SITE}/sitemap.xml`)).text()
   return [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((m) => new URL(m[1]).pathname.replace(/\/$/, '') || '/')
-    .filter((u) => u === '/' || /^(\/(uk|ru))?(\/uslugi\/[^/]+)?$/.test(u))
+    .filter((u) => u === '/' || /^(\/(uk|ru|en))?(\/uslugi\/[^/]+)?$/.test(u))
 }
 export const parse = (u) => {
-  const m = (u === '/' ? '' : u).match(/^(?:\/(uk|ru))?(?:\/uslugi\/([^/]+))?$/)
+  const m = (u === '/' ? '' : u).match(/^(?:\/(uk|ru|en))?(?:\/uslugi\/([^/]+))?$/)
   return { l: m[1] || 'pl', s: m[2] || '' }
 }
 export const unesc = (s) =>

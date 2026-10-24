@@ -12,13 +12,14 @@ const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = withSocialMeta('pl', {
   title: 'Kontakt | Serwis komputerów, laptopów i drukarek',
-  description: '✔ Serwis komputerów, laptopów, drukarek, ploterów, ... we Wrocławiu ✔ Diagnoza w 15 min ✔ Pełny wykaz cen na stronie ✔ Umów serwis już dziś! ✔  ☎ 793 759 262',
+  description: '✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Zadzwoń, napisz lub wyślij zgłoszenie serwisowe ✔ Pełny cennik na stronie ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/kontakt',
     languages: {
       'pl': 'https://serwis.omobonus.com.pl/kontakt',
       'uk': 'https://serwis.omobonus.com.pl/uk/kontakt',
       'ru': 'https://serwis.omobonus.com.pl/ru/kontakt',
+      'en': 'https://serwis.omobonus.com.pl/en/kontakt',
       'x-default': 'https://serwis.omobonus.com.pl/kontakt',
     },
   },

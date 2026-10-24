@@ -13,6 +13,7 @@ export const metadata: Metadata = withSocialMeta('uk', {
       'pl': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
       'uk': 'https://serwis.omobonus.com.pl/uk/polityka-prywatnosci',
       'ru': 'https://serwis.omobonus.com.pl/ru/polityka-prywatnosci',
+      'en': 'https://serwis.omobonus.com.pl/en/polityka-prywatnosci',
       'x-default': 'https://serwis.omobonus.com.pl/polityka-prywatnosci',
     },
   },

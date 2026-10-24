@@ -15,6 +15,7 @@ const ALT = {
   pl: 'Trasa z serwisu Omobonus do Klienta według Google Maps',
   uk: 'Маршрут від сервісу Omobonus до Клієнта за Google Maps',
   ru: 'Маршрут от сервиса Omobonus к Клиенту по Google Maps',
+  en: 'Route from the Omobonus service to the Customer according to Google Maps',
 }
 
 export default async function Page({ searchParams }: { searchParams: SP }) {
@@ -22,7 +23,7 @@ export default async function Page({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams
   const w = sp.id ? kosztStore().get(sp.id) : undefined
   if (!w) return <main className="p-10 text-white">Brak trasy — najpierw /dev/koszt-dojazdu/dane?adres=…</main>
-  const lang = sp.lang === 'uk' || sp.lang === 'ru' ? sp.lang : 'pl'
+  const lang = sp.lang === 'uk' || sp.lang === 'ru' || sp.lang === 'en' ? sp.lang : 'pl'
   const num = (v: string | undefined, d: number) => { const n = Number(String(v ?? '').replace(',', '.')); return Number.isFinite(n) && n > 0 ? n : d }
   const taryfa = { ...TARYFA_STANDARD, baza: num(sp.baza, TARYFA_STANDARD.baza), stawka: num(sp.stawka, TARYFA_STANDARD.stawka) }
   const k = obliczKosztDojazdu(w.metry, taryfa)
