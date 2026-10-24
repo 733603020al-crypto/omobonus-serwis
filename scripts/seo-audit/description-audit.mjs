@@ -7,20 +7,31 @@
 // Нужен работающий dev-сервер на localhost:3000. Сайт скрипт не меняет.
 import fs from 'node:fs'
 import path from 'node:path'
-import { ROOT, HISTORY, PANEL, SITE, siteUrls, parse, unesc, fmt, diff, saveTab, countTodo, record, writePanel } from './build-panel.mjs'
+import { ROOT, HISTORY, PANEL, SITE, INFO_PAGES, siteUrls, parse, unesc, fmt, diff, saveTab, countTodo, record, writePanel } from './build-panel.mjs'
 
 const DECISIONS = path.join(ROOT, 'docs/seo/description-decisions.json')
 const TITLES = path.join(ROOT, 'docs/seo/title-decisions.json')
 const DRY = process.argv.includes('--dry')
 
 const dec = JSON.parse(fs.readFileSync(DECISIONS, 'utf8'))
-const { names = {}, groups: baseGroups } = JSON.parse(fs.readFileSync(TITLES, 'utf8'))
+const { names: titleNames = {}, groups: titleGroups } = JSON.parse(fs.readFileSync(TITLES, 'utf8'))
+const names = { 'o-nas': 'O nas', kontakt: 'Kontakt', ...titleNames }
+const baseGroups = [...titleGroups, ['O firmie', INFO_PAGES]]
 const hist = JSON.parse(fs.readFileSync(HISTORY, 'utf8'))
 
-const urls = await siteUrls()
+// Description проверяются и на страницах фирмы (/o-nas, /kontakt) — у них утверждённые тексты-исключения
+// Страница, которая не открылась, не считается проверенной — остаётся в «пропавших»
+const failed = []
+const urls = []
 const current = {}
-for (const u of urls) {
-  const html = await (await fetch(SITE + u)).text()
+for (const u of await siteUrls({ info: true })) {
+  const res = await fetch(SITE + u)
+  if (!res.ok) {
+    failed.push(`${u} (${res.status})`)
+    continue
+  }
+  urls.push(u)
+  const html = await res.text()
   const m = html.match(/<meta\s+name="description"\s+content="([^"]*)"/) || html.match(/<meta\s+content="([^"]*)"\s+name="description"/)
   current[u] = unesc(m ? m[1] : '')
 }
@@ -60,4 +71,5 @@ if (!DRY) record(hist, 'description', { pages: urls.length, problems, changes, c
 writePanel(hist)
 
 console.log(`Страниц: ${urls.length} · требуют решения: ${problems ?? '?'} · изменений с прошлой проверки: ${changes.length}`)
+if (failed.length) console.warn(`Не открылись: ${failed.join(', ')}`)
 console.log(`Панель: ${PANEL}${DRY ? ' (без записи в историю)' : ''}`)
