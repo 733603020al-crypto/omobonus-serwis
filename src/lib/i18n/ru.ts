@@ -95,8 +95,6 @@ export const ru = {
     privacyHref: '/ru/polityka-prywatnosci',
     regulaminHref: '/ru/regulamin',
     cookieSettings: 'Настройки cookies',
-    mapNotice: 'Карта Google загружается только после нажатия. Тогда Google получит ваш IP-адрес и может сохранить файлы cookies.',
-    mapButton: 'Показать карту',
   },
   homeCta: {
     heading: 'Есть проблема с вашим устройством?',
