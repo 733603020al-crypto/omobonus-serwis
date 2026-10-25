@@ -1,0 +1,209 @@
+import type { ReactNode } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
+import manifest from '@/config/manifest'
+import { FadeSlideP } from '@/components/ui/fade-slide-p'
+import { GOLD_CTA, GOLD_CTA_SIZE } from '@/components/ui/gold-cta'
+
+export interface AboutT {
+  eyebrow?: string
+  heading: string
+  subheading: string
+  ourCompany: string
+  description: readonly string[]
+  quote: string
+  quoteSubtitle: string
+  moreAboutLink?: string
+  moreAboutHref?: string
+  /** Saint image alt; PL text when not set */
+  saintAlt?: string
+  // legacy fields — kept for type-compat with existing translations
+  kdkText?: string
+  whyUs?: string
+  checklist?: readonly string[]
+}
+
+const PL: AboutT = {
+  eyebrow: 'Skąd nazwa',
+  heading: 'Święty Omobonus XII wieku',
+  subheading: '(łac. „Homobonus" — Dobry człowiek). Patron biznesmenów i przemysłowców. Był uczciwym rzemieślnikiem, który część swoich dochodów przekazywał potrzebującym.',
+  ourCompany: 'O nas:',
+  description: [
+    'Jesteśmy zespołem, który wierzy, że praca może być również pomocą i służbą innym ludziom. Zysk jest potrzebny, ale nie jest naszym idolem ani bożkiem. Nie chcemy się bogacić za wszelką cenę.',
+  ],
+  quote: 'Brak oszustwa i szacunek do klienta',
+  quoteSubtitle: 'to nasze podstawowe zasady pracy',
+  moreAboutLink: 'Więcej o nas',
+  moreAboutHref: '/o-nas',
+}
+
+export function About({
+  t,
+  bare = false,
+  reviewsSlot,
+  compact = false,
+  showMoreLink = false,
+  plainHeadings = false,
+}: {
+  t?: AboutT
+  bare?: boolean
+  // Passed in from a sibling Server Component (e.g. <GoogleReviews /> from
+  // '@/components/google-reviews') so the parent template controls ordering.
+  reviewsSlot?: ReactNode
+  compact?: boolean
+  showMoreLink?: boolean
+  /** Home page: the saint's name and "O nas:" are plain text, not headings. Visible text unchanged. */
+  plainHeadings?: boolean
+} = {}) {
+  const d = t ?? PL
+  const SaintHeading = plainHeadings ? 'div' : 'h2'
+  const OurCompanyHeading = plainHeadings ? 'div' : 'h3'
+  // Desktop copies: heading role only where the block is a real heading (/o-nas).
+  const desktopHeading = (level: number) => (plainHeadings ? {} : { role: 'heading', 'aria-level': level })
+  return (
+    <section
+      id="o-nas"
+      className={`relative ${bare ? 'pt-5 md:pt-8' : 'py-16 md:py-24'}`}
+    >
+      {!bare && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `var(--bg-parchment)` }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+      )}
+
+      <div className="relative max-w-6xl mx-auto px-6">
+        {/* Mobile-only: logiczna kolejność treści */}
+        <div className="md:hidden text-white space-y-6">
+          {d.eyebrow && (
+            <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a] text-center">
+              {d.eyebrow}
+            </FadeSlideP>
+          )}
+          <div className="space-y-2">
+            <SaintHeading className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
+              {d.heading}
+            </SaintHeading>
+            <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
+              {d.subheading}
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl max-w-sm w-full">
+              <Image
+                src={manifest.omobonus_hero}
+                alt={d.saintAlt ?? 'Święty Omobonus'}
+                width={400}
+                height={500}
+                sizes="(max-width: 768px) 85vw, 400px"
+                className="object-contain rounded-lg w-full h-auto"
+                quality={60}
+              />
+            </div>
+          </div>
+          <div>
+            <OurCompanyHeading className="text-2xl font-cormorant font-bold leading-tight mb-2 text-white">
+              {d.ourCompany}
+            </OurCompanyHeading>
+            <p className="text-base font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
+              {d.description[0]}
+            </p>
+          </div>
+          <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
+            <p className="text-xl md:text-2xl font-serif font-semibold text-white">
+              &ldquo;{d.quote}&rdquo;
+            </p>
+            <p className="text-base md:text-lg font-serif font-normal italic text-[#bfa76a]">
+              {d.quoteSubtitle}
+            </p>
+          </div>
+          {showMoreLink && (
+            <div className="flex justify-center !mt-1">
+              <Link
+                href={d.moreAboutHref ?? '/o-nas'}
+                prefetch={false}
+                className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
+              >
+                <span className="gold-text-sweep">{d.moreAboutLink ?? 'Więcej o nas'}</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop: istniejący układ bez zmian */}
+        <div className="hidden md:grid md:grid-cols-2 md:gap-16 items-center">
+          {/* Portrait */}
+          <div className="flex justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 shadow-2xl max-w-sm w-full">
+              <Image
+                src={manifest.omobonus_hero}
+                alt={d.saintAlt ?? 'Święty Omobonus'}
+                width={400}
+                height={500}
+                sizes="(max-width: 768px) 85vw, 400px"
+                className="object-contain rounded-lg w-full h-auto"
+                quality={60}
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <div className="text-white space-y-6">
+            {d.eyebrow && (
+              <FadeSlideP className="brush-underline text-sm font-inter font-semibold tracking-widest uppercase text-[#bfa76a]">
+                {d.eyebrow}
+              </FadeSlideP>
+            )}
+            <div className="space-y-2">
+              <div {...desktopHeading(2)} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight text-[#bfa76a]">
+                {d.heading}
+              </div>
+              <p className="font-serif text-base md:text-lg font-normal italic leading-[1.35] text-[#bfa76a]">
+                {d.subheading}
+              </p>
+            </div>
+            <div>
+              <div {...desktopHeading(3)} className="text-2xl md:text-3xl font-cormorant font-bold leading-tight mb-2 text-white">
+                {d.ourCompany}
+              </div>
+              <p className="text-base md:text-lg font-serif text-[rgba(255,255,245,0.85)] leading-[1.35]">
+                {d.description[0]}
+              </p>
+            </div>
+            <div className="border-l-2 border-[#bfa76a]/70 pl-5 space-y-[3px]">
+              <p className="text-xl md:text-2xl font-serif font-semibold text-white">
+                &ldquo;{d.quote}&rdquo;
+              </p>
+              <p className="text-base md:text-lg font-serif font-normal italic text-[#bfa76a]">
+                {d.quoteSubtitle}
+              </p>
+            </div>
+            {showMoreLink && (
+              <div className="pl-5 !mt-1">
+                <Link
+                  href={d.moreAboutHref ?? '/o-nas'}
+                  prefetch={false}
+                  className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
+                >
+                  <span className="gold-text-sweep">{d.moreAboutLink ?? 'Więcej o nas'}</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+
+      </div>
+
+      {reviewsSlot && (
+        <div className="mt-12">
+          {reviewsSlot}
+        </div>
+      )}
+    </section>
+  )
+}
