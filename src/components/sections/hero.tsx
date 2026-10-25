@@ -53,6 +53,26 @@ const CAROUSEL_PL = {
   ] as readonly HeroMid[],
 }
 
+const ORDERED_CAROUSEL_MIDS: readonly HeroMid[] = [
+  { group: 'laptop', parts: ['laptopów', ''] },
+  { group: 'pc', parts: ['komputerów', 'stacjonarnych'] },
+  { group: 'printer', parts: ['drukarek', 'laserowych'] },
+  { group: 'printer', parts: ['drukarek', 'atramentowych'] },
+  { group: 'printer', parts: ['drukarek', 'igłowych'] },
+  { group: 'printer', parts: ['drukarek', 'etykiet'] },
+  { group: 'printer', parts: ['drukarek', '3D'] },
+  { group: 'printer', parts: ['drukarek', 'sublimacyjnych'] },
+  { group: 'printer', parts: ['drukarek', 'DTF'] },
+  { group: 'printer', parts: ['drukarek', 'DTG'] },
+  { group: 'printer', parts: ['drukarek', 'spożywczych'] },
+  { group: 'printer', parts: ['drukarek', 'do kart plastikowych'] },
+  { group: 'plotter', parts: ['ploterów', ''] },
+  { group: 'shredder', parts: ['niszczarek', ''] },
+  { group: 'ups', parts: ['zasilaczy', 'awaryjnych UPS'] },
+  { group: 'projector', parts: ['projektorów', ''] },
+  { group: 'coffee', parts: ['ekspresów', 'do kawy'] },
+]
+
 const PL: HeroT = {
   h1Line1: 'Serwis komputerów,',
   h1Line2: 'laptopów, drukarek i urządzeń biurowych',
@@ -122,7 +142,7 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
           h1={`${d.h1Line1} ${d.h1Line2} ${d.h1Line3}`}
           line1={d.carouselLine1 ?? CAROUSEL_PL.line1}
           line3={d.carouselLine3 ?? CAROUSEL_PL.line3}
-          mids={d.carouselMids ?? CAROUSEL_PL.mids}
+          mids={d.carouselMids ?? ORDERED_CAROUSEL_MIDS}
           alt={d.carouselAlt ?? CAROUSEL_PL.alt}
           basePath={locale === 'pl' ? '/uslugi' : `/${locale}/uslugi`}
           cta={cta}

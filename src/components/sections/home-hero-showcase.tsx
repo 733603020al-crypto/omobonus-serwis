@@ -24,19 +24,25 @@ const SLIDES = [
   '/images/iglowe-carousel-v3-01.webp',
   '/images/termiczne-carousel-v3-01.webp',
   '/images/Serwis_i_Naprawa_Drukarek_3D.webp',
-  '/images/plotter-carousel-v3-00.webp',
+  '/images/sublimacja-carousel-v1-01.webp',
+  '/images/dtf-carousel-v3-01.webp',
+  '/images/dtg-carousel-v1-01.webp',
+  '/images/spozywcze-carousel-v1-04.webp',
   '/images/karty-carousel-v1-03.webp',
+  '/images/plotter-carousel-v3-00.webp',
   '/images/niszczarki-carousel-v2-06.webp',
   '/images/ups-carousel-v1-01.webp',
+  '/images/projektory-carousel-v1-03.webp',
+  '/images/kawa-carousel-v1-01.webp',
 ]
 // Same on-screen size as on each service page (its own HERO_SCALE box and
 // slide-0 coefficient), recalculated for this 1.2 box.
-const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85, 0.95, 0.74]
+const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85, 0.85, 0.85, 0.78, 0.85, 0.95, 0.74, 0.82, 0.82]
 // Phones: every picture stays within ~90% of the screen width (cap 0.75 on
 // the full-width box), smaller ones keep their own size.
 // The laptop (slide 0 and the opening laptop) is 10% bigger and may reach the screen edges.
 const MOBILE_SIZE_COEFFICIENTS = SIZE_COEFFICIENTS.map((c, i) => (i === 0 ? 0.825 : Math.min(c, 0.75)))
-const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 0, 4, 13, 0]
+const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 13, 0, 4, 0, 0]
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
 const SLIDE_POSTERS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static.webp']
@@ -62,9 +68,15 @@ const SLUGS = [
   'serwis-drukarek-termicznych',
   'serwis-drukarek-3d',
   'serwis-plotterow',
+  'serwis-drukarek-sublimacyjnych',
+  'serwis-drukarek-dtf',
+  'serwis-drukarek-dtg',
+  'serwis-drukarek-spozywczych',
   'serwis-drukarek-do-kart-plastikowych',
   'serwis-niszczarek',
   'naprawa-zasilaczy-ups',
+  'naprawa-projektorow',
+  'serwis-ekspresow-do-kawy',
 ]
 
 export interface HeroMid {
