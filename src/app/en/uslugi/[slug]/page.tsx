@@ -147,6 +147,7 @@ export default async function EnServicePage({
       heroLabels={heroLabels}
       headings={headingsEn[slug] ?? { h1: service.title }}
       seoBlocks={seoBlocksEn[slug]}
+      seoBlocksPlainText
       slugBrands={slugBrands[slug]}
       imageSrc={serviceImageSrc[slug] || service.icon}
       imageAlt={imageAltEn[slug] || service.title}

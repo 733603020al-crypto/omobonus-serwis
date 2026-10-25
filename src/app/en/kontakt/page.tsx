@@ -12,7 +12,7 @@ const Contact = dynamic(() =>
 const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer))
 
 export const metadata: Metadata = withSocialMeta('en', {
-  title: 'Contact | Computer, Laptop and Printer Service',
+  title: { absolute: 'Contact | Computer, Laptop and Printer Service' },
   description: '✔ Computer, laptop and printer repair in Wrocław ✔ Call, message us or submit a service request ✔ Full price list on our website ☎ 793 759 262',
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/en/kontakt',
