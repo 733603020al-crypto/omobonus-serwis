@@ -9,7 +9,7 @@
 | История проверок по вкладкам SEO-панели | `docs/seo/audit-history.json` |
 | Проверка и сборка панели | `scripts/seo-audit/title-audit.mjs` |
 | Вид панели | `scripts/seo-audit/panel-template.html` |
-| Сервер панели (localhost:4100) | `scripts/seo-audit/serve.mjs` |
+| Панель | Omobonus Workspace → `http://localhost:5180/seo` |
 
 Где задаются Title на сайте: `src/lib/services-meta-{pl,uk,ru}.tsx` (`seoMetadata`), главная PL — `src/app/(pl)/page.tsx`. Суффикс добавляет шаблон layout.
 
@@ -63,7 +63,7 @@
 
 ## 4. Порядок согласования
 
-- **Согласование:** любые изменения Title проходят исключительно через SEO-панель (`localhost:4100`).
+- **Согласование:** любые изменения Title проходят исключительно через SEO-панель Omobonus Workspace (`localhost:5180/seo`).
 - **Утверждение:** запрещено изменять Title на сайте без окончательного утверждения пользователя.
 
 1. Пользователь в панели нажимает **Утвердить** (принять предложение Claude) или **Отклонить** и вписывает «Свой вариант». Суффикс добавится сам.
@@ -91,7 +91,7 @@
    6. Собирает панель в `%TEMP%\omobonus-seo-panel.html`.
 
    `--dry` — без записи в историю.
-3. Если сервер панели не запущен — `node scripts/seo-audit/serve.mjs` (в фоне), затем открыть `http://localhost:4100` в Chrome.
+3. Результат — в SEO-панели Omobonus Workspace `http://localhost:5180/seo` (если не запущена — `C:/Users/Andrii/omobonus-workspace/app/start-workspace.vbs`).
 4. Для новых страниц и изменённых Title Claude делает следующее:
    - Если Title не по правилам — добавляет предложение в `pending.proposals` и пересобирает панель (`--dry`).
    - Если Title новой страницы по правилам — оставляет как есть: панель предложит утвердить текущий.

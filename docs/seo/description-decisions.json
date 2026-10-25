@@ -9,7 +9,7 @@
    "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («przed pracą» → «przed rozpoczęciem», без запятой после «cennik»), без отдельной проверки в панели",
    "length": 159,
    "agreed": true,
-   "exception": "Главная: общий текст вместо работ"
+   "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
   },
   "/uk": {
    "lang": "uk",
@@ -18,7 +18,7 @@
    "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Вартість» → «Ціну» (было 161 знак)), без отдельной проверки в панели",
    "length": 157,
    "agreed": true,
-   "exception": "Главная: общий текст вместо работ"
+   "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
   },
   "/ru": {
    "lang": "ru",
@@ -27,7 +27,7 @@
    "note": "Согласовано сразу в чате: свой вариант пользователя с правкой Claude («Стоимость… согласовываем» → «Цену… согласуем» (было 164 знака)), без отдельной проверки в панели",
    "length": 155,
    "agreed": true,
-   "exception": "Главная: общий текст вместо работ"
+   "exception": "Главная: общий текст «Serwis i naprawa komputerów, laptopów i drukarek» + «Koszt naprawy uzgadniamy przed rozpoczęciem» вместо работ (вариант пользователя)"
   },
   "/uslugi/serwis-laptopow": {
    "lang": "pl",
@@ -77,7 +77,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 158,
-   "exception": "Не ремонт: аутсорсинг IT"
+   "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/uk/uslugi/outsourcing-it": {
    "lang": "uk",
@@ -85,7 +85,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 157,
-   "exception": "Не ремонт: аутсорсинг IT"
+   "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/ru/uslugi/outsourcing-it": {
    "lang": "ru",
@@ -93,7 +93,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 156,
-   "exception": "Не ремонт: аутсорсинг IT"
+   "exception": "Не ремонт: «Outsourcing IT i obsługa informatyczna firm» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/uslugi/naprawa-drukarek": {
    "lang": "pl",
@@ -278,7 +278,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 151,
-   "exception": "Не ремонт: печать на заказ"
+   "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/uk/uslugi/druk-3d-na-zamowienie": {
    "lang": "uk",
@@ -286,7 +286,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 144,
-   "exception": "Не ремонт: печать на заказ"
+   "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/ru/uslugi/druk-3d-na-zamowienie": {
    "lang": "ru",
@@ -294,7 +294,7 @@
    "date": "2026-10-19",
    "note": "Утверждено пользователем 19.10 (решения из панели)",
    "length": 143,
-   "exception": "Не ремонт: печать на заказ"
+   "exception": "Не ремонт: «Druk 3D na zamówienie» вместо «Serwis i naprawa», перечислены услуги"
   },
   "/uslugi/serwis-drukarek-dtf": {
    "lang": "pl",
@@ -387,7 +387,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 159,
    "agreed": true,
-   "exception": "Не ремонт: аренда",
+   "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
    "history": [
     {
      "description": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Serwis i tonery w cenie ✔ Bez umowy długoterminowej ☎ 793 759 262",
@@ -404,7 +404,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 154,
    "agreed": true,
-   "exception": "Не ремонт: аренда",
+   "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
    "history": [
     {
      "description": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Сервіс і тонери в ціні ✔ Без довгострокового договору ☎ 793 759 262",
@@ -421,7 +421,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 152,
    "agreed": true,
-   "exception": "Не ремонт: аренда",
+   "exception": "Аренда — не ремонт: начало «Wynajem / Оренда / Аренда…» вместо «Serwis i naprawa»; вместо работ — условия аренды",
    "history": [
     {
      "description": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Сервис и тонеры в цене ✔ Без долгосрочного договора ☎ 793 759 262",
@@ -561,7 +561,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 160,
    "agreed": true,
-   "exception": "Не ремонт: подменный принтер",
+   "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
    "history": [
     {
      "description": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ Nawet w 24 h ✔ A4 i A3, mono i kolor ✔ Bez abonamentu — płacisz za wydruki ☎ 793 759 262",
@@ -578,7 +578,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 155,
    "agreed": true,
-   "exception": "Не ремонт: подменный принтер",
+   "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
    "history": [
     {
      "description": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ Навіть за 24 години ✔ A4 і A3, ч/б і колір ✔ Без абонплати — оплата за друк ☎ 793 759 262",
@@ -595,7 +595,7 @@
    "note": "Утверждено пользователем 19.10 в чате (финальное внедрение Description)",
    "length": 157,
    "agreed": true,
-   "exception": "Не ремонт: подменный принтер",
+   "exception": "Подменный принтер — не ремонт: начало «Drukarka zastępcza / Принтер на заміну / на замену…» вместо «Serwis i naprawa»; вместо работ — условия",
    "history": [
     {
      "description": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ Даже за 24 часа ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты — оплата за печать ☎ 793 759 262",
@@ -612,7 +612,7 @@
    "note": "Текст пользователя, утверждён в чате; PL — источник для UK/RU/EN",
    "length": 148,
    "agreed": true,
-   "exception": "«О нас»: опыт и цены вместо работ"
+   "exception": "«О нас»: опыт, честные цены, честная оценка целесообразности ремонта вместо работ"
   },
   "/kontakt": {
    "lang": "pl",
@@ -621,7 +621,7 @@
    "note": "Текст пользователя, утверждён в чате; PL — источник для UK/RU/EN",
    "length": 153,
    "agreed": true,
-   "exception": "«Контакты»: способы связи вместо работ"
+   "exception": "«Контакты»: способы связи вместо работ, «Pełny cennik na stronie» без «bez ukrytych kosztów»"
   },
   "/uk/o-nas": {
    "lang": "uk",
@@ -630,7 +630,7 @@
    "note": "Синхронизировано по смыслу с утверждённым PL",
    "length": 148,
    "agreed": true,
-   "exception": "«О нас»: опыт и цены вместо работ"
+   "exception": "«О нас»: опыт, честные цены, честная оценка целесообразности ремонта вместо работ"
   },
   "/uk/kontakt": {
    "lang": "uk",
@@ -639,7 +639,7 @@
    "note": "Синхронизировано по смыслу с утверждённым PL",
    "length": 158,
    "agreed": true,
-   "exception": "«Контакты»: способы связи вместо работ"
+   "exception": "«Контакты»: способы связи вместо работ, «Pełny cennik na stronie» без «bez ukrytych kosztów»"
   },
   "/ru/o-nas": {
    "lang": "ru",
@@ -648,7 +648,7 @@
    "note": "Синхронизировано по смыслу с утверждённым PL",
    "length": 147,
    "agreed": true,
-   "exception": "«О нас»: опыт и цены вместо работ"
+   "exception": "«О нас»: опыт, честные цены, честная оценка целесообразности ремонта вместо работ"
   },
   "/ru/kontakt": {
    "lang": "ru",
@@ -657,7 +657,7 @@
    "note": "Синхронизировано по смыслу с утверждённым PL",
    "length": 155,
    "agreed": true,
-   "exception": "«Контакты»: способы связи вместо работ"
+   "exception": "«Контакты»: способы связи вместо работ, «Pełny cennik na stronie» без «bez ukrytych kosztów»"
   },
   "/en/o-nas": {
    "lang": "en",

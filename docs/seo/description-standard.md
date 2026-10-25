@@ -1,6 +1,6 @@
 # Стандарт Description — Omobonus
 
-Постоянный стандарт meta description. Действует для главной и всех `/uslugi/*` на PL/UK/RU/EN. Утверждён пользователем 2026-10-19, после внедрения 69 Description (коммит `11f3473`).
+Постоянный стандарт meta description. Действует для главной, всех `/uslugi/*` и страниц фирмы `/o-nas`, `/kontakt` на PL/UK/RU/EN (страницы фирмы — с 2026-10-24, их тексты утверждены как исключения, см. раздел 2). Утверждён пользователем 2026-10-19, после внедрения 69 Description (коммит `11f3473`).
 
 | Что | Где |
 |---|---|
@@ -10,11 +10,12 @@
 | История проверок | `docs/seo/audit-history.json` (`tabs.description`) |
 | Проверка и сборка вкладки | `scripts/seo-audit/description-audit.mjs` |
 | Автоматические проверки и вид панели | `scripts/seo-audit/panel-template.html` (лист Description) |
-| Сервер панели | `scripts/seo-audit/serve.mjs` → `http://localhost:4100/#description` |
+| Панель | Omobonus Workspace → `http://localhost:5180/seo?tab=description` |
 
 Где Description задаются на сайте:
 - услуги — `src/lib/services-meta-{pl,uk,ru}.tsx` (`seoMetadata`);
 - главная — `src/app/(pl)/page.tsx`, `src/app/uk/page.tsx`, `src/app/ru/page.tsx`.
+- страницы фирмы — `src/app/{(pl),uk,ru,en}/{o-nas,kontakt}/page.tsx`.
 
 **Утверждённые Description важнее шаблона.** Утверждённый текст не переписывается ради соответствия правилам. Если он расходится со стандартом, это выносится пользователю на решение. Новые исключения — только после отдельного согласования.
 
@@ -103,6 +104,8 @@
 | naprawa-drukarek (хаб) | `exception` | Типы техники вместо работ |
 | wynajem-drukarek | `exception` | Аренда — не ремонт: начало «Wynajem drukarek i kserokopiarek» вместо «Serwis i naprawa», вместо работ — условия аренды; концовка стандартная |
 | drukarka-zastepcza | `exception` | Подменный принтер — не ремонт: начало «Drukarka zastępcza na czas naprawy» вместо «Serwis i naprawa», вместо работ — условия; концовка стандартная, без обещаний сроков |
+| O nas PL/UK/RU/EN | `exception` | Страница фирмы: опыт, честные цены и честная оценка, стоит ли ремонт, вместо работ — текст пользователя |
+| Kontakt PL/UK/RU/EN | `exception` | Страница фирмы: способы связи вместо работ, «Pełny cennik na stronie» без «bez ukrytych kosztów» |
 
 UPS в UK/RU («ДБЖ (UPS)», «ИБП (UPS)») идёт по шаблону, отдельного исключения не нужно (правило 21).
 
@@ -184,11 +187,12 @@ UPS в UK/RU («ДБЖ (UPS)», «ИБП (UPS)») идёт по шаблону, 
 
 1. Ветка `test`, `http://localhost:3000` отвечает.
 2. Запустить `node scripts/seo-audit/description-audit.mjs` (`--dry` — без записи в историю):
-   - адреса берутся из `sitemap.xml`;
+   - адреса берутся из `sitemap.xml`: главная, `/uslugi/*`, `/o-nas`, `/kontakt` (Title и H1–H4 страницы фирмы пока не проверяют);
+   - страница, которая не открылась, не считается проверенной: она остаётся в списке «пропавших» вместе со страницами, которых нет в sitemap;
    - Description читаются с сайта и сравниваются с `approved`;
    - в историю пишется число страниц, решений и изменений;
    - собирается панель `%TEMP%\omobonus-seo-panel.html`.
-3. Если панель не запущена — `node scripts/seo-audit/serve.mjs`, затем открыть `http://localhost:4100/#description`.
+3. Результат — во вкладке Description панели Omobonus Workspace (`http://localhost:5180/seo?tab=description`).
 4. Когда проверять: после правок Description, для каждой новой страницы (до слияния), при плановой SEO-проверке.
 5. Сайт при проверке не меняется. Commit и push — только по отдельному разрешению.
 

@@ -1,10 +1,10 @@
-// Повторная проверка Title и сборка SEO-панели (localhost:4100).
+// Повторная проверка Title и сборка SEO-панели (Omobonus Workspace, localhost:5180/seo).
 // Правила: docs/seo/title-standard.md · решения: docs/seo/title-decisions.json
 // История: docs/seo/audit-history.json
 //
 //   node scripts/seo-audit/title-audit.mjs          — проверить, записать в историю, собрать панель
 //   node scripts/seo-audit/title-audit.mjs --dry    — без записи в историю
-//   node scripts/seo-audit/serve.mjs               — отдать панель на http://localhost:4100
+//   результат — в Omobonus Workspace: http://localhost:5180/seo
 //
 // Нужен работающий dev-сервер на localhost:3000. Сайт скрипт не меняет.
 import fs from 'node:fs'

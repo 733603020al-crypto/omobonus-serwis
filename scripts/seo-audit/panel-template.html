@@ -294,7 +294,7 @@ function render(){const todo=UI.tab[C.key]==='todo';const want=todo?'todo':'done
     nav+=`<div class="g">${esc(g)}</div>`;
     for(const s of list){const rs=byPage[s];const id='p-'+(s||'home');
       nav+=`<a href="#${id}"><span>${esc(rs[0].name)}</span><span class="d" data-s="${s}">${todo?navCount(rs):rs.length}</span></a>`;
-      const ttl=`${esc(rs[0].name)} <small>${s?'/uslugi/'+s:'/'}</small>`;
+      const ttl=`${esc(rs[0].name)} <small>${s?(/^(o-nas|kontakt|polityka|regulamin)/.test(s)?'/':'/uslugi/')+esc(s):'/'}</small>`;
       pages+=`<section class="page" id="${id}">${todo?`<h2>${ttl}</h2>`:''}<table>`;
       pages+=todo?`<thead><tr><th style="width:150px">Язык / URL</th><th>${C.name} сейчас</th><th style="width:${C.reasonCol?28:32}%">Предлагаемый ${C.name}</th><th style="width:${C.reasonCol?14:18}%">Символы до → после</th>${C.reasonCol?'<th style="width:16%">Причина</th>':''}<th style="width:190px">Решение</th></tr></thead><tbody>${rs.map(decRow).join('')}</tbody>`
         :`<thead><tr><th class="pth" style="width:300px">${ttl}</th><th>${C.name}</th><th style="width:20%">Символы / предупреждение</th><th style="width:24%">История</th></tr></thead><tbody>${rs.map(doneRow).join('')}</tbody>`;

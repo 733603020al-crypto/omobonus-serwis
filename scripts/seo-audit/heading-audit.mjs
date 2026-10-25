@@ -1,4 +1,4 @@
-// Проверка заголовков H1–H4 и сборка вкладок H1–H4 SEO-панели (localhost:4100).
+// Проверка заголовков H1–H4 и сборка вкладок H1–H4 SEO-панели (Omobonus Workspace, localhost:5180/seo?tab=h1).
 // Предложения и решения: docs/seo/heading-decisions.json · история: docs/seo/audit-history.json
 //
 //   node scripts/seo-audit/heading-audit.mjs        — проверить, записать в историю, собрать панель
