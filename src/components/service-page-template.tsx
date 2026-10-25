@@ -450,9 +450,10 @@ interface SeoBlocksGridProps {
   items: string[]
   variant: 'related' | 'accordion'
   slug?: string
+  plainText?: boolean
 }
 
-function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
+function SeoBlocksGrid({ items, variant, slug, plainText = false }: SeoBlocksGridProps) {
   if (!items.length) return null
   const wrapperClass = variant === 'related'
     ? 'pt-2 pb-6 md:pb-8'
@@ -461,7 +462,7 @@ function SeoBlocksGrid({ items, variant, slug }: SeoBlocksGridProps) {
   // częścią struktury H1/H2 tej strony) — inne strony nadal renderują go jako <h2>.
   // On the printer hub (variant related) these phrases are plain text too: the
   // category tabs above are the page's H2s.
-  const Tag = slug === 'druk-3d-na-zamowienie' ? 'div' : variant === 'related' ? 'p' : 'h2'
+  const Tag = plainText || slug === 'druk-3d-na-zamowienie' ? 'div' : variant === 'related' ? 'p' : 'h2'
   return (
     <div className={wrapperClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-1 gap-y-[2px] text-left break-words">
@@ -493,6 +494,7 @@ interface ServicePageTemplateProps {
   heroLabels: string[]
   headings: ServicePageHeadings
   seoBlocks?: ServicePageSeoBlock
+  seoBlocksPlainText?: boolean
   slugBrands?: string[]
   imageSrc: string
   imageAlt: string
@@ -510,6 +512,7 @@ export function ServicePageTemplate({
   heroLabels,
   headings,
   seoBlocks,
+  seoBlocksPlainText = false,
   slugBrands,
   imageSrc,
   imageAlt,
@@ -937,7 +940,7 @@ export function ServicePageTemplate({
               t={serviceAccordionI18n[locale]}
               pricing={getServiceDisplayPricing(service.slug, service.pricingSections, locale)}
             />
-            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} />
+            <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} plainText={seoBlocksPlainText} />
           </section>
         )}
 

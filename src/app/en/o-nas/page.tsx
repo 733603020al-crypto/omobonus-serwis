@@ -4,7 +4,7 @@ import { en } from '@/lib/i18n/en'
 import { withSocialMeta } from '@/lib/social-meta'
 
 export const metadata: Metadata = withSocialMeta('en', {
-  title: 'About Us | Honest Computer and Printer Service',
+  title: { absolute: 'About Us | Honest Computer and Printer Service' },
   description: "✔ 10+ years of computer, laptop and printer repair in Wrocław ✔ Honest pricing, no hidden costs ✔ We tell you when a repair isn't worth it ☎ 793 759 262",
   alternates: {
     canonical: 'https://serwis.omobonus.com.pl/en/o-nas',
