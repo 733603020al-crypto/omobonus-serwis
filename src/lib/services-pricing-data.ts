@@ -51,7 +51,7 @@ export const migratedPrice: Record<string, FieldMigration> = {
   "serwis-drukarek-3d::diagnoza.items.0": { wrapperKey: "p_gratis", numbers: [] },
   "serwis-drukarek-3d::diagnoza.items.1": { wrapperKey: "p_gratis", numbers: [] },
   "serwis-drukarek-3d::diagnoza.items.2": { wrapperKey: "p_gratis", numbers: [] },
-  "serwis-drukarek-3d::diagnoza.items.3": { wrapperKey: "p_n_zl", numbers: ["150"] },
+  "serwis-drukarek-3d::diagnoza.items.3": { wrapperKey: "p_n_n_n", numbers: ["100", "150", "200"] },
   "serwis-drukarek-3d::diagnoza.items.4": { wrapperKey: "p_plus_n_zl", numbers: ["50"] },
   "serwis-drukarek-3d::diagnoza.items.5": { wrapperKey: "p_gratis", numbers: [] },
   "serwis-drukarek-3d::dojazd.items.0": { wrapperKey: "p_n_zl", numbers: ["25"] },
