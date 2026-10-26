@@ -91,14 +91,18 @@ export async function obliczTrase(q: Zapytanie, lang: Lang): Promise<TrasaWynik>
   const enc: string = rt.polyline.encodedPolyline
   const pts = decode(enc)
 
-  // the largest zoom at which the whole route fits (room above for the end pin)
+  // the largest zoom at which the whole route fits (room above for the end pin).
+  // The card crops the map (object-cover) to its column: narrow and tall on tablets (width:height down to ~0.5),
+  // wide and low on large screens (up to ~1.46). So the route must fit the middle part that stays visible
+  // in both cases — otherwise one of the points (e.g. the service) is cut off.
   const lats = pts.map(p => p[0]), lngs = pts.map(p => p[1])
-  const PAD = 50, PADTOP = 70
+  const PAD = 25, PADTOP = 45
+  const VIS_W = Math.min(W, H * 0.5), VIS_H = Math.min(H, W / 1.46)
   let z = 18
   for (; z > 3; z--) {
     const w = wx(Math.max(...lngs), z) - wx(Math.min(...lngs), z)
     const h = wy(Math.min(...lats), z) - wy(Math.max(...lats), z)
-    if (w <= W - 2 * PAD && h <= H - PAD - PADTOP) break
+    if (w <= VIS_W - 2 * PAD && h <= VIS_H - PAD - PADTOP) break
   }
   const cx = (wx(Math.max(...lngs), z) + wx(Math.min(...lngs), z)) / 2
   const cy = (wy(Math.min(...lats), z) + wy(Math.max(...lats), z)) / 2 - (PADTOP - PAD) / 2
