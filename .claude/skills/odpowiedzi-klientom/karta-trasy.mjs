@@ -39,8 +39,8 @@ try {
   if (!dane.id) throw new Error(`Trasa: ${dane.error} (not_found = nie znaleziono adresu)`)
   const url = `${opt.host}/dev/koszt-dojazdu?` + new URLSearchParams({ id: dane.id, lang, baza: opt.baza, stawka: opt.stawka })
 
-  // szerokość jak okno na komputerze (karta max 900 px), zrzut w 2× dla ostrości w mailu
-  const page = await browser.newPage({ viewport: { width: 960, height: 900 }, deviceScaleFactor: 2 })
+  // szeroki ekran (1440 px) — karta jak na komputerze klienta: mapa szeroka, tej samej wysokości co rozliczenie; zrzut w 2× dla ostrości
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 2 })
   const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 })
   if (!res || !res.ok()) throw new Error(`Strona karty: HTTP ${res?.status()} — czy dev-serwer działa na ${opt.host}?`)
   const wynik = JSON.parse(await page.locator('#wynik').getAttribute('data-wynik'))
@@ -60,9 +60,9 @@ try {
 // Trasa samochodem z serwisu do Klienta ze zwykłej strony Google Maps (oficjalny link „Maps URLs”, bez klucza).
 // Odczytuje km i czas pierwszej (proponowanej) trasy, adres, który znalazł Google, i robi zrzut samej mapy.
 async function zGoogleMaps(browser, adres) {
-  // okno wąskie: część z mapą (na prawo od panelu, ok. 570×900) ma proporcje kolumny mapy w karcie (pionowa),
+  // część z mapą (na prawo od panelu, ok. 790×560) ma proporcje mapy w karcie na szerokim ekranie (ok. 1,45 : 1),
   // więc Google sam dopasowuje trasę do tego obszaru i karta niczego nie obcina (oba punkty widoczne)
-  const VW = 980, VH = 900
+  const VW = 1200, VH = 560
   const page = await browser.newPage({ viewport: { width: VW, height: VH }, locale: 'pl-PL' })
   try {
     await page.goto('https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', origin: SERWIS, destination: adres, travelmode: 'driving', hl: 'pl' }), { waitUntil: 'domcontentloaded', timeout: 60000 })

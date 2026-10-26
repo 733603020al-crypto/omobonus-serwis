@@ -23,7 +23,7 @@ const out = path.resolve(opt.out)
 // chmura: wersja Playwright z projektu może nie mieć swojej przeglądarki — wtedy ta zainstalowana w środowisku
 const browser = await chromium.launch().catch(() => chromium.launch({ executablePath: '/opt/pw-browsers/chromium' }))
 try {
-  const page = await browser.newPage({ viewport: { width: 960, height: 1000 }, deviceScaleFactor: 2 })
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 2 })
   await page.goto(`https://serwis.omobonus.com.pl${prefix}/kontakt`, { waitUntil: 'networkidle', timeout: 90000 })
   await page.waitForTimeout(1500)
   await page.locator('.contact-icon-link').filter({ has: page.locator('img[src*="koszt-dojazdu-ikona"]') }).first().click()
