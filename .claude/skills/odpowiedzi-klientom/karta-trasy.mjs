@@ -60,7 +60,10 @@ try {
 // Trasa samochodem z serwisu do Klienta ze zwykłej strony Google Maps (oficjalny link „Maps URLs”, bez klucza).
 // Odczytuje km i czas pierwszej (proponowanej) trasy, adres, który znalazł Google, i robi zrzut samej mapy.
 async function zGoogleMaps(browser, adres) {
-  const page = await browser.newPage({ viewport: { width: 1400, height: 900 }, locale: 'pl-PL' })
+  // okno wąskie: część z mapą (na prawo od panelu, ok. 570×900) ma proporcje kolumny mapy w karcie (pionowa),
+  // więc Google sam dopasowuje trasę do tego obszaru i karta niczego nie obcina (oba punkty widoczne)
+  const VW = 980, VH = 900
+  const page = await browser.newPage({ viewport: { width: VW, height: VH }, locale: 'pl-PL' })
   try {
     await page.goto('https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', origin: SERWIS, destination: adres, travelmode: 'driving', hl: 'pl' }), { waitUntil: 'domcontentloaded', timeout: 60000 })
     // okno zgody na cookies (pierwsze uruchomienie) — odrzucamy, mapa działa i bez nich
@@ -82,7 +85,7 @@ async function zGoogleMaps(browser, adres) {
     // zrzut mapy: część okna na prawo od panelu z trasą
     const panel = await page.locator('[role="main"]').first().boundingBox()
     const x = Math.round(panel ? panel.x + panel.width : 430)
-    const clip = { x, y: 0, width: 1400 - x, height: 900 }
+    const clip = { x, y: 0, width: VW - x, height: VH }
     const png = (await page.screenshot({ clip })).toString('base64')
     const r = await fetch(`${opt.host}/dev/koszt-dojazdu/dane`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
