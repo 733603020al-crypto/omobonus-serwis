@@ -20,7 +20,8 @@ if (!adres) { console.error('Podaj adres klienta'); process.exit(1) }
 const prefix = { pl: '', uk: '/uk', ru: '/ru', en: '/en' }[opt.lang] ?? ''
 const out = path.resolve(opt.out)
 
-const browser = await chromium.launch()
+// chmura: wersja Playwright z projektu może nie mieć swojej przeglądarki — wtedy ta zainstalowana w środowisku
+const browser = await chromium.launch().catch(() => chromium.launch({ executablePath: '/opt/pw-browsers/chromium' }))
 try {
   const page = await browser.newPage({ viewport: { width: 960, height: 1000 }, deviceScaleFactor: 2 })
   await page.goto(`https://serwis.omobonus.com.pl${prefix}/kontakt`, { waitUntil: 'networkidle', timeout: 90000 })
