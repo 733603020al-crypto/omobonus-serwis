@@ -107,12 +107,14 @@ const PL: ServicesT = {
 const PARCHMENT = '[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment.webp)] p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
 // Same dark brown as the card names on the parchment cards below.
 const PROCESS_STEPS = [
-  { number: '01', title: 'Zgłoszenie', description: 'Podaj model urządzenia i opisz usterkę', image: '/images/serwis-wysylkowy/Zgłoszenie.png', className: 'w-full aspect-[238/100]' },
-  { number: '02', title: 'Wysyłka', description: 'Wyślij sprzęt do nas', image: '/images/serwis-wysylkowy/Wysyłka.png', className: 'w-full aspect-[238/100]' },
-  { number: '03', title: 'Diagnostyka i wycena', description: 'Sprawdzimy urządzenie i przedstawimy koszt naprawy', image: '/images/serwis-wysylkowy/Diagnostyka i wycena serwis-wysylkowy.png', className: 'w-full aspect-[238/100]' },
-  { number: '04', title: 'Akceptacja wyceny?', description: 'Bez Twojej zgody nie rozpoczynamy naprawy', image: '/images/serwis-wysylkowy/Nie lub Tak.png', className: 'w-full aspect-[2111/745]' },
-  { number: '05.1', title: 'Naprawa i zwrot', description: 'Po akceptacji wyceny naprawiamy urządzenie, testujemy i odsyłamy', image: '/images/serwis-wysylkowy/Naprawa i zwrot.png', className: 'w-full max-w-[400px] aspect-[238/100]' },
-  { number: '05.2', title: 'Zwrot bez naprawy', description: 'Odsyłamy sprzęt zgodnie z ustalonymi zasadami', image: '/images/serwis-wysylkowy/ZWROT.png', className: 'w-full max-w-[400px] aspect-[238/100]' },
+  // Pictures are trimmed to the parchment's edges and fill the whole card,
+  // so the cards line up like the category cards above.
+  { number: '01', title: 'Zgłoszenie', description: 'Podaj model urządzenia i opisz usterkę', image: '/images/serwis-wysylkowy/krok-01-zgloszenie.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '02', title: 'Wysyłka', description: 'Wyślij sprzęt do nas', image: '/images/serwis-wysylkowy/krok-02-wysylka.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '03', title: 'Diagnostyka i wycena', titleBreak: 1, description: 'Sprawdzimy urządzenie i przedstawimy koszt naprawy', image: '/images/serwis-wysylkowy/krok-03-diagnostyka.webp', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '04', title: 'Akceptacja wyceny?', description: 'Bez Twojej zgody nie rozpoczynamy naprawy', image: '/images/serwis-wysylkowy/krok-04-pasek.avif', sizes: '(min-width: 768px) 720px, 100vw', className: 'w-full aspect-[1639/331]' },
+  { number: '05.1', title: 'Naprawa i zwrot', titleBreak: 1, description: 'Po akceptacji wyceny naprawiamy urządzenie, testujemy i odsyłamy', image: '/images/serwis-wysylkowy/krok-05-naprawa-zwrot.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '05.2', title: 'Zwrot bez naprawy', titleBreak: 1, description: 'Odsyłamy sprzęt zgodnie z ustalonymi zasadami', image: '/images/serwis-wysylkowy/krok-02-wysylka.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
 ] as const
 
 const ACTIVE_INK = '#24160B'
@@ -299,18 +301,36 @@ export function Services({
         src={step.image}
         alt=""
         fill
-        sizes="(max-width: 768px) 100vw, 66vw"
-        className="object-contain"
+        sizes={step.sizes}
+        className="object-fill"
       />
+      {/* Step 04: plain strip with separate stamps (TAK left, NIE right),
+          so other languages only swap the stamp pictures. */}
+      {step.number === '04' && (
+        <>
+          <Image src="/images/serwis-wysylkowy/stempel-nie.webp" alt="" width={407} height={224} sizes="(min-width: 768px) 160px, 22vw" className="pointer-events-none absolute right-[4.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2" />
+          <Image src="/images/serwis-wysylkowy/stempel-tak.webp" alt="" width={406} height={226} sizes="(min-width: 768px) 160px, 22vw" className="pointer-events-none absolute left-[3.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2" />
+        </>
+      )}
+      {/* Step 05.2: the shipping card with a language stamp on the box. */}
+      {step.number === '05.2' && (
+        <Image src="/images/serwis-wysylkowy/stempel-zwrot-v4.avif" alt="" width={510} height={207} sizes="(min-width: 1024px) 170px, 42vw" className="pointer-events-none absolute right-[5%] top-[55%] z-[3] w-[40%] -translate-y-1/2 -rotate-6" />
+      )}
       <div className={`relative z-[4] flex h-full flex-col text-[#24160B] ${step.number === '04'
         ? 'mx-auto max-w-[38%] items-center justify-center text-center'
         : 'max-w-[49%] items-start justify-start px-[5.5%] pt-[6%] text-left'
       }`}>
-        <span className="font-cormorant font-bold text-[#24160B] leading-none text-[24px] md:text-[length:min(28px,8.05cqi)]">
-          {step.number}
-        </span>
-        <h3 className="mt-0.5 font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
-          {step.title}
+        {/* "1. Zgłoszenie" in one line; long titles break after the first word,
+            the second line starts under the number. */}
+        <h3 className="whitespace-nowrap font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
+          {step.number.replace(/^0/, '')}.{' '}
+          {'titleBreak' in step ? (
+            <>
+              {step.title.split(' ').slice(0, step.titleBreak).join(' ')}
+              <br />
+              {step.title.split(' ').slice(step.titleBreak).join(' ')}
+            </>
+          ) : step.title}
         </h3>
         <p className="mt-1 font-cormorant text-xs font-normal leading-[1.2] text-[#3A2817]">
           {step.description}
@@ -504,13 +524,13 @@ export function Services({
             {PROCESS_STEPS.slice(0, 3).map(renderProcessCard)}
           </div>
           <div className="flex w-full justify-center">
-            <div className="relative w-full max-w-[816px]">
+            <div className="relative w-full max-w-[720px]">
               {renderProcessCard(PROCESS_STEPS[3])}
             </div>
           </div>
-          <div className="relative flex w-full items-start justify-between max-md:flex-col max-md:items-center max-md:gap-4">
+          <div className="grid w-full grid-cols-1 items-center gap-4 lg:grid-cols-3">
             {renderProcessCard(PROCESS_STEPS[4])}
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-cormorant text-[22px] font-semibold text-[#bfa76a] max-md:hidden">
+            <span className="justify-self-center whitespace-nowrap font-cormorant text-[22px] font-semibold text-[#bfa76a] max-lg:hidden">
               — lub —
             </span>
             {renderProcessCard(PROCESS_STEPS[5])}
