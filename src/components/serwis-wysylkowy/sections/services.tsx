@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useId, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useNearViewport } from '@/lib/use-near-viewport'
 import { ORIENT_CLASSES, EDGE_CLASSES, CORNER_CLASSES } from './services-card-classes'
 import Link from 'next/link'
@@ -10,6 +11,10 @@ import type { ServiceData } from '@/lib/services-data'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceLocale } from '@/config/service-categories'
+import ServiceAccordion from '@/components/service-accordion'
+import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
+import { getServiceDisplayPricing } from '@/lib/services-pricing'
+import { services as allServices } from '@/lib/services-data'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -101,10 +106,13 @@ const PL: ServicesT = {
 // wide picture as desktop (full-width row has the desktop tab's shape).
 const PARCHMENT = '[border-image:url(/images/services-tab-parchment.webp)_26_fill/9px_stretch] bg-[url(/images/services-tab-parchment.webp)] p-[5px] bg-[length:100%_100%] bg-no-repeat bg-clip-content'
 // Same dark brown as the card names on the parchment cards below.
-const ORIGINAL_HOME_SLUGS = [
-  'serwis-laptopow',
-  'serwis-komputerow-stacjonarnych',
-  'outsourcing-it',
+const PROCESS_STEPS = [
+  { number: '01', title: 'Zgłoszenie', description: 'Podaj model urządzenia i opisz usterkę', image: '/images/serwis-wysylkowy/Zgłoszenie.png', className: 'w-full aspect-[238/100]' },
+  { number: '02', title: 'Wysyłka', description: 'Wyślij sprzęt do nas', image: '/images/serwis-wysylkowy/Wysyłka.png', className: 'w-full aspect-[238/100]' },
+  { number: '03', title: 'Diagnostyka i wycena', description: 'Sprawdzimy urządzenie i przedstawimy koszt naprawy', image: '/images/serwis-wysylkowy/Diagnostyka i wycena serwis-wysylkowy.png', className: 'w-full aspect-[238/100]' },
+  { number: '04', title: 'Akceptacja wyceny?', description: 'Bez Twojej zgody nie rozpoczynamy naprawy', image: '/images/serwis-wysylkowy/Nie lub Tak.png', className: 'w-full aspect-[2111/745]' },
+  { number: '05.1', title: 'Naprawa i zwrot', description: 'Po akceptacji wyceny naprawiamy urządzenie, testujemy i odsyłamy', image: '/images/serwis-wysylkowy/Naprawa i zwrot.png', className: 'w-full max-w-[400px] aspect-[238/100]' },
+  { number: '05.2', title: 'Zwrot bez naprawy', description: 'Odsyłamy sprzęt zgodnie z ustalonymi zasadami', image: '/images/serwis-wysylkowy/ZWROT.png', className: 'w-full max-w-[400px] aspect-[238/100]' },
 ] as const
 
 const ACTIVE_INK = '#24160B'
@@ -118,8 +126,8 @@ const TAB_ICON_MASK: Record<string, string> = {
 }
 // Active tab hover = the parchment cards' hover (.services-card-hover in
 // globals.css): same lift + scale, shadow, 180ms curve, mouse-only.
-const CARD_HOVER_MOVE = 'transition-all duration-[180ms] ease-[cubic-bezier(0.4,0,0.2,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:[transform:translateY(-4px)_scale(1.04)]'
-const CARD_HOVER_SHADOW = '[@media(hover:hover)_and_(pointer:fine)]:group-hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)]'
+const CARD_HOVER_MOVE = 'transition-all duration-[180ms] ease-[cubic-bezier(0.4,0,0.2,1)] md:group-hover:-translate-y-1 md:group-hover:scale-[1.04] md:hover:-translate-y-1 md:hover:scale-[1.04]'
+const CARD_HOVER_SHADOW = 'md:group-hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)] md:hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)]'
 
 // "Drukarek (kserokopiarek) biurowych" vs phone "Drukarek biurowych": returns
 // [before, hidden part, after] when the phone label is the title without one
@@ -161,6 +169,9 @@ export function Services({
   const services = servicesData ?? []
   const d = t ?? PL
   const [active, setActive] = useState(0)
+  const [isDiagnosisModalOpen, setDiagnosisModalOpen] = useState(false)
+  const diagnosisModalRef = useRef<HTMLDivElement>(null)
+  const diagnosisTriggerRef = useRef<HTMLElement | null>(null)
   // Phones only: every category starts folded; a second tap on the open one folds it again.
   const [collapsed, setCollapsed] = useState(false)
   useEffect(() => {
@@ -175,6 +186,53 @@ export function Services({
   // Baked card pictures sit below the first screen: fetched only on approach.
   const sectionRef = useRef<HTMLElement>(null)
   const bgNear = useNearViewport(sectionRef)
+
+  useEffect(() => {
+    if (!isDiagnosisModalOpen) return
+    const previousActive = document.activeElement as HTMLElement | null
+    const previousBodyOverflow = document.body.style.overflow
+    const previousHtmlOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    const modal = diagnosisModalRef.current
+    const trigger = modal?.querySelector<HTMLElement>('[data-slot="accordion-trigger"]') ?? null
+    diagnosisTriggerRef.current = trigger
+    trigger?.click()
+    modal?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setDiagnosisModalOpen(false)
+        return
+      }
+      if (event.key !== 'Tab' || !modal) return
+      const focusable = Array.from(modal.querySelectorAll<HTMLElement>('button, [href], [tabindex]:not([tabindex="-1"])'))
+      if (focusable.length === 0) {
+        event.preventDefault()
+        modal.focus()
+        return
+      }
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousBodyOverflow
+      document.documentElement.style.overflow = previousHtmlOverflow
+      diagnosisTriggerRef.current = null
+      previousActive?.focus()
+    }
+  }, [isDiagnosisModalOpen])
 
   // Every category's cards are in the HTML (search engines see all services
   // and their links without clicking a tab); the inactive panels are simply
@@ -222,6 +280,48 @@ export function Services({
     else return
     e.preventDefault()
   }
+
+  const renderProcessCard = (step: typeof PROCESS_STEPS[number]) => (
+    <article
+      key={step.number}
+      role={step.number === '03' ? 'button' : undefined}
+      tabIndex={step.number === '03' ? 0 : undefined}
+      onClick={step.number === '03' ? () => setDiagnosisModalOpen(true) : undefined}
+      onKeyDown={step.number === '03' ? (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          setDiagnosisModalOpen(true)
+        }
+      } : undefined}
+      className={`group relative ${step.className} ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW}`}
+    >
+      <Image
+        src={step.image}
+        alt=""
+        fill
+        sizes="(max-width: 768px) 100vw, 66vw"
+        className="object-contain"
+      />
+      <div className={`relative z-[4] flex h-full flex-col text-[#24160B] ${step.number === '04'
+        ? 'mx-auto max-w-[38%] items-center justify-center text-center'
+        : 'max-w-[49%] items-start justify-start px-[5.5%] pt-[6%] text-left'
+      }`}>
+        <span className="font-cormorant font-bold text-[#24160B] leading-none text-[24px] md:text-[length:min(28px,8.05cqi)]">
+          {step.number}
+        </span>
+        <h3 className="mt-0.5 font-cormorant font-bold text-[#24160B] leading-[1.05] text-[24px] md:text-[length:min(28px,8.05cqi)]">
+          {step.title}
+        </h3>
+        <p className="mt-1 font-cormorant text-xs font-normal leading-[1.2] text-[#3A2817]">
+          {step.description}
+        </p>
+        <span className="mt-1 flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] transition-transform group-hover:translate-x-1">
+          <span>{d.moreLabel ?? 'Zobacz więcej'}</span>
+          <ArrowRight className="h-3 w-3" />
+        </span>
+      </div>
+    </article>
+  )
 
   const renderCard = (service: ServiceCardData, style: { edgeIdx: number; orientIdx: number; cornerIdx: number }) => {
     return (
@@ -399,12 +499,71 @@ export function Services({
           })}
         </div>}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-          {ORIGINAL_HOME_SLUGS
-            .map((slug) => services.find((service) => service.slug === slug))
-            .filter((service): service is ServiceCardData => Boolean(service))
-            .map((service, i) => renderCard(service, CARD_STYLE[i]))}
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+          <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-3">
+            {PROCESS_STEPS.slice(0, 3).map(renderProcessCard)}
+          </div>
+          <div className="flex w-full justify-center">
+            <div className="relative w-full max-w-[816px]">
+              {renderProcessCard(PROCESS_STEPS[3])}
+            </div>
+          </div>
+          <div className="relative flex w-full items-start justify-between max-md:flex-col max-md:items-center max-md:gap-4">
+            {renderProcessCard(PROCESS_STEPS[4])}
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-cormorant text-[22px] font-semibold text-[#bfa76a] max-md:hidden">
+              — lub —
+            </span>
+            {renderProcessCard(PROCESS_STEPS[5])}
+          </div>
         </div>
+        {isDiagnosisModalOpen && typeof document !== 'undefined' && createPortal((
+          <div
+            data-diagnosis-modal-backdrop="true"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+            role="presentation"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setDiagnosisModalOpen(false)
+            }}
+          >
+            <div
+              ref={diagnosisModalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Diagnostyka i wycena"
+              tabIndex={-1}
+              className="relative flex max-h-[calc(100vh-32px)] w-full max-w-7xl flex-col overflow-hidden rounded-lg"
+            >
+              <button
+                type="button"
+                aria-label="Zamknij"
+                onClick={() => setDiagnosisModalOpen(false)}
+                className="absolute right-3 top-3 z-[110] text-3xl leading-none text-white"
+              >
+                ×
+              </button>
+              {(() => {
+                const diagnosisService = allServices.find((service) => service.slug === 'serwis-drukarek-3d')
+                if (!diagnosisService) return null
+                const diagnosisOnly = {
+                  ...diagnosisService,
+                  pricingSections: diagnosisService.pricingSections.filter((section) => section.id === 'diagnoza'),
+                }
+                return (
+                  <div className="min-h-0 flex-1 overflow-visible">
+                    <section className="page-repair-accordion relative z-10 px-0">
+                      <ServiceAccordion
+                        service={diagnosisOnly}
+                        locale="pl"
+                        t={serviceAccordionI18n.pl}
+                        pricing={getServiceDisplayPricing(diagnosisService.slug, diagnosisService.pricingSections, 'pl')}
+                      />
+                    </section>
+                  </div>
+                )
+              })()}
+            </div>
+          </div>
+        ), document.body)}
         </div>
       </div>
     </section>
