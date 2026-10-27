@@ -1,0 +1,62 @@
+/* Print-clip slide (serwis-drukarek-atramentowych slide 0, home slide 3), see introVideo
+   in hero-printer-carousel.tsx. The slot keeps the slide class (size, queue
+   transform, glow); the poster and the clip sit in one box sized from its
+   container units, so both land on exactly the same pixels. */
+.hero-intro-slide {
+  container-type: size;
+}
+
+.hero-intro-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+
+.hero-intro-media {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+}
+
+/* Frame 0 until the clip actually plays, then the clip alone. */
+.hero-intro-slide[data-started] .hero-intro-poster,
+.hero-intro-slide:not([data-started]) video.hero-intro-media {
+  visibility: hidden;
+}
+
+/* No clip: failed clip (set by the script), Apple WebKit (no WebM alpha;
+   -apple-system-body is WebKit-only) and reduced motion — static image from
+   the first paint. */
+.hero-intro-slide[data-vid='off'] .hero-intro-photo {
+  display: block;
+}
+
+.hero-intro-slide[data-vid='off'] .hero-intro-media {
+  display: none;
+}
+
+@supports (font: -apple-system-body) {
+  .hero-intro-slide .hero-intro-photo {
+    display: block;
+  }
+
+  .hero-intro-slide .hero-intro-media {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro-slide .hero-intro-photo {
+    display: block;
+  }
+
+  .hero-intro-slide .hero-intro-media {
+    display: none;
+  }
+}
