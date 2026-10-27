@@ -3682,6 +3682,108 @@
   .gold-border-flow::before, .gold-text-sweep { animation: none; }
 }
 
+/* Gold CTA buttons (GOLD_CTA): the "Shiny Button" effect by hyperiux (21st.dev, MIT),
+   colours swapped to the site gold. Ring = conic arc around the button, dots light up
+   inside next to the arc, a soft shimmer turns inside; hover widens the arc and adds
+   an inner breathing glow. The label glint (.gold-text-sweep) stays. */
+@property --gold-shiny-offset { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --gold-shiny-percent { syntax: '<percentage>'; inherits: false; initial-value: 5%; }
+@property --gold-shiny-shine { syntax: '<color>'; inherits: false; initial-value: #f3df9a; }
+.gold-border-flow.gold-shiny {
+  overflow: hidden;
+  isolation: isolate;
+  background-clip: padding-box;
+}
+.gold-border-flow.gold-shiny::before {
+  inset: 0;
+  background:
+    conic-gradient(
+      from calc(var(--gold-flow-angle) - var(--gold-shiny-offset)),
+      transparent,
+      #bfa76a var(--gold-shiny-percent),
+      var(--gold-shiny-shine) calc(var(--gold-shiny-percent) * 2),
+      #bfa76a calc(var(--gold-shiny-percent) * 3),
+      transparent calc(var(--gold-shiny-percent) * 4)
+    ),
+    rgba(191, 167, 106, 0.3);
+  transition: --gold-shiny-offset 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    --gold-shiny-percent 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    --gold-shiny-shine 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.gold-shiny::after,
+.gold-shiny > .gold-text-sweep::before,
+.gold-shiny > .gold-text-sweep::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+/* dots next to the arc */
+.gold-shiny > .gold-text-sweep::before {
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background: radial-gradient(circle at 2px 2px, #f3df9a 0.5px, transparent 0) padding-box;
+  background-size: 4px 4px;
+  background-repeat: space;
+  -webkit-mask-image: conic-gradient(from calc(var(--gold-flow-angle) + 45deg), black, transparent 10% 90%, black);
+  mask-image: conic-gradient(from calc(var(--gold-flow-angle) + 45deg), black, transparent 10% 90%, black);
+  border-radius: 9999px;
+  opacity: 0.4;
+}
+/* inner shimmer */
+.gold-shiny::after {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, #bfa76a, transparent);
+  -webkit-mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+}
+/* hover: inner glow */
+.gold-shiny > .gold-text-sweep::after {
+  width: calc(100% + 1rem);
+  height: calc(100% + 1rem);
+  box-shadow: inset 0 -1ex 2rem 4px #bfa76a;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: gold-shiny-breathe 4.5s linear infinite;
+}
+.gold-border-flow.gold-shiny::before,
+.gold-shiny > .gold-text-sweep::before {
+  animation: gold-border-flow 3s linear infinite, gold-border-flow 7.5s linear infinite reverse paused;
+  animation-composition: add;
+}
+.gold-shiny::after {
+  animation: gold-shiny-spin 3s linear infinite, gold-shiny-spin 7.5s linear infinite reverse paused;
+  animation-composition: add;
+}
+.gold-border-flow.gold-shiny:is(:hover, :focus-visible)::before {
+  --gold-shiny-percent: 20%;
+  --gold-shiny-offset: 95deg;
+  --gold-shiny-shine: #e6cc82;
+}
+.gold-border-flow.gold-shiny:is(:hover, :focus-visible)::before,
+.gold-shiny:is(:hover, :focus-visible)::after,
+.gold-shiny:is(:hover, :focus-visible) > .gold-text-sweep::before {
+  animation-play-state: running;
+}
+.gold-shiny:is(:hover, :focus-visible) > .gold-text-sweep::after { opacity: 1; }
+@keyframes gold-shiny-spin { to { rotate: 360deg; } }
+@keyframes gold-shiny-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.2; } }
+.gold-border-flow.gold-shiny[data-anim-off]::before,
+.gold-shiny[data-anim-off]::after,
+.gold-shiny[data-anim-off] > .gold-text-sweep::before,
+.gold-shiny[data-anim-off] > .gold-text-sweep::after { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .gold-border-flow.gold-shiny::before,
+  .gold-shiny::after,
+  .gold-shiny > .gold-text-sweep::before,
+  .gold-shiny > .gold-text-sweep::after { animation: none; }
+}
+
 /* Floating icon: elliptical shadow under icon creates elevation effect */
 .icon-float {
   position: relative;
