@@ -340,6 +340,9 @@
 ---
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
+### ЭТАП 194 (2026-10-27) — Прайс: «Wstępna diagnoza przy przyjęciu do serwisu»
+- Общая строка раздела Diagnoza (services-data-*-shared, PL/UK/RU/EN): название «Wstępna diagnoza przy przyjęciu do serwisu», пояснение «(orientacyjna ocena usterki — nie zastępuje pełnej diagnozy i wyceny naprawy)»; GRATIS и «do 15 min» без изменений. FAQ DTF, DTG, проекторов — «при доставке» → «при приёме» во всех языках.
+
 ### ЭТАП 193 (2026-10-27) — Золотые кнопки: эффект Shiny Button
 - Золотые CTA (GOLD_CTA: «Szybki kontakt», «Więcej o nas» и др.) — эффект Shiny Button (hyperiux, 21st.dev, MIT) по оригинальному коду, цвета золотые: дуга по рамке, точки и отблеск внутри, при наведении шире дуга + внутреннее свечение; блик по надписи остался. CSS — .gold-shiny в globals.css. Бледная золотая рамка по всему краю оставлена.
 - Зелёная кнопка телефона в шапке: пробовали такой же эффект (золото, затем белый текст) — пользователю не понравилось, откатано, оставить зелёной.

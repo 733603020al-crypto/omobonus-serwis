@@ -11,7 +11,7 @@ export const defaultPricingSections: PricingSection[] = [
         service: 'Wstępna diagnoza online\n(opis problemu przez WhatsApp, stronę lub telefon)',
       },
       {
-        service: 'Wstępna diagnoza przy dostawie do serwisu 15 min. (również w razie rezygnacji z naprawy)',
+        service: 'Wstępna diagnoza przy przyjęciu do serwisu\n(orientacyjna ocena usterki — nie zastępuje pełnej diagnozy i wyceny naprawy)',
       },
       {
         service: 'Diagnoza i wycena naprawy\n(w przypadku realizacji naprawy)',

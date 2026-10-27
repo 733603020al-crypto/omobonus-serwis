@@ -9,7 +9,7 @@ export const diagnostaSection = (): PricingSection => ({
       service: 'Online initial diagnosis\n(describe the problem via WhatsApp, our website or by phone)',
     },
     {
-      service: 'Initial diagnosis when you bring the device to our service centre, 15 min (also if you decide not to go ahead with the repair)',
+      service: 'Initial diagnosis when the device is accepted at our service centre\n(indicative assessment of the fault — does not replace a full diagnosis and repair quote)',
     },
     {
       service: 'Diagnosis and repair quote\n(if the repair goes ahead)',
