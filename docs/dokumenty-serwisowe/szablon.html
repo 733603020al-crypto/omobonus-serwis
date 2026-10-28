@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>{{RODZAJ_DOKUMENTU}} {{URZADZENIE}}</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:296mm}body{width:210mm;font-family:"DejaVu Sans",sans-serif;color:#3a2a1a;position:relative;overflow:hidden;background:#fff}
+.side{position:absolute;left:17pt;top:17pt;width:153pt;height:808pt;background:url(pergamin-pasek.webp) no-repeat;background-size:100% 100%}
+.logo{position:absolute;left:50pt;top:39.5pt;width:73.7pt;height:73.7pt}
+.t,.k{position:absolute;left:0;text-align:center;line-height:normal;white-space:nowrap}
+.t{width:173.4pt}.k{width:178pt}.b{font-weight:bold}
+.rule{position:absolute;left:36.75pt;width:107.5pt;top:665.75pt;height:0;border-top:1px solid rgb(184,170,153)}
+.main{position:absolute;left:64mm;top:12mm;right:9mm}
+h1{font-family:"DejaVu Serif",serif;font-size:21pt;letter-spacing:.5px;margin-left:8mm}
+.sub{font-size:10.5pt;margin:2mm 0 0 11mm}
+h2{font-family:"DejaVu Serif",serif;font-size:12.5pt;border-bottom:1px solid #a89070;padding-bottom:1.5mm;margin:5mm 0 2.2mm}
+table{width:100%;border-collapse:collapse;font-size:8pt}
+td{padding:2mm 0;border-bottom:1px solid #c9b896;vertical-align:top}
+td:first-child{font-weight:bold;width:40mm}
+ul{list-style:none;font-size:8.3pt;line-height:1.5;padding-left:2mm}
+li:before{content:"• "}
+p{font-size:8.3pt;line-height:1.55;margin-bottom:1.6mm;text-align:justify}
+.foto{display:flex;gap:6mm;align-items:flex-end;margin-top:1mm}
+.foto img{height:46mm;border:1px solid #ccc}
+.foto .cap{font-size:7pt;margin-top:1mm}
+.sign{display:flex;justify-content:space-between;align-items:flex-end;margin-top:2mm}
+.line{width:68mm;border-top:1px solid #8a7a66;text-align:center;font-size:7.5pt;padding-top:1.5mm}
+.line span{display:block;font-size:6.6pt;font-weight:normal;margin-top:1mm}
+.stamp{width:44mm;height:26mm;border:1px dashed #b0a49a;border-radius:3mm;display:flex;align-items:center;justify-content:center;font-size:8pt}
+.place{font-size:7.5pt;margin-top:3mm}
+</style></head><body>
+<!-- Szablon dokumentów serwisowych Omobonus. Zasady: docs/dokumenty-serwisowe-standard.md.
+     Lewy pasek (pergamin, logo, Kontakt) — NIE ZMIENIAĆ pozycji. Treść poniżej (przykład: Ekspertyza Ricoh SG 3100SNw) podmienić. -->
+<div class="side"></div>
+<img class="logo" src="logo.webp" alt="">
+<div class="t b" style="top:117pt;font-size:10pt">Omobonus serwis</div>
+<div class="t" style="top:131.9pt;font-size:6.8pt">Serwis i naprawa komputerów,</div>
+<div class="t" style="top:140.9pt;font-size:6.8pt">drukarek i urządzeń biurowych</div>
+<div class="k b" style="top:648pt;font-size:10pt">Kontakt</div>
+<div class="rule"></div>
+<div class="k b" style="top:674pt;font-size:8pt">Omobonus Sp. z o.o.</div>
+<div class="k" style="top:689pt;font-size:7.8pt">NIP 8943160773</div>
+<div class="k" style="top:715pt;font-size:7.2pt">Marcina Bukowskiego 174</div>
+<div class="k" style="top:729pt;font-size:7.8pt">52-418 Wrocław</div>
+<div class="k" style="top:755pt;font-size:7.8pt">+48 793 759 262</div>
+<div class="k" style="top:769pt;font-size:7pt">serwis@omobonus.com.pl</div>
+<div class="k" style="top:783pt;font-size:7pt">serwis.omobonus.com.pl</div>
+<div class="main">
+  <!-- Tytuł: PROTOKÓŁ PRZYJĘCIA DO SERWISU / OCENA STANU TECHNICZNEGO / OPINIA TECHNICZNA / EKSPERTYZA TECHNICZNA -->
+  <h1>EKSPERTYZA TECHNICZNA</h1>
+  <div class="sub">{{MARKA I MODEL}}</div>
+
+  <h2>Dane urządzenia i zlecającego</h2>
+  <table>
+    <tr><td>Zlecający:</td><td>{{NAZWA ZLECAJĄCEGO}}<br>{{ADRES}}</td></tr>
+    <tr><td>Kontakt:</td><td>{{TELEFON / E-MAIL}}</td></tr>
+    <tr><td>Data przyjęcia:</td><td>{{DD.MM.RRRR}}</td></tr>
+    <!-- Numer seryjny: wiersz tylko gdy numer jest znany -->
+    <!-- <tr><td>Numer seryjny:</td><td>{{NR}}</td></tr> -->
+    <tr><td>Urządzenie:</td><td>Urządzenie wielofunkcyjne Ricoh Aficio SG 3100SNw (drukarka, kopiarka, skaner, technologia GelJet)</td></tr>
+    <tr><td>Sposób dostarczenia:</td><td>Urządzenie odebrane od klienta przez serwis</td></tr>
+    <tr><td>Zgłoszona usterka:</td><td>Urządzenie nie pracuje prawidłowo – brak możliwości drukowania i kopiowania</td></tr>
+  </table>
+
+  <h2>Przeprowadzone czynności serwisowe</h2>
+  <ul>
+    <li>Oględziny zewnętrzne urządzenia i kontrola stanu mechanizmów.</li>
+    <li>Sprawdzenie zasilacza oraz napięć zasilających.</li>
+    <li>Odczyt komunikatów i kodów błędów wyświetlanych na panelu.</li>
+    <li>Próby ponownego uruchomienia urządzenia, w tym w trybie serwisowym.</li>
+    <li>Demontaż obudowy, kontrola płyty głównej (sterownika) i połączeń wewnętrznych.</li>
+    <li>Weryfikacja dostępności części zamiennych u producenta i dystrybutorów.</li>
+  </ul>
+
+  <h2>Wynik diagnostyki</h2>
+  <p>Stwierdzono uszkodzenie płyty głównej (sterownika) urządzenia. Uszkodzenie uniemożliwia prawidłową pracę urządzenia i nie może zostać usunięte poprzez regulację, czyszczenie ani przywrócenie ustawień.</p>
+  <p>Ricoh Aficio SG 3100SNw to model wprowadzony na rynek ok. 2012 r., od kilku lat wycofany ze sprzedaży i nieprodukowany. Płyta główna do tego modelu nie jest obecnie dostępna jako część zamienna, dlatego naprawa urządzenia nie jest możliwa.</p>
+
+  <h2>Zalecenie</h2>
+  <p>Urządzenie nie nadaje się do dalszej eksploatacji ani naprawy. Zalecamy jego wycofanie z użytkowania (likwidację) oraz przekazanie do utylizacji jako zużytego sprzętu elektrycznego i elektronicznego, zgodnie z obowiązującymi przepisami.</p>
+
+  <h2>Fotodokumentacja</h2>
+  <div class="foto">
+    <div><img src="{{zdjecie-urzadzenia.jpg}}" alt=""><div class="cap">Widok urządzenia</div></div>
+    <div style="flex:1">
+      <div class="place">Wrocław, {{DATA SPORZĄDZENIA}}</div>
+      <div style="height:6mm"></div>
+      <div class="sign">
+        <div class="stamp">Pieczęć</div>
+      </div>
+      <div style="height:5mm"></div>
+      <div class="line"><b>Maksym Suprunenko — Omobonus Sp. z o.o.</b><span>Podpis serwisanta</span></div>
+    </div>
+  </div>
+</div>
+</body></html>
