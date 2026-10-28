@@ -12,7 +12,7 @@ export const diagnostaSection = (): PricingSection => ({
       service: 'Initial diagnosis when the device is accepted at our service centre\n(indicative assessment of the fault — does not replace a full diagnosis and repair quote)',
     },
     {
-      service: 'Diagnosis and repair quote\n(if the repair goes ahead)',
+      service: 'Diagnosis and repair quote\n(free if you order the repair or if we can’t find the cause of the fault)',
     },
     {
       service: 'Diagnosis and repair quote\n(if you decide not to go ahead with the repair)',
@@ -63,7 +63,7 @@ export const faqSectionEn = (): PricingSection => ({
       id: 'faq-1',
       title: 'Is it worth repairing, or is it better to buy a new one?',
       items: [],
-      answer: 'It depends on the fault and the availability of parts. We always carry out a free initial diagnosis and tell you whether the repair makes financial sense. If it doesn’t, we will say so openly.',
+      answer: 'It depends on the fault and the availability of parts. A free initial diagnosis gives a rough assessment of the problem, and after the full diagnosis we tell you whether the repair makes financial sense. If it doesn’t, we will say so openly.',
     },
     {
       id: 'faq-2',
@@ -81,7 +81,7 @@ export const faqSectionEn = (): PricingSection => ({
       id: 'faq-4',
       title: 'Do you offer pickup from the customer? Can I bring the device in myself?',
       items: [],
-      answer: 'Yes, we provide our services in Wrocław and the surrounding area.\n\nPickup of the device from the customer or delivery of the repaired device costs 25 zł net within 2.5 km of our service centre (5 km in total, both ways). For a longer route, we charge 2 zł net for each additional kilometre of the whole round trip beyond the first 5 km. For simple faults we can repair the device on site, and if necessary we will take it to our service centre.\n\nOf course, you can also bring the device to our office in Wrocław yourself. On site we provide a thorough, fast and free diagnosis in the customer’s presence, a warm welcome and free coffee or tea.',
+      answer: 'Yes, we provide our services in Wrocław and the surrounding area.\n\nPickup of the device from the customer or delivery of the repaired device costs 25 zł net within 2.5 km of our service centre (5 km in total, both ways). For a longer route, we charge 2 zł net for each additional kilometre of the whole round trip beyond the first 5 km. For simple faults we can repair the device on site, and if necessary we will take it to our service centre.\n\nOf course, you can also bring the device to our office in Wrocław yourself. On site we provide a fast, free initial diagnosis in the customer’s presence, a warm welcome and free coffee or tea.',
     },
     {
       id: 'faq-5',

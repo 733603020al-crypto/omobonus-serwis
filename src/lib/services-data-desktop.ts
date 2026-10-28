@@ -27,7 +27,7 @@ const applyDesktopDiagnosisSection = (sections: PricingSection[]) => {
   diagnosisSection.items = [
     { service: 'Wstępna konsultacja online do 15 min (opis problemu przez WhatsApp, formularz lub telefon)' },
     { service: 'Wstępne sprawdzenie przy przyjęciu sprzętu (krótkie sprawdzenie objawów i wstępna ocena; nie zastępuje pełnej diagnozy)' },
-    { service: 'Pełna diagnoza i wycena naprawy\n(bezpłatna w przypadku realizacji naprawy)' },
+    { service: 'Pełna diagnoza i wycena naprawy\n(bezpłatna przy zleceniu naprawy lub gdy nie znajdziemy przyczyny usterki)' },
     { service: 'Pełna diagnoza i wycena naprawy\n(tylko w przypadku rezygnacji po wykonaniu pełnej diagnozy)' },
     { service: 'Pisemna opinia techniczna\n(dodatkowo do pełnej diagnozy, z dokumentacją fotograficzną)' },
     { service: 'Pilna realizacja (jeśli to możliwe, przyspieszamy naprawę bez dodatkowej opłaty)' },

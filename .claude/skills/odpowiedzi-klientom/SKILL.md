@@ -154,8 +154,8 @@ Dlatego prosimy, aby **oznaczyć na kartonie markerem, gdzie jest góra, a gdzie
 Mieliśmy już przypadek, że mała drukarka atramentowa dotarła do nas rozbita i cała w atramencie. Wysłaliśmy klientowi zdjęcia i za jego zgodą została zutylizowana. W najgorszym razie straciłby Pan więc tylko koszt wysyłki. Jeśli drukarka i tak nie działa, a w pobliżu nie ma gdzie jej naprawić, myślę, że warto spróbować.
 
 **Koszt diagnozy:**
-• **Gratis** — jeśli zdecyduje się Pan na naprawę,
-• **70 zł netto** — w przypadku rezygnacji z naprawy.
+• **Gratis** — jeśli zdecyduje się Pan na naprawę albo nie uda nam się ustalić przyczyny usterki,
+• **70 zł netto** — w przypadku rezygnacji z naprawy po ustaleniu przyczyny usterki i otrzymaniu wyceny.
 
 Diagnoza trwa zwykle 1–2 dni robocze od otrzymania drukarki. Orientacyjne ceny napraw znajdzie Pan w cenniku serwisu drukarek atramentowych [link na stronę usługi].
 
@@ -237,8 +237,9 @@ e-mail: serwis@omobonus.com.pl
 Пример позиций, которые встречаются на страницах (сверять каждый раз):
 - Wstępna diagnoza online (WhatsApp/strona/telefon) — GRATIS.
 - Wstępna diagnoza przy dostawie do serwisu — GRATIS, если и в тех пределах, что указаны на странице. **Это только предварительная оценка, она не заменяет полную диагностику** — так и писать клиенту: на месте можем сказать предварительно, точный диагноз и цена — после полной диагностики.
-- Diagnoza i wycena naprawy przy realizacji naprawy — GRATIS.
-- Diagnoza i wycena przy rezygnacji z naprawy — цена по категории устройства (на странице, например 80 / 120 / 180 zł).
+- Diagnoza i wycena naprawy przy realizacji naprawy — GRATIS (wliczona w cenę naprawy).
+- Nie ustalimy przyczyny usterki — za diagnozę nie płaci (GRATIS). Если ремонт дорогой, невыгодный или сейчас нет нужной детали и клиент отказывается — диагностика платная (работа сделана). Не писать «naprawa niemożliwa» и «odmawiamy naprawy» — таких случаев нет (см. docs/diagnoza-i-platnosci-standard.md).
+- Diagnoza i wycena przy rezygnacji z naprawy (после того как причина найдена и дана wycena) — цена по категории устройства (на странице, например 80 / 120 / 180 zł).
 - Pisemna opinia techniczna — доплата (например +50 zł).
 - Pilna realizacja — GRATIS, jeśli możliwe.
 

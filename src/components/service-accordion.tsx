@@ -1908,6 +1908,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
             // banner before the table" / "OPEN state keeps the closed-plate
             // texture" by meaning instead of enumerating section ids.
             const hasOpenHeaderTable = isOpenHeaderPlateSection && section.id !== 'projektowanie-modeli' // Projektowanie modeli (druk-3d-na-zamowienie) renders a bespoke non-table block instead
+            // "DIAGNOZA ZA DARMO" banner: same look as Dojazd's; not on the IT consultation or the 3D print price list.
+            const hasDiagnozaBanner = section.id === 'diagnoza' && !isOutsourcingService && service.slug !== 'druk-3d-na-zamowienie'
             const hasOpenHeaderBanner = section.id === 'dojazd' // "DARMOWY DOJAZD" accent banner rendered via AccordionContent's beforeContent, before the table
             const keepsClosedPlateTexture = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' // OPEN ::before keeps the baked closed-plate texture instead of the open-state background
             const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
@@ -2527,6 +2529,21 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                         </div>
                       </div>
                     </div>
+                  ) : hasDiagnozaBanner ? (
+                    // Copy of the Dojazd banner; always two lines. Like Dojazd's caption on desktop, a line is
+                    // centered when it fits and grows to the left (over the picture zone) when it doesn't.
+                    <div className="w-full text-center" style={{ width: '100%', maxWidth: 'none', marginLeft: 0, background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', paddingLeft: isMobile ? '24px' : `${dojazdBannerPadLeft}px`, paddingRight: isMobile ? '24px' : '20px', paddingTop: isMobile ? '6px' : undefined, paddingBottom: isMobile ? '6px' : '4px' }}>
+                      <div className="font-table-main">
+                        <div className="service-description-text dojazd-promo-title">{t.diagnozaPromoTitle} <WinkEmoji variant="thinking" /></div>
+                        <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}>
+                          {isMobile ? <>{t.diagnozaNote[0]}<br />{t.diagnozaNote[1]}</> : t.diagnozaNote.map(line => (
+                            <div key={line} style={{ display: 'flex', flexDirection: 'row-reverse' }}>
+                              <span style={{ flexShrink: 0, width: 'max-content', maxWidth: `calc(100% + ${dojazdBannerPadLeft - 12}px)`, margin: '0 auto', textAlign: 'center' }}>{line}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   ) : section.id === 'konserwacja' && !isOutsourcingService ? (
                     // Sekcja konserwacja ma AccordionContent z marginTop: -8 (patrz `style` niżej),
                     // którego "dojazd" nie ma — ten sam baner tekstowy potrzebuje więc +8px
@@ -2555,6 +2572,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                   style={isRepairAccordionLayout && section.id === 'konserwacja' ? (isOutsourcingService ? { paddingBottom: 16 } : { paddingBottom: 16, marginTop: -8 }) : undefined}
                   className={cn(
                     "pb-3 scroll-smooth accordion-scroll relative z-10 md:mt-2 md:mx-2 md:mb-2",
+                    hasDiagnozaBanner && "md:mt-0 [&_[data-slot=table-row]:first-child]:!border-t-0", // banner sits right on the table, like Dojazd (one line between them)
                     !(isRepairAccordionLayout && section.id === 'faq') && !isWynajemOpenSectionContent && "md:border-t md:border-[rgba(200,169,107,0.3)] md:border-x md:border-[rgba(191,167,106,0.3)] md:rounded-b-lg",
                     isRepairAccordionLayout && (section.id === 'konserwacja' || isDruk3DCustomSection(service.slug, section.id))
                       ? "max-h-none overflow-y-visible"
