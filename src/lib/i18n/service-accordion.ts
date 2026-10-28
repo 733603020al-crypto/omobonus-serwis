@@ -177,7 +177,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru' | 'en', ServiceAcco
     diagnozaPromoTitle: '„DIAGNOZA ZA DARMO”?',
     diagnozaNote: [
       'Rozebranie urządzenia, pomiary i znalezienie usterki wymagają czasu i pracy — nie mogą być „za darmo”.',
-      'Zlecasz naprawę? Wtedy pełna diagnoza i wycena już w cenie naprawy, bo część pracy mamy już za sobą.',
+      'Zlecasz naprawę? Wtedy nie liczymy diagnozy osobno — urządzenie jest już rozebrane i wiemy, co wymienić, więc połowa pracy przy naprawie jest już zrobiona.',
     ],
     konserwacjaPromoTitle: '„PRZEDMUCHANIE + PASTA”',
     konserwacjaPromoDescription: 'Nie oferujemy okrojonej usługi — wykonujemy pełną konserwację układu chłodzenia',
@@ -303,7 +303,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru' | 'en', ServiceAcco
     diagnozaPromoTitle: '«ДІАГНОСТИКА БЕЗКОШТОВНО»?',
     diagnozaNote: [
       'Розбирання пристрою, вимірювання та пошук несправності потребують часу й роботи — вони не можуть бути «безкоштовними».',
-      'Замовляєте ремонт? Тоді повна діагностика та оцінка вже у вартості ремонту, бо частину роботи ми вже виконали.',
+      'Замовляєте ремонт? Тоді діагностику окремо не рахуємо — пристрій уже розібраний і ми знаємо, що замінити, тож половина роботи з ремонту вже зроблена.',
     ],
     konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
     konserwacjaPromoDescription: 'Ми не пропонуємо урізану послугу — виконуємо повне обслуговування системи охолодження',
@@ -485,7 +485,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru' | 'en', ServiceAcco
     diagnozaPromoTitle: '«ДИАГНОСТИКА БЕСПЛАТНО»?',
     diagnozaNote: [
       'Разборка устройства, замеры и поиск неисправности требуют времени и работы — они не могут быть «бесплатными».',
-      'Заказываете ремонт? Тогда полная диагностика и оценка уже в стоимости ремонта, потому что часть работы мы уже сделали.',
+      'Заказываете ремонт? Тогда диагностику отдельно не считаем — устройство уже разобрано и мы знаем, что заменить, так что половина работы по ремонту уже сделана.',
     ],
     konserwacjaPromoTitle: '«ПРОДУВКА + ПАСТА»',
     konserwacjaPromoDescription: 'Мы не предлагаем урезанную услугу — выполняем полное обслуживание системы охлаждения',
@@ -667,7 +667,7 @@ export const serviceAccordionI18n: Record<'pl' | 'uk' | 'ru' | 'en', ServiceAcco
     diagnozaPromoTitle: '“FREE DIAGNOSIS”?',
     diagnozaNote: [
       'Taking the device apart, testing and finding the fault take time and work — they can’t be “free”.',
-      'Ordering the repair? Then the full diagnosis and quote are already included in the repair price, because part of the work is already done.',
+      'Going ahead with the repair? Then we don’t charge for the diagnosis separately — the device is already taken apart and we know what to replace, so half of the repair work is already done.',
     ],
     konserwacjaPromoTitle: '“BLOW-OUT + PASTE”',
     konserwacjaPromoDescription: 'We don’t offer a cut-down service — we carry out full maintenance of the cooling system',
