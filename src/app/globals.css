@@ -3771,6 +3771,39 @@
   animation-play-state: running;
 }
 .gold-shiny:is(:hover, :focus-visible) > .gold-text-sweep::after { opacity: 1; }
+/* Step-number circles on the process cards (/serwis-wysylkowy): the same hover
+   state, switched on by their card — mouse over the card (desktop) or the
+   card's automatic lift ([data-lit]) — instead of hovering the circle itself. */
+.gold-border-flow.gold-shiny.gold-shiny-card[data-lit]::before {
+  --gold-shiny-percent: 20%;
+  --gold-shiny-offset: 95deg;
+  --gold-shiny-shine: #e6cc82;
+}
+/* Still while the card rests: the circle moves only while its card is lit. */
+.gold-border-flow.gold-shiny.gold-shiny-card::before,
+.gold-shiny.gold-shiny-card::after,
+.gold-shiny.gold-shiny-card > .gold-text-sweep,
+.gold-shiny.gold-shiny-card > .gold-text-sweep::before,
+.gold-shiny.gold-shiny-card > .gold-text-sweep::after { animation-play-state: paused; }
+.gold-border-flow.gold-shiny.gold-shiny-card[data-lit]::before,
+.gold-shiny.gold-shiny-card[data-lit]::after,
+.gold-shiny.gold-shiny-card[data-lit] > .gold-text-sweep,
+.gold-shiny.gold-shiny-card[data-lit] > .gold-text-sweep::before,
+.gold-shiny.gold-shiny-card[data-lit] > .gold-text-sweep::after { animation-play-state: running; }
+.gold-shiny.gold-shiny-card[data-lit] > .gold-text-sweep::after { opacity: 1; }
+@media (min-width: 768px) {
+  .group:hover > .gold-border-flow.gold-shiny.gold-shiny-card::before {
+    --gold-shiny-percent: 20%;
+    --gold-shiny-offset: 95deg;
+    --gold-shiny-shine: #e6cc82;
+  }
+  .group:hover > .gold-border-flow.gold-shiny.gold-shiny-card::before,
+  .group:hover > .gold-shiny.gold-shiny-card::after,
+  .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep,
+  .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep::before,
+  .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep::after { animation-play-state: running; }
+  .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep::after { opacity: 1; }
+}
 @keyframes gold-shiny-spin { to { rotate: 360deg; } }
 @keyframes gold-shiny-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.2; } }
 .gold-border-flow.gold-shiny[data-anim-off]::before,

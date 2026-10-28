@@ -940,7 +940,8 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
 // t i pricing przychodzą z serwera (service-page-template): słownik tylko
 // bieżącego języka i gotowe ceny/terminy tej jednej usługi — bez całego
 // services-pricing-data.ts i słowników 3 języków w JS przeglądarki.
-const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' | 'en'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing }) => {
+// titlePrefix: optional mark before every section title (e.g. a step number circle).
+const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, defaultOpenSection }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' | 'en'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing; titlePrefix?: React.ReactNode; defaultOpenSection?: string }) => {
   const lookupPrice = (path: string) => {
     const value = pricing.price[path]
     if (value === undefined) throw new Error(`[services-pricing] Нет цены в migratedPrice для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
@@ -1015,7 +1016,9 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
   const viewPriceList = t.viewPriceList
   const viewDetails = t.viewDetails
   const detailsInPreparation = t.detailsInPreparation
-  const [openSection, setOpenSection] = useState<string | null>(null)
+  const [openSection, setOpenSection] = useState<string | null>(defaultOpenSection ?? null)
+  // A section open from the start must not scroll the page to itself on load.
+  const skipFirstSectionScrollRef = useRef(Boolean(defaultOpenSection))
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
   const [isCategoryTooltipOpen, setCategoryTooltipOpen] = useState(false)
@@ -1132,6 +1135,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+  // A section open from the start shows its phone layout right away.
+  useEffect(() => {
+    if (defaultOpenSection) setIsMobile(window.innerWidth < 768)
+  }, [defaultOpenSection])
   const refocusSectionRef = useRef<string | null>(null)
   useLayoutEffect(() => {
     const id = refocusSectionRef.current
@@ -1664,6 +1671,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
 
   useEffect(() => {
     if (!openSection) return
+    if (skipFirstSectionScrollRef.current) {
+      skipFirstSectionScrollRef.current = false
+      return
+    }
     scrollIntoViewIfNeeded(sectionRefs.current[openSection], SECTION_SCROLL_OFFSET)
   }, [openSection])
 
@@ -2083,6 +2094,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       isRepairAccordionLayout && section.id === 'naprawy' && isSectionOpen(section.id) && "w-full text-center whitespace-nowrap"
                                     )}>
                                       {/* открытая шапка на телефоне: короткое название, если есть (закрытая карточка и SSR — полное) */}
+                                      {titlePrefix}
                                       {(isSectionOpen(section.id) && section.mobileOpenTitle) || section.mobileTitle || section.title}
                                     </TitleTag>
                                   )
@@ -2161,7 +2173,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing }: { service: Ser
                                       </>
                                     )
                                   })()
-                                ) : section.title}
+                                ) : <>{titlePrefix}{section.title}</>}
                               </DesktopTitleTag>
                                 )
                               })()}

@@ -99,6 +99,8 @@ export function HeroSpotlight({
   style,
   hide = 'img[data-tier="0"]',
   live,
+  lit,
+  point,
 }: {
   src: string
   depth: string
@@ -111,15 +113,24 @@ export function HeroSpotlight({
   // its current frame is re-uploaded every frame while lit. `src` must be a
   // frame of the same size; the hidden set is re-queried, as the clip mounts late.
   live?: () => HTMLVideoElement | null
+  // Programmatic mode: the pointer is ignored, the light stays still in the
+  // image centre and is on while `lit` is true (same P fades).
+  lit?: boolean
+  // Programmatic mode only: where the still light sits, in image UV (0–1).
+  point?: { x: number; y: number }
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const liveRef = useRef(live)
   liveRef.current = live
+  const controlled = lit !== undefined
+  const litRef = useRef(lit)
+  litRef.current = lit
+  const applyLitRef = useRef<(() => void) | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     const wrap = canvas?.closest('.service-hero-image-wrap') as HTMLElement | null
-    if (!canvas || !wrap) return
+    if (!canvas || (!controlled && !wrap)) return
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
@@ -128,13 +139,14 @@ export function HeroSpotlight({
     let setup: Promise<boolean> | null = null
     let raf = 0
     let disposed = false
-    const mouse = { x: 0.5, y: 0.5 }
-    const sm = { x: 0.5, y: 0.5 }
+    const home = controlled && point ? point : { x: 0.5, y: 0.5 }
+    const mouse = { ...home }
+    const sm = { ...home }
     let hover = false
     let hm = 0
     let hiddenSlides: HTMLElement[] | null = null
     let imageTex: WebGLTexture | null = null
-    const blockedUntil = performance.now() + SETTLE_MS
+    const blockedUntil = controlled ? 0 : performance.now() + SETTLE_MS
 
     const init = () =>
       (setup ??= Promise.all([loadImage(src), loadImage(depth)]).then(([img, dep]) => {
@@ -200,8 +212,8 @@ export function HeroSpotlight({
       if (!g || disposed) return
       const now = performance.now()
       const active = hover && now >= blockedUntil
-      const tx = active ? mouse.x : 0.5
-      const ty = active ? mouse.y : 0.5
+      const tx = active ? mouse.x : home.x
+      const ty = active ? mouse.y : home.y
       const lr = lerpFactor(active ? P.trackingSpeed : P.returnSpeed)
       sm.x += (tx - sm.x) * lr
       sm.y += (ty - sm.y) * lr
@@ -234,6 +246,27 @@ export function HeroSpotlight({
 
     // Pointer position in the image's own UV space: the canvas box is
     // object-fit: contain, so find the letterboxed content rect inside it.
+    const dispose = () => {
+      disposed = true
+      hiddenSlides?.forEach((el) => (el.style.visibility = ''))
+      if (raf) cancelAnimationFrame(raf)
+      ;(gl as WebGLRenderingContext | null)?.getExtension('WEBGL_lose_context')?.loseContext()
+    }
+
+    if (controlled) {
+      applyLitRef.current = () => {
+        hover = !!litRef.current
+        if (gl) wake()
+        else init().then((ok) => ok && wake()) // preloads while off
+      }
+      applyLitRef.current()
+      return () => {
+        applyLitRef.current = null
+        dispose()
+      }
+    }
+    const w = wrap!
+
     const onMove = (e: PointerEvent) => {
       const r = canvas.getBoundingClientRect()
       const ar = canvas.width && canvas.height ? canvas.width / canvas.height : r.width / r.height
@@ -249,17 +282,18 @@ export function HeroSpotlight({
       hover = false
       wake()
     }
-    wrap.addEventListener('pointermove', onMove)
-    wrap.addEventListener('pointerleave', onLeave)
+    w.addEventListener('pointermove', onMove)
+    w.addEventListener('pointerleave', onLeave)
     return () => {
-      disposed = true
-      hiddenSlides?.forEach((el) => (el.style.visibility = ''))
-      if (raf) cancelAnimationFrame(raf)
-      wrap.removeEventListener('pointermove', onMove)
-      wrap.removeEventListener('pointerleave', onLeave)
-      ;(gl as WebGLRenderingContext | null)?.getExtension('WEBGL_lose_context')?.loseContext()
+      w.removeEventListener('pointermove', onMove)
+      w.removeEventListener('pointerleave', onLeave)
+      dispose()
     }
-  }, [src, depth, hide])
+  }, [src, depth, hide, controlled, point?.x, point?.y])
+
+  useEffect(() => {
+    if (controlled) applyLitRef.current?.()
+  }, [lit, controlled])
 
   return (
     <canvas

@@ -58,7 +58,7 @@ const ORDERED_CAROUSEL_MIDS: readonly HeroMid[] = [
   { group: 'pc', parts: ['komputer\u00F3w', 'stacjonarnych'] },
   { group: 'printer', parts: ['drukarek', 'laserowych'] },
   { group: 'printer', parts: ['drukarek', 'atramentowych'] },
-  { group: 'printer', parts: ['drukarek', 'ig\\u0142owych'] },
+  { group: 'printer', parts: ['drukarek', 'igłowych'] },
   { group: 'printer', parts: ['drukarek', 'etykiet'] },
   { group: 'printer', parts: ['drukarek', '3D'] },
   { group: 'printer', parts: ['drukarek', 'sublimacyjnych'] },

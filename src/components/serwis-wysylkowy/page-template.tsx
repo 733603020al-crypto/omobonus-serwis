@@ -2,9 +2,9 @@ import type { ComponentProps, ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/serwis-wysylkowy/sections/hero'
-import { About } from '@/components/serwis-wysylkowy/sections/about'
 import EquipmentTicker from '@/components/serwis-wysylkowy/equipment-ticker'
 import GoogleReviews from '@/components/serwis-wysylkowy/google-reviews'
+import { BasicQuestions } from '@/components/serwis-wysylkowy/sections/basic-questions'
 import { SERVICE_CATEGORIES } from '@/config/service-categories'
 
 const SITE_URL = 'https://serwis.omobonus.com.pl'
@@ -12,8 +12,6 @@ const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт
 
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner.
-// About is a Server Component (no client JS besides the tiny FadeSlideP
-// eyebrow wrapper it renders internally), so it's imported statically.
 const Services = dynamic(() => import('@/components/serwis-wysylkowy/sections/services').then(m => ({ default: m.Services })))
 const HomeCta = dynamic(() => import('@/components/serwis-wysylkowy/home-cta').then(m => ({ default: m.HomeCta })))
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
@@ -23,7 +21,6 @@ interface HomePageTemplateProps {
   servicesData?: NonNullable<ComponentProps<typeof Services>>['servicesData']
   servicesBasePath?: NonNullable<ComponentProps<typeof Services>>['basePath']
   servicesT?: NonNullable<ComponentProps<typeof Services>>['t']
-  aboutT?: NonNullable<ComponentProps<typeof About>>['t']
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
   cta: {
     heading: ReactNode
@@ -41,7 +38,6 @@ export function HomePageTemplate({
   servicesData,
   servicesBasePath,
   servicesT,
-  aboutT,
   footerT,
   cta,
   locale = 'pl',
@@ -105,7 +101,14 @@ export function HomePageTemplate({
         <div className="home-below relative z-10">
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} categories={SERVICE_CATEGORIES.slice(0, 3)} bare />
 
-          <About t={aboutT} bare showMoreLink plainHeadings reviewsSlot={<GoogleReviews locale={locale} />} />
+          <div className="pt-6 md:pt-10">
+            <BasicQuestions />
+          </div>
+
+          {/* The "Skąd nazwa / O nas" block is left out here; only the reviews stay. */}
+          <div className="pt-4 md:pt-6">
+            <GoogleReviews locale={locale} />
+          </div>
 
           <HomeCta {...cta} singleHeading />
 

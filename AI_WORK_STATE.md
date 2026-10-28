@@ -340,6 +340,13 @@
 ---
 
 ## ЖУРНАЛ ЭТАПОВ (новые сверху; подробности старых — в АРХИВЕ ниже)
+### ЭТАП 195 (2026-10-28) — Serwis wysyłkowy: окна шагов, заголовок, «Najważniejsze pytania»
+- Кружки-номера на карточках 1–4 (48px комп / 22px тел, анимация только у поднятой карточки) и в шапке окна шага (анимация всегда). Блок «O nas» убран, отзывы остались. Исправлено «igłowych» в hero.
+- Окно шага: кнопка «Szybki kontakt» стоит на нижнем крае пергамента (не добавляет высоту), комп: отступ снизу 22px, место над ней 18px; тел. 18px/16px — утверждено.
+- Заголовок блока шагов: «Serwis i naprawa bez wychodzenia z domu», под ним «Wyślij do nas laptop, drukarkę lub inne urządzenie. My zajmiemy się resztą.» в стиле «Pełny wykaz usług i cen…» (20px, italic, золото).
+- Перед отзывами — блок «Najważniejsze pytania» (общий аккордеон, открыт сразу, новый проп defaultOpenSection). Внутри временно пункты naprawy атрамантовых — ждёт текстов/картинок от пользователя.
+- Регламент §6.2 (PL/UK/RU/EN) — по стандарту docs/diagnoza-i-platnosci-standard.md.
+
 ### ЭТАП 194 (2026-10-27) — Прайс: «Wstępna diagnoza przy przyjęciu do serwisu»
 - Общая строка раздела Diagnoza (services-data-*-shared, PL/UK/RU/EN): название «Wstępna diagnoza przy przyjęciu do serwisu», пояснение «(orientacyjna ocena usterki — nie zastępuje pełnej diagnozy i wyceny naprawy)»; GRATIS и «do 15 min» без изменений. FAQ DTF, DTG, проекторов — «при доставке» → «при приёме» во всех языках.
 
