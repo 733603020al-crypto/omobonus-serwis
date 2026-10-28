@@ -14,7 +14,7 @@ export const defaultPricingSections: PricingSection[] = [
         service: 'Wstępna diagnoza przy dostawie do serwisu 15 min. (również w razie rezygnacji z naprawy)',
       },
       {
-        service: 'Diagnoza i wycena naprawy\n(w przypadku realizacji naprawy)',
+        service: 'Diagnoza i wycena naprawy\n(bezpłatna przy zleceniu naprawy lub gdy nie znajdziemy przyczyny usterki)',
       },
       {
         service: 'Diagnoza i wycena naprawy\n(w przypadku rezygnacji z naprawy)',
@@ -73,7 +73,7 @@ export const faqSection: PricingSection = {
       id: 'faq-1',
       title: 'Czy warto naprawiać, czy lepiej kupić nowe?',
       items: [],
-      answer: 'To zależy od usterki i dostępności części. Zawsze wykonujemy bezpłatną diagnozę wstępną i informujemy, czy naprawa jest opłacalna. Jeżeli naprawa się nie opłaca – powiemy to otwarcie.',
+      answer: 'To zależy od usterki i dostępności części. Bezpłatna diagnoza wstępna pozwala orientacyjnie ocenić problem, a po pełnej diagnozie informujemy, czy naprawa jest opłacalna. Jeżeli naprawa się nie opłaca – powiemy to otwarcie.',
     },
     {
       id: 'faq-2',
@@ -92,7 +92,7 @@ export const faqSection: PricingSection = {
       title: 'Czy oferujecie dojazd do Klienta? Czy mogę samodzielnie dostarczyć urządzenie do naprawy?',
       items: [],
       answer:
-        'Tak, świadczymy usługi serwisowe we Wrocławiu i okolicach.\n\nOdbiór urządzenia od Klienta lub dostarczenie naprawionego urządzenia kosztuje 25 zł netto do 2,5 km od serwisu (5 km łącznie w obie strony). Przy dłuższej trasie doliczamy 2 zł netto za każdy dodatkowy kilometr całej trasy tam i z powrotem ponad pierwsze 5 km. W przypadku prostych usterek możemy naprawić urządzenie na miejscu, a jeśli zajdzie taka potrzeba – zabierzemy je do naszego serwisu.\n\nOczywiście mogą Państwo również samodzielnie dostarczyć urządzenie do naszej siedziby we Wrocławiu. Na miejscu zapewniamy kompleksową, szybką i bezpłatną diagnostykę w obecności Klienta, miłe przywitanie oraz darmową kawę lub herbatę.',
+        'Tak, świadczymy usługi serwisowe we Wrocławiu i okolicach.\n\nOdbiór urządzenia od Klienta lub dostarczenie naprawionego urządzenia kosztuje 25 zł netto do 2,5 km od serwisu (5 km łącznie w obie strony). Przy dłuższej trasie doliczamy 2 zł netto za każdy dodatkowy kilometr całej trasy tam i z powrotem ponad pierwsze 5 km. W przypadku prostych usterek możemy naprawić urządzenie na miejscu, a jeśli zajdzie taka potrzeba – zabierzemy je do naszego serwisu.\n\nOczywiście mogą Państwo również samodzielnie dostarczyć urządzenie do naszej siedziby we Wrocławiu. Na miejscu zapewniamy szybką, bezpłatną diagnozę wstępną w obecności Klienta, miłe przywitanie oraz darmową kawę lub herbatę.',
     },
     {
       id: 'faq-5',

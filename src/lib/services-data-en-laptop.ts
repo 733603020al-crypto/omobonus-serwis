@@ -13,7 +13,7 @@ export const laptopDiagnostaSection = (): PricingSection => ({
       service: 'Initial check when we receive the device (a quick check of the symptoms and an initial assessment; does not replace a full diagnosis)',
     },
     {
-      service: 'Full diagnosis and repair quote\n(free if the repair goes ahead)',
+      service: 'Full diagnosis and repair quote\n(free if you order the repair or if we can’t find the cause of the fault)',
     },
     {
       service: 'Full diagnosis and repair quote\n(only if you decide not to go ahead after the full diagnosis)',
