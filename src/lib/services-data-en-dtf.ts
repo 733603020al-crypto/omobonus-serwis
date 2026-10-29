@@ -116,7 +116,7 @@ export const dtfNaprawyEn: PricingSection = {
 export const dtfFaqEn = (): PricingSection => ({
   ...faqSectionEn(),
   subcategories: [
-    { id: 'faq-1', title: 'Which DTF printers do we repair?', items: [], answer: 'We service DTF printers of different classes — from compact A3 devices to professional and industrial roll systems. We work with Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec and DTF Station / Prestige, among others.' },
+    { id: 'faq-1', title: 'Which DTF printers do we repair?', items: [], answer: '**We service DTF printers of different classes — from compact A3 devices to professional and industrial roll systems.**\n\nWe work with Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec and DTF Station / Prestige, among others.' },
     { id: 'faq-2', title: 'Do we also repair less common and Chinese DTF printers?', items: [], answer: '**Yes. Whether a repair is possible depends mainly on the design of the device, the components used and the availability of parts.**\n\nMany DTF printers use common Epson heads and standard ink system components.' },
     { id: 'faq-3', title: 'How long does a DTF printer diagnosis take?', items: [], answer: 'An initial assessment online or when the printer is accepted at our service centre takes up to 15 minutes. A full technical diagnosis and repair quote usually takes 1–2 working days, and up to 3 days for more complex faults.' },
     { id: 'faq-4', title: 'Do I have to pay for the diagnosis?', items: [], answer: 'If we carry out the repair, the diagnosis and quote are FREE. If you decline the repair, the diagnosis costs 250 / 350 / 500 zł, depending on the device class.' },

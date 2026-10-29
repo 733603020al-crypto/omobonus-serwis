@@ -275,7 +275,7 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           id: 'faq-12',
           title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
           items: [],
-          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
+          answer: '**Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych.**\n\nPrzy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
         },
         {
           id: 'faq-7',

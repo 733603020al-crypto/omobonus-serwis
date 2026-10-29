@@ -116,7 +116,7 @@ const applyDtfFaqSection = (sections: PricingSection[]) => {
   const faq = sections.find(section => section.id === 'faq')
   if (!faq) return
   faq.subcategories = [
-    { id: 'faq-1', title: 'Jakie drukarki DTF naprawiamy?', items: [], answer: 'Serwisujemy drukarki DTF różnych klas — od kompaktowych urządzeń A3 po profesjonalne i przemysłowe systemy rolkowe. Obsługujemy m.in. Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec i DTF Station / Prestige.' },
+    { id: 'faq-1', title: 'Jakie drukarki DTF naprawiamy?', items: [], answer: '**Serwisujemy drukarki DTF różnych klas — od kompaktowych urządzeń A3 po profesjonalne i przemysłowe systemy rolkowe.**\n\nObsługujemy m.in. Epson, Roland DG, Mimaki, Mutoh, Fedar, Audley, Pegasus, TruJet, Artemis, IronPrinter, Dias, Cobe, Keditec i DTF Station / Prestige.' },
     { id: 'faq-2', title: 'Czy naprawiamy również mniej popularne i chińskie drukarki DTF?', items: [], answer: '**Tak. Możliwość naprawy zależy przede wszystkim od konstrukcji urządzenia, zastosowanych podzespołów oraz dostępności części.**\n\nW wielu drukarkach DTF stosowane są popularne głowice Epson i standardowe komponenty układu atramentowego.' },
     { id: 'faq-3', title: 'Ile trwa diagnoza drukarki DTF?', items: [], answer: 'Wstępna ocena online lub przy przyjęciu do serwisu zajmuje do 15 minut. Pełna diagnoza techniczna i wycena naprawy zazwyczaj zajmuje 1–2 dni robocze, a przy bardziej złożonych usterkach do 3 dni.' },
     { id: 'faq-4', title: 'Czy diagnoza jest płatna?', items: [], answer: 'Jeżeli wykonujemy naprawę — diagnoza i wycena są GRATIS. Przy rezygnacji z naprawy koszt diagnozy wynosi 250 / 350 / 500 zł, zależnie od klasy urządzenia.' },
