@@ -1,14 +1,6 @@
 import type { ReactNode } from 'react'
 import { getImageProps } from 'next/image'
-import { GoogleRatingBadge } from '@/components/ui/google-rating-badge'
 import { HomeHeroShowcase, type HeroMid } from '@/components/serwis-wysylkowy/sections/home-hero-showcase'
-
-interface HeroStat {
-  num: string
-  pre?: string
-  unit: string
-  label: string
-}
 
 export interface HeroT {
   h1Line1: string
@@ -18,13 +10,9 @@ export interface HeroT {
   mobileH1Line1?: string
   mobileH1Line2?: string
   mobileH1Line3?: string
-  tagline: string
   callMobile: string
   callDesktop: string
   submitForm: string
-  stats: readonly HeroStat[]
-  googleRatingLabel: string
-  trustLabel: string
   googleReviewsAriaLabel?: string
   /** Visual H1 of the home carousel: fixed first/last line, middle line
       follows the active slide. The SEO H1 text above stays unchanged. */
@@ -80,18 +68,9 @@ const PL: HeroT = {
   mobileH1Line1: 'Serwis komputerów,',
   mobileH1Line2: 'laptopów i drukarek',
   mobileH1Line3: 'we Wrocławiu',
-  tagline: '"Uczciwość i szacunek do klienta" – to nasze podstawowe zasady pracy',
   callMobile: 'Zadzwoń teraz',
   callDesktop: '793 759 262',
   submitForm: 'Wyślij zgłoszenie',
-  stats: [
-    { num: '10', unit: '+', label: 'lat doświadczenia' },
-    { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
-    { num: '48', pre: 'do', unit: 'h', label: 'większość napraw' },
-    { num: '0', unit: ' zł', label: 'ukrytych kosztów' },
-  ],
-  googleRatingLabel: 'Google Rating',
-  trustLabel: 'Zaufanie klientów',
 }
 
 const heroCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', priority: true } as const
@@ -149,49 +128,5 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
       </div>
       {children}
     </section>
-  )
-}
-
-// Tagline + trust block (Google badge + 2x2 stat cards) — used by the
-// /o-nas hero (the home hero now shows the device carousel instead).
-export function HeroTrust({ t, locale = 'pl', animatedBadge = false }: { t?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en'; animatedBadge?: boolean }) {
-  const d = t ?? PL
-  return (
-    <>
-      <p className="hero-tagline-animate mt-[24px] text-[22px] font-cormorant leading-tight text-[#bfa76a] italic font-semibold drop-shadow-2xl">
-        {d.tagline}
-      </p>
-
-      {/* Trust block: badge po lewej, 2x2 stat cards po prawej (desktop) */}
-      <div className="flex gap-3 items-center mt-[16px] justify-center">
-        <GoogleRatingBadge
-          className="w-[206px] h-[89px] md:w-[230px] md:h-[103px]"
-          ratingLabel={d.googleRatingLabel}
-          locale={locale}
-          ariaLabel={d.googleReviewsAriaLabel}
-          animated={animatedBadge}
-        />
-
-        <div className="hidden md:grid grid-cols-2 gap-3 w-[260px]">
-          {d.stats.map((s, i) => (
-            <div
-              key={i}
-              className="bg-[#bfa76a]/10 backdrop-blur-[2px] border-2 border-[#bfa76a]/80 hover:border-[#bfa76a] shadow-[0_0_20px_rgba(191,167,106,0.35)] rounded-lg py-3 px-3 text-center transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-[#bfa76a]/20 hover:shadow-[0_0_28px_rgba(191,167,106,0.45)]"
-            >
-              <div className="font-cormorant font-bold text-[#e6cc82] leading-none">
-                {'pre' in s && (
-                  <span className="text-[hsl(45_50%_70%)] text-[11px] mr-0.5 font-normal">{s.pre}</span>
-                )}
-                <span className="text-[32px]">{s.num}</span>
-                <small className="text-[17px]">{s.unit}</small>
-              </div>
-              <div className="text-[11px] text-[hsl(45_18%_82%)] font-inter mt-1 leading-tight">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
   )
 }
