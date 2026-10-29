@@ -2734,7 +2734,7 @@
     }
     [data-open-header-split-content="true"][data-faq-role="true"] .faq-answer-text {
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.35;
       color: var(--text-primary);
       padding-left: 8px;
@@ -3192,7 +3192,7 @@
     .service-typography-standard .faq-answer-text {
       font-family: var(--font-cormorant), serif;
       font-size: 17px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.45;
       color: var(--text-primary);
       text-shadow: none;
@@ -3338,7 +3338,7 @@
     .service-typography-standard .faq-answer-text {
       font-family: var(--font-cormorant), serif;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1.35;
       color: var(--text-primary);
       text-shadow: none;
@@ -4285,3 +4285,7 @@
 @media (max-width: 767px) {
   html { --font-inter: "Inter Sys", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important; }
 }
+
+/* Odpowiedzi FAQ (standard .claude/rules/faq-answer-standard.md): wyróżnienia 700, akapity z odstępem ~pół linii zamiast pustej linii. */
+.faq-answer-text strong { font-weight: 700; }
+.faq-answer-text > p + p { margin-top: 0.7em; }

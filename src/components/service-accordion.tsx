@@ -3403,10 +3403,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                               )
                             })() ?? (subcategory.answer ? (
                               <div
-                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-medium leading-relaxed text-[#72502B] md:text-[#3A2817] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
+                                className={`${section.id === 'faq' ? 'whitespace-pre-line' : 'font-cormorant text-base whitespace-pre-line text-[#fff8e7]'} ${section.id === 'faq' ? 'faq-answer-text font-table-main text-[15px] md:text-[17px] font-semibold leading-relaxed text-[#72502B] md:text-[#3A2817] ml-2 mr-2 md:ml-10 md:mr-8 pt-0.5' : 'pt-2 pb-1.5 px-1 leading-normal'
                                   }`}
                               >
-                                {renderBoldMarkup(subcategory.answer)}
+                                {section.id === 'faq' ? subcategory.answer.split('\n\n').map((para, i) => <p key={i}>{renderBoldMarkup(para)}</p>) : renderBoldMarkup(subcategory.answer)}
                               </div>
                             ) : subcategory.items.length === 0 ? (
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
