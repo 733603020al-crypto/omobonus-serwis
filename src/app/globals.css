@@ -106,7 +106,8 @@
     html:not(.cv-off) :not(.home-below) > footer#kontakt { contain-intrinsic-size: auto 560px; }
   }
 
-  /* ==================     GLOBAL FONTS (FINAL)
+  /* =========================
+     GLOBAL FONTS (FINAL)
      ========================= */
 
   .font-sans,
@@ -4346,7 +4347,7 @@
     font-size: 17px;
   }
 }
-=======
+
 /* Odpowiedzi FAQ (standard .claude/rules/faq-answer-standard.md): wyróżnienia 700, akapity z odstępem ~pół linii zamiast pustej linii. */
 .faq-answer-text strong { font-weight: 700; }
 .faq-answer-text > p + p { margin-top: 0.7em; }
