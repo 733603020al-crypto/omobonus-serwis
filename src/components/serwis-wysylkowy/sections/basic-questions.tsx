@@ -68,11 +68,11 @@ const PACZKA_SUB: PricingSubcategory = {
   ],
 }
 
-// Nowe pytanie — zaraz po „Czy moje dane są bezpieczne?” (naprawy-software). Ikona dojdzie później.
+// Nowe pytanie — zaraz po „Czy moje dane są bezpieczne?” (naprawy-software).
 const GWARANCJA_SUB: PricingSubcategory = {
   id: 'gwarancja-po-naprawie',
   title: 'A jeśli po naprawie znowu się zepsuje?',
-  icon: QUESTION_ICON,
+  icon: '/images/serwis-wysylkowy/gwarancja-v1.avif',
   items: [],
   intro: '**Okres gwarancji:** zależy od usługi — podajemy go w opisie usługi na stronie oraz w dokumencie naprawy (np. na fakturze).\n**Co obejmuje:** wykonaną przez nas pracę i zamontowane przez nas części, nie całe urządzenie.\n**Jeśli usterka wróci:** gdy jej przyczyną jest nasza praca lub część, usuniemy ją bezpłatnie — przez ponowną naprawę albo wymianę części.\n**Jak zgłosić:** e-mailem, telefonicznie lub osobiście — podaj numer zlecenia lub faktury i opis usterki.\n**Wysyłka:** w takim przypadku koszt wysyłki do serwisu i z powrotem na terenie Polski pokrywamy my.\n**Czego nie obejmuje:** uszkodzenia mechanicznego, zalania, przepięcia, używania niezgodnie z instrukcją, ingerencji osób trzecich i naturalnego zużycia części eksploatacyjnych.',
 }
