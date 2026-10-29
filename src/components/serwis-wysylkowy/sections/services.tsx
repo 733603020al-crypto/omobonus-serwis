@@ -255,7 +255,7 @@ const AKCEPTACJA_INFO = {
 const NAPRAWA_FAQ = [
   ['Kiedy płacę za naprawę?', 'Płatność przyjmujemy przelewem. Konsumenci płacą przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze.'],
   ['Ile trwa gwarancja?', 'Okres gwarancji zależy od usługi. Podajemy go w opisie usługi na stronie oraz w dokumencie naprawy, np. na fakturze.'],
-  ['Co, jeśli usterka powróci?', 'Zgłoś to e-mailem, telefonicznie lub osobiście, podając numer zlecenia lub faktury i opis usterki. W ramach gwarancji, jeśli przyczyną usterki jest nasza praca lub zamontowana przez nas część, koszt dostarczenia urządzenia do serwisu z terenu Polski oraz jego odesłania pokrywamy my.'],
+  ['Co, jeśli usterka powróci?', 'Zgłoś to e-mailem, telefonicznie lub osobiście, podając numer zlecenia lub faktury i opis usterki. W ramach gwarancji, jeśli przyczyną usterki jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.'],
   ['Co, jeśli paczka dotrze do mnie uszkodzona?', 'Sprawdź przesyłkę przy kurierze i poproś o protokół szkody, a następnie skontaktuj się z nami. Pakowanie każdej przesyłki dokumentujemy zdjęciami i filmem, co pomaga wyjaśnić sprawę z przewoźnikiem. Brak protokołu nie pozbawia konsumenta jego praw.'],
 ].map(([title, answer], i) => ({ id: 'naprawa-faq-' + (i + 1), title, items: [], answer }))
 const NAPRAWA_INFO = {
@@ -269,7 +269,7 @@ const NAPRAWA_INFO = {
       text: 'Po nadaniu prześlemy Ci numer przesyłki. Przy odbiorze sprawdź stan paczki w obecności kuriera, a jeśli jest uszkodzona — poproś o protokół szkody.',
     },
     {
-      title: 'Na naprawę udzielamy gwarancji. Jeśli w okresie gwarancji usterka powróci, a jej przyczyną jest nasza praca lub zamontowana przez nas część, koszt dostarczenia urządzenia do serwisu z terenu Polski oraz jego odesłania pokrywamy my.',
+      title: 'Na naprawę udzielamy gwarancji. Jeśli w okresie gwarancji usterka powróci, a jej przyczyną jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.',
       text: '',
     },
   ],
