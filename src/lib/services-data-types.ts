@@ -5,6 +5,7 @@ export interface PricingItem {
   // цена не мигрирована (3D-печать по формуле, priceTiers-таблицы).
   price?: string
   link?: string
+  tooltipSlug?: string // Okno „Kategorie urządzeń” tej usługi przy cenie wiersza (tabela pytań /serwis-wysylkowy)
 }
 
 export interface PriceTierRow {
@@ -27,6 +28,11 @@ export interface PricingSubcategory {
   icon?: string // Ścieżka do obrazka podkategorii (naprawy) — opcjonalna, placeholder gdy brak
   priceTiers?: PriceTier[] // 3 plany taryfowe z pełną podtabelą (wynajem-drukarek, repair-accordion layout)
   closedSuffix?: string // Dodatkowy tekst po tytule, widoczny tylko na desktop i tylko gdy accordion jest zamknięty
+  intro?: string // Tekst nad tabelą podkategorii (naprawy, repair-accordion layout)
+  diagnozaBanner?: boolean // Baner „DIAGNOZA ZA DARMO”? nad tabelą — ten sam wygląd i tekst co w sekcji Diagnoza i wycena
+  noteBanner?: string // Jednolinijkowa uwaga pod nagłówkiem pytania — wygląd jak podpis banera „DIAGNOZA ZA DARMO”
+  infoCards?: { title: string; rows: ([string] | [string, string])[]; note?: string; image?: string; imageSize?: [number, number]; imageAlt?: string }[] // Karty w ramce jak „Kategorie urządzeń”: tekst + obrazek (mobile — obrazek pod tekstem); wiersz bez ceny — sam tekst na całą szerokość; note — uwaga pod wierszami
+  columns?: readonly [string, string, string] // Widoczne nagłówki kolumn tabeli podkategorii (naprawy)
 }
 
 export interface PricingSection {

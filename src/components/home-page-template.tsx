@@ -86,7 +86,7 @@ export function HomePageTemplate({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogLd) }} />
       <Header locale={locale} />
       <div>
-        <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
+        <Hero t={heroT} locale={locale} cta={locale === 'pl' ? { label: 'Serwis wysyłkowy – cała Polska', href: '/serwis-wysylkowy' } : { label: cta.button, href: cta.href }}>
           <div className="absolute bottom-[36px] left-0 w-full z-10 md:bottom-[48px]">
             <BrandTicker compact muted />
           </div>

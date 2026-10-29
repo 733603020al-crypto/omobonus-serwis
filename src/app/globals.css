@@ -4285,3 +4285,65 @@
 @media (max-width: 767px) {
   html { --font-inter: "Inter Sys", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important; }
 }
+
+/* /serwis-wysylkowy „Najważniejsze pytania”: nagłówki otwartych pozycji to pytania —
+   bez etykiet Cena/Czas, tytuł na całą szerokość (nie w kolumnie 67% / 1fr 1fr). */
+.questions-accordion [data-parchment-list-row="true"][data-state="open"] [data-subcategory-price="true"] {
+  display: none !important;
+}
+.questions-accordion [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+.questions-accordion [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > [data-parchment-list-header-col1] {
+  display: flex;
+}
+/* Najważniejsze pytania: headers are questions — full width, no "Zobacz cennik" link. */
+.questions-accordion [data-parchment-list-row="true"] [data-subcategory-text="true"] {
+  width: auto !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  min-width: 0;
+}
+.questions-accordion [data-parchment-list-row="true"] [data-subcategory-link] {
+  display: none !important;
+}
+/* Odpowiedzi FAQ: tekst tak wyraźny jak baner „DIAGNOZA ZA DARMO” (600), akapity z odstępem ~pół linii. */
+.questions-accordion .faq-answer-text {
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+}
+.questions-accordion .faq-answer-text strong {
+  font-weight: 700;
+}
+.questions-accordion .faq-answer-text p + p {
+  margin-top: 0.7em;
+}
+/* Karty (infoCards): tytuł 20 / 17 px do lewej; obrazek — desktop wysokość 200, mobile pełna szerokość do 220 wys. */
+.questions-accordion .info-card-title {
+  font-family: var(--font-cormorant), serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text-primary);
+  text-align: left;
+}
+.questions-accordion .info-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .questions-accordion .info-card-image {
+    width: auto;
+    height: 200px;
+    max-width: 320px;
+    max-height: none;
+  }
+}
+@media (max-width: 767px) {
+  .questions-accordion .info-card-title {
+    font-size: 17px;
+  }
+}

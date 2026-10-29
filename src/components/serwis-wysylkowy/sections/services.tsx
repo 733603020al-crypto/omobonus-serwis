@@ -215,7 +215,7 @@ const DIAGNOSTYKA_INFO = {
   sections: [
     {
       title: 'Sprawdzimy urządzenie i przedstawimy wycenę',
-      text: 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia. W wycenie podamy przyczynę usterki, zakres naprawy, rodzaj części (oryginalne, zamienniki lub odnowione), cenę i przewidywany termin. Konsumentom podajemy cenę brutto.\nJeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę — nie płacisz za nią osobno. Jeśli po otrzymaniu wyceny zrezygnujesz z naprawy — także uznając ją za nieopłacalną — płacisz za diagnozę według ceny uzgodnionej przed wysyłką. Jeśli nie uda nam się ustalić przyczyny usterki, za diagnozę nie płacisz.',
+      text: 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia. Otrzymujesz wycenę ze zdjęciami usterek, zakres napraw, rodzaj części (oryginalne, zamienniki lub odnowione), cenę i przewidywany termin. Konsumentom podajemy cenę brutto.\nJeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę — nie płacisz za nią osobno. Jeśli po otrzymaniu wyceny zrezygnujesz z naprawy — także uznając ją za nieopłacalną — płacisz za diagnozę według ceny uzgodnionej przed wysyłką. Jeśli nie uda nam się ustalić przyczyny usterki, za diagnozę nie płacisz.',
     },
     {
       title: 'Co dalej?',
@@ -931,11 +931,11 @@ export function Services({
             </div>
           </div>
           {/* Desktop: 5.1 and 5.2 keep the top-row card width and sit together
-              in the centre, 120px apart, with "— lub —" in the middle of the gap. */}
+              in the centre, 104px apart (row as wide as the FAQ block), with "— lub —" in the middle of the gap. */}
           <div className="grid w-full grid-cols-1 items-center gap-4 lg:flex lg:justify-center lg:gap-0">
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[4])}</div>
             {/* Lights up (bright gold of the menu hover) while 5.1 and 5.2 are raised. */}
-            <span className={`whitespace-nowrap text-center font-cormorant text-[22px] font-semibold transition-[color,text-shadow] duration-300 max-lg:hidden lg:w-[120px] lg:flex-none ${flow.lift.includes('05.1') ? 'text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.65)]' : 'text-[#bfa76a]'}`}>
+            <span className={`whitespace-nowrap text-center font-cormorant text-[22px] font-semibold transition-[color,text-shadow] duration-300 max-lg:hidden lg:w-[104px] lg:flex-none ${flow.lift.includes('05.1') ? 'text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.65)]' : 'text-[#bfa76a]'}`}>
               — lub —
             </span>
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[5])}</div>
@@ -997,6 +997,7 @@ export function Services({
                       <div className={`relative ${ZGLOSZENIE_MAIN} [&:has([role=region][data-state=closed])_.step-window-cta]:hidden`}>
                         <ServiceAccordion
                           service={diagnosisOnly}
+                          hideDiagnozaBanner
                           locale="pl"
                           // Steps 1–5.2 have no prices: the caption reads "Zobacz więcej", like the card.
                           t={{ ...serviceAccordionI18n.pl, viewPriceList: 'Zobacz więcej' }}
