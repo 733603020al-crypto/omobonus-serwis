@@ -68,6 +68,16 @@ const PACZKA_SUB: PricingSubcategory = {
   ],
 }
 
+// Nowe pytanie — zaraz po „Czy moje dane są bezpieczne?” (naprawy-software). Ikona dojdzie później.
+const GWARANCJA_SUB: PricingSubcategory = {
+  id: 'gwarancja-po-naprawie',
+  title: 'A jeśli po naprawie znowu się zepsuje?',
+  icon: QUESTION_ICON,
+  items: [],
+  noteBanner: 'Gwarancja nie ogranicza Twoich ustawowych praw — szczegóły w [Regulaminie](/regulamin) (§13–14).',
+  intro: '**Okres gwarancji:** zależy od usługi — podajemy go w opisie usługi na stronie oraz w dokumencie naprawy (np. na fakturze).\n**Co obejmuje:** wykonaną przez nas pracę i zamontowane przez nas części, nie całe urządzenie.\n**Jeśli usterka wróci:** gdy jej przyczyną jest nasza praca lub część, usuniemy ją bezpłatnie — przez ponowną naprawę albo wymianę części.\n**Jak zgłosić:** e-mailem, telefonicznie lub osobiście — podaj numer zlecenia lub faktury i opis usterki.\n**Wysyłka:** w takim przypadku koszt wysyłki do serwisu i z powrotem (z terenu Polski) pokrywamy my.\n**Czego nie obejmuje:** uszkodzenia mechanicznego, zalania, przepięcia, używania niezgodnie z instrukcją, ingerencji osób trzecich i naturalnego zużycia części eksploatacyjnych.',
+}
+
 // Cena i czas pełnej diagnozy przy rezygnacji — ten sam wiersz i to samo źródło cen co na stronach usług.
 function rejectedQuoteRows() {
   return services.flatMap((s) => {
@@ -110,7 +120,7 @@ export function BasicQuestions() {
     const id = `pytanie-${sub.id}`
     sub.items.forEach((_, i) => { pricing.price[`naprawy.${id}.${i}`] = pricing.price[`naprawy.${sub.id}.${i}`]; pricing.duration[`naprawy.${id}.${i}`] = pricing.duration[`naprawy.${sub.id}.${i}`] })
     const q = { ...sub, id, icon: QUESTION_ICON, ...QUESTION_OVERRIDES[sub.id] }
-    return sub.id === 'naprawy-skaner' ? [q, PACZKA_SUB] : [q]
+    return sub.id === 'naprawy-skaner' ? [q, PACZKA_SUB] : sub.id === 'naprawy-software' ? [q, GWARANCJA_SUB] : [q]
   })
   const service = { ...source, pricingSections: source.pricingSections.filter((s) => s.id === 'naprawy').map((s) => ({ ...s, title: 'Najczęściej zadawane pytania (FAQ)', icon: '/images/accordion-icon-faq.webp', mobileTitle: undefined, mobileOpenTitle: undefined, subcategories: [priceSub, acceptSub, rejectSub, ...placeholderSubs] })) }
   rows.forEach((r, i) => { pricing.price[`naprawy.${PRICE_SUB_ID}.${i}`] = r.price; pricing.duration[`naprawy.${PRICE_SUB_ID}.${i}`] = r.duration })

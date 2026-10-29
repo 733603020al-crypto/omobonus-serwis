@@ -3494,7 +3494,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                 {subcategory.noteBanner && (
                                   <div className="w-full text-center" style={{ background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', padding: isMobile ? '6px 24px' : '4px 20px' }}>
                                     <div className="font-table-main">
-                                      <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}>{subcategory.noteBanner}</div>
+                                      <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}>{renderBoldMarkup(subcategory.noteBanner)}</div>
                                     </div>
                                   </div>
                                 )}
