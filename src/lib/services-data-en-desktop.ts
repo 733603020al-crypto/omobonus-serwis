@@ -43,7 +43,7 @@ export const desktopFaqSection = (): PricingSection => ({
     { id: 'faq-19', title: 'Should I make a backup before handing in my computer?', items: [], answer: 'If the computer works and you are able to — yes. If needed, we can also back up your data.' },
     { id: 'faq-20', title: 'Do you recover data from damaged HDDs and SSDs?', items: [], answer: 'Yes — from accidental deletion and logical damage to more complex cases of damaged storage devices.' },
     { id: 'faq-21', title: 'Is it worth repairing an old computer, or is it better to buy a new one?', items: [], answer: 'It depends on the fault, the specifications of the equipment and the cost of the repair or upgrade. After the diagnosis we tell you the cost, so you can make a decision.' },
-    { id: 'faq-22', title: 'Can I bring the computer in myself, order a pickup or send it by courier?', items: [], answer: 'Yes. You can bring the computer in yourself or send it by courier. Pickup or delivery within 2.5 km of our service centre costs **25 zł**, beyond that — **25 zł + 2 zł/km**.' },
+    { id: 'faq-22', title: 'Can I bring the computer in myself, order a pickup or send it by courier?', items: [], answer: 'Yes. You can bring the computer in yourself or send it by courier.\n\nPickup or delivery within 2.5 km of our service centre costs **25 zł**, beyond that — **25 zł + 2 zł/km**.' },
   ],
 })
 

@@ -112,7 +112,7 @@ const applyInkjetFaqSection = (sections: PricingSection[]) => {
   if (!faq) return
   faq.subcategories = [
     { id: 'faq-1', title: 'Jak wygląda proces naprawy drukarki atramentowej?', items: [], answer: 'Najpierw przeprowadzamy diagnozę i ustalamy przyczynę usterki. Następnie przedstawiamy koszt oraz przewidywany termin. Naprawę rozpoczynamy dopiero po akceptacji Klienta.' },
-    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki?', items: [], answer: 'Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna. Pełna diagnoza również jest bezpłatna przy realizacji naprawy. Przy rezygnacji obowiązuje cena wskazana w aktualnym cenniku.' },
+    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki?', items: [], answer: '**Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna.**\n\nPełna diagnoza również jest bezpłatna przy realizacji naprawy.\n\nPrzy rezygnacji obowiązuje cena wskazana w aktualnym cenniku.' },
     { id: 'faq-3', title: 'Ile trwa naprawa?', items: [], answer: 'Większość standardowych napraw trwa 1–3 dni robocze. Bardziej złożone naprawy elektroniki albo oczekiwanie na części mogą wydłużyć ten czas.' },
     { id: 'faq-4', title: 'Jakie marki drukarek atramentowych serwisujecie?', items: [], answer: 'Serwisujemy m.in. Epson, Canon, HP, Brother oraz inne popularne drukarki atramentowe i urządzenia wielofunkcyjne.' },
     { id: 'faq-5', title: 'Czy warto naprawiać starszą drukarkę atramentową?', items: [], answer: 'To zależy od wartości urządzenia, rodzaju usterki, kosztu części i ogólnego stanu drukarki. Po diagnozie informujemy, czy naprawa jest ekonomicznie uzasadniona.' },
@@ -136,7 +136,7 @@ const applyInkjetFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-23', title: 'Skaner nie skanuje albo na skanie są pasy — czy to naprawiacie?', items: [], answer: 'Tak. Naprawiamy skanery i ADF w urządzeniach wielofunkcyjnych. Pasy mogą wynikać z zabrudzeń, problemu mechanizmu skanera lub czujników.' },
     { id: 'faq-24', title: 'Drukarka nie łączy się przez Wi-Fi / LAN albo komputer jej nie widzi — czy to naprawiacie?', items: [], answer: 'Tak. Sprawdzamy sterowniki, ustawienia sieci, firmware, porty USB/LAN oraz konfigurację drukarki i komputera.' },
     { id: 'faq-25', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Na wykonane naprawy udzielamy gwarancji od 3 do 12 miesięcy, zależnie od rodzaju pracy i zastosowanych części.' },
-    { id: 'faq-26', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Zależy od usługi. Jeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a potrzebne części są rozliczane osobno. Przy wymianie / czyszczeniu absorbera zużytego tuszu cena 250 zł obejmuje już absorber i materiały potrzebne do wykonania usługi.' },
+    { id: 'faq-26', title: 'Czy części są wliczone w cenę?', items: [], answer: '**Zależy od usługi.**\n\nJeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a potrzebne części są rozliczane osobno.\n\nPrzy wymianie / czyszczeniu absorbera zużytego tuszu cena 250 zł obejmuje już absorber i materiały potrzebne do wykonania usługi.' },
     { id: 'faq-27', title: 'Ile kosztuje odbiór lub dostawa drukarki?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
   ]
 }

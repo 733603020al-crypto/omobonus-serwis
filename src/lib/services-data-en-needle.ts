@@ -102,7 +102,7 @@ export const needleFaq = (): PricingSection => {
   const faq = faqSectionEn()
   // Shared FAQ without the questions about data and liquid damage; own answers on cost-effectiveness, delivery and brands
   const overrides: Record<string, { title?: string; answer: string }> = {
-    'faq-1': { answer: 'Usually yes. Dot matrix printers are very durable, and parts and ribbons are inexpensive. Repair is especially worthwhile when the printer prints on continuous paper or multi-part forms, or works with an older LPT / RS232 system for which it is hard to find a new device. After the diagnosis we tell you straight whether the repair makes sense.' },
+    'faq-1': { answer: '**Usually yes. Dot matrix printers are very durable, and parts and ribbons are inexpensive.**\n\nRepair is especially worthwhile when the printer prints on continuous paper or multi-part forms, or works with an older LPT / RS232 system for which it is hard to find a new device.\n\nAfter the diagnosis we tell you straight whether the repair makes sense.' },
     'faq-4': { title: 'Can I bring the printer in myself or order a pickup?', answer: 'Yes. You can bring the printer to our service centre in Wrocław or order a pickup: within 2.5 km of our service centre 25 zł net, beyond that +2 zł net for each kilometre above 5 km of the total route.' },
     'faq-8': { title: 'Which dot matrix printer brands do you service?', answer: 'We service, among others, Epson LX, FX, LQ and DFX, OKI Microline, Tally Dascom, Citizen, Star and Panasonic. Before accepting a device, we confirm that the specific model can be repaired.' },
   }

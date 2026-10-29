@@ -123,7 +123,7 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
   if (!faq) return
   faq.subcategories = [
     { id: 'faq-1', title: 'Jak wygląda proces naprawy drukarki 3D?', items: [], answer: 'Najpierw wykonujemy wstępną diagnozę, następnie pełną diagnostykę urządzenia i podajemy dokładny koszt oraz termin naprawy. Prace rozpoczynamy dopiero po akceptacji Klienta.' },
-    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: 'Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna. Pełna diagnoza również jest bezpłatna przy realizacji naprawy. W przypadku rezygnacji koszt pełnej diagnozy wynosi 150 zł netto.' },
+    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: '**Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna.**\n\nPełna diagnoza również jest bezpłatna przy realizacji naprawy.\n\nW przypadku rezygnacji koszt pełnej diagnozy wynosi 150 zł netto.' },
     { id: 'faq-3', title: 'Ile trwa naprawa?', items: [], answer: 'Większość standardowych napraw wykonujemy w ciągu 1–3 dni roboczych. Czas może się wydłużyć przy złożonych usterkach elektroniki lub konieczności zamówienia części.' },
     { id: 'faq-4', title: 'Jakie technologie drukarek 3D serwisujecie?', items: [], answer: 'Serwisujemy drukarki filamentowe FDM oraz żywiczne SLA / MSLA / DLP. Zakres napraw zależy od technologii i konstrukcji konkretnego urządzenia.' },
     { id: 'faq-5', title: 'Jakie marki serwisujecie?', items: [], answer: 'Serwisujemy m.in. Bambu Lab, Prusa, Creality, Anycubic, Elegoo, Zortrax, FlashForge oraz inne popularne marki. Przed przyjęciem możemy potwierdzić możliwość naprawy konkretnego modelu.' },
@@ -146,7 +146,7 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-21', title: 'Dlaczego wydruk żywiczny nie trzyma się platformy?', items: [], answer: 'Najczęstsze przyczyny to niewłaściwe poziomowanie platformy, błędny czas ekspozycji, problem z folią FEP/nFEP albo stan żywicy.' },
     { id: 'faq-22', title: 'Kiedy trzeba wymienić folię FEP / nFEP?', items: [], answer: 'Gdy jest uszkodzona, przebita, mocno porysowana, zmętniała albo powoduje problemy z odrywaniem kolejnych warstw.' },
     { id: 'faq-23', title: 'Jak rozpoznać uszkodzoną matrycę LCD w drukarce żywicznej?', items: [], answer: 'Typowe objawy to brak utwardzania w części pola roboczego, martwe obszary, pasy lub powtarzające się braki w modelach. Matrycę sprawdzamy przed decyzją o wymianie.' },
-    { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: 'Przed transportem skontaktuj się z nami. W drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę. W urządzeniu żywicznym należy opróżnić zbiornik z żywicy i zabezpieczyć wannę, platformę oraz oś Z.' },
+    { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: '**Przed transportem skontaktuj się z nami.**\n\nW drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę.\n\nW urządzeniu żywicznym należy opróżnić zbiornik z żywicy i zabezpieczyć wannę, platformę oraz oś Z.' },
     { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa drukarki 3D?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
     { id: 'faq-27', title: 'Jak często wykonywać konserwację drukarki 3D?', items: [], answer: 'Przy codziennym druku zalecamy konserwację co 3–6 miesięcy, a wcześniej, gdy pojawiają się stuki, przesunięcia warstw, problemy z pierwszą warstwą lub nierówna ekstruzja.' },
   ]
@@ -257,7 +257,7 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           id: 'faq-4',
           title: 'Ile kosztuje zaprojektowanie modelu 3D?',
           items: [],
-          answer: 'Zależy to od zakresu projektu. Wstępna ocena projektu jest bezpłatna, a ceny prostych modyfikacji, modeli technicznych oraz odtwarzania części są podane w cenniku. Jeżeli projekt wymaga więcej pracy, dodatkowy czas rozliczamy zgodnie z podaną stawką.',
+          answer: '**Zależy to od zakresu projektu.**\n\nWstępna ocena projektu jest bezpłatna, a ceny prostych modyfikacji, modeli technicznych oraz odtwarzania części są podane w cenniku.\n\nJeżeli projekt wymaga więcej pracy, dodatkowy czas rozliczamy zgodnie z podaną stawką.',
         },
         {
           id: 'faq-15',
@@ -275,25 +275,25 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           id: 'faq-12',
           title: 'Czy mogę zamówić kilka lub kilkadziesiąt takich samych elementów?',
           items: [],
-          answer: 'Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych. Przy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
+          answer: '**Tak. Druk 3D dobrze sprawdza się przy prototypach oraz krótkich seriach produkcyjnych.**\n\nPrzy większej liczbie sztuk możemy wcześniej sprawdzić ustawienie produkcji i sposób wykonania, aby uzyskać powtarzalne elementy.',
         },
         {
           id: 'faq-7',
           title: 'Czy możecie odtworzyć uszkodzoną lub niedostępną część?',
           items: [],
-          answer: 'Tak. Proste części możemy odtworzyć na podstawie dostarczonego wzoru, zdjęć i dokładnych wymiarów. Przy bardziej skomplikowanej geometrii możemy poprosić o dostarczenie oryginalnego elementu, aby dokładniej odwzorować jego kształt.',
+          answer: '**Tak. Proste części możemy odtworzyć na podstawie dostarczonego wzoru, zdjęć i dokładnych wymiarów.**\n\nPrzy bardziej skomplikowanej geometrii możemy poprosić o dostarczenie oryginalnego elementu, aby dokładniej odwzorować jego kształt.',
         },
         {
           id: 'faq-17',
           title: 'Drukowanie figurek 3D i drukowanie części samochodowych – czy wykonujemy też uszczelki 3D?',
           items: [],
-          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału. Przed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
+          answer: 'Tak. W zależności od projektu wykonujemy figurki, części samochodowe oraz drukowanie uszczelek 3D z odpowiednio dobranego materiału.\n\nPrzed realizacją sprawdzamy model i dobieramy materiał do zastosowania elementu.',
         },
         {
           id: 'faq-5',
           title: 'Jaki materiał wybrać: PLA, PETG, ABS/ASA czy TPU?',
           items: [],
-          answer: 'Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU. Materiał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych. Jeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
+          answer: '**Drukowanie FDM wykonujemy z PLA, PETG, ASA i TPU.**\n\nMateriał dobieramy przede wszystkim do zastosowania elementu. PLA dobrze sprawdza się przy modelach i prototypach, PETG przy częściach użytkowych, ABS/ASA przy elementach technicznych i narażonych na temperaturę, a TPU przy częściach elastycznych.\n\nJeśli nie wiesz, który materiał wybrać, doradzimy przed realizacją.',
         },
         {
           id: 'faq-9',
@@ -305,13 +305,13 @@ export const createDruk3DZamowieniePricingSections = (): PricingSection[] => {
           id: 'faq-10',
           title: 'Czy wydrukowana część będzie tak samo wytrzymała jak oryginał?',
           items: [],
-          answer: 'Nie zawsze. Wytrzymałość zależy od materiału, konstrukcji elementu, kierunku warstw i warunków, w których część będzie pracowała. Jeśli uznamy, że druk 3D nie będzie odpowiednim rozwiązaniem do danego zastosowania, poinformujemy o tym przed realizacją.',
+          answer: 'Nie zawsze. Wytrzymałość zależy od materiału, konstrukcji elementu, kierunku warstw i warunków, w których część będzie pracowała.\n\nJeśli uznamy, że druk 3D nie będzie odpowiednim rozwiązaniem do danego zastosowania, poinformujemy o tym przed realizacją.',
         },
         {
           id: 'faq-11',
           title: 'Ile trwa realizacja zamówienia?',
           items: [],
-          answer: 'Standardowy czas realizacji wydruków wynosi zwykle 1–2 dni. Czas wykonania projektu zależy od jego złożoności. Dostępna jest również realizacja ekspresowa do 24 godzin, jeśli pozwala na to czas potrzebny na wykonanie wydruku.',
+          answer: '**Standardowy czas realizacji wydruków wynosi zwykle 1–2 dni.**\n\nCzas wykonania projektu zależy od jego złożoności.\n\nDostępna jest również realizacja ekspresowa do 24 godzin, jeśli pozwala na to czas potrzebny na wykonanie wydruku.',
         },
         {
           id: 'faq-14',

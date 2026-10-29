@@ -166,5 +166,5 @@ const desktopFaqItems = (): PricingSubcategory[] => [
   { id: 'faq-19', title: 'Czy przed oddaniem komputera warto zrobić kopię zapasową?', items: [], answer: 'Jeśli komputer działa i masz taką możliwość — tak. W razie potrzeby możemy też wykonać kopię danych.' },
   { id: 'faq-20', title: 'Czy odzyskujecie dane z uszkodzonych dysków HDD i SSD?', items: [], answer: 'Tak — od przypadkowego usunięcia i uszkodzeń logicznych po bardziej złożone przypadki uszkodzonych nośników.' },
   { id: 'faq-21', title: 'Czy warto naprawiać stary komputer, czy lepiej kupić nowy?', items: [], answer: 'To zależy od usterki, parametrów sprzętu i kosztu naprawy lub modernizacji. Po diagnozie podajemy koszt, dzięki czemu możesz podjąć decyzję.' },
-  { id: 'faq-22', title: 'Czy mogę dostarczyć komputer osobiście, zamówić odbiór albo wysłać go kurierem?', items: [], answer: 'Tak. Komputer możesz przywieźć osobiście lub wysłać kurierem. Odbiór lub dostawa do 2,5 km od serwisu kosztuje **25 zł**, dalej — **25 zł + 2 zł/km**.' },
+  { id: 'faq-22', title: 'Czy mogę dostarczyć komputer osobiście, zamówić odbiór albo wysłać go kurierem?', items: [], answer: 'Tak. Komputer możesz przywieźć osobiście lub wysłać kurierem.\n\nOdbiór lub dostawa do 2,5 km od serwisu kosztuje **25 zł**, dalej — **25 zł + 2 zł/km**.' },
 ]

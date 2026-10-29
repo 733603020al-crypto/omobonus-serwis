@@ -115,7 +115,7 @@ export const inkjetFaq = (): PricingSection => ({
   ...faqSectionEn(),
   subcategories: [
     { id: 'faq-1', title: 'What does the inkjet printer repair process look like?', items: [], answer: 'First we carry out a diagnosis and identify the cause of the fault. Then we give you the cost and the expected turnaround time. We start the repair only after the customer\'s approval.' },
-    { id: 'faq-2', title: 'How much does a printer diagnosis cost?', items: [], answer: 'The initial diagnosis online and when you bring the device in is free. The full diagnosis is also free if we carry out the repair. If you decide not to go ahead, the price shown in the current price list applies.' },
+    { id: 'faq-2', title: 'How much does a printer diagnosis cost?', items: [], answer: '**The initial diagnosis online and when you bring the device in is free.**\n\nThe full diagnosis is also free if we carry out the repair.\n\nIf you decide not to go ahead, the price shown in the current price list applies.' },
     { id: 'faq-3', title: 'How long does a repair take?', items: [], answer: 'Most standard repairs take 1–3 working days. More complex electronics repairs or waiting for parts may extend this time.' },
     { id: 'faq-4', title: 'Which inkjet printer brands do you service?', items: [], answer: 'We service, among others, Epson, Canon, HP, Brother and other popular inkjet printers and multifunction printers.' },
     { id: 'faq-5', title: 'Is it worth repairing an older inkjet printer?', items: [], answer: 'It depends on the value of the device, the type of fault, the cost of parts and the overall condition of the printer. After the diagnosis we tell you whether the repair makes economic sense.' },
@@ -139,7 +139,7 @@ export const inkjetFaq = (): PricingSection => ({
     { id: 'faq-23', title: 'The scanner does not scan or there are streaks on the scan — do you repair this?', items: [], answer: 'Yes. We repair scanners and ADFs in multifunction printers. Streaks may be caused by dirt, a scanner mechanism problem or the sensors.' },
     { id: 'faq-24', title: 'The printer does not connect via Wi-Fi / LAN or the computer cannot see it — do you fix this?', items: [], answer: 'Yes. We check drivers, network settings, firmware, USB/LAN ports and the printer and computer configuration.' },
     { id: 'faq-25', title: 'Do you give a warranty on repairs?', items: [], answer: 'Yes. We give a warranty of 3 to 12 months on completed repairs, depending on the type of work and the parts used.' },
-    { id: 'faq-26', title: 'Are parts included in the price?', items: [], answer: 'It depends on the service. If a service is marked “+ parts”, the price covers labour, and the required parts are charged separately. For replacing / cleaning the waste ink pad, the price of 250 zł already includes the pad and the materials needed to carry out the service.' },
+    { id: 'faq-26', title: 'Are parts included in the price?', items: [], answer: '**It depends on the service.**\n\nIf a service is marked “+ parts”, the price covers labour, and the required parts are charged separately.\n\nFor replacing / cleaning the waste ink pad, the price of 250 zł already includes the pad and the materials needed to carry out the service.' },
     { id: 'faq-27', title: 'How much does printer pickup or delivery cost?', items: [], answer: 'Pickup or delivery within 2.5 km of our service centre costs 25 zł net. For longer routes we add 2 zł net for each kilometre above 5 km of the total round trip.' },
   ],
 })
