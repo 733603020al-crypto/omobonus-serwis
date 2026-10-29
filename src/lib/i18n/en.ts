@@ -43,7 +43,7 @@ export const en = {
       { num: '10', unit: '+', label: 'years of experience' },
       { num: '2', pre: 'up to', unit: 'h', label: 'call-out' },
       { num: '48', pre: 'up to', unit: 'h', label: 'most repairs' },
-      { num: '12', pre: 'up to', unit: ' months', label: 'warranty' },
+      { num: '0', unit: ' zł', label: 'hidden costs' },
     ],
     googleRatingLabel: 'Google Rating',
     trustLabel: 'Customer trust',

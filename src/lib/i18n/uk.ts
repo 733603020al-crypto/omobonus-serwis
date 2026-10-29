@@ -43,7 +43,7 @@
       { num: '10', unit: '+', label: 'років досвіду' },
       { num: '2', pre: 'до', unit: ' год', label: 'виїзд' },
       { num: '48', pre: 'до', unit: ' год', label: 'більшість ремонтів' },
-      { num: '12', pre: 'до', unit: ' міс.', label: 'гарантія' },
+      { num: '0', unit: ' zł', label: 'прихованих витрат' },
     ],
     googleRatingLabel: 'Рейтинг Google',
     trustLabel: 'Довіра клієнтів',
