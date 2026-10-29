@@ -63,9 +63,9 @@ const PACZKA_SUB: PricingSubcategory = {
   items: [],
   infoCards: [
     { title: 'Kartka z Twoimi danymi — obowiązkowo', image: KARTKA_IMG, imageSize: [720, 510], imageAlt: 'Kartka z imieniem, telefonem i opisem usterki', rows: [['Włóż do paczki kartkę z imieniem i nazwiskiem, numerem telefonu i krótkim opisem usterki.'], ['Na etykiecie kurierskiej Twoje dane są ukryte — bez kartki nie będziemy wiedzieć, od kogo jest paczka.']] },
-    // Obrazek dojdzie później (image + imageSize + imageAlt) — na razie tekst na całą szerokość.
-    { title: 'Co dołączyć do urządzenia?', rows: [['– ładowarkę do laptopa lub zewnętrzny zasilacz,'], ['– nietypowe kable,'], ['– wszystkie tace i kasety na papier — bez nich niektóre drukarki nie działają,'], ['– specjalny papier: składankę do drukarek igłowych, etykiety lub rolki do drukarek termicznych (zapakowane osobno).'], ['Tusze i tonery zostaw w urządzeniu. UPS wyślij w komplecie — niczego nie wyjmuj.'], ['Nie wysyłaj standardowego kabla zasilającego ani kabla USB (mamy własne), myszek, pendrive’ów, kart pamięci, toreb ani etui.']], note: 'Nie wiesz, co dołączyć? Zapytaj nas przed wysyłką.' },
   ],
+  noteBanner: 'Nie wiesz, co dołączyć? Zapytaj nas przed wysyłką.',
+  intro: '**Co dołączyć do urządzenia:**\n– ładowarkę do laptopa lub zewnętrzny zasilacz,\n– nietypowe kable,\n– wszystkie tace i kasety na papier — bez nich niektóre drukarki nie działają,\n– specjalny papier: składankę do drukarek igłowych, etykiety lub rolki do drukarek termicznych (zapakowane osobno).\n\nTusze i tonery zostaw w urządzeniu. UPS wyślij w komplecie — niczego nie wyjmuj.\n\nNie wysyłaj standardowego kabla zasilającego ani kabla USB (mamy własne), myszek, pendrive’ów, kart pamięci, toreb ani etui.',
 }
 
 // Nowe pytanie — zaraz po „Czy moje dane są bezpieczne?” (naprawy-software).
