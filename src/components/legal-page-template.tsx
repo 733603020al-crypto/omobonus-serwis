@@ -23,9 +23,9 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
         <div className="absolute inset-0 [clip-path:inset(0)]">
           <div
             className="fixed inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `var(--bg-services-card)` }}
+            style={{ backgroundImage: `var(--bg-parchment)` }}
           >
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
         </div>
 
