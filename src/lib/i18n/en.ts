@@ -78,17 +78,6 @@ export const en = {
     quoteSubtitle: 'these are our core working principles',
     moreAboutLink: 'More about us',
     moreAboutHref: '/en/o-nas',
-    kdkText: 'We accept the Large Family Card and the Senior Card, offering a 10% discount on repairs.',
-    whyUs: 'Why customers choose us:',
-    checklist: [
-      'Free diagnosis when we do the repair',
-      'Transparent prices with no hidden costs',
-      'Warranty on the work carried out',
-      'Over 10 years of experience',
-      'We service all brands and models',
-      'Quick diagnosis — in 15 minutes',
-      'Replacement printer available during the repair',
-    ],
   },
   services: {
     subheading: 'Service and repair',
