@@ -19,13 +19,14 @@ export function LegalPageTemplate({ content, footerT, cardMarginBottomClass, min
     <>
       <Header locale={locale} />
       <main className="min-h-screen pt-[65px] relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `var(--bg-services-card)`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
+        {/* Tło nieruchome (fixed) — nie rozciąga się na długiej stronie; clip-path ucina je do <main>, żeby nie wchodziło pod stopkę. */}
+        <div className="absolute inset-0 [clip-path:inset(0)]">
+          <div
+            className="fixed inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `var(--bg-services-card)` }}
+          >
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
         </div>
 
         <section className={`relative pb-0 pt-0 z-10${minHeightZero ? ' min-h-0' : ''}`}>
