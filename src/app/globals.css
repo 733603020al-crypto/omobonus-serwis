@@ -4310,7 +4310,6 @@
 /* Odpowiedzi FAQ: tekst tak wyraźny jak baner „DIAGNOZA ZA DARMO” (600), akapity z odstępem ~pół linii. */
 .questions-accordion .faq-answer-text {
   font-weight: 600;
-  font-variant-numeric: lining-nums;
 }
 .questions-accordion .faq-answer-text strong {
   font-weight: 700;
@@ -4349,5 +4348,6 @@
 }
 
 /* Odpowiedzi FAQ (standard .claude/rules/faq-answer-standard.md): wyróżnienia 700, akapity z odstępem ~pół linii zamiast pustej linii. */
+.faq-answer-text { font-variant-numeric: lining-nums; }
 .faq-answer-text strong { font-weight: 700; }
 .faq-answer-text > p + p { margin-top: 0.7em; }
