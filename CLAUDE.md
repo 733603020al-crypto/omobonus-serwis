@@ -19,6 +19,7 @@
 |---|---|
 | Как отвечать, самостоятельность, проверка результата | `docs/claude/rabota.md` |
 | Ветки, commit/push, безопасность | `docs/claude/git.md` |
+| Как отвечать вам и другому ИИ, формат отчёта | `docs/claude/otvety.md` |
 | Финальный отчёт, память о решениях, служебные файлы | `docs/claude/otchety.md` |
 | Страницы сайта, прайс, FAQ, окна, документы, скорость | `docs/claude/sajt.md` |
 | SEO (Title, Description, H1–H4) и языки | `docs/claude/seo.md` |
