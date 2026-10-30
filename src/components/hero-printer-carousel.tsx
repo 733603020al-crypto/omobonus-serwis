@@ -394,11 +394,19 @@ export function HeroPrinterCarousel({
       setIntro('off')
       return
     }
-    const start = () => setIntroLoad(true)
+    // The poster is the clip's own frame 0, so the swap is invisible: the clip is
+    // requested only after load + idle + 2.5 s, once the first screen is done.
+    let startTimer: number | undefined
+    const start = () => {
+      const go = () => { startTimer = window.setTimeout(() => setIntroLoad(true), 2500) }
+      if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(go, { timeout: 3000 })
+      else go()
+    }
     if (document.readyState === 'complete') start()
     else window.addEventListener('load', start, { once: true })
     return () => {
       window.removeEventListener('load', start)
+      window.clearTimeout(startTimer)
       window.clearTimeout(introFailTimerRef.current)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
