@@ -49,7 +49,6 @@ const FILE_QUALITY = {
   'Karta-Seniora.webp': 65,
 
   // Section tab icons (128×128 accordion tabs)
-  'P1. Diagnoza i wycena.webp': 65,
   'P2. Dojazd.webp': 65,
   'P3. Czyszczenie i konserwacja (pakiety).webp': 65,
   'P4. Naprawy i uslugi serwisowe.webp': 65,

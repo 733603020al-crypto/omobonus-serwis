@@ -74,8 +74,10 @@ Cormorant Garamond 24/26.4 · 600 · #3A2817 (шрифт размер/межст
 | | Вопрос | Ответ |
 |---|---|---|
 | 1 | Jak wygląda proces naprawy laptopa? | Przyjmujemy laptop, wykonujemy diagnozę |
-| ПК | Cormorant Garamond 20/25 · 600 · #3A2817 | Cormorant Garamond 15/19.5 · 500 · #3A2817 |
-| Телефон | Cormorant Garamond 18/20.7 · 600 · #3A2817 | Cormorant Garamond 13/15.6 · 500 · #3A2817 |
+| ПК | Cormorant Garamond 20/25 · 600 · #3A2817 | см. docs/standards/faq-cards.md |
+| Телефон | Cormorant Garamond 18/20.7 · 600 · #3A2817 | см. docs/standards/faq-cards.md |
+
+Оформление текста ответа FAQ — см. docs/standards/faq-cards.md
 
 
 ## Пояснения

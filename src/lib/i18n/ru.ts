@@ -15,7 +15,7 @@ export const ru = {
       { num: '10', unit: '+', label: 'лет опыта' },
       { num: '2', pre: 'до', unit: ' ч', label: 'выезд' },
       { num: '48', pre: 'до', unit: ' ч', label: 'большинство ремонтов' },
-      { num: '12', pre: 'до', unit: ' мес.', label: 'гарантия' },
+      { num: '0', unit: ' zł', label: 'скрытых расходов' },
     ],
     googleRatingLabel: 'Рейтинг Google',
     trustLabel: 'Доверие клиентов',

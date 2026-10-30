@@ -151,7 +151,7 @@ const desktopFaqItems = (): PricingSubcategory[] => [
   { id: 'faq-4', title: 'Czy przed naprawą poznam dokładny koszt?', items: [], answer: 'Tak. Koszt potwierdzamy przed rozpoczęciem płatnych prac — bez Twojej akceptacji nie zaczynamy naprawy.' },
   { id: 'faq-5', title: 'Ile trwa naprawa komputera?', items: [], answer: 'Standardowe naprawy trwają zwykle **1–3 dni**. Naprawa elektroniki, odzyskiwanie danych lub oczekiwanie na części mogą potrwać dłużej.' },
   { id: 'faq-6', title: 'Czy ceny w cenniku obejmują części zamienne?', items: [], answer: 'Jeśli przy cenie widnieje „+ części”, cena dotyczy samej robocizny, a koszt części uzgadniamy osobno.' },
-  { id: 'faq-7', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. Okres gwarancji zależy od rodzaju naprawy i zastosowanych części.' },
+  { id: 'faq-7', title: 'Czy udzielacie gwarancji na naprawę?', items: [], answer: 'Tak. **3–12 miesięcy**, w zależności od rodzaju naprawy i wymienionych części.' },
   { id: 'faq-8', title: 'Czy naprawiacie komputery składane z różnych podzespołów?', items: [], answer: 'Tak — również komputery składane samodzielnie i zestawy gamingowe.' },
   { id: 'faq-9', title: 'Komputer w ogóle się nie włącza — co może być przyczyną?', items: [], answer: 'Przyczyną może być m.in. zasilacz, przycisk POWER, płyta główna, zwarcie lub inny uszkodzony podzespół. Dokładną przyczynę ustalamy podczas diagnozy.' },
   { id: 'faq-10', title: 'Komputer się uruchamia, ale nie ma obrazu — co może być uszkodzone?', items: [], answer: 'Może to być m.in. karta graficzna, pamięć RAM, płyta główna, przewód lub monitor. Sam brak obrazu nie wskazuje jednoznacznie, który podzespół jest uszkodzony.' },

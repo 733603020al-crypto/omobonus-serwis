@@ -89,7 +89,7 @@ const PL: HeroT = {
     { num: '10', unit: '+', label: 'lat doświadczenia' },
     { num: '2', pre: 'do', unit: 'h', label: 'przyjazd' },
     { num: '48', pre: 'do', unit: 'h', label: 'większość napraw' },
-    { num: '12', pre: 'do', unit: ' mies.', label: 'gwarancja' },
+    { num: '0', unit: ' zł', label: 'ukrytych kosztów' },
   ],
   googleRatingLabel: 'Google Rating',
   trustLabel: 'Zaufanie klientów',

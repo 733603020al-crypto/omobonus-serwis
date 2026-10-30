@@ -101,12 +101,12 @@ export function HomePageTemplate({
         <div className="home-below relative z-10">
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} categories={SERVICE_CATEGORIES.slice(0, 3)} bare />
 
-          <div className="pt-6 md:pt-10">
+          <div className="-mt-[3px] md:-mt-[18px]">
             <BasicQuestions />
           </div>
 
           {/* The "Skąd nazwa / O nas" block is left out here; only the reviews stay. */}
-          <div className="pt-4 md:pt-6">
+          <div className="pt-[60px] md:pt-[84px]">
             <GoogleReviews locale={locale} />
           </div>
 
