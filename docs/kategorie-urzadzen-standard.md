@@ -1,4 +1,18 @@
-# Standard okna „Kategorie urządzeń”
+# Окно «Kategorie urządzeń»
+
+## Что это
+Информационное окно с категориями устройств на страницах услуг (стандарт утверждён 2026-10-17). Оно показывает, какие устройства входят в какую ценовую категорию.
+
+## Главное
+- На всех страницах — один общий компонент и один вид окна; отдельные компоненты и стили под одну страницу не создаём.
+- Карточки в окне выровнены одинаково, уточнение под карточками и пример цен оформляются по единому образцу.
+- Тексты окон пишем по правилам из раздела «Zasady treści» ниже (файл на польском — это нормально, текст окон тоже польский).
+- Любое новое или изменяемое окно сверяем с этим документом.
+
+## Для Claude (техническое)
+Всё ниже — для Claude: исходный текст правил, как он был. Читать не обязательно.
+
+## Standard okna „Kategorie urządzeń”
 
 Status: **zatwierdzony** (2026-10-17); decyzje i odpowiedzi na pytania — rozdział 5, stan wdrożenia — 5.8. Dokument opisuje okno informacyjne z kategoriami urządzeń w cenniku stron usług (`/uslugi/[slug]`). Jest samodzielny: do zbudowania nowego okna nie trzeba zaglądać na żadną konkretną stronę.
 
@@ -6,7 +20,7 @@ Rozdział 1–3 opisują **stan faktyczny z kodu przed etapem 1** (wartości zmi
 
 ---
 
-## 1. Gdzie to jest w kodzie
+### 1. Gdzie to jest w kodzie
 
 | Element | Plik |
 |---|---|
@@ -27,7 +41,7 @@ Przełącznik desktop/mobile: `isMobile = window.innerWidth < 768`. Siatka 3 kol
 
 ---
 
-## 2. Zachowanie
+### 2. Zachowanie
 
 **Desktop / tablet (≥768 px)** — tooltip po najechaniu na ikonę ⓘ w nagłówku kolumny „Cena, zł”:
 - `side: 'left'`, `align: 'center'`, `sideOffset: -80`, `collisionPadding: 16`, `TooltipProvider delayDuration={100}`;
@@ -44,9 +58,9 @@ Przełącznik desktop/mobile: `isMobile = window.innerWidth < 768`. Siatka 3 kol
 
 ---
 
-## 3. Oprawa wizualna (wartości faktyczne)
+### 3. Oprawa wizualna (wartości faktyczne)
 
-### 3.1 Ramka okna
+#### 3.1 Ramka okna
 
 | Właściwość | Klasa | Wartość |
 |---|---|---|
@@ -64,7 +78,7 @@ Przełącznik desktop/mobile: `isMobile = window.innerWidth < 768`. Siatka 3 kol
 
 Uwaga: w kodzie istnieje jeszcze wariant bez `menuBacking` (`rounded-2xl`, `services-background.webp`, `bg-[rgba(0,0,0,0.5)]`), ale wszystkie 14 stron z oknem mają `menuBacking = true`, więc jest nieużywany.
 
-### 3.2 Nagłówek i trzy linie pod nim
+#### 3.2 Nagłówek i trzy linie pod nim
 
 Kontener: `text-center space-y-2`.
 
@@ -78,7 +92,7 @@ Kontener: `text-center space-y-2`.
 
 `renderPriceLines` w wersji mobile skleja zapis „80 / 120 / 180” do „80/120/180” (pełny zapis od `md:`).
 
-### 3.3 Karty
+#### 3.3 Karty
 
 | Element | Klasy | Zmierzone |
 |---|---|---|
@@ -93,7 +107,7 @@ Kontener: `text-center space-y-2`.
 
 Źródło obrazków: zdjęcia z karuzeli tej samej strony usługi (`/images/<prefiks>-carousel-v…-NN.webp`), przypisywane polem `image` karty w konfiguracji.
 
-### 3.4 Responsywność
+#### 3.4 Responsywność
 
 | Szerokość | Zachowanie |
 |---|---|
@@ -102,13 +116,13 @@ Kontener: `text-center space-y-2`.
 | 768–1023 px | tooltip `min(100vw − 64px, 900px)`, 3 kolumny |
 | <768 px | modal pełnoekranowy, szerokość `100vw − 32px`, 1 kolumna, mniejsze fonty i obrazki 150px |
 
-### 3.5 Problem wyrównania (stan przed etapem 1 — rozwiązany, patrz 5.1)
+#### 3.5 Problem wyrównania (stan przed etapem 1 — rozwiązany, patrz 5.1)
 
 Zmierzono na 1440 px dla karty z tytułem w dwóch liniach: tytuł 56px zamiast 28px, więc jej opis zaczyna się **28px niżej** niż w sąsiednich kartach (435 vs 407 px). Obrazki są na jednej wysokości tylko tam, gdzie opakowanie obrazka ma `mt-auto` (dziś jedna strona); na pozostałych obrazek idzie zaraz za tekstem i przy różnej długości opisów „skacze”.
 
 ---
 
-## 4. Zasady treści
+### 4. Zasady treści
 
 Kolejność elementów (stała):
 
@@ -130,11 +144,11 @@ Nowe okno = ten sam komponent `PriceTooltipContent`, wpis slug w `SPECIAL_TOOLTI
 
 ---
 
-## 5. Zatwierdzone decyzje (obowiązują wszystkie okna)
+### 5. Zatwierdzone decyzje (obowiązują wszystkie okna)
 
 Zatwierdzone 2026-10-17 (5.1–5.4), odpowiedzi na pytania — 2026-10-17 (5.7). Stan wdrożenia — 5.8.
 
-### 5.1 Wspólne wyrównanie kart — ZATWIERDZONE, WDROŻONE (etap 1)
+#### 5.1 Wspólne wyrównanie kart — ZATWIERDZONE, WDROŻONE (etap 1)
 
 Każde okno, niezależnie od strony, ma ten sam układ karty (od góry): strefa tytułu → opis → obrazek. Wyrównanie jest w całości w CSS (subgrid), bez stałych wysokości.
 
@@ -149,7 +163,7 @@ Każde okno, niezależnie od strony, ma ten sam układ karty (od góry): strefa 
 
 Rozmiary, kolory, fonty, obrazki i odstępy z rozdziału 3 się nie zmieniają.
 
-### 5.2 Uwaga pod kartami — ZATWIERDZONE, MECHANIZM WDROŻONY (etap 1)
+#### 5.2 Uwaga pod kartami — ZATWIERDZONE, MECHANIZM WDROŻONY (etap 1)
 
 - Przeznaczenie: tylko przypadki szczególne, np. duże urządzenia przemysłowe / centralne z wyceną indywidualną (niszczarki, UPS). Brak uwagi = element się nie renderuje.
 - Miejsce: pod siatką kart, wewnątrz tego samego kontenera (odstęp z `space-y-6` = 24px; siatka ma `pb-4`).
@@ -157,7 +171,7 @@ Rozmiary, kolory, fonty, obrazki i odstępy z rozdziału 3 się nie zmieniają.
 - Treść: jedno krótkie zdanie, np. `Urządzenia powyżej … – wycena indywidualna.` Bez cen, terminów i warunków. Zwykła interpunkcja.
 - Dane: `deviceCategoriesNote` w `src/lib/i18n/service-accordion.ts` (opcjonalne, te same klucze co `deviceCategoriesDescription`; PL źródło, UK/RU tłumaczenie). Uwaga jest wyświetlana tylko tam, gdzie klucz ma wpisany tekst.
 
-### 5.3 Poprawka dziedziczenia `line-height` — ZATWIERDZONE, WDROŻONE (etap 1, wygląd bez zmian)
+#### 5.3 Poprawka dziedziczenia `line-height` — ZATWIERDZONE, WDROŻONE (etap 1, wygląd bez zmian)
 
 Problem: elementy bez własnego `leading-*` dziedziczyły wysokość linii od rodzica — na desktopie z `text-xs` tooltipa (16px), na mobile z `body` (1.5). W opisie karty `leading-snug` był usuwany przez `cn()` (tailwind-merge), bo stał **przed** `text-[14px] md:text-[16px]`.
 
@@ -172,7 +186,7 @@ Poprawka: jawne wartości równe dotychczas wyświetlanym.
 
 Zasada na przyszłość: w `cn()` klasa `leading-*` zawsze **po** klasach rozmiaru `text-[..px]`, inaczej tailwind-merge ją usunie.
 
-### 5.4 Przykład cen `(np. …)` — ZATWIERDZONE
+#### 5.4 Przykład cen `(np. …)` — ZATWIERDZONE
 
 - Jednolity format: `(np. A / B / C zł netto)` (UK/RU: `zł нетто`).
 - A / B / C — trzy ceny **jednej** usługi z cennika tej samej strony, w kolejności kategorii. Priorytet wyboru usługi: diagnostyka, potem konserwacja; jeśli brak usługi z trzema cenami — nie wymyślać, zostawić obecny tekst i zgłosić.
@@ -185,7 +199,7 @@ Zasady ogólne (bez odwołań do konkretnych stron):
 - Jeśli diagnostyka ma jedną cenę dla wszystkich kategorii, przykład bierze się z konserwacji.
 - Przy każdej zmianie cennika sprawdzić, czy przykład w oknie nadal się zgadza.
 
-### 5.5 Struktura danych — WDROŻONE (etap 3)
+#### 5.5 Struktura danych — WDROŻONE (etap 3)
 
 Wszystkie dane okna jednej strony to jeden wpis w `DEVICE_CATEGORIES_WINDOWS` (`src/components/PriceTooltipContent.tsx`), klucz = `slug` strony usługi. Komponent `PriceTooltipContent` nie zawiera warunków po slug — czyta tylko ten wpis.
 
@@ -213,7 +227,7 @@ Wszystkie dane okna jednej strony to jeden wpis w `DEVICE_CATEGORIES_WINDOWS` (`
 
 Bez nowych komponentów i bez warunków w JSX. W typach nadal jest nieużywany kształt `PriceTooltipRichContent` w `src/lib/services-data-types.ts` — poza zakresem etapu 3.
 
-### 5.6 Różnice treści względem zasad z rozdziału 4 — POPRAWIONE (etap 2)
+#### 5.6 Różnice treści względem zasad z rozdziału 4 — POPRAWIONE (etap 2)
 
 - „Czas realizacji nie obejmuje oczekiwania na części” (DTG, sublimacja, spożywcze) — **usunąć** z okna.
 - Wycena indywidualna wpisana w opis (niszczarki, UPS) — **przenieść** do uwagi pod kartami (5.2).
@@ -222,7 +236,7 @@ Bez nowych komponentów i bez warunków w JSX. W typach nadal jest nieużywany k
 - Myślnik: część stron ma `—` zamiast `–` — **ujednolicić do `–`**.
 - Wartości `(np. …)` 50 / 100 / 150 są wspólne dla 9 stron — weryfikacja według 5.4.
 
-### 5.7 Odpowiedzi na pytania przed wdrożeniem (2026-10-17)
+#### 5.7 Odpowiedzi na pytania przed wdrożeniem (2026-10-17)
 
 1. **Linia 1 i linia 2** — dwa osobne wiersze. Komponent dzieli opis po pierwszym `: `, jeśli dalej zaczyna się wyliczenie (`pierwsza` / `перша` / `первая`); każdy wiersz to `<span className="block">`. Inny schemat tekstu = jeden akapit.
 2. **Tablet 768–1023 px** — strefa tytułów wspólna i automatyczna (także 3 linie); fontu nie zmniejszać, tytułów nie skracać.
@@ -234,7 +248,7 @@ Bez nowych komponentów i bez warunków w JSX. W typach nadal jest nieużywany k
 8. **Ujednolicenie danych** — osobnym etapem.
 9. **Kolejność** — 1) struktura i wyrównanie → 2) teksty i ceny → 3) refaktoryzacja danych.
 
-### 5.8 Stan wdrożenia
+#### 5.8 Stan wdrożenia
 
 | Etap | Zakres | Stan |
 |---|---|---|

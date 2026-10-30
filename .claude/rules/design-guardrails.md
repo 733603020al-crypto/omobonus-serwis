@@ -6,7 +6,31 @@ paths:
   - "public/images/**"
 ---
 
-# Design guardrails (loads for any component/page/CSS file, with or without the ui-design agent)
+# Дизайн: что не ломать
+
+## Что это
+Дизайн сайта уже готов. Задача — аккуратно дополнять его, а не переделывать. Главный источник правды — файлы проекта, а не скриншоты.
+
+## Без вашего разрешения не меняем
+- общий стиль, цвета и шрифты;
+- шапку, подвал и меню;
+- общие стили и настройки проекта;
+- общую раскладку страницы и не делаем полную переделку страницы.
+
+## Какой вид сохраняем
+Тёмный фон, состаренный пергамент, золотые акценты, шрифты с засечками, спокойный дорогой тон. Не «современный минимализм», не яркий и не шаблонный вид.
+
+## Как работаем
+- Сначала берём готовые элементы сайта; новый вид кнопки или карточки — только после вопроса вам.
+- Если вы просите «покажи, как будет выглядеть» или «что предлагаешь» — сначала показываю вариант и жду вашего «да, внедряй».
+- Если правка затрагивает общий элемент, который есть на других страницах, сначала называю эти страницы.
+- Картинка в верхней части страниц услуг: рамка всегда одного размера (400 px на компьютере, 300 px на телефоне), длина текста её не меняет; картинка вписывается без растягивания; текст всегда поверх картинки.
+- Страницы с раскрывающимся прайсом переносим по образцу «Serwis laptopów»: свои тексты и цены страницы не трогаем; у каждой подкатегории есть место под картинку — готовая из проекта, иначе нейтральная заглушка, и я прямо говорю, что нужна картинка.
+
+## Для Claude (техническое)
+Всё ниже — для Claude: исходный текст правил, как он был. Читать не обязательно.
+
+## Design guardrails (loads for any component/page/CSS file, with or without the ui-design agent)
 
 Omobonus already has a finished design and working structure. The job is to carefully extend the existing site, not redesign it. Real project files are the source of truth, not screenshots — if a screenshot and the code disagree, ask which is correct rather than guessing.
 
@@ -43,7 +67,7 @@ Per-page hero scale overrides (`HERO_SCALE` map in `service-page-template.tsx`) 
 * `.service-hero-image-wrap` and all its effects (shine sweep, glow, hover scale) must stay below that text z-index — keep the wrap's own `z-index` lower, never override it per-page.
 * Flexbox note: a scaled-up wrap also needs `shrink-0`, or the flex container silently clamps its width back to 100% while height still grows, breaking the aspect ratio.
 
-## Repair-accordion design transfer (Naprawy-style pages)
+### Repair-accordion design transfer (Naprawy-style pages)
 
 Reference/source of truth for this design: `/uslugi/serwis-laptopow`. When bringing this design to another repair-accordion page:
 
