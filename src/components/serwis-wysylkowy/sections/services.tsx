@@ -26,13 +26,12 @@ const STEP_BADGE_HEADER = `${STEP_BADGE_BASE} mr-3 h-[30px] w-[30px] flex-none a
 const STEP_BADGE =
   `${STEP_BADGE_BASE} !absolute z-[5] h-[22px] w-[22px] md:h-[48px] md:w-[48px] md:group-hover:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))] data-[lit]:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))]`
 import type { ServiceData } from '@/lib/services-data'
+import type { ServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceLocale } from '@/config/service-categories'
 import ServiceAccordion from '@/components/service-accordion'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
-import { getServiceDisplayPricing } from '@/lib/services-pricing'
-import { services as allServices } from '@/lib/services-data'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -357,6 +356,7 @@ export function Services({
   showHeading = true,
   sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
   centerLastRow = false,
+  windowServices,
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
@@ -370,6 +370,8 @@ export function Services({
   sectionClassName?: string
   /** Printer page: an incomplete last row of cards is centred (same card width and gaps). */
   centerLastRow?: boolean
+  /** Prepared on the server (page-template): only the sections the step window shows, with ready prices. */
+  windowServices?: { diagnosis: ServiceData; diagnosisPricing: ServiceDisplayPricing; faq?: ServiceData; faqPricing?: ServiceDisplayPricing }
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
@@ -970,8 +972,8 @@ export function Services({
                 ×
               </button>
               {(() => {
-                const diagnosisService = allServices.find((service) => service.slug === 'serwis-drukarek-3d')
-                const faqService = allServices.find((service) => service.slug === 'serwis-drukarek-atramentowych')
+                const diagnosisService = windowServices?.diagnosis
+                const faqService = windowServices?.faq
                 if (!diagnosisService) return null
                 const diagnosisOnly = {
                   ...diagnosisService,
@@ -1001,7 +1003,7 @@ export function Services({
                           locale="pl"
                           // Steps 1–5.2 have no prices: the caption reads "Zobacz więcej", like the card.
                           t={{ ...serviceAccordionI18n.pl, viewPriceList: 'Zobacz więcej' }}
-                          pricing={getServiceDisplayPricing(diagnosisService.slug, diagnosisService.pricingSections, 'pl')}
+                          pricing={windowServices!.diagnosisPricing}
                           titlePrefix={windowBadge && (
                             <span aria-hidden="true" data-lit="" className={STEP_BADGE_HEADER}>
                               <span className="gold-text-sweep font-inter text-[15px] font-semibold leading-none md:text-[20px]">{windowBadge}</span>
@@ -1051,7 +1053,7 @@ export function Services({
                           service={faqOnly}
                           locale="pl"
                           t={serviceAccordionI18n.pl}
-                          pricing={getServiceDisplayPricing(faqService.slug, faqService.pricingSections, 'pl')}
+                          pricing={windowServices!.faqPricing ?? { price: {}, duration: {} }}
                         />
                       )}
                     </section>

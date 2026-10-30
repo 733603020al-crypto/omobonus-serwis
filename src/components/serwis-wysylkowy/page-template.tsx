@@ -6,6 +6,8 @@ import EquipmentTicker from '@/components/serwis-wysylkowy/equipment-ticker'
 import GoogleReviews from '@/components/serwis-wysylkowy/google-reviews'
 import { BasicQuestions } from '@/components/serwis-wysylkowy/sections/basic-questions'
 import { SERVICE_CATEGORIES } from '@/config/service-categories'
+import { services } from '@/lib/services-data'
+import { getServiceDisplayPricing } from '@/lib/services-pricing'
 
 const SITE_URL = 'https://serwis.omobonus.com.pl'
 const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт', ru: 'Сервис и ремонт', en: 'Service and repair' } as const
@@ -45,6 +47,17 @@ export function HomePageTemplate({
   // Services is a client component: pass only what the cards render so the
   // full services dataset (prices, accordions) isn't serialized into the HTML.
   const servicesCards = servicesData?.map(({ slug, title, icon }) => ({ slug, title, icon }))
+  // The step window (client) shows only the "diagnoza" section of the 3D printer page and the
+  // "faq" section of the inkjet page: pass just those, with prices computed here, so the whole
+  // services dataset doesn't land in the page's JS.
+  const diagnosisFull = services.find((s) => s.slug === 'serwis-drukarek-3d')
+  const faqFull = services.find((s) => s.slug === 'serwis-drukarek-atramentowych')
+  const windowServices = diagnosisFull && {
+    diagnosis: { ...diagnosisFull, pricingSections: diagnosisFull.pricingSections.filter((s) => s.id === 'diagnoza') },
+    diagnosisPricing: getServiceDisplayPricing(diagnosisFull.slug, diagnosisFull.pricingSections, 'pl'),
+    faq: faqFull && { ...faqFull, pricingSections: faqFull.pricingSections.filter((s) => s.id === 'faq') },
+    faqPricing: faqFull && getServiceDisplayPricing(faqFull.slug, faqFull.pricingSections, 'pl'),
+  }
   // The services shown on the cards, added to the site-wide LocalBusiness (same @id, so
   // search engines merge it with the layout's block) — home page only.
   const offerCatalogLd = {
@@ -99,7 +112,7 @@ export function HomePageTemplate({
           }}
         />
         <div className="home-below relative z-10">
-          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} categories={SERVICE_CATEGORIES.slice(0, 3)} bare />
+          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} categories={SERVICE_CATEGORIES.slice(0, 3)} windowServices={windowServices} bare />
 
           <div className="-mt-[3px] md:-mt-[18px]">
             <BasicQuestions />
