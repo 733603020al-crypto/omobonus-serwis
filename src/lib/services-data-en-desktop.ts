@@ -28,7 +28,7 @@ export const desktopFaqSection = (): PricingSection => ({
     { id: 'faq-4', title: 'Will I know the exact cost before the repair?', items: [], answer: 'Yes. We confirm the cost before starting any paid work — we don’t start the repair without your approval.' },
     { id: 'faq-5', title: 'How long does a computer repair take?', items: [], answer: 'Standard repairs usually take **1–3 days**. Electronics repairs, data recovery or waiting for parts may take longer.' },
     { id: 'faq-6', title: 'Do the prices in the price list include spare parts?', items: [], answer: 'If the price says “+ parts”, it covers labour only, and the cost of parts is agreed separately.' },
-    { id: 'faq-7', title: 'Do you give a warranty on the repair?', items: [], answer: 'Yes. The warranty period depends on the type of repair and the parts used.' },
+    { id: 'faq-7', title: 'Do you give a warranty on the repair?', items: [], answer: 'Yes. **3–12 months**, depending on the type of repair and the parts replaced.' },
     { id: 'faq-8', title: 'Do you repair computers built from various components?', items: [], answer: 'Yes — including self-built computers and gaming PCs.' },
     { id: 'faq-9', title: 'My computer won’t switch on at all — what could be the cause?', items: [], answer: 'The cause may be, among other things, the power supply, the POWER button, the motherboard, a short circuit or another damaged component. We identify the exact cause during the diagnosis.' },
     { id: 'faq-10', title: 'My computer starts, but there is no picture — what could be damaged?', items: [], answer: 'It may be, among other things, the graphics card, the RAM, the motherboard, a cable or the monitor. No picture alone doesn’t clearly show which component is damaged.' },

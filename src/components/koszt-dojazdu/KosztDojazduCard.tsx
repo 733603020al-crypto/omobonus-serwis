@@ -222,7 +222,7 @@ export function KosztOkno({ lang = 'pl', onClose, mapa, children, przypisy }: {
                 className="absolute inset-x-0 top-0 w-full h-full lg:h-[calc(100%+20px)] object-fill contact-form-parchment-shadow pointer-events-none select-none"
               />
             </picture>
-            <div className="relative h-full flex flex-col pl-5 pr-7 pt-5 pb-7 md:pl-6 md:pr-9 md:pt-6 md:pb-12 font-cormorant font-medium [font-variant-numeric:lining-nums]">
+            <div className="relative h-full flex flex-col pl-5 pr-7 pt-5 pb-7 md:pl-6 md:pr-9 md:pt-6 md:pb-12 font-cormorant font-medium">
               <div className="flex items-center gap-3">
                 <Image src="/icons/app-icon-192.png" alt="Omobonus" width={192} height={192} unoptimized className="w-[48px] h-[48px] md:w-[54px] md:h-[54px] flex-shrink-0 rounded-[10px] md:rounded-[12px]" />
                 <h3 className={`text-[22px] ${lang === 'pl' ? 'md:text-[25px]' : 'md:text-[22px]'} font-semibold leading-[1.15] tracking-wide ${P.title}`}>{t.naglowek}</h3>

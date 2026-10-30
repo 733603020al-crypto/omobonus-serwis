@@ -4,7 +4,6 @@ export const defaultPricingSections: PricingSection[] = [
   {
     id: 'diagnoza',
     title: 'Diagnoza i wycena',
-    // icon: manifest.P1_Diagnoza_i_wycena, // Ikona będzie dodana w komponencie
     status: 'GRATIS',
     items: [
       {

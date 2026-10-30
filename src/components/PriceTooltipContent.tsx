@@ -198,11 +198,13 @@ interface PriceTooltipContentProps {
   locale?: 'pl' | 'uk' | 'ru' | 'en'
   isMobile: boolean
   onClose: () => void
+  // Ceny diagnozy (3 progi) — zastępują stały przykład okna; brak → przykład z konfiguracji
+  priceExample?: string
 }
 
 // Rendered only for slugs in SPECIAL_TOOLTIP_SERVICES (service-accordion.tsx) — code-split
 // out so other service pages don't parse this device-category grid (+ its images) at all.
-export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose }: PriceTooltipContentProps) {
+export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose, priceExample }: PriceTooltipContentProps) {
   const t = serviceAccordionI18n[locale]
   const tooltipContentRef = useRef<HTMLDivElement | null>(null)
   // Same backing as the header "Usługi" mega menu (parchment + black/55, gold
@@ -213,6 +215,7 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
   // Dane okna z konfiguracji po slug (slug spoza konfiguracji — okno drukarek laserowych, jak dotąd)
   const win = DEVICE_CATEGORIES_WINDOWS[service.slug] ?? DEVICE_CATEGORIES_WINDOWS['serwis-drukarek-laserowych']
   const deviceCategoriesNote = t.deviceCategoriesNote?.[win.textKey]
+  const example = priceExample ?? win.priceExample
 
   return (
     <div
@@ -269,12 +272,12 @@ export function PriceTooltipContent({ service, locale = 'pl', isMobile, onClose 
               <span key={i} className="block">{line}</span>
             ))}
           </p>
-          {win.priceExample && (
+          {example && (
           <div className="mt-1 flex items-center justify-center gap-1">
             <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">{t.exampleLabel}</span>
             <div className="flex items-center">
               <div className="drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]">
-                {renderPriceLines(`${win.priceExample} ${locale === 'pl' ? 'zł netto' : locale === 'en' ? 'zł net' : 'zł нетто'}`)}
+                {renderPriceLines(`${example} ${locale === 'pl' ? 'zł netto' : locale === 'en' ? 'zł net' : 'zł нетто'}`)}
               </div>
             </div>
             <span className="text-[15px] md:text-[17px] leading-normal md:leading-4 text-[rgba(255,255,245,0.85)] font-cormorant">)</span>

@@ -18,10 +18,6 @@ export interface AboutT {
   moreAboutHref?: string
   /** Saint image alt; PL text when not set */
   saintAlt?: string
-  // legacy fields — kept for type-compat with existing translations
-  kdkText?: string
-  whyUs?: string
-  checklist?: readonly string[]
 }
 
 const PL: AboutT = {

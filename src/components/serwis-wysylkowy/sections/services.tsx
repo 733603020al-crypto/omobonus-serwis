@@ -26,13 +26,12 @@ const STEP_BADGE_HEADER = `${STEP_BADGE_BASE} mr-3 h-[30px] w-[30px] flex-none a
 const STEP_BADGE =
   `${STEP_BADGE_BASE} !absolute z-[5] h-[22px] w-[22px] md:h-[48px] md:w-[48px] md:group-hover:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))] data-[lit]:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))]`
 import type { ServiceData } from '@/lib/services-data'
+import type { ServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
 import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceLocale } from '@/config/service-categories'
 import ServiceAccordion from '@/components/service-accordion'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
-import { getServiceDisplayPricing } from '@/lib/services-pricing'
-import { services as allServices } from '@/lib/services-data'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -215,7 +214,7 @@ const DIAGNOSTYKA_INFO = {
   sections: [
     {
       title: 'Sprawdzimy urządzenie i przedstawimy wycenę',
-      text: 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia. W wycenie podamy przyczynę usterki, zakres naprawy, rodzaj części (oryginalne, zamienniki lub odnowione), cenę i przewidywany termin. Konsumentom podajemy cenę brutto.\nJeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę — nie płacisz za nią osobno. Jeśli po otrzymaniu wyceny zrezygnujesz z naprawy — także uznając ją za nieopłacalną — płacisz za diagnozę według ceny uzgodnionej przed wysyłką. Jeśli nie uda nam się ustalić przyczyny usterki, za diagnozę nie płacisz.',
+      text: 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia. Otrzymujesz wycenę ze zdjęciami usterek, zakres napraw, rodzaj części (oryginalne, zamienniki lub odnowione), cenę i przewidywany termin. Konsumentom podajemy cenę brutto.\nJeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę — nie płacisz za nią osobno. Jeśli po otrzymaniu wyceny zrezygnujesz z naprawy — także uznając ją za nieopłacalną — płacisz za diagnozę według ceny uzgodnionej przed wysyłką. Jeśli nie uda nam się ustalić przyczyny usterki, za diagnozę nie płacisz.',
     },
     {
       title: 'Co dalej?',
@@ -255,7 +254,7 @@ const AKCEPTACJA_INFO = {
 const NAPRAWA_FAQ = [
   ['Kiedy płacę za naprawę?', 'Płatność przyjmujemy przelewem. Konsumenci płacą przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze.'],
   ['Ile trwa gwarancja?', 'Okres gwarancji zależy od usługi. Podajemy go w opisie usługi na stronie oraz w dokumencie naprawy, np. na fakturze.'],
-  ['Co, jeśli usterka powróci?', 'Zgłoś to e-mailem, telefonicznie lub osobiście, podając numer zlecenia lub faktury i opis usterki. W ramach gwarancji koszt dostarczenia urządzenia do serwisu z terenu Polski pokrywamy my.'],
+  ['Co, jeśli usterka powróci?', 'Zgłoś to e-mailem, telefonicznie lub osobiście, podając numer zlecenia lub faktury i opis usterki. W ramach gwarancji, jeśli przyczyną usterki jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.'],
   ['Co, jeśli paczka dotrze do mnie uszkodzona?', 'Sprawdź przesyłkę przy kurierze i poproś o protokół szkody, a następnie skontaktuj się z nami. Pakowanie każdej przesyłki dokumentujemy zdjęciami i filmem, co pomaga wyjaśnić sprawę z przewoźnikiem. Brak protokołu nie pozbawia konsumenta jego praw.'],
 ].map(([title, answer], i) => ({ id: 'naprawa-faq-' + (i + 1), title, items: [], answer }))
 const NAPRAWA_INFO = {
@@ -269,7 +268,7 @@ const NAPRAWA_INFO = {
       text: 'Po nadaniu prześlemy Ci numer przesyłki. Przy odbiorze sprawdź stan paczki w obecności kuriera, a jeśli jest uszkodzona — poproś o protokół szkody.',
     },
     {
-      title: 'Na naprawę udzielamy gwarancji. Jeśli w okresie gwarancji usterka powróci, koszt dostarczenia urządzenia do serwisu z terenu Polski pokrywamy my.',
+      title: 'Na naprawę udzielamy gwarancji. Jeśli w okresie gwarancji usterka powróci, a jej przyczyną jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.',
       text: '',
     },
   ],
@@ -357,6 +356,7 @@ export function Services({
   showHeading = true,
   sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
   centerLastRow = false,
+  windowServices,
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
@@ -370,6 +370,8 @@ export function Services({
   sectionClassName?: string
   /** Printer page: an incomplete last row of cards is centred (same card width and gaps). */
   centerLastRow?: boolean
+  /** Prepared on the server (page-template): only the sections the step window shows, with ready prices. */
+  windowServices?: { diagnosis: ServiceData; diagnosisPricing: ServiceDisplayPricing; faq?: ServiceData; faqPricing?: ServiceDisplayPricing }
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
@@ -931,11 +933,11 @@ export function Services({
             </div>
           </div>
           {/* Desktop: 5.1 and 5.2 keep the top-row card width and sit together
-              in the centre, 120px apart, with "— lub —" in the middle of the gap. */}
+              in the centre, 104px apart (row as wide as the FAQ block), with "— lub —" in the middle of the gap. */}
           <div className="grid w-full grid-cols-1 items-center gap-4 lg:flex lg:justify-center lg:gap-0">
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[4])}</div>
             {/* Lights up (bright gold of the menu hover) while 5.1 and 5.2 are raised. */}
-            <span className={`whitespace-nowrap text-center font-cormorant text-[22px] font-semibold transition-[color,text-shadow] duration-300 max-lg:hidden lg:w-[120px] lg:flex-none ${flow.lift.includes('05.1') ? 'text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.65)]' : 'text-[#bfa76a]'}`}>
+            <span className={`whitespace-nowrap text-center font-cormorant text-[22px] font-semibold transition-[color,text-shadow] duration-300 max-lg:hidden lg:w-[104px] lg:flex-none ${flow.lift.includes('05.1') ? 'text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.65)]' : 'text-[#bfa76a]'}`}>
               — lub —
             </span>
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[5])}</div>
@@ -970,8 +972,8 @@ export function Services({
                 ×
               </button>
               {(() => {
-                const diagnosisService = allServices.find((service) => service.slug === 'serwis-drukarek-3d')
-                const faqService = allServices.find((service) => service.slug === 'serwis-drukarek-atramentowych')
+                const diagnosisService = windowServices?.diagnosis
+                const faqService = windowServices?.faq
                 if (!diagnosisService) return null
                 const diagnosisOnly = {
                   ...diagnosisService,
@@ -997,10 +999,11 @@ export function Services({
                       <div className={`relative ${ZGLOSZENIE_MAIN} [&:has([role=region][data-state=closed])_.step-window-cta]:hidden`}>
                         <ServiceAccordion
                           service={diagnosisOnly}
+                          hideDiagnozaBanner
                           locale="pl"
                           // Steps 1–5.2 have no prices: the caption reads "Zobacz więcej", like the card.
                           t={{ ...serviceAccordionI18n.pl, viewPriceList: 'Zobacz więcej' }}
-                          pricing={getServiceDisplayPricing(diagnosisService.slug, diagnosisService.pricingSections, 'pl')}
+                          pricing={windowServices!.diagnosisPricing}
                           titlePrefix={windowBadge && (
                             <span aria-hidden="true" data-lit="" className={STEP_BADGE_HEADER}>
                               <span className="gold-text-sweep font-inter text-[15px] font-semibold leading-none md:text-[20px]">{windowBadge}</span>
@@ -1050,7 +1053,7 @@ export function Services({
                           service={faqOnly}
                           locale="pl"
                           t={serviceAccordionI18n.pl}
-                          pricing={getServiceDisplayPricing(faqService.slug, faqService.pricingSections, 'pl')}
+                          pricing={windowServices!.faqPricing ?? { price: {}, duration: {} }}
                         />
                       )}
                     </section>

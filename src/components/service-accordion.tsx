@@ -121,7 +121,7 @@ export const getIconForSection = (sectionId: string, serviceSlug?: string) => {
   if (serviceSlug && RENTAL_ICON_SLUGS.has(serviceSlug) && WYNAJEM_SECTION_ICONS[sectionId]) return WYNAJEM_SECTION_ICONS[sectionId]
   switch (sectionId) {
     case 'diagnoza':
-      return manifest.P1_Diagnoza_i_wycena
+      return '/images/accordion-icon-diagnoza.webp'
     case 'projektowanie-modeli':
       return '/images/accordion-icon-druk3d-projektowanie-cad-v2.webp'
     case 'dojazd':
@@ -941,7 +941,8 @@ const HIDE_DEVICE_CAPTION_SLUGS = new Set([
 // bieżącego języka i gotowe ceny/terminy tej jednej usługi — bez całego
 // services-pricing-data.ts i słowników 3 języków w JS przeglądarki.
 // titlePrefix: optional mark before every section title (e.g. a step number circle).
-const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, defaultOpenSection }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' | 'en'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing; titlePrefix?: React.ReactNode; defaultOpenSection?: string }) => {
+// hideDiagnozaBanner: no "DIAGNOZA ZA DARMO" banner (step windows reuse the diagnoza section).
+const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, defaultOpenSection, hideDiagnozaBanner }: { service: ServiceData; locale?: 'pl' | 'uk' | 'ru' | 'en'; t: ServiceAccordionDict; pricing: ServiceDisplayPricing; titlePrefix?: React.ReactNode; defaultOpenSection?: string; hideDiagnozaBanner?: boolean }) => {
   const lookupPrice = (path: string) => {
     const value = pricing.price[path]
     if (value === undefined) throw new Error(`[services-pricing] Нет цены в migratedPrice для "${service.slug}::${path}" — добавь запись в services-pricing-data.ts.`)
@@ -1022,6 +1023,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
   const [isCategoryTooltipOpen, setCategoryTooltipOpen] = useState(false)
+  // Okno „Kategorie urządzeń” innej usługi, otwarte z ikony ⓘ przy cenie wiersza (item.tooltipSlug) — na telefonie
+  const [rowTooltip, setRowTooltip] = useState<{ slug: string; example: string } | null>(null)
   const [isMobile, setIsMobile] = useState(false)
   const [openSmallTooltips, setOpenSmallTooltips] = useState<Set<string>>(new Set())
   const swipeStartY = useRef<number | null>(null)
@@ -1106,7 +1109,219 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
   const konserwacjaPromoTitleResolved = service.slug === 'naprawa-projektorow' ? t.konserwacjaPromoTitleProjektory : isInkjetService ? t.konserwacjaPromoTitleInkjet : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoTitleKawa : (service.slug === 'serwis-drukarek-dtg' || service.slug === 'serwis-drukarek-dtf' || service.slug === 'serwis-drukarek-sublimacyjnych' || (service.slug === 'serwis-drukarek-spozywczych' || service.slug === 'serwis-ekspresow-do-kawy')) ? t.konserwacjaPromoTitleDtg : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoTitleNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoTitleAlt : t.konserwacjaPromoTitle
   const konserwacjaPromoDescriptionResolved = isInkjetService ? t.konserwacjaPromoDescriptionInkjet : service.slug === 'serwis-drukarek-dtg' ? t.konserwacjaPromoDescriptionDtg : service.slug === 'serwis-drukarek-dtf' ? t.konserwacjaPromoDescriptionDtf : service.slug === 'serwis-drukarek-sublimacyjnych' ? t.konserwacjaPromoDescriptionSublimacja : service.slug === 'serwis-ekspresow-do-kawy' ? t.konserwacjaPromoDescriptionKawa : service.slug === 'serwis-drukarek-spozywczych' ? t.konserwacjaPromoDescriptionSpozywcze :service.slug === 'naprawa-projektorow' ? t.konserwacjaPromoDescriptionProjektory : service.slug === 'naprawa-zasilaczy-ups' ? t.konserwacjaPromoDescriptionUps : service.slug === 'serwis-niszczarek' ? t.konserwacjaPromoDescriptionNiszczarki : usesAltKonserwacjaPromo ? t.konserwacjaPromoDescriptionAlt : t.konserwacjaPromoDescription
   const isSpecialTooltipService = SPECIAL_TOOLTIP_SERVICES.has(service.slug)
+  // Przykład w oknie „Kategorie urządzeń” = ceny pierwszej pozycji diagnozy z 3 progami (np. „70 / 100 / 150”); brak → stały przykład okna
+  const diagnozaPriceExample = Object.entries(pricing.price).filter(([k, v]) => /^diagnoza\.items\.\d+$/.test(k) && /^\d+ \/ \d+ \/ \d+$/.test((v ?? '').trim())).sort(([a], [b]) => Number(a.split('.')[2]) - Number(b.split('.')[2]))[0]?.[1]?.trim()
   const shouldHighlightPrices = isLaserService && isCategoryTooltipOpen
+
+  // Etykiety „Cena” (z ikoną info) i „Czas” otwartej podkategorii naprawy — w nagłówku albo nad tabelą (subcategory.columns).
+  const renderRepairPriceLabel = (subcategoryId: string, special = isSpecialTooltipService) => (
+                                    <div className="flex items-center justify-center">
+                                      <div className="text-center block w-full">
+                                        <TooltipProvider delayDuration={100}>
+                                          {isMobile && special ? (
+                                            <div
+                                              className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer"
+                                              style={{ gap: '1px' }}
+                                              role="button"
+                                              tabIndex={0}
+                                              aria-label={t.categoryInfoAriaLabel}
+                                              onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                                setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                              }}
+                                              onKeyDown={(e) => {
+                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                  e.preventDefault()
+                                                  e.stopPropagation()
+                                                  setCategoryTooltipOpen(!isCategoryTooltipOpen)
+                                                }
+                                              }}
+                                            >
+                                              <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                              <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                                <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                              </span>
+                                            </div>
+                                          ) : !special && isMobile ? (
+                                            <Popover
+                                              open={openSmallTooltips.has(subcategoryId)}
+                                              onOpenChange={open => {
+                                                if (isMobile) {
+                                                  const newSet = new Set(openSmallTooltips)
+                                                  if (open) {
+                                                    newSet.add(subcategoryId)
+                                                  } else {
+                                                    newSet.delete(subcategoryId)
+                                                  }
+                                                  setOpenSmallTooltips(newSet)
+                                                }
+                                              }}
+                                            >
+                                              <PopoverTrigger asChild>
+                                                <div
+                                                  className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center md:cursor-default cursor-pointer"
+                                                  style={{ gap: '1px' }}
+                                                  role="button"
+                                                  tabIndex={0}
+                                                  aria-label={t.priceInfoAriaLabel}
+                                                  onPointerDown={(e) => {
+                                                    if (isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                      const newSet = new Set(openSmallTooltips)
+                                                      if (newSet.has(subcategoryId)) {
+                                                        newSet.delete(subcategoryId)
+                                                      } else {
+                                                        newSet.clear()
+                                                        newSet.add(subcategoryId)
+                                                      }
+                                                      setOpenSmallTooltips(newSet)
+                                                    }
+                                                  }}
+                                                  onClick={(e) => {
+                                                    if (isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                    }
+                                                  }}
+                                                  onKeyDown={(e) => {
+                                                    if ((e.key === 'Enter' || e.key === ' ') && isMobile) {
+                                                      e.preventDefault()
+                                                      e.stopPropagation()
+                                                      const newSet = new Set(openSmallTooltips)
+                                                      if (newSet.has(subcategoryId)) {
+                                                        newSet.delete(subcategoryId)
+                                                      } else {
+                                                        newSet.clear()
+                                                        newSet.add(subcategoryId)
+                                                      }
+                                                      setOpenSmallTooltips(newSet)
+                                                    }
+                                                  }}
+                                                >
+                                                  <span className="inline sm:hidden">{priceHeaderFull}</span>
+                                                  <PopoverAnchor asChild>
+                                                    <span className="-mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
+                                                      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                                    </span>
+                                                  </PopoverAnchor>
+                                                </div>
+                                              </PopoverTrigger>
+                                              <PopoverContent
+                                                side="top"
+                                                sideOffset={4}
+                                                className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center"
+                                                style={{
+                                                  backgroundImage: `var(--bg-parchment)`,
+                                                  width: 'max-content',
+                                                  minWidth: 0,
+                                                  whiteSpace: 'nowrap',
+                                                  right: '4px',
+                                                  left: 'auto',
+                                                }}
+                                              >
+                                                <div className="absolute inset-0 bg-black/50 z-0" />
+                                                <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                                  {t.priceNettoTooltip}
+                                                </p>
+                                                <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+                                              </PopoverContent>
+                                            </Popover>
+                                          ) : (
+                                            <Tooltip
+                                              onOpenChange={open => {
+                                                if (special) {
+                                                  setCategoryTooltipOpen(open)
+                                                }
+                                              }}
+                                            >
+                                              <TooltipTrigger asChild>
+                                                <div
+                                                  className="zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap flex items-center gap-[5px] pl-1 md:pl-0 justify-center md:cursor-default"
+                                                  role="button"
+                                                  tabIndex={0}
+                                                  aria-label={t.priceInfoAriaLabel}
+                                                >
+                                                  <span className="hidden sm:inline">{priceHeaderFull}</span>
+                                                  <span className="inline sm:hidden">{priceHeaderShort}</span>
+                                                  <span className="ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1">
+                                                    <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+                                                  </span>
+                                                </div>
+                                              </TooltipTrigger>
+                                              <TooltipContent
+                                                {...(special
+                                                  ? {
+                                                    side: 'left' as const,
+                                                    align: 'center' as const,
+                                                    sideOffset: -80,
+                                                    collisionPadding: 16,
+                                                    className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
+                                                  }
+                                                  : {
+                                                    side: 'top' as const,
+                                                    sideOffset: 4,
+                                                    className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
+                                                    style: {
+                                                      backgroundImage: `var(--bg-parchment)`,
+                                                      backgroundSize: 'cover',
+                                                      backgroundPosition: 'center',
+                                                    },
+                                                  })}
+                                              >
+                                                {special ? (
+                                                  <PriceTooltipContent service={service} priceExample={diagnozaPriceExample} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
+                                                ) : (
+                                                  <>
+                                                    <div className="absolute inset-0 bg-black/50 z-0" />
+                                                    <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
+                                                      {t.priceNettoTooltip}
+                                                    </p>
+                                                  </>
+                                                )}
+                                              </TooltipContent>
+                                            </Tooltip>
+                                          )}
+                                        </TooltipProvider>
+                                      </div>
+                                    </div>
+  )
+  // Cena wiersza + ikona ⓘ (jak przy „Cena, zł”) z oknem „Kategorie urządzeń” usługi slug.
+  const renderRowCategoryTooltip = (slug: string, rowExample: string, priceNode: React.ReactNode) => {
+    const icon = (
+      <span className="inline-flex items-center justify-center rounded-full p-1 -m-1" style={{ color: 'var(--text-primary)' }}>
+        <Info className="w-4 h-4 opacity-70 pointer-events-none" />
+      </span>
+    )
+    return (
+      <div className="inline-flex items-center justify-center gap-[2px]">
+        {priceNode}
+        {isMobile ? (
+          <span role="button" tabIndex={0} aria-label={t.categoryInfoAriaLabel} className="cursor-pointer inline-flex" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setRowTooltip({ slug, example: rowExample }) }} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setRowTooltip({ slug, example: rowExample }) } }}>{icon}</span>
+        ) : (
+          <TooltipProvider delayDuration={100}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span role="button" tabIndex={0} aria-label={t.categoryInfoAriaLabel} className="inline-flex">{icon}</span>
+              </TooltipTrigger>
+              <TooltipContent side="left" align="center" sideOffset={8} collisionPadding={16} className={`p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`}>
+                <PriceTooltipContent service={{ ...service, slug }} priceExample={rowExample} locale={locale} isMobile={false} onClose={() => {}} />
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        )}
+      </div>
+    )
+  }
+  const renderRepairTimeLabel = () => (
+                                    <div className="items-center justify-center hidden md:flex">
+                                      <div className="zakres-time-header-text w-full min-w-0 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center block leading-[1.05]">
+                                        <div className="leading-[1.05]">{timeHeader}</div>
+                                        <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
+                                      </div>
+                                    </div>
+  )
 
   // Parchment backdrop of open sections: its <img> tags are lazy (they sit in
   // closed content), so warm the cache once the page has loaded — opening a
@@ -1176,7 +1391,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
 
   // Управление прокруткой body при открытом модальном окне
   useEffect(() => {
-    if (isCategoryTooltipOpen && isMobile && isSpecialTooltipService) {
+    if ((isCategoryTooltipOpen && isMobile && isSpecialTooltipService) || rowTooltip) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
@@ -1184,19 +1399,20 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
+  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService, rowTooltip])
 
   // Escape закрывает мобильное модальное окно с категориями устройств
   useEffect(() => {
-    if (!(isCategoryTooltipOpen && isMobile && isSpecialTooltipService)) return
+    if (!((isCategoryTooltipOpen && isMobile && isSpecialTooltipService) || rowTooltip)) return
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setCategoryTooltipOpen(false)
+        setRowTooltip(null)
       }
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService])
+  }, [isCategoryTooltipOpen, isMobile, isSpecialTooltipService, rowTooltip])
 
   const handleSectionChange = (value: string | null) => {
     const nowMobile = window.innerWidth < 768
@@ -1909,7 +2125,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
             // texture" by meaning instead of enumerating section ids.
             const hasOpenHeaderTable = isOpenHeaderPlateSection && section.id !== 'projektowanie-modeli' // Projektowanie modeli (druk-3d-na-zamowienie) renders a bespoke non-table block instead
             // "DIAGNOZA ZA DARMO" banner: same look as Dojazd's; not on the IT consultation or the 3D print price list.
-            const hasDiagnozaBanner = section.id === 'diagnoza' && !isOutsourcingService && service.slug !== 'druk-3d-na-zamowienie'
+            const hasDiagnozaBanner = section.id === 'diagnoza' && !hideDiagnozaBanner && !isOutsourcingService && service.slug !== 'druk-3d-na-zamowienie'
             const hasOpenHeaderBanner = section.id === 'dojazd' // "DARMOWY DOJAZD" accent banner rendered via AccordionContent's beforeContent, before the table
             const keepsClosedPlateTexture = section.id === 'diagnoza' || section.id === 'projektowanie-modeli' // OPEN ::before keeps the baked closed-plate texture instead of the open-state background
             const isDiagnozaMobileSplit = isWarmParchment && isMobile && (isOpenHeaderPlateSection || section.id === 'faq')
@@ -1960,6 +2176,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                         )}>
                           <Image
                             src={
+                              section.icon ? section.icon :
                               useWarmSectionIcons && section.id === 'dojazd'
                                 ? '/images/accordion-icon-dojazd.webp'
                                 : useWarmSectionIcons && section.id === 'diagnoza' && isDruk3DZamowienieService
@@ -2449,7 +2666,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                           })}
                                     >
                                       {isSpecialTooltipService ? (
-                                        <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
+                                        <PriceTooltipContent service={service} priceExample={diagnozaPriceExample} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
                                       ) : isParchmentTooltipContentSlug ? (
                                         <>
                                           <div className="absolute inset-0 bg-black/50 z-0" />
@@ -2692,7 +2909,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                   // Icon slot always renders (same size/behavior as serwis-laptopow):
                                   // shared visual config (slug + subcategory id) only;
                                   // the placeholder is a safety net for a missing config entry.
-                                  const iconSrc = subVisual(subcategory)?.icon ?? NAPRAWY_PLACEHOLDER_ICON
+                                  const iconSrc = subVisual(subcategory)?.icon ?? subcategory.icon ?? NAPRAWY_PLACEHOLDER_ICON
                                   return (
                                     <div data-parchment-list-image="true" className="zakres-icon-box mr-4 w-[50px] h-[50px] flex-shrink-0 flex items-center justify-center relative origin-top-left md:group-data-[state=open]/subcategory:scale-[1.4] md:group-data-[state=open]/subcategory:z-20">
                                       <img src={iconSrc} alt="" aria-hidden="true" loading="lazy" className={cn("zakres-icon-media object-contain w-full h-full opacity-90 group-hover:opacity-100 transition-opacity", !isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-closed', isSubcategoryOpen(section.id, subcategory.id) && 'parchment-shadow-icon-open')} />
@@ -2884,185 +3101,10 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                     </div>
                                   )
                                 })()}
-                                {isRepairAccordionLayout && isRepairSection && (
+                                {isRepairAccordionLayout && isRepairSection && !subcategory.columns && (
                                   <div data-subcategory-price="true" data-parchment-list-hover-text="true" className="hidden group-data-[state=open]/subcategory:flex items-center flex-shrink-0">
-                                    <div className="flex items-center justify-center">
-                                      <div className="text-center block w-full">
-                                        <TooltipProvider delayDuration={100}>
-                                          {isMobile && isSpecialTooltipService ? (
-                                            <div
-                                              className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center cursor-pointer"
-                                              style={{ gap: '1px' }}
-                                              role="button"
-                                              tabIndex={0}
-                                              aria-label={t.categoryInfoAriaLabel}
-                                              onClick={(e) => {
-                                                e.preventDefault()
-                                                e.stopPropagation()
-                                                setCategoryTooltipOpen(!isCategoryTooltipOpen)
-                                              }}
-                                              onKeyDown={(e) => {
-                                                if (e.key === 'Enter' || e.key === ' ') {
-                                                  e.preventDefault()
-                                                  e.stopPropagation()
-                                                  setCategoryTooltipOpen(!isCategoryTooltipOpen)
-                                                }
-                                              }}
-                                            >
-                                              <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                              <span className="ml-1 -mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
-                                                <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                              </span>
-                                            </div>
-                                          ) : !isSpecialTooltipService && isMobile ? (
-                                            <Popover
-                                              open={openSmallTooltips.has(subcategory.id)}
-                                              onOpenChange={open => {
-                                                if (isMobile) {
-                                                  const newSet = new Set(openSmallTooltips)
-                                                  if (open) {
-                                                    newSet.add(subcategory.id)
-                                                  } else {
-                                                    newSet.delete(subcategory.id)
-                                                  }
-                                                  setOpenSmallTooltips(newSet)
-                                                }
-                                              }}
-                                            >
-                                              <PopoverTrigger asChild>
-                                                <div
-                                                  className="zakres-price-header-text flex items-center text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap pl-1 md:pl-0 justify-center md:cursor-default cursor-pointer"
-                                                  style={{ gap: '1px' }}
-                                                  role="button"
-                                                  tabIndex={0}
-                                                  aria-label={t.priceInfoAriaLabel}
-                                                  onPointerDown={(e) => {
-                                                    if (isMobile) {
-                                                      e.preventDefault()
-                                                      e.stopPropagation()
-                                                      const newSet = new Set(openSmallTooltips)
-                                                      if (newSet.has(subcategory.id)) {
-                                                        newSet.delete(subcategory.id)
-                                                      } else {
-                                                        newSet.clear()
-                                                        newSet.add(subcategory.id)
-                                                      }
-                                                      setOpenSmallTooltips(newSet)
-                                                    }
-                                                  }}
-                                                  onClick={(e) => {
-                                                    if (isMobile) {
-                                                      e.preventDefault()
-                                                      e.stopPropagation()
-                                                    }
-                                                  }}
-                                                  onKeyDown={(e) => {
-                                                    if ((e.key === 'Enter' || e.key === ' ') && isMobile) {
-                                                      e.preventDefault()
-                                                      e.stopPropagation()
-                                                      const newSet = new Set(openSmallTooltips)
-                                                      if (newSet.has(subcategory.id)) {
-                                                        newSet.delete(subcategory.id)
-                                                      } else {
-                                                        newSet.clear()
-                                                        newSet.add(subcategory.id)
-                                                      }
-                                                      setOpenSmallTooltips(newSet)
-                                                    }
-                                                  }}
-                                                >
-                                                  <span className="inline sm:hidden">{priceHeaderFull}</span>
-                                                  <PopoverAnchor asChild>
-                                                    <span className="-mr-2 sm:mr-0 inline-flex items-center justify-center text-white/80 rounded-full p-2">
-                                                      <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                                    </span>
-                                                  </PopoverAnchor>
-                                                </div>
-                                              </PopoverTrigger>
-                                              <PopoverContent
-                                                side="top"
-                                                sideOffset={4}
-                                                className="border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden bg-cover bg-center"
-                                                style={{
-                                                  backgroundImage: `var(--bg-parchment)`,
-                                                  width: 'max-content',
-                                                  minWidth: 0,
-                                                  whiteSpace: 'nowrap',
-                                                  right: '4px',
-                                                  left: 'auto',
-                                                }}
-                                              >
-                                                <div className="absolute inset-0 bg-black/50 z-0" />
-                                                <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                                  {t.priceNettoTooltip}
-                                                </p>
-                                                <PopoverPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
-                                              </PopoverContent>
-                                            </Popover>
-                                          ) : (
-                                            <Tooltip
-                                              onOpenChange={open => {
-                                                if (isSpecialTooltipService) {
-                                                  setCategoryTooltipOpen(open)
-                                                }
-                                              }}
-                                            >
-                                              <TooltipTrigger asChild>
-                                                <div
-                                                  className="zakres-price-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] leading-[1.05] whitespace-nowrap flex items-center gap-[5px] pl-1 md:pl-0 justify-center md:cursor-default"
-                                                  role="button"
-                                                  tabIndex={0}
-                                                  aria-label={t.priceInfoAriaLabel}
-                                                >
-                                                  <span className="hidden sm:inline">{priceHeaderFull}</span>
-                                                  <span className="inline sm:hidden">{priceHeaderShort}</span>
-                                                  <span className="ml-1 sm:ml-0 inline-flex items-center justify-center text-white/80 rounded-full focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none p-2 sm:p-1">
-                                                    <Info className="w-4 h-4 opacity-70 pointer-events-none" />
-                                                  </span>
-                                                </div>
-                                              </TooltipTrigger>
-                                              <TooltipContent
-                                                {...(isSpecialTooltipService
-                                                  ? {
-                                                    side: 'left' as const,
-                                                    align: 'center' as const,
-                                                    sideOffset: -80,
-                                                    collisionPadding: 16,
-                                                    className: `p-0 border-none bg-transparent shadow-none max-w-none rounded-none ${SPECIAL_TOOLTIP_FIT_CLASS}`,
-                                                  }
-                                                  : {
-                                                    side: 'top' as const,
-                                                    sideOffset: 4,
-                                                    className: 'border border-[#bfa76a]/30 text-white shadow-lg p-3 relative overflow-hidden',
-                                                    style: {
-                                                      backgroundImage: `var(--bg-parchment)`,
-                                                      backgroundSize: 'cover',
-                                                      backgroundPosition: 'center',
-                                                    },
-                                                  })}
-                                              >
-                                                {isSpecialTooltipService ? (
-                                                  <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
-                                                ) : (
-                                                  <>
-                                                    <div className="absolute inset-0 bg-black/50 z-0" />
-                                                    <p className="relative z-10 max-w-xs text-sm leading-snug text-white font-medium">
-                                                      {t.priceNettoTooltip}
-                                                    </p>
-                                                  </>
-                                                )}
-                                              </TooltipContent>
-                                            </Tooltip>
-                                          )}
-                                        </TooltipProvider>
-                                      </div>
-                                    </div>
-                                    <div className="items-center justify-center hidden md:flex">
-                                      <div className="zakres-time-header-text w-full min-w-0 text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-center block leading-[1.05]">
-                                        <div className="leading-[1.05]">{timeHeader}</div>
-                                        <div className="leading-[1.05]">{t.timeHeaderLine2}</div>
-                                      </div>
-                                    </div>
+                                    {renderRepairPriceLabel(subcategory.id)}
+                                    {renderRepairTimeLabel()}
                                   </div>
                                 )}
                               </div>
@@ -3409,7 +3451,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                               >
                                 {section.id === 'faq' ? subcategory.answer.split('\n\n').map((para, i) => <p key={i}>{renderBoldMarkup(para)}</p>) : renderBoldMarkup(subcategory.answer)}
                               </div>
-                            ) : subcategory.items.length === 0 ? (
+                            ) : subcategory.items.length === 0 && !subcategory.intro && !subcategory.infoCards ? (
                               (service.slug === 'wynajem-drukarek' || service.slug === 'drukarka-zastepcza') && (section.id === 'akordeon-1' || section.id === 'akordeon-2') ? (
                                 (() => {
                                   const subcategoryKey = `${section.id}-${subcategory.id}`
@@ -3439,12 +3481,69 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                 ref={(el) => { parchmentListContentRefs.current[subcategory.id] = el }}
                                 className="rounded-lg outline outline-1 outline-[#bfa76a]/10 md:outline-none md:border md:border-[#bfa76a]/10 overflow-hidden"
                               >
-                                {isRepairAccordionLayout && isRepairSection ? (
+                                {subcategory.diagnozaBanner && (
+                                  // Ten sam baner co w sekcji „Diagnoza i wycena” (wygląd i tekst z i18n).
+                                  <div className="w-full text-center" style={{ background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', padding: isMobile ? '6px 24px' : '0 20px 4px' }}>
+                                    <div className="font-table-main">
+                                      <div className="service-description-text dojazd-promo-title">{t.diagnozaPromoTitle} <WinkEmoji variant="thinking" /></div>
+                                      <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}>
+                                        {t.diagnozaNote.map(line => <div key={line}>{line}</div>)}
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                                {subcategory.noteBanner && (
+                                  <div className="w-full text-center" style={{ background: 'rgba(114, 80, 43, 0.10)', borderBottom: '1px solid rgba(114, 80, 43, 0.35)', padding: isMobile ? '6px 24px' : '4px 20px' }}>
+                                    <div className="font-table-main">
+                                      <div className="parentheses-caption-text dojazd-promo-caption text-[14px] text-[#cbb27c] leading-relaxed" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset' } as React.CSSProperties}>{renderBoldMarkup(subcategory.noteBanner)}</div>
+                                    </div>
+                                  </div>
+                                )}
+                                {subcategory.infoCards && (
+                                  <div className="flex flex-col gap-4 px-2 py-3">
+                                    {subcategory.infoCards.map((card) => (
+                                      // Ramka w kolorze linii wierszy prajsu; tło i cień jak karty okna „Kategorie urządzeń”.
+                                      <div key={card.title} className="bg-[rgba(255,255,255,0.08)] border border-[rgba(114,80,43,0.8)] rounded-xl p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] flex flex-col md:flex-row md:items-center gap-4">
+                                        <div className="flex-1 min-w-0">
+                                          {/* Tytuł karty: 20 / 17 px, zawsze do lewej (.info-card-title w globals.css). */}
+                                          <div className="info-card-title">{card.title}</div>
+                                          {/* Tekst jak odpowiedź FAQ (faq-answer-text), lewa krawędź = tytuł. Wiersze z ceną — z liniami, cena: cyfry Inter 600, „zł” jak tekst. Kolumna nazwy stała, żeby ceny obu kart stały w jednej pionie. */}
+                                          <div className={`mt-2 w-full ${card.rows.some(r => r[1]) ? 'md:w-max' : ''}`}>
+                                            {card.rows.map(([size, price], idx) => {
+                                              if (!price) return <div key={size} className="faq-answer-text py-1">{size}</div>
+                                              const [num, unit] = price.split(' ')
+                                              return (
+                                              <div key={size} className={`faq-answer-text grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[318px_auto] items-center border-b ${idx === 0 ? 'border-t' : ''}`} style={{ borderColor: 'rgba(114, 80, 43, 0.8)' }}>
+                                                <div className="py-1 pr-2 md:whitespace-nowrap">{size}</div>
+                                                <div className="py-1 pl-2 md:pl-[30px] whitespace-nowrap"><span className="font-inter">{num}</span> {unit}</div>
+                                              </div>
+                                              )
+                                            })}
+                                          </div>
+                                          {card.note && (
+                                            // Uwaga do karty — mały styl jak podpis noteBanner, na dole karty, do lewej.
+                                            <div className="parentheses-caption-text dojazd-promo-caption mt-2" style={{ display: 'block', overflow: 'visible', WebkitLineClamp: 'unset', WebkitBoxOrient: 'unset', whiteSpace: 'pre-line' } as React.CSSProperties}>{card.note}</div>
+                                          )}
+                                        </div>
+                                        {card.image && (
+                                          <div className="shrink-0 md:w-[320px] flex justify-center">
+                                            <img src={card.image} alt={card.imageAlt ?? ''} width={card.imageSize?.[0]} height={card.imageSize?.[1]} loading="lazy" decoding="async" className="info-card-image rounded-lg" />
+                                          </div>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                                {isRepairAccordionLayout && isRepairSection && subcategory.intro && (
+                                  <div className="faq-answer-text whitespace-pre-line px-2 pt-2 pb-2">{subcategory.intro.split('\n\n').map((para, i) => <p key={i}>{renderBoldMarkup(para)}</p>)}</div>
+                                )}
+                                {/* Pytanie bez tabeli (tylko tekst odpowiedzi) */}
+                                {subcategory.items.length === 0 ? null : isRepairAccordionLayout && isRepairSection ? (
                                   /* Ремонтная таблица — одна разметка для mobile и desktop: на mobile колонка срока скрыта (ширина 0), ширины колонок 75/25 вместо 67/16,5/16,5 */
                                   <Table className="table-fixed border-collapse max-md:w-full max-md:min-w-0">
                                     <colgroup>
-                                      <col className="w-[75%] md:w-[67%]" />
-                                      <col className="w-[25%] md:w-[16.5%]" />
+                                      <col className={subcategory.columns ? "w-[65%] md:w-[67%]" : "w-[75%] md:w-[67%]"} />
+                                      <col className={subcategory.columns ? "w-[35%] md:w-[16.5%]" : "w-[25%] md:w-[16.5%]"} />
                                       <col className="w-0 md:w-[16.5%]" />
                                     </colgroup>
                                     {isKawaRepairTable && (
@@ -3457,6 +3556,14 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                       </TableHeader>
                                     )}
                                     <TableBody>
+                                      {subcategory.columns && (
+                                        // Te same etykiety „Cena”/„Czas” co w nagłówku otwartej podkategorii — przeniesione nad tabelę.
+                                        <TableRow className="diagnoza-open-header-row border-0 hover:bg-transparent">
+                                          <TableCell className="py-1 pl-2 pr-2 align-middle !whitespace-normal"><div className="zakres-time-header-text text-lg md:text-xl font-cormorant font-semibold text-[#ffffff] text-left leading-[1.05]" style={{ textAlign: 'left' }}>{subcategory.columns[0]}</div></TableCell>
+                                          <TableCell className="py-1 px-0 align-middle text-center">{renderRepairPriceLabel(subcategory.id, false)}</TableCell>
+                                          <TableCell className="max-md:hidden py-1 px-0 align-middle text-center">{renderRepairTimeLabel()}</TableCell>
+                                        </TableRow>
+                                      )}
                                       {subcategory.items.map((item, idx) => {
                                         const displayPrice = lookupPrice(`${section.id}.${subcategory.id}.${idx}`)
                                         const displayDuration = lookupDuration(`${section.id}.${subcategory.id}.${idx}`)
@@ -3492,7 +3599,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
                                                 : ''
                                             )}
                                           >
-                                            {renderPriceLines(displayPrice, item.link)}
+                                            {item.tooltipSlug && SPECIAL_TOOLTIP_SERVICES.has(item.tooltipSlug) && /\d\s*\/\s*\d/.test(displayPrice ?? '') ? renderRowCategoryTooltip(item.tooltipSlug, displayPrice ?? '', renderPriceLines(displayPrice, item.link)) : renderPriceLines(displayPrice, item.link)}
                                           </TableCell>
                                           <TableCell className={cn(
                                             'max-md:hidden text-center py-1 pl-2 pr-2 align-middle leading-[1.3] md:px-2',
@@ -4185,7 +4292,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
       {/* Через портал в body: внутри страницы окно попадает в слой своей секции (z-10),
           и следующие секции (блок отзывов) рисуются поверх него. z-30 — над контентом,
           но под шапкой (z-50) и нижней панелью (z-40), как и было. */}
-      {isMobile && isSpecialTooltipService && isCategoryTooltipOpen && createPortal(
+      {isMobile && ((isSpecialTooltipService && isCategoryTooltipOpen) || rowTooltip) && createPortal(
         <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm">
           <div
             className="absolute left-0 right-0 bottom-0 top-0 overflow-y-auto"
@@ -4198,12 +4305,13 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
               // Закрываем по клику на область вокруг контента (backdrop)
               if (e.target === e.currentTarget) {
                 setCategoryTooltipOpen(false)
+                setRowTooltip(null)
               }
             }}
           >
             {/* Контент модального окна */}
             <div className="mx-auto w-[calc(100vw-32px)] md:w-[min(calc(100vw-64px),900px)]">
-              <PriceTooltipContent service={service} locale={locale} isMobile={isMobile} onClose={() => setCategoryTooltipOpen(false)} />
+              <PriceTooltipContent service={rowTooltip ? { ...service, slug: rowTooltip.slug } : service} priceExample={rowTooltip ? rowTooltip.example : diagnozaPriceExample} locale={locale} isMobile={isMobile} onClose={() => { setCategoryTooltipOpen(false); setRowTooltip(null) }} />
             </div>
           </div>
         </div>,

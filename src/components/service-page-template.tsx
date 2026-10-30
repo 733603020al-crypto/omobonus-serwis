@@ -2,6 +2,9 @@ import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
 import dynamic from 'next/dynamic'
 import Image, { getImageProps } from 'next/image'
+import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
+import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
@@ -877,6 +880,13 @@ export function ServicePageTemplate({
                         </SubTag>
                       )
                     })()}
+                    {/* Przycisk serwisu wysyłkowego pod H1 — ten sam co na głównej (tylko PL, komputer). */}
+                    {locale === 'pl' && (
+                      <Link href="/serwis-wysylkowy" prefetch={false} className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                        <span className="gold-text-sweep">Serwis wysyłkowy – cała Polska</span>
+                        <ChevronRight className="w-[18px] h-[18px]" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
