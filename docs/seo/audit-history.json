@@ -329,6 +329,12 @@
       "to": "UPS repair and service | Omobonus Wrocław"
      }
     ]
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 92,
+    "problems": 0,
+    "changes": []
    }
   ],
   "description": [
@@ -898,6 +904,53 @@
       "to": "✔ UPS repair and service in Wrocław ✔ Battery replacement, inspection, electronics repair ✔ Full price list, no hidden costs ☎ 793 759 262"
      }
     ]
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 100,
+    "problems": 0,
+    "changes": [
+     {
+      "u": "/o-nas",
+      "type": "new",
+      "to": "✔ 10+ lat napraw komputerów, laptopów i drukarek we Wrocławiu ✔ Uczciwe ceny bez ukrytych kosztów ✔ Mówimy, gdy naprawa się nie opłaca ☎ 793 759 262"
+     },
+     {
+      "u": "/kontakt",
+      "type": "new",
+      "to": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Zadzwoń, napisz lub wyślij zgłoszenie serwisowe ✔ Pełny cennik na stronie ☎ 793 759 262"
+     },
+     {
+      "u": "/uk/o-nas",
+      "type": "new",
+      "to": "✔ 10+ років ремонту комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Чесні ціни без прихованих витрат ✔ Скажемо, коли ремонт невигідний ☎ 793 759 262"
+     },
+     {
+      "u": "/uk/kontakt",
+      "type": "new",
+      "to": "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Зателефонуйте, напишіть або надішліть заявку на сервіс ✔ Повний прайс на сайті ☎ 793 759 262"
+     },
+     {
+      "u": "/ru/o-nas",
+      "type": "new",
+      "to": "✔ 10+ лет ремонта компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Честные цены без скрытых платежей ✔ Скажем, когда ремонт невыгоден ☎ 793 759 262"
+     },
+     {
+      "u": "/ru/kontakt",
+      "type": "new",
+      "to": "✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Позвоните, напишите или отправьте заявку на сервис ✔ Полный прайс на сайте ☎ 793 759 262"
+     },
+     {
+      "u": "/en/o-nas",
+      "type": "new",
+      "to": "✔ 10+ years of computer, laptop and printer repair in Wrocław ✔ Honest pricing, no hidden costs ✔ We tell you when a repair isn't worth it ☎ 793 759 262"
+     },
+     {
+      "u": "/en/kontakt",
+      "type": "new",
+      "to": "✔ Computer, laptop and printer repair in Wrocław ✔ Call, message us or submit a service request ✔ Full price list on our website ☎ 793 759 262"
+     }
+    ]
    }
   ],
   "h1": [
@@ -907,6 +960,148 @@
     "problems": 0,
     "changes": [],
     "note": "Первичный аудит H1–H4: журнал omobonus-seo-h1-h4-audit.md перенесён в docs/seo/heading-decisions.json, все предложения — «Предложено»"
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 108,
+    "problems": 0,
+    "changes": [
+     {
+      "u": "/en",
+      "type": "new",
+      "to": "Computer, laptop, printer and office equipment service in Wrocław"
+     },
+     {
+      "u": "/en/o-nas",
+      "type": "new",
+      "to": "We don’t get rich | on your problem"
+     },
+     {
+      "u": "/en/kontakt",
+      "type": "new",
+      "to": "Contact a computer, laptop and printer repair service in Wrocław"
+     },
+     {
+      "u": "/en/polityka-prywatnosci",
+      "type": "new",
+      "to": "Privacy Policy"
+     },
+     {
+      "u": "/en/regulamin",
+      "type": "new",
+      "to": "Terms and Conditions of Omobonus Service"
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": "Service and repair of laptops in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": "Service and repair of desktop computers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": "IT outsourcing and IT support for businesses"
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": "Service and repair of printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": "Service and repair of laser printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": "Service and repair of inkjet printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": "Service and repair of large-format plotters in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": "Service and repair of label printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": "Service and repair of dot matrix printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": "Service and repair of 3D printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": "3D printing to order in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": "Service and repair of paper shredders in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": "Service and repair of UPS power supplies in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": "Service and repair of projectors in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": "Service and repair of plastic card printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": "Service and repair of DTG printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": "Service and repair of DTF printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": "Service and repair of sublimation printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": "Service and repair of edible printers in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": "Service and repair of coffee machines in Wrocław"
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": "Printer and copier rental"
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": "Replacement printer (during repair)"
+     }
+    ]
    }
   ],
   "h2": [
@@ -916,6 +1111,193 @@
     "problems": 6,
     "changes": [],
     "note": "Первичный аудит H1–H4: журнал omobonus-seo-h1-h4-audit.md перенесён в docs/seo/heading-decisions.json, все предложения — «Предложено»"
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 108,
+    "problems": 6,
+    "changes": [
+     {
+      "u": "/",
+      "from": "Serwis i naprawa",
+      "to": "Serwis i naprawa ¦ Komputerów i IT ¦ Drukarek (kserokopiarek) biurowych ¦ Drukarek specjalistycznych ¦ Innych urządzeń i usług"
+     },
+     {
+      "u": "/uslugi/naprawa-drukarek",
+      "from": "5 заголовков · 684be619",
+      "to": "Drukarek (kserokopiarek) biurowych ¦ Drukarek specjalistycznych ¦ Ploterów i usług ¦ Najczęściej zadawane pytania (FAQ)"
+     },
+     {
+      "u": "/uslugi/serwis-drukarek-3d",
+      "from": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ¦ dla klientów biznesowych i indywidualnych.",
+      "to": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Serwis drukarek 3D FDM i żywicznych – naprawa ekstrudera i hotendu, kalibracja stołu, ¦ konfiguracja firmware – dla klientów biznesowych i indywidualnych."
+     },
+     {
+      "u": "/uk",
+      "from": "Сервіс і ремонт",
+      "to": "Сервіс і ремонт ¦ Комп'ютерів та ІТ ¦ Офісних принтерів (копірів) ¦ Спеціалізованих принтерів ¦ Інших пристроїв та послуг"
+     },
+     {
+      "u": "/uk/uslugi/naprawa-drukarek",
+      "from": "5 заголовков · a75ccc8a",
+      "to": "Офісних принтерів (копірів) ¦ Спеціалізованих принтерів ¦ Плотерів та послуг ¦ Часті питання (FAQ)"
+     },
+     {
+      "u": "/uk/uslugi/serwis-drukarek-3d",
+      "from": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Надаємо сервісні послуги – сервіс 3D-принтера ¦ для бізнес-клієнтів та фізичних осіб.",
+      "to": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Сервіс 3D-принтерів FDM і фотополімерних – ремонт екструдера й хотенда, калібрування столу, ¦ налаштування прошивки – для бізнес-клієнтів та фізичних осіб."
+     },
+     {
+      "u": "/ru",
+      "from": "Сервис и ремонт",
+      "to": "Сервис и ремонт ¦ Компьютеров и IT ¦ Офисных принтеров (копиров) ¦ Специализированных принтеров ¦ Других устройств и услуг"
+     },
+     {
+      "u": "/ru/uslugi/naprawa-drukarek",
+      "from": "5 заголовков · 65da949b",
+      "to": "Офисных принтеров (копиров) ¦ Специализированных принтеров ¦ Плоттеров и услуг ¦ Часто задаваемые вопросы (FAQ)"
+     },
+     {
+      "u": "/ru/uslugi/serwis-drukarek-3d",
+      "from": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Оказываем сервисные услуги — сервис 3D-принтера ¦ для бизнес-клиентов и частных лиц.",
+      "to": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Сервис 3D-принтеров FDM и фотополимерных — ремонт экструдера и хотенда, калибровка стола, ¦ настройка прошивки — для бизнес-клиентов и частных лиц."
+     },
+     {
+      "u": "/en",
+      "type": "new",
+      "to": "Service and repair ¦ Computers and IT ¦ Office printers (copiers) ¦ Specialist printers ¦ Other devices and services"
+     },
+     {
+      "u": "/en/o-nas",
+      "type": "new",
+      "to": "Honesty and respect for the customer ¦ Saint Omobonus of the 12th century ¦ Meet the people, not a call centre"
+     },
+     {
+      "u": "/en/kontakt",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/polityka-prywatnosci",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/regulamin",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": "IT support consultation and quote ¦ Business IT support (monthly subscription) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": "Office printers (copiers) ¦ Specialist printers ¦ Plotters and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": "FDM 3D printing in PLA, PETG, ASA and TPU – spare parts, prototypes, enclosures, technical components and short runs. ¦ 3D printing from a ready-made design ¦ 3D CAD design ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": "Laser (A4 format) ¦ Laser (A3/A4 format) ¦ Frequently asked questions (FAQ)"
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": "Laser (A4 format) ¦ Laser (A3 format) ¦ Frequently asked questions (FAQ)"
+     }
+    ]
    }
   ],
   "h3": [
@@ -925,6 +1307,163 @@
     "problems": 4,
     "changes": [],
     "note": "Первичный аудит H1–H4: журнал omobonus-seo-h1-h4-audit.md перенесён в docs/seo/heading-decisions.json, все предложения — «Предложено»"
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 108,
+    "problems": 4,
+    "changes": [
+     {
+      "u": "/uslugi/naprawa-drukarek",
+      "from": "",
+      "to": "32 заголовков · 112d4b3e"
+     },
+     {
+      "u": "/uk/uslugi/naprawa-drukarek",
+      "from": "",
+      "to": "32 заголовков · 85f9b20d"
+     },
+     {
+      "u": "/ru/uslugi/naprawa-drukarek",
+      "from": "",
+      "to": "32 заголовков · 4e4a3887"
+     },
+     {
+      "u": "/en",
+      "type": "new",
+      "to": "Laptops ¦ Desktop computers ¦ IT outsourcing ¦ Laser printers ¦ Inkjet printers ¦ Dot matrix printers ¦ Label printers ¦ 3D printers ¦ Sublimation printers ¦ DTF printers ¦ DTG printers ¦ Edible (food) printers ¦ Plastic card printers ¦ Plotters ¦ Paper shredders ¦ UPS units ¦ Projectors ¦ Coffee machines ¦ 3D printing on demand ¦ Printer rental"
+     },
+     {
+      "u": "/en/o-nas",
+      "type": "new",
+      "to": "Honest prices ¦ Photos of the damage ¦ Honest assessment ¦ Replaced parts returned ¦ Replacement printer ¦ −10% discount ¦ About us: ¦ Maksym ¦ Paweł ¦ Andrzej ¦ Umka"
+     },
+     {
+      "u": "/en/kontakt",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/polityka-prywatnosci",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/regulamin",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": "33 заголовков · b90a0ea6"
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": "30 заголовков · 4f4d42cf"
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": "27 заголовков · b2ed4135"
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": "32 заголовков · bd524431"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": "36 заголовков · aacc1ad0"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": "34 заголовков · 4733440a"
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": "33 заголовков · 906bf5f6"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": "32 заголовков · e7790bef"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": "27 заголовков · c69f512c"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": "35 заголовков · aade01a9"
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": "17 заголовков · 1034a1ed"
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": "30 заголовков · f57d944f"
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": "33 заголовков · 9692c783"
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": "28 заголовков · abccc076"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": "31 заголовков · 6f8ba163"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": "29 заголовков · 44f20edd"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": "27 заголовков · 66a77e4a"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": "34 заголовков · e97723e8"
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": "39 заголовков · 2af5f12c"
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": "40 заголовков · 5c903b24"
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": "28 заголовков · 40c54bed"
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": "26 заголовков · 1a4e007b"
+     }
+    ]
    }
   ],
   "h4": [
@@ -934,6 +1473,148 @@
     "problems": 32,
     "changes": [],
     "note": "Первичный аудит H1–H4: журнал omobonus-seo-h1-h4-audit.md перенесён в docs/seo/heading-decisions.json, все предложения — «Предложено»"
+   },
+   {
+    "date": "2026-10-30",
+    "pages": 108,
+    "problems": 32,
+    "changes": [
+     {
+      "u": "/en",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/o-nas",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/kontakt",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/polityka-prywatnosci",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/regulamin",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-laptopow",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-komputerow-stacjonarnych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/outsourcing-it",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/naprawa-drukarek",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-laserowych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-atramentowych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-plotterow",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-termicznych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-iglowych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-3d",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/druk-3d-na-zamowienie",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-niszczarek",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/naprawa-zasilaczy-ups",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/naprawa-projektorow",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-do-kart-plastikowych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtg",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-dtf",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-sublimacyjnych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-drukarek-spozywczych",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/serwis-ekspresow-do-kawy",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/wynajem-drukarek",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/uslugi/drukarka-zastepcza",
+      "type": "new",
+      "to": ""
+     }
+    ]
    }
   ]
  },
@@ -1034,6 +1715,8 @@
   },
   "description": {
    "/": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Koszt naprawy uzgadniamy przed rozpoczęciem ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "/o-nas": "✔ 10+ lat napraw komputerów, laptopów i drukarek we Wrocławiu ✔ Uczciwe ceny bez ukrytych kosztów ✔ Mówimy, gdy naprawa się nie opłaca ☎ 793 759 262",
+   "/kontakt": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Zadzwoń, napisz lub wyślij zgłoszenie serwisowe ✔ Pełny cennik na stronie ☎ 793 759 262",
    "/uslugi/serwis-laptopow": "✔ Serwis i naprawa laptopów we Wrocławiu ✔ Wymiana matrycy i baterii, czyszczenie laptopa, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uslugi/serwis-komputerow-stacjonarnych": "✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana dysku SSD, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uslugi/outsourcing-it": "✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
@@ -1057,6 +1740,8 @@
    "/uslugi/wynajem-drukarek": "✔ Wynajem drukarek i kserokopiarek we Wrocławiu ✔ A4 i A3, serwis i tonery w cenie, bez umowy długoterminowej ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uslugi/drukarka-zastepcza": "✔ Drukarka zastępcza na czas naprawy we Wrocławiu ✔ A4 i A3, mono i kolor ✔ Bez abonamentu, płacisz za wydruki ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uk": "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Ціну ремонту узгоджуємо до початку робіт ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "/uk/o-nas": "✔ 10+ років ремонту комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Чесні ціни без прихованих витрат ✔ Скажемо, коли ремонт невигідний ☎ 793 759 262",
+   "/uk/kontakt": "✔ Сервіс і ремонт комп'ютерів, ноутбуків і принтерів у Вроцлаві ✔ Зателефонуйте, напишіть або надішліть заявку на сервіс ✔ Повний прайс на сайті ☎ 793 759 262",
    "/uk/uslugi/serwis-laptopow": "✔ Сервіс і ремонт ноутбуків у Вроцлаві ✔ Заміна матриці та батареї, чистка ноутбука, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
    "/uk/uslugi/serwis-komputerow-stacjonarnych": "✔ Сервіс і ремонт стаціонарних комп'ютерів у Вроцлаві ✔ Чистка, заміна диска SSD, відновлення даних ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
    "/uk/uslugi/outsourcing-it": "✔ IT-аутсорсинг і обслуговування фірм у Вроцлаві ✔ Постійна IT-підтримка, helpdesk, мережа, резервні копії ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
@@ -1080,6 +1765,8 @@
    "/uk/uslugi/wynajem-drukarek": "✔ Оренда принтерів і копірів у Вроцлаві ✔ A4 і A3, сервіс і тонери в ціні, без довгострокового договору ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
    "/uk/uslugi/drukarka-zastepcza": "✔ Принтер на заміну на час ремонту у Вроцлаві ✔ A4 і A3, ч/б і колір ✔ Без абонплати, оплата за відбитки ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
    "/ru": "✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Цену ремонта согласуем до начала работ ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "/ru/o-nas": "✔ 10+ лет ремонта компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Честные цены без скрытых платежей ✔ Скажем, когда ремонт невыгоден ☎ 793 759 262",
+   "/ru/kontakt": "✔ Сервис и ремонт компьютеров, ноутбуков и принтеров во Вроцлаве ✔ Позвоните, напишите или отправьте заявку на сервис ✔ Полный прайс на сайте ☎ 793 759 262",
    "/ru/uslugi/serwis-laptopow": "✔ Сервис и ремонт ноутбуков во Вроцлаве ✔ Замена матрицы и батареи, чистка ноутбука, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/ru/uslugi/serwis-komputerow-stacjonarnych": "✔ Сервис и ремонт стационарных компьютеров во Вроцлаве ✔ Чистка, замена диска SSD, восстановление данных ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/ru/uslugi/outsourcing-it": "✔ IT-аутсорсинг и обслуживание фирм во Вроцлаве ✔ Постоянная IT-поддержка, helpdesk, сеть, резервные копии ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
@@ -1103,6 +1790,8 @@
    "/ru/uslugi/wynajem-drukarek": "✔ Аренда принтеров и копиров во Вроцлаве ✔ A4 и A3, сервис и тонеры в цене, без долгосрочного договора ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/ru/uslugi/drukarka-zastepcza": "✔ Принтер на замену на время ремонта во Вроцлаве ✔ A4 и A3, ч/б и цвет ✔ Без абонплаты, оплата за отпечатки ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
    "/en": "✔ Computer, laptop and printer service and repair in Wrocław ✔ Repair cost agreed before work starts ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "/en/o-nas": "✔ 10+ years of computer, laptop and printer repair in Wrocław ✔ Honest pricing, no hidden costs ✔ We tell you when a repair isn't worth it ☎ 793 759 262",
+   "/en/kontakt": "✔ Computer, laptop and printer repair in Wrocław ✔ Call, message us or submit a service request ✔ Full price list on our website ☎ 793 759 262",
    "/en/uslugi/serwis-laptopow": "✔ Laptop repair and service in Wrocław ✔ Screen and battery replacement, laptop cleaning, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262",
    "/en/uslugi/serwis-komputerow-stacjonarnych": "✔ Desktop computer repair and service in Wrocław ✔ Cleaning, SSD replacement, data recovery ✔ Full price list, no hidden costs ☎ 793 759 262",
    "/en/uslugi/outsourcing-it": "✔ IT outsourcing and IT support for businesses in Wrocław ✔ Helpdesk, network support and backups ✔ Full price list, no hidden costs ☎ 793 759 262",
@@ -1207,10 +1896,37 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "Сервис и ремонт пищевых принтеров во Вроцлаве",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "Сервис и ремонт кофемашин во Вроцлаве",
    "/ru/uslugi/wynajem-drukarek": "Аренда принтеров и копировальных аппаратов",
-   "/ru/uslugi/drukarka-zastepcza": "Принтер на замену (на время ремонта)"
+   "/ru/uslugi/drukarka-zastepcza": "Принтер на замену (на время ремонта)",
+   "/en": "Computer, laptop, printer and office equipment service in Wrocław",
+   "/en/o-nas": "We don’t get rich | on your problem",
+   "/en/kontakt": "Contact a computer, laptop and printer repair service in Wrocław",
+   "/en/polityka-prywatnosci": "Privacy Policy",
+   "/en/regulamin": "Terms and Conditions of Omobonus Service",
+   "/en/uslugi/serwis-laptopow": "Service and repair of laptops in Wrocław",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "Service and repair of desktop computers in Wrocław",
+   "/en/uslugi/outsourcing-it": "IT outsourcing and IT support for businesses",
+   "/en/uslugi/naprawa-drukarek": "Service and repair of printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-laserowych": "Service and repair of laser printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-atramentowych": "Service and repair of inkjet printers in Wrocław",
+   "/en/uslugi/serwis-plotterow": "Service and repair of large-format plotters in Wrocław",
+   "/en/uslugi/serwis-drukarek-termicznych": "Service and repair of label printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-iglowych": "Service and repair of dot matrix printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-3d": "Service and repair of 3D printers in Wrocław",
+   "/en/uslugi/druk-3d-na-zamowienie": "3D printing to order in Wrocław",
+   "/en/uslugi/serwis-niszczarek": "Service and repair of paper shredders in Wrocław",
+   "/en/uslugi/naprawa-zasilaczy-ups": "Service and repair of UPS power supplies in Wrocław",
+   "/en/uslugi/naprawa-projektorow": "Service and repair of projectors in Wrocław",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "Service and repair of plastic card printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-dtg": "Service and repair of DTG printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-dtf": "Service and repair of DTF printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "Service and repair of sublimation printers in Wrocław",
+   "/en/uslugi/serwis-drukarek-spozywczych": "Service and repair of edible printers in Wrocław",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "Service and repair of coffee machines in Wrocław",
+   "/en/uslugi/wynajem-drukarek": "Printer and copier rental",
+   "/en/uslugi/drukarka-zastepcza": "Replacement printer (during repair)"
   },
   "h2": {
-   "/": "Serwis i naprawa",
+   "/": "Serwis i naprawa ¦ Komputerów i IT ¦ Drukarek (kserokopiarek) biurowych ¦ Drukarek specjalistycznych ¦ Innych urządzeń i usług",
    "/o-nas": "Uczciwość i szacunek do klienta ¦ Święty Omobonus XII wieku ¦ Poznaj ludzi, nie infolinię",
    "/kontakt": "",
    "/polityka-prywatnosci": "",
@@ -1218,13 +1934,13 @@
    "/uslugi/serwis-laptopow": "9 заголовков · 94a59926",
    "/uslugi/serwis-komputerow-stacjonarnych": "9 заголовков · f871ea2b",
    "/uslugi/outsourcing-it": "Konsultacja i wycena obsługi IT ¦ Obsługa firm (abonament miesięczny) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ)",
-   "/uslugi/naprawa-drukarek": "5 заголовков · 684be619",
+   "/uslugi/naprawa-drukarek": "Drukarek (kserokopiarek) biurowych ¦ Drukarek specjalistycznych ¦ Ploterów i usług ¦ Najczęściej zadawane pytania (FAQ)",
    "/uslugi/serwis-drukarek-laserowych": "8 заголовков · 03d96231",
    "/uslugi/serwis-drukarek-atramentowych": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Świadczymy usługi czyszczenie, regeneracja, naprawa głowicy, konserwacja, ... ¦ Twoja drukarka atramentowa - podamy koszt naprawy w 15 min i wykonamy naprawę nawet w tym dniu.",
    "/uslugi/serwis-plotterow": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ)",
    "/uslugi/serwis-drukarek-termicznych": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Usługi konserwacja, przegląd, naprawa (wymiana) głowicy, ...drukarki termicznej (termiczno etykietowych) ¦ Twoja drukarka termiczna (termotransferowa) - podamy koszt naprawy w 15 min. ¦ Drukarki termiczne (etykietowe) – nasza specjalizacja",
    "/uslugi/serwis-drukarek-iglowych": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Świadczymy usługi czyszczenie, regeneracja, konserwacja, ¦ naprawa (wymiana) głowicy, ... drukarki igłowej (matrycowej) ¦ Twoja drukarka igłowa - podamy koszt naprawy w 15 min ¦ wykonamy naprawę nawet w tym dniu.",
-   "/uslugi/serwis-drukarek-3d": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Świadczymy usługi serwisowe – serwis drukarki 3d oraz 3d printer ¦ dla klientów biznesowych i indywidualnych.",
+   "/uslugi/serwis-drukarek-3d": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Serwis drukarek 3D FDM i żywicznych – naprawa ekstrudera i hotendu, kalibracja stołu, ¦ konfiguracja firmware – dla klientów biznesowych i indywidualnych.",
    "/uslugi/druk-3d-na-zamowienie": "Wydruki 3D w technologii FDM z PLA, PETG, ASA i TPU – części zamienne, prototypy, obudowy, elementy techniczne i krótkie serie. ¦ Drukowanie 3D z gotowego projektu ¦ Projektowanie 3D CAD ¦ Najczęściej zadawane pytania (FAQ)",
    "/uslugi/serwis-niszczarek": "8 заголовков · 2b3b8729",
    "/uslugi/naprawa-zasilaczy-ups": "Diagnoza i wycena ¦ Dojazd ¦ Czyszczenie i konserwacja (bez naprawy) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ) ¦ Wymiana akumulatorów, diagnostyka, naprawa elektroniki i układu ładowania zasilaczy awaryjnych UPS. ¦ Twój zasilacz UPS — podamy koszt naprawy w 15 min. ¦ Zasilacze UPS do domu, biura i serwerowni: APC, Eaton, Ever, Vertiv i inne.",
@@ -1237,7 +1953,7 @@
    "/uslugi/serwis-ekspresow-do-kawy": "10 заголовков · 4b9d2a6d",
    "/uslugi/wynajem-drukarek": "Laserowe (format A4) ¦ Laserowe (format A3/A4) ¦ Najczęściej zadawane pytania (FAQ) ¦ Potrzebujesz kserokopiarki i nie ma na to teraz pieniędzy? Kserokopiarka będzie. ¦ Wynajem kopiarek (urządzeń wielofunkcyjnych) - to jest wyjście z tej sytuacji.",
    "/uslugi/drukarka-zastepcza": "Laserowe (format A4) ¦ Laserowe (format A3) ¦ Najczęściej zadawane pytania (FAQ) ¦ Drukarka zastępcza we Wrocławiu – urządzenie na czas naprawy drukarki lub serwisu sprzętu biurowego. ¦ Oferujemy drukarki zastępcze Wrocław dla firm i klientów indywidualnych, szybkie podstawienie urządzenia, wynajem drukarki na czas serwisu oraz pełną obsługę serwisową.",
-   "/uk": "Сервіс і ремонт",
+   "/uk": "Сервіс і ремонт ¦ Комп'ютерів та ІТ ¦ Офісних принтерів (копірів) ¦ Спеціалізованих принтерів ¦ Інших пристроїв та послуг",
    "/uk/o-nas": "Чесність і повага до клієнта ¦ Святий Омобонус XII століття ¦ Знайомтесь — люди, а не call-центр",
    "/uk/kontakt": "",
    "/uk/polityka-prywatnosci": "",
@@ -1245,13 +1961,13 @@
    "/uk/uslugi/serwis-laptopow": "9 заголовков · 5164479e",
    "/uk/uslugi/serwis-komputerow-stacjonarnych": "9 заголовков · 1f1b0aa5",
    "/uk/uslugi/outsourcing-it": "Консультація та оцінка ІТ-обслуговування ¦ Обслуговування компаній (щомісячний абонемент) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ)",
-   "/uk/uslugi/naprawa-drukarek": "5 заголовков · a75ccc8a",
+   "/uk/uslugi/naprawa-drukarek": "Офісних принтерів (копірів) ¦ Спеціалізованих принтерів ¦ Плотерів та послуг ¦ Часті питання (FAQ)",
    "/uk/uslugi/serwis-drukarek-laserowych": "8 заголовков · 63e82342",
    "/uk/uslugi/serwis-drukarek-atramentowych": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Надаємо послуги очищення, регенерації, ремонту головки, обслуговування, ... ¦ Ваш струменевий принтер — повідомимо вартість ремонту за 15 хв і виконаємо ремонт навіть того ж дня.",
    "/uk/uslugi/serwis-plotterow": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ)",
    "/uk/uslugi/serwis-drukarek-termicznych": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Послуги обслуговування, огляду, ремонту (заміни) головки, ... термічного принтера (термо-етикетного) ¦ Ваш термічний (термотрансферний) принтер — повідомимо вартість ремонту за 15 хв. ¦ Термічні (етикетні) принтери – наша спеціалізація",
    "/uk/uslugi/serwis-drukarek-iglowych": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Надаємо послуги очищення, регенерації, обслуговування, ¦ ремонту (заміни) головки, ... матричного (голчастого) принтера ¦ Ваш матричний принтер — повідомимо вартість ремонту за 15 хв ¦ і виконаємо ремонт навіть того ж дня.",
-   "/uk/uslugi/serwis-drukarek-3d": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Надаємо сервісні послуги – сервіс 3D-принтера ¦ для бізнес-клієнтів та фізичних осіб.",
+   "/uk/uslugi/serwis-drukarek-3d": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Сервіс 3D-принтерів FDM і фотополімерних – ремонт екструдера й хотенда, калібрування столу, ¦ налаштування прошивки – для бізнес-клієнтів та фізичних осіб.",
    "/uk/uslugi/druk-3d-na-zamowienie": "3D-друк за технологією FDM з PLA, PETG, ASA та TPU – запасні частини, прототипи, корпуси, технічні деталі та короткі серії. ¦ Друк 3D з готового проєкту ¦ Проєктування 3D CAD ¦ Часті питання (FAQ)",
    "/uk/uslugi/serwis-niszczarek": "8 заголовков · 1362c5ae",
    "/uk/uslugi/naprawa-zasilaczy-ups": "Діагностика та оцінка ¦ Виїзд ¦ Чищення та технічне обслуговування (без ремонту) ¦ Ремонт та сервісні послуги ¦ Часті питання (FAQ) ¦ Заміна акумуляторів, діагностика, ремонт електроніки та системи заряджання джерел безперебійного живлення UPS. ¦ Ваш UPS — повідомимо вартість ремонту за 15 хв. ¦ UPS для дому, офісу та серверної: APC, Eaton, Ever, Vertiv та інші.",
@@ -1264,7 +1980,7 @@
    "/uk/uslugi/serwis-ekspresow-do-kawy": "10 заголовков · 04f2fc06",
    "/uk/uslugi/wynajem-drukarek": "Лазерні (формат A4) ¦ Лазерні (формат A3/A4) ¦ Часті питання (FAQ) ¦ Потрібен копіювальний апарат, а коштів зараз немає? Копіювальний апарат буде. ¦ Оренда копіювальних апаратів (багатофункціональних пристроїв) – це вихід із ситуації.",
    "/uk/uslugi/drukarka-zastepcza": "Лазерні (формат A4) ¦ Лазерні (формат A3) ¦ Часті питання (FAQ) ¦ Принтер на заміну у Вроцлаві – пристрій на час ремонту принтера або сервісу офісного обладнання. ¦ Пропонуємо принтери на заміну Вроцлав для компаній та фізичних осіб, швидке надання пристрою, оренду принтера на час сервісу та повне сервісне обслуговування.",
-   "/ru": "Сервис и ремонт",
+   "/ru": "Сервис и ремонт ¦ Компьютеров и IT ¦ Офисных принтеров (копиров) ¦ Специализированных принтеров ¦ Других устройств и услуг",
    "/ru/o-nas": "Честность и уважение к клиенту ¦ Святой Омобонус XII века ¦ Познакомьтесь с людьми, а не с call-центром",
    "/ru/kontakt": "",
    "/ru/polityka-prywatnosci": "",
@@ -1272,13 +1988,13 @@
    "/ru/uslugi/serwis-laptopow": "9 заголовков · 8f04522a",
    "/ru/uslugi/serwis-komputerow-stacjonarnych": "9 заголовков · c9764934",
    "/ru/uslugi/outsourcing-it": "Консультация и оценка IT-обслуживания ¦ Обслуживание компаний (ежемесячная подписка) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ)",
-   "/ru/uslugi/naprawa-drukarek": "5 заголовков · 65da949b",
+   "/ru/uslugi/naprawa-drukarek": "Офисных принтеров (копиров) ¦ Специализированных принтеров ¦ Плоттеров и услуг ¦ Часто задаваемые вопросы (FAQ)",
    "/ru/uslugi/serwis-drukarek-laserowych": "8 заголовков · 4fecd69b",
    "/ru/uslugi/serwis-drukarek-atramentowych": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Оказываем услуги по чистке, регенерации, ремонту головки, обслуживанию, ... ¦ Ваш струйный принтер — сообщим стоимость ремонта за 15 мин и выполним ремонт даже в этот же день.",
    "/ru/uslugi/serwis-plotterow": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ)",
    "/ru/uslugi/serwis-drukarek-termicznych": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Услуги по обслуживанию, осмотру, ремонту (замене) головки, ... термопринтера (этикеточного термопринтера) ¦ Ваш термопринтер (термотрансферный) — сообщим стоимость ремонта за 15 мин. ¦ Термопринтеры (этикеточные) — наша специализация",
    "/ru/uslugi/serwis-drukarek-iglowych": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Оказываем услуги по чистке, регенерации, обслуживанию, ¦ ремонту (замене) головки, ... игольчатого (матричного) принтера ¦ Ваш игольчатый принтер — сообщим стоимость ремонта за 15 мин ¦ и выполним ремонт даже в этот же день.",
-   "/ru/uslugi/serwis-drukarek-3d": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Оказываем сервисные услуги — сервис 3D-принтера ¦ для бизнес-клиентов и частных лиц.",
+   "/ru/uslugi/serwis-drukarek-3d": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Сервис 3D-принтеров FDM и фотополимерных — ремонт экструдера и хотенда, калибровка стола, ¦ настройка прошивки — для бизнес-клиентов и частных лиц.",
    "/ru/uslugi/druk-3d-na-zamowienie": "3D-печать по технологии FDM из PLA, PETG, ASA и TPU – запасные части, прототипы, корпуса, технические детали и короткие серии. ¦ Печать 3D из готового проекта ¦ Проектирование 3D CAD ¦ Часто задаваемые вопросы (FAQ)",
    "/ru/uslugi/serwis-niszczarek": "8 заголовков · 2b681b61",
    "/ru/uslugi/naprawa-zasilaczy-ups": "Диагностика и оценка ¦ Выезд ¦ Чистка и техническое обслуживание (без ремонта) ¦ Ремонт и сервисные услуги ¦ Часто задаваемые вопросы (FAQ) ¦ Замена аккумуляторов, диагностика, ремонт электроники и системы зарядки источников бесперебойного питания UPS. ¦ Ваш UPS — сообщим стоимость ремонта за 15 мин. ¦ UPS для дома, офиса и серверной: APC, Eaton, Ever, Vertiv и другие.",
@@ -1290,7 +2006,34 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "8 заголовков · 6b15c000",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "10 заголовков · 7bf89523",
    "/ru/uslugi/wynajem-drukarek": "Лазерные (формат A4) ¦ Лазерные (формат A3/A4) ¦ Часто задаваемые вопросы (FAQ) ¦ Нужен копир, а денег на это сейчас нет? Копир будет. ¦ Аренда копиров (многофункциональных устройств) — это решение в такой ситуации.",
-   "/ru/uslugi/drukarka-zastepcza": "Лазерные (формат A4) ¦ Лазерные (формат A3) ¦ Часто задаваемые вопросы (FAQ) ¦ Принтер на замену во Вроцлаве — устройство на время ремонта принтера или сервиса офисной техники. ¦ Предлагаем принтеры на замену Вроцлав для компаний и частных клиентов, быструю подмену устройства, аренду принтера на время сервиса, а также полное сервисное обслуживание."
+   "/ru/uslugi/drukarka-zastepcza": "Лазерные (формат A4) ¦ Лазерные (формат A3) ¦ Часто задаваемые вопросы (FAQ) ¦ Принтер на замену во Вроцлаве — устройство на время ремонта принтера или сервиса офисной техники. ¦ Предлагаем принтеры на замену Вроцлав для компаний и частных клиентов, быструю подмену устройства, аренду принтера на время сервиса, а также полное сервисное обслуживание.",
+   "/en": "Service and repair ¦ Computers and IT ¦ Office printers (copiers) ¦ Specialist printers ¦ Other devices and services",
+   "/en/o-nas": "Honesty and respect for the customer ¦ Saint Omobonus of the 12th century ¦ Meet the people, not a call centre",
+   "/en/kontakt": "",
+   "/en/polityka-prywatnosci": "",
+   "/en/regulamin": "",
+   "/en/uslugi/serwis-laptopow": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/outsourcing-it": "IT support consultation and quote ¦ Business IT support (monthly subscription) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/naprawa-drukarek": "Office printers (copiers) ¦ Specialist printers ¦ Plotters and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-laserowych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-atramentowych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-plotterow": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-termicznych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-iglowych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (without repair) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-3d": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/druk-3d-na-zamowienie": "FDM 3D printing in PLA, PETG, ASA and TPU – spare parts, prototypes, enclosures, technical components and short runs. ¦ 3D printing from a ready-made design ¦ 3D CAD design ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-niszczarek": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/naprawa-zasilaczy-ups": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/naprawa-projektorow": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repairs) ¦ Repairs and service work ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-dtg": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-dtf": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-drukarek-spozywczych": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "Diagnosis and quote ¦ Pickup and delivery ¦ Cleaning and maintenance (no repair) ¦ Repairs and services ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/wynajem-drukarek": "Laser (A4 format) ¦ Laser (A3/A4 format) ¦ Frequently asked questions (FAQ)",
+   "/en/uslugi/drukarka-zastepcza": "Laser (A4 format) ¦ Laser (A3 format) ¦ Frequently asked questions (FAQ)"
   },
   "h3": {
    "/": "Laptopów ¦ Komputerów stacjonarnych ¦ Outsourcing IT ¦ Drukarek laserowych ¦ Drukarek atramentowych ¦ Drukarek igłowych ¦ Drukarek etykiet ¦ Drukarek 3D ¦ Drukarek sublimacyjnych ¦ Drukarek DTF ¦ Drukarek DTG ¦ Drukarek spożywczych ¦ Drukarek do kart plastikowych ¦ Ploterów ¦ Niszczarek ¦ Zasilaczy UPS ¦ Projektorów ¦ Ekspresów do kawy ¦ Druk 3D na zamówienie ¦ Wynajem drukarek",
@@ -1301,7 +2044,7 @@
    "/uslugi/serwis-laptopow": "33 заголовков · 3cddce60",
    "/uslugi/serwis-komputerow-stacjonarnych": "30 заголовков · 50630720",
    "/uslugi/outsourcing-it": "27 заголовков · bfeb775a",
-   "/uslugi/naprawa-drukarek": "",
+   "/uslugi/naprawa-drukarek": "32 заголовков · 112d4b3e",
    "/uslugi/serwis-drukarek-laserowych": "36 заголовков · 7566fe62",
    "/uslugi/serwis-drukarek-atramentowych": "34 заголовков · 95804422",
    "/uslugi/serwis-plotterow": "33 заголовков · 19f95567",
@@ -1328,7 +2071,7 @@
    "/uk/uslugi/serwis-laptopow": "33 заголовков · 0a9cbae8",
    "/uk/uslugi/serwis-komputerow-stacjonarnych": "30 заголовков · 09186ffa",
    "/uk/uslugi/outsourcing-it": "27 заголовков · 25e947b1",
-   "/uk/uslugi/naprawa-drukarek": "",
+   "/uk/uslugi/naprawa-drukarek": "32 заголовков · 85f9b20d",
    "/uk/uslugi/serwis-drukarek-laserowych": "36 заголовков · 812fc63e",
    "/uk/uslugi/serwis-drukarek-atramentowych": "34 заголовков · 424187e7",
    "/uk/uslugi/serwis-plotterow": "33 заголовков · 53fb2e36",
@@ -1355,7 +2098,7 @@
    "/ru/uslugi/serwis-laptopow": "33 заголовков · 52b137c0",
    "/ru/uslugi/serwis-komputerow-stacjonarnych": "30 заголовков · 616d15c5",
    "/ru/uslugi/outsourcing-it": "27 заголовков · b160b378",
-   "/ru/uslugi/naprawa-drukarek": "",
+   "/ru/uslugi/naprawa-drukarek": "32 заголовков · 4e4a3887",
    "/ru/uslugi/serwis-drukarek-laserowych": "36 заголовков · 5c4cf2bf",
    "/ru/uslugi/serwis-drukarek-atramentowych": "34 заголовков · 48d4e738",
    "/ru/uslugi/serwis-plotterow": "33 заголовков · 161a7782",
@@ -1373,7 +2116,34 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "39 заголовков · c76a36d2",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "40 заголовков · 3fbb26f9",
    "/ru/uslugi/wynajem-drukarek": "28 заголовков · 33569e8c",
-   "/ru/uslugi/drukarka-zastepcza": "26 заголовков · 3c68acf2"
+   "/ru/uslugi/drukarka-zastepcza": "26 заголовков · 3c68acf2",
+   "/en": "Laptops ¦ Desktop computers ¦ IT outsourcing ¦ Laser printers ¦ Inkjet printers ¦ Dot matrix printers ¦ Label printers ¦ 3D printers ¦ Sublimation printers ¦ DTF printers ¦ DTG printers ¦ Edible (food) printers ¦ Plastic card printers ¦ Plotters ¦ Paper shredders ¦ UPS units ¦ Projectors ¦ Coffee machines ¦ 3D printing on demand ¦ Printer rental",
+   "/en/o-nas": "Honest prices ¦ Photos of the damage ¦ Honest assessment ¦ Replaced parts returned ¦ Replacement printer ¦ −10% discount ¦ About us: ¦ Maksym ¦ Paweł ¦ Andrzej ¦ Umka",
+   "/en/kontakt": "",
+   "/en/polityka-prywatnosci": "",
+   "/en/regulamin": "",
+   "/en/uslugi/serwis-laptopow": "33 заголовков · b90a0ea6",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "30 заголовков · 4f4d42cf",
+   "/en/uslugi/outsourcing-it": "27 заголовков · b2ed4135",
+   "/en/uslugi/naprawa-drukarek": "32 заголовков · bd524431",
+   "/en/uslugi/serwis-drukarek-laserowych": "36 заголовков · aacc1ad0",
+   "/en/uslugi/serwis-drukarek-atramentowych": "34 заголовков · 4733440a",
+   "/en/uslugi/serwis-plotterow": "33 заголовков · 906bf5f6",
+   "/en/uslugi/serwis-drukarek-termicznych": "32 заголовков · e7790bef",
+   "/en/uslugi/serwis-drukarek-iglowych": "27 заголовков · c69f512c",
+   "/en/uslugi/serwis-drukarek-3d": "35 заголовков · aade01a9",
+   "/en/uslugi/druk-3d-na-zamowienie": "17 заголовков · 1034a1ed",
+   "/en/uslugi/serwis-niszczarek": "30 заголовков · f57d944f",
+   "/en/uslugi/naprawa-zasilaczy-ups": "33 заголовков · 9692c783",
+   "/en/uslugi/naprawa-projektorow": "28 заголовков · abccc076",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "31 заголовков · 6f8ba163",
+   "/en/uslugi/serwis-drukarek-dtg": "29 заголовков · 44f20edd",
+   "/en/uslugi/serwis-drukarek-dtf": "27 заголовков · 66a77e4a",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "34 заголовков · e97723e8",
+   "/en/uslugi/serwis-drukarek-spozywczych": "39 заголовков · 2af5f12c",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "40 заголовков · 5c903b24",
+   "/en/uslugi/wynajem-drukarek": "28 заголовков · 40c54bed",
+   "/en/uslugi/drukarka-zastepcza": "26 заголовков · 1a4e007b"
   },
   "h4": {
    "/": "",
@@ -1456,7 +2226,34 @@
    "/ru/uslugi/serwis-drukarek-spozywczych": "",
    "/ru/uslugi/serwis-ekspresow-do-kawy": "",
    "/ru/uslugi/wynajem-drukarek": "",
-   "/ru/uslugi/drukarka-zastepcza": ""
+   "/ru/uslugi/drukarka-zastepcza": "",
+   "/en": "",
+   "/en/o-nas": "",
+   "/en/kontakt": "",
+   "/en/polityka-prywatnosci": "",
+   "/en/regulamin": "",
+   "/en/uslugi/serwis-laptopow": "",
+   "/en/uslugi/serwis-komputerow-stacjonarnych": "",
+   "/en/uslugi/outsourcing-it": "",
+   "/en/uslugi/naprawa-drukarek": "",
+   "/en/uslugi/serwis-drukarek-laserowych": "",
+   "/en/uslugi/serwis-drukarek-atramentowych": "",
+   "/en/uslugi/serwis-plotterow": "",
+   "/en/uslugi/serwis-drukarek-termicznych": "",
+   "/en/uslugi/serwis-drukarek-iglowych": "",
+   "/en/uslugi/serwis-drukarek-3d": "",
+   "/en/uslugi/druk-3d-na-zamowienie": "",
+   "/en/uslugi/serwis-niszczarek": "",
+   "/en/uslugi/naprawa-zasilaczy-ups": "",
+   "/en/uslugi/naprawa-projektorow": "",
+   "/en/uslugi/serwis-drukarek-do-kart-plastikowych": "",
+   "/en/uslugi/serwis-drukarek-dtg": "",
+   "/en/uslugi/serwis-drukarek-dtf": "",
+   "/en/uslugi/serwis-drukarek-sublimacyjnych": "",
+   "/en/uslugi/serwis-drukarek-spozywczych": "",
+   "/en/uslugi/serwis-ekspresow-do-kawy": "",
+   "/en/uslugi/wynajem-drukarek": "",
+   "/en/uslugi/drukarka-zastepcza": ""
   }
  }
 }

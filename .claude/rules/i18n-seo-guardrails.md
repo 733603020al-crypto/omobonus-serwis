@@ -11,4 +11,4 @@ paths:
 
 # i18n / SEO guardrails
 
-Все правила (польский — источник, перевод, canonical/hreflang, новый язык, карты Google) лежат в `docs/languages-standard.md`. Прочитай его перед работой с этими файлами. Смена адресов/canonical/hreflang/sitemap/robots.txt — только с согласия пользователя.
+Все правила (польский — источник, перевод, canonical/hreflang, новый язык, карты Google) лежат в `docs/languages/languages-standard.md`. Прочитай его перед работой с этими файлами. Смена адресов/canonical/hreflang/sitemap/robots.txt — только с согласия пользователя.

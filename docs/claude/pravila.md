@@ -8,9 +8,11 @@
 - **Как я работаю** (самостоятельность, проверка, память; браузер; утверждённые решения) → `docs/claude/rabota.md`, `docs/decisions.md`
 - **Ветки и безопасность** (мастер, коммиты, секреты) → `docs/claude/git.md`
 - **Сайт** (страницы, прайс, FAQ, окна, документы, дизайн, скорость, новая страница, картинки) → `docs/claude/sajt.md` и стандарты из «Где что лежит» в `CLAUDE.md`
-- **SEO и языки** (Title, Description, H1–H4, перевод, новый язык) → `docs/claude/seo.md`
+- **SEO** (Title, Description, H1–H4) → `docs/seo/index.md`
+- **Языки** (перевод, новый язык сайта) → `docs/languages/index.md`
 - **Панель** (оформление, разработка, отложенные задачи) → `docs/claude/panel.md`
 - **Среда** (сервер, команды, помощники) → `docs/claude/sreda.md`
+- **Расписание работ** (что делать периодически: Вёрсель, проверки) → `docs/raspisanie-rabot/tablica-rabot.md`
 - **Правила о правилах** → этот файл, `docs/claude/dobavit-pravilo.md`, `CLAUDE.md`
 
 ## Ваши команды

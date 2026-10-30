@@ -37,7 +37,7 @@
 - По `docs/animations-images-standard.md`: пороги пережатия, обрезка пустых полей, версионные имена, бэкап оригиналов, первая картинка карусели заменяет главную везде (карусель, og:image, manifest, `KANONICZNY_MANIFEST`, иконка меню, card-icon).
 
 ### Языки и SEO
-- PL — источник; UK/RU/EN синхронизируются, не переводятся построчно; проверка общего шаблона минимум на PL и UK (`docs/languages-standard.md`, `docs/nowy-jezyk-standard.md`).
+- PL — источник; UK/RU/EN синхронизируются, не переводятся построчно; проверка общего шаблона минимум на PL и UK (`docs/languages/languages-standard.md`, `docs/languages/nowy-jezyk-standard.md`).
 - Пока страница не утверждена: `noindexSlugs` содержит slug (в `[slug]/page.tsx` всех языков и в `sitemap.ts`) — robots noindex, нет в sitemap. Title/Description/OG/Twitter — отдельно, только после утверждения в SEO-панели.
 - Запуск в индекс (по отдельному разрешению): убрать slug из `noindexSlugs`, проверить canonical на свой язык, hreflang pl/uk/ru/en + x-default, URL в sitemap. URL/slug после согласования не менять.
 - Включение в меню «Usługi», на главную (слайдер `home-hero-showcase`) и в списки связанных услуг — только по согласованию. Если страница связана с кнопками на главной/услугах (как «Serwis wysyłkowy»), напомнить про ссылки кнопок.
