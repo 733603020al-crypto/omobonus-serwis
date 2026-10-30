@@ -22,6 +22,7 @@
 | Как отвечать вам и другому ИИ, формат отчёта | `docs/claude/otvety.md` |
 | Финальный отчёт, память о решениях, служебные файлы | `docs/claude/otchety.md` |
 | Страницы сайта, прайс, FAQ, окна, документы, скорость | `docs/claude/sajt.md` |
+| Утверждённые решения (не пересматривать) | `docs/decisions.md` |
 | Скорость: что закрыто и откатано | `docs/optimization-knowledge.md` |
 | Анимации, карусели, картинки | `docs/animations-images-standard.md` |
 | SEO (Title, Description, H1–H4) и языки | `docs/claude/seo.md` |
