@@ -312,7 +312,7 @@ const STEP_WINDOWS = {
   '02': { title: '2. Wysyłka', icon: '/images/serwis-wysylkowy/modal-wysylka-v1.avif', info: WYSYLKA_INFO, faq: WYSYLKA_FAQ },
   '03': { title: '3. Diagnostyka i wycena', icon: '/images/serwis-wysylkowy/modal-diagnostyka-v1.avif', info: DIAGNOSTYKA_INFO, faq: DIAGNOSTYKA_FAQ },
   // No picture of its own yet: the card's TAK stamp.
-  '04': { title: '4. Akceptacja wyceny', icon: '/images/serwis-wysylkowy/stempel-tak.webp', info: AKCEPTACJA_INFO, faq: AKCEPTACJA_FAQ },
+  '04': { title: '4. Akceptacja wyceny', icon: '/images/serwis-wysylkowy/stempel-tak-v2.webp', info: AKCEPTACJA_INFO, faq: AKCEPTACJA_FAQ },
   '05.1': { title: '5.1. Naprawa i zwrot', icon: '/images/serwis-wysylkowy/modal-naprawa-v2.avif', info: NAPRAWA_INFO, faq: NAPRAWA_FAQ },
   '05.2': { title: '5.2. Zwrot bez naprawy', icon: '/images/serwis-wysylkowy/modal-zwrot-bez-naprawy-v1.avif', info: ZWROT_INFO, faq: ZWROT_FAQ },
 }
@@ -704,7 +704,7 @@ export function Services({
       {step.number === '04' && (
         <>
           <Image src="/images/serwis-wysylkowy/stempel-nie.webp" alt="" width={407} height={224} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute right-[4.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:right-[3%] max-md:w-[17%] md:right-[14px] md:w-[140px]" />
-          <Image src="/images/serwis-wysylkowy/stempel-tak.webp" alt="" width={406} height={226} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute left-[3.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:left-[36px] max-md:w-[13%] md:left-[14px] md:w-[140px]" />
+          <Image src="/images/serwis-wysylkowy/stempel-tak-v2.webp" alt="" width={406} height={226} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute left-[3.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:left-[36px] max-md:w-[13%] md:left-[14px] md:w-[140px]" />
         </>
       )}
       {/* Step 05.2: the shipping card with a language stamp on the box. */}

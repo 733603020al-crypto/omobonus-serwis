@@ -109,7 +109,7 @@ export function BasicQuestions() {
   const acceptSub: PricingSubcategory = {
     id: 'akceptuje-naprawe',
     title: 'Jeśli zaakceptuję naprawę, czy diagnoza naprawdę będzie „za darmo”?',
-    icon: '/images/serwis-wysylkowy/stempel-tak.webp',
+    icon: '/images/serwis-wysylkowy/stempel-tak-v2.webp',
     intro: 'Rozebranie urządzenia, pomiary i znalezienie usterki wymagają czasu i pracy — nie mogą być „za darmo”.\n\nZlecasz naprawę? **Wtedy nie liczymy diagnozy osobno**, bo urządzenie jest już rozebrane i wiemy, co wymienić, więc połowa pracy przy naprawie jest już zrobiona.\n\nPłacisz tylko za samą naprawę (według cennika) i ewentualne części — diagnoza jest już w tej cenie. Do tego dochodzi wysyłka w obie strony według cennika kuriera.',
     items: [],
   }
