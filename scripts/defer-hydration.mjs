@@ -1,12 +1,13 @@
 // Post-build step (runs after `next build`). Every prerendered page loses the
-// duplicate CSS text of the RSC payload (see stripCssCopy). In the HTML of the
-// home page, the service pages, /kontakt, /o-nas, the legal pages (PL/UK/RU) and /serwis-wysylkowy, Next's async <script src> chunks (and their preload links)
+// duplicate CSS text of the RSC payload (see stripCssCopy). In the HTML of
+// every page (only Next's _not-found is skipped), Next's async <script src> chunks
+// (and their preload links)
 // are replaced by one tiny inline loader that requests them only after the
 // first paint.
 // The first screen is fully server-rendered, so nothing changes visually —
 // the browser just paints it before spending the main thread on JS
 // (hydration starts a moment later). Client-side navigation (.rsc) is
-// untouched. Usage: node scripts/defer-hydration.mjs [scope=uslugi|all]
+// untouched. Usage: node scripts/defer-hydration.mjs
 import fs from 'fs'
 import path from 'path'
 
@@ -101,7 +102,7 @@ for (const file of walk(root)) {
   const raw = fs.readFileSync(file, 'utf8')
   const html = stripCssCopy(raw)
   // The CSS copy is dropped on every page; the deferred loader stays in scope.
-  const inScope = scope !== 'uslugi' || /(^|\/)(uslugi\/|(kontakt|o-nas|polityka-prywatnosci|regulamin)\.html$)|^(index|uk|ru|en|serwis-wysylkowy)\.html$/.test(rel)
+  const inScope = !/^_/.test(path.basename(rel))
   if (!inScope || html.includes('data-deferred-hydration')) {
     if (html !== raw) { fs.writeFileSync(file, html); changed++ }
     continue
