@@ -404,6 +404,13 @@ export function HeroPrinterCarousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // The clip (~270 KB) is fetched only once its slide is 2 steps from the front
+  // (about 11 s before it plays), not at page load; stays on afterwards.
+  const [clipNear, setClipNear] = useState(false)
+  useEffect(() => {
+    if (clipDelta <= 2) setClipNear(true)
+  }, [clipDelta])
+
   // Stall guard, counted from when the slide shows up in the visible stack (not
   // from page load): still not playable INTRO_FAIL_MS later -> static image.
   useEffect(() => {
@@ -946,7 +953,7 @@ export function HeroPrinterCarousel({
                   className="hero-intro-media hero-intro-poster"
                   style={introMedia}
                 />
-                {introLoad && introOn && (
+                {introLoad && introOn && clipNear && (
                   <video
                     ref={videoRef}
                     src={introVideo.src}
