@@ -127,12 +127,12 @@ const PARCHMENT = '[border-image:url(/images/services-tab-parchment.webp)_26_fil
 const PROCESS_STEPS = [
   // Pictures are trimmed to the parchment's edges and fill the whole card,
   // so the cards line up like the category cards above.
-  { number: '01', title: 'Zgłoszenie', image: '/images/serwis-wysylkowy/krok-01-zgloszenie.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
-  { number: '02', title: 'Wysyłka', image: '/images/serwis-wysylkowy/krok-02-wysylka.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
-  { number: '03', title: 'Diagnostyka i wycena', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-03-diagnostyka.webp', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
-  { number: '04', title: 'Akceptacja wyceny', description: 'Bez Twojej zgody nie rozpoczynamy naprawy', image: '/images/serwis-wysylkowy/krok-04-pasek.avif', sizes: '(min-width: 768px) 720px, 100vw', className: 'w-full aspect-[1639/331] lg:aspect-auto lg:h-[145.4px]' },
-  { number: '05.1', title: 'Naprawa i zwrot', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-05-naprawa-zwrot.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
-  { number: '05.2', title: 'Zwrot bez naprawy', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-02-wysylka.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '01', title: 'Zgłoszenie', image: '/images/serwis-wysylkowy/krok-01-zgloszenie-v2.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '02', title: 'Wysyłka', image: '/images/serwis-wysylkowy/krok-02-wysylka-v2.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '03', title: 'Diagnostyka i wycena', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-03-diagnostyka-v2.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '04', title: 'Akceptacja wyceny', description: 'Bez Twojej zgody nie rozpoczynamy naprawy', image: '/images/serwis-wysylkowy/krok-04-pasek-v2.avif', sizes: '(min-width: 768px) 720px, 100vw', className: 'w-full aspect-[1639/331] lg:aspect-auto lg:h-[145.4px]' },
+  { number: '05.1', title: 'Naprawa i zwrot', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-05-naprawa-zwrot-v2.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
+  { number: '05.2', title: 'Zwrot bez naprawy', titleBreak: 1, image: '/images/serwis-wysylkowy/krok-02-wysylka-v2.avif', sizes: '(min-width: 1024px) 400px, 100vw', className: 'w-full aspect-[265/100]' },
 ] as const
 
 const ACTIVE_INK = '#24160B'
@@ -693,7 +693,7 @@ export function Services({
           (no stretching). */}
       {step.number === '04' && (['left', 'right'] as const).map((side) => (
         <div key={side} aria-hidden="true" className={`pointer-events-none absolute inset-y-0 w-1/2 overflow-hidden max-lg:hidden ${side === 'left' ? 'left-0' : 'right-0'}`}>
-          <Image src={step.image} alt="" width={1639} height={331} sizes={step.sizes} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />
+          <Image src={step.image} alt="" width={1440} height={291} sizes={step.sizes} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />
           {flowNear && <HeroSpotlight src={step.image} depth={FLAT_DEPTH} hide="img" lit={flow.lift.includes('04')} point={SPOT_POINT[step.number]} style={{}} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />}
         </div>
       ))}

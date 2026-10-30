@@ -1939,6 +1939,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
               <>
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#bfa76a]/25 via-[#bfa76a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
                 <AccordionTrigger
+                  aria-label={(isOpenHeaderPlateSection || section.id === 'naprawy') && isSectionOpen(section.id) ? section.title : undefined}
                   className="hover:no-underline [&>svg]:hidden w-full group !py-0 !items-center !gap-0 relative z-10"
                 >
                   <div className={cn(
