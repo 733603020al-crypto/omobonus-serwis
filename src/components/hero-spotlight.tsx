@@ -101,6 +101,7 @@ export function HeroSpotlight({
   live,
   lit,
   point,
+  reuseShown,
 }: {
   src: string
   depth: string
@@ -118,6 +119,9 @@ export function HeroSpotlight({
   lit?: boolean
   // Programmatic mode only: where the still light sits, in image UV (0–1).
   point?: { x: number; y: number }
+  // Light the picture the page already shows (its current optimised URL, from
+  // the sibling <img> matched by `hide`) instead of fetching the raw file again.
+  reuseShown?: boolean
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const liveRef = useRef(live)
@@ -149,7 +153,7 @@ export function HeroSpotlight({
     const blockedUntil = controlled ? 0 : performance.now() + SETTLE_MS
 
     const init = () =>
-      (setup ??= Promise.all([loadImage(src), loadImage(depth)]).then(([img, dep]) => {
+      (setup ??= Promise.all([loadImage((reuseShown && (canvas.parentElement?.querySelector(hide) as HTMLImageElement | null)?.currentSrc) || src), loadImage(depth)]).then(([img, dep]) => {
         if (disposed) return false
         canvas.width = img.naturalWidth
         canvas.height = img.naturalHeight

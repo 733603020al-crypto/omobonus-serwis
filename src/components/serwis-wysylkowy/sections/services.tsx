@@ -688,7 +688,7 @@ export function Services({
         className={`object-fill ${step.number === '04' ? 'lg:hidden' : ''}`}
       />
       {flowNear && step.number !== '04' && (
-        <HeroSpotlight src={step.image} depth={FLAT_DEPTH} hide="img[data-spot]" lit={flow.lift.includes(step.number)} point={SPOT_POINT[step.number]} style={{}} className="pointer-events-none absolute inset-0 h-full w-full" />
+        <HeroSpotlight reuseShown src={step.image} depth={FLAT_DEPTH} hide="img[data-spot]" lit={flow.lift.includes(step.number)} point={SPOT_POINT[step.number]} style={{}} className="pointer-events-none absolute inset-0 h-full w-full" />
       )}
       {/* Desktop step 04 is narrower than its strip: both burnt ends stay at
           the strip's own scale, only a slice of the plain middle is left out
@@ -696,7 +696,7 @@ export function Services({
       {step.number === '04' && (['left', 'right'] as const).map((side) => (
         <div key={side} aria-hidden="true" className={`pointer-events-none absolute inset-y-0 w-1/2 overflow-hidden max-lg:hidden ${side === 'left' ? 'left-0' : 'right-0'}`}>
           <Image src={step.image} alt="" width={1440} height={291} sizes={step.sizes} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />
-          {flowNear && <HeroSpotlight src={step.image} depth={FLAT_DEPTH} hide="img" lit={flow.lift.includes('04')} point={SPOT_POINT[step.number]} style={{}} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />}
+          {flowNear && <HeroSpotlight reuseShown src={step.image} depth={FLAT_DEPTH} hide="img" lit={flow.lift.includes('04')} point={SPOT_POINT[step.number]} style={{}} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />}
         </div>
       ))}
       {/* Step 04: plain strip with separate stamps (TAK left, NIE right),
