@@ -679,7 +679,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 odpowiedź na zgłoszenie, nie zgoda — checkbox „akceptuję” tworzyłby
                 pozorną zgodę. */}
             <div className="pt-1">
-              <p className="text-[#2f2418] font-lora font-normal text-[14px] md:text-[15px] leading-[1.45]">
+              <p className="text-[#2f2418] font-lora font-normal italic text-[11px] md:text-[12px] leading-[1.45]">
                 {d.agreementConfirm}{' '}
                 <Link href={d.privacyHref} className="underline hover:text-black/70">
                   {d.privacyLink}
