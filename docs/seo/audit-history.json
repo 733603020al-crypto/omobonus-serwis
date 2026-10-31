@@ -335,6 +335,50 @@
     "pages": 92,
     "problems": 0,
     "changes": []
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 96,
+    "problems": 4,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": "Serwis wysyłkowy sprzętu biurowego | Omobonus Wrocław"
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервіс з відправкою офісної техніки | Omobonus Вроцлав"
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервис с отправкой компьютеров и принтеров | Omobonus Вроцлав"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": "Mail-in computer and printer service | Omobonus Wrocław"
+     }
+    ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 96,
+    "problems": 4,
+    "changes": [
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "from": "Сервис с отправкой компьютеров и принтеров | Omobonus Вроцлав",
+      "to": "Сервис с отправкой офисной техники | Omobonus Вроцлав"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "from": "Mail-in computer and printer service | Omobonus Wrocław",
+      "to": "Mail-in office equipment service | Omobonus Wrocław"
+     }
+    ]
    }
   ],
   "description": [
@@ -951,6 +995,33 @@
       "to": "✔ Computer, laptop and printer repair in Wrocław ✔ Call, message us or submit a service request ✔ Full price list on our website ☎ 793 759 262"
      }
     ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 104,
+    "problems": 4,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": "✔ Serwis wysyłkowy sprzętu biurowego we Wrocławiu ✔ Odbiór kurierem lub z paczkomatu, diagnoza i wycena ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262"
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": "✔ Сервіс з відправкою офісної техніки у Вроцлаві ✔ Забір кур'єром або з поштомату, діагностика й оцінка ✔ Повний прайс без прихованих витрат ☎ 793 759 262"
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": "✔ Сервис с отправкой офисной техники во Вроцлаве ✔ Забор курьером или из постамата, диагностика и оценка ✔ Полный прайс без скрытых платежей ☎ 793 759 262"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": "✔ Mail-in office equipment service in Wrocław ✔ Courier or parcel locker pickup, diagnosis and quote ✔ Full price list, no hidden costs ☎ 793 759 262"
+     }
+    ]
    }
   ],
   "h1": [
@@ -1100,6 +1171,33 @@
       "u": "/en/uslugi/drukarka-zastepcza",
       "type": "new",
       "to": "Replacement printer (during repair)"
+     }
+    ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 112,
+    "problems": 0,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": "Serwis komputerów, laptopów, drukarek i urządzeń biurowych we Wrocławiu"
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервіс комп'ютерів, ноутбуків, принтерів і офісної техніки у Вроцлаві"
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервис компьютеров, ноутбуков, принтеров и офисной техники во Вроцлаве"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": "Computer, laptop, printer and office equipment service in Wrocław"
      }
     ]
    }
@@ -1298,6 +1396,33 @@
       "to": "Laser (A4 format) ¦ Laser (A3 format) ¦ Frequently asked questions (FAQ)"
      }
     ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 112,
+    "problems": 6,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": "Serwis i naprawa bez wychodzenia z domu ¦ Najczęściej zadawane pytania (FAQ)"
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервіс і ремонт, не виходячи з дому ¦ Найчастіші запитання (FAQ)"
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": "Сервис и ремонт, не выходя из дома ¦ Часто задаваемые вопросы (FAQ)"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": "Service and repair without leaving home ¦ Frequently asked questions (FAQ)"
+     }
+    ]
    }
   ],
   "h3": [
@@ -1464,6 +1589,33 @@
       "to": "26 заголовков · 1a4e007b"
      }
     ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 112,
+    "problems": 4,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": "16 заголовков · 77023673"
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": "16 заголовков · a76ce9e8"
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": "16 заголовков · 954d01c1"
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": "16 заголовков · 8744ca46"
+     }
+    ]
    }
   ],
   "h4": [
@@ -1615,12 +1767,43 @@
       "to": ""
      }
     ]
+   },
+   {
+    "date": "2026-10-31",
+    "pages": 112,
+    "problems": 32,
+    "changes": [
+     {
+      "u": "/serwis-wysylkowy",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/uk/serwis-wysylkowy",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/ru/serwis-wysylkowy",
+      "type": "new",
+      "to": ""
+     },
+     {
+      "u": "/en/serwis-wysylkowy",
+      "type": "new",
+      "to": ""
+     }
+    ]
    }
   ]
  },
  "snapshot": {
   "title": {
    "/": "Naprawa komputerów, laptopów i drukarek | Omobonus Wrocław",
+   "/serwis-wysylkowy": "Serwis wysyłkowy sprzętu biurowego | Omobonus Wrocław",
+   "/uk/serwis-wysylkowy": "Сервіс з відправкою офісної техніки | Omobonus Вроцлав",
+   "/ru/serwis-wysylkowy": "Сервис с отправкой офисной техники | Omobonus Вроцлав",
+   "/en/serwis-wysylkowy": "Mail-in office equipment service | Omobonus Wrocław",
    "/uslugi/serwis-laptopow": "Serwis i naprawa laptopów | Omobonus Wrocław",
    "/uslugi/serwis-komputerow-stacjonarnych": "Serwis i naprawa komputerów stacjonarnych | Omobonus Wrocław",
    "/uslugi/outsourcing-it": "Outsourcing IT i obsługa informatyczna | Omobonus Wrocław",
@@ -1717,6 +1900,10 @@
    "/": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Koszt naprawy uzgadniamy przed rozpoczęciem ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/o-nas": "✔ 10+ lat napraw komputerów, laptopów i drukarek we Wrocławiu ✔ Uczciwe ceny bez ukrytych kosztów ✔ Mówimy, gdy naprawa się nie opłaca ☎ 793 759 262",
    "/kontakt": "✔ Serwis i naprawa komputerów, laptopów i drukarek we Wrocławiu ✔ Zadzwoń, napisz lub wyślij zgłoszenie serwisowe ✔ Pełny cennik na stronie ☎ 793 759 262",
+   "/serwis-wysylkowy": "✔ Serwis wysyłkowy sprzętu biurowego we Wrocławiu ✔ Odbiór kurierem lub z paczkomatu, diagnoza i wycena ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "/uk/serwis-wysylkowy": "✔ Сервіс з відправкою офісної техніки у Вроцлаві ✔ Забір кур'єром або з поштомату, діагностика й оцінка ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "/ru/serwis-wysylkowy": "✔ Сервис с отправкой офисной техники во Вроцлаве ✔ Забор курьером или из постамата, диагностика и оценка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "/en/serwis-wysylkowy": "✔ Mail-in office equipment service in Wrocław ✔ Courier or parcel locker pickup, diagnosis and quote ✔ Full price list, no hidden costs ☎ 793 759 262",
    "/uslugi/serwis-laptopow": "✔ Serwis i naprawa laptopów we Wrocławiu ✔ Wymiana matrycy i baterii, czyszczenie laptopa, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uslugi/serwis-komputerow-stacjonarnych": "✔ Serwis i naprawa komputerów stacjonarnych we Wrocławiu ✔ Czyszczenie, wymiana dysku SSD, odzyskiwanie danych ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
    "/uslugi/outsourcing-it": "✔ Outsourcing IT i obsługa informatyczna firm we Wrocławiu ✔ Stała opieka IT, helpdesk, sieć, kopie zapasowe ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
@@ -1821,6 +2008,10 @@
    "/kontakt": "Kontakt z serwisem komputerów, laptopów i drukarek we Wrocławiu",
    "/polityka-prywatnosci": "Polityka Prywatności",
    "/regulamin": "Regulamin świadczenia usług serwisowych przez Omobonus",
+   "/serwis-wysylkowy": "Serwis komputerów, laptopów, drukarek i urządzeń biurowych we Wrocławiu",
+   "/uk/serwis-wysylkowy": "Сервіс комп'ютерів, ноутбуків, принтерів і офісної техніки у Вроцлаві",
+   "/ru/serwis-wysylkowy": "Сервис компьютеров, ноутбуков, принтеров и офисной техники во Вроцлаве",
+   "/en/serwis-wysylkowy": "Computer, laptop, printer and office equipment service in Wrocław",
    "/uslugi/serwis-laptopow": "Serwis i naprawa laptopów we Wrocławiu",
    "/uslugi/serwis-komputerow-stacjonarnych": "Serwis i naprawa komputerów stacjonarnych we Wrocławiu",
    "/uslugi/outsourcing-it": "Outsourcing IT i obsługa informatyczna firm",
@@ -1931,6 +2122,10 @@
    "/kontakt": "",
    "/polityka-prywatnosci": "",
    "/regulamin": "",
+   "/serwis-wysylkowy": "Serwis i naprawa bez wychodzenia z domu ¦ Najczęściej zadawane pytania (FAQ)",
+   "/uk/serwis-wysylkowy": "Сервіс і ремонт, не виходячи з дому ¦ Найчастіші запитання (FAQ)",
+   "/ru/serwis-wysylkowy": "Сервис и ремонт, не выходя из дома ¦ Часто задаваемые вопросы (FAQ)",
+   "/en/serwis-wysylkowy": "Service and repair without leaving home ¦ Frequently asked questions (FAQ)",
    "/uslugi/serwis-laptopow": "9 заголовков · 94a59926",
    "/uslugi/serwis-komputerow-stacjonarnych": "9 заголовков · f871ea2b",
    "/uslugi/outsourcing-it": "Konsultacja i wycena obsługi IT ¦ Obsługa firm (abonament miesięczny) ¦ Naprawy i usługi serwisowe ¦ Najczęściej zadawane pytania (FAQ)",
@@ -2041,6 +2236,10 @@
    "/kontakt": "",
    "/polityka-prywatnosci": "",
    "/regulamin": "",
+   "/serwis-wysylkowy": "16 заголовков · 77023673",
+   "/uk/serwis-wysylkowy": "16 заголовков · a76ce9e8",
+   "/ru/serwis-wysylkowy": "16 заголовков · 954d01c1",
+   "/en/serwis-wysylkowy": "16 заголовков · 8744ca46",
    "/uslugi/serwis-laptopow": "33 заголовков · 3cddce60",
    "/uslugi/serwis-komputerow-stacjonarnych": "30 заголовков · 50630720",
    "/uslugi/outsourcing-it": "27 заголовков · bfeb775a",
@@ -2151,6 +2350,10 @@
    "/kontakt": "",
    "/polityka-prywatnosci": "",
    "/regulamin": "",
+   "/serwis-wysylkowy": "",
+   "/uk/serwis-wysylkowy": "",
+   "/ru/serwis-wysylkowy": "",
+   "/en/serwis-wysylkowy": "",
    "/uslugi/serwis-laptopow": "",
    "/uslugi/serwis-komputerow-stacjonarnych": "",
    "/uslugi/outsourcing-it": "",

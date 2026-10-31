@@ -18,16 +18,19 @@ const tabFile = (k) => path.join(os.tmpdir(), `omobonus-seo-${k}.json`)
 // Адреса проверки: главная и /uslugi/* на PL/UK/RU/EN — из sitemap.
 // info: true — ещё страницы фирмы /o-nas и /kontakt (сейчас только для Description; Title и H1–H4 — без них)
 export const INFO_PAGES = ['o-nas', 'kontakt']
+// Отдельные страницы вне /uslugi/ (отдельная страница, не услуга): проверяются во всех вкладках, как услуги
+export const EXTRA_PAGES = ['serwis-wysylkowy']
 export async function siteUrls({ info = false } = {}) {
   const sm = await (await fetch(`${SITE}/sitemap.xml`)).text()
-  const page = info ? `(\\/uslugi\\/[^/]+|\\/(${INFO_PAGES.join('|')}))` : '(\\/uslugi\\/[^/]+)'
+  const extra = EXTRA_PAGES.join('|')
+  const page = info ? `(\\/uslugi\\/[^/]+|\\/(${INFO_PAGES.join('|')}|${extra}))` : `(\\/uslugi\\/[^/]+|\\/(${extra}))`
   const re = new RegExp(`^(\\/(uk|ru|en))?${page}?$`)
   return [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((m) => new URL(m[1]).pathname.replace(/\/$/, '') || '/')
     .filter((u) => u === '/' || re.test(u))
 }
 export const parse = (u) => {
-  const m = (u === '/' ? '' : u).match(/^(?:\/(uk|ru|en))?(?:\/uslugi\/([^/]+)|\/(o-nas|kontakt))?$/)
+  const m = (u === '/' ? '' : u).match(/^(?:\/(uk|ru|en))?(?:\/uslugi\/([^/]+)|\/(o-nas|kontakt|serwis-wysylkowy))?$/)
   return { l: m[1] || 'pl', s: m[2] || m[3] || '' }
 }
 export const unesc = (s) =>

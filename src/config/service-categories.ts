@@ -4,6 +4,8 @@
 
 import type { ComponentType } from 'react'
 import { ProjectorFilled } from '@/components/icons/projector-filled'
+import { ParcelFilled } from '@/components/icons/parcel-filled'
+import { DesktopFilled } from '@/components/icons/desktop-filled'
 
 /** An svg pictogram drawn in currentColor (the menu gold). */
 export type MenuIconComponent = ComponentType<{ size?: number; className?: string }>
@@ -46,7 +48,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     icon: '/images/menu-icon-laptopy.webp',
     items: [
       { label: { pl: 'Laptopów', uk: 'Ноутбуки', ru: 'Ноутбуки', en: 'Laptops' }, href: '/uslugi/serwis-laptopow', icon: '/images/menu-icon-laptopy.webp' },
-      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры', en: 'Desktop computers' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: '/images/menu-icon-komputery-stacjonarne.webp' },
+      { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры', en: 'Desktop computers' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: DesktopFilled },
       { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг', en: 'IT outsourcing' }, href: '/uslugi/outsourcing-it', icon: '/images/menu-icon-outsourcing-it.webp' },
     ],
   },
@@ -91,6 +93,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ', en: '3D printing on demand' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/menu-icon-druk-3d-na-zamowienie.webp' },
         { label: { pl: 'Wynajem drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров', en: 'Printer rental' }, href: '/uslugi/wynajem-drukarek', icon: '/images/menu-icon-wynajem.webp' },
         { label: { pl: 'Drukarka zastępcza', uk: 'Підмінний принтер', ru: 'Подменный принтер', en: 'Replacement printer' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/menu-icon-drukarka-zastepcza.webp', menuOnly: true },
+        { label: { pl: 'Serwis wysyłkowy', uk: 'Сервіс з відправкою', ru: 'Сервис с отправкой', en: 'Mail-in service' }, href: '/serwis-wysylkowy', icon: ParcelFilled, menuOnly: true },
       ],
     },
   },

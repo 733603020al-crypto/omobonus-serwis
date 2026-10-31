@@ -19,7 +19,8 @@ export function MenuItemIcon({ icon, tall, mobile }: { icon: string | MenuIconCo
       height={tall ? w : mobile ? 20 : 22}
       sizes={`${w}px`}
       // A tall icon (cake candle) rises above the slot without changing the row height.
-      className={`flex-shrink-0 object-contain opacity-90 ${tall ? '-mt-1.5' : ''}`}
+      // brightness lifts the webp icons to the same bright menu gold as the svg pictograms (#bfa76a).
+      className={`flex-shrink-0 object-contain opacity-90 brightness-[1.27] ${tall ? '-mt-1.5' : ''}`}
       unoptimized
     />
   )

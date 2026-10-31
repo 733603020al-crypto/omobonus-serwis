@@ -8,7 +8,7 @@ import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 
 // "Koszt dojazdu" window: one frame for both states of the popup on /kontakt (address → result)
 // and for the result picture in e-mails. Frame and texture = the "Kategorie urządzeń" window
-// (docs/kategorie-urzadzen-standard.md); on the right — the paper of the "Formularz zgłoszeniowy" form.
+// (docs/standards/kategorie-urzadzen-standard.md); on the right — the paper of the "Formularz zgłoszeniowy" form.
 // No hooks: works as a server component and inside the client popup.
 // md+ (≥768): map and paper side by side with a fixed height, the same before and after the calculation;
 // below md — map above the paper, height by content.

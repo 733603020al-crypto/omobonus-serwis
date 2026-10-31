@@ -238,7 +238,7 @@ e-mail: serwis@omobonus.com.pl
 - Wstępna diagnoza online (WhatsApp/strona/telefon) — GRATIS.
 - Wstępna diagnoza przy dostawie do serwisu — GRATIS, если и в тех пределах, что указаны на странице. **Это только предварительная оценка, она не заменяет полную диагностику** — так и писать клиенту: на месте можем сказать предварительно, точный диагноз и цена — после полной диагностики.
 - Diagnoza i wycena naprawy przy realizacji naprawy — GRATIS (wliczona w cenę naprawy).
-- Nie ustalimy przyczyny usterki — za diagnozę nie płaci (GRATIS). Если ремонт дорогой, невыгодный или сейчас нет нужной детали и клиент отказывается — диагностика платная (работа сделана). Не писать «naprawa niemożliwa» и «odmawiamy naprawy» — таких случаев нет (см. docs/diagnoza-i-platnosci-standard.md).
+- Nie ustalimy przyczyny usterki — za diagnozę nie płaci (GRATIS). Если ремонт дорогой, невыгодный или сейчас нет нужной детали и клиент отказывается — диагностика платная (работа сделана). Не писать «naprawa niemożliwa» и «odmawiamy naprawy» — таких случаев нет (см. docs/standards/diagnoza-i-platnosci-standard.md).
 - Diagnoza i wycena przy rezygnacji z naprawy (после того как причина найдена и дана wycena) — цена по категории устройства (на странице, например 80 / 120 / 180 zł).
 - Pisemna opinia techniczna — доплата (например +50 zł).
 - Pilna realizacja — GRATIS, jeśli możliwe.

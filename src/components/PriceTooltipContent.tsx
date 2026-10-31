@@ -41,7 +41,7 @@ interface DeviceCategoriesWindow {
 // Okno „Kategorie urządzeń” — jedna konfiguracja na stronę (slug). Nowe okno = nowy wpis tutaj
 // + teksty w i18n (deviceCategoriesDescription, tłumaczenia kart, opcjonalnie deviceCategoriesNote).
 // Przykład cen: diagnoza i wycena naprawy; plotery, 3D i niszczarki — czyszczenie i konserwacja.
-// Standard: docs/kategorie-urzadzen-standard.md
+// Standard: docs/standards/kategorie-urzadzen-standard.md
 const DEVICE_CATEGORIES_WINDOWS: Record<string, DeviceCategoriesWindow> = {
   'serwis-drukarek-laserowych': {
     textKey: 'default',
@@ -185,7 +185,7 @@ const DEVICE_CATEGORIES_WINDOWS: Record<string, DeviceCategoriesWindow> = {
   },
 }
 
-// Standard okna (docs/kategorie-urzadzen-standard.md): linia 1 „Cena zależy od …:”, linia 2 „pierwsza – …”.
+// Standard okna (docs/standards/kategorie-urzadzen-standard.md): linia 1 „Cena zależy od …:”, linia 2 „pierwsza – …”.
 // Dzielimy po pierwszym „: ”, tylko gdy dalej zaczyna się wyliczenie kategorii; inaczej tekst zostaje jednym akapitem.
 const splitDeviceCategoriesDescription = (text: string): string[] => {
   const idx = text.indexOf(': ')

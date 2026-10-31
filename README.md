@@ -30,7 +30,7 @@ cd omobonus-serwis
 npm install
 ```
 
-3. Создайте файл `.env.local` на основе `.env.example` (подробности — в `docs/ENV_SETUP.md`):
+3. Создайте файл `.env.local` на основе `.env.example` (подробности — в `docs/materialy/ENV_SETUP.md`):
 ```bash
 cp .env.example .env.local
 ```

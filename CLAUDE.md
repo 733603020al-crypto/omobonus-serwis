@@ -24,10 +24,10 @@
 | «Занеси в правила» | `docs/claude/dobavit-pravilo.md` |
 | Ветки, commit/push, безопасность | `docs/claude/git.md` |
 | Страницы сайта, прайс, FAQ, окна, документы, скорость | `docs/claude/sajt.md` |
-| Утверждённые решения (не пересматривать) | `docs/decisions.md` |
-| Скорость: что закрыто и откатано | `docs/optimization-knowledge.md` |
-| Анимации, карусели, картинки | `docs/animations-images-standard.md` |
-| Запуск новой страницы (ветка, картинки, SEO, скорость, публикация) | `docs/new-page-standard.md` |
+| Утверждённые решения (не пересматривать) | `docs/reshenia/decisions.md` |
+| Скорость: что закрыто и откатано | `docs/reshenia/optimization-knowledge.md` |
+| Анимации, карусели, картинки | `docs/standards/animations-images-standard.md` |
+| Запуск новой страницы (ветка, картинки, SEO, скорость, публикация) | `docs/standards/new-page-standard.md` |
 | SEO (Title, Description, H1–H4) и языки | `docs/seo/index.md` |
 | Панель Workspace: оформление, разработка, отложенные задачи | `docs/claude/panel.md` |
 | Dev-сервер, команды, субагенты, карточка Google | `docs/claude/sreda.md` |

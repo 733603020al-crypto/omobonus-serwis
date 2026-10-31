@@ -30,11 +30,11 @@
 ### Каркас и данные
 - Образец — ближайшая по типу страница услуги; общие шаблоны, не копирование JSX. Данные услуги — `src/lib/services-data*.ts`, метаданные — `services-meta-shared.ts`; цены/сроки в одном месте для pl/uk/ru/en (`services-pricing-data.ts`, проверка `npm run check:i18n-sync`).
 - Обязательные блоки: hero (через `AnimatedHeroImage`/карусель по стандарту), аккордеон с прайсом, окно «Kategorie urządzeń» (`PriceTooltipContent`), FAQ, форма, связанные услуги (`relatedServiceSlugs`).
-- Стандарты, по которым проверять страницу: прайс — `.claude/rules/price-card-standard.md`; окно категорий — `docs/kategorie-urzadzen-standard.md`; FAQ — `.claude/rules/faq-answer-standard.md` и `docs/standards/faq-cards.md`; диагностика и оплата — `docs/diagnoza-i-platnosci-standard.md`; дизайн — `.claude/rules/design-guardrails.md`.
+- Стандарты, по которым проверять страницу: прайс — `.claude/rules/price-card-standard.md`; окно категорий — `docs/standards/kategorie-urzadzen-standard.md`; FAQ — `.claude/rules/faq-answer-standard.md` и `docs/standards/faq-cards.md`; диагностика и оплата — `docs/standards/diagnoza-i-platnosci-standard.md`; дизайн — `.claude/rules/design-guardrails.md`.
 - Иконка слота подкатегории задаётся через `subcategory.icon`, не по title. Нет подходящей картинки — заглушка и прямая просьба прислать картинку.
 
 ### Картинки
-- По `docs/animations-images-standard.md`: пороги пережатия, обрезка пустых полей, версионные имена, бэкап оригиналов, первая картинка карусели заменяет главную везде (карусель, og:image, manifest, `KANONICZNY_MANIFEST`, иконка меню, card-icon).
+- По `docs/standards/animations-images-standard.md`: пороги пережатия, обрезка пустых полей, версионные имена, бэкап оригиналов, первая картинка карусели заменяет главную везде (карусель, og:image, manifest, `KANONICZNY_MANIFEST`, иконка меню, card-icon).
 
 ### Языки и SEO
 - PL — источник; UK/RU/EN синхронизируются, не переводятся построчно; проверка общего шаблона минимум на PL и UK (`docs/languages/languages-standard.md`, `docs/languages/nowy-jezyk-standard.md`).
@@ -43,7 +43,7 @@
 - Включение в меню «Usługi», на главную (слайдер `home-hero-showcase`) и в списки связанных услуг — только по согласованию. Если страница связана с кнопками на главной/услугах (как «Serwis wysyłkowy»), напомнить про ссылки кнопок.
 
 ### Скорость (обязательно до слияния)
-- Полный чек-лист — `.claude/rules/optimization-check.md`; закрытое и откатанное — `docs/optimization-knowledge.md`.
+- Полный чек-лист — `.claude/rules/optimization-check.md`; закрытое и откатанное — `docs/reshenia/optimization-knowledge.md`.
 - Проверить, что slug покрыт `scripts/defer-hydration.mjs` (область `uslugi`) и HTML не вырос; нет новых тяжёлых клиентских зависимостей; начальный JS не хуже соседней услуги (~206 КБ gz).
 - Prod-сборка — только в отдельной копии, не в основной папке (build ломает dev-сервер). Lighthouse mobile/desktop, медиана ≥ 5 прогонов; новая страница не хуже соседних услуг (90–96 на телефоне).
 
@@ -53,4 +53,4 @@
 ### Слияние и публикация
 - Влить в `test` только по разрешению, быстрым пушем: `git fetch; git merge-base --is-ancestor origin/test HEAD; git push origin HEAD:test`.
 - В `master` отправляет пользователь (защита блокирует); дать одну строку для терминала, затем проверить боевой сайт.
-- После запуска: запись этапа в `AI_WORK_STATE.md`, дата проверки оптимизации в шапке, итог в `docs/decisions.md`, если принято постоянное решение; рабочую копию и ветку удалять только после проверки, что всё влито, и с разрешения.
+- После запуска: запись этапа в `AI_WORK_STATE.md`, дата проверки оптимизации в шапке, итог в `docs/reshenia/decisions.md`, если принято постоянное решение; рабочую копию и ветку удалять только после проверки, что всё влито, и с разрешения.

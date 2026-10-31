@@ -168,5 +168,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...mainPages, ...servicePages, ...ukMainPages, ...ukServicePages, ...ruMainPages, ...ruServicePages, ...enMainPages, ...enServicePages]
+  const wysylkowyPages = ['', '/uk', '/ru', '/en'].map((prefix) => ({
+    url: `${baseUrl}${prefix}/serwis-wysylkowy`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...mainPages, ...wysylkowyPages, ...servicePages, ...ukMainPages, ...ukServicePages, ...ruMainPages, ...ruServicePages, ...enMainPages, ...enServicePages]
 }

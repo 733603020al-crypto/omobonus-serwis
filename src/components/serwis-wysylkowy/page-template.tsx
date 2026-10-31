@@ -7,6 +7,9 @@ import GoogleReviews from '@/components/serwis-wysylkowy/google-reviews'
 import { BasicQuestions } from '@/components/serwis-wysylkowy/sections/basic-questions'
 import { SERVICE_CATEGORIES } from '@/config/service-categories'
 import { services } from '@/lib/services-data'
+import { servicesUk } from '@/lib/services-data-uk'
+import { servicesRu } from '@/lib/services-data-ru'
+import { servicesEn } from '@/lib/services-data-en'
 import { getServiceDisplayPricing } from '@/lib/services-pricing'
 
 const SITE_URL = 'https://serwis.omobonus.com.pl'
@@ -50,13 +53,14 @@ export function HomePageTemplate({
   // The step window (client) shows only the "diagnoza" section of the 3D printer page and the
   // "faq" section of the inkjet page: pass just those, with prices computed here, so the whole
   // services dataset doesn't land in the page's JS.
-  const diagnosisFull = services.find((s) => s.slug === 'serwis-drukarek-3d')
-  const faqFull = services.find((s) => s.slug === 'serwis-drukarek-atramentowych')
+  const localized = { pl: services, uk: servicesUk, ru: servicesRu, en: servicesEn }[locale]
+  const diagnosisFull = localized.find((s) => s.slug === 'serwis-drukarek-3d')
+  const faqFull = localized.find((s) => s.slug === 'serwis-drukarek-atramentowych')
   const windowServices = diagnosisFull && {
     diagnosis: { ...diagnosisFull, pricingSections: diagnosisFull.pricingSections.filter((s) => s.id === 'diagnoza') },
-    diagnosisPricing: getServiceDisplayPricing(diagnosisFull.slug, diagnosisFull.pricingSections, 'pl'),
+    diagnosisPricing: getServiceDisplayPricing(diagnosisFull.slug, diagnosisFull.pricingSections, locale),
     faq: faqFull && { ...faqFull, pricingSections: faqFull.pricingSections.filter((s) => s.id === 'faq') },
-    faqPricing: faqFull && getServiceDisplayPricing(faqFull.slug, faqFull.pricingSections, 'pl'),
+    faqPricing: faqFull && getServiceDisplayPricing(faqFull.slug, faqFull.pricingSections, locale),
   }
   // The services shown on the cards, added to the site-wide LocalBusiness (same @id, so
   // search engines merge it with the layout's block) — home page only.
@@ -97,7 +101,7 @@ export function HomePageTemplate({
       <div>
         <Hero t={heroT} locale={locale} cta={{ label: cta.button, href: cta.href }}>
           <div className="absolute bottom-[36px] left-0 w-full z-10 md:bottom-[48px]">
-            <EquipmentTicker compact />
+            <EquipmentTicker compact locale={locale} />
           </div>
         </Hero>
       </div>
@@ -112,10 +116,10 @@ export function HomePageTemplate({
           }}
         />
         <div className="home-below relative z-10">
-          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} categories={SERVICE_CATEGORIES.slice(0, 3)} windowServices={windowServices} bare />
+          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} windowServices={windowServices} bare />
 
           <div className="-mt-[3px] md:-mt-[18px]">
-            <BasicQuestions />
+            <BasicQuestions locale={locale} />
           </div>
 
           {/* The "Skąd nazwa / O nas" block is left out here; only the reviews stay. */}

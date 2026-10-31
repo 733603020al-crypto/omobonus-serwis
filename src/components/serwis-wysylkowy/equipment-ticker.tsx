@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
-import { SERVICE_CATEGORIES } from '@/config/service-categories'
+import { SERVICE_CATEGORIES, type ServiceLocale as Locale } from '@/config/service-categories'
 
 const ORDER = [
   'serwis-laptopow',
@@ -69,11 +69,12 @@ const ITEMS = SERVICE_CATEGORIES
 const TARGET_SPEED_PX_PER_SEC = 24
 const GAP = 48
 
-function EquipmentGroup({ compact, ariaHidden }: { compact?: boolean; ariaHidden?: boolean }) {
+function EquipmentGroup({ compact, ariaHidden, locale }: { compact?: boolean; ariaHidden?: boolean; locale: Locale }) {
   return (
     <>
       {ITEMS.map(item => {
         const slug = item.href.split('/').pop() as (typeof ORDER)[number]
+        const label = locale === 'pl' ? LABELS[slug] : item.label[locale]
         const Icon = typeof item.icon === 'string' ? null : item.icon
         return (
           <div
@@ -86,7 +87,7 @@ function EquipmentGroup({ compact, ariaHidden }: { compact?: boolean; ariaHidden
             ) : (
               <Image
                 src={item.icon as string}
-                alt={ariaHidden ? '' : LABELS[slug]}
+                alt={ariaHidden ? '' : label}
                 width={42}
                 height={42}
                 className="h-[42px] w-[42px] object-contain"
@@ -94,7 +95,7 @@ function EquipmentGroup({ compact, ariaHidden }: { compact?: boolean; ariaHidden
               />
             )}
             <span className="whitespace-nowrap font-cormorant text-[24px] font-semibold leading-none text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
-              {LABELS[slug]}
+              {label}
             </span>
           </div>
         )
@@ -103,7 +104,7 @@ function EquipmentGroup({ compact, ariaHidden }: { compact?: boolean; ariaHidden
   )
 }
 
-export default function EquipmentTicker({ compact }: { compact?: boolean } = {}) {
+export default function EquipmentTicker({ compact, locale = 'pl' }: { compact?: boolean; locale?: Locale } = {}) {
   const copies = Math.max(2, Math.ceil(4000 / (ITEMS.length * 200)) + 1)
   const trackRef = useRef<HTMLDivElement | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -164,7 +165,7 @@ export default function EquipmentTicker({ compact }: { compact?: boolean } = {})
       <div ref={hoverRef} className="brand-ticker-hover-pause relative z-10 -mx-[calc((100vw-100%)/2)] w-screen overflow-visible">
         <div ref={trackRef} className="brand-ticker-track flex items-center" style={trackStyle}>
           {Array.from({ length: copies }).map((_, index) => (
-            <EquipmentGroup key={index} compact={compact} ariaHidden={index > 0} />
+            <EquipmentGroup key={index} compact={compact} ariaHidden={index > 0} locale={locale} />
           ))}
         </div>
       </div>

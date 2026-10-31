@@ -1,22 +1,9 @@
 import type { Metadata } from 'next'
+import { serwisWysylkowyMetadata } from '@/components/serwis-wysylkowy/seo'
 import { HomePageTemplate } from '@/components/serwis-wysylkowy/page-template'
 import { services } from '@/lib/services-data'
 
-const DESCRIPTION =
-  'Prototyp strony serwisu wysyłkowego Omobonus — dokładna kopia strony głównej do dalszych prac projektowych.'
-
-export const metadata: Metadata = {
-  title: 'Serwis wysyłkowy — prototyp | Omobonus',
-  description: DESCRIPTION,
-  robots: {
-    index: false,
-    follow: false,
-  },
-  alternates: {
-    canonical: null,
-    languages: {},
-  },
-}
+export const metadata: Metadata = serwisWysylkowyMetadata('pl')
 
 export default function SerwisWysylkowyPage() {
   return (

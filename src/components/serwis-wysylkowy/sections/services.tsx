@@ -32,6 +32,7 @@ import manifest from '@/config/KANONICZNY_MANIFEST.json'
 import { SERVICE_CATEGORIES, type ServiceCategory, type ServiceLocale } from '@/config/service-categories'
 import ServiceAccordion from '@/components/service-accordion'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
+import { PROCESS_TEXT, STAMPS, type StepKey } from '../i18n-process'
 
 // Home cards only: larger, tightly cropped renders of each service's own
 // hero image (trimmed to the visible device, no transparent margins), with
@@ -151,173 +152,18 @@ const CARD_HOVER_SHADOW = 'md:group-hover:shadow-[0_12px_20px_rgba(35,18,8,0.50)
 const CARD_HOVER_ON = 'md:-translate-y-1 md:scale-[1.04] md:shadow-[0_12px_20px_rgba(35,18,8,0.50)]'
 // Carousel spotlight on a raised card: still light on the middle of the card's
 // title (card share, measured at 1440), flat depth.
-// Step 1 window: FAQ under the main block.
-const ZGLOSZENIE_FAQ = [
-  ['Czy zgłoszenie zobowiązuje mnie do naprawy?', 'Nie. Decyzję podejmiesz po otrzymaniu wyceny.'],
-  ['Ile zapłacę, jeśli zrezygnuję z naprawy?', 'Jeśli zrezygnujesz po ustaleniu przyczyny usterki i otrzymaniu wyceny, zapłacisz za diagnozę według ceny dla Twojej kategorii urządzenia oraz za transport. Obie kwoty podamy przed wysyłką.'],
-  ['Nie znam przyczyny awarii. Co napisać?', 'Opisz, co nie działa, od kiedy i w jakich sytuacjach. Nie musisz znać technicznej przyczyny.'],
-  ['Czy muszę dołączyć zdjęcia lub film?', 'Nie, ale mogą pomóc nam lepiej zrozumieć problem.'],
-  ['Czy mogę od razu wysłać urządzenie?', 'Najpierw skontaktuj się z nami, aby ustalić warunki przyjęcia i sposób wysyłki.'],
-].map(([title, answer], i) => ({ id: 'zgloszenie-faq-' + (i + 1), title, items: [], answer }))
-// Header illustration of the main block (the shared accordion has no picture option).
-const ZGLOSZENIE_ICON = '/images/serwis-wysylkowy/modal-zgloszenie-v1.avif'
-// Step 1 window: the main block shows this note (as an open FAQ question) instead of a price table.
-const ZGLOSZENIE_INFO = {
-  sections: [
-    {
-      title: 'Skontaktuj się z nami przed wysyłką — ustalimy, od czego zacząć',
-      text: 'Opisz problem w formularzu, napisz na czacie, zadzwoń lub zostaw numer — oddzwonimy i ustalimy dalsze kroki.\nPodaj markę i model urządzenia, opisz objawy oraz zostaw dane do kontaktu. Jeśli możesz, dołącz zdjęcie tabliczki z modelem, komunikatu błędu lub krótki film pokazujący problem.',
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Sprawdzimy zgłoszenie i ustalimy z Tobą dalsze kroki oraz warunki przyjęcia sprzętu. Przed wysyłką poznasz obowiązujący Cię koszt diagnozy w razie rezygnacji z naprawy oraz koszt transportu: odesłania urządzenia do Ciebie, a jeśli przygotujemy etykietę — także wysyłki do serwisu.',
-    },
-    {
-      title: 'Konsultacja przed wysyłką jest bezpłatna. Przyczynę usterki, możliwość i koszt naprawy ustalamy dopiero po diagnostyce urządzenia w serwisie.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Step 2 window: same layout as step 1.
-const WYSYLKA_FAQ = [
-  ['Czy mogę wysłać urządzenie dowolnym przewoźnikiem?', 'Tak. Nadaj paczkę na adres podany w potwierdzeniu zgłoszenia. Możesz też poprosić nas o przygotowanie etykiety.'],
-  ['Ile kosztuje wysyłka?', 'Jeśli wysyłasz samodzielnie — według cennika Twojego przewoźnika. Jeśli przygotujemy etykietę — jej koszt podamy, zanim ją przygotujemy. Koszt odesłania urządzenia również podamy wcześniej.'],
-  ['Czy mogę wysłać drukarkę w oryginalnym opakowaniu?', 'Tak, to najlepsze rozwiązanie. Jeśli go nie masz, użyj sztywnego kartonu z wypełnieniem.'],
-  ['Co, jeśli paczka dotrze uszkodzona?', 'Przy odbiorze sprawdzamy stan opakowania, a każdą paczkę otwieramy, dokumentując jej zawartość zdjęciami i filmem. Jeśli zauważymy uszkodzenie, od razu Cię poinformujemy, zanim rozpoczniemy prace, i przekażemy dokumentację potrzebną do zgłoszenia reklamacji u przewoźnika.'],
-].map(([title, answer], i) => ({ id: 'wysylka-faq-' + (i + 1), title, items: [], answer }))
-const WYSYLKA_INFO = {
-  sections: [
-    {
-      title: 'Wyślij urządzenie samodzielnie albo poproś nas o etykietę',
-      text: 'Możesz nadać paczkę dowolnym przewoźnikiem na adres podany w potwierdzeniu zgłoszenia. Jeśli wolisz, przygotujemy dla Ciebie etykietę dla kuriera lub do Paczkomatu. Jej koszt podamy, zanim ją przygotujemy — opłacimy ją, a Ty zwrócisz nam ten koszt.\nZapakuj urządzenie w sztywny karton z wypełnieniem, tak aby nie przesuwało się w środku. Drukarkę zabezpiecz zgodnie z instrukcją producenta: zablokuj głowicę, wyjmij lub zabezpiecz wkłady i opróżnij podajniki papieru. Nie dołączaj kart pamięci ani akcesoriów, których nie potrzebujemy do naprawy. Przed zapakowaniem zrób kilka zdjęć urządzenia, a numer zgłoszenia umieść na paczce lub w środku.',
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Gdy paczka do nas dotrze, otworzymy ją, nagrywając film, i wyślemy Ci e-mailem potwierdzenie przyjęcia z opisem stanu urządzenia. Jeśli zauważymy uszkodzenie, poinformujemy Cię o tym, zanim rozpoczniemy prace.',
-    },
-    {
-      title: 'Transport do serwisu i z powrotem opłacasz niezależnie od wyniku diagnozy i naprawy. Nie jest wliczony w cenę diagnozy ani naprawy.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Step 3 window: same layout as steps 1–2.
-const DIAGNOSTYKA_FAQ = [
-  ['Ile trwa diagnoza?', 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia.'],
-  ['Ile kosztuje diagnoza?', 'Cenę diagnozy dla Twojej kategorii urządzenia podajemy przed wysyłką. Płacisz ją tylko wtedy, gdy po ustaleniu przyczyny usterki i otrzymaniu wyceny zrezygnujesz z naprawy. Jeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę.'],
-  ['Co, jeśli nie znajdziecie przyczyny usterki?', 'Powiemy Ci o tym i odeślemy urządzenie. Za diagnozę nie płacisz — pokrywasz tylko transport.'],
-  ['Jakie części stosujecie?', 'Rodzaj części podajemy w wycenie. Części innych niż nowe używamy wyłącznie za Twoją zgodą.'],
-].map(([title, answer], i) => ({ id: 'diagnostyka-faq-' + (i + 1), title, items: [], answer }))
-const DIAGNOSTYKA_INFO = {
-  sections: [
-    {
-      title: 'Sprawdzimy urządzenie i przedstawimy wycenę',
-      text: 'Diagnoza trwa zwykle 1–3 dni robocze od przyjęcia urządzenia. Otrzymujesz wycenę ze zdjęciami usterek, zakres napraw, rodzaj części (oryginalne, zamienniki lub odnowione), cenę i przewidywany termin. Konsumentom podajemy cenę brutto.\nJeśli zlecisz naprawę, diagnoza jest wliczona w jej cenę — nie płacisz za nią osobno. Jeśli po otrzymaniu wyceny zrezygnujesz z naprawy — także uznając ją za nieopłacalną — płacisz za diagnozę według ceny uzgodnionej przed wysyłką. Jeśli nie uda nam się ustalić przyczyny usterki, za diagnozę nie płacisz.',
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Wycenę otrzymasz e-mailem. Naprawy nie rozpoczniemy bez Twojej akceptacji.',
-    },
-    {
-      title: 'Jeśli naprawa okaże się nieopłacalna albo potrzebna część będzie niedostępna, powiemy Ci o tym od razu i podamy powód.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Step 4 window: same layout as steps 1–3.
-const AKCEPTACJA_FAQ = [
-  ['Ile mam czasu na decyzję?', 'Jeśli nie odpowiesz w ciągu 14 dni od otrzymania wyceny, spróbujemy skontaktować się ponownie. Dalszy brak odpowiedzi traktujemy jako rezygnację z naprawy, a nie jako zgodę.'],
-  ['Ile zapłacę, jeśli zrezygnuję?', 'Za diagnozę według ceny uzgodnionej przed wysyłką oraz za transport.'],
-  ['Czy mogę wybrać tańsze części?', 'Zapytaj nas — jeśli dostępny jest tańszy wariant (zamienniki lub części odnowione), przedstawimy go. Części innych niż nowe używamy wyłącznie za Twoją zgodą.'],
-].map(([title, answer], i) => ({ id: 'akceptacja-faq-' + (i + 1), title, items: [], answer }))
-const AKCEPTACJA_INFO = {
-  sections: [
-    {
-      title: 'Ty decydujesz, czy naprawiamy',
-      text: 'Wycenę możesz zaakceptować osobiście, telefonicznie, e-mailem, SMS-em lub przez komunikator. Akceptację telefoniczną potwierdzamy e-mailem lub SMS-em.\nJeśli w trakcie naprawy okaże się, że potrzebne są dodatkowe prace lub części albo cena miałaby wzrosnąć, przerwiemy prace i zapytamy Cię o zgodę. Bez niej nie wykonujemy dodatkowych prac i nie pobieramy za nie opłat.',
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Akceptujesz wycenę — naprawiamy urządzenie. Rezygnujesz — odsyłamy je bez naprawy.',
-    },
-    {
-      title: 'Bez Twojej zgody nie rozpoczynamy naprawy. Brak odpowiedzi nie oznacza akceptacji.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Step 5.1 window: same layout as steps 1–4.
-const NAPRAWA_FAQ = [
-  ['Kiedy płacę za naprawę?', 'Płatność przyjmujemy przelewem. Konsumenci płacą przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze.'],
-  ['Ile trwa gwarancja?', 'Okres gwarancji zależy od usługi. Podajemy go w opisie usługi na stronie oraz w dokumencie naprawy, np. na fakturze.'],
-  ['Co, jeśli usterka powróci?', 'Zgłoś to e-mailem, telefonicznie lub osobiście, podając numer zlecenia lub faktury i opis usterki. W ramach gwarancji, jeśli przyczyną usterki jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.'],
-  ['Co, jeśli paczka dotrze do mnie uszkodzona?', 'Sprawdź przesyłkę przy kurierze i poproś o protokół szkody, a następnie skontaktuj się z nami. Pakowanie każdej przesyłki dokumentujemy zdjęciami i filmem, co pomaga wyjaśnić sprawę z przewoźnikiem. Brak protokołu nie pozbawia konsumenta jego praw.'],
-].map(([title, answer], i) => ({ id: 'naprawa-faq-' + (i + 1), title, items: [], answer }))
-const NAPRAWA_INFO = {
-  sections: [
-    {
-      title: 'Naprawiamy, testujemy i odsyłamy',
-      text: 'Po akceptacji wyceny naprawiamy urządzenie i sprawdzamy jego działanie. Gdy naprawa będzie gotowa, poinformujemy Cię o tym i prześlemy dane do płatności.\nPłatność przyjmujemy przelewem. Konsumenci płacą przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze. Urządzenie starannie pakujemy, dokumentując pakowanie zdjęciami i filmem, i wysyłamy ubezpieczoną przesyłką. Wartość do ubezpieczenia i koszt wysyłki ustalimy z Tobą przed nadaniem.\nWymienione części proponujemy zwrócić Ci razem z urządzeniem. Wyjątkiem są części, które musimy oddać dostawcy, oraz części niebezpieczne, np. spuchnięte akumulatory — o takim wyjątku informujemy przed naprawą.',
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Po nadaniu prześlemy Ci numer przesyłki. Przy odbiorze sprawdź stan paczki w obecności kuriera, a jeśli jest uszkodzona — poproś o protokół szkody.',
-    },
-    {
-      title: 'Na naprawę udzielamy gwarancji. Jeśli w okresie gwarancji usterka powróci, a jej przyczyną jest nasza praca lub zamontowana przez nas część, koszt wysyłki urządzenia do serwisu i z powrotem na terenie Polski pokrywamy my.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Step 5.2 window: same layout; the cost list is three short paragraphs.
-const ZWROT_FAQ = [
-  ['Ile zapłacę, jeśli nie ustalicie przyczyny usterki?', 'Za diagnozę nie płacisz — pokrywasz tylko transport.'],
-  ['Co, jeśli nie odpowiem na wycenę?', 'Jeśli nie odpowiesz w ciągu 14 dni, spróbujemy skontaktować się ponownie. Dalszy brak odpowiedzi traktujemy jako rezygnację z naprawy i informujemy Cię o możliwości odbioru urządzenia.'],
-  ['Jak długo przechowujecie urządzenie?', 'Przez 30 dni od zawiadomienia o możliwości odbioru — bezpłatnie. Później naliczamy opłatę za przechowywanie zgodnie z regulaminem. Przypomnimy Ci o tym przed końcem bezpłatnego okresu.'],
-].map(([title, answer], i) => ({ id: 'zwrot-faq-' + (i + 1), title, items: [], answer }))
-const ZWROT_INFO = {
-  sections: [
-    {
-      title: 'Odsyłamy urządzenie bez naprawy',
-      text: 'Jeśli zrezygnujesz z naprawy albo nie ustalimy przyczyny usterki, odeślemy Ci urządzenie. Należności rozliczamy przed wysyłką: konsumenci płacą przelewem przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze.',
-    },
-    {
-      title: 'Ile zapłacisz?',
-      text: '',
-      // Bulleted list: bold opening condition + the rest of the item.
-      list: [
-        ['Rezygnujesz po otrzymaniu wyceny', ' (także gdy uznasz naprawę za nieopłacalną) — płacisz za diagnozę według ceny uzgodnionej przed wysyłką oraz za transport.'],
-        ['Nie ustalimy przyczyny usterki', ' — za diagnozę nie płacisz, pokrywasz tylko transport.'],
-      ],
-    },
-    {
-      title: 'Co dalej?',
-      text: 'Po nadaniu prześlemy Ci numer przesyłki. Przy odbiorze sprawdź stan paczki w obecności kuriera, a jeśli jest uszkodzona — poproś o protokół szkody.',
-    },
-    {
-      title: 'Jeśli nie możesz od razu odebrać przesyłki lub rozliczyć należności, przechowamy urządzenie bezpłatnie przez 30 dni od zawiadomienia.',
-      text: '',
-    },
-  ],
-  button: 'Szybki kontakt',
-}
-// Steps that open a window: its title, header picture, note and FAQ.
-const STEP_WINDOWS = {
-  '01': { title: '1. Zgłoszenie', icon: ZGLOSZENIE_ICON, info: ZGLOSZENIE_INFO, faq: ZGLOSZENIE_FAQ },
-  '02': { title: '2. Wysyłka', icon: '/images/serwis-wysylkowy/modal-wysylka-v1.avif', info: WYSYLKA_INFO, faq: WYSYLKA_FAQ },
-  '03': { title: '3. Diagnostyka i wycena', icon: '/images/serwis-wysylkowy/modal-diagnostyka-v1.avif', info: DIAGNOSTYKA_INFO, faq: DIAGNOSTYKA_FAQ },
+// Step windows: texts per language (i18n-process.ts), header pictures here.
+const WINDOW_ICON: Record<StepKey, string | null> = {
+  '01': '/images/serwis-wysylkowy/modal-zgloszenie-v1.avif',
+  '02': '/images/serwis-wysylkowy/modal-wysylka-v1.avif',
+  '03': '/images/serwis-wysylkowy/modal-diagnostyka-v1.avif',
   // No picture of its own yet: the card's TAK stamp.
-  '04': { title: '4. Akceptacja wyceny', icon: '/images/serwis-wysylkowy/stempel-tak-v2.webp', info: AKCEPTACJA_INFO, faq: AKCEPTACJA_FAQ },
-  '05.1': { title: '5.1. Naprawa i zwrot', icon: '/images/serwis-wysylkowy/modal-naprawa-v2.avif', info: NAPRAWA_INFO, faq: NAPRAWA_FAQ },
-  '05.2': { title: '5.2. Zwrot bez naprawy', icon: '/images/serwis-wysylkowy/modal-zwrot-bez-naprawy-v1.avif', info: ZWROT_INFO, faq: ZWROT_FAQ },
+  '04': null,
+  '05.1': '/images/serwis-wysylkowy/modal-naprawa-v2.avif',
+  '05.2': '/images/serwis-wysylkowy/modal-zwrot-bez-naprawy-v1.avif',
 }
-type WindowStep = keyof typeof STEP_WINDOWS
-const isWindowStep = (n: string): n is WindowStep => n in STEP_WINDOWS
+type WindowStep = StepKey
+const isWindowStep = (n: string): n is WindowStep => n in WINDOW_ICON
 // Main block of the step 1 window: price columns, "Zobacz cennik" and the table are left out.
 const ZGLOSZENIE_MAIN = '[&_.diagnoza-open-header-row>div:nth-child(2)]:!hidden [&_.accordion-scroll]:!max-h-none [&_.accordion-scroll]:!overflow-y-visible [&_.accordion-scroll]:!border-0 [&_.accordion-scroll]:!pb-0 [&_.accordion-scroll>.rounded-lg]:!border-0 [&_.accordion-scroll>.rounded-lg]:!outline-0 [&_.accordion-scroll>.rounded-lg>:not([data-zgloszenie-info])]:!hidden'
 // Same highlight as an open FAQ question (globals.css, [data-faq-item] trigger ::before).
@@ -352,7 +198,7 @@ export function Services({
   t,
   bare = false,
   locale = 'pl',
-  categories = SERVICE_CATEGORIES,
+  categories = SERVICE_CATEGORIES.slice(0, 3),
   showHeading = true,
   sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
   centerLastRow = false,
@@ -379,7 +225,15 @@ export function Services({
   // Which step's window is open (null = none).
   const [windowStep, setWindowStep] = useState<WindowStep | null>(null)
   const isDiagnosisModalOpen = windowStep !== null
-  const stepWindow = STEP_WINDOWS[windowStep ?? '01']
+  const pt = PROCESS_TEXT[locale]
+  const stamps = STAMPS[locale]
+  const stepKey = windowStep ?? '01'
+  const stepWindow = {
+    title: pt.windows[stepKey].title,
+    icon: WINDOW_ICON[stepKey] ?? stamps.tak,
+    info: pt.windows[stepKey].info,
+    faq: pt.windows[stepKey].faq.map(([title, answer], i) => ({ id: 'step-' + stepKey + '-faq-' + (i + 1), title, items: [] as never[], answer })),
+  }
   // Number for the header circle: steps 1–4 only (5.1/5.2 have no circle).
   const windowBadge = (windowStep ?? '01').startsWith('05') ? null : (windowStep ?? '01').replace(/^0/, '')
   const setDiagnosisModalOpen = (open: false) => setWindowStep(open || null)
@@ -545,7 +399,7 @@ export function Services({
     const plate = icon?.closest<HTMLElement>('[data-slot="accordion-trigger"]')?.parentElement?.parentElement
     if (!icon || !plate || windowStep !== '04') return
     const nie = document.createElement('img')
-    nie.src = '/images/serwis-wysylkowy/stempel-nie.webp'
+    nie.src = stamps.nie
     nie.alt = ''
     nie.setAttribute('aria-hidden', 'true')
     nie.className = 'pointer-events-none absolute z-[3] object-contain opacity-90 max-md:hidden'
@@ -561,7 +415,7 @@ export function Services({
       window.removeEventListener('resize', place)
       nie.remove()
     }
-  }, [isDiagnosisModalOpen, stepWindow, windowStep])
+  }, [isDiagnosisModalOpen, stepWindow, windowStep, stamps])
 
   // Desktop: the visible parchment top sits on the vertical middle of the site
   // menu, and the close button 22px right of the parchment's right edge.
@@ -703,13 +557,13 @@ export function Services({
           so other languages only swap the stamp pictures. */}
       {step.number === '04' && (
         <>
-          <Image src="/images/serwis-wysylkowy/stempel-nie.webp" alt="" width={407} height={224} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute right-[4.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:right-[3%] max-md:w-[17%] md:right-[14px] md:w-[140px]" />
-          <Image src="/images/serwis-wysylkowy/stempel-tak-v2.webp" alt="" width={406} height={226} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute left-[3.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:left-[36px] max-md:w-[13%] md:left-[14px] md:w-[140px]" />
+          <Image src={stamps.nie} alt="" width={407} height={224} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute right-[4.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:right-[3%] max-md:w-[17%] md:right-[14px] md:w-[140px]" />
+          <Image src={stamps.tak} alt="" width={406} height={226} sizes="(min-width: 768px) 160px, 17vw" className="pointer-events-none absolute left-[3.5%] top-1/2 z-[3] w-[22%] -translate-y-1/2 max-md:left-[36px] max-md:w-[13%] md:left-[14px] md:w-[140px]" />
         </>
       )}
       {/* Step 05.2: the shipping card with a language stamp on the box. */}
       {step.number === '05.2' && (
-        <Image src="/images/serwis-wysylkowy/stempel-zwrot-v4.avif" alt="" width={510} height={207} sizes="(min-width: 1024px) 170px, 42vw" className="pointer-events-none absolute right-[5%] top-[55%] z-[3] w-[40%] -translate-y-1/2 -rotate-6" />
+        <Image src={stamps.zwrot} alt="" width={510} height={207} sizes="(min-width: 1024px) 170px, 42vw" className="pointer-events-none absolute right-[5%] top-[55%] z-[3] w-[40%] -translate-y-1/2 -rotate-6" />
       )}
       {!step.number.startsWith('05') && (
         <span aria-hidden="true" data-lit={flow.lift.includes(step.number) ? '' : undefined} className={`${STEP_BADGE} ${step.number === '04' ? 'left-[10px] top-[25px] md:left-[162px] md:top-[8px]' : 'left-[18px] top-[10px] md:left-[14px] md:top-[8px]'}`}>
@@ -725,22 +579,22 @@ export function Services({
           {!step.number.startsWith('05') && <span className="sr-only">{step.number.replace(/^0/, '')}. </span>}
           {'titleBreak' in step ? (
             <>
-              {step.title.split(' ').slice(0, step.titleBreak).join(' ')}
+              {pt.steps[step.number].title.split(' ').slice(0, step.titleBreak).join(' ')}
               <br />
-              {step.title.split(' ').slice(step.titleBreak).join(' ')}
+              {pt.steps[step.number].title.split(' ').slice(step.titleBreak).join(' ')}
             </>
-          ) : step.title}
+          ) : pt.steps[step.number].title}
         </h3>
         {/* Only step 04 keeps a line under the title; phones let it wrap. */}
         {'description' in step && (
           <p className="mt-1 font-cormorant text-xs font-semibold leading-[1.2] text-[#352414] md:whitespace-nowrap md:text-[16px] md:leading-[1.4]">
-            {step.description}
+            {pt.steps[step.number].description}
           </p>
         )}
         {/* Same "Zobacz więcej →" as the service cards on the home page:
             right under the title, 12px. */}
         <span className={`flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] transition-transform group-hover:translate-x-1 ${'description' in step ? 'mt-1 max-md:hidden' : ''}`}>
-          <span>{d.moreLabel ?? 'Zobacz więcej'}</span>
+          <span>{pt.more}</span>
           <ArrowRight className="h-3 w-3" />
         </span>
       </div>
@@ -781,7 +635,7 @@ export function Services({
           </h3>
           {/* Same as the closed-section "Zobacz cennik" link on the service pages. */}
           <span className="flex items-center gap-2 text-xs font-cormorant font-normal leading-[1.2] text-[#3A2817] group-hover:translate-x-1 transition-transform">
-            <span>{d.moreLabel ?? 'Zobacz więcej'}</span>
+            <span>{pt.more}</span>
             <ArrowRight className="w-3 h-3" />
           </span>
         </div>
@@ -836,10 +690,10 @@ export function Services({
             className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-none mx-auto mb-0 max-w-full whitespace-normal break-words text-[calc(1.09*clamp(33px,9.9vw,54px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
-            {d.subheading}
+            {pt.heading}
           </h2>
           <p className="mt-px text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">
-            Wyślij do nas laptop, drukarkę lub inne urządzenie. My zajmiemy się resztą.
+            {pt.lead}
           </p>
         </div>
         )}
@@ -852,7 +706,7 @@ export function Services({
         {/* Category buttons are intentionally hidden for this prototype; service cards remain below. */}
         {false && <div
           role="tablist"
-          aria-label={d.subheading}
+          aria-label={pt.heading}
           className={`max-md:contents md:mb-6 md:grid md:grid-cols-2 md:gap-[6px] ${categories.length === 3 ? 'lg:grid-cols-[repeat(3,auto)]' : 'lg:grid-cols-[repeat(4,auto)]'}`}
         >
           {categories.map((category, i) => {
@@ -938,7 +792,7 @@ export function Services({
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[4])}</div>
             {/* Lights up (bright gold of the menu hover) while 5.1 and 5.2 are raised. */}
             <span className={`whitespace-nowrap text-center font-cormorant text-[22px] font-semibold transition-[color,text-shadow] duration-300 max-lg:hidden lg:w-[104px] lg:flex-none ${flow.lift.includes('05.1') ? 'text-[#f3df9a] [text-shadow:0_0_12px_rgba(191,167,106,0.65)]' : 'text-[#bfa76a]'}`}>
-              — lub —
+              {pt.or}
             </span>
             <div className="lg:w-[calc((100%-2rem)/3)] lg:flex-none">{renderProcessCard(PROCESS_STEPS[5])}</div>
           </div>
@@ -964,7 +818,7 @@ export function Services({
             >
               <button
                 type="button"
-                aria-label="Zamknij"
+                aria-label={pt.close}
                 onClick={() => setDiagnosisModalOpen(false)}
                 style={diagnosisLayout ? { left: diagnosisLayout.crossX, top: diagnosisLayout.crossY } : undefined}
                 className="z-[110] flex h-10 w-10 flex-none items-center justify-center self-end text-3xl leading-none text-white md:absolute"
@@ -1000,9 +854,9 @@ export function Services({
                         <ServiceAccordion
                           service={diagnosisOnly}
                           hideDiagnozaBanner
-                          locale="pl"
+                          locale={locale}
                           // Steps 1–5.2 have no prices: the caption reads "Zobacz więcej", like the card.
-                          t={{ ...serviceAccordionI18n.pl, viewPriceList: 'Zobacz więcej' }}
+                          t={{ ...serviceAccordionI18n[locale], viewPriceList: pt.more }}
                           pricing={windowServices!.diagnosisPricing}
                           titlePrefix={windowBadge && (
                             <span aria-hidden="true" data-lit="" className={STEP_BADGE_HEADER}>
@@ -1012,7 +866,7 @@ export function Services({
                         />
                         {/* The button sits in the parchment's torn bottom margin, so it barely adds height to the window. */}
                         <div className="step-window-cta pointer-events-none absolute inset-x-0 bottom-[18px] md:bottom-[22px] z-20 flex justify-center leading-normal">
-                          <Link href="/kontakt" className={`${PARCHMENT_CTA} ${GOLD_CTA_SIZE} pointer-events-auto`}>
+                          <Link href={pt.contactHref} className={`${PARCHMENT_CTA} ${GOLD_CTA_SIZE} pointer-events-auto`}>
                             <span className="gold-text-sweep">{stepWindow.info.button}</span>
                             <ChevronRight className="h-4 w-4" />
                           </Link>
@@ -1051,8 +905,8 @@ export function Services({
                       {faqOnly && (
                         <ServiceAccordion
                           service={faqOnly}
-                          locale="pl"
-                          t={serviceAccordionI18n.pl}
+                          locale={locale}
+                          t={serviceAccordionI18n[locale]}
                           pricing={windowServices!.faqPricing ?? { price: {}, duration: {} }}
                         />
                       )}

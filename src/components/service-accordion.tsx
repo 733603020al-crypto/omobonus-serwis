@@ -1018,8 +1018,8 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
   const viewDetails = t.viewDetails
   const detailsInPreparation = t.detailsInPreparation
   const [openSection, setOpenSection] = useState<string | null>(defaultOpenSection ?? null)
-  // A section open from the start must not scroll the page to itself on load.
-  const skipFirstSectionScrollRef = useRef(Boolean(defaultOpenSection))
+  // A section open from the start must not scroll the page to itself on load (also on the StrictMode effect re-run).
+  const lastScrolledSectionRef = useRef<string | null>(defaultOpenSection ?? null)
   const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
   const [openFaq, setOpenFaq] = useState<string | null>(null)
   const [isCategoryTooltipOpen, setCategoryTooltipOpen] = useState(false)
@@ -1886,11 +1886,12 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
   }
 
   useEffect(() => {
-    if (!openSection) return
-    if (skipFirstSectionScrollRef.current) {
-      skipFirstSectionScrollRef.current = false
+    if (!openSection) {
+      lastScrolledSectionRef.current = null
       return
     }
+    if (lastScrolledSectionRef.current === openSection) return
+    lastScrolledSectionRef.current = openSection
     scrollIntoViewIfNeeded(sectionRefs.current[openSection], SECTION_SCROLL_OFFSET)
   }, [openSection])
 

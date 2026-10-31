@@ -23,11 +23,11 @@
 
 - Цены: netto (решение 2026-10-03); единый источник цифр для pl/ru/uk — `services-pricing-data.ts`, проверка `npm run check:i18n-sync` (`docs/languages/languages-standard.md`).
 - EN-версия (этап 182/188): /en/..., те же slug, 25 страниц через общие шаблоны, ветка `pages/en-version`; юр. страницы EN — только после обновления PL, с пометкой «The Polish version is legally binding…»; Title/Description EN — только после утверждения в SEO-панели.
-- Диагностика — `docs/diagnoza-i-platnosci-standard.md` (2026-10-28), везде: прайсы, окна, FAQ, формы, шаблоны ответов, regulamin, все языки.
+- Диагностика — `docs/standards/diagnoza-i-platnosci-standard.md` (2026-10-28), везде: прайсы, окна, FAQ, формы, шаблоны ответов, regulamin, все языки.
 - Золотые CTA `GOLD_CTA` → `.gold-shiny` (этап 193, 2026-10-27); пробовали на зелёной кнопке — откатано.
 - Прайс: `.claude/rules/price-card-standard.md`; эталон /uslugi/serwis-laptopow на 1440 и 390; ПК ≥ 768 px; линия таблиц 1px rgba(114,80,43,.8); приписка к цене Inter 13/15.6 · 400; Inter на телефоне — системная замена (ради скорости).
 - FAQ (этап 197): `.claude/rules/faq-answer-standard.md`, `docs/standards/faq-cards.md`; 107 ответов размечены, 7 пропущенных исправлены в этапе 198.
-- Окно «Kategorie urządzeń» — `docs/kategorie-urzadzen-standard.md` (единый компонент `PriceTooltipContent`).
+- Окно «Kategorie urządzeń» — `docs/standards/kategorie-urzadzen-standard.md` (единый компонент `PriceTooltipContent`).
 - Заголовки (этапы 126, 157): аккордеон — разделы `<h2>`, подразделы и FAQ `<h3>`, H4 = 0; главная — чистый H1, 19×H3, один H2 в CTA; SEO-тексты утверждает пользователь в панели.
 - Шапка на узких телефонах (этап 169): адаптация под 375 px и меньше, «serwis» не упирается во флаг PL.
 - Меню «Usługi» (этап 134): 4 колонки на ≥1280 px; ссылки на 17 услуг всегда в HTML (этап 139).

@@ -433,11 +433,11 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                 {serviceGroups.map((col, i) => (
                   <div key={i} className={MEGA_GROUP_CLASS[i]}>
                     {col.href ? (
-                      <Link href={col.href} className="mb-1.5 block px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                      <Link href={col.href} className="mb-1.5 block px-2 font-cormorant text-[17px] font-semibold text-[#e6cd8a]">
                         {col.title}
                       </Link>
                     ) : (
-                      <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                      <p className="mb-1.5 px-2 font-cormorant text-[17px] font-semibold text-[#e6cd8a]">
                         {col.title}
                       </p>
                     )}
@@ -456,7 +456,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                     </div>
                     {col.subgroup && (
                       <>
-                        <p className="mb-1.5 mt-3 px-2 font-cormorant text-[17px] font-semibold text-[#bfa76a]">
+                        <p className="mb-1.5 mt-3 px-2 font-cormorant text-[17px] font-semibold text-[#e6cd8a]">
                           {col.subgroup.title}
                         </p>
                         <div className="flex flex-col divide-y divide-[#bfa76a]/25 border border-[#bfa76a]/25">
