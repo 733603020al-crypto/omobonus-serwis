@@ -842,6 +842,34 @@
    "note": "EN: утверждено пользователем 24.10 в чате",
    "length": 157,
    "exception": "Не ремонт: подменный принтер"
+  },
+  "/serwis-wysylkowy": {
+   "lang": "pl",
+   "description": "✔ Serwis wysyłkowy sprzętu biurowego we Wrocławiu ✔ Odbiór kurierem lub z paczkomatu, diagnoza i wycena ✔ Pełny cennik bez ukrytych kosztów ☎ 793 759 262",
+   "date": "2026-10-31",
+   "note": "Новая страница, утверждено пользователем 31.10 (решения из панели)",
+   "length": 153
+  },
+  "/uk/serwis-wysylkowy": {
+   "lang": "uk",
+   "description": "✔ Сервіс з відправкою офісної техніки у Вроцлаві ✔ Забір кур'єром або з поштомату, діагностика й оцінка ✔ Повний прайс без прихованих витрат ☎ 793 759 262",
+   "date": "2026-10-31",
+   "note": "Новая страница, утверждено пользователем 31.10 (решения из панели)",
+   "length": 154
+  },
+  "/ru/serwis-wysylkowy": {
+   "lang": "ru",
+   "description": "✔ Сервис с отправкой офисной техники во Вроцлаве ✔ Забор курьером или из постамата, диагностика и оценка ✔ Полный прайс без скрытых платежей ☎ 793 759 262",
+   "date": "2026-10-31",
+   "note": "Новая страница, утверждено пользователем 31.10 (решения из панели)",
+   "length": 154
+  },
+  "/en/serwis-wysylkowy": {
+   "lang": "en",
+   "description": "✔ Mail-in office equipment service in Wrocław ✔ Courier or parcel locker pickup, diagnosis and quote ✔ Full price list, no hidden costs ☎ 793 759 262",
+   "date": "2026-10-31",
+   "note": "Новая страница, утверждено пользователем 31.10 (решения из панели)",
+   "length": 149
   }
  },
  "rejected": {

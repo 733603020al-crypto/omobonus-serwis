@@ -1438,6 +1438,62 @@
      "note": "EN: утверждено пользователем 24.10 в чате (после правок UPS и IT outsourcing)"
     }
    ]
+  },
+  "/serwis-wysylkowy": {
+   "lang": "pl",
+   "slug": "serwis-wysylkowy",
+   "title": "Serwis wysyłkowy sprzętu biurowego | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-31",
+   "exception": "Новая страница: не по шаблону «Серви i naprawa [устройства]», утверждено пользователем",
+   "history": [
+    {
+     "title": "Serwis wysyłkowy sprzętu biurowego | Omobonus Wrocław",
+     "note": "новая страница, утверждено без изменений"
+    }
+   ]
+  },
+  "/uk/serwis-wysylkowy": {
+   "lang": "uk",
+   "slug": "serwis-wysylkowy",
+   "title": "Сервіс з відправкою офісної техніки | Omobonus Вроцлав",
+   "stage": 1,
+   "date": "2026-10-31",
+   "exception": "Новая страница: не по шаблону «Серви i naprawa [устройства]», утверждено пользователем",
+   "history": [
+    {
+     "title": "Сервіс з відправкою офісної техніки | Omobonus Вроцлав",
+     "note": "новая страница, утверждено без изменений"
+    }
+   ]
+  },
+  "/ru/serwis-wysylkowy": {
+   "lang": "ru",
+   "slug": "serwis-wysylkowy",
+   "title": "Сервис с отправкой офисной техники | Omobonus Вроцлав",
+   "stage": 1,
+   "date": "2026-10-31",
+   "exception": "Новая страница: не по шаблону «Серви i naprawa [устройства]», утверждено пользователем",
+   "history": [
+    {
+     "title": "Сервис с отправкой офисной техники | Omobonus Вроцлав",
+     "note": "новая страница, утверждено без изменений"
+    }
+   ]
+  },
+  "/en/serwis-wysylkowy": {
+   "lang": "en",
+   "slug": "serwis-wysylkowy",
+   "title": "Mail-in office equipment service | Omobonus Wrocław",
+   "stage": 1,
+   "date": "2026-10-31",
+   "exception": "Новая страница: не по шаблону «Серви i naprawa [устройства]», утверждено пользователем",
+   "history": [
+    {
+     "title": "Mail-in office equipment service | Omobonus Wrocław",
+     "note": "новая страница, утверждено без изменений"
+    }
+   ]
   }
  },
  "rejected": {
