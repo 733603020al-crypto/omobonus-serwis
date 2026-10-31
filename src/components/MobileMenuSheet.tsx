@@ -12,7 +12,7 @@ interface MobileMenuSheetProps {
     isOpen: boolean
     setIsOpen: (open: boolean) => void
     mobileMenuRef: RefObject<HTMLDivElement | null>
-    brandWordmark: React.ReactNode
+    navHome: string
     homeHref: string
     onHomeLinkClick: (e: React.MouseEvent) => void
     navServices: string
@@ -29,7 +29,7 @@ export function MobileMenuSheet({
     isOpen,
     setIsOpen,
     mobileMenuRef,
-    brandWordmark,
+    navHome,
     homeHref,
     onHomeLinkClick,
     navServices,
@@ -68,6 +68,11 @@ export function MobileMenuSheet({
             <SheetContent
                 side="right"
                 className="w-[78vw] max-w-[360px] border-l-0 bg-transparent p-0 sm:max-w-[420px]"
+                // The panel is full height but the parchment card only as tall as its
+                // content: a tap on the transparent part below the card closes the menu.
+                onClick={(e) => {
+                    if (e.target === e.currentTarget) setIsOpen(false)
+                }}
                 // Always hand focus back to the hamburger, also when the menu was
                 // closed by a link (Radix alone sometimes left it on <body>).
                 onCloseAutoFocus={(e) => {
@@ -90,7 +95,7 @@ export function MobileMenuSheet({
                     {/* Scrolls inside itself when the services list makes it taller than the screen. */}
                     <div className="relative z-10 flex min-h-0 flex-col gap-6 overflow-y-auto overscroll-contain px-6 py-8 font-cormorant text-[20px] text-white">
                         <Link href={homeHref} onClick={onHomeLinkClick}>
-                            {brandWordmark}
+                            {navHome}
                         </Link>
 
                         <nav className="flex flex-col gap-4">

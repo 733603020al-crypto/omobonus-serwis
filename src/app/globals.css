@@ -59,6 +59,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
     overflow-x: clip;
+    color-scheme: dark;
   }
 
   body {

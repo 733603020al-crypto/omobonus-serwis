@@ -80,6 +80,7 @@ const LOCALE_NAV: Record<Locale, {
   logoAlt?: string
   labels: {
     services: string
+    home: string
     about: string
     contact: string
     shop: string
@@ -94,6 +95,7 @@ const LOCALE_NAV: Record<Locale, {
     homeSectionHref: (id) => `/#${id}`,
     labels: {
       services: 'Usługi',
+      home: 'Strona główna',
       about: 'O nas',
       contact: 'Kontakt',
       shop: 'Sklep',
@@ -108,6 +110,7 @@ const LOCALE_NAV: Record<Locale, {
     homeSectionHref: (id) => `/uk#${id}`,
     labels: {
       services: 'Послуги',
+      home: 'Головна',
       about: 'Про нас',
       contact: 'Контакт',
       shop: 'Магазин',
@@ -122,6 +125,7 @@ const LOCALE_NAV: Record<Locale, {
     homeSectionHref: (id) => `/ru#${id}`,
     labels: {
       services: 'Услуги',
+      home: 'Главная',
       about: 'О нас',
       contact: 'Контакт',
       shop: 'Магазин',
@@ -137,6 +141,7 @@ const LOCALE_NAV: Record<Locale, {
     logoAlt: 'Omobonus Serwis – computer, laptop and printer repair Wrocław',
     labels: {
       services: 'Services',
+      home: 'Home',
       about: 'About us',
       contact: 'Contact',
       shop: 'Shop',
@@ -223,6 +228,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const isContactActive = pathname === contactHref
 
   const navServices = nav.labels.services
+  const navHome = nav.labels.home
   const navAbout = nav.labels.about
   const navContact = nav.labels.contact
   const navCall = nav.labels.call
@@ -527,7 +533,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             mobileMenuRef={mobileMenuRef}
-            brandWordmark={<BrandWordmark />}
+            navHome={navHome}
             homeHref={homeHref}
             onHomeLinkClick={(e) => {
               if (pathname === homeHref) {
