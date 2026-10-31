@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google'
 import '../globals.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
+import { DeferredCookieYes } from '@/components/DeferredCookieYes'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
@@ -181,12 +182,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           `}
         </Script>
 
-        <Script
-          id="cookieyes"
-          src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js"
-          strategy="lazyOnload"
-        />
-
         <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
@@ -196,6 +191,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ScrollToTop />
         <GoldAnimationPause />
         <ConsentManager />
+        <DeferredCookieYes src="https://cdn-cookieyes.com/client_data/45d9e4594525ca10005b171a79e9b287/script.js" />
         <DeferredGtm gtmId="GTM-5XQXX5KL" />
 
         {children}

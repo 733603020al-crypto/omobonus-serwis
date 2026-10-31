@@ -8,7 +8,7 @@
 
 | Задача | Период | Последний раз | Правила |
 |---|---|---|---|
-| Чистка старых Preview в Vercel | 14 дней | 2026-10-30 | `docs/raspisanie-rabot/vercel-14-dney.md` |
+| Чистка старых Preview в Vercel | 14 дней | 2026-10-31 | `docs/raspisanie-rabot/vercel-14-dney.md` |
 | Проверка оптимизации сайта | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/rules/optimization-check.md` |
 | Проверка прайса страниц услуг | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/rules/price-card-standard.md` |
 | Карточка Google: новые отзывы | раз в день | см. `docs/karta-google/` | `docs/karta-google/` |
