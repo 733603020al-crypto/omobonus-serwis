@@ -9,7 +9,7 @@ import manifest from '@/config/manifest'
 interface CustomPhoneInputProps {
   value: string
   onChange: (value: string) => void
-  onCountryChange?: (data: { name: string; dialCode: string; phoneLength?: number }) => void
+  onCountryChange?: (data: { name: string; dialCode: string; phoneLength?: number; lang: Country['lang'] }) => void
   className?: string
   variant?: 'light' | 'dark'
   locale?: 'pl' | 'uk' | 'ru' | 'en'
@@ -112,7 +112,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
     setIsDropdownOpen(false)
     setPhoneNumber('')
     onChange(country.dialCode ? country.dialCode : '')
-    onCountryChange?.({ name: country.name, dialCode: country.dialCode, phoneLength: country.phoneLength })
+    onCountryChange?.({ name: country.name, dialCode: country.dialCode, phoneLength: country.phoneLength, lang: country.lang })
   }
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -174,10 +174,11 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
       type="button"
       onClick={() => handleCountrySelect(country)}
       aria-label={`Wybierz ${getCountryLabel(country)}`}
+      data-selected={country.code === selectedCountry.code ? 'true' : undefined}
       className={
         dark
           ? 'group flex items-center gap-3 px-3 py-2 transition-all duration-300 ease-out text-left whitespace-nowrap w-full border border-transparent hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)]'
-          : 'flex items-center gap-3 px-4 py-3 hover:bg-black/5 transition-colors text-left whitespace-nowrap w-full'
+          : 'country-row text-left w-full'
       }
     >
       <Image
@@ -187,11 +188,11 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
         height={18}
         className="object-contain flex-shrink-0"
       />
-      <span className={`flex-1 font-sans font-light text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'text-black text-base'}`}>
+      <span className={`flex-1 font-sans font-light text-sm ${dark ? 'text-[#f3df9a] group-hover:text-white transition-colors duration-200' : 'country-row-name'}`}>
         {getCountryLabel(country)}
       </span>
       {country.dialCode && (
-        <span className={`font-sans text-sm whitespace-nowrap ${dark ? 'text-[#bfa76a] group-hover:text-white transition-colors duration-200' : 'text-black opacity-70'}`}>
+        <span className={`font-sans text-sm whitespace-nowrap ${dark ? 'text-[#bfa76a] group-hover:text-white transition-colors duration-200' : 'country-row-code'}`}>
           {country.dialCode}
         </span>
       )}
@@ -216,7 +217,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
               if (selectorRowRef.current) {
                 const rect = selectorRowRef.current.getBoundingClientRect()
                 setDropdownPos({
-                  top: rect.bottom + 2,
+                  top: rect.bottom + 4,
                   left: rect.left,
                   width: rect.width,
                 })
@@ -302,12 +303,12 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
       {!dark && isDropdownOpen && mounted && createPortal(
         <div
           ref={dropdownRef}
-          className="rounded-lg border border-black/20 shadow-lg country-list"
+          className="country-list"
           style={{
             position: 'fixed',
             top: dropdownPos.top,
             left: dropdownPos.left,
-            width: Math.max(dropdownPos.width || 0, fixedDropdownWidth),
+            width: dropdownPos.width,
             zIndex: 99999,
           }}
         >

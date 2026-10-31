@@ -9,17 +9,18 @@ export interface Country {
   flagImage: string // путь к изображению из /images/
   phoneFormat?: string // формат для форматирования (например, "xxx xxx xxx" для Польши)
   phoneLength?: number // длина номера для валидации
+  lang: 'pl' | 'uk' | 'en' // язык сайта, на который переключается выбор этой страны (новый язык, например de, — менять только это поле)
 }
 
 export const countries: Country[] = [
-  { code: 'ua', name: 'Ukraina', nameEn: 'Ukraine', nameUk: 'Україна', shortName: 'Ukraina', dialCode: '+380', flagImage: '/images/ua.webp', phoneFormat: 'xxx xxx xxxx', phoneLength: 9 },
-  { code: 'pl', name: 'Polska', nameEn: 'Poland', nameUk: 'Польща', shortName: 'Polska', dialCode: '+48', flagImage: '/images/pl.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9 },
-  { code: 'de', name: 'Niemcy', nameEn: 'Germany', nameUk: 'Німеччина', shortName: 'Niemcy', dialCode: '+49', flagImage: '/images/de.webp', phoneFormat: 'xxx xxxxxxx', phoneLength: 11 },
-  { code: 'cz', name: 'Czechy', nameEn: 'Czechia', nameUk: 'Чехія', shortName: 'Czechia', dialCode: '+420', flagImage: '/images/cz.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9 },
-  { code: 'sk', name: 'Słowacja', nameEn: 'Slovakia', nameUk: 'Словаччина', shortName: 'Słowacja', dialCode: '+421', flagImage: '/images/sk.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9 },
-  { code: 'lt', name: 'Litwa', nameEn: 'Lithuania', nameUk: 'Литва', shortName: 'Litwa', dialCode: '+370', flagImage: '/images/lt.webp', phoneFormat: 'xxx xxxxx', phoneLength: 8 },
-  { code: 'gb', name: 'Wielka Brytania', nameEn: 'United Kingdom', nameUk: 'Велика Британія', shortName: 'Wielka Brytania', dialCode: '+44', flagImage: '/images/gb.webp', phoneFormat: 'xxxx xxxxxx', phoneLength: 10 },
-  { code: 'other', name: 'Inny kraj', nameEn: 'Other country', nameUk: 'Інша країна', nameRu: 'Другая страна', shortName: 'Inny kraj', dialCode: '', flagImage: '/images/other.webp' },
+  { code: 'ua', name: 'Ukraina', nameEn: 'Ukraine', nameUk: 'Україна', shortName: 'Ukraina', dialCode: '+380', flagImage: '/images/ua.webp', phoneFormat: 'xxx xxx xxxx', phoneLength: 9, lang: 'uk' },
+  { code: 'pl', name: 'Polska', nameEn: 'Poland', nameUk: 'Польща', shortName: 'Polska', dialCode: '+48', flagImage: '/images/pl.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9, lang: 'pl' },
+  { code: 'de', name: 'Niemcy', nameEn: 'Germany', nameUk: 'Німеччина', shortName: 'Niemcy', dialCode: '+49', flagImage: '/images/de.webp', phoneFormat: 'xxx xxxxxxx', phoneLength: 11, lang: 'pl' },
+  { code: 'cz', name: 'Czechy', nameEn: 'Czechia', nameUk: 'Чехія', shortName: 'Czechia', dialCode: '+420', flagImage: '/images/cz.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9, lang: 'pl' },
+  { code: 'sk', name: 'Słowacja', nameEn: 'Slovakia', nameUk: 'Словаччина', shortName: 'Słowacja', dialCode: '+421', flagImage: '/images/sk.webp', phoneFormat: 'xxx xxx xxx', phoneLength: 9, lang: 'pl' },
+  { code: 'lt', name: 'Litwa', nameEn: 'Lithuania', nameUk: 'Литва', shortName: 'Litwa', dialCode: '+370', flagImage: '/images/lt.webp', phoneFormat: 'xxx xxxxx', phoneLength: 8, lang: 'pl' },
+  { code: 'gb', name: 'Wielka Brytania', nameEn: 'United Kingdom', nameUk: 'Велика Британія', shortName: 'Wielka Brytania', dialCode: '+44', flagImage: '/images/gb.webp', phoneFormat: 'xxxx xxxxxx', phoneLength: 10, lang: 'en' },
+  { code: 'other', name: 'Inny kraj', nameEn: 'Other country', nameUk: 'Інша країна', nameRu: 'Другая страна', shortName: 'Inny kraj', dialCode: '', flagImage: '/images/other.webp', lang: 'pl' },
 ]
 
 export function formatPhoneNumber(phone: string, format?: string): string {

@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
+import { registerDraftSource, readLangSwitchDraft, switchLocaleForCountry } from '@/lib/country-locale'
 import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 import { CallButton } from '@/components/ui/CallButton'
@@ -116,6 +116,18 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [countryName, setCountryName] = useState('Polska')
   const [countryDialCode, setCountryDialCode] = useState('+48')
   const [countryPhoneLength, setCountryPhoneLength] = useState<number | undefined>(9)
+  // Введённое сохраняется при смене языка из-за выбора страны (см. country-locale.ts)
+  const draftRef = useRef({ phone: '', countryName: 'Polska', countryDialCode: '+48', countryPhoneLength: 9 as number | undefined })
+  draftRef.current = { phone, countryName, countryDialCode, countryPhoneLength }
+  useEffect(() => registerDraftSource('callback', () => draftRef.current), [])
+  useEffect(() => {
+    const saved = readLangSwitchDraft<typeof draftRef.current>('callback')
+    if (!saved) return
+    setPhone(saved.phone || '')
+    setCountryName(saved.countryName)
+    setCountryDialCode(saved.countryDialCode)
+    setCountryPhoneLength(saved.countryPhoneLength)
+  }, [])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [showKoszt, setShowKoszt] = useState(false)
@@ -277,10 +289,12 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
                 aria-describedby={phoneError ? 'callback-phone-error-mobile callback-phone-error-desktop' : undefined}
                 value={phone}
                 onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
-                onCountryChange={({ name, dialCode, phoneLength }) => {
+                onCountryChange={({ name, dialCode, phoneLength, lang }) => {
                   setCountryName(name)
                   setCountryDialCode(dialCode)
                   setCountryPhoneLength(phoneLength)
+                  draftRef.current = { phone: dialCode, countryName: name, countryDialCode: dialCode, countryPhoneLength: phoneLength }
+                  switchLocaleForCountry(lang, locale)
                 }}
                 variant="dark"
                 locale={locale}
@@ -311,12 +325,6 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
           <p className="mt-2 text-center font-inter text-[12px] text-white/45">
             {d.callbackHint}
           </p>
-          {d.privacyNotice && d.privacyLink && d.privacyHref && (
-            <p className="mt-1 text-center font-inter text-[12px] text-white/45">
-              {d.privacyNotice}{' '}
-              <Link href={d.privacyHref} className="underline underline-offset-2 hover:text-white/70">{d.privacyLink}</Link>.
-            </p>
-          )}
         </form>
 
         {/* Divider 2 */}

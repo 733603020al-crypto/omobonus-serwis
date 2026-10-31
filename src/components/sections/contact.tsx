@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Loader2, X } from 'lucide-react'
 import Link from 'next/link'
+import { registerDraftSource, registerBeforeLeave, readLangSwitchDraft, langSwitchFilesLost, switchLocaleForCountry, FILES_LOST_TEXT } from '@/lib/country-locale'
+import { saveAttachments, takeAttachments, clearAttachments } from '@/lib/attachment-store'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { hasTrackingConsent } from '@/lib/tracking-consent'
@@ -214,10 +216,40 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
+    setValue,
   } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultFormValues,
   })
+
+  // Введённое сохраняется при смене языка из-за выбора страны (см. country-locale.ts); файлы сохранить нельзя
+  useEffect(() => registerDraftSource('contact', () => getValues()), [getValues])
+  useEffect(() => {
+    const saved = readLangSwitchDraft<Partial<FormValues>>('contact')
+    if (saved) reset({ ...defaultFormValues, ...saved })
+  }, [reset])
+
+  // Файлы переживают смену языка через IndexedDB (см. attachment-store.ts)
+  const attachmentsRef = useRef<AttachmentPreview[]>([])
+  attachmentsRef.current = attachments
+  useEffect(() => registerBeforeLeave('files', () => saveAttachments(attachmentsRef.current.map(a => a.file))), [])
+  useEffect(() => {
+    let cancelled = false
+    const lost = langSwitchFilesLost()
+    takeAttachments().then(files => {
+      if (cancelled) return
+      if (lost) setAttachmentError(FILES_LOST_TEXT[resolvedLocale])
+      if (!files.length) return
+      setAttachments(prev => prev.length ? prev : files.map(file => ({
+        id: `${file.name}-${file.size}-${Date.now()}-${Math.random()}`,
+        file,
+        url: URL.createObjectURL(file),
+        kind: file.type.startsWith('image/') ? 'image' : file.type.startsWith('video/') ? 'video' : 'file',
+      })))
+    })
+    return () => { cancelled = true }
+  }, [resolvedLocale])
 
   // Прокрутка к первому полю с ошибкой
   useEffect(() => {
@@ -345,6 +377,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
       attachments.forEach(preview => URL.revokeObjectURL(preview.url))
       setAttachments([])
       setAttachmentError(null)
+      void clearAttachments()
     } catch (error) {
       console.error('❌ Error submitting form:', error)
 
@@ -472,6 +505,10 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                         id="contact-phone"
                         value={field.value || ''}
                         onChange={field.onChange}
+                        onCountryChange={({ dialCode, lang }) => {
+                          setValue('phone', dialCode)
+                          switchLocaleForCountry(lang, resolvedLocale)
+                        }}
                         locale={resolvedLocale}
                         alwaysRow
                         aria-invalid={!!errors.phone}
