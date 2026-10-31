@@ -3451,7 +3451,7 @@
   .flag-dropdown .country-list,
   .react-tel-input .country-list,
   div.country-list {
-    background: #f1dfb6 url('/images/contact-form-parchment.webp') center / cover no-repeat !important;
+    background: #f1dfb6 url('/images/contact-form-parchment.webp') center / 220% auto no-repeat !important;
     border: 1px solid rgba(70, 45, 25, 0.55) !important;
     border-radius: 4px !important;
     overflow: hidden !important;
