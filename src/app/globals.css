@@ -59,7 +59,6 @@
     scroll-behavior: smooth;
     scroll-padding-top: 65px;
     overflow-x: clip;
-    color-scheme: dark;
   }
 
   body {
@@ -4298,6 +4297,15 @@
 }
 .questions-accordion [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row > [data-parchment-list-header-col1] {
   display: flex;
+}
+/* Phones: with the shared repair-accordion layout the header's first column is display:contents,
+   so the big stamp and the question title must be two grid columns (icon | title), not stacked. */
+@media (max-width: 767px) {
+  .questions-accordion.page-repair-accordion [data-parchment-list-row="true"][data-state="open"] [data-slot="accordion-trigger"] .diagnoza-open-header-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+  }
 }
 /* Najważniejsze pytania: headers are questions — full width, no "Zobacz cennik" link. */
 .questions-accordion [data-parchment-list-row="true"] [data-subcategory-text="true"] {

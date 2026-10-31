@@ -91,5 +91,5 @@ export function BasicQuestions({ locale = 'pl' }: { locale?: Locale } = {}) {
   })
   const service = { ...source, pricingSections: source.pricingSections.filter((s) => s.id === 'naprawy').map((s) => ({ ...s, title: q.faqTitle, icon: '/images/accordion-icon-faq.webp', mobileTitle: undefined, mobileOpenTitle: undefined, subcategories: [priceSub, acceptSub, rejectSub, ...placeholderSubs] })) }
   rows.forEach((r, i) => { pricing.price[`naprawy.${PRICE_SUB_ID}.${i}`] = r.price; pricing.duration[`naprawy.${PRICE_SUB_ID}.${i}`] = r.duration })
-  return (<section className="questions-accordion relative z-10 mx-auto max-w-7xl px-4 md:px-6"><ServiceAccordion service={service} locale={locale} t={{ ...serviceAccordionI18n[locale], viewPriceList: q.viewDetails }} pricing={pricing} defaultOpenSection="naprawy" /></section>)
+  return (<section className="questions-accordion page-repair-accordion relative z-10 mx-auto max-w-7xl px-4 md:px-6"><ServiceAccordion service={service} locale={locale} t={{ ...serviceAccordionI18n[locale], viewPriceList: q.viewDetails }} pricing={pricing} defaultOpenSection="naprawy" /></section>)
 }

@@ -813,6 +813,10 @@ export function Services({
               aria-modal="true"
               aria-label={stepWindow.title}
               tabIndex={-1}
+              // The window box is full height on phones, so a tap on its empty part (below the parchment) also closes it.
+              onMouseDown={(event) => {
+                if (event.target === event.currentTarget) setDiagnosisModalOpen(false)
+              }}
               style={diagnosisLayout ? { marginTop: diagnosisLayout.top - 16, maxHeight: `calc(100dvh - ${diagnosisLayout.top + 16}px)` } : undefined}
               className="relative flex h-full w-full flex-col outline-none md:h-auto md:max-w-[992px]"
             >
@@ -846,6 +850,9 @@ export function Services({
                 return (
                   <div
                     ref={diagnosisScrollRef}
+                    onMouseDown={(event) => {
+                      if (event.target === event.currentTarget) setDiagnosisModalOpen(false)
+                    }}
                     className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-3 pb-4 pt-2 [scrollbar-width:none] md:px-12 [&::-webkit-scrollbar]:hidden"
                   >
                     {/* Small text of the window (card 1 note + FAQ answers): Cormorant reads small, so larger and bolder here only. */}
