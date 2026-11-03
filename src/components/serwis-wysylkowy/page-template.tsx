@@ -18,6 +18,9 @@ const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт
 // Below-fold components: split into separate chunks so the initial JS
 // bundle only contains Header + Hero code, allowing LCP to paint sooner.
 const Services = dynamic(() => import('@/components/serwis-wysylkowy/sections/services').then(m => ({ default: m.Services })))
+// The same category switcher + cards as on the home page (one component, so a new service or a changed
+// category shows up in both places at once).
+const CategoryCatalog = dynamic(() => import('@/components/sections/services').then(m => ({ default: m.Services })))
 const HomeCta = dynamic(() => import('@/components/serwis-wysylkowy/home-cta').then(m => ({ default: m.HomeCta })))
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
@@ -116,6 +119,11 @@ export function HomePageTemplate({
           }}
         />
         <div className="home-below relative z-10">
+          {/* Gap to the heading below cut to a third: 98px → 22px on desktop, 66px → 20px on phones. */}
+          <div className="-mb-[46px] md:-mb-[76px]">
+            <CategoryCatalog servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare goldSwitch sectionId="kategorie" />
+          </div>
+
           <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} windowServices={windowServices} bare />
 
           <div className="-mt-[3px] md:-mt-[18px]">

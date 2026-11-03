@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react'
 import { useNearViewport } from '@/lib/use-near-viewport'
+import '@/app/styles/cat-switch.css'
 import { ORIENT_CLASSES, EDGE_CLASSES, CORNER_CLASSES } from './services-card-classes'
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
@@ -138,6 +139,8 @@ export function Services({
   showHeading = true,
   sectionClassName = 'relative pt-7 pb-7 md:pt-12 md:pb-10 text-center text-white overflow-hidden',
   centerLastRow = false,
+  goldSwitch = false,
+  sectionId = 'uslugi',
 }: {
   servicesData?: ServiceCardData[]
   basePath?: string
@@ -151,6 +154,10 @@ export function Services({
   sectionClassName?: string
   /** Printer page: an incomplete last row of cards is centred (same card width and gaps). */
   centerLastRow?: boolean
+  /** Home: the category tabs are the gold sliding switch of the hero ("we Wrocławiu | cała Polska"). */
+  goldSwitch?: boolean
+  /** Anchor id of the section; a page showing two of them gives the second another id. */
+  sectionId?: string
 } = {}) {
   const services = servicesData ?? []
   const d = t ?? PL
@@ -165,6 +172,34 @@ export function Services({
     return () => mq.removeEventListener('change', onChange)
   }, [])
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
+  // Gold switch: one pill slides to the active category (horizontally on desktop, down the
+  // rows on phones). Its box is measured from the active cell, so every layout works.
+  const cellRefs = useRef<(HTMLElement | null)[]>([])
+  const pillRef = useRef<HTMLSpanElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [pill, setPill] = useState<{ x: number; y: number; w: number; h: number } | null>(null)
+  const [pillMoves, setPillMoves] = useState(false)
+  useEffect(() => {
+    if (!goldSwitch) return
+    const measure = () => {
+      const cell = cellRefs.current[active]
+      const pillEl = pillRef.current
+      const parent = pillEl?.offsetParent as HTMLElement | null
+      const phone = window.matchMedia('(max-width: 767.98px)').matches
+      if (!cell || !parent || (phone && collapsed)) { setPill(null); return }
+      const p = parent.getBoundingClientRect()
+      const c = cell.getBoundingClientRect()
+      const inset = phone ? 4 : 0
+      const next = { x: c.left - p.left - parent.clientLeft + inset, y: c.top - p.top - parent.clientTop + inset, w: c.width - 2 * inset, h: c.height - 2 * inset }
+      setPill((prev) => prev && Math.abs(prev.x - next.x) < 0.5 && Math.abs(prev.y - next.y) < 0.5 && Math.abs(prev.w - next.w) < 0.5 && Math.abs(prev.h - next.h) < 0.5 ? prev : next)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (wrapRef.current) ro.observe(wrapRef.current)
+    cellRefs.current.forEach((el) => el && ro.observe(el))
+    const raf = requestAnimationFrame(() => setPillMoves(true))
+    return () => { ro.disconnect(); cancelAnimationFrame(raf) }
+  }, [goldSwitch, active, collapsed])
   const idBase = useId()
   // Baked card pictures sit below the first screen: fetched only on approach.
   const sectionRef = useRef<HTMLElement>(null)
@@ -278,7 +313,7 @@ export function Services({
   return (
     <section
       ref={sectionRef}
-      id="uslugi"
+      id={sectionId}
       className={sectionClassName}
     >
 
@@ -314,22 +349,48 @@ export function Services({
         {/* Phones: a vertical accordion — the tablist is display:contents, so its cells
             and the one card panel are flex items here, ordered by --m-order: the
             panel sits right below the open category. Tablet/desktop: plain tabs. */}
-        <div className="max-md:flex max-md:flex-col max-md:gap-[6px]">
+        <div ref={wrapRef} className="relative max-md:flex max-md:flex-col max-md:gap-[6px]">
         {/* Category panel (same dark plate + gold hairline as the header menu). */}
         <div
           role="tablist"
           aria-label={d.subheading}
-          className={`max-md:contents md:mb-6 md:grid md:grid-cols-2 md:gap-[6px] ${categories.length === 3 ? 'lg:grid-cols-[repeat(3,auto)]' : 'lg:grid-cols-[repeat(4,auto)]'}`}
+          className={`max-md:contents md:mb-6 md:grid md:grid-cols-2 ${goldSwitch ? 'cat-switch gold-border-flow gold-shiny' : 'md:gap-[6px]'} ${categories.length === 3 ? 'lg:grid-cols-[repeat(3,auto)]' : 'lg:grid-cols-[repeat(4,auto)]'}`}
         >
+          {goldSwitch && (
+            <>
+              <span ref={pillRef} aria-hidden="true" className={`cat-switch-pill gold-border-flow gold-shiny${pillMoves ? ' cat-switch-pill-move' : ''}`} style={pill ? { transform: `translate(${pill.x}px, ${pill.y}px)`, width: pill.w, height: pill.h } : { opacity: 0 }}>
+                <span className="gold-text-sweep" />
+              </span>
+              <span aria-hidden="true" className="cat-switch-base gold-text-sweep" />
+            </>
+          )}
           {categories.map((category, i) => {
             // Folded (phones only): the category looks and reads as closed.
             const selected = i === active && !collapsed
+            const split = splitMobileTitle(category, locale)
+            const label = split ? (
+              // One heading text: the part missing from the phone label is hidden there.
+              <span>
+                {split[0]}
+                <span className="max-md:hidden">{split[1]}</span>
+                {split[2]}
+              </span>
+            ) : category.titleMobile ? (
+              <>
+                <span className="md:hidden">{category.titleMobile[locale]}</span>
+                <span className="max-md:hidden">{(category.homeTitle ?? category.title)[locale]}</span>
+              </>
+            ) : (
+              <span>{(category.homeTitle ?? category.title)[locale]}</span>
+            )
             return (
               // Each category name is the section's H2 for search engines; role=presentation
               // keeps the tab structure intact for screen readers.
-              <h2 key={category.title.pl} role="presentation" className="group relative max-md:[order:var(--m-order)]" style={{ '--m-order': i <= active ? i : i + 1 } as React.CSSProperties}>
+              <h2 key={category.title.pl} ref={(el) => { cellRefs.current[i] = el }} role="presentation" className="group relative max-md:[order:var(--m-order)]" style={{ '--m-order': i <= active ? i : i + 1 } as React.CSSProperties}>
                 {/* Active parchment fills the whole cell (not just the button inside it). */}
-                {selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${PARCHMENT}`} />}
+                {goldSwitch
+                  ? <span aria-hidden="true" className="cat-switch-row md:hidden" />
+                  : selected && <span aria-hidden="true" className={`pointer-events-none absolute inset-0 border border-solid will-change-transform ${CARD_HOVER_MOVE} ${CARD_HOVER_SHADOW} ${PARCHMENT}`} />}
                 <button
                   ref={(el) => { tabRefs.current[i] = el }}
                   type="button"
@@ -340,7 +401,7 @@ export function Services({
                   tabIndex={i === active ? 0 : -1}
                   onClick={() => openTab(i)}
                   onKeyDown={(e) => onTabKeyDown(e, i)}
-                  className={`relative flex h-full min-h-[52px] w-full flex-row items-center justify-start gap-3 rounded-md border px-4 py-2 text-left font-cormorant text-[18px] font-semibold leading-tight hyphens-auto md:min-h-0 md:px-3 md:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px] ${
+                  className={goldSwitch ? `relative z-[2] flex h-full min-h-[52px] w-full flex-row items-center justify-start gap-3 rounded-full px-4 py-2 text-left font-cormorant text-[18px] font-semibold leading-tight hyphens-auto md:min-h-[48px] md:px-3 md:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px]` : `relative flex h-full min-h-[52px] w-full flex-row items-center justify-start gap-3 rounded-md border px-4 py-2 text-left font-cormorant text-[18px] font-semibold leading-tight hyphens-auto md:min-h-0 md:px-3 md:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e6cc82] md:text-[20px] ${
                     selected
                       ? `border-transparent text-[#24160B] ${CARD_HOVER_MOVE}`
                       : // Same hover as the items of the header Usługi menu; thin gold ring of the
@@ -355,7 +416,7 @@ export function Services({
                     aria-hidden="true"
                     className="h-[22px] w-[28px] flex-shrink-0 md:h-[27px] md:w-[34px]"
                     style={{
-                      backgroundColor: selected ? ACTIVE_INK : IDLE_INK,
+                      backgroundColor: goldSwitch ? (selected ? '#fff8eb' : IDLE_INK) : selected ? ACTIVE_INK : IDLE_INK,
                       maskImage: `url(${TAB_ICON_MASK[category.icon] ?? category.icon})`,
                       WebkitMaskImage: `url(${TAB_ICON_MASK[category.icon] ?? category.icon})`,
                       maskSize: 'contain',
@@ -366,21 +427,9 @@ export function Services({
                       WebkitMaskPosition: 'center',
                     }}
                   />
-                  {splitMobileTitle(category, locale) ? (
-                    // One heading text: the part missing from the phone label is hidden there.
-                    <span>
-                      {splitMobileTitle(category, locale)![0]}
-                      <span className="max-md:hidden">{splitMobileTitle(category, locale)![1]}</span>
-                      {splitMobileTitle(category, locale)![2]}
-                    </span>
-                  ) : category.titleMobile ? (
-                    <>
-                      <span className="md:hidden">{category.titleMobile[locale]}</span>
-                      <span className="max-md:hidden">{(category.homeTitle ?? category.title)[locale]}</span>
-                    </>
-                  ) : (
-                    <span>{(category.homeTitle ?? category.title)[locale]}</span>
-                  )}
+                  {goldSwitch ? (
+                    <span className={`cat-switch-label gold-text-sweep${selected ? ' cat-switch-label-active' : ''}`}>{label}</span>
+                  ) : label}
                   {/* Phones: accordion arrow (same chevron as the mobile menu's Usługi). */}
                   <ChevronDown aria-hidden="true" className={`ml-auto h-5 w-5 flex-shrink-0 transition-transform duration-200 md:hidden ${selected ? 'rotate-180' : ''}`} />
                 </button>
@@ -398,7 +447,7 @@ export function Services({
             className={c === active
               ? `${centerLastRow
                   ? 'flex flex-wrap justify-center md:[&>*]:!w-[calc((100%-1rem)/2)] lg:[&>*]:!w-[calc((100%-2rem)/3)]'
-                  : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${collapsed ? 'max-md:hidden' : ''}`
+                  : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-4 items-start max-md:[order:var(--m-order)] max-md:pb-[6px] ${goldSwitch ? 'relative z-[2]' : ''} ${collapsed ? 'max-md:hidden' : ''}`
               : 'hidden'}
             style={c === active ? ({ '--m-order': active + 1 } as React.CSSProperties) : undefined}
           >

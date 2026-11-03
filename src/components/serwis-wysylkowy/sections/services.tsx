@@ -687,14 +687,11 @@ export function Services({
           {/* Same weight/line-height as "Serwis i naprawa" in the home hero H1; desktop 0.93em of its 60px,
               phones ~18% larger than before (was 0.93*clamp(28px,8.4vw,46px)). */}
           <h2
-            className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-none mx-auto mb-0 max-w-full whitespace-normal break-words text-[calc(1.09*clamp(33px,9.9vw,54px))] md:whitespace-nowrap md:max-w-none md:text-[55.8px]"
+            className="font-cormorant font-bold text-[hsl(45_25%_95%)] leading-none mx-auto mb-0 max-w-full whitespace-normal break-words text-[calc(0.9*clamp(33px,9.9vw,54px))] md:whitespace-nowrap md:max-w-none md:text-[46px]"
             style={{ letterSpacing: '0.2px', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}
           >
             {pt.heading}
           </h2>
-          <p className="mt-px text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">
-            {pt.lead}
-          </p>
         </div>
         )}
 

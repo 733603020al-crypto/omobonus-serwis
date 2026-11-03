@@ -21,7 +21,7 @@ export type ProcessText = {
 }
 
 const PL: ProcessText = {
-  heading: 'Serwis i naprawa bez wychodzenia z domu',
+  heading: 'Bez wychodzenia z domu',
   lead: 'Przekaż nam laptop, drukarkę lub inne urządzenie — my zajmiemy się resztą.',
   more: 'Zobacz więcej',
   or: '— lub —',
@@ -185,7 +185,7 @@ const PL: ProcessText = {
 }
 
 const UK: ProcessText = {
-  heading: "Сервіс і ремонт, не виходячи з дому",
+  heading: "Не виходячи з дому",
   lead: "Передайте нам ноутбук, принтер чи інший пристрій — решту ми беремо на себе.",
   more: "Дізнатися більше",
   or: "— або —",
@@ -349,7 +349,7 @@ const UK: ProcessText = {
 }
 
 const RU: ProcessText = {
-  heading: "Сервис и ремонт, не выходя из дома",
+  heading: "Не выходя из дома",
   lead: "Передайте нам ноутбук, принтер или другое устройство — остальное мы берём на себя.",
   more: "Узнать больше",
   or: "— или —",
@@ -513,7 +513,7 @@ const RU: ProcessText = {
 }
 
 const EN: ProcessText = {
-  heading: "Service and repair without leaving home",
+  heading: "Without leaving home",
   lead: "Hand us your laptop, printer or other device — we'll take care of the rest.",
   more: "Learn more",
   or: "— or —",

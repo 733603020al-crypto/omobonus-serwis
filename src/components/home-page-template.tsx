@@ -104,7 +104,7 @@ export function HomePageTemplate({
           }}
         />
         <div className="home-below relative z-10">
-          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare />
+          <Services servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare goldSwitch />
 
           <About t={aboutT} bare showMoreLink plainHeadings reviewsSlot={<GoogleReviews locale={locale} />} />
 

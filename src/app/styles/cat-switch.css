@@ -1,0 +1,71 @@
+/* Home category tabs as the hero's gold switch (see .scope-switch above; same capsule, same gold pill,
+   same labels). Desktop/tablet: the tab list is the capsule and the pill slides between its cells
+   (position set from services.tsx). Phones: every row is its own capsule and the pill slides down the rows. */
+.cat-switch { --scope-ease: cubic-bezier(0.22, 1, 0.36, 1); }
+@media (min-width: 768px) {
+  .cat-switch.cat-switch.gold-border-flow {
+    gap: 0;
+    padding: 4px;
+    box-sizing: border-box;
+    border: 1.5px solid rgba(191, 167, 106, 0.85);
+    border-radius: 32px;
+    background: rgba(22, 14, 8, 0.55);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+  }
+}
+@media (min-width: 1024px) { .cat-switch.cat-switch.gold-border-flow { border-radius: 9999px; } }
+.cat-switch-base { position: absolute; inset: 0; pointer-events: none; animation: none; }
+@media (max-width: 767.98px) { .cat-switch-base { display: none; } }
+.cat-switch-row {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(191, 167, 106, 0.85);
+  background: rgba(22, 14, 8, 0.55);
+  box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+  pointer-events: none;
+}
+.cat-switch-pill.cat-switch-pill.gold-border-flow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  border-radius: 9999px;
+  background-color: rgba(191, 167, 106, 0.2);
+  box-shadow: 0 0 28px rgba(191, 167, 106, 0.38);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  will-change: transform;
+}
+.cat-switch-pill-move.cat-switch-pill-move.gold-border-flow {
+  transition: transform 700ms var(--scope-ease), width 700ms var(--scope-ease), height 700ms var(--scope-ease), opacity 300ms ease;
+}
+.cat-switch-pill.gold-border-flow.gold-shiny::before {
+  --gold-shiny-percent: 20%;
+  --gold-shiny-offset: 95deg;
+  --gold-shiny-shine: #e6cc82;
+}
+.cat-switch-pill.gold-border-flow.gold-shiny:not([data-anim-off])::before,
+.cat-switch-pill.gold-shiny:not([data-anim-off])::after,
+.cat-switch-pill.gold-shiny:not([data-anim-off]) > .gold-text-sweep::before {
+  animation-play-state: running;
+}
+.cat-switch-pill.gold-shiny > .gold-text-sweep::after { opacity: 1; }
+.cat-switch-label.gold-text-sweep {
+  background-image: linear-gradient(110deg, #bfa76a 40%, #fff8eb 50%, #bfa76a 60%);
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+}
+.cat-switch-label.cat-switch-label-active.gold-text-sweep {
+  background-image: linear-gradient(110deg, #fff8eb 40%, #e6cc82 50%, #fff8eb 60%);
+  animation-duration: 4s;
+  animation-delay: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cat-switch-pill-move.cat-switch-pill-move.gold-border-flow { transition: none; }
+}
+/* Phones: the tab list is display:contents, so its ring and glow pseudo-elements must not draw a frame around the rows. */
+@media (max-width: 767.98px) { .cat-switch::before, .cat-switch::after { display: none; } }
