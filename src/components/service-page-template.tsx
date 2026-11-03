@@ -346,6 +346,13 @@ const LAPTOP_SIZE_COEFFICIENTS = LAPTOP_HERO_SLIDES.map(() => (0.87 * 1.2) / 1.4
 // Phones: the animation's frame 0 instead of the ~520KB animated file.
 const LAPTOP_MOBILE_STILLS = [undefined, '/images/serwis-laptopow-hero-animated-still.webp']
 
+const SHIPPING_CTA_LABEL = {
+  pl: 'Serwis wysyłkowy – cała Polska',
+  uk: 'Сервіс з відправкою – вся Польща',
+  ru: 'Сервис с отправкой – вся Польша',
+  en: 'Mail-in service – all of Poland',
+} as const
+
 // Carousel pages share the home hero's carousel look: peek, entrance, hover
 // and glow (styles in service-hero.css under .home-hero-carousel-wrap).
 const HERO_CAROUSEL_SLUGS = new Set([
@@ -527,6 +534,8 @@ export function ServicePageTemplate({
 }: ServicePageTemplateProps) {
   const pageClass = PAGE_CLASS_SLUGS.includes(slug) ? `page-${slug}` : ''
   const repairAccordionClass = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'page-repair-accordion' : ''
+  // The mail-in page opens its carousel on the service the visitor came from (?from=<slug>).
+  const shippingHref = `${locale === 'pl' ? '' : `/${locale}`}/serwis-wysylkowy?from=${slug}`
 
   return (
     <>
@@ -881,24 +890,20 @@ export function ServicePageTemplate({
                       )
                     })()}
                     {/* Przycisk serwisu wysyłkowego pod H1 — ten sam co na głównej (tylko PL, komputer). */}
-                    {locale === 'pl' && (
-                      <Link href="/serwis-wysylkowy" prefetch={false} className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
-                        <span className="gold-text-sweep">Serwis wysyłkowy – cała Polska</span>
-                        <ChevronRight className="w-[18px] h-[18px]" />
-                      </Link>
-                    )}
+                    <Link href={shippingHref} prefetch={false} className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                      <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
+                      <ChevronRight className="w-[18px] h-[18px]" />
+                    </Link>
                   </div>
                 </div>
               </div>
               {/* Phone: the shipping-service CTA sits between the carousel and the logo strip (desktop has it under the H1). */}
-              {locale === 'pl' && (
-                <div className="md:hidden flex justify-center px-4 mt-3">
-                  <Link href="/serwis-wysylkowy" prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
-                    <span className="gold-text-sweep">Serwis wysyłkowy – cała Polska</span>
-                    <ChevronRight className="w-[18px] h-[18px]" />
-                  </Link>
-                </div>
-              )}
+              <div className="md:hidden flex justify-center px-4 mt-3">
+                <Link href={shippingHref} prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                  <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
+                  <ChevronRight className="w-[18px] h-[18px]" />
+                </Link>
+              </div>
               {slug === 'druk-3d-na-zamowienie' ? (
                 <div className="mt-[40px]">
                   <PrintedPartsTicker locale={locale} />

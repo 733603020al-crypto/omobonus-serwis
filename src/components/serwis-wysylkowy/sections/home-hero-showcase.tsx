@@ -77,6 +77,10 @@ const SLUGS = [
   'serwis-ekspresow-do-kawy',
 ]
 
+const SLIDE_COUNT = SLIDES.length
+const rotate = <T,>(list: readonly T[], by: number): T[] =>
+  Array.from({ length: SLIDE_COUNT }, (_, k) => list[(k + by) % SLIDE_COUNT])
+
 export interface HeroMid {
   /** Device group — a group change animates the whole line letter by letter,
       a change inside the group only swaps the part that differs. */
@@ -149,14 +153,22 @@ export function HomeHeroShowcase({
   /** "Szybki kontakt" button under the H1 — same as the home CTA section, ~10% larger. */
   cta?: { label: ReactNode; href: string }
 }) {
+  // Opened from a service page (?from=<slug>): the carousel starts on that service and
+  // goes on in the usual order. 0 = the normal start (direct visit, search, bookmark).
+  const [start, setStart] = useState(0)
+  useEffect(() => {
+    const i = SLUGS.indexOf(new URLSearchParams(window.location.search).get('from') ?? '')
+    if (i > 0) setStart(i)
+  }, [])
+  const real = (i: number) => (i + start) % SLIDE_COUNT
   // -1 = the one-time opening slide (see OPENING)
   const [active, setActive] = useState(-1)
   const [prevGroup, setPrevGroup] = useState(OPENING_MID.group)
   const [mode, setMode] = useState<Mode>('cycle')
-  const mid = active < 0 ? OPENING_MID : mids[active % mids.length]
+  const mid = active < 0 ? OPENING_MID : mids[real(active) % mids.length]
 
   const onActiveChange = (i: number) => {
-    const next = i < 0 ? OPENING_MID : mids[i % mids.length]
+    const next = i < 0 ? OPENING_MID : mids[real(i) % mids.length]
     setMode(next.group === prevGroup ? 'cycle' : 'letters')
     setPrevGroup(next.group)
     setActive(i)
@@ -187,7 +199,7 @@ export function HomeHeroShowcase({
     setFit(Math.min(1, max / el.offsetWidth))
   }, [active, mid, vw])
   // Plain link without prefetch — nothing extra is loaded until the click.
-  const href = `${basePath}/${SLUGS[Math.max(active, 0) % SLUGS.length]}`
+  const href = `${basePath}/${SLUGS[real(Math.max(active, 0))]}`
   const labelMid = active < 0 ? mids[0] : mid
   const label = `${line1} ${labelMid.parts[0]}${labelMid.parts[1] ? ` ${labelMid.parts[1]}` : ''}`
 
@@ -197,18 +209,19 @@ export function HomeHeroShowcase({
         <div className="service-hero-zone home-hero-zone flex justify-center items-center h-[min(420px,100vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center">
           <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap home-hero-carousel-wrap service-hero-carousel relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
+              key={start}
               alt={alt}
               variant="home"
-              slides={SLIDES}
-              sizeCoefficients={SIZE_COEFFICIENTS}
-              mobileSizeCoefficients={MOBILE_SIZE_COEFFICIENTS}
-              verticalBias={VERTICAL_BIAS}
-              slidePosters={SLIDE_POSTERS}
-              mobileStills={MOBILE_STILLS}
-              mobileSlideAnims={MOBILE_SLIDE_ANIMS}
-              opening={OPENING}
+              slides={rotate(SLIDES, start)}
+              sizeCoefficients={rotate(SIZE_COEFFICIENTS, start)}
+              mobileSizeCoefficients={rotate(MOBILE_SIZE_COEFFICIENTS, start)}
+              verticalBias={rotate(VERTICAL_BIAS, start)}
+              slidePosters={rotate(SLIDE_POSTERS, start)}
+              mobileStills={rotate(MOBILE_STILLS, start)}
+              mobileSlideAnims={rotate(MOBILE_SLIDE_ANIMS, start)}
+              opening={start === 0 ? OPENING : undefined}
               introVideo={ATRAMENT_PRINT_CLIP}
-              animationSlideIndex={INKJET_SLIDE}
+              animationSlideIndex={(INKJET_SLIDE - start + SLIDE_COUNT) % SLIDE_COUNT}
               onActiveChange={onActiveChange}
             />
           </Link>

@@ -4,67 +4,10 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import { SERVICE_CATEGORIES, type ServiceLocale as Locale } from '@/config/service-categories'
 
-const ORDER = [
-  'serwis-laptopow',
-  'serwis-komputerow-stacjonarnych',
-  'serwis-drukarek-laserowych',
-  'serwis-drukarek-atramentowych',
-  'serwis-drukarek-iglowych',
-  'serwis-drukarek-termicznych',
-  'serwis-drukarek-3d',
-  'serwis-drukarek-sublimacyjnych',
-  'serwis-drukarek-dtf',
-  'serwis-drukarek-dtg',
-  'serwis-drukarek-spozywczych',
-  'serwis-drukarek-do-kart-plastikowych',
-  'serwis-niszczarek',
-  'naprawa-zasilaczy-ups',
-  'naprawa-projektorow',
-  'serwis-ekspresow-do-kawy',
-] as const
-
-const LABELS_OLD: Record<(typeof ORDER)[number], string> = {
-  'serwis-laptopow': 'Laptopów',
-  'serwis-komputerow-stacjonarnych': 'Komputerów stacjonarnych',
-  'serwis-drukarek-laserowych': 'Drukarek laserowych',
-  'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
-  'serwis-drukarek-iglowych': 'Drukarek igłowych',
-  'serwis-drukarek-termicznych': 'Drukarek etykiet termicznych',
-  'serwis-drukarek-3d': 'Drukarek 3D',
-  'serwis-drukarek-sublimacyjnych': 'Drukarek sublimacyjnych',
-  'serwis-drukarek-dtf': 'Drukarek DTF',
-  'serwis-drukarek-dtg': 'Drukarek DTG',
-  'serwis-drukarek-spozywczych': 'Drukarek spożywczych',
-  'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
-  'serwis-niszczarek': 'Niszczarki',
-  'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
-  'naprawa-projektorow': 'Projektorów',
-  'serwis-ekspresow-do-kawy': 'Ekspresów do kawy',
-}
-
-const LABELS: Record<(typeof ORDER)[number], string> = {
-  'serwis-laptopow': 'Laptop\u00F3w',
-  'serwis-komputerow-stacjonarnych': 'Komputer\u00F3w stacjonarnych',
-  'serwis-drukarek-laserowych': 'Drukarek laserowych',
-  'serwis-drukarek-atramentowych': 'Drukarek atramentowych',
-  'serwis-drukarek-iglowych': 'Drukarek ig\u0142owych',
-  'serwis-drukarek-termicznych': 'Drukarek etykiet termicznych',
-  'serwis-drukarek-3d': 'Drukarek 3D',
-  'serwis-drukarek-sublimacyjnych': 'Drukarek sublimacyjnych',
-  'serwis-drukarek-dtf': 'Drukarek DTF',
-  'serwis-drukarek-dtg': 'Drukarek DTG',
-  'serwis-drukarek-spozywczych': 'Drukarek spo\u017Cywczych',
-  'serwis-drukarek-do-kart-plastikowych': 'Drukarek do kart plastikowych',
-  'serwis-niszczarek': 'Niszczarek',
-  'naprawa-zasilaczy-ups': 'Zasilaczy UPS',
-  'naprawa-projektorow': 'Projektor\u00F3w',
-  'serwis-ekspresow-do-kawy': 'Ekspres\u00F3w do kawy',
-}
-
+// Same services, same order as the header "Usługi" menu: a new menu entry shows up here by itself.
 const ITEMS = SERVICE_CATEGORIES
   .flatMap(category => [...category.items, ...(category.subgroup?.items ?? [])])
-  .filter(item => ORDER.includes(item.href.split('/').pop() as (typeof ORDER)[number]))
-  .sort((a, b) => ORDER.indexOf(a.href.split('/').pop() as (typeof ORDER)[number]) - ORDER.indexOf(b.href.split('/').pop() as (typeof ORDER)[number]))
+  .filter(item => !item.menuOnly && !item.notDevice)
 
 const TARGET_SPEED_PX_PER_SEC = 24
 const GAP = 48
@@ -73,8 +16,7 @@ function EquipmentGroup({ compact, ariaHidden, locale }: { compact?: boolean; ar
   return (
     <>
       {ITEMS.map(item => {
-        const slug = item.href.split('/').pop() as (typeof ORDER)[number]
-        const label = locale === 'pl' ? LABELS[slug] : item.label[locale]
+        const label = item.label[locale]
         const Icon = typeof item.icon === 'string' ? null : item.icon
         return (
           <div

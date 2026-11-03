@@ -21,6 +21,8 @@ export type ServiceCategoryItem = {
   locales?: ServiceLocale[]
   /** Listed in the header menu only, not among the home cards. */
   menuOnly?: boolean
+  /** A service, not a device type: left out of the mail-in page ticker. */
+  notDevice?: boolean
 }
 
 export type ServiceCategory = {
@@ -49,7 +51,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     items: [
       { label: { pl: 'Laptopów', uk: 'Ноутбуки', ru: 'Ноутбуки', en: 'Laptops' }, href: '/uslugi/serwis-laptopow', icon: '/images/menu-icon-laptopy.webp' },
       { label: { pl: 'Komputerów stacjonarnych', uk: 'Стаціонарні комп\'ютери', ru: 'Стационарные компьютеры', en: 'Desktop computers' }, href: '/uslugi/serwis-komputerow-stacjonarnych', icon: DesktopFilled },
-      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг', en: 'IT outsourcing' }, href: '/uslugi/outsourcing-it', icon: '/images/menu-icon-outsourcing-it.webp' },
+      { label: { pl: 'Outsourcing IT', uk: 'ІТ-аутсорсинг', ru: 'IT-аутсорсинг', en: 'IT outsourcing' }, href: '/uslugi/outsourcing-it', icon: '/images/menu-icon-outsourcing-it.webp', notDevice: true },
     ],
   },
   {
@@ -90,8 +92,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     subgroup: {
       title: { pl: 'Dodatkowe usługi', uk: 'Додаткові послуги', ru: 'Дополнительные услуги', en: 'Additional services' },
       items: [
-        { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ', en: '3D printing on demand' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/menu-icon-druk-3d-na-zamowienie.webp' },
-        { label: { pl: 'Wynajem drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров', en: 'Printer rental' }, href: '/uslugi/wynajem-drukarek', icon: '/images/menu-icon-wynajem.webp' },
+        { label: { pl: 'Druk 3D na zamówienie', uk: '3D-друк на замовлення', ru: '3D-печать на заказ', en: '3D printing on demand' }, href: '/uslugi/druk-3d-na-zamowienie', icon: '/images/menu-icon-druk-3d-na-zamowienie.webp', notDevice: true },
+        { label: { pl: 'Wynajem drukarek', uk: 'Оренда принтерів', ru: 'Аренда принтеров', en: 'Printer rental' }, href: '/uslugi/wynajem-drukarek', icon: '/images/menu-icon-wynajem.webp', notDevice: true },
         { label: { pl: 'Drukarka zastępcza', uk: 'Підмінний принтер', ru: 'Подменный принтер', en: 'Replacement printer' }, href: '/uslugi/drukarka-zastepcza', icon: '/images/menu-icon-drukarka-zastepcza.webp', menuOnly: true },
         { label: { pl: 'Serwis wysyłkowy', uk: 'Сервіс з відправкою', ru: 'Сервис с отправкой', en: 'Mail-in service' }, href: '/serwis-wysylkowy', icon: ParcelFilled, menuOnly: true },
       ],
