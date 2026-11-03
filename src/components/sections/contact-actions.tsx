@@ -8,6 +8,7 @@ import { registerDraftSource, readLangSwitchDraft, switchLocaleForCountry } from
 import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 import { CallButton } from '@/components/ui/CallButton'
+import { GOLD_CTA, GOLD_CTA_SIZE } from '@/components/ui/gold-cta'
 import dynamic from 'next/dynamic'
 
 // the route window loads only after a click on the calculator icon
@@ -309,9 +310,9 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-full border border-transparent bg-[#1c6e43] px-6 py-[13px] font-sans text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#155d36] hover:shadow-[0_8px_20px_rgba(28,110,67,0.4)] disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:min-w-[240px] md:py-0"
+              className={`${GOLD_CTA} ${GOLD_CTA_SIZE} w-full md:w-auto disabled:cursor-not-allowed disabled:opacity-50`}
             >
-              {isSubmitting ? d.callbackSubmitting : d.callbackButton}
+              <span className="gold-text-sweep">{isSubmitting ? d.callbackSubmitting : d.callbackButton}</span>
             </button>
           </div>
 

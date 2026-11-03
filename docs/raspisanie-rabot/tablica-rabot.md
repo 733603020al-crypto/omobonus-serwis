@@ -13,3 +13,4 @@
 | Проверка прайса страниц услуг | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/rules/price-card-standard.md` |
 | Карточка Google: новые отзывы | раз в день | см. `docs/karta-google/` | `docs/karta-google/` |
 | Карточка Google: фото (минимум 7) и запас публикаций на 2 недели | раз в неделю | см. `docs/karta-google/` | `docs/karta-google/` |
+| Программа сервиса: подсказки устройств без описания | 30 дней | 2026-10-31 | запустить `node C:/Users/Andrii/omobonus-workspace/service/sync-countries.mjs`; строка «НОВЫЕ УСТРОЙСТВА БЕЗ ПОДСКАЗКИ» — заполнить `service/device-hints.json` на 4 языках (pl, uk, ru, en) |

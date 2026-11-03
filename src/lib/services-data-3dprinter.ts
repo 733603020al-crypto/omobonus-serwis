@@ -123,7 +123,7 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
   if (!faq) return
   faq.subcategories = [
     { id: 'faq-1', title: 'Jak wygląda proces naprawy drukarki 3D?', items: [], answer: 'Najpierw wykonujemy wstępną diagnozę, następnie pełną diagnostykę urządzenia i podajemy dokładny koszt oraz termin naprawy. Prace rozpoczynamy dopiero po akceptacji Klienta.' },
-    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: '**Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna.**\n\nPełna diagnoza również jest bezpłatna przy realizacji naprawy.\n\nW przypadku rezygnacji koszt pełnej diagnozy wynosi 150 zł netto.' },
+    { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: '**Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna.**\n\nPełna diagnoza również jest bezpłatna przy realizacji naprawy.\n\nW przypadku rezygnacji koszt pełnej diagnozy wynosi 100 / 150 / 200 zł netto, zależnie od kategorii urządzenia.' },
     { id: 'faq-3', title: 'Ile trwa naprawa?', items: [], answer: 'Większość standardowych napraw wykonujemy w ciągu 1–3 dni roboczych. Czas może się wydłużyć przy złożonych usterkach elektroniki lub konieczności zamówienia części.' },
     { id: 'faq-4', title: 'Jakie technologie drukarek 3D serwisujecie?', items: [], answer: 'Serwisujemy drukarki filamentowe FDM oraz żywiczne SLA / MSLA / DLP. Zakres napraw zależy od technologii i konstrukcji konkretnego urządzenia.' },
     { id: 'faq-5', title: 'Jakie marki serwisujecie?', items: [], answer: 'Serwisujemy m.in. Bambu Lab, Prusa, Creality, Anycubic, Elegoo, Zortrax, FlashForge oraz inne popularne marki. Przed przyjęciem możemy potwierdzić możliwość naprawy konkretnego modelu.' },

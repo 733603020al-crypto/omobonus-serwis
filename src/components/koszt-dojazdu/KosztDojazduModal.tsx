@@ -6,7 +6,6 @@ import { Ban, Calculator, Loader2, MapPin, ShieldCheck } from 'lucide-react'
 import { KosztDojazduCard, KosztOkno, P, Row, SerwisRow, klientLabel } from './KosztDojazduCard'
 import { IkonaKlient } from './ikony'
 import { TARYFA_STANDARD } from './koszt-dojazdu'
-import { lora } from '@/components/sections/contact-font'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 // Popup on /kontakt. Order: 1) "use my location" (the browser asks only after this click) — the found address
@@ -293,7 +292,7 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
   return createPortal(
     <div
       role="dialog" aria-modal="true" aria-label={t.title}
-      className={`${lora.variable} fixed inset-0 z-[200]`}
+      className={`fixed inset-0 z-[200]`}
       onMouseDown={(e) => { if (e.target === e.currentTarget || e.target === panelRef.current) onClose() }}
     >
       <div
@@ -342,11 +341,11 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
 
               <div className="mt-2.5 flex items-start gap-2.5">
                 <ShieldCheck className="mt-0 w-[21px] h-[21px] flex-shrink-0 text-[#3a2e24]" strokeWidth={1.6} />
-                <p className={`font-lora text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.privacy}</p>
+                <p className={`font-sans text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.privacy}</p>
               </div>
               <div className="mt-2.5 flex items-start gap-2.5">
                 <Ban className="mt-0 w-[21px] h-[21px] flex-shrink-0 text-[#3a2e24]" strokeWidth={1.6} />
-                <p className={`font-lora text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.ask}</p>
+                <p className={`font-sans text-[14px] md:text-[15px] font-medium leading-[1.35] text-[#3a2e24]`}>{t.ask}</p>
               </div>
 
               {/* 2. address typed by hand */}
@@ -368,7 +367,7 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
                   role="combobox"
                   aria-autocomplete="list"
                   aria-expanded={podp.length > 0}
-                  className={`w-full h-[44px] !bg-transparent border border-[rgba(70,45,25,0.75)] rounded-sm px-4 ${P.text} text-[16px] md:text-[17px] font-lora font-normal placeholder:text-[#6b5940] placeholder:![-webkit-text-fill-color:#6b5940] focus:outline-none hover:border-[rgba(70,45,25,0.95)] hover:bg-[rgba(70,45,25,0.05)] focus:border-[rgba(70,45,25,0.95)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250`}
+                  className={`w-full h-[44px] !bg-transparent border border-[rgba(70,45,25,0.75)] rounded-sm px-4 ${P.text} text-[16px] md:text-[17px] font-sans font-normal placeholder:text-[#6b5940] placeholder:![-webkit-text-fill-color:#6b5940] focus:outline-none hover:border-[rgba(70,45,25,0.95)] hover:bg-[rgba(70,45,25,0.05)] focus:border-[rgba(70,45,25,0.95)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250`}
                 />
 
                 {podp.length > 0 && (
@@ -394,8 +393,8 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
               </div>
 
               {error
-                ? <p className="mt-1.5 font-lora text-[13px] md:text-[14px] text-red-600">{error}</p>
-                : (lokalizuje || note !== 'hint') && <p className={`mt-1.5 font-lora text-[13px] md:text-[14px] ${P.note}`}>{lokalizuje ? t.locating : t[note as 'confirm' | 'geo']}</p>}
+                ? <p className="mt-1.5 font-sans text-[13px] md:text-[14px] text-red-600">{error}</p>
+                : (lokalizuje || note !== 'hint') && <p className={`mt-1.5 font-sans text-[13px] md:text-[14px] ${P.note}`}>{lokalizuje ? t.locating : t[note as 'confirm' | 'geo']}</p>}
 
               {/* 3. calculation — after the address is set. Without an address the button stays
                   focusable (aria-disabled, not disabled) so the hint shows on hover, focus and tap. */}

@@ -142,6 +142,7 @@ const T = {
     podstawowa: 'Opłata podstawowa', podstawowaNote: (pol: string, lim: string) => `(do ${pol} od serwisu; ${lim} łącznie w obie strony)`,
     trasaNote: '(według Google Maps)', powyzej: (lim: string) => `Kilometry powyżej ${lim}`, doplata: 'Dopłata za kilometry',
     laczny: 'Łączny koszt odbioru lub dostawy', netto: 'netto',
+    doplataPowyzej: (lim: string) => `Dopłata za kilometry powyżej ${lim}`,
     foot1: '*Koszt liczymy dla trasy w obie strony, ponieważ przy odbiorze lub dostawie serwisant musi dojechać do Klienta i wrócić do serwisu.',
     foot2: '**Dotyczy większości urządzeń do 30 kg, które przewiezie jeden kurier; cena w cenniku usługi, cięższe — wycena indywidualna.',
   },
@@ -152,6 +153,7 @@ const T = {
     podstawowa: 'Базова оплата', podstawowaNote: (pol: string, lim: string) => `(до ${pol} від сервісу; ${lim} загалом в обидва боки)`,
     trasaNote: '(за Google Maps)', powyzej: (lim: string) => `Кілометри понад ${lim}`, doplata: 'Доплата за кілометри',
     laczny: 'Загальна вартість забору або доставки', netto: 'нетто',
+    doplataPowyzej: (lim: string) => `Доплата за кілометри понад ${lim}`,
     foot1: '*Вартість рахуємо для маршруту в обидва боки, бо під час забору або доставки сервісант має доїхати до Клієнта і повернутися до сервісу.',
     foot2: '**Стосується більшості пристроїв до 30 кг, які перевезе один кур’єр; ціна — у прайсі послуги, важчі — індивідуальна оцінка.',
   },
@@ -162,6 +164,7 @@ const T = {
     podstawowa: 'Базовая оплата', podstawowaNote: (pol: string, lim: string) => `(до ${pol} от сервиса; ${lim} всего в обе стороны)`,
     trasaNote: '(по Google Maps)', powyzej: (lim: string) => `Километры сверх ${lim}`, doplata: 'Доплата за километры',
     laczny: 'Общая стоимость забора или доставки', netto: 'нетто',
+    doplataPowyzej: (lim: string) => `Доплата за километры сверх ${lim}`,
     foot1: '*Стоимость считаем для маршрута в обе стороны, так как при заборе или доставке сервисант должен доехать до Клиента и вернуться в сервис.',
     foot2: '**Касается большинства устройств до 30 кг, которые перевезёт один курьер; цена — в прайсе услуги, более тяжёлые — индивидуальная оценка.',
   },
@@ -172,6 +175,7 @@ const T = {
     podstawowa: 'Base fee', podstawowaNote: (pol: string, lim: string) => `(up to ${pol} from the service; ${lim} round trip in total)`,
     trasaNote: '(according to Google Maps)', powyzej: (lim: string) => `Kilometres above ${lim}`, doplata: 'Mileage surcharge',
     laczny: 'Total pickup or delivery cost', netto: 'net',
+    doplataPowyzej: (lim: string) => `Surcharge for kilometres above ${lim}`,
     foot1: '*The cost is calculated for the round trip, because for a pickup or delivery the technician has to drive to the customer and back to the service.',
     foot2: '**Applies to most devices up to 30 kg that one courier can carry; the price is in the service price list, heavier ones are quoted individually.',
   },
@@ -297,6 +301,18 @@ export function KosztDojazduCard({ serwisAdres, klientAdres, metryJednaStrona, t
             <span className="font-medium text-[15px] md:text-[16px]">({klientAdres})</span>
           </div>
         </Row>
+        {/* base fee first, then the calculation */}
+        <Row icon={<IkonaZasady size={24} />} last>
+          <span className={`font-semibold text-[17px] md:text-[18px] ${P.label}`}>{t.zasady}</span>
+        </Row>
+        {/* rows start under the "Zasady rozliczenia" text (icon 24px + gap 12px) */}
+        <div className={`ml-9 border-t ${P.line}`}>
+          <CalcRow
+            name={<>{t.podstawowa}<sup className="ml-0.5 text-[0.75em]">**</sup></>}
+            note={t.podstawowaNote(kmS(taryfa.limitKm / 2), limit)}
+            value={fmtZl(taryfa.baza)}
+          />
+        </div>
         <Row icon={<IkonaOdleglosc size={24} />}>
           <div className="flex items-center justify-between gap-3">
             <span className={`font-semibold text-[15px] md:text-[16px] ${P.label}`}>{t.odleglosc}</span>
@@ -310,19 +326,8 @@ export function KosztDojazduCard({ serwisAdres, klientAdres, metryJednaStrona, t
           </div>
         </Row>
 
-        <Row icon={<IkonaZasady size={24} />} last>
-          <span className={`font-semibold text-[17px] md:text-[18px] ${P.label}`}>{t.zasady}</span>
-        </Row>
-        {/* calculation rows start under the "Zasady rozliczenia" text (icon 24px + gap 12px) */}
         <div className={`ml-9 border-t ${P.line}`}>
-          <CalcRow
-            name={<>{t.podstawowa}<sup className="ml-0.5 text-[0.75em]">**</sup></>}
-            note={t.podstawowaNote(kmS(taryfa.limitKm / 2), limit)}
-            value={fmtZl(taryfa.baza)}
-          />
-          <CalcRow name={t.trasa} note={t.trasaNote} value={km(k.kmObieStrony)} />
-          <CalcRow name={t.powyzej(limit)} note={`(${km(k.kmObieStrony)} − ${limit})`} value={km(k.kmPonadLimit)} />
-          <CalcRow name={t.doplata} note={`(${km(k.kmPonadLimit)} × ${fmtZlShort(taryfa.stawka)})`} value={fmtZl(k.doplata)} />
+          <CalcRow name={t.doplataPowyzej(limit)} note={`(${km(k.kmPonadLimit)} × ${fmtZlShort(taryfa.stawka)})`} value={fmtZl(k.doplata)} />
         </div>
         <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-x-3 gap-y-0 py-1 lg:pr-6">
           <span className="flex items-center gap-3 min-w-0">

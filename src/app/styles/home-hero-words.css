@@ -86,9 +86,62 @@
 
 /* Home hero on phones only: the picture box gets the full screen width and the
    same 120% height as on desktop (size cap per slide: MOBILE_SIZE_COEFFICIENTS). */
+.home-hero-middle {
+  font-size: calc(var(--home-hero-fit, 1) * 1em);
+}
+
+.home-hero-middle-text {
+  display: contents;
+}
+
 @media (max-width: 767.98px) {
+  /* Reserve the original full-size line; only its contents shrink to fit. */
+  .home-hero-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    height: 1.05em;
+  }
+
+  .home-hero-middle-text {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: calc(var(--home-hero-fit, 1) * 1em);
+  }
+
+  /* Move only the active artwork, never the zone, carousel box or CTA. */
+  .home-hero-zone .hero-home-slide-active {
+    top: calc(50% + var(--home-mobile-slide-shift, 0px));
+  }
+
   .home-hero-zone > .service-hero-image-wrap {
     width: 100vw !important;
     height: 120% !important;
+  }
+}
+
+/* Home phone CTA under the carousel only (class set in home-hero-showcase.tsx): the desktop
+   hover look is permanent (wide arc, #e6cc82 shine, inner glow, hover fill and shadow), without
+   the 4px lift. Label is warm white; the gold glint #e6cc82 only sweeps across it (4s cycle).
+   Size, shape and the shared gold button stay; desktop and other pages are untouched. */
+@media (max-width: 767.98px) {
+  .home-cta-mobile.home-cta-mobile {
+    background-color: rgba(191, 167, 106, 0.2);
+    box-shadow: 0 0 28px rgba(191, 167, 106, 0.38);
+  }
+  .home-cta-mobile.gold-border-flow.gold-shiny::before {
+    --gold-shiny-percent: 20%;
+    --gold-shiny-offset: 95deg;
+    --gold-shiny-shine: #e6cc82;
+  }
+  .home-cta-mobile.gold-border-flow.gold-shiny:not([data-anim-off])::before,
+  .home-cta-mobile.gold-shiny:not([data-anim-off])::after,
+  .home-cta-mobile.gold-shiny:not([data-anim-off]) > .gold-text-sweep::before {
+    animation-play-state: running;
+  }
+  .home-cta-mobile.gold-shiny > .gold-text-sweep::after { opacity: 1; }
+  .home-cta-mobile.home-cta-mobile > .gold-text-sweep {
+    background-image: linear-gradient(110deg, #fff8eb 40%, #e6cc82 50%, #fff8eb 60%);
   }
 }

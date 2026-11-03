@@ -121,11 +121,6 @@
     font-family: var(--font-cormorant), serif;
   }
 
-  /* Tylko formularz kontaktowy (/kontakt): etykiety pól i tekst wpisywany */
-  .font-lora {
-    font-family: var(--font-lora), Georgia, serif;
-  }
-
   /* Таблицы — используем ТОЛЬКО Cormorant */
   .font-table-main {
     font-family: var(--font-cormorant), serif;
@@ -3852,6 +3847,15 @@
   .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep::after { animation-play-state: running; }
   .group:hover > .gold-shiny.gold-shiny-card > .gold-text-sweep::after { opacity: 1; }
 }
+/* Until the page has loaded (GoldAnimationPause sets data-anim-ready): gold CTA effects and
+   the logo tickers stand still, so they cost nothing during the first load. */
+html:not([data-anim-ready]) .gold-border-flow::before,
+html:not([data-anim-ready]) .gold-shiny::after,
+html:not([data-anim-ready]) .gold-text-sweep,
+html:not([data-anim-ready]) .gold-text-sweep::before,
+html:not([data-anim-ready]) .gold-text-sweep::after,
+html:not([data-anim-ready]) .brand-ticker-track,
+html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !important; }
 @keyframes gold-shiny-spin { to { rotate: 360deg; } }
 @keyframes gold-shiny-breathe { 0%, 100% { scale: 1; } 50% { scale: 1.2; } }
 .gold-border-flow.gold-shiny[data-anim-off]::before,

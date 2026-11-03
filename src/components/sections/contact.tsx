@@ -11,7 +11,6 @@ import { saveAttachments, takeAttachments, clearAttachments } from '@/lib/attach
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { hasTrackingConsent } from '@/lib/tracking-consent'
-import { lora } from './contact-font'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
 import { en } from '@/lib/i18n/en'
@@ -399,7 +398,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   return (
     <section
       id="formularz"
-      className={`${lora.variable} relative ${bare ? 'pt-2 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
+      className={`relative ${bare ? 'pt-2 pb-3 md:pb-8' : 'pt-24 md:pt-20 pb-6 md:pb-16'}`}
 
     >
 
@@ -473,7 +472,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   placeholder={d.namePlaceholder}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? 'contact-name-error' : undefined}
-                  className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-lora font-normal leading-[1.4] placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
+                  className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
                 />
                 {errors.name && (
@@ -490,7 +489,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       <>
                         {main}
                         {note && (
-                          <span className="font-lora font-normal text-[13px] md:text-[15px] text-[#6b5940]"> {note}</span>
+                          <span className="font-sans font-normal text-[13px] md:text-[15px] text-[#6b5940]"> {note}</span>
                         )}
                       </>
                     )
@@ -525,7 +524,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* E-mail */}
             <div className="space-y-[5px]" data-field-name="email">
-              <label htmlFor="contact-email" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-email" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                 {d.emailLabel}
               </label>
               <input
@@ -535,7 +534,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 placeholder={d.emailPlaceholder ?? "jan.kowalski@example.com"}
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'contact-email-error' : undefined}
-                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-sans placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.email && (
@@ -545,7 +544,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Adres */}
             <div className="space-y-[5px]" data-field-name="address">
-              <label htmlFor="contact-address" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-address" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                 {d.addressLabel}
               </label>
               <input
@@ -554,7 +553,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 placeholder={d.addressPlaceholder}
                 aria-invalid={!!errors.address}
                 aria-describedby={errors.address ? 'contact-address-error' : undefined}
-                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-sans placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.address && (
@@ -566,7 +565,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
             {/* Opis problemu */}
             <div className="space-y-[5px]" data-field-name="problemDescription">
-              <label htmlFor="contact-problem" className="block text-black font-cormorant font-bold not-italic text-[18px] md:text-[19px] tracking-[0.01em]">
+              <label htmlFor="contact-problem" className="block text-[#312b1f] font-cormorant font-bold not-italic text-[18px] md:text-[19px] leading-[1.3] tracking-[0.01em]">
                 {d.problemLabel}
               </label>
               <textarea
@@ -576,7 +575,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 placeholder={d.problemPlaceholder}
                 aria-invalid={!!errors.problemDescription}
                 aria-describedby={errors.problemDescription ? 'contact-problem-error' : undefined}
-                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-black text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-lora placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
+                className="w-full !bg-transparent border border-[rgba(70,45,25,0.45)] rounded-sm px-4 py-2 text-[#312b1f] text-base md:text-lg font-sans font-normal leading-[1.4] placeholder:font-sans placeholder:text-[#6b5940] focus:outline-none hover:border-2 hover:border-[rgba(70,45,25,0.7)] hover:bg-[rgba(70,45,25,0.05)] hover:shadow-[0_0_4px_rgba(70,45,25,0.3)] focus:border-2 focus:border-[rgba(70,45,25,0.7)] focus:bg-[rgba(70,45,25,0.05)] focus:shadow-[0_0_4px_rgba(70,45,25,0.3)] transition-all duration-250"
 
               />
               {errors.problemDescription && (
@@ -603,14 +602,14 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                     />
                   </picture>
                   <span
-                    className="absolute left-[40px] md:left-[47px] right-[16px] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-lora font-semibold text-[13px] md:text-[17px] text-[#412612]"
+                    className="absolute left-[40px] md:left-[47px] right-[16px] top-[41%] -translate-y-1/2 select-none pointer-events-none whitespace-nowrap text-center font-sans font-semibold text-[13px] md:text-[17px] text-[#412612]"
                   >
                     {d.attachLabel}
                   </span>
                 </label>
               </div>
               {d.attachHint && (
-                <p className="text-black text-sm italic font-sans">
+                <p className="text-[#312b1f] text-sm italic font-sans">
                   {d.attachHint}
                 </p>
               )}
@@ -716,7 +715,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                 odpowiedź na zgłoszenie, nie zgoda — checkbox „akceptuję” tworzyłby
                 pozorną zgodę. */}
             <div className="pt-1">
-              <p className="text-[#2f2418] font-lora font-normal italic text-[11px] md:text-[12px] leading-[1.45]">
+              <p className="text-[#2f2418] font-sans font-normal italic text-[11px] md:text-[12px] leading-[1.45]">
                 {d.agreementConfirm}{' '}
                 <Link href={d.privacyHref} className="underline hover:text-black/70">
                   {d.privacyLink}

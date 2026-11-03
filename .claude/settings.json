@@ -1,6 +1,4 @@
 {
-  "autoCompactEnabled": true,
-  "autoCompactWindow": 200000,
   "permissions": {
     "deny": [],
     "ask": [
@@ -12,6 +10,11 @@
       "PowerShell(git merge *)",
       "PowerShell(git checkout master*)",
       "PowerShell(git switch master*)"
+    ],
+    "allow": [
+      "ClaudeInChromeDomain(business.google.com)"
     ]
-  }
+  },
+  "autoCompactWindow": 200000,
+  "autoCompactEnabled": true
 }

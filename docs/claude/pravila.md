@@ -11,8 +11,9 @@
 - **SEO** (Title, Description, H1–H4) → `docs/seo/index.md`
 - **Языки** (перевод, новый язык сайта) → `docs/languages/index.md`
 - **Панель** (оформление, разработка, отложенные задачи) → `docs/claude/panel.md`
+- **Программа сервиса** (разработка, нерешённые вопросы) → `service/razrabotka-programmy/obshchie-pravila.md` в Workspace (панель: Программа сервиса)
 - **Среда** (сервер, команды, помощники) → `docs/claude/sreda.md`
-- **Расписание работ** (что делать периодически: Вёрсель, проверки) → `docs/raspisanie-rabot/tablica-rabot.md`
+- **Расписание работ** (что делать периодически: Вёрсель, проверки, подсказки устройств сервиса) → `docs/raspisanie-rabot/tablica-rabot.md`
 - **Правила о правилах** → этот файл, `docs/claude/dobavit-pravilo.md`, `CLAUDE.md`
 
 ## Ваши команды

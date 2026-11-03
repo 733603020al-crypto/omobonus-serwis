@@ -123,7 +123,7 @@ export const printer3dFaq = (): PricingSection => ({
   ...faqSectionEn(),
   subcategories: [
     { id: 'faq-1', title: 'How does the 3D printer repair process work?', items: [], answer: 'First we carry out an initial diagnosis, then a full diagnosis of the device, and give you the exact cost and repair time. We start work only after the customer has approved it.' },
-    { id: 'faq-2', title: 'How much does a 3D printer diagnosis cost?', items: [], answer: '**The initial diagnosis online and when you bring the device in is free.**\n\nThe full diagnosis is also free if we carry out the repair.\n\nIf you decide not to go ahead, the full diagnosis costs 150 zł net.' },
+    { id: 'faq-2', title: 'How much does a 3D printer diagnosis cost?', items: [], answer: '**The initial diagnosis online and when you bring the device in is free.**\n\nThe full diagnosis is also free if we carry out the repair.\n\nIf you decide not to go ahead, the full diagnosis costs 100 / 150 / 200 zł net, depending on the device category.' },
     { id: 'faq-3', title: 'How long does a repair take?', items: [], answer: 'Most standard repairs are done within 1–3 working days. It may take longer with complex electronics faults or when parts need to be ordered.' },
     { id: 'faq-4', title: 'Which 3D printer technologies do you service?', items: [], answer: 'We service FDM filament printers and SLA / MSLA / DLP resin printers. The scope of repairs depends on the technology and design of the specific device.' },
     { id: 'faq-5', title: 'Which brands do you service?', items: [], answer: 'We service Bambu Lab, Prusa, Creality, Anycubic, Elegoo, Zortrax, FlashForge and other popular brands. Before accepting the device, we can confirm whether a specific model can be repaired.' },
