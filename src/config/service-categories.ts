@@ -83,7 +83,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     homeTitle: { pl: 'Innych urządzeń i usług', uk: 'Інших пристроїв та послуг', ru: 'Других устройств и услуг', en: 'Other devices and services' },
     icon: '/images/menu-icon-plotery.webp',
     items: [
-      { label: { pl: 'Ploterów', uk: 'Плотери', ru: 'Плоттеры', en: 'Plotters' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp' },
+      { label: { pl: 'Ploterów', uk: 'Плотери', ru: 'Плоттеры', en: 'Plotters' }, href: '/uslugi/serwis-plotterow', icon: '/images/menu-icon-plotery.webp', notDevice: true },
       { label: { pl: 'Niszczarek', uk: 'Шредери', ru: 'Шредеры', en: 'Paper shredders' }, href: '/uslugi/serwis-niszczarek', icon: '/images/menu-icon-niszczarki.webp' },
       { label: { pl: 'Zasilaczy UPS', uk: 'ДБЖ (UPS)', ru: 'ИБП (UPS)', en: 'UPS units' }, href: '/uslugi/naprawa-zasilaczy-ups', icon: '/images/menu-icon-zasilacze-ups.webp' },
       { label: { pl: 'Projektorów', uk: 'Проєктори', ru: 'Проекторы', en: 'Projectors' }, href: '/uslugi/naprawa-projektorow', icon: ProjectorFilled },
