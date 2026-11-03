@@ -66,10 +66,10 @@ const applyNiszczarkiFaqSection = (sections: PricingSection[]) => {
   if (!faq) return
   faq.subcategories = [
     { id: 'faq-1', title: 'Jak wygląda proces naprawy niszczarki?', items: [], answer: 'Najpierw wykonujemy diagnozę i określamy koszt naprawy. Po akceptacji wykonujemy naprawę, testujemy urządzenie i informujemy o możliwości odbioru lub dostawy.' },
-    { id: 'faq-2', title: 'Ile kosztuje diagnoza niszczarki?', items: [], answer: 'Diagnoza i wycena są bezpłatne, jeśli realizujemy naprawę. W przypadku rezygnacji z naprawy koszt diagnozy wynosi 50 zł netto.' },
+    { id: 'faq-2', title: 'Ile kosztuje diagnoza niszczarki?', items: [], answer: 'Diagnoza i wycena są bezpłatne, jeśli realizujemy naprawę. W przypadku rezygnacji z naprawy koszt diagnozy wynosi 100 / 150 / 200 zł netto, zależnie od kategorii urządzenia.' },
     { id: 'faq-3', title: 'Ile trwa naprawa niszczarki?', items: [], answer: 'Zależy od rodzaju usterki i dostępności części. Większość usług w cenniku ma termin od 1 do 5 dni.' },
     { id: 'faq-4', title: 'Od czego zależy cena naprawy?', items: [], answer: '**Od klasy niszczarki (mała, biurowa, profesjonalna), rodzaju usterki i potrzebnych części.**\n\nW cenniku podajemy trzy ceny — dla każdej klasy.\n\nJeśli przy pozycji jest „+ części”, części są rozliczane osobno.' },
-    { id: 'faq-5', title: 'Czy poznam koszt przed naprawą?', items: [], answer: 'Tak. Po diagnozie podajemy koszt naprawy, a naprawę wykonujemy dopiero po Twojej akceptacji. Jeśli zrezygnujesz, płacisz tylko za diagnozę — 50 zł netto.' },
+    { id: 'faq-5', title: 'Czy poznam koszt przed naprawą?', items: [], answer: 'Tak. Po diagnozie podajemy koszt naprawy, a naprawę wykonujemy dopiero po Twojej akceptacji. Jeśli zrezygnujesz, płacisz tylko za diagnozę — 100 / 150 / 200 zł netto, zależnie od kategorii urządzenia.' },
     { id: 'faq-6', title: 'Czy ceny są netto czy brutto?', items: [], answer: 'Wszystkie ceny w cenniku są cenami netto (bez VAT).' },
     { id: 'faq-7', title: 'Czy warto naprawiać starą niszczarkę?', items: [], answer: 'To zależy od usterki, klasy urządzenia i dostępności części. Po diagnozie powiemy, czy naprawa jest opłacalna — a jeśli się nie opłaca, powiemy to otwarcie.' },
     { id: 'faq-8', title: 'Jakie niszczarki naprawiacie?', items: [], answer: 'Naprawiamy małe, biurowe i profesjonalne niszczarki różnych konstrukcji i wielkości.' },

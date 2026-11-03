@@ -132,7 +132,7 @@ const PL: ProcessText = {
       },
     },
     '05.1': {
-      title: '5.1. Naprawa i zwrot',
+      title: 'Naprawa i zwrot',
       faq: [
         ['Kiedy płacę za naprawę?', 'Płatność przyjmujemy przelewem. Konsumenci płacą przed wysłaniem urządzenia, firmy — w terminie wskazanym na fakturze.'],
         ['Ile trwa gwarancja?', 'Okres gwarancji zależy od usługi. Podajemy go w opisie usługi na stronie oraz w dokumencie naprawy, np. na fakturze.'],
@@ -155,7 +155,7 @@ const PL: ProcessText = {
       },
     },
     '05.2': {
-      title: '5.2. Zwrot bez naprawy',
+      title: 'Zwrot bez naprawy',
       faq: [
         ['Ile zapłacę, jeśli nie ustalicie przyczyny usterki?', 'Za diagnozę nie płacisz — pokrywasz tylko transport.'],
         ['Co, jeśli nie odpowiem na wycenę?', 'Jeśli nie odpowiesz w ciągu 14 dni, spróbujemy skontaktować się ponownie. Dalszy brak odpowiedzi traktujemy jako rezygnację z naprawy i informujemy Cię o możliwości odbioru urządzenia.'],
@@ -296,7 +296,7 @@ const UK: ProcessText = {
       },
     },
     '05.1': {
-      title: "5.1. Ремонт і повернення",
+      title: "Ремонт і повернення",
       faq: [
         ["Коли я плачу за ремонт?", "Оплату приймаємо переказом. Споживачі платять до відправки пристрою, фірми — у строк, указаний у рахунку-фактурі."],
         ["Скільки діє гарантія?", "Строк гарантії залежить від послуги. Ми вказуємо його в описі послуги на сайті та в документі про ремонт, наприклад у рахунку-фактурі."],
@@ -319,7 +319,7 @@ const UK: ProcessText = {
       },
     },
     '05.2': {
-      title: "5.2. Повернення без ремонту",
+      title: "Повернення без ремонту",
       faq: [
         ["Скільки я заплачу, якщо ви не визначите причину несправності?", "За діагностику ви не платите — покриваєте лише транспорт."],
         ["Що, якщо я не відповім на оцінку?", "Якщо ви не відповісте протягом 14 днів, ми спробуємо зв'язатися з вами ще раз. Подальшу відсутність відповіді ми вважаємо відмовою від ремонту й повідомляємо вас про можливість забрати пристрій."],
@@ -460,7 +460,7 @@ const RU: ProcessText = {
       },
     },
     '05.1': {
-      title: "5.1. Ремонт и возврат",
+      title: "Ремонт и возврат",
       faq: [
         ["Когда я плачу за ремонт?", "Оплату принимаем переводом. Потребители платят до отправки устройства, фирмы — в срок, указанный в счёте-фактуре."],
         ["Сколько действует гарантия?", "Срок гарантии зависит от услуги. Мы указываем его в описании услуги на сайте и в документе о ремонте, например в счёте-фактуре."],
@@ -483,7 +483,7 @@ const RU: ProcessText = {
       },
     },
     '05.2': {
-      title: "5.2. Возврат без ремонта",
+      title: "Возврат без ремонта",
       faq: [
         ["Сколько я заплачу, если вы не установите причину неисправности?", "За диагностику вы не платите — покрываете только транспорт."],
         ["Что, если я не отвечу на оценку?", "Если вы не ответите в течение 14 дней, мы попробуем связаться с вами ещё раз. Дальнейшее отсутствие ответа мы считаем отказом от ремонта и сообщаем вам о возможности забрать устройство."],
@@ -624,7 +624,7 @@ const EN: ProcessText = {
       },
     },
     '05.1': {
-      title: "5.1. Repair and return",
+      title: "Repair and return",
       faq: [
         ["When do I pay for the repair?", "We accept payment by bank transfer. Consumers pay before the device is sent back; businesses — by the due date stated on the invoice."],
         ["How long does the warranty last?", "The warranty period depends on the service. We state it in the service description on the website and in the repair document, e.g. on the invoice."],
@@ -647,7 +647,7 @@ const EN: ProcessText = {
       },
     },
     '05.2': {
-      title: "5.2. Return without repair",
+      title: "Return without repair",
       faq: [
         ["How much will I pay if you can't find the cause of the fault?", "You don't pay for the diagnosis — you only cover transport."],
         ["What if I don't reply to the quote?", "If you don't reply within 14 days, we'll try to contact you again. If there is still no reply, we treat it as a decision not to repair and let you know that you can collect the device."],

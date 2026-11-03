@@ -890,6 +890,15 @@ export function ServicePageTemplate({
                   </div>
                 </div>
               </div>
+              {/* Phone: the shipping-service CTA sits between the carousel and the logo strip (desktop has it under the H1). */}
+              {locale === 'pl' && (
+                <div className="md:hidden flex justify-center px-4 mt-3">
+                  <Link href="/serwis-wysylkowy" prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                    <span className="gold-text-sweep">Serwis wysyłkowy – cała Polska</span>
+                    <ChevronRight className="w-[18px] h-[18px]" />
+                  </Link>
+                </div>
+              )}
               {slug === 'druk-3d-na-zamowienie' ? (
                 <div className="mt-[40px]">
                   <PrintedPartsTicker locale={locale} />

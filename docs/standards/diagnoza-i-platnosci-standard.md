@@ -1,7 +1,7 @@
 # Диагностика и платежи
 
 ## Что это
-Правила, как везде на сайте описывать диагностику и оплату (утверждено 2026-10-28): в прайсах, окнах, FAQ, формах, шаблонах ответов клиентам и regulamin, на всех языках.
+Правила, как везде на сайте описывать диагностику и оплату: в прайсах, окнах, FAQ, формах, шаблонах ответов клиентам и regulamin, на всех языках.
 
 ## Главное
 - Бесплатная консультация и короткий осмотр при приёме не заменяют полную диагностику.
@@ -10,11 +10,12 @@
 - Если причину найти не удалось — диагностика бесплатна.
 - Деления на «простую» и «сложную» диагностику нет, дополнительных платежей не вводим.
 - Транспорт платный отдельно; действующие условия транспорта не меняем.
+- Цена диагностики в ответах (FAQ), окнах, документах и письмах берётся из строки «Diagnoza i wycena naprawy (w przypadku rezygnacji z naprawy)» в прайсе той же страницы. Цена в прайсе изменилась — сразу поправить ответы на всех языках.
 
 ## Для Claude (техническое)
 Всё ниже — для Claude: исходный текст правил, как он был. Читать не обязательно.
 
-## Diagnoza i płatności — zasady (utwierdzone przez użytkownika 2026-10-28)
+## Diagnoza i płatności — zasady
 
 Obowiązują wszystkie teksty o diagnozie i opłatach: cenniki, karty, okna, FAQ, podpowiedzi, formularze, potwierdzenia, szablony odpowiedzi klientom, regulamin — we wszystkich językach (PL źródłem, UK/RU/EN zsynchronizowane).
 
@@ -26,6 +27,7 @@ Obowiązują wszystkie teksty o diagnozie i opłatach: cenniki, karty, okna, FAQ
 6. Nie ma podziału na diagnozę standardową i złożoną. Nie wprowadzać takich kategorii ani dodatkowych opłat.
 7. Naprawa droga, nieopłacalna albo chwilowy brak części to rezygnacja Klienta po wycenie — diagnoza płatna (praca została wykonana; część Klient może też dostarczyć sam). Nie pisać „naprawa niemożliwa” ani „serwis odmawia naprawy” — takich sytuacji nie ma. Bezpłatna diagnoza tylko przy zleceniu naprawy lub nieustalonej przyczynie.
 8. Transport jest płatny osobno. Istniejących warunków i taryf transportu nie zmieniać.
+9. Kwota opłaty za diagnozę w FAQ, oknach, dokumentach i odpowiedziach klientom pochodzi z wiersza „Diagnoza i wycena naprawy (w przypadku rezygnacji z naprawy)” cennika tej samej strony. Zmiana ceny w cenniku = natychmiastowa korekta wszystkich odpowiedzi (PL/UK/RU/EN).
 
 Zatwierdzony dopisek w cenniku (nie zmieniać): «Pełna diagnoza i wycena naprawy (bezpłatna przy zleceniu naprawy lub gdy nie znajdziemy przyczyny usterki)», cena «GRATIS».
 

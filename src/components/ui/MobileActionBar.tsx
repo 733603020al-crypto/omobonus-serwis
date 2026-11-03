@@ -31,6 +31,8 @@ const MIN_CAPTION_FONT = 14
 const MIN_ICON_GAP = 6
 // Minimum space between a button's content and a column divider / screen edge.
 const EDGE_PAD = 4
+// Scroll distance (px) after which the bar slides up on pages that hold the first screen.
+const SHOW_AFTER_SCROLL = 40
 
 type ColumnFit = { widths: number[]; contents: number[]; fonts: (number | undefined)[]; gap: number }
 
@@ -98,6 +100,20 @@ export function MobileActionBar() {
         setMounted(true)
     }, [])
 
+    // Home and the PL service pages carry the "Serwis wysyłkowy" CTA above the logo strip,
+    // where this bar would cover it: there the bar stays down until the first scroll
+    // (past SHOW_AFTER_SCROLL px) and then stays for good, also when scrolling back up.
+    const holdsFirstScreen = pathname === '/' || (pathname?.startsWith('/uslugi/') ?? false)
+    const [scrolled, setScrolled] = useState(false)
+    useEffect(() => {
+        if (!holdsFirstScreen) return
+        const onScroll = () => { if (window.scrollY > SHOW_AFTER_SCROLL) setScrolled(true) }
+        onScroll()
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [holdsFirstScreen, pathname])
+    const hidden = holdsFirstScreen && !scrolled
+
     useLayoutEffect(() => {
         if (!mounted) return
         const measure = () => {
@@ -133,8 +149,10 @@ export function MobileActionBar() {
     return createPortal(
         <>
             <div
-                className="fixed bottom-0 left-0 right-0 z-40 md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center"
+                className={`fixed bottom-0 left-0 right-0 z-40 md:hidden min-h-[65px] flex flex-col justify-center border-t border-[#bfa76a] bg-cover bg-center transition-transform duration-300 ease-out${hidden ? ' translate-y-full pointer-events-none' : ''}`}
                 style={{ backgroundImage: 'var(--bg-parchment)' }}
+                aria-hidden={hidden || undefined}
+                inert={hidden || undefined}
             >
                 <div className="absolute inset-0 bg-black/60" />
 

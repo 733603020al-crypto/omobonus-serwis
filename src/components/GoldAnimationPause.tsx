@@ -11,6 +11,27 @@ import { useEffect } from 'react'
 const SEL = '.gold-border-flow, .gold-text-sweep'
 
 export function GoldAnimationPause() {
+    // Gold CTA animations and the logo ticker stay paused (globals.css, html:not([data-anim-ready]))
+    // until the page has loaded and the main thread is idle, so they never compete with the first load.
+    useEffect(() => {
+        const root = document.documentElement
+        let idle: number | undefined
+        const ready = () => root.setAttribute('data-anim-ready', '')
+        const afterLoad = () => {
+            if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(ready, { timeout: 2000 })
+            else idle = window.setTimeout(ready, 300)
+        }
+        if (document.readyState === 'complete') afterLoad()
+        else window.addEventListener('load', afterLoad, { once: true })
+        return () => {
+            window.removeEventListener('load', afterLoad)
+            if (idle !== undefined) {
+                if (typeof window.cancelIdleCallback === 'function') window.cancelIdleCallback(idle)
+                else window.clearTimeout(idle)
+            }
+        }
+    }, [])
+
     useEffect(() => {
         if (typeof IntersectionObserver === 'undefined') return
         const io = new IntersectionObserver((entries) => {

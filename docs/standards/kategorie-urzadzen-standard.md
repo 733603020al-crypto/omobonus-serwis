@@ -1,7 +1,7 @@
 # Окно «Kategorie urządzeń»
 
 ## Что это
-Информационное окно с категориями устройств на страницах услуг (стандарт утверждён 2026-10-17). Оно показывает, какие устройства входят в какую ценовую категорию.
+Информационное окно с категориями устройств на страницах услуг. Оно показывает, какие устройства входят в какую ценовую категорию.
 
 ## Главное
 - На всех страницах — один общий компонент и один вид окна; отдельные компоненты и стили под одну страницу не создаём.
@@ -14,7 +14,7 @@
 
 ## Standard okna „Kategorie urządzeń”
 
-Status: **zatwierdzony** (2026-10-17); decyzje i odpowiedzi na pytania — rozdział 5, stan wdrożenia — 5.8. Dokument opisuje okno informacyjne z kategoriami urządzeń w cenniku stron usług (`/uslugi/[slug]`). Jest samodzielny: do zbudowania nowego okna nie trzeba zaglądać na żadną konkretną stronę.
+Status: **zatwierdzony**; decyzje i odpowiedzi na pytania — rozdział 5, stan wdrożenia — 5.8. Dokument opisuje okno informacyjne z kategoriami urządzeń w cenniku stron usług (`/uslugi/[slug]`). Jest samodzielny: do zbudowania nowego okna nie trzeba zaglądać na żadną konkretną stronę.
 
 Rozdział 1–3 opisują **stan faktyczny z kodu przed etapem 1** (wartości zmierzone w przeglądarce: 1440, 1024 i 390 px); zmiany etapu 1 — 5.1–5.3. Rozdział 4 to **zasady treści**. Rozdział 5 to **zatwierdzone decyzje**.
 
@@ -146,7 +146,7 @@ Nowe okno = ten sam komponent `PriceTooltipContent`, wpis slug w `SPECIAL_TOOLTI
 
 ### 5. Zatwierdzone decyzje (obowiązują wszystkie okna)
 
-Zatwierdzone 2026-10-17 (5.1–5.4), odpowiedzi na pytania — 2026-10-17 (5.7). Stan wdrożenia — 5.8.
+Stan wdrożenia — 5.8.
 
 #### 5.1 Wspólne wyrównanie kart — ZATWIERDZONE, WDROŻONE (etap 1)
 
@@ -236,7 +236,7 @@ Bez nowych komponentów i bez warunków w JSX. W typach nadal jest nieużywany k
 - Myślnik: część stron ma `—` zamiast `–` — **ujednolicić do `–`**.
 - Wartości `(np. …)` 50 / 100 / 150 są wspólne dla 9 stron — weryfikacja według 5.4.
 
-#### 5.7 Odpowiedzi na pytania przed wdrożeniem (2026-10-17)
+#### 5.7 Odpowiedzi na pytania przed wdrożeniem
 
 1. **Linia 1 i linia 2** — dwa osobne wiersze. Komponent dzieli opis po pierwszym `: `, jeśli dalej zaczyna się wyliczenie (`pierwsza` / `перша` / `первая`); każdy wiersz to `<span className="block">`. Inny schemat tekstu = jeden akapit.
 2. **Tablet 768–1023 px** — strefa tytułów wspólna i automatyczna (także 3 linie); fontu nie zmniejszać, tytułów nie skracać.
@@ -252,6 +252,6 @@ Bez nowych komponentów i bez warunków w JSX. W typach nadal jest nieużywany k
 
 | Etap | Zakres | Stan |
 |---|---|---|
-| 1 | Dwa wiersze opisu, wyrównanie kart (subgrid), jawne line-height, mechanizm uwagi pod kartami, usunięcie kropek na końcu tytułów i opisów kart (PL/UK/RU) — 14 stron | wdrożone 2026-10-17, bez commita |
-| 2 | Teksty i ceny: nowe opisy kart i linii, DTF we wspólnej strukturze, usunięcie „części”, uwagi niszczarek/UPS, myślnik `–`, `(np. … zł netto)` na wszystkich 14 stronach (PL/UK/RU) | wdrożone 2026-10-17, bez commita |
-| 3 | Refaktoryzacja danych: jedna konfiguracja `DEVICE_CATEGORIES_WINDOWS` po slug, bez warunków w komponencie (5.5); wygląd i teksty bez zmian | wdrożone 2026-10-17, bez commita |
+| 1 | Dwa wiersze opisu, wyrównanie kart (subgrid), jawne line-height, mechanizm uwagi pod kartami, usunięcie kropek na końcu tytułów i opisów kart (PL/UK/RU) — 14 stron | wdrożone, bez commita |
+| 2 | Teksty i ceny: nowe opisy kart i linii, DTF we wspólnej strukturze, usunięcie „części”, uwagi niszczarek/UPS, myślnik `–`, `(np. … zł netto)` na wszystkich 14 stronach (PL/UK/RU) | wdrożone, bez commita |
+| 3 | Refaktoryzacja danych: jedna konfiguracja `DEVICE_CATEGORIES_WINDOWS` po slug, bez warunków w komponencie (5.5); wygląd i teksty bez zmian | wdrożone, bez commita |

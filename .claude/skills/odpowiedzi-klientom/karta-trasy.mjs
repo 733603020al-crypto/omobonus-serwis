@@ -69,12 +69,15 @@ async function zGoogleMaps(browser, adres) {
     // okno zgody na cookies (pierwsze uruchomienie) — odrzucamy, mapa działa i bez nich
     if (page.url().includes('consent.')) {
       await page.locator('button:has-text("Odrzuć wszystko"), button:has-text("Reject all")').first().click({ timeout: 15000 })
-      await page.waitForURL(u => !String(u).includes('consent.'), { timeout: 30000 })
+      await page.waitForURL(u => !String(u).includes('consent.'), { timeout: 30000 }).catch(() => {}) // po kliknięciu Google przekierowuje; ERR_ABORTED ignorujemy
+      await page.waitForFunction(() => !location.href.includes('consent.'), null, { timeout: 30000 })
     }
-    const trip = page.locator('[id^="section-directions-trip-0"]').first()
-    await trip.waitFor({ timeout: 45000 })
+    // Google zmienił znaczniki (brak id „section-directions-trip”) — czekamy na tekst „przez:” w panelu i bierzemy czas i km tuż przed nim (pierwsza trasa)
+    await page.locator('[role="main"]').first().waitFor({ timeout: 45000 })
+    await page.waitForFunction(() => /przez:/i.test(document.querySelector('[role="main"]')?.innerText || ''), null, { timeout: 45000 })
     await page.waitForTimeout(3000) // dorysowanie trasy na mapie
-    const txt = await trip.innerText()
+    const all = await page.locator('[role="main"]').first().innerText()
+    const txt = all.slice(Math.max(0, all.search(/przez:/i) - 60), all.search(/przez:/i))
     const km = txt.match(/(\d+(?:[,.]\d+)?)\s*km/)
     const m = txt.match(/\d+\s*m(?!in)\b/) // trasy < 1 km Google podaje w metrach
     const metry = km ? Math.round(parseFloat(km[1].replace(',', '.')) * 1000) : m ? parseInt(m[0]) : 0
@@ -86,6 +89,19 @@ async function zGoogleMaps(browser, adres) {
     const panel = await page.locator('[role="main"]').first().boundingBox()
     const x = Math.round(panel ? panel.x + panel.width : 430)
     const clip = { x, y: 0, width: VW - x, height: VH }
+    // chowamy nakładki Google (wyszukiwarka, logowanie, warstwy, zoom, zwijanie panelu) — zostaje mapa i trasa
+    await page.addStyleTag({ content: '#gb,.tXNTee,[role="tooltip"]{display:none!important}' })
+    await page.evaluate(() => {
+      // przyciski i podpowiedzi na mapie (zoom, warstwy, zwijanie panelu, stopka) — chowamy wszystko małe nad mapą
+      const ukryj = e => e.style.setProperty('display', 'none', 'important')
+      document.querySelectorAll('button,[role="button"]').forEach(e => { if (e.getBoundingClientRect().x > 430 && e.closest('[role="main"]') == null) ukryj(e) })
+      document.querySelectorAll('div,span').forEach(e => { if (!e.children.length && /panel boczny$/.test(e.textContent.trim())) { let t = e; for (let i = 0; i < 3 && t.parentElement && t.parentElement.getBoundingClientRect().width < 260; i++) t = t.parentElement; ukryj(t) } })
+      for (const [x, y] of [[520, 475], [545, 500], [570, 530], [1165, 430], [1165, 465], [1165, 495], [1165, 525]]) {
+        for (const e of document.elementsFromPoint(x, y)) { const r = e.getBoundingClientRect(); if (e.tagName !== 'CANVAS' && r.width < 140 && r.height < 140 && e !== document.body) ukryj(e) }
+      }
+    })
+    await page.mouse.move(5, VH - 5)
+    await page.waitForTimeout(500)
     const png = (await page.screenshot({ clip })).toString('base64')
     const r = await fetch(`${opt.host}/dev/koszt-dojazdu/dane`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
