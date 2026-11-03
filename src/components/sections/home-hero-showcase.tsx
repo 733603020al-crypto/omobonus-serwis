@@ -2,7 +2,7 @@
 
 import '@/app/styles/service-hero.css'
 import '@/app/styles/home-hero-words.css'
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
@@ -43,6 +43,19 @@ const SIZE_COEFFICIENTS = [0.87, 0.69, 0.85, 0.72, 0.85, 0.85, 0.73, 0.97, 0.85,
 // The laptop (slide 0 and the opening laptop) is 10% bigger and may reach the screen edges.
 const MOBILE_SIZE_COEFFICIENTS = SIZE_COEFFICIENTS.map((c, i) => (i === 0 ? 0.825 : Math.min(c, 0.75)))
 const VERTICAL_BIAS = [0, 0, 4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 13, 0, 4, 0, 0]
+// [source width, source height, first visible row, last visible row + 1].
+// Alpha > 8/255, union of every animation frame (the PC uses its phone file).
+// These bounds describe the artwork, not the transparent object-contain box.
+// Inkjet includes the print clip's rows 7..608 mapped through its printer bbox
+// into the 512x392 photo coordinates; the moving sheet can extend beyond it.
+const MOBILE_IMAGE_BOUNDS = [
+  [578, 502, 4, 498], [483, 600, 3, 597], [512, 455, 0, 455],
+  [512, 392, -10, 404], [512, 348, 0, 348], [512, 388, 0, 388],
+  [492, 497, 4, 493], [512, 349, 3, 349], [512, 231, 0, 231],
+  [512, 369, 1, 369], [512, 456, 1, 455], [512, 411, 0, 411],
+  [512, 362, 0, 362], [408, 512, 0, 512], [512, 432, 2, 432],
+  [512, 271, 0, 271], [512, 463, 0, 463],
+] as const
 // Desktop PC: static picture holds the slide's place, the animation loads only
 // when that slide is next up (see HeroPrinterCarousel).
 const SLIDE_POSTERS = [undefined, '/images/02_serwis-komputerow-stacjonarnych-static.webp']
@@ -172,6 +185,45 @@ export function HomeHeroShowcase({
   const [fit, setFit] = useState(1)
   const [vw, setVw] = useState(0)
   const measureRef = useRef<HTMLSpanElement>(null)
+  const imageZoneRef = useRef<HTMLDivElement>(null)
+  const [mobileGeometry, setMobileGeometry] = useState({
+    sizes: MOBILE_SIZE_COEFFICIENTS,
+    shifts: SLIDES.map(() => 0),
+  })
+  useLayoutEffect(() => {
+    const zone = imageZoneRef.current
+    const carousel = zone?.querySelector('.hero-printer-carousel')
+    if (!zone || !carousel) return
+    const measure = () => {
+      if (window.innerWidth >= 768) return
+      const halfHeight = zone.getBoundingClientRect().height / 2 - 1
+      const box = carousel.getBoundingClientRect()
+      // Match the existing 78% slide box and 1.54 active scale. Keep the size
+      // if the artwork fits; clamp its centre before shrinking a tall image.
+      const slideWidth = box.width * 0.78
+      const slideHeight = box.height * 0.78
+      const geometry = MOBILE_SIZE_COEFFICIENTS.map((size, i) => {
+        const [width, height, top, bottom] = MOBILE_IMAGE_BOUNDS[i]
+        const paintedHeight = Math.min(slideWidth / width, slideHeight / height) * height
+        const visibleHeight = paintedHeight * (bottom - top) / height * 1.54
+        const fittedSize = Math.min(size, 2 * halfHeight / visibleHeight)
+        const centre = slideHeight * VERTICAL_BIAS[i] / 100
+          + paintedHeight * ((top + bottom) / (2 * height) - 0.5) * 1.54 * fittedSize
+        const room = Math.max(0, halfHeight - visibleHeight * fittedSize / 2)
+        const shift = Math.max(-room, Math.min(room, centre)) - centre
+        return { size: fittedSize, shift }
+      })
+      const sizes = geometry.map(item => item.size)
+      const shifts = geometry.map(item => item.shift)
+      setMobileGeometry(prev => prev.sizes.every((size, i) => Math.abs(size - sizes[i]) < 0.00001
+        && Math.abs(prev.shifts[i] - shifts[i]) < 0.01) ? prev : { sizes, shifts })
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(zone)
+    observer.observe(carousel)
+    return () => observer.disconnect()
+  }, [])
   useEffect(() => {
     const onResize = () => setVw(window.innerWidth)
     window.addEventListener('resize', onResize)
@@ -196,14 +248,18 @@ export function HomeHeroShowcase({
   return (
     <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-        <div className="service-hero-zone home-hero-zone flex justify-center items-center h-[min(420px,100vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center">
+        <div
+          ref={imageZoneRef}
+          className="service-hero-zone home-hero-zone flex justify-center items-center h-[min(420px,100vw,max(200px,calc(100svh-390px)))] md:h-[400px] md:self-center"
+          style={{ '--home-mobile-slide-shift': `${mobileGeometry.shifts[Math.max(active, 0)]}px` } as CSSProperties}
+        >
           <Link href={href} prefetch={false} aria-label={label} className="service-hero-image-wrap home-hero-carousel-wrap service-hero-carousel relative shrink-0 block cursor-pointer" style={{ width: '120%', height: '120%' }}>
             <HeroPrinterCarousel
               alt={alt}
               variant="home"
               slides={SLIDES}
               sizeCoefficients={SIZE_COEFFICIENTS}
-              mobileSizeCoefficients={MOBILE_SIZE_COEFFICIENTS}
+              mobileSizeCoefficients={mobileGeometry.sizes}
               verticalBias={VERTICAL_BIAS}
               slidePosters={SLIDE_POSTERS}
               mobileStills={MOBILE_STILLS}
@@ -223,9 +279,11 @@ export function HomeHeroShowcase({
             <h1 className="sr-only">{h1}</h1>
             <Link href={href} prefetch={false} tabIndex={-1} aria-hidden="true" className="block cursor-pointer">
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line1}</span>
-              <span className="block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]" style={fit < 1 ? { fontSize: `${fit}em` } : undefined}>
-                <AnimatedPart text={mid.parts[0]} mode={mode} fit={fit} />
-                <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} fit={fit} />
+              <span className="home-hero-middle block w-full text-center whitespace-nowrap md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]" style={{ '--home-hero-fit': fit } as CSSProperties}>
+                <span className="home-hero-middle-text">
+                  <AnimatedPart text={mid.parts[0]} mode={mode} fit={fit} />
+                  <AnimatedPart text={second} mode={mode} delay={mode === 'letters' ? firstLen * 32 : 0} fit={fit} />
+                </span>
               </span>
               <span ref={measureRef} aria-hidden="true" className="fixed left-0 top-0 invisible whitespace-nowrap pointer-events-none">{mid.parts[0]}{second}</span>
               <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>

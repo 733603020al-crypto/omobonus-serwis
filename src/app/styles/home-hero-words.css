@@ -86,7 +86,35 @@
 
 /* Home hero on phones only: the picture box gets the full screen width and the
    same 120% height as on desktop (size cap per slide: MOBILE_SIZE_COEFFICIENTS). */
+.home-hero-middle {
+  font-size: calc(var(--home-hero-fit, 1) * 1em);
+}
+
+.home-hero-middle-text {
+  display: contents;
+}
+
 @media (max-width: 767.98px) {
+  /* Reserve the original full-size line; only its contents shrink to fit. */
+  .home-hero-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    height: 1.05em;
+  }
+
+  .home-hero-middle-text {
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: calc(var(--home-hero-fit, 1) * 1em);
+  }
+
+  /* Move only the active artwork, never the zone, carousel box or CTA. */
+  .home-hero-zone .hero-home-slide-active {
+    top: calc(50% + var(--home-mobile-slide-shift, 0px));
+  }
+
   .home-hero-zone > .service-hero-image-wrap {
     width: 100vw !important;
     height: 120% !important;
