@@ -23,8 +23,9 @@ const PARCHMENT_CTA =
 const STEP_BADGE_BASE = `${PARCHMENT_CTA} pointer-events-none !p-0 gold-shiny-card`
 // The same circle in the open window's header, inline before the title; always lit there.
 const STEP_BADGE_HEADER = `${STEP_BADGE_BASE} mr-3 h-[30px] w-[30px] flex-none align-middle md:h-[40px] md:w-[40px] data-[lit]:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))]`
+// Number circle on the step cards: a plain brown disc (the parchment ink of the cards) with a white digit, no effects.
 const STEP_BADGE =
-  `${STEP_BADGE_BASE} !absolute z-[5] h-[22px] w-[22px] md:h-[48px] md:w-[48px] md:group-hover:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))] data-[lit]:bg-[linear-gradient(180deg,rgba(244,217,160,0.85),rgba(200,148,82,0.75))]`
+  'pointer-events-none !absolute z-[5] inline-flex items-center justify-center rounded-full bg-[#3a2817] text-white h-[22px] w-[22px] md:h-[48px] md:w-[48px]'
 import type { ServiceData } from '@/lib/services-data'
 import type { ServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceIconSrc as CARD_ICON_SRC, serviceCardBaked as CARD_BAKED } from '@/lib/services-meta-shared'
@@ -548,7 +549,7 @@ export function Services({
           the strip's own scale, only a slice of the plain middle is left out
           (no stretching). */}
       {step.number === '04' && (['left', 'right'] as const).map((side) => (
-        <div key={side} aria-hidden="true" className={`pointer-events-none absolute inset-y-0 w-1/2 overflow-hidden max-lg:hidden ${side === 'left' ? 'left-0' : 'right-0'}`}>
+        <div key={side} aria-hidden="true" className={`pointer-events-none absolute inset-y-0 w-[calc(50%+1px)] overflow-hidden max-lg:hidden ${side === 'left' ? 'left-0' : 'right-0'}`}>
           <Image src={step.image} alt="" width={1440} height={291} sizes={step.sizes} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />
           {flowNear && <HeroSpotlight reuseShown src={step.image} depth={FLAT_DEPTH} hide="img" lit={flow.lift.includes('04')} point={SPOT_POINT[step.number]} style={{}} className={`absolute top-0 h-full w-auto max-w-none ${side === 'left' ? 'left-0' : 'right-0'}`} />}
         </div>
@@ -565,11 +566,9 @@ export function Services({
       {step.number === '05.2' && (
         <Image src={stamps.zwrot} alt="" width={510} height={207} sizes="(min-width: 1024px) 170px, 42vw" className="pointer-events-none absolute right-[5%] top-[55%] z-[3] w-[40%] -translate-y-1/2 -rotate-6" />
       )}
-      {!step.number.startsWith('05') && (
-        <span aria-hidden="true" data-lit={flow.lift.includes(step.number) ? '' : undefined} className={`${STEP_BADGE} ${step.number === '04' ? 'left-[10px] top-[25px] md:left-[162px] md:top-[8px]' : 'left-[18px] top-[10px] md:left-[14px] md:top-[8px]'}`}>
-          <span className="gold-text-sweep font-inter text-[12px] font-semibold leading-none md:text-[24px]">{step.number.replace(/^0/, '')}</span>
-        </span>
-      )}
+      <span aria-hidden="true" data-lit={flow.lift.includes(step.number) ? '' : undefined} className={`${STEP_BADGE} ${step.number === '04' ? 'left-[10px] top-[25px] md:left-[162px] md:top-[8px]' : step.number.startsWith('05') ? 'left-1/2 top-[10px] -translate-x-1/2 md:top-[8px]' : 'left-[18px] top-[10px] md:left-[14px] md:top-[8px]'}`}>
+        <span className="font-inter text-[12px] font-semibold leading-none md:text-[24px]">{step.number === '05.1' ? '+' : step.number === '05.2' ? '−' : step.number.replace(/^0/, '')}</span>
+      </span>
       <div className={`relative z-[4] flex h-full flex-col text-[#24160B] ${step.number === '04'
         ? 'mx-auto max-w-[38%] items-center justify-center text-center md:max-w-none'
         : `max-w-[49%] items-start justify-center py-4 pl-6 pr-3 text-left md:pl-8 ${step.number === '03' ? 'md:pt-[50px]' : step.number.startsWith('05') ? '' : 'md:pt-[24px]'}`

@@ -4408,6 +4408,36 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   }
 }
 
+/* Nagłówek bloku FAQ na /serwis-wysylkowy: typografia jak tytuły kart „Naprawa i zwrot” (24 px mobile, 28 px desktop, Cormorant 700, #24160B, interlinia 1,05). */
+.questions-accordion [data-naprawy-open-title] {
+  font-weight: 700;
+  font-size: 24px !important;
+  line-height: 1.05;
+  color: #24160B;
+}
+@media (min-width: 768px) {
+  .questions-accordion span[data-naprawy-open-title].zakres-title-text { font-size: 28px !important; }
+}
+
 /* Odpowiedzi FAQ (standard .claude/rules/faq-answer-standard.md): wyróżnienia 700, akapity z odstępem ~pół linii zamiast pustej linii. */
 .faq-answer-text strong { font-weight: 700; }
 .faq-answer-text > p + p { margin-top: 0.7em; }
+
+/* Próba: złote przyciski (GOLD_CTA) — tekst i strzałka białe przy najechaniu myszą (tylko desktop). */
+@media (min-width: 768px) and (hover: hover) {
+  .gold-shiny:not(.gold-shiny-card):not(.scope-switch):not(.cat-switch):not(.scope-switch-pill):not(.cat-switch-pill):hover .gold-text-sweep {
+    background-image: linear-gradient(#fff, #fff);
+  }
+  .gold-shiny:not(.gold-shiny-card):not(.scope-switch):not(.cat-switch):not(.scope-switch-pill):not(.cat-switch-pill):hover svg {
+    color: #fff;
+  }
+}
+@media (min-width: 768px) and (hover: hover) {
+  .scope-switch :is(a, button, .scope-switch-cell):hover .gold-text-sweep,
+  .cat-switch [role="tab"]:hover .cat-switch-label {
+    background-image: linear-gradient(#fff, #fff);
+  }
+}
+@media (min-width: 768px) and (hover: hover) {
+  .cat-switch [role="tab"]:hover > span[aria-hidden="true"] { background-color: #fff !important; }
+}

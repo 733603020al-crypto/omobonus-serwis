@@ -314,7 +314,7 @@ export function HomeHeroShowcase({
             <Link
               href={cta.href}
               prefetch={false}
-              className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}
+              className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO} more-about-cta`}
             >
               <span className="gold-text-sweep">{cta.label}</span>
               <ChevronRight className="w-[18px] h-[18px]" />
@@ -325,7 +325,7 @@ export function HomeHeroShowcase({
       {/* Phone: the same CTA sits under the carousel (above the logo strip); on desktop it is under the H1. */}
       {cta && (
         <div className="md:hidden flex justify-center mt-3">
-          <Link href={cta.href} prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO} home-cta-mobile`}>
+          <Link href={cta.href} prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO} home-cta-mobile more-about-cta`}>
             <span className="gold-text-sweep">{cta.label}</span>
             <ChevronRight className="w-[18px] h-[18px]" />
           </Link>

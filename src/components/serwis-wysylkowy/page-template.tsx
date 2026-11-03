@@ -119,8 +119,8 @@ export function HomePageTemplate({
           }}
         />
         <div className="home-below relative z-10">
-          {/* Gap to the heading below cut to a third: 98px → 22px on desktop, 66px → 20px on phones. */}
-          <div className="-mb-[46px] md:-mb-[76px]">
+          {/* Gap to the heading below cut to a third: 98px → 18px on desktop, 66px → 16px on phones. */}
+          <div className="-mb-[50px] md:-mb-[80px]">
             <CategoryCatalog servicesData={servicesCards} basePath={servicesBasePath} t={servicesT} locale={locale} bare goldSwitch sectionId="kategorie" />
           </div>
 
@@ -131,7 +131,7 @@ export function HomePageTemplate({
           </div>
 
           {/* The "Skąd nazwa / O nas" block is left out here; only the reviews stay. */}
-          <div className="pt-[60px] md:pt-[84px]">
+          <div className="pt-[16px] md:pt-[30px]">
             <GoogleReviews locale={locale} />
           </div>
 

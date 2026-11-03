@@ -121,7 +121,7 @@ export function About({
               <Link
                 href={d.moreAboutHref ?? '/o-nas'}
                 prefetch={false}
-                className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
+                className={`${GOLD_CTA} ${GOLD_CTA_SIZE} more-about-cta`}
               >
                 <span className="gold-text-sweep">{d.moreAboutLink ?? 'Więcej o nas'}</span>
                 <ChevronRight className="w-4 h-4" />
@@ -183,7 +183,7 @@ export function About({
                 <Link
                   href={d.moreAboutHref ?? '/o-nas'}
                   prefetch={false}
-                  className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
+                  className={`${GOLD_CTA} ${GOLD_CTA_SIZE} more-about-cta`}
                 >
                   <span className="gold-text-sweep">{d.moreAboutLink ?? 'Więcej o nas'}</span>
                   <ChevronRight className="w-4 h-4" />

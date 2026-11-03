@@ -55,7 +55,7 @@ export function HomeCta({ heading, text, headingMobile, textMobile, button, href
           <Link
             href={href}
             prefetch={false}
-            className={`${GOLD_CTA} ${GOLD_CTA_SIZE}`}
+            className={`${GOLD_CTA} ${GOLD_CTA_SIZE} more-about-cta`}
           >
             <span className="gold-text-sweep">{button}</span>
             <ChevronRight className="w-4 h-4" />
