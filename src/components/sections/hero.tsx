@@ -99,7 +99,7 @@ const heroCommon = { alt: 'Omobonus serwis', fill: true, sizes: '100vw', priorit
 const { props: { srcSet: heroDesktopSrcSet } } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-desktop.webp', quality: 32 })
 const { props: heroMobileProps } = getImageProps({ ...heroCommon, src: '/images/omobonus-hero-mobile.webp', quality: 60 })
 
-export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en'; cta?: { label: ReactNode; href: string } } = {}) {
+export function Hero({ children, t, locale = 'pl', cta, scope }: { children?: ReactNode; t?: HeroT; locale?: 'pl' | 'uk' | 'ru' | 'en'; cta?: { label: ReactNode; href: string }; scope?: { left: string; right: string; href: string } } = {}) {
   const d = t ?? PL
 
   return (
@@ -146,6 +146,7 @@ export function Hero({ children, t, locale = 'pl', cta }: { children?: ReactNode
           alt={d.carouselAlt ?? CAROUSEL_PL.alt}
           basePath={locale === 'pl' ? '/uslugi' : `/${locale}/uslugi`}
           cta={cta}
+          scope={scope}
         />
       </div>
       {children}

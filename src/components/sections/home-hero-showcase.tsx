@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type 
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { HeroPrinterCarousel } from '@/components/hero-printer-carousel'
+import { HeroScopeSwitch } from '@/components/sections/hero-scope-switch'
 import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
 import { ATRAMENT_PRINT_CLIP } from '@/lib/atrament-print-clip'
 
@@ -152,6 +153,7 @@ export function HomeHeroShowcase({
   alt,
   basePath = '/uslugi',
   cta,
+  scope,
 }: {
   /** Full H1 text for search engines/screen readers (unchanged SEO heading). */
   h1: string
@@ -163,6 +165,8 @@ export function HomeHeroShowcase({
   basePath?: string
   /** "Szybki kontakt" button under the H1 — same as the home CTA section, ~10% larger. */
   cta?: { label: ReactNode; href: string }
+  /** Two-position switch (PL home): replaces the third headline line and the CTA button. */
+  scope?: { left: string; right: string; href: string }
 }) {
   // -1 = the one-time opening slide (see OPENING)
   const [active, setActive] = useState(-1)
@@ -170,7 +174,16 @@ export function HomeHeroShowcase({
   const [mode, setMode] = useState<Mode>('cycle')
   const mid = active < 0 ? OPENING_MID : mids[active % mids.length]
 
+  // Scope switch: moves after every two slides (0–1 left, 2–3 right, …, 16 left), driven only by the
+  // carousel's own slide changes. A manual click pins the choice until the carousel wraps to slide 0.
+  const [scopePos, setScopePos] = useState<0 | 1>(0)
+  const scopePinned = useRef(false)
+  const lastSlide = useRef(-1)
+
   const onActiveChange = (i: number) => {
+    if (i === 0 && lastSlide.current > 0) scopePinned.current = false
+    lastSlide.current = i
+    if (scope && i >= 0 && !scopePinned.current) setScopePos(Math.floor(i / 2) % 2 === 0 ? 0 : 1)
     const next = i < 0 ? OPENING_MID : mids[i % mids.length]
     setMode(next.group === prevGroup ? 'cycle' : 'letters')
     setPrevGroup(next.group)
@@ -286,8 +299,18 @@ export function HomeHeroShowcase({
                 </span>
               </span>
               <span ref={measureRef} aria-hidden="true" className="fixed left-0 top-0 invisible whitespace-nowrap pointer-events-none">{mid.parts[0]}{second}</span>
-              <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>
+              {!scope && <span className="block w-full text-center whitespace-nowrap text-[0.93em] md:text-[0.78em] md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)]">{line3}</span>}
             </Link>
+            {scope && (
+              <HeroScopeSwitch
+                left={scope.left}
+                right={scope.right}
+                href={scope.href}
+                position={scopePos}
+                onLeft={() => { scopePinned.current = true; setScopePos(0) }}
+                onRight={() => { scopePinned.current = true; setScopePos(1) }}
+              />
+            )}
           </div>
           {cta && (
             <Link

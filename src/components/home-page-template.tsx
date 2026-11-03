@@ -2,6 +2,7 @@ import type { ComponentProps, ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/sections/hero'
+import { SCOPE_LABELS } from '@/components/sections/hero-scope-switch'
 import { About } from '@/components/sections/about'
 import BrandTicker from '@/components/brand-ticker'
 import GoogleReviews from '@/components/google-reviews'
@@ -86,7 +87,7 @@ export function HomePageTemplate({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogLd) }} />
       <Header locale={locale} />
       <div>
-        <Hero t={heroT} locale={locale} cta={locale === 'pl' ? { label: 'Serwis wysyłkowy – cała Polska', href: '/serwis-wysylkowy' } : { label: cta.button, href: cta.href }}>
+        <Hero t={heroT} locale={locale} scope={{ ...SCOPE_LABELS[locale], href: locale === 'pl' ? '/serwis-wysylkowy' : `/${locale}/serwis-wysylkowy` }}>
           <div className="absolute bottom-[36px] left-0 w-full z-10 md:bottom-[48px]">
             <BrandTicker compact muted />
           </div>

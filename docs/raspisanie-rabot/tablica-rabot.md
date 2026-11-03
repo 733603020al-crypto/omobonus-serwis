@@ -14,3 +14,4 @@
 | Карточка Google: новые отзывы | раз в день | см. `docs/karta-google/` | `docs/karta-google/` |
 | Карточка Google: фото (минимум 7) и запас публикаций на 2 недели | раз в неделю | см. `docs/karta-google/` | `docs/karta-google/` |
 | Программа сервиса: подсказки устройств без описания | 30 дней | 2026-10-31 | запустить `node C:/Users/Andrii/omobonus-workspace/service/sync-countries.mjs`; строка «НОВЫЕ УСТРОЙСТВА БЕЗ ПОДСКАЗКИ» — заполнить `service/device-hints.json` на 4 языках (pl, uk, ru, en) |
+| Новые услуги в меню без слайда в карусели «Serwis wysyłkowy» | раз в неделю | 2026-11-03 | `docs/raspisanie-rabot/novye-uslugi-nedelya.md` |

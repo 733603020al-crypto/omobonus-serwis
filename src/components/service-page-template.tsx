@@ -1,10 +1,12 @@
 import '@/app/styles/accordion.css'
 import '@/app/styles/service-hero.css'
+import '@/app/styles/home-hero-words.css'
 import dynamic from 'next/dynamic'
 import Image, { getImageProps } from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
+import { HeroScopeSwitch, SCOPE_LABELS } from '@/components/sections/hero-scope-switch'
 import type { ReactNode, ComponentProps } from 'react'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
@@ -535,6 +537,10 @@ export function ServicePageTemplate({
   const pageClass = PAGE_CLASS_SLUGS.includes(slug) ? `page-${slug}` : ''
   const repairAccordionClass = REPAIR_ACCORDION_LAYOUT_SLUGS.includes(slug) ? 'page-repair-accordion' : ''
   // The mail-in page opens its carousel on the service the visitor came from (?from=<slug>).
+  // Switch "we Wrocławiu | cała Polska" instead of the gold button; rental and replacement printer keep the button.
+  const hasScopeSwitch = slug !== 'wynajem-drukarek' && slug !== 'drukarka-zastepcza'
+  // With the switch the last heading line ("we Wrocławiu") stays for readers and search, but the switch is what is drawn there.
+  const lastLineCls = hasScopeSwitch ? 'sr-only' : 'block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap'
   const shippingHref = `${locale === 'pl' ? '' : `/${locale}`}/serwis-wysylkowy?from=${slug}`
 
   return (
@@ -833,7 +839,7 @@ export function ServicePageTemplate({
                         <h1 className="contents">
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[0]}{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.accent && headings.lines[1].includes(headings.accent) ? (<>{headings.lines[1].split(headings.accent)[0]}<span className="text-[#bfa76a]">{headings.accent}</span>{headings.lines[1].split(headings.accent).slice(1).join(headings.accent)}</>) : headings.lines[1]}{' '}</span>
-                          <span className="order-2 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
+                          <span className={`order-2 ${lastLineCls}`}>{headings.lines[2]}</span>
                         </h1>
                         <span className="order-1 block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
                       </div>
@@ -849,19 +855,19 @@ export function ServicePageTemplate({
                           <h1 className="sr-only">Serwis i naprawa drukarek we Wrocławiu</h1>
                           <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
                           <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] whitespace-nowrap"><PrinterHubMid mids={PRINTER_HERO_MIDS} /></span>
-                          <span aria-hidden="true" className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                          <span aria-hidden="true" className={hasScopeSwitch ? "hidden" : "block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap"}>we Wrocławiu</span>
                         </>
                       ) : locale === 'pl' && slug === 'druk-3d-na-zamowienie' ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Druk 3D{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">na zamówienie{' '}</span>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                          <span className={lastLineCls}>we Wrocławiu</span>
                         </>
                       ) : locale === 'pl' && HERO_LINES_PL[slug] ? (
                         <>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">Serwis i naprawa{' '}</span>
                           <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{HERO_LINES_PL[slug].mid}{' '}</span>
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">we Wrocławiu</span>
+                          <span className={lastLineCls}>we Wrocławiu</span>
                         </>
                       ) : headings.lines ? (
                         <>
@@ -870,7 +876,7 @@ export function ServicePageTemplate({
                           {headings.tagline && (
                             <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl">{headings.tagline}{' '}</span>
                           )}
-                          <span className="block w-full text-center md:w-max md:relative md:left-1/2 md:[transform:translateX(-50%)] md:whitespace-nowrap">{headings.lines[2]}</span>
+                          <span className={lastLineCls}>{headings.lines[2]}</span>
                         </>
                       ) : (
                         headings.h1 || service.title
@@ -889,21 +895,31 @@ export function ServicePageTemplate({
                         </SubTag>
                       )
                     })()}
-                    {/* Przycisk serwisu wysyłkowego pod H1 — ten sam co na głównej (tylko PL, komputer). */}
-                    <Link href={shippingHref} prefetch={false} className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
-                      <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
-                      <ChevronRight className="w-[18px] h-[18px]" />
-                    </Link>
+                    {/* Switch "we Wrocławiu | cała Polska" replaces the last heading line; the brand list stays above it. */}
+                    {hasScopeSwitch && (
+                      <div className="mt-2 w-full flex justify-center">
+                        <HeroScopeSwitch {...SCOPE_LABELS[locale]} href={shippingHref} position={0} />
+                      </div>
+                    )}
+                    {/* Przycisk serwisu wysyłkowego pod H1 (rental / replacement printer). */}
+                    {!hasScopeSwitch && (
+                      <Link href={shippingHref} prefetch={false} className={`max-md:!hidden mt-4 md:mt-8 ${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                        <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
+                        <ChevronRight className="w-[18px] h-[18px]" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
               {/* Phone: the shipping-service CTA sits between the carousel and the logo strip (desktop has it under the H1). */}
-              <div className="md:hidden flex justify-center px-4 mt-3">
-                <Link href={shippingHref} prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
-                  <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
-                  <ChevronRight className="w-[18px] h-[18px]" />
-                </Link>
-              </div>
+              {!hasScopeSwitch && (
+                <div className="md:hidden flex justify-center px-4 mt-3">
+                  <Link href={shippingHref} prefetch={false} className={`${GOLD_CTA} ${GOLD_CTA_SIZE_HERO}`}>
+                    <span className="gold-text-sweep">{SHIPPING_CTA_LABEL[locale]}</span>
+                    <ChevronRight className="w-[18px] h-[18px]" />
+                  </Link>
+                </div>
+              )}
               {slug === 'druk-3d-na-zamowienie' ? (
                 <div className="mt-[40px]">
                   <PrintedPartsTicker locale={locale} />

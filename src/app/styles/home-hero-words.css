@@ -145,3 +145,123 @@
     background-image: linear-gradient(110deg, #fff8eb 40%, #e6cc82 50%, #fff8eb 60%);
   }
 }
+
+/* Home scope switch "we Wrocławiu | cała Polska" (hero-scope-switch.tsx): a dark glass capsule
+   with a thin gold border and a soft glow below; one gold pill slides between the two equal
+   halves (translateX, 400ms, ease-out, no bounce). The only motion is the slide and the colour
+   change of the labels. Fixed height, so the headline never jumps. */
+.scope-switch {
+  --scope-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  /* Fixed width, independent of the headline's changing width (never narrower than the labels). */
+  width: min(300px, calc(100vw - 32px));
+  left: 50%;
+  translate: -50% 0;
+  height: 46px;
+  margin: 6px 0 0;
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(191, 167, 106, 0.85);
+  background: rgba(22, 14, 8, 0.55);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+  font-family: var(--font-cormorant), serif;
+  font-weight: 600;
+  font-size: clamp(19px, 5.8vw, 24px);
+  line-height: 1;
+}
+/* The sliding capsule is the old gold CTA (globals.css .gold-border-flow / .gold-shiny /
+   .gold-text-sweep) in its always-on "hover" look: wide arc, #e6cc82 shine, inner glow below,
+   hover fill and shadow; no 4px lift. Only geometry is set here. */
+.scope-switch > .scope-switch-pill.scope-switch-pill.gold-border-flow {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 8px) / 2);
+  box-sizing: border-box;
+  border-radius: 9999px;
+  background-color: rgba(191, 167, 106, 0.2);
+  box-shadow: 0 0 28px rgba(191, 167, 106, 0.38);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 400ms var(--scope-ease);
+  will-change: transform;
+}
+.scope-switch[data-pos="1"] > .scope-switch-pill.scope-switch-pill.gold-border-flow { transform: translateX(100%); }
+.scope-switch-pill.gold-border-flow.gold-shiny::before {
+  --gold-shiny-percent: 20%;
+  --gold-shiny-offset: 95deg;
+  --gold-shiny-shine: #e6cc82;
+}
+.scope-switch-pill.gold-border-flow.gold-shiny:not([data-anim-off])::before,
+.scope-switch-pill.gold-shiny:not([data-anim-off])::after,
+.scope-switch-pill.gold-shiny:not([data-anim-off]) > .gold-text-sweep::before {
+  animation-play-state: running;
+}
+.scope-switch-pill.gold-shiny > .gold-text-sweep::after { opacity: 1; }
+/* Label layer: as wide as both halves, counter-slides with the capsule so the capsule
+   (overflow hidden) always shows the active label, still while the capsule moves. */
+.scope-switch-layer {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: calc(100% + 2px);
+  width: calc((100% + 2px) * 2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transform: translateX(0);
+  transition: transform 400ms var(--scope-ease);
+  will-change: transform;
+}
+.scope-switch[data-pos="1"] .scope-switch-layer { transform: translateX(-50%); }
+.scope-switch-cell { display: flex; align-items: center; justify-content: center; min-width: 0; white-space: nowrap; }
+.scope-switch-layer .gold-text-sweep {
+  background-image: linear-gradient(110deg, #fff8eb 40%, #e6cc82 50%, #fff8eb 60%);
+}
+.scope-switch-zone {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  border-radius: 9999px;
+  white-space: nowrap;
+  color: #e6cc82;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  transition: color 400ms var(--scope-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.scope-switch[data-pos="0"] > .scope-switch-zone:nth-child(2),
+.scope-switch[data-pos="1"] > .scope-switch-zone:nth-child(3) { color: transparent; text-shadow: none; }
+/* Outer shell: the original gold CTA in its normal state (.gold-border-flow + .gold-shiny: running arc,
+   dots, inner shimmer; no hover boost). The empty .scope-switch-base child only supplies the dots. The
+   inactive label gets a calmer label glint (.gold-text-sweep). */
+.scope-switch.scope-switch.gold-border-flow { border-color: rgba(191, 167, 106, 0.85); }
+.scope-switch-base { position: absolute; inset: 0; pointer-events: none; animation: none; }
+.scope-switch-zone > .gold-text-sweep {
+  background-image: linear-gradient(110deg, #bfa76a 40%, #fff8eb 50%, #bfa76a 60%);
+  animation-duration: 6s;
+  animation-delay: -2.5s;
+  text-shadow: none;
+  transition: opacity 400ms var(--scope-ease);
+}
+.scope-switch[data-pos="0"] > .scope-switch-zone:nth-child(2) > .gold-text-sweep,
+.scope-switch[data-pos="1"] > .scope-switch-zone:nth-child(3) > .gold-text-sweep { opacity: 0; }
+.scope-switch-zone:focus-visible { outline: 2px solid #e6cc82; outline-offset: -1px; }
+@media (min-width: 768px) {
+  .scope-switch { height: 56px; width: 420px; margin-top: 8px; font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scope-switch > .scope-switch-pill.scope-switch-pill.gold-border-flow, .scope-switch-layer, .scope-switch-zone, .scope-switch-zone > .gold-text-sweep { transition: none; }
+}
