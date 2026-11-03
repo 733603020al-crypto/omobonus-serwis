@@ -175,15 +175,13 @@ export function HomeHeroShowcase({
   const mid = active < 0 ? OPENING_MID : mids[active % mids.length]
 
   // Scope switch: moves after every two slides (0–1 left, 2–3 right, …, 16 left), driven only by the
-  // carousel's own slide changes. A manual click pins the choice until the carousel wraps to slide 0.
+  // carousel's own slide changes. A click moves it at once; the carousel keeps driving it afterwards.
   const [scopePos, setScopePos] = useState<0 | 1>(0)
-  const scopePinned = useRef(false)
   const lastSlide = useRef(-1)
 
   const onActiveChange = (i: number) => {
-    if (i === 0 && lastSlide.current > 0) scopePinned.current = false
     lastSlide.current = i
-    if (scope && i >= 0 && !scopePinned.current) setScopePos(Math.floor(i / 2) % 2 === 0 ? 0 : 1)
+    if (scope && i >= 0) setScopePos(Math.floor(i / 2) % 2 === 0 ? 0 : 1)
     const next = i < 0 ? OPENING_MID : mids[i % mids.length]
     setMode(next.group === prevGroup ? 'cycle' : 'letters')
     setPrevGroup(next.group)
@@ -307,8 +305,8 @@ export function HomeHeroShowcase({
                 right={scope.right}
                 href={scope.href}
                 position={scopePos}
-                onLeft={() => { scopePinned.current = true; setScopePos(0) }}
-                onRight={() => { scopePinned.current = true; setScopePos(1) }}
+                onLeft={() => { setScopePos(0) }}
+                onRight={() => { setScopePos(1) }}
               />
             )}
           </div>

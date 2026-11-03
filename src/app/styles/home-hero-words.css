@@ -148,7 +148,7 @@
 
 /* Home scope switch "we Wrocławiu | cała Polska" (hero-scope-switch.tsx): a dark glass capsule
    with a thin gold border and a soft glow below; one gold pill slides between the two equal
-   halves (translateX, 400ms, ease-out, no bounce). The only motion is the slide and the colour
+   halves (translateX, 700ms, ease-out, no bounce). The only motion is the slide and the colour
    change of the labels. Fixed height, so the headline never jumps. */
 .scope-switch {
   --scope-ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -189,7 +189,7 @@
   backdrop-filter: blur(2px);
   pointer-events: none;
   transform: translateX(0);
-  transition: transform 400ms var(--scope-ease);
+  transition: transform 700ms var(--scope-ease);
   will-change: transform;
 }
 .scope-switch[data-pos="1"] > .scope-switch-pill.scope-switch-pill.gold-border-flow { transform: translateX(100%); }
@@ -215,7 +215,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   transform: translateX(0);
-  transition: transform 400ms var(--scope-ease);
+  transition: transform 700ms var(--scope-ease);
   will-change: transform;
 }
 .scope-switch[data-pos="1"] .scope-switch-layer { transform: translateX(-50%); }
@@ -239,7 +239,7 @@
   font: inherit;
   cursor: pointer;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
-  transition: color 400ms var(--scope-ease);
+  transition: color 700ms var(--scope-ease);
   -webkit-tap-highlight-color: transparent;
 }
 .scope-switch[data-pos="0"] > .scope-switch-zone:nth-child(2),
@@ -254,7 +254,7 @@
   animation-duration: 6s;
   animation-delay: -2.5s;
   text-shadow: none;
-  transition: opacity 400ms var(--scope-ease);
+  transition: opacity 700ms var(--scope-ease);
 }
 .scope-switch[data-pos="0"] > .scope-switch-zone:nth-child(2) > .gold-text-sweep,
 .scope-switch[data-pos="1"] > .scope-switch-zone:nth-child(3) > .gold-text-sweep { opacity: 0; }

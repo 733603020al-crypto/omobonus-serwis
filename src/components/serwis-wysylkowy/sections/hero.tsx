@@ -24,7 +24,12 @@ export interface HeroT {
 
 const CAROUSEL_PL = {
   line1: 'Serwis wysyłkowy',
-  line3: <>Odbierzemy sprzęt z całej Polski</>,
+  line3: (
+    <>
+      <span className="block text-white text-[0.85em] mb-0.5">Nie jesteś z Wrocławia?</span>
+      <span className="block">Odbierzemy sprzęt z całej Polski!</span>
+    </>
+  ),
   alt: 'Serwis laptopów, komputerów i drukarek we Wrocławiu',
   mids: [
     { group: 'laptop', parts: ['laptopów', ''] },
