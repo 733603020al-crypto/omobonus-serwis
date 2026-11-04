@@ -1,42 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "gg",
-      "author_url": "https://www.google.com/maps/contrib/111428529099160674656/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJ-jq4wmZ_2Lj3E1Em6EuSeWMG0fCUBKzE-l1vzhJHNSYkYYw=s128-c0x00000000-cc-rp-mo-ba3",
-      "rating": 5,
-      "relative_time_description": "tydzień temu",
-      "text": "Firma znaleziona na internecie, od samego początku pełen profesjonalizm i dobry kontakt👍 serwis drukarki Epson praktycznie od ręki - pełne zaufanie - faktura po wykonaniu usługi na przelew😀 Polecam👌👍",
-      "time": 1780403334,
-      "translated": false,
-      "text_uk": "Знайшов цю компанію онлайн, дуже професійно з самого початку та чудове спілкування👍 Обслуговування принтерів Epson майже миттєво - повна довіра - рахунок-фактура після завершення послуги через банківський переказ😀 Рекомендую👌👍",
-      "text_ru": "Нашла эту компанию в интернете, очень профессиональная с самого начала, и отличная коммуникация 👍 Ремонт принтера Epson практически мгновенно - полное доверие - счет после завершения работ банковским переводом 😀 Рекомендую 👌👍",
-      "text_en": "Found the company online — complete professionalism and good communication right from the start👍 My Epson printer was serviced practically on the spot — full trust — invoice after the job, paid by bank transfer😀 Recommended👌👍",
-      "relative_time_uk": "тиждень тому",
-      "relative_time_ru": "неделю назад",
-      "relative_time_en": "a week ago"
-    },
-    {
-      "author_name": "Aleksandra Świderska",
-      "author_url": "https://www.google.com/maps/contrib/104760570921069876841/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJ6LRFam8FtPqFzCIHrTOXPizduhVzRKRLCr-dLbWRqeuE7EA=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "2 tygodnie temu",
-      "text": "Kilkukrotnie korzystałam z serwisu naprawy komputerów i z całego serca mogę polecić to miejsce. Dopiero tutaj panowie rozwiązali problem, który miałam z matrycą. Oddawałam do naprawy zarówno laptop jak i drukarkę i wszystko było zrobione bardzo sprawnie, starannie i szybko. Bardzo miła obsługa i przyjacielski piesek Umka.",
-      "time": 1780073987,
-      "translated": false,
-      "text_uk": "Я кілька разів користувався послугами цього сервісу з ремонту комп'ютерів і можу щиро рекомендувати це місце. Хлопці тут були єдиними, хто вирішив проблему, яка була в мене з екраном. Мені відремонтували і ноутбук, і принтер, і все було зроблено дуже ефективно, ретельно та швидко. Обслуговування було дуже доброзичливим, і собака Умка також був доброзичливим.",
-      "text_ru": "Я несколько раз пользовался услугами этой компании по ремонту компьютеров и могу от всей души порекомендовать это место. Только ребята здесь смогли решить проблему с моим экраном. Мне отремонтировали и ноутбук, и принтер, и всё было сделано очень эффективно, аккуратно и быстро. Обслуживание было очень дружелюбным, а собака, Умка, тоже была дружелюбной.",
-      "text_en": "I have used this computer repair service several times and can recommend it wholeheartedly. Only here did they solve the problem I had with my screen. I brought in both a laptop and a printer, and everything was done very efficiently, carefully and quickly. Very friendly staff and a friendly little dog, Umka.",
-      "relative_time_uk": "2 тижні тому",
-      "relative_time_ru": "2 недели назад",
-      "relative_time_en": "2 weeks ago"
-    },
-    {
       "author_name": "Anna Semenets",
       "author_url": "https://www.google.com/maps/contrib/114445197211353387142/reviews",
       "language": "pl",
@@ -179,7 +143,43 @@
       "relative_time_uk": "2 місяці тому",
       "relative_time_ru": "2 месяца назад",
       "relative_time_en": "2 months ago"
+    },
+    {
+      "author_name": "Maja Miecielica",
+      "author_url": "https://www.google.com/maps/contrib/105684207315406630127/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJU1nkJsUa17HNKIBJFpLoQtDCJarUXKaEBn2m7SDfPHdt4=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "miesiąc temu",
+      "text": "Trafiłam na ten serwis zupełnie przypadkiem i zdecydowanie nie żałuję! Komputer został naprawiony bardzo szybko, sprawnie i przede wszystkim w dobrej cenie. Wszystko działa bez zarzutu, a kontakt z serwisem był bardzo miły i profesjonalny. Jestem naprawdę bardzo zadowolona z wykonanej usługi. Serdecznie polecam ten serwis każdemu, kto potrzebuje szybkiej, solidnej i niedrogiej naprawy komputera!",
+      "time": 1790924604,
+      "translated": false,
+      "text_uk": "Я знайшов цей сервіс абсолютно випадково, і точно не шкодую! Мій комп'ютер відремонтували дуже швидко, ефективно і, головне, за чудовою ціною. Все працює бездоганно, а обслуговування було дуже доброзичливим та професійним. Я справді задоволений сервісом. Я дуже рекомендую цей сервіс усім, кому потрібен швидкий, надійний та доступний ремонт комп'ютера!",
+      "text_ru": "Я совершенно случайно наткнулся на этот сервис, и нисколько об этом не жалею! Мой компьютер отремонтировали очень быстро, качественно и, самое главное, по отличной цене. Всё работает безупречно, а обслуживание было очень дружелюбным и профессиональным. Я действительно в восторге от сервиса. Настоятельно рекомендую этот сервис всем, кому нужен быстрый, надежный и доступный ремонт компьютера!",
+      "text_en": "I found this service completely by accident, and I definitely don't regret it! My computer was repaired very quickly, efficiently, and, above all, at a great price. Everything works flawlessly, and the service was very friendly and professional. I'm truly delighted with the service. I highly recommend this service to anyone who needs a quick, reliable, and affordable computer repair!",
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад",
+      "relative_time_en": "a month ago"
+    },
+    {
+      "author_name": "Barbara M",
+      "author_url": "https://www.google.com/maps/contrib/102665827211999829190/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIFFjGeMk8LUiNNWJ2266GIm18oj2PZninTby6dRzPflhfdqQ=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "5 miesięcy temu",
+      "text": "Świetny serwis drukarek. Moja kolorowa drukarka przestała drukować w kolorze, ale problem został szybko zdiagnozowany i naprawiony prawie od ręki :) Profesjonalna obsługa, sprawny kontakt i ekspresowa realizacja. Dodatkowo wszystko w rozsądnej cenie. Serdecznie polecam wszystkim, którym zależy na szybkości działania i wysokiej jakości usług.",
+      "time": 1778686769,
+      "translated": false,
+      "text_uk": "Чудовий сервіс друку. Мій кольоровий принтер перестав друкувати в кольорі, але проблему швидко діагностували та майже миттєво виправили. Професійне обслуговування, ефективне спілкування та експрес-доставка. Плюс все це за розумною ціною. Я дуже рекомендую їх усім, хто цінує швидкість та високу якість обслуговування.",
+      "text_ru": "Отличный сервис по ремонту принтеров. Мой цветной принтер перестал печатать в цвете, но проблему быстро диагностировали и устранили практически мгновенно. Профессиональное обслуживание, оперативная связь и экспресс-доставка. И всё это по разумной цене. Я настоятельно рекомендую их всем, кто ценит скорость и высокое качество обслуживания.",
+      "text_en": "Great printer service. My color printer stopped printing in color, but the problem was quickly diagnosed and fixed almost immediately. Professional service, efficient communication, and express delivery. Plus, all at a reasonable price. I highly recommend them to anyone who values speed and high-quality service.",
+      "relative_time_uk": "5 місяців тому",
+      "relative_time_ru": "5 месяцев назад",
+      "relative_time_en": "5 months ago"
     }
   ],
-  "updatedAt": "2026-09-21T08:18:26.530Z"
+  "updatedAt": "2026-11-02T10:13:09.265Z"
 }
