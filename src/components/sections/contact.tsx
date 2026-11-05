@@ -445,7 +445,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               src="/images/contact-form-parchment.webp"
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-fill contact-form-parchment-shadow pointer-events-none select-none"
+              className="absolute inset-0 w-full h-full object-fill contact-form-paper-shadow pointer-events-none select-none"
             />
           </picture>
 

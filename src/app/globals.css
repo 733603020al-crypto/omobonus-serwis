@@ -157,6 +157,11 @@
      nieregularnym (postrzępionym) konturem pergaminu, mocniej widoczny od
      dołu, żeby kartka sprawiała wrażenie uniesionej nad tłem. Celowo nie
      używamy zwykłego box-shadow, bo miałby prostokątny kształt. */
+  /* /kontakt: dwuwarstwowy cień po rzeczywistym konturze pergaminu (kolor jak cień kulki): miękka poświata dookoła (jak AO kulki) + ciasny cień kontaktowy + szeroki miękki w prawo-dół. */
+  .contact-form-paper-shadow {
+    filter: drop-shadow(0 0 22px rgba(8, 5, 2, 0.7)) drop-shadow(0 2px 2px rgba(8, 5, 2, 0.75)) drop-shadow(4px 10px 10px rgba(8, 5, 2, 0.55)) drop-shadow(18px 34px 34px rgba(8, 5, 2, 0.6));
+  }
+
   .contact-form-parchment-shadow {
     filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
   }
@@ -4577,7 +4582,6 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   white-space: nowrap;
 }
 @media (min-width: 920px) { .header-capsule { display: flex; } }
-.header-contact-cells > .cat-switch-pill.gold-border-flow.gold-shiny::before { animation: none; }
 /* "Usługi" mega menu: slides out downwards with a fade (650 ms), smooth close (450 ms). */
 .header-mega[data-state='open'] { animation: header-mega-in 650ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .header-mega[data-state='closed'] { animation: header-mega-out 450ms cubic-bezier(0.4, 0, 0.6, 1) both; pointer-events: none; }
@@ -4617,24 +4621,39 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 @media (hover: hover) {
   .header-cell:hover .cat-switch-label:not(.cat-switch-label-active) { background-image: linear-gradient(#fff8eb, #fff8eb); }
 }
+/* Phone + address capsule: one picture (1062×108 = 3× of 354×36) with real text over it.
+   Green part = phone (0–46%), map part = address (marker at ~54%, text starts at ~58%). */
 .header-contact-cells {
   position: relative;
   display: flex;
   align-items: center;
-  height: 36px;
+  flex-shrink: 0;
+  width: 420px;
+  aspect-ratio: 1062 / 108;
   margin-right: 4px;
-  border-radius: 9999px;
+  background: url('/images/header-contact-bg-v2.avif') center / 100% 100% no-repeat;
 }
-.header-contact-cells .header-cell { gap: 8px; padding: 0 14px 0 0; }
+.header-contact-cells .header-cell { height: 100%; gap: 6px; padding: 0; border-radius: 0; }
+.header-contact-cells .header-cell:first-child { width: 45%; padding-left: 3.5%; }
+.header-contact-cells .header-cell-address { flex: 1; padding-left: 14.3%; color: #140b03; }
+.header-contact-cells .header-cell:first-child { color: #fff; text-shadow: 0 1px 2px rgba(0, 40, 0, 0.55); }
 /* The number keeps its old header font (Inter 17/600), as before the capsule. */
-.header-contact-number { font-family: var(--font-inter), system-ui, -apple-system, sans-serif; font-size: 17px; font-weight: 600; line-height: 1; }
-/* Address: Cormorant Garamond 600, a little larger than the cell font for legibility (the house number keeps Inter 17/600). */
-.header-contact-lines { font-family: var(--font-cormorant), Georgia, serif; font-size: 20px; font-weight: 600; line-height: 1; }
+.header-contact-number { font-family: var(--font-inter), system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 600; line-height: 1; }
+/* Address: Cormorant Garamond 600 (the house number keeps the number font). */
+.header-contact-lines { font-family: var(--font-cormorant), Georgia, serif; font-size: 22px; font-weight: 700; line-height: 1; }
 .header-contact-icon { width: 36px; height: 36px; flex-shrink: 0; object-fit: contain; }
-/* Narrow desktops (920–1159px): tighter cells, the address keeps only its map icon. */
+/* 1160–1359px: the capsule is a little smaller to leave room for the menu. */
+@media (max-width: 1359.98px) {
+  .header-contact-cells { width: 354px; }
+  .header-contact-number { font-size: 17px; }
+  .header-contact-lines { font-size: 19px; }
+  .header-contact-icon { width: 30px; height: 30px; }
+}
+/* Narrow desktops (920–1159px): smaller picture, the address text is hidden (the marker stays). */
 @media (max-width: 1159.98px) {
   .header-cell { padding: 0 11px; font-size: 17px; }
-  .header-contact-cells .header-cell { padding: 0 10px 0 0; }
-  .header-contact-number, .header-contact-lines { font-size: 15px; }
+  .header-contact-cells { width: 260px; }
+  .header-contact-number, .header-contact-lines { font-size: 14px; }
+  .header-contact-icon { width: 24px; height: 24px; }
   .header-contact-lines { display: none; }
 }

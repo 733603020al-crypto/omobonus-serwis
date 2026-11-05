@@ -23,7 +23,7 @@ const TEXT = 'font-serif text-[15px] md:text-lg font-normal leading-relaxed text
 
 export function HomeCta({ heading, text, headingMobile, textMobile, button, href, singleHeading = false }: HomeCtaProps) {
   return (
-    <section className="relative z-10 pt-6 pb-2 md:pt-8 md:pb-3">
+    <section data-site-cta className="relative z-10 pt-6 pb-2 md:pt-8 md:pb-3">
       <div className="max-w-3xl mx-auto px-6 text-center text-white space-y-1">
         {singleHeading ? (
           // One text in the HTML (no "short?long?" glued pair); the phone wording

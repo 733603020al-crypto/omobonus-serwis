@@ -8,6 +8,7 @@ import { ChevronRight } from 'lucide-react'
 import { GOLD_CTA, GOLD_CTA_SIZE_HERO } from '@/components/ui/gold-cta'
 import { HeroScopeSwitch, SCOPE_LABELS } from '@/components/sections/hero-scope-switch'
 import type { ReactNode, ComponentProps } from 'react'
+import { SiteCta } from '@/components/site-cta'
 import { Header } from '@/components/header'
 import { AnimatedHeroImage } from '@/components/animated-hero-image'
 import { OutsourcingItHero } from '@/components/outsourcing-it-hero'
@@ -984,7 +985,7 @@ export function ServicePageTemplate({
           </section>
         )}
 
-        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[80px] overflow-visible">
+        <div className="relative z-10 -mt-6 md:-mt-10 -mb-[50px] overflow-visible">
           <GoogleReviews locale={locale} />
         </div>
 
@@ -993,14 +994,7 @@ export function ServicePageTemplate({
       <Footer
         t={footerT}
         bare
-        cta={{
-          heading: labels.ctaHeadingBySlug?.[slug] ?? labels.ctaHeading,
-          text: labels.ctaText,
-          headingMobile: labels.ctaHeadingMobileBySlug?.[slug] ?? labels.ctaHeadingMobile,
-          textMobile: labels.ctaTextMobile,
-          button: labels.ctaButton,
-          href: labels.ctaHref,
-        }}
+        cta={<SiteCta locale={locale} />}
       />
     </>
   )

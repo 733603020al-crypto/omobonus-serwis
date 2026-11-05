@@ -50,14 +50,6 @@ export default function RuHome() {
       servicesT={ru.services}
       aboutT={ru.about}
       footerT={ru.footer}
-      cta={{
-        heading: ru.homeCta.heading,
-        text: ru.homeCta.text,
-        headingMobile: ru.homeCta.headingMobile,
-        textMobile: ru.homeCta.textMobile,
-        button: ru.homeCta.button,
-        href: '/ru/kontakt',
-      }}
       locale="ru"
     />
   )

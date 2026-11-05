@@ -6,6 +6,7 @@ import { SCOPE_LABELS } from '@/components/sections/hero-scope-switch'
 import { About } from '@/components/sections/about'
 import BrandTicker from '@/components/brand-ticker'
 import GoogleReviews from '@/components/google-reviews'
+import { SiteCta } from '@/components/site-cta'
 import { SERVICE_CATEGORIES } from '@/config/service-categories'
 
 const SITE_URL = 'https://serwis.omobonus.com.pl'
@@ -16,7 +17,6 @@ const CATALOG_NAME = { pl: 'Serwis i naprawa', uk: 'Сервіс і ремонт
 // About is a Server Component (no client JS besides the tiny FadeSlideP
 // eyebrow wrapper it renders internally), so it's imported statically.
 const Services = dynamic(() => import('@/components/sections/services').then(m => ({ default: m.Services })))
-const HomeCta = dynamic(() => import('@/components/home-cta').then(m => ({ default: m.HomeCta })))
 const Footer = dynamic(() => import('@/components/footer').then(m => ({ default: m.Footer })))
 
 interface HomePageTemplateProps {
@@ -26,14 +26,6 @@ interface HomePageTemplateProps {
   servicesT?: NonNullable<ComponentProps<typeof Services>>['t']
   aboutT?: NonNullable<ComponentProps<typeof About>>['t']
   footerT?: NonNullable<ComponentProps<typeof Footer>>['t']
-  cta: {
-    heading: ReactNode
-    text: ReactNode
-    headingMobile?: ReactNode
-    textMobile?: ReactNode
-    button: ReactNode
-    href: string
-  }
   locale?: 'pl' | 'uk' | 'ru' | 'en'
 }
 
@@ -44,7 +36,6 @@ export function HomePageTemplate({
   servicesT,
   aboutT,
   footerT,
-  cta,
   locale = 'pl',
 }: HomePageTemplateProps) {
   // Services is a client component: pass only what the cards render so the
@@ -108,7 +99,7 @@ export function HomePageTemplate({
 
           <About t={aboutT} bare showMoreLink plainHeadings reviewsSlot={<GoogleReviews locale={locale} />} />
 
-          <HomeCta {...cta} singleHeading />
+          <SiteCta locale={locale} />
 
           <Footer t={footerT} bare />
         </div>

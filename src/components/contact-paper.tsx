@@ -18,7 +18,7 @@ const AUTO_OPEN_MS = 6000
 // Experimental framing only. Set false to restore the approved C composition.
 const EXPERIMENTAL_LARGE_REVEAL = true
 // Engine shadow tuning (original values): BASE stays under a flat sheet, BALL is added as it crumples.
-const SHADOW_COLOR = 'rgba(8,5,2,0.65)', SHADOW_BASE = 0, SHADOW_BALL = 1.5
+const SHADOW_COLOR = 'rgba(8,5,2,0.65)', SHADOW_BASE = 2, SHADOW_BALL = -.5, SHADOW_LIFT = .09
 const CLOSE_LABEL: Record<Locale, string> = { pl: 'Zamknij', uk: 'Закрити', ru: 'Закрыть', en: 'Close' }
 const SUCCESS_NOTE: Record<Locale, string> = {
   pl: "Skontaktujemy się z Tobą tak szybko, jak to możliwe",
@@ -278,6 +278,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       const e = engine.current
       if (!e) return
       e.options.shadowAmt = SHADOW_BASE + SHADOW_BALL * e.state.progress
+      // A flat sheet casts no offset shadow by itself; float it above the table as it opens (0 for the ball).
+      e.options.shadowLift = SHADOW_LIFT * (1 - e.state.progress)
       if (render) e.scene.render(e.options, [e.state])
       applyPose(directedPose ? directedPose() : !intro || presentation === 'form' ? formPose() : introPlacement().pose)
     }
@@ -879,8 +881,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       </div>
     </div>, portalHost)}
     {phase === 'loading' && <picture className={styles.preview}>
-      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile.webp`} />
-      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop.webp`} alt="" loading="eager" decoding="async" draggable={false} />
+      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile-v2.webp`} />
+      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop-v2.webp`} alt="" loading="eager" decoding="async" draggable={false} />
     </picture>}
     <span ref={ballAnchor} aria-hidden="true" style={{ position: 'absolute', top: 100, left: '50%', width: 1, height: 1, pointerEvents: 'none' }} />
     {(phase === 'loading' || phase === 'ball') && <button ref={openButtonRef} type="button" className={styles.open}

@@ -8,7 +8,7 @@ export interface PaperOptions {
   width: number; height: number; margin: number; dpr: number; seed: number;
   creases: number; creaseAngle: number; lift: number; ballSize: number; paper: string;
   gloss: number; grain: number; rakeElev: number; inset: number[]; radii: number[];
-  shadow: string; shadowAmt: number; ao: number; show: number;
+  shadow: string; shadowAmt: number; shadowLift?: number; ao: number; show: number;
   keyDir: number[]; fillDir: number[];
 }
 export interface PaperScene {

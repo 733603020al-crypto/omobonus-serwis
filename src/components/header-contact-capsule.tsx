@@ -3,10 +3,8 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-const LABEL = 'cat-switch-label cat-switch-label-active gold-text-sweep'
-
-// Phone + address cells of the header capsule (HeaderInteractive): one always-on gold pill
-// (the sliding pill of the home category switch) holds both, split by a thin divider.
+// Phone + address cells of the header capsule (HeaderInteractive) over one picture
+// (header-contact-bg-v2.avif: green phone part, map with a red marker). Text stays real text.
 // The address scrolls to the contact block with the map, the phone keeps its call / hint behaviour.
 export function HeaderContactCapsule({
   addressLabel,
@@ -35,13 +33,6 @@ export function HeaderContactCapsule({
 
   return (
     <div className="header-contact-cells">
-      <span
-        aria-hidden="true"
-        className="cat-switch-pill gold-border-flow gold-shiny"
-        style={{ width: '100%', height: '100%' }}
-      >
-        <span className="gold-text-sweep" />
-      </span>
       <a
         href={phoneHref}
         className="header-cell"
@@ -52,11 +43,10 @@ export function HeaderContactCapsule({
         }}
       >
         <Image src="/images/call-round-glossy-v1.webp" alt="" width={36} height={36} sizes="36px" className="header-contact-icon" />
-        <span className={`header-contact-number ${LABEL}`}>{phoneText}</span>
+        <span className="header-contact-number">{phoneText}</span>
       </a>
-      <a href="#kontakt" className="header-cell" aria-label={addressLabel} onClick={onAddressClick}>
-        <Image src="/images/bar-mapa-glossy-v1.webp" alt="" width={36} height={36} sizes="36px" className="header-contact-icon" />
-        <span className={`header-contact-lines ${LABEL}`}>
+      <a href="#kontakt" className="header-cell header-cell-address" aria-label={addressLabel} onClick={onAddressClick}>
+        <span className="header-contact-lines">
           {street}
           {number && <> <span className="header-contact-number">{number}</span></>}
         </span>
