@@ -324,11 +324,6 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
   }, [activeCell])
   const cellLabel = (active: boolean) => `cat-switch-label gold-text-sweep${active ? ' cat-switch-label-active' : ''}`
 
-  const handlePhoneClick = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    window.dispatchEvent(new CustomEvent('phone-hint-trigger', { detail: { sourceRect: rect, showArrow: false } }))
-  }
-
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -406,7 +401,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
     }
   }
 
-  // Address capsule: smooth scroll to the contact block of the current page so that the "Szybki kontakt"
+  // Address and phone parts of the capsule (desktop): smooth scroll to the contact block of the current page so that the "Szybki kontakt"
   // block above the footer, the "Kontakt" heading, the details and the map all sit under the sticky header.
   const scrollToContact = (e: React.MouseEvent<HTMLElement>) => {
     const footer = document.getElementById('kontakt')
@@ -416,9 +411,10 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
     document.documentElement.classList.add('cv-off')
     requestAnimationFrame(() => {
       const prev = footer.previousElementSibling
-      const cta = footer.querySelector('section') ?? (prev?.tagName === 'SECTION' && prev.querySelector('.more-about-cta') ? prev : null)
-      const target = cta ?? footer
-      const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom ?? 65
+      const cta = document.querySelector('[data-site-cta]') ?? footer.querySelector('section') ?? (prev?.tagName === 'SECTION' && prev.querySelector('.more-about-cta') ? prev : null)
+      // Align the CTA's text (not its padded section) under the header, so the tail of the reviews strip above stays hidden.
+      const target = cta?.firstElementChild ?? cta ?? footer
+      const headerBottom = (document.querySelector('header')?.getBoundingClientRect().bottom ?? 65) + 24
       const y = window.scrollY
       // Preferred: the whole CTA block right under the header. On short screens slide down (up to
       // the button, never past it) so that the bottom of the details/map stays on screen.
@@ -502,7 +498,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
           phoneText="793 759 262"
           addressText="Bukowskiego 174"
           onAddressClick={scrollToContact}
-          onPhoneClick={handlePhoneClick}
+          onPhoneClick={scrollToContact}
         />
         <div
           ref={(el) => { cellRefs.current[0] = el }}

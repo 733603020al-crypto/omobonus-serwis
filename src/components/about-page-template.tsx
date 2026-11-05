@@ -9,6 +9,7 @@ import { Team, type TeamT } from '@/components/sections/team'
 import { BrandSectionCaption } from '@/components/sections/brand-section-caption'
 import type { FooterT } from '@/components/footer'
 import GoogleReviews from '@/components/google-reviews'
+import { SiteCta } from '@/components/site-cta'
 
 // Below-fold: split into separate chunks, same pattern as HomePageTemplate.
 // No ssr:false anywhere here — content still renders server-side (SEO text stays
@@ -69,7 +70,7 @@ export function AboutPageTemplate({
           <div className="pt-10 md:pt-16">
             <GoogleReviews locale={locale} />
           </div>
-          <Footer t={footerT} bare />
+          <Footer t={footerT} bare cta={<SiteCta locale={locale} />} />
         </div>
       </div>
     </>

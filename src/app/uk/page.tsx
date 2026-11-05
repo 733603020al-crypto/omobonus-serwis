@@ -50,14 +50,6 @@ export default function UkHome() {
       servicesT={uk.services}
       aboutT={uk.about}
       footerT={uk.footer}
-      cta={{
-        heading: uk.homeCta.heading,
-        text: uk.homeCta.text,
-        headingMobile: uk.homeCta.headingMobile,
-        textMobile: uk.homeCta.textMobile,
-        button: uk.homeCta.button,
-        href: '/uk/kontakt',
-      }}
       locale="uk"
     />
   )

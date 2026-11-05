@@ -56,7 +56,7 @@ interface FooterCta {
   href: string
 }
 
-export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; cta?: FooterCta } = {}) {
+export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; cta?: ReactNode } = {}) {
   const d = t ?? PL
   const currentYear = new Date().getFullYear()
   const kontaktRef = useRef<HTMLDivElement>(null)
@@ -119,7 +119,7 @@ export function Footer({ t, bare = false, cta }: { t?: FooterT; bare?: boolean; 
       <div className="relative max-w-7xl mx-auto">
         {cta && (
           <div className="-mt-[26px]">
-            <HomeCta heading={cta.heading} text={cta.text} headingMobile={cta.headingMobile} textMobile={cta.textMobile} button={cta.button} href={cta.href} singleHeading />
+            {cta}
           </div>
         )}
 

@@ -52,14 +52,6 @@ export default function EnHome() {
       servicesT={en.services}
       aboutT={en.about}
       footerT={en.footer}
-      cta={{
-        heading: en.homeCta.heading,
-        text: en.homeCta.text,
-        headingMobile: en.homeCta.headingMobile,
-        textMobile: en.homeCta.textMobile,
-        button: en.homeCta.button,
-        href: '/en/kontakt',
-      }}
       locale="en"
     />
   )

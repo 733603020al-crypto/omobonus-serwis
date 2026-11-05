@@ -72,6 +72,8 @@ export async function snapshotDocument(root: HTMLElement, scale: number, signal?
     style.fontFamily.split(',').forEach(f => families.add(f.replace(/["']/g, '').trim()))
     copy.style.visibility = 'visible'
     copy.style.animation = 'none'
+    // The sheet's CSS drop-shadow must not be baked into the texture: it would be clipped to the document box (rectangular darkening) and feed the WebGL shadow mask.
+    if (source.classList.contains('contact-form-paper-shadow')) copy.style.filter = 'none'
     copy.style.transition = 'none'
     copy.removeAttribute('id')
     if (source.dataset.paperCaptureSkip !== undefined || source.getAttribute('name') === 'company') {
