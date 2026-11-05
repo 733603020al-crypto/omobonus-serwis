@@ -3939,6 +3939,12 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   #kontakt-ikony > .contact-icon-link { animation: none; }
 }
 
+/* Иконки мессенджеров на /kontakt (устройства с мышью): парение в покое — только CSS, 3D-холст в покое не рисуется */
+@keyframes msg-bob { 0%, 100% { translate: 0 0; } 25% { translate: 0 1px; } 75% { translate: 0 -1px; } }
+@keyframes msg-tilt { 0%, 100% { transform: perspective(300px) rotateX(0deg); } 25% { transform: perspective(300px) rotateX(2deg); } 75% { transform: perspective(300px) rotateX(-2deg); } }
+.msg-float { position: relative; display: block; animation: msg-bob 3.93s ease-in-out infinite, msg-tilt 5.7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .msg-float { animation: none; } }
+
 /* /kontakt icon buttons: two shadow layers that follow the icon silhouette (the icon image itself, blackened and blurred):
    dense contact shadow + wide soft one down-right. They stay on the surface while the button falls (counter-translate with the same
    timing as the drop) and change softness/size/density with the button's height. Tune: opacity / blur / translate below. */

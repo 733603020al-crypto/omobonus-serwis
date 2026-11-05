@@ -23,6 +23,8 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
     "@types/nodemailer": "^7.0.4",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
@@ -34,6 +36,7 @@
     "react-dom": "^19.2.3",
     "react-hook-form": "^7.66.1",
     "tailwind-merge": "^3.4.0",
+    "three": "^0.187.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -41,6 +44,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.187.0",
     "autoprefixer": "^10.4.22",
     "baseline-browser-mapping": "^2.9.6",
     "eslint": "^8.57.1",
