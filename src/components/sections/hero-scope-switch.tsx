@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { scrollToContactBlock } from '@/lib/scroll-to-contact'
 
 // Two-position gold switch under the home H1: "we Wrocławiu | cała Polska".
 // One gold capsule really slides between the halves (translateX, see .scope-switch
@@ -7,7 +10,7 @@ import Link from 'next/link'
 // active label always sits in the capsule and gets the .gold-text-sweep glint. The
 // empty .gold-text-sweep child only supplies the original dots / inner glow.
 // Position (0 = left, 1 = right) comes from the carousel (HomeHeroShowcase); the
-// right half opens the shipping service page, the left half the contact page (same language).
+// right half opens the shipping service page, the left half scrolls to the contact block of the same page (the contact page if the page has none).
 // Labels of the switch per language (left = the local service, right = all of Poland by post).
 export const SCOPE_LABELS = {
   pl: { left: 'we Wrocławiu', right: 'cała Polska' },
@@ -42,7 +45,7 @@ export function HeroScopeSwitch({
           <span className="scope-switch-cell"><span className="gold-text-sweep">{right}</span></span>
         </span>
       </span>
-      <Link href={contactHref} prefetch={false} className="scope-switch-zone" onClick={onLeft}>
+      <Link href={contactHref} prefetch={false} className="scope-switch-zone" onClick={(e) => { onLeft?.(); scrollToContactBlock(e) }}>
         <span className="gold-text-sweep">{left}</span>
       </Link>
       <Link href={href} prefetch={false} className="scope-switch-zone" onClick={onRight}>
