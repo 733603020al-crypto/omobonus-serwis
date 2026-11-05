@@ -1,5 +1,6 @@
 'use client'
 
+import { scrollToContactBlock } from '@/lib/scroll-to-contact'
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -403,32 +404,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
 
   // Address and phone parts of the capsule (desktop): smooth scroll to the contact block of the current page so that the "Szybki kontakt"
   // block above the footer, the "Kontakt" heading, the details and the map all sit under the sticky header.
-  const scrollToContact = (e: React.MouseEvent<HTMLElement>) => {
-    const footer = document.getElementById('kontakt')
-    if (!footer) return // no contact block here: the plain #kontakt link does nothing harmful
-    e.preventDefault()
-    // Lift the home page's off-screen render skipping so the heights are real (see globals.css).
-    document.documentElement.classList.add('cv-off')
-    requestAnimationFrame(() => {
-      const prev = footer.previousElementSibling
-      const cta = document.querySelector('[data-site-cta]') ?? footer.querySelector('section') ?? (prev?.tagName === 'SECTION' && prev.querySelector('.more-about-cta') ? prev : null)
-      // Align the CTA's text (not its padded section) under the header, so the tail of the reviews strip above stays hidden.
-      const target = cta?.firstElementChild ?? cta ?? footer
-      const headerBottom = (document.querySelector('header')?.getBoundingClientRect().bottom ?? 65) + 24
-      const y = window.scrollY
-      // Preferred: the whole CTA block right under the header. On short screens slide down (up to
-      // the button, never past it) so that the bottom of the details/map stays on screen.
-      let top = target.getBoundingClientRect().top + y - headerBottom
-      const grid = footer.querySelector('.grid')
-      const button = cta?.querySelector('a')
-      if (grid && button) {
-        const needed = grid.getBoundingClientRect().bottom + y + 8 - window.innerHeight
-        const limit = button.getBoundingClientRect().top + y - headerBottom - 10
-        top = Math.min(Math.max(top, needed), limit)
-      }
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-    })
-  }
+  const scrollToContact = scrollToContactBlock
 
   const scrollToTop = () => {
     setActiveHomeSection(null)
@@ -526,7 +502,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
             }}
             className="header-cell gap-1"
           >
-            <span className={cellLabel(isServicesActive)}>{navServices}</span>
+            <span className={isServicesActive ? 'nav-active-underline' : ''}><span className={cellLabel(isServicesActive)}>{navServices}</span></span>
             <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesActive ? 'text-[#fff8eb]' : 'text-[#bfa76a]'} ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
@@ -618,13 +594,13 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
           )}
         </div>
         <Link href={shippingHref} prefetch={false} ref={(el) => { cellRefs.current[1] = el }} className="header-cell">
-          <span className={cellLabel(isShippingActive)}>{navShipping}</span>
+          <span className={isShippingActive ? 'nav-active-underline' : ''}><span className={cellLabel(isShippingActive)}>{navShipping}</span></span>
         </Link>
         <Link href={aboutHref} prefetch={false} ref={(el) => { cellRefs.current[2] = el }} className="header-cell">
-          <span className={cellLabel(isAboutActive)}>{navAbout}</span>
+          <span className={isAboutActive ? 'nav-active-underline' : ''}><span className={cellLabel(isAboutActive)}>{navAbout}</span></span>
         </Link>
         <Link href={contactHref} prefetch={false} ref={(el) => { cellRefs.current[3] = el }} className="header-cell">
-          <span className={cellLabel(isContactActive)}>{navContact}</span>
+          <span className={isContactActive ? 'nav-active-underline' : ''}><span className={cellLabel(isContactActive)}>{navContact}</span></span>
         </Link>
 
         <div className="relative z-[2] flex items-center self-stretch pl-2 pr-3">

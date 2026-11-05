@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import Image from 'next/image'
 import { CustomPhoneInput } from '@/components/ui/custom-phone-input'
 import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { registerDraftSource, readLangSwitchDraft, switchLocaleForCountry } from '@/lib/country-locale'
@@ -10,6 +9,7 @@ import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
 import { GOLD_CTA, GOLD_CTA_SIZE } from '@/components/ui/gold-cta'
 import { CallbackModal } from '@/components/ui/callback-modal'
 import dynamic from 'next/dynamic'
+import { MessengerIcon } from '@/components/ui/MessengerIcon'
 
 // the route window loads only after a click on the calculator icon
 const KosztDojazduModal = dynamic(() => import('@/components/koszt-dojazdu/KosztDojazduModal'), { ssr: false })
@@ -204,23 +204,23 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
         {/* Level 1: icons */}
         <div id="kontakt-ikony" className="mb-1 md:-mx-4 max-md:mx-auto max-md:max-w-[336px] flex flex-row max-md:flex-wrap max-md:gap-x-2 max-md:gap-y-4 items-start justify-center md:gap-3 md:mb-0.5">
           <button type="button" onClick={() => setShowCallback(true)} className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/callback-glossy-v3.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/callback-glossy-v3.webp" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">{cb.icon}</span>
           </button>
           <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/whatsapp-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/whatsapp-glossy-v2.webp" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
           </a>
           <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/telegram-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/telegram-glossy-v2.webp" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
           </a>
           <a href="viber://chat?number=%2B48793759262" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/viber-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/viber-glossy-v2.webp" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
           </a>
           <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/email-glossy-v2.webp" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
           </a>
           <a
@@ -229,11 +229,11 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             rel="noopener noreferrer"
             className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
-            <div className="icon-float"><Image src="/images/google-maps-glossy-v2.webp" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/google-maps-glossy-v2.webp" alt="Google Maps" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
           <button type="button" onClick={() => setShowKoszt(true)} className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/koszt-dojazdu-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><MessengerIcon src="/images/koszt-dojazdu-glossy-v2.webp" /></div>
             <span className="max-w-[76px] md:max-w-none text-center leading-[1.05] md:leading-[1.5] md:whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">{d.kosztLabel ?? 'Koszt dojazdu'}</span>
           </button>
         </div>

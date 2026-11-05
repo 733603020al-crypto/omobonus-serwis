@@ -3939,6 +3939,15 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   #kontakt-ikony > .contact-icon-link { animation: none; }
 }
 
+/* Пока иконка крутится в 3D, плоская тень-силуэт под ней скрыта (иначе стоит на месте) */
+#kontakt-ikony .icon-float:has([data-spin])::before,
+#kontakt-ikony .icon-float:has([data-spin])::after { opacity: 0 !important; }
+/* Иконки мессенджеров на /kontakt (устройства с мышью): парение в покое — только CSS, 3D-холст в покое не рисуется */
+@keyframes msg-bob { 0%, 100% { translate: 0 0; } 25% { translate: 0 1px; } 75% { translate: 0 -1px; } }
+@keyframes msg-tilt { 0%, 100% { transform: perspective(300px) rotateX(0deg); } 25% { transform: perspective(300px) rotateX(2deg); } 75% { transform: perspective(300px) rotateX(-2deg); } }
+.msg-float { position: relative; display: block; animation: msg-bob 3.93s ease-in-out infinite, msg-tilt 5.7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .msg-float { animation: none; } }
+
 /* /kontakt icon buttons: two shadow layers that follow the icon silhouette (the icon image itself, blackened and blurred):
    dense contact shadow + wide soft one down-right. They stay on the surface while the button falls (counter-translate with the same
    timing as the drop) and change softness/size/density with the button's height. Tune: opacity / blur / translate below. */
@@ -4558,14 +4567,14 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
     top: 5px; /* position: relative comes from gold-border-flow */
     padding: 4px 4px 4px 10px;
     align-items: center;
-    border: 1.5px solid rgba(191, 167, 106, 0.85);
+    border: 0;
     border-radius: 9999px;
-    background: rgba(22, 14, 8, 0.55);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+    background: rgba(22, 14, 8, 0);
+    backdrop-filter: none;
+    box-shadow: none;
   }
   /* The gold line does not run around the capsule: the ring stands still. */
-  .header-bar.gold-border-flow.gold-shiny::before { z-index: 0; animation: none; }
+  .header-bar.gold-border-flow.gold-shiny::before { display: none; }
   /* Hover / focus anywhere inside lights only the cell under the cursor: the outer ring keeps its resting look. */
   .header-bar.gold-border-flow.gold-shiny:is(:hover, :focus-visible, :focus-within)::before {
     --gold-shiny-percent: 5%;
@@ -4618,6 +4627,12 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   -webkit-tap-highlight-color: transparent;
 }
 .header-cell:focus-visible { outline: 2px solid #e6cc82; outline-offset: -2px; }
+/* Selected item is underlined (nav-active-underline); the sliding pill is not shown. Hover lifts the item by 2px. */
+.header-capsule > .cat-switch-pill { display: none; }
+.header-capsule > .header-cell, .header-capsule > div > .header-cell { transition: transform 300ms ease-out; }
+@media (hover: hover) {
+  .header-capsule > .header-cell:hover, .header-capsule > div > .header-cell:hover { transform: translateY(-2px); }
+}
 @media (hover: hover) {
   .header-cell:hover .cat-switch-label:not(.cat-switch-label-active) { background-image: linear-gradient(#fff8eb, #fff8eb); }
 }
@@ -4629,7 +4644,7 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   align-items: center;
   flex-shrink: 0;
   width: 420px;
-  aspect-ratio: 1062 / 108;
+  height: 48px;
   margin-right: 4px;
   background: url('/images/header-contact-bg-v2.avif') center / 100% 100% no-repeat;
 }
@@ -4644,7 +4659,7 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 .header-contact-icon { width: 36px; height: 36px; flex-shrink: 0; object-fit: contain; }
 /* 1160–1359px: the capsule is a little smaller to leave room for the menu. */
 @media (max-width: 1359.98px) {
-  .header-contact-cells { width: 354px; }
+  .header-contact-cells { width: 354px; height: 42px; }
   .header-contact-number { font-size: 17px; }
   .header-contact-lines { font-size: 19px; }
   .header-contact-icon { width: 30px; height: 30px; }
@@ -4652,7 +4667,7 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 /* Narrow desktops (920–1159px): smaller picture, the address text is hidden (the marker stays). */
 @media (max-width: 1159.98px) {
   .header-cell { padding: 0 11px; font-size: 17px; }
-  .header-contact-cells { width: 260px; }
+  .header-contact-cells { width: 260px; height: 42px; }
   .header-contact-number, .header-contact-lines { font-size: 14px; }
   .header-contact-icon { width: 24px; height: 24px; }
   .header-contact-lines { display: none; }
