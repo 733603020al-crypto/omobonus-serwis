@@ -11,14 +11,6 @@ import { scrollToContactBlock } from '@/lib/scroll-to-contact'
 // empty .gold-text-sweep child only supplies the original dots / inner glow.
 // Position (0 = left, 1 = right) comes from the carousel (HomeHeroShowcase); the
 // right half opens the shipping service page, the left half scrolls to the contact block of the same page (the contact page if the page has none).
-// Labels of the switch per language (left = the local service, right = all of Poland by post).
-export const SCOPE_LABELS = {
-  pl: { left: 'we Wrocławiu', right: 'cała Polska' },
-  uk: { left: 'у Вроцлаві', right: 'вся Польща' },
-  ru: { left: 'во Вроцлаве', right: 'вся Польша' },
-  en: { left: 'in Wrocław', right: 'all of Poland' },
-} as const
-
 export function HeroScopeSwitch({
   left,
   right,

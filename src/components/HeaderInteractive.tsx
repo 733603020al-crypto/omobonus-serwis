@@ -502,7 +502,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
             }}
             className="header-cell gap-1"
           >
-            <span className={cellLabel(isServicesActive)}>{navServices}</span>
+            <span className={isServicesActive ? 'nav-active-underline' : ''}><span className={cellLabel(isServicesActive)}>{navServices}</span></span>
             <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesActive ? 'text-[#fff8eb]' : 'text-[#bfa76a]'} ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
@@ -594,13 +594,13 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
           )}
         </div>
         <Link href={shippingHref} prefetch={false} ref={(el) => { cellRefs.current[1] = el }} className="header-cell">
-          <span className={cellLabel(isShippingActive)}>{navShipping}</span>
+          <span className={isShippingActive ? 'nav-active-underline' : ''}><span className={cellLabel(isShippingActive)}>{navShipping}</span></span>
         </Link>
         <Link href={aboutHref} prefetch={false} ref={(el) => { cellRefs.current[2] = el }} className="header-cell">
-          <span className={cellLabel(isAboutActive)}>{navAbout}</span>
+          <span className={isAboutActive ? 'nav-active-underline' : ''}><span className={cellLabel(isAboutActive)}>{navAbout}</span></span>
         </Link>
         <Link href={contactHref} prefetch={false} ref={(el) => { cellRefs.current[3] = el }} className="header-cell">
-          <span className={cellLabel(isContactActive)}>{navContact}</span>
+          <span className={isContactActive ? 'nav-active-underline' : ''}><span className={cellLabel(isContactActive)}>{navContact}</span></span>
         </Link>
 
         <div className="relative z-[2] flex items-center self-stretch pl-2 pr-3">

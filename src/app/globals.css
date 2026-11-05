@@ -4558,14 +4558,14 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
     top: 5px; /* position: relative comes from gold-border-flow */
     padding: 4px 4px 4px 10px;
     align-items: center;
-    border: 1.5px solid rgba(191, 167, 106, 0.85);
+    border: 0;
     border-radius: 9999px;
-    background: rgba(22, 14, 8, 0.55);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+    background: rgba(22, 14, 8, 0);
+    backdrop-filter: none;
+    box-shadow: none;
   }
   /* The gold line does not run around the capsule: the ring stands still. */
-  .header-bar.gold-border-flow.gold-shiny::before { z-index: 0; animation: none; }
+  .header-bar.gold-border-flow.gold-shiny::before { display: none; }
   /* Hover / focus anywhere inside lights only the cell under the cursor: the outer ring keeps its resting look. */
   .header-bar.gold-border-flow.gold-shiny:is(:hover, :focus-visible, :focus-within)::before {
     --gold-shiny-percent: 5%;
@@ -4624,12 +4624,18 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 /* Phone + address capsule: one picture (1062×108 = 3× of 354×36) with real text over it.
    Green part = phone (0–46%), map part = address (marker at ~54%, text starts at ~58%). */
 .header-contact-cells {
+/* Selected item is underlined (nav-active-underline); the sliding pill is not shown. Hover lifts the item by 2px. */
+.header-capsule > .cat-switch-pill { display: none; }
+.header-capsule > .header-cell, .header-capsule > div > .header-cell { transition: transform 300ms ease-out; }
+@media (hover: hover) {
+  .header-capsule > .header-cell:hover, .header-capsule > div > .header-cell:hover { transform: translateY(-2px); }
+}
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
   width: 420px;
-  aspect-ratio: 1062 / 108;
+  height: 48px;
   margin-right: 4px;
   background: url('/images/header-contact-bg-v2.avif') center / 100% 100% no-repeat;
 }
@@ -4644,7 +4650,7 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 .header-contact-icon { width: 36px; height: 36px; flex-shrink: 0; object-fit: contain; }
 /* 1160–1359px: the capsule is a little smaller to leave room for the menu. */
 @media (max-width: 1359.98px) {
-  .header-contact-cells { width: 354px; }
+  .header-contact-cells { width: 354px; height: 42px; }
   .header-contact-number { font-size: 17px; }
   .header-contact-lines { font-size: 19px; }
   .header-contact-icon { width: 30px; height: 30px; }
@@ -4652,7 +4658,7 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 /* Narrow desktops (920–1159px): smaller picture, the address text is hidden (the marker stays). */
 @media (max-width: 1159.98px) {
   .header-cell { padding: 0 11px; font-size: 17px; }
-  .header-contact-cells { width: 260px; }
+  .header-contact-cells { width: 260px; height: 42px; }
   .header-contact-number, .header-contact-lines { font-size: 14px; }
   .header-contact-icon { width: 24px; height: 24px; }
   .header-contact-lines { display: none; }
