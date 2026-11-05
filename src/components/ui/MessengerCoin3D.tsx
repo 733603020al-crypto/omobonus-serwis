@@ -23,7 +23,7 @@ import {
 const PLANE = 1
 const THICKNESS = 0.13
 const VIEW_HALF = 0.58 // холст чуть больше иконки: запас под парение
-const SPIN_MS = 900
+const SPIN_MS = 1500
 
 type Assets = { map: CanvasTexture; rim: BufferGeometry; rimColor: string }
 
@@ -261,7 +261,7 @@ function Coin({ assets, spinTick, onReady }: { assets: Assets; spinTick: number;
         {face(BackSide)}
       </mesh>
       <mesh geometry={assets.rim}>
-        <meshStandardMaterial color={assets.rimColor} metalness={0.85} roughness={0.3} envMapIntensity={1.4} side={DoubleSide} />
+        <meshStandardMaterial color={assets.rimColor} metalness={0.1} roughness={0.85} envMapIntensity={0.35} side={DoubleSide} />
       </mesh>
     </group>
   )

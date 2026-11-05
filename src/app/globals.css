@@ -3939,6 +3939,9 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   #kontakt-ikony > .contact-icon-link { animation: none; }
 }
 
+/* Пока иконка крутится в 3D, плоская тень-силуэт под ней скрыта (иначе стоит на месте) */
+#kontakt-ikony .icon-float:has([data-spin])::before,
+#kontakt-ikony .icon-float:has([data-spin])::after { opacity: 0 !important; }
 /* Иконки мессенджеров на /kontakt (устройства с мышью): парение в покое — только CSS, 3D-холст в покое не рисуется */
 @keyframes msg-bob { 0%, 100% { translate: 0 0; } 25% { translate: 0 1px; } 75% { translate: 0 -1px; } }
 @keyframes msg-tilt { 0%, 100% { transform: perspective(300px) rotateX(0deg); } 25% { transform: perspective(300px) rotateX(2deg); } 75% { transform: perspective(300px) rotateX(-2deg); } }
@@ -4624,18 +4627,18 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
   -webkit-tap-highlight-color: transparent;
 }
 .header-cell:focus-visible { outline: 2px solid #e6cc82; outline-offset: -2px; }
-@media (hover: hover) {
-  .header-cell:hover .cat-switch-label:not(.cat-switch-label-active) { background-image: linear-gradient(#fff8eb, #fff8eb); }
-}
-/* Phone + address capsule: one picture (1062×108 = 3× of 354×36) with real text over it.
-   Green part = phone (0–46%), map part = address (marker at ~54%, text starts at ~58%). */
-.header-contact-cells {
 /* Selected item is underlined (nav-active-underline); the sliding pill is not shown. Hover lifts the item by 2px. */
 .header-capsule > .cat-switch-pill { display: none; }
 .header-capsule > .header-cell, .header-capsule > div > .header-cell { transition: transform 300ms ease-out; }
 @media (hover: hover) {
   .header-capsule > .header-cell:hover, .header-capsule > div > .header-cell:hover { transform: translateY(-2px); }
 }
+@media (hover: hover) {
+  .header-cell:hover .cat-switch-label:not(.cat-switch-label-active) { background-image: linear-gradient(#fff8eb, #fff8eb); }
+}
+/* Phone + address capsule: one picture (1062×108 = 3× of 354×36) with real text over it.
+   Green part = phone (0–46%), map part = address (marker at ~54%, text starts at ~58%). */
+.header-contact-cells {
   position: relative;
   display: flex;
   align-items: center;

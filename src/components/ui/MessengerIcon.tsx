@@ -17,6 +17,7 @@ export function MessengerIcon({ src, alt = '' }: { src: string; alt?: string }) 
   const [activated, setActivated] = useState(false)
   const [ready, setReady] = useState(false)
   const [tick, setTick] = useState(0)
+  const [spinning, setSpinning] = useState(false)
 
   useEffect(() => {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
@@ -27,13 +28,21 @@ export function MessengerIcon({ src, alt = '' }: { src: string; alt?: string }) 
     const onEnter = () => {
       setActivated(true)
       setTick((t) => t + 1)
+      setSpinning(true)
     }
     host.addEventListener('pointerenter', onEnter)
     return () => host.removeEventListener('pointerenter', onEnter)
   }, [])
 
+  // Плоская тень под иконкой не вращается вместе с ней — на время оборота её прячет CSS ([data-spin])
+  useEffect(() => {
+    if (!spinning || (activated && !ready)) return
+    const id = window.setTimeout(() => setSpinning(false), 1600)
+    return () => window.clearTimeout(id)
+  }, [spinning, activated, ready, tick])
+
   return (
-    <span className={canHover ? 'msg-float' : undefined} style={{ position: 'relative', display: 'block' }}>
+    <span data-spin={spinning ? '' : undefined} className={canHover ? 'msg-float' : undefined} style={{ position: 'relative', display: 'block' }}>
       <Image ref={imgRef} src={src} alt={alt} width={96} height={96} className={IMG_CLASS} style={ready ? { opacity: 0 } : undefined} />
       {activated && <MessengerCoin3D src={src} size={imgRef.current?.clientWidth || 84} spinTick={tick} onReady={() => setReady(true)} />}
     </span>
