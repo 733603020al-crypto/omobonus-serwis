@@ -69,3 +69,8 @@
 }
 /* Phones: the tab list is display:contents, so its ring and glow pseudo-elements must not draw a frame around the rows. */
 @media (max-width: 767.98px) { .cat-switch::before, .cat-switch::after { display: none; } }
+
+/* Big capsule keeps only the thin gold ring running along its outer edge; no shimmer, dots or breathing glow inside. The sliding pill is unchanged. */
+.cat-switch.gold-shiny::after,
+.cat-switch.gold-shiny > .gold-text-sweep::before,
+.cat-switch.gold-shiny > .gold-text-sweep::after { display: none; }

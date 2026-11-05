@@ -7,8 +7,8 @@ import { CompactSuccessModal } from '@/components/ui/compact-success-modal'
 import { registerDraftSource, readLangSwitchDraft, switchLocaleForCountry } from '@/lib/country-locale'
 import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { PhoneHintArrow } from '@/components/ui/phone-hint-arrow'
-import { CallButton } from '@/components/ui/CallButton'
 import { GOLD_CTA, GOLD_CTA_SIZE } from '@/components/ui/gold-cta'
+import { CallbackModal } from '@/components/ui/callback-modal'
 import dynamic from 'next/dynamic'
 
 // the route window loads only after a click on the calculator icon
@@ -40,37 +40,6 @@ const pushFormSubmitToDataLayer = (formId: DataLayerFormId, phoneNumber: string)
   })
 }
 
-function Divider({ label }: { label: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        el.classList.add('fade-slide-animate')
-        observer.disconnect()
-      }
-    }, { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-  return (
-    <div ref={ref} className="brush-divider-row flex items-center gap-3">
-      <div
-        className="divider-line divider-line-left h-px min-w-4 flex-1"
-        style={{ background: 'linear-gradient(to right, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
-      />
-      <span className="min-w-0 text-center [text-wrap:balance] font-cormorant text-[13px] font-semibold uppercase tracking-[0.15em] text-[#f5e6bf]" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.55)' }}>
-        {label}
-      </span>
-      <div
-        className="divider-line divider-line-right h-px min-w-4 flex-1"
-        style={{ background: 'linear-gradient(to left, transparent, rgba(230,204,130,0.85))', boxShadow: '0 0 8px rgba(230,204,130,0.35)' }}
-      />
-    </div>
-  )
-}
-
 interface ContactActionsT {
   quickContactTitle: string
   callbackTitle: string
@@ -93,7 +62,7 @@ interface ContactActionsT {
 
 const PL_ACTIONS: ContactActionsT = {
   quickContactTitle: 'Skontaktuj się z nami',
-  callbackTitle: 'lub zostaw numer — oddzwonimy',
+  callbackTitle: 'zostaw numer — oddzwonimy',
   callbackButton: 'Proszę o telefon',
   callbackSubmitting: 'Wysyłanie...',
   callbackHint: 'Oddzwaniamy: pon.–sob. 7:00–21:00',
@@ -110,6 +79,13 @@ const PL_ACTIONS: ContactActionsT = {
   mapLabel: 'Mapa',
   kosztLabel: 'Koszt dojazdu',
 }
+
+const CALLBACK_UI = {
+  pl: { icon: 'Oddzwonimy', close: 'Zamknij' },
+  uk: { icon: 'Передзвонимо', close: 'Закрити' },
+  ru: { icon: 'Перезвоним', close: 'Закрыть' },
+  en: { icon: 'Call back', close: 'Close' },
+} as const
 
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' | 'en' } = {}) {
   const d = t ?? PL_ACTIONS
@@ -132,6 +108,8 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [showKoszt, setShowKoszt] = useState(false)
+  const [showCallback, setShowCallback] = useState(false)
+  const cb = CALLBACK_UI[locale]
   const [callbackError, setCallbackError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
   const [hintActive, setHintActive] = useState(false)
@@ -140,10 +118,13 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const honeypotRef = useRef<HTMLInputElement>(null)
   const phoneInputWrapperRef = useRef<HTMLElement | null>(null)
 
+  // the form lives in the window: find the phone field each time the window opens
   useEffect(() => {
+    if (!showCallback) { phoneInputWrapperRef.current = null; return }
     const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
     phoneInputWrapperRef.current = input?.parentElement ?? null
-  }, [])
+    input?.focus()
+  }, [showCallback])
 
   const applyGoldenShake = () => {
     const input = formRef.current?.querySelector<HTMLInputElement>('input.dark-phone-input')
@@ -168,7 +149,9 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   useEffect(() => {
     const handler = (e: Event) => {
       const detail = (e as CustomEvent<{ sourceRect: DOMRect; showArrow?: boolean }>).detail
-      triggerHint(detail.sourceRect, detail.showArrow ?? false)
+      // open the window first, then focus and shake the field once it is mounted
+      setShowCallback(true)
+      setTimeout(() => triggerHint(detail.sourceRect, detail.showArrow ?? false), 60)
     }
     window.addEventListener('phone-hint-trigger', handler)
     return () => window.removeEventListener('phone-hint-trigger', handler)
@@ -205,6 +188,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
       const res = await fetch('/api/callback-request', { method: 'POST', body: formData })
       if (!res.ok) throw new Error('send failed')
       pushFormSubmitToDataLayer('quick_form', phone)
+      setShowCallback(false)
       setShowModal(true)
     } catch {
       setCallbackError(true)
@@ -217,125 +201,98 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
     <>
       <section className="mx-auto max-w-2xl px-4 pt-8 pb-4 md:pt-10 md:pb-6">
 
-        {/* Mobile only: Zadzwoń teraz + divider before icons */}
-        {d.callNowButton && (
-          <div className="md:hidden mb-4 flex justify-center">
-            <CallButton variant="primary" href="tel:+48793759262" className="w-[80%]">
-              {d.callNowButton}
-            </CallButton>
-          </div>
-        )}
-        {d.callNowDividerLabel && (
-          <div className="md:hidden mb-4">
-            <Divider label={d.callNowDividerLabel} />
-          </div>
-        )}
-
         {/* Level 1: icons */}
-        <div className="mb-6 -mx-4 md:mx-0 flex flex-row items-start justify-evenly md:justify-center md:gap-7 md:mb-8">
+        <div id="kontakt-ikony" className="mb-1 md:-mx-4 max-md:mx-auto max-md:max-w-[336px] flex flex-row max-md:flex-wrap max-md:gap-x-2 max-md:gap-y-4 items-start justify-center md:gap-3 md:mb-0.5">
+          <button type="button" onClick={() => setShowCallback(true)} className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/callback-glossy-v3.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">{cb.icon}</span>
+          </button>
+          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/whatsapp-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
+          </a>
+          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/telegram-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
+          </a>
+          <a href="viber://chat?number=%2B48793759262" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/viber-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
+          </a>
+          <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/email-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
+          </a>
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Marcina%20Bukowskiego%20174%2C%2052-418%20Wroc%C5%82aw%2C%20Poland&travelmode=driving"
             target="_blank"
             rel="noopener noreferrer"
-            className="contact-icon-link hidden md:flex md:flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
+            className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]"
           >
-            <div className="icon-float"><Image src="/images/google-maps.png" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+            <div className="icon-float"><Image src="/images/google-maps-glossy-v2.webp" alt="Google Maps" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">{d.mapLabel ?? 'Mapa'}</span>
           </a>
-          <button type="button" onClick={() => setShowKoszt(true)} className="contact-icon-link flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/koszt-dojazdu-ikona.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
+          <button type="button" onClick={() => setShowKoszt(true)} className="contact-icon-link max-md:w-[min(76px,calc((100%-24px)/4))] flex flex-col items-center gap-0 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
+            <div className="icon-float"><Image src="/images/koszt-dojazdu-glossy-v2.webp" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
             <span className="max-w-[76px] md:max-w-none text-center leading-[1.05] md:leading-[1.5] md:whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[7px] md:-mt-[9px]">{d.kosztLabel ?? 'Koszt dojazdu'}</span>
           </button>
-          <a href="mailto:serwis@omobonus.com.pl" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/email.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">E-mail</span>
-          </a>
-          <a href="https://wa.me/48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/whatsapp.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">WhatsApp</span>
-          </a>
-          <a href="https://t.me/+48793759262" target="_blank" rel="noopener noreferrer" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/telegram.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Telegram</span>
-          </a>
-          <a href="viber://chat?number=%2B48793759262" className="contact-icon-link flex flex-col items-center gap-0 transition-all duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.03]">
-            <div className="icon-float"><Image src="/images/viber.png" alt="" width={96} height={96} className="w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]" /></div>
-            <span className="whitespace-nowrap font-cormorant text-[14px] md:text-[15px] text-white/85 -mt-[10px] md:-mt-[9px]">Viber</span>
-          </a>
         </div>
-
-        {/* Divider 1 */}
-        <div className="mb-4">
-          <Divider label={d.callbackTitle} />
-        </div>
-
-        {/* Level 2: phone + button row */}
-        <form ref={formRef} onSubmit={handleCallback}>
-          {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
-          <input
-            ref={honeypotRef}
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            defaultValue=""
-            className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
-          />
-          <div className="flex flex-col gap-2 md:flex-row md:items-stretch md:gap-3">
-            <div className="flex-1 min-w-0">
-              <CustomPhoneInput
-                aria-label={d.callbackTitle}
-                aria-invalid={phoneError}
-                aria-describedby={phoneError ? 'callback-phone-error-mobile callback-phone-error-desktop' : undefined}
-                value={phone}
-                onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
-                onCountryChange={({ name, dialCode, phoneLength, lang }) => {
-                  setCountryName(name)
-                  setCountryDialCode(dialCode)
-                  setCountryPhoneLength(phoneLength)
-                  draftRef.current = { phone: dialCode, countryName: name, countryDialCode: dialCode, countryPhoneLength: phoneLength }
-                  switchLocaleForCountry(lang, locale)
-                }}
-                variant="dark"
-                locale={locale}
-                alwaysRow
-                selectorWidth="220px"
-              />
-            </div>
-            {/* Mobile only: error between phone row and button */}
-            {phoneError && (
-              <p id="callback-phone-error-mobile" className="md:hidden text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
-            )}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`${GOLD_CTA} ${GOLD_CTA_SIZE} w-full md:w-auto disabled:cursor-not-allowed disabled:opacity-50`}
-            >
-              <span className="gold-text-sweep">{isSubmitting ? d.callbackSubmitting : d.callbackButton}</span>
-            </button>
-          </div>
-
-          {/* Desktop only: error below the row */}
-          {phoneError && (
-            <p id="callback-phone-error-desktop" className="hidden md:block mt-1.5 text-sm font-sans text-red-400 ml-[228px]">{d.phoneError}</p>
-          )}
-          {callbackError && !phoneError && (
-            <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>
-          )}
-          <p className="mt-2 text-center font-inter text-[12px] text-white/45">
-            {d.callbackHint}
-          </p>
-        </form>
-
-        {/* Divider 2 */}
-        {d.orFormLabel && (
-          <div className="mt-6">
-            <Divider label={d.orFormLabel} />
-          </div>
-        )}
 
       </section>
+      <CallbackModal open={showCallback} onClose={() => setShowCallback(false)} title={d.callbackTitle} closeLabel={cb.close}>
+          <form ref={formRef} onSubmit={handleCallback}>
+            {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              defaultValue=""
+              className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+            />
+            <div className="flex flex-col gap-3">
+              <div className="flex-1 min-w-0">
+                <CustomPhoneInput
+                  aria-label={d.callbackTitle}
+                  aria-invalid={phoneError}
+                  aria-describedby={phoneError ? 'callback-phone-error' : undefined}
+                  value={phone}
+                  onChange={(v) => { setPhone(v); if (phoneError) setPhoneError(false) }}
+                  onCountryChange={({ name, dialCode, phoneLength, lang }) => {
+                    setCountryName(name)
+                    setCountryDialCode(dialCode)
+                    setCountryPhoneLength(phoneLength)
+                    draftRef.current = { phone: dialCode, countryName: name, countryDialCode: dialCode, countryPhoneLength: phoneLength }
+                    switchLocaleForCountry(lang, locale)
+                  }}
+                  variant="dark"
+                  locale={locale}
+                  alwaysRow
+                  selectorWidth="190px"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`${GOLD_CTA} ${GOLD_CTA_SIZE} w-full disabled:cursor-not-allowed disabled:opacity-50`}
+              >
+                <span className="gold-text-sweep">{isSubmitting ? d.callbackSubmitting : d.callbackButton}</span>
+              </button>
+            </div>
+
+            {phoneError && (
+              <p id="callback-phone-error" className="mt-1.5 text-sm font-sans text-red-400">{d.phoneError}</p>
+            )}
+            {callbackError && !phoneError && (
+              <p className="mt-1.5 text-sm text-red-400">{d.callbackError}</p>
+            )}
+            <p className="mt-2 text-center font-inter text-[12px] text-white/45">
+              {d.callbackHint}
+            </p>
+          </form>
+      </CallbackModal>
       {showKoszt && <KosztDojazduModal lang={locale} onClose={() => setShowKoszt(false)} />}
 
       <CompactSuccessModal

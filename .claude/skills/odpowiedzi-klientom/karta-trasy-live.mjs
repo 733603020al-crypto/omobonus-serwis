@@ -36,7 +36,7 @@ try {
   await page.locator('[role=dialog] button').last().click()
   const karta = page.locator('[data-koszt-dojazdu]').first()
   await page.waitForFunction(() => /netto/.test(document.querySelector('[data-koszt-dojazdu]')?.textContent || ''), null, { timeout: 30000 })
-  await page.addStyleTag({ content: '[data-koszt-dojazdu] button{display:none!important} *{animation:none!important;transition:none!important}' })
+  await page.addStyleTag({ content: '[data-koszt-dojazdu] button,[data-koszt-dojazdu] .md\\:col-span-2{display:none!important} *{animation:none!important;transition:none!important}' })
   await page.evaluate(() => document.fonts.ready)
   await page.waitForTimeout(800)
   await karta.screenshot({ path: out })

@@ -7,7 +7,7 @@ import Link from 'next/link'
 // active label always sits in the capsule and gets the .gold-text-sweep glint. The
 // empty .gold-text-sweep child only supplies the original dots / inner glow.
 // Position (0 = left, 1 = right) comes from the carousel (HomeHeroShowcase); the
-// right half opens the shipping service page.
+// right half opens the shipping service page, the left half the contact page (same language).
 // Labels of the switch per language (left = the local service, right = all of Poland by post).
 export const SCOPE_LABELS = {
   pl: { left: 'we Wrocławiu', right: 'cała Polska' },
@@ -31,6 +31,8 @@ export function HeroScopeSwitch({
   onLeft?: () => void
   onRight?: () => void
 }) {
+  const prefix = ['uk', 'ru', 'en'].find((l) => href.startsWith('/' + l + '/'))
+  const contactHref = (prefix ? '/' + prefix : '') + '/kontakt'
   return (
     <div role="group" aria-label={`${left} / ${right}`} className="scope-switch gold-border-flow gold-shiny" data-pos={position}>
       <span className="scope-switch-pill gold-border-flow gold-shiny" aria-hidden="true">
@@ -40,9 +42,9 @@ export function HeroScopeSwitch({
           <span className="scope-switch-cell"><span className="gold-text-sweep">{right}</span></span>
         </span>
       </span>
-      <button type="button" className="scope-switch-zone" aria-pressed={position === 0} onClick={onLeft}>
+      <Link href={contactHref} prefetch={false} className="scope-switch-zone" onClick={onLeft}>
         <span className="gold-text-sweep">{left}</span>
-      </button>
+      </Link>
       <Link href={href} prefetch={false} className="scope-switch-zone" onClick={onRight}>
         <span className="gold-text-sweep">{right}</span>
       </Link>

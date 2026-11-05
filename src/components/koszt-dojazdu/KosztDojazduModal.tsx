@@ -162,7 +162,7 @@ export default function KosztDojazduModal({ lang = 'pl', onClose }: { lang?: Lan
     if (!el) return
     // laptops: the window starts at the middle of the contact icons, so their upper halves stay visible above it
     // (read once — the icons float slightly, and the page does not scroll while the window is open)
-    const ikona = document.querySelector('img[src*="koszt-dojazdu-ikona"]')?.getBoundingClientRect()
+    const ikona = document.querySelector('img[src*="koszt-dojazdu-glossy"]')?.getBoundingClientRect()
     // when the icons are partly under the site header, half an icon's height is kept visible below the header
     const naglowek = Math.max(0, document.querySelector('header')?.getBoundingClientRect().bottom ?? 0)
     const licz = () => {

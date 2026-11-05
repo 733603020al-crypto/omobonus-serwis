@@ -215,6 +215,12 @@ export const en = {
     umka: { name: 'Umka', role: 'Our little helper', phrase: 'Greets customers and keeps the atmosphere friendly' },
   },
   contactForm: {
+    paper: {
+      open: 'Click to unfold the form',
+      preparing: 'Preparing the form…',
+      opening: 'Unfolding the form…',
+      closing: 'Request sent. Folding the document…',
+    },
     formTitle: 'Request form',
     nameLabel: 'Full name',
     namePlaceholder: 'John Smith',
@@ -287,7 +293,7 @@ export const en = {
   },
   contactActions: {
     quickContactTitle: 'Contact us',
-    callbackTitle: 'or leave your number — we’ll call you back',
+    callbackTitle: 'leave your number — we’ll call you back',
     navigateLabel: 'Get directions',
     callbackButton: 'Request a call back',
     callbackSubmitting: 'Sending...',

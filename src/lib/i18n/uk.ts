@@ -211,6 +211,12 @@
     umka: { name: 'Умка', role: 'Наш маленький помічник', phrase: 'Вітає клієнтів і дбає про добру атмосферу' },
   },
   contactForm: {
+    paper: {
+      open: 'Натисніть, щоб розгорнути форму',
+      preparing: 'Готуємо форму…',
+      opening: 'Розгортаємо форму…',
+      closing: 'Заявку надіслано. Згортаємо документ…',
+    },
     formTitle: 'Форма заявки',
     nameLabel: 'Ім\'я та прізвище',
     namePlaceholder: 'Іван Іваненко',
@@ -282,7 +288,7 @@
   },
   contactActions: {
     quickContactTitle: 'Зв\'яжіться з нами',
-    callbackTitle: 'або залиш номер — ми передзвонимо',
+    callbackTitle: 'залиш номер — ми передзвонимо',
     navigateLabel: 'Прокласти маршрут',
     callbackButton: 'Замовити дзвінок',
     callbackSubmitting: 'Надсилання...',

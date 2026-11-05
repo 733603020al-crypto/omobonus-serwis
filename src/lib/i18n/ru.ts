@@ -142,6 +142,12 @@ export const ru = {
     umka: { name: 'Умка', role: 'Наш маленький помощник', phrase: 'Встречает клиентов и заботится о хорошей атмосфере' },
   },
   contactForm: {
+    paper: {
+      open: 'Нажмите, чтобы развернуть форму',
+      preparing: 'Готовим форму…',
+      opening: 'Разворачиваем форму…',
+      closing: 'Заявка отправлена. Сворачиваем документ…',
+    },
     formTitle: 'Форма заявки',
     nameLabel: 'Имя и фамилия',
     namePlaceholder: 'Иван Иванов',
@@ -178,7 +184,7 @@ export const ru = {
   },
   contactActions: {
     quickContactTitle: 'Свяжитесь с нами',
-    callbackTitle: 'или оставьте номер — мы перезвоним',
+    callbackTitle: 'оставьте номер — мы перезвоним',
     navigateLabel: 'Построить маршрут',
     callbackButton: 'Заказать звонок',
     callbackSubmitting: 'Отправка...',
