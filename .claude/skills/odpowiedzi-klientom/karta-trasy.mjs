@@ -44,8 +44,8 @@ try {
   const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 })
   if (!res || !res.ok()) throw new Error(`Strona karty: HTTP ${res?.status()} — czy dev-serwer działa na ${opt.host}?`)
   const wynik = JSON.parse(await page.locator('#wynik').getAttribute('data-wynik'))
-  // bez przycisku zamknięcia i bez animacji — w mailu karta jest obrazkiem
-  await page.addStyleTag({ content: '[data-koszt-dojazdu] button{display:none!important} *{animation:none!important;transition:none!important}' })
+  // bez przycisku zamknięcia, nagłówka „DARMOWY DOJAZD” i przypisów pod kartą (.md:col-span-2) oraz bez animacji — w mailu karta jest obrazkiem
+  await page.addStyleTag({ content: '[data-koszt-dojazdu] button,[data-koszt-dojazdu] .md\\:col-span-2{display:none!important} *{animation:none!important;transition:none!important}' })
   await page.evaluate(() => document.fonts.ready)
   await page.waitForTimeout(500)
   await page.locator('[data-koszt-dojazdu]').screenshot({ path: out })

@@ -1,13 +1,11 @@
 'use client'
 
-import { Phone } from 'lucide-react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const NAVY = '#0B1F3A'
 
 const LABELS = {
     pl: { write: 'Napisz', map: 'Mapa', call: 'Zadzwoń' },
@@ -133,7 +131,7 @@ export function MobileActionBar() {
 
     if (!mounted) return null
 
-    const colCount = isKontakt ? 2 : 3
+    const colCount = isKontakt ? 1 : 3
     const colTotal = columns?.widths.reduce((a, b) => a + b, 0) ?? 0
     const colPercents = columns?.widths.map(w => (w / colTotal) * 100)
     const dividerLeft = (i: number) => colPercents ? `${colPercents.slice(0, i + 1).reduce((a, b) => a + b, 0)}%` : undefined
@@ -159,17 +157,19 @@ export function MobileActionBar() {
                 <div className="pt-2" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}>
                 <div
                     ref={gridRef}
-                    className={`relative grid w-full ${isKontakt ? 'grid-cols-2' : 'grid-cols-3'}`}
+                    className={`relative grid w-full ${isKontakt ? 'grid-cols-1' : 'grid-cols-3'}`}
                     style={colPercents ? { gridTemplateColumns: colPercents.map(p => `${p}%`).join(' ') } : undefined}
                 >
                     {!isKontakt && (
                         <span className="pointer-events-none absolute left-1/3 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45" style={{ left: dividerLeft(0) }} aria-hidden="true" />
                     )}
+                    {!isKontakt && (
                     <span
-                        className={`pointer-events-none absolute top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45 ${isKontakt ? 'left-1/2' : 'left-2/3'}`}
-                        style={{ left: dividerLeft(isKontakt ? 0 : 1) }}
+                        className={`pointer-events-none absolute top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-[#bfa76a]/45 left-2/3`}
+                        style={{ left: dividerLeft(1) }}
                         aria-hidden="true"
                     />
+                    )}
 
                     {!isKontakt && (
                         <>
@@ -180,37 +180,8 @@ export function MobileActionBar() {
                                     className={BUTTON_CONTAINER_CLASS}
                                     style={buttonStyle(0)}
                                 >
-                                    <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                                        <svg
-                                            className="absolute left-0 -top-[8px] w-[44px] h-[51px] pointer-events-none overflow-visible"
-                                            viewBox="0 0 56 66"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            style={{ overflow: 'visible' }}
-                                        >
-                                            <path
-                                                d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z"
-                                                stroke={NAVY}
-                                                strokeWidth="2.5"
-                                                strokeLinejoin="round"
-                                                fill="none"
-                                            />
-                                            <circle className="bar-dot-1" cx="22" cy="39" r="2.2" fill="#000000" />
-                                            <circle className="bar-dot-2" cx="28" cy="39" r="2.2" fill="#000000" />
-                                            <circle className="bar-dot-3" cx="34" cy="39" r="2.2" fill="#000000" />
-                                            {/* Quill temporarily disabled for the mobile bottom bar — dot animation stays.
-                                                Uncomment to restore the writing-pen effect.
-                                            <g className="bar-pen" style={{ transform: 'translate(0px,0px)', transformOrigin: '22px 39px', overflow: 'visible' }}>
-                                                <g transform="rotate(16,22,27) translate(76.08,0) scale(-1,1)" style={{ overflow: 'visible' }}>
-                                                    <image
-                                                        href="/icons/quill.webp"
-                                                        x="22.82" y="-33" width="30.45" height="56"
-                                                        preserveAspectRatio="xMidYMid meet"
-                                                    />
-                                                </g>
-                                            </g>
-                                            */}
-                                        </svg>
+                                    <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center">
+                                        <Image src="/images/bar-email-glossy-v1.webp" alt="" width={44} height={44} sizes="44px" className="w-[44px] h-[44px]" />
                                     </span>
                                     <span ref={captionRef(0)} className={CAPTION_CLASS} style={captionStyle(0)}>{labels.write}</span>
                                 </Link>
@@ -218,35 +189,37 @@ export function MobileActionBar() {
                         </>
                     )}
 
+                    {!isKontakt && (
                     <div className="flex items-center justify-center">
                         <a
                             href={MAPS_HREF}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={BUTTON_CONTAINER_CLASS}
-                            style={buttonStyle(isKontakt ? 0 : 1)}
+                            style={buttonStyle(1)}
                         >
-                            <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
-                                <Image src="/images/google-maps.png" alt="Google Maps" fill sizes="64px" className="object-cover scale-[1.45]" />
+                            <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center">
+                                <Image src="/images/bar-mapa-glossy-v1.webp" alt="Google Maps" width={44} height={44} sizes="44px" className="w-[44px] h-[44px]" />
                             </span>
-                            <span ref={captionRef(isKontakt ? 0 : 1)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 0 : 1)}>{labels.map}</span>
+                            <span ref={captionRef(1)} className={CAPTION_CLASS} style={captionStyle(1)}>{labels.map}</span>
                         </a>
                     </div>
+                    )}
 
-                    <div className="flex items-center justify-center">
+                    <div className={`flex items-center justify-center${isKontakt ? " w-1/2 ml-auto" : ""}`}>
                         <a
                             href="tel:+48793759262"
                             className={BUTTON_CONTAINER_CLASS}
-                            style={buttonStyle(isKontakt ? 1 : 2)}
+                            style={buttonStyle(isKontakt ? 0 : 2)}
                         >
                             <span className="relative flex w-[44px] h-[44px] shrink-0 items-center justify-center overflow-visible">
                                 <span className="bar-ripple pointer-events-none"></span>
                                 <span className="bar-ripple delay pointer-events-none"></span>
-                                <span className="relative flex w-[44px] h-[44px] items-center justify-center rounded-full bg-[#1c6e43] text-white shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
-                                    <Phone className="w-[22px] h-[22px] bar-call-icon" />
+                                <span className="relative flex w-[44px] h-[44px] items-center justify-center rounded-full shadow-[0_4px_14px_rgba(28,110,67,0.45)]">
+                                    <Image src="/images/call-round-glossy-v1.webp" alt="" width={44} height={44} sizes="44px" className="w-[44px] h-[44px] bar-call-icon" />
                                 </span>
                             </span>
-                            <span ref={captionRef(isKontakt ? 1 : 2)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 1 : 2)}>{labels.call}</span>
+                            <span ref={captionRef(isKontakt ? 0 : 2)} className={CAPTION_CLASS} style={captionStyle(isKontakt ? 0 : 2)}>{labels.call}</span>
                         </a>
                     </div>
                 </div>

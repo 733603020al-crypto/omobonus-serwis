@@ -14,6 +14,7 @@ import { hasTrackingConsent } from '@/lib/tracking-consent'
 import { uk } from '@/lib/i18n/uk'
 import { ru } from '@/lib/i18n/ru'
 import { en } from '@/lib/i18n/en'
+import { ContactPaper, type ContactPaperHandle } from '@/components/contact-paper'
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
@@ -57,6 +58,7 @@ function splitLabelNote(text: string): { main: string; note: string | null } {
 export type Locale = 'pl' | 'uk' | 'ru' | 'en'
 
 export interface ContactT {
+  paper: { open: string; preparing: string; opening: string; closing: string }
   formTitle: string
   nameLabel: string
   namePlaceholder: string
@@ -102,6 +104,12 @@ export interface ContactT {
 }
 
 const PL: ContactT = {
+  paper: {
+    open: 'Kliknij, aby rozwinąć formularz',
+    preparing: 'Przygotowujemy formularz…',
+    opening: 'Rozwijamy formularz…',
+    closing: 'Zgłoszenie wysłane. Składamy dokument…',
+  },
   formTitle: 'Formularz zgłoszeniowy',
   nameLabel: 'Imię i nazwisko',
   namePlaceholder: 'Jan Kowalski',
@@ -202,6 +210,9 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   )
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const submitLock = useRef(false)
+  const paperRef = useRef<ContactPaperHandle>(null)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [attachments, setAttachments] = useState<AttachmentPreview[]>([])
   const [attachmentError, setAttachmentError] = useState<string | null>(null)
@@ -306,6 +317,9 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
   }, [errors])
 
   const onSubmit = async (data: FormValues) => {
+    if (submitLock.current) return
+    submitLock.current = true
+    setSubmitError(null)
     setIsSubmitting(true)
     try {
       // Проверка до отправки: запрос не уходит, введённые данные и вложения остаются.
@@ -334,14 +348,14 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
       // Ответ может быть не JSON (HTML-страница ошибки хостинга, 413 и т.п.) —
       // тогда просто нет errorType, пользователь видит переведённое сообщение.
-      let responseData: { errorType?: string; details?: unknown } = {}
+      let responseData: { success?: boolean; errorType?: string; details?: unknown } = {}
       try {
         responseData = await response.json()
       } catch {
         responseData = {}
       }
 
-      if (!response.ok) {
+      if (!response.ok || responseData.success !== true) {
         // Структурированная обработка ошибок
         const errorType = responseData.errorType || (response.status === 413 ? 'FILE_TOO_LARGE' : 'UNKNOWN')
         let errorMessage = d.errorGeneric
@@ -371,7 +385,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
       pushFormSubmitToDataLayer('long_form', data.phone)
-      setShowSuccessModal(true)
+      if (paperRef.current) await paperRef.current.complete()
+      else setShowSuccessModal(true)
       reset(defaultFormValues)
       attachments.forEach(preview => URL.revokeObjectURL(preview.url))
       setAttachments([])
@@ -385,8 +400,9 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
         ? error.message
         : d.errorGeneric
 
-      alert(errorMessage)
+      setSubmitError(errorMessage)
     } finally {
+      submitLock.current = false
       setIsSubmitting(false)
     }
   }
@@ -421,6 +437,7 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
         {/* Karta formularza — postrzępiony pergamin jako tło całego wrappera (rozciąga się pod pełną wysokość treści) */}
+        <ContactPaper ref={paperRef} locale={resolvedLocale} text={d.paper} successTitle={d.successTitle} successText={d.successText}>
         <div className="relative w-full max-w-2xl">
           <picture>
             <source media="(max-width: 767px)" srcSet="/images/contact-form-parchment-mobile.webp" />
@@ -441,12 +458,17 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
 
 
           <form
-            onSubmit={handleSubmit(onSubmit, () => {
+            onSubmit={event => {
+              if (submitLock.current) { event.preventDefault(); return }
+              return handleSubmit(onSubmit, () => {
               // При ошибках валидации запускаем прокрутку
               setShouldScrollToError(true)
-            })}
+              })(event)
+            }}
             className="space-y-[13px] md:space-y-4"
+            aria-busy={isSubmitting}
           >
+            <fieldset disabled={isSubmitting} className="contents space-y-[13px] md:space-y-4">
             {/* Pole-pułapka (honeypot) na boty — niewidoczne dla ludzi, pomijane przez czytniki ekranu */}
             <input
               ref={honeypotRef}
@@ -728,6 +750,8 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </p>
             </div>
 
+            {submitError && <p role="alert" data-paper-capture-skip="" className="text-red-800 bg-white/40 rounded px-3 py-2 text-sm">{submitError}</p>}
+
             {/* Przycisk Submit — pieczęć woskowa wspólna dla PL/UK/RU (grafika bez wypalonego
                 tekstu), słowo na pieczęci nakładane przez HTML/CSS z d.submitButtonSeal.
                 Sznurki celowo zwisają poza dolną krawędź kartki: pieczęć jest w normalnym
@@ -751,16 +775,15 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                       className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
                     />
                   </picture>
-                  {!isSubmitting && (
                     <span
+                      data-paper-seal=""
                       className={`absolute left-1/2 top-[29%] -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none whitespace-nowrap font-cormorant font-bold tracking-[-0.02em] text-[#b68d60] ${resolvedLocale === 'pl' || resolvedLocale === 'en' ? 'text-[28px] md:text-[36px]' : 'text-[16px] md:text-[22px]'}`}
-                      style={{ textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
+                      style={{ visibility: isSubmitting ? 'hidden' : 'visible', textShadow: '0px 1px 1px rgba(40,15,5,0.7), 0px -1px 0px rgba(255,220,150,0.3)' }}
                     >
                       {d.submitButtonSeal}
                     </span>
-                  )}
                   {isSubmitting && (
-                    <span className="absolute inset-x-0 top-[30%] flex items-center justify-center">
+                    <span data-paper-capture-skip="" className="absolute inset-x-0 top-[30%] flex items-center justify-center">
                       <Loader2 className="animate-spin h-6 w-6 text-[#F6E5C3] drop-shadow" />
                     </span>
                   )}
@@ -768,9 +791,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
               </div>
             </div>
 
+            </fieldset>
           </form>
           </div>
         </div>
+        </ContactPaper>
       </div>
 
       {/* Success Modal */}

@@ -265,3 +265,8 @@
 @media (prefers-reduced-motion: reduce) {
   .scope-switch > .scope-switch-pill.scope-switch-pill.gold-border-flow, .scope-switch-layer, .scope-switch-zone, .scope-switch-zone > .gold-text-sweep { transition: none; }
 }
+
+/* Big capsule keeps only the thin gold ring running along its outer edge; no shimmer, dots or breathing glow inside. The sliding pill is unchanged. */
+.scope-switch.gold-shiny::after,
+.scope-switch.gold-shiny > .gold-text-sweep::before,
+.scope-switch.gold-shiny > .gold-text-sweep::after { display: none; }

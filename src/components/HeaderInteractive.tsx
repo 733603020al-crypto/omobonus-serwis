@@ -4,11 +4,12 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Menu, ChevronDown } from 'lucide-react'
 import { MenuItemIcon } from '@/components/menu-item-icon'
-import { CallButton } from '@/components/ui/CallButton'
+import '@/app/styles/cat-switch.css'
+import { HeaderContactCapsule } from '@/components/header-contact-capsule'
 import { cn } from '@/lib/utils'
 import { SERVICE_CATEGORIES, type MenuIconComponent } from '@/config/service-categories'
 
@@ -82,6 +83,7 @@ const LOCALE_NAV: Record<Locale, {
     services: string
     home: string
     about: string
+    shipping: string
     contact: string
     shop: string
     call: string
@@ -97,6 +99,7 @@ const LOCALE_NAV: Record<Locale, {
       services: 'Usługi',
       home: 'Strona główna',
       about: 'O nas',
+      shipping: 'Wysyłka',
       contact: 'Kontakt',
       shop: 'Sklep',
       call: 'Zadzwoń teraz',
@@ -112,6 +115,7 @@ const LOCALE_NAV: Record<Locale, {
       services: 'Послуги',
       home: 'Головна',
       about: 'Про нас',
+      shipping: 'Відправка',
       contact: 'Контакт',
       shop: 'Магазин',
       call: 'Зателефонувати',
@@ -127,6 +131,7 @@ const LOCALE_NAV: Record<Locale, {
       services: 'Услуги',
       home: 'Главная',
       about: 'О нас',
+      shipping: 'Отправка',
       contact: 'Контакт',
       shop: 'Магазин',
       call: 'Позвонить',
@@ -143,6 +148,7 @@ const LOCALE_NAV: Record<Locale, {
       services: 'Services',
       home: 'Home',
       about: 'About us',
+      shipping: 'Mail-in',
       contact: 'Contact',
       shop: 'Shop',
       call: 'Call now',
@@ -181,6 +187,16 @@ const MEGA_GROUP_CLASS = [
    Header interactive island
    ========================= */
 
+const ADDRESS_LABEL: Record<Locale, string> = {
+  pl: 'Marcina Bukowskiego 174, Wrocław — przejdź do kontaktu i mapy',
+  uk: 'Marcina Bukowskiego 174, Вроцлав — перейти до контактів і карти',
+  ru: 'Marcina Bukowskiego 174, Вроцлав — перейти к контактам и карте',
+  en: 'Marcina Bukowskiego 174, Wrocław — go to contact and map',
+}
+
+// Link of the page you are on, inside the mega menu: the same look as the hovered link, kept on.
+const MEGA_CURRENT = ' !border-[#bfa76a]/80 bg-gradient-to-r from-[#bfa76a]/40 via-[#bfa76a]/20 to-transparent !text-[#f3df9a] shadow-[0_0_30px_rgba(191,167,106,0.45)] [text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&_img]:opacity-100 [&_svg]:opacity-100'
+
 export function HeaderInteractive({ locale }: { locale: Locale }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
@@ -189,7 +205,36 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const pathname = usePathname()
   const router = useRouter()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+const megaPanelRef = useRef<HTMLDivElement>(null)
   const servicesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  // The mega panel stays mounted while its closing animation plays (header-mega-out, 450 ms).
+  const [megaRender, setMegaRender] = useState(false)
+  useEffect(() => {
+    if (isServicesOpen) { setMegaRender(true); return }
+    const t = setTimeout(() => setMegaRender(false), 450)
+    return () => clearTimeout(t)
+  }, [isServicesOpen])
+
+  // Keep the mega menu inside the window: it is centred under "Usługi",
+  // so on narrower windows its right edge can leave the screen.
+  useLayoutEffect(() => {
+    if (!megaRender) return
+    const fit = () => {
+      const el = megaPanelRef.current
+      if (!el) return
+      el.style.left = '50%'
+      const r = el.getBoundingClientRect()
+      const vw = document.documentElement.clientWidth
+      const m = 8
+      let shift = 0
+      if (r.right > vw - m) shift = vw - m - r.right
+      if (r.left + shift < m) shift = m - r.left
+      el.style.left = `calc(50% + ${Math.round(shift)}px)`
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    return () => window.removeEventListener('resize', fit)
+  }, [megaRender])
 
   // Small grace period before closing the mega menu: the panel sits a few px
   // below the trigger, so a real mouse move from "Usługi" to a link inside it
@@ -208,7 +253,7 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     servicesCloseTimer.current = setTimeout(() => {
       setIsServicesOpen(false)
       servicesCloseTimer.current = null
-    }, 200)
+    }, 280)
   }
 
   useEffect(() => {
@@ -219,22 +264,65 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   const nav = LOCALE_NAV[locale]
   const homeHref = nav.homeHref
   const aboutHref = `${nav.prefix}/o-nas`
+  const shippingHref = `${nav.prefix}/serwis-wysylkowy`
   const contactHref = `${nav.prefix}/kontakt`
   const prefetchHome = () => {
     if (pathname !== homeHref) router.prefetch(homeHref)
   }
   const isServicesActive = pathname.startsWith(`${nav.prefix}/uslugi`) || (pathname === homeHref && activeHomeSection === 'uslugi')
+  const isShippingActive = pathname === shippingHref
   const isAboutActive = pathname === aboutHref
   const isContactActive = pathname === contactHref
 
   const navServices = nav.labels.services
   const navHome = nav.labels.home
   const navAbout = nav.labels.about
+  const navShipping = nav.labels.shipping
   const navContact = nav.labels.contact
-  const navCall = nav.labels.call
+  const addressLabel = ADDRESS_LABEL[locale]
   const navSendForm = nav.labels.sendForm
   const megaMenuHeader = nav.labels.megaMenuHeader
   const homeSectionHref = nav.homeSectionHref('uslugi')
+
+  // Gold switch: one pill slides to the active menu cell (same measuring as the home category switch).
+  const cellRefs = useRef<(HTMLElement | null)[]>([])
+  const capsuleRef = useRef<HTMLElement>(null)
+  const pillRef = useRef<HTMLSpanElement>(null)
+  const [pill, setPill] = useState<{ x: number; y: number; w: number; h: number } | null>(null)
+  const [pillMoves, setPillMoves] = useState(false)
+  const pillStarted = useRef(false)
+  // The old header saves where the pill stood before the page changed (first cleanup wins), the new one starts from there.
+  const pillLatest = useRef(pill)
+  const pillSaved = useRef(false)
+  useEffect(() => { pillLatest.current = pill }, [pill])
+  const activeCell = isServicesActive ? 0 : isShippingActive ? 1 : isAboutActive ? 2 : isContactActive ? 3 : -1
+  useEffect(() => {
+    const measure = () => {
+      const cell = cellRefs.current[activeCell]
+      const parent = pillRef.current?.offsetParent as HTMLElement | null
+      if (!cell || !parent) { setPill(null); return }
+      const p = parent.getBoundingClientRect()
+      const c = cell.getBoundingClientRect()
+      if (!c.width) { setPill(null); return }
+      const next = { x: c.left - p.left - parent.clientLeft, y: c.top - p.top - parent.clientTop, w: c.width, h: c.height }
+      setPill((prev) => prev && Math.abs(prev.x - next.x) < 0.5 && Math.abs(prev.y - next.y) < 0.5 && Math.abs(prev.w - next.w) < 0.5 && Math.abs(prev.h - next.h) < 0.5 ? prev : next)
+    }
+    // The header is rebuilt on every page: start from where the pill stood on the previous page,
+    // so it slides to the new cell instead of jumping.
+    let from: { x: number; y: number; w: number; h: number } | null = null
+    try { from = JSON.parse(sessionStorage.getItem('header-pill') || 'null') } catch {}
+    if (from && activeCell >= 0 && !pillStarted.current) { setPill(from) } else measure()
+    let ready = false // ResizeObserver fires once on observe(): skip it, the first move runs after the transition class is set
+    const ro = new ResizeObserver(() => { if (ready) measure() })
+    if (capsuleRef.current) ro.observe(capsuleRef.current)
+    cellRefs.current.forEach((el) => el && ro.observe(el))
+    const raf = requestAnimationFrame(() => { pillStarted.current = true; setPillMoves(true); ready = true; measure() })
+    return () => {
+      ro.disconnect(); cancelAnimationFrame(raf)
+      if (!pillSaved.current && pillLatest.current) { pillSaved.current = true; try { sessionStorage.setItem('header-pill', JSON.stringify(pillLatest.current)) } catch {} }
+    }
+  }, [activeCell])
+  const cellLabel = (active: boolean) => `cat-switch-label gold-text-sweep${active ? ' cat-switch-label-active' : ''}`
 
   const handlePhoneClick = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -318,6 +406,34 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
     }
   }
 
+  // Address capsule: smooth scroll to the contact block of the current page so that the "Szybki kontakt"
+  // block above the footer, the "Kontakt" heading, the details and the map all sit under the sticky header.
+  const scrollToContact = (e: React.MouseEvent<HTMLElement>) => {
+    const footer = document.getElementById('kontakt')
+    if (!footer) return // no contact block here: the plain #kontakt link does nothing harmful
+    e.preventDefault()
+    // Lift the home page's off-screen render skipping so the heights are real (see globals.css).
+    document.documentElement.classList.add('cv-off')
+    requestAnimationFrame(() => {
+      const prev = footer.previousElementSibling
+      const cta = footer.querySelector('section') ?? (prev?.tagName === 'SECTION' && prev.querySelector('.more-about-cta') ? prev : null)
+      const target = cta ?? footer
+      const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom ?? 65
+      const y = window.scrollY
+      // Preferred: the whole CTA block right under the header. On short screens slide down (up to
+      // the button, never past it) so that the bottom of the details/map stays on screen.
+      let top = target.getBoundingClientRect().top + y - headerBottom
+      const grid = footer.querySelector('.grid')
+      const button = cta?.querySelector('a')
+      if (grid && button) {
+        const needed = grid.getBoundingClientRect().bottom + y + 8 - window.innerHeight
+        const limit = button.getBoundingClientRect().top + y - headerBottom - 10
+        top = Math.min(Math.max(top, needed), limit)
+      }
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+    })
+  }
+
   const scrollToTop = () => {
     setActiveHomeSection(null)
     if (window.location.hash) {
@@ -334,7 +450,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div className="relative flex h-full w-full items-stretch justify-between px-4 max-[374px]:pr-2 md:px-8">
+    <div className="header-bar gold-border-flow gold-shiny relative flex h-full w-full items-stretch justify-between px-4 max-[374px]:pr-2 md:px-8">
+      <div className="z-10 flex h-full items-center min-[920px]:gap-5 min-[1160px]:gap-7">
       {/* Logo */}
       <Link
         href={homeHref}
@@ -371,10 +488,25 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
         <BrandWordmark />
       </Link>
 
+      </div>
+
       {/* Desktop nav */}
-      <nav className="z-10 ml-[35px] hidden items-center gap-[28px] min-[920px]:flex">
+      <nav ref={capsuleRef} className="header-capsule z-10">
+        <span ref={pillRef} aria-hidden="true" className={`cat-switch-pill gold-border-flow gold-shiny${pillMoves ? ' cat-switch-pill-move' : ''}`} style={pill ? { transform: `translate(${pill.x}px, ${pill.y}px)`, width: pill.w, height: pill.h } : { opacity: 0 }}>
+          <span className="gold-text-sweep" />
+        </span>
+        {/* Phone + address in one always-on gold pill; desktop only, the mobile menu has its own call button */}
+        <HeaderContactCapsule
+          addressLabel={addressLabel}
+          phoneHref="tel:+48793759262"
+          phoneText="793 759 262"
+          addressText="Bukowskiego 174"
+          onAddressClick={scrollToContact}
+          onPhoneClick={handlePhoneClick}
+        />
         <div
-          className="relative h-full flex items-center"
+          ref={(el) => { cellRefs.current[0] = el }}
+          className="relative z-[2] flex items-stretch self-stretch"
           onMouseEnter={openServices}
           onMouseLeave={scheduleCloseServices}
           onFocus={openServices}
@@ -396,16 +528,15 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
               e.preventDefault()
               scrollToSection('uslugi')
             }}
-            className="flex items-center gap-1 whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]"
-            style={isServicesOpen ? { textShadow: '0 0 8px rgba(191,167,106,0.7), 0 0 18px rgba(191,167,106,0.35)' } : undefined}
+            className="header-cell gap-1"
           >
-            <span className={isServicesActive ? 'nav-active-underline' : ''}>{navServices}</span>
-            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+            <span className={cellLabel(isServicesActive)}>{navServices}</span>
+            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isServicesActive ? 'text-[#fff8eb]' : 'text-[#bfa76a]'} ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
           {/* While the mega menu is closed its links are still in the HTML
               (hidden, no icons), so search engines see every service page. */}
-          {!isServicesOpen && (
+          {!megaRender && (
             <ul hidden>
               {serviceGroups.reduce<{ label: string; href: string }[]>((items, group) => {
                 if (group.href) items.push({ label: group.title, href: group.href })
@@ -423,9 +554,11 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
           )}
 
           {/* Mega menu panel */}
-          {isServicesOpen && (
+          {megaRender && (
             <div
-              className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[1120px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
+              ref={megaPanelRef}
+              data-state={isServicesOpen ? 'open' : 'closed'}
+              className="header-mega absolute top-[calc(100%+20px)] left-1/2 -translate-x-1/2 z-50 w-[620px] min-[1280px]:w-[1120px] rounded-lg border-2 border-[rgba(200,169,107,0.5)] overflow-hidden opacity-95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-cover bg-center"
               style={{ backgroundImage: `var(--bg-parchment)` }}
             >
               <div className="absolute inset-0 bg-black/55" />
@@ -453,7 +586,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                           key={item.href}
                           href={item.href}
                           // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
-                          className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100"
+                          aria-current={item.href === pathname ? 'page' : undefined}
+                          className={`gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100${item.href === pathname ? MEGA_CURRENT : ''}`}
                         >
                           <MenuItemIcon icon={item.icon} tall={item.iconTall} />
                           {item.label}
@@ -471,7 +605,8 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
                               key={item.href}
                               href={item.href}
                               // Hover: the running gold ring of the home "Serwis i naprawa" category tabs (globals.css .gold-border-flow).
-                              className="gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100"
+                              aria-current={item.href === pathname ? 'page' : undefined}
+                          className={`gold-border-flow before:opacity-0 before:![animation-play-state:paused] hover:before:opacity-100 hover:before:![animation-play-state:running] flex items-center gap-2 rounded-sm border border-transparent bg-transparent px-2 py-1.5 font-cormorant text-[15px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#bfa76a]/80 hover:bg-gradient-to-r hover:from-[#bfa76a]/40 hover:via-[#bfa76a]/20 hover:to-transparent hover:text-[#f3df9a] hover:shadow-[0_0_30px_rgba(191,167,106,0.45)] hover:[text-shadow:0_0_12px_rgba(191,167,106,0.65)] [&:hover_img]:opacity-100 [&:hover_svg]:opacity-100${item.href === pathname ? MEGA_CURRENT : ''}`}
                             >
                               <MenuItemIcon icon={item.icon} tall={item.iconTall} />
                               {item.label}
@@ -486,19 +621,20 @@ export function HeaderInteractive({ locale }: { locale: Locale }) {
             </div>
           )}
         </div>
-        <Link href={aboutHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-          <span className={isAboutActive ? 'nav-active-underline' : ''}>{navAbout}</span>
+        <Link href={shippingHref} prefetch={false} ref={(el) => { cellRefs.current[1] = el }} className="header-cell">
+          <span className={cellLabel(isShippingActive)}>{navShipping}</span>
         </Link>
-        <Link href={contactHref} prefetch={false} className="whitespace-nowrap font-cormorant text-[18px] text-[#bfa76a] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#f3df9a] hover:[text-shadow:0_0_10px_rgba(191,167,106,0.55)]">
-          <span className={isContactActive ? 'nav-active-underline' : ''}>{navContact}</span>
+        <Link href={aboutHref} prefetch={false} ref={(el) => { cellRefs.current[2] = el }} className="header-cell">
+          <span className={cellLabel(isAboutActive)}>{navAbout}</span>
+        </Link>
+        <Link href={contactHref} prefetch={false} ref={(el) => { cellRefs.current[3] = el }} className="header-cell">
+          <span className={cellLabel(isContactActive)}>{navContact}</span>
         </Link>
 
-        <LanguageSwitcher />
+        <div className="relative z-[2] flex items-center self-stretch pl-2 pr-3">
+          <LanguageSwitcher />
+        </div>
 
-        <CallButton variant="primary" href="tel:+48793759262" className="hover:shadow-[0_0_24px_rgba(22,163,74,0.45)]" onClick={handlePhoneClick}>
-          <span className="min-[920px]:hidden">{navCall}</span>
-          <span className="hidden min-[920px]:inline">793 759 262</span>
-        </CallButton>
       </nav>
 
       {/* Mobile: language switcher stays permanently visible in the header bar
