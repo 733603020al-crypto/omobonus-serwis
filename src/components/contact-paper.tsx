@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type Reac
 import { createPortal } from 'react-dom'
 import type { PaperOptions, PaperScene, PaperState } from '@/lib/crumpled-paper/engine'
 import { afterPageLoad, checkCancelled, idleTask, pause } from '@/lib/crumpled-paper/idle'
-import { entranceTiming, entranceAt, floatAt, rest, smooth, springAt, unfold, revealDrift, type Drift } from '@/lib/crumpled-paper/choreography'
+import { entranceAt, arrivalTiming, arrivalAt, floatAt, rest, smooth, springAt, unfold, revealDrift, type Drift } from '@/lib/crumpled-paper/choreography'
 import type { ContactT, Locale } from '@/components/sections/contact'
 import previews from '@/lib/crumpled-paper/previews.json'
 import type { Envelope } from '@/lib/crumpled-paper/presentation'
@@ -66,7 +66,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     if (root.current) for (const key of ['paperVisibleAt', 'paperDeadlineAt', 'paperPageReadyAt', 'paperArrivalAt', 'paperLandedAt', 'paperReadyAt', 'paperContactsSettledAt']) delete root.current.dataset[key]
     let pageReady = false, landed = false, arriving = false, unavailable = motion.matches
     let entranceStart = 0, entranceDistance = 0, entranceLift = 0, nextSway = 0
-    let entranceProfile = entranceTiming(innerWidth)
+    let entranceProfile = arrivalTiming(innerWidth), entranceSize = 80
     // Capture the real CSS animation now: it may already be finished by the
     // time fonts/page loading settle. No duplicated 7-button timing in JS.
     let contactsSettledAt = performance.now()
@@ -117,7 +117,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     let floatStart = Infinity, springStart = 0
     let springPosition = { ...rest }, springVelocity = { ...rest }
     const waitingAt = (now: number): Drift => {
-      if (arriving && !landed) return entranceAt(now - entranceStart, entranceDistance, entranceLift, entranceProfile.flight, entranceProfile.settle)
+      if (arriving && !landed) return arrivalAt(now - entranceStart, entranceDistance, entranceLift, entranceProfile.flight, entranceSize)
       const ambient = floatAt(now - floatStart)
       const spring = springAt(springPosition, springVelocity, now - springStart).value
       return { x: ambient.x + spring.x, y: ambient.y + spring.y, angle: ambient.angle + spring.angle }
@@ -132,8 +132,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       ] as const) {
         if (!element?.animate) continue
         const animation = element.animate(samples.map((_, i) => {
-          const { x, y, angle } = at(i / (samples.length - 1) * duration)
-          return { transform: `${base} translate3d(${x * factor}px, ${y * factor}px, 0) rotate(${angle}deg)` }
+          const { x, y, angle, sx = 1, sy = 1 } = at(i / (samples.length - 1) * duration)
+          return { transform: `${base} translate3d(${x * factor}px, ${y * factor}px, 0) rotate(${angle}deg)${sx === 1 && sy === 1 ? '' : ` scale(${sx}, ${sy})`}` }
         }), { duration, easing: 'linear' })
         animation.id = flight ? 'paper-arrival' : 'paper-drift'
         animation.startTime = start
@@ -402,16 +402,20 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       const image = previewRef.current
       if (!ready && (!image?.complete || !image.naturalWidth)) return
       arriving = true
-      entranceProfile = entranceTiming(innerWidth)
+      entranceProfile = arrivalTiming(innerWidth)
       const placement = introPlacement()
+      entranceSize = placement.height
       entranceDistance = placement.pose.x + placement.offsetX + placement.width * .75 + 24
       const centerY = root.current!.getBoundingClientRect().top + 12 + placement.height / 2
       const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom || 64
       entranceLift = Math.min(130, Math.max(30, centerY - headerBottom - placement.height * .7 - 24))
       entranceStart = motionNow()
       if (root.current) root.current.dataset.paperArrivalAt = String(entranceStart)
-      const duration = entranceProfile.flight + entranceProfile.settle
-      if (!motion.matches) sampleWaiting(time => entranceAt(time, entranceDistance, entranceLift, entranceProfile.flight, entranceProfile.settle), duration, true)
+      // Without a handoff (repeat visit, reduced motion) the ball plays the whole landing;
+      // otherwise the opening takes over while the ball is still rising from the hop.
+      const handsOff = !repeat && !motion.matches
+      const duration = handsOff ? entranceProfile.handoff : entranceProfile.total
+      if (!motion.matches) sampleWaiting(time => arrivalAt(time, entranceDistance, entranceLift, entranceProfile.flight, entranceSize), entranceProfile.total, true)
       setEntrance('arriving')
       try {
         if (!motion.matches) await new Promise<void>((resolve, reject) => {
@@ -428,6 +432,13 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
           entranceFrame = requestAnimationFrame(tick)
         })
         if (stopped || !['loading', 'ball'].includes(phaseRef.current)) return
+        if (handsOff && ready && phaseRef.current === 'ball' && !isBlocked()) {
+          // The hop flows straight into the unfolding: no pause, no second clock
+          landingReady?.(); landingReady = undefined
+          if (root.current) root.current.dataset.paperLandedAt = String(performance.now())
+          void open()
+          return
+        }
         landed = true; setEntrance('settled')
         landingReady?.(); landingReady = undefined
         if (root.current) root.current.dataset.paperLandedAt = String(performance.now())
