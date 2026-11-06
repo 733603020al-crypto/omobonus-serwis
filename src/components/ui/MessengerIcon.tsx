@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 // 3D-библиотеки грузятся только при первом наведении мыши на иконку (до этого — обычная картинка и CSS-парение)
 const MessengerCoin3D = dynamic(() => import('@/components/ui/MessengerCoin3D'), { ssr: false })
 
+const HOVER_INTENT_MS = 400
 const IMG_CLASS = 'w-[clamp(64px,18.5vw,72px)] h-[clamp(64px,18.5vw,72px)] md:w-[84px] md:h-[84px]'
 
 // Иконка раздела контактов: на устройствах с мышью — CSS-парение и 3D-оборот при hover,
@@ -18,6 +19,8 @@ export function MessengerIcon({ src, alt = '' }: { src: string; alt?: string }) 
   const [ready, setReady] = useState(false)
   const [tick, setTick] = useState(0)
   const [spinning, setSpinning] = useState(false)
+  const spinningRef = useRef(false)
+  const intentTimer = useRef<number | null>(null)
 
   useEffect(() => {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
@@ -25,19 +28,36 @@ export function MessengerIcon({ src, alt = '' }: { src: string; alt?: string }) 
     setCanHover(true)
     const host = imgRef.current?.closest('a, button')
     if (!host) return
+    // Hover Intent: оборот стартует только после HOVER_INTENT_MS непрерывного наведения;
+    // уже начатый оборот не прерывается и не перезапускается до завершения
     const onEnter = () => {
-      setActivated(true)
-      setTick((t) => t + 1)
-      setSpinning(true)
+      if (intentTimer.current !== null || spinningRef.current) return
+      intentTimer.current = window.setTimeout(() => {
+        intentTimer.current = null
+        spinningRef.current = true
+        setActivated(true)
+        setTick((t) => t + 1)
+        setSpinning(true)
+      }, HOVER_INTENT_MS)
+    }
+    const onLeave = () => {
+      if (intentTimer.current === null) return
+      window.clearTimeout(intentTimer.current)
+      intentTimer.current = null
     }
     host.addEventListener('pointerenter', onEnter)
-    return () => host.removeEventListener('pointerenter', onEnter)
+    host.addEventListener('pointerleave', onLeave)
+    return () => {
+      onLeave()
+      host.removeEventListener('pointerenter', onEnter)
+      host.removeEventListener('pointerleave', onLeave)
+    }
   }, [])
 
   // Плоская тень под иконкой не вращается вместе с ней — на время оборота её прячет CSS ([data-spin])
   useEffect(() => {
     if (!spinning || (activated && !ready)) return
-    const id = window.setTimeout(() => setSpinning(false), 1600)
+    const id = window.setTimeout(() => { spinningRef.current = false; setSpinning(false) }, 1600)
     return () => window.clearTimeout(id)
   }, [spinning, activated, ready, tick])
 

@@ -1,5 +1,5 @@
 // Presentation only: the original paper mesh and its lighting stay in engine.js.
-export type Drift = { x: number; y: number; angle: number }
+export type Drift = { x: number; y: number; angle: number; sx?: number; sy?: number }
 export const rest: Drift = { x: 0, y: 0, angle: 0 }
 export const entranceTiming = (width: number) => ({ flight: width < 768 ? 840 : 960, settle: 400 })
 export const smooth = (t: number) => {
@@ -73,4 +73,38 @@ export function revealDrift(released: number, mobile: boolean, lateral = mobile 
   // Translation is relative to the projected document size, so short windows
   // retain the same gesture instead of receiving an oversized fixed-pixel dip.
   return { x: .038 * bank * lateral, y: .13 * weight, angle: mobile ? 4 * bank : 0 }
+}
+
+// Intro scene: a thrown ball hits the table, squashes, hops and is handed to the
+// opening while still rising. One continuous curve: fast arrival, a short squash,
+// a parabolic (gravity) hop with stretch, then a small second hop for the tail
+// (played only when the opening does not take over).
+const IMPACT_MS = 110, HOP_MS = 520, HOP2_MS = 260, HOP_PEAK = 34
+export const arrivalTiming = (width: number) => {
+  const flight = width < 768 ? 840 : 960
+  return { flight, handoff: flight + IMPACT_MS + HOP_MS * .3, total: flight + IMPACT_MS + HOP_MS + HOP2_MS }
+}
+export function arrivalAt(elapsed: number, distance: number, lift: number, flightMs: number, size: number): Drift {
+  const land = { x: 5, y: 1.5, angle: 1.1 }
+  // sy < 1 flattens against the table: keep the bottom edge in contact
+  const finish = (x: number, y: number, angle: number, sy: number): Drift =>
+    ({ x, y: y + (1 - sy) * size / 2, angle, sx: 1 + (1 - sy) * .9, sy })
+  if (elapsed < flightMs) {
+    const t = Math.max(0, elapsed / flightMs), h0 = 2 * t ** 3 - 3 * t * t + 1, h1 = 1 - h0, tangent = t ** 3 - t * t
+    return finish(
+      -distance * h0 + land.x * h1 + distance * 1.5 * tangent,
+      -lift * h0 + land.y * h1 + lift * 1.6 * tangent - Math.min(60, lift * .5) * Math.sin(Math.PI * t) ** 2,
+      -22 * h0 + land.angle * h1 - 3 * flightMs / 1000 * tangent,
+      1 - .06 * smooth((t - .75) / .25),
+    )
+  }
+  const e = elapsed - flightMs
+  if (e < IMPACT_MS) return finish(land.x, land.y, land.angle, .94 - .16 * (1 - (1 - e / IMPACT_MS) ** 2))
+  const u = Math.min(1, (e - IMPACT_MS) / HOP_MS)
+  if (u < 1) {
+    const sy = u < .15 ? .78 + .32 * smooth(u / .15) : u < .3 ? 1.1 - .1 * smooth((u - .15) / .15) : 1 - .06 * smooth((u - .75) / .25)
+    return finish(land.x + 14 * (1 - (1 - u) ** 2), land.y - HOP_PEAK * 4 * u * (1 - u), land.angle + 5 * Math.sin(Math.PI * u) * (1 - u), sy)
+  }
+  const v = Math.min(1, (e - IMPACT_MS - HOP_MS) / HOP2_MS)
+  return finish(land.x + 14, land.y - 8 * 4 * v * (1 - v), land.angle * (1 - smooth(v)), 1 - .06 * (1 - smooth(Math.min(1, v * 2))))
 }
