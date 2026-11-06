@@ -1,3 +1,4 @@
+// Тест автоматической проверки Codex в Pull Request (2026-10-24): только комментарий, поведение скрипта не меняется.
 // Общая сборка SEO-панели: данные всех вкладок (%TEMP%\omobonus-seo-<вкладка>.json)
 // + история (docs/seo/audit-history.json) → %TEMP%\omobonus-seo-panel.html.
 // Вызывается из title-audit.mjs, description-audit.mjs и heading-audit.mjs.
