@@ -739,11 +739,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
             <div className="pt-1">
               <p className="text-[#2f2418] font-sans font-normal italic text-[11px] md:text-[12px] leading-[1.45]">
                 {d.agreementConfirm}{' '}
-                <Link href={d.privacyHref} className="underline hover:text-black/70">
+                <Link prefetch={false} href={d.privacyHref} className="underline hover:text-black/70">
                   {d.privacyLink}
                 </Link>
                 {d.agreementConnector}{' '}
-                <Link href={d.termsHref} className="underline hover:text-black/70">
+                <Link prefetch={false} href={d.termsHref} className="underline hover:text-black/70">
                   {d.termsLink}
                 </Link>
                 {d.agreementEnd}
