@@ -38,13 +38,33 @@ description: Стандарт ответов клиентам из почты se
 
 ## 3. Структура ответа
 
+### Схема: что делать в зависимости от письма клиента
+
+@@показ /api/podpisi/shema-otvetov.html 1050
+
+Та же схема текстом:
+1. **Кто пишет и что хочет** — ремонт, цена, диагностика, забор/доставка, документы, другое. Определить язык (раздел 2).
+2. **Есть ли наше письмо в Sent по этой теме?**
+   - Нет → первое письмо: полная подпись, `Pozdrawiam serdecznie,` (раздел 6).
+   - Да → продолжение: краткая подпись, `Pozdrawiam,`.
+3. **Цена/диагностика** — брать только со страницы услуги, всегда netto, «orientacyjnie», если устройства не видели (раздел 5).
+4. **Забор/доставка:**
+   - **адреса нет** → писать этот абзац (ссылка — на слова «obliczyć koszt odbioru»):
+     `Jeśli nie mają Państwo możliwości przywiezienia urządzenia, możemy przyjechać i je odebrać. Koszt odbioru mogą Państwo sprawdzić od razu, wpisując swój adres w kalkulatorze: obliczyć koszt odbioru. Jeśli wolą Państwo, proszę podać adres w odpowiedzi — policzę koszt i dam znać.`
+   - **адрес есть** → сначала карточка «Koszt dojazdu» с фразой и итогом (раздел 5), затем этот абзац со ссылкой на «kalkulator kosztu dojazdu»:
+     `Jeśli urządzenie mamy odebrać z innego adresu, koszt można sprawdzić od razu w kalkulatorze: kalkulator kosztu dojazdu.`
+   - **клиент везёт сам** → про забор не писать; при необходимости дать адрес сервиса.
+5. **Клиент высылает устройство почтой** — блок из раздела 5 «Клиент высылает устройство».
+6. **Не хватает данных** (есть ли часть, свободен ли водитель) — спросить пользователя в чате, не выдумывать.
+7. **Конец:** один понятный следующий шаг → `Decyzja należy do Państwa…` → подпись. Ответ идёт через «Ответить» (цитата письма клиента), BCC zaemka222@gmail.com, только черновик.
+
 1. Приветствие.
 2. Благодарность — необязательна; только когда есть за что конкретно (`dziękuję za przesłanie zdjęć i dokładny opis problemu`). В продолжении переписки обычно не нужна — сразу к делу.
 3. Прямой ответ на вопрос клиента — в первом абзаце (да/нет, делаем/не делаем, цена).
 4. Детали: возможная причина, ориентировочная цена (netto), срок, условия.
 5. Наш принцип (когда речь о ремонте): `Nie rozpoczynamy żadnej płatnej naprawy bez wcześniejszego przedstawienia kosztów i uzyskania Państwa zgody.`
 6. Один понятный следующий шаг: привезти / заказать odbiór / прислать модель, фото, NIP / подтвердить.
-7. Подпись (раздел 6).
+7. Подпись (раздел 6): краткая для ответов, полная для новых писем.
 
 Правила:
 - **Главный принцип:** письмо должно выглядеть как личный ответ опытного мастера, который действительно разобрался в вопросе клиента, а не как шаблонный ответ службы поддержки. Отсюда — естественный польский, конкретика по его устройству и ситуации. Без канцелярита и шаблонной рекламы: не писать `uprzejmie informujemy`, `w nawiązaniu do`, `pragniemy poinformować`, `z przyjemnością informujemy`, `kompleksowa obsługa`, `najwyższa jakość`, `profesjonalny zespół` и т.п.
@@ -117,9 +137,7 @@ Przy okazji chciałbym przeprosić: po naprawie **zapomnieliśmy nakleić na dru
 
 **Oczywiście, proszę śmiało zapisać nasz kontakt.** Chętnie pomożemy także w przyszłości — serwisujemy m.in. drukarki i kserokopiarki, laptopy i komputery, plotery, niszczarki, zasilacze UPS i projektory, a nawet ekspresy do kawy. Wystarczy napisać lub zadzwonić.
 
-Pozdrawiam serdecznie
-**Maksym Suprunenko**
-[stała stopka]
+[подпись по разделу 6: краткая, прощание «Pozdrawiam,»]
 ```
 Абзац с извинением — только если такое упущение реально было (подтвердил пользователь).
 
@@ -165,9 +183,7 @@ Zależy nam na tym, żeby rozmawiać z klientami uczciwie i uprzedzać o wszystk
 
 Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
 
-Pozdrawiam serdecznie
-**Maksym Suprunenko**
-[stała stopka]
+[подпись по разделу 6: краткая, прощание «Pozdrawiam,»]
 ```
 Если клиент уже описал неисправность — абзац с просьбой об описании убрать. Если он женщина/фирма — поменять формы (Pani / Państwo).
 
@@ -257,27 +273,36 @@ e-mail: serwis@omobonus.com.pl
   Decyzja należy do Państwa — czekamy na informację, czy przywiozą Państwo urządzenie sami, czy mamy po nie przyjechać.
   ```
   Под карточкой — одна строка с итогом текстом (на случай, если у клиента отключены картинки), а сразу после неё — фраза, что решение за клиентом и мы ждём его ответа (привезёт сам или забрать). Длинную формулу словами не расписывать — она есть на карточке.
-- Если адреса в письме нет — карточку не делать, а коротко предложить забор и попросить адрес: `Jeśli nie mają Państwo możliwości przywiezienia urządzenia, możemy przyjechać i je odebrać — proszę podać adres, a policzę koszt.`
+- Ссылка на мгновенный расчёт (утверждено 2026-11-07): `https://serwis.omobonus.com.pl/kontakt?koszt=1` — открывает страницу «Контакт» сразу с окном калькулятора «Koszt dojazdu» (для других языков — тот же путь с префиксом языка страницы). Давать в каждом письме, где речь о заборе/доставке, текстом-ссылкой: `<a href="…">obliczyć koszt odbioru</a>`.
+- Если адреса в письме нет — карточку не делать: коротко предложить забор и дать ссылку на расчёт: `Jeśli nie mają Państwo możliwości przywiezienia urządzenia, możemy przyjechać i je odebrać. Koszt odbioru mogą Państwo od razu sprawdzić sami — wystarczy wpisać adres w kalkulatorze: [obliczyć koszt odbioru](ссылка).` Можно и попросить адрес, чтобы посчитал Maksym.
+- Если адрес есть — карточка и итог как выше, а **под ней та же ссылка** на случай другого адреса: `Jeśli urządzenie mamy odebrać z innego adresu, koszt można sprawdzić tutaj: [kalkulator kosztu dojazdu](ссылка).`
 
 - Адрес сервиса: Marcina Bukowskiego 174, 52-418 Wrocław. Часы: пн–пт 8:00–18:00; контакт пн–сб 7:00–21:00; вс — nieczynne.
 
 ## 6. Подпись (единая)
 
-```
-Pozdrawiam serdecznie
-Maksym Suprunenko
-Omobonus Sp. z o.o.
-Marcina Bukowskiego 174, 52-418 Wrocław
-tel. +48 793 759 262
-e-mail: serwis@omobonus.com.pl
-https://serwis.omobonus.com.pl/
-Pracujemy: poniedziałek–piątek, 8:00–18:00
-Kontakt z serwisem: poniedziałek–sobota, 7:00–21:00
-W niedzielę jesteśmy nieczynni.
-```
-После `Pozdrawiam serdecznie` запятую не ставить, `Maksym Suprunenko` — с новой строки. Подпись ставить и в коротких ответах. Ссылку на сайт и e-mail в HTML делать активными (e-mail — `<a href="mailto:serwis@omobonus.com.pl">serwis@omobonus.com.pl</a>`, везде в письме, в т.ч. в адресе пакомата). Три последние строки (часы работы, контакт, воскресенье) — курсивом и чуть мельче: в HTML `<span style="font-size:9pt;font-style:italic">…</span>` (основной текст 11pt). Не использовать варианты «Maksym» без фамилии, «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
+Две подписи, новый дизайн утверждён владельцем 2026-11-07 (круглый логотип, тёмные ссылки без подчёркивания, значки, золотая вертикальная линия, реквизиты внизу); на телефоне (360 px) вид тот же — см. третий пример в предпросмотре. Прежние версии для отката — `omobonus-workspace/tools/podpisi/old-2026-11-07/`. Единственный источник — файлы в `omobonus-workspace/tools/podpisi/` (`Omobonus - Nowa wiadomosc.htm`, `Omobonus - Odpowiedz.htm`, значки `ic-*.png` (краткая) и `sig-*.png` (полная), круглый логотип `logo-round-224.png` (полная) / `logo-round-160.png` (краткая), общий вид — `podglad.html`). Текст подписи в этом файле и в письмах руками не переписывать: брать содержимое `.htm`.
 
-Подпись — на языке письма: та же структура и те же данные, переведены только прощание и подписи строк (например, по-украински `З повагою` / `Працюємо: понеділок–п'ятниця, 8:00–18:00`, по-немецки `Mit freundlichen Grüßen` / `Arbeitszeiten: Montag–Freitag, 8:00–18:00`). Имя, название фирмы, адрес, телефон, e-mail и ссылка не меняются.
+@@показ /api/podpisi/podglad.html 1250
+
+| Когда | Подпись | Прощание |
+|---|---|---|
+| Первое наше письмо клиенту в этой теме (новое письмо или первый ответ на его заявку/вопрос; в Отправленных по теме нашего письма ещё нет) | полная (новый дизайн): круглый логотип 112 px, имя, фирма, телефон, адрес, e-mail, сайт | `Pozdrawiam serdecznie,` |
+| Дальше в переписке (мы уже писали клиенту в этой теме, он ответил) | краткая: логотип 52 px, имя, фирма, телефон \| сайт \| e-mail одной строкой | `Pozdrawiam,` |
+
+Перед выбором подписи проверить папку `Sent` ящика serwis@: есть ли уже наше письмо этому клиенту по теме (номер заявки/тема). Нет — полная.
+
+Общее в обеих подписях:
+- Имя `Maksym Suprunenko` 16 px жирным, под ним `Omobonus Sp. z o.o.` 14 px золотым жирным — размеры одинаковые в обеих.
+- Низ — две строки курсивом 11 px: `Omobonus Sp. z o.o. | … | NIP: 8943160773 | REGON: 387509703 | KRS: 0000869086` и ниже суд и капитал (`Sąd Rejonowy dla Wrocławia-Fabrycznej we Wrocławiu, … | Kapitał zakładowy 5 000,00 zł`). Порядок реквизитов всегда NIP → REGON → KRS, с двоеточиями.
+- Логотип — только круглый прозрачный PNG (`logo-round-*.png`), не квадратный JPG и не квадратный скриншот.
+- Если Outlook вставляет подпись сам — в тексте её не дублировать; в черновике из Outlook COM — вставить HTML из `.htm`, картинки добавить встроенными (как карточку дороги, раздел 8).
+- Совместимость (Outlook, Gmail, телефоны, режим «только текст»): подпись — только таблицы с атрибутами `width`/`height` у картинок и инлайн-стилями; разделитель — `border-left` ячейки (не отдельная узкая ячейка с фоном — Outlook её рвёт); нижняя строка реквизитов — `white-space:nowrap`, чтобы строки не переносились; `max-width`, flex, grid, фоновые картинки и шрифты с сайта не использовать. У картинок есть `alt`, а все данные (имя, фирма, телефон, e-mail, сайт, NIP, REGON, KRS) — настоящим текстом, а не на картинке: так подпись читается и без картинок, и в текстовом виде. После изменения подписи проверить черновик в Outlook скриншотом.
+- Ссылки в обеих подписях (полная и краткая) — тёмные `#303030`, без подчёркивания (утверждено 2026-11-07). Цвет и `text-decoration:none` задаются инлайн и на `<a>`, и на вложенном `<span>`, без `!important` — Outlook его не понимает и рисует ссылки подчёркнутыми. Все данные остаются кликабельными: телефон `tel:`, e-mail `mailto:`, сайт, адрес.
+- Адрес в полной подписи — ссылка на Google Карты (`https://www.google.com/maps/search/?api=1&query=Marcina+Bukowskiego+174…`).
+- Часы работы в подписи не пишем. Менять данные подписи — только в файлах `tools/podpisi` и вместе с юридическими текстами сайта.
+- На другом языке письма — переводится только прощание; имя, фирма, реквизиты и ссылки не меняются.
+- Не использовать варианты «Maksym» без фамилии, «Maksim», «OMOBONUS», «Zespół Omobonus», «Serwis Omobonus».
 
 ## 7. Проверка перед сохранением черновика
 
@@ -289,6 +314,8 @@ W niedzielę jesteśmy nieczynni.
 - Есть следующий шаг; лишние услуги не навязаны.
 - Естественный польский, без канцелярита, рекламы и эмодзи.
 - Жирное — умеренно, только главное (раздел 3); ссылки активные, с понятным текстом.
+- Подпись — из файлов `omobonus-workspace/tools/podpisi` (раздел 6): для ответа краткая, порядок NIP → REGON → KRS.
+- Ответ на письмо — только через «Ответить» на входящее (`Reply()`, раздел 8), никогда новым письмом: внизу обязательно цитата письма клиента, тема с `RE:`. Если входящее — заявка с сайта от serwis@, получателя заменить на адрес клиента. После сохранения проверить, что в теле есть цитата.
 - Получатель — клиент (не serwis@ сам себе); в скрытой копии (BCC/UDW, не CC) — `zaemka222@gmail.com` (копия сисадмину, клиент её не видит).
 
 Пользователь может попросить проверить уже написанный им ответ — проверять по этому же списку. При правке, сокращении или переводе его текста сохранять все согласованные цены, условия и смысл исходного сообщения.
@@ -299,7 +326,7 @@ W niedzielę jesteśmy nieczynni.
 `node .claude/skills/odpowiedzi-klientom/wyslij-do-serwisu.mjs --temat "<тема письма клиента>" --klient "Imię Nazwisko <email>" --html tresc.html --img koszt-dojazdu.png` — отправляет на serwis@omobonus.com.pl. Перед отправкой — посмотреть HTML с картинкой в браузере (скриншот). Отправлять один раз; при правках — новое письмо с той же темой и пометкой в полосе «исправленная версия».
 
 ### В облаке — запасной вариант: файл .eml
-1. Текст ответа — HTML-файл (основной шрифт 11pt, жирное `<b>`, подпись по разделу 6 с курсивом 9pt, карточка `<img src="cid:karta-trasy" width="600" ...>`).
+1. Текст ответа — HTML-файл (основной шрифт 11pt, жирное `<b>`, подпись по разделу 6 (HTML из файлов tools/podpisi, картинки встроенные), карточка `<img src="cid:karta-trasy" width="600" ...>`).
 2. `node .claude/skills/odpowiedzi-klientom/zrob-eml.mjs --to <email klienta> --subject "RE: <тема письма клиента>" --html tresc.html --img koszt-dojazdu.png --out Odpowiedz-<nr>.eml` — UDW `zaemka222@gmail.com` и отправитель serwis@ ставятся сами.
 3. Перед отправкой файла пользователю — открыть HTML (с картинкой) в браузере и посмотреть скриншот, что всё на месте.
 4. Файл `.eml` — передать в чат. Ограничение: это новое письмо с темой «RE: …», а не ответ внутри той же цепочки в Outlook (без цитаты исходного письма).
@@ -308,6 +335,7 @@ W niedzielę jesteśmy nieczynni.
 ### На компьютере пользователя (Outlook COM, PowerShell)
 
 - Ящик: `Stores` → `serwis@omobonus.com.pl`; входящие `GetDefaultFolder(6)`, отправленные — папка `Sent`, черновики — `Drafts`.
+- Ссылки в черновике открываются обычным щелчком, без Ctrl (настройка Outlook уже выключена). Если в подсказке снова «Ctrl + щелчок» — выключить: `$i = $draft.GetInspector; $i.WordEditor.Application.Options.CtrlClickHyperlinkToOpen = $false; $i.Close(1)` (запись в реестр не помогает) и проверить повторным чтением.
 - Ответ: `$r = $mail.Reply()` (или `ReplyAll()`), вставить свой HTML перед цитатой: `$r.HTMLBody = $myHtml + $r.HTMLBody`, добавить BCC `zaemka222@gmail.com` (`$r.Recipients.Add(...).Type = 3`; не CC), затем `$r.Save()` — без `Send()`.
 - Карточка маршрута в теле письма (до `$r.HTMLBody = ...`):
   ```
