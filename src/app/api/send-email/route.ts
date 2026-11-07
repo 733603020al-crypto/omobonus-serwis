@@ -492,7 +492,7 @@ export async function POST(request: NextRequest) {
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="640" bgcolor="#ffffff" style="max-width: 640px; width: 100%; background-color: #ffffff; border: 1px solid #bfa76a; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.15);">
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
-              <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
+              <img src="https://serwis.omobonus.com.pl/images/logo-round-224.png" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
               <h1 style="margin: 0; color: #3a2e24; font-size: 26px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">Zgłoszenie nr: ${ticketNumber}</h1>
             </td>
           </tr>
@@ -686,7 +686,7 @@ Opis problemu: ${problemDescription}
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="640" bgcolor="#ffffff" style="max-width: 640px; width: 100%; background-color: #ffffff; border: 1px solid #bfa76a; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.15);">
           <tr>
             <td style="padding: 40px 40px 20px; text-align: center;">
-              <img src="https://serwis.omobonus.com.pl/images/Logo_Omobonus_email.jpg" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
+              <img src="https://serwis.omobonus.com.pl/images/logo-round-224.png" alt="Omobonus Serwis" width="120" style="display: block; margin: 0 auto 15px; border: 0; outline: none; text-decoration: none; max-width: 120px; height: auto;" />
               <h1 style="margin: 0 0 20px 0; color: #bfa76a; font-size: 24px; font-weight: bold; font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif; text-align: center;">${i18n.htmlTitle}</h1>
             </td>
           </tr>

@@ -46,7 +46,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://serwis.omobonus.com.pl'),
-  icons: { icon: '/favicon.ico' },
+  icons: { icon: '/favicon.ico?v=2' },
   manifest: '/manifest.webmanifest',
   title: {
     default: 'Serwis komputerów, laptopów i drukarek Wrocław | Omobonus',
