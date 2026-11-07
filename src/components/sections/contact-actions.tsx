@@ -109,6 +109,10 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [showModal, setShowModal] = useState(false)
   const [showKoszt, setShowKoszt] = useState(false)
   const [showCallback, setShowCallback] = useState(false)
+  // link from an email (…/kontakt?koszt=1) opens the route calculator right away
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has('koszt')) setShowKoszt(true)
+  }, [])
   const cb = CALLBACK_UI[locale]
   const [callbackError, setCallbackError] = useState(false)
   const [phoneError, setPhoneError] = useState(false)
