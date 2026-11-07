@@ -87,6 +87,13 @@ const CALLBACK_UI = {
   en: { icon: 'Call back', close: 'Close' },
 } as const
 
+const KOSZT_HINT = {
+  pl: 'Kalkulator otworzy się po rozwinięciu formularza',
+  uk: 'Калькулятор відкриється після розгортання форми',
+  ru: 'Калькулятор откроется после раскрытия формы',
+  en: 'The calculator will open once the form unfolds',
+} as const
+
 export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActionsT; locale?: 'pl' | 'uk' | 'ru' | 'en' } = {}) {
   const d = t ?? PL_ACTIONS
   const [phone, setPhone] = useState('')
@@ -109,9 +116,27 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
   const [showModal, setShowModal] = useState(false)
   const [showKoszt, setShowKoszt] = useState(false)
   const [showCallback, setShowCallback] = useState(false)
-  // link from an email (…/kontakt?koszt=1) opens the route calculator right away
+  // link from an email (…/kontakt?koszt=1): hint while the paper animates, calculator opens right after the form is revealed
+  const [kosztHint, setKosztHint] = useState(false)
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).has('koszt')) setShowKoszt(true)
+    if (!new URLSearchParams(window.location.search).has('koszt')) return
+    const root = document.querySelector('[data-paper-phase]')
+    if (!root) return
+    let timer = 0
+    let done = false
+    const check = () => {
+      const phase = root.getAttribute('data-paper-phase')
+      if (!done && phase !== 'loading' && phase !== 'ball') setKosztHint(true)
+      if (phase === 'form' && !done) {
+        done = true
+        obs.disconnect()
+        timer = window.setTimeout(() => { setKosztHint(false); setShowKoszt(true) }, 250)
+      }
+    }
+    const obs = new MutationObserver(check)
+    obs.observe(root, { attributes: true, attributeFilter: ['data-paper-phase'] })
+    check()
+    return () => { done = true; obs.disconnect(); window.clearTimeout(timer) }
   }, [])
   const cb = CALLBACK_UI[locale]
   const [callbackError, setCallbackError] = useState(false)
@@ -297,6 +322,11 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
             </p>
           </form>
       </CallbackModal>
+      {(
+        <p aria-hidden="true" className="koszt-hint pointer-events-none fixed z-40 right-[35px] bottom-[35px] max-md:right-4 max-md:bottom-[77px] max-md:max-w-[calc(100%-32px)] text-right text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl transition-opacity duration-[1400ms] ease-out" style={{ opacity: kosztHint && !showKoszt ? 1 : 0 }}>
+          {KOSZT_HINT[locale]}<span className="koszt-hint-dot">.</span><span className="koszt-hint-dot">.</span><span className="koszt-hint-dot">.</span>
+        </p>
+      )}
       {showKoszt && <KosztDojazduModal lang={locale} onClose={() => setShowKoszt(false)} />}
 
       <CompactSuccessModal
