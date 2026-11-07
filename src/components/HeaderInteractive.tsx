@@ -447,7 +447,7 @@ const megaPanelRef = useRef<HTMLDivElement>(null)
               image (a plain `loading="eager"` image still gets a
               default-high-priority preload otherwise). */}
           <Image
-            src="/images/Logo_Omobonus.webp"
+            src="/images/Logo_Omobonus_round_v2.webp"
             alt={nav.logoAlt ?? 'Omobonus Serwis – serwis komputerów, laptopów i drukarek Wrocław'}
             fill
             loading="eager"
