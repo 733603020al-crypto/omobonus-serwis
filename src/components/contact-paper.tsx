@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type Reac
 import { createPortal } from 'react-dom'
 import type { PaperOptions, PaperScene, PaperState } from '@/lib/crumpled-paper/engine'
 import { afterPageLoad, checkCancelled, idleTask, pause } from '@/lib/crumpled-paper/idle'
-import { entranceAt, arrivalTiming, arrivalAt, floatAt, rest, smooth, springAt, unfold, revealDrift, type Drift } from '@/lib/crumpled-paper/choreography'
+import { entranceAt, planArrival, type ArrivalPlan, floatAt, rest, smooth, springAt, unfold, revealDrift, type Drift } from '@/lib/crumpled-paper/choreography'
 import type { ContactT, Locale } from '@/components/sections/contact'
 import previews from '@/lib/crumpled-paper/previews.json'
 import type { Envelope } from '@/lib/crumpled-paper/presentation'
@@ -65,8 +65,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     let repeat = returning.current, celebrating = false
     if (root.current) for (const key of ['paperVisibleAt', 'paperDeadlineAt', 'paperPageReadyAt', 'paperArrivalAt', 'paperLandedAt', 'paperReadyAt', 'paperContactsSettledAt']) delete root.current.dataset[key]
     let pageReady = false, landed = false, arriving = false, unavailable = motion.matches
-    let entranceStart = 0, entranceDistance = 0, entranceLift = 0, nextSway = 0
-    let entranceProfile = arrivalTiming(innerWidth), entranceSize = 80
+    let entranceStart = 0, nextSway = 0
+    let arrivalPlan: ArrivalPlan | null = null
     // Capture the real CSS animation now: it may already be finished by the
     // time fonts/page loading settle. No duplicated 7-button timing in JS.
     let contactsSettledAt = performance.now()
@@ -117,7 +117,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     let floatStart = Infinity, springStart = 0
     let springPosition = { ...rest }, springVelocity = { ...rest }
     const waitingAt = (now: number): Drift => {
-      if (arriving && !landed) return arrivalAt(now - entranceStart, entranceDistance, entranceLift, entranceProfile.flight, entranceSize)
+      if (arrivalPlan) return arrivalPlan.at(now - entranceStart)
       const ambient = floatAt(now - floatStart)
       const spring = springAt(springPosition, springVelocity, now - springStart).value
       return { x: ambient.x + spring.x, y: ambient.y + spring.y, angle: ambient.angle + spring.angle }
@@ -231,8 +231,11 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       canvas.style.transform = `translate3d(${pose.x}px, ${pose.y}px, 0) translate(-50%, -50%) scale(${pose.scale}) rotate(${pose.angle ?? 0}deg)`
     }
     const centeredPose = (): Pose => {
-      const e = engine.current!
-      const b = envelope ?? { left: -e.state.w / 2, right: e.state.w / 2, top: -e.state.h / 2, bottom: e.state.h / 2 }
+      // Also usable before the engine is ready (the flight needs the opening point early)
+      const docRect = documentRef.current!.getBoundingClientRect()
+      const sw = engine.current?.state.w ?? docRect.width, sh = engine.current?.state.h ?? docRect.height
+      const ex = sw * .045, ey = -sh * .022
+      const b = envelope ?? { left: -sw / 2 + ex, right: sw / 2 + ex, top: -sh / 2 + ey, bottom: sh / 2 + ey }
       const header = document.querySelector('header')?.getBoundingClientRect().bottom || 64
       const viewport = window.visualViewport
       const height = viewport?.height ?? innerHeight, width = viewport?.width ?? innerWidth
@@ -246,7 +249,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       if (EXPERIMENTAL_LARGE_REVEAL) {
         // Frame the final sheet at half the menu height. Resolve once from
         // document dimensions, so the camera never zooms as folds release.
-        pose.scale = Math.max(scale, (pose.y - header / 2) / (e.state.h / 2 - 24))
+        pose.scale = Math.max(scale, (pose.y - header / 2) / (sh / 2 - 24))
       }
       return pose
     }
@@ -323,12 +326,24 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       if (!ready || phaseRef.current !== 'ball' || isBlocked()) return
       pendingOpen = false
       clearTimeout(autoTimer)
-      stopWaiting(true)
+      // After the intro flight the paper unfolds from where the ball stopped, with no spring-back
+      const stop = arrivalPlan ? waitingAt(motionNow()) : null
+      arrivalPlan = null
+      stopWaiting(!stop)
       arrival.abort(); landed = true; setEntrance('settled')
       const e = engine.current!
       readStageProfile()
-      const from = introPlacement().pose, center = centeredPose()
-      const travelMs = Math.max(680, Math.min(880, 620 + Math.hypot(center.x - from.x, center.y - from.y) * .45))
+      const placed = introPlacement(), rest = placed.pose
+      // The flight scales the ball about its own centre, the pose scales about the sheet centre:
+      // shift the pose so the ball stays exactly where it stopped
+      const grown = stop?.sx ?? 1, ballDx = placed.offsetX, ballDy = root.current!.getBoundingClientRect().top + 12 + placed.height / 2 - rest.y
+      const from = stop ? { ...rest, x: rest.x + stop.x + ballDx * (1 - grown), y: rest.y + stop.y + ballDy * (1 - grown), scale: rest.scale * grown } : rest, center = centeredPose()
+      if (stop) applyPose(from)
+      const gap = Math.hypot(center.x - from.x, center.y - from.y), near = !!stop
+      // After the intro flight the unfolding starts at once from the exact point where the ball stopped;
+      // the few-pixel difference to the real framing point fades out slowly during the unfolding
+      const offX = near ? from.x - center.x : 0, offY = near ? from.y - center.y : 0
+      const travelMs = near ? 180 : Math.max(680, Math.min(880, 620 + gap * .45))
       const openingStart = travelMs - 180, openingEnd = openingStart + 2350
       const returnStart = openingEnd + 260, duration = returnStart + 1000
       let time = 0, landedPose: Pose | null = null
@@ -343,6 +358,10 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
           return arc(landedPose, formPose(), (time - returnStart) / 1000, -14)
         }
         const target = currentCenter()
+        if (near) {
+          const w = 1 - smooth(time / 2000)
+          return { ...target, x: target.x + offX * w, y: target.y + offY * w, scale: from.scale + (target.scale - from.scale) * smooth(time / 240) }
+        }
         if (time < travelMs) {
           const pose = arc(from, target, time / travelMs, innerWidth < 768 ? 18 : 28)
           // Establish the framing before the very first fold releases. The arc
@@ -402,20 +421,27 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       const image = previewRef.current
       if (!ready && (!image?.complete || !image.naturalWidth)) return
       arriving = true
-      entranceProfile = arrivalTiming(innerWidth)
       const placement = introPlacement()
-      entranceSize = placement.height
-      entranceDistance = placement.pose.x + placement.offsetX + placement.width * .75 + 24
       const centerY = root.current!.getBoundingClientRect().top + 12 + placement.height / 2
-      const headerBottom = document.querySelector('header')?.getBoundingClientRect().bottom || 64
-      entranceLift = Math.min(130, Math.max(30, centerY - headerBottom - placement.height * .7 - 24))
+      // Ball flies bottom-edge to centre of the screen, then the unfolding takes over from where it stopped
+      const handsOff = !repeat && !motion.matches
+      // The bounce ends exactly where the unfolding starts (estimated before the engine is ready)
+      readStageProfile()
+      const c = centeredPose(), k = c.scale / placement.pose.scale
+      const target = { x: c.x + placement.offsetX * k, y: c.y + (centerY - placement.pose.y) * k }
+      const plan = arrivalPlan = planArrival({
+        W: innerWidth, H: innerHeight, r: placement.height / 2, cx: placement.pose.x + placement.offsetX, cy: centerY,
+        mobile: innerWidth < 768, floorInset: innerWidth < 768 ? 66 : 0, returnToRest: !handsOff, target, endScale: k,
+      })
       entranceStart = motionNow()
       if (root.current) root.current.dataset.paperArrivalAt = String(entranceStart)
-      // Without a handoff (repeat visit, reduced motion) the ball plays the whole landing;
-      // otherwise the opening takes over while the ball is still rising from the hop.
-      const handsOff = !repeat && !motion.matches
-      const duration = handsOff ? entranceProfile.handoff : entranceProfile.total
-      if (!motion.matches) sampleWaiting(time => arrivalAt(time, entranceDistance, entranceLift, entranceProfile.flight, entranceSize), entranceProfile.total, true)
+      const duration = plan.total
+      let flightRate = 1
+      if (!motion.matches) {
+        sampleWaiting(time => plan.at(time), duration, true)
+        // On the first visit the ball stays where it stopped until the unfolding starts
+        if (handsOff) waitingAnimations.forEach(animation => animation.effect?.updateTiming({ fill: 'forwards' }))
+      }
       setEntrance('arriving')
       try {
         if (!motion.matches) await new Promise<void>((resolve, reject) => {
@@ -424,7 +450,13 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
           entranceElapsed = 0; entranceLast = performance.now()
           const tick = (now: number) => {
             const delta = now - entranceLast; entranceLast = now
-            if (!isBlocked()) entranceElapsed += delta > 250 ? 16 : Math.max(0, delta)
+            // Engine still not ready: ease the flight down so it arrives about when the paper is ready
+            if (handsOff) {
+              const target = ready || entranceElapsed < duration * .35 ? 1 : .4
+              flightRate += (target - flightRate) * .08
+              waitingAnimations.forEach(animation => { animation.playbackRate = flightRate })
+            }
+            if (!isBlocked()) entranceElapsed += (delta > 250 ? 16 : Math.max(0, delta)) * flightRate
             if (entranceElapsed < duration) entranceFrame = requestAnimationFrame(tick)
             else { entranceTick = null; arrival.signal.removeEventListener('abort', cancel); resolve() }
           }
@@ -432,13 +464,13 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
           entranceFrame = requestAnimationFrame(tick)
         })
         if (stopped || !['loading', 'ball'].includes(phaseRef.current)) return
-        if (handsOff && ready && phaseRef.current === 'ball' && !isBlocked()) {
-          // The hop flows straight into the unfolding: no pause, no second clock
+        if (handsOff) {
           landingReady?.(); landingReady = undefined
           if (root.current) root.current.dataset.paperLandedAt = String(performance.now())
-          void open()
-          return
-        }
+          if (ready && phaseRef.current === 'ball' && !isBlocked()) { void open(); return }
+          // The engine is not ready yet: hold at the centre and unfold as soon as it is
+          pendingOpen = true; wiggled = true; setWaiting(true)
+        } else arrivalPlan = null
         landed = true; setEntrance('settled')
         landingReady?.(); landingReady = undefined
         if (root.current) root.current.dataset.paperLandedAt = String(performance.now())
@@ -506,7 +538,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
         const scene = await prepareScene(canvas, data)
         if (stopped || signal.aborted) { scene.dispose(); scene.gl.getExtension('WEBGL_lose_context')?.loseContext(); return }
         const options: PaperOptions = { width: rect.width, height: rect.height, margin, dpr, seed: 7,
-          creases: 0, creaseAngle: 48, lift: 0, ballSize: .9, paper: '#e7c797', gloss: .06,
+          creases: 0, creaseAngle: 75, lift: 0, ballSize: .9, paper: '#e7c797', gloss: .06,
           grain: 0, rakeElev: .32, inset: [0,0,0,0], radii: [0,0,0,0],
           shadow: SHADOW_COLOR, shadowAmt: SHADOW_BASE + SHADOW_BALL, ao: 1, show: .5,
           keyDir: [-.2635,.3387,.9033], fillDir: [.722,-.309,.619] }
@@ -892,15 +924,14 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       </div>
     </div>, portalHost)}
     {phase === 'loading' && <picture className={styles.preview}>
-      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile-v2.webp`} />
-      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop-v2.webp`} alt="" loading="eager" decoding="async" draggable={false} />
+      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile-v3.webp`} />
+      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop-v3.webp`} alt="" loading="eager" decoding="async" draggable={false} />
     </picture>}
     <span ref={ballAnchor} aria-hidden="true" style={{ position: 'absolute', top: 100, left: '50%', width: 1, height: 1, pointerEvents: 'none' }} />
     {(phase === 'loading' || phase === 'ball') && <button ref={openButtonRef} type="button" className={styles.open}
       onPointerEnter={event => { if (event.pointerType === 'mouse') hover.current(event.clientX, event.clientY) }}
       onClick={event => opener.current(event.detail === 0)} aria-label={text.open} />}
     <span className="sr-only" role="status" aria-live="polite">{successShown ? `${successTitle} ${successText} ${SUCCESS_NOTE[locale]}` : ['moving','opening','holding','returning'].includes(phase) ? text.opening : phase === 'crumpling' ? text.closing : waiting ? text.preparing : ''}</span>
-    {waiting && phase === 'loading' && <p className={styles.preparing} aria-hidden="true">{text.preparing}</p>}
     {portalHost && ['crumpling','thanking','success','success-closing','flying-back','contacts-drop'].includes(phase) && createPortal(<div ref={successRef} data-paper-success="" aria-hidden="true" className={styles.successDocument}
       style={successFallback && successShown ? { left: '50%', top: '50%', transform: 'translate(-50%, -50%)', visibility: 'visible' } : undefined}>
       <picture><source media="(max-width: 767px)" srcSet="/images/contact-form-parchment-mobile.webp" /><img className={styles.successPaper} src="/images/contact-form-parchment.webp" alt="" /></picture>

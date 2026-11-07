@@ -75,36 +75,56 @@ export function revealDrift(released: number, mobile: boolean, lateral = mobile 
   return { x: .038 * bank * lateral, y: .13 * weight, angle: mobile ? 4 * bank : 0 }
 }
 
-// Intro scene: a thrown ball hits the table, squashes, hops and is handed to the
-// opening while still rising. One continuous curve: fast arrival, a short squash,
-// a parabolic (gravity) hop with stretch, then a small second hop for the tail
-// (played only when the opening does not take over).
-const IMPACT_MS = 110, HOP_MS = 520, HOP2_MS = 260, HOP_PEAK = 34
-export const arrivalTiming = (width: number) => {
-  const flight = width < 768 ? 840 : 960
-  return { flight, handoff: flight + IMPACT_MS + HOP_MS * .3, total: flight + IMPACT_MS + HOP_MS + HOP2_MS }
-}
-export function arrivalAt(elapsed: number, distance: number, lift: number, flightMs: number, size: number): Drift {
-  const land = { x: 5, y: 1.5, angle: 1.1 }
-  // sy < 1 flattens against the table: keep the bottom edge in contact
-  const finish = (x: number, y: number, angle: number, sy: number): Drift =>
-    ({ x, y: y + (1 - sy) * size / 2, angle, sx: 1 + (1 - sy) * .9, sy })
-  if (elapsed < flightMs) {
-    const t = Math.max(0, elapsed / flightMs), h0 = 2 * t ** 3 - 3 * t * t + 1, h1 = 1 - h0, tangent = t ** 3 - t * t
-    return finish(
-      -distance * h0 + land.x * h1 + distance * 1.5 * tangent,
-      -lift * h0 + land.y * h1 + lift * 1.6 * tangent - Math.min(60, lift * .5) * Math.sin(Math.PI * t) ** 2,
-      -22 * h0 + land.angle * h1 - 3 * flightMs / 1000 * tangent,
-      1 - .06 * smooth((t - .75) / .25),
-    )
+// Intro scene as real ballistics (viewport px, y down): a ball thrown in from the
+// side falls diagonally onto the bottom edge, squashes for ~100 ms, bounces on a
+// new parabola up to the screen centre and comes to rest there. Every phase starts
+// with the position, direction and spin the previous one ended with.
+export type ArrivalPlan = { total: number; at: (elapsed: number) => Drift }
+export function planArrival(o: { W: number; H: number; r: number; cx: number; cy: number; mobile: boolean; floorInset: number; returnToRest?: boolean; target?: { x: number; y: number }; endScale?: number }): ArrivalPlan {
+  const { W, H, r, cx, cy, mobile } = o
+  const g = Math.max(1800, Math.min(2600, 2200 * H / 900))
+  const floorY = H - o.floorInset - r // ball centre at the moment of touch
+  const x0 = -r - 8, y0 = Math.max(.1 * H, r + 8)
+  const xi = W * (mobile ? .26 : .3)
+  // 1. flight: x = x0 + vx*t, y = y0 + vy*t + g*t^2/2, entering diagonally downward
+  const T1 = .92 * Math.sqrt(2 * (floorY - y0) / g)
+  const vx1 = (xi - x0) / T1, vy1 = (floorY - y0 - .5 * g * T1 * T1) / T1
+  // 2. contact: the bottom stays on the floor, the vertical radius shrinks to 82%
+  const D = .1, vxc = .85 * vx1, xe = xi + vxc * D
+  // 3. bounce: one arc whose apex is the target itself (vertical speed 0 there), so the
+  // unfolding starts right at the top with no extra settling moves
+  const tx = o.target?.x ?? W / 2, ty = Math.min(o.target?.y ?? H / 2, floorY - 40)
+  const Tu = Math.sqrt(2 * (floorY - ty) / g), Tb = Tu
+  // spin follows the direction of travel and fades out quadratically over the bounce
+  const w1 = mobile ? 480 : 540, spin = w1 * (T1 + D) + w1 * Tb / 3
+  const rest = o.returnToRest ? .55 : 0, total = (T1 + D + Tb + rest) * 1000
+  // volume is kept roughly constant: sx = 1 / sqrt(sy)
+  // endScale: the ball grows during the bounce to the size it has when the unfolding starts
+  const E = o.endScale ?? 1
+  const body = (sy: number, x: number, y: number, a: number, grow = 0): Drift => {
+    const gk = 1 + (E - 1) * smooth(grow)
+    return { x: x - cx, y: y - cy, angle: a, sx: gk / Math.sqrt(sy), sy: gk * sy }
   }
-  const e = elapsed - flightMs
-  if (e < IMPACT_MS) return finish(land.x, land.y, land.angle, .94 - .16 * (1 - (1 - e / IMPACT_MS) ** 2))
-  const u = Math.min(1, (e - IMPACT_MS) / HOP_MS)
-  if (u < 1) {
-    const sy = u < .15 ? .78 + .32 * smooth(u / .15) : u < .3 ? 1.1 - .1 * smooth((u - .15) / .15) : 1 - .06 * smooth((u - .75) / .25)
-    return finish(land.x + 14 * (1 - (1 - u) ** 2), land.y - HOP_PEAK * 4 * u * (1 - u), land.angle + 5 * Math.sin(Math.PI * u) * (1 - u), sy)
+  return {
+    total,
+    at(elapsed) {
+      const t = Math.max(0, Math.min(total, elapsed)) / 1000
+      if (t < T1) {
+        const k = t / T1
+        const sy = k > .8 ? 1 + .08 * Math.sin(Math.PI * (k - .8) / .2) : 1
+        return body(sy, x0 + vx1 * t, y0 + vy1 * t + .5 * g * t * t, w1 * t - spin)
+      }
+      if (t < T1 + D) {
+        const k = (t - T1) / D, sy = 1 - .18 * Math.sin(Math.PI * k)
+        return body(sy, xi + vxc * D * k, floorY + r * (1 - sy), w1 * t - spin)
+      }
+      const s = Math.min(Tb, t - T1 - D), a = w1 * (T1 + D) + w1 * Tb * (1 - (1 - s / Tb) ** 3) / 3 - spin
+      const sy = 1 + .1 * Math.sin(Math.PI * Math.min(1, s / (.18 * Tb)))
+      const u = s / Tu
+      const out = body(s < Tu ? sy : 1, xe + (tx - xe) * (1 - (1 - u) ** 2), floorY - g * Tu * s + .5 * g * s * s, a, u)
+      if (!rest || t <= T1 + D + Tb) return out
+      const k = smooth((t - T1 - D - Tb) / rest)
+      return { ...out, x: out.x * (1 - k), y: out.y * (1 - k) }
+    },
   }
-  const v = Math.min(1, (e - IMPACT_MS - HOP_MS) / HOP2_MS)
-  return finish(land.x + 14, land.y - 8 * 4 * v * (1 - v), land.angle * (1 - smooth(v)), 1 - .06 * (1 - smooth(Math.min(1, v * 2))))
 }
