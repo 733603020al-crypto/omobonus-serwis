@@ -60,7 +60,7 @@ const FILE_QUALITY = {
 
 // Files to skip (flags, logos, umka paws — already tiny or critical for visual quality)
 const SKIP = new Set([
-  'Logo_Omobonus.webp',         // 12K logo, critical visual quality
+  'Logo_Omobonus_round_v2.webp', // 10K logo, critical visual quality
   '02_serwis-komputerow-stacjonarnych.webp', // animated hero — this script doesn't pass {animated:true} to sharp and would flatten it to a static first frame
   '03_outsourcing-it.webp', // animated hero — same reason
   'Serwis_i_Naprawa_Drukarek_3D.webp', // animated hero — same reason
