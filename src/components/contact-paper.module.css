@@ -20,3 +20,5 @@
 @media (prefers-reduced-motion: reduce) { .canvas { transition: none; } }
 .preparing { position: absolute; top: 236px; left: 0; right: 0; margin: 0; text-align: center; pointer-events: none; font-family: var(--font-cormorant), Georgia, serif; font-size: 18px; color: #c69556; }
 
+
+.root[data-paper-entrance="arriving"] .preview img { z-index: 25; }

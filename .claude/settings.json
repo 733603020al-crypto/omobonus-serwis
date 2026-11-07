@@ -2,11 +2,19 @@
   "permissions": {
     "deny": [],
     "ask": [
-      "Bash(git push *)",
+      "Bash(git push *master*)",
+      "Bash(git push *--force*)",
+      "Bash(git push * -f*)",
+      "Bash(git push *pages/*)",
+      "Bash(git push *--delete*)",
       "Bash(git merge *)",
       "Bash(git checkout master*)",
       "Bash(git switch master*)",
-      "PowerShell(git push *)",
+      "PowerShell(git push *master*)",
+      "PowerShell(git push *--force*)",
+      "PowerShell(git push * -f*)",
+      "PowerShell(git push *pages/*)",
+      "PowerShell(git push *--delete*)",
       "PowerShell(git merge *)",
       "PowerShell(git checkout master*)",
       "PowerShell(git switch master*)"
