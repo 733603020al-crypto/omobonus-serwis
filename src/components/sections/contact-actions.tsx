@@ -126,7 +126,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
     let done = false
     const check = () => {
       const phase = root.getAttribute('data-paper-phase')
-      if (!done && phase !== 'loading' && phase !== 'ball') setKosztHint(true)
+      if (!done) setKosztHint(true)
       if (phase === 'form' && !done) {
         done = true
         obs.disconnect()
@@ -323,7 +323,7 @@ export function ContactActionsSection({ t, locale = 'pl' }: { t?: ContactActions
           </form>
       </CallbackModal>
       {(
-        <p aria-hidden="true" className="koszt-hint pointer-events-none fixed z-40 right-[35px] bottom-[35px] max-md:right-4 max-md:bottom-[77px] max-md:max-w-[calc(100%-32px)] text-right text-[20px] text-[#bfa76a] font-cormorant italic leading-tight font-semibold drop-shadow-2xl transition-opacity duration-[1400ms] ease-out" style={{ opacity: kosztHint && !showKoszt ? 1 : 0 }}>
+        <p aria-hidden="true" className="koszt-hint pointer-events-none fixed z-40 right-[35px] bottom-[35px] max-md:right-4 max-md:bottom-[77px] max-md:max-w-[calc(100%-32px)] text-right text-[20px] text-white font-cormorant italic leading-tight font-semibold drop-shadow-2xl transition-opacity duration-[1400ms] ease-out" style={{ opacity: kosztHint && !showKoszt ? 1 : 0 }}>
           {KOSZT_HINT[locale]}<span className="koszt-hint-dot">.</span><span className="koszt-hint-dot">.</span><span className="koszt-hint-dot">.</span>
         </p>
       )}
