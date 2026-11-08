@@ -989,6 +989,117 @@ Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
 Развёрнутый: „Dziś około [godzina] nasz kierowca był pod wskazanym adresem. Na miejscu znajduje się [instytucja], a pracownicy nie mieli informacji o odbiorze urządzenia; próbowaliśmy też dodzwonić się pod podany numer, bez skutku. Prosimy o telefon lub odpowiedź na tę wiadomość — najpierw wyjaśnimy, co się stało, a następnie ustalimy właściwy adres i dogodny termin. Ewentualne dodatkowe koszty, jeśli w ogóle się pojawią, omówimy z Panem indywidualnie i uzgodnimy z góry, przed kolejnym przyjazdem.”
 Исключения: Время и детали — только фактические. Повторный выезд автоматически платным не считать, суммы и платность самим не объявлять: решение владельца, согласование с клиентом заранее. Новых тарифов не вводить. Упрёков клиенту не делать.
 
+**клиент из другого города: выезд невыгоден, логистика на стороне клиента**
+Если устройство далеко от Вроцлава, честно сказать, что выезд или забор нерентабельны, и предложить варианты: клиент привозит сам, присылает посылкой/курьером или организует транспорт сам. Предварительную оценку по описанию дать, если клиент готов взять логистику на себя; если не готов — спросить, возможно ли это. Если мы ошиблись с расстоянием — просим поправить.
+Условие: Адрес клиента далеко от Вроцлава (другое воеводство, Варшава и т.п.), либо устройство нельзя ремонтировать на месте (3D-принтер, плата, мотор).
+Варианты: 1) Далеко, клиент не уточнял логистику — вежливо предупредить и спросить, возможна ли доставка/посылка. 2) Клиент сам ответил «логистика на нашей стороне» — подготовить оценку и в письме явно записать, что логистика у клиента. 3) Недалеко, но не Вроцлав — забор считаем по сценарию «Odbiór / dostawa». 4) Ремонт возможен только в сервисе — заранее сказать, что на месте не сделаем.
+Примеры:
+Краткий: „Zajmujemy się serwisem drukarek na terenie Wrocławia i okolic. Ze względu na lokalizację urządzenia realizacja zlecenia może być dla Państwa nieopłacalna logistycznie.”
+Развёрнутый: „Jeśli dopuszczają Państwo możliwość wysyłki urządzenia do naszego serwisu lub organizacji transportu we własnym zakresie, chętnie przygotujemy wycenę. W przypadku gdybyśmy błędnie założyli ograniczenia lokalizacyjne — prosimy o informację, wtedy zaproponujemy możliwe rozwiązania.”
+После ответа клиента: „Zgodnie z informacją, logistyka pozostaje po Państwa stronie. Na podstawie opisu [zakres prac] — koszt naprawy: [cena z cennika].”
+На месте нельзя: „Tego typu naprawa najprawdopodobniej nie będzie możliwa do wykonania na miejscu — urządzenie trzeba dostarczyć do naszego serwisu we Wrocławiu.”
+Исключения: Не отказывать сразу: сначала предложить посылку или привоз клиентом. Не обещать выезд и не называть стоимость выезда за пределы Вроцлава без расчёта по карточке «Koszt dojazdu». Цены — только со страницы услуги. Не рекомендовать другие сервисы.
+
+**ремонт невозможен или невыгоден: предложить подходящее устройство из нашей продажи**
+Когда ремонт невозможен (нет запчастей, слишком старая модель) или невыгоден, после честного объяснения можно предложить заменить устройство на подходящее из нашей продажи. Клиенту, который сам ищет устройство, сначала выяснить требования (сеть, Wi‑Fi, дуплекс, сканер, объём печати) и предложить 1–2 подходящие модели с характеристиками. Покупка «с порога» невозможна: устройство нужно заранее заказать, мы готовим его к выдаче, а при встрече действуют часы работы.
+Условие: Клиент получил отказ в ремонте (нет частей к старой модели, не окупается) или прямо просит предложить устройство (например, офису нужен принтер с сетью и Wi‑Fi).
+Варианты: 1) После отказа: объяснение причины + предложение замены. 2) Клиент выбирает из предложенного — подтвердить, что готовим к выдаче, указать часы работы. 3) Предложенная модель не подходит по требованиям (нет сети/Wi‑Fi/скана) — предложить другую с нужными функциями. 4) Клиент хочет приехать и купить сразу — объяснить, что нужен предварительный заказ.
+Примеры:
+Краткий: „Niestety to bardzo stary model i nie mamy możliwości zamówienia do niego części zamiennych, dlatego nie możemy nawet oszacować kosztu naprawy. Możemy natomiast zaproponować inne rozwiązanie — urządzenie z naszej oferty.”
+Краткий (подбор): „Proszę o informację, czy urządzenie ma mieć sieć i Wi‑Fi oraz skaner — wtedy dobierzemy odpowiedni model.”
+Развёрнутый: „Możemy zaoferować [model] — [najważniejsze parametry: druk dwustronny, LAN, Wi‑Fi, przebieg]. Urządzenie jest po przeglądzie technicznym [jeśli to prawda dla danej oferty]. Niestety nie możemy sprzedać go od ręki — konieczne jest wcześniejsze złożenie zamówienia, bo musimy przygotować urządzenie do odbioru. Gdy będzie gotowe, damy znać. Pracujemy od poniedziałku do piątku w godzinach 8:00–18:00.”
+Исключения: Предложение замены — только после отказа в ремонте или по прямой просьбе. Цены, модели в наличии и остатки пробега брать только из актуального предложения (Allegro/склад), старые цифры из писем не использовать. Не обещать, что устройство «в идеальном состоянии» — указывать только подтверждённые характеристики. Не давить на покупку.
+
+**запчасть недоступна сразу: промежуточный ответ и запрос номеров деталей**
+Если наличие запчастей неизвестно, не молчать и не отказывать наугад: сообщить, что проверяем у поставщиков и партнёров, назвать, когда вернёмся с ответом, и попросить, что поможет проверке — номера деталей, фото, точную модель. Дальше ответ дать в обещанный срок: цена по позициям (деталь, работа) и ожидание решения.
+Условие: Деталь редкая или специфическая (матрица/корпус ноутбука, ролик плоттера, головка и т.п.), у нас её нет в наличии, но она может быть у поставщиков.
+Варианты: 1) Деталей нет, ждём поставщика — промежуточный ответ со сроком. 2) Просим номера частей/фото — повторное подтверждение, что передаём партнёрам. 3) Нашлись — перечень позиций (деталь, работа) и вопрос о решении. 4) Не нашлись — сообщить без затяжки (сценарий «нет части»). 5) Срок ответа поставщика неизвестен — не придумывать его: назвать только то, что можем выполнить (например, «вернёмся с ответом до конца следующего рабочего дня»), и сдержать обещание.
+Примеры:
+Краткий: „Niestety w tej chwili nie posiadamy dostępnych części do Państwa urządzenia. Oczekujemy na odpowiedź od naszych dostawców i niezwłocznie się z Państwem skontaktujemy.”
+Краткий (запрос): „Czy mogłaby Pani przesłać numery części lub zdjęcie tabliczki z oznaczeniem? To bardzo pomoże nam w sprawdzeniu dostępności.”
+Развёрнутый: „Wstępnie sprawdziliśmy dostępność i obecnie nie mamy na magazynie podzespołów do tego modelu. Skontaktujemy się z partnerskimi serwisami i hurtowniami, aby sprawdzić, czy potrzebne części są dostępne u nich, i odpowiemy najpóźniej [termin]. Najlepszym rozwiązaniem byłoby dostarczenie urządzenia do diagnostyki — pozwoli to dokładniej ocenić zakres uszkodzeń i sprawdzić numery części.”
+После проверки: „Na podstawie numerów części: [detal] — [cena], [detal] — [cena], robocizna — [cena]. Ceny netto. Czekamy na decyzję.”
+Исключения: Срок ответа писать только реальный и после этого его соблюдать. Цены по позициям — из подтверждённых данных, не из старых писем. Без обещаний «наверняка найдём». Платный ремонт — только с согласия клиента.
+
+**возврат заменённых деталей и что клиенту передать вместе с устройством**
+Заменённые детали и модули всегда возвращаем клиенту вместе с устройством. В письме сказать, что вернём, и подсказать, что можно выбросить, а что пригодится как запасное. Если клиент отдаёт принтер, просить передать вместе с ним использованные расходные материалы и важные аксессуары — по ним можно понять, что неисправно: устройство или расходник.
+Условие: Выполняется замена деталей или модулей (например, комплект барабанов, фьюзер, ролики) либо клиент отдаёт принтер, у которого могут быть проблемы с картриджами.
+Варианты: 1) Подтверждение заказа с возвратом старых модулей — что вернём. 2) Что можно утилизировать (изношенный чёрный модуль), что оставить запасным (исправные цветные) — рекомендация, не требование. 3) Просим передать вместе с принтером использованные тонеры/картриджи. 4) Клиент забирает устройство сам — сказать, что старые детали ждут в комплекте.
+Примеры:
+Краткий: „Standardowo zwracamy Klientom wymienione, zużyte części. Wraz z urządzeniem zwrócimy wszystkie dotychczasowe elementy.”
+Развёрнутый: „Czarny moduł był zużyty i można go zutylizować, natomiast pozostałe moduły sprawne — sugerujemy zostawić jako części zapasowe i na razie ich nie wyrzucać.”
+Просьба при приёме: „Prosimy o przekazanie razem z drukarką wszystkich używanych tonerów — dzięki temu będziemy mogli sprawdzić, czy problem leży w urządzeniu, czy w materiale eksploatacyjnym.”
+Исключения: Утилизацию рекомендовать только по заключению мастера. Не обещать, что «запасные модули подойдут» без проверки. Расходные материалы не продавать в этом письме.
+
+**результат диагностики с вариантами ремонта и рекомендацией (учреждение, документ с фото)**
+Если диагностика показала, что простое решение не поможет, представить 2–3 варианта (чистка/сброс счётчика, неоригинальная деталь, оригинальная деталь), одним вариантом порекомендовать и ждать письменного выбора. Для учреждения приложить документ с итогами диагностики и фото неисправности. Работы и закупку детали начинать только после выбора.
+Условие: Организация или клиент с несколькими возможными решениями; причина установлена в сервисе; клиенту нужен документ для внутреннего согласования.
+Варианты: 1) Три варианта и рекомендация. 2) Базовый вариант + «если деталь изношена» — оговорка, цена пересмотрится после проверки. 3) Клиент выбрал вариант — подтвердить выбор, закупить деталь, сообщить срок. 4) Клиент не выбирает — спокойное напоминание (по сценарию «клиент не отвечает»).
+Примеры:
+Краткий: „W załączeniu przesyłamy wynik diagnostyki. Przedstawiamy trzy możliwe warianty dalszego postępowania; rekomendujemy wariant trzeci.”
+Развёрнутый: „Po szczegółowej diagnostyce stwierdziliśmy, że przyczyną problemu nie jest samo zabrudzenie, lecz nieprawidłowa praca [moduł]. W dokumencie opisaliśmy wynik i dodaliśmy zdjęcia. Wariant 1: [czyszczenie/reset]. Wariant 2: [zamiennik]. Wariant 3: [część oryginalna] — rekomendujemy go, ponieważ [powód]. Prosimy o wskazanie wybranego wariantu — po potwierdzeniu zamówimy część.”
+После выбора: „Dziękujemy za wybór. Zamówimy [część] i poinformujemy o terminie.”
+Исключения: Описание причины — только из заключения мастера. Цены вариантов — из подтверждённого расчёта, не из старых писем. Никаких новых гарантий и сроков без подтверждения. Не давить; решение за клиентом. Платные работы — только после согласия.
+
+**устройство долго простояло без работы: шанс на оживление и риск повторного засыхания**
+Если принтер (особенно струйный) долго не использовался, объяснить последствия простоя простыми словами: чернила в головке и каналах могут засохнуть, и тогда нужна чистка и прочистка головки. Результат заранее не оценивать и не обещать; сказать, что точно скажем после диагностики. Предупредить, что без регулярного использования головка может засохнуть снова. Решение принимает клиент.
+Условие: Струйное устройство простояло месяцы или годы; клиент спрашивает, стоит ли его реанимировать или утилизировать.
+Варианты: 1) Клиент спрашивает, стоит ли «оживлять» принтер — объяснить последствия простоя и что результат станет ясен после диагностики. 2) Устройство недорогое или старое — аккуратно сравнить затраты с новой покупкой (it-040). 3) Клиент решил проверять — доставка (it-062) и согласие на платные работы (it-072). 4) После ремонта — совет печатать регулярно.
+Примеры:
+Краткий: „Przy długim przestoju tusz w głowicy i kanałach może zaschnąć. Czy da się przywrócić drukarkę do pracy, ocenimy dopiero po diagnostyce.”
+Развёрнутый: „Jeśli drukarka długo nie była używana, tusz mógł zaschnąć w głowicy drukującej, co powoduje przerywany druk lub jego brak. W takiej sytuacji konieczne jest czyszczenie i udrożnienie głowicy. Niestety nie możemy z góry przewidzieć rezultatu — poznamy go po sprawdzeniu urządzenia. Warto też wiedzieć, że jeśli drukarka znów będzie długo nieużywana, głowica może zaschnąć ponownie. Decyzja należy do Pana/Pani/Państwa.”
+Исключения: Не обещать результат, срок и вероятность успеха. Цены — только со страницы услуги. Не уговаривать «давайте попробуем» — только объяснить последствия и варианты. Платные работы — только после согласия клиента.
+
+**клиент не получил ответ: проверка в системе, повторная отправка, извинение**
+Если клиент пишет, что ответа не было, проверить в системе время получения заявки и отправки ответа, сообщить клиенту факты, повторно отправить прежний ответ (скорее всего, письмо попало в спам) и предложить альтернативу — звонок. Не винить клиента.
+Условие: Клиент повторно обращается: «никто не отвечает». В нашей системе есть отправленный ответ.
+Варианты: 1) Ответ отправлен, но не дошёл — подтвердить дату, переслать заново, предложить проверить спам. 2) Ответа действительно не было — извиниться, ответить по существу, не оправдываться. 3) Ответ был, но клиент не понял — коротко повторить главное. 4) Позже ответили, чем обещали — один раз извиниться за задержку.
+Примеры:
+Краткий: „Dziękujemy za wiadomość. Zweryfikowaliśmy sprawę — odpowiedź została wysłana tego samego dnia. Prawdopodobnie trafiła do folderu ze spamem; przesyłamy ją ponownie poniżej.”
+Развёрнутый: „Zgłoszenie otrzymaliśmy [data], a odpowiedź wysłaliśmy [data]. Nie jesteśmy w stanie ustalić, dlaczego nie dotarła do Pana skrzynki odbiorczej. Dla pewności wklejamy poniżej wcześniejszą odpowiedź. Jeśli łatwiej, zadzwońcie do nas: +48 793 759 262.”
+Задержка: „Przepraszamy za opóźnienie w odpowiedzi.”
+Исключения: Даты и время указывать только по системе, не по памяти. Не перекладывать вину на клиента («Pan nie sprawdził»). Причину задержки не выдумывать. Один раз извиниться, без самоуничижения.
+
+**объяснить, почему ремонт сложнее и дороже, чем ожидает клиент (один механизм, без пугания)**
+Если ремонт дороже ожиданий из-за конструкции (например, матрица ноутбука приклеена к рамке и её нужно отклеить и приклеить заново), объяснить это одним понятным механизмом, назвать, из чего складывается работа, и сказать, что решение за клиентом. Если ремонт не окупается, сказать прямо.
+Условие: Клиент удивлён ценой или спрашивает «почему так дорого / нельзя проще».
+Варианты: 1) Конструктивная причина (клей, пайка, разборка корпуса) — объяснить одной картинкой. 2) Сумма работ по нескольким этапам — перечень. 3) Ремонт не окупается — прямое «не стоит», с причиной. 4) Альтернатива (например, другое устройство из нашей продажи) — только если ремонт не окупается, по it-102.
+Примеры:
+Краткий (если это верно для данной модели): „W tym modelu matryca jest przyklejona do ramki, więc przy wymianie trzeba ją odkleić i przykleić na nowo — to dodatkowa, czasochłonna praca.”
+Развёрнутый: „Koszt wynika z zakresu prac: [etap 1], [etap 2]. Jeśli naprawa się nie opłaca, powiemy to wprost — nie zależy nam na tym, żeby wydawał Pan pieniądze bez sensu.”
+Исключения: Механизм (клей, пайка) называть только если мастер подтвердил его для данной модели. Цифры не придумывать; брать из актуального прайса и диагностики. Не обвинять другие сервисы. Без технической перегрузки. Не обещать, что «станет дешевле».
+
+**устройство не включается: что спросить и как кратко назвать вероятные причины**
+Если устройство не включается, сначала попросить уточнить модель, фото места кнопки питания/разъёма и возможность привезти его. Затем назвать две вероятные причины (блок питания и главная плата) без категоричности и сказать, что на месте такие работы не делаем: нужна диагностика в сервисе с измерениями.
+Условие: Заявка: «не включается», «нет реакции на питание», «кнопка вдавлена», иногда модель неизвестна.
+Варианты: 1) Модель не указана — просим модель и фото. 2) Модель указана — две вероятные причины, ориентир по типу работ из прайса. 3) Есть подозрение на механическое повреждение кнопки — просим фото. 4) Клиент далеко — по сценарию «Выбор сценария / другой город».
+Примеры:
+Краткий: „Prosimy o podanie dokładnego modelu oraz zdjęć miejsca z przyciskiem zasilania — aby było widać, jak bardzo jest wciśnięty.”
+Развёрнутый: „Na podstawie objawów można wstępnie przypuszczać, że usterka dotyczy zasilacza lub płyty głównej. Takich napraw zwykle nie wykonujemy na miejscu u Klienta — konieczna jest diagnostyka w naszym serwisie. Ceny usług podajemy na stronie [nazwa usługi]. Możliwe jest też, że problem okaże się mniejszy, niż się spodziewamy.”
+Исключения: Причину как факт не называть. Цены и услуги — только по актуальной странице. Если у клиента старая или дешёвая модель — учесть «целесообразность». Не обещать ремонт.
+
+**типовые симптомы принтера и безопасные формулировки причин (бумага, нагрев, пятна, полосы)**
+Для частых симптомов давать 1–2 вероятные причины простыми словами и подводить к диагностике: ничего не утверждать как факт. После замены детали тот же код ошибки означает, что причина может быть не в этой детали.
+Условие: Клиент описывает симптом, но причину по письму установить нельзя.
+Варианты: 1) Бумага не берётся / мнётся / берёт несколько листов — загрязнённые или изношенные ролики, сепаратор, тракт бумаги. 2) Ошибка нагрева (E50, 50.2) — узел нагрева (фьюзер), термодатчик или плата питания; если фьюзер уже менялся — проблема может быть в другом узле. 3) Пятна, полосы, смазывание — барабан, узел закрепления, неверная плотность бумаги. 4) Полоса на копии, но не при печати — модуль сканирования. 5) Принтер не печатает с ПК, хотя тест из панели печатается — драйвер/порт/настройки (уточнить).
+Примеры:
+Краткий: „Taki objaw najczęściej wynika z zabrudzenia lub zużycia rolek poboru papieru albo separatora. Dokładną przyczynę ustalimy dopiero po diagnozie.”
+Краткий (ошибка нагрева): „Błąd utrwalacza może wynikać z uszkodzenia samego zespołu grzewczego, czujnika temperatury lub zasilania — jeśli fuser był już wymieniony, a błąd pozostał, przyczyna może leżeć gdzie indziej.”
+Развёрнутый: „Przy objawach ‘ciągnie kilka kartek’ najpierw podejrzewamy rolki i separator, także w podajniku dokumentów. Wymaga to przeglądu technicznego i czyszczenia, a w razie potrzeby wymiany elementów eksploatacyjnych. Zakres i koszt podamy po sprawdzeniu urządzenia.”
+Исключения: Каждый вариант — вероятность, не диагноз. Не обещать «наверняка», процентов и сроков. Цены — со страницы услуги. Если описание слишком общее — сначала уточнить модель и симптомы (it-030, it-031).
+
+**Клиент спрашивает цену диагностики и замены конкретной детали, но причина не очевидна**
+Если клиент сам назвал «виновную» деталь (тачпад, матрица, клавиатура и т.п.) и просит цену диагностики и замены, не подтверждать его догадку. По порядку: (1) вежливо сказать, что по описанию нельзя однозначно утверждать, что причина именно в этой детали, возможно виновата другая часть устройства; (2) сказать, что сначала нужна диагностика, и дать её условия по странице услуги (платная только при отказе от ремонта, при согласии на ремонт бесплатна); (3) пообещать, что после диагностики мы свяжемся, назовём найденную неисправность и стоимость, и без согласия клиента работы не начнём; (4) только после этого, условно («если окажется, что дело именно в…»), дать цену детали и работы по прайсу; (5) закончить: устройство можно привезти в удобное время, указать часы работы.
+Условие: Клиент пишет симптом («курсор то не двигается», «иногда не реагирует»), предполагает конкретную деталь и спрашивает: «сколько диагностика и замена?». Причина по описанию не установлена.
+Варианты: Короткий вариант: пункты 1–3 и условная цена одной строкой. Диагностика нужна до цены ремонта в любом случае.
+Примеры:
+„W przypadku opisanego problemu nie można jednoznacznie stwierdzić, że jego przyczyną jest touchpad. Możliwe, że usterka wynika z innego podzespołu laptopa.”
+„W pierwszej kolejności konieczne byłoby przeprowadzenie diagnostyki. Koszt diagnostyki w przypadku rezygnacji z naprawy wynosi [сумма со страницы услуги]. W przypadku zaakceptowania naprawy lub gdy nie znajdziemy przyczyny usterki, diagnostyka jest bezpłatna.”
+„Po przeprowadzeniu diagnostyki skontaktujemy się z Państwem, poinformujemy o wykrytej usterce oraz przedstawimy koszt naprawy. Bez Państwa zgody nie przystępujemy do żadnych prac naprawczych.”
+„Jeżeli okaże się, że problem rzeczywiście dotyczy touchpada i konieczna będzie jego wymiana, koszty przedstawiają się następująco: [деталь и работа по прайсу].”
+„Laptop można dostarczyć do naszego serwisu w dowolnym, dogodnym dla Państwa terminie. Pracujemy od poniedziałku do piątku w godzinach 8:00–18:00.”
+Исключения: Суммы из письма мастера (диагностика, деталь, работа) не переносить: брать только со страницы услуги, сверяя перед письмом. Условия диагностики — полностью по it-063. Не называть конкретные возможные причины, пока их нет в описании клиента.
+
 ## 5а. Данные, которые Claude находит сам
 
 Не спрашивать пользователя то, что можно найти самому. Если в письме есть марка/модель и адрес:
