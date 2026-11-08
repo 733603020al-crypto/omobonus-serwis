@@ -22,6 +22,16 @@ Commit, push и merge — только после явного разрешен�
 
 ---
 
+## Два репозитория: границы (утверждено 2026-11-08)
+
+* **Сайт** (`omobonus-serwis`): `master` — основная версия (боевой сайт), `test` — разработка (и `pages/*` для новых страниц). Коммиты сайта — только в `test`/`pages/*`.
+* **Workspace** (`omobonus-workspace`, панель и база): `main` — основная версия, `Panel` — разработка. Коммиты Workspace — только в `Panel`. Ветка `service-test` — старая, не рабочая.
+* Главный источник ответов клиентам — `service/kommunikacii/client-replies-items.json` в Workspace. Рабочий `.claude/skills/odpowiedzi-klientom/SKILL.md` в сайте собирается из него автоматически (`npm run skill:build` в `app`; проверка `-- --check`). Это единственная разрешённая запись из одного репозитория в другой; `SKILL.md` руками не править.
+* Защита: хуки `pre-commit` и `pre-push` (сайт — `scripts/git-hooks/`, Workspace — `tools/git-hooks/`; установка `sh …/install.sh`) блокируют коммит в чужую ветку, в detached HEAD и в репозиторий с чужим адресом, а пуш — в чужой репозиторий и в защищённую ветку. Обход (`OMOBONUS_ALLOW_BRANCH=1`) — только по прямому разрешению владельца на конкретное действие.
+* Для `service/kommunikacii/**` в Workspace задан `.gitattributes` (`eol=lf`): переводы строк не должны создавать ложных изменений.
+
+---
+
 ## Безопасность
 
 * Не читай `.env`, `.env.local`, `.env.production`, `.env.development`, ключи, токены, пароли, секреты без разрешения — даже в audit-режиме. Не выводи секреты в ответ.
