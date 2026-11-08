@@ -11,6 +11,7 @@
 - **SEO** (Title, Description, H1–H4) → `docs/seo/index.md`
 - **Языки** (перевод, новый язык сайта) → `docs/languages/index.md`
 - **Панель** (оформление, разработка, отложенные задачи) → `docs/claude/panel.md`
+- **Ответы клиентам и подпись писем** (serwis@omobonus.com.pl: порядок, тон, цены, две подписи) → `.claude/skills/odpowiedzi-klientom/SKILL.md`; файлы подписей — `omobonus-workspace/tools/podpisi/`
 - **Программа сервиса** (разработка, нерешённые вопросы) → `service/razrabotka-programmy/obshchie-pravila.md` в Workspace (панель: Программа сервиса)
 - **Среда** (сервер, команды, помощники) → `docs/claude/sreda.md`
 - **Расписание работ** (что делать периодически: Вёрсель, проверки, подсказки устройств сервиса) → `docs/raspisanie-rabot/tablica-rabot.md`
