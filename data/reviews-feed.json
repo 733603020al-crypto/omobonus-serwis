@@ -1,24 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "Anna Semenets",
-      "author_url": "https://www.google.com/maps/contrib/114445197211353387142/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWku0UKv2NLhxWVaLf8mHkP6HPB_gwagKESlupPO6VRExZfIpo=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "4 tygodnie temu",
-      "text": "Świetny serwis, uratowali moją pracę!\nOgromne podziękowania dla chłopaków za szybką i sprawną naprawę mojego printera, który zaciął papier w samym środku gorącego okresu w pracy. Diagnostykę zrobiono na moich oczach, od razu podano uczciwą cenę bez ukrytych kosztów, a sprawnie działający sprzęt odebrałam już następnego dnia. Zdecydowanie polecam to miejsce za pełen profesjonalizm, ekspresowe tempo i przemiłą obsługę!",
-      "time": 1778916190,
-      "translated": false,
-      "text_uk": "Чудовий сервіс, вони врятували мою роботу!\nВеличезне спасибі хлопцям за швидкий та ефективний ремонт мого принтера, у якого застряг папір посеред напруженого робочого дня. Вони провели діагностику прямо на моїх очах, одразу назвали справедливу ціну, без прихованих витрат, і я забрав свій робочий пристрій наступного дня. Я дуже рекомендую це місце за їхній повний професіоналізм, швидкість та доброзичливе обслуговування!",
-      "text_ru": "Отличный сервис, они спасли мою работу!\nОгромное спасибо ребятам за быстрый и эффективный ремонт моего принтера, у которого застряла бумага посреди напряженного рабочего дня. Они провели диагностику прямо у меня на глазах, сразу же предложили справедливую цену без скрытых платежей, и я забрал свой рабочий принтер на следующий день. Я настоятельно рекомендую это место за их профессионализм, скорость и дружелюбное обслуживание!",
-      "text_en": "Great service, they saved my work!\nHuge thanks to the guys for the fast, efficient repair of my printer, which jammed paper right in the middle of a busy period at work. The diagnosis was done in front of me, I was given a fair price straight away with no hidden costs, and I picked up the working printer the very next day. I definitely recommend this place for complete professionalism, express speed and lovely service!",
-      "relative_time_uk": "4 тижні тому",
-      "relative_time_ru": "4 недели назад",
-      "relative_time_en": "4 weeks ago"
-    },
-    {
       "author_name": "Jola Wychowska",
       "author_url": "https://www.google.com/maps/contrib/117175651621755297151/reviews",
       "language": "pl",
@@ -179,7 +161,25 @@
       "relative_time_uk": "5 місяців тому",
       "relative_time_ru": "5 месяцев назад",
       "relative_time_en": "5 months ago"
+    },
+    {
+      "author_name": "Yuliia Chykalova",
+      "author_url": "https://www.google.com/maps/contrib/108015423435693642775/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocI0ckEczQtRJEfhvkz0gQTnZx15Whf0K0V1ZxnyqTWWNRR9yw=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "miesiąc temu",
+      "text": "Drukarka drukowała z czarną linią pośrodku. Wymiana tonera nie pomogła. Znalazłam Państwa firmę w Internecie, zadzwoniłam i już następnego dnia przyjechałam przywiozłam drukarkę, (nawet pomogli mi ją z bagażnika zabrać i z powrotem do bagażnika postawili) szybko zdiagnozowali problem i w 10 minut naprawili drukarkę! 😊\nPrawdziwi specjaliści , sprawdzone i niedrogie części, profesjonalna obsługa. Z całego serca polecam! ❤️",
+      "time": 1790090134,
+      "translated": false,
+      "text_uk": "Мій принтер друкував з чорною смугою посередині. Заміна картриджа з тонером не допомогла. Я знайшов вашу компанію в інтернеті, зателефонував, і вже наступного дня приїхав і привіз принтер назад. (Вони навіть допомогли мені витягнути його з багажника і знову туди поставити.) Вони швидко діагностували проблему та виправили принтер за 10 хвилин! 😊\nСправжні експерти, перевірені та доступні запчастини, а також професійне обслуговування. Щиро рекомендую їх! ❤️",
+      "text_ru": "Мой принтер печатал с черной полосой посередине. Замена картриджа с тонером не помогла. Я нашла вашу компанию в интернете, позвонила, и уже на следующий день приехала и привезла принтер обратно. (Они даже помогли мне вытащить его из багажника и занести обратно.) Они быстро диагностировали проблему и починили принтер за 10 минут! 😊\nНастоящие эксперты, проверенные и доступные запчасти, а также профессиональное обслуживание. Я от всей души рекомендую их! ❤️",
+      "text_en": "My printer was printing with a black line in the middle. Replacing the toner cartridge didn't help. I found your company online, called, and the very next day I arrived and brought the printer back. (They even helped me get it out of the trunk and back in.) They quickly diagnosed the problem and fixed the printer in 10 minutes! 😊\nTrue experts, proven and affordable parts, and professional service. I wholeheartedly recommend them! ❤️",
+      "relative_time_uk": "місяць тому",
+      "relative_time_ru": "месяц назад",
+      "relative_time_en": "a month ago"
     }
   ],
-  "updatedAt": "2026-11-02T10:13:09.265Z"
+  "updatedAt": "2026-11-09T10:32:29.651Z"
 }
