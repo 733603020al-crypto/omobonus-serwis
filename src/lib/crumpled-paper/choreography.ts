@@ -80,7 +80,8 @@ export function revealDrift(released: number, mobile: boolean, lateral = mobile 
 // new parabola up to the screen centre and comes to rest there. Every phase starts
 // with the position, direction and spin the previous one ended with.
 export type ArrivalPlan = { total: number; at: (elapsed: number) => Drift }
-export function planArrival(o: { W: number; H: number; r: number; cx: number; cy: number; mobile: boolean; floorInset: number; returnToRest?: boolean; target?: { x: number; y: number }; endScale?: number }): ArrivalPlan {
+export function planArrival(o: { W: number; H: number; r: number; cx: number; cy: number; mobile: boolean; floorInset: number; returnToRest?: boolean; target?: { x: number; y: number }; endScale?: number }, soft = false): ArrivalPlan {
+  // soft = experimental variant (URL ?paper=soft); false keeps the approved motion byte-for-byte.
   const { W, H, r, cx, cy, mobile } = o
   const g = Math.max(1800, Math.min(2600, 2200 * H / 900))
   const floorY = H - o.floorInset - r // ball centre at the moment of touch
@@ -90,13 +91,28 @@ export function planArrival(o: { W: number; H: number; r: number; cx: number; cy
   const T1 = .92 * Math.sqrt(2 * (floorY - y0) / g)
   const vx1 = (xi - x0) / T1, vy1 = (floorY - y0 - .5 * g * T1 * T1) / T1
   // 2. contact: the bottom stays on the floor, the vertical radius shrinks to 82%
-  const D = .1, vxc = .85 * vx1, xe = xi + vxc * D
+  const D = .1, vxc = (soft ? .78 : .85) * vx1, xe = xi + vxc * D
   // 3. bounce: one arc whose apex is the target itself (vertical speed 0 there), so the
   // unfolding starts right at the top with no extra settling moves
   const tx = o.target?.x ?? W / 2, ty = Math.min(o.target?.y ?? H / 2, floorY - 40)
   const Tu = Math.sqrt(2 * (floorY - ty) / g), Tb = Tu
+  // soft: horizontal speed starts at the contact exit speed, drifts linearly to vEnd (air drag) and is
+  // caught softly (cosine) in the last cT seconds; the distance to the target is preserved exactly
+  const dx = tx - xe, cT = Math.min(.09, Tb * .2), vEnd = Math.max(0, (dx - vxc * (Tb - cT) / 2) / (Tb / 2))
+  const bounceX = (s: number) => {
+    if (!soft) return xe + dx * (1 - (1 - s / Tu) ** 2)
+    const m0 = Tb - cT
+    if (s <= m0) return xe + vxc * s + (vEnd - vxc) / (2 * m0) * s * s
+    const m = (s - m0) / cT
+    return xe + vxc * m0 + (vEnd - vxc) * m0 / 2 + vEnd * cT * (m / 2 + Math.sin(Math.PI * m) / (2 * Math.PI))
+  }
   // spin follows the direction of travel and fades out quadratically over the bounce
-  const w1 = mobile ? 480 : 540, spin = w1 * (T1 + D) + w1 * Tb / 3
+  // soft: spin is held until 45% of the bounce, then fades with a cosine (zero slope at the top)
+  const Q = .45, w1 = mobile ? 480 : 540, spin = w1 * (T1 + D) + w1 * Tb * (soft ? Q + (1 - Q) / 2 : 1 / 3)
+  const spinArc = (s: number) => {
+    const u = s / Tb
+    return u <= Q ? w1 * s : w1 * Tb * (Q + (1 - Q) * ((u - Q) / (1 - Q) / 2 + Math.sin(Math.PI * (u - Q) / (1 - Q)) / (2 * Math.PI)))
+  }
   const rest = o.returnToRest ? .55 : 0, total = (T1 + D + Tb + rest) * 1000
   // volume is kept roughly constant: sx = 1 / sqrt(sy)
   // endScale: the ball grows during the bounce to the size it has when the unfolding starts
@@ -111,17 +127,19 @@ export function planArrival(o: { W: number; H: number; r: number; cx: number; cy
       const t = Math.max(0, Math.min(total, elapsed)) / 1000
       if (t < T1) {
         const k = t / T1
-        const sy = k > .8 ? 1 + .08 * Math.sin(Math.PI * (k - .8) / .2) : 1
-        return body(sy, x0 + vx1 * t, y0 + vy1 * t + .5 * g * t * t, w1 * t - spin)
+        // soft: stretch peaks at touch-down; the centre is lifted so the bottom never sinks into the floor
+        const sy = k > .8 ? 1 + .08 * Math.sin((soft ? Math.PI / 2 : Math.PI) * (k - .8) / .2) : 1
+        return body(sy, x0 + vx1 * t, y0 + vy1 * t + .5 * g * t * t - (soft ? r * (sy - 1) : 0), w1 * t - spin)
       }
       if (t < T1 + D) {
-        const k = (t - T1) / D, sy = 1 - .18 * Math.sin(Math.PI * k)
+        const k = (t - T1) / D
+        const sy = soft ? 1 + .08 * (1 - k) ** 2 - .22 * Math.sin(Math.PI * k ** .8) : 1 - .18 * Math.sin(Math.PI * k)
         return body(sy, xi + vxc * D * k, floorY + r * (1 - sy), w1 * t - spin)
       }
-      const s = Math.min(Tb, t - T1 - D), a = w1 * (T1 + D) + w1 * Tb * (1 - (1 - s / Tb) ** 3) / 3 - spin
+      const s = Math.min(Tb, t - T1 - D), a = w1 * (T1 + D) + (soft ? spinArc(s) : w1 * Tb * (1 - (1 - s / Tb) ** 3) / 3) - spin
       const sy = 1 + .1 * Math.sin(Math.PI * Math.min(1, s / (.18 * Tb)))
       const u = s / Tu
-      const out = body(s < Tu ? sy : 1, xe + (tx - xe) * (1 - (1 - u) ** 2), floorY - g * Tu * s + .5 * g * s * s, a, u)
+      const out = body(s < Tu ? sy : 1, bounceX(s), floorY - g * Tu * s + .5 * g * s * s, a, u)
       if (!rest || t <= T1 + D + Tb) return out
       const k = smooth((t - T1 - D - Tb) / rest)
       return { ...out, x: out.x * (1 - k), y: out.y * (1 - k) }

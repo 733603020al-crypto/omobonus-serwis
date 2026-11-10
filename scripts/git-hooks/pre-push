@@ -1,0 +1,18 @@
+#!/bin/sh
+# Защита сайта при пуше: только в репозиторий omobonus-serwis; пуш в master — вручную из терминала с подтверждением Enter (идёт на боевой сайт).
+remote_url="$2"
+case "$remote_url" in
+  *omobonus-serwis*) ;;
+  *) [ "$OMOBONUS_ALLOW_BRANCH" = "1" ] || { echo "ЗАПРЕТ: пуш не в репозиторий сайта omobonus-serwis ($remote_url)." >&2; exit 1; } ;;
+esac
+refs=$(cat)
+echo "$refs" | grep -q ' refs/heads/master ' || exit 0
+if ! ( : </dev/tty ) 2>/dev/null; then
+  echo "ЗАПРЕТ: пуш в master возможен только вручную из терминала с подтверждением." >&2
+  exit 1
+fi
+echo "" >&2
+echo "ВНИМАНИЕ: это пойдёт на БОЕВОЙ сайт serwis.omobonus.com.pl!" >&2
+printf "Нажмите Enter, чтобы опубликовать на боевой сайт (Ctrl+C — отмена): " >&2
+read a1 </dev/tty
+exit 0

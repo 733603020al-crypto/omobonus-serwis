@@ -15,6 +15,12 @@ type Pose = { x: number; y: number; scale: number; angle?: number }
 export interface ContactPaperHandle { complete: () => Promise<void> }
 
 const AUTO_OPEN_MS = 6000
+const PREVIEW_SIZE = {
+  pl: { desktop: [487, 482], mobile: [385, 378] },
+  uk: { desktop: [483, 479], mobile: [389, 382] },
+  ru: { desktop: [483, 479], mobile: [383, 376] },
+  en: { desktop: [483, 479], mobile: [385, 378] },
+} as const
 // Experimental framing only. Set false to restore the approved C composition.
 const EXPERIMENTAL_LARGE_REVEAL = true
 // Engine shadow tuning (original values): BASE stays under a flat sheet, BALL is added as it crumples.
@@ -143,10 +149,11 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       }
     }
 
-    const stopWaiting = (settle = false) => {
+    const stopWaiting = (settle = false, keepBall = false) => {
       clearTimeout(waitTimer)
       const now = motionNow(), current = waitingAt(now), previous = waitingAt(now - 1)
-      waitingAnimations.forEach(animation => animation.cancel())
+      // keepBall: the ball picture stays in its last pose until React swaps it for the canvas (no one-frame jump back to its base spot)
+      waitingAnimations.forEach(animation => { if (!keepBall || (animation.effect as KeyframeEffect | null)?.target !== previewRef.current) animation.cancel() })
       waitingAnimations = []
       if (settle) {
         const velocity = { x: (current.x - previous.x) * 1000, y: (current.y - previous.y) * 1000, angle: (current.angle - previous.angle) * 1000 }
@@ -329,7 +336,7 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       // After the intro flight the paper unfolds from where the ball stopped, with no spring-back
       const stop = arrivalPlan ? waitingAt(motionNow()) : null
       arrivalPlan = null
-      stopWaiting(!stop)
+      stopWaiting(!stop, !!stop)
       arrival.abort(); landed = true; setEntrance('settled')
       const e = engine.current!
       readStageProfile()
@@ -429,10 +436,11 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       readStageProfile()
       const c = centeredPose(), k = c.scale / placement.pose.scale
       const target = { x: c.x + placement.offsetX * k, y: c.y + (centerY - placement.pose.y) * k }
+      const soft = new URLSearchParams(location.search).get('paper') === 'soft'
       const plan = arrivalPlan = planArrival({
         W: innerWidth, H: innerHeight, r: placement.height / 2, cx: placement.pose.x + placement.offsetX, cy: centerY,
         mobile: innerWidth < 768, floorInset: innerWidth < 768 ? 66 : 0, returnToRest: !handsOff, target, endScale: k,
-      })
+      }, soft)
       entranceStart = motionNow()
       if (root.current) root.current.dataset.paperArrivalAt = String(entranceStart)
       const duration = plan.total
@@ -452,7 +460,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
             const delta = now - entranceLast; entranceLast = now
             // Engine still not ready: ease the flight down so it arrives about when the paper is ready
             if (handsOff) {
-              const target = ready || entranceElapsed < duration * .35 ? 1 : .4
+              // soft: a slightly stronger slowdown (.3 instead of .4) so the ball waits less at the top
+              const target = ready || entranceElapsed < duration * .35 ? 1 : soft ? .3 : .4
               flightRate += (target - flightRate) * .08
               waitingAnimations.forEach(animation => { animation.playbackRate = flightRate })
             }
@@ -924,8 +933,8 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
       </div>
     </div>, portalHost)}
     {phase === 'loading' && <picture className={styles.preview}>
-      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile-v3.webp`} />
-      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop-v3.webp`} alt="" loading="eager" decoding="async" draggable={false} />
+      <source media="(max-width: 767px)" srcSet={`/images/contact-paper/${locale}-mobile-v3.webp`} width={PREVIEW_SIZE[locale].mobile[0]} height={PREVIEW_SIZE[locale].mobile[1]} />
+      <img ref={previewRef} src={`/images/contact-paper/${locale}-desktop-v3.webp`} width={PREVIEW_SIZE[locale].desktop[0]} height={PREVIEW_SIZE[locale].desktop[1]} alt="" loading="eager" decoding="async" draggable={false} />
     </picture>}
     <span ref={ballAnchor} aria-hidden="true" style={{ position: 'absolute', top: 100, left: '50%', width: 1, height: 1, pointerEvents: 'none' }} />
     {(phase === 'loading' || phase === 'ball') && <button ref={openButtonRef} type="button" className={styles.open}

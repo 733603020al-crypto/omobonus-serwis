@@ -9,9 +9,11 @@
 | Задача | Период | Последний раз | Правила |
 |---|---|---|---|
 | Чистка старых Preview в Vercel | 14 дней | 2026-10-31 | `docs/raspisanie-rabot/vercel-14-dney.md` |
-| Проверка оптимизации сайта | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/rules/optimization-check.md` |
+| Проверка оптимизации сайта | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/skills/optimization-check/SKILL.md` |
 | Проверка прайса страниц услуг | 30 дней | дата в шапке `AI_WORK_STATE.md` | `.claude/rules/price-card-standard.md` |
 | Карточка Google: новые отзывы | раз в день | см. `docs/karta-google/` | `docs/karta-google/` |
 | Карточка Google: фото (минимум 7) и запас публикаций на 2 недели | раз в неделю | см. `docs/karta-google/` | `docs/karta-google/` |
 | Программа сервиса: подсказки устройств без описания | 30 дней | 2026-10-31 | запустить `node C:/Users/Andrii/omobonus-workspace/service/sync-countries.mjs`; строка «НОВЫЕ УСТРОЙСТВА БЕЗ ПОДСКАЗКИ» — заполнить `service/device-hints.json` на 4 языках (pl, uk, ru, en) |
 | Новые услуги в меню без слайда в карусели «Serwis wysyłkowy» | раз в неделю | 2026-11-03 | `docs/raspisanie-rabot/novye-uslugi-nedelya.md` |
+| Аудит расхода токенов Claude Code | раз в неделю | 2026-11-10 | `docs/raspisanie-rabot/audit-tokenov-nedelya.md` |
+| Пилот «Читатель» (Haiku): отчёт и рекомендация оставить/улучшить/отключить | 2026-11-17 и 2026-11-24 (один раз) | 2026-11-10 (старт) | `docs/raspisanie-rabot/audit-tokenov-nedelya.md`, пункт 4б |

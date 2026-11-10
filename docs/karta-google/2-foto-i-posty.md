@@ -21,3 +21,16 @@
 - Темы не повторять подряд — список прошлых тем в памяти агента.
 
 **Публикация:** очередь (фото + текст + дата) — показать пользователю, публиковать только после «публикуй».
+
+## Последовательность этапов
+
+1. Загрузка фото в панель (вкладка «Галерея»). Отбор фото — по разделу «Фото» выше.
+2. «Втянуть» выбранные фото в карточку публикации, при желании написать, что сделано при ремонте.
+3. Обработка фото через ChatGPT — `google-publications/rules/photo-editing.md`.
+4. Проверка качества и повторы (до 3 попыток), при сомнении решает владелец — `google-publications/rules/photo-quality-check.md`, `google-publications/rules/retry-and-escalation.md`.
+5. Подготовка текста и названия публикации — `google-publications/rules/post-text.md`.
+6. Назначение даты и времени — `google-publications/rules/scheduling.md`.
+7. Утверждение карточки владельцем.
+8. Отправка в Google только после «публикуй», с учётом `google-publications/rules/google-policy.md`.
+
+Параметры автоматизации — `google-publications/rules/config.json`. Испытания на пачках фото — `google-publications/rules/batch-tests.md`.
