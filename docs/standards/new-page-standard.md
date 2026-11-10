@@ -43,7 +43,7 @@
 - Включение в меню «Usługi», на главную (слайдер `home-hero-showcase`) и в списки связанных услуг — только по согласованию. Если страница связана с кнопками на главной/услугах (как «Serwis wysyłkowy»), напомнить про ссылки кнопок.
 
 ### Скорость (обязательно до слияния)
-- Полный чек-лист — `.claude/rules/optimization-check.md`; закрытое и откатанное — `docs/reshenia/optimization-knowledge.md`.
+- Полный чек-лист — навык `optimization-check` (вызвать перед работой; `.claude/skills/optimization-check/SKILL.md`); закрытое и откатанное — `docs/reshenia/optimization-knowledge.md`.
 - Проверить, что slug покрыт `scripts/defer-hydration.mjs` (область `uslugi`) и HTML не вырос; нет новых тяжёлых клиентских зависимостей; начальный JS не хуже соседней услуги (~206 КБ gz).
 - Prod-сборка — только в отдельной копии, не в основной папке (build ломает dev-сервер). Lighthouse mobile/desktop, медиана ≥ 5 прогонов; новая страница не хуже соседних услуг (90–96 на телефоне).
 
