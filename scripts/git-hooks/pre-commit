@@ -1,17 +1,27 @@
 #!/bin/sh
-# Защита сайта: коммитить можно только в ветки test и pages/* и только в репозитории сайта (omobonus-serwis).
-# Обход на один раз (только по прямому разрешению владельца): OMOBONUS_ALLOW_BRANCH=1 git commit ...
-[ "$OMOBONUS_ALLOW_BRANCH" = "1" ] && exit 0
-branch=$(git symbolic-ref --short -q HEAD)
+# Защита сайта: коммитить можно только в ветки test и pages/* и только в репозитории omobonus-serwis; файлы другого проекта в коммит не пускаем.
+# Обход проверки ветки на один раз (только по прямому разрешению владельца): OMOBONUS_ALLOW_BRANCH=1 git commit ...
+# Обход проверки смешивания проектов (только по прямому разрешению владельца): OMOBONUS_ALLOW_MIX=1 git commit ...
 origin=$(git remote get-url origin 2>/dev/null)
-case "$origin" in
-  *omobonus-serwis*) ;;
-  *) echo "ЗАПРЕТ: это не репозиторий сайта omobonus-serwis (origin: $origin)." >&2; exit 1 ;;
-esac
-case "$branch" in
-  test|pages/*) exit 0 ;;
-  master) echo "ЗАПРЕТ: master — основная версия сайта, коммиты только в test." >&2 ;;
-  "") echo "ЗАПРЕТ: коммит вне ветки (detached HEAD). Сайт — только test или pages/*." >&2 ;;
-  *) echo "ЗАПРЕТ: ветка '$branch' не для сайта. Разрешены: test, pages/*." >&2 ;;
-esac
-exit 1
+if [ "$OMOBONUS_ALLOW_BRANCH" != "1" ]; then
+  branch=$(git symbolic-ref --short -q HEAD)
+  case "$origin" in
+    *omobonus-serwis*) ;;
+    *) echo "ЗАПРЕТ: это не репозиторий omobonus-serwis (origin: $origin)." >&2; exit 1 ;;
+  esac
+  case "$branch" in
+    test|pages/*) ;;
+    master) echo "ЗАПРЕТ: master — основная версия сайта, коммиты только в test." >&2; exit 1 ;;
+    "") echo "ЗАПРЕТ: коммит вне ветки (detached HEAD). Сайт — только test или pages/*." >&2; exit 1 ;;
+    *) echo "ЗАПРЕТ: ветка '$branch' не для сайта. Разрешены: test, pages/*." >&2; exit 1 ;;
+  esac
+fi
+if [ "$OMOBONUS_ALLOW_MIX" != "1" ]; then
+  bad=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(app|algorithms|automation|calendars|google-publications|google-reviews|knowledge|reports|seo|service|tasks|tools|browser-profile[^/]*)/')
+  if [ -n "$bad" ]; then
+    echo "ЗАПРЕТ: в коммит попали файлы другого проекта (это Workspace, его коммитят в репозитории omobonus-workspace, ветка Panel):" >&2
+    echo "$bad" | head -5 >&2
+    exit 1
+  fi
+fi
+exit 0
