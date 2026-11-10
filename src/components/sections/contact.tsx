@@ -18,6 +18,13 @@ import { ContactPaper, type ContactPaperHandle } from '@/components/contact-pape
 
 type DataLayerFormId = 'quick_form' | 'long_form'
 
+const ATTACH_IMAGE_SIZE = {
+  pl: { desktop: 585, mobile: 463 },
+  uk: { desktop: 704, mobile: 554 },
+  ru: { desktop: 726, mobile: 571 },
+  en: { desktop: 606, mobile: 478 },
+} as const
+
 declare global {
   interface Window {
     dataLayer?: Array<Record<string, unknown>>
@@ -615,9 +622,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   className="group relative -ml-3 md:-ml-4 inline-block cursor-pointer transition-transform duration-250 hover:scale-[1.02]"
                 >
                   <picture>
-                    <source media="(max-width: 767px)" srcSet={`/images/contact-form-attach-button-${resolvedLocale}-mobile.webp`} />
+                    <source media="(max-width: 767px)" srcSet={`/images/contact-form-attach-button-${resolvedLocale}-mobile.webp`} width={ATTACH_IMAGE_SIZE[resolvedLocale].mobile} height={84} />
                     <img
                       src={`/images/contact-form-attach-button-${resolvedLocale}.webp`}
+                      width={ATTACH_IMAGE_SIZE[resolvedLocale].desktop}
+                      height={104}
                       alt={d.attachLabel}
                       draggable={false}
                       className="h-[42px] md:h-[52px] w-auto select-none drop-shadow-[2px_4px_5px_rgba(35,18,8,0.3)] group-hover:drop-shadow-[3px_6px_7px_rgba(35,18,8,0.4)] transition-[filter] duration-250"
@@ -767,9 +776,11 @@ export function Contact({ t, bare = false, locale }: { t?: ContactT; bare?: bool
                   className="group relative flex-shrink-0 cursor-pointer ml-[18px] md:ml-[24px] mb-[-71px] md:mb-[-92px] rounded-full disabled:opacity-60 transition-transform duration-250 hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C69556]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
                   <picture>
-                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" />
+                    <source media="(max-width: 767px)" srcSet="/images/contact-form-seal-mobile.webp" width={168} height={278} />
                     <img
                       src="/images/contact-form-seal.webp"
+                      width={220}
+                      height={364}
                       alt={d.submitButton}
                       draggable={false}
                       className="w-[108px] md:w-[140px] h-auto select-none drop-shadow-[5px_11px_9px_rgba(35,18,8,0.42)] group-hover:drop-shadow-[6px_13px_11px_rgba(35,18,8,0.5)] transition-[filter] duration-250"
