@@ -1,0 +1,13 @@
+#!/bin/sh
+# Защита сайта: ветку master нельзя сдвинуть (слияние, reset, update-ref, fetch в неё) без явного разрешения владельца.
+# Покрывает и быстрое слияние, которое pre-commit не видит. Обход на одно действие (только по прямому разрешению владельца):
+#   OMOBONUS_ALLOW_MAIN=1 git merge ...
+state="$1"
+if [ "$state" != "prepared" ] || [ "$OMOBONUS_ALLOW_MAIN" = "1" ]; then cat >/dev/null; exit 0; fi
+while read old new ref; do
+  if [ "$ref" = "refs/heads/master" ]; then
+    echo "ЗАПРЕТ: master — основная версия сайта, менять её (слияние, reset, переустановка ветки) можно только по прямому разрешению владельца." >&2
+    exit 1
+  fi
+done
+exit 0
