@@ -70,7 +70,18 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     let stopped = false, accepted = false, intro = true, nearView = false, inView = false
     let repeat = returning.current, celebrating = false
     if (root.current) for (const key of ['paperVisibleAt', 'paperDeadlineAt', 'paperPageReadyAt', 'paperArrivalAt', 'paperLandedAt', 'paperReadyAt', 'paperContactsSettledAt']) delete root.current.dataset[key]
-    let pageReady = false, landed = false, arriving = false, unavailable = motion.matches
+    // No GPU (software WebGL, e.g. Google's PageSpeed lab): skip the WebGL unfolding, show the form directly.
+    const softwareGl = (() => {
+      try {
+        const gl = document.createElement('canvas').getContext('webgl')
+        if (!gl) return false
+        const info = gl.getExtension('WEBGL_debug_renderer_info')
+        const name = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : ''
+        gl.getExtension('WEBGL_lose_context')?.loseContext()
+        return /swiftshader|llvmpipe|software/i.test(name)
+      } catch { return false }
+    })()
+    let pageReady = false, landed = false, arriving = false, unavailable = motion.matches || softwareGl
     let entranceStart = 0, nextSway = 0
     let arrivalPlan: ArrivalPlan | null = null
     // Capture the real CSS animation now: it may already be finished by the
