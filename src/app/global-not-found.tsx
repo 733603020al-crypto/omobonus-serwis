@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { cormorant, inter } from '@/lib/fonts'
 import './globals.css'
+import './fonts/not-found-fonts.css'
 
 /* global-not-found (experimental.globalNotFound): renderowana tylko dla
    nieistniejących adresów. Jako app/not-found.tsx trafiała (razem z całym
@@ -12,19 +13,6 @@ import './globals.css'
    dokładnie tak jak robi to każdy z trzech layoutów językowych. Obsługuje
    adresy, które w ogóle nie pasują do żadnej trasy (np. spoza /uk, /ru). */
 
-const cormorant = Cormorant_Garamond({
-  weight: ['400', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-cormorant',
-})
-
-const inter = Inter({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   title: 'Strona nie znaleziona | Omobonus Serwis',

@@ -2,28 +2,15 @@ import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { cormorant, inter } from '@/lib/fonts'
 import '../globals.css'
+import '../fonts/fonts.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { DeferredCookieYes } from '@/components/DeferredCookieYes'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { GoldAnimationPause } from '@/components/GoldAnimationPause'
 
-const cormorant = Cormorant_Garamond({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  variable: '--font-cormorant',
-})
-
-const inter = Inter({
-  weight: ['400', '500', '600'],
-  subsets: ['latin', 'cyrillic'],
-  display: 'swap',
-  preload: false,
-  variable: '--font-inter',
-})
 
 
 // Phones: the page (and the textured bottom bar) is drawn to the screen edge, under
