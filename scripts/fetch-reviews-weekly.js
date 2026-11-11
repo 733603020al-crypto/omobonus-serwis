@@ -1,5 +1,7 @@
 import dotenv from 'dotenv'
 import fs from 'fs'
+import { isDeepStrictEqual } from 'node:util'
+import { writeSnapshotIfChanged } from './reviews-snapshot.js'
 
 dotenv.config({ path: '.env.local' })
 
@@ -137,36 +139,45 @@ function reviewKey(r) {
     return `${r.author_name}_${r.time}`
 }
 
+// Relative age changes as time passes; it is not an edit to the review.
+function reviewContent(review) {
+    return ['author_name', 'author_url', 'profile_photo_url', 'rating', 'text',
+        'time', 'language', 'original_language'].map((field) => review[field] ?? null)
+}
+
 async function fetchWeeklyReviews() {
     try {
         // Накопленный фид за предыдущие недели
         let feed = []
         if (fs.existsSync(FEED_PATH)) {
-            try {
-                const existing = JSON.parse(fs.readFileSync(FEED_PATH, 'utf-8'))
-                feed = Array.isArray(existing.reviews) ? existing.reviews : []
-            } catch {}
+            const existing = JSON.parse(fs.readFileSync(FEED_PATH, 'utf-8'))
+            if (!Array.isArray(existing.reviews)) throw new Error('Некорректный сохранённый фид')
+            feed = existing.reviews
         }
-        const existingKeys = new Set(feed.map(reviewKey))
+        const existingByKey = new Map(feed.map((review) => [reviewKey(review), review]))
 
         // Текущие отзывы от Google (только PL)
         const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews&language=pl&key=${API_KEY}`
         const res = await fetch(url)
+        if (!res.ok) throw new Error(`Google HTTP ${res.status}`)
         const data = await res.json()
 
         if (data.status !== 'OK') {
             console.error('❌ Google API error:', data.status)
+            process.exitCode = 1
             return
         }
 
-        // Фильтр: только 5★, только с непустым текстом, только польский оригинал, только новые (не в фиде)
-        const candidates = (data.result?.reviews ?? []).filter(
+        if (!Array.isArray(data.result?.reviews)) throw new Error('Некорректный ответ с отзывами')
+
+        // Keep the existing selection policy; also detect edits to known reviews.
+        const candidates = [...new Map(data.result.reviews.map((review) => [reviewKey(review), review])).values()].filter(
             (r) =>
                 r.original_language === 'pl' &&
                 r.rating === 5 &&
                 typeof r.text === 'string' &&
                 r.text.trim().length > 0 &&
-                !existingKeys.has(reviewKey(r))
+                !isDeepStrictEqual(reviewContent(existingByKey.get(reviewKey(r)) ?? {}), reviewContent(r))
         )
 
         if (candidates.length === 0) {
@@ -175,50 +186,64 @@ async function fetchWeeklyReviews() {
             return
         }
 
-        // Переводим только новые отзывы
-        const texts = candidates.map((r) => r.text)
+        // Metadata-only changes retain translations and do not call Translate.
+        const textChanges = candidates.filter((r) => existingByKey.get(reviewKey(r))?.text !== r.text)
+        const texts = textChanges.map((r) => r.text)
         let translatedUk = null
         let translatedRu = null
         let translatedEn = null
 
-        if (TRANSLATE_KEY) {
-            console.log(`🔄 Переводим ${texts.length} новых отзывов → UK...`)
+        if (TRANSLATE_KEY && texts.length > 0) {
+            console.log(`🔄 Переводим ${texts.length} новых/изменённых отзывов → UK...`)
             translatedUk = await translateTextsWithGoogle(texts, 'uk')
             console.log(`🔄 Переводим ${texts.length} новых отзывов → RU...`)
             translatedRu = await translateTextsWithGoogle(texts, 'ru')
             console.log(`🔄 Переводим ${texts.length} новых отзывов → EN...`)
             translatedEn = await translateTextsWithGoogle(texts, 'en')
+            if ([translatedUk, translatedRu, translatedEn].some((items) =>
+                !Array.isArray(items) || items.length !== texts.length ||
+                items.some((text) => typeof text !== 'string' || !text.trim()))) {
+                throw new Error('Перевод не завершён; сохранён прежний фид')
+            }
         }
 
-        const newEntries = candidates.map((r, i) => ({
-            ...r,
-            text_uk: translatedUk ? translatedUk[i] : null,
-            text_ru: translatedRu ? translatedRu[i] : null,
-            text_en: translatedEn ? translatedEn[i] : null,
-            relative_time_uk: translatePolishTime(r.relative_time_description, 'uk'),
-            relative_time_ru: translatePolishTime(r.relative_time_description, 'ru'),
-            relative_time_en: translatePolishTime(r.relative_time_description, 'en'),
-        }))
+        const newEntries = candidates.map((r) => {
+            const existing = existingByKey.get(reviewKey(r))
+            const i = textChanges.indexOf(r)
+            return {
+                ...existing, ...r,
+                text_uk: i < 0 ? existing?.text_uk ?? null : translatedUk ? translatedUk[i] : null,
+                text_ru: i < 0 ? existing?.text_ru ?? null : translatedRu ? translatedRu[i] : null,
+                text_en: i < 0 ? existing?.text_en ?? null : translatedEn ? translatedEn[i] : null,
+                relative_time_uk: translatePolishTime(r.relative_time_description, 'uk'),
+                relative_time_ru: translatePolishTime(r.relative_time_description, 'ru'),
+                relative_time_en: translatePolishTime(r.relative_time_description, 'en'),
+            }
+        })
 
         // FIFO: новые уходят в конец, старые вытесняются с начала при превышении лимита
-        let updatedFeed = [...feed, ...newEntries]
+        const changesByKey = new Map(newEntries.map((review) => [reviewKey(review), review]))
+        let updatedFeed = [
+            ...feed.map((review) => changesByKey.get(reviewKey(review)) ?? review),
+            ...newEntries.filter((review) => !existingByKey.has(reviewKey(review))),
+        ]
         if (updatedFeed.length > MAX_REVIEWS) {
             updatedFeed = updatedFeed.slice(updatedFeed.length - MAX_REVIEWS)
         }
 
         const result = {
             reviews: updatedFeed,
-            updatedAt: new Date().toISOString(),
         }
 
-        fs.writeFileSync(FEED_PATH, JSON.stringify(result, null, 2))
+        if (!writeSnapshotIfChanged(FEED_PATH, result)) return
 
-        console.log(`✅ reviews-feed.json обновлён: +${newEntries.length} новых`)
+        console.log(`✅ reviews-feed.json обновлён: ${newEntries.length} новых/изменённых`)
         console.log(`📊 В фиде сейчас: ${updatedFeed.length}/${MAX_REVIEWS}`)
         console.log(`🇺🇦 С UK переводом: ${updatedFeed.filter((r) => r.text_uk).length}/${updatedFeed.length}`)
         console.log(`🇷🇺 С RU переводом: ${updatedFeed.filter((r) => r.text_ru).length}/${updatedFeed.length}`)
     } catch (err) {
         console.error('❌ Ошибка:', err)
+        process.exitCode = 1
     }
 }
 

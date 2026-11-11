@@ -5,6 +5,10 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
+concurrency:
+  group: google-reviews-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -32,5 +36,9 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add data/reviews.json
-          git commit -m "Auto update rating" || echo "No changes"
+          if git diff --cached --quiet -- data/reviews.json; then
+            echo "Rating unchanged; no commit or deployment needed"
+            exit 0
+          fi
+          git commit -m "Автообновление рейтинга Google"
           git push

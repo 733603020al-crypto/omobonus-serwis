@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import fs from 'fs'
+import { writeSnapshotIfChanged } from './reviews-snapshot.js'
 
 dotenv.config({ path: '.env.local' })
 
@@ -20,25 +20,35 @@ async function fetchRating() {
     try {
         const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=rating,user_ratings_total&key=${API_KEY}`
         const res = await fetch(url)
+        if (!res.ok) throw new Error(`Google HTTP ${res.status}`)
         const data = await res.json()
 
         if (data.status !== 'OK') {
             console.error('❌ Google API error:', data.status)
+            process.exitCode = 1
             return
         }
 
         const result = {
-            rating: data.result?.rating ?? null,
-            total: data.result?.user_ratings_total ?? null,
-            updatedAt: new Date().toISOString(),
+            rating: data.result?.rating,
+            total: data.result?.user_ratings_total,
         }
 
-        fs.writeFileSync('./data/reviews.json', JSON.stringify(result, null, 2))
+        if (!Number.isFinite(result.rating) || result.rating < 1 || result.rating > 5 ||
+            !Number.isInteger(result.total) || result.total < 0) {
+            throw new Error('Некорректный рейтинг или количество отзывов')
+        }
+
+        if (!writeSnapshotIfChanged('./data/reviews.json', result)) {
+            console.log('ℹ️ Рейтинг и количество не изменились; файл и дата сохранены')
+            return
+        }
 
         console.log('✅ reviews.json (rating) обновлён')
         console.log(`📊 Rating: ${result.rating}, Total: ${result.total}`)
     } catch (err) {
         console.error('❌ Ошибка:', err)
+        process.exitCode = 1
     }
 }
 

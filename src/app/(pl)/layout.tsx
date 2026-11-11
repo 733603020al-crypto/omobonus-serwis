@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import Script from 'next/script'
 import { ConsentManager } from '@/components/ConsentManager'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { cormorant, inter } from '@/lib/fonts'
 import '../globals.css'
+import '../fonts/fonts.css'
 import { MobileActionBar } from '@/components/ui/FloatingButtonsLazy'
 import { DeferredGtm } from '@/components/DeferredGtm'
 import { DeferredCookieYes } from '@/components/DeferredCookieYes'
@@ -14,21 +15,6 @@ import { GoldAnimationPause } from '@/components/GoldAnimationPause'
    Fonts
    ========================= */
 
-const cormorant = Cormorant_Garamond({
-  weight: ['400', '500', '600', '700'],
-  // latin-ext: polskie znaki (ą ę ł ś ż) w nagłówkach — od razu w preload
-  subsets: ['latin', 'latin-ext'],
-  display: 'swap',
-  variable: '--font-cormorant',
-})
-
-const inter = Inter({
-  weight: ['400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-  preload: false,
-  variable: '--font-inter',
-})
 
 /* =========================
    Metadata
