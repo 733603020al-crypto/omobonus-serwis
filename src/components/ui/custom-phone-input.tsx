@@ -224,7 +224,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
               }
               setIsDropdownOpen(!isDropdownOpen)
             }}
-            aria-label={`Wybierz kraj, aktualnie wybrano: ${selectedLabel}`}
+            aria-label={`${displayName || selectedLabel} ${selectedCountry.dialCode || '+'}. Wybierz kraj`}
             aria-expanded={isDropdownOpen}
             aria-haspopup="listbox"
             className={dark
