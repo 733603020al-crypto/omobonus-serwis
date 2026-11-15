@@ -44,7 +44,7 @@ export async function afterPageLoad(signal: AbortSignal): Promise<void> {
   }
   await document.fonts.ready
   checkCancelled(signal)
-  // Protect the page's first paint/initial interactions, then use browser idle time.
-  await pause(1000, signal)
+  // The page has loaded: the paper flight runs on the compositor and every heavy step yields to idle time,
+  // so preparation starts at once instead of after a fixed pause (the ball would wait for it after landing).
   await idleTask(signal)
 }

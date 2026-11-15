@@ -548,8 +548,10 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
         const rect = element.getBoundingClientRect()
         const margin = Math.round(Math.max(rect.width, rect.height) * .35)
         const dpr = Math.min(devicePixelRatio || 1, 1.5, 2048 / (Math.max(rect.width, rect.height) + 2 * margin))
-        const texture = await snapshotDocument(element, dpr, signal)
-        checkCancelled(signal)
+        // The print is rasterised in the background while the geometry below is prepared: the fold
+        // measurement needs no texture, so the two no longer queue one after the other.
+        const texturePromise = snapshotDocument(element, dpr, signal)
+        texturePromise.catch(() => {})
         await idleTask(signal)
         const data = await loadCrumpleData()
         checkCancelled(signal)
@@ -570,7 +572,6 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
         heldCanvas = canvas
         canvas.addEventListener('webglcontextlost', onLost)
         await idleTask(signal)
-        scene.setImage(state.key, texture, false)
         canvas.style.width = `${rect.width + 2 * margin}px`
         canvas.style.height = `${rect.height + 2 * margin}px`
         canvasFrameRef.current!.style.width = canvas.style.width
@@ -583,7 +584,9 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
         // engine's neutral texture; do not compute its invisible procedural map.
         const { measureEnvelope } = await import('@/lib/crumpled-paper/presentation')
         envelope = await measureEnvelope(scene, options, state, signal)
+        const texture = await texturePromise
         checkCancelled(signal)
+        scene.setImage(state.key, texture, false)
         draw()
         clearTimeout(failTimer); ready = true
         if (root.current) root.current.dataset.paperReadyAt = String(performance.now())
