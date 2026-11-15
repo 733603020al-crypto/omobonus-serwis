@@ -4679,3 +4679,14 @@ html:not([data-anim-ready]) .parts-ticker-track { animation-play-state: paused !
 .koszt-hint-dot:nth-of-type(2) { animation-delay: 0.6s }
 .koszt-hint-dot:nth-of-type(3) { animation-delay: 1.2s }
 @media (prefers-reduced-motion: reduce) { .koszt-hint-dot { animation: none } }
+
+/* Radix/react-remove-scroll sets this on <body> when a drawer or dialog opens. As an inherited
+   property it re-styled every element of the page (50–100 ms on a phone); the project does not
+   read it anywhere, so it is registered as non-inherited. */
+@property --removed-body-scroll-bar-size { syntax: "*"; inherits: false; }
+
+/* The mobile menu (Radix modal) sets pointer-events:none on <body>, which is inherited and
+   re-styled the whole page on open (~120 ms on a phone). Page blocks set it explicitly, so the
+   change stops at <body>; the menu overlay covers the screen, so clicks behind it are blocked
+   as before. Portals (country list, menu) are left out on purpose. */
+:where(body > :is(header, main, footer)) { pointer-events: auto; }

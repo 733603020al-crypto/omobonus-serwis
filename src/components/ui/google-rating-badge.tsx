@@ -42,7 +42,7 @@ export function GoogleRatingBadge({
       href="https://g.page/omobonus-serwis/review"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={ariaLabel}
+      aria-label={`${ratingLabel}${rating.toFixed(1)}★★★★★${trustLabel}. ${ariaLabel}`}
       className={shell}
     >
       <svg

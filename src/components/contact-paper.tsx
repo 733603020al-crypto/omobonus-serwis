@@ -74,11 +74,11 @@ export const ContactPaper = forwardRef<ContactPaperHandle, {
     const softwareGl = (() => {
       try {
         const gl = document.createElement('canvas').getContext('webgl')
-        if (!gl) return false
+        if (!gl) return true // WebGL unavailable (e.g. --disable-gpu): same as no GPU
         const info = gl.getExtension('WEBGL_debug_renderer_info')
         const name = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : ''
         gl.getExtension('WEBGL_lose_context')?.loseContext()
-        return /swiftshader|llvmpipe|software/i.test(name)
+        return /swiftshader|llvmpipe|software|basic render|warp/i.test(name)
       } catch { return false }
     })()
     let pageReady = false, landed = false, arriving = false, unavailable = motion.matches || softwareGl
