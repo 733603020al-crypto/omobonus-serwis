@@ -633,7 +633,7 @@ export const migratedPrice: Record<string, FieldMigration> = {
   "serwis-laptopow::naprawy.naprawy-plyta-glowna.3": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["100"] },
   "serwis-laptopow::naprawy.naprawy-plyta-glowna.4": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["300"] },
   "serwis-laptopow::naprawy.naprawy-bateria.0": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["100"] },
-  "serwis-laptopow::naprawy.naprawy-bateria.1": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["120"] },
+  "serwis-laptopow::naprawy.naprawy-bateria.1": { wrapperKey: "p_n_zl_nl_h_czesci", numbers: ["150"] },
   "serwis-laptopow::naprawy.naprawy-zasilanie-ladowanie.0": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["200"] },
   "serwis-laptopow::naprawy.naprawy-zasilanie-ladowanie.1": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["300"] },
   "serwis-laptopow::naprawy.naprawy-zasilanie-ladowanie.2": { wrapperKey: "p_n_zl_czesci_v2", numbers: ["250"] },

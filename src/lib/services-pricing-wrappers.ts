@@ -13,6 +13,7 @@ export const PRICE_WRAPPERS: Record<string, WrapperTemplate> = {
   "p_do_ustalenia": { pl: "do ustalenia", ru: "Индивидуально", uk: "за домовленістю", en: "to be agreed" },
   "p_n": { pl: "{0}", ru: "{0}", uk: "{0}", en: "{0}" },
   "p_n_zl_czesci_v2": { pl: "{0} zł + części", ru: "{0} zł + детали", uk: "{0} zł + деталі", en: "{0} zł + parts" },
+  "p_n_zl_nl_h_czesci": { pl: "{0} zł\n/h + części", ru: "{0} zł\n/ч + детали", uk: "{0} zł\n/год. + деталі", en: "{0} zł\n/h + parts" },
   "p_n_zl_czesc_zl": { pl: "{0} zł + część", ru: "{0} zł + деталь", uk: "{0} zł + деталь", en: "{0} zł + part" },
   "p_n_n_zl_v2": { pl: "{0}-{1} zł", ru: "{0}-{1} zł", uk: "{0}-{1} zł", en: "{0}-{1} zł" },
   "p_n_n_zl_czesc_zl": { pl: "{0}-{1} zł + część", ru: "{0}-{1} zł + деталь", uk: "{0}-{1} zł + деталь", en: "{0}-{1} zł + part" },
