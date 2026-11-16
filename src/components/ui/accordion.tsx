@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { flushSync } from "react-dom"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDownIcon } from "lucide-react"
 
+import { afterNextPaint } from "@/lib/after-next-paint"
 import { cn } from "@/lib/utils"
 
 // Otwarte wartości korzenia i wartość bieżącej pozycji — potrzebne AccordionContent
@@ -12,9 +14,10 @@ const AccordionOpenContext = React.createContext<string[] | null>(null)
 const AccordionItemValueContext = React.createContext<string | null>(null)
 // Ścieżka wartości pozycji (sekcja/podkategoria) i pamięć serwerowego HTML zamkniętej
 // treści — gdy układ przełącza się po hydratacji (np. mobile), treść montuje się
-// ponownie z tego samego HTML zamiast pełnego renderu Reacta.
+// ponownie z tego samego HTML zamiast pełnego renderu Reacta. Pamiętany jest sam
+// element: HTML czytamy dopiero przy ponownym montowaniu, a nie przy hydratacji.
 const AccordionPathContext = React.createContext("")
-const AccordionHtmlCacheContext = React.createContext<Map<string, string> | null>(null)
+const AccordionHtmlCacheContext = React.createContext<Map<string, HTMLDivElement> | null>(null)
 const subscribeNoop = () => () => {}
 
 function Accordion({
@@ -26,19 +29,45 @@ function Accordion({
     onValueChange?: (v: string | string[]) => void
   }
   const parentCache = React.useContext(AccordionHtmlCacheContext)
-  const [ownCache] = React.useState(() => new Map<string, string>())
+  const [ownCache] = React.useState(() => new Map<string, HTMLDivElement>())
   const [innerValue, setInnerValue] = React.useState(defaultValue)
   const current = value !== undefined ? value : innerValue
   const openValues = React.useMemo(
     () => (Array.isArray(current) ? current : current ? [current] : []),
     [current]
   )
+  // Najnowszy handler i znacznik zamontowania — dla zmiany odłożonej o klatkę.
+  const onValueChangeRef = React.useRef(onValueChange)
+  const mountedRef = React.useRef(true)
+  React.useLayoutEffect(() => {
+    onValueChangeRef.current = onValueChange
+  })
+  React.useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
+  const controlled = value !== undefined
   const handleValueChange = React.useCallback(
     (v: string | string[]) => {
-      setInnerValue(v)
-      onValueChange?.(v)
+      const apply = () => {
+        setInnerValue(v)
+        onValueChangeRef.current?.(v)
+      }
+      if (!controlled) {
+        apply()
+        return
+      }
+      // Sterowany akordeon: kosztowny render (cennik) startuje tuż po narysowaniu
+      // klatki dla samego dotknięcia, więc przeglądarka od razu odpowiada na tap
+      // (INP). flushSync zachowuje dotychczasową kolejność — render, efekty
+      // i przewijanie w jednym kroku, jak przy zwykłym kliknięciu.
+      afterNextPaint(() => {
+        if (mountedRef.current) flushSync(apply)
+      })
     },
-    [onValueChange]
+    [controlled]
   )
   return (
     <AccordionHtmlCacheContext.Provider value={parentCache ?? ownCache}>
@@ -119,14 +148,14 @@ function AccordionContent({
       (mountedAfterHydration && !cache?.has(path))
   )
   const [staticHtml] = React.useState(() =>
-    mountedAfterHydration ? cache?.get(path) ?? "" : ""
+    mountedAfterHydration ? cache?.get(path)?.innerHTML ?? "" : ""
   )
   // Stała referencja: React 19 przy nowym obiekcie ponownie ustawia innerHTML.
   const staticHtmlProp = React.useMemo(() => ({ __html: staticHtml }), [staticHtml])
   if (isOpen && !live) setLive(true)
   const rememberServerHtml = React.useCallback(
     (el: HTMLDivElement | null) => {
-      if (el && cache && el.innerHTML) cache.set(path, el.innerHTML)
+      if (el && cache && el.firstChild) cache.set(path, el)
     },
     [cache, path]
   )

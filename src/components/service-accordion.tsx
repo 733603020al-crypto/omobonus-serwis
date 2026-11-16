@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect, startTransition } from 'react'
 import { createPortal } from 'react-dom'
 import dynamic from 'next/dynamic'
 import { cn } from '@/lib/utils'
@@ -221,7 +221,7 @@ const stripTrailingPeriod = (value: string) => {
   return result
 }
 
-const parseServiceText = (text: string) => {
+const parseServiceTextUncached = (text: string) => {
   if (!text) {
     return {
       main: '',
@@ -263,6 +263,19 @@ const parseServiceText = (text: string) => {
     main: text.trim(),
     parentheses: null,
   }
+}
+
+// Wynik zależy tylko od tekstu, a cały komponent renderuje się przy każdej zmianie
+// stanu (hasNameTwin parsuje dodatkowo całą listę dla każdego wiersza) — pamięć
+// podręczna usuwa powtórne parsowanie. Zwracanego obiektu nie wolno modyfikować.
+const parsedServiceTextCache = new Map<string, ReturnType<typeof parseServiceTextUncached>>()
+const parseServiceText = (text: string) => {
+  let parsed = parsedServiceTextCache.get(text)
+  if (!parsed) {
+    parsed = parseServiceTextUncached(text)
+    parsedServiceTextCache.set(text, parsed)
+  }
+  return parsed
 }
 
 // Separator linii (U+2028) w nazwie pakietu = nowa linia tym samym rozmiarem czcionki;
@@ -1361,6 +1374,40 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
     if (!id || (document.activeElement && document.activeElement !== document.body)) return
     sectionRefs.current[id]?.querySelector<HTMLElement>('[data-slot="accordion-trigger"]')?.focus({ preventScroll: true })
   }, [isMobile])
+  // Переключение вида меняет обёртку заголовка у части разделов (Naprawy) —
+  // запоминаем раздел с фокусом, чтобы вернуть фокус на его кнопку.
+  const rememberFocusedSection = () => {
+    const active = document.activeElement
+    refocusSectionRef.current = Object.keys(sectionRefs.current).find(id => active && sectionRefs.current[id]?.contains(active)) ?? null
+  }
+  // Телефон: вид переключается заранее — в простое после загрузки и как переход
+  // (рендер кусками, поток не блокируется), поэтому первое открытие раздела не
+  // платит за полную перерисовку прайса. Пока разделы закрыты, на экране ничего
+  // не меняется; раздел открыли раньше — переключит handleSectionChange.
+  useEffect(() => {
+    if (window.innerWidth >= 768) return
+    let timer = 0
+    let idle = 0
+    const switchLayout = () => {
+      idle = 0
+      if (window.innerWidth >= 768) return
+      rememberFocusedSection()
+      startTransition(() => setIsMobile(true))
+    }
+    const schedule = () => {
+      timer = window.setTimeout(() => {
+        if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(switchLayout, { timeout: 3000 })
+        else switchLayout()
+      }, 2000)
+    }
+    if (document.readyState === 'complete') schedule()
+    else window.addEventListener('load', schedule, { once: true })
+    return () => {
+      window.removeEventListener('load', schedule)
+      window.clearTimeout(timer)
+      if (idle) window.cancelIdleCallback(idle)
+    }
+  }, [])
 
   // Закрытие маленьких tooltip при клике вне их области на мобильных
   useEffect(() => {
@@ -1417,10 +1464,7 @@ const ServiceAccordion = ({ service, locale = 'pl', t, pricing, titlePrefix, def
   const handleSectionChange = (value: string | null) => {
     const nowMobile = window.innerWidth < 768
     if (nowMobile !== isMobile) {
-      // Переключение вида меняет обёртку заголовка у части разделов (Naprawy) —
-      // запоминаем раздел с фокусом, чтобы вернуть фокус на его кнопку.
-      const active = document.activeElement
-      refocusSectionRef.current = Object.keys(sectionRefs.current).find(id => active && sectionRefs.current[id]?.contains(active)) ?? null
+      rememberFocusedSection()
       setIsMobile(nowMobile)
     }
     if (value === 'faq' && openSection !== 'faq' && faqItemRef.current) {
