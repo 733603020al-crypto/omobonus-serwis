@@ -1,12 +1,14 @@
 'use client'
 
 import { useId, useRef, useState, type RefObject } from 'react'
+import { flushSync } from 'react-dom'
 import Link from 'next/link'
 import { Menu, ChevronDown } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { CallButton } from '@/components/ui/CallButton'
 import type { ServiceGroup } from '@/components/HeaderInteractive'
 import { MenuItemIcon } from '@/components/menu-item-icon'
+import { afterNextPaint } from '@/lib/after-next-paint'
 
 interface MobileMenuSheetProps {
     isOpen: boolean
@@ -49,9 +51,19 @@ export function MobileMenuSheet({
         <Sheet
             open={isOpen}
             onOpenChange={(open) => {
+                if (!open) {
+                    setIsOpen(false)
+                    return
+                }
+                // Opening renders the whole drawer: it starts right after the frame for
+                // the tap itself is painted, so the tap is answered at once (INP).
                 // Every opening starts with the services list collapsed.
-                if (open) setServicesOpen(false)
-                setIsOpen(open)
+                afterNextPaint(() =>
+                    flushSync(() => {
+                        setServicesOpen(false)
+                        setIsOpen(true)
+                    })
+                )
             }}
         >
             <SheetTrigger asChild className="z-10 min-[920px]:hidden">

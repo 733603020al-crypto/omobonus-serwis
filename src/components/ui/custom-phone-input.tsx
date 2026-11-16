@@ -235,7 +235,7 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
           >
             <Image
               src={selectedCountry.flagImage}
-              alt={selectedLabel}
+              alt=""
               width={20}
               height={15}
               className="object-contain flex-shrink-0 pointer-events-none"
@@ -244,6 +244,8 @@ export function CustomPhoneInput({ value, onChange, onCountryChange, className =
             <span className={`${dark ? 'text-white text-sm' : 'text-black text-base'} font-sans font-medium leading-tight whitespace-nowrap pointer-events-none min-w-0`}>
               {displayName || selectedLabel}
             </span>
+            {/* Spacja tylko dla czytników: nazwa i numer kierunkowy to osobne słowa (flex jej nie rysuje). */}
+            {' '}
             {selectedCountry.dialCode ? (
               <span className={`${dark ? 'text-white text-sm' : 'text-black text-base'} font-sans font-medium whitespace-nowrap flex-shrink-0 pointer-events-none ml-auto`}>
                 {selectedCountry.dialCode}
