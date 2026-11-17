@@ -153,7 +153,6 @@ export default function RuRootLayout({ children }: { children: ReactNode }) {
           `}
         </Script>
 
-        <link rel="preconnect" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
         <link rel="dns-prefetch" href="https://log.cookieyes.com" />
       </head>
