@@ -114,6 +114,7 @@ const RESPONSIVE_SMALLS: Record<string, string> = {
   '/images/laptop-carousel/laptop-carousel-v2-01.webp': '/images/laptop-carousel/laptop-carousel-v2-01-small.webp',
   '/images/atrament-carousel-v3-01.webp': '/images/atrament-carousel-v3-01-small.webp',
   '/images/laser-carousel-v3-01.webp': '/images/laser-carousel-v3-01-small.webp',
+  '/images/serwis-laptopow-hero-animated-still.webp': '/images/serwis-laptopow-hero-animated-still-small.webp',
 }
 
 const RESPONSIVE_MIDS: Record<string, string> = {
