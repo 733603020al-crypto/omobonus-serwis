@@ -23,6 +23,7 @@ description: Стандарт ответов клиентам из почты se
 2. Claude читает письмо (и всю переписку в треде) через Outlook — ящик `serwis@omobonus.com.pl`.
 
 3. Claude сам собирает все данные (см. «Источники информации»: категория устройства, размер и вес, доставка, карточка «Koszt dojazdu») и **сразу, без ожидания «ок»**, создаёт готовый ответ как **черновик** — полностью оформленный по стандарту (выборочное жирное, курсив подписи, ссылки, карточка). Никогда не отправляет сам.
+   **Перед составлением текста обязательно открыть и применить уже записанные правила и блоки** (сценарий по схеме, «Odbiór / dostawa», цены, обязательные фразы, образцы-примеры): не сочинять формулировки заново, если для этой ситуации готовый блок уже есть. Собрав письмо — сверить его с этими блоками, прежде чем сохранять черновик.
 
 - Письмо появляется **одновременно в чате и в черновиках**.
    - Claude работает на компьютере пользователя (есть Outlook) → черновик в папке Drafts ящика serwis@ — см. «На компьютере пользователя (Outlook COM, PowerShell)».
@@ -473,12 +474,15 @@ Brudzenie kartek i puste wydruki mogą wynikać z problemu w samej drukarce lub 
 Перед составлением письма спросить у сервисанта (владельца), что может быть причиной неисправности, описанной клиентом. Самому придумывать возможные причины и поломки ЗАПРЕЩЕНО. Получив ответ сервисанта, преобразовать его в красивый, ясный польский текст; оформление и формулировки при необходимости сверять с образцами в интернете (как такие причины простым языком объясняют сервисы и справочники), но не добавлять несуществующих поломок и причин. Фраза „Czasem wystarczy czyszczenie i konserwacja, a czasem trzeba dodatkowo wymienić część lub toner” пишется только после ответа сервисанта и по его содержанию, а не как шаблон.
 Условие: Клиент описал неисправность («brudzenie kartek», «puste wydruki» и т. п.), и в письме нужно назвать возможные причины.
 Варианты: Порядок: (1) задать сервисанту один короткий вопрос — что может быть причиной именно этой поломки; (2) получить ответ; (3) оформить его в красивый польский текст; (4) если ответа нет — причин не называть, написать только, что точную причину покажет диагностика. Образец, полученный от сервисанта для «brudzenie kartek i puste wydruki»: „mogą wynikać z problemu w samej drukarce lub w tonerze”.
-Примеры: Ответ сервисанта: «Причина может быть в принтере или в тонере». Письмо: „Brudzenie kartek i puste wydruki mogą wynikać z problemu w samej drukarce lub w tonerze. Dokładną przyczynę ustalimy dopiero po diagnozie. Czasem wystarczy czyszczenie i konserwacja, a czasem trzeba dodatkowo wymienić część lub toner.”
+Примеры:
+Ответ сервисанта: «Причина может быть в принтере или в тонере». Письмо: „Brudzenie kartek i puste wydruki mogą wynikać z problemu w samej drukarce lub w tonerze. Dokładną przyczynę ustalimy dopiero po diagnozie. Czasem wystarczy czyszczenie i konserwacja, a czasem trzeba dodatkowo wymienić część lub toner.”
+Неправильно (Ender-3 V3 SE, проблема с SD-картой): „Podobne objawy opisują też inni użytkownicy Ender-3 V3 SE.” Правильно: „Przy Ender-3 V3 SE takie problemy z czytnikiem kart się zdarzają: karta działa tylko po odpowiednim ułożeniu, a czasem drukarka ją «gubi» w trakcie druku. Zwykle chodzi o słaby styk w gnieździe albo o lutowanie samego czytnika. Dokładną przyczynę ustalimy dopiero po diagnozie.” Дальше в письме: сначала чинить считыватель, а не искать новую плату; цена по прайсу «Naprawa okablowania i złączy» (малая drukarka 3D: 180 zł netto + części).
 Исключения:
 - Не придумывать причины, поломки и названия деталей самому.
 - Не переносить причины из одного письма в другое: у каждой неисправности свои.
 - Спрашивать до составления письма, а не после.
 - Уже утверждённые владельцем формулировки из правил можно использовать без повторного вопроса.
+- В письме не ссылаться на интернет, форумы и «других пользователей» („opisują też inni użytkownicy”, „w internecie piszą”): так мы выглядим как те, кто искал ответ в сети. Что такие неисправности встречаются у этой модели — пишем от лица сервисанта, как мастер о своей практике, без выдуманных личных случаев („Przy tym modelu takie problemy się zdarzają”). Сведения из интернета — основа для сервисанта, не источник в письме.
 
 ### Фраза «Dokładną przyczynę ustalimy dopiero po diagnozie» — всегда
 
@@ -1100,6 +1104,68 @@ Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
 „Laptop można dostarczyć do naszego serwisu w dowolnym, dogodnym dla Państwa terminie. Pracujemy od poniedziałku do piątku w godzinach 8:00–18:00.”
 Исключения: Суммы из письма мастера (диагностика, деталь, работа) не переносить: брать только со страницы услуги, сверяя перед письмом. Условия диагностики — полностью по it-063. Не называть конкретные возможные причины, пока их нет в описании клиента.
 
+**Пример: компания просит ремонт на месте для парка принтеров, а список моделей и поломок не прислала**
+Если компания с парком устройств просит приехать и починить всё на месте, а ни моделей, ни описания поломок нет, не отказывать и не соглашаться сразу. По порядку: (1) коротко объяснить, почему ремонт на месте на практике редко получается (поломка заранее неизвестна, после одной неисправности появляется другая, нужной платы или ролика у приехавшего мастера нет); (2) сказать, что клиентам удобнее привозить устройства, это быстрее и спокойнее; (3) если клиент рядом (видно по карте) — предложить другой путь: сначала мастер приезжает и делает предварительную диагностику всех устройств и расписывает нужные запчасти, потом согласуем день или дни выезда и делаем всё на месте; (4) честно сказать, что за один приезд всего не сделать (чистка и консервация промышленного термопринтера — минимум 1–2 часа на устройство); (5) попросить прислать список: модели и проблемы каждого устройства — это экономит время и помогает выявить «плавающие» неисправности; (6) спросить рабочие дни клиента и часы работы (с какого по какой час), чтобы запланировать работу мастера; закончить фразой, что ждём решения и ответа клиента. Стандартные блоки (карточка с картой, цена, форма заявки) здесь не подходят: нет ни модели, ни описания проблемы.
+Условие: Компания (склад, логистика, офис) с несколькими устройствами одного типа просит базовый сервис на месте, говорит, что отправить устройства в сервис не может, моделей и симптомов не называет.
+Варианты: Клиент далеко (другой город) — см. it-101: выезд невыгоден, предлагаем отправку. Клиент рядом — вариант с предварительной диагностикой на месте и согласованием дней. Список моделей и проблем просить одним вопросом в конце письма. Цену не называть, пока нет списка. Расстановка текста: вопрос к клиенту (просьба прислать список и график) — с новой строки внутри того же абзаца, что и «Żeby to zaplanować…», без пустой строки между ними; фраза «Czekamy na Państwa decyzję i odpowiedź.» — отдельный абзац (пустая строка до и после), затем «Pozdrawiam serdecznie,».
+Примеры:
+„Naprawa na miejscu w praktyce rzadko wygląda tak, jak się zakłada. Serwisant przyjeżdża i nigdy nie wie z góry, jaka jest usterka. Często po usunięciu jednego problemu pojawia się kolejny, a żeby go sprawdzić, trzeba podmienić płytę albo wymienić rolkę, której serwisant akurat nie ma przy sobie. Dlatego staramy się, żeby klienci przywozili urządzenia do nas — wtedy jest to i szybsze, i bez nerwów.”
+„Widzę jednak na mapie, że są Państwo niedaleko nas, więc możemy zaproponować inne rozwiązanie. Najpierw serwisant przyjedzie i wykona wstępną diagnostykę wszystkich drukarek, rozpisze, jakie części trzeba będzie zabrać, a potem ustalimy, w który dzień lub w które dni możemy przyjechać i zrobić wszystko na miejscu. Jeśli się uda, część problemów usunie już przy pierwszej wizycie. Za jednym razem nie uda się jednak zrobić wszystkiego, bo nawet dobre czyszczenie i konserwacja przemysłowej drukarki termicznej to co najmniej 1–2 godziny pracy serwisanta.”
+„Żeby to zaplanować, potrzebujemy już teraz znać modele tych drukarek i problemy, które z nimi występują. Oszczędzi to czas nam obojgu i pozwoli od razu wychwycić usterki „pływające”.
+Czy mogliby Państwo przygotować i przesłać nam taką listę drukarek wraz z opisem problemów oraz informacją, w jakie dni robocze i w jakich godzinach (od której do której) pracują Państwo? Pozwoli nam to zaplanować także naszą pracę.”
+„Czekamy na Państwa decyzję i odpowiedź.”
+Исключения: Не обещать ремонт всего за один приезд, сроки и цену. Не предлагать выезд клиенту из другого города (it-101). Данные клиента (название фирмы, адрес, число принтеров) в базу не переносить.
+
+**Пример: комплексный сервис и консервация термопринтера, клиент дал адрес — забор с карточкой**
+Клиент спрашивает цену комплексного сервиса и консервации, срок и перечень работ; принтер надо «дожимать» (бледная печать), хочет заменить изнашиваемые части; адрес в письме есть. Порядок: благодарность → прямой ответ с ценой и сроком (жирным) → что входит в консервацию → вероятная причина слабой печати и то, что части заменяем только после согласования цены → обещание согласия жирным → диагностика и ссылка на прайс → забор: фраза, карточка «Koszt dojazdu», строка с итогом, ссылка на калькулятор, «решение за Вами» → полная подпись (первое письмо в теме).
+Условие: Первое письмо клиента по сервису термопринтера (консервация + износ частей), адрес указан, принтер лёгкий (настольный).
+Варианты: Адреса нет — вместо карточки только ссылка на калькулятор. Цены замены вальца/головки в письме не называть, пока их не сверили со страницей. Сумму и км брать из вывода karta-trasy.mjs, адрес сверить с письмом.
+Примеры:
+„Dzień dobry, Panie Aleksandrze,
+
+dziękuję za zgłoszenie i opisanie problemu z drukarką Zebra TLP 2824 Plus.
+
+Tak, wykonujemy kompleksowe czyszczenie i konserwację takich drukarek. Orientacyjny koszt to **150 zł netto**, a czas realizacji zwykle **1–3 dni robocze**.
+
+W ramach konserwacji czyścimy wnętrze drukarki i tor etykiet, głowicę, wałek dociskowy oraz czujniki. Sprawdzamy stan głowicy, wałka i napędu, smarujemy mechanizm, kalibrujemy drukarkę i na koniec robimy wydruk testowy.
+
+Jeśli drukarka drukuje blado i trzeba ją „dociskać”, najczęściej winny jest zabrudzony lub zużyty wałek albo źle ustawiony docisk głowicy. Podczas przeglądu to sprawdzimy. Jeśli okaże się, że któraś z części jest zużyta, podam Państwu jej koszt i koszt wymiany, zanim cokolwiek wymienimy. **Nie rozpoczniemy żadnej płatnej naprawy bez Państwa wyraźnej zgody.**
+
+Dokładną przyczynę ustalimy dopiero po diagnozie. Jest ona bezpłatna przy zleceniu naprawy; jeśli po diagnozie zrezygnują Państwo z naprawy, koszt diagnozy drukarki biurkowej to 100 zł netto. Ceny publikujemy na stronie: [cennik serwisu drukarek termicznych](https://serwis.omobonus.com.pl/uslugi/serwis-drukarek-termicznych).
+
+Jeśli nie mają Państwo możliwości przywiezienia drukarki do serwisu, możemy przyjechać i ją odebrać. Koszt odbioru spod Państwa adresu wyliczyliśmy poniżej według trasy Google Maps:
+
+[karta Koszt dojazdu]
+
+Odbiór: 57,40 zł netto za jeden kurs; przy tym samym adresie powrót po naprawie kosztuje tyle samo.
+
+Jeśli urządzenie mamy odebrać z innego adresu, koszt można sprawdzić tutaj: [kalkulator kosztu dojazdu](https://serwis.omobonus.com.pl/kontakt?koszt=1).
+
+Decyzja należy do Państwa — czekamy na informację, czy przywiozą Państwo drukarkę sami, czy mamy po nią przyjechać.
+
+Pozdrawiam serdecznie,” (полная подпись)
+Исключения: Не придумывать причины износа и состав частей, которых нет на странице услуги.
+
+**Пример: заявка с сайта — струйный принтер Epson EcoTank не включается, клиент хочет сам привезти**
+Клиент описал, что принтер не включается (кабель и розетка проверены), и спрашивает, можно ли привезти и когда. Порядок: благодарность (и за комплимент сайту, если он был) → прямой ответ «да, можно привезти» с адресом, часами, звонком при опоздании и ранним приёмом с 6:00 по звонку → вероятная причина со слов сервисанта (блок питания, внутренний модуль питания, электроника) и «точную причину ustalimy po diagnozie» → ориентировочная цена по прайсу страницы (категория «домашний») и ссылка на прайс → условия диагностики → обещание согласия жирным → полная подпись. Забор и карточку «Koszt dojazdu» не добавлять: клиент сам выбрал привезти; адреса (улицы) нет.
+Условие: Заявка с формы сайта (письмо от serwis@, получателя заменить на адрес клиента), первое письмо в теме, клиент везёт сам, пол известен по имени и подписи.
+Варианты: Клиент уже проверил кабели и розетку — повторно проверять не просить. Пол неясен — «Państwo» и нейтральные формулировки. Клиент хочет забор — блок «Odbiór / dostawa». Цена и срок — со страницы услуги своего типа техники (здесь струйные: «Naprawa zasilacza / układu zasilania», 150 zł + części, 2–4 dni; отказ от ремонта после диагностики — 70 zł), перед письмом сверять.
+Примеры:
+„Dzień dobry, Panie Sławomirze,
+
+dziękuję za zgłoszenie i opisanie problemu z drukarką, a także za miłe słowa o naszej stronie.
+
+Tak, drukarkę można przywieźć do naszego serwisu przy ul. Marcina Bukowskiego 174 we Wrocławiu. Zapraszamy od poniedziałku do piątku w godzinach 8:00–18:00, po wcześniejszym umówieniu. Jeśli nie zdąży Pan dojechać do 18:00, proszę zadzwonić — często zostajemy po godzinach, więc chętnie poczekamy. Pracę zaczynamy już o 6:00, więc można przyjechać także wcześnie rano — prosimy tylko o wcześniejszy telefon.
+
+Na podstawie opisu przekazanego przez Pana możemy wstępnie powiedzieć, że przyczyną może być zasilacz, wewnętrzny moduł zasilania albo elektronika drukarki. Dokładną przyczynę ustalimy dopiero po diagnozie. Jeśli problem leży po stronie zasilania, orientacyjnie usługa „Naprawy i usługi serwisowe → Elektronika, zasilanie i panel sterowania → Naprawa zasilacza / układu zasilania (drukarka nie włącza się, wyłącza lub pracuje niestabilnie)” to **150 zł netto** plus ewentualne części, a termin to 2–4 dni. Ceny publikujemy na stronie: [cennik serwisu drukarek atramentowych](https://serwis.omobonus.com.pl/uslugi/serwis-drukarek-atramentowych).
+
+Wstępna ocena jest bezpłatna, ale nie zastępuje pełnej diagnozy — dokładną przyczynę i koszt naprawy podamy dopiero po niej. Pełna diagnoza jest bezpłatna, jeśli zdecyduje się Pan na naprawę lub nie znajdziemy przyczyny usterki. Jeśli po diagnozie zrezygnuje Pan z naprawy, koszt diagnozy wynosi 70 zł netto.
+
+**Nie rozpoczniemy żadnej płatnej naprawy bez Pana wyraźnej zgody.** Jeśli po diagnozie okaże się, że koszt będzie wyższy, najpierw o tym napiszemy i to Pan zdecyduje, czy naprawiamy.
+
+Pozdrawiam serdecznie,” (полная подпись)
+Исключения: Не писать «da się naprawić» и не называть причину фактом. Не просить клиента проверять то, что он уже проверил. Сумму из примера не переносить в другие письма без сверки со страницей.
+
 ## 5а. Данные, которые Claude находит сам
 
 Не спрашивать пользователя то, что можно найти самому. Если в письме есть марка/модель и адрес:
@@ -1149,7 +1215,7 @@ Decyzja należy do Pana. W razie pytań chętnie wszystko wyjaśnię.
 Варианты: В сервис: клиент привозит сам; мы заберём (odbiór, карточка «Koszt dojazdu»); клиент отправляет курьером или через paczkomat (адреса — «Клиент высылает устройство»). К клиенту: мы привезём после ремонта (dostawa); отправка перевозчиком — по цене перевозчика. Каждое направление нашего транспорта (odbiór, dostawa) считается отдельно; при одинаковом адресе и условиях стоимость равна. Калькулятор забора (наш транспорт по Вроцлаву) и «Serwis wysyłkowy» (посылка курьером или через paczkomat) — разные способы доставки, не смешивать. Клиент уже выбрал способ — доставку повторно не предлагать.
 Примеры:
 „Przy tym samym adresie i warunkach koszt dowiezienia urządzenia po naprawie jest taki sam jak koszt odbioru.” „Dowiezienie po naprawie kosztuje tyle samo co odbiór.” „Koszt odesłania będzie taki, jak cena przewoźnika — nic do niej nie doliczamy.” „Po naprawie odeślemy urządzenie kurierem — koszt będzie taki, jak cena przewoźnika, nic do niej nie doliczamy.”
-Образцы по сценариям: клиент привозит сам (адрес, если спросили) — „Serwis znajduje się przy ul. Marcina Bukowskiego 174 we Wrocławiu — zapraszamy po wcześniejszym umówieniu.” Вышлет посылкой — „Urządzenie można wysłać kurierem lub przez paczkomat WRO138M (ul. Jastrzębia 14). Warunki i sposób pakowania opisaliśmy na stronie [Serwis wysyłkowy](https://serwis.omobonus.com.pl/serwis-wysylkowy).” (адреса — только в «Клиент высылает устройство»). Закажет забор — абзац из «Odbiór / dostawa».
+Образцы по сценариям: клиент привозит сам (адрес, если спросили) — „Serwis znajduje się przy ul. Marcina Bukowskiego 174 we Wrocławiu — zapraszamy po wcześniejszym umówieniu.” Не успевает до 18:00 — „Jeśli nie zdążą Państwo przyjechać do 18:00, proszę zadzwonić — często zostajemy po godzinach, więc chętnie poczekamy. Pracę zaczynamy już o 6:00, więc można przyjechać także wcześnie rano — prosimy tylko o wcześniejszy telefon.” (Pan/Pani — по клиенту) Вышлет посылкой — „Urządzenie można wysłać kurierem lub przez paczkomat WRO138M (ul. Jastrzębia 14). Warunki i sposób pakowania opisaliśmy na stronie [Serwis wysyłkowy](https://serwis.omobonus.com.pl/serwis-wysylkowy).” (адреса — только в «Клиент высылает устройство»). Закажет забор — абзац из «Odbiór / dostawa».
 Исключения: Клиент привозит и забирает устройство сам — про odbiór и dostawę не писать.
 
 ### Клиент высылает устройство
@@ -1212,7 +1278,7 @@ e-mail: serwis@omobonus.com.pl
 
 - Адрес сервиса: Marcina Bukowskiego 174, 52-418 Wrocław.
 - Часы — два разных назначения, не смешивать; в письме указывать только нужные по ситуации:
-  - **Godziny pracy serwisu:** pon.–pt. 8:00–18:00 — приём и выдача устройств; вс — nieczynne.
+  - **Godziny pracy serwisu:** pon.–pt. 8:00–18:00 — приём и выдача устройств; вс — nieczynne. Клиент не успевает до 18:00 — пусть позвонит: мы часто задерживаемся после работы и готовы подождать. Работу начинаем с 6:00: привезти можно и с 6:00 утра, но только после предварительного звонка.
   - **Kontakt z serwisem:** pon.–sob. 7:00–21:00 — связь с клиентами (звонок, перезвон).
 
 ## 6. Подпись (единая)
