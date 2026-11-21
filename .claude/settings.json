@@ -1,5 +1,13 @@
 {
   "permissions": {
+    "allow": [
+      "ClaudeInChromeDomain(business.google.com)",
+      "ClaudeInChromeDomain(help.github.com)",
+      "ClaudeInChromeDomain(chatgpt.com)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "ClaudeInChromeDomain(127.0.0.1:5199)",
+      "Bash(node /c/Users/Andrii/omobonus-workspace/tools/publikaciya/publish-master.mjs prepare)"
+    ],
     "deny": [],
     "ask": [
       "Bash(git push *master*)",
@@ -18,9 +26,6 @@
       "PowerShell(git merge *)",
       "PowerShell(git checkout master*)",
       "PowerShell(git switch master*)"
-    ],
-    "allow": [
-      "ClaudeInChromeDomain(business.google.com)"
     ]
   },
   "autoCompactWindow": 200000,

@@ -1,0 +1,15 @@
+import {chromium} from 'playwright';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1500,height:850}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>m.type()==='error'&&errs.push(m.text()));
+await p.goto('http://localhost:5180/autoreset');await p.waitForTimeout(7000);
+const [d,m]=p.frames().filter(f=>f.url().includes('service-maket/autoreset.html')&&!f.url().includes('?maket'));
+await p.screenshot({path:process.env.TEMP+'/ar1.png'});
+await d.click('#sNext').catch(e=>console.log('desk next',e.message.slice(0,80)));
+await m.click('#sNext');await p.waitForTimeout(400);
+console.log('desk step',await d.locator('#stl').innerText(),'| phone',await m.locator('#stl').innerText());
+await m.check('#ok');await m.fill('#code','reset');await p.waitForTimeout(300);
+await p.screenshot({path:process.env.TEMP+'/ar2.png'});
+await m.click('#sNext');await p.waitForTimeout(4500);
+console.log('end:',await d.locator('#stl').innerText(),'|',await m.locator('#stl').innerText());
+await m.click('#sNext');await p.waitForTimeout(2500);console.log('again:',await d.locator('#stl').innerText());
+console.log(errs.slice(0,5));await b.close();

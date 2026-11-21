@@ -454,7 +454,9 @@ export function Services({
       }
       const parchmentTop = top - box.top + scroller.scrollTop
       const crossX = Math.min(right - box.left + 22, window.innerWidth - 8 - 40 - box.left)
-      const next = { top: Math.round(h.top + h.height / 2 - parchmentTop), crossX: Math.round(crossX), crossY: Math.round(parchmentTop) }
+      // The sticky menu can scroll away with the page once the page is locked (overflow hidden): it is
+      // pinned at the viewport top for the user, so never measure it above 0.
+      const next = { top: Math.round(Math.max(0, h.top) + h.height / 2 - parchmentTop), crossX: Math.round(crossX), crossY: Math.round(parchmentTop) }
       setDiagnosisLayout((prev) => (prev && prev.top === next.top && prev.crossX === next.crossX && prev.crossY === next.crossY ? prev : next))
     }
     const schedule = () => {

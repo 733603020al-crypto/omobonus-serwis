@@ -141,6 +141,7 @@ export async function snapshotDocument(root: HTMLElement, scale: number, signal?
   if (!context) throw new Error('Snapshot canvas unavailable')
   context.drawImage(image, 0, 0, canvas.width, canvas.height)
   // Detect a tainted/unsupported snapshot before replacing the usable HTML form.
-  context.getImageData(0, 0, 1, 1)
+  // Chrome never taints a data-URL SVG; there the 1x1 read only forces a ~150 ms synchronous raster flush.
+  if (!navigator.userAgent.includes('Chrome/')) context.getImageData(0, 0, 1, 1)
   return canvas
 }
