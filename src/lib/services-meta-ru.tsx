@@ -176,13 +176,7 @@ export const seoBlocksRu: Record<string, { items: string[] }> = {
     ],
   },
   'serwis-ekspresow-do-kawy': {
-    items: [
-      'Обслуживаем во Вроцлаве автоматические и рожковые кофемашины для дома, офиса, кафе и ресторанов.',
-      'Ремонтируем кофемашины, которые не набирают воду, не нагревают её, протекают, не мелют кофе или не взбивают молочную пену.',
-      'Похожие симптомы могут иметь разные причины, поэтому объём ремонта определяем после диагностики устройства.',
-      'Обслуживаем кофемашины, в частности марок De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups и Melitta.',
-      'Стоимость ремонта представляем на согласование до начала работ.',
-    ],
+    items: [],
   },
   'naprawa-drukarek': {
     items: [
@@ -416,7 +410,7 @@ export const labelsRu: ServicePageLabels = {
     'serwis-drukarek-3d': 'Есть проблема с 3D-принтером?',
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'naprawa-zasilaczy-ups': 'Есть проблема с UPS?',
-    'naprawa-projektorow': 'Есть проблема с проектором?',
+    'naprawa-projektorow': 'Есть проблема с проектором?',
     'serwis-drukarek-do-kart-plastikowych': 'Есть проблема с принтером карт?',
     'serwis-drukarek-dtg': 'Есть проблема с DTG-принтером?',
     'serwis-drukarek-dtf': 'Есть проблема с DTF-принтером?',
@@ -448,7 +442,7 @@ export const labelsRu: ServicePageLabels = {
     'serwis-plotterow': 'Есть проблема с плоттером?',
     'serwis-niszczarek': 'Есть проблема со шредером?',
     'naprawa-zasilaczy-ups': 'Есть проблема с ИБП (UPS)?',
-    'naprawa-projektorow': 'Есть проблема с проектором?',
+    'naprawa-projektorow': 'Есть проблема с проектором?',
   },
   ctaTextMobile: 'Напишите или позвоните — найдём решение!',
   ctaButton: 'Быстрый контакт',

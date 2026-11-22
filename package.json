@@ -12,6 +12,8 @@
     "start": "next start",
     "lint": "eslint",
     "export-services": "tsx export-services.ts",
+    "check:e2e": "node tests/e2e/critical.mjs",
+    "check:publish": "node scripts/pre-publish-check.mjs",
     "check:i18n-sync": "tsx -r tsconfig-paths/register scripts/check-i18n-sync.ts",
     "optimize-images": "node scripts/optimize-images.mjs",
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force .turbo -ErrorAction SilentlyContinue; Write-Host Кеш очищен\"",

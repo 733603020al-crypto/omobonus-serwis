@@ -900,7 +900,7 @@ export function ServicePageTemplate({
                     {/* Switch "we Wrocławiu | cała Polska" replaces the last heading line; the brand list stays above it. */}
                     {hasScopeSwitch && (
                       <div className="mt-2 w-full flex justify-center">
-                        <HeroScopeSwitch {...SCOPE_LABELS[locale]} href={shippingHref} position={0} />
+                        <HeroScopeSwitch {...SCOPE_LABELS[locale]} href={shippingHref} position={0} autoplayMs={6000} />
                       </div>
                     )}
                     {/* Przycisk serwisu wysyłkowego pod H1 (rental / replacement printer). */}

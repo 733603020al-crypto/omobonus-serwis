@@ -175,13 +175,7 @@ export const seoBlocksEn: Record<string, { items: string[] }> = {
     ],
   },
   'serwis-ekspresow-do-kawy': {
-    items: [
-      'In Wrocław we service automatic and portafilter coffee machines for homes, offices and food service venues.',
-      "We repair coffee machines that don't draw water, don't heat it, leak, don't grind coffee or don't froth milk.",
-      'Similar symptoms can have different causes, so we determine the scope of the repair after diagnosing the machine.',
-      'We service coffee machines from brands including De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups and Melitta.',
-      'We present the repair cost for your approval before starting work.',
-    ],
+    items: [],
   },
   'naprawa-drukarek': {
     items: [
