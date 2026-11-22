@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { LegalPageTemplate } from '@/components/legal-page-template'
 import type { LegalPageContent } from '@/lib/legal/legal-render'
+import { AutoResetStart } from './autoreset-start'
 
 // Strona testowa: poza menu, poza mapą strony, zablokowana dla wyszukiwarek.
 export const metadata: Metadata = {
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-static'
 
-const ZIP_URL = '/autoreset/AutoReset-Diagnostyka-test.zip'
 const p = 'text-sm md:text-base font-sans leading-normal'
 const list = 'list-decimal list-inside space-y-1 text-sm md:text-base font-sans leading-normal ml-4'
 const bullets = 'list-disc list-inside space-y-0.5 text-sm md:text-base font-sans leading-normal ml-4'
@@ -31,7 +31,7 @@ const content: LegalPageContent = {
             Wersja testowa
           </p>
           <p className={p}>
-            Program pokazuje, jak będzie wyglądać diagnostyka drukarki Epson. W tej wersji dane pochodzą z <strong>symulatora</strong> (model E-300) — prawdziwa drukarka nie jest wykrywana ani odczytywana.
+            Program sprawdza drukarkę Epson: model, błędy i liczniki. Na początku wybierasz źródło danych: <strong>symulator</strong> (dane przykładowe, wyraźnie oznaczone jako symulator) albo <strong>prawdziwą drukarkę</strong> podłączoną kablem USB.
           </p>
           <p className={p}>
             Program tylko odczytuje dane. Nie ma w nim funkcji zapisu, resetu ani płatności, nie zmienia niczego w drukarce i nic nie wysyła do internetu.
@@ -40,46 +40,40 @@ const content: LegalPageContent = {
       ),
     },
     {
-      heading: 'Pobierz',
+      heading: 'Uruchom',
       body: (
         <div className="space-y-1.5">
-          <a
-            href={ZIP_URL}
-            download
-            className="inline-block rounded-sm bg-[#3a2e24] px-5 py-2 font-sans text-sm md:text-base font-semibold text-[#f5ecd7] hover:bg-[#3a2e24]/85"
-          >
-            Pobierz AutoReset (Windows, ZIP, ok. 32 MB)
-          </a>
-          <p className={p}>Wymagany Windows 10 lub 11. Instalowanie Node.js ani innych programów nie jest potrzebne.</p>
+          <AutoResetStart />
+          <p className={p}>Wymagany Windows 10 lub 11. To jeden plik — nie trzeba instalować Node.js ani rozpakowywać archiwum.</p>
         </div>
       ),
     },
     {
-      heading: 'Jak uruchomić',
+      heading: 'Jak to działa',
       body: (
         <ol className={list}>
-          <li>Pobierz plik ZIP i rozpakuj go w całości do zwykłego folderu (np. na Pulpit lub do Dokumentów). Nie uruchamiaj programu z wnętrza archiwum.</li>
-          <li>Kliknij dwukrotnie plik <strong>Diagnostyka.cmd</strong>.</li>
-          <li>Wynik pojawi się w oknie, a raport zapisze się w folderze <strong>raporty</strong> obok programu (plik .json).</li>
+          <li>Pierwszy raz: kliknij „Rozpocznij diagnostykę”, pobierz plik <strong>AutoReset.exe</strong> i otwórz go.</li>
+          <li>Pojawi się okno diagnostyki. Wybierz 1 (symulator) lub 2 (prawdziwa drukarka — wymaga potwierdzenia słowem TAK).</li>
+          <li>Raport zapisze się w Dokumentach, w folderze <strong>AutoReset-raporty</strong>.</li>
+          <li>Kolejne wizyty: ten sam przycisk uruchamia już zainstalowany program, bez pobierania.</li>
         </ol>
       ),
     },
     {
-      heading: 'Windows pokazuje ostrzeżenie',
+      heading: 'Informacja o wydawcy',
       body: (
-        <div className="space-y-1.5">
-          <p className={p}>Program nie jest jeszcze podpisany cyfrowo, dlatego Windows może napisać „Zabezpieczył komputer”. Kliknij „Więcej informacji”, a potem „Uruchom mimo to”.</p>
-          <p className={p}>Jeśli pliki są zablokowane po pobraniu: kliknij prawym przyciskiem plik ZIP, wybierz „Właściwości”, zaznacz „Odblokuj”, a następnie rozpakuj ponownie.</p>
-        </div>
+        <p className={p}>
+          To wersja testowa i nie ma jeszcze cyfrowego podpisu wydawcy, dlatego Windows może pokazać dodatkową informację o nieznanym wydawcy. Uruchamiaj program tylko wtedy, gdy ufasz źródłu. Program usuniesz poleceniem <strong>AutoReset.exe --usun</strong>; zapisuje tylko w swoim folderze użytkownika i nie wymaga uprawnień administratora.
+        </p>
       ),
     },
     {
       heading: 'Czego ta wersja nie robi',
       body: (
         <ul className={bullets}>
-          <li>nie łączy się z prawdziwą drukarką,</li>
           <li>nie zapisuje do drukarki i nie resetuje liczników,</li>
-          <li>nie przyjmuje płatności i nie wysyła danych.</li>
+          <li>nie przyjmuje płatności i nie wysyła danych,</li>
+          <li>nie łączy się z drukarką bez Twojego wyboru i potwierdzenia.</li>
         </ul>
       ),
     },

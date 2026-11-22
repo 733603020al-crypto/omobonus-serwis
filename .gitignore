@@ -62,3 +62,4 @@ _backups/
 
 # AutoReset: тестовый ZIP не хранится в репозитории (собирается в omobonus-autoreset)
 /public/autoreset/*.zip
+/public/autoreset/*.exe

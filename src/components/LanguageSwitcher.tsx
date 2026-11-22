@@ -46,8 +46,12 @@ function getBasePath(pathname: string, currentLocale: LocaleOption): string {
   return rest || '/'
 }
 
+// Страницы, которые есть только на польском: у других языков такого адреса нет, переключатель ведёт на их главную.
+const PL_ONLY_PATHS = ['/autoreset']
+
 function buildLocaleHref(basePath: string, targetLocale: LocaleOption): string {
   if (!targetLocale.prefix) return basePath
+  if (PL_ONLY_PATHS.some(p => basePath === p || basePath.startsWith(p + '/'))) return targetLocale.prefix
   return basePath === '/' ? targetLocale.prefix : targetLocale.prefix + basePath
 }
 
