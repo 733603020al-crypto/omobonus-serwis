@@ -22,6 +22,7 @@ import { REPAIR_ACCORDION_LAYOUT_SLUGS } from '@/lib/services-data'
 import { getServiceDisplayPricing } from '@/lib/services-pricing'
 import { serviceAccordionI18n } from '@/lib/i18n/service-accordion'
 import GoogleReviews from '@/components/google-reviews'
+import { CoffeePourSection } from '@/components/ui/coffee-pour-section'
 import { Services } from '@/components/sections/services'
 import { PRINTER_HUB_CATEGORIES } from '@/config/service-categories'
 import { uk } from '@/lib/i18n/uk'
@@ -985,6 +986,8 @@ export function ServicePageTemplate({
             <SeoBlocksGrid items={seoBlocks?.items ?? []} variant="accordion" slug={slug} plainText={seoBlocksPlainText} />
           </section>
         )}
+
+        {slug === 'serwis-ekspresow-do-kawy' && <CoffeePourSection locale={locale} />}
 
         <div className="relative z-10 -mt-6 md:-mt-10 -mb-[50px] overflow-visible">
           <GoogleReviews locale={locale} />
