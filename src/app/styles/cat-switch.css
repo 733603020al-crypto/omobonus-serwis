@@ -74,3 +74,19 @@
 .cat-switch.gold-shiny::after,
 .cat-switch.gold-shiny > .gold-text-sweep::before,
 .cat-switch.gold-shiny > .gold-text-sweep::after { display: none; }
+
+/* Same capsule at every width (coffee menu on the espresso-machine page): a single row of equal cells on phones too. */
+.cat-switch-inline.cat-switch.gold-border-flow {
+  gap: 0;
+  padding: 4px;
+  box-sizing: border-box;
+  border: 1.5px solid rgba(191, 167, 106, 0.85);
+  border-radius: 9999px;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: 0 5px 20px rgba(191, 167, 106, 0.32), inset 0 -6px 14px rgba(191, 167, 106, 0.12);
+}
+@media (max-width: 767.98px) {
+  .cat-switch-inline .cat-switch-base { display: block; }
+  .cat-switch-inline.cat-switch::before { display: block; }
+}
