@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { scrollToContactBlock } from '@/lib/scroll-to-contact'
 
@@ -16,6 +17,7 @@ export function HeroScopeSwitch({
   right,
   href,
   position,
+  autoplayMs,
   onLeft,
   onRight,
 }: {
@@ -23,13 +25,22 @@ export function HeroScopeSwitch({
   right: string
   href: string
   position: 0 | 1
+  /** Service pages: no carousel drives the switch, so it slides on its own every autoplayMs. */
+  autoplayMs?: number
   onLeft?: () => void
   onRight?: () => void
 }) {
+  const [auto, setAuto] = useState<0 | 1>(position)
+  useEffect(() => {
+    if (!autoplayMs) return
+    const id = window.setInterval(() => { if (!document.hidden) setAuto((p) => (p === 0 ? 1 : 0)) }, autoplayMs)
+    return () => window.clearInterval(id)
+  }, [autoplayMs])
+  const pos = autoplayMs ? auto : position
   const prefix = ['uk', 'ru', 'en'].find((l) => href.startsWith('/' + l + '/'))
   const contactHref = (prefix ? '/' + prefix : '') + '/kontakt'
   return (
-    <div role="group" aria-label={`${left} / ${right}`} className="scope-switch gold-border-flow gold-shiny" data-pos={position}>
+    <div role="group" aria-label={`${left} / ${right}`} className="scope-switch gold-border-flow gold-shiny" data-pos={pos}>
       <span className="scope-switch-pill gold-border-flow gold-shiny" aria-hidden="true">
         <span className="gold-text-sweep" />
         <span className="scope-switch-layer">
@@ -37,10 +48,10 @@ export function HeroScopeSwitch({
           <span className="scope-switch-cell"><span className="gold-text-sweep">{right}</span></span>
         </span>
       </span>
-      <Link href={contactHref} prefetch={false} className="scope-switch-zone" onClick={(e) => { onLeft?.(); scrollToContactBlock(e) }}>
+      <Link href={contactHref} prefetch={false} className="scope-switch-zone" onClick={(e) => { onLeft?.(); setAuto(0); scrollToContactBlock(e) }}>
         <span className="gold-text-sweep">{left}</span>
       </Link>
-      <Link href={href} prefetch={false} className="scope-switch-zone" onClick={onRight}>
+      <Link href={href} prefetch={false} className="scope-switch-zone" onClick={() => { onRight?.(); setAuto(1) }}>
         <span className="gold-text-sweep">{right}</span>
       </Link>
       <span className="scope-switch-base gold-text-sweep" aria-hidden="true" />

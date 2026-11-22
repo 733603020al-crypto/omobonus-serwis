@@ -6,7 +6,8 @@
       "ClaudeInChromeDomain(chatgpt.com)",
       "mcp__claude-in-chrome__tabs_context_mcp",
       "ClaudeInChromeDomain(127.0.0.1:5199)",
-      "Bash(node /c/Users/Andrii/omobonus-workspace/tools/publikaciya/publish-master.mjs prepare)"
+      "Bash(node /c/Users/Andrii/omobonus-workspace/tools/publikaciya/publish-master.mjs prepare)",
+      "Bash(python -)"
     ],
     "deny": [],
     "ask": [

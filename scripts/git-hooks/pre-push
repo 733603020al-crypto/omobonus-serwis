@@ -11,6 +11,10 @@ if ! ( : </dev/tty ) 2>/dev/null; then
   echo "ЗАПРЕТ: пуш в master возможен только вручную из терминала с подтверждением." >&2
   exit 1
 fi
+if [ "$OMOBONUS_SKIP_E2E" != "1" ]; then
+  echo "Проверка перед публикацией (типы + браузерные сценарии на localhost:3000)..." >&2
+  node scripts/pre-publish-check.mjs >&2 || { echo "ЗАПРЕТ: проверки перед публикацией не пройдены (сайт на localhost:3000 должен быть запущен)." >&2; exit 1; }
+fi
 echo "" >&2
 echo "ВНИМАНИЕ: это пойдёт на БОЕВОЙ сайт serwis.omobonus.com.pl!" >&2
 printf "Нажмите Enter, чтобы опубликовать на боевой сайт (Ctrl+C — отмена): " >&2

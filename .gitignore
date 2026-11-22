@@ -56,3 +56,6 @@ _backups/
 
 .vercel
 .env*.local
+
+# Журнал проверок перед публикацией
+.claude/logs/

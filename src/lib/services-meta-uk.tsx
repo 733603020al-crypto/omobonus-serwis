@@ -175,13 +175,7 @@ export const seoBlocksUk: Record<string, { items: string[] }> = {
     ],
   },
   'serwis-ekspresow-do-kawy': {
-    items: [
-      'Обслуговуємо у Вроцлаві автоматичні та ріжкові кавомашини для дому, офісу та закладів громадського харчування.',
-      'Ремонтуємо кавомашини, які не набирають воду, не підігрівають її, протікають, не мелють каву або не збивають молочну піну.',
-      'Подібні симптоми можуть мати різні причини, тому обсяг ремонту визначаємо після діагностики пристрою.',
-      'Обслуговуємо кавомашини, зокрема марок De’Longhi, Philips, Saeco, Jura, Siemens, Bosch, Krups і Melitta.',
-      'Вартість ремонту надаємо на погодження перед початком робіт.',
-    ],
+    items: [],
   },
   'naprawa-drukarek': {
     items: [
@@ -415,7 +409,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-drukarek-3d': 'Маєте проблему з 3D-принтером?',
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'naprawa-zasilaczy-ups': 'Маєте проблему з UPS?',
-    'naprawa-projektorow': 'Маєте проблему з проєктором?',
+    'naprawa-projektorow': 'Маєте проблему з проєктором?',
     'serwis-drukarek-do-kart-plastikowych': 'Маєте проблему з принтером карток?',
     'serwis-drukarek-dtg': 'Маєте проблему з DTG-принтером?',
     'serwis-drukarek-dtf': 'Маєте проблему з DTF-принтером?',
@@ -447,7 +441,7 @@ export const labelsUk: ServicePageLabels = {
     'serwis-plotterow': 'Маєте проблему з плотером?',
     'serwis-niszczarek': 'Маєте проблему зі шредером?',
     'naprawa-zasilaczy-ups': 'Маєте проблему з ДБЖ (UPS)?',
-    'naprawa-projektorow': 'Маєте проблему з проєктором?',
+    'naprawa-projektorow': 'Маєте проблему з проєктором?',
   },
   ctaTextMobile: 'Напишіть або зателефонуйте — знайдемо рішення!',
   ctaButton: 'Швидкий контакт',
