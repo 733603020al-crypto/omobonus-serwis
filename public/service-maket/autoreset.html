@@ -18,13 +18,13 @@
 </div><span class="may-steps__connector" aria-hidden="true"></span></li>
 <li class="may-steps__step" data-i="2"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Zgoda</span><span class="may-sr"></span></div><div class="blk"><div class="chk" id="arChk"><input type="checkbox" id="arOk"><label for="arOk">Rozumiem, że reset licznika nie opróżnia i nie wymienia fizycznego absorbera („pampersa”), a jego przepełnienie może spowodować wyciek tuszu i uszkodzenie drukarki.</label></div>
 </div><span class="may-steps__connector" aria-hidden="true"></span></li>
-<li class="may-steps__step" data-i="3"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Płatność</span><span class="may-sr"></span></div><div class="blk"><div id="arPayDue"><div class="note" style="font-size:18px;font-weight:600">Cena usługi: 39,00 zł</div><div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b main" id="pay" style="flex:1">Zapłać 39,00 zł</button></div></div><div id="arPaid" class="hide"><div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#2f8a1f"/><path d="M7 13.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Płatność potwierdzona — 39,00 zł</span></div><div class="note" style="margin-top:6px">Rozpoczynam reset licznika...</div><div class="note" style="margin-top:2px;font-size:13px;opacity:.75">Symulacja — płatność nie została pobrana.</div></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
-<li class="may-steps__step" data-i="4"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Reset licznika</span><span class="may-sr"></span></div><div class="blk"><div class="ar-row"><label>Postęp (symulacja)</label><label id="arPct3"></label></div>
+<li class="may-steps__step" data-i="3"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Płatność</span><span class="may-sr"></span></div><div class="blk"><div id="arPayDue"><div class="note" style="font-size:18px;font-weight:600">Cena usługi: 39,00 zł</div><div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b main" id="pay" style="flex:1">Zapłać 39,00 zł</button></div></div><div id="arPaid" class="hide"><div style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#2f8a1f"/><path d="M7 13.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Płatność potwierdzona — 39,00 zł</span></div><div class="note" style="margin-top:2px;font-size:13px;opacity:.75">Symulacja — płatność nie została pobrana.</div></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="4"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Reset licznika</span><span class="may-sr"></span></div><div class="blk"><div class="ar-row"><label>Postęp</label><label id="arPct3"></label></div>
  <div class="ar-bar"><i id="arBar3"></i></div>
- <div class="note" id="arLog" style="margin-top:var(--intake-gap-field)"></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
-<li class="may-steps__step" data-i="5"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Sprawdzenie i zakończenie</span><span class="may-sr"></span></div><div class="blk"><div class="note" id="arCheck">Sprawdzanie wyniku…</div><div id="arGood"><div class="note">● Reset wykonany (symulacja)</div><div class="ar-big">0 %</div><div class="note" style="text-align:center">Licznik absorbera (Waste Ink)</div></div>
- <div id="arBad"><div class="miss">● Reset nie powiódł się — utracono połączenie z drukarką (symulacja).</div><div class="note" style="margin-top:var(--intake-gap-field)">Licznik absorbera nie został zmieniony: 96 %.</div></div>
- <div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b" id="retry" style="flex:1">Wstecz</button><button type="button" class="b main" id="again" style="flex:2">Nowa diagnostyka</button></div></div></li>
+ <div class="note hide" id="arLog" style="margin-top:var(--intake-gap-field)"></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="5"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Sprawdzenie i zakończenie</span><span class="may-sr"></span></div><div class="blk"><div class="note" id="arCheck">Sprawdzanie wyniku…</div><div id="arGood"><div class="note" style="display:flex;align-items:center;gap:8px;font-weight:600;color:#2f6b2f"><svg width="22" height="22" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#2f8a1f"/><path d="M7 13.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reset zakończony pomyślnie</span><small style="margin-left:auto;font-weight:400;opacity:.7;color:#6b5940">Symulacja</small></div><div class="ar-big">0 %</div><div class="note" style="text-align:center">Licznik absorbera (Waste Ink) — nowa wartość</div></div>
+ <div id="arBad"><div class="miss">Reset nie powiódł się — utracono połączenie z drukarką. <small style="font-weight:400;opacity:.7">Symulacja</small></div><div class="note" style="margin-top:var(--intake-gap-field)">Licznik absorbera nie został zmieniony: 96 %. Płatność została zachowana — nie trzeba płacić ponownie.</div></div>
+ <div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b" id="retry" style="flex:1">Spróbuj ponownie</button><button type="button" class="b main" id="again" style="flex:2">Nowa diagnostyka</button></div></div></li>
 </ol>
 </template>
 
@@ -69,7 +69,7 @@ const can2=()=>S.ok;const SUPPORTED=['Epson L3250'];const sup=()=>SUPPORTED.inde
 const run=(c,a)=>{
  if(c==='rescan'){stop();set({step:1,scan:0,ok:false,code:'',pay:'',pct:0,log:[],res:'',absDone:false});tScan=setInterval(()=>{if(S.scan>=100){clearInterval(tScan);tAuto=setTimeout(()=>{if(lead&&S.step===1&&S.scan>=100&&sup())run('go1')},5500);return}set({scan:Math.min(100,S.scan+10)})},300)}
  else if(c==='go1'){if(S.step===1&&S.scan>=100&&sup())set({step:2})}
- else if(c==='back'){if(S.step===5&&S.res==='err')set({step:3,pay:'',pct:0,log:[],res:''})}
+ else if(c==='retryreset'){if(S.step===5&&S.res==='err'){set({step:3,fail:false,pct:0,log:[],res:''});run('pay')}}
  else if(c==='ok'){if(S.step===2){set({ok:!!a});clearTimeout(tAuto);if(a)tAuto=setTimeout(()=>{if(S.step===2&&S.ok)set({step:3})},500)}}
  else if(c==='method'){if(S.step===3)set({pay:String(a)})}
  else if(c==='demo'){set({fail:!!a})}
@@ -141,7 +141,7 @@ function paint(){
  $('arLog').innerHTML=S.log.map(x=>'› '+x).join('<br>');
  $('arCheck').classList.toggle('hide',S.res!=='check');$('arGood').classList.toggle('hide',S.res!=='ok');$('arBad').classList.toggle('hide',S.res!=='err');
  setDis('rescan',lock(1)||(S.scan>0&&!d));setDis('go1',!d||lock(1));setDis('dOk',lock(1));setDis('dErr',lock(1));
- setDis('arOk',lock(2));setDis('pay',false);{const paid=S.step>=4;$('arPayDue').classList.toggle('hide',paid);$('arPaid').classList.toggle('hide',!paid)}setDis('again',S.res==='check');
+ setDis('arOk',lock(2));setDis('pay',false);{const paid=S.step>=4;$('arPayDue').classList.toggle('hide',paid);$('arPaid').classList.toggle('hide',!paid);document.querySelector('.arg>li[data-i="4"] .blk')&&document.querySelector('.arg>li[data-i="4"] .blk').classList.toggle('hide',S.step>=5)}setDis('again',S.res==='check');
  document.querySelectorAll('#arPm button').forEach(b=>b.classList.toggle('sel',b.dataset.m===S.pay));
  $('retry').classList.toggle('hide',S.res!=='err');
  // кнопки навигации формы (телефон)
@@ -150,17 +150,17 @@ function paint(){
  prev.style.display=showPrev?'':'none';snav.classList.toggle('first',!showPrev);
  next.classList.toggle('hide',!(S.step===3||(S.step===5&&S.res!=='check')));
  next.textContent=S.step===3?'Zapłać 39,00 zł':'Nowa diagnostyka';
- prev.textContent='Wstecz';
+ prev.textContent='Spróbuj ponownie';
  next.disabled=false;
  if(S.step!==lastStep){
   if(!lead)window.scrollTo(0,0)}
  lastStep=S.step;
 }
-$('rescan').onclick=()=>cmd('rescan');$('go1').onclick=()=>cmd('go1');$('pay').onclick=()=>arOpenPay();document.querySelectorAll('#arPm button').forEach(b=>b.onclick=()=>cmd('method',b.dataset.m));$('retry').onclick=()=>cmd('back');$('again').onclick=()=>cmd('again');
+$('rescan').onclick=()=>cmd('rescan');$('go1').onclick=()=>cmd('go1');$('pay').onclick=()=>arOpenPay();document.querySelectorAll('#arPm button').forEach(b=>b.onclick=()=>cmd('method',b.dataset.m));$('retry').onclick=()=>cmd('retryreset');$('again').onclick=()=>cmd('again');
 $('dOk').onclick=()=>cmd('demo',false);$('dErr').onclick=()=>cmd('demo',true);
 $('arOk').onchange=e=>cmd('ok',e.target.checked);
 // кнопки формы sPrev/sNext: вместо безусловных переходов — проверяемые действия макета
-$('sPrev').onclick=()=>cmd('back');
+$('sPrev').onclick=()=>cmd('retryreset');
 $('sNext').onclick=()=>S.step===3?arOpenPay():cmd('again');
 // окно оплаты (демо): стиль окна «Kategorie urządzeń» — тёмный пергамент, золотая рамка, затемнение фона
 {const LG={BLIK:'<span class="lg" style="background:#000;color:#fff;font-size:20px;letter-spacing:-.5px">blik</span>',Karta:'<span class="lg"><i style="font-style:italic;font-weight:800;color:#1a1f71;font-size:19px;margin-right:6px">VISA</i><svg width="30" height="20" viewBox="0 0 30 20"><circle cx="10" cy="10" r="9" fill="#eb001b"/><circle cx="20" cy="10" r="9" fill="#f79e1b" fill-opacity=".9"/></svg></span>','Google Pay':'<span class="lg"><b style="color:#4285f4">G</b><span style="color:#5f6368;margin-left:4px;font-weight:600">Pay</span></span>','Apple Pay':'<span class="lg" style="color:#000"><svg width="16" height="18" viewBox="0 0 24 24" style="margin-right:3px"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z"/></svg>Pay</span>','Szybki przelew':'<svg width="34" height="30" viewBox="0 0 24 24" fill="none" stroke="#f3df9a" stroke-width="1.6" stroke-linejoin="round"><path d="M3 9l9-5 9 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>'};
