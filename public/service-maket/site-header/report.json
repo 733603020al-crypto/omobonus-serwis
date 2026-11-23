@@ -1,0 +1,27 @@
+{
+ "status": "ok",
+ "builtAt": 1795425518832,
+ "attemptedAt": 1795425531459,
+ "errors": [],
+ "warnings": [],
+ "changes": [],
+ "sources": {
+  "src/components/HeaderInteractive.tsx": 1794338264552.797,
+  "src/components/header.tsx": 1791885487493.2395,
+  "src/components/header-contact-capsule.tsx": 1793920514894.7766,
+  "src/components/LanguageSwitcher.tsx": 1795386817955.6223,
+  "src/components/MobileMenuSheet.tsx": 1794831199550.059,
+  "src/components/menu-item-icon.tsx": 1793446181327.6248,
+  "src/config/service-categories.ts": 1793920514947.6355,
+  "src/app/globals.css": 1794755164732.0107,
+  "src/app/styles/cat-switch.css": 1795372282653.6924,
+  "src/components/ui/sheet.tsx": 1791885487526.714,
+  "src/components/ui/CallButton.tsx": 1793794005973.542,
+  "src/config/manifest.ts": 1793446181380.0474,
+  "src/lib/premenu-script.ts": 1791885487540.8293,
+  "src/lib/scroll-to-contact.ts": 1793920718877.6128,
+  "src/lib/utils.ts": 1769291528494.8562
+ },
+ "cssBytes": 29711,
+ "assets": 31
+}

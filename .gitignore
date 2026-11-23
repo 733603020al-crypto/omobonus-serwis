@@ -59,3 +59,8 @@ _backups/
 
 # Журнал проверок перед публикацией
 .claude/logs/
+
+# AutoReset: тестовый ZIP не хранится в репозитории (собирается в omobonus-autoreset)
+/public/autoreset/*.zip
+/public/autoreset/*.exe
+!/public/autoreset/AutoReset.exe

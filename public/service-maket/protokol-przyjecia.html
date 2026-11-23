@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прототип: приём устройства</title>
+<style>
+body{margin:0;background:#fff;font:13px system-ui,Arial,sans-serif;color:#333}
+.row{display:flex;flex-direction:row-reverse;gap:26px;padding:10px 16px;align-items:flex-start;justify-content:center;min-height:100vh;box-sizing:border-box}
+.col{flex:none}
+.cap{margin:0 0 8px;text-align:center;font-size:13px;color:#555}
+.box{position:relative;overflow:hidden}
+.box>iframe,.box>.dev{position:absolute;left:0;top:0;border:0;transform-origin:0 0;background:#1a120a}
+.dev{display:flex;flex-direction:column}
+.dev iframe{display:block;border:0;width:390px;height:786px;flex:none}
+.sb{height:32px;flex:none;background:#33250f;color:#fff;font:600 14px system-ui,Arial,sans-serif;display:flex;align-items:center;padding:0 14px;gap:8px}
+.sb .sp{flex:1}.sbi{font-size:12px;letter-spacing:2px;display:flex;align-items:center;gap:5px}
+.sb .bat{font-style:normal;border:1.5px solid #fff;border-radius:4px;padding:0 5px;font-size:11px;line-height:14px}
+.sb .wf{font-style:normal;font-size:14px}
+.sb .sig{display:inline-block;width:14px;height:11px;background:linear-gradient(90deg,#fff 0 20%,transparent 20% 27%,#fff 27% 47%,transparent 47% 54%,#fff 54% 74%,transparent 74% 81%,#aaa 81%);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.nb{height:48px;flex:none;background:#f3f3f3;display:flex;align-items:center;justify-content:space-around;padding:0 40px}
+.nb i{display:block}.n1{width:16px;height:16px;background:#555;border-radius:3px}
+.n2{width:22px;height:22px;border:3px solid #555;border-radius:50%;box-sizing:border-box;position:relative}
+.n2::after{content:'';position:absolute;inset:3px;background:#555;border-radius:50%}
+.n3{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-right:15px solid #555}
+.phone{background:#111;border-radius:34px;padding:14px 8px;box-shadow:0 0 0 2px #444,0 6px 18px rgba(0,0,0,.35)}
+.phone .box{border-radius:20px}
+.laptop .scr{background:#111;border-radius:12px 12px 0 0;padding:12px 12px 10px;box-shadow:0 0 0 2px #444}
+.laptop .base{height:14px;background:linear-gradient(#cfcfd2,#9a9aa0);border-radius:0 0 14px 14px;margin:0 -26px;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.paper{background:#cfc8b6;padding:8px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#bd{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:none}#bd.on{display:block}
+.box.zoom{position:fixed;z-index:60;box-shadow:0 10px 40px rgba(0,0,0,.6);border-radius:6px}
+.hint{position:fixed;left:0;right:0;bottom:6px;text-align:center;color:#777;font-size:12px}
+.col.ph{margin-right:calc(-180px*var(--m,1));margin-top:calc(120px*var(--m,1))}
+.col.ph .cap{text-align:left;padding-left:12px}
+.phone{border:4px solid transparent;background:linear-gradient(#050505,#050505) padding-box,linear-gradient(135deg,#f4f4f6,#a9a9b0 30%,#e9e9ec 55%,#8e8e95 80%,#d8d8dc) border-box;box-shadow:0 8px 22px rgba(0,0,0,.4)}
+.laptop .scr{border:4px solid transparent;background:linear-gradient(#050505,#050505) padding-box,linear-gradient(180deg,#e8e8eb,#b4b4ba 50%,#9c9ca2) border-box;box-shadow:0 2px 0 #7d7d83,0 8px 20px rgba(0,0,0,.3)}
+.laptop .base{background:linear-gradient(#e6e6e9,#b9b9bf 60%,#8f8f95);border-top:1px solid #f4f4f6}
+.phone{border-width:5px;background:linear-gradient(#050505,#050505) padding-box,linear-gradient(90deg,#f2f2f4,#a8a8ae 25%,#e2e2e6 50%,#8d8d94 75%,#cfcfd4) border-box;box-shadow:0 0 0 1px #5e5e64,0 8px 22px rgba(0,0,0,.4)}
+.col.ph{position:relative;z-index:3}.col.ph:has(.zoom){z-index:auto}
+.laptop .base{position:relative;height:46px;margin:0 -34px;border:0;border-radius:0 0 16px 16px;background:linear-gradient(#e4e4e8,#c4c4ca 55%,#9d9da3);clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);box-shadow:none}
+.laptop .base::before{content:'';position:absolute;left:7%;right:7%;top:3px;height:28px;background:repeating-linear-gradient(90deg,transparent 0 17px,#8d8d94 17px 19px),repeating-linear-gradient(0deg,transparent 0 6px,#8d8d94 6px 8px),#1b1b1f;border-radius:2px}
+.laptop .base::after{content:'';position:absolute;left:40%;right:40%;bottom:4px;height:6px;background:#b0b0b6;border-radius:0 0 8px 8px}
+.laptop .scr{border:3px solid #26262a;background:#050505;border-radius:8px;padding:10px 10px 24px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.laptop .base{position:relative;height:66px;width:36%;margin:0 auto;border:0;background:none;clip-path:none;border-radius:0;box-shadow:none}
+.laptop .base::before{content:'';position:absolute;left:18%;right:18%;top:0;height:50px;background:linear-gradient(90deg,#17171a,#3a3a40 50%,#17171a);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);border-radius:0}
+.laptop .base::after{content:'';position:absolute;left:0;right:0;bottom:0;height:18px;background:linear-gradient(#45454b,#111114);border-radius:50% 50% 6px 6px/100% 100% 6px 6px}
+.laptop .scr{border:4px solid transparent;background:linear-gradient(#050505,#050505) padding-box,linear-gradient(135deg,#f4f4f6,#a9a9b0 30%,#e9e9ec 55%,#8e8e95 80%,#d8d8dc) border-box;box-shadow:0 0 0 1px #5e5e64,0 8px 20px rgba(0,0,0,.35)}
+.laptop .base::before{background:linear-gradient(90deg,#9a9aa1,#ececef 45%,#b4b4ba 70%,#8a8a91)}
+.laptop .base::after{background:linear-gradient(#f0f0f3,#a3a3aa 60%,#7d7d84)}
+.laptop .base{height:58px;width:30%}
+.laptop .base::before{left:41%;right:41%;top:0;height:50px;clip-path:polygon(0 0,100% 0,88% 100%,12% 100%);background:linear-gradient(90deg,#8d8d94,#f4f4f6 30%,#cfcfd4 60%,#7f7f86)}
+.laptop .base::after{left:0;right:0;bottom:2px;height:10px;background:linear-gradient(#fafafc,#b9b9bf 55%,#85858c);border-radius:50%/100%;box-shadow:0 6px 10px -2px rgba(0,0,0,.45)}
+body{background:radial-gradient(ellipse at 50% 40%,#f1f2f4,#d5d9df 80%) fixed}
+.paper{background:none;padding:0;box-shadow:none}
+.paper .box>iframe{background:transparent}
+.phone{box-shadow:0 0 0 1px #5e5e64,0 30px 60px rgba(20,28,45,.45),0 10px 20px rgba(20,28,45,.3)!important}
+.laptop .scr{box-shadow:0 0 0 1px #5e5e64,0 34px 70px rgba(20,28,45,.45),0 12px 24px rgba(20,28,45,.3)!important}
+.laptop .base{filter:drop-shadow(0 18px 18px rgba(20,28,45,.4))}
+.paper .box:not(.zoom){filter:drop-shadow(0 30px 40px rgba(20,28,45,.45)) drop-shadow(0 8px 12px rgba(20,28,45,.3))}
+.phone,.laptop .scr{position:relative}
+.phone::before{content:'';position:absolute;right:-5px;top:170px;width:4px;height:70px;border-radius:0 3px 3px 0;background:linear-gradient(90deg,#8d8d94,#e2e2e6);box-shadow:0 100px 0 #b8b8be}
+.sb{position:relative}
+.sb::after{content:'';position:absolute;left:50%;top:9px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a3550,#05070d 60%);box-shadow:0 0 0 2px #1a1208}
+.col.ph .phone,.col.ph{position:relative}
+body{background:linear-gradient(transparent 72%,rgba(110,122,145,.28)),radial-gradient(ellipse at 50% 40%,#f1f2f4,#d5d9df 80%) fixed}
+#demo{position:fixed;left:12px;top:10px;z-index:70;padding:7px 14px;border:1px solid #8a7b5c;border-radius:8px;background:rgba(255,255,255,.85);color:#3a2a1a;font:600 13px system-ui,Arial,sans-serif;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2)}#demo:hover{background:#fff}
+</style></head><body>
+<div id="bd"></div>
+<button id="demo">Заполнить для примера</button>
+<div class="row">
+ <div class="col"><div class="paper"><div class="box" data-w="810" data-h="1132" data-s=".56"><iframe src="form.html?v=print" title="Печать"></iframe></div></div></div>
+ <div class="col laptop"><div class="scr"><div class="box" data-w="1440" data-h="810" data-s=".62"><iframe src="form.html?v=laptop" title="Ноутбук"></iframe></div></div><div class="base"></div></div>
+ <div class="col ph"><div class="phone"><div class="box" data-w="390" data-h="866" data-s=".72"><div class="dev"><div class="sb"><b>18:20</b><span class="sbi">✆ ● ● ●</span><span class="sp"></span><span class="sbi">ᛒ <i class="sig"></i> <i class="wf">◔</i> <i class="bat">43</i></span></div><iframe src="form.html?v=phone" title="Телефон"></iframe><div class="nb"><i class="n1"></i><i class="n2"></i><i class="n3"></i></div></div></div></div></div>
+</div>
+<script>
+function fit(){
+ const m=Math.min((innerWidth-70)/1550,(innerHeight-36)/800,1.4);
+ document.documentElement.style.setProperty('--m',m);
+ document.querySelectorAll('.box').forEach(b=>{
+  const w=+b.dataset.w,h=+b.dataset.h,s=+b.dataset.s*m;
+  b.style.width=w*s+'px';b.style.height=h*s+'px';
+  const f=b.firstElementChild;f.style.width=w+'px';f.style.height=h+'px';f.style.transform='scale('+s+')';
+ });
+}
+let Z=null,ph=null;
+function place(b){
+ const w=+b.dataset.w,h=+b.dataset.h,s=Math.min((innerWidth-40)/w,(innerHeight-30)/h);
+ b.style.width=w*s+'px';b.style.height=h*s+'px';b.style.left=(innerWidth-w*s)/2+'px';b.style.top=(innerHeight-h*s)/2+'px';
+ b.firstElementChild.style.transform='scale('+s+')';
+}
+function toggle(b){
+ if(Z){const z=Z;Z=null;z.classList.remove('zoom');z.style.left=z.style.top='';ph.remove();bd.classList.remove('on');fit();return}
+ ph=document.createElement('div');ph.style.width=b.style.width;ph.style.height=b.style.height;b.parentNode.insertBefore(ph,b);
+ Z=b;b.classList.add('zoom');bd.classList.add('on');place(b);
+}
+const bd=document.getElementById('bd');
+bd.onclick=()=>Z&&toggle(Z);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&Z)toggle(Z)});
+document.querySelectorAll('.box').forEach(b=>{
+ const f=b.querySelector('iframe');
+ const hook=()=>{try{f.contentDocument.addEventListener('dblclick',()=>toggle(b));f.contentDocument.addEventListener('keydown',e=>{if(e.key==='Escape'&&Z)toggle(Z)})}catch(e){}};
+ f.addEventListener('load',hook);
+});
+const sig='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150"><path d="M20 100 C40 20 60 20 70 90 S100 120 120 60 150 30 170 90 220 110 280 50" fill="none" stroke="#1a1a40" stroke-width="4" stroke-linecap="round"/></svg>');
+let filled=false;
+document.getElementById('demo').onclick=function(){
+ const ch=new BroadcastChannel('maket');
+ if(filled){const e={};['phone','name','mail','model','serial','fault','nip','company','addr','resp','orgPhone','orgMail','delAddr'].forEach(k=>e[k]='');e.phoneCc=e.orgPhoneCc='pl';ch.postMessage({from:'shell',snap:{v:e,noDmg:false,same:true,card:'',st:{org:false,type:'',photos:{},checks:{},acc:{},sig:null}}});filled=false;this.textContent='Заполнить для примера';setTimeout(()=>ch.close(),500);return}
+ filled=true;this.textContent='Очистить';
+ const v={phone:'600 123 456',phoneCc:'pl',name:'Jan Kowalski',mail:'jan.kowalski@example.pl',model:'Kyocera ECOSYS M2035dn',serial:'VKH1234567',fault:'Drukarka nie włącza się, po włączeniu miga czerwona dioda i nie ciągnie papieru.',nip:'',company:'',addr:'',resp:'',orgPhone:'',orgPhoneCc:'pl',orgMail:'',delAddr:''};
+ ch.postMessage({from:'shell',snap:{v,noDmg:false,same:true,card:'',st:{org:false,type:'serwis-drukarek-laserowych',photos:{over:'logo-doc.webp',serial:'logo.webp'},checks:{0:{on:true,img:'logo.webp'},4:{on:true,img:'logo-doc.webp'}},acc:{0:{v:'left'},2:{v:'left',img:'logo.webp'}},sig}}});
+ setTimeout(()=>ch.close(),500);
+};
+let ver=null;
+setInterval(async()=>{try{const v=(await Promise.all((MK?[MK,'protokol-przyjecia.html']:['form.html','protokol-przyjecia.html']).map(f=>fetch(f,{method:'HEAD',cache:'no-store'}).then(r=>r.headers.get('last-modified')||r.headers.get('etag'))))).join();if(ver&&v!==ver)location.reload();ver=v}catch(e){}},2000);
+const MK=new URLSearchParams(location.search).get('maket');
+if(MK){document.querySelector('.col').remove();document.getElementById('demo').remove();document.querySelectorAll('iframe').forEach(f=>f.src=MK);}
+addEventListener('resize',()=>{fit();if(Z)place(Z)});fit();
+</script>
+</body></html>

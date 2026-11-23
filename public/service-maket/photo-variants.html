@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Варианты блока фото</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px 12px 60px;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(bg.webp) center/cover fixed #1a120a;color:#e9d9b4;font:15px/1.4 Inter,system-ui,sans-serif}
+h1{font:700 28px 'Cormorant Garamond',serif;text-align:center;margin:0 0 4px}
+.lead{text-align:center;color:#bfa76a;margin:0 0 24px;font-size:13px}
+.var{max-width:1180px;margin:0 auto 44px}
+.var>h2{font:700 24px 'Cormorant Garamond',serif;color:#f3df9a;margin:0 0 4px}
+.pc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;font-size:13px;margin:0 0 14px}
+.pc div{padding:8px 12px;border-radius:6px;background:rgba(0,0,0,.35)}
+.pc .p{border-left:3px solid #7bb06b}.pc .m{border-left:3px solid #c0705a}
+.row{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.dev{flex:0 1 720px;min-width:0;width:100%;max-width:720px}
+.dev.ph{flex:0 1 390px;max-width:390px}
+.lbl{font-size:12px;color:#bfa76a;margin:0 0 6px}
+.panel{background:url(parch-mid.webp) center/100% 100% no-repeat;padding:30px 44px;color:#312b1f;font-family:'Cormorant Garamond',serif;box-shadow:0 10px 24px rgba(0,0,0,.5);cursor:pointer}
+.ph .panel{padding:26px 28px}
+.panel h3{font:600 19px 'Cormorant Garamond',serif;margin:0 0 10px;color:#2f2418}
+.panel .hint{font:13px Inter,sans-serif;color:#6b5940;margin:8px 0 0}
+.cq{container-type:inline-size}
+svg.cam{width:26px;height:26px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* общие плитки */
+.slot{position:relative;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-align:center;overflow:hidden;color:#6b5a45;padding:6px}
+.slot .cap{font:600 14px/1.15 'Cormorant Garamond',serif}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.slot .x{position:absolute;top:4px;right:4px;z-index:2;width:22px;height:22px;border-radius:50%;background:rgba(49,43,31,.8);color:#fff;font:16px/20px Inter,sans-serif;text-align:center;display:none}
+.filled .slot.has img,.filled .slot.has .x{display:block}
+.filled .slot.has>svg,.filled .slot.has .cap{display:none}
+.filled .slot.has .cap.c{display:block;position:absolute;left:0;right:0;bottom:0;padding:4px 6px;background:rgba(49,43,31,.75);color:#f3e6c4;z-index:1}
+.slot .cap.c{display:none}
+.filled .slot.has .cap.c{display:block}
+/* A: 4 в ряд, пунктир, полупрозрачный коричневый */
+.A .grid{display:grid;grid-template-columns:repeat(4,minmax(0,100px));gap:10px}
+.A .slot{border:1.5px dashed rgba(70,45,25,.6);border-radius:4px;background:rgba(70,45,25,.09)}
+.A .slot:hover{background:rgba(70,45,25,.16)}
+.A .filled .slot.has{border-style:solid;border-color:rgba(70,45,25,.7)}
+@container (max-width:300px){.A .grid{grid-template-columns:repeat(3,minmax(0,100px))}.A .grid .slot:nth-child(4){display:none}}
+.A .slot .cap{font-size:13px}
+/* B: 2 основных + «…» как выпадающее меню шапки */
+.B .grid{display:grid;grid-template-columns:repeat(4,minmax(0,100px));gap:10px}
+.B .slot{grid-column:span 1;border:1.5px dashed rgba(70,45,25,.6);border-radius:4px;background:rgba(70,45,25,.09)}
+.B .filled .slot.has{border-style:solid;border-color:rgba(70,45,25,.7)}
+.B .more{position:relative;margin-top:10px;display:inline-block}
+.B .mb{display:inline-flex;align-items:center;gap:8px;background:#14110d;border:2px solid rgba(200,169,107,.5);border-radius:8px;color:#f3df9a;font:600 16px 'Cormorant Garamond',serif;padding:4px 12px;cursor:pointer}
+.B .mb b{font:700 22px/0.6 Inter,sans-serif;letter-spacing:1px;padding-bottom:6px}
+.B .mb.open{border-radius:8px 8px 0 0}
+.B .dd{display:none;background:#14110d;border:2px solid rgba(200,169,107,.5);border-radius:0 8px 8px 8px;padding:8px;margin-top:-2px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.B .dd.open{display:block}
+.B .dd .g2{display:grid;grid-template-columns:repeat(2,78px);gap:8px}
+.B .dd .slot{border:1.5px dashed rgba(191,167,106,.55);border-radius:4px;background:rgba(191,167,106,.08);color:#bfa76a}
+.B .filled .dd .slot.has{border-style:solid}
+/* В: вдавленные карманы + сургуч */
+.C .grid{display:grid;grid-template-columns:repeat(4,minmax(0,100px));gap:12px}
+.C .slot{border-radius:3px;background:rgba(60,35,15,.2);box-shadow:inset 0 3px 7px rgba(35,18,8,.45),inset 0 -1px 0 rgba(255,240,210,.5);color:#fff3d6}
+.C .slot::before{content:'';position:absolute;inset:5px;border:1px dashed rgba(70,45,25,.55);border-radius:2px;pointer-events:none;z-index:1}
+.C .slot .seal{width:38px;height:38px;border-radius:50% 46% 52% 48%;background:radial-gradient(circle at 35% 30%,#b5503a,#7a2616 70%);box-shadow:1px 3px 5px rgba(35,18,8,.5),inset 0 1px 2px rgba(255,200,170,.4);display:flex;align-items:center;justify-content:center;color:#f3dcc0}
+.C .slot.s2 .seal{width:32px;height:32px}
+.C .slot .cap{color:#4a3720;text-shadow:0 1px 0 rgba(255,240,210,.5);font-size:13px}
+.C .filled .slot.has{box-shadow:inset 0 3px 7px rgba(35,18,8,.55)}
+.C .filled .slot.has::before{border-style:solid;border-color:rgba(243,230,196,.55)}
+.C .filled .slot.has .seal{display:none}
+.C .slot .seal svg{width:20px;height:20px}
+@container (max-width:300px){.C .grid{grid-template-columns:repeat(3,minmax(0,100px))}.C .grid .slot:nth-child(4){display:none}}
+</style></head><body>
+<h1>Блок фото — три варианта</h1>
+<p class="lead">Клик по пергаменту переключает «пустое / загружено». В варианте 2 кнопка «…» открывает доп. фото.</p>
+<div id="root"></div>
+<script>
+const CAM='<svg class="cam" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+const thumbs=[0,1,2,3].map(i=>{const c=document.createElement('canvas');c.width=c.height=120;const x=c.getContext('2d');const h=[28,200,35,15][i];
+ let g=x.createLinearGradient(0,0,120,120);g.addColorStop(0,`hsl(${h},25%,38%)`);g.addColorStop(1,`hsl(${h},30%,16%)`);x.fillStyle=g;x.fillRect(0,0,120,120);
+ x.fillStyle='rgba(230,220,200,.75)';if(i==1){x.font='bold 22px monospace';x.fillText('SN 4F2K9',14,66)}else{x.fillRect(22,38,76,48);x.fillStyle='rgba(30,25,20,.7)';x.fillRect(28,44,64,34)}
+ return c.toDataURL('image/jpeg',.7)});
+const t=(i)=>`<img src="${thumbs[i]}" alt=""><span class="x">×</span>`;
+function slot(i,cap,seal,cls=''){
+ const ic=seal?`<span class="seal">${CAM}</span>`:CAM;
+ return `<div class="slot ${cls} ${i<3?'has':''}" data-i="${i}">${ic}${cap?`<span class="cap">${cap}</span><span class="cap c">${cap}</span>`:''}${t(i)}</div>`}
+const A=()=>`<div class="cq"><div class="grid">${slot(0,'Zdjęcie urządzenia')+slot(1,'Numer seryjny')+slot(2,'')+slot(3,'')}</div></div><p class="hint">Zdjęcia 3–4 są opcjonalne.</p>`;
+const B=()=>`<div class="cq"><div class="grid">${slot(0,'Zdjęcie urządzenia')+slot(1,'Numer seryjny')}</div>
+<div class="more"><button class="mb" type="button"><b>…</b>Dodatkowe zdjęcia</button><div class="dd"><div class="g2">${slot(2,'')+slot(3,'')}</div></div></div></div>`;
+const C=()=>`<div class="cq"><div class="grid">${slot(0,'Zdjęcie urządzenia',1)+slot(1,'Numer seryjny',1,'s2')+slot(2,'',1)+slot(3,'',1)}</div></div><p class="hint">Zdjęcia 3–4 są opcjonalne.</p>`;
+const defs=[
+['A','1. Четыре квадрата в ряд, пунктир на полупрозрачном коричневом',A,'Всё видно сразу, просто и привычно; ряд сам сжимается до 3 на узком экране.','Квадраты на телефоне маленькие (~75 px), подпись в них мелкая.'],
+['B','2. Два основных + кнопка «…» (как меню шапки)',B,'Форма короче и чище, обязательные фото в фокусе; стиль кнопки и плашки совпадает с шапкой.','Доп. фото спрятаны за кликом — их могут не заметить.'],
+['C','3. Вдавленные «карманы» в бумаге и сургучные печати',C,'Самый «бумажный» и красивый, идеально ложится на пергамент.','Сложнее в CSS, у печати на 3–4 нет подписи; тёмные тени на мелких квадратах.']];
+const root=document.getElementById('root');
+defs.forEach(([k,title,fn,pl,mi])=>{
+ const v=document.createElement('section');v.className='var '+k;
+ v.innerHTML=`<h2>${title}</h2><div class="pc"><div class="p">Плюсы: ${pl}</div><div class="m">Минусы: ${mi}</div></div>
+ <div class="row"><div class="dev"><p class="lbl">ПК (колонка ~720 px)</p><div class="panel"><h3>Zdjęcia urządzenia</h3>${fn()}</div></div>
+ <div class="dev ph"><p class="lbl">Телефон (~390 px)</p><div class="panel"><h3>Zdjęcia urządzenia</h3>${fn()}</div></div></div>`;
+ root.appendChild(v);
+});
+document.querySelectorAll('.panel').forEach(p=>{
+ p.addEventListener('click',e=>{
+  const mb=e.target.closest('.mb');
+  if(mb){mb.classList.toggle('open');mb.nextElementSibling.classList.toggle('open');return}
+  p.classList.toggle('filled');
+ });
+ p.classList.add('filled');
+});
+// первое состояние: пустые (кроме показа заполненного — клик)
+document.querySelectorAll('.panel').forEach((p,i)=>{if(i%2==1)return;p.classList.remove('filled')});
+</script></body></html>

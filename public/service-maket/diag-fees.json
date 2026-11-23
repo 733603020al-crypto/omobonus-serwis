@@ -1,0 +1,87 @@
+{
+ "serwis-laptopow": {
+  "v": "100",
+  "raw": "100 zł",
+  "net": true
+ },
+ "serwis-komputerow-stacjonarnych": {
+  "v": "80",
+  "raw": "80 zł",
+  "net": true
+ },
+ "serwis-drukarek-laserowych": {
+  "v": "70 / 100 / 150",
+  "raw": "70/100/15070 / 100 / 150",
+  "net": true
+ },
+ "serwis-drukarek-atramentowych": {
+  "v": "70 / 100 / 150",
+  "raw": "70/100/15070 / 100 / 150",
+  "net": true
+ },
+ "serwis-drukarek-iglowych": {
+  "v": "50 / 70 / 100",
+  "raw": "50/70/10050 / 70 / 100",
+  "net": true
+ },
+ "serwis-drukarek-termicznych": {
+  "v": "100 / 150 / 200",
+  "raw": "100/150/200100 / 150 / 200",
+  "net": true
+ },
+ "serwis-drukarek-3d": {
+  "v": "100 / 150 / 200",
+  "raw": "100/150/200100 / 150 / 200",
+  "net": true
+ },
+ "serwis-drukarek-sublimacyjnych": {
+  "v": "150 / 250 / 400",
+  "raw": "150/250/400150 / 250 / 400",
+  "net": true
+ },
+ "serwis-drukarek-dtf": {
+  "v": "250 / 350 / 500",
+  "raw": "250/350/500250 / 350 / 500",
+  "net": true
+ },
+ "serwis-drukarek-dtg": {
+  "v": "150 / 250 / 450",
+  "raw": "150/250/450150 / 250 / 450",
+  "net": true
+ },
+ "serwis-drukarek-spozywczych": {
+  "v": "50 / 100 / 150",
+  "raw": "50/100/15050 / 100 / 150",
+  "net": true
+ },
+ "serwis-drukarek-do-kart-plastikowych": {
+  "v": "100 / 150 / 200",
+  "raw": "100/150/200100 / 150 / 200",
+  "net": true
+ },
+ "serwis-plotterow": {
+  "v": "150 / 200 / 300",
+  "raw": "150/200/300150 / 200 / 300",
+  "net": true
+ },
+ "serwis-niszczarek": {
+  "v": "100 / 150 / 200",
+  "raw": "100/150/200100 / 150 / 200",
+  "net": true
+ },
+ "naprawa-zasilaczy-ups": {
+  "v": "60 / 100 / 180",
+  "raw": "60/100/18060 / 100 / 180",
+  "net": true
+ },
+ "naprawa-projektorow": {
+  "v": "60 / 100 / 180",
+  "raw": "60/100/18060 / 100 / 180",
+  "net": true
+ },
+ "serwis-ekspresow-do-kawy": {
+  "v": "80 / 120 / 180",
+  "raw": "80/120/18080 / 120 / 180",
+  "net": true
+ }
+}

@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site-header/header.css">
+<link rel="stylesheet" href="workspace-button.css">
+<title>Прототип: приём устройства</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.4 system-ui,Segoe UI,Arial,sans-serif;background:#f3efe6;color:#2b2118}
+.wrap{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:16px;padding:16px;max-width:1500px;margin:0 auto}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.panel{background:#fff;border:1px solid #d8cdb8;border-radius:10px;padding:14px}
+h2{margin:0 0 8px;font-size:16px}
+h3{margin:var(--intake-gap-group) 0 var(--intake-gap-field);font-size:14px;border-top:1px solid #eee;padding-top:var(--intake-gap-heading)}
+:root{--intake-gap-label:2px;--intake-gap-field:6px;--intake-gap-group:14px;--intake-gap-section:30px;--intake-section-inset:22px;--intake-gap-heading:10px;--intake-gap-navigation:16px}
+label{display:block;margin:0;font-size:12px;color:#6b5a45}
+input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;padding:8px;border:1px solid #cbbf9f;border-radius:6px;font:inherit;background:#fffdf8}
+textarea{min-height:70px}
+.seg{display:flex;gap:6px}.seg button{flex:1;padding:9px;border:1px solid #b9a77f;background:#fff;border-radius:6px;cursor:pointer;font:inherit}
+.seg button.on{background:var(--sfg);color:#fff;border-color:var(--sfg)}
+.row{display:flex;gap:6px;align-items:center}
+button.b{padding:8px 10px;border:1px solid #b9a77f;background:#fff;border-radius:6px;cursor:pointer;font:inherit}
+button.main{background:#2f6b2f;color:#fff;border-color:#2f6b2f;width:100%;padding:12px;font-size:15px}
+button.main:disabled{background:#aaa;border-color:#aaa;cursor:not-allowed}
+.chk{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chk .ph{font-size:12px;color:#a33}
+.chk img{height:36px;border-radius:4px}
+.note{font-size:12px;color:#6b5a45}
+.miss{font-size:12px;color:#a33}.ferr{outline:2px solid #b3261e;outline-offset:1px}
+.sigfield{position:relative;width:100%}
+#sig{display:block;border:1.5px dashed rgba(70,45,25,.6);border-radius:10px;background:transparent;touch-action:none;width:100%;height:180px}
+#sigClr{position:absolute;top:4px;right:4px;z-index:1;margin:0}
+body.phone #sig{height:200px}
+@media(max-width:600px){#sig{height:200px}}
+.hide{display:none!important}
+.demo{background:#fff6d6;border:1px solid #e3cf86;padding:8px;border-radius:6px;font-size:12px;margin-bottom:10px}
+/* документ */
+.docs{display:flex;flex-direction:column;gap:16px;align-items:center}
+.page{width:794px;max-width:100%;min-height:1000px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.2);display:grid;grid-template-columns:150px 1fr;position:relative;color:#2b2118;font-size:12px}
+.side{background:linear-gradient(180deg,#f0d9a8,#e4c58a 50%,#efd3a0);padding:16px 8px;text-align:center;font-size:10px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #c9a96a}
+.side img{width:90px;height:90px;object-fit:cover;border-radius:4px}
+.side b{display:block;font-size:13px;margin-top:6px}
+.cont{padding:20px 22px}
+.cont h1{font:700 26px var(--sfh);margin:6px 0 4px;text-align:center}
+.cont .no{text-align:center;color:#6b5a45;margin-bottom:12px}
+.cont h4{font:700 15px var(--sfh);margin:14px 0 4px;border-bottom:1px solid #b9a77f}
+table.d{width:100%;border-collapse:collapse}table.d td{padding:5px 4px;border-bottom:1px solid #d9cfb8;vertical-align:top}
+table.d td:first-child{font-weight:700;width:34%}
+.ph2{display:flex;gap:8px;flex-wrap:wrap}.ph2 figure{margin:0;width:180px}.ph2 img{width:100%;height:130px;object-fit:cover;border:1px solid #ccc}
+.ph2 figcaption{font-size:10px;color:#555}
+.dia{font-size:15px;font-weight:700;border:2px solid var(--sfg);padding:6px 8px;margin:10px 0}
+.small{font-size:9px;color:#666;margin-top:8px}
+.sigrow{display:flex;gap:20px;margin-top:16px}.sigrow div{flex:1;border-top:1px solid #555;padding-top:3px;font-size:10px;text-align:center}
+.sigrow img{height:50px;display:block;margin:0 auto}
+.stamp{width:100px;height:60px;border:1px dashed #999;display:flex;align-items:center;justify-content:center;font-size:10px;color:#999}
+.qr{width:90px;height:90px;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center}
+@media print{
+ body{background:#fff}.wrap{display:block;padding:0}.panel{display:none}
+ .docs{gap:0}.page{box-shadow:none;width:100%;page-break-after:always;min-height:0}
+}
+.hdr{display:flex;align-items:center;justify-content:space-between;background:#14110d;border-radius:8px;padding:8px 12px;margin:-4px -4px 8px}
+.hlogo{height:44px;width:auto}
+.lang{position:relative}.lrow{display:flex;align-items:center;gap:10px}
+.lb{display:flex;align-items:center;gap:4px;background:none;border:0;border-bottom:2px solid transparent;padding:2px 0;cursor:pointer}
+.lb.on{border-bottom-color:#bfa76a}
+.chev{background:none;border:0;color:#bfa76a;cursor:pointer;font-size:14px}
+.ddl{position:absolute;right:0;top:100%;margin-top:6px;z-index:20;width:160px;background:#14110d;border:2px solid rgba(200,169,107,.5);border-radius:0 0 8px 8px;padding:6px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.ddl button{display:flex;align-items:center;gap:8px;width:100%;background:none;border:0;border-bottom:1px solid rgba(191,167,106,.25);color:#fff;font:16px var(--sfh);padding:7px 6px;cursor:pointer;text-align:left}
+.ddl button:last-child{border-bottom:0}.ddl button:hover,.ddl button.on{color:#f3df9a;background:rgba(191,167,106,.2)}
+.ttl{font:700 20px var(--sfh);margin:6px 0 8px}
+
+body{background:#1a120a url(bg.webp) center/cover fixed;color:#312b1f}
+.wrap{grid-template-columns:minmax(340px,660px) 1fr;align-items:start}
+.screen{width:100%;margin:0 auto}
+.screen.phone{max-width:390px}.screen.laptop{max-width:660px}
+.devtog{display:flex;gap:6px;margin-bottom:8px}.devtog button{flex:1;padding:6px;border:1px solid #8a7b5c;background:#2a2016;color:#e9d9b4;border-radius:6px;cursor:pointer;font:inherit}.devtog button.on{background:#bfa76a;color:#2a2016}
+.panel{background:url(parchment.webp) center/100% 100% no-repeat;border:0;border-radius:0;padding:56px 52px 64px;color:#312b1f;font-family:var(--sfb)}
+.screen.phone .panel{padding:42px 30px 52px}
+.panel label{font:700 18px/1.3 'Cormorant Garamond',serif;color:#312b1f;letter-spacing:.01em}
+.panel .note,.panel .miss{font-family:var(--sfb)}.panel .note{color:#6b5940}.panel .miss{color:#b3261e}
+.panel input[type=text],.panel input[type=tel],.panel input[type=email],.panel textarea,.panel select{background:transparent;border:1px solid rgba(70,45,25,.45);border-radius:2px;padding:8px 14px;font:17px/1.4 var(--sfb);color:#312b1f}
+.panel input:focus,.panel textarea:focus,.panel input:hover,.panel textarea:hover{outline:0;border:2px solid rgba(70,45,25,.7);background:rgba(70,45,25,.05);padding:7px 13px}
+.panel input::placeholder,.panel textarea::placeholder{color:#6b5940}
+.panel h3{font:600 22px 'Cormorant Garamond',serif;border-top:1px solid rgba(70,45,25,.25);color:#2f2418}
+.ttl{font:600 40px/1.15 'Cormorant Garamond',serif;text-align:center;margin:0 0 14px;color:#2f2418}
+.screen.phone .ttl{font-size:30px}
+.panel .chk label,.panel details label{font:400 16px/1.3 var(--sfb);color:#312b1f}
+.panel summary{font-family:'Cormorant Garamond',serif;font-size:19px;color:#2f2418}
+.seg button,.panel .b{background:transparent;border:1px solid rgba(70,45,25,.55);color:#312b1f;font:600 15px var(--sfb)}
+.seg button.on{background:var(--sfg);color:#f3e6c4;border-color:var(--sfg)}
+.btype{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:9px;background:var(--sfg);color:#f3e6c4;border:1px solid var(--sfg);border-radius:2px;cursor:pointer;font:600 15px var(--sfb)}
+button.main{background:linear-gradient(#d9b072,#b68d60);border:0;color:#412612;font:600 17px var(--sfb);border-radius:999px;box-shadow:3px 6px 8px rgba(35,18,8,.35)}
+button.main:disabled{background:#b8a98c;color:#6b5940;box-shadow:none}
+.demo{background:rgba(255,246,214,.6);border:1px solid rgba(70,45,25,.3);font-family:var(--sfb)}
+.ph-row{display:flex;gap:10px}.cc{display:flex;align-items:center;gap:8px;flex:0 0 55%;border:1px solid rgba(70,45,25,.45);border-radius:2px;padding:0 8px}
+.panel .cc select{border:0;padding:8px 0;flex:1;min-width:0;background:transparent;font-size:15px}.ph-row input{flex:1;min-width:0}
+.printcol{min-width:0}.cap{color:#e9d9b4;font-size:12px;margin-bottom:8px;text-align:center}
+.docs{zoom:.68}
+.side{background:url(parchment.webp) center/cover;border-right:1px solid #c9a96a;color:#2f2418}
+.page{min-height:1123px}
+@media print{
+ body{background:#fff}.wrap{display:block;padding:0}.screen,.cap{display:none}
+ .docs{zoom:1}.page{min-height:0;height:1100px}
+}
+
+.screen.phone,.screen.laptop{max-width:none}
+.cap{display:none}
+body:not(.print) .printcol{display:none}
+body.print{background:#d9d2c0}
+body.print .screen{display:none}
+body.print .wrap{display:block;padding:8px}
+.docs{zoom:.41}
+.pbtn{display:block;margin:0 auto 8px;padding:6px 14px;border:1px solid #8a7b5c;background:#fff;border-radius:6px;cursor:pointer}
+body.phone .wrap,body.laptop .wrap{display:block;padding:0}
+@media print{
+ body:not(.print) .printcol{display:block!important}.pbtn{display:none}.screen{display:none}.docs{zoom:1}
+}
+
+body.phone,body.laptop{background:#1a120a url(bg.webp) center/cover fixed}
+.screen.laptop{max-width:none}
+.screen.laptop .panel{max-width:840px;margin:34px auto 60px;padding:56px 56px 64px}
+.screen.phone{padding-bottom:70px}
+.screen.phone::after{content:'🗺 Mapa     |     📞 Zadzwoń';position:fixed;left:0;right:0;bottom:0;height:56px;background:#1a120a;border-top:1px solid #4a3a22;color:#f3e6c4;font:500 22px 'Cormorant Garamond',serif;display:flex;align-items:center;justify-content:center;white-space:pre;z-index:9}
+body.print .docs{zoom:1}body.print{background:#cfc8b6}
+body.phone,body.laptop{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(bg.webp) center/cover fixed #1a120a}
+body.phone{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(bg-mobile.webp) center/cover fixed #1a120a}
+.screen .panel{position:relative;isolation:isolate;background:none}
+.screen .panel::before{content:'';position:absolute;inset:0;z-index:-1;background:url(parchment.webp) center/100% 100% no-repeat;filter:drop-shadow(0 24px 22px rgba(0,0,0,.5)) drop-shadow(0 8px 10px rgba(0,0,0,.35))}
+.screen .panel::before{background:none;border:solid transparent;border-width:200px 70px;border-image:url(parchment.webp) 200 70 fill/200px 70px/0 stretch;box-sizing:border-box}
+.screen.phone .panel::before{border-width:100px 35px;border-image-width:100px 35px}
+.screen .panel::before,.screen.phone .panel::before{inset:0 0 auto 0;height:var(--ph,100%);border:0;border-image:none;box-sizing:border-box;background:url(parch-top.webp) top/100% var(--bw,200px) no-repeat,url(parch-bot.webp) bottom/100% var(--bw,200px) no-repeat,url(parch-mid.webp) 0 calc(var(--bw,200px) - 2px)/100% calc(100% - 2*var(--bw,200px) + 4px) no-repeat}
+html{scrollbar-width:thin;scrollbar-color:#d9c9a0 #1a120a}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#1a120a}::-webkit-scrollbar-thumb{background:#d9c9a0;border-radius:3px}
+.abar{display:none}
+.screen.phone .abar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;height:64px;z-index:40;align-items:center;border-top:1px solid #bfa76a;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(bg-mobile.webp) center/cover}
+.abar .ab{display:flex;align-items:center;justify-content:center;gap:10px;position:relative}
+.abar .ab+.ab::before{content:'';position:absolute;left:0;top:16px;bottom:16px;width:1px;background:rgba(191,167,106,.45)}
+.abar .ico{position:relative;width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:12px;overflow:visible}
+.abar .wr{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.abar .gm{overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.3)}.abar .gm img{width:64px;height:64px;max-width:none}
+.abar .ph{background:#1c6e43;border-radius:50%;box-shadow:0 4px 14px rgba(28,110,67,.45)}
+.abar .cp{font:600 17px/1 'Cormorant Garamond',serif;color:#F0D27A;text-shadow:0 1px 2px rgba(0,0,0,.75);white-space:nowrap}
+.screen.phone::after{display:none}
+.screen.phone{padding-bottom:70px}
+html:has(body.print){background:transparent}
+body.print{background:transparent}
+body.print .wrap{padding:0}
+body.print .docs{box-shadow:0 8px 24px rgba(40,50,70,.35)}
+body.print::-webkit-scrollbar-track,html:has(body.print)::-webkit-scrollbar-track{background:transparent}
+body.print .pbtn{display:none}
+body.print .wrap{padding:0}
+body.print .wrap{padding:0 14px 0 0}
+html{scrollbar-width:none}
+::-webkit-scrollbar{display:none;width:0;height:0}
+body.print .wrap{padding:0}
+
+.page{display:block;width:794px;height:1123px;min-height:0!important;overflow:hidden;background:#fff}
+.page .side{position:absolute;left:17pt;top:17pt;width:153pt;height:808pt;padding:0;border:0;background:url(pasek.webp) no-repeat;background-size:100% 100%}
+.slogo{position:absolute;left:50pt;top:39.5pt;width:73.7pt;height:73.7pt}
+.st,.sk{position:absolute;left:0;text-align:center;line-height:normal;white-space:nowrap;color:#3a2a1a}
+.st{width:173.4pt}.sk{width:178pt}.sb2{font-weight:700}
+.srule{position:absolute;left:36.75pt;width:107.5pt;top:665.75pt;border-top:1px solid #b8aa99}
+.page .cont{position:absolute;left:64mm;top:12mm;right:9mm;padding:0}
+.page .cont h1{text-align:left;margin-left:8mm;font-size:24px}
+.page .cont .no{text-align:left;margin-left:8mm}
+
+@media screen{body.print .page{box-shadow:0 0 0 1.5px #a89070,0 6px 18px rgba(40,50,70,.3)}}
+
+body.print .hl{background:#d5d9df;outline:2px solid #d5d9df;outline-offset:1px;border-radius:2px}
+body.print .hl td{background:#d5d9df}
+
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:#312b1f!important;caret-color:#312b1f;transition:background-color 600000s 0s,color 600000s 0s!important}
+
+input:-internal-autofill-selected,input:-webkit-autofill{background-color:transparent!important;background-image:none!important;color:#312b1f!important;-webkit-box-shadow:none!important;box-shadow:none!important}
+
+.dd{position:relative}
+.ddb{width:100%;text-align:left;padding:8px 38px 8px 14px;border:1px solid rgba(70,45,25,.45);border-radius:2px;background:transparent;font:17px/1.4 var(--sfb);color:#312b1f;cursor:pointer;position:relative}
+.ddb::after{content:'';position:absolute;right:14px;top:50%;width:7px;height:7px;border:solid #312b1f;border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg)}
+.ddb:hover,.ddb:focus{outline:0;border:2px solid rgba(70,45,25,.7);padding:7px 37px 7px 13px;background:rgba(70,45,25,.05)}
+.ddp{position:absolute;left:0;right:0;top:100%;z-index:30;margin-top:2px;padding:6px 10px;overflow:hidden;background:#f1dfb6;border:1px solid rgba(70,45,25,.55);box-shadow:0 8px 20px rgba(35,18,8,.4)}
+.ddp::before{content:"";position:absolute;inset:-40px;z-index:-1;background:url(parch-mid.webp) center/cover}
+.ddp.hide{display:none}
+.ddp summary::-webkit-details-marker{display:none}
+.ddp summary{list-style:none;cursor:pointer;font-weight:600;padding:7px 0}
+.ddp details.sub{margin-left:12px}.ddp details.sub>summary{font-weight:500}
+.ddp .opt{padding:6px 10px 6px 18px;font:16px/1.3 var(--sfb);color:#312b1f;cursor:pointer;border-radius:2px}
+.ddp .opt:hover{background:rgba(70,45,25,.12)}.ddp .opt.sel{background:rgba(70,45,25,.2);font-weight:600}
+.s2g{display:flex;flex-direction:column;--dadd-size:40px;--dadd-gap:5px;--button-touch-size:var(--dadd-size);--dadd-extra:calc(var(--dadd-size) + var(--dadd-gap) - 22px)}body.phone .s2g{--dadd-size:44px}@media(max-width:600px),(pointer:coarse){.s2g{--dadd-size:44px}}body.laptop .s2g{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0 26px;align-items:start}body.phone .s2n textarea{display:block}.s2r{margin-top:var(--intake-gap-group)}body.laptop .s2r{margin-top:0;position:relative;grid-column:2;grid-row:1;height:0}body.laptop .s2l{grid-column:1;grid-row:1}body.laptop .s2n{grid-column:1/3;grid-row:2}
+.scan-field{position:relative}.scan-field .field-camera{position:absolute;right:4px;top:50%;margin:0;margin-top:-17px;z-index:1}.panel .scan-field input[type=text]{display:block;padding-right:46px!important}.panel .scan-field input[type=text]:is(:hover,:focus){padding-right:46px!important}.scan-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.dwrap{margin:0;border-radius:6px;position:relative;z-index:1}body.laptop .dwrap{position:absolute;inset:-1px 0 auto 0;height:calc(236px + var(--dadd-extra))}.dwrap{display:flex;flex-direction:column}.dwrap .deck{flex:1 1 auto;min-height:0}.dwrap.ferr{outline-offset:4px}
+.deck{position:relative;overflow:visible;height:268px;width:100%;max-width:420px;margin:0 auto;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:0;cursor:grab}body.laptop .deck{height:auto;max-width:none}.deck.drag{cursor:grabbing}.deck:focus-visible{box-shadow:0 0 0 2px rgba(70,45,25,.4);border-radius:8px}
+.dcard{position:absolute;left:11%;top:7%;width:78%;height:93%;box-sizing:border-box;border:4px solid #fff;border-radius:10px;background:#efe3c8;box-shadow:0 5px 14px rgba(49,43,31,.32);overflow:hidden;transform-origin:50% 100%;transition:transform .55s cubic-bezier(.34,1.35,.64,1),opacity .4s;will-change:transform;transform:translateX(calc(var(--d)*5.2%)) translateY(calc(var(--a)*-5%)) rotate(calc(var(--d)*3.5deg)) scale(calc(1 - var(--a)*.07));z-index:calc(10 - var(--a))}
+.dcard.far{opacity:0;pointer-events:none}.dcard.cur{cursor:zoom-in}.dcard img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
+.deck.drag .dcard{transition:none}.deck.drag .dcard.cur{cursor:grabbing}
+.deck .dcard .dx{position:absolute;top:8px;right:8px;display:none;z-index:2}
+.deck .dcard.cur .dx{display:inline-flex;opacity:0}.dcard.cur:hover .dx,.dx:focus-visible{opacity:1}@media(hover:none){.dcard.cur .dx{opacity:1}}
+.dempty{--ph-bg:#efe3c8;position:absolute;inset:0;width:100%;height:100%;display:none;border:0;background:none;padding:0;margin:0;cursor:pointer;color:#3A2817;outline:0;container-type:inline-size}.deck.empty .dempty{display:block}.deck.empty{cursor:pointer}
+.dph{position:absolute;left:11%;top:7%;width:78%;height:93%;box-sizing:border-box;border:4px solid #fff;border-radius:10px;background:var(--ph-bg);box-shadow:0 5px 14px rgba(49,43,31,.32);transform-origin:50% 100%;transform:translateX(calc(var(--d)*5.2%)) translateY(calc(var(--a)*-5%)) rotate(calc(var(--d)*3.5deg)) scale(calc(1 - var(--a)*.07));z-index:calc(10 - var(--a))}
+.dph.cur{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:0 clamp(3px,4cqw,12px);font:700 clamp(12px,6cqw,18px)/1.2 var(--sfh,'Cormorant Garamond',serif);color:#3A2817;text-align:center}.dph .photo-upload-icon{flex:none;pointer-events:none;width:75px;max-width:100%;height:auto}.dempty:focus-visible .dph.cur{outline:2px solid #3A2817;outline-offset:2px}
+.deck.empty .dadd{display:none}
+.dadd{position:absolute;right:calc(11% - var(--button-field-size,34px)/2);top:calc(100% + 8px);z-index:30;margin:0}.darr svg{pointer-events:none}.dadd input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;font-size:0}
+.dstrip{flex:none;height:calc(var(--dadd-size) + var(--dadd-gap));display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;margin:0 auto;padding-inline:calc(11% + var(--dadd-size)/2 + 10px)}.dstrip:has(.ddots:empty){visibility:hidden}.ddots{display:flex;flex-wrap:nowrap;align-items:center;min-width:0;overflow-x:auto}.ddots button{flex-shrink:0;width:14px;height:20px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}.ddots button::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(70,45,25,.3);transition:.2s}.ddots button.on::before{background:#3A2817;transform:scale(1.4)}.dcnt{flex-shrink:0;font:600 13px/1 var(--sfb)!important;color:#312b1f!important;min-width:30px;font-variant-numeric:tabular-nums}
+.darr{position:absolute;top:53.5%;z-index:30;margin-top:calc(var(--button-field-size,34px)/-2);padding:0;margin-left:0;margin-right:0;margin-bottom:0}.darr.l{left:calc(11% - var(--button-field-size,34px) - 8px)}.darr.r{right:calc(11% - var(--button-field-size,34px) - 8px)}.deck .darr{display:none}.deck .darr.l::before{left:-1px;translate:0 -50%}.deck .darr.r::before{left:auto;right:-1px;translate:0 -50%}.deck.multi .darr:not(:disabled){display:flex}
+
+#dLb{position:fixed;inset:0;z-index:2000;background:rgba(20,14,8,.88);display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}#dLb.on{display:flex}#dLb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+@media(prefers-reduced-motion:reduce){.dcard,.ddots button::before{transition:none}}
+.two{display:block}body.laptop .two{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--intake-gap-group);row-gap:0}.step[data-s="2"] .two{display:block}
+.dd>input{width:100%;padding-right:38px}
+.ddarr{position:absolute;right:14px;top:50%;width:7px;height:7px;border:solid #312b1f;border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+body.laptop .ddp{right:auto;width:max(100%,340px)}
+.steps,.snav{display:none}
+body.phone .steps{display:block;margin:var(--intake-gap-field) 0 var(--intake-gap-heading)}body.phone .snav{display:flex;justify-content:space-between;gap:10px;margin-top:var(--intake-gap-navigation)}
+body.phone .snav .b{flex:1}
+body.phone .step{display:none}body.phone .step.cur{display:block}
+.sl{font:600 15px var(--sfb);color:#2f2418;margin-bottom:var(--intake-gap-field)}
+.bars{display:flex;gap:4px}.bars i{flex:1;height:5px;border-radius:3px;background:rgba(70,45,25,.25)}.bars i.on{background:var(--sfg)}
+body.phone .step h3{border-top:0;padding-top:0}
+.fwrap{position:relative}.fwrap textarea{display:block}.panel .fwrap #fault,.panel .fwrap #stan{padding-right:110px!important}.fbtn{position:absolute;bottom:5px;width:34px;height:34px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(70,45,25,.55);border-radius:5px;background:transparent;color:#312b1f;cursor:pointer;padding:0;margin:0}.fb1{right:62px}.fb2{right:18px}.fbtn::before{content:"";position:absolute;inset:-5px}.fbtn:hover,.fbtn:focus-visible{background:rgba(70,45,25,.1);outline:0;border-color:rgba(70,45,25,.8)}.fbtn::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);right:0;white-space:nowrap;background:#3A2817;color:#f3e6c4;font:13px/1.3 var(--sfb);padding:4px 8px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:6}.fbtn:hover::after,.fbtn:focus-visible::after,.fbtn.tip::after{opacity:1}
+.fbtn[data-voice-for]::after{max-width:220px;white-space:normal;text-align:left}
+.nipb{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0!important;flex:none}
+.panel .row{position:relative}.panel .row #nip,.panel .row #delAddr,.panel .row #addr{width:100%;padding-right:48px}
+.panel .nipb{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:5px}
+.ddarr{right:5px!important;top:50%!important;width:34px!important;height:34px!important;border:1px solid rgba(70,45,25,.55)!important;border-radius:5px;transform:translateY(-50%)!important}
+.ddarr::after,.cc::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;border:solid #312b1f;border-width:0 2px 2px 0;transform:translate(-50%,-70%) rotate(45deg)}
+.cc{position:relative}.cc::after{content:'';position:absolute;left:auto;right:5px;top:50%;width:34px;height:34px;border:1px solid rgba(70,45,25,.55);border-radius:5px;background:none;transform:translateY(-50%);pointer-events:none}
+.cc::before{content:'';position:absolute;right:18.5px;top:50%;width:7px;height:7px;border:solid #312b1f;border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.panel .cc select{appearance:none;-webkit-appearance:none;padding-right:40px}
+.panel .cc select{padding-right:36px;text-overflow:ellipsis}
+.panel .cc{padding:0 6px 0 8px;gap:6px}.panel .cc select{font-size:14px;padding-right:38px}.panel .ph-row input{padding-left:10px;padding-right:6px;font-size:15px}.panel .ph-row input::placeholder{letter-spacing:0}
+.panel .ph-row{align-items:stretch}.panel .cc{min-height:44px}.panel .ph-row input{min-height:44px;box-sizing:border-box}
+.panel #mail{min-height:44px;box-sizing:border-box}
+body.phone .snav.first{justify-content:flex-end}body.phone .snav.first #sPrev{display:none!important}#sNext::after{content:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2214%22%20viewBox%3D%220%200%2022%2014%22%20fill%3D%22none%22%20stroke%3D%22%23312b1f%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M1%207h19M14%201l6%206-6%206%22%2F%3E%3C%2Fsvg%3E");margin-left:10px;vertical-align:middle;display:inline-block;line-height:0}
+
+/* Mobile navigation: source GOLD_CTA pill, no animation; current green action palette. */
+body.phone .snav .b{height:44px!important;min-height:44px;min-width:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;gap:0}
+body.phone .snav .b{flex:0 0 calc(50% - 5px)}
+/* parch-bot.webp: upper tip of the right fold is y=38 of its 200px source height.
+   This intrinsic ratio scales with the existing --bw; no viewport/pixel offset. */
+.screen.phone .panel{--parch-fold-top-ratio:.19;padding-bottom:calc(var(--bw,200px) * (1 - var(--parch-fold-top-ratio)))}
+body.phone #sPrev{color:var(--button-parchment-ink)!important;transition:none!important;animation:none!important;transform:none!important;padding:8px 10px!important;font-family:var(--sfb)!important;border-color:var(--button-parchment-ink)!important;background:var(--button-parchment-surface)!important}
+body.phone #sPrev:hover{background:linear-gradient(var(--button-parchment-hover),var(--button-parchment-hover)),var(--button-parchment-surface)!important}
+body.phone .snav{--step-nav-arrow:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2214%22%20viewBox%3D%220%200%2022%2014%22%20fill%3D%22none%22%20stroke%3D%22%23312b1f%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M1%207h19M14%201l6%206-6%206%22%2F%3E%3C%2Fsvg%3E")}
+body.phone #sPrev::before,body.phone #sNext::after{content:'';width:22px;height:14px;mask-image:var(--step-nav-arrow);mask-size:contain;mask-repeat:no-repeat;background-color:currentColor;display:inline-block;line-height:0;flex-shrink:0}
+body.phone #sPrev::before{transform:rotate(180deg);margin-right:10px}
+body.phone #sNext:not(:disabled){background:var(--sfg)!important}
+body.phone #sPrev:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+
+.stph{display:none}
+body.laptop .stph{display:flex;align-items:center;gap:12px;font:600 26px 'Cormorant Garamond',serif;color:#2f2418;margin:var(--intake-gap-field) 0 var(--intake-gap-heading)}
+body.laptop .stph i{font:700 16px var(--sfb);font-style:normal;width:32px;height:32px;border-radius:50%;background:var(--sfg);color:#f3e6c4;display:inline-flex;align-items:center;justify-content:center;flex:none}
+body.laptop .step[data-s="2"],body.laptop .step[data-s="3"],body.laptop .step[data-s="4"]{margin-top:var(--intake-gap-section);padding-top:var(--intake-section-inset);border-top:2px solid rgba(70,45,25,.35)}
+body.laptop .step[data-s="2"]>h3:first-of-type,body.laptop .step[data-s="4"]>h3:first-of-type{display:none}
+.delivery-fields{display:grid;grid-template-columns:minmax(0,1fr) 100px;column-gap:var(--intake-gap-group);row-gap:0;align-items:end}.delivery-address,.delivery-unit{min-width:0}.delivery-fields input{display:block}.delivery-unit input{width:100%}
+body.phone .delivery-fields{grid-template-columns:minmax(0,1fr);gap:0}
+@media(max-width:767px){.delivery-fields{grid-template-columns:minmax(0,1fr);gap:0}}
+.panel #delNotes{display:block;min-height:0;overflow:hidden;resize:none}
+#dClient tr[data-k="deliverynotes"] td:last-child{white-space:pre-wrap;overflow-wrap:anywhere}
+
+body.laptop .nipco{grid-template-columns:200px 1fr}
+#nipErr{white-space:nowrap}
+.nmsg{font:12px var(--sfb);color:#6b5940}.nmsg.bad{color:#b3261e}.nmsg.warn{color:#8a5a00}.nmsg.good{color:#2e6b34}
+.nmsg a{color:inherit;text-decoration:underline;font-weight:600}
+.panel input[type=checkbox]{-webkit-appearance:none;appearance:none;position:relative;flex:none;box-sizing:border-box;width:28px;height:28px;margin:0 22px 0 2px;vertical-align:middle;border:2.5px solid rgba(0,0,0,.6);border-radius:2px;background:transparent;cursor:pointer;overflow:visible;transition:all .3s}
+.panel label:hover input[type=checkbox]{border-color:rgba(0,0,0,.8);background:rgba(0,0,0,.04);box-shadow:0 0 6px rgba(0,0,0,.25)}
+.panel input[type=checkbox]:checked,.panel label:hover input[type=checkbox]:checked{border-color:#000;background:transparent;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.panel input[type=checkbox]:checked::after{content:"";position:absolute;left:-4.5px;bottom:8px;width:40px;height:38px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'-2%20-14%2042%2052'%20fill%3D'none'%20stroke%3D'%23020202'%20stroke-width%3D'4.6'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'miter'%20stroke-miterlimit%3D'8'%3E%3Cpath%20d%3D'M0.9%2021.6c1.6%206%205.2%2012%209.6%2015.1%202.6-2.2%206.4-6.4%209.5-10.4%202.5-4%205.4-9.9%209.2-18.5%203.5-7.9%207.4-17.8%2011-27.7%201.1-3%202-5.6%202.9-7.9'%2F%3E%3C%2Fsvg%3E") center/contain no-repeat;pointer-events:none;animation:tickd .5s ease forwards}
+@keyframes tickd{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.cc select{position:absolute;inset:0;opacity:0;pointer-events:none}
+.ccb{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:15px;color:#312b1f;text-align:left;padding:8px 38px 8px 0;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.panel .cc{cursor:pointer}
+#ccList{position:absolute;z-index:99999;border-radius:4px;border:1px solid rgba(70,45,25,.55);box-shadow:0 8px 20px rgba(60,35,10,.28),0 2px 6px rgba(60,35,10,.18);background:#f1dfb6 url(parch-mid.webp) center/220% auto no-repeat;overflow:hidden}
+#ccList button{display:flex;align-items:center;gap:8px;width:100%;padding:9px 9px;border:0;background:transparent;font:14px var(--sfb);color:#000;text-align:left;cursor:pointer;white-space:nowrap}
+#ccList button:hover{background:rgba(70,45,25,.1)}#ccList button.sel{background:rgba(70,45,25,.16);font-weight:600}#ccList button+button{border-top:1px solid rgba(70,45,25,.12)}
+#ccList span{flex:1}#ccList b{font-weight:400;opacity:.7;font-size:13px}
+#ccList img{object-fit:contain;flex:none}
+#delSugg:not(:empty),#addrSugg:not(:empty){margin-top:4px;border-radius:4px;border:1px solid rgba(70,45,25,.55);box-shadow:0 8px 20px rgba(60,35,10,.28),0 2px 6px rgba(60,35,10,.18);background:#f1dfb6 url(parch-mid.webp) center/220% auto no-repeat;overflow:hidden}#delSugg button,#addrSugg button{display:block;width:100%;text-align:left;padding:9px;font:14px var(--sfb);color:#2f2418;background:transparent;border:0;cursor:pointer}#delSugg button+button,#addrSugg button+button{border-top:1px solid rgba(70,45,25,.12)}#delSugg button:hover,#addrSugg button:hover{background:rgba(70,45,25,.1)}
+#routeInfo{margin:8px 0 4px;font-weight:600}#routeMap{position:relative;height:300px;border:1px solid rgba(70,45,25,.55);border-radius:4px;overflow:hidden}
+.rlbl{background:#fff;border:1px solid #999;border-radius:4px;padding:3px 8px;font:600 13px sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.rsw{position:absolute;left:8px;top:8px;z-index:2;display:flex}.rsw button{padding:5px 10px;font:600 12px var(--sfb);border:1px solid rgba(70,45,25,.55);background:#f1dfb6;cursor:pointer}.rsw .on{background:var(--sfg);color:#f1dfb6}
+.rx{position:absolute;right:8px;top:8px;z-index:4;width:38px;height:38px;padding:0;font:700 24px/1 sans-serif;color:#fff;background:var(--sfg);border:2px solid #fff;border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,.45);cursor:pointer}#routeMap .maplibregl-ctrl-top-right{top:40px}
+.rcb{top:54px;font:700 20px/1 Arial,sans-serif;letter-spacing:-1px}.rcb.on{background:#3b2410;border-color:#f1dfb6}#routeMap .maplibregl-ctrl-top-right{top:100px}
+#costPanel{position:absolute;z-index:3;right:0;top:0;bottom:0;width:52%;box-sizing:border-box;padding:12px 44px 12px 14px;overflow:auto;background:#f1dfb6 url(parch-mid.webp) center/cover;border-left:1px solid rgba(70,45,25,.55);box-shadow:-6px 0 16px rgba(60,35,10,.25);font:14px var(--sfb);color:#2f2418}
+#costPanel h4{margin:0 0 6px;text-align:center;font:600 17px var(--sfb)}#costPanel small{display:block;font-size:11.5px;opacity:.75}
+.cr{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid rgba(70,45,25,.2)}.cr b{white-space:nowrap}.ch{margin:8px 0 0;font-weight:600}
+.ct{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font:600 16px var(--sfb)}
+body.phone #routeMap{height:420px}body.phone #costPanel{left:0;width:auto;top:auto;height:56%;border-left:0;border-top:1px solid rgba(70,45,25,.55);box-shadow:0 -6px 16px rgba(60,35,10,.25)}
+#routeMap .rx{right:8px;top:8px;width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:5px;background:transparent;color:#312b1f;border:1px solid rgba(70,45,25,.55);box-shadow:none;font:400 22px/29px Arial,sans-serif;letter-spacing:0}#routeMap .rx:hover{background:rgba(0,0,0,.08)}#routeMap .rx.rcb{background:url(calc-v7.webp) center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;height:42px;top:48px;font:700 16px/27px Arial,sans-serif}#routeMap .maplibregl-ctrl-top-right{top:auto;bottom:34px}
+#routeMap.costopen .rcb{display:none}#routeMap.costopen{height:440px}body.phone #routeMap.costopen{height:520px}
+#costPanel .ch{text-align:center;margin:10px 0 2px}#costPanel .cfrom b{font:700 15.5px var(--sfb)}#costPanel .cfrom small{opacity:.85}#costPanel .cr>span small{white-space:nowrap;font-size:10.5px}
+#costPanel .ct{margin-top:10px;padding-top:8px;border-top:2px solid rgba(70,45,25,.45);font:700 18px var(--sfb)}
+.cinfo{display:flex;justify-content:flex-end;margin-top:10px}.cib{display:inline-flex;align-items:center;gap:4px;cursor:pointer;color:#72502B;font:italic 600 14px 'Cormorant Garamond',serif}.cii{pointer-events:none}
+#rulesWin{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);display:flex;justify-content:center;align-items:center;padding:16px}.rwb{position:relative;width:100%;max-width:760px;display:flex;flex-direction:column;align-items:flex-end}
+.rwx{width:40px;height:40px;border:0;background:none;color:#fff;font:400 30px/1 Arial,sans-serif;cursor:pointer}
+.rwp{width:100%;box-sizing:border-box;padding:56px 28px 56px;color:#3A2817;font-family:'Cormorant Garamond',serif;background:url(parch-top.webp) top/100% 56px no-repeat,url(parch-bot.webp) bottom/100% 56px no-repeat,url(parch-mid.webp) 0 54px/100% calc(100% - 108px) no-repeat}
+.rwb{max-width:960px;padding-top:80px}.rwx{position:absolute;top:0;right:0;z-index:5}.rwp{padding:14px 36px 60px}.rwhd{position:relative;z-index:2;display:grid;grid-template-columns:1fr 140px 140px;align-items:center;height:82px;margin:-74px -12px 0;padding:0 24px 0 36px}.rwhd::before{content:'';position:absolute;inset:0;z-index:-1;background:url(plate.avif) center/100% 100% no-repeat;scale:1.04;filter:drop-shadow(0 6px 8px rgba(0,0,0,.5))}.rwhd img{width:210px;height:106px;grid-row:1;grid-column:1;object-fit:contain;align-self:start;margin-top:3px}.rwti{grid-row:1;grid-column:1;margin-left:224px;font:600 24px/26px 'Cormorant Garamond',serif}
+.rwv{text-align:center}.rwhd .rwv{font:600 20px/1.05 'Cormorant Garamond',serif}.rwhd .rwcat{display:block;font:500 15px/1.2 'Cormorant Garamond',serif;margin-top:2px}.rwhd .rwii{vertical-align:-2px;margin-left:4px;opacity:.8}.rwpr{margin-top:6px;text-align:center;font:600 20px/26px 'Cormorant Garamond',serif}.rwpr img{width:30px;height:30px;vertical-align:middle;margin-left:8px}.rwft{text-align:center;font:600 16px/1.3 'Cormorant Garamond',serif;padding-bottom:8px;border-bottom:1px solid rgba(114,80,43,.35)}
+.rwr{display:grid;grid-template-columns:1fr 140px 140px;align-items:center;padding:6px 8px;border-bottom:1px solid rgba(114,80,43,.8)}.rwr:last-child{border-bottom:0}.rwn{font:600 20px/1.3 'Cormorant Garamond',serif}.rwk{font:500 15px/1.35 'Cormorant Garamond',serif}.rwr .rwv{font:400 14px/1.3 Inter,Arial,sans-serif}.rwr .rwv small{display:block;font-size:13px}
+@media(max-width:560px){.rwp{padding:56px 16px}.rwhd,.rwr{grid-template-columns:1fr 90px}.rwt{display:none}.rwhd img{width:110px;height:56px}.rwti{margin-left:118px}.rwhd .rwcat{display:none}.rwn{font-size:17px}}
+#costAdd{display:block;width:100%;margin-top:12px;padding:10px;font:600 14px var(--sfb);color:#f1dfb6;background:var(--sfg);border:1px solid #3b2410;border-radius:4px;cursor:pointer}#costAdd.on{background:transparent;color:#2f2418;border-color:rgba(70,45,25,.55)}
+</style>
+<style>body.phone .step[data-s="4"]{padding-bottom:71px}@media(min-width:768px){body.phone .step[data-s="4"]{padding-bottom:92px}}</style>
+<link rel="stylesheet" href="site-seal.css">
+</head>
+<body>
+<script src="site-header/header.bundle.js"></script>
+<div class="wrap">
+<div class="screen phone" id="screen">
+ <div id="sh"></div><div class="abar"><div class="ab"><span class="ico wr"><svg viewBox="0 0 56 66" width="44" height="51" style="position:absolute;left:0;top:-4px;overflow:visible" fill="none"><path d="M22,25 H34 A8,8 0 0 1 42,33 V43 A8,8 0 0 1 34,51 H24 L17,55 L20,51 H22 A8,8 0 0 1 14,43 V33 A8,8 0 0 1 22,25 Z" stroke="#0B1F3A" stroke-width="2.5" stroke-linejoin="round"/><circle cx="22" cy="39" r="2.2" fill="#000"/><circle cx="28" cy="39" r="2.2" fill="#000"/><circle cx="34" cy="39" r="2.2" fill="#000"/></svg></span><span class="cp" data-t="ab1"></span></div><div class="ab"><span class="ico gm"><img src="gmaps.webp" alt=""></span><span class="cp" data-t="ab2"></span></div><div class="ab"><span class="ico ph"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="cp" data-t="ab3"></span></div></div>
+<div class="panel" id="form">
+ <h2 class="ttl" data-t="ttl">Protokół przyjęcia do serwisu</h2>
+ 
+ <div class="steps" id="steps"><div class="sl" id="stl"></div><div class="bars"><i></i><i></i><i></i><i></i></div></div>
+<div class="step" data-s="1">
+ <div class="stph"><i>1</i><span data-t="s1"></span></div>
+ <button type="button" id="bType" class="btype"><span id="bTypeT" data-t="priv"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
+ <div id="orgBox" class="hide">
+  <div class="two nipco"><div><label>NIP</label>
+  <div class="row"><input type="text" id="nip" placeholder="{{nipMask}}" inputmode="numeric" maxlength="13" autocomplete="off"><button class="b nipb" id="nipBtn" type="button" aria-label="GUS / NIP"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button></div><div class="miss hide" id="nipErr" data-t="niperr"></div></div>
+  <div><label data-t="company"></label><input type="text" id="company" autocomplete="off"></div></div>
+  <div class="nmsg hide" id="nipMsg"></div>
+  <label data-t="invaddr"></label><div class="row"><input type="text" id="addr" autocomplete="off"><button class="b nipb" id="addrBtn" type="button" aria-label="Szukaj"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button></div><div id="addrSugg" class="sugg"></div>
+ </div>
+ <div id="contactBox">
+ <label id="nameLabel" for="name" data-t="callme"></label>
+ <input type="text" id="name" autocomplete="off" data-ph="nameph">
+ <div class="two"><div><label data-t="phone"></label><div class="ph-row"><div class="cc"><img id="phoneCcFlag" src="pl.webp" width="22" height="15" alt=""><select id="phoneCc" tabindex="-1" aria-hidden="true"></select><button type="button" class="ccb" id="phoneCcBtn" aria-haspopup="listbox"></button></div><input type="tel" id="phone" inputmode="tel" placeholder="XXX XXX XXX"></div>
+<div class="miss hide" id="phoneErr" data-t="phoneerr"></div></div><div>
+<label data-t="mailopt"></label><input type="email" id="mail"><div class="miss hide" id="mailErr" data-t="mailerr"></div></div></div>
+ </div>
+ <div id="delivBlock">
+
+ <div class="chk" id="sameRow"><label style="margin:0"><input type="checkbox" id="same" checked> <span data-t="same"></span></label></div>
+ <div id="delBox" class="hide">
+  <div class="delivery-fields"><div class="delivery-address"><label for="delAddr" data-t="delivery"></label><div class="row"><input type="text" id="delAddr" autocomplete="off" placeholder="ul. Przykładowa 1, 50-001 Wrocław"><button class="b nipb" id="delBtn" type="button" aria-label="Szukaj"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button></div></div><div class="delivery-unit"><label id="delUnitLabel" for="delUnit" data-t="delunit"></label><input type="text" id="delUnit" name="delUnit" maxlength="20" data-ph="delunitph" aria-labelledby="delUnitLabel"></div></div>
+  <div id="delSugg"></div>
+  <label id="delNotesLabel" for="delNotes" data-t="delnotes"></label><textarea id="delNotes" name="delNotes" rows="1" data-ph="delnotesph" aria-labelledby="delNotesLabel"></textarea>
+  <div id="routeInfo" class="hide"></div>
+  <div id="routeMap" class="hide"></div>
+ </div>
+ </div>
+
+</div>
+<div class="step" data-s="2">
+ <div class="stph"><i>2</i><span data-t="s2"></span></div>
+ <h3 data-t="device"></h3>
+<div class="s2g"><div class="s2l">
+ <div class="two"><div><label data-t="type" class="req"></label><input type="hidden" id="type"><div class="dd" id="typeDd"><input type="text" id="typeIn" autocomplete="off" data-ph="type"><i class="ddarr"></i><div id="typeTree" class="ddp hide"></div></div></div>
+ <div><label data-t="modelLbl"></label><div class="scan-field"><input type="text" id="model"><!-- workspace-model-camera:start --><button type="button" class="field-camera" id="modelCamera">📷</button><!-- workspace-model-camera:end --><input type="file" accept="image/*" id="modelPhoto" class="hide"><span class="scan-status" id="modelScanStatus" role="status" aria-live="polite"></span></div></div></div>
+ <div class="row hide" id="typeOtherRow"><input type="text" id="typeOther" autocomplete="off" data-ph="otherph"></div>
+ <label data-t="serial"></label><div class="scan-field"><input type="text" id="serial"><!-- workspace-serial-camera:start --><button type="button" class="field-camera" id="serialCamera">📷</button><!-- workspace-serial-camera:end --><input type="file" accept="image/*" id="serialPhoto" class="hide"><span class="scan-status" id="serialScanStatus" role="status" aria-live="polite"></span></div>
+</div>
+<div class="s2n"><label data-t="stan" for="stan"></label><div class="fwrap"><textarea id="stan" rows="2" data-ph="stanph" style="min-height:0"></textarea><!-- workspace-stan-voice:start --><button type="button" class="fbtn fb1" id="stanVoice" data-voice-for="stan">🎤</button><!-- workspace-stan-voice:end --><!-- workspace-stan-camera:start --><button type="button" class="fbtn fb2" id="stanCamera">📷</button><!-- workspace-stan-camera:end --><input type="file" id="stanPhoto" class="hide" accept="image/*"><span class="scan-status" id="stanMediaStatus" role="status" aria-live="polite"></span></div></div>
+<div class="s2r">
+<div class="dwrap" id="dwrap"><div class="deck empty" id="deck" tabindex="0"><button type="button" class="dempty" id="dempty" aria-label="Dodaj zdjęcia urządzenia"><span class="dph" style="--d:2;--a:2"></span><span class="dph" style="--d:-1;--a:1"></span><span class="dph" style="--d:1;--a:1"></span><span class="dph cur" style="--d:0;--a:0"><img class="photo-upload-icon" src="photo-upload-e-exact.svg" width="75" alt="" aria-hidden="true"><span id="demptyTx">Dodaj zdjęcia urządzenia</span></span></button><!-- workspace-photo-add:start --><label class="dadd" aria-label="Dodaj zdjęcia urządzenia"><span aria-hidden="true">+</span><input type="file" accept="image/*" multiple id="fPh"></label><!-- workspace-photo-add:end --><!-- workspace-photo-prev:start --><button type="button" class="darr l" id="dPrev" aria-label="‹">‹</button><!-- workspace-photo-prev:end --><!-- workspace-photo-next:start --><button type="button" class="darr r" id="dNext" aria-label="›">›</button><!-- workspace-photo-next:end --><template id="photoDeleteButton"><!-- workspace-photo-delete:start --><button type="button" class="dx" aria-label="×">×</button><!-- workspace-photo-delete:end --></template></div><div class="dstrip"><div class="ddots" id="dDots"></div><span class="dcnt" id="dCnt"></span></div></div>
+<div id="dLb"><img alt=""></div>
+</div>
+</div>
+
+</div>
+<div class="step" data-s="3">
+ <div class="stph"><i>3</i><span data-t="s3"></span></div>
+ <div class="fwrap"><textarea id="fault" data-ph="faultph"></textarea><button type="button" class="fbtn fb1" id="voice" data-voice-for="fault"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></button><label class="fbtn fb2" id="cardLbl" data-tk="cardphoto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><input type="file" accept="image/*" id="fCard" class="hide"></label></div>
+ <img id="cardImg" class="hide" style="height:60px;margin-top:var(--intake-gap-group);border-radius:4px">
+
+
+</div>
+<div class="step" data-s="4">
+ <label for="sig" data-t="s4"></label>
+ <div class="sigfield">
+  <canvas id="sig"></canvas>
+  <!-- workspace-signature-clear:start --><button type="button" id="sigClr" aria-label="Wyczyść">×</button><!-- workspace-signature-clear:end -->
+ </div>
+
+ <div id="missing" class="miss"></div>
+ <!-- workspace-protocol-confirm:start --><button type="button" id="print">Gotowe</button><!-- workspace-protocol-confirm:end -->
+</div>
+<div class="snav"><button class="b" id="sPrev" data-t="back"></button><button class="b main" id="sNext" data-t="next"></button></div>
+</div>
+
+</div>
+<div class="printcol"><button id="pbtn" class="pbtn">🖨 Печать</button>
+<div class="docs" id="docs">
+ <div class="page" id="p1">
+  <div class="side"></div><img class="slogo" src="logo-doc.webp" alt="">
+  <div class="st sb2" style="top:117pt;font-size:10pt">Omobonus serwis</div>
+  <div class="st" data-d="tag1" style="top:131.9pt;font-size:6.8pt"></div><div class="st" data-d="tag2" style="top:140.9pt;font-size:6.8pt"></div>
+  <div class="sk sb2" data-d="contact" style="top:648pt;font-size:10pt"></div><div class="srule"></div>
+  <div class="sk sb2" style="top:674pt;font-size:8pt">{{firm}}</div><div class="sk" style="top:689pt;font-size:7.8pt">NIP {{nip}}</div>
+  <div class="sk" style="top:715pt;font-size:7.2pt">{{street}}</div><div class="sk" style="top:729pt;font-size:7.8pt">{{postal}} {{city}}</div>
+  <div class="sk" style="top:755pt;font-size:7.8pt">{{phoneDisp}}</div><div class="sk" style="top:769pt;font-size:7pt">{{email}}</div><div class="sk" style="top:783pt;font-size:7pt">{{host}}</div>
+  <div class="cont">
+   <h1 data-d="ttl"></h1>
+   <div class="no"><span data-d="no"></span> <b id="dNo"></b> · <span id="dDate"></span></div>
+   <h4 data-d="client_h"></h4><table class="d" id="dClient"></table>
+   <h4 data-d="dev_h"></h4><table class="d" id="dDev"></table>
+   <h4 data-d="fault_h"></h4><div id="dFault" style="padding:4px"></div>
+   <h4 data-d="stan_h" id="hStan" class="hide"></h4><div id="dStan" class="hide" style="padding:4px;white-space:pre-wrap"></div>
+   <div class="ph2" id="dPh1"></div>
+   <div class="dia" id="dDiag"><span data-d="fee"></span> <span id="dFee"></span></div>
+   <div class="sigrow"><div><img id="sigImg" alt=""><span data-d="sigc"></span></div><div><span><span data-d="took_by"></span> <b id="dWho">Maksym Suprunenko</b></span><br><span data-d="sigs"></span></div><div class="stamp" data-d="stamp"></div></div>
+   <div class="small" data-d="small"></div>
+  </div>
+ </div>
+ <div class="page" id="p2">
+  <div class="side"></div><img class="slogo" src="logo-doc.webp" alt="">
+  <div class="st sb2" style="top:117pt;font-size:10pt">Omobonus serwis</div>
+  <div class="st" data-d="tag1" style="top:131.9pt;font-size:6.8pt"></div><div class="st" data-d="tag2" style="top:140.9pt;font-size:6.8pt"></div>
+  <div class="sk sb2" data-d="contact" style="top:648pt;font-size:10pt"></div><div class="srule"></div>
+  <div class="sk sb2" style="top:674pt;font-size:8pt">{{firm}}</div><div class="sk" style="top:689pt;font-size:7.8pt">NIP {{nip}}</div>
+  <div class="sk" style="top:715pt;font-size:7.2pt">{{street}}</div><div class="sk" style="top:729pt;font-size:7.8pt">{{postal}} {{city}}</div>
+  <div class="sk" style="top:755pt;font-size:7.8pt">{{phoneDisp}}</div><div class="sk" style="top:769pt;font-size:7pt">{{email}}</div><div class="sk" style="top:783pt;font-size:7pt">{{host}}</div>
+  <div class="cont">
+   <h1 data-d="photodoc" id="hPh2" class="hide"></h1>
+   <div class="no"><span data-d="no"></span> <span id="dNo2"></span></div>
+   <div class="ph2" id="dPh2"></div>
+   <h4 data-d="status_h"></h4>
+   <div class="row" style="gap:16px;align-items:flex-start;padding:6px"><div class="qr" data-d="qr"></div>
+   <ol style="margin:0;padding-left:18px" data-d="steps"></ol></div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const V=new URLSearchParams(location.search).get('v')||'laptop';
+document.body.classList.add(V);
+const standardsPreview=new URLSearchParams(location.search).has('standards');const bc=new BroadcastChannel(standardsPreview?'maket-standards':'maket');
+if(V==='print'){
+ let hlKey=null;
+ const applyHl=()=>{document.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));if(!hlKey)return;let el=null;if(hlKey[0]==='#')el=$(hlKey.slice(1));else el=document.querySelector('#docs tr[data-k="'+hlKey+'"]');if(el)el.classList.add('hl')};
+ bc.onmessage=e=>{const m=e.data;if(typeof m==='string'){if(m!=='hello'){$('docs').innerHTML=m;applyHl()}}else if(m&&m.hl!==undefined){hlKey=m.hl;applyHl()}};
+ bc.postMessage('hello');
+ $('pbtn').onclick=()=>window.print();
+}else{
+$('screen').className='screen '+V;
+const T={
+pl:{demo:'Prototyp: dane nigdzie się nie zapisują. Po prawej widać dokument.',h_intake:'Przyjęcie urządzenia',who:'Kim jest klient',priv:'Osoba prywatna',org:'Firma / instytucja',find:'Znajdź',company:'Nazwa firmy',invaddr:'Adres siedziby',invnote:'Ten adres zostaje na fakturę.',resp:'Osoba odpowiedzialna',respphone:'Telefon osoby odpowiedzialnej',respmail:'E-mail osoby odpowiedzialnej',callme:'Osoba kontaktowa',nameph:'np. Jan Kowalski',phone:'Telefon',phoneerr:'Nieprawidłowy numer telefonu',otherph:'Wpisz, jakie to urządzenie lub usługa',n_other:'opis urządzenia lub usługi',noerr:'Nie udało się nadać numeru zlecenia. Spróbuj ponownie.',mailerr:'Nieprawidłowy adres e-mail (np. jan@firma.pl)',n_mail:'poprawny e-mail',niperr:'Nieprawidłowy NIP',mailopt:'E-mail',delivery:'Adres dostawy',same:'Taki sam jak adres siedziby',deladdr:'Adres dostawy',deltip:'Zostaw puste, jeśli odbierzesz sam. Jeśli będziemy w pobliżu, odwieziemy bezpłatnie.',ontheway:'Jeśli będziemy mieli po drodze, możemy odwieźć urządzenie po naprawie.',device:'Urządzenie',type:'Typ urządzenia',modelLbl:'Marka i model urządzenia',model:'Model',photoOver:'Zdjęcie urządzenia (widok ogólny)',photoSerial:'Zdjęcie numeru seryjnego',serial:'Numer seryjny',fault:'Usterka',voice:'🎤 Głos (demo)',cardphoto:'📷 Zdjęcie kartki klienta',faultnote:'Opis możesz wpisać, podyktować lub sfotografować kartkę klienta.',cond:'Stan przy przyjęciu',nodmg:'Brak widocznych uszkodzeń',acc:'Wyposażenie',sign:'Podpis klienta',clear:'Wyczyść',printbtn:'Gotowe',need:'Brakuje: ',needsign:'podpis klienta',needphoto:'zdjęcie: ',n_over:'zdjęcie urządzenia',n_serial:'zdjęcie numeru seryjnego',n_fault:'opis usterki',n_phone:'poprawny telefon',n_type:'typ urządzenia',left:'zostawione',took:'zabiera ze sobą',other:'Inne',needphotoTag:'potrzebne zdjęcie'},
+uk:{demo:'Прототип: дані ніде не зберігаються. Праворуч видно документ.',h_intake:'Прийом пристрою',who:'Хто клієнт',priv:'Приватна особа',org:'Фірма / установа',find:'Знайти',company:'Назва компанії',invaddr:'Юридична адреса',invnote:'Ця адреса залишається для фактури.',resp:'Відповідальна особа',respphone:'Телефон відповідальної особи',respmail:'Email відповідальної особи',callme:'Контактна особа',nameph:'напр. Іван Коваленко',phone:'Телефон',phoneerr:'Невірний номер телефону',otherph:'Вкажіть, який це пристрій або послуга',n_other:'опис пристрою або послуги',noerr:'Не вдалося присвоїти номер замовлення. Спробуйте ще раз.',mailerr:'Невірна адреса e-mail (напр. jan@firma.pl)',n_mail:'правильний e-mail',niperr:'Невірний NIP',mailopt:'E-mail',delivery:'Адреса доставки',same:'Збігається з юридичною адресою',deladdr:'Адреса доставки',deltip:'Залиште порожнім, якщо заберете самі. Якщо будемо поруч, привеземо безкоштовно.',ontheway:'Якщо нам буде по дорозі, можемо привезти пристрій після ремонту.',device:'Пристрій',type:'Тип пристрою',modelLbl:'Марка й модель пристрою',model:'Модель',photoOver:'Фото пристрою (загальний вигляд)',photoSerial:'Фото серійного номера',serial:'Серійний номер',fault:'Несправність',voice:'🎤 Голос (демо)',cardphoto:'📷 Фото картки клієнта',faultnote:'Опис можна вписати, надиктувати або сфотографувати картку клієнта.',cond:'Стан при прийомі',nodmg:'Видимих пошкоджень немає',acc:'Комплектація',sign:'Підпис клієнта',clear:'Очистити',printbtn:'Готово',need:'Не вистачає: ',needsign:'підпис клієнта',needphoto:'фото: ',n_over:'фото пристрою',n_serial:'фото серійного номера',n_fault:'опис несправності',n_phone:'правильний телефон',n_type:'тип пристрою',left:'залишено',took:'забрав із собою',other:'Інше',needphotoTag:'потрібне фото'},
+ru:{demo:'Прототип: данные нигде не сохраняются. Справа виден документ.',h_intake:'Приём устройства',who:'Кто клиент',priv:'Частное лицо',org:'Фирма / учреждение',find:'Найти',company:'Название компании',invaddr:'Юридический адрес',invnote:'Этот адрес остаётся для фактуры.',resp:'Ответственное лицо',respphone:'Телефон ответственного',respmail:'Email ответственного',callme:'Контактное лицо',nameph:'например, Иван Иванов',phone:'Телефон',phoneerr:'Неверный номер телефона',otherph:'Укажите, какое это устройство или услуга',n_other:'описание устройства или услуги',noerr:'Не удалось присвоить номер заказа. Попробуйте ещё раз.',mailerr:'Неверный адрес e-mail (напр. jan@firma.pl)',n_mail:'правильный e-mail',niperr:'Неверный NIP',mailopt:'E-mail',delivery:'Адрес доставки',same:'Совпадает с юридическим адресом',deladdr:'Адрес доставки',deltip:'Оставьте пустым, если заберёте сами. Если будем рядом, привезём бесплатно.',ontheway:'Если нам будет по пути, можем привезти устройство после ремонта.',device:'Устройство',type:'Тип устройства',modelLbl:'Марка и модель устройства',model:'Модель',photoOver:'Фото устройства (общий вид)',photoSerial:'Фото серийного номера',serial:'Серийный номер',fault:'Неисправность',voice:'🎤 Голос (демо)',cardphoto:'📷 Фото карточки клиента',faultnote:'Описание можно вписать, надиктовать или сфотографировать карточку клиента.',cond:'Состояние при приёме',nodmg:'Видимых повреждений нет',acc:'Опись принадлежностей',sign:'Подпись клиента',clear:'Очистить',printbtn:'Готово',need:'Не хватает: ',needsign:'подпись клиента',needphoto:'фото: ',n_over:'фото устройства',n_serial:'фото серийного номера',n_fault:'описание неисправности',n_phone:'правильный телефон',n_type:'тип устройства',left:'оставлено',took:'забрал с собой',other:'Другое',needphotoTag:'нужно фото'},
+en:{demo:'Prototype: nothing is saved. The document is on the right.',h_intake:'Device intake',who:'Who is the client',priv:'Private person',org:'Company / institution',find:'Find',company:'Company name',invaddr:'Registered address',invnote:'This address stays for the invoice.',resp:'Contact person',respphone:'Contact phone',respmail:'Contact email',callme:'Contact person',nameph:'e.g. John Smith',phone:'Phone',phoneerr:'Invalid phone number',otherph:'Enter which device or service it is',n_other:'device or service description',noerr:'Could not assign an order number. Please try again.',mailerr:'Invalid e-mail address (e.g. jan@firma.pl)',n_mail:'valid e-mail',niperr:'Invalid NIP',mailopt:'E-mail',delivery:'Delivery address',same:'Same as registered address',deladdr:'Delivery address',deltip:'Leave empty if you will pick it up yourself. If we are nearby, we will bring it for free.',ontheway:'If it is on our way, we can bring the device back after repair.',device:'Device',type:'Device type',modelLbl:'Device brand and model',model:'Model',photoOver:'Device photo (overview)',photoSerial:'Serial number photo',serial:'Serial number',fault:'Fault',voice:'🎤 Voice (demo)',cardphoto:'📷 Photo of client card',faultnote:'Type it, dictate it, or photograph the client’s note.',cond:'Condition on intake',nodmg:'No visible damage',acc:'Accessories',sign:'Client signature',clear:'Clear',printbtn:'Done',need:'Missing: ',needsign:'client signature',needphoto:'photo: ',n_over:'device photo',n_serial:'serial number photo',n_fault:'fault description',n_phone:'valid phone',n_type:'device type',left:'left with us',took:'taken by client',other:'Other',needphotoTag:'photo needed'}
+};
+let L='pl';const t=k=>T[L][k]||k;
+const DOC={"pl":{"tag1":"Serwis i naprawa komputerów,","tag2":"drukarek i urządzeń biurowych","contact":"Kontakt","ttl":"Protokół przyjęcia do serwisu","photodoc":"Fotodokumentacja","no":"Nr zlecenia:","client_h":"Zleceniodawca","dev_h":"Urządzenie","fault_h":"Zgłoszona usterka","stan_h":"Stan i wyposażenie","cond_h":"Stan przy przyjęciu","acc_h":"Wyposażenie","status_h":"Jak sprawdzić status zlecenia","fee":"Opłata za diagnostykę w razie rezygnacji z naprawy:","feev":"wg cennika","sigc":"Podpis klienta","took_by":"Przyjął:","sigs":"Podpis serwisanta","stamp":"Pieczęć","small":"Urządzenie niewydane w ciągu 30 dni od powiadomienia o gotowości może zostać przekazane do utylizacji; dane przetwarzamy w celu realizacji zlecenia (RODO). [текст — демо, утверждает владелец]","qr":"QR<br>status","steps":"<li>Zeskanuj kod lub wejdź na <b>{{host}}</b> → „Status zlecenia”.</li><li>Wpisz numer zlecenia: <b id=\"dNo3\"></b>.</li><li>Wpisz numer telefonu podany przy przyjęciu.</li><li>Zobaczysz aktualny status i datę aktualizacji.</li>","r_firm":"Firma","r_nip":"NIP","r_invaddr":"Adres siedziby","r_delivery":"Adres dostawy","sameinv":"jak adres siedziby","r_resp":"Osoba zlecająca","r_phone":"Telefon","r_email":"E-mail","r_client":"Klient","private":"Osoba prywatna","r_type":"Typ","r_model":"Model","r_serial":"Numer seryjny","nodmg":"Brak widocznych uszkodzeń.","left":"pozostawiono w serwisie","took":"klient zabrał ze sobą","capOver":"Widok urządzenia","capSer":"Tabliczka – nr seryjny","comm":" — komentarz serwisanta: …","nophoto":"Brak dodatkowych zdjęć."},"uk":{"tag1":"Сервіс і ремонт комп’ютерів,","tag2":"принтерів і офісної техніки","contact":"Контакти","ttl":"Протокол прийому до сервісу","photodoc":"Фотодокументація","no":"Номер замовлення:","client_h":"Замовник","dev_h":"Пристрій","fault_h":"Заявлена несправність","stan_h":"Стан і комплектація","cond_h":"Стан при прийомі","acc_h":"Комплектація","status_h":"Як перевірити статус замовлення","fee":"Плата за діагностику у разі відмови від ремонту:","feev":"згідно з прайсом","sigc":"Підпис клієнта","took_by":"Прийняв:","sigs":"Підпис майстра","stamp":"Печатка","small":"Пристрій, не забраний протягом 30 днів після повідомлення про готовність, може бути переданий на утилізацію; дані обробляємо для виконання замовлення (RODO). [текст — демо, затверджує власник]","qr":"QR<br>статус","steps":"<li>Відскануйте код або зайдіть на <b>{{host}}</b> → «Статус замовлення».</li><li>Введіть номер замовлення: <b id=\"dNo3\"></b>.</li><li>Введіть номер телефону, вказаний при прийомі.</li><li>Ви побачите актуальний статус і дату оновлення.</li>","r_firm":"Фірма","r_nip":"NIP","r_invaddr":"Юридична адреса","r_delivery":"Адреса доставки","sameinv":"як юридична адреса","r_resp":"Контактна особа","r_phone":"Телефон","r_email":"E-mail","r_client":"Клієнт","private":"Приватна особа","r_type":"Тип","r_model":"Модель","r_serial":"Серійний номер","nodmg":"Видимих пошкоджень немає.","left":"залишено в сервісі","took":"клієнт забрав із собою","capOver":"Загальний вигляд пристрою","capSer":"Табличка — серійний номер","comm":" — коментар майстра: …","nophoto":"Додаткових фото немає."},"ru":{"tag1":"Сервис и ремонт компьютеров,","tag2":"принтеров и офисной техники","contact":"Контакты","ttl":"Протокол приёма в сервис","photodoc":"Фотодокументация","no":"Номер заказа:","client_h":"Заказчик","dev_h":"Устройство","fault_h":"Заявленная неисправность","stan_h":"Состояние и комплектация","cond_h":"Состояние при приёме","acc_h":"Комплектация","status_h":"Как проверить статус заказа","fee":"Плата за диагностику при отказе от ремонта:","feev":"по прайсу","sigc":"Подпись клиента","took_by":"Принял:","sigs":"Подпись мастера","stamp":"Печать","small":"Устройство, не забранное в течение 30 дней после уведомления о готовности, может быть передано на утилизацию; данные обрабатываем для выполнения заказа (RODO). [текст — демо, утверждает владелец]","qr":"QR<br>статус","steps":"<li>Отсканируйте код или зайдите на <b>{{host}}</b> → «Статус заказа».</li><li>Введите номер заказа: <b id=\"dNo3\"></b>.</li><li>Введите номер телефона, указанный при приёме.</li><li>Вы увидите актуальный статус и дату обновления.</li>","r_firm":"Фирма","r_nip":"NIP","r_invaddr":"Юридический адрес","r_delivery":"Адрес доставки","sameinv":"как юридический адрес","r_resp":"Контактное лицо","r_phone":"Телефон","r_email":"E-mail","r_client":"Клиент","private":"Частное лицо","r_type":"Тип","r_model":"Модель","r_serial":"Серийный номер","nodmg":"Видимых повреждений нет.","left":"оставлено в сервисе","took":"клиент забрал с собой","capOver":"Общий вид устройства","capSer":"Табличка — серийный номер","comm":" — комментарий мастера: …","nophoto":"Дополнительных фото нет."},"en":{"tag1":"Service and repair of computers,","tag2":"printers and office equipment","contact":"Contact","ttl":"Service intake protocol","photodoc":"Photo documentation","no":"Order no.:","client_h":"Client","dev_h":"Device","fault_h":"Reported fault","stan_h":"Condition and accessories","cond_h":"Condition on receipt","acc_h":"Accessories","status_h":"How to check the order status","fee":"Diagnostic fee if you decline the repair:","feev":"per price list","sigc":"Client signature","took_by":"Received by:","sigs":"Technician signature","stamp":"Stamp","small":"A device not collected within 30 days of the ready notice may be handed over for disposal; we process data to carry out the order (GDPR). [текст — демо, утверждает владелец]","qr":"QR<br>status","steps":"<li>Scan the code or go to <b>{{host}}</b> → “Order status”.</li><li>Enter the order number: <b id=\"dNo3\"></b>.</li><li>Enter the phone number given at intake.</li><li>You will see the current status and the update date.</li>","r_firm":"Company","r_nip":"NIP","r_invaddr":"Registered address","r_delivery":"Delivery address","sameinv":"same as registered address","r_resp":"Contact person","r_phone":"Phone","r_email":"E-mail","r_client":"Client","private":"Private person","r_type":"Type","r_model":"Model","r_serial":"Serial number","nodmg":"No visible damage.","left":"left at the service","took":"taken by the client","capOver":"Device overview","capSer":"Rating plate – serial no.","comm":" — technician comment: …","nophoto":"No additional photos."}};
+const D=k=>DOC[L][k];
+Object.assign(T.pl,{"delunit": "Lokal", "delunitmobile": "Lokal / mieszkanie", "delunitph": "np. 124", "delnotes": "Dodatkowe informacje (opcjonalnie)", "delnotesph": "np. odbiór 8–16, kontakt z recepcją..."});Object.assign(DOC.pl,{"r_deliveryunit": "Lokal", "r_deliverynotes": "Dodatkowe informacje"});
+Object.assign(T.uk,{"delunit": "Приміщення", "delunitmobile": "Приміщення / квартира", "delunitph": "напр. 124", "delnotes": "Додаткова інформація (необов’язково)", "delnotesph": "напр. забір 8–16, контакт із рецепцією..."});Object.assign(DOC.uk,{"r_deliveryunit": "Приміщення", "r_deliverynotes": "Додаткова інформація"});
+Object.assign(T.ru,{"delunit": "Помещение", "delunitmobile": "Помещение / квартира", "delunitph": "например, 124", "delnotes": "Дополнительная информация (необязательно)", "delnotesph": "например, забор 8–16, связь с ресепшеном..."});Object.assign(DOC.ru,{"r_deliveryunit": "Помещение", "r_deliverynotes": "Дополнительная информация"});
+Object.assign(T.en,{"delunit": "Unit", "delunitmobile": "Unit / apartment", "delunitph": "e.g. 124", "delnotes": "Additional information (optional)", "delnotesph": "e.g. pickup 8–16, contact reception..."});Object.assign(DOC.en,{"r_deliveryunit": "Unit", "r_deliverynotes": "Additional information"});
+for(const l of ['pl','uk','ru','en'])DOC[l].r_transport=({pl:'Odbiór / dostawa',uk:'Забір / доставка',ru:'Забор / доставка',en:'Pickup / delivery'})[l];
+const DLOC={pl:'pl-PL',uk:'uk-UA',ru:'ru-RU',en:'en-GB'};
+function docLang(){document.querySelectorAll('[data-d]').forEach(e=>e.innerHTML=D(e.dataset.d));$('dNo3').textContent=No;$('dDate').textContent=today.toLocaleString(DLOC[L],{dateStyle:'short',timeStyle:'short'})}
+Object.assign(T.pl,{cAdd:"Dodaj do zlecenia",cAdded:"✓ Dodano do zlecenia — usuń",cDoc:"Odbiór / dostawa urządzenia",cLink:"Jak obliczamy koszt?",cRT:"Zasady naliczania kosztów",cRO:"Po rozwinięciu:",cB1:"Opłata podstawowa {baza} zł obejmuje do {free} km od serwisu ({lim} km łącznie w obie strony).",cB2:"Odbiór lub dostawa powyżej {free} km od serwisu - {rate} zł/km.",cB3:"Koszt obliczany jest za trasę w obie strony.",cB4:"Urządzenia powyżej 30 kg wymagają indywidualnej wyceny.",cSurN:"Dopłata za kilometry powyżej {lim} km",cUnit:"zł/km",cSum:"Podsumowanie kosztów",cTitle:"Koszt odbioru (lub dostawy)",cFrom:"Omobonus serwis",cOne:"Odległość w jedną stronę",cBoth:"Łączna trasa w obie strony",cRules:"Zasady rozliczenia",cBase:"Opłata podstawowa",cBaseN:"(do {free} km od serwisu; {lim} km łącznie w obie strony)",cOver:"Kilometry powyżej 5 km",cSur:"Dopłata za kilometry",cTotal:"Łączny koszt",cNet:"netto",cOpen:"Koszt dojazdu",nceidg:'Sprawdź w CEIDG (NIP skopiowany)',nq:'Szukam firmy…',nok:'Dane firmy pobrane z rejestru. Sprawdź je.',nnf:'Nie znaleziono firmy z tym NIP. Sprawdź numer albo wpisz dane ręcznie.',nerr:'Nie udało się sprawdzić NIP. Wpisz dane ręcznie.',nex:'Firma zwolniona z VAT.',nnr:'Firma nie jest zarejestrowana jako podatnik VAT.',nrm:'Firma wykreślona z rejestru VAT: ',step:'Krok',back:'Wstecz',next:'Dalej',s1:'Klient',s2:'Urządzenie',s3:'Usterka',stan:'Stan i wyposażenie (opcjonalnie)',stanph:'Np. pęknięta obudowa, brak pokrywy, kabel zasilający, toner',faultph:'Np. nie włącza się, drukuje z paskami, głośno pracuje, zacina papier, komunikat błędu…',s4:'Podpis',pick:'Wybierz urządzenie',ttl:'Protokół przyjęcia do serwisu',nav1:'Usługi',nav2:'O nas',nav3:'Kontakt',ab1:'Napisz',ab2:'Mapa',ab3:'Zadzwoń'});
+Object.assign(T.uk,{cAdd:"Додати до замовлення",cAdded:"✓ Додано до замовлення — прибрати",cDoc:"Забір / доставка пристрою",cLink:"Як ми рахуємо вартість?",cRT:"Правила нарахування вартості",cRO:"Після розгортання:",cB1:"Базова плата {baza} zł покриває до {free} км від сервісу ({lim} км разом в обидва боки).",cB2:"Забір або доставка понад {free} км від сервісу - {rate} zł/км.",cB3:"Вартість розраховується за маршрут в обидва боки.",cB4:"Пристрої понад 30 кг потребують індивідуальної оцінки.",cSurN:"Доплата за кілометри понад {lim} км",cUnit:"zł/км",cSum:"Підсумок вартості",cTitle:"Вартість забору (або доставки)",cFrom:"Omobonus serwis",cOne:"Відстань в один бік",cBoth:"Загальний маршрут в обидва боки",cRules:"Правила розрахунку",cBase:"Базова плата",cBaseN:"(до {free} км від сервісу; {lim} км разом в обидва боки)",cOver:"Кілометри понад 5 км",cSur:"Доплата за кілометри",cTotal:"Загальна вартість",cNet:"нетто",cOpen:"Вартість доїзду",nceidg:'Перевірити в CEIDG (NIP скопійовано)',nq:'Шукаю фірму…',nok:'Дані фірми взято з реєстру. Перевірте їх.',nnf:'Фірму з цим NIP не знайдено. Перевірте номер або введіть дані вручну.',nerr:'Не вдалося перевірити NIP. Введіть дані вручну.',nex:'Фірма звільнена від VAT.',nnr:'Фірма не зареєстрована як платник VAT.',nrm:'Фірму виключено з реєстру VAT: ',step:'Крок',back:'Назад',next:'Далі',s1:'Клієнт',s2:'Пристрій',s3:'Несправність',stan:'Стан і комплектація (необов’язково)',stanph:'Напр. тріснутий корпус, немає кришки, кабель живлення, тонер',faultph:'Напр. не вмикається, друкує зі смугами, гучно працює, застрягає папір, повідомлення про помилку…',s4:'Підпис',pick:'Оберіть пристрій',ttl:'Протокол прийому до сервісу',nav1:'Послуги',nav2:'Про нас',nav3:'Контакти',ab1:'Написати',ab2:'Мапа',ab3:'Подзвонити'});
+Object.assign(T.pl,{n_nip:'poprawny NIP',n_company:'nazwa firmy',n_addr:'adres siedziby',n_name:'osoba kontaktowa'});Object.assign(T.uk,{n_nip:'правильний NIP',n_company:'назва компанії',n_addr:'юридична адреса',n_name:'контактна особа'});Object.assign(T.ru,{n_nip:'правильный NIP',n_company:'название фирмы',n_addr:'юридический адрес',n_name:'контактное лицо'});Object.assign(T.en,{n_nip:'valid NIP',n_company:'company name',n_addr:'registered address',n_name:'contact person'});
+Object.assign(T.ru,{cAdd:"Добавить в заказ",cAdded:"✓ Добавлено в заказ — убрать",cDoc:"Забор / доставка устройства",cLink:"Как мы считаем стоимость?",cRT:"Правила начисления стоимости",cRO:"После раскрытия:",cB1:"Базовая плата {baza} zł покрывает до {free} км от сервиса ({lim} км всего в обе стороны).",cB2:"Забор или доставка свыше {free} км от сервиса - {rate} zł/км.",cB3:"Стоимость рассчитывается за маршрут в обе стороны.",cB4:"Устройства свыше 30 кг требуют индивидуальной оценки.",cSurN:"Доплата за километры сверх {lim} км",cUnit:"zł/км",cSum:"Итог стоимости",cTitle:"Стоимость забора (или доставки)",cFrom:"Omobonus serwis",cOne:"Расстояние в одну сторону",cBoth:"Общий маршрут в обе стороны",cRules:"Правила расчёта",cBase:"Базовая плата",cBaseN:"(до {free} км от сервиса; {lim} км всего в обе стороны)",cOver:"Километры сверх 5 км",cSur:"Доплата за километры",cTotal:"Общая стоимость",cNet:"нетто",cOpen:"Стоимость доезда",nceidg:'Проверить в CEIDG (NIP скопирован)',nq:'Ищу фирму…',nok:'Данные фирмы взяты из реестра. Проверьте их.',nnf:'Фирма с таким NIP не найдена. Проверьте номер или впишите данные вручную.',nerr:'Не удалось проверить NIP. Впишите данные вручную.',nex:'Фирма освобождена от VAT.',nnr:'Фирма не зарегистрирована как плательщик VAT.',nrm:'Фирма исключена из реестра VAT: ',step:'Шаг',back:'Назад',next:'Далее',s1:'Клиент',s2:'Устройство',s3:'Неисправность',stan:'Состояние и комплектация (необязательно)',stanph:'Напр. треснувший корпус, нет крышки, кабель питания, тонер',faultph:'Напр. не включается, печатает полосами, шумит, зажёвывает бумагу, сообщение об ошибке…',s4:'Подпись',pick:'Выберите устройство',ttl:'Протокол приёма в сервис',nav1:'Услуги',nav2:'О нас',nav3:'Контакты',ab1:'Написать',ab2:'Карта',ab3:'Позвонить'});
+Object.assign(T.en,{cAdd:"Add to the order",cAdded:"✓ Added to the order — remove",cDoc:"Device pickup / delivery",cLink:"How do we calculate the cost?",cRT:"How costs are calculated",cRO:"When expanded:",cB1:"The base fee of {baza} zł covers up to {free} km from the service ({lim} km both ways).",cB2:"Pickup or delivery over {free} km from the service - {rate} zł/km.",cB3:"The cost is calculated for the round trip.",cB4:"Devices over 30 kg require an individual quote.",cSurN:"Surcharge for kilometres above {lim} km",cUnit:"zł/km",cSum:"Cost summary",cTitle:"Pickup (or delivery) cost",cFrom:"Omobonus serwis",cOne:"Distance one way",cBoth:"Total route both ways",cRules:"How it is calculated",cBase:"Base fee",cBaseN:"(up to {free} km from the service; {lim} km both ways)",cOver:"Kilometres over 5 km",cSur:"Kilometre surcharge",cTotal:"Total cost",cNet:"net",cOpen:"Travel cost",nceidg:'Check in CEIDG (NIP copied)',nq:'Looking up the company…',nok:'Company data taken from the register. Please check it.',nnf:'No company found for this NIP. Check the number or enter the details manually.',nerr:'Could not check the NIP. Enter the details manually.',nex:'Company is VAT-exempt.',nnr:'Company is not registered as a VAT payer.',nrm:'Company removed from the VAT register: ',step:'Step',back:'Back',next:'Next',s1:'Client',s2:'Device',s3:'Fault',stan:'Condition and accessories (optional)',stanph:'E.g. cracked housing, missing cover, power cable, toner',faultph:'E.g. won’t turn on, prints with streaks, loud noise, paper jams, error message…',s4:'Signature',pick:'Choose a device',ttl:'Service intake protocol',nav1:'Services',nav2:'About us',nav3:'Contact',ab1:'Write',ab2:'Map',ab3:'Call'});
+const SF=(()=>{const x=new XMLHttpRequest();x.open('GET','/api/site-facts',false);x.send();return JSON.parse(x.responseText)})();SF.nipMask=SF.nip.slice(0,3)+'-'+SF.nip.slice(3,6)+'-'+SF.nip.slice(6,8)+'-'+SF.nip.slice(8);
+(()=>{for(const l in DOC)for(const k in DOC[l])if(typeof DOC[l][k]==='string')DOC[l][k]=DOC[l][k].split('{{host}}').join(SF.host);for(const l in T){for(const k in T[l]){if(typeof T[l][k]==='string')T[l][k]=T[l][k].split('{{host}}').join(SF.host);}if(SF.nav[l]){T[l].nav1=SF.nav[l].services;T[l].nav2=SF.nav[l].about;T[l].nav3=SF.nav[l].contact;T[l].nav4=SF.nav[l].shipping}}const fix=v=>{for(const k in SF)if(typeof SF[k]!=='object')v=v.split('{{'+k+'}}').join(SF[k]);return v};const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(n.nodeValue.indexOf('{{')>=0)n.nodeValue=fix(n.nodeValue)}document.querySelectorAll('[placeholder*="{{"]').forEach(e=>e.setAttribute('placeholder',fix(e.getAttribute('placeholder'))))})();
+const DIAG=(()=>{try{const x=new XMLHttpRequest();x.open('GET','/api/diag-fees',false);x.send();return JSON.parse(x.responseText)}catch(e){return {}}})();
+for(const l in DOC)if(DIAG._store&&DIAG._store[l])DOC[l].small=DIAG._store[l];
+const SS=(()=>{let r={};try{const x=new XMLHttpRequest();x.open('GET','/api/site-style',false);x.send();const j=JSON.parse(x.responseText);r=j[innerWidth<=600?'390':'1440']||j['1440']||{}}catch(e){}const D={body:{'font-family':'system-ui,sans-serif'},label:{'font-family':'"Cormorant Garamond",serif'},submit:{'background-color':'rgb(28, 110, 67)'}};for(const k in D)r[k]=Object.assign({},D[k],r[k]);return r})();
+(()=>{const P=(n,ps)=>ps.map(p=>SS[n]&&SS[n][p]?p+':'+SS[n][p]+'!important':'').join(';');const F=['font-family','font-size','font-weight','line-height','letter-spacing'];
+const R=[
+['.panel','label',['color']],['.panel','body',['font-family','font-size','line-height']],
+['.panel label','label',F.concat('color')],['.panel .chk label,.panel details label','body',['font-family','font-size','line-height','font-weight']],
+['.panel input[type=text],.panel input[type=tel],.panel input[type=email],.panel textarea,.panel select','textarea',['font-family','font-size','line-height','color','border','border-radius','padding']],
+['.panel .note,.panel .miss,.demo,.panel .chk .ph','body',['font-family']],
+['.seg button,.panel .b,.btype','submit',['font-family','font-size','font-weight']],
+['button.main:not(:disabled)','submit',['background-color','color','border-radius','font-family','font-size','font-weight','height']],
+['.ttl,body.laptop .stph','step',F.concat('color')],['.panel h3,.panel summary,.ddp summary','faq',F.concat('color')],['.seg button,.panel .b','input',['border','border-radius','color']],['.seg button.on,.btype,.stph i','submit',['background-color','color','border-radius']],['.seg button.on,.btype','submit',['border']]];
+let css=':root{--sfb:'+SS.body['font-family']+';--sfh:'+SS.label['font-family']+';--sfg:'+SS.submit['background-color']+'}button.main:not(:disabled){background-image:none!important;border:0!important;box-shadow:none!important}';
+for(const r of R)css+=r[0]+'{'+P(r[1],r[2])+'}';
+// кнопки действий и кружки этапов — коричневые (палитра сайта: ink #3A2817, золотистая кнопка); зелёный остаётся у переключателей и прочего
+css+='button.main:not(:disabled){background:linear-gradient(#d9b072,#b68d60)!important;color:#412612!important}.btype,.stph i{background:#3A2817!important;border-color:#3A2817!important;color:#f3e6c4!important}';
+const st=document.createElement('style');st.id='siteStyle';st.textContent=css;document.head.appendChild(st)})();
+{const style=document.createElement('style');style.id='intakeStandard';style.textContent="/* Existing form appearance is the reference; scoped normalization, not Workspace's app scale. */\n:root{--intake-ink:#312b1f;--intake-muted:#6b5940;--intake-field-height:46px;--intake-field-size:18px;--intake-field-line:28px;--intake-label-size:19px;--intake-label-line:24.7px}\nbody.phone{--intake-field-height:44px;--intake-field-size:16px;--intake-field-line:22.4px;--intake-label-size:18px;--intake-label-line:23.4px}\n.panel label{font-family:\"Cormorant Garamond\",\"Cormorant Garamond Fallback\",serif!important;font-size:var(--intake-label-size)!important;font-weight:700!important;line-height:var(--intake-label-line)!important;color:var(--intake-ink)!important;margin:var(--intake-gap-field) 0 var(--intake-gap-label)}\n.panel .chk label,.panel details label{font-family:var(--sfb)!important;font-size:16px!important;font-weight:400!important;line-height:24px!important}\n.panel input:is([type=text],[type=tel],[type=email]),.panel textarea{font-family:var(--sfb)!important;font-size:var(--intake-field-size)!important;font-weight:400!important;line-height:var(--intake-field-line)!important;color:var(--intake-ink)!important;border-radius:2px!important;box-shadow:none;padding-block:8px!important;padding-left:16px!important}\n.panel input:is([type=text],[type=tel],[type=email]){display:block;height:var(--intake-field-height)!important;min-height:var(--intake-field-height)!important}\n.panel textarea{min-height:calc(var(--intake-field-line)*2 + 18px)!important}\n.panel #delNotes{min-height:var(--intake-field-height)!important}\n.panel input::placeholder,.panel textarea::placeholder{font:inherit;color:var(--intake-muted);opacity:1}\n.panel :is(input,textarea):not(.ferr):is(:hover,:focus){border-color:rgba(70,45,25,.7)!important;background:rgba(70,45,25,.05);outline:0}\n.panel :is(input,textarea):focus-visible{outline:2px solid var(--intake-ink)!important;outline-offset:2px!important}\n.panel :is(#delAddr,#addr,#nip){padding-right:46px!important}\n.panel .note,.panel .miss{font-size:12px;line-height:18px}\n.panel .b,.btype,.seg button{font-weight:600!important;line-height:20px}\n.btype,.seg button{min-height:44px}.sl{line-height:20px}\n.panel .nipb svg{width:16px;height:16px;stroke-width:2}.panel .nipb svg *{vector-effect:non-scaling-stroke}\n\n/* Group containers stop margin collapse; labels are the only owners of field spacing. */\n.panel :is(#orgBox,#contactBox,#delivBlock){display:flow-root;margin-top:var(--intake-gap-group)}\n.panel #contactBox>label:first-child,.panel #orgBox>.two>div>label:first-child,.panel .delivery-address>label,.panel .delivery-unit>label{margin-top:0}\n.panel #sameRow{margin:0}\n.panel #delivBlock:has(#sameRow:not(.hide)) #delBox .delivery-fields label{margin-top:var(--intake-gap-field)}\nbody.phone .panel #orgBox>.two>div+div>label:first-child,body.phone .panel .delivery-unit>label{margin-top:var(--intake-gap-field)}\n@media(max-width:767px){.panel .delivery-unit>label{margin-top:var(--intake-gap-field)}}\n.panel :is(.note,.miss,.nmsg){margin:var(--intake-gap-field) 0 0}\n.panel :is(.note,.miss,.nmsg):empty{margin:0}\n\n.panel #typeOtherRow:not(.hide){margin-top:var(--intake-gap-field)}\n.panel .chk{margin:var(--intake-gap-field) 0}.panel .chk label{margin:0}\n";document.head.appendChild(style)}
+
+/* Variant 1: pressed parchment fields. Paint only; original geometry and type stay intact. */
+{const style=document.createElement('style');style.id='intakeRecess';style.textContent=`
+.panel{--intake-recess-shadow:inset 2px 2px 3px rgba(55,30,12,.30),inset -1px -1px 2px rgba(255,245,215,.70);--intake-recess-edge:rgba(255,255,255,.45);--intake-recess-border:rgba(70,45,25,.55);--intake-recess-accent:#bfa76a}
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select:not([aria-hidden=true]),.cc){
+ box-shadow:var(--intake-recess-shadow)!important;
+ border-top-color:var(--intake-recess-edge)!important;border-left-color:var(--intake-recess-edge)!important;
+ border-bottom-color:var(--intake-recess-border)!important;border-right-color:var(--intake-recess-border)!important;
+ background-color:rgba(70,45,25,.05);transition:border-color 120ms ease,box-shadow 120ms ease,background-color 120ms ease}
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select:not([aria-hidden=true]),.cc):not(:disabled):hover{
+ border-bottom-color:rgba(70,45,25,.7)!important;border-right-color:rgba(70,45,25,.7)!important}
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select:not([aria-hidden=true])):not(.ferr):focus,
+.panel .cc:focus-within{
+ box-shadow:var(--intake-recess-shadow),inset 0 0 0 1px var(--intake-recess-accent)!important}
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select):not(.ferr):focus-visible{
+ outline:2px solid var(--intake-recess-accent)!important;outline-offset:2px!important}
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select):disabled,.panel .cc:has(select:disabled){
+ color:var(--intake-muted)!important;background-color:transparent!important;box-shadow:inset 0 1px 2px rgba(70,45,25,.1)!important;cursor:not-allowed}
+.panel :is(input,textarea)::placeholder{color:var(--intake-muted)!important;opacity:1;font-weight:400}
+/* Same light relief edge and frame as Stan/Usterka for every embedded square. */
+.panel :is([data-size="icon-field"],.field-camera,.fbtn,.nipb,.ddarr),.panel .cc::after{
+ border-top-color:var(--intake-recess-edge)!important;border-left-color:var(--intake-recess-edge)!important;
+ border-bottom-color:var(--intake-recess-border)!important;border-right-color:var(--intake-recess-border)!important;border-radius:5px!important}
+.panel :is(.fbtn,.nipb):focus-visible{outline:2px solid var(--intake-recess-accent)!important;outline-offset:2px}
+/* Unified embedded icon relief, scoped to this parchment form. */
+#form{--intake-button-raised:1px 2px 3px rgba(55,30,12,.35),-1px -1px 2px rgba(255,245,215,.65);--intake-button-pressed:inset 1px 2px 3px rgba(55,30,12,.35)}
+#form :is([data-size="icon-field"],.field-camera,.fbtn,.nipb,.ddarr,#routeMap button,#routeMap summary,#routeMap [role=button]),#form .cc::after{box-shadow:var(--intake-button-raised);transition:box-shadow 120ms ease}
+#form :is([data-size="icon-field"],.field-camera,.fbtn,.nipb,#routeMap button,#routeMap summary,#routeMap [role=button]):active:not(:disabled),#form .dd:active .ddarr,#form .cc:active::after{box-shadow:var(--intake-button-pressed)}
+@media(prefers-reduced-motion:reduce){#form :is([data-size="icon-field"],.field-camera,.fbtn,.nipb,.ddarr,#routeMap button,#routeMap summary,#routeMap [role=button]),#form .cc::after{transition:none!important}}
+/* unified-icon-relief:end */
+/* Phone value and hint share the field's type scale and centred content box. */
+#form #phone{text-align:center;padding-inline:2px!important}
+#form #phone::placeholder{font-size:inherit;line-height:inherit;text-align:center}
+/* One approved soft emboss for every field, including phone and signature. */
+.panel :is(input[type=text],input[type=tel],input[type=email],textarea,select:not([aria-hidden=true]),.cc),.panel #sig{background:transparent!important;border-color:rgba(100,65,30,.4)!important}
+.panel #sig{box-shadow:var(--intake-recess-shadow)!important}
+@media(prefers-reduced-motion:reduce){.panel :is(input,select,textarea,.cc,.fbtn,.nipb,.ddarr){transition:none!important}}
+`;document.head.appendChild(style)}
+
+const MENU=(()=>{const x=new XMLHttpRequest();x.open('GET','menu.json?'+Date.now(),false);x.send();return JSON.parse(x.responseText)})();
+const KINDS=(()=>{try{const x=new XMLHttpRequest();x.open('GET','menu-kinds.json?'+Date.now(),false);x.send();return JSON.parse(x.responseText)}catch(e){return {}}})();
+// В «Typ urządzenia» — только техника (назначение хранится отдельно от меню: menu-kinds.json); пустые категории не показываются
+const eq=l=>l.filter(m=>KINDS[m.slug]==='equipment').map(m=>[m.slug,m.label]);
+const TYPES=MENU.map(c=>({t:c.title,i:eq(c.items),sub:c.sub&&eq(c.sub.items).length?{t:c.sub.title,i:eq(c.sub.items)}:null})).filter(g=>g.i.length||g.sub);
+// «Inne urządzenie» — последним пунктом внутри категории «Innych urządzeń» (если её нет — в последней категории)
+(TYPES.find(g=>g.t.pl==='Innych urządzeń')||TYPES[TYPES.length-1]).x=true;
+const OTHER='inne';
+const TNAME={[OTHER]:{pl:'Inne urządzenie',uk:'Інший пристрій',ru:'Другое устройство',en:'Other device'}};TYPES.forEach(g=>{g.i.forEach(([k,n])=>TNAME[k]=n);if(g.sub)g.sub.i.forEach(([k,n])=>TNAME[k]=n)});
+const state={transport:null,org:false,photoList:[],photoIds:[],photoResults:{},automatic:{model:null,serial:null,type:null},sig:null,type:''};
+const today=new Date();const dd=n=>String(n).padStart(2,'0');
+// Номер выдаёт сервер Workspace при первой печати заявки и больше не меняется; до этого в документе «—/ГГ»
+const yy=String(today.getFullYear()).slice(2);
+let orderKey=standardsPreview?'standards-preview':sessionStorage.getItem('orderKey');if(!orderKey){orderKey=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2)).replace(/[^A-Za-z0-9_-]/g,'');try{sessionStorage.setItem('orderKey',orderKey)}catch(e){}}
+let No='—/'+yy;
+function setNo(n){No=n;['dNo','dNo2','dNo3'].forEach(i=>{if($(i))$(i).textContent=No})}
+setNo(No);
+function readImg(inp,cb){const f=inp.files[0];if(!f)return cb(null);const r=new FileReader();r.onload=()=>cb(r.result);r.readAsDataURL(f)}
+function phoneOk(v){const x=v.replace(/[\s\-().]/g,'');return /^(\+|00)\d{10,15}$/.test(x)||/^\d{9}$/.test(x)}
+const CTRY=(()=>{const x=new XMLHttpRequest();x.open('GET','countries.json?'+Date.now(),false);x.send();return JSON.parse(x.responseText)})();
+const CBY=c=>CTRY.find(k=>k.code===c)||CTRY[0];
+function ccOpts(){['phoneCc'].forEach(id=>{const s=$(id),v=s.value||'pl';s.innerHTML=CTRY.map(c=>'<option value="'+c.code+'">'+(c.name[L]||c.name.pl)+(c.dial?' +'+c.dial:'')+'</option>').join('');s.value=CTRY.some(c=>c.code===v)?v:'pl'})}
+function fmtPhone(p){const c=CBY($(p+'Cc').value);if(!c.format)return;let d=$(p).value.replace(/[^0-9]/g,'').slice(0,c.len||15),o='',i=0;for(const ch of c.format){if(i>=d.length)break;if(ch===' ')o+=' ';else o+=d[i++]}$(p).value=o.trimEnd()}
+document.addEventListener('input',e=>{if(e.target.id==='phone')fmtPhone('phone')});
+function phoneValid(p){const c=CBY($(p+'Cc').value),v=$(p).value.replace(/[\s\-().]/g,'');if(c.code==='other')return /^\+\d{8,15}$/.test(v);return new RegExp('^\\d{'+(c.len||7)+'}$').test(v)}
+function phoneText(p){const c=CBY($(p+'Cc').value),v=$(p).value.trim();return v?(c.dial?'+'+c.dial+' '+v:v):''}
+function updFlag(p){const c=CBY($(p+'Cc').value);$(p+'CcBtn').textContent=(c.name[L]||c.name.pl)+(c.dial?' +'+c.dial:'');$(p+'CcFlag').src=c.flag;$(p).placeholder=(c.format||'XXX XXX XXX').toUpperCase();fmtPhone(p)}
+function ccList(p){
+ let box=$('ccList');if(box){box.remove();return}
+ const cc=$(p+'Cc').closest('.cc'),r=cc.getBoundingClientRect(),W=document.documentElement.clientWidth,w=r.width;
+ box=document.createElement('div');box.id='ccList';box.setAttribute('role','listbox');
+ box.style.cssText='left:'+(r.left+scrollX)+'px;top:'+(r.bottom+scrollY+4)+'px;width:'+w+'px';
+ box.innerHTML=CTRY.map(c=>'<button type="button" role="option" data-c="'+c.code+'"'+(c.code===$(p+'Cc').value?' class="sel"':'')+'><img src="'+c.flag+'" width="24" height="18" alt=""><span>'+(c.name[L]||c.name.pl)+'</span><b>'+(c.dial?'+'+c.dial:'')+'</b></button>').join('');
+ box.onclick=e=>{const b=e.target.closest('button');if(!b)return;$(p+'Cc').value=b.dataset.c;$(p+'Cc').dispatchEvent(new Event('change'));box.remove()};
+ document.body.appendChild(box)}
+$('phoneCcBtn').onclick=e=>{e.stopPropagation();ccList('phone')};
+document.addEventListener('click',e=>{const b=$('ccList');if(b&&!e.target.closest('#ccList'))b.remove()});
+['phone'].forEach(p=>$(p+'Cc').addEventListener('change',()=>{updFlag(p);const nl=CBY($(p+'Cc').value).lang;if(nl!==L){L=nl;applyLang()}else render()}));
+document.querySelectorAll('#screen .devtog button').forEach(b=>b.onclick=()=>{$('screen').className='screen '+b.dataset.d;document.querySelectorAll('.devtog button').forEach(x=>x.classList.toggle('on',x===b));buildTree()});
+function langUi(){SiteHeader.mount(document.getElementById('sh'),L,nl=>{L=nl;applyLang()});document.documentElement.lang=L}
+function applyLang(){
+ $('delUnitLabel').dataset.t=V==='phone'?'delunitmobile':'delunit';
+ for(const id of ['model','serial']){const b=$(id+'Camera');b.title=scanText(id);b.setAttribute('aria-label',scanText(id));}
+ for(const b of document.querySelectorAll('[data-voice-for]')){b.title=scanText('dictate');b.dataset.tip=scanText('dictate');b.setAttribute('aria-label',scanText('dictate'));}
+ $('stanCamera').title=scanText('conditionPhoto');$('stanCamera').dataset.tip=scanText('conditionPhoto');$('stanCamera').setAttribute('aria-label',scanText('conditionPhoto'));
+ $('print').setAttribute('aria-label',t('printbtn'));const seal=$('print').querySelector('[data-paper-seal]');if(seal){const latin=L==='pl'||L==='en';for(const c of ['text-[28px]','md:text-[36px]'])seal.classList.toggle(c,latin);for(const c of ['text-[16px]','md:text-[22px]'])seal.classList.toggle(c,!latin);$('print').querySelector('img').alt=t('printbtn')}
+ $('sigClr').title=t('clear');$('sigClr').setAttribute('aria-label',t('clear'));
+ if(typeof showStep==='function')setTimeout(()=>showStep(step));
+ document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));langUi();docLang();ccOpts();updFlag('phone');
+ 
+ buildTree();buildLists();render();
+}
+const HINTS=(()=>{const x=new XMLHttpRequest();x.open('GET','device-hints.json?'+Date.now(),false);x.send();return JSON.parse(x.responseText)})();
+const HINT_GENERIC={pl:'Marka i model urządzenia',uk:'Марка й модель пристрою',ru:'Марка и модель устройства',en:'Device brand and model'};
+function updType(){if(state.type)$('typeIn').value=TNAME[state.type][L];
+ $('typeOtherRow').classList.toggle('hide',state.type!==OTHER);
+ const h=(HINTS[state.type]||{})[L]||HINT_GENERIC[L];$('model').placeholder=h;$('model').setAttribute('aria-label',h);
+ document.querySelectorAll('[data-ph]').forEach(e=>{const p=t(e.dataset.ph);e.placeholder=p;e.setAttribute('aria-label',p)});document.querySelectorAll('[data-tk]').forEach(e=>{const p=t(e.dataset.tk).replace(/^[^ ]+ /,'');e.dataset.tip=p;e.title=p;e.setAttribute('aria-label',p)})}
+function buildTree(){
+ const q=$('typeIn').value.trim().toLowerCase(),f=q&&!(state.type&&TNAME[state.type][L].toLowerCase()===q);
+ const opts=(it,gt)=>it.filter(([k,n])=>!f||n[L].toLowerCase().includes(q)||gt.toLowerCase().includes(q)).map(([k,n])=>'<div class="opt'+(state.type===k?' sel':'')+'" data-k="'+k+'">'+n[L]+'</div>').join('');
+ const othOpt=()=>!f||TNAME[OTHER][L].toLowerCase().includes(q)?'<div class="opt'+(state.type===OTHER?' sel':'')+'" data-k="'+OTHER+'">'+TNAME[OTHER][L]+'</div>':'';
+ const grp=(g,cls)=>{const o=opts(g.i,g.t[L]),sb=g.sub?opts(g.sub.i,g.sub.t[L]+' '+g.t[L]):'',ox=g.x?othOpt():'';return o||sb||ox?'<details'+(cls?' class="'+cls+'"':'')+(f?' open':'')+'><summary>'+g.t[L]+'</summary>'+o+(sb?'<details class="sub"'+(f?' open':'')+'><summary>'+g.sub.t[L]+'</summary>'+sb+'</details>':'')+ox+'</details>':''};
+ $('typeTree').innerHTML=TYPES.map(g=>grp(g)).join('');
+ document.querySelectorAll('#typeTree .opt').forEach(o=>o.onclick=()=>{state.type=o.dataset.k;$('type').value=state.type;$('typeIn').value=TNAME[state.type][L];$('typeTree').classList.add('hide');buildTree();buildLists();render();updType();if(state.type===OTHER)$('typeOther').focus()});
+ updType();
+}
+$('typeIn').onfocus=$('typeIn').onclick=e=>{e.stopPropagation();buildTree();$('typeTree').classList.remove('hide')};
+$('typeIn').addEventListener('input',()=>{state.type='';$('type').value='';buildTree();$('typeTree').classList.remove('hide');buildLists();render()});
+$('typeDd').querySelector('.ddarr').onclick=()=>{$('typeIn').focus()};
+document.addEventListener('click',e=>{if(!e.target.closest('#typeDd'))$('typeTree').classList.add('hide')});
+$('bType').onclick=()=>setOrg(!state.org);
+function setOrg(v){state.org=v;$('bType').classList.toggle('flip',v);$('bTypeT').dataset.t=v?'org':'priv';$('bTypeT').textContent=t(v?'org':'priv');$('orgBox').classList.toggle('hide',!v);$('sameRow').classList.toggle('hide',!v);$('same').checked=v;$('delBox').classList.toggle('hide',v);(v?$('orgBox'):$('contactBox')).after($('delivBlock'));render()}
+$('same').onchange=()=>{$('delBox').classList.toggle('hide',$('same').checked);render()};
+$('nip').addEventListener('input',()=>{const d=$('nip').value.replace(/[^0-9]/g,'').slice(0,10);$('nip').value=[d.slice(0,3),d.slice(3,6),d.slice(6,8),d.slice(8,10)].filter(Boolean).join('-')});
+const NIPW=[6,5,7,2,3,4,5,6,7];
+function tcase(x){return x.toLowerCase().replace(/(^|[\s\-(\/."])([a-ząćęłńóśźż])/g,(m,p,c)=>p+c.toUpperCase())}
+function prettyName(n){return tcase(n).replace('Spółka Z Ograniczoną Odpowiedzialnością','Sp. z o.o.').replace('Spółka Akcyjna','S.A.').replace('Spółka Jawna','sp. j.').replace('Spółka Komandytowa','sp. k.').replace('Spółka Cywilna','s.c.')}
+function prettyAddr(a){return a.split(', ').map(p=>/^\d\d-\d\d\d/.test(p)?p.replace(/^(\d\d-\d\d\d)\s+(.*)$/,(m,z,c)=>z+' '+tcase(c)):tcase(p)).join(', ')}
+function nmsg(kind,txt){const e=$('nipMsg');e.className='nmsg '+kind;e.textContent=txt}
+let nipSeq=0,nipFilled=false;
+function nipClear(){if(nipFilled){$('company').value='';$('addr').value='';nipFilled=false;render()}}
+async function nipLookup(){const d=$('nip').value.replace(/[^0-9]/g,'');const my=++nipSeq;
+ if(d.length<10){$('nipMsg').className='nmsg hide';nipClear();return}
+ const c=NIPW.reduce((a,x,i)=>a+x*+d[i],0)%11;if(c===10||c!==+d[9]){$('nipMsg').className='nmsg hide';nipClear();return}
+ nmsg('',t('nq'));
+ try{const day=new Date().toISOString().slice(0,10);const r=await fetch('https://wl-api.mf.gov.pl/api/search/nip/'+d+'?date='+day);
+  if(my!==nipSeq)return;
+  if(!r.ok)throw 0;const j=await r.json();if(my!==nipSeq)return;const sub=j.result&&j.result.subject;
+  if(!sub){nipClear();nmsg('bad',t('nnf')+' ');const a=document.createElement('a');a.href='https://aplikacja.ceidg.gov.pl/ceidg/ceidg.public.ui/search.aspx';a.target='_blank';a.rel='noreferrer';a.textContent=t('nceidg');a.onclick=()=>{try{navigator.clipboard.writeText(d)}catch(e){}};$('nipMsg').appendChild(a);return}
+  $('company').value=prettyName(sub.name);$('addr').value=prettyAddr(sub.workingAddress||sub.residenceAddress||'');nipFilled=true;render();
+  if(sub.removalDate||sub.registrationDenialDate)nmsg('bad',t('nrm')+(sub.removalDate||sub.registrationDenialDate));
+  else if(sub.statusVat==='Zwolniony')nmsg('warn',t('nex'));
+  else if(sub.statusVat==='Niezarejestrowany')nmsg('warn',t('nnr'));
+  else nmsg('good',t('nok'));
+ }catch(e){if(my===nipSeq)nmsg('warn',t('nerr'))}}
+$('nip').addEventListener('input',nipLookup);$('nipBtn').onclick=nipLookup;
+// ---- адрес доставки: подсказки Photon + маршрут OSRM + карта OpenFreeMap (без Google) ----
+const HOME=[SF.lng,SF.lat];let rmap,rmk,rlbl,rroute=null,rtimer,rstyle='liberty',rt0=0;
+const RSTY={liberty:'https://tiles.openfreemap.org/styles/liberty',sat:{version:8,sources:{e:{type:'raster',tileSize:256,attribution:'Esri World Imagery',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}']}},layers:[{id:'e',type:'raster',source:'e'}]}};
+function loadMapLib(){return window.maplibregl?Promise.resolve():new Promise(ok=>{const l=document.createElement('link');l.rel='stylesheet';l.href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';document.head.appendChild(l);const c=document.createElement('script');c.src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';c.onload=ok;document.head.appendChild(c)})}
+async function photon(q){const r=await(await fetch('https://photon.komoot.io/api/?limit=5&lang=en&lat=51.1&lon=17.03&q='+encodeURIComponent(q))).json();return r.features.filter(f=>f.properties.countrycode==='PL').map(f=>{const p=f.properties;return{txt:[(p.street||p.name)+(p.housenumber?' '+p.housenumber:''),[p.postcode,p.city].filter(Boolean).join(' ')].filter(Boolean).join(', '),c:f.geometry.coordinates}})}
+function drawRoute(){if(!rroute||!rmap)return;if(!rmap.getSource('r'))rmap.addSource('r',{type:'geojson',data:{type:'Feature',geometry:rroute}});if(!rmap.getLayer('rc'))rmap.addLayer({id:'rc',type:'line',source:'r',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#1a56e8','line-width':7}})}
+async function pickAddr(a,w='del'){$(w==='addr'?'addr':'delAddr').value=a.txt;$('delSugg').innerHTML='';$('addrSugg').innerHTML='';$(w+'Sugg').after($('routeMap'));$('routeMap').after($('routeInfo'));render();rt0=performance.now();
+ $('routeMap').className='';
+ await loadMapLib();
+ if(!rmap){rmap=window.rmap=new maplibregl.Map({container:'routeMap',style:RSTY.liberty,center:HOME,zoom:12,attributionControl:{compact:true}});rmap.addControl(new maplibregl.NavigationControl({showCompass:false}));rmap.on('style.load',drawRoute);rmap.on('idle',()=>{const t=$('routeMap').querySelector('.maplibregl-ctrl-attrib');if(t){t.classList.remove('maplibregl-compact-show')}});
+  const sw=document.createElement('div');sw.className='rsw';sw.innerHTML='<button type="button" class="on" data-m="liberty">Mapa</button><button type="button" data-m="sat">Satelita</button>';$('routeMap').appendChild(sw);
+  const x=document.createElement('button');x.type='button';x.className='rx';x.setAttribute('aria-label','Zamknij mapę');x.innerHTML='<svg width="22" height="22" viewBox="0 0 22 22" style="display:block" fill="none" stroke="#312b1f" stroke-width="2.4" stroke-linecap="round"><path d="M4 4l14 14M18 4L4 18"/></svg>';x.onclick=()=>$('routeMap').classList.contains('costopen')?toggleCost(false):closeMap();$('routeMap').appendChild(x);
+  const cb=document.createElement('button');cb.type='button';cb.className='rx rcb';cb.id='costBtn';cb.setAttribute('aria-label','Koszt dojazdu');cb.onclick=()=>toggleCost();$('routeMap').appendChild(cb);
+  const cp=document.createElement('div');cp.id='costPanel';cp.className='hide';$('routeMap').appendChild(cp);
+  sw.onclick=e=>{const m=e.target.dataset.m;if(!m)return;sw.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===e.target));rmap.setStyle(RSTY[m])};
+  new maplibregl.Marker({color:'var(--sfg)'}).setLngLat(HOME).addTo(rmap)}
+ rmap.resize();if(rmk)rmk.remove();if(rlbl)rlbl.remove();rmk=new maplibregl.Marker({color:'#d33'}).setLngLat(a.c).addTo(rmap);
+ const r=await(await fetch('https://router.project-osrm.org/route/v1/driving/'+HOME.join(',')+';'+a.c.join(',')+'?overview=full&geometries=geojson')).json();const R=r.routes[0];rroute=R.geometry;rdist=R.distance;rwhere=w;state.transport=null;toggleCost(false);
+ if(rmap.getSource('r'))rmap.getSource('r').setData({type:'Feature',geometry:rroute});else{try{drawRoute()}catch(e){rmap.once('style.load',drawRoute)}}
+ fitRoute();
+ const e=document.createElement('div');e.className='rlbl';e.textContent=Math.round(R.duration/60)+' min · '+(R.distance/1000).toFixed(1).replace('.',',')+' km';
+ rlbl=new maplibregl.Marker({element:e}).setLngLat(rroute.coordinates[Math.floor(rroute.coordinates.length/2)]).addTo(rmap);
+}
+let rdist=0,rwhere='del';
+function transText(){const x=state.transport;return x?x.km.toFixed(1).replace('.',',')+' km · '+money(x.zl)+' netto':''}
+let TAR={baza:25,stawka:2,limitKm:5};
+fetch('/api/koszt-tariff').then(r=>r.ok?r.json():null).then(d=>{if(d&&d.baza>=0)TAR=d}).catch(()=>{});
+function costVals(){const one=Math.round(rdist/100)/10,both=Math.round(one*2*10)/10,over=Math.max(0,Math.round((both-TAR.limitKm)*10)/10);return{one,both,over,sur:over*TAR.stawka,tot:TAR.baza+over*TAR.stawka}}
+function money(n){return n.toFixed(2).replace('.',',')+' zł'}
+function tarTxt(s){const f=n=>String(n).replace('.',',');return s.replace(/\{baza\}/g,f(TAR.baza)).replace(/\{rate\}/g,f(TAR.stawka)).replace(/\{lim\}/g,f(TAR.limitKm)).replace(/\{free\}/g,f(TAR.limitKm/2))}
+function costHtml(){const v=costVals(),km=n=>n.toFixed(1).replace('.',',')+' km',f=n=>String(n).replace('.',',');
+ const r=(a,b,n)=>'<div class="cr"><span>'+a+(n?'<small>'+n+'</small>':'')+'</span><b>'+b+'</b></div>';
+ return '<h4>'+t('cTitle')+'</h4><div class="cr cfrom"><span><b>'+t('cFrom')+'</b><small>ul. '+SF.street+', '+SF.postal+' '+SF.city+'</small></span></div><div class="ch">'+t('cRules')+'</div>'+r(t('cBase'),money(TAR.baza),tarTxt(t('cBaseN')))+r(t('cOne'),km(v.one))+r(t('cBoth'),km(v.both))+r(tarTxt(t('cSurN')),money(v.sur),'('+km(v.both)+' - '+f(TAR.limitKm)+' km) × '+f(TAR.stawka)+' '+t('cUnit'))+'<div class="ct"><span>'+t('cTotal')+'</span><b>'+money(v.tot)+' '+t('cNet')+'</b></div><div class="cinfo"><span class="cib" role="button" tabindex="0" onclick="openRules()"><svg class="cii" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><u>'+t('cLink')+'</u></span></div>'}
+function splitPlus(s){var k=s.indexOf('+');return k>0?s.slice(0,k).trim()+'<small>'+s.slice(k).trim()+'</small>':s}
+let DJZ=null;
+async function openRules(){let o=$('rulesWin');if(o)o.remove();
+ if(!DJZ){try{DJZ=await (await fetch('/api/dojazd-snapshot')).json()}catch(x){return}}
+ const d=DJZ[L]||DJZ.pl,s=Math.min(1,(innerWidth-32)/(d.w+80));
+  o=document.createElement('div');o.id='rulesWin';o.style.cssText='position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);display:flex;justify-content:center;align-items:flex-start;padding:16px';
+  o.onmousedown=e=>{if(e.target===o||e.target===o.firstChild)o.remove()};
+  o.innerHTML='<div class="rwb" style="position:relative;display:flex;flex-direction:column;width:'+d.w*s+'px;max-width:none;padding:0"><button type="button" class="rwx" aria-label="×" onclick="this.parentNode.parentNode.remove()" style="position:static;align-self:flex-end;width:40px;height:40px;z-index:110">×</button><div class="rwc" style="position:relative;width:'+d.w*s+'px;height:'+d.h*s+'px"><div style="position:absolute;left:0;top:0;width:'+d.w+'px;height:'+d.h+'px;transform:scale('+s+');transform-origin:0 0">'+d.html+'</div></div></div>';
+  document.body.appendChild(o);
+  // как на сайте (окно «Wysyłka»): верх пергамента — на середине шапки, крестик в 22px правее правого края пергамента, на уровне его верха
+  const box=o.firstChild,x=box.firstChild,c=box.lastChild,hd=document.querySelector('#sh');
+  const place=()=>{if(!(innerWidth>=768&&hd&&o.isConnected))return;box.style.marginTop='0px';const hr=hd.getBoundingClientRect(),bx=box.getBoundingClientRect();let top=1e9,right=0;
+   for(const e of c.querySelectorAll('*')){const r=e.getBoundingClientRect();if(!r.width||!r.height)continue;top=Math.min(top,r.top);right=Math.max(right,r.right)}
+   box.style.marginTop=Math.round(hr.top+hr.height/2-top)+'px';
+   x.style.position='absolute';x.style.left=Math.round(Math.min(right-bx.left+22,innerWidth-8-40-bx.left))+'px';x.style.top=Math.round(top-bx.top)+'px';x.style.alignSelf='auto'};
+  place();setTimeout(place,250);setTimeout(place,900);addEventListener('resize',place)
+ }
+window.openRules=openRules;
+function toggleCost(on){$('routeMap').classList.toggle('costopen',on===undefined?$('costPanel').classList.contains('hide'):on);const p=$('costPanel'),show=on===undefined?p.classList.contains('hide'):on;p.classList.toggle('hide',!show);$('costBtn').classList.toggle('on',show);if(show){p.innerHTML=costHtml();const bt=document.createElement('button');bt.type='button';bt.id='costAdd';bt.onclick=()=>{state.transport=state.transport?null:{km:costVals().both,zl:costVals().tot};costAddLabel();render()};p.appendChild(bt);costAddLabel()}if(rmap)rmap.resize();fitRoute()}
+function costAddLabel(){const b=$('costAdd');if(!b)return;b.classList.toggle('on',!!state.transport);b.textContent=state.transport?t('cAdded'):t('cAdd')+' · '+money(costVals().tot)+' '+t('cNet')}
+function fitRoute(){if(!rroute||!rmap)return;const b=new maplibregl.LngLatBounds();rroute.coordinates.forEach(k=>b.extend(k));const open=!$('costPanel').classList.contains('hide'),ph=document.body.classList.contains('phone'),w=open&&!ph?Math.round($('routeMap').clientWidth*.5):0,h=open&&ph?Math.round($('routeMap').clientHeight*.55):0;rmap.fitBounds(b,{padding:{top:50,left:50,right:50+w,bottom:50+h},duration:300})}
+function closeMap(){$('routeMap').classList.add('hide')}
+async function suggest(go){const v=$('delAddr').value.trim();if(v.length<3){$('delSugg').innerHTML='';return}
+ const list=await photon(v);if(go&&list[0])return pickAddr(list[0]);
+ $('delSugg').innerHTML='';list.forEach(a=>{const d=document.createElement('button');d.type='button';d.textContent=a.txt;d.onclick=()=>pickAddr(a);$('delSugg').appendChild(d)})}
+$('delAddr').addEventListener('input',()=>{clearTimeout(rtimer);rtimer=setTimeout(()=>suggest(false),300)});
+$('delAddr').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();suggest(true)}});
+$('delBtn').onclick=()=>suggest(true);
+let atimer;async function addrSuggest(go){const v=$('addr').value.trim();if(v.length<3){$('addrSugg').innerHTML='';return}
+ const list=await photon(v),pick=a=>pickAddr(a,'addr');if(go&&list[0])return pick(list[0]);
+ $('addrSugg').innerHTML='';list.forEach(a=>{const d=document.createElement('button');d.type='button';d.textContent=a.txt;d.onclick=()=>pick(a);$('addrSugg').appendChild(d)})}
+$('addr').addEventListener('input',()=>{clearTimeout(atimer);atimer=setTimeout(()=>addrSuggest(false),300)});
+$('addr').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addrSuggest(true)}});$('addrBtn').onclick=()=>addrSuggest(true);
+document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{b.classList.add('tip');setTimeout(()=>b.classList.remove('tip'),1600)}));
+$('fCard').onchange=()=>readImg($('fCard'),d=>{if(!d)return;$('cardImg').src=d;$('cardImg').classList.remove('hide');$('fault').value=($('fault').value+' Opis z kartki klienta: urządzenie głośno pracuje i zacina papier. (demo Claude)').trim();render()});
+function buildLists(){}
+let dCur=0,dShown=null,dShownIds=null;
+const photoSources=new Map(),photoJobs=new Map();let photoEpoch=0,photoSequence=0;
+const newPhotoId=()=>crypto.randomUUID?crypto.randomUUID():'photo-'+Date.now()+'-'+(++photoSequence);
+function syncPhotoIds(){
+ const used=new Set();state.photoIds=state.photoList.map((image,i)=>{let id=state.photoIds?.[i];const old=photoSources.get(id);if(typeof id!=='string'||!id||used.has(id)||(old&&old.image!==image))id=newPhotoId();used.add(id);if(!photoSources.has(id))photoSources.set(id,{image,file:null});return id});
+ state.photoResults=state.photoResults||{};for(const id of Object.keys(state.photoResults))if(!used.has(id))delete state.photoResults[id];
+ for(const id of photoSources.keys())if(!used.has(id))photoSources.delete(id);
+}
+function invalidatePhotoJobs(){photoEpoch++;photoJobs.clear();for(const id of ['model','serial']){recognitionPending[id]=0;$(id+'Camera').removeAttribute('aria-busy');}}
+function clearPhotoFields(photoId){
+ for(const id of ['model','serial','type']){const auto=recognitionAutomatic[id];if(auto?.photoId!==photoId)continue;recognitionAutomatic[id]=null;
+  if(id==='type'){if(state.type===auto.value&&$('typeOther').value===(auto.other||'')){state.type='';$('type').value='';$('typeIn').value='';$('typeOther').value='';recognitionRevisions.type++;buildTree();buildLists();updType();}}
+  else if($(id).value===auto.value){$(id).value='';recognitionRevisions[id]++;}
+ }
+}
+async function recheckPhotos(){const epoch=photoEpoch;for(const photoId of [...state.photoIds]){const source=photoSources.get(photoId);if(!source)continue;try{const file=source.file||await(await fetch(source.image)).blob();if(epoch!==photoEpoch)return;if(state.photoIds.includes(photoId))processDevicePhoto(file,captureRecognitionGuard(),null,photoId);}catch{}}}
+function shrinkImg(f){return new Promise(res=>{const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{try{const M=2000,k=Math.min(1,M/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.naturalWidth*k));c.height=Math.max(1,Math.round(im.naturalHeight*k));const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.85))}catch(e){res(null)}};im.onerror=()=>{URL.revokeObjectURL(u);res(null)};im.src=u})}
+async function addGalleryPhotos(files,source=null){const pairs=(await Promise.all(files.map(async file=>({file,image:await shrinkImg(file)})))).filter(p=>p.image);const guard=captureRecognitionGuard();if(pairs.length){syncPhotoIds();const first=state.photoList.length;for(const p of pairs){p.id=newPhotoId();state.photoList.push(p.image);state.photoIds.push(p.id);photoSources.set(p.id,{image:p.image,file:p.file});}dCur=first;render();for(const p of pairs)processDevicePhoto(p.file,guard,source,p.id);}return pairs.map(p=>p.image)}
+$('fPh').onchange=()=>{const files=[...$('fPh').files];$('fPh').value='';if(files.length)addGalleryPhotos(files)};
+const SCANQ={
+ pl:{model:'Odczytaj markę i model ze zdjęcia',serial:'Odczytaj numer seryjny ze zdjęcia',busy:'Odczytywanie…',review:'Nie odczytano jednoznacznie — wpisz ręcznie.',error:'Nie udało się odczytać. Wpisz dane ręcznie.',changed:'Zachowano Twoje ręczne zmiany.',ok:'Odczytano. Sprawdź wynik.',mismatch:'Na zdjęciu jest inny producent niż we wpisanych danych — sprawdź, czy to to samo urządzenie.',image:'Nie udało się otworzyć zdjęcia.'},
+ uk:{model:'Зчитати марку та модель із фото',serial:'Зчитати серійний номер із фото',busy:'Зчитування…',review:'Неоднозначний результат — введіть вручну.',error:'Не вдалося зчитати. Введіть дані вручну.',changed:'Ваші ручні зміни збережено.',ok:'Зчитано. Перевірте результат.',mismatch:'На фото інший виробник, ніж у введених даних — перевірте, чи це той самий пристрій.',image:'Не вдалося відкрити фото.'},
+ ru:{model:'Прочитать марку и модель с фото',serial:'Прочитать серийный номер с фото',busy:'Распознавание…',review:'Неоднозначный результат — введите вручную.',error:'Не удалось распознать. Введите данные вручную.',changed:'Ваши ручные изменения сохранены.',ok:'Распознано. Проверьте результат.',mismatch:'На фото другой производитель, чем в введённых данных — проверьте, что это одно устройство.',image:'Не удалось открыть фото.'},
+ en:{model:'Read brand and model from photo',serial:'Read serial number from photo',busy:'Reading…',review:'No unambiguous result — enter manually.',error:'Could not read. Enter the details manually.',changed:'Your manual changes were kept.',ok:'Read. Check the result.',mismatch:'The photo shows a different manufacturer than the entered data — check that it is the same device.',image:'Could not open this image.'}
+};
+const MEDIAQ={
+ pl:{dictate:'Dyktuj',listening:'Słucham — naciśnij, aby zatrzymać.',speechError:'Nie udało się uruchomić dyktowania. Wpisz tekst ręcznie.',unsupported:'Dyktowanie jest niedostępne w tej przeglądarce. Wpisz tekst ręcznie.',conditionPhoto:'Dodaj zdjęcie stanu i wyposażenia',photoAdded:'Zdjęcie dodane do galerii.'},
+ uk:{dictate:'Диктувати',listening:'Слухаю — натисніть, щоб зупинити.',speechError:'Не вдалося запустити диктування. Введіть текст вручну.',unsupported:'Диктування недоступне в цьому браузері. Введіть текст вручну.',conditionPhoto:'Додати фото стану та комплектації',photoAdded:'Фото додано до галереї.'},
+ ru:{dictate:'Диктовать',listening:'Слушаю — нажмите для остановки.',speechError:'Не удалось запустить диктовку. Введите текст вручную.',unsupported:'Диктовка недоступна в этом браузере. Введите текст вручную.',conditionPhoto:'Добавить фото состояния и комплектации',photoAdded:'Фото добавлено в галерею.'},
+ en:{dictate:'Dictate',listening:'Listening — press to stop.',speechError:'Could not start dictation. Enter text manually.',unsupported:'Dictation is unavailable in this browser. Enter text manually.',conditionPhoto:'Add condition and accessories photo',photoAdded:'Photo added to gallery.'}
+};
+for(const locale of Object.keys(MEDIAQ))Object.assign(SCANQ[locale],MEDIAQ[locale]);
+const scanText=key=>(SCANQ[L]||SCANQ.pl)[key];
+let activeDictation=null;
+function bindDictation(button,field,status){
+ button.setAttribute('aria-pressed','false');
+ button.onclick=()=>{
+  if(activeDictation?.button===button){activeDictation.recognition.stop();return}
+  const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const message=key=>{status.textContent=scanText(key);button.title=scanText(key);button.dataset.tip=scanText(key)};
+  if(!Speech){message('unsupported');return}
+  if(activeDictation)activeDictation.recognition.abort();
+  const recognition=new Speech(),session={recognition,button},done=new Set();let failed=false;activeDictation=session;
+  recognition.lang=({pl:'pl-PL',uk:'uk-UA',ru:'ru-RU',en:'en-US'})[L]||'pl-PL';recognition.continuous=true;recognition.interimResults=false;
+  const finish=()=>{if(activeDictation===session)activeDictation=null;button.setAttribute('aria-pressed','false');if(!failed){button.title=scanText('dictate');button.dataset.tip=scanText('dictate');if(status.textContent===scanText('listening'))status.textContent=''}};
+  recognition.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(!r.isFinal||done.has(i))continue;done.add(i);const text=r[0].transcript.trim();if(text){field.value=(field.value.trimEnd()+' '+text).trim();field.dispatchEvent(new Event('input',{bubbles:true}))}}};
+  recognition.onerror=()=>{failed=true;finish();message('speechError')};recognition.onend=finish;
+  try{recognition.start();button.setAttribute('aria-pressed','true');message('listening')}catch(e){finish();message('speechError')}
+ };
+}
+$('stanCamera').onclick=()=>$('stanPhoto').click();
+$('stanPhoto').onchange=async()=>{const file=$('stanPhoto').files[0];$('stanPhoto').value='';if(!file)return;const images=await addGalleryPhotos([file]);$('stanMediaStatus').textContent=scanText(images.length?'photoAdded':'image')};
+bindDictation($('stanVoice'),$('stan'),$('stanMediaStatus'));
+const faultSpeechStatus=document.createElement('span');faultSpeechStatus.className='scan-status';faultSpeechStatus.setAttribute('role','status');faultSpeechStatus.setAttribute('aria-live','polite');$('voice').parentElement.appendChild(faultSpeechStatus);
+bindDictation($('voice'),$('fault'),faultSpeechStatus);
+
+const recognitionRevisions={model:0,serial:0,type:0};
+const recognitionAutomatic=state.automatic;
+const recognitionPending={model:0,serial:0};
+let applyingRecognition=false;
+for(const id of ['model','serial'])$(id).addEventListener('input',()=>{if(!applyingRecognition){recognitionRevisions[id]++;recognitionAutomatic[id]=null;}});
+for(const field of [$('typeIn'),$('typeOther')])field.addEventListener('input',()=>{recognitionRevisions.type++;recognitionAutomatic.type=null;});
+$('typeTree').addEventListener('click',e=>{if(e.target.closest('.opt')){recognitionRevisions.type++;recognitionAutomatic.type=null;}},true);
+function captureRecognitionGuard(){return {revision:{...recognitionRevisions},model:$('model').value,serial:$('serial').value,type:state.type,other:$('typeOther').value};}
+async function processDevicePhoto(file,guard,source,photoId){
+ const epoch=photoEpoch,job={};photoJobs.set(photoId,job);
+ const current=()=>epoch===photoEpoch&&state.photoIds.includes(photoId)&&photoJobs.get(photoId)===job;
+ guard={...guard,revision:{...guard.revision}};
+ const ids=source?[source]:['model','serial'];for(const id of ids){recognitionPending[id]++;$(id+'ScanStatus').textContent=scanText('busy');$(id+'Camera').setAttribute('aria-busy','true');}
+ let accepted=false,protectedValue=false,mismatch=false,brandOf=()=>null;
+ // Model and rating plate must belong to one device: a photo naming another manufacturer than the
+ // value already in the other field (typed, or read from a different photo) fills nothing.
+ const otherBrand=id=>{const other=id==='serial'?'model':'serial',auto=recognitionAutomatic[other];
+  if(!$(other).value.trim()||auto?.photoId===photoId)return null;
+  return other==='model'?brandOf($('model').value):auto?state.photoResults[auto.photoId]?.ocr?.brand||null:null;};
+ const conflicts=(result,id)=>{const known=otherBrand(id);return !!(result.brand&&known&&known!==result.brand);};
+ const applyText=(result,ocrStage=true)=>{
+  if(!current())return;if(ocrStage)state.photoResults[photoId]={...(state.photoResults[photoId]||{}),ocr:result};
+  for(const id of ['model','serial']){const field=$(id),previous=guard[id];
+   const safe=recognitionRevisions[id]===guard.revision[id]&&field.value===previous&&(!previous.trim()||previous===recognitionAutomatic[id]?.value)&&(!recognitionAutomatic[id]||recognitionAutomatic[id].photoId===photoId||!previous.trim());
+   if(!safe){protectedValue=true;continue;}
+   if(result[id]&&conflicts(result,id)){mismatch=true;continue;}
+   if(result[id]){field.value=result[id];recognitionAutomatic[id]={photoId,value:result[id]};applyingRecognition=true;try{field.dispatchEvent(new Event('input',{bubbles:true}));}finally{applyingRecognition=false;}guard[id]=field.value;accepted=true;}
+  }
+ };
+ try{const {recognizeDevice,catalogueChoice,brandOf:readBrand}=await import('./ocr/recognize.js');brandOf=readBrand;const result=await recognizeDevice(file,{onOcr:applyText});
+  if(!current())return;state.photoResults[photoId]={...(state.photoResults[photoId]||{}),result};applyText(result,false);
+  const choice=catalogueChoice(result.type,Object.keys(TNAME));
+  const typeSafe=recognitionRevisions.type===guard.revision.type&&state.type===guard.type&&$('typeOther').value===guard.other&&(!state.type||state.type===recognitionAutomatic.type?.value)&&(!recognitionAutomatic.type||recognitionAutomatic.type.photoId===photoId||!state.type)&&(!guard.other.trim()||(recognitionAutomatic.type?.photoId===photoId&&guard.other===recognitionAutomatic.type.other));
+  if(choice&&typeSafe&&(conflicts(result,'serial')||conflicts(result,'model')))mismatch=true;
+  else if(choice&&typeSafe){state.type=choice.key;$('type').value=choice.key;$('typeOther').value=choice.name||'';recognitionAutomatic.type={photoId,value:choice.key,other:choice.name||''};buildTree();buildLists();render();updType();accepted=true;}
+  const message=scanText(mismatch?'mismatch':accepted?'ok':protectedValue?'changed':result.ocrError&&result.visionError?'error':'review');for(const id of ids)$(id+'ScanStatus').textContent=message;render();
+ }catch{if(current())for(const id of ids)$(id+'ScanStatus').textContent=scanText('error');}
+ finally{if(current()){photoJobs.delete(photoId);for(const id of ids){if(--recognitionPending[id]===0){$(id+'Camera').removeAttribute('aria-busy');$(id+'Camera').title=$(id+'ScanStatus').textContent;}else $(id+'ScanStatus').textContent=scanText('busy');}}}
+}
+for(const id of ['model','serial']){const picker=$(id+'Photo');$(id+'Camera').onclick=()=>picker.click();picker.onchange=()=>{const file=picker.files[0];picker.value='';if(file)addGalleryPhotos([file],id);};}
+
+$('dempty').onclick=()=>$('fPh').click();
+function dGo(i){const n=state.photoList.length;if(!n)return;dCur=Math.max(0,Math.min(n-1,i));paintDeck()}
+const DELQ={pl:'Usunąć zdjęcie?',uk:'Видалити фото?',ru:'Удалить фото?',en:'Delete photo?'};
+const ADDQ={pl:'Dodaj zdjęcia',uk:'Додати фото',ru:'Добавить фото',en:'Add photos'};
+const EMPQ={pl:'Dodaj zdjęcia urządzenia',uk:'Додайте фото пристрою',ru:'Добавьте фото устройства',en:'Add device photos'};
+function dDel(photoId=state.photoIds[dCur]){syncPhotoIds();const index=state.photoIds.indexOf(photoId);if(index<0)return;const selected=state.photoIds[dCur];invalidatePhotoJobs();state.photoList.splice(index,1);state.photoIds.splice(index,1);clearPhotoFields(photoId);delete state.photoResults[photoId];photoSources.delete(photoId);dCur=Math.max(0,selected===photoId?Math.min(index,state.photoList.length-1):state.photoIds.indexOf(selected));render();recheckPhotos()}
+function dLb(on){const lb=$('dLb');if(on){lb.querySelector('img').src=state.photoList[dCur]||'';lb.classList.add('on')}else{lb.classList.remove('on');lb.querySelector('img').removeAttribute('src')}}
+$('dPrev').onclick=()=>dGo(dCur-1);$('dNext').onclick=()=>dGo(dCur+1);
+$('dLb').onclick=()=>dLb(false);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('dLb').classList.contains('on'))dLb(false)});
+(()=>{const dk=$('deck');let sx=0,dx=0,down=false,moved=false,tgt=null,pid=null;
+ dk.addEventListener('pointerdown',e=>{if(e.button>0||dk.classList.contains('empty')||e.target.closest('.dadd,.dx,.darr'))return;down=true;moved=false;sx=e.clientX;dx=0;tgt=e.target.closest('.dcard');pid=e.pointerId});
+ dk.addEventListener('pointermove',e=>{if(!down)return;dx=e.clientX-sx;if(!moved&&Math.abs(dx)>6){moved=true;dk.classList.add('drag');try{dk.setPointerCapture(pid)}catch(_){}}
+  if(moved){const c=dk.querySelector('.dcard.cur');if(c)c.style.transform='translateX('+dx+'px) rotate('+dx/25+'deg)'}});
+ const end=e=>{if(!down)return;down=false;dk.classList.remove('drag');const c=dk.querySelector('.dcard.cur');if(c)c.style.transform='';
+  if(moved){if(dx<-40)dGo(dCur+1);else if(dx>40)dGo(dCur-1)}
+  else if(tgt&&e.type==='pointerup'){const i=+tgt.dataset.i;if(i!==dCur)dGo(i);else dLb(true)}};
+ dk.addEventListener('pointerup',end);dk.addEventListener('pointercancel',end);
+ dk.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();dGo(dCur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();dGo(dCur-1)}});
+ dk.addEventListener('dragstart',e=>e.preventDefault())})();
+function paintDeck(){syncPhotoIds();const dk=$('deck'),L2=state.photoList||(state.photoList=[]),n=L2.length;
+ if(dCur>n-1)dCur=Math.max(0,n-1);
+ if(!dShown||dShown.length!==n||dShown.some((x,i)=>x!==L2[i])||state.photoIds.some((id,i)=>id!==dShownIds?.[i])){dk.querySelectorAll('.dcard').forEach(e=>e.remove());L2.forEach((src,i)=>{const c=document.createElement('div');c.className='dcard';c.dataset.i=i;c.dataset.photoId=state.photoIds[i];const im=document.createElement('img');im.alt='';im.draggable=false;im.src=src;const x=$('photoDeleteButton').content.firstElementChild.cloneNode(true);x.onclick=e=>{e.stopPropagation();dDel(c.dataset.photoId)};c.append(im,x);dk.appendChild(c)});dShown=L2.slice();dShownIds=state.photoIds.slice();
+  $('dDots').innerHTML=L2.length>1?L2.map((x,i)=>'<button type="button" data-i="'+i+'" aria-label="'+(i+1)+'"></button>').join(''):'';
+  $('dDots').querySelectorAll('button').forEach(bn=>bn.onclick=()=>dGo(+bn.dataset.i))}
+ dk.classList.toggle('empty',!n);{const q=ADDQ[L]||ADDQ.pl,ad=dk.querySelector('.dadd');ad.title=q;ad.setAttribute('aria-label',q);const eq=EMPQ[L]||EMPQ.pl;$('demptyTx').textContent=eq;$('dempty').setAttribute('aria-label',eq)}dk.classList.toggle('multi',n>1);$('dPrev').disabled=dCur<=0;$('dNext').disabled=dCur>=n-1;$('dCnt').textContent=n>1?(dCur+1)+'/'+n:'';
+ dk.querySelectorAll('.dcard').forEach((c,i)=>{const d=i-dCur,ad=Math.abs(d);c.style.setProperty('--d',Math.max(-3,Math.min(3,d)));c.style.setProperty('--a',Math.min(ad,4));c.classList.toggle('cur',!d);c.classList.toggle('far',ad>2)});
+ $('dDots').querySelectorAll('button').forEach((bn,i)=>bn.classList.toggle('on',i===dCur))}
+function growDeliveryNotes(){const field=$('delNotes');if(!field.clientWidth)return;field.style.height='auto';const style=getComputedStyle(field),border=parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth),padding=parseFloat(style.paddingTop)+parseFloat(style.paddingBottom),line=parseFloat(style.lineHeight)||parseFloat(style.fontSize)*1.4;field.style.height=Math.ceil((field.value?field.scrollHeight:line+padding)+border)+'px'}
+let deliveryNotesWidth=0;new ResizeObserver(entries=>{const width=entries[0].contentRect.width;if(width!==deliveryNotesWidth){deliveryNotesWidth=width;growDeliveryNotes()}}).observe($('delNotes'));
+if(document.fonts)document.fonts.ready.then(growDeliveryNotes);
+['phone','name','mail','model','serial','fault','stan','nip','company','addr','delAddr','delUnit','delNotes','typeOther'].forEach(i=>$(i).addEventListener('input',render));
+const cv=$('sig'),cx=cv.getContext('2d');
+function fit(){
+ const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h||(cv.width===w&&cv.height===h))return;
+ const old=document.createElement('canvas');old.width=cv.width;old.height=cv.height;old.getContext('2d').drawImage(cv,0,0);
+ cv.width=w;cv.height=h;cx.lineWidth=2;cx.lineCap='round';cx.lineJoin='round';
+ if(state.sig)cx.drawImage(old,0,0,w,h);
+}
+fit();new ResizeObserver(fit).observe(cv);
+let dr=false,sigPointer=null;
+const pos=e=>{const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*cv.width/r.width,(e.clientY-r.top)*cv.height/r.height]};
+cv.onpointerdown=e=>{if(dr||e.button>0)return;fit();dr=true;sigPointer=e.pointerId;cv.setPointerCapture(e.pointerId);const [x,y]=pos(e);cx.beginPath();cx.moveTo(x,y);cx.lineTo(x+.01,y);cx.stroke()};
+cv.onpointermove=e=>{if(!dr||e.pointerId!==sigPointer)return;cx.lineTo(...pos(e));cx.stroke()};
+const endSig=e=>{if(!dr||e.pointerId!==sigPointer)return;dr=false;sigPointer=null;state.sig=cv.toDataURL();render()};
+cv.onpointerup=endSig;cv.onpointercancel=endSig;cv.onlostpointercapture=endSig;
+$('sigClr').onclick=()=>{dr=false;sigPointer=null;cx.clearRect(0,0,cv.width,cv.height);state.sig=null;render()};
+const textHtml=value=>{const node=document.createElement('span');node.textContent=value;return node.innerHTML};
+const row=(k,b)=>b?`<tr data-k="${k}"><td>${D('r_'+k)}</td><td>${b}</td></tr>`:'';
+
+function clearValidation(){
+ document.querySelectorAll('#form .fe').forEach(e=>e.remove());document.querySelectorAll('#form .ferr').forEach(e=>{e.classList.remove('ferr');e.removeAttribute('aria-invalid')});
+ document.querySelectorAll('#form [aria-describedby]').forEach(e=>{const ids=e.getAttribute('aria-describedby').split(' ').filter(id=>!id.startsWith('protocol-error-'));if(ids.length)e.setAttribute('aria-describedby',ids.join(' '));else e.removeAttribute('aria-describedby')});
+ for(const id of ['phoneErr','mailErr','nipErr'])$(id).classList.add('hide');$('missing').textContent='';
+}
+function validateProtocol(){
+ const org=state.org,contactOk=phoneValid('phone'),nipD=$('nip').value.replace(/[^0-9]/g,'');
+ const nipOk=nipD.length===10&&(()=>{const w=[6,5,7,2,3,4,5,6,7];const c=w.reduce((x,y,i)=>x+y*+nipD[i],0)%11;return c!==10&&c===+nipD[9]})();
+ const mailV=$('mail').value.trim(),mailOk=!mailV||/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mailV);
+ const errs=[];const E=(el,name,m)=>errs.push({el:typeof el==='string'?$(el):el,name,m:m===undefined?t('need')+name:m});
+ const nv=n=>!$(n).value.trim();
+ if(org){if(!nipOk)E('nip',t('n_nip'),$('nip').value.trim()?($('nipErr').classList.contains('hide')?t('niperr'):''):undefined);if(nv('company'))E('company',t('n_company'));if(nv('addr'))E('addr',t('n_addr'));if(nv('name'))E('name',t('n_name'))}
+ if(!contactOk)E('phone',t('n_phone'),$('phone').value.trim()?'':undefined);
+ if(!mailOk)E('mail',t('n_mail'),'');
+ if(nv('typeIn'))E('typeIn',t('n_type'));
+ else if(state.type===OTHER&&nv('typeOther'))E('typeOther',t('n_other'));
+ if(state.photoList.length<1)E('dwrap',t('n_over'));if(state.photoList.length<2)E('dwrap',t('n_serial'));
+ if(nv('fault'))E('fault',t('n_fault'));
+ if(!state.sig)E('sig',t('needsign'));
+ return errs;
+}
+function showProtocolErrors(errs){
+ errs.forEach((e,i)=>{e.el.classList.add('ferr');e.el.setAttribute('aria-invalid','true');const d=document.createElement('div');d.className='miss fe';d.id='protocol-error-'+i;d.setAttribute('role','alert');d.textContent=e.m||t('need')+e.name;(e.el.closest('.row,.ph-row,.dd,.dwrap,.scan-field,.fwrap')||e.el).after(d);e.el.setAttribute('aria-describedby',((e.el.getAttribute('aria-describedby')||'')+' '+d.id).trim())});
+ const first=errs[0];showStep(+first.el.closest('.step').dataset.s,0);first.el.scrollIntoView({block:'center',behavior:'smooth'});if(first.el.focus)first.el.focus({preventScroll:true});
+}
+function render(){
+ growDeliveryNotes();clearValidation();paintDeck();
+ const org=state.org;
+ const same=org&&$('same').checked;
+ const delivery=same?'':$('delAddr').value;
+ const deliveryDetails=same?'':row('deliveryunit',textHtml($('delUnit').value))+row('deliverynotes',textHtml($('delNotes').value));
+ $('dClient').innerHTML=org?row('firm',$('company').value)+row('nip',$('nip').value)+row('invaddr',$('addr').value)+row('delivery',same?D('sameinv'):delivery)+deliveryDetails+row('transport',transText())+row('resp',$('name').value)+row('phone',phoneText('phone'))+row('email',$('mail').value)
+  :row('client',$('name').value||D('private'))+row('phone',phoneText('phone'))+row('email',$('mail').value)+row('delivery',delivery)+deliveryDetails+row('transport',transText());
+ $('dDev').innerHTML=row('type',state.type===OTHER?TNAME[OTHER][L]+(typeof $('typeOther').value==='string'&&$('typeOther').value.trim()?': '+$('typeOther').value.trim():''):state.type?TNAME[state.type][L]:$('typeIn').value.trim())+row('model',$('model').value)+row('serial',$('serial').value);
+ $('dFault').textContent=$('fault').value;
+ {const v=$('stan').value.trim();$('dStan').textContent=v;$('dStan').classList.toggle('hide',!v);$('hStan').classList.toggle('hide',!v)}
+ const fig=(s,c)=>s?`<figure><img src="${s}">${c?`<figcaption>${c}</figcaption>`:''}</figure>`:'';
+ $('dPh1').innerHTML=state.photoList.map((p,i)=>fig(p,i===0?D('capOver'):i===1?D('capSer'):'')).join('');
+ $('dPh2').innerHTML='';$('hPh2').classList.add('hide');
+ $('sigImg').src=state.sig||'';
+ {const df=DIAG[state.type];$('dFee').textContent=df?df.v+' zł'+(df.net?' '+t('cNet'):''):D('feev')}
+
+ bc.postMessage($('docs').innerHTML);
+ if(!applying)bc.postMessage({snap:snapshot(),from:V});
+}
+$('print').onclick=()=>{clearValidation();const errs=validateProtocol();if(errs.length){showProtocolErrors(errs);return}const button=$('print');button.disabled=true;getNo().then(()=>window.print(),()=>{$('missing').textContent=t('noerr')}).finally(()=>{button.disabled=false})};
+function getNo(){if(/^\d+\//.test(No))return Promise.resolve(No);return fetch('/api/order-number',{method:'POST',headers:{'content-type':'application/json','x-omobonus-panel':'1'},body:JSON.stringify({key:orderKey})}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{setNo(j.no);render();return j.no})}
+let applying=false;
+const FIELDS=['typeIn','typeOther','phone','phoneCc','name','mail','model','serial','fault','stan','nip','company','addr','delAddr','delUnit','delNotes'];
+function snapshot(){const v={};FIELDS.forEach(i=>v[i]=$(i).value);return{L,no:/^\d+\//.test(No)?No:'',ok:orderKey,v,same:$('same').checked,card:$('cardImg').classList.contains('hide')?'':$('cardImg').src,st:JSON.parse(JSON.stringify({org:state.org,photoList:state.photoList,photoIds:state.photoIds,photoResults:state.photoResults,automatic:recognitionAutomatic,sig:state.sig,type:state.type}))}}
+function applySnap(p){
+ applying=true;
+ const oldPhotos=state.photoList.slice(),oldIds=state.photoIds.slice();
+ if(p.ok){orderKey=p.ok;try{sessionStorage.setItem('orderKey',orderKey)}catch(e){}}if(p.no)setNo(p.no);
+ Object.assign(state,p.st);delete state.checks;delete state.acc;
+ if(!Array.isArray(state.photoList)){const o=p.st.photos||{};state.photoList=[o.over,o.serial,o.x1,o.x2].filter(Boolean)}
+ syncPhotoIds();const photosChanged=oldPhotos.length!==state.photoList.length||oldPhotos.some((v,i)=>v!==state.photoList[i]||oldIds[i]!==state.photoIds[i]);if(photosChanged)invalidatePhotoJobs();
+ Object.assign(recognitionAutomatic,{model:null,serial:null,type:null},p.st.automatic||{});state.automatic=recognitionAutomatic;
+ setOrg(p.st.org);
+ FIELDS.forEach(i=>$(i).value=i==='delUnit'?String(p.v[i]??'').slice(0,20):p.v[i]??'');
+ $('same').checked=p.same;$('delBox').classList.toggle('hide',!!(p.st.org&&p.same));
+ $('type').value=state.type;updFlag('phone');
+ for(const id of ['model','serial','type']){const auto=recognitionAutomatic[id];if(auto&&!state.photoIds.includes(auto.photoId)){recognitionAutomatic[id]=auto;clearPhotoFields(auto.photoId);}}
+ if(p.card){$('cardImg').src=p.card;$('cardImg').classList.remove('hide')}else $('cardImg').classList.add('hide');
+ buildTree();buildLists();
+ cx.clearRect(0,0,cv.width,cv.height);if(state.sig){const im=new Image();im.onload=()=>cx.drawImage(im,0,0,cv.width,cv.height);im.src=state.sig}
+ if(p.L&&p.L!==L){L=p.L;applyLang()}
+ render();applying=false;if(photosChanged&&state.photoIds.length)recheckPhotos();
+}
+let scrIgn=0;
+function maxScroll(){const d=document.documentElement;return Math.max(1,d.scrollHeight-innerHeight)}
+const HLMAP={typeIn:'type',name:'client',phone:'phone',mail:'email',delAddr:'delivery',delUnit:'deliveryunit',delNotes:'deliverynotes',company:'firm',nip:'nip',addr:'invaddr',model:'model',serial:'serial',fault:'#dFault',stan:'#dStan'};
+Object.keys(HLMAP).forEach(i=>{$(i).addEventListener('focus',()=>bc.postMessage({hl:i==='name'&&state.org?'resp':HLMAP[i]}));$(i).addEventListener('blur',()=>bc.postMessage({hl:null}))});
+bc.onmessage=e=>{const d=e.data;if(d==='hello')render();else if(d&&d.snap&&d.from!==V)applySnap(d.snap);};
+document.querySelectorAll('input[type=text],input[type=tel],input[type=email],textarea').forEach(e=>{if(e.id!=='delAddr')e.setAttribute('autocomplete','off')});
+let step=1;const NS=4;
+function showStep(n,sc){step=Math.max(1,Math.min(NS,n));document.querySelectorAll('.step').forEach(e=>e.classList.toggle('cur',+e.dataset.s===step));
+ document.querySelectorAll('.bars i').forEach((b,k)=>b.classList.toggle('on',k<step));
+ $('stl').textContent=t('step')+' '+step+' / '+NS+' · '+t('s'+step);$('sPrev').style.display=step>1?'':'none';document.querySelector('.snav').classList.toggle('first',step===1);$('sNext').classList.toggle('hide',step===NS);
+ if(sc)window.scrollTo(0,0)}
+$('sPrev').onclick=()=>showStep(step-1,1);$('sNext').onclick=()=>showStep(step+1,1);
+setOrg(false);applyLang();showStep(1);
+const pn=$('form');const sc=()=>{const s=pn.offsetWidth/760;pn.style.setProperty('--s',s);pn.style.setProperty('--bw',Math.round(200*s)+'px');pn.style.setProperty('--ph',Math.ceil(pn.getBoundingClientRect().height)+'px')};
+new ResizeObserver(sc).observe(pn);sc();
+if(standardsPreview){
+ const specs=[
+ ['Заголовок формы','.ttl','ПК: 28 / 29.4 px; телефон: 24 / 25.2 px','0 0 14px','Без изменения'],
+ ['Заголовок раздела','.stph','28 / 29.4 px; значок: 32 px','6px 0 10px; раздел30px + padding22px','На телефоне прежние шаги'],
+ ['Подпись поля','#nameLabel','ПК: 19 / 24.7 px; телефон: 18 / 23.4 px','6px сверху, 2px до поля','Включая Adres dostawy, Lokal, Podpis'],
+ ['Текст поля','#name','ПК: 18 / 28 px; телефон: 16 / 22.4 px; height: 46 / 44 px','8px × 16px','Мягкое тиснение A: единая inset-тень, прозрачный фон; radius2px; тёплый focus, disabled приглушён'],
+ ['Placeholder','#delUnit','ПК: 18 / 28 px; телефон: 16 / 22.4 px; height: 46 / 44 px; width: 100 px ПК / 100% телефон','Как поле; колонка100px ПК /100% mobile','Цвет #6b5940; opacity1'],
+ ['Многострочное поле','#stan','ПК: 18 / 28 px; телефон: 16 / 22.4 px; height: 74 / 62.8 px (2 строки)','8px × 16px; справа110px под две кнопки','Та же рамка; ручной текст сохранён'],
+ ['Растущее поле','#delNotes','ПК: 18 / 28 px; телефон: 16 / 22.4 px; min-height: 46 / 44 px; 1 строка','8px × 16px','Растёт/сжимается, без внутренней прокрутки'],
+ ['Флажок / обычный текст','#sameRow label','16 / 24 px','Прежние отступы группы','Прежний выбор'],
+ ['Ошибка / пояснение','#phoneErr','12 / 18 px','Ошибка6px сверху/снизу','Ошибка #b3261e; пояснение #6b5940'],
+ ['Кнопка выбора клиента','#bType','15 / 20 px; height: 44 px','9px; gap10px','Прежние #3a2817 /#f3e6c4'],
+ ['Квадратная иконка','#sigClr','34 × 34 px; Lucide: 16 px; stroke-width: 2 px; цель: 40 × 40 px ПК / 44 × 44 px телефон','Цель40px ПК /44px mobile','Button: radius5px; border rgba(70,45,25,.55); hover .1 /press .16; focus-visible'],
+ ['Навигация','#sNext','15 / 20 px; height: 44 px; border-radius: 9999px','gap10px; одинаковые половины','Прежние зелёный/белый; Back — коричневый; без новых теней'],
+ ['Подпись','#sig','height: 180 px ПК / 200 px телефон; width: 100%','Ширина100%','Прежняя пунктирная рамка, прозрачный пергамент'],
+ ['Сургучная печать','#print','width изображения: 140 px ПК / 108 px телефон','Исходные размеры /kontakt','Исходные шрифт, цвет, тени, hover; не унифицировать с обычной кнопкой']
+ ];
+ const table=document.createElement('table');table.id='intake-standards-table';table.style.cssText='border-collapse:collapse;table-layout:fixed;width:100%;font:14px/20px var(--sfb);color:var(--intake-ink)';
+ const header=table.createTHead().insertRow();for(const value of ['Элемент и мини-пример','Размер / высота','Шрифт','Вес','Цвет','Отступы','Рамка / состояния']){const th=document.createElement('th');th.textContent=value;th.style.cssText='text-align:left;padding:8px;border:1px solid rgba(70,45,25,.45)';header.append(th)}
+ const rows=table.createTBody();for(const [name,selector,size,gaps,states] of specs){const source=document.querySelector(selector);if(!source)continue;const st=getComputedStyle(source),tr=rows.insertRow();
+  const first=tr.insertCell();first.textContent=name;const sample=document.createElement('div');sample.className='panel';sample.style.cssText='margin:8px 0 0!important;padding:10px!important;position:relative!important;width:100%!important;max-width:160px!important;min-height:48px;background-size:cover';const copy=source.cloneNode(true);for(const node of [copy,...copy.querySelectorAll('[id]')])node.removeAttribute('id');copy.removeAttribute('for');copy.classList.remove('hide');copy.style.removeProperty('display');copy.style.setProperty('min-height',st.minHeight,'important');
+  for(const key of ['font-family','font-size','font-weight','line-height','color','background','border','border-radius','box-shadow','padding'])copy.style.setProperty(key,st.getPropertyValue(key));
+  if(source.id==='sig'){copy.style.width='100%';copy.style.height='180px'}
+
+  if(copy instanceof HTMLInputElement){copy.value=name==='Placeholder'?'':'Jan Kowalski';copy.readOnly=true;copy.style.width='100%'}
+  if(copy instanceof HTMLTextAreaElement){copy.value='Informacje o urządzeniu';copy.readOnly=true;copy.style.height='auto'}
+  if(source.id==='sigClr')copy.style.cssText='position:relative;margin:0;top:auto;right:auto';
+  if(source.id==='sNext'){copy.classList.remove('hide');copy.style.cssText='height:44px;width:100%;border-radius:9999px!important;background:var(--sfg)!important;color:white!important;font-size:15px!important;line-height:20px;font-weight:600';}
+  if(source.id==='print')copy.style.cssText='position:relative;bottom:auto;margin:0;transform:none';
+  sample.append(copy);first.append(sample);
+  const family=st.fontFamily.split(',')[0].replace(/["']/g,'').trim().replace(/^Inter Sys$/,'Inter');
+  const spacing=['margin-top: '+st.marginTop,'margin-bottom: '+st.marginBottom,'padding-top: '+st.paddingTop,'padding-bottom: '+st.paddingBottom,'padding-left: '+st.paddingLeft,'padding-right: '+st.paddingRight];
+  if(selector==='.stph')spacing.push('Разделы 2–4 (ПК): margin-top: var(--intake-gap-section) = 30px; padding-top: var(--intake-section-inset) = 22px');
+  if(selector==='#nameLabel')spacing.push('--intake-gap-label: 2px; --intake-gap-field: 6px; --intake-gap-group: 14px; первая подпись группы: margin-top: 0');if(selector==='#bType'||selector==='#sNext')spacing.push('gap: 10px');if(selector==='#sNext')spacing.push('flex-basis: calc(50% - 5px)');
+  for(const value of [size,family,st.fontWeight,name==='Placeholder'?'#6b5940':st.color,spacing.join('\n'),states])tr.insertCell().textContent=value;
+  [...tr.cells].forEach((cell,index)=>cell.dataset.label=header.cells[index].textContent);
+
+  for(const cell of tr.cells)cell.style.cssText='padding:8px;vertical-align:top;border:1px solid rgba(70,45,25,.45)';tr.cells[5].style.whiteSpace='pre-line';
+ }
+ const original=document.createElement('div');original.hidden=true;while(document.body.firstChild)original.append(document.body.firstChild);document.body.append(original,table);document.body.style.cssText='margin:0;padding:8px;background:white';
+ const presentation=document.createElement('style');presentation.textContent=`
+ #intake-standards-table th,#intake-standards-table td{overflow-wrap:anywhere;min-width:0}
+ #intake-standards-table th{font-size:12px}
+ #intake-standards-table td:first-child{font-weight:600}
+ #intake-standards-table td:nth-child(6){font-size:12px;line-height:18px}
+ @media(max-width:959px){
+ #intake-standards-table,#intake-standards-table tbody{display:block;width:100%}
+ #intake-standards-table thead{display:none}
+ #intake-standards-table tr{display:block;margin-bottom:12px}
+ #intake-standards-table td{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px;width:100%;font-size:14px!important}
+ #intake-standards-table td::before{content:attr(data-label);font-weight:600}
+ #intake-standards-table td:first-child{display:block}
+ #intake-standards-table td:first-child::before{content:none}
+ }`;document.head.append(presentation);
+ const fitExamples=()=>{for(const sample of table.querySelectorAll('td:first-child > .panel')){const copy=sample.querySelector('[data-example-stage]')?.firstElementChild||sample.firstElementChild;if(!copy)continue;
+  copy.style.transform='none';copy.style.position='relative';copy.style.margin='0';const rect=copy.getBoundingClientRect();if(!rect.width||!rect.height)continue;
+  const room=Math.min(140,sample.clientWidth-20),scale=Math.min(1,room/rect.width,140/rect.height);copy.style.width=rect.width+'px';copy.style.maxWidth='none';copy.style.position='absolute';copy.style.left='0';copy.style.top='0';copy.style.transformOrigin='top left';copy.style.transform='scale('+scale+')';
+  const stage=sample.querySelector('[data-example-stage]')||document.createElement('div');stage.dataset.exampleStage='';stage.style.cssText='position:relative;width:100%;height:'+Math.ceil(rect.height*scale)+'px';stage.append(copy);sample.append(stage);
+ }};
+ fitExamples();if(document.fonts)document.fonts.ready.then(fitExamples);
+addEventListener('resize',fitExamples);
+
+}
+
+}
+</script>
+</body>
+</html>
