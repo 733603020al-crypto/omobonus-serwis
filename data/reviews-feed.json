@@ -1,42 +1,6 @@
 {
   "reviews": [
     {
-      "author_name": "Adam Ziaja",
-      "author_url": "https://www.google.com/maps/contrib/101268518920926309302/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX03Wl98djBAtKuNPEevSI8lTz2VUN7CFOpZ1bykbrdHWQaRd0=s128-c0x00000000-cc-rp-mo",
-      "rating": 5,
-      "relative_time_description": "3 tygodnie temu",
-      "text": "Polecam ten zakład naprawy drukarek. Bardzo sprawnie pracują i drukarka atramentowa działa jak nowa",
-      "time": 1784308146,
-      "translated": false,
-      "text_uk": "Рекомендую цю майстерню з ремонту принтерів. Вони працюють дуже ефективно, а струменевий принтер працює як новий.",
-      "text_ru": "Я рекомендую эту мастерскую по ремонту принтеров. Они работают очень эффективно, и струйный принтер работает как новый.",
-      "text_en": "I recommend this printer repair shop. They work very efficiently and my inkjet printer works like new",
-      "relative_time_uk": "3 тижні тому",
-      "relative_time_ru": "3 недели назад",
-      "relative_time_en": "3 weeks ago"
-    },
-    {
-      "author_name": "Daniel Bacherek",
-      "author_url": "https://www.google.com/maps/contrib/114193272098327931863/reviews",
-      "language": "pl",
-      "original_language": "pl",
-      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocIOWTSCwhHMXgcgRKQJ8ZVn0iyUjLzOUrev0JS7igTybqogPA=s128-c0x00000000-cc-rp-mo-ba2",
-      "rating": 5,
-      "relative_time_description": "7 miesięcy temu",
-      "text": "Bardzo polecam ten serwis! Moja drukarka laserowa HP zostawiała brzydkie pasy na kartkach i byłem przekonany, że czeka mnie droga naprawa. Dzięki fachowej diagnozie serwisu okazało się, że wystarczyła prosta wymiana tonerów. Sam bym na to nie wpadł, a dzięki ich uczciwości naprawiłem sprzęt tanio i szybko. Duży plus za profesjonalizm i to, że nie naciągają na zbędne koszty!",
-      "time": 1768238411,
-      "translated": false,
-      "text_uk": "Я дуже рекомендую цей сервіс! Мій лазерний принтер HP залишав негарні смуги на сторінках, і я був переконаний, що мене чекає дорогий ремонт. Завдяки професійній діагностиці сервісу виявилося, що достатньо простої заміни тонера. Я б сам до цього не подумав, і завдяки їхній чесності я зміг швидко та недорого полагодити пристрій. Великий плюс за їхній професіоналізм і те, що вони не завищили ціну!",
-      "text_ru": "Я настоятельно рекомендую эту услугу! Мой лазерный принтер HP оставлял некрасивые полосы на страницах, и я был уверен, что меня ждет дорогостоящий ремонт. Благодаря профессиональной диагностике специалистов оказалось, что достаточно простой замены тонера. Я бы сам до этого не догадался, и благодаря их честности я смог быстро и недорого починить устройство. Большой плюс за их профессионализм и за то, что они не завысили цену!",
-      "text_en": "I highly recommend this service! My HP laser printer was leaving ugly streaks on the pages and I was sure an expensive repair was ahead. Thanks to the service’s expert diagnosis, it turned out a simple toner replacement was enough. I would never have figured that out myself, and thanks to their honesty I fixed it cheaply and quickly. A big plus for professionalism and for not talking you into unnecessary costs!",
-      "relative_time_uk": "7 місяців тому",
-      "relative_time_ru": "7 месяцев назад",
-      "relative_time_en": "7 months ago"
-    },
-    {
       "author_name": "Peter Mishchuk",
       "author_url": "https://www.google.com/maps/contrib/111985737426682416811/reviews",
       "language": "pl",
@@ -179,7 +143,43 @@
       "relative_time_uk": "3 тижні тому",
       "relative_time_ru": "3 недели назад",
       "relative_time_en": "3 weeks ago"
+    },
+    {
+      "author_name": "Diana Mytko",
+      "author_url": "https://www.google.com/maps/contrib/108559406672266738745/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocJxoyhHfNO3QUY88n_MSOWXtuj5UGGtnMm4nDjfwTzQpHUA=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "tydzień temu",
+      "text": "Bardzo polecam! Ekspres do kawy został naprawiony szybko i profesjonalnie. Świetny kontakt, miła obsługa i pełen profesjonalizm. Wszystko działa bez zarzutu. Jestem bardzo zadowolona z usługi.",
+      "time": 1794309712,
+      "translated": false,
+      "text_uk": "Дуже рекомендую! Кавоварку відремонтували швидко та професійно. Чудове спілкування, доброзичливе обслуговування та повний професіоналізм. Все працює бездоганно. Я дуже задоволений обслуговуванням.",
+      "text_ru": "Я очень рекомендую! Кофемашину отремонтировали быстро и профессионально. Отличная связь с клиентом, дружелюбное обслуживание и полный профессионализм. Всё работает безупречно. Я очень доволен сервисом.",
+      "text_en": "I highly recommend it! The coffee machine was repaired quickly and professionally. Great communication, friendly service, and complete professionalism. Everything works flawlessly. I'm very pleased with the service.",
+      "relative_time_uk": "тиждень тому",
+      "relative_time_ru": "неделю назад",
+      "relative_time_en": "a week ago"
+    },
+    {
+      "author_name": "Natalia75",
+      "author_url": "https://www.google.com/maps/contrib/112083997354302013216/reviews",
+      "language": "pl",
+      "original_language": "pl",
+      "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLH3YVBJ9eKis8BU7qdpam2W0mePeN_-pzM87UGMOPxAKpCYg=s128-c0x00000000-cc-rp-mo",
+      "rating": 5,
+      "relative_time_description": "2 tygodnie temu",
+      "text": "Bardzo chciałam polecić ten serwis komputerowy. Bardzo miła obsługa, szybko zrealizowana usługa naprawy komputera i przede wszystkim niedrogo! Naprawdę szczerze polecam !",
+      "time": 1793622447,
+      "translated": false,
+      "text_uk": "Я дуже хотів порекомендувати цю майстерню з ремонту комп'ютерів. Дуже доброзичливе обслуговування, швидкий ремонт комп'ютерів і, головне, доступна ціна! Дуже рекомендую!",
+      "text_ru": "Я очень хотел бы порекомендовать этот компьютерный ремонтный центр. Очень дружелюбное обслуживание, быстрый ремонт компьютеров и, самое главное, доступные цены! Настоятельно рекомендую!",
+      "text_en": "I really wanted to recommend this computer repair shop. Very friendly service, quick computer repair, and above all, affordable! I highly recommend it!",
+      "relative_time_uk": "2 тижні тому",
+      "relative_time_ru": "2 недели назад",
+      "relative_time_en": "2 weeks ago"
     }
   ],
-  "updatedAt": "2026-11-16T10:18:45.488Z"
+  "updatedAt": "2026-11-23T11:27:32.448Z"
 }
