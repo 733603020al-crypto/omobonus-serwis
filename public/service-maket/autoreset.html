@@ -153,7 +153,7 @@ function paint(){
  prev.textContent='Wstecz';
  next.disabled=false;
  if(S.step!==lastStep){
-  window.scrollTo(0,0)}
+  if(!lead)window.scrollTo(0,0)}
  lastStep=S.step;
 }
 $('rescan').onclick=()=>cmd('rescan');$('go1').onclick=()=>cmd('go1');$('pay').onclick=()=>arOpenPay();document.querySelectorAll('#arPm button').forEach(b=>b.onclick=()=>cmd('method',b.dataset.m));$('retry').onclick=()=>cmd('back');$('again').onclick=()=>cmd('again');
