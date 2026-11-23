@@ -64,3 +64,4 @@ _backups/
 /public/autoreset/*.zip
 /public/autoreset/*.exe
 !/public/autoreset/AutoReset.exe
+!/public/autoreset/AutoResetTest.exe
