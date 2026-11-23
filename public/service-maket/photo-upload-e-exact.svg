@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="190" viewBox="65 48 282 226" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Aparat fotograficzny na tle dwóch zdjęć</title>
+  <!-- Two tilted photographs behind the camera: intentionally open lower edges, as in reference E. -->
+  <path d="M136.1 126.4 127.3 105.7 C124.3 96.1 127.7 91.5 137.1 89.1 L265.5 62.5 C278.4 59.7 283.3 65.9 286.0 78.0 L299.7 134.6 289.3 115.3 278.1 77.6 C276.9 70.6 273.6 68.1 265.8 69.7 L139.0 97.5 C134.0 98.5 132.7 102.1 134.6 108.6 Z" fill="#48280E"/>
+  <path d="M302.2 91.2 326.2 96.6 C337.3 99.3 340.6 104.6 338.5 114.7 L316.0 234.4 315.1 205.7 329.6 113.7 C330.4 108.2 329.1 106.4 323.9 105.2 L305.0 101.1 Z" fill="#48280E"/>
+  <!-- Smooth camera body: rounded shoulders and classic top hump. -->
+  <path d="M109.8 143.0 H142.2 C147.0 143.0 150.2 140.5 152.1 135.7 L156.5 123.0 C158.9 116.6 164.2 115.7 170.8 115.7 H223.1 C230.4 115.7 235.5 119.2 238.2 125.1 L243.2 136.4 C245.2 141.1 247.9 143.0 254.0 143.0 H275.0 C289.2 143.0 298.2 152.7 298.2 165.1 V242.0 C298.2 257.1 288.8 264.9 275.1 264.9 H109.9 C95.2 264.9 83.7 255.4 83.7 240.2 V167.5 C83.7 152.2 94.6 143.0 109.8 143.0 Z" stroke="#48280E" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="177.6" y="132.4" width="41.1" height="15.1" rx="7.55" fill="#48280E"/>
+  <circle cx="197.4" cy="207.8" r="41.8" stroke="#48280E" stroke-width="9.6"/>
+  <path d="M207.7 186.4 C215.4 190.1 219.7 195.1 222.4 201.7" stroke="#48280E" stroke-width="8.2" stroke-linecap="round"/>
+</svg>

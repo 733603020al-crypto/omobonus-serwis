@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AutoReset</title></head>
+<body>
+<!--
+Макет AutoReset собирается из настоящей формы приёма (form.html), а не рисуется заново:
+берётся вся страница формы целиком (шапка сайта, нижняя панель телефона, пергамент, заголовок,
+полоса шагов, кнопки «Wstecz/Dalej», стили, подгонка размеров), заменяются только содержимое
+четырёх шагов и логика. Настоящая функция переключения шагов showStep() и оформление
+(блок SS … intakeRecess) выполняются из исходного текста form.html.
+Правка form.html автоматически попадает и в этот макет. Операций с принтером нет — только демо-состояния.
+-->
+<template id="ar-steps">
+<ol class="may-steps arg" id="arGrid" aria-label="AutoReset">
+<li class="may-steps__step" data-i="0"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Wykrywanie drukarki</span><span class="may-sr"></span></div><div class="blk"><div class="ar-hz"><div class="ar-pic" id="arPic"><svg class="ar-outline" id="arOutline" viewBox="0 0 240 150" fill="none" stroke="#6b4a2b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M70 52 L78 14 H162 L170 52"/><path d="M22 62 Q22 52 34 52 H206 Q218 52 218 62 V104 H22 Z"/><path d="M40 104 V128 Q40 136 48 136 H192 Q200 136 200 128 V104"/><path d="M62 104 H178 V140 H62 Z"/><path d="M168 70 H202"/><circle cx="196" cy="84" r="4"/><path d="M36 70 H150"/></svg><div class="ar-photos" id="arPhotos"></div></div><div id="arModel" class="ar-model hide">Epson L3250</div></div>
+ <div class="note miss hide" id="arUns">Ten model nie jest obsługiwany — dalsze kroki są zablokowane.</div><div id="arDemo" style="display:none"><label>Symulacja (demo)</label><div class="seg"><button type="button" id="dOk">Reset udany</button><button type="button" id="dErr">Błąd połączenia</button></div><button type="button" class="b" id="rescan">Wykryj ponownie</button><button type="button" class="b main" id="go1">Dalej</button></div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="1"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Diagnostyka</span><span class="may-sr"></span></div><div class="blk"><div class="ar-abs"><div class="ar-absimg" id="arAbs" aria-hidden="true"><img src="absorber-0-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-1-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-2-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-3-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-4-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-5-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-6-v3.webp" alt="" width="240" height="270" decoding="async"><img src="absorber-7-v3.webp" alt="" width="240" height="270" decoding="async"></div><div class="ar-abst"><div class="ar-row"><label>Licznik absorbera (Waste Ink)</label><label id="arPct1"></label></div>
+ <div class="ar-bar"><i id="arBar1"></i></div></div></div>
+</div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="2"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Zgoda</span><span class="may-sr"></span></div><div class="blk"><div class="chk" id="arChk"><input type="checkbox" id="arOk"><label for="arOk">Rozumiem, że reset licznika nie opróżnia i nie wymienia fizycznego absorbera („pampersa”), a jego przepełnienie może spowodować wyciek tuszu i uszkodzenie drukarki.</label></div>
+</div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="3"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Płatność</span><span class="may-sr"></span></div><div class="blk"><div class="note">Wybierz metodę płatności (symulacja)</div><div class="pm" id="arPm"><button type="button" class="b" data-m="BLIK">BLIK</button><button type="button" class="b" data-m="Karta">Karta</button><button type="button" class="b" data-m="Google Pay">Google Pay</button><button type="button" class="b" data-m="Apple Pay">Apple Pay</button><button type="button" class="b" data-m="Szybki przelew">Szybki przelew</button></div><div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b main" id="pay" style="flex:1">Zapłać (demo)</button></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="4"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Reset licznika</span><span class="may-sr"></span></div><div class="blk"><div class="ar-row"><label>Postęp (symulacja)</label><label id="arPct3"></label></div>
+ <div class="ar-bar"><i id="arBar3"></i></div>
+ <div class="note" id="arLog" style="margin-top:var(--intake-gap-field)"></div></div><span class="may-steps__connector" aria-hidden="true"></span></li>
+<li class="may-steps__step" data-i="5"><div class="arh"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">Sprawdzenie i zakończenie</span><span class="may-sr"></span></div><div class="blk"><div class="note" id="arCheck">Sprawdzanie wyniku…</div><div id="arGood"><div class="note">● Reset wykonany (symulacja)</div><div class="ar-big">0 %</div><div class="note" style="text-align:center">Licznik absorbera (Waste Ink)</div></div>
+ <div id="arBad"><div class="miss">● Reset nie powiódł się — utracono połączenie z drukarką (symulacja).</div><div class="note" style="margin-top:var(--intake-gap-field)">Licznik absorbera nie został zmieniony: 96 %.</div></div>
+ <div class="inl row" style="margin-top:var(--intake-gap-group)"><button type="button" class="b" id="retry" style="flex:1">Wstecz</button><button type="button" class="b main" id="again" style="flex:2">Nowa diagnostyka</button></div></div></li>
+</ol>
+</template>
+
+<script type="text/plain" id="ar-code">
+const $=id=>document.getElementById(id);
+const V=new URLSearchParams(location.search).get('v')||(innerWidth<=600?'phone':'laptop');
+document.body.classList.add(V);$('screen').className='screen '+V;
+const NAMES=['Diagnostyka','Potwierdzenie','Reset','Wynik'];
+const T={step:'Krok',s1:NAMES[0],s2:NAMES[1],s3:NAMES[2],s4:NAMES[3]};
+const t=k=>T[k]||k;
+const form=(()=>{const x=new XMLHttpRequest();x.open('GET','form.html',false);x.send();return x.responseText})();
+const slice=(a,b)=>{const i=form.indexOf(a),j=form.indexOf(b,i);if(i<0||j<0)throw new Error('form.html: нет блока '+a);return form.slice(i,j)};
+// 1) оформление формы: те же стили, что применяет форма приёма
+const SSa=form.indexOf('const SS=');const SSb=form.indexOf('`;document.head.appendChild(style)}',SSa);
+try{(0,eval)(form.slice(SSa,SSb)+'`;document.head.appendChild(style)}')}catch(e){console.error('style block',e)}
+// 2) настоящий переключатель шагов формы: showStep, кнопки sPrev/sNext, полоса прогресса, подпись «Krok n / 4»
+try{(0,eval)(slice('let step=1;const NS=4;',"setOrg(false);applyLang();showStep(1);")+';window.__step=()=>step;')}catch(e){console.error('showStep',e)}
+// 3) подгонка высоты пергамента под содержимое (ResizeObserver формы)
+try{(0,eval)(slice("const pn=$('form');","new ResizeObserver(sc).observe(pn);sc();")+"new ResizeObserver(sc).observe(pn);sc();")}catch(e){console.error('sc',e)}
+
+document.head.insertAdjacentHTML('beforeend','<style>.ar-abs{display:flex;align-items:center;gap:20px}.ar-absimg{position:relative;flex:none;width:120px;height:135px}.ar-absimg img{position:absolute;inset:0;width:100%;height:100%;opacity:0}.ar-absimg img:first-child{opacity:1}.ar-abst{flex:1;min-width:0}.ar-abst .ar-row{margin-top:0}body.phone .ar-absimg{width:84px;height:95px}body.phone .ar-abs{gap:14px}body.laptop .arg>li[data-i="1"]{align-items:center}body.laptop .arg{--abs-h:135px}body.laptop .arg>li .may-steps__connector{top:34px;bottom:0}body.laptop .arg>li[data-i="0"] .may-steps__connector{bottom:calc((34px - var(--abs-h))/2)}body.laptop .arg>li[data-i="1"] .may-steps__connector{top:calc((var(--abs-h) - 34px)/2 + 34px)}</style>');
+document.head.insertAdjacentHTML('beforeend','<style>body.phone .inl{display:none}body.laptop .step{margin-top:0!important;padding-top:0!important;border-top:0!important}body.laptop .step:not(.hide){display:flex;flex-direction:column;min-height:276px}body.laptop .step>.inl{margin-top:auto!important;padding-top:var(--intake-gap-group)}body.phone .snav .b{white-space:normal;line-height:1.1;text-align:center}.ar-img{display:block;margin:0 auto var(--intake-gap-field);height:150px;max-width:100%;object-fit:contain}.ar-bar{height:16px;border:1px solid var(--intake-recess-border,#b9a77f);border-radius:8px;background:#fffdf8;overflow:hidden;box-shadow:var(--intake-recess-shadow,none)}.ar-bar i{display:block;height:100%;background:linear-gradient(#d9b072,#b68d60);transition:width .15s}#arBar1{transition:none;width:100%;background:linear-gradient(to right,#218B4E 0%,#83B84A 40%,#E9C43A 60%,#ED8838 80%,#C93632 100%)}.ar-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:var(--intake-gap-field) 0 2px}.ar-row label:last-child{white-space:nowrap;flex:none}.ar-big{font:700 44px var(--sfh);color:#3A2817;text-align:center;margin:var(--intake-gap-group) 0}.step button:disabled{opacity:.55;cursor:not-allowed}</style>');
+
+// шапка сайта (тот же SiteHeader, что в форме), заголовок и тексты нижней панели телефона
+try{SiteHeader.mount($('sh'),'pl',()=>{})}catch(e){console.error('header',e)}
+document.querySelector('.ttl').textContent='AutoReset';
+const PL={ab1:'Napisz',ab2:'Mapa',ab3:'Zadzwoń'};
+document.querySelectorAll('.abar [data-t]').forEach(e=>e.textContent=PL[e.dataset.t]||'');
+
+// ---------- фото обнаруженной модели: только настоящие фото именно этой модели; нет фото — остаётся контур; два цвета — два принтера внахлёст
+const MODEL='Epson L3250',MODELS={'Epson L3250':['../autoreset/printer-v1.webp']};
+{const ph=$('arPhotos'),im=MODELS[MODEL]||[];ph.classList.toggle('two',im.length>1);ph.innerHTML=im.slice(0,2).map(u=>'<img src="'+u+'" alt="'+MODEL+'">').join('')}
+// ---------- единое состояние макета (ПК и телефон) ----------
+const fresh=()=>({model:'Epson L3250',pay:'',abs:96,step:1,scan:0,ok:false,code:'',pct:0,log:[],fail:false,res:'',absDone:false});
+let S=fresh(),lead=V==='laptop',gotState=false,gotState0=false,tScan=null,tRun=null,lastStep=1;
+const ch=new BroadcastChannel('autoreset');
+const send=m=>ch.postMessage(m);
+const bcast=()=>send({k:'state',S,lead:V});
+const set=p=>{Object.assign(S,p);paint();bcast()};
+let tAuto=null;const stop=()=>{clearInterval(tScan);clearInterval(tRun);clearTimeout(tAuto)};
+const can2=()=>S.ok;const SUPPORTED=['Epson L3250'];const sup=()=>SUPPORTED.indexOf(S.model)>=0;
+const run=(c,a)=>{
+ if(c==='rescan'){stop();set({step:1,scan:0,ok:false,code:'',pay:'',pct:0,log:[],res:'',absDone:false});tScan=setInterval(()=>{if(S.scan>=100){clearInterval(tScan);tAuto=setTimeout(()=>{if(lead&&S.step===1&&S.scan>=100&&sup())run('go1')},5500);return}set({scan:Math.min(100,S.scan+10)})},300)}
+ else if(c==='go1'){if(S.step===1&&S.scan>=100&&sup())set({step:2})}
+ else if(c==='back'){if(S.step===5&&S.res==='err')set({step:3,pay:'',pct:0,log:[],res:''})}
+ else if(c==='ok'){if(S.step===2){set({ok:!!a});clearTimeout(tAuto);if(a)tAuto=setTimeout(()=>{if(S.step===2&&S.ok)set({step:3})},500)}}
+ else if(c==='method'){if(S.step===3)set({pay:String(a)})}
+ else if(c==='demo'){set({fail:!!a})}
+ else if(c==='pay'){if(S.step!==3||!S.pay)return;stop();set({step:4,pct:0,log:['Płatność '+S.pay+' potwierdzona (symulacja)','Połączenie z symulatorem drukarki…']});
+  const M={20:'Odczyt licznika absorbera: 96 %',50:'Zapis wartości 0 % (symulacja)',80:'Weryfikacja zapisu',100:'Gotowe'};
+  tRun=setInterval(()=>{const p=Math.min(100,S.pct+5);
+   if(S.fail&&p>=50){clearInterval(tRun);set({pct:p,log:S.log.concat('Błąd: utracono połączenie z drukarką'),step:5,res:'err'});return}
+   set({pct:p,log:M[p]?S.log.concat(M[p]):S.log});
+   if(p>=100){clearInterval(tRun);set({step:5,res:'check'});tAuto=setTimeout(()=>{if(lead&&S.step===5&&S.res==='check')set({res:'ok'})},1400)}},150)}
+ else if(c==='again'){if(S.step===5&&S.res!=='check'){set(fresh());run('rescan')}}
+};
+const cmd=(c,a)=>lead?run(c,a):send({k:'cmd',c,a});
+ch.onmessage=e=>{const m=e.data;
+ if(m.k==='state'){if(lead&&!(V!=='laptop'&&m.lead==='laptop'))return;gotState=true;if(lead){lead=false;stop()}if(!gotState0&&m.S.scan>=100&&m.S.absDone)document.body.classList.add('ar-still');else if(m.S.scan===0)document.body.classList.remove('ar-still');gotState0=true;S=m.S;paint()}
+ else if(m.k==='cmd'){if(lead)run(m.c,m.a)}
+ else if(m.k==='hello'){if(lead)bcast()}};
+
+
+// ---------- индикатор 7 этапов (по образцу компонента Steps: вертикальный на ПК, компактный горизонтальный на телефоне) ----------
+const STAGES=['Wykrywanie drukarki','Diagnostyka','Zgoda','Płatność','Reset licznika','Sprawdzenie i zakończenie'];
+document.head.insertAdjacentHTML('beforeend','<style>#steps .sl,#steps .bars{display:none}#steps{margin:0}.may-steps{list-style:none;margin:0;padding:0;display:flex}.may-steps__step{position:relative;display:flex;color:rgba(70,45,25,.55)}.may-steps__body{display:flex;align-items:center;gap:10px}.may-steps__marker{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 13px/1 var(--sfh,inherit);background:rgba(70,45,25,.14);color:rgba(70,45,25,.7);transition:background .34s cubic-bezier(.34,1.4,.64,1),color .15s,box-shadow .34s}.may-steps__title{font-size:14px;line-height:18px}.may-steps__connector{position:absolute;background:rgba(70,45,25,.14);overflow:hidden}.may-steps__connector::after{content:"";position:absolute;inset:0;background:var(--sfg);transform-origin:top left;transform:scale(0);transition:transform .34s cubic-bezier(0,0,.2,1)}.may-steps__step[data-status=complete] .may-steps__connector::after{transform:scale(1)}.may-steps__step[data-status=complete] .may-steps__marker{background:var(--sfg);color:#fff}.may-steps__step[data-status=current] .may-steps__marker{background:var(--sfg);color:#fff;box-shadow:0 0 0 4px rgba(60,130,70,.25)}.may-steps__step[data-status=current]{color:#3A2817;font-weight:600}.may-steps__step[data-status=complete]{color:#3A2817}.may-steps__step[data-status=error] .may-steps__marker{background:#b3261e;color:#fff;box-shadow:0 0 0 4px rgba(179,38,30,.22)}.may-steps__step[data-status=error]{color:#b3261e;font-weight:600}.may-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}'+
+'body.laptop #steps{display:none!important}body.laptop .arg{flex-direction:column}body.laptop .arg>li{display:grid;grid-template-columns:260px 1fr;column-gap:28px;padding-bottom:28px;align-items:start}body.laptop .arg>li:last-child{padding-bottom:0}body.laptop .arh{display:flex;align-items:center;gap:10px;min-height:28px}body.laptop .arg .may-steps__connector{left:13px;top:34px;bottom:6px;width:2px}body.laptop .arg .may-steps__connector::after{transform:scaleY(0)}body.laptop .arg .may-steps__step[data-status=complete] .may-steps__connector::after{transform:scaleY(1)}body.laptop .arg .blk{transition:opacity .3s}body.laptop .arg>li[data-status=upcoming] .blk{opacity:.4;pointer-events:none}body.laptop .arg>li[data-status=upcoming] .may-steps__title{opacity:.7}body.phone .arg>li{display:none}body.phone .arg>li.show{display:block}body.phone .arh,body.phone .arg .may-steps__connector{display:none}body.phone .arg{display:block}.ar-pic{position:relative;height:150px;margin:0 auto var(--intake-gap-field)}.ar-outline,.ar-photos{position:absolute;inset:0;width:100%;height:100%;transition:opacity 1.5s}.ar-still .ar-outline,.ar-still .ar-photos{transition:none}.ar-outline{padding:0 20%;box-sizing:border-box;opacity:.6}.ar-photos{display:flex;justify-content:center;align-items:center;opacity:0}.ar-pic.det .ar-outline{opacity:0}.ar-pic.det .ar-photos{opacity:1}.ar-photos img{height:100%;max-width:100%;object-fit:contain}.ar-photos.two img{height:92%;max-width:60%}.ar-photos.two img:first-child{margin-right:-12%;align-self:flex-start}.ar-photos.two img:last-child{position:relative;z-index:1;align-self:flex-end}#arDemo,.hide{display:none}#arPct1,#arPct3,.ar-big,.ar-model,.may-steps__title,.may-steps__marker,.pm button{font-family:Inter,"Inter Fallback",system-ui,-apple-system,sans-serif!important;font-weight:600!important}body.laptop .may-steps__marker{width:34px;height:34px;font-size:15px}body.laptop .may-steps__title{font-size:16px;line-height:20px}body.laptop .arh{min-height:34px}body.laptop .arg .may-steps__connector{left:16px;top:40px}body.laptop .arg>li[data-i="0"] .arh{margin-top:61px}body.laptop .arg>li[data-i="0"] .may-steps__connector{top:101px}.blk>.note:first-child,.blk>.ar-row:first-child,#arGood>.note:first-child,#arBad>.miss:first-child{min-height:34px}body.phone .may-steps__marker{width:28px;height:28px;font-size:13px}body.phone .arg .may-steps__connector,body.phone .may-steps__connector{left:calc(50% + 18px);right:calc(-50% + 18px);top:13px}body.phone .ar-model{font-size:19px}body.phone #steps::after{font-weight:600}.pm{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--intake-gap-field)}.pm button{flex:1 1 auto;min-width:96px}.pm button.sel{background:var(--sfg)!important;color:#fff!important}.ar-hz{display:flex;align-items:center;gap:18px}.ar-hz .ar-pic{flex:none;width:260px;height:156px;margin:0}body.phone .ar-hz .ar-pic{width:200px;height:120px}body.phone .ar-model{font-size:18px}.ar-model{font:600 22px/1.2 var(--sfh,inherit);color:#3A2817}.ar-outline{padding:0}body.laptop .arg>li[data-i="0"] .arh{margin-top:64px}body.laptop .arg>li[data-i="0"] .may-steps__connector{top:98px}.blk>.note:first-child,.blk>.ar-row:first-child,#arGood>.note:first-child,#arBad>.miss:first-child{min-height:28px;display:flex;align-items:center;margin-top:0}.blk>.ar-row:first-child{justify-content:space-between}#arChk{flex-wrap:nowrap;align-items:flex-start;margin:0}#arChk input{flex:none;margin-top:0}#arChk label{font-size:15px!important;line-height:22px!important;padding-top:3px!important}.blk>.ar-row:first-child{align-items:center}'+
+'body.phone .may-steps{justify-content:space-between;align-items:flex-start}body.phone .may-steps__step{flex:1;justify-content:center}body.phone .may-steps__body{flex-direction:column;gap:4px}body.phone .may-steps__marker{width:24px;height:24px;font-size:12px}body.phone .may-steps__title{display:none}body.phone .may-steps__step[data-status=current] .may-steps__title,body.phone .may-steps__step[data-status=error] .may-steps__title{display:none}body.phone .may-steps__connector{left:calc(50% + 16px);right:calc(-50% + 16px);top:11px;height:2px}body.phone .may-steps__connector::after{transform:scaleX(0)}body.phone .may-steps__step[data-status=complete] .may-steps__connector::after{transform:scaleX(1)}body.phone #steps::after{content:attr(data-cur);display:block;text-align:center;font:600 13px var(--sfh,inherit);color:#3A2817;margin-top:8px}</style>');
+$('steps').insertAdjacentHTML('afterbegin','<ol class="may-steps" id="marSteps" aria-label="Postęp">'+STAGES.map((n,i)=>'<li class="may-steps__step" data-i="'+i+'"><span class="may-steps__body"><span class="may-steps__marker" aria-hidden="true"></span><span class="may-steps__title">'+n+'</span><span class="may-sr"></span></span>'+(i<5?'<span class="may-steps__connector" aria-hidden="true"></span>':'')+'</li>').join('')+'</ol>');
+const SR={complete:'Ukończono',current:'Bieżący krok',upcoming:'Nie rozpoczęto',error:'Błąd'};
+// 4 экрана макета → 7 этапов; платежа в макете нет (имитация), поэтому «Płatność» считается пройденной при переходе к сбросу
+function stageState(){
+ let cur,err=-1;
+ if(S.step===1){cur=S.scan>=100&&sup()?1:0;if(S.scan>=100&&!sup())err=0}
+ else if(S.step===2)cur=2;
+ else if(S.step===3)cur=3;
+ else if(S.step===4)cur=4;
+ else if(S.res==='check')cur=5;
+ else if(S.res==='ok')cur=6;
+ else{cur=5;err=4}
+ return{cur,err}}
+function paintStages(){
+ const{cur,err}=stageState();
+ document.querySelectorAll('.may-steps__step').forEach(li=>{const i=+li.dataset.i;
+  const st=i===err?'error':i<cur?'complete':i===cur?'current':'upcoming';
+  li.dataset.status=st;
+  if(st==='current')li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');
+  const m=li.querySelector('.may-steps__marker');m.textContent=st==='complete'?'✓':st==='error'?'!':i+1;
+  li.querySelector('.may-sr').textContent=SR[st];li.classList.toggle('show',i===Math.min(cur,5))});
+ $('steps').dataset.cur=cur>5?'Zakończono':(cur+1)+' / 6 · '+STAGES[cur]}
+
+// ---------- шкала абсорбера: цвет по значению (0–49 зелёный, 50–79 жёлтый, 80–100 красный), плавное заполнение 0 → значение за 0,9 с, без повтора для того же значения
+let absShown=null,absRaf=0,absTimer=0,absFinal=false;
+function showAbs(t){
+ const bar=$('arBar1'),txt=$('arPct1'),fr=[...document.querySelectorAll('#arAbs img')];
+ const draw=v=>{const r=Math.round(v);fr.forEach((e,i)=>{if(i)e.style.opacity=Math.max(0,Math.min(1,v*0.07-(i-1)))});bar.style.clipPath='inset(0 '+(100-v)+'% 0 0)';txt.textContent=r+' %'};
+ if(S.absDone&&t>0){if(!absFinal||absShown!==t){cancelAnimationFrame(absRaf);clearTimeout(absTimer);absShown=t;absFinal=true;draw(t)}return}
+ if(t===absShown)return;absShown=t;absFinal=false;cancelAnimationFrame(absRaf);clearTimeout(absTimer);
+ draw(0);if(t<=0)return;
+ // пауза 0,7 с после появления принтера, затем 4 с плавного заполнения шкалы и абсорбера
+ absTimer=setTimeout(()=>{const t0=performance.now(),step=n=>{const k=Math.min(1,(n-t0)/4000);draw(t*k*k*(3-2*k));if(k<1)absRaf=requestAnimationFrame(step);else{absFinal=true;if(lead&&!S.absDone)set({absDone:true})}};absRaf=requestAnimationFrame(step)},700)}
+
+// ---------- отрисовка: только обновление существующих элементов ----------
+const setDis=(id,v)=>{const e=$(id);if(e)e.disabled=!!v};
+function paint(){
+ const d=S.scan>=100,lock=()=>false;
+ paintStages();
+ showStep(S.step); // настоящая функция формы: .cur, полоса прогресса, «Krok n / 4 · …», кнопка Wstecz
+ $('arPic').classList.toggle('det',S.scan>=50&&!!MODELS[S.model]);$('arModel').classList.toggle('hide',!d);$('arModel').textContent=S.model;$('arUns').classList.toggle('hide',!(d&&!sup()));
+ showAbs(d?S.abs:0);
+ $('dOk').classList.toggle('on',!S.fail);$('dErr').classList.toggle('on',S.fail);
+ if($('arOk').checked!==S.ok)$('arOk').checked=S.ok;
+ $('arPct3').textContent=S.pct+' %';$('arBar3').style.width=S.pct+'%';
+ $('arLog').innerHTML=S.log.map(x=>'› '+x).join('<br>');
+ $('arCheck').classList.toggle('hide',S.res!=='check');$('arGood').classList.toggle('hide',S.res!=='ok');$('arBad').classList.toggle('hide',S.res!=='err');
+ setDis('rescan',lock(1)||(S.scan>0&&!d));setDis('go1',!d||lock(1));setDis('dOk',lock(1));setDis('dErr',lock(1));
+ setDis('arOk',lock(2));setDis('pay',!S.pay);setDis('again',S.res==='check');
+ document.querySelectorAll('#arPm button').forEach(b=>b.classList.toggle('sel',b.dataset.m===S.pay));
+ $('retry').classList.toggle('hide',S.res!=='err');
+ // кнопки навигации формы (телефон)
+ const prev=$('sPrev'),next=$('sNext'),snav=document.querySelector('.snav');
+ const showPrev=S.step===5&&S.res==='err';
+ prev.style.display=showPrev?'':'none';snav.classList.toggle('first',!showPrev);
+ next.classList.toggle('hide',!(S.step===3||(S.step===5&&S.res!=='check')));
+ next.textContent=S.step===3?'Zapłać (demo)':'Nowa diagnostyka';
+ prev.textContent='Wstecz';
+ next.disabled=S.step===3&&!S.pay;
+ if(S.step!==lastStep){
+  window.scrollTo(0,0)}
+ lastStep=S.step;
+}
+$('rescan').onclick=()=>cmd('rescan');$('go1').onclick=()=>cmd('go1');$('pay').onclick=()=>cmd('pay');document.querySelectorAll('#arPm button').forEach(b=>b.onclick=()=>cmd('method',b.dataset.m));$('retry').onclick=()=>cmd('back');$('again').onclick=()=>cmd('again');
+$('dOk').onclick=()=>cmd('demo',false);$('dErr').onclick=()=>cmd('demo',true);
+$('arOk').onchange=e=>cmd('ok',e.target.checked);
+// кнопки формы sPrev/sNext: вместо безусловных переходов — проверяемые действия макета
+$('sPrev').onclick=()=>cmd('back');
+$('sNext').onclick=()=>cmd(S.step===3?'pay':'again');
+paint();
+if(lead){run('rescan')}else{send({k:'hello'});setTimeout(()=>{if(!gotState){lead=true;run('rescan')}},700)}
+</script>
+
+<script>
+setTimeout(()=>{
+ const steps=document.getElementById('ar-steps').innerHTML,code=document.getElementById('ar-code').textContent;
+ const x=new XMLHttpRequest();x.open('GET','form.html',false);x.send();let h=x.responseText;
+ const i=h.indexOf('<div class="step" data-s="1">'),j=h.indexOf('<div class="snav">',i);
+ h=h.slice(0,i)+steps+h.slice(j);
+ const pc=h.indexOf('<div class="printcol">');
+ h=h.slice(0,pc)+'</div>\n<script>'+code+'<\/script></body></html>';
+ h=h.replace(/<title>[^<]*<\/title>/,'<title>AutoReset</title>');
+ document.open();document.write(h);document.close();
+},0);
+</script>
+</body></html>

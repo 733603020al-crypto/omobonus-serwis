@@ -1,0 +1,122 @@
+[
+ {
+  "code": "ua",
+  "dial": "380",
+  "name": {
+   "pl": "Ukraina",
+   "uk": "Україна",
+   "ru": "Ukraina",
+   "en": "Ukraine"
+  },
+  "short": "Ukraina",
+  "flag": "ua.webp",
+  "format": "xxx xxx xxxx",
+  "len": 9,
+  "lang": "uk"
+ },
+ {
+  "code": "pl",
+  "dial": "48",
+  "name": {
+   "pl": "Polska",
+   "uk": "Польща",
+   "ru": "Polska",
+   "en": "Poland"
+  },
+  "short": "Polska",
+  "flag": "pl.webp",
+  "format": "xxx xxx xxx",
+  "len": 9,
+  "lang": "pl"
+ },
+ {
+  "code": "de",
+  "dial": "49",
+  "name": {
+   "pl": "Niemcy",
+   "uk": "Німеччина",
+   "ru": "Niemcy",
+   "en": "Germany"
+  },
+  "short": "Niemcy",
+  "flag": "de.webp",
+  "format": "xxx xxxxxxx",
+  "len": 11,
+  "lang": "pl"
+ },
+ {
+  "code": "cz",
+  "dial": "420",
+  "name": {
+   "pl": "Czechy",
+   "uk": "Чехія",
+   "ru": "Czechy",
+   "en": "Czechia"
+  },
+  "short": "Czechia",
+  "flag": "cz.webp",
+  "format": "xxx xxx xxx",
+  "len": 9,
+  "lang": "pl"
+ },
+ {
+  "code": "sk",
+  "dial": "421",
+  "name": {
+   "pl": "Słowacja",
+   "uk": "Словаччина",
+   "ru": "Słowacja",
+   "en": "Slovakia"
+  },
+  "short": "Słowacja",
+  "flag": "sk.webp",
+  "format": "xxx xxx xxx",
+  "len": 9,
+  "lang": "pl"
+ },
+ {
+  "code": "lt",
+  "dial": "370",
+  "name": {
+   "pl": "Litwa",
+   "uk": "Литва",
+   "ru": "Litwa",
+   "en": "Lithuania"
+  },
+  "short": "Litwa",
+  "flag": "lt.webp",
+  "format": "xxx xxxxx",
+  "len": 8,
+  "lang": "pl"
+ },
+ {
+  "code": "gb",
+  "dial": "44",
+  "name": {
+   "pl": "Wielka Brytania",
+   "uk": "Велика Британія",
+   "ru": "Wielka Brytania",
+   "en": "United Kingdom"
+  },
+  "short": "Wielka Brytania",
+  "flag": "gb.webp",
+  "format": "xxxx xxxxxx",
+  "len": 10,
+  "lang": "en"
+ },
+ {
+  "code": "other",
+  "dial": "",
+  "name": {
+   "pl": "Inny kraj",
+   "uk": "Інша країна",
+   "ru": "Другая страна",
+   "en": "Other country"
+  },
+  "short": "Inny kraj",
+  "flag": "other.webp",
+  "format": "",
+  "len": 0,
+  "lang": "pl"
+ }
+]

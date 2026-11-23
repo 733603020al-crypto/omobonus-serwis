@@ -1,0 +1,250 @@
+[
+ {
+  "title": {
+   "pl": "Komputerów i IT",
+   "uk": "Комп'ютерів та ІТ",
+   "ru": "Компьютеров и IT",
+   "en": "Computers and IT"
+  },
+  "items": [
+   {
+    "slug": "serwis-laptopow",
+    "label": {
+     "pl": "Laptopów",
+     "uk": "Ноутбуки",
+     "ru": "Ноутбуки",
+     "en": "Laptops"
+    }
+   },
+   {
+    "slug": "serwis-komputerow-stacjonarnych",
+    "label": {
+     "pl": "Komputerów stacjonarnych",
+     "uk": "Стаціонарні комп'ютери",
+     "ru": "Стационарные компьютеры",
+     "en": "Desktop computers"
+    }
+   },
+   {
+    "slug": "outsourcing-it",
+    "label": {
+     "pl": "Outsourcing IT",
+     "uk": "ІТ-аутсорсинг",
+     "ru": "IT-аутсорсинг",
+     "en": "IT outsourcing"
+    }
+   }
+  ]
+ },
+ {
+  "title": {
+   "pl": "Drukarek (kserokopiarek) biurowych",
+   "uk": "Офісних принтерів (копірів)",
+   "ru": "Офисных принтеров (копиров)",
+   "en": "Office printers (copiers)"
+  },
+  "items": [
+   {
+    "slug": "serwis-drukarek-laserowych",
+    "label": {
+     "pl": "Drukarek laserowych",
+     "uk": "Лазерні принтери",
+     "ru": "Лазерные принтеры",
+     "en": "Laser printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-atramentowych",
+    "label": {
+     "pl": "Drukarek atramentowych",
+     "uk": "Струменеві принтери",
+     "ru": "Струйные принтеры",
+     "en": "Inkjet printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-iglowych",
+    "label": {
+     "pl": "Drukarek igłowych",
+     "uk": "Матричні принтери",
+     "ru": "Матричные принтеры",
+     "en": "Dot matrix printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-termicznych",
+    "label": {
+     "pl": "Drukarek etykiet termicznych",
+     "uk": "Термопринтери етикеток",
+     "ru": "Термопринтеры этикеток",
+     "en": "Thermal label printers"
+    }
+   }
+  ]
+ },
+ {
+  "title": {
+   "pl": "Drukarek specjalistycznych",
+   "uk": "Спеціалізованих принтерів",
+   "ru": "Специализированных принтеров",
+   "en": "Specialist printers"
+  },
+  "items": [
+   {
+    "slug": "serwis-drukarek-3d",
+    "label": {
+     "pl": "Drukarek 3D",
+     "uk": "3D-принтери",
+     "ru": "3D-принтеры",
+     "en": "3D printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-sublimacyjnych",
+    "label": {
+     "pl": "Drukarek sublimacyjnych",
+     "uk": "Сублімаційні принтери",
+     "ru": "Сублимационные принтеры",
+     "en": "Sublimation printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-dtf",
+    "label": {
+     "pl": "Drukarek DTF",
+     "uk": "DTF-принтери",
+     "ru": "DTF-принтеры",
+     "en": "DTF printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-dtg",
+    "label": {
+     "pl": "Drukarek DTG",
+     "uk": "DTG-принтери",
+     "ru": "DTG-принтеры",
+     "en": "DTG printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-spozywczych",
+    "label": {
+     "pl": "Drukarek spożywczych",
+     "uk": "Харчові принтери",
+     "ru": "Пищевые принтеры",
+     "en": "Edible (food) printers"
+    }
+   },
+   {
+    "slug": "serwis-drukarek-do-kart-plastikowych",
+    "label": {
+     "pl": "Drukarek do kart plastikowych",
+     "uk": "Принтери пластикових карток",
+     "ru": "Принтеры пластиковых карт",
+     "en": "Plastic card printers"
+    }
+   }
+  ]
+ },
+ {
+  "title": {
+   "pl": "Innych urządzeń",
+   "uk": "Інших пристроїв",
+   "ru": "Других устройств",
+   "en": "Other devices"
+  },
+  "items": [
+   {
+    "slug": "serwis-plotterow",
+    "label": {
+     "pl": "Ploterów",
+     "uk": "Плотери",
+     "ru": "Плоттеры",
+     "en": "Plotters"
+    }
+   },
+   {
+    "slug": "serwis-niszczarek",
+    "label": {
+     "pl": "Niszczarek",
+     "uk": "Шредери",
+     "ru": "Шредеры",
+     "en": "Paper shredders"
+    }
+   },
+   {
+    "slug": "naprawa-zasilaczy-ups",
+    "label": {
+     "pl": "Zasilaczy UPS",
+     "uk": "ДБЖ (UPS)",
+     "ru": "ИБП (UPS)",
+     "en": "UPS units"
+    }
+   },
+   {
+    "slug": "naprawa-projektorow",
+    "label": {
+     "pl": "Projektorów",
+     "uk": "Проєктори",
+     "ru": "Проекторы",
+     "en": "Projectors"
+    }
+   },
+   {
+    "slug": "serwis-ekspresow-do-kawy",
+    "label": {
+     "pl": "Ekspresów do kawy",
+     "uk": "Кавомашини",
+     "ru": "Кофемашины",
+     "en": "Coffee machines"
+    }
+   }
+  ],
+  "sub": {
+   "title": {
+    "pl": "Dodatkowe usługi",
+    "uk": "Додаткові послуги",
+    "ru": "Дополнительные услуги",
+    "en": "Additional services"
+   },
+   "items": [
+    {
+     "slug": "druk-3d-na-zamowienie",
+     "label": {
+      "pl": "Druk 3D na zamówienie",
+      "uk": "3D-друк на замовлення",
+      "ru": "3D-печать на заказ",
+      "en": "3D printing on demand"
+     }
+    },
+    {
+     "slug": "wynajem-drukarek",
+     "label": {
+      "pl": "Wynajem drukarek",
+      "uk": "Оренда принтерів",
+      "ru": "Аренда принтеров",
+      "en": "Printer rental"
+     }
+    },
+    {
+     "slug": "drukarka-zastepcza",
+     "label": {
+      "pl": "Drukarka zastępcza",
+      "uk": "Підмінний принтер",
+      "ru": "Подменный принтер",
+      "en": "Replacement printer"
+     }
+    },
+    {
+     "slug": "serwis-wysylkowy",
+     "label": {
+      "pl": "Serwis wysyłkowy",
+      "uk": "Сервіс з відправкою",
+      "ru": "Сервис с отправкой",
+      "en": "Mail-in service"
+     }
+    }
+   ]
+  }
+ }
+]

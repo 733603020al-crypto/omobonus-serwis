@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Демо карты (OpenFreeMap)</title>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"><script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>body{margin:0;font:15px Lora,Georgia,serif;background:#f1dfb6;color:#312b1f}.w{max-width:900px;margin:0 auto;padding:16px}
+input{width:100%;box-sizing:border-box;padding:10px;border:1px solid rgba(70,45,25,.55);border-radius:2px;font:inherit;background:transparent}
+#s{border:1px solid rgba(70,45,25,.55);border-top:0;background:#f7ecd0}#s div{padding:8px 10px;cursor:pointer}#s div:hover{background:rgba(70,45,25,.1)}
+#map{height:520px;margin-top:10px;border:1px solid rgba(70,45,25,.55)}#i{margin:8px 0;font-weight:600}
+.sw{margin-top:8px}.sw button{padding:6px 14px;border:1px solid rgba(70,45,25,.55);background:transparent;font:inherit;cursor:pointer}.sw .on{background:#5a3a14;color:#f1dfb6}</style></head><body><div class="w">
+<h3>Adres dostawy — демо (OpenFreeMap, без Google)</h3>
+<input id="q" placeholder="Zacznij wpisywać adres, np. Saperów 45 Wrocław" autocomplete="off"><div id="s"></div>
+<div class="sw"><button data-m="liberty" class="on">Liberty</button> <button data-m="bright">Bright</button> <button data-m="sat">Спутник</button></div>
+<div id="i"></div><div id="map"></div></div>
+<script>
+const HOME=[17.0100,51.0990];
+const STY={liberty:'https://tiles.openfreemap.org/styles/liberty',bright:'https://tiles.openfreemap.org/styles/bright',
+sat:{version:8,sources:{e:{type:'raster',tileSize:256,attribution:'Esri World Imagery',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}']}},layers:[{id:'e',type:'raster',source:'e'}]}};
+const map=new maplibregl.Map({container:'map',style:STY.liberty,center:HOME,zoom:12});map.addControl(new maplibregl.NavigationControl());
+new maplibregl.Marker({color:'#5a3a14'}).setLngLat(HOME).addTo(map);
+let route=null,mk,lbl;
+function draw(){if(!route)return;if(!map.getSource('r'))map.addSource('r',{type:'geojson',data:{type:'Feature',geometry:route}});
+ if(!map.getLayer('rc'))map.addLayer({id:'rc',type:'line',source:'r',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#1a56e8','line-width':7}})}
+map.on('style.load',draw);
+document.querySelectorAll('.sw button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.sw button').forEach(x=>x.classList.toggle('on',x===b));map.setStyle(STY[b.dataset.m])});
+const q=document.getElementById('q'),s=document.getElementById('s');let t;
+q.oninput=()=>{clearTimeout(t);t=setTimeout(async()=>{if(q.value.length<3){s.innerHTML='';return}
+ const r=await(await fetch('https://photon.komoot.io/api/?limit=5&lang=en&lat=51.1&lon=17.03&q='+encodeURIComponent(q.value))).json();
+ s.innerHTML='';r.features.filter(f=>f.properties.countrycode==='PL').forEach(f=>{const p=f.properties,d=document.createElement('div');
+  d.textContent=[(p.street||p.name)+(p.housenumber?' '+p.housenumber:''),p.postcode,p.city].filter(Boolean).join(', ');d.onclick=()=>pick(d.textContent,f.geometry.coordinates);s.appendChild(d)})},300)};
+async function pick(txt,c){q.value=txt;s.innerHTML='';if(mk)mk.remove();if(lbl)lbl.remove();mk=new maplibregl.Marker({color:'#d33'}).setLngLat(c).addTo(map);
+ const r=await(await fetch('https://router.project-osrm.org/route/v1/driving/'+HOME.join(',')+';'+c.join(',')+'?overview=full&geometries=geojson')).json();const R=r.routes[0];route=R.geometry;
+ if(map.getSource('r'))map.getSource('r').setData({type:'Feature',geometry:route});else draw();
+ const b=new maplibregl.LngLatBounds();route.coordinates.forEach(k=>b.extend(k));map.fitBounds(b,{padding:60});
+ const m=route.coordinates[Math.floor(route.coordinates.length/2)],e=document.createElement('div');e.style.cssText='background:#fff;border:1px solid #999;border-radius:4px;padding:3px 8px;font:600 13px sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.3)';e.textContent=Math.round(R.duration/60)+' min · '+(R.distance/1000).toFixed(1)+' km';
+ lbl=new maplibregl.Marker({element:e}).setLngLat(m).addTo(map);document.getElementById('i').textContent=e.textContent}
+</script></body></html>
