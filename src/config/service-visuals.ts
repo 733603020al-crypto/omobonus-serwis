@@ -50,7 +50,6 @@ export const SERVICE_VISUALS: Record<string, Record<string, SubcategoryVisual>> 
     '3d-electronics': { icon: '/images/accordion-icon-3dprinter-elektronika-v3.webp' },
     '3d-calibration': { icon: '/images/accordion-icon-3dprinter-kalibracja-v3.webp' },
     '3d-software': { icon: '/images/accordion-icon-3dprinter-oprogramowanie-v3.webp' },
-    '3d-resin': { icon: '/images/accordion-icon-3dprinter-zywiczne-sla-v3.webp' },
     '3d-additional': { icon: '/images/accordion-icon-3dprinter-modyfikacje-v3.webp' },
   },
   'serwis-drukarek-laserowych': {

@@ -3,12 +3,12 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AutoReset',
+  title: 'Reset licznika absorbera',
   robots: { index: false, follow: false },
 }
 
 export const dynamic = 'force-static'
 
 export default function AutoResetPage() {
-  return <iframe src="/service-maket/autoreset.html" title="AutoReset" style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', border: 0 }} />
+  return <iframe src="/service-maket/autoreset.html" title="Reset licznika absorbera" style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', border: 0 }} />
 }

@@ -92,19 +92,6 @@ const apply3DPrinterRepairsSection = (sections: PricingSection[]) => {
       ],
     },
     {
-      id: '3d-resin',
-      title: 'Drukarki żywiczne SLA / MSLA / DLP',
-      items: [
-        { service: 'Czyszczenie i konserwacja wanny żywicy\n(pozostałości żywicy, zabrudzenia lub problemy z wydrukiem)' },
-        { service: 'Wymiana folii FEP / nFEP\n(uszkodzona, porysowana lub nieszczelna folia)' },
-        { service: 'Kalibracja platformy roboczej\n(wydruk nie przykleja się lub odkleja się podczas pracy)' },
-        { service: 'Wymiana matrycy LCD\n(martwe piksele, brak utwardzania lub uszkodzony ekran)' },
-        { service: 'Naprawa układu UV\n(żywica nie utwardza się lub wydruk jest niepełny)' },
-        { service: 'Wymiana modułu UV\n(zużyte lub uszkodzone diody / matryca LED UV)' },
-        { service: 'Naprawa mechanizmu osi Z\n(problemy z ruchem platformy lub nierówne warstwy)' },
-      ],
-    },
-    {
       id: '3d-additional',
       title: 'Modyfikacje i ulepszenia',
       items: [
@@ -125,7 +112,7 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-1', title: 'Jak wygląda proces naprawy drukarki 3D?', items: [], answer: 'Najpierw wykonujemy wstępną diagnozę, następnie pełną diagnostykę urządzenia i podajemy dokładny koszt oraz termin naprawy. Prace rozpoczynamy dopiero po akceptacji Klienta.' },
     { id: 'faq-2', title: 'Ile kosztuje diagnoza drukarki 3D?', items: [], answer: '**Wstępna diagnoza online oraz przy dostarczeniu urządzenia jest bezpłatna.**\n\nPełna diagnoza również jest bezpłatna przy realizacji naprawy.\n\nW przypadku rezygnacji koszt pełnej diagnozy wynosi 100 / 150 / 200 zł netto, zależnie od kategorii urządzenia.' },
     { id: 'faq-3', title: 'Ile trwa naprawa?', items: [], answer: 'Większość standardowych napraw wykonujemy w ciągu 1–3 dni roboczych. Czas może się wydłużyć przy złożonych usterkach elektroniki lub konieczności zamówienia części.' },
-    { id: 'faq-4', title: 'Jakie technologie drukarek 3D serwisujecie?', items: [], answer: 'Serwisujemy drukarki filamentowe FDM oraz żywiczne SLA / MSLA / DLP. Zakres napraw zależy od technologii i konstrukcji konkretnego urządzenia.' },
+    { id: 'faq-4', title: 'Jakie technologie drukarek 3D serwisujecie?', items: [], answer: 'Serwisujemy drukarki filamentowe FDM. Zakres napraw zależy od technologii i konstrukcji konkretnego urządzenia.' },
     { id: 'faq-5', title: 'Jakie marki serwisujecie?', items: [], answer: 'Serwisujemy m.in. Bambu Lab, Prusa, Creality, Anycubic, Elegoo, Zortrax, FlashForge oraz inne popularne marki. Przed przyjęciem możemy potwierdzić możliwość naprawy konkretnego modelu.' },
     { id: 'faq-6', title: 'Czy warto naprawiać tanią lub starszą drukarkę 3D?', items: [], answer: 'To zależy od rodzaju awarii, ceny części i wartości urządzenia. Po diagnozie informujemy, czy naprawa jest ekonomicznie uzasadniona.' },
     { id: 'faq-7', title: 'Czy części są wliczone w cenę?', items: [], answer: 'Jeżeli przy usłudze widnieje „+ części”, podana cena obejmuje robociznę, a części są rozliczane osobno. Ich koszt podajemy przed naprawą.' },
@@ -143,10 +130,8 @@ const apply3DPrinterFaqSection = (sections: PricingSection[]) => {
     { id: 'faq-18', title: 'Czy problem może wynikać tylko z ustawień slicera lub firmware?', items: [], answer: 'Tak. Nie wszystkie problemy oznaczają awarię mechaniczną. Błędny profil materiału, slicer, firmware lub kalibracja mogą powodować objawy podobne do uszkodzenia drukarki.' },
     { id: 'faq-19', title: 'Czy konfigurujecie Klipper, Marlin i slicery?', items: [], answer: 'Tak. Wykonujemy instalację i konfigurację firmware, Klipper / Marlin, slicerów, profili materiałów oraz zdalnego sterowania.' },
     { id: 'faq-20', title: 'Czy wykonujecie modyfikacje i ulepszenia?', items: [], answer: 'Tak. Montujemy m.in. auto-leveling, ulepszone ekstrudery, hotendy, czujniki oraz dodatkowe moduły.' },
-    { id: 'faq-21', title: 'Dlaczego wydruk żywiczny nie trzyma się platformy?', items: [], answer: 'Najczęstsze przyczyny to niewłaściwe poziomowanie platformy, błędny czas ekspozycji, problem z folią FEP/nFEP albo stan żywicy.' },
     { id: 'faq-22', title: 'Kiedy trzeba wymienić folię FEP / nFEP?', items: [], answer: 'Gdy jest uszkodzona, przebita, mocno porysowana, zmętniała albo powoduje problemy z odrywaniem kolejnych warstw.' },
-    { id: 'faq-23', title: 'Jak rozpoznać uszkodzoną matrycę LCD w drukarce żywicznej?', items: [], answer: 'Typowe objawy to brak utwardzania w części pola roboczego, martwe obszary, pasy lub powtarzające się braki w modelach. Matrycę sprawdzamy przed decyzją o wymianie.' },
-    { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: '**Przed transportem skontaktuj się z nami.**\n\nW drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę.\n\nW urządzeniu żywicznym należy opróżnić zbiornik z żywicy i zabezpieczyć wannę, platformę oraz oś Z.' },
+    { id: 'faq-24', title: 'Jak przygotować drukarkę 3D do transportu?', items: [], answer: '**Przed transportem skontaktuj się z nami.**\n\nW drukarce FDM należy zabezpieczyć ruchome elementy, stół i głowicę.' },
     { id: 'faq-26', title: 'Ile kosztuje odbiór lub dostawa drukarki 3D?', items: [], answer: 'Odbiór lub dostawa do 2,5 km od serwisu kosztuje 25 zł netto. Przy dłuższej trasie doliczamy 2 zł netto za każdy kilometr powyżej 5 km łącznej trasy w obie strony.' },
     { id: 'faq-27', title: 'Jak często wykonywać konserwację drukarki 3D?', items: [], answer: 'Przy codziennym druku zalecamy konserwację co 3–6 miesięcy, a wcześniej, gdy pojawiają się stuki, przesunięcia warstw, problemy z pierwszą warstwą lub nierówna ekstruzja.' },
   ]
